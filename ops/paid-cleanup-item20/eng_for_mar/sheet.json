@@ -4696,10 +4696,10 @@
    "lego_en": "he's happy to help you",
    "lego_known": "तो आनंदाने मदत करेल",
    "slot": "update:B01",
-   "en": "I think he's happy to help you",
+   "en": "yes he's happy to help you",
    "hi": "जिसने कहा कि वह आपकी मदद करने में ख़ुश है",
    "hin_row": "S0344L03U05",
-   "known": "मला वाटतं तो तुम्हाला आनंदाने मदत करेल",
+   "known": "हो, तो तुम्हाला आनंदाने मदत करेल",
    "gender": null,
    "n": 1,
    "orig_en": "who said that he's happy to help you"
@@ -5047,13 +5047,14 @@
    "lego_en": "wanted to send",
    "lego_known": "पाठवायचा होता",
    "slot": "update:B01",
-   "en": "she wanted to send a message today",
+   "en": "he wanted to send two emails",
    "hi": "वह भेजना चाहती थी",
    "hin_row": "S0357L01B02",
-   "known": "तिला आज एक मेसेज पाठवायचा होता",
+   "known": "त्याला दोन ईमेल पाठवायचे होते",
    "gender": null,
    "n": 1,
-   "orig_en": "she wanted to send"
+   "orig_en": "she wanted to send",
+   "known_ok": "पाठवायचे|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0358L01",
@@ -6299,12 +6300,13 @@
    "lego_en": "right",
    "lego_known": "उजवीकडे",
    "slot": "insert",
-   "en": "if you don't make me a strong cup of coffee right now then I will never trust anyone",
+   "en": "he could turn right",
    "hi": "अगर आपने अभी के अभी मेरे लिए एक कड़क कॉफ़ी नहीं बनाई तो मैं कभी किसी पर भरोसा नहीं करूँगा।",
    "hin_row": "S0490L02U01",
-   "known": null,
+   "known": "तो उजवीकडे वळू शकेल",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "if you don't make me a strong cup of coffee right now then I will never trust anyone"
   },
   {
    "lego": "S0503L02",
@@ -6315,9 +6317,10 @@
    "en": "I'm sure I hate making trouble",
    "hi": "मुझे यक़ीन है कि मुझे परेशानी खड़ी करने से नफ़रत है।",
    "hin_row": "S0503L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की मला त्रास द्यायला आवडत नाही",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure I hate making trouble"
   },
   {
    "lego": "S0503L03",
@@ -6328,7 +6331,7 @@
    "en": "it's true that one's mine",
    "hi": "यह सच है कि यह मेरा है।",
    "hin_row": "S0503L02B03",
-   "known": null,
+   "known": "ती माझी आहे हे खरं आहे",
    "gender": null,
    "n": 1
   },
@@ -6341,7 +6344,7 @@
    "en": "i hope i don't get left behind",
    "hi": "मुझे उम्मीद है कि मैं पीछे न छूट जाऊँ",
    "hin_row": "S0505L02B02",
-   "known": null,
+   "known": "मी मागे राहणार नाही अशी मला आशा आहे",
    "gender": null,
    "n": 1
   },
@@ -6354,9 +6357,10 @@
    "en": "I'm sure I used to live around here",
    "hi": "मुझे यक़ीन है कि मैं यहीं आसपास रहता था।",
    "hin_row": "S0506L01U01",
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मला खात्री आहे की मी इथे जवळपास राहायचो",
+   "gender": "m",
+   "n": 1,
+   "known_ok": "राहायचो|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0506L02",
@@ -6367,8 +6371,8 @@
    "en": "it's true I used to live around here",
    "hi": "यह सच है कि मैं यहीं आसपास रहता था।",
    "hin_row": "S0506L01B02",
-   "known": null,
-   "gender": null,
+   "known": "मी इथे जवळपास राहायचो हे खरं आहे",
+   "gender": "m",
    "n": 1
   },
   {
@@ -6377,12 +6381,13 @@
    "lego_en": "years ago",
    "lego_known": "काही वर्षांपूर्वी",
    "slot": "update:B01",
-   "en": "she turned left years ago",
+   "en": "I used to live in the city years ago",
    "hi": "बरसों पहले वह बाईं तरफ़ मुड़ गई थी।",
    "hin_row": "S0506L02B03",
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मी काही वर्षांपूर्वी शहरात राहायचो",
+   "gender": "m",
+   "n": 1,
+   "orig_en": "she turned left years ago"
   },
   {
    "lego": "S0506L04",
@@ -6393,7 +6398,7 @@
    "en": "she almost got lost before we moved",
    "hi": "हमारे जाने से पहले वह लगभग खो ही गई थी।",
    "hin_row": "S0506L03B03",
-   "known": null,
+   "known": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी ती जवळजवळ हरवली",
    "gender": null,
    "n": 1
   },
@@ -6406,7 +6411,7 @@
    "en": "I'm sure we moved to the city",
    "hi": "मुझे यक़ीन है कि हम शहर चले गए थे।",
    "hin_row": "S0507L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की आम्ही शहरात राहायला गेलो",
    "gender": null,
    "n": 1
   },
@@ -6419,7 +6424,7 @@
    "en": "do you know how you're going to pay?",
    "hi": "क्या आप जानते हैं कि आप भुगतान कैसे करेंगे?",
    "hin_row": "S0508L02U01",
-   "known": null,
+   "known": "तुम्ही कसे पैसे देणार हे तुम्हाला माहित आहे का?",
    "gender": null,
    "n": 1
   },
@@ -6432,7 +6437,7 @@
    "en": "I didn't know how you're going to pay",
    "hi": "मुझे नहीं पता था कि आप भुगतान कैसे करेंगे।",
    "hin_row": "S0508L02U02",
-   "known": null,
+   "known": "तुम्ही कसे पैसे देणार हे मला माहित नव्हतं",
    "gender": null,
    "n": 1
   },
@@ -6445,9 +6450,10 @@
    "en": "I'm waiting for a new bed",
    "hi": "मैं एक नए बेड का इंतज़ार कर रही हूँ।",
    "hin_row": "S0509L02B01",
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मी नवीन पलंगाची वाट पाहतोय",
+   "gender": "m",
+   "n": 1,
+   "known_ok": "पलंगाची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0510L01",
@@ -6455,11 +6461,11 @@
    "lego_en": "to park the car",
    "lego_known": "गाडी पार्क करायला",
    "slot": "update:B01",
-   "en": null,
+   "en": "I need to park the car",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला गाडी पार्क करायची गरज आहे",
    "gender": null,
    "n": 1
   },
@@ -6469,11 +6475,11 @@
    "lego_en": "to look for somewhere safe",
    "lego_known": "कुठेतरी सुरक्षित जागा शोधायला",
    "slot": "update:B01",
-   "en": null,
+   "en": "I need to look for somewhere safe",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला कुठेतरी सुरक्षित जागा शोधायची गरज आहे",
    "gender": null,
    "n": 1
   },
@@ -6483,12 +6489,13 @@
    "lego_en": "she's gone",
    "lego_known": "ती गेली आहे",
    "slot": "update:B01",
-   "en": "she's gone to look for a story",
+   "en": "she's gone to look for her brother",
    "hi": "वह एक कहानी ढूँढ़ने गई है।",
    "hin_row": "S0510L01B02",
-   "known": null,
+   "known": "ती तिच्या भावाला शोधायला गेली आहे",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "she's gone to look for a story"
   },
   {
    "lego": "S0511L02",
@@ -6496,13 +6503,15 @@
    "lego_en": "to reach",
    "lego_known": "पोहोचायला",
    "slot": "update:B01",
-   "en": null,
+   "en": "I need to reach the office",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला ऑफिसला पोहोचायची गरज आहे",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I want to reach the top",
+   "known_ok": "ऑफिसला पोहोचायची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0511L03",
@@ -6510,12 +6519,12 @@
    "lego_en": "everyone in the office",
    "lego_known": "ऑफिसमधल्या सगळ्यांपर्यंत",
    "slot": "update:B01",
-   "en": null,
+   "en": "I know everyone in the office",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
-   "gender": null,
+   "known": "मी ऑफिसमधल्या सगळ्यांना ओळखतो",
+   "gender": "m",
    "n": 1
   },
   {
@@ -6527,9 +6536,10 @@
    "en": "I'm sure the news took several hours",
    "hi": "मुझे यक़ीन है कि ख़बर को कई घंटे लगे।",
    "hin_row": "S0511L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की बातमीला कित्येक तास लागले",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "बातमीला|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0512L01",
@@ -6537,12 +6547,14 @@
    "lego_en": "can you hold the door open",
    "lego_known": "तुम्ही दार उघडं धराल का",
    "slot": "update:B01",
-   "en": "can you hold the door open next week?",
+   "en": "can you hold the door open for my mother?",
    "hi": "अगले हफ़्ते क्या आप दरवाज़ा खुला रख सकते हैं?",
    "hin_row": "S0512L01U05",
-   "known": null,
+   "known": "तुम्ही माझ्या आईसाठी दार उघडं धराल का?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "can you hold the door open next week?",
+   "known_ok": "आईसाठी|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0512L02",
@@ -6550,12 +6562,14 @@
    "lego_en": "while I fetch the keys",
    "lego_known": "मी चाव्या आणेपर्यंत",
    "slot": "update:B01",
-   "en": "I'll be ready while I fetch the keys",
+   "en": "can you wait here while I fetch the keys?",
    "hi": "जब तक मैं चाबियाँ लाऊँ, मैं तैयार हो जाऊँगी।",
    "hin_row": "S0512L02B02",
-   "known": null,
+   "known": "मी चाव्या आणेपर्यंत तुम्ही इथे वाट पाहाल का?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready while I fetch the keys",
+   "known_ok": "पाहाल|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0513L01",
@@ -6569,7 +6583,8 @@
    "author": true,
    "known": null,
    "gender": null,
-   "n": 1
+   "n": 1,
+   "hold": "no natural taught sentence around \"I move my head up and down\" before \"it hurts\" is taught (the next LEGO); the basket's own rows are padding"
   },
   {
    "lego": "S0513L02",
@@ -6580,7 +6595,7 @@
    "en": "I'm sure it hurts most",
    "hi": "मुझे यक़ीन है कि सबसे ज़्यादा दर्द होता है।",
    "hin_row": "S0513L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की सगळ्यात जास्त दुखतं",
    "gender": null,
    "n": 1
   },
@@ -6590,12 +6605,13 @@
    "lego_en": "when",
    "lego_known": "तेव्हा",
    "slot": "insert",
-   "en": "it hurts most when it matters",
+   "en": "it hurts most when I walk",
    "hi": "जब यह मायने रखता है तो सबसे ज़्यादा दर्द होता है।",
    "hin_row": "S0513L01B02",
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मी चालतो तेव्हा सगळ्यात जास्त दुखतं",
+   "gender": "m",
+   "n": 1,
+   "orig_en": "it hurts most when it matters"
   },
   {
    "lego": "S0514L01",
@@ -6603,13 +6619,14 @@
    "lego_en": "I found",
    "lego_known": "मला सापडलं",
    "slot": "update:B01",
-   "en": null,
+   "en": "I found the money on the table",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला टेबलावर पैसे सापडले",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "सापडले|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0515L01",
@@ -6620,9 +6637,10 @@
    "en": "I'll be ready on the first day of the new year",
    "hi": "नए साल के पहले दिन मैं तैयार हो जाऊँगी।",
    "hin_row": "S0515L01B03",
-   "known": null,
+   "known": "मी नवीन वर्षाच्या पहिल्या दिवशी तयार असेन",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "वर्षाच्या|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0515L02",
@@ -6633,7 +6651,7 @@
    "en": "I'm going to be late on the first day of the new year",
    "hi": "नए साल के पहले दिन मुझे देर हो जाएगी।",
    "hin_row": "S0515L01B02",
-   "known": null,
+   "known": "नवीन वर्षाच्या पहिल्या दिवशी मला उशीर होईल",
    "gender": null,
    "n": 1
   },
@@ -6646,7 +6664,7 @@
    "en": "I'm sure they both came",
    "hi": "मुझे यक़ीन है कि वे दोनों आए थे।",
    "hin_row": "S0516L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की ते दोघेही आले",
    "gender": null,
    "n": 1
   },
@@ -6659,7 +6677,7 @@
    "en": "they both came on their own years ago",
    "hi": "बरसों पहले वे दोनों अपने दम पर आए थे।",
    "hin_row": "S0516L02U04",
-   "known": null,
+   "known": "ते दोघेही काही वर्षांपूर्वी स्वतःहून आले",
    "gender": null,
    "n": 1
   },
@@ -6672,7 +6690,7 @@
    "en": "I'm sure they left",
    "hi": "मुझे यक़ीन है कि वे गए।",
    "hin_row": "S0517L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की ते निघून गेले",
    "gender": null,
    "n": 1
   },
@@ -6682,12 +6700,13 @@
    "lego_en": "with each other",
    "lego_known": "एकमेकांबरोबर",
    "slot": "update:B01",
-   "en": "but they left with each other",
+   "en": "I'm sure they left with each other",
    "hi": "लेकिन वे एक-दूसरे के साथ गए।",
    "hin_row": "S0517L02B01",
-   "known": null,
+   "known": "मला खात्री आहे की ते एकमेकांबरोबर निघून गेले",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "but they left with each other"
   },
   {
    "lego": "S0518L01",
@@ -6695,13 +6714,14 @@
    "lego_en": "exactly the same problem",
    "lego_known": "अगदी तीच समस्या",
    "slot": "update:B01",
-   "en": null,
+   "en": "we have exactly the same problem",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "आमच्यापुढे अगदी तीच समस्या आहे",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "आमच्यापुढे|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0518L02",
@@ -6709,13 +6729,14 @@
    "lego_en": "I couldn't imagine",
    "lego_known": "मी कल्पनाही करू शकत नव्हतो",
    "slot": "update:B01",
-   "en": null,
+   "en": "I couldn't imagine a new life",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मी नवीन आयुष्याची कल्पनाही करू शकत नव्हतो",
+   "gender": "m",
+   "n": 1,
+   "known_ok": "आयुष्याची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0518L03",
@@ -6726,8 +6747,8 @@
    "en": "I'm sure I couldn't imagine myself having exactly the same problem",
    "hi": "मुझे यक़ीन है कि मैं बिल्कुल वैसी ही समस्या में अपनी कल्पना नहीं कर सका।",
    "hin_row": "S0518L02U01",
-   "known": null,
-   "gender": null,
+   "known": "मला खात्री आहे की माझ्यापुढे अगदी तीच समस्या असेल अशी मी कल्पनाही करू शकत नव्हतो",
+   "gender": "m",
    "n": 1
   },
   {
@@ -6736,12 +6757,13 @@
    "lego_en": "I haven't seen",
    "lego_known": "मी पाहिलं नाही",
    "slot": "update:B01",
-   "en": "I haven't seen a friend",
+   "en": "I haven't seen the film",
    "hi": "मैंने एक दोस्त को नहीं देखा है।",
    "hin_row": "S0519L01B01",
-   "known": null,
+   "known": "मी सिनेमा पाहिला नाही",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I haven't seen a friend"
   },
   {
    "lego": "S0519L02",
@@ -6752,7 +6774,7 @@
    "en": "it might be their new baby",
    "hi": "यह उनका नया बच्चा हो सकता है।",
    "hin_row": "S0519L02B03",
-   "known": null,
+   "known": "ते कदाचित त्यांचं नवीन बाळ असेल",
    "gender": null,
    "n": 1
   },
@@ -6762,12 +6784,13 @@
    "lego_en": "it might have happened",
    "lego_known": "ते कदाचित घडलं असेल",
    "slot": "update:B01",
-   "en": "I'm sure it might have happened",
+   "en": "I think it might have happened",
    "hi": "मुझे यक़ीन है कि यह हो सकता था।",
    "hin_row": "S0520L01U01",
-   "known": null,
+   "known": "मला वाटतं ते कदाचित घडलं असेल",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure it might have happened"
   },
   {
    "lego": "S0520L02",
@@ -6775,12 +6798,13 @@
    "lego_en": "to the whole family",
    "lego_known": "संपूर्ण कुटुंबाच्या बाबतीत",
    "slot": "update:B01",
-   "en": "I'm sure it might have happened to the whole family",
+   "en": "I think it might have happened to the whole family",
    "hi": "मुझे यक़ीन है कि यह पूरे परिवार के साथ हो सकता था।",
    "hin_row": "S0520L02U01",
-   "known": null,
+   "known": "मला वाटतं ते कदाचित संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure it might have happened to the whole family"
   },
   {
    "lego": "S0521L01",
@@ -6791,7 +6815,7 @@
    "en": "I didn't know why we needed to stay here",
    "hi": "मुझे नहीं पता था कि हमें यहाँ क्यों रहना था।",
    "hin_row": "S0521L02U02",
-   "known": null,
+   "known": "आम्हाला इथे का राहायची गरज होती हे मला माहित नव्हतं",
    "gender": null,
    "n": 1
   },
@@ -6801,12 +6825,13 @@
    "lego_en": "I'm afraid that",
    "lego_known": "मला भीती आहे की",
    "slot": "update:B01",
-   "en": "I'm afraid that you'll forget what happens",
+   "en": "I'm afraid that you'll forget the keys",
    "hi": "मुझे डर है कि आप भूल जाएँगे कि क्या होता है।",
    "hin_row": "S0521L01B02",
-   "known": null,
+   "known": "मला भीती आहे की तुम्ही चाव्या विसराल",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm afraid that you'll forget what happens"
   },
   {
    "lego": "S0522L01",
@@ -6817,7 +6842,7 @@
    "en": "I want to tell the truth",
    "hi": "मैं सच बोलना चाहता हूँ।",
    "hin_row": "S0522L03B02",
-   "known": null,
+   "known": "मला खरं सांगायचं आहे",
    "gender": null,
    "n": 1
   },
@@ -6830,7 +6855,7 @@
    "en": "I'm sure it was stupid",
    "hi": "मुझे यक़ीन है कि यह बेवक़ूफ़ी थी।",
    "hin_row": "S0522L02U01",
-   "known": null,
+   "known": "मला खात्री आहे की ते मूर्खपणाचं होतं",
    "gender": null,
    "n": 1
   },
@@ -6840,12 +6865,13 @@
    "lego_en": "let's agree that",
    "lego_known": "हे आपण मान्य करूया",
    "slot": "update:B01",
-   "en": "let's agree that it hurts most",
+   "en": "let's agree that it was a good idea",
    "hi": "चलो मान लेते हैं कि सबसे ज़्यादा दर्द होता है।",
    "hin_row": "S0522L01B03",
-   "known": null,
+   "known": "ती चांगली कल्पना होती हे आपण मान्य करूया",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "let's agree that it hurts most"
   },
   {
    "lego": "S0523L01",
@@ -6856,7 +6882,7 @@
    "en": "a story instead of giving an excuse",
    "hi": "कोई बहाना बनाने के बजाय एक कहानी।",
    "hin_row": "S0523L02B02",
-   "known": null,
+   "known": "सबब देण्याऐवजी एक गोष्ट",
    "gender": null,
    "n": 1
   },
@@ -6869,7 +6895,7 @@
    "en": "I'll call you back next week",
    "hi": "मैं अगले हफ़्ते आपको वापस कॉल करूँगी।",
    "hin_row": "S0524L01B03",
-   "known": null,
+   "known": "मी तुम्हाला पुढच्या आठवड्यात परत फोन करेन",
    "gender": null,
    "n": 1
   },
@@ -6882,7 +6908,7 @@
    "en": "I'll be ready in three or four minutes",
    "hi": "तीन-चार मिनट में मैं तैयार हो जाऊँगा।",
    "hin_row": "S0524L02B02",
-   "known": null,
+   "known": "मी तीन-चार मिनिटांत तयार असेन",
    "gender": null,
    "n": 1
   },
@@ -6892,11 +6918,11 @@
    "lego_en": "if you've been able to finish",
    "lego_known": "तुम्हाला संपवता आलंय का",
    "slot": "update:B01",
-   "en": null,
+   "en": "I wonder if you've been able to finish",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "तुम्हाला संपवता आलंय का असा मला प्रश्न पडतो",
    "gender": null,
    "n": 1
   },
@@ -6909,7 +6935,7 @@
    "en": "to check if he's happy",
    "hi": "यह जाँचने के लिए कि वह ख़ुश है।",
    "hin_row": "S0525L01B01",
-   "known": null,
+   "known": "तो खूश आहे का हे बघायला",
    "gender": null,
    "n": 1
   },
@@ -6922,7 +6948,7 @@
    "en": "I'm sure you can't guess",
    "hi": "मुझे यक़ीन है कि आप अंदाज़ा नहीं लगा सकते।",
    "hin_row": "S0526L02U01",
-   "known": null,
+   "known": "मला खात्री आहे की तुम्हाला अंदाज लावता येत नाही",
    "gender": null,
    "n": 1
   },
@@ -6935,9 +6961,10 @@
    "en": "I'm finding it hard to believe that he's happy",
    "hi": "मुझे विश्वास नहीं हो रहा कि वह ख़ुश है।",
    "hin_row": "S0526L01B03",
-   "known": null,
+   "known": "तो खूश आहे यावर विश्वास ठेवणं मला अवघड जातंय",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "जातंय|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0526L03",
@@ -6945,12 +6972,13 @@
    "lego_en": "I'm finding it hard",
    "lego_known": "मला अवघड जातंय",
    "slot": "update:B01",
-   "en": "I'm finding it hard to believe that it hurts most",
+   "en": "I'm finding it hard to believe that it was stupid",
    "hi": "मुझे विश्वास नहीं हो रहा कि इससे सबसे ज़्यादा दर्द होता है।",
    "hin_row": "S0526L01U04",
-   "known": null,
+   "known": "ते मूर्खपणाचं होतं यावर विश्वास ठेवणं मला अवघड जातंय",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm finding it hard to believe that it hurts most"
   },
   {
    "lego": "S0526L03",
@@ -6961,7 +6989,7 @@
    "en": "I'm finding it hard to believe that life isn't easy",
    "hi": "मुझे विश्वास नहीं हो रहा कि ज़िंदगी आसान नहीं है।",
    "hin_row": "S0526L01B01",
-   "known": null,
+   "known": "आयुष्य सोपं नाही यावर विश्वास ठेवणं मला अवघड जातंय",
    "gender": null,
    "n": 2
   },
@@ -6971,12 +6999,13 @@
    "lego_en": "that funny story",
    "lego_known": "ती गमतीशीर गोष्ट",
    "slot": "update:B01",
-   "en": "I want that funny story",
+   "en": "I liked that funny story",
    "hi": "मैं वह मज़ेदार कहानी चाहता हूँ।",
    "hin_row": "S0527L03B02",
-   "known": null,
+   "known": "मला ती गमतीशीर गोष्ट आवडली",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I want that funny story"
   },
   {
    "lego": "S0527L02",
@@ -6987,7 +7016,7 @@
    "en": "do you know who told me?",
    "hi": "क्या आप जानते हैं कि मुझे किसने बताया?",
    "hin_row": "S0527L02U01",
-   "known": null,
+   "known": "मला कोणी सांगितलं हे तुम्हाला माहित आहे का?",
    "gender": null,
    "n": 1
   },
@@ -7000,7 +7029,7 @@
    "en": "guess what happens",
    "hi": "अंदाज़ा लगाइए कि क्या होता है।",
    "hin_row": "S0527L01B01",
-   "known": null,
+   "known": "काय घडतं ओळखा बघू",
    "gender": null,
    "n": 1
   },
@@ -7010,12 +7039,13 @@
    "lego_en": "guess",
    "lego_known": "ओळखा बघू",
    "slot": "insert",
-   "en": "guess she almost got lost",
+   "en": "guess what he said",
    "hi": "अंदाज़ा लगाइए कि वह लगभग खो ही गई थी।",
    "hin_row": "S0527L01U02",
-   "known": null,
+   "known": "तो काय म्हणाला ओळखा बघू",
    "gender": null,
-   "n": 2
+   "n": 2,
+   "orig_en": "guess she almost got lost"
   },
   {
    "lego": "S0528L01",
@@ -7026,9 +7056,10 @@
    "en": "I need those things",
    "hi": "मुझे वे चीज़ें चाहिए।",
    "hin_row": "S0528L02U01",
-   "known": null,
+   "known": "मला त्या वस्तूंची गरज आहे",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "वस्तूंची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0528L02",
@@ -7036,12 +7067,13 @@
    "lego_en": "in another room",
    "lego_known": "दुसऱ्या खोलीत",
    "slot": "update:B01",
-   "en": "I'll be ready in another room",
+   "en": "I'm waiting in another room",
    "hi": "किसी दूसरे कमरे में मैं तैयार हो जाऊँगी।",
    "hin_row": "S0528L03B03",
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मी दुसऱ्या खोलीत वाट पाहतोय",
+   "gender": "m",
+   "n": 1,
+   "orig_en": "I'll be ready in another room"
   },
   {
    "lego": "S0528L03",
@@ -7049,12 +7081,14 @@
    "lego_en": "I'm probably supposed to keep",
    "lego_known": "मला बहुधा ठेवायच्या असतील",
    "slot": "update:B01",
-   "en": "I'm probably supposed to keep a story",
+   "en": "I'm probably supposed to keep the money",
    "hi": "मुझे शायद एक कहानी रखनी चाहिए।",
    "hin_row": "S0528L01B02",
-   "known": null,
+   "known": "मला बहुधा पैसे ठेवायचे असतील",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm probably supposed to keep a story",
+   "known_ok": "ठेवायचे|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0529L01",
@@ -7062,11 +7096,11 @@
    "lego_en": "can you put your hands up",
    "lego_known": "हात वर करू शकता का",
    "slot": "update:B01",
-   "en": null,
+   "en": "can you put your hands up if you understand?",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "तुम्हाला समजलं असेल तर हात वर करू शकता का?",
    "gender": null,
    "n": 1
   },
@@ -7076,12 +7110,13 @@
    "lego_en": "you all",
    "lego_known": "तुम्ही सगळे",
    "slot": "update:B01",
-   "en": "can you all put your hands up next week?",
+   "en": "can you all put your hands up now?",
    "hi": "अगले हफ़्ते क्या आप सब अपने हाथ उठा सकते हैं?",
    "hin_row": "S0529L01B03",
-   "known": null,
+   "known": "तुम्ही सगळे आत्ता हात वर करू शकता का?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "can you all put your hands up next week?"
   },
   {
    "lego": "S0530L01",
@@ -7089,12 +7124,13 @@
    "lego_en": "so I can count them",
    "lego_known": "म्हणजे मी ते मोजू शकेन",
    "slot": "update:B01",
-   "en": "I'll call you back so I can count them",
+   "en": "put your hands up so I can count them",
    "hi": "मैं आपको वापस कॉल करूँगी ताकि मैं उन्हें गिन सकूँ।",
    "hin_row": "S0530L01U01",
-   "known": null,
+   "known": "हात वर करा म्हणजे मी ते मोजू शकेन",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll call you back so I can count them"
   },
   {
    "lego": "S0531L01",
@@ -7105,7 +7141,7 @@
    "en": "I'm sure anyone can win the game",
    "hi": "मुझे यक़ीन है कि गेम कोई भी जीत सकता है।",
    "hin_row": "S0531L02U01",
-   "known": null,
+   "known": "मला खात्री आहे की कोणीही खेळ जिंकू शकतं",
    "gender": null,
    "n": 1
   },
@@ -7118,7 +7154,7 @@
    "en": "it isn't true that he's happy",
    "hi": "यह सच नहीं है कि वह ख़ुश है।",
    "hin_row": "S0531L01B01",
-   "known": null,
+   "known": "तो खूश आहे हे खरं नाही",
    "gender": null,
    "n": 1
   },
@@ -7128,12 +7164,14 @@
    "lego_en": "every word",
    "lego_known": "तो प्रत्येक शब्द",
    "slot": "update:B01",
-   "en": "I need every word you say",
+   "en": "I can remember every word",
    "hi": "मुझे आपकी हर बात चाहिए।",
    "hin_row": "S0533L02B02",
-   "known": null,
+   "known": "मला तो प्रत्येक शब्द आठवतो",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I need every word you say",
+   "known_ok": "आठवतो|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0533L02",
@@ -7141,12 +7179,13 @@
    "lego_en": "you say",
    "lego_known": "तुम्ही बोलता",
    "slot": "update:B01",
-   "en": "I want every word you say",
+   "en": "I like every word you say",
    "hi": "मैं आपकी हर बात चाहती हूँ।",
    "hin_row": "S0533L02B03",
-   "known": null,
+   "known": "तुम्ही बोलता तो प्रत्येक शब्द मला आवडतो",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I want every word you say"
   },
   {
    "lego": "S0533L03",
@@ -7157,7 +7196,7 @@
    "en": "she won't listen to a story",
    "hi": "वह एक कहानी नहीं सुनेगी।",
    "hin_row": "S0533L01B01",
-   "known": null,
+   "known": "ती गोष्ट ऐकणार नाही",
    "gender": null,
    "n": 1
   },
@@ -7170,7 +7209,7 @@
    "en": "she won't listen to a great idea",
    "hi": "वह एक बढ़िया विचार नहीं सुनेगी।",
    "hin_row": "S0533L01B02",
-   "known": null,
+   "known": "ती खूप छान कल्पना ऐकणार नाही",
    "gender": null,
    "n": 2
   },
@@ -7180,12 +7219,13 @@
    "lego_en": "let's not go outside",
    "lego_known": "आपण बाहेर जाऊ नको",
    "slot": "update:B01",
-   "en": "let's not go outside next week",
+   "en": "let's not go outside this evening",
    "hi": "चलो अगले हफ़्ते बाहर न जाएँ।",
    "hin_row": "S0534L01U03",
-   "known": null,
+   "known": "संध्याकाळी आपण बाहेर जाऊ नको",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "let's not go outside next week"
   },
   {
    "lego": "S0534L02",
@@ -7193,12 +7233,13 @@
    "lego_en": "in this dreadful weather",
    "lego_known": "या भयंकर हवामानात",
    "slot": "update:B01",
-   "en": "I'll be ready in this dreadful weather",
+   "en": "I don't want to go out in this dreadful weather",
    "hi": "इस भयानक मौसम में मैं तैयार हो जाऊँगा।",
    "hin_row": "S0534L02B03",
-   "known": null,
+   "known": "मला या भयंकर हवामानात बाहेर जायचं नाही",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready in this dreadful weather"
   },
   {
    "lego": "S0535L01",
@@ -7206,11 +7247,11 @@
    "lego_en": "he wouldn't choose the wrong job",
    "lego_known": "तो चुकीची नोकरी निवडणार नाही",
    "slot": "update:B01",
-   "en": null,
+   "en": "I'm sure he wouldn't choose the wrong job",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला खात्री आहे की तो चुकीची नोकरी निवडणार नाही",
    "gender": null,
    "n": 1
   },
@@ -7220,12 +7261,13 @@
    "lego_en": "he made a promise that",
    "lego_known": "त्याने वचन दिलं की",
    "slot": "update:B01",
-   "en": "he made a promise that he wouldn't choose a story",
+   "en": "he made a promise that he wouldn't be late",
    "hi": "उसने वादा किया कि वह एक कहानी नहीं चुनेगा।",
    "hin_row": "S0535L01B01",
-   "known": null,
+   "known": "त्याने वचन दिलं की त्याला उशीर होणार नाही",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "he made a promise that he wouldn't choose a story"
   },
   {
    "lego": "S0536L01",
@@ -7233,11 +7275,11 @@
    "lego_en": "being crazy",
    "lego_known": "वेडं असणं",
    "slot": "update:B01",
-   "en": null,
+   "en": "I think being crazy was stupid",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला वाटतं वेडं असणं मूर्खपणाचं होतं",
    "gender": null,
    "n": 1
   },
@@ -7250,7 +7292,7 @@
    "en": "I'm sure being crazy was bad",
    "hi": "मुझे यक़ीन है कि पागल होना बुरा है।",
    "hin_row": "S0536L02B02",
-   "known": null,
+   "known": "मला खात्री आहे की वेडं असणं वाईट आहे",
    "gender": null,
    "n": 1
   },
@@ -7263,7 +7305,7 @@
    "en": "I used to think that he's happy",
    "hi": "मुझे लगता था कि वह ख़ुश है।",
    "hin_row": "S0536L01B02",
-   "known": null,
+   "known": "तो खूश आहे असं मला आधी वाटायचं",
    "gender": null,
    "n": 1
   },
@@ -7276,8 +7318,8 @@
    "en": "I used to think that being crazy was bad but I was wrong",
    "hi": "मुझे लगता था कि पागल होना बुरा है लेकिन मैं ग़लत थी।",
    "hin_row": "S0537L01U01",
-   "known": null,
-   "gender": null,
+   "known": "वेडं असणं वाईट आहे असं मला आधी वाटायचं पण मी चुकीचा होतो",
+   "gender": "m",
    "n": 1
   },
   {
@@ -7289,8 +7331,8 @@
    "en": "I said that I don't want to seem as though I don't care",
    "hi": "मैंने कहा था कि मैं ऐसा नहीं दिखाना चाहता कि मुझे परवाह नहीं है।",
    "hin_row": "S0538L02U05",
-   "known": null,
-   "gender": null,
+   "known": "मी म्हणालो की मला पर्वा नाही असं दिसायचं नाहीये",
+   "gender": "m",
    "n": 1
   },
   {
@@ -7299,12 +7341,13 @@
    "lego_en": "but it's getting late",
    "lego_known": "पण उशीर होतोय",
    "slot": "update:B01",
-   "en": "I used to think that being crazy was bad but it's getting late",
+   "en": "I'd like to stay but it's getting late",
    "hi": "मुझे लगता था कि पागल होना बुरा है लेकिन देर हो रही है।",
    "hin_row": "S0539L01U03",
-   "known": null,
+   "known": "मला राहायला आवडेल पण उशीर होतोय",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I used to think that being crazy was bad but it's getting late"
   },
   {
    "lego": "S0540L01",
@@ -7315,7 +7358,7 @@
    "en": "I don't mind at all if you want to leave",
    "hi": "अगर आप जाना चाहते हैं तो मुझे कोई आपत्ति नहीं है।",
    "hin_row": "S0540L01U03",
-   "known": null,
+   "known": "तुम्हाला निघायचं असेल तर माझी अजिबात हरकत नाही",
    "gender": null,
    "n": 1
   },
@@ -7328,7 +7371,7 @@
    "en": "I'm sure I don't mind if you want to leave without the car",
    "hi": "मुझे यक़ीन है कि अगर आप कार के बिना जाना चाहते हैं, तो मुझे कोई आपत्ति नहीं।",
    "hin_row": "S0540L02U04",
-   "known": null,
+   "known": "मला खात्री आहे की तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
    "gender": null,
    "n": 2
   },
@@ -7341,7 +7384,7 @@
    "en": "I'll be ready if you want to leave",
    "hi": "अगर आप जाना चाहते हैं तो मैं तैयार हो जाऊँगी।",
    "hin_row": "S0540L01B03",
-   "known": null,
+   "known": "तुम्हाला निघायचं असेल तर मी तयार असेन",
    "gender": null,
    "n": 1
   },
@@ -7354,7 +7397,7 @@
    "en": "I think that I don't mind if you want to leave without the car",
    "hi": "मुझे लगता है कि अगर आप कार के बिना जाना चाहते हैं, तो मुझे कोई आपत्ति नहीं।",
    "hin_row": "S0540L02U01",
-   "known": null,
+   "known": "मला वाटतं की तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
    "gender": null,
    "n": 1
   },
@@ -7367,7 +7410,7 @@
    "en": "I want to try and breathe slowly",
    "hi": "मैं धीरे-धीरे साँस लेने की कोशिश करना चाहता हूँ।",
    "hin_row": "S0541L03B02",
-   "known": null,
+   "known": "मला हळू श्वास घ्यायचा प्रयत्न करायचा आहे",
    "gender": null,
    "n": 1
   },
@@ -7380,7 +7423,7 @@
    "en": "it's a good idea to help",
    "hi": "मदद करना अच्छा विचार है।",
    "hin_row": "S0541L01B02",
-   "known": null,
+   "known": "मदत करणं ही चांगली कल्पना आहे",
    "gender": null,
    "n": 1
   },
@@ -7390,11 +7433,11 @@
    "lego_en": "you feel angry",
    "lego_known": "तुम्हाला राग येतो",
    "slot": "update:B01",
-   "en": null,
+   "en": "I don't mind if you feel angry",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "तुम्हाला राग येत असेल तर माझी हरकत नाही",
    "gender": null,
    "n": 1
   },
@@ -7407,9 +7450,10 @@
    "en": "whenever he's happy",
    "hi": "जब भी वह ख़ुश हो।",
    "hin_row": "S0542L01B01",
-   "known": null,
+   "known": "जेव्हा जेव्हा तो खूश असतो",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "असतो|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0542L02",
@@ -7420,7 +7464,7 @@
    "en": "whenever life isn't easy",
    "hi": "जब भी ज़िंदगी आसान न हो।",
    "hin_row": "S0542L01B03",
-   "known": null,
+   "known": "जेव्हा जेव्हा आयुष्य सोपं नसतं",
    "gender": null,
    "n": 2
   },
@@ -7430,12 +7474,13 @@
    "lego_en": "she was",
    "lego_known": "ती होती",
    "slot": "update:B01",
-   "en": "she forgot it but she was too busy",
+   "en": "she was too busy yesterday",
    "hi": "वह भूल गई लेकिन वह बहुत व्यस्त थी।",
    "hin_row": "S0464L05B03",
-   "known": null,
+   "known": "ती काल खूप व्यस्त होती",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "she forgot it but she was too busy"
   },
   {
    "lego": "S0544L02",
@@ -7446,7 +7491,7 @@
    "en": "whoever said he's happy",
    "hi": "जिसने भी कहा कि वह ख़ुश है।",
    "hin_row": "S0544L01B02",
-   "known": null,
+   "known": "तो खूश आहे असं ज्याने कोणी म्हटलं",
    "gender": null,
    "n": 1
   },
@@ -7459,7 +7504,7 @@
    "en": "whoever said he's happy was absolutely right",
    "hi": "जिसने भी कहा कि वह ख़ुश है वह बिल्कुल सही था।",
    "hin_row": "S0544L03B02",
-   "known": null,
+   "known": "तो खूश आहे असं ज्याने कोणी म्हटलं तो अगदी बरोबर होता",
    "gender": null,
    "n": 1
   },
@@ -7472,7 +7517,7 @@
    "en": "I'm sure I have got to be quiet",
    "hi": "मुझे यक़ीन है कि मुझे चुप रहना है।",
    "hin_row": "S0549L01U02",
-   "known": null,
+   "known": "मला खात्री आहे की मला गप्प राहावं लागणार आहे",
    "gender": null,
    "n": 1
   },
@@ -7482,11 +7527,11 @@
    "lego_en": "loud",
    "lego_known": "मोठ्या आवाजात",
    "slot": "insert",
-   "en": null,
+   "en": "I don't want loud music",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "मला मोठ्या आवाजात संगीत नको आहे",
    "gender": null,
    "n": 1
   },
@@ -7496,12 +7541,13 @@
    "lego_en": "I wish they wouldn't play",
    "lego_known": "त्यांनी वाजवू नये असं मला वाटतं",
    "slot": "update:B01",
-   "en": "I'm sure I wish they wouldn't play such loud music",
+   "en": "I wish they wouldn't play music at night",
    "hi": "मुझे यक़ीन है कि काश वे इतना तेज़ संगीत न बजाएँ।",
    "hin_row": "S0557L01U01",
-   "known": null,
+   "known": "त्यांनी रात्री संगीत वाजवू नये असं मला वाटतं",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure I wish they wouldn't play such loud music"
   },
   {
    "lego": "S0559L03",
@@ -7509,12 +7555,13 @@
    "lego_en": "through the wood",
    "lego_known": "जंगलातून जाणारी",
    "slot": "update:B01",
-   "en": "I want the path through the wood",
+   "en": "I found the path through the wood",
    "hi": "मैं जंगल से गुज़रने वाला रास्ता चाहता हूँ।",
    "hin_row": "S0559L02B02",
-   "known": null,
+   "known": "मला जंगलातून जाणारी वाट सापडली",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I want the path through the wood"
   },
   {
    "lego": "S0560L02",
@@ -7525,8 +7572,8 @@
    "en": "I'm sure it hurts most when I move my head up and down",
    "hi": "मुझे यक़ीन है कि जब मैं अपना सिर ऊपर-नीचे करती हूँ तो सबसे ज़्यादा दर्द होता है।",
    "hin_row": "S0513L03U02",
-   "known": null,
-   "gender": null,
+   "known": "मला खात्री आहे की मी डोकं वर-खाली हलवतो तेव्हा सगळ्यात जास्त दुखतं",
+   "gender": "m",
    "n": 1
   },
   {
@@ -7538,7 +7585,7 @@
    "en": "I'm sure it goes down to the beach",
    "hi": "मुझे यक़ीन है कि वह समुद्र तट तक जाता है।",
    "hin_row": "S0560L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की ती समुद्रकिनाऱ्यापर्यंत खाली जाते",
    "gender": null,
    "n": 1
   },
@@ -7551,7 +7598,7 @@
    "en": "I'm sure it's a fast car",
    "hi": "मुझे यक़ीन है कि यह तेज़ कार है।",
    "hin_row": "S0561L02U01",
-   "known": null,
+   "known": "मला खात्री आहे की ती वेगवान गाडी आहे",
    "gender": null,
    "n": 1
   },
@@ -7564,7 +7611,7 @@
    "en": "I want to get there safely",
    "hi": "मैं वहाँ सुरक्षित पहुँचना चाहता हूँ।",
    "hin_row": "S0562L03B02",
-   "known": null,
+   "known": "मला तिथे सुरक्षित पोहोचायचं आहे",
    "gender": null,
    "n": 1
   },
@@ -7577,7 +7624,7 @@
    "en": "I wouldn't have been able to help",
    "hi": "मैं मदद करने में सक्षम नहीं होती।",
    "hin_row": "S0563L01B01",
-   "known": null,
+   "known": "मला मदत करणं जमलंच नसतं",
    "gender": null,
    "n": 1
   },
@@ -7590,9 +7637,10 @@
    "en": "I'm trying to keep going",
    "hi": "मैं चलते रहने की कोशिश कर रही हूँ।",
    "hin_row": "S0563L02B03",
-   "known": null,
-   "gender": null,
-   "n": 1
+   "known": "मी पुढे चालू ठेवण्याचा प्रयत्न करतोय",
+   "gender": "m",
+   "n": 1,
+   "known_ok": "ठेवण्याचा|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
   },
   {
    "lego": "S0563L03",
@@ -7603,7 +7651,7 @@
    "en": "I'm sure I wouldn't have been able to keep going any longer",
    "hi": "मुझे यक़ीन है कि मैं और आगे चलने में सक्षम नहीं होता।",
    "hin_row": "S0563L03U01",
-   "known": null,
+   "known": "मला खात्री आहे की मला अजून पुढे चालू ठेवणं जमलंच नसतं",
    "gender": null,
    "n": 1
   },
@@ -7613,12 +7661,13 @@
    "lego_en": "without your help",
    "lego_known": "तुमच्या मदतीशिवाय",
    "slot": "update:B01",
-   "en": "I'll be ready without your help",
+   "en": "I can't finish without your help",
    "hi": "आपकी मदद के बिना मैं तैयार हो जाऊँगा।",
    "hin_row": "S0564L02B02",
-   "known": null,
+   "known": "मी तुमच्या मदतीशिवाय संपवू शकत नाही",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready without your help"
   },
   {
    "lego": "S0565L01",
@@ -7626,12 +7675,13 @@
    "lego_en": "I'd have thought",
    "lego_known": "मी विचार केला असता",
    "slot": "update:B01",
-   "en": "I'm sure I'd have thought",
+   "en": "I'm sure I'd have thought about it",
    "hi": "मुझे यक़ीन है कि मैंने सोचा होता।",
    "hin_row": "S0565L01U01",
-   "known": null,
+   "known": "मला खात्री आहे की मी त्याबद्दल विचार केला असता",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure I'd have thought"
   },
   {
    "lego": "S0566L01",
@@ -7642,7 +7692,7 @@
    "en": "I'd have thought about it if it had been my choice",
    "hi": "अगर यह मेरी पसंद होती तो मैंने इसके बारे में सोचा होता।",
    "hin_row": "S0566L02B02",
-   "known": null,
+   "known": "ती माझी निवड असती तर मी त्याबद्दल विचार केला असता",
    "gender": null,
    "n": 1
   },
@@ -7655,7 +7705,7 @@
    "en": "I'm sure I'd have thought more if it had been my choice",
    "hi": "मुझे यक़ीन है कि अगर यह मेरी पसंद होती तो मैंने और सोचा होता।",
    "hin_row": "S0566L02U02",
-   "known": null,
+   "known": "मला खात्री आहे की ती माझी निवड असती तर मी अजून विचार केला असता",
    "gender": null,
    "n": 1
   },
@@ -7665,12 +7715,13 @@
    "lego_en": "it's been lovely",
    "lego_known": "छान वाटतंय",
    "slot": "update:B01",
-   "en": "I'm sure it's been lovely",
+   "en": "it's been lovely to see you",
    "hi": "मुझे यक़ीन है कि यह अच्छा रहा।",
    "hin_row": "S0567L01U01",
-   "known": null,
+   "known": "तुम्हाला भेटून छान वाटलं",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure it's been lovely"
   },
   {
    "lego": "S0567L02",
@@ -7681,7 +7732,7 @@
    "en": "it's been lovely spending time outdoors",
    "hi": "बाहर समय बिताना अच्छा रहा।",
    "hin_row": "S0567L03B03",
-   "known": null,
+   "known": "बाहेर वेळ घालवणं छान वाटलं",
    "gender": null,
    "n": 1
   },
@@ -7694,7 +7745,7 @@
    "en": "watching the children play outdoors",
    "hi": "बाहर बच्चों को खेलते देखते हुए",
    "hin_row": "S0567L04B01",
-   "known": null,
+   "known": "मुलांना बाहेर खेळताना बघत",
    "gender": null,
    "n": 1
   },
@@ -7704,12 +7755,13 @@
    "lego_en": "improvement",
    "lego_known": "सुधारणा",
    "slot": "update:B01",
-   "en": "I want an improvement",
+   "en": "I want to see an improvement",
    "hi": "मैं सुधार चाहती हूँ।",
    "hin_row": "S0568L02B02",
-   "known": null,
+   "known": "मला सुधारणा बघायची आहे",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I want an improvement"
   },
   {
    "lego": "S0568L02",
@@ -7720,7 +7772,7 @@
    "en": "I'm expecting to see a friend",
    "hi": "मुझे एक दोस्त को देखने की उम्मीद है।",
    "hin_row": "S0568L01B01",
-   "known": null,
+   "known": "मला एका मित्राला भेटायची अपेक्षा आहे",
    "gender": null,
    "n": 1
   },
@@ -7733,7 +7785,7 @@
    "en": "I'll be ready when we meet",
    "hi": "हमारे मिलने पर मैं तैयार हो जाऊँगा।",
    "hin_row": "S0568L03B03",
-   "known": null,
+   "known": "आम्ही भेटू तेव्हा मी तयार असेन",
    "gender": null,
    "n": 1
   },

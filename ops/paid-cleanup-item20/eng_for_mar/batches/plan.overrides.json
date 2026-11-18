@@ -21019,8 +21019,8 @@
      "phrase_role": "component"
     },
     {
-     "known_text": "मला वाटतं तो तुम्हाला आनंदाने मदत करेल",
-     "target_text": "I think he's happy to help you",
+     "known_text": "हो, तो तुम्हाला आनंदाने मदत करेल",
+     "target_text": "yes he's happy to help you",
      "phrase_role": "build"
     },
     {
@@ -22451,8 +22451,8 @@
      "phrase_role": "component"
     },
     {
-     "known_text": "तिला आज एक मेसेज पाठवायचा होता",
-     "target_text": "she wanted to send a message today",
+     "known_text": "त्याला दोन ईमेल पाठवायचे होते",
+     "target_text": "he wanted to send two emails",
      "phrase_role": "build"
     },
     {
@@ -29356,6 +29356,6961 @@
     {
      "known_text": "मला वाटतं तुम्हाला थोडी झोप घ्यायची गरज आहे",
      "target_text": "I think you need to get some sleep",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 502,
+  "phrases": {
+   "502:1": [
+    {
+     "known_text": "उजवीकडे वळा",
+     "target_text": "turn to the right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कृपया उजवीकडे वळा",
+     "target_text": "please turn right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला उजवीकडे वळायचं आहे",
+     "target_text": "I want to turn right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही उजवीकडे वळाल का?",
+     "target_text": "can you turn to the right?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उजवीकडचं दार उघडं आहे",
+     "target_text": "the door on the right is open",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कृपया उजवीकडे जा",
+     "target_text": "please go to the right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं ते उजवीकडे आहे",
+     "target_text": "I think it is on the right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो उजवीकडे वळू शकेल",
+     "target_text": "he could turn right",
+     "phrase_role": "build"
+    }
+   ],
+   "502:2": [
+    {
+     "known_text": "डावीकडे वळला",
+     "target_text": "turned left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती वळली",
+     "target_text": "she turned",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उजवीकडे वळला",
+     "target_text": "turned to the right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती कोपऱ्यावर डावीकडे वळली",
+     "target_text": "she turned left at the corner",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो मागे वळला",
+     "target_text": "he turned around",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती माझ्याकडे बघायला वळली",
+     "target_text": "she turned to look at me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी उजवीकडे वळलो",
+     "target_text": "I turned to the right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती डावीकडे वळली",
+     "target_text": "she turned left",
+     "phrase_role": "use"
+    }
+   ],
+   "502:3": [
+    {
+     "known_text": "गाडीऐवजी",
+     "target_text": "instead of the car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "डावीकडेऐवजी",
+     "target_text": "instead of the left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "डावीकडे वळला उजवीकडे ऐवजी",
+     "target_text": "turned left instead of right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती तिच्या भावाऐवजी आली",
+     "target_text": "she came instead of her brother",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही गाडी चालवण्याऐवजी चालत जाऊ शकता",
+     "target_text": "you could walk instead of drive",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो उजवीकडे ऐवजी डावीकडे वळला",
+     "target_text": "he turned left instead of right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी डावीकडेऐवजी उजवीकडे वळलो",
+     "target_text": "I turned right instead of left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो डावीऐवजी उजवीकडे वळला",
+     "target_text": "he turned to the right instead of the left",
+     "phrase_role": "use"
+    }
+   ],
+   "502:4": [
+    {
+     "known_text": "ती हरवली",
+     "target_text": "she got lost",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "जवळजवळ हरवला",
+     "target_text": "almost got lost",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "शहरात हरवला",
+     "target_text": "got lost in the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी जवळजवळ हरवलो",
+     "target_text": "I almost got lost",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो घरी जाताना हरवला",
+     "target_text": "he got lost on the way home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही शहरात हरवलो",
+     "target_text": "we got lost in the city",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी वाटेत जवळजवळ हरवलो",
+     "target_text": "I almost got lost on the way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती उजवीकडे वळण्याऐवजी डावीकडे वळली म्हणून ती जवळजवळ हरवली",
+     "target_text": "she almost got lost because she turned left instead of right",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 503,
+  "phrases": {
+   "503:1": [
+    {
+     "known_text": "मला याचा तिटकारा",
+     "target_text": "I hate it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे मला अजिबात आवडत नाही",
+     "target_text": "I hate this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाट बघण्याचा तिरस्कार",
+     "target_text": "I hate waiting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला त्याचा खरंच तिरस्कार आहे",
+     "target_text": "I really hate it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बसची वाट बघण्याचा खरंच तिरस्कार आहे",
+     "target_text": "I really hate waiting for the bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याचा तिटकारा",
+     "target_text": "I hate that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला हे खरंच आवडत नाही",
+     "target_text": "I really hate this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला दुपारभर वाट बघण्याचा तिरस्कार आहे",
+     "target_text": "I hate waiting all afternoon",
+     "phrase_role": "use"
+    }
+   ],
+   "503:2": [
+    {
+     "known_text": "मला खात्री आहे की मला त्रास द्यायला आवडत नाही",
+     "target_text": "I'm sure I hate making trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला त्रास द्यायला आवडत नाही",
+     "target_text": "I hate making trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्रास न देता",
+     "target_text": "without making trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला काम करताना त्रास द्यायला आवडत नाही",
+     "target_text": "I hate making trouble at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते घरी त्रास न देता निघून गेले",
+     "target_text": "they went home without making trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुमच्यासाठी त्रास निर्माण करायला आवडत नाही",
+     "target_text": "I hate making trouble for you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो पुन्हा त्रास देत होता",
+     "target_text": "he was making trouble again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कृपया सगळ्यांना त्रास देणं थांबवा",
+     "target_text": "please stop making trouble for everyone",
+     "phrase_role": "use"
+    }
+   ],
+   "503:3": [
+    {
+     "known_text": "ती माझी आहे हे खरं आहे",
+     "target_text": "it's true that one's mine",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ती माझी आहे",
+     "target_text": "I think that one's mine",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कदाचित ती माझी आहे",
+     "target_text": "maybe that one's mine",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खात्री आहे की ती माझी आहे",
+     "target_text": "I'm sure that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही पण ती माझी आहे",
+     "target_text": "I'm not sure but that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खरंच वाटतं की ती माझी आहे",
+     "target_text": "I really think that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती म्हणाली की ती माझी आहे",
+     "target_text": "she said that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्रास द्यायला आवडत नाही पण ती माझी आहे",
+     "target_text": "I hate making trouble but that one's mine",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 505,
+  "phrases": {
+   "505:1": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मागे",
+     "target_text": "behind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राहणार नाही",
+     "target_text": "won't stay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी मागे राहणार नाही अशी मला आशा आहे",
+     "target_text": "i hope i don't get left behind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज मी मागे राहणार नाही",
+     "target_text": "today I don't get left behind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता मी मागे राहणार नाही",
+     "target_text": "now I don't get left behind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी आज मागे राहणार नाही",
+     "target_text": "I don't get left behind today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी सहज मागे राहणार नाही",
+     "target_text": "I don't get left behind easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी यावेळी मागे राहणार नाही",
+     "target_text": "I don't get left behind this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी कामावर मागे राहणार नाही",
+     "target_text": "I don't get left behind at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी जगात मागे राहणार नाही",
+     "target_text": "I don't get left behind in the world",
+     "phrase_role": "use"
+    }
+   ],
+   "505:2": [
+    {
+     "known_text": "म्हणजे मी मागे राहणार नाही",
+     "target_text": "so that I don't get left behind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी पळणार आहे म्हणजे",
+     "target_text": "I'm going to run so that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पटकन पळणार आहे म्हणजे",
+     "target_text": "going to run quickly so that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी पटकन पळणार आहे म्हणजे मी मागे राहणार नाही",
+     "target_text": "I'm going to run quickly so that I don't get left behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आत्ता पळणार आहे म्हणजे मी मागे राहणार नाही",
+     "target_text": "I'm going to run now so that I don't get left behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी घरी पळणार आहे म्हणजे मी मागे राहणार नाही",
+     "target_text": "I'm going to run home so that I don't get left behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी लवकरच पळणार आहे म्हणजे मी मागे राहणार नाही",
+     "target_text": "I'm going to run soon so that I don't get left behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी उद्या पळणार आहे म्हणजे मी मागे राहणार नाही",
+     "target_text": "I'm going to run tomorrow so that I don't get left behind",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 506,
+  "phrases": {
+   "506:1": [
+    {
+     "known_text": "इथे",
+     "target_text": "here",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जवळपास",
+     "target_text": "around",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की मी इथे जवळपास राहायचो",
+     "target_text": "I'm sure I used to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे जवळपास अनेक ठिकाणं",
+     "target_text": "many places around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे जवळपास पळणार आहे",
+     "target_text": "going to run around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं मी इथे जवळपास पळणार आहे",
+     "target_text": "I think I'm going to run around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी पटकन इथे जवळपास पळणार आहे",
+     "target_text": "I'm going to run quickly around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी उद्या इथे जवळपास पळणार आहे",
+     "target_text": "I'm going to run around here tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी इथे जवळपास पळणार आहे कारण मला ते आवडतं",
+     "target_text": "I'm going to run around here because I like it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुमच्याशी इथे जवळपास पळणार आहे",
+     "target_text": "I'm going to run around here with you",
+     "phrase_role": "use"
+    }
+   ],
+   "506:2": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राहायचो",
+     "target_text": "used to live",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी इथे जवळपास राहायचो हे खरं आहे",
+     "target_text": "it's true I used to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पूर्वी मी राहायचो",
+     "target_text": "earlier I used to live",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी तुमच्याशी राहायचो",
+     "target_text": "I used to live with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी पूर्वी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी एकदा इथे जवळपास राहायचो",
+     "target_text": "I used to live around here once",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुमच्याशी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी पूर्वी तुमच्याशी राहायचो",
+     "target_text": "I used to live with you earlier",
+     "phrase_role": "use"
+    }
+   ],
+   "506:3": [
+    {
+     "known_text": "काही",
+     "target_text": "a few",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी काही वर्षांपूर्वी शहरात राहायचो",
+     "target_text": "I used to live in the city years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी काही वर्षांपूर्वी राहायचो",
+     "target_text": "I used to live years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काही वर्षांपूर्वी इथे जवळपास",
+     "target_text": "around here years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी काही वर्षांपूर्वी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काही वर्षांपूर्वी तुमच्याशी राहायचो",
+     "target_text": "I used to live with you years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काही वर्षांपूर्वी इथे जवळपास तुमच्याशी राहायचो",
+     "target_text": "I used to live around here with you years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काही वर्षांपूर्वी एकदा इथे जवळपास राहायचो",
+     "target_text": "I used to live around here once years ago",
+     "phrase_role": "use"
+    }
+   ],
+   "506:4": [
+    {
+     "known_text": "आम्ही",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दुसरीकडे",
+     "target_text": "elsewhere",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राहायला",
+     "target_text": "to move",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जाण्यापूर्वी",
+     "target_text": "before",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी ती जवळजवळ हरवली",
+     "target_text": "she almost got lost before we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी राहायचो आम्ही दुसरीकडे राहायला जाण्यापूर्वी",
+     "target_text": "I used to live before we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे जवळपास आम्ही दुसरीकडे राहायला जाण्यापूर्वी",
+     "target_text": "around here before we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी मी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here before we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी मी काही वर्षांपूर्वी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here years ago before we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी मी तुमच्याशी राहायचो",
+     "target_text": "I used to live with you before we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी मी पूर्वी इथे जवळपास राहायचो",
+     "target_text": "I used to live around here earlier before we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही दुसरीकडे राहायला जाण्यापूर्वी मी एकदा इथे जवळपास राहायचो",
+     "target_text": "I used to live around here once before we moved",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 507,
+  "phrases": {
+   "507:1": [
+    {
+     "known_text": "आम्ही",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "शहरात",
+     "target_text": "the city",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राहायला गेलो",
+     "target_text": "moved",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की आम्ही शहरात राहायला गेलो",
+     "target_text": "I'm sure we moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पूर्वी आम्ही शहरात राहायला गेलो",
+     "target_text": "earlier we moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही एकदा शहरात राहायला गेलो",
+     "target_text": "we once moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही काही वर्षांपूर्वी शहरात राहायला गेलो",
+     "target_text": "we moved to the city years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही तुमच्याशी शहरात राहायला गेलो",
+     "target_text": "we moved to the city with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही आधीच शहरात राहायला गेलो",
+     "target_text": "we already moved to the city",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही पूर्वी तुमच्याशी शहरात राहायला गेलो",
+     "target_text": "we moved to the city with you earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही पूर्वीच्या काळी शहरात राहायला गेलो",
+     "target_text": "we moved to the city in the past",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 508,
+  "phrases": {
+   "508:1": [
+    {
+     "known_text": "तुम्ही",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कसे",
+     "target_text": "how",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पैसे",
+     "target_text": "money",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "देणार",
+     "target_text": "going to give",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही कसे पैसे देणार हे तुम्हाला माहित आहे का?",
+     "target_text": "do you know how you're going to pay?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तुम्ही कसे पैसे देणार",
+     "target_text": "how you're going to pay today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही उद्या कसे पैसे देणार",
+     "target_text": "how you're going to pay tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खात्री नाही तुम्ही कसे पैसे देणार",
+     "target_text": "I'm not sure how you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही की तुम्ही आज कसे पैसे देणार",
+     "target_text": "I'm not sure how you're going to pay today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही तुम्ही कसे पैसे देणार",
+     "target_text": "I don't know how you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही कसे पैसे देणार ते सांगा",
+     "target_text": "tell me how you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही तुम्ही उद्या कसे पैसे देणार",
+     "target_text": "I'm not sure how you're going to pay tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "508:2": [
+    {
+     "known_text": "याची",
+     "target_text": "about this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "काळजी",
+     "target_text": "worry",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "करण्यात",
+     "target_text": "in doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "काही अर्थ नाही",
+     "target_text": "there's no point",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about this today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about this now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही कसे पैसे देणार याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about how you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आत्ता तुम्ही कसे पैसे देणार याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about how you're going to pay now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज तुम्ही कसे पैसे देणार याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about how you're going to pay today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या तुम्ही कसे पैसे देणार याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about how you're going to pay tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "लवकरच तुम्ही कसे पैसे देणार याची काळजी करण्यात काही अर्थ नाही",
+     "target_text": "there's no point worrying about how you're going to pay soon",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 509,
+  "phrases": {
+   "509:1": [
+    {
+     "known_text": "तुम्ही",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पैसे",
+     "target_text": "money",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "देणार आहात",
+     "target_text": "going to pay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही कसे पैसे देणार हे मला माहित नव्हतं",
+     "target_text": "I didn't know how you're going to pay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही मला पैसे देणार आहात",
+     "target_text": "you're going to pay me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही आज मला पैसे देणार आहात",
+     "target_text": "you're going to pay me today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही आज पैसे देणार आहात",
+     "target_text": "you're going to pay today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही उद्या पैसे देणार आहात",
+     "target_text": "you're going to pay tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही लवकरच पैसे देणार आहात",
+     "target_text": "you're going to pay soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही आत्ता पैसे देणार आहात",
+     "target_text": "you're going to pay now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही मला उद्या पैसे देणार आहात",
+     "target_text": "you're going to pay me tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "509:2": [
+    {
+     "known_text": "नवीन",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पलंग",
+     "target_text": "bed",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "साठी",
+     "target_text": "for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी नवीन पलंगाची वाट पाहतोय",
+     "target_text": "I'm waiting for a new bed",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "नवीन पलंगासाठी पैसे देणार आहात",
+     "target_text": "going to pay for a new bed",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज नवीन पलंगासाठी",
+     "target_text": "for a new bed today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही नवीन पलंगासाठी पैसे देणार आहात",
+     "target_text": "you're going to pay for a new bed",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही आज नवीन पलंगासाठी पैसे देणार आहात",
+     "target_text": "you're going to pay for a new bed today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही उद्या नवीन पलंगासाठी पैसे देणार आहात",
+     "target_text": "you're going to pay for a new bed tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही लवकरच नवीन पलंगासाठी पैसे देणार आहात",
+     "target_text": "you're going to pay for a new bed soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही मला नवीन पलंगासाठी पैसे देणार आहात",
+     "target_text": "you're going to pay me for a new bed",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 510,
+  "phrases": {
+   "510:1": [
+    {
+     "known_text": "गाडी",
+     "target_text": "the car",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पार्क करायला",
+     "target_text": "to park",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला गाडी पार्क करायची गरज आहे",
+     "target_text": "I need to park the car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे गाडी पार्क करायला",
+     "target_text": "to park the car here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज गाडी पार्क करायला",
+     "target_text": "to park the car today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला गाडी पार्क करायला आवडेल",
+     "target_text": "I'd like to park the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज गाडी पार्क करायला आवडेल",
+     "target_text": "I'd like to park the car today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे गाडी पार्क करायला आवडेल",
+     "target_text": "I'd like to park the car here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला उद्या गाडी पार्क करायला आवडेल",
+     "target_text": "I'd like to park the car tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला लवकरच गाडी पार्क करायला आवडेल",
+     "target_text": "I'd like to park the car soon",
+     "phrase_role": "use"
+    }
+   ],
+   "510:2": [
+    {
+     "known_text": "कुठेतरी",
+     "target_text": "somewhere",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सुरक्षित",
+     "target_text": "safe",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जागा",
+     "target_text": "place",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "शोधायला",
+     "target_text": "to look for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला कुठेतरी सुरक्षित जागा शोधायची गरज आहे",
+     "target_text": "I need to look for somewhere safe",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गाडी पार्क करायला कुठेतरी सुरक्षित जागा शोधायला",
+     "target_text": "to look for somewhere safe to park the car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज कुठेतरी सुरक्षित जागा शोधायला",
+     "target_text": "to look for somewhere safe today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला कुठेतरी सुरक्षित जागा शोधायला आवडेल",
+     "target_text": "I'd like to look for somewhere safe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला गाडी पार्क करायला कुठेतरी सुरक्षित जागा शोधायला आवडेल",
+     "target_text": "I'd like to look for somewhere safe to park the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज कुठेतरी सुरक्षित जागा शोधायला आवडेल",
+     "target_text": "I'd like to look for somewhere safe today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला उद्या कुठेतरी सुरक्षित जागा शोधायला आवडेल",
+     "target_text": "I'd like to look for somewhere safe tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे कुठेतरी सुरक्षित जागा शोधायला आवडेल",
+     "target_text": "I'd like to look for somewhere safe here",
+     "phrase_role": "use"
+    }
+   ],
+   "510:3": [
+    {
+     "known_text": "ती",
+     "target_text": "she",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "गेली आहे",
+     "target_text": "has gone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ती तिच्या भावाला शोधायला गेली आहे",
+     "target_text": "she's gone to look for her brother",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती घरी गेली आहे",
+     "target_text": "she's gone home",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती आज गेली आहे",
+     "target_text": "she's gone today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती कुठेतरी सुरक्षित जागा शोधायला गेली आहे",
+     "target_text": "she's gone to look for somewhere safe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती गाडी पार्क करायला कुठेतरी सुरक्षित जागा शोधायला गेली आहे",
+     "target_text": "she's gone to look for somewhere safe to park the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती आत्ता कुठेतरी सुरक्षित जागा शोधायला गेली आहे",
+     "target_text": "she's gone to look for somewhere safe now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती गाडी पार्क करायला गेली आहे",
+     "target_text": "she's gone to park the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती आज कुठेतरी सुरक्षित जागा शोधायला गेली आहे",
+     "target_text": "she's gone to look for somewhere safe today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती घरून गेली आहे",
+     "target_text": "she's gone from home",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 511,
+  "phrases": {
+   "511:1": [
+    {
+     "known_text": "बातमी",
+     "target_text": "the news",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आजची बातमी",
+     "target_text": "the news today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बातमी सांगा",
+     "target_text": "tell the news",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला बातमी सांगा",
+     "target_text": "tell me the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बातमी माहित आहे",
+     "target_text": "I know the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बातमी माहित नाही",
+     "target_text": "I don't know the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज बातमी सांगा",
+     "target_text": "tell me the news today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज बातमी माहित आहे",
+     "target_text": "I know the news today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी थोडं अधिक हळू सांगा",
+     "target_text": "tell the news a little more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी काय आहे?",
+     "target_text": "What's the news?",
+     "phrase_role": "build"
+    }
+   ],
+   "511:2": [
+    {
+     "known_text": "मला ऑफिसला पोहोचायची गरज आहे",
+     "target_text": "I need to reach the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "घरी पोहोचायला",
+     "target_text": "to reach home",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज पोहोचायला",
+     "target_text": "to reach today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला घरी पोहोचायला आवडेल",
+     "target_text": "I'd like to reach home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज घरी पोहोचायला आवडेल",
+     "target_text": "I'd like to reach home today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला लवकरच पोहोचायला आवडेल",
+     "target_text": "I'd like to reach soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला उद्या घरी पोहोचायला आवडेल",
+     "target_text": "I'd like to reach home tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पटकन पोहोचायला आवडेल",
+     "target_text": "I'd like to reach quickly",
+     "phrase_role": "use"
+    }
+   ],
+   "511:3": [
+    {
+     "known_text": "ऑफिसमधल्या",
+     "target_text": "in the office",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सगळ्यांपर्यंत",
+     "target_text": "everyone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी ऑफिसमधल्या सगळ्यांना ओळखतो",
+     "target_text": "I know everyone in the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला",
+     "target_text": "to reach everyone in the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज ऑफिसमधल्या सगळ्यांपर्यंत",
+     "target_text": "everyone in the office today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला आवडेल",
+     "target_text": "I'd like to reach everyone in the office",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ऑफिसमधल्या सगळ्यांपर्यंत बातमी सांगायची आहे",
+     "target_text": "I want to tell the news to everyone in the office",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला आवडेल",
+     "target_text": "I'd like to reach everyone in the office today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला उद्या ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला आवडेल",
+     "target_text": "I'd like to reach everyone in the office tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आशा आहे की मला ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला जमेल",
+     "target_text": "I hope I'll be able to reach everyone in the office.",
+     "phrase_role": "use"
+    }
+   ],
+   "511:4": [
+    {
+     "known_text": "कित्येक",
+     "target_text": "several",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तास",
+     "target_text": "hours",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "लागले",
+     "target_text": "took",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की बातमीला कित्येक तास लागले",
+     "target_text": "I'm sure the news took several hours",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बातमी पोहोचायला कित्येक तास लागले",
+     "target_text": "the news took several hours to reach",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज कित्येक तास लागले",
+     "target_text": "took several hours today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बातमी ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला कित्येक तास लागले",
+     "target_text": "the news took several hours to reach everyone in the office",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी पोहोचायला आज कित्येक तास लागले",
+     "target_text": "the news took several hours to reach today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "घरी पोहोचायला कित्येक तास लागले",
+     "target_text": "it took several hours to reach home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ऑफिसमधल्या सगळ्यांपर्यंत पोहोचायला कित्येक तास लागले",
+     "target_text": "it took several hours to reach everyone in the office",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी सांगायला कित्येक तास लागले",
+     "target_text": "it took several hours to tell the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री आहे की ऑफिसमधल्या सगळ्यांपर्यंत बातमी पोहोचायला कित्येक तास लागले",
+     "target_text": "I'm sure the news took several hours to reach everyone in the office.",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 512,
+  "phrases": {
+   "512:1": [
+    {
+     "known_text": "तुम्ही",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दार",
+     "target_text": "door",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "उघडं",
+     "target_text": "open",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "धराल का",
+     "target_text": "can you hold",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही माझ्या आईसाठी दार उघडं धराल का?",
+     "target_text": "can you hold the door open for my mother?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open for me?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open tomorrow?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "लवकरच तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open soon?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पटकन तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open quickly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे तुम्ही दार उघडं धराल का?",
+     "target_text": "can you hold the door open here?",
+     "phrase_role": "use"
+    }
+   ],
+   "512:2": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चाव्या",
+     "target_text": "keys",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आणेपर्यंत",
+     "target_text": "until I fetch",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी चाव्या आणेपर्यंत तुम्ही इथे वाट पाहाल का?",
+     "target_text": "can you wait here while I fetch the keys?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज मी चाव्या आणेपर्यंत",
+     "target_text": "while I fetch the keys today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या मी चाव्या आणेपर्यंत",
+     "target_text": "while I fetch the keys tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही दार उघडं धराल का मी चाव्या आणेपर्यंत?",
+     "target_text": "can you hold the door open while I fetch the keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आत्ता तुम्ही दार उघडं धराल का मी चाव्या आणेपर्यंत?",
+     "target_text": "can you hold the door open now while I fetch the keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्ही दार उघडं धराल का मी चाव्या आणेपर्यंत?",
+     "target_text": "can you hold the door open for me while I fetch the keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज तुम्ही दार उघडं धराल का मी चाव्या आणेपर्यंत?",
+     "target_text": "can you hold the door open today while I fetch the keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या तुम्ही दार उघडं धराल का मी चाव्या आणेपर्यंत?",
+     "target_text": "can you hold the door open tomorrow while I fetch the keys?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 513,
+  "phrases": {
+   "513:1": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "डोकं",
+     "target_text": "my head",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खाली",
+     "target_text": "up and down",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "हलवतो",
+     "target_text": "move",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता मी डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज मी डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी पटकन डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी सहज डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी उद्या डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी यावेळी डोकं वर-खाली हलवतो",
+     "target_text": "I move my head up and down this time",
+     "phrase_role": "use"
+    }
+   ],
+   "513:2": [
+    {
+     "known_text": "सगळ्यात जास्त",
+     "target_text": "most",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दुखतं",
+     "target_text": "it hurts",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की सगळ्यात जास्त दुखतं",
+     "target_text": "I'm sure it hurts most",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कामावर सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "513:3": [
+    {
+     "known_text": "मी डोकं वर-खाली हलवतो तेव्हा",
+     "target_text": "when I move my head up and down",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most when",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी डोकं वर-खाली हलवतो तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most when I move my head up and down",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज डोकं वर-खाली हलवतो तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most when I move my head up and down today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आत्ता डोकं वर-खाली हलवतो तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most when I move my head up and down now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी डोकं वर-खाली हलवतो तेव्हा इथे सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most here when I move my head up and down",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी पटकन डोकं वर-खाली हलवतो तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most when I move my head up and down quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी चालतो तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most when I walk",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 514,
+  "phrases": {
+   "514:1": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सापडलं",
+     "target_text": "found",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला टेबलावर पैसे सापडले",
+     "target_text": "I found the money on the table",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे मला सापडलं",
+     "target_text": "I found here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज मला सापडलं",
+     "target_text": "I found today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला काहीतरी सापडलं",
+     "target_text": "I found something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज काहीतरी सापडलं",
+     "target_text": "I found something today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे काहीतरी सापडलं",
+     "target_text": "I found something here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी काहीतरी सापडलं",
+     "target_text": "I found something this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला नवीन दृष्टिकोन सापडला",
+     "target_text": "I found a new approach",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला दोन मुली सापडल्या",
+     "target_text": "I found the two girls",
+     "phrase_role": "use"
+    }
+   ],
+   "514:2": [
+    {
+     "known_text": "अगदी",
+     "target_text": "just",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "योग्य",
+     "target_text": "perfect",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "घर",
+     "target_text": "house",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "अगदी योग्य घर",
+     "target_text": "the perfect house",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे अगदी योग्य घर",
+     "target_text": "the perfect house here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज अगदी योग्य घर",
+     "target_text": "the perfect house today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अगदी योग्य घर आवडेल",
+     "target_text": "I'd like the perfect house",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही अगदी योग्य घर शोधताय का?",
+     "target_text": "Are you looking for the perfect house?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही अगदी योग्य घर शोधताय",
+     "target_text": "you're looking for the perfect house",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही अगदी योग्य घर का शोधताय?",
+     "target_text": "Why are you looking for the perfect house?",
+     "phrase_role": "use"
+    }
+   ],
+   "514:3": [
+    {
+     "known_text": "पहिल्या",
+     "target_text": "first",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दिवशी",
+     "target_text": "day",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पहिल्याच दिवशी",
+     "target_text": "on the first day",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला पहिल्याच दिवशी सापडलं",
+     "target_text": "I found on the first day",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पहिल्याच दिवशी घर",
+     "target_text": "a house on the first day",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज पहिल्याच दिवशी",
+     "target_text": "on the first day today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला पहिल्याच दिवशी अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पहिल्याच दिवशी घर सापडलं",
+     "target_text": "I found a house on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पहिल्याच दिवशी काहीतरी सापडलं",
+     "target_text": "I found something on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पहिल्याच दिवशी सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पहिल्याच दिवशी अगदी योग्य घर आवडेल",
+     "target_text": "I'd like the perfect house on the first day",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 515,
+  "phrases": {
+   "515:1": [
+    {
+     "known_text": "पहिल्या",
+     "target_text": "first",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दिवशी",
+     "target_text": "day",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी नवीन वर्षाच्या पहिल्या दिवशी तयार असेन",
+     "target_text": "I'll be ready on the first day of the new year",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज पहिल्या दिवशी",
+     "target_text": "on the first day today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे पहिल्या दिवशी",
+     "target_text": "on the first day here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला पहिल्या दिवशी अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पहिल्या दिवशी सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पहिल्या दिवशी काहीतरी सापडलं",
+     "target_text": "I found something on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी पहिल्या दिवशी पळणार आहे",
+     "target_text": "I'm going to run on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पहिल्या दिवशी घर सापडलं",
+     "target_text": "I found a house on the first day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला पहिल्या दिवशी बुकिंग करावं लागेल",
+     "target_text": "We have to book on the first day.",
+     "phrase_role": "use"
+    }
+   ],
+   "515:2": [
+    {
+     "known_text": "नवीन",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वर्ष",
+     "target_text": "year",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "च्या",
+     "target_text": "of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "नवीन वर्षाच्या पहिल्या दिवशी मला उशीर होईल",
+     "target_text": "I'm going to be late on the first day of the new year",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "नवीन वर्षाच्या पहिल्या दिवशी",
+     "target_text": "on the first day of the new year",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज नवीन वर्षाच्या",
+     "target_text": "of the new year today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला नवीन वर्षाच्या पहिल्या दिवशी अगदी योग्य घर सापडलं",
+     "target_text": "I found the perfect house on the first day of the new year",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "नवीन वर्षाच्या पहिल्या दिवशी सगळ्यात जास्त दुखतं",
+     "target_text": "it hurts most on the first day of the new year",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला नवीन वर्षाच्या पहिल्या दिवशी काहीतरी सापडलं",
+     "target_text": "I found something on the first day of the new year",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी नवीन वर्षाच्या पहिल्या दिवशी पळणार आहे",
+     "target_text": "I'm going to run on the first day of the new year",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला नवीन वर्षाच्या पहिल्या दिवशी घर सापडलं",
+     "target_text": "I found a house on the first day of the new year",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 516,
+  "phrases": {
+   "516:1": [
+    {
+     "known_text": "ते",
+     "target_text": "they",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दोघेही",
+     "target_text": "both",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आले",
+     "target_text": "came",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की ते दोघेही आले",
+     "target_text": "I'm sure they both came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही लवकरच आले",
+     "target_text": "they both came soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही आत्ता आले",
+     "target_text": "they both came now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही आज आले",
+     "target_text": "they both came today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही इथे आले",
+     "target_text": "they both came here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही घरी आले",
+     "target_text": "they both came home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही यावेळी आले",
+     "target_text": "they both came this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही पटकन आले",
+     "target_text": "they both came quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही शोला आले",
+     "target_text": "they both came to the show",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही दुसऱ्या दिवशी आले",
+     "target_text": "they both came the second day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो म्हणाला की ते दोघेही आले",
+     "target_text": "He said that they both came.",
+     "phrase_role": "use"
+    }
+   ],
+   "516:2": [
+    {
+     "known_text": "स्वतःहून आले",
+     "target_text": "came on their own",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही काही वर्षांपूर्वी स्वतःहून आले",
+     "target_text": "they both came on their own years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही स्वतःहून",
+     "target_text": "they both on their own",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही स्वतःहून आले",
+     "target_text": "they both came on their own",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही आज स्वतःहून आले",
+     "target_text": "they both came on their own today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही इथे स्वतःहून आले",
+     "target_text": "they both came on their own here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही स्वतःहून घरी आले",
+     "target_text": "they both came home on their own",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही पटकन स्वतःहून आले",
+     "target_text": "they both came on their own quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री आहे की ते दोघेही स्वतःहून आले",
+     "target_text": "I'm sure they both came on their own.",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 517,
+  "phrases": {
+   "517:1": [
+    {
+     "known_text": "ते",
+     "target_text": "they",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "निघून गेले",
+     "target_text": "left",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की ते निघून गेले",
+     "target_text": "I'm sure they left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आत्ता निघून गेले",
+     "target_text": "they left now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते सहज निघून गेले",
+     "target_text": "they left easily",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आज निघून गेले",
+     "target_text": "they left today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते इथे निघून गेले",
+     "target_text": "they left here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते पटकन निघून गेले",
+     "target_text": "they left quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते लवकरच निघून गेले",
+     "target_text": "they left soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते यावेळी निघून गेले",
+     "target_text": "they left this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते सहज निघून गेले आणि ते आश्चर्यच होतं",
+     "target_text": "they left easily and that was a surprise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते एका तासापेक्षा कमी वेळात निघून गेले",
+     "target_text": "they left in less than an hour",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते नवीन आयुष्यासाठी निघून गेले",
+     "target_text": "they left for a new life",
+     "phrase_role": "use"
+    }
+   ],
+   "517:2": [
+    {
+     "known_text": "एकमेकां",
+     "target_text": "each other",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बरोबर",
+     "target_text": "with",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की ते एकमेकांबरोबर निघून गेले",
+     "target_text": "I'm sure they left with each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "एकमेकांबरोबर निघून गेले",
+     "target_text": "left with each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते एकमेकांबरोबर",
+     "target_text": "they with each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते एकमेकांबरोबर निघून गेले",
+     "target_text": "they left with each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते आज एकमेकांबरोबर निघून गेले",
+     "target_text": "they left with each other today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही एकमेकांबरोबर आले",
+     "target_text": "they both came with each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते पटकन एकमेकांबरोबर निघून गेले",
+     "target_text": "they left with each other quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते एकमेकांबरोबर घरी आले",
+     "target_text": "they came home with each other",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 518,
+  "phrases": {
+   "518:1": [
+    {
+     "known_text": "अगदी",
+     "target_text": "exactly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तीच",
+     "target_text": "the same",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "समस्या",
+     "target_text": "problem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आमच्यापुढे अगदी तीच समस्या आहे",
+     "target_text": "we have exactly the same problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज अगदी तीच समस्या",
+     "target_text": "exactly the same problem today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे अगदी तीच समस्या",
+     "target_text": "exactly the same problem here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला अगदी तीच समस्या आहे",
+     "target_text": "I have exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला अगदी तीच समस्या आहे",
+     "target_text": "you have exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज अगदी तीच समस्या आहे",
+     "target_text": "I have exactly the same problem today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी अगदी तीच समस्या आहे",
+     "target_text": "I have exactly the same problem this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कामावर अगदी तीच समस्या आहे",
+     "target_text": "I have exactly the same problem at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला विचाराल तर ते अगदी तीच समस्या आहे",
+     "target_text": "If you ask me, it's exactly the same problem.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "अगदी तीच समस्या आहे हे मला माहित असतं तर मी म्हटलं नसतं",
+     "target_text": "If I had known it was exactly the same problem, I wouldn't have said it.",
+     "phrase_role": "use"
+    }
+   ],
+   "518:2": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कल्पना",
+     "target_text": "imagine",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "करू शकत नव्हतो",
+     "target_text": "couldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी नवीन आयुष्याची कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine a new life",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी आज कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इथे कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी काहीतरी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी अगदी तीच समस्या कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज काहीतरी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine something today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी बातमी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी यावेळी काहीतरी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine something this time",
+     "phrase_role": "use"
+    }
+   ],
+   "518:3": [
+    {
+     "known_text": "माझ्यापुढे",
+     "target_text": "myself",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असेल",
+     "target_text": "would have",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "अशी",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की माझ्यापुढे अगदी तीच समस्या असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I'm sure I couldn't imagine myself having exactly the same problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माझ्यापुढे काहीतरी असेल अशी",
+     "target_text": "myself having something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माझ्यापुढे अगदी तीच समस्या असेल अशी",
+     "target_text": "myself having exactly the same problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माझ्यापुढे अगदी तीच समस्या असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine myself having exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्यापुढे काहीतरी असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine myself having something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्यापुढे आज अगदी तीच समस्या असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine myself having exactly the same problem today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्यापुढे बातमी असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine myself having the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्यापुढे यावेळी काहीतरी असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "target_text": "I couldn't imagine myself having something this time",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 519,
+  "phrases": {
+   "519:1": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पाहिलं नाही",
+     "target_text": "haven't seen",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी सिनेमा पाहिला नाही",
+     "target_text": "I haven't seen the film",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी आज पाहिलं नाही",
+     "target_text": "I haven't seen today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इथे पाहिलं नाही",
+     "target_text": "I haven't seen here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी बातमी पाहिलं नाही",
+     "target_text": "I haven't seen the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी घर पाहिलं नाही",
+     "target_text": "I haven't seen the house",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी अगदी योग्य घर पाहिलं नाही",
+     "target_text": "I haven't seen the perfect house",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज बातमी पाहिलं नाही",
+     "target_text": "I haven't seen the news today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी यावेळी घर पाहिलं नाही",
+     "target_text": "I haven't seen the house this time",
+     "phrase_role": "use"
+    }
+   ],
+   "519:2": [
+    {
+     "known_text": "त्यांचं",
+     "target_text": "their",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "नवीन",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बाळ",
+     "target_text": "baby",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ते कदाचित त्यांचं नवीन बाळ असेल",
+     "target_text": "it might be their new baby",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज त्यांचं नवीन बाळ",
+     "target_text": "their new baby today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे त्यांचं नवीन बाळ",
+     "target_text": "their new baby here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी त्यांचं नवीन बाळ पाहिलं नाही",
+     "target_text": "I haven't seen their new baby",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज त्यांचं नवीन बाळ पाहिलं नाही",
+     "target_text": "I haven't seen their new baby today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी इथे त्यांचं नवीन बाळ पाहिलं नाही",
+     "target_text": "I haven't seen their new baby here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी यावेळी त्यांचं नवीन बाळ पाहिलं नाही",
+     "target_text": "I haven't seen their new baby this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं मी त्यांचं नवीन बाळ पाहिलं नाही",
+     "target_text": "I think I haven't seen their new baby",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी त्यांचं नवीन बाळ अजून पाहिलं नाही कारण मला वेळ नव्हता",
+     "target_text": "I haven't seen their new baby yet because I didn't have time",
+     "phrase_role": "use"
+    }
+   ],
+   "519:3": [
+    {
+     "known_text": "अजून पाहिलं नाही",
+     "target_text": "haven't seen yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी अजून पाहिलं नाही",
+     "target_text": "I haven't seen yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्यांचं नवीन बाळ अजून",
+     "target_text": "their new baby yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी त्यांचं नवीन बाळ अजून पाहिलं नाही",
+     "target_text": "I haven't seen their new baby yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी बातमी अजून पाहिलं नाही",
+     "target_text": "I haven't seen the news yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी अगदी योग्य घर अजून पाहिलं नाही",
+     "target_text": "I haven't seen the perfect house yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी घर अजून पाहिलं नाही",
+     "target_text": "I haven't seen the house yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी नवीन घर अजून पाहिलं नाही",
+     "target_text": "I haven't seen the new house yet",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 520,
+  "phrases": {
+   "520:1": [
+    {
+     "known_text": "ते",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कदाचित",
+     "target_text": "might",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "घडलं असेल",
+     "target_text": "have happened",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला वाटतं ते कदाचित घडलं असेल",
+     "target_text": "I think it might have happened",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कदाचित लवकरच घडलं असेल",
+     "target_text": "it might have happened soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कदाचित उद्या घडलं असेल",
+     "target_text": "it might have happened tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कदाचित आज घडलं असेल",
+     "target_text": "it might have happened today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित इथे घडलं असेल",
+     "target_text": "it might have happened here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित पूर्वी घडलं असेल",
+     "target_text": "it might have happened earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित यावेळी घडलं असेल",
+     "target_text": "it might have happened this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित कामावर घडलं असेल",
+     "target_text": "it might have happened at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला विचाराल तर ते कदाचित घडलं असेल",
+     "target_text": "If you ask me, it might have happened.",
+     "phrase_role": "use"
+    }
+   ],
+   "520:2": [
+    {
+     "known_text": "संपूर्ण",
+     "target_text": "whole",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कुटुंब",
+     "target_text": "family",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बाबतीत",
+     "target_text": "to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला वाटतं ते कदाचित संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "I think it might have happened to the whole family",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "have happened to the whole family",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज संपूर्ण कुटुंबाच्या बाबतीत",
+     "target_text": "to the whole family today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कदाचित संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "it might have happened to the whole family",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित आज संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "it might have happened to the whole family today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित पूर्वी संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "it might have happened to the whole family earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित संपूर्ण कुटुंबाच्या बाबतीत यावेळी घडलं असेल",
+     "target_text": "it might have happened to the whole family this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कदाचित इथे संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "it might have happened to the whole family here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो म्हणाला की ते कदाचित संपूर्ण कुटुंबाच्या बाबतीत घडलं असेल",
+     "target_text": "He said that it might have happened to the whole family.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही संपूर्ण कुटुंबाच्या बाबतीत काय होणार आहे",
+     "target_text": "I don't know what's going to happen to the whole family.",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 521,
+  "phrases": {
+   "521:1": [
+    {
+     "known_text": "आम्हाला",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "इथे",
+     "target_text": "here",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "का",
+     "target_text": "why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राहायची गरज होती",
+     "target_text": "needed to stay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आम्हाला इथे का राहायची गरज होती हे मला माहित नव्हतं",
+     "target_text": "I didn't know why we needed to stay here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला माहित आहे का आम्हाला इथे का राहायची गरज होती?",
+     "target_text": "do you know why we needed to stay here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पूर्वी आम्हाला इथे का राहायची गरज होती",
+     "target_text": "why we needed to stay here earlier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खात्री नाही आम्हाला इथे का राहायची गरज होती",
+     "target_text": "I'm not sure why we needed to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही आम्हाला इथे का राहायची गरज होती",
+     "target_text": "I don't know why we needed to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला इथे का राहायची गरज होती ते सांगा",
+     "target_text": "tell me why we needed to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित आहे आम्हाला इथे का राहायची गरज होती",
+     "target_text": "I know why we needed to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला माहित आहे आम्हाला इथे का राहायची गरज होती",
+     "target_text": "you know why we needed to stay here",
+     "phrase_role": "use"
+    }
+   ],
+   "521:2": [
+    {
+     "known_text": "हे",
+     "target_text": "this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "विसराल",
+     "target_text": "will forget",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही विसराल",
+     "target_text": "you'll forget",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे तुम्ही विसराल",
+     "target_text": "you'll forget this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे तुम्ही आत्ता विसराल",
+     "target_text": "you'll forget this now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे तुम्ही सहज विसराल",
+     "target_text": "you'll forget this easily",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला इथे का राहायची गरज होती हे तुम्ही विसराल",
+     "target_text": "you'll forget why we needed to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही आज हे विसराल",
+     "target_text": "you'll forget this today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही लवकरच हे विसराल",
+     "target_text": "you'll forget this soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही उद्या हे विसराल",
+     "target_text": "you'll forget this tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही पटकन हे विसराल",
+     "target_text": "you'll forget this quickly",
+     "phrase_role": "use"
+    }
+   ],
+   "521:3": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "भीती आहे",
+     "target_text": "afraid",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "की",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला भीती आहे की तुम्ही चाव्या विसराल",
+     "target_text": "I'm afraid that you'll forget the keys",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला भीती आहे की ते अवघड आहे",
+     "target_text": "I'm afraid that it's difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला भीती आहे की ते आले",
+     "target_text": "I'm afraid that they came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला भीती आहे की आम्हाला इथे का राहायची गरज होती हे तुम्ही विसराल",
+     "target_text": "I'm afraid that you'll forget why we needed to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला भीती आहे की तुम्ही हे विसराल",
+     "target_text": "I'm afraid that you'll forget this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला भीती आहे की ते निघून गेले",
+     "target_text": "I'm afraid that they left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला भीती आहे की तुम्ही आज हे विसराल",
+     "target_text": "I'm afraid that you'll forget this today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला भीती आहे की मला अगदी तीच समस्या आहे",
+     "target_text": "I'm afraid that I have exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला भीती आहे की ते कंटाळलेत",
+     "target_text": "I'm afraid that they're bored",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला भीती आहे की ते दुःखी आहेत",
+     "target_text": "I'm afraid that they're unhappy",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 522,
+  "phrases": {
+   "522:1": [
+    {
+     "known_text": "खरं",
+     "target_text": "truth",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सांगणं",
+     "target_text": "telling",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खरं सांगायचं आहे",
+     "target_text": "I want to tell the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज खरं सांगणं",
+     "target_text": "to tell the truth today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे खरं सांगणं",
+     "target_text": "to tell the truth here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला लवकरच खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth this time",
+     "phrase_role": "use"
+    }
+   ],
+   "522:2": [
+    {
+     "known_text": "मूर्खपणाचं",
+     "target_text": "stupid",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "होतं",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की ते मूर्खपणाचं होतं",
+     "target_text": "I'm sure it was stupid",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आज मूर्खपणाचं होतं",
+     "target_text": "it was stupid today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते इथे मूर्खपणाचं होतं",
+     "target_text": "it was stupid here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खरं सांगणं मूर्खपणाचं होतं",
+     "target_text": "it was stupid to tell the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज खरं सांगणं मूर्खपणाचं होतं",
+     "target_text": "it was stupid to tell the truth today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते आत्ता मूर्खपणाचं होतं",
+     "target_text": "it was stupid now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते यावेळी मूर्खपणाचं होतं",
+     "target_text": "it was stupid this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खरं सांगणं यावेळी मूर्खपणाचं होतं",
+     "target_text": "it was stupid to tell the truth this time",
+     "phrase_role": "use"
+    }
+   ],
+   "522:3": [
+    {
+     "known_text": "आपण मान्य करूया",
+     "target_text": "let's agree",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "हे",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ती चांगली कल्पना होती हे आपण मान्य करूया",
+     "target_text": "let's agree that it was a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज हे आपण मान्य करूया",
+     "target_text": "let's agree that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आले हे आपण मान्य करूया",
+     "target_text": "let's agree that they came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खरं सांगणं मूर्खपणाचं होतं हे आपण मान्य करूया",
+     "target_text": "let's agree that it was stupid to tell the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते मूर्खपणाचं होतं हे आपण मान्य करूया",
+     "target_text": "let's agree that it was stupid",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अगदी तीच समस्या आहे हे आपण मान्य करूया",
+     "target_text": "let's agree that I have exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते निघून गेले हे आपण मान्य करूया",
+     "target_text": "let's agree that they left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खरं सांगणं आज मूर्खपणाचं होतं हे आपण मान्य करूया",
+     "target_text": "let's agree that it was stupid to tell the truth today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 523,
+  "phrases": {
+   "523:1": [
+    {
+     "known_text": "सबब",
+     "target_text": "an excuse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "देण्याऐवजी",
+     "target_text": "instead of giving",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सबब देण्याऐवजी एक गोष्ट",
+     "target_text": "a story instead of giving an excuse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सबब देण्याऐवजी",
+     "target_text": "instead of giving an excuse today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या सबब देण्याऐवजी",
+     "target_text": "instead of giving an excuse tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सबब देण्याऐवजी मला खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth instead of giving an excuse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सबब देण्याऐवजी मी पळणार आहे",
+     "target_text": "I'm going to run instead of giving an excuse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सबब देण्याऐवजी तुम्ही पैसे देणार आहात",
+     "target_text": "you're going to pay instead of giving an excuse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सबब देण्याऐवजी आज मला खरं सांगणं आवडेल",
+     "target_text": "I'd like to tell the truth today instead of giving an excuse",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 524,
+  "phrases": {
+   "524:1": [
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "परत",
+     "target_text": "back",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "फोन करेन",
+     "target_text": "will call",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी तुम्हाला पुढच्या आठवड्यात परत फोन करेन",
+     "target_text": "I'll call you back next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी तुम्हाला सहज परत फोन करेन",
+     "target_text": "I'll call you back easily",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी तुम्हाला यावेळी परत फोन करेन",
+     "target_text": "I'll call you back this time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी तुम्हाला आज परत फोन करेन",
+     "target_text": "I'll call you back today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला लवकरच परत फोन करेन",
+     "target_text": "I'll call you back soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला उद्या परत फोन करेन",
+     "target_text": "I'll call you back tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला आत्ता परत फोन करेन",
+     "target_text": "I'll call you back now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला पटकन परत फोन करेन",
+     "target_text": "I'll call you back quickly",
+     "phrase_role": "use"
+    }
+   ],
+   "524:2": [
+    {
+     "known_text": "तीन",
+     "target_text": "three",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चार",
+     "target_text": "four",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मिनिटांत",
+     "target_text": "in minutes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी तीन-चार मिनिटांत तयार असेन",
+     "target_text": "I'll be ready in three or four minutes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तीन-चार मिनिटांत",
+     "target_text": "in three or four minutes today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या तीन-चार मिनिटांत",
+     "target_text": "in three or four minutes tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी तुम्हाला तीन-चार मिनिटांत परत फोन करेन",
+     "target_text": "I'll call you back in three or four minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला आज तीन-चार मिनिटांत परत फोन करेन",
+     "target_text": "I'll call you back in three or four minutes today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तीन-चार मिनिटांत घरी पळणार आहे",
+     "target_text": "I'm going to run home in three or four minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला उद्या तीन-चार मिनिटांत परत फोन करेन",
+     "target_text": "I'll call you back in three or four minutes tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते तीन-चार मिनिटांत आले",
+     "target_text": "they came in three or four minutes",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 525,
+  "phrases": {
+   "525:1": [
+    {
+     "known_text": "तुम्हाला",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "संपवता आलंय",
+     "target_text": "have been able to finish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "का",
+     "target_text": "if",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला संपवता आलंय का असा मला प्रश्न पडतो",
+     "target_text": "I wonder if you've been able to finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तुम्हाला संपवता आलंय का",
+     "target_text": "if you've been able to finish today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे तुम्हाला संपवता आलंय का",
+     "target_text": "if you've been able to finish here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खात्री नाही तुम्हाला संपवता आलंय का",
+     "target_text": "I'm not sure if you've been able to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही तुम्हाला संपवता आलंय का",
+     "target_text": "I don't know if you've been able to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला संपवता आलंय का ते सांगा",
+     "target_text": "tell me if you've been able to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज खात्री नाही तुम्हाला संपवता आलंय का",
+     "target_text": "I'm not sure today if you've been able to finish",
+     "phrase_role": "use"
+    }
+   ],
+   "525:2": [
+    {
+     "known_text": "हे",
+     "target_text": "this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो खूश आहे का हे बघायला",
+     "target_text": "to check if he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज हे बघायला",
+     "target_text": "to check today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला संपवता आलंय का हे बघायला",
+     "target_text": "to check if you've been able to finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला हे बघायला आवडेल",
+     "target_text": "I'd like to check",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला संपवता आलंय का हे बघायला आवडेल",
+     "target_text": "I'd like to check if you've been able to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज हे बघायला आवडेल",
+     "target_text": "I'd like to check today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला संपवता आलंय का हे आज बघायला आवडेल",
+     "target_text": "I'd like to check today if you've been able to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे हे बघायला आवडेल",
+     "target_text": "I'd like to check here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 526,
+  "phrases": {
+   "526:1": [
+    {
+     "known_text": "तुम्हाला",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "अंदाज लावता येत नाही",
+     "target_text": "can't guess",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की तुम्हाला अंदाज लावता येत नाही",
+     "target_text": "I'm sure you can't guess",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला अजून अंदाज लावता येत नाही",
+     "target_text": "you can't guess yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला इथे अंदाज लावता येत नाही",
+     "target_text": "you can't guess here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला माहित आहे तुम्हाला अंदाज लावता येत नाही",
+     "target_text": "I know you can't guess",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही तुम्हाला अंदाज लावता येत नाही",
+     "target_text": "I'm not sure you can't guess",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज तुम्हाला अंदाज लावता येत नाही",
+     "target_text": "you can't guess today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला यावेळी अंदाज लावता येत नाही",
+     "target_text": "you can't guess this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला उद्या अंदाज लावता येत नाही",
+     "target_text": "you can't guess tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "526:2": [
+    {
+     "known_text": "विश्वास ठेवणं",
+     "target_text": "to believe",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "यावर",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो खूश आहे यावर विश्वास ठेवणं मला अवघड जातंय",
+     "target_text": "I'm finding it hard to believe that he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज यावर विश्वास ठेवणं",
+     "target_text": "to believe that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला अंदाज लावता येत नाही यावर विश्वास ठेवणं",
+     "target_text": "to believe that you can't guess",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला यावर विश्वास ठेवणं आवडेल",
+     "target_text": "I'd like to believe that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला अंदाज लावता येत नाही यावर विश्वास ठेवणं आवडेल",
+     "target_text": "I'd like to believe that you can't guess",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ते निघून गेले यावर विश्वास ठेवणं आवडेल",
+     "target_text": "I'd like to believe that they left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज यावर विश्वास ठेवणं आवडेल",
+     "target_text": "I'd like to believe that today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे यावर विश्वास ठेवणं आवडेल",
+     "target_text": "I'd like to believe that here",
+     "phrase_role": "use"
+    }
+   ],
+   "526:3": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "अवघड जातंय",
+     "target_text": "finding it hard",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ते मूर्खपणाचं होतं यावर विश्वास ठेवणं मला अवघड जातंय",
+     "target_text": "I'm finding it hard to believe that it was stupid",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला इथे अवघड जातंय",
+     "target_text": "I'm finding it hard here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला अंदाज लावता येत नाही यावर विश्वास ठेवणं मला अवघड जातंय",
+     "target_text": "I'm finding it hard to believe that you can't guess",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावर विश्वास ठेवणं मला अवघड जातंय",
+     "target_text": "I'm finding it hard to believe that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज अवघड जातंय",
+     "target_text": "I'm finding it hard today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खरं सांगणं अवघड जातंय",
+     "target_text": "I'm finding it hard to tell the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी अवघड जातंय",
+     "target_text": "I'm finding it hard this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आयुष्य सोपं नाही यावर विश्वास ठेवणं मला अवघड जातंय",
+     "target_text": "I'm finding it hard to believe that life isn't easy",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 527,
+  "phrases": {
+   "527:1": [
+    {
+     "known_text": "ती",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "गमतीशीर",
+     "target_text": "funny",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "गोष्ट",
+     "target_text": "story",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला ती गमतीशीर गोष्ट आवडली",
+     "target_text": "I liked that funny story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज ती गमतीशीर गोष्ट",
+     "target_text": "that funny story today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे ती गमतीशीर गोष्ट",
+     "target_text": "that funny story here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला ती गमतीशीर गोष्ट सांगा",
+     "target_text": "tell me that funny story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ती गमतीशीर गोष्ट माहित आहे",
+     "target_text": "I know that funny story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ती गमतीशीर गोष्ट आवडेल",
+     "target_text": "I'd like that funny story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज ती गमतीशीर गोष्ट सांगा",
+     "target_text": "tell me that funny story today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी ती गमतीशीर गोष्ट सांगा",
+     "target_text": "tell me that funny story this time",
+     "phrase_role": "use"
+    }
+   ],
+   "527:2": [
+    {
+     "known_text": "मला",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कोणी",
+     "target_text": "who",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सांगितली",
+     "target_text": "told",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला कोणी सांगितलं हे तुम्हाला माहित आहे का?",
+     "target_text": "do you know who told me?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे मला कोणी सांगितली?",
+     "target_text": "who told me here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आज कोणी सांगितली?",
+     "target_text": "who told me today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती गमतीशीर गोष्ट मला कोणी सांगितली?",
+     "target_text": "who told me that funny story?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही मला कोणी सांगितली",
+     "target_text": "I don't know who told me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही मला कोणी सांगितली",
+     "target_text": "I'm not sure who told me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी मला कोणी सांगितली?",
+     "target_text": "who told me the news?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कोणी सांगितली ते सांगा",
+     "target_text": "tell me who told me",
+     "phrase_role": "use"
+    }
+   ],
+   "527:3": [
+    {
+     "known_text": "बघू",
+     "target_text": "let's see",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "काय घडतं ओळखा बघू",
+     "target_text": "guess what happens",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज ओळखा बघू",
+     "target_text": "guess today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती गमतीशीर गोष्ट मला कोणी सांगितली ओळखा बघू",
+     "target_text": "guess who told me that funny story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कोणी सांगितली ओळखा बघू",
+     "target_text": "guess who told me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी मला कोणी सांगितली ओळखा बघू",
+     "target_text": "guess who told me the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज ती गमतीशीर गोष्ट मला कोणी सांगितली ओळखा बघू",
+     "target_text": "guess who told me that funny story today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती गमतीशीर गोष्ट कोणी सांगितली ओळखा बघू",
+     "target_text": "guess who told that funny story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो काय म्हणाला ओळखा बघू",
+     "target_text": "guess what he said",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 528,
+  "phrases": {
+   "528:1": [
+    {
+     "known_text": "त्या",
+     "target_text": "those",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वस्तू",
+     "target_text": "things",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला त्या वस्तूंची गरज आहे",
+     "target_text": "I need those things",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज त्या वस्तू",
+     "target_text": "those things today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे त्या वस्तू",
+     "target_text": "those things here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्या वस्तू इथे आहेत",
+     "target_text": "those things are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्या वस्तू हव्या आहेत",
+     "target_text": "I want those things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्या वस्तू सापडल्या",
+     "target_text": "I found those things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्या वस्तू माहित आहेत",
+     "target_text": "I know those things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्या वस्तू यावेळी इथे आहेत",
+     "target_text": "those things are here this time",
+     "phrase_role": "use"
+    }
+   ],
+   "528:2": [
+    {
+     "known_text": "दुसऱ्या",
+     "target_text": "another",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खोलीत",
+     "target_text": "in the room",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी दुसऱ्या खोलीत वाट पाहतोय",
+     "target_text": "I'm waiting in another room",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज दुसऱ्या खोलीत",
+     "target_text": "in another room today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्या वस्तू दुसऱ्या खोलीत",
+     "target_text": "those things in another room",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्या वस्तू दुसऱ्या खोलीत आहेत",
+     "target_text": "those things are in another room",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्या वस्तू दुसऱ्या खोलीत सापडल्या",
+     "target_text": "I found those things in another room",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्या वस्तू आज दुसऱ्या खोलीत आहेत",
+     "target_text": "those things are in another room today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी दुसऱ्या खोलीत पळणार आहे",
+     "target_text": "I'm going to run in another room",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्या वस्तू यावेळी दुसऱ्या खोलीत आहेत",
+     "target_text": "those things are in another room this time",
+     "phrase_role": "use"
+    }
+   ],
+   "528:3": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बहुधा",
+     "target_text": "probably",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ठेवायच्या असतील",
+     "target_text": "supposed to keep",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला बहुधा पैसे ठेवायचे असतील",
+     "target_text": "I'm probably supposed to keep the money",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला बहुधा त्या ठेवायच्या असतील",
+     "target_text": "I'm probably supposed to keep them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला बहुधा सगळं ठेवायचं असेल",
+     "target_text": "I'm probably supposed to keep everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला बहुधा त्या वस्तू दुसऱ्या खोलीत ठेवायच्या असतील",
+     "target_text": "I'm probably supposed to keep those things in another room",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बहुधा त्या वस्तू ठेवायच्या असतील",
+     "target_text": "I'm probably supposed to keep those things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बहुधा त्या वस्तू आज ठेवायच्या असतील",
+     "target_text": "I'm probably supposed to keep those things today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बहुधा त्या वस्तू इथे ठेवायच्या असतील",
+     "target_text": "I'm probably supposed to keep those things here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बहुधा त्या वस्तू यावेळी ठेवायच्या असतील",
+     "target_text": "I'm probably supposed to keep those things this time",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 529,
+  "phrases": {
+   "529:1": [
+    {
+     "known_text": "हात",
+     "target_text": "hands",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वर",
+     "target_text": "up",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "करू शकता का",
+     "target_text": "can you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला समजलं असेल तर हात वर करू शकता का?",
+     "target_text": "can you put your hands up if you understand?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "लवकरच हात वर करू शकता का?",
+     "target_text": "can you put your hands up soon?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या हात वर करू शकता का?",
+     "target_text": "can you put your hands up tomorrow?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज हात वर करू शकता का?",
+     "target_text": "can you put your hands up today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पटकन हात वर करू शकता का?",
+     "target_text": "can you put your hands up quickly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आत्ता हात वर करू शकता का?",
+     "target_text": "can you put your hands up now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे हात वर करू शकता का?",
+     "target_text": "can you put your hands up here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी हात वर करू शकता का?",
+     "target_text": "can you put your hands up this time?",
+     "phrase_role": "use"
+    }
+   ],
+   "529:2": [
+    {
+     "known_text": "तुम्ही सगळे आत्ता हात वर करू शकता का?",
+     "target_text": "can you all put your hands up now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही सगळे आले",
+     "target_text": "you all came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही सगळे इथे आले",
+     "target_text": "you all came here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही सगळे हात वर करू शकता का?",
+     "target_text": "can you all put your hands up?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही सगळे आज हात वर करू शकता का?",
+     "target_text": "can you all put your hands up today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही सगळे आले का?",
+     "target_text": "did you all come?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही सगळे पटकन हात वर करू शकता का?",
+     "target_text": "can you all put your hands up quickly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही सगळे इथे आले का?",
+     "target_text": "did you all come here?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 530,
+  "phrases": {
+   "530:1": [
+    {
+     "known_text": "म्हणजे",
+     "target_text": "so",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ते",
+     "target_text": "them",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मोजू शकेन",
+     "target_text": "can count",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "हात वर करा म्हणजे मी ते मोजू शकेन",
+     "target_text": "put your hands up so I can count them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज म्हणजे मी ते मोजू शकेन",
+     "target_text": "so I can count them today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे म्हणजे मी ते मोजू शकेन",
+     "target_text": "so I can count them here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते दोघेही आले म्हणजे मी ते मोजू शकेन",
+     "target_text": "they both came so I can count them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्या वस्तू इथे आहेत म्हणजे मी ते मोजू शकेन",
+     "target_text": "those things are here so I can count them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही मला त्या वस्तू द्या म्हणजे मी ते मोजू शकेन",
+     "target_text": "give me those things so I can count them",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 531,
+  "phrases": {
+   "531:1": [
+    {
+     "known_text": "कोणीही",
+     "target_text": "anyone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खेळ",
+     "target_text": "the game",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जिंकू शकतं",
+     "target_text": "can win",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की कोणीही खेळ जिंकू शकतं",
+     "target_text": "I'm sure anyone can win the game",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "लवकरच कोणीही खेळ जिंकू शकतं",
+     "target_text": "anyone can win the game soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या कोणीही खेळ जिंकू शकतं",
+     "target_text": "anyone can win the game tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज कोणीही खेळ जिंकू शकतं",
+     "target_text": "anyone can win the game today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित आहे कोणीही खेळ जिंकू शकतं",
+     "target_text": "I know anyone can win the game",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही कोणीही खेळ जिंकू शकतं",
+     "target_text": "I'm not sure anyone can win the game",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे कोणीही खेळ जिंकू शकतं",
+     "target_text": "anyone can win the game here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी कोणीही खेळ जिंकू शकतं",
+     "target_text": "anyone can win the game this time",
+     "phrase_role": "use"
+    }
+   ],
+   "531:2": [
+    {
+     "known_text": "हे",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खरं नाही",
+     "target_text": "isn't true that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो खूश आहे हे खरं नाही",
+     "target_text": "it isn't true that he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आले हे खरं नाही",
+     "target_text": "it isn't true that they came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज हे खरं नाही",
+     "target_text": "it isn't true that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कोणीही खेळ जिंकू शकतं हे खरं नाही",
+     "target_text": "it isn't true that anyone can win the game",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते निघून गेले हे खरं नाही",
+     "target_text": "it isn't true that they left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला अंदाज लावता येत नाही हे खरं नाही",
+     "target_text": "it isn't true that you can't guess",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अगदी तीच समस्या आहे हे खरं नाही",
+     "target_text": "it isn't true that I have exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज कोणीही खेळ जिंकू शकतं हे खरं नाही",
+     "target_text": "it isn't true that anyone can win the game today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 533,
+  "phrases": {
+   "533:1": [
+    {
+     "known_text": "तो",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "प्रत्येक",
+     "target_text": "every",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "शब्द",
+     "target_text": "word",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला तो प्रत्येक शब्द आठवतो",
+     "target_text": "I can remember every word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तो प्रत्येक शब्द",
+     "target_text": "every word today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे तो प्रत्येक शब्द",
+     "target_text": "every word here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला तो प्रत्येक शब्द माहित आहे",
+     "target_text": "I know every word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तो प्रत्येक शब्द सांगा",
+     "target_text": "tell me every word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज तो प्रत्येक शब्द सांगा",
+     "target_text": "tell me every word today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो प्रत्येक शब्द इथे आहे",
+     "target_text": "every word is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तो प्रत्येक शब्द माहित नाही",
+     "target_text": "I don't know every word",
+     "phrase_role": "use"
+    }
+   ],
+   "533:2": [
+    {
+     "known_text": "तुम्ही",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बोलता",
+     "target_text": "say",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही बोलता तो प्रत्येक शब्द मला आवडतो",
+     "target_text": "I like every word you say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही बोलता तो प्रत्येक शब्द",
+     "target_text": "every word you say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तुम्ही बोलता",
+     "target_text": "you say today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला तुम्ही बोलता तो प्रत्येक शब्द माहित आहे",
+     "target_text": "I know every word you say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्ही बोलता तो प्रत्येक शब्द सांगा",
+     "target_text": "tell me every word you say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही बोलता तो प्रत्येक शब्द इथे आहे",
+     "target_text": "every word you say is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्ही बोलता तो प्रत्येक शब्द माहित नाही",
+     "target_text": "I don't know every word you say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज तुम्ही बोलता तो प्रत्येक शब्द सांगा",
+     "target_text": "tell me every word you say today",
+     "phrase_role": "use"
+    }
+   ],
+   "533:3": [
+    {
+     "known_text": "ती",
+     "target_text": "she",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ऐकणार नाही",
+     "target_text": "won't listen to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ती गोष्ट ऐकणार नाही",
+     "target_text": "she won't listen to a story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज ती ऐकणार नाही",
+     "target_text": "she won't listen to today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही बोलता तो प्रत्येक शब्द ती ऐकणार नाही",
+     "target_text": "she won't listen to every word you say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो प्रत्येक शब्द ती ऐकणार नाही",
+     "target_text": "she won't listen to every word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बातमी ती ऐकणार नाही",
+     "target_text": "she won't listen to the news",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती गमतीशीर गोष्ट ती ऐकणार नाही",
+     "target_text": "she won't listen to that funny story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज तो प्रत्येक शब्द ती ऐकणार नाही",
+     "target_text": "she won't listen to every word today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती खूप छान कल्पना ऐकणार नाही",
+     "target_text": "she won't listen to a great idea",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 534,
+  "phrases": {
+   "534:1": [
+    {
+     "known_text": "आपण",
+     "target_text": "let's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बाहेर",
+     "target_text": "outside",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जाऊ नको",
+     "target_text": "not go",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "संध्याकाळी आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside this evening",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "लवकरच आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आत्ता आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पटकन आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside quickly",
+     "phrase_role": "use"
+    }
+   ],
+   "534:2": [
+    {
+     "known_text": "या",
+     "target_text": "this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "भयंकर",
+     "target_text": "dreadful",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "हवामानात",
+     "target_text": "in the weather",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला या भयंकर हवामानात बाहेर जायचं नाही",
+     "target_text": "I don't want to go out in this dreadful weather",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज या भयंकर हवामानात",
+     "target_text": "in this dreadful weather today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे या भयंकर हवामानात",
+     "target_text": "in this dreadful weather here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "या भयंकर हवामानात आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside in this dreadful weather",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "या भयंकर हवामानात मी पळणार आहे",
+     "target_text": "I'm going to run in this dreadful weather",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "या भयंकर हवामानात ते दोघेही आले",
+     "target_text": "they both came in this dreadful weather",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "या भयंकर हवामानात आज आपण बाहेर जाऊ नको",
+     "target_text": "let's not go outside today in this dreadful weather",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "या भयंकर हवामानात मी घरी पळणार आहे",
+     "target_text": "I'm going to run home in this dreadful weather",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 535,
+  "phrases": {
+   "535:1": [
+    {
+     "known_text": "तो",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चुकीची",
+     "target_text": "wrong",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "नोकरी",
+     "target_text": "job",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "निवडणार नाही",
+     "target_text": "wouldn't choose",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "I'm sure he wouldn't choose the wrong job",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he wouldn't choose the wrong job here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he wouldn't choose the wrong job tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला माहित आहे तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "I know he wouldn't choose the wrong job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "I'm not sure he wouldn't choose the wrong job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he wouldn't choose the wrong job today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he wouldn't choose the wrong job this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "लवकरच तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he wouldn't choose the wrong job soon",
+     "phrase_role": "use"
+    }
+   ],
+   "535:2": [
+    {
+     "known_text": "त्याने",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वचन दिलं",
+     "target_text": "made a promise",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "की",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "त्याने वचन दिलं की त्याला उशीर होणार नाही",
+     "target_text": "he made a promise that he wouldn't be late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज त्याने वचन दिलं की",
+     "target_text": "he made a promise that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याने इथे वचन दिलं की",
+     "target_text": "he made a promise that here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याने वचन दिलं की तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he made a promise that he wouldn't choose the wrong job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याने वचन दिलं की तो आज चुकीची नोकरी निवडणार नाही",
+     "target_text": "he made a promise that he wouldn't choose the wrong job today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याने आज वचन दिलं की तो चुकीची नोकरी निवडणार नाही",
+     "target_text": "he made a promise today that he wouldn't choose the wrong job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याने वचन दिलं की कोणीही खेळ जिंकू शकतं",
+     "target_text": "he made a promise that anyone can win the game",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याने वचन दिलं की तो मागे राहणार नाही",
+     "target_text": "he made a promise that he wouldn't get left behind",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 536,
+  "phrases": {
+   "536:1": [
+    {
+     "known_text": "वेडं",
+     "target_text": "crazy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असणं",
+     "target_text": "being",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला वाटतं वेडं असणं मूर्खपणाचं होतं",
+     "target_text": "I think being crazy was stupid",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज वेडं असणं",
+     "target_text": "being crazy today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे वेडं असणं",
+     "target_text": "being crazy here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला माहित आहे वेडं असणं मूर्खपणाचं होतं",
+     "target_text": "I know being crazy was stupid",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेडं असणं मूर्खपणाचं होतं",
+     "target_text": "being crazy was stupid",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेडं असणं यावेळी मूर्खपणाचं होतं",
+     "target_text": "being crazy was stupid this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही वेडं असणं मूर्खपणाचं होतं",
+     "target_text": "I'm not sure being crazy was stupid",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज वेडं असणं मूर्खपणाचं होतं",
+     "target_text": "being crazy was stupid today",
+     "phrase_role": "use"
+    }
+   ],
+   "536:2": [
+    {
+     "known_text": "वाईट",
+     "target_text": "bad",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आहे",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की वेडं असणं वाईट आहे",
+     "target_text": "I'm sure being crazy was bad",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज वाईट आहे",
+     "target_text": "was bad today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे वाईट आहे",
+     "target_text": "was bad here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वेडं असणं वाईट आहे",
+     "target_text": "being crazy was bad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज वेडं असणं वाईट आहे",
+     "target_text": "being crazy was bad today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते वाईट आहे",
+     "target_text": "it was bad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हे वाईट आहे",
+     "target_text": "this was bad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेडं असणं यावेळी वाईट आहे",
+     "target_text": "being crazy was bad this time",
+     "phrase_role": "use"
+    }
+   ],
+   "536:3": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आधी",
+     "target_text": "before",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वाटायचं",
+     "target_text": "used to think",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असं",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो खूश आहे असं मला आधी वाटायचं",
+     "target_text": "I used to think that he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आले असं मला आधी वाटायचं",
+     "target_text": "I used to think that they came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज असं मला आधी वाटायचं",
+     "target_text": "I used to think that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वेडं असणं वाईट आहे असं मला आधी वाटायचं",
+     "target_text": "I used to think that being crazy was bad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते निघून गेले असं मला आधी वाटायचं",
+     "target_text": "I used to think that they left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कोणीही खेळ जिंकू शकतं असं मला आधी वाटायचं",
+     "target_text": "I used to think that anyone can win the game",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेडं असणं मूर्खपणाचं होतं असं मला आधी वाटायचं",
+     "target_text": "I used to think that being crazy was stupid",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज वेडं असणं वाईट आहे असं मला आधी वाटायचं",
+     "target_text": "I used to think that being crazy was bad today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "असं मला आधी वाटायचं की ती बरोबर होती",
+     "target_text": "I used to think that she was right",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 537,
+  "phrases": {
+   "537:1": [
+    {
+     "known_text": "पण",
+     "target_text": "but",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चुकीचा",
+     "target_text": "wrong",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "होतो",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वेडं असणं वाईट आहे असं मला आधी वाटायचं पण मी चुकीचा होतो",
+     "target_text": "I used to think that being crazy was bad but I was wrong",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज पण मी चुकीचा होतो",
+     "target_text": "but I was wrong today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे पण मी चुकीचा होतो",
+     "target_text": "but I was wrong here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते नशीबवान आहेत पण मी चुकीचा होतो",
+     "target_text": "they're lucky but I was wrong",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कोणीही खेळ जिंकू शकतं पण मी चुकीचा होतो",
+     "target_text": "anyone can win the game but I was wrong",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित आहे पण मी चुकीचा होतो",
+     "target_text": "I know but I was wrong",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी पण मी चुकीचा होतो",
+     "target_text": "but I was wrong this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही आले पण मी चुकीचा होतो",
+     "target_text": "they both came but I was wrong",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 538,
+  "phrases": {
+   "538:1": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पर्वा नाही",
+     "target_text": "don't care",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला पर्वा नाही",
+     "target_text": "I don't care",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला उद्या पर्वा नाही",
+     "target_text": "I don't care tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला कामावर पर्वा नाही",
+     "target_text": "I don't care at work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आज पर्वा नाही",
+     "target_text": "I don't care today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी पर्वा नाही",
+     "target_text": "I don't care this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आत्ता पर्वा नाही",
+     "target_text": "I don't care now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे पर्वा नाही",
+     "target_text": "I don't care here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अजून पर्वा नाही",
+     "target_text": "I don't care yet",
+     "phrase_role": "use"
+    }
+   ],
+   "538:2": [
+    {
+     "known_text": "असं",
+     "target_text": "as though",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दिसायचं नाहीये",
+     "target_text": "don't want to seem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी म्हणालो की मला पर्वा नाही असं दिसायचं नाहीये",
+     "target_text": "I said that I don't want to seem as though I don't care",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते आले असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though they came",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला पर्वा नाही असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though I don't care",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी नशीबवान आहे असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though I'm lucky",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते निघून गेले असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though they left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अगदी तीच समस्या आहे असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though I have exactly the same problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज पर्वा नाही असं दिसायचं नाहीये",
+     "target_text": "I don't want to seem as though I don't care today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 539,
+  "phrases": {
+   "539:1": [
+    {
+     "known_text": "पण",
+     "target_text": "but",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "उशीर",
+     "target_text": "late",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "होतोय",
+     "target_text": "getting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला राहायला आवडेल पण उशीर होतोय",
+     "target_text": "I'd like to stay but it's getting late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज पण उशीर होतोय",
+     "target_text": "but it's getting late today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे पण उशीर होतोय",
+     "target_text": "but it's getting late here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आपण बाहेर जाऊ नको पण उशीर होतोय",
+     "target_text": "let's not go outside but it's getting late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित आहे पण उशीर होतोय",
+     "target_text": "I know but it's getting late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते दोघेही आले पण उशीर होतोय",
+     "target_text": "they both came but it's getting late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पर्वा नाही पण उशीर होतोय",
+     "target_text": "I don't care but it's getting late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आत्ता पण उशीर होतोय",
+     "target_text": "but it's getting late now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 540,
+  "phrases": {
+   "540:1": [
+    {
+     "known_text": "माझी",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "हरकत नाही",
+     "target_text": "don't mind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला निघायचं असेल तर माझी अजिबात हरकत नाही",
+     "target_text": "I don't mind at all if you want to leave",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कामावर माझी हरकत नाही",
+     "target_text": "I don't mind at work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज माझी हरकत नाही",
+     "target_text": "I don't mind today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "यावेळी माझी हरकत नाही",
+     "target_text": "I don't mind this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आत्ता माझी हरकत नाही",
+     "target_text": "I don't mind now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे माझी हरकत नाही",
+     "target_text": "I don't mind here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या माझी हरकत नाही",
+     "target_text": "I don't mind tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री आहे की तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I'm sure I don't mind if you want to leave without the car",
+     "phrase_role": "build"
+    }
+   ],
+   "540:2": [
+    {
+     "known_text": "तुम्हाला",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "निघायचं असेल",
+     "target_text": "want to leave",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तर",
+     "target_text": "if",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला निघायचं असेल तर मी तयार असेन",
+     "target_text": "I'll be ready if you want to leave",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज तुम्हाला निघायचं असेल तर",
+     "target_text": "if you want to leave today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे तुम्हाला निघायचं असेल तर",
+     "target_text": "if you want to leave here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही तुम्हाला निघायचं असेल तर",
+     "target_text": "I'm not sure if you want to leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला लवकरच निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला उद्या निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "540:3": [
+    {
+     "known_text": "गाडी",
+     "target_text": "car",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "शिवाय",
+     "target_text": "without",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "निघायचं",
+     "target_text": "to leave",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला वाटतं की तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I think that I don't mind if you want to leave without the car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज गाडीशिवाय निघायचं",
+     "target_text": "to leave without the car today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गाडीशिवाय निघायचं असेल तर",
+     "target_text": "if you want to leave without the car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave without the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave without the car today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही तुम्हाला गाडीशिवाय निघायचं असेल तर",
+     "target_text": "I'm not sure if you want to leave without the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला लवकरच गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave without the car soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला उद्या गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you want to leave without the car tomorrow",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 541,
+  "phrases": {
+   "541:1": [
+    {
+     "known_text": "हळू",
+     "target_text": "slowly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "श्वास घ्यायचा",
+     "target_text": "to breathe",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "प्रयत्न करणं",
+     "target_text": "to try",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला हळू श्वास घ्यायचा प्रयत्न करायचा आहे",
+     "target_text": "I want to try and breathe slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज हळू श्वास घ्यायचा प्रयत्न करणं",
+     "target_text": "to try and breathe slowly today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे हळू श्वास घ्यायचा प्रयत्न करणं",
+     "target_text": "to try and breathe slowly here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला हळू श्वास घ्यायचा प्रयत्न करणं आवडेल",
+     "target_text": "I'd like to try and breathe slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज हळू श्वास घ्यायचा प्रयत्न करणं आवडेल",
+     "target_text": "I'd like to try and breathe slowly today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे हळू श्वास घ्यायचा प्रयत्न करणं आवडेल",
+     "target_text": "I'd like to try and breathe slowly here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला लवकरच हळू श्वास घ्यायचा प्रयत्न करणं आवडेल",
+     "target_text": "I'd like to try and breathe slowly soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला यावेळी हळू श्वास घ्यायचा प्रयत्न करणं आवडेल",
+     "target_text": "I'd like to try and breathe slowly this time",
+     "phrase_role": "use"
+    }
+   ],
+   "541:2": [
+    {
+     "known_text": "ही",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चांगली",
+     "target_text": "good",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कल्पना",
+     "target_text": "idea",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आहे",
+     "target_text": "is",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मदत करणं ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "यावेळी ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea this time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हळू श्वास घ्यायचा प्रयत्न करणं ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea to try and breathe slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खरं सांगणं ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea to tell the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गाडी पार्क करायला ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea to park the car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हळू श्वास घ्यायचा प्रयत्न करणं आज ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea to try and breathe slowly today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 542,
+  "phrases": {
+   "542:1": [
+    {
+     "known_text": "तुम्हाला",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राग येतो",
+     "target_text": "feel angry",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला राग येत असेल तर माझी हरकत नाही",
+     "target_text": "I don't mind if you feel angry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला लवकरच राग येतो",
+     "target_text": "you feel angry soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला उद्या राग येतो",
+     "target_text": "you feel angry tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला आज राग येतो",
+     "target_text": "you feel angry today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला इथे राग येतो",
+     "target_text": "you feel angry here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला यावेळी राग येतो",
+     "target_text": "you feel angry this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला कामावर राग येतो",
+     "target_text": "you feel angry at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आत्ता राग येतो",
+     "target_text": "you feel angry now",
+     "phrase_role": "use"
+    }
+   ],
+   "542:2": [
+    {
+     "known_text": "जेव्हा",
+     "target_text": "when",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा तो खूश असतो",
+     "target_text": "whenever he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज जेव्हा जेव्हा",
+     "target_text": "whenever today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा तुम्हाला राग येतो",
+     "target_text": "whenever you feel angry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा तुम्हाला आज राग येतो",
+     "target_text": "whenever you feel angry today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा तुम्हाला कामावर राग येतो",
+     "target_text": "whenever you feel angry at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा तुम्हाला यावेळी राग येतो",
+     "target_text": "whenever you feel angry this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा तुम्हाला इथे राग येतो",
+     "target_text": "whenever you feel angry here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जेव्हा जेव्हा आयुष्य सोपं नसतं",
+     "target_text": "whenever life isn't easy",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 543,
+  "phrases": {
+   "543:1": [
+    {
+     "known_text": "आज बरोबर",
+     "target_text": "right today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "यावेळी बरोबर",
+     "target_text": "right this time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे बरोबर",
+     "target_text": "right here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी बरोबर होतो",
+     "target_text": "I was right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज बरोबर होतो",
+     "target_text": "I was right today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी यावेळी बरोबर होतो",
+     "target_text": "I was right this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही बरोबर आहात",
+     "target_text": "you're right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी कामावर बरोबर होतो",
+     "target_text": "I was right at work",
+     "phrase_role": "use"
+    }
+   ],
+   "543:2": [
+    {
+     "known_text": "ती",
+     "target_text": "she",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "होती",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ती काल खूप व्यस्त होती",
+     "target_text": "she was too busy yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती इथे होती",
+     "target_text": "she was here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती कामावर होती",
+     "target_text": "she was at work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती बरोबर होती",
+     "target_text": "she was right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती आज बरोबर होती",
+     "target_text": "she was right today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती नशीबवान होती",
+     "target_text": "she was lucky",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती यावेळी बरोबर होती",
+     "target_text": "she was right this time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती इथे बरोबर होती",
+     "target_text": "she was right here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 544,
+  "phrases": {
+   "544:1": [
+    {
+     "known_text": "अगदी बरोबर",
+     "target_text": "absolutely right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते अगदी बरोबर आहे",
+     "target_text": "that's absolutely right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "अगदी सगळं",
+     "target_text": "absolutely everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही अगदी बरोबर आहात",
+     "target_text": "you're absolutely right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अगदी खात्री आहे",
+     "target_text": "I'm absolutely sure",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती अगदी बरोबर होती",
+     "target_text": "she was absolutely right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अगदी तेच हवं होतं",
+     "target_text": "that's absolutely what I wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हे अगदी बरोबर आहे असं मला वाटतं",
+     "target_text": "I think this is absolutely right",
+     "phrase_role": "use"
+    }
+   ],
+   "544:2": [
+    {
+     "known_text": "ज्याने कोणी",
+     "target_text": "whoever",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "म्हटलं",
+     "target_text": "said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असं",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो खूश आहे असं ज्याने कोणी म्हटलं",
+     "target_text": "whoever said he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते चांगलं आहे असं ज्याने कोणी म्हटलं",
+     "target_text": "whoever said it's good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते अवघड आहे असं ज्याने कोणी म्हटलं",
+     "target_text": "whoever said it's difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते सोपं आहे असं ज्याने कोणी म्हटलं तो चुकीचा होता",
+     "target_text": "whoever said it's easy was wrong",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते चांगलं आहे असं ज्याने कोणी म्हटलं तो बरोबर होता",
+     "target_text": "whoever said it's good was right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते महत्त्वाचं आहे असं ज्याने कोणी म्हटलं तो बरोबर होता",
+     "target_text": "whoever said it's important was right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही थांबावं असं ज्याने कोणी म्हटलं",
+     "target_text": "whoever said you should stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते चांगलं होईल असं ज्याने कोणी म्हटलं",
+     "target_text": "whoever said it would be good",
+     "phrase_role": "use"
+    }
+   ],
+   "544:3": [
+    {
+     "known_text": "ते",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "अवघड",
+     "target_text": "difficult",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असेल",
+     "target_text": "would be",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ते अवघड असेल",
+     "target_text": "it would be difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ते अवघड असेल",
+     "target_text": "I think it would be difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला माहीत आहे ते अवघड असेल",
+     "target_text": "I know it would be difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण ते अवघड असेल",
+     "target_text": "but it would be difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते अवघड असेल असं मला वाटत नाही",
+     "target_text": "I don't think it would be difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला वाटतं का ते अवघड असेल?",
+     "target_text": "do you think it would be difficult?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते अवघड असेल पण मी प्रयत्न करेन",
+     "target_text": "it would be difficult but I'll try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं ते खूप अवघड असेल",
+     "target_text": "I think it would be very difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते अवघड असेल म्हणून मी तयारी करतोय",
+     "target_text": "it would be difficult so I'm getting ready",
+     "phrase_role": "use"
+    }
+   ],
+   "544:4": [
+    {
+     "known_text": "होता",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बरोबर",
+     "target_text": "right",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "अगदी",
+     "target_text": "absolutely",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तो खूश आहे असं ज्याने कोणी म्हटलं तो अगदी बरोबर होता",
+     "target_text": "whoever said he's happy was absolutely right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं तो अगदी बरोबर होता",
+     "target_text": "I think he was absolutely right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आणि तो अगदी बरोबर होता",
+     "target_text": "and he was absolutely right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते अवघड असेल असं ज्याने कोणी म्हटलं तो अगदी बरोबर होता",
+     "target_text": "whoever said it would be difficult was absolutely right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं तो त्याबद्दल अगदी बरोबर होता",
+     "target_text": "I think he was absolutely right about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही म्हणालात ते अगदी बरोबर होतं",
+     "target_text": "what you said was absolutely right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शेवटी तो अगदी बरोबर होता",
+     "target_text": "in the end he was absolutely right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याबद्दल तो अगदी बरोबर होता",
+     "target_text": "he was absolutely right about that",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 549,
+  "phrases": {
+   "549:1": [
+    {
+     "known_text": "गप्प",
+     "target_text": "quiet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "राहावं",
+     "target_text": "be",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "लागणार आहे",
+     "target_text": "have got to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "गप्प राहावं लागणार आहे",
+     "target_text": "have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला गप्प राहावं लागणार आहे",
+     "target_text": "I have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आपल्याला गप्प राहावं लागणार आहे",
+     "target_text": "we have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला गप्प राहावं लागणार आहे",
+     "target_text": "you have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे आपल्याला गप्प राहावं लागणार आहे",
+     "target_text": "we have got to be quiet here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मुलांना गप्प राहावं लागणार आहे",
+     "target_text": "the children have got to be quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आता तुम्हाला गप्प राहावं लागणार आहे",
+     "target_text": "now you have got to be quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं आपल्याला गप्प राहावं लागणार आहे",
+     "target_text": "I think we have got to be quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "रात्री आपल्याला गप्प राहावं लागणार आहे",
+     "target_text": "we have got to be quiet at night",
+     "phrase_role": "use"
+    }
+   ],
+   "549:2": [
+    {
+     "known_text": "मला",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "गप्प राहावं लागणार आहे",
+     "target_text": "have got to be quiet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की मला गप्प राहावं लागणार आहे",
+     "target_text": "I'm sure I have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आणि मला गप्प राहावं लागणार आहे",
+     "target_text": "and I have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण मला गप्प राहावं लागणार आहे",
+     "target_text": "but I have got to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कारण मला गप्प राहावं लागणार आहे",
+     "target_text": "because I have got to be quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहीत आहे मला गप्प राहावं लागणार आहे",
+     "target_text": "I know I have got to be quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं मला गप्प राहावं लागणार आहे",
+     "target_text": "I think I have got to be quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इथे गप्प राहावं लागणार आहे",
+     "target_text": "I have got to be quiet here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला रात्री गप्प राहावं लागणार आहे",
+     "target_text": "I have got to be quiet at night",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 557,
+  "phrases": {
+   "557:1": [
+    {
+     "known_text": "खूप मोठ्या आवाजात",
+     "target_text": "very loud",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मोठ्या आवाजात संगीत",
+     "target_text": "loud music",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे संगीत खूप मोठ्या आवाजात आहे",
+     "target_text": "this music is very loud",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला मोठ्या आवाजात संगीत आवडत नाही",
+     "target_text": "I don't like loud music",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते खूप मोठ्या आवाजात संगीत वाजवतात",
+     "target_text": "they play very loud music",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "रात्री मोठ्या आवाजात संगीत नको",
+     "target_text": "no loud music at night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "रात्री हे संगीत खूप मोठ्या आवाजात असतं",
+     "target_text": "this music is very loud at night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला मोठ्या आवाजात संगीत नको आहे",
+     "target_text": "I don't want loud music",
+     "phrase_role": "build"
+    }
+   ],
+   "557:2": [
+    {
+     "known_text": "असं",
+     "target_text": "such",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मोठ्या आवाजात",
+     "target_text": "loud",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "संगीत",
+     "target_text": "music",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असं मोठ्या आवाजात संगीत",
+     "target_text": "such loud music",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "रात्री असं मोठ्या आवाजात संगीत",
+     "target_text": "such loud music at night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला असं मोठ्या आवाजात संगीत नको",
+     "target_text": "we don't want such loud music",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते असं मोठ्या आवाजात संगीत वाजवतात",
+     "target_text": "they play such loud music",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला असं मोठ्या आवाजात संगीत आवडत नाही",
+     "target_text": "I don't like such loud music",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते रोज असं मोठ्या आवाजात संगीत वाजवतात",
+     "target_text": "they play such loud music every day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला असं मोठ्या आवाजात संगीत नको आहे",
+     "target_text": "I don't want such loud music",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते रात्री उशिरा असं मोठ्या आवाजात संगीत वाजवतात",
+     "target_text": "they play such loud music late at night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं असं मोठ्या आवाजात संगीत चांगलं नाही",
+     "target_text": "I think such loud music isn't good",
+     "phrase_role": "use"
+    }
+   ],
+   "557:3": [
+    {
+     "known_text": "त्यांनी",
+     "target_text": "they",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वाजवू",
+     "target_text": "play",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "नये",
+     "target_text": "wouldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला वाटतं",
+     "target_text": "I wish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "त्यांनी रात्री संगीत वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play music at night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्यांनी इथे वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्यांनी रात्री वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play at night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्यांनी असं मोठ्या आवाजात संगीत वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play such loud music",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्यांनी रात्री उशिरा संगीत वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play music late at night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्यांनी रोज संगीत वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play music every day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्यांनी हे संगीत वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play this music",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्यांनी इतक्या मोठ्या आवाजात वाजवू नये असं मला वाटतं",
+     "target_text": "I wish they wouldn't play so loud",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 559,
+  "phrases": {
+   "559:1": [
+    {
+     "known_text": "सापडलं",
+     "target_text": "found",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला सापडलं का?",
+     "target_text": "have you found?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला ते सापडलं का?",
+     "target_text": "have you found it?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला काहीतरी सापडलं का?",
+     "target_text": "have you found something?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला उत्तर सापडलं का?",
+     "target_text": "have you found the answer?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला तुमचा मित्र सापडला का?",
+     "target_text": "have you found your friend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला ते पुस्तक सापडलं का?",
+     "target_text": "have you found the book?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला अजून हॉटेल सापडलं का?",
+     "target_text": "have you found the hotel yet?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज सकाळी तुमचा मित्र सापडला का?",
+     "target_text": "have you found your friend this morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला दार सापडलं का?",
+     "target_text": "have you found the door?",
+     "phrase_role": "use"
+    }
+   ],
+   "559:2": [
+    {
+     "known_text": "पायवाट",
+     "target_text": "the path",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला पायवाट सापडली का?",
+     "target_text": "have you found the path?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथली पायवाट",
+     "target_text": "the path here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला पायवाट सापडली",
+     "target_text": "I found the path",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज ती पायवाट सापडली का?",
+     "target_text": "have you found the path today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काल ती पायवाट सापडली",
+     "target_text": "I found the path yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला ती पायवाट सापडली",
+     "target_text": "we found the path",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला अजून ती पायवाट सापडली का?",
+     "target_text": "have you found the path yet?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही पायवाट शोधताय का?",
+     "target_text": "Are you looking for the path?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला निघायचं असेल तर पायवाट शोधा.",
+     "target_text": "If you want to leave, find the path.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही पायवाट का शोधताय?",
+     "target_text": "Why are you looking for the path?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पायवाट कुठे आहे ते मला माहित नाही.",
+     "target_text": "I don't know where the path is.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शक्य तितक्या लवकर पायवाट शोधा.",
+     "target_text": "Find the path as quickly as possible.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पायवाट शोधा",
+     "target_text": "find the path",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ती कदाचित पायवाट असेल",
+     "target_text": "I think it might be the path",
+     "phrase_role": "use"
+    }
+   ],
+   "559:3": [
+    {
+     "known_text": "जंगल",
+     "target_text": "the wood",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "जाणारी",
+     "target_text": "that goes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला जंगलातून जाणारी वाट सापडली",
+     "target_text": "I found the path through the wood",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "जंगलातून जाणारी पायवाट",
+     "target_text": "the path through the wood",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "जंगलातून जायचं",
+     "target_text": "to go through the wood",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला जंगलातून जाणारी पायवाट सापडली का?",
+     "target_text": "have you found the path through the wood?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला जंगलातून जायचं आहे",
+     "target_text": "I want to go through the wood",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज जंगलातून जायचं आहे",
+     "target_text": "I want to go through the wood today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला जंगलातून जाणारी पायवाट सापडली",
+     "target_text": "we found the path through the wood",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला काल जंगलातून जाणारी पायवाट सापडली",
+     "target_text": "we found the path through the wood yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जंगलातून जाणारी पायवाट शोधा.",
+     "target_text": "Find the path through the wood.",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 560,
+  "phrases": {
+   "560:1": [
+    {
+     "known_text": "ती जाते",
+     "target_text": "it goes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बस जाते",
+     "target_text": "the bus goes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गाडी जाते",
+     "target_text": "the car goes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती बस गावाकडे जाते",
+     "target_text": "the bus goes to the village",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती पायवाट गावाकडे जाते",
+     "target_text": "the path goes to the village",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती गाडी घराकडे जाते",
+     "target_text": "the car goes home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती वरपर्यंत जाते",
+     "target_text": "it goes to the top",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती बागेकडे जाते",
+     "target_text": "it goes to the garden",
+     "phrase_role": "use"
+    }
+   ],
+   "560:2": [
+    {
+     "known_text": "मला खात्री आहे की मी डोकं वर-खाली हलवतो तेव्हा सगळ्यात जास्त दुखतं",
+     "target_text": "I'm sure it hurts most when I move my head up and down",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खालती जाते",
+     "target_text": "goes down",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती खालती जाते",
+     "target_text": "it goes down",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती पायवाट खालती जाते",
+     "target_text": "the path goes down",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती बस खालती गावाकडे जाते",
+     "target_text": "the bus goes down to the village",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खालती जायचं आहे",
+     "target_text": "I want to go down",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती गाडी खालती रस्त्यावर जाते",
+     "target_text": "the car goes down the road",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज खालती जायचं आहे",
+     "target_text": "I want to go down today",
+     "phrase_role": "use"
+    }
+   ],
+   "560:3": [
+    {
+     "known_text": "मला खात्री आहे की ती समुद्रकिनाऱ्यापर्यंत खाली जाते",
+     "target_text": "I'm sure it goes down to the beach",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "समुद्रकिनाऱ्याकडे जाते",
+     "target_text": "goes to the beach",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खालती समुद्रकिनाऱ्यापर्यंत",
+     "target_text": "down to the beach",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला समुद्रकिनाऱ्यावर जायचं आहे",
+     "target_text": "I want to go to the beach",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती पायवाट समुद्रकिनाऱ्याकडे जाते",
+     "target_text": "the path goes to the beach",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज समुद्रकिनाऱ्यावर जायचं आहे",
+     "target_text": "I want to go to the beach today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती बस समुद्रकिनाऱ्याकडे जाते",
+     "target_text": "the bus goes to the beach",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खालती समुद्रकिनाऱ्यापर्यंत जायचं आहे",
+     "target_text": "I want to go down to the beach",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "समुद्रकिनारा कुठे आहे ते मला सांग.",
+     "target_text": "Tell me where the beach is.",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 561,
+  "phrases": {
+   "561:1": [
+    {
+     "known_text": "वेगवान",
+     "target_text": "fast",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की ती वेगवान गाडी आहे",
+     "target_text": "I'm sure it's a fast car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती एक वेगवान गाडी आहे",
+     "target_text": "it's a fast car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खूप वेगवान गाडी",
+     "target_text": "a very fast car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वेगवान गाडी हवी आहे",
+     "target_text": "I want a fast car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती एक खूप वेगवान गाडी आहे",
+     "target_text": "it's a very fast car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याकडे वेगवान गाडी आहे का?",
+     "target_text": "do you have a fast car?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती वेगवान गाडी आहे का याची मला पर्वा नाही",
+     "target_text": "I don't care if it's a fast car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित आहे की ती एक वेगवान गाडी आहे",
+     "target_text": "I know it's a fast car",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 562,
+  "phrases": {
+   "562:1": [
+    {
+     "known_text": "मला तिथे सुरक्षित पोहोचायचं आहे",
+     "target_text": "I want to get there safely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सुरक्षितपणे घरी",
+     "target_text": "safely home",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सुरक्षितपणे घरी पोहोचणे",
+     "target_text": "to get home safely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला फक्त सुरक्षितपणे घरी पोहोचायचं आहे",
+     "target_text": "I just want to get home safely",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला सुरक्षितपणे घरी जायचं आहे का?",
+     "target_text": "do you want to get home safely?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज सुरक्षितपणे घरी जायचं आहे",
+     "target_text": "I want to get home safely today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला सुरक्षितपणे घरी जायचं आहे",
+     "target_text": "we want to get home safely",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सकाळी सुरक्षितपणे घरी पोहोचायचं आहे",
+     "target_text": "I want to get home safely in the morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सुरक्षितपणे आणि शक्य तितक्या लवकर घरी पोहोचणे",
+     "target_text": "to get home safely and as quickly as possible",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 563,
+  "phrases": {
+   "563:1": [
+    {
+     "known_text": "जमणे",
+     "target_text": "to manage",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला मदत करणं जमलंच नसतं",
+     "target_text": "I wouldn't have been able to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला ते जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुमच्याशिवाय मला जमलंच नसतं",
+     "target_text": "I wouldn't have been able to without you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय मला ते जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do it without your help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ते एवढ्या लवकर जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do it so quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काल ते जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do it yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याशिवाय मला ते जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do it without you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला हे सगळं जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do all this",
+     "phrase_role": "use"
+    }
+   ],
+   "563:2": [
+    {
+     "known_text": "चालू ठेवणे",
+     "target_text": "to keep on",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी पुढे चालू ठेवण्याचा प्रयत्न करतोय",
+     "target_text": "I'm trying to keep going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला पुढे चालू ठेवायचं आहे",
+     "target_text": "I want to keep going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला पुढे चालू ठेवायचं आहे",
+     "target_text": "you want to keep going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आज पुढे चालू ठेवायचं आहे",
+     "target_text": "I want to keep going today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला पुढे चालू ठेवायचं आहे का?",
+     "target_text": "do you want to keep going?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही की मला पुढे चालू ठेवता येईल का",
+     "target_text": "I'm not sure if I can keep going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आपण पुढे चालू ठेवूया",
+     "target_text": "let's keep going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पुढे चालू ठेवणं जमलंच नसतं",
+     "target_text": "I wouldn't have been able to keep going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला थोडा जास्त वेळ पुढे चालू ठेवायचं आहे",
+     "target_text": "you want to keep going for a little longer",
+     "phrase_role": "use"
+    }
+   ],
+   "563:3": [
+    {
+     "known_text": "अजून",
+     "target_text": "any more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की मला अजून पुढे चालू ठेवणं जमलंच नसतं",
+     "target_text": "I'm sure I wouldn't have been able to keep going any longer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला अजून पुढे जमणार नाही",
+     "target_text": "I can't go on any longer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "अजून पुढे नाही",
+     "target_text": "not any longer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला अजून पुढे चालू ठेवणं जमलंच नसतं",
+     "target_text": "I wouldn't have been able to keep going any longer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अजून पुढे थांबायचं नाही",
+     "target_text": "I don't want to wait any longer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अजून पुढे हे करायचं नाही",
+     "target_text": "I don't want to do this any longer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही अजून पुढे थांबू शकत नाही",
+     "target_text": "we can't wait any longer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अजून पुढे चालू ठेवायचं नाही",
+     "target_text": "I don't want to keep going any longer",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 564,
+  "phrases": {
+   "564:1": [
+    {
+     "known_text": "मदत",
+     "target_text": "help",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मी तुमच्या मदतीशिवाय संपवू शकत नाही",
+     "target_text": "I can't finish without your help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय मला जमलंच नसतं",
+     "target_text": "I wouldn't have been able to without your help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय नाही",
+     "target_text": "not without your help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय मला ते जमलंच नसतं",
+     "target_text": "I wouldn't have been able to do it without your help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुमच्या मदतीशिवाय हे करायचं नाही",
+     "target_text": "I don't want to do this without your help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय मला खात्री नाही",
+     "target_text": "I'm not sure without your help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय मला काल ते जमलं नसतं",
+     "target_text": "I wouldn't have been able to do it yesterday without your help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्या मदतीशिवाय मला आज ते जमलं नसतं",
+     "target_text": "I wouldn't have been able to do it today without your help",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 565,
+  "phrases": {
+   "565:1": [
+    {
+     "known_text": "विचार",
+     "target_text": "thought",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की मी त्याबद्दल विचार केला असता",
+     "target_text": "I'm sure I'd have thought about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी त्याबद्दल विचार केला असता",
+     "target_text": "I'd have thought about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी अजून विचार केला असता",
+     "target_text": "I'd have thought more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी त्याबद्दल अजून काळजीपूर्वक विचार केला असता",
+     "target_text": "I'd have thought about it more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी त्याबद्दल जास्त विचार केला असता",
+     "target_text": "I'd have thought about it more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी त्याबद्दल काळजीपूर्वक विचार केला असता",
+     "target_text": "I'd have thought about it carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी कालच त्याबद्दल विचार केला असता",
+     "target_text": "I'd have thought about it yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज त्याबद्दल अजून विचार केला असता",
+     "target_text": "I'd have thought about it more today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 566,
+  "phrases": {
+   "566:1": [
+    {
+     "known_text": "असती",
+     "target_text": "been",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ती माझी निवड असती तर मी त्याबद्दल विचार केला असता",
+     "target_text": "I'd have thought about it if it had been my choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चांगली कल्पना असती तर",
+     "target_text": "if it had been a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वेगवान गाडी असती तर",
+     "target_text": "if it had been a fast car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती माझी निवड असती तर मी अजून विचार केला असता",
+     "target_text": "I'd have thought more if it had been my choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती चांगली कल्पना असती तर मी त्याबद्दल विचार केला असता",
+     "target_text": "I'd have thought about it if it had been a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती माझी निवड असती तर मी आज विचार केला असता",
+     "target_text": "I'd have thought about it today if it had been my choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती वेगवान गाडी असती तर मी त्याबद्दल विचार केला असता",
+     "target_text": "I'd have thought about it if it had been a fast car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती माझी निवड असती तर मी काळजीपूर्वक विचार केला असता",
+     "target_text": "I'd have thought carefully if it had been my choice",
+     "phrase_role": "use"
+    }
+   ],
+   "566:2": [
+    {
+     "known_text": "निवड",
+     "target_text": "choice",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला खात्री आहे की ती माझी निवड असती तर मी अजून विचार केला असता",
+     "target_text": "I'm sure I'd have thought more if it had been my choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती माझी निवड आहे",
+     "target_text": "it's my choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ती माझी निवड नाही",
+     "target_text": "it's not my choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खात्री नाही की ती माझी निवड आहे",
+     "target_text": "I'm not sure it's my choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती माझी निवड असती तर मी अजून विचार केला असता",
+     "target_text": "I'd have thought more if it had been my choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती आज माझी निवड आहे",
+     "target_text": "it's my choice today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती खरंच माझी निवड नव्हती",
+     "target_text": "it wasn't really my choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती माझी निवड आहे का?",
+     "target_text": "is it my choice?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 567,
+  "phrases": {
+   "567:1": [
+    {
+     "known_text": "छान",
+     "target_text": "lovely",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला भेटून छान वाटलं",
+     "target_text": "it's been lovely to see you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे छान वाटतंय",
+     "target_text": "it's been lovely here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज छान वाटतंय",
+     "target_text": "it's been lovely today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मुलांशी बोलायला छान वाटतंय",
+     "target_text": "it's been lovely to speak with the children",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याशी बोलायला छान वाटतंय",
+     "target_text": "it's been lovely to speak with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला भेटून छान वाटतंय",
+     "target_text": "it's been lovely to meet you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज सकाळी छान वाटतंय",
+     "target_text": "it's been lovely this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मुलांबरोबर छान वाटतंय",
+     "target_text": "it's been lovely with the children",
+     "phrase_role": "use"
+    }
+   ],
+   "567:2": [
+    {
+     "known_text": "बाहेर",
+     "target_text": "outdoors",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "बाहेर वेळ घालवणं छान वाटलं",
+     "target_text": "it's been lovely spending time outdoors",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मुलांबरोबर बाहेर वेळ घालवणं",
+     "target_text": "spending time outdoors with the children",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज बाहेर वेळ घालवणं",
+     "target_text": "spending time outdoors today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मुलांबरोबर बाहेर वेळ घालवणं छान वाटतंय",
+     "target_text": "it's been lovely spending time outdoors with the children",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज बाहेर वेळ घालवणं छान वाटतंय",
+     "target_text": "it's been lovely spending time outdoors today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे बाहेर वेळ घालवणं छान वाटतंय",
+     "target_text": "it's been lovely spending time outdoors here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बागेत बाहेर वेळ घालवणं छान वाटतंय",
+     "target_text": "it's been lovely spending time outdoors in the garden",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याबरोबर बाहेर वेळ घालवणं छान वाटतंय",
+     "target_text": "it's been lovely spending time outdoors with you",
+     "phrase_role": "use"
+    }
+   ],
+   "567:3": [
+    {
+     "known_text": "बघत",
+     "target_text": "watching",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मुलांना बाहेर खेळताना बघत",
+     "target_text": "watching the children play outdoors",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे मुलांना खेळताना बघत",
+     "target_text": "watching the children play here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज मुलांना खेळताना बघत",
+     "target_text": "watching the children play today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मुलांना खेळताना बघणं छान वाटतंय",
+     "target_text": "it's been lovely watching the children play",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज मुलांना खेळताना बघणं छान वाटतंय",
+     "target_text": "it's been lovely watching the children play today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "बागेत मुलांना खेळताना बघणं छान वाटतंय",
+     "target_text": "it's been lovely watching the children play in the garden",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे मुलांना खेळताना बघणं छान वाटतंय",
+     "target_text": "it's been lovely watching the children play here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला मुलांना खेळताना बघायला आवडतं",
+     "target_text": "I like watching the children play",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 568,
+  "phrases": {
+   "568:1": [
+    {
+     "known_text": "मला सुधारणा बघायची आहे",
+     "target_text": "I want to see an improvement",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मोठी सुधारणा",
+     "target_text": "a big improvement",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडी सुधारणा",
+     "target_text": "a small improvement",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला त्यात मोठी सुधारणा दिसली",
+     "target_text": "I saw a big improvement in it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज एक छोटी सुधारणा दिसली",
+     "target_text": "I saw a small improvement today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्यात सुधारणा बघायची आहे",
+     "target_text": "I want to see an improvement in it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला एक मोठी सुधारणा हवी आहे",
+     "target_text": "I want a big improvement",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्यात काही सुधारणा दिसली",
+     "target_text": "I saw some improvement in it",
+     "phrase_role": "use"
+    }
+   ],
+   "568:2": [
+    {
+     "known_text": "अपेक्षा",
+     "target_text": "expectation",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला एका मित्राला भेटायची अपेक्षा आहे",
+     "target_text": "I'm expecting to see a friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला ते बघायची अपेक्षा आहे",
+     "target_text": "I'm expecting to see it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आज अपेक्षा आहे",
+     "target_text": "I'm expecting today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला त्यात सुधारणा बघायची अपेक्षा आहे",
+     "target_text": "I'm expecting to see an improvement",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला भेटायची अपेक्षा आहे",
+     "target_text": "I'm expecting to meet you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काहीतरी चांगलं बघायची अपेक्षा आहे",
+     "target_text": "I'm expecting to see something good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला एका मोठ्या सुधारणेची अपेक्षा आहे",
+     "target_text": "I'm expecting a big improvement",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पुढच्या वेळी सुधारणा बघायची अपेक्षा आहे",
+     "target_text": "I'm expecting to see an improvement next time",
+     "phrase_role": "use"
+    }
+   ],
+   "568:3": [
+    {
+     "known_text": "भेटणे",
+     "target_text": "to meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आम्ही भेटू तेव्हा मी तयार असेन",
+     "target_text": "I'll be ready when we meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पुढच्या वेळी आम्ही भेटू तेव्हा",
+     "target_text": "next time we meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्या आम्ही भेटू तेव्हा",
+     "target_text": "when we meet tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पुढच्या वेळी आम्ही भेटू तेव्हा मला सुधारणा बघायची अपेक्षा आहे",
+     "target_text": "I'm expecting to see an improvement next time we meet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही भेटू तेव्हा मला तुमच्याशी बोलायचं आहे",
+     "target_text": "I want to speak with you when we meet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही उद्या भेटू तेव्हा मला ते सांगा",
+     "target_text": "tell me when we meet tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही पुढच्या वेळी भेटू तेव्हा मला सुधारणा बघायची आहे",
+     "target_text": "I want to see an improvement when we meet next time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही भेटू तेव्हा मला तुमच्याशी इंग्रजी बोलायचं आहे",
+     "target_text": "I want to speak English with you when we meet",
      "phrase_role": "use"
     }
    ]

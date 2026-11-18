@@ -1,0 +1,31 @@
+{
+ "seed": 512,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्ही माझ्या आईसाठी दार उघडं धराल का?",
+     "can you hold the door open for my mother?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी चाव्या आणेपर्यंत तुम्ही इथे वाट पाहाल का?",
+     "can you wait here while I fetch the keys?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0512L01B01": "आईसाठी|reviewed by the planner: a form of a taught word or the seed's own wording (K6)",
+  "S0512L02B01": "पाहाल|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

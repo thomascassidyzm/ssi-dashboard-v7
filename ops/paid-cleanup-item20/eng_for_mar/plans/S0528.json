@@ -1,0 +1,41 @@
+{
+ "seed": 528,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला त्या वस्तूंची गरज आहे",
+     "I need those things",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी दुसऱ्या खोलीत वाट पाहतोय",
+     "I'm waiting in another room",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मला बहुधा पैसे ठेवायचे असतील",
+     "I'm probably supposed to keep the money",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0528L01B01": "वस्तूंची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)",
+  "S0528L03B01": "ठेवायचे|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
