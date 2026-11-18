@@ -1,0 +1,29 @@
+{
+ "at": "2026-11-18T14:54:25.645Z",
+ "status": 200,
+ "ms": null,
+ "ok": true,
+ "applied": true,
+ "event_id": "9f011e73-8dfe-4247-8214-0dcefe28b2bd",
+ "undo_file": "2026-11-18T14-54-25-644Z-9f011e73-8dfe-4247-8214-0dcefe28b2bd.json",
+ "error": null,
+ "code": null,
+ "seeds": [
+  272,
+  274,
+  275,
+  276,
+  277,
+  279,
+  281,
+  283,
+  284,
+  286
+ ],
+ "counts": {
+  "insert": 12,
+  "update": 32,
+  "delete": 2
+ },
+ "recorded_from_undo_file": "queue unit was stopped mid-request at 14:53:46 by the surface; server committed at 14:54:25 (cs #759·AI)"
+}
