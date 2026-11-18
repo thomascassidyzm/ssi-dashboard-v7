@@ -1,0 +1,76 @@
+{
+ "seed": 63,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्हाला त्याबद्दल खात्री आहे का?",
+     "are you sure about it?"
+    ],
+    "B03": [
+     "पण तुम्हाला खात्री आहे का?",
+     "but are you sure?"
+    ],
+    "U01": [
+     "तुम्हाला परत यायचं आहे, याची तुम्हाला खात्री आहे का?",
+     "are you sure you want to come back?"
+    ],
+    "U02": [
+     "तुम्हाला उत्तर माहित आहे, याची तुम्हाला खात्री आहे का?",
+     "are you sure you know the answer?"
+    ],
+    "U03": [
+     "तुमच्याकडे वेळ आहे, याची तुम्हाला खात्री आहे का?",
+     "are you sure you have time?"
+    ],
+    "U04": [
+     "ते उपयोगी आहे, याची तुम्हाला खात्री आहे का?",
+     "are you sure it's useful?"
+    ],
+    "U05": [
+     "तुम्हाला समजतं, याची तुम्हाला खात्री आहे का?",
+     "are you sure you understand?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्हाला उत्तराबद्दल खात्री आहे का?",
+     "are you sure about the answer?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "मला मदत करायला तुमची हरकत नाही",
+     "you don't mind helping me"
+    ],
+    "U02": [
+     "मला मदत करायला तुमची हरकत नाही, हे मला माहित आहे",
+     "I know you don't mind helping me"
+    ],
+    "U03": [
+     "मला वाटतं की मला मदत करायला तुमची हरकत नाही",
+     "I think that you don't mind helping me"
+    ],
+    "U04": [
+     "उद्या मला मदत करायला तुमची हरकत नाही, याची तुम्हाला खात्री आहे का?",
+     "are you sure you don't mind helping me tomorrow?"
+    ],
+    "U05": [
+     "मला मदत करायला तुमची हरकत नसेल, तर मला जास्त सराव करायचा आहे",
+     "if you don't mind helping me, I want to practise more"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "उद्या मदत करायला तुमची हरकत नाही",
+     "don't mind helping me tomorrow"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

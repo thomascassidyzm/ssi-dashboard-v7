@@ -1,0 +1,802 @@
+[
+ {
+  "seed_number": 34,
+  "phrases": {
+   "34:1": [
+    {
+     "known_text": "त्याला",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "गप्प राहणे",
+     "target_text": "to be quiet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "नाही",
+     "target_text": "doesn't want to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "त्याला गप्प राहायचं नाही",
+     "target_text": "he doesn't want to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण त्याला गप्प राहायचं नाही",
+     "target_text": "but he doesn't want to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कारण त्याला गप्प राहायचं नाही",
+     "target_text": "because he doesn't want to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याला दिवसभर गप्प राहायचं नाही",
+     "target_text": "he doesn't want to be quiet all day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला गप्प राहायचं नाही कारण त्याला इंग्रजी बोलायचं आहे",
+     "target_text": "he doesn't want to be quiet because he wants to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला गप्प राहायचं नाही, त्याला तुमच्याशी बोलायचं आहे",
+     "target_text": "he doesn't want to be quiet, he wants to speak with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला आज रात्री गप्प राहायचं नाही",
+     "target_text": "he doesn't want to be quiet tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला आत्ता गप्प राहायचं नाही",
+     "target_text": "he doesn't want to be quiet now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला आज गप्प राहायचं नाही",
+     "target_text": "he doesn't want to be quiet today",
+     "phrase_role": "build"
+    }
+   ],
+   "34:2": [
+    {
+     "known_text": "इतर लोक",
+     "target_text": "other people",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "इथे",
+     "target_text": "here",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "असताना",
+     "target_text": "when",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना",
+     "target_text": "when other people are here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना बोलणे",
+     "target_text": "to speak when other people are here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना शिकणे",
+     "target_text": "to learn when other people are here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला इतर लोक इथे असताना बोलायचं आहे",
+     "target_text": "I want to speak when other people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इतर लोक इथे असताना इंग्रजी शिकायचं आहे",
+     "target_text": "I want to learn English when other people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला इतर लोक इथे असताना गप्प राहायचं नाही",
+     "target_text": "he doesn't want to be quiet when other people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इतर लोक इथे असताना काहीतरी म्हणायचं आहे",
+     "target_text": "I want to say something when other people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला इतर लोक इथे असताना माझ्याशी बोलायचं आहे",
+     "target_text": "you want to speak with me when other people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना काहीतरी म्हणणे",
+     "target_text": "to say something when other people are here",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 36,
+  "phrases": {
+   "36:1": [
+    {
+     "known_text": "गोष्टी",
+     "target_text": "the story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गोष्टी वाचणे",
+     "target_text": "read the story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गोष्टी इंग्रजी",
+     "target_text": "the story in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काल गोष्टी",
+     "target_text": "the story yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काल गोष्ट वाचायची होती",
+     "target_text": "I wanted to read the story yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला गोष्ट वाचायची नाही",
+     "target_text": "she doesn't want to read the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला गोष्ट लवकर वाचायची होती",
+     "target_text": "she wanted to read the story quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "जायच्या आधी गोष्ट वाचायची होती",
+     "target_text": "I wanted to read the story before I have to go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गोष्ट काल वाचायची होती का?",
+     "target_text": "did you want to read the story yesterday?",
+     "phrase_role": "use"
+    }
+   ],
+   "36:2": [
+    {
+     "known_text": "व्यत्यय आणणे",
+     "target_text": "to interrupt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गोष्टीत व्यत्यय आणणे",
+     "target_text": "to interrupt the story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता व्यत्यय आणणे",
+     "target_text": "to interrupt now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला व्यत्यय आणायला आवडणार नाही",
+     "target_text": "I wouldn't like to interrupt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला गोष्टीत व्यत्यय आणायचा नाही",
+     "target_text": "we don't want to interrupt the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला व्यत्यय आणायचा नाही",
+     "target_text": "we don't want to interrupt",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला गोष्टीत व्यत्यय आणायला आवडत नाही",
+     "target_text": "I don't like to interrupt the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला गोष्टीत व्यत्यय आणायचा नाही",
+     "target_text": "you don't want to interrupt the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुमच्या बोलण्यात व्यत्यय आणायचा नाही",
+     "target_text": "I don't want to interrupt you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 37,
+  "phrases": {
+   "37:1": [
+    {
+     "known_text": "काळजीपूर्वक",
+     "target_text": "carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काळजीपूर्वक बोलणे",
+     "target_text": "carefully to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काळजीपूर्वक शिकणे",
+     "target_text": "carefully to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काळजीपूर्वक वाचणे",
+     "target_text": "carefully read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काळजीपूर्वक काहीतरी वाचायचं होतं",
+     "target_text": "I wanted to read something carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "काळजीपूर्वक इंग्रजी बोलणे उपयोगी आहे",
+     "target_text": "it's useful to speak carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "काळजीपूर्वक गोष्ट वाचायची होती",
+     "target_text": "I wanted to read the story carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "काळजीपूर्वक काहीतरी वाचायचं होतं का?",
+     "target_text": "did you want to read something carefully?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला काहीही काळजीपूर्वक वाचायचं नाही",
+     "target_text": "she doesn't want to read anything carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काळजीपूर्वक सराव करणार आहे",
+     "target_text": "I'm going to practise carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी जास्त काळजीपूर्वक सराव करणार आहे",
+     "target_text": "I'm going to practise more carefully",
+     "phrase_role": "use"
+    }
+   ],
+   "37:2": [
+    {
+     "known_text": "गेल्या महिन्यात",
+     "target_text": "last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गेल्या महिन्यात इंग्रजी शिकणे",
+     "target_text": "to learn English last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गेल्या महिन्यात गोष्ट वाचणे",
+     "target_text": "to read the story last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गेल्या महिन्यात माझ्याशी बोलणे",
+     "target_text": "to speak with me last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गेल्या महिन्यात काहीतरी वाचायचं होतं",
+     "target_text": "I wanted to read something last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गेल्या महिन्यात गोष्ट वाचायची होती का?",
+     "target_text": "did you want to read the story last month?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला गेल्या महिन्यात काळजीपूर्वक काहीतरी वाचायचं होतं",
+     "target_text": "you wanted to read something carefully last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गेल्या महिन्यात गोष्ट काळजीपूर्वक वाचायची होती",
+     "target_text": "I wanted to read the story carefully last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गेल्या महिन्यात काहीही काळजीपूर्वक वाचायचं होतं का?",
+     "target_text": "did you want to read anything carefully last month?",
+     "phrase_role": "use"
+    }
+   ],
+   "37:3": [
+    {
+     "known_text": "त्याबद्दल",
+     "target_text": "about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल वाचणे",
+     "target_text": "to read about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल बोलणे",
+     "target_text": "to speak about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल शिकणे",
+     "target_text": "to learn about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल इंग्रजीत बोलणे उपयोगी आहे",
+     "target_text": "it's useful to speak in English about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गेल्या महिन्यात त्याबद्दल वाचायचं होतं का?",
+     "target_text": "did you want to read about it last month?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काल त्याबद्दल वाचायचं होतं",
+     "target_text": "you wanted to read about it yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला काहीही त्याबद्दल वाचायचं नाही",
+     "target_text": "she doesn't want to read anything about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याबद्दल बोलण्याची मी वाट पाहतोय",
+     "target_text": "I'm looking forward to speaking about it",
+     "phrase_role": "use"
+    }
+   ],
+   "37:4": [
+    {
+     "known_text": "विचार करायला सुरुवात केली",
+     "target_text": "started to think",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काळजीपूर्वक विचार करायला सुरुवात केली",
+     "target_text": "started to think carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल विचार करायला सुरुवात केली",
+     "target_text": "started to think about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गेल्या महिन्यात विचार करायला सुरुवात केली",
+     "target_text": "started to think last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गेल्या महिन्यात त्याबद्दल काळजीपूर्वक विचार करायला सुरुवात केली",
+     "target_text": "I started to think about it carefully last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी त्याबद्दल इंग्रजीत विचार करायला सुरुवात केली",
+     "target_text": "I started to think about it in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिने त्याबद्दल काळजीपूर्वक विचार करायला सुरुवात केली",
+     "target_text": "she started to think about it carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिने गेल्या महिन्यात त्याबद्दल विचार करायला सुरुवात केली",
+     "target_text": "she started to think about it last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही त्याबद्दल इंग्रजीत विचार करायला सुरुवात केली",
+     "target_text": "you started to think about it in English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 38,
+  "phrases": {
+   "38:1": [
+    {
+     "known_text": "मी शिकतोय",
+     "target_text": "I've been learning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इंग्रजी शिकतोय",
+     "target_text": "I've been learning English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इंग्रजीत शिकतोय",
+     "target_text": "I've been learning in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी काळजीपूर्वक शिकतोय",
+     "target_text": "I've been learning carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इंग्रजी काळजीपूर्वक शिकतोय",
+     "target_text": "I've been learning English carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी इंग्रजी लवकर शिकतोय",
+     "target_text": "I've been learning English quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काळजीपूर्वक आज दुपारी शिकतोय",
+     "target_text": "I've been learning carefully this afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी दिवसभर इंग्रजी शिकतोय",
+     "target_text": "I've been learning English all day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी दुसऱ्या कोणाशीतरी इंग्रजी शिकतोय",
+     "target_text": "I've been learning English with someone else",
+     "phrase_role": "use"
+    }
+   ],
+   "38:2": [
+    {
+     "known_text": "साधारण आठवडाभरापासून",
+     "target_text": "for about a week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी साधारण आठवडाभरापासून इंग्रजी शिकतोय",
+     "target_text": "I've been learning English for about a week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी साधारण आठवडाभरापासून प्रयत्न करतोय",
+     "target_text": "I've been trying for about a week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण मी साधारण आठवडाभरापासून शिकतोय",
+     "target_text": "but I've been learning for about a week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी साधारण आठवडाभरापासून शिकतोय",
+     "target_text": "I've been learning for about a week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी त्याबद्दल साधारण आठवडाभरापासून शिकतोय",
+     "target_text": "I've been learning about it for about a week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "साधारण आठवडाभरापासून शिकतोय का?",
+     "target_text": "have you been learning for about a week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी साधारण आठवडाभरापासून इंग्रजी बोलायचा प्रयत्न करतोय",
+     "target_text": "I've been trying to speak English for about a week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "साधारण आठवडाभरापासून इंग्रजी शिकतोय का?",
+     "target_text": "have you been learning English for about a week?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 39,
+  "phrases": {
+   "39:1": [
+    {
+     "known_text": "थोडा",
+     "target_text": "a little",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडा इंग्रजी",
+     "target_text": "a little English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडा वाचणे",
+     "target_text": "read a little",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडा बोलणे",
+     "target_text": "to speak a little",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी थोडा शिकतोय",
+     "target_text": "I've been learning a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "थोडा काहीतरी काल वाचायचं होतं",
+     "target_text": "I wanted to read a little yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "थोडा वाचायचं होतं का?",
+     "target_text": "did you want to read a little?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "थोडा वाचणे उपयोगी आहे",
+     "target_text": "it's useful to read a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज सकाळी थोडा बोलायचं होतं",
+     "target_text": "I wanted to speak a little this morning",
+     "phrase_role": "use"
+    }
+   ],
+   "39:2": [
+    {
+     "known_text": "आज सकाळी",
+     "target_text": "this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सकाळी इंग्रजी बोलणे",
+     "target_text": "to speak English this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सकाळी गोष्ट वाचणे",
+     "target_text": "to read the story this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सकाळी आणि संध्याकाळी",
+     "target_text": "this morning and this evening",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सकाळी गोष्ट वाचायची होती",
+     "target_text": "I wanted to read the story this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज सकाळी इंग्रजी शिकतोय",
+     "target_text": "I've been learning English this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला आज सकाळी काहीही वाचायचं नाही",
+     "target_text": "she doesn't want to read anything this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज सकाळी त्याबद्दल काळजीपूर्वक विचार करायला सुरुवात केली",
+     "target_text": "I started to think about it carefully this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज सकाळी तुमच्याशी बोलायचं आहे",
+     "target_text": "I want to speak with you this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आज सकाळी सराव करणार आहे",
+     "target_text": "I'm going to practise this morning",
+     "phrase_role": "use"
+    }
+   ],
+   "39:3": [
+    {
+     "known_text": "पण मी",
+     "target_text": "but I'm",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "थोडा",
+     "target_text": "a little",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "थकलोय",
+     "target_text": "tired",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पण मी थोडा थकलोय",
+     "target_text": "but I'm a little tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण मी थोडा थकलोय आत्ता",
+     "target_text": "but I'm a little tired now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण मी आज थोडा थकलोय",
+     "target_text": "but I'm a little tired today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण संध्याकाळी मी थोडा थकलोय",
+     "target_text": "but I'm a little tired this evening",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण आज सकाळी मी थोडा थकलोय",
+     "target_text": "but I'm a little tired this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण मी थोडा थकलोय रात्री",
+     "target_text": "but I'm a little tired tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इंग्रजी बोलायचं आहे, पण मी थोडा थकलोय",
+     "target_text": "I want to speak English, but I'm a little tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण मी थोडा थकलोय आज दुपारी",
+     "target_text": "but I'm a little tired this afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी सराव करणार आहे पण मी थोडा थकलोय",
+     "target_text": "I'm going to practise but I'm a little tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी प्रयत्न करणार आहे पण मी थोडा थकलोय",
+     "target_text": "I'm going to try but I'm a little tired",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 40,
+  "phrases": {
+   "40:1": [
+    {
+     "known_text": "या क्षणी",
+     "target_text": "at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सध्या इथे",
+     "target_text": "here at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण सध्या",
+     "target_text": "but at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी सध्या थोडा थकलोय",
+     "target_text": "I'm a little tired at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी सध्या इंग्रजी शिकतोय",
+     "target_text": "I'm learning English at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला सध्या काहीही वाचायचं नाही",
+     "target_text": "she doesn't want to read anything at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सध्या काहीही वाचायचं नाही",
+     "target_text": "I don't want to read anything at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला सध्या गोष्टीत व्यत्यय आणायचा नाही",
+     "target_text": "we don't want to interrupt the story at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी सध्या इंग्रजी बोलायचा प्रयत्न करतोय",
+     "target_text": "I'm trying to speak English at the moment",
+     "phrase_role": "use"
+    }
+   ],
+   "40:2": [
+    {
+     "known_text": "कसं वाटतंय?",
+     "target_text": "how do you feel?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज कसं वाटतंय?",
+     "target_text": "how do you feel today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता कसं वाटतंय?",
+     "target_text": "how do you feel now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आणि कसं वाटतंय?",
+     "target_text": "and how do you feel?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला सध्या कसं वाटतंय?",
+     "target_text": "how do you feel at the moment?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज सकाळी कसं वाटतंय?",
+     "target_text": "how do you feel this morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "रात्री कसं वाटतंय?",
+     "target_text": "how do you feel tonight?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याबद्दल कसं वाटतंय?",
+     "target_text": "how do you feel about it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना तुम्हाला कसं वाटतंय?",
+     "target_text": "how do you feel when other people are here?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

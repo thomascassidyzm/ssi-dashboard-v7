@@ -1,0 +1,72 @@
+{
+ "seed": 50,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "शक्य तितक्या लवकर संपवणे",
+     "to finish as quickly as possible"
+    ],
+    "B03": [
+     "शक्य तितक्या लवकर शिकणे",
+     "to learn as quickly as possible"
+    ],
+    "U01": [
+     "मला शक्य तितक्या लवकर उत्तर द्यायचं आहे",
+     "I want to answer as quickly as possible"
+    ],
+    "U02": [
+     "मला शक्य तितक्या लवकर सुधारायचं आहे",
+     "I want to improve as quickly as possible"
+    ],
+    "U03": [
+     "मी शक्य तितक्या लवकर इंग्रजी शिकण्याचा प्रयत्न करतोय",
+     "I'm trying to learn English as quickly as possible"
+    ],
+    "U04": [
+     "शक्य तितक्या लवकर कसं शिकायचं याची मला खात्री नाही",
+     "I'm not sure how to learn as quickly as possible"
+    ],
+    "U05": [
+     "तिला शक्य तितक्या लवकर परत यायचं आहे",
+     "she wants to come back as quickly as possible"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "शक्य तितक्या लवकर परत येणे",
+     "to come back as quickly as possible"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "पटकन संपवण्याचा प्रयत्न करत नाहीये",
+     "not trying to finish quickly"
+    ],
+    "B03": [
+     "गोष्ट संपवण्याचा प्रयत्न करत नाहीये",
+     "not trying to finish the story"
+    ],
+    "U04": [
+     "मी आज सगळं संपवण्याचा प्रयत्न करत नाहीये",
+     "I'm not trying to finish everything today"
+    ],
+    "U05": [
+     "मला जावं लागण्यापूर्वी मी संपवण्याचा प्रयत्न करत नाहीये",
+     "I'm not trying to finish before I have to go"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मी संपवण्याचा प्रयत्न करत नाहीये",
+     "I'm not trying to finish"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
