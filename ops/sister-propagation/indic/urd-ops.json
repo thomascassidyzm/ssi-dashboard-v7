@@ -1,0 +1,256 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0073L02B01",
+   "expect": {
+    "known_text": "مجھے ابھی اور سیکھنا ہے",
+    "target_text": "I've got more to learn"
+   },
+   "set": {
+    "known_text": "لیکن مجھے ابھی اور سیکھنا ہے",
+    "target_text": "but I've got more to learn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0175L01B01",
+   "expect": {
+    "known_text": "آپ کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do?"
+   },
+   "set": {
+    "known_text": "آپ کل صبح کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do tomorrow morning?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0214L01B01",
+   "expect": {
+    "known_text": "ویک اینڈ پر",
+    "target_text": "at the weekend"
+   },
+   "set": {
+    "known_text": "کیا آپ ویک اینڈ پر آرام کرنا چاہتے ہیں؟",
+    "target_text": "do you want to relax at the weekend?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0224L01B01",
+   "expect": {
+    "known_text": "ابھی شروع کیا ہے",
+    "target_text": "he's just started"
+   },
+   "set": {
+    "known_text": "اس نے ابھی بولنا شروع کیا ہے",
+    "target_text": "he's just started to speak"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0243L01B01",
+   "expect": {
+    "known_text": "کھانا",
+    "target_text": "eat"
+   },
+   "set": {
+    "known_text": "وہ کھانا چاہتی ہے",
+    "target_text": "she wants to eat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0244L01B01",
+   "expect": {
+    "known_text": "پہلے سے بہت کچھ",
+    "target_text": "a lot already"
+   },
+   "set": {
+    "known_text": "ہم نے پہلے سے بہت کچھ کر لیا ہے",
+    "target_text": "we've done a lot already"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0254L01B01",
+   "expect": {
+    "known_text": "آج صبح سے",
+    "target_text": "since this morning"
+   },
+   "set": {
+    "known_text": "وہ آج صبح سے یہاں ہے",
+    "target_text": "she's been here since this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0262L01B01",
+   "expect": {
+    "known_text": "آپ کل بات کر رہے تھے",
+    "target_text": "you were talking to yesterday"
+   },
+   "set": {
+    "known_text": "کیا یہ وہ آدمی ہے جس سے آپ کل بات کر رہے تھے؟",
+    "target_text": "is that the man you were talking to yesterday?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0263L01B01",
+   "expect": {
+    "known_text": "آپ کا مطلب کون سے",
+    "target_text": "who you mean"
+   },
+   "set": {
+    "known_text": "مجھے معلوم ہے آپ کا مطلب کون سے ہے",
+    "target_text": "I know who you mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0281L02B01",
+   "expect": {
+    "known_text": "شروع کرنے سے پہلے",
+    "target_text": "before you start"
+   },
+   "set": {
+    "known_text": "ہمیں شروع کرنے سے پہلے کافی چاہیے",
+    "target_text": "we need coffee before you start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0283L02B01",
+   "expect": {
+    "known_text": "آپ کے دوستوں میں سے",
+    "target_text": "of your friends"
+   },
+   "set": {
+    "known_text": "آپ کے دوستوں میں سے کتنے یہاں ہیں؟",
+    "target_text": "how many of your friends are here?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0311L03B01",
+   "expect": {
+    "known_text": "یقین نہیں کر سکتا تھا",
+    "target_text": "he couldn't believe"
+   },
+   "set": {
+    "known_text": "وہ اس پر یقین نہیں کر سکتا تھا",
+    "target_text": "he couldn't believe it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0315L01B01",
+   "expect": {
+    "known_text": "جو گاڑی چاہتا تھا",
+    "target_text": "the car that he wanted"
+   },
+   "set": {
+    "known_text": "وہ گاڑی کہاں ہے جو وہ چاہتا تھا؟",
+    "target_text": "where is the car that he wanted?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0315L02B01",
+   "expect": {
+    "known_text": "استطاعت سے باہر تھا",
+    "target_text": "he couldn't afford"
+   },
+   "set": {
+    "known_text": "گاڑی خریدنا اس کی استطاعت سے باہر تھا",
+    "target_text": "he couldn't afford the car"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0324L02B01",
+   "expect": {
+    "known_text": "کے دونوں ہاتھ اوپر ہیں",
+    "target_text": "has both of her hands up"
+   },
+   "set": {
+    "known_text": "اس کے دونوں ہاتھ اوپر ہیں",
+    "target_text": "she has both of her hands up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0329L01B01",
+   "expect": {
+    "known_text": "یہ اہم ہے",
+    "target_text": "it's important"
+   },
+   "set": {
+    "known_text": "یہ بہت اہم ہے",
+    "target_text": "it's very important"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0607L01B01",
+   "expect": {
+    "known_text": "چیزیں مختلف طریقے سے کیں",
+    "target_text": "done things differently"
+   },
+   "set": {
+    "known_text": "ہم نے چیزیں مختلف طریقے سے کیں",
+    "target_text": "we've done things differently"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0616L01B01",
+   "expect": {
+    "known_text": "آپ نے یہ سوچا",
+    "target_text": "you thought that"
+   },
+   "set": {
+    "known_text": "مجھے یقین نہیں کہ آپ نے یہ سوچا",
+    "target_text": "I'm not sure you thought that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0618L01B01",
+   "expect": {
+    "known_text": "زیادہ عرصہ لگتا",
+    "target_text": "feel like a long time"
+   },
+   "set": {
+    "known_text": "کیا یہ زیادہ عرصہ لگتا ہے؟",
+    "target_text": "does it feel like a long time?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0620L01B01",
+   "expect": {
+    "known_text": "ہم آخری بار ملے",
+    "target_text": "we last saw each other"
+   },
+   "set": {
+    "known_text": "جہاں ہم آخری بار ملے",
+    "target_text": "where we last saw each other"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0636L01B01",
+   "expect": {
+    "known_text": "جین کا بیگ",
+    "target_text": "jane's bag"
+   },
+   "set": {
+    "known_text": "جین کا بیگ یہاں ہے",
+    "target_text": "Jane's bag is here"
+   }
+  }
+ ]
+}
