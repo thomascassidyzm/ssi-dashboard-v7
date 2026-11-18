@@ -818,6 +818,95 @@
    }
   },
   {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0367L01B03",
+    "seed_number": 367,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "मला वाटतं मला कोणीच सांगितलं नाही",
+    "target_text": "I think nobody told me",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 22,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0390L03B04",
+    "seed_number": 390,
+    "lego_index": 3,
+    "position": 10,
+    "known_text": "जो इथे उभा आहे तो",
+    "target_text": "the one who is standing here",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0460L01B03",
+    "seed_number": 460,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "मी हॉटेलजवळ राहू शकतो",
+    "target_text": "I can stay near the hotel",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 25,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0466L02B04",
+    "seed_number": 466,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "ते भिंतीच्या पलीकडे नव्हतं",
+    "target_text": "it wasn't over the wall",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 23,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
    "op": "phrase.update",
    "phrase_id": "eng_for_mar:S0001L02B01",
    "expect": {
@@ -5145,11 +5234,11 @@
     "target_text": "can continue"
    },
    "set": {
-    "known_text": "तो म्हणाला की तो चालू ठेवू शकेल",
-    "target_text": "he said that he can continue",
+    "known_text": "तो आज चालू ठेवू शकेल",
+    "target_text": "he can continue today",
     "decomposition": null,
-    "word_count": 28,
-    "lego_position": "end"
+    "word_count": 21,
+    "lego_position": "middle"
    }
   },
   {
@@ -5295,11 +5384,1751 @@
     "target_text": "who said that"
    },
    "set": {
-    "known_text": "मी कोणालातरी ओळखतो जिने सांगितलं की तिला काळजी आहे",
-    "target_text": "I know someone who said that she's worried",
+    "known_text": "मला वाटतं मी कोणालातरी भेटलो जिने सांगितलं की तिला काळजी आहे",
+    "target_text": "I think I met someone who said that she's worried",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0344L01B01",
+   "expect": {
+    "known_text": "तो आनंदाने मदत करेल",
+    "target_text": "he's happy to help you"
+   },
+   "set": {
+    "known_text": "मला वाटतं तो तुम्हाला आनंदाने मदत करेल",
+    "target_text": "I think he's happy to help you",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0344L02B01",
+   "expect": {
+    "known_text": "ज्याने सांगितलं की",
+    "target_text": "who said that"
+   },
+   "set": {
+    "known_text": "ज्याने सांगितलं की तो खूश आहे",
+    "target_text": "who said that he's happy",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0345L01B01",
+   "expect": {
+    "known_text": "तो अजून निघायला तयार नाही",
+    "target_text": "he's not ready to leave yet"
+   },
+   "set": {
+    "known_text": "नाही, तो अजून निघायला तयार नाही",
+    "target_text": "no he's not ready to leave yet",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0346L01B01",
+   "expect": {
+    "known_text": "आवडलं",
+    "target_text": "liked"
+   },
+   "set": {
+    "known_text": "मला ते पुस्तक आवडलं",
+    "target_text": "I liked that book",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0346L02B01",
+   "expect": {
+    "known_text": "तिला कळावं असं मला वाटत होतं",
+    "target_text": "I wanted her to know"
+   },
+   "set": {
+    "known_text": "तिला हे कळावं असं मला वाटत होतं",
+    "target_text": "I wanted her to know this",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0347L01B01",
+   "expect": {
+    "known_text": "काय घडत होतं?",
+    "target_text": "what was happening?"
+   },
+   "set": {
+    "known_text": "काय घडत होतं हे मला माहित नाही",
+    "target_text": "I don't know what was happening",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0347L02B01",
+   "expect": {
+    "known_text": "त्याला जाणून घ्यायचं होतं",
+    "target_text": "he wanted to know"
+   },
+   "set": {
+    "known_text": "तुम्हाला कोण म्हणायचंय हे त्याला जाणून घ्यायचं होतं",
+    "target_text": "he wanted to know who you mean",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0347L03B01",
+   "expect": {
+    "known_text": "आठवड्यापूर्वी",
+    "target_text": "a week ago"
+   },
+   "set": {
+    "known_text": "ती आठवड्यापूर्वी खूप व्यस्त होती",
+    "target_text": "she was too busy a week ago",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0348L01B01",
+   "expect": {
+    "known_text": "तिला जाणून घ्यायचं नव्हतं",
+    "target_text": "she didn't want to know"
+   },
+   "set": {
+    "known_text": "तुम्हाला कोण म्हणायचंय हे तिला जाणून घ्यायचं नव्हतं",
+    "target_text": "she didn't want to know who you mean",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0349L01B01",
+   "expect": {
+    "known_text": "शुक्रवारी",
+    "target_text": "Friday"
+   },
+   "set": {
+    "known_text": "मी शुक्रवारी रात्री तयार असेन",
+    "target_text": "I'll be ready on Friday night",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0349L02B01",
+   "expect": {
+    "known_text": "त्याला बाहेर जायचं होतं का?",
+    "target_text": "did he want to go out?"
+   },
+   "set": {
+    "known_text": "त्याला संध्याकाळी बाहेर जायचं होतं का?",
+    "target_text": "did he want to go out this evening?",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0350L01B01",
+   "expect": {
+    "known_text": "त्याला भेटायचं होतं",
+    "target_text": "he wanted to see"
+   },
+   "set": {
+    "known_text": "त्याला माझ्या वडिलांना भेटायचं होतं",
+    "target_text": "he wanted to see my father",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0350L02B01",
+   "expect": {
+    "known_text": "काही जुन्या मित्रांना",
+    "target_text": "some old friends"
+   },
+   "set": {
+    "known_text": "मला आज काही जुन्या मित्रांना भेटायचं आहे",
+    "target_text": "I want to see some old friends today",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0351L01B01",
+   "expect": {
+    "known_text": "त्याला सोडायचं नव्हतं",
+    "target_text": "he didn't want to leave"
+   },
+   "set": {
+    "known_text": "त्याला मला एकटं सोडायचं नव्हतं",
+    "target_text": "he didn't want to leave me on my own",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0352L01B01",
+   "expect": {
+    "known_text": "त्याला हवं असलं तरी",
+    "target_text": "even if he wanted to"
+   },
+   "set": {
+    "known_text": "त्याला हवं असलं तरी तो तुम्हाला मदत करू शकत नाही",
+    "target_text": "even if he wanted to he can't help you",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0352L02B01",
+   "expect": {
+    "known_text": "त्याला ते जमणार नाही",
+    "target_text": "he wouldn't be able to"
+   },
+   "set": {
+    "known_text": "मला वाटतं की त्याला ते जमणार नाही",
+    "target_text": "I think that he wouldn't be able to",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0353L01B01",
+   "expect": {
+    "known_text": "धावायची",
+    "target_text": "run"
+   },
+   "set": {
+    "known_text": "मला धावायचं नाही",
+    "target_text": "I don't want to run",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0353L02B01",
+   "expect": {
+    "known_text": "मैदानाभोवती",
+    "target_text": "around the field"
+   },
+   "set": {
+    "known_text": "मैदानाभोवती चालणे",
+    "target_text": "to walk around the field",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0353L03B01",
+   "expect": {
+    "known_text": "तिला गरज होती",
+    "target_text": "she needed to"
+   },
+   "set": {
+    "known_text": "तिला इथे धावायची गरज होती",
+    "target_text": "she needed to run here",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0354L01B01",
+   "expect": {
+    "known_text": "रागावलेलं",
+    "target_text": "angry"
+   },
+   "set": {
+    "known_text": "तुम्ही रागावलेले का आहात?",
+    "target_text": "why are you angry?",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0354L02B01",
+   "expect": {
+    "known_text": "त्याला दिसायची गरज नव्हती",
+    "target_text": "he didn't need to appear"
+   },
+   "set": {
+    "known_text": "त्याला खूश दिसायची गरज नव्हती",
+    "target_text": "he didn't need to appear happy",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0355L01B01",
+   "expect": {
+    "known_text": "तिला गरज होती का?",
+    "target_text": "did she need to?"
+   },
+   "set": {
+    "known_text": "तिला त्याच्याशी बोलायची गरज होती का?",
+    "target_text": "did she need to talk to him?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0355L02B01",
+   "expect": {
+    "known_text": "तुम्ही ओळखत असलेल्या त्या बाईशी",
+    "target_text": "to that woman you know"
+   },
+   "set": {
+    "known_text": "तुम्ही ओळखत असलेल्या त्या बाईशी तुम्हाला बोलायची गरज होती का?",
+    "target_text": "did you need to talk to that woman you know?",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0356L01B01",
+   "expect": {
+    "known_text": "चर्चा करायचं",
+    "target_text": "to discuss"
+   },
+   "set": {
+    "known_text": "त्यांना आज काहीतरी महत्त्वाचं चर्चा करायचं होतं",
+    "target_text": "they had something important to discuss today",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0356L02B01",
+   "expect": {
+    "known_text": "त्यांना काहीतरी महत्त्वाचं",
+    "target_text": "they had something important"
+   },
+   "set": {
+    "known_text": "मला वाटतं त्यांना काहीतरी महत्त्वाचं चर्चा करायचं होतं",
+    "target_text": "I think they had something important to discuss",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0357L01B01",
+   "expect": {
+    "known_text": "मेसेज",
+    "target_text": "message"
+   },
+   "set": {
+    "known_text": "माझ्याकडे एक मेसेज आहे",
+    "target_text": "I've got a message",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0357L02B01",
+   "expect": {
+    "known_text": "पाठवायचा होता",
+    "target_text": "wanted to send"
+   },
+   "set": {
+    "known_text": "तिला आज एक मेसेज पाठवायचा होता",
+    "target_text": "she wanted to send a message today",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0358L01B01",
+   "expect": {
+    "known_text": "वर पोहोचता",
+    "target_text": "reach the top"
+   },
+   "set": {
+    "known_text": "तिला आज वर पोहोचता आलं नाही",
+    "target_text": "she couldn't reach the top today",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0358L02B01",
+   "expect": {
+    "known_text": "तिला आलं नाही",
+    "target_text": "she couldn't"
+   },
+   "set": {
+    "known_text": "तिला सिनेमा बघता आला नाही",
+    "target_text": "she couldn't watch the film",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0358L03B01",
+   "expect": {
+    "known_text": "तुमची मैत्रीण म्हणाली की",
+    "target_text": "your friend said that"
+   },
+   "set": {
+    "known_text": "तुमची मैत्रीण म्हणाली की ते महत्त्वाचं आहे",
+    "target_text": "your friend said that it's important",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0359L01B01",
+   "expect": {
+    "known_text": "डावीकडे वळू",
+    "target_text": "turn left"
+   },
+   "set": {
+    "known_text": "तो आज डावीकडे वळू शकेल",
+    "target_text": "he could turn left today",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0360L01B01",
+   "expect": {
+    "known_text": "आणखी काही",
+    "target_text": "anything else"
+   },
+   "set": {
+    "known_text": "म्हणजे तुमच्या मित्राने आणखी काही सांगितलं का?",
+    "target_text": "so did your friend say anything else?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0360L02B01",
+   "expect": {
+    "known_text": "तुमच्या मित्राने सांगितलं का?",
+    "target_text": "did your friend say?"
+   },
+   "set": {
+    "known_text": "ते महत्त्वाचं आहे असं तुमच्या मित्राने सांगितलं का?",
+    "target_text": "did your friend say that it's important?",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0361L01B01",
+   "expect": {
+    "known_text": "गप्प",
+    "target_text": "quiet"
+   },
+   "set": {
+    "known_text": "तो आज गप्प होता",
+    "target_text": "he was quiet today",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0362L01B01",
+   "expect": {
+    "known_text": "बराच",
+    "target_text": "rather"
+   },
+   "set": {
+    "known_text": "तो आज बराच गप्प होता",
+    "target_text": "he was rather quiet today",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0362L02B01",
+   "expect": {
+    "known_text": "तुम्ही गेल्यावर",
+    "target_text": "after you left"
+   },
+   "set": {
+    "known_text": "तुम्ही गेल्यावर मी कोणालातरी भेटलो",
+    "target_text": "I met someone after you left",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0364L01B01",
+   "expect": {
+    "known_text": "जागा",
+    "target_text": "place"
+   },
+   "set": {
+    "known_text": "मला ती जागा आवडते",
+    "target_text": "I like that place",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0364L02B01",
+   "expect": {
+    "known_text": "त्याला आवडली नाही",
+    "target_text": "he didn't like"
+   },
+   "set": {
+    "known_text": "त्याला ही जागा आवडली नाही",
+    "target_text": "he didn't like this place",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0364L03B01",
+   "expect": {
+    "known_text": "मी ऐकलं की",
+    "target_text": "I heard that"
+   },
+   "set": {
+    "known_text": "मी ऐकलं की तो इथे होता",
+    "target_text": "I heard that he was here",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0365L01B01",
+   "expect": {
+    "known_text": "तिने त्याला सांगितलं",
+    "target_text": "she said to him"
+   },
+   "set": {
+    "known_text": "तिने आज त्याला काय सांगितलं ते",
+    "target_text": "what she said to him today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0365L02B01",
+   "expect": {
+    "known_text": "मला ऐकू आलं नाही",
+    "target_text": "I didn't hear"
+   },
+   "set": {
+    "known_text": "तो इथे होता हे मला ऐकू आलं नाही",
+    "target_text": "I didn't hear that he was here",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0366L01B01",
+   "expect": {
+    "known_text": "पिकवायचं",
+    "target_text": "to grow"
+   },
+   "set": {
+    "known_text": "त्याला काय पिकवायचं होतं ते मला माहित नाही",
+    "target_text": "I don't know what he wanted to grow",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0366L02B01",
+   "expect": {
+    "known_text": "तुम्ही ऐकलं का?",
+    "target_text": "did you hear?"
+   },
+   "set": {
+    "known_text": "तो काय म्हणाला ते तुम्ही ऐकलं का?",
+    "target_text": "did you hear what he said?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0367L01B01",
+   "expect": {
+    "known_text": "मला कोणीच सांगितलं नाही",
+    "target_text": "nobody told me"
+   },
+   "set": {
+    "known_text": "आज मला कोणीच सांगितलं नाही",
+    "target_text": "nobody told me today",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0368L01B01",
+   "expect": {
+    "known_text": "टोमॅटो",
+    "target_text": "tomatoes"
+   },
+   "set": {
+    "known_text": "मला टोमॅटो हवे आहेत",
+    "target_text": "I want tomatoes",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0369L01B01",
+   "expect": {
+    "known_text": "घोडे",
+    "target_text": "horses"
+   },
+   "set": {
+    "known_text": "तुम्ही ते घोडे ऐकले का?",
+    "target_text": "did you hear those horses?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0369L02B01",
+   "expect": {
+    "known_text": "बरेच",
+    "target_text": "several"
+   },
+   "set": {
+    "known_text": "मी आज बरेच घोडे पाहिले",
+    "target_text": "I saw several horses today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0369L03B01",
+   "expect": {
+    "known_text": "रस्त्यावर",
+    "target_text": "on the road"
+   },
+   "set": {
+    "known_text": "मी रस्त्यावर कोणालातरी भेटलो",
+    "target_text": "I met someone on the road",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0370L01B01",
+   "expect": {
+    "known_text": "ओळखत असलेलं",
+    "target_text": "that I knew"
+   },
+   "set": {
+    "known_text": "मी ओळखत असलेलं कोणीही मला आज दिसलं नाही",
+    "target_text": "I didn't see anyone that I knew today",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0370L02B01",
+   "expect": {
+    "known_text": "मला दिसलं नाही",
+    "target_text": "I didn't see"
+   },
+   "set": {
+    "known_text": "मला वाटतं मी ओळखत असलेलं कोणीही मला दिसलं नाही",
+    "target_text": "I think I didn't see anyone that I knew",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0371L01B01",
+   "expect": {
+    "known_text": "सिनेमा",
+    "target_text": "film"
+   },
+   "set": {
+    "known_text": "मी आज सिनेमा बघायला गेलो",
+    "target_text": "I went to see a film today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0371L02B01",
+   "expect": {
+    "known_text": "बुधवारी",
+    "target_text": "Wednesday"
+   },
+   "set": {
+    "known_text": "मी बुधवारी तयार असेन",
+    "target_text": "I'll be ready on Wednesday",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0371L03B01",
+   "expect": {
+    "known_text": "मी बघायला गेलो",
+    "target_text": "I went to see"
+   },
+   "set": {
+    "known_text": "मला वाटतं मी सिनेमा बघायला गेलो",
+    "target_text": "I think I went to see a film",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0372L01B01",
+   "expect": {
+    "known_text": "करण्याचा",
+    "target_text": "to create"
+   },
+   "set": {
+    "known_text": "ती काय तयार करण्याचा प्रयत्न करत होती ते मला माहित नाही",
+    "target_text": "I don't know what she was trying to create",
     "decomposition": null,
     "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0372L02B01",
+   "expect": {
+    "known_text": "ती प्रयत्न करत होती",
+    "target_text": "she was trying"
+   },
+   "set": {
+    "known_text": "ती काय तयार करण्याचा प्रयत्न करत होती ते तुम्ही ऐकलं का?",
+    "target_text": "did you hear what she was trying to create?",
+    "decomposition": null,
+    "word_count": 43,
     "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0373L01B01",
+   "expect": {
+    "known_text": "सुंदर",
+    "target_text": "beautiful"
+   },
+   "set": {
+    "known_text": "मी ऐकलं की ते सुंदर होतं",
+    "target_text": "I heard that it was beautiful",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0374L01B01",
+   "expect": {
+    "known_text": "ते खूप सुंदर होतं",
+    "target_text": "it was very beautiful"
+   },
+   "set": {
+    "known_text": "मी ऐकलं की ते खूप सुंदर होतं",
+    "target_text": "I heard that it was very beautiful",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0375L01B01",
+   "expect": {
+    "known_text": "ती काय करत होती",
+    "target_text": "what she was doing"
+   },
+   "set": {
+    "known_text": "ती काय करत होती ते तुम्ही ऐकलं का?",
+    "target_text": "did you hear what she was doing?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0375L02B01",
+   "expect": {
+    "known_text": "मला माहित नव्हतं",
+    "target_text": "I didn't know"
+   },
+   "set": {
+    "known_text": "तो काय म्हणाला हे मला माहित नव्हतं",
+    "target_text": "i didn't know what he said",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0376L01B01",
+   "expect": {
+    "known_text": "कुठेही",
+    "target_text": "anywhere"
+   },
+   "set": {
+    "known_text": "मी आज कुठेही गेलो नाही",
+    "target_text": "I didn't go anywhere today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0376L02B01",
+   "expect": {
+    "known_text": "मी गेलो नाही",
+    "target_text": "I didn't go"
+   },
+   "set": {
+    "known_text": "मला वाटतं मी कुठेही गेलो नाही",
+    "target_text": "I think I didn't go anywhere",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0377L02B01",
+   "expect": {
+    "known_text": "तुम्ही गेलात का?",
+    "target_text": "did you go?"
+   },
+   "set": {
+    "known_text": "म्हणजे तुम्ही कुठे गेलात का?",
+    "target_text": "so did you go anywhere?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0378L01B01",
+   "expect": {
+    "known_text": "पैसे",
+    "target_text": "money"
+   },
+   "set": {
+    "known_text": "मला वाटतं माझ्याकडे पुरेसे पैसे नव्हते",
+    "target_text": "I think I didn't have enough money",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0378L02B01",
+   "expect": {
+    "known_text": "सुट्टी",
+    "target_text": "holidays"
+   },
+   "set": {
+    "known_text": "माझ्याकडे सुट्टीसाठी पुरेसा वेळ नाही",
+    "target_text": "I don't have enough time for holidays",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0378L03B01",
+   "expect": {
+    "known_text": "माझ्याकडे नव्हते",
+    "target_text": "I didn't have"
+   },
+   "set": {
+    "known_text": "माझ्याकडे गेल्या वर्षी पुरेसे पैसे नव्हते",
+    "target_text": "I didn't have enough money last year",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0379L01B01",
+   "expect": {
+    "known_text": "नशीबवान",
+    "target_text": "lucky"
+   },
+   "set": {
+    "known_text": "मला वाटतं मी पुरेसा नशीबवान होतो",
+    "target_text": "I think I was lucky enough",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0379L02B01",
+   "expect": {
+    "known_text": "प्रवास करणे",
+    "target_text": "to travel"
+   },
+   "set": {
+    "known_text": "माझ्याकडे प्रवास करण्यासाठी पुरेसे पैसे नव्हते",
+    "target_text": "I didn't have enough money to travel",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0379L03B01",
+   "expect": {
+    "known_text": "आफ्रिका",
+    "target_text": "Africa"
+   },
+   "set": {
+    "known_text": "मी आफ्रिकेला प्रवास करण्याइतका नशीबवान होतो",
+    "target_text": "I was lucky enough to travel to Africa",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0380L01B01",
+   "expect": {
+    "known_text": "समाविष्ट करायचं",
+    "target_text": "to include"
+   },
+   "set": {
+    "known_text": "तिला काय समाविष्ट करायचं होतं हे मला माहित नाही",
+    "target_text": "I don't know what she wanted to include",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0380L02B01",
+   "expect": {
+    "known_text": "मी विचारलं",
+    "target_text": "I asked"
+   },
+   "set": {
+    "known_text": "तो काय म्हणाला हे मी विचारलं",
+    "target_text": "I asked what he said",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0396L01B01",
+   "expect": {
+    "known_text": "आम्हाला उभं राहायची गरज नाही",
+    "target_text": "we don't need to stand"
+   },
+   "set": {
+    "known_text": "आज आम्हाला उभं राहायची गरज नाही",
+    "target_text": "we don't need to stand today",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0396L02B01",
+   "expect": {
+    "known_text": "बाकी सगळे तयार",
+    "target_text": "everybody else is ready"
+   },
+   "set": {
+    "known_text": "बाकी सगळे तयार होईपर्यंत मी इथे राहू शकतो",
+    "target_text": "I can stay here until everybody else is ready",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0403L02B01",
+   "expect": {
+    "known_text": "आम्ही गप्प राहायला हवं",
+    "target_text": "we should remain quiet"
+   },
+   "set": {
+    "known_text": "आम्ही आज गप्प राहायला हवं",
+    "target_text": "we should remain quiet today",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0405L01B01",
+   "expect": {
+    "known_text": "आम्ही विचारायला हवं का?",
+    "target_text": "should we ask?"
+   },
+   "set": {
+    "known_text": "म्हणजे आम्ही विचारायला हवं का?",
+    "target_text": "so should we ask?",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0405L02B01",
+   "expect": {
+    "known_text": "आम्हाला बुकिंग करावं लागेल",
+    "target_text": "we have to book"
+   },
+   "set": {
+    "known_text": "म्हणजे आम्हाला बुकिंग करावं लागेल का हे आम्ही विचारायला हवं का?",
+    "target_text": "so should we ask if we have to book?",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0407L01B01",
+   "expect": {
+    "known_text": "चांगला आदर्श घालून द्यायला",
+    "target_text": "to set a good example"
+   },
+   "set": {
+    "known_text": "म्हणजे आम्ही चांगला आदर्श घालून द्यायचा प्रयत्न करायला नको का?",
+    "target_text": "so shouldn't we try to set a good example?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0408L02B01",
+   "expect": {
+    "known_text": "तोच सगळ्यात चांगला मार्ग आहे",
+    "target_text": "that's the best way"
+   },
+   "set": {
+    "known_text": "हो, तोच सगळ्यात चांगला मार्ग आहे",
+    "target_text": "yes that's the best way",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0409L02B01",
+   "expect": {
+    "known_text": "काही फरक पडत नाही",
+    "target_text": "it doesn't matter"
+   },
+   "set": {
+    "known_text": "मला खात्री आहे की काही फरक पडत नाही",
+    "target_text": "I'm sure it doesn't matter",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0414L01B01",
+   "expect": {
+    "known_text": "रेड वाईनची एक बाटली",
+    "target_text": "a bottle of red wine"
+   },
+   "set": {
+    "known_text": "ती कदाचित रेड वाईनची एक बाटली असेल",
+    "target_text": "it might be a bottle of red wine",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0417L01B01",
+   "expect": {
+    "known_text": "त्या मुंग्या",
+    "target_text": "those ants"
+   },
+   "set": {
+    "known_text": "मी ऐकलं की त्याला त्या मुंग्या आवडल्या नाहीत",
+    "target_text": "I heard that he didn't like those ants",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0420L02B01",
+   "expect": {
+    "known_text": "तो किती वर्षांचा आहे?",
+    "target_text": "how old he is?"
+   },
+   "set": {
+    "known_text": "तो किती वर्षांचा आहे हे मी विचारलं",
+    "target_text": "I asked how old he is",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0421L01B01",
+   "expect": {
+    "known_text": "आधीच माहित आहे",
+    "target_text": "already know"
+   },
+   "set": {
+    "known_text": "तो काय म्हणाला हे त्यांना आधीच माहित आहे",
+    "target_text": "they already know what he said",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0421L02B01",
+   "expect": {
+    "known_text": "अशक्त होत चाललाय",
+    "target_text": "getting weak"
+   },
+   "set": {
+    "known_text": "मला वाटतं तो अशक्त होत चाललाय",
+    "target_text": "I think he's getting weak",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0422L01B01",
+   "expect": {
+    "known_text": "एक प्रश्न",
+    "target_text": "a question"
+   },
+   "set": {
+    "known_text": "मी उद्या एक प्रश्न विचारेन",
+    "target_text": "I'll ask a question tomorrow",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0423L01B01",
+   "expect": {
+    "known_text": "असा उघड प्रश्न",
+    "target_text": "such an obvious question"
+   },
+   "set": {
+    "known_text": "तो कदाचित असा उघड प्रश्न असेल",
+    "target_text": "it might be such an obvious question",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0424L01B01",
+   "expect": {
+    "known_text": "ते वाया घालवतायत",
+    "target_text": "they're wasting"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते पैसे वाया घालवतायत",
+    "target_text": "I think they're wasting money",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0424L02B01",
+   "expect": {
+    "known_text": "सगळ्यांचा वेळ",
+    "target_text": "everybody's time"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते सगळ्यांचा वेळ वाया घालवतायत",
+    "target_text": "I think they're wasting everybody's time",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0425L01B01",
+   "expect": {
+    "known_text": "त्यांना समजलंय",
+    "target_text": "they understand"
+   },
+   "set": {
+    "known_text": "मला वाटतं त्यांना समजलंय",
+    "target_text": "I think they understand",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0426L01B01",
+   "expect": {
+    "known_text": "एकमेकांवर प्रेम करायला",
+    "target_text": "love each other"
+   },
+   "set": {
+    "known_text": "ते एकमेकांवर प्रेम करतात",
+    "target_text": "they love each other",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0426L02B01",
+   "expect": {
+    "known_text": "ते दुःखी आहेत",
+    "target_text": "they're unhappy"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते दुःखी आहेत",
+    "target_text": "I think they're unhappy",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0427L01B01",
+   "expect": {
+    "known_text": "आवडणार नाही",
+    "target_text": "wouldn't like"
+   },
+   "set": {
+    "known_text": "त्यांना खेळायला आवडणार नाही",
+    "target_text": "they wouldn't like to play",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0427L02B01",
+   "expect": {
+    "known_text": "विचार करणे",
+    "target_text": "to think"
+   },
+   "set": {
+    "known_text": "ते महत्त्वाचं आहे असं तुम्ही समजावं असं त्यांना आवडणार नाही",
+    "target_text": "they wouldn't like you to think that it's important",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0427L03B01",
+   "expect": {
+    "known_text": "ते कंटाळलेत",
+    "target_text": "they're bored"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते कंटाळलेत",
+    "target_text": "I think they're bored",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0430L01B01",
+   "expect": {
+    "known_text": "शक्य होणार नाही",
+    "target_text": "wouldn't be possible"
+   },
+   "set": {
+    "known_text": "मला खात्री आहे की ते शक्य होणार नाही",
+    "target_text": "I'm sure that wouldn't be possible",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0431L01B01",
+   "expect": {
+    "known_text": "ते तयार नाहीत",
+    "target_text": "they're not ready"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते अजून तयार नाहीत",
+    "target_text": "I think they're not ready yet",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0431L02B01",
+   "expect": {
+    "known_text": "ते तयार होतील",
+    "target_text": "they'll be ready"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते लवकरच तयार होतील",
+    "target_text": "I think they'll be ready soon",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0459L01B01",
+   "expect": {
+    "known_text": "निळी पाटी",
+    "target_text": "the blue sign"
+   },
+   "set": {
+    "known_text": "मी रस्त्यावर निळी पाटी पाहिली",
+    "target_text": "I saw the blue sign on the road",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0463L01B01",
+   "expect": {
+    "known_text": "माझा खोली क्रमांक",
+    "target_text": "my room number"
+   },
+   "set": {
+    "known_text": "तो कदाचित माझा खोली क्रमांक असेल",
+    "target_text": "it might be my room number",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0472L01B01",
+   "expect": {
+    "known_text": "समस्येचा एक भाग",
+    "target_text": "part of the problem"
+   },
+   "set": {
+    "known_text": "मला वाटतं समस्येचा एक भाग पैसे आहे",
+    "target_text": "I think part of the problem is money",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0473L01B01",
+   "expect": {
+    "known_text": "मला ते नको आहे",
+    "target_text": "I don't want it"
+   },
+   "set": {
+    "known_text": "मला ते उद्या नको आहे",
+    "target_text": "I don't want it tomorrow",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0474L01B01",
+   "expect": {
+    "known_text": "फुकट ऑफर म्हणून",
+    "target_text": "as a free offer"
+   },
+   "set": {
+    "known_text": "मला ते उद्या फुकट ऑफर म्हणून नको आहे",
+    "target_text": "I don't want it as a free offer tomorrow",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0474L02B01",
+   "expect": {
+    "known_text": "मला ते नकोच आहे",
+    "target_text": "I don't even want it"
+   },
+   "set": {
+    "known_text": "मला ते उद्या नकोच आहे",
+    "target_text": "I don't even want it tomorrow",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0475L01B01",
+   "expect": {
+    "known_text": "अनेक कारणं आहेत",
+    "target_text": "there are many reasons"
+   },
+   "set": {
+    "known_text": "मी ऐकलं की अनेक कारणं आहेत",
+    "target_text": "I heard that there are many reasons",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0477L04B01",
+   "expect": {
+    "known_text": "तो आजारी आहे",
+    "target_text": "he's been sick"
+   },
+   "set": {
+    "known_text": "तो सुट्टीपासून आजारी आहे",
+    "target_text": "he's been sick since the holidays",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0478L01B01",
+   "expect": {
+    "known_text": "दयाळू मन",
+    "target_text": "a kind heart"
+   },
+   "set": {
+    "known_text": "हो, तिचं मन खूप दयाळू आहे",
+    "target_text": "yes she has such a kind heart",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0479L01B01",
+   "expect": {
+    "known_text": "मी करू शकतो",
+    "target_text": "I could do"
+   },
+   "set": {
+    "known_text": "मला खात्री आहे की मी ते करू शकतो",
+    "target_text": "I'm sure I could do it",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0479L02B01",
+   "expect": {
+    "known_text": "निदान एवढं",
+    "target_text": "the least"
+   },
+   "set": {
+    "known_text": "मला खात्री आहे की निदान एवढं तर मी करू शकतो",
+    "target_text": "I'm sure it's the least I could do",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0480L01B01",
+   "expect": {
+    "known_text": "तो म्हणतो",
+    "target_text": "he says"
+   },
+   "set": {
+    "known_text": "तो म्हणतो ते महत्त्वाचं आहे",
+    "target_text": "he says it's important",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0480L03B01",
+   "expect": {
+    "known_text": "फार दूर",
+    "target_text": "far ahead"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते फार दूर नाही",
+    "target_text": "I think it's not far ahead",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0483L01B01",
+   "expect": {
+    "known_text": "असायचंच",
+    "target_text": "meant to be"
+   },
+   "set": {
+    "known_text": "मला खात्री आहे की ते सोपं असायचंच नसतं",
+    "target_text": "I'm sure it's not meant to be easy",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0485L01B01",
+   "expect": {
+    "known_text": "दूर निघून जाणे",
+    "target_text": "to get away"
+   },
+   "set": {
+    "known_text": "मला दूर निघून जाण्याची गरज आहे",
+    "target_text": "I need to get away",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0489L02B01",
+   "expect": {
+    "known_text": "एक कडक कॉफी",
+    "target_text": "a strong cup of coffee"
+   },
+   "set": {
+    "known_text": "मला एका कडक कॉफीची गरज आहे",
+    "target_text": "I need a strong cup of coffee",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0489L03B01",
+   "expect": {
+    "known_text": "आत्ताच",
+    "target_text": "right now"
+   },
+   "set": {
+    "known_text": "मला आत्ताच निघावं लागतंय",
+    "target_text": "I need to leave right now",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0490L03B01",
+   "expect": {
+    "known_text": "पुन्हा कधीही",
+    "target_text": "ever again"
+   },
+   "set": {
+    "known_text": "आम्हाला पुन्हा कधीही गप्पा मारायच्या नाहीत",
+    "target_text": "we never want to talk ever again",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0492L05B01",
+   "expect": {
+    "known_text": "तुम्हाला वाटतं",
+    "target_text": "do you think"
+   },
+   "set": {
+    "known_text": "ते महत्त्वाचं आहे असं तुम्हाला वाटतं का?",
+    "target_text": "do you think it's important?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0497L03B01",
+   "expect": {
+    "known_text": "थोडी झोप घेणे",
+    "target_text": "get some sleep"
+   },
+   "set": {
+    "known_text": "मला खात्री आहे की तुम्हाला थोडी झोप घेण्याची गरज आहे",
+    "target_text": "I'm sure you need to get some sleep",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
    }
   }
  ]
