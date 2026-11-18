@@ -1,0 +1,981 @@
+[
+ {
+  "seed_number": 89,
+  "phrases": {
+   "89:1": [
+    {
+     "known_text": "I think that",
+     "target_text": "acho que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I've done a lot",
+     "target_text": "fiz muito",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I think that I've done a lot",
+     "target_text": "eu acho que fiz muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but I think that I've done a lot",
+     "target_text": "mas eu acho que fiz muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that I've done a lot this afternoon",
+     "target_text": "eu acho que fiz muito esta tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that I've done a lot to learn",
+     "target_text": "eu acho que fiz muito para aprender",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot with my friends",
+     "target_text": "eu acho que fiz muito com meus amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot, but I'm not ready yet",
+     "target_text": "eu acho que fiz muito, mas ainda não estou pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot this morning",
+     "target_text": "eu acho que fiz muito esta manhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot because I wanted to improve",
+     "target_text": "eu acho que fiz muito porque queria melhorar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot today",
+     "target_text": "eu acho que fiz muito hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot, but I want to do more",
+     "target_text": "eu acho que fiz muito, mas quero fazer mais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot this week",
+     "target_text": "eu acho que fiz muito esta semana",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot for you",
+     "target_text": "eu acho que fiz muito por você",
+     "phrase_role": "build"
+    }
+   ],
+   "89:2": [
+    {
+     "known_text": "in",
+     "target_text": "em",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a short time",
+     "target_text": "pouco tempo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in a short time",
+     "target_text": "em pouco tempo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I've done a lot in a short time",
+     "target_text": "fiz muito em pouco tempo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I've already learnt a lot in a short time",
+     "target_text": "já aprendi muito em pouco tempo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's not easy to do a lot in a short time",
+     "target_text": "não é fácil fazer muito em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've done a lot in a short time",
+     "target_text": "fiz muito em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's fun to learn a lot in a short time",
+     "target_text": "é divertido aprender muito em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I started to understand in a short time",
+     "target_text": "comecei a entender em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "unfortunately it wasn't possible in a short time",
+     "target_text": "infelizmente não era possível em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I learned a lot in a short time",
+     "target_text": "aprendi muito em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's possible to improve in a short time",
+     "target_text": "é possível melhorar em pouco tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I've done a lot in a short time",
+     "target_text": "eu acho que fiz muito em pouco tempo",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 114,
+  "phrases": {
+   "114:1": [
+    {
+     "known_text": "worse than yesterday",
+     "target_text": "pior do que ontem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I feel worse",
+     "target_text": "me sinto pior",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "worse than you",
+     "target_text": "pior do que você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I feel worse today than yesterday",
+     "target_text": "me sinto pior hoje do que ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you doing worse today?",
+     "target_text": "você está fazendo pior hoje?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's doing worse than me",
+     "target_text": "ela está indo pior do que eu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you worse today?",
+     "target_text": "você está pior hoje?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm still doing worse today",
+     "target_text": "ainda estou fazendo pior hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I'm doing worse today than yesterday",
+     "target_text": "acho que estou fazendo pior hoje do que ontem",
+     "phrase_role": "use"
+    }
+   ],
+   "114:2": [
+    {
+     "known_text": "as if",
+     "target_text": "como se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it were",
+     "target_text": "estivesse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "as if it were",
+     "target_text": "como se estivesse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "as if I were doing",
+     "target_text": "como se estivesse fazendo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "as if it were going",
+     "target_text": "como se estivesse indo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "as if I were here",
+     "target_text": "como se estivesse aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I feel as if I'm doing worse today than yesterday",
+     "target_text": "me sinto como se estivesse fazendo pior hoje do que ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if I'm doing well",
+     "target_text": "me sinto como se estivesse fazendo bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if I were here with you",
+     "target_text": "me sinto como se estivesse aqui com você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel good, as if it's going very well",
+     "target_text": "me sinto bem, como se estivesse indo muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if I'm doing something well",
+     "target_text": "me sinto como se estivesse fazendo algo bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if it's going better",
+     "target_text": "me sinto como se estivesse indo melhor",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 119,
+  "phrases": {
+   "119:1": [
+    {
+     "known_text": "can I?",
+     "target_text": "posso?",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ask you",
+     "target_text": "te perguntar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "can I ask you?",
+     "target_text": "posso te perguntar?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can I ask you something?",
+     "target_text": "posso te perguntar algo?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can I ask you about this?",
+     "target_text": "posso te perguntar sobre isso?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know I can ask you something",
+     "target_text": "sei que posso te perguntar algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't know if I can ask you",
+     "target_text": "não sei se posso te perguntar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I ask you what you said?",
+     "target_text": "posso te perguntar o que você disse?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I can ask you that",
+     "target_text": "acho que posso te perguntar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't think I can ask you that",
+     "target_text": "não acho que posso te perguntar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I ask you what you were trying to do?",
+     "target_text": "posso te perguntar o que você estava tentando fazer?",
+     "phrase_role": "use"
+    }
+   ],
+   "119:2": [
+    {
+     "known_text": "before",
+     "target_text": "antes de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "leave",
+     "target_text": "ir embora",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "before you leave",
+     "target_text": "antes de ir embora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "something before you leave",
+     "target_text": "algo antes de ir embora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to ask you before you leave",
+     "target_text": "te perguntar antes de ir embora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to talk before you leave",
+     "target_text": "quero falar antes de ir embora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to say something before you leave",
+     "target_text": "quero dizer algo antes de ir embora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know what to say before you leave",
+     "target_text": "não sei o que dizer antes de ir embora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "before you leave I want to ask you something",
+     "target_text": "antes de ir embora quero te perguntar algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I talk to you before you leave?",
+     "target_text": "posso falar com você antes de ir embora?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I ask you something before you leave?",
+     "target_text": "posso te perguntar algo antes de ir embora?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel better before you leave",
+     "target_text": "me sinto melhor antes de ir embora",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 134,
+  "phrases": {
+   "134:1": [
+    {
+     "known_text": "a",
+     "target_text": "um",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a little",
+     "target_text": "um pouco",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a little more",
+     "target_text": "um pouco mais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a little easier",
+     "target_text": "um pouco mais fácil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was a little exciting",
+     "target_text": "foi um pouco empolgante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm a little surprised",
+     "target_text": "estou um pouco surpreendido",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was a little difficult",
+     "target_text": "foi um pouco difícil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a little easier",
+     "target_text": "é um pouco mais fácil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a little unusual",
+     "target_text": "é um pouco incomum",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm a little excited",
+     "target_text": "estou um pouco entusiasmado",
+     "phrase_role": "use"
+    }
+   ],
+   "134:2": [
+    {
+     "known_text": "problem",
+     "target_text": "problema",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the problem",
+     "target_text": "o problema",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "not a problem",
+     "target_text": "não é um problema",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that's not a problem",
+     "target_text": "isso não é um problema",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think it's a problem",
+     "target_text": "acho que é um problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know that's a problem",
+     "target_text": "sei que isso é um problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that was the problem",
+     "target_text": "isso era o problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the problem is difficult",
+     "target_text": "acho que o problema é difícil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the problem is that I don't know",
+     "target_text": "o problema é que não sei",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure that's a problem",
+     "target_text": "não tenho certeza que isso é um problema",
+     "phrase_role": "use"
+    }
+   ],
+   "134:3": [
+    {
+     "known_text": "you work",
+     "target_text": "trabalha",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when you work",
+     "target_text": "quando trabalha",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you work with someone",
+     "target_text": "trabalha com alguém",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know you work a lot",
+     "target_text": "sei que você trabalha muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you work here?",
+     "target_text": "você trabalha aqui?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when do you work?",
+     "target_text": "quando você trabalha?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you work too much",
+     "target_text": "acho que você trabalha demais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know that you work here",
+     "target_text": "sei que você trabalha aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know when you work",
+     "target_text": "não sei quando você trabalha",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you work with someone who is exciting",
+     "target_text": "você trabalha com alguém que é empolgante",
+     "phrase_role": "use"
+    }
+   ],
+   "134:4": [
+    {
+     "known_text": "them",
+     "target_text": "eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "with them",
+     "target_text": "com eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "for them",
+     "target_text": "para eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was with them",
+     "target_text": "estava com eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to work with them",
+     "target_text": "quero trabalhar com eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know about them",
+     "target_text": "não sei sobre eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this is for them",
+     "target_text": "isso é para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to work with them?",
+     "target_text": "você quer trabalhar com eles?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's not a problem when you work with them",
+     "target_text": "não é um problema quando trabalha com eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's not a problem when you work at something difficult with them",
+     "target_text": "não é um problema quando trabalha em algo difícil com eles",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 167,
+  "phrases": {
+   "167:1": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "need",
+     "target_text": "precisa",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what do you need to do?",
+     "target_text": "o que é que você precisa fazer?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you need to go",
+     "target_text": "você precisa ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you need more time?",
+     "target_text": "você precisa de mais tempo?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you need to practise speaking more often",
+     "target_text": "você precisa praticar falando mais vezes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to wait a little longer",
+     "target_text": "você precisa esperar um pouco mais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to learn how to say it",
+     "target_text": "você precisa aprender como dizer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you need me to help you?",
+     "target_text": "você precisa de mim para ajudar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to talk about something different",
+     "target_text": "você precisa falar sobre outra coisa",
+     "phrase_role": "use"
+    }
+   ],
+   "167:2": [
+    {
+     "known_text": "tomorrow afternoon",
+     "target_text": "amanhã à tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "on Saturday afternoon",
+     "target_text": "no sábado à tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yesterday afternoon",
+     "target_text": "ontem à tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you need to do tomorrow afternoon?",
+     "target_text": "o que é que você precisa fazer amanhã à tarde?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to meet you tomorrow afternoon",
+     "target_text": "vou nos encontrar amanhã à tarde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's talk about it tomorrow afternoon",
+     "target_text": "vamos falar sobre isso amanhã à tarde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to start tomorrow afternoon",
+     "target_text": "quero começar amanhã à tarde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you help me tomorrow afternoon?",
+     "target_text": "pode me ajudar amanhã à tarde?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 178,
+  "phrases": {
+   "178:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "didn't have",
+     "target_text": "não tive",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "time",
+     "target_text": "tempo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I didn't have time to see you",
+     "target_text": "eu não tive tempo de te ver",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have time to help",
+     "target_text": "eu não tive tempo de ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have time to do it",
+     "target_text": "eu não tive tempo de fazer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have time to talk about it",
+     "target_text": "não tive tempo de falar sobre isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to learn more",
+     "target_text": "não tive tempo de aprender mais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have enough time yesterday",
+     "target_text": "não tive tempo suficiente ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to look for it",
+     "target_text": "não tive tempo de procurar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time on Sunday morning",
+     "target_text": "não tive tempo no domingo de manhã",
+     "phrase_role": "use"
+    }
+   ],
+   "178:2": [
+    {
+     "known_text": "although I wanted",
+     "target_text": "embora quisesse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to see you",
+     "target_text": "te ver",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "although I wanted to see you",
+     "target_text": "embora quisesse te ver",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although I wanted to see you before you leave",
+     "target_text": "embora quisesse te ver antes de ir embora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I couldn't, although I wanted to see you",
+     "target_text": "não consegui, embora quisesse te ver",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have time, although I wanted to see you",
+     "target_text": "não tive tempo, embora quisesse te ver",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I couldn't go, although I wanted to see you",
+     "target_text": "não consegui ir, embora quisesse te ver",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I wanted to see you, I couldn't be there",
+     "target_text": "embora quisesse te ver, não consegui estar lá",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I wanted to see you, I didn't have time",
+     "target_text": "embora quisesse te ver, não tive tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I wanted to see you yesterday, I was not ready",
+     "target_text": "embora quisesse te ver ontem, não estava pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I wanted to see you yesterday",
+     "target_text": "embora quisesse te ver ontem",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 188,
+  "phrases": {
+   "188:1": [
+    {
+     "known_text": "I don't need",
+     "target_text": "não preciso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to change",
+     "target_text": "mudar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I don't need to change anything",
+     "target_text": "não preciso mudar nada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't need to change yet",
+     "target_text": "não preciso mudar ainda",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't need to change much",
+     "target_text": "não preciso mudar muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "so I don't need to change",
+     "target_text": "por isso não preciso mudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm glad I don't need to change",
+     "target_text": "estou contente que não preciso mudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I don't need to change anything",
+     "target_text": "acho que não preciso mudar nada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't need to change anything so far",
+     "target_text": "não preciso mudar nada até agora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't need to change how I speak",
+     "target_text": "não preciso mudar como falo",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 218,
+  "phrases": {
+   "218:1": [
+    {
+     "known_text": "did",
+     "target_text": "fiz",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I did",
+     "target_text": "eu fiz",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "already did",
+     "target_text": "já fiz",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't do much yesterday",
+     "target_text": "não fiz muito ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I already did that",
+     "target_text": "já fiz isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I did what I wanted",
+     "target_text": "fiz o que queria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I did it early",
+     "target_text": "fiz cedo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I did it with some friends",
+     "target_text": "fiz isso com alguns amigos",
+     "phrase_role": "use"
+    }
+   ],
+   "218:2": [
+    {
+     "known_text": "I didn't do",
+     "target_text": "não fiz",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "much",
+     "target_text": "muito",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "didn't do much",
+     "target_text": "não fiz muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't do much",
+     "target_text": "eu não fiz muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but I didn't do much",
+     "target_text": "mas não fiz muito",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't do much on Sunday",
+     "target_text": "não fiz muito no domingo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't do much at the weekend",
+     "target_text": "não fiz muito no fim de semana",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't do much on Saturday",
+     "target_text": "não fiz muito no sábado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't do much last night",
+     "target_text": "não fiz muito ontem à noite",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't do much yesterday",
+     "target_text": "não fiz muito ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't do much because I was tired",
+     "target_text": "não fiz muito porque estava cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I didn't do much",
+     "target_text": "acho que não fiz muito",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

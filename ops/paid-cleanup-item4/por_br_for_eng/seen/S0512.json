@@ -1,0 +1,291 @@
+{
+ "seed": 512,
+ "at": "2026-11-18T13:11:07.528Z",
+ "rows": {
+  "S0512L01C01": {
+   "known": "you",
+   "target": "você",
+   "updated_at": "2026-10-13T05:13:28.298592+00:00"
+  },
+  "S0512L01C02": {
+   "known": "can",
+   "target": "pode",
+   "updated_at": "2026-10-12T16:31:21.705823+00:00"
+  },
+  "S0512L01C03": {
+   "known": "hold",
+   "target": "segurar",
+   "updated_at": "2026-10-12T17:54:24.83342+00:00"
+  },
+  "S0512L01B01": {
+   "known": "can you hold",
+   "target": "você pode segurar",
+   "updated_at": "2026-10-13T02:44:54.771572+00:00"
+  },
+  "S0512L01B02": {
+   "known": "can you hold it",
+   "target": "você pode segurar isso",
+   "updated_at": "2026-10-13T10:44:56.584083+00:00"
+  },
+  "S0512L01B03": {
+   "known": "yes, can you hold",
+   "target": "sim, você pode segurar",
+   "updated_at": "2026-10-13T10:45:24.059721+00:00"
+  },
+  "S0512L01U01": {
+   "known": "no, can you hold",
+   "target": "não, você pode segurar",
+   "updated_at": "2026-10-13T10:45:14.66223+00:00"
+  },
+  "S0512L01U02": {
+   "known": "that's true, can you hold",
+   "target": "isso é verdade, você pode segurar",
+   "updated_at": "2026-10-13T10:45:17.132221+00:00"
+  },
+  "S0512L01U03": {
+   "known": "I'm sure, can you hold",
+   "target": "tenho certeza, você pode segurar",
+   "updated_at": "2026-10-13T10:45:10.235767+00:00"
+  },
+  "S0512L01U04": {
+   "known": "yes, that's true, can you hold",
+   "target": "sim, isso é verdade, você pode segurar",
+   "updated_at": "2026-10-13T10:45:26.929864+00:00"
+  },
+  "S0512L01U05": {
+   "known": "can you still hold",
+   "target": "você ainda pode segurar",
+   "updated_at": "2026-10-13T10:44:57.279373+00:00"
+  },
+  "S0512L02C01": {
+   "known": "the door",
+   "target": "a porta",
+   "updated_at": "2026-10-12T17:43:13.56563+00:00"
+  },
+  "S0512L02C02": {
+   "known": "open",
+   "target": "aberta",
+   "updated_at": "2026-10-12T17:43:13.181127+00:00"
+  },
+  "S0512L02B01": {
+   "known": "the door open",
+   "target": "a porta aberta",
+   "updated_at": "2026-10-13T02:45:15.983757+00:00"
+  },
+  "S0512L02B02": {
+   "known": "can you hold the door open",
+   "target": "você pode segurar a porta aberta",
+   "updated_at": "2026-10-12T22:05:34.995745+00:00"
+  },
+  "S0512L02B03": {
+   "known": "yes, the door open",
+   "target": "sim, a porta aberta",
+   "updated_at": "2026-10-13T10:45:27.458871+00:00"
+  },
+  "S0512L02U01": {
+   "known": "no, the door open",
+   "target": "não, a porta aberta",
+   "updated_at": "2026-10-13T10:45:15.422271+00:00"
+  },
+  "S0512L02U02": {
+   "known": "that's true, the door open",
+   "target": "isso é verdade, a porta aberta",
+   "updated_at": "2026-10-13T10:45:18.455804+00:00"
+  },
+  "S0512L02U03": {
+   "known": "I have the door open",
+   "target": "tenho a porta aberta",
+   "updated_at": "2026-10-13T10:45:01.295681+00:00"
+  },
+  "S0512L02U04": {
+   "known": "yes, can you hold the door open",
+   "target": "sim, você pode segurar a porta aberta",
+   "updated_at": "2026-10-13T10:45:25.146056+00:00"
+  },
+  "S0512L02U05": {
+   "known": "can you still hold the door open",
+   "target": "você ainda pode segurar a porta aberta",
+   "updated_at": "2026-10-13T10:44:59.3505+00:00"
+  },
+  "S0512L02U06": {
+   "known": "I'm going to leave the door open",
+   "target": "vou deixar a porta aberta",
+   "updated_at": "2026-10-29T02:34:56.98402+00:00"
+  },
+  "S0512L02U07": {
+   "known": "we had to leave the door open",
+   "target": "nós tivemos que deixar a porta aberta",
+   "updated_at": "2026-10-29T02:34:56.97485+00:00"
+  },
+  "S0512L02U08": {
+   "known": "maybe we should leave the door open",
+   "target": "talvez devêssemos deixar a porta aberta",
+   "updated_at": "2026-10-29T02:34:57.062407+00:00"
+  },
+  "S0512L03C01": {
+   "known": "while",
+   "target": "enquanto",
+   "updated_at": "2026-10-12T17:57:47.053912+00:00"
+  },
+  "S0512L03C02": {
+   "known": "I will go",
+   "target": "eu vou",
+   "updated_at": "2026-10-13T10:45:05.315858+00:00"
+  },
+  "S0512L03C03": {
+   "known": "fetch",
+   "target": "pegar",
+   "updated_at": "2026-10-13T10:45:02.435531+00:00"
+  },
+  "S0512L03B01": {
+   "known": "while I fetch",
+   "target": "enquanto eu vou pegar",
+   "updated_at": "2026-10-12T22:05:46.273205+00:00"
+  },
+  "S0512L03B02": {
+   "known": "can you hold the door open while I fetch",
+   "target": "você pode segurar a porta aberta enquanto eu vou pegar",
+   "updated_at": "2026-10-13T09:13:04.257755+00:00"
+  },
+  "S0512L03B03": {
+   "known": "yes, while I fetch",
+   "target": "sim, enquanto eu vou pegar",
+   "updated_at": "2026-10-13T10:45:29.303218+00:00"
+  },
+  "S0512L03U01": {
+   "known": "no, while I fetch",
+   "target": "não, enquanto eu vou pegar",
+   "updated_at": "2026-10-13T10:45:17.246967+00:00"
+  },
+  "S0512L03U02": {
+   "known": "that's true, while I fetch",
+   "target": "isso é verdade, enquanto eu vou pegar",
+   "updated_at": "2026-10-13T10:45:19.87297+00:00"
+  },
+  "S0512L03U03": {
+   "known": "I'm sure, while I fetch",
+   "target": "tenho certeza, enquanto eu vou pegar",
+   "updated_at": "2026-10-13T10:45:10.289771+00:00"
+  },
+  "S0512L03U04": {
+   "known": "yes, can you hold the door open while I fetch",
+   "target": "sim, você pode segurar a porta aberta enquanto eu vou pegar",
+   "updated_at": "2026-10-13T10:45:26.150914+00:00"
+  },
+  "S0512L03U05": {
+   "known": "can you still hold the door open while I fetch",
+   "target": "você ainda pode segurar a porta aberta enquanto eu vou pegar",
+   "updated_at": "2026-10-13T10:44:59.94057+00:00"
+  },
+  "S0512L04C01": {
+   "known": "the",
+   "target": "as",
+   "updated_at": "2026-10-12T16:31:19.428924+00:00"
+  },
+  "S0512L04C02": {
+   "known": "keys",
+   "target": "chaves",
+   "updated_at": "2026-10-12T17:12:22.850296+00:00"
+  },
+  "S0512L04B01": {
+   "known": "the keys",
+   "target": "as chaves",
+   "updated_at": "2026-10-12T10:59:01.622371+00:00"
+  },
+  "S0512L04B02": {
+   "known": "fetch the keys",
+   "target": "pegar as chaves",
+   "updated_at": "2026-10-13T10:45:01.70365+00:00"
+  },
+  "S0512L04B03": {
+   "known": "yes, the keys",
+   "target": "sim, as chaves",
+   "updated_at": "2026-10-13T10:45:28.115958+00:00"
+  },
+  "S0512L04U01": {
+   "known": "can you hold the door open while I fetch the keys?",
+   "target": "você pode segurar a porta aberta enquanto eu vou pegar as chaves?",
+   "updated_at": "2026-10-12T18:03:52.813502+00:00"
+  },
+  "S0512L04U02": {
+   "known": "no, the keys",
+   "target": "não, as chaves",
+   "updated_at": "2026-10-13T10:45:15.991852+00:00"
+  },
+  "S0512L04U03": {
+   "known": "that's true, the keys",
+   "target": "isso é verdade, as chaves",
+   "updated_at": "2026-10-13T10:45:18.967825+00:00"
+  },
+  "S0512L04U04": {
+   "known": "yes, can you hold the door open while I fetch the keys?",
+   "target": "sim, você pode segurar a porta aberta enquanto eu vou pegar as chaves?",
+   "updated_at": "2026-10-13T10:45:26.527027+00:00"
+  },
+  "S0512L04U05": {
+   "known": "I'm sure, the keys",
+   "target": "tenho certeza, as chaves",
+   "updated_at": "2026-10-13T10:45:09.691859+00:00"
+  },
+  "S0512L04U06": {
+   "known": "I'm going to find the keys",
+   "target": "vou encontrar as chaves",
+   "updated_at": "2026-10-29T02:34:57.166813+00:00"
+  },
+  "S0512L04U07": {
+   "known": "I'm trying to find the keys",
+   "target": "estou tentando encontrar as chaves",
+   "updated_at": "2026-10-29T02:34:57.372058+00:00"
+  },
+  "S0512L04U08": {
+   "known": "I hope I'll be able to find the keys",
+   "target": "espero conseguir encontrar as chaves",
+   "updated_at": "2026-10-29T02:34:57.477779+00:00"
+  },
+  "S0512L04B04": {
+   "known": "I need to find the keys",
+   "target": "preciso encontrar as chaves",
+   "updated_at": "2026-10-29T02:34:57.281483+00:00"
+  },
+  "S0512L04U09": {
+   "known": "I hope you'll be able to find the keys",
+   "target": "espero que você consiga encontrar as chaves",
+   "updated_at": "2026-10-29T02:34:57.468966+00:00"
+  },
+  "S0512L04B05": {
+   "known": "the man who said that he wanted the keys",
+   "target": "o homem que disse que queria as chaves",
+   "updated_at": "2026-10-29T02:34:57.386813+00:00"
+  },
+  "S0512L04U10": {
+   "known": "it's easy to find the keys",
+   "target": "é fácil encontrar as chaves",
+   "updated_at": "2026-10-29T02:34:57.162365+00:00"
+  },
+  "S0512L04U11": {
+   "known": "there's no point worrying about the keys",
+   "target": "não vale a pena se preocupar com as chaves",
+   "updated_at": "2026-10-29T02:34:57.476431+00:00"
+  },
+  "S0512L04B06": {
+   "known": "there is a problem with the keys",
+   "target": "há um problema com as chaves",
+   "updated_at": "2026-10-29T02:34:57.372499+00:00"
+  },
+  "S0512L04U12": {
+   "known": "why do you want the keys?",
+   "target": "por que você quer as chaves?",
+   "updated_at": "2026-10-29T02:34:57.259984+00:00"
+  },
+  "S0512L04U13": {
+   "known": "I want to find out where the keys are",
+   "target": "eu quero descobrir onde estão as chaves",
+   "updated_at": "2026-10-29T02:34:57.481664+00:00"
+  },
+  "S0512L04U14": {
+   "known": "I need to find the keys as quickly as possible",
+   "target": "preciso encontrar as chaves o mais rápido possível",
+   "updated_at": "2026-10-29T02:34:57.472785+00:00"
+  }
+ }
+}

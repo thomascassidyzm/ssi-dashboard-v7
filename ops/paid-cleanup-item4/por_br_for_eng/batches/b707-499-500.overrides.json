@@ -1,0 +1,369 @@
+[
+ {
+  "seed_number": 499,
+  "phrases": {
+   "499:1": [
+    {
+     "known_text": "maybe",
+     "target_text": "talvez",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we should",
+     "target_text": "devêssemos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "maybe we should",
+     "target_text": "talvez devêssemos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "maybe we should wait",
+     "target_text": "talvez devêssemos esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "maybe we should go",
+     "target_text": "talvez devêssemos ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "maybe we should go home",
+     "target_text": "talvez devêssemos ir para casa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should ask someone",
+     "target_text": "talvez devêssemos perguntar a alguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should wait a little",
+     "target_text": "talvez devêssemos esperar um pouco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should eat something",
+     "target_text": "talvez devêssemos comer algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should start again",
+     "target_text": "talvez devêssemos começar outra vez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should ask",
+     "target_text": "talvez devêssemos perguntar",
+     "phrase_role": "build"
+    }
+   ],
+   "499:2": [
+    {
+     "known_text": "to open",
+     "target_text": "abrir",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the door",
+     "target_text": "a porta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to open the door",
+     "target_text": "abrir a porta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "maybe we should open the door",
+     "target_text": "talvez devêssemos abrir a porta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to open the door",
+     "target_text": "vou abrir a porta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you open the door?",
+     "target_text": "você pode abrir a porta?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I forgot to open the door",
+     "target_text": "esqueci de abrir a porta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to open the door",
+     "target_text": "quero abrir a porta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to open the door",
+     "target_text": "ele não quer abrir a porta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to open the door",
+     "target_text": "você precisa abrir a porta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to open the door for her",
+     "target_text": "abrir a porta para ela",
+     "phrase_role": "build"
+    }
+   ],
+   "499:3": [
+    {
+     "known_text": "and",
+     "target_text": "e",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "close",
+     "target_text": "fechar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the window",
+     "target_text": "a janela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "and close the window",
+     "target_text": "e fechar a janela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to open the door and close the window",
+     "target_text": "abrir a porta e fechar a janela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to sit down and close the window",
+     "target_text": "se sentar e fechar a janela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "maybe we should open the door and close the window",
+     "target_text": "talvez devêssemos abrir a porta e fechar a janela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to open the door and close the window",
+     "target_text": "você precisa abrir a porta e fechar a janela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to sit down and close the window",
+     "target_text": "vou me sentar e fechar a janela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you open the door and close the window?",
+     "target_text": "você pode abrir a porta e fechar a janela?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to open the door and close the window",
+     "target_text": "ela quer abrir a porta e fechar a janela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to open the door and close the window",
+     "target_text": "quero abrir a porta e fechar a janela",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 500,
+  "phrases": {
+   "500:1": [
+    {
+     "known_text": "why",
+     "target_text": "por que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "want",
+     "target_text": "quer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "why don't you want to",
+     "target_text": "por que você não quer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to go?",
+     "target_text": "por que você não quer ir?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to eat?",
+     "target_text": "por que você não quer comer?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to come with us?",
+     "target_text": "por que você não quer vir conosco?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to learn Portuguese?",
+     "target_text": "por que você não quer aprender português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to talk about it?",
+     "target_text": "por que você não quer falar sobre isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to work with them?",
+     "target_text": "por que você não quer trabalhar com eles?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to go to the party?",
+     "target_text": "por que você não quer ir à festa?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to help?",
+     "target_text": "por que você não quer ajudar?",
+     "phrase_role": "build"
+    }
+   ],
+   "500:2": [
+    {
+     "known_text": "to sit",
+     "target_text": "se sentar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "between",
+     "target_text": "entre",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "sit between",
+     "target_text": "se sentar entre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to sit between",
+     "target_text": "por que você não quer se sentar entre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to sit between them",
+     "target_text": "se sentar entre eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to sit between his friends",
+     "target_text": "ele quer se sentar entre os amigos dele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to sit between them",
+     "target_text": "ela não quer se sentar entre eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why do you want to sit between them?",
+     "target_text": "por que você quer se sentar entre eles?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can sit between my mother and my father",
+     "target_text": "você pode se sentar entre minha mãe e meu pai",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the child is going to sit between us",
+     "target_text": "a criança vai se sentar entre nós",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to sit between us",
+     "target_text": "ela quer se sentar entre nós",
+     "phrase_role": "build"
+    }
+   ],
+   "500:3": [
+    {
+     "known_text": "the two",
+     "target_text": "as duas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "girls",
+     "target_text": "meninas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the two girls",
+     "target_text": "as duas meninas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sit between the two girls",
+     "target_text": "se sentar entre as duas meninas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "between the two girls",
+     "target_text": "entre as duas meninas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to sit between the two girls?",
+     "target_text": "por que você não quer se sentar entre as duas meninas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls want to play",
+     "target_text": "as duas meninas querem jogar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know the two girls",
+     "target_text": "eu conheço as duas meninas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls are at school",
+     "target_text": "as duas meninas estão na escola",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls are waiting for you",
+     "target_text": "as duas meninas estão esperando por você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls are here",
+     "target_text": "as duas meninas estão aqui",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

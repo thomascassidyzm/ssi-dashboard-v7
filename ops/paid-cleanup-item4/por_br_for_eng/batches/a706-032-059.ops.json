@@ -1,0 +1,531 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0032L01U07",
+    "seed_number": 32,
+    "lego_index": 1,
+    "position": 22,
+    "known_text": "he wants to show me how to say something in Portuguese",
+    "target_text": "ele quer me mostrar como dizer algo em português",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 48,
+    "lego_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0035L02U06",
+    "seed_number": 35,
+    "lego_index": 2,
+    "position": 17,
+    "known_text": "I don't want to read anything because I want to speak Portuguese",
+    "target_text": "não quero ler nada porque quero falar português",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 47,
+    "lego_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0038L02B04",
+    "seed_number": 38,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "you've been learning for a long time",
+    "target_text": "você está aprendendo há muito tempo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 35,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02U06",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 16,
+    "known_text": "I'm not sure if he wants to come back",
+    "target_text": "não tenho certeza se ele quer voltar",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 36,
+    "lego_count": 9,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02U07",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 17,
+    "known_text": "I'm going to come back later on if I can",
+    "target_text": "vou voltar mais tarde se eu conseguir",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 37,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0045L02U05",
+    "seed_number": 45,
+    "lego_index": 2,
+    "position": 16,
+    "known_text": "I'm trying to remember everything",
+    "target_text": "estou tentando me lembrar de tudo",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0038L02B02",
+   "expect": {
+    "known_text": "for a long time here",
+    "target_text": "há muito tempo aqui"
+   },
+   "set": {
+    "known_text": "I've been trying for a long time",
+    "target_text": "estou tentando há muito tempo",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0038L02U05",
+   "expect": {
+    "known_text": "have you been here for a long time?",
+    "target_text": "você está aqui há muito tempo?"
+   },
+   "set": {
+    "known_text": "have you been learning Portuguese for a long time?",
+    "target_text": "você está aprendendo português há muito tempo?",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L01B10",
+   "expect": {
+    "known_text": "I dont want to read anything or speak now",
+    "target_text": "não quero ler nada ou falar agora"
+   },
+   "set": {
+    "known_text": "I don't want to read anything or speak now",
+    "target_text": "não quero ler nada ou falar agora",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L01U02",
+   "expect": {
+    "known_text": "she doesnt want to read anything or interrupt the story",
+    "target_text": "ela não quer ler nada ou interromper a história"
+   },
+   "set": {
+    "known_text": "she doesn't want to read anything or interrupt the story",
+    "target_text": "ela não quer ler nada ou interromper a história",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B06",
+   "expect": {
+    "known_text": "if you want",
+    "target_text": "se você quiser"
+   },
+   "set": {
+    "known_text": "if you want",
+    "target_text": "se você quer",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B07",
+   "expect": {
+    "known_text": "if she wants to speak",
+    "target_text": "se ela quiser falar"
+   },
+   "set": {
+    "known_text": "if she wants to speak",
+    "target_text": "se ela quer falar",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B08",
+   "expect": {
+    "known_text": "if he wants to come back",
+    "target_text": "se ele quiser voltar"
+   },
+   "set": {
+    "known_text": "if he wants to come back",
+    "target_text": "se ele quer voltar",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B09",
+   "expect": {
+    "known_text": "or if you want to learn more",
+    "target_text": "ou se você quiser aprender mais"
+   },
+   "set": {
+    "known_text": "or if you want to learn more",
+    "target_text": "ou se você quer aprender mais",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B10",
+   "expect": {
+    "known_text": "if you want to speak Portuguese",
+    "target_text": "se você quiser falar português"
+   },
+   "set": {
+    "known_text": "if you want to speak Portuguese",
+    "target_text": "se você quer falar português",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02U03",
+   "expect": {
+    "known_text": "or if you want to come back tomorrow or later",
+    "target_text": "ou se você quiser voltar amanhã ou mais tarde"
+   },
+   "set": {
+    "known_text": "if you want to speak Portuguese, I want to speak with you",
+    "target_text": "se você quer falar português, quero falar com você",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02U04",
+   "expect": {
+    "known_text": "or if you want to practise speaking Portuguese this morning",
+    "target_text": "ou se você quiser praticar falando português esta manhã"
+   },
+   "set": {
+    "known_text": "if you want to practise speaking Portuguese this morning, I'm going to help you",
+    "target_text": "se você quer praticar falando português esta manhã, vou te ajudar",
+    "decomposition": null,
+    "word_count": 65,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02U05",
+   "expect": {
+    "known_text": "if you are feeling tired this morning",
+    "target_text": "se você estiver se sentindo cansado esta manhã"
+   },
+   "set": {
+    "known_text": "if you're feeling tired this morning, I'm going to come back later on",
+    "target_text": "se você está se sentindo cansado esta manhã, vou voltar mais tarde",
+    "decomposition": null,
+    "word_count": 66,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0050L01U02",
+   "expect": {
+    "known_text": "I don't care about finishing because I don't worry about it",
+    "target_text": "não me importo de acabar porque não me preocupo com isso"
+   },
+   "set": {
+    "known_text": "I don't care about finishing quickly because I want to learn",
+    "target_text": "não me importo de acabar rapidamente porque quero aprender",
+    "decomposition": null,
+    "word_count": 58,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0032L01B04",
+   "expect": {
+    "known_text": "to show me now",
+    "target_text": "me mostrar agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0032L01B08",
+   "expect": {
+    "known_text": "did you want to show me something now?",
+    "target_text": "queria me mostrar algo agora?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0032L01B13",
+   "expect": {
+    "known_text": "she wants to show me now",
+    "target_text": "ela quer me mostrar agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0034L02B02",
+   "expect": {
+    "known_text": "to be quiet today",
+    "target_text": "ficar calado hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0034L02B03",
+   "expect": {
+    "known_text": "to be quiet now",
+    "target_text": "ficar calado agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0035L02B03",
+   "expect": {
+    "known_text": "to read anything today",
+    "target_text": "ler nada hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0039L01B01",
+   "expect": {
+    "known_text": "tired today",
+    "target_text": "cansado hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0039L01B02",
+   "expect": {
+    "known_text": "tired now",
+    "target_text": "cansado agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L01B01",
+   "expect": {
+    "known_text": "or now",
+    "target_text": "ou agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02B01",
+   "expect": {
+    "known_text": "if now",
+    "target_text": "se agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02B02",
+   "expect": {
+    "known_text": "if tomorrow",
+    "target_text": "se amanhã"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02B04",
+   "expect": {
+    "known_text": "or if later",
+    "target_text": "ou se mais tarde"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02B05",
+   "expect": {
+    "known_text": "or if today",
+    "target_text": "ou se hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02U01",
+   "expect": {
+    "known_text": "if you want to practise speaking with other people",
+    "target_text": "se você quiser praticar falando com outra pessoa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0045L01B01",
+   "expect": {
+    "known_text": "to know things now",
+    "target_text": "saber agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0045L02B02",
+   "expect": {
+    "known_text": "everything now",
+    "target_text": "tudo agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0046L02B03",
+   "expect": {
+    "known_text": "making mistakes now",
+    "target_text": "cometer erros agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0049L01B02",
+   "expect": {
+    "known_text": "it's like this now",
+    "target_text": "é assim agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0049L01B03",
+   "expect": {
+    "known_text": "it's like this today",
+    "target_text": "é assim hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0049L01U08",
+   "expect": {
+    "known_text": "I think it's like this",
+    "target_text": "acho que é assim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0049L02B02",
+   "expect": {
+    "known_text": "you understand now",
+    "target_text": "você entende agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0050L01B02",
+   "expect": {
+    "known_text": "to finish now",
+    "target_text": "acabar agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0051L02B01",
+   "expect": {
+    "known_text": "things now",
+    "target_text": "coisas agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0058L01B02",
+   "expect": {
+    "known_text": "it's interesting now",
+    "target_text": "é interessante agora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0059L01B02",
+   "expect": {
+    "known_text": "I know now",
+    "target_text": "sei agora"
+   }
+  }
+ ]
+}
