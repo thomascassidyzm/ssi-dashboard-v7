@@ -95,6 +95,21 @@
     "word_count": 27,
     "lego_position": "start"
    }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01U02",
+   "expect": {
+    "known_text": "నువ్వు ఏమనుకున్నావు?",
+    "target_text": "what did you think?"
+   },
+   "set": {
+    "known_text": "నువ్వు నిన్న దాని గురించి అనుకున్నావు",
+    "target_text": "you thought about it yesterday",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
   }
  ]
 }
