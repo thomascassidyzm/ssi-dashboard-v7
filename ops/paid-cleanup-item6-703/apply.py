@@ -127,7 +127,17 @@ def audio(c, mode, cap=30000):
 
 def batch(c, mode):
     ops = list(json.load(open(f'{adir(c)}/text.ops.json'))['ops'])
-    rr = json.load(open(f'{adir(c)}/render-real.json')) if os.path.exists(f'{adir(c)}/render-real.json') else {}
+    # ROMAN_STALE (services/shared/roman-sync.cjs): a changed target_text must carry its romanisation.
+    # applied/<c>/roman.json {row_id: "romanisation"} supplies one read by hand; otherwise it is cleared
+    # on purpose (null) — a blank shows the learner the right script, a stale one the old words.
+    rf = f'{adir(c)}/roman.json'
+    roman = json.load(open(rf)) if os.path.exists(rf) else {}
+    for o in ops:
+        s = o.get('set') or {}
+        if 'target_text' in s and 'target_text_roman' not in s:
+            rid = (o.get('phrase_id') or o.get('lego_id') or str(o.get('seed_number') or o.get('id') or '')).split(':')[-1]
+            s['target_text_roman'] = roman.get(rid)
+    rr =json.load(open(f'{adir(c)}/render-real.json')) if os.path.exists(f'{adir(c)}/render-real.json') else {}
     olds = json.load(open(f'{adir(c)}/old-slots.json'))
     for role, text, tk, rid in needs(c):
         r = rr.get(f'{role}|{text}') or {}
