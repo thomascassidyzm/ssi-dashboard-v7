@@ -1,0 +1,746 @@
+[
+ {
+  "seed_number": 572,
+  "phrases": {
+   "572:1": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "forgot",
+     "target_text": "se esqueceu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "have you forgotten",
+     "target_text": "você se esqueceu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you forgotten my name?",
+     "target_text": "você se esqueceu do meu nome?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you forgotten the answer?",
+     "target_text": "você se esqueceu da resposta?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you forgotten me?",
+     "target_text": "você se esqueceu de mim?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you forgotten the word?",
+     "target_text": "você se esqueceu da palavra?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you forgotten your bag?",
+     "target_text": "você se esqueceu da sua bolsa?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wonder if you've forgotten",
+     "target_text": "eu me pergunto se você se esqueceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you still haven't forgotten",
+     "target_text": "você ainda não se esqueceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you forgotten your ticket?",
+     "target_text": "você se esqueceu do seu bilhete?",
+     "phrase_role": "build"
+    }
+   ],
+   "572:2": [
+    {
+     "known_text": "of what",
+     "target_text": "do que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "happened",
+     "target_text": "aconteceu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what happened",
+     "target_text": "do que aconteceu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you still forgotten what happened",
+     "target_text": "você ainda se esqueceu do que aconteceu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I need to remember what happened",
+     "target_text": "preciso me lembrar do que aconteceu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you forgotten what happened?",
+     "target_text": "você se esqueceu do que aconteceu?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to remember what happened",
+     "target_text": "quero me lembrar do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she forgot what happened",
+     "target_text": "ela se esqueceu do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to remember what happened",
+     "target_text": "estou tentando me lembrar do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to remember what happened",
+     "target_text": "ele não quer se lembrar do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't remember what happened",
+     "target_text": "não consigo me lembrar do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to remember what happened",
+     "target_text": "espero conseguir me lembrar do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have said that if I had known what happened",
+     "target_text": "não teria dito isso se soubesse do que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to remember what happened",
+     "target_text": "gostaria de me lembrar do que aconteceu",
+     "phrase_role": "build"
+    }
+   ],
+   "572:3": [
+    {
+     "known_text": "of the last",
+     "target_text": "da última",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "time",
+     "target_text": "vez",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the last time",
+     "target_text": "da última vez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what happened the last time",
+     "target_text": "do que aconteceu da última vez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "better than the last time",
+     "target_text": "melhor do que da última vez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you forgotten what happened the last time?",
+     "target_text": "você se esqueceu do que aconteceu da última vez?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was easier the last time",
+     "target_text": "foi mais fácil da última vez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm feeling better than the last time",
+     "target_text": "estou me sentindo melhor do que da última vez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she was here the last time",
+     "target_text": "ela esteve aqui da última vez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I couldn't sleep the last time",
+     "target_text": "eu não consegui dormir da última vez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was like this the last time",
+     "target_text": "foi assim da última vez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "like the last time",
+     "target_text": "como da última vez",
+     "phrase_role": "build"
+    }
+   ],
+   "572:4": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "us",
+     "target_text": "nos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "visited",
+     "target_text": "visitaram",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they visited us",
+     "target_text": "que eles nos visitaram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the last time they visited us",
+     "target_text": "da última vez que eles nos visitaram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was lovely the last time they visited us",
+     "target_text": "foi muito bom da última vez que eles nos visitaram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you forgotten what happened the last time they visited us?",
+     "target_text": "você se esqueceu do que aconteceu da última vez que eles nos visitaram?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog was very happy the last time they visited us",
+     "target_text": "o cachorro estava muito contente da última vez que eles nos visitaram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't remember what happened the last time they visited us",
+     "target_text": "não consigo me lembrar do que aconteceu da última vez que eles nos visitaram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was a surprise the last time they visited us",
+     "target_text": "foi uma surpresa da última vez que eles nos visitaram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was tired the last time they visited us",
+     "target_text": "eu estava cansado da última vez que eles nos visitaram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was difficult the last time they visited us",
+     "target_text": "foi difícil da última vez que eles nos visitaram",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 573,
+  "phrases": {
+   "573:1": [
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the kind of thing",
+     "target_text": "o tipo de coisa",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it's the kind of thing",
+     "target_text": "é o tipo de coisa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the kind of thing I want to do",
+     "target_text": "é o tipo de coisa que eu quero fazer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the kind of thing I like to do",
+     "target_text": "é o tipo de coisa que eu gosto de fazer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the kind of thing I'd like to learn",
+     "target_text": "é o tipo de coisa que gostaria de aprender",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's the kind of thing he wants",
+     "target_text": "acho que é o tipo de coisa que ele quer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the kind of thing I don't want to do",
+     "target_text": "é o tipo de coisa que eu não quero fazer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the kind of thing you can do with the children",
+     "target_text": "é o tipo de coisa que você pode fazer com as crianças",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the kind of thing I need to learn",
+     "target_text": "é o tipo de coisa que preciso aprender",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the kind of thing you have to see",
+     "target_text": "é o tipo de coisa que você tem que ver",
+     "phrase_role": "build"
+    }
+   ],
+   "573:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "makes",
+     "target_text": "torna",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the holidays",
+     "target_text": "as férias",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that makes the holidays",
+     "target_text": "que torna as férias",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the kind of thing that makes the holidays interesting",
+     "target_text": "é o tipo de coisa que torna as férias interessantes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "something that makes the holidays interesting",
+     "target_text": "algo que torna as férias interessantes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that's what makes the holidays interesting",
+     "target_text": "é isso que torna as férias interessantes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the beach is what makes the holidays interesting",
+     "target_text": "a praia é o que torna as férias interessantes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that's what makes the holidays interesting",
+     "target_text": "acho que é isso que torna as férias interessantes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the music that makes the holidays interesting",
+     "target_text": "é a música que torna as férias interessantes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the beach that makes the holidays interesting",
+     "target_text": "é a praia que torna as férias interessantes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the thing that makes the holidays interesting",
+     "target_text": "a coisa que torna as férias interessantes",
+     "phrase_role": "build"
+    }
+   ],
+   "573:3": [
+    {
+     "known_text": "very special",
+     "target_text": "muito especiais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "makes the holidays very special",
+     "target_text": "torna as férias muito especiais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they're very special",
+     "target_text": "são muito especiais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the kind of thing that makes the holidays very special",
+     "target_text": "é o tipo de coisa que torna as férias muito especiais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children are very special",
+     "target_text": "as crianças são muito especiais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think they're very special",
+     "target_text": "acho que são muito especiais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friends are very special to me",
+     "target_text": "os meus amigos são muito especiais para mim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays with the children are very special",
+     "target_text": "as férias com as crianças são muito especiais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they're very special people",
+     "target_text": "são pessoas muito especiais",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 574,
+  "phrases": {
+   "574:1": [
+    {
+     "known_text": "the holidays",
+     "target_text": "as férias",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "are",
+     "target_text": "são",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the holidays are",
+     "target_text": "as férias são",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the holidays are interesting",
+     "target_text": "as férias são interessantes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the holidays are very special",
+     "target_text": "as férias são muito especiais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think the holidays are very special",
+     "target_text": "acho que as férias são muito especiais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are more interesting with the children",
+     "target_text": "as férias são mais interessantes com as crianças",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are very special for me",
+     "target_text": "as férias são muito especiais para mim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are very special for the children",
+     "target_text": "as férias são muito especiais para as crianças",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are the best thing",
+     "target_text": "as férias são a melhor coisa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they said that the holidays are very special for everyone",
+     "target_text": "eles disseram que as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are very special when the children are here",
+     "target_text": "as férias são muito especiais quando as crianças estão aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are interesting for the children",
+     "target_text": "as férias são interessantes para as crianças",
+     "phrase_role": "build"
+    }
+   ],
+   "574:2": [
+    {
+     "known_text": "very special",
+     "target_text": "muito especiais",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "for everyone",
+     "target_text": "para todos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "very special for everyone",
+     "target_text": "muito especiais para todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they're very special for everyone",
+     "target_text": "são muito especiais para todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think they're very special for everyone",
+     "target_text": "acho que são muito especiais para todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the holidays are very special for everyone",
+     "target_text": "as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the holidays are very special for everyone",
+     "target_text": "você sabe que as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you think the holidays are very special for everyone",
+     "target_text": "você acha que as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they think the holidays are very special for everyone",
+     "target_text": "eles acham que as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, the holidays are very special for everyone",
+     "target_text": "é verdade que as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the holidays are going to be very special for everyone",
+     "target_text": "as férias vão ser muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they say that the holidays are very special for everyone",
+     "target_text": "eles dizem que as férias são muito especiais para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they're always very special for everyone",
+     "target_text": "são sempre muito especiais para todos",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 575,
+  "phrases": {
+   "575:1": [
+    {
+     "known_text": "it's been upsetting",
+     "target_text": "foi perturbante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's been upsetting for everyone",
+     "target_text": "foi perturbante para todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's been upsetting for me",
+     "target_text": "foi perturbante para mim",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it seems that it's been upsetting",
+     "target_text": "parece que foi perturbante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you think it's been upsetting",
+     "target_text": "você acha que foi perturbante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they think it's been upsetting",
+     "target_text": "eles acham que foi perturbante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, it's been upsetting",
+     "target_text": "é verdade que foi perturbante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's still been upsetting",
+     "target_text": "ainda foi perturbante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's been upsetting for the children",
+     "target_text": "foi perturbante para as crianças",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 576,
+  "phrases": {
+   "576:1": [
+    {
+     "known_text": "has",
+     "target_text": "tem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "been",
+     "target_text": "sido",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it has been",
+     "target_text": "tem sido",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it has been difficult",
+     "target_text": "tem sido difícil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it has been interesting",
+     "target_text": "tem sido interessante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it has been a very good week",
+     "target_text": "tem sido uma semana muito boa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it has been difficult for everyone",
+     "target_text": "tem sido difícil para todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it has been very interesting",
+     "target_text": "tem sido muito interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it has been upsetting",
+     "target_text": "tem sido perturbante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it has been a surprise",
+     "target_text": "tem sido uma surpresa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it has been easy",
+     "target_text": "tem sido fácil",
+     "phrase_role": "build"
+    }
+   ],
+   "576:2": [
+    {
+     "known_text": "very upsetting",
+     "target_text": "muito perturbante",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "waiting",
+     "target_text": "esperar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "very upsetting waiting",
+     "target_text": "muito perturbante esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was very upsetting waiting",
+     "target_text": "foi muito perturbante esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's very upsetting waiting",
+     "target_text": "é muito perturbante esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it has been very upsetting waiting",
+     "target_text": "tem sido muito perturbante esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it seems that it has been very upsetting waiting",
+     "target_text": "parece que tem sido muito perturbante esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you think it has been very upsetting waiting",
+     "target_text": "você acha que tem sido muito perturbante esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they think it has been very upsetting waiting",
+     "target_text": "eles acham que tem sido muito perturbante esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, it has been very upsetting waiting",
+     "target_text": "é verdade que tem sido muito perturbante esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was very upsetting waiting for the answer",
+     "target_text": "foi muito perturbante esperar a resposta",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

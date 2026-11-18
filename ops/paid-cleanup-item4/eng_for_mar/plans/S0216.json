@@ -1,0 +1,59 @@
+{
+ "seed": 216,
+ "legos": {
+  "L01": {
+   "insert": [
+    [
+     "build",
+     "मी तिला भेटलो",
+     "I saw her"
+    ],
+    [
+     "build",
+     "मी त्याला भेटलो",
+     "I saw him"
+    ],
+    [
+     "use",
+     "मी त्याला रविवारी भेटलो",
+     "I saw him on Sunday"
+    ]
+   ],
+   "update": {
+    "U02": [
+     "मी तिला काल भेटलो",
+     "I saw her yesterday"
+    ],
+    "U03": [
+     "मला वाटतं की मी त्याला भेटलो",
+     "I think that I saw him"
+    ],
+    "U04": [
+     "कारण मी तिला भेटलो",
+     "because I saw her"
+    ],
+    "U05": [
+     "मी तिला आज भेटलो",
+     "I saw her today"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "कामावर काही मित्र",
+     "a few friends at work"
+    ],
+    "B04": [
+     "काही मित्रांबरोबर",
+     "with a few friends"
+    ],
+    "U05": [
+     "मी काल काही मित्रांना भेटलो",
+     "I saw a few friends yesterday"
+    ]
+   }
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

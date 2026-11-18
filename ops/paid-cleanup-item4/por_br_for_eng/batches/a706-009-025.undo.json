@@ -1,0 +1,298 @@
+{
+ "event_id": "e0d23e13-499d-4f6e-a343-19ce85316ff4",
+ "undo_file": "2026-11-18T13-07-59-415Z-e0d23e13-499d-4f6e-a343-19ce85316ff4.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0025L02B03",
+   "set": {
+    "known_text": "to help me today",
+    "target_text": "me ajudar hoje",
+    "word_count": 14,
+    "known_audio_id": "f496b8f2-7be2-4245-a119-478ddee93def",
+    "target1_audio_id": "7d6aac69-3509-481f-8394-d0357a6952fa",
+    "target2_audio_id": "ba7cf94c-1b58-46ff-87fb-9d1c7e194d10",
+    "decomposition": [
+     {
+      "known": "to help me",
+      "legoId": "S0025L02",
+      "target": "me ajudar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0025L02B02",
+   "set": {
+    "known_text": "to help me now",
+    "target_text": "me ajudar agora",
+    "word_count": 15,
+    "known_audio_id": "7a498785-0380-445e-892c-89722250eabf",
+    "target1_audio_id": "0d6be624-d18d-4f53-8a61-5a9c14509c28",
+    "target2_audio_id": "57c22737-5eca-4d75-9e82-9833922332a8",
+    "decomposition": [
+     {
+      "known": "to help me",
+      "legoId": "S0025L02",
+      "target": "me ajudar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0015L02B04",
+   "set": {
+    "known_text": "I want you to speak today",
+    "target_text": "quero que você fale hoje",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "b2a1e914-8fb1-4933-9325-f6d966c585cf",
+    "target1_audio_id": "6149efa2-6f00-4f0e-b7bc-216587cc2c46",
+    "target2_audio_id": "0685c7a1-8f6f-4513-81b2-531e6188cbf9",
+    "decomposition": [
+     {
+      "known": "I want you to speak",
+      "legoId": "S0015L02",
+      "target": "quero que você fale",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0015L02B03",
+   "set": {
+    "known_text": "I want you to speak now",
+    "target_text": "quero que você fale agora",
+    "word_count": 25,
+    "known_audio_id": "6e9131f2-bce3-4949-ba69-7ee2b6961c86",
+    "target1_audio_id": "dddb4331-7bf2-453c-b549-b8ab4db19ef5",
+    "target2_audio_id": "b40b718b-2242-4def-899d-4ca8cbf2f015",
+    "decomposition": [
+     {
+      "known": "I want you to speak",
+      "legoId": "S0015L02",
+      "target": "quero que você fale",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0013L01U04",
+   "set": {
+    "known_text": "you speak Portuguese today",
+    "target_text": "você fala português hoje",
+    "word_count": 24,
+    "lego_position": "start",
+    "known_audio_id": "526f8760-59b4-4dba-8f91-05527d473f70",
+    "target1_audio_id": "91a08124-dfbc-4c4b-bc2b-c87c24a7ed3f",
+    "target2_audio_id": "a8e5f94e-9673-4be5-b476-50fb49492b91",
+    "decomposition": [
+     {
+      "known": "you speak",
+      "legoId": "S0013L01",
+      "target": "você fala",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "Portuguese",
+      "legoId": "S0001L03",
+      "target": " português",
+      "isGhost": false
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0013L01B03",
+   "set": {
+    "known_text": "you speak now",
+    "target_text": "você fala agora",
+    "word_count": 15,
+    "known_audio_id": "34315497-60c5-4019-8543-f126306a0fc5",
+    "target1_audio_id": "3f3cfe3f-8321-4897-bc3a-54a6cb8cb5bc",
+    "target2_audio_id": "d2d4e842-c93b-43d7-b114-e0ebdd536572",
+    "decomposition": [
+     {
+      "known": "you speak",
+      "legoId": "S0013L01",
+      "target": "você fala",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0010L01U04",
+   "set": {
+    "known_text": "I'm not sure right now",
+    "target_text": "não tenho certeza agora",
+    "word_count": 26,
+    "lego_position": "middle",
+    "known_audio_id": "87180cfe-1d73-448f-b262-8a07d0451952",
+    "target1_audio_id": "4b4cc3f5-32ad-49fd-b9b9-bef776648ec1",
+    "target2_audio_id": "c861b88d-e1a3-4a17-9dca-202601d2c3a6",
+    "decomposition": [
+     {
+      "known": "I'm not sure",
+      "legoId": "S0010L01",
+      "target": "não tenho certeza",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0010L01B03",
+   "set": {
+    "known_text": "I'm not sure today",
+    "target_text": "não tenho certeza hoje",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "9baee98c-526e-4957-849b-bff1ce7664e8",
+    "target1_audio_id": "46875f96-a2d6-425b-8fc9-9cab9186cefa",
+    "target2_audio_id": "92b8bd7e-b616-41cc-b73b-1835dabc4e15",
+    "decomposition": [
+     {
+      "known": "I'm not sure",
+      "legoId": "S0010L01",
+      "target": "não tenho certeza",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0010L01B02",
+   "set": {
+    "known_text": "I'm not sure now",
+    "target_text": "não tenho certeza agora",
+    "word_count": 23,
+    "known_audio_id": "3ca78b7e-ecfe-462b-b807-84bad2d65171",
+    "target1_audio_id": "4b4cc3f5-32ad-49fd-b9b9-bef776648ec1",
+    "target2_audio_id": "c861b88d-e1a3-4a17-9dca-202601d2c3a6",
+    "decomposition": [
+     {
+      "known": "I'm not sure",
+      "legoId": "S0010L01",
+      "target": "não tenho certeza",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0009L01B04",
+   "set": {
+    "known_text": "I speak now",
+    "target_text": "falo agora",
+    "word_count": 10,
+    "known_audio_id": "671d396e-6205-484d-9ea6-beeadf1c06eb",
+    "target1_audio_id": "87c35b7d-b663-474b-8e75-4965340e16b5",
+    "target2_audio_id": "5a2d0638-628b-415c-bc9a-55e6d9c413f9",
+    "decomposition": [
+     {
+      "known": "I speak",
+      "legoId": "S0009L01",
+      "target": "falo",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0013L01U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0010L01U08"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0010L01B04"
+  }
+ ]
+}

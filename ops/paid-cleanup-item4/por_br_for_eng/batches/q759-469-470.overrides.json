@@ -1,0 +1,409 @@
+[
+ {
+  "seed_number": 469,
+  "phrases": {
+   "469:1": [
+    {
+     "known_text": "but",
+     "target_text": "mas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that",
+     "target_text": "isso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "mean",
+     "target_text": "quer dizer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "but that doesn't mean",
+     "target_text": "mas isso não quer dizer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but that doesn't mean anything",
+     "target_text": "mas isso não quer dizer nada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but that doesn't mean it's easy",
+     "target_text": "mas isso não quer dizer que seja fácil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's true, but that doesn't mean it's possible",
+     "target_text": "é verdade, mas isso não quer dizer que seja possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's interesting, but that doesn't mean it's important",
+     "target_text": "é interessante, mas isso não quer dizer que seja importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm tired, but that doesn't mean anything",
+     "target_text": "estou cansado, mas isso não quer dizer nada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but that doesn't mean that it's true",
+     "target_text": "mas isso não quer dizer que seja verdade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but that doesn't mean it's perfect",
+     "target_text": "mas isso não quer dizer que seja perfeito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but that doesn't mean that",
+     "target_text": "mas isso não quer dizer que",
+     "phrase_role": "build"
+    }
+   ],
+   "469:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we can",
+     "target_text": "possamos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that we can't",
+     "target_text": "que não possamos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but that doesn't mean that we can't",
+     "target_text": "mas isso não quer dizer que não possamos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that we can't help",
+     "target_text": "que não possamos ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that doesn't mean that we can't go",
+     "target_text": "isso não quer dizer que não possamos ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that doesn't mean that we can't help",
+     "target_text": "isso não quer dizer que não possamos ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but that doesn't mean that we can't try",
+     "target_text": "mas isso não quer dizer que não possamos tentar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that doesn't mean that we can't speak Portuguese",
+     "target_text": "isso não quer dizer que não possamos falar português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but that doesn't mean that we can't learn",
+     "target_text": "mas isso não quer dizer que não possamos aprender",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that we can't go",
+     "target_text": "que não possamos ir",
+     "phrase_role": "build"
+    }
+   ],
+   "469:3": [
+    {
+     "known_text": "to change",
+     "target_text": "mudar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it",
+     "target_text": "isso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to change it",
+     "target_text": "mudar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you can change it",
+     "target_text": "você pode mudar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to change it later",
+     "target_text": "mudar isso mais tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but that doesn't mean we can't change it",
+     "target_text": "mas isso não quer dizer que não possamos mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to change it",
+     "target_text": "não quero mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody can change it",
+     "target_text": "ninguém consegue mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they want to change it",
+     "target_text": "eles querem mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that still doesn't mean we can't change it",
+     "target_text": "isso ainda não quer dizer que não possamos mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to change it tomorrow",
+     "target_text": "vou mudar isso amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she is going to change it",
+     "target_text": "ela vai mudar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope you'll be able to change it",
+     "target_text": "espero que você consiga mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to change it",
+     "target_text": "preciso mudar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we should change it",
+     "target_text": "devíamos mudar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we must change it",
+     "target_text": "nós temos de mudar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if they want to change it, they need to ask",
+     "target_text": "se querem mudar isso, eles precisam perguntar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we have to change it",
+     "target_text": "temos que mudar isso",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 470,
+  "phrases": {
+   "470:1": [
+    {
+     "known_text": "to what",
+     "target_text": "a que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "height",
+     "target_text": "altura",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "how high",
+     "target_text": "a que altura",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how high are we?",
+     "target_text": "a que altura estamos?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how high are they?",
+     "target_text": "a que altura eles estão?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you know how high we are?",
+     "target_text": "você sabe a que altura estamos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to know how high we are",
+     "target_text": "quero saber a que altura estamos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody knows how high they are",
+     "target_text": "ninguém sabe a que altura eles estão",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "how high is the top?",
+     "target_text": "a que altura está o topo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wonder how high we are",
+     "target_text": "me pergunto a que altura estamos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "how high is it?",
+     "target_text": "a que altura está?",
+     "phrase_role": "build"
+    }
+   ],
+   "470:2": [
+    {
+     "known_text": "you want",
+     "target_text": "você quer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to climb",
+     "target_text": "subir",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "do you want to climb",
+     "target_text": "você quer subir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how high do you want to climb",
+     "target_text": "a que altura você quer subir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to climb to the top?",
+     "target_text": "você quer subir até o topo?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to climb with us?",
+     "target_text": "você quer subir conosco?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to climb tomorrow?",
+     "target_text": "você quer subir amanhã?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why do you want to climb?",
+     "target_text": "por que você quer subir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to climb that wall?",
+     "target_text": "você quer subir aquele muro?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to climb again?",
+     "target_text": "você quer subir outra vez?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to climb with me?",
+     "target_text": "você quer subir comigo?",
+     "phrase_role": "build"
+    }
+   ],
+   "470:3": [
+    {
+     "known_text": "before",
+     "target_text": "antes de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we stop",
+     "target_text": "pararmos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "before we stop",
+     "target_text": "antes de pararmos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to climb before we stop",
+     "target_text": "você quer subir antes de pararmos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a little more before we stop",
+     "target_text": "um pouco mais antes de pararmos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how high do you want to climb before we stop?",
+     "target_text": "a que altura você quer subir antes de pararmos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to finish before we stop",
+     "target_text": "quero acabar antes de pararmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to see the top before we stop",
+     "target_text": "quero ver o topo antes de pararmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to climb a little more before we stop",
+     "target_text": "nós precisamos subir mais um pouco antes de pararmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "how high do you still want to climb before we stop?",
+     "target_text": "a que altura você ainda quer subir antes de pararmos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need a little more time before we stop",
+     "target_text": "preciso de um pouco mais de tempo antes de pararmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to eat something before we stop",
+     "target_text": "comer algo antes de pararmos",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

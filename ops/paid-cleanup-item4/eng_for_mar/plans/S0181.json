@@ -1,0 +1,86 @@
+{
+ "seed": 181,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "डॉक्टरकडे जायला",
+     "to go to the doctor"
+    ],
+    "U01": [
+     "मला डॉक्टरकडे जायचं आहे",
+     "I want to go to the doctor"
+    ],
+    "U04": [
+     "मला डॉक्टरकडे जायला हवं",
+     "I need to go to the doctor"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तिला डॉक्टरकडे जायचं आहे",
+     "she wants to go to the doctor"
+    ],
+    [
+     "build",
+     "उद्या डॉक्टरकडे जायला",
+     "to go to the doctor tomorrow"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "पण मला जावं लागेल",
+     "but I have to go"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "पण मला प्रयत्न करावा लागेल",
+     "but I have to try"
+    ],
+    [
+     "use",
+     "पण मला डॉक्टरकडे जावं लागेल",
+     "but I have to go to the doctor"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "उद्या आईला न्यावं",
+     "to take my mother tomorrow"
+    ],
+    "U02": [
+     "मला आज माझ्या आईला डॉक्टरकडे न्यावं लागेल",
+     "I have to take my mother to the doctor today"
+    ],
+    "U03": [
+     "मला माझ्या आईला डॉक्टरकडे न्यायचं आहे",
+     "I want to take my mother to the doctor"
+    ],
+    "U04": [
+     "मी उद्या माझ्या आईला डॉक्टरकडे नेणार आहे",
+     "I'm going to take my mother to the doctor tomorrow"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आज आईला न्यावं",
+     "to take my mother today"
+    ],
+    [
+     "use",
+     "मला रविवारी सकाळी आईला डॉक्टरकडे न्यावं लागेल",
+     "I have to take my mother to the doctor on Sunday morning"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

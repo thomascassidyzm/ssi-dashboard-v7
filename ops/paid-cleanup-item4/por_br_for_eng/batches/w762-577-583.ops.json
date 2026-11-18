@@ -1,0 +1,1235 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0577L01B04",
+    "seed_number": 577,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "we've been waiting for the bus",
+    "target_text": "estamos esperando o ônibus",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0577L02B04",
+    "seed_number": 577,
+    "lego_index": 2,
+    "position": 19,
+    "known_text": "I'm waiting for the news from the hospital",
+    "target_text": "estou esperando as notícias do hospital",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 39,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0578L01B04",
+    "seed_number": 578,
+    "lego_index": 1,
+    "position": 20,
+    "known_text": "I want somewhere warmer",
+    "target_text": "eu quero um lugar mais quente",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0579L01B04",
+    "seed_number": 579,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "we've already tried to help",
+    "target_text": "nós já tentamos ajudar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0580L01B04",
+    "seed_number": 580,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "we've often wanted to learn Portuguese",
+    "target_text": "nós muitas vezes quisemos aprender português",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 44,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0580L03B04",
+    "seed_number": 580,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "to go somewhere new",
+    "target_text": "ir a um lugar novo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0580L04B04",
+    "seed_number": 580,
+    "lego_index": 4,
+    "position": 11,
+    "known_text": "it's a little warmer today",
+    "target_text": "está um pouco mais quente hoje",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0581L01B04",
+    "seed_number": 581,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "he'd like to know the answer",
+    "target_text": "ele gostaria de saber a resposta",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0581L02B04",
+    "seed_number": 581,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "a little more about that",
+    "target_text": "um pouco mais sobre isso",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0581L03B04",
+    "seed_number": 581,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "I don't know what it's like",
+    "target_text": "não sei como é",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 14,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0582L01B04",
+    "seed_number": 582,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "what's it like at the beach?",
+    "target_text": "como é na praia?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0582L02B04",
+    "seed_number": 582,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "it's interesting to grow up here",
+    "target_text": "é interessante crescer aqui",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0583L02B04",
+    "seed_number": 583,
+    "lego_index": 2,
+    "position": 15,
+    "known_text": "everything is different in this part of the world",
+    "target_text": "tudo é diferente nesta parte do mundo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 37,
+    "lego_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L01B02",
+   "expect": {
+    "known_text": "we've been waiting for it",
+    "target_text": "estamos esperando isso"
+   },
+   "set": {
+    "known_text": "we've been waiting for the answer",
+    "target_text": "estamos esperando a resposta",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L01B03",
+   "expect": {
+    "known_text": "yes, we've been waiting for",
+    "target_text": "sim, estamos esperando"
+   },
+   "set": {
+    "known_text": "we've been waiting for you",
+    "target_text": "estamos esperando você",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L01U01",
+   "expect": {
+    "known_text": "it seems that we've been waiting",
+    "target_text": "parece que estamos esperando"
+   },
+   "set": {
+    "known_text": "we've been waiting for a long time",
+    "target_text": "estamos esperando há muito tempo",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L01U02",
+   "expect": {
+    "known_text": "you think we've been waiting",
+    "target_text": "você acha que estamos esperando"
+   },
+   "set": {
+    "known_text": "we've been waiting for the children",
+    "target_text": "estamos esperando as crianças",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L01U03",
+   "expect": {
+    "known_text": "they think we've been waiting",
+    "target_text": "eles acham que estamos esperando"
+   },
+   "set": {
+    "known_text": "we've been waiting for you all day",
+    "target_text": "estamos esperando você o dia todo",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L01U04",
+   "expect": {
+    "known_text": "it's true, we've been waiting",
+    "target_text": "é verdade que estamos esperando"
+   },
+   "set": {
+    "known_text": "we've been waiting for the bus all afternoon",
+    "target_text": "estamos esperando o ônibus a tarde toda",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L02B02",
+   "expect": {
+    "known_text": "we've been waiting for the news from the hospital now",
+    "target_text": "estamos esperando as notícias do hospital agora"
+   },
+   "set": {
+    "known_text": "we're still waiting for the news from the hospital",
+    "target_text": "ainda estamos esperando as notícias do hospital",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0577L02B03",
+   "expect": {
+    "known_text": "yes, the news from the hospital",
+    "target_text": "sim, as notícias do hospital"
+   },
+   "set": {
+    "known_text": "have you got the news from the hospital?",
+    "target_text": "você tem as notícias do hospital?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0578L01B02",
+   "expect": {
+    "known_text": "somewhere warmer now",
+    "target_text": "um lugar mais quente agora"
+   },
+   "set": {
+    "known_text": "I'd like somewhere warmer",
+    "target_text": "gostaria de um lugar mais quente",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0578L01B03",
+   "expect": {
+    "known_text": "yes, somewhere warmer",
+    "target_text": "sim, um lugar mais quente"
+   },
+   "set": {
+    "known_text": "let's go somewhere warmer",
+    "target_text": "vamos a um lugar mais quente",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0579L01B03",
+   "expect": {
+    "known_text": "yes, we've already tried",
+    "target_text": "sim, nós já tentamos"
+   },
+   "set": {
+    "known_text": "we've already tried everything",
+    "target_text": "nós já tentamos tudo",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0579L01U02",
+   "expect": {
+    "known_text": "you think we've already tried",
+    "target_text": "você acha que nós já tentamos"
+   },
+   "set": {
+    "known_text": "we've already tried to speak with him",
+    "target_text": "nós já tentamos falar com ele",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0579L01U03",
+   "expect": {
+    "known_text": "they think we've already tried",
+    "target_text": "eles acham que nós já tentamos"
+   },
+   "set": {
+    "known_text": "we've already tried, but it wasn't possible",
+    "target_text": "nós já tentamos, mas não era possível",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0579L01U04",
+   "expect": {
+    "known_text": "it's true, we've already tried",
+    "target_text": "é verdade que nós já tentamos"
+   },
+   "set": {
+    "known_text": "we've already tried to find somewhere warmer",
+    "target_text": "nós já tentamos encontrar um lugar mais quente",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0579L02B02",
+   "expect": {
+    "known_text": "we've already tried many times now",
+    "target_text": "nós já tentamos muitas vezes agora"
+   },
+   "set": {
+    "known_text": "I said it many times",
+    "target_text": "eu disse isso muitas vezes",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0579L02B03",
+   "expect": {
+    "known_text": "yes, many times",
+    "target_text": "sim, muitas vezes"
+   },
+   "set": {
+    "known_text": "many times a week",
+    "target_text": "muitas vezes por semana",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01B02",
+   "expect": {
+    "known_text": "we've often wanted it",
+    "target_text": "nós muitas vezes quisemos isso"
+   },
+   "set": {
+    "known_text": "we've often wanted to come back",
+    "target_text": "nós muitas vezes quisemos voltar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01B03",
+   "expect": {
+    "known_text": "yes, we've often wanted",
+    "target_text": "sim, nós muitas vezes quisemos"
+   },
+   "set": {
+    "known_text": "we've often wanted to go",
+    "target_text": "nós muitas vezes quisemos ir",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01U01",
+   "expect": {
+    "known_text": "it seems we've often wanted",
+    "target_text": "parece que nós muitas vezes quisemos"
+   },
+   "set": {
+    "known_text": "we've often wanted to go to the beach",
+    "target_text": "nós muitas vezes quisemos ir até a praia",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01U02",
+   "expect": {
+    "known_text": "you think we've often wanted",
+    "target_text": "você acha que nós muitas vezes quisemos"
+   },
+   "set": {
+    "known_text": "we've often wanted to find somewhere warmer",
+    "target_text": "nós muitas vezes quisemos encontrar um lugar mais quente",
+    "decomposition": null,
+    "word_count": 56,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01U03",
+   "expect": {
+    "known_text": "they think we've often wanted",
+    "target_text": "eles acham que nós muitas vezes quisemos"
+   },
+   "set": {
+    "known_text": "we've often wanted to stay",
+    "target_text": "nós muitas vezes quisemos ficar",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01U04",
+   "expect": {
+    "known_text": "it's true, we've often wanted",
+    "target_text": "é verdade que nós muitas vezes quisemos"
+   },
+   "set": {
+    "known_text": "we've often wanted to help",
+    "target_text": "nós muitas vezes quisemos ajudar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L01U05",
+   "expect": {
+    "known_text": "I know we've often wanted",
+    "target_text": "eu sei que nós muitas vezes quisemos"
+   },
+   "set": {
+    "known_text": "we've often wanted to speak with them",
+    "target_text": "nós muitas vezes quisemos falar com eles",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L02B02",
+   "expect": {
+    "known_text": "we've often wanted to take the children now",
+    "target_text": "nós muitas vezes quisemos levar as crianças agora"
+   },
+   "set": {
+    "known_text": "to take the children to the beach",
+    "target_text": "levar as crianças até a praia",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L02B03",
+   "expect": {
+    "known_text": "yes, to take the children",
+    "target_text": "sim, levar as crianças"
+   },
+   "set": {
+    "known_text": "I have got to take the children home",
+    "target_text": "tenho que levar as crianças para casa",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L02U02",
+   "expect": {
+    "known_text": "it seems we've often wanted to take the children",
+    "target_text": "parece que nós muitas vezes quisemos levar as crianças"
+   },
+   "set": {
+    "known_text": "can you take the children to the beach?",
+    "target_text": "você pode levar as crianças até a praia?",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L02U03",
+   "expect": {
+    "known_text": "you think we've often wanted to take the children",
+    "target_text": "você acha que nós muitas vezes quisemos levar as crianças"
+   },
+   "set": {
+    "known_text": "she wants to take the children home",
+    "target_text": "ela quer levar as crianças para casa",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L02U04",
+   "expect": {
+    "known_text": "they think we've often wanted to take the children",
+    "target_text": "eles acham que nós muitas vezes quisemos levar as crianças"
+   },
+   "set": {
+    "known_text": "it's my turn to take the children",
+    "target_text": "é a minha vez de levar as crianças",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L02U05",
+   "expect": {
+    "known_text": "it's true, we've often wanted to take the children",
+    "target_text": "é verdade que nós muitas vezes quisemos levar as crianças"
+   },
+   "set": {
+    "known_text": "we've often wanted to take the children to the beach",
+    "target_text": "nós muitas vezes quisemos levar as crianças até a praia",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03B02",
+   "expect": {
+    "known_text": "take the children to somewhere now",
+    "target_text": "levar as crianças a um lugar agora"
+   },
+   "set": {
+    "known_text": "to somewhere warmer",
+    "target_text": "a um lugar mais quente",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03B03",
+   "expect": {
+    "known_text": "yes, to somewhere",
+    "target_text": "sim, a um lugar"
+   },
+   "set": {
+    "known_text": "let's go somewhere different",
+    "target_text": "vamos a um lugar diferente",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03U01",
+   "expect": {
+    "known_text": "we've often wanted to take the children somewhere",
+    "target_text": "nós muitas vezes quisemos levar as crianças a um lugar"
+   },
+   "set": {
+    "known_text": "we've often wanted to take the children somewhere warmer",
+    "target_text": "nós muitas vezes quisemos levar as crianças a um lugar mais quente",
+    "decomposition": null,
+    "word_count": 66,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03U02",
+   "expect": {
+    "known_text": "it seems we've often wanted to take the children somewhere",
+    "target_text": "parece que nós muitas vezes quisemos levar as crianças a um lugar"
+   },
+   "set": {
+    "known_text": "let's take the children somewhere warmer",
+    "target_text": "vamos levar as crianças a um lugar mais quente",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03U03",
+   "expect": {
+    "known_text": "you think we've often wanted to take the children somewhere",
+    "target_text": "você acha que nós muitas vezes quisemos levar as crianças a um lugar"
+   },
+   "set": {
+    "known_text": "I'd like to go somewhere different",
+    "target_text": "gostaria de ir a um lugar diferente",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03U04",
+   "expect": {
+    "known_text": "they think we've often wanted to take the children somewhere",
+    "target_text": "eles acham que nós muitas vezes quisemos levar as crianças a um lugar"
+   },
+   "set": {
+    "known_text": "we want to go somewhere warmer",
+    "target_text": "queremos ir a um lugar mais quente",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L03U05",
+   "expect": {
+    "known_text": "it's true, we've often wanted to take the children somewhere",
+    "target_text": "é verdade que nós muitas vezes quisemos levar as crianças a um lugar"
+   },
+   "set": {
+    "known_text": "I'm going to take you somewhere interesting",
+    "target_text": "vou te levar a um lugar interessante",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L04B03",
+   "expect": {
+    "known_text": "yes, a little warmer",
+    "target_text": "sim, um pouco mais quente"
+   },
+   "set": {
+    "known_text": "it's a little warmer",
+    "target_text": "está um pouco mais quente",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L04U02",
+   "expect": {
+    "known_text": "it seems we've often wanted to take the children somewhere a little warmer",
+    "target_text": "parece que nós muitas vezes quisemos levar as crianças a um lugar um pouco mais quente"
+   },
+   "set": {
+    "known_text": "it's a little warmer than yesterday",
+    "target_text": "está um pouco mais quente do que ontem",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L04U03",
+   "expect": {
+    "known_text": "you think we've often wanted to take the children somewhere a little warmer",
+    "target_text": "você acha que nós muitas vezes quisemos levar as crianças a um lugar um pouco mais quente"
+   },
+   "set": {
+    "known_text": "I'd like somewhere a little warmer",
+    "target_text": "gostaria de um lugar um pouco mais quente",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L04U04",
+   "expect": {
+    "known_text": "they think we've often wanted to take the children somewhere a little warmer",
+    "target_text": "eles acham que nós muitas vezes quisemos levar as crianças a um lugar um pouco mais quente"
+   },
+   "set": {
+    "known_text": "the water is a little warmer",
+    "target_text": "a água está um pouco mais quente",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0580L04U05",
+   "expect": {
+    "known_text": "it's true, we've often wanted to take the children somewhere a little warmer",
+    "target_text": "é verdade que nós muitas vezes quisemos levar as crianças a um lugar um pouco mais quente"
+   },
+   "set": {
+    "known_text": "it's a little warmer at the beach",
+    "target_text": "está um pouco mais quente na praia",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L01B03",
+   "expect": {
+    "known_text": "yes, he'd like to know",
+    "target_text": "sim, ele gostaria de saber"
+   },
+   "set": {
+    "known_text": "he'd like to know your name",
+    "target_text": "ele gostaria de saber o seu nome",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L01U01",
+   "expect": {
+    "known_text": "it seems he'd like to know",
+    "target_text": "parece que ele gostaria de saber"
+   },
+   "set": {
+    "known_text": "he'd like to know what happened",
+    "target_text": "ele gostaria de saber o que aconteceu",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L01U02",
+   "expect": {
+    "known_text": "you think he'd like to know",
+    "target_text": "você acha que ele gostaria de saber"
+   },
+   "set": {
+    "known_text": "he'd like to know where you are",
+    "target_text": "ele gostaria de saber onde você está",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L01U03",
+   "expect": {
+    "known_text": "they think he'd like to know",
+    "target_text": "eles acham que ele gostaria de saber"
+   },
+   "set": {
+    "known_text": "he'd like to know when you're coming back",
+    "target_text": "ele gostaria de saber quando você vai voltar",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L01U04",
+   "expect": {
+    "known_text": "it's true, he'd like to know",
+    "target_text": "é verdade que ele gostaria de saber"
+   },
+   "set": {
+    "known_text": "he'd like to know how much it is",
+    "target_text": "ele gostaria de saber quanto é",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02B02",
+   "expect": {
+    "known_text": "he'd like to know a little more about now",
+    "target_text": "ele gostaria de saber um pouco mais sobre agora"
+   },
+   "set": {
+    "known_text": "a little more about you",
+    "target_text": "um pouco mais sobre você",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02B03",
+   "expect": {
+    "known_text": "yes, a little more about",
+    "target_text": "sim, um pouco mais sobre"
+   },
+   "set": {
+    "known_text": "a little more about the village",
+    "target_text": "um pouco mais sobre a aldeia",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02U01",
+   "expect": {
+    "known_text": "he'd like to know a little more about",
+    "target_text": "ele gostaria de saber um pouco mais sobre"
+   },
+   "set": {
+    "known_text": "he'd like to know a little more about you",
+    "target_text": "ele gostaria de saber um pouco mais sobre você",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02U02",
+   "expect": {
+    "known_text": "it seems he'd like to know a little more about",
+    "target_text": "parece que ele gostaria de saber um pouco mais sobre"
+   },
+   "set": {
+    "known_text": "I want to know a little more about the church",
+    "target_text": "eu quero saber um pouco mais sobre a igreja",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02U03",
+   "expect": {
+    "known_text": "you think he'd like to know a little more about",
+    "target_text": "você acha que ele gostaria de saber um pouco mais sobre"
+   },
+   "set": {
+    "known_text": "can you explain a little more about that?",
+    "target_text": "você pode explicar um pouco mais sobre isso?",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02U04",
+   "expect": {
+    "known_text": "they think he'd like to know a little more about",
+    "target_text": "eles acham que ele gostaria de saber um pouco mais sobre"
+   },
+   "set": {
+    "known_text": "I'd like to learn a little more about Portuguese",
+    "target_text": "gostaria de aprender um pouco mais sobre português",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L02U05",
+   "expect": {
+    "known_text": "it's true, he'd like to know a little more about",
+    "target_text": "é verdade que ele gostaria de saber um pouco mais sobre"
+   },
+   "set": {
+    "known_text": "she'd like to know a little more about the village",
+    "target_text": "ela gostaria de saber um pouco mais sobre a aldeia",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L03B03",
+   "expect": {
+    "known_text": "yes, what it's like",
+    "target_text": "sim, como é"
+   },
+   "set": {
+    "known_text": "I know what it's like",
+    "target_text": "sei como é",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L03U02",
+   "expect": {
+    "known_text": "it seems he'd like to know a little more about what it's like",
+    "target_text": "parece que ele gostaria de saber um pouco mais sobre como é"
+   },
+   "set": {
+    "known_text": "you know what it's like",
+    "target_text": "você sabe como é",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L03U03",
+   "expect": {
+    "known_text": "you think he'd like to know a little more about what it's like",
+    "target_text": "você acha que ele gostaria de saber um pouco mais sobre como é"
+   },
+   "set": {
+    "known_text": "I'd like to know what it's like",
+    "target_text": "gostaria de saber como é",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L03U04",
+   "expect": {
+    "known_text": "they think he'd like to know a little more about what it's like",
+    "target_text": "eles acham que ele gostaria de saber um pouco mais sobre como é"
+   },
+   "set": {
+    "known_text": "he wants to know what it's like",
+    "target_text": "ele quer saber como é",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0581L03U05",
+   "expect": {
+    "known_text": "it's true, he'd like to know a little more about what it's like",
+    "target_text": "é verdade que ele gostaria de saber um pouco mais sobre como é"
+   },
+   "set": {
+    "known_text": "I'm sure you know what it's like",
+    "target_text": "tenho certeza de que você sabe como é",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0582L01B03",
+   "expect": {
+    "known_text": "yes, what's it like",
+    "target_text": "sim, como é"
+   },
+   "set": {
+    "known_text": "what's it like here?",
+    "target_text": "como é aqui?",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0582L02B02",
+   "expect": {
+    "known_text": "to grow up here now",
+    "target_text": "crescer aqui agora"
+   },
+   "set": {
+    "known_text": "it's good to grow up here",
+    "target_text": "é bom crescer aqui",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0582L02B03",
+   "expect": {
+    "known_text": "yes, to grow up here",
+    "target_text": "sim, crescer aqui"
+   },
+   "set": {
+    "known_text": "it's not easy to grow up here",
+    "target_text": "não é fácil crescer aqui",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0583L02B02",
+   "expect": {
+    "known_text": "what's it like in this part of the world now",
+    "target_text": "como é nesta parte do mundo agora"
+   },
+   "set": {
+    "known_text": "the people in this part of the world",
+    "target_text": "as pessoas nesta parte do mundo",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0583L02B03",
+   "expect": {
+    "known_text": "yes, in this part of the world",
+    "target_text": "sim, nesta parte do mundo"
+   },
+   "set": {
+    "known_text": "it's a little warmer in this part of the world",
+    "target_text": "está um pouco mais quente nesta parte do mundo",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

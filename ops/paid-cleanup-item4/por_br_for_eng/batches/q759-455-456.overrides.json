@@ -1,0 +1,442 @@
+[
+ {
+  "seed_number": 455,
+  "phrases": {
+   "455:1": [
+    {
+     "known_text": "we",
+     "target_text": "nós",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "had to",
+     "target_text": "tivemos que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we had to",
+     "target_text": "nós tivemos que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we had to wait",
+     "target_text": "nós tivemos que esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we had to go",
+     "target_text": "nós tivemos que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we had to pay",
+     "target_text": "nós tivemos que pagar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to wait a long time",
+     "target_text": "nós tivemos que esperar muito tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to catch the bus",
+     "target_text": "nós tivemos que pegar o ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to work on Saturday",
+     "target_text": "nós tivemos que trabalhar no sábado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to ask for help",
+     "target_text": "nós tivemos que pedir ajuda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to go out as quickly as possible",
+     "target_text": "nós tivemos que sair o mais rápido possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to help",
+     "target_text": "nós tivemos que ajudar",
+     "phrase_role": "build"
+    }
+   ],
+   "455:2": [
+    {
+     "known_text": "to go out",
+     "target_text": "sair",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we had to leave",
+     "target_text": "nós tivemos que sair",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to go out tonight",
+     "target_text": "sair esta noite",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to go out",
+     "target_text": "não quero sair",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we still had to leave",
+     "target_text": "nós ainda tivemos que sair",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to go out with her friends",
+     "target_text": "ela quer sair com os amigos dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's go out on Saturday",
+     "target_text": "vamos sair no sábado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to leave early",
+     "target_text": "nós tivemos que sair cedo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they won't be able to go out",
+     "target_text": "eles não vão conseguir sair",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we should go out",
+     "target_text": "devíamos sair",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope you'll be able to go out",
+     "target_text": "espero que você consiga sair",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he likes to go out",
+     "target_text": "ele gosta de sair",
+     "phrase_role": "build"
+    }
+   ],
+   "455:3": [
+    {
+     "known_text": "because",
+     "target_text": "porque",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the",
+     "target_text": "as",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "children",
+     "target_text": "crianças",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "because the children",
+     "target_text": "porque as crianças",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we had to leave because the children",
+     "target_text": "nós tivemos que sair porque as crianças",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because the children are here",
+     "target_text": "porque as crianças estão aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't go out because the children are at home",
+     "target_text": "não consigo sair porque as crianças estão em casa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to leave because the children wanted to go home",
+     "target_text": "nós tivemos que sair porque as crianças queriam ir para casa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm happy because the children like the school",
+     "target_text": "estou contente porque as crianças gostam da escola",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we're going to stay because the children want to stay",
+     "target_text": "vamos ficar porque as crianças querem ficar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's difficult because the children don't understand",
+     "target_text": "é difícil porque as crianças não entendem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because the children want",
+     "target_text": "porque as crianças querem",
+     "phrase_role": "build"
+    }
+   ],
+   "455:4": [
+    {
+     "known_text": "they were",
+     "target_text": "estavam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "tired",
+     "target_text": "cansadas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they were tired",
+     "target_text": "estavam cansadas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the children were tired",
+     "target_text": "as crianças estavam cansadas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they were tired at night",
+     "target_text": "estavam cansadas à noite",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we had to leave because the children were tired",
+     "target_text": "nós tivemos que sair porque as crianças estavam cansadas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think they were tired",
+     "target_text": "acho que estavam cansadas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they were tired after the meal",
+     "target_text": "estavam cansadas depois da refeição",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they were tired after the party",
+     "target_text": "estavam cansadas depois da festa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children were still tired",
+     "target_text": "as crianças ainda estavam cansadas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they were tired yesterday",
+     "target_text": "estavam cansadas ontem",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 456,
+  "phrases": {
+   "456:1": [
+    {
+     "known_text": "he",
+     "target_text": "ele",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "might",
+     "target_text": "pode",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "be",
+     "target_text": "estar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he might be",
+     "target_text": "ele pode estar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he might be here",
+     "target_text": "ele pode estar aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he might be at home",
+     "target_text": "ele pode estar em casa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he might be at the office",
+     "target_text": "ele pode estar no escritório",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be tired",
+     "target_text": "ele pode estar cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be busy",
+     "target_text": "ele pode estar ocupado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be late",
+     "target_text": "ele pode estar atrasado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be with his friends",
+     "target_text": "ele pode estar com os amigos dele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that he might be there",
+     "target_text": "acho que ele pode estar lá",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be there",
+     "target_text": "ele pode estar lá",
+     "phrase_role": "build"
+    }
+   ],
+   "456:2": [],
+   "456:3": [
+    {
+     "known_text": "but",
+     "target_text": "mas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "but it's not",
+     "target_text": "mas não é",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he might be there but it's not",
+     "target_text": "ele pode estar lá mas não é",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but it's not easy",
+     "target_text": "mas não é fácil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's interesting but it's not easy",
+     "target_text": "é interessante mas não é fácil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a good idea but it's not possible",
+     "target_text": "é uma boa ideia mas não é possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's fun but it's not easy",
+     "target_text": "é divertido mas não é fácil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a good book but it's not very interesting",
+     "target_text": "é um bom livro mas não é muito interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's important but it's not the only way",
+     "target_text": "é importante mas não é a única maneira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but it's not difficult",
+     "target_text": "mas não é difícil",
+     "phrase_role": "build"
+    }
+   ],
+   "456:4": [
+    {
+     "known_text": "very",
+     "target_text": "muito",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "likely",
+     "target_text": "provável",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "very likely",
+     "target_text": "muito provável",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but it's not very likely",
+     "target_text": "mas não é muito provável",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's very likely",
+     "target_text": "é muito provável",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he might be there but it's not very likely",
+     "target_text": "ele pode estar lá mas não é muito provável",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's very likely",
+     "target_text": "acho que é muito provável",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's not very likely",
+     "target_text": "não é muito provável",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's very likely",
+     "target_text": "isso é muito provável",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might still be there but it's not very likely",
+     "target_text": "ele ainda pode estar lá mas não é muito provável",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that isn't very likely",
+     "target_text": "isso não é muito provável",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

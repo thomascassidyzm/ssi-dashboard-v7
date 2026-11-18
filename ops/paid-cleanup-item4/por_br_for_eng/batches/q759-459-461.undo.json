@@ -1,0 +1,487 @@
+{
+ "event_id": "4d357da6-0cb8-4f07-ad99-983cddee8b0b",
+ "undo_file": "2026-11-18T18-45-14-444Z-4d357da6-0cb8-4f07-ad99-983cddee8b0b.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U05",
+   "set": {
+    "known_text": "that would be a shop where I can buy some postcards",
+    "target_text": "isso seria uma loja onde possa comprar uns cartões postais",
+    "word_count": 58,
+    "lego_position": "end",
+    "known_audio_id": "bdde982c-5688-4bf0-b987-a7aac8fb81cf",
+    "target1_audio_id": "031485d1-27e3-466a-a654-6df1f803dc6b",
+    "target2_audio_id": "57ef477d-1e03-4b4d-a0ff-f4b9e8d6dc4f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U04",
+   "set": {
+    "known_text": "yes, a shop where I can buy some postcards",
+    "target_text": "sim, uma loja onde possa comprar uns cartões postais",
+    "word_count": 52,
+    "known_audio_id": "8c9bba2a-5a65-436b-a462-b4eba2d2b8f5",
+    "target1_audio_id": "d5e93fc1-d480-4063-bfb8-df6ca34e4461",
+    "target2_audio_id": "4f725842-9076-480e-91d5-a5c2fd25307e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U03",
+   "set": {
+    "known_text": "that's true, some postcards",
+    "target_text": "isso é verdade, uns cartões postais",
+    "word_count": 35,
+    "known_audio_id": "8624d9a9-39ed-4188-892f-57244f2b43fd",
+    "target1_audio_id": "77d4a298-6d7c-4255-ae74-26c97c62c2f6",
+    "target2_audio_id": "bbab4c2b-58d0-4695-82e0-317aab22ba02"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U02",
+   "set": {
+    "known_text": "no, some postcards",
+    "target_text": "não, uns cartões postais",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "1e8421a2-cc25-40cc-b1b1-0c6b7de53161",
+    "target1_audio_id": "7eb9039d-bf7d-4432-9f39-9de30172ec80",
+    "target2_audio_id": "c344a0de-5a4b-4db6-bde3-f4ff4295feb9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03B03",
+   "set": {
+    "known_text": "yes, some postcards",
+    "target_text": "sim, uns cartões postais",
+    "word_count": 24,
+    "known_audio_id": "d23a05b7-43d3-47b1-ad21-f79a03cb36d5",
+    "target1_audio_id": "6a0aa032-6393-4d0b-8245-bea84d50a01c",
+    "target2_audio_id": "7baa850d-be56-4726-918e-411b0fe37f84"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U05",
+   "set": {
+    "known_text": "that would be a shop where",
+    "target_text": "isso seria uma loja onde",
+    "word_count": 24,
+    "lego_position": "end",
+    "known_audio_id": "f398a5aa-0a69-4c51-ab97-e7d65c587a8a",
+    "target1_audio_id": "00964618-45e4-4b7c-be79-dbf211fde9a4",
+    "target2_audio_id": "28b4f467-23f9-481b-8cef-e3864795e86f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U04",
+   "set": {
+    "known_text": "yes, that's a shop where",
+    "target_text": "sim, isso é uma loja onde",
+    "word_count": 25,
+    "lego_position": "end",
+    "known_audio_id": "1f63c498-7064-42d7-8dda-6be1be7fa81d",
+    "target1_audio_id": "53b6cc49-3f26-474c-9430-2b937508defa",
+    "target2_audio_id": "bde59ada-16cc-4eb5-8604-26fe1403915e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U03",
+   "set": {
+    "known_text": "I have a shop where",
+    "target_text": "tenho uma loja onde",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "780dfa6e-c79d-4a1f-b66c-11f916cec962",
+    "target1_audio_id": "36cffa92-ee15-4115-80ab-393793cf7022",
+    "target2_audio_id": "4a09a73b-0b76-4fa7-a5ed-66320c2b16ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U01",
+   "set": {
+    "known_text": "no, a shop where",
+    "target_text": "não, uma loja onde",
+    "word_count": 18,
+    "known_audio_id": "008b3d53-36e4-40c9-86f5-486a18a56def",
+    "target1_audio_id": "f300a7a0-4375-4103-b9b4-89ee0a133cb6",
+    "target2_audio_id": "03a3df44-0ab3-49d2-a1ad-47b568f68e71"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01B03",
+   "set": {
+    "known_text": "yes, a shop where",
+    "target_text": "sim, uma loja onde",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "bf409655-4b74-4e61-bc24-fe06d48b448c",
+    "target1_audio_id": "3b89ca9c-a404-45d4-9dd4-8592fdc08476",
+    "target2_audio_id": "f5a7b6fb-abfa-477c-8a1b-425cfdbaad7c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01B02",
+   "set": {
+    "known_text": "a shop where now",
+    "target_text": "uma loja onde agora",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "f085fec1-8587-45c4-8e7a-59784d06f07c",
+    "target1_audio_id": "ae10f02b-2edd-48f9-9844-2d6e373de236",
+    "target2_audio_id": "642a26da-1f14-45cb-a562-0476f3f97053"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03U05",
+   "set": {
+    "known_text": "I still want to find a shop near the hotel",
+    "target_text": "eu ainda quero encontrar uma loja perto do hotel",
+    "word_count": 48,
+    "known_audio_id": "bbb6f969-afc8-4275-8f8a-18897966f5c1",
+    "target1_audio_id": "671853a3-df97-43b8-bc6f-811296552e80",
+    "target2_audio_id": "f3d5c070-52ea-41e1-b679-3a580b529c2f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03U04",
+   "set": {
+    "known_text": "yes, I want to find a shop near the hotel",
+    "target_text": "sim, eu quero encontrar uma loja perto do hotel",
+    "word_count": 47,
+    "known_audio_id": "e753ff9b-435f-4e0f-97d8-18b11f273cc3",
+    "target1_audio_id": "1748963d-ae38-4859-8e0a-010c43d393f0",
+    "target2_audio_id": "8e5a31d8-2552-4316-b9cd-a6aba03f5430"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03U02",
+   "set": {
+    "known_text": "no, near the hotel",
+    "target_text": "não, perto do hotel",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "d583c6e7-796b-488b-af0c-9f700d270d2c",
+    "target1_audio_id": "2b46abfd-a15f-4fdd-8e82-e8e21843db73",
+    "target2_audio_id": "9e200df5-b6aa-45fb-8b75-db24744ea79c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03B03",
+   "set": {
+    "known_text": "yes, near the hotel",
+    "target_text": "sim, perto do hotel",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "c0cc794b-9466-406e-94f3-cf02b3fe0f2d",
+    "target1_audio_id": "01cec6c5-fcbe-4b11-ad47-76d1c00aa63f",
+    "target2_audio_id": "76a74091-e86a-45d0-a095-63d01180822e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L02U04",
+   "set": {
+    "known_text": "yes, I want to find a shop",
+    "target_text": "sim, eu quero encontrar uma loja",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "af107e88-44df-4ab6-a51f-5b932033a84b",
+    "target1_audio_id": "73d9e869-9743-4574-9062-ba5791f3c1d1",
+    "target2_audio_id": "5539918f-9fe1-441f-98ce-8032e59d16ca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L02U01",
+   "set": {
+    "known_text": "no, a shop",
+    "target_text": "não, uma loja",
+    "word_count": 13,
+    "known_audio_id": "cc0ce60e-7126-4df7-afb3-b9e5f8f3060e",
+    "target1_audio_id": "29ed8780-5dd7-4f17-b4d2-6c5392bbcb01",
+    "target2_audio_id": "420a2181-701e-4224-b940-2fd596626813"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L02B03",
+   "set": {
+    "known_text": "yes, a shop",
+    "target_text": "sim, uma loja",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "c68c90d0-f0a5-4ea5-b1a8-a76ea413a01e",
+    "target1_audio_id": "f7176af0-a594-4972-85aa-e4634030fc44",
+    "target2_audio_id": "17678962-3574-422d-bbb7-0a27f66fde8e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U05",
+   "set": {
+    "known_text": "I'm sure I want to find",
+    "target_text": "tenho certeza, eu quero encontrar",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "3580c4fd-6f1d-4cb8-81d6-22c1b0b0382e",
+    "target1_audio_id": "50a50862-4053-445e-9276-debd33d8019a",
+    "target2_audio_id": "0e683f03-82dd-4361-9527-7b00aec7bc20"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U04",
+   "set": {
+    "known_text": "yes, I still want to find",
+    "target_text": "sim, eu ainda quero encontrar",
+    "word_count": 29,
+    "lego_position": null,
+    "known_audio_id": "5cc7a4e1-680c-4d4f-b602-0820ac1865e0",
+    "target1_audio_id": "f68c3a4f-dc81-4ae3-b44d-d722a0212be5",
+    "target2_audio_id": "b8d655d5-1081-407b-b6b2-ac1d725a148b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U03",
+   "set": {
+    "known_text": "that's true, I want to find",
+    "target_text": "isso é verdade, eu quero encontrar",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "14e80c8b-7a81-47b2-a608-5bd414fc53ae",
+    "target1_audio_id": "b3628cc0-06e3-4449-b3db-7c64f0504b32",
+    "target2_audio_id": "c03cd05e-6f1c-4a89-a47e-27088021a03d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U02",
+   "set": {
+    "known_text": "I still want to find",
+    "target_text": "eu ainda quero encontrar",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "1946b5a5-09ed-4285-8ff6-6900ad5ea47e",
+    "target1_audio_id": "937e007c-fbd1-4f90-bbcb-87ed73f15281",
+    "target2_audio_id": "bcc0a614-0613-4065-a631-bfae60507af2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U01",
+   "set": {
+    "known_text": "no, I want to find",
+    "target_text": "não, eu quero encontrar",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "c7386a27-0178-4faf-abbf-229172278c1f",
+    "target1_audio_id": "65891e58-f71a-463a-abf5-e9fbb5353bb4",
+    "target2_audio_id": "b5778937-11e7-40ae-8b4c-0e33b7c12271"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01B03",
+   "set": {
+    "known_text": "yes, I want to find",
+    "target_text": "sim, eu quero encontrar",
+    "word_count": 23,
+    "known_audio_id": "b0c53970-382c-4863-bd2b-5e232104bf86",
+    "target1_audio_id": "9f7b4baa-407c-4f4f-b4e9-a9b4c689dcc8",
+    "target2_audio_id": "8bdb3fc5-7f56-4fcf-b741-71e231b5e5e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01B02",
+   "set": {
+    "known_text": "I want to find it now",
+    "target_text": "eu quero encontrar isso agora",
+    "word_count": 29,
+    "known_audio_id": "ea50c5c7-5dd2-417f-9155-c9b5a7e957b8",
+    "target1_audio_id": "51b1d7f3-0ac6-4569-aa2d-8271c676409b",
+    "target2_audio_id": "e19cfbf1-dc46-467d-a2e4-80b45c865566"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U05",
+   "set": {
+    "known_text": "it still wasn't in front of the blue sign",
+    "target_text": "ainda não estava em frente do sinal azul",
+    "word_count": 40,
+    "known_audio_id": "087be23d-9117-4e6b-a666-f1ff4f530971",
+    "target1_audio_id": "209cfa0f-f5f1-4141-a850-274f541245ab",
+    "target2_audio_id": "08345378-d5ac-4f51-92a0-dfeca7261322"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U04",
+   "set": {
+    "known_text": "yes, it wasn't in front of the blue sign",
+    "target_text": "sim, não estava em frente do sinal azul",
+    "word_count": 39,
+    "lego_position": "end",
+    "known_audio_id": "b0d25538-331f-4dcd-bee0-1a51d72082ca",
+    "target1_audio_id": "d83f4114-b434-4713-a7d6-eeb3275fa3ee",
+    "target2_audio_id": "aefc4b85-ee3b-4eb6-964f-9763bc953fd1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U03",
+   "set": {
+    "known_text": "that's true, blue sign",
+    "target_text": "isso é verdade, sinal azul",
+    "word_count": 26,
+    "known_audio_id": "d377e716-4b6b-4ec8-a0d5-5087b514165f",
+    "target1_audio_id": "fde2c91a-427f-4140-86c4-2c523ea24197",
+    "target2_audio_id": "7fdc68e2-2912-408a-ab7c-f2f941a840ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U02",
+   "set": {
+    "known_text": "no, blue sign",
+    "target_text": "não, sinal azul",
+    "word_count": 15,
+    "lego_position": "middle",
+    "known_audio_id": "cc3532a4-9af7-4ce3-bc19-378bb36f89a2",
+    "target1_audio_id": "1779edff-8364-449a-aab6-c9b4b0bf257a",
+    "target2_audio_id": "8ee532d0-db46-4fdc-af9e-ff82a6c95f0d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02B03",
+   "set": {
+    "known_text": "yes, blue sign",
+    "target_text": "sim, sinal azul",
+    "word_count": 15,
+    "known_audio_id": "f73a40da-0603-473f-9460-98e83d4916b9",
+    "target1_audio_id": "8110987f-b1d4-4a0a-ad99-a437993b108d",
+    "target2_audio_id": "e29b7af1-b17d-43db-9c91-f25c42168926"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U05",
+   "set": {
+    "known_text": "I'm sure it wasn't in front of the",
+    "target_text": "tenho certeza, não estava em frente do",
+    "word_count": 38,
+    "lego_position": "end",
+    "known_audio_id": "719da86f-6673-4321-b790-b5477932959d",
+    "target1_audio_id": "5fa1cab8-c0f4-457a-a6bc-9c2eb7915a5f",
+    "target2_audio_id": "561941f1-ed84-4765-9f03-52237e478e70"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U04",
+   "set": {
+    "known_text": "yes, it still wasn't in front of the",
+    "target_text": "sim, ainda não estava em frente do",
+    "word_count": 34,
+    "known_audio_id": "3520936f-3632-4252-a476-f747da3080eb",
+    "target1_audio_id": "85873eb7-6c7a-4d5d-98bc-42f650564758",
+    "target2_audio_id": "7ad64c36-ed3f-4aba-8117-73f6a8845f2e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U03",
+   "set": {
+    "known_text": "that's true, it wasn't in front of the",
+    "target_text": "isso é verdade, não estava em frente do",
+    "word_count": 39,
+    "lego_position": "end",
+    "known_audio_id": "f50e6f23-0292-4cfb-87c6-07de0f91e668",
+    "target1_audio_id": "b5d4e192-863c-4cd7-b2f8-6fe8a603dbc4",
+    "target2_audio_id": "eefd9369-6cd2-45d6-a8ad-fa9d8f772856"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U02",
+   "set": {
+    "known_text": "it still wasn't in front of the",
+    "target_text": "ainda não estava em frente do",
+    "word_count": 29,
+    "known_audio_id": "40c1197e-bda6-4dcd-9570-80b0b4b2d030",
+    "target1_audio_id": "8f0a0e6f-d544-4c63-bbaa-32dde1491b56",
+    "target2_audio_id": "2a422c1e-4aad-44fc-a4dc-962d705c8204"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U01",
+   "set": {
+    "known_text": "no, it wasn't in front of the",
+    "target_text": "não, não estava em frente do",
+    "word_count": 28,
+    "lego_position": "middle",
+    "known_audio_id": "2aa67219-4c90-4c00-8710-94848b6e174c",
+    "target1_audio_id": "9f21df22-0efe-4bee-88c8-fa9d1626ca05",
+    "target2_audio_id": "31d97cc6-4f2d-4ea3-b885-8737fe28496f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01B03",
+   "set": {
+    "known_text": "yes, it wasn't in front of the",
+    "target_text": "sim, não estava em frente do",
+    "word_count": 28,
+    "known_audio_id": "f925f253-e41e-4e6a-851a-74c86c854a72",
+    "target1_audio_id": "ab1e5dc6-7292-493c-bfae-8a796c2261da",
+    "target2_audio_id": "c4f45780-cfc5-407e-ac35-30437e7fa19c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01B02",
+   "set": {
+    "known_text": "it wasn't in front of the table",
+    "target_text": "não estava em frente do problema",
+    "word_count": 32,
+    "known_audio_id": "00634edf-4ff0-4c1f-8b87-b464dcac0d48",
+    "target1_audio_id": "86ee7df9-6500-43c9-8eea-388745980581",
+    "target2_audio_id": "0e7594b0-14c0-4dec-a157-dc01fef9cdbe"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0460L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0460L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0459L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0459L01B04"
+  }
+ ]
+}

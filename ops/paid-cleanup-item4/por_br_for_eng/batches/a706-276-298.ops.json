@@ -1,0 +1,926 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0276L01B04",
+    "seed_number": 276,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "I may help",
+    "target_text": "posso ajudar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 12,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0276L02B04",
+    "seed_number": 276,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "I want to stay",
+    "target_text": "quero ficar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 11,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0279L01B04",
+    "seed_number": 279,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "there was nothing",
+    "target_text": "não havia nada",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 14,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0281L03B04",
+    "seed_number": 281,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "I want to finish before",
+    "target_text": "quero acabar antes",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0283L01B04",
+    "seed_number": 283,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "which people?",
+    "target_text": "quais pessoas?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 14,
+    "lego_count": 2,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0283L01U06",
+    "seed_number": 283,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "which friends did you see yesterday?",
+    "target_text": "quais amigos você viu ontem?",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0283L03B04",
+    "seed_number": 283,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "they speak with us",
+    "target_text": "falam conosco",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0286L02B04",
+    "seed_number": 286,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "they like it here",
+    "target_text": "gostam daqui",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 12,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0287L01B04",
+    "seed_number": 287,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "how many things?",
+    "target_text": "quantas coisas?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0287L01U06",
+    "seed_number": 287,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "how many people speak Portuguese here?",
+    "target_text": "quantas pessoas falam português aqui?",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 37,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0287L02B04",
+    "seed_number": 287,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "I like watching",
+    "target_text": "gosto de ver",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 12,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0288L01U06",
+    "seed_number": 288,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "most people don't like making mistakes",
+    "target_text": "a maioria das pessoas não gosta de cometer erros",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 48,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0288L02U06",
+    "seed_number": 288,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "I don't know that woman",
+    "target_text": "não conheço aquela mulher",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0289L01B04",
+    "seed_number": 289,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "I wonder who",
+    "target_text": "me pergunto quem",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0289L01U06",
+    "seed_number": 289,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I wonder what's going to happen tomorrow",
+    "target_text": "me pergunto o que vai acontecer amanhã",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 38,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0289L03B04",
+    "seed_number": 289,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "on Sunday afternoon",
+    "target_text": "no domingo à tarde",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0291L04B04",
+    "seed_number": 291,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "to come back soon",
+    "target_text": "voltar em breve",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0298L01B04",
+    "seed_number": 298,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "almost nothing",
+    "target_text": "quase nada",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 10,
+    "lego_count": 2,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0276L01B03",
+   "expect": {
+    "known_text": "I may do that",
+    "target_text": "posso fazer"
+   },
+   "set": {
+    "known_text": "I may do that",
+    "target_text": "posso fazer isso",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0276L01U01",
+   "expect": {
+    "known_text": "I may try",
+    "target_text": "posso tentar algo"
+   },
+   "set": {
+    "known_text": "I may try something",
+    "target_text": "posso tentar algo",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0276L02B02",
+   "expect": {
+    "known_text": "to stay longer",
+    "target_text": "ficar"
+   },
+   "set": {
+    "known_text": "to stay here",
+    "target_text": "ficar aqui",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0276L02B03",
+   "expect": {
+    "known_text": "to stay here",
+    "target_text": "só ficar"
+   },
+   "set": {
+    "known_text": "to stay with you",
+    "target_text": "ficar com você",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0276L03B02",
+   "expect": {
+    "known_text": "a little longer",
+    "target_text": "mais um pouco"
+   },
+   "set": {
+    "known_text": "to stay a little longer",
+    "target_text": "ficar mais um pouco",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0276L03B04",
+   "expect": {
+    "known_text": "wait a little longer",
+    "target_text": "mais um pouco"
+   },
+   "set": {
+    "known_text": "to wait a little longer",
+    "target_text": "esperar mais um pouco",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0277L01B02",
+   "expect": {
+    "known_text": "an important meeting",
+    "target_text": "reunião importante"
+   },
+   "set": {
+    "known_text": "an important meeting with my friends",
+    "target_text": "uma reunião importante com meus amigos",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0277L01B03",
+   "expect": {
+    "known_text": "a very important meeting",
+    "target_text": "só reunião importante"
+   },
+   "set": {
+    "known_text": "an important meeting next week",
+    "target_text": "uma reunião importante na próxima semana",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0277L01B04",
+   "expect": {
+    "known_text": "that important meeting",
+    "target_text": "reunião importante"
+   },
+   "set": {
+    "known_text": "that important meeting",
+    "target_text": "aquela reunião importante",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0279L01B02",
+   "expect": {
+    "known_text": "there was more",
+    "target_text": "havia"
+   },
+   "set": {
+    "known_text": "there was more",
+    "target_text": "havia mais",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0279L01B03",
+   "expect": {
+    "known_text": "there was only",
+    "target_text": "só havia"
+   },
+   "set": {
+    "known_text": "there was a man",
+    "target_text": "havia um homem",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0281L03B02",
+   "expect": {
+    "known_text": "just before",
+    "target_text": "só antes"
+   },
+   "set": {
+    "known_text": "a little before",
+    "target_text": "um pouco antes",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0283L01B03",
+   "expect": {
+    "known_text": "which ones you want?",
+    "target_text": "só quais?"
+   },
+   "set": {
+    "known_text": "which ones do you want?",
+    "target_text": "quais você quer?",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0283L01U01",
+   "expect": {
+    "known_text": "which ones do you want?",
+    "target_text": "quais você quer agora?"
+   },
+   "set": {
+    "known_text": "which ones do you want now?",
+    "target_text": "quais você quer agora?",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0283L01U04",
+   "expect": {
+    "known_text": "which do you think?",
+    "target_text": "quais você acha?"
+   },
+   "set": {
+    "known_text": "which friends do you want to see?",
+    "target_text": "quais amigos você quer ver?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0283L03B03",
+   "expect": {
+    "known_text": "they all speak",
+    "target_text": "falam"
+   },
+   "set": {
+    "known_text": "they all speak",
+    "target_text": "todos falam",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0284L02B03",
+   "expect": {
+    "known_text": "good friend",
+    "target_text": "só amiga"
+   },
+   "set": {
+    "known_text": "a good friend",
+    "target_text": "uma boa amiga",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0286L02B03",
+   "expect": {
+    "known_text": "they all like",
+    "target_text": "gostam"
+   },
+   "set": {
+    "known_text": "they like Portuguese",
+    "target_text": "gostam de português",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0287L01B03",
+   "expect": {
+    "known_text": "how many friends?",
+    "target_text": "só quantas?"
+   },
+   "set": {
+    "known_text": "how many questions?",
+    "target_text": "quantas perguntas?",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0287L02B02",
+   "expect": {
+    "known_text": "to see more",
+    "target_text": "ver"
+   },
+   "set": {
+    "known_text": "to watch television",
+    "target_text": "ver televisão",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0287L02B03",
+   "expect": {
+    "known_text": "to watch it",
+    "target_text": "só ver"
+   },
+   "set": {
+    "known_text": "to watch a film",
+    "target_text": "ver um filme",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0288L01B02",
+   "expect": {
+    "known_text": "most people",
+    "target_text": "a maioria das pessoas"
+   },
+   "set": {
+    "known_text": "most people speak",
+    "target_text": "a maioria das pessoas fala",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0288L01B03",
+   "expect": {
+    "known_text": "most people here",
+    "target_text": "só a maioria das pessoas"
+   },
+   "set": {
+    "known_text": "most people want",
+    "target_text": "a maioria das pessoas quer",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0288L01B04",
+   "expect": {
+    "known_text": "already most people",
+    "target_text": "já a maioria das pessoas"
+   },
+   "set": {
+    "known_text": "most people like",
+    "target_text": "a maioria das pessoas gosta",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0288L02B01",
+   "expect": {
+    "known_text": "I know her",
+    "target_text": "conheço"
+   },
+   "set": {
+    "known_text": "I know her",
+    "target_text": "conheço ela",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0288L02B02",
+   "expect": {
+    "known_text": "I know them",
+    "target_text": "conheço"
+   },
+   "set": {
+    "known_text": "I know them",
+    "target_text": "conheço eles",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0288L02B03",
+   "expect": {
+    "known_text": "I know that person",
+    "target_text": "só conheço"
+   },
+   "set": {
+    "known_text": "I know that man",
+    "target_text": "conheço aquele homem",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0289L01B01",
+   "expect": {
+    "known_text": "I ask",
+    "target_text": "pergunto"
+   },
+   "set": {
+    "known_text": "I wonder if",
+    "target_text": "me pergunto se",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0289L01B03",
+   "expect": {
+    "known_text": "I ask myself",
+    "target_text": "pergunto"
+   },
+   "set": {
+    "known_text": "I wonder why",
+    "target_text": "me pergunto por que",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0289L03B03",
+   "expect": {
+    "known_text": "late afternoon",
+    "target_text": "tarde"
+   },
+   "set": {
+    "known_text": "tomorrow afternoon",
+    "target_text": "amanhã à tarde",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0291L04B03",
+   "expect": {
+    "known_text": "a little soon",
+    "target_text": "um pouco em breve"
+   },
+   "set": {
+    "known_text": "soon, I hope",
+    "target_text": "em breve, espero",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0294L03B02",
+   "expect": {
+    "known_text": "I don't have enough time",
+    "target_text": "não tenho tempo suficiente"
+   },
+   "set": {
+    "known_text": "but I don't have enough time",
+    "target_text": "mas não tenho tempo suficiente",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0294L03B04",
+   "expect": {
+    "known_text": "I don't have enough time today",
+    "target_text": "não tenho tempo suficiente hoje"
+   },
+   "set": {
+    "known_text": "I don't have enough time for that",
+    "target_text": "não tenho tempo suficiente para isso",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0298L01B03",
+   "expect": {
+    "known_text": "nothing here",
+    "target_text": "nada aqui"
+   },
+   "set": {
+    "known_text": "nothing to say",
+    "target_text": "nada para dizer",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0286L01B02",
+   "expect": {
+    "known_text": "many people",
+    "target_text": "mais pessoas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0286L01B03",
+   "expect": {
+    "known_text": "some people",
+    "target_text": "pessoas"
+   }
+  }
+ ]
+}

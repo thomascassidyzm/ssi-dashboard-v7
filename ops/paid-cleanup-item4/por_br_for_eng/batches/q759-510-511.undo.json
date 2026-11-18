@@ -1,0 +1,781 @@
+{
+ "event_id": "d6a3a52c-10c7-4f38-b8b5-83ef00b9e680",
+ "undo_file": "2026-11-18T15-23-46-501Z-d6a3a52c-10c7-4f38-b8b5-83ef00b9e680.json",
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0511L04U05",
+    "seed_number": 511,
+    "lego_index": 4,
+    "position": 10,
+    "known_text": "I'm sure, in the office",
+    "target_text": "tenho certeza, no escritório",
+    "word_count": 28,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:55.512Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:55.551Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "4a66f5f7-6f1f-4cff-a18d-ba9ba06b2efd",
+    "target1_audio_id": "b1d5a9f8-338f-41e4-aff3-c86d576e6c0a",
+    "target2_audio_id": "545c8329-b1f8-41d6-9a4b-efb2c9271124",
+    "qa_checked": null,
+    "target1_duration_ms": 3672,
+    "target2_duration_ms": 3624,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0511L04U04",
+    "seed_number": 511,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "yes, the news took several hours to reach everyone in the office",
+    "target_text": "sim, a notícia demorou várias horas para chegar a todo mundo no escritório",
+    "word_count": 74,
+    "lego_count": 12,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 18,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:55.512Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:55.551Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "9c926f28-3b82-4c56-a204-8cfacf344c86",
+    "target1_audio_id": "ae1629a0-e04f-4161-88a7-1b22458c1f15",
+    "target2_audio_id": "df17f85d-10d8-4879-a01c-5d46c3b7f121",
+    "qa_checked": null,
+    "target1_duration_ms": 6360,
+    "target2_duration_ms": 6576,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0511L04U03",
+    "seed_number": 511,
+    "lego_index": 4,
+    "position": 8,
+    "known_text": "that's true, in the office",
+    "target_text": "isso é verdade, no escritório",
+    "word_count": 29,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 9,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:55.512Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:55.551Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "a7da2055-7ead-4f0a-b8f0-047a99d1d34d",
+    "target1_audio_id": "b0a287be-6fa1-44c9-9b19-6af7a811f42f",
+    "target2_audio_id": "2b4b85d9-6df7-4293-8e29-74976edf53ca",
+    "qa_checked": null,
+    "target1_duration_ms": 3624,
+    "target2_duration_ms": 3768,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0511L04U02",
+    "seed_number": 511,
+    "lego_index": 4,
+    "position": 7,
+    "known_text": "no, in the office",
+    "target_text": "não, no escritório",
+    "word_count": 18,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:55.512Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:55.551Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "609b11b3-4ca7-4211-a1b4-afd14b156c9d",
+    "target1_audio_id": "cff9e8fa-ef9d-4a84-8a24-fa702fb45743",
+    "target2_audio_id": "5ecf248c-1f95-4e64-8395-12ab3cbe3bb9",
+    "qa_checked": null,
+    "target1_duration_ms": 2952,
+    "target2_duration_ms": 3024,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0510L02U05",
+    "seed_number": 510,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "she's still gone to look for somewhere safe",
+    "target_text": "ela ainda foi procurar um lugar seguro",
+    "word_count": 38,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 11,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:25.074Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:25.113Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "e8da1f53-3bac-4684-b519-2cef28df02dd",
+    "target1_audio_id": "3ae5d4f7-1751-4058-b5d3-7565b64a33a9",
+    "target2_audio_id": "9edc4d56-447c-4f16-864f-ccd1c404b06b",
+    "qa_checked": null,
+    "target1_duration_ms": 3768,
+    "target2_duration_ms": 3840,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0510L02U04",
+    "seed_number": 510,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "yes, she's gone to look for somewhere safe",
+    "target_text": "sim, ela foi procurar um lugar seguro",
+    "word_count": 37,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 11,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:25.074Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:25.113Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "8f9f108c-7797-4b67-90e6-e79be81a7fd4",
+    "target1_audio_id": "07f4e660-a3ee-4002-9c56-e342678acecf",
+    "target2_audio_id": "9c22df57-5abb-470f-98d2-66ac4e793727",
+    "qa_checked": null,
+    "target1_duration_ms": 4128,
+    "target2_duration_ms": 4200,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0510L02U02",
+    "seed_number": 510,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "that's true, somewhere safe",
+    "target_text": "isso é verdade, um lugar seguro",
+    "word_count": 31,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 10,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:25.074Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:25.113Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "f1299361-4737-4246-97c7-103284b03b3b",
+    "target1_audio_id": "d9cd216d-8490-434e-b5a6-5fbec9303527",
+    "target2_audio_id": "4d73411f-8f6b-4f8e-a1a9-47b085b94a07",
+    "qa_checked": null,
+    "target1_duration_ms": 3768,
+    "target2_duration_ms": 3888,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0510L02U01",
+    "seed_number": 510,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "no, somewhere safe",
+    "target_text": "não, um lugar seguro",
+    "word_count": 20,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:07:25.074Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:07:25.113Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "ece625bd-4739-4501-8572-dbbdc7dfc7c8",
+    "target1_audio_id": "652503cb-4775-4ad2-9fac-ea42c7b4a44e",
+    "target2_audio_id": "90dac722-8c7b-4547-af83-a1fa66452d3d",
+    "qa_checked": null,
+    "target1_duration_ms": 3240,
+    "target2_duration_ms": 3168,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L04B03",
+   "set": {
+    "known_text": "yes, in the office",
+    "target_text": "sim, no escritório",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "45e4d75b-9c01-43e9-bfb5-d1b1a46e0eec",
+    "target1_audio_id": "ecb63318-e869-43ba-98d7-12f5c7eacc84",
+    "target2_audio_id": "01733f5b-6f4d-4e3e-818e-0e802139a0dc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L03U04",
+   "set": {
+    "known_text": "yes, several hours to reach everyone",
+    "target_text": "sim, várias horas para chegar a todo mundo",
+    "word_count": 42,
+    "known_audio_id": "07a36bf7-2658-409c-8b01-590aa2a87019",
+    "target1_audio_id": "03d2c4f3-e62d-43a7-86b1-041c270f7d73",
+    "target2_audio_id": "19f892ec-0e62-441c-bb45-73e49599cee8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L03U03",
+   "set": {
+    "known_text": "I want to reach everyone",
+    "target_text": "quero para chegar a todo mundo",
+    "word_count": 30,
+    "lego_position": "middle",
+    "known_audio_id": "5fd703b4-7cea-4b70-8f01-23a5a3d4eb8e",
+    "target1_audio_id": "9cc323de-e5e4-430c-b8b8-46ddc54a8cfe",
+    "target2_audio_id": "9636a96b-a2a3-4433-973b-2cf1ef50992e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L03U02",
+   "set": {
+    "known_text": "that's true, to reach everyone",
+    "target_text": "isso é verdade, para chegar a todo mundo",
+    "word_count": 40,
+    "known_audio_id": "6a8c8f35-e59c-45cf-8a5f-9a3966634d22",
+    "target1_audio_id": "0fa265bd-ea9d-440d-b1dc-5d63dc31902c",
+    "target2_audio_id": "0d30e22f-61ff-4a6e-a26f-5a8cdcc9a264"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L03U01",
+   "set": {
+    "known_text": "no, to reach everyone",
+    "target_text": "não, para chegar a todo mundo",
+    "word_count": 29,
+    "lego_position": "middle",
+    "known_audio_id": "8dca2bbe-5999-4bb2-98b7-498c3230ac7c",
+    "target1_audio_id": "9a7207a2-5742-49df-99a0-09c0a810de81",
+    "target2_audio_id": "61d034d1-5789-4f55-9446-c6f12cf57505"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L03B03",
+   "set": {
+    "known_text": "yes, to reach everyone",
+    "target_text": "sim, para chegar a todo mundo",
+    "word_count": 29,
+    "known_audio_id": "7db5b5a8-e43c-44be-af64-fbdfa53a3a06",
+    "target1_audio_id": "2d4c08aa-d3b0-424f-8ab8-83d2b851b127",
+    "target2_audio_id": "ca2a1169-a137-431b-8374-01325ed272e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L02U05",
+   "set": {
+    "known_text": "the news still took several hours",
+    "target_text": "a notícia ainda demorou várias horas",
+    "word_count": 36,
+    "known_audio_id": "ab706bbd-58f2-4cff-a3b8-978c6d9183b6",
+    "target1_audio_id": "f8746253-d583-406a-92b5-3e61da5b6d40",
+    "target2_audio_id": "a4a8e7f4-fb93-41a4-89b3-c334bb81f5a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L02U04",
+   "set": {
+    "known_text": "yes, the news took several hours",
+    "target_text": "sim, a notícia demorou várias horas",
+    "word_count": 35,
+    "known_audio_id": "6dd755c4-6761-4d8c-b8f5-2e834cfd2cff",
+    "target1_audio_id": "9dabd296-3ae6-46dc-b955-cad4e4cb6312",
+    "target2_audio_id": "4305dffd-1099-48f3-bbc9-ddb0cc01bad5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L02U03",
+   "set": {
+    "known_text": "I have several hours",
+    "target_text": "tenho várias horas",
+    "word_count": 18,
+    "known_audio_id": "bba684a4-3932-4bdd-934d-6af1cb0c125c",
+    "target1_audio_id": "43784143-4e18-4dd0-85b7-cc4916fcf94f",
+    "target2_audio_id": "63e3ae85-ae4d-424c-8dab-2b161393c4e8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L02U02",
+   "set": {
+    "known_text": "that's true, several hours",
+    "target_text": "isso é verdade, várias horas",
+    "word_count": 28,
+    "known_audio_id": "69651e17-d49c-4b3c-be15-54ef2db6f985",
+    "target1_audio_id": "fbae7df3-39d9-45d8-851a-d72082d810ab",
+    "target2_audio_id": "0e083544-ae0b-4cf1-8d46-1f60904e8333"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L02U01",
+   "set": {
+    "known_text": "no, several hours",
+    "target_text": "não, várias horas",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "1b4b0575-521e-428a-8033-395a6e7339fd",
+    "target1_audio_id": "9b6d9269-8634-4c16-bfdf-5927b7c3bc2e",
+    "target2_audio_id": "1d4c5376-6ae9-4a1c-91ab-493276ccf866"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L02B03",
+   "set": {
+    "known_text": "yes, several hours",
+    "target_text": "sim, várias horas",
+    "word_count": 17,
+    "known_audio_id": "b937b8b7-53b2-4aa8-89f9-e1c77d7233cf",
+    "target1_audio_id": "7707dc42-2af1-4ef6-a7d4-e17aa324fb19",
+    "target2_audio_id": "fd29edf6-856e-4aa4-b7af-28ab2e057e4b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01U05",
+   "set": {
+    "known_text": "the news still took",
+    "target_text": "a notícia ainda demorou",
+    "word_count": 23,
+    "lego_position": null,
+    "known_audio_id": "e4718923-7f86-4768-9e4b-3fbb7914e5bb",
+    "target1_audio_id": "3523b844-7f2c-4372-8a3d-5a95bfcf8a36",
+    "target2_audio_id": "73407388-d4bd-42b1-8990-a81240bc4f85"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01U04",
+   "set": {
+    "known_text": "yes, that's true, the news took",
+    "target_text": "sim, isso é verdade, a notícia demorou",
+    "word_count": 38,
+    "lego_position": "end",
+    "known_audio_id": "982884f5-9799-4a17-8559-908ddb9dc5bc",
+    "target1_audio_id": "9de98c1e-8531-4ba6-ac9f-c1b25f084b30",
+    "target2_audio_id": "cc6c3cff-ec4c-44ca-bf55-226575a15cec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01U03",
+   "set": {
+    "known_text": "I'm sure the news took",
+    "target_text": "tenho certeza, a notícia demorou",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "e31ad9bf-18d5-4a5b-86f2-b01f153a15c8",
+    "target1_audio_id": "66178c79-f21f-4288-b76c-35ca4a736f12",
+    "target2_audio_id": "2801dc04-8641-4daf-b024-8753c0c1666a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01U02",
+   "set": {
+    "known_text": "that's true, the news took",
+    "target_text": "isso é verdade, a notícia demorou",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "a83f610e-7edc-450e-8a39-c750b5f8e9c8",
+    "target1_audio_id": "b373cf5f-f53f-4de5-8dc7-6346c971a2cb",
+    "target2_audio_id": "bb3386c4-e3f5-448a-9ea1-658df1f23af8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01U01",
+   "set": {
+    "known_text": "no, the news took",
+    "target_text": "não, a notícia demorou",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "0ee0dec3-4114-4575-a24d-ccf9f9ec1805",
+    "target1_audio_id": "e6e3955c-85ad-4358-9825-62200fbbeb2d",
+    "target2_audio_id": "bfa904cd-740a-47b4-baac-aaa639eee4f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01B03",
+   "set": {
+    "known_text": "yes, the news took",
+    "target_text": "sim, a notícia demorou",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "48f90f8b-6899-4e67-a2f9-2426c8329d19",
+    "target1_audio_id": "ac8df4b3-297d-462d-9a80-e4bcca68ccd9",
+    "target2_audio_id": "cbe59031-d1c3-4f96-82e3-c4ccb5ec4d63"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0511L01B02",
+   "set": {
+    "known_text": "the news took now",
+    "target_text": "a notícia demorou agora",
+    "known_audio_id": "a6a6527e-2fd4-411f-81b0-eb71c95dd79e",
+    "target1_audio_id": "2584882f-028c-46fc-9027-30dde4c40fb7",
+    "target2_audio_id": "5bdc07aa-10be-4106-996d-e70c38dcfdfc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L03U05",
+   "set": {
+    "known_text": "I'm sure, to park the car",
+    "target_text": "tenho certeza, para estacionar o carro",
+    "word_count": 38,
+    "lego_position": "end",
+    "known_audio_id": "ca2db663-3037-49e4-a646-e02aceab3995",
+    "target1_audio_id": "1ab2e337-b629-4115-992d-186f86243e7e",
+    "target2_audio_id": "cef4d54d-324b-45fd-97d6-0d37b43158bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L03U04",
+   "set": {
+    "known_text": "yes, she's gone to look for somewhere safe to park the car",
+    "target_text": "sim, ela foi procurar um lugar seguro para estacionar o carro",
+    "word_count": 61,
+    "known_audio_id": "b755fabc-5688-4dd7-8278-f647c97e1541",
+    "target1_audio_id": "f190f97f-caa3-4a9a-9309-afb2ce063418",
+    "target2_audio_id": "399f5179-95dd-4349-80da-d3219cd9baeb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L03U03",
+   "set": {
+    "known_text": "that's true, to park the car",
+    "target_text": "isso é verdade, para estacionar o carro",
+    "word_count": 39,
+    "known_audio_id": "571dd613-ae75-44cf-88cb-2ba3fd8a95ae",
+    "target1_audio_id": "c474c2e0-962b-4717-8361-93767a8f870c",
+    "target2_audio_id": "43ac7678-0b50-4ac4-98c5-d1c12a08481b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L03U02",
+   "set": {
+    "known_text": "no, to park the car",
+    "target_text": "não, para estacionar o carro",
+    "word_count": 28,
+    "lego_position": "middle",
+    "known_audio_id": "788e00e9-096a-4cba-bdfa-60438d70ec55",
+    "target1_audio_id": "2ef222d7-dbf8-49c3-9916-fedf0ac89762",
+    "target2_audio_id": "0499cd84-65e1-424c-97d4-bb6458d39575"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L03B03",
+   "set": {
+    "known_text": "yes, to park the car",
+    "target_text": "sim, para estacionar o carro",
+    "word_count": 28,
+    "known_audio_id": "5ff12888-2f49-4a12-ad72-05919ff79bf7",
+    "target1_audio_id": "36f1fef4-4a99-4a6c-8ebd-4b0d573c8fe3",
+    "target2_audio_id": "44099618-5318-4e68-a4ab-4083b179f41d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L02U03",
+   "set": {
+    "known_text": "I have somewhere safe",
+    "target_text": "tenho um lugar seguro",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "fd9d41b4-8c3a-4fef-8578-34f40f71f34a",
+    "target1_audio_id": "758a8442-b08b-4a6a-9d2a-ce5773352ad2",
+    "target2_audio_id": "461b27d6-444b-46a3-945e-78ddd924f5b7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L02B03",
+   "set": {
+    "known_text": "yes, somewhere safe",
+    "target_text": "sim, um lugar seguro",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "c9ff4c9e-7a55-4730-b989-777656edeb38",
+    "target1_audio_id": "b5e94335-4977-4b47-a481-039ec9950f06",
+    "target2_audio_id": "eacbb115-0790-4f46-9d3d-234d5fec5248"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L01U05",
+   "set": {
+    "known_text": "she's still gone to look for",
+    "target_text": "ela ainda foi procurar",
+    "word_count": 22,
+    "lego_position": null,
+    "known_audio_id": "8ea15a89-cc30-4a2b-bdc6-0c3e2be6d45c",
+    "target1_audio_id": "63131fc2-e843-46e9-94a3-ec1f3706bd04",
+    "target2_audio_id": "7258c6b2-5dc8-4f9c-b98d-89af43e6db44"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L01U04",
+   "set": {
+    "known_text": "yes, that's true, she's gone to look for",
+    "target_text": "sim, isso é verdade, ela foi procurar",
+    "word_count": 37,
+    "lego_position": "end",
+    "known_audio_id": "fa75ca8a-7e4e-4154-932a-9a07009d2223",
+    "target1_audio_id": "412fbdbe-83f8-48cc-b455-448eca3adfaa",
+    "target2_audio_id": "5dd9df98-423a-424a-be84-dc64299e0f91"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L01U03",
+   "set": {
+    "known_text": "I'm sure she's gone to look for",
+    "target_text": "tenho certeza, ela foi procurar",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "8a5c5256-e361-42e6-94b9-a246488d720f",
+    "target1_audio_id": "2efa465e-ba78-4781-8aa2-d9505aa8c0bc",
+    "target2_audio_id": "b9db4c8d-362c-498e-95fb-46c472eef339"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L01U02",
+   "set": {
+    "known_text": "that's true, she's gone to look for",
+    "target_text": "isso é verdade, ela foi procurar",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "681ef478-11b0-412e-98e1-3edfdbe9d08d",
+    "target1_audio_id": "41661503-6dee-4eab-ba63-ae4492861f1a",
+    "target2_audio_id": "35869797-73fe-4f3d-94f2-1e4e298a36f6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L01U01",
+   "set": {
+    "known_text": "no, she's gone to look for",
+    "target_text": "não, ela foi procurar",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "4f8d84bd-a19a-4a01-bd23-f3914b0b992d",
+    "target1_audio_id": "5ce65977-01b8-4a95-ba7a-2efa67805b97",
+    "target2_audio_id": "cb2f205d-94d2-4a96-a101-af299d04175b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0510L01B03",
+   "set": {
+    "known_text": "yes, she's gone to look for",
+    "target_text": "sim, ela foi procurar",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "720d9cf0-8917-49ca-af41-8cab03496241",
+    "target1_audio_id": "9906c715-3151-4fc7-8611-1309353a92d4",
+    "target2_audio_id": "df55a93a-9eee-4a95-8a5c-5429569c1670"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0511L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0511L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0511L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0510L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0510L01B04"
+  }
+ ]
+}

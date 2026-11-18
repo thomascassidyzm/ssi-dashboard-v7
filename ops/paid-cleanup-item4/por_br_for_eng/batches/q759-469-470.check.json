@@ -1,0 +1,84 @@
+{
+ "course": "por_br_for_eng",
+ "batch": "q759-469-470",
+ "seeds": [
+  469,
+  470
+ ],
+ "counts": {
+  "insert": 5,
+  "update": 35,
+  "delete": 0
+ },
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [],
+ "checks": [
+  {
+   "lego": "S0469L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0469L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0469L03",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 7,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0470L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0470L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0470L03",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 4,
+   "inserted": 1,
+   "accept_gap": null
+  }
+ ]
+}

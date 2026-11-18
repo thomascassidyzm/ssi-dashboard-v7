@@ -1,0 +1,56 @@
+{
+ "seed": 417,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "they want to kill something",
+     "eles querem matar algo"
+    ],
+    "U02": [
+     "she said that they want to kill it",
+     "ela disse que eles querem matar isso"
+    ],
+    "U03": [
+     "I know they want to kill it",
+     "eu sei que eles querem matar isso"
+    ],
+    "U05": [
+     "why do they want to kill it?",
+     "por que eles querem matar isso?"
+    ],
+    "U04": [
+     "they want to kill it today",
+     "eles querem matar isso hoje"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "but they want to kill it",
+     "mas eles querem matar isso"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "U02": [
+     "those ants are here",
+     "aquelas formigas estão aqui"
+    ],
+    "U03": [
+     "where are those ants?",
+     "onde estão aquelas formigas?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I saw those ants",
+     "eu vi aquelas formigas"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #760·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | cs #759·AI: L01 rows that split the LEGO (pre-existing containment fail) rewritten"
+}

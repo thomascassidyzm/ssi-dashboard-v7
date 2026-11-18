@@ -1,0 +1,50 @@
+{
+ "seed": 246,
+ "legos": {
+  "L01": {
+   "update": {
+    "U02": [
+     "मला तिला भेटायचं होतं, पण ती खूप व्यस्त होती",
+     "I wanted to see her, but she was too busy"
+    ],
+    "B03": [
+     "पण ती आज संध्याकाळी खूप व्यस्त होती",
+     "but she was too busy this evening"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मला तिला विचारायचं होतं, पण ती खूप व्यस्त होती",
+     "I wanted to ask her, but she was too busy"
+    ],
+    [
+     "use",
+     "मला तिच्याशी बोलायचं होतं, पण ती खूप व्यस्त होती",
+     "I wanted to speak with her, but she was too busy"
+    ],
+    [
+     "use",
+     "तिला यायचं होतं, पण ती खूप व्यस्त होती",
+     "she wanted to come, but she was too busy"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "तिने तुम्हाला उद्या मदत करावी असं मला वाटत होतं",
+     "I wanted her to help you tomorrow"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तिने तुम्हाला आज मदत करावी असं मला वाटत होतं",
+     "I wanted her to help you today"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

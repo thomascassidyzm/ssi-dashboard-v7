@@ -1,0 +1,50 @@
+{
+ "seed": 247,
+ "legos": {
+  "L01": {
+   "update": {
+    "U01": [
+     "मला वाटलं ते खरं होतं",
+     "I thought that it was true"
+    ],
+    "U03": [
+     "मला वाटलं ते रंजक होतं",
+     "I thought that it was interesting"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मला वाटलं ते उपयुक्त होतं",
+     "I thought that it was useful"
+    ],
+    [
+     "build",
+     "मला वाटलं ते खूप सोपं होतं",
+     "I thought that it was very easy"
+    ],
+    [
+     "use",
+     "मला वाटलं ते खरं नव्हतं",
+     "I thought that it wasn't true"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "ते पुस्तक बऱ्यापैकी चांगलं होतं",
+     "that book was fairly good"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आणि ते पुस्तक बऱ्यापैकी चांगलं होतं",
+     "and that book was fairly good"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
