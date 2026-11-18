@@ -1,0 +1,496 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0061L01B04",
+    "seed_number": 61,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "आणि तुम्ही ते पुन्हा सांगाल का?",
+    "target_text": "and could you say that again?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0061L01U06",
+    "seed_number": 61,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "मला समजलं नाही, तुम्ही ते पुन्हा सांगाल का?",
+    "target_text": "I didn't understand, could you say that again?",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 46,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0061L02B04",
+    "seed_number": 61,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "ते थोडं अधिक हळू सांगणे",
+    "target_text": "to say it a little more slowly",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0062L01B04",
+    "seed_number": 62,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "त्याच वेळी शिकणे",
+    "target_text": "to learn at the same time",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0063L01B04",
+    "seed_number": 63,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "तुम्हाला उत्तराबद्दल खात्री आहे का?",
+    "target_text": "are you sure about the answer?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0063L02B04",
+    "seed_number": 63,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "उद्या मदत करायला तुमची हरकत नाही",
+    "target_text": "don't mind helping me tomorrow",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L01B02",
+   "expect": {
+    "known_text": "तुम्ही ते पुन्हा बरं सांगाल का?",
+    "target_text": "could you say that again well?"
+   },
+   "set": {
+    "known_text": "पण तुम्ही ते पुन्हा सांगाल का?",
+    "target_text": "but could you say that again?",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L01U05",
+   "expect": {
+    "known_text": "तुम्ही ते पुन्हा अधिक सांगाल का?",
+    "target_text": "could you say that again more?"
+   },
+   "set": {
+    "known_text": "मला खात्री नाही, तुम्ही ते पुन्हा सांगाल का?",
+    "target_text": "I'm not sure, could you say that again?",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L02B02",
+   "expect": {
+    "known_text": "आज थोडं अधिक हळू",
+    "target_text": "a little more slowly today"
+   },
+   "set": {
+    "known_text": "थोडं अधिक हळू बोलणे",
+    "target_text": "to speak a little more slowly",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L02B03",
+   "expect": {
+    "known_text": "आत्ता थोडं अधिक हळू",
+    "target_text": "a little more slowly now"
+   },
+   "set": {
+    "known_text": "थोडं अधिक हळू वाचणे",
+    "target_text": "to read a little more slowly",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L02U02",
+   "expect": {
+    "known_text": "थोडं अधिक हळू इंग्रजीत",
+    "target_text": "a little more slowly in English"
+   },
+   "set": {
+    "known_text": "तुम्ही थोडं अधिक हळू बोलाल का?",
+    "target_text": "could you speak a little more slowly?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L02U03",
+   "expect": {
+    "known_text": "थोडं अधिक हळू इथे",
+    "target_text": "a little more slowly here"
+   },
+   "set": {
+    "known_text": "मला थोडं अधिक हळू बोलायची गरज आहे",
+    "target_text": "I need to speak a little more slowly",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0061L02U05",
+   "expect": {
+    "known_text": "थोडं अधिक हळू काहीतरी",
+    "target_text": "a little more slowly something"
+   },
+   "set": {
+    "known_text": "मला ते थोडं अधिक हळू वाचायचं आहे",
+    "target_text": "I want to read it a little more slowly",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0062L01B02",
+   "expect": {
+    "known_text": "आज त्याच वेळी",
+    "target_text": "at the same time today"
+   },
+   "set": {
+    "known_text": "त्याच वेळी सगळं करायला",
+    "target_text": "to do everything at the same time",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0062L01B03",
+   "expect": {
+    "known_text": "आत्ता त्याच वेळी",
+    "target_text": "at the same time now"
+   },
+   "set": {
+    "known_text": "त्याच वेळी बोलणे",
+    "target_text": "to speak at the same time",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0062L01U02",
+   "expect": {
+    "known_text": "इंग्रजीत त्याच वेळी",
+    "target_text": "at the same time in English"
+   },
+   "set": {
+    "known_text": "आम्हाला त्याच वेळी बोलायचं होतं",
+    "target_text": "we wanted to speak at the same time",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0062L01U03",
+   "expect": {
+    "known_text": "त्याच वेळी इथे",
+    "target_text": "at the same time here"
+   },
+   "set": {
+    "known_text": "मला त्याच वेळी सगळं आठवत नाही",
+    "target_text": "I can't remember everything at the same time",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0062L01U05",
+   "expect": {
+    "known_text": "त्याच वेळी काहीतरी",
+    "target_text": "at the same time something"
+   },
+   "set": {
+    "known_text": "मला त्याच वेळी सगळं करायचं नाही",
+    "target_text": "I don't want to do everything at the same time",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01B02",
+   "expect": {
+    "known_text": "आज तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure today?"
+   },
+   "set": {
+    "known_text": "तुम्हाला त्याबद्दल खात्री आहे का?",
+    "target_text": "are you sure about it?",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01B03",
+   "expect": {
+    "known_text": "आत्ता तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure now?"
+   },
+   "set": {
+    "known_text": "पण तुम्हाला खात्री आहे का?",
+    "target_text": "but are you sure?",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01U01",
+   "expect": {
+    "known_text": "तुम्हाला काहीतरी बाबत खात्री आहे का?",
+    "target_text": "are you sure something?"
+   },
+   "set": {
+    "known_text": "तुम्हाला परत यायचं आहे, याची तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure you want to come back?",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01U02",
+   "expect": {
+    "known_text": "तुम्हाला इंग्रजीत खात्री आहे का?",
+    "target_text": "are you sure in English?"
+   },
+   "set": {
+    "known_text": "तुम्हाला उत्तर माहित आहे, याची तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure you know the answer?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01U03",
+   "expect": {
+    "known_text": "तुम्हाला इथे खात्री आहे का?",
+    "target_text": "are you sure here?"
+   },
+   "set": {
+    "known_text": "तुमच्याकडे वेळ आहे, याची तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure you have time?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01U04",
+   "expect": {
+    "known_text": "तुम्हाला अधिक खात्री आहे का?",
+    "target_text": "are you sure more?"
+   },
+   "set": {
+    "known_text": "ते उपयोगी आहे, याची तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure it's useful?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L01U05",
+   "expect": {
+    "known_text": "तुम्हाला लवकरच खात्री आहे का?",
+    "target_text": "are you sure soon?"
+   },
+   "set": {
+    "known_text": "तुम्हाला समजतं, याची तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure you understand?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L02B02",
+   "expect": {
+    "known_text": "आज मदत करायला तुमची हरकत नाही",
+    "target_text": "don't mind helping me today"
+   },
+   "set": {
+    "known_text": "मला मदत करायला तुमची हरकत नाही",
+    "target_text": "you don't mind helping me",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L02U02",
+   "expect": {
+    "known_text": "इंग्रजीत मदत करायला तुमची हरकत नाही",
+    "target_text": "don't mind helping me in English"
+   },
+   "set": {
+    "known_text": "मला मदत करायला तुमची हरकत नाही, हे मला माहित आहे",
+    "target_text": "I know you don't mind helping me",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L02U03",
+   "expect": {
+    "known_text": "इथे मदत करायला तुमची हरकत नाही",
+    "target_text": "don't mind helping me here"
+   },
+   "set": {
+    "known_text": "मला वाटतं की मला मदत करायला तुमची हरकत नाही",
+    "target_text": "I think that you don't mind helping me",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L02U04",
+   "expect": {
+    "known_text": "मला मदत करायला तुमची हरकत नाही याची तुम्हाला खात्री आहे का इथे?",
+    "target_text": "are you sure you don't mind helping me here?"
+   },
+   "set": {
+    "known_text": "उद्या मला मदत करायला तुमची हरकत नाही, याची तुम्हाला खात्री आहे का?",
+    "target_text": "are you sure you don't mind helping me tomorrow?",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0063L02U05",
+   "expect": {
+    "known_text": "काहीतरी मदत करायला तुमची हरकत नाही",
+    "target_text": "don't mind helping me something"
+   },
+   "set": {
+    "known_text": "मला मदत करायला तुमची हरकत नसेल, तर मला जास्त सराव करायचा आहे",
+    "target_text": "if you don't mind helping me, I want to practise more",
+    "decomposition": null,
+    "word_count": 53,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "seed": 52,
+ "legos": {
+  "L02": {
+   "update": {
+    "U02": [
+     "त्याला त्याच्या मित्राला पत्र लिहायचं नाही",
+     "he doesn't want to write a letter to his friend"
+    ],
+    "U03": [
+     "त्याला आज त्याच्या मित्राला पत्र लिहायचं आहे",
+     "he wants to write a letter to his friend today"
+    ],
+    "U04": [
+     "त्याला त्याच्या मित्राला पत्र का लिहायचं होतं?",
+     "why did he want to write a letter to his friend?"
+    ],
+    "U05": [
+     "त्याला काल त्याच्या मित्राला पत्र लिहायचं होतं",
+     "he wanted to write a letter to his friend yesterday"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आज त्याच्या मित्राला पत्र लिहायचं",
+     "to write a letter to his friend today"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "गेल्या आठवड्यात माझ्या मित्रांबरोबर",
+     "last week with my friends"
+    ],
+    "B03": [
+     "गेल्या आठवड्यात शिकायचं होतं",
+     "wanted to learn last week"
+    ],
+    "U02": [
+     "मी गेल्या आठवड्यात त्याबद्दल विचार करायला सुरुवात केली",
+     "I started to think about it last week"
+    ],
+    "U03": [
+     "तिला गेल्या आठवड्यात गोष्ट वाचायची होती",
+     "she wanted to read the story last week"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "गेल्या आठवड्यात काहीतरी",
+     "something last week"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

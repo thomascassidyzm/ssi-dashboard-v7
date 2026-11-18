@@ -1,0 +1,497 @@
+[
+ {
+  "seed_number": 124,
+  "phrases": {
+   "124:1": [
+    {
+     "known_text": "நினைத்தேன்",
+     "target_text": "thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைத்தேன்",
+     "target_text": "I thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் நினைத்தோம்",
+     "target_text": "we thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நேற்று அதைப் பற்றி நினைத்தேன்",
+     "target_text": "I thought about it yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அதைப் பற்றி நினைத்தீர்கள்",
+     "target_text": "you thought about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் நினைத்தான்",
+     "target_text": "he thought",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் அதைப் பற்றி நினைத்தான்",
+     "target_text": "he thought about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் நேற்று இரவு அதைப் பற்றி நினைத்தோம்",
+     "target_text": "we thought about it last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதைப் பற்றி நினைத்தேன்",
+     "target_text": "I thought about it",
+     "phrase_role": "build"
+    }
+   ],
+   "124:2": [
+    {
+     "known_text": "நினைத்தேன்",
+     "target_text": "thought",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "யோசனை",
+     "target_text": "idea",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நினைத்தேன் நல்ல யோசனை",
+     "target_text": "thought that was a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைத்தேன் நல்ல யோசனை",
+     "target_text": "I thought that was a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நினைத்தேன் நல்ல யோசனை நேற்று",
+     "target_text": "thought that was a good idea yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைத்தேன் நல்ல யோசனை",
+     "target_text": "I thought that was a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நினைத்தீர்களா நல்ல யோசனை?",
+     "target_text": "you thought that was a good idea?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைத்தேன் நல்ல யோசனை இன்று",
+     "target_text": "I thought that was a good idea today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் நினைத்தான் நல்ல யோசனை",
+     "target_text": "he thought that was a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் நினைத்தோம் நல்ல யோசனை",
+     "target_text": "we thought that was a good idea",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 444,
+  "phrases": {
+   "444:1": [
+    {
+     "known_text": "ஆம் அவர்கள் நினைத்தார்கள்",
+     "target_text": "yes they thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர்கள் அதைப் பற்றி நினைத்தார்கள்",
+     "target_text": "they thought about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனெனில் அவர்கள் நினைத்தார்கள்",
+     "target_text": "because they thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது ஒரு பிரச்சினையே இல்லை என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "they thought that wouldn't be a problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்களால் உதவ முடியும் என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "they thought they could help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "they thought that wouldn't be possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மிகச் சரியாக இருக்கும் என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "they thought that would be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் விரைவில் தயாராகிவிடுவார்கள் என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "they thought they'll be ready soon",
+     "phrase_role": "use"
+    }
+   ],
+   "444:2": [
+    {
+     "known_text": "அதை செய்ய முடியும்",
+     "target_text": "it could be done",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று செய்ய முடியும்",
+     "target_text": "could be done today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நன்றாக செய்ய முடியும்",
+     "target_text": "could be done well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அதை செய்ய முடியும் என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "they thought it could be done",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை இன்று செய்ய முடியும்",
+     "target_text": "it could be done today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை செய்ய முடியும் என்று நினைக்கிறேன்",
+     "target_text": "I think it could be done",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை செய்ய முடியும் என்று அவர்களுக்குத் தெரியும்",
+     "target_text": "they know it could be done",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை நன்றாக செய்ய முடியும் என்று நினைக்கிறேன்",
+     "target_text": "I think it could be done well",
+     "phrase_role": "use"
+    }
+   ],
+   "444:3": [
+    {
+     "known_text": "மேலும் திறமையாக",
+     "target_text": "more efficiently",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "திறமையாக செய்ய முடியும்",
+     "target_text": "could be done efficiently",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று திறமையாக",
+     "target_text": "efficiently today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆம், அதை மேலும் திறமையாக செய்ய முடியும் என்று அவர்கள் நினைத்தார்கள்",
+     "target_text": "yes they thought it could be done more efficiently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை மேலும் திறமையாக செய்ய முடியும்",
+     "target_text": "it could be done more efficiently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் மேலும் திறமையாக வேலை செய்ய விரும்புகிறார்கள்",
+     "target_text": "they want to work more efficiently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை இன்று மேலும் திறமையாக செய்ய முடியும்",
+     "target_text": "it could be done more efficiently today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை மேலும் திறமையாக செய்ய முடியும் என்று அவர்களுக்குத் தெரியும்",
+     "target_text": "they know it could be done more efficiently",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 449,
+  "phrases": {
+   "449:1": [
+    {
+     "known_text": "இன்று சொன்னார்கள்",
+     "target_text": "said that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனெனில் சொன்னார்கள்",
+     "target_text": "because said that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர்கள் சொன்னார்கள்",
+     "target_text": "they said that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர்கள் விரைவில் தயாராகிவிடுவார்கள் என்று சொன்னார்கள்",
+     "target_text": "they said that they'll be ready soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் சலிப்படைந்திருக்கிறார்கள் என்று சொன்னார்கள்",
+     "target_text": "they said that they're bored",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் அப்படி சொன்னார்கள் என்று நினைக்கிறேன்",
+     "target_text": "I think they said that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் இன்று அப்படி சொன்னார்கள்",
+     "target_text": "they said that today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் மகிழ்ச்சியாக இருப்பார்கள் என்று சொன்னார்கள்",
+     "target_text": "they said that they'll be happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் உதவ விரும்புகிறார்கள் என்று சொன்னார்கள்",
+     "target_text": "they said that they want to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது நடக்கப் போகிறது என்று அவர்கள் சொன்னார்கள்",
+     "target_text": "They said that it was going to happen",
+     "phrase_role": "use"
+    }
+   ],
+   "449:2": [
+    {
+     "known_text": "தயாராக இருந்ததாக",
+     "target_text": "they were ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இங்கே இருந்ததாக",
+     "target_text": "they were here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மகிழ்ச்சியாக இருந்ததாக",
+     "target_text": "they were happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர்கள் தயாராக இருந்ததாக நினைக்கிறேன்",
+     "target_text": "I think they were ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் தயாராக இருந்ததாக சொன்னார்கள்",
+     "target_text": "they said that they were ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் மகிழ்ச்சியாக இருந்ததாக சொன்னார்கள்",
+     "target_text": "they said that they were happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் இங்கே இருந்ததாக சொன்னார்கள்",
+     "target_text": "they said that they were here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் இன்று தயாராக இருந்ததாக சொன்னார்கள்",
+     "target_text": "they said that they were ready today",
+     "phrase_role": "use"
+    }
+   ],
+   "449:3": [
+    {
+     "known_text": "தயாராக",
+     "target_text": "ready",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கிட்டத்தட்ட தயாராக",
+     "target_text": "almost ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர்கள் கிட்டத்தட்ட தயாராக",
+     "target_text": "they almost ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனெனில் கிட்டத்தட்ட தயாராக",
+     "target_text": "because almost ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆனால் கிட்டத்தட்ட தயாராக",
+     "target_text": "but almost ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர்கள் கிட்டத்தட்ட தயாராக இருந்ததாக சொன்னார்கள்",
+     "target_text": "they said that they were almost ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் கிட்டத்தட்ட தயாராக இருந்ததாக நினைக்கிறேன்",
+     "target_text": "I think they were almost ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் இன்று கிட்டத்தட்ட தயாராக இருந்ததாக சொன்னார்கள்",
+     "target_text": "they said that they were almost ready today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 565,
+  "phrases": {
+   "565:1": [
+    {
+     "known_text": "கவனமாக",
+     "target_text": "carefully",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இன்னும் கவனமாக",
+     "target_text": "more carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது இன்னும் கவனமாக",
+     "target_text": "more carefully now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏன் இன்னும் கவனமாக",
+     "target_text": "why more carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்னும் கவனமாக பேச விரும்புகிறேன்",
+     "target_text": "I want to speak more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் நான் இன்னும் கவனமாக பேச விரும்புகிறேன்",
+     "target_text": "so I want to speak more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மீண்டும் இன்னும் கவனமாக பேச விரும்புகிறேன்",
+     "target_text": "I want to speak more carefully again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று இன்னும் கவனமாக பேச விரும்புகிறேன்",
+     "target_text": "I want to speak more carefully today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நிச்சயமாக நான் இன்னும் கவனமாக பேச விரும்புகிறேன்",
+     "target_text": "definitely I want to speak more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்னும் கவனமாக யோசிக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to think more carefully.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்னும் கவனமாக யோசிக்க வேண்டும்",
+     "target_text": "need to think more carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீ அதைப் பற்றி இன்னும் கவனமாக யோசிக்க வேண்டும்",
+     "target_text": "you should think about it more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீ இன்னும் கவனமாக பேச வேண்டும்",
+     "target_text": "you should speak more carefully",
+     "phrase_role": "build"
+    }
+   ],
+   "565:2": [
+    {
+     "known_text": "யோசித்திருப்பேன்",
+     "target_text": "I'd have thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்னும் கவனமாக யோசித்திருப்பேன்",
+     "target_text": "I'd have thought more carefully",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அதைப் பற்றி யோசித்திருப்பேன்",
+     "target_text": "I'd have thought about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அதைப் பற்றி இன்னும் கவனமாக யோசித்திருப்பேன்",
+     "target_text": "I'd have thought about it more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நேற்று அதைப் பற்றி யோசித்திருப்பேன்",
+     "target_text": "I'd have thought about it yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதைப் பற்றி மீண்டும் யோசித்திருப்பேன்",
+     "target_text": "I'd have thought about it again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் நான் அதைப் பற்றி இன்னும் கவனமாக யோசித்திருப்பேன்",
+     "target_text": "so I'd have thought about it more carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதைப் பற்றி யோசித்திருப்பேன் என்று எங்களுக்குத் தெரியும்",
+     "target_text": "we know I'd have thought about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் நான் அதைப் பற்றி யோசித்திருப்பேன்",
+     "target_text": "so I'd have thought about it",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

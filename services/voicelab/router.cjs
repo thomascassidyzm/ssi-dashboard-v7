@@ -353,13 +353,38 @@ function mount (app, deps) {
    * open, which is why it must never render: "open a language and it plays" is the
    * whole ask, and a page that renders on open is a page that spins.
    */
+  /**
+   * AN AUTHORED LINE, ONLY WHERE THE ESTATE HAS NONE (cs #716·AI, Kai 18 Nov:
+   * "Kai wants every voice hearable"). Czech, Hungarian, Russian and Indonesian
+   * had a course row but no seed text, no instruction clip, no known-side course
+   * and no pod, so pickLine returned null and their native Cartesia voices could
+   * never be sampled. The caller may then supply ONE line (`line`, ≤ HARD_CAP
+   * chars). A language that has a real course line ignores it: the fair
+   * comparison on the course's own words always wins. Returns null when unused.
+   */
+  async function authoredLine (language, text) {
+    const t = String(text || '').trim()
+    if (!t) return null
+    if (await samplesModule.pickLine(language)) return null
+    return {
+      language,
+      text: t.slice(0, samplesModule.HARD_CAP || 200),
+      knownText: '',
+      course: null,
+      courseName: null,
+      source: 'authored audition line (this language has no course line)',
+      kind: 'authored',
+    }
+  }
+
   app.get('/api/voicelab/languages/:language/samples', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
       const language = String(req.params.language || '').trim()
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
       const voiceIds = String(req.query.voices || '').split(',').map((s) => s.trim()).filter(Boolean).slice(0, 200)
-      res.json(await samplesModule.read({ language, voiceIds }))
+      const line = await authoredLine(language, req.query.line)
+      res.json(await samplesModule.read({ language, voiceIds, ...(line ? { line } : {}) }))
     } catch (err) { fail(res, err, `samples ${req.params.language}`) }
   })
 
@@ -390,9 +415,11 @@ function mount (app, deps) {
       const voiceIds = ((req.body || {}).voiceIds || []).map((s) => String(s).trim()).filter(Boolean)
       if (!voiceIds.length) throw Object.assign(new Error('voiceIds is required'), { status: 400 })
       const max = Math.min(Number((req.body || {}).max) || SAMPLE_PREPARE_MAX, SAMPLE_PREPARE_MAX)
+      const line = await authoredLine(language, (req.body || {}).line)
       const out = await samplesModule.prepare({
         language, voiceIds, maxVoices: max, force: Boolean((req.body || {}).force),
         renderOne: (a) => runner().renderOne(a),
+        ...(line ? { line } : {}),
       })
       logger.log?.(`[voicelab] prepared ${out.rendered.length} sample(s) for ${language} (${out.chars} chars) for ${who(user)}`)
       res.json({ ok: true, maxPerPress: SAMPLE_PREPARE_MAX, ...out })

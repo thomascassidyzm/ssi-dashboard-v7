@@ -1,0 +1,322 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0010L02B02",
+  "set": {
+   "known_text": "能说中文",
+   "known_audio_id": "bf39914b-f87e-445c-8390-1f4b1724c3f7"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0010L01U02",
+  "set": {
+   "known_text": "我不确定能说中文",
+   "known_audio_id": "77cb3124-bbbe-4a78-bac4-095ae68ceee2"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L01U02",
+  "set": {
+   "known_text": "我现在说中文。",
+   "known_audio_id": "e60ca274-5733-4713-9a5e-5ceb08a0df26"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L01U03",
+  "set": {
+   "known_text": "我和你说中文。",
+   "known_audio_id": "5035825f-1ba6-4c01-adc4-5e330049940b"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L01U01",
+  "set": {
+   "known_text": "我今天说中文。",
+   "known_audio_id": "73652467-5473-4f4c-a12c-7e15f584b48b"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L01B04",
+  "set": {
+   "known_text": "我说中文",
+   "known_audio_id": "56db5c4a-db51-4393-9fc3-7a93c329b258"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03U01",
+  "set": {
+   "known_text": "我现在说一点中文。",
+   "known_audio_id": "ded5c240-ce6b-4bf7-a015-adc2a04d9dc4"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03U03",
+  "set": {
+   "known_text": "我想和你说一点中文。",
+   "known_audio_id": "9744830b-db76-4e8f-9fa5-66d1dcf97de4"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03U02",
+  "set": {
+   "known_text": "我今天说一点中文。",
+   "known_audio_id": "ab7bf72a-e203-4082-a6f3-46984f2e1e97"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03U05",
+  "set": {
+   "known_text": "我想尽量多说一点中文。",
+   "known_audio_id": "1a120912-3270-4248-b2db-7f190439258c"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03U04",
+  "set": {
+   "known_text": "我要说一点中文。",
+   "known_audio_id": "2b4cd542-e9c0-4fb1-be47-a350d55d6f96"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03C02",
+  "set": {
+   "known_text": "中文",
+   "known_audio_id": "02a4f5c9-3e06-4be4-ac89-aaa31c9c0f29"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03B04",
+  "set": {
+   "known_text": "今天说一点中文",
+   "known_audio_id": "4c05604b-68b6-4f91-b4d7-98f0d005703f"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03B03",
+  "set": {
+   "known_text": "我想说一点中文",
+   "known_audio_id": "d71b5572-0880-4bb2-b025-191956d429c6"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03B02",
+  "set": {
+   "known_text": "我说一点中文",
+   "known_audio_id": "3fc74d3f-be4d-40ad-85e5-d47a1312d347"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L03B01",
+  "set": {
+   "known_text": "一点中文",
+   "known_audio_id": "f350bd6a-4601-4192-9fe8-aef23c66b1c8"
+  }
+ },
+ {
+  "op": "lego.update",
+  "id": "75bcdf6c-f9a5-4927-81c2-124221097eb4",
+  "set": {
+   "presentation_audio_id": null
+  }
+ },
+ {
+  "op": "lego.update",
+  "id": "75bcdf6c-f9a5-4927-81c2-124221097eb4",
+  "set": {
+   "known_text": "一点中文",
+   "known_audio_id": "f350bd6a-4601-4192-9fe8-aef23c66b1c8",
+   "presentation_audio_id": "ffa71ee8-7ef3-49a9-8e38-0209d8deae08"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L02U03",
+  "set": {
+   "known_text": "我今天想说一点中文。",
+   "known_audio_id": "bff6f350-893f-468a-a306-fe18f0ab8ac2"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L02U01",
+  "set": {
+   "known_text": "我想说一点中文。",
+   "known_audio_id": "d71b5572-0880-4bb2-b025-191956d429c6"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L02U04",
+  "set": {
+   "known_text": "我想和你说一点中文。",
+   "known_audio_id": "9744830b-db76-4e8f-9fa5-66d1dcf97de4"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0009L02U02",
+  "set": {
+   "known_text": "我在试着说一点中文。",
+   "known_audio_id": "62fb6890-233b-483a-a13e-9e839bf96b9e"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 9,
+  "set": {
+   "known_text": "我现在说一点中文。",
+   "known_audio_id": "ded5c240-ce6b-4bf7-a015-adc2a04d9dc4"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0007L02U01",
+  "set": {
+   "known_text": "我今天想说中文。",
+   "known_audio_id": "f45d7eae-b999-4160-ae6b-3f6163d7a7fe"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0007L02U02",
+  "set": {
+   "known_text": "我今天想和你说中文。",
+   "known_audio_id": "7fc02a67-f6b6-4630-9676-44945c252d25"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0007L02B01",
+  "set": {
+   "known_text": "今天说中文",
+   "known_audio_id": "16b6282a-75a2-495b-9d5b-36e6e6103467"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0006L01U04",
+  "set": {
+   "known_text": "我在试着记住怎么用中文说。",
+   "known_audio_id": "52f7246e-8516-4503-858b-908ad94edf2d"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0006L01U02",
+  "set": {
+   "known_text": "我想记住怎么说中文。",
+   "known_audio_id": "74b54573-12d6-4a47-9287-2469c36bcc1a"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L01U02",
+  "set": {
+   "known_text": "我要学中文。",
+   "known_audio_id": "1f0fd94f-8d7c-4689-9538-a7cb0c7f16b5"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L01U03",
+  "set": {
+   "known_text": "我要和你说中文。",
+   "known_audio_id": "a2977085-562f-4909-b92c-112d386da530"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L01U05",
+  "set": {
+   "known_text": "我要尽量多说中文。",
+   "known_audio_id": "78376e16-3748-4f7a-a749-9e8b03fdd616"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L01U04",
+  "set": {
+   "known_text": "我现在要说中文。",
+   "known_audio_id": "4d1b537e-b27d-4162-b19b-482244575abd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L01U01",
+  "set": {
+   "known_text": "我要说中文。",
+   "known_audio_id": "1267cd21-8e28-4298-a21c-d6c5424ac6b0"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L03U05",
+  "set": {
+   "known_text": "我现在想和别人学中文。",
+   "known_audio_id": "b87c3779-6015-4cdb-b0cf-683008a45153"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L03U02",
+  "set": {
+   "known_text": "我想和别人说中文。",
+   "known_audio_id": "03fecc0a-c22c-4722-a038-e4f309afc61d"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L03U03",
+  "set": {
+   "known_text": "我在试着和别人说中文。",
+   "known_audio_id": "7cc54ee2-1abf-4753-9f68-cfeef2fe7ab9"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L03B02",
+  "set": {
+   "known_text": "和别人说中文",
+   "known_audio_id": "c390b5db-2b6a-4805-a8ee-fa34db81c240"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L02U04",
+  "set": {
+   "known_text": "我现在想练习说中文。",
+   "known_audio_id": "e34e81dd-b249-4a09-80fb-8addf8b02e18"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L02U01",
+  "set": {
+   "known_text": "我要练习说中文。",
+   "known_audio_id": "6b355f5a-f855-4d0e-84f0-1eb964e7769f"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0005L02U02",
+  "set": {
+   "known_text": "我在试着练习说中文。",
+   "known_audio_id": "3a5496f4-5086-4dbc-b571-1554a028bcf3"
+  }
+ }
+]

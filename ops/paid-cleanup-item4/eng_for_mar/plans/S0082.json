@@ -1,0 +1,76 @@
+{
+ "seed": 82,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "सुरुवात करणार",
+     "going to start"
+    ],
+    "B03": [
+     "थांबणार",
+     "going to stop"
+    ],
+    "U01": [
+     "मी आज सुरुवात करणार नाही",
+     "I'm not going to start today"
+    ],
+    "U02": [
+     "तुम्ही परत येणार आहात का?",
+     "are you going to come back?"
+    ],
+    "U03": [
+     "मी लहान कुत्र्याला सांभाळणार आहे",
+     "I'm going to look after the young dog"
+    ],
+    "U04": [
+     "मी पुढच्या आठवड्यात सुरुवात करणार आहे",
+     "I'm going to start next week"
+    ],
+    "U05": [
+     "मी आत्ता थांबणार नाही",
+     "I'm not going to stop now"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "सांभाळणार",
+     "going to look after"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "तुमची वाट पाहणे",
+     "wait for you"
+    ],
+    "U02": [
+     "मी तुमची वाट पाहणार आहे",
+     "I'm going to wait for you"
+    ],
+    "U03": [
+     "तुम्ही माझी वाट पाहाल का?",
+     "could you wait for me?"
+    ],
+    "U04": [
+     "मी वाट पाहणार नाही",
+     "I'm not going to wait"
+    ],
+    "U05": [
+     "आम्हाला माझ्या मित्रांची वाट पाहायची गरज आहे",
+     "we need to wait for my friends"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "वाट पाहणार",
+     "going to wait"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,442 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0010L02U05",
+  "set": {
+   "known_text": "我在试着能和你说意大利语",
+   "known_audio_id": "7dae4c9e-2d89-4ee6-9f1a-16a38564cf54"
+  },
+  "expect": {
+   "known_text": "我在试着能和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0010L02U01",
+  "set": {
+   "known_text": "我想能说意大利语",
+   "known_audio_id": "54db1f88-9f7f-4516-be09-c027ba9d7134"
+  },
+  "expect": {
+   "known_text": "我想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0011L02U04",
+  "set": {
+   "known_text": "我想说完以后说意大利语",
+   "known_audio_id": "e6458d1b-0123-4a4a-b65e-425d10ce18aa"
+  },
+  "expect": {
+   "known_text": "我想说完以后说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0011L01U03",
+  "set": {
+   "known_text": "我想能说意大利语",
+   "known_audio_id": "54db1f88-9f7f-4516-be09-c027ba9d7134"
+  },
+  "expect": {
+   "known_text": "我想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0011L01U01",
+  "set": {
+   "known_text": "我想和你说意大利语",
+   "known_audio_id": "381d126a-83b0-4dec-8915-d3b1f361d293"
+  },
+  "expect": {
+   "known_text": "我想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0012L03B03",
+  "set": {
+   "known_text": "明天说意大利语",
+   "known_audio_id": "54967f5d-d1b6-4c8b-afed-01a1e70eb7b6"
+  },
+  "expect": {
+   "known_text": "明天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0012L03U04",
+  "set": {
+   "known_text": "我想明天能说意大利语",
+   "known_audio_id": "b0519c7c-8c60-45a9-a28c-cc3e50bda6db"
+  },
+  "expect": {
+   "known_text": "我想明天能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0012L03U01",
+  "set": {
+   "known_text": "我想明天和你说意大利语",
+   "known_audio_id": "d3f5ca70-387e-47e0-b8af-f88b514d544b"
+  },
+  "expect": {
+   "known_text": "我想明天和你说中文"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 13,
+  "set": {
+   "known_text": "你意大利语说得很好。",
+   "known_audio_id": "0c632c5f-2b82-4ab3-9ac4-5f9bab3732ba"
+  },
+  "expect": {
+   "known_text": "你中文说得很好。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L03U01",
+  "set": {
+   "known_text": "你说意大利语说得很好",
+   "known_audio_id": "c359a4ea-0e9f-4322-90de-65d76b0d61d7"
+  },
+  "expect": {
+   "known_text": "你说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L03U02",
+  "set": {
+   "known_text": "我想说意大利语说得很好",
+   "known_audio_id": "985280f0-0377-4699-88c7-3497ff50b6a3"
+  },
+  "expect": {
+   "known_text": "我想说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L02U01",
+  "set": {
+   "known_text": "你说意大利语说得好",
+   "known_audio_id": "9c15e738-9003-4e31-b26c-f97c744b4f34"
+  },
+  "expect": {
+   "known_text": "你说中文说得好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L01B01",
+  "set": {
+   "known_text": "你说意大利语",
+   "known_audio_id": "058a17fa-c782-4b59-917e-f538794ee99a"
+  },
+  "expect": {
+   "known_text": "你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L01U04",
+  "set": {
+   "known_text": "你明天说意大利语",
+   "known_audio_id": "ac1e693a-448c-4c5b-acd0-726572bf1775"
+  },
+  "expect": {
+   "known_text": "你明天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L01U02",
+  "set": {
+   "known_text": "你现在说意大利语",
+   "known_audio_id": "d4b3e770-eacc-47f0-ab88-5657a5bc5228"
+  },
+  "expect": {
+   "known_text": "你现在说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L01U01",
+  "set": {
+   "known_text": "你和别人说意大利语",
+   "known_audio_id": "efeb5b29-728d-4ed2-a03b-ffa7f8ce1f36"
+  },
+  "expect": {
+   "known_text": "你和别人说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L01U05",
+  "set": {
+   "known_text": "你常常说意大利语",
+   "known_audio_id": "be66090e-e1c0-4931-8368-e1202073b093"
+  },
+  "expect": {
+   "known_text": "你常常说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0013L01U03",
+  "set": {
+   "known_text": "你今天说意大利语",
+   "known_audio_id": "ee245992-b450-4ceb-bb6a-9789c0e9b93e"
+  },
+  "expect": {
+   "known_text": "你今天说中文"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 14,
+  "set": {
+   "known_text": "你整天说意大利语吗？",
+   "known_audio_id": "6cefbeb1-b5e6-4dcf-adc7-e8eaec09d092"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0014L01B03",
+  "set": {
+   "known_text": "整天说意大利语",
+   "known_audio_id": "54c11690-b898-40dd-95aa-09ed42dc8fef"
+  },
+  "expect": {
+   "known_text": "整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0014L01U05",
+  "set": {
+   "known_text": "我想明天整天说意大利语",
+   "known_audio_id": "6a1a5f17-110d-4526-9c81-c881b82d504e"
+  },
+  "expect": {
+   "known_text": "我想明天整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0014L01U03",
+  "set": {
+   "known_text": "我在试着整天说意大利语",
+   "known_audio_id": "b5e56f40-6f09-4b6c-a5b9-40e7ba0f79b3"
+  },
+  "expect": {
+   "known_text": "我在试着整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0014L01U02",
+  "set": {
+   "known_text": "我想整天说意大利语",
+   "known_audio_id": "cd40d1d6-6b0c-4f4d-8a81-4c5e1b923bb8"
+  },
+  "expect": {
+   "known_text": "我想整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0014L01U01",
+  "set": {
+   "known_text": "你整天说意大利语吗？",
+   "known_audio_id": "6cefbeb1-b5e6-4dcf-adc7-e8eaec09d092"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 15,
+  "set": {
+   "known_text": "而且我想让你明天和我说意大利语。",
+   "known_audio_id": "99cc0508-af8c-44a2-8d4e-8dd1b31d543a"
+  },
+  "expect": {
+   "known_text": "而且我想让你明天和我说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L02B02",
+  "set": {
+   "known_text": "让你说意大利语",
+   "known_audio_id": "e3bc0cf7-3188-4942-afa6-7e9b7b5790cb"
+  },
+  "expect": {
+   "known_text": "让你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L02U03",
+  "set": {
+   "known_text": "而且我想让你说意大利语",
+   "known_audio_id": "92950903-6fa4-4eb2-b5fe-e29b349d660b"
+  },
+  "expect": {
+   "known_text": "而且我想让你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L02U05",
+  "set": {
+   "known_text": "而且我想让你今天说意大利语",
+   "known_audio_id": "ecfd7c63-7255-4953-a9f0-c3a49ad411f3"
+  },
+  "expect": {
+   "known_text": "而且我想让你今天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L02U04",
+  "set": {
+   "known_text": "我想让你说意大利语说得很好",
+   "known_audio_id": "6ba407ab-c6c8-4c85-aaa1-471988165ab8"
+  },
+  "expect": {
+   "known_text": "我想让你说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L02U01",
+  "set": {
+   "known_text": "我想让你说意大利语",
+   "known_audio_id": "6e6d5b0f-24b6-48c7-9a80-d80279324177"
+  },
+  "expect": {
+   "known_text": "我想让你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L02U02",
+  "set": {
+   "known_text": "我想让你明天说意大利语",
+   "known_audio_id": "fa48e910-ba0b-4989-86a7-7eb6ee24d791"
+  },
+  "expect": {
+   "known_text": "我想让你明天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L01B01",
+  "set": {
+   "known_text": "而且你说意大利语",
+   "known_audio_id": "8c9e586d-2e4c-450f-a938-31fde5ca29e8"
+  },
+  "expect": {
+   "known_text": "而且你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L01U02",
+  "set": {
+   "known_text": "而且你说意大利语说得很好",
+   "known_audio_id": "4737d3ef-1aa1-446e-b4b0-415e6fd8708d"
+  },
+  "expect": {
+   "known_text": "而且你说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L01U04",
+  "set": {
+   "known_text": "而且我明天想和你说意大利语",
+   "known_audio_id": "d945b083-8aa2-4df9-8c1e-d8737bbd5b91"
+  },
+  "expect": {
+   "known_text": "而且我明天想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L01U01",
+  "set": {
+   "known_text": "而且我想说意大利语",
+   "known_audio_id": "1d41adcb-2df5-4f95-9219-fbc73788b857"
+  },
+  "expect": {
+   "known_text": "而且我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L03B03",
+  "set": {
+   "known_text": "和我说意大利语",
+   "known_audio_id": "7798128e-bef6-449f-9677-4bf9ab482636"
+  },
+  "expect": {
+   "known_text": "和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L03U01",
+  "set": {
+   "known_text": "我想让你和我说意大利语",
+   "known_audio_id": "fceb5d68-ed56-4dee-a614-c023d04680d5"
+  },
+  "expect": {
+   "known_text": "我想让你和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L03U04",
+  "set": {
+   "known_text": "你整天和我说意大利语",
+   "known_audio_id": "1a536cff-f039-4dba-8ade-4768dfd6bf46"
+  },
+  "expect": {
+   "known_text": "你整天和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L03U03",
+  "set": {
+   "known_text": "我想让你明天和我说意大利语",
+   "known_audio_id": "e46e656b-f13e-4249-9d8f-63f290e31530"
+  },
+  "expect": {
+   "known_text": "我想让你明天和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L03U05",
+  "set": {
+   "known_text": "你现在和我说意大利语",
+   "known_audio_id": "41edf5ed-0079-4526-a0ad-a03f521a2c08"
+  },
+  "expect": {
+   "known_text": "你现在和我说中文"
+  }
+ }
+]

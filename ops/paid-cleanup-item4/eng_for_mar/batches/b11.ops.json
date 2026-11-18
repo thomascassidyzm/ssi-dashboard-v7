@@ -1,0 +1,1468 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0114L01U05",
+    "seed_number": 114,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "मी कालपेक्षा आज जास्त थकलोय",
+    "target_text": "I'm more tired today than yesterday",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 35,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0116L01B04",
+    "seed_number": 116,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "सर्वात चांगली गोष्ट",
+    "target_text": "the best story",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 14,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0116L02B04",
+    "seed_number": 116,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "वेगळा पर्याय",
+    "target_text": "a different choice",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 2,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0116L03B04",
+    "seed_number": 116,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "चांगला पर्याय निवडणे",
+    "target_text": "make a good choice",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0117L01B04",
+    "seed_number": 117,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "नक्कीच तयार",
+    "target_text": "definitely ready",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 2,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0117L02B04",
+    "seed_number": 117,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "कालपेक्षा चांगलं",
+    "target_text": "better than yesterday",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 2,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0117L03B04",
+    "seed_number": 117,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "मागच्या वेळेपेक्षा चांगलं",
+    "target_text": "better than last time",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0117L04B04",
+    "seed_number": 117,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "थोडा वेळ एकमेकांशी बोललो",
+    "target_text": "talked to each other for a while",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0118L01B04",
+    "seed_number": 118,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "थकल्यासारखं वाटलं",
+    "target_text": "felt tired",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 10,
+    "lego_count": 2,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0118L02B04",
+    "seed_number": 118,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "पत्रात होते",
+    "target_text": "were in the letter",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 2,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0118L02U05",
+    "seed_number": 118,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "आम्ही गोष्टीच्या मध्ये होतो",
+    "target_text": "we were in the middle of the story",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 34,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0118L03B04",
+    "seed_number": 118,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "आज रात्री पब",
+    "target_text": "the pub tonight",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L01B02",
+   "expect": {
+    "known_text": "आज त्यापेक्षा इंग्रजीत",
+    "target_text": "today than yesterday in English"
+   },
+   "set": {
+    "known_text": "कालपेक्षा आज बरं",
+    "target_text": "better today than yesterday",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L01B04",
+   "expect": {
+    "known_text": "आज त्यापेक्षा पुन्हा",
+    "target_text": "today than yesterday again"
+   },
+   "set": {
+    "known_text": "कालपेक्षा आज जास्त",
+    "target_text": "more today than yesterday",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L01U02",
+   "expect": {
+    "known_text": "इंग्रजीत मला वाईट करत होतो आज त्यापेक्षा वाटतं",
+    "target_text": "in English I feel as if I'm doing worse today than yesterday"
+   },
+   "set": {
+    "known_text": "मला कालपेक्षा आज बरं वाटतंय",
+    "target_text": "I feel better today than yesterday",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L01U03",
+   "expect": {
+    "known_text": "कारण मला वाईट करत होतो आज त्यापेक्षा वाटतं",
+    "target_text": "because I feel as if I'm doing worse today than yesterday"
+   },
+   "set": {
+    "known_text": "मी कालपेक्षा आज जास्त शिकलोय",
+    "target_text": "I've learnt more today than yesterday",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L01U04",
+   "expect": {
+    "known_text": "मला खात्री नाही तरी मला वाईट करत होतो आज त्यापेक्षा वाटतं",
+    "target_text": "I'm not sure yet I feel as if I'm doing worse today than yesterday"
+   },
+   "set": {
+    "known_text": "मला कालपेक्षा आज जास्त समजतं",
+    "target_text": "I understand more today than yesterday",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L02B02",
+   "expect": {
+    "known_text": "मी वाईट करत होतो आज त्यापेक्षा इंग्रजीत",
+    "target_text": "I feel as if I'm doing worse today than yesterday in English"
+   },
+   "set": {
+    "known_text": "मला असं वाटतंय की मी वाईट करतोय",
+    "target_text": "I feel as if I'm doing worse",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L02B03",
+   "expect": {
+    "known_text": "वाईट करत होतो इंग्रजीत",
+    "target_text": "feel as if I'm doing worse in English"
+   },
+   "set": {
+    "known_text": "आज मी वाईट करतोय असं वाटतंय",
+    "target_text": "feel as if I'm doing worse today",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L02B04",
+   "expect": {
+    "known_text": "वाईट करत होतो पुन्हा",
+    "target_text": "feel as if I'm doing worse again"
+   },
+   "set": {
+    "known_text": "पुन्हा वाईट करतोय असं वाटतंय",
+    "target_text": "feel as if I'm doing worse again",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L02U02",
+   "expect": {
+    "known_text": "मला वाईट करत होतो इंग्रजीत वाटतं",
+    "target_text": "I feel as if I'm doing worse in English"
+   },
+   "set": {
+    "known_text": "मला असं वाटतंय की मी वाईट करतोय, पण मी शिकतोय",
+    "target_text": "I feel as if I'm doing worse, but I'm learning",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L02U03",
+   "expect": {
+    "known_text": "मला वाईट करत होतो आज त्यापेक्षा अजून वाटतं",
+    "target_text": "I feel as if I'm doing worse today than yesterday yet"
+   },
+   "set": {
+    "known_text": "मला असं वाटतंय की मी माझ्या मित्रांपेक्षा वाईट करतोय",
+    "target_text": "I feel as if I'm doing worse than my friends",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0114L02U05",
+   "expect": {
+    "known_text": "कारण मला वाईट करत होतो वाटतं",
+    "target_text": "because I feel as if I'm doing worse"
+   },
+   "set": {
+    "known_text": "मी वाईट करतोय असं मला का वाटतंय ते मला माहित नाही",
+    "target_text": "I don't know why I feel as if I'm doing worse",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L01B02",
+   "expect": {
+    "known_text": "तयार इंग्रजीत",
+    "target_text": "ready in English"
+   },
+   "set": {
+    "known_text": "शिकायला तयार",
+    "target_text": "ready to learn",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L01B03",
+   "expect": {
+    "known_text": "तयार रात्री",
+    "target_text": "ready tonight"
+   },
+   "set": {
+    "known_text": "तयार नाही",
+    "target_text": "not ready",
+    "decomposition": null,
+    "word_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L01B04",
+   "expect": {
+    "known_text": "तयार पुन्हा",
+    "target_text": "ready again"
+   },
+   "set": {
+    "known_text": "आता तयार",
+    "target_text": "ready now",
+    "decomposition": null,
+    "word_count": 9,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L01U02",
+   "expect": {
+    "known_text": "मी इंग्रजीत तयार आहे",
+    "target_text": "I'm ready in English"
+   },
+   "set": {
+    "known_text": "मी उत्तर द्यायला तयार आहे",
+    "target_text": "I'm ready to answer",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L01U03",
+   "expect": {
+    "known_text": "मला खात्री नाही मी तयार आहे का",
+    "target_text": "I'm not sure I'm ready"
+   },
+   "set": {
+    "known_text": "मी तयार आहे याची मला खात्री नाही",
+    "target_text": "I'm not sure I'm ready",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L01U05",
+   "expect": {
+    "known_text": "कारण मी तयार आहे",
+    "target_text": "because I'm ready"
+   },
+   "set": {
+    "known_text": "तुम्ही घरी जायला तयार आहात का?",
+    "target_text": "are you ready to go home?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L02B02",
+   "expect": {
+    "known_text": "तयार संभाषण करायला",
+    "target_text": "ready to have a conversation"
+   },
+   "set": {
+    "known_text": "संभाषण करायला तयार",
+    "target_text": "ready to have a conversation",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L02B04",
+   "expect": {
+    "known_text": "संभाषण करायला पुन्हा",
+    "target_text": "to have a conversation again"
+   },
+   "set": {
+    "known_text": "तुमच्याशी संभाषण करायला",
+    "target_text": "to have a conversation with you",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L02U03",
+   "expect": {
+    "known_text": "मला खात्री नाही मी संभाषण करायला तयार आहे का",
+    "target_text": "I'm not sure I'm ready to have a conversation"
+   },
+   "set": {
+    "known_text": "मी संभाषण करायला तयार आहे याची मला खात्री नाही",
+    "target_text": "I'm not sure I'm ready to have a conversation",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L02U05",
+   "expect": {
+    "known_text": "कारण मी संभाषण करायला तयार आहे",
+    "target_text": "because I'm ready to have a conversation"
+   },
+   "set": {
+    "known_text": "मला तुमच्या मित्राशी संभाषण करायला आवडेल",
+    "target_text": "I'd like to have a conversation with your friend",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L03B03",
+   "expect": {
+    "known_text": "वाटत नाहीये तयार",
+    "target_text": "don't feel as if I'm ready"
+   },
+   "set": {
+    "known_text": "तयार असल्यासारखं वाटत नाहीये",
+    "target_text": "don't feel as if I'm ready",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L03B04",
+   "expect": {
+    "known_text": "वाटत नाहीये इंग्रजीत",
+    "target_text": "don't feel as if I'm in English"
+   },
+   "set": {
+    "known_text": "थकल्यासारखं वाटत नाहीये",
+    "target_text": "don't feel as if I'm tired",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L03U03",
+   "expect": {
+    "known_text": "मला संभाषण करायला तयार असल्यासारखं वाटत नाहीये इंग्रजीत",
+    "target_text": "I don't feel as if I'm ready to have a conversation in English"
+   },
+   "set": {
+    "known_text": "मी शिकतोय असं मला वाटत नाहीये",
+    "target_text": "I don't feel as if I'm learning",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L03U04",
+   "expect": {
+    "known_text": "मला वाटतं की मला तयार असल्यासारखं वाटत नाहीये",
+    "target_text": "I think that I don't feel as if I'm ready"
+   },
+   "set": {
+    "known_text": "मी चांगलं करतोय असं मला वाटत नाहीये",
+    "target_text": "I don't feel as if I'm doing better",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0115L03U05",
+   "expect": {
+    "known_text": "कारण मला तयार असल्यासारखं वाटत नाहीये",
+    "target_text": "because I don't feel as if I'm ready"
+   },
+   "set": {
+    "known_text": "मला घरी जायला तयार असल्यासारखं वाटत नाहीये",
+    "target_text": "I don't feel as if I'm ready to go home",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L01B02",
+   "expect": {
+    "known_text": "आत्ता चांगला",
+    "target_text": "best now"
+   },
+   "set": {
+    "known_text": "सर्वात चांगला मार्ग",
+    "target_text": "the best way",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L01B03",
+   "expect": {
+    "known_text": "इथे चांगला",
+    "target_text": "best here"
+   },
+   "set": {
+    "known_text": "माझा सर्वात चांगला मित्र",
+    "target_text": "my best friend",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L01U02",
+   "expect": {
+    "known_text": "इंग्रजीत चांगला",
+    "target_text": "best in English"
+   },
+   "set": {
+    "known_text": "शिकण्याचा हा सर्वात चांगला मार्ग आहे",
+    "target_text": "this is the best way to learn",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L01U03",
+   "expect": {
+    "known_text": "सर्वात चांगला",
+    "target_text": "the best"
+   },
+   "set": {
+    "known_text": "तुमचा मित्र सर्वात चांगला आहे",
+    "target_text": "your friend is the best",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L01U04",
+   "expect": {
+    "known_text": "सुरुवातीला सर्वात चांगला",
+    "target_text": "the best start"
+   },
+   "set": {
+    "known_text": "मला माहित असलेली ही सर्वात चांगली गोष्ट आहे",
+    "target_text": "this is the best story I know",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L01U05",
+   "expect": {
+    "known_text": "सर्वात चांगला इथे",
+    "target_text": "the best here"
+   },
+   "set": {
+    "known_text": "मला वाटतं की हा सर्वात चांगला मार्ग आहे",
+    "target_text": "I think that this is the best way",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L02B03",
+   "expect": {
+    "known_text": "आत्ता पर्याय",
+    "target_text": "choice now"
+   },
+   "set": {
+    "known_text": "चांगला पर्याय",
+    "target_text": "a good choice",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L02U01",
+   "expect": {
+    "known_text": "सर्वात चांगला पर्याय",
+    "target_text": "the best choice"
+   },
+   "set": {
+    "known_text": "हा सर्वात चांगला पर्याय आहे",
+    "target_text": "this is the best choice",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L02U02",
+   "expect": {
+    "known_text": "इंग्रजीत पर्याय",
+    "target_text": "choice in English"
+   },
+   "set": {
+    "known_text": "तो चांगला पर्याय होता",
+    "target_text": "it was a good choice",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L02U03",
+   "expect": {
+    "known_text": "हा सर्वात चांगला पर्याय नाही",
+    "target_text": "isn't the best choice"
+   },
+   "set": {
+    "known_text": "मला वाटतं तो सर्वात चांगला पर्याय नाही",
+    "target_text": "I think it isn't the best choice",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L02U04",
+   "expect": {
+    "known_text": "हा सर्वात चांगला पर्याय नाही मी",
+    "target_text": "this isn't the best choice"
+   },
+   "set": {
+    "known_text": "हा सर्वात चांगला पर्याय नाही",
+    "target_text": "this isn't the best choice",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L02U05",
+   "expect": {
+    "known_text": "इथे सर्वात चांगला पर्याय",
+    "target_text": "best choice here"
+   },
+   "set": {
+    "known_text": "तो सर्वात चांगला पर्याय आहे याची मला खात्री नाही",
+    "target_text": "I'm not sure it's the best choice",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L03B03",
+   "expect": {
+    "known_text": "आत्ता करणे",
+    "target_text": "make now"
+   },
+   "set": {
+    "known_text": "पर्याय निवडणे",
+    "target_text": "make a choice",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L03U02",
+   "expect": {
+    "known_text": "इंग्रजीत करणे",
+    "target_text": "make in English"
+   },
+   "set": {
+    "known_text": "मला सर्वात चांगला पर्याय निवडायचा आहे",
+    "target_text": "I want to make the best choice",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L03U03",
+   "expect": {
+    "known_text": "मी सर्वात चांगला पर्याय करू शकेन",
+    "target_text": "I could make the best choice"
+   },
+   "set": {
+    "known_text": "मी सर्वात चांगला पर्याय निवडू शकेन",
+    "target_text": "I could make the best choice",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L03U04",
+   "expect": {
+    "known_text": "सर्वात चांगला पर्याय मी करू शकेन",
+    "target_text": "the best choice I could make"
+   },
+   "set": {
+    "known_text": "पर्याय निवडणं सोपं नाही",
+    "target_text": "it isn't easy to make a choice",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0116L03U05",
+   "expect": {
+    "known_text": "करू शकेन करणे",
+    "target_text": "could make"
+   },
+   "set": {
+    "known_text": "मला आज पर्याय निवडायची गरज आहे",
+    "target_text": "I need to make a choice today",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L01B03",
+   "expect": {
+    "known_text": "इथे नक्कीच",
+    "target_text": "definitely here"
+   },
+   "set": {
+    "known_text": "नक्कीच नाही",
+    "target_text": "definitely not",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L01U01",
+   "expect": {
+    "known_text": "मी नक्कीच",
+    "target_text": "I'm definitely"
+   },
+   "set": {
+    "known_text": "मी नक्कीच तयार आहे",
+    "target_text": "I'm definitely ready",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L01U02",
+   "expect": {
+    "known_text": "नक्कीच चांगलं करतोय",
+    "target_text": "definitely doing better"
+   },
+   "set": {
+    "known_text": "मला नक्कीच परत यायचं आहे",
+    "target_text": "I definitely want to come back",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L01U03",
+   "expect": {
+    "known_text": "इंग्रजीत नक्कीच",
+    "target_text": "definitely in English"
+   },
+   "set": {
+    "known_text": "ते नक्कीच चालेल",
+    "target_text": "it will definitely work",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L01U05",
+   "expect": {
+    "known_text": "इथे नक्कीच चांगलं",
+    "target_text": "definitely better here"
+   },
+   "set": {
+    "known_text": "तो नक्कीच सर्वात चांगला पर्याय होता",
+    "target_text": "that was definitely the best choice",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L02B03",
+   "expect": {
+    "known_text": "त्यापेक्षा आत्ता",
+    "target_text": "than now"
+   },
+   "set": {
+    "known_text": "त्यापेक्षा जास्त",
+    "target_text": "more than",
+    "decomposition": null,
+    "word_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L02U01",
+   "expect": {
+    "known_text": "नक्कीच चांगलं त्यापेक्षा",
+    "target_text": "definitely doing better than"
+   },
+   "set": {
+    "known_text": "मी कालपेक्षा नक्कीच चांगलं करतोय",
+    "target_text": "I'm definitely doing better than yesterday",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L02U02",
+   "expect": {
+    "known_text": "चांगलं त्यापेक्षा होतो",
+    "target_text": "better than I was"
+   },
+   "set": {
+    "known_text": "मी आधी होतो त्यापेक्षा चांगलं करतोय",
+    "target_text": "I'm doing better than I was",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L02U03",
+   "expect": {
+    "known_text": "इंग्रजीत त्यापेक्षा",
+    "target_text": "than in English"
+   },
+   "set": {
+    "known_text": "मला अपेक्षा होती त्यापेक्षा हे जास्त अवघड आहे",
+    "target_text": "this is more difficult than I was expecting",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L02U04",
+   "expect": {
+    "known_text": "मी नक्कीच चांगलं त्यापेक्षा",
+    "target_text": "I'm definitely doing better than"
+   },
+   "set": {
+    "known_text": "मला माझ्या मित्रापेक्षा जास्त शब्द माहित आहेत",
+    "target_text": "I know more words than my friend",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L02U05",
+   "expect": {
+    "known_text": "चांगलं त्यापेक्षा इथे",
+    "target_text": "better than here"
+   },
+   "set": {
+    "known_text": "ती माझ्यापेक्षा चांगलं बोलू शकते",
+    "target_text": "she can speak better than me",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L03B03",
+   "expect": {
+    "known_text": "इथे मागच्या",
+    "target_text": "last here"
+   },
+   "set": {
+    "known_text": "मागच्या वेळी मी इथे होतो",
+    "target_text": "last time I was here",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L03U01",
+   "expect": {
+    "known_text": "मी होतो मागच्या वेळी",
+    "target_text": "I was last time"
+   },
+   "set": {
+    "known_text": "मागच्या वेळी मी थकलो होतो",
+    "target_text": "I was tired last time",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L03U02",
+   "expect": {
+    "known_text": "इंग्रजीत मागच्या",
+    "target_text": "last in English"
+   },
+   "set": {
+    "known_text": "मागच्या वेळी ते सोपं नव्हतं",
+    "target_text": "last time it wasn't easy",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L03U03",
+   "expect": {
+    "known_text": "मागच्या वेळी मी होतो",
+    "target_text": "last time I was"
+   },
+   "set": {
+    "known_text": "मागच्या वेळी तुम्ही काय म्हणालात?",
+    "target_text": "what did you say last time?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L03U04",
+   "expect": {
+    "known_text": "चांगलं त्यापेक्षा मी होतो मागच्या वेळी",
+    "target_text": "better than I was last time"
+   },
+   "set": {
+    "known_text": "मी मागच्या वेळेपेक्षा चांगलं करतोय",
+    "target_text": "I'm doing better than I was last time",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L03U05",
+   "expect": {
+    "known_text": "नक्कीच चांगलं त्यापेक्षा मागच्या वेळी",
+    "target_text": "definitely better than last time"
+   },
+   "set": {
+    "known_text": "ते मागच्या वेळेपेक्षा नक्कीच चांगलं होतं",
+    "target_text": "it was definitely better than last time",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L04B02",
+   "expect": {
+    "known_text": "मी एकमेकांशी बोललो",
+    "target_text": "I talked to each other"
+   },
+   "set": {
+    "known_text": "आम्ही काल एकमेकांशी बोललो",
+    "target_text": "we talked to each other yesterday",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L04B03",
+   "expect": {
+    "known_text": "एकमेकांशी बोललो इथे",
+    "target_text": "talked to each other here"
+   },
+   "set": {
+    "known_text": "मागच्या वेळी आम्ही एकमेकांशी बोललो",
+    "target_text": "last time we talked to each other",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L04U03",
+   "expect": {
+    "known_text": "एकमेकांशी बोललो आज",
+    "target_text": "talked to each other today"
+   },
+   "set": {
+    "known_text": "आम्ही मध्यरात्री एकमेकांशी बोललो",
+    "target_text": "we talked to each other in the middle of the night",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L04U04",
+   "expect": {
+    "known_text": "आम्ही एकमेकांशी बोललो मागच्या वेळी",
+    "target_text": "we talked to each other last time"
+   },
+   "set": {
+    "known_text": "आम्ही मागच्या आठवड्यात एकमेकांशी बोललो",
+    "target_text": "we talked to each other last week",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0117L04U05",
+   "expect": {
+    "known_text": "इंग्रजीत एकमेकांशी बोललो",
+    "target_text": "talked to each other in English"
+   },
+   "set": {
+    "known_text": "आम्ही दुपारभर एकमेकांशी बोललो",
+    "target_text": "we talked to each other all afternoon",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01B02",
+   "expect": {
+    "known_text": "चांगलं वाटत",
+    "target_text": "felt better"
+   },
+   "set": {
+    "known_text": "चांगलं वाटलं",
+    "target_text": "felt better",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01B03",
+   "expect": {
+    "known_text": "ठीक वाटत",
+    "target_text": "felt okay"
+   },
+   "set": {
+    "known_text": "ठीक वाटलं",
+    "target_text": "felt okay",
+    "decomposition": null,
+    "word_count": 9,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01U01",
+   "expect": {
+    "known_text": "मला वाटत",
+    "target_text": "I felt"
+   },
+   "set": {
+    "known_text": "मला काल खूश वाटलं",
+    "target_text": "I felt happy yesterday",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01U02",
+   "expect": {
+    "known_text": "वाटत चांगलं त्यापेक्षा",
+    "target_text": "felt better than"
+   },
+   "set": {
+    "known_text": "त्यानंतर मला बरं वाटलं",
+    "target_text": "I felt better after that",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01U03",
+   "expect": {
+    "known_text": "मला चांगलं वाटत",
+    "target_text": "I felt better"
+   },
+   "set": {
+    "known_text": "मला बरं वाटलं",
+    "target_text": "I felt better",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01U04",
+   "expect": {
+    "known_text": "इंग्रजीत वाटत",
+    "target_text": "felt in English"
+   },
+   "set": {
+    "known_text": "मला काल रात्री थोडं थकल्यासारखं वाटलं",
+    "target_text": "I felt a little tired last night",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L01U05",
+   "expect": {
+    "known_text": "वाटत चांगलं त्यापेक्षा मी",
+    "target_text": "felt better than I"
+   },
+   "set": {
+    "known_text": "आम्ही एकमेकांशी बोललो तेव्हा मला खूप खूश वाटलं",
+    "target_text": "I felt very happy when we talked to each other",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L02U01",
+   "expect": {
+    "known_text": "आम्ही पबमध्ये होतो पब आज",
+    "target_text": "we were in the pub today"
+   },
+   "set": {
+    "known_text": "आम्ही एका संभाषणाच्या मध्ये होतो",
+    "target_text": "we were in the middle of a conversation",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L02U02",
+   "expect": {
+    "known_text": "आम्ही पबमध्ये होतो पब इंग्रजीत",
+    "target_text": "we were in the pub in English"
+   },
+   "set": {
+    "known_text": "ते शब्द पत्रात होते",
+    "target_text": "the words were in the letter",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L03B02",
+   "expect": {
+    "known_text": "पब मध्ये",
+    "target_text": "the pub"
+   },
+   "set": {
+    "known_text": "पबमध्ये",
+    "target_text": "in the pub",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L03B03",
+   "expect": {
+    "known_text": "पब आज",
+    "target_text": "pub today"
+   },
+   "set": {
+    "known_text": "पबमध्ये जायला",
+    "target_text": "to go to the pub",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L03U02",
+   "expect": {
+    "known_text": "इंग्रजीत पब",
+    "target_text": "pub in English"
+   },
+   "set": {
+    "known_text": "मला पबमध्ये जायला आवडेल",
+    "target_text": "I'd like to go to the pub",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L03U03",
+   "expect": {
+    "known_text": "पब मध्ये आज",
+    "target_text": "the pub today"
+   },
+   "set": {
+    "known_text": "तुम्हाला आज रात्री पबमध्ये जायचं आहे का?",
+    "target_text": "do you want to go to the pub tonight?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L03U04",
+   "expect": {
+    "known_text": "आम्ही पबमध्ये होतो पब",
+    "target_text": "we were in the pub"
+   },
+   "set": {
+    "known_text": "मी पबमध्ये तुमची वाट पाहणार आहे",
+    "target_text": "I'm going to wait for you in the pub",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0118L03U05",
+   "expect": {
+    "known_text": "तेव्हा आम्ही पबमध्ये होतो पब",
+    "target_text": "when we were in the pub"
+   },
+   "set": {
+    "known_text": "आम्ही पबमध्ये एकमेकांशी बोललो",
+    "target_text": "we talked to each other in the pub",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

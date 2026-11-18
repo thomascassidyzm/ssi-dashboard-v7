@@ -1,0 +1,438 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 1,
+  "set": {
+   "known_text": "我现在想和你说意大利语。",
+   "known_audio_id": "fab20738-a9c8-4a93-b43d-9b4d84bc0eb2"
+  },
+  "expect": {
+   "known_text": "我现在想和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L05B01",
+  "set": {
+   "known_text": "现在说意大利语",
+   "known_audio_id": "2a0c3c6a-abf9-4744-8da4-50e48a7d768b"
+  },
+  "expect": {
+   "known_text": "现在说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L05U02",
+  "set": {
+   "known_text": "我现在想和你说意大利语",
+   "known_audio_id": "fab20738-a9c8-4a93-b43d-9b4d84bc0eb2"
+  },
+  "expect": {
+   "known_text": "我现在想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L05U01",
+  "set": {
+   "known_text": "我现在想说意大利语",
+   "known_audio_id": "30140330-bb34-4623-b531-0955ffe7fbc3"
+  },
+  "expect": {
+   "known_text": "我现在想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L04B03",
+  "set": {
+   "known_text": "和你说意大利语",
+   "known_audio_id": "cf08016b-efae-4613-8615-f165b0fb8919"
+  },
+  "expect": {
+   "known_text": "和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L04U02",
+  "set": {
+   "known_text": "我想和你说意大利语",
+   "known_audio_id": "381d126a-83b0-4dec-8915-d3b1f361d293"
+  },
+  "expect": {
+   "known_text": "我想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L03B01",
+  "set": {
+   "known_text": "说意大利语",
+   "known_audio_id": "ba31bb8a-750a-4162-8bea-87000f640119"
+  },
+  "expect": {
+   "known_text": "说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0001L03U01",
+  "set": {
+   "known_text": "我想说意大利语",
+   "known_audio_id": "e66757ad-616f-40c8-96a3-2a39787f094d"
+  },
+  "expect": {
+   "known_text": "我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L01U01",
+  "set": {
+   "known_text": "我想学意大利语。",
+   "known_audio_id": "aaf10bc5-1119-4b94-96cd-1787bcada313"
+  },
+  "expect": {
+   "known_text": "我想学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L01U03",
+  "set": {
+   "known_text": "我现在想学意大利语。",
+   "known_audio_id": "53ecf6a1-a6fc-4b44-aebe-de951ce9efd1"
+  },
+  "expect": {
+   "known_text": "我现在想学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L02B03",
+  "set": {
+   "known_text": "我在试着说意大利语",
+   "known_audio_id": "1a878a8a-1229-4d8f-b1fb-e92a4d542305"
+  },
+  "expect": {
+   "known_text": "我在试着说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L02U03",
+  "set": {
+   "known_text": "我在试着和你说意大利语。",
+   "known_audio_id": "e545edfa-8c32-4b71-aa81-dbed04baa0f7"
+  },
+  "expect": {
+   "known_text": "我在试着和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L02U04",
+  "set": {
+   "known_text": "我现在在试着学意大利语。",
+   "known_audio_id": "45a3cdc8-b3a0-4724-bc38-96e2d80b2c79"
+  },
+  "expect": {
+   "known_text": "我现在在试着学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L02U05",
+  "set": {
+   "known_text": "我在试着和你学意大利语。",
+   "known_audio_id": "ef3ad7d2-8aae-4b59-8c51-6438695503f0"
+  },
+  "expect": {
+   "known_text": "我在试着和你学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0002L02U01",
+  "set": {
+   "known_text": "我在试着学意大利语。",
+   "known_audio_id": "4e882a95-6e91-4bcf-9aae-aeecf267d595"
+  },
+  "expect": {
+   "known_text": "我在试着学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L01B01",
+  "set": {
+   "known_text": "怎么说意大利语？",
+   "known_audio_id": "9b3ef3f6-7662-41d5-a955-975519bff8fc"
+  },
+  "expect": {
+   "known_text": "怎么说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L01B02",
+  "set": {
+   "known_text": "怎么学意大利语？",
+   "known_audio_id": "df11a90e-6320-4450-83a9-1278a6f0a2b2"
+  },
+  "expect": {
+   "known_text": "怎么学中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L01U02",
+  "set": {
+   "known_text": "我在试着学怎么说意大利语。",
+   "known_audio_id": "31f4bc7a-d3ee-4cee-8549-21b705ac75d5"
+  },
+  "expect": {
+   "known_text": "我在试着学怎么说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L01U01",
+  "set": {
+   "known_text": "我想学怎么说意大利语。",
+   "known_audio_id": "17293180-425d-456a-8794-41de8a48abbe"
+  },
+  "expect": {
+   "known_text": "我想学怎么说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L01U03",
+  "set": {
+   "known_text": "我现在想学怎么说意大利语。",
+   "known_audio_id": "87872bc2-6f34-44fa-b3ff-1c34048e1c4d"
+  },
+  "expect": {
+   "known_text": "我现在想学怎么说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L02U02",
+  "set": {
+   "known_text": "我在试着多说意大利语。",
+   "known_audio_id": "0cd5b0d4-1485-4946-a047-9f1eed27a293"
+  },
+  "expect": {
+   "known_text": "我在试着多说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L02U03",
+  "set": {
+   "known_text": "我想和你多说意大利语。",
+   "known_audio_id": "23cd18bc-926d-4a56-8e3a-b43cd6825c79"
+  },
+  "expect": {
+   "known_text": "我想和你多说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L03U01",
+  "set": {
+   "known_text": "我在试着多说意大利语。",
+   "known_audio_id": "0cd5b0d4-1485-4946-a047-9f1eed27a293"
+  },
+  "expect": {
+   "known_text": "我在试着多说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L03U05",
+  "set": {
+   "known_text": "我现在在试着尽量多说意大利语。",
+   "known_audio_id": "777f6a43-3260-407e-b25c-931e04236e62"
+  },
+  "expect": {
+   "known_text": "我现在在试着尽量多说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L03U02",
+  "set": {
+   "known_text": "我想学怎么尽量多说意大利语。",
+   "known_audio_id": "fbb3668d-4ada-4a52-ac65-601e06503df4"
+  },
+  "expect": {
+   "known_text": "我想学怎么尽量多说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L03U04",
+  "set": {
+   "known_text": "我想尽量多学意大利语。",
+   "known_audio_id": "b66be82f-b6ef-49ea-a3fa-781e210d3fcf"
+  },
+  "expect": {
+   "known_text": "我想尽量多学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0003L03U03",
+  "set": {
+   "known_text": "我想和你尽量多说意大利语。",
+   "known_audio_id": "69cae2a9-5edf-41ea-ae52-6ae69e531453"
+  },
+  "expect": {
+   "known_text": "我想和你尽量多说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 4,
+  "set": {
+   "known_text": "怎么用意大利语说一些东西",
+   "known_audio_id": "37a4474b-07d5-448a-9d21-6c18553e5fea"
+  },
+  "expect": {
+   "known_text": "怎么用中文说一些东西"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0004L02",
+  "set": {
+   "known_text": "用意大利语说",
+   "known_audio_id": "562def0c-f11c-420d-bc01-4f65a2fb134c"
+  },
+  "expect": {
+   "known_text": "用中文说"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0004L02",
+  "slot": "presentation",
+  "audio_id": "c30fa297-7fb8-4599-a003-0dcb115b5a71"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02B02",
+  "set": {
+   "known_text": "怎么用意大利语说？",
+   "known_audio_id": "c7dcec61-1725-4c51-8da7-61c9e6b5a13e"
+  },
+  "expect": {
+   "known_text": "怎么用中文说？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02B04",
+  "set": {
+   "known_text": "我想用意大利语说",
+   "known_audio_id": "b46a78f7-78b7-49f7-b4c7-9d5c2ddf6d83"
+  },
+  "expect": {
+   "known_text": "我想用中文说"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02B01",
+  "set": {
+   "known_text": "用意大利语说",
+   "known_audio_id": "562def0c-f11c-420d-bc01-4f65a2fb134c"
+  },
+  "expect": {
+   "known_text": "用中文说"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02B03",
+  "set": {
+   "known_text": "用意大利语说一些东西",
+   "known_audio_id": "ce19c797-cce5-4770-98e3-14965ac6cf29"
+  },
+  "expect": {
+   "known_text": "用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02C01",
+  "set": {
+   "known_text": "用意大利语",
+   "known_audio_id": "9c040039-f941-469d-a617-5af1d0820af3"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02U03",
+  "set": {
+   "known_text": "我想学怎么用意大利语说。",
+   "known_audio_id": "187c6af2-5719-4a3d-a430-f73de867a61e"
+  },
+  "expect": {
+   "known_text": "我想学怎么用中文说。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02U02",
+  "set": {
+   "known_text": "我在试着用意大利语说。",
+   "known_audio_id": "300afe6f-6272-4c58-9921-a237a1c7cdd4"
+  },
+  "expect": {
+   "known_text": "我在试着用中文说。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02U01",
+  "set": {
+   "known_text": "我想用意大利语说一些东西。",
+   "known_audio_id": "c1f32106-0284-400f-bef7-3f2b4fcedf79"
+  },
+  "expect": {
+   "known_text": "我想用中文说一些东西。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02U04",
+  "set": {
+   "known_text": "我想用意大利语和你说一些东西。",
+   "known_audio_id": "634c6b26-274b-4c36-b6b7-4847e44d168a"
+  },
+  "expect": {
+   "known_text": "我想用中文和你说一些东西。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0004L02U05",
+  "set": {
+   "known_text": "我在试着学怎么用意大利语说一些东西。",
+   "known_audio_id": "7e5cf978-61a8-403e-a4e4-5607fe871d05"
+  },
+  "expect": {
+   "known_text": "我在试着学怎么用中文说一些东西。"
+  }
+ }
+]

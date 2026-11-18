@@ -1,0 +1,966 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "b4-s060-066-d2.tsv",
+ "at": "2026-11-18T14:30:00.411Z",
+ "rows": [
+  {
+   "id": "S0060L02B04",
+   "role": "build",
+   "target": "enough different words",
+   "old": "十分違う",
+   "new": "十分な違う言葉",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L02B05",
+   "role": "build",
+   "target": "I don't know enough different words yet",
+   "old": "まだ知りません - 違う言葉",
+   "new": "まだ十分な違う言葉を知りません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I don't know enough different words yet\",\"unknown\":\"yet\"}],\"total\":1}",
+    "ZUT whole course: \"まだ十分な違う言葉を知りません\" is \"I don't know how to say enough different words yet\" at seed 60"
+   ]
+  },
+  {
+   "id": "S0060L02B06",
+   "role": "build",
+   "target": "different words yet",
+   "old": "違う - 言葉 - まだ",
+   "new": "まだ違う言葉",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"different words yet\",\"unknown\":\"yet\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0060L02U05",
+   "role": "use",
+   "target": "I was thinking about something different",
+   "old": "違うことを言おうとしていました",
+   "new": "何か違うことを考えていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L02U09",
+   "role": "use",
+   "target": "that is something different",
+   "old": "それは全然違います",
+   "new": "それは何か違うことです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L02U11",
+   "role": "use",
+   "target": "I don't know enough different words yet, but I want to start talking",
+   "old": "まだ十分違う単語を知りません、でも続けます",
+   "new": "まだ十分な違う言葉を知りませんが、話し始めたいです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I don't know enough different words yet, but I want to start talking\",\"unknown\":\"yet\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0060L02U15",
+   "role": "use",
+   "target": "I'd like to remember a few different words",
+   "old": "違う言葉がいくつかあれば助かります",
+   "new": "いくつか違う言葉を覚えたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L03B06",
+   "role": "build",
+   "target": "enough words yet",
+   "old": "まだ - 十分な言葉",
+   "new": "まだ十分な言葉",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L03U01",
+   "role": "use",
+   "target": "I can't remember how to say what I wanted to say yet",
+   "old": "まだ英語で話せないかもしれないけど、頑張ります",
+   "new": "言いたかったことをどう言うか、まだ思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L03U02",
+   "role": "use",
+   "target": "I'm not ready to speak yet, but I'm going to start talking more soon",
+   "old": "まだ準備ができていませんが、もうすぐです",
+   "new": "まだ話す準備ができていませんが、もうすぐもっと話し始めるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0060L03U14",
+   "role": "use",
+   "target": "He doesn't want to come back yet",
+   "old": "彼はまだ戻ってきていません",
+   "new": "彼はまだ戻ってきたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L01U04",
+   "role": "use",
+   "target": "I want to speak again as soon as I can",
+   "old": "もう一度話してみましょう、うまくなりたいので",
+   "new": "できるだけ早くもう一度話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L01U08",
+   "role": "use",
+   "target": "I want to go again, I don't want to stop talking",
+   "old": "もう一度試みましょう、まだ諦めたくありません",
+   "new": "もう一度行きたいです。話すのをやめたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L01U12",
+   "role": "use",
+   "target": "I want to say it again, I think I can remember",
+   "old": "もう一度話してみます、今度はうまくいくと思います",
+   "new": "もう一度言いたいです。思い出せると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L02U03",
+   "role": "use",
+   "target": "I want to speak English slowly because I'm trying to learn",
+   "old": "ゆっくり英語で話してみます、まだ練習中です",
+   "new": "学ぼうとしているので、ゆっくり英語を話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L02U07",
+   "role": "use",
+   "target": "I want to speak slowly as hard as I can today",
+   "old": "ゆっくり話してみます、できる限り頑張ります",
+   "new": "今日はできるだけ頑張って、ゆっくり話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U02",
+   "role": "use",
+   "target": "could you say that again, I can't remember what I wanted to say?",
+   "old": "言っていただけますか、言いたいことが思い出せません",
+   "new": "もう一度言っていただけますか？言いたかったことが思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U03",
+   "role": "use",
+   "target": "could you say that again, I'm not sure if I can remember the whole sentence?",
+   "old": "言っていただけますか、文全体を覚えられていません",
+   "new": "もう一度言っていただけますか？文全体を思い出せるかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U06",
+   "role": "use",
+   "target": "could you say that again, I don't know yet?",
+   "old": "言っていただけますか、まだよくわかりません",
+   "new": "もう一度言っていただけますか？まだわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U07",
+   "role": "use",
+   "target": "could you say that again, I'm trying to remember?",
+   "old": "言っていただけますか、覚えようとしています",
+   "new": "もう一度言っていただけますか？思い出そうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U13",
+   "role": "use",
+   "target": "could you say that again, I can't remember her name?",
+   "old": "言っていただけますか、名前を覚えられていません",
+   "new": "もう一度言っていただけますか？彼女の名前が思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U05",
+   "role": "use",
+   "target": "I want to say that again",
+   "old": "それをもう一度話してみます",
+   "new": "それをもう一度言いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U06",
+   "role": "use",
+   "target": "could you say that again, I don't know yet?",
+   "old": "それをもう一度言っていただけますか、まだよくわかりません",
+   "new": "もう一度言っていただけますか？まだわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U07",
+   "role": "use",
+   "target": "I want to practise that again",
+   "old": "それをもう一度練習します",
+   "new": "それをもう一度練習したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U12",
+   "role": "use",
+   "target": "I want to do that again because I want to speak better",
+   "old": "それをもう一度試みてみます、うまくなりたいので",
+   "new": "もっと上手に話したいので、それをもう一度したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0062L01U03",
+   "role": "use",
+   "target": "It's interesting to learn different words at the same time",
+   "old": "同時に二つの言葉を覚えるのは面白いです",
+   "new": "同時に違う言葉を学ぶのは面白いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0062L01U05",
+   "role": "use",
+   "target": "I can't speak English and remember everything at the same time",
+   "old": "同時に英語と日本語を話すことはできません",
+   "new": "英語を話しながら同時に全部を思い出すことはできません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0062L01U07",
+   "role": "use",
+   "target": "I don't want to think about making mistakes at the same time",
+   "old": "同時にミスを心配しながら話したくありません",
+   "new": "同時に間違いのことを考えたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0062L01U13",
+   "role": "use",
+   "target": "I don't want to do everything at the same time, I want to speak slowly",
+   "old": "同時に全てをするのではなく、ゆっくりやりましょう",
+   "new": "同時に全部したくありません。ゆっくり話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L01B05",
+   "role": "build",
+   "target": "not sure if I can remember",
+   "old": "確信していません - わかるかどうか",
+   "new": "思い出せるかわからない",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L01U04",
+   "role": "use",
+   "target": "I'm not sure if I can remember how to say it",
+   "old": "英語で言えるか確信していません",
+   "new": "どう言うか思い出せるかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L01U06",
+   "role": "use",
+   "target": "I'm sure I can say something in English",
+   "old": "確信しています、言えます",
+   "new": "英語で何か言えると確信しています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L01U13",
+   "role": "use",
+   "target": "I'm not sure if I can say what I mean",
+   "old": "確信していません、どう言えばいいかわかりません",
+   "new": "言いたいことを言えるかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L01U15",
+   "role": "use",
+   "target": "I'm sure I want to speak English with you now",
+   "old": "確信しています、英語を話す準備ができています",
+   "new": "今あなたと英語を話したいと確信しています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L02U04",
+   "role": "use",
+   "target": "Are you sure you don't mind helping me again?",
+   "old": "気にしませんか、もう一度話してくれますか",
+   "new": "本当にまた私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"Are you sure you don't mind helping me again?\",\"unknown\":\"helping\"}],\"total\":1}",
+    "ZUT whole course: \"本当にまた私を手伝っても構いませんか？\" is \"are you sure you don't mind helping me again?\" at seed 63"
+   ]
+  },
+  {
+   "id": "S0063L02U08",
+   "role": "use",
+   "target": "I don't mind if I can't remember what I wanted to say",
+   "old": "気にしません、言いたかったことが言えなくても",
+   "new": "言いたかったことが思い出せなくても構いません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U01",
+   "role": "use",
+   "target": "you don't mind helping me today",
+   "old": "あなたは気にしませんか、今日私を手伝うことを",
+   "new": "今日私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U04",
+   "role": "use",
+   "target": "you don't mind helping me tonight",
+   "old": "あなたは気にしませんか、今夜私を手伝うことを",
+   "new": "今夜私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U05",
+   "role": "use",
+   "target": "she doesn't want to stop helping me today",
+   "old": "彼女は気にしませんか、今日あなたを手伝うことを",
+   "new": "彼女は今日私を手伝うのをやめたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U06",
+   "role": "use",
+   "target": "you don't mind helping me this afternoon",
+   "old": "あなたは気にしませんか、今日の午後私を手伝うことを",
+   "new": "今日の午後私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U08",
+   "role": "use",
+   "target": "you don't mind helping me this morning",
+   "old": "あなたは気にしませんか、今日の朝私を手伝うことを",
+   "new": "今朝私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U10",
+   "role": "use",
+   "target": "you don't mind helping me tomorrow",
+   "old": "あなたは気にしませんか、明日私を手伝うことを",
+   "new": "明日私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U11",
+   "role": "use",
+   "target": "you don't mind helping me at the same time",
+   "old": "あなたは気にしませんか、同時に私を手伝うことを",
+   "new": "同時に私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U13",
+   "role": "use",
+   "target": "you don't mind helping me before you have to go",
+   "old": "あなたは気にしませんか、あなたが行く前に私を手伝うことを",
+   "new": "行かなければならない前に私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U15",
+   "role": "use",
+   "target": "you don't mind helping me now",
+   "old": "あなたは気にしませんか、今から私を手伝うことを",
+   "new": "今私を手伝っても構わないんですね",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L01U04",
+   "role": "use",
+   "target": "it isn't easy but I need to improve",
+   "old": "それは簡単ではない、でも私は改善したい",
+   "new": "簡単ではありませんが、上手になる必要があります",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it isn't easy but I need to improve\",\"unknown\":\"isn't\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0064L01U05",
+   "role": "use",
+   "target": "you speak English very well and it is easy to speak with you",
+   "old": "あなたは英語をとても上手に話します",
+   "new": "あなたは英語がとても上手なので、あなたと話すのは簡単です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L01U12",
+   "role": "use",
+   "target": "English isn't easy but it's useful to start talking as soon as you can",
+   "old": "英語は簡単ではありませんが、私は話し始めることが大切だと思います",
+   "new": "英語は簡単ではありませんが、できるだけ早く話し始めるのは役に立ちます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"English isn't easy but it's useful to start talking as soon as you can\",\"unknown\":\"isn't\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0064L02B06",
+   "role": "build",
+   "target": "it is fun to speak English",
+   "old": "楽しいです、英語で話すことが",
+   "new": "英語を話すのは楽しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L02U07",
+   "role": "use",
+   "target": "it is fun to speak English but it isn't easy to remember everything",
+   "old": "英語で話すことは楽しいですが、覚えることは難しいです",
+   "new": "英語を話すのは楽しいですが、全部を覚えるのは簡単ではありません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it is fun to speak English but it isn't easy to remember everything\",\"unknown\":\"isn't\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0064L02U08",
+   "role": "use",
+   "target": "it is fun to learn English but I don't know enough different words yet",
+   "old": "楽しいです、英語を学ぶことは、でも私はまだたくさんの言葉を覚える必要があります",
+   "new": "英語を学ぶのは楽しいですが、まだ十分な違う言葉を知りません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L02U12",
+   "role": "use",
+   "target": "it is fun to speak English but it isn't easy so I want to practise",
+   "old": "英語を話すことは楽しいです、でも簡単ではありません、だから私は練習します",
+   "new": "英語を話すのは楽しいですが、簡単ではないので練習したいです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it is fun to speak English but it isn't easy so I want to practise\",\"unknown\":\"isn't\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0064L02U13",
+   "role": "use",
+   "target": "it is fun to learn English but I'm a little tired this morning",
+   "old": "英語を学ぶことは楽しいです、でも今日は少し疲れています",
+   "new": "英語を学ぶのは楽しいですが、今朝は少し疲れています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L02U14",
+   "role": "use",
+   "target": "it is fun to meet people who speak English",
+   "old": "英語で人々に会うのは楽しいです、英語を話す",
+   "new": "英語を話す人に会うのは楽しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L02U15",
+   "role": "use",
+   "target": "English is fun and I don't care about making mistakes",
+   "old": "英語が楽しいです、でも私はミスを気にしません",
+   "new": "英語は楽しいし、間違いは気にしません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L04U13",
+   "role": "use",
+   "target": "it is fun to speak English and I don't care about making mistakes",
+   "old": "英語を話すことは楽しいです、でも私はミスをすることを気にしません",
+   "new": "英語を話すのは楽しいし、間違いは気にしません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L04U14",
+   "role": "use",
+   "target": "it is fun to learn English and I enjoy doing interesting things with my friends",
+   "old": "英語を学ぶことは楽しいです、そして私は友達と話すことを楽しんでいます",
+   "new": "英語を学ぶのは楽しいし、友達と面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L04U15",
+   "role": "use",
+   "target": "it is fun to speak English but I'm a little tired this morning",
+   "old": "英語で話すことは楽しいです、でも私は今日少し疲れています",
+   "new": "英語を話すのは楽しいですが、今朝は少し疲れています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L01U01",
+   "role": "use",
+   "target": "it's important not to worry about making mistakes when you want to learn English",
+   "old": "重要です、ミスを気にしないことが、英語を話すときに",
+   "new": "英語を学びたいとき、間違いを気にしないことが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L01U02",
+   "role": "use",
+   "target": "it's important to speak English as often as possible",
+   "old": "重要です、できるだけよく話すことが",
+   "new": "できるだけたくさん英語を話すことが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L01U03",
+   "role": "use",
+   "target": "it's important to take time but I don't like taking too much time to answer",
+   "old": "重要です、時間をかけることが、でも時間をかけすぎたくない",
+   "new": "時間を取ることは大切ですが、答えるのに時間をかけすぎるのは好きではありません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it's important to take time but I don't like taking too much time to answer\",\"unknown\":\"take\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0065L01U07",
+   "role": "use",
+   "target": "it's important to think that English is fun",
+   "old": "重要です、楽しいと思うことが、英語を学ぶときに",
+   "new": "英語は楽しいと思うことが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L01U09",
+   "role": "use",
+   "target": "it's important to practise speaking English as often as possible today",
+   "old": "重要です、できるだけよく練習することが、今日",
+   "new": "今日できるだけたくさん英語を話す練習をすることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L01U11",
+   "role": "use",
+   "target": "it's important to enjoy English as often as possible",
+   "old": "重要です、できるだけ楽しむことが、英語を学ぶときに",
+   "new": "できるだけたくさん英語を楽しむことが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L02U06",
+   "role": "use",
+   "target": "take a little more time to say that again slowly",
+   "old": "時間をかけてください、それを言うのに、もう少しゆっくり",
+   "new": "もう少し時間を取って、それをゆっくりもう一度言ってください",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L02U09",
+   "role": "use",
+   "target": "take time to answer but I don't want to stop talking",
+   "old": "時間をかけて、でも話を止めないで",
+   "new": "答えるのに時間を取ってください。でも話すのはやめたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L02U12",
+   "role": "use",
+   "target": "it's important to take time when you want to learn English well",
+   "old": "もう少し時間をかけることが大切です、英語を学ぶときに",
+   "new": "英語を上手に学びたいとき、時間を取ることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L02U13",
+   "role": "use",
+   "target": "take time to answer but I don't need to finish quickly",
+   "old": "時間をかけて答えることが大切です、でも私は急ぎたくない",
+   "new": "答えるのに時間を取ってください。早く終わらせる必要はありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L02U15",
+   "role": "use",
+   "target": "take a little more time to say that again a little more slowly",
+   "old": "時間をかけてください、もう少しゆっくり言ってください",
+   "new": "もう少し時間を取って、それをもう少しゆっくりもう一度言ってください",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L03U09",
+   "role": "use",
+   "target": "it's important to test yourself but it is fun at the same time",
+   "old": "あなた自身をテストすることが大切です",
+   "new": "自分をテストすることは大切ですが、同時に楽しいです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it's important to test yourself but it is fun at the same time\",\"unknown\":\"yourself\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0065L03U12",
+   "role": "use",
+   "target": "it's important to test yourself but it is fun at the same time",
+   "old": "あなた自身をテストすることが重要です、楽しいです",
+   "new": "自分をテストすることは大切ですが、同時に楽しいです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it's important to test yourself but it is fun at the same time\",\"unknown\":\"yourself\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0065L04B04",
+   "role": "build",
+   "target": "take time to test yourself",
+   "old": "あなた自身に時間をかける",
+   "new": "自分をテストする時間を取る",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L04B06",
+   "role": "build",
+   "target": "to practise speaking English yourself",
+   "old": "あなた自身で英語を練習する",
+   "new": "自分で英語を話す練習をする",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L04U10",
+   "role": "use",
+   "target": "test yourself and don't worry about making mistakes",
+   "old": "あなた自身をテストすることが大切です、でもミスをすることを気にしないで",
+   "new": "自分をテストして、間違いは気にしないでください",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L05U15",
+   "role": "use",
+   "target": "I think it's important to try to explain what I mean",
+   "old": "なぜやめたいのかを説明しようとすることが重要だと思います",
+   "new": "言いたいことを説明しようとすることが大切だと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06B05",
+   "role": "build",
+   "target": "I don't like to take time to answer too much",
+   "old": "答えるのに時間をかけすぎるのが好きじゃない",
+   "new": "答えるのに時間をかけすぎるのは好きではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U01",
+   "role": "use",
+   "target": "I don't like to take time to answer",
+   "old": "答えるのに時間をかけすぎるのが好きじゃないんです",
+   "new": "答えるのに時間をかけるのは好きではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U04",
+   "role": "use",
+   "target": "I don't want to take time to answer today",
+   "old": "今日は答えるのに時間がかかりすぎています",
+   "new": "今日は答えるのに時間をかけたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U05",
+   "role": "use",
+   "target": "I don't want to take time because I want to finish as quickly as possible",
+   "old": "できるだけ早く終わらせたいので、時間をかけすぎたくないです",
+   "new": "できるだけ早く終わらせたいので、時間をかけたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U08",
+   "role": "use",
+   "target": "I don't want to take time to answer because I want to finish as quickly as possible",
+   "old": "答えるのに時間をかけすぎるのが嫌です。なぜかというと、できるだけ早く終わらせたいからです",
+   "new": "できるだけ早く終わらせたいので、答えるのに時間をかけたくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U12",
+   "role": "use",
+   "target": "I'd like you to take time to speak with me",
+   "old": "もう少し時間をかけてほしいのです",
+   "new": "私と話すのに時間を取ってほしいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U14",
+   "role": "use",
+   "target": "do you think I need to take time to answer?",
+   "old": "答えるのに時間がかかりすぎると思いませんか？",
+   "new": "私は答えるのに時間を取る必要があると思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L06U15",
+   "role": "use",
+   "target": "if you start as soon as you can, you don't need to take time",
+   "old": "できるだけ早く始めれば、時間をかけすぎなくていいです",
+   "new": "できるだけ早く始めれば、時間をかける必要はありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L07U08",
+   "role": "use",
+   "target": "it's important to test yourself with someone else",
+   "old": "英語を話す人と自分をテストすることが重要です",
+   "new": "他の人と自分をテストすることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L07U09",
+   "role": "use",
+   "target": "it's important to try to test yourself with someone else",
+   "old": "友達と一緒に自分をテストすることが重要です",
+   "new": "他の人と自分をテストしてみることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L07U10",
+   "role": "use",
+   "target": "did you want to test yourself today?",
+   "old": "今日自分をテストしましたか？",
+   "new": "今日、自分をテストしたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L07U13",
+   "role": "use",
+   "target": "if you don't want to test yourself, you don't know what you need to improve",
+   "old": "自分をテストしないと、何を改善する必要があるかわかりません",
+   "new": "自分をテストしたくないなら、何を上手にする必要があるかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L07U14",
+   "role": "use",
+   "target": "it's important to try to test yourself with someone else",
+   "old": "自分をテストするために友達と話すことが重要です",
+   "new": "他の人と自分をテストしてみることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L02U02",
+   "role": "use",
+   "target": "it is not difficult to speak English. it is fun",
+   "old": "英語を話すのは難しくないと思います。楽しいです",
+   "new": "英語を話すのは難しくありません。楽しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L02U03",
+   "role": "use",
+   "target": "it's not difficult if you learn as often as possible",
+   "old": "できるだけ多く練習すれば、難しくないです",
+   "new": "できるだけたくさん学べば、難しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L03U03",
+   "role": "use",
+   "target": "she wants to find the answer if she can",
+   "old": "彼女は答えを見つけることができると思います",
+   "new": "彼女はできれば答えを見つけたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L03U05",
+   "role": "use",
+   "target": "she wants to find the answer. she wants to find out what the answer is",
+   "old": "彼女は答えが何かを知りたいとき、答えを見つけたがっています",
+   "new": "彼女は答えを見つけたいです。答えが何か知りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L03U15",
+   "role": "use",
+   "target": "did you want to find the answer?",
+   "old": "答えを見つけることができましたか？",
+   "new": "答えを見つけたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "60": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "61": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"could you say that again a little more slowly?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"could you say\", \"could you say that again a little more slowly?\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"that again\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"could you say that again a little more slowly?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"could you say\", \"could you say that again a little more slowly?\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"that again\""
+   ],
+   "newFailures": []
+  },
+  "62": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"at the same time\", \"I'm trying to remember and speak at the same time\"",
+    "L1: vocab violations in 5 phrase(s)"
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"at the same time\", \"I'm trying to remember and speak at the same time\"",
+    "L1: vocab violations in 5 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "63": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\", \"Are you sure you don't mind?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\"",
+    "L3: 4 duplicate phrase(s) within this LEGO: \"are you sure you don't mind?\", \"are you sure you don't mind helping me today?\", \"are you sure you don't mind helping me tonight?\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"helping me\", \"are you sure you don't mind helping me before you have to go?\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\", \"Are you sure you don't mind?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\"",
+    "L3: 4 duplicate phrase(s) within this LEGO: \"are you sure you don't mind?\", \"are you sure you don't mind helping me today?\", \"are you sure you don't mind helping me tonight?\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"helping me\", \"are you sure you don't mind helping me before you have to go?\""
+   ],
+   "newFailures": []
+  },
+  "64": {
+   "before": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"isn't easy\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"it is fun\""
+   ],
+   "after": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"isn't easy\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"it is fun\""
+   ],
+   "newFailures": []
+  },
+  "65": {
+   "before": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"it's important to test yourself when you want to learn English\", \"it's important to test yourself but it is fun at the same time\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"it's important\"",
+    "L6: 2 duplicate phrase(s) within this LEGO: \"to take time\", \"I don't like to take time to answer\"",
+    "L7: 4 duplicate phrase(s) within this LEGO: \"to test yourself\", \"it's important to take time to test yourself\", \"it's important to test yourself as often as possible\""
+   ],
+   "after": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"it's important to test yourself when you want to learn English\", \"it's important to test yourself but it is fun at the same time\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"it's important\"",
+    "L6: 2 duplicate phrase(s) within this LEGO: \"to take time\", \"I don't like to take time to answer\"",
+    "L7: 4 duplicate phrase(s) within this LEGO: \"to test yourself\", \"it's important to take time to test yourself\", \"it's important to test yourself as often as possible\""
+   ],
+   "newFailures": []
+  },
+  "66": {
+   "before": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"not difficult\", \"it's not difficult to find the answer\", \"it's not difficult if you don't worry about making mistakes\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"to find the answer\", \"it's not difficult to find the answer\""
+   ],
+   "after": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"not difficult\", \"it's not difficult to find the answer\", \"it's not difficult if you don't worry about making mistakes\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"to find the answer\", \"it's not difficult to find the answer\""
+   ],
+   "newFailures": []
+  }
+ }
+}

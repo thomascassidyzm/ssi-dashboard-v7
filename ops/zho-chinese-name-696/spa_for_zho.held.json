@@ -1,0 +1,45 @@
+{
+ "held_target_side": [],
+ "held_zut": [
+  {
+   "kind": "seed",
+   "key": 13,
+   "known_new": "你西班牙语说得很好。",
+   "target": "Hablas español muy bien.",
+   "clashes_with": [
+    [
+     "spa_for_zho:S0127L01U05",
+     "eresmuybuenoenespañol",
+     "你西班牙语说得很好"
+    ]
+   ]
+  },
+  {
+   "kind": "lego",
+   "key": "S0022L03",
+   "known_new": "说西班牙语的人",
+   "target": "personas que hablan español",
+   "clashes_with": [
+    [
+     "spa_for_zho:S0286L01B03",
+     "gentequehablaespañol",
+     "说西班牙语的人"
+    ]
+   ]
+  },
+  {
+   "kind": "phrase",
+   "key": "spa_for_zho:S0022L03B01",
+   "known_new": "说西班牙语的人",
+   "target": "personas que hablan español",
+   "clashes_with": [
+    [
+     "spa_for_zho:S0286L01B03",
+     "gentequehablaespañol",
+     "说西班牙语的人"
+    ]
+   ]
+  }
+ ],
+ "preexisting_zut_applied": []
+}

@@ -1,0 +1,6171 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "903d33d4-1d63-4189-9207-196d27b28190",
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0008L03U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0008L03U05",
+    "seed_number": 8,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "できるだけたくさん説明してみるつもりです",
+    "target_text": "I'm going to try to explain as often as possible",
+    "target1_audio_id": "ffb1636a-cd1f-4243-bc93-19781f5d088b",
+    "target2_audio_id": "7faaa3d2-08cd-49d4-9ac7-4518ec0d7ae3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0008L03U05",
+    "seed_number": 8,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "8e412798-49a6-43eb-a759-be33bf7e456f",
+    "known_text": "できるだけたくさん説明してみるつもりです",
+    "target_text": "I'm going to try to explain as often as possible",
+    "target1_audio_id": "ffb1636a-cd1f-4243-bc93-19781f5d088b",
+    "target2_audio_id": "7faaa3d2-08cd-49d4-9ac7-4518ec0d7ae3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0018L04B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0018L04B03",
+    "seed_number": 18,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今晩当てようとしています",
+    "target_text": "I'm trying to guess this evening",
+    "target1_audio_id": "3542dcbf-257f-4dd1-a0bc-a9ca7ce90347",
+    "target2_audio_id": "6d31cc19-46f1-428c-b3e3-ab54d7a20eca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0018L04B03",
+    "seed_number": 18,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "374f2e77-fe4d-45c8-add9-fd45b8ef63e2",
+    "known_text": "今晩当てようとしています",
+    "target_text": "I'm trying to guess this evening",
+    "target1_audio_id": "3542dcbf-257f-4dd1-a0bc-a9ca7ce90347",
+    "target2_audio_id": "6d31cc19-46f1-428c-b3e3-ab54d7a20eca",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0020L03U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0020L03U03",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私たちは今日早く学びたいです",
+    "target_text": "we want to learn quickly today",
+    "target1_audio_id": "159da0e4-889b-4224-a5e9-4db3eaf48390",
+    "target2_audio_id": "74ae9631-8129-4fa8-a264-7a9ac67d0561",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0020L03U03",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "663e42bc-c651-45fb-821e-9a3840d17150",
+    "known_text": "私たちは今日早く学びたいです",
+    "target_text": "we want to learn quickly today",
+    "target1_audio_id": "159da0e4-889b-4224-a5e9-4db3eaf48390",
+    "target2_audio_id": "74ae9631-8129-4fa8-a264-7a9ac67d0561",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0021L03B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今学んでいますか？",
+    "target_text": "are you learning now?",
+    "target1_audio_id": "cbb30503-13a6-43b8-af71-706d7ba9e8f0",
+    "target2_audio_id": "d6579f40-4893-4dc1-a81d-724d65accc29",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "56a33249-86c4-4fe3-be04-0c6b37ef5d1d",
+    "known_text": "今学んでいますか？",
+    "target_text": "are you learning now?",
+    "target1_audio_id": "cbb30503-13a6-43b8-af71-706d7ba9e8f0",
+    "target2_audio_id": "d6579f40-4893-4dc1-a81d-724d65accc29",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0021L03B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0021L03B03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女の名前を学んでいますか？",
+    "target_text": "are you learning her name?",
+    "target1_audio_id": "3b6f5bba-69ac-43c5-bee3-90f827dc48a4",
+    "target2_audio_id": "3924d48e-544b-4d59-9c5f-a966305a798c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0021L03B03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "0a06b410-b825-4345-a20c-de4312a7509c",
+    "known_text": "彼女の名前を学んでいますか？",
+    "target_text": "are you learning her name?",
+    "target1_audio_id": "3b6f5bba-69ac-43c5-bee3-90f827dc48a4",
+    "target2_audio_id": "3924d48e-544b-4d59-9c5f-a966305a798c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0021L03B04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0021L03B04",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今晩学んでいますか？",
+    "target_text": "are you learning this evening?",
+    "target1_audio_id": "1fc139b5-1a2d-4b11-8aa5-658b78aa2e1d",
+    "target2_audio_id": "374bc7a7-d0dc-4403-b56b-1862e6659d88",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0021L03B04",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "60133dd7-236e-4ad9-bcb1-aafbfad715dc",
+    "known_text": "今晩学んでいますか？",
+    "target_text": "are you learning this evening?",
+    "target1_audio_id": "1fc139b5-1a2d-4b11-8aa5-658b78aa2e1d",
+    "target2_audio_id": "374bc7a7-d0dc-4403-b56b-1862e6659d88",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0025L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0025L01U06",
+    "seed_number": 25,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "簡単に行くつもりです",
+    "target_text": "I'm going to go easily",
+    "target1_audio_id": "3506bc77-7e6b-454c-8f72-2a3b39abdfe0",
+    "target2_audio_id": "04ed7b73-1db7-417a-b623-056304b1fee1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0025L01U06",
+    "seed_number": 25,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "eee2ce56-8261-4155-b267-b13136356d6f",
+    "known_text": "簡単に行くつもりです",
+    "target_text": "I'm going to go easily",
+    "target1_audio_id": "3506bc77-7e6b-454c-8f72-2a3b39abdfe0",
+    "target2_audio_id": "04ed7b73-1db7-417a-b623-056304b1fee1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0025L03U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0025L03U02",
+    "seed_number": 25,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日私を手伝うつもりですか？",
+    "target_text": "Are you going to help me today?",
+    "target1_audio_id": "195f8ad7-a639-4031-853f-ad0dcf205a76",
+    "target2_audio_id": "d076dc36-3fa6-4686-9fea-b1b25a3c62d3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0025L03U02",
+    "seed_number": 25,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "b625cfb4-7a3d-42b6-985d-6befdde42eb5",
+    "known_text": "今日私を手伝うつもりですか？",
+    "target_text": "Are you going to help me today?",
+    "target1_audio_id": "195f8ad7-a639-4031-853f-ad0dcf205a76",
+    "target2_audio_id": "d076dc36-3fa6-4686-9fea-b1b25a3c62d3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0025L04U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0025L04U01",
+    "seed_number": 25,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私が行かなければならない前に、手伝うつもりですか？",
+    "target_text": "Are you going to help me before I have to go?",
+    "target1_audio_id": "90985322-3a9b-4895-89ad-c678f90e407c",
+    "target2_audio_id": "cfcf3950-02c2-4847-83a1-2f9aa70ae87e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0025L04U01",
+    "seed_number": 25,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "f6fc2476-a355-49e7-bed7-3d10286b83d4",
+    "known_text": "私が行かなければならない前に、手伝うつもりですか？",
+    "target_text": "Are you going to help me before I have to go?",
+    "target1_audio_id": "90985322-3a9b-4895-89ad-c678f90e407c",
+    "target2_audio_id": "cfcf3950-02c2-4847-83a1-2f9aa70ae87e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0032L03U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0032L03U07",
+    "seed_number": 32,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私が行かなければならない前に、何か見せたかったですか？",
+    "target_text": "did you want to show me something before I have to go?",
+    "target1_audio_id": "ffc739a5-2d9f-4b31-9b7c-be4d4a345f2a",
+    "target2_audio_id": "c6322c07-753f-4511-8fe4-a2e5000d1be9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0032L03U07",
+    "seed_number": 32,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "b5e381f4-05b6-454c-80ce-67ea025be943",
+    "known_text": "私が行かなければならない前に、何か見せたかったですか？",
+    "target_text": "did you want to show me something before I have to go?",
+    "target1_audio_id": "ffc739a5-2d9f-4b31-9b7c-be4d4a345f2a",
+    "target2_audio_id": "c6322c07-753f-4511-8fe4-a2e5000d1be9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0033L01U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0033L01U08",
+    "seed_number": 33,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "どのくらい覚えようとするつもりですか？",
+    "target_text": "how long are you going to try to remember?",
+    "target1_audio_id": "7c0ea4bf-da56-4ca0-b7e4-77198362c66b",
+    "target2_audio_id": "5a2c2fe4-b985-4716-9b0c-8561c31aa85d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0033L01U08",
+    "seed_number": 33,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "6864cc5d-4bb6-4a74-afc9-49abe14f0057",
+    "known_text": "どのくらい覚えようとするつもりですか？",
+    "target_text": "how long are you going to try to remember?",
+    "target1_audio_id": "7c0ea4bf-da56-4ca0-b7e4-77198362c66b",
+    "target2_audio_id": "5a2c2fe4-b985-4716-9b0c-8561c31aa85d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0034L01U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0034L01U01",
+    "seed_number": 34,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたが英語を話す時に、私は話してみたいです",
+    "target_text": "I want to try to speak when you speak English",
+    "target1_audio_id": "8eebcbee-c515-4a2a-8080-07ee166dbc66",
+    "target2_audio_id": "44d5c280-773f-49ef-b2d5-6fd0a75684ef",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0034L01U01",
+    "seed_number": 34,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "af1c728f-a168-4fed-9a52-982def025bf5",
+    "known_text": "あなたが英語を話す時に、私は話してみたいです",
+    "target_text": "I want to try to speak when you speak English",
+    "target1_audio_id": "8eebcbee-c515-4a2a-8080-07ee166dbc66",
+    "target2_audio_id": "44d5c280-773f-49ef-b2d5-6fd0a75684ef",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0035L03U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0035L03U04",
+    "seed_number": 35,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "何か思い出せますか？",
+    "target_text": "can you remember anything?",
+    "target1_audio_id": "6f237e49-418c-4a97-8667-2586f2534ab6",
+    "target2_audio_id": "3230e19b-56b3-48ab-b96d-07b277ff3c78",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0035L03U04",
+    "seed_number": 35,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "420323de-ed2c-475b-bbe6-64f8d5b67a39",
+    "known_text": "何か思い出せますか？",
+    "target_text": "can you remember anything?",
+    "target1_audio_id": "6f237e49-418c-4a97-8667-2586f2534ab6",
+    "target2_audio_id": "3230e19b-56b3-48ab-b96d-07b277ff3c78",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0037L02B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0037L02B02",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "それについて考え始めました",
+    "target_text": "I started to think about it",
+    "target1_audio_id": "8b235c69-98eb-456e-89e2-2ee507a68bff",
+    "target2_audio_id": "f172bfd3-ba3a-453c-8f78-ac49fa467729",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0037L02B02",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "c9d03dab-f619-4cd0-add6-c0a152897d28",
+    "known_text": "それについて考え始めました",
+    "target_text": "I started to think about it",
+    "target1_audio_id": "8b235c69-98eb-456e-89e2-2ee507a68bff",
+    "target2_audio_id": "f172bfd3-ba3a-453c-8f78-ac49fa467729",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0041L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0041L01U06",
+    "seed_number": 41,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "大丈夫ですが、話す練習をしたいです",
+    "target_text": "I feel okay but I want to practise speaking",
+    "target1_audio_id": "39669e84-6464-44eb-a58d-ed4e7a15e1e7",
+    "target2_audio_id": "047f4a8d-7f4e-40de-ace4-fbe8f259dd1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0041L01U06",
+    "seed_number": 41,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "c8729aa8-cf6f-4ad4-be7f-c5198db170fb",
+    "known_text": "大丈夫ですが、話す練習をしたいです",
+    "target_text": "I feel okay but I want to practise speaking",
+    "target1_audio_id": "39669e84-6464-44eb-a58d-ed4e7a15e1e7",
+    "target2_audio_id": "047f4a8d-7f4e-40de-ace4-fbe8f259dd1b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0044L01U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0044L01U04",
+    "seed_number": 44,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "何かを思い出せるか、答えてみることができます",
+    "target_text": "I can remember something or try to answer",
+    "target1_audio_id": "347f7a66-fac2-4717-ae28-001c6d5732b0",
+    "target2_audio_id": "4d758134-fb21-4f8d-90ae-43f677c49b54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0044L01U04",
+    "seed_number": 44,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "b43bccb1-309e-4a48-b5bc-823f01e07553",
+    "known_text": "何かを思い出せるか、答えてみることができます",
+    "target_text": "I can remember something or try to answer",
+    "target1_audio_id": "347f7a66-fac2-4717-ae28-001c6d5732b0",
+    "target2_audio_id": "4d758134-fb21-4f8d-90ae-43f677c49b54",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0044L01U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0044L01U05",
+    "seed_number": 44,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今、英語を話すか、何かを学びたいです",
+    "target_text": "I'd like to speak English or learn something now",
+    "target1_audio_id": "57cf89fa-fd17-46c0-bb1e-901f3b81c961",
+    "target2_audio_id": "e024a96c-ba46-4796-8bb2-ceb7a611e580",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0044L01U05",
+    "seed_number": 44,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "f8a6d23f-b9bb-4ce9-b75a-53d31d0c204a",
+    "known_text": "今、英語を話すか、何かを学びたいです",
+    "target_text": "I'd like to speak English or learn something now",
+    "target1_audio_id": "57cf89fa-fd17-46c0-bb1e-901f3b81c961",
+    "target2_audio_id": "e024a96c-ba46-4796-8bb2-ceb7a611e580",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0044L02U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0044L02U07",
+    "seed_number": 44,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたが学びたいなら、説明してみることができます",
+    "target_text": "I can try to explain if you want to learn",
+    "target1_audio_id": "29ecedfd-fe70-440e-87a9-6a7c7fe08f44",
+    "target2_audio_id": "fba97ca1-45ca-4750-80bb-55f805e69566",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0044L02U07",
+    "seed_number": 44,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e5e3b135-fef1-48ff-b20e-9191a4019c00",
+    "known_text": "あなたが学びたいなら、説明してみることができます",
+    "target_text": "I can try to explain if you want to learn",
+    "target1_audio_id": "29ecedfd-fe70-440e-87a9-6a7c7fe08f44",
+    "target2_audio_id": "fba97ca1-45ca-4750-80bb-55f805e69566",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0044L03U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0044L03U06",
+    "seed_number": 44,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "一日中英語を話せば、改善してみることができます",
+    "target_text": "I can try to improve if I speak English all day",
+    "target1_audio_id": "58baa7d8-f837-4614-b981-82657701e639",
+    "target2_audio_id": "aa55f1df-5ef7-452f-be1b-cb69c0f2bda6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0044L03U06",
+    "seed_number": 44,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "5bc3dc6c-c743-4f16-ad69-8fc828bb4cf3",
+    "known_text": "一日中英語を話せば、改善してみることができます",
+    "target_text": "I can try to improve if I speak English all day",
+    "target1_audio_id": "58baa7d8-f837-4614-b981-82657701e639",
+    "target2_audio_id": "aa55f1df-5ef7-452f-be1b-cb69c0f2bda6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0045L01U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0045L01U07",
+    "seed_number": 45,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたが一日中英語を話すかどうか、私たちは知りたいです",
+    "target_text": "we want to know if you speak English all day",
+    "target1_audio_id": "2d17de79-b245-4274-a9f4-da22206336b7",
+    "target2_audio_id": "f0326c3c-246f-46a7-8b6e-1ff7612ae0be",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0045L01U07",
+    "seed_number": 45,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "04ed21b4-373a-45b9-9134-045100af77e7",
+    "known_text": "あなたが一日中英語を話すかどうか、私たちは知りたいです",
+    "target_text": "we want to know if you speak English all day",
+    "target1_audio_id": "2d17de79-b245-4274-a9f4-da22206336b7",
+    "target2_audio_id": "f0326c3c-246f-46a7-8b6e-1ff7612ae0be",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0045L02U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0045L02U07",
+    "seed_number": 45,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私たちは今晩英語についてすべてを学びたいです",
+    "target_text": "we want to learn everything about English this evening",
+    "target1_audio_id": "dbc4e1b5-b4e8-4d44-b1fc-a9095321025f",
+    "target2_audio_id": "a428dd86-fd62-4d4d-ab94-a5e5b25f3c50",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0045L02U07",
+    "seed_number": 45,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "6d2a2228-beb3-4a52-b4be-02eb87e3b8c1",
+    "known_text": "私たちは今晩英語についてすべてを学びたいです",
+    "target_text": "we want to learn everything about English this evening",
+    "target1_audio_id": "dbc4e1b5-b4e8-4d44-b1fc-a9095321025f",
+    "target2_audio_id": "a428dd86-fd62-4d4d-ab94-a5e5b25f3c50",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0051L04U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0051L04U11",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語でいろいろなことを言えるようになりたいです",
+    "target_text": "I want to be able to say things in English",
+    "target1_audio_id": "a481dd35-43c4-4aa3-9a4a-8b9c362fad10",
+    "target2_audio_id": "732af8c8-8253-44ca-9520-6784ec0e1849",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0051L04U11",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "7daf8237-47a3-4d73-8dc6-8b6b83a4dd06",
+    "known_text": "英語でいろいろなことを言えるようになりたいです",
+    "target_text": "I want to be able to say things in English",
+    "target1_audio_id": "a481dd35-43c4-4aa3-9a4a-8b9c362fad10",
+    "target2_audio_id": "732af8c8-8253-44ca-9520-6784ec0e1849",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0051L04U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0051L04U12",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語で面白いことをするのはとてもいいです",
+    "target_text": "doing interesting things in English is very good",
+    "target1_audio_id": "1a8f8baa-8b2f-404d-894a-8a3f826403b6",
+    "target2_audio_id": "e8d88df7-c1a4-4a9e-9c1f-ff10533575b8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0051L04U12",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "50e062db-e7ef-4934-94c4-d5bb57ae8bcf",
+    "known_text": "英語で面白いことをするのはとてもいいです",
+    "target_text": "doing interesting things in English is very good",
+    "target1_audio_id": "1a8f8baa-8b2f-404d-894a-8a3f826403b6",
+    "target2_audio_id": "e8d88df7-c1a4-4a9e-9c1f-ff10533575b8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0051L05U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0051L05U12",
+    "seed_number": 51,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日は友達と面白いことをするのを楽しんでいます",
+    "target_text": "I enjoy doing interesting things with my friends today",
+    "target1_audio_id": "2171da57-083b-48fe-9b26-e9f28937f87d",
+    "target2_audio_id": "4ee7b6f5-2b88-41d0-bb16-a20cf5175cf0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0051L05U12",
+    "seed_number": 51,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": "459005e1-a4e3-42d8-8c18-b902d9ddb4b2",
+    "known_text": "今日は友達と面白いことをするのを楽しんでいます",
+    "target_text": "I enjoy doing interesting things with my friends today",
+    "target1_audio_id": "2171da57-083b-48fe-9b26-e9f28937f87d",
+    "target2_audio_id": "4ee7b6f5-2b88-41d0-bb16-a20cf5175cf0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L01B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L01B06",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は話したいです",
+    "target_text": "he wants to speak",
+    "target1_audio_id": "98217d97-a3e8-4c5b-938a-fb45c864e174",
+    "target2_audio_id": "df987c0f-9ac5-4619-826f-36ebb4539101",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L01B06",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "f4b26621-ed00-4c4a-8a08-b1e191cfbfe3",
+    "known_text": "彼は話したいです",
+    "target_text": "he wants to speak",
+    "target1_audio_id": "98217d97-a3e8-4c5b-938a-fb45c864e174",
+    "target2_audio_id": "df987c0f-9ac5-4619-826f-36ebb4539101",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L01U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L01U12",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は今日あなたと英語で話したかったです",
+    "target_text": "he wanted to speak with you in English today",
+    "target1_audio_id": "ff4e6352-a9d6-4bde-91fb-a23676590759",
+    "target2_audio_id": "4d8aa1be-5e17-4377-9874-c49540473f1d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L01U12",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "bc370b2b-4c1e-4038-9ab5-a4ce36c4feee",
+    "known_text": "彼は今日あなたと英語で話したかったです",
+    "target_text": "he wanted to speak with you in English today",
+    "target1_audio_id": "ff4e6352-a9d6-4bde-91fb-a23676590759",
+    "target2_audio_id": "4d8aa1be-5e17-4377-9874-c49540473f1d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L02U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L02U09",
+    "seed_number": 52,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私は今日あなたと話したかったです",
+    "target_text": "I wanted to speak with you today",
+    "target1_audio_id": "5e10d936-93d5-4a21-b581-12bb8d67ccf1",
+    "target2_audio_id": "1a365dd6-5a79-4706-9582-770052a21fbe",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L02U09",
+    "seed_number": 52,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "de33533c-5a15-41c3-8e7e-a8337a1cfc2c",
+    "known_text": "私は今日あなたと話したかったです",
+    "target_text": "I wanted to speak with you today",
+    "target1_audio_id": "5e10d936-93d5-4a21-b581-12bb8d67ccf1",
+    "target2_audio_id": "1a365dd6-5a79-4706-9582-770052a21fbe",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L02U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L02U12",
+    "seed_number": 52,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は今日面白いことをしたかったです",
+    "target_text": "he wanted to do interesting things today",
+    "target1_audio_id": "73d86097-32f0-44d0-a037-01685f53dd41",
+    "target2_audio_id": "609212f2-b459-43b8-bdbc-08413621bac3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L02U12",
+    "seed_number": 52,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "491e6698-a462-416a-b15e-f156202225f3",
+    "known_text": "彼は今日面白いことをしたかったです",
+    "target_text": "he wanted to do interesting things today",
+    "target1_audio_id": "73d86097-32f0-44d0-a037-01685f53dd41",
+    "target2_audio_id": "609212f2-b459-43b8-bdbc-08413621bac3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L03U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L03U06",
+    "seed_number": 52,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたは英語で何か書くことができます",
+    "target_text": "you can write something in English",
+    "target1_audio_id": "6593553a-c257-4b77-bb43-ea9960c9eb73",
+    "target2_audio_id": "288b3d6a-22b3-48f6-adf1-3b7dc7178c1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L03U06",
+    "seed_number": 52,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "dee943d1-7bf6-44ae-a4b3-e9abff0785f5",
+    "known_text": "あなたは英語で何か書くことができます",
+    "target_text": "you can write something in English",
+    "target1_audio_id": "6593553a-c257-4b77-bb43-ea9960c9eb73",
+    "target2_audio_id": "288b3d6a-22b3-48f6-adf1-3b7dc7178c1b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L03U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L03U10",
+    "seed_number": 52,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はできるだけたくさん書きたかったです",
+    "target_text": "he wanted to write as often as possible",
+    "target1_audio_id": "a3118110-70bb-4453-a48c-77ac08e2fc68",
+    "target2_audio_id": "33e5cc83-5e9e-4e25-bc15-436303203771",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L03U10",
+    "seed_number": 52,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "a3038f71-0e69-444e-909f-35c4288f9fba",
+    "known_text": "彼はできるだけたくさん書きたかったです",
+    "target_text": "he wanted to write as often as possible",
+    "target1_audio_id": "a3118110-70bb-4453-a48c-77ac08e2fc68",
+    "target2_audio_id": "33e5cc83-5e9e-4e25-bc15-436303203771",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L03U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L03U12",
+    "seed_number": 52,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私は今日何か面白いことを書きたかったです",
+    "target_text": "I wanted to write something interesting today",
+    "target1_audio_id": "e5d49412-d835-415b-8635-0d7d7bf8ecb7",
+    "target2_audio_id": "5d5f4f25-1f0e-4781-8f19-a7eaed7b9ff9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L03U12",
+    "seed_number": 52,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "930ee440-0432-4e42-9930-a09cff678885",
+    "known_text": "私は今日何か面白いことを書きたかったです",
+    "target_text": "I wanted to write something interesting today",
+    "target1_audio_id": "e5d49412-d835-415b-8635-0d7d7bf8ecb7",
+    "target2_audio_id": "5d5f4f25-1f0e-4781-8f19-a7eaed7b9ff9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L04U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L04U06",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は今日英語で手紙を書きたかったです",
+    "target_text": "he wanted to write a letter in English today",
+    "target1_audio_id": "29bea7cf-c583-4f63-9607-30ffa705b4e0",
+    "target2_audio_id": "ac1dfac5-05f1-4021-becd-f590ab1093ce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L04U06",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "5c62f904-17c2-473c-a2ca-15ac5e1018c5",
+    "known_text": "彼は今日英語で手紙を書きたかったです",
+    "target_text": "he wanted to write a letter in English today",
+    "target1_audio_id": "29bea7cf-c583-4f63-9607-30ffa705b4e0",
+    "target2_audio_id": "ac1dfac5-05f1-4021-becd-f590ab1093ce",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L04U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L04U08",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は面白いことについて手紙を書きたかったです",
+    "target_text": "he wanted to write a letter about interesting things",
+    "target1_audio_id": "ffcaa1d9-bb41-4181-9602-d9f4df4be126",
+    "target2_audio_id": "f90e6534-3c6f-49f6-88be-e4b3d2602d0f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L04U08",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "5181bccf-f92c-4669-9b2a-ff37c5a15a5d",
+    "known_text": "彼は面白いことについて手紙を書きたかったです",
+    "target_text": "he wanted to write a letter about interesting things",
+    "target1_audio_id": "ffcaa1d9-bb41-4181-9602-d9f4df4be126",
+    "target2_audio_id": "f90e6534-3c6f-49f6-88be-e4b3d2602d0f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L04U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L04U11",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はできるだけたくさん手紙を書きたかったです",
+    "target_text": "he wanted to write a letter as often as possible",
+    "target1_audio_id": "96453cd8-804b-4b09-b0ee-7b450db830aa",
+    "target2_audio_id": "6e6d1f33-8c78-4d1d-a2e6-fb031ae7ec16",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L04U11",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "4e063e06-248c-427a-b646-e6f2bb2ec1c9",
+    "known_text": "彼はできるだけたくさん手紙を書きたかったです",
+    "target_text": "he wanted to write a letter as often as possible",
+    "target1_audio_id": "96453cd8-804b-4b09-b0ee-7b450db830aa",
+    "target2_audio_id": "6e6d1f33-8c78-4d1d-a2e6-fb031ae7ec16",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L04U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L04U12",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私は何か面白いことについて手紙を書きたかったです",
+    "target_text": "I wanted to write a letter about something interesting",
+    "target1_audio_id": "1bb00d3c-0af5-4744-89c5-4a21ca860bcc",
+    "target2_audio_id": "9b29e8eb-ab8b-4878-abbe-263c6122991e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L04U12",
+    "seed_number": 52,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "fdd128dc-6cca-44e0-b3d1-0f38b72f0a28",
+    "known_text": "私は何か面白いことについて手紙を書きたかったです",
+    "target_text": "I wanted to write a letter about something interesting",
+    "target1_audio_id": "1bb00d3c-0af5-4744-89c5-4a21ca860bcc",
+    "target2_audio_id": "9b29e8eb-ab8b-4878-abbe-263c6122991e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L05U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L05U07",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私は彼の友達に手紙を書きたかったです",
+    "target_text": "I wanted to write a letter to his friend",
+    "target1_audio_id": "733703fd-af36-47c4-ab76-0de2a924da49",
+    "target2_audio_id": "76394977-ac8d-4362-bbab-1f3d96428b68",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L05U07",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": "224de602-bd14-426c-aeb7-cb2ed97a162a",
+    "known_text": "私は彼の友達に手紙を書きたかったです",
+    "target_text": "I wanted to write a letter to his friend",
+    "target1_audio_id": "733703fd-af36-47c4-ab76-0de2a924da49",
+    "target2_audio_id": "76394977-ac8d-4362-bbab-1f3d96428b68",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L05U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L05U09",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はできるだけたくさん友達に手紙を書きたかったです",
+    "target_text": "he wanted to write a letter to his friend as often as possible",
+    "target1_audio_id": "63049086-4206-432f-a90c-c5b0b8c7702c",
+    "target2_audio_id": "f9e2b1f0-5a84-4982-8c07-5cb3c390d592",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L05U09",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": "d4382ddb-bb54-448a-9bf0-19b74facfc92",
+    "known_text": "彼はできるだけたくさん友達に手紙を書きたかったです",
+    "target_text": "he wanted to write a letter to his friend as often as possible",
+    "target1_audio_id": "63049086-4206-432f-a90c-c5b0b8c7702c",
+    "target2_audio_id": "f9e2b1f0-5a84-4982-8c07-5cb3c390d592",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L05U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L05U10",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私は彼の友達に英語で手紙を書きたかったです",
+    "target_text": "I wanted to write a letter in English to his friend",
+    "target1_audio_id": "47e4b86f-7477-443f-bdbc-6dbe749db0fc",
+    "target2_audio_id": "c61eb2df-dfd0-44ad-a12f-05b775f071dc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L05U10",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": "3c9b6c0b-a267-4eab-87eb-cd93464c6878",
+    "known_text": "私は彼の友達に英語で手紙を書きたかったです",
+    "target_text": "I wanted to write a letter in English to his friend",
+    "target1_audio_id": "47e4b86f-7477-443f-bdbc-6dbe749db0fc",
+    "target2_audio_id": "c61eb2df-dfd0-44ad-a12f-05b775f071dc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L05U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L05U12",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は友達に面白いことについて手紙を書きたかったです",
+    "target_text": "he wanted to write a letter about interesting things to his friend",
+    "target1_audio_id": "e1a7888b-d88b-404b-a34d-7144f723f7c6",
+    "target2_audio_id": "6f362689-cea2-49bd-81bf-3e287639721c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L05U12",
+    "seed_number": 52,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": "6fff9451-cd47-4cb5-a841-940a02d448cc",
+    "known_text": "彼は友達に面白いことについて手紙を書きたかったです",
+    "target_text": "he wanted to write a letter about interesting things to his friend",
+    "target1_audio_id": "e1a7888b-d88b-404b-a34d-7144f723f7c6",
+    "target2_audio_id": "6f362689-cea2-49bd-81bf-3e287639721c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06B03",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週のことを思い出せます",
+    "target_text": "I can remember last week",
+    "target1_audio_id": "ea9d88f0-a400-4b1f-99cb-161d54006cb4",
+    "target2_audio_id": "be81ae08-a7fa-4491-b9e4-60c0efdacc3d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06B03",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "4754fa96-b64f-4446-8da5-268215d07b47",
+    "known_text": "先週のことを思い出せます",
+    "target_text": "I can remember last week",
+    "target1_audio_id": "ea9d88f0-a400-4b1f-99cb-161d54006cb4",
+    "target2_audio_id": "be81ae08-a7fa-4491-b9e4-60c0efdacc3d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06B05",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週始めました",
+    "target_text": "I started last week",
+    "target1_audio_id": "ebeb36e7-356f-40bb-adb6-e078ce7eb026",
+    "target2_audio_id": "ba87e151-6b94-43ba-919a-dd003b34aec7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06B05",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "70deabdf-13a8-4065-9247-f2b103f8054f",
+    "known_text": "先週始めました",
+    "target_text": "I started last week",
+    "target1_audio_id": "ebeb36e7-356f-40bb-adb6-e078ce7eb026",
+    "target2_audio_id": "ba87e151-6b94-43ba-919a-dd003b34aec7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06B06",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日と先週",
+    "target_text": "today and last week",
+    "target1_audio_id": "db66aaf6-4b49-4651-ae82-876739e1acbf",
+    "target2_audio_id": "ae05c2eb-3117-4da5-a94d-1ae8012ad1d4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06B06",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "9187cd35-364f-4eef-8031-8908b50c6722",
+    "known_text": "今日と先週",
+    "target_text": "today and last week",
+    "target1_audio_id": "db66aaf6-4b49-4651-ae82-876739e1acbf",
+    "target2_audio_id": "ae05c2eb-3117-4da5-a94d-1ae8012ad1d4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06U01",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週それについてよく考え始めました",
+    "target_text": "I started to think about it carefully last week",
+    "target1_audio_id": "79bb1fac-2ffd-48de-8766-7b1e028a3b45",
+    "target2_audio_id": "680d1d89-d44b-4c3e-893d-e466836bb02d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06U01",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "af6605f2-37c0-40cd-a7a8-8b7d10d08647",
+    "known_text": "先週それについてよく考え始めました",
+    "target_text": "I started to think about it carefully last week",
+    "target1_audio_id": "79bb1fac-2ffd-48de-8766-7b1e028a3b45",
+    "target2_audio_id": "680d1d89-d44b-4c3e-893d-e466836bb02d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06U02",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週他の人と話す練習をしようとしていました",
+    "target_text": "I was trying to practise speaking with someone else last week",
+    "target1_audio_id": "48d87c5a-095a-4806-aead-cc8da2a478be",
+    "target2_audio_id": "83397f89-7c47-4bf4-a6df-810402248399",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06U02",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "7fd61438-2178-40de-a0d4-dede844f6093",
+    "known_text": "先週他の人と話す練習をしようとしていました",
+    "target_text": "I was trying to practise speaking with someone else last week",
+    "target1_audio_id": "48d87c5a-095a-4806-aead-cc8da2a478be",
+    "target2_audio_id": "83397f89-7c47-4bf4-a6df-810402248399",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06U04",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "間違いを気にしません。先週始めました",
+    "target_text": "I don't worry about making mistakes and I started last week",
+    "target1_audio_id": "78c4f01e-91c2-40d4-b4ec-8be1445cd081",
+    "target2_audio_id": "a34335a5-d5d6-4aaf-a77b-c0e1ea9d856e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06U04",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "8722b082-7218-4db3-a2f8-9e57b077b818",
+    "known_text": "間違いを気にしません。先週始めました",
+    "target_text": "I don't worry about making mistakes and I started last week",
+    "target1_audio_id": "78c4f01e-91c2-40d4-b4ec-8be1445cd081",
+    "target2_audio_id": "a34335a5-d5d6-4aaf-a77b-c0e1ea9d856e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06U05",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週話す練習をしたかったですか？",
+    "target_text": "did you want to practise speaking last week?",
+    "target1_audio_id": "6affa090-367f-4732-94cf-e873a1fbaf9d",
+    "target2_audio_id": "82c0b085-1897-4e0c-a025-a9057ba2ca1f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06U05",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "bdf69ed9-4367-4c4d-b768-d36ba924ebda",
+    "known_text": "先週話す練習をしたかったですか？",
+    "target_text": "did you want to practise speaking last week?",
+    "target1_audio_id": "6affa090-367f-4732-94cf-e873a1fbaf9d",
+    "target2_audio_id": "82c0b085-1897-4e0c-a025-a9057ba2ca1f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06U06",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週私に何か見せたかったですか？",
+    "target_text": "did you want to show me something last week?",
+    "target1_audio_id": "e8223371-0daa-4ae7-9d5b-0793c414b960",
+    "target2_audio_id": "8a117631-61bb-4228-b181-0d9dcbc11b48",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06U06",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "7702df20-232e-49b5-a935-e4dd2b212782",
+    "known_text": "先週私に何か見せたかったですか？",
+    "target_text": "did you want to show me something last week?",
+    "target1_audio_id": "e8223371-0daa-4ae7-9d5b-0793c414b960",
+    "target2_audio_id": "8a117631-61bb-4228-b181-0d9dcbc11b48",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0052L06U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0052L06U10",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "先週より気分が良くなり始めていました",
+    "target_text": "I was starting to feel better than last week",
+    "target1_audio_id": "aa91e9f7-6d1a-4fa5-b85f-7b90bbab4204",
+    "target2_audio_id": "d6daae38-b0dd-4367-b5fa-a618295ce375",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0052L06U10",
+    "seed_number": 52,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_audio_id": "056adaae-3139-4a0a-bbe4-158f78ec5cd0",
+    "known_text": "先週より気分が良くなり始めていました",
+    "target_text": "I was starting to feel better than last week",
+    "target1_audio_id": "aa91e9f7-6d1a-4fa5-b85f-7b90bbab4204",
+    "target2_audio_id": "d6daae38-b0dd-4367-b5fa-a618295ce375",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L01B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L01B05",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は戻りたいです",
+    "target_text": "she wants to come back",
+    "target1_audio_id": "dbcc3c5d-498f-47ca-a657-eb7eb24b77a8",
+    "target2_audio_id": "0efa2c99-68c8-4ebb-9bfd-2caecb378780",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L01B05",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a0549faf-c07b-4a46-8824-b43cf3cce944",
+    "known_text": "彼女は戻りたいです",
+    "target_text": "she wants to come back",
+    "target1_audio_id": "dbcc3c5d-498f-47ca-a657-eb7eb24b77a8",
+    "target2_audio_id": "0efa2c99-68c8-4ebb-9bfd-2caecb378780",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 49,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L01U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L01U05",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "他の人がここにいるとき、彼女は静かにしたくないです",
+    "target_text": "she doesn't want to be quiet when other people are here",
+    "target1_audio_id": "f9151d60-6bdb-4498-ba10-3cbc98eb24a3",
+    "target2_audio_id": "bdad65bd-7bfc-4ec7-be57-f65786b5baeb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L01U05",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "355bc94a-becb-4172-9541-4196e827bbbc",
+    "known_text": "他の人がここにいるとき、彼女は静かにしたくないです",
+    "target_text": "she doesn't want to be quiet when other people are here",
+    "target1_audio_id": "f9151d60-6bdb-4498-ba10-3cbc98eb24a3",
+    "target2_audio_id": "bdad65bd-7bfc-4ec7-be57-f65786b5baeb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 50,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L01U06",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は先週彼の友達に手紙を書きたかったです",
+    "target_text": "she wanted to write a letter to his friend last week",
+    "target1_audio_id": "89f5a41d-22a2-4c1b-a042-2a7e2baaa9bd",
+    "target2_audio_id": "97727403-2bd0-47f8-8bdb-4744fa3d4ef1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L01U06",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "3b63588d-3f47-4ba0-a83c-575e57716f2c",
+    "known_text": "彼女は先週彼の友達に手紙を書きたかったです",
+    "target_text": "she wanted to write a letter to his friend last week",
+    "target1_audio_id": "89f5a41d-22a2-4c1b-a042-2a7e2baaa9bd",
+    "target2_audio_id": "97727403-2bd0-47f8-8bdb-4744fa3d4ef1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 51,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L01U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L01U08",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は昨日私に何か見せたかったです",
+    "target_text": "she wanted to show me something yesterday",
+    "target1_audio_id": "9e11d8fe-13dd-419a-9bf9-34e3c92a1dc9",
+    "target2_audio_id": "ead366b4-91d6-473d-8a6a-27fb6f6e7140",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L01U08",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "5fef2c42-0413-4e08-b669-fbab1a2072d5",
+    "known_text": "彼女は昨日私に何か見せたかったです",
+    "target_text": "she wanted to show me something yesterday",
+    "target1_audio_id": "9e11d8fe-13dd-419a-9bf9-34e3c92a1dc9",
+    "target2_audio_id": "ead366b4-91d6-473d-8a6a-27fb6f6e7140",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 52,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L01U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L01U11",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は彼の名前を早く学びたいです",
+    "target_text": "she wants to learn his name quickly",
+    "target1_audio_id": "9cd9cf2d-ea58-4b57-9e54-f8483d339498",
+    "target2_audio_id": "5206e6b7-2f0b-4156-8240-9a477e184057",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L01U11",
+    "seed_number": 53,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "aed3f325-794a-4179-a455-c6756da27351",
+    "known_text": "彼女は彼の名前を早く学びたいです",
+    "target_text": "she wants to learn his name quickly",
+    "target1_audio_id": "9cd9cf2d-ea58-4b57-9e54-f8483d339498",
+    "target2_audio_id": "5206e6b7-2f0b-4156-8240-9a477e184057",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 53,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L02B04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L02B04",
+    "seed_number": 53,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は彼の手紙を入れたかったです",
+    "target_text": "she wanted to put his letter",
+    "target1_audio_id": "578c888a-3e61-48b3-8f98-0b7d3f7909f9",
+    "target2_audio_id": "37cd27e4-86a5-4e09-9cea-b443f19e0895",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L02B04",
+    "seed_number": 53,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "23f5648b-8544-454f-b669-fca74dc58eab",
+    "known_text": "彼女は彼の手紙を入れたかったです",
+    "target_text": "she wanted to put his letter",
+    "target1_audio_id": "578c888a-3e61-48b3-8f98-0b7d3f7909f9",
+    "target2_audio_id": "37cd27e4-86a5-4e09-9cea-b443f19e0895",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 54,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03B06",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "それをかばんに入れる",
+    "target_text": "put it in her bag",
+    "target1_audio_id": "7d61f8b4-6089-40c5-87ae-fa516241e335",
+    "target2_audio_id": "728c307f-79d3-469c-895b-b6f5e9b867ab",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03B06",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "0f00dd6a-a48a-4a0a-a714-1b9af8e387fb",
+    "known_text": "それをかばんに入れる",
+    "target_text": "put it in her bag",
+    "target1_audio_id": "7d61f8b4-6089-40c5-87ae-fa516241e335",
+    "target2_audio_id": "728c307f-79d3-469c-895b-b6f5e9b867ab",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 55,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03U04",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女のかばんに何か入れたかったですか？",
+    "target_text": "did you want to put something in her bag?",
+    "target1_audio_id": "cf0cddd3-c928-4a2a-a7fd-551b85956a10",
+    "target2_audio_id": "6fa9a68e-eea6-4b97-8276-0f9f96673b70",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03U04",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "ed7d6032-3962-45b7-bb42-078b43ae6f7b",
+    "known_text": "彼女のかばんに何か入れたかったですか？",
+    "target_text": "did you want to put something in her bag?",
+    "target1_audio_id": "cf0cddd3-c928-4a2a-a7fd-551b85956a10",
+    "target2_audio_id": "6fa9a68e-eea6-4b97-8276-0f9f96673b70",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 56,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03U05",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は今日その手紙をかばんに入れたかったです",
+    "target_text": "she wanted to put that letter in her bag today",
+    "target1_audio_id": "67c0511e-c844-43aa-9019-7055dfabf92b",
+    "target2_audio_id": "9b12ba93-33f9-4274-91a6-64aeb71e64f8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03U05",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "43cc217a-e3f4-4240-8410-c5fb528f12ea",
+    "known_text": "彼女は今日その手紙をかばんに入れたかったです",
+    "target_text": "she wanted to put that letter in her bag today",
+    "target1_audio_id": "67c0511e-c844-43aa-9019-7055dfabf92b",
+    "target2_audio_id": "9b12ba93-33f9-4274-91a6-64aeb71e64f8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 57,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03U07",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女はかばんに何も入れたくないです",
+    "target_text": "she doesn't want to put anything in her bag",
+    "target1_audio_id": "f1382003-0bfa-4760-9030-048af555f1e7",
+    "target2_audio_id": "c1fc5251-4504-4eb1-add3-a62585eb9530",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03U07",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "c7c4758a-f10d-4f03-af79-9c01b2844a7b",
+    "known_text": "彼女はかばんに何も入れたくないです",
+    "target_text": "she doesn't want to put anything in her bag",
+    "target1_audio_id": "f1382003-0bfa-4760-9030-048af555f1e7",
+    "target2_audio_id": "c1fc5251-4504-4eb1-add3-a62585eb9530",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 58,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03U10",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は今日手紙をかばんに入れたいです",
+    "target_text": "she wants to put the letter in her bag today",
+    "target1_audio_id": "d891664a-325f-489d-a8ca-ab8dbc3b7501",
+    "target2_audio_id": "74942d48-68d8-46f4-8924-c914385de492",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03U10",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "39c0cedb-6aec-4d83-bef8-d41f385b9c2c",
+    "known_text": "彼女は今日手紙をかばんに入れたいです",
+    "target_text": "she wants to put the letter in her bag today",
+    "target1_audio_id": "d891664a-325f-489d-a8ca-ab8dbc3b7501",
+    "target2_audio_id": "74942d48-68d8-46f4-8924-c914385de492",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 59,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03U11",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は先週自分の手紙を彼女のかばんに入れたかったです",
+    "target_text": "he wanted to put his letter in her bag last week",
+    "target1_audio_id": "ce293929-4f4b-458c-b6de-6f8dbf3129f0",
+    "target2_audio_id": "32ac4cd9-2698-4d1a-8a7a-a67696e17e26",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03U11",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "d19b928b-83e0-46ea-9623-4dfcf8a76d31",
+    "known_text": "彼は先週自分の手紙を彼女のかばんに入れたかったです",
+    "target_text": "he wanted to put his letter in her bag last week",
+    "target1_audio_id": "ce293929-4f4b-458c-b6de-6f8dbf3129f0",
+    "target2_audio_id": "32ac4cd9-2698-4d1a-8a7a-a67696e17e26",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 60,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0053L03U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0053L03U12",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女がかばんに入れたものを私に見せたかったですか？",
+    "target_text": "did you want to show me what she put in her bag?",
+    "target1_audio_id": "68c1e50d-9d25-48bf-9449-841625015d1c",
+    "target2_audio_id": "28cdfe27-ad56-48b1-a94e-3a93cd4e075c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0053L03U12",
+    "seed_number": 53,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "13b10d21-3c28-4ca3-b9bc-7e2b6e66cf8e",
+    "known_text": "彼女がかばんに入れたものを私に見せたかったですか？",
+    "target_text": "did you want to show me what she put in her bag?",
+    "target1_audio_id": "68c1e50d-9d25-48bf-9449-841625015d1c",
+    "target2_audio_id": "28cdfe27-ad56-48b1-a94e-3a93cd4e075c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 61,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U01",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は先週彼の友達に手紙をあげたかったです",
+    "target_text": "she wanted to give a letter to his friend last week",
+    "target1_audio_id": "a1f8f6c8-54de-4bf0-87b3-0365dc8ecde5",
+    "target2_audio_id": "a2506302-b6d8-491b-8b1f-30d31f184335",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U01",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e2877814-8137-47f1-aee7-25b18e69aea2",
+    "known_text": "彼女は先週彼の友達に手紙をあげたかったです",
+    "target_text": "she wanted to give a letter to his friend last week",
+    "target1_audio_id": "a1f8f6c8-54de-4bf0-87b3-0365dc8ecde5",
+    "target2_audio_id": "a2506302-b6d8-491b-8b1f-30d31f184335",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 62,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U02",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたに何か面白いものをあげたいです",
+    "target_text": "I'd like to give you something interesting",
+    "target1_audio_id": "5ad05fb2-ff95-426d-a512-828496978b7a",
+    "target2_audio_id": "6ff2652d-231d-4958-a948-d6ddcb49627e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U02",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "80451b60-d140-4a7c-bcaf-f2a336effa6b",
+    "known_text": "あなたに何か面白いものをあげたいです",
+    "target_text": "I'd like to give you something interesting",
+    "target1_audio_id": "5ad05fb2-ff95-426d-a512-828496978b7a",
+    "target2_audio_id": "6ff2652d-231d-4958-a948-d6ddcb49627e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 63,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U03",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は先週彼女にその話をあげたかったです",
+    "target_text": "he wanted to give her the story last week",
+    "target1_audio_id": "9d7e1ccc-b131-4f14-b5c1-301f3f7043d4",
+    "target2_audio_id": "b76695a1-385b-4f16-982f-7e7aa03efd79",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U03",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "366bf853-3797-48d4-8172-a6755b48b472",
+    "known_text": "彼は先週彼女にその話をあげたかったです",
+    "target_text": "he wanted to give her the story last week",
+    "target1_audio_id": "9d7e1ccc-b131-4f14-b5c1-301f3f7043d4",
+    "target2_audio_id": "b76695a1-385b-4f16-982f-7e7aa03efd79",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 64,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U05",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女のかばんに入れるものをあなたにあげたかったです",
+    "target_text": "I wanted to give you something to put in her bag",
+    "target1_audio_id": "50f84d37-ce8a-4536-97d8-1bd0a04bb523",
+    "target2_audio_id": "76654379-40e7-4752-8313-e449241e2c58",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U05",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "31b03917-951a-442a-8d4b-4a9d585e4e43",
+    "known_text": "彼女のかばんに入れるものをあなたにあげたかったです",
+    "target_text": "I wanted to give you something to put in her bag",
+    "target1_audio_id": "50f84d37-ce8a-4536-97d8-1bd0a04bb523",
+    "target2_audio_id": "76654379-40e7-4752-8313-e449241e2c58",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 65,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U07",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私と英語で話す時間をあなたにあげたいです",
+    "target_text": "I want to give you the time to speak English with me",
+    "target1_audio_id": "f0375e1f-e76b-4d8e-856a-a297420e9a56",
+    "target2_audio_id": "1e36462c-5fe0-4965-870b-cac4fe8fd68c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U07",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "6ab48a59-7b60-4eea-8db5-2d8e1a3226c1",
+    "known_text": "私と英語で話す時間をあなたにあげたいです",
+    "target_text": "I want to give you the time to speak English with me",
+    "target1_audio_id": "f0375e1f-e76b-4d8e-856a-a297420e9a56",
+    "target2_audio_id": "1e36462c-5fe0-4965-870b-cac4fe8fd68c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 66,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U10",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたに何かあげる前に、よく考えたかったです",
+    "target_text": "I wanted to think about it carefully before I give you something",
+    "target1_audio_id": "c9ffacad-6d5b-4224-b63b-31660f21a07f",
+    "target2_audio_id": "ed63500e-9cb6-4e14-b9bb-6fd5eaf56390",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U10",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "efcbe2b3-7851-42ea-8f25-b25cabe7448e",
+    "known_text": "あなたに何かあげる前に、よく考えたかったです",
+    "target_text": "I wanted to think about it carefully before I give you something",
+    "target1_audio_id": "c9ffacad-6d5b-4224-b63b-31660f21a07f",
+    "target2_audio_id": "ed63500e-9cb6-4e14-b9bb-6fd5eaf56390",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 67,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U11",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は友達にその話をあげたいです",
+    "target_text": "he wants to give the story to his friend",
+    "target1_audio_id": "0d19632a-a5fb-4d1e-9c6e-b16c68937bf2",
+    "target2_audio_id": "2c5007c4-3635-4356-8b6c-6f0d62980c5b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U11",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "8f759474-db9f-4e81-a201-808852200ad3",
+    "known_text": "彼は友達にその話をあげたいです",
+    "target_text": "he wants to give the story to his friend",
+    "target1_audio_id": "0d19632a-a5fb-4d1e-9c6e-b16c68937bf2",
+    "target2_audio_id": "2c5007c4-3635-4356-8b6c-6f0d62980c5b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 68,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L02U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L02U12",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私と話す練習をする時間をあなたにあげたかったです",
+    "target_text": "I wanted to give you the time to practise speaking with me",
+    "target1_audio_id": "6cffb76b-32e5-43c8-b318-18dd33b61cdd",
+    "target2_audio_id": "bbb6d8cd-a9b2-46dd-950e-59b25dac3fd6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L02U12",
+    "seed_number": 54,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "347dcc04-e292-4ad0-84d7-1eb4304d8579",
+    "known_text": "私と話す練習をする時間をあなたにあげたかったです",
+    "target_text": "I wanted to give you the time to practise speaking with me",
+    "target1_audio_id": "6cffb76b-32e5-43c8-b318-18dd33b61cdd",
+    "target2_audio_id": "bbb6d8cd-a9b2-46dd-950e-59b25dac3fd6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 69,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L03B04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L03B04",
+    "seed_number": 54,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたはとても上手に英語を話します",
+    "target_text": "you speak English very well",
+    "target1_audio_id": "b2e5e546-4317-47bb-b131-37d3d6d38eea",
+    "target2_audio_id": "b4f02297-145d-4f4b-bb63-8192d4322420",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L03B04",
+    "seed_number": 54,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "c79334bd-1404-4b21-aee9-8682673dd3d2",
+    "known_text": "あなたはとても上手に英語を話します",
+    "target_text": "you speak English very well",
+    "target1_audio_id": "b2e5e546-4317-47bb-b131-37d3d6d38eea",
+    "target2_audio_id": "b4f02297-145d-4f4b-bb63-8192d4322420",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 70,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L03U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L03U07",
+    "seed_number": 54,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "明日、私と英語で話してほしいです",
+    "target_text": "I want you to speak English with me tomorrow",
+    "target1_audio_id": "4b96396c-750a-4503-8220-d51c776ad6f7",
+    "target2_audio_id": "15ae0dd0-3d33-4b8e-9f51-134fb8c5cf80",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L03U07",
+    "seed_number": 54,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "594e25ea-5b5d-4c5e-a936-ec3222260062",
+    "known_text": "明日、私と英語で話してほしいです",
+    "target_text": "I want you to speak English with me tomorrow",
+    "target1_audio_id": "4b96396c-750a-4503-8220-d51c776ad6f7",
+    "target2_audio_id": "15ae0dd0-3d33-4b8e-9f51-134fb8c5cf80",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 71,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L03U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L03U12",
+    "seed_number": 54,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私が行かなければならない前に、手伝うつもりですか？",
+    "target_text": "are you going to help me before I have to go?",
+    "target1_audio_id": "90985322-3a9b-4895-89ad-c678f90e407c",
+    "target2_audio_id": "cfcf3950-02c2-4847-83a1-2f9aa70ae87e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L03U12",
+    "seed_number": 54,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "f6fc2476-a355-49e7-bed7-3d10286b83d4",
+    "known_text": "私が行かなければならない前に、手伝うつもりですか？",
+    "target_text": "are you going to help me before I have to go?",
+    "target1_audio_id": "90985322-3a9b-4895-89ad-c678f90e407c",
+    "target2_audio_id": "cfcf3950-02c2-4847-83a1-2f9aa70ae87e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 72,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04B05",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もう少し英語を話す",
+    "target_text": "speak English a little more",
+    "target1_audio_id": "494eadf8-52c5-4ba9-907e-4b9b4c0f2b12",
+    "target2_audio_id": "1973c0b8-48d4-402b-8b60-96f93ba3b592",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04B05",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "8a4c75ce-a119-4317-8998-04414818d8a1",
+    "known_text": "もう少し英語を話す",
+    "target_text": "speak English a little more",
+    "target1_audio_id": "494eadf8-52c5-4ba9-907e-4b9b4c0f2b12",
+    "target2_audio_id": "1973c0b8-48d4-402b-8b60-96f93ba3b592",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 73,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U01",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話すには、もう少し時間が必要だと思います",
+    "target_text": "I think I need a little more time to speak better",
+    "target1_audio_id": "23195090-7b5e-41c8-ac16-ca35016249be",
+    "target2_audio_id": "027e1505-1296-4766-8174-b83a982eb8ae",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U01",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "5aa91b48-11a9-4410-99b5-48bfb62898a2",
+    "known_text": "もっと上手に話すには、もう少し時間が必要だと思います",
+    "target_text": "I think I need a little more time to speak better",
+    "target1_audio_id": "23195090-7b5e-41c8-ac16-ca35016249be",
+    "target2_audio_id": "027e1505-1296-4766-8174-b83a982eb8ae",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 74,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U02",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今、あなたともう少し話したいです",
+    "target_text": "I'd like to speak a little more with you now",
+    "target1_audio_id": "dfd6fd60-967f-4201-ac0d-cc26e149cfe2",
+    "target2_audio_id": "216a1f66-d755-456b-9c5c-82337ca79a05",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U02",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "4e4446b4-59c1-448b-89e9-47a04d32f4d4",
+    "known_text": "今、あなたともう少し話したいです",
+    "target_text": "I'd like to speak a little more with you now",
+    "target1_audio_id": "dfd6fd60-967f-4201-ac0d-cc26e149cfe2",
+    "target2_audio_id": "216a1f66-d755-456b-9c5c-82337ca79a05",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 75,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U04",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日はもう少し英語を学ぶ必要があります",
+    "target_text": "I need to learn English a little more today",
+    "target1_audio_id": "ea222c19-4ddc-4bc9-a2da-c8f11bfab4a6",
+    "target2_audio_id": "50813987-fc9f-4fc6-bcab-3391a817fc8c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U04",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "8fc50f72-0516-4512-84cb-e3f82e31e126",
+    "known_text": "今日はもう少し英語を学ぶ必要があります",
+    "target_text": "I need to learn English a little more today",
+    "target1_audio_id": "ea222c19-4ddc-4bc9-a2da-c8f11bfab4a6",
+    "target2_audio_id": "50813987-fc9f-4fc6-bcab-3391a817fc8c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 76,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U05",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は答えが何かを知るために、もう少し時間が欲しいです",
+    "target_text": "she wants a little more time to find out what the answer is",
+    "target1_audio_id": "25cbdc32-548b-495d-85de-fe4e9bdae86a",
+    "target2_audio_id": "62fb17c8-ba0b-4ff5-aa94-fcda51a6df93",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U05",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "65389402-c3a5-4120-85df-7f542f0a3297",
+    "known_text": "彼女は答えが何かを知るために、もう少し時間が欲しいです",
+    "target_text": "she wants a little more time to find out what the answer is",
+    "target1_audio_id": "25cbdc32-548b-495d-85de-fe4e9bdae86a",
+    "target2_audio_id": "62fb17c8-ba0b-4ff5-aa94-fcda51a6df93",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 77,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U08",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もう少し時間があっても、全部覚えられるかどうかわかりません",
+    "target_text": "I'm not sure if I can remember everything with a little more time",
+    "target1_audio_id": "5e11ddff-fad9-4e14-98e2-e9b2a1047280",
+    "target2_audio_id": "b74b7727-43ec-4718-9043-de351579e065",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U08",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "292e7b38-1f34-4b37-ba20-a92c50f34bd1",
+    "known_text": "もう少し時間があっても、全部覚えられるかどうかわかりません",
+    "target_text": "I'm not sure if I can remember everything with a little more time",
+    "target1_audio_id": "5e11ddff-fad9-4e14-98e2-e9b2a1047280",
+    "target2_audio_id": "b74b7727-43ec-4718-9043-de351579e065",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 78,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U09",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は文全体を覚えるために、もう少し時間が欲しいです",
+    "target_text": "he wants a little more time to remember the whole sentence",
+    "target1_audio_id": "293448b0-6d5c-48b3-81bf-8946173a7645",
+    "target2_audio_id": "8bf8b9e9-378b-40f3-a9c5-2885200c6f1d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U09",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "5e156e19-59a6-4f26-b06c-4b1e4bb7c3e8",
+    "known_text": "彼は文全体を覚えるために、もう少し時間が欲しいです",
+    "target_text": "he wants a little more time to remember the whole sentence",
+    "target1_audio_id": "293448b0-6d5c-48b3-81bf-8946173a7645",
+    "target2_audio_id": "8bf8b9e9-378b-40f3-a9c5-2885200c6f1d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 79,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U10",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日はその話をもう少し知りたいです",
+    "target_text": "I want to know the story a little more today",
+    "target1_audio_id": "accc8a08-fde7-4bfc-9f31-061b6a4bed5d",
+    "target2_audio_id": "65efb342-56e4-4191-afb9-295e010eb2f9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U10",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "62e96c62-5feb-4ecb-a261-0566618e36b2",
+    "known_text": "今日はその話をもう少し知りたいです",
+    "target_text": "I want to know the story a little more today",
+    "target1_audio_id": "accc8a08-fde7-4bfc-9f31-061b6a4bed5d",
+    "target2_audio_id": "65efb342-56e4-4191-afb9-295e010eb2f9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 80,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0054L04U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0054L04U12",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私が行かなければならない前に、もう少し英語を話して",
+    "target_text": "speak English a little more before I have to go",
+    "target1_audio_id": "bb478375-e11c-45ce-a254-744be7477209",
+    "target2_audio_id": "b209699b-5357-47e2-8a67-6614043c6b6f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0054L04U12",
+    "seed_number": 54,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "3346fc51-73aa-4578-9575-2ba958fa10ec",
+    "known_text": "私が行かなければならない前に、もう少し英語を話して",
+    "target_text": "speak English a little more before I have to go",
+    "target1_audio_id": "bb478375-e11c-45ce-a254-744be7477209",
+    "target2_audio_id": "b209699b-5357-47e2-8a67-6614043c6b6f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 81,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "それは楽しくありません",
+    "target_text": "I don't enjoy it",
+    "target1_audio_id": "f564013d-262b-4fa8-aaea-717db9b3e768",
+    "target2_audio_id": "0923afb0-c40e-4368-9f60-6a0907f3ae0c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "de900840-21e8-418a-a2e7-7fa412241708",
+    "known_text": "それは楽しくありません",
+    "target_text": "I don't enjoy it",
+    "target1_audio_id": "f564013d-262b-4fa8-aaea-717db9b3e768",
+    "target2_audio_id": "0923afb0-c40e-4368-9f60-6a0907f3ae0c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 82,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "時間をかけすぎるのは楽しくありません",
+    "target_text": "I don't enjoy taking too much time",
+    "target1_audio_id": "867c41b2-e29a-49de-8dc5-bcda10b35222",
+    "target2_audio_id": "85a55e31-f11f-4ab5-a95e-00b062606316",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "2694c42c-61df-4cfe-ac49-b7bb014a883e",
+    "known_text": "時間をかけすぎるのは楽しくありません",
+    "target_text": "I don't enjoy taking too much time",
+    "target1_audio_id": "867c41b2-e29a-49de-8dc5-bcda10b35222",
+    "target2_audio_id": "85a55e31-f11f-4ab5-a95e-00b062606316",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 83,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01B06",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日はそれが楽しくありません",
+    "target_text": "I don't enjoy it today",
+    "target1_audio_id": "efca9ac1-ea11-4f45-8e53-a4bde140a04a",
+    "target2_audio_id": "f791ac86-b7a6-4eb3-9b32-459dfac4ed76",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01B06",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a6cf90ff-9f32-4a17-a8fc-d184b2365616",
+    "known_text": "今日はそれが楽しくありません",
+    "target_text": "I don't enjoy it today",
+    "target1_audio_id": "efca9ac1-ea11-4f45-8e53-a4bde140a04a",
+    "target2_audio_id": "f791ac86-b7a6-4eb3-9b32-459dfac4ed76",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 84,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "話すのをやめたいとき、楽しくありません",
+    "target_text": "I don't enjoy it when I want to stop talking",
+    "target1_audio_id": "14ab150a-749e-4d8a-a4cc-49285819b70d",
+    "target2_audio_id": "6855c7e0-9a41-4ea5-a05f-02188d0d112b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "7460143b-4e28-4e4a-8e92-c05690a0c795",
+    "known_text": "話すのをやめたいとき、楽しくありません",
+    "target_text": "I don't enjoy it when I want to stop talking",
+    "target1_audio_id": "14ab150a-749e-4d8a-a4cc-49285819b70d",
+    "target2_audio_id": "6855c7e0-9a41-4ea5-a05f-02188d0d112b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 85,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01U04",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "間違いを気にしないとき、上達しようとするのは楽しくありません",
+    "target_text": "I don't enjoy trying to improve when I don't worry about making mistakes",
+    "target1_audio_id": "6dffd362-b760-4e19-9c3b-5613de6639ea",
+    "target2_audio_id": "8c5e1ee2-f784-4c5b-8047-d951c653027f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01U04",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e2d59d08-e215-48d7-9ff1-392e2eec0b82",
+    "known_text": "間違いを気にしないとき、上達しようとするのは楽しくありません",
+    "target_text": "I don't enjoy trying to improve when I don't worry about making mistakes",
+    "target1_audio_id": "6dffd362-b760-4e19-9c3b-5613de6639ea",
+    "target2_audio_id": "8c5e1ee2-f784-4c5b-8047-d951c653027f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 86,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01U07",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語で何を言えばいいか当てようとするのは楽しくありません",
+    "target_text": "I don't enjoy trying to guess what to say in English",
+    "target1_audio_id": "adfc522d-24be-4353-976d-6a5fb3008399",
+    "target2_audio_id": "4676c421-20db-450d-acec-879751cfbdc9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01U07",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "59c5f05a-75a8-4c29-82ea-d9a03f950fc0",
+    "known_text": "英語で何を言えばいいか当てようとするのは楽しくありません",
+    "target_text": "I don't enjoy trying to guess what to say in English",
+    "target1_audio_id": "adfc522d-24be-4353-976d-6a5fb3008399",
+    "target2_audio_id": "4676c421-20db-450d-acec-879751cfbdc9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 87,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L01U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L01U11",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話せないとき、楽しくありません",
+    "target_text": "I don't enjoy it when I'm not going to be able to speak better",
+    "target1_audio_id": "cbc900e5-993d-42a7-8df5-cc45c57bef7f",
+    "target2_audio_id": "0c07ad19-678c-4e53-aea7-34c16d4f880d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L01U11",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "b47fe17f-71a6-4a7f-9d53-36b04301231b",
+    "known_text": "もっと上手に話せないとき、楽しくありません",
+    "target_text": "I don't enjoy it when I'm not going to be able to speak better",
+    "target1_audio_id": "cbc900e5-993d-42a7-8df5-cc45c57bef7f",
+    "target2_audio_id": "0c07ad19-678c-4e53-aea7-34c16d4f880d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 88,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L02B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L02B06",
+    "seed_number": 55,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日起きること",
+    "target_text": "waking up today",
+    "target1_audio_id": "666047ec-0480-4b0b-b5e7-663519692c6a",
+    "target2_audio_id": "476392ea-b52b-4f26-87b1-edec18c0a188",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L02B06",
+    "seed_number": 55,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "c1c6e103-e79e-4d31-af3b-f907dfc155d2",
+    "known_text": "今日起きること",
+    "target_text": "waking up today",
+    "target1_audio_id": "666047ec-0480-4b0b-b5e7-663519692c6a",
+    "target2_audio_id": "476392ea-b52b-4f26-87b1-edec18c0a188",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 89,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L02U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L02U11",
+    "seed_number": 55,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今朝、英語を話すために起きるのは楽しくありません",
+    "target_text": "I don't enjoy waking up to speak English this morning",
+    "target1_audio_id": "94ffd46f-481f-4ad5-b968-9b421f0c3514",
+    "target2_audio_id": "6c94c36f-5789-419b-b67b-978e6b27b849",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L02U11",
+    "seed_number": 55,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "25b7fe01-d291-47f0-81ac-f71f5fb86e27",
+    "known_text": "今朝、英語を話すために起きるのは楽しくありません",
+    "target_text": "I don't enjoy waking up to speak English this morning",
+    "target1_audio_id": "94ffd46f-481f-4ad5-b968-9b421f0c3514",
+    "target2_audio_id": "6c94c36f-5789-419b-b67b-978e6b27b849",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 90,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L04B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L04B05",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "よく眠れませんでした",
+    "target_text": "I didn't sleep well",
+    "target1_audio_id": "05689e7d-4a1e-4092-ad1f-39c8de86bdd2",
+    "target2_audio_id": "dc941eb4-e99f-472d-bd0b-3def682b9d58",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L04B05",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "3f74c38c-957e-4767-b12a-b532520b43ab",
+    "known_text": "よく眠れませんでした",
+    "target_text": "I didn't sleep well",
+    "target1_audio_id": "05689e7d-4a1e-4092-ad1f-39c8de86bdd2",
+    "target2_audio_id": "dc941eb4-e99f-472d-bd0b-3def682b9d58",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 91,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L04B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L04B06",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "昨夜はあまりよく眠れませんでした",
+    "target_text": "I didn't sleep very well last night",
+    "target1_audio_id": "3a24c51a-b912-46e8-9a3b-9566d0ab61b9",
+    "target2_audio_id": "1d736d07-0020-4834-986d-b6c1ab39ee9c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L04B06",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "52a0e9c8-89cc-41fb-a06c-aafef7ac5965",
+    "known_text": "昨夜はあまりよく眠れませんでした",
+    "target_text": "I didn't sleep very well last night",
+    "target1_audio_id": "3a24c51a-b912-46e8-9a3b-9566d0ab61b9",
+    "target2_audio_id": "1d736d07-0020-4834-986d-b6c1ab39ee9c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 92,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L04U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L04U04",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "昨夜は眠れませんでした。今朝は少し疲れています",
+    "target_text": "I didn't sleep last night and I'm a little tired this morning",
+    "target1_audio_id": "2fb007f0-b569-46f7-90aa-876214c76ca5",
+    "target2_audio_id": "47091222-74aa-41d6-941b-9fd8fc287553",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L04U04",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "49fa9a81-e956-41df-9e6c-1d2be9518ce1",
+    "known_text": "昨夜は眠れませんでした。今朝は少し疲れています",
+    "target_text": "I didn't sleep last night and I'm a little tired this morning",
+    "target1_audio_id": "2fb007f0-b569-46f7-90aa-876214c76ca5",
+    "target2_audio_id": "47091222-74aa-41d6-941b-9fd8fc287553",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 93,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L04U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L04U05",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あまりよく眠れなかったとき、楽しくありません",
+    "target_text": "I don't enjoy it when I didn't sleep very well",
+    "target1_audio_id": "5c7ff80d-e9fa-42e4-bf32-66fcfbb48e4d",
+    "target2_audio_id": "827f9062-d01b-4199-9412-6beb1152e57d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L04U05",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "2d5d06f5-d25d-42eb-b4ef-ce92331b6db1",
+    "known_text": "あまりよく眠れなかったとき、楽しくありません",
+    "target_text": "I don't enjoy it when I didn't sleep very well",
+    "target1_audio_id": "5c7ff80d-e9fa-42e4-bf32-66fcfbb48e4d",
+    "target2_audio_id": "827f9062-d01b-4199-9412-6beb1152e57d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 94,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L04U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L04U07",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "昨夜は眠れませんでした。そして、とても元気です",
+    "target_text": "I didn't sleep last night and I'm feeling very well",
+    "target1_audio_id": "d18b1c45-1074-40e3-a892-63c2f8cddb8b",
+    "target2_audio_id": "fa1fd0f2-d4ab-4857-b528-9fced4577232",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L04U07",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "f61affcc-29d8-419e-9f4d-adea31f3df44",
+    "known_text": "昨夜は眠れませんでした。そして、とても元気です",
+    "target_text": "I didn't sleep last night and I'm feeling very well",
+    "target1_audio_id": "d18b1c45-1074-40e3-a892-63c2f8cddb8b",
+    "target2_audio_id": "fa1fd0f2-d4ab-4857-b528-9fced4577232",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 95,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0055L04U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0055L04U08",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "眠れなかったとき、話そうとするのは楽しくありません",
+    "target_text": "I don't enjoy trying to speak when I didn't sleep",
+    "target1_audio_id": "76ea56a1-d217-48c5-9495-24c3d87dbb18",
+    "target2_audio_id": "db632aa0-e160-4390-b169-1e8f2a073d06",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0055L04U08",
+    "seed_number": 55,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "63375719-076b-436f-892a-9e25fc7a4f76",
+    "known_text": "眠れなかったとき、話そうとするのは楽しくありません",
+    "target_text": "I don't enjoy trying to speak when I didn't sleep",
+    "target1_audio_id": "76ea56a1-d217-48c5-9495-24c3d87dbb18",
+    "target2_audio_id": "db632aa0-e160-4390-b169-1e8f2a073d06",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 96,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U01",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今あなたと話せるように、英語を話したいです",
+    "target_text": "I want to speak English so I can speak with you now",
+    "target1_audio_id": "2ab1d4a4-0df4-4a6c-8550-f7109dba25bc",
+    "target2_audio_id": "9288ad1d-8255-40d4-b563-4db3b3c7acc1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U01",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "f67e46e4-cff4-4a86-a47d-be34bd01754b",
+    "known_text": "今あなたと話せるように、英語を話したいです",
+    "target_text": "I want to speak English so I can speak with you now",
+    "target1_audio_id": "2ab1d4a4-0df4-4a6c-8550-f7109dba25bc",
+    "target2_audio_id": "9288ad1d-8255-40d4-b563-4db3b3c7acc1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 97,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U02",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "話し始められるように、英語を話したいです",
+    "target_text": "I want to speak English so I can start talking",
+    "target1_audio_id": "1f302540-e794-4104-9689-acc71b15332f",
+    "target2_audio_id": "d25101ec-d327-4d3f-966c-a411a9a2afc5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U02",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "716eec4a-f797-4943-b9da-f4b7ce4aede5",
+    "known_text": "話し始められるように、英語を話したいです",
+    "target_text": "I want to speak English so I can start talking",
+    "target1_audio_id": "1f302540-e794-4104-9689-acc71b15332f",
+    "target2_audio_id": "d25101ec-d327-4d3f-966c-a411a9a2afc5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 98,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U03",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語を話す人と話せるように、話したいです",
+    "target_text": "I want to speak so I can speak with people who speak English",
+    "target1_audio_id": "25024b8b-63cc-4743-9635-b7a73dcaabbd",
+    "target2_audio_id": "32103b85-3862-4531-9656-c17e4baf1952",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U03",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "21691cb6-3096-44f9-bccd-e5448933cfd1",
+    "known_text": "英語を話す人と話せるように、話したいです",
+    "target_text": "I want to speak so I can speak with people who speak English",
+    "target1_audio_id": "25024b8b-63cc-4743-9635-b7a73dcaabbd",
+    "target2_audio_id": "32103b85-3862-4531-9656-c17e4baf1952",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 99,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U06",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたと話せるように、約一週間学んでいます",
+    "target_text": "I've been learning for about a week so I can speak with you",
+    "target1_audio_id": "80d22d64-4ad4-4f68-8cc2-2709e7e23dd2",
+    "target2_audio_id": "9a08e9d7-db7e-4d12-8b7f-cfee34fb380e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U06",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "9d4c09fe-11e0-4d74-9f02-25270afa61fc",
+    "known_text": "あなたと話せるように、約一週間学んでいます",
+    "target_text": "I've been learning for about a week so I can speak with you",
+    "target1_audio_id": "80d22d64-4ad4-4f68-8cc2-2709e7e23dd2",
+    "target2_audio_id": "9a08e9d7-db7e-4d12-8b7f-cfee34fb380e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 100,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U08",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "文全体を覚えられるかどうかわからないので、もっと上手に話したいです",
+    "target_text": "I'm not sure if I can remember the whole sentence so I want to speak better",
+    "target1_audio_id": "844b511a-898c-4ced-a297-e7d4af4e4721",
+    "target2_audio_id": "ca8ba91c-17be-4190-b20d-73d6b340f151",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U08",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "80c44039-a10e-4a0b-a7dd-55b21b19d3c0",
+    "known_text": "文全体を覚えられるかどうかわからないので、もっと上手に話したいです",
+    "target_text": "I'm not sure if I can remember the whole sentence so I want to speak better",
+    "target1_audio_id": "844b511a-898c-4ced-a297-e7d4af4e4721",
+    "target2_audio_id": "ca8ba91c-17be-4190-b20d-73d6b340f151",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 101,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U10",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "他のみんなと話せるように、もうすぐもっと話し始めるつもりです",
+    "target_text": "I'm going to start talking more soon so I can speak with everyone else",
+    "target1_audio_id": "e7e15ec9-6fc5-4c4c-b1e2-f115b5a151b7",
+    "target2_audio_id": "60d94230-e782-4335-9399-f50c529d31c4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U10",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e6e83dcf-fe1c-4781-8b00-ee383cc0976c",
+    "known_text": "他のみんなと話せるように、もうすぐもっと話し始めるつもりです",
+    "target_text": "I'm going to start talking more soon so I can speak with everyone else",
+    "target1_audio_id": "e7e15ec9-6fc5-4c4c-b1e2-f115b5a151b7",
+    "target2_audio_id": "60d94230-e782-4335-9399-f50c529d31c4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 102,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U11",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話せるように、今日英語を話したいです",
+    "target_text": "I want to speak English today so I can speak better",
+    "target1_audio_id": "65ae5c65-4a0c-45a3-a32d-5d44efe8f018",
+    "target2_audio_id": "cd2367be-e344-453a-8a39-0e1d36972fce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U11",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "c7afa280-c0b9-42dc-8318-3aaef0160c50",
+    "known_text": "もっと上手に話せるように、今日英語を話したいです",
+    "target_text": "I want to speak English today so I can speak better",
+    "target1_audio_id": "65ae5c65-4a0c-45a3-a32d-5d44efe8f018",
+    "target2_audio_id": "cd2367be-e344-453a-8a39-0e1d36972fce",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 103,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U12",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話せるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can speak better",
+    "target1_audio_id": "e7261bb6-db62-4aaf-81cb-f503d0cf827d",
+    "target2_audio_id": "ef04227a-845e-44b8-a3d6-e2add8511aa2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U12",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a317eaec-f20d-4527-b6f3-b4ed4921ad8b",
+    "known_text": "もっと上手に話せるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can speak better",
+    "target1_audio_id": "e7261bb6-db62-4aaf-81cb-f503d0cf827d",
+    "target2_audio_id": "ef04227a-845e-44b8-a3d6-e2add8511aa2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 104,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U13",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に英語を話せるように、学ぼうとしています",
+    "target_text": "I'm trying to learn so I can speak English better",
+    "target1_audio_id": "da0d5954-270d-454b-8253-84b4f66e6a99",
+    "target2_audio_id": "15eecb79-257d-43f6-a208-56c12fff6780",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U13",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "3dd24be1-00da-4ba9-b199-8b0f68964988",
+    "known_text": "もっと上手に英語を話せるように、学ぼうとしています",
+    "target_text": "I'm trying to learn so I can speak English better",
+    "target1_audio_id": "da0d5954-270d-454b-8253-84b4f66e6a99",
+    "target2_audio_id": "15eecb79-257d-43f6-a208-56c12fff6780",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 105,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L01U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L01U15",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "他のみんなと話せるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can speak with everyone else",
+    "target1_audio_id": "3ec4a873-9b5f-4661-8d87-46f7d70dc015",
+    "target2_audio_id": "57e43a92-426f-4250-af37-35d0c779351a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L01U15",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "7d1fc754-62d6-4c5b-9b68-61d81756d67e",
+    "known_text": "他のみんなと話せるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can speak with everyone else",
+    "target1_audio_id": "3ec4a873-9b5f-4661-8d87-46f7d70dc015",
+    "target2_audio_id": "57e43a92-426f-4250-af37-35d0c779351a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 106,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U05",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "話し始められるので、間違いは気にしません",
+    "target_text": "I don't care about making mistakes because I can start talking",
+    "target1_audio_id": "b782f52f-0e50-4d6a-b91c-c12375b3914d",
+    "target2_audio_id": "3e83a09e-0383-47db-9125-f7938098d3f7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U05",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "0015cc71-3639-42ba-bf40-9916338e712b",
+    "known_text": "話し始められるので、間違いは気にしません",
+    "target_text": "I don't care about making mistakes because I can start talking",
+    "target1_audio_id": "b782f52f-0e50-4d6a-b91c-c12375b3914d",
+    "target2_audio_id": "3e83a09e-0383-47db-9125-f7938098d3f7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 107,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U06",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今は英語を少し話します。そして、もうすぐもっと話し始められます",
+    "target_text": "I speak a little English now and I can start talking more soon",
+    "target1_audio_id": "d2380f8b-1d94-4610-bd9f-a9e369595887",
+    "target2_audio_id": "0f7c4163-bb30-4804-9ce7-0842000e05a9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U06",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "c334b9d2-268a-4be4-ad89-0fb86d062f9a",
+    "known_text": "今は英語を少し話します。そして、もうすぐもっと話し始められます",
+    "target_text": "I speak a little English now and I can start talking more soon",
+    "target1_audio_id": "d2380f8b-1d94-4610-bd9f-a9e369595887",
+    "target2_audio_id": "0f7c4163-bb30-4804-9ce7-0842000e05a9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 108,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U07",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "できるだけ早く、もっと上手に話せるのを楽しみにしています",
+    "target_text": "I'm looking forward to speaking better as soon as I can",
+    "target1_audio_id": "61bb5c2d-4efe-4950-a526-fd07d48f98b6",
+    "target2_audio_id": "cca81983-ace3-4880-9773-2a197936d4c8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U07",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "0a02deb7-dcfd-45db-884b-889c0a4de851",
+    "known_text": "できるだけ早く、もっと上手に話せるのを楽しみにしています",
+    "target_text": "I'm looking forward to speaking better as soon as I can",
+    "target1_audio_id": "61bb5c2d-4efe-4950-a526-fd07d48f98b6",
+    "target2_audio_id": "cca81983-ace3-4880-9773-2a197936d4c8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 109,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U08",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今あなたと英語で話したいです。そして、話し始められます",
+    "target_text": "I want to speak English with you now and I can start talking",
+    "target1_audio_id": "1eaacdba-9744-432a-a847-fd395f31d091",
+    "target2_audio_id": "31648670-4257-49b4-a579-438fc81b2aff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U08",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "dc3963e7-eab0-4fa0-a408-26100efaf18e",
+    "known_text": "今あなたと英語で話したいです。そして、話し始められます",
+    "target_text": "I want to speak English with you now and I can start talking",
+    "target1_audio_id": "1eaacdba-9744-432a-a847-fd395f31d091",
+    "target2_audio_id": "31648670-4257-49b4-a579-438fc81b2aff",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 110,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U09",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語を話す人と話せるので、もっと上手に話せます",
+    "target_text": "I can speak with people who speak English so I can speak better",
+    "target1_audio_id": "9365f0b1-47d9-4936-aa0b-4fb455ceb810",
+    "target2_audio_id": "d27992a8-c59e-44a3-8168-74143eca891c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U09",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e83d4ff7-5575-4715-a9e5-7c71a1c4ab70",
+    "known_text": "英語を話す人と話せるので、もっと上手に話せます",
+    "target_text": "I can speak with people who speak English so I can speak better",
+    "target1_audio_id": "9365f0b1-47d9-4936-aa0b-4fb455ceb810",
+    "target2_audio_id": "d27992a8-c59e-44a3-8168-74143eca891c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 111,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U10",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "話し始められると思います。そして、答えるのに時間をかけすぎるのは好きではありません",
+    "target_text": "I think that I can start talking and I don't like taking too much time to answer",
+    "target1_audio_id": "fe7d886e-22cc-427e-bbcd-21c7d1e023be",
+    "target2_audio_id": "2765417a-d99b-4093-b442-3c91d475bcaf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U10",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "3f6e1c89-50e0-4f0c-a591-949972e8ad59",
+    "known_text": "話し始められると思います。そして、答えるのに時間をかけすぎるのは好きではありません",
+    "target_text": "I think that I can start talking and I don't like taking too much time to answer",
+    "target1_audio_id": "fe7d886e-22cc-427e-bbcd-21c7d1e023be",
+    "target2_audio_id": "2765417a-d99b-4093-b442-3c91d475bcaf",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 112,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U11",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話せるように、今日はできるだけ頑張りたいです",
+    "target_text": "I want to try as hard as I can today so I can speak better",
+    "target1_audio_id": "598e69f3-4556-4c30-a12a-f706287af827",
+    "target2_audio_id": "8881533b-cceb-4586-a6f0-e93f7d5aa203",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U11",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "68f2d406-9597-4ca7-855e-4ada57dbba48",
+    "known_text": "もっと上手に話せるように、今日はできるだけ頑張りたいです",
+    "target_text": "I want to try as hard as I can today so I can speak better",
+    "target1_audio_id": "598e69f3-4556-4c30-a12a-f706287af827",
+    "target2_audio_id": "8881533b-cceb-4586-a6f0-e93f7d5aa203",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 113,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U12",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今は英語を少し話しますが、もうすぐもっと上手に話せます",
+    "target_text": "I speak a little English now and I can speak better soon",
+    "target1_audio_id": "196415be-1303-4f3c-920f-ccb19dc457da",
+    "target2_audio_id": "e3ff6554-9970-4180-9f00-9d83544ba66b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U12",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e27ffc1e-7f00-4c6d-be4d-79a6ba1ba439",
+    "known_text": "今は英語を少し話しますが、もうすぐもっと上手に話せます",
+    "target_text": "I speak a little English now and I can speak better soon",
+    "target1_audio_id": "196415be-1303-4f3c-920f-ccb19dc457da",
+    "target2_audio_id": "e3ff6554-9970-4180-9f00-9d83544ba66b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 114,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U14",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "友達と話せるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can speak with my friends",
+    "target1_audio_id": "26f319e1-b99f-4c40-bfc1-d7c80b846760",
+    "target2_audio_id": "b0a06f6c-3190-4178-859e-d6239563bf15",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U14",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "02dcde2b-67db-45e7-ba93-4cafc40f1a74",
+    "known_text": "友達と話せるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can speak with my friends",
+    "target1_audio_id": "26f319e1-b99f-4c40-bfc1-d7c80b846760",
+    "target2_audio_id": "b0a06f6c-3190-4178-859e-d6239563bf15",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 115,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L02U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L02U15",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日は英語を話せるので、できるだけ頑張りたいです",
+    "target_text": "I can speak English today so I want to try as hard as I can",
+    "target1_audio_id": "67645c6b-3ee9-41d7-9b0a-7387ce704132",
+    "target2_audio_id": "6e23fe59-43d5-45ef-b607-60b93126d5e5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L02U15",
+    "seed_number": 56,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "ec59b243-a5c1-462b-abf7-69b28546743d",
+    "known_text": "今日は英語を話せるので、できるだけ頑張りたいです",
+    "target_text": "I can speak English today so I want to try as hard as I can",
+    "target1_audio_id": "67645c6b-3ee9-41d7-9b0a-7387ce704132",
+    "target2_audio_id": "6e23fe59-43d5-45ef-b607-60b93126d5e5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 116,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U02",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語のいくつかの言葉から始めるのはいいことだと思います",
+    "target_text": "I think that it's a good thing to start with a few words in English",
+    "target1_audio_id": "1a9bfa27-5b40-44bd-b59f-3052b6663e5f",
+    "target2_audio_id": "8582039a-bea9-4ea1-ba6f-5a457607496f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U02",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "111b4118-1439-4917-b555-eccaba69b9f3",
+    "known_text": "英語のいくつかの言葉から始めるのはいいことだと思います",
+    "target_text": "I think that it's a good thing to start with a few words in English",
+    "target1_audio_id": "1a9bfa27-5b40-44bd-b59f-3052b6663e5f",
+    "target2_audio_id": "8582039a-bea9-4ea1-ba6f-5a457607496f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 117,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U03",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話せるように、英語でいくつかの言葉を覚えようとしています",
+    "target_text": "I'm trying to remember a few words in English so I can speak better",
+    "target1_audio_id": "38ed7065-0610-45fc-a6f6-df7d336ce9e9",
+    "target2_audio_id": "41529a4b-0b77-42a4-ab05-c92b54240470",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U03",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "ef5300d5-b164-41f5-9b4b-03de4b0eee40",
+    "known_text": "もっと上手に話せるように、英語でいくつかの言葉を覚えようとしています",
+    "target_text": "I'm trying to remember a few words in English so I can speak better",
+    "target1_audio_id": "38ed7065-0610-45fc-a6f6-df7d336ce9e9",
+    "target2_audio_id": "41529a4b-0b77-42a4-ab05-c92b54240470",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 118,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U06",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今は英語を少し話します。いくつかの言葉を言いたいです",
+    "target_text": "I speak a little English now and I want to say a few words",
+    "target1_audio_id": "1bbc5845-cb16-4e4f-b967-baa97f8116ab",
+    "target2_audio_id": "42112508-5fc9-4429-8159-937893345816",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U06",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "b2abd586-0810-4506-953a-d477cbae6a05",
+    "known_text": "今は英語を少し話します。いくつかの言葉を言いたいです",
+    "target_text": "I speak a little English now and I want to say a few words",
+    "target1_audio_id": "1bbc5845-cb16-4e4f-b967-baa97f8116ab",
+    "target2_audio_id": "42112508-5fc9-4429-8159-937893345816",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 119,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U07",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日は英語でいくつかの言葉を言いたいです",
+    "target_text": "I'd like to say a few words in English today",
+    "target1_audio_id": "b21c5816-046b-4f8a-9890-c73b74650063",
+    "target2_audio_id": "9c2d32b3-2d2b-4408-a430-6f353f26234a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U07",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "596495b2-e827-4482-a882-8553b522e967",
+    "known_text": "今日は英語でいくつかの言葉を言いたいです",
+    "target_text": "I'd like to say a few words in English today",
+    "target1_audio_id": "b21c5816-046b-4f8a-9890-c73b74650063",
+    "target2_audio_id": "9c2d32b3-2d2b-4408-a430-6f353f26234a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 120,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U08",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語でいくつかの言葉を覚えようとしていますが、時間がかかりすぎています",
+    "target_text": "I'm trying to remember a few words in English and it's taking too much time",
+    "target1_audio_id": "6f5a908e-305f-4f24-ba98-bbcd9e1fa29b",
+    "target2_audio_id": "fde936de-6ae5-42b0-bba5-aac51a49beb9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U08",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "be4c2adf-7cd3-471d-b090-e581ff00b748",
+    "known_text": "英語でいくつかの言葉を覚えようとしていますが、時間がかかりすぎています",
+    "target_text": "I'm trying to remember a few words in English and it's taking too much time",
+    "target1_audio_id": "6f5a908e-305f-4f24-ba98-bbcd9e1fa29b",
+    "target2_audio_id": "fde936de-6ae5-42b0-bba5-aac51a49beb9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 121,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U09",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "友達と英語でいくつかの言葉を言いたいです",
+    "target_text": "I want to say a few words in English with my friends",
+    "target1_audio_id": "0b521190-dce9-47a2-9595-b61e4ac394cd",
+    "target2_audio_id": "4d8bb628-5022-4e0e-ae2e-d9800ca65724",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U09",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "e184920e-438a-4132-be97-999b7298b300",
+    "known_text": "友達と英語でいくつかの言葉を言いたいです",
+    "target_text": "I want to say a few words in English with my friends",
+    "target1_audio_id": "0b521190-dce9-47a2-9595-b61e4ac394cd",
+    "target2_audio_id": "4d8bb628-5022-4e0e-ae2e-d9800ca65724",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 122,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U10",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語でいくつかの言葉を覚えるために、今日はできるだけ頑張りたいです",
+    "target_text": "I want to try as hard as I can today to remember a few words in English",
+    "target1_audio_id": "25a21c06-d9bd-47ce-bb58-69e1bc47c9a0",
+    "target2_audio_id": "f312d31f-87c6-4439-9fb1-46f2f00013d2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U10",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "733a9f18-2ab3-411c-9d7a-e05e02197dd9",
+    "known_text": "英語でいくつかの言葉を覚えるために、今日はできるだけ頑張りたいです",
+    "target_text": "I want to try as hard as I can today to remember a few words in English",
+    "target1_audio_id": "25a21c06-d9bd-47ce-bb58-69e1bc47c9a0",
+    "target2_audio_id": "f312d31f-87c6-4439-9fb1-46f2f00013d2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 123,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U12",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語のいくつかの言葉から始めるのはいいことです",
+    "target_text": "It's a good thing to start with a few words in English",
+    "target1_audio_id": "688eb653-faae-43b8-a110-b6660ee6f48b",
+    "target2_audio_id": "a00c142a-8e4e-4752-a83c-bdd4000f8233",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U12",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "5afa6421-3dc0-4391-abb2-6eb08a5fcfed",
+    "known_text": "英語のいくつかの言葉から始めるのはいいことです",
+    "target_text": "It's a good thing to start with a few words in English",
+    "target1_audio_id": "688eb653-faae-43b8-a110-b6660ee6f48b",
+    "target2_audio_id": "a00c142a-8e4e-4752-a83c-bdd4000f8233",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 124,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U14",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話せるように、英語でいくつかの言葉を言いたいです",
+    "target_text": "I want to say a few words in English so I can speak better",
+    "target1_audio_id": "70919f68-8a79-410d-8ced-074c1c02879f",
+    "target2_audio_id": "5c0527c9-9064-46d5-ae9d-fded31291d0a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U14",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "c7f8dd94-fbf4-4d34-89d1-0af8b7b32c7a",
+    "known_text": "もっと上手に話せるように、英語でいくつかの言葉を言いたいです",
+    "target_text": "I want to say a few words in English so I can speak better",
+    "target1_audio_id": "70919f68-8a79-410d-8ced-074c1c02879f",
+    "target2_audio_id": "5c0527c9-9064-46d5-ae9d-fded31291d0a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 125,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0056L03U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0056L03U15",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語でいくつかの言葉を言えるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can say a few words in English",
+    "target1_audio_id": "69016d84-25e2-4039-9e3d-6c0750b1f54c",
+    "target2_audio_id": "59c55896-1b3b-4f16-a847-46b7051c8fd3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0056L03U15",
+    "seed_number": 56,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "c07b8486-d7c3-44f2-b157-c3e264a8d4df",
+    "known_text": "英語でいくつかの言葉を言えるように、他の人と話す練習をするつもりです",
+    "target_text": "I'm going to practise speaking with someone else so I can say a few words in English",
+    "target1_audio_id": "69016d84-25e2-4039-9e3d-6c0750b1f54c",
+    "target2_audio_id": "59c55896-1b3b-4f16-a847-46b7051c8fd3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 126,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01B06",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "何かをどう言うか思い出せません",
+    "target_text": "I can't remember how to say something",
+    "target1_audio_id": "f1413a93-8ac4-4e9f-a877-28708ff4f9d2",
+    "target2_audio_id": "c7d5337d-f9f8-4a44-b476-034443a1cc07",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01B06",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "6ce3fb4f-424c-48dc-be4e-82601b509dbd",
+    "known_text": "何かをどう言うか思い出せません",
+    "target_text": "I can't remember how to say something",
+    "target1_audio_id": "f1413a93-8ac4-4e9f-a877-28708ff4f9d2",
+    "target2_audio_id": "c7d5337d-f9f8-4a44-b476-034443a1cc07",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 127,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01B07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01B07",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "いくつかの言葉が思い出せません",
+    "target_text": "I can't remember a few words",
+    "target1_audio_id": "9cf37730-3d3f-496b-8b99-a4f678b71850",
+    "target2_audio_id": "c648de2d-eda5-49ae-b943-a270af777750",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01B07",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "ffc07a0c-fe81-4173-bc27-8a0d503c001f",
+    "known_text": "いくつかの言葉が思い出せません",
+    "target_text": "I can't remember a few words",
+    "target1_audio_id": "9cf37730-3d3f-496b-8b99-a4f678b71850",
+    "target2_audio_id": "c648de2d-eda5-49ae-b943-a270af777750",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 128,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことが思い出せないので、もっと話し始める必要があります",
+    "target_text": "I can't remember what I wanted to say so I need to start talking more",
+    "target1_audio_id": "ad94a91a-1b25-4108-8c12-e1c0885b4046",
+    "target2_audio_id": "24c15ca2-5fba-4e6d-890d-692c579f2616",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "3e1d70b0-7179-4166-9e88-828bfbfaffda",
+    "known_text": "言いたかったことが思い出せないので、もっと話し始める必要があります",
+    "target_text": "I can't remember what I wanted to say so I need to start talking more",
+    "target1_audio_id": "ad94a91a-1b25-4108-8c12-e1c0885b4046",
+    "target2_audio_id": "24c15ca2-5fba-4e6d-890d-692c579f2616",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 129,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語で文全体が思い出せません",
+    "target_text": "I can't remember the whole sentence in English",
+    "target1_audio_id": "bb9cbe01-6ccc-4a47-aeed-8819bc9d7074",
+    "target2_audio_id": "e3c734bb-2e7d-416f-bbc0-4579350514ba",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "8bf695f1-d81f-4db1-bc1e-110171fb0e5d",
+    "known_text": "英語で文全体が思い出せません",
+    "target_text": "I can't remember the whole sentence in English",
+    "target1_audio_id": "bb9cbe01-6ccc-4a47-aeed-8819bc9d7074",
+    "target2_audio_id": "e3c734bb-2e7d-416f-bbc0-4579350514ba",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 130,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U04",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "何を言えばいいか思い出せないとき、間違いを気にしません",
+    "target_text": "I don't worry about making mistakes when I can't remember what to say",
+    "target1_audio_id": "5a29de54-9f5b-4af6-b4ef-c63536177ffd",
+    "target2_audio_id": "ca006045-9a2e-4395-855a-f4031bc6c8fb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U04",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "2fc5b8ae-a823-46cb-9263-c50927aafc3a",
+    "known_text": "何を言えばいいか思い出せないとき、間違いを気にしません",
+    "target_text": "I don't worry about making mistakes when I can't remember what to say",
+    "target1_audio_id": "5a29de54-9f5b-4af6-b4ef-c63536177ffd",
+    "target2_audio_id": "ca006045-9a2e-4395-855a-f4031bc6c8fb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 131,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U06",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語で何かをどう言うか思い出せません",
+    "target_text": "I can't remember how to say something in English",
+    "target1_audio_id": "02cd93fd-e2ac-4aa0-9cc7-cfcf59478d22",
+    "target2_audio_id": "1148a055-0163-4c70-8021-6bee99ed81b4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U06",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "d53303f5-b6b4-4052-9fad-0a4e0c1756ef",
+    "known_text": "英語で何かをどう言うか思い出せません",
+    "target_text": "I can't remember how to say something in English",
+    "target1_audio_id": "02cd93fd-e2ac-4aa0-9cc7-cfcf59478d22",
+    "target2_audio_id": "1148a055-0163-4c70-8021-6bee99ed81b4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 132,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U09",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語である言葉をどう言うか思い出せなくて、時間がかかりすぎています",
+    "target_text": "I can't remember how to say a word in English and it's taking too much time",
+    "target1_audio_id": "7c7212a6-ed3d-4788-be4f-a4eea514fefb",
+    "target2_audio_id": "31154250-7049-4993-afbf-c12848045f6c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U09",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "ebca6577-3e0d-4ef0-a24e-e9ed63416296",
+    "known_text": "英語である言葉をどう言うか思い出せなくて、時間がかかりすぎています",
+    "target_text": "I can't remember how to say a word in English and it's taking too much time",
+    "target1_audio_id": "7c7212a6-ed3d-4788-be4f-a4eea514fefb",
+    "target2_audio_id": "31154250-7049-4993-afbf-c12848045f6c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 133,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U10",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "友達と話したいとき、何を言えばいいか思い出せません",
+    "target_text": "I can't remember what to say when I want to speak with my friends",
+    "target1_audio_id": "0c1c7830-fa9c-46c8-b160-9b8295de0320",
+    "target2_audio_id": "b177d84c-9c2d-43a9-a7ab-d0102eb40fc9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U10",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a77f221d-5d57-4094-8818-260f341aca02",
+    "known_text": "友達と話したいとき、何を言えばいいか思い出せません",
+    "target_text": "I can't remember what to say when I want to speak with my friends",
+    "target1_audio_id": "0c1c7830-fa9c-46c8-b160-9b8295de0320",
+    "target2_audio_id": "b177d84c-9c2d-43a9-a7ab-d0102eb40fc9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 134,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U11",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことが思い出せないとき、時間をかけすぎるのは好きではありません",
+    "target_text": "I don't like taking too much time when I can't remember what I wanted to say",
+    "target1_audio_id": "a96ea15f-83cb-4601-9b1e-75f7115e6c91",
+    "target2_audio_id": "22c44338-14ab-47da-9b93-7f572f17a8bf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U11",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "aaea1fbd-3652-4758-8f02-d3a2600defb0",
+    "known_text": "言いたかったことが思い出せないとき、時間をかけすぎるのは好きではありません",
+    "target_text": "I don't like taking too much time when I can't remember what I wanted to say",
+    "target1_audio_id": "a96ea15f-83cb-4601-9b1e-75f7115e6c91",
+    "target2_audio_id": "22c44338-14ab-47da-9b93-7f572f17a8bf",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 135,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U12",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "思い出せません。そして、答えるのに時間をかけすぎるのは好きではありません",
+    "target_text": "I can't remember and I don't like taking too much time to answer",
+    "target1_audio_id": "dc215562-5e88-4301-9083-067fdcb0e5e6",
+    "target2_audio_id": "8b8d4b74-aabf-42ab-b158-ced6bec2e232",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U12",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "75bd4ed8-6a73-46cb-a5ef-b0df51230457",
+    "known_text": "思い出せません。そして、答えるのに時間をかけすぎるのは好きではありません",
+    "target_text": "I can't remember and I don't like taking too much time to answer",
+    "target1_audio_id": "dc215562-5e88-4301-9083-067fdcb0e5e6",
+    "target2_audio_id": "8b8d4b74-aabf-42ab-b158-ced6bec2e232",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 136,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0057L01U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0057L01U15",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことが思い出せないとき、間違いを気にしません",
+    "target_text": "I don't worry about making mistakes when I can't remember what I wanted to say",
+    "target1_audio_id": "d9a2fa34-8ea5-4f67-91e1-7d1d843f4523",
+    "target2_audio_id": "e0d72ab8-12a2-45aa-a10a-3381cc7a9c9b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0057L01U15",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "cbcebb1b-d267-49a1-a634-245210d27033",
+    "known_text": "言いたかったことが思い出せないとき、間違いを気にしません",
+    "target_text": "I don't worry about making mistakes when I can't remember what I wanted to say",
+    "target1_audio_id": "d9a2fa34-8ea5-4f67-91e1-7d1d843f4523",
+    "target2_audio_id": "e0d72ab8-12a2-45aa-a10a-3381cc7a9c9b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 137,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01B02",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語でいくつかの言葉を知っている",
+    "target_text": "know a few words in English",
+    "target1_audio_id": "e1ae87f7-51ff-4420-a14e-37e934121831",
+    "target2_audio_id": "4f9f3059-b062-41fb-bc82-8ca35ce8bdc3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01B02",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "f3886d90-cf7b-49d6-a8d8-778e0a34f12a",
+    "known_text": "英語でいくつかの言葉を知っている",
+    "target_text": "know a few words in English",
+    "target1_audio_id": "e1ae87f7-51ff-4420-a14e-37e934121831",
+    "target2_audio_id": "4f9f3059-b062-41fb-bc82-8ca35ce8bdc3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 138,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01B03",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたが言いたかったことを知っている",
+    "target_text": "know what you wanted to say",
+    "target1_audio_id": "ba1a7750-18fb-4b16-b13b-8efea04d19b1",
+    "target2_audio_id": "45516c87-36a4-4531-bab0-b4d6227a1214",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01B03",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "888865bf-77a4-416a-8c61-2f87c295eb0d",
+    "known_text": "あなたが言いたかったことを知っている",
+    "target_text": "know what you wanted to say",
+    "target1_audio_id": "ba1a7750-18fb-4b16-b13b-8efea04d19b1",
+    "target2_audio_id": "45516c87-36a4-4531-bab0-b4d6227a1214",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 139,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01U02",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことは知っていますが、英語で何かをどう言うか思い出せません",
+    "target_text": "I know what I wanted to say but I can't remember how to say something in English",
+    "target1_audio_id": "7030987e-9782-4509-8b58-9c8a0abe872b",
+    "target2_audio_id": "c6b39751-a177-4be8-b765-02166d2a4840",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01U02",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "033b8798-c190-4b5a-b25a-5649a260b10a",
+    "known_text": "言いたかったことは知っていますが、英語で何かをどう言うか思い出せません",
+    "target_text": "I know what I wanted to say but I can't remember how to say something in English",
+    "target1_audio_id": "7030987e-9782-4509-8b58-9c8a0abe872b",
+    "target2_audio_id": "c6b39751-a177-4be8-b765-02166d2a4840",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 140,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01U04",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたが英語で言いたかったことを知っています",
+    "target_text": "I know what you wanted to say in English",
+    "target1_audio_id": "80034219-fe36-4b12-a584-d1ba3250234d",
+    "target2_audio_id": "392a5405-603f-445a-8946-04d21c19aedd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01U04",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "47a6f8c6-f165-42a5-96cd-ecd3f8ca346e",
+    "known_text": "あなたが英語で言いたかったことを知っています",
+    "target_text": "I know what you wanted to say in English",
+    "target1_audio_id": "80034219-fe36-4b12-a584-d1ba3250234d",
+    "target2_audio_id": "392a5405-603f-445a-8946-04d21c19aedd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 141,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01U06",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことは知っていますが、文全体が思い出せません",
+    "target_text": "I know what I wanted to say but I can't remember the whole sentence",
+    "target1_audio_id": "9e2f2f9e-c117-4bae-928a-ac2de0947cfa",
+    "target2_audio_id": "23aec3f2-0750-436c-9434-18eaa748d4fe",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01U06",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "fea6df13-573c-4393-9aac-fbbdab1652ff",
+    "known_text": "言いたかったことは知っていますが、文全体が思い出せません",
+    "target_text": "I know what I wanted to say but I can't remember the whole sentence",
+    "target1_audio_id": "9e2f2f9e-c117-4bae-928a-ac2de0947cfa",
+    "target2_audio_id": "23aec3f2-0750-436c-9434-18eaa748d4fe",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 142,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01U10",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語でいくつかの言葉を知っていますが、話し始めたいです",
+    "target_text": "I know a few words in English but I want to start talking",
+    "target1_audio_id": "300739d6-f9d0-41a9-988e-587a51a4ef82",
+    "target2_audio_id": "84daaf44-6e3b-4942-9ba1-22298da6fe52",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01U10",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1ebba597-4729-402b-925b-f48f6a0f4e2c",
+    "known_text": "英語でいくつかの言葉を知っていますが、話し始めたいです",
+    "target_text": "I know a few words in English but I want to start talking",
+    "target1_audio_id": "300739d6-f9d0-41a9-988e-587a51a4ef82",
+    "target2_audio_id": "84daaf44-6e3b-4942-9ba1-22298da6fe52",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 143,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01U13",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことは知っていますが、時間がかかりすぎています",
+    "target_text": "I know what I wanted to say but it's taking too much time",
+    "target1_audio_id": "0a70afb4-040c-418e-b930-bec41e9959d5",
+    "target2_audio_id": "03bf59f8-3aa0-47c5-8be6-2bf072613b01",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01U13",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e0bfb78b-2075-447b-895a-34bf127d1fdb",
+    "known_text": "言いたかったことは知っていますが、時間がかかりすぎています",
+    "target_text": "I know what I wanted to say but it's taking too much time",
+    "target1_audio_id": "0a70afb4-040c-418e-b930-bec41e9959d5",
+    "target2_audio_id": "03bf59f8-3aa0-47c5-8be6-2bf072613b01",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 144,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L01U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L01U15",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "言いたかったことは知っていますが、ある言葉が思い出せません",
+    "target_text": "I know what I wanted to say but I can't remember a word",
+    "target1_audio_id": "8449d948-afdc-424d-a4c7-114a6bd6ec0a",
+    "target2_audio_id": "00681766-ad0f-4d05-b2f0-ac0ba5e32159",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L01U15",
+    "seed_number": 59,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "465548b3-77ec-40af-b887-068e86af5e7f",
+    "known_text": "言いたかったことは知っていますが、ある言葉が思い出せません",
+    "target_text": "I know what I wanted to say but I can't remember a word",
+    "target1_audio_id": "8449d948-afdc-424d-a4c7-114a6bd6ec0a",
+    "target2_audio_id": "00681766-ad0f-4d05-b2f0-ac0ba5e32159",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 145,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U01",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "人と英語で話すために何をする必要があるか知っています",
+    "target_text": "I know what I need to do to speak English with people",
+    "target1_audio_id": "34a485dd-11aa-40d7-8a4c-1547148a5754",
+    "target2_audio_id": "4b7df654-5f44-4a3d-88e2-0f264cbed840",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U01",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "05fe6cac-a205-4abe-b3dd-b5efba9a51ae",
+    "known_text": "人と英語で話すために何をする必要があるか知っています",
+    "target_text": "I know what I need to do to speak English with people",
+    "target1_audio_id": "34a485dd-11aa-40d7-8a4c-1547148a5754",
+    "target2_audio_id": "4b7df654-5f44-4a3d-88e2-0f264cbed840",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 146,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U02",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日何をする必要があるか知っているかどうかわかりません",
+    "target_text": "I'm not sure if I know what I need to do today",
+    "target1_audio_id": "b5245b23-a0ec-4c83-bc9f-60c5396633f1",
+    "target2_audio_id": "064055ce-82bb-4649-b365-995a6b16e555",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U02",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "d1e8aac1-f275-450f-8b57-a1f74dae9bb8",
+    "known_text": "今日何をする必要があるか知っているかどうかわかりません",
+    "target_text": "I'm not sure if I know what I need to do today",
+    "target1_audio_id": "b5245b23-a0ec-4c83-bc9f-60c5396633f1",
+    "target2_audio_id": "064055ce-82bb-4649-b365-995a6b16e555",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 147,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U03",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日何をする必要があるか知っています。そして、話し始めたいです",
+    "target_text": "I know what I need to do today and I want to start talking",
+    "target1_audio_id": "1846d971-1d2d-4698-987f-1da565bf5cbe",
+    "target2_audio_id": "e2daf971-9813-484e-83dc-97a891585246",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U03",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "5cc66e84-bded-4319-b922-b58df8ab78a7",
+    "known_text": "今日何をする必要があるか知っています。そして、話し始めたいです",
+    "target_text": "I know what I need to do today and I want to start talking",
+    "target1_audio_id": "1846d971-1d2d-4698-987f-1da565bf5cbe",
+    "target2_audio_id": "e2daf971-9813-484e-83dc-97a891585246",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 148,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U05",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今話し始めるために何をする必要があるか知っていると思います",
+    "target_text": "I think I know what I need to do to start talking now",
+    "target1_audio_id": "135089df-b024-45c4-9fc7-c91ed45471ef",
+    "target2_audio_id": "8ac6e44c-0d2b-4e42-b0a8-7c4164062c18",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U05",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "8df83f8c-234d-4fde-ae51-74d57a6926c1",
+    "known_text": "今話し始めるために何をする必要があるか知っていると思います",
+    "target_text": "I think I know what I need to do to start talking now",
+    "target1_audio_id": "135089df-b024-45c4-9fc7-c91ed45471ef",
+    "target2_audio_id": "8ac6e44c-0d2b-4e42-b0a8-7c4164062c18",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 149,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U07",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "話し始めるために今朝何をする必要があるか知っています",
+    "target_text": "I know what I need to do this morning to start talking",
+    "target1_audio_id": "afbccfd7-a00e-4a6f-8eb5-98da1df974f9",
+    "target2_audio_id": "79be1d43-b842-4ae7-be15-9ac964586b1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U07",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "84939742-a50b-400e-947f-0188ee2134cd",
+    "known_text": "話し始めるために今朝何をする必要があるか知っています",
+    "target_text": "I know what I need to do this morning to start talking",
+    "target1_audio_id": "afbccfd7-a00e-4a6f-8eb5-98da1df974f9",
+    "target2_audio_id": "79be1d43-b842-4ae7-be15-9ac964586b1b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 150,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U09",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "話す練習をするために今夜何をする必要があるか知っています",
+    "target_text": "I know what I need to do tonight to practise speaking",
+    "target1_audio_id": "e4763d84-f446-49b4-b120-c5e9ced72b6d",
+    "target2_audio_id": "f195b0c7-fe12-47a0-9585-ba45801d92f0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U09",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "7c2b3f61-bbd5-40e3-8904-98f6701c4ac3",
+    "known_text": "話す練習をするために今夜何をする必要があるか知っています",
+    "target_text": "I know what I need to do tonight to practise speaking",
+    "target1_audio_id": "e4763d84-f446-49b4-b120-c5e9ced72b6d",
+    "target2_audio_id": "f195b0c7-fe12-47a0-9585-ba45801d92f0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 151,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U11",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "もっと上手に話すために今日の午後何をする必要があるか知っています",
+    "target_text": "I know what I need to do this afternoon to speak better",
+    "target1_audio_id": "3a268bbc-f1e9-438b-9d67-4fa56336ef00",
+    "target2_audio_id": "8edfda3c-280d-4885-abb8-621ee2163d41",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U11",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "cbd7d55b-bcb6-4104-9352-664cc5ed5c0e",
+    "known_text": "もっと上手に話すために今日の午後何をする必要があるか知っています",
+    "target_text": "I know what I need to do this afternoon to speak better",
+    "target1_audio_id": "3a268bbc-f1e9-438b-9d67-4fa56336ef00",
+    "target2_audio_id": "8edfda3c-280d-4885-abb8-621ee2163d41",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 152,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U13",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語をとても上手に話せるように、今日何をする必要があるか知っています",
+    "target_text": "I know what I need to do today so I can speak English very well",
+    "target1_audio_id": "ba7f7fcd-0f42-447d-8773-a6fbbca5e7ec",
+    "target2_audio_id": "1dfa2888-85ed-4ca4-993e-c09bb9251822",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U13",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "23659ea9-1410-423e-8255-d3ca7a4b8b04",
+    "known_text": "英語をとても上手に話せるように、今日何をする必要があるか知っています",
+    "target_text": "I know what I need to do today so I can speak English very well",
+    "target1_audio_id": "ba7f7fcd-0f42-447d-8773-a6fbbca5e7ec",
+    "target2_audio_id": "1dfa2888-85ed-4ca4-993e-c09bb9251822",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 153,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0059L02U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0059L02U14",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "英語を話す練習をするために今晩何をする必要があるか知っています",
+    "target_text": "I know what I need to do this evening to practise speaking English",
+    "target1_audio_id": "2288328c-8412-4f3d-901e-679702ef5267",
+    "target2_audio_id": "abec669a-f2c9-408c-b1af-2bc3a14472c6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0059L02U14",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "334484e0-f07b-4f1d-ac8e-226f86bf440b",
+    "known_text": "英語を話す練習をするために今晩何をする必要があるか知っています",
+    "target_text": "I know what I need to do this evening to practise speaking English",
+    "target1_audio_id": "2288328c-8412-4f3d-901e-679702ef5267",
+    "target2_audio_id": "abec669a-f2c9-408c-b1af-2bc3a14472c6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U14",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U13",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L02U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01U13",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0059L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01B07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0057L01B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U14",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L03U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U14",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L02U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U13",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0056L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L04U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L04U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L04U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L04U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L04B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L04B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L02U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L02B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0055L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L04B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L03U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L03U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L03B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0054L02U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L03B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L02B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L01U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L01U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L01U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0053L01B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L06B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L05U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L05U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L05U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L05U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L04U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L04U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L04U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L04U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L03U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L03U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L03U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L02U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L02U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L01U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0052L01B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0051L05U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0051L04U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0051L04U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0045L02U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0045L01U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0044L03U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0044L02U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0044L01U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0044L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0041L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0037L02B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0035L03U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0034L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0033L01U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0032L03U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0025L04U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0025L03U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0025L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0021L03B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0021L03B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0021L03B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0020L03U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0018L04B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0008L03U05",
+   "set": {
+    "known_audio_id": null
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-29-04-544Z-903d33d4-1d63-4189-9207-196d27b28190.json"
+}

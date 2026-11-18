@@ -1,0 +1,344 @@
+[
+ {
+  "seed_number": 53,
+  "phrases": {
+   "53:1": [
+    {
+     "known_text": "ठेव",
+     "target_text": "put",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ठेवायला",
+     "target_text": "to put",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काहीतरी ठेवायला",
+     "target_text": "to put something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इथे ठेवायला",
+     "target_text": "to put here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तिला काहीतरी ठेवायचं होतं",
+     "target_text": "she wanted to put something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला इथे काहीतरी ठेवायचं होतं",
+     "target_text": "she wanted to put something here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला त्याचं पत्र ठेवायचं होतं",
+     "target_text": "she wanted to put his letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला ते इथे ठेवायचं होतं",
+     "target_text": "we wanted to put it here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याचं पत्र इथे ठेवायचं होतं",
+     "target_text": "I wanted to put his letter here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याचं पत्र ठेवायला",
+     "target_text": "to put his letter",
+     "phrase_role": "build"
+    }
+   ],
+   "53:2": [
+    {
+     "known_text": "बॅग",
+     "target_text": "bag",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तिच्या बॅगेत",
+     "target_text": "in her bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तिच्या बॅगेत काहीतरी",
+     "target_text": "something in her bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तिच्या बॅगेत त्याचं पत्र",
+     "target_text": "his letter in her bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तिला त्याचं पत्र तिच्या बॅगेत ठेवायचं होतं",
+     "target_text": "she wanted to put his letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तिच्या बॅगेत काहीतरी ठेवायचं होतं",
+     "target_text": "I wanted to put something in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला त्याचं पत्र तिच्या बॅगेत ठेवायचं होतं",
+     "target_text": "he wanted to put his letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला ते तिच्या बॅगेत ठेवायचं होतं",
+     "target_text": "she wanted to put it in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला काहीतरी तिच्या बॅगेत ठेवायचं होतं",
+     "target_text": "she wanted to put something in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की तिला त्याचं पत्र तिच्या बॅगेत ठेवायचं होतं",
+     "target_text": "I think that she wanted to put his letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याचं पत्र तिच्या बॅगेत ठेव",
+     "target_text": "put his letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते तिच्या बॅगेत ठेवायला",
+     "target_text": "to put it in her bag",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 54,
+  "phrases": {
+   "54:1": [
+    {
+     "known_text": "दे",
+     "target_text": "give",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "द्यायला",
+     "target_text": "to give",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काहीतरी द्यायला",
+     "target_text": "to give something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता काहीतरी द्यायला",
+     "target_text": "to give something now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला तुम्हाला काहीतरी द्यायचं होतं",
+     "target_text": "we wanted to give you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला मला काहीतरी द्यायचं होतं",
+     "target_text": "she wanted to give me something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला तुम्हाला काहीतरी द्यायचं होतं",
+     "target_text": "he wanted to give you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तिला एक पत्र द्यायचं होतं",
+     "target_text": "I wanted to give her a letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला त्याचं पत्र द्यायचं होतं",
+     "target_text": "I wanted to give you his letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काहीतरी द्यायला",
+     "target_text": "to give you something",
+     "phrase_role": "build"
+    }
+   ],
+   "54:2": [
+    {
+     "known_text": "वेळ",
+     "target_text": "time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "अजून वेळ",
+     "target_text": "more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बोलायला वेळ",
+     "target_text": "time to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला तुम्हाला थोडा अजून वेळ द्यायचा होता",
+     "target_text": "we wanted to give you a little more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अजून वेळ हवा आहे",
+     "target_text": "I need more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वेळ नाही",
+     "target_text": "I don't have time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खूप वेळ घ्यायला आवडत नाही",
+     "target_text": "I don't like taking too much time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याकडे माझ्याशी बोलायला वेळ आहे का?",
+     "target_text": "do you have time to speak with me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला थोडा वेळ दे",
+     "target_text": "give me a little time",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 56,
+  "phrases": {
+   "56:1": [
+    {
+     "known_text": "म्हणजे",
+     "target_text": "so",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "म्हणजे मला आठवेल",
+     "target_text": "so I can remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "म्हणजे मला एक शब्द आठवेल",
+     "target_text": "so I can remember a word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "म्हणजे मला त्याचं नाव आठवेल",
+     "target_text": "so I can remember his name",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "म्हणजे मला काहीतरी इंग्रजीत म्हणायचे आठवेल",
+     "target_text": "so I can remember how to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी सराव करणार आहे, म्हणजे मला पूर्ण वाक्य आठवेल",
+     "target_text": "I'm going to practise, so I can remember the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी ते लिहिणार आहे, म्हणजे मला आठवेल",
+     "target_text": "I'm going to write it, so I can remember",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला जास्त सराव करायचा आहे, म्हणजे मला तिचं नाव आठवेल",
+     "target_text": "I want to practise more, so I can remember her name",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी ते शक्य तितक्या वेळा म्हणणार आहे, म्हणजे मला आठवेल",
+     "target_text": "I'm going to say it as often as possible, so I can remember",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "म्हणजे मला उत्तर आठवेल",
+     "target_text": "so I can remember the answer",
+     "phrase_role": "build"
+    }
+   ],
+   "56:2": [
+    {
+     "known_text": "काही",
+     "target_text": "few",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "शब्द",
+     "target_text": "words",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "काही शब्द",
+     "target_text": "a few words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इंग्रजीत काही शब्द",
+     "target_text": "a few words in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काही शब्द आठवणे",
+     "target_text": "to remember a few words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "म्हणजे मला काही शब्द कसे म्हणायचे ते आठवतील",
+     "target_text": "so I can remember how to say a few words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काही शब्द शिकायचे आहेत",
+     "target_text": "I want to learn a few words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला इंग्रजीत काही शब्द म्हणता येतात",
+     "target_text": "I can say a few words in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला काही शब्द लिहायचे होते",
+     "target_text": "she wanted to write a few words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काही शब्द आठवतात",
+     "target_text": "I can remember a few words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काही शब्द आठवण्याचा प्रयत्न करतोय",
+     "target_text": "I'm trying to remember a few words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "काही शब्द म्हणणे",
+     "target_text": "to say a few words",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

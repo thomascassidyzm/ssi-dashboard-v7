@@ -1,0 +1,76 @@
+{
+ "seed": 60,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "त्याचं नाव माहित नाही",
+     "don't know his name"
+    ],
+    "U02": [
+     "उत्तर काय आहे ते मला माहित नाही",
+     "I don't know what the answer is"
+    ],
+    "U04": [
+     "मला ते कसं करायचं हे माहित नाही",
+     "I don't know how to do it"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "काय होणार आहे ते मला माहित नाही",
+     "I don't know what's going to happen"
+    ],
+    [
+     "build",
+     "ते कसं म्हणायचं ते माहित नाही",
+     "don't know how to say it"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "वेगवेगळ्या गोष्टी",
+     "different things"
+    ],
+    "U03": [
+     "मला वेगवेगळे शब्द शिकायचे आहेत",
+     "I want to learn different words"
+    ],
+    "U04": [
+     "मला वेगवेगळ्या गोष्टी करायला आवडतं",
+     "I enjoy doing different things"
+    ],
+    "U05": [
+     "मी वेगवेगळे शब्द आठवण्याचा प्रयत्न करतोय",
+     "I'm trying to remember different words"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "काही वेगवेगळे शब्द",
+     "a few different words"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "U05": [
+     "मी अद्याप तयार नाही",
+     "I'm not ready yet"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "अद्याप तयार नाही",
+     "not ready yet"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

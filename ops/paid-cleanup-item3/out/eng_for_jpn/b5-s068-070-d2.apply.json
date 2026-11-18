@@ -1,0 +1,1446 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "02cc6fce-7058-46c4-98f0-cfddca4f3871",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0068L01U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0068L01U04",
+    "seed_number": 68,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "彼女のために何を探していますか",
+    "target_text": "what are you looking for with her?",
+    "known_audio_id": "4603c847-e853-4056-a1d3-66fedc0668a4",
+    "target1_audio_id": "304714c6-abdc-4547-bbf5-cd074f6ad61e",
+    "target2_audio_id": "0ed92b65-cb0e-44a2-8d1d-c3de27d87d1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0068L01U04",
+    "seed_number": 68,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "彼女と何を探していますか？",
+    "target_text": "what are you looking for with her?",
+    "known_audio_id": null,
+    "target1_audio_id": "304714c6-abdc-4547-bbf5-cd074f6ad61e",
+    "target2_audio_id": "0ed92b65-cb0e-44a2-8d1d-c3de27d87d1b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L01U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L01U09",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "あなたの友達の世話をすることが大切だと思います",
+    "target_text": "I think it's important to look after my friends",
+    "known_audio_id": "ebe34230-6bc2-4c98-8e7c-b8c973ead453",
+    "target1_audio_id": "fa662999-ef90-4a02-af47-31add7a31d30",
+    "target2_audio_id": "76d61c27-8aef-46b8-84bc-7db774b64a6e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L01U09",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "友達の世話をすることが大切だと思います",
+    "target_text": "I think it's important to look after my friends",
+    "known_audio_id": null,
+    "target1_audio_id": "fa662999-ef90-4a02-af47-31add7a31d30",
+    "target2_audio_id": "76d61c27-8aef-46b8-84bc-7db774b64a6e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L01U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L01U10",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "誰の世話をしているのですか？",
+    "target_text": "who do you want to look after?",
+    "known_audio_id": "619e6ba7-05a9-4cf9-ab61-2f0c2cd73eaf",
+    "target1_audio_id": "bb3756a6-ccd1-461b-b14f-2260af24e3fb",
+    "target2_audio_id": "a0f3b624-0130-4dc1-9b0a-bb94290fde85",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L01U10",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "誰の世話をしたいですか？",
+    "target_text": "who do you want to look after?",
+    "known_audio_id": null,
+    "target1_audio_id": "bb3756a6-ccd1-461b-b14f-2260af24e3fb",
+    "target2_audio_id": "a0f3b624-0130-4dc1-9b0a-bb94290fde85",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L01U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L01U11",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "友達を世話をすることと、英語の勉強を続けることの両方が重要です",
+    "target_text": "it's important to look after my friends and to learn English",
+    "known_audio_id": "18d3aae1-08de-475f-a569-5c5a5ca6003a",
+    "target1_audio_id": "3478b7ec-e072-44a3-a21a-3a3a58914dfb",
+    "target2_audio_id": "cb03e9cd-2db9-4d73-9b0a-ec671906ac80",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L01U11",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "友達の世話をすることと英語を学ぶことが大切です",
+    "target_text": "it's important to look after my friends and to learn English",
+    "known_audio_id": null,
+    "target1_audio_id": "3478b7ec-e072-44a3-a21a-3a3a58914dfb",
+    "target2_audio_id": "cb03e9cd-2db9-4d73-9b0a-ec671906ac80",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L01U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L01U14",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "誰の世話をしているのかを覚えることが重要です",
+    "target_text": "it's important to remember who you want to look after",
+    "known_audio_id": "396bb92e-54ae-46dd-9a4c-29845a9091fa",
+    "target1_audio_id": "ad5aefea-edb1-4bec-a021-f552dac1ebae",
+    "target2_audio_id": "11c338a9-cf0f-4bcd-a8be-f2e08a013ee9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L01U14",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "誰の世話をしたいか覚えることが大切です",
+    "target_text": "it's important to remember who you want to look after",
+    "known_audio_id": null,
+    "target1_audio_id": "ad5aefea-edb1-4bec-a021-f552dac1ebae",
+    "target2_audio_id": "11c338a9-cf0f-4bcd-a8be-f2e08a013ee9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L02U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L02U08",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "あなたはとても若くて英語を学んでいます",
+    "target_text": "you are very young and want to learn English",
+    "known_audio_id": "cc9d8e1a-f707-4069-8a9b-1b46ab5392f3",
+    "target1_audio_id": "f81543fc-1f10-43a7-8d71-ebffe5f7e846",
+    "target2_audio_id": "ce8cfada-7629-45f2-bf58-a0ed8897f07b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L02U08",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "あなたはとても若くて、英語を学びたいです",
+    "target_text": "you are very young and want to learn English",
+    "known_audio_id": null,
+    "target1_audio_id": "f81543fc-1f10-43a7-8d71-ebffe5f7e846",
+    "target2_audio_id": "ce8cfada-7629-45f2-bf58-a0ed8897f07b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L02U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L02U12",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "英語を学ぶにはとても若いですね",
+    "target_text": "you are very young but you want to learn English",
+    "known_audio_id": "c9861348-03f2-4ed2-9899-06d5fb8f7ec8",
+    "target1_audio_id": "1f15b5a6-8b8f-48f6-a54a-3b6b550653e0",
+    "target2_audio_id": "244b97c5-104a-4b1b-8c0b-a98dad8d7103",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L02U12",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "あなたはとても若いですが、英語を学びたいです",
+    "target_text": "you are very young but you want to learn English",
+    "known_audio_id": null,
+    "target1_audio_id": "1f15b5a6-8b8f-48f6-a54a-3b6b550653e0",
+    "target2_audio_id": "244b97c5-104a-4b1b-8c0b-a98dad8d7103",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L03U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L03U11",
+    "seed_number": 69,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "あなたはその犬の世話をするのにたくさんの時間を使っています",
+    "target_text": "you are taking too much time to look after the dog",
+    "known_audio_id": "84a8e0ae-2273-4e6b-a965-fd51ecdd596a",
+    "target1_audio_id": "b8bbda67-034d-493a-b2d0-47d22ebca80e",
+    "target2_audio_id": "03993826-02ad-44b1-8acd-279562922cb4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L03U11",
+    "seed_number": 69,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "犬の世話をするのに時間をかけすぎています",
+    "target_text": "you are taking too much time to look after the dog",
+    "known_audio_id": null,
+    "target1_audio_id": "b8bbda67-034d-493a-b2d0-47d22ebca80e",
+    "target2_audio_id": "03993826-02ad-44b1-8acd-279562922cb4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L03U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L03U13",
+    "seed_number": 69,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "あなたはその若い犬の世話をすることができますか？",
+    "target_text": "Are you going to be able to look after the young dog?",
+    "known_audio_id": "510ee393-a238-41d6-a687-2c1cea802594",
+    "target1_audio_id": "f86354d4-586d-4361-8ad9-ef924793279d",
+    "target2_audio_id": "a815be6c-10ce-4ca3-99cd-7d7e2ac5c811",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L03U13",
+    "seed_number": 69,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "その若い犬の世話をすることができるようになりますか？",
+    "target_text": "Are you going to be able to look after the young dog?",
+    "known_audio_id": null,
+    "target1_audio_id": "f86354d4-586d-4361-8ad9-ef924793279d",
+    "target2_audio_id": "a815be6c-10ce-4ca3-99cd-7d7e2ac5c811",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L03U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L03U15",
+    "seed_number": 69,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "彼女はその犬の世話をしたくなかったのでとても困りました",
+    "target_text": "She didn't want to look after the dog and that isn't easy",
+    "known_audio_id": "d934d5ca-9080-4022-bed9-a838015c2467",
+    "target1_audio_id": "8b1e153b-e0d5-4e74-915e-fa8d0e25757f",
+    "target2_audio_id": "f6d44fad-e80b-4efa-9fa6-0777e81c1fba",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L03U15",
+    "seed_number": 69,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "彼女は犬の世話をしたくなかったし、それは簡単ではありません",
+    "target_text": "She didn't want to look after the dog and that isn't easy",
+    "known_audio_id": null,
+    "target1_audio_id": "8b1e153b-e0d5-4e74-915e-fa8d0e25757f",
+    "target2_audio_id": "f6d44fad-e80b-4efa-9fa6-0777e81c1fba",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L04U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L04U10",
+    "seed_number": 69,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "あなたは午後ずっとその若い犬の世話をするのに時間を使っています",
+    "target_text": "you are taking too much time to look after the young dog all afternoon",
+    "known_audio_id": "533940ca-88a2-4158-997a-e2ae7696abe7",
+    "target1_audio_id": "0ae8ce48-f9d3-488d-99d6-f081d338c2d4",
+    "target2_audio_id": "ab133b35-24c2-49cc-9ee8-5b5d09e4d74b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L04U10",
+    "seed_number": 69,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "午後ずっと若い犬の世話をするのに時間をかけすぎています",
+    "target_text": "you are taking too much time to look after the young dog all afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": "0ae8ce48-f9d3-488d-99d6-f081d338c2d4",
+    "target2_audio_id": "ab133b35-24c2-49cc-9ee8-5b5d09e4d74b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L04U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L04U13",
+    "seed_number": 69,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "その若い犬の世話をするのにたくさんの時間がかかります",
+    "target_text": "It's important to take time to look after the young dog",
+    "known_audio_id": "88b29bca-8c2e-4b4b-9a48-d039bdd2a29b",
+    "target1_audio_id": "cb0942e6-b9b7-4189-9391-155224124c44",
+    "target2_audio_id": "c634780b-00c6-4e0a-91d9-1f1fbaaf9551",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L04U13",
+    "seed_number": 69,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "若い犬の世話をする時間を取ることが大切です",
+    "target_text": "It's important to take time to look after the young dog",
+    "known_audio_id": null,
+    "target1_audio_id": "cb0942e6-b9b7-4189-9391-155224124c44",
+    "target2_audio_id": "c634780b-00c6-4e0a-91d9-1f1fbaaf9551",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L05U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L05U12",
+    "seed_number": 69,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "その犬の世話をするのに午後ずっとかかります",
+    "target_text": "It's important to look after the dog all afternoon",
+    "known_audio_id": "1dda2e9b-132f-4a78-a25c-65073141dd60",
+    "target1_audio_id": "815fc6ca-ee6f-44e7-b597-228c91030f60",
+    "target2_audio_id": "037ce926-7b25-455d-a9ee-774a602a1c5f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L05U12",
+    "seed_number": 69,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "午後ずっと犬の世話をすることが大切です",
+    "target_text": "It's important to look after the dog all afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": "815fc6ca-ee6f-44e7-b597-228c91030f60",
+    "target2_audio_id": "037ce926-7b25-455d-a9ee-774a602a1c5f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L06U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L06U02",
+    "seed_number": 69,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "私はその若い犬の世話をしたくなかったのですが、友達の犬なので仕方がありません",
+    "target_text": "I didn't want to look after the young dog but I wanted to help my friend",
+    "known_audio_id": "47b8408e-baee-4c3f-a112-7cfe6a1469a6",
+    "target1_audio_id": "8853bcec-37d0-4b34-aa64-905ee6144536",
+    "target2_audio_id": "51b37f9f-b53b-41d0-acb2-395416f373a2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L06U02",
+    "seed_number": 69,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "若い犬の世話をしたくありませんでしたが、友達を手伝いたかったです",
+    "target_text": "I didn't want to look after the young dog but I wanted to help my friend",
+    "known_audio_id": null,
+    "target1_audio_id": "8853bcec-37d0-4b34-aa64-905ee6144536",
+    "target2_audio_id": "51b37f9f-b53b-41d0-acb2-395416f373a2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L06U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L06U03",
+    "seed_number": 69,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "私はその犬の世話をしたくなかったのですが、やっぱりその犬の世話をしました",
+    "target_text": "I didn't want to look after the dog but I wanted to do it",
+    "known_audio_id": "a05748ce-7dc2-4a8a-8706-c57edba167d2",
+    "target1_audio_id": "ca45cbfa-3d3f-49f2-8e6a-9d25a7fef41d",
+    "target2_audio_id": "74528c0e-7573-482d-bf87-33db00bcc0a9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L06U03",
+    "seed_number": 69,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "犬の世話をしたくありませんでしたが、したかったです",
+    "target_text": "I didn't want to look after the dog but I wanted to do it",
+    "known_audio_id": null,
+    "target1_audio_id": "ca45cbfa-3d3f-49f2-8e6a-9d25a7fef41d",
+    "target2_audio_id": "74528c0e-7573-482d-bf87-33db00bcc0a9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0069L06U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0069L06U04",
+    "seed_number": 69,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "彼はその若い犬の世話をしたくなかったので、彼女が代わりに世話をしました",
+    "target_text": "He didn't want to look after the young dog so she wanted to help",
+    "known_audio_id": "67709918-32a8-4f78-9557-d041956bfbf4",
+    "target1_audio_id": "fc22c119-9844-452d-a2a1-a17a43a79ba9",
+    "target2_audio_id": "f5901204-271c-478f-96b1-ea9eb5517c70",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0069L06U04",
+    "seed_number": 69,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "彼は若い犬の世話をしたくなかったので、彼女が手伝いたかったです",
+    "target_text": "He didn't want to look after the young dog so she wanted to help",
+    "known_audio_id": null,
+    "target1_audio_id": "fc22c119-9844-452d-a2a1-a17a43a79ba9",
+    "target2_audio_id": "f5901204-271c-478f-96b1-ea9eb5517c70",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L01B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L01B02",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "教えてくれない",
+    "target_text": "didn't tell",
+    "known_audio_id": "8ea21e08-ae6a-4946-9b36-6e86637fba59",
+    "target1_audio_id": "c2aa688d-210b-409b-8740-1a3371e28789",
+    "target2_audio_id": "7be9c893-c81a-4adf-bd96-59af67e835b9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L01B02",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "教えなかった",
+    "target_text": "didn't tell",
+    "known_audio_id": null,
+    "target1_audio_id": "c2aa688d-210b-409b-8740-1a3371e28789",
+    "target2_audio_id": "7be9c893-c81a-4adf-bd96-59af67e835b9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L01B04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L01B04",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "教えてくれた",
+    "target_text": "wanted to tell",
+    "known_audio_id": "d6d94565-5db7-4409-93da-2c87139a516f",
+    "target1_audio_id": "972d9064-899c-4df4-93ae-3347f2d5928a",
+    "target2_audio_id": "f7931b26-0618-4ce5-8a77-5693757333fc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L01B04",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "教えたかった",
+    "target_text": "wanted to tell",
+    "known_audio_id": null,
+    "target1_audio_id": "972d9064-899c-4df4-93ae-3347f2d5928a",
+    "target2_audio_id": "f7931b26-0618-4ce5-8a77-5693757333fc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L01U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L01U09",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "彼女は私に何も教えてくれませんでした",
+    "target_text": "She didn't want to tell me anything at all",
+    "known_audio_id": "80d63ec0-3dbb-407d-b32c-071975cb65c2",
+    "target1_audio_id": "263e5cb9-85da-445e-999e-923c602a9700",
+    "target2_audio_id": "d6caf1f7-3098-42ec-925c-6e38e83a4830",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L01U09",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "彼女は私に何も教えたくありませんでした",
+    "target_text": "She didn't want to tell me anything at all",
+    "known_audio_id": null,
+    "target1_audio_id": "263e5cb9-85da-445e-999e-923c602a9700",
+    "target2_audio_id": "d6caf1f7-3098-42ec-925c-6e38e83a4830",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L01U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L01U14",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "私はあなたにこれが何か教えることができます",
+    "target_text": "I can tell you what the answer is",
+    "known_audio_id": "c3d2be03-358f-4da8-924c-519b8c2a6f0a",
+    "target1_audio_id": "58c2442e-1e97-4357-a25f-21549ce7a468",
+    "target2_audio_id": "a91151a4-74b0-4a3c-9d4f-e57945625e6c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L01U14",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "答えが何か教えることができます",
+    "target_text": "I can tell you what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": "58c2442e-1e97-4357-a25f-21549ce7a468",
+    "target2_audio_id": "a91151a4-74b0-4a3c-9d4f-e57945625e6c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L02U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L02U05",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあるかを私に教えてくれませんでした",
+    "target_text": "She didn't want to tell me where it was at all",
+    "known_audio_id": "5937300f-74bd-4f58-8ac4-a5547b71c351",
+    "target1_audio_id": "00224482-ba2d-43a0-8713-2ad18c66f3e7",
+    "target2_audio_id": "a3eee1bb-a179-4314-a77b-a66064ee2920",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L02U05",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあるか全然教えたくありませんでした",
+    "target_text": "She didn't want to tell me where it was at all",
+    "known_audio_id": null,
+    "target1_audio_id": "00224482-ba2d-43a0-8713-2ad18c66f3e7",
+    "target2_audio_id": "a3eee1bb-a179-4314-a77b-a66064ee2920",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L02U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L02U06",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "彼はそれがどこにあるかを知っていましたが教えたくありませんでした",
+    "target_text": "He didn't want to tell me where it was",
+    "known_audio_id": "2be38412-1d33-458e-aa56-3803b6c14801",
+    "target1_audio_id": "c6c5d34c-a1bc-448b-b6cc-d2e977c6a646",
+    "target2_audio_id": "90ecb0a6-01b2-4ff8-ba5a-7b9c13c0054b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L02U06",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "彼はそれがどこにあるか教えたくありませんでした",
+    "target_text": "He didn't want to tell me where it was",
+    "known_audio_id": "1c8a8984-310c-4d59-aa8c-586cc0755fd5",
+    "target1_audio_id": "c6c5d34c-a1bc-448b-b6cc-d2e977c6a646",
+    "target2_audio_id": "90ecb0a6-01b2-4ff8-ba5a-7b9c13c0054b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L02U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L02U07",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "私はそれがどこにあったかをもう覚えていません",
+    "target_text": "I can't remember where it was at all",
+    "known_audio_id": "515563be-cd77-4e4f-8db0-bf84a6bf3e38",
+    "target1_audio_id": "f9168a96-7140-48c9-91b4-ae94cfb68de6",
+    "target2_audio_id": "2f75af9e-2a78-434e-8e44-d3bba8fb910e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L02U07",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "それがどこにあったか全然思い出せません",
+    "target_text": "I can't remember where it was at all",
+    "known_audio_id": null,
+    "target1_audio_id": "f9168a96-7140-48c9-91b4-ae94cfb68de6",
+    "target2_audio_id": "2f75af9e-2a78-434e-8e44-d3bba8fb910e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L02U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L02U13",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあったかをずっと知っていましたが教えたくなかったのです",
+    "target_text": "She didn't want to tell me where it was all afternoon",
+    "known_audio_id": "7c41892a-236f-4cd3-93ac-94f3311c6dad",
+    "target1_audio_id": "86f0e7c3-f938-43f1-8a0d-4f0f40bb903a",
+    "target2_audio_id": "ca5283f8-0db4-4b94-a8a0-069018e9da82",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L02U13",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "彼女は午後ずっと、それがどこにあるか教えたくありませんでした",
+    "target_text": "She didn't want to tell me where it was all afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": "86f0e7c3-f938-43f1-8a0d-4f0f40bb903a",
+    "target2_audio_id": "ca5283f8-0db4-4b94-a8a0-069018e9da82",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L03U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L03U03",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "それは難しかったですが頑張りました",
+    "target_text": "It was difficult but interesting",
+    "known_audio_id": "50beb44a-8f88-4e50-9b2d-e423b7e2f4cf",
+    "target1_audio_id": "6d91f020-40eb-43d3-b129-42df0efab377",
+    "target2_audio_id": "84e939c8-0b55-4aa1-b890-84c3c0e150de",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L03U03",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "難しかったですが、面白かったです",
+    "target_text": "It was difficult but interesting",
+    "known_audio_id": null,
+    "target1_audio_id": "6d91f020-40eb-43d3-b129-42df0efab377",
+    "target2_audio_id": "84e939c8-0b55-4aa1-b890-84c3c0e150de",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L03U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L03U08",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "それはとても良かったです",
+    "target_text": "It was very fun to do",
+    "known_audio_id": "a12784a4-5e1f-46fd-9087-2511270b6826",
+    "target1_audio_id": "719ce4b8-077c-496f-aa69-7b718fd3b234",
+    "target2_audio_id": "3b16f53e-6837-4582-a85f-5846a275178a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L03U08",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "するのがとても楽しかったです",
+    "target_text": "It was very fun to do",
+    "known_audio_id": null,
+    "target1_audio_id": "719ce4b8-077c-496f-aa69-7b718fd3b234",
+    "target2_audio_id": "3b16f53e-6837-4582-a85f-5846a275178a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L03U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L03U09",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "それはとても役に立ちました",
+    "target_text": "It's useful to know where it was",
+    "known_audio_id": "cfdd916d-94ce-41f8-9df1-01c23a9d563d",
+    "target1_audio_id": "7c62cfbc-2f30-45af-8794-5c96273cac1e",
+    "target2_audio_id": "00bbb292-1de9-4103-a301-b24b824fbe2f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L03U09",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "それがどこにあったか知るのは役に立ちます",
+    "target_text": "It's useful to know where it was",
+    "known_audio_id": null,
+    "target1_audio_id": "7c62cfbc-2f30-45af-8794-5c96273cac1e",
+    "target2_audio_id": "00bbb292-1de9-4103-a301-b24b824fbe2f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L03U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L03U12",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+    "target_text": "She didn't want to tell me where it was at all",
+    "known_audio_id": "6bd5c510-8d12-4581-9adf-b9eb6188632f",
+    "target1_audio_id": "00224482-ba2d-43a0-8713-2ad18c66f3e7",
+    "target2_audio_id": "a3eee1bb-a179-4314-a77b-a66064ee2920",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L03U12",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあるか全然教えたくありませんでした",
+    "target_text": "She didn't want to tell me where it was at all",
+    "known_audio_id": null,
+    "target1_audio_id": "00224482-ba2d-43a0-8713-2ad18c66f3e7",
+    "target2_audio_id": "a3eee1bb-a179-4314-a77b-a66064ee2920",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L04U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L04U06",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+    "target_text": "She didn't want to tell me where it was at all",
+    "known_audio_id": "6bd5c510-8d12-4581-9adf-b9eb6188632f",
+    "target1_audio_id": "00224482-ba2d-43a0-8713-2ad18c66f3e7",
+    "target2_audio_id": "a3eee1bb-a179-4314-a77b-a66064ee2920",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L04U06",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあるか全然教えたくありませんでした",
+    "target_text": "She didn't want to tell me where it was at all",
+    "known_audio_id": null,
+    "target1_audio_id": "00224482-ba2d-43a0-8713-2ad18c66f3e7",
+    "target2_audio_id": "a3eee1bb-a179-4314-a77b-a66064ee2920",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L04U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L04U07",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "私はそれがどこにあったかをもう覚えていません",
+    "target_text": "I can't remember where it was at all",
+    "known_audio_id": "515563be-cd77-4e4f-8db0-bf84a6bf3e38",
+    "target1_audio_id": "f9168a96-7140-48c9-91b4-ae94cfb68de6",
+    "target2_audio_id": "2f75af9e-2a78-434e-8e44-d3bba8fb910e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L04U07",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "それがどこにあったか全然思い出せません",
+    "target_text": "I can't remember where it was at all",
+    "known_audio_id": null,
+    "target1_audio_id": "f9168a96-7140-48c9-91b4-ae94cfb68de6",
+    "target2_audio_id": "2f75af9e-2a78-434e-8e44-d3bba8fb910e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L04U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L04U10",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "彼はそれがどこにあったかを知っていましたが教えたくありませんでした",
+    "target_text": "He didn't want to tell me where it was",
+    "known_audio_id": "273e131c-d4b1-4277-a1e6-938057df27d8",
+    "target1_audio_id": "c6c5d34c-a1bc-448b-b6cc-d2e977c6a646",
+    "target2_audio_id": "90ecb0a6-01b2-4ff8-ba5a-7b9c13c0054b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L04U10",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "彼はそれがどこにあるか教えたくありませんでした",
+    "target_text": "He didn't want to tell me where it was",
+    "known_audio_id": "1c8a8984-310c-4d59-aa8c-586cc0755fd5",
+    "target1_audio_id": "c6c5d34c-a1bc-448b-b6cc-d2e977c6a646",
+    "target2_audio_id": "90ecb0a6-01b2-4ff8-ba5a-7b9c13c0054b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L04U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L04U13",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "なぜ彼女はそれがどこにあったかを私に教えたくなかったのかをずっと考えています",
+    "target_text": "I'm trying to remember why she didn't want to tell me where it was",
+    "known_audio_id": "0cd05e70-b16b-4a9d-9943-fbee9dc65dea",
+    "target1_audio_id": "b84915a3-5536-4d94-bb8b-fea7603509df",
+    "target2_audio_id": "2c30770d-93c7-4658-8310-1ee540947f41",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L04U13",
+    "seed_number": 70,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "なぜ彼女がそれがどこにあるか教えたくなかったのか、思い出そうとしています",
+    "target_text": "I'm trying to remember why she didn't want to tell me where it was",
+    "known_audio_id": null,
+    "target1_audio_id": "b84915a3-5536-4d94-bb8b-fea7603509df",
+    "target2_audio_id": "2c30770d-93c7-4658-8310-1ee540947f41",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L05U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L05U11",
+    "seed_number": 70,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "彼は私に教えたくなかったので私は自分で答えを調べようとしました",
+    "target_text": "He didn't want to tell me the answer so I wanted to find it",
+    "known_audio_id": "83a82d0d-8e68-4153-b16e-27640929e508",
+    "target1_audio_id": "bec2aac7-76ea-4e14-892a-a744e68c45ad",
+    "target2_audio_id": "f7c8a785-4547-49a4-b68c-927a209ba7bc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L05U11",
+    "seed_number": 70,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "彼は答えを教えたくなかったので、私は見つけたかったです",
+    "target_text": "He didn't want to tell me the answer so I wanted to find it",
+    "known_audio_id": null,
+    "target1_audio_id": "bec2aac7-76ea-4e14-892a-a744e68c45ad",
+    "target2_audio_id": "f7c8a785-4547-49a4-b68c-927a209ba7bc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L05U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L05U14",
+    "seed_number": 70,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "彼は私に大切なことを教えたくなかったので、私は友達に聞きました",
+    "target_text": "He didn't want to tell me something important so I wanted to ask my friend",
+    "known_audio_id": "5241fc69-3d3c-4e02-a0bf-d5e8f30b468c",
+    "target1_audio_id": "f9496486-7cb1-4d13-a5cf-f7b790138a5c",
+    "target2_audio_id": "ca4516a7-ed00-47f9-b318-420c58d4ee18",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L05U14",
+    "seed_number": 70,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "彼は大切なことを教えたくなかったので、友達に聞きたかったです",
+    "target_text": "He didn't want to tell me something important so I wanted to ask my friend",
+    "known_audio_id": null,
+    "target1_audio_id": "f9496486-7cb1-4d13-a5cf-f7b790138a5c",
+    "target2_audio_id": "ca4516a7-ed00-47f9-b318-420c58d4ee18",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0070L05U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0070L05U15",
+    "seed_number": 70,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあるか私に教えたくなかったのでとても困りました",
+    "target_text": "She didn't want to tell me where it was and that isn't easy",
+    "known_audio_id": "2524bb42-3668-4ac6-94b3-1d7bacfd1144",
+    "target1_audio_id": "8e58a191-127e-4f15-bf11-1595fa3d057a",
+    "target2_audio_id": "4e23b49b-bb4f-4945-99ca-a6f739da87bb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0070L05U15",
+    "seed_number": 70,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "彼女はそれがどこにあるか教えたくなかったし、それは簡単ではありません",
+    "target_text": "She didn't want to tell me where it was and that isn't easy",
+    "known_audio_id": null,
+    "target1_audio_id": "8e58a191-127e-4f15-bf11-1595fa3d057a",
+    "target2_audio_id": "4e23b49b-bb4f-4945-99ca-a6f739da87bb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L05U15",
+   "set": {
+    "known_text": "彼女はそれがどこにあるか私に教えたくなかったのでとても困りました",
+    "known_audio_id": "2524bb42-3668-4ac6-94b3-1d7bacfd1144"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L05U14",
+   "set": {
+    "known_text": "彼は私に大切なことを教えたくなかったので、私は友達に聞きました",
+    "known_audio_id": "5241fc69-3d3c-4e02-a0bf-d5e8f30b468c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L05U11",
+   "set": {
+    "known_text": "彼は私に教えたくなかったので私は自分で答えを調べようとしました",
+    "known_audio_id": "83a82d0d-8e68-4153-b16e-27640929e508"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L04U13",
+   "set": {
+    "known_text": "なぜ彼女はそれがどこにあったかを私に教えたくなかったのかをずっと考えています",
+    "known_audio_id": "0cd05e70-b16b-4a9d-9943-fbee9dc65dea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L04U10",
+   "set": {
+    "known_text": "彼はそれがどこにあったかを知っていましたが教えたくありませんでした",
+    "known_audio_id": "273e131c-d4b1-4277-a1e6-938057df27d8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L04U07",
+   "set": {
+    "known_text": "私はそれがどこにあったかをもう覚えていません",
+    "known_audio_id": "515563be-cd77-4e4f-8db0-bf84a6bf3e38"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L04U06",
+   "set": {
+    "known_text": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+    "known_audio_id": "6bd5c510-8d12-4581-9adf-b9eb6188632f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L03U12",
+   "set": {
+    "known_text": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+    "known_audio_id": "6bd5c510-8d12-4581-9adf-b9eb6188632f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L03U09",
+   "set": {
+    "known_text": "それはとても役に立ちました",
+    "known_audio_id": "cfdd916d-94ce-41f8-9df1-01c23a9d563d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L03U08",
+   "set": {
+    "known_text": "それはとても良かったです",
+    "known_audio_id": "a12784a4-5e1f-46fd-9087-2511270b6826"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L03U03",
+   "set": {
+    "known_text": "それは難しかったですが頑張りました",
+    "known_audio_id": "50beb44a-8f88-4e50-9b2d-e423b7e2f4cf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L02U13",
+   "set": {
+    "known_text": "彼女はそれがどこにあったかをずっと知っていましたが教えたくなかったのです",
+    "known_audio_id": "7c41892a-236f-4cd3-93ac-94f3311c6dad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L02U07",
+   "set": {
+    "known_text": "私はそれがどこにあったかをもう覚えていません",
+    "known_audio_id": "515563be-cd77-4e4f-8db0-bf84a6bf3e38"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L02U06",
+   "set": {
+    "known_text": "彼はそれがどこにあるかを知っていましたが教えたくありませんでした",
+    "known_audio_id": "2be38412-1d33-458e-aa56-3803b6c14801"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L02U05",
+   "set": {
+    "known_text": "彼女はそれがどこにあるかを私に教えてくれませんでした",
+    "known_audio_id": "5937300f-74bd-4f58-8ac4-a5547b71c351"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L01U14",
+   "set": {
+    "known_text": "私はあなたにこれが何か教えることができます",
+    "known_audio_id": "c3d2be03-358f-4da8-924c-519b8c2a6f0a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L01U09",
+   "set": {
+    "known_text": "彼女は私に何も教えてくれませんでした",
+    "known_audio_id": "80d63ec0-3dbb-407d-b32c-071975cb65c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L01B04",
+   "set": {
+    "known_text": "教えてくれた",
+    "known_audio_id": "d6d94565-5db7-4409-93da-2c87139a516f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0070L01B02",
+   "set": {
+    "known_text": "教えてくれない",
+    "known_audio_id": "8ea21e08-ae6a-4946-9b36-6e86637fba59"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L06U04",
+   "set": {
+    "known_text": "彼はその若い犬の世話をしたくなかったので、彼女が代わりに世話をしました",
+    "known_audio_id": "67709918-32a8-4f78-9557-d041956bfbf4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L06U03",
+   "set": {
+    "known_text": "私はその犬の世話をしたくなかったのですが、やっぱりその犬の世話をしました",
+    "known_audio_id": "a05748ce-7dc2-4a8a-8706-c57edba167d2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L06U02",
+   "set": {
+    "known_text": "私はその若い犬の世話をしたくなかったのですが、友達の犬なので仕方がありません",
+    "known_audio_id": "47b8408e-baee-4c3f-a112-7cfe6a1469a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L05U12",
+   "set": {
+    "known_text": "その犬の世話をするのに午後ずっとかかります",
+    "known_audio_id": "1dda2e9b-132f-4a78-a25c-65073141dd60"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L04U13",
+   "set": {
+    "known_text": "その若い犬の世話をするのにたくさんの時間がかかります",
+    "known_audio_id": "88b29bca-8c2e-4b4b-9a48-d039bdd2a29b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L04U10",
+   "set": {
+    "known_text": "あなたは午後ずっとその若い犬の世話をするのに時間を使っています",
+    "known_audio_id": "533940ca-88a2-4158-997a-e2ae7696abe7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L03U15",
+   "set": {
+    "known_text": "彼女はその犬の世話をしたくなかったのでとても困りました",
+    "known_audio_id": "d934d5ca-9080-4022-bed9-a838015c2467"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L03U13",
+   "set": {
+    "known_text": "あなたはその若い犬の世話をすることができますか？",
+    "known_audio_id": "510ee393-a238-41d6-a687-2c1cea802594"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L03U11",
+   "set": {
+    "known_text": "あなたはその犬の世話をするのにたくさんの時間を使っています",
+    "known_audio_id": "84a8e0ae-2273-4e6b-a965-fd51ecdd596a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L02U12",
+   "set": {
+    "known_text": "英語を学ぶにはとても若いですね",
+    "known_audio_id": "c9861348-03f2-4ed2-9899-06d5fb8f7ec8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L02U08",
+   "set": {
+    "known_text": "あなたはとても若くて英語を学んでいます",
+    "known_audio_id": "cc9d8e1a-f707-4069-8a9b-1b46ab5392f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L01U14",
+   "set": {
+    "known_text": "誰の世話をしているのかを覚えることが重要です",
+    "known_audio_id": "396bb92e-54ae-46dd-9a4c-29845a9091fa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L01U11",
+   "set": {
+    "known_text": "友達を世話をすることと、英語の勉強を続けることの両方が重要です",
+    "known_audio_id": "18d3aae1-08de-475f-a569-5c5a5ca6003a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L01U10",
+   "set": {
+    "known_text": "誰の世話をしているのですか？",
+    "known_audio_id": "619e6ba7-05a9-4cf9-ab61-2f0c2cd73eaf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0069L01U09",
+   "set": {
+    "known_text": "あなたの友達の世話をすることが大切だと思います",
+    "known_audio_id": "ebe34230-6bc2-4c98-8e7c-b8c973ead453"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0068L01U04",
+   "set": {
+    "known_text": "彼女のために何を探していますか",
+    "known_audio_id": "4603c847-e853-4056-a1d3-66fedc0668a4"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-32-32-098Z-02cc6fce-7058-46c4-98f0-cfddca4f3871.json"
+}
