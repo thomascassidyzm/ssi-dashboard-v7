@@ -1,0 +1,1455 @@
+{
+ "seed": 157,
+ "seed_pair": {
+  "known": "下个月我不能去那里",
+  "target": "I won't be able to be there next month"
+ },
+ "legos": {
+  "S0157L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0157L01",
+    "type": "M",
+    "known_text": "不能去那里",
+    "target_text": "Won't be able to be there",
+    "components": [
+     {
+      "known": "不能",
+      "target": "won't be able"
+     },
+     {
+      "known": "那里",
+      "target": "there"
+     }
+    ],
+    "seed_number": 157
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0157L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "不能",
+     "target_text": "Won't be able",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T10:53:51.947141+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7a82b2b6-7189-4943-9fc8-f5a739dfc7b9",
+     "target1_audio_id": "aac08e3c-99ce-4c23-b387-51640853e2d0",
+     "target2_audio_id": "4444c7bb-3236-4bb6-a41d-2ba441deb7f9",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "d82c4c55-8c77-40c3-828f-84e2e6e2e124",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Won't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " able",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe21b11f-6641-4e2f-ba40-0f44e0920f56",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "那里",
+     "target_text": "There",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T17:29:59.614485+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3141d79e-b15d-4f0a-bf3f-17cf25fadb6e",
+     "target1_audio_id": "4b73e011-5b13-41a6-bbd5-6f70b4558f5d",
+     "target2_audio_id": "f3676bd6-54fb-480c-a1e3-130bed40e850",
+     "qa_checked": null,
+     "target1_duration_ms": 720,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "df57bdb4-6928-42f9-b746-3fa57a710c24",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "There",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "不能去那里",
+     "target_text": "Won't be able to be there",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T19:42:35.82029+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e533dcdc-8d32-462c-845a-29f98d1ce386",
+     "target1_audio_id": "dd7f4c85-bc06-4a2b-bb1f-62db5a354a52",
+     "target2_audio_id": "2e59631e-9698-4810-b4a7-00251b2ae41b",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": "Won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "现在没法过去",
+     "target_text": "Won't be able to be there now",
+     "word_count": 29,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7f4726f2-39fb-4f1c-b83e-1ca483fdb55e",
+     "target1_audio_id": "4e8cf448-45cb-4e29-8c5e-04d4b104b703",
+     "target2_audio_id": "ebfab94d-a0ad-4031-820f-6d64dff19c36",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": "Won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "今天没法过去",
+     "target_text": "Won't be able to be there today",
+     "word_count": 31,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "840b6d45-5cf7-4c99-abaf-a71623ee6bc5",
+     "target1_audio_id": "fb7eccc3-a573-4754-a65a-2c4916230839",
+     "target2_audio_id": "431a5d22-b8be-45fc-90b7-172d0a005126",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": "Won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "明天没法过去",
+     "target_text": "Won't be able to be there tomorrow",
+     "word_count": 34,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "aa9b200e-485c-4275-a734-b6fc3d1a47b5",
+     "target1_audio_id": "d5c9f3bb-dc5c-461c-a705-c208eede5456",
+     "target2_audio_id": "e06a1ad0-5643-4cd1-a355-6af2737349da",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": "Won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "明天",
+       "legoId": "S0012L03",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "我星期六晚上没法过去",
+     "target_text": "I won't be able to be there on Saturday night",
+     "word_count": 45,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.597Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0a75d27d-19d0-4aff-8c64-0c92d73e678b",
+     "target1_audio_id": "60c5f420-47d1-4fb3-8d92-d668641d4175",
+     "target2_audio_id": "75787855-e05c-480d-8492-d9d9dbdca2ca",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": " won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "星期六晚上",
+       "legoId": "S0154L01",
+       "target": " on Saturday night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "很抱歉我没法过去",
+     "target_text": "I'm sorry that I won't be able to be there",
+     "word_count": 42,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.597Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "406c30e7-0a13-43f5-b0d4-e3dbe12350c4",
+     "target1_audio_id": "ac2a41a7-48e6-4495-9e37-a53829f1e997",
+     "target2_audio_id": "1c6ff5de-4c65-4b0a-99e5-669fe822f506",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "对不起",
+       "legoId": "S0139L01",
+       "target": "I'm sorry that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": " won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "她明天早上没法过去",
+     "target_text": "She won't be able to be there tomorrow morning",
+     "word_count": 46,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.597Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "17f84719-1019-4c5f-a61e-f650c65ab68c",
+     "target1_audio_id": "d5b6d5d5-4e4e-41e1-8a07-866ab26900f7",
+     "target2_audio_id": "686a8d67-2c73-468e-95d6-345e0a391fc4",
+     "qa_checked": null,
+     "target1_duration_ms": 2496,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "She",
+       "isGhost": true
+      },
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": " won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "明天早上",
+       "legoId": "S0155L02",
+       "target": " tomorrow morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "我相信他没法过去",
+     "target_text": "I believe that he won't be able to be there",
+     "word_count": 43,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.597Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "eaec5d85-ada3-4a97-b8cf-91439b145de7",
+     "target1_audio_id": "46a4da75-b116-41e3-a433-00b0c4dc6fb6",
+     "target2_audio_id": "cde33c12-6268-4186-bfae-6102917fbd81",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "相信那个",
+       "legoId": "S0125L01",
+       "target": " believe that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": " won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "这不是我所希望的结果，因为我没法过去",
+     "target_text": "That wasn't what I was hoping would happen because I won't be able to be there",
+     "word_count": 78,
+     "lego_count": 16,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.597Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.627897+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "dca0fdf3-2125-4579-ab9f-07a124d1d45b",
+     "target1_audio_id": "7e51bd98-e362-4810-9a87-e2416b58c4a4",
+     "target2_audio_id": "35870588-52de-4456-a060-2e678fb63b0b",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 4200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "那不是",
+       "legoId": "S0151L01",
+       "target": "That wasn't",
+       "isGhost": false
+      },
+      {
+       "known": "我希望会发生的事情",
+       "legoId": "S0151L02",
+       "target": " what I was hoping would happen",
+       "isGhost": false
+      },
+      {
+       "known": "因为",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": " won't be able to be there",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0157L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0157L02",
+    "type": "M",
+    "known_text": "下个月",
+    "target_text": "Next month",
+    "components": [
+     {
+      "known": "下个",
+      "target": "next"
+     },
+     {
+      "known": "月",
+      "target": "month"
+     }
+    ],
+    "seed_number": 157
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0157L02C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "下个",
+     "target_text": "next",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T21:53:43.469458+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cd142559-9bbe-4c1d-b43b-77850a337457",
+     "target1_audio_id": "93137c99-f2ff-4943-8f5c-f1a308540cd5",
+     "target2_audio_id": "60f7cadb-f89c-46d5-87ae-dcb0b22da4b3",
+     "qa_checked": null,
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "e2a24311-b80f-48b5-8dfd-a0b337e70d14",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "next",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "月",
+     "target_text": "month",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-12T17:36:23.625195+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "80b59a3d-5e37-417a-aa42-dada642711f0",
+     "target1_audio_id": "7d3b7674-0bf7-4f7b-8a31-82a43d7414d9",
+     "target2_audio_id": "54b58b59-5d21-4f57-8c40-aec9f46936ce",
+     "qa_checked": null,
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "b9afa176-1d51-4854-bdd7-cfc0f2576211",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "month",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "下个月",
+     "target_text": "Next month",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:29:59.974397+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9d22cc93-8f73-466b-afb8-8ca46b80630f",
+     "target1_audio_id": "aa0340b0-eac0-42dc-89a2-080f57ede226",
+     "target2_audio_id": "717cdb24-fcb9-45ca-80c0-b330546fafb4",
+     "qa_checked": null,
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": "Next month",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "下个月，不是现在",
+     "target_text": "Next month, not now",
+     "word_count": 14,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": "Next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "已经下个月了",
+     "target_text": "Next month already",
+     "word_count": 18,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0feb5c26-ae04-4262-9da4-22b76f1da5bb",
+     "target1_audio_id": "95c7c254-4b9f-49c7-85ac-a5693b6e90a3",
+     "target2_audio_id": "8c232129-76a1-4055-aa50-1381995dba9e",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1416,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": "Next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " already",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "下个月，不是今天",
+     "target_text": "Next month, not today",
+     "word_count": 15,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": "Next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "很快",
+       "legoId": "S0023L03",
+       "target": " soon",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "我下个月没法过去",
+     "target_text": "I won't be able to be there next month",
+     "word_count": 38,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.732Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:59.441688+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "fc404c29-881e-434b-b0bc-4c291f4481d8",
+     "target1_audio_id": "477ef56d-4489-4a6e-a955-6185e1a39630",
+     "target2_audio_id": "aae34b9b-7880-428f-bce1-2f5f917540e3",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "不能去那里",
+       "legoId": "S0157L01",
+       "target": " won't be able to be there",
+       "isGhost": false
+      },
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": " next month",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "我希望你能在下个月完成",
+     "target_text": "I hope you'll finish next month",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.732Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ac000f24-ed5c-4576-9040-9cfbb611de6e",
+     "target1_audio_id": "6f270db0-00ee-4ffb-8289-ce225c03d86c",
+     "target2_audio_id": "a139adad-db85-4109-b218-615ebf7176cf",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1920,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "希望你能完成",
+       "legoId": "S0149L01",
+       "target": " hope you'll finish",
+       "isGhost": false
+      },
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": " next month",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "你想在下个月在哪里见面？",
+     "target_text": "Where do you want to meet next month?",
+     "word_count": 37,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.732Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-12T10:53:49.068396+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ea6cacdc-c160-4e7b-9667-d9cc14a1ad0c",
+     "target1_audio_id": "1e93c685-9d5b-44bd-b01c-b3aab91f51e5",
+     "target2_audio_id": "f9efe853-4e52-41b7-830f-c15dcf3f9f1b",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 2000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Where",
+       "isGhost": true
+      },
+      {
+       "known": "吗",
+       "legoId": "S0014L01",
+       "target": " do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "见面",
+       "legoId": "S0018L02",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": " next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe21b11f-6641-4e2f-ba40-0f44e0920f56",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "我想在下个月去餐厅",
+     "target_text": "I'd like to go to a restaurant next month",
+     "word_count": 41,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.732Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c39a5ba0-e70a-45d2-bab5-c8248b3bf653",
+     "target1_audio_id": "d8eb3224-a090-4b60-ba96-d2781ed5e58b",
+     "target2_audio_id": "61ad7bf9-399f-47ec-8350-1f0474653931",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'd",
+       "isGhost": true
+      },
+      {
+       "known": "喜欢",
+       "legoId": "S0026L01",
+       "target": " like",
+       "isGhost": false
+      },
+      {
+       "known": "走",
+       "legoId": "S0025L01",
+       "target": " to go",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "去",
+       "legoId": "S0156L01",
+       "target": " restaurant",
+       "isGhost": false
+      },
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": " next month",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0157L02U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 157,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "你能告诉我你下个月想做什么吗？",
+     "target_text": "Can you tell me what you want to do next month?",
+     "word_count": 47,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:12:01.732Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:12:01.762444+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a5c39578-1984-4158-b071-9a7e4b57dcf8",
+     "target1_audio_id": "bbabbc21-ad83-4379-a02e-43d233fc32f6",
+     "target2_audio_id": "f917dad1-7d4d-4bd0-86a5-4542dc20ec0e",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "做",
+       "legoId": "S0059L01",
+       "target": " to do",
+       "isGhost": false
+      },
+      {
+       "known": "下",
+       "legoId": "S0157L02",
+       "target": " next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1371 @@
+{
+ "seed": 150,
+ "seed_pair": {
+  "known": "이름이 뭔지 말해줄 수 있어요?",
+  "target": "Can you tell me what your name is?"
+ },
+ "legos": {
+  "S0150L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0150L01",
+    "type": "M",
+    "known_text": "말해줄 수 있어요",
+    "target_text": "can you tell me",
+    "components": [
+     {
+      "known": "말해",
+      "target": "tell"
+     },
+     {
+      "known": "줄 수 있어요",
+      "target": "can you"
+     }
+    ],
+    "seed_number": 150
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0150L01C01",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "말해",
+     "target_text": "tell",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T23:19:01.933559+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "df30aabb-36bd-419a-a645-3d0ac67e1836",
+     "target1_audio_id": "c2a63118-fb62-4593-b0d7-16e19beb6a54",
+     "target2_audio_id": "604b4428-7e25-4085-9e14-db62bee3bfe5",
+     "qa_checked": null,
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "d54a04ff-45bf-40f9-b840-8a24bff2c7d6",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말하다",
+       "legoId": "S0070L01",
+       "target": "tell",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3b828e11-f1c9-4fff-9795-05c2ccb3ec8c",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01C02",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "줄 수 있어요",
+     "target_text": "can you",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:30:01.966362+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c3c1f9a4-d4fb-4b3e-9bf7-eaaf69b9070e",
+     "target1_audio_id": "62a63fe1-e296-4661-ae3d-e29c30d2b5d0",
+     "target2_audio_id": "00d8644c-d05a-4571-a8ea-fcf6f558d518",
+     "qa_checked": null,
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "151f0aa4-7505-411b-8518-088bc4fdcd67",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "말해줄 수 있어요",
+     "target_text": "can you tell me?",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:29:52.097465+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "080e6169-9755-4b6d-b9eb-a05b21becfed",
+     "target1_audio_id": "b96b3eb1-cf51-49ae-a03b-b8b7de9622f0",
+     "target2_audio_id": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "뭔지 말해줄 수 있나요?",
+     "target_text": "can you tell me what?",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:10:49.474181+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1a774ce2-65ba-4c8e-9b13-ff938278e9f7",
+     "target1_audio_id": "4f66280a-0f61-474c-9ae5-7ff421a1e80a",
+     "target2_audio_id": "509c8013-0a6d-4373-8b05-3f524144c715",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "123c1baf-cabd-420d-934d-2a2870e5001a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "그것에 대해 말해줄 수 있나요?",
+     "target_text": "can you tell me about it?",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:10:49.474181+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e1236f03-4e5e-486c-aa55-f964c658af15",
+     "target1_audio_id": "8b2899f6-1497-4171-99b0-6dfdb2a2acee",
+     "target2_audio_id": "b721bb3b-aceb-46ce-b8bc-0f9f86e11135",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "그것에 대해",
+       "legoId": "S0037L03",
+       "target": " about it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "123c1baf-cabd-420d-934d-2a2870e5001a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01U01",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "보여주려는 것을 말해줄 수 있어요?",
+     "target_text": "can you tell me what you're trying to show me?",
+     "word_count": 46,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.435Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:01.24891+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "486ad0b0-39a8-4ea3-a36a-17b404506009",
+     "target1_audio_id": "f18a089a-3e83-43ff-b547-286735eaf122",
+     "target2_audio_id": "afb10787-8937-4388-a5be-096860097b14",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "보여주려고 하는 것",
+       "legoId": "S0140L02",
+       "target": " what you're trying to show me",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "왜 작동하지 않는지 말해줄 수 있어요?",
+     "target_text": "can you tell me why nothing seems to be working?",
+     "word_count": 48,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.435Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-02T22:37:15.873863+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c6ac2a96-f7f9-4a6d-ae59-33a13894d3e5",
+     "target1_audio_id": "32a0226a-b9a0-4433-ac36-ae6cad2a83de",
+     "target2_audio_id": "dfc735b4-8299-46ac-852b-43bd2b0ffb70",
+     "qa_checked": null,
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "왜",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "아무것도 않는",
+       "legoId": "S0146L01",
+       "target": " nothing",
+       "isGhost": false
+      },
+      {
+       "known": "작동하지 않는 것 같아요",
+       "legoId": "S0146L02",
+       "target": " seems to be working",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "아까 뭘 하고 있었는지 말해줄 수 있어요?",
+     "target_text": "can you tell me what you were doing earlier?",
+     "word_count": 44,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.435Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:00.561901+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e8d67d3f-4717-4667-8eea-19ea1495d4e4",
+     "target1_audio_id": "d0feb6f4-2c9c-4b1e-8093-c197bf591889",
+     "target2_audio_id": "3301440b-dd09-4924-b19a-7f3bb0517302",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "당신이 무엇을 하고 있는지",
+       "legoId": "S0107L02",
+       "target": " what you were doing",
+       "isGhost": false
+      },
+      {
+       "known": "아까",
+       "legoId": "S0143L01",
+       "target": " earlier",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "왜 더 이상 행복하지 않은지 말해줄 수 있어요?",
+     "target_text": "can you tell me why you're not happy any more?",
+     "word_count": 46,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.435Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:19.430588+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "18d0b908-4efd-442e-9db7-cb5865579d40",
+     "target1_audio_id": "fc6a30b8-9793-45b5-990e-741de6f8f3bb",
+     "target2_audio_id": "562ad15b-ba90-4c90-8463-0dfa0bb19fba",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "왜",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you're",
+       "isGhost": true
+      },
+      {
+       "known": "더 이상 행복하지 않아요",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L01U05",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "왜 긴장하는지 말해줄 수 있어요?",
+     "target_text": "can you tell me why you feel nervous?",
+     "word_count": 37,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.435Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-02T22:37:00.067829+00:00",
+     "created_at": "2026-02-25T04:29:01.456089+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6038fd85-2532-401d-a394-dc3c5383382c",
+     "target1_audio_id": "ae3a5c11-9133-4692-8b2a-d7767ab90cee",
+     "target2_audio_id": "64ca3dc2-d9c8-465d-879b-678de0f87610",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "왜",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "긴장하다",
+       "legoId": "S0147L01",
+       "target": " nervous",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0150L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0150L02",
+    "type": "M",
+    "known_text": "이름이 뭔지",
+    "target_text": "what your name is",
+    "components": [
+     {
+      "known": "이름이",
+      "target": "your name"
+     },
+     {
+      "known": "뭔지",
+      "target": "what is"
+     }
+    ],
+    "seed_number": 150
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0150L02C01",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "이름이",
+     "target_text": "your name",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T23:18:19.02341+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dc5702a1-0fd1-43b6-a745-570a64e4dd03",
+     "target1_audio_id": "6eefdb79-97cd-43d8-b876-e0478a272903",
+     "target2_audio_id": "02ccb103-cd46-4e6f-83b6-6ca0a4579351",
+     "qa_checked": null,
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "2562e900-399b-430d-871b-9b99220df2b3",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "your",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " name",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3b828e11-f1c9-4fff-9795-05c2ccb3ec8c",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02C02",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "뭔지",
+     "target_text": "what is",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T21:48:02.589056+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b3db26dc-d825-4e91-805e-e2c54f956ce4",
+     "target1_audio_id": "0cd5fcac-6a42-4ef3-8cc0-6204ec6c32cd",
+     "target2_audio_id": "51566ca4-6ab0-4344-8a7a-5defb66fd195",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "5e42792e-383c-4bf4-9746-81bda19a4486",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "이름이 뭔지",
+     "target_text": "what your name is",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-11-18T13:19:41.103817+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f5cc89ba-42b9-4149-a461-5e8c297e142d",
+     "target1_audio_id": "ea3c64bb-4fe2-44ee-93ad-2191bd889c4d",
+     "target2_audio_id": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": "what your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "64befb42-ccac-4621-b81b-922d7c24a089",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "이름이 뭔지 알고 싶어요",
+     "target_text": "I want to know what your name is",
+     "word_count": 32,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T21:48:51.579406+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c228b58f-1516-40e3-845c-9dd30afeb4d8",
+     "target1_audio_id": "45748dba-1e20-4363-a5a4-870a505b3713",
+     "target2_audio_id": "7bdce3d9-876f-4f6c-98a2-6b51a47c87d0",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " know",
+       "isGhost": true
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "이름이 뭔지 말해주세요",
+     "target_text": "tell me what your name is",
+     "word_count": 25,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-27T13:26:59.202049+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "155ea753-f34d-43e5-9f39-851e3ebba830",
+     "target1_audio_id": "6d825706-7e71-48cb-ac4f-8da1bcabd6d9",
+     "target2_audio_id": "fbe4c66b-0bac-477d-ab2a-a82ad452b407",
+     "qa_checked": null,
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말하다",
+       "legoId": "S0070L01",
+       "target": "tell",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02U01",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "이름이 뭔지 말해줄 수 있어요?",
+     "target_text": "can you tell me what your name is?",
+     "word_count": 34,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.542Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T17:29:52.073789+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9b53e6bf-d3e4-4b4b-a48e-b7ea9ec049d4",
+     "target1_audio_id": "f47049e4-1343-45e4-b0ee-964e5f98c759",
+     "target2_audio_id": "cb2c714d-7ee5-4151-8bd2-c32a38d76186",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해줄 수 있어요",
+       "legoId": "S0150L01",
+       "target": "can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "이름이 뭔지 몰라요",
+     "target_text": "I don't know what your name is",
+     "word_count": 30,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.542Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:29:53.748643+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "46f91c40-fc10-4741-b188-d206a483c13a",
+     "target1_audio_id": "7ed90638-db50-45c3-bbf0-9844c7338f95",
+     "target2_audio_id": "421a442f-e65f-4b03-9002-5c2502342732",
+     "qa_checked": null,
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "몰라요",
+       "legoId": "S0085L01",
+       "target": " don't know",
+       "isGhost": false
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "이름이 뭔지 기억이 안 나요",
+     "target_text": "I can't remember what your name is",
+     "word_count": 34,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.542Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:37:18.871188+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "30d018bc-d26b-496d-a0d3-e95303e2ce55",
+     "target1_audio_id": "63b9c9e9-745a-448d-b3a9-06954eda3d8d",
+     "target2_audio_id": "8587d89f-3b10-4291-b28a-16c9f15f90f3",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "기억할 수 없어요",
+       "legoId": "S0113L01",
+       "target": "I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "이름이 뭔지 알 것 같아요",
+     "target_text": "I think I know what your name is",
+     "word_count": 32,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.542Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T20:47:27.018014+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a015cc5d-91ff-4297-9305-93a7fb93d82f",
+     "target1_audio_id": "f3565785-9bd7-4e81-94b7-b14bbb75f384",
+     "target2_audio_id": "6dea6842-5ba3-41f4-8245-15c14280b932",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "생각하기",
+       "legoId": "S0037L02",
+       "target": " think",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " know",
+       "isGhost": true
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "40f5988a-2307-4a0d-a107-5b5833ea9bc3",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0150L02U05",
+     "course_code": "eng_for_kor",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "영어로 이름이 뭔지 알아요?",
+     "target_text": "do you know what your name is in English?",
+     "word_count": 41,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:29:01.542Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:37:17.613037+00:00",
+     "created_at": "2026-02-25T04:29:01.561467+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a5ca3558-72a4-4967-b0d4-c830c58290de",
+     "target1_audio_id": "82445428-76cb-4336-b934-8fdeae4740c4",
+     "target2_audio_id": "e35d477d-ccfb-4fbf-87d5-6cb132d7556b",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말해요?",
+       "legoId": "S0014L01",
+       "target": "do you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " know",
+       "isGhost": true
+      },
+      {
+       "known": "이름이 뭔지",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "영어로",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

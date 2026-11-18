@@ -1,0 +1,2335 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "25333502-88dd-458d-aeed-c5a24f9e480b",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0016L01B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0016L01B01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he learn here",
+    "known_text": "அவர் இங்கே கற்க",
+    "known_audio_id": "bab7d75e-7949-4b86-834c-3321bcf54c83",
+    "target1_audio_id": "151ba132-6263-4676-88c9-727ef25ab92e",
+    "target2_audio_id": "03ccc5e3-474c-41bc-bae2-513c0bf874c1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0016L01B01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he wants to learn here",
+    "known_text": "அவர் இங்கே கற்க விரும்புகிறார்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0016L01B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0016L01B02",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he speak tomorrow",
+    "known_text": "அவர் நாளை பேச",
+    "known_audio_id": "6a907290-34a0-4a5f-bb50-ac12ee217fe9",
+    "target1_audio_id": "97072e9b-21fd-4341-b360-a53b9b11a2dd",
+    "target2_audio_id": "5ed6febd-75f2-4a67-9b77-370d8fe37698",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0016L01B02",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he wants to speak tomorrow",
+    "known_text": "அவர் நாளை பேச விரும்புகிறார்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0016L01B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0016L01B03",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he meet with me",
+    "known_text": "அவர் என்னுடன் சந்திக்க",
+    "known_audio_id": "aa889ec8-7b0e-437a-82e5-c3fa1cf43244",
+    "target1_audio_id": "362a460a-7868-47f5-ab05-22db87e3a38d",
+    "target2_audio_id": "10e6184a-ea30-4efa-8d54-f5cc212a76d1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0016L01B03",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he wants to meet with me",
+    "known_text": "அவர் என்னுடன் சந்திக்க விரும்புகிறார்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0017L01B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0017L01B03",
+    "seed_number": 17,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she speak today",
+    "known_text": "அவள் இன்று பேச",
+    "known_audio_id": "adffc446-9a7d-4d9b-9e14-69fe90d6d9eb",
+    "target1_audio_id": "cefd7812-faf3-42c9-b731-6444c84f7419",
+    "target2_audio_id": "079bbe43-261f-4ac4-8475-05d353f48210",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0017L01B03",
+    "seed_number": 17,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she wants to speak today",
+    "known_text": "அவள் இன்று பேச விரும்புகிறாள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0017L01B04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0017L01B04",
+    "seed_number": 17,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she meet with me",
+    "known_text": "அவள் என்னுடன் சந்திக்க",
+    "known_audio_id": "62323956-5147-40c2-b28e-a7af1ed2248b",
+    "target1_audio_id": "fbce0ef1-9205-4a7a-a929-088f13119212",
+    "target2_audio_id": "927b993f-2a13-49ad-9ad5-5968627f90e1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0017L01B04",
+    "seed_number": 17,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she wants to meet with me",
+    "known_text": "அவள் என்னுடன் சந்திக்க விரும்புகிறாள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02B01",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "learn last month",
+    "known_text": "கடந்த மாதம் கற்க",
+    "known_audio_id": "962eb214-4d04-4ea7-b1c2-ffa258d5d5f3",
+    "target1_audio_id": "853ed950-2c0b-416b-8fed-8925a4128689",
+    "target2_audio_id": "d70a096d-dabc-40e9-8ae3-fddf8f79c8d4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02B01",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I wanted to learn last month",
+    "known_text": "நான் கடந்த மாதம் கற்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02B02",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "speak last month",
+    "known_text": "கடந்த மாதம் பேச",
+    "known_audio_id": "8ebf368e-b394-4fcb-8baa-5f61263d21a7",
+    "target1_audio_id": "6f3f1c7e-8a04-4b2e-8bd8-554ccb31e045",
+    "target2_audio_id": "98b50c3c-5cf2-4be7-b5c8-33ceb2c4e351",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02B02",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "you wanted to speak last month",
+    "known_text": "நீங்கள் கடந்த மாதம் பேச விரும்பினீர்கள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02B03",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "meet last month",
+    "known_text": "கடந்த மாதம் சந்திக்க",
+    "known_audio_id": "7817eb8b-1750-472d-8470-1bd016dc05eb",
+    "target1_audio_id": "c70f505b-ca65-4da9-b4ae-f9c0d90d7671",
+    "target2_audio_id": "1ded20af-dd4d-43d0-b535-07494b1b8ef4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02B03",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I wanted to meet people last month",
+    "known_text": "நான் கடந்த மாதம் மக்களைச் சந்திக்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02U01",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I learn English last month",
+    "known_text": "நான் கடந்த மாதம் ஆங்கிலம் கற்கினேன்",
+    "known_audio_id": "e72a5281-d6c9-401a-8912-20730b9c77c9",
+    "target1_audio_id": "6e2f024d-7889-4ce2-be26-12bc7034b7bc",
+    "target2_audio_id": "2236801d-f745-4250-93ce-79fc699927e5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02U01",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I wanted to learn English last month",
+    "known_text": "நான் கடந்த மாதம் ஆங்கிலம் கற்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02U02",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I practise last month",
+    "known_text": "நான் கடந்த மாதம் பயிற்சி செய்தேன்",
+    "known_audio_id": "d6223403-c962-4604-9320-03745eb8560e",
+    "target1_audio_id": "f4c30f08-f520-45ce-8e55-54299d6a53a6",
+    "target2_audio_id": "a12a7da6-3374-4376-ad93-1b144d63810a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02U02",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I wanted to practise more last month",
+    "known_text": "நான் கடந்த மாதம் அதிகமாக பயிற்சி செய்ய விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02U03",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I learn carefully last month",
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்கினேன்",
+    "known_audio_id": "b0440e0d-1e41-4d6c-85c3-0097920aed2e",
+    "target1_audio_id": "d7b4eca6-03bb-4f0c-a552-5fc88fc29607",
+    "target2_audio_id": "be4b8795-d494-4a33-8e06-c8123c8457d7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02U03",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I wanted to learn carefully last month",
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02U04",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I meet last month",
+    "known_text": "நான் கடந்த மாதம் சந்தித்தேன்",
+    "known_audio_id": "2e613418-9bbf-40fa-a8d5-d53df5e08ced",
+    "target1_audio_id": "c60b3c52-c654-4472-bb77-d3ece857ef87",
+    "target2_audio_id": "d1fa4535-fa16-4a1f-999c-10ff01315752",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02U04",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I wanted to ask you something last month",
+    "known_text": "நான் கடந்த மாதம் உங்களிடம் ஏதாவது கேட்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L02U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L02U05",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I speak last month",
+    "known_text": "நான் கடந்த மாதம் பேசினேன்",
+    "known_audio_id": "82f52b41-9f14-4cfd-b4ca-cc214234f666",
+    "target1_audio_id": "d6b60088-62a8-4722-92f0-fde656d01961",
+    "target2_audio_id": "92632814-63ce-4975-b17d-4dcc1fad4cbd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L02U05",
+    "seed_number": 37,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "you wanted to speak English last month",
+    "known_text": "நீங்கள் கடந்த மாதம் ஆங்கிலம் பேச விரும்பினீர்கள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L03U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L03U04",
+    "seed_number": 37,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I want to say about it",
+    "known_text": "நான் அதைப் பற்றி சொல்ல விரும்புகிறேன்",
+    "known_audio_id": "d0648373-9bc8-4bdd-bb91-a68ccbe1e1a7",
+    "target1_audio_id": "6d5d8836-0aa8-4e3d-be48-fbfd979aaac6",
+    "target2_audio_id": "0d7b21a8-ca9b-4ca2-a39f-0053e45035bc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L03U04",
+    "seed_number": 37,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I want to say something about it",
+    "known_text": "நான் அதைப் பற்றி ஏதாவது சொல்ல விரும்புகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0037L03U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0037L03U05",
+    "seed_number": 37,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I learn about it last month",
+    "known_text": "நான் கடந்த மாதம் அதைப் பற்றி கற்கினேன்",
+    "known_audio_id": "c4dde177-8c94-47a8-9741-eb86532ccee1",
+    "target1_audio_id": "89fc39f5-ef15-425c-befd-b3d4724bcd9e",
+    "target2_audio_id": "c34993b1-3aa1-4377-bd81-85df02ebb46b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0037L03U05",
+    "seed_number": 37,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I wanted to learn about it last month",
+    "known_text": "நான் கடந்த மாதம் அதைப் பற்றி கற்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L02B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L02B03",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "last month for about a week",
+    "known_text": "கடந்த மாதம் சுமாரக ஒரு வாரமாக",
+    "known_audio_id": "3953c0b5-e4b1-4036-b3b2-fe8dc8c5fac0",
+    "target1_audio_id": "d7642700-16ed-4d02-8903-6fbd29d85ad5",
+    "target2_audio_id": "125198ab-0745-4686-b041-012e871b3ee7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L02B03",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "for about a week now",
+    "known_text": "இப்போது சுமாரக ஒரு வாரமாக",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L02U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L02U01",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I learn for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கற்கினேன்",
+    "known_audio_id": "72edbede-7229-4339-bae9-e24f6af926a2",
+    "target1_audio_id": "6483ca1b-fa69-4692-8951-e65d94984e0b",
+    "target2_audio_id": "75c6adcf-8b06-4612-b8aa-d22f1a15744b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L02U01",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I've been learning English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": "275ed78b-04e2-40b4-bc15-6a330fb7f2b9",
+    "target2_audio_id": "81cfdde7-0676-4fa4-8022-e5149c34e68d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L02U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L02U02",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I practise English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் பயிற்சி செய்தேன்",
+    "known_audio_id": "d56681d4-ccfc-4ee4-8376-0ad129160747",
+    "target1_audio_id": "6e822253-dfbc-4071-ad39-e265a2b01a9e",
+    "target2_audio_id": "fd295271-0489-4175-aa8c-ad3246539229",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L02U02",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I've been learning with you for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக உங்களுடன் கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": "53ea20c6-e637-4fb6-8015-91a4d36cac1d",
+    "target2_audio_id": "add979fd-04e6-455e-9bc3-5d0e9aeebc49",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L02U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L02U03",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I learn for about a week last month",
+    "known_text": "நான் கடந்த மாதம் சுமாரக ஒரு வாரமாக கற்கினேன்",
+    "known_audio_id": "788066ea-d9fa-4552-93a9-86982e4fca87",
+    "target1_audio_id": "88b548c0-5e17-44fe-af7f-2313b112c27a",
+    "target2_audio_id": "3c8444da-d7a8-4e82-8354-2747b8007b8a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L02U03",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I've been learning to speak English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் பேசக் கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L02U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L02U04",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I learn carefully for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கவனமாக கற்கினேன்",
+    "known_audio_id": "cf45a0a8-0a61-41c4-960d-cb4948e7ad60",
+    "target1_audio_id": "be161671-437e-4f05-a4e7-4b498b0b597b",
+    "target2_audio_id": "c1070a66-75f1-483b-a570-ac314ed425c2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L02U04",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I've been learning a little English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கொஞ்சம் ஆங்கிலம் கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L02U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L02U05",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I learn well for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக நன்றாக கற்கினேன்",
+    "known_audio_id": "d7272ce4-71cc-4943-9c0e-1a74f79ba64d",
+    "target1_audio_id": "273ccbda-bd1e-4a01-a30b-c4d3ad3f5a53",
+    "target2_audio_id": "cfab2089-f2f6-4f5d-ac90-e0c9ac0031ea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L02U05",
+    "seed_number": 38,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I've been learning how to speak English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் எப்படி பேசுவது என்று கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L03B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L03B02",
+    "seed_number": 38,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I've been learning last month",
+    "known_text": "கடந்த மாதம் கற்றுவருகிறேன்",
+    "known_audio_id": "b33c677f-6079-41c1-8807-bf77038f542f",
+    "target1_audio_id": "1484ed29-7dbc-448c-a1ba-4d32801926de",
+    "target2_audio_id": "f965100b-7c1d-437c-b499-22b6f4898f70",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L03B02",
+    "seed_number": 38,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I've been learning a little",
+    "known_text": "கொஞ்சம் கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0038L03U06"
+   },
+   "before": {
+    "id": "eng_for_tam:S0038L03U06",
+    "seed_number": 38,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I've been learning carefully last month",
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்றுவருகிறேன்",
+    "known_audio_id": "8991e7cf-6285-4b40-a8f4-a22064bfa373",
+    "target1_audio_id": "0d387537-78e1-4bc2-9559-3a317d67124e",
+    "target2_audio_id": "9aac8178-c4e7-4b6f-91b8-e65b4a617019",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0038L03U06",
+    "seed_number": 38,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I've been learning English carefully",
+    "known_text": "நான் கவனமாக ஆங்கிலம் கற்றுவருகிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0040L03U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0040L03U03",
+    "seed_number": 40,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "how do you feel last month?",
+    "known_text": "நீங்கள் எப்படி உணர்கிறீர்கள் கடந்த மாதம்",
+    "known_audio_id": "0b9263cc-b9e5-48aa-a21d-60711eb8f07a",
+    "target1_audio_id": "2303dece-ca81-4614-8ee9-65ba894e0a8c",
+    "target2_audio_id": "24134b1e-68c7-4c9b-919d-8bca8d71705c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0040L03U03",
+    "seed_number": 40,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "how do you feel about it?",
+    "known_text": "அதைப் பற்றி நீங்கள் எப்படி உணர்கிறீர்கள்?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04B01",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "enjoy learn",
+    "known_text": "ரசிக்கிறேன் கற்க",
+    "known_audio_id": "a68073dd-be57-454c-947b-6bd434c4acae",
+    "target1_audio_id": "d1a9221b-fb3f-44c5-8ac3-0d2d7b91fa74",
+    "target2_audio_id": "3331b650-bee5-43f3-8dd8-dd35f5abd409",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04B01",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy learning",
+    "known_text": "நான் கற்பதை ரசிக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04B02",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "enjoy speak",
+    "known_text": "ரசிக்கிறேன் பேச",
+    "known_audio_id": "14ebc1bb-4ecb-4f73-b600-790858fcec89",
+    "target1_audio_id": "c886d2aa-9e1f-4d40-a568-6047b154823f",
+    "target2_audio_id": "6efa29d6-559f-4a5f-81e7-1e3bddf1be47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04B02",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy speaking",
+    "known_text": "நான் பேசுவதை ரசிக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04B03",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "enjoy interesting",
+    "known_text": "ரசிக்கிறேன் சுவாரஸ்யமான",
+    "known_audio_id": "f3b6ada4-95b4-4d7a-a39c-e1deacf0995c",
+    "target1_audio_id": "0ccad32d-3876-4565-8a1c-6cf2b2141133",
+    "target2_audio_id": "2499e846-39cf-42ac-b80b-b0ff289df357",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04B03",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy talking",
+    "known_text": "நான் பேசிக்கொண்டிருப்பதை ரசிக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04U02",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy a interesting thing",
+    "known_text": "நான் சுவாரஸ்யமான விஷயம் ரசிக்கிறேன்",
+    "known_audio_id": "9149ea51-6df7-48a6-a632-c05acbb5bd88",
+    "target1_audio_id": "d6424f4d-0ad3-4e63-9138-2b745a559040",
+    "target2_audio_id": "8d4f763a-f0b6-44ef-99ce-34f213355a03",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04U02",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy speaking English with interesting people",
+    "known_text": "நான் சுவாரஸ்யமான மக்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04U03",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy English",
+    "known_text": "நான் ஆங்கிலம் கற்பதை ரசிக்கிறேன்",
+    "known_audio_id": "0ad6872b-130f-4a2e-b6e5-cb2ccadf81a5",
+    "target1_audio_id": "164d3825-b354-4741-9cbf-6079df8c3629",
+    "target2_audio_id": "9e4589db-58e8-42c7-b534-8deafd8b7d89",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04U03",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy learning English",
+    "known_text": "நான் ஆங்கிலம் கற்பதை ரசிக்கிறேன்",
+    "known_audio_id": "0ad6872b-130f-4a2e-b6e5-cb2ccadf81a5",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04U04",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "if I enjoy",
+    "known_text": "என்றால் நான் ரசிக்கிறேன்",
+    "known_audio_id": "6ce9cce3-c44a-44ce-88a4-23698ae3a50b",
+    "target1_audio_id": "4725b6d5-110c-4367-8e22-c2c0418847af",
+    "target2_audio_id": "f14b9f3d-156a-44d1-abdc-8d0ec947ea19",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04U04",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy speaking English with you",
+    "known_text": "நான் உங்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0051L04U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0051L04U05",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy this morning",
+    "known_text": "நான் இந்த காலையில் ரசிக்கிறேன்",
+    "known_audio_id": "4804afc1-152f-4adf-94c4-eb1e730af126",
+    "target1_audio_id": "6a02ec82-493d-43da-a935-035b73bc9bf7",
+    "target2_audio_id": "0a8665fb-3ac7-4442-8007-1266ccdddd5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0051L04U05",
+    "seed_number": 51,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "I enjoy learning with my friends",
+    "known_text": "நான் என்னுடைய நண்பர்களுடன் கற்பதை ரசிக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01B01",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "learn last week",
+    "known_text": "கடந்த வாரம் கற்க",
+    "known_audio_id": "60c16fcc-4c3f-4949-8144-5f8ff777db94",
+    "target1_audio_id": "52e88549-26a3-4f84-9374-c35f79308483",
+    "target2_audio_id": "a30a3c33-e37d-4b30-9d2d-e92498180516",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01B01",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I wanted to learn last week",
+    "known_text": "நான் கடந்த வாரம் கற்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01B02",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "speak last week",
+    "known_text": "கடந்த வாரம் பேச",
+    "known_audio_id": "26d52473-3e58-4e69-a2d2-8fe07585e375",
+    "target1_audio_id": "99129e78-a92d-4d14-a4ec-8a091741f735",
+    "target2_audio_id": "cbcc487b-f883-407e-a7df-5ec33b742f7d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01B02",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "you wanted to speak last week",
+    "known_text": "நீங்கள் கடந்த வாரம் பேச விரும்பினீர்கள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01B03",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "meet last week",
+    "known_text": "கடந்த வாரம் சந்திக்க",
+    "known_audio_id": "a4c142bc-54bf-43f5-a0ad-660b5d7fb1fd",
+    "target1_audio_id": "3fb3bd3f-8244-404f-a424-19dde61a1858",
+    "target2_audio_id": "f233c0ed-448b-41ec-83d7-d09e4fa3c549",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01B03",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I wanted to meet my friends last week",
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களைச் சந்திக்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01U01",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I learn English last week",
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்கினேன்",
+    "known_audio_id": "8748f485-750d-4911-b517-ca603d474277",
+    "target1_audio_id": "1f15386f-5791-47ad-81e8-1d9891f954eb",
+    "target2_audio_id": "7202ba38-6ab6-4929-8175-c06203549bf4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01U01",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I wanted to learn English last week",
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்க விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01U02",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I speak with my friends last week",
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேசினேன்",
+    "known_audio_id": "767fd6db-f6f3-4bad-b351-0d120749041a",
+    "target1_audio_id": "cbf2c0ae-d88c-4bdc-8528-b42f9d7da82b",
+    "target2_audio_id": "48da1b37-8dfe-4cef-953e-9e40154a4f93",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01U02",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I wanted to speak with my friends last week",
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேச விரும்பினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01U03",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I practise last week",
+    "known_text": "நான் கடந்த வாரம் பயிற்சி செய்தேன்",
+    "known_audio_id": "7dffe797-f26b-435f-8248-dd1406b229af",
+    "target1_audio_id": "2066371e-955c-49a4-981c-20b850494465",
+    "target2_audio_id": "3c01eb46-87d7-49ca-ba3b-5fe3d2e4b218",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01U03",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I started to practise last week",
+    "known_text": "நான் கடந்த வாரம் பயிற்சி செய்யத் தொடங்கினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01U04",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I learn carefully last week",
+    "known_text": "நான் கடந்த வாரம் கவனமாக கற்கினேன்",
+    "known_audio_id": "3d8609e3-8279-4f34-b3d0-0829f855df48",
+    "target1_audio_id": "36914a24-499e-4c82-a33a-db436c33fc0b",
+    "target2_audio_id": "7dcb816d-ea66-4265-9bd4-cbce9813d368",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01U04",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I was starting to feel better last week",
+    "known_text": "கடந்த வாரம் நான் நன்றாக உணரத் தொடங்கினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0052L01U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0052L01U05",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I enjoy a interesting thing last week",
+    "known_text": "நான் கடந்த வாரம் சுவாரஸ்யமான விஷயம் ரசித்தேன்",
+    "known_audio_id": "d392d595-803f-4aa7-8266-d1771c5a67ae",
+    "target1_audio_id": "bd68df32-fbcf-4c4c-b75e-f2e2dbdae18b",
+    "target2_audio_id": "09cba878-4027-4e4d-ab71-9a0b9e212734",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0052L01U05",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I started to learn English last week",
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்கத் தொடங்கினேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0128L03B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0128L03B03",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "like someone I used to know today",
+    "known_text": "போல் யாரோ நான் முன்பு அறிந்தேன் இன்று",
+    "known_audio_id": "a3965485-0ae5-439e-a2ec-188e42a79e96",
+    "target1_audio_id": "b0c1d511-66f1-4c27-b1e1-549c42b8e87f",
+    "target2_audio_id": "6d37cb77-2eb5-4919-9657-ff4717ade129",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0128L03B03",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "a little like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ கொஞ்சம் போல",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0128L03U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0128L03U01",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you like someone I used to know",
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "known_audio_id": "eba0b4c9-380a-4c50-a2a7-37eed015f5ae",
+    "target1_audio_id": "af94fec3-8d29-4835-af22-a138afac46c1",
+    "target2_audio_id": "1af412d6-c9ec-4528-8f14-60809f2bffee",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0128L03U01",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you're like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்",
+    "known_audio_id": "0888a54e-e0ee-4d89-b8e8-bca1fbc62498",
+    "target1_audio_id": "c1bf9e84-992f-4257-966b-1a135c97374b",
+    "target2_audio_id": "5bbd051a-e3c6-4263-9785-34bfd7a3ecf0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0128L03U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0128L03U02",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "he like someone I used to know",
+    "known_text": "அவன் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "known_audio_id": "d8649e5b-a4fd-4c12-a7a0-748ef1d79700",
+    "target1_audio_id": "6bbd1ca6-5932-4914-9f71-6dd89a54ac13",
+    "target2_audio_id": "afab981b-7e66-4b27-9f55-b6807763550b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0128L03U02",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you're a little like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ கொஞ்சம் போல நீங்கள் இருக்கிறீர்கள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0128L03U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0128L03U03",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you like someone I used to know today",
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன் இன்று",
+    "known_audio_id": "f8e34e9c-c6f8-4e3f-92b1-d896aecfed5d",
+    "target1_audio_id": "da4e1320-193b-4f59-ae56-33f556472fb8",
+    "target2_audio_id": "25decaf7-fe57-4c14-bb91-3e2b56fc35e7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0128L03U03",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "because you're like someone I used to know",
+    "known_text": "ஏனென்றால் நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0128L03U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0128L03U04",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I like someone I used to know",
+    "known_text": "நான் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "known_audio_id": "f51fbb2a-9928-4858-9d57-bc4360ae69af",
+    "target1_audio_id": "7961d1fa-ec14-4ea6-bb5a-8d87c44229ec",
+    "target2_audio_id": "20afc4fe-72eb-4ef3-8d28-b987566d44ff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0128L03U04",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I think you're like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள் என்று நான் நினைக்கிறேன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0128L03U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0128L03U05",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you like someone I used to know so well",
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன் நன்றாக",
+    "known_audio_id": "80c55eb9-d7bd-4b87-8cbb-8dfd95b43cdc",
+    "target1_audio_id": "2cf7c950-b45c-4e68-bb8b-83f1a7d2ba8a",
+    "target2_audio_id": "df8b6e74-05aa-43dc-aff1-e5bcd4041afb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0128L03U05",
+    "seed_number": 128,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you're like someone I used to know very well",
+    "known_text": "நான் முன்பு நன்றாக அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "lego_id": "S0142L05"
+   },
+   "before": {
+    "id": "bffec776-a4f3-4c88-8170-6e1bba105cee",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": "S0142L05",
+    "target_text": "thats very kind of you and im",
+    "components": [
+     {
+      "known": "கருணையான",
+      "target": "kind"
+     },
+     {
+      "known": "இது",
+      "target": "thats"
+     },
+     {
+      "known": "மிகவும்",
+      "target": "very"
+     },
+     {
+      "known": "இதன்",
+      "target": "of"
+     },
+     {
+      "known": "நீங்கள்",
+      "target": "you"
+     },
+     {
+      "known": "மற்றும்",
+      "target": "and"
+     },
+     {
+      "known": "நான்",
+      "target": "im"
+     }
+    ],
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+    "known_audio_id": "72369289-8e89-4517-9534-f6157139819f",
+    "target1_audio_id": "a9643735-c5d6-4f60-9278-9809edc8a8a2",
+    "target2_audio_id": "b8396492-f735-472f-97a1-9d9e0b827233",
+    "presentation_audio_id": "ed9db62a-e8db-409e-b964-82a6b62c7147"
+   },
+   "after": {
+    "id": "bffec776-a4f3-4c88-8170-6e1bba105cee",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": "S0142L05",
+    "target_text": "that's very kind of you and I'm",
+    "components": [
+     {
+      "known": "கருணையான",
+      "target": "kind"
+     },
+     {
+      "known": "இது",
+      "target": "that's"
+     },
+     {
+      "known": "மிகவும்",
+      "target": "very"
+     },
+     {
+      "known": "இதன்",
+      "target": "of"
+     },
+     {
+      "known": "நீங்கள்",
+      "target": "you"
+     },
+     {
+      "known": "மற்றும்",
+      "target": "and"
+     },
+     {
+      "known": "நான்",
+      "target": "I'm"
+     }
+    ],
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+    "known_audio_id": "72369289-8e89-4517-9534-f6157139819f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0142L05B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0142L05B01",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "thats very kind of you and im",
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+    "known_audio_id": "72369289-8e89-4517-9534-f6157139819f",
+    "target1_audio_id": "a9643735-c5d6-4f60-9278-9809edc8a8a2",
+    "target2_audio_id": "b8396492-f735-472f-97a1-9d9e0b827233",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0142L05B01",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "that's very kind of you and I'm",
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+    "known_audio_id": "72369289-8e89-4517-9534-f6157139819f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0142L05U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0142L05U01",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "thats very kind of you and im grateful",
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "known_audio_id": "6b96638d-9e69-4e5b-9673-3f3ef0160a73",
+    "target1_audio_id": "90f94ef8-2a5b-45a4-8121-9d0c20d036a5",
+    "target2_audio_id": "2ba6e00d-a20d-448b-b00b-32fe6565f73d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0142L05U01",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "that's very kind of you and I'm grateful",
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "known_audio_id": "6b96638d-9e69-4e5b-9673-3f3ef0160a73",
+    "target1_audio_id": "60eabeff-687b-4af5-954f-3335f1c95251",
+    "target2_audio_id": "31383cf6-6d81-494a-8678-c9246b7f1338",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0142L05U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0142L05U02",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "I think thats very kind of you and im grateful",
+    "known_text": "நான் நினை இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "known_audio_id": "84c3bdc1-9e33-419d-be1f-c59f12eaf173",
+    "target1_audio_id": "d0e86f23-9fd9-45af-9d95-c4ef12aaf70d",
+    "target2_audio_id": "cf18cc7c-d301-4a8b-8b29-ecbcd7bc719b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0142L05U02",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "I think that's very kind of you and I'm grateful",
+    "known_text": "நான் நினைக்கிறேன் இது மிகவும் கருணையானது நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 49,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0142L05U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0142L05U03",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "today thats very kind of you and im grateful",
+    "known_text": "இன்று இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "known_audio_id": "4891b9d7-de75-44b3-aee9-908894d808e2",
+    "target1_audio_id": "a8afa1f1-01f3-45a4-a533-2ef00a71658b",
+    "target2_audio_id": "a2b07f69-54a2-48ee-a235-e6d1592753dd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0142L05U03",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "today that's very kind of you and I'm grateful",
+    "known_text": "இன்று இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "known_audio_id": "4891b9d7-de75-44b3-aee9-908894d808e2",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 50,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0142L05U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0142L05U05",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "thats very kind of you and im grateful to you for helping",
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன் நீங்களுக்கு உதவிக்காக",
+    "known_audio_id": "506cd9c0-1389-472e-b6a7-d6b808f7345e",
+    "target1_audio_id": "4dc55cf0-86d8-40f5-87f9-46137c0739e6",
+    "target2_audio_id": "c81bd9b8-7950-4bb4-bfc5-84a1647b728a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0142L05U05",
+    "seed_number": 142,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "that's very kind of you and I'm grateful to you for helping",
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன் நீங்களுக்கு உதவிக்காக",
+    "known_audio_id": "506cd9c0-1389-472e-b6a7-d6b808f7345e",
+    "target1_audio_id": "d06d08f0-9884-4887-9e6d-7ba12fc5e1c2",
+    "target2_audio_id": "5ee73136-0837-4e6d-90cc-03868db1f28d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U05",
+   "set": {
+    "target_text": "thats very kind of you and im grateful to you for helping",
+    "target1_audio_id": "4dc55cf0-86d8-40f5-87f9-46137c0739e6",
+    "target2_audio_id": "c81bd9b8-7950-4bb4-bfc5-84a1647b728a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U03",
+   "set": {
+    "target_text": "today thats very kind of you and im grateful",
+    "target1_audio_id": "a8afa1f1-01f3-45a4-a533-2ef00a71658b",
+    "target2_audio_id": "a2b07f69-54a2-48ee-a235-e6d1592753dd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U02",
+   "set": {
+    "known_text": "நான் நினை இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "target_text": "I think thats very kind of you and im grateful",
+    "known_audio_id": "84c3bdc1-9e33-419d-be1f-c59f12eaf173",
+    "target1_audio_id": "d0e86f23-9fd9-45af-9d95-c4ef12aaf70d",
+    "target2_audio_id": "cf18cc7c-d301-4a8b-8b29-ecbcd7bc719b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U01",
+   "set": {
+    "target_text": "thats very kind of you and im grateful",
+    "target1_audio_id": "90f94ef8-2a5b-45a4-8121-9d0c20d036a5",
+    "target2_audio_id": "2ba6e00d-a20d-448b-b00b-32fe6565f73d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05B01",
+   "set": {
+    "target_text": "thats very kind of you and im",
+    "target1_audio_id": "a9643735-c5d6-4f60-9278-9809edc8a8a2",
+    "target2_audio_id": "b8396492-f735-472f-97a1-9d9e0b827233"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "bffec776-a4f3-4c88-8170-6e1bba105cee",
+   "set": {
+    "target_text": "thats very kind of you and im",
+    "components": [
+     {
+      "known": "கருணையான",
+      "target": "kind"
+     },
+     {
+      "known": "இது",
+      "target": "thats"
+     },
+     {
+      "known": "மிகவும்",
+      "target": "very"
+     },
+     {
+      "known": "இதன்",
+      "target": "of"
+     },
+     {
+      "known": "நீங்கள்",
+      "target": "you"
+     },
+     {
+      "known": "மற்றும்",
+      "target": "and"
+     },
+     {
+      "known": "நான்",
+      "target": "im"
+     }
+    ],
+    "target1_audio_id": "a9643735-c5d6-4f60-9278-9809edc8a8a2",
+    "target2_audio_id": "b8396492-f735-472f-97a1-9d9e0b827233",
+    "presentation_audio_id": "ed9db62a-e8db-409e-b964-82a6b62c7147"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U05",
+   "set": {
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன் நன்றாக",
+    "target_text": "you like someone I used to know so well",
+    "known_audio_id": "80c55eb9-d7bd-4b87-8cbb-8dfd95b43cdc",
+    "target1_audio_id": "2cf7c950-b45c-4e68-bb8b-83f1a7d2ba8a",
+    "target2_audio_id": "df8b6e74-05aa-43dc-aff1-e5bcd4041afb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U04",
+   "set": {
+    "known_text": "நான் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "target_text": "I like someone I used to know",
+    "known_audio_id": "f51fbb2a-9928-4858-9d57-bc4360ae69af",
+    "target1_audio_id": "7961d1fa-ec14-4ea6-bb5a-8d87c44229ec",
+    "target2_audio_id": "20afc4fe-72eb-4ef3-8d28-b987566d44ff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U03",
+   "set": {
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன் இன்று",
+    "target_text": "you like someone I used to know today",
+    "known_audio_id": "f8e34e9c-c6f8-4e3f-92b1-d896aecfed5d",
+    "target1_audio_id": "da4e1320-193b-4f59-ae56-33f556472fb8",
+    "target2_audio_id": "25decaf7-fe57-4c14-bb91-3e2b56fc35e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U02",
+   "set": {
+    "known_text": "அவன் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "target_text": "he like someone I used to know",
+    "known_audio_id": "d8649e5b-a4fd-4c12-a7a0-748ef1d79700",
+    "target1_audio_id": "6bbd1ca6-5932-4914-9f71-6dd89a54ac13",
+    "target2_audio_id": "afab981b-7e66-4b27-9f55-b6807763550b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U01",
+   "set": {
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "target_text": "you like someone I used to know",
+    "known_audio_id": "eba0b4c9-380a-4c50-a2a7-37eed015f5ae",
+    "target1_audio_id": "af94fec3-8d29-4835-af22-a138afac46c1",
+    "target2_audio_id": "1af412d6-c9ec-4528-8f14-60809f2bffee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03B03",
+   "set": {
+    "known_text": "போல் யாரோ நான் முன்பு அறிந்தேன் இன்று",
+    "target_text": "like someone I used to know today",
+    "known_audio_id": "a3965485-0ae5-439e-a2ec-188e42a79e96",
+    "target1_audio_id": "b0c1d511-66f1-4c27-b1e1-549c42b8e87f",
+    "target2_audio_id": "6d37cb77-2eb5-4919-9657-ff4717ade129"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U05",
+   "set": {
+    "known_text": "நான் கடந்த வாரம் சுவாரஸ்யமான விஷயம் ரசித்தேன்",
+    "target_text": "I enjoy a interesting thing last week",
+    "known_audio_id": "d392d595-803f-4aa7-8266-d1771c5a67ae",
+    "target1_audio_id": "bd68df32-fbcf-4c4c-b75e-f2e2dbdae18b",
+    "target2_audio_id": "09cba878-4027-4e4d-ab71-9a0b9e212734"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U04",
+   "set": {
+    "known_text": "நான் கடந்த வாரம் கவனமாக கற்கினேன்",
+    "target_text": "I learn carefully last week",
+    "known_audio_id": "3d8609e3-8279-4f34-b3d0-0829f855df48",
+    "target1_audio_id": "36914a24-499e-4c82-a33a-db436c33fc0b",
+    "target2_audio_id": "7dcb816d-ea66-4265-9bd4-cbce9813d368"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U03",
+   "set": {
+    "known_text": "நான் கடந்த வாரம் பயிற்சி செய்தேன்",
+    "target_text": "I practise last week",
+    "known_audio_id": "7dffe797-f26b-435f-8248-dd1406b229af",
+    "target1_audio_id": "2066371e-955c-49a4-981c-20b850494465",
+    "target2_audio_id": "3c01eb46-87d7-49ca-ba3b-5fe3d2e4b218"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U02",
+   "set": {
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேசினேன்",
+    "target_text": "I speak with my friends last week",
+    "known_audio_id": "767fd6db-f6f3-4bad-b351-0d120749041a",
+    "target1_audio_id": "cbf2c0ae-d88c-4bdc-8528-b42f9d7da82b",
+    "target2_audio_id": "48da1b37-8dfe-4cef-953e-9e40154a4f93"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U01",
+   "set": {
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்கினேன்",
+    "target_text": "I learn English last week",
+    "known_audio_id": "8748f485-750d-4911-b517-ca603d474277",
+    "target1_audio_id": "1f15386f-5791-47ad-81e8-1d9891f954eb",
+    "target2_audio_id": "7202ba38-6ab6-4929-8175-c06203549bf4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01B03",
+   "set": {
+    "known_text": "கடந்த வாரம் சந்திக்க",
+    "target_text": "meet last week",
+    "known_audio_id": "a4c142bc-54bf-43f5-a0ad-660b5d7fb1fd",
+    "target1_audio_id": "3fb3bd3f-8244-404f-a424-19dde61a1858",
+    "target2_audio_id": "f233c0ed-448b-41ec-83d7-d09e4fa3c549"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01B02",
+   "set": {
+    "known_text": "கடந்த வாரம் பேச",
+    "target_text": "speak last week",
+    "known_audio_id": "26d52473-3e58-4e69-a2d2-8fe07585e375",
+    "target1_audio_id": "99129e78-a92d-4d14-a4ec-8a091741f735",
+    "target2_audio_id": "cbcc487b-f883-407e-a7df-5ec33b742f7d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01B01",
+   "set": {
+    "known_text": "கடந்த வாரம் கற்க",
+    "target_text": "learn last week",
+    "known_audio_id": "60c16fcc-4c3f-4949-8144-5f8ff777db94",
+    "target1_audio_id": "52e88549-26a3-4f84-9374-c35f79308483",
+    "target2_audio_id": "a30a3c33-e37d-4b30-9d2d-e92498180516"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U05",
+   "set": {
+    "known_text": "நான் இந்த காலையில் ரசிக்கிறேன்",
+    "target_text": "I enjoy this morning",
+    "known_audio_id": "4804afc1-152f-4adf-94c4-eb1e730af126",
+    "target1_audio_id": "6a02ec82-493d-43da-a935-035b73bc9bf7",
+    "target2_audio_id": "0a8665fb-3ac7-4442-8007-1266ccdddd5c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U04",
+   "set": {
+    "known_text": "என்றால் நான் ரசிக்கிறேன்",
+    "target_text": "if I enjoy",
+    "known_audio_id": "6ce9cce3-c44a-44ce-88a4-23698ae3a50b",
+    "target1_audio_id": "4725b6d5-110c-4367-8e22-c2c0418847af",
+    "target2_audio_id": "f14b9f3d-156a-44d1-abdc-8d0ec947ea19"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U03",
+   "set": {
+    "target_text": "I enjoy English",
+    "target1_audio_id": "164d3825-b354-4741-9cbf-6079df8c3629",
+    "target2_audio_id": "9e4589db-58e8-42c7-b534-8deafd8b7d89"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U02",
+   "set": {
+    "known_text": "நான் சுவாரஸ்யமான விஷயம் ரசிக்கிறேன்",
+    "target_text": "I enjoy a interesting thing",
+    "known_audio_id": "9149ea51-6df7-48a6-a632-c05acbb5bd88",
+    "target1_audio_id": "d6424f4d-0ad3-4e63-9138-2b745a559040",
+    "target2_audio_id": "8d4f763a-f0b6-44ef-99ce-34f213355a03"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04B03",
+   "set": {
+    "known_text": "ரசிக்கிறேன் சுவாரஸ்யமான",
+    "target_text": "enjoy interesting",
+    "known_audio_id": "f3b6ada4-95b4-4d7a-a39c-e1deacf0995c",
+    "target1_audio_id": "0ccad32d-3876-4565-8a1c-6cf2b2141133",
+    "target2_audio_id": "2499e846-39cf-42ac-b80b-b0ff289df357"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04B02",
+   "set": {
+    "known_text": "ரசிக்கிறேன் பேச",
+    "target_text": "enjoy speak",
+    "known_audio_id": "14ebc1bb-4ecb-4f73-b600-790858fcec89",
+    "target1_audio_id": "c886d2aa-9e1f-4d40-a568-6047b154823f",
+    "target2_audio_id": "6efa29d6-559f-4a5f-81e7-1e3bddf1be47"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04B01",
+   "set": {
+    "known_text": "ரசிக்கிறேன் கற்க",
+    "target_text": "enjoy learn",
+    "known_audio_id": "a68073dd-be57-454c-947b-6bd434c4acae",
+    "target1_audio_id": "d1a9221b-fb3f-44c5-8ac3-0d2d7b91fa74",
+    "target2_audio_id": "3331b650-bee5-43f3-8dd8-dd35f5abd409"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0040L03U03",
+   "set": {
+    "known_text": "நீங்கள் எப்படி உணர்கிறீர்கள் கடந்த மாதம்",
+    "target_text": "how do you feel last month?",
+    "known_audio_id": "0b9263cc-b9e5-48aa-a21d-60711eb8f07a",
+    "target1_audio_id": "2303dece-ca81-4614-8ee9-65ba894e0a8c",
+    "target2_audio_id": "24134b1e-68c7-4c9b-919d-8bca8d71705c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L03U06",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்றுவருகிறேன்",
+    "target_text": "I've been learning carefully last month",
+    "known_audio_id": "8991e7cf-6285-4b40-a8f4-a22064bfa373",
+    "target1_audio_id": "0d387537-78e1-4bc2-9559-3a317d67124e",
+    "target2_audio_id": "9aac8178-c4e7-4b6f-91b8-e65b4a617019"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L03B02",
+   "set": {
+    "known_text": "கடந்த மாதம் கற்றுவருகிறேன்",
+    "target_text": "I've been learning last month",
+    "known_audio_id": "b33c677f-6079-41c1-8807-bf77038f542f",
+    "target1_audio_id": "1484ed29-7dbc-448c-a1ba-4d32801926de",
+    "target2_audio_id": "f965100b-7c1d-437c-b499-22b6f4898f70"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U05",
+   "set": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக நன்றாக கற்கினேன்",
+    "target_text": "I learn well for about a week",
+    "known_audio_id": "d7272ce4-71cc-4943-9c0e-1a74f79ba64d",
+    "target1_audio_id": "273ccbda-bd1e-4a01-a30b-c4d3ad3f5a53",
+    "target2_audio_id": "cfab2089-f2f6-4f5d-ac90-e0c9ac0031ea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U04",
+   "set": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கவனமாக கற்கினேன்",
+    "target_text": "I learn carefully for about a week",
+    "known_audio_id": "cf45a0a8-0a61-41c4-960d-cb4948e7ad60",
+    "target1_audio_id": "be161671-437e-4f05-a4e7-4b498b0b597b",
+    "target2_audio_id": "c1070a66-75f1-483b-a570-ac314ed425c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U03",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் சுமாரக ஒரு வாரமாக கற்கினேன்",
+    "target_text": "I learn for about a week last month",
+    "known_audio_id": "788066ea-d9fa-4552-93a9-86982e4fca87",
+    "target1_audio_id": "88b548c0-5e17-44fe-af7f-2313b112c27a",
+    "target2_audio_id": "3c8444da-d7a8-4e82-8354-2747b8007b8a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U02",
+   "set": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் பயிற்சி செய்தேன்",
+    "target_text": "I practise English for about a week",
+    "known_audio_id": "d56681d4-ccfc-4ee4-8376-0ad129160747",
+    "target1_audio_id": "6e822253-dfbc-4071-ad39-e265a2b01a9e",
+    "target2_audio_id": "fd295271-0489-4175-aa8c-ad3246539229"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U01",
+   "set": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கற்கினேன்",
+    "target_text": "I learn for about a week",
+    "known_audio_id": "72edbede-7229-4339-bae9-e24f6af926a2",
+    "target1_audio_id": "6483ca1b-fa69-4692-8951-e65d94984e0b",
+    "target2_audio_id": "75c6adcf-8b06-4612-b8aa-d22f1a15744b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02B03",
+   "set": {
+    "known_text": "கடந்த மாதம் சுமாரக ஒரு வாரமாக",
+    "target_text": "last month for about a week",
+    "known_audio_id": "3953c0b5-e4b1-4036-b3b2-fe8dc8c5fac0",
+    "target1_audio_id": "d7642700-16ed-4d02-8903-6fbd29d85ad5",
+    "target2_audio_id": "125198ab-0745-4686-b041-012e871b3ee7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L03U05",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் அதைப் பற்றி கற்கினேன்",
+    "target_text": "I learn about it last month",
+    "known_audio_id": "c4dde177-8c94-47a8-9741-eb86532ccee1",
+    "target1_audio_id": "89fc39f5-ef15-425c-befd-b3d4724bcd9e",
+    "target2_audio_id": "c34993b1-3aa1-4377-bd81-85df02ebb46b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L03U04",
+   "set": {
+    "known_text": "நான் அதைப் பற்றி சொல்ல விரும்புகிறேன்",
+    "target_text": "I want to say about it",
+    "known_audio_id": "d0648373-9bc8-4bdd-bb91-a68ccbe1e1a7",
+    "target1_audio_id": "6d5d8836-0aa8-4e3d-be48-fbfd979aaac6",
+    "target2_audio_id": "0d7b21a8-ca9b-4ca2-a39f-0053e45035bc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U05",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் பேசினேன்",
+    "target_text": "I speak last month",
+    "known_audio_id": "82f52b41-9f14-4cfd-b4ca-cc214234f666",
+    "target1_audio_id": "d6b60088-62a8-4722-92f0-fde656d01961",
+    "target2_audio_id": "92632814-63ce-4975-b17d-4dcc1fad4cbd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U04",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் சந்தித்தேன்",
+    "target_text": "I meet last month",
+    "known_audio_id": "2e613418-9bbf-40fa-a8d5-d53df5e08ced",
+    "target1_audio_id": "c60b3c52-c654-4472-bb77-d3ece857ef87",
+    "target2_audio_id": "d1fa4535-fa16-4a1f-999c-10ff01315752"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U03",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்கினேன்",
+    "target_text": "I learn carefully last month",
+    "known_audio_id": "b0440e0d-1e41-4d6c-85c3-0097920aed2e",
+    "target1_audio_id": "d7b4eca6-03bb-4f0c-a552-5fc88fc29607",
+    "target2_audio_id": "be4b8795-d494-4a33-8e06-c8123c8457d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U02",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் பயிற்சி செய்தேன்",
+    "target_text": "I practise last month",
+    "known_audio_id": "d6223403-c962-4604-9320-03745eb8560e",
+    "target1_audio_id": "f4c30f08-f520-45ce-8e55-54299d6a53a6",
+    "target2_audio_id": "a12a7da6-3374-4376-ad93-1b144d63810a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U01",
+   "set": {
+    "known_text": "நான் கடந்த மாதம் ஆங்கிலம் கற்கினேன்",
+    "target_text": "I learn English last month",
+    "known_audio_id": "e72a5281-d6c9-401a-8912-20730b9c77c9",
+    "target1_audio_id": "6e2f024d-7889-4ce2-be26-12bc7034b7bc",
+    "target2_audio_id": "2236801d-f745-4250-93ce-79fc699927e5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02B03",
+   "set": {
+    "known_text": "கடந்த மாதம் சந்திக்க",
+    "target_text": "meet last month",
+    "known_audio_id": "7817eb8b-1750-472d-8470-1bd016dc05eb",
+    "target1_audio_id": "c70f505b-ca65-4da9-b4ae-f9c0d90d7671",
+    "target2_audio_id": "1ded20af-dd4d-43d0-b535-07494b1b8ef4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02B02",
+   "set": {
+    "known_text": "கடந்த மாதம் பேச",
+    "target_text": "speak last month",
+    "known_audio_id": "8ebf368e-b394-4fcb-8baa-5f61263d21a7",
+    "target1_audio_id": "6f3f1c7e-8a04-4b2e-8bd8-554ccb31e045",
+    "target2_audio_id": "98b50c3c-5cf2-4be7-b5c8-33ceb2c4e351"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02B01",
+   "set": {
+    "known_text": "கடந்த மாதம் கற்க",
+    "target_text": "learn last month",
+    "known_audio_id": "962eb214-4d04-4ea7-b1c2-ffa258d5d5f3",
+    "target1_audio_id": "853ed950-2c0b-416b-8fed-8925a4128689",
+    "target2_audio_id": "d70a096d-dabc-40e9-8ae3-fddf8f79c8d4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0017L01B04",
+   "set": {
+    "known_text": "அவள் என்னுடன் சந்திக்க",
+    "target_text": "she meet with me",
+    "known_audio_id": "62323956-5147-40c2-b28e-a7af1ed2248b",
+    "target1_audio_id": "fbce0ef1-9205-4a7a-a929-088f13119212",
+    "target2_audio_id": "927b993f-2a13-49ad-9ad5-5968627f90e1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0017L01B03",
+   "set": {
+    "known_text": "அவள் இன்று பேச",
+    "target_text": "she speak today",
+    "known_audio_id": "adffc446-9a7d-4d9b-9e14-69fe90d6d9eb",
+    "target1_audio_id": "cefd7812-faf3-42c9-b731-6444c84f7419",
+    "target2_audio_id": "079bbe43-261f-4ac4-8475-05d353f48210"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0016L01B03",
+   "set": {
+    "known_text": "அவர் என்னுடன் சந்திக்க",
+    "target_text": "he meet with me",
+    "known_audio_id": "aa889ec8-7b0e-437a-82e5-c3fa1cf43244",
+    "target1_audio_id": "362a460a-7868-47f5-ab05-22db87e3a38d",
+    "target2_audio_id": "10e6184a-ea30-4efa-8d54-f5cc212a76d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0016L01B02",
+   "set": {
+    "known_text": "அவர் நாளை பேச",
+    "target_text": "he speak tomorrow",
+    "known_audio_id": "6a907290-34a0-4a5f-bb50-ac12ee217fe9",
+    "target1_audio_id": "97072e9b-21fd-4341-b360-a53b9b11a2dd",
+    "target2_audio_id": "5ed6febd-75f2-4a67-9b77-370d8fe37698"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0016L01B01",
+   "set": {
+    "known_text": "அவர் இங்கே கற்க",
+    "target_text": "he learn here",
+    "known_audio_id": "bab7d75e-7949-4b86-834c-3321bcf54c83",
+    "target1_audio_id": "151ba132-6263-4676-88c9-727ef25ab92e",
+    "target2_audio_id": "03ccc5e3-474c-41bc-bae2-513c0bf874c1"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T12-51-23-323Z-25333502-88dd-458d-aeed-c5a24f9e480b.json"
+}

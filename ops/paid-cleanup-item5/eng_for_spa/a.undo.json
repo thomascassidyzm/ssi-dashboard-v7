@@ -1,0 +1,31 @@
+{
+  "course_code": "eng_for_spa",
+  "event_id": "51295689-4ff9-4509-a0e1-56a1013540cd",
+  "actor": "cs-item5-broken-english",
+  "created_at": "2026-11-18T14:14:49.542Z",
+  "how_to_undo": "POST /api/production/eng_for_spa/edit-batch {\"undo_file\":\"2026-11-18T14-14-49-541Z-51295689-4ff9-4509-a0e1-56a1013540cd.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0145L02U04",
+      "set": {
+        "known_text": "lo siento que no entiendo por qué no estás contento",
+        "target_text": "I'm sorry that I don't understand why are you not happy",
+        "known_audio_id": "015f33c4-c738-4463-9ecc-e2caa0dfa354",
+        "target1_audio_id": "d1b1b960-9385-4c39-ad7d-cc03f59cf110",
+        "target2_audio_id": "3418abc5-d7fa-45c4-853c-403b8ae6ef77"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0145L02U01",
+      "set": {
+        "known_text": "claro que sé por qué no estás contento",
+        "target_text": "of course I know why are you not happy",
+        "known_audio_id": "047b9a09-bf4f-4457-bea2-ffd0a0353bb6",
+        "target1_audio_id": "203329e3-1fcb-41f8-af25-38e27f8ca054",
+        "target2_audio_id": "55212f84-90ff-475a-8f3a-2a06f0ccc035"
+      }
+    }
+  ]
+}

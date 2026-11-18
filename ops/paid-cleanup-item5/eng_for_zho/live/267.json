@@ -1,0 +1,760 @@
+{
+ "seed": 267,
+ "seed_pair": {
+  "known": "你的朋友联系你了吗？",
+  "target": "Have you heard from your friend?"
+ },
+ "legos": {
+  "S0267L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0267L01",
+    "type": "M",
+    "known_text": "你的朋友联系你了吗",
+    "target_text": "Have you heard from your friend",
+    "components": [
+     {
+      "known": "联系",
+      "target": "heard from"
+     }
+    ],
+    "seed_number": 267
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0267L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "联系",
+     "target_text": "Heard from",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T18:41:21.31377+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "12be2233-7d63-4389-84c5-34e5b2d96e0a",
+     "target1_audio_id": "c3ba8209-ffa9-4848-bb15-ba62597a3f2c",
+     "target2_audio_id": "31f0d9b1-04d4-4037-b616-f795f9866e3d",
+     "qa_checked": null,
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "f2d9da54-4d3b-4c81-aa2e-8727252fe859",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Heard",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " from",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8d1a36b1-5b10-4755-b372-529d51b96042",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "你的朋友联系你了吗",
+     "target_text": "Have you heard from your friend?",
+     "word_count": 31,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-10-28T23:20:53.981639+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "978e65c1-5ca8-468e-bd6f-9bb18e96899e",
+     "target1_audio_id": "5b8be788-9cf3-426b-9963-43684cc7962c",
+     "target2_audio_id": "e0c91550-d4e5-4560-b03c-aefe704826e1",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "今天早上你有没有听到你朋友的消息",
+     "target_text": "Have you heard from your friend this morning?",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "今天你有没有听到你朋友的消息",
+     "target_text": "Have you heard from your friend today?",
+     "word_count": 37,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1e362416-e357-4799-9a18-efab814830e7",
+     "target1_audio_id": "7308b13f-cd90-43ac-96ca-f1bfc8a53807",
+     "target2_audio_id": "295d8aa6-f2f2-464d-8139-c9054e5e8e8a",
+     "qa_checked": null,
+     "target1_duration_ms": 1776,
+     "target2_duration_ms": 2136,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "你还有没有听到你朋友的消息",
+     "target_text": "Have you heard from your friend yet?",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ddd670e3-2a15-47d0-9645-7280e1cddcd0",
+     "target1_audio_id": "5041debe-58b7-4da9-aa57-c68947187c77",
+     "target2_audio_id": "f35554b4-1ecf-46d4-ab2c-1b40082135c3",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "还",
+       "legoId": "S0060L02",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "你有没有听到你朋友的消息，因为我想知道他说了什么",
+     "target_text": "Have you heard from your friend because I want to know what he said?",
+     "word_count": 67,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:09:20.390Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "dd943b9c-f041-4b11-946d-4e021e7b1cf5",
+     "target1_audio_id": "5f633c2e-d064-4822-a435-ddcc2d1a62bf",
+     "target2_audio_id": "f84b117e-3429-4af9-b177-a542a4733abb",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3504,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "因为",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "我想",
+       "legoId": "S0001L01",
+       "target": " I want",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " said?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "你有没有听到你朋友的消息，还是我们应该问别人",
+     "target_text": "Have you heard from your friend or should we ask someone else?",
+     "word_count": 61,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:09:20.390Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "dcfbad42-857c-4491-9ca3-cb64205bea76",
+     "target1_audio_id": "36c18754-864c-4104-a657-04fcbff17d80",
+     "target2_audio_id": "fb715108-0f6e-4a51-8fe5-85f8a9285e6b",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3288,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "或者",
+       "legoId": "S0044L01",
+       "target": " or",
+       "isGhost": false
+      },
+      {
+       "known": "应该",
+       "legoId": "S0098L01",
+       "target": " should",
+       "isGhost": false
+      },
+      {
+       "known": "我们",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ask",
+       "isGhost": true
+      },
+      {
+       "known": "别人",
+       "legoId": "S0005L03",
+       "target": " someone else",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "你有没有听到你朋友的消息，虽然我觉得他太忙了",
+     "target_text": "Have you heard from your friend although I think he was too busy?",
+     "word_count": 64,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:09:20.390Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ae9920e2-123f-4de4-9760-975eddf2437b",
+     "target1_audio_id": "d193481a-df4d-4568-ad6c-c6178487d48e",
+     "target2_audio_id": "4e63f52c-a6f5-4e08-9742-05c17d065c2e",
+     "qa_checked": null,
+     "target1_duration_ms": 3576,
+     "target2_duration_ms": 3840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "虽然",
+       "legoId": "S0178L01",
+       "target": " although",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "太忙",
+       "legoId": "S0193L01",
+       "target": " too busy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "你有没有听到你朋友的消息，你认为我们应该怎么做",
+     "target_text": "Have you heard from your friend and what do you think we should do?",
+     "word_count": 66,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:09:20.390Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:09:20.449219+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "588c92cb-ffa6-49df-a7a2-aab8f5de2173",
+     "target1_audio_id": "70cb51a6-635a-408a-8216-71088ccbf098",
+     "target2_audio_id": "91e599ca-26d1-49e8-b7b4-5afdd06b087a",
+     "qa_checked": null,
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3144,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你的朋友联系你了吗",
+       "legoId": "S0267L01",
+       "target": "Have you heard from your friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "而且",
+       "legoId": "S0015L02",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "吗",
+       "legoId": "S0014L01",
+       "target": " do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "我们",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "应该",
+       "legoId": "S0098L01",
+       "target": " should",
+       "isGhost": false
+      },
+      {
+       "known": "吗",
+       "legoId": "S0014L01",
+       "target": " do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0267L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 267,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "你的朋友联系你了吗，因为我想知道他打算什么时候来",
+     "target_text": "Have you heard from your friend because I want to know when he's going to come?",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-07-11T05:30:32.451342+00:00",
+     "created_at": "2026-06-16T17:18:57.38372+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "203069f3-b20c-4e3e-996c-0f55001692fe",
+     "target1_audio_id": "6b6db1ed-bada-45e5-9cb7-ec3672bc8b40",
+     "target2_audio_id": "d79333fd-ee9c-41c6-bde1-a93166f7d280",
+     "qa_checked": null,
+     "target1_duration_ms": 3360,
+     "target2_duration_ms": 3840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

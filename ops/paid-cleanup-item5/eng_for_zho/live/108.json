@@ -1,0 +1,778 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "我们不希望半夜醒来",
+  "target": "We didn't hope to wake in the middle of the night"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "不希望半夜醒来",
+    "target_text": "Didn't hope to wake in the middle of the night",
+    "components": [
+     {
+      "known": "不希望",
+      "target": "didn't hope"
+     },
+     {
+      "known": "醒来",
+      "target": "wake"
+     },
+     {
+      "known": "半夜",
+      "target": "in the middle of the night"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0108L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "不希望",
+     "target_text": "Didn't hope",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T18:41:22.558041+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "96dbb671-9e55-4796-a030-5686ef6b2862",
+     "target1_audio_id": "0ea6a967-c723-4ca6-8741-54eddf2a0b5f",
+     "target2_audio_id": "77b96839-6816-4ad9-a90d-405adf41af5e",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "474ab90a-d4ee-4204-b074-d1153b779ccc",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Didn't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hope",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "醒来",
+     "target_text": "Wake",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T08:33:43.658434+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "721ee0cf-bce4-4e58-950f-bef06f7dc969",
+     "target1_audio_id": "40973597-ed9d-442f-b1ac-47aae062bcb4",
+     "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+     "qa_checked": null,
+     "target1_duration_ms": 648,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "36955518-4b8f-4703-b11a-b45854828337",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Wake",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "68b3593f-6a55-4f71-8f48-750b3a870e99",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01C03",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "半夜",
+     "target_text": "In the middle of the night",
+     "word_count": 26,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T17:29:08.612783+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d75f8a53-3e4f-4b35-b85d-f546ff218e72",
+     "target1_audio_id": "a8a6c57c-d1b6-432e-acbe-9ddc1e197741",
+     "target2_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "c28a210e-85b9-4ef9-a142-c105e87477e2",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "In",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " middle",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " night",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "不希望半夜醒来",
+     "target_text": "Didn't hope to wake in the middle of the night",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T19:42:26.542381+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2ff10cdf-4c1e-4ef8-b08b-f9b065c72529",
+     "target1_audio_id": "4cfbb44d-801e-48ad-96a1-be063f596535",
+     "target2_audio_id": "ef823460-e869-4d1c-9e4c-1dffa2461e66",
+     "qa_checked": null,
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": "Didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "今天没希望在半夜醒来",
+     "target_text": "Didn't hope to wake in the middle of the night today",
+     "word_count": 52,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6d79ac19-1689-4a3d-b2c7-88501f692af2",
+     "target1_audio_id": "a8cfadd7-23ed-4490-afaa-83539287da4c",
+     "target2_audio_id": "784ae679-4641-40c0-bbf9-3ecab6a702c3",
+     "qa_checked": null,
+     "target1_duration_ms": 2496,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": "Didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "没希望再次在半夜醒来",
+     "target_text": "Didn't hope to wake in the middle of the night again",
+     "word_count": 52,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4ba204b8-2b04-4585-8f98-8f1aa0042763",
+     "target1_audio_id": "c3c48fa0-f037-4871-9309-777556bffb3e",
+     "target2_audio_id": "89a9f3d3-8bcd-49b3-a166-2d6d3faa23ef",
+     "qa_checked": null,
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": "Didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " again",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "现在没希望在半夜醒来",
+     "target_text": "Didn't hope to wake in the middle of the night now",
+     "word_count": 50,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f17f4f9b-ec92-4bff-b7cc-0db53f8ba4fe",
+     "target1_audio_id": "d7f5281d-b2d3-4b42-a97a-5b1a5d91e00f",
+     "target2_audio_id": "f327cc02-a846-4504-b8d2-52ca04c4b824",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": "Didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "我们没希望在半夜醒来",
+     "target_text": "We didn't hope to wake in the middle of the night",
+     "word_count": 49,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T05:36:47.173Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T23:19:26.32863+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "91232fa5-5b65-4759-8965-830fedb2ca38",
+     "target1_audio_id": "19c3a461-3670-47bc-b69c-a941210db9a8",
+     "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "qa_checked": null,
+     "target1_duration_ms": 3000,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "我们",
+       "legoId": "S0018L01",
+       "target": "We",
+       "isGhost": false
+      },
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": " didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "我没希望在半夜醒来",
+     "target_text": "I didn't hope to wake in the middle of the night",
+     "word_count": 48,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T05:36:47.173Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T19:42:26.547632+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e8f32e84-2dc9-4bf0-bfe5-2934734f7599",
+     "target1_audio_id": "33d27f7b-7961-40f2-a4b5-d43aa764139b",
+     "target2_audio_id": "b786144d-3095-41c2-80d1-ecb1b0d1642e",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": " didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "他们没希望在半夜醒来",
+     "target_text": "They didn't hope to wake in the middle of the night",
+     "word_count": 51,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T05:36:47.173Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "846a9fe0-a7d5-49a7-b44f-6fbfd30945f8",
+     "target1_audio_id": "6e19c807-880b-4d08-bc8b-be479a8844b5",
+     "target2_audio_id": "eee84daa-7dd6-414c-a7ba-9d79fbcb02ec",
+     "qa_checked": null,
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "他们",
+       "legoId": "S0087L01",
+       "target": "They",
+       "isGhost": false
+      },
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": " didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "你为什么觉得我们没希望在半夜醒来？",
+     "target_text": "Why do you think that we didn't hope to wake in the middle of the night?",
+     "word_count": 72,
+     "lego_count": 16,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T05:36:47.173Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1c3f5600-bf4d-4e9b-b1bb-06adbd34c2b1",
+     "target1_audio_id": "cd57932c-d387-421b-bad9-0ac7a9f05363",
+     "target2_audio_id": "a40c7ce3-f85e-4311-8b7a-a570c524cc8e",
+     "qa_checked": null,
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 4968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "为什么",
+       "legoId": "S0021L01",
+       "target": "Why",
+       "isGhost": false
+      },
+      {
+       "known": "吗",
+       "legoId": "S0014L01",
+       "target": " do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "我们",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": " didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0108L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "他没希望在半夜醒来",
+     "target_text": "He didn't hope to wake in the middle of the night",
+     "word_count": 49,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T05:36:47.173Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T19:42:26.533671+00:00",
+     "created_at": "2026-02-20T05:36:47.209022+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e0bbf38d-ad0b-4e6e-950a-3383443f686e",
+     "target1_audio_id": "ec49172e-8b96-4996-9bb2-c50b0883f2cb",
+     "target2_audio_id": "6fe0f8e9-a0e3-4ab9-b4c1-471e10430c00",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "He",
+       "isGhost": true
+      },
+      {
+       "known": "不希望半夜醒来",
+       "legoId": "S0108L01",
+       "target": " didn't hope to wake in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

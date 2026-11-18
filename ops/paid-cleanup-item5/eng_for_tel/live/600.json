@@ -1,0 +1,1052 @@
+{
+ "seed": 600,
+ "seed_pair": {
+  "known": "నువ్వు ఎంత అలసిపోయావో నాకు చెప్పి ఉంటే నేను కారు నడిపేవాడిని.",
+  "target": "I'd have driven if you'd told me how tired you were."
+ },
+ "legos": {
+  "S0600L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0600L01",
+    "type": "M",
+    "known_text": "నువ్వు ఎంత అలసిపోయావో",
+    "target_text": "how tired you were",
+    "components": [
+     {
+      "known": "నువ్వు",
+      "target": "you"
+     },
+     {
+      "known": "ఎంత అలసిపోయావో",
+      "target": "how tired ... were"
+     }
+    ],
+    "seed_number": 600
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tel:S0600L01C01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "నువ్వు",
+     "target_text": "you",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-10-28T21:53:02.572441+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "30b7c6a7-9602-4a2d-828a-95804141c000",
+     "target1_audio_id": "6d276d52-4b9a-4446-85b2-9e033edeb588",
+     "target2_audio_id": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+     "qa_checked": null,
+     "target1_duration_ms": 504,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "af95a248-ef4c-4518-b350-450df7c30d91",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నిన్ను",
+       "legoId": "S0030L02",
+       "target": "you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c41fd453-373b-43b7-a7e9-02535c8c4066",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L01C02",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "ఎంత అలసిపోయావో",
+     "target_text": "how tired ... were",
+     "word_count": 18,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-07-31T05:01:32.174677+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7ba18256-be72-40fc-b4a5-680a3129ccf5",
+     "target1_audio_id": "15b31bb5-8163-4a51-987a-9865a3d70807",
+     "target2_audio_id": "4f07d49a-1fc1-45b0-8fb6-54dc738a1f4b",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1776,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "1abe9c50-2c79-4e35-b03b-ab90d9c20be8",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ఎలా",
+       "legoId": "S0003L01",
+       "target": "how",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ...",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " were",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L01B01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "నువ్వు ఎంత అలసిపోయావో",
+     "target_text": "how tired you were",
+     "word_count": 18,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 104,
+     "updated_at": "2026-10-28T16:57:34.163766+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "88f32179-2b62-4a39-a9ea-ccde5f16dc01",
+     "target1_audio_id": "48d3cc24-acbb-4f43-a487-a371330eaf46",
+     "target2_audio_id": "5dabcf11-7487-421d-b2ce-961920b727e4",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": "how tired you were",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658d27ea-f8ed-4b72-a93e-2889f8f76766",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L01U01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు తెలుసు",
+     "target_text": "I know how tired you were",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.077Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 109,
+     "updated_at": "2026-10-28T17:36:47.165448+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bf16102d-8985-47ec-bcc7-adccfa67189e",
+     "target1_audio_id": "25f27d7a-2ba8-4ec1-b895-6da58691e834",
+     "target2_audio_id": "fcba8e68-f55a-47c4-b242-1e4d54f4fc88",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నాకు తెలుసు",
+       "legoId": "S0059L01",
+       "target": "I know",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": " how tired you were",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "eee2face-2b98-412e-a88c-40b9728ebc43",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L01U02",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "నువ్వు ఎంత అలసిపోయావో నేను చూశాను",
+     "target_text": "I saw how tired you were",
+     "word_count": 11,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.077Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 129,
+     "updated_at": "2026-08-02T21:33:06.378601+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d76a925a-875d-4a62-9a4c-f09d6b38da6a",
+     "target1_audio_id": "42734c0c-42e1-460a-8b8f-b3a8a3d1ab8d",
+     "target2_audio_id": "39a80355-1b28-4952-8a62-cd914da39635",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను చూశాను",
+       "legoId": "S0590L01",
+       "target": "I saw",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": " how tired you were",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L01U03",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు తెలియదు",
+     "target_text": "I don't know how tired you were",
+     "word_count": 12,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.077Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 129,
+     "updated_at": "2026-08-02T21:33:06.418083+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5eb5f3ad-5fb6-4830-8f9a-1f6b2ef4ba58",
+     "target1_audio_id": "a4ba4890-0d9c-447a-804e-aa320d8a1c75",
+     "target2_audio_id": "ff226c17-6126-418f-8652-09fe9c7f42b1",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నాకు తెలియదు",
+       "legoId": "S0060L04",
+       "target": "I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": " how tired you were",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L01U04",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "నేను నా సోదరితో నువ్వు ఎంత అలసిపోయావో చూశాను",
+     "target_text": "I saw how tired you were with my sister",
+     "word_count": 39,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.077Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 107,
+     "updated_at": "2026-08-02T21:26:02.189346+00:00",
+     "created_at": "2026-07-21T03:05:27.104365+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e9f155f1-77a6-4b78-9004-1cfdfda9695a",
+     "target1_audio_id": "251dca10-2294-4f83-8694-e1d929ef31a1",
+     "target2_audio_id": "51d2ef06-b83c-4173-a373-5304d61e06fb",
+     "qa_checked": null,
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను చూశాను",
+       "legoId": "S0590L01",
+       "target": "I saw",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": " how tired you were",
+       "isGhost": false
+      },
+      {
+       "known": "నా సోదరితో",
+       "legoId": "S0594L02",
+       "target": " with my sister",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0600L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0600L02",
+    "type": "M",
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "target_text": "if you'd told me",
+    "components": [
+     {
+      "known": "నాకు చెప్పి ఉంటే",
+      "target": "if you'd told me"
+     }
+    ],
+    "seed_number": 600
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tel:S0600L02B01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "నాకు చెప్పి ఉంటే",
+     "target_text": "if you'd told me",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-11-18T14:16:15.429913+00:00",
+     "created_at": "2026-07-21T03:05:27.187645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6de7fa59-d2a6-433b-a7d5-d1c504876105",
+     "target1_audio_id": "f579e307-8de5-4418-ada7-35f01119741e",
+     "target2_audio_id": "54444a26-5015-4755-9efd-1c4c47fc1bd3",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 1104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నాకు చెప్పి ఉంటే",
+       "legoId": "S0600L02",
+       "target": "'d told me",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3e3ecf26-1166-400f-a060-fb113e190bf8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L02B02",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు చెప్పి ఉంటే",
+     "target_text": "if you'd told me how tired you were",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-11-18T14:16:15.429913+00:00",
+     "created_at": "2026-07-21T03:05:27.187645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ebb84d57-a89f-4bea-b003-45e14979eb5c",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1848,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నాకు చెప్పి ఉంటే",
+       "legoId": "S0600L02",
+       "target": "'d told me",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": " how tired you were",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3e3ecf26-1166-400f-a060-fb113e190bf8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L02B03",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "ఇవాళ నాకు చెప్పి ఉంటే",
+     "target_text": "if you'd told me today",
+     "word_count": 16,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-11-18T14:16:15.429913+00:00",
+     "created_at": "2026-07-21T03:05:27.187645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d4a2094b-a107-4e1b-a2f5-469a9df1b52c",
+     "target1_audio_id": "fab65ffd-a058-41d6-8770-2ae5c84a4732",
+     "target2_audio_id": "09a71af4-bb64-41f8-a05d-c09c16226d0c",
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నాకు చెప్పి ఉంటే",
+       "legoId": "S0600L02",
+       "target": "'d told me",
+       "isGhost": false
+      },
+      {
+       "known": "ఇవాళ",
+       "legoId": "S0007L01",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3e3ecf26-1166-400f-a060-fb113e190bf8",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0600L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0600L03",
+    "type": "M",
+    "known_text": "నేను కారు నడిపేవాడిని",
+    "target_text": "I'd have driven",
+    "components": [
+     {
+      "known": "నేను",
+      "target": "i"
+     },
+     {
+      "known": "కారు నడిపేవాడిని",
+      "target": "'d have driven"
+     }
+    ],
+    "seed_number": 600
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tel:S0600L03C01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "నేను",
+     "target_text": "I",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T17:30:36.829813+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "636aeef9-945d-48b3-8d5b-d2d5593dfad2",
+     "target1_audio_id": "1b65de01-78e2-4da7-8511-2d167bd3ea00",
+     "target2_audio_id": "33185df6-d563-41af-853f-a55201fea3ab",
+     "qa_checked": null,
+     "target1_duration_ms": 528,
+     "target2_duration_ms": 720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9953f6a4-2d60-41a4-bbf8-367b2dc6923e",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను",
+       "legoId": "S0548L01",
+       "target": "I",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658d27ea-f8ed-4b72-a93e-2889f8f76766",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L03C02",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "కారు నడిపేవాడిని",
+     "target_text": "'d have driven",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-07-31T05:01:33.00826+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9db5efe1-93fe-4d9b-9114-59462e9fead3",
+     "target1_audio_id": "2e7b6083-b111-476f-9289-e2d731043ab8",
+     "target2_audio_id": "c312ae0d-2c7f-4354-8953-4484b4a43564",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 888,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "4390228f-fa25-4781-9fa8-f4381281dd6d",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "'d",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " driven",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L03B01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "నేను కారు నడిపేవాడిని",
+     "target_text": "I'd have driven",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 48,
+     "updated_at": "2026-10-28T18:42:30.840963+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "80f87de4-b36a-4429-aa4f-dd147fbc4c45",
+     "target1_audio_id": "c992d208-dd62-4156-9585-dba2e75229fd",
+     "target2_audio_id": "5bc006ad-dfe2-40c0-a05d-7f3e7a92f5b6",
+     "qa_checked": null,
+     "target1_duration_ms": 1032,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను కారు నడిపేవాడిని",
+       "legoId": "S0600L03",
+       "target": "I'd have driven",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "eee2face-2b98-412e-a88c-40b9728ebc43",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L03U01",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు చెప్పి ఉంటే నేను కారు నడిపేవాడిని",
+     "target_text": "I'd have driven if you'd told me how tired you were",
+     "word_count": 20,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.233Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 110,
+     "updated_at": "2026-10-28T23:44:05.400745+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f57b0e0c-ccc6-4f55-b77c-6bb9939370c8",
+     "target1_audio_id": "f726c338-d43e-43bb-a434-45c8b0ca2287",
+     "target2_audio_id": "3218020c-abc2-402b-ac96-fdea1b7c0c7d",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను కారు నడిపేవాడిని",
+       "legoId": "S0600L03",
+       "target": "I'd have driven",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు నాకు చెప్పి ఉంటే",
+       "legoId": "S0599L01",
+       "target": " if you'd told me",
+       "isGhost": false
+      },
+      {
+       "known": "నువ్వు ఎంత అలసిపోయావో",
+       "legoId": "S0600L01",
+       "target": " how tired you were",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658d27ea-f8ed-4b72-a93e-2889f8f76766",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L03U02",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "నాకు చెప్పి ఉంటే, నేను కారు నడిపేవాడిని",
+     "target_text": "if you'd told me, I'd have driven",
+     "word_count": 13,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.233Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 126,
+     "updated_at": "2026-08-02T21:33:09.986666+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8bb9d5d5-e5f2-4067-aa84-83c8808fa503",
+     "target1_audio_id": "6ab10028-6674-4640-834a-3d12e1f434d6",
+     "target2_audio_id": "fa05190a-31a5-414e-970d-16cde42c8419",
+     "qa_checked": null,
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నువ్వు నాకు చెప్పి ఉంటే",
+       "legoId": "S0599L01",
+       "target": "if you'd told me",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "నేను కారు నడిపేవాడిని",
+       "legoId": "S0600L03",
+       "target": " I'd have driven",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L03U03",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "నేను తోటలో కారు నడిపేవాడిని",
+     "target_text": "I'd have driven in a garden",
+     "word_count": 27,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.233Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 107,
+     "updated_at": "2026-08-02T21:26:02.189346+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0d5bd48c-88e6-45ba-9ca5-e48a21cfa3ee",
+     "target1_audio_id": "6812e5c5-0beb-45d0-bb84-87aed4c283b1",
+     "target2_audio_id": "c851304d-7371-42b6-a90a-0b1daeee3056",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను కారు నడిపేవాడిని",
+       "legoId": "S0600L03",
+       "target": "I'd have driven",
+       "isGhost": false
+      },
+      {
+       "known": "తోటలో",
+       "legoId": "S0595L01",
+       "target": " in a garden",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tel:S0600L03U04",
+     "course_code": "eng_for_tel",
+     "seed_number": 600,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "నేను నా సోదరితో కారు నడిపేవాడిని",
+     "target_text": "I'd have driven with my sister",
+     "word_count": 30,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-21T03:05:27.233Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 107,
+     "updated_at": "2026-08-02T21:26:02.189346+00:00",
+     "created_at": "2026-07-21T03:05:27.260446+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "07b66e46-560a-41cf-b824-7eb7888d90f8",
+     "target1_audio_id": "dbf94927-3bdd-4ed9-bc83-98e6ae41e30d",
+     "target2_audio_id": "df64e646-b335-48c5-98d1-658a4de3ebd1",
+     "qa_checked": null,
+     "target1_duration_ms": 1560,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "నేను కారు నడిపేవాడిని",
+       "legoId": "S0600L03",
+       "target": "I'd have driven",
+       "isGhost": false
+      },
+      {
+       "known": "నా సోదరితో",
+       "legoId": "S0594L02",
+       "target": " with my sister",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1657,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

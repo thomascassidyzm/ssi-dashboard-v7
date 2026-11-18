@@ -1,0 +1,116 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0490L01",
+   "set": {
+    "target_text": "never trust anyone ever",
+    "components": [
+     {
+      "known": "কাউকে",
+      "target": "anyone"
+     },
+     {
+      "known": "বিশ্বাস করব না",
+      "target": "never trust"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "target_text": "trust anyone ever"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01B01",
+   "set": {
+    "target_text": "never trust anyone ever"
+   },
+   "expect": {
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "target_text": "trust anyone ever"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01B02",
+   "set": {
+    "target_text": "I never trust anyone ever",
+    "known_text": "আমি কখনো কাউকে বিশ্বাস করি না"
+   },
+   "expect": {
+    "known_text": "আমি কাউকে বিশ্বাস করি না",
+    "target_text": "I don't trust anyone ever"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01B03",
+   "set": {
+    "target_text": "we never trust anyone ever",
+    "known_text": "আমরা কখনো কাউকে বিশ্বাস করি না"
+   },
+   "expect": {
+    "known_text": "আমরা কাউকে বিশ্বাস করি না",
+    "target_text": "we don't trust anyone ever"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01U05",
+   "set": {
+    "target_text": "you will never trust anyone ever",
+    "known_text": "তুমি কখনো কাউকে বিশ্বাস করবে না"
+   },
+   "expect": {
+    "known_text": "তুমি কি কাউকে বিশ্বাস কর না?",
+    "target_text": "don't you trust anyone ever?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0573L02",
+   "set": {
+    "target_text": "makes it special",
+    "components": [
+     {
+      "known": "বিশেষ",
+      "target": "special"
+     },
+     {
+      "known": "করে তোলে",
+      "target": "makes it"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "বিশেষ করে তোলে",
+    "target_text": "makes so special"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0573L02B01",
+   "set": {
+    "target_text": "makes it special"
+   },
+   "expect": {
+    "known_text": "বিশেষ করে তোলে",
+    "target_text": "makes so special"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0573L02B03",
+   "set": {
+    "target_text": "that makes it special now",
+    "known_text": "এটা এখন বিশেষ করে তোলে"
+   },
+   "expect": {
+    "known_text": "এখন বিশেষ করে তোলে",
+    "target_text": "makes so special now"
+   }
+  }
+ ]
+}

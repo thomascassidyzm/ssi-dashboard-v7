@@ -1,0 +1,558 @@
+{
+ "seed": 68,
+ "seed_pair": {
+  "known": "Wonach suchst du?",
+  "target": "What are you looking for?"
+ },
+ "legos": {
+  "S0068L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0068L01",
+    "type": "M",
+    "known_text": "wonach suchst du",
+    "target_text": "what are you looking for",
+    "components": [
+     {
+      "known": "suchst",
+      "target": "looking for"
+     }
+    ],
+    "seed_number": 68
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_deu:S0068L01C01",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "suchst",
+     "target_text": "looking for",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-13T01:10:49.467716+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2adb3a97-ad0b-4a20-aacb-6e7cf03d9f83",
+     "target1_audio_id": "cb66e147-c635-4284-8d09-d083d1c6cc22",
+     "target2_audio_id": "7188c9cd-71db-44b1-ac87-04af2e4b16f0",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "looking",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fd94a470-9442-4889-b448-daa4e23ecff5",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01B01",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "wonach suchst du?",
+     "target_text": "what are you looking for?",
+     "word_count": 24,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:48:09.229119+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5e3b66aa-dc4b-48a7-aca7-aa63b544a0f0",
+     "target1_audio_id": "fa86c7f8-f8c8-455f-8048-6b321e24e80f",
+     "target2_audio_id": "0c2942af-ecba-443a-85b6-8ac93cbd3a35",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": "what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01B02",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "wonach suchst du heute?",
+     "target_text": "what are you looking for today?",
+     "word_count": 30,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-13T16:54:12.461506+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5ebdf7c3-1676-477e-92db-f73ee7852b2f",
+     "target1_audio_id": "bb26f7d8-a111-444e-8648-29aedfc15047",
+     "target2_audio_id": "e8b71a76-0b4f-45ab-8b47-17b05c3b9ced",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": "what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "heute",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01B03",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "wonach suchst du jetzt?",
+     "target_text": "what are you looking for now?",
+     "word_count": 28,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-13T16:40:43.198789+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d3ed9f65-d74a-4348-ac92-9890e5c39a22",
+     "target1_audio_id": "9a0ff8f3-24e4-44d2-86cc-9dc0207ae53f",
+     "target2_audio_id": "bcb73e71-3c56-4dba-aeab-0224463f650a",
+     "qa_checked": null,
+     "target1_duration_ms": 1360,
+     "target2_duration_ms": 1760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": "what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "jetzt",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01U01",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "wonach suchst du, wenn du Englisch lernst?",
+     "target_text": "what are you looking for when you are learning English?",
+     "word_count": 55,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:15:01.564Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:22.13702+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e64ce564-ccd4-4ba5-8641-80e2a415407a",
+     "target1_audio_id": "77d9fb66-96df-4517-b9fa-d91f2b7d496c",
+     "target2_audio_id": "4dc8af60-85e4-406f-9123-6799e7502820",
+     "qa_checked": null,
+     "target1_duration_ms": 3960,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": "what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "wenn",
+       "legoId": "S0034L03",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "englisch zu lernen",
+       "legoId": "S0064L01",
+       "target": " learning English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01U02",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ich möchte wissen, wonach du suchst",
+     "target_text": "I want to know what you are looking for",
+     "word_count": 39,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:15:01.564Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-07-04T22:43:45.206871+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "630fdba3-7c35-4b6b-85ba-8d584c2a2ef3",
+     "target1_audio_id": "76997637-7e51-4109-ae54-228ee0a79f4d",
+     "target2_audio_id": "7cc49ab5-73b7-4eea-9753-0719788bb640",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich möchte",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " know",
+       "isGhost": true
+      },
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": " what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01U04",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "es ist nicht schwierig zu finden, wonach du suchst",
+     "target_text": "it's not difficult to find what are you looking for",
+     "word_count": 51,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:15:01.564Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:11.278274+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "33720158-36d8-422a-a1a1-3827da0a68fe",
+     "target1_audio_id": "2804fc17-36be-4ba5-9f84-fdadd29c157e",
+     "target2_audio_id": "277065fd-29f2-412a-a932-b50ca5e14542",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 4200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "es ist nicht schwierig",
+       "legoId": "S0066L01",
+       "target": "it's not difficult",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": " what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0068L01U05",
+     "course_code": "eng_for_deu",
+     "seed_number": 68,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "könntest du mir sagen, wonach du suchst?",
+     "target_text": "could you say what are you looking for?",
+     "word_count": 39,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:15:01.564Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:26.483457+00:00",
+     "created_at": "2026-02-25T04:15:01.586282+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e14b0b60-f86a-461c-9762-b8c68867859a",
+     "target1_audio_id": "33efedea-0a0f-43b2-b0ca-b4d2c60b854b",
+     "target2_audio_id": "d58d4cf6-1c08-4e40-bbed-fa635f9d4f12",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "könntest du sagen",
+       "legoId": "S0061L01",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "wonach suchst du",
+       "legoId": "S0068L01",
+       "target": " what are you looking for",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1212 @@
+{
+ "seed": 182,
+ "seed_pair": {
+  "known": "어디선가 제 열쇠를 봤어요?",
+  "target": "Have you seen my keys anywhere?"
+ },
+ "legos": {
+  "S0182L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0182L01",
+    "type": "A",
+    "known_text": "열쇠",
+    "target_text": "keys",
+    "components": [],
+    "seed_number": 182
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0182L01B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "열쇠",
+     "target_text": "keys",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T17:30:22.257549+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "288aeec0-de6c-4ca2-ae86-ddd71918f488",
+     "target1_audio_id": "ea246e7c-5229-487a-bc69-c0dff53d69b3",
+     "target2_audio_id": "baf3f2c3-8dd8-4b46-8d37-085271ad3670",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": "keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L01B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "제 열쇠",
+     "target_text": "my keys",
+     "word_count": 7,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-28T17:30:22.031455+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0268f8fc-ec03-4100-a41d-fcd8739aebbb",
+     "target1_audio_id": "ec4c6066-950d-45e4-a19b-99e675d66d5e",
+     "target2_audio_id": "66c603f8-3b1d-42ce-9913-bb02352806fa",
+     "qa_checked": null,
+     "target1_duration_ms": 1368,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L01B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "열쇠를 찾아요",
+     "target_text": "look for my keys",
+     "word_count": 16,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:06.850068+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "406e7006-c564-4f27-aa1b-2445bbff500a",
+     "target1_audio_id": "f66268c7-4f93-45f8-8e4a-3970946ccac8",
+     "target2_audio_id": "d92d25b9-ba13-4cb6-8cc4-efb20fedae00",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "look",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L01U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "열쇠를 찾아 주기를 바라요",
+     "target_text": "I'd like you to help me look for my keys",
+     "word_count": 40,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.730Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:37:09.460859+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ec35fcfe-d89b-49fd-a04a-2d8b9cf65924",
+     "target1_audio_id": "6711bdda-1a03-4c5d-80bc-e1fddc8a4c2e",
+     "target2_audio_id": "421ef47e-bf2e-4ce0-ac73-b0d2ec075b0f",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "바라요",
+       "legoId": "S0170L01",
+       "target": "I'd like you to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " help",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " look",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L01U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "제 열쇠를 찾을 수 없어요",
+     "target_text": "I can't find my keys",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.730Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:30:22.476433+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8f21bda8-9f62-4738-9fe3-e98e23cb7509",
+     "target1_audio_id": "c78256ff-72be-414f-a856-8a6b44a4c264",
+     "target2_audio_id": "009cbffe-a774-4049-9582-24099943c07d",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "수 없어요",
+       "legoId": "S0057L01",
+       "target": " can't",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L01U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "제 열쇠를 주기를 바라요",
+     "target_text": "I'd like you to give me my keys",
+     "word_count": 31,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.730Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:37:19.579545+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ad0cef43-7e85-4ca6-88b6-b6601ada773c",
+     "target1_audio_id": "8da5af42-dc7e-408c-8a0a-06025e09901c",
+     "target2_audio_id": "d10e5b00-868c-405d-a5bc-d2fb57d259c8",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "바라요",
+       "legoId": "S0170L01",
+       "target": "I'd like you to",
+       "isGhost": false
+      },
+      {
+       "known": "주다",
+       "legoId": "S0054L01",
+       "target": " give",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L01U05",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "제 열쇠에 대해 물어볼게요",
+     "target_text": "I'll ask about my keys",
+     "word_count": 26,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.730Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-12T14:58:09.292703+00:00",
+     "created_at": "2026-02-25T05:13:50.907278+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c7a80555-281b-4acd-9c4f-532dba2bad1c",
+     "target1_audio_id": "f3d53500-5d7d-4967-8fef-473e3153f4fe",
+     "target2_audio_id": "199af91d-464c-4531-905a-5c8e9c3a544f",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "물어볼게요",
+       "legoId": "S0176L02",
+       "target": "I'll ask him",
+       "isGhost": false
+      },
+      {
+       "known": "약",
+       "legoId": "S0038L03",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0182L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0182L02",
+    "type": "M",
+    "known_text": "어디선가 봤어요",
+    "target_text": "have you seen anywhere",
+    "components": [
+     {
+      "known": "봤어요",
+      "target": "have you seen"
+     },
+     {
+      "known": "어디선가",
+      "target": "anywhere"
+     }
+    ],
+    "seed_number": 182
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0182L02C01",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "봤어요",
+     "target_text": "have you seen?",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T17:30:21.716939+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ca82ffcd-6d69-44c6-ace3-a5cd22a7ac68",
+     "target1_audio_id": "8f986a32-837b-4f0f-8c07-177061eeec4a",
+     "target2_audio_id": "f0984218-7fad-4186-ada8-36a2b4f7fd56",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "8a6458ba-9586-4764-891d-55a0931a8ae7",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02C02",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "어디선가",
+     "target_text": "anywhere",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:30:22.498535+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "95675097-af73-4505-ab49-7ad11ee5022d",
+     "target1_audio_id": "d1d40097-ba81-4150-aa98-e4f380a6e056",
+     "target2_audio_id": "283bfb35-939b-451c-9f59-2203cbfd8f8f",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "80356eba-b731-4170-afa1-ab4546bd7e0f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "anywhere",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "어디선가 봤어요",
+     "target_text": "have you seen anywhere?",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:37:13.495983+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d3085470-2695-4bb2-af61-a278b1ce7fd2",
+     "target1_audio_id": "720ae90e-c50c-4cc4-affb-a1bbdd6c0192",
+     "target2_audio_id": "94a4b974-7da6-42d1-a1ed-4fd45b8979b2",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "어디선가 봤어요",
+       "legoId": "S0182L02",
+       "target": "have you seen anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "어디선가 제 열쇠를 봤나요?",
+     "target_text": "have you seen my keys anywhere?",
+     "word_count": 30,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:10:49.474181+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "2842558b-7c54-48e2-a017-a5ea6227c5c2",
+     "target1_audio_id": "cc3b5d90-c66d-45e3-a712-0cec59ac1f07",
+     "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " anywhere?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "123c1baf-cabd-420d-934d-2a2870e5001a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "어디선가 그 책을 봤나요?",
+     "target_text": "have you seen that book anywhere?",
+     "word_count": 32,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-11-18T13:10:49.474181+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "59e9510a-33b8-4091-879d-a0c767880034",
+     "target1_audio_id": "cef28927-95d3-42be-857a-51ef19514a38",
+     "target2_audio_id": "d675a99b-7c46-4d46-921f-a0862d10768a",
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "책",
+       "legoId": "S0161L01",
+       "target": " book",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " anywhere?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "123c1baf-cabd-420d-934d-2a2870e5001a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02U01",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "흥미로운 책을 어디선가 봤어요?",
+     "target_text": "have you seen an interesting book anywhere?",
+     "word_count": 43,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.827Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:19.427815+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "ddf22e7f-fd7e-4911-a4d7-129424e996ea",
+     "target1_audio_id": "a237ab88-4e12-41e5-a7ef-1a03d8fddbfb",
+     "target2_audio_id": "8f3622b0-6f0e-4e97-874f-35fb6ed62900",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "흥미로운 책",
+       "legoId": "S0164L01",
+       "target": " an interesting book",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " anywhere?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "어머니를 어디선가 봤어요?",
+     "target_text": "have you seen my mother anywhere?",
+     "word_count": 33,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.827Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:19.71286+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "24a65bf7-b3a1-4498-87bc-a826a5070c38",
+     "target1_audio_id": "7b54335f-102c-4625-bf40-ee8f302d7175",
+     "target2_audio_id": "7ad31815-cec9-491c-9a2f-7cb87b313e65",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "어머니",
+       "legoId": "S0181L01",
+       "target": " mother",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " anywhere?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "토요일 밤에 제 열쇠를 어디선가 봤어요?",
+     "target_text": "have you seen my keys anywhere on saturday night?",
+     "word_count": 49,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.827Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-06-02T23:33:35.746067+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "1b25f5be-7901-433b-81e3-6d4214d31c07",
+     "target1_audio_id": "5b888037-9e41-4a9b-9a1f-796b57b27b34",
+     "target2_audio_id": "979ceb1c-fb77-413b-8f95-4593b42f2d5f",
+     "qa_checked": null,
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 4272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "어디선가 봤어요",
+       "legoId": "S0182L02",
+       "target": "have",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0182L02",
+       "target": " you",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0182L02",
+       "target": " seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " keys",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "토요일 밤에",
+       "legoId": "S0154L02",
+       "target": " on saturday night",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0182L02U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "그런데 제 열쇠를 어디선가 봤어요?",
+     "target_text": "but have you seen my keys anywhere?",
+     "word_count": 35,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T05:13:50.827Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T19:42:39.301597+00:00",
+     "created_at": "2026-02-25T05:13:51.005552+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "5d969c33-2fae-4e28-983d-d5b21502b099",
+     "target1_audio_id": "d07ee382-64bd-4f02-b53d-ee2fa63ee1d8",
+     "target2_audio_id": "b0a358eb-635a-4557-9b23-c8d5c907bdae",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "하지만",
+       "legoId": "S0019L01",
+       "target": "but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "열쇠",
+       "legoId": "S0182L01",
+       "target": " keys",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " anywhere?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

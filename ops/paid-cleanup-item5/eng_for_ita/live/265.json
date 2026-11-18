@@ -1,0 +1,564 @@
+{
+ "seed": 265,
+ "seed_pair": {
+  "known": "Un amico.",
+  "target": "A friend."
+ },
+ "legos": {
+  "S0265L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0265L01",
+    "type": "A",
+    "known_text": "amico",
+    "target_text": "friend",
+    "components": null,
+    "seed_number": 265
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ita:S0265L01B01",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "un amico",
+     "target_text": "a friend",
+     "word_count": 8,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T21:49:52.645438+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e56f0131-dcef-4927-aaa7-b343f3b885bd",
+     "target1_audio_id": "dffe2368-c565-442f-9125-909e718be0f7",
+     "target2_audio_id": "93cfa429-e198-4d2b-b1e4-bbecb13d0486",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0265L01B02",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "il mio amico",
+     "target_text": "my friend",
+     "word_count": 9,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-28T21:48:14.599279+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7ba7b845-344f-4c33-a6e1-d02a4f71bd87",
+     "target1_audio_id": "f9ebf690-fddb-465f-9069-d80eb6aea1fe",
+     "target2_audio_id": "f73d04f6-69ad-4e17-9ee4-a9a7f1d531aa",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "my",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0265L01B03",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "un buon amico",
+     "target_text": "a good friend",
+     "word_count": 13,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-28T19:42:48.678749+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7baa1226-200e-410c-84ee-4f3ff78e7594",
+     "target1_audio_id": "fbfe832d-1d13-4ca8-89ac-e074b5763fcc",
+     "target2_audio_id": "2254664d-dd68-43d8-a286-2d2109eab4b2",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0265L01U01",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ho incontrato il tuo amico ieri",
+     "target_text": "I met your friend yesterday",
+     "word_count": 32,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:47:06.094Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T14:57:10.651471+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b039d49c-d136-41c6-a67e-d61fcab16d38",
+     "target1_audio_id": "b3128209-6e8c-4493-bf79-2bb0d03af20e",
+     "target2_audio_id": "8b3c3d56-5efb-4878-bc90-1687bad18765",
+     "qa_checked": null,
+     "target1_duration_ms": 1520,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "ho incontrato",
+       "legoId": "S0234L01",
+       "target": " met",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      },
+      {
+       "known": "tuo",
+       "legoId": "S0233L02",
+       "target": " your",
+       "isGhost": false
+      },
+      {
+       "known": "ieri",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0265L01U03",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "È mio amico dall'anno scorso",
+     "target_text": "he has been my friend since last year",
+     "word_count": 36,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:47:06.094Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-11-18T14:15:51.406694+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "15f723f8-08a3-4609-a215-86388b2f002e",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "he",
+       "isGhost": true
+      },
+      {
+       "known": "ha",
+       "legoId": "S0228L01",
+       "target": " has",
+       "isGhost": false
+      },
+      {
+       "known": "stato",
+       "legoId": "S0254L01",
+       "target": " been",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "da",
+       "legoId": "S0254L02",
+       "target": " since",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " last",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " year",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "dc301ce0-678f-485d-bcac-69bfb04b7b29",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0265L01U04",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "un buon amico mi ha detto qualcosa di importante",
+     "target_text": "a good friend told me something important",
+     "word_count": 41,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:47:06.094Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:36:24.312841+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "98a19eba-772d-46b5-aceb-52b005ae2473",
+     "target1_audio_id": "961acb68-e799-48cb-aedd-c013b542ca97",
+     "target2_audio_id": "032bdff3-5c07-4737-b423-eb36d8563963",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "hanno detto",
+       "legoId": "S0211L01",
+       "target": " told",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " something",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " important",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0265L01U05",
+     "course_code": "eng_for_ita",
+     "seed_number": 265,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "È un'amica che non vedo da un po'",
+     "target_text": "she is a friend I haven't seen for a while",
+     "word_count": 42,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T04:47:06.094Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:46.686395+00:00",
+     "created_at": "2026-02-25T04:47:06.103362+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "47616227-51fa-4286-a7df-1c2de292e57f",
+     "target1_audio_id": "ecc14e74-b3b9-49c9-ae1b-03bfacb82854",
+     "target2_audio_id": "21a3d590-53df-4d34-b1db-1e8760669c6f",
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "she",
+       "isGhost": true
+      },
+      {
+       "known": "è",
+       "legoId": "S0226L02",
+       "target": " is",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "amico",
+       "legoId": "S0265L01",
+       "target": " friend",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " haven't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "per un po'",
+       "legoId": "S0092L02",
+       "target": " for a while",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

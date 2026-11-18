@@ -1,0 +1,1154 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "62f3dae2-f70d-4362-92b0-a609685fa703",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0005L01B03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0005L01B03",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "want speaking",
+    "known_text": "කතා කිරීම ඕනේ",
+    "known_audio_id": "f875692a-061e-4135-b456-9ee91458bfc0",
+    "target1_audio_id": "cfd8eb20-544b-4c37-83fe-249b46fd4f64",
+    "target2_audio_id": "18375614-ca1a-4ec0-b2ea-eef9db8c28d6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0005L01B03",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "speaking with you",
+    "known_text": "ඔයා එක්ක කතා කිරීම",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0027L02U03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0027L02U03",
+    "seed_number": 27,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want taking too much time",
+    "known_text": "මට ගොඩක් වෙලාව ගන්න ඕනේ නෑ",
+    "known_audio_id": "22d2a2b0-52aa-4cf4-b492-4f3aad3fb890",
+    "target1_audio_id": "7d27fe50-f8dc-46b8-a0f4-0aee760b07bc",
+    "target2_audio_id": "3b7d1518-682f-4f0f-8a21-87479afe14aa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0027L02U03",
+    "seed_number": 27,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't like taking too much time to speak",
+    "known_text": "මට කැමති නෑ ගොඩක් වෙලාව ගන්න කතා කරන්න",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0029L01B03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0029L01B03",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to to learn",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉගෙනගන්න",
+    "known_audio_id": "853247c2-df29-4647-b431-a3059de71508",
+    "target1_audio_id": "63321b49-bfe5-4b7a-b04a-e0a0b3af70dd",
+    "target2_audio_id": "208675e4-8013-40c1-8d5f-d93e29ffcbe5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0029L01B03",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to speaking better",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හොඳට කතා කිරීම",
+    "known_audio_id": "9a33ab40-e180-4850-94e7-5941e7ead578",
+    "target1_audio_id": "92bf9485-4ccd-4191-858d-569191a95021",
+    "target2_audio_id": "8dc47ad1-b49c-468c-95ad-0a1abab3b358",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0029L01B04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0029L01B04",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to to practise",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා පුහුණු වෙන්න",
+    "known_audio_id": "b38b765d-8a1e-4015-8b12-e0d0d85b0014",
+    "target1_audio_id": "49b14745-c732-4f1d-9866-31b14e0acfcb",
+    "target2_audio_id": "33c0cdaa-2492-4848-978e-424b0244c21d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0029L01B04",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to speaking today",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා අද කතා කිරීම",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0029L01U03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0029L01U03",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to to learn English",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි ඉගෙනගන්න",
+    "known_audio_id": "bb6ee5b8-ffac-47d6-b101-d6b352ffd2aa",
+    "target1_audio_id": "50a3c2f3-11c4-47d2-aa0e-27a8b3af7be4",
+    "target2_audio_id": "1e2e2468-4839-4126-8414-4c8a943bd074",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0029L01U03",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to speaking English with you",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඔයා එක්ක ඉංග්‍රීසි කතා කිරීම",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0029L01U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0029L01U04",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to to meet tomorrow",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හෙට හම්බවෙන්න",
+    "known_audio_id": "680f2fbe-cb01-49c9-9c0c-0c319853ac32",
+    "target1_audio_id": "28a3cbd1-5f11-4c39-8ec2-a57cdfb45f93",
+    "target2_audio_id": "4bf913e5-bdba-4395-9761-fd9546f093be",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0029L01U04",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to speaking with you tomorrow",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හෙට ඔයා එක්ක කතා කිරීම",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0029L01U05"
+   },
+   "before": {
+    "id": "eng_for_sin:S0029L01U05",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to to meet people who speak English",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි කතා කරන අය හම්බවෙන්න",
+    "known_audio_id": "5e552665-f85b-44d2-87b2-72e26588eb8f",
+    "target1_audio_id": "0fe3a8b7-1139-4662-99d9-445638eeebb2",
+    "target2_audio_id": "25905437-5c02-495e-8eb5-95fa5447919a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0029L01U05",
+    "seed_number": 29,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm looking forward to speaking with someone else",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා වෙන කෙනෙක් එක්ක කතා කිරීම",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0042L03U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0042L03U04",
+    "seed_number": 42,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I feel tired last night",
+    "known_text": "මට වෙහෙස දැනෙනවා ඊයේ රෑ",
+    "known_audio_id": "1d594fc7-973b-42cb-955a-8f5113347742",
+    "target1_audio_id": "a7d122ba-ba36-4dd1-a672-ecc000e0c230",
+    "target2_audio_id": "34ceb640-5927-4bbc-be4e-6e9fc065c8d1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0042L03U04",
+    "seed_number": 42,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I was tired last night",
+    "known_text": "මම ඊයේ රෑ වෙහෙසෙන් හිටියා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0042L03U06"
+   },
+   "before": {
+    "id": "eng_for_sin:S0042L03U06",
+    "seed_number": 42,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I feel okay better than last night",
+    "known_text": "මට හොඳයි දැනෙනවා ඊයේ රෑ වඩා",
+    "known_audio_id": "426c407c-a6ec-4550-95e9-dc5dd75144a7",
+    "target1_audio_id": "bb44aedc-2c41-49be-81e5-878874440064",
+    "target2_audio_id": "5b3943bf-efea-478b-b9a7-1d9e9c492b78",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0042L03U06",
+    "seed_number": 42,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I feel better today than last night",
+    "known_text": "අද මට ඊයේ රෑට වඩා හොඳයි දැනෙනවා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0055L01U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0055L01U04",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want waking up now",
+    "known_text": "මට අවදි වෙන්න ඕනේ නෑ දැන්",
+    "known_audio_id": "745f32c2-4c4c-4c64-b02e-48b645d577bf",
+    "target1_audio_id": "e375b83b-1848-4df2-86fd-71f2c3c2fe63",
+    "target2_audio_id": "7cc15978-8297-4433-9365-7198a58877cb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0055L01U04",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't enjoy waking up quickly",
+    "known_text": "මම ඉක්මනට අවදි වෙන්න ආසාවෙන්නේ නෑ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0089L01U06"
+   },
+   "before": {
+    "id": "eng_for_sin:S0089L01U06",
+    "seed_number": 89,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I've done it last week",
+    "known_text": "මම කළා ඒක පසුගිය සතියේ",
+    "known_audio_id": "733ef17b-5882-453d-a1bb-f3082496f037",
+    "target1_audio_id": "90553145-33e9-4bef-8689-28338c3f6c12",
+    "target2_audio_id": "714b4e2a-6d95-4761-b8c1-5e652dd43e7d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0089L01U06",
+    "seed_number": 89,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I've done it today",
+    "known_text": "මම අද ඒක කළා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0098L03U05"
+   },
+   "before": {
+    "id": "eng_for_sin:S0098L03U05",
+    "seed_number": 98,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "do you want playing something else?",
+    "known_text": "ඔයාට ඕනේද ක්‍රීඩා කරන මොකක්හරි වෙනස්",
+    "known_audio_id": "dd554447-70fd-43b7-9d4f-0fb46a15abdf",
+    "target1_audio_id": "3448faa8-0c78-448a-9483-e75f5f1a94e2",
+    "target2_audio_id": "c592f680-94ad-4012-aa1d-aa2680af7783",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0098L03U05",
+    "seed_number": 98,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "do you like playing something else?",
+    "known_text": "ඔයා වෙන මොකක්හරි ක්‍රීඩා කරන්න කැමතිද?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0123L01U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0123L01U04",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that is a easier idea",
+    "known_text": "ඒක පහසු අදහසක්",
+    "known_audio_id": "89aec0d8-de64-42a2-82b5-5e3ca97d75bd",
+    "target1_audio_id": "9e92b899-0c99-40d8-9937-6162b0cb1644",
+    "target2_audio_id": "f98a8181-59fe-4a56-b136-c16357e0926b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0123L01U04",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that idea is easier",
+    "known_text": "ඒ අදහස පහසුයි",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0123L01U05"
+   },
+   "before": {
+    "id": "eng_for_sin:S0123L01U05",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that is a unusual idea",
+    "known_text": "ඒක අසාමාන්‍ය අදහසක්",
+    "known_audio_id": "7d355828-5a00-4933-a3ec-12da59997021",
+    "target1_audio_id": "d3772b6a-d532-44ec-8fea-857f086ab35d",
+    "target2_audio_id": "98be7009-d5ce-44ee-8446-7914613c7dcd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0123L01U05",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that idea is unusual",
+    "known_text": "ඒ අදහස අසාමාන්‍යයි",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0123L01U07"
+   },
+   "before": {
+    "id": "eng_for_sin:S0123L01U07",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I want a idea",
+    "known_text": "අදහසක් ඕනේ",
+    "known_audio_id": "d981aeb3-563b-4575-b3a3-08f25bdf4897",
+    "target1_audio_id": "455ec1f8-7159-46e4-a33f-458bb641fa69",
+    "target2_audio_id": "b4f51ed5-4b7e-43c2-beab-2b5f99ad0771",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0123L01U07",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I have a good idea",
+    "known_text": "මට හොඳ අදහසක් තියෙනවා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0130L01U06"
+   },
+   "before": {
+    "id": "eng_for_sin:S0130L01U06",
+    "seed_number": 130,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that is a unusual surprise",
+    "known_text": "ඒක අසාමාන්‍ය පුදුම දෙයක්",
+    "known_audio_id": "8d13c06d-fec2-40bb-9cac-60fa40417f6b",
+    "target1_audio_id": "964f529f-4a9a-493a-94d6-771760f12e1a",
+    "target2_audio_id": "5fe459e5-a3a6-4184-a911-092be66118a9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0130L01U06",
+    "seed_number": 130,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that surprise was unusual",
+    "known_text": "ඒ පුදුම දෙය අසාමාන්‍ය වුණා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0130L01U07"
+   },
+   "before": {
+    "id": "eng_for_sin:S0130L01U07",
+    "seed_number": 130,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that is a interesting surprise",
+    "known_text": "ඒක රසවත් පුදුම දෙයක්",
+    "known_audio_id": "2f081023-dd4e-4e0e-9f02-66e357e2922e",
+    "target1_audio_id": "006baaa8-e9d1-4a5e-8c19-d0dcd5d00ed4",
+    "target2_audio_id": "2d476ce8-31d9-4586-b87a-6d46ab5f9d30",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0130L01U07",
+    "seed_number": 130,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "that surprise was interesting",
+    "known_text": "ඒ පුදුම දෙය රසවත් වුණා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0132L02U05"
+   },
+   "before": {
+    "id": "eng_for_sin:S0132L02U05",
+    "seed_number": 132,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that's a exciting surprise",
+    "known_text": "ඒක ආකර්ශනීය පුදුම දෙයක්",
+    "known_audio_id": "6222de21-a268-4754-ae74-eaa8208eace2",
+    "target1_audio_id": "65edabd4-b694-4197-a06d-eeb40a2e22ab",
+    "target2_audio_id": "04ba18e4-1093-4e0f-b51a-95e9695f2e09",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0132L02U05",
+    "seed_number": 132,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that surprise is exciting",
+    "known_text": "ඒ පුදුම දෙය ආකර්ශනීයයි",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0132L02U08"
+   },
+   "before": {
+    "id": "eng_for_sin:S0132L02U08",
+    "seed_number": 132,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that's a exciting idea",
+    "known_text": "ඒක ආකර්ශනීය අදහසක්",
+    "known_audio_id": "167b52a4-1897-4970-b5a7-1ce0655d62f4",
+    "target1_audio_id": "a2968f8c-f955-4ca9-bf38-3be3a3003082",
+    "target2_audio_id": "776a96aa-5f67-4e7d-b804-109bb2c8a5c4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0132L02U08",
+    "seed_number": 132,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that idea is exciting",
+    "known_text": "ඒ අදහස ආකර්ශනීයයි",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0138L01U09"
+   },
+   "before": {
+    "id": "eng_for_sin:S0138L01U09",
+    "seed_number": 138,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "can you to help us to learn?",
+    "known_text": "ඔයාට අපිට ඉගෙන්වන්න පුළුවන්ද",
+    "known_audio_id": "279f29fb-81f9-4c2d-90c8-09d79f0ddfba",
+    "target1_audio_id": "e05f0515-9110-4876-aff2-6bdaa0bf7f33",
+    "target2_audio_id": "bd9d5c15-17c9-41db-8a93-8d03a0e75a7c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0138L01U09",
+    "seed_number": 138,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "can you help us to learn?",
+    "known_text": "ඔයාට අපිට ඉගෙන්වන්න පුළුවන්ද",
+    "known_audio_id": "279f29fb-81f9-4c2d-90c8-09d79f0ddfba",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0144L01U01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0144L01U01",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I woke this morning yesterday",
+    "known_text": "මම අවදි වුණා ඊයේ උදේ",
+    "known_audio_id": "d3a8ee43-08c8-4cf4-b00c-5c45da1e16a4",
+    "target1_audio_id": "9bac080a-e27b-47d0-9909-e062d5c53b7a",
+    "target2_audio_id": "5a0a44e8-0236-4501-8bb4-0b78a3b441ea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0144L01U01",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I woke early yesterday",
+    "known_text": "මම ඊයේ කලින් අවදි වුණා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0144L01U02"
+   },
+   "before": {
+    "id": "eng_for_sin:S0144L01U02",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "did you woke early?",
+    "known_text": "ඔයා අවදි වුණාද කලින්",
+    "known_audio_id": "5d6db496-4885-4b4d-8561-5cc4f557ca77",
+    "target1_audio_id": "a078d9b7-0be1-4507-8d47-6fa707e6ce08",
+    "target2_audio_id": "05aace99-2a49-447a-98e3-af14ba9bff97",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0144L01U02",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she woke early",
+    "known_text": "ඇය කලින් අවදි වුණා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0144L01U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0144L01U04",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "when did you woke?",
+    "known_text": "ඔයා කවදා අවදි වුණේ?",
+    "known_audio_id": "2407de33-2fca-4500-a613-4791a4f8829a",
+    "target1_audio_id": "562781a5-9ce4-4354-ab87-008148a26fe6",
+    "target2_audio_id": "ff17ef74-47d5-43c9-84bc-48de2cbfb02c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0144L01U04",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I woke last night",
+    "known_text": "මම ඊයේ රෑ අවදි වුණා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0144L01U07"
+   },
+   "before": {
+    "id": "eng_for_sin:S0144L01U07",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "did you woke last night?",
+    "known_text": "ඔයා අවදි වුණාද ඊයේ රාත්‍රියේ?",
+    "known_audio_id": "d336d6d9-dc18-42f9-a5d0-2dd73bc26c71",
+    "target1_audio_id": "8bc56814-4c6e-4865-b529-ea29fe5dc0a3",
+    "target2_audio_id": "9b62add5-984f-4813-912a-20dd1c874477",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0144L01U07",
+    "seed_number": 144,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we woke early this morning",
+    "known_text": "අපි අද උදේ කලින් අවදි වුණා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0147L01U01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0147L01U01",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "did you saw that?",
+    "known_text": "ඔයා ඒක දිටුවාද",
+    "known_audio_id": "3165a190-ac1e-4aeb-ab2e-d56a3388af04",
+    "target1_audio_id": "1ebc0d3c-b63f-465f-9964-b8ed08ca69e1",
+    "target2_audio_id": "b8856f4e-35e6-42bc-ab80-7796dec665a4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0147L01U01",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "you saw it yesterday",
+    "known_text": "ඔයා ඊයේ ඒක දිටුවා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0147L01U06"
+   },
+   "before": {
+    "id": "eng_for_sin:S0147L01U06",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "what did you saw?",
+    "known_text": "ඔයා මොනවද දිටුවේ?",
+    "known_audio_id": "657bba68-511b-4a2f-92e4-116bbf3cf7ed",
+    "target1_audio_id": "ca4cdb19-17e7-462d-916b-a13ff48a6c03",
+    "target2_audio_id": "61146b86-c767-49f5-97aa-51828529eb3e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0147L01U06",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he saw me",
+    "known_text": "ඔහු මාව දිටුවා",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0147L01U06",
+   "set": {
+    "known_text": "ඔයා මොනවද දිටුවේ?",
+    "target_text": "what did you saw?",
+    "known_audio_id": "657bba68-511b-4a2f-92e4-116bbf3cf7ed",
+    "target1_audio_id": "ca4cdb19-17e7-462d-916b-a13ff48a6c03",
+    "target2_audio_id": "61146b86-c767-49f5-97aa-51828529eb3e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0147L01U01",
+   "set": {
+    "known_text": "ඔයා ඒක දිටුවාද",
+    "target_text": "did you saw that?",
+    "known_audio_id": "3165a190-ac1e-4aeb-ab2e-d56a3388af04",
+    "target1_audio_id": "1ebc0d3c-b63f-465f-9964-b8ed08ca69e1",
+    "target2_audio_id": "b8856f4e-35e6-42bc-ab80-7796dec665a4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U07",
+   "set": {
+    "known_text": "ඔයා අවදි වුණාද ඊයේ රාත්‍රියේ?",
+    "target_text": "did you woke last night?",
+    "known_audio_id": "d336d6d9-dc18-42f9-a5d0-2dd73bc26c71",
+    "target1_audio_id": "8bc56814-4c6e-4865-b529-ea29fe5dc0a3",
+    "target2_audio_id": "9b62add5-984f-4813-912a-20dd1c874477"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U04",
+   "set": {
+    "known_text": "ඔයා කවදා අවදි වුණේ?",
+    "target_text": "when did you woke?",
+    "known_audio_id": "2407de33-2fca-4500-a613-4791a4f8829a",
+    "target1_audio_id": "562781a5-9ce4-4354-ab87-008148a26fe6",
+    "target2_audio_id": "ff17ef74-47d5-43c9-84bc-48de2cbfb02c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U02",
+   "set": {
+    "known_text": "ඔයා අවදි වුණාද කලින්",
+    "target_text": "did you woke early?",
+    "known_audio_id": "5d6db496-4885-4b4d-8561-5cc4f557ca77",
+    "target1_audio_id": "a078d9b7-0be1-4507-8d47-6fa707e6ce08",
+    "target2_audio_id": "05aace99-2a49-447a-98e3-af14ba9bff97"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U01",
+   "set": {
+    "known_text": "මම අවදි වුණා ඊයේ උදේ",
+    "target_text": "I woke this morning yesterday",
+    "known_audio_id": "d3a8ee43-08c8-4cf4-b00c-5c45da1e16a4",
+    "target1_audio_id": "9bac080a-e27b-47d0-9909-e062d5c53b7a",
+    "target2_audio_id": "5a0a44e8-0236-4501-8bb4-0b78a3b441ea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0138L01U09",
+   "set": {
+    "target_text": "can you to help us to learn?",
+    "target1_audio_id": "e05f0515-9110-4876-aff2-6bdaa0bf7f33",
+    "target2_audio_id": "bd9d5c15-17c9-41db-8a93-8d03a0e75a7c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0132L02U08",
+   "set": {
+    "known_text": "ඒක ආකර්ශනීය අදහසක්",
+    "target_text": "that's a exciting idea",
+    "known_audio_id": "167b52a4-1897-4970-b5a7-1ce0655d62f4",
+    "target1_audio_id": "a2968f8c-f955-4ca9-bf38-3be3a3003082",
+    "target2_audio_id": "776a96aa-5f67-4e7d-b804-109bb2c8a5c4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0132L02U05",
+   "set": {
+    "known_text": "ඒක ආකර්ශනීය පුදුම දෙයක්",
+    "target_text": "that's a exciting surprise",
+    "known_audio_id": "6222de21-a268-4754-ae74-eaa8208eace2",
+    "target1_audio_id": "65edabd4-b694-4197-a06d-eeb40a2e22ab",
+    "target2_audio_id": "04ba18e4-1093-4e0f-b51a-95e9695f2e09"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0130L01U07",
+   "set": {
+    "known_text": "ඒක රසවත් පුදුම දෙයක්",
+    "target_text": "that is a interesting surprise",
+    "known_audio_id": "2f081023-dd4e-4e0e-9f02-66e357e2922e",
+    "target1_audio_id": "006baaa8-e9d1-4a5e-8c19-d0dcd5d00ed4",
+    "target2_audio_id": "2d476ce8-31d9-4586-b87a-6d46ab5f9d30"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0130L01U06",
+   "set": {
+    "known_text": "ඒක අසාමාන්‍ය පුදුම දෙයක්",
+    "target_text": "that is a unusual surprise",
+    "known_audio_id": "8d13c06d-fec2-40bb-9cac-60fa40417f6b",
+    "target1_audio_id": "964f529f-4a9a-493a-94d6-771760f12e1a",
+    "target2_audio_id": "5fe459e5-a3a6-4184-a911-092be66118a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0123L01U07",
+   "set": {
+    "known_text": "අදහසක් ඕනේ",
+    "target_text": "I want a idea",
+    "known_audio_id": "d981aeb3-563b-4575-b3a3-08f25bdf4897",
+    "target1_audio_id": "455ec1f8-7159-46e4-a33f-458bb641fa69",
+    "target2_audio_id": "b4f51ed5-4b7e-43c2-beab-2b5f99ad0771"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0123L01U05",
+   "set": {
+    "known_text": "ඒක අසාමාන්‍ය අදහසක්",
+    "target_text": "that is a unusual idea",
+    "known_audio_id": "7d355828-5a00-4933-a3ec-12da59997021",
+    "target1_audio_id": "d3772b6a-d532-44ec-8fea-857f086ab35d",
+    "target2_audio_id": "98be7009-d5ce-44ee-8446-7914613c7dcd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0123L01U04",
+   "set": {
+    "known_text": "ඒක පහසු අදහසක්",
+    "target_text": "that is a easier idea",
+    "known_audio_id": "89aec0d8-de64-42a2-82b5-5e3ca97d75bd",
+    "target1_audio_id": "9e92b899-0c99-40d8-9937-6162b0cb1644",
+    "target2_audio_id": "f98a8181-59fe-4a56-b136-c16357e0926b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0098L03U05",
+   "set": {
+    "known_text": "ඔයාට ඕනේද ක්‍රීඩා කරන මොකක්හරි වෙනස්",
+    "target_text": "do you want playing something else?",
+    "known_audio_id": "dd554447-70fd-43b7-9d4f-0fb46a15abdf",
+    "target1_audio_id": "3448faa8-0c78-448a-9483-e75f5f1a94e2",
+    "target2_audio_id": "c592f680-94ad-4012-aa1d-aa2680af7783"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0089L01U06",
+   "set": {
+    "known_text": "මම කළා ඒක පසුගිය සතියේ",
+    "target_text": "I've done it last week",
+    "known_audio_id": "733ef17b-5882-453d-a1bb-f3082496f037",
+    "target1_audio_id": "90553145-33e9-4bef-8689-28338c3f6c12",
+    "target2_audio_id": "714b4e2a-6d95-4761-b8c1-5e652dd43e7d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0055L01U04",
+   "set": {
+    "known_text": "මට අවදි වෙන්න ඕනේ නෑ දැන්",
+    "target_text": "I don't want waking up now",
+    "known_audio_id": "745f32c2-4c4c-4c64-b02e-48b645d577bf",
+    "target1_audio_id": "e375b83b-1848-4df2-86fd-71f2c3c2fe63",
+    "target2_audio_id": "7cc15978-8297-4433-9365-7198a58877cb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0042L03U06",
+   "set": {
+    "known_text": "මට හොඳයි දැනෙනවා ඊයේ රෑ වඩා",
+    "target_text": "I feel okay better than last night",
+    "known_audio_id": "426c407c-a6ec-4550-95e9-dc5dd75144a7",
+    "target1_audio_id": "bb44aedc-2c41-49be-81e5-878874440064",
+    "target2_audio_id": "5b3943bf-efea-478b-b9a7-1d9e9c492b78"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0042L03U04",
+   "set": {
+    "known_text": "මට වෙහෙස දැනෙනවා ඊයේ රෑ",
+    "target_text": "I feel tired last night",
+    "known_audio_id": "1d594fc7-973b-42cb-955a-8f5113347742",
+    "target1_audio_id": "a7d122ba-ba36-4dd1-a672-ecc000e0c230",
+    "target2_audio_id": "34ceb640-5927-4bbc-be4e-6e9fc065c8d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01U05",
+   "set": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි කතා කරන අය හම්බවෙන්න",
+    "target_text": "I'm looking forward to to meet people who speak English",
+    "known_audio_id": "5e552665-f85b-44d2-87b2-72e26588eb8f",
+    "target1_audio_id": "0fe3a8b7-1139-4662-99d9-445638eeebb2",
+    "target2_audio_id": "25905437-5c02-495e-8eb5-95fa5447919a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01U04",
+   "set": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හෙට හම්බවෙන්න",
+    "target_text": "I'm looking forward to to meet tomorrow",
+    "known_audio_id": "680f2fbe-cb01-49c9-9c0c-0c319853ac32",
+    "target1_audio_id": "28a3cbd1-5f11-4c39-8ec2-a57cdfb45f93",
+    "target2_audio_id": "4bf913e5-bdba-4395-9761-fd9546f093be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01U03",
+   "set": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි ඉගෙනගන්න",
+    "target_text": "I'm looking forward to to learn English",
+    "known_audio_id": "bb6ee5b8-ffac-47d6-b101-d6b352ffd2aa",
+    "target1_audio_id": "50a3c2f3-11c4-47d2-aa0e-27a8b3af7be4",
+    "target2_audio_id": "1e2e2468-4839-4126-8414-4c8a943bd074"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01B04",
+   "set": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා පුහුණු වෙන්න",
+    "target_text": "I'm looking forward to to practise",
+    "known_audio_id": "b38b765d-8a1e-4015-8b12-e0d0d85b0014",
+    "target1_audio_id": "49b14745-c732-4f1d-9866-31b14e0acfcb",
+    "target2_audio_id": "33c0cdaa-2492-4848-978e-424b0244c21d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01B03",
+   "set": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉගෙනගන්න",
+    "target_text": "I'm looking forward to to learn",
+    "known_audio_id": "853247c2-df29-4647-b431-a3059de71508",
+    "target1_audio_id": "63321b49-bfe5-4b7a-b04a-e0a0b3af70dd",
+    "target2_audio_id": "208675e4-8013-40c1-8d5f-d93e29ffcbe5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0027L02U03",
+   "set": {
+    "known_text": "මට ගොඩක් වෙලාව ගන්න ඕනේ නෑ",
+    "target_text": "I don't want taking too much time",
+    "known_audio_id": "22d2a2b0-52aa-4cf4-b492-4f3aad3fb890",
+    "target1_audio_id": "7d27fe50-f8dc-46b8-a0f4-0aee760b07bc",
+    "target2_audio_id": "3b7d1518-682f-4f0f-8a21-87479afe14aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0005L01B03",
+   "set": {
+    "known_text": "කතා කිරීම ඕනේ",
+    "target_text": "want speaking",
+    "known_audio_id": "f875692a-061e-4135-b456-9ee91458bfc0",
+    "target1_audio_id": "cfd8eb20-544b-4c37-83fe-249b46fd4f64",
+    "target2_audio_id": "18375614-ca1a-4ec0-b2ea-eef9db8c28d6"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-03-50-950Z-62f3dae2-f70d-4362-92b0-a609685fa703.json"
+}

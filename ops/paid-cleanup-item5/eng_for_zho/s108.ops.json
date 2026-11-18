@@ -1,0 +1,138 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "We didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "We didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "Didn't hope to wake up in the middle of the night",
+    "components": [
+     {
+      "known": "不希望",
+      "target": "didn't hope"
+     },
+     {
+      "known": "醒来",
+      "target": "wake up"
+     },
+     {
+      "known": "半夜",
+      "target": "in the middle of the night"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "Didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01C02",
+   "set": {
+    "target_text": "Wake up"
+   },
+   "expect": {
+    "target_text": "Wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B01",
+   "set": {
+    "target_text": "Didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "Didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B02",
+   "set": {
+    "target_text": "Didn't hope to wake up in the middle of the night today"
+   },
+   "expect": {
+    "target_text": "Didn't hope to wake in the middle of the night today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B03",
+   "set": {
+    "target_text": "Didn't hope to wake up in the middle of the night again"
+   },
+   "expect": {
+    "target_text": "Didn't hope to wake in the middle of the night again"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B04",
+   "set": {
+    "target_text": "Didn't hope to wake up in the middle of the night now"
+   },
+   "expect": {
+    "target_text": "Didn't hope to wake in the middle of the night now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U01",
+   "set": {
+    "target_text": "We didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "We didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U02",
+   "set": {
+    "target_text": "I didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "I didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U03",
+   "set": {
+    "target_text": "They didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "They didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U04",
+   "set": {
+    "target_text": "Why do you think that we didn't hope to wake up in the middle of the night?"
+   },
+   "expect": {
+    "target_text": "Why do you think that we didn't hope to wake in the middle of the night?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U05",
+   "set": {
+    "target_text": "He didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "He didn't hope to wake in the middle of the night"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1412 @@
+{
+ "seed": 196,
+ "seed_pair": {
+  "known": "你听说最新的想法了吗？",
+  "target": "Have you heard the latest idea?"
+ },
+ "legos": {
+  "S0196L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0196L01",
+    "type": "M",
+    "known_text": "听说",
+    "target_text": "Have you heard",
+    "components": [
+     {
+      "known": "听",
+      "target": "heard"
+     }
+    ],
+    "seed_number": 196
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0196L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "听",
+     "target_text": "Heard",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:49:14.508607+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8c87e22f-275a-472f-bc87-f285a66c2280",
+     "target1_audio_id": "565511d2-5653-4c90-b0a4-197d82c1d4c2",
+     "target2_audio_id": "447b02fc-85dd-48f7-87cb-31cb5afcecc3",
+     "qa_checked": null,
+     "target1_duration_ms": 696,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "5cc7c040-afbb-4018-8f05-ec2c50635697",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Heard",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "听说",
+     "target_text": "Have you heard?",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-14T10:58:51.479726+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a2efb487-ce5d-4917-a8ab-2e8bf56c7405",
+     "target1_audio_id": "f6949db2-a7d0-4bab-a350-87aa54e7a864",
+     "target2_audio_id": "ab7fc3b1-c073-45e7-bb91-c6e9e16270e1",
+     "qa_checked": null,
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7e545476-1928-4e83-ad01-034b63eeff25",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "你听说过这件事吗？",
+     "target_text": "Have you heard about it?",
+     "word_count": 18,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "你听到他说的话了吗？",
+     "target_text": "Have you heard what he said?",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "你听说过他吗？",
+     "target_text": "Have you heard about him?",
+     "word_count": 18,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "还",
+       "legoId": "S0060L02",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "你有没有听说过那件事？",
+     "target_text": "Have you heard about that?",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.798Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T18:41:00.216508+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "95c90c8d-ff44-4284-817e-53a26d014a89",
+     "target1_audio_id": "d7b74543-7eea-4ecf-a6d6-e6f604e229f4",
+     "target2_audio_id": "13ef910e-4450-40a3-b76a-fbdf9f83bcd3",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " about",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8d1a36b1-5b10-4755-b372-529d51b96042",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "你有没有听到她说的话？",
+     "target_text": "Have you heard what she said?",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.798Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:30:36.856779+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2c111039-7e8b-4367-be33-7bfe67a07c3f",
+     "target1_audio_id": "3a2d7d77-3f89-4e4d-a88e-3adce43459b3",
+     "target2_audio_id": "5e6a319a-4b32-4978-b2fd-1b7ef5a60077",
+     "qa_checked": null,
+     "target1_duration_ms": 1560,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " she",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " said?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe21b11f-6641-4e2f-ba40-0f44e0920f56",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "你有没有听说过他的朋友？",
+     "target_text": "Have you heard about his friend?",
+     "word_count": 32,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.798Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a08a2fe3-5485-4b4b-b076-8437880d63af",
+     "target1_audio_id": "5263e79d-3d31-4c16-9896-2c0d098dc237",
+     "target2_audio_id": "b30c7cf1-1bed-4d65-b26d-98d38fb219e2",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " about",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " his",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "你有没有听到我说的话？",
+     "target_text": "Have you heard what I'm saying?",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.798Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b8da6cc0-814b-4da1-8a7a-e8dacc572820",
+     "target1_audio_id": "5ac8edbf-4332-4e03-9b03-9bfc275d01d9",
+     "target2_audio_id": "471b227e-b1c8-4153-9ad8-67ffbdcfc39a",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "我说的话",
+       "legoId": "S0174L01",
+       "target": " what I'm saying",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "你有没有听说过我在努力做的事情？",
+     "target_text": "Have you heard about what I'm trying to do?",
+     "word_count": 43,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.798Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.823448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "402c5579-6766-49f6-bb1d-f38ddd2141d1",
+     "target1_audio_id": "edeb6538-07e2-400b-a9c3-46061a807d8e",
+     "target2_audio_id": "1ea00959-45ef-468c-b962-cda0af2d631f",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " about",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "我在努力",
+       "legoId": "S0002L02",
+       "target": " I'm trying",
+       "isGhost": false
+      },
+      {
+       "known": "做",
+       "legoId": "S0059L01",
+       "target": " to do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0196L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0196L02",
+    "type": "M",
+    "known_text": "最新的想法",
+    "target_text": "The latest idea",
+    "components": [
+     {
+      "known": "最新的",
+      "target": "latest"
+     },
+     {
+      "known": "想法",
+      "target": "idea"
+     }
+    ],
+    "seed_number": 196
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0196L02C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "最新的",
+     "target_text": "Latest",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:49:13.659519+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "15ca617e-2b47-4f1a-a9ba-76d3278a4df9",
+     "target1_audio_id": "3a1b654c-2936-44a7-9795-378cf4780564",
+     "target2_audio_id": "4ea7498f-1a6c-4d66-8f01-0767381f8706",
+     "qa_checked": null,
+     "target1_duration_ms": 840,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "a90e9501-c8f9-45ee-99ca-489b3053946b",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Latest",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe21b11f-6641-4e2f-ba40-0f44e0920f56",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "想法",
+     "target_text": "Idea",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T17:30:37.168434+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "697b1591-d1a1-4b69-9934-014bb2cd8f63",
+     "target1_audio_id": "47a690f2-9ba8-4276-bd34-dc1a14cb698c",
+     "target2_audio_id": "3438dfe5-2805-4bd0-88e0-9e15a8b4cd82",
+     "qa_checked": null,
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "172a301a-09e2-42c6-97df-e7707c5797da",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Idea",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "最新的想法",
+     "target_text": "The latest idea",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T18:41:00.640703+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "030ba874-ae75-461f-8729-9fa4e6871c75",
+     "target1_audio_id": "b9d76ae0-fb90-4b97-a17a-cfc3e667e585",
+     "target2_audio_id": "70cca84f-f5c9-4399-bad4-874109ca3a26",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": "The latest idea",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8d1a36b1-5b10-4755-b372-529d51b96042",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "现在最新的想法",
+     "target_text": "The latest idea now",
+     "word_count": 19,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "19879f74-3b21-40b9-abe0-efbff5c50ade",
+     "target1_audio_id": "550b6374-2b80-43a1-a690-2efab5a950c8",
+     "target2_audio_id": "1c1421d0-2e86-4bf1-9b4f-66b081d1860d",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": "The latest idea",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "在这里最新的想法",
+     "target_text": "The latest idea here",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f01a059e-e6ed-410b-8eff-9b76e1dc2a58",
+     "target1_audio_id": "ccf3bec8-74b1-4b9f-9d5e-92cb0d0ca4d9",
+     "target2_audio_id": "d71af98d-d982-4c3b-8b9b-04d704fe1226",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1776,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": "The latest idea",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在这里",
+       "legoId": "S0034L04",
+       "target": " here",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "今天最新的想法",
+     "target_text": "The latest idea today",
+     "word_count": 21,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4cc5ffa1-e171-4c2c-8769-15a02292cfb4",
+     "target1_audio_id": "c8135883-fbd5-4e69-a6bc-63bf09fa0503",
+     "target2_audio_id": "1e693e3d-bef5-4868-859e-c6c88e14d9cd",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": "The latest idea",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "你有没有听说最新的想法？",
+     "target_text": "Have you heard the latest idea?",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.883Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T17:30:36.357717+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6f101ab2-b747-4d62-9e3c-255dad840c95",
+     "target1_audio_id": "79de3ebc-254e-4eca-a3a3-17a47e22ec71",
+     "target2_audio_id": "12c9fa17-caa8-4e6d-82dd-81f7b08cdc6b",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "听说",
+       "legoId": "S0196L01",
+       "target": "Have you heard",
+       "isGhost": false
+      },
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": " the latest idea",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "我还没有听说最新的想法",
+     "target_text": "I haven't heard the latest idea yet",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.883Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a2733fab-6159-4ed5-8ca6-c8ff73cedf00",
+     "target1_audio_id": "5322caf8-6d1c-439e-a3a7-315ee16f7d10",
+     "target2_audio_id": "ce0c9fdb-23b3-44a8-b69b-57165aa72be9",
+     "qa_checked": null,
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " haven't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " heard",
+       "isGhost": true
+      },
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": " the latest idea",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "还",
+       "legoId": "S0060L02",
+       "target": " yet",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "你认为最新的想法好吗？",
+     "target_text": "Do you think the latest idea is good?",
+     "word_count": 37,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.883Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bca547f1-ba16-4179-a461-0529055e929f",
+     "target1_audio_id": "3f816c11-cb98-4391-9a61-d32bf6164665",
+     "target2_audio_id": "36d3d65e-12a8-49c1-9223-f1471b42aaf9",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "吗",
+       "legoId": "S0014L01",
+       "target": "Do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": " the latest idea",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "我不确定最新的想法",
+     "target_text": "I'm not sure about the latest idea",
+     "word_count": 34,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.883Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "fc3dc17a-6a54-442c-8f6d-f1f49aad912b",
+     "target1_audio_id": "fa37f653-4e91-4e7d-b135-788725f24367",
+     "target2_audio_id": "76ac1f07-1fe6-4a68-8745-335c1c33c5f8",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "不确定",
+       "legoId": "S0010L01",
+       "target": " not sure",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " about",
+       "isGhost": true
+      },
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": " the latest idea",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0196L02U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 196,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "我想多了解一下最新的想法",
+     "target_text": "I'd like to know more about the latest idea",
+     "word_count": 43,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:35:29.883Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:35:29.911781+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e015b2e1-1ebd-46a1-8022-92258d218fc1",
+     "target1_audio_id": "a8e3dbea-d39e-40f6-aaa1-9ef839384d20",
+     "target2_audio_id": "615fd565-d8df-4f68-b9ac-420b6f431397",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'd",
+       "isGhost": true
+      },
+      {
+       "known": "喜欢",
+       "legoId": "S0026L01",
+       "target": " like",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "多",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " about",
+       "isGhost": true
+      },
+      {
+       "known": "最新的想法",
+       "legoId": "S0196L02",
+       "target": " the latest idea",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,169 @@
+{
+  "course_code": "eng_for_kan",
+  "event_id": "7034b415-e077-4955-b095-3aac35b46aa4",
+  "actor": "cs-item5-broken-english",
+  "created_at": "2026-11-18T13:22:33.948Z",
+  "how_to_undo": "POST /api/production/eng_for_kan/edit-batch {\"undo_file\":\"2026-11-18T13-22-33-948Z-7034b415-e077-4955-b095-3aac35b46aa4.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0636L01B02",
+      "set": {
+        "known_text": "ಅದು ಜೇನ್‌ಳ ಚೀಲ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ ಅಂತ",
+        "target_text": "that I think that that is Jane's bag",
+        "known_audio_id": "70f41021-df53-4996-89b5-b56cf64383f1",
+        "target1_audio_id": "120ede3e-a5c7-4ee1-a26a-c8a8ec57b365",
+        "target2_audio_id": "569fc83a-df0d-4082-af53-994b0f574713"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02U04",
+      "set": {
+        "target_text": "where is the church that is more warm?",
+        "target1_audio_id": "74ac8070-b209-45e2-8a95-27978d5a772d",
+        "target2_audio_id": "18ac222f-7a50-45dc-9665-03b764aef131"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02U03",
+      "set": {
+        "target_text": "I want a church that is more warm",
+        "target1_audio_id": "da6d1737-2f7d-4f8d-bcce-8d8b0f2b456e",
+        "target2_audio_id": "628375d8-333b-4460-bad9-0072185c9a3f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02U02",
+      "set": {
+        "target_text": "I like the church that is more warm",
+        "target1_audio_id": "7943f9b7-a92b-4b65-9994-849eeceeb254",
+        "target2_audio_id": "e5831b4f-676e-4992-adcf-1b032dfe0160"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02U01",
+      "set": {
+        "target_text": "the church that is more warm is here",
+        "target1_audio_id": "6a854ae9-6818-466a-b79a-31fb3c260617",
+        "target2_audio_id": "c23b9d3e-c590-4fb5-bb49-9120ed117bed"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02B03",
+      "set": {
+        "target_text": "she wants the church that is more warm",
+        "target1_audio_id": "5eb6ab32-fe0c-475f-a7ac-fc6be6e1c9ff",
+        "target2_audio_id": "4cd546df-bf5e-41a6-9a62-d2f19e0c94c6"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02B02",
+      "set": {
+        "target_text": "the church that is more warm",
+        "target1_audio_id": "0281186c-d9bb-45bd-82af-41c20ad78743",
+        "target2_audio_id": "79c85d3b-a498-4986-bac9-379d1584e3bb"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0578L02B01",
+      "set": {
+        "target_text": "that is more warm",
+        "target1_audio_id": "bee81d07-64bc-4625-a962-77dbc8521644",
+        "target2_audio_id": "b7e5e721-1486-4ea4-a5d7-e18307d5ac7d"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "de7bf7ab-5b31-47ae-ad55-ca412b70bf8b",
+      "set": {
+        "components": [
+          {
+            "known": "ಎಲ್ಲಾದರೂ",
+            "target": "somewhere"
+          },
+          {
+            "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+            "target": "that is more warm"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "8eb61b7f-c1d0-48ef-a376-e5ee8e1721fe",
+      "set": {
+        "type": "M",
+        "target_text": "that is more warm",
+        "components": [
+          {
+            "known": "ಹೆಚ್ಚು",
+            "target": "more"
+          },
+          {
+            "known": "ಬೆಚ್ಚಗಿರೋ",
+            "target": "that is warm"
+          }
+        ],
+        "target1_audio_id": "bee81d07-64bc-4625-a962-77dbc8521644",
+        "target2_audio_id": "b7e5e721-1486-4ea4-a5d7-e18307d5ac7d",
+        "presentation_audio_id": "62b9be71-dfdb-49da-b628-30a84c42b970"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0081L01B03",
+      "set": {
+        "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?",
+        "target_text": "do you want to start last week?",
+        "known_audio_id": "459b0460-dab5-4d88-acb5-891982709c94",
+        "target1_audio_id": "486b6a1b-5292-4e0b-94e4-6819c3b0a69a",
+        "target2_audio_id": "a8c21225-a9d5-44ac-bfa2-be7b08fab80e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0067L01B04",
+      "set": {
+        "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+        "target_text": "do you want to stop last week?",
+        "known_audio_id": "a3af16dd-57eb-41fc-adb3-761da35f5820",
+        "target1_audio_id": "fc15436a-1eb5-449a-83f4-7ed0fb9da7e1",
+        "target2_audio_id": "4cace051-f6fa-4add-95a3-09a687863f92"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0049L02U04",
+      "set": {
+        "target_text": "it's like this this evening",
+        "target1_audio_id": "528e277b-1381-4df3-b19d-6c3fd592ac90",
+        "target2_audio_id": "5f535340-ad7f-46eb-9540-56aae2d192e5"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0049L02B03",
+      "set": {
+        "target_text": "it's like this this morning",
+        "target1_audio_id": "8ab7ddc7-7dbb-4732-b2b8-f23de489e366",
+        "target2_audio_id": "530070e0-7073-4c04-bc05-16dadf4620fc"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_kan:S0034L03B02",
+      "set": {
+        "target_text": "he doesn't want talking",
+        "target1_audio_id": "d8c11cd2-4626-4e04-84d9-abbca97280b0",
+        "target2_audio_id": "c4be3556-22df-4e27-97cb-1498da1b3c72"
+      }
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "dc301ce0-678f-485d-bcac-69bfb04b7b29",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ita",
+    "id": "eng_for_ita:S0129L02B03"
+   },
+   "before": {
+    "id": "eng_for_ita:S0129L02B03",
+    "seed_number": 129,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I thought that you're doing so well",
+    "known_text": "pensavo che tu stessi andando così bene",
+    "known_audio_id": "c95748af-4532-4bef-8ba0-53fd74245a02",
+    "target1_audio_id": "ebcbab6c-dfdc-447f-b428-f77eb80ca9d9",
+    "target2_audio_id": "4f1412a6-a9b1-4797-a9f0-840b70cbe303",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ita:S0129L02B03",
+    "seed_number": 129,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I think that you're doing so well",
+    "known_text": "penso che tu stia andando così bene",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ita",
+    "id": "eng_for_ita:S0129L02U02"
+   },
+   "before": {
+    "id": "eng_for_ita:S0129L02U02",
+    "seed_number": 129,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I thought that you're doing so well last time we talked to each other",
+    "known_text": "pensavo che tu stessi andando così bene l'ultima volta che abbiamo parlato",
+    "known_audio_id": "1ceae6e3-344e-4055-855b-7dceccd8a38e",
+    "target1_audio_id": "c3f9cad8-1cf9-4b81-a1f7-d059f34d8250",
+    "target2_audio_id": "03c151b9-bbe7-4a18-b55e-58c4e67b0ecf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ita:S0129L02U02",
+    "seed_number": 129,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that is why I think that you're doing so well",
+    "known_text": "ecco perché penso che tu stia andando così bene",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ita",
+    "id": "eng_for_ita:S0145L01U01"
+   },
+   "before": {
+    "id": "eng_for_ita:S0145L01U01",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm sorry that I can't see why are you not happy any more",
+    "known_text": "mi dispiace non riuscire a vedere perché non sei più felice",
+    "known_audio_id": "57a8a9b8-499e-48d1-98fd-cb49a20763d4",
+    "target1_audio_id": "2d64eb06-bc2b-4181-8237-ae9cf403e287",
+    "target2_audio_id": "6575133e-04b6-4e6d-be90-c31dbd616fc5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ita:S0145L01U01",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm sorry that I can't see why you're not happy any more",
+    "known_text": "mi dispiace non riuscire a vedere perché non sei più felice",
+    "known_audio_id": "57a8a9b8-499e-48d1-98fd-cb49a20763d4",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ita",
+    "id": "eng_for_ita:S0145L01U04"
+   },
+   "before": {
+    "id": "eng_for_ita:S0145L01U04",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't know why are you not happy any more and I'm sorry",
+    "known_text": "non so perché non sei più felice e mi dispiace",
+    "known_audio_id": "28f2de16-fa68-4e4f-9872-358f66eb6194",
+    "target1_audio_id": "63651f26-acdc-4864-ad00-77e7846cd95e",
+    "target2_audio_id": "6f99c5cc-57d5-4b10-9f80-b4350aa9dd86",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ita:S0145L01U04",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't know why you're not happy any more and I'm sorry",
+    "known_text": "non so perché non sei più felice e mi dispiace",
+    "known_audio_id": "28f2de16-fa68-4e4f-9872-358f66eb6194",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ita",
+    "id": "eng_for_ita:S0265L01U03"
+   },
+   "before": {
+    "id": "eng_for_ita:S0265L01U03",
+    "seed_number": 265,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he has been a friend since last year",
+    "known_text": "È mio amico dall'anno scorso",
+    "known_audio_id": "15f723f8-08a3-4609-a215-86388b2f002e",
+    "target1_audio_id": "246b55ec-701f-4ccd-80b2-995072b25052",
+    "target2_audio_id": "089c66e7-0997-4098-b49e-90903bd6da36",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ita:S0265L01U03",
+    "seed_number": 265,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he has been my friend since last year",
+    "known_text": "È mio amico dall'anno scorso",
+    "known_audio_id": "15f723f8-08a3-4609-a215-86388b2f002e",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0265L01U03",
+   "set": {
+    "target_text": "he has been a friend since last year",
+    "target1_audio_id": "246b55ec-701f-4ccd-80b2-995072b25052",
+    "target2_audio_id": "089c66e7-0997-4098-b49e-90903bd6da36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0145L01U04",
+   "set": {
+    "target_text": "I don't know why are you not happy any more and I'm sorry",
+    "target1_audio_id": "63651f26-acdc-4864-ad00-77e7846cd95e",
+    "target2_audio_id": "6f99c5cc-57d5-4b10-9f80-b4350aa9dd86"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0145L01U01",
+   "set": {
+    "target_text": "I'm sorry that I can't see why are you not happy any more",
+    "target1_audio_id": "2d64eb06-bc2b-4181-8237-ae9cf403e287",
+    "target2_audio_id": "6575133e-04b6-4e6d-be90-c31dbd616fc5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0129L02U02",
+   "set": {
+    "known_text": "pensavo che tu stessi andando così bene l'ultima volta che abbiamo parlato",
+    "target_text": "I thought that you're doing so well last time we talked to each other",
+    "known_audio_id": "1ceae6e3-344e-4055-855b-7dceccd8a38e",
+    "target1_audio_id": "c3f9cad8-1cf9-4b81-a1f7-d059f34d8250",
+    "target2_audio_id": "03c151b9-bbe7-4a18-b55e-58c4e67b0ecf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0129L02B03",
+   "set": {
+    "known_text": "pensavo che tu stessi andando così bene",
+    "target_text": "I thought that you're doing so well",
+    "known_audio_id": "c95748af-4532-4bef-8ba0-53fd74245a02",
+    "target1_audio_id": "ebcbab6c-dfdc-447f-b428-f77eb80ca9d9",
+    "target2_audio_id": "4f1412a6-a9b1-4797-a9f0-840b70cbe303"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-15-58-864Z-dc301ce0-678f-485d-bcac-69bfb04b7b29.json"
+}

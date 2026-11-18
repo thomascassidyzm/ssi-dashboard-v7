@@ -1,0 +1,640 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0016L01B01",
+   "set": {
+    "target_text": "he wants to learn here",
+    "known_text": "அவர் இங்கே கற்க விரும்புகிறார்"
+   },
+   "expect": {
+    "known_text": "அவர் இங்கே கற்க",
+    "target_text": "he learn here"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0016L01B02",
+   "set": {
+    "target_text": "he wants to speak tomorrow",
+    "known_text": "அவர் நாளை பேச விரும்புகிறார்"
+   },
+   "expect": {
+    "known_text": "அவர் நாளை பேச",
+    "target_text": "he speak tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0016L01B03",
+   "set": {
+    "target_text": "he wants to meet with me",
+    "known_text": "அவர் என்னுடன் சந்திக்க விரும்புகிறார்"
+   },
+   "expect": {
+    "known_text": "அவர் என்னுடன் சந்திக்க",
+    "target_text": "he meet with me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0017L01B03",
+   "set": {
+    "target_text": "she wants to speak today",
+    "known_text": "அவள் இன்று பேச விரும்புகிறாள்"
+   },
+   "expect": {
+    "known_text": "அவள் இன்று பேச",
+    "target_text": "she speak today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0017L01B04",
+   "set": {
+    "target_text": "she wants to meet with me",
+    "known_text": "அவள் என்னுடன் சந்திக்க விரும்புகிறாள்"
+   },
+   "expect": {
+    "known_text": "அவள் என்னுடன் சந்திக்க",
+    "target_text": "she meet with me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02B01",
+   "set": {
+    "target_text": "I wanted to learn last month",
+    "known_text": "நான் கடந்த மாதம் கற்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "கடந்த மாதம் கற்க",
+    "target_text": "learn last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02B02",
+   "set": {
+    "target_text": "you wanted to speak last month",
+    "known_text": "நீங்கள் கடந்த மாதம் பேச விரும்பினீர்கள்"
+   },
+   "expect": {
+    "known_text": "கடந்த மாதம் பேச",
+    "target_text": "speak last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02B03",
+   "set": {
+    "target_text": "I wanted to meet people last month",
+    "known_text": "நான் கடந்த மாதம் மக்களைச் சந்திக்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "கடந்த மாதம் சந்திக்க",
+    "target_text": "meet last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U01",
+   "set": {
+    "target_text": "I wanted to learn English last month",
+    "known_text": "நான் கடந்த மாதம் ஆங்கிலம் கற்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் ஆங்கிலம் கற்கினேன்",
+    "target_text": "I learn English last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U02",
+   "set": {
+    "target_text": "I wanted to practise more last month",
+    "known_text": "நான் கடந்த மாதம் அதிகமாக பயிற்சி செய்ய விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் பயிற்சி செய்தேன்",
+    "target_text": "I practise last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U03",
+   "set": {
+    "target_text": "I wanted to learn carefully last month",
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்கினேன்",
+    "target_text": "I learn carefully last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U04",
+   "set": {
+    "target_text": "I wanted to ask you something last month",
+    "known_text": "நான் கடந்த மாதம் உங்களிடம் ஏதாவது கேட்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் சந்தித்தேன்",
+    "target_text": "I meet last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L02U05",
+   "set": {
+    "target_text": "you wanted to speak English last month",
+    "known_text": "நீங்கள் கடந்த மாதம் ஆங்கிலம் பேச விரும்பினீர்கள்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் பேசினேன்",
+    "target_text": "I speak last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L03U04",
+   "set": {
+    "target_text": "I want to say something about it",
+    "known_text": "நான் அதைப் பற்றி ஏதாவது சொல்ல விரும்புகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் அதைப் பற்றி சொல்ல விரும்புகிறேன்",
+    "target_text": "I want to say about it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0037L03U05",
+   "set": {
+    "target_text": "I wanted to learn about it last month",
+    "known_text": "நான் கடந்த மாதம் அதைப் பற்றி கற்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் அதைப் பற்றி கற்கினேன்",
+    "target_text": "I learn about it last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02B03",
+   "set": {
+    "target_text": "for about a week now",
+    "known_text": "இப்போது சுமாரக ஒரு வாரமாக"
+   },
+   "expect": {
+    "known_text": "கடந்த மாதம் சுமாரக ஒரு வாரமாக",
+    "target_text": "last month for about a week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U01",
+   "set": {
+    "target_text": "I've been learning English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கற்கினேன்",
+    "target_text": "I learn for about a week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U02",
+   "set": {
+    "target_text": "I've been learning with you for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக உங்களுடன் கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் பயிற்சி செய்தேன்",
+    "target_text": "I practise English for about a week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U03",
+   "set": {
+    "target_text": "I've been learning to speak English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் பேசக் கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் சுமாரக ஒரு வாரமாக கற்கினேன்",
+    "target_text": "I learn for about a week last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U04",
+   "set": {
+    "target_text": "I've been learning a little English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கொஞ்சம் ஆங்கிலம் கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக கவனமாக கற்கினேன்",
+    "target_text": "I learn carefully for about a week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L02U05",
+   "set": {
+    "target_text": "I've been learning how to speak English for about a week",
+    "known_text": "நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் எப்படி பேசுவது என்று கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் சுமாரக ஒரு வாரமாக நன்றாக கற்கினேன்",
+    "target_text": "I learn well for about a week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L03B02",
+   "set": {
+    "target_text": "I've been learning a little",
+    "known_text": "கொஞ்சம் கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "கடந்த மாதம் கற்றுவருகிறேன்",
+    "target_text": "I've been learning last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0038L03U06",
+   "set": {
+    "target_text": "I've been learning English carefully",
+    "known_text": "நான் கவனமாக ஆங்கிலம் கற்றுவருகிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த மாதம் கவனமாக கற்றுவருகிறேன்",
+    "target_text": "I've been learning carefully last month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0040L03U03",
+   "set": {
+    "target_text": "how do you feel about it?",
+    "known_text": "அதைப் பற்றி நீங்கள் எப்படி உணர்கிறீர்கள்?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் எப்படி உணர்கிறீர்கள் கடந்த மாதம்",
+    "target_text": "how do you feel last month?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04B01",
+   "set": {
+    "target_text": "I enjoy learning",
+    "known_text": "நான் கற்பதை ரசிக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "ரசிக்கிறேன் கற்க",
+    "target_text": "enjoy learn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04B02",
+   "set": {
+    "target_text": "I enjoy speaking",
+    "known_text": "நான் பேசுவதை ரசிக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "ரசிக்கிறேன் பேச",
+    "target_text": "enjoy speak"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04B03",
+   "set": {
+    "target_text": "I enjoy talking",
+    "known_text": "நான் பேசிக்கொண்டிருப்பதை ரசிக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "ரசிக்கிறேன் சுவாரஸ்யமான",
+    "target_text": "enjoy interesting"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U02",
+   "set": {
+    "target_text": "I enjoy speaking English with interesting people",
+    "known_text": "நான் சுவாரஸ்யமான மக்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் சுவாரஸ்யமான விஷயம் ரசிக்கிறேன்",
+    "target_text": "I enjoy a interesting thing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U03",
+   "set": {
+    "target_text": "I enjoy learning English"
+   },
+   "expect": {
+    "known_text": "நான் ஆங்கிலம் கற்பதை ரசிக்கிறேன்",
+    "target_text": "I enjoy English"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U04",
+   "set": {
+    "target_text": "I enjoy speaking English with you",
+    "known_text": "நான் உங்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "என்றால் நான் ரசிக்கிறேன்",
+    "target_text": "if I enjoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0051L04U05",
+   "set": {
+    "target_text": "I enjoy learning with my friends",
+    "known_text": "நான் என்னுடைய நண்பர்களுடன் கற்பதை ரசிக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் இந்த காலையில் ரசிக்கிறேன்",
+    "target_text": "I enjoy this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01B01",
+   "set": {
+    "target_text": "I wanted to learn last week",
+    "known_text": "நான் கடந்த வாரம் கற்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "கடந்த வாரம் கற்க",
+    "target_text": "learn last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01B02",
+   "set": {
+    "target_text": "you wanted to speak last week",
+    "known_text": "நீங்கள் கடந்த வாரம் பேச விரும்பினீர்கள்"
+   },
+   "expect": {
+    "known_text": "கடந்த வாரம் பேச",
+    "target_text": "speak last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01B03",
+   "set": {
+    "target_text": "I wanted to meet my friends last week",
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களைச் சந்திக்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "கடந்த வாரம் சந்திக்க",
+    "target_text": "meet last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U01",
+   "set": {
+    "target_text": "I wanted to learn English last week",
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்க விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்கினேன்",
+    "target_text": "I learn English last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U02",
+   "set": {
+    "target_text": "I wanted to speak with my friends last week",
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேச விரும்பினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேசினேன்",
+    "target_text": "I speak with my friends last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U03",
+   "set": {
+    "target_text": "I started to practise last week",
+    "known_text": "நான் கடந்த வாரம் பயிற்சி செய்யத் தொடங்கினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த வாரம் பயிற்சி செய்தேன்",
+    "target_text": "I practise last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U04",
+   "set": {
+    "target_text": "I was starting to feel better last week",
+    "known_text": "கடந்த வாரம் நான் நன்றாக உணரத் தொடங்கினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த வாரம் கவனமாக கற்கினேன்",
+    "target_text": "I learn carefully last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0052L01U05",
+   "set": {
+    "target_text": "I started to learn English last week",
+    "known_text": "நான் கடந்த வாரம் ஆங்கிலம் கற்கத் தொடங்கினேன்"
+   },
+   "expect": {
+    "known_text": "நான் கடந்த வாரம் சுவாரஸ்யமான விஷயம் ரசித்தேன்",
+    "target_text": "I enjoy a interesting thing last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03B03",
+   "set": {
+    "target_text": "a little like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ கொஞ்சம் போல"
+   },
+   "expect": {
+    "known_text": "போல் யாரோ நான் முன்பு அறிந்தேன் இன்று",
+    "target_text": "like someone I used to know today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U01",
+   "set": {
+    "target_text": "you're like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்"
+   },
+   "expect": {
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "target_text": "you like someone I used to know"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U02",
+   "set": {
+    "target_text": "you're a little like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ கொஞ்சம் போல நீங்கள் இருக்கிறீர்கள்"
+   },
+   "expect": {
+    "known_text": "அவன் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "target_text": "he like someone I used to know"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U03",
+   "set": {
+    "target_text": "because you're like someone I used to know",
+    "known_text": "ஏனென்றால் நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்"
+   },
+   "expect": {
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன் இன்று",
+    "target_text": "you like someone I used to know today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U04",
+   "set": {
+    "target_text": "I think you're like someone I used to know",
+    "known_text": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள் என்று நான் நினைக்கிறேன்"
+   },
+   "expect": {
+    "known_text": "நான் போல் யாரோ நான் முன்பு அறிந்தேன்",
+    "target_text": "I like someone I used to know"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0128L03U05",
+   "set": {
+    "target_text": "you're like someone I used to know very well",
+    "known_text": "நான் முன்பு நன்றாக அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்"
+   },
+   "expect": {
+    "known_text": "நீங்கள் போல் யாரோ நான் முன்பு அறிந்தேன் நன்றாக",
+    "target_text": "you like someone I used to know so well"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0142L05",
+   "set": {
+    "target_text": "that's very kind of you and I'm",
+    "components": [
+     {
+      "known": "கருணையான",
+      "target": "kind"
+     },
+     {
+      "known": "இது",
+      "target": "that's"
+     },
+     {
+      "known": "மிகவும்",
+      "target": "very"
+     },
+     {
+      "known": "இதன்",
+      "target": "of"
+     },
+     {
+      "known": "நீங்கள்",
+      "target": "you"
+     },
+     {
+      "known": "மற்றும்",
+      "target": "and"
+     },
+     {
+      "known": "நான்",
+      "target": "I'm"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+    "target_text": "thats very kind of you and im"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05B01",
+   "set": {
+    "target_text": "that's very kind of you and I'm"
+   },
+   "expect": {
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+    "target_text": "thats very kind of you and im"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U01",
+   "set": {
+    "target_text": "that's very kind of you and I'm grateful"
+   },
+   "expect": {
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "target_text": "thats very kind of you and im grateful"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U02",
+   "set": {
+    "target_text": "I think that's very kind of you and I'm grateful",
+    "known_text": "நான் நினைக்கிறேன் இது மிகவும் கருணையானது நீங்கள் மற்றும் நான் நன்றியுள்ளவன்"
+   },
+   "expect": {
+    "known_text": "நான் நினை இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "target_text": "I think thats very kind of you and im grateful"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U03",
+   "set": {
+    "target_text": "today that's very kind of you and I'm grateful"
+   },
+   "expect": {
+    "known_text": "இன்று இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+    "target_text": "today thats very kind of you and im grateful"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0142L05U05",
+   "set": {
+    "target_text": "that's very kind of you and I'm grateful to you for helping"
+   },
+   "expect": {
+    "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன் நீங்களுக்கு உதவிக்காக",
+    "target_text": "thats very kind of you and im grateful to you for helping"
+   }
+  }
+ ]
+}

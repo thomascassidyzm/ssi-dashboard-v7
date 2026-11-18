@@ -1,0 +1,36 @@
+{
+  "course_code": "eng_for_por",
+  "event_id": "2c57b6aa-e8ea-4546-90a2-c78ac919a0bc",
+  "actor": "cs-item5-broken-english",
+  "created_at": "2026-11-18T14:15:02.982Z",
+  "how_to_undo": "POST /api/production/eng_for_por/edit-batch {\"undo_file\":\"2026-11-18T14-15-02-982Z-2c57b6aa-e8ea-4546-90a2-c78ac919a0bc.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_por:S0166L01U02",
+      "set": {
+        "target_text": "can you tell me how do you say my name in English?",
+        "target1_audio_id": "36e97b7d-728a-4b8e-affc-95511a3304ac",
+        "target2_audio_id": "88aefefb-8f10-40bb-b41b-eedf654702b3"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_por:S0105L01U06",
+      "set": {
+        "target_text": "I didn't know it's like that",
+        "target1_audio_id": "bbd45573-2f66-4d32-984e-2c49d9413de9",
+        "target2_audio_id": "a9130b2f-423c-42bb-b166-c90b52924af5"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_por:S0042L02U05",
+      "set": {
+        "target_text": "I've been learning English better than last month",
+        "target1_audio_id": "4983932e-e58e-4065-90b6-8b78cb556e6f",
+        "target2_audio_id": "fc4669f3-d344-43a9-9ea2-a60bef7bb2e6"
+      }
+    }
+  ]
+}

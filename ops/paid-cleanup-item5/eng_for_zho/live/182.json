@@ -1,0 +1,1912 @@
+{
+ "seed": 182,
+ "seed_pair": {
+  "known": "你在哪里看到过我的钥匙吗？",
+  "target": "Have you seen my keys anywhere?"
+ },
+ "legos": {
+  "S0182L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0182L01",
+    "type": "M",
+    "known_text": "看到过",
+    "target_text": "Have you seen",
+    "components": [
+     {
+      "known": "看到",
+      "target": "seen"
+     },
+     {
+      "known": "过",
+      "target": "have"
+     }
+    ],
+    "seed_number": 182
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0182L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "看到",
+     "target_text": "Seen",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T17:12:28.514715+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d18992da-b8a1-4132-9a24-ae11b93ce3ca",
+     "target1_audio_id": "d0af4455-fc2c-40bd-8e83-c8a6636724fc",
+     "target2_audio_id": "07bc7eb4-e476-4c3b-8151-b4b712751f51",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "278e6e66-8ac8-45ca-a832-bdd3620d2637",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Seen",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "过",
+     "target_text": "Have",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:47:41.270572+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "01d04149-c412-46d1-8307-aa924e4ed425",
+     "target1_audio_id": "86ed15ad-57f1-4e44-b797-b1eb598e4a91",
+     "target2_audio_id": "6d2b9926-c990-448c-a3f8-2e575428d0bf",
+     "qa_checked": null,
+     "target1_duration_ms": 624,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "2d4ccb3b-6f79-48a1-a569-e4e6a551f45e",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Have",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "看到过",
+     "target_text": "Have you seen?",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:30:21.716939+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4512156d-a542-4ca0-b5b9-52955b26cf57",
+     "target1_audio_id": "e59b13cb-9bb0-4a82-904a-7fc748291708",
+     "target2_audio_id": "f0984218-7fad-4186-ada8-36a2b4f7fd56",
+     "qa_checked": null,
+     "target1_duration_ms": 888,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "你看到过我的钥匙吗？",
+     "target_text": "Have you seen my keys?",
+     "word_count": 17,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "你看到过他吗？",
+     "target_text": "Have you seen him?",
+     "word_count": 18,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在这里",
+       "legoId": "S0034L04",
+       "target": " here",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "你今天看到过她吗？",
+     "target_text": "Have you seen her today?",
+     "word_count": 19,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "你有没有看到我的朋友？",
+     "target_text": "Have you seen my friend?",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.468Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:30:21.868114+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7c95a2ef-11b5-4229-b4ce-7dd4c6764db4",
+     "target1_audio_id": "2468871d-bfd5-4cd6-b547-ad3b770409e0",
+     "target2_audio_id": "063fa67b-fcdc-496e-b6b4-949e8356e8e7",
+     "qa_checked": null,
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe21b11f-6641-4e2f-ba40-0f44e0920f56",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "你有没有看到那本有趣的书？",
+     "target_text": "Have you seen that interesting book?",
+     "word_count": 36,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.469Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "72f6e78c-a926-4c1f-b01c-52f02747bf5a",
+     "target1_audio_id": "7a098930-6614-4c5f-978e-730e0563ac64",
+     "target2_audio_id": "cb610e4d-8461-4bb5-9f98-59b10e6c53d7",
+     "qa_checked": null,
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2136,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "有意思",
+       "legoId": "S0058L03",
+       "target": " interesting",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " book?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "你有没有看到进展怎么样？",
+     "target_text": "Have you seen how it's going?",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.469Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.506619+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fa063db3-5f7f-42c8-bf86-d5bb6b2c2e2f",
+     "target1_audio_id": "c0e17485-221e-47ce-a0d0-963ee02e1eaa",
+     "target2_audio_id": "862db1cc-c209-4212-a26a-a3bf1a9e14e8",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "怎么",
+       "legoId": "S0003L01",
+       "target": " how",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " going?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0182L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0182L02",
+    "type": "A",
+    "known_text": "任何地方",
+    "target_text": "Anywhere",
+    "components": [],
+    "seed_number": 182
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0182L02B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "现在任何地方",
+     "target_text": "Anywhere now",
+     "word_count": 12,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "376dd29d-8ea7-48ef-8b54-8ff7b17bf6de",
+     "target1_audio_id": "c033dd3b-b3fd-4596-beca-ab32651e4ff3",
+     "target2_audio_id": "1621c551-457a-4285-845d-649e66448442",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": "Anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "在这里任何地方",
+     "target_text": "Anywhere here",
+     "word_count": 13,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a44b69e3-6984-42e0-98d8-3a880c3b75a0",
+     "target1_audio_id": "dd9749a6-ab6d-4f16-8b0f-57295e0d42e9",
+     "target2_audio_id": "7bed2959-f478-489f-b5cc-475ce439340a",
+     "qa_checked": null,
+     "target1_duration_ms": 1056,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": "Anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在这里",
+       "legoId": "S0034L04",
+       "target": " here",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "今天任何地方",
+     "target_text": "Anywhere today",
+     "word_count": 14,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "36ec16f0-3ad9-4cd7-9f5d-f3a6034b0ad9",
+     "target1_audio_id": "c44ea256-e367-4a93-b221-91ada9755309",
+     "target2_audio_id": "5ed2096a-4f00-4652-bf21-47d163572c19",
+     "qa_checked": null,
+     "target1_duration_ms": 1008,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": "Anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "我哪里都找不到它",
+     "target_text": "I can't find it anywhere",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.587Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "da80acb0-e53a-4ab6-8f6c-dc6c8645db89",
+     "target1_audio_id": "dc6d8634-0821-4903-b4d8-913e51082ec7",
+     "target2_audio_id": "efaad726-de12-4112-a14c-a4579b126920",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " can't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "你有没有在任何地方看到那本书？",
+     "target_text": "Have you seen that book anywhere?",
+     "word_count": 33,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.587Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c6725841-48ae-49d2-86e9-152b5b367167",
+     "target1_audio_id": "e2321578-47a7-4847-b6b1-1abd8a176768",
+     "target2_audio_id": "110f9928-c63a-4cc4-a3c2-cc2d959479d7",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " book",
+       "isGhost": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "我不认为你能在任何地方找到那个",
+     "target_text": "I don't think you can find that anywhere",
+     "word_count": 40,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.587Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d2ccf916-83a6-465f-88f2-a08e8de14a96",
+     "target1_audio_id": "4916b368-9f8d-4b22-961d-c30a35ccf143",
+     "target2_audio_id": "57562cf9-2e86-49c8-9a5a-ae9c01e8a375",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "不要",
+       "legoId": "S0019L02",
+       "target": " don't",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "今天下午你有没有想去的地方？",
+     "target_text": "Is there anywhere you want to go this afternoon?",
+     "word_count": 48,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.587Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b8efe3e0-ca5e-410e-b25e-4264a1d0ff4f",
+     "target1_audio_id": "27e409b4-bb3a-43ae-a5c1-bb4b1b5d6b58",
+     "target2_audio_id": "647f5d56-acc9-4754-b11b-68b3d911f7f3",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " there",
+       "isGhost": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "走",
+       "legoId": "S0025L01",
+       "target": " to go",
+       "isGhost": false
+      },
+      {
+       "known": "今天下午",
+       "legoId": "S0035L03",
+       "target": " this afternoon",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L02U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "我昨天哪里都没看到他",
+     "target_text": "I didn't see him anywhere yesterday",
+     "word_count": 35,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.587Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.621469+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2fff365c-1e29-4546-9cd5-246210f97334",
+     "target1_audio_id": "0ce02890-4d03-477f-8e05-010a56f37cde",
+     "target2_audio_id": "4352d62f-e410-4970-9a21-8878d4e1ba00",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " see",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " him",
+       "isGhost": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "昨天",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0182L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0182L03",
+    "type": "M",
+    "known_text": "我的钥匙",
+    "target_text": "My keys",
+    "components": [
+     {
+      "known": "钥匙",
+      "target": "keys"
+     }
+    ],
+    "seed_number": 182
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0182L03C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "钥匙",
+     "target_text": "Keys",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T17:30:22.257549+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "da861d13-46e4-477f-ae83-a67fb29262dd",
+     "target1_audio_id": "3645f713-63df-486a-a2fc-4c93982f112e",
+     "target2_audio_id": "baf3f2c3-8dd8-4b46-8d37-085271ad3670",
+     "qa_checked": null,
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "50e3f6b5-f8b7-445b-bf5a-c0f6c9cfd81f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Keys",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "我的钥匙",
+     "target_text": "My keys",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:30:22.031455+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0e450b3d-abbf-4885-80cd-78ee81d07caf",
+     "target1_audio_id": "60379e63-fb51-4699-9b0e-b2f18f68bf81",
+     "target2_audio_id": "66c603f8-3b1d-42ce-9913-bb02352806fa",
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": "My keys",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "现在我的钥匙",
+     "target_text": "My keys now",
+     "word_count": 11,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "664630ed-663e-4862-9f95-671b184a0685",
+     "target1_audio_id": "f5da89f0-dcf2-4f38-9964-8e640fb281c1",
+     "target2_audio_id": "843d3b43-58d3-4f60-8d38-daae638b595d",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": "My keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "在这里我的钥匙",
+     "target_text": "My keys here",
+     "word_count": 12,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a10e6cfe-1aa0-4100-802e-58912a909c4a",
+     "target1_audio_id": "de556f83-a34a-4ed4-bfc1-766187f25243",
+     "target2_audio_id": "12159dab-b3ae-4693-b84c-0754138cba0a",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": "My keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在这里",
+       "legoId": "S0034L04",
+       "target": " here",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "今天我的钥匙",
+     "target_text": "My keys today",
+     "word_count": 13,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2d2ce4bb-d632-4165-a1ff-daae9da3bf03",
+     "target1_audio_id": "fb0a25ca-3fda-4147-81a8-e3b133dd49a3",
+     "target2_audio_id": "4187e131-d192-455f-80bb-804c455f90fc",
+     "qa_checked": null,
+     "target1_duration_ms": 1128,
+     "target2_duration_ms": 1296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": "My keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "你有没有在任何地方看到我的钥匙？",
+     "target_text": "Have you seen my keys anywhere?",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.703Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:30:21.605394+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2ec34e43-c111-44c8-9e03-b57767928964",
+     "target1_audio_id": "fbcbb54e-79e7-4a3d-b7be-51372f06aba3",
+     "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": " my keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "我找不到我的钥匙，我需要它们",
+     "target_text": "I can't find my keys and I need them",
+     "word_count": 36,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.703Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "41e12989-d651-46e8-9e9f-0bbc90bfec29",
+     "target1_audio_id": "260d8a0d-2d9c-49c2-9e41-e8f03079ead8",
+     "target2_audio_id": "8baf949e-87f7-4c15-a290-78c12f4f695f",
+     "qa_checked": null,
+     "target1_duration_ms": 2496,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " can't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": " my keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "而且",
+       "legoId": "S0015L02",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "我不知道我的钥匙在哪里",
+     "target_text": "I don't know where my keys are",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.703Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T22:52:18.956351+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7e910313-1625-4719-b8d8-9f9926e65fe2",
+     "target1_audio_id": "724ceabd-3401-48ab-aa8b-504d7308e6a0",
+     "target2_audio_id": "64f175fc-d7c4-459e-babf-b4587e441fff",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "不要",
+       "legoId": "S0019L02",
+       "target": " don't",
+       "isGhost": false
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " where",
+       "isGhost": true
+      },
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": " my keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在",
+       "legoId": "S0021L02",
+       "target": " are",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8d1a36b1-5b10-4755-b372-529d51b96042",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "你今天早上有没有看到我的钥匙？",
+     "target_text": "Have you seen my keys this morning?",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.703Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e7e9d231-aae0-4291-9343-d4fea4400f4f",
+     "target1_audio_id": "b6a4fd69-fbea-47f0-a672-99a608867e35",
+     "target2_audio_id": "9aad98a5-361a-49d0-bd9a-881b26b07bcf",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "看到过",
+       "legoId": "S0182L01",
+       "target": "Have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": " my keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今天早上",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0182L03U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 182,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "我在找我的钥匙，但哪里都找不到",
+     "target_text": "I'm looking for my keys but I can't find them anywhere",
+     "word_count": 54,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:27:57.703Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:27:57.734653+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a6bb3b73-fbf4-49a2-aa02-7af03b7a12a1",
+     "target1_audio_id": "97d0b4c4-a56a-49a3-b012-9de32ca01416",
+     "target2_audio_id": "d0d3cf5f-cae7-4f5b-bbf9-fe2dbe37888b",
+     "qa_checked": null,
+     "target1_duration_ms": 3288,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "找",
+       "legoId": "S0068L01",
+       "target": " looking for",
+       "isGhost": false
+      },
+      {
+       "known": "我的钥匙",
+       "legoId": "S0182L03",
+       "target": " my keys",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "但是",
+       "legoId": "S0019L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " can't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      },
+      {
+       "known": "任何地方",
+       "legoId": "S0182L02",
+       "target": " anywhere",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

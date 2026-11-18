@@ -1,0 +1,183 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0034L03B02",
+   "set": {
+    "target_text": "he doesn't want to speak"
+   },
+   "expect": {
+    "known_text": "ಅವನಿಗೆ ಮಾತಾಡೋದು ಬೇಡ",
+    "target_text": "he doesn't want talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0049L02B03",
+   "set": {
+    "target_text": "this morning it's like this"
+   },
+   "expect": {
+    "known_text": "ಇವತ್ತು ಬೆಳಿಗ್ಗೆ ಅದು ಹೀಗೆ",
+    "target_text": "it's like this this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0049L02U04",
+   "set": {
+    "target_text": "this evening it's like this"
+   },
+   "expect": {
+    "known_text": "ಇವತ್ತು ಸಂಜೆ ಅದು ಹೀಗೆ",
+    "target_text": "it's like this this evening"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0067L01B04",
+   "set": {
+    "target_text": "do you want to stop today?",
+    "known_text": "ಇವತ್ತು ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?"
+   },
+   "expect": {
+    "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+    "target_text": "do you want to stop last week?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0081L01B03",
+   "set": {
+    "target_text": "do you want to start tomorrow?",
+    "known_text": "ನಾಳೆ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?"
+   },
+   "expect": {
+    "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?",
+    "target_text": "do you want to start last week?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0578L02",
+   "set": {
+    "target_text": "warmer",
+    "type": "A",
+    "components": null
+   },
+   "expect": {
+    "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+    "target_text": "that is more warm"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0578L03",
+   "set": {
+    "components": [
+     {
+      "known": "ಎಲ್ಲಾದರೂ",
+      "target": "somewhere"
+     },
+     {
+      "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+      "target": "warmer"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+    "target_text": "somewhere warmer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02B01",
+   "set": {
+    "target_text": "warmer"
+   },
+   "expect": {
+    "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+    "target_text": "that is more warm"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02B02",
+   "set": {
+    "target_text": "a warmer church"
+   },
+   "expect": {
+    "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್",
+    "target_text": "the church that is more warm"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02B03",
+   "set": {
+    "target_text": "she wants a warmer church"
+   },
+   "expect": {
+    "known_text": "ಅವಳಿಗೆ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಬೇಕು",
+    "target_text": "she wants the church that is more warm"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02U01",
+   "set": {
+    "target_text": "the warmer church is here"
+   },
+   "expect": {
+    "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಇಲ್ಲಿ ಇದೆ",
+    "target_text": "the church that is more warm is here"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02U02",
+   "set": {
+    "target_text": "I like the warmer church"
+   },
+   "expect": {
+    "known_text": "ನನಗೆ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಇಷ್ಟ",
+    "target_text": "I like the church that is more warm"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02U03",
+   "set": {
+    "target_text": "I want a warmer church"
+   },
+   "expect": {
+    "known_text": "ನನಗೆ ಒಂದು ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಬೇಕು",
+    "target_text": "I want a church that is more warm"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0578L02U04",
+   "set": {
+    "target_text": "where is the warmer church?"
+   },
+   "expect": {
+    "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಎಲ್ಲಿ ಇದೆ?",
+    "target_text": "where is the church that is more warm?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0636L01B02",
+   "set": {
+    "target_text": "now I think that that is Jane's bag",
+    "known_text": "ಈಗ, ಅದು ಜೇನ್‌ಳ ಚೀಲ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ"
+   },
+   "expect": {
+    "known_text": "ಅದು ಜೇನ್‌ಳ ಚೀಲ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ ಅಂತ",
+    "target_text": "that I think that that is Jane's bag"
+   }
+  }
+ ]
+}

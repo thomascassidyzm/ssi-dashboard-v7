@@ -1,0 +1,27 @@
+{
+  "course_code": "eng_for_fra",
+  "event_id": "8f5371b1-9e0e-4665-95f2-3d346bb2bbd5",
+  "actor": "cs-item5-broken-english",
+  "created_at": "2026-11-18T14:14:39.083Z",
+  "how_to_undo": "POST /api/production/eng_for_fra/edit-batch {\"undo_file\":\"2026-11-18T14-14-39-082Z-8f5371b1-9e0e-4665-95f2-3d346bb2bbd5.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_fra:S0182L03U04",
+      "set": {
+        "target_text": "have you seen my keys anywhere yesterday?",
+        "target1_audio_id": "c1996231-c3a8-49b0-9d6d-47cb630c4290",
+        "target2_audio_id": "9fad0342-183a-4eb1-af3d-d0a51d73f8d9"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_fra:S0182L02U05",
+      "set": {
+        "target_text": "have you seen my keys yesterday?",
+        "target1_audio_id": "8af523f7-21be-48ea-af6d-7075af9b43d6",
+        "target2_audio_id": "24705807-796b-4cf3-af69-19a0fbdd16a6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2648 @@
+{
+ "seed": 213,
+ "seed_pair": {
+  "known": "彼らが何を達成しようとしているかわかりません。",
+  "target": "we don't know what they're trying to achieve"
+ },
+ "legos": {
+  "S0213L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0213L01",
+    "type": "A",
+    "known_text": "達成する",
+    "target_text": "achieve",
+    "components": null,
+    "seed_number": 213
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0213L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "達成する",
+     "target_text": "achieve",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T23:20:24.788224+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "85da29a9-3204-4e0b-b2d5-6ea0f087063e",
+     "target1_audio_id": "c3e7ce0b-a8d8-4a71-8b01-0a6bbdadeb39",
+     "target2_audio_id": "7fbd7871-02df-4827-a9d3-45d66b10af24",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": "achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "達成できる",
+     "target_text": "able to achieve",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9aa75b65-6823-432d-ab23-fec81753f145",
+     "target1_audio_id": "1d9e57d7-d0f4-44a5-9255-473f34af4eb0",
+     "target2_audio_id": "849b6a0c-fdaf-420f-a74b-fbf7cc3fcbf6",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "able",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "達成しようとしている",
+     "target_text": "trying to achieve",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T21:49:24.63579+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "20d78f7f-d3df-4600-b255-68469ee44490",
+     "target1_audio_id": "c9743356-231a-4caf-a6cc-75b8e5eb20c3",
+     "target2_audio_id": "f6f0caaa-b069-4b16-859d-c4ae87d4a3cc",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "何かを達成する",
+     "target_text": "achieve something",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "aa0af86f-39b9-46c2-845d-c807feb4a0b9",
+     "target1_audio_id": "192ea6ee-91d3-4d98-8be3-ab9fe25edee8",
+     "target2_audio_id": "7596de2b-8d98-4100-b331-d3008b3d7ff9",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": "achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "達成しなかった",
+     "target_text": "I didn't achieve that",
+     "word_count": 20,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5edf8025-dbbc-4a12-91c3-2411db1c0e60",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didnt",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "達成すること",
+     "target_text": "to achieve",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T17:31:05.834301+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f74ec7ff-cf3a-4aa7-b59b-246c4173d702",
+     "target1_audio_id": "9e977b46-5ba7-4508-ba31-69dfe26d5515",
+     "target2_audio_id": "33099996-fd2f-4e44-b7b9-0f0d06590f5f",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "それを達成したいです",
+     "target_text": "I want to achieve that",
+     "word_count": 23,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-13T04:01:10.781764+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4caa095e-9a58-464c-b1b5-2d78af7b2069",
+     "target1_audio_id": "432231c5-ce3d-4a49-9090-c2841986ebae",
+     "target2_audio_id": "e0f41c6f-8c37-445b-9196-ac28959bab39",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "彼らが達成しようとしていることがわかりません",
+     "target_text": "we don't know what they are trying to achieve",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b0456eb9-88f2-4d5d-8faa-1b181d438e04",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": "we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "彼ら",
+       "legoId": "S0209L01",
+       "target": " they",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "何かを達成したいと思っています",
+     "target_text": "I want to achieve something",
+     "word_count": 28,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T16:55:03.532755+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5db4c201-7048-4a73-93e8-02ff704deeab",
+     "target1_audio_id": "c92ce100-cc66-4f40-8ea6-8e4fb3cd17d5",
+     "target2_audio_id": "64ffd61c-168f-4290-8008-201b9a99caf5",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1512,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "達成することは難しいですが、やってみます",
+     "target_text": "it is not easy to achieve that but I want to try",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3494a41f-94cb-4bd9-99b6-0ade3b679f7f",
+     "target1_audio_id": "2bc50189-0f45-4aaf-bb74-67fb0a755e02",
+     "target2_audio_id": "4abb75ff-9c7a-4365-ac4d-a17a086771dc",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": "it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "簡単",
+       "legoId": "S0064L01",
+       "target": " easy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "頑張る",
+       "legoId": "S0007L01",
+       "target": " to try",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "あなたが達成したいことは何ですか？",
+     "target_text": "what do you want to achieve?",
+     "word_count": 28,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T23:20:27.060844+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f9ff3256-e647-4796-b4ae-83d8ac74612f",
+     "target1_audio_id": "13d50a06-92c5-4ef8-9aa7-f699953fa3df",
+     "target2_audio_id": "4b5c833b-1aac-433a-9a1a-e0119cbc707b",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": "what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "今日は何かを達成できましたか？",
+     "target_text": "were you able to achieve something today?",
+     "word_count": 41,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "48c61a86-d0b4-4231-a5a9-2234d507197b",
+     "target1_audio_id": "55fa10d8-1ba1-4945-9977-a585080d294b",
+     "target2_audio_id": "762a78d0-7896-4242-abd7-cf1d0e84a94c",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "were",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " able",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "それを達成するのはそれほど難しくありません",
+     "target_text": "it is not difficult to achieve that",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e78d0ab9-f51e-43b6-834a-09d5e5df2e8c",
+     "target1_audio_id": "07500560-edef-4a1f-88e9-a62c10666c1a",
+     "target2_audio_id": "51491afc-a05f-4630-9835-e4d12c45574d",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": "it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "難しくない",
+       "legoId": "S0066L02",
+       "target": " not difficult",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "何を達成したいのかを考えました",
+     "target_text": "I started to think about what I want to achieve",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f8e4c1aa-3fb1-4efb-b20a-5c61f6102e9a",
+     "target1_audio_id": "d3f7e825-aad3-4d5c-8b96-b9e16917d9d1",
+     "target2_audio_id": "369fa8f4-1844-426f-8d57-e6e892cc00a5",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "始めました",
+       "legoId": "S0037L01",
+       "target": "I started",
+       "isGhost": false
+      },
+      {
+       "known": "考える",
+       "legoId": "S0091L02",
+       "target": " to think",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "達成しようとしていることについてあなたに話したいです",
+     "target_text": "I want to tell you about what I'm trying to achieve",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7b55e08f-7a44-4c6e-8dc1-2e89d5856065",
+     "target1_audio_id": "a2adb68c-73b7-4c0f-be7e-11cfd32274f2",
+     "target2_audio_id": "5ad67d86-ff32-4c31-abe3-50a002f5fa2e",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": " tell",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "私が達成しようとしていることについて話してもいいですか？",
+     "target_text": "can I talk about what I'm trying to achieve?",
+     "word_count": 40,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:54.012Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:42:54.826565+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "309f8eec-afa3-427a-92f9-ed090a5be250",
+     "target1_audio_id": "ec56f75e-6673-4e99-a391-bdec5654b977",
+     "target2_audio_id": "23e15656-60be-4c77-b6d6-7e2f0a1df0b7",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2520,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0213L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0213L02",
+    "type": "M",
+    "known_text": "彼らが何を達成しようとしているかわかりません",
+    "target_text": "we don't know what they're trying to achieve",
+    "components": [
+     {
+      "known": "彼らが",
+      "target": "they"
+     },
+     {
+      "known": "達成する",
+      "target": "achieve"
+     },
+     {
+      "known": "わかりません",
+      "target": "don't know"
+     }
+    ],
+    "seed_number": 213
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0213L02C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "彼らが",
+     "target_text": "they",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T22:52:01.692293+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "940c9f56-eba8-4ba8-bb64-d02ba9994836",
+     "target1_audio_id": "457fc45c-dda3-4782-8ae2-75fb52b55f52",
+     "target2_audio_id": "9fa7e997-974b-4bfa-80cb-1d1f1292c643",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "彼ら",
+       "legoId": "S0209L01",
+       "target": "they",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "達成する",
+     "target_text": "achieve",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T23:20:24.788224+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "85da29a9-3204-4e0b-b2d5-6ea0f087063e",
+     "target1_audio_id": "c3e7ce0b-a8d8-4a71-8b01-0a6bbdadeb39",
+     "target2_audio_id": "7fbd7871-02df-4827-a9d3-45d66b10af24",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": "achieve",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02C03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "わかりません",
+     "target_text": "I don't understand",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-13T01:17:39.464202+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5866d9d2-3a7e-499f-8ef2-0111392a393e",
+     "target1_audio_id": "b3d8688b-ca86-461b-af56-a48e6db9f896",
+     "target2_audio_id": "198e1bfe-66e6-4155-a166-dbe67c8fb790",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "don't",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "彼らが何を達成しようとしているかわかりません",
+     "target_text": "we don't know what they're trying to achieve",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T17:31:04.790645+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4ec9689e-205f-49ed-81e1-27d5bca6d00c",
+     "target1_audio_id": "e757027b-218b-4d65-af5c-a761ebe08ec2",
+     "target2_audio_id": "9d037a28-c3da-4d46-862f-b36eb8ab3dcf",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "彼らが何を達成しようとしているかわかりません",
+       "legoId": "S0213L02",
+       "target": "we don't know what they're trying to achieve",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "彼らが何を達成しようとしているかわかりません",
+     "target_text": "we don't know what they're trying to achieve",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "c44ae8c0-56cc-4135-a29f-056416c9ff2a",
+     "target1_audio_id": "e757027b-218b-4d65-af5c-a761ebe08ec2",
+     "target2_audio_id": "41cae07d-cd6b-4a1c-a6d2-9175a529a9e3",
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 2064,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": "we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "今のところ彼らが何を達成しようとしているかわかりません",
+     "target_text": "at the moment we don't know what they're trying to achieve",
+     "word_count": 57,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "c7b60b3f-b7d5-48d9-8dd9-d136f34215d2",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今のところ",
+       "legoId": "S0040L02",
+       "target": "at the moment",
+       "isGhost": false
+      },
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 13,
+     "known_text": "残念ながら彼らが何を達成しようとしているかわかりません",
+     "target_text": "unfortunately we don't know what they're trying to achieve",
+     "word_count": 57,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "a9a223cc-9370-4381-b7a2-e0b0a52ccd09",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3432,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "残念ながら",
+       "legoId": "S0086L01",
+       "target": "unfortunately",
+       "isGhost": false
+      },
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 14,
+     "known_text": "まだ彼らが何を達成しようとしているかわかりません",
+     "target_text": "we don't know what they're trying to achieve yet",
+     "word_count": 47,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "ae65a167-0bb9-4ec4-9183-720db486b2f8",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2712,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": "we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 15,
+     "known_text": "全然彼らが何を達成しようとしているかわかりません",
+     "target_text": "we don't know what they're trying to achieve at all",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "4a158e2d-9a48-4e40-98e6-fbbffced317c",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": "we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      },
+      {
+       "known": "全然",
+       "legoId": "S0191L01",
+       "target": " at all",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "今のところまだ彼らが何を達成しようとしているかわかりません",
+     "target_text": "at the moment we don't know what they're trying to achieve yet",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "d9282566-dc9d-4a3a-a4ea-19fb32bee0b4",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今のところ",
+       "legoId": "S0040L02",
+       "target": "at the moment",
+       "isGhost": false
+      },
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 17,
+     "known_text": "残念ながら彼らが何を達成しようとしているかまったくわかりません",
+     "target_text": "unfortunately we don't know what they're trying to achieve at all",
+     "word_count": 64,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "006be12b-898c-4fcf-979a-1fe8a4ca8a7d",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3432,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "残念ながら",
+       "legoId": "S0086L01",
+       "target": "unfortunately",
+       "isGhost": false
+      },
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      },
+      {
+       "known": "全然",
+       "legoId": "S0191L01",
+       "target": " at all",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 18,
+     "known_text": "彼らが何を達成しようとしているか全然わかりません",
+     "target_text": "we don't know what they're trying to achieve at all yet",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "f3f7ff89-4a06-4453-9aa8-996b18d0acd5",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": "we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      },
+      {
+       "known": "全然",
+       "legoId": "S0191L01",
+       "target": " at all",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 19,
+     "known_text": "今のところ残念ながら彼らが何を達成しようとしているかわかりません",
+     "target_text": "unfortunately at the moment we don't know what they're trying to achieve",
+     "word_count": 71,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "acdde31e-1c21-4e69-a614-897957c036a6",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 4608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "残念ながら",
+       "legoId": "S0086L01",
+       "target": "unfortunately",
+       "isGhost": false
+      },
+      {
+       "known": "今のところ",
+       "legoId": "S0040L02",
+       "target": " at the moment",
+       "isGhost": false
+      },
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0213L02U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 213,
+     "lego_index": 2,
+     "position": 20,
+     "known_text": "今のところ彼らが何を達成しようとしているか全然わかりません",
+     "target_text": "at the moment we don't know what they're trying to achieve at all",
+     "word_count": 64,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:42:05.080Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:42:05.921324+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "db4cbd6e-3a71-42da-b7c4-1bd61525d63d",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:38.964+00:00",
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今のところ",
+       "legoId": "S0040L02",
+       "target": "at the moment",
+       "isGhost": false
+      },
+      {
+       "known": "私たち",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dont",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " theyre",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "達成する",
+       "legoId": "S0213L01",
+       "target": " achieve",
+       "isGhost": false
+      },
+      {
+       "known": "全然",
+       "legoId": "S0191L01",
+       "target": " at all",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

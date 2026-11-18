@@ -1,0 +1,1553 @@
+{
+ "seed": 150,
+ "seed_pair": {
+  "known": "你能告诉我你叫什么名字吗？",
+  "target": "Can you tell me what your name is?"
+ },
+ "legos": {
+  "S0150L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0150L01",
+    "type": "M",
+    "known_text": "你能告诉我",
+    "target_text": "Can you tell me",
+    "components": [
+     {
+      "known": "你",
+      "target": "you"
+     },
+     {
+      "known": "能",
+      "target": "can"
+     },
+     {
+      "known": "告诉",
+      "target": "tell"
+     },
+     {
+      "known": "我",
+      "target": "me"
+     }
+    ],
+    "seed_number": 150
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0150L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "你",
+     "target_text": "You",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:53:02.572441+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "52bef138-a5c2-46fc-8811-29c6b098a9e0",
+     "target1_audio_id": "77f7613c-5658-46c1-a632-3ddb7c33097d",
+     "target2_audio_id": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+     "qa_checked": null,
+     "target1_duration_ms": 840,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "d382bfeb-3711-42ab-9c88-c592fe728419",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "You",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "f3a95188-42d4-4d57-bd7c-0ddd90badea0",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "能",
+     "target_text": "Can",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:48:17.298631+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "56a048ed-91c6-4635-99ea-57248cc587fc",
+     "target1_audio_id": "798b9b7e-b7a6-4692-8ed0-e1e882413414",
+     "target2_audio_id": "2214039c-045e-4a42-9f13-9f933289f2e5",
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "3a9ee208-9a15-4b65-9fe9-e448ec09c967",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Can",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01C03",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "告诉",
+     "target_text": "Tell",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T23:19:01.933559+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4c9f89de-db6e-460f-aeed-bb049a4a9293",
+     "target1_audio_id": "254eed55-bdc9-429c-bf71-216afc8fc626",
+     "target2_audio_id": "604b4428-7e25-4085-9e14-db62bee3bfe5",
+     "qa_checked": null,
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "1bc0daa1-8fc9-4961-946d-07b0e792eb6a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Tell",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "68b3593f-6a55-4f71-8f48-750b3a870e99",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01C04",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "我",
+     "target_text": "Me",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 3
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:47:26.221138+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4516e672-3429-4fca-a249-38fa3d431ebb",
+     "target1_audio_id": "11f7ae70-21f1-4bb2-9519-b100f3cb3f92",
+     "target2_audio_id": "92725048-211d-46d4-97b9-60bfcdb5d3c7",
+     "qa_checked": null,
+     "target1_duration_ms": 576,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9a9ec6b6-d366-4ad1-b237-c1e320dcb18f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Me",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "你能告诉我",
+     "target_text": "Can you tell me?",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:52.097465+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "21df436d-3afd-406e-a32c-7b80481dab83",
+     "target1_audio_id": "0ad211fc-8f5a-43c7-bb66-a8989bad177a",
+     "target2_audio_id": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "你现在能告诉我吗",
+     "target_text": "Can you tell me now?",
+     "word_count": 19,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c9072615-7e52-4ea3-8f9d-0d03f5d38e95",
+     "target1_audio_id": "dd3cf04a-c5a0-4a3e-ad8f-23194cd0ef16",
+     "target2_audio_id": "8610319c-f537-4f80-90e3-3b65d657091d",
+     "qa_checked": null,
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "你能告诉我这个吗",
+     "target_text": "Can you tell me this?",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "41e3c695-3a02-4ab4-ac65-bfc843f2d230",
+     "target1_audio_id": "44ab3544-0559-4fe6-8c0f-300aca53d4a1",
+     "target2_audio_id": "6dbb7601-ecc6-493e-974f-fd31da21d384",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " this?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "你能告诉我一些事吗",
+     "target_text": "Can you tell me something?",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-28T17:29:53.597754+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7f6fef0d-d47f-424a-87df-36abc907598f",
+     "target1_audio_id": "493f42f2-01c2-4c71-9841-ea85a2e3897e",
+     "target2_audio_id": "42240bf3-7ba9-4389-b16a-e78e2e9cd9ca",
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " something?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe21b11f-6641-4e2f-ba40-0f44e0920f56",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "你能告诉我我们之前谈了什么吗？",
+     "target_text": "Can you tell me what we were talking about earlier?",
+     "word_count": 51,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.301Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f696b8aa-0236-4ad5-9581-8d855e3a38e7",
+     "target1_audio_id": "64d50d15-0d2e-49a5-ac95-d5fed8bc7d83",
+     "target2_audio_id": "797a2fca-3864-4ab3-b403-e95623c886a3",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "我们之前说的",
+       "legoId": "S0143L02",
+       "target": " we were talking about earlier",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "你能告诉我为什么似乎什么都不管用吗？",
+     "target_text": "Can you tell me why nothing seems to be working?",
+     "word_count": 48,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.301Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e3c02d44-577c-4685-8db2-057143bde467",
+     "target1_audio_id": "fe86710c-66ac-440a-8af7-8f93d3169d20",
+     "target2_audio_id": "2379c33c-6fd0-4568-82a3-b5230bb059fb",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "为什么",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "好像什么都不行了",
+       "legoId": "S0146L01",
+       "target": " nothing seems to be working",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "你能告诉我我的朋友想在哪里见我们吗？",
+     "target_text": "Can you tell me where my friend wanted to meet us?",
+     "word_count": 50,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.301Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9843cfa7-3ecb-42ee-b4da-0fd36aba22b8",
+     "target1_audio_id": "401caf8f-5ffe-45cd-b3fd-e200b88faa15",
+     "target2_audio_id": "79ae5cc7-f449-4cbe-a9db-a736678694e2",
+     "qa_checked": null,
+     "target1_duration_ms": 2784,
+     "target2_duration_ms": 2856,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " where",
+       "isGhost": true
+      },
+      {
+       "known": "我朋友想",
+       "legoId": "S0138L02",
+       "target": " my friend wanted",
+       "isGhost": false
+      },
+      {
+       "known": "和我们见面",
+       "legoId": "S0138L03",
+       "target": " to meet us",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "你能告诉我她说了什么吗？",
+     "target_text": "Can you tell me what she was saying?",
+     "word_count": 36,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.301Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e1a952ec-3bf8-4b30-a7f6-075e8fafd70e",
+     "target1_audio_id": "0560df1e-9790-48a3-b24f-a87f8cdf85b5",
+     "target2_audio_id": "e42ce894-9359-41cf-8a23-fea4470db654",
+     "qa_checked": null,
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2016,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "她说的",
+       "legoId": "S0132L02",
+       "target": " what she was saying",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "你能告诉我他是否不太有耐心吗？",
+     "target_text": "Can you tell me if he wasn't very patient?",
+     "word_count": 42,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.301Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.334265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a4560917-4cae-4057-b597-c157a6143d60",
+     "target1_audio_id": "caa33802-1dc1-4776-a33e-1b4696d776c9",
+     "target2_audio_id": "81245de9-19f2-4852-9da1-205e14d4be24",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "是不是",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "他不太有耐心",
+       "legoId": "S0148L01",
+       "target": " he wasn't very patient",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0150L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0150L02",
+    "type": "M",
+    "known_text": "你叫什么名字",
+    "target_text": "What your name is",
+    "components": [
+     {
+      "known": "你的",
+      "target": "your"
+     },
+     {
+      "known": "名字",
+      "target": "name"
+     }
+    ],
+    "seed_number": 150
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0150L02C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "你的",
+     "target_text": "Your",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:48:34.797708+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0646be3b-79d5-454d-bfec-7d738ff0f2ed",
+     "target1_audio_id": "e26fbdf3-3841-4fb1-a339-0a8896d4122e",
+     "target2_audio_id": "92ae4d66-d4e7-48f0-b32b-af46282d4ab7",
+     "qa_checked": null,
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "86135253-3aae-4791-9c28-40f6c047fb73",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Your",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02C02",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "名字",
+     "target_text": "Name",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T20:54:04.183636+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "297a155e-ef50-40f3-aa3e-9ff569aa7d6d",
+     "target1_audio_id": "a084d890-e966-4d8a-aa14-a48bc98ade02",
+     "target2_audio_id": "d24e3097-4a96-42d0-8d21-35354b4e8b0d",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9d644efa-08bf-43f9-a43d-cf7c3439f55e",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Name",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "你叫什么名字",
+     "target_text": "What your name is",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9a7d86b1-6bfc-462f-bfff-a32e7e94e4e7",
+     "target1_audio_id": "a2536e56-7c51-47cf-8d76-39b4afb1430a",
+     "target2_audio_id": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": "What your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "我现在知道你叫什么名字了",
+     "target_text": "I know what your name is now",
+     "word_count": 21,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": "What your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "告诉我你叫什么名字",
+     "target_text": "Tell me what your name is",
+     "word_count": 22,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": "What your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在这里",
+       "legoId": "S0034L04",
+       "target": " here",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "再告诉我一遍你叫什么名字",
+     "target_text": "Tell me again what your name is",
+     "word_count": 23,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-11-18T14:17:21.41975+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": "What your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " again?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "你能告诉我你叫什么名字吗？",
+     "target_text": "Can you tell me what your name is?",
+     "word_count": 34,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.393Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:52.073789+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "982d8849-017c-4656-966e-8da56be6303c",
+     "target1_audio_id": "96c2ab3c-67c4-4180-98bc-30d484e99f76",
+     "target2_audio_id": "cb2c714d-7ee5-4151-8bd2-c32a38d76186",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你能告诉我",
+       "legoId": "S0150L01",
+       "target": "Can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "我不知道你叫什么名字",
+     "target_text": "I don't know what your name is",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.393Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:29:53.748643+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d8eb6e45-880d-4fc4-9dbd-1971594698f3",
+     "target1_audio_id": "4cd743ca-c133-46a6-9063-60194451efdc",
+     "target2_audio_id": "421a442f-e65f-4b03-9002-5c2502342732",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "不要",
+       "legoId": "S0019L02",
+       "target": " don't",
+       "isGhost": false
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "我记不住你叫什么名字",
+     "target_text": "I can't remember what your name is",
+     "word_count": 34,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.393Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "06fec54c-5b04-4acb-9eec-11f03d8d818a",
+     "target1_audio_id": "e19d217d-bba9-44aa-bfe9-8b277b19846c",
+     "target2_audio_id": "af87ea2b-05ad-405f-be70-9f23826d13e1",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "说",
+       "legoId": "S0057L01",
+       "target": " can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "我想知道你叫什么名字",
+     "target_text": "I'd like to know what your name is",
+     "word_count": 34,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.393Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "11560fa3-4676-4cee-95d3-f8018cbb12a6",
+     "target1_audio_id": "6fd912b6-1509-47e0-896f-71919412a1a1",
+     "target2_audio_id": "0784f05d-44e6-4673-83cc-c71eac5a2cff",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'd",
+       "isGhost": true
+      },
+      {
+       "known": "喜欢",
+       "legoId": "S0026L01",
+       "target": " like",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0150L02U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 150,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "我很抱歉我不知道你叫什么名字",
+     "target_text": "I'm sorry that I don't know what your name is",
+     "word_count": 45,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-20T06:07:51.393Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T06:07:51.422412+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6c9612e4-6f8f-4ba9-aa66-d3870664b28c",
+     "target1_audio_id": "e9ece28b-ce6c-422b-a54e-b9f2993ae7c7",
+     "target2_audio_id": "4038d1e0-87b7-43b1-9bc2-21d00857ed2a",
+     "qa_checked": null,
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "对不起",
+       "legoId": "S0139L01",
+       "target": "I'm sorry that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "不要",
+       "legoId": "S0019L02",
+       "target": " don't",
+       "isGhost": false
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "你叫什么名字",
+       "legoId": "S0150L02",
+       "target": " what your name is",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

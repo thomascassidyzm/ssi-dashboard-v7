@@ -1,0 +1,1369 @@
+{
+ "seed": 254,
+ "seed_pair": {
+  "known": "Ich bin seit heute Morgen bereit.",
+  "target": "I've been ready since this morning."
+ },
+ "legos": {
+  "S0254L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0254L01",
+    "type": "A",
+    "known_text": "seit",
+    "target_text": "since",
+    "components": [],
+    "seed_number": 254
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_deu:S0254L01B01",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "seit heute Morgen",
+     "target_text": "since this morning",
+     "word_count": 18,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-10-12T17:24:05.269575+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "313a1ce0-f980-4908-bc99-5710ef6dbdeb",
+     "target1_audio_id": "9127b17f-8de3-4764-a1f3-f46194335087",
+     "target2_audio_id": "0a661b30-a39e-44ec-97f6-14616d5c3d19",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": "since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "heute Morgen",
+       "legoId": "S0039L01",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01B02",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "seit gestern",
+     "target_text": "since yesterday",
+     "word_count": 15,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T23:19:46.000881+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "bc574006-e5fc-4ab5-adf3-aab2f70db518",
+     "target1_audio_id": "ba94841e-519a-4a0d-9904-f52a97a848a4",
+     "target2_audio_id": "66c440c0-2e85-429c-b794-67e8c6b79f28",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": "since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "gestern",
+       "legoId": "S0030L02",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb46319c-ec2f-48bf-9ee4-cfc97debb010",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01B03",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "seit gestern Abend",
+     "target_text": "since last night",
+     "word_count": 17,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-11-18T14:15:10.593409+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": "since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "vor einer Weile",
+       "legoId": "S0184L02",
+       "target": " a while ago",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "bbc963ec-ed16-4da3-abc9-db24fa0e625b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01U01",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ich arbeite seit heute Morgen",
+     "target_text": "I have been working since this morning",
+     "word_count": 38,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.886Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:27.88041+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "18a9d1d0-b0b9-40b7-934e-3212588ae11c",
+     "target1_audio_id": "405014ed-1f4d-4388-9d94-f7d203610e9d",
+     "target2_audio_id": "f32c4518-e93e-4cef-adb8-553a22319079",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " been",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " working",
+       "isGhost": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "heute Morgen",
+       "legoId": "S0039L01",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01U02",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "ich bin seit gestern beschäftigt",
+     "target_text": "I have been busy since yesterday",
+     "word_count": 32,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.886Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:21.409456+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "69fd3e8e-3603-4430-8e5b-9edccfc60df5",
+     "target1_audio_id": "57e17ec9-af85-4c81-b756-33564e076d86",
+     "target2_audio_id": "d440f66c-4e72-458e-b9bf-f8ebce74f7a9",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " been",
+       "isGhost": true
+      },
+      {
+       "known": "beschäftigt",
+       "legoId": "S0192L02",
+       "target": " busy",
+       "isGhost": false
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "gestern",
+       "legoId": "S0030L02",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01U03",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ich lerne seit gestern",
+     "target_text": "I have been learning since yesterday",
+     "word_count": 36,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.886Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:26.341302+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7df8981a-5807-4195-b7c1-6c82423a07ee",
+     "target1_audio_id": "25bb6d21-4346-4cc0-8c67-5cb2c14abb42",
+     "target2_audio_id": "75ef6f3b-78ca-42dc-9e8c-5a90b17621d9",
+     "qa_checked": null,
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " been",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " learning",
+       "isGhost": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "gestern",
+       "legoId": "S0030L02",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01U04",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "ich mache das seit gestern",
+     "target_text": "I have been doing that since yesterday",
+     "word_count": 40,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.886Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-11-18T14:15:10.593409+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " been",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " doing",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "vor einer Weile",
+       "legoId": "S0184L02",
+       "target": " a while ago",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "bbc963ec-ed16-4da3-abc9-db24fa0e625b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L01U05",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "ich spreche seit heute Morgen Englisch",
+     "target_text": "I have been speaking English since this morning",
+     "word_count": 47,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.886Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:30.548847+00:00",
+     "created_at": "2026-02-25T14:07:53.959111+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6e7b4c07-3aa4-49ab-b5de-2cb74701f3dd",
+     "target1_audio_id": "1277a608-7414-4f45-81d3-e20466239916",
+     "target2_audio_id": "0d8310e5-44f5-4fc5-a8bf-d1d87880d2ac",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " been",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speaking",
+       "isGhost": true
+      },
+      {
+       "known": "englisch",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "heute Morgen",
+       "legoId": "S0039L01",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0254L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0254L02",
+    "type": "M",
+    "known_text": "ich bin bereit",
+    "target_text": "I have been ready",
+    "components": [
+     {
+      "known": "ich",
+      "target": "I"
+     },
+     {
+      "known": "bin",
+      "target": "have been"
+     },
+     {
+      "known": "bereit",
+      "target": "ready"
+     }
+    ],
+    "seed_number": 254
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_deu:S0254L02C01",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "ich",
+     "target_text": "I",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T17:31:29.560481+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "900afdd8-cac6-4cff-aee6-05196e9d0344",
+     "target1_audio_id": "b73bdd9c-028c-4338-81db-1a4ba68b6f5a",
+     "target2_audio_id": "33185df6-d563-41af-853f-a55201fea3ab",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02C02",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "bin",
+     "target_text": "have been",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "55621ceb-a173-4209-8dcf-69c4dc7fece5",
+     "target1_audio_id": "a60bac3d-2fab-4988-a71f-0cae5667d077",
+     "target2_audio_id": "21645046-9f08-46e6-80e3-c4b30f4a7712",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " been",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02C03",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "bereit",
+     "target_text": "ready",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:47:28.537655+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b95e694b-15b2-4b44-b0bb-2f34d7918f20",
+     "target1_audio_id": "e3d2e324-edb0-4dd3-bfb8-a577a8f936d2",
+     "target2_audio_id": "29706152-822d-435f-ab5f-b930ef57128e",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "bereit",
+       "legoId": "S0252L01",
+       "target": "ready",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02B01",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "ich bin bereit",
+     "target_text": "I have been ready",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:25.743317+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "581f851e-6b35-47e4-822a-182c6d40bbaa",
+     "target1_audio_id": "59a6e51f-acbe-4a68-a628-08ce860d7df9",
+     "target2_audio_id": "b537f4bc-32b2-4b10-9fa7-ac0ccb3bf985",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02B02",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "ich bin seit heute Morgen bereit",
+     "target_text": "I have been ready since this morning",
+     "word_count": 36,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-28T21:49:50.118369+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9a640b4a-ec4d-42f0-8616-f053bfccdaf6",
+     "target1_audio_id": "a21418fc-5056-4557-ba8c-7952a0994264",
+     "target2_audio_id": "d504a46d-ab70-41af-bb30-674557e32f60",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false
+      },
+      {
+       "known": "heute Morgen",
+       "legoId": "S0039L01",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb46319c-ec2f-48bf-9ee4-cfc97debb010",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02B03",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "ich bin seit gestern bereit",
+     "target_text": "I have been ready since yesterday",
+     "word_count": 33,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:23.652096+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2a4e8e42-1b78-43cc-a682-771d97ff78f3",
+     "target1_audio_id": "93abc716-c000-43bc-8bc8-a051b6bb9994",
+     "target2_audio_id": "0201cd79-064a-4fc5-8768-39089621f6ca",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false
+      },
+      {
+       "known": "gestern",
+       "legoId": "S0030L02",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02U01",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "ich bin seit einer Weile bereit",
+     "target_text": "I have been ready for a while",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.985Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:26.047151+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d325463a-14a7-4fa3-8443-a18c2045f115",
+     "target1_audio_id": "90adeb00-9958-40d8-9005-81c81703efe7",
+     "target2_audio_id": "7369888c-a0de-426d-8ba2-725ef489d9ca",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "eine Weile",
+       "legoId": "S0180L02",
+       "target": " for a while",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02U02",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "ich bin bereit, obwohl ich nicht viel gemacht habe",
+     "target_text": "I have been ready although I didn't do much",
+     "word_count": 43,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.985Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:08.565404+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a59a4877-3d2a-4bce-aead-f5b247e5e859",
+     "target1_audio_id": "edea286b-56a1-40fd-af2f-3276a2ace830",
+     "target2_audio_id": "0e46f7e1-7496-41fd-8e8f-9735832536c8",
+     "qa_checked": null,
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "obwohl",
+       "legoId": "S0178L01",
+       "target": " although",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "nicht viel gemacht",
+       "legoId": "S0218L02",
+       "target": " didn't do much",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02U03",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "ich bin seit heute Morgen bereit und ich möchte gehen",
+     "target_text": "I have been ready since this morning and I want to go",
+     "word_count": 53,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.985Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:29.08179+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3b2eaf89-0676-4f43-9831-1281ae5da258",
+     "target1_audio_id": "8bcd94e3-6895-4c0c-825d-17ef3c028a0f",
+     "target2_audio_id": "46b15f94-d3ac-4462-93db-27b367444622",
+     "qa_checked": null,
+     "target1_duration_ms": 4272,
+     "target2_duration_ms": 4248,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false
+      },
+      {
+       "known": "heute Morgen",
+       "legoId": "S0039L01",
+       "target": " this morning",
+       "isGhost": false
+      },
+      {
+       "known": "und",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "ich möchte",
+       "legoId": "S0001L01",
+       "target": " I want",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " go",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02U04",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "ich bin bereit, seit ich gestern angefangen habe",
+     "target_text": "I have been ready since I started yesterday",
+     "word_count": 43,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.985Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:28.645595+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e1e15dd2-fb19-4cf3-8e05-a99c84f51d33",
+     "target1_audio_id": "de72efbb-12a7-461e-976a-2583e8e1c0d1",
+     "target2_audio_id": "aeb3d86b-94be-4428-ba87-4775e570158d",
+     "qa_checked": null,
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "seit",
+       "legoId": "S0254L01",
+       "target": " since",
+       "isGhost": false
+      },
+      {
+       "known": "ich habe angefangen",
+       "legoId": "S0037L01",
+       "target": " I started",
+       "isGhost": false
+      },
+      {
+       "known": "gestern",
+       "legoId": "S0030L02",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0254L02U05",
+     "course_code": "eng_for_deu",
+     "seed_number": 254,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "ich bin bereit, aber niemand hat mir gesagt, was ich machen soll",
+     "target_text": "I have been ready but nobody told me what I should do",
+     "word_count": 53,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:07:53.985Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:15.489571+00:00",
+     "created_at": "2026-02-25T14:07:54.063196+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d249cf3f-5624-4b33-a010-149ba2ad3e49",
+     "target1_audio_id": "98c41942-f49a-44d8-8596-3b28476733e0",
+     "target2_audio_id": "39d10463-bb37-4ec9-a058-e24edf03083d",
+     "qa_checked": null,
+     "target1_duration_ms": 4416,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich bin bereit",
+       "legoId": "S0254L02",
+       "target": "I have been ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "aber",
+       "legoId": "S0046L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "niemand",
+       "legoId": "S0202L01",
+       "target": " nobody",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " told",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "ich sollte",
+       "legoId": "S0098L01",
+       "target": " I should",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "64befb42-ccac-4621-b81b-922d7c24a089",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0061L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0061L02B02",
+    "seed_number": 61,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "could you say?",
+    "known_text": "말해줄 수 있어요",
+    "known_audio_id": "080e6169-9755-4b6d-b9eb-a05b21becfed",
+    "target1_audio_id": "4fb25709-4f39-4abd-895f-090e14cf4f9b",
+    "target2_audio_id": "873487f2-9b64-4a8f-a022-a21d0fe7d1d2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0061L02B02",
+    "seed_number": 61,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "could you say it again?",
+    "known_text": "다시 말해줄 수 있어요?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0061L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0061L02B03",
+    "seed_number": 61,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "could you explain?",
+    "known_text": "설명해줄 수 있어요",
+    "known_audio_id": "0710f448-e426-478a-8e8c-eb2425c65b9a",
+    "target1_audio_id": "ee456850-8dc3-4165-8389-ceb17c14767a",
+    "target2_audio_id": "d32533ae-5cd9-4a49-b7de-efb3fc9ab35a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0061L02B03",
+    "seed_number": 61,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "could you explain again?",
+    "known_text": "다시 설명해줄 수 있어요?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0150L02B01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0150L02B01",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "what your name is?",
+    "known_text": "이름이 뭔지",
+    "known_audio_id": "f5cc89ba-42b9-4149-a461-5e8c297e142d",
+    "target1_audio_id": "ea3c64bb-4fe2-44ee-93ad-2191bd889c4d",
+    "target2_audio_id": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0150L02B01",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "what your name is",
+    "known_text": "이름이 뭔지",
+    "known_audio_id": "f5cc89ba-42b9-4149-a461-5e8c297e142d",
+    "target1_audio_id": "ea3c64bb-4fe2-44ee-93ad-2191bd889c4d",
+    "target2_audio_id": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0150L02B01",
+   "set": {
+    "target_text": "what your name is?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0061L02B03",
+   "set": {
+    "known_text": "설명해줄 수 있어요",
+    "target_text": "could you explain?",
+    "known_audio_id": "0710f448-e426-478a-8e8c-eb2425c65b9a",
+    "target1_audio_id": "ee456850-8dc3-4165-8389-ceb17c14767a",
+    "target2_audio_id": "d32533ae-5cd9-4a49-b7de-efb3fc9ab35a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0061L02B02",
+   "set": {
+    "known_text": "말해줄 수 있어요",
+    "target_text": "could you say?",
+    "known_audio_id": "080e6169-9755-4b6d-b9eb-a05b21becfed",
+    "target1_audio_id": "4fb25709-4f39-4abd-895f-090e14cf4f9b",
+    "target2_audio_id": "873487f2-9b64-4a8f-a022-a21d0fe7d1d2"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-20-04-917Z-64befb42-ccac-4621-b81b-922d7c24a089.json"
+}

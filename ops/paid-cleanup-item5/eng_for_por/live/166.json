@@ -1,0 +1,720 @@
+{
+ "seed": 166,
+ "seed_pair": {
+  "known": "O meu nome não é muito invulgar.",
+  "target": "My name is not very unusual."
+ },
+ "legos": {
+  "S0166L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0166L01",
+    "type": "M",
+    "known_text": "o meu nome",
+    "target_text": "my name",
+    "components": [
+     {
+      "known": "o meu",
+      "target": "my"
+     },
+     {
+      "known": "nome",
+      "target": "name"
+     }
+    ],
+    "seed_number": 166
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0166L01C01",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "o meu",
+     "target_text": "my",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T21:52:15.431976+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7cf8a500-94e8-49a9-9be6-917c2b6fdaf7",
+     "target1_audio_id": "75f94ddc-0cf6-4d12-a4d5-630b16e27d1b",
+     "target2_audio_id": "65c2cf40-cb8e-4ae4-950f-a4e719d23069",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "my",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01C02",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "nome",
+     "target_text": "name",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-12T20:54:05.730281+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4981fd25-8c0e-421c-8811-6081b6eaaf3f",
+     "target1_audio_id": "c97d4b93-28e6-4951-8166-21924b85451b",
+     "target2_audio_id": "d24e3097-4a96-42d0-8d21-35354b4e8b0d",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "name",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01B01",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "o meu nome",
+     "target_text": "my name",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T23:18:19.03409+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7db6d783-4d30-4d3d-822a-7f84c39c3589",
+     "target1_audio_id": "5ccb8a64-7a77-48c5-8dc5-175ff805b5b3",
+     "target2_audio_id": "4c0b8af4-9cd0-4488-87b3-5ebc0099f081",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": "my name",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9f5a0986-36bf-45c7-87b7-387f1ea7b327",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01B02",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "o meu nome não é",
+     "target_text": "my name is not",
+     "word_count": 14,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-27T13:27:03.223245+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9beab967-6aef-4149-b53f-e2716a1e2953",
+     "target1_audio_id": "53f1b804-010a-4acf-ae04-bdd19a15bd13",
+     "target2_audio_id": "96a4ab48-b279-45c8-847f-19c13ec82ff9",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": "my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01B03",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "o meu nome não é muito invulgar",
+     "target_text": "my name is not very unusual",
+     "word_count": 27,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:30:10.880809+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "871fc2a4-bdf9-49d6-affd-cca471c37a05",
+     "target1_audio_id": "e74e0a03-575e-42c0-81e0-1adb0fb1102d",
+     "target2_audio_id": "d09ee5d0-a794-4bd2-af77-aa2d9c70ee81",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": "my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "invulgar",
+       "legoId": "S0121L03",
+       "target": " unusual",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01U01",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "o meu nome não é muito invulgar, é verdade",
+     "target_text": "my name is not very unusual, it's true",
+     "word_count": 38,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T12:13:33.198Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:59.560852+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "88cda00e-6b71-4a83-8a6d-de429381a156",
+     "target1_audio_id": "52c4ab8f-f269-491f-86da-14295ffc87f9",
+     "target2_audio_id": "f48d5092-1fd3-49f0-a8b5-60805446dba3",
+     "qa_checked": null,
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 4392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": "my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "invulgar",
+       "legoId": "S0121L03",
+       "target": " unusual",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "verdade",
+       "legoId": "S0165L01",
+       "target": " true",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01U02",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "pode dizer-me como se diz o meu nome em inglês?",
+     "target_text": "can you tell me how you say my name in English?",
+     "word_count": 50,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T12:13:33.198Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-11-18T14:14:57.918196+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9431f9b8-4d90-4476-818a-424d3e88c02e",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "pode dizer-me",
+       "legoId": "S0150L02",
+       "target": "can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "como é que se diz",
+       "legoId": "S0160L01",
+       "target": " how do you say",
+       "isGhost": false
+      },
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": " my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "em inglês",
+       "legoId": "S0004L03",
+       "target": " in English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2c57b6aa-e8ea-4546-90a2-c78ac919a0bc",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01U03",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "não sei se o meu nome é invulgar",
+     "target_text": "I don't know if my name is unusual",
+     "word_count": 34,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T12:13:33.198Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:52.693924+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "be503dd0-745b-4975-a302-cbad19d8052d",
+     "target1_audio_id": "54253ee2-12cc-499d-9922-8c2adf86bef6",
+     "target2_audio_id": "6c6730ac-ccca-4d5d-9196-1edeb79d2abb",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não conheço",
+       "legoId": "S0085L01",
+       "target": "I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "se",
+       "legoId": "S0010L01",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": " my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "invulgar",
+       "legoId": "S0121L03",
+       "target": " unusual",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01U04",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "eu acho que o meu nome é interessante",
+     "target_text": "I think that my name is interesting",
+     "word_count": 35,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T12:13:33.198Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:01.632896+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1c35db1c-6b99-4f57-8fcc-5f0e70fc6811",
+     "target1_audio_id": "a47a845f-9040-42b5-9a1a-1070dffc9a5a",
+     "target2_audio_id": "7dcb51e4-ce68-417d-83e2-474ed6078587",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "eu acho que",
+       "legoId": "S0047L01",
+       "target": "I think that",
+       "isGhost": false
+      },
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": " my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "interessante",
+       "legoId": "S0051L03",
+       "target": " interesting",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0166L01U05",
+     "course_code": "eng_for_por",
+     "seed_number": 166,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "o meu nome não é difícil de dizer",
+     "target_text": "my name is not difficult to say",
+     "word_count": 31,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T12:13:33.198Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:57.017566+00:00",
+     "created_at": "2026-02-25T12:13:33.287112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6946cf97-87b6-4e92-a97d-6c14fadf46c9",
+     "target1_audio_id": "28f0067b-5e93-409a-a546-f3a4269d5cb1",
+     "target2_audio_id": "71063a27-ab5b-4a13-aae2-560a44c4adcf",
+     "qa_checked": null,
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "o meu nome",
+       "legoId": "S0166L01",
+       "target": "my name",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "difícil",
+       "legoId": "S0066L01",
+       "target": " difficult",
+       "isGhost": false
+      },
+      {
+       "known": "dizer",
+       "legoId": "S0004L02",
+       "target": " to say",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

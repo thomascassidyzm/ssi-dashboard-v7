@@ -1,0 +1,2201 @@
+{
+ "seed": 199,
+ "seed_pair": {
+  "known": "友達は以前オフィスで働いていました。",
+  "target": "my friend used to work in an office"
+ },
+ "legos": {
+  "S0199L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0199L01",
+    "type": "M",
+    "known_text": "以前〜していた",
+    "target_text": "used to",
+    "components": [
+     {
+      "known": "以前",
+      "target": "previously"
+     },
+     {
+      "known": "〜ていた",
+      "target": "was -ing"
+     }
+    ],
+    "seed_number": 199
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0199L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "以前",
+     "target_text": "previously",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "61217cbf-874f-435b-ad8d-6d0ed6845a29",
+     "target1_audio_id": "b452a7f7-11bf-4c55-9fce-539b9936827c",
+     "target2_audio_id": "eeb923af-230c-4657-83c7-80ca71ef3216",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "previously",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "〜ていた",
+     "target_text": "was -ing",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1acd2e64-5f05-4317-9d0b-65afc52856a7",
+     "target1_audio_id": "27a1a8a9-c84e-4ddc-a986-2ae13f288b58",
+     "target2_audio_id": "2816c044-4c45-4614-9f9b-22e1fe3470c5",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " -ing",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "以前〜していた",
+     "target_text": "used to",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T10:44:19.971096+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3c5b82cf-eec6-422a-95c0-e06359b369c1",
+     "target1_audio_id": "97c4c9f9-ae0c-4386-b9e2-1f91074764ac",
+     "target2_audio_id": "1c6f3900-8580-4ad5-96c6-d378a05fafed",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 888,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": "used to",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "以前〜していた",
+     "target_text": "used to",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T10:44:19.890964+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3c5b82cf-eec6-422a-95c0-e06359b369c1",
+     "target1_audio_id": "97c4c9f9-ae0c-4386-b9e2-1f91074764ac",
+     "target2_audio_id": "1c6f3900-8580-4ad5-96c6-d378a05fafed",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 888,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": "used to",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "以前知っていた",
+     "target_text": "used to know",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T17:29:26.481708+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "58985ddc-7fb7-47cd-9f76-5723bfbfdee2",
+     "target1_audio_id": "70ef7914-6889-4417-a135-de138361be0c",
+     "target2_audio_id": "e12a7fde-23ac-4cad-b8a2-5d2f392a2aa1",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 888,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": "used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "以前はそれを知っていました",
+     "target_text": "I used to know",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T18:40:36.555022+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0f3666c8-4b18-4a39-8f46-246f3d3a4c73",
+     "target1_audio_id": "6286ef8d-aaa8-493a-8401-acb258463e53",
+     "target2_audio_id": "2a0d041d-548d-4575-aafa-884f875322b5",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 1128,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "友人は以前オフィスで働いていました",
+     "target_text": "my friend used to work in an office",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T17:15:10.809758+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "84a2aaa4-b37a-41be-b809-f604951cc5e6",
+     "target1_audio_id": "e3b4341e-3b73-4c47-a8b0-e1ed6cdbdb49",
+     "target2_audio_id": "ff93f505-e073-4825-8acc-7ab2cd24aa03",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": "my",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " an",
+       "isGhost": true
+      },
+      {
+       "known": "オフィス",
+       "legoId": "S0184L01",
+       "target": " office",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "以前先生でした",
+     "target_text": "used to be a teacher",
+     "word_count": 20,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3d0a50f2-ffe8-4811-a8f9-815d2160633d",
+     "target1_audio_id": "a666a6f5-5686-4dee-80f6-f30259c626fc",
+     "target2_audio_id": "fc69c8e1-5da0-48d5-836a-2d862e244f5c",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": "used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "教師",
+       "legoId": "S0197L03",
+       "target": " a teacher",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "以前そこで働いていました",
+     "target_text": "used to work there",
+     "word_count": 18,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ee73f304-dc2e-4ac9-ad6e-5ac2dcf8c06a",
+     "target1_audio_id": "833cd128-a99f-4abd-9ea9-ec5897bd0271",
+     "target2_audio_id": "a86e11ee-20d1-4c85-b269-cc49f3d607f1",
+     "qa_checked": "2026-02-17T12:28:06.518+00:00",
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": "used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "そこに",
+       "legoId": "S0157L02",
+       "target": " there",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "友人は以前オフィスで働いていました",
+     "target_text": "my friend used to work in an office",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T17:15:10.665714+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "84a2aaa4-b37a-41be-b809-f604951cc5e6",
+     "target1_audio_id": "e3b4341e-3b73-4c47-a8b0-e1ed6cdbdb49",
+     "target2_audio_id": "ff93f505-e073-4825-8acc-7ab2cd24aa03",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": "my",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " an",
+       "isGhost": true
+      },
+      {
+       "known": "オフィス",
+       "legoId": "S0184L01",
+       "target": " office",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "以前それを知っていましたが、今は思い出せません",
+     "target_text": "I used to know but now I can't remember",
+     "word_count": 39,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6ec2b294-5e39-48e7-90d8-4921f7bd77e7",
+     "target1_audio_id": "651d2cc2-13c3-4719-a6f8-0c8f918b2895",
+     "target2_audio_id": "f8457aee-453f-45ae-8563-4e84636256c0",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "娘は以前先生として働いていましたが、今は市役所で働いています",
+     "target_text": "my daughter used to work as a teacher but now she works for the council",
+     "word_count": 71,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a0683448-6f74-4140-bf61-1f5c0971939f",
+     "target1_audio_id": "4abfcf95-c2a1-4642-a465-5e2f79be3542",
+     "target2_audio_id": "cbe91335-7d0d-420c-968b-16da291178e0",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 4152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "娘",
+       "legoId": "S0198L01",
+       "target": "my daughter",
+       "isGhost": false
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "教師",
+       "legoId": "S0197L03",
+       "target": " a teacher",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": " she",
+       "isGhost": false
+      },
+      {
+       "known": "働いています",
+       "legoId": "S0197L02",
+       "target": " works",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "市役所",
+       "legoId": "S0198L02",
+       "target": " the council",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "以前その言葉を知っていましたが、今はどう言うか分かりません",
+     "target_text": "I used to know that word but now I can't remember how to say it",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a45bbbe6-03f4-48af-b732-f03901b4fc50",
+     "target1_audio_id": "bdd56313-7d6e-470a-a890-4b816126e384",
+     "target2_audio_id": "04922def-eb5f-4b9c-a5e9-beed461262d1",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 3720,
+     "target2_duration_ms": 3936,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " word",
+       "isGhost": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "言う方法",
+       "legoId": "S0004L04",
+       "target": " how to say",
+       "isGhost": false
+      },
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": " it",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "息子は以前オフィスで働いていましたが、今は先生をしています",
+     "target_text": "my son used to work in an office but now he works as a teacher",
+     "word_count": 62,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "78bbd09f-38ea-4045-8171-a577f9a6db50",
+     "target1_audio_id": "233690ed-ea45-4a4f-a034-af79634cbb88",
+     "target2_audio_id": "58bcb4e2-3036-48d3-b9c5-e065e6bc2b3b",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 4128,
+     "target2_duration_ms": 4416,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "息子",
+       "legoId": "S0197L01",
+       "target": "my son",
+       "isGhost": false
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " an",
+       "isGhost": true
+      },
+      {
+       "known": "オフィス",
+       "legoId": "S0184L01",
+       "target": " office",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "働いています",
+       "legoId": "S0197L02",
+       "target": " works",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "教師",
+       "legoId": "S0197L03",
+       "target": " a teacher",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "以前市役所で働いていた人を知っていました",
+     "target_text": "I used to know someone who used to work for the council",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9d71eb40-8a7f-43ea-96f6-c501f255a4f6",
+     "target1_audio_id": "ad847b21-a3c0-40c6-b1e5-47e74863dfe4",
+     "target2_audio_id": "f44183f3-1b64-4598-8ee5-27e1e7f1f114",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 2856,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "誰かを知る",
+       "legoId": "S0133L02",
+       "target": " know someone",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " who",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "市役所",
+       "legoId": "S0198L02",
+       "target": " the council",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "彼女は以前先生でしたが、今は市役所で働いています",
+     "target_text": "she used to be a teacher but now she works for the council",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "bb79cbb1-f83d-4e9a-8128-c95f7ca07334",
+     "target1_audio_id": "f218e212-595b-48db-96b6-eebaf2700ef0",
+     "target2_audio_id": "761d55ea-b585-4c0c-bd35-242adb434f47",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 3288,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": "she",
+       "isGhost": false
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "教師",
+       "legoId": "S0197L03",
+       "target": " a teacher",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": " she",
+       "isGhost": false
+      },
+      {
+       "known": "働いています",
+       "legoId": "S0197L02",
+       "target": " works",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "市役所",
+       "legoId": "S0198L02",
+       "target": " the council",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "以前は別のオフィスで働いていましたね？",
+     "target_text": "you used to work in a different office, didn't you?",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "064c4047-f42c-4839-9355-60ef0350b029",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "you",
+       "isGhost": false
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "違う",
+       "legoId": "S0060L02",
+       "target": " different",
+       "isGhost": false
+      },
+      {
+       "known": "オフィス",
+       "legoId": "S0184L01",
+       "target": " office",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "以前は言葉を覚えるのが今より簡単でした",
+     "target_text": "I used to find it easier to remember words",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c2ecf81b-f6a1-4f5f-8741-5fa6861ea113",
+     "target1_audio_id": "557eca90-1bac-4cd3-b860-365683409efb",
+     "target2_audio_id": "c9e94f16-08c6-4278-9bdc-389ab7078baf",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": " it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " easier",
+       "isGhost": true
+      },
+      {
+       "known": "思い出す",
+       "legoId": "S0006L02",
+       "target": " to remember",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "友人は以前市役所で働いていましたが、今は先生をしています",
+     "target_text": "my friend used to work for the council but now she works as a teacher",
+     "word_count": 69,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "65558adf-6688-4737-b264-40f6e4423e96",
+     "target1_audio_id": "74ea4fc8-280b-4729-b4f4-4ebb9d60555d",
+     "target2_audio_id": "83f8fd31-81e0-42e8-a9ea-955c4fde4f88",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 4008,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": "my",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "市役所",
+       "legoId": "S0198L02",
+       "target": " the council",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": " she",
+       "isGhost": false
+      },
+      {
+       "known": "働いています",
+       "legoId": "S0197L02",
+       "target": " works",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "教師",
+       "legoId": "S0197L03",
+       "target": " a teacher",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 20,
+     "known_text": "以前そこで働いていた人を知っていますか？",
+     "target_text": "do you know someone who used to work there?",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2b1faa79-0fc5-4a72-b6d9-27c1db48a751",
+     "target1_audio_id": "7ae66c95-2e3f-47bf-8a3a-a86e8fc97c76",
+     "target2_audio_id": "074839cf-480f-4058-8bb4-88f49212c190",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "do",
+       "isGhost": true
+      },
+      {
+       "known": "わかる",
+       "legoId": "S0049L02",
+       "target": " you know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " someone",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " who",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "そこに",
+       "legoId": "S0157L02",
+       "target": " there",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 21,
+     "known_text": "以前何が起こるか知っていましたが、今はよく分かりません",
+     "target_text": "I used to know what was going to happen but now I'm not sure",
+     "word_count": 60,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "78de8afb-96ab-459b-9391-3ace2e9a64c2",
+     "target1_audio_id": "ddc804bc-3e5a-4e2b-b776-fb1bec981ac9",
+     "target2_audio_id": "b88541b8-879e-4dd0-adad-571ac6e3766c",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " going",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " happen",
+       "isGhost": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "確信している",
+       "legoId": "S0063L01",
+       "target": " sure",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "彼は以前毎日オフィスで働いていましたが、今は先生をしています",
+     "target_text": "he used to work in an office but now he works as a teacher",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fb272b54-5c35-41bf-a701-b13f43f5e1e8",
+     "target1_audio_id": "d8fee4b2-9a8f-4480-8122-686bda894ba6",
+     "target2_audio_id": "ed93d0fc-6149-40f5-acdd-4d0a96006687",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " an",
+       "isGhost": true
+      },
+      {
+       "known": "オフィス",
+       "legoId": "S0184L01",
+       "target": " office",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "働いています",
+       "legoId": "S0197L02",
+       "target": " works",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "教師",
+       "legoId": "S0197L03",
+       "target": " a teacher",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 23,
+     "known_text": "以前はそのことをよく知っていましたが、今は思い出せません",
+     "target_text": "I used to know all about that but now I can't remember",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3bc3ef2e-49e7-49ea-8d6c-4234d4d94833",
+     "target1_audio_id": "f7ba9864-0c72-4aa4-a31b-e84735d7c8d4",
+     "target2_audio_id": "cdbd2dee-3005-45b6-a7e7-a82b75ea5f9b",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " all",
+       "isGhost": true
+      },
+      {
+       "known": "それについて",
+       "legoId": "S0162L02",
+       "target": " about that",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0199L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 199,
+     "lego_index": 1,
+     "position": 24,
+     "known_text": "以前市役所で働いていたと聞きましたが、本当ですか？",
+     "target_text": "I heard that you used to work for the council is that true?",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:50.641Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:45:50.744527+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0c5fc52c-6717-4e70-acbf-424a606c9af2",
+     "target1_audio_id": "aac9ced0-93e5-48fd-9962-f63cc3178434",
+     "target2_audio_id": "d2fb7296-2205-4365-b790-89f0f50e030a",
+     "qa_checked": "2026-02-17T12:28:01.859+00:00",
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3576,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いた",
+       "legoId": "S0196L01",
+       "target": " heard",
+       "isGhost": false
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "以前〜していた",
+       "legoId": "S0199L01",
+       "target": " used to",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "市役所",
+       "legoId": "S0198L02",
+       "target": " the council",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "本当",
+       "legoId": "S0165L01",
+       "target": " true",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

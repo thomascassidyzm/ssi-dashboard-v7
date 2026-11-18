@@ -1,0 +1,2287 @@
+{
+ "seed": 55,
+ "seed_pair": {
+  "known": "හොඳට නිදාගත්තේ නෑ නම් අවදි වෙන්න ආසාවෙන්නේ නෑ.",
+  "target": "I don't enjoy waking up when I didn't sleep very well."
+ },
+ "legos": {
+  "S0055L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0055L01",
+    "type": "M",
+    "known_text": "අවදි වෙන්න",
+    "target_text": "waking up",
+    "components": [
+     {
+      "known": "අවදි",
+      "target": "waking"
+     },
+     {
+      "known": "වෙන්න",
+      "target": "up"
+     }
+    ],
+    "seed_number": 55
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0055L01C01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "අවදි",
+     "target_text": "waking",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-08-06T15:50:57.103012+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a5e86d3a-490f-494b-b153-c6eb5a5a8774",
+     "target1_audio_id": "afba5705-ccb8-4f87-9c51-18dd549fea13",
+     "target2_audio_id": "33bddfc5-bb01-4ec0-8857-67718475b9ce",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "cee04911-255c-4df3-bd99-532151dd2dfe",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "waking",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01C02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "වෙන්න",
+     "target_text": "up",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T16:45:56.129858+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a32c9986-f898-4b20-ae51-21b50837098b",
+     "target1_audio_id": "73bcfaba-0838-4b6b-826c-4ad40b77986a",
+     "target2_audio_id": "4ccc0546-d7d1-4d39-b81b-e6a238d1b8a1",
+     "qa_checked": null,
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "dc74aa0e-6aaf-4526-b918-089d0075584a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "up",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8b00062f-83ad-4cbe-95ac-6b1d046e5ca6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "අවදි වෙන්න",
+     "target_text": "waking up",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:27.669438+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "47805661-9088-4101-aa8d-75940064e22c",
+     "target1_audio_id": "a62c3650-e1fa-4914-b594-7f3e3de93be2",
+     "target2_audio_id": "ddff15f1-4358-4dd7-9f1d-7cb0f413f824",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 792,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": "waking up",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "අවදි වෙන්න ආසාවෙනවා",
+     "target_text": "enjoy waking up",
+     "word_count": 15,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:27.734004+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8ed73826-f4b3-4cf3-a3e9-da15bece5538",
+     "target1_audio_id": "da8daf0d-4ece-4ce4-bc17-f525c9e79212",
+     "target2_audio_id": "586bf6d9-96f2-4bae-a6f9-2be16c413b70",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": "enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "අවදි වෙන්න ඉක්මනට",
+     "target_text": "waking up quickly",
+     "word_count": 17,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:27.783296+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f1f47fcf-cddd-4b82-9bac-5b3ec8f1c14e",
+     "target1_audio_id": "435fd301-bcf2-4a13-98ad-723bcfed841b",
+     "target2_audio_id": "3135118b-6a13-45b8-9632-550c38a1f22d",
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 1416,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": "waking up",
+       "isGhost": false
+      },
+      {
+       "known": "ඉක්මනට",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01B04",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "අවදි වෙන්න ආසාවෙන්නේ නෑ",
+     "target_text": "don't enjoy waking up",
+     "word_count": 21,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:27.832004+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "fbfb787d-4399-46e6-a22b-c0558d85888a",
+     "target1_audio_id": "c1f206c6-d215-479d-9901-564b84833878",
+     "target2_audio_id": "0d6bb69d-85ad-4838-b39b-2dca7e393dbf",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "don't",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "මම අවදි වෙන්න ආසාවෙනවා අද උදේ",
+     "target_text": "I enjoy waking up this morning",
+     "word_count": 30,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.406Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:27.983735+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b913355b-1337-44fd-bbc8-972d2df2a712",
+     "target1_audio_id": "378f8cbb-2833-4c31-9353-eb3f9b0737ee",
+     "target2_audio_id": "14583e76-97bf-4cd4-9faa-34900cc1e4e2",
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "අද උදේ",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "මම අවදි වෙන්න ආසාවෙන්නේ නෑ",
+     "target_text": "I don't enjoy waking up",
+     "word_count": 23,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.406Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.028059+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "92abebfd-2762-41fb-b566-cb4f3519949a",
+     "target1_audio_id": "4e13d9ca-426e-4f40-ae63-fdda937b5712",
+     "target2_audio_id": "b252d596-1bc3-4ba5-9c56-a1fe0924689e",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "මම හිතනවා කියලා අවදි වෙන්න ඒක හොඳ දෙයක්",
+     "target_text": "I think that waking up is a good thing",
+     "word_count": 38,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.406Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.095205+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "27fa7cdf-20ba-4b0d-8415-b409b37381f8",
+     "target1_audio_id": "043c12f2-7e51-4a56-8d67-ef897edfcdd5",
+     "target2_audio_id": "24972b63-a2b7-43ab-9bd9-412b82f5f639",
+     "qa_checked": null,
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම හිතනවා",
+       "legoId": "S0047L01",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " thing",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "මම ඉක්මනට අවදි වෙන්න ආසාවෙන්නේ නෑ",
+     "target_text": "I don't enjoy waking up quickly",
+     "word_count": 26,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.406Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-11-18T13:01:05.679551+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මට ඕනේ නෑ",
+       "legoId": "S0019L01",
+       "target": "I don't want",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "දැන්",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "62f3dae2-f70d-4362-92b0-a609685fa703",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L01U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "මම අවදි වෙන්න ආසාවෙනවා ඉක්මනට",
+     "target_text": "I enjoy waking up quickly",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.406Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.243034+00:00",
+     "created_at": "2026-03-20T12:41:17.512851+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "445a5643-4a48-45d4-92c6-daebc1b3e578",
+     "target1_audio_id": "269d30f6-9312-485a-b925-ad2765f56db5",
+     "target2_audio_id": "cf657194-0921-4b9e-83f2-3a60fff38b44",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2064,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "ඉක්මනට",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0055L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0055L02",
+    "type": "A",
+    "known_text": "නම්",
+    "target_text": "when",
+    "components": [],
+    "seed_number": 55
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0055L02B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "නම් මම ඉගෙනගන්නවා",
+     "target_text": "when I'm learning",
+     "word_count": 17,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.293061+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ee737457-453e-41ff-af91-03bd22c3e05d",
+     "target1_audio_id": "efaada9e-17cd-43f9-b0fb-e8d5962e53e3",
+     "target2_audio_id": "93e78f8d-6174-4ee6-ae4a-5e66df7fd134",
+     "qa_checked": null,
+     "target1_duration_ms": 1128,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": "when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " learning",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "නම් ඔයා එක්ක",
+     "target_text": "when with you",
+     "word_count": 13,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:28.345938+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3c98850e-5f86-465b-b8aa-38cfe7229309",
+     "target1_audio_id": "911689bc-289a-4b33-a92d-12c790b0b346",
+     "target2_audio_id": "7dd62591-48ef-47ed-a776-e97fe277c8e9",
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": "when",
+       "isGhost": false
+      },
+      {
+       "known": "ඔයා එක්ක",
+       "legoId": "S0001L04",
+       "target": " with you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "අවදි වෙන්න නම්",
+     "target_text": "waking up when",
+     "word_count": 14,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:28.393508+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3ba454b7-09ba-4d76-b2c7-b780c107ab37",
+     "target1_audio_id": "734d925c-b1a1-4dce-b056-df7c20223b8f",
+     "target2_audio_id": "70796a0c-5f31-4463-a66e-61cfbf5c0bb2",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": "waking up",
+       "isGhost": false
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "මම අවදි වෙන්න ආසාවෙන්නේ නෑ නම් වෙහෙස දැනෙනවා",
+     "target_text": "I don't enjoy waking up when I feel tired",
+     "word_count": 41,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.663Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.441295+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2d1da59b-05bc-4f2a-bf78-7184e6733e75",
+     "target1_audio_id": "7df0ff2c-1cec-46b8-ba1d-fc119e1bfd1a",
+     "target2_audio_id": "cd3d9e81-31e8-48fa-977a-7df379ead5bb",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "මට කතා කරන්න ඕනේ නම් ඔයා එක්ක ඉන්නවා",
+     "target_text": "I want to speak when with you",
+     "word_count": 29,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.663Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.48936+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7221d5c2-c751-461a-a595-6609af70aec4",
+     "target1_audio_id": "105d8082-a564-4f34-93c3-576e97254078",
+     "target2_audio_id": "22845328-852b-4aa0-936e-5e3f903a599f",
+     "qa_checked": null,
+     "target1_duration_ms": 1776,
+     "target2_duration_ms": 1752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මට ඕනේ",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "කතා කරන්න",
+       "legoId": "S0001L03",
+       "target": " to speak",
+       "isGhost": false
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "ඔයා එක්ක",
+       "legoId": "S0001L04",
+       "target": " with you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "මම ආසාවෙනවා ඉංග්‍රීසි කතා කරන්න නම් මගේ යාළුවන් එක්ක ඉන්නවා",
+     "target_text": "I enjoy speaking English when with my friends",
+     "word_count": 45,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.663Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-07-31T09:06:28.547501+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5f512520-1879-4377-a8e5-7bd10bc193ae",
+     "target1_audio_id": "31a7501e-62dc-4fa8-923e-3a718699c845",
+     "target2_audio_id": "2c9b485e-d317-450f-ad10-cc744db2aa9d",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "කතා කිරීම",
+       "legoId": "S0005L01",
+       "target": " speaking",
+       "isGhost": false
+      },
+      {
+       "known": "ඉංග්‍රීසි",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "මගේ යාළුවන්",
+       "legoId": "S0051L03",
+       "target": " my friends",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "මට හොඳ දැනෙනවා නම් ඉංග්‍රීසි කතා කරනවා",
+     "target_text": "I feel good when speaking English",
+     "word_count": 33,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.663Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-07-31T09:06:28.595603+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4bacd397-6570-49a8-8272-cd7275b724f6",
+     "target1_audio_id": "c3449754-c4b5-43f2-8bae-7aacaae9f0ca",
+     "target2_audio_id": "ae4ae144-420b-495a-aa68-0efbc65503c3",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "කතා කිරීම",
+       "legoId": "S0005L01",
+       "target": " speaking",
+       "isGhost": false
+      },
+      {
+       "known": "ඉංග්‍රීසි",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L02U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "මම ආසාවෙනවා නම් රසවත් දේවල් කරන",
+     "target_text": "I enjoy it when doing interesting things",
+     "word_count": 40,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.663Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:28.718549+00:00",
+     "created_at": "2026-03-20T12:41:17.769796+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9a6a5409-1ada-4bd1-b522-f232b5785fb0",
+     "target1_audio_id": "7c479344-6a3b-416c-8c54-ee70828898fe",
+     "target2_audio_id": "03d2c274-10a5-4d35-be9b-fab0ce60e834",
+     "qa_checked": null,
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "රසවත් දේවල් කරන්නෙ",
+       "legoId": "S0051L02",
+       "target": " doing interesting things",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0055L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0055L03",
+    "type": "M",
+    "known_text": "නිදාගත්තේ නෑ",
+    "target_text": "didn't sleep",
+    "components": [
+     {
+      "known": "නිදාගත්තේ",
+      "target": "sleep"
+     },
+     {
+      "known": "නෑ",
+      "target": "didn't"
+     }
+    ],
+    "seed_number": 55
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0055L03C01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "නිදාගත්තේ",
+     "target_text": "sleep",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T08:33:44.562721+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3afe91e0-fb49-4581-9023-c334b1c29b18",
+     "target1_audio_id": "9e554d1d-fe06-4306-9334-88ba888e94e3",
+     "target2_audio_id": "5c2de69c-c133-4326-8b4f-bce16290a841",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "dafba45e-32aa-481a-9e6c-f53a303f16e3",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "sleep",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8c75afa5-c886-4082-a2bd-032fe7648ec0",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03C02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "නෑ",
+     "target_text": "didn't",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T23:18:40.255215+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "96727004-5cf7-4258-8ea3-9d1b755d515b",
+     "target1_audio_id": "0747792b-6036-4bc1-9add-243aab8a8eb9",
+     "target2_audio_id": "39eec7ab-e7bc-466e-858d-4bd093a7e955",
+     "qa_checked": null,
+     "target1_duration_ms": 840,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "ebbb0fd0-e846-486d-a72d-799a18b8b02a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "didn't",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8c75afa5-c886-4082-a2bd-032fe7648ec0",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "නිදාගත්තේ නෑ",
+     "target_text": "didn't sleep",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:28.767744+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "64250025-7258-442e-9469-df8cb5a90c81",
+     "target1_audio_id": "10c11d84-27bf-45c5-8316-1ff96d9429d7",
+     "target2_audio_id": "d733d3b8-1933-4fe7-a14a-811e71297470",
+     "qa_checked": null,
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 1176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": "didn't sleep",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "මම නිදාගත්තේ නෑ ඊයේ රෑ",
+     "target_text": "didn't sleep last night",
+     "word_count": 23,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:28.820544+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c3f4b200-d4a3-4dfd-85cb-4e6139bdb457",
+     "target1_audio_id": "1c49b57d-1298-4040-bea3-dd10243fe524",
+     "target2_audio_id": "64689918-1525-4fb7-ae88-a6fed5b36f4a",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": "didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "මම නිදාගත්තේ නෑ හොඳට",
+     "target_text": "didn't sleep well",
+     "word_count": 17,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:28.880231+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f375a667-398e-43db-beac-c081e9f8cedb",
+     "target1_audio_id": "85bb0dbe-23b6-4235-820d-f592213675e3",
+     "target2_audio_id": "1d65fa07-22b3-4591-abd0-a676098f072f",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": "didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03B04",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "නිදාගත්තේ නෑ හොඳට",
+     "target_text": "didn't sleep very well",
+     "word_count": 22,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:28.931761+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "090a3152-9f3c-40b2-8672-86508aa8f422",
+     "target1_audio_id": "da1a909c-e4e7-4a96-9b19-e8757bfd6201",
+     "target2_audio_id": "23132caa-2b87-4bfb-b92c-a42d32edee9f",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": "didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ගොඩක් හොඳට",
+       "legoId": "S0013L01",
+       "target": " very well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "මම නිදාගත්තේ නෑ ඊයේ රෑ හොඳට",
+     "target_text": "I didn't sleep very well last night",
+     "word_count": 35,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.079766+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c0cef402-1829-4f8e-8315-cbf00f27e583",
+     "target1_audio_id": "3f1986ef-08d9-4523-a5db-a95155327d5d",
+     "target2_audio_id": "0bb56879-2f05-4058-94a7-e932680d5c51",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ගොඩක් හොඳට",
+       "legoId": "S0013L01",
+       "target": " very well",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "මම අවදි වෙන්න ආසාවෙන්නේ නෑ නම් නිදාගත්තේ නෑ හොඳට",
+     "target_text": "I don't enjoy waking up when I didn't sleep very well",
+     "word_count": 53,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.13212+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "154b046b-a8fa-4ccd-a180-00a2e9910a63",
+     "target1_audio_id": "4c6d9484-efb8-4492-bf1f-65e64e624af0",
+     "target2_audio_id": "917124b4-d9f6-47b3-a1e9-3d80261176e3",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3792,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "ආසාවෙනවා",
+       "legoId": "S0051L01",
+       "target": " enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "අවදි වෙන්න",
+       "legoId": "S0055L01",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ගොඩක් හොඳට",
+       "legoId": "S0013L01",
+       "target": " very well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "මම නිදාගත්තේ නෑ ඒත් මට හොඳයි දැනෙනවා",
+     "target_text": "I didn't sleep but I feel okay",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.246363+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1b540c3c-5ac4-4694-adbe-4cd01b4db9c3",
+     "target1_audio_id": "5d772724-858a-44f7-9deb-c12bcdee100a",
+     "target2_audio_id": "f9337fba-29d5-4009-89f6-e9e4b32d4962",
+     "qa_checked": null,
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ඒත්",
+       "legoId": "S0019L04",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "මම නිදාගත්තේ නෑ ඒත් මට කමක් නෑ",
+     "target_text": "I didn't sleep but I don't care",
+     "word_count": 31,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.295784+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ba58ef71-1a23-4982-aae6-24fdec310921",
+     "target1_audio_id": "ecfcbc6e-8189-40aa-91fb-33838c4253e2",
+     "target2_audio_id": "35e1e9d9-8fc0-4d72-9ffa-c655b72483f3",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ඒත්",
+       "legoId": "S0019L04",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "කමක්",
+       "legoId": "S0048L01",
+       "target": " care",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "මම නිදාගත්තේ නෑ ඊයේ",
+     "target_text": "I didn't sleep yesterday",
+     "word_count": 24,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.341435+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e423fa7f-af9a-4846-bd8d-b1badc267dbe",
+     "target1_audio_id": "1db64dc3-a224-40db-8370-17326b70de75",
+     "target2_audio_id": "f37ddbbd-8664-47ae-808d-7b5efbb537e6",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "මම නිදාගත්තේ නෑ ඒත් මට වෙහෙස දැනෙන්න ගන්නවා",
+     "target_text": "I didn't sleep but I'm starting to feel tired",
+     "word_count": 45,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.394237+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "88a2022e-f7e2-4d13-ae54-8d9f7d85850e",
+     "target1_audio_id": "adbd5475-f738-4ba1-8151-61722dc8e07a",
+     "target2_audio_id": "27db48fd-6252-4d81-b417-8bba876faf63",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "ඒත්",
+       "legoId": "S0019L04",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "මම නිදාගත්තේ නෑ පසු සතිය",
+     "target_text": "I didn't sleep last week",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-29T02:33:25.629841+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b0876b05-452e-47b9-824b-7c87b02559cf",
+     "target1_audio_id": "91115f69-c86f-436f-bc63-f79b80de1ee8",
+     "target2_audio_id": "c3146ec0-0b22-4309-9e9e-a06954fd730f",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " last",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " week",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0055L03U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 55,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "මම නිදාගත්තේ නෑ නම් මට වෙහෙස දැනෙනවා",
+     "target_text": "when I didn't sleep I feel tired",
+     "word_count": 32,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:41:17.826Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:29.493363+00:00",
+     "created_at": "2026-03-20T12:41:17.941112+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "23292064-0645-4dc4-9435-8a6824128453",
+     "target1_audio_id": "5f8b9d2f-9977-458c-88c8-c63aaa73e3bc",
+     "target2_audio_id": "8e454da8-0f31-447e-a760-515a81fbdbd9",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "නම්",
+       "legoId": "S0055L02",
+       "target": "when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "නිදාගත්තේ නෑ",
+       "legoId": "S0055L03",
+       "target": " didn't sleep",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

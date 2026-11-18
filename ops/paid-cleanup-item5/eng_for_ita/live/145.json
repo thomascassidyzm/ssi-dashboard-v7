@@ -1,0 +1,651 @@
+{
+ "seed": 145,
+ "seed_pair": {
+  "known": "Perché non sei più felice?",
+  "target": "Why are you not happy any more?"
+ },
+ "legos": {
+  "S0145L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0145L01",
+    "type": "M",
+    "known_text": "non sei più felice",
+    "target_text": "not happy any more",
+    "components": [],
+    "seed_number": 145
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ita:S0145L01B01",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "non sei più felice",
+     "target_text": "not happy any more",
+     "word_count": 18,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-12T10:49:58.342131+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "de7b56a9-fc28-41a4-8975-531e31da9130",
+     "target1_audio_id": "860b8cf2-9648-4b4d-9319-835b21f4e95a",
+     "target2_audio_id": "6e5f0d3e-3480-4b6d-bc3f-72b199e24cd1",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": "not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a1e3ec0b-4f30-41ac-8f12-e3159dee565d",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01B02",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "perché non sei più felice?",
+     "target_text": "why are you not happy any more?",
+     "word_count": 31,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:29:47.938553+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f779a98c-3599-4d97-b660-d010826ea5e1",
+     "target1_audio_id": "ed0278c7-7d08-4b7d-9ea4-4be806934dc5",
+     "target2_audio_id": "32755c4d-ad2c-478a-a29d-14939d9cd81d",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "perché",
+       "legoId": "S0021L01",
+       "target": "why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01B03",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "non sei più felice?",
+     "target_text": "not happy any more",
+     "word_count": 27,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T10:49:58.263722+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "de7b56a9-fc28-41a4-8975-531e31da9130",
+     "target1_audio_id": "860b8cf2-9648-4b4d-9319-835b21f4e95a",
+     "target2_audio_id": "6e5f0d3e-3480-4b6d-bc3f-72b199e24cd1",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a1e3ec0b-4f30-41ac-8f12-e3159dee565d",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01U01",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "mi dispiace non riuscire a vedere perché non sei più felice",
+     "target_text": "I'm sorry that I can't see why you're not happy any more",
+     "word_count": 57,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:11:51.246Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-11-18T14:15:51.406694+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "57a8a9b8-499e-48d1-98fd-cb49a20763d4",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 4272,
+     "target2_duration_ms": 4200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "mi dispiace",
+       "legoId": "S0139L01",
+       "target": "I'm sorry",
+       "isGhost": false
+      },
+      {
+       "known": "non riuscire a vedere",
+       "legoId": "S0140L01",
+       "target": " that I can't see",
+       "isGhost": false
+      },
+      {
+       "known": "perché",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "dc301ce0-678f-485d-bcac-69bfb04b7b29",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01U02",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "non sei più felice perché mi sono svegliato prima del voluto?",
+     "target_text": "are you not happy any more because I woke up earlier than I wanted to?",
+     "word_count": 70,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:11:51.246Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:36:27.792854+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c4f6958e-55a6-4637-b53b-baea76ea73e7",
+     "target1_audio_id": "411a193b-e335-4fd6-a07b-1a5a0838a403",
+     "target2_audio_id": "eaaa9356-d1be-465d-901e-6cbe4b13a3b0",
+     "qa_checked": null,
+     "target1_duration_ms": 4920,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " because",
+       "isGhost": true
+      },
+      {
+       "known": "mi sono svegliato",
+       "legoId": "S0144L01",
+       "target": " I woke up",
+       "isGhost": false
+      },
+      {
+       "known": "prima del voluto",
+       "legoId": "S0144L02",
+       "target": " earlier than I wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01U03",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "certo che puoi chiederle perché non sei più felice",
+     "target_text": "of course you can ask her why are you not happy any more",
+     "word_count": 56,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:11:51.246Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:36:17.985095+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "adb47ced-ee02-4a6b-9ccd-6feb4353cf24",
+     "target1_audio_id": "fbbacd1d-2357-4c78-9116-697a2e9fdcf3",
+     "target2_audio_id": "cf4c6998-4763-43ee-b7cb-b137070032d4",
+     "qa_checked": null,
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 4248,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "certo che puoi chiederle",
+       "legoId": "S0136L01",
+       "target": "of course you can ask her",
+       "isGhost": false
+      },
+      {
+       "known": "perché",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01U04",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "non so perché non sei più felice e mi dispiace",
+     "target_text": "I don't know why you're not happy any more and I'm sorry",
+     "word_count": 57,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:11:51.246Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-11-18T14:15:51.406694+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "28f2de16-fa68-4e4f-9872-358f66eb6194",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 4128,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "non so",
+       "legoId": "S0060L01",
+       "target": "I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "perché",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "e",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "mi dispiace",
+       "legoId": "S0139L01",
+       "target": " I'm sorry",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "dc301ce0-678f-485d-bcac-69bfb04b7b29",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0145L01U05",
+     "course_code": "eng_for_ita",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "non sei più felice ma va tutto bene e nessun problema?",
+     "target_text": "are you not happy any more but everything is okay and no problem?",
+     "word_count": 64,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:11:51.246Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:36:04.579776+00:00",
+     "created_at": "2026-02-25T02:11:51.347017+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2ce8f4db-5f60-43a1-b281-50a284ab62a5",
+     "target1_audio_id": "c2629ccc-2c99-460a-ac90-f68e127a1356",
+     "target2_audio_id": "347e8c2a-9edc-43d7-8149-8187afc68dc5",
+     "qa_checked": null,
+     "target1_duration_ms": 4776,
+     "target2_duration_ms": 4704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "non sei più felice",
+       "legoId": "S0145L01",
+       "target": " not happy any more",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ma",
+       "legoId": "S0019L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "va tutto bene",
+       "legoId": "S0141L02",
+       "target": " everything is okay",
+       "isGhost": false
+      },
+      {
+       "known": "e",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "nessun problema",
+       "legoId": "S0141L01",
+       "target": " no problem",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

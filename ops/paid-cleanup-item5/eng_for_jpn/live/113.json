@@ -1,0 +1,1050 @@
+{
+ "seed": 113,
+ "seed_pair": {
+  "known": "なぜあなたが言ったことを思い出せないのですか？",
+  "target": "Why can't I remember what you said?"
+ },
+ "legos": {
+  "S0113L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0113L01",
+    "type": "M",
+    "known_text": "なぜあなたが言ったことを思い出せないのですか",
+    "target_text": "why can't I remember what you said",
+    "components": [
+     {
+      "known": "なぜ",
+      "target": "why"
+     },
+     {
+      "known": "思い出せないのですか",
+      "target": "can't I remember"
+     },
+     {
+      "known": "あなたが言ったこと",
+      "target": "what you said"
+     }
+    ],
+    "seed_number": 113
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0113L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "なぜ",
+     "target_text": "why",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:47:21.286381+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cbed5402-9157-4868-ad72-36f4b50c154e",
+     "target1_audio_id": "19b9a51f-473f-4bba-970a-ccd37a567269",
+     "target2_audio_id": "9ff1ea37-64ce-4784-87ee-814e5b7724e9",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 792,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜ",
+       "legoId": "S0099L03",
+       "target": "why",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "思い出せないのですか",
+     "target_text": "can't I remember?",
+     "word_count": 16,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7acc6a45-9f79-4a79-b26c-79763bf50058",
+     "target1_audio_id": "1638ae66-658e-4dfd-8f5d-0e6c643aced5",
+     "target2_audio_id": "121a10ea-bb7c-4f7e-81ab-97cc21311a70",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1248,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "'t",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " remember?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01C03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "あなたが言ったこと",
+     "target_text": "what you said",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:48:29.991756+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6163367c-9600-4ede-9e28-2ac4465a3746",
+     "target1_audio_id": "b645af00-7670-412e-95c0-8dead3b44dfa",
+     "target2_audio_id": "110383d6-054b-47a6-ab04-95059f66d6df",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言ったこと",
+       "legoId": "S0078L01",
+       "target": "what you said",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fedd5fb7-b2b1-4b94-87b0-a01ed813328b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "なぜあなたが言ったことを思い出せないのですか",
+     "target_text": "why can't I remember what you said?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:12.528262+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5475e42d-0c10-404f-9f7c-4c40bc2537f2",
+     "target1_audio_id": "96cb3cad-b2ee-4a30-ab98-e6703f4c60ec",
+     "target2_audio_id": "2edfe1f1-327f-4a6b-beb3-ef005a2e096f",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": "why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "なぜあなたが言ったことを思い出せないのですか",
+     "target_text": "why can't I remember what you said?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:12.528262+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5475e42d-0c10-404f-9f7c-4c40bc2537f2",
+     "target1_audio_id": "96cb3cad-b2ee-4a30-ab98-e6703f4c60ec",
+     "target2_audio_id": "2edfe1f1-327f-4a6b-beb3-ef005a2e096f",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": "why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "あなたが言ったことがとても面白かったのに、なぜ思い出せないのですか",
+     "target_text": "that was very interesting so why can't I remember what you said?",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d90e57d6-c9ef-486d-a1d8-2d438d5fd37a",
+     "target1_audio_id": "5470d69f-ad98-4edb-9b9b-15a0df7d1f38",
+     "target2_audio_id": "fc32b115-dce1-430a-b2ab-2d639bd2c5ce",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 4224,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "面白い",
+       "legoId": "S0051L03",
+       "target": " interesting",
+       "isGhost": false
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": " why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "なぜあなたが言ったことを思い出せないのか、不思議です",
+     "target_text": "why can't I remember what you said when it was so interesting?",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.522Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "cd244e23-367c-47b8-b81e-595a4a2bf924",
+     "target1_audio_id": "4fec28b9-9754-4dcb-a5f0-a75c5545dc07",
+     "target2_audio_id": "17b0ca4b-e89a-422d-bfdc-8ec8559efc72",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 3936,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": "why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "それだった",
+       "legoId": "S0070L03",
+       "target": " it was",
+       "isGhost": false
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "面白い",
+       "legoId": "S0051L03",
+       "target": " interesting",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "あなたが言ったことを思い出せないのはなぜですか",
+     "target_text": "why can't I remember what you said just now?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6eca74cf-193d-43c0-96aa-b114ca0b81d1",
+     "target1_audio_id": "a16547ca-89dd-455c-a0d6-f0f5a1a998db",
+     "target2_audio_id": "7af81516-6df9-4b9a-9760-9a942ab8e72a",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 2496,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": "why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ただ",
+       "legoId": "S0106L02",
+       "target": " just",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "あなたが言ったことがとても面白かったのに、なぜ思い出せないのですか",
+     "target_text": "that was very interesting so why can't I remember what you said?",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d90e57d6-c9ef-486d-a1d8-2d438d5fd37a",
+     "target1_audio_id": "5470d69f-ad98-4edb-9b9b-15a0df7d1f38",
+     "target2_audio_id": "fc32b115-dce1-430a-b2ab-2d639bd2c5ce",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 4224,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "面白い",
+       "legoId": "S0051L03",
+       "target": " interesting",
+       "isGhost": false
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": " why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "あなたが言ったことを思い出そうとしていますが、なぜ思い出せないのでしょう",
+     "target_text": "I'm trying to remember but why can't I remember what you said",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a2074e02-72f8-4d0d-8341-1a8c182c846f",
+     "target1_audio_id": "0b1a515d-6b23-4a04-b570-f5d8c60e93cb",
+     "target2_audio_id": "b0224c7f-dd7e-4fa3-ac2f-0f647659175d",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "思い出そうとしている",
+       "legoId": "S0006L03",
+       "target": "I'm trying to remember",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": " why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "あなたが昨日言ったことを思い出せないのはなぜでしょう",
+     "target_text": "why can't I remember what you said yesterday?",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T18:40:26.407859+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4fddf890-002d-4459-a47c-c81db48a89a8",
+     "target1_audio_id": "75b677ae-d553-489e-b6fd-6c4d6c465834",
+     "target2_audio_id": "77dee0e4-86d0-4880-9aed-97abc95d9ef4",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": "why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "昨日",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 21,
+     "known_text": "あなたが言ったことを思い出したいのに、なぜ思い出せないのでしょう",
+     "target_text": "I want to remember but why can't I remember what you said",
+     "word_count": 57,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "cee437d0-457d-4186-b11c-1108078e30a4",
+     "target1_audio_id": "434ce802-72fe-467c-a548-16fe614825e6",
+     "target2_audio_id": "c95de304-60c3-4d9b-a3d7-b2c8831d64d7",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 4200,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "思い出す",
+       "legoId": "S0006L02",
+       "target": " to remember",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": " why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "なぜあなたが言ったことを思い出せないのか、考えてみると難しいですね",
+     "target_text": "why can't I remember what you said when I think about it carefully?",
+     "word_count": 66,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4abcd1b7-bd7e-4a5e-be9b-70942aa30f8d",
+     "target1_audio_id": "5d55ac7b-a2b7-4b64-85f3-d3df75481d10",
+     "target2_audio_id": "ac2693f3-9f1a-4329-99de-3e03d2548684",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 4104,
+     "target2_duration_ms": 3840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": "why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "慎重に",
+       "legoId": "S0037L03",
+       "target": " carefully",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0113L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 113,
+     "lego_index": 1,
+     "position": 25,
+     "known_text": "なぜあなたが言ったことを思い出せないのかについて考えています",
+     "target_text": "I'm thinking about why can't I remember what you said",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:48:31.523Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:48:31.624053+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "81bc13ae-3792-43fd-8240-3a5265a262b8",
+     "target1_audio_id": "7f239ecb-ef9e-4a38-bb53-38e42f7c2741",
+     "target2_audio_id": "a94a5d1c-5193-47f6-9f6c-396fd8fdeb5f",
+     "qa_checked": "2026-02-17T12:23:36.309+00:00",
+     "target1_duration_ms": 3360,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " thinking",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "なぜあなたが言ったことを思い出せないのですか",
+       "legoId": "S0113L01",
+       "target": " why can't I remember what you said",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "We didn't hope to wake up in the middle of the night."
+   },
+   "expect": {
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "we didn't hope to wake up",
+    "components": [
+     {
+      "known": "لم نكن",
+      "target": "we didn't"
+     },
+     {
+      "known": "نأمل في الاستيقاظ",
+      "target": "hope to wake up"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01C02",
+   "set": {
+    "target_text": "hope to wake up"
+   },
+   "expect": {
+    "target_text": "hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01B01",
+   "set": {
+    "target_text": "we didn't hope to wake up"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01B02",
+   "set": {
+    "target_text": "we didn't hope to wake up so quickly"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake so quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01B03",
+   "set": {
+    "target_text": "we didn't hope to wake up now"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01U01",
+   "set": {
+    "target_text": "we didn't hope to wake up this morning"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01U02",
+   "set": {
+    "target_text": "we didn't hope to wake up so quickly"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake so quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01U03",
+   "set": {
+    "target_text": "we didn't hope to wake up before six o'clock"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake before six o'clock"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01U04",
+   "set": {
+    "target_text": "I think that we didn't hope to wake up yet"
+   },
+   "expect": {
+    "target_text": "I think that we didn't hope to wake yet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L01U05",
+   "set": {
+    "target_text": "we didn't hope to wake up soon"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L02B02",
+   "set": {
+    "target_text": "hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ara:S0108L02B03",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  }
+ ]
+}
