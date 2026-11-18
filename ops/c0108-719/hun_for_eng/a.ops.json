@@ -1,0 +1,27 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nem számítottunk arra, hogy az éjszaka közepén felébredünk."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nem reméltük, hogy az éjszaka közepén felébredünk."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "we wake up"
+   },
+   "expect": {
+    "known_text": "we",
+    "target_text": "felébredünk"
+   }
+  }
+ ]
+}

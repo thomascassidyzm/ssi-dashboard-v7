@@ -1,0 +1,931 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ccaafd56-56ff-441b-8a88-ad19f561c152",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "إحنا ماكناش نتمنى نصحى في نص الليل.",
+    "target_text_roman": "ihna makunaash nitimannaa nishaḥḥi fi nuss il-leel.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8205066f-5ff6-440e-8eeb-7e95c6db44d4",
+    "target2_audio_id": "acd95f4f-970a-45bf-a906-f89d40dac964"
+   },
+   "after": {
+    "id": "ccaafd56-56ff-441b-8a88-ad19f561c152",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "إحنا ماكناش متوقعين نصحى في نص الليل.",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nisha fi nuss il-leel.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "700629c2-0ad1-4a6b-8b41-b5087f8346cb",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "نتمنى",
+    "known_text": "we hope",
+    "target_text_roman": "nitmanna",
+    "components": [
+     {
+      "known": "\"we\"",
+      "target": "\"إحنا\""
+     },
+     {
+      "known": "\"hope\"",
+      "target": "\"أتمنى\""
+     }
+    ],
+    "known_audio_id": "bf0a1120-daf3-4859-953e-6c49f0123125",
+    "target1_audio_id": "62d4023e-d2ef-4cff-a351-3e6b03d06cb2",
+    "target2_audio_id": "c47e7af7-2a8d-4767-aa37-495eda353337",
+    "presentation_audio_id": "8e5810c3-6ebe-470a-adcf-d5f4cd135cde"
+   },
+   "after": {
+    "id": "700629c2-0ad1-4a6b-8b41-b5087f8346cb",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "متوقعين",
+    "known_text": "we expect",
+    "target_text_roman": "mitwaqqa'iin",
+    "components": [
+     {
+      "known": "\"we\"",
+      "target": "\"إحنا\""
+     },
+     {
+      "known": "\"expecting\"",
+      "target": "\"متوقع\""
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "\"أتمنى\"",
+    "target_text_roman": "atamanna",
+    "known_text": "\"hope\"",
+    "known_audio_id": "5997b070-760e-4b86-96f5-6f4667db8a0a",
+    "target1_audio_id": "2e79e27f-27b0-4eab-8deb-632ecdf85235",
+    "target2_audio_id": "febd5ed1-67ca-4da3-b21a-7a57d47c8e19",
+    "presentation_audio_id": "5abf0e9d-90a5-4d40-9387-f7f964fef8d7"
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "\"متوقع\"",
+    "target_text_roman": "mitwaqqa'",
+    "known_text": "\"expecting\"",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "5abf0e9d-90a5-4d40-9387-f7f964fef8d7"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ماكناش نتمنى",
+    "target_text_roman": "makuunash nitmanna",
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "c37c05e6-535e-43be-a49d-36e0c2afb353",
+    "target2_audio_id": "cbe9af72-f220-40a6-91bc-8970f73f3a1c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ماكناش متوقعين",
+    "target_text_roman": "makunnaash mitwaqqa'iin",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "نتمنى نتقابل",
+    "target_text_roman": "nitmanna nit'aabil",
+    "known_text": "we hope to meet",
+    "known_audio_id": "5434f673-beb9-4a39-97fd-a25c291b5816",
+    "target1_audio_id": "4df8cbfc-766f-47e6-a89c-5fe12e6898a0",
+    "target2_audio_id": "acd78898-49db-4fa0-8582-4eb62727e0ca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "متوقعين نتقابل",
+    "target_text_roman": "mitwaqqa'iin nit'aabil",
+    "known_text": "we expect to meet",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش نتمنى ده",
+    "target_text_roman": "ihna makunaash nitimannaa da",
+    "known_text": "we didn't hope for that",
+    "known_audio_id": "6c6e119d-16f3-4d8b-977e-5057fe4c9600",
+    "target1_audio_id": "cb465f85-2a77-4a06-9773-ecd505557807",
+    "target2_audio_id": "16f42ef7-6bbd-4c60-80d5-a6ed9e5ba2f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش متوقعين ده",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin da",
+    "known_text": "we didn't expect that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا نتمنى نتقابل بكرة",
+    "target_text_roman": "ihna nitimannaa nit'aabil bukra",
+    "known_text": "we hope to meet tomorrow",
+    "known_audio_id": "554f2b70-d96e-4b9a-8300-2374689eb6ea",
+    "target1_audio_id": "541938d2-d643-473f-a207-f78bc018660d",
+    "target2_audio_id": "0c23dcbe-710e-49df-be1c-0d8e36ef8ff7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا متوقعين نتقابل بكرة",
+    "target_text_roman": "ihna mitwaqqa'iin nit'aabil bukra",
+    "known_text": "we expect to meet tomorrow",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا نتمنى نتقابل قريب",
+    "target_text_roman": "ihna nitimannaa nit'aabil 'uriib",
+    "known_text": "we hope to meet soon",
+    "known_audio_id": "c6f88534-52e9-4008-83a7-5abd85a04ee8",
+    "target1_audio_id": "e05050b8-8a91-4285-8130-e72905bc0ac0",
+    "target2_audio_id": "5cc8ff70-6509-465b-9d2d-ee651245a41a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا متوقعين نتقابل قريب",
+    "target_text_roman": "ihna mitwaqqa'iin nit'aabil 'urayyib",
+    "known_text": "we expect to meet soon",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش نتمنى نمشي دلوقتي",
+    "target_text_roman": "ihna makunaash nitimannaa nimshi dilwa'ti",
+    "known_text": "we didn't hope to go now",
+    "known_audio_id": "4fffd545-8f0f-4a8b-ba7c-ad6ec099cd49",
+    "target1_audio_id": "648d9f1c-6dc8-4176-9f18-1977b793af95",
+    "target2_audio_id": "fdc47ea0-7770-4bb5-9cc4-87a952223c0b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش متوقعين نمشي دلوقتي",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nimshi dilwa'ti",
+    "known_text": "we didn't expect to go now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا نتمنى نقول حاجة كويسة",
+    "target_text_roman": "ihna nitmanna ni'ul haaga kuwayyisa",
+    "known_text": "we hope to say something good",
+    "known_audio_id": "251e43ac-cfce-4b8a-9eaf-0ca130c9af1a",
+    "target1_audio_id": "73fe2ca5-badd-4f48-b087-97847d2c2e55",
+    "target2_audio_id": "84372629-9829-4e9b-af1b-15c5821e58bd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "إحنا متوقعين نقول حاجة كويسة",
+    "target_text_roman": "ihna mitwaqqa'iin ni'uul haaga kuwayyisa",
+    "known_text": "we expect to say something good",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "نتمنى نصحى",
+    "target_text_roman": "nitmanna nissha",
+    "known_text": "hope to wake up",
+    "known_audio_id": "3f70d913-2287-4c1d-9c14-399467ea874f",
+    "target1_audio_id": "4a85b6b0-0e89-4d5d-a44c-64d8d97d6021",
+    "target2_audio_id": "67999dd2-b962-400b-bde3-f19aeefb165b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "متوقعين نصحى",
+    "target_text_roman": "mitwaqqa'iin nisha",
+    "known_text": "expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ماكناش نتمنى نصحى",
+    "target_text_roman": "makuunash nitmanna nussha",
+    "known_text": "didn't hope to wake up",
+    "known_audio_id": "b4c65938-afe0-4a4f-b7a6-d426374f48d4",
+    "target1_audio_id": "58eb9132-51bd-4699-9959-14ce3eb686e2",
+    "target2_audio_id": "619002cf-62f3-448d-bf28-e951e3bd5524",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ماكناش متوقعين نصحى",
+    "target_text_roman": "makunnaash mitwaqqa'iin nisha",
+    "known_text": "didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "إحنا نتمنى نصحى في الوقت",
+    "target_text_roman": "ihna nitimannaa nishaḥḥi fi il-wa't",
+    "known_text": "we hope to wake up on time",
+    "known_audio_id": "ab2c0e4e-a028-4f90-893c-0f25ea00d7d1",
+    "target1_audio_id": "6e061f5e-9a00-4a62-8efa-9aac4918f5e8",
+    "target2_audio_id": "5812616c-b9ff-43c8-8c90-f95a09fa70e7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "إحنا متوقعين نصحى في الوقت",
+    "target_text_roman": "ihna mitwaqqa'iin nisha fi il-wa't",
+    "known_text": "we expect to wake up on time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش نتمنى نصحى دلوقتي",
+    "target_text_roman": "ihna makunaash nitimannaa nishaḥḥi dilwa'ti",
+    "known_text": "we didn't hope to wake up now",
+    "known_audio_id": "1aadef1e-3779-4f35-9c2a-6ad6423da8f2",
+    "target1_audio_id": "c65f01d1-9b03-4296-b388-8293b05f9a29",
+    "target2_audio_id": "663dfe16-54af-4926-89ca-666845a2d575",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش متوقعين نصحى دلوقتي",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nisha dilwa'ti",
+    "known_text": "we didn't expect to wake up now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L02U06"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "إحنا نتمنى نصحى قبل ما يبقى الليلة",
+    "target_text_roman": "ihna nitimannaa nishaḥḥi 'abl ma yib'a il-leela",
+    "known_text": "we hope to wake up before tomorrow night",
+    "known_audio_id": "ecb1cbf5-cade-4b7b-aa6d-5ce63ad231bf",
+    "target1_audio_id": "8dc6169d-b520-4e38-9c50-3f663d913dd7",
+    "target2_audio_id": "2ecb1994-7594-4ea1-a34c-67b5842a65fd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "إحنا متوقعين نصحى قبل ما يبقى الليلة",
+    "target_text_roman": "ihna mitwaqqa'iin nisha 'abl ma yib'a il-leela",
+    "known_text": "we expect to wake up before tomorrow night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ماكناش نتمنى نصحى في نص الليل",
+    "target_text_roman": "makuunash nitmanna nussha fi nus al-leel",
+    "known_text": "didn't hope to wake in the middle of the night",
+    "known_audio_id": "ef823460-e869-4d1c-9e4c-1dffa2461e66",
+    "target1_audio_id": "fe2812e3-a5d7-41d7-85eb-b5c448eb8572",
+    "target2_audio_id": "83f08055-3fc5-4034-b45e-a270f82a2c47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ماكناش متوقعين نصحى في نص الليل",
+    "target_text_roman": "makunnaash mitwaqqa'iin nisha fi nuss il-leel",
+    "known_text": "didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش نتمنى نصحى في نص الليل",
+    "target_text_roman": "ihna makunaash nitimannaa nishaḥḥi fi nuss il-leel",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8205066f-5ff6-440e-8eeb-7e95c6db44d4",
+    "target2_audio_id": "acd95f4f-970a-45bf-a906-f89d40dac964",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش متوقعين نصحى في نص الليل",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nisha fi nuss il-leel",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش نتمنى نمشي في نص الليل",
+    "target_text_roman": "ihna makunaash nitimannaa nimshi fi nuss il-leel",
+    "known_text": "we didn't hope to go in the middle of the night",
+    "known_audio_id": "9746a1de-5d4a-4248-a50b-3247423e5d93",
+    "target1_audio_id": "08e756a9-5a37-4db2-bdd5-a2c2d76ba3c7",
+    "target2_audio_id": "fa5cc8d9-29d0-4aac-aaa3-4e8baaadfd05",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "إحنا ماكناش متوقعين نمشي في نص الليل",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nimshi fi nuss il-leel",
+    "known_text": "we didn't expect to go in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "إحنا نتمنى نمشي البيت في نص الليل",
+    "target_text_roman": "ihna nitmanna nimshi il-beet fi nus il-leel",
+    "known_text": "we hope to go home in the middle of the night",
+    "known_audio_id": "c4cc41d0-a3b1-4a06-924c-6aaa58982475",
+    "target1_audio_id": "eff0ecc5-e4f1-41b8-baf5-798bb560ab3d",
+    "target2_audio_id": "c5c08284-900b-4c26-8fbc-81d4466e8ef4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "إحنا متوقعين نمشي البيت في نص الليل",
+    "target_text_roman": "ihna mitwaqqa'iin nimshi il-beet fi nuss il-leel",
+    "known_text": "we expect to go home in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we hope to go home in the middle of the night",
+    "target_text": "إحنا نتمنى نمشي البيت في نص الليل",
+    "known_audio_id": "c4cc41d0-a3b1-4a06-924c-6aaa58982475",
+    "target1_audio_id": "eff0ecc5-e4f1-41b8-baf5-798bb560ab3d",
+    "target2_audio_id": "c5c08284-900b-4c26-8fbc-81d4466e8ef4",
+    "target_text_roman": "ihna nitmanna nimshi il-beet fi nus il-leel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we didn't hope to go in the middle of the night",
+    "target_text": "إحنا ماكناش نتمنى نمشي في نص الليل",
+    "known_audio_id": "9746a1de-5d4a-4248-a50b-3247423e5d93",
+    "target1_audio_id": "08e756a9-5a37-4db2-bdd5-a2c2d76ba3c7",
+    "target2_audio_id": "fa5cc8d9-29d0-4aac-aaa3-4e8baaadfd05",
+    "target_text_roman": "ihna makunaash nitimannaa nimshi fi nuss il-leel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "إحنا ماكناش نتمنى نصحى في نص الليل",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8205066f-5ff6-440e-8eeb-7e95c6db44d4",
+    "target2_audio_id": "acd95f4f-970a-45bf-a906-f89d40dac964",
+    "target_text_roman": "ihna makunaash nitimannaa nishaḥḥi fi nuss il-leel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "didn't hope to wake in the middle of the night",
+    "target_text": "ماكناش نتمنى نصحى في نص الليل",
+    "known_audio_id": "ef823460-e869-4d1c-9e4c-1dffa2461e66",
+    "target1_audio_id": "fe2812e3-a5d7-41d7-85eb-b5c448eb8572",
+    "target2_audio_id": "83f08055-3fc5-4034-b45e-a270f82a2c47",
+    "target_text_roman": "makuunash nitmanna nussha fi nus al-leel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "we hope to wake up before tomorrow night",
+    "target_text": "إحنا نتمنى نصحى قبل ما يبقى الليلة",
+    "known_audio_id": "ecb1cbf5-cade-4b7b-aa6d-5ce63ad231bf",
+    "target1_audio_id": "8dc6169d-b520-4e38-9c50-3f663d913dd7",
+    "target2_audio_id": "2ecb1994-7594-4ea1-a34c-67b5842a65fd",
+    "target_text_roman": "ihna nitimannaa nishaḥḥi 'abl ma yib'a il-leela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we didn't hope to wake up now",
+    "target_text": "إحنا ماكناش نتمنى نصحى دلوقتي",
+    "known_audio_id": "1aadef1e-3779-4f35-9c2a-6ad6423da8f2",
+    "target1_audio_id": "c65f01d1-9b03-4296-b388-8293b05f9a29",
+    "target2_audio_id": "663dfe16-54af-4926-89ca-666845a2d575",
+    "target_text_roman": "ihna makunaash nitimannaa nishaḥḥi dilwa'ti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "we hope to wake up on time",
+    "target_text": "إحنا نتمنى نصحى في الوقت",
+    "known_audio_id": "ab2c0e4e-a028-4f90-893c-0f25ea00d7d1",
+    "target1_audio_id": "6e061f5e-9a00-4a62-8efa-9aac4918f5e8",
+    "target2_audio_id": "5812616c-b9ff-43c8-8c90-f95a09fa70e7",
+    "target_text_roman": "ihna nitimannaa nishaḥḥi fi il-wa't"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "didn't hope to wake up",
+    "target_text": "ماكناش نتمنى نصحى",
+    "known_audio_id": "b4c65938-afe0-4a4f-b7a6-d426374f48d4",
+    "target1_audio_id": "58eb9132-51bd-4699-9959-14ce3eb686e2",
+    "target2_audio_id": "619002cf-62f3-448d-bf28-e951e3bd5524",
+    "target_text_roman": "makuunash nitmanna nussha"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "hope to wake up",
+    "target_text": "نتمنى نصحى",
+    "known_audio_id": "3f70d913-2287-4c1d-9c14-399467ea874f",
+    "target1_audio_id": "4a85b6b0-0e89-4d5d-a44c-64d8d97d6021",
+    "target2_audio_id": "67999dd2-b962-400b-bde3-f19aeefb165b",
+    "target_text_roman": "nitmanna nissha"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we hope to say something good",
+    "target_text": "إحنا نتمنى نقول حاجة كويسة",
+    "known_audio_id": "251e43ac-cfce-4b8a-9eaf-0ca130c9af1a",
+    "target1_audio_id": "73fe2ca5-badd-4f48-b087-97847d2c2e55",
+    "target2_audio_id": "84372629-9829-4e9b-af1b-15c5821e58bd",
+    "target_text_roman": "ihna nitmanna ni'ul haaga kuwayyisa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to go now",
+    "target_text": "إحنا ماكناش نتمنى نمشي دلوقتي",
+    "known_audio_id": "4fffd545-8f0f-4a8b-ba7c-ad6ec099cd49",
+    "target1_audio_id": "648d9f1c-6dc8-4176-9f18-1977b793af95",
+    "target2_audio_id": "fdc47ea0-7770-4bb5-9cc4-87a952223c0b",
+    "target_text_roman": "ihna makunaash nitimannaa nimshi dilwa'ti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we hope to meet soon",
+    "target_text": "إحنا نتمنى نتقابل قريب",
+    "known_audio_id": "c6f88534-52e9-4008-83a7-5abd85a04ee8",
+    "target1_audio_id": "e05050b8-8a91-4285-8130-e72905bc0ac0",
+    "target2_audio_id": "5cc8ff70-6509-465b-9d2d-ee651245a41a",
+    "target_text_roman": "ihna nitimannaa nit'aabil 'uriib"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we hope to meet tomorrow",
+    "target_text": "إحنا نتمنى نتقابل بكرة",
+    "known_audio_id": "554f2b70-d96e-4b9a-8300-2374689eb6ea",
+    "target1_audio_id": "541938d2-d643-473f-a207-f78bc018660d",
+    "target2_audio_id": "0c23dcbe-710e-49df-be1c-0d8e36ef8ff7",
+    "target_text_roman": "ihna nitimannaa nit'aabil bukra"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope for that",
+    "target_text": "إحنا ماكناش نتمنى ده",
+    "known_audio_id": "6c6e119d-16f3-4d8b-977e-5057fe4c9600",
+    "target1_audio_id": "cb465f85-2a77-4a06-9773-ecd505557807",
+    "target2_audio_id": "16f42ef7-6bbd-4c60-80d5-a6ed9e5ba2f3",
+    "target_text_roman": "ihna makunaash nitimannaa da"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we hope to meet",
+    "target_text": "نتمنى نتقابل",
+    "known_audio_id": "5434f673-beb9-4a39-97fd-a25c291b5816",
+    "target1_audio_id": "4df8cbfc-766f-47e6-a89c-5fe12e6898a0",
+    "target2_audio_id": "acd78898-49db-4fa0-8582-4eb62727e0ca",
+    "target_text_roman": "nitmanna nit'aabil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "ماكناش نتمنى",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "c37c05e6-535e-43be-a49d-36e0c2afb353",
+    "target2_audio_id": "cbe9af72-f220-40a6-91bc-8970f73f3a1c",
+    "target_text_roman": "makuunash nitmanna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "\"hope\"",
+    "target_text": "\"أتمنى\"",
+    "known_audio_id": "5997b070-760e-4b86-96f5-6f4667db8a0a",
+    "target1_audio_id": "2e79e27f-27b0-4eab-8deb-632ecdf85235",
+    "target2_audio_id": "febd5ed1-67ca-4da3-b21a-7a57d47c8e19",
+    "target_text_roman": "atamanna"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "700629c2-0ad1-4a6b-8b41-b5087f8346cb",
+   "set": {
+    "known_text": "we hope",
+    "target_text": "نتمنى",
+    "components": [
+     {
+      "known": "\"we\"",
+      "target": "\"إحنا\""
+     },
+     {
+      "known": "\"hope\"",
+      "target": "\"أتمنى\""
+     }
+    ],
+    "known_audio_id": "bf0a1120-daf3-4859-953e-6c49f0123125",
+    "target1_audio_id": "62d4023e-d2ef-4cff-a351-3e6b03d06cb2",
+    "target2_audio_id": "c47e7af7-2a8d-4767-aa37-495eda353337",
+    "presentation_audio_id": "8e5810c3-6ebe-470a-adcf-d5f4cd135cde",
+    "target_text_roman": "nitmanna"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "إحنا ماكناش نتمنى نصحى في نص الليل.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8205066f-5ff6-440e-8eeb-7e95c6db44d4",
+    "target2_audio_id": "acd95f4f-970a-45bf-a906-f89d40dac964",
+    "target_text_roman": "ihna makunaash nitimannaa nishaḥḥi fi nuss il-leel."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

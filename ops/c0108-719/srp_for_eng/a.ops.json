@@ -1,0 +1,157 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nismo očekivali da ćemo se probuditi usred noći."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nismo se nadali da ćemo se probuditi usred noći."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "nismo očekivali da",
+    "known_text": "we didn't expect to",
+    "components": [
+     {
+      "known": "\"we aren't\"",
+      "target": "\"nismo\""
+     },
+     {
+      "known": "\"expected\"",
+      "target": "\"očekivali\""
+     },
+     {
+      "known": "\"to\"",
+      "target": "\"da\""
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope to",
+    "target_text": "nismo se nadali da"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "srp_for_eng:S0108L01C02",
+   "expect": {
+    "target_text": "\"se\""
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01C03",
+   "set": {
+    "target_text": "\"očekivali\"",
+    "known_text": "\"expected\""
+   },
+   "expect": {
+    "known_text": "\"hoped\"",
+    "target_text": "\"nadali\""
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "nismo očekivali da",
+    "known_text": "we didn't expect to"
+   },
+   "expect": {
+    "known_text": "we didn't hope to",
+    "target_text": "nismo se nadali da"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nismo očekivali da vidimo",
+    "known_text": "we didn't expect to see"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see",
+    "target_text": "nismo se nadali da vidimo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "nismo očekivali da čujemo",
+    "known_text": "we didn't expect to hear"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear",
+    "target_text": "nismo se nadali da čujemo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "nismo očekivali da vidimo to",
+    "known_text": "we didn't expect to see that"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see that",
+    "target_text": "nismo se nadali da vidimo to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "nismo očekivali da čujemo srpski",
+    "known_text": "we didn't expect to hear Serbian"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear Serbian",
+    "target_text": "nismo se nadali da čujemo srpski"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01U06",
+   "set": {
+    "target_text": "nismo očekivali da razumemo sve",
+    "known_text": "we did not expect to understand everything"
+   },
+   "expect": {
+    "known_text": "we did not hope to understand everything",
+    "target_text": "nismo se nadali da razumemo sve"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "nismo očekivali da ćemo se probuditi",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nismo se nadali da ćemo se probuditi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "nismo očekivali da ćemo se probuditi usred noći",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nismo se nadali da ćemo se probuditi usred noći"
+   }
+  }
+ ]
+}

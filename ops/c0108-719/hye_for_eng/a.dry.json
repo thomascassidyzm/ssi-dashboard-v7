@@ -1,0 +1,259 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "hye_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "450a3b38-d695-4e7c-b262-2012d7a33f1a",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Մենք չի ուզում եինք արկնանալ գիշերի մեջ։",
+    "target_text_roman": "menk' chi uzum yeink' arknanal gisheri mej.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8440ddbb-e198-4965-aaba-aa31a5bc45ed",
+    "target2_audio_id": "f23a8816-6025-47ce-9546-de9984ef3374"
+   },
+   "after": {
+    "id": "450a3b38-d695-4e7c-b262-2012d7a33f1a",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Մենք չէինք սպասում արկնանալ գիշերի մեջ։",
+    "target_text_roman": "menk cheink spasum arknanal gisheri mej.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hye_for_eng",
+    "id": "hye_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "hye_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "don't like waking at night",
+    "target_text": "չի սիրում արկնանալ գիշերի",
+    "known_audio_id": "ab0e0739-0d9a-49e5-b3a7-e5ebeebbbdf7",
+    "target1_audio_id": "b6a0bcd2-5ff5-408c-8359-429e17fca539",
+    "target2_audio_id": "fab3e908-27b1-48f4-968e-54438186f0b4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hye_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "don't like waking up at night",
+    "target_text": "չի սիրում արկնանալ գիշերի",
+    "known_audio_id": null,
+    "target1_audio_id": "b6a0bcd2-5ff5-408c-8359-429e17fca539",
+    "target2_audio_id": "fab3e908-27b1-48f4-968e-54438186f0b4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hye_for_eng",
+    "id": "hye_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "hye_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake at night",
+    "target_text": "ես չեմ ուզում արկնանալ գիշերի",
+    "known_audio_id": "3a9b9b44-0c63-41f9-b17b-5618379936d1",
+    "target1_audio_id": "b9bfcc0a-5a2f-40ac-b8f9-7ee4ac0edd2a",
+    "target2_audio_id": "ac1014ea-ad2f-4563-be03-921578388f15",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hye_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake up at night",
+    "target_text": "ես չեմ ուզում արկնանալ գիշերի",
+    "known_audio_id": null,
+    "target1_audio_id": "b9bfcc0a-5a2f-40ac-b8f9-7ee4ac0edd2a",
+    "target2_audio_id": "ac1014ea-ad2f-4563-be03-921578388f15",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hye_for_eng",
+    "id": "hye_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "hye_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking at night",
+    "target_text": "ես չի սիրում արկնանալ գիշերի",
+    "known_audio_id": "aa33b57d-c252-4d73-b467-8271ff7a723e",
+    "target1_audio_id": "f051992c-1035-4d61-a420-b9762205dd76",
+    "target2_audio_id": "daa96bbd-ca84-4c21-a7b9-f6326eee4509",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hye_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up at night",
+    "target_text": "ես չի սիրում արկնանալ գիշերի",
+    "known_audio_id": null,
+    "target1_audio_id": "f051992c-1035-4d61-a420-b9762205dd76",
+    "target2_audio_id": "daa96bbd-ca84-4c21-a7b9-f6326eee4509",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hye_for_eng",
+    "id": "hye_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "hye_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "արկնանալ գիշերի մեջ",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "target1_audio_id": "24d8b46b-f2cc-4e42-9fa9-c1f77d3b5779",
+    "target2_audio_id": "9bc9b663-eb07-4469-be2c-64a80cc4fbf9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hye_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "արկնանալ գիշերի մեջ",
+    "known_audio_id": null,
+    "target1_audio_id": "24d8b46b-f2cc-4e42-9fa9-c1f77d3b5779",
+    "target2_audio_id": "9bc9b663-eb07-4469-be2c-64a80cc4fbf9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hye_for_eng",
+    "id": "hye_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "hye_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "ես չեմ ուզում արկնանալ գիշերի մեջ",
+    "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "target1_audio_id": "18961b5f-e3bf-4c05-87df-345ee385f3bf",
+    "target2_audio_id": "cdc90a7f-a8b6-44e6-82cf-6b2e88043e42",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hye_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "ես չեմ ուզում արկնանալ գիշերի մեջ",
+    "known_audio_id": null,
+    "target1_audio_id": "18961b5f-e3bf-4c05-87df-345ee385f3bf",
+    "target2_audio_id": "cdc90a7f-a8b6-44e6-82cf-6b2e88043e42",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "I don't like waking at night",
+    "known_audio_id": "aa33b57d-c252-4d73-b467-8271ff7a723e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I don't want to wake at night",
+    "known_audio_id": "3a9b9b44-0c63-41f9-b17b-5618379936d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "don't like waking at night",
+    "known_audio_id": "ab0e0739-0d9a-49e5-b3a7-e5ebeebbbdf7"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Մենք չի ուզում եինք արկնանալ գիշերի մեջ։",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8440ddbb-e198-4965-aaba-aa31a5bc45ed",
+    "target2_audio_id": "f23a8816-6025-47ce-9546-de9984ef3374",
+    "target_text_roman": "menk' chi uzum yeink' arknanal gisheri mej."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

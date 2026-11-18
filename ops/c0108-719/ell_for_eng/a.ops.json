@@ -1,0 +1,75 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Δεν περιμέναμε να ξυπνήσουμε στη μέση της νύχτας.",
+    "target_text_roman": "den perimename na xypnisoume sti mesi tis nychtas."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "περιμέναμε να",
+    "known_text": "we expected",
+    "target_text_roman": "perimename na",
+    "components": [
+     {
+      "known": "we expected (1pl imperfect)",
+      "target": "περιμέναμε"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we hoped",
+    "target_text": "ελπίζαμε να"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "el_for_eng:S0108L02B04",
+   "set": {
+    "target_text": "δεν περιμέναμε να ξυπνήσουμε",
+    "target_text_roman": "den perimename na xypnisoume",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "δεν ελπίζαμε να ξυπνήσουμε"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "el_for_eng:S0108L02U04",
+   "set": {
+    "target_text": "ξέρω ότι δεν περιμέναμε να ξυπνήσουμε",
+    "target_text_roman": "xero oti den perimename na xypnisoume",
+    "known_text": "I know we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "I know we didn't hope to wake up",
+    "target_text": "ξέρω ότι δεν ελπίζαμε να ξυπνήσουμε"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "el_for_eng:S0108L04U02",
+   "set": {
+    "target_text": "δεν περιμέναμε να ξυπνήσουμε στη μέση της νύχτας",
+    "target_text_roman": "den perimename na xypnisoume sti mesi tis nychtas",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας"
+   }
+  }
+ ]
+}

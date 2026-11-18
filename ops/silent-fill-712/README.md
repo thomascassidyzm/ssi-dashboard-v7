@@ -6,3 +6,6 @@ Fills the eng_for_tel / eng_for_mar known-side prompt slots that #694·AI left r
 - `hold.py`: marks the slots another live cleanup job is changing. Files only.
 - Run: `node ../silent-fill-694/fill.cjs probe|run <course> --dir ops/silent-fill-712 --roles known --voice <voiceId> --who cs-712-tel-mar-fill --job '#712·AI' --purpose '…'`.
 - `results/*.jsonl`: one record per slot. This is the ONLY record of clip ids and character spend, so it is NOT regenerable.
+- `readback.py <dumpdir>` → `live/readback.json`: each slot vs a fresh dump (MATCH = the slot holds the clip the route returned). Regenerable.
+- `results/voicecheck-*.jsonl`: re-asked dry runs naming the voice (voice-bound library returned the same clip, 20/20). `results/probe-*.jsonl`: the pre-run dry runs.
+- Outcome (18 Nov): 846 filled (131 library, 715 rendered), 26 held (#447), 0 refused, 26,601 Azure chars. Table d/1bc2f2de, listening d/45dc6681 (UNHEARD).

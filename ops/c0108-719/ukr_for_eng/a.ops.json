@@ -1,0 +1,201 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "прокинутися"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "ми не сподівалися прокинутися"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "I want to wake up now"
+   },
+   "expect": {
+    "known_text": "I want to wake now",
+    "target_text": "я хочу прокинутися зараз"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "I need to wake up"
+   },
+   "expect": {
+    "known_text": "I need to wake",
+    "target_text": "мені треба прокинутися"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I need to wake up now"
+   },
+   "expect": {
+    "known_text": "I need to wake now",
+    "target_text": "мені треба прокинутися зараз"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I want to wake up and speak Ukrainian"
+   },
+   "expect": {
+    "known_text": "I want to wake and speak Ukrainian",
+    "target_text": "я хочу прокинутися і говорити українською"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I'm going to try to wake up"
+   },
+   "expect": {
+    "known_text": "I'm going to try to wake",
+    "target_text": "я збираюся спробувати прокинутися"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we hoped to wake up"
+   },
+   "expect": {
+    "known_text": "we hoped to wake",
+    "target_text": "ми сподівалися прокинутися"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "I didn't want to wake up today"
+   },
+   "expect": {
+    "known_text": "I didn't want to wake today",
+    "target_text": "я не хотів прокинутися сьогодні"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "I want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I want to wake in the middle of the night",
+    "target_text": "я хочу прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "we hoped to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hoped to wake in the middle of the night",
+    "target_text": "ми сподівалися прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ми не сподівалися прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I didn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I didn't want to wake in the middle of the night",
+    "target_text": "я не хотів прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I need to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I need to wake in the middle of the night",
+    "target_text": "мені треба прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'm going to try to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I'm going to try to wake in the middle of the night",
+    "target_text": "я збираюся спробувати прокинутися посеред ночі"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "I enjoy waking up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I enjoy waking in the middle of the night",
+    "target_text": "мені подобається прокинутися посеред ночі"
+   }
+  }
+ ]
+}
