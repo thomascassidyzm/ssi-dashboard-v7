@@ -1,0 +1,30 @@
+{
+ "at": "2026-11-18T18:40:18.969Z",
+ "pass": false,
+ "seeds": [
+  {
+   "seed": 433,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ],
+   "blocking": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 434,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 435,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 1 phrase(s) fail containment"
+   ],
+   "blocking": [
+    "L3: 1 phrase(s) fail containment"
+   ]
+  }
+ ]
+}
