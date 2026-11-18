@@ -1,0 +1,664 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "a621061c-067a-4f42-8115-5fa1c44939e4",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "107b97f8-e08a-40bc-9bc4-907d684ee05f",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nesitikėjome pabusti vidury nakties.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8999fdf6-626f-4974-9d96-9c4782b1fcab",
+    "target2_audio_id": "e0e7148b-6167-4d22-abec-81b9a36b839e"
+   },
+   "after": {
+    "id": "107b97f8-e08a-40bc-9bc4-907d684ee05f",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nesitikėjome pabusti vidury nakties.",
+    "known_audio_id": null,
+    "target1_audio_id": "8999fdf6-626f-4974-9d96-9c4782b1fcab",
+    "target2_audio_id": "e0e7148b-6167-4d22-abec-81b9a36b839e"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "304f8823-4936-4a20-b6bd-0fdc4694cb33",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "\"not\"",
+      "target": "\"ne\""
+     },
+     {
+      "known": "\"we hoped\"",
+      "target": "\"sitikėjome\""
+     }
+    ],
+    "target_text": "nesitikėjome",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "554c118c-9e7b-4e28-8e40-278ac5acea5c",
+    "target2_audio_id": "5109d211-3b2e-46e3-970d-039a07ea7d5c",
+    "presentation_audio_id": "52614b2c-45af-43e2-b9b6-38eeba5ea7b8"
+   },
+   "after": {
+    "id": "304f8823-4936-4a20-b6bd-0fdc4694cb33",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "\"not\"",
+      "target": "\"ne\""
+     },
+     {
+      "known": "\"we expected\"",
+      "target": "\"sitikėjome\""
+     }
+    ],
+    "target_text": "nesitikėjome",
+    "known_audio_id": null,
+    "target1_audio_id": "554c118c-9e7b-4e28-8e40-278ac5acea5c",
+    "target2_audio_id": "5109d211-3b2e-46e3-970d-039a07ea7d5c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope",
+    "target_text": "nesitikėjome",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "554c118c-9e7b-4e28-8e40-278ac5acea5c",
+    "target2_audio_id": "5109d211-3b2e-46e3-970d-039a07ea7d5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect",
+    "target_text": "nesitikėjome",
+    "known_audio_id": null,
+    "target1_audio_id": "554c118c-9e7b-4e28-8e40-278ac5acea5c",
+    "target2_audio_id": "5109d211-3b2e-46e3-970d-039a07ea7d5c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome tikėjomės ir",
+    "known_text": "we didn't hope, we hoped",
+    "known_audio_id": "8917a332-7066-41d5-8e10-bf5767f12d1c",
+    "target1_audio_id": "3639f7a7-f194-4e7e-ac13-e11390ab0653",
+    "target2_audio_id": "c0c5aed8-ebfa-4f16-a4e0-a46127d5684a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome to",
+    "known_text": "we didn't expect it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome kalbėti ir",
+    "known_text": "we didn't hope to speak",
+    "known_audio_id": "31a49810-156a-49a0-8fa9-a7188069dff2",
+    "target1_audio_id": "77cf0bd0-bf95-4f69-a2c9-b23307b02253",
+    "target2_audio_id": "b5087543-ddaa-4d92-a6e7-59951bf61080",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome kalbėti",
+    "known_text": "we didn't expect to speak",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome ji nori",
+    "known_text": "we didn't hope, she did",
+    "known_audio_id": "1b1de6d5-ef82-4dfd-8265-672ed2b976aa",
+    "target1_audio_id": "6797adf2-f1ec-4251-b299-c52cd87b23da",
+    "target2_audio_id": "632d974d-c930-4558-9145-96c68def963f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome to pamatyti",
+    "known_text": "we didn't expect to see it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to speak Lithuanian",
+    "target_text": "nesitikėjome kalbėti lietuviškai",
+    "known_audio_id": "c2dd8d5c-fbf9-46ce-9d60-1b72a44b5d36",
+    "target1_audio_id": "0694d6c4-5485-4ab0-85d2-b4f7518765d0",
+    "target2_audio_id": "59203c45-7c40-4b65-acd6-317511465023",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to speak Lithuanian",
+    "target_text": "nesitikėjome kalbėti lietuviškai",
+    "known_audio_id": null,
+    "target1_audio_id": "0694d6c4-5485-4ab0-85d2-b4f7518765d0",
+    "target2_audio_id": "59203c45-7c40-4b65-acd6-317511465023",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to understand",
+    "target_text": "nesitikėjome suprasti",
+    "known_audio_id": "11730e06-86b2-48e0-9c86-6d44df8f4e29",
+    "target1_audio_id": "eef48f95-4b36-4578-83b6-0a95de51a961",
+    "target2_audio_id": "19321636-8766-49bb-b33e-31eaafd02590",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to understand",
+    "target_text": "nesitikėjome suprasti",
+    "known_audio_id": null,
+    "target1_audio_id": "eef48f95-4b36-4578-83b6-0a95de51a961",
+    "target2_audio_id": "19321636-8766-49bb-b33e-31eaafd02590",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome pamatyti tau",
+    "known_text": "we didn't hope to see you",
+    "known_audio_id": "8f5de5fd-9f58-4f94-83c6-2c92a6ef0c15",
+    "target1_audio_id": "86aa9bb8-61cf-49c8-adc0-b4795f3e5930",
+    "target2_audio_id": "1d0e292b-8d26-4564-9a02-f7fb7103795c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nesitikėjome tavęs pamatyti",
+    "known_text": "we didn't expect to see you",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to find the answer",
+    "target_text": "nesitikėjome rasti atsakymo",
+    "known_audio_id": "b5c0b5b9-2e8d-4cce-a0b8-5e85c588ecf4",
+    "target1_audio_id": "04ca1475-8100-4e69-b616-f8d42db20074",
+    "target2_audio_id": "6221d298-e4f7-45d2-9128-d501bd8e6260",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to find the answer",
+    "target_text": "nesitikėjome rasti atsakymo",
+    "known_audio_id": null,
+    "target1_audio_id": "04ca1475-8100-4e69-b616-f8d42db20074",
+    "target2_audio_id": "6221d298-e4f7-45d2-9128-d501bd8e6260",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake",
+    "target_text": "nesitikėjome pabusti ir",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "794c5f80-6718-4601-b5e6-4cd1ee6e9703",
+    "target2_audio_id": "073c7de7-f1ad-4d16-ab1b-ffeb39032157",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "nesitikėjome pabusti ir",
+    "known_audio_id": null,
+    "target1_audio_id": "794c5f80-6718-4601-b5e6-4cd1ee6e9703",
+    "target2_audio_id": "073c7de7-f1ad-4d16-ab1b-ffeb39032157",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nesitikėjome pabusti",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "037597c0-ca48-4275-845c-152c382d80b5",
+    "target2_audio_id": "04c230b6-c47a-4e4e-9191-3090d61904be",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "nesitikėjome pabusti",
+    "known_audio_id": null,
+    "target1_audio_id": "037597c0-ca48-4275-845c-152c382d80b5",
+    "target2_audio_id": "04c230b6-c47a-4e4e-9191-3090d61904be",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L03B04"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "in the middle of the night, to wake",
+    "target_text": "vidury nakties nesitikėjome pabusti",
+    "known_audio_id": "e8caea8a-1126-4d61-91f3-8890bc53a224",
+    "target1_audio_id": "9e8462ad-1f4c-4bac-9119-e9285fb1103b",
+    "target2_audio_id": "e48522e7-80a6-49be-95cf-41d7cdc3d6a8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "in the middle of the night, to wake up",
+    "target_text": "vidury nakties nesitikėjome pabusti",
+    "known_audio_id": null,
+    "target1_audio_id": "9e8462ad-1f4c-4bac-9119-e9285fb1103b",
+    "target2_audio_id": "e48522e7-80a6-49be-95cf-41d7cdc3d6a8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nesitikėjome pabusti vidury nakties",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8999fdf6-626f-4974-9d96-9c4782b1fcab",
+    "target2_audio_id": "e0e7148b-6167-4d22-abec-81b9a36b839e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "nesitikėjome pabusti vidury nakties",
+    "known_audio_id": null,
+    "target1_audio_id": "8999fdf6-626f-4974-9d96-9c4782b1fcab",
+    "target2_audio_id": "e0e7148b-6167-4d22-abec-81b9a36b839e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "lit_for_eng",
+    "id": "lit_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "lit_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "target_text": "ji nenori pabusti vidury nakties",
+    "known_audio_id": "aa3d8f50-f732-49cc-9d92-dde2af32317a",
+    "target1_audio_id": "adf13d81-07f9-43c9-ae6f-4f620bdbf308",
+    "target2_audio_id": "69c8eba5-7f1d-4cde-8efa-74f644853b07",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "lit_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake up in the middle of the night",
+    "target_text": "ji nenori pabusti vidury nakties",
+    "known_audio_id": null,
+    "target1_audio_id": "adf13d81-07f9-43c9-ae6f-4f620bdbf308",
+    "target2_audio_id": "69c8eba5-7f1d-4cde-8efa-74f644853b07",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "known_audio_id": "aa3d8f50-f732-49cc-9d92-dde2af32317a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "in the middle of the night, to wake",
+    "known_audio_id": "e8caea8a-1126-4d61-91f3-8890bc53a224"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope to find the answer",
+    "known_audio_id": "b5c0b5b9-2e8d-4cce-a0b8-5e85c588ecf4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to see you",
+    "target_text": "nesitikėjome pamatyti tau",
+    "known_audio_id": "8f5de5fd-9f58-4f94-83c6-2c92a6ef0c15",
+    "target1_audio_id": "86aa9bb8-61cf-49c8-adc0-b4795f3e5930",
+    "target2_audio_id": "1d0e292b-8d26-4564-9a02-f7fb7103795c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to understand",
+    "known_audio_id": "11730e06-86b2-48e0-9c86-6d44df8f4e29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to speak Lithuanian",
+    "known_audio_id": "c2dd8d5c-fbf9-46ce-9d60-1b72a44b5d36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "we didn't hope, she did",
+    "target_text": "nesitikėjome ji nori",
+    "known_audio_id": "1b1de6d5-ef82-4dfd-8265-672ed2b976aa",
+    "target1_audio_id": "6797adf2-f1ec-4251-b299-c52cd87b23da",
+    "target2_audio_id": "632d974d-c930-4558-9145-96c68def963f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to speak",
+    "target_text": "nesitikėjome kalbėti ir",
+    "known_audio_id": "31a49810-156a-49a0-8fa9-a7188069dff2",
+    "target1_audio_id": "77cf0bd0-bf95-4f69-a2c9-b23307b02253",
+    "target2_audio_id": "b5087543-ddaa-4d92-a6e7-59951bf61080"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope, we hoped",
+    "target_text": "nesitikėjome tikėjomės ir",
+    "known_audio_id": "8917a332-7066-41d5-8e10-bf5767f12d1c",
+    "target1_audio_id": "3639f7a7-f194-4e7e-ac13-e11390ab0653",
+    "target2_audio_id": "c0c5aed8-ebfa-4f16-a4e0-a46127d5684a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "304f8823-4936-4a20-b6bd-0fdc4694cb33",
+   "set": {
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "\"not\"",
+      "target": "\"ne\""
+     },
+     {
+      "known": "\"we hoped\"",
+      "target": "\"sitikėjome\""
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": "52614b2c-45af-43e2-b9b6-38eeba5ea7b8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-56-20-723Z-a621061c-067a-4f42-8115-5fa1c44939e4.json"
+}

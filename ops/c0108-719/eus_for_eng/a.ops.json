@@ -1,0 +1,58 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "gauaren erdian esna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "I wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I wake in the middle of the night",
+    "target_text": "gauaren erdian esna naiz"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ez genuen espero gauaren erdian esna izatea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'm not happy when I wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I'm not happy when I wake in the middle of the night",
+    "target_text": "gauaren erdian esna pozik ez nago"
+   }
+  }
+ ]
+}

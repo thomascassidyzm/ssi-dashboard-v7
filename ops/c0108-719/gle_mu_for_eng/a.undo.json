@@ -1,0 +1,16 @@
+{
+  "course_code": "gle_mu_for_eng",
+  "event_id": "2fe66b27-9992-4919-96dc-f216bd5bdd7b",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:57:45.823Z",
+  "how_to_undo": "POST /api/production/gle_mu_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-57-45-823Z-2fe66b27-9992-4919-96dc-f216bd5bdd7b.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night"
+      }
+    }
+  ]
+}

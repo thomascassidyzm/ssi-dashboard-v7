@@ -1,0 +1,152 @@
+{
+  "course_code": "lit_for_eng",
+  "event_id": "a621061c-067a-4f42-8115-5fa1c44939e4",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:56:20.724Z",
+  "how_to_undo": "POST /api/production/lit_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-56-20-723Z-a621061c-067a-4f42-8115-5fa1c44939e4.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L03U02",
+      "set": {
+        "known_text": "she doesn't want to wake in the middle of the night",
+        "known_audio_id": "aa3d8f50-f732-49cc-9d92-dde2af32317a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L03U01",
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L03B04",
+      "set": {
+        "known_text": "in the middle of the night, to wake",
+        "known_audio_id": "e8caea8a-1126-4d61-91f3-8890bc53a224"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L02U04",
+      "set": {
+        "known_text": "we didn't hope to wake up",
+        "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L02B02",
+      "set": {
+        "known_text": "we didn't hope to wake",
+        "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01U05",
+      "set": {
+        "known_text": "we didn't hope to find the answer",
+        "known_audio_id": "b5c0b5b9-2e8d-4cce-a0b8-5e85c588ecf4"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01U03",
+      "set": {
+        "known_text": "we didn't hope to see you",
+        "target_text": "nesitikėjome pamatyti tau",
+        "known_audio_id": "8f5de5fd-9f58-4f94-83c6-2c92a6ef0c15",
+        "target1_audio_id": "86aa9bb8-61cf-49c8-adc0-b4795f3e5930",
+        "target2_audio_id": "1d0e292b-8d26-4564-9a02-f7fb7103795c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01U02",
+      "set": {
+        "known_text": "we didn't hope to understand",
+        "known_audio_id": "11730e06-86b2-48e0-9c86-6d44df8f4e29"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01U01",
+      "set": {
+        "known_text": "we didn't hope to speak Lithuanian",
+        "known_audio_id": "c2dd8d5c-fbf9-46ce-9d60-1b72a44b5d36"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01B04",
+      "set": {
+        "known_text": "we didn't hope, she did",
+        "target_text": "nesitikėjome ji nori",
+        "known_audio_id": "1b1de6d5-ef82-4dfd-8265-672ed2b976aa",
+        "target1_audio_id": "6797adf2-f1ec-4251-b299-c52cd87b23da",
+        "target2_audio_id": "632d974d-c930-4558-9145-96c68def963f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01B03",
+      "set": {
+        "known_text": "we didn't hope to speak",
+        "target_text": "nesitikėjome kalbėti ir",
+        "known_audio_id": "31a49810-156a-49a0-8fa9-a7188069dff2",
+        "target1_audio_id": "77cf0bd0-bf95-4f69-a2c9-b23307b02253",
+        "target2_audio_id": "b5087543-ddaa-4d92-a6e7-59951bf61080"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01B02",
+      "set": {
+        "known_text": "we didn't hope, we hoped",
+        "target_text": "nesitikėjome tikėjomės ir",
+        "known_audio_id": "8917a332-7066-41d5-8e10-bf5767f12d1c",
+        "target1_audio_id": "3639f7a7-f194-4e7e-ac13-e11390ab0653",
+        "target2_audio_id": "c0c5aed8-ebfa-4f16-a4e0-a46127d5684a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "lit_for_eng:S0108L01B01",
+      "set": {
+        "known_text": "we didn't hope",
+        "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "304f8823-4936-4a20-b6bd-0fdc4694cb33",
+      "set": {
+        "known_text": "we didn't hope",
+        "components": [
+          {
+            "known": "\"not\"",
+            "target": "\"ne\""
+          },
+          {
+            "known": "\"we hoped\"",
+            "target": "\"sitikėjome\""
+          }
+        ],
+        "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+        "presentation_audio_id": "52614b2c-45af-43e2-b9b6-38eeba5ea7b8"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "We didn't hope to wake in the middle of the night.",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

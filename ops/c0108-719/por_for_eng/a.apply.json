@@ -1,0 +1,652 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "ce5b522f-90d3-49e6-8bf9-4f0559df96b5",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "110c0714-283e-478f-8634-5d7a3231eb72",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nós não esperávamos acordar no meio da noite",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "70c9b9be-a59e-4df8-9bb3-0232c1491160",
+    "target2_audio_id": "5d4c6e98-3e3d-42cf-bf84-d53060e6f813"
+   },
+   "after": {
+    "id": "110c0714-283e-478f-8634-5d7a3231eb72",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "nós não esperávamos acordar no meio da noite",
+    "known_audio_id": null,
+    "target1_audio_id": "70c9b9be-a59e-4df8-9bb3-0232c1491160",
+    "target2_audio_id": "5d4c6e98-3e3d-42cf-bf84-d53060e6f813"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "ae3cdbdc-aa79-4425-a37b-37a1df6eb394",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "we didn't hope",
+      "target": "nós não esperávamos"
+     },
+     {
+      "known": "to wake",
+      "target": "acordar"
+     }
+    ],
+    "target_text": "nós não esperávamos acordar",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "005e192c-5d53-48bd-a5a9-db1ace914646",
+    "target2_audio_id": "9a94558c-bcea-495b-92e7-c48b719daa79",
+    "presentation_audio_id": "b18897d8-ffda-4b45-b8a5-c561478e4a8f"
+   },
+   "after": {
+    "id": "ae3cdbdc-aa79-4425-a37b-37a1df6eb394",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "we didn't expect to wake up",
+    "components": [
+     {
+      "known": "we didn't expect",
+      "target": "nós não esperávamos"
+     },
+     {
+      "known": "to wake up",
+      "target": "acordar"
+     }
+    ],
+    "target_text": "nós não esperávamos acordar",
+    "known_audio_id": null,
+    "target1_audio_id": "005e192c-5d53-48bd-a5a9-db1ace914646",
+    "target2_audio_id": "9a94558c-bcea-495b-92e7-c48b719daa79",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02C01"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope",
+    "target_text": "nós não esperávamos",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "1fd5dd8c-6fbf-409c-bcfd-9af6c23ba24c",
+    "target2_audio_id": "ae46284e-9a43-4cb4-a090-eefdbd1af9be",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect",
+    "target_text": "nós não esperávamos",
+    "known_audio_id": null,
+    "target1_audio_id": "1fd5dd8c-6fbf-409c-bcfd-9af6c23ba24c",
+    "target2_audio_id": "ae46284e-9a43-4cb4-a090-eefdbd1af9be",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02C02"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake",
+    "target_text": "acordar",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "target1_audio_id": "b5d63898-6088-458e-8c31-a163d1a3d102",
+    "target2_audio_id": "24c5530d-6254-4ebc-82bf-bfd32c1db45d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up",
+    "target_text": "acordar",
+    "known_audio_id": null,
+    "target1_audio_id": "b5d63898-6088-458e-8c31-a163d1a3d102",
+    "target2_audio_id": "24c5530d-6254-4ebc-82bf-bfd32c1db45d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake",
+    "target_text": "nós não esperávamos acordar",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "005e192c-5d53-48bd-a5a9-db1ace914646",
+    "target2_audio_id": "9a94558c-bcea-495b-92e7-c48b719daa79",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "nós não esperávamos acordar",
+    "known_audio_id": null,
+    "target1_audio_id": "005e192c-5d53-48bd-a5a9-db1ace914646",
+    "target2_audio_id": "9a94558c-bcea-495b-92e7-c48b719daa79",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake",
+    "target_text": "nós não esperávamos acordar",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "005e192c-5d53-48bd-a5a9-db1ace914646",
+    "target2_audio_id": "9a94558c-bcea-495b-92e7-c48b719daa79",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "nós não esperávamos acordar",
+    "known_audio_id": null,
+    "target1_audio_id": "005e192c-5d53-48bd-a5a9-db1ace914646",
+    "target2_audio_id": "9a94558c-bcea-495b-92e7-c48b719daa79",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake here",
+    "target_text": "nós não esperávamos acordar aqui",
+    "known_audio_id": "6f9de6f4-73df-40f9-83ed-a5cc51e347fc",
+    "target1_audio_id": "047fb87e-ad1e-4c14-84f8-c37141bf0613",
+    "target2_audio_id": "47175075-9c4a-4bd4-924a-11636f9a9d47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up here",
+    "target_text": "nós não esperávamos acordar aqui",
+    "known_audio_id": null,
+    "target1_audio_id": "047fb87e-ad1e-4c14-84f8-c37141bf0613",
+    "target2_audio_id": "47175075-9c4a-4bd4-924a-11636f9a9d47",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02B04"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake now",
+    "target_text": "nós não esperávamos acordar agora",
+    "known_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+    "target1_audio_id": "6f356bde-0db0-4989-9709-8b35cda232f2",
+    "target2_audio_id": "6a8c229b-a991-428c-a463-2eccb3afde27",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up now",
+    "target_text": "nós não esperávamos acordar agora",
+    "known_audio_id": null,
+    "target1_audio_id": "6f356bde-0db0-4989-9709-8b35cda232f2",
+    "target2_audio_id": "6a8c229b-a991-428c-a463-2eccb3afde27",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nós não esperávamos acordar no meio da noite",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "70c9b9be-a59e-4df8-9bb3-0232c1491160",
+    "target2_audio_id": "e5a7ec93-c330-4d0e-847d-d6c540919ef5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "nós não esperávamos acordar no meio da noite",
+    "known_audio_id": null,
+    "target1_audio_id": "70c9b9be-a59e-4df8-9bb3-0232c1491160",
+    "target2_audio_id": "e5a7ec93-c330-4d0e-847d-d6c540919ef5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake like that",
+    "target_text": "nós não esperávamos acordar assim",
+    "known_audio_id": "04774309-0890-40db-bd3e-8166366ebc39",
+    "target1_audio_id": "7931faa4-1473-440a-bcde-006a22a51380",
+    "target2_audio_id": "69d2b9e3-53e0-42c4-a22c-7ae5cc80bccb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up like that",
+    "target_text": "nós não esperávamos acordar assim",
+    "known_audio_id": null,
+    "target1_audio_id": "7931faa4-1473-440a-bcde-006a22a51380",
+    "target2_audio_id": "69d2b9e3-53e0-42c4-a22c-7ae5cc80bccb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake here",
+    "target_text": "nós não esperávamos acordar aqui",
+    "known_audio_id": "6f9de6f4-73df-40f9-83ed-a5cc51e347fc",
+    "target1_audio_id": "047fb87e-ad1e-4c14-84f8-c37141bf0613",
+    "target2_audio_id": "47175075-9c4a-4bd4-924a-11636f9a9d47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up here",
+    "target_text": "nós não esperávamos acordar aqui",
+    "known_audio_id": null,
+    "target1_audio_id": "047fb87e-ad1e-4c14-84f8-c37141bf0613",
+    "target2_audio_id": "47175075-9c4a-4bd4-924a-11636f9a9d47",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake now",
+    "target_text": "nós não esperávamos acordar agora",
+    "known_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+    "target1_audio_id": "6f356bde-0db0-4989-9709-8b35cda232f2",
+    "target2_audio_id": "6a8c229b-a991-428c-a463-2eccb3afde27",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up now",
+    "target_text": "nós não esperávamos acordar agora",
+    "known_audio_id": null,
+    "target1_audio_id": "6f356bde-0db0-4989-9709-8b35cda232f2",
+    "target2_audio_id": "6a8c229b-a991-428c-a463-2eccb3afde27",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake before you",
+    "target_text": "nós não esperávamos acordar antes de ti",
+    "known_audio_id": "64ecb33b-efd2-41a5-871b-e697039dce89",
+    "target1_audio_id": "1d6c36ca-3574-43a5-bfb2-26db5dbe5c4f",
+    "target2_audio_id": "b3c87fd7-294d-4929-aad1-14629e0dc2ae",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up before you",
+    "target_text": "nós não esperávamos acordar antes de ti",
+    "known_audio_id": null,
+    "target1_audio_id": "1d6c36ca-3574-43a5-bfb2-26db5dbe5c4f",
+    "target2_audio_id": "b3c87fd7-294d-4929-aad1-14629e0dc2ae",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U06"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake at night",
+    "target_text": "nós não esperávamos acordar de noite",
+    "known_audio_id": "28a62e94-1fcf-4ec3-add3-00ea0ce9d1b2",
+    "target1_audio_id": "557a9f32-9d03-4255-886c-cea86cc9ca98",
+    "target2_audio_id": "11834a02-b0a9-4f5c-b2b7-66ea0910f18c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up at night",
+    "target_text": "nós não esperávamos acordar de noite",
+    "known_audio_id": null,
+    "target1_audio_id": "557a9f32-9d03-4255-886c-cea86cc9ca98",
+    "target2_audio_id": "11834a02-b0a9-4f5c-b2b7-66ea0910f18c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "por_for_eng",
+    "id": "por_for_eng:S0108L02U08"
+   },
+   "before": {
+    "id": "por_for_eng:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle",
+    "target_text": "nós não esperávamos acordar no meio",
+    "known_audio_id": "ec9d66dc-2a37-481c-a780-85402f78cb23",
+    "target1_audio_id": "9e82886f-278f-470e-b2ba-fdc6942caa41",
+    "target2_audio_id": "84c117d5-4a6b-4a5c-af91-db67f68e2353",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "por_for_eng:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle",
+    "target_text": "nós não esperávamos acordar no meio",
+    "known_audio_id": null,
+    "target1_audio_id": "9e82886f-278f-470e-b2ba-fdc6942caa41",
+    "target2_audio_id": "84c117d5-4a6b-4a5c-af91-db67f68e2353",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle",
+    "known_audio_id": "ec9d66dc-2a37-481c-a780-85402f78cb23"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "we didn't hope to wake at night",
+    "known_audio_id": "28a62e94-1fcf-4ec3-add3-00ea0ce9d1b2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we didn't hope to wake before you",
+    "known_audio_id": "64ecb33b-efd2-41a5-871b-e697039dce89"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we didn't hope to wake now",
+    "known_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we didn't hope to wake here",
+    "known_audio_id": "6f9de6f4-73df-40f9-83ed-a5cc51e347fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "we didn't hope to wake like that",
+    "known_audio_id": "04774309-0890-40db-bd3e-8166366ebc39"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "we didn't hope to wake now",
+    "known_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we didn't hope to wake here",
+    "known_audio_id": "6f9de6f4-73df-40f9-83ed-a5cc51e347fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02C02",
+   "set": {
+    "known_text": "to wake",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0108L02C01",
+   "set": {
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ae3cdbdc-aa79-4425-a37b-37a1df6eb394",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "we didn't hope",
+      "target": "nós não esperávamos"
+     },
+     {
+      "known": "to wake",
+      "target": "acordar"
+     }
+    ],
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "b18897d8-ffda-4b45-b8a5-c561478e4a8f"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-55-20-494Z-ce5b522f-90d3-49e6-8bf9-4f0559df96b5.json"
+}

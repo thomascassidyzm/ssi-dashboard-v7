@@ -1,0 +1,142 @@
+{
+  "course_code": "gle_cn_for_eng",
+  "event_id": "af394d86-b458-4c8f-bf3d-1eaaadc23f7d",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:57:41.347Z",
+  "how_to_undo": "POST /api/production/gle_cn_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-57-41-347Z-af394d86-b458-4c8f-bf3d-1eaaadc23f7d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03U05",
+      "set": {
+        "known_text": "we didn't hope to see many more words in Irish"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03U04",
+      "set": {
+        "known_text": "we didn't hope to see what we're doing now"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03U03",
+      "set": {
+        "known_text": "we didn't hope to see the answer today"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03U02",
+      "set": {
+        "known_text": "we didn't hope to see what you were doing"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03U01",
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03B03",
+      "set": {
+        "known_text": "we didn't hope to wake today"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03B02",
+      "set": {
+        "known_text": "we didn't hope to see the answer"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L03B01",
+      "set": {
+        "known_text": "we didn't hope to wake now"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "f30e4ff0-4c82-472b-a0d7-d4a6b66be62c",
+      "set": {
+        "known_text": "we didn't hope"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02U05",
+      "set": {
+        "known_text": "we hoped to wake now"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02U04",
+      "set": {
+        "known_text": "he wants us to wake today"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02U03",
+      "set": {
+        "known_text": "we hoped to wake in the middle of the night"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02U02",
+      "set": {
+        "known_text": "I'd like us to wake in the middle of the night"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02U01",
+      "set": {
+        "known_text": "I want us to wake in the middle of the night"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02B03",
+      "set": {
+        "known_text": "he wants us to wake now"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02B02",
+      "set": {
+        "known_text": "I'd like us to wake today"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_cn_for_eng:S0108L02B01",
+      "set": {
+        "known_text": "I want us to wake now"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "de2b536b-20ba-48ac-a65b-93a308d382a2",
+      "set": {
+        "known_text": "us to wake"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night"
+      }
+    }
+  ]
+}

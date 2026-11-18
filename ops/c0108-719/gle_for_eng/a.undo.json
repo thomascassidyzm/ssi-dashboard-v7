@@ -1,0 +1,107 @@
+{
+  "course_code": "gle_for_eng",
+  "event_id": "cfb79396-3b78-49f4-ab4e-8c47b3e33f8c",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:57:22.967Z",
+  "how_to_undo": "POST /api/production/gle_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-57-22-967Z-cfb79396-3b78-49f4-ab4e-8c47b3e33f8c.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L02B05",
+      "set": {
+        "known_text": "hoping to learn more",
+        "known_audio_id": "b585da19-b4e8-4561-83d3-5f658a386fb5"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L02B04",
+      "set": {
+        "known_text": "hoping to come back",
+        "known_audio_id": "d2293178-f283-4ed6-a9b4-1830671406af"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L02B03",
+      "set": {
+        "known_text": "hoping to improve",
+        "known_audio_id": "10b90b9d-5acd-4d2a-b8dd-ddf8eed9035d"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L02B02",
+      "set": {
+        "known_text": "hoping to speak",
+        "known_audio_id": "da8f8b27-4e5c-42ce-9136-a3180b76a88c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L02B01",
+      "set": {
+        "known_text": "hoping to see what you were doing",
+        "known_audio_id": "cf9b3a5f-ab90-4a1b-b95d-989416d3adf8"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "864775cb-f7cd-4880-b31c-eaaaaa20db63",
+      "set": {
+        "known_text": "hoping to",
+        "known_audio_id": "be78af38-2a4c-48d3-b478-101908ae08dd",
+        "presentation_audio_id": "5ee6f7aa-e325-4c20-88ab-6b537f660c77"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L05B05",
+      "set": {
+        "known_text": "we were not hoping to wake in the middle of the night",
+        "known_audio_id": "69a8dcfb-815d-4f18-b234-9a9e64a7c8dc"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L03B03",
+      "set": {
+        "known_text": "to wake in the middle of the night",
+        "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L03B02",
+      "set": {
+        "known_text": "to wake at six",
+        "known_audio_id": "0c840dcc-0c1b-4cb2-a121-ce0a16730ff0"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_for_eng:S0108L03B01",
+      "set": {
+        "known_text": "to wake early",
+        "known_audio_id": "cfc7fea6-4938-4dec-b6f2-c2def36852e7"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "638a1790-65e1-4db0-8fca-22149d2bf057",
+      "set": {
+        "known_text": "to wake",
+        "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+        "presentation_audio_id": "1bedc597-d37d-422e-bbc8-1cb19cf5ba73"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

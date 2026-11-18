@@ -1,0 +1,88 @@
+{
+  "course_code": "cat_for_eng",
+  "event_id": "3a934a49-ccec-49c4-a72b-27d7c20adb76",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:55:45.668Z",
+  "how_to_undo": "POST /api/production/cat_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-55-45-668Z-3a934a49-ccec-49c4-a72b-27d7c20adb76.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "cat_for_eng:S0108L03U04",
+      "set": {
+        "known_text": "we didn't hope to wake at six",
+        "known_audio_id": "7920d16a-9ae3-40a9-8d6c-218048aa4cf9"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "cat_for_eng:S0108L03U03",
+      "set": {
+        "known_text": "we didn't hope to wake early",
+        "known_audio_id": "12386b71-0b4d-4902-8930-3b2ecea5e288"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "cat_for_eng:S0108L03U01",
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "cat_for_eng:S0108L03B03",
+      "set": {
+        "known_text": "we didn't hope to wake at midnight",
+        "known_audio_id": "14302746-dbd2-49d1-9a1b-57b46fc26e9c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "cat_for_eng:S0108L03B02",
+      "set": {
+        "known_text": "we didn't hope to wake at night",
+        "known_audio_id": "1b0419da-c42a-4a43-9700-f9dd7812f051"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "cat_for_eng:S0108L03B01",
+      "set": {
+        "known_text": "we didn't hope to wake",
+        "known_audio_id": "bfa4a1e9-ed9d-4af2-8bbd-be512168d27e"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "4dcb9940-ba9f-4b8e-b37c-2bd242e6e2f3",
+      "set": {
+        "known_text": "we didn't hope to wake",
+        "components": [
+          {
+            "known": "we didn't hope",
+            "target": "no esperàvem"
+          },
+          {
+            "known": "to wake",
+            "target": "despertar"
+          },
+          {
+            "known": "ourselves",
+            "target": "nos"
+          }
+        ],
+        "known_audio_id": "bfa4a1e9-ed9d-4af2-8bbd-be512168d27e",
+        "presentation_audio_id": "6eef7517-162d-4f03-b23e-a590afcda2cd"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "We didn't hope to wake in the middle of the night.",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

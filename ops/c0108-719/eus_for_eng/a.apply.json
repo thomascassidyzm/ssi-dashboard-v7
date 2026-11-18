@@ -1,0 +1,211 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "fef8d933-8af7-4c0a-a9da-866de64c0130",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eus_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "d241a324-7cf3-4b7e-bfb5-1a93354216f0",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ez genuen espero gauaren erdian esna izatea.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "77e32d1e-0e48-4422-abf5-75655aebad69",
+    "target2_audio_id": "98a35467-b7e3-4a60-b794-8d77f5463d98"
+   },
+   "after": {
+    "id": "d241a324-7cf3-4b7e-bfb5-1a93354216f0",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Ez genuen espero gauaren erdian esna izatea.",
+    "known_audio_id": null,
+    "target1_audio_id": "77e32d1e-0e48-4422-abf5-75655aebad69",
+    "target2_audio_id": "98a35467-b7e3-4a60-b794-8d77f5463d98"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eus_for_eng",
+    "id": "eus_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "eus_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "gauaren erdian esna",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "target1_audio_id": "c4180c7f-46a7-4f94-bc84-81e143cb8beb",
+    "target2_audio_id": "9d9fcc93-febf-4a92-8596-86c04d9beb8a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eus_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "gauaren erdian esna",
+    "known_audio_id": null,
+    "target1_audio_id": "c4180c7f-46a7-4f94-bc84-81e143cb8beb",
+    "target2_audio_id": "9d9fcc93-febf-4a92-8596-86c04d9beb8a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eus_for_eng",
+    "id": "eus_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "eus_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I wake in the middle of the night",
+    "target_text": "gauaren erdian esna naiz",
+    "known_audio_id": "1f2f8bb5-0391-4bdb-9431-5b77f888f39e",
+    "target1_audio_id": "67ea6263-d4d5-47f0-bfd3-10b62b1b9490",
+    "target2_audio_id": "79c704fa-c0d9-4076-9781-197872681d4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eus_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I wake up in the middle of the night",
+    "target_text": "gauaren erdian esna naiz",
+    "known_audio_id": null,
+    "target1_audio_id": "67ea6263-d4d5-47f0-bfd3-10b62b1b9490",
+    "target2_audio_id": "79c704fa-c0d9-4076-9781-197872681d4b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eus_for_eng",
+    "id": "eus_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "eus_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ez genuen espero gauaren erdian esna izatea",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "77e32d1e-0e48-4422-abf5-75655aebad69",
+    "target2_audio_id": "98a35467-b7e3-4a60-b794-8d77f5463d98",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eus_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "ez genuen espero gauaren erdian esna izatea",
+    "known_audio_id": null,
+    "target1_audio_id": "77e32d1e-0e48-4422-abf5-75655aebad69",
+    "target2_audio_id": "98a35467-b7e3-4a60-b794-8d77f5463d98",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eus_for_eng",
+    "id": "eus_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "eus_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not happy when I wake in the middle of the night",
+    "target_text": "gauaren erdian esna pozik ez nago",
+    "known_audio_id": "072aaaa9-7ae4-4bd3-81c5-1078ab42090f",
+    "target1_audio_id": "96abb839-bfbe-4c9c-9807-11b07c2e4123",
+    "target2_audio_id": "460a1baa-2ec0-4e8d-b5ff-ac36f0897e33",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eus_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not happy when I wake up in the middle of the night",
+    "target_text": "gauaren erdian esna pozik ez nago",
+    "known_audio_id": null,
+    "target1_audio_id": "96abb839-bfbe-4c9c-9807-11b07c2e4123",
+    "target2_audio_id": "460a1baa-2ec0-4e8d-b5ff-ac36f0897e33",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'm not happy when I wake in the middle of the night",
+    "known_audio_id": "072aaaa9-7ae4-4bd3-81c5-1078ab42090f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "I wake in the middle of the night",
+    "known_audio_id": "1f2f8bb5-0391-4bdb-9431-5b77f888f39e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eus_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-56-08-528Z-fef8d933-8af7-4c0a-a9da-866de64c0130.json"
+}

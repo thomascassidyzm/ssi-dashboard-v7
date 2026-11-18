@@ -1,0 +1,146 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "known_text": "we weren't expecting"
+   },
+   "expect": {
+    "known_text": "we weren't hoping",
+    "target_text": "ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we weren't expecting"
+   },
+   "expect": {
+    "known_text": "we weren't hoping",
+    "target_text": "ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we weren't expecting to wake up"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to wake up",
+    "target_text": "uyanmayı ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we weren't expecting to see"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see",
+    "target_text": "görmeyi ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "we weren't expecting to see this"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see this",
+    "target_text": "bunu görmeyi ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we weren't expecting to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to wake up in the middle of the night",
+    "target_text": "gecenin ortasında uyanmayı ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we weren't expecting to see something like this"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see something like this",
+    "target_text": "böyle bir şey görmeyi ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we weren't expecting to see the answer, unfortunately"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see the answer, unfortunately",
+    "target_text": "cevabı görmeyi ummuyorduk, maalesef"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "we weren't expecting to see what you did"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see what you did",
+    "target_text": "ne yaptığını görmeyi ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we weren't expecting to wake up, I agree"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to wake up, I agree",
+    "target_text": "uyanmayı ummuyorduk, katılıyorum"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "we weren't expecting to see more words"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see more words",
+    "target_text": "daha fazla kelime görmeyi ummuyorduk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U07",
+   "set": {
+    "known_text": "we weren't expecting to see this, that's why we need to change"
+   },
+   "expect": {
+    "known_text": "we weren't hoping to see this, that's why we need to change",
+    "target_text": "bunu görmeyi ummuyorduk, bu yüzden değiştirmemiz gerekiyor"
+   }
+  }
+ ]
+}

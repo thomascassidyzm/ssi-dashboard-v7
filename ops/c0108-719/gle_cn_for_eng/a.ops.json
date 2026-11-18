@@ -1,0 +1,212 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "us to wake up"
+   },
+   "expect": {
+    "known_text": "us to wake",
+    "target_text": "go ndúiseodh muid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "I want us to wake up now"
+   },
+   "expect": {
+    "known_text": "I want us to wake now",
+    "target_text": "tá mé ag iarraidh go ndúiseodh muid anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I'd like us to wake up today"
+   },
+   "expect": {
+    "known_text": "I'd like us to wake today",
+    "target_text": "ba mhaith liom go ndúiseodh muid inniu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "he wants us to wake up now"
+   },
+   "expect": {
+    "known_text": "he wants us to wake now",
+    "target_text": "tá sé ag iarraidh go ndúiseodh muid anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I want us to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I want us to wake in the middle of the night",
+    "target_text": "tá mé ag iarraidh go ndúiseodh muid i lár na hoíche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I'd like us to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I'd like us to wake in the middle of the night",
+    "target_text": "ba mhaith liom go ndúiseodh muid i lár na hoíche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we hoped to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hoped to wake in the middle of the night",
+    "target_text": "bhí súil againn go ndúiseodh muid i lár na hoíche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "he wants us to wake up today"
+   },
+   "expect": {
+    "known_text": "he wants us to wake today",
+    "target_text": "tá sé ag iarraidh go ndúiseodh muid inniu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we hoped to wake up now"
+   },
+   "expect": {
+    "known_text": "we hoped to wake now",
+    "target_text": "bhí súil againn go ndúiseodh muid anois"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "ní raibh súil againn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we didn't expect to wake up now"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake now",
+    "target_text": "ní raibh súil againn go ndúiseodh muid anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't expect to see the answer"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see the answer",
+    "target_text": "ní raibh súil againn go bhfeicfeadh muid an freagra"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we didn't expect to wake up today"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake today",
+    "target_text": "ní raibh súil againn go ndúiseodh muid inniu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ní raibh súil againn go ndúiseodh muid i lár na hoíche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we didn't expect to see what you were doing"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see what you were doing",
+    "target_text": "ní raibh súil againn go bhfeicfeadh muid an rud a bhí tú a dhéanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we didn't expect to see the answer today"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see the answer today",
+    "target_text": "ní raibh súil againn go bhfeicfeadh muid an freagra inniu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "we didn't expect to see what we're doing now"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see what we're doing now",
+    "target_text": "ní raibh súil againn go bhfeicfeadh muid an rud atá muid a dhéanamh anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_cn_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we didn't expect to see many more words in Irish"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see many more words in Irish",
+    "target_text": "ní raibh súil againn go bhfeicfeadh muid mórán níos mó focla i nGaeilge"
+   }
+  }
+ ]
+}

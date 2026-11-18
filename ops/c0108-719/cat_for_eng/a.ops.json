@@ -1,0 +1,105 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "known_text": "we didn't expect to wake up",
+    "components": [
+     {
+      "known": "we didn't expect",
+      "target": "no esperàvem"
+     },
+     {
+      "known": "to wake up",
+      "target": "despertar"
+     },
+     {
+      "known": "ourselves",
+      "target": "nos"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "no esperàvem despertar-nos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "no esperàvem despertar-nos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't expect to wake up at night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake at night",
+    "target_text": "no esperàvem despertar-nos de nit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we didn't expect to wake up at midnight"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake at midnight",
+    "target_text": "no esperàvem despertar-nos a mitja nit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "no esperàvem despertar-nos a mitja nit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we didn't expect to wake up early"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake early",
+    "target_text": "no esperàvem despertar-nos aviat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "we didn't expect to wake up at six"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake at six",
+    "target_text": "no esperàvem despertar-nos a les sis"
+   }
+  }
+ ]
+}

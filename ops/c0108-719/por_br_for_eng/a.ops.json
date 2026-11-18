@@ -1,0 +1,156 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "we didn't expect to wake up",
+    "components": [
+     {
+      "known": "we didn't expect",
+      "target": "não esperávamos"
+     },
+     {
+      "known": "to wake up",
+      "target": "acordar"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "nós não esperávamos acordar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02C01",
+   "set": {
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "não esperávamos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02C02",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "acordar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "nós não esperávamos acordar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't expect to wake up this morning"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake this morning",
+    "target_text": "nós não esperávamos acordar esta manhã"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we didn't expect to wake up like this"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake like this",
+    "target_text": "nós não esperávamos acordar assim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "unfortunately we didn't expect to wake up like this"
+   },
+   "expect": {
+    "known_text": "unfortunately we didn't hope to wake like this",
+    "target_text": "infelizmente nós não esperávamos acordar assim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "that is why we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "that is why we didn't hope to wake",
+    "target_text": "é por isso que nós não esperávamos acordar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nós não esperávamos acordar no meio da noite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we didn't expect to wake up tonight"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake tonight",
+    "target_text": "nós não esperávamos acordar esta noite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02U07",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "nós não esperávamos acordar no meio da noite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "unfortunately we didn't expect to wake up like this"
+   },
+   "expect": {
+    "known_text": "unfortunately we didn't hope to wake up like this",
+    "target_text": "infelizmente nós não esperávamos acordar assim"
+   }
+  }
+ ]
+}

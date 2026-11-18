@@ -1,0 +1,377 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "3a934a49-ccec-49c4-a72b-27d7c20adb76",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "9c0b9b5f-2133-4a16-9566-538f1bb14dae",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "No esperàvem despertar-nos a mitja nit.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8a7c80a7-ca0b-4749-8209-f5e52e28091a",
+    "target2_audio_id": "3e7dd0c5-ae2b-407d-8c37-d89cac0e4136"
+   },
+   "after": {
+    "id": "9c0b9b5f-2133-4a16-9566-538f1bb14dae",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "No esperàvem despertar-nos a mitja nit.",
+    "known_audio_id": null,
+    "target1_audio_id": "8a7c80a7-ca0b-4749-8209-f5e52e28091a",
+    "target2_audio_id": "3e7dd0c5-ae2b-407d-8c37-d89cac0e4136"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "4dcb9940-ba9f-4b8e-b37c-2bd242e6e2f3",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "we didn't hope",
+      "target": "no esperàvem"
+     },
+     {
+      "known": "to wake",
+      "target": "despertar"
+     },
+     {
+      "known": "ourselves",
+      "target": "nos"
+     }
+    ],
+    "target_text": "no esperàvem despertar-nos",
+    "known_audio_id": "bfa4a1e9-ed9d-4af2-8bbd-be512168d27e",
+    "target1_audio_id": "c1c957d5-77fd-41bb-a59c-4053a8cb62c8",
+    "target2_audio_id": "cf601113-3f8f-496f-a8fd-4ad39f7a3d2f",
+    "presentation_audio_id": "6eef7517-162d-4f03-b23e-a590afcda2cd"
+   },
+   "after": {
+    "id": "4dcb9940-ba9f-4b8e-b37c-2bd242e6e2f3",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we didn't expect to wake up",
+    "components": [
+     {
+      "known": "we didn't expect",
+      "target": "no esperàvem"
+     },
+     {
+      "known": "to wake up",
+      "target": "despertar"
+     },
+     {
+      "known": "ourselves",
+      "target": "nos"
+     }
+    ],
+    "target_text": "no esperàvem despertar-nos",
+    "known_audio_id": null,
+    "target1_audio_id": "c1c957d5-77fd-41bb-a59c-4053a8cb62c8",
+    "target2_audio_id": "cf601113-3f8f-496f-a8fd-4ad39f7a3d2f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "id": "cat_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "cat_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake",
+    "target_text": "no esperàvem despertar-nos",
+    "known_audio_id": "bfa4a1e9-ed9d-4af2-8bbd-be512168d27e",
+    "target1_audio_id": "c1c957d5-77fd-41bb-a59c-4053a8cb62c8",
+    "target2_audio_id": "cf601113-3f8f-496f-a8fd-4ad39f7a3d2f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cat_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "no esperàvem despertar-nos",
+    "known_audio_id": null,
+    "target1_audio_id": "c1c957d5-77fd-41bb-a59c-4053a8cb62c8",
+    "target2_audio_id": "cf601113-3f8f-496f-a8fd-4ad39f7a3d2f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "id": "cat_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "cat_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake at night",
+    "target_text": "no esperàvem despertar-nos de nit",
+    "known_audio_id": "1b0419da-c42a-4a43-9700-f9dd7812f051",
+    "target1_audio_id": "7ec1ae85-b716-40df-a390-5d426fce5692",
+    "target2_audio_id": "f07bfd1f-7e09-4edd-b674-0199e3489af9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cat_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up at night",
+    "target_text": "no esperàvem despertar-nos de nit",
+    "known_audio_id": null,
+    "target1_audio_id": "7ec1ae85-b716-40df-a390-5d426fce5692",
+    "target2_audio_id": "f07bfd1f-7e09-4edd-b674-0199e3489af9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "id": "cat_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "cat_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake at midnight",
+    "target_text": "no esperàvem despertar-nos a mitja nit",
+    "known_audio_id": "14302746-dbd2-49d1-9a1b-57b46fc26e9c",
+    "target1_audio_id": "8a7c80a7-ca0b-4749-8209-f5e52e28091a",
+    "target2_audio_id": "3e7dd0c5-ae2b-407d-8c37-d89cac0e4136",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cat_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up at midnight",
+    "target_text": "no esperàvem despertar-nos a mitja nit",
+    "known_audio_id": null,
+    "target1_audio_id": "8a7c80a7-ca0b-4749-8209-f5e52e28091a",
+    "target2_audio_id": "3e7dd0c5-ae2b-407d-8c37-d89cac0e4136",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "id": "cat_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "cat_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "no esperàvem despertar-nos a mitja nit",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "8a7c80a7-ca0b-4749-8209-f5e52e28091a",
+    "target2_audio_id": "3e7dd0c5-ae2b-407d-8c37-d89cac0e4136",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cat_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "no esperàvem despertar-nos a mitja nit",
+    "known_audio_id": null,
+    "target1_audio_id": "8a7c80a7-ca0b-4749-8209-f5e52e28091a",
+    "target2_audio_id": "3e7dd0c5-ae2b-407d-8c37-d89cac0e4136",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "id": "cat_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "cat_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake early",
+    "target_text": "no esperàvem despertar-nos aviat",
+    "known_audio_id": "12386b71-0b4d-4902-8930-3b2ecea5e288",
+    "target1_audio_id": "646ff3d9-12af-496e-8744-2a4571343ac1",
+    "target2_audio_id": "eb79e6ad-4aba-45b4-b161-8cd0356f8b54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cat_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up early",
+    "target_text": "no esperàvem despertar-nos aviat",
+    "known_audio_id": null,
+    "target1_audio_id": "646ff3d9-12af-496e-8744-2a4571343ac1",
+    "target2_audio_id": "eb79e6ad-4aba-45b4-b161-8cd0356f8b54",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cat_for_eng",
+    "id": "cat_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "cat_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake at six",
+    "target_text": "no esperàvem despertar-nos a les sis",
+    "known_audio_id": "7920d16a-9ae3-40a9-8d6c-218048aa4cf9",
+    "target1_audio_id": "1f154864-cc27-4535-b036-0995d656923f",
+    "target2_audio_id": "625ec6d2-eb56-4329-8aaa-1629470eecec",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cat_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up at six",
+    "target_text": "no esperàvem despertar-nos a les sis",
+    "known_audio_id": null,
+    "target1_audio_id": "1f154864-cc27-4535-b036-0995d656923f",
+    "target2_audio_id": "625ec6d2-eb56-4329-8aaa-1629470eecec",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "we didn't hope to wake at six",
+    "known_audio_id": "7920d16a-9ae3-40a9-8d6c-218048aa4cf9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we didn't hope to wake early",
+    "known_audio_id": "12386b71-0b4d-4902-8930-3b2ecea5e288"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we didn't hope to wake at midnight",
+    "known_audio_id": "14302746-dbd2-49d1-9a1b-57b46fc26e9c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't hope to wake at night",
+    "known_audio_id": "1b0419da-c42a-4a43-9700-f9dd7812f051"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cat_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "bfa4a1e9-ed9d-4af2-8bbd-be512168d27e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4dcb9940-ba9f-4b8e-b37c-2bd242e6e2f3",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "we didn't hope",
+      "target": "no esperàvem"
+     },
+     {
+      "known": "to wake",
+      "target": "despertar"
+     },
+     {
+      "known": "ourselves",
+      "target": "nos"
+     }
+    ],
+    "known_audio_id": "bfa4a1e9-ed9d-4af2-8bbd-be512168d27e",
+    "presentation_audio_id": "6eef7517-162d-4f03-b23e-a590afcda2cd"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-55-45-668Z-3a934a49-ccec-49c4-a72b-27d7c20adb76.json"
+}

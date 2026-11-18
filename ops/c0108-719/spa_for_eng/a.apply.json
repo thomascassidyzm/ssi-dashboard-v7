@@ -1,0 +1,394 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "5261d667-c35a-499e-b38f-47066a24279c",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "28475ed1-ff62-484d-9bf9-e7dd0f9de6df",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "no esperábamos despertarnos en medio de la noche",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "cd16b2fd-d54f-4c8f-959b-c34bccc1a18e",
+    "target2_audio_id": "1f9eba45-e57d-428d-bac7-29f142805778"
+   },
+   "after": {
+    "id": "28475ed1-ff62-484d-9bf9-e7dd0f9de6df",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "no esperábamos despertarnos en medio de la noche",
+    "known_audio_id": null,
+    "target1_audio_id": "cd16b2fd-d54f-4c8f-959b-c34bccc1a18e",
+    "target2_audio_id": "1f9eba45-e57d-428d-bac7-29f142805778"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "64c5b951-deb0-48dc-9c9c-7556734d983a",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "to wake in the middle of the night",
+    "components": [
+     {
+      "known": "to wake in the middle of the night",
+      "target": "despertarnos en medio de la noche"
+     }
+    ],
+    "target_text": "despertarnos en medio de la noche",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "target1_audio_id": "0772d990-410b-4a5a-afa3-394cf79e35c9",
+    "target2_audio_id": "7adf788d-47d1-4016-8d0e-74578ac520af",
+    "presentation_audio_id": "bd9f842f-7f88-44e7-b818-475d216ffd50"
+   },
+   "after": {
+    "id": "64c5b951-deb0-48dc-9c9c-7556734d983a",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "to wake up in the middle of the night",
+    "components": [
+     {
+      "known": "to wake up in the middle of the night",
+      "target": "despertarnos en medio de la noche"
+     }
+    ],
+    "target_text": "despertarnos en medio de la noche",
+    "known_audio_id": null,
+    "target1_audio_id": "0772d990-410b-4a5a-afa3-394cf79e35c9",
+    "target2_audio_id": "7adf788d-47d1-4016-8d0e-74578ac520af",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We don't want to wake in the middle of the night",
+    "target_text": "No queremos despertarnos en medio de la noche",
+    "known_audio_id": "11427584-49d6-46cf-a3e0-cc5c27d32755",
+    "target1_audio_id": "7019db21-0bcc-44a8-8193-96a116780095",
+    "target2_audio_id": "4bb43f38-223c-4d46-8f44-0d7c6830c6d2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We don't want to wake up in the middle of the night",
+    "target_text": "No queremos despertarnos en medio de la noche",
+    "known_audio_id": null,
+    "target1_audio_id": "7019db21-0bcc-44a8-8193-96a116780095",
+    "target2_audio_id": "4bb43f38-223c-4d46-8f44-0d7c6830c6d2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We don't need to wake in the middle of the night",
+    "target_text": "No necesitamos despertarnos en medio de la noche",
+    "known_audio_id": "45cab7e1-35cb-42c5-954a-b31abd6918c1",
+    "target1_audio_id": "93b55c44-7500-4839-be34-89a9bbe2dc6c",
+    "target2_audio_id": "b47770f2-64ba-41df-8553-78dcb22a0f0b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We don't need to wake up in the middle of the night",
+    "target_text": "No necesitamos despertarnos en medio de la noche",
+    "known_audio_id": null,
+    "target1_audio_id": "93b55c44-7500-4839-be34-89a9bbe2dc6c",
+    "target2_audio_id": "b47770f2-64ba-41df-8553-78dcb22a0f0b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L01B05"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L01B05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We need to wake in the middle of the night",
+    "target_text": "Necesitamos despertarnos en medio de la noche",
+    "known_audio_id": "ffa970e8-ad36-45f4-86f0-b3555fb86b04",
+    "target1_audio_id": "af78a82c-d428-4385-b7a0-de02dc01d63c",
+    "target2_audio_id": "9ce835c3-f854-4769-b0cf-913e98f0a32f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L01B05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We need to wake up in the middle of the night",
+    "target_text": "Necesitamos despertarnos en medio de la noche",
+    "known_audio_id": null,
+    "target1_audio_id": "af78a82c-d428-4385-b7a0-de02dc01d63c",
+    "target2_audio_id": "9ce835c3-f854-4769-b0cf-913e98f0a32f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We don't need to wake in the middle of the night to learn Spanish",
+    "target_text": "No necesitamos despertarnos en medio de la noche para aprender español",
+    "known_audio_id": "a0f997c3-4233-4d61-856e-c20a7291e4aa",
+    "target1_audio_id": "f0bb8a66-b823-4e23-b95e-897493bc2295",
+    "target2_audio_id": "bc3a0960-1b35-43bf-b1ed-6e38497651f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We don't need to wake up in the middle of the night to learn Spanish",
+    "target_text": "No necesitamos despertarnos en medio de la noche para aprender español",
+    "known_audio_id": null,
+    "target1_audio_id": "f0bb8a66-b823-4e23-b95e-897493bc2295",
+    "target2_audio_id": "bc3a0960-1b35-43bf-b1ed-6e38497651f3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L01U08"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We didn't want to wake in the middle of the night again",
+    "target_text": "No queríamos despertarnos en medio de la noche otra vez",
+    "known_audio_id": "b2aa73a0-b72a-4f52-95d3-c76657677136",
+    "target1_audio_id": "0cf43f33-18e8-4f95-b14f-1ad69f7270cb",
+    "target2_audio_id": "facdd75f-9d25-4de9-b6c4-b0c71a9e991d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We didn't want to wake up in the middle of the night again",
+    "target_text": "No queríamos despertarnos en medio de la noche otra vez",
+    "known_audio_id": null,
+    "target1_audio_id": "0cf43f33-18e8-4f95-b14f-1ad69f7270cb",
+    "target2_audio_id": "facdd75f-9d25-4de9-b6c4-b0c71a9e991d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L01U15"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L01U15",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We were hoping not to wake in the middle of the night, but it wasn't possible",
+    "target_text": "Esperábamos no despertarnos en medio de la noche, pero no fue posible",
+    "known_audio_id": "cc80d288-0d12-4c0d-b6a9-b34ec145296e",
+    "target1_audio_id": "2d898b48-be55-4814-aa7a-043c8f9a5440",
+    "target2_audio_id": "f1aa8e14-5b22-488c-ae05-4f2aa04d8773",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L01U15",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "We were hoping not to wake up in the middle of the night, but it wasn't possible",
+    "target_text": "Esperábamos no despertarnos en medio de la noche, pero no fue posible",
+    "known_audio_id": null,
+    "target1_audio_id": "2d898b48-be55-4814-aa7a-043c8f9a5440",
+    "target2_audio_id": "f1aa8e14-5b22-488c-ae05-4f2aa04d8773",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L02U12"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L02U12",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "no esperábamos despertarnos en medio de la noche",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "cd16b2fd-d54f-4c8f-959b-c34bccc1a18e",
+    "target2_audio_id": "1f9eba45-e57d-428d-bac7-29f142805778",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L02U12",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "no esperábamos despertarnos en medio de la noche",
+    "known_audio_id": null,
+    "target1_audio_id": "cd16b2fd-d54f-4c8f-959b-c34bccc1a18e",
+    "target2_audio_id": "1f9eba45-e57d-428d-bac7-29f142805778",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L02U12",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01U15",
+   "set": {
+    "known_text": "We were hoping not to wake in the middle of the night, but it wasn't possible",
+    "known_audio_id": "cc80d288-0d12-4c0d-b6a9-b34ec145296e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01U08",
+   "set": {
+    "known_text": "We didn't want to wake in the middle of the night again",
+    "known_audio_id": "b2aa73a0-b72a-4f52-95d3-c76657677136"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "We don't need to wake in the middle of the night to learn Spanish",
+    "known_audio_id": "a0f997c3-4233-4d61-856e-c20a7291e4aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01B05",
+   "set": {
+    "known_text": "We need to wake in the middle of the night",
+    "known_audio_id": "ffa970e8-ad36-45f4-86f0-b3555fb86b04"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "We don't need to wake in the middle of the night",
+    "known_audio_id": "45cab7e1-35cb-42c5-954a-b31abd6918c1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "We don't want to wake in the middle of the night",
+    "known_audio_id": "11427584-49d6-46cf-a3e0-cc5c27d32755"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "64c5b951-deb0-48dc-9c9c-7556734d983a",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "components": [
+     {
+      "known": "to wake in the middle of the night",
+      "target": "despertarnos en medio de la noche"
+     }
+    ],
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "presentation_audio_id": "bd9f842f-7f88-44e7-b818-475d216ffd50"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-54-38-759Z-5261d667-c35a-499e-b38f-47066a24279c.json"
+}

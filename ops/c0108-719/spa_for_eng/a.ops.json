@@ -1,0 +1,108 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "known_text": "to wake up in the middle of the night",
+    "components": [
+     {
+      "known": "to wake up in the middle of the night",
+      "target": "despertarnos en medio de la noche"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "despertarnos en medio de la noche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "We don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "We don't want to wake in the middle of the night",
+    "target_text": "No queremos despertarnos en medio de la noche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "We don't need to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "We don't need to wake in the middle of the night",
+    "target_text": "No necesitamos despertarnos en medio de la noche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01B05",
+   "set": {
+    "known_text": "We need to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "We need to wake in the middle of the night",
+    "target_text": "Necesitamos despertarnos en medio de la noche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "We don't need to wake up in the middle of the night to learn Spanish"
+   },
+   "expect": {
+    "known_text": "We don't need to wake in the middle of the night to learn Spanish",
+    "target_text": "No necesitamos despertarnos en medio de la noche para aprender español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01U08",
+   "set": {
+    "known_text": "We didn't want to wake up in the middle of the night again"
+   },
+   "expect": {
+    "known_text": "We didn't want to wake in the middle of the night again",
+    "target_text": "No queríamos despertarnos en medio de la noche otra vez"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L01U15",
+   "set": {
+    "known_text": "We were hoping not to wake up in the middle of the night, but it wasn't possible"
+   },
+   "expect": {
+    "known_text": "We were hoping not to wake in the middle of the night, but it wasn't possible",
+    "target_text": "Esperábamos no despertarnos en medio de la noche, pero no fue posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L02U12",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "no esperábamos despertarnos en medio de la noche"
+   }
+  }
+ ]
+}

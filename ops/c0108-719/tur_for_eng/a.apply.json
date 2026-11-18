@@ -1,0 +1,540 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "40bb84bc-d7be-4975-93fa-30b695a07690",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "05f257d3-c233-4485-aee5-7617fc09c596",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Gecenin ortasında uyanmayı ummuyorduk.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "ff34e486-3e6c-4948-bee0-903c04238bcd",
+    "target2_audio_id": "0e829d50-07d0-451b-98a4-f789483bdd92"
+   },
+   "after": {
+    "id": "05f257d3-c233-4485-aee5-7617fc09c596",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Gecenin ortasında uyanmayı ummuyorduk.",
+    "known_audio_id": null,
+    "target1_audio_id": "ff34e486-3e6c-4948-bee0-903c04238bcd",
+    "target2_audio_id": "0e829d50-07d0-451b-98a4-f789483bdd92"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "4b542efe-9b2c-4ba7-b684-5ac4cdd7a3ed",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we weren't hoping",
+    "target_text": "ummuyorduk",
+    "known_audio_id": "dfb020c3-624d-4b7f-b54f-a5b08ef977fc",
+    "target1_audio_id": "7c3b8cb7-1c27-4a4b-b5b5-373e56d58ad9",
+    "target2_audio_id": "a2527550-e00e-42b4-86ab-09c37d47a0d2",
+    "presentation_audio_id": "58d18e44-c5d1-42b3-bf9b-1b0e8cc745df"
+   },
+   "after": {
+    "id": "4b542efe-9b2c-4ba7-b684-5ac4cdd7a3ed",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we weren't expecting",
+    "target_text": "ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "7c3b8cb7-1c27-4a4b-b5b5-373e56d58ad9",
+    "target2_audio_id": "a2527550-e00e-42b4-86ab-09c37d47a0d2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping",
+    "target_text": "ummuyorduk",
+    "known_audio_id": "dfb020c3-624d-4b7f-b54f-a5b08ef977fc",
+    "target1_audio_id": "7c3b8cb7-1c27-4a4b-b5b5-373e56d58ad9",
+    "target2_audio_id": "a2527550-e00e-42b4-86ab-09c37d47a0d2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting",
+    "target_text": "ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "7c3b8cb7-1c27-4a4b-b5b5-373e56d58ad9",
+    "target2_audio_id": "a2527550-e00e-42b4-86ab-09c37d47a0d2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to wake up",
+    "target_text": "uyanmayı ummuyorduk",
+    "known_audio_id": "e46641fe-7a7a-4dd7-b117-3d266542937f",
+    "target1_audio_id": "f2052d2a-7921-4586-99f3-f870c5332329",
+    "target2_audio_id": "4c420236-701d-4274-866c-0d8f9e999af8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to wake up",
+    "target_text": "uyanmayı ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "f2052d2a-7921-4586-99f3-f870c5332329",
+    "target2_audio_id": "4c420236-701d-4274-866c-0d8f9e999af8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see",
+    "target_text": "görmeyi ummuyorduk",
+    "known_audio_id": "0b3b592e-4d48-4565-8e50-92e02df67687",
+    "target1_audio_id": "c9fbd632-899e-461e-aab3-98f99ded1a75",
+    "target2_audio_id": "522d1534-2ce6-4003-ac90-40fef5eae927",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see",
+    "target_text": "görmeyi ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "c9fbd632-899e-461e-aab3-98f99ded1a75",
+    "target2_audio_id": "522d1534-2ce6-4003-ac90-40fef5eae927",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03B04"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see this",
+    "target_text": "bunu görmeyi ummuyorduk",
+    "known_audio_id": "e9060bb2-c71e-4531-83cd-47c7f13db53c",
+    "target1_audio_id": "cf4bffd7-859e-4cba-acd6-c0beba197695",
+    "target2_audio_id": "70ad757e-4f51-4669-a3b0-0b88488f454a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see this",
+    "target_text": "bunu görmeyi ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "cf4bffd7-859e-4cba-acd6-c0beba197695",
+    "target2_audio_id": "70ad757e-4f51-4669-a3b0-0b88488f454a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to wake up in the middle of the night",
+    "target_text": "gecenin ortasında uyanmayı ummuyorduk",
+    "known_audio_id": "a43b5c8f-e15c-4d9b-ba66-d336747c16df",
+    "target1_audio_id": "ff34e486-3e6c-4948-bee0-903c04238bcd",
+    "target2_audio_id": "0e829d50-07d0-451b-98a4-f789483bdd92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to wake up in the middle of the night",
+    "target_text": "gecenin ortasında uyanmayı ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "ff34e486-3e6c-4948-bee0-903c04238bcd",
+    "target2_audio_id": "0e829d50-07d0-451b-98a4-f789483bdd92",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see something like this",
+    "target_text": "böyle bir şey görmeyi ummuyorduk",
+    "known_audio_id": "2559a75b-e8db-419d-942a-39b8ebf978af",
+    "target1_audio_id": "6c1e0581-2775-4752-b4ad-f6d0c1069f2d",
+    "target2_audio_id": "551fae23-6e0b-4f83-a8fc-325a1c5fcae9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see something like this",
+    "target_text": "böyle bir şey görmeyi ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "6c1e0581-2775-4752-b4ad-f6d0c1069f2d",
+    "target2_audio_id": "551fae23-6e0b-4f83-a8fc-325a1c5fcae9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see the answer, unfortunately",
+    "target_text": "cevabı görmeyi ummuyorduk, maalesef",
+    "known_audio_id": "35f072be-5c77-4744-b551-da7b9a219a51",
+    "target1_audio_id": "1ced1cc6-809f-40bd-92f5-50f54c5fcad3",
+    "target2_audio_id": "f1f6d87b-4778-492b-929c-f72a9be47f3f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see the answer, unfortunately",
+    "target_text": "cevabı görmeyi ummuyorduk, maalesef",
+    "known_audio_id": null,
+    "target1_audio_id": "1ced1cc6-809f-40bd-92f5-50f54c5fcad3",
+    "target2_audio_id": "f1f6d87b-4778-492b-929c-f72a9be47f3f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see what you did",
+    "target_text": "ne yaptığını görmeyi ummuyorduk",
+    "known_audio_id": "23f0dd3a-6bea-4cfa-b423-f66bcd9d7e8c",
+    "target1_audio_id": "a206519c-33a7-41c1-a052-8998fe2d9350",
+    "target2_audio_id": "566c7513-111f-49e8-addf-87c61cc4b568",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see what you did",
+    "target_text": "ne yaptığını görmeyi ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "a206519c-33a7-41c1-a052-8998fe2d9350",
+    "target2_audio_id": "566c7513-111f-49e8-addf-87c61cc4b568",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to wake up, I agree",
+    "target_text": "uyanmayı ummuyorduk, katılıyorum",
+    "known_audio_id": "72ce180e-1f28-4808-b31e-e17166f4962f",
+    "target1_audio_id": "94671095-9f77-4a82-b168-74ea38652f0d",
+    "target2_audio_id": "1eddd158-b2bf-40f1-a538-f81632d2e2be",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to wake up, I agree",
+    "target_text": "uyanmayı ummuyorduk, katılıyorum",
+    "known_audio_id": null,
+    "target1_audio_id": "94671095-9f77-4a82-b168-74ea38652f0d",
+    "target2_audio_id": "1eddd158-b2bf-40f1-a538-f81632d2e2be",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U06"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see more words",
+    "target_text": "daha fazla kelime görmeyi ummuyorduk",
+    "known_audio_id": "3e116ff9-6835-46ad-a0f2-bbdb2e84abf0",
+    "target1_audio_id": "3db54588-87b4-4bd8-852e-2e303cf75f67",
+    "target2_audio_id": "41b24395-6962-4f93-aefe-3e435a79018d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see more words",
+    "target_text": "daha fazla kelime görmeyi ummuyorduk",
+    "known_audio_id": null,
+    "target1_audio_id": "3db54588-87b4-4bd8-852e-2e303cf75f67",
+    "target2_audio_id": "41b24395-6962-4f93-aefe-3e435a79018d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tur_for_eng",
+    "id": "tur_for_eng:S0108L03U07"
+   },
+   "before": {
+    "id": "tur_for_eng:S0108L03U07",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't hoping to see this, that's why we need to change",
+    "target_text": "bunu görmeyi ummuyorduk, bu yüzden değiştirmemiz gerekiyor",
+    "known_audio_id": "51efdc41-6858-42cb-9828-f7c8b35acc19",
+    "target1_audio_id": "fdc05fb2-6f1a-4de0-aaba-64de1d50b419",
+    "target2_audio_id": "f9342bb6-820b-4152-8978-b4d202106fcd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tur_for_eng:S0108L03U07",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we weren't expecting to see this, that's why we need to change",
+    "target_text": "bunu görmeyi ummuyorduk, bu yüzden değiştirmemiz gerekiyor",
+    "known_audio_id": null,
+    "target1_audio_id": "fdc05fb2-6f1a-4de0-aaba-64de1d50b419",
+    "target2_audio_id": "f9342bb6-820b-4152-8978-b4d202106fcd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U07",
+   "set": {
+    "known_text": "we weren't hoping to see this, that's why we need to change",
+    "known_audio_id": "51efdc41-6858-42cb-9828-f7c8b35acc19"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "we weren't hoping to see more words",
+    "known_audio_id": "3e116ff9-6835-46ad-a0f2-bbdb2e84abf0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we weren't hoping to wake up, I agree",
+    "known_audio_id": "72ce180e-1f28-4808-b31e-e17166f4962f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "we weren't hoping to see what you did",
+    "known_audio_id": "23f0dd3a-6bea-4cfa-b423-f66bcd9d7e8c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we weren't hoping to see the answer, unfortunately",
+    "known_audio_id": "35f072be-5c77-4744-b551-da7b9a219a51"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we weren't hoping to see something like this",
+    "known_audio_id": "2559a75b-e8db-419d-942a-39b8ebf978af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we weren't hoping to wake up in the middle of the night",
+    "known_audio_id": "a43b5c8f-e15c-4d9b-ba66-d336747c16df"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "we weren't hoping to see this",
+    "known_audio_id": "e9060bb2-c71e-4531-83cd-47c7f13db53c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we weren't hoping to see",
+    "known_audio_id": "0b3b592e-4d48-4565-8e50-92e02df67687"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we weren't hoping to wake up",
+    "known_audio_id": "e46641fe-7a7a-4dd7-b117-3d266542937f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tur_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we weren't hoping",
+    "known_audio_id": "dfb020c3-624d-4b7f-b54f-a5b08ef977fc"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4b542efe-9b2c-4ba7-b684-5ac4cdd7a3ed",
+   "set": {
+    "known_text": "we weren't hoping",
+    "known_audio_id": "dfb020c3-624d-4b7f-b54f-a5b08ef977fc",
+    "presentation_audio_id": "58d18e44-c5d1-42b3-bf9b-1b0e8cc745df"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-58-03-926Z-40bb84bc-d7be-4975-93fa-30b695a07690.json"
+}

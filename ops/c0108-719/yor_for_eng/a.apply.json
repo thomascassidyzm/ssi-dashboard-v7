@@ -1,0 +1,1076 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "8b0d6bc1-dda7-4591-b674-23bf16cee984",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ef8505be-f4ed-49e5-a0a3-8f1afe24b381",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night",
+    "target_text": "A kò retí láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "ef8505be-f4ed-49e5-a0a3-8f1afe24b381",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night",
+    "target_text": "A kò retí láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "b298d87c-69da-4b2e-8daf-0eb3998af6fe",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "we didn't hope",
+    "target_text": "a kò retí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "b298d87c-69da-4b2e-8daf-0eb3998af6fe",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "we didn't expect",
+    "target_text": "a kò retí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to go",
+    "target_text": "a kò retí láti lọ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to go",
+    "target_text": "a kò retí láti lọ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to finish",
+    "target_text": "a kò retí láti parí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to finish",
+    "target_text": "a kò retí láti parí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to see the story",
+    "target_text": "a kò retí láti rí ìtàn náà",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to see the story",
+    "target_text": "a kò retí láti rí ìtàn náà",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to find the answer",
+    "target_text": "a kò retí láti rí ìdáhùn náà",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to find the answer",
+    "target_text": "a kò retí láti rí ìdáhùn náà",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to meet those people",
+    "target_text": "a kò retí láti pàdé àwọn ènìyàn wọ̀nyẹn",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to meet those people",
+    "target_text": "a kò retí láti pàdé àwọn ènìyàn wọ̀nyẹn",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to work all day",
+    "target_text": "a kò retí láti ṣiṣẹ́ gbogbo ọjọ́",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to work all day",
+    "target_text": "a kò retí láti ṣiṣẹ́ gbogbo ọjọ́",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to see what you were doing",
+    "target_text": "a kò retí láti rí ohun tí o ń ṣe",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to see what you were doing",
+    "target_text": "a kò retí láti rí ohun tí o ń ṣe",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to learn many more words",
+    "target_text": "a kò retí láti kọ́ ọ̀pọ̀lọpọ̀ ọ̀rọ̀ síi",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to learn many more words",
+    "target_text": "a kò retí láti kọ́ ọ̀pọ̀lọpọ̀ ọ̀rọ̀ síi",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think that we didn't hope to go home",
+    "target_text": "mo rò pé a kò retí láti lọ sílé",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think that we didn't expect to go home",
+    "target_text": "mo rò pé a kò retí láti lọ sílé",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "lego.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "aa2f76b6-cb5f-416b-83bc-ded042576fd5",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake",
+    "components": [
+     {
+      "known": "to",
+      "target": "láti"
+     },
+     {
+      "known": "wake",
+      "target": "jí"
+     }
+    ],
+    "target_text": "láti jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "aa2f76b6-cb5f-416b-83bc-ded042576fd5",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake up",
+    "components": [
+     {
+      "known": "to",
+      "target": "láti"
+     },
+     {
+      "known": "wake up",
+      "target": "jí"
+     }
+    ],
+    "target_text": "láti jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02C02"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake",
+    "target_text": "jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up",
+    "target_text": "jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake",
+    "target_text": "a kò retí láti jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "a kò retí láti jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake",
+    "target_text": "mi ò fẹ́ láti jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake up",
+    "target_text": "mi ò fẹ́ láti jí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake this morning",
+    "target_text": "láti jí ní òwúrọ̀ yìí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up this morning",
+    "target_text": "láti jí ní òwúrọ̀ yìí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't like to wake quickly",
+    "target_text": "mi ò fẹ́ràn láti jí yárayára",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't like to wake up quickly",
+    "target_text": "mi ò fẹ́ràn láti jí yárayára",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to wake this morning",
+    "target_text": "mo nílò láti jí ní òwúrọ̀ yìí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to wake up this morning",
+    "target_text": "mo nílò láti jí ní òwúrọ̀ yìí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I didn't want to wake yesterday",
+    "target_text": "mi ò fẹ́ láti jí lánàá",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I didn't want to wake up yesterday",
+    "target_text": "mi ò fẹ́ láti jí lánàá",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's difficult to wake when I'm tired",
+    "target_text": "ó ṣòro láti jí nígbà tí ó rẹ̀ mí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's difficult to wake up when I'm tired",
+    "target_text": "ó ṣòro láti jí nígbà tí ó rẹ̀ mí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake tonight",
+    "target_text": "a kò retí láti jí lálẹ́ yìí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up tonight",
+    "target_text": "a kò retí láti jí lálẹ́ yìí",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L02U06"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not ready to wake yet",
+    "target_text": "mi ò ti ṣetán láti jí síbẹ̀",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not ready to wake up yet",
+    "target_text": "mi ò ti ṣetán láti jí síbẹ̀",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "a kò retí láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "a kò retí láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "mi ò fẹ́ láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "mi ò fẹ́ láti jí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yor_for_eng",
+    "id": "yor_for_eng:S0108L03U06"
+   },
+   "before": {
+    "id": "yor_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to finish in the middle of the night",
+    "target_text": "a kò retí láti parí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yor_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to finish in the middle of the night",
+    "target_text": "a kò retí láti parí ní àárín òru",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "we didn't hope to finish in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "I'm not ready to wake yet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we didn't hope to wake tonight"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "it's difficult to wake when I'm tired"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I didn't want to wake yesterday"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I need to wake this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I don't like to wake quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "to wake this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02C02",
+   "set": {
+    "known_text": "wake"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "aa2f76b6-cb5f-416b-83bc-ded042576fd5",
+   "set": {
+    "known_text": "to wake",
+    "components": [
+     {
+      "known": "to",
+      "target": "láti"
+     },
+     {
+      "known": "wake",
+      "target": "jí"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "I think that we didn't hope to go home"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope to learn many more words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to see what you were doing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to work all day"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to meet those people"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to find the answer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to see the story"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope to go"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "b298d87c-69da-4b2e-8daf-0eb3998af6fe",
+   "set": {
+    "known_text": "we didn't hope"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-56-29-729Z-8b0d6bc1-dda7-4591-b674-23bf16cee984.json"
+}

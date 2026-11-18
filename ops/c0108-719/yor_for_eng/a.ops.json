@@ -1,0 +1,299 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "a kò retí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't expect to go"
+   },
+   "expect": {
+    "known_text": "we didn't hope to go",
+    "target_text": "a kò retí láti lọ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't expect to finish"
+   },
+   "expect": {
+    "known_text": "we didn't hope to finish",
+    "target_text": "a kò retí láti parí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't expect to see the story"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see the story",
+    "target_text": "a kò retí láti rí ìtàn náà"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't expect to find the answer"
+   },
+   "expect": {
+    "known_text": "we didn't hope to find the answer",
+    "target_text": "a kò retí láti rí ìdáhùn náà"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't expect to meet those people"
+   },
+   "expect": {
+    "known_text": "we didn't hope to meet those people",
+    "target_text": "a kò retí láti pàdé àwọn ènìyàn wọ̀nyẹn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't expect to work all day"
+   },
+   "expect": {
+    "known_text": "we didn't hope to work all day",
+    "target_text": "a kò retí láti ṣiṣẹ́ gbogbo ọjọ́"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't expect to see what you were doing"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see what you were doing",
+    "target_text": "a kò retí láti rí ohun tí o ń ṣe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't expect to learn many more words"
+   },
+   "expect": {
+    "known_text": "we didn't hope to learn many more words",
+    "target_text": "a kò retí láti kọ́ ọ̀pọ̀lọpọ̀ ọ̀rọ̀ síi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "I think that we didn't expect to go home"
+   },
+   "expect": {
+    "known_text": "I think that we didn't hope to go home",
+    "target_text": "mo rò pé a kò retí láti lọ sílé"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "to wake up",
+    "components": [
+     {
+      "known": "to",
+      "target": "láti"
+     },
+     {
+      "known": "wake up",
+      "target": "jí"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "láti jí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02C02",
+   "set": {
+    "known_text": "wake up"
+   },
+   "expect": {
+    "known_text": "wake",
+    "target_text": "jí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "a kò retí láti jí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "I don't want to wake",
+    "target_text": "mi ò fẹ́ láti jí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "to wake up this morning"
+   },
+   "expect": {
+    "known_text": "to wake this morning",
+    "target_text": "láti jí ní òwúrọ̀ yìí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I don't like to wake up quickly"
+   },
+   "expect": {
+    "known_text": "I don't like to wake quickly",
+    "target_text": "mi ò fẹ́ràn láti jí yárayára"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I need to wake up this morning"
+   },
+   "expect": {
+    "known_text": "I need to wake this morning",
+    "target_text": "mo nílò láti jí ní òwúrọ̀ yìí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I didn't want to wake up yesterday"
+   },
+   "expect": {
+    "known_text": "I didn't want to wake yesterday",
+    "target_text": "mi ò fẹ́ láti jí lánàá"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "it's difficult to wake up when I'm tired"
+   },
+   "expect": {
+    "known_text": "it's difficult to wake when I'm tired",
+    "target_text": "ó ṣòro láti jí nígbà tí ó rẹ̀ mí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we didn't expect to wake up tonight"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake tonight",
+    "target_text": "a kò retí láti jí lálẹ́ yìí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "I'm not ready to wake up yet"
+   },
+   "expect": {
+    "known_text": "I'm not ready to wake yet",
+    "target_text": "mi ò ti ṣetán láti jí síbẹ̀"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "láti jí ní àárín òru"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "a kò retí láti jí ní àárín òru"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "mi ò fẹ́ láti jí ní àárín òru"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yor_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "we didn't expect to finish in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to finish in the middle of the night",
+    "target_text": "a kò retí láti parí ní àárín òru"
+   }
+  }
+ ]
+}

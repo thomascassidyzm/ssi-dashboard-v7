@@ -1,0 +1,500 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "cfb79396-3b78-49f4-ab4e-8c47b3e33f8c",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "2613eec9-e9ee-469f-8b24-b4ff9e5d6814",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Ní raibh muid ag súil le dúiseacht i lár na hoíche",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "ca97d2e9-e078-4006-a3d7-01413812edfd",
+    "target2_audio_id": "b7dab2c2-dde3-42b7-8301-a393519b99fb"
+   },
+   "after": {
+    "id": "2613eec9-e9ee-469f-8b24-b4ff9e5d6814",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Ní raibh muid ag súil le dúiseacht i lár na hoíche",
+    "known_audio_id": null,
+    "target1_audio_id": "ca97d2e9-e078-4006-a3d7-01413812edfd",
+    "target2_audio_id": "b7dab2c2-dde3-42b7-8301-a393519b99fb"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "638a1790-65e1-4db0-8fca-22149d2bf057",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "to wake",
+    "target_text": "dúiseacht",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "target1_audio_id": "5f11d50c-30ad-4d60-b184-1b4131ca36f9",
+    "target2_audio_id": "65ca88d2-8e58-4f83-aa77-70069adc71f1",
+    "presentation_audio_id": "1bedc597-d37d-422e-bbc8-1cb19cf5ba73"
+   },
+   "after": {
+    "id": "638a1790-65e1-4db0-8fca-22149d2bf057",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "to wake up",
+    "target_text": "dúiseacht",
+    "known_audio_id": null,
+    "target1_audio_id": "5f11d50c-30ad-4d60-b184-1b4131ca36f9",
+    "target2_audio_id": "65ca88d2-8e58-4f83-aa77-70069adc71f1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake early",
+    "target_text": "dúiseacht go luath",
+    "known_audio_id": "cfc7fea6-4938-4dec-b6f2-c2def36852e7",
+    "target1_audio_id": "8244fce2-00e0-4a3f-bdf1-0a8a48f8dd17",
+    "target2_audio_id": "5814041e-fccb-4f39-b00f-58e9bc20eeb5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake up early",
+    "target_text": "dúiseacht go luath",
+    "known_audio_id": null,
+    "target1_audio_id": "8244fce2-00e0-4a3f-bdf1-0a8a48f8dd17",
+    "target2_audio_id": "5814041e-fccb-4f39-b00f-58e9bc20eeb5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake at six",
+    "target_text": "dúiseacht ar a sé a chlog",
+    "known_audio_id": "0c840dcc-0c1b-4cb2-a121-ce0a16730ff0",
+    "target1_audio_id": "54796591-99ce-40ef-ab2a-ef3cdf743465",
+    "target2_audio_id": "11635935-f9a1-4d8a-b265-d0684f06a8ac",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake up at six",
+    "target_text": "dúiseacht ar a sé a chlog",
+    "known_audio_id": null,
+    "target1_audio_id": "54796591-99ce-40ef-ab2a-ef3cdf743465",
+    "target2_audio_id": "11635935-f9a1-4d8a-b265-d0684f06a8ac",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "dúiseacht i lár na hoíche",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "target1_audio_id": "a85b4fa9-cca0-4925-89b3-fb516a4d8396",
+    "target2_audio_id": "6d357625-5e4b-4c10-a45c-00f7a1e9d347",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "dúiseacht i lár na hoíche",
+    "known_audio_id": null,
+    "target1_audio_id": "a85b4fa9-cca0-4925-89b3-fb516a4d8396",
+    "target2_audio_id": "6d357625-5e4b-4c10-a45c-00f7a1e9d347",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L05B05"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L05B05",
+    "seed_number": 108,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "we were not hoping to wake in the middle of the night",
+    "target_text": "Ní raibh muid ag súil le dúiseacht i lár na hoíche",
+    "known_audio_id": "69a8dcfb-815d-4f18-b234-9a9e64a7c8dc",
+    "target1_audio_id": "19ccd1e2-aa2c-4c89-8cee-aa2b4aa1a061",
+    "target2_audio_id": "b5e66d60-8d56-47d7-9e88-1cb94eb75c68",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L05B05",
+    "seed_number": 108,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "we were not expecting to wake up in the middle of the night",
+    "target_text": "Ní raibh muid ag súil le dúiseacht i lár na hoíche",
+    "known_audio_id": null,
+    "target1_audio_id": "19ccd1e2-aa2c-4c89-8cee-aa2b4aa1a061",
+    "target2_audio_id": "b5e66d60-8d56-47d7-9e88-1cb94eb75c68",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "lego.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "864775cb-f7cd-4880-b31c-eaaaaa20db63",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "hoping to",
+    "target_text": "ag súil le",
+    "known_audio_id": "be78af38-2a4c-48d3-b478-101908ae08dd",
+    "target1_audio_id": "e5d2b60d-97d5-4d8a-b4b9-2d0c234ac4e1",
+    "target2_audio_id": "b40a2ef5-4e74-4fd0-9eb5-8c72a0e1ab58",
+    "presentation_audio_id": "5ee6f7aa-e325-4c20-88ab-6b537f660c77"
+   },
+   "after": {
+    "id": "864775cb-f7cd-4880-b31c-eaaaaa20db63",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "expecting to",
+    "target_text": "ag súil le",
+    "known_audio_id": null,
+    "target1_audio_id": "e5d2b60d-97d5-4d8a-b4b9-2d0c234ac4e1",
+    "target2_audio_id": "b40a2ef5-4e74-4fd0-9eb5-8c72a0e1ab58",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "hoping to see what you were doing",
+    "target_text": "ag súil le feiceáil cad a bhí tú a dhéanamh",
+    "known_audio_id": "cf9b3a5f-ab90-4a1b-b95d-989416d3adf8",
+    "target1_audio_id": "9ff9421c-2912-4fd0-a990-92d022233aa7",
+    "target2_audio_id": "6827270d-61fa-40b7-9aac-af95438c5ce5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expecting to see what you were doing",
+    "target_text": "ag súil le feiceáil cad a bhí tú a dhéanamh",
+    "known_audio_id": null,
+    "target1_audio_id": "9ff9421c-2912-4fd0-a990-92d022233aa7",
+    "target2_audio_id": "6827270d-61fa-40b7-9aac-af95438c5ce5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "hoping to speak",
+    "target_text": "ag súil le labhairt",
+    "known_audio_id": "da8f8b27-4e5c-42ce-9136-a3180b76a88c",
+    "target1_audio_id": "e020abcb-4700-4533-9a08-a120500826e0",
+    "target2_audio_id": "6144ab18-277e-4103-b49c-9760eeee5e8e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expecting to speak",
+    "target_text": "ag súil le labhairt",
+    "known_audio_id": null,
+    "target1_audio_id": "e020abcb-4700-4533-9a08-a120500826e0",
+    "target2_audio_id": "6144ab18-277e-4103-b49c-9760eeee5e8e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "hoping to improve",
+    "target_text": "ag súil le feabhsú",
+    "known_audio_id": "10b90b9d-5acd-4d2a-b8dd-ddf8eed9035d",
+    "target1_audio_id": "154a3375-9195-4d04-bf22-d7425bf8f383",
+    "target2_audio_id": "10fc7913-028d-447b-8ba1-78a547a17591",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expecting to improve",
+    "target_text": "ag súil le feabhsú",
+    "known_audio_id": null,
+    "target1_audio_id": "154a3375-9195-4d04-bf22-d7425bf8f383",
+    "target2_audio_id": "10fc7913-028d-447b-8ba1-78a547a17591",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L02B04"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "hoping to come back",
+    "target_text": "ag súil le teacht ar ais",
+    "known_audio_id": "d2293178-f283-4ed6-a9b4-1830671406af",
+    "target1_audio_id": "1ecdc459-7ccd-44a7-8db1-8835ffc118a4",
+    "target2_audio_id": "117f71bf-1e7b-4b24-9f2f-9ad28df3244f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expecting to come back",
+    "target_text": "ag súil le teacht ar ais",
+    "known_audio_id": null,
+    "target1_audio_id": "1ecdc459-7ccd-44a7-8db1-8835ffc118a4",
+    "target2_audio_id": "117f71bf-1e7b-4b24-9f2f-9ad28df3244f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gle_for_eng",
+    "id": "gle_for_eng:S0108L02B05"
+   },
+   "before": {
+    "id": "gle_for_eng:S0108L02B05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "hoping to learn more",
+    "target_text": "ag súil le níos mó a fhoghlaim",
+    "known_audio_id": "b585da19-b4e8-4561-83d3-5f658a386fb5",
+    "target1_audio_id": "4f8d9177-1d6c-48c9-bbf9-878abd421112",
+    "target2_audio_id": "eaff59aa-4cbd-46d0-9bbc-781963adee5b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gle_for_eng:S0108L02B05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expecting to learn more",
+    "target_text": "ag súil le níos mó a fhoghlaim",
+    "known_audio_id": null,
+    "target1_audio_id": "4f8d9177-1d6c-48c9-bbf9-878abd421112",
+    "target2_audio_id": "eaff59aa-4cbd-46d0-9bbc-781963adee5b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B05",
+   "set": {
+    "known_text": "hoping to learn more",
+    "known_audio_id": "b585da19-b4e8-4561-83d3-5f658a386fb5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "hoping to come back",
+    "known_audio_id": "d2293178-f283-4ed6-a9b4-1830671406af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "hoping to improve",
+    "known_audio_id": "10b90b9d-5acd-4d2a-b8dd-ddf8eed9035d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "hoping to speak",
+    "known_audio_id": "da8f8b27-4e5c-42ce-9136-a3180b76a88c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "hoping to see what you were doing",
+    "known_audio_id": "cf9b3a5f-ab90-4a1b-b95d-989416d3adf8"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "864775cb-f7cd-4880-b31c-eaaaaa20db63",
+   "set": {
+    "known_text": "hoping to",
+    "known_audio_id": "be78af38-2a4c-48d3-b478-101908ae08dd",
+    "presentation_audio_id": "5ee6f7aa-e325-4c20-88ab-6b537f660c77"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L05B05",
+   "set": {
+    "known_text": "we were not hoping to wake in the middle of the night",
+    "known_audio_id": "69a8dcfb-815d-4f18-b234-9a9e64a7c8dc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "to wake at six",
+    "known_audio_id": "0c840dcc-0c1b-4cb2-a121-ce0a16730ff0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "to wake early",
+    "known_audio_id": "cfc7fea6-4938-4dec-b6f2-c2def36852e7"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "638a1790-65e1-4db0-8fca-22149d2bf057",
+   "set": {
+    "known_text": "to wake",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": "1bedc597-d37d-422e-bbc8-1cb19cf5ba73"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-57-22-967Z-cfb79396-3b78-49f4-ab4e-8c47b3e33f8c.json"
+}

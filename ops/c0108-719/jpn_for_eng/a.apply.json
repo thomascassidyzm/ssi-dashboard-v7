@@ -1,0 +1,1092 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "c322bdc9-a962-4e45-808f-8b7d30876e10",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "758c7bd2-9409-4ea6-9283-71a79ba6fb52",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "夜中に起きるとは思ってなかった",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "9bf3eb5a-27d0-4d56-9003-3164e7c3f122",
+    "target2_audio_id": "aa26063c-6340-46ed-a981-0f5e4765cc8d"
+   },
+   "after": {
+    "id": "758c7bd2-9409-4ea6-9283-71a79ba6fb52",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "夜中に起きるとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "9bf3eb5a-27d0-4d56-9003-3164e7c3f122",
+    "target2_audio_id": "aa26063c-6340-46ed-a981-0f5e4765cc8d"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "75b1909a-599d-4504-816d-e721456fcfe2",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "to wake",
+    "components": [
+     {
+      "known": "to wake",
+      "target": "起きる"
+     }
+    ],
+    "target_text": "起きる",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "target1_audio_id": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+    "target2_audio_id": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+    "presentation_audio_id": "207b4ec0-ef41-458e-a9f3-2e96f2b5716b"
+   },
+   "after": {
+    "id": "75b1909a-599d-4504-816d-e721456fcfe2",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "to wake up",
+    "components": [
+     {
+      "known": "to wake up",
+      "target": "起きる"
+     }
+    ],
+    "target_text": "起きる",
+    "known_audio_id": null,
+    "target1_audio_id": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+    "target2_audio_id": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to wake",
+    "target_text": "起きる",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "target1_audio_id": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+    "target2_audio_id": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to wake up",
+    "target_text": "起きる",
+    "known_audio_id": null,
+    "target1_audio_id": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+    "target2_audio_id": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I will wake",
+    "target_text": "起きる",
+    "known_audio_id": "1c0e2d70-8ed4-4465-b0a0-a49fc14367fe",
+    "target1_audio_id": "e0e92bd9-6bee-4f6b-bf19-011a24124b2f",
+    "target2_audio_id": "860095bc-f99a-4ee6-a3f5-e57361d1524b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I will wake up",
+    "target_text": "起きる",
+    "known_audio_id": null,
+    "target1_audio_id": "e0e92bd9-6bee-4f6b-bf19-011a24124b2f",
+    "target2_audio_id": "860095bc-f99a-4ee6-a3f5-e57361d1524b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I can wake",
+    "target_text": "起きることができる",
+    "known_audio_id": "628f52cb-82a0-49e4-b3e4-867b64ae6058",
+    "target1_audio_id": "4beef2ff-7971-495a-84d1-3ec3b09820fa",
+    "target2_audio_id": "309bfaaf-7534-4655-a642-0b20f521ee00",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I can wake up",
+    "target_text": "起きることができる",
+    "known_audio_id": null,
+    "target1_audio_id": "4beef2ff-7971-495a-84d1-3ec3b09820fa",
+    "target2_audio_id": "309bfaaf-7534-4655-a642-0b20f521ee00",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I must wake",
+    "target_text": "起きる必要がある",
+    "known_audio_id": "96d314a8-fa24-4c57-9d75-b3b366eb9e69",
+    "target1_audio_id": "bff29e1c-937b-45b5-b060-172b25916bd2",
+    "target2_audio_id": "975ad424-7b7b-466a-93e9-c84c6bf4e80f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I must wake up",
+    "target_text": "起きる必要がある",
+    "known_audio_id": null,
+    "target1_audio_id": "bff29e1c-937b-45b5-b060-172b25916bd2",
+    "target2_audio_id": "975ad424-7b7b-466a-93e9-c84c6bf4e80f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I will wake tomorrow",
+    "target_text": "明日起きる",
+    "known_audio_id": "b56f84f4-de06-4bf5-9318-d14f2f44b7ba",
+    "target1_audio_id": "594e720e-dc76-4392-bdbd-f0fdcc895aa5",
+    "target2_audio_id": "d5c08aea-535b-49d8-b4bd-585a3e5d7246",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I will wake up tomorrow",
+    "target_text": "明日起きる",
+    "known_audio_id": null,
+    "target1_audio_id": "594e720e-dc76-4392-bdbd-f0fdcc895aa5",
+    "target2_audio_id": "d5c08aea-535b-49d8-b4bd-585a3e5d7246",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think I can wake early",
+    "target_text": "早く起きることができると思う",
+    "known_audio_id": "ca20fcd4-a035-4772-b144-62ff2c98c4e2",
+    "target1_audio_id": "c2f09ed4-bd61-48d9-b009-a2dd45b0f956",
+    "target2_audio_id": "4eddce26-1db6-47e0-aaad-de67a72e6905",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think I can wake up early",
+    "target_text": "早く起きることができると思う",
+    "known_audio_id": null,
+    "target1_audio_id": "c2f09ed4-bd61-48d9-b009-a2dd45b0f956",
+    "target2_audio_id": "4eddce26-1db6-47e0-aaad-de67a72e6905",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I hope I can wake tomorrow",
+    "target_text": "明日起きることができるといいな",
+    "known_audio_id": "cf6b2f68-ef1b-4b8e-9e6c-6a4b0e2e0fe5",
+    "target1_audio_id": "92fde64a-14db-49e9-91b9-81f9511a3218",
+    "target2_audio_id": "6caeb125-51a2-49b5-a8ad-85ce2021e0c9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I hope I can wake up tomorrow",
+    "target_text": "明日起きることができるといいな",
+    "known_audio_id": null,
+    "target1_audio_id": "92fde64a-14db-49e9-91b9-81f9511a3218",
+    "target2_audio_id": "6caeb125-51a2-49b5-a8ad-85ce2021e0c9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I need to wake before you",
+    "target_text": "あなたの前に起きる必要がある",
+    "known_audio_id": "2c827fbd-9d46-4c85-95a1-74a7b3d70c3a",
+    "target1_audio_id": "06751d01-9d51-45ad-95bd-986e84b08573",
+    "target2_audio_id": "83db368b-037f-434a-a524-1073a7f98415",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I need to wake up before you",
+    "target_text": "あなたの前に起きる必要がある",
+    "known_audio_id": null,
+    "target1_audio_id": "06751d01-9d51-45ad-95bd-986e84b08573",
+    "target2_audio_id": "83db368b-037f-434a-a524-1073a7f98415",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I felt I must wake soon",
+    "target_text": "すぐ起きる必要があると感じた",
+    "known_audio_id": "28a6512d-e769-4082-aa66-a21c0aa88303",
+    "target1_audio_id": "77448176-7453-424d-9b90-ad296025d1f7",
+    "target2_audio_id": "c4ba77f4-3cbc-4fd0-89dd-1beaef6e423e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I felt I must wake up soon",
+    "target_text": "すぐ起きる必要があると感じた",
+    "known_audio_id": null,
+    "target1_audio_id": "77448176-7453-424d-9b90-ad296025d1f7",
+    "target2_audio_id": "c4ba77f4-3cbc-4fd0-89dd-1beaef6e423e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U07"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that is why I must wake",
+    "target_text": "だから起きる必要がある",
+    "known_audio_id": "7e20e892-1e26-404e-94d8-a62e86eab69e",
+    "target1_audio_id": "d6eca505-5967-407a-b9d2-1e05776e9f1d",
+    "target2_audio_id": "b1323cff-b12a-481e-a23d-785096be44e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that is why I must wake up",
+    "target_text": "だから起きる必要がある",
+    "known_audio_id": null,
+    "target1_audio_id": "d6eca505-5967-407a-b9d2-1e05776e9f1d",
+    "target2_audio_id": "b1323cff-b12a-481e-a23d-785096be44e6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L01U08"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "even if I'm tired, I must wake",
+    "target_text": "疲れていても起きる必要がある",
+    "known_audio_id": "62af70b2-f232-4e59-8009-3c3c734a8774",
+    "target1_audio_id": "a94745d2-340c-40c7-8565-97a4e7ccf1aa",
+    "target2_audio_id": "9d7f1b85-42e9-4766-a3fb-73a9ca663283",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "even if I'm tired, I must wake up",
+    "target_text": "疲れていても起きる必要がある",
+    "known_audio_id": null,
+    "target1_audio_id": "a94745d2-340c-40c7-8565-97a4e7ccf1aa",
+    "target2_audio_id": "9d7f1b85-42e9-4766-a3fb-73a9ca663283",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think I must wake in the middle of the night",
+    "target_text": "夜中に起きる必要があると思う",
+    "known_audio_id": "ca865588-b375-4111-856e-ad295af9fb24",
+    "target1_audio_id": "12adfde1-c809-4f5c-8add-8ca57d6c5bc1",
+    "target2_audio_id": "5a1cb251-9cb1-4bc1-a6ba-f691fef756bb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think I must wake up in the middle of the night",
+    "target_text": "夜中に起きる必要があると思う",
+    "known_audio_id": null,
+    "target1_audio_id": "12adfde1-c809-4f5c-8add-8ca57d6c5bc1",
+    "target2_audio_id": "5a1cb251-9cb1-4bc1-a6ba-f691fef756bb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I hope I don't wake in the middle of the night",
+    "target_text": "夜中に起きることがないといいな",
+    "known_audio_id": "1dc31f89-4f78-43ba-ac70-e4b735e9266f",
+    "target1_audio_id": "4c046ca6-274e-49db-a977-f2fadd82bf2e",
+    "target2_audio_id": "9bb51bca-6d0b-496f-9815-4b0f79d7d3c1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I hope I don't wake up in the middle of the night",
+    "target_text": "夜中に起きることがないといいな",
+    "known_audio_id": null,
+    "target1_audio_id": "4c046ca6-274e-49db-a977-f2fadd82bf2e",
+    "target2_audio_id": "9bb51bca-6d0b-496f-9815-4b0f79d7d3c1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L02U08"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "that is why I must wake in the middle of the night",
+    "target_text": "だから夜中に起きる必要がある",
+    "known_audio_id": "415e57ae-d2ca-4ccd-a8bd-2e5deaac6125",
+    "target1_audio_id": "41ed800c-2910-424a-9ebc-6311ccdf45a7",
+    "target2_audio_id": "781f57e1-3ab8-425e-857e-b2d26996eee5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "that is why I must wake up in the middle of the night",
+    "target_text": "だから夜中に起きる必要がある",
+    "known_audio_id": null,
+    "target1_audio_id": "41ed800c-2910-424a-9ebc-6311ccdf45a7",
+    "target2_audio_id": "781f57e1-3ab8-425e-857e-b2d26996eee5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "lego.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "3a66b971-5a8f-4fe7-bc9e-dd625f77c4a6",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "didn't hope to",
+    "target_text": "とは思ってなかった",
+    "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f",
+    "target1_audio_id": "174a44b9-3172-451e-b4ad-42529155c017",
+    "target2_audio_id": "12e9de3b-8e33-4c09-a660-3078b3826250",
+    "presentation_audio_id": "508ae1f8-88ce-48be-9938-00c9da2d5ecc"
+   },
+   "after": {
+    "id": "3a66b971-5a8f-4fe7-bc9e-dd625f77c4a6",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "didn't expect to",
+    "target_text": "とは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "174a44b9-3172-451e-b4ad-42529155c017",
+    "target2_audio_id": "12e9de3b-8e33-4c09-a660-3078b3826250",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "didn't hope to",
+    "target_text": "とは思ってなかった",
+    "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f",
+    "target1_audio_id": "174a44b9-3172-451e-b4ad-42529155c017",
+    "target2_audio_id": "12e9de3b-8e33-4c09-a660-3078b3826250",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "didn't expect to",
+    "target_text": "とは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "174a44b9-3172-451e-b4ad-42529155c017",
+    "target2_audio_id": "12e9de3b-8e33-4c09-a660-3078b3826250",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't hope to do it",
+    "target_text": "するとは思ってなかった",
+    "known_audio_id": "06b54247-86ef-45be-aaa1-7dfe71f5234f",
+    "target1_audio_id": "d7158f8f-1523-4ea1-b725-90856b22e4cf",
+    "target2_audio_id": "6c946d78-97fe-4675-b7e1-c1d7d46bc54b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to do it",
+    "target_text": "するとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "d7158f8f-1523-4ea1-b725-90856b22e4cf",
+    "target2_audio_id": "6c946d78-97fe-4675-b7e1-c1d7d46bc54b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't hope to see it",
+    "target_text": "見るとは思ってなかった",
+    "known_audio_id": "c1389257-c26b-42fd-b67c-93b90a6233c9",
+    "target1_audio_id": "9dbc3b20-57db-4c33-b66f-4bbf9625980b",
+    "target2_audio_id": "0f498575-34f1-407e-b39a-8dd3949f668c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to see it",
+    "target_text": "見るとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "9dbc3b20-57db-4c33-b66f-4bbf9625980b",
+    "target2_audio_id": "0f498575-34f1-407e-b39a-8dd3949f668c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03B04"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't hope to know it",
+    "target_text": "知るとは思ってなかった",
+    "known_audio_id": "7eb206d9-3b6d-4039-aa35-20b6ad0c8c5d",
+    "target1_audio_id": "a4811fc4-8ca3-4400-8da3-487338a335f1",
+    "target2_audio_id": "24a7199f-c5b1-4ed9-a370-5a5cf4250e43",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to know it",
+    "target_text": "知るとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "a4811fc4-8ca3-4400-8da3-487338a335f1",
+    "target2_audio_id": "24a7199f-c5b1-4ed9-a370-5a5cf4250e43",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't hope to change my way of doing it",
+    "target_text": "やり方を変えるとは思ってなかった",
+    "known_audio_id": "531afa6b-1f78-47c0-afb0-f3cfdd157de6",
+    "target1_audio_id": "8f76332e-03f1-49e4-afa2-5a0dec4b4ea2",
+    "target2_audio_id": "45c39be5-f8f5-4175-916f-adad64fb1f94",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to change my way of doing it",
+    "target_text": "やり方を変えるとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "8f76332e-03f1-49e4-afa2-5a0dec4b4ea2",
+    "target2_audio_id": "45c39be5-f8f5-4175-916f-adad64fb1f94",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't hope to see what you were doing",
+    "target_text": "何をしてるか見るとは思ってなかった",
+    "known_audio_id": "b1b7b2a6-aa5c-43f8-afb8-b4a500a5010c",
+    "target1_audio_id": "f6b0bc52-5588-4ea2-a23b-db085a23510e",
+    "target2_audio_id": "2e44ebaa-79ca-4849-8dff-0414f35d79b0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to see what you were doing",
+    "target_text": "何をしてるか見るとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "f6b0bc52-5588-4ea2-a23b-db085a23510e",
+    "target2_audio_id": "2e44ebaa-79ca-4849-8dff-0414f35d79b0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03U06"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't hope to find the answer",
+    "target_text": "答えを見つけるとは思ってなかった",
+    "known_audio_id": "4951a11a-1b2a-4171-8da1-0eebf60a2da9",
+    "target1_audio_id": "3b7fb519-863b-4c6e-8369-1ad363f56c62",
+    "target2_audio_id": "4c2eb075-dd94-4a37-aefc-a58a7ced3986",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to find the answer",
+    "target_text": "答えを見つけるとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "3b7fb519-863b-4c6e-8369-1ad363f56c62",
+    "target2_audio_id": "4c2eb075-dd94-4a37-aefc-a58a7ced3986",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03U07"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03U07",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "that is why I didn't hope to feel happy",
+    "target_text": "だから楽しいと感じるとは思ってなかった",
+    "known_audio_id": "15d11fc4-b27d-4a27-bc82-c74f783abb17",
+    "target1_audio_id": "12117560-15c4-4702-b0ad-627d0a43ab47",
+    "target2_audio_id": "9b021dc1-3d2e-4e01-ae4e-dbe4b69a160e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03U07",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "that is why I didn't expect to feel happy",
+    "target_text": "だから楽しいと感じるとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "12117560-15c4-4702-b0ad-627d0a43ab47",
+    "target2_audio_id": "9b021dc1-3d2e-4e01-ae4e-dbe4b69a160e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "jpn_for_eng",
+    "id": "jpn_for_eng:S0108L03U08"
+   },
+   "before": {
+    "id": "jpn_for_eng:S0108L03U08",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "夜中に起きるとは思ってなかった",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "9bf3eb5a-27d0-4d56-9003-3164e7c3f122",
+    "target2_audio_id": "aa26063c-6340-46ed-a981-0f5e4765cc8d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "jpn_for_eng:S0108L03U08",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "夜中に起きるとは思ってなかった",
+    "known_audio_id": null,
+    "target1_audio_id": "9bf3eb5a-27d0-4d56-9003-3164e7c3f122",
+    "target2_audio_id": "aa26063c-6340-46ed-a981-0f5e4765cc8d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U08",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U07",
+   "set": {
+    "known_text": "that is why I didn't hope to feel happy",
+    "known_audio_id": "15d11fc4-b27d-4a27-bc82-c74f783abb17"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "I didn't hope to find the answer",
+    "known_audio_id": "4951a11a-1b2a-4171-8da1-0eebf60a2da9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "I didn't hope to see what you were doing",
+    "known_audio_id": "b1b7b2a6-aa5c-43f8-afb8-b4a500a5010c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "I didn't hope to change my way of doing it",
+    "known_audio_id": "531afa6b-1f78-47c0-afb0-f3cfdd157de6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "I didn't hope to know it",
+    "known_audio_id": "7eb206d9-3b6d-4039-aa35-20b6ad0c8c5d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "I didn't hope to see it",
+    "known_audio_id": "c1389257-c26b-42fd-b67c-93b90a6233c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "I didn't hope to do it",
+    "known_audio_id": "06b54247-86ef-45be-aaa1-7dfe71f5234f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "didn't hope to",
+    "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "3a66b971-5a8f-4fe7-bc9e-dd625f77c4a6",
+   "set": {
+    "known_text": "didn't hope to",
+    "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f",
+    "presentation_audio_id": "508ae1f8-88ce-48be-9938-00c9da2d5ecc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "that is why I must wake in the middle of the night",
+    "known_audio_id": "415e57ae-d2ca-4ccd-a8bd-2e5deaac6125"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I hope I don't wake in the middle of the night",
+    "known_audio_id": "1dc31f89-4f78-43ba-ac70-e4b735e9266f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I think I must wake in the middle of the night",
+    "known_audio_id": "ca865588-b375-4111-856e-ad295af9fb24"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U08",
+   "set": {
+    "known_text": "even if I'm tired, I must wake",
+    "known_audio_id": "62af70b2-f232-4e59-8009-3c3c734a8774"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U07",
+   "set": {
+    "known_text": "that is why I must wake",
+    "known_audio_id": "7e20e892-1e26-404e-94d8-a62e86eab69e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "I felt I must wake soon",
+    "known_audio_id": "28a6512d-e769-4082-aa66-a21c0aa88303"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "I need to wake before you",
+    "known_audio_id": "2c827fbd-9d46-4c85-95a1-74a7b3d70c3a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "I hope I can wake tomorrow",
+    "known_audio_id": "cf6b2f68-ef1b-4b8e-9e6c-6a4b0e2e0fe5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I think I can wake early",
+    "known_audio_id": "ca20fcd4-a035-4772-b144-62ff2c98c4e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I will wake tomorrow",
+    "known_audio_id": "b56f84f4-de06-4bf5-9318-d14f2f44b7ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "I must wake",
+    "known_audio_id": "96d314a8-fa24-4c57-9d75-b3b366eb9e69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "I can wake",
+    "known_audio_id": "628f52cb-82a0-49e4-b3e4-867b64ae6058"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "I will wake",
+    "known_audio_id": "1c0e2d70-8ed4-4465-b0a0-a49fc14367fe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "to wake",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "75b1909a-599d-4504-816d-e721456fcfe2",
+   "set": {
+    "known_text": "to wake",
+    "components": [
+     {
+      "known": "to wake",
+      "target": "起きる"
+     }
+    ],
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": "207b4ec0-ef41-458e-a9f3-2e96f2b5716b"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-57-10-315Z-c322bdc9-a962-4e45-808f-8b7d30876e10.json"
+}

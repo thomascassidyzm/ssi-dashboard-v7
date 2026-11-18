@@ -1,0 +1,114 @@
+{
+  "course_code": "tur_for_eng",
+  "event_id": "40bb84bc-d7be-4975-93fa-30b695a07690",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:58:03.927Z",
+  "how_to_undo": "POST /api/production/tur_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-58-03-926Z-40bb84bc-d7be-4975-93fa-30b695a07690.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U07",
+      "set": {
+        "known_text": "we weren't hoping to see this, that's why we need to change",
+        "known_audio_id": "51efdc41-6858-42cb-9828-f7c8b35acc19"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U06",
+      "set": {
+        "known_text": "we weren't hoping to see more words",
+        "known_audio_id": "3e116ff9-6835-46ad-a0f2-bbdb2e84abf0"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U05",
+      "set": {
+        "known_text": "we weren't hoping to wake up, I agree",
+        "known_audio_id": "72ce180e-1f28-4808-b31e-e17166f4962f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U04",
+      "set": {
+        "known_text": "we weren't hoping to see what you did",
+        "known_audio_id": "23f0dd3a-6bea-4cfa-b423-f66bcd9d7e8c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U03",
+      "set": {
+        "known_text": "we weren't hoping to see the answer, unfortunately",
+        "known_audio_id": "35f072be-5c77-4744-b551-da7b9a219a51"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U02",
+      "set": {
+        "known_text": "we weren't hoping to see something like this",
+        "known_audio_id": "2559a75b-e8db-419d-942a-39b8ebf978af"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03U01",
+      "set": {
+        "known_text": "we weren't hoping to wake up in the middle of the night",
+        "known_audio_id": "a43b5c8f-e15c-4d9b-ba66-d336747c16df"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03B04",
+      "set": {
+        "known_text": "we weren't hoping to see this",
+        "known_audio_id": "e9060bb2-c71e-4531-83cd-47c7f13db53c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03B03",
+      "set": {
+        "known_text": "we weren't hoping to see",
+        "known_audio_id": "0b3b592e-4d48-4565-8e50-92e02df67687"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03B02",
+      "set": {
+        "known_text": "we weren't hoping to wake up",
+        "known_audio_id": "e46641fe-7a7a-4dd7-b117-3d266542937f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "tur_for_eng:S0108L03B01",
+      "set": {
+        "known_text": "we weren't hoping",
+        "known_audio_id": "dfb020c3-624d-4b7f-b54f-a5b08ef977fc"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "4b542efe-9b2c-4ba7-b684-5ac4cdd7a3ed",
+      "set": {
+        "known_text": "we weren't hoping",
+        "known_audio_id": "dfb020c3-624d-4b7f-b54f-a5b08ef977fc",
+        "presentation_audio_id": "58d18e44-c5d1-42b3-bf9b-1b0e8cc745df"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

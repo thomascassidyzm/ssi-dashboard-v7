@@ -1,0 +1,225 @@
+{
+  "course_code": "jpn_for_eng",
+  "event_id": "c322bdc9-a962-4e45-808f-8b7d30876e10",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:57:10.315Z",
+  "how_to_undo": "POST /api/production/jpn_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-57-10-315Z-c322bdc9-a962-4e45-808f-8b7d30876e10.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03U08",
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03U07",
+      "set": {
+        "known_text": "that is why I didn't hope to feel happy",
+        "known_audio_id": "15d11fc4-b27d-4a27-bc82-c74f783abb17"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03U06",
+      "set": {
+        "known_text": "I didn't hope to find the answer",
+        "known_audio_id": "4951a11a-1b2a-4171-8da1-0eebf60a2da9"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03U05",
+      "set": {
+        "known_text": "I didn't hope to see what you were doing",
+        "known_audio_id": "b1b7b2a6-aa5c-43f8-afb8-b4a500a5010c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03U03",
+      "set": {
+        "known_text": "I didn't hope to change my way of doing it",
+        "known_audio_id": "531afa6b-1f78-47c0-afb0-f3cfdd157de6"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03B04",
+      "set": {
+        "known_text": "I didn't hope to know it",
+        "known_audio_id": "7eb206d9-3b6d-4039-aa35-20b6ad0c8c5d"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03B03",
+      "set": {
+        "known_text": "I didn't hope to see it",
+        "known_audio_id": "c1389257-c26b-42fd-b67c-93b90a6233c9"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03B02",
+      "set": {
+        "known_text": "I didn't hope to do it",
+        "known_audio_id": "06b54247-86ef-45be-aaa1-7dfe71f5234f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L03B01",
+      "set": {
+        "known_text": "didn't hope to",
+        "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3a66b971-5a8f-4fe7-bc9e-dd625f77c4a6",
+      "set": {
+        "known_text": "didn't hope to",
+        "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f",
+        "presentation_audio_id": "508ae1f8-88ce-48be-9938-00c9da2d5ecc"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L02U08",
+      "set": {
+        "known_text": "that is why I must wake in the middle of the night",
+        "known_audio_id": "415e57ae-d2ca-4ccd-a8bd-2e5deaac6125"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L02U03",
+      "set": {
+        "known_text": "I hope I don't wake in the middle of the night",
+        "known_audio_id": "1dc31f89-4f78-43ba-ac70-e4b735e9266f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L02U02",
+      "set": {
+        "known_text": "I think I must wake in the middle of the night",
+        "known_audio_id": "ca865588-b375-4111-856e-ad295af9fb24"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U08",
+      "set": {
+        "known_text": "even if I'm tired, I must wake",
+        "known_audio_id": "62af70b2-f232-4e59-8009-3c3c734a8774"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U07",
+      "set": {
+        "known_text": "that is why I must wake",
+        "known_audio_id": "7e20e892-1e26-404e-94d8-a62e86eab69e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U06",
+      "set": {
+        "known_text": "I felt I must wake soon",
+        "known_audio_id": "28a6512d-e769-4082-aa66-a21c0aa88303"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U05",
+      "set": {
+        "known_text": "I need to wake before you",
+        "known_audio_id": "2c827fbd-9d46-4c85-95a1-74a7b3d70c3a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U04",
+      "set": {
+        "known_text": "I hope I can wake tomorrow",
+        "known_audio_id": "cf6b2f68-ef1b-4b8e-9e6c-6a4b0e2e0fe5"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U03",
+      "set": {
+        "known_text": "I think I can wake early",
+        "known_audio_id": "ca20fcd4-a035-4772-b144-62ff2c98c4e2"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01U01",
+      "set": {
+        "known_text": "I will wake tomorrow",
+        "known_audio_id": "b56f84f4-de06-4bf5-9318-d14f2f44b7ba"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01B04",
+      "set": {
+        "known_text": "I must wake",
+        "known_audio_id": "96d314a8-fa24-4c57-9d75-b3b366eb9e69"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01B03",
+      "set": {
+        "known_text": "I can wake",
+        "known_audio_id": "628f52cb-82a0-49e4-b3e4-867b64ae6058"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01B02",
+      "set": {
+        "known_text": "I will wake",
+        "known_audio_id": "1c0e2d70-8ed4-4465-b0a0-a49fc14367fe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0108L01B01",
+      "set": {
+        "known_text": "to wake",
+        "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "75b1909a-599d-4504-816d-e721456fcfe2",
+      "set": {
+        "known_text": "to wake",
+        "components": [
+          {
+            "known": "to wake",
+            "target": "起きる"
+          }
+        ],
+        "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+        "presentation_audio_id": "207b4ec0-ef41-458e-a9f3-2e96f2b5716b"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

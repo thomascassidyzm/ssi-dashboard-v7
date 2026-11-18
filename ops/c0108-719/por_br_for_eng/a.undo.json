@@ -1,0 +1,124 @@
+{
+  "course_code": "por_br_for_eng",
+  "event_id": "94aab01a-adc2-43b1-8857-114485acb0e9",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:55:37.019Z",
+  "how_to_undo": "POST /api/production/por_br_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-55-37-019Z-94aab01a-adc2-43b1-8857-114485acb0e9.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02U08",
+      "set": {
+        "known_text": "unfortunately we didn't hope to wake up like this",
+        "known_audio_id": "e0275312-7f84-4792-9a60-0ab0087bc921"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02U07",
+      "set": {
+        "known_text": "we didn't hope to wake up in the middle of the night",
+        "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02U05",
+      "set": {
+        "known_text": "we didn't hope to wake tonight",
+        "known_audio_id": "d9832307-d0ba-499b-84d7-5abd990e1bbd"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02U03",
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02U02",
+      "set": {
+        "known_text": "that is why we didn't hope to wake",
+        "known_audio_id": "691b61c5-33d8-453f-bc2a-08d55bd3dbcc"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02U01",
+      "set": {
+        "known_text": "unfortunately we didn't hope to wake like this",
+        "known_audio_id": "c3998f7f-085b-48fd-9b62-15149a47527f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02B03",
+      "set": {
+        "known_text": "we didn't hope to wake like this",
+        "known_audio_id": "0b98487d-f64a-4b48-aa49-1ad4db315ad8"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02B02",
+      "set": {
+        "known_text": "we didn't hope to wake this morning",
+        "known_audio_id": "1e131c74-f75d-4730-928a-e5e60bc6000f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02B01",
+      "set": {
+        "known_text": "we didn't hope to wake",
+        "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02C02",
+      "set": {
+        "known_text": "to wake",
+        "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "por_br_for_eng:S0108L02C01",
+      "set": {
+        "known_text": "we didn't hope",
+        "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "36e911fc-d819-4681-8962-24a52c2a6e08",
+      "set": {
+        "known_text": "we didn't hope to wake",
+        "components": [
+          {
+            "known": "we didn't hope",
+            "target": "não esperávamos"
+          },
+          {
+            "known": "to wake",
+            "target": "acordar"
+          }
+        ],
+        "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+        "presentation_audio_id": "b18897d8-ffda-4b45-b8a5-c561478e4a8f"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

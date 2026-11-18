@@ -1,0 +1,16 @@
+{
+  "course_code": "sbx_for_eng",
+  "event_id": "383a250a-4f28-48d9-a5a6-8f5eeb2bfbf8",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:58:07.944Z",
+  "how_to_undo": "POST /api/production/sbx_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-58-07-944Z-383a250a-4f28-48d9-a5a6-8f5eeb2bfbf8.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night"
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "\"not\"",
+      "target": "\"ne\""
+     },
+     {
+      "known": "\"we expected\"",
+      "target": "\"sitikėjome\""
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nesitikėjome"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nesitikėjome"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nesitikėjome to",
+    "known_text": "we didn't expect it"
+   },
+   "expect": {
+    "known_text": "we didn't hope, we hoped",
+    "target_text": "nesitikėjome tikėjomės ir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "nesitikėjome kalbėti",
+    "known_text": "we didn't expect to speak"
+   },
+   "expect": {
+    "known_text": "we didn't hope to speak",
+    "target_text": "nesitikėjome kalbėti ir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01B04",
+   "set": {
+    "target_text": "nesitikėjome to pamatyti",
+    "known_text": "we didn't expect to see it"
+   },
+   "expect": {
+    "known_text": "we didn't hope, she did",
+    "target_text": "nesitikėjome ji nori"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't expect to speak Lithuanian"
+   },
+   "expect": {
+    "known_text": "we didn't hope to speak Lithuanian",
+    "target_text": "nesitikėjome kalbėti lietuviškai"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't expect to understand"
+   },
+   "expect": {
+    "known_text": "we didn't hope to understand",
+    "target_text": "nesitikėjome suprasti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "nesitikėjome tavęs pamatyti",
+    "known_text": "we didn't expect to see you"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see you",
+    "target_text": "nesitikėjome pamatyti tau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't expect to find the answer"
+   },
+   "expect": {
+    "known_text": "we didn't hope to find the answer",
+    "target_text": "nesitikėjome rasti atsakymo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "nesitikėjome pabusti ir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nesitikėjome pabusti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "in the middle of the night, to wake up"
+   },
+   "expect": {
+    "known_text": "in the middle of the night, to wake",
+    "target_text": "vidury nakties nesitikėjome pabusti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nesitikėjome pabusti vidury nakties"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "lit_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "she doesn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "target_text": "ji nenori pabusti vidury nakties"
+   }
+  }
+ ]
+}

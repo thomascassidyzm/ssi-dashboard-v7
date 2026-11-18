@@ -1,0 +1,223 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "despertar",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02B01",
+   "set": {
+    "target_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "despertar en mitad de la noche",
+    "target_text": "wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02B02",
+   "set": {
+    "target_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "no quiero despertar",
+    "target_text": "I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02B03",
+   "set": {
+    "target_text": "we hoped to wake up"
+   },
+   "expect": {
+    "known_text": "esperábamos despertar",
+    "target_text": "we hoped to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02U01",
+   "set": {
+    "target_text": "I don't want to wake up this morning"
+   },
+   "expect": {
+    "known_text": "no quiero despertar esta mañana",
+    "target_text": "I don't want to wake this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02U02",
+   "set": {
+    "target_text": "I like to wake up feeling well"
+   },
+   "expect": {
+    "known_text": "me gusta despertar sintiéndome bien",
+    "target_text": "I like to wake feeling well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02U03",
+   "set": {
+    "target_text": "we hoped to wake up soon this morning"
+   },
+   "expect": {
+    "known_text": "esperábamos despertar pronto esta mañana",
+    "target_text": "we hoped to wake soon this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02U04",
+   "set": {
+    "target_text": "I don't like to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "no me gusta despertar en mitad de la noche",
+    "target_text": "I don't like to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L02U05",
+   "set": {
+    "target_text": "you should try not to wake up so soon"
+   },
+   "expect": {
+    "known_text": "deberías intentar no despertar tan pronto",
+    "target_text": "you should try not to wake so soon"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "target_text": "we didn't expect to"
+   },
+   "expect": {
+    "known_text": "no esperábamos",
+    "target_text": "we didn't hope to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03B01",
+   "set": {
+    "target_text": "we didn't expect to"
+   },
+   "expect": {
+    "known_text": "no esperábamos",
+    "target_text": "we didn't hope to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03B02",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "no esperábamos despertar en mitad de la noche",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03B03",
+   "set": {
+    "target_text": "we didn't expect to see something interesting"
+   },
+   "expect": {
+    "known_text": "no esperábamos ver algo interesante",
+    "target_text": "we didn't hope to see something interesting"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03B04",
+   "set": {
+    "target_text": "we didn't expect to speak English so soon"
+   },
+   "expect": {
+    "known_text": "no esperábamos hablar inglés tan pronto",
+    "target_text": "we didn't hope to speak English so soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03U01",
+   "set": {
+    "target_text": "we didn't expect to see something so interesting today"
+   },
+   "expect": {
+    "known_text": "no esperábamos ver algo tan interesante hoy",
+    "target_text": "we didn't hope to see something so interesting today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03U02",
+   "set": {
+    "target_text": "we didn't expect to learn English so quickly"
+   },
+   "expect": {
+    "known_text": "no esperábamos aprender inglés tan rápido",
+    "target_text": "we didn't hope to learn English so quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03U03",
+   "set": {
+    "target_text": "we didn't expect to see what you were doing this afternoon"
+   },
+   "expect": {
+    "known_text": "no esperábamos ver lo que estabas haciendo esta tarde",
+    "target_text": "we didn't hope to see what you were doing this afternoon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03U04",
+   "set": {
+    "target_text": "we didn't expect to wake up so soon"
+   },
+   "expect": {
+    "known_text": "no esperábamos despertar tan pronto",
+    "target_text": "we didn't hope to wake so soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0108L03U05",
+   "set": {
+    "target_text": "we didn't expect to speak English so soon this afternoon"
+   },
+   "expect": {
+    "known_text": "no esperábamos hablar inglés tan pronto esta tarde",
+    "target_text": "we didn't hope to speak English so soon this afternoon"
+   }
+  }
+ ]
+}

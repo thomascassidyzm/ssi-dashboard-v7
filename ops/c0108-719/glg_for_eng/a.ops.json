@@ -1,0 +1,36 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "glg_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "non esperabamos espertar no medio da noite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "glg_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "non quero espertar no medio da noite"
+   }
+  }
+ ]
+}

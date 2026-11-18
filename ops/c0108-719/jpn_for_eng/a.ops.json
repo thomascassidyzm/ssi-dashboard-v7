@@ -1,0 +1,295 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "known_text": "to wake up",
+    "components": [
+     {
+      "known": "to wake up",
+      "target": "起きる"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "起きる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "起きる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "I will wake up"
+   },
+   "expect": {
+    "known_text": "I will wake",
+    "target_text": "起きる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "I can wake up"
+   },
+   "expect": {
+    "known_text": "I can wake",
+    "target_text": "起きることができる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "I must wake up"
+   },
+   "expect": {
+    "known_text": "I must wake",
+    "target_text": "起きる必要がある"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I will wake up tomorrow"
+   },
+   "expect": {
+    "known_text": "I will wake tomorrow",
+    "target_text": "明日起きる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I think I can wake up early"
+   },
+   "expect": {
+    "known_text": "I think I can wake early",
+    "target_text": "早く起きることができると思う"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "I hope I can wake up tomorrow"
+   },
+   "expect": {
+    "known_text": "I hope I can wake tomorrow",
+    "target_text": "明日起きることができるといいな"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "I need to wake up before you"
+   },
+   "expect": {
+    "known_text": "I need to wake before you",
+    "target_text": "あなたの前に起きる必要がある"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "I felt I must wake up soon"
+   },
+   "expect": {
+    "known_text": "I felt I must wake soon",
+    "target_text": "すぐ起きる必要があると感じた"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U07",
+   "set": {
+    "known_text": "that is why I must wake up"
+   },
+   "expect": {
+    "known_text": "that is why I must wake",
+    "target_text": "だから起きる必要がある"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L01U08",
+   "set": {
+    "known_text": "even if I'm tired, I must wake up"
+   },
+   "expect": {
+    "known_text": "even if I'm tired, I must wake",
+    "target_text": "疲れていても起きる必要がある"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I think I must wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I think I must wake in the middle of the night",
+    "target_text": "夜中に起きる必要があると思う"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I hope I don't wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I hope I don't wake in the middle of the night",
+    "target_text": "夜中に起きることがないといいな"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "that is why I must wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "that is why I must wake in the middle of the night",
+    "target_text": "だから夜中に起きる必要がある"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "known_text": "didn't expect to"
+   },
+   "expect": {
+    "known_text": "didn't hope to",
+    "target_text": "とは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "didn't expect to"
+   },
+   "expect": {
+    "known_text": "didn't hope to",
+    "target_text": "とは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "I didn't expect to do it"
+   },
+   "expect": {
+    "known_text": "I didn't hope to do it",
+    "target_text": "するとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "I didn't expect to see it"
+   },
+   "expect": {
+    "known_text": "I didn't hope to see it",
+    "target_text": "見るとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "I didn't expect to know it"
+   },
+   "expect": {
+    "known_text": "I didn't hope to know it",
+    "target_text": "知るとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "I didn't expect to change my way of doing it"
+   },
+   "expect": {
+    "known_text": "I didn't hope to change my way of doing it",
+    "target_text": "やり方を変えるとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "I didn't expect to see what you were doing"
+   },
+   "expect": {
+    "known_text": "I didn't hope to see what you were doing",
+    "target_text": "何をしてるか見るとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "I didn't expect to find the answer"
+   },
+   "expect": {
+    "known_text": "I didn't hope to find the answer",
+    "target_text": "答えを見つけるとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U07",
+   "set": {
+    "known_text": "that is why I didn't expect to feel happy"
+   },
+   "expect": {
+    "known_text": "that is why I didn't hope to feel happy",
+    "target_text": "だから楽しいと感じるとは思ってなかった"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0108L03U08",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "夜中に起きるとは思ってなかった"
+   }
+  }
+ ]
+}

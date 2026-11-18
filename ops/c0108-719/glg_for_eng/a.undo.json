@@ -1,0 +1,33 @@
+{
+  "course_code": "glg_for_eng",
+  "event_id": "8da278c0-a6d3-4707-9ea8-34aff8269e95",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:55:58.597Z",
+  "how_to_undo": "POST /api/production/glg_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-55-58-597Z-8da278c0-a6d3-4707-9ea8-34aff8269e95.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "glg_for_eng:S0108L01U03",
+      "set": {
+        "known_text": "I don't want to wake in the middle of the night",
+        "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "glg_for_eng:S0108L01B03",
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "We didn't hope to wake in the middle of the night.",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

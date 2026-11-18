@@ -1,0 +1,135 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "dúiseacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "to wake up early"
+   },
+   "expect": {
+    "known_text": "to wake early",
+    "target_text": "dúiseacht go luath"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "to wake up at six"
+   },
+   "expect": {
+    "known_text": "to wake at six",
+    "target_text": "dúiseacht ar a sé a chlog"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "dúiseacht i lár na hoíche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L05B05",
+   "set": {
+    "known_text": "we were not expecting to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we were not hoping to wake in the middle of the night",
+    "target_text": "Ní raibh muid ag súil le dúiseacht i lár na hoíche"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "expecting to"
+   },
+   "expect": {
+    "known_text": "hoping to",
+    "target_text": "ag súil le"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "expecting to see what you were doing"
+   },
+   "expect": {
+    "known_text": "hoping to see what you were doing",
+    "target_text": "ag súil le feiceáil cad a bhí tú a dhéanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "expecting to speak"
+   },
+   "expect": {
+    "known_text": "hoping to speak",
+    "target_text": "ag súil le labhairt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "expecting to improve"
+   },
+   "expect": {
+    "known_text": "hoping to improve",
+    "target_text": "ag súil le feabhsú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "expecting to come back"
+   },
+   "expect": {
+    "known_text": "hoping to come back",
+    "target_text": "ag súil le teacht ar ais"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_for_eng:S0108L02B05",
+   "set": {
+    "known_text": "expecting to learn more"
+   },
+   "expect": {
+    "known_text": "hoping to learn more",
+    "target_text": "ag súil le níos mó a fhoghlaim"
+   }
+  }
+ ]
+}

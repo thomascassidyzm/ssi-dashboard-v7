@@ -1,0 +1,146 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we did not expect to wake up"
+   },
+   "expect": {
+    "known_text": "we did not hope to wake up",
+    "target_text": "no esperábamos despertarnos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "that is why we did not expect to wake up"
+   },
+   "expect": {
+    "known_text": "that is why we did not hope to wake up",
+    "target_text": "por eso no esperábamos despertarnos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L01U09",
+   "set": {
+    "known_text": "he knew that we did not expect to wake up like that"
+   },
+   "expect": {
+    "known_text": "he knew that we did not hope to wake up like that",
+    "target_text": "él sabía que no esperábamos despertarnos así"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L01U10",
+   "set": {
+    "known_text": "we did not expect to wake up when you were still here"
+   },
+   "expect": {
+    "known_text": "we did not hope to wake up when you were still here",
+    "target_text": "no esperábamos despertarnos cuando estabas aquí todavía"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we did not expect to wake up in the middle"
+   },
+   "expect": {
+    "known_text": "we did not hope to wake up in the middle",
+    "target_text": "no esperábamos despertarnos en medio"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "we did not expect to be in the middle of that still"
+   },
+   "expect": {
+    "known_text": "we did not hope to be in the middle of that still",
+    "target_text": "no esperábamos estar en medio de eso todavía"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L02U10",
+   "set": {
+    "known_text": "that is why we did not expect to wake up in the middle of the afternoon"
+   },
+   "expect": {
+    "known_text": "that is why we did not hope to wake up in the middle of the afternoon",
+    "target_text": "por eso no esperábamos despertarnos en medio de la tarde"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we did not expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we did not hope to wake up in the middle of the night",
+    "target_text": "no esperábamos despertarnos en medio de la noche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L03U07",
+   "set": {
+    "known_text": "we did not expect to wake up in the middle of the night like that"
+   },
+   "expect": {
+    "known_text": "we did not hope to wake up in the middle of the night like that",
+    "target_text": "no esperábamos despertarnos en medio de la noche así"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L03U08",
+   "set": {
+    "known_text": "that is why we did not expect to be here in the middle of the night"
+   },
+   "expect": {
+    "known_text": "that is why we did not hope to be here in the middle of the night",
+    "target_text": "por eso no esperábamos estar aquí en medio de la noche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L03U10",
+   "set": {
+    "known_text": "we did not expect to be speaking in the middle of the night still"
+   },
+   "expect": {
+    "known_text": "we did not hope to be speaking in the middle of the night still",
+    "target_text": "no esperábamos estar hablando en medio de la noche todavía"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0108L03U11",
+   "set": {
+    "known_text": "he knew that we did not expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "he knew that we did not hope to wake up in the middle of the night",
+    "target_text": "él sabía que no esperábamos despertarnos en medio de la noche"
+   }
+  }
+ ]
+}

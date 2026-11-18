@@ -1,0 +1,191 @@
+{
+  "course_code": "eng_for_spa",
+  "event_id": "736a80cd-37f2-4492-9155-99645d89adc7",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:58:25.755Z",
+  "how_to_undo": "POST /api/production/eng_for_spa/edit-batch {\"undo_file\":\"2026-11-18T14-58-25-755Z-736a80cd-37f2-4492-9155-99645d89adc7.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03U05",
+      "set": {
+        "target_text": "we didn't hope to speak English so soon this afternoon",
+        "target1_audio_id": "4078c173-23da-4738-ac57-d3ea4c366d87",
+        "target2_audio_id": "5f2213f0-19d4-4719-bb08-0732f231431a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03U04",
+      "set": {
+        "target_text": "we didn't hope to wake so soon",
+        "target1_audio_id": "18ef371c-a95f-426f-b320-c27c10cf34bf",
+        "target2_audio_id": "9875873b-1946-404b-b31b-ff0bd4845862"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03U03",
+      "set": {
+        "target_text": "we didn't hope to see what you were doing this afternoon",
+        "target1_audio_id": "a8264d8a-342e-4577-a0d3-0929e93cb86e",
+        "target2_audio_id": "4e2041d6-eb66-42a4-a239-72549b7f379a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03U02",
+      "set": {
+        "target_text": "we didn't hope to learn English so quickly",
+        "target1_audio_id": "720c65cf-ccca-47db-9627-e3dc70ffa6a3",
+        "target2_audio_id": "e4817a8b-02ff-4050-baae-966a5333253e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03U01",
+      "set": {
+        "target_text": "we didn't hope to see something so interesting today",
+        "target1_audio_id": "87913a79-dc90-4a93-91d9-622fd973e2c6",
+        "target2_audio_id": "63dd8a36-7b41-45b0-baba-07cdea7087d0"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03B04",
+      "set": {
+        "target_text": "we didn't hope to speak English so soon",
+        "target1_audio_id": "76a7eeeb-d123-43f0-ba4f-310dd43ec641",
+        "target2_audio_id": "1becbc24-d456-4c7a-9ccb-0232c9e44152"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03B03",
+      "set": {
+        "target_text": "we didn't hope to see something interesting",
+        "target1_audio_id": "ee76e09d-2bfb-4396-a4cf-e34666c6ba01",
+        "target2_audio_id": "97ca9e84-e149-4b58-855e-b4b5e9775592"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03B02",
+      "set": {
+        "target_text": "we didn't hope to wake in the middle of the night",
+        "target1_audio_id": "b305a61d-3c1a-4b6f-a581-818dd8f3eea5",
+        "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L03B01",
+      "set": {
+        "target_text": "we didn't hope to",
+        "target1_audio_id": "d0ac6de5-af76-4c7b-a9b9-2f7244dd7d80",
+        "target2_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "229da678-cd44-485e-bd20-f3ce535c067b",
+      "set": {
+        "target_text": "we didn't hope to",
+        "target1_audio_id": "d0ac6de5-af76-4c7b-a9b9-2f7244dd7d80",
+        "target2_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+        "presentation_audio_id": "8c15aecf-74ac-47b9-84e4-addbf5932c4b"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02U05",
+      "set": {
+        "target_text": "you should try not to wake so soon",
+        "target1_audio_id": "0cd8ded9-3a2b-4278-8884-0930cdd2e9a3",
+        "target2_audio_id": "e551acca-0191-4c24-ae68-4514e093b5f0"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02U04",
+      "set": {
+        "target_text": "I don't like to wake in the middle of the night",
+        "target1_audio_id": "5aba5247-e0b8-4972-9f06-120dda224636",
+        "target2_audio_id": "9d251a99-226e-47f3-9faf-351bc3ef4b58"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02U03",
+      "set": {
+        "target_text": "we hoped to wake soon this morning",
+        "target1_audio_id": "6a8628d1-18b8-4a01-b681-c338d51ca231",
+        "target2_audio_id": "006a133d-0f7e-4ade-89cb-06d48a7d1006"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02U02",
+      "set": {
+        "target_text": "I like to wake feeling well",
+        "target1_audio_id": "01229e0e-508a-4ddf-8cfd-8de7c414c683",
+        "target2_audio_id": "b20f5d00-faa2-46d7-b520-fff02f74efd0"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02U01",
+      "set": {
+        "target_text": "I don't want to wake this morning",
+        "target1_audio_id": "6cbfeb4a-087e-4ef2-a7b0-79df8be421f9",
+        "target2_audio_id": "86545828-d7c4-4d3d-b319-a8dca4083380"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02B03",
+      "set": {
+        "target_text": "we hoped to wake",
+        "target1_audio_id": "fca73ef6-d6d5-4fba-8e49-de2aadf64699",
+        "target2_audio_id": "9642f877-c080-4383-96f7-40c9fe87fe4b"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02B02",
+      "set": {
+        "target_text": "I don't want to wake",
+        "target1_audio_id": "d78d82cf-4900-4311-89cf-702d2410d852",
+        "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_spa:S0108L02B01",
+      "set": {
+        "target_text": "wake in the middle of the night",
+        "target1_audio_id": "6ef8a12a-e294-46cb-b506-64f34dab140c",
+        "target2_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "f8a0c458-6112-40d5-a26e-2d867e87b721",
+      "set": {
+        "target_text": "wake",
+        "target1_audio_id": "83106cdb-520d-41ab-ba8b-3e352fc65015",
+        "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+        "presentation_audio_id": "93c31252-5395-415f-8dd7-456d98bca912"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "target_text": "we didn't hope to wake in the middle of the night",
+        "target1_audio_id": "b305a61d-3c1a-4b6f-a581-818dd8f3eea5",
+        "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

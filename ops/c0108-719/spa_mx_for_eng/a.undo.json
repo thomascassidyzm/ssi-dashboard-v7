@@ -1,0 +1,113 @@
+{
+  "course_code": "spa_mx_for_eng",
+  "event_id": "74fb76c1-c5de-49b3-8e4d-d1b862cac591",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:54:59.896Z",
+  "how_to_undo": "POST /api/production/spa_mx_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-54-59-896Z-74fb76c1-c5de-49b3-8e4d-d1b862cac591.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L03U11",
+      "set": {
+        "known_text": "he knew that we did not hope to wake up in the middle of the night",
+        "known_audio_id": "8e4cedbd-772e-4b19-9e37-3d995c98f83a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L03U10",
+      "set": {
+        "known_text": "we did not hope to be speaking in the middle of the night still",
+        "known_audio_id": "92024c8d-bb6d-4ebf-9a23-f0074d47267a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L03U08",
+      "set": {
+        "known_text": "that is why we did not hope to be here in the middle of the night",
+        "known_audio_id": "f98031a0-d6c5-4a44-b595-2e11bd4d9815"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L03U07",
+      "set": {
+        "known_text": "we did not hope to wake up in the middle of the night like that",
+        "known_audio_id": "7712b2d9-14ab-4787-a4a1-4d440bd0b29f"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L03U05",
+      "set": {
+        "known_text": "we did not hope to wake up in the middle of the night",
+        "known_audio_id": "07c74ee3-f8d5-4edd-97cb-6d181310eb33"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L02U10",
+      "set": {
+        "known_text": "that is why we did not hope to wake up in the middle of the afternoon",
+        "known_audio_id": "751cd942-6ce0-4bab-8411-934dcd43473e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L02U08",
+      "set": {
+        "known_text": "we did not hope to be in the middle of that still",
+        "known_audio_id": "8b654f76-9c37-415e-ad31-34029c221455"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L02U05",
+      "set": {
+        "known_text": "we did not hope to wake up in the middle",
+        "known_audio_id": "5c73a8d7-ecd0-4847-a283-456c70f83801"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L01U10",
+      "set": {
+        "known_text": "we did not hope to wake up when you were still here",
+        "known_audio_id": "daf030c1-a53b-49f3-aaf5-6c71d180b9eb"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L01U09",
+      "set": {
+        "known_text": "he knew that we did not hope to wake up like that",
+        "known_audio_id": "276cd357-c65f-4e09-96e5-d055cfb69349"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L01U03",
+      "set": {
+        "known_text": "that is why we did not hope to wake up",
+        "known_audio_id": "9987a6fc-d647-4b3a-902d-a74eadd697d3"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "spa_mx_for_eng:S0108L01B03",
+      "set": {
+        "known_text": "we did not hope to wake up",
+        "known_audio_id": "f5d234d1-734c-4749-aa3f-75dc9b88a8db"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night",
+        "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+      }
+    }
+  ]
+}

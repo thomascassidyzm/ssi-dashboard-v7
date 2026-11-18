@@ -1,0 +1,93 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "a052c4dc-52d2-45b2-b930-54c31b7348ee",
+  "actor": "cs-c0108-hope-expect",
+  "created_at": "2026-11-18T14:57:32.047Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-57-32-047Z-a052c4dc-52d2-45b2-b930-54c31b7348ee.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L02B05",
+      "set": {
+        "known_text": "hoping to learn more"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L02B04",
+      "set": {
+        "known_text": "hoping to come back"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L02B03",
+      "set": {
+        "known_text": "hoping to improve"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L02B02",
+      "set": {
+        "known_text": "hoping to speak"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L02B01",
+      "set": {
+        "known_text": "hoping to see what you were doing"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3235b022-97fd-49d1-9759-e8deffd054b6",
+      "set": {
+        "known_text": "hoping to"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L05B05",
+      "set": {
+        "known_text": "we were not hoping to wake in the middle of the night"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L03B03",
+      "set": {
+        "known_text": "to wake in the middle of the night"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L03B02",
+      "set": {
+        "known_text": "to wake at six"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L03B01",
+      "set": {
+        "known_text": "to wake early"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "10940ea3-cac6-4d0f-8894-5f84cb7a3140",
+      "set": {
+        "known_text": "to wake"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 108,
+      "set": {
+        "known_text": "we didn't hope to wake in the middle of the night"
+      }
+    }
+  ]
+}
