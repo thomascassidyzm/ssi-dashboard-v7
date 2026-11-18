@@ -18,6 +18,8 @@ def call(url, body=None):
         try: return json.loads(e.read())
         except Exception: return {'ok': False, 'error': str(e)}
 slots = json.load(open(f'{C}.slots.json'))
+import os
+if os.environ.get('ONLY_PRES'): slots = [x for x in slots if x['role'] == 'presentation']; MODE = MODE + '-intro'
 slots.sort(key=lambda s: s['role'] == 'presentation')
 cache = {}; out = []; spent = 0; would = 0
 for s in slots:
@@ -38,11 +40,12 @@ for s in slots:
             if VOICE: body['voiceId'] = VOICE
         r = call('http://localhost:3470/api/audio/render', body); cache[ck] = r
         spent += r.get('charsSpent') or 0; would += r.get('wouldSpendChars') or 0
-        if not r.get('ok'): print('REFUSED', s['key'], s['role'], r.get('code'), str(r.get('error'))[:200])
     import re as _re
     ex = _re.findall(r'clip\(s\): ([0-9a-f-]{36})', str(r.get('error') or '')) if r.get('code') == 'EXISTS_IN_LANGUAGE' else []
     out.append({**s, 'text': text, 'existing': ex[0] if ex else None, 'existing_detail': str(r.get('error'))[:300] if ex else None, 'source': r.get('source'), 'voiceId': r.get('voiceId'), 'full_error': r.get('error'), 'audioId': r.get('audioId'), 'chars': r.get('charsSpent') or r.get('wouldSpendChars') or 0,
                 'error': None if r.get('ok') else (r.get('code') or r.get('error'))})
+    json.dump(out, open(f'{C}.audio-{MODE}.json', 'w'), ensure_ascii=False, indent=1)  # saved per slot: a killed run loses nothing
+    print(len(out), s['key'], s['role'], r.get('source'), r.get('code') or '', r.get('charsSpent') or 0, flush=True)
     if not DRY and r.get('code') in ('DAILY_TOTAL_CAP', 'NOT_IN_CHAIN'): break
 json.dump(out, open(f'{C}.audio-{MODE}.json', 'w'), ensure_ascii=False, indent=1)
 from collections import Counter

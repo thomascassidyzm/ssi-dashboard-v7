@@ -1,0 +1,442 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0024L01B01",
+  "set": {
+   "known_text": "容易说德语",
+   "known_audio_id": "89f3b02e-d716-4afe-91f4-97924f80ca6d"
+  },
+  "expect": {
+   "known_text": "容易说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0024L01U01",
+  "set": {
+   "known_text": "我想容易说德语。",
+   "known_audio_id": "d05e91e8-a2b2-48b8-9f76-0769f04a1eaa"
+  },
+  "expect": {
+   "known_text": "我想容易说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0024L01U05",
+  "set": {
+   "known_text": "我很快要容易地说德语。",
+   "known_audio_id": "e2054209-2355-4e2b-8821-673ca9750a4d"
+  },
+  "expect": {
+   "known_text": "我很快要容易地说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L04U03",
+  "set": {
+   "known_text": "我想在走之前学一点德语。",
+   "known_audio_id": "cd5529ee-a7b7-4391-b0db-9b33657f65bd"
+  },
+  "expect": {
+   "known_text": "我想在走之前学一点中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L02B01",
+  "set": {
+   "known_text": "帮我说德语",
+   "known_audio_id": "bc4796d3-7f22-4ca2-b941-02e010211594"
+  },
+  "expect": {
+   "known_text": "帮我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L02U01",
+  "set": {
+   "known_text": "你想帮我说德语吗？",
+   "known_audio_id": "ae86dc9f-84f8-4f1b-8cef-0f1980185b2d"
+  },
+  "expect": {
+   "known_text": "你想帮我说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L05B03",
+  "set": {
+   "known_text": "你会帮我说德语吗？",
+   "known_audio_id": "8b114e72-0ad9-4686-ad41-aa4a21a17710"
+  },
+  "expect": {
+   "known_text": "你会帮我说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L05U03",
+  "set": {
+   "known_text": "你会帮我练习说德语吗？",
+   "known_audio_id": "4288205a-44e1-4486-ad9d-ce0404ad0522"
+  },
+  "expect": {
+   "known_text": "你会帮我练习说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L03B02",
+  "set": {
+   "known_text": "必须说德语",
+   "known_audio_id": "f3c6ff33-db03-4b46-a68b-74d4eeb5a51e"
+  },
+  "expect": {
+   "known_text": "必须说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0025L03U01",
+  "set": {
+   "known_text": "我必须说德语。",
+   "known_audio_id": "e998c32b-f4d5-4e81-9684-ce1330d2114c"
+  },
+  "expect": {
+   "known_text": "我必须说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0026L01B01",
+  "set": {
+   "known_text": "喜欢说德语",
+   "known_audio_id": "f9533558-9734-49c0-90d0-229377984d52"
+  },
+  "expect": {
+   "known_text": "喜欢说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0026L01U02",
+  "set": {
+   "known_text": "她喜欢和别人练习说德语。",
+   "known_audio_id": "4b327e53-957c-4445-9f07-c9385945e7a7"
+  },
+  "expect": {
+   "known_text": "她喜欢和别人练习说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0027L02B02",
+  "set": {
+   "known_text": "太多时间说德语",
+   "known_audio_id": "3571a7ad-283d-42a6-ae57-150f48b8feb2"
+  },
+  "expect": {
+   "known_text": "太多时间说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0027L02U02",
+  "set": {
+   "known_text": "我不喜欢太多时间说德语。",
+   "known_audio_id": "3ac97c93-be28-4d11-bee4-29b4a9f413e5"
+  },
+  "expect": {
+   "known_text": "我不喜欢太多时间说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0027L04U02",
+  "set": {
+   "known_text": "她不喜欢花太多时间说德语。",
+   "known_audio_id": "881da904-6520-4392-9389-488d6c0d2d93"
+  },
+  "expect": {
+   "known_text": "她不喜欢花太多时间说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0028L02B02",
+  "set": {
+   "known_text": "尽快说德语",
+   "known_audio_id": "3359b748-afe9-4b84-b4d6-89ced4070c2a"
+  },
+  "expect": {
+   "known_text": "尽快说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0028L02U01",
+  "set": {
+   "known_text": "我想尽快说德语。",
+   "known_audio_id": "cd72c0e0-eb7b-4c10-acef-82fc78cc484f"
+  },
+  "expect": {
+   "known_text": "我想尽快说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0028L01B02",
+  "set": {
+   "known_text": "说德语是有用的",
+   "known_audio_id": "adc6fe8b-bd5e-43b9-bcad-c240f4524775"
+  },
+  "expect": {
+   "known_text": "说中文是有用的"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0028L01U05",
+  "set": {
+   "known_text": "和别人练习说德语是有用的。",
+   "known_audio_id": "7044b9d2-0ffb-4199-b96f-7e5e912a4f6d"
+  },
+  "expect": {
+   "known_text": "和别人练习说中文是有用的。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L01B01",
+  "set": {
+   "known_text": "更好地说德语",
+   "known_audio_id": "4b8c85a2-5686-4dc7-865f-06c249942601"
+  },
+  "expect": {
+   "known_text": "更好地说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L01U01",
+  "set": {
+   "known_text": "我想更好地说德语。",
+   "known_audio_id": "b9b9e3cf-b5c0-4bd2-93c5-47953fe35a4b"
+  },
+  "expect": {
+   "known_text": "我想更好地说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L02B03",
+  "set": {
+   "known_text": "期待更好地说德语",
+   "known_audio_id": "92fd7590-2721-47a5-a309-1cc08f5598bc"
+  },
+  "expect": {
+   "known_text": "期待更好地说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L02B02",
+  "set": {
+   "known_text": "期待说德语",
+   "known_audio_id": "3be418c6-f4d2-4348-b5ec-97b83cb1d6ce"
+  },
+  "expect": {
+   "known_text": "期待说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L02U02",
+  "set": {
+   "known_text": "我期待更好地说德语。",
+   "known_audio_id": "d5b91e79-6857-45ec-8115-d5865225c1b4"
+  },
+  "expect": {
+   "known_text": "我期待更好地说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L02U01",
+  "set": {
+   "known_text": "我期待说德语。",
+   "known_audio_id": "4cec39a7-0c7f-4e7c-befb-31d58c253163"
+  },
+  "expect": {
+   "known_text": "我期待说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0029L02U04",
+  "set": {
+   "known_text": "我期待和你说德语。",
+   "known_audio_id": "5d49f503-d5a5-4c58-82e9-19fb84f91473"
+  },
+  "expect": {
+   "known_text": "我期待和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0030L01B02",
+  "set": {
+   "known_text": "我以前想说德语",
+   "known_audio_id": "2b3e3224-a027-4944-92e0-c75c6f7e0be8"
+  },
+  "expect": {
+   "known_text": "我以前想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0030L01U02",
+  "set": {
+   "known_text": "我以前想快点说德语。",
+   "known_audio_id": "7d409537-890e-4e91-9b27-666be461e12c"
+  },
+  "expect": {
+   "known_text": "我以前想快点说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0030L02B01",
+  "set": {
+   "known_text": "昨天想说德语",
+   "known_audio_id": "00257800-19da-49f8-bd61-b7dccd98bec1"
+  },
+  "expect": {
+   "known_text": "昨天想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0030L02U01",
+  "set": {
+   "known_text": "我昨天想说德语。",
+   "known_audio_id": "7ab59bb6-0fda-43e1-a3a5-692a0bc85a2b"
+  },
+  "expect": {
+   "known_text": "我昨天想说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 33,
+  "set": {
+   "known_text": "你学德语学了多久了?",
+   "known_audio_id": "7faeb25f-147f-4912-b942-e8418a35c8b8"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0033L01B01",
+  "set": {
+   "known_text": "已经说德语",
+   "known_audio_id": "1d4dae4f-a240-4396-97ed-862fd5b4000d"
+  },
+  "expect": {
+   "known_text": "已经说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0033L01U01",
+  "set": {
+   "known_text": "你已经说德语了。",
+   "known_audio_id": "79c52937-06b5-484c-bfd8-32dc3716cfd5"
+  },
+  "expect": {
+   "known_text": "你已经说中文了。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0033L02B03",
+  "set": {
+   "known_text": "你学德语学了多久了?",
+   "known_audio_id": "7faeb25f-147f-4912-b942-e8418a35c8b8"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0033L02U01",
+  "set": {
+   "known_text": "你说德语说了多久了？",
+   "known_audio_id": "610a3a06-1c82-4d31-aaa7-8f8773f4f6f1"
+  },
+  "expect": {
+   "known_text": "你说中文说了多久了？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0033L02U03",
+  "set": {
+   "known_text": "你已经想说德语多久了？",
+   "known_audio_id": "daf7a395-b2c0-47f2-93ee-315818993f23"
+  },
+  "expect": {
+   "known_text": "你已经想说中文多久了？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0034L05U05",
+  "set": {
+   "known_text": "你想在这里说德语吗？",
+   "known_audio_id": "004830b1-c7fd-461f-a437-e3f9368087f1"
+  },
+  "expect": {
+   "known_text": "你想在这里说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0034L05U01",
+  "set": {
+   "known_text": "我想在这里练习德语。",
+   "known_audio_id": "9c8b5b73-9769-4adb-a8de-22d9446c51fb"
+  },
+  "expect": {
+   "known_text": "我想在这里练习中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0034L04U05",
+  "set": {
+   "known_text": "你以前想帮其他的人说德语。",
+   "known_audio_id": "dc43b090-88f3-4f95-9001-9494b8686196"
+  },
+  "expect": {
+   "known_text": "你以前想帮其他的人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0034L01U02",
+  "set": {
+   "known_text": "我想安静地练习德语。",
+   "known_audio_id": "8293f8bf-379e-4738-a14b-b0e67aff4095"
+  },
+  "expect": {
+   "known_text": "我想安静地练习中文。"
+  }
+ }
+]

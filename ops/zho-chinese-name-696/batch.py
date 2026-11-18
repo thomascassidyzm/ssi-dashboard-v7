@@ -10,5 +10,5 @@ try:
     with urllib.request.urlopen(req, timeout=600) as r: res = json.loads(r.read())
 except urllib.error.HTTPError as e: res = json.loads(e.read() or b'{}'); res['_http'] = e.code
 json.dump(res, open(f'out/{C}.{TAG}.{MODE}.json', 'w'), ensure_ascii=False, indent=1)
-if res.get('undo_ops') is not None: json.dump(res['undo_ops'], open(f'out/{C}.{TAG}.undo.ops.json', 'w'), ensure_ascii=False, indent=1)
+if res.get('undo_ops') is not None: json.dump(res['undo_ops'], open(f'out/undo/{C}.{TAG}.undo.json', 'w'), ensure_ascii=False, indent=1)
 print(C, TAG, MODE, {k: res.get(k) for k in ('ok', 'dryRun', 'applied', 'event_id', 'error', 'code', '_http', 'undo_file')}, 'results', len(res.get('results') or []), 'undo_ops', len(res.get('undo_ops') or []))

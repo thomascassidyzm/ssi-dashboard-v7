@@ -1,0 +1,328 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 1,
+  "set": {
+   "known_text": "我现在想和你说西班牙语。",
+   "known_audio_id": "46423c3e-e7ef-4c51-86dc-89ecd86c4bdb"
+  },
+  "expect": {
+   "known_text": "我现在想和你说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 4,
+  "set": {
+   "known_text": "怎么用西班牙语说一些东西",
+   "known_audio_id": "4ab3e121-9ce4-4865-aaf7-cbb8192d0a1e"
+  },
+  "expect": {
+   "known_text": "怎么用中文说一些东西"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0004L02",
+  "set": {
+   "known_text": "用西班牙语",
+   "known_audio_id": "b38d0ecd-70eb-48b9-889b-1cce96de3e98"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0004L02",
+  "slot": "presentation",
+  "audio_id": "58c45351-2897-4089-b829-ac9687f663dc"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B01",
+  "set": {
+   "known_text": "用西班牙语",
+   "known_audio_id": "b38d0ecd-70eb-48b9-889b-1cce96de3e98"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B04",
+  "set": {
+   "known_text": "怎么用西班牙语说？",
+   "known_audio_id": "3da05406-d01f-44de-a33b-c26583904a5d"
+  },
+  "expect": {
+   "known_text": "怎么用中文说？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B03",
+  "set": {
+   "known_text": "用西班牙语说",
+   "known_audio_id": "5bf536f6-012c-415e-9f1b-52b289f7f47d"
+  },
+  "expect": {
+   "known_text": "用中文说"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B02",
+  "set": {
+   "known_text": "用西班牙语说一些东西",
+   "known_audio_id": "4a8fb6ba-350d-473c-95b7-7d328a1f3f1f"
+  },
+  "expect": {
+   "known_text": "用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02C02",
+  "set": {
+   "known_text": "西班牙语",
+   "known_audio_id": "64bd544b-42ae-4d94-bfa8-8e546960bb7a"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U03",
+  "set": {
+   "known_text": "我在试着用西班牙语说一些东西",
+   "known_audio_id": "574262ec-df20-455a-8429-816a7e010ce1"
+  },
+  "expect": {
+   "known_text": "我在试着用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U01",
+  "set": {
+   "known_text": "怎么用西班牙语说一些东西？",
+   "known_audio_id": "1639590b-c731-4cdc-a43d-a75c86c40aac"
+  },
+  "expect": {
+   "known_text": "怎么用中文说一些东西？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U05",
+  "set": {
+   "known_text": "我现在想用西班牙语说一些东西",
+   "known_audio_id": "c0944a0d-ff8a-46b4-b906-c89087bbd0f4"
+  },
+  "expect": {
+   "known_text": "我现在想用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U04",
+  "set": {
+   "known_text": "我想和你用西班牙语说一些东西",
+   "known_audio_id": "b1da95c8-7957-43fc-93ae-44ad0723483b"
+  },
+  "expect": {
+   "known_text": "我想和你用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U02",
+  "set": {
+   "known_text": "我想用西班牙语说一些东西",
+   "known_audio_id": "33a39fc7-f583-4c89-93e2-276ef317295f"
+  },
+  "expect": {
+   "known_text": "我想用中文说一些东西"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 9,
+  "set": {
+   "known_text": "我现在说一点西班牙语。",
+   "known_audio_id": "659eec75-5617-4c2f-9c45-e43992949945"
+  },
+  "expect": {
+   "known_text": "我现在说一点中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 14,
+  "set": {
+   "known_text": "你整天说西班牙语吗？",
+   "known_audio_id": "5c717f02-727c-4f6c-a7a7-ed70aa885c72"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 15,
+  "set": {
+   "known_text": "而且我想让你明天和我说西班牙语。",
+   "known_audio_id": "cb20dd22-c19d-491b-8b30-96657a9faace"
+  },
+  "expect": {
+   "known_text": "而且我想让你明天和我说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 22,
+  "set": {
+   "known_text": "因为我想见说西班牙语的人。",
+   "known_audio_id": "6d5a18ac-ce3b-4f5c-9a48-2213aac7e71e"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03B02",
+  "set": {
+   "known_text": "我想见说西班牙语的人。",
+   "known_audio_id": "afc953c9-478d-478f-bf59-ead1a12c4ed0"
+  },
+  "expect": {
+   "known_text": "我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03B03",
+  "set": {
+   "known_text": "因为我想见说西班牙语的人。",
+   "known_audio_id": "6d5a18ac-ce3b-4f5c-9a48-2213aac7e71e"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03B04",
+  "set": {
+   "known_text": "我今天想见说西班牙语的人。",
+   "known_audio_id": "c7a5f857-e73f-4617-8e42-0a1984731ea9"
+  },
+  "expect": {
+   "known_text": "我今天想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03C02",
+  "set": {
+   "known_text": "西班牙语",
+   "known_audio_id": "64bd544b-42ae-4d94-bfa8-8e546960bb7a"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U01",
+  "set": {
+   "known_text": "我想认识更多说西班牙语的人。",
+   "known_audio_id": "e1fc3298-bb11-4542-a04c-a58d8a392698"
+  },
+  "expect": {
+   "known_text": "我想认识更多说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U03",
+  "set": {
+   "known_text": "我在试着见说西班牙语的人。",
+   "known_audio_id": "3d915aed-4ea5-4b31-9d28-67a923e7ea7c"
+  },
+  "expect": {
+   "known_text": "我在试着见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U02",
+  "set": {
+   "known_text": "因为我想练习和说西班牙语的人说话。",
+   "known_audio_id": "1c51ecbf-d922-4571-81d9-1e0c68d1ae1d"
+  },
+  "expect": {
+   "known_text": "因为我想练习和说中文的人说话。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U05",
+  "set": {
+   "known_text": "我快点想见说西班牙语的人。",
+   "known_audio_id": "2f10dee3-0c97-4990-80d1-44e2eab5ab69"
+  },
+  "expect": {
+   "known_text": "我快点想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U04",
+  "set": {
+   "known_text": "我为什么想见说西班牙语的人？",
+   "known_audio_id": "7645de0a-5c2a-492b-b2fc-3f612e76df13"
+  },
+  "expect": {
+   "known_text": "我为什么想见说中文的人？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 33,
+  "set": {
+   "known_text": "你学西班牙语学了多久了?",
+   "known_audio_id": "f75591c4-2bee-4746-bbec-70458385bfdf"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 64,
+  "set": {
+   "known_text": "学西班牙语不容易但是很有趣。",
+   "known_audio_id": "f146ca22-48d4-4155-868b-b74dcd4b3113"
+  },
+  "expect": {
+   "known_text": "学中文不容易但是很有趣。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 159,
+  "set": {
+   "known_text": "这个词用西班牙语怎么说？",
+   "known_audio_id": "a3309e30-63f8-4f74-996e-19c7a254d8f6"
+  },
+  "expect": {
+   "known_text": "这个词用中文怎么说？"
+  }
+ }
+]

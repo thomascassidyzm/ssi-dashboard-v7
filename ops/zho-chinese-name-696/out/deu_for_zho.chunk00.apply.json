@@ -1,0 +1,1639 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "8b93eb91-e9fb-4964-9762-aec2e7091cd3",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "seed_number": 1
+   },
+   "before": {
+    "id": "72dd63fa-e34b-4e12-a0b9-dc87910e74cc",
+    "seed_number": 1,
+    "known_text": "我现在想和你说中文。",
+    "known_audio_id": "fd249240-c8af-41cc-8b76-4220602b7f85",
+    "target_text": "Ich will jetzt Deutsch mit dir sprechen.",
+    "target1_audio_id": "5b2a4663-7b17-4294-8bce-dce9bb2a07f7",
+    "target2_audio_id": "ca0858b5-6f2d-4ceb-b167-fd61767196a5"
+   },
+   "after": {
+    "id": "72dd63fa-e34b-4e12-a0b9-dc87910e74cc",
+    "seed_number": 1,
+    "known_text": "我现在想和你说德语。",
+    "known_audio_id": "2e7e2b5d-ab00-433b-bc65-ca5cd2fe3eba",
+    "target_text": "Ich will jetzt Deutsch mit dir sprechen.",
+    "target1_audio_id": "5b2a4663-7b17-4294-8bce-dce9bb2a07f7",
+    "target2_audio_id": "ca0858b5-6f2d-4ceb-b167-fd61767196a5"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "lego_id": "S0001L03"
+   },
+   "before": {
+    "id": "ba102460-4d92-4757-8369-8dd619a036bb",
+    "seed_number": 1,
+    "lego_index": 3,
+    "lego_id": "S0001L03",
+    "known_text": "中文",
+    "known_audio_id": "a1482ae3-f6b1-429f-a522-60465674d66e",
+    "target_text": "Deutsch",
+    "target1_audio_id": "afe1bf98-74e4-4980-8373-0d13f44df348",
+    "target2_audio_id": "09a58fb8-cf89-49d5-816b-28b425b1978e",
+    "presentation_audio_id": "4bf222ea-b90d-4fc8-8ce1-2093cc06f135"
+   },
+   "after": {
+    "id": "ba102460-4d92-4757-8369-8dd619a036bb",
+    "seed_number": 1,
+    "lego_index": 3,
+    "lego_id": "S0001L03",
+    "known_text": "德语",
+    "known_audio_id": "2dbd7b10-b25e-4f4e-9277-a9c62444ae7a",
+    "target_text": "Deutsch",
+    "target1_audio_id": "afe1bf98-74e4-4980-8373-0d13f44df348",
+    "target2_audio_id": "09a58fb8-cf89-49d5-816b-28b425b1978e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_zho",
+    "lego_id": "S0001L03"
+   },
+   "before": {
+    "id": "ba102460-4d92-4757-8369-8dd619a036bb",
+    "seed_number": 1,
+    "lego_index": 3,
+    "lego_id": "S0001L03",
+    "presentation_audio_id": null,
+    "known_text": "德语",
+    "target_text": "Deutsch",
+    "known_audio_id": "2dbd7b10-b25e-4f4e-9277-a9c62444ae7a",
+    "target1_audio_id": "afe1bf98-74e4-4980-8373-0d13f44df348",
+    "target2_audio_id": "09a58fb8-cf89-49d5-816b-28b425b1978e"
+   },
+   "after": {
+    "id": "ba102460-4d92-4757-8369-8dd619a036bb",
+    "seed_number": 1,
+    "lego_index": 3,
+    "lego_id": "S0001L03",
+    "presentation_audio_id": "4bf222ea-b90d-4fc8-8ce1-2093cc06f135",
+    "known_text": "德语",
+    "target_text": "Deutsch",
+    "known_audio_id": "2dbd7b10-b25e-4f4e-9277-a9c62444ae7a",
+    "target1_audio_id": "afe1bf98-74e4-4980-8373-0d13f44df348",
+    "target2_audio_id": "09a58fb8-cf89-49d5-816b-28b425b1978e"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0001L03B01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0001L03B01",
+    "seed_number": 1,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "说中文",
+    "known_audio_id": "8c4c024f-dd1e-413d-ba6f-6231b00276a5",
+    "target_text": "Deutsch sprechen",
+    "target1_audio_id": "2f9c0c27-0a9b-4396-8a6a-a82174082f87",
+    "target2_audio_id": "f88faaaa-d2b2-4abd-9054-9e342479f9c0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0001L03B01",
+    "seed_number": 1,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "说德语",
+    "known_audio_id": "168d1130-6e4a-40b7-91bf-f0fccae11808",
+    "target_text": "Deutsch sprechen",
+    "target1_audio_id": "2f9c0c27-0a9b-4396-8a6a-a82174082f87",
+    "target2_audio_id": "f88faaaa-d2b2-4abd-9054-9e342479f9c0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0001L05U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0001L05U02",
+    "seed_number": 1,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "我现在想和你说中文。",
+    "known_audio_id": "fd249240-c8af-41cc-8b76-4220602b7f85",
+    "target_text": "ich will jetzt Deutsch mit dir sprechen",
+    "target1_audio_id": "5b2a4663-7b17-4294-8bce-dce9bb2a07f7",
+    "target2_audio_id": "ca0858b5-6f2d-4ceb-b167-fd61767196a5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0001L05U02",
+    "seed_number": 1,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "我现在想和你说德语。",
+    "known_audio_id": "2e7e2b5d-ab00-433b-bc65-ca5cd2fe3eba",
+    "target_text": "ich will jetzt Deutsch mit dir sprechen",
+    "target1_audio_id": "5b2a4663-7b17-4294-8bce-dce9bb2a07f7",
+    "target2_audio_id": "ca0858b5-6f2d-4ceb-b167-fd61767196a5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0001L05U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0001L05U01",
+    "seed_number": 1,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "我现在想说中文。",
+    "known_audio_id": "a7f31234-36cc-4cf2-8d6a-87def97eac95",
+    "target_text": "ich will jetzt Deutsch sprechen",
+    "target1_audio_id": "c29c5e14-692a-4a5c-a02b-a60b19423181",
+    "target2_audio_id": "c1073010-51fd-44c6-97db-04d188a2b1ce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0001L05U01",
+    "seed_number": 1,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "我现在想说德语。",
+    "known_audio_id": "990df74e-0d1a-47b1-91ff-d2e039507913",
+    "target_text": "ich will jetzt Deutsch sprechen",
+    "target1_audio_id": "c29c5e14-692a-4a5c-a02b-a60b19423181",
+    "target2_audio_id": "c1073010-51fd-44c6-97db-04d188a2b1ce",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0001L04U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0001L04U01",
+    "seed_number": 1,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想和你说中文。",
+    "known_audio_id": "a97db528-dd6c-4140-93bf-d5649951f735",
+    "target_text": "ich will Deutsch mit dir sprechen",
+    "target1_audio_id": "8743a5f4-5ea0-4a8c-aaec-5a219d3d5335",
+    "target2_audio_id": "63893f49-cadc-4048-b3fb-f2407630c38d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0001L04U01",
+    "seed_number": 1,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想和你说德语。",
+    "known_audio_id": "2f824b4d-c3cd-4139-b814-f6f9db1df3bb",
+    "target_text": "ich will Deutsch mit dir sprechen",
+    "target1_audio_id": "8743a5f4-5ea0-4a8c-aaec-5a219d3d5335",
+    "target2_audio_id": "63893f49-cadc-4048-b3fb-f2407630c38d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0002L01U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0002L01U03",
+    "seed_number": 2,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我现在想学中文。",
+    "known_audio_id": "1f928864-30fc-4d9a-8a0c-62c8857136f2",
+    "target_text": "ich will jetzt Deutsch lernen",
+    "target1_audio_id": "5797171b-e8b8-4207-8120-fb4b4a2cd1e5",
+    "target2_audio_id": "ce63e4f9-9324-474c-b934-e26e5ff922bd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0002L01U03",
+    "seed_number": 2,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我现在想学德语。",
+    "known_audio_id": "9c2d4ef6-fc6e-4c7d-a837-b537c00e2806",
+    "target_text": "ich will jetzt Deutsch lernen",
+    "target1_audio_id": "5797171b-e8b8-4207-8120-fb4b4a2cd1e5",
+    "target2_audio_id": "ce63e4f9-9324-474c-b934-e26e5ff922bd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0002L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0002L01U01",
+    "seed_number": 2,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想学中文。",
+    "known_audio_id": "7f0dce75-f817-4900-a7af-b20eafa2b53a",
+    "target_text": "ich will Deutsch lernen",
+    "target1_audio_id": "e0d5a83a-0042-4708-aa03-2ec75ef4d2cc",
+    "target2_audio_id": "a183fdea-9941-478a-8310-e826ed8cb797",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0002L01U01",
+    "seed_number": 2,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想学德语。",
+    "known_audio_id": "6b8bb492-007a-4731-8c56-a4b22293456c",
+    "target_text": "ich will Deutsch lernen",
+    "target1_audio_id": "e0d5a83a-0042-4708-aa03-2ec75ef4d2cc",
+    "target2_audio_id": "a183fdea-9941-478a-8310-e826ed8cb797",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0002L01U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0002L01U02",
+    "seed_number": 2,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想和你学中文。",
+    "known_audio_id": "aaeaa79d-40fd-4df9-be10-7540f396158d",
+    "target_text": "ich will Deutsch mit dir lernen",
+    "target1_audio_id": "9f3598e3-fff4-4503-8cce-9cada91679b0",
+    "target2_audio_id": "0c70ff8a-c786-43c7-a402-61599633e41a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0002L01U02",
+    "seed_number": 2,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想和你学德语。",
+    "known_audio_id": "b1caa117-450d-494e-91d1-874e26040e21",
+    "target_text": "ich will Deutsch mit dir lernen",
+    "target1_audio_id": "9f3598e3-fff4-4503-8cce-9cada91679b0",
+    "target2_audio_id": "0c70ff8a-c786-43c7-a402-61599633e41a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0003L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0003L01U01",
+    "seed_number": 3,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想尽量多说中文。",
+    "known_audio_id": "9e2658b7-a83e-4e1f-b6b6-b8093c8f5572",
+    "target_text": "ich will so oft wie möglich Deutsch sprechen",
+    "target1_audio_id": "f3f7665e-3c11-4993-a926-4eabea6001bf",
+    "target2_audio_id": "ee77244a-0f4a-47f4-a0a8-5c59e78f4255",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0003L01U01",
+    "seed_number": 3,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想尽量多说德语。",
+    "known_audio_id": "c0354850-63bf-46d3-9116-c1c310cdfba3",
+    "target_text": "ich will so oft wie möglich Deutsch sprechen",
+    "target1_audio_id": "f3f7665e-3c11-4993-a926-4eabea6001bf",
+    "target2_audio_id": "ee77244a-0f4a-47f4-a0a8-5c59e78f4255",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0003L01U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0003L01U03",
+    "seed_number": 3,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我现在想尽量多说中文。",
+    "known_audio_id": "164029c9-ab72-4402-a2a3-7466a9de3aa7",
+    "target_text": "ich will jetzt so oft wie möglich Deutsch sprechen",
+    "target1_audio_id": "30621e06-27e3-47f3-a09e-33a28517e2b2",
+    "target2_audio_id": "e0e84c6d-858f-490e-9cf9-2f2e206b49d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0003L01U03",
+    "seed_number": 3,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我现在想尽量多说德语。",
+    "known_audio_id": "e87a6615-46bc-4a9f-8fb0-b7a8376ba7a2",
+    "target_text": "ich will jetzt so oft wie möglich Deutsch sprechen",
+    "target1_audio_id": "30621e06-27e3-47f3-a09e-33a28517e2b2",
+    "target2_audio_id": "e0e84c6d-858f-490e-9cf9-2f2e206b49d0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0003L02U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0003L02U02",
+    "seed_number": 3,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想学怎么说中文。",
+    "known_audio_id": "7492538c-7c4a-4dd3-bfd0-6088b9aab712",
+    "target_text": "ich will lernen wie man Deutsch spricht",
+    "target1_audio_id": "0d3ab077-7a1c-4704-88fc-04aa1f537f09",
+    "target2_audio_id": "e96d8ed4-36f2-458f-ba05-bd12ee770793",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0003L02U02",
+    "seed_number": 3,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想学怎么说德语。",
+    "known_audio_id": "a54d3e78-1038-43dd-92bb-d717e76855f9",
+    "target_text": "ich will lernen wie man Deutsch spricht",
+    "target1_audio_id": "0d3ab077-7a1c-4704-88fc-04aa1f537f09",
+    "target2_audio_id": "e96d8ed4-36f2-458f-ba05-bd12ee770793",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "seed.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "seed_number": 4
+   },
+   "before": {
+    "id": "e00ad425-9c15-4f4e-8727-9376094a497a",
+    "seed_number": 4,
+    "known_text": "怎么用中文说一些东西",
+    "known_audio_id": "1dc0b0bc-2da8-4c58-99ec-a6d51ba02d6b",
+    "target_text": "wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "871b9707-7e79-49f4-a612-4bb3dc53c8fe",
+    "target2_audio_id": "cee31114-bf38-48f3-bf8a-5b9b281496f0"
+   },
+   "after": {
+    "id": "e00ad425-9c15-4f4e-8727-9376094a497a",
+    "seed_number": 4,
+    "known_text": "怎么用德语说一些东西",
+    "known_audio_id": "8ee05813-7584-4d07-9f8f-89661b703ffb",
+    "target_text": "wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "871b9707-7e79-49f4-a612-4bb3dc53c8fe",
+    "target2_audio_id": "cee31114-bf38-48f3-bf8a-5b9b281496f0"
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L03B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L03B02",
+    "seed_number": 4,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "怎么用中文说一些东西？",
+    "known_audio_id": "1dc0b0bc-2da8-4c58-99ec-a6d51ba02d6b",
+    "target_text": "wie man etwas auf Deutsch sagt?",
+    "target1_audio_id": "871b9707-7e79-49f4-a612-4bb3dc53c8fe",
+    "target2_audio_id": "cee31114-bf38-48f3-bf8a-5b9b281496f0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L03B02",
+    "seed_number": 4,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "怎么用德语说一些东西？",
+    "known_audio_id": "3b3df058-b034-4666-b65f-8e9af9bd2fd8",
+    "target_text": "wie man etwas auf Deutsch sagt?",
+    "target1_audio_id": "871b9707-7e79-49f4-a612-4bb3dc53c8fe",
+    "target2_audio_id": "cee31114-bf38-48f3-bf8a-5b9b281496f0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L03U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L03U02",
+    "seed_number": 4,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想学怎么用中文说一些东西。",
+    "known_audio_id": "2ac4b651-ea8e-4a06-946a-b0837368d6c3",
+    "target_text": "ich will lernen wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "85b049f8-0da7-4ba9-a6ef-4dbc58525c1a",
+    "target2_audio_id": "8592f2d7-b44c-438a-aa11-2bc123118b69",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L03U02",
+    "seed_number": 4,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想学怎么用德语说一些东西。",
+    "known_audio_id": "5107aacc-c70f-4af9-88f8-422d414ef7a8",
+    "target_text": "ich will lernen wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "85b049f8-0da7-4ba9-a6ef-4dbc58525c1a",
+    "target2_audio_id": "8592f2d7-b44c-438a-aa11-2bc123118b69",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L03U05"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L03U05",
+    "seed_number": 4,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我现在想学怎么用中文说一些东西。",
+    "known_audio_id": "5be23d7a-12a9-4613-a3fb-bcc90a8d6daa",
+    "target_text": "ich will jetzt lernen wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "398537ab-c15f-447a-97ab-431a1cc7c74f",
+    "target2_audio_id": "a0994984-2583-497f-ba71-bab6f8a1a420",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L03U05",
+    "seed_number": 4,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我现在想学怎么用德语说一些东西。",
+    "known_audio_id": "196cda89-5453-4873-9e18-087d0ae5bc53",
+    "target_text": "ich will jetzt lernen wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "398537ab-c15f-447a-97ab-431a1cc7c74f",
+    "target2_audio_id": "a0994984-2583-497f-ba71-bab6f8a1a420",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "lego.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "lego_id": "S0004L02"
+   },
+   "before": {
+    "id": "9a5e64cd-e6e2-4631-9202-ad00414bcff4",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "known_text": "用中文",
+    "known_audio_id": "62cc9402-8fbe-43b8-b23e-65951bc73c8b",
+    "target_text": "auf Deutsch",
+    "target1_audio_id": "6de0b5b9-8a6a-4b33-ae6c-602fbf989b52",
+    "target2_audio_id": "bc402d98-02d8-4f01-8c1f-a5c46538a2c8",
+    "presentation_audio_id": "042de9cf-b62d-4d6a-b107-03c41133e4ab"
+   },
+   "after": {
+    "id": "9a5e64cd-e6e2-4631-9202-ad00414bcff4",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "known_text": "用德语",
+    "known_audio_id": "04054c1e-0127-4d6d-8807-e93134955d68",
+    "target_text": "auf Deutsch",
+    "target1_audio_id": "6de0b5b9-8a6a-4b33-ae6c-602fbf989b52",
+    "target2_audio_id": "bc402d98-02d8-4f01-8c1f-a5c46538a2c8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_zho",
+    "lego_id": "S0004L02"
+   },
+   "before": {
+    "id": "9a5e64cd-e6e2-4631-9202-ad00414bcff4",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "presentation_audio_id": null,
+    "known_text": "用德语",
+    "target_text": "auf Deutsch",
+    "known_audio_id": "04054c1e-0127-4d6d-8807-e93134955d68",
+    "target1_audio_id": "6de0b5b9-8a6a-4b33-ae6c-602fbf989b52",
+    "target2_audio_id": "bc402d98-02d8-4f01-8c1f-a5c46538a2c8"
+   },
+   "after": {
+    "id": "9a5e64cd-e6e2-4631-9202-ad00414bcff4",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "presentation_audio_id": "042de9cf-b62d-4d6a-b107-03c41133e4ab",
+    "known_text": "用德语",
+    "target_text": "auf Deutsch",
+    "known_audio_id": "04054c1e-0127-4d6d-8807-e93134955d68",
+    "target1_audio_id": "6de0b5b9-8a6a-4b33-ae6c-602fbf989b52",
+    "target2_audio_id": "bc402d98-02d8-4f01-8c1f-a5c46538a2c8"
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02B02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用中文说一些东西",
+    "known_audio_id": "4971b495-4c4d-4217-b2a8-3271399a5a80",
+    "target_text": "etwas auf Deutsch sprechen",
+    "target1_audio_id": "8f5ff28b-ca8e-468f-8e64-4d0fd2980921",
+    "target2_audio_id": "5f8b56b4-e523-4230-8d32-65e5b3bbf4fc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02B02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用德语说一些东西",
+    "known_audio_id": "831ad861-81cb-4496-b94a-2c96f33cc967",
+    "target_text": "etwas auf Deutsch sprechen",
+    "target1_audio_id": "8f5ff28b-ca8e-468f-8e64-4d0fd2980921",
+    "target2_audio_id": "5f8b56b4-e523-4230-8d32-65e5b3bbf4fc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02B01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02B01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用中文",
+    "known_audio_id": "62cc9402-8fbe-43b8-b23e-65951bc73c8b",
+    "target_text": "auf Deutsch",
+    "target1_audio_id": "6de0b5b9-8a6a-4b33-ae6c-602fbf989b52",
+    "target2_audio_id": "bc402d98-02d8-4f01-8c1f-a5c46538a2c8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02B01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用德语",
+    "known_audio_id": "04054c1e-0127-4d6d-8807-e93134955d68",
+    "target_text": "auf Deutsch",
+    "target1_audio_id": "6de0b5b9-8a6a-4b33-ae6c-602fbf989b52",
+    "target2_audio_id": "bc402d98-02d8-4f01-8c1f-a5c46538a2c8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02B04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02B04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用中文学一些东西",
+    "known_audio_id": "9e202568-9940-472c-a323-f197d53b06c4",
+    "target_text": "etwas auf Deutsch lernen",
+    "target1_audio_id": "eeb45e44-8f4c-47b5-a9a4-302b3d8ff468",
+    "target2_audio_id": "1331e660-45bf-43ec-8426-2f170006bc50",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02B04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用德语学一些东西",
+    "known_audio_id": "f9aa71a7-5619-421b-b59f-23d029211409",
+    "target_text": "etwas auf Deutsch lernen",
+    "target1_audio_id": "eeb45e44-8f4c-47b5-a9a4-302b3d8ff468",
+    "target2_audio_id": "1331e660-45bf-43ec-8426-2f170006bc50",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02C02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02C02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "中文",
+    "known_audio_id": "a1482ae3-f6b1-429f-a522-60465674d66e",
+    "target_text": "Deutsch",
+    "target1_audio_id": "afe1bf98-74e4-4980-8373-0d13f44df348",
+    "target2_audio_id": "09a58fb8-cf89-49d5-816b-28b425b1978e",
+    "presentation_audio_id": "5260931d-c543-4980-b23d-0caf7ae2a059"
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02C02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "德语",
+    "known_audio_id": "2dbd7b10-b25e-4f4e-9277-a9c62444ae7a",
+    "target_text": "Deutsch",
+    "target1_audio_id": "afe1bf98-74e4-4980-8373-0d13f44df348",
+    "target2_audio_id": "09a58fb8-cf89-49d5-816b-28b425b1978e",
+    "presentation_audio_id": "5260931d-c543-4980-b23d-0caf7ae2a059"
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02U04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想尽量多用中文说一些东西。",
+    "known_audio_id": "d68fd756-6e36-4b91-9d4f-7ead0c60b569",
+    "target_text": "ich will so oft wie möglich etwas auf Deutsch sprechen",
+    "target1_audio_id": "f13db87d-b13a-4e5d-bff1-a7d2dc055cbb",
+    "target2_audio_id": "2468dd87-8e30-459c-a8ce-f3837f7b5498",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02U04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想尽量多用德语说一些东西。",
+    "known_audio_id": "39830fb5-c347-4452-af2f-3822f5f19b48",
+    "target_text": "ich will so oft wie möglich etwas auf Deutsch sprechen",
+    "target1_audio_id": "f13db87d-b13a-4e5d-bff1-a7d2dc055cbb",
+    "target2_audio_id": "2468dd87-8e30-459c-a8ce-f3837f7b5498",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02U02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想和你用中文说一些东西。",
+    "known_audio_id": "0b5a9b9d-1460-4400-bdd3-4b23ac640ed6",
+    "target_text": "ich will etwas auf Deutsch mit dir sprechen",
+    "target1_audio_id": "0b2578dd-d60b-43b1-a346-66d2aa261471",
+    "target2_audio_id": "a4e9ea66-8088-406a-9618-5afdaf2b31fc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02U02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想和你用德语说一些东西。",
+    "known_audio_id": "7b502dfe-6132-420a-9889-54ff1fe3c092",
+    "target_text": "ich will etwas auf Deutsch mit dir sprechen",
+    "target1_audio_id": "0b2578dd-d60b-43b1-a346-66d2aa261471",
+    "target2_audio_id": "a4e9ea66-8088-406a-9618-5afdaf2b31fc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02U01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想用中文说一些东西。",
+    "known_audio_id": "39378147-3906-42db-b3ef-669e3ee504ab",
+    "target_text": "ich will etwas auf Deutsch sprechen",
+    "target1_audio_id": "a25cf9a6-ebd2-453e-9e04-fc6f2ecd3178",
+    "target2_audio_id": "bfb4c3c1-23ae-4bcc-98b9-357c1245690d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02U01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想用德语说一些东西。",
+    "known_audio_id": "bc7c7bfe-c06e-451c-bab1-d1ca8808adb7",
+    "target_text": "ich will etwas auf Deutsch sprechen",
+    "target1_audio_id": "a25cf9a6-ebd2-453e-9e04-fc6f2ecd3178",
+    "target2_audio_id": "bfb4c3c1-23ae-4bcc-98b9-357c1245690d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0004L02U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0004L02U03",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我现在想用中文说一些东西。",
+    "known_audio_id": "8cc81ffd-65da-4c54-886b-9743baa0c7a4",
+    "target_text": "ich will jetzt etwas auf Deutsch sprechen",
+    "target1_audio_id": "554917ff-b90e-4700-9259-b422a147692c",
+    "target2_audio_id": "fe76c795-35e1-4a0b-80f3-3dae7a966fd4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0004L02U03",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我现在想用德语说一些东西。",
+    "known_audio_id": "12b3cffe-9839-43ba-8e62-397e01d3a731",
+    "target_text": "ich will jetzt etwas auf Deutsch sprechen",
+    "target1_audio_id": "554917ff-b90e-4700-9259-b422a147692c",
+    "target2_audio_id": "fe76c795-35e1-4a0b-80f3-3dae7a966fd4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L04U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L04U04",
+    "seed_number": 5,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我要用中文练习说话。",
+    "known_audio_id": "2dec6049-465a-41f0-8ed6-97082e442740",
+    "target_text": "ich werde auf Deutsch üben zu sprechen",
+    "target1_audio_id": "85cccf93-582d-4c92-b6d5-f6e56830305a",
+    "target2_audio_id": "29070ea4-9f87-4cfa-a91c-5ffcabfc8b1a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L04U04",
+    "seed_number": 5,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我要用德语练习说话。",
+    "known_audio_id": "e1acd106-c7a2-44f5-805a-ba311be37a6f",
+    "target_text": "ich werde auf Deutsch üben zu sprechen",
+    "target1_audio_id": "85cccf93-582d-4c92-b6d5-f6e56830305a",
+    "target2_audio_id": "29070ea4-9f87-4cfa-a91c-5ffcabfc8b1a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L02U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L02U04",
+    "seed_number": 5,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我现在想练习中文。",
+    "known_audio_id": "911447d3-b031-460f-8b45-acf7f3494d52",
+    "target_text": "ich will jetzt Deutsch üben",
+    "target1_audio_id": "0a6d2563-7b8f-47ce-a6e3-f8bd76f6cc63",
+    "target2_audio_id": "b6931f50-7e6a-4666-a7c0-5dc24ffe8206",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L02U04",
+    "seed_number": 5,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我现在想练习德语。",
+    "known_audio_id": "e9823db5-511f-4256-970a-3b9f54dc6f09",
+    "target_text": "ich will jetzt Deutsch üben",
+    "target1_audio_id": "0a6d2563-7b8f-47ce-a6e3-f8bd76f6cc63",
+    "target2_audio_id": "b6931f50-7e6a-4666-a7c0-5dc24ffe8206",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01B02",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要说中文",
+    "known_audio_id": "03193f6c-afb2-4ee3-bccb-b261f396f963",
+    "target_text": "ich werde Deutsch sprechen",
+    "target1_audio_id": "9939d69b-ba78-481e-8f1d-8b84313b72c3",
+    "target2_audio_id": "66ecfd43-96ca-4e85-b3de-a1875a34b88c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01B02",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要说德语",
+    "known_audio_id": "62bd75cb-0cfb-494c-8e27-59ed4140a95b",
+    "target_text": "ich werde Deutsch sprechen",
+    "target1_audio_id": "9939d69b-ba78-481e-8f1d-8b84313b72c3",
+    "target2_audio_id": "66ecfd43-96ca-4e85-b3de-a1875a34b88c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01B04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01B04",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要用中文说一些东西",
+    "known_audio_id": "c8a630c3-74fd-40c5-b5f7-4455800621de",
+    "target_text": "ich werde etwas auf Deutsch sprechen",
+    "target1_audio_id": "562765dd-0f33-4ac0-9967-d9bf656bfdcd",
+    "target2_audio_id": "8f3571f5-a672-407f-b219-140188d42588",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01B04",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要用德语说一些东西",
+    "known_audio_id": "f686c70e-d8d8-483a-955c-a8afbe7b9f92",
+    "target_text": "ich werde etwas auf Deutsch sprechen",
+    "target1_audio_id": "562765dd-0f33-4ac0-9967-d9bf656bfdcd",
+    "target2_audio_id": "8f3571f5-a672-407f-b219-140188d42588",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01U04",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要学怎么用中文说一些东西。",
+    "known_audio_id": "efd70045-2822-4ac0-8db5-c2c26b73d96e",
+    "target_text": "ich werde lernen wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "d56c6133-edc4-438f-b12b-b1c54c6fbf00",
+    "target2_audio_id": "403f311c-3cd3-44f6-9d9e-e4ad5656dfd5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01U04",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要学怎么用德语说一些东西。",
+    "known_audio_id": "f138509c-10f0-49f6-b509-6b75e01cb87b",
+    "target_text": "ich werde lernen wie man etwas auf Deutsch sagt",
+    "target1_audio_id": "d56c6133-edc4-438f-b12b-b1c54c6fbf00",
+    "target2_audio_id": "403f311c-3cd3-44f6-9d9e-e4ad5656dfd5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01U05"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01U05",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要和你学中文。",
+    "known_audio_id": "b9b47eb4-5bbd-41e7-a314-dcfae4df78f1",
+    "target_text": "ich werde Deutsch mit dir lernen",
+    "target1_audio_id": "2bf44aa0-46fb-4b6f-8536-6d32588bd0b7",
+    "target2_audio_id": "0630b959-07a3-4c75-ae36-0618ee099cf1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01U05",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要和你学德语。",
+    "known_audio_id": "f66dc5a6-edbe-45c3-9186-6907bbe8d568",
+    "target_text": "ich werde Deutsch mit dir lernen",
+    "target1_audio_id": "2bf44aa0-46fb-4b6f-8536-6d32588bd0b7",
+    "target2_audio_id": "0630b959-07a3-4c75-ae36-0618ee099cf1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01U01",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要和你说中文。",
+    "known_audio_id": "2e6bdc47-2466-4f80-b83c-fc9e6c5e7e7f",
+    "target_text": "ich werde Deutsch mit dir sprechen",
+    "target1_audio_id": "0970def1-a04f-446d-8213-af35a29d58f2",
+    "target2_audio_id": "ff34aa71-427c-4b69-8264-acf32ec276f2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01U01",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要和你说德语。",
+    "known_audio_id": "965e5bda-ded5-4d33-9947-99fa4ccbd9f6",
+    "target_text": "ich werde Deutsch mit dir sprechen",
+    "target1_audio_id": "0970def1-a04f-446d-8213-af35a29d58f2",
+    "target2_audio_id": "ff34aa71-427c-4b69-8264-acf32ec276f2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01U03",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要现在学中文。",
+    "known_audio_id": "fd77e5ac-8c38-4b70-a1ae-faaf8134c777",
+    "target_text": "ich werde jetzt Deutsch lernen",
+    "target1_audio_id": "e956b2aa-15d2-4f7c-9cf5-4b6e99b133d8",
+    "target2_audio_id": "82f0ef2d-77d2-4cd1-8396-8a3c48ad54b7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01U03",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要现在学德语。",
+    "known_audio_id": "68394dde-9037-4028-9950-19be7df9e793",
+    "target_text": "ich werde jetzt Deutsch lernen",
+    "target1_audio_id": "e956b2aa-15d2-4f7c-9cf5-4b6e99b133d8",
+    "target2_audio_id": "82f0ef2d-77d2-4cd1-8396-8a3c48ad54b7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L01U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L01U02",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要尽量多说中文。",
+    "known_audio_id": "bf5eb666-b9d3-4a7d-8827-c2025ae720b1",
+    "target_text": "ich werde so oft wie möglich Deutsch sprechen",
+    "target1_audio_id": "7a668c0f-82ff-4422-bea8-0099cb274e88",
+    "target2_audio_id": "05c5f1d7-7e4d-4281-a98e-2108fc9d4a9c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L01U02",
+    "seed_number": 5,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我要尽量多说德语。",
+    "known_audio_id": "371a6bb4-c863-450f-a5b3-dd1eab03b87f",
+    "target_text": "ich werde so oft wie möglich Deutsch sprechen",
+    "target1_audio_id": "7a668c0f-82ff-4422-bea8-0099cb274e88",
+    "target2_audio_id": "05c5f1d7-7e4d-4281-a98e-2108fc9d4a9c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L03B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L03B02",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "和别人说中文",
+    "known_audio_id": "485d0266-38a3-4be0-b40c-6cc61dc719a3",
+    "target_text": "mit jemand anderem Deutsch sprechen",
+    "target1_audio_id": "1f1f7545-71c7-49d2-b1e9-7f25e1b4d9e4",
+    "target2_audio_id": "57153ee5-d062-459e-9b6a-f0fdbe5148fd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L03B02",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "和别人说德语",
+    "known_audio_id": "aeffea91-2229-47d5-8dd6-7fec74c86b92",
+    "target_text": "mit jemand anderem Deutsch sprechen",
+    "target1_audio_id": "1f1f7545-71c7-49d2-b1e9-7f25e1b4d9e4",
+    "target2_audio_id": "57153ee5-d062-459e-9b6a-f0fdbe5148fd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L03B03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L03B03",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "和别人练习说中文",
+    "known_audio_id": "d43a6f7d-b62e-413e-9ba9-fce0fdbddae3",
+    "target_text": "mit jemand anderem Deutsch üben",
+    "target1_audio_id": "c4540ba3-65df-44b8-85a8-028f2a143e5d",
+    "target2_audio_id": "501bf49c-c0af-45bd-ba94-f810f3496439",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L03B03",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "和别人练习说德语",
+    "known_audio_id": "cbbaea18-f5aa-4ef5-97b1-98a7063c4f85",
+    "target_text": "mit jemand anderem Deutsch üben",
+    "target1_audio_id": "c4540ba3-65df-44b8-85a8-028f2a143e5d",
+    "target2_audio_id": "501bf49c-c0af-45bd-ba94-f810f3496439",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L03U07"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L03U07",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我尝试和别人说中文",
+    "known_audio_id": "96875631-5886-449d-ae2b-f60a22da56ae",
+    "target_text": "ich versuche mit jemand anderem Deutsch zu sprechen",
+    "target1_audio_id": "6577c8f1-cf52-454a-aaad-e9ab4a1db3f8",
+    "target2_audio_id": "9958c5a0-1f57-4b61-8ead-13d5b8bb2776",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L03U07",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我尝试和别人说德语",
+    "known_audio_id": "e40caa80-0911-4251-ad3a-28bf5400483e",
+    "target_text": "ich versuche mit jemand anderem Deutsch zu sprechen",
+    "target1_audio_id": "6577c8f1-cf52-454a-aaad-e9ab4a1db3f8",
+    "target2_audio_id": "9958c5a0-1f57-4b61-8ead-13d5b8bb2776",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0005L03U06"
+   },
+   "before": {
+    "id": "deu_for_zho:S0005L03U06",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想和别人一起学中文",
+    "known_audio_id": "0ac53c44-00a8-48f3-a428-ceaae4467e54",
+    "target_text": "ich will mit jemand anderem Deutsch lernen",
+    "target1_audio_id": "43106081-17bc-4a89-8aa5-e32a857aa88d",
+    "target2_audio_id": "e8f2860a-d1f1-4ece-a0ea-c31016c66392",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0005L03U06",
+    "seed_number": 5,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想和别人一起学德语",
+    "known_audio_id": "51240f25-dd6c-4e14-88ac-4c28ab7c9f2a",
+    "target_text": "ich will mit jemand anderem Deutsch lernen",
+    "target1_audio_id": "43106081-17bc-4a89-8aa5-e32a857aa88d",
+    "target2_audio_id": "e8f2860a-d1f1-4ece-a0ea-c31016c66392",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L03U06",
+   "set": {
+    "known_text": "我想和别人一起学中文",
+    "known_audio_id": "0ac53c44-00a8-48f3-a428-ceaae4467e54"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L03U07",
+   "set": {
+    "known_text": "我尝试和别人说中文",
+    "known_audio_id": "96875631-5886-449d-ae2b-f60a22da56ae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L03B03",
+   "set": {
+    "known_text": "和别人练习说中文",
+    "known_audio_id": "d43a6f7d-b62e-413e-9ba9-fce0fdbddae3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L03B02",
+   "set": {
+    "known_text": "和别人说中文",
+    "known_audio_id": "485d0266-38a3-4be0-b40c-6cc61dc719a3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01U02",
+   "set": {
+    "known_text": "我要尽量多说中文。",
+    "known_audio_id": "bf5eb666-b9d3-4a7d-8827-c2025ae720b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01U03",
+   "set": {
+    "known_text": "我要现在学中文。",
+    "known_audio_id": "fd77e5ac-8c38-4b70-a1ae-faaf8134c777"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01U01",
+   "set": {
+    "known_text": "我要和你说中文。",
+    "known_audio_id": "2e6bdc47-2466-4f80-b83c-fc9e6c5e7e7f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01U05",
+   "set": {
+    "known_text": "我要和你学中文。",
+    "known_audio_id": "b9b47eb4-5bbd-41e7-a314-dcfae4df78f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01U04",
+   "set": {
+    "known_text": "我要学怎么用中文说一些东西。",
+    "known_audio_id": "efd70045-2822-4ac0-8db5-c2c26b73d96e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01B04",
+   "set": {
+    "known_text": "我要用中文说一些东西",
+    "known_audio_id": "c8a630c3-74fd-40c5-b5f7-4455800621de"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L01B02",
+   "set": {
+    "known_text": "我要说中文",
+    "known_audio_id": "03193f6c-afb2-4ee3-bccb-b261f396f963"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L02U04",
+   "set": {
+    "known_text": "我现在想练习中文。",
+    "known_audio_id": "911447d3-b031-460f-8b45-acf7f3494d52"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0005L04U04",
+   "set": {
+    "known_text": "我要用中文练习说话。",
+    "known_audio_id": "2dec6049-465a-41f0-8ed6-97082e442740"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02U03",
+   "set": {
+    "known_text": "我现在想用中文说一些东西。",
+    "known_audio_id": "8cc81ffd-65da-4c54-886b-9743baa0c7a4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02U01",
+   "set": {
+    "known_text": "我想用中文说一些东西。",
+    "known_audio_id": "39378147-3906-42db-b3ef-669e3ee504ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02U02",
+   "set": {
+    "known_text": "我想和你用中文说一些东西。",
+    "known_audio_id": "0b5a9b9d-1460-4400-bdd3-4b23ac640ed6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02U04",
+   "set": {
+    "known_text": "我想尽量多用中文说一些东西。",
+    "known_audio_id": "d68fd756-6e36-4b91-9d4f-7ead0c60b569"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02C02",
+   "set": {
+    "known_text": "中文",
+    "known_audio_id": "a1482ae3-f6b1-429f-a522-60465674d66e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02B04",
+   "set": {
+    "known_text": "用中文学一些东西",
+    "known_audio_id": "9e202568-9940-472c-a323-f197d53b06c4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02B01",
+   "set": {
+    "known_text": "用中文",
+    "known_audio_id": "62cc9402-8fbe-43b8-b23e-65951bc73c8b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L02B02",
+   "set": {
+    "known_text": "用中文说一些东西",
+    "known_audio_id": "4971b495-4c4d-4217-b2a8-3271399a5a80"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "9a5e64cd-e6e2-4631-9202-ad00414bcff4",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "9a5e64cd-e6e2-4631-9202-ad00414bcff4",
+   "set": {
+    "known_text": "用中文",
+    "known_audio_id": "62cc9402-8fbe-43b8-b23e-65951bc73c8b",
+    "presentation_audio_id": "042de9cf-b62d-4d6a-b107-03c41133e4ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L03U05",
+   "set": {
+    "known_text": "我现在想学怎么用中文说一些东西。",
+    "known_audio_id": "5be23d7a-12a9-4613-a3fb-bcc90a8d6daa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L03U02",
+   "set": {
+    "known_text": "我想学怎么用中文说一些东西。",
+    "known_audio_id": "2ac4b651-ea8e-4a06-946a-b0837368d6c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0004L03B02",
+   "set": {
+    "known_text": "怎么用中文说一些东西？",
+    "known_audio_id": "1dc0b0bc-2da8-4c58-99ec-a6d51ba02d6b"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 4,
+   "set": {
+    "known_text": "怎么用中文说一些东西",
+    "known_audio_id": "1dc0b0bc-2da8-4c58-99ec-a6d51ba02d6b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0003L02U02",
+   "set": {
+    "known_text": "我想学怎么说中文。",
+    "known_audio_id": "7492538c-7c4a-4dd3-bfd0-6088b9aab712"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0003L01U03",
+   "set": {
+    "known_text": "我现在想尽量多说中文。",
+    "known_audio_id": "164029c9-ab72-4402-a2a3-7466a9de3aa7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0003L01U01",
+   "set": {
+    "known_text": "我想尽量多说中文。",
+    "known_audio_id": "9e2658b7-a83e-4e1f-b6b6-b8093c8f5572"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0002L01U02",
+   "set": {
+    "known_text": "我想和你学中文。",
+    "known_audio_id": "aaeaa79d-40fd-4df9-be10-7540f396158d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0002L01U01",
+   "set": {
+    "known_text": "我想学中文。",
+    "known_audio_id": "7f0dce75-f817-4900-a7af-b20eafa2b53a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0002L01U03",
+   "set": {
+    "known_text": "我现在想学中文。",
+    "known_audio_id": "1f928864-30fc-4d9a-8a0c-62c8857136f2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0001L04U01",
+   "set": {
+    "known_text": "我想和你说中文。",
+    "known_audio_id": "a97db528-dd6c-4140-93bf-d5649951f735"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0001L05U01",
+   "set": {
+    "known_text": "我现在想说中文。",
+    "known_audio_id": "a7f31234-36cc-4cf2-8d6a-87def97eac95"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0001L05U02",
+   "set": {
+    "known_text": "我现在想和你说中文。",
+    "known_audio_id": "fd249240-c8af-41cc-8b76-4220602b7f85"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0001L03B01",
+   "set": {
+    "known_text": "说中文",
+    "known_audio_id": "8c4c024f-dd1e-413d-ba6f-6231b00276a5"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ba102460-4d92-4757-8369-8dd619a036bb",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ba102460-4d92-4757-8369-8dd619a036bb",
+   "set": {
+    "known_text": "中文",
+    "known_audio_id": "a1482ae3-f6b1-429f-a522-60465674d66e",
+    "presentation_audio_id": "4bf222ea-b90d-4fc8-8ce1-2093cc06f135"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1,
+   "set": {
+    "known_text": "我现在想和你说中文。",
+    "known_audio_id": "fd249240-c8af-41cc-8b76-4220602b7f85"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-24-14-448Z-8b93eb91-e9fb-4964-9762-aec2e7091cd3.json"
+}

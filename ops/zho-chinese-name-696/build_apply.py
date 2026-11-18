@@ -6,12 +6,12 @@
 import json, sys
 C = sys.argv[1]
 ops = json.load(open(f'{C}.ops.json'))
-audio = json.load(open(f'{C}.audio-real.json'))
+audio = json.load(open(f'{C}.audio-real.json')) + json.load(open(f'{C}.audio-real-intro.json'))
 clip = {}; intro = {}
 for a in audio:
     cid = a.get('audioId') or a.get('existing')
     if a['role'] == 'known' and cid: clip[str(a['key'])] = cid
-    if a['role'] == 'presentation': intro[a['key']] = a
+    if a['role'] == 'presentation' and (a.get('audioId') or a['key'] not in intro): intro[a['key']] = a
 out, noclip = [], []
 for o in ops:
     key = str(o.get('seed_number') or o.get('lego_id') or o.get('phrase_id'))
