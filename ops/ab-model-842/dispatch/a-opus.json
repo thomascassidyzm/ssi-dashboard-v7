@@ -1,0 +1,7 @@
+{
+  "cwd": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean",
+  "label": "A/B (a) mechanical opus: por_br sister-prop file-only (#842)",
+  "prompt": "You are the OPUS arm of a model A/B (cs #842·AI). FIRST: git fetch origin cs/842-ab-sonnet-opus && git checkout origin/cs/842-ab-sonnet-opus -- ops/ab-model-842 . Then read ops/ab-model-842/a-sister-prop/BRIEF.md and do exactly what it says. Your arm name is 'opus'. FILE-ONLY: no Popty calls, no DB, no audio. Push your own branch; do NOT merge to main. Scratch in $CS_SCRATCH.",
+  "model": "opus",
+  "parent": "4fef6258-72f3-4d35-bc66-49465494cfa8"
+}
