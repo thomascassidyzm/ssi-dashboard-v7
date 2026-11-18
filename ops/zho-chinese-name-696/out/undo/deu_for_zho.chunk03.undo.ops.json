@@ -1,0 +1,322 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0023L01U01",
+  "set": {
+   "known_text": "我很快要说中文。",
+   "known_audio_id": "c5bfaeb7-e0f4-42fa-93dd-0854bc583823"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0023L01B01",
+  "set": {
+   "known_text": "很快要说中文",
+   "known_audio_id": "a8106487-353a-4a0f-b15f-03b504d6adda"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0023L02U03",
+  "set": {
+   "known_text": "她想多学中文。",
+   "known_audio_id": "c506da42-96e5-4c88-9779-a5764a7064f8"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0023L02U01",
+  "set": {
+   "known_text": "我想多说中文。",
+   "known_audio_id": "332f8e8c-6192-417a-ac74-96ab65e5ce68"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L01U01",
+  "set": {
+   "known_text": "因为我想说中文。",
+   "known_audio_id": "2d2ec9a5-2e83-4892-827e-784589318a34"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03U05",
+  "set": {
+   "known_text": "他今天想见说中文的人。",
+   "known_audio_id": "bfd92539-4297-4f1b-a8f7-801ecfad1c38"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03U04",
+  "set": {
+   "known_text": "我们想见说中文的人。",
+   "known_audio_id": "be087a19-b82f-4be1-8ac3-e302791cf702"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03U02",
+  "set": {
+   "known_text": "因为我想见说中文的人。",
+   "known_audio_id": "7b10ea59-912e-48c9-be71-11a34c81408a"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03U01",
+  "set": {
+   "known_text": "我想见说中文的人。",
+   "known_audio_id": "1547d7ab-326e-45c6-932a-58e351ecabc3"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03U03",
+  "set": {
+   "known_text": "她想见说中文的人。",
+   "known_audio_id": "3b76be18-8c50-434b-ad7c-cc7a7d0a678c"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03B04",
+  "set": {
+   "known_text": "因为说中文的人",
+   "known_audio_id": "a0ca6b53-9c50-40ec-8c05-d6ff7b327f59"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03B02",
+  "set": {
+   "known_text": "说中文的人",
+   "known_audio_id": "c4fb933b-bb2e-4e49-b162-f647cc8ad009"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03B03",
+  "set": {
+   "known_text": "想见说中文的人",
+   "known_audio_id": "cb9d7997-2e53-4d19-ad95-90ccd6aee2f1"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0022L03B01",
+  "set": {
+   "known_text": "说中文的",
+   "known_audio_id": "d3d47005-7d59-4a1d-8c79-82b826c0c182"
+  }
+ },
+ {
+  "op": "lego.update",
+  "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+  "set": {
+   "presentation_audio_id": null
+  }
+ },
+ {
+  "op": "lego.update",
+  "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+  "set": {
+   "known_text": "说中文的",
+   "known_audio_id": "d3d47005-7d59-4a1d-8c79-82b826c0c182",
+   "presentation_audio_id": "59039321-03dd-4b4f-a9c3-56c77086deb9"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 22,
+  "set": {
+   "known_text": "因为我想见说中文的人。",
+   "known_audio_id": "7b10ea59-912e-48c9-be71-11a34c81408a"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0021L03U01",
+  "set": {
+   "known_text": "你为什么在学中文？",
+   "known_audio_id": "b71d24f1-4e57-418d-92e3-3430095d800a"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0021L03B02",
+  "set": {
+   "known_text": "在学中文",
+   "known_audio_id": "bd00ea50-10ce-4329-8ca0-a8611fc8507f"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0021L01U01",
+  "set": {
+   "known_text": "你为什么想说中文？",
+   "known_audio_id": "09f0ced1-1736-4c5d-95a8-2b7ec344960e"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0021L01B01",
+  "set": {
+   "known_text": "为什么想说中文?",
+   "known_audio_id": "648149b9-a4c7-4619-9ec3-1d6b593b85af"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0020L01U01",
+  "set": {
+   "known_text": "你想和我说中文。",
+   "known_audio_id": "8c12ad99-48ce-49bd-b369-1d10a60296a0"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0020L01U03",
+  "set": {
+   "known_text": "你想整天说中文。",
+   "known_audio_id": "212bb865-c355-4743-9c66-c33e1d4b0d84"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0020L01B02",
+  "set": {
+   "known_text": "你想说中文",
+   "known_audio_id": "f5289add-dea8-41e5-b6aa-4c11deb8e5f0"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0020L03U02",
+  "set": {
+   "known_text": "我想快点说中文。",
+   "known_audio_id": "1d6c33d0-93fc-41a6-9363-5a4dfd56dd68"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0020L03B02",
+  "set": {
+   "known_text": "快点说中文",
+   "known_audio_id": "ef08c6fe-ff90-4406-8923-fd9458305236"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0019L02U03",
+  "set": {
+   "known_text": "她不想停止说中文。",
+   "known_audio_id": "ae514820-ad52-459b-ad5b-94533c680996"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0019L02U01",
+  "set": {
+   "known_text": "我不想停止说中文。",
+   "known_audio_id": "b8331287-1e7d-4926-a88a-0df33edd1dd0"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0019L02B02",
+  "set": {
+   "known_text": "想停止说中文",
+   "known_audio_id": "052c34ad-a14e-461d-be45-f0894c5a894b"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0019L02B03",
+  "set": {
+   "known_text": "她想停止说中文",
+   "known_audio_id": "33e09884-4745-4534-b5cd-979e927c427c"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0019L01U01",
+  "set": {
+   "known_text": "但是我想说中文。",
+   "known_audio_id": "632bc37a-d82e-4bd0-b2b5-58a3adab4e89"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L03U03",
+  "set": {
+   "known_text": "她今天晚上六点想说中文。",
+   "known_audio_id": "54289578-f453-4917-9255-43e791016712"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L03U05",
+  "set": {
+   "known_text": "我今天晚上六点想和你说中文。",
+   "known_audio_id": "ddbe662b-5a3b-4e1e-a57a-8ea1dd07cd62"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L01U03",
+  "set": {
+   "known_text": "我们明天想和别人一起说中文。",
+   "known_audio_id": "5a0a0e01-c2ea-45a8-a404-4491693b3e2c"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L01U05",
+  "set": {
+   "known_text": "我们今天想和你说中文。",
+   "known_audio_id": "2deaeceb-31ca-4c7f-9a14-8c2b25841447"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L01B02",
+  "set": {
+   "known_text": "我们想说中文",
+   "known_audio_id": "e2634bb7-9b75-48b8-915c-3c031bd89087"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L02U04",
+  "set": {
+   "known_text": "我今天晚上想和你说中文。",
+   "known_audio_id": "367ed0d1-cab5-4974-aa52-346114bbc95f"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L02U01",
+  "set": {
+   "known_text": "我们今天晚上想说中文。",
+   "known_audio_id": "96f2268b-efc7-4996-a165-90083c8b9ff6"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0018L02B02",
+  "set": {
+   "known_text": "今天晚上想说中文",
+   "known_audio_id": "ec46ad73-1ede-442c-ade9-bcf3107824ab"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0017L01U04",
+  "set": {
+   "known_text": "她明天想和别人一起说中文。",
+   "known_audio_id": "e89a3fc4-8763-4334-8fe9-c3ca971cb9ac"
+  }
+ }
+]

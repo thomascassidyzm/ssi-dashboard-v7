@@ -1,0 +1,2428 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "72e7dfeb-c555-44d7-8a60-9b391fe169f9",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L01B01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 만나고 싶어해요",
+    "target_text": "why do you want to meet?",
+    "known_audio_id": "ff383711-0852-41ce-bb99-dc322f473556",
+    "target1_audio_id": "e02a0952-3ed1-40e2-81bc-246a67d9d1a5",
+    "target2_audio_id": "ac2df237-bf26-4ef6-9ed5-5abc1eff3029",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 만나고 싶어요?",
+    "target_text": "why do you want to meet?",
+    "known_audio_id": null,
+    "target1_audio_id": "e02a0952-3ed1-40e2-81bc-246a67d9d1a5",
+    "target2_audio_id": "ac2df237-bf26-4ef6-9ed5-5abc1eff3029",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L01B02",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 돌아오고 싶어해요",
+    "target_text": "why do you want to come back?",
+    "known_audio_id": "8d7370a7-c885-43cb-99bc-04ca9502fc80",
+    "target1_audio_id": "9ade3c7c-0ac2-4d44-9e59-b070ae2aa176",
+    "target2_audio_id": "015bb4ed-aaaf-4891-995a-1611a204a85b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L01B02",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 돌아오고 싶어요?",
+    "target_text": "why do you want to come back?",
+    "known_audio_id": null,
+    "target1_audio_id": "9ade3c7c-0ac2-4d44-9e59-b070ae2aa176",
+    "target2_audio_id": "015bb4ed-aaaf-4891-995a-1611a204a85b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L01B03",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 배우고 싶어해요",
+    "target_text": "why do you want to learn?",
+    "known_audio_id": "c0f1b4a9-9a23-43b2-9a9e-13cddae10599",
+    "target1_audio_id": "89ea5029-9f5b-4107-b3a3-6a883cdd31a3",
+    "target2_audio_id": "5f9d9213-64cf-406a-a629-83eaf856ae2a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L01B03",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 배우고 싶어요?",
+    "target_text": "why do you want to learn?",
+    "known_audio_id": "3cc316f9-7f64-4feb-88de-70aa0c1e00e8",
+    "target1_audio_id": "89ea5029-9f5b-4107-b3a3-6a883cdd31a3",
+    "target2_audio_id": "5f9d9213-64cf-406a-a629-83eaf856ae2a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L03B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "영어를 배우고 있어요",
+    "target_text": "are you learning English?",
+    "known_audio_id": "bc84188c-1a2b-4022-892a-ad49f76e5973",
+    "target1_audio_id": "46a7c124-6467-4007-a6c4-a41b477746a5",
+    "target2_audio_id": "4fb07925-45a5-488e-a61d-6c75c0679071",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "영어를 배우고 있나요?",
+    "target_text": "are you learning English?",
+    "known_audio_id": null,
+    "target1_audio_id": "46a7c124-6467-4007-a6c4-a41b477746a5",
+    "target2_audio_id": "4fb07925-45a5-488e-a61d-6c75c0679071",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L03B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L03B03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "지금 배우고 있어요",
+    "target_text": "are you learning now?",
+    "known_audio_id": "70b1e210-7858-4c05-b176-97f784dbd6b8",
+    "target1_audio_id": "8cc5a093-6689-4446-ba2f-7dfffa3aa925",
+    "target2_audio_id": "76dec4eb-cb36-4d5a-a209-f9c44e3676c8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L03B03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "지금 배우고 있나요?",
+    "target_text": "are you learning now?",
+    "known_audio_id": null,
+    "target1_audio_id": "8cc5a093-6689-4446-ba2f-7dfffa3aa925",
+    "target2_audio_id": "76dec4eb-cb36-4d5a-a209-f9c44e3676c8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L03B04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L03B04",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "빨리 배우고 있어요",
+    "target_text": "are you learning quickly?",
+    "known_audio_id": "80a6ecdf-d803-4ba5-b300-cb54d1ffa80b",
+    "target1_audio_id": "a2d7dc58-2d19-419d-8f00-61c0d9a254d6",
+    "target2_audio_id": "4f8640ec-8021-413d-916a-6924f2455ddb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L03B04",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "빨리 배우고 있나요?",
+    "target_text": "are you learning quickly?",
+    "known_audio_id": null,
+    "target1_audio_id": "a2d7dc58-2d19-419d-8f00-61c0d9a254d6",
+    "target2_audio_id": "4f8640ec-8021-413d-916a-6924f2455ddb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0063L02U04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0063L02U04",
+    "seed_number": 63,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "당신은 저를 도와주는 것을 괜찮아해요?",
+    "target_text": "you don't mind helping me again",
+    "known_audio_id": "8fe58aa2-498e-4939-ac71-16b36df996e8",
+    "target1_audio_id": "d6b4801a-6e53-4924-ae0c-152bbd71720f",
+    "target2_audio_id": "a8bb24f9-7ef2-4b36-b35a-f4dabaa107c7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0063L02U04",
+    "seed_number": 63,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "당신은 저를 다시 도와주는 것이 괜찮아요",
+    "target_text": "you don't mind helping me again",
+    "known_audio_id": null,
+    "target1_audio_id": "d6b4801a-6e53-4924-ae0c-152bbd71720f",
+    "target2_audio_id": "a8bb24f9-7ef2-4b36-b35a-f4dabaa107c7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0085L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0085L01B02",
+    "seed_number": 85,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 몰라요",
+    "target_text": "I don't know now",
+    "known_audio_id": "a8b46fcc-a419-426c-983a-d7c1b89e315a",
+    "target1_audio_id": "c06407f4-b1fc-4684-b524-d951f59e9536",
+    "target2_audio_id": "f5750705-cd8c-4c29-9d2f-7b352b17cef3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0085L01B02",
+    "seed_number": 85,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 지금 몰라요",
+    "target_text": "I don't know now",
+    "known_audio_id": null,
+    "target1_audio_id": "c06407f4-b1fc-4684-b524-d951f59e9536",
+    "target2_audio_id": "f5750705-cd8c-4c29-9d2f-7b352b17cef3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0094L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0094L01B02",
+    "seed_number": 94,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "이것이 유일한 방법이에요",
+    "target_text": "this is the only way to learn English",
+    "known_audio_id": "74ddf9d6-753e-4dcb-b3b1-21fe11e9c206",
+    "target1_audio_id": "af1f707b-0154-4259-bfb0-220b2bbb6505",
+    "target2_audio_id": "ce9c3cc2-3583-49b7-9b68-6a12eefd0768",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0094L01B02",
+    "seed_number": 94,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "이것이 영어를 배우는 유일한 방법이에요",
+    "target_text": "this is the only way to learn English",
+    "known_audio_id": null,
+    "target1_audio_id": "af1f707b-0154-4259-bfb0-220b2bbb6505",
+    "target2_audio_id": "ce9c3cc2-3583-49b7-9b68-6a12eefd0768",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0099L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0099L01B03",
+    "seed_number": 99,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 물어봐야 해요",
+    "target_text": "you should ask me now",
+    "known_audio_id": "2f652488-df95-4ebb-a2cc-f3edd5b60622",
+    "target1_audio_id": "24d040a9-e229-4088-b6c8-a2b48ccdee12",
+    "target2_audio_id": "9e602493-d49c-40a4-af23-2625c651c079",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0099L01B03",
+    "seed_number": 99,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 저에게 물어봐야 해요",
+    "target_text": "you should ask me now",
+    "known_audio_id": null,
+    "target1_audio_id": "24d040a9-e229-4088-b6c8-a2b48ccdee12",
+    "target2_audio_id": "9e602493-d49c-40a4-af23-2625c651c079",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0100L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0100L02B02",
+    "seed_number": 100,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "그것에 대해 걱정하지 않아도 돼요",
+    "target_text": "you shouldn't worry about it this evening",
+    "known_audio_id": "e933daee-81c8-43aa-9932-e3eb828a6d3e",
+    "target1_audio_id": "a9b5b471-29c7-4d1b-a6ca-a524e09c41a1",
+    "target2_audio_id": "99c49afb-77ee-460d-85ce-8376d7dd5262",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0100L02B02",
+    "seed_number": 100,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "오늘 저녁에는 그것에 대해 걱정하지 않아도 돼요",
+    "target_text": "you shouldn't worry about it this evening",
+    "known_audio_id": null,
+    "target1_audio_id": "a9b5b471-29c7-4d1b-a6ca-a524e09c41a1",
+    "target2_audio_id": "99c49afb-77ee-460d-85ce-8376d7dd5262",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0135L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0135L01B03",
+    "seed_number": 135,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 그렇게 좋다고 생각하는지 물어봐요",
+    "target_text": "can I ask why you think it's so good?",
+    "known_audio_id": "bb8710f3-c35d-4f35-9f2f-fbf4ca799617",
+    "target1_audio_id": "ac31dde0-f0e1-4b92-8ca6-23c30cf367f3",
+    "target2_audio_id": "5e1f18fc-8015-4f9b-8d4f-e43c67260475",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0135L01B03",
+    "seed_number": 135,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "왜 그렇게 좋다고 생각하는지 물어봐도 될까요?",
+    "target_text": "can I ask why you think it's so good?",
+    "known_audio_id": null,
+    "target1_audio_id": "ac31dde0-f0e1-4b92-8ca6-23c30cf367f3",
+    "target2_audio_id": "5e1f18fc-8015-4f9b-8d4f-e43c67260475",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0140L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0140L01U01",
+    "seed_number": 140,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "볼 수 없어서 죄송해요",
+    "target_text": "I'm sorry that I can't see you tonight",
+    "known_audio_id": "efc07d29-9fb9-4b86-8b64-a002ed6394f4",
+    "target1_audio_id": "ea3f72ca-c7d2-489e-8b4b-e12aac6e1aed",
+    "target2_audio_id": "7b0ac62b-2cc1-4bdd-aed3-79083756c357",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0140L01U01",
+    "seed_number": 140,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "오늘 밤에 당신을 볼 수 없어서 죄송해요",
+    "target_text": "I'm sorry that I can't see you tonight",
+    "known_audio_id": null,
+    "target1_audio_id": "ea3f72ca-c7d2-489e-8b4b-e12aac6e1aed",
+    "target2_audio_id": "7b0ac62b-2cc1-4bdd-aed3-79083756c357",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0143L01U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0143L01U02",
+    "seed_number": 143,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "아까 말했어요",
+    "target_text": "I said that earlier and I think it's important",
+    "known_audio_id": "faef0a87-1647-437b-b6e6-9862b6ed986c",
+    "target1_audio_id": "1bc813da-c01a-4f6f-a9e5-ad0e8a976af3",
+    "target2_audio_id": "fcebe0d6-2e02-4a41-9397-163d18d8f01d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0143L01U02",
+    "seed_number": 143,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "아까 그렇게 말했어요, 그리고 그것이 중요하다고 생각해요",
+    "target_text": "I said that earlier and I think it's important",
+    "known_audio_id": null,
+    "target1_audio_id": "1bc813da-c01a-4f6f-a9e5-ad0e8a976af3",
+    "target2_audio_id": "fcebe0d6-2e02-4a41-9397-163d18d8f01d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0145L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0145L01B03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 더 이상 행복하지 않아요",
+    "target_text": "I'm not happy any more now",
+    "known_audio_id": "e323b86a-cef8-44f4-940d-5dfaac286e4f",
+    "target1_audio_id": "f349e4d3-9b6b-4e22-b399-cf4b80ad8afb",
+    "target2_audio_id": "ae577f41-f486-42ef-a87f-89c863da4fd1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0145L01B03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 이제 더 이상 행복하지 않아요",
+    "target_text": "I'm not happy any more now",
+    "known_audio_id": null,
+    "target1_audio_id": "f349e4d3-9b6b-4e22-b399-cf4b80ad8afb",
+    "target2_audio_id": "ae577f41-f486-42ef-a87f-89c863da4fd1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0145L01U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0145L01U03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 더 이상 행복하지 않아요",
+    "target_text": "I'm not happy any more and I don't know why",
+    "known_audio_id": "e323b86a-cef8-44f4-940d-5dfaac286e4f",
+    "target1_audio_id": "d83bc119-b2fd-4878-8238-49d65644af3e",
+    "target2_audio_id": "aa3738c8-981f-478a-9e1c-852df1f3764d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0145L01U03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 더 이상 행복하지 않은데, 왜 그런지 모르겠어요",
+    "target_text": "I'm not happy any more and I don't know why",
+    "known_audio_id": null,
+    "target1_audio_id": "d83bc119-b2fd-4878-8238-49d65644af3e",
+    "target2_audio_id": "aa3738c8-981f-478a-9e1c-852df1f3764d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0146L02U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0146L02U01",
+    "seed_number": 146,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "아무것도 작동하지 않는 것 같아요",
+    "target_text": "nothing seems to be working and I don't know why",
+    "known_audio_id": "14dd8c6b-fff1-47a4-aee8-2c103b17248e",
+    "target1_audio_id": "dfb7a153-791a-4d80-b62d-de18973ee245",
+    "target2_audio_id": "e2236ddc-1c59-4dc6-a0a9-b294820becd2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0146L02U01",
+    "seed_number": 146,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "아무것도 작동하지 않는 것 같은데, 왜 그런지 모르겠어요",
+    "target_text": "nothing seems to be working and I don't know why",
+    "known_audio_id": null,
+    "target1_audio_id": "dfb7a153-791a-4d80-b62d-de18973ee245",
+    "target2_audio_id": "e2236ddc-1c59-4dc6-a0a9-b294820becd2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0148L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0148L01U01",
+    "seed_number": 148,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "별로 인내심이 없었어요",
+    "target_text": "I don't know why he wasn't very patient",
+    "known_audio_id": "5b9448f6-06c9-4bf1-b50c-c3c806671289",
+    "target1_audio_id": "e9ef68d2-00ba-432c-b6d0-3bcdee2c5371",
+    "target2_audio_id": "66bb1a4d-173d-4889-b755-b835a3a4e86e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0148L01U01",
+    "seed_number": 148,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "그가 왜 별로 인내심이 없었는지 모르겠어요",
+    "target_text": "I don't know why he wasn't very patient",
+    "known_audio_id": null,
+    "target1_audio_id": "e9ef68d2-00ba-432c-b6d0-3bcdee2c5371",
+    "target2_audio_id": "66bb1a4d-173d-4889-b755-b835a3a4e86e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0149L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0149L02U02",
+    "seed_number": 149,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "곧 끝날 거라고 기대해요",
+    "target_text": "I hope you'll finish soon today",
+    "known_audio_id": "ea075fd3-ef82-419c-8529-fec24403dc1d",
+    "target1_audio_id": "8995130a-d2fc-42f6-b13f-e00fd2379dff",
+    "target2_audio_id": "014a4f38-de02-45d2-8d73-2543dee420af",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0149L02U02",
+    "seed_number": 149,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "오늘 곧 끝날 거라고 기대해요",
+    "target_text": "I hope you'll finish soon today",
+    "known_audio_id": null,
+    "target1_audio_id": "8995130a-d2fc-42f6-b13f-e00fd2379dff",
+    "target2_audio_id": "014a4f38-de02-45d2-8d73-2543dee420af",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0150L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0150L01B02",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "뭔지 말해줄 수 있어요",
+    "target_text": "can you tell me what?",
+    "known_audio_id": "c802b08e-ede7-43a0-9eb7-a381370d1ab2",
+    "target1_audio_id": "4f66280a-0f61-474c-9ae5-7ff421a1e80a",
+    "target2_audio_id": "509c8013-0a6d-4373-8b05-3f524144c715",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0150L01B02",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "뭔지 말해줄 수 있나요?",
+    "target_text": "can you tell me what?",
+    "known_audio_id": null,
+    "target1_audio_id": "4f66280a-0f61-474c-9ae5-7ff421a1e80a",
+    "target2_audio_id": "509c8013-0a6d-4373-8b05-3f524144c715",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0150L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0150L01B03",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "그것에 대해 말해줄 수 있어요",
+    "target_text": "can you tell me about it?",
+    "known_audio_id": "27be9bfb-4b10-44ae-a618-81ccd07c02ca",
+    "target1_audio_id": "8b2899f6-1497-4171-99b0-6dfdb2a2acee",
+    "target2_audio_id": "b721bb3b-aceb-46ce-b8bc-0f9f86e11135",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0150L01B03",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "그것에 대해 말해줄 수 있나요?",
+    "target_text": "can you tell me about it?",
+    "known_audio_id": null,
+    "target1_audio_id": "8b2899f6-1497-4171-99b0-6dfdb2a2acee",
+    "target2_audio_id": "b721bb3b-aceb-46ce-b8bc-0f9f86e11135",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0154L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0154L01U01",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "토요일에 만나고 싶어요",
+    "target_text": "do you want to meet on saturday?",
+    "known_audio_id": "446739fb-109e-4b9b-8d5f-4faa0ff72852",
+    "target1_audio_id": "ab2eb17a-4d93-48cb-8cba-710cbda5b365",
+    "target2_audio_id": "84b07ad7-a145-4f7f-bf8b-0b94c975c9db",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0154L01U01",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "토요일에 만나고 싶나요?",
+    "target_text": "do you want to meet on saturday?",
+    "known_audio_id": null,
+    "target1_audio_id": "ab2eb17a-4d93-48cb-8cba-710cbda5b365",
+    "target2_audio_id": "84b07ad7-a145-4f7f-bf8b-0b94c975c9db",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0154L01U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0154L01U03",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "토요일에 만나고 싶어요, 괜찮아요?",
+    "target_text": "I hope we can meet on saturday",
+    "known_audio_id": "65345b3d-27e9-4f1e-abe6-21edd6b929b2",
+    "target1_audio_id": "6581b310-8aa3-4ce3-933a-92987194f67e",
+    "target2_audio_id": "3dfa3eb8-4452-4f98-87ed-038a20a85d54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0154L01U03",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "토요일에 만날 수 있을 거라고 기대해요",
+    "target_text": "I hope we can meet on saturday",
+    "known_audio_id": null,
+    "target1_audio_id": "6581b310-8aa3-4ce3-933a-92987194f67e",
+    "target2_audio_id": "3dfa3eb8-4452-4f98-87ed-038a20a85d54",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0154L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0154L02B03",
+    "seed_number": 154,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "토요일 밤에 어디서",
+    "target_text": "where on saturday night?",
+    "known_audio_id": "f1eccf6e-fa91-492b-8d98-0aca07a070a6",
+    "target1_audio_id": "09d6d4d0-b7f0-4e1e-b0c9-4e5cca1540cf",
+    "target2_audio_id": "4ba77ad4-9f8f-4d79-a044-33bc4074b687",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0154L02B03",
+    "seed_number": 154,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "토요일 밤에 어디서요?",
+    "target_text": "where on saturday night?",
+    "known_audio_id": null,
+    "target1_audio_id": "09d6d4d0-b7f0-4e1e-b0c9-4e5cca1540cf",
+    "target2_audio_id": "4ba77ad4-9f8f-4d79-a044-33bc4074b687",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L01U01",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "기다리는 것이 괜찮아요, 여기서",
+    "target_text": "I don't mind waiting here for a while",
+    "known_audio_id": "bf2d4514-ca24-49d1-8be5-d50467f94a42",
+    "target1_audio_id": "254c69f9-4ce0-48d1-90ba-fc0bb02fb8b7",
+    "target2_audio_id": "7a823039-a9a2-4278-888c-33c15477dd0d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L01U01",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "여기서 잠시 기다리는 것이 괜찮아요",
+    "target_text": "I don't mind waiting here for a while",
+    "known_audio_id": null,
+    "target1_audio_id": "254c69f9-4ce0-48d1-90ba-fc0bb02fb8b7",
+    "target2_audio_id": "7a823039-a9a2-4278-888c-33c15477dd0d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L01U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L01U03",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "기다리는 것이 괜찮아요, 당신을 위해",
+    "target_text": "I don't mind waiting for you tonight",
+    "known_audio_id": "5382feb5-1c7b-4b74-8016-0c55d78236d6",
+    "target1_audio_id": "999f9166-2d55-489a-a53d-9596d0e43b57",
+    "target2_audio_id": "f20dccba-453b-455f-bcfd-71864a56deb1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L01U03",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "오늘 밤에 당신을 기다리는 것이 괜찮아요",
+    "target_text": "I don't mind waiting for you tonight",
+    "known_audio_id": null,
+    "target1_audio_id": "999f9166-2d55-489a-a53d-9596d0e43b57",
+    "target2_audio_id": "f20dccba-453b-455f-bcfd-71864a56deb1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L02U02",
+    "seed_number": 155,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "몇 분만 기다려 주세요",
+    "target_text": "can you wait for a few minutes?",
+    "known_audio_id": "9192fbb4-7b2f-4096-84b1-ed46bf509d0d",
+    "target1_audio_id": "9ad10174-7f41-4e1d-99e2-b976d1edcb83",
+    "target2_audio_id": "42634bfa-ce8d-4c25-8c9c-68a132fbc5da",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L02U02",
+    "seed_number": 155,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "몇 분 기다려 줄 수 있나요?",
+    "target_text": "can you wait for a few minutes?",
+    "known_audio_id": null,
+    "target1_audio_id": "9ad10174-7f41-4e1d-99e2-b976d1edcb83",
+    "target2_audio_id": "42634bfa-ce8d-4c25-8c9c-68a132fbc5da",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L03U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L03U02",
+    "seed_number": 155,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "내일 아침에 만나고 싶어요",
+    "target_text": "where do you want to meet tomorrow morning?",
+    "known_audio_id": "b427e41f-5a5e-437e-b8f9-39c8bbf7eee0",
+    "target1_audio_id": "4df22cce-814a-4e6a-9ed3-6c7c8cb37f55",
+    "target2_audio_id": "92912014-af00-44ce-8c7f-422cbb7febd5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L03U02",
+    "seed_number": 155,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "내일 아침에 어디서 만나고 싶어요?",
+    "target_text": "where do you want to meet tomorrow morning?",
+    "known_audio_id": null,
+    "target1_audio_id": "4df22cce-814a-4e6a-9ed3-6c7c8cb37f55",
+    "target2_audio_id": "92912014-af00-44ce-8c7f-422cbb7febd5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0157L01U05"
+   },
+   "before": {
+    "id": "eng_for_kor:S0157L01U05",
+    "seed_number": 157,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "다음 달에 식당에 가고 싶어요",
+    "target_text": "do you want to go to a restaurant next month?",
+    "known_audio_id": "5ed0852e-be1f-4f9e-afa7-dcabb7e23909",
+    "target1_audio_id": "ef8e5070-b912-40db-b27a-0eb717c1b9e7",
+    "target2_audio_id": "a4dd2807-1f82-44b1-80f6-dab2c06a4ba2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0157L01U05",
+    "seed_number": 157,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "다음 달에 식당에 가고 싶나요?",
+    "target_text": "do you want to go to a restaurant next month?",
+    "known_audio_id": null,
+    "target1_audio_id": "ef8e5070-b912-40db-b27a-0eb717c1b9e7",
+    "target2_audio_id": "a4dd2807-1f82-44b1-80f6-dab2c06a4ba2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0157L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0157L02U02",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "거기에 있을 수 없을 거예요, 죄송해요",
+    "target_text": "I'm sorry I won't be able to be there tomorrow morning",
+    "known_audio_id": "17e09296-871b-4a53-a3b2-01bddb9ff198",
+    "target1_audio_id": "781d28e5-c43c-42f7-ad5d-f94af2bb287b",
+    "target2_audio_id": "c13edf12-5f84-4d0a-9e41-85cb6d3c37e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0157L02U02",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "죄송하지만 내일 아침에 거기에 있을 수 없을 거예요",
+    "target_text": "I'm sorry I won't be able to be there tomorrow morning",
+    "known_audio_id": null,
+    "target1_audio_id": "781d28e5-c43c-42f7-ad5d-f94af2bb287b",
+    "target2_audio_id": "c13edf12-5f84-4d0a-9e41-85cb6d3c37e3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0158L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0158L01U01",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "다른 것에 대해 이야기해요, 좋아요?",
+    "target_text": "let's talk about something else today",
+    "known_audio_id": "abc5236d-f322-401b-9927-86a8f2085f06",
+    "target1_audio_id": "4e719101-77a2-4a14-a285-b6fe2e40b97a",
+    "target2_audio_id": "1a906db8-43e8-437a-9e56-b054132a5e2b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0158L01U01",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "오늘은 다른 것에 대해 이야기해요",
+    "target_text": "let's talk about something else today",
+    "known_audio_id": null,
+    "target1_audio_id": "4e719101-77a2-4a14-a285-b6fe2e40b97a",
+    "target2_audio_id": "1a906db8-43e8-437a-9e56-b054132a5e2b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0158L01U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0158L01U02",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "다른 것에 대해 이야기해요, 괜찮아요?",
+    "target_text": "I don't mind but let's talk about something else",
+    "known_audio_id": "5ba24f1e-a803-4d7c-bbcf-a0701ff03f5c",
+    "target1_audio_id": "13f1fd31-b021-477a-8b27-8e91b491769c",
+    "target2_audio_id": "037e06e2-56c7-42ff-88b2-40df67e73f91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0158L01U02",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 괜찮지만, 다른 것에 대해 이야기해요",
+    "target_text": "I don't mind but let's talk about something else",
+    "known_audio_id": null,
+    "target1_audio_id": "13f1fd31-b021-477a-8b27-8e91b491769c",
+    "target2_audio_id": "037e06e2-56c7-42ff-88b2-40df67e73f91",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0167L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0167L02B03",
+    "seed_number": 167,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "지금 무엇을 해야 해요",
+    "target_text": "what do you need to do now?",
+    "known_audio_id": "22311103-83ee-4f2e-acf5-a7a033667199",
+    "target1_audio_id": "320e7c97-92d4-4fe5-a174-c62631fdc42c",
+    "target2_audio_id": "1464cab6-c4fa-47c1-82f1-792a7a54f147",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0167L02B03",
+    "seed_number": 167,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "지금 무엇을 해야 해요?",
+    "target_text": "what do you need to do now?",
+    "known_audio_id": null,
+    "target1_audio_id": "320e7c97-92d4-4fe5-a174-c62631fdc42c",
+    "target2_audio_id": "1464cab6-c4fa-47c1-82f1-792a7a54f147",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0169L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0169L01B02",
+    "seed_number": 169,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 제가 무엇을 하기를 원해요",
+    "target_text": "what do you want me to do now?",
+    "known_audio_id": "77c930ab-852f-4f8d-af66-feca92ff6efc",
+    "target1_audio_id": "d9bdf2cf-f897-4641-8383-954c541db6f9",
+    "target2_audio_id": "91476499-f801-4664-8fa5-7e6d9d4ed46f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0169L01B02",
+    "seed_number": 169,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 제가 무엇을 하기를 원해요?",
+    "target_text": "what do you want me to do now?",
+    "known_audio_id": null,
+    "target1_audio_id": "d9bdf2cf-f897-4641-8383-954c541db6f9",
+    "target2_audio_id": "91476499-f801-4664-8fa5-7e6d9d4ed46f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0171L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0171L02B02",
+    "seed_number": 171,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "지금 도와드릴까요",
+    "target_text": "do you want me to help you now?",
+    "known_audio_id": "e369855c-a355-48ac-b149-f61ae09182a7",
+    "target1_audio_id": "a956d368-3282-4575-b3e5-74a7363c2226",
+    "target2_audio_id": "725e6ff0-78ca-4532-8df1-d5af869726ef",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0171L02B02",
+    "seed_number": 171,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "지금 도와드릴까요?",
+    "target_text": "do you want me to help you now?",
+    "known_audio_id": null,
+    "target1_audio_id": "a956d368-3282-4575-b3e5-74a7363c2226",
+    "target2_audio_id": "725e6ff0-78ca-4532-8df1-d5af869726ef",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0175L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0175L01B02",
+    "seed_number": 175,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 무엇을 하고 싶어요",
+    "target_text": "what do you want to do now?",
+    "known_audio_id": "23686839-733d-4601-b4a4-cb51e4b280aa",
+    "target1_audio_id": "ba42cfe8-4256-46ae-9c75-e6cc626e8d79",
+    "target2_audio_id": "e3e30f5e-4138-4266-aac4-b99c5d9e62f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0175L01B02",
+    "seed_number": 175,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 무엇을 하고 싶어요?",
+    "target_text": "what do you want to do now?",
+    "known_audio_id": null,
+    "target1_audio_id": "ba42cfe8-4256-46ae-9c75-e6cc626e8d79",
+    "target2_audio_id": "e3e30f5e-4138-4266-aac4-b99c5d9e62f3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0179L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0179L02B02",
+    "seed_number": 179,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "지금 무엇을 할 거예요",
+    "target_text": "what are you going to do now?",
+    "known_audio_id": "a3254f33-e2d9-4391-88e2-a35f3c23943d",
+    "target1_audio_id": "536daa63-298b-4054-bbdd-2c2b7b8cdd54",
+    "target2_audio_id": "ec708241-ef24-458e-9c5d-3a36ea2fc5c2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0179L02B02",
+    "seed_number": 179,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "지금 무엇을 할 거예요?",
+    "target_text": "what are you going to do now?",
+    "known_audio_id": null,
+    "target1_audio_id": "536daa63-298b-4054-bbdd-2c2b7b8cdd54",
+    "target2_audio_id": "ec708241-ef24-458e-9c5d-3a36ea2fc5c2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0182L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0182L02B02",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "제 열쇠를 어디선가 봤어요",
+    "target_text": "have you seen my keys anywhere?",
+    "known_audio_id": "6a596001-6211-4750-81c7-9ec6299ddb9d",
+    "target1_audio_id": "cc3b5d90-c66d-45e3-a712-0cec59ac1f07",
+    "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0182L02B02",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "어디선가 제 열쇠를 봤나요?",
+    "target_text": "have you seen my keys anywhere?",
+    "known_audio_id": null,
+    "target1_audio_id": "cc3b5d90-c66d-45e3-a712-0cec59ac1f07",
+    "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0182L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0182L02B03",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "그 책을 어디선가 봤어요",
+    "target_text": "have you seen that book anywhere?",
+    "known_audio_id": "8a377802-19e8-4740-8602-1cb6bcebf123",
+    "target1_audio_id": "cef28927-95d3-42be-857a-51ef19514a38",
+    "target2_audio_id": "d675a99b-7c46-4d46-921f-a0862d10768a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0182L02B03",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "어디선가 그 책을 봤나요?",
+    "target_text": "have you seen that book anywhere?",
+    "known_audio_id": null,
+    "target1_audio_id": "cef28927-95d3-42be-857a-51ef19514a38",
+    "target2_audio_id": "d675a99b-7c46-4d46-921f-a0862d10768a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0194L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0194L01B03",
+    "seed_number": 194,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 무엇을 찾고 있어요",
+    "target_text": "what are you looking for now?",
+    "known_audio_id": "38881cfd-d6ca-459c-8b3c-507dca8b8b5a",
+    "target1_audio_id": "92cd7ebf-1907-4d60-8b16-ae683b0dedec",
+    "target2_audio_id": "bcb73e71-3c56-4dba-aeab-0224463f650a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0194L01B03",
+    "seed_number": 194,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "지금 무엇을 찾고 있어요?",
+    "target_text": "what are you looking for now?",
+    "known_audio_id": "38881cfd-d6ca-459c-8b3c-507dca8b8b5a",
+    "target1_audio_id": "92cd7ebf-1907-4d60-8b16-ae683b0dedec",
+    "target2_audio_id": "bcb73e71-3c56-4dba-aeab-0224463f650a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0196L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0196L01B03",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "아직 최근 아이디어를 들었어요",
+    "target_text": "have you heard the latest idea yet?",
+    "known_audio_id": "01e31802-786a-475d-8d46-40692c744cf9",
+    "target1_audio_id": "cb35ef70-ab85-4716-a706-0e542a5652eb",
+    "target2_audio_id": "5a067edd-7e5f-48c2-a1ba-518944cd08e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0196L01B03",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "최근 아이디어를 벌써 들었나요?",
+    "target_text": "have you heard the latest idea yet?",
+    "known_audio_id": null,
+    "target1_audio_id": "cb35ef70-ab85-4716-a706-0e542a5652eb",
+    "target2_audio_id": "5a067edd-7e5f-48c2-a1ba-518944cd08e3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0201L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0201L02B02",
+    "seed_number": 201,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "알고 싶었어요 무슨 일이 일어났을지",
+    "target_text": "we wanted to know what was going to happen",
+    "known_audio_id": "2508a130-d3ce-45aa-b5c1-cc076fefa9cf",
+    "target1_audio_id": "ec66e28d-4e2c-4e63-8304-b37d2f12e9c4",
+    "target2_audio_id": "fb252e9d-f857-4317-81cc-f3687f7e043e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0201L02B02",
+    "seed_number": 201,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "우리는 무슨 일이 일어날지 알고 싶었어요",
+    "target_text": "we wanted to know what was going to happen",
+    "known_audio_id": "bb675695-bf1b-4fcb-a3f3-9fb7ebce81db",
+    "target1_audio_id": "ec66e28d-4e2c-4e63-8304-b37d2f12e9c4",
+    "target2_audio_id": "fb252e9d-f857-4317-81cc-f3687f7e043e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0202L03B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0202L03B02",
+    "seed_number": 202,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "아무도 질문에 확신하지 못했어요",
+    "target_text": "nobody was sure how to answer the question",
+    "known_audio_id": "303b0474-d4bb-49b3-af8d-9e02f94ee13d",
+    "target1_audio_id": "e989fa0e-d6aa-4aa7-a5d1-49c4a41f103e",
+    "target2_audio_id": "0443e07e-f4e6-4d70-8509-8a951d2e9ed9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0202L03B02",
+    "seed_number": 202,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "아무도 질문에 어떻게 대답할지 확신하지 못했어요",
+    "target_text": "nobody was sure how to answer the question",
+    "known_audio_id": "058a812e-ed31-47c3-8902-648ffbeeaede",
+    "target1_audio_id": "e989fa0e-d6aa-4aa7-a5d1-49c4a41f103e",
+    "target2_audio_id": "0443e07e-f4e6-4d70-8509-8a951d2e9ed9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0203L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0203L02B02",
+    "seed_number": 203,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "어떻게 할 거예요 도움을 요청하면",
+    "target_text": "what would you do if I asked you to help me",
+    "known_audio_id": "88a61d9f-22d2-42fa-8bb8-6ba54319b407",
+    "target1_audio_id": "a5d97c2b-9e83-414e-8224-ba543ad61733",
+    "target2_audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0203L02B02",
+    "seed_number": 203,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "제가 도움을 요청하면 어떻게 할 거예요?",
+    "target_text": "what would you do if I asked you to help me",
+    "known_audio_id": "e36e176c-25ca-4aa4-bf64-63ad5262edb5",
+    "target1_audio_id": "a5d97c2b-9e83-414e-8224-ba543ad61733",
+    "target2_audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0205L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0205L02B02",
+    "seed_number": 205,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "잊어버렸어요 말하려던 단어를",
+    "target_text": "I've forgotten the word I was trying to say",
+    "known_audio_id": "d7326201-06e8-4d8c-8ea2-9139ee854ff4",
+    "target1_audio_id": "2759d09d-3a70-4a27-a075-56651d18f53b",
+    "target2_audio_id": "7f0811cc-4eed-4df8-9003-495c8f2354cd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0205L02B02",
+    "seed_number": 205,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "저는 말하려던 단어를 잊어버렸어요",
+    "target_text": "I've forgotten the word I was trying to say",
+    "known_audio_id": "9032173a-a467-4a3e-aa74-9378c997a676",
+    "target1_audio_id": "2759d09d-3a70-4a27-a075-56651d18f53b",
+    "target2_audio_id": "7f0811cc-4eed-4df8-9003-495c8f2354cd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0211L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0211L02B02",
+    "seed_number": 211,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "우리에게 말했어요, 설명하고 싶지 않다고",
+    "target_text": "they told us that they didn't want to explain",
+    "known_audio_id": "508692ef-6ec1-4732-a6b2-73798fbe1384",
+    "target1_audio_id": "c6b497fa-478f-4f0b-9d1a-aa38d5799f5a",
+    "target2_audio_id": "0244fbc6-0188-4dfd-8c5b-2b5758664311",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0211L02B02",
+    "seed_number": 211,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "그들은 설명하고 싶지 않다고 우리에게 말했어요",
+    "target_text": "they told us that they didn't want to explain",
+    "known_audio_id": "c71b85d8-074f-4528-86d4-45c581e09b77",
+    "target1_audio_id": "c6b497fa-478f-4f0b-9d1a-aa38d5799f5a",
+    "target2_audio_id": "0244fbc6-0188-4dfd-8c5b-2b5758664311",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0226L01U05"
+   },
+   "before": {
+    "id": "eng_for_kor:S0226L01U05",
+    "seed_number": 226,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "그 남자에 대해 뭔가를 알아요",
+    "target_text": "do you know something about the man?",
+    "known_audio_id": "2409003f-fb81-4bd3-bbad-9b52a5c0e873",
+    "target1_audio_id": "48dc2af0-e3c1-434a-902c-fb7227c37935",
+    "target2_audio_id": "4a172619-e052-4c48-9913-8f83e2dbe16f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0226L01U05",
+    "seed_number": 226,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "그 남자에 대해 뭔가를 알고 있나요?",
+    "target_text": "do you know something about the man?",
+    "known_audio_id": null,
+    "target1_audio_id": "48dc2af0-e3c1-434a-902c-fb7227c37935",
+    "target2_audio_id": "4a172619-e052-4c48-9913-8f83e2dbe16f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0230L01B04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0230L01B04",
+    "seed_number": 230,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 젊은 남자를 알아요, 일하고 싶은",
+    "target_text": "I know a young man who wants to work with you",
+    "known_audio_id": "f55c76a3-dc18-4e82-a50f-13147394f84b",
+    "target1_audio_id": "eb94aede-6894-4b30-b4c7-a285cc17fdfc",
+    "target2_audio_id": "195b76ac-ca91-439c-a228-19a57426c75d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0230L01B04",
+    "seed_number": 230,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저는 당신과 함께 일하고 싶은 젊은 남자를 알아요",
+    "target_text": "I know a young man who wants to work with you",
+    "known_audio_id": "589b5cc3-d4ee-4faf-a7f2-cb942ceabaf4",
+    "target1_audio_id": "eb94aede-6894-4b30-b4c7-a285cc17fdfc",
+    "target2_audio_id": "195b76ac-ca91-439c-a228-19a57426c75d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0232L02B04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0232L02B04",
+    "seed_number": 232,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "저는 나이 든 여자를 알아요, 기억할 수 있는",
+    "target_text": "I know an old woman who can remember the answer",
+    "known_audio_id": "5ad894b4-9ced-46a2-a8e6-bb2179be29bd",
+    "target1_audio_id": "be523d01-4a99-4f10-963c-47df71ead2cb",
+    "target2_audio_id": "ad5edfba-26bb-4a68-8c9b-c4b643b13c86",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0232L02B04",
+    "seed_number": 232,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "저는 답을 기억할 수 있는 나이 든 여자를 알아요",
+    "target_text": "I know an old woman who can remember the answer",
+    "known_audio_id": "0fd5474f-71e4-4f3a-8ca5-76d6f929a5ad",
+    "target1_audio_id": "be523d01-4a99-4f10-963c-47df71ead2cb",
+    "target2_audio_id": "ad5edfba-26bb-4a68-8c9b-c4b643b13c86",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 49,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0233L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0233L02B03",
+    "seed_number": 233,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "저는 젊은 여자를 알아요, 아는",
+    "target_text": "I know a young woman who knows your sister",
+    "known_audio_id": "58536c05-0a31-4773-a8b3-ce53137a6272",
+    "target1_audio_id": "9cb7e2d6-2a7a-48d4-aa5e-3e32c3f5777a",
+    "target2_audio_id": "3c347bf4-82dd-4018-acbd-58930134941d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0233L02B03",
+    "seed_number": 233,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "저는 당신의 여동생을 아는 젊은 여자를 알아요",
+    "target_text": "I know a young woman who knows your sister",
+    "known_audio_id": "2eddf4e1-5ebe-4db2-9f70-d0665c26d571",
+    "target1_audio_id": "9cb7e2d6-2a7a-48d4-aa5e-3e32c3f5777a",
+    "target2_audio_id": "3c347bf4-82dd-4018-acbd-58930134941d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 50,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0235L02B04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0235L02B04",
+    "seed_number": 235,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "그렇다고 한 사람을 만났어요, 말하고 싶다고",
+    "target_text": "I met someone who said that he wanted to tell you something",
+    "known_audio_id": "898e978d-dff6-4488-830c-17a2848ecd36",
+    "target1_audio_id": "4bb1db72-fb15-4530-a3f4-4aa2d40ad503",
+    "target2_audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0235L02B04",
+    "seed_number": 235,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "저는 당신에게 무언가 말하고 싶다고 한 사람을 만났어요",
+    "target_text": "I met someone who said that he wanted to tell you something",
+    "known_audio_id": "08dec3e8-e6c0-47e2-bb05-93eb10cea0b9",
+    "target1_audio_id": "4bb1db72-fb15-4530-a3f4-4aa2d40ad503",
+    "target2_audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 51,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0271L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0271L01B02",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "우리와 함께 오고 싶어요",
+    "target_text": "would you like to come with us?",
+    "known_audio_id": "6c8dd66f-9302-4ee2-a192-a231828bd309",
+    "target1_audio_id": "ae25a3e2-7e56-4f05-a413-fcf454ff9568",
+    "target2_audio_id": "59fc1fb5-cb9a-4738-a481-76c0a16d7306",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0271L01B02",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "우리와 함께 오고 싶나요?",
+    "target_text": "would you like to come with us?",
+    "known_audio_id": null,
+    "target1_audio_id": "ae25a3e2-7e56-4f05-a413-fcf454ff9568",
+    "target2_audio_id": "59fc1fb5-cb9a-4738-a481-76c0a16d7306",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 52,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0271L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0271L01B03",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저와 함께 오고 싶어요",
+    "target_text": "would you like to come with me?",
+    "known_audio_id": "11fededf-ffcc-42ab-bc5a-7f777776bb1a",
+    "target1_audio_id": "67734e7a-9309-464d-936f-f0334086e7e9",
+    "target2_audio_id": "78337a07-8889-430e-8163-665301cc8624",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0271L01B03",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "저와 함께 오고 싶나요?",
+    "target_text": "would you like to come with me?",
+    "known_audio_id": null,
+    "target1_audio_id": "67734e7a-9309-464d-936f-f0334086e7e9",
+    "target2_audio_id": "78337a07-8889-430e-8163-665301cc8624",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 53,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0271L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0271L02B03",
+    "seed_number": 271,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "다음 달에 오고 싶어요",
+    "target_text": "would you like to come next month?",
+    "known_audio_id": "3e5bde56-7c4b-45dc-8804-450cd8dc35d6",
+    "target1_audio_id": "50365155-3793-4f9e-a585-e1fce12387de",
+    "target2_audio_id": "a5846627-034c-434e-ad75-ef9c4696565c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0271L02B03",
+    "seed_number": 271,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "다음 달에 오고 싶나요?",
+    "target_text": "would you like to come next month?",
+    "known_audio_id": null,
+    "target1_audio_id": "50365155-3793-4f9e-a585-e1fce12387de",
+    "target2_audio_id": "a5846627-034c-434e-ad75-ef9c4696565c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 54,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0281L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0281L01B03",
+    "seed_number": 281,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "시작하기 전에 커피를 다 마셔도 괜찮아요",
+    "target_text": "do you mind if I finish my coffee before you start?",
+    "known_audio_id": "0f6e01d6-7680-4649-ac43-354cdec63864",
+    "target1_audio_id": "873bf45b-4a40-49a9-b2ee-e51bde8ebdc7",
+    "target2_audio_id": "93b60170-31ac-4146-b338-74e941d6599b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0281L01B03",
+    "seed_number": 281,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "시작하기 전에 커피를 다 마셔도 괜찮을까요?",
+    "target_text": "do you mind if I finish my coffee before you start?",
+    "known_audio_id": null,
+    "target1_audio_id": "873bf45b-4a40-49a9-b2ee-e51bde8ebdc7",
+    "target2_audio_id": "93b60170-31ac-4146-b338-74e941d6599b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 55,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0283L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0283L01B03",
+    "seed_number": 283,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "당신 친구들 중 누가 영어를 해요",
+    "target_text": "which of your friends speak English?",
+    "known_audio_id": "7d3fb67d-8ba8-43cc-8c40-71d6b551c5cb",
+    "target1_audio_id": "389ee070-b04f-4184-8898-901367a346cf",
+    "target2_audio_id": "9a084b94-4b42-4dd3-a45c-47ad18fd9705",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0283L01B03",
+    "seed_number": 283,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "당신 친구들 중 누가 영어를 하나요?",
+    "target_text": "which of your friends speak English?",
+    "known_audio_id": null,
+    "target1_audio_id": "389ee070-b04f-4184-8898-901367a346cf",
+    "target2_audio_id": "9a084b94-4b42-4dd3-a45c-47ad18fd9705",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 56,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0287L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0287L01B02",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "몇 명이나 알아요",
+    "target_text": "how many do you know?",
+    "known_audio_id": "c92d8d73-c077-4dc1-9ced-2dd9f3545a6e",
+    "target1_audio_id": "20543a8a-8848-4070-8ff4-25751bbc5e2a",
+    "target2_audio_id": "266745c8-efdd-4b9c-8eed-c22f1d88c164",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0287L01B02",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "몇 명이나 알아요?",
+    "target_text": "how many do you know?",
+    "known_audio_id": null,
+    "target1_audio_id": "20543a8a-8848-4070-8ff4-25751bbc5e2a",
+    "target2_audio_id": "266745c8-efdd-4b9c-8eed-c22f1d88c164",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 57,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0287L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0287L01B03",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "사람을 몇 명이나 알아요",
+    "target_text": "how many people do you know?",
+    "known_audio_id": "8160130d-17ae-4876-8448-63bddec70771",
+    "target1_audio_id": "9085796b-1192-4ffb-be2f-ce7d93b24623",
+    "target2_audio_id": "b99ceff3-3fa8-4d1b-b794-825bad124f4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0287L01B03",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "사람을 몇 명이나 알아요?",
+    "target_text": "how many people do you know?",
+    "known_audio_id": null,
+    "target1_audio_id": "9085796b-1192-4ffb-be2f-ce7d93b24623",
+    "target2_audio_id": "b99ceff3-3fa8-4d1b-b794-825bad124f4b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 58,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0287L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0287L02B03",
+    "seed_number": 287,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "텔레비전 보는 것을 좋아하는 사람을 몇 명이나 알아요",
+    "target_text": "how many people do you know who like watching television?",
+    "known_audio_id": "9466e3ac-4079-422f-b78e-a410a7bd8209",
+    "target1_audio_id": "7c3a9ea4-9565-439c-a088-d797d8fb7954",
+    "target2_audio_id": "9f0e580a-c3cf-48a1-a6e0-c302f6589029",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0287L02B03",
+    "seed_number": 287,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "텔레비전 보는 것을 좋아하는 사람을 몇 명이나 알아요?",
+    "target_text": "how many people do you know who like watching television?",
+    "known_audio_id": "9466e3ac-4079-422f-b78e-a410a7bd8209",
+    "target1_audio_id": "7c3a9ea4-9565-439c-a088-d797d8fb7954",
+    "target2_audio_id": "9f0e580a-c3cf-48a1-a6e0-c302f6589029",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0287L02B03",
+   "set": {
+    "known_text": "텔레비전 보는 것을 좋아하는 사람을 몇 명이나 알아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0287L01B03",
+   "set": {
+    "known_text": "사람을 몇 명이나 알아요",
+    "known_audio_id": "8160130d-17ae-4876-8448-63bddec70771"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0287L01B02",
+   "set": {
+    "known_text": "몇 명이나 알아요",
+    "known_audio_id": "c92d8d73-c077-4dc1-9ced-2dd9f3545a6e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0283L01B03",
+   "set": {
+    "known_text": "당신 친구들 중 누가 영어를 해요",
+    "known_audio_id": "7d3fb67d-8ba8-43cc-8c40-71d6b551c5cb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0281L01B03",
+   "set": {
+    "known_text": "시작하기 전에 커피를 다 마셔도 괜찮아요",
+    "known_audio_id": "0f6e01d6-7680-4649-ac43-354cdec63864"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0271L02B03",
+   "set": {
+    "known_text": "다음 달에 오고 싶어요",
+    "known_audio_id": "3e5bde56-7c4b-45dc-8804-450cd8dc35d6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0271L01B03",
+   "set": {
+    "known_text": "저와 함께 오고 싶어요",
+    "known_audio_id": "11fededf-ffcc-42ab-bc5a-7f777776bb1a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0271L01B02",
+   "set": {
+    "known_text": "우리와 함께 오고 싶어요",
+    "known_audio_id": "6c8dd66f-9302-4ee2-a192-a231828bd309"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0235L02B04",
+   "set": {
+    "known_text": "그렇다고 한 사람을 만났어요, 말하고 싶다고",
+    "known_audio_id": "898e978d-dff6-4488-830c-17a2848ecd36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0233L02B03",
+   "set": {
+    "known_text": "저는 젊은 여자를 알아요, 아는",
+    "known_audio_id": "58536c05-0a31-4773-a8b3-ce53137a6272"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0232L02B04",
+   "set": {
+    "known_text": "저는 나이 든 여자를 알아요, 기억할 수 있는",
+    "known_audio_id": "5ad894b4-9ced-46a2-a8e6-bb2179be29bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0230L01B04",
+   "set": {
+    "known_text": "저는 젊은 남자를 알아요, 일하고 싶은",
+    "known_audio_id": "f55c76a3-dc18-4e82-a50f-13147394f84b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0226L01U05",
+   "set": {
+    "known_text": "그 남자에 대해 뭔가를 알아요",
+    "known_audio_id": "2409003f-fb81-4bd3-bbad-9b52a5c0e873"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0211L02B02",
+   "set": {
+    "known_text": "우리에게 말했어요, 설명하고 싶지 않다고",
+    "known_audio_id": "508692ef-6ec1-4732-a6b2-73798fbe1384"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0205L02B02",
+   "set": {
+    "known_text": "잊어버렸어요 말하려던 단어를",
+    "known_audio_id": "d7326201-06e8-4d8c-8ea2-9139ee854ff4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0203L02B02",
+   "set": {
+    "known_text": "어떻게 할 거예요 도움을 요청하면",
+    "known_audio_id": "88a61d9f-22d2-42fa-8bb8-6ba54319b407"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0202L03B02",
+   "set": {
+    "known_text": "아무도 질문에 확신하지 못했어요",
+    "known_audio_id": "303b0474-d4bb-49b3-af8d-9e02f94ee13d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0201L02B02",
+   "set": {
+    "known_text": "알고 싶었어요 무슨 일이 일어났을지",
+    "known_audio_id": "2508a130-d3ce-45aa-b5c1-cc076fefa9cf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0196L01B03",
+   "set": {
+    "known_text": "아직 최근 아이디어를 들었어요",
+    "known_audio_id": "01e31802-786a-475d-8d46-40692c744cf9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0194L01B03",
+   "set": {
+    "known_text": "지금 무엇을 찾고 있어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0182L02B03",
+   "set": {
+    "known_text": "그 책을 어디선가 봤어요",
+    "known_audio_id": "8a377802-19e8-4740-8602-1cb6bcebf123"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0182L02B02",
+   "set": {
+    "known_text": "제 열쇠를 어디선가 봤어요",
+    "known_audio_id": "6a596001-6211-4750-81c7-9ec6299ddb9d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0179L02B02",
+   "set": {
+    "known_text": "지금 무엇을 할 거예요",
+    "known_audio_id": "a3254f33-e2d9-4391-88e2-a35f3c23943d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0175L01B02",
+   "set": {
+    "known_text": "지금 무엇을 하고 싶어요",
+    "known_audio_id": "23686839-733d-4601-b4a4-cb51e4b280aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0171L02B02",
+   "set": {
+    "known_text": "지금 도와드릴까요",
+    "known_audio_id": "e369855c-a355-48ac-b149-f61ae09182a7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0169L01B02",
+   "set": {
+    "known_text": "지금 제가 무엇을 하기를 원해요",
+    "known_audio_id": "77c930ab-852f-4f8d-af66-feca92ff6efc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0167L02B03",
+   "set": {
+    "known_text": "지금 무엇을 해야 해요",
+    "known_audio_id": "22311103-83ee-4f2e-acf5-a7a033667199"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0158L01U02",
+   "set": {
+    "known_text": "다른 것에 대해 이야기해요, 괜찮아요?",
+    "known_audio_id": "5ba24f1e-a803-4d7c-bbcf-a0701ff03f5c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0158L01U01",
+   "set": {
+    "known_text": "다른 것에 대해 이야기해요, 좋아요?",
+    "known_audio_id": "abc5236d-f322-401b-9927-86a8f2085f06"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0157L02U02",
+   "set": {
+    "known_text": "거기에 있을 수 없을 거예요, 죄송해요",
+    "known_audio_id": "17e09296-871b-4a53-a3b2-01bddb9ff198"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0157L01U05",
+   "set": {
+    "known_text": "다음 달에 식당에 가고 싶어요",
+    "known_audio_id": "5ed0852e-be1f-4f9e-afa7-dcabb7e23909"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L03U02",
+   "set": {
+    "known_text": "내일 아침에 만나고 싶어요",
+    "known_audio_id": "b427e41f-5a5e-437e-b8f9-39c8bbf7eee0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L02U02",
+   "set": {
+    "known_text": "몇 분만 기다려 주세요",
+    "known_audio_id": "9192fbb4-7b2f-4096-84b1-ed46bf509d0d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L01U03",
+   "set": {
+    "known_text": "기다리는 것이 괜찮아요, 당신을 위해",
+    "known_audio_id": "5382feb5-1c7b-4b74-8016-0c55d78236d6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L01U01",
+   "set": {
+    "known_text": "기다리는 것이 괜찮아요, 여기서",
+    "known_audio_id": "bf2d4514-ca24-49d1-8be5-d50467f94a42"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0154L02B03",
+   "set": {
+    "known_text": "토요일 밤에 어디서",
+    "known_audio_id": "f1eccf6e-fa91-492b-8d98-0aca07a070a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0154L01U03",
+   "set": {
+    "known_text": "토요일에 만나고 싶어요, 괜찮아요?",
+    "known_audio_id": "65345b3d-27e9-4f1e-abe6-21edd6b929b2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0154L01U01",
+   "set": {
+    "known_text": "토요일에 만나고 싶어요",
+    "known_audio_id": "446739fb-109e-4b9b-8d5f-4faa0ff72852"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0150L01B03",
+   "set": {
+    "known_text": "그것에 대해 말해줄 수 있어요",
+    "known_audio_id": "27be9bfb-4b10-44ae-a618-81ccd07c02ca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0150L01B02",
+   "set": {
+    "known_text": "뭔지 말해줄 수 있어요",
+    "known_audio_id": "c802b08e-ede7-43a0-9eb7-a381370d1ab2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0149L02U02",
+   "set": {
+    "known_text": "곧 끝날 거라고 기대해요",
+    "known_audio_id": "ea075fd3-ef82-419c-8529-fec24403dc1d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0148L01U01",
+   "set": {
+    "known_text": "별로 인내심이 없었어요",
+    "known_audio_id": "5b9448f6-06c9-4bf1-b50c-c3c806671289"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02U01",
+   "set": {
+    "known_text": "아무것도 작동하지 않는 것 같아요",
+    "known_audio_id": "14dd8c6b-fff1-47a4-aee8-2c103b17248e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0145L01U03",
+   "set": {
+    "known_text": "저는 더 이상 행복하지 않아요",
+    "known_audio_id": "e323b86a-cef8-44f4-940d-5dfaac286e4f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0145L01B03",
+   "set": {
+    "known_text": "저는 더 이상 행복하지 않아요",
+    "known_audio_id": "e323b86a-cef8-44f4-940d-5dfaac286e4f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0143L01U02",
+   "set": {
+    "known_text": "아까 말했어요",
+    "known_audio_id": "faef0a87-1647-437b-b6e6-9862b6ed986c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0140L01U01",
+   "set": {
+    "known_text": "볼 수 없어서 죄송해요",
+    "known_audio_id": "efc07d29-9fb9-4b86-8b64-a002ed6394f4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0135L01B03",
+   "set": {
+    "known_text": "왜 그렇게 좋다고 생각하는지 물어봐요",
+    "known_audio_id": "bb8710f3-c35d-4f35-9f2f-fbf4ca799617"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0100L02B02",
+   "set": {
+    "known_text": "그것에 대해 걱정하지 않아도 돼요",
+    "known_audio_id": "e933daee-81c8-43aa-9932-e3eb828a6d3e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0099L01B03",
+   "set": {
+    "known_text": "지금 물어봐야 해요",
+    "known_audio_id": "2f652488-df95-4ebb-a2cc-f3edd5b60622"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0094L01B02",
+   "set": {
+    "known_text": "이것이 유일한 방법이에요",
+    "known_audio_id": "74ddf9d6-753e-4dcb-b3b1-21fe11e9c206"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0085L01B02",
+   "set": {
+    "known_text": "저는 몰라요",
+    "known_audio_id": "a8b46fcc-a419-426c-983a-d7c1b89e315a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0063L02U04",
+   "set": {
+    "known_text": "당신은 저를 도와주는 것을 괜찮아해요?",
+    "known_audio_id": "8fe58aa2-498e-4939-ac71-16b36df996e8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L03B04",
+   "set": {
+    "known_text": "빨리 배우고 있어요",
+    "known_audio_id": "80a6ecdf-d803-4ba5-b300-cb54d1ffa80b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L03B03",
+   "set": {
+    "known_text": "지금 배우고 있어요",
+    "known_audio_id": "70b1e210-7858-4c05-b176-97f784dbd6b8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L03B02",
+   "set": {
+    "known_text": "영어를 배우고 있어요",
+    "known_audio_id": "bc84188c-1a2b-4022-892a-ad49f76e5973"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L01B03",
+   "set": {
+    "known_text": "왜 배우고 싶어해요",
+    "known_audio_id": "c0f1b4a9-9a23-43b2-9a9e-13cddae10599"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L01B02",
+   "set": {
+    "known_text": "왜 돌아오고 싶어해요",
+    "known_audio_id": "8d7370a7-c885-43cb-99bc-04ca9502fc80"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L01B01",
+   "set": {
+    "known_text": "왜 만나고 싶어해요",
+    "known_audio_id": "ff383711-0852-41ce-bb99-dc322f473556"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-06-19-104Z-72e7dfeb-c555-44d7-8a60-9b391fe169f9.json"
+}

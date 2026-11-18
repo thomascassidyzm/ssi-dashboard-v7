@@ -1,0 +1,95 @@
+{
+ "course": "eng_for_urd",
+ "plan": "item3.tsv",
+ "at": "2026-11-18T13:19:59.512Z",
+ "rows": [
+  {
+   "id": "S0489L02B01",
+   "role": "build",
+   "target": "strong coffee",
+   "old": "مضبوط کافی",
+   "new": "کڑک کافی",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02B02",
+   "role": "build",
+   "target": "a strong cup",
+   "old": "ایک مضبوط کپ",
+   "new": "ایک کڑک کپ",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02B03",
+   "role": "build",
+   "target": "very strong",
+   "old": "بہت مضبوط",
+   "new": "بہت کڑک",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02U01",
+   "role": "use",
+   "target": "I like strong coffee",
+   "old": "مجھے مضبوط کافی پسند ہے",
+   "new": "مجھے کڑک کافی پسند ہے",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02U02",
+   "role": "use",
+   "target": "this coffee is very strong",
+   "old": "یہ کافی بہت مضبوط ہے",
+   "new": "یہ کافی بہت کڑک ہے",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02U03",
+   "role": "use",
+   "target": "can you make a strong cup of coffee?",
+   "old": "کیا آپ ایک مضبوط کپ کافی بنا سکتے ہیں؟",
+   "new": "کیا آپ ایک کڑک کپ کافی بنا سکتے ہیں؟",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02U04",
+   "role": "use",
+   "target": "I want a strong cup of coffee",
+   "old": "میں ایک مضبوط کپ کافی چاہتا ہوں",
+   "new": "میں ایک کڑک کپ کافی چاہتا ہوں",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L02U05",
+   "role": "use",
+   "target": "this is not strong coffee",
+   "old": "یہ مضبوط کافی نہیں ہے",
+   "new": "یہ کڑک کافی نہیں ہے",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0489L03U01",
+   "role": "use",
+   "target": "if you don't make me a strong cup of coffee right now",
+   "old": "اگر آپ مجھے اسی وقت ایک مضبوط کپ کافی نہیں بناتے",
+   "new": "اگر آپ مجھے اسی وقت ایک کڑک کپ کافی نہیں بناتے",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "489": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  }
+ }
+}

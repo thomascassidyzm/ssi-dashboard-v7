@@ -1,0 +1,1042 @@
+{
+ "event_id": "a62d2c31-85d0-43dd-9277-956c5dc3404f",
+ "undo_file": "2026-11-18T13-05-15-949Z-a62d2c31-85d0-43dd-9277-956c5dc3404f.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L02B04",
+   "set": {
+    "known_text": "कसं वाटतंय थोडा?",
+    "target_text": "how do you feel a little?",
+    "word_count": 24,
+    "lego_position": "start",
+    "known_audio_id": "64a4e447-8449-481f-87cd-bf618c79a6ea",
+    "target1_audio_id": "9b580371-b278-42f7-8fb7-4e0f10cddbee",
+    "target2_audio_id": "c2bed727-d94f-47af-905f-edf630e9ad9a",
+    "decomposition": [
+     {
+      "known": "कसं वाटतंय",
+      "legoId": "S0040L02",
+      "target": "how do you feel",
+      "isGhost": false
+     },
+     {
+      "known": "थोडं",
+      "legoId": "S0009L01",
+      "target": " a little",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L02B03",
+   "set": {
+    "known_text": "कसं वाटतंय काळजीपूर्वक?",
+    "target_text": "how do you feel carefully?",
+    "word_count": 25,
+    "lego_position": "start",
+    "known_audio_id": "b9bf97a7-f242-4eea-9ace-32f27078c61a",
+    "target1_audio_id": "ef9ac111-ad4f-4f1a-8126-5803d16faec5",
+    "target2_audio_id": "ac91806e-c29e-4e30-afd8-a4c3e213290d",
+    "decomposition": [
+     {
+      "known": "कसं वाटतंय",
+      "legoId": "S0040L02",
+      "target": "how do you feel",
+      "isGhost": false
+     },
+     {
+      "known": "काळजीपूर्वक",
+      "legoId": "S0037L01",
+      "target": " carefully",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L02B02",
+   "set": {
+    "known_text": "कसं वाटतंय इंग्रजीत?",
+    "target_text": "how do you feel in English?",
+    "word_count": 26,
+    "lego_position": "start",
+    "known_audio_id": "7400a999-6a0b-4de7-a511-37f12e14cac9",
+    "target1_audio_id": "4dd62d50-d2da-4395-9ebb-2e6fd1426f91",
+    "target2_audio_id": "b30cf890-540c-456f-9452-4ac203449b72",
+    "decomposition": [
+     {
+      "known": "कसं वाटतंय",
+      "legoId": "S0040L02",
+      "target": "how do you feel",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01U04",
+   "set": {
+    "known_text": "सध्या इंग्रजीत बोलणे उपयोगी आहे",
+    "target_text": "it's useful to speak in English at the moment",
+    "word_count": 45,
+    "known_audio_id": "3f3e0a55-c02d-457e-b2e9-b8d08af37d58",
+    "target1_audio_id": "6b451a4a-4438-416d-ad79-b2873fcea4d8",
+    "target2_audio_id": "c1047d0b-fac7-44b0-b39e-e7b8bffddab0",
+    "decomposition": [
+     {
+      "known": "उपयोगी आहे",
+      "legoId": "S0028L01",
+      "target": "it's useful",
+      "isGhost": false
+     },
+     {
+      "known": "बोलणे",
+      "legoId": "S0001L02",
+      "target": " to speak",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     },
+     {
+      "known": "या क्षणी",
+      "legoId": "S0040L01",
+      "target": " at the moment",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01U02",
+   "set": {
+    "target_text": "I've been learning English at the moment",
+    "word_count": 40,
+    "target1_audio_id": "e43a038a-c12a-4dd5-b51a-4ad47a1b7927",
+    "target2_audio_id": "138b3016-4421-4d81-930c-e9e3a86876c4",
+    "decomposition": [
+     {
+      "known": "मी शिकतोय",
+      "legoId": "S0038L01",
+      "target": "I've been learning",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजी",
+      "legoId": "S0001L03",
+      "target": " English",
+      "isGhost": false
+     },
+     {
+      "known": "या क्षणी",
+      "legoId": "S0040L01",
+      "target": " at the moment",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01B04",
+   "set": {
+    "known_text": "सध्या आज सकाळी",
+    "target_text": "at the moment this morning",
+    "word_count": 26,
+    "lego_position": "start",
+    "known_audio_id": "d132a277-f5ec-431b-864b-fa9984911bb0",
+    "target1_audio_id": "2e0778c0-ae1c-4bf1-b7b9-e576a7f32717",
+    "target2_audio_id": "62d0fb27-1790-4db2-ac52-9b2c1327e47b",
+    "decomposition": [
+     {
+      "known": "या क्षणी",
+      "legoId": "S0040L01",
+      "target": "at the moment",
+      "isGhost": false
+     },
+     {
+      "known": "आज सकाळी",
+      "legoId": "S0039L02",
+      "target": " this morning",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01B03",
+   "set": {
+    "known_text": "सध्या बोलणे",
+    "target_text": "at the moment to speak",
+    "word_count": 22,
+    "lego_position": "start",
+    "known_audio_id": "57a86056-7b18-48f5-8267-ba275abeab4c",
+    "target1_audio_id": "6650d914-4697-4a5c-b61a-cbcd69378776",
+    "target2_audio_id": "0f687792-0edf-404d-963a-22b41289fb70",
+    "decomposition": [
+     {
+      "known": "या क्षणी",
+      "legoId": "S0040L01",
+      "target": "at the moment",
+      "isGhost": false
+     },
+     {
+      "known": "बोलणे",
+      "legoId": "S0001L02",
+      "target": " to speak",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01B02",
+   "set": {
+    "known_text": "सध्या इंग्रजीत",
+    "target_text": "at the moment in English",
+    "word_count": 24,
+    "lego_position": "start",
+    "known_audio_id": "de5482e0-f005-4d15-a195-d2ed2f70d904",
+    "target1_audio_id": "fb002f1d-8e1c-428b-8db1-2ae002d12171",
+    "target2_audio_id": "d78e68d5-f767-458d-a631-50e9a6854af8",
+    "decomposition": [
+     {
+      "known": "या क्षणी",
+      "legoId": "S0040L01",
+      "target": "at the moment",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L03U05",
+   "set": {
+    "known_text": "पण मी थोडा थकलोय जायच्या आधी",
+    "target_text": "but I'm a little tired before I have to go",
+    "word_count": 42,
+    "lego_position": "start",
+    "known_audio_id": "188d6e1e-8335-4120-90a6-aaf67f21f842",
+    "target1_audio_id": "d7c87c60-d734-4471-b8d6-06b50b1ce48e",
+    "target2_audio_id": "ab9a67cb-6b98-436d-adc7-26392f65596a",
+    "decomposition": [
+     {
+      "known": "पण मी थोडा थकलोय",
+      "legoId": "S0039L03",
+      "target": "but I'm a little tired",
+      "isGhost": false
+     },
+     {
+      "known": "मला जावं लागण्यापूर्वी",
+      "legoId": "S0025L02",
+      "target": " before I have to go",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L03B04",
+   "set": {
+    "known_text": "पण मी थोडा थकलोय काळजीपूर्वक",
+    "target_text": "but I'm a little tired carefully",
+    "word_count": 32,
+    "lego_position": "middle",
+    "known_audio_id": "53cfc272-5262-4a0a-a9b1-3e4516223c53",
+    "target1_audio_id": "29f14297-3ea4-4657-acdf-021cc29ca6fa",
+    "target2_audio_id": "94409143-abce-4422-8c25-3805064b7720",
+    "decomposition": [
+     {
+      "known": "पण मी थोडा थकलोय",
+      "legoId": "S0039L03",
+      "target": "but I'm a little tired",
+      "isGhost": false
+     },
+     {
+      "known": "काळजीपूर्वक",
+      "legoId": "S0037L01",
+      "target": " carefully",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L03B03",
+   "set": {
+    "known_text": "पण मी थोडा थकलोय लवकर",
+    "target_text": "but I'm a little tired quickly",
+    "word_count": 30,
+    "known_audio_id": "ff41e01e-ba92-414b-9f21-1208e4673b1a",
+    "target1_audio_id": "dbc774aa-00ce-43ef-9437-9fb9a248e460",
+    "target2_audio_id": "d78eebc0-c522-4f1c-b495-403d5e5da85e",
+    "decomposition": [
+     {
+      "known": "पण मी थोडा थकलोय",
+      "legoId": "S0039L03",
+      "target": "but I'm a little tired",
+      "isGhost": false
+     },
+     {
+      "known": "पटकन",
+      "legoId": "S0020L01",
+      "target": " quickly",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02U05",
+   "set": {
+    "known_text": "आज सकाळी इंग्रजीत बोलणे उपयोगी आहे",
+    "target_text": "it's useful to speak in English this morning",
+    "word_count": 44,
+    "known_audio_id": "6b580f17-2755-41c1-8228-7f4eccaed7be",
+    "target1_audio_id": "3f510d37-abdd-4c6e-96ed-032efc53338d",
+    "target2_audio_id": "6baf379d-6add-4da4-bc62-87e9fdf94f58",
+    "decomposition": [
+     {
+      "known": "उपयोगी आहे",
+      "legoId": "S0028L01",
+      "target": "it's useful",
+      "isGhost": false
+     },
+     {
+      "known": "बोलणे",
+      "legoId": "S0001L02",
+      "target": " to speak",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     },
+     {
+      "known": "आज सकाळी",
+      "legoId": "S0039L02",
+      "target": " this morning",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02B04",
+   "set": {
+    "known_text": "आज सकाळी गोष्टी",
+    "target_text": "the story this morning",
+    "word_count": 22,
+    "lego_position": "end",
+    "known_audio_id": "bcc3700b-9313-4783-b10c-08f920b1dc49",
+    "target1_audio_id": "9eefa4bb-564e-43ac-a389-53e250779bd1",
+    "target2_audio_id": "a06cec40-90da-4cb0-a6c8-71a69087e9b7",
+    "decomposition": [
+     {
+      "known": "गोष्टी",
+      "legoId": "S0036L01",
+      "target": "the story",
+      "isGhost": false
+     },
+     {
+      "known": "आज सकाळी",
+      "legoId": "S0039L02",
+      "target": " this morning",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02B03",
+   "set": {
+    "known_text": "आज सकाळी वाचणे",
+    "target_text": "read this morning",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "cef59d29-349e-4d2d-b2c8-cb6520ac7802",
+    "target1_audio_id": "e3e77ad1-4950-4a84-b956-95f4da570f13",
+    "target2_audio_id": "3134fb24-0e81-4843-b39c-f75d47e20505",
+    "decomposition": [
+     {
+      "known": "वाचणे",
+      "legoId": "S0035L01",
+      "target": "read",
+      "isGhost": false
+     },
+     {
+      "known": "आज सकाळी",
+      "legoId": "S0039L02",
+      "target": " this morning",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02B02",
+   "set": {
+    "known_text": "आज सकाळी इंग्रजीत",
+    "target_text": "this morning in English",
+    "word_count": 23,
+    "lego_position": "start",
+    "known_audio_id": "1d3829fc-4a6d-45ff-aaed-eb4362b80909",
+    "target1_audio_id": "68a3f100-8f12-4f6c-800f-4ae2aa26cc32",
+    "target2_audio_id": "6c936103-aee6-4464-8463-6b996e6df97e",
+    "decomposition": [
+     {
+      "known": "आज सकाळी",
+      "legoId": "S0039L02",
+      "target": "this morning",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02U04",
+   "set": {
+    "known_text": "साधारण आठवडाभरापासून शिकणे उपयोगी आहे",
+    "target_text": "it's useful to learn for about a week",
+    "word_count": 37,
+    "known_audio_id": "30377a52-b7fe-4a29-9f6e-19328c2b782d",
+    "target1_audio_id": "82733877-13c7-4bdb-9ee6-80877618205d",
+    "target2_audio_id": "93382a32-6ab1-487f-ad2f-4cb2c2cc40c8",
+    "decomposition": [
+     {
+      "known": "उपयोगी आहे",
+      "legoId": "S0028L01",
+      "target": "it's useful",
+      "isGhost": false
+     },
+     {
+      "known": "शिकणे",
+      "legoId": "S0002L01",
+      "target": " to learn",
+      "isGhost": false
+     },
+     {
+      "known": "साधारण आठवडाभरापासून",
+      "legoId": "S0038L02",
+      "target": " for about a week",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02B04",
+   "set": {
+    "known_text": "काळजीपूर्वक साधारण आठवडाभरापासून",
+    "target_text": "carefully for about a week",
+    "word_count": 26,
+    "known_audio_id": "bfa457c5-b0a4-451c-bf3d-57f93cc00ce1",
+    "target1_audio_id": "5a187b21-cab3-44dc-bd5f-84cbce9733a1",
+    "target2_audio_id": "92d175e5-a72b-4d5d-affa-23c912a5647c",
+    "decomposition": [
+     {
+      "known": "काळजीपूर्वक",
+      "legoId": "S0037L01",
+      "target": "carefully",
+      "isGhost": false
+     },
+     {
+      "known": "साधारण आठवडाभरापासून",
+      "legoId": "S0038L02",
+      "target": " for about a week",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02B03",
+   "set": {
+    "known_text": "साधारण आठवडाभरापासून इंग्रजी",
+    "target_text": "for about a week in English",
+    "word_count": 27,
+    "lego_position": "start",
+    "known_audio_id": "4b49905c-63ea-4132-b8e9-2d90bb83f5f2",
+    "target1_audio_id": "05904ca0-6f72-442e-b8c1-caad72acb781",
+    "target2_audio_id": "8d1e9f42-c2cb-4892-b720-8929482d7dc1",
+    "decomposition": [
+     {
+      "known": "साधारण आठवडाभरापासून",
+      "legoId": "S0038L02",
+      "target": "for about a week",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02B02",
+   "set": {
+    "known_text": "साधारण आठवडाभरापासून शिकणे",
+    "target_text": "for about a week to learn",
+    "word_count": 25,
+    "lego_position": "start",
+    "known_audio_id": "c2cca0f5-2b93-488a-acb6-23bc6f7cafe4",
+    "target1_audio_id": "626c00a4-b12e-48a3-a948-e61f221ed4f7",
+    "target2_audio_id": "8b573b5f-e561-49d2-82eb-73d3c6d91400",
+    "decomposition": [
+     {
+      "known": "साधारण आठवडाभरापासून",
+      "legoId": "S0038L02",
+      "target": "for about a week",
+      "isGhost": false
+     },
+     {
+      "known": "शिकणे",
+      "legoId": "S0002L01",
+      "target": " to learn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L01U06",
+   "set": {
+    "known_text": "मी आज शिकतोय",
+    "target_text": "I've been learning today",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "89db5457-d8a0-4628-92e8-7b42580edde6",
+    "target1_audio_id": "abfe94b5-20c0-4cd4-b75e-ef744422f494",
+    "target2_audio_id": "3289a25a-87c8-469c-94f2-ab2c4f7f1913",
+    "decomposition": [
+     {
+      "known": "मी शिकतोय",
+      "legoId": "S0038L01",
+      "target": "I've been learning",
+      "isGhost": false
+     },
+     {
+      "known": "आज",
+      "legoId": "S0007L02",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L03B04",
+   "set": {
+    "known_text": "त्याबद्दल गेल्या महिन्यात",
+    "target_text": "about it last month",
+    "word_count": 19,
+    "lego_position": "start",
+    "known_audio_id": "dcbcdf87-e47e-4f38-9b1b-7f59139f2136",
+    "target1_audio_id": "26f59b6d-dbd6-47b1-ac50-162bc6904687",
+    "target2_audio_id": "6a81cc81-f80b-4d37-8080-dfdd6a704db3",
+    "decomposition": [
+     {
+      "known": "त्याबद्दल",
+      "legoId": "S0037L03",
+      "target": "about it",
+      "isGhost": false
+     },
+     {
+      "known": "गेल्या महिन्यात",
+      "legoId": "S0037L02",
+      "target": " last month",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L03B03",
+   "set": {
+    "known_text": "त्याबद्दल इंग्रजीत",
+    "target_text": "about it in English",
+    "word_count": 19,
+    "lego_position": "start",
+    "known_audio_id": "e08fbc82-6107-4f64-8abf-59d5ffcc081c",
+    "target1_audio_id": "34fcfe7f-5e09-4d30-b817-d6253576e727",
+    "target2_audio_id": "fafdc1f1-f758-4fe3-a8dd-1500b097a3b8",
+    "decomposition": [
+     {
+      "known": "त्याबद्दल",
+      "legoId": "S0037L03",
+      "target": "about it",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L03B02",
+   "set": {
+    "known_text": "त्याबद्दल काळजीपूर्वक",
+    "target_text": "about it carefully",
+    "word_count": 18,
+    "lego_position": "start",
+    "known_audio_id": "256aecd6-09f2-4d03-b681-94f11145e89a",
+    "target1_audio_id": "db8066e1-4444-442b-b5e0-5bd823ae31d9",
+    "target2_audio_id": "1b4d782d-a1c3-466d-8258-05cbd001bf32",
+    "decomposition": [
+     {
+      "known": "त्याबद्दल",
+      "legoId": "S0037L03",
+      "target": "about it",
+      "isGhost": false
+     },
+     {
+      "known": "काळजीपूर्वक",
+      "legoId": "S0037L01",
+      "target": " carefully",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L02B04",
+   "set": {
+    "known_text": "गेल्या महिन्यात इंग्रजी",
+    "target_text": "last month in English",
+    "word_count": 21,
+    "lego_position": "start",
+    "known_audio_id": "5ef0f2fd-7e5a-432f-b6d6-82c217017f35",
+    "target1_audio_id": "218e5616-4a73-4395-bafe-d42ec4df8629",
+    "target2_audio_id": "67e05305-94b5-4fe7-b153-4e59dc1d21e2",
+    "decomposition": [
+     {
+      "known": "गेल्या महिन्यात",
+      "legoId": "S0037L02",
+      "target": "last month",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L02B03",
+   "set": {
+    "known_text": "काळजीपूर्वक गेल्या महिन्यात",
+    "target_text": "carefully last month",
+    "word_count": 20,
+    "known_audio_id": "7b914428-8041-4e14-a214-0e4f6ff41f7a",
+    "target1_audio_id": "039d6cce-69a6-47ce-affb-13289c18150c",
+    "target2_audio_id": "37ffad6c-ff85-42c7-8273-31efe0e3aa61",
+    "decomposition": [
+     {
+      "known": "काळजीपूर्वक",
+      "legoId": "S0037L01",
+      "target": "carefully",
+      "isGhost": false
+     },
+     {
+      "known": "गेल्या महिन्यात",
+      "legoId": "S0037L02",
+      "target": " last month",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L02B02",
+   "set": {
+    "known_text": "गेल्या महिन्यात बोलणे",
+    "target_text": "last month to speak",
+    "word_count": 19,
+    "lego_position": "start",
+    "known_audio_id": "c3fefd95-43c0-4926-85c0-831e33002f03",
+    "target1_audio_id": "0af9304b-ccdd-4d0a-bd9f-013c4f042e76",
+    "target2_audio_id": "5c4afc5a-3274-41bf-9699-23be7d884ed2",
+    "decomposition": [
+     {
+      "known": "गेल्या महिन्यात",
+      "legoId": "S0037L02",
+      "target": "last month",
+      "isGhost": false
+     },
+     {
+      "known": "बोलणे",
+      "legoId": "S0001L02",
+      "target": " to speak",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0036L02U05",
+   "set": {
+    "known_text": "काहीतरी व्यत्यय आणायला मला आवडत नाही",
+    "target_text": "I don't like to interrupt anything",
+    "word_count": 34,
+    "known_audio_id": "afb9523a-586d-444f-8263-0641a51cf24d",
+    "target1_audio_id": "d7668a62-ce76-46fb-82a6-04cc388dd233",
+    "target2_audio_id": "2429892f-60af-4612-8b43-96a6871e202b",
+    "decomposition": [
+     {
+      "known": "मला आवडत नाही",
+      "legoId": "S0027L04",
+      "target": "I don't like",
+      "isGhost": false
+     },
+     {
+      "known": "व्यत्यय आणणे",
+      "legoId": "S0036L02",
+      "target": " to interrupt",
+      "isGhost": false
+     },
+     {
+      "known": "काही",
+      "legoId": "S0035L02",
+      "target": " anything",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0036L02U03",
+   "set": {
+    "known_text": "व्यत्यय आणायला मला आवडत नाही",
+    "known_audio_id": "d660377f-2f6d-4029-ae66-521f7b4e926e",
+    "decomposition": [
+     {
+      "known": "मला आवडत नाही",
+      "legoId": "S0027L04",
+      "target": "I don't like",
+      "isGhost": false
+     },
+     {
+      "known": "व्यत्यय आणणे",
+      "legoId": "S0036L02",
+      "target": " to interrupt",
+      "isGhost": false
+     },
+     {
+      "known": "गोष्टी",
+      "legoId": "S0036L01",
+      "target": " the story",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0036L02B04",
+   "set": {
+    "known_text": "इंग्रजीत व्यत्यय आणणे",
+    "target_text": "to interrupt in English",
+    "word_count": 23,
+    "lego_position": "start",
+    "known_audio_id": "ce91100c-2ada-493f-a3b7-cb37b1f9d361",
+    "target1_audio_id": "a2bef318-7d7b-49f8-9d2e-3a4fef70e9cc",
+    "target2_audio_id": "0fee1478-96c3-455a-a3a7-be4fcee5e454",
+    "decomposition": [
+     {
+      "known": "व्यत्यय आणणे",
+      "legoId": "S0036L02",
+      "target": "to interrupt",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L02B03",
+   "set": {
+    "known_text": "शिकणे इतर लोक इथे असताना",
+    "known_audio_id": "a0bd357e-9a59-4bc8-8cb9-6f054e244905",
+    "decomposition": [
+     {
+      "known": "शिकणे",
+      "legoId": "S0002L01",
+      "target": "to learn",
+      "isGhost": false
+     },
+     {
+      "known": "इतर लोक इथे असताना",
+      "legoId": "S0034L02",
+      "target": " when other people are here",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L02B02",
+   "set": {
+    "known_text": "बोलणे इतर लोक इथे असताना",
+    "known_audio_id": "8971a85e-9007-492f-8d00-0d9ab7eb4870",
+    "decomposition": [
+     {
+      "known": "बोलणे",
+      "legoId": "S0001L02",
+      "target": "to speak",
+      "isGhost": false
+     },
+     {
+      "known": "इतर लोक इथे असताना",
+      "legoId": "S0034L02",
+      "target": " when other people are here",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01U03",
+   "set": {
+    "known_text": "त्याला इंग्रजीत गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet in English",
+    "word_count": 38,
+    "lego_position": "middle",
+    "known_audio_id": "64e96e61-ac93-4d40-ac99-bb2470bba293",
+    "target1_audio_id": "5a9d08f9-f186-4d80-9bfd-da21b203e611",
+    "target2_audio_id": "a2c0344f-1753-4136-8035-5566c96d15cc",
+    "decomposition": [
+     {
+      "known": "त्याला गप्प राहायचं नाही",
+      "legoId": "S0034L01",
+      "target": "he doesn't want to be quiet",
+      "isGhost": false
+     },
+     {
+      "known": "इंग्रजीत",
+      "legoId": "S0004L03",
+      "target": " in English",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01U02",
+   "set": {
+    "known_text": "त्याला माझ्याशी गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet with me",
+    "word_count": 35,
+    "lego_position": "middle",
+    "known_audio_id": "134f1269-a62e-4d39-b003-05811a6054df",
+    "target1_audio_id": "daf5745d-7bc9-43cd-a9bd-a4bdd3f4cfab",
+    "target2_audio_id": "80ab8f23-498b-4391-85d4-af85c9994b9d",
+    "decomposition": [
+     {
+      "known": "त्याला गप्प राहायचं नाही",
+      "legoId": "S0034L01",
+      "target": "he doesn't want to be quiet",
+      "isGhost": false
+     },
+     {
+      "known": "माझ्याशी",
+      "legoId": "S0015L02",
+      "target": " with me",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01U01",
+   "set": {
+    "known_text": "त्याला तुमच्याशी गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet with you",
+    "word_count": 36,
+    "known_audio_id": "51d6b94a-d823-4a58-9347-21dc054831b0",
+    "target1_audio_id": "176ee27a-e4b7-4f26-939a-f258e6042ae8",
+    "target2_audio_id": "c334899f-708c-4ee8-afdd-9c71dd035f06",
+    "decomposition": [
+     {
+      "known": "त्याला गप्प राहायचं नाही",
+      "legoId": "S0034L01",
+      "target": "he doesn't want to be quiet",
+      "isGhost": false
+     },
+     {
+      "known": "तुमच्याशी",
+      "legoId": "S0001L04",
+      "target": " with you",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01B03",
+   "set": {
+    "known_text": "त्याला अजूनही गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet even now",
+    "word_count": 36,
+    "known_audio_id": "497f4540-f51a-4686-8471-4b61a0acb2f9",
+    "target1_audio_id": "2cd16708-8ae0-4071-a04a-63e1d83032aa",
+    "target2_audio_id": "40d46176-42e4-4d7e-b230-d662d6b944af",
+    "decomposition": [
+     {
+      "known": "त्याला गप्प राहायचं नाही",
+      "legoId": "S0034L01",
+      "target": "he doesn't want to be quiet",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " even",
+      "isGhost": true
+     },
+     {
+      "known": "आत्ता",
+      "legoId": "S0001L05",
+      "target": " now",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01B02",
+   "set": {
+    "known_text": "त्याला लवकरच गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet soon",
+    "word_count": 32,
+    "known_audio_id": "e08c770f-15d1-4bc2-91d7-4178d93a6ae2",
+    "target1_audio_id": "4695beb4-1e8f-45ed-be8d-bc546313bf56",
+    "target2_audio_id": "34f2454a-4a17-44f6-af27-80ae4b304c65",
+    "decomposition": [
+     {
+      "known": "त्याला गप्प राहायचं नाही",
+      "legoId": "S0034L01",
+      "target": "he doesn't want to be quiet",
+      "isGhost": false
+     },
+     {
+      "known": "लवकरच",
+      "legoId": "S0023L01",
+      "target": " soon",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0040L02U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0040L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0038L01U07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0034L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0034L01B04"
+  }
+ ]
+}

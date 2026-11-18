@@ -11,6 +11,10 @@
 const fs = require('fs');
 const path = require('path');
 const L = require('./lib.cjs');
+// The shared DB is contended: an edit-batch can take minutes to answer. Node's fetch gives up after 300 s while the
+// server goes on and COMMITS (cs #700·AI, eng_for_tam 18 Nov); wait as long as the server works, never guess.
+{ const { Agent, setGlobalDispatcher } = require(require('path').join(L.ROOT, 'node_modules/undici'));
+  setGlobalDispatcher(new Agent({ headersTimeout: 0, bodyTimeout: 0 })); }
 const [mode, course, batch] = process.argv.slice(2);
 const cdir = path.join(L.ITEM_DIR, course);
 const bdir = path.join(cdir, 'batches');

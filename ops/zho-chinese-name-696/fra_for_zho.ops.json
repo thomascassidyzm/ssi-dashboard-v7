@@ -1,0 +1,2952 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 1,
+  "set": {
+   "known_text": "我现在想和你说法语。"
+  },
+  "expect": {
+   "known_text": "我现在想和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L01C04",
+  "set": {
+   "known_text": "法语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L01U03",
+  "set": {
+   "known_text": "我想说法语和你。"
+  },
+  "expect": {
+   "known_text": "我想说中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L01U01",
+  "set": {
+   "known_text": "我想说法语。"
+  },
+  "expect": {
+   "known_text": "我想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L01U04",
+  "set": {
+   "known_text": "我想现在说法语。"
+  },
+  "expect": {
+   "known_text": "我想现在说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L01U05",
+  "set": {
+   "known_text": "我想现在说法语和你。"
+  },
+  "expect": {
+   "known_text": "我想现在说中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L02B01",
+  "set": {
+   "known_text": "说法语"
+  },
+  "expect": {
+   "known_text": "说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L02U01",
+  "set": {
+   "known_text": "我想说法语。"
+  },
+  "expect": {
+   "known_text": "我想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L02U04",
+  "set": {
+   "known_text": "我想说法语和你现在。"
+  },
+  "expect": {
+   "known_text": "我想说中文和你现在。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L02U02",
+  "set": {
+   "known_text": "我想说法语和你。"
+  },
+  "expect": {
+   "known_text": "我想说中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L02U03",
+  "set": {
+   "known_text": "我想说法语现在。"
+  },
+  "expect": {
+   "known_text": "我想说中文现在。"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0001L03",
+  "set": {
+   "known_text": "法语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L03B01",
+  "set": {
+   "known_text": "说法语"
+  },
+  "expect": {
+   "known_text": "说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L03U04",
+  "set": {
+   "known_text": "我想说法语和你现在。"
+  },
+  "expect": {
+   "known_text": "我想说中文和你现在。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L03U01",
+  "set": {
+   "known_text": "我想说法语。"
+  },
+  "expect": {
+   "known_text": "我想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L03U03",
+  "set": {
+   "known_text": "我想说法语现在。"
+  },
+  "expect": {
+   "known_text": "我想说中文现在。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L03U02",
+  "set": {
+   "known_text": "我想说法语和你。"
+  },
+  "expect": {
+   "known_text": "我想说中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L05B01",
+  "set": {
+   "known_text": "现在说法语"
+  },
+  "expect": {
+   "known_text": "现在说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L05U02",
+  "set": {
+   "known_text": "我想现在和你说法语。"
+  },
+  "expect": {
+   "known_text": "我想现在和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L05U01",
+  "set": {
+   "known_text": "我想现在说法语。"
+  },
+  "expect": {
+   "known_text": "我想现在说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L05U03",
+  "set": {
+   "known_text": "现在我想说法语。"
+  },
+  "expect": {
+   "known_text": "现在我想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L04U05",
+  "set": {
+   "known_text": "我想和你说法语现在。"
+  },
+  "expect": {
+   "known_text": "我想和你说中文现在。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0001L04U01",
+  "set": {
+   "known_text": "我想和你说法语。"
+  },
+  "expect": {
+   "known_text": "我想和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0002L01U01",
+  "set": {
+   "known_text": "我在试着学法语。"
+  },
+  "expect": {
+   "known_text": "我在试着学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0002L01U04",
+  "set": {
+   "known_text": "我在试着学法语和你。"
+  },
+  "expect": {
+   "known_text": "我在试着学中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L01B01",
+  "set": {
+   "known_text": "怎么现在说法语和你？"
+  },
+  "expect": {
+   "known_text": "怎么现在说中文和你？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L01U01",
+  "set": {
+   "known_text": "怎么说法语？"
+  },
+  "expect": {
+   "known_text": "怎么说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L01U04",
+  "set": {
+   "known_text": "怎么现在说法语？"
+  },
+  "expect": {
+   "known_text": "怎么现在说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L01U05",
+  "set": {
+   "known_text": "怎么和你学法语？"
+  },
+  "expect": {
+   "known_text": "怎么和你学中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L02U01",
+  "set": {
+   "known_text": "我想尽量多说法语。"
+  },
+  "expect": {
+   "known_text": "我想尽量多说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L02U03",
+  "set": {
+   "known_text": "怎么尽量多说法语？"
+  },
+  "expect": {
+   "known_text": "怎么尽量多说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0003L02U05",
+  "set": {
+   "known_text": "我想和你尽量多说法语。"
+  },
+  "expect": {
+   "known_text": "我想和你尽量多说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 4,
+  "set": {
+   "known_text": "怎么用法语说一些东西"
+  },
+  "expect": {
+   "known_text": "怎么用中文说一些东西"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0004L02",
+  "set": {
+   "known_text": "用法语"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02B02",
+  "set": {
+   "known_text": "说用法语"
+  },
+  "expect": {
+   "known_text": "说用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02B04",
+  "set": {
+   "known_text": "怎么说一些东西用法语和你现在？"
+  },
+  "expect": {
+   "known_text": "怎么说一些东西用中文和你现在？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02B01",
+  "set": {
+   "known_text": "用法语"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02B03",
+  "set": {
+   "known_text": "说一些东西用法语"
+  },
+  "expect": {
+   "known_text": "说一些东西用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02C02",
+  "set": {
+   "known_text": "法语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02U04",
+  "set": {
+   "known_text": "我想和你说一些东西用法语。"
+  },
+  "expect": {
+   "known_text": "我想和你说一些东西用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02U03",
+  "set": {
+   "known_text": "我想现在说一些东西用法语。"
+  },
+  "expect": {
+   "known_text": "我想现在说一些东西用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02U01",
+  "set": {
+   "known_text": "我想说一些东西用法语。"
+  },
+  "expect": {
+   "known_text": "我想说一些东西用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02U02",
+  "set": {
+   "known_text": "怎么说一些东西用法语？"
+  },
+  "expect": {
+   "known_text": "怎么说一些东西用中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L02U05",
+  "set": {
+   "known_text": "我想尽量多说用法语。"
+  },
+  "expect": {
+   "known_text": "我想尽量多说用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L01B02",
+  "set": {
+   "known_text": "怎么说一些东西和你现在用法语？"
+  },
+  "expect": {
+   "known_text": "怎么说一些东西和你现在用中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L01C04",
+  "set": {
+   "known_text": "用法语"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L01U01",
+  "set": {
+   "known_text": "怎么说一些东西用法语？"
+  },
+  "expect": {
+   "known_text": "怎么说一些东西用中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0004L01U04",
+  "set": {
+   "known_text": "怎么说一些东西用法语和你？"
+  },
+  "expect": {
+   "known_text": "怎么说一些东西用中文和你？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L02B02",
+  "set": {
+   "known_text": "要练习说话和别人用法语现在"
+  },
+  "expect": {
+   "known_text": "要练习说话和别人用中文现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L02B03",
+  "set": {
+   "known_text": "想练习说话和别人用法语尽量多"
+  },
+  "expect": {
+   "known_text": "想练习说话和别人用中文尽量多"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L02U02",
+  "set": {
+   "known_text": "我想练习说话用法语。"
+  },
+  "expect": {
+   "known_text": "我想练习说话用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01B04",
+  "set": {
+   "known_text": "我要尽量多说用法语"
+  },
+  "expect": {
+   "known_text": "我要尽量多说用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01B02",
+  "set": {
+   "known_text": "我要练习说话用法语和别人"
+  },
+  "expect": {
+   "known_text": "我要练习说话用中文和别人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01B03",
+  "set": {
+   "known_text": "我要练习说话用法语现在和别人"
+  },
+  "expect": {
+   "known_text": "我要练习说话用中文现在和别人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01U03",
+  "set": {
+   "known_text": "我要和你说法语。"
+  },
+  "expect": {
+   "known_text": "我要和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01U04",
+  "set": {
+   "known_text": "我要现在说法语。"
+  },
+  "expect": {
+   "known_text": "我要现在说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01U01",
+  "set": {
+   "known_text": "我要说法语。"
+  },
+  "expect": {
+   "known_text": "我要说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L01U02",
+  "set": {
+   "known_text": "我要说一些东西用法语。"
+  },
+  "expect": {
+   "known_text": "我要说一些东西用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L03B03",
+  "set": {
+   "known_text": "说法语和别人尽量多"
+  },
+  "expect": {
+   "known_text": "说中文和别人尽量多"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L03B04",
+  "set": {
+   "known_text": "说一些东西用法语和别人现在"
+  },
+  "expect": {
+   "known_text": "说一些东西用中文和别人现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L03B02",
+  "set": {
+   "known_text": "练习说话和别人用法语现在"
+  },
+  "expect": {
+   "known_text": "练习说话和别人用中文现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L03U02",
+  "set": {
+   "known_text": "我要和别人说法语。"
+  },
+  "expect": {
+   "known_text": "我要和别人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0005L03U03",
+  "set": {
+   "known_text": "我想和别人说一些东西用法语。"
+  },
+  "expect": {
+   "known_text": "我想和别人说一些东西用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L02B04",
+  "set": {
+   "known_text": "在试着记住一个词用法语现在和别人"
+  },
+  "expect": {
+   "known_text": "在试着记住一个词用中文现在和别人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L02B02",
+  "set": {
+   "known_text": "记住一个词用法语和别人现在"
+  },
+  "expect": {
+   "known_text": "记住一个词用中文和别人现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L02B03",
+  "set": {
+   "known_text": "想记住一个词用法语和你尽量多"
+  },
+  "expect": {
+   "known_text": "想记住一个词用中文和你尽量多"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L02U05",
+  "set": {
+   "known_text": "我在试着记住一个词和你用法语。"
+  },
+  "expect": {
+   "known_text": "我在试着记住一个词和你用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L02U02",
+  "set": {
+   "known_text": "我想记住一个词用法语。"
+  },
+  "expect": {
+   "known_text": "我想记住一个词用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L01B04",
+  "set": {
+   "known_text": "在试着记住和别人用法语尽量多"
+  },
+  "expect": {
+   "known_text": "在试着记住和别人用中文尽量多"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L01B03",
+  "set": {
+   "known_text": "在试着记住一个词用法语和你现在尽量多"
+  },
+  "expect": {
+   "known_text": "在试着记住一个词用中文和你现在尽量多"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0006L01U02",
+  "set": {
+   "known_text": "我在试着记住用法语。"
+  },
+  "expect": {
+   "known_text": "我在试着记住用中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L02B03",
+  "set": {
+   "known_text": "想尽量努力练习说话用法语和你现在"
+  },
+  "expect": {
+   "known_text": "想尽量努力练习说话用中文和你现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L02B02",
+  "set": {
+   "known_text": "想尽量努力试说法语和别人现在"
+  },
+  "expect": {
+   "known_text": "想尽量努力试说中文和别人现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L02B04",
+  "set": {
+   "known_text": "想尽量努力学法语和别人现在"
+  },
+  "expect": {
+   "known_text": "想尽量努力学中文和别人现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L02U02",
+  "set": {
+   "known_text": "我想尽量努力说法语。"
+  },
+  "expect": {
+   "known_text": "我想尽量努力说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L02U04",
+  "set": {
+   "known_text": "我想尽量努力说法语和你。"
+  },
+  "expect": {
+   "known_text": "我想尽量努力说中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L03B03",
+  "set": {
+   "known_text": "今天尽量努力练习说话用法语和别人"
+  },
+  "expect": {
+   "known_text": "今天尽量努力练习说话用中文和别人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L03B01",
+  "set": {
+   "known_text": "今天说法语和别人尽量努力现在"
+  },
+  "expect": {
+   "known_text": "今天说中文和别人尽量努力现在"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L03B02",
+  "set": {
+   "known_text": "今天在试着记住一个词用法语和你"
+  },
+  "expect": {
+   "known_text": "今天在试着记住一个词用中文和你"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L03U01",
+  "set": {
+   "known_text": "我今天想说法语。"
+  },
+  "expect": {
+   "known_text": "我今天想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0007L03U04",
+  "set": {
+   "known_text": "我今天想说法语和你。"
+  },
+  "expect": {
+   "known_text": "我今天想说中文和你。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 9,
+  "set": {
+   "known_text": "我现在说一点法语。"
+  },
+  "expect": {
+   "known_text": "我现在说一点中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L03B02",
+  "set": {
+   "known_text": "在你说完以后说法语"
+  },
+  "expect": {
+   "known_text": "在你说完以后说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L03B03",
+  "set": {
+   "known_text": "在你说完以后我要说法语"
+  },
+  "expect": {
+   "known_text": "在你说完以后我要说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L03U05",
+  "set": {
+   "known_text": "在你说完以后我想和你说法语"
+  },
+  "expect": {
+   "known_text": "在你说完以后我想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L03U04",
+  "set": {
+   "known_text": "在你说完以后我想说一些东西用法语"
+  },
+  "expect": {
+   "known_text": "在你说完以后我想说一些东西用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L03U02",
+  "set": {
+   "known_text": "在你说完以后我想能说法语"
+  },
+  "expect": {
+   "known_text": "在你说完以后我想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L03U01",
+  "set": {
+   "known_text": "在你说完以后我想说法语"
+  },
+  "expect": {
+   "known_text": "在你说完以后我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02B01",
+  "set": {
+   "known_text": "说法语以后"
+  },
+  "expect": {
+   "known_text": "说中文以后"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02B02",
+  "set": {
+   "known_text": "以后我要说法语"
+  },
+  "expect": {
+   "known_text": "以后我要说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02U01",
+  "set": {
+   "known_text": "以后我想说法语"
+  },
+  "expect": {
+   "known_text": "以后我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02U02",
+  "set": {
+   "known_text": "以后我想能说法语"
+  },
+  "expect": {
+   "known_text": "以后我想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02U04",
+  "set": {
+   "known_text": "以后我想和别人说法语"
+  },
+  "expect": {
+   "known_text": "以后我想和别人说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02U03",
+  "set": {
+   "known_text": "以后我想和你说法语"
+  },
+  "expect": {
+   "known_text": "以后我想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L02U05",
+  "set": {
+   "known_text": "以后我想尽量多说法语"
+  },
+  "expect": {
+   "known_text": "以后我想尽量多说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01B03",
+  "set": {
+   "known_text": "我想能用法语说"
+  },
+  "expect": {
+   "known_text": "我想能用中文说"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01B02",
+  "set": {
+   "known_text": "我想能现在说法语"
+  },
+  "expect": {
+   "known_text": "我想能现在说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01U05",
+  "set": {
+   "known_text": "我想能尽量多说法语"
+  },
+  "expect": {
+   "known_text": "我想能尽量多说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01U01",
+  "set": {
+   "known_text": "我想能说法语"
+  },
+  "expect": {
+   "known_text": "我想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01U04",
+  "set": {
+   "known_text": "今天我想能说法语"
+  },
+  "expect": {
+   "known_text": "今天我想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01U02",
+  "set": {
+   "known_text": "我想能说法语和你"
+  },
+  "expect": {
+   "known_text": "我想能说中文和你"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0011L01U03",
+  "set": {
+   "known_text": "我想能说法语和别人"
+  },
+  "expect": {
+   "known_text": "我想能说中文和别人"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 13,
+  "set": {
+   "known_text": "你法语说得很好。"
+  },
+  "expect": {
+   "known_text": "你中文说得很好。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 14,
+  "set": {
+   "known_text": "你整天说法语吗？"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L01B03",
+  "set": {
+   "known_text": "你今天说法语吗？"
+  },
+  "expect": {
+   "known_text": "你今天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L01B02",
+  "set": {
+   "known_text": "你说法语吗？"
+  },
+  "expect": {
+   "known_text": "你说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L01U02",
+  "set": {
+   "known_text": "你和别人说法语吗？"
+  },
+  "expect": {
+   "known_text": "你和别人说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L01U04",
+  "set": {
+   "known_text": "你想说法语吗？"
+  },
+  "expect": {
+   "known_text": "你想说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L01U03",
+  "set": {
+   "known_text": "你现在说法语吗？"
+  },
+  "expect": {
+   "known_text": "你现在说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02B04",
+  "set": {
+   "known_text": "我整天说法语。"
+  },
+  "expect": {
+   "known_text": "我整天说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02B02",
+  "set": {
+   "known_text": "整天说法语"
+  },
+  "expect": {
+   "known_text": "整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02B03",
+  "set": {
+   "known_text": "你整天说法语吗？"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02U03",
+  "set": {
+   "known_text": "我整天和你说法语。"
+  },
+  "expect": {
+   "known_text": "我整天和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02U02",
+  "set": {
+   "known_text": "你整天说法语呢。"
+  },
+  "expect": {
+   "known_text": "你整天说中文呢。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02U01",
+  "set": {
+   "known_text": "我想整天说法语。"
+  },
+  "expect": {
+   "known_text": "我想整天说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02U05",
+  "set": {
+   "known_text": "我想整天和你说法语。"
+  },
+  "expect": {
+   "known_text": "我想整天和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0014L02U04",
+  "set": {
+   "known_text": "我今天想整天说法语。"
+  },
+  "expect": {
+   "known_text": "我今天想整天说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 15,
+  "set": {
+   "known_text": "而且我想让你明天和我说法语。"
+  },
+  "expect": {
+   "known_text": "而且我想让你明天和我说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L04U06",
+  "set": {
+   "known_text": "我想以后和别人一起尽量多说法语"
+  },
+  "expect": {
+   "known_text": "我想以后和别人一起尽量多说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L04U02",
+  "set": {
+   "known_text": "我想以后和别人一起说法语"
+  },
+  "expect": {
+   "known_text": "我想以后和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L04U04",
+  "set": {
+   "known_text": "他想以后和别人一起说一些东西用法语"
+  },
+  "expect": {
+   "known_text": "他想以后和别人一起说一些东西用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L04U03",
+  "set": {
+   "known_text": "我要以后和别人一起说法语"
+  },
+  "expect": {
+   "known_text": "我要以后和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L04U05",
+  "set": {
+   "known_text": "我想以后和别人一起说一些东西用法语"
+  },
+  "expect": {
+   "known_text": "我想以后和别人一起说一些东西用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02B03",
+  "set": {
+   "known_text": "他想和你说法语"
+  },
+  "expect": {
+   "known_text": "他想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02B02",
+  "set": {
+   "known_text": "他想说法语"
+  },
+  "expect": {
+   "known_text": "他想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02B04",
+  "set": {
+   "known_text": "他想和我说法语"
+  },
+  "expect": {
+   "known_text": "他想和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02U05",
+  "set": {
+   "known_text": "他想尽量多说法语"
+  },
+  "expect": {
+   "known_text": "他想尽量多说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02U01",
+  "set": {
+   "known_text": "他想现在说法语"
+  },
+  "expect": {
+   "known_text": "他想现在说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02U04",
+  "set": {
+   "known_text": "他想今天和我说法语"
+  },
+  "expect": {
+   "known_text": "他想今天和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02U03",
+  "set": {
+   "known_text": "他想说一些东西用法语"
+  },
+  "expect": {
+   "known_text": "他想说一些东西用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02U06",
+  "set": {
+   "known_text": "他今天想说一些东西用法语"
+  },
+  "expect": {
+   "known_text": "他今天想说一些东西用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L02U02",
+  "set": {
+   "known_text": "他想今天说法语"
+  },
+  "expect": {
+   "known_text": "他想今天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01B01",
+  "set": {
+   "known_text": "他说法语"
+  },
+  "expect": {
+   "known_text": "他说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01B02",
+  "set": {
+   "known_text": "他也说法语"
+  },
+  "expect": {
+   "known_text": "他也说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01B03",
+  "set": {
+   "known_text": "他说一点法语"
+  },
+  "expect": {
+   "known_text": "他说一点中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01U05",
+  "set": {
+   "known_text": "他今天和我说法语"
+  },
+  "expect": {
+   "known_text": "他今天和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01U02",
+  "set": {
+   "known_text": "他和我说法语"
+  },
+  "expect": {
+   "known_text": "他和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01U01",
+  "set": {
+   "known_text": "他和你说法语"
+  },
+  "expect": {
+   "known_text": "他和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01U03",
+  "set": {
+   "known_text": "他今天说法语"
+  },
+  "expect": {
+   "known_text": "他今天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L01U04",
+  "set": {
+   "known_text": "他今天和你说法语"
+  },
+  "expect": {
+   "known_text": "他今天和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0016L03U07",
+  "set": {
+   "known_text": "他也想回来和你说法语"
+  },
+  "expect": {
+   "known_text": "他也想回来和你说中文"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 22,
+  "set": {
+   "known_text": "因为我想见说法语的人。"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人。"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0022L03",
+  "set": {
+   "known_text": "说法语的人"
+  },
+  "expect": {
+   "known_text": "说中文的人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03B02",
+  "set": {
+   "known_text": "见说法语的人"
+  },
+  "expect": {
+   "known_text": "见说中文的人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03B03",
+  "set": {
+   "known_text": "我想见说法语的人今晚"
+  },
+  "expect": {
+   "known_text": "我想见说中文的人今晚"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03B01",
+  "set": {
+   "known_text": "说法语的人"
+  },
+  "expect": {
+   "known_text": "说中文的人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03C03",
+  "set": {
+   "known_text": "法语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03U02",
+  "set": {
+   "known_text": "我很想能见说法语的人"
+  },
+  "expect": {
+   "known_text": "我很想能见说中文的人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03U01",
+  "set": {
+   "known_text": "因为我想见说法语的人"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03U04",
+  "set": {
+   "known_text": "你为什么想见说法语的人?"
+  },
+  "expect": {
+   "known_text": "你为什么想见说中文的人?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L03U05",
+  "set": {
+   "known_text": "他想快点见说法语的人"
+  },
+  "expect": {
+   "known_text": "他想快点见说中文的人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0022L01C04",
+  "set": {
+   "known_text": "说法语的人"
+  },
+  "expect": {
+   "known_text": "说中文的人"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 33,
+  "set": {
+   "known_text": "你学法语学了多久了?"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0033L02",
+  "set": {
+   "known_text": "你学法语"
+  },
+  "expect": {
+   "known_text": "你学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02B01",
+  "set": {
+   "known_text": "你学法语"
+  },
+  "expect": {
+   "known_text": "你学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02B03",
+  "set": {
+   "known_text": "你现在学法语"
+  },
+  "expect": {
+   "known_text": "你现在学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02B04",
+  "set": {
+   "known_text": "你今天也学法语"
+  },
+  "expect": {
+   "known_text": "你今天也学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02B02",
+  "set": {
+   "known_text": "你也学法语"
+  },
+  "expect": {
+   "known_text": "你也学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02C03",
+  "set": {
+   "known_text": "法语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02U04",
+  "set": {
+   "known_text": "你今天学法语吗?"
+  },
+  "expect": {
+   "known_text": "你今天学中文吗?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02U01",
+  "set": {
+   "known_text": "你学法语学了多久了?"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02U02",
+  "set": {
+   "known_text": "你也学法语吗?"
+  },
+  "expect": {
+   "known_text": "你也学中文吗?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L02U03",
+  "set": {
+   "known_text": "你现在也学法语吗?"
+  },
+  "expect": {
+   "known_text": "你现在也学中文吗?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L01B03",
+  "set": {
+   "known_text": "你学法语多久了"
+  },
+  "expect": {
+   "known_text": "你学中文多久了"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L01U04",
+  "set": {
+   "known_text": "你想说法语多久了?"
+  },
+  "expect": {
+   "known_text": "你想说中文多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L01U01",
+  "set": {
+   "known_text": "你学法语学了多久了?"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0033L01U02",
+  "set": {
+   "known_text": "你想学法语多久了?"
+  },
+  "expect": {
+   "known_text": "你想学中文多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L01B03",
+  "set": {
+   "known_text": "他不想说法语"
+  },
+  "expect": {
+   "known_text": "他不想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L01B02",
+  "set": {
+   "known_text": "他不想学法语"
+  },
+  "expect": {
+   "known_text": "他不想学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L01U01",
+  "set": {
+   "known_text": "他不想现在说法语。"
+  },
+  "expect": {
+   "known_text": "他不想现在说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L01U04",
+  "set": {
+   "known_text": "他不想和别人说法语。"
+  },
+  "expect": {
+   "known_text": "他不想和别人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L01U02",
+  "set": {
+   "known_text": "他不想和你说法语。"
+  },
+  "expect": {
+   "known_text": "他不想和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L01U03",
+  "set": {
+   "known_text": "他不想今天学法语。"
+  },
+  "expect": {
+   "known_text": "他不想今天学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L03B03",
+  "set": {
+   "known_text": "他不想和其他人说法语"
+  },
+  "expect": {
+   "known_text": "他不想和其他人说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L03U04",
+  "set": {
+   "known_text": "他不想现在和其他人学法语。"
+  },
+  "expect": {
+   "known_text": "他不想现在和其他人学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L03U01",
+  "set": {
+   "known_text": "他不想和其他人学法语。"
+  },
+  "expect": {
+   "known_text": "他不想和其他人学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L03U02",
+  "set": {
+   "known_text": "我想和其他人说法语。"
+  },
+  "expect": {
+   "known_text": "我想和其他人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L04B04",
+  "set": {
+   "known_text": "当有人在，我想说法语"
+  },
+  "expect": {
+   "known_text": "当有人在，我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L04B03",
+  "set": {
+   "known_text": "当有人在，他不想说法语"
+  },
+  "expect": {
+   "known_text": "当有人在，他不想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L04U03",
+  "set": {
+   "known_text": "当有人在，我不想说法语。"
+  },
+  "expect": {
+   "known_text": "当有人在，我不想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0034L04U04",
+  "set": {
+   "known_text": "当有人在，他不想和其他人学法语。"
+  },
+  "expect": {
+   "known_text": "当有人在，他不想和其他人学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L02U02",
+  "set": {
+   "known_text": "她什么都不想说法语。"
+  },
+  "expect": {
+   "known_text": "她什么都不想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L02U01",
+  "set": {
+   "known_text": "她什么都不想读法语。"
+  },
+  "expect": {
+   "known_text": "她什么都不想读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L01B03",
+  "set": {
+   "known_text": "他不想读法语"
+  },
+  "expect": {
+   "known_text": "他不想读中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L01U03",
+  "set": {
+   "known_text": "他不想现在读法语。"
+  },
+  "expect": {
+   "known_text": "他不想现在读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L01U04",
+  "set": {
+   "known_text": "他不想和你一起读法语。"
+  },
+  "expect": {
+   "known_text": "他不想和你一起读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L01U05",
+  "set": {
+   "known_text": "我想和别人一起读法语。"
+  },
+  "expect": {
+   "known_text": "我想和别人一起读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L01U02",
+  "set": {
+   "known_text": "我想今天读法语。"
+  },
+  "expect": {
+   "known_text": "我想今天读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L01U01",
+  "set": {
+   "known_text": "她不想读法语。"
+  },
+  "expect": {
+   "known_text": "她不想读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L03B04",
+  "set": {
+   "known_text": "我今天下午想学法语"
+  },
+  "expect": {
+   "known_text": "我今天下午想学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L03B03",
+  "set": {
+   "known_text": "他今天下午不想说法语"
+  },
+  "expect": {
+   "known_text": "他今天下午不想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0035L03U04",
+  "set": {
+   "known_text": "她今天下午什么都不想说法语。"
+  },
+  "expect": {
+   "known_text": "她今天下午什么都不想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L01B03",
+  "set": {
+   "known_text": "我们不想说法语"
+  },
+  "expect": {
+   "known_text": "我们不想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L01B02",
+  "set": {
+   "known_text": "我们不想学法语"
+  },
+  "expect": {
+   "known_text": "我们不想学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L01U01",
+  "set": {
+   "known_text": "我们不想现在说法语。"
+  },
+  "expect": {
+   "known_text": "我们不想现在说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L01U02",
+  "set": {
+   "known_text": "我们不想和你说法语。"
+  },
+  "expect": {
+   "known_text": "我们不想和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L01U03",
+  "set": {
+   "known_text": "我们不想今天学法语。"
+  },
+  "expect": {
+   "known_text": "我们不想今天学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L01U04",
+  "set": {
+   "known_text": "我们不想和其他人说法语。"
+  },
+  "expect": {
+   "known_text": "我们不想和其他人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0036L02U02",
+  "set": {
+   "known_text": "我不想打断你说法语。"
+  },
+  "expect": {
+   "known_text": "我不想打断你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L03B04",
+  "set": {
+   "known_text": "我想仔细学法语"
+  },
+  "expect": {
+   "known_text": "我想仔细学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L03U03",
+  "set": {
+   "known_text": "我今天下午想仔细学法语。"
+  },
+  "expect": {
+   "known_text": "我今天下午想仔细学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L03U02",
+  "set": {
+   "known_text": "我想仔细说法语。"
+  },
+  "expect": {
+   "known_text": "我想仔细说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L03U04",
+  "set": {
+   "known_text": "他不想仔细读法语。"
+  },
+  "expect": {
+   "known_text": "他不想仔细读中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L04B04",
+  "set": {
+   "known_text": "我上个月开始了读法语"
+  },
+  "expect": {
+   "known_text": "我上个月开始了读中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L04B02",
+  "set": {
+   "known_text": "我上个月开始了说法语"
+  },
+  "expect": {
+   "known_text": "我上个月开始了说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L04U03",
+  "set": {
+   "known_text": "我上个月开始了仔细学法语。"
+  },
+  "expect": {
+   "known_text": "我上个月开始了仔细学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L04U05",
+  "set": {
+   "known_text": "我上个月开始了和其他人说法语。"
+  },
+  "expect": {
+   "known_text": "我上个月开始了和其他人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L04U02",
+  "set": {
+   "known_text": "我上个月开始了和别人说法语。"
+  },
+  "expect": {
+   "known_text": "我上个月开始了和别人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01B03",
+  "set": {
+   "known_text": "我开始了说法语"
+  },
+  "expect": {
+   "known_text": "我开始了说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01B02",
+  "set": {
+   "known_text": "我开始了学法语"
+  },
+  "expect": {
+   "known_text": "我开始了学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01B04",
+  "set": {
+   "known_text": "我开始了读法语"
+  },
+  "expect": {
+   "known_text": "我开始了读中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01U03",
+  "set": {
+   "known_text": "我现在开始了和你说法语。"
+  },
+  "expect": {
+   "known_text": "我现在开始了和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01U02",
+  "set": {
+   "known_text": "我开始了和别人说法语。"
+  },
+  "expect": {
+   "known_text": "我开始了和别人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01U05",
+  "set": {
+   "known_text": "我今天下午开始了学法语。"
+  },
+  "expect": {
+   "known_text": "我今天下午开始了学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0037L01U01",
+  "set": {
+   "known_text": "我今天开始了说法语。"
+  },
+  "expect": {
+   "known_text": "我今天开始了说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L02B03",
+  "set": {
+   "known_text": "我学法语大概上个月"
+  },
+  "expect": {
+   "known_text": "我学中文大概上个月"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01B02",
+  "set": {
+   "known_text": "我学法语"
+  },
+  "expect": {
+   "known_text": "我学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01B04",
+  "set": {
+   "known_text": "我学法语和别人"
+  },
+  "expect": {
+   "known_text": "我学中文和别人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01B03",
+  "set": {
+   "known_text": "我学法语和你"
+  },
+  "expect": {
+   "known_text": "我学中文和你"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01U04",
+  "set": {
+   "known_text": "我学法语上个月开始了。"
+  },
+  "expect": {
+   "known_text": "我学中文上个月开始了。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01U05",
+  "set": {
+   "known_text": "我学法语仔细地。"
+  },
+  "expect": {
+   "known_text": "我学中文仔细地。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01U02",
+  "set": {
+   "known_text": "我学法语和其他人现在。"
+  },
+  "expect": {
+   "known_text": "我学中文和其他人现在。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01U01",
+  "set": {
+   "known_text": "我学法语今天下午。"
+  },
+  "expect": {
+   "known_text": "我学中文今天下午。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L01U03",
+  "set": {
+   "known_text": "我学法语多久了?"
+  },
+  "expect": {
+   "known_text": "我学中文多久了?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L03B03",
+  "set": {
+   "known_text": "我学法语一个星期"
+  },
+  "expect": {
+   "known_text": "我学中文一个星期"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L03U05",
+  "set": {
+   "known_text": "我学法语和你大概一个星期了。"
+  },
+  "expect": {
+   "known_text": "我学中文和你大概一个星期了。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L03U02",
+  "set": {
+   "known_text": "我想和你说法语一个星期了。"
+  },
+  "expect": {
+   "known_text": "我想和你说中文一个星期了。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0038L03U01",
+  "set": {
+   "known_text": "我想说法语一个星期了。"
+  },
+  "expect": {
+   "known_text": "我想说中文一个星期了。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L01B03",
+  "set": {
+   "known_text": "我是准备好了说法语"
+  },
+  "expect": {
+   "known_text": "我是准备好了说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L01B04",
+  "set": {
+   "known_text": "我是准备好了学法语"
+  },
+  "expect": {
+   "known_text": "我是准备好了学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L01U05",
+  "set": {
+   "known_text": "我是好的说法语和你。"
+  },
+  "expect": {
+   "known_text": "我是好的说中文和你。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L01U01",
+  "set": {
+   "known_text": "我是准备好了说法语。"
+  },
+  "expect": {
+   "known_text": "我是准备好了说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L01U02",
+  "set": {
+   "known_text": "我是准备好了和你说法语。"
+  },
+  "expect": {
+   "known_text": "我是准备好了和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L02U04",
+  "set": {
+   "known_text": "我是有点累说法语。"
+  },
+  "expect": {
+   "known_text": "我是有点累说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L03B04",
+  "set": {
+   "known_text": "今天早上我想学法语"
+  },
+  "expect": {
+   "known_text": "今天早上我想学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L03B03",
+  "set": {
+   "known_text": "今天早上他不想说法语"
+  },
+  "expect": {
+   "known_text": "今天早上他不想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L03U04",
+  "set": {
+   "known_text": "今天早上我是有点累说法语。"
+  },
+  "expect": {
+   "known_text": "今天早上我是有点累说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L03U05",
+  "set": {
+   "known_text": "今天早上我开始了学法语。"
+  },
+  "expect": {
+   "known_text": "今天早上我开始了学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0039L03U03",
+  "set": {
+   "known_text": "今天早上我想仔细学法语。"
+  },
+  "expect": {
+   "known_text": "今天早上我想仔细学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0040L02B03",
+  "set": {
+   "known_text": "他不想说法语此刻"
+  },
+  "expect": {
+   "known_text": "他不想说中文此刻"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0040L02B04",
+  "set": {
+   "known_text": "她不想读法语此刻"
+  },
+  "expect": {
+   "known_text": "她不想读中文此刻"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0040L02U02",
+  "set": {
+   "known_text": "我是有点累此刻学法语。"
+  },
+  "expect": {
+   "known_text": "我是有点累此刻学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0040L02U04",
+  "set": {
+   "known_text": "我想仔细学法语此刻。"
+  },
+  "expect": {
+   "known_text": "我想仔细学中文此刻。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0042L01U04",
+  "set": {
+   "known_text": "我过去开始感觉好说法语。"
+  },
+  "expect": {
+   "known_text": "我过去开始感觉好说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0042L02U05",
+  "set": {
+   "known_text": "我昨天晚上开始了说法语。"
+  },
+  "expect": {
+   "known_text": "我昨天晚上开始了说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0042L02U04",
+  "set": {
+   "known_text": "我昨天晚上开始了学法语。"
+  },
+  "expect": {
+   "known_text": "我昨天晚上开始了学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0043L01B02",
+  "set": {
+   "known_text": "我没想说法语"
+  },
+  "expect": {
+   "known_text": "我没想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0043L01B03",
+  "set": {
+   "known_text": "我没想学法语"
+  },
+  "expect": {
+   "known_text": "我没想学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0043L01U01",
+  "set": {
+   "known_text": "我没想说法语今天。"
+  },
+  "expect": {
+   "known_text": "我没想说中文今天。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0043L01U04",
+  "set": {
+   "known_text": "我没想读法语今天早上。"
+  },
+  "expect": {
+   "known_text": "我没想读中文今天早上。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0043L01U05",
+  "set": {
+   "known_text": "我没想和其他人说法语。"
+  },
+  "expect": {
+   "known_text": "我没想和其他人说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0043L01U03",
+  "set": {
+   "known_text": "我没想今天下午说法语。"
+  },
+  "expect": {
+   "known_text": "我没想今天下午说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L01B02",
+  "set": {
+   "known_text": "我需要说法语"
+  },
+  "expect": {
+   "known_text": "我需要说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L01B03",
+  "set": {
+   "known_text": "我需要和你说法语"
+  },
+  "expect": {
+   "known_text": "我需要和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L01U03",
+  "set": {
+   "known_text": "我需要仔细说法语。"
+  },
+  "expect": {
+   "known_text": "我需要仔细说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L01U01",
+  "set": {
+   "known_text": "我需要说法语今天。"
+  },
+  "expect": {
+   "known_text": "我需要说中文今天。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L01U05",
+  "set": {
+   "known_text": "我需要说法语今天早上。"
+  },
+  "expect": {
+   "known_text": "我需要说中文今天早上。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L01U02",
+  "set": {
+   "known_text": "我需要说法语此刻。"
+  },
+  "expect": {
+   "known_text": "我需要说中文此刻。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L03B04",
+  "set": {
+   "known_text": "或者如果我想说法语"
+  },
+  "expect": {
+   "known_text": "或者如果我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L03B03",
+  "set": {
+   "known_text": "或者如果我需要说法语"
+  },
+  "expect": {
+   "known_text": "或者如果我需要说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L03U05",
+  "set": {
+   "known_text": "或者如果我需要改进说法语。"
+  },
+  "expect": {
+   "known_text": "或者如果我需要改进说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L03U04",
+  "set": {
+   "known_text": "或者如果我想今天早上说法语。"
+  },
+  "expect": {
+   "known_text": "或者如果我想今天早上说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L03U02",
+  "set": {
+   "known_text": "或者如果我想今天学法语。"
+  },
+  "expect": {
+   "known_text": "或者如果我想今天学中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L02B04",
+  "set": {
+   "known_text": "我需要改进说法语"
+  },
+  "expect": {
+   "known_text": "我需要改进说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0044L02U05",
+  "set": {
+   "known_text": "我需要改进说法语今天早上。"
+  },
+  "expect": {
+   "known_text": "我需要改进说中文今天早上。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L01B02",
+  "set": {
+   "known_text": "我不需要说法语"
+  },
+  "expect": {
+   "known_text": "我不需要说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L01U01",
+  "set": {
+   "known_text": "我不需要说法语今天。"
+  },
+  "expect": {
+   "known_text": "我不需要说中文今天。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L01U05",
+  "set": {
+   "known_text": "我不需要说法语今天早上。"
+  },
+  "expect": {
+   "known_text": "我不需要说中文今天早上。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L01U03",
+  "set": {
+   "known_text": "我不需要仔细说法语。"
+  },
+  "expect": {
+   "known_text": "我不需要仔细说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L03B04",
+  "set": {
+   "known_text": "我想知道一切关于法语"
+  },
+  "expect": {
+   "known_text": "我想知道一切关于中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L03U05",
+  "set": {
+   "known_text": "我不需要知道一切改进说法语。"
+  },
+  "expect": {
+   "known_text": "我不需要知道一切改进说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L02B03",
+  "set": {
+   "known_text": "我想知道怎么说法语"
+  },
+  "expect": {
+   "known_text": "我想知道怎么说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0045L02U04",
+  "set": {
+   "known_text": "我想知道怎么更好地说法语。"
+  },
+  "expect": {
+   "known_text": "我想知道怎么更好地说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0054L01U06",
+  "set": {
+   "known_text": "我们想尽量多说法语"
+  },
+  "expect": {
+   "known_text": "我们想尽量多说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0054L01U04",
+  "set": {
+   "known_text": "我们也想学法语"
+  },
+  "expect": {
+   "known_text": "我们也想学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0054L01U03",
+  "set": {
+   "known_text": "我们也想说法语"
+  },
+  "expect": {
+   "known_text": "我们也想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0054L01U02",
+  "set": {
+   "known_text": "他想和我们说法语"
+  },
+  "expect": {
+   "known_text": "他想和我们说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0054L01U05",
+  "set": {
+   "known_text": "你想和我们一起说法语吗?"
+  },
+  "expect": {
+   "known_text": "你想和我们一起说中文吗?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0054L02U06",
+  "set": {
+   "known_text": "我们想给你一些好的东西用法语"
+  },
+  "expect": {
+   "known_text": "我们想给你一些好的东西用中文"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 64,
+  "set": {
+   "known_text": "学法语不容易但是很有趣。"
+  },
+  "expect": {
+   "known_text": "学中文不容易但是很有趣。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L02B01",
+  "set": {
+   "known_text": "继续说法语"
+  },
+  "expect": {
+   "known_text": "继续说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L02U02",
+  "set": {
+   "known_text": "我要继续说法语"
+  },
+  "expect": {
+   "known_text": "我要继续说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L02U05",
+  "set": {
+   "known_text": "我想继续说法语和别人"
+  },
+  "expect": {
+   "known_text": "我想继续说中文和别人"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L05B02",
+  "set": {
+   "known_text": "说法语一会儿"
+  },
+  "expect": {
+   "known_text": "说中文一会儿"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L05U01",
+  "set": {
+   "known_text": "我想说法语一会儿"
+  },
+  "expect": {
+   "known_text": "我想说中文一会儿"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L05U04",
+  "set": {
+   "known_text": "我想和你说法语一会儿"
+  },
+  "expect": {
+   "known_text": "我想和你说中文一会儿"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L05U05",
+  "set": {
+   "known_text": "我想继续说法语一会儿"
+  },
+  "expect": {
+   "known_text": "我想继续说中文一会儿"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L03U01",
+  "set": {
+   "known_text": "我想继续说法语和你"
+  },
+  "expect": {
+   "known_text": "我想继续说中文和你"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L03U05",
+  "set": {
+   "known_text": "我想继续试着说法语"
+  },
+  "expect": {
+   "known_text": "我想继续试着说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0092L03U04",
+  "set": {
+   "known_text": "我想继续说法语尽量多"
+  },
+  "expect": {
+   "known_text": "我想继续说中文尽量多"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0097L03B02",
+  "set": {
+   "known_text": "你想什么时候走都可以，说法语"
+  },
+  "expect": {
+   "known_text": "你想什么时候走都可以，说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0097L01U01",
+  "set": {
+   "known_text": "是的，我想说法语"
+  },
+  "expect": {
+   "known_text": "是的，我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0100L01U02",
+  "set": {
+   "known_text": "你不该担心说法语"
+  },
+  "expect": {
+   "known_text": "你不该担心说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_for_zho:S0142L04U02",
+  "set": {
+   "known_text": "我很感谢你帮我说法语"
+  },
+  "expect": {
+   "known_text": "我很感谢你帮我说中文"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 160,
+  "set": {
+   "known_text": "这个词用法语怎么说？"
+  },
+  "expect": {
+   "known_text": "这个词用中文怎么说？"
+  }
+ }
+]

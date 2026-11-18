@@ -1,0 +1,1188 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 1
+   },
+   "before": {
+    "id": "3108b189-a278-4cd4-9ee8-3922832e213a",
+    "seed_number": 1,
+    "known_text": "我现在想和你说中文。",
+    "known_audio_id": "66fd7ceb-34fb-4033-bde5-4fb89cb24d00",
+    "target_text": "Quiero hablar español contigo ahora.",
+    "target1_audio_id": "7b89fa2b-fa36-4d75-99b1-9a05df093c6d",
+    "target2_audio_id": "bf1afed6-b337-4a61-9fd3-d440a2f94cad"
+   },
+   "after": {
+    "id": "3108b189-a278-4cd4-9ee8-3922832e213a",
+    "seed_number": 1,
+    "known_text": "我现在想和你说西班牙语。",
+    "known_audio_id": "46423c3e-e7ef-4c51-86dc-89ecd86c4bdb",
+    "target_text": "Quiero hablar español contigo ahora.",
+    "target1_audio_id": "7b89fa2b-fa36-4d75-99b1-9a05df093c6d",
+    "target2_audio_id": "bf1afed6-b337-4a61-9fd3-d440a2f94cad"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 4
+   },
+   "before": {
+    "id": "0affac6d-66f4-4580-8545-e4f1c8d33584",
+    "seed_number": 4,
+    "known_text": "怎么用中文说一些东西",
+    "known_audio_id": "e17f9748-e590-4cc4-bf55-0c1d29453bab",
+    "target_text": "cómo decir algo en español",
+    "target1_audio_id": "362561fe-1ee9-4682-9084-1989718d0415",
+    "target2_audio_id": "757cd108-0723-419c-aaff-52746d64999f"
+   },
+   "after": {
+    "id": "0affac6d-66f4-4580-8545-e4f1c8d33584",
+    "seed_number": 4,
+    "known_text": "怎么用西班牙语说一些东西",
+    "known_audio_id": "4ab3e121-9ce4-4865-aaf7-cbb8192d0a1e",
+    "target_text": "cómo decir algo en español",
+    "target1_audio_id": "362561fe-1ee9-4682-9084-1989718d0415",
+    "target2_audio_id": "757cd108-0723-419c-aaff-52746d64999f"
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "lego_id": "S0004L02"
+   },
+   "before": {
+    "id": "24b575b1-81b8-43b5-bc64-93353ecaf403",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "known_text": "用中文",
+    "known_audio_id": "4cc4e444-a904-42ca-80a5-85c5481197c6",
+    "target_text": "en español",
+    "target1_audio_id": "a6f1a823-74e0-4521-b52a-7128d4af601c",
+    "target2_audio_id": "d1136cac-7a50-41af-afe3-2e8438a5c2f5",
+    "presentation_audio_id": "58c45351-2897-4089-b829-ac9687f663dc"
+   },
+   "after": {
+    "id": "24b575b1-81b8-43b5-bc64-93353ecaf403",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "known_text": "用西班牙语",
+    "known_audio_id": "b38d0ecd-70eb-48b9-889b-1cce96de3e98",
+    "target_text": "en español",
+    "target1_audio_id": "a6f1a823-74e0-4521-b52a-7128d4af601c",
+    "target2_audio_id": "d1136cac-7a50-41af-afe3-2e8438a5c2f5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_zho",
+    "lego_id": "S0004L02"
+   },
+   "before": {
+    "id": "24b575b1-81b8-43b5-bc64-93353ecaf403",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "presentation_audio_id": null,
+    "known_text": "用西班牙语",
+    "target_text": "en español",
+    "known_audio_id": "b38d0ecd-70eb-48b9-889b-1cce96de3e98",
+    "target1_audio_id": "a6f1a823-74e0-4521-b52a-7128d4af601c",
+    "target2_audio_id": "d1136cac-7a50-41af-afe3-2e8438a5c2f5"
+   },
+   "after": {
+    "id": "24b575b1-81b8-43b5-bc64-93353ecaf403",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": "S0004L02",
+    "presentation_audio_id": "58c45351-2897-4089-b829-ac9687f663dc",
+    "known_text": "用西班牙语",
+    "target_text": "en español",
+    "known_audio_id": "b38d0ecd-70eb-48b9-889b-1cce96de3e98",
+    "target1_audio_id": "a6f1a823-74e0-4521-b52a-7128d4af601c",
+    "target2_audio_id": "d1136cac-7a50-41af-afe3-2e8438a5c2f5"
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02B01"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02B01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用中文",
+    "known_audio_id": "4cc4e444-a904-42ca-80a5-85c5481197c6",
+    "target_text": "en español",
+    "target1_audio_id": "a6f1a823-74e0-4521-b52a-7128d4af601c",
+    "target2_audio_id": "d1136cac-7a50-41af-afe3-2e8438a5c2f5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02B01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用西班牙语",
+    "known_audio_id": "b38d0ecd-70eb-48b9-889b-1cce96de3e98",
+    "target_text": "en español",
+    "target1_audio_id": "a6f1a823-74e0-4521-b52a-7128d4af601c",
+    "target2_audio_id": "d1136cac-7a50-41af-afe3-2e8438a5c2f5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02B04"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02B04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "怎么用中文说？",
+    "known_audio_id": "651404d3-6bf2-4e51-aca6-7773145a0a5e",
+    "target_text": "¿cómo decir en español?",
+    "target1_audio_id": "6d6b3812-4228-4200-9a28-869f053d52ba",
+    "target2_audio_id": "81c43d24-1dc8-48ae-b2e1-c2ae587cc6bd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02B04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "怎么用西班牙语说？",
+    "known_audio_id": "3da05406-d01f-44de-a33b-c26583904a5d",
+    "target_text": "¿cómo decir en español?",
+    "target1_audio_id": "6d6b3812-4228-4200-9a28-869f053d52ba",
+    "target2_audio_id": "81c43d24-1dc8-48ae-b2e1-c2ae587cc6bd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02B03"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02B03",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用中文说",
+    "known_audio_id": "5dea5fe0-6382-44d6-8040-6f75c24a6797",
+    "target_text": "decir en español",
+    "target1_audio_id": "2aac9873-a2a0-437c-9b41-a7f3d78f33e7",
+    "target2_audio_id": "a2c048bd-11a9-4bb9-892a-d0be3d926474",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02B03",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用西班牙语说",
+    "known_audio_id": "5bf536f6-012c-415e-9f1b-52b289f7f47d",
+    "target_text": "decir en español",
+    "target1_audio_id": "2aac9873-a2a0-437c-9b41-a7f3d78f33e7",
+    "target2_audio_id": "a2c048bd-11a9-4bb9-892a-d0be3d926474",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02B02"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02B02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用中文说一些东西",
+    "known_audio_id": "dd5fd10e-9fc0-47ee-8209-892fff38e6ef",
+    "target_text": "decir algo en español",
+    "target1_audio_id": "07864b9e-c3d8-48f9-a1cc-b1df2406b663",
+    "target2_audio_id": "64958a14-a1b6-428d-aee6-321f78a27a39",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02B02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "用西班牙语说一些东西",
+    "known_audio_id": "4a8fb6ba-350d-473c-95b7-7d328a1f3f1f",
+    "target_text": "decir algo en español",
+    "target1_audio_id": "07864b9e-c3d8-48f9-a1cc-b1df2406b663",
+    "target2_audio_id": "64958a14-a1b6-428d-aee6-321f78a27a39",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02C02"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02C02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "中文",
+    "known_audio_id": "032a6fd3-e69f-4268-9838-71e12662c809",
+    "target_text": "español",
+    "target1_audio_id": "d142c80f-84ea-48e9-b639-0e55c378e3e3",
+    "target2_audio_id": "95904f91-5f09-4237-89ce-9dc988ea78ff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02C02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "西班牙语",
+    "known_audio_id": "64bd544b-42ae-4d94-bfa8-8e546960bb7a",
+    "target_text": "español",
+    "target1_audio_id": "d142c80f-84ea-48e9-b639-0e55c378e3e3",
+    "target2_audio_id": "95904f91-5f09-4237-89ce-9dc988ea78ff",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02U03"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02U03",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我在试着用中文说一些东西",
+    "known_audio_id": "4fc489aa-cce4-4557-a798-6e98bfe37970",
+    "target_text": "estoy intentando decir algo en español",
+    "target1_audio_id": "ccde388f-cf29-4667-95a3-0d216c9d44df",
+    "target2_audio_id": "28a44924-ddcf-477e-b699-0985c17dca8f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02U03",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我在试着用西班牙语说一些东西",
+    "known_audio_id": "574262ec-df20-455a-8429-816a7e010ce1",
+    "target_text": "estoy intentando decir algo en español",
+    "target1_audio_id": "ccde388f-cf29-4667-95a3-0d216c9d44df",
+    "target2_audio_id": "28a44924-ddcf-477e-b699-0985c17dca8f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02U01"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02U01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "怎么用中文说一些东西？",
+    "known_audio_id": "e17f9748-e590-4cc4-bf55-0c1d29453bab",
+    "target_text": "¿cómo decir algo en español?",
+    "target1_audio_id": "bade385e-3b63-4544-bd7e-c5065f5d396b",
+    "target2_audio_id": "3545e755-3610-4c3a-996f-543a58cc2cfe",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02U01",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "怎么用西班牙语说一些东西？",
+    "known_audio_id": "1639590b-c731-4cdc-a43d-a75c86c40aac",
+    "target_text": "¿cómo decir algo en español?",
+    "target1_audio_id": "bade385e-3b63-4544-bd7e-c5065f5d396b",
+    "target2_audio_id": "3545e755-3610-4c3a-996f-543a58cc2cfe",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02U05"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02U05",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我现在想用中文说一些东西",
+    "known_audio_id": "e4baac6f-76b6-448b-a35a-37be1cf727d9",
+    "target_text": "quiero decir algo en español ahora",
+    "target1_audio_id": "6656a500-f609-48fa-8389-b9048ab7bfb5",
+    "target2_audio_id": "1b8180c0-683a-4afa-ad4a-58a080abbe7e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02U05",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我现在想用西班牙语说一些东西",
+    "known_audio_id": "c0944a0d-ff8a-46b4-b906-c89087bbd0f4",
+    "target_text": "quiero decir algo en español ahora",
+    "target1_audio_id": "6656a500-f609-48fa-8389-b9048ab7bfb5",
+    "target2_audio_id": "1b8180c0-683a-4afa-ad4a-58a080abbe7e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02U04"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02U04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想和你用中文说一些东西",
+    "known_audio_id": "bc571141-c540-4da1-afd1-35886613bc33",
+    "target_text": "quiero decir algo en español contigo",
+    "target1_audio_id": "2b6fc790-76a5-4681-bb4f-19dffbc1409c",
+    "target2_audio_id": "136c5ce8-41b8-4f6d-ba50-8bf2559e387c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02U04",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想和你用西班牙语说一些东西",
+    "known_audio_id": "b1da95c8-7957-43fc-93ae-44ad0723483b",
+    "target_text": "quiero decir algo en español contigo",
+    "target1_audio_id": "2b6fc790-76a5-4681-bb4f-19dffbc1409c",
+    "target2_audio_id": "136c5ce8-41b8-4f6d-ba50-8bf2559e387c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0004L02U02"
+   },
+   "before": {
+    "id": "spa_for_zho:S0004L02U02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想用中文说一些东西",
+    "known_audio_id": "1a59b286-ed05-4829-b915-ad566b0ddee9",
+    "target_text": "quiero decir algo en español",
+    "target1_audio_id": "d248271e-f8a8-43bb-9fdd-f23a8d09d3d5",
+    "target2_audio_id": "47822f7b-acfb-4f88-8df3-2c49aeb8a6b7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0004L02U02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想用西班牙语说一些东西",
+    "known_audio_id": "33a39fc7-f583-4c89-93e2-276ef317295f",
+    "target_text": "quiero decir algo en español",
+    "target1_audio_id": "d248271e-f8a8-43bb-9fdd-f23a8d09d3d5",
+    "target2_audio_id": "47822f7b-acfb-4f88-8df3-2c49aeb8a6b7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 9
+   },
+   "before": {
+    "id": "9779f015-55fc-46ab-a305-80254e483782",
+    "seed_number": 9,
+    "known_text": "我现在说一点中文。",
+    "known_audio_id": "709123d0-983a-452f-96bf-7c5db0fdfcfd",
+    "target_text": "Hablo un poco de español ahora.",
+    "target1_audio_id": "b5072bae-e29e-4227-baef-9b8f42e6a790",
+    "target2_audio_id": "196aabb0-9035-441d-afff-0926760c1526"
+   },
+   "after": {
+    "id": "9779f015-55fc-46ab-a305-80254e483782",
+    "seed_number": 9,
+    "known_text": "我现在说一点西班牙语。",
+    "known_audio_id": "659eec75-5617-4c2f-9c45-e43992949945",
+    "target_text": "Hablo un poco de español ahora.",
+    "target1_audio_id": "b5072bae-e29e-4227-baef-9b8f42e6a790",
+    "target2_audio_id": "196aabb0-9035-441d-afff-0926760c1526"
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 14
+   },
+   "before": {
+    "id": "691bdd20-be9e-4f82-b48e-e980f82067c0",
+    "seed_number": 14,
+    "known_text": "你整天说中文吗？",
+    "known_audio_id": "eabc7f3b-2da2-42ea-93f3-b01d1784341b",
+    "target_text": "¿Hablas español todo el día?",
+    "target1_audio_id": "b7325f6b-01c1-48a3-bcc8-ab37c0c35856",
+    "target2_audio_id": "8e49d4a6-8fd5-4ee3-8e15-a0db57cd122c"
+   },
+   "after": {
+    "id": "691bdd20-be9e-4f82-b48e-e980f82067c0",
+    "seed_number": 14,
+    "known_text": "你整天说西班牙语吗？",
+    "known_audio_id": "5c717f02-727c-4f6c-a7a7-ed70aa885c72",
+    "target_text": "¿Hablas español todo el día?",
+    "target1_audio_id": "b7325f6b-01c1-48a3-bcc8-ab37c0c35856",
+    "target2_audio_id": "8e49d4a6-8fd5-4ee3-8e15-a0db57cd122c"
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 15
+   },
+   "before": {
+    "id": "9b7877ed-4dbd-4d0b-8953-6cb71922da6e",
+    "seed_number": 15,
+    "known_text": "而且我想让你明天和我说中文。",
+    "known_audio_id": "10eddff4-b6e3-4793-a666-e14754f52f2d",
+    "target_text": "Y quiero que hables español conmigo mañana.",
+    "target1_audio_id": "3fd200ab-f79b-48cd-a714-494677e548da",
+    "target2_audio_id": "b284e30e-9bfc-452e-a5be-db654b7aa0f5"
+   },
+   "after": {
+    "id": "9b7877ed-4dbd-4d0b-8953-6cb71922da6e",
+    "seed_number": 15,
+    "known_text": "而且我想让你明天和我说西班牙语。",
+    "known_audio_id": "cb20dd22-c19d-491b-8b30-96657a9faace",
+    "target_text": "Y quiero que hables español conmigo mañana.",
+    "target1_audio_id": "3fd200ab-f79b-48cd-a714-494677e548da",
+    "target2_audio_id": "b284e30e-9bfc-452e-a5be-db654b7aa0f5"
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 22
+   },
+   "before": {
+    "id": "570c97d2-e515-4ba6-8096-b28dffa214e1",
+    "seed_number": 22,
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "69a254b7-f85d-49a6-8799-efb940dd4ceb",
+    "target_text": "Porque quiero conocer a personas que hablan español.",
+    "target1_audio_id": "1dbf5cb0-be75-4816-b12b-dd94c6eab437",
+    "target2_audio_id": "dd1cf51d-f065-492b-84d5-884910a71f02"
+   },
+   "after": {
+    "id": "570c97d2-e515-4ba6-8096-b28dffa214e1",
+    "seed_number": 22,
+    "known_text": "因为我想见说西班牙语的人。",
+    "known_audio_id": "6d5a18ac-ce3b-4f5c-9a48-2213aac7e71e",
+    "target_text": "Porque quiero conocer a personas que hablan español.",
+    "target1_audio_id": "1dbf5cb0-be75-4816-b12b-dd94c6eab437",
+    "target2_audio_id": "dd1cf51d-f065-492b-84d5-884910a71f02"
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03B02"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03B02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想见说中文的人。",
+    "known_audio_id": "194661ef-e984-4c77-86b2-bf7848f02556",
+    "target_text": "quiero conocer a personas que hablan español",
+    "target1_audio_id": "6aa1d4a7-db66-4543-bac4-b8fdbaa83735",
+    "target2_audio_id": "319f970b-904c-4a08-ab58-1b8a1edb0319",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03B02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想见说西班牙语的人。",
+    "known_audio_id": "afc953c9-478d-478f-bf59-ead1a12c4ed0",
+    "target_text": "quiero conocer a personas que hablan español",
+    "target1_audio_id": "6aa1d4a7-db66-4543-bac4-b8fdbaa83735",
+    "target2_audio_id": "319f970b-904c-4a08-ab58-1b8a1edb0319",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03B03"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03B03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "69a254b7-f85d-49a6-8799-efb940dd4ceb",
+    "target_text": "porque quiero conocer a personas que hablan español",
+    "target1_audio_id": "1dbf5cb0-be75-4816-b12b-dd94c6eab437",
+    "target2_audio_id": "dd1cf51d-f065-492b-84d5-884910a71f02",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03B03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为我想见说西班牙语的人。",
+    "known_audio_id": "6d5a18ac-ce3b-4f5c-9a48-2213aac7e71e",
+    "target_text": "porque quiero conocer a personas que hablan español",
+    "target1_audio_id": "1dbf5cb0-be75-4816-b12b-dd94c6eab437",
+    "target2_audio_id": "dd1cf51d-f065-492b-84d5-884910a71f02",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03B04"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03B04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我今天想见说中文的人。",
+    "known_audio_id": "7d589dd8-6fa6-4fd1-9be2-d98964ac6c39",
+    "target_text": "hoy quiero conocer a personas que hablan español",
+    "target1_audio_id": "ff1dca66-5aa6-424a-9604-8b7c365a2cab",
+    "target2_audio_id": "239babf9-181e-48fe-ad54-4735889c63c4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03B04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我今天想见说西班牙语的人。",
+    "known_audio_id": "c7a5f857-e73f-4617-8e42-0a1984731ea9",
+    "target_text": "hoy quiero conocer a personas que hablan español",
+    "target1_audio_id": "ff1dca66-5aa6-424a-9604-8b7c365a2cab",
+    "target2_audio_id": "239babf9-181e-48fe-ad54-4735889c63c4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03C02"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03C02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "中文",
+    "known_audio_id": "032a6fd3-e69f-4268-9838-71e12662c809",
+    "target_text": "español",
+    "target1_audio_id": "d142c80f-84ea-48e9-b639-0e55c378e3e3",
+    "target2_audio_id": "95904f91-5f09-4237-89ce-9dc988ea78ff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03C02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "西班牙语",
+    "known_audio_id": "64bd544b-42ae-4d94-bfa8-8e546960bb7a",
+    "target_text": "español",
+    "target1_audio_id": "d142c80f-84ea-48e9-b639-0e55c378e3e3",
+    "target2_audio_id": "95904f91-5f09-4237-89ce-9dc988ea78ff",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03U01"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03U01",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想认识更多说中文的人。",
+    "known_audio_id": "f66f464a-ac6f-4fec-b7da-8606b952f3c0",
+    "target_text": "quiero conocer a más personas que hablan español",
+    "target1_audio_id": "0f6746fd-3f42-40b0-9948-bb9d6885b5ad",
+    "target2_audio_id": "3488b9dc-d8df-4a31-b689-b046210d81ca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03U01",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想认识更多说西班牙语的人。",
+    "known_audio_id": "e1fc3298-bb11-4542-a04c-a58d8a392698",
+    "target_text": "quiero conocer a más personas que hablan español",
+    "target1_audio_id": "0f6746fd-3f42-40b0-9948-bb9d6885b5ad",
+    "target2_audio_id": "3488b9dc-d8df-4a31-b689-b046210d81ca",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03U03"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03U03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我在试着见说中文的人。",
+    "known_audio_id": "418860a9-7ef1-4cbf-bcef-44cbc783cdbe",
+    "target_text": "estoy intentando conocer a personas que hablan español",
+    "target1_audio_id": "6be86904-e745-497f-8b67-f6fdbbce5322",
+    "target2_audio_id": "ea1c966a-6a35-4fa8-b967-84fb26518e5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03U03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我在试着见说西班牙语的人。",
+    "known_audio_id": "3d915aed-4ea5-4b31-9d28-67a923e7ea7c",
+    "target_text": "estoy intentando conocer a personas que hablan español",
+    "target1_audio_id": "6be86904-e745-497f-8b67-f6fdbbce5322",
+    "target2_audio_id": "ea1c966a-6a35-4fa8-b967-84fb26518e5c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03U02"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03U02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为我想练习和说中文的人说话。",
+    "known_audio_id": "b0f4dd7b-c2c1-452a-aa98-9f2900e73e0f",
+    "target_text": "porque quiero practicar hablar con personas que hablan español",
+    "target1_audio_id": "3941ad28-374a-41ba-a324-85c4d94ee54f",
+    "target2_audio_id": "e1be2f31-e470-459d-a7d1-1dcc0fa356eb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03U02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为我想练习和说西班牙语的人说话。",
+    "known_audio_id": "1c51ecbf-d922-4571-81d9-1e0c68d1ae1d",
+    "target_text": "porque quiero practicar hablar con personas que hablan español",
+    "target1_audio_id": "3941ad28-374a-41ba-a324-85c4d94ee54f",
+    "target2_audio_id": "e1be2f31-e470-459d-a7d1-1dcc0fa356eb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03U05"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03U05",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我快点想见说中文的人。",
+    "known_audio_id": "7edec8ea-5c1f-458c-9beb-d44d859c9263",
+    "target_text": "quiero conocer a personas que hablan español rápidamente",
+    "target1_audio_id": "866fb03e-37c2-4b74-b7b2-ee6a1d058d4e",
+    "target2_audio_id": "e8467841-74b1-41a2-9686-3b0caa969d4e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03U05",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我快点想见说西班牙语的人。",
+    "known_audio_id": "2f10dee3-0c97-4990-80d1-44e2eab5ab69",
+    "target_text": "quiero conocer a personas que hablan español rápidamente",
+    "target1_audio_id": "866fb03e-37c2-4b74-b7b2-ee6a1d058d4e",
+    "target2_audio_id": "e8467841-74b1-41a2-9686-3b0caa969d4e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "id": "spa_for_zho:S0022L03U04"
+   },
+   "before": {
+    "id": "spa_for_zho:S0022L03U04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我为什么想见说中文的人？",
+    "known_audio_id": "9bdb42d3-2320-45a6-a5a7-93d16321eea4",
+    "target_text": "¿por qué quiero conocer a personas que hablan español?",
+    "target1_audio_id": "218dfa5c-c2b9-4343-82f8-ed87e1a58508",
+    "target2_audio_id": "a62ce210-d60c-4fdb-84cf-d1a5190269e1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_zho:S0022L03U04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我为什么想见说西班牙语的人？",
+    "known_audio_id": "7645de0a-5c2a-492b-b2fc-3f612e76df13",
+    "target_text": "¿por qué quiero conocer a personas que hablan español?",
+    "target1_audio_id": "218dfa5c-c2b9-4343-82f8-ed87e1a58508",
+    "target2_audio_id": "a62ce210-d60c-4fdb-84cf-d1a5190269e1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 33
+   },
+   "before": {
+    "id": "ea4132f2-5783-4eba-80fc-056c04364a83",
+    "seed_number": 33,
+    "known_text": "你学中文学了多久了?",
+    "known_audio_id": "238bceec-d4a6-4fcc-b61a-ac8905efff86",
+    "target_text": "¿Cuánto tiempo llevas aprendiendo español?",
+    "target1_audio_id": "1c915c8c-0590-4156-bd9f-97a55e605e28",
+    "target2_audio_id": "f7737ff3-23c0-4b77-9d83-558df2922895"
+   },
+   "after": {
+    "id": "ea4132f2-5783-4eba-80fc-056c04364a83",
+    "seed_number": 33,
+    "known_text": "你学西班牙语学了多久了?",
+    "known_audio_id": "f75591c4-2bee-4746-bbec-70458385bfdf",
+    "target_text": "¿Cuánto tiempo llevas aprendiendo español?",
+    "target1_audio_id": "1c915c8c-0590-4156-bd9f-97a55e605e28",
+    "target2_audio_id": "f7737ff3-23c0-4b77-9d83-558df2922895"
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 64
+   },
+   "before": {
+    "id": "db02b959-1e2b-42cd-a9ab-f72f740c707c",
+    "seed_number": 64,
+    "known_text": "学中文不容易但是很有趣。",
+    "known_audio_id": "798bec62-483a-49c7-91bd-1d2a059f120c",
+    "target_text": "Aprender español no es fácil pero es divertido.",
+    "target1_audio_id": "b08ee5d0-4643-4ffa-8235-deada06f22d7",
+    "target2_audio_id": "a426a9e0-9b73-45ee-99a0-cc33882a9e49"
+   },
+   "after": {
+    "id": "db02b959-1e2b-42cd-a9ab-f72f740c707c",
+    "seed_number": 64,
+    "known_text": "学西班牙语不容易但是很有趣。",
+    "known_audio_id": "f146ca22-48d4-4155-868b-b74dcd4b3113",
+    "target_text": "Aprender español no es fácil pero es divertido.",
+    "target1_audio_id": "b08ee5d0-4643-4ffa-8235-deada06f22d7",
+    "target2_audio_id": "a426a9e0-9b73-45ee-99a0-cc33882a9e49"
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_for_zho",
+    "seed_number": 159
+   },
+   "before": {
+    "id": "b73059a8-74e0-4202-a977-c0f65c20c3b6",
+    "seed_number": 159,
+    "known_text": "这个词用中文怎么说？",
+    "known_audio_id": "e86b150b-b3a9-4a28-8c06-00ccaa8cccba",
+    "target_text": "¿Cómo se dice esta palabra en español?",
+    "target1_audio_id": "5f8eb6fa-94e3-4dff-bf4a-7278ab86b32a",
+    "target2_audio_id": "58e02a05-a2b3-4115-8c9e-b5367483234a"
+   },
+   "after": {
+    "id": "b73059a8-74e0-4202-a977-c0f65c20c3b6",
+    "seed_number": 159,
+    "known_text": "这个词用西班牙语怎么说？",
+    "known_audio_id": "a3309e30-63f8-4f74-996e-19c7a254d8f6",
+    "target_text": "¿Cómo se dice esta palabra en español?",
+    "target1_audio_id": "5f8eb6fa-94e3-4dff-bf4a-7278ab86b32a",
+    "target2_audio_id": "58e02a05-a2b3-4115-8c9e-b5367483234a"
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 159,
+   "set": {
+    "known_text": "这个词用中文怎么说？",
+    "known_audio_id": "e86b150b-b3a9-4a28-8c06-00ccaa8cccba"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 64,
+   "set": {
+    "known_text": "学中文不容易但是很有趣。",
+    "known_audio_id": "798bec62-483a-49c7-91bd-1d2a059f120c"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 33,
+   "set": {
+    "known_text": "你学中文学了多久了?",
+    "known_audio_id": "238bceec-d4a6-4fcc-b61a-ac8905efff86"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03U04",
+   "set": {
+    "known_text": "我为什么想见说中文的人？",
+    "known_audio_id": "9bdb42d3-2320-45a6-a5a7-93d16321eea4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03U05",
+   "set": {
+    "known_text": "我快点想见说中文的人。",
+    "known_audio_id": "7edec8ea-5c1f-458c-9beb-d44d859c9263"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03U02",
+   "set": {
+    "known_text": "因为我想练习和说中文的人说话。",
+    "known_audio_id": "b0f4dd7b-c2c1-452a-aa98-9f2900e73e0f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03U03",
+   "set": {
+    "known_text": "我在试着见说中文的人。",
+    "known_audio_id": "418860a9-7ef1-4cbf-bcef-44cbc783cdbe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03U01",
+   "set": {
+    "known_text": "我想认识更多说中文的人。",
+    "known_audio_id": "f66f464a-ac6f-4fec-b7da-8606b952f3c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03C02",
+   "set": {
+    "known_text": "中文",
+    "known_audio_id": "032a6fd3-e69f-4268-9838-71e12662c809"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03B04",
+   "set": {
+    "known_text": "我今天想见说中文的人。",
+    "known_audio_id": "7d589dd8-6fa6-4fd1-9be2-d98964ac6c39"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03B03",
+   "set": {
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "69a254b7-f85d-49a6-8799-efb940dd4ceb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0022L03B02",
+   "set": {
+    "known_text": "我想见说中文的人。",
+    "known_audio_id": "194661ef-e984-4c77-86b2-bf7848f02556"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 22,
+   "set": {
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "69a254b7-f85d-49a6-8799-efb940dd4ceb"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 15,
+   "set": {
+    "known_text": "而且我想让你明天和我说中文。",
+    "known_audio_id": "10eddff4-b6e3-4793-a666-e14754f52f2d"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 14,
+   "set": {
+    "known_text": "你整天说中文吗？",
+    "known_audio_id": "eabc7f3b-2da2-42ea-93f3-b01d1784341b"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 9,
+   "set": {
+    "known_text": "我现在说一点中文。",
+    "known_audio_id": "709123d0-983a-452f-96bf-7c5db0fdfcfd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02U02",
+   "set": {
+    "known_text": "我想用中文说一些东西",
+    "known_audio_id": "1a59b286-ed05-4829-b915-ad566b0ddee9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02U04",
+   "set": {
+    "known_text": "我想和你用中文说一些东西",
+    "known_audio_id": "bc571141-c540-4da1-afd1-35886613bc33"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02U05",
+   "set": {
+    "known_text": "我现在想用中文说一些东西",
+    "known_audio_id": "e4baac6f-76b6-448b-a35a-37be1cf727d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02U01",
+   "set": {
+    "known_text": "怎么用中文说一些东西？",
+    "known_audio_id": "e17f9748-e590-4cc4-bf55-0c1d29453bab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02U03",
+   "set": {
+    "known_text": "我在试着用中文说一些东西",
+    "known_audio_id": "4fc489aa-cce4-4557-a798-6e98bfe37970"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02C02",
+   "set": {
+    "known_text": "中文",
+    "known_audio_id": "032a6fd3-e69f-4268-9838-71e12662c809"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02B02",
+   "set": {
+    "known_text": "用中文说一些东西",
+    "known_audio_id": "dd5fd10e-9fc0-47ee-8209-892fff38e6ef"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02B03",
+   "set": {
+    "known_text": "用中文说",
+    "known_audio_id": "5dea5fe0-6382-44d6-8040-6f75c24a6797"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02B04",
+   "set": {
+    "known_text": "怎么用中文说？",
+    "known_audio_id": "651404d3-6bf2-4e51-aca6-7773145a0a5e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_zho:S0004L02B01",
+   "set": {
+    "known_text": "用中文",
+    "known_audio_id": "4cc4e444-a904-42ca-80a5-85c5481197c6"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "24b575b1-81b8-43b5-bc64-93353ecaf403",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "24b575b1-81b8-43b5-bc64-93353ecaf403",
+   "set": {
+    "known_text": "用中文",
+    "known_audio_id": "4cc4e444-a904-42ca-80a5-85c5481197c6",
+    "presentation_audio_id": "58c45351-2897-4089-b829-ac9687f663dc"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 4,
+   "set": {
+    "known_text": "怎么用中文说一些东西",
+    "known_audio_id": "e17f9748-e590-4cc4-bf55-0c1d29453bab"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1,
+   "set": {
+    "known_text": "我现在想和你说中文。",
+    "known_audio_id": "66fd7ceb-34fb-4033-bde5-4fb89cb24d00"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

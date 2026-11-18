@@ -1,0 +1,425 @@
+[
+ {
+  "seed_number": 45,
+  "phrases": {
+   "45:1": [
+    {
+     "known_text": "माहित",
+     "target_text": "know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उत्तर काय आहे ते माहित",
+     "target_text": "know what the answer is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काहीतरी माहित",
+     "target_text": "know something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल माहित",
+     "target_text": "know about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला काहीतरी माहित असायचं होतं",
+     "target_text": "I wanted to know something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला काहीतरी माहित असायचं होतं",
+     "target_text": "she wanted to know something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काल काहीतरी माहित असायचं होतं",
+     "target_text": "you wanted to know something yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याबद्दल माहित असायचं होतं",
+     "target_text": "I wanted to know about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उत्तर काय आहे ते तुम्हाला माहित आहे का?",
+     "target_text": "do you know what the answer is?",
+     "phrase_role": "use"
+    }
+   ],
+   "45:2": [
+    {
+     "known_text": "सगळं",
+     "target_text": "everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल सगळं",
+     "target_text": "everything about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सगळं माहित",
+     "target_text": "know everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सगळं आठवणे",
+     "target_text": "to remember everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला सगळं माहित असायचं होतं",
+     "target_text": "I wanted to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला सगळं माहित असायचं होतं",
+     "target_text": "you wanted to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याबद्दल सगळं माहित असायचं होतं",
+     "target_text": "I wanted to know everything about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काल सगळं माहित असायचं होतं",
+     "target_text": "you wanted to know everything yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सगळं समजावून सांगायचं होतं",
+     "target_text": "I wanted to explain everything",
+     "phrase_role": "use"
+    }
+   ],
+   "45:3": [
+    {
+     "known_text": "गरज नाही",
+     "target_text": "don't need to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गरज नाही सगळं माहित",
+     "target_text": "don't need to know everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माहित असायची गरज नाही",
+     "target_text": "don't need to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सगळं आठवायची गरज नाही",
+     "target_text": "don't need to remember everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला सगळं माहित असायची गरज नाही",
+     "target_text": "I don't need to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याबद्दल सगळं माहित असायची गरज नाही",
+     "target_text": "I don't need to know everything about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याबद्दल माहित असायची गरज नाही",
+     "target_text": "I don't need to know about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला सगळं माहित असायची गरज नाही",
+     "target_text": "you don't need to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला सगळं समजावून सांगायची गरज नाही",
+     "target_text": "you don't need to explain everything",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 46,
+  "phrases": {
+   "46:1": [],
+   "46:2": [
+    {
+     "known_text": "काळजी करत नाही",
+     "target_text": "don't worry about making mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काळजी करत नाही आत्ता",
+     "target_text": "don't worry about making mistakes now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना चुका करण्याची काळजी करत नाही",
+     "target_text": "don't worry about making mistakes when other people are here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही चुका करण्याची काळजी करत नाही",
+     "target_text": "we don't worry about making mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण मी चुका करण्याची काळजी करत नाही",
+     "target_text": "but I don't worry about making mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी चुका करण्याची काळजी करत नाही",
+     "target_text": "I don't worry about making mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही चुका करण्याची काळजी करत नाही",
+     "target_text": "you don't worry about making mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी बोलताना मी चुका करण्याची काळजी करत नाही",
+     "target_text": "I don't worry about making mistakes when I speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही इंग्रजीत चुका करण्याची काळजी करत नाही",
+     "target_text": "you don't worry about making mistakes in English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 47,
+  "phrases": {
+   "47:1": [],
+   "47:2": [
+    {
+     "known_text": "चांगली गोष्ट",
+     "target_text": "a good thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "शिकायला चांगली गोष्ट",
+     "target_text": "a good thing to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माहित असायला चांगली गोष्ट",
+     "target_text": "a good thing to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "म्हणायला चांगली गोष्ट",
+     "target_text": "a good thing to say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इंग्रजी बोलणं ही चांगली गोष्ट आहे",
+     "target_text": "speaking English is a good thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी शिकणं ही चांगली गोष्ट आहे",
+     "target_text": "learning English is a good thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याबद्दल एक चांगली गोष्ट सांगायची होती",
+     "target_text": "I wanted to say a good thing about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "दुसऱ्या कोणाशीतरी बोलणं ही चांगली गोष्ट आहे",
+     "target_text": "speaking with someone else is a good thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला एक चांगली गोष्ट दाखवायची होती",
+     "target_text": "I wanted to show you a good thing",
+     "phrase_role": "use"
+    }
+   ],
+   "47:3": [
+    {
+     "known_text": "मला वाटतं",
+     "target_text": "I think",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "की",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला वाटतं की",
+     "target_text": "I think that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की मी तयार आहे",
+     "target_text": "I think that I'm ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की ते उपयोगी आहे",
+     "target_text": "I think that it's useful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की मी थोडा थकलोय",
+     "target_text": "I think that I'm a little tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की मला सगळं माहित असायची गरज नाही",
+     "target_text": "I think that I don't need to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की मी चुका करण्याची काळजी करत नाही",
+     "target_text": "I think that I don't worry about making mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की तुम्हाला सगळं माहित असायची गरज नाही",
+     "target_text": "I think that you don't need to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की मला सुधारण्याची गरज आहे",
+     "target_text": "I think that I need to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की तुम्ही चुका करण्याची काळजी करत नाही",
+     "target_text": "I think that you don't worry about making mistakes",
+     "phrase_role": "use"
+    }
+   ],
+   "47:4": [
+    {
+     "known_text": "चुका",
+     "target_text": "mistakes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "करणं",
+     "target_text": "to make",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चुका करणं",
+     "target_text": "to make mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चांगली गोष्ट चुका करणं",
+     "target_text": "a good thing to make mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला चुका करायला आवडत नाही",
+     "target_text": "I don't like to make mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चुका करणं उपयोगी आहे",
+     "target_text": "it's useful to make mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला चुका करायच्या नाहीत",
+     "target_text": "I don't want to make mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सुधारण्यासाठी तुम्हाला चुका करण्याची गरज आहे",
+     "target_text": "you need to make mistakes to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की चुका करणं उपयोगी आहे",
+     "target_text": "I think that it's useful to make mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इतर लोक इथे असताना तिला चुका करायच्या नाहीत",
+     "target_text": "she doesn't want to make mistakes when other people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला गप्प राहायची गरज नाही, चुका करणं ठीक आहे",
+     "target_text": "you don't need to be quiet, it's okay to make mistakes",
+     "phrase_role": "use"
+    }
+   ],
+   "47:5": [
+    {
+     "known_text": "ही",
+     "target_text": "it's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "चांगली गोष्ट",
+     "target_text": "a good thing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ही चांगली गोष्ट आहे",
+     "target_text": "it's a good thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की ही चांगली गोष्ट आहे",
+     "target_text": "I think that it's a good thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चुका करणं ही चांगली गोष्ट आहे",
+     "target_text": "it's a good thing to make mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "प्रयत्न करणं ही चांगली गोष्ट आहे",
+     "target_text": "it's a good thing to try",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कारण मला वाटतं की चुका करणं ही चांगली गोष्ट आहे",
+     "target_text": "because I think that it's a good thing to make mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की शक्य तितक्या वेळा सराव करणं ही चांगली गोष्ट आहे",
+     "target_text": "I think that it's a good thing to practise as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी बोलणाऱ्या लोकांशी बोलणं ही चांगली गोष्ट आहे",
+     "target_text": "it's a good thing to speak with people who speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की चुका करणं ही चांगली गोष्ट आहे, कारण मला सगळं माहित असायची गरज नाही",
+     "target_text": "I think that it's a good thing to make mistakes because I don't need to know everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नसताना विचारणं ही चांगली गोष्ट आहे",
+     "target_text": "it's a good thing to ask when I'm not sure",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

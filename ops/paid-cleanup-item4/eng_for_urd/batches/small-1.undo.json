@@ -1,0 +1,246 @@
+{
+ "event_id": "e87011d3-fa5c-4bd3-82c6-0eb406cef6c0",
+ "undo_file": "2026-11-18T13-05-55-337Z-e87011d3-fa5c-4bd3-82c6-0eb406cef6c0.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0102L02B04",
+   "set": {
+    "known_text": "ایسا نہیں ہے لیکن ممکن ہے",
+    "target_text": "not like that but possible",
+    "word_count": 26,
+    "lego_position": "start",
+    "known_audio_id": "5f081163-49ff-48b6-af6e-12efe1d07bed",
+    "target1_audio_id": "9cda68e0-5104-4b48-aff3-ee7a5398b25f",
+    "target2_audio_id": "50d5e333-29fc-4b2d-bc33-fdf2912fac93",
+    "decomposition": [
+     {
+      "known": "ایسا نہیں",
+      "legoId": "S0102L02",
+      "target": "not like that",
+      "isGhost": false
+     },
+     {
+      "known": "لیکن",
+      "legoId": "S0019L01",
+      "target": " but",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " possible",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0102L02B03",
+   "set": {
+    "known_text": "ایسا نہیں کہنا",
+    "target_text": "say not like that",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "ef1846f6-43d5-4818-8bd4-e05ec2444a26",
+    "target1_audio_id": "407deb34-c328-4f00-9fc2-81a68f471398",
+    "target2_audio_id": "395eeef1-e278-4d7b-b8e1-4e09f6c66341",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "say",
+      "isGhost": true
+     },
+     {
+      "known": "ایسا نہیں",
+      "legoId": "S0102L02",
+      "target": " not like that",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0102L02B02",
+   "set": {
+    "known_text": "ایسا نہیں ہے ابھی تک",
+    "target_text": "not like that yet",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "d7270594-442b-4e50-9978-1e134737ee4a",
+    "target1_audio_id": "530619dd-9288-438e-a6e4-fd3a68bfa23a",
+    "target2_audio_id": "e0416f55-7bec-49dc-8a29-41b190e47585",
+    "decomposition": [
+     {
+      "known": "ایسا نہیں",
+      "legoId": "S0102L02",
+      "target": "not like that",
+      "isGhost": false
+     },
+     {
+      "known": "ابھی تک",
+      "legoId": "S0060L02",
+      "target": " yet",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0093L01B04",
+   "set": {
+    "known_text": "جانے کا وقت ہے ابھی تک",
+    "target_text": "it's time to go yet",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "607cf9fb-4ae2-44a9-b1de-b3291137ca62",
+    "target1_audio_id": "e6205ee6-a892-41a6-b4da-12396fa37098",
+    "target2_audio_id": "2fb4f36c-9ec8-4bad-9cca-4b742e0e545c",
+    "decomposition": [
+     {
+      "known": "جانے کا وقت ہے",
+      "legoId": "S0093L01",
+      "target": "it's time to go",
+      "isGhost": false
+     },
+     {
+      "known": "ابھی تک",
+      "legoId": "S0060L02",
+      "target": " yet",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0089L01U05",
+   "set": {
+    "known_text": "آپ بہت کچھ بولنا جانتے ہیں",
+    "target_text": "you know a lot to speak",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "da1e40fa-e490-4f0e-9692-d4a140f6ba36",
+    "target1_audio_id": "b0716c0e-44db-4bf9-87b6-9c397f606de8",
+    "target2_audio_id": "cd470e81-bedf-475c-bcf9-532ff08416e2",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "you",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " know",
+      "isGhost": true
+     },
+     {
+      "known": "بہت کچھ",
+      "legoId": "S0089L01",
+      "target": " a lot",
+      "isGhost": false
+     },
+     {
+      "known": "بات کرنا",
+      "legoId": "S0031L03",
+      "target": " to speak",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0089L01B02",
+   "set": {
+    "known_text": "بہت کچھ ابھی تک",
+    "target_text": "a lot yet",
+    "word_count": 9,
+    "lego_position": "start",
+    "known_audio_id": "4faaa5b9-52f5-493c-9982-581203f85f5a",
+    "target1_audio_id": "272e6bb6-0983-4571-aa44-d0125b377409",
+    "target2_audio_id": "b395d953-6cd2-4e65-894e-3be53ef77b8c",
+    "decomposition": [
+     {
+      "known": "بہت کچھ",
+      "legoId": "S0089L01",
+      "target": "a lot",
+      "isGhost": false
+     },
+     {
+      "known": "ابھی تک",
+      "legoId": "S0060L02",
+      "target": " yet",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0089L01B01",
+   "set": {
+    "known_text": "بہت کچھ پہلے سے",
+    "target_text": "a lot already",
+    "word_count": 13,
+    "lego_position": "start",
+    "known_audio_id": "773ac452-d3a2-4ca9-bd68-27aae1d06184",
+    "target1_audio_id": "afb7a0fc-40ca-4329-a6e2-7f461e6f12e2",
+    "target2_audio_id": "d4dfb29d-00dd-4a5e-9996-b5bb2bd70053",
+    "decomposition": [
+     {
+      "known": "بہت کچھ",
+      "legoId": "S0089L01",
+      "target": "a lot",
+      "isGhost": false
+     },
+     {
+      "known": "پہلے سے",
+      "legoId": "S0076L02",
+      "target": " already",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0064L02B03",
+   "set": {
+    "known_text": "ابھی تک نہیں ہے",
+    "target_text": "isn't yet",
+    "word_count": 15,
+    "lego_position": "start",
+    "known_audio_id": "41d98d23-817c-4673-8bf9-03b185baa259",
+    "target1_audio_id": "c5122739-2a23-4f44-98b0-5828d1655016",
+    "target2_audio_id": "c818473f-0ff0-4574-807c-329e42c08501",
+    "decomposition": [
+     {
+      "known": "نہیں ہے",
+      "legoId": "S0064L02",
+      "target": "isn't",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ready",
+      "isGhost": true
+     },
+     {
+      "known": "ابھی تک",
+      "legoId": "S0060L02",
+      "target": " yet",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}

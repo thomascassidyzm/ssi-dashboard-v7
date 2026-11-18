@@ -1,0 +1,1131 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0119L01B04",
+    "seed_number": 119,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "तुम्ही जाण्यापूर्वी",
+    "target_text": "before you leave",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 2,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0120L02U06",
+    "seed_number": 120,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "माझा मित्र म्हणाला की तुम्हाला बसने जायला आवडतं",
+    "target_text": "my friend said you like to go by bus",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 36,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0121L02U06",
+    "seed_number": 121,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे मला माहित नव्हतं",
+    "target_text": "I didn't know you don't like to use your car",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 44,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L01B04",
+    "seed_number": 122,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "हे बदलायला लागलंय",
+    "target_text": "it's starting to change",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 23,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L01U05",
+    "seed_number": 122,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "हे अवघड वाटायला लागलंय",
+    "target_text": "it's starting to be difficult",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L02B04",
+    "seed_number": 122,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "आता सोपं वाटायला",
+    "target_text": "to feel easier now",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L02U06",
+    "seed_number": 122,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "बोलणं सोपं वाटायला लागलंय",
+    "target_text": "speaking is starting to feel easier",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 35,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L03B04",
+    "seed_number": 122,
+    "lego_index": 3,
+    "position": 10,
+    "known_text": "आणि मी उद्याबद्दल उत्साहित आहे",
+    "target_text": "and I'm excited about tomorrow",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L03U06",
+    "seed_number": 122,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "मी इंग्रजीत संभाषण करणार आहे, आणि मी उत्साहित आहे",
+    "target_text": "I'm going to have a conversation in English, and I'm excited",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 60,
+    "lego_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L04B04",
+    "seed_number": 122,
+    "lego_index": 4,
+    "position": 10,
+    "known_text": "आज ते कसं चाललंय याबद्दल",
+    "target_text": "about how it's going today",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0122L04U06",
+    "seed_number": 122,
+    "lego_index": 4,
+    "position": 11,
+    "known_text": "ते कसं चाललंय याबद्दल आम्ही एकमेकांशी बोललो",
+    "target_text": "we talked to each other about how it's going",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 44,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0119L01U02",
+   "expect": {
+    "known_text": "इंग्रजीत निघणे",
+    "target_text": "leave in English"
+   },
+   "set": {
+    "known_text": "मला सहा वाजता निघायला हवं",
+    "target_text": "I need to leave at six o'clock",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0119L01U03",
+   "expect": {
+    "known_text": "जाण्यापूर्वी तुम्ही निघणे",
+    "target_text": "before you leave"
+   },
+   "set": {
+    "known_text": "तुम्हाला कधी निघायचं आहे?",
+    "target_text": "when do you want to leave?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0119L01U04",
+   "expect": {
+    "known_text": "विचारणे काहीतरी जाण्यापूर्वी तुम्ही निघणे",
+    "target_text": "ask you something before you leave"
+   },
+   "set": {
+    "known_text": "तुम्ही निघण्यापूर्वी थोडं थांबाल का?",
+    "target_text": "could you wait before you leave?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0119L01U05",
+   "expect": {
+    "known_text": "काहीतरी जाण्यापूर्वी तुम्ही निघणे",
+    "target_text": "something before you leave"
+   },
+   "set": {
+    "known_text": "मला अद्याप निघायचं नाही",
+    "target_text": "I don't want to leave yet",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01B02",
+   "expect": {
+    "known_text": "हे रंजक आहे की मला माहित नाही",
+    "target_text": "it's interesting that I don't know"
+   },
+   "set": {
+    "known_text": "मला माहित नाही हे रंजक आहे",
+    "target_text": "it's interesting that I don't know",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01B03",
+   "expect": {
+    "known_text": "हे रंजक आहे की तुम्हाला समजतं",
+    "target_text": "it's interesting that you understand"
+   },
+   "set": {
+    "known_text": "तुम्हाला समजतं हे रंजक आहे",
+    "target_text": "it's interesting that you understand",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01B04",
+   "expect": {
+    "known_text": "हे रंजक आहे की मला आठवत नाही",
+    "target_text": "it's interesting that I can't remember"
+   },
+   "set": {
+    "known_text": "मला आठवत नाही हे रंजक आहे",
+    "target_text": "it's interesting that I can't remember",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01U02",
+   "expect": {
+    "known_text": "हे रंजक आहे की मला खात्री नाही",
+    "target_text": "it's interesting that I'm not sure"
+   },
+   "set": {
+    "known_text": "तुम्ही माझ्याशी सहमत आहात हे रंजक आहे",
+    "target_text": "it's interesting that you agree with me",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01U03",
+   "expect": {
+    "known_text": "कारण हे रंजक आहे की मला खात्री नाही",
+    "target_text": "because it's interesting that I'm not sure"
+   },
+   "set": {
+    "known_text": "त्याला उत्तर माहित नव्हतं हे रंजक आहे",
+    "target_text": "it's interesting that he didn't know the answer",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01U04",
+   "expect": {
+    "known_text": "मला वाटतं की हे रंजक आहे की मला माहित नाही",
+    "target_text": "I think that it's interesting that I don't know"
+   },
+   "set": {
+    "known_text": "तुम्हाला इंग्रजी शिकायचं आहे हे रंजक आहे",
+    "target_text": "it's interesting that you want to learn English",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L01U05",
+   "expect": {
+    "known_text": "हे रंजक आहे की मला इंग्रजीत मजा येतेय",
+    "target_text": "it's interesting that I'm enjoying finding out more about this language"
+   },
+   "set": {
+    "known_text": "तुम्हाला कुत्र्याशी खेळायला आवडतं हे रंजक आहे",
+    "target_text": "it's interesting that you like playing with the dog",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L02B02",
+   "expect": {
+    "known_text": "हे रंजक आहे तुम्हाला बसने जायला आवडतं अजून",
+    "target_text": "it's interesting that you like to go by bus yet"
+   },
+   "set": {
+    "known_text": "तुम्हाला तुमच्या मित्रांबरोबर बसने जायला आवडतं",
+    "target_text": "you like to go by bus with your friends",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L02B03",
+   "expect": {
+    "known_text": "बसने जायला आवडतं इंग्रजीत",
+    "target_text": "you like to go by bus in English"
+   },
+   "set": {
+    "known_text": "तुम्हाला रात्री बसने जायला आवडतं",
+    "target_text": "you like to go by bus at night",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L02B04",
+   "expect": {
+    "known_text": "बसने जायला आवडतं पुन्हा",
+    "target_text": "you like to go by bus again"
+   },
+   "set": {
+    "known_text": "तुम्हाला बसने जायला आवडतं हे मला माहित आहे",
+    "target_text": "I know you like to go by bus",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L02U03",
+   "expect": {
+    "known_text": "हे रंजक आहे की तुम्हाला बसने जायला आवडतं पुन्हा",
+    "target_text": "it's interesting that you like to go by bus again"
+   },
+   "set": {
+    "known_text": "तुम्हाला बसने जायला आवडतं हे मला माहित नव्हतं",
+    "target_text": "I didn't know you like to go by bus",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L02U04",
+   "expect": {
+    "known_text": "मला वाटतं की हे रंजक आहे की तुम्हाला बसने जायला आवडतं",
+    "target_text": "I think that it's interesting that you like to go by bus"
+   },
+   "set": {
+    "known_text": "तुम्हाला बसने जायला आवडतं का?",
+    "target_text": "do you like to go by bus?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0120L02U05",
+   "expect": {
+    "known_text": "कारण हे रंजक आहे की तुम्हाला बसने जायला आवडतं",
+    "target_text": "because it's interesting that you like to go by bus"
+   },
+   "set": {
+    "known_text": "तुम्हाला बसने जायला आवडतं याचं मला आश्चर्य वाटतंय",
+    "target_text": "I'm surprised that you like to go by bus",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01B02",
+   "expect": {
+    "known_text": "असामान्य आहे की मला माहित नाही",
+    "target_text": "it's unusual that I don't know"
+   },
+   "set": {
+    "known_text": "मला माहित नाही हे असामान्य आहे",
+    "target_text": "it's unusual that I don't know",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01B03",
+   "expect": {
+    "known_text": "असामान्य आहे की तुम्हाला समजतं",
+    "target_text": "it's unusual that you understand"
+   },
+   "set": {
+    "known_text": "तुम्हाला समजतं हे असामान्य आहे",
+    "target_text": "it's unusual that you understand",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01B04",
+   "expect": {
+    "known_text": "असामान्य आहे की मला आठवत नाही",
+    "target_text": "it's unusual that I can't remember"
+   },
+   "set": {
+    "known_text": "मला आठवत नाही हे असामान्य आहे",
+    "target_text": "it's unusual that I can't remember",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01U01",
+   "expect": {
+    "known_text": "असामान्य आहे की तुम्ही खूप छान करताय",
+    "target_text": "it's unusual that you're doing very well"
+   },
+   "set": {
+    "known_text": "कुत्रा गप्प आहे हे असामान्य आहे",
+    "target_text": "it's unusual that the dog is quiet",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01U02",
+   "expect": {
+    "known_text": "असामान्य आहे की मला खात्री नाही",
+    "target_text": "it's unusual that I'm not sure"
+   },
+   "set": {
+    "known_text": "तिला थांबायचं आहे हे असामान्य आहे",
+    "target_text": "it's unusual that she wants to stop",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01U03",
+   "expect": {
+    "known_text": "कारण असामान्य आहे की मला खात्री नाही",
+    "target_text": "because it's unusual that I'm not sure"
+   },
+   "set": {
+    "known_text": "तुम्ही सहमत नाही हे असामान्य आहे",
+    "target_text": "it's unusual that you don't agree",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01U04",
+   "expect": {
+    "known_text": "मला वाटतं की असामान्य आहे की मला माहित नाही",
+    "target_text": "I think that it's unusual that I don't know"
+   },
+   "set": {
+    "known_text": "तुम्हाला माहित नाही हे असामान्य आहे असं मला वाटतं",
+    "target_text": "I think that it's unusual that you don't know",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L01U05",
+   "expect": {
+    "known_text": "असामान्य आहे की मी इंग्रजीत मजा घेतोय",
+    "target_text": "it's unusual that I'm enjoying finding out more about this language"
+   },
+   "set": {
+    "known_text": "आम्ही दुपारभर पबमध्ये होतो हे असामान्य आहे",
+    "target_text": "it's unusual that we were in the pub all afternoon",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L02B02",
+   "expect": {
+    "known_text": "असामान्य आहे तुम्हाला कार वापरायला आवडत नाही अजून",
+    "target_text": "it's unusual that you don't like to use your car yet"
+   },
+   "set": {
+    "known_text": "तुम्हाला रात्री तुमची कार वापरायला आवडत नाही",
+    "target_text": "you don't like to use your car at night",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L02B03",
+   "expect": {
+    "known_text": "कार वापरायला आवडत नाही इंग्रजीत",
+    "target_text": "you don't like to use your car in English"
+   },
+   "set": {
+    "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे मला माहित आहे",
+    "target_text": "I know you don't like to use your car",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L02B04",
+   "expect": {
+    "known_text": "कार वापरायला आवडत नाही पुन्हा",
+    "target_text": "you don't like to use your car again"
+   },
+   "set": {
+    "known_text": "पण तुम्हाला तुमची कार वापरायला आवडत नाही",
+    "target_text": "but you don't like to use your car",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L02U03",
+   "expect": {
+    "known_text": "असामान्य आहे की तुम्हाला कार वापरायला आवडत नाही पुन्हा",
+    "target_text": "it's unusual that you don't like to use your car again"
+   },
+   "set": {
+    "known_text": "तुम्हाला तुमची कार वापरायला का आवडत नाही ते मला समजतं",
+    "target_text": "I understand why you don't like to use your car",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L02U04",
+   "expect": {
+    "known_text": "मला वाटतं की असामान्य आहे की तुम्हाला कार वापरायला आवडत नाही",
+    "target_text": "I think that it's unusual that you don't like to use your car"
+   },
+   "set": {
+    "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे असामान्य आहे असं मला वाटतं",
+    "target_text": "I think that it's unusual that you don't like to use your car",
+    "decomposition": null,
+    "word_count": 61,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0121L02U05",
+   "expect": {
+    "known_text": "कारण असामान्य आहे की तुम्हाला कार वापरायला आवडत नाही",
+    "target_text": "because it's unusual that you don't like to use your car"
+   },
+   "set": {
+    "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही, म्हणून तुम्ही बसने जाता",
+    "target_text": "you don't like to use your car, so you go by bus",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L01B02",
+   "expect": {
+    "known_text": "लागलंय इंग्रजीत",
+    "target_text": "it's starting in English"
+   },
+   "set": {
+    "known_text": "हे चालायला लागलंय",
+    "target_text": "it's starting to work",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L01B03",
+   "expect": {
+    "known_text": "लागलंय शिकायला",
+    "target_text": "it's starting to learn"
+   },
+   "set": {
+    "known_text": "हे मजेशीर वाटायला लागलंय",
+    "target_text": "it's starting to be fun",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L01U02",
+   "expect": {
+    "known_text": "हे इंग्रजीत शिकायला लागलंय",
+    "target_text": "it's starting to learn in English"
+   },
+   "set": {
+    "known_text": "मला वाटतं हे चालायला लागलंय",
+    "target_text": "I think it's starting to work",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L01U03",
+   "expect": {
+    "known_text": "मला वाटतं की हे लागलंय",
+    "target_text": "I think that it's starting"
+   },
+   "set": {
+    "known_text": "हे रंजक वाटायला लागलंय",
+    "target_text": "it's starting to be interesting",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L01U04",
+   "expect": {
+    "known_text": "कारण हे लागलंय",
+    "target_text": "because it's starting"
+   },
+   "set": {
+    "known_text": "हे चालायला लागलंय, मी खूप खूश आहे",
+    "target_text": "it's starting to work, I'm very happy",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L02B02",
+   "expect": {
+    "known_text": "लागलंय सोपं वाटायला रात्री",
+    "target_text": "it's starting to feel easier tonight"
+   },
+   "set": {
+    "known_text": "सोपं वाटायला लागलंय",
+    "target_text": "starting to feel easier",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L02B03",
+   "expect": {
+    "known_text": "सोपं वाटायला इंग्रजीत",
+    "target_text": "to feel easier in English"
+   },
+   "set": {
+    "known_text": "आज सोपं वाटायला",
+    "target_text": "to feel easier today",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L02U02",
+   "expect": {
+    "known_text": "हे इंग्रजीत सोपं वाटायला लागलंय",
+    "target_text": "it's starting to feel easier in English"
+   },
+   "set": {
+    "known_text": "इंग्रजी शिकणं सोपं वाटायला लागलंय",
+    "target_text": "learning English is starting to feel easier",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L02U04",
+   "expect": {
+    "known_text": "कारण हे सोपं वाटायला लागलंय",
+    "target_text": "because it's starting to feel easier"
+   },
+   "set": {
+    "known_text": "नवीन शब्द आठवणं सोपं वाटायला लागलंय",
+    "target_text": "it's starting to feel easier to remember new words",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L03B02",
+   "expect": {
+    "known_text": "लागलंय सोपं वाटायला उत्साहित आहे रात्री",
+    "target_text": "it's starting to feel easier and I'm excited tonight"
+   },
+   "set": {
+    "known_text": "आणि मी त्याबद्दल उत्साहित आहे",
+    "target_text": "and I'm excited about it",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L03B03",
+   "expect": {
+    "known_text": "उत्साहित आहे इंग्रजीत",
+    "target_text": "and I'm excited in English"
+   },
+   "set": {
+    "known_text": "आणि मी या भाषेबद्दल उत्साहित आहे",
+    "target_text": "and I'm excited about this language",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L03U02",
+   "expect": {
+    "known_text": "हे सोपं वाटायला लागलंय आणि मी इंग्रजीत उत्साहित आहे",
+    "target_text": "it's starting to feel easier and I'm excited in English"
+   },
+   "set": {
+    "known_text": "मी बरंच काही शिकतोय, आणि मी उत्साहित आहे",
+    "target_text": "I'm learning a lot, and I'm excited",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L03U04",
+   "expect": {
+    "known_text": "कारण हे सोपं वाटायला लागलंय आणि मी उत्साहित आहे",
+    "target_text": "because it's starting to feel easier and I'm excited"
+   },
+   "set": {
+    "known_text": "आम्ही पबमध्ये जाणार आहोत, आणि मी उत्साहित आहे",
+    "target_text": "we're going to the pub, and I'm excited",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L04B02",
+   "expect": {
+    "known_text": "लागलंय सोपं वाटायला उत्साहित आहे कसं चाललंय रात्री",
+    "target_text": "it's starting to feel easier and I'm excited about how it's going tonight"
+   },
+   "set": {
+    "known_text": "ते कसं चाललंय याबद्दल मी उत्साहित आहे",
+    "target_text": "I'm excited about how it's going",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L04B03",
+   "expect": {
+    "known_text": "कसं चाललंय इंग्रजीत",
+    "target_text": "about how it's going in English"
+   },
+   "set": {
+    "known_text": "ते कसं चाललंय याबद्दल खूश",
+    "target_text": "happy about how it's going",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L04U02",
+   "expect": {
+    "known_text": "हे सोपं वाटायला लागलंय आणि मी उत्साहित आहे ते कसं चाललंय इंग्रजीत",
+    "target_text": "it's starting to feel easier and I'm excited about how it's going in English"
+   },
+   "set": {
+    "known_text": "ते कसं चाललंय याबद्दल मी खूप खूश आहे",
+    "target_text": "I'm very happy about how it's going",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L04U04",
+   "expect": {
+    "known_text": "मला खात्री नाही ते कसं चाललंय",
+    "target_text": "I'm not sure about how it's going"
+   },
+   "set": {
+    "known_text": "ते कसं चाललंय याबद्दल मला खात्री नाही",
+    "target_text": "I'm not sure about how it's going",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0122L04U05",
+   "expect": {
+    "known_text": "मला वाटतं की मला खात्री नाही ते कसं चाललंय",
+    "target_text": "I think that I'm not sure about how it's going"
+   },
+   "set": {
+    "known_text": "ते कसं चाललंय याबद्दल मला तुम्हाला सांगायचं आहे",
+    "target_text": "I want to tell you about how it's going",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L01B02",
+   "expect": {
+    "known_text": "मला वाटतं ती इंग्रजीत",
+    "target_text": "I think that's in English"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते छान आहे",
+    "target_text": "I think that's great",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L01B04",
+   "expect": {
+    "known_text": "मला वाटतं ती चांगली गोष्ट आहे इंग्रजीत",
+    "target_text": "I think that's a good thing in English"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते शक्य आहे",
+    "target_text": "I think that's possible",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L01U04",
+   "expect": {
+    "known_text": "कारण मला वाटतं ती चांगली गोष्ट आहे",
+    "target_text": "because I think that's a good thing"
+   },
+   "set": {
+    "known_text": "मला वाटतं तो सर्वात चांगला पर्याय आहे",
+    "target_text": "I think that's the best choice",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L01U05",
+   "expect": {
+    "known_text": "मला वाटतं ती आत्ता चांगली कल्पना आहे",
+    "target_text": "I think that's a good idea now"
+   },
+   "set": {
+    "known_text": "मला वाटतं ती त्याची बॅग आहे",
+    "target_text": "I think that's his bag",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L02B02",
+   "expect": {
+    "known_text": "मला वाटतं ती चांगली कल्पना रात्री",
+    "target_text": "I think that's a good idea tonight"
+   },
+   "set": {
+    "known_text": "आजसाठी चांगली कल्पना",
+    "target_text": "a good idea for today",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L02B03",
+   "expect": {
+    "known_text": "चांगली कल्पना इंग्रजीत",
+    "target_text": "a good idea in English"
+   },
+   "set": {
+    "known_text": "चांगली कल्पना नाही",
+    "target_text": "not a good idea",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L02B04",
+   "expect": {
+    "known_text": "चांगली कल्पना पुन्हा",
+    "target_text": "a good idea again"
+   },
+   "set": {
+    "known_text": "उद्यासाठी चांगली कल्पना",
+    "target_text": "a good idea for tomorrow",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L02U02",
+   "expect": {
+    "known_text": "मला वाटतं ती चांगली कल्पना आहे इंग्रजीत",
+    "target_text": "I think that's a good idea in English"
+   },
+   "set": {
+    "known_text": "ती चांगली कल्पना होती",
+    "target_text": "that was a good idea",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L02U03",
+   "expect": {
+    "known_text": "मला वाटतं ती चांगली कल्पना आहे पुन्हा",
+    "target_text": "I think that's a good idea again"
+   },
+   "set": {
+    "known_text": "मला एक चांगली कल्पना सुचली आहे",
+    "target_text": "I've got a good idea",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0123L02U04",
+   "expect": {
+    "known_text": "कारण मला वाटतं ती चांगली कल्पना आहे",
+    "target_text": "because I think that's a good idea"
+   },
+   "set": {
+    "known_text": "शक्य तितक्या वेळा सराव करणं ही चांगली कल्पना आहे",
+    "target_text": "it's a good idea to practise as often as possible",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

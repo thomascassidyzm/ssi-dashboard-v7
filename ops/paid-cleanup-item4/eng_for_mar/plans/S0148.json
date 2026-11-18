@@ -1,0 +1,73 @@
+{
+ "seed": 148,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मला पटकन उत्तर देता आलं नाही तेव्हा",
+     "when I couldn't answer quickly"
+    ],
+    "B03": [
+     "मला काल उत्तर देता आलं नाही तेव्हा",
+     "when I couldn't answer yesterday"
+    ],
+    "B04": [
+     "पण मला उत्तर देता आलं नाही तेव्हा",
+     "but when I couldn't answer"
+    ],
+    "U01": [
+     "मला उत्तर देता आलं नाही तेव्हा मला घाबरल्यासारखं वाटलं",
+     "I felt nervous when I couldn't answer"
+    ],
+    "U02": [
+     "मला उत्तर देता आलं नाही तेव्हा ती खूप दयाळू होती",
+     "she was very kind when I couldn't answer"
+    ],
+    "U03": [
+     "मला उत्तर देता आलं नाही तेव्हा सगळे गप्प होते",
+     "everyone was quiet when I couldn't answer"
+    ],
+    "U04": [
+     "मला उत्तर देता आलं नाही तेव्हा मला आश्चर्य वाटलं",
+     "I was surprised when I couldn't answer"
+    ],
+    "U05": [
+     "मला उत्तर देता आलं नाही तेव्हा मला खूश वाटलं नाही",
+     "I didn't feel happy when I couldn't answer"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "काल तो फारसा संयमी नव्हता",
+     "he wasn't very patient yesterday"
+    ],
+    "U02": [
+     "तो माझ्याशी फारसा संयमी नव्हता",
+     "he wasn't very patient with me"
+    ],
+    "U03": [
+     "मागच्या वेळी तो फारसा संयमी नव्हता",
+     "he wasn't very patient last time"
+    ],
+    "U04": [
+     "मला वाटतं की तो फारसा संयमी नव्हता",
+     "I think that he wasn't very patient"
+    ],
+    "U05": [
+     "तो फारसा संयमी नव्हता, पण तो दयाळू होता",
+     "he wasn't very patient, but he was kind"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "पण तो फारसा संयमी नव्हता",
+     "but he wasn't very patient"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

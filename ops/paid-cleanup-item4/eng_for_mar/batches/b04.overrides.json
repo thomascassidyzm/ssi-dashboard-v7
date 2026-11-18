@@ -1,0 +1,666 @@
+[
+ {
+  "seed_number": 64,
+  "phrases": {
+   "64:1": [
+    {
+     "known_text": "शिकणं",
+     "target_text": "learning",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "इंग्रजी शिकणं",
+     "target_text": "learning English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माझ्या मित्रांबरोबर इंग्रजी शिकणं",
+     "target_text": "learning English with my friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पटकन इंग्रजी शिकणं",
+     "target_text": "learning English quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की इंग्रजी शिकणं उपयोगी आहे",
+     "target_text": "I think that learning English is useful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माझ्या मित्रांबरोबर इंग्रजी शिकायला आवडतं",
+     "target_text": "I enjoy learning English with my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी शिकण्याची मी वाट पाहतोय",
+     "target_text": "I'm looking forward to learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिने गेल्या महिन्यात इंग्रजी शिकायला सुरुवात केली",
+     "target_text": "she started learning English last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही इंग्रजी का शिकताय?",
+     "target_text": "why are you learning English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शक्य तितक्या लवकर इंग्रजी शिकणं",
+     "target_text": "learning English as quickly as possible",
+     "phrase_role": "build"
+    }
+   ],
+   "64:2": [
+    {
+     "known_text": "नाही जमत",
+     "target_text": "isn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सोपं",
+     "target_text": "easy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सोपं नाही",
+     "target_text": "isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते सोपं नाही",
+     "target_text": "it isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आठवायला सोपं नाही",
+     "target_text": "isn't easy to remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इंग्रजी शिकणं सोपं नाही",
+     "target_text": "learning English isn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सगळं समजणं सोपं नाही",
+     "target_text": "it isn't easy to understand everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सहा वाजता उठणं सोपं नाही",
+     "target_text": "waking up at six o'clock isn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याच वेळी बोलणं सोपं नाही",
+     "target_text": "it isn't easy to speak at the same time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी बोलणं सोपं नाही, पण मी प्रयत्न करतोय",
+     "target_text": "speaking English isn't easy, but I'm trying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "समजायला सोपं नाही",
+     "target_text": "isn't easy to understand",
+     "phrase_role": "build"
+    }
+   ],
+   "64:3": [
+    {
+     "known_text": "ते",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मजेशीर",
+     "target_text": "fun",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मजेशीर आहे",
+     "target_text": "it is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "शिकणं मजेशीर आहे",
+     "target_text": "it is fun to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माझ्या मित्रांबरोबर मजेशीर आहे",
+     "target_text": "it is fun with my friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "इंग्रजी शिकणं सोपं नाही पण ते मजेशीर आहे",
+     "target_text": "learning English isn't easy but it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की इंग्रजी बोलणं मजेशीर आहे",
+     "target_text": "I think that it is fun to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेगवेगळ्या गोष्टी करणं मजेशीर आहे",
+     "target_text": "it is fun to do different things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते सोपं नाही, पण ते मजेशीर आहे",
+     "target_text": "it isn't easy, but it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्या मित्रांबरोबर रंजक गोष्टी करणं मजेशीर आहे",
+     "target_text": "it is fun to do interesting things with my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण ते मजेशीर आहे",
+     "target_text": "but it is fun",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 65,
+  "phrases": {
+   "65:1": [
+    {
+     "known_text": "महत्त्वाचं",
+     "target_text": "important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काहीतरी महत्त्वाचं",
+     "target_text": "something important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खूप महत्त्वाचं",
+     "target_text": "very important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे महत्त्वाचं आहे",
+     "target_text": "it's important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शक्य तितक्या वेळा सराव करणं महत्त्वाचं आहे",
+     "target_text": "it's important to practise as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुम्हाला काहीतरी महत्त्वाचं विचारायचं होतं",
+     "target_text": "I wanted to ask you something important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उत्तर काय आहे ते समजणं महत्त्वाचं आहे",
+     "target_text": "it's important to understand what the answer is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की चुका करणं महत्त्वाचं आहे",
+     "target_text": "I think that it's important to make mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आठवणं महत्त्वाचं",
+     "target_text": "important to remember",
+     "phrase_role": "build"
+    }
+   ],
+   "65:2": [
+    {
+     "known_text": "घेणे",
+     "target_text": "take",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वेळ घ्यायला",
+     "target_text": "to take time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वाचण्यासाठी वेळ घ्यायला",
+     "target_text": "to take time to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उत्तर देण्यासाठी वेळ घ्यायला",
+     "target_text": "to take time to answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वेळ घ्यायला महत्त्वाचं आहे",
+     "target_text": "it's important to take time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते समजायला मला वेळ घ्यायची गरज आहे",
+     "target_text": "I need to take time to understand it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला गोष्ट वाचायला वेळ घ्यायचा आहे",
+     "target_text": "I want to take time to read the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सराव करायला वेळ घेणं महत्त्वाचं आहे",
+     "target_text": "it's important to take time to practise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला उत्तर द्यायला वेळ घ्यायची गरज नाही",
+     "target_text": "you don't need to take time to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेळ घ्यायची गरज आहे",
+     "target_text": "need to take time",
+     "phrase_role": "build"
+    }
+   ],
+   "65:3": [
+    {
+     "known_text": "परीक्षा",
+     "target_text": "test",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "स्वतः",
+     "target_text": "yourself",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घ्यायला",
+     "target_text": "to test yourself",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घेणं महत्त्वाचं",
+     "target_text": "important to test yourself",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घ्यायला वेळ देणं",
+     "target_text": "to take time to test yourself",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घ्यायला वेळ देणं महत्त्वाचं आहे",
+     "target_text": "it's important to take time to test yourself",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घेणं उपयोगी आहे",
+     "target_text": "it's useful to test yourself",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घेणं ही चांगली गोष्ट आहे",
+     "target_text": "it's a good thing to test yourself",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घेणं महत्त्वाचं आहे",
+     "target_text": "it's important to test yourself",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला शक्य तितक्या वेळा स्वतःची परीक्षा घ्यायची गरज आहे",
+     "target_text": "you need to test yourself as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "स्वतःची परीक्षा घ्यायची गरज",
+     "target_text": "need to test yourself",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 66,
+  "phrases": {
+   "66:1": [
+    {
+     "known_text": "अवघड",
+     "target_text": "difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खूप अवघड",
+     "target_text": "very difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "समजायला अवघड",
+     "target_text": "difficult to understand",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे अवघड नाही",
+     "target_text": "it's not difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हे महत्त्वाचं आहे पण अवघड आहे",
+     "target_text": "it's important but difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सहा वाजता उठणं अवघड आहे",
+     "target_text": "waking up at six o'clock is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "समजणं अवघड नाही",
+     "target_text": "it's not difficult to understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी शिकणं अवघड नाही",
+     "target_text": "learning English isn't difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आठवायला अवघड",
+     "target_text": "difficult to remember",
+     "phrase_role": "build"
+    }
+   ],
+   "66:2": [
+    {
+     "known_text": "शोधा",
+     "target_text": "find",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "शोधायला",
+     "target_text": "to find",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काहीतरी शोधायला",
+     "target_text": "to find something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याचं नाव शोधायला",
+     "target_text": "to find his name",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उत्तर शोधणं अवघड नाही",
+     "target_text": "it's not difficult to find the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काहीतरी शोधायची गरज आहे",
+     "target_text": "I need to find something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला उत्तर शोधायचं आहे",
+     "target_text": "I want to find the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उत्तर शोधणं महत्त्वाचं आहे",
+     "target_text": "it's important to find the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला तिची बॅग शोधायची होती",
+     "target_text": "she wanted to find her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उत्तर शोधायला",
+     "target_text": "to find the answer",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 67,
+  "phrases": {
+   "67:1": [
+    {
+     "known_text": "थांब",
+     "target_text": "stop",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "थांबायला",
+     "target_text": "to stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता थांबायला",
+     "target_text": "to stop now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थांबायचं आहे",
+     "target_text": "want to stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला का थांबायचं आहे?",
+     "target_text": "why do you want to stop?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "थांबायचं आहे का?",
+     "target_text": "do you want to stop?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आत्ता थांबायचं नाही",
+     "target_text": "I don't want to stop now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला थांबायचं आहे",
+     "target_text": "I want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला सहा वाजता थांबायचं आहे",
+     "target_text": "she wants to stop at six o'clock",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इथे थांबायला",
+     "target_text": "to stop here",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 69,
+  "phrases": {
+   "69:1": [
+    {
+     "known_text": "बघणे",
+     "target_text": "look",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सांभाळायला",
+     "target_text": "to look after",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तिला सांभाळायला",
+     "target_text": "to look after her",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सगळं सांभाळायला",
+     "target_text": "to look after everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याला तिला सांभाळायचं नव्हतं",
+     "target_text": "he didn't want to look after her",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सगळं सांभाळायचं नाही",
+     "target_text": "I don't want to look after everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला ते सांभाळायचं आहे का?",
+     "target_text": "do you want to look after it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज ते सांभाळायचं नव्हतं",
+     "target_text": "I didn't want to look after it today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सगळं सांभाळणं सोपं नाही",
+     "target_text": "it isn't easy to look after everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सांभाळायचं नव्हतं",
+     "target_text": "didn't want to look after",
+     "phrase_role": "build"
+    }
+   ],
+   "69:2": [
+    {
+     "known_text": "लहान",
+     "target_text": "young",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कुत्रा",
+     "target_text": "dog",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "लहान कुत्रा",
+     "target_text": "young dog",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "एक लहान कुत्रा",
+     "target_text": "a young dog",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तिचा लहान कुत्रा",
+     "target_text": "her young dog",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला लहान कुत्र्याला सांभाळायचं आहे",
+     "target_text": "I want to look after the young dog",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो लहान कुत्रा मजेशीर आहे",
+     "target_text": "the young dog is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला लहान कुत्र्याला सांभाळायला आवडतं",
+     "target_text": "I enjoy looking after the young dog",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला लहान कुत्र्याला सांभाळायचं नव्हतं",
+     "target_text": "he didn't want to look after the young dog",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही लहान कुत्र्याला शोधताय का?",
+     "target_text": "are you looking for the young dog?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "लहान कुत्र्याला सांभाळायला",
+     "target_text": "to look after the young dog",
+     "phrase_role": "build"
+    }
+   ],
+   "69:3": [
+    {
+     "known_text": "सर्व",
+     "target_text": "all",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दुपार",
+     "target_text": "afternoon",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "दुपारभर",
+     "target_text": "all afternoon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "दुपारभर माझ्या मित्रांबरोबर",
+     "target_text": "all afternoon with my friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "दुपारभर वाचायला",
+     "target_text": "to read all afternoon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याला दुपारभर त्या लहान कुत्र्याला सांभाळायचं नव्हतं",
+     "target_text": "he didn't want to look after the young dog all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला दुपारभर वाचायचं होतं",
+     "target_text": "I wanted to read all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी दुपारभर इंग्रजी शिकतोय",
+     "target_text": "I've been learning English all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला दुपारभर ते सांभाळायचं नव्हतं",
+     "target_text": "he didn't want to look after it all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला दुपारभर गप्प राहायचं नाही",
+     "target_text": "I don't want to be quiet all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "दुपारभर सराव करायला",
+     "target_text": "to practise all afternoon",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

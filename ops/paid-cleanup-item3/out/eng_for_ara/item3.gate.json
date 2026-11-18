@@ -1,0 +1,27 @@
+{
+ "course": "eng_for_ara",
+ "plan": "item3.tsv",
+ "at": "2026-11-18T13:22:14.668Z",
+ "rows": [
+  {
+   "id": "S0048L01B02",
+   "role": "build",
+   "target": "I don't care if I need too much time",
+   "old": "لا يهمني إذا كنت بحاجة إلى وقت طويل",
+   "new": "لا يهمني إذا كنت بحاجة إلى وقت أكثر من اللازم",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "48": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  }
+ }
+}

@@ -1,0 +1,455 @@
+[
+ {
+  "seed_number": 41,
+  "phrases": {
+   "41:1": [
+    {
+     "known_text": "ठीक वाटणे",
+     "target_text": "feel okay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ठीक वाटणे आत्ता",
+     "target_text": "feel okay now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला ठीक वाटतंय",
+     "target_text": "I feel okay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ठीक वाटणे आज सकाळी",
+     "target_text": "feel okay this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला या क्षणी ठीक वाटतंय",
+     "target_text": "I feel okay at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज सकाळी ठीक वाटतंय",
+     "target_text": "you feel okay this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला रात्री ठीक वाटतंय",
+     "target_text": "you feel okay tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आत्ता ठीक वाटतंय",
+     "target_text": "I feel okay now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ठीक वाटतंय पण थोडा थकलोय",
+     "target_text": "I feel okay but I'm a little tired",
+     "phrase_role": "use"
+    }
+   ],
+   "41:2": [
+    {
+     "known_text": "वाटायला लागलंय",
+     "target_text": "starting to feel tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वाटायला लागलंय आत्ता",
+     "target_text": "starting to feel tired now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वाटायला लागलंय रात्री",
+     "target_text": "starting to feel tired tonight",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वाटायला लागलंय गेल्या महिन्यात",
+     "target_text": "starting to feel tired last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला ठीक वाटतंय, पण मला थकल्यासारखं वाटायला लागलंय",
+     "target_text": "I feel okay, but I'm starting to feel tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण मला आज सकाळी थकल्यासारखं वाटायला लागलंय",
+     "target_text": "but I'm starting to feel tired this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण मला रात्री थकल्यासारखं वाटायला लागलंय",
+     "target_text": "but I'm starting to feel tired tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण मला आत्ता थकल्यासारखं वाटायला लागलंय",
+     "target_text": "but I'm starting to feel tired now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण जायच्या आधी मला थकल्यासारखं वाटायला लागलंय",
+     "target_text": "but I'm starting to feel tired before I have to go",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 42,
+  "phrases": {
+   "42:1": [
+    {
+     "known_text": "बरं",
+     "target_text": "better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडं बरं",
+     "target_text": "a little better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज बरं",
+     "target_text": "better today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बरं आत्ता",
+     "target_text": "better now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आत्ता थोडं बरं वाटतंय",
+     "target_text": "I feel a little better now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज सकाळी बरं वाटतंय",
+     "target_text": "I feel better this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज बरं वाटतंय का?",
+     "target_text": "do you feel better today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बरं वाटतंय, पण मी थोडा थकलोय",
+     "target_text": "I feel better, but I'm a little tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याशी बोलल्यानंतर मला बरं वाटतंय",
+     "target_text": "I feel better after speaking with you",
+     "phrase_role": "use"
+    }
+   ],
+   "42:2": [
+    {
+     "known_text": "कालच्या रात्रीपेक्षा",
+     "target_text": "than last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कालच्या रात्रीपेक्षा बरं",
+     "target_text": "better than last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कालच्या रात्रीपेक्षा थोडं बरं",
+     "target_text": "a little better than last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला कालच्या रात्रीपेक्षा बरं वाटतंय",
+     "target_text": "I feel better than last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला कालच्या रात्रीपेक्षा थोडं बरं वाटतंय",
+     "target_text": "I feel a little better than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला कालच्या रात्रीपेक्षा बरं वाटतंय का?",
+     "target_text": "do you feel better than last night?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कालच्या रात्रीपेक्षा आज सकाळी बरं वाटतंय",
+     "target_text": "I feel better this morning than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला कालच्या रात्रीपेक्षा बरं वाटायला लागलं होतं",
+     "target_text": "she was starting to feel better than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी थोडा थकलोय, पण मला कालच्या रात्रीपेक्षा बरं वाटतंय",
+     "target_text": "I'm a little tired, but I feel better than last night",
+     "phrase_role": "use"
+    }
+   ],
+   "42:3": [
+    {
+     "known_text": "लागलं होतं",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वाटायला",
+     "target_text": "starting to feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "वाटायला लागलं होतं",
+     "target_text": "was starting to feel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वाटायला लागलं होतं बरं",
+     "target_text": "was starting to feel better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कालच्या रात्रीपेक्षा बरं वाटायला लागलं होतं",
+     "target_text": "was starting to feel better than last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडं बरं वाटायला लागलं होतं",
+     "target_text": "was starting to feel a little better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला कालच्या रात्रीपेक्षा बरं वाटायला लागलं होतं",
+     "target_text": "I was starting to feel better than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज सकाळी बरं वाटायला लागलं होतं",
+     "target_text": "I was starting to feel better this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला आज सकाळी बरं वाटायला लागलं होतं",
+     "target_text": "she was starting to feel better this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काल थोडं बरं वाटायला लागलं होतं",
+     "target_text": "I was starting to feel a little better yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काल रात्री थकल्यासारखं वाटायला लागलं होतं",
+     "target_text": "I was starting to feel tired last night",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 43,
+  "phrases": {
+   "43:1": [
+    {
+     "known_text": "विचार करत नव्हतो",
+     "target_text": "wasn't thinking about",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याबद्दल विचार करत नव्हतो",
+     "target_text": "wasn't thinking about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी त्याबद्दल विचार करत नव्हतो",
+     "target_text": "I wasn't thinking about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गोष्टीबद्दल विचार करत नव्हतो",
+     "target_text": "wasn't thinking about the story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कसं उत्तर द्यायचं याचा मी विचार करत नव्हतो",
+     "target_text": "I wasn't thinking about how to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजीत कसं बोलायचं याचा मी विचार करत नव्हतो",
+     "target_text": "I wasn't thinking about how to speak in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "काय होणार आहे याचा मी विचार करत नव्हतो",
+     "target_text": "I wasn't thinking about what's going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गोष्टीबद्दल मी विचार करत नव्हतो",
+     "target_text": "I wasn't thinking about the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "काल रात्री मी त्याबद्दल विचार करत नव्हतो",
+     "target_text": "I wasn't thinking about it last night",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 44,
+  "phrases": {
+   "44:1": [
+    {
+     "known_text": "सुधारणे",
+     "target_text": "improve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पटकन सुधारणे",
+     "target_text": "improve quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडं सुधारणे",
+     "target_text": "improve a little",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "जमेल तितक्या लवकर सुधारणे",
+     "target_text": "improve as soon as you can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला सुधारायचं होतं",
+     "target_text": "I wanted to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला पटकन सुधारायचं होतं",
+     "target_text": "you wanted to improve quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला सुधारायचं आहे",
+     "target_text": "she wants to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला थोडं सुधारायचं होतं",
+     "target_text": "I wanted to improve a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला जमेल तितक्या लवकर सुधारायचं आहे",
+     "target_text": "I want to improve as soon as I can",
+     "phrase_role": "use"
+    }
+   ],
+   "44:2": [
+    {
+     "known_text": "गरज आहे",
+     "target_text": "need to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "गरज आहे सुधारणे",
+     "target_text": "need to improve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "वाचण्याची गरज आहे",
+     "target_text": "need to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सराव करण्याची गरज आहे",
+     "target_text": "need to practise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला सुधारण्याची गरज आहे",
+     "target_text": "I need to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज सकाळी काहीतरी वाचण्याची गरज आहे",
+     "target_text": "I need to read something this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला जास्त सराव करण्याची गरज आहे",
+     "target_text": "I need to practise more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला गोष्ट वाचण्याची गरज आहे",
+     "target_text": "I need to read the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काहीतरी काळजीपूर्वक वाचण्याची गरज आहे",
+     "target_text": "you need to read something carefully",
+     "phrase_role": "use"
+    }
+   ],
+   "44:3": [
+    {
+     "known_text": "किंवा जर",
+     "target_text": "or if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "किंवा मला वाचायची गरज आहे का",
+     "target_text": "or if I need to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "किंवा तुम्हाला सुधारायची गरज आहे का",
+     "target_text": "or if you need to improve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "किंवा मला सराव करायची गरज आहे का",
+     "target_text": "or if I need to practise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "किंवा मला सुधारायची गरज आहे",
+     "target_text": "or if I need to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही की मला सराव करायची गरज आहे, किंवा मला सुधारायची गरज आहे का",
+     "target_text": "I'm not sure if I need to practise or if I need to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही की मला जास्त बोलायची गरज आहे, किंवा जास्त वाचायची गरज आहे का",
+     "target_text": "I'm not sure if I need to speak more, or if I need to read more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सुधारायची गरज आहे, किंवा जास्त सराव करायची गरज आहे का, हे मला शोधायचं आहे",
+     "target_text": "I want to find out if I need to improve or if I need to practise more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला सुधारायची गरज आहे, किंवा जास्त सराव करायची गरज आहे का, हे मला विचारायचं होतं",
+     "target_text": "I wanted to ask if you need to improve, or if you need to practise more",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

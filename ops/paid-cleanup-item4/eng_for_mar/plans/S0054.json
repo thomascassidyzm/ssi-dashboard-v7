@@ -1,0 +1,61 @@
+{
+ "seed": 54,
+ "legos": {
+  "L01": {
+   "update": {
+    "U02": [
+     "तिला मला काहीतरी द्यायचं होतं",
+     "she wanted to give me something"
+    ],
+    "U03": [
+     "त्याला तुम्हाला काहीतरी द्यायचं होतं",
+     "he wanted to give you something"
+    ],
+    "U04": [
+     "मला तिला एक पत्र द्यायचं होतं",
+     "I wanted to give her a letter"
+    ],
+    "U05": [
+     "मला तुम्हाला त्याचं पत्र द्यायचं होतं",
+     "I wanted to give you his letter"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्हाला काहीतरी द्यायला",
+     "to give you something"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "अजून वेळ",
+     "more time"
+    ],
+    "B03": [
+     "बोलायला वेळ",
+     "time to speak"
+    ],
+    "U02": [
+     "मला अजून वेळ हवा आहे",
+     "I need more time"
+    ],
+    "U03": [
+     "मला वेळ नाही",
+     "I don't have time"
+    ],
+    "U04": [
+     "मला खूप वेळ घ्यायला आवडत नाही",
+     "I don't like taking too much time"
+    ],
+    "U05": [
+     "तुमच्याकडे माझ्याशी बोलायला वेळ आहे का?",
+     "do you have time to speak with me?"
+    ]
+   }
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

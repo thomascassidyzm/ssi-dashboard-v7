@@ -1,0 +1,179 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0572L02",
+  "set": {
+   "is_new": false
+  },
+  "expect": {
+   "is_new": true,
+   "target_text": "上次"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0572L02",
+  "slot": "presentation",
+  "audio_id": null
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "zho_for_eng:S0117L01U09",
+   "status": "draft",
+   "version": 554,
+   "metadata": {
+    "score": 8,
+    "format": "build_use",
+    "scored_at": "2026-06-08T23:40:15.589Z"
+   },
+   "position": 16,
+   "register": null,
+   "introduce": true,
+   "created_at": "2026-06-08T23:40:15.626906+00:00",
+   "difficulty": null,
+   "frame_mask": null,
+   "known_text": "what happened last time?",
+   "lego_count": 4,
+   "lego_index": 1,
+   "qa_checked": null,
+   "updated_at": "2026-11-04T14:28:00.200489+00:00",
+   "word_count": 8,
+   "course_code": "zho_for_eng",
+   "phrase_role": "use",
+   "seed_number": 117,
+   "target_text": "上次发生了什么？",
+   "decomposition": null,
+   "lego_position": "start",
+   "release_batch": null,
+   "display_tiling": null,
+   "known_audio_id": "7427cda4-3d33-4b88-8d4c-71b5eaeed11a",
+   "target1_audio_id": "c5b95be0-154c-4d50-82f3-650c8e3745cd",
+   "target2_audio_id": "dc183991-a72e-4e76-a218-662909099f14",
+   "target_phrase_id": null,
+   "target_text_roman": "shàng cì fāshēng le shénme?",
+   "connected_lego_ids": [],
+   "last_edit_event_id": "8b5255c7-6f1c-4ad7-b532-e456664086c5",
+   "known_gloss_segments": null,
+   "presentation_audio_id": null,
+   "target_syllable_count": null,
+   "display_tiling_version": null,
+   "decomposition_course_version": null
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "zho_for_eng:S0572L02U04",
+  "expect": {
+   "known_text": "what happened last time?",
+   "target_text": "上次发生了什么？"
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "zho_for_eng:S0117L01U10",
+   "status": "draft",
+   "version": 556,
+   "metadata": {
+    "score": 8,
+    "format": "build_use",
+    "scored_at": "2026-06-08T23:40:15.589Z"
+   },
+   "position": 17,
+   "register": null,
+   "introduce": true,
+   "created_at": "2026-06-08T23:40:15.626906+00:00",
+   "difficulty": null,
+   "frame_mask": null,
+   "known_text": "last time was great",
+   "lego_count": 4,
+   "lego_index": 1,
+   "qa_checked": null,
+   "updated_at": "2026-11-04T14:28:00.200489+00:00",
+   "word_count": 5,
+   "course_code": "zho_for_eng",
+   "phrase_role": "use",
+   "seed_number": 117,
+   "target_text": "上次很好",
+   "decomposition": null,
+   "lego_position": "start",
+   "release_batch": null,
+   "display_tiling": null,
+   "known_audio_id": "b246722f-427c-4e99-b6ac-2e0e7c9cc703",
+   "target1_audio_id": "486b7a13-8f4e-4edf-9d4e-1ea8df0e435e",
+   "target2_audio_id": "2a7f6b96-34b2-472d-9993-9f057d399c63",
+   "target_phrase_id": null,
+   "target_text_roman": "shàng cì hěn hǎo",
+   "connected_lego_ids": [],
+   "last_edit_event_id": "8b5255c7-6f1c-4ad7-b532-e456664086c5",
+   "known_gloss_segments": null,
+   "presentation_audio_id": null,
+   "target_syllable_count": null,
+   "display_tiling_version": null,
+   "decomposition_course_version": null
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "zho_for_eng:S0572L02U05",
+  "expect": {
+   "known_text": "last time was great",
+   "target_text": "上次很好"
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "zho_for_eng:S0367L01U07",
+   "status": "draft",
+   "version": 559,
+   "metadata": {
+    "score": 7,
+    "format": "build_use",
+    "scored_at": "2026-06-08T23:40:15.589Z"
+   },
+   "position": 14,
+   "register": null,
+   "introduce": true,
+   "created_at": "2026-06-08T23:40:15.626906+00:00",
+   "difficulty": null,
+   "frame_mask": null,
+   "known_text": "nobody came last time",
+   "lego_count": 4,
+   "lego_index": 1,
+   "qa_checked": null,
+   "updated_at": "2026-11-04T11:50:36.09293+00:00",
+   "word_count": 6,
+   "course_code": "zho_for_eng",
+   "phrase_role": "use",
+   "seed_number": 367,
+   "target_text": "上次没有人来",
+   "decomposition": null,
+   "lego_position": "middle",
+   "release_batch": null,
+   "display_tiling": null,
+   "known_audio_id": "232cf502-0ccf-4f3c-b114-ed9f16c0d324",
+   "target1_audio_id": "98bdb7ae-437d-4221-916b-670ed0eb1ac7",
+   "target2_audio_id": "476d8899-368c-491b-9674-1c3c7c3634db",
+   "target_phrase_id": null,
+   "target_text_roman": "shàng cì méi yǒu rén lái",
+   "connected_lego_ids": [],
+   "last_edit_event_id": "7f8c99f0-9e83-4a1d-9ae5-5ef64a30be94",
+   "known_gloss_segments": null,
+   "presentation_audio_id": null,
+   "target_syllable_count": null,
+   "display_tiling_version": null,
+   "decomposition_course_version": null
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "zho_for_eng:S0572L02U03",
+  "expect": {
+   "known_text": "nobody came last time",
+   "target_text": "上次没有人来"
+  }
+ }
+]

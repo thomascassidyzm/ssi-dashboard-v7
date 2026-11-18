@@ -1,0 +1,902 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0158L02B04",
+    "seed_number": 158,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "चला माझ्या मित्रांबद्दल बोलूया",
+    "target_text": "let's talk about my friends",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0159L02B05",
+    "seed_number": 159,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "मी जे करतोय ते हे नाही",
+    "target_text": "that isn't what I'm doing",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0160L02B05",
+    "seed_number": 160,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "त्याचं नाव कसं म्हणतात?",
+    "target_text": "how do you say his name?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0160L02U05",
+    "seed_number": 160,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "तुमचं नाव कसं म्हणतात?",
+    "target_text": "how do you say your name?",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01B02",
+   "expect": {
+    "known_text": "पुढच्या महिन्यात इंग्रजीत",
+    "target_text": "next month in English"
+   },
+   "set": {
+    "known_text": "पुढच्या महिन्यात सुरुवात करणे",
+    "target_text": "to start next month",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01B03",
+   "expect": {
+    "known_text": "पुढच्या महिन्यात आधीच",
+    "target_text": "next month already"
+   },
+   "set": {
+    "known_text": "पुढच्या महिन्यात घरी जाणे",
+    "target_text": "to go home next month",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01B04",
+   "expect": {
+    "known_text": "पुढच्या महिन्यात रात्री",
+    "target_text": "next month tonight"
+   },
+   "set": {
+    "known_text": "पुढच्या आठवड्यात किंवा पुढच्या महिन्यात",
+    "target_text": "next week or next month",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01U01",
+   "expect": {
+    "known_text": "मला खात्री नाही पुढच्या महिन्यात",
+    "target_text": "I'm not sure next month"
+   },
+   "set": {
+    "known_text": "आम्ही पुढच्या महिन्यात भेटणार आहोत",
+    "target_text": "we're going to meet next month",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01U02",
+   "expect": {
+    "known_text": "मला माहित नाही पुढच्या महिन्यात",
+    "target_text": "I don't know next month"
+   },
+   "set": {
+    "known_text": "ती पुढच्या महिन्यात परत येणार आहे",
+    "target_text": "she's going to come back next month",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01U03",
+   "expect": {
+    "known_text": "मला वाटतं की मला खात्री नाही पुढच्या महिन्यात",
+    "target_text": "I think that I'm not sure next month"
+   },
+   "set": {
+    "known_text": "मला पुढच्या महिन्यात जास्त शिकायचं आहे",
+    "target_text": "I want to learn more next month",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01U04",
+   "expect": {
+    "known_text": "कारण मला माहित नाही पुढच्या महिन्यात",
+    "target_text": "because I don't know next month"
+   },
+   "set": {
+    "known_text": "आपण पुढच्या महिन्यात त्याबद्दल बोलू शकतो का?",
+    "target_text": "can we talk about it next month?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L01U05",
+   "expect": {
+    "known_text": "मला आठवत नाही पुढच्या महिन्यात",
+    "target_text": "I can't remember next month"
+   },
+   "set": {
+    "known_text": "मी पुढच्या महिन्यात तयार असेन",
+    "target_text": "I'll be ready next month",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02B02",
+   "expect": {
+    "known_text": "तिथे असणं पुढच्या महिन्यात",
+    "target_text": "to be there next month"
+   },
+   "set": {
+    "known_text": "पुढच्या महिन्यात तिथे असणं",
+    "target_text": "to be there next month",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02B03",
+   "expect": {
+    "known_text": "तिथे असणं आधीच",
+    "target_text": "to be there already"
+   },
+   "set": {
+    "known_text": "शनिवारी रात्री तिथे असणं",
+    "target_text": "to be there on Saturday night",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02B04",
+   "expect": {
+    "known_text": "तिथे असणं इंग्रजीत",
+    "target_text": "to be there in English"
+   },
+   "set": {
+    "known_text": "तिथे असायचं आहे",
+    "target_text": "want to be there",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02U01",
+   "expect": {
+    "known_text": "मला खात्री नाही तिथे असणं पुढच्या महिन्यात",
+    "target_text": "I'm not sure to be there next month"
+   },
+   "set": {
+    "known_text": "मला तुमच्याबरोबर तिथे असायचं आहे",
+    "target_text": "I want to be there with you",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02U02",
+   "expect": {
+    "known_text": "मला माहित नाही तिथे असणं पुढच्या महिन्यात",
+    "target_text": "I don't know to be there next month"
+   },
+   "set": {
+    "known_text": "तिथे असणं महत्त्वाचं आहे",
+    "target_text": "it's important to be there",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02U03",
+   "expect": {
+    "known_text": "मला वाटतं की मला खात्री नाही तिथे असणं",
+    "target_text": "I think that I'm not sure to be there"
+   },
+   "set": {
+    "known_text": "मला सहा वाजता तिथे असायला आवडेल",
+    "target_text": "I'd like to be there at six o'clock",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02U04",
+   "expect": {
+    "known_text": "कारण मला माहित नाही तिथे असणं",
+    "target_text": "because I don't know to be there"
+   },
+   "set": {
+    "known_text": "मी तिथे असणार आहे याची मला खात्री नाही",
+    "target_text": "I'm not sure I'm going to be there",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L02U05",
+   "expect": {
+    "known_text": "मला आठवत नाही तिथे असणं पुढच्या महिन्यात",
+    "target_text": "I can't remember to be there next month"
+   },
+   "set": {
+    "known_text": "तुम्हाला उद्या तिथे असायचं आहे का?",
+    "target_text": "do you want to be there tomorrow?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L03B02",
+   "expect": {
+    "known_text": "असता येणार नाही तिथे असणं",
+    "target_text": "I won't be able to be there"
+   },
+   "set": {
+    "known_text": "मला तिथे असता येणार नाही",
+    "target_text": "I won't be able to be there",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L03B03",
+   "expect": {
+    "known_text": "असता येणार नाही इंग्रजीत",
+    "target_text": "I won't be able in English"
+   },
+   "set": {
+    "known_text": "मला येता येणार नाही",
+    "target_text": "I won't be able to come",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L03B04",
+   "expect": {
+    "known_text": "कारण असता येणार नाही तिथे असणं",
+    "target_text": "because I won't be able to be there"
+   },
+   "set": {
+    "known_text": "मला वाट पाहता येणार नाही",
+    "target_text": "I won't be able to wait",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L03U04",
+   "expect": {
+    "known_text": "मला वाटतं की असता येणार नाही तिथे असणं",
+    "target_text": "I think that I won't be able to be there"
+   },
+   "set": {
+    "known_text": "मला आज संपवता येणार नाही",
+    "target_text": "I won't be able to finish today",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0157L03U05",
+   "expect": {
+    "known_text": "कारण असता येणार नाही तिथे असणं पुढच्या महिन्यात",
+    "target_text": "because I won't be able to be there next month"
+   },
+   "set": {
+    "known_text": "माफ करा, मला तुम्हाला मदत करता येणार नाही",
+    "target_text": "I'm sorry, I won't be able to help you",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01B02",
+   "expect": {
+    "known_text": "दुसऱ्या कशाबद्दल इंग्रजीत",
+    "target_text": "something else in English"
+   },
+   "set": {
+    "known_text": "दुसरं काहीतरी करणे",
+    "target_text": "to do something else",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01B03",
+   "expect": {
+    "known_text": "दुसऱ्या कशाबद्दल रात्री",
+    "target_text": "something else tonight"
+   },
+   "set": {
+    "known_text": "दुसऱ्या कशाबद्दल तरी",
+    "target_text": "about something else",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01B04",
+   "expect": {
+    "known_text": "दुसऱ्या कशाबद्दल आधीच",
+    "target_text": "something else already"
+   },
+   "set": {
+    "known_text": "दुसरं काहीतरी सांगणे",
+    "target_text": "to say something else",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01U01",
+   "expect": {
+    "known_text": "मी दुसऱ्या कशाबद्दल सांगण्याचा प्रयत्न करतोय",
+    "target_text": "I'm trying to say something else"
+   },
+   "set": {
+    "known_text": "मी दुसरं काहीतरी सांगण्याचा प्रयत्न करतोय",
+    "target_text": "I'm trying to say something else",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01U02",
+   "expect": {
+    "known_text": "मी दुसऱ्या कशाबद्दल इंग्रजीत सांगण्याचा प्रयत्न करतोय",
+    "target_text": "I'm trying to say something else in English"
+   },
+   "set": {
+    "known_text": "मला दुसरं काहीतरी करायला आवडेल",
+    "target_text": "I'd like to do something else",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01U03",
+   "expect": {
+    "known_text": "मी दुसऱ्या कशाबद्दल पुन्हा सांगण्याचा प्रयत्न करतोय",
+    "target_text": "I'm trying to say something else again"
+   },
+   "set": {
+    "known_text": "आपण दुसऱ्या कशाबद्दल तरी बोलू शकतो का?",
+    "target_text": "can we talk about something else?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01U04",
+   "expect": {
+    "known_text": "कारण मी दुसऱ्या कशाबद्दल सांगण्याचा प्रयत्न करतोय",
+    "target_text": "because I'm trying to say something else"
+   },
+   "set": {
+    "known_text": "मी दुसऱ्या कशाबद्दल तरी विचार करत होतो",
+    "target_text": "I was thinking about something else",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L01U05",
+   "expect": {
+    "known_text": "मला दुसऱ्या कशाबद्दल माहित नाही",
+    "target_text": "I don't know something else"
+   },
+   "set": {
+    "known_text": "तुम्हाला दुसरं काहीतरी हवं आहे का?",
+    "target_text": "do you want something else?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L02B02",
+   "expect": {
+    "known_text": "चला बोलूया दुसऱ्या कशाबद्दल आधीच",
+    "target_text": "let's talk about something else already"
+   },
+   "set": {
+    "known_text": "चला त्याबद्दल बोलूया",
+    "target_text": "let's talk about it",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L02B03",
+   "expect": {
+    "known_text": "चला दुसऱ्या कशाबद्दल इथे बोलूया",
+    "target_text": "let's talk about something else here"
+   },
+   "set": {
+    "known_text": "चला गोष्टीबद्दल बोलूया",
+    "target_text": "let's talk about the story",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L02U02",
+   "expect": {
+    "known_text": "चला दुसऱ्या कशाबद्दल इंग्रजीत बोलूया",
+    "target_text": "let's talk about something else in English"
+   },
+   "set": {
+    "known_text": "चला तुम्ही जे म्हणालात त्याबद्दल बोलूया",
+    "target_text": "let's talk about what you said",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L02U03",
+   "expect": {
+    "known_text": "चला दुसऱ्या कशाबद्दल पुन्हा बोलूया",
+    "target_text": "let's talk about something else again"
+   },
+   "set": {
+    "known_text": "चला उद्या त्याबद्दल बोलूया",
+    "target_text": "let's talk about it tomorrow",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L02U04",
+   "expect": {
+    "known_text": "चला दुसऱ्या कशाबद्दल आत्ता बोलूया",
+    "target_text": "let's talk about something else now"
+   },
+   "set": {
+    "known_text": "चला पुढच्या आठवड्याबद्दल बोलूया",
+    "target_text": "let's talk about next week",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0158L02U05",
+   "expect": {
+    "known_text": "चला दुसऱ्या कशाबद्दल रात्री बोलूया",
+    "target_text": "let's talk about something else tonight"
+   },
+   "set": {
+    "known_text": "चला तुमच्या कल्पनेबद्दल बोलूया",
+    "target_text": "let's talk about your idea",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01B02",
+   "expect": {
+    "known_text": "सांगायचंय दुसऱ्या कशाबद्दल",
+    "target_text": "trying to say something else"
+   },
+   "set": {
+    "known_text": "दुसरंच काहीतरी सांगायचंय",
+    "target_text": "trying to say something else",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01B03",
+   "expect": {
+    "known_text": "सांगायचंय इंग्रजीत",
+    "target_text": "trying to say in English"
+   },
+   "set": {
+    "known_text": "मला जे सांगायचंय ते",
+    "target_text": "what I'm trying to say",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01B04",
+   "expect": {
+    "known_text": "सांगायचंय आधीच",
+    "target_text": "trying to say already"
+   },
+   "set": {
+    "known_text": "ते सांगायचंय",
+    "target_text": "trying to say that",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01U01",
+   "expect": {
+    "known_text": "मी दुसऱ्या कशाबद्दल सांगायचं आहे",
+    "target_text": "I'm trying to say something else"
+   },
+   "set": {
+    "known_text": "मला दुसरंच काहीतरी सांगायचंय",
+    "target_text": "I'm trying to say something else",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01U02",
+   "expect": {
+    "known_text": "मी दुसऱ्या कशाबद्दल इंग्रजीत सांगायचं आहे",
+    "target_text": "I'm trying to say something else in English"
+   },
+   "set": {
+    "known_text": "मला काय सांगायचंय ते तुम्हाला समजतंय का?",
+    "target_text": "do you understand what I'm trying to say?",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01U03",
+   "expect": {
+    "known_text": "मी दुसऱ्या कशाबद्दल पुन्हा सांगायचं आहे",
+    "target_text": "I'm trying to say something else again"
+   },
+   "set": {
+    "known_text": "तुम्हाला काय सांगायचंय ते मला माहित आहे",
+    "target_text": "I know what you're trying to say",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01U04",
+   "expect": {
+    "known_text": "कारण मी दुसऱ्या कशाबद्दल सांगायचं आहे",
+    "target_text": "because I'm trying to say something else"
+   },
+   "set": {
+    "known_text": "तिला काहीतरी सांगायचंय",
+    "target_text": "she's trying to say something",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L01U05",
+   "expect": {
+    "known_text": "मी आधीच दुसऱ्या कशाबद्दल सांगायचं आहे",
+    "target_text": "I'm trying to say something else already"
+   },
+   "set": {
+    "known_text": "मला धन्यवाद सांगायचंय",
+    "target_text": "I'm trying to say thank you",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L02B02",
+   "expect": {
+    "known_text": "ते हे नाही सांगायचंय रात्री",
+    "target_text": "that isn't what I'm trying to say tonight"
+   },
+   "set": {
+    "known_text": "मी जे शोधतोय ते हे नाही",
+    "target_text": "that isn't what I'm looking for",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L02B04",
+   "expect": {
+    "known_text": "ते हे नाही जे सांगायचंय आत्ता",
+    "target_text": "that isn't what I'm trying to say now"
+   },
+   "set": {
+    "known_text": "मी जे म्हणतोय ते हे नाही",
+    "target_text": "that isn't what I'm saying",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L02U02",
+   "expect": {
+    "known_text": "ते हे नाही जे सांगायचंय इंग्रजीत",
+    "target_text": "that isn't what I'm trying to say in English"
+   },
+   "set": {
+    "known_text": "माफ करा, मला जे सांगायचंय ते हे नाही",
+    "target_text": "I'm sorry, that isn't what I'm trying to say",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L02U03",
+   "expect": {
+    "known_text": "ते हे नाही जे सांगायचंय पुन्हा",
+    "target_text": "that isn't what I'm trying to say again"
+   },
+   "set": {
+    "known_text": "नाही, मी जे विचार करतोय ते हे नाही",
+    "target_text": "no, that isn't what I'm thinking",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L02U04",
+   "expect": {
+    "known_text": "ते हे नाही जे सांगायचंय अजून",
+    "target_text": "that isn't what I'm trying to say yet"
+   },
+   "set": {
+    "known_text": "मला ज्याची अपेक्षा आहे ते हे नाही",
+    "target_text": "that isn't what I'm expecting",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0159L02U05",
+   "expect": {
+    "known_text": "ते हे नाही जे सांगायचंय आधीच",
+    "target_text": "that isn't what I'm trying to say already"
+   },
+   "set": {
+    "known_text": "मी जे शिकतोय ते हे नाही",
+    "target_text": "that isn't what I'm learning",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0160L01B04",
+   "expect": {
+    "known_text": "हा शब्द अजून",
+    "target_text": "this word yet"
+   },
+   "set": {
+    "known_text": "हा शब्द म्हणणे",
+    "target_text": "to say this word",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0160L02B03",
+   "expect": {
+    "known_text": "हा शब्द इथे कसा म्हणतात?",
+    "target_text": "how do you say this word here?"
+   },
+   "set": {
+    "known_text": "हे कसं म्हणतात?",
+    "target_text": "how do you say this?",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0160L02B04",
+   "expect": {
+    "known_text": "कसा म्हणतात हा शब्द आधीच?",
+    "target_text": "how do you say this word already?"
+   },
+   "set": {
+    "known_text": "ते कसं म्हणतात?",
+    "target_text": "how do you say it?",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0160L02U03",
+   "expect": {
+    "known_text": "हा शब्द कसा म्हणतात पुन्हा?",
+    "target_text": "how do you say this word again?"
+   },
+   "set": {
+    "known_text": "ते पुन्हा कसं म्हणतात?",
+    "target_text": "how do you say it again?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0160L02U04",
+   "expect": {
+    "known_text": "हा शब्द कसा म्हणतात अजून?",
+    "target_text": "how do you say this word yet?"
+   },
+   "set": {
+    "known_text": "'धन्यवाद' इंग्रजीत कसं म्हणतात?",
+    "target_text": "how do you say 'thank you' in English?",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

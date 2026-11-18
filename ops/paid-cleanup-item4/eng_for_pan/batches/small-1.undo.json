@@ -1,0 +1,33 @@
+{
+ "event_id": "9a632fbc-fb94-4ad3-9242-80f75c76977c",
+ "undo_file": "2026-11-18T13-05-03-914Z-9a632fbc-fb94-4ad3-9242-80f75c76977c.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0086L02B01",
+   "set": {
+    "known_text": "ਬਦਕਿਸਮਤੀ ਨਾਲ ਅਜੇ ਤੱਕ",
+    "target_text": "unfortunately yet",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "f96c642f-3793-482e-ac80-71f2bb0f158c",
+    "target1_audio_id": "18a4f05e-88ec-48fc-952d-dc1217d5d807",
+    "target2_audio_id": "a28a166d-ba9a-49ee-ba77-d3041576b0fc",
+    "decomposition": [
+     {
+      "known": "ਬਦਕਿਸਮਤੀ ਨਾਲ",
+      "legoId": "S0086L02",
+      "target": "unfortunately",
+      "isGhost": false
+     },
+     {
+      "known": "ਅਜੇ ਤੱਕ",
+      "legoId": "S0060L02",
+      "target": " yet",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}

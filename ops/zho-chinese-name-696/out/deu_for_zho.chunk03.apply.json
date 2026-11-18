@@ -1,0 +1,1645 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "bb7e7af4-d121-4cda-b8b1-f3cc7a92d3f6",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0017L01U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0017L01U04",
+    "seed_number": 17,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "她明天想和别人一起说中文。",
+    "known_audio_id": "e89a3fc4-8763-4334-8fe9-c3ca971cb9ac",
+    "target_text": "sie will morgen mit allen anderen Deutsch sprechen",
+    "target1_audio_id": "24e2e110-f487-4d1f-b79c-0fae298ea946",
+    "target2_audio_id": "17574056-ba78-4dc4-8c55-b7eb5e221c7c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0017L01U04",
+    "seed_number": 17,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "她明天想和别人一起说德语。",
+    "known_audio_id": "370a284e-2b6d-43c3-94ae-65129fed29ac",
+    "target_text": "sie will morgen mit allen anderen Deutsch sprechen",
+    "target1_audio_id": "24e2e110-f487-4d1f-b79c-0fae298ea946",
+    "target2_audio_id": "17574056-ba78-4dc4-8c55-b7eb5e221c7c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L02B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L02B02",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "今天晚上想说中文",
+    "known_audio_id": "ec46ad73-1ede-442c-ade9-bcf3107824ab",
+    "target_text": "heute Abend Deutsch sprechen",
+    "target1_audio_id": "4f0260ea-4b74-4779-8751-985c37141b7e",
+    "target2_audio_id": "48bcd3c1-a9ea-4ba9-9fd2-28443370c9a4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L02B02",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "今天晚上想说德语",
+    "known_audio_id": "fd47485a-cc0e-436a-95a4-c395d76609fa",
+    "target_text": "heute Abend Deutsch sprechen",
+    "target1_audio_id": "4f0260ea-4b74-4779-8751-985c37141b7e",
+    "target2_audio_id": "48bcd3c1-a9ea-4ba9-9fd2-28443370c9a4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L02U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L02U01",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我们今天晚上想说中文。",
+    "known_audio_id": "96f2268b-efc7-4996-a165-90083c8b9ff6",
+    "target_text": "wir wollen heute Abend Deutsch sprechen",
+    "target1_audio_id": "810ff7c9-7da5-4efb-9f61-bbf318b9ef66",
+    "target2_audio_id": "7ad7affb-1c9b-444f-96d6-0092a378cbcf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L02U01",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我们今天晚上想说德语。",
+    "known_audio_id": "095b4787-eec9-43e7-86ac-297a8b413c6e",
+    "target_text": "wir wollen heute Abend Deutsch sprechen",
+    "target1_audio_id": "810ff7c9-7da5-4efb-9f61-bbf318b9ef66",
+    "target2_audio_id": "7ad7affb-1c9b-444f-96d6-0092a378cbcf",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L02U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L02U04",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我今天晚上想和你说中文。",
+    "known_audio_id": "367ed0d1-cab5-4974-aa52-346114bbc95f",
+    "target_text": "ich will heute Abend Deutsch mit dir sprechen",
+    "target1_audio_id": "68325729-4296-43d6-9c87-21c75ca8f47f",
+    "target2_audio_id": "8f2274e4-2e1d-45e6-b04e-a8fb525efd89",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L02U04",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我今天晚上想和你说德语。",
+    "known_audio_id": "6090fb0f-7073-41d4-a516-fbaae96cf3e2",
+    "target_text": "ich will heute Abend Deutsch mit dir sprechen",
+    "target1_audio_id": "68325729-4296-43d6-9c87-21c75ca8f47f",
+    "target2_audio_id": "8f2274e4-2e1d-45e6-b04e-a8fb525efd89",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L01B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L01B02",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想说中文",
+    "known_audio_id": "e2634bb7-9b75-48b8-915c-3c031bd89087",
+    "target_text": "wir wollen Deutsch sprechen",
+    "target1_audio_id": "83eb4d9f-04e3-4843-a3eb-e6b4eac529a9",
+    "target2_audio_id": "84253b12-2e91-4d68-b392-48424018237f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L01B02",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想说德语",
+    "known_audio_id": "16eac1a4-26cb-43fd-ad92-6f0fe598636f",
+    "target_text": "wir wollen Deutsch sprechen",
+    "target1_audio_id": "83eb4d9f-04e3-4843-a3eb-e6b4eac529a9",
+    "target2_audio_id": "84253b12-2e91-4d68-b392-48424018237f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L01U05"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L01U05",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们今天想和你说中文。",
+    "known_audio_id": "2deaeceb-31ca-4c7f-9a14-8c2b25841447",
+    "target_text": "wir wollen heute Deutsch mit dir sprechen",
+    "target1_audio_id": "b2520acf-6f5c-4126-a05c-ec82eb92c77f",
+    "target2_audio_id": "2844bd6d-3b7c-4a4d-8500-c3385ce84718",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L01U05",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们今天想和你说德语。",
+    "known_audio_id": "19f8e21a-5523-4b08-8dc0-34df0d58fccb",
+    "target_text": "wir wollen heute Deutsch mit dir sprechen",
+    "target1_audio_id": "b2520acf-6f5c-4126-a05c-ec82eb92c77f",
+    "target2_audio_id": "2844bd6d-3b7c-4a4d-8500-c3385ce84718",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L01U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L01U03",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们明天想和别人一起说中文。",
+    "known_audio_id": "5a0a0e01-c2ea-45a8-a404-4491693b3e2c",
+    "target_text": "wir wollen morgen mit allen anderen Deutsch sprechen",
+    "target1_audio_id": "54bc42a4-b186-4074-9e96-f7de36c36153",
+    "target2_audio_id": "5847ac05-7d8e-4cb0-bc62-e33ef523f0c1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L01U03",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们明天想和别人一起说德语。",
+    "known_audio_id": "86ead423-8f98-4e10-a220-91c448d4ab76",
+    "target_text": "wir wollen morgen mit allen anderen Deutsch sprechen",
+    "target1_audio_id": "54bc42a4-b186-4074-9e96-f7de36c36153",
+    "target2_audio_id": "5847ac05-7d8e-4cb0-bc62-e33ef523f0c1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L03U05"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L03U05",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我今天晚上六点想和你说中文。",
+    "known_audio_id": "ddbe662b-5a3b-4e1e-a57a-8ea1dd07cd62",
+    "target_text": "ich will heute Abend um sechs Uhr Deutsch mit dir sprechen",
+    "target1_audio_id": "98218d00-afd4-4ccf-b976-94e719d91553",
+    "target2_audio_id": "2ff9588c-ab74-42b1-97a5-84ba2e79ca7e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L03U05",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我今天晚上六点想和你说德语。",
+    "known_audio_id": "c501ff5a-7dbc-4cf6-afde-68eece77f450",
+    "target_text": "ich will heute Abend um sechs Uhr Deutsch mit dir sprechen",
+    "target1_audio_id": "98218d00-afd4-4ccf-b976-94e719d91553",
+    "target2_audio_id": "2ff9588c-ab74-42b1-97a5-84ba2e79ca7e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0018L03U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0018L03U03",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "她今天晚上六点想说中文。",
+    "known_audio_id": "54289578-f453-4917-9255-43e791016712",
+    "target_text": "sie will heute Abend um sechs Uhr Deutsch sprechen",
+    "target1_audio_id": "77ab4d7a-35c9-4013-9364-78b27d51151e",
+    "target2_audio_id": "a9b8af60-9902-4878-bf7e-3c31fd7b1b91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0018L03U03",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "她今天晚上六点想说德语。",
+    "known_audio_id": "e24885be-1492-4d4b-9708-9f2fefc1881a",
+    "target_text": "sie will heute Abend um sechs Uhr Deutsch sprechen",
+    "target1_audio_id": "77ab4d7a-35c9-4013-9364-78b27d51151e",
+    "target2_audio_id": "a9b8af60-9902-4878-bf7e-3c31fd7b1b91",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0019L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0019L01U01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "但是我想说中文。",
+    "known_audio_id": "632bc37a-d82e-4bd0-b2b5-58a3adab4e89",
+    "target_text": "aber ich will Deutsch sprechen",
+    "target1_audio_id": "232734fd-5c98-4a20-b1f2-007a6ced136d",
+    "target2_audio_id": "60a21cd5-da28-4e09-a7c8-8b65396978a1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0019L01U01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "但是我想说德语。",
+    "known_audio_id": "ff878df8-c3cb-4e4d-b688-928b2918dfc4",
+    "target_text": "aber ich will Deutsch sprechen",
+    "target1_audio_id": "232734fd-5c98-4a20-b1f2-007a6ced136d",
+    "target2_audio_id": "60a21cd5-da28-4e09-a7c8-8b65396978a1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0019L02B03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0019L02B03",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "她想停止说中文",
+    "known_audio_id": "33e09884-4745-4534-b5cd-979e927c427c",
+    "target_text": "sie will aufhören Deutsch zu sprechen",
+    "target1_audio_id": "3ffbe3cd-49b7-4f95-a27b-c142acd3bb8c",
+    "target2_audio_id": "ac842a39-b028-4913-b481-e06f297eea96",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0019L02B03",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "她想停止说德语",
+    "known_audio_id": "ea2c2a98-056b-4530-9742-2d0ac1736df8",
+    "target_text": "sie will aufhören Deutsch zu sprechen",
+    "target1_audio_id": "3ffbe3cd-49b7-4f95-a27b-c142acd3bb8c",
+    "target2_audio_id": "ac842a39-b028-4913-b481-e06f297eea96",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0019L02B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0019L02B02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "想停止说中文",
+    "known_audio_id": "052c34ad-a14e-461d-be45-f0894c5a894b",
+    "target_text": "will aufhören Deutsch zu sprechen",
+    "target1_audio_id": "c51cd1d9-cad9-4791-9e25-e47d7fc883dc",
+    "target2_audio_id": "3deb185a-671d-4a51-8e5b-f9feb844df2a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0019L02B02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "想停止说德语",
+    "known_audio_id": "2a83678b-3c79-455f-82b8-4ef2b80abc21",
+    "target_text": "will aufhören Deutsch zu sprechen",
+    "target1_audio_id": "c51cd1d9-cad9-4791-9e25-e47d7fc883dc",
+    "target2_audio_id": "3deb185a-671d-4a51-8e5b-f9feb844df2a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0019L02U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0019L02U01",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不想停止说中文。",
+    "known_audio_id": "b8331287-1e7d-4926-a88a-0df33edd1dd0",
+    "target_text": "ich will nicht aufhören Deutsch zu sprechen",
+    "target1_audio_id": "d20e1c8e-1b45-449d-bb2e-7f1ec1c16f49",
+    "target2_audio_id": "60d3571d-d38e-464b-bfd3-cad61c9a9e09",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0019L02U01",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不想停止说德语。",
+    "known_audio_id": "a08bcba3-cc8d-42c7-af21-74f7519ec909",
+    "target_text": "ich will nicht aufhören Deutsch zu sprechen",
+    "target1_audio_id": "d20e1c8e-1b45-449d-bb2e-7f1ec1c16f49",
+    "target2_audio_id": "60d3571d-d38e-464b-bfd3-cad61c9a9e09",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0019L02U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0019L02U03",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "她不想停止说中文。",
+    "known_audio_id": "ae514820-ad52-459b-ad5b-94533c680996",
+    "target_text": "sie will nicht aufhören Deutsch zu sprechen",
+    "target1_audio_id": "cfbba364-4d39-4711-8210-987f438683f5",
+    "target2_audio_id": "6519a5b8-2163-4aee-9228-e65ff1c11dd6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0019L02U03",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "她不想停止说德语。",
+    "known_audio_id": "c2e3b5ad-f372-411a-a726-044f17262b7a",
+    "target_text": "sie will nicht aufhören Deutsch zu sprechen",
+    "target1_audio_id": "cfbba364-4d39-4711-8210-987f438683f5",
+    "target2_audio_id": "6519a5b8-2163-4aee-9228-e65ff1c11dd6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0020L03B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0020L03B02",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "快点说中文",
+    "known_audio_id": "ef08c6fe-ff90-4406-8923-fd9458305236",
+    "target_text": "schnell Deutsch sprechen",
+    "target1_audio_id": "0a0b42b2-0b89-4572-a848-8a1a4a95e7b5",
+    "target2_audio_id": "42c9f1bb-8420-45eb-b786-85597043f977",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0020L03B02",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "快点说德语",
+    "known_audio_id": "14d4557f-7aeb-4621-a7ea-b66cf3de7804",
+    "target_text": "schnell Deutsch sprechen",
+    "target1_audio_id": "0a0b42b2-0b89-4572-a848-8a1a4a95e7b5",
+    "target2_audio_id": "42c9f1bb-8420-45eb-b786-85597043f977",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0020L03U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0020L03U02",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想快点说中文。",
+    "known_audio_id": "1d6c33d0-93fc-41a6-9363-5a4dfd56dd68",
+    "target_text": "ich will schnell Deutsch sprechen",
+    "target1_audio_id": "1712d1f0-310e-4fd5-9735-8b2aa0677206",
+    "target2_audio_id": "0fd90994-ae7a-4f98-93ea-54250b0d95fd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0020L03U02",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想快点说德语。",
+    "known_audio_id": "30fd0ad7-2460-48a8-b257-0c8ff43d4527",
+    "target_text": "ich will schnell Deutsch sprechen",
+    "target1_audio_id": "1712d1f0-310e-4fd5-9735-8b2aa0677206",
+    "target2_audio_id": "0fd90994-ae7a-4f98-93ea-54250b0d95fd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0020L01B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0020L01B02",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想说中文",
+    "known_audio_id": "f5289add-dea8-41e5-b6aa-4c11deb8e5f0",
+    "target_text": "du willst Deutsch sprechen",
+    "target1_audio_id": "1998b697-ad86-4274-ad06-c8a7dc840bad",
+    "target2_audio_id": "edbe8592-d40a-43cb-98ab-15e5118c7c25",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0020L01B02",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想说德语",
+    "known_audio_id": "efc7de8e-3329-4c68-8242-250c50128dde",
+    "target_text": "du willst Deutsch sprechen",
+    "target1_audio_id": "1998b697-ad86-4274-ad06-c8a7dc840bad",
+    "target2_audio_id": "edbe8592-d40a-43cb-98ab-15e5118c7c25",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0020L01U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0020L01U03",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想整天说中文。",
+    "known_audio_id": "212bb865-c355-4743-9c66-c33e1d4b0d84",
+    "target_text": "du willst den ganzen Tag Deutsch sprechen",
+    "target1_audio_id": "b468a6d0-96ad-4e84-a5bb-1b8b5b8f856e",
+    "target2_audio_id": "8d51287f-7830-41dd-821c-dcfda3d6e623",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0020L01U03",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想整天说德语。",
+    "known_audio_id": "d45997f0-c26c-449f-a01b-2f5a9d290d85",
+    "target_text": "du willst den ganzen Tag Deutsch sprechen",
+    "target1_audio_id": "b468a6d0-96ad-4e84-a5bb-1b8b5b8f856e",
+    "target2_audio_id": "8d51287f-7830-41dd-821c-dcfda3d6e623",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0020L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0020L01U01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想和我说中文。",
+    "known_audio_id": "8c12ad99-48ce-49bd-b369-1d10a60296a0",
+    "target_text": "du willst Deutsch mit mir sprechen",
+    "target1_audio_id": "8a85e6cd-3a93-48c7-8c85-18c6a72cb728",
+    "target2_audio_id": "2a1c2534-e18d-4d1c-a671-d8113443af40",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0020L01U01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想和我说德语。",
+    "known_audio_id": "c21bfd0b-98e3-4609-ad30-65b79532a96f",
+    "target_text": "du willst Deutsch mit mir sprechen",
+    "target1_audio_id": "8a85e6cd-3a93-48c7-8c85-18c6a72cb728",
+    "target2_audio_id": "2a1c2534-e18d-4d1c-a671-d8113443af40",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0021L01B01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "为什么想说中文?",
+    "known_audio_id": "648149b9-a4c7-4619-9ec3-1d6b593b85af",
+    "target_text": "warum Deutsch sprechen?",
+    "target1_audio_id": "9b88c03c-2a61-45fa-8616-d5558ef0d198",
+    "target2_audio_id": "d3bb24a6-1634-4799-81db-85e12b672c0a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "为什么想说德语?",
+    "known_audio_id": "6acf4b26-d9ca-469d-9659-30d0a6d1b867",
+    "target_text": "warum Deutsch sprechen?",
+    "target1_audio_id": "9b88c03c-2a61-45fa-8616-d5558ef0d198",
+    "target2_audio_id": "d3bb24a6-1634-4799-81db-85e12b672c0a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0021L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0021L01U01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想说中文？",
+    "known_audio_id": "09f0ced1-1736-4c5d-95a8-2b7ec344960e",
+    "target_text": "warum willst du Deutsch sprechen?",
+    "target1_audio_id": "037a17a9-8465-43e6-b950-349df7f559e2",
+    "target2_audio_id": "fe70be5c-2c9b-40c3-874d-ecc965b78d0b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0021L01U01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想说德语？",
+    "known_audio_id": "b7fccd2b-c82e-4503-9aa3-f0e643633c58",
+    "target_text": "warum willst du Deutsch sprechen?",
+    "target1_audio_id": "037a17a9-8465-43e6-b950-349df7f559e2",
+    "target2_audio_id": "fe70be5c-2c9b-40c3-874d-ecc965b78d0b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0021L03B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "在学中文",
+    "known_audio_id": "bd00ea50-10ce-4329-8ca0-a8611fc8507f",
+    "target_text": "lernst du Deutsch?",
+    "target1_audio_id": "c6aabddd-2cfd-4205-803a-e63842472a26",
+    "target2_audio_id": "543d3906-a493-4cbd-a0ca-4b5a15570ce1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "在学德语",
+    "known_audio_id": "d39b9f3b-0a7c-4d46-9539-911650567661",
+    "target_text": "lernst du Deutsch?",
+    "target1_audio_id": "c6aabddd-2cfd-4205-803a-e63842472a26",
+    "target2_audio_id": "543d3906-a493-4cbd-a0ca-4b5a15570ce1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0021L03U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0021L03U01",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "你为什么在学中文？",
+    "known_audio_id": "b71d24f1-4e57-418d-92e3-3430095d800a",
+    "target_text": "warum lernst du Deutsch?",
+    "target1_audio_id": "e15769bb-c36d-4a5c-b734-9fd0bc659dfd",
+    "target2_audio_id": "44d222e7-7fec-4f5b-97ff-d7aa0a324c99",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0021L03U01",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "你为什么在学德语？",
+    "known_audio_id": "f7a8a173-d87d-42e9-ba2f-118e564a6f7d",
+    "target_text": "warum lernst du Deutsch?",
+    "target1_audio_id": "e15769bb-c36d-4a5c-b734-9fd0bc659dfd",
+    "target2_audio_id": "44d222e7-7fec-4f5b-97ff-d7aa0a324c99",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "seed.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "seed_number": 22
+   },
+   "before": {
+    "id": "367cbe7e-ca86-4a42-86f9-baf8486863d7",
+    "seed_number": 22,
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "7b10ea59-912e-48c9-be71-11a34c81408a",
+    "target_text": "Weil ich Leute treffen will, die Deutsch sprechen.",
+    "target1_audio_id": "2c9e5739-0ec9-49ed-b0cf-4ffd85071d59",
+    "target2_audio_id": "fd466c19-c905-41c5-a2d3-9454e59441c1"
+   },
+   "after": {
+    "id": "367cbe7e-ca86-4a42-86f9-baf8486863d7",
+    "seed_number": 22,
+    "known_text": "因为我想见说德语的人。",
+    "known_audio_id": "7904641f-4cb1-4430-a540-f4ac1caf43be",
+    "target_text": "Weil ich Leute treffen will, die Deutsch sprechen.",
+    "target1_audio_id": "2c9e5739-0ec9-49ed-b0cf-4ffd85071d59",
+    "target2_audio_id": "fd466c19-c905-41c5-a2d3-9454e59441c1"
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "lego.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "lego_id": "S0022L03"
+   },
+   "before": {
+    "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": "S0022L03",
+    "known_text": "说中文的",
+    "known_audio_id": "d3d47005-7d59-4a1d-8c79-82b826c0c182",
+    "target_text": "die Deutsch sprechen",
+    "target1_audio_id": "7fd35d3b-5a82-488d-be07-40be1ed1bfc5",
+    "target2_audio_id": "e0c84c66-10c3-4330-b3b6-442943413d8e",
+    "presentation_audio_id": "59039321-03dd-4b4f-a9c3-56c77086deb9"
+   },
+   "after": {
+    "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": "S0022L03",
+    "known_text": "说德语的",
+    "known_audio_id": "f88dbd1c-bf3b-4c1f-8232-cb74093a91ec",
+    "target_text": "die Deutsch sprechen",
+    "target1_audio_id": "7fd35d3b-5a82-488d-be07-40be1ed1bfc5",
+    "target2_audio_id": "e0c84c66-10c3-4330-b3b6-442943413d8e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_zho",
+    "lego_id": "S0022L03"
+   },
+   "before": {
+    "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": "S0022L03",
+    "presentation_audio_id": null,
+    "known_text": "说德语的",
+    "target_text": "die Deutsch sprechen",
+    "known_audio_id": "f88dbd1c-bf3b-4c1f-8232-cb74093a91ec",
+    "target1_audio_id": "7fd35d3b-5a82-488d-be07-40be1ed1bfc5",
+    "target2_audio_id": "e0c84c66-10c3-4330-b3b6-442943413d8e"
+   },
+   "after": {
+    "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": "S0022L03",
+    "presentation_audio_id": "59039321-03dd-4b4f-a9c3-56c77086deb9",
+    "known_text": "说德语的",
+    "target_text": "die Deutsch sprechen",
+    "known_audio_id": "f88dbd1c-bf3b-4c1f-8232-cb74093a91ec",
+    "target1_audio_id": "7fd35d3b-5a82-488d-be07-40be1ed1bfc5",
+    "target2_audio_id": "e0c84c66-10c3-4330-b3b6-442943413d8e"
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03B01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03B01",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "说中文的",
+    "known_audio_id": "d3d47005-7d59-4a1d-8c79-82b826c0c182",
+    "target_text": "die Deutsch sprechen",
+    "target1_audio_id": "7fd35d3b-5a82-488d-be07-40be1ed1bfc5",
+    "target2_audio_id": "e0c84c66-10c3-4330-b3b6-442943413d8e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03B01",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "说德语的",
+    "known_audio_id": "f88dbd1c-bf3b-4c1f-8232-cb74093a91ec",
+    "target_text": "die Deutsch sprechen",
+    "target1_audio_id": "7fd35d3b-5a82-488d-be07-40be1ed1bfc5",
+    "target2_audio_id": "e0c84c66-10c3-4330-b3b6-442943413d8e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03B03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03B03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "想见说中文的人",
+    "known_audio_id": "cb9d7997-2e53-4d19-ad95-90ccd6aee2f1",
+    "target_text": "will Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "eb928a7a-7b6b-43dd-9d2e-0a4ce8bdf864",
+    "target2_audio_id": "ef227a77-2498-4ebc-9e85-aa10e44044b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03B03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "想见说德语的人",
+    "known_audio_id": "e18da95b-315b-47a0-a585-eda97d9d2dcc",
+    "target_text": "will Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "eb928a7a-7b6b-43dd-9d2e-0a4ce8bdf864",
+    "target2_audio_id": "ef227a77-2498-4ebc-9e85-aa10e44044b1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03B02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03B02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "说中文的人",
+    "known_audio_id": "c4fb933b-bb2e-4e49-b162-f647cc8ad009",
+    "target_text": "leute die Deutsch sprechen",
+    "target1_audio_id": "fd65dc02-3d66-43c9-863e-3962ec25d72d",
+    "target2_audio_id": "c2486a18-3102-43da-b029-b7f88138650e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03B02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "说德语的人",
+    "known_audio_id": "f2a611b4-5372-41b2-bb17-947034431eb4",
+    "target_text": "leute die Deutsch sprechen",
+    "target1_audio_id": "fd65dc02-3d66-43c9-863e-3962ec25d72d",
+    "target2_audio_id": "c2486a18-3102-43da-b029-b7f88138650e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03B04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03B04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为说中文的人",
+    "known_audio_id": "a0ca6b53-9c50-40ec-8c05-d6ff7b327f59",
+    "target_text": "weil Leute die Deutsch sprechen",
+    "target1_audio_id": "edd19880-32ce-4bae-bf3e-eed5e5f1525f",
+    "target2_audio_id": "a38d5301-efd9-4518-8f35-e11c7896c727",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03B04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为说德语的人",
+    "known_audio_id": "1e63115a-ec13-4783-825b-1e22557d8c76",
+    "target_text": "weil Leute die Deutsch sprechen",
+    "target1_audio_id": "edd19880-32ce-4bae-bf3e-eed5e5f1525f",
+    "target2_audio_id": "a38d5301-efd9-4518-8f35-e11c7896c727",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03U03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "她想见说中文的人。",
+    "known_audio_id": "3b76be18-8c50-434b-ad7c-cc7a7d0a678c",
+    "target_text": "sie will Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "503e5e8d-6b37-4ff4-abbb-7af79b2b7277",
+    "target2_audio_id": "f4a86935-7aa0-4c90-9bed-1c852fdf102a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03U03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "她想见说德语的人。",
+    "known_audio_id": "63da3611-bd9e-41c9-b02a-0a1061b5f31c",
+    "target_text": "sie will Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "503e5e8d-6b37-4ff4-abbb-7af79b2b7277",
+    "target2_audio_id": "f4a86935-7aa0-4c90-9bed-1c852fdf102a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03U01",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想见说中文的人。",
+    "known_audio_id": "1547d7ab-326e-45c6-932a-58e351ecabc3",
+    "target_text": "ich will Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "569bfa5d-82d5-43cc-8a98-6169a27a3a7d",
+    "target2_audio_id": "124685bb-44c7-4a16-bf85-d00a3bd3dd66",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03U01",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想见说德语的人。",
+    "known_audio_id": "f5eec81d-e7fd-4300-98c9-2d0bb2fab3c4",
+    "target_text": "ich will Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "569bfa5d-82d5-43cc-8a98-6169a27a3a7d",
+    "target2_audio_id": "124685bb-44c7-4a16-bf85-d00a3bd3dd66",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03U02"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03U02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "7b10ea59-912e-48c9-be71-11a34c81408a",
+    "target_text": "weil ich Leute treffen will die Deutsch sprechen",
+    "target1_audio_id": "10100a32-3198-410b-b2f9-f106b70617ce",
+    "target2_audio_id": "a201eeb5-a4f5-4c41-a7f0-9fcfc192e76f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03U02",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "因为我想见说德语的人。",
+    "known_audio_id": "7904641f-4cb1-4430-a540-f4ac1caf43be",
+    "target_text": "weil ich Leute treffen will die Deutsch sprechen",
+    "target1_audio_id": "10100a32-3198-410b-b2f9-f106b70617ce",
+    "target2_audio_id": "a201eeb5-a4f5-4c41-a7f0-9fcfc192e76f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03U04"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03U04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我们想见说中文的人。",
+    "known_audio_id": "be087a19-b82f-4be1-8ac3-e302791cf702",
+    "target_text": "wir wollen Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "7adbf52d-68b5-4d48-99d8-2e3963feea1d",
+    "target2_audio_id": "f32bb5c0-ab04-434f-9b12-09128c7eb99d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03U04",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我们想见说德语的人。",
+    "known_audio_id": "447e2ac6-0b61-4600-8ed1-7a26cb89e407",
+    "target_text": "wir wollen Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "7adbf52d-68b5-4d48-99d8-2e3963feea1d",
+    "target2_audio_id": "f32bb5c0-ab04-434f-9b12-09128c7eb99d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L03U05"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L03U05",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "他今天想见说中文的人。",
+    "known_audio_id": "bfd92539-4297-4f1b-a8f7-801ecfad1c38",
+    "target_text": "er will heute Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "28277701-6c9f-448f-a951-6f8310ae04ac",
+    "target2_audio_id": "253fe740-1227-41a3-8115-231ba75b7104",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L03U05",
+    "seed_number": 22,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "他今天想见说德语的人。",
+    "known_audio_id": "6c9fa118-f54f-4808-a4c2-6b7cb317e8dc",
+    "target_text": "er will heute Leute treffen die Deutsch sprechen",
+    "target1_audio_id": "28277701-6c9f-448f-a951-6f8310ae04ac",
+    "target2_audio_id": "253fe740-1227-41a3-8115-231ba75b7104",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0022L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0022L01U01",
+    "seed_number": 22,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "因为我想说中文。",
+    "known_audio_id": "2d2ec9a5-2e83-4892-827e-784589318a34",
+    "target_text": "weil ich Deutsch sprechen will",
+    "target1_audio_id": "e2f8da4c-d9db-4492-8f04-7e82587f20e6",
+    "target2_audio_id": "f3572bbf-6025-47a5-980b-8b5ccad49c91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0022L01U01",
+    "seed_number": 22,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "因为我想说德语。",
+    "known_audio_id": "7513b02b-68e4-4fde-aca6-9c061524c95f",
+    "target_text": "weil ich Deutsch sprechen will",
+    "target1_audio_id": "e2f8da4c-d9db-4492-8f04-7e82587f20e6",
+    "target2_audio_id": "f3572bbf-6025-47a5-980b-8b5ccad49c91",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0023L02U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0023L02U01",
+    "seed_number": 23,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想多说中文。",
+    "known_audio_id": "332f8e8c-6192-417a-ac74-96ab65e5ce68",
+    "target_text": "ich will mehr Deutsch sprechen",
+    "target1_audio_id": "6238b03b-6d61-4b9c-8128-e042558f6472",
+    "target2_audio_id": "73993e00-a414-4693-ac97-e73bd0d0d8a6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0023L02U01",
+    "seed_number": 23,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我想多说德语。",
+    "known_audio_id": "26f31fd0-e8ed-4e24-b9e3-3b6ae544e054",
+    "target_text": "ich will mehr Deutsch sprechen",
+    "target1_audio_id": "6238b03b-6d61-4b9c-8128-e042558f6472",
+    "target2_audio_id": "73993e00-a414-4693-ac97-e73bd0d0d8a6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0023L02U03"
+   },
+   "before": {
+    "id": "deu_for_zho:S0023L02U03",
+    "seed_number": 23,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "她想多学中文。",
+    "known_audio_id": "c506da42-96e5-4c88-9779-a5764a7064f8",
+    "target_text": "sie will mehr Deutsch lernen",
+    "target1_audio_id": "3e30406e-5524-4cf2-8e12-2521a45beb58",
+    "target2_audio_id": "6b73fb96-5b8e-4e5a-b350-a3f6bbabc511",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0023L02U03",
+    "seed_number": 23,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "她想多学德语。",
+    "known_audio_id": "9429d37b-719c-405b-98c7-64909c10949d",
+    "target_text": "sie will mehr Deutsch lernen",
+    "target1_audio_id": "3e30406e-5524-4cf2-8e12-2521a45beb58",
+    "target2_audio_id": "6b73fb96-5b8e-4e5a-b350-a3f6bbabc511",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0023L01B01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0023L01B01",
+    "seed_number": 23,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "很快要说中文",
+    "known_audio_id": "a8106487-353a-4a0f-b15f-03b504d6adda",
+    "target_text": "bald Deutsch sprechen",
+    "target1_audio_id": "7465b8a3-60cf-4a0f-a32f-eb63313ae888",
+    "target2_audio_id": "4410e34e-9772-46bf-9dc7-3ee7f37a9422",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0023L01B01",
+    "seed_number": 23,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "很快要说德语",
+    "known_audio_id": "19b5ea7b-f085-4605-9d5b-8cae0a5f83bb",
+    "target_text": "bald Deutsch sprechen",
+    "target1_audio_id": "7465b8a3-60cf-4a0f-a32f-eb63313ae888",
+    "target2_audio_id": "4410e34e-9772-46bf-9dc7-3ee7f37a9422",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_zho",
+    "id": "deu_for_zho:S0023L01U01"
+   },
+   "before": {
+    "id": "deu_for_zho:S0023L01U01",
+    "seed_number": 23,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我很快要说中文。",
+    "known_audio_id": "c5bfaeb7-e0f4-42fa-93dd-0854bc583823",
+    "target_text": "ich werde bald Deutsch sprechen",
+    "target1_audio_id": "ff032dbe-ac5a-410b-80fa-9ffc8d305fe6",
+    "target2_audio_id": "39a6f673-78f0-4777-929c-716ef9948d2f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_zho:S0023L01U01",
+    "seed_number": 23,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我很快要说德语。",
+    "known_audio_id": "6a02fa4d-9161-4635-912e-cbe4e738bb9c",
+    "target_text": "ich werde bald Deutsch sprechen",
+    "target1_audio_id": "ff032dbe-ac5a-410b-80fa-9ffc8d305fe6",
+    "target2_audio_id": "39a6f673-78f0-4777-929c-716ef9948d2f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0023L01U01",
+   "set": {
+    "known_text": "我很快要说中文。",
+    "known_audio_id": "c5bfaeb7-e0f4-42fa-93dd-0854bc583823"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0023L01B01",
+   "set": {
+    "known_text": "很快要说中文",
+    "known_audio_id": "a8106487-353a-4a0f-b15f-03b504d6adda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0023L02U03",
+   "set": {
+    "known_text": "她想多学中文。",
+    "known_audio_id": "c506da42-96e5-4c88-9779-a5764a7064f8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0023L02U01",
+   "set": {
+    "known_text": "我想多说中文。",
+    "known_audio_id": "332f8e8c-6192-417a-ac74-96ab65e5ce68"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L01U01",
+   "set": {
+    "known_text": "因为我想说中文。",
+    "known_audio_id": "2d2ec9a5-2e83-4892-827e-784589318a34"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03U05",
+   "set": {
+    "known_text": "他今天想见说中文的人。",
+    "known_audio_id": "bfd92539-4297-4f1b-a8f7-801ecfad1c38"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03U04",
+   "set": {
+    "known_text": "我们想见说中文的人。",
+    "known_audio_id": "be087a19-b82f-4be1-8ac3-e302791cf702"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03U02",
+   "set": {
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "7b10ea59-912e-48c9-be71-11a34c81408a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03U01",
+   "set": {
+    "known_text": "我想见说中文的人。",
+    "known_audio_id": "1547d7ab-326e-45c6-932a-58e351ecabc3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03U03",
+   "set": {
+    "known_text": "她想见说中文的人。",
+    "known_audio_id": "3b76be18-8c50-434b-ad7c-cc7a7d0a678c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03B04",
+   "set": {
+    "known_text": "因为说中文的人",
+    "known_audio_id": "a0ca6b53-9c50-40ec-8c05-d6ff7b327f59"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03B02",
+   "set": {
+    "known_text": "说中文的人",
+    "known_audio_id": "c4fb933b-bb2e-4e49-b162-f647cc8ad009"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03B03",
+   "set": {
+    "known_text": "想见说中文的人",
+    "known_audio_id": "cb9d7997-2e53-4d19-ad95-90ccd6aee2f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0022L03B01",
+   "set": {
+    "known_text": "说中文的",
+    "known_audio_id": "d3d47005-7d59-4a1d-8c79-82b826c0c182"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "a3f0a46c-e2d5-4408-8541-23e29e7d117c",
+   "set": {
+    "known_text": "说中文的",
+    "known_audio_id": "d3d47005-7d59-4a1d-8c79-82b826c0c182",
+    "presentation_audio_id": "59039321-03dd-4b4f-a9c3-56c77086deb9"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 22,
+   "set": {
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "7b10ea59-912e-48c9-be71-11a34c81408a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0021L03U01",
+   "set": {
+    "known_text": "你为什么在学中文？",
+    "known_audio_id": "b71d24f1-4e57-418d-92e3-3430095d800a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0021L03B02",
+   "set": {
+    "known_text": "在学中文",
+    "known_audio_id": "bd00ea50-10ce-4329-8ca0-a8611fc8507f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0021L01U01",
+   "set": {
+    "known_text": "你为什么想说中文？",
+    "known_audio_id": "09f0ced1-1736-4c5d-95a8-2b7ec344960e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0021L01B01",
+   "set": {
+    "known_text": "为什么想说中文?",
+    "known_audio_id": "648149b9-a4c7-4619-9ec3-1d6b593b85af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0020L01U01",
+   "set": {
+    "known_text": "你想和我说中文。",
+    "known_audio_id": "8c12ad99-48ce-49bd-b369-1d10a60296a0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0020L01U03",
+   "set": {
+    "known_text": "你想整天说中文。",
+    "known_audio_id": "212bb865-c355-4743-9c66-c33e1d4b0d84"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0020L01B02",
+   "set": {
+    "known_text": "你想说中文",
+    "known_audio_id": "f5289add-dea8-41e5-b6aa-4c11deb8e5f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0020L03U02",
+   "set": {
+    "known_text": "我想快点说中文。",
+    "known_audio_id": "1d6c33d0-93fc-41a6-9363-5a4dfd56dd68"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0020L03B02",
+   "set": {
+    "known_text": "快点说中文",
+    "known_audio_id": "ef08c6fe-ff90-4406-8923-fd9458305236"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0019L02U03",
+   "set": {
+    "known_text": "她不想停止说中文。",
+    "known_audio_id": "ae514820-ad52-459b-ad5b-94533c680996"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0019L02U01",
+   "set": {
+    "known_text": "我不想停止说中文。",
+    "known_audio_id": "b8331287-1e7d-4926-a88a-0df33edd1dd0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0019L02B02",
+   "set": {
+    "known_text": "想停止说中文",
+    "known_audio_id": "052c34ad-a14e-461d-be45-f0894c5a894b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0019L02B03",
+   "set": {
+    "known_text": "她想停止说中文",
+    "known_audio_id": "33e09884-4745-4534-b5cd-979e927c427c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0019L01U01",
+   "set": {
+    "known_text": "但是我想说中文。",
+    "known_audio_id": "632bc37a-d82e-4bd0-b2b5-58a3adab4e89"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L03U03",
+   "set": {
+    "known_text": "她今天晚上六点想说中文。",
+    "known_audio_id": "54289578-f453-4917-9255-43e791016712"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L03U05",
+   "set": {
+    "known_text": "我今天晚上六点想和你说中文。",
+    "known_audio_id": "ddbe662b-5a3b-4e1e-a57a-8ea1dd07cd62"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L01U03",
+   "set": {
+    "known_text": "我们明天想和别人一起说中文。",
+    "known_audio_id": "5a0a0e01-c2ea-45a8-a404-4491693b3e2c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L01U05",
+   "set": {
+    "known_text": "我们今天想和你说中文。",
+    "known_audio_id": "2deaeceb-31ca-4c7f-9a14-8c2b25841447"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L01B02",
+   "set": {
+    "known_text": "我们想说中文",
+    "known_audio_id": "e2634bb7-9b75-48b8-915c-3c031bd89087"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L02U04",
+   "set": {
+    "known_text": "我今天晚上想和你说中文。",
+    "known_audio_id": "367ed0d1-cab5-4974-aa52-346114bbc95f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L02U01",
+   "set": {
+    "known_text": "我们今天晚上想说中文。",
+    "known_audio_id": "96f2268b-efc7-4996-a165-90083c8b9ff6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0018L02B02",
+   "set": {
+    "known_text": "今天晚上想说中文",
+    "known_audio_id": "ec46ad73-1ede-442c-ade9-bcf3107824ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_zho:S0017L01U04",
+   "set": {
+    "known_text": "她明天想和别人一起说中文。",
+    "known_audio_id": "e89a3fc4-8763-4334-8fe9-c3ca971cb9ac"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-21-38-466Z-bb7e7af4-d121-4cda-b8b1-f3cc7a92d3f6.json"
+}

@@ -1,0 +1,2571 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "dc1a1b2e-4d61-471e-af6b-148940deef9b",
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01B01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01B01",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性",
+    "target_text": "the man",
+    "target1_audio_id": "9fc6a2b7-2c37-4567-af68-c135d56e2142",
+    "target2_audio_id": "de4279d8-9802-4728-823a-d8127cd0a1a3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01B01",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "f63a5d4d-b8a3-46ca-b427-184277c2d2f1",
+    "known_text": "その男性",
+    "target_text": "the man",
+    "target1_audio_id": "9fc6a2b7-2c37-4567-af68-c135d56e2142",
+    "target2_audio_id": "de4279d8-9802-4728-823a-d8127cd0a1a3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01B02",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "ある男性",
+    "target_text": "a man",
+    "target1_audio_id": "e0769731-04f2-4e1e-8901-45d6e1e00d2c",
+    "target2_audio_id": "2eb7c732-6154-463c-8e3c-b6e773204b34",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01B02",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "c498a4dc-c3a9-457c-934b-dc3b021a82e9",
+    "known_text": "ある男性",
+    "target_text": "a man",
+    "target1_audio_id": "e0769731-04f2-4e1e-8901-45d6e1e00d2c",
+    "target2_audio_id": "2eb7c732-6154-463c-8e3c-b6e773204b34",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01B03",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "若い男性",
+    "target_text": "young man",
+    "target1_audio_id": "9581b561-440b-4fd9-ab85-7665f0e441f6",
+    "target2_audio_id": "9e057310-f313-4ccb-8ac6-8fa0bdc0c766",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01B03",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "22598fe2-f87c-4757-8e6d-5c460bc18688",
+    "known_text": "若い男性",
+    "target_text": "young man",
+    "target1_audio_id": "9581b561-440b-4fd9-ab85-7665f0e441f6",
+    "target2_audio_id": "9e057310-f313-4ccb-8ac6-8fa0bdc0c766",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01B05",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "ある若い男性",
+    "target_text": "a young man",
+    "target1_audio_id": "468e2345-acad-4d14-bb5f-7eaf4a19f3b3",
+    "target2_audio_id": "604da9bd-f69e-40d9-8661-d29715ef6a3a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01B05",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "919692af-55b6-46a7-be0a-ca1120c34e22",
+    "known_text": "ある若い男性",
+    "target_text": "a young man",
+    "target1_audio_id": "468e2345-acad-4d14-bb5f-7eaf4a19f3b3",
+    "target2_audio_id": "604da9bd-f69e-40d9-8661-d29715ef6a3a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01B06",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性はとても親切です",
+    "target_text": "the man is very kind",
+    "target1_audio_id": "19ee4a5a-744a-4594-b46a-53c0570e8e25",
+    "target2_audio_id": "b51b7bbb-8846-4c9c-b684-e139d575de72",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01B06",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "cdc7f4a9-98f7-46e9-9035-e94a3be5f482",
+    "known_text": "その男性はとても親切です",
+    "target_text": "the man is very kind",
+    "target1_audio_id": "19ee4a5a-744a-4594-b46a-53c0570e8e25",
+    "target2_audio_id": "b51b7bbb-8846-4c9c-b684-e139d575de72",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01B07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01B07",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私は前にある男性を知っていました",
+    "target_text": "I used to know a man",
+    "target1_audio_id": "4e72e62b-2332-43c8-bb6a-8a6d62a05afe",
+    "target2_audio_id": "c8d00e18-938c-4caf-89ec-b8d09a60142d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01B07",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "5c7b36fc-76b4-4d53-b5d5-f2d0c094da4e",
+    "known_text": "私は前にある男性を知っていました",
+    "target_text": "I used to know a man",
+    "target1_audio_id": "4e72e62b-2332-43c8-bb6a-8a6d62a05afe",
+    "target2_audio_id": "c8d00e18-938c-4caf-89ec-b8d09a60142d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U01",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+    "target_text": "the man is trying to help me understand what you said",
+    "target1_audio_id": "8a937559-007e-478d-a953-1695636deec0",
+    "target2_audio_id": "d9b44fda-c523-4ae1-afde-38bf06ece26a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U01",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "df8b1659-a321-48b3-b0c7-f0e39700d4c6",
+    "known_text": "その男性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+    "target_text": "the man is trying to help me understand what you said",
+    "target1_audio_id": "8a937559-007e-478d-a953-1695636deec0",
+    "target2_audio_id": "d9b44fda-c523-4ae1-afde-38bf06ece26a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U02",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私の友達と一緒に働きたかった男性を、前に知っていました",
+    "target_text": "I used to know a man who wanted to work with my friend",
+    "target1_audio_id": "fb8f58be-0bf8-4608-bde5-5c98a08fbb3d",
+    "target2_audio_id": "1688313a-b77b-4588-896b-08d32d58c449",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U02",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "56016b4c-2dcf-4a27-8ff1-219411654dac",
+    "known_text": "私の友達と一緒に働きたかった男性を、前に知っていました",
+    "target_text": "I used to know a man who wanted to work with my friend",
+    "target1_audio_id": "fb8f58be-0bf8-4608-bde5-5c98a08fbb3d",
+    "target2_audio_id": "1688313a-b77b-4588-896b-08d32d58c449",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U03",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "ある若い男性が、何か難しいことで助けを求めたがっていました",
+    "target_text": "a young man wanted to ask for help with something difficult",
+    "target1_audio_id": "e05ded9f-ea65-46f8-be25-da1f6e6e2eed",
+    "target2_audio_id": "793220f9-e496-49a8-9d38-4fc96f6bc1c9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U03",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1077b44c-eb71-4c75-a259-e3d8db92b9f1",
+    "known_text": "ある若い男性が、何か難しいことで助けを求めたがっていました",
+    "target_text": "a young man wanted to ask for help with something difficult",
+    "target1_audio_id": "e05ded9f-ea65-46f8-be25-da1f6e6e2eed",
+    "target2_audio_id": "793220f9-e496-49a8-9d38-4fc96f6bc1c9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U04",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性はあなたにとても親切で辛抱強いです",
+    "target_text": "the man is very kind and patient with you",
+    "target1_audio_id": "307d94be-9737-42db-8f12-2461de164a37",
+    "target2_audio_id": "5c70114c-246d-4474-a57c-bb087b5d96ce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U04",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "2f8cd18c-f679-471b-8d25-883aa782b5ad",
+    "known_text": "その男性はあなたにとても親切で辛抱強いです",
+    "target_text": "the man is very kind and patient with you",
+    "target1_audio_id": "307d94be-9737-42db-8f12-2461de164a37",
+    "target2_audio_id": "5c70114c-246d-4474-a57c-bb087b5d96ce",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U05",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今日あなたと話したがっていた男性を見ました",
+    "target_text": "I saw a man who wanted to speak with you today",
+    "target1_audio_id": "f5dd26ca-aa27-47a6-b811-0155375d02e8",
+    "target2_audio_id": "796c3066-930e-46ab-9577-e8c87c2ca749",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U05",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "20d10d90-4e06-4db9-b9b4-fbe84dce9280",
+    "known_text": "今日あなたと話したがっていた男性を見ました",
+    "target_text": "I saw a man who wanted to speak with you today",
+    "target1_audio_id": "f5dd26ca-aa27-47a6-b811-0155375d02e8",
+    "target2_audio_id": "796c3066-930e-46ab-9577-e8c87c2ca749",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U06",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性はとても一生懸命働いていて、やめるつもりはありません",
+    "target_text": "the man works very hard and isn't going to stop",
+    "target1_audio_id": "3cdc6935-6702-4b1e-ada2-4b179eed86c9",
+    "target2_audio_id": "c8d78e48-fea8-4290-a16a-df7a3724cce1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U06",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "0c3f5886-54e0-4354-ba35-e0ce20820968",
+    "known_text": "その男性はとても一生懸命働いていて、やめるつもりはありません",
+    "target_text": "the man works very hard and isn't going to stop",
+    "target1_audio_id": "3cdc6935-6702-4b1e-ada2-4b179eed86c9",
+    "target2_audio_id": "c8d78e48-fea8-4290-a16a-df7a3724cce1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U07",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "ある若い男性が、あなたが帰る前に何か聞きたがっていました",
+    "target_text": "a young man wanted to ask you something before you leave",
+    "target1_audio_id": "6e874e25-fe84-49b1-8112-95f7dda4dd1f",
+    "target2_audio_id": "97e3e08b-849c-461e-8a61-59231095edcf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U07",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1f99dbec-617f-418a-9600-77b2a732d91f",
+    "known_text": "ある若い男性が、あなたが帰る前に何か聞きたがっていました",
+    "target_text": "a young man wanted to ask you something before you leave",
+    "target1_audio_id": "6e874e25-fe84-49b1-8112-95f7dda4dd1f",
+    "target2_audio_id": "97e3e08b-849c-461e-8a61-59231095edcf",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U08",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性は、あなたに必要なものを私が覚えるのを手伝おうとしています",
+    "target_text": "the man is trying to help me remember what you need",
+    "target1_audio_id": "a48a3104-d045-4660-870b-50bb892d2c70",
+    "target2_audio_id": "733672d6-9682-4fd3-abff-880e8f34252c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U08",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "9ffacd02-cc96-4d11-95a1-a86737ac65e6",
+    "known_text": "その男性は、あなたに必要なものを私が覚えるのを手伝おうとしています",
+    "target_text": "the man is trying to help me remember what you need",
+    "target1_audio_id": "a48a3104-d045-4660-870b-50bb892d2c70",
+    "target2_audio_id": "733672d6-9682-4fd3-abff-880e8f34252c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U09",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "私の友達と一緒に市役所で働いている男性を知っています",
+    "target_text": "I know a man who works for the council with my friend",
+    "target1_audio_id": "1bd910ba-88ab-4274-9597-746c7355fe45",
+    "target2_audio_id": "81bca51c-b702-4da8-8e46-62cc0e89c153",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U09",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "74f6cedc-755e-4b53-ae5c-56873a8c70a5",
+    "known_text": "私の友達と一緒に市役所で働いている男性を知っています",
+    "target_text": "I know a man who works for the council with my friend",
+    "target1_audio_id": "1bd910ba-88ab-4274-9597-746c7355fe45",
+    "target2_audio_id": "81bca51c-b702-4da8-8e46-62cc0e89c153",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U10",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "今朝、ある若い男性が助けを求めに来ました",
+    "target_text": "a young man came to ask for help this morning",
+    "target1_audio_id": "b78a500d-f2cf-4717-b92e-3db764b67645",
+    "target2_audio_id": "1ed9b789-3b06-412c-98b3-590c93a7f526",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U10",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1836877c-7972-4c1f-8b69-fa9b356a7f50",
+    "known_text": "今朝、ある若い男性が助けを求めに来ました",
+    "target_text": "a young man came to ask for help this morning",
+    "target1_audio_id": "b78a500d-f2cf-4717-b92e-3db764b67645",
+    "target2_audio_id": "1ed9b789-3b06-412c-98b3-590c93a7f526",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U11",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたがわからないとき、その男性はとても辛抱強いです",
+    "target_text": "the man is very patient when you don't understand",
+    "target1_audio_id": "e5048cd8-188f-40a8-bbe2-138f883a9994",
+    "target2_audio_id": "8ec17fed-7473-4cf6-a589-fbacf1723f67",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U11",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1a053eab-2b12-4bc9-b68e-b9b8a8f8f0c0",
+    "known_text": "あなたがわからないとき、その男性はとても辛抱強いです",
+    "target_text": "the man is very patient when you don't understand",
+    "target1_audio_id": "e5048cd8-188f-40a8-bbe2-138f883a9994",
+    "target2_audio_id": "8ec17fed-7473-4cf6-a589-fbacf1723f67",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U12",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたに何か新しいことを教えたがっていた男性を見ました",
+    "target_text": "I saw a man who wanted to tell you something new",
+    "target1_audio_id": "33f320ac-5db6-4be1-b93d-a016ed654c46",
+    "target2_audio_id": "0f9940a4-ed6c-4205-b26a-4fe37f6a00b2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U12",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "64f62ec7-1ea0-48a9-b48f-389428906933",
+    "known_text": "あなたに何か新しいことを教えたがっていた男性を見ました",
+    "target_text": "I saw a man who wanted to tell you something new",
+    "target1_audio_id": "33f320ac-5db6-4be1-b93d-a016ed654c46",
+    "target2_audio_id": "0f9940a4-ed6c-4205-b26a-4fe37f6a00b2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U13",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "ある男性が助けを求めに来ましたが、彼が何を欲しかったのかわかりません",
+    "target_text": "a man came to ask for help but I'm not sure what he wanted",
+    "target1_audio_id": "1b933719-8a54-425a-932a-7c76a30f1316",
+    "target2_audio_id": "51a96f3f-d2fe-4f84-a345-037b8401b6b6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U13",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "916eb68b-ed3e-40b3-aacf-e70c91557cb6",
+    "known_text": "ある男性が助けを求めに来ましたが、彼が何を欲しかったのかわかりません",
+    "target_text": "a man came to ask for help but I'm not sure what he wanted",
+    "target1_audio_id": "1b933719-8a54-425a-932a-7c76a30f1316",
+    "target2_audio_id": "51a96f3f-d2fe-4f84-a345-037b8401b6b6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U14",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性は先生で、私の息子と一緒に働いています",
+    "target_text": "the man is a teacher and works with my son",
+    "target1_audio_id": "0fb670a6-902a-4334-bb9b-4bc3222699bb",
+    "target2_audio_id": "36370b40-66d5-4632-a0d3-56b2234aa158",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U14",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "d90bfd4e-66ff-486b-9643-8838184db2bd",
+    "known_text": "その男性は先生で、私の息子と一緒に働いています",
+    "target_text": "the man is a teacher and works with my son",
+    "target1_audio_id": "0fb670a6-902a-4334-bb9b-4bc3222699bb",
+    "target2_audio_id": "36370b40-66d5-4632-a0d3-56b2234aa158",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L01U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L01U15",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "その男性が来週そこにいるかどうかわかりません",
+    "target_text": "I'm not sure if the man is going to be there next week",
+    "target1_audio_id": "9a04c9c2-76eb-4b15-8fa9-89067664fe3b",
+    "target2_audio_id": "30b22f98-b4f6-407a-9555-3a17b96b7137",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L01U15",
+    "seed_number": 227,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "496fbf25-f0ad-4c63-be31-7c977a0ee7f8",
+    "known_text": "その男性が来週そこにいるかどうかわかりません",
+    "target_text": "I'm not sure if the man is going to be there next week",
+    "target1_audio_id": "9a04c9c2-76eb-4b15-8fa9-89067664fe3b",
+    "target2_audio_id": "30b22f98-b4f6-407a-9555-3a17b96b7137",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B02",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性はとても親切です",
+    "target_text": "that man is very kind",
+    "target1_audio_id": "d096ad8e-e313-40cb-ac6c-e245d12d419e",
+    "target2_audio_id": "44535976-4689-49b0-87b6-17b5ed9f35f7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B02",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "74734bb5-8045-49a7-b19a-27f070bd48a9",
+    "known_text": "あの男性はとても親切です",
+    "target_text": "that man is very kind",
+    "target1_audio_id": "d096ad8e-e313-40cb-ac6c-e245d12d419e",
+    "target2_audio_id": "44535976-4689-49b0-87b6-17b5ed9f35f7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B03",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は先生です",
+    "target_text": "that man is a teacher",
+    "target1_audio_id": "285bdd9b-7bfb-43e2-bdf6-c882b410a42a",
+    "target2_audio_id": "3ec93e67-7c35-4f40-9de7-6002ce694cfc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B03",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "52f44898-f960-4ef3-bc44-64fe203fe0bc",
+    "known_text": "あの男性は先生です",
+    "target_text": "that man is a teacher",
+    "target1_audio_id": "285bdd9b-7bfb-43e2-bdf6-c882b410a42a",
+    "target2_audio_id": "3ec93e67-7c35-4f40-9de7-6002ce694cfc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B04",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性はあなたを手伝うつもりです",
+    "target_text": "that man is going to help you",
+    "target1_audio_id": "77bf5953-27be-4c84-bfb4-61b268c270a2",
+    "target2_audio_id": "3d6213e4-b9ac-4e75-b1b0-b64ec2feb9e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B04",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "b9922d4e-878b-4ece-a604-9c5314974abf",
+    "known_text": "あの男性はあなたを手伝うつもりです",
+    "target_text": "that man is going to help you",
+    "target1_audio_id": "77bf5953-27be-4c84-bfb4-61b268c270a2",
+    "target2_audio_id": "3d6213e4-b9ac-4e75-b1b0-b64ec2feb9e3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B05",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は私を手伝おうとしています",
+    "target_text": "that man is trying to help me",
+    "target1_audio_id": "9f6d43c8-fd46-4b30-b3ba-fb68dc94d738",
+    "target2_audio_id": "470e8591-1832-4f89-8f2a-91ff48d0638d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B05",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "41a6a8e4-a4e2-47d7-b524-943eafaad8a7",
+    "known_text": "あの男性は私を手伝おうとしています",
+    "target_text": "that man is trying to help me",
+    "target1_audio_id": "9f6d43c8-fd46-4b30-b3ba-fb68dc94d738",
+    "target2_audio_id": "470e8591-1832-4f89-8f2a-91ff48d0638d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B06",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性はあなたに何か聞きたがっていました",
+    "target_text": "that man wanted to ask you something",
+    "target1_audio_id": "410c0cec-aa52-4110-bee5-8309374e2278",
+    "target2_audio_id": "fc1734ff-691b-4439-bb75-aadfb230dea2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B06",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "c5d192c5-5cf0-498c-9a05-c39d2e5c765a",
+    "known_text": "あの男性はあなたに何か聞きたがっていました",
+    "target_text": "that man wanted to ask you something",
+    "target1_audio_id": "410c0cec-aa52-4110-bee5-8309374e2278",
+    "target2_audio_id": "fc1734ff-691b-4439-bb75-aadfb230dea2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B07",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性はとても辛抱強いです",
+    "target_text": "that man is very patient",
+    "target1_audio_id": "fed3b90c-d3ed-4826-ad61-3a79f30cddd0",
+    "target2_audio_id": "9721c27f-b59c-403d-81d4-a003f0a9ad1a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B07",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "272f4512-9d7d-4d96-9d81-03b748e8c3ec",
+    "known_text": "あの男性はとても辛抱強いです",
+    "target_text": "that man is very patient",
+    "target1_audio_id": "fed3b90c-d3ed-4826-ad61-3a79f30cddd0",
+    "target2_audio_id": "9721c27f-b59c-403d-81d4-a003f0a9ad1a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02B08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02B08",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性はとても一生懸命働いています",
+    "target_text": "that man works very hard",
+    "target1_audio_id": "daabd3bf-9d3a-4c84-bfda-73a2dc08729e",
+    "target2_audio_id": "f7fb8da0-adc6-4b6a-b7da-7c466e6ad309",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02B08",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "7e40d9bd-4bf5-45bb-94b2-8562390cc2ae",
+    "known_text": "あの男性はとても一生懸命働いています",
+    "target_text": "that man works very hard",
+    "target1_audio_id": "daabd3bf-9d3a-4c84-bfda-73a2dc08729e",
+    "target2_audio_id": "f7fb8da0-adc6-4b6a-b7da-7c466e6ad309",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U01",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+    "target_text": "that man is trying to help me understand what you said",
+    "target1_audio_id": "eae909c4-5ab1-437e-ad1e-3ebc6a37d175",
+    "target2_audio_id": "314e2c2d-a43b-40dd-a5de-fe0522a7d317",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U01",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "30c8945d-b316-4d3f-b08e-e016accc372f",
+    "known_text": "あの男性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+    "target_text": "that man is trying to help me understand what you said",
+    "target1_audio_id": "eae909c4-5ab1-437e-ad1e-3ebc6a37d175",
+    "target2_audio_id": "314e2c2d-a43b-40dd-a5de-fe0522a7d317",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U02",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性はあなたにとても親切で辛抱強いです",
+    "target_text": "that man is very kind and patient with you",
+    "target1_audio_id": "7dca5634-b64f-4e0f-aac1-109010285dd7",
+    "target2_audio_id": "935e991d-0114-4658-a49c-08738a71aab1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U02",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "a595704e-e064-40bc-a134-614af76f2895",
+    "known_text": "あの男性はあなたにとても親切で辛抱強いです",
+    "target_text": "that man is very kind and patient with you",
+    "target1_audio_id": "7dca5634-b64f-4e0f-aac1-109010285dd7",
+    "target2_audio_id": "935e991d-0114-4658-a49c-08738a71aab1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U03",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性が来週戻ってくるつもりかどうかわかりません",
+    "target_text": "I'm not sure if that man is going to come back next week",
+    "target1_audio_id": "2cc0619b-fe94-4fce-94b6-1ae9f6780218",
+    "target2_audio_id": "c431b40d-8e32-4913-bca4-dda1b4423c26",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U03",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "c9ded500-ca16-43f8-8314-9ecf09e96f63",
+    "known_text": "あの男性が来週戻ってくるつもりかどうかわかりません",
+    "target_text": "I'm not sure if that man is going to come back next week",
+    "target1_audio_id": "2cc0619b-fe94-4fce-94b6-1ae9f6780218",
+    "target2_audio_id": "c431b40d-8e32-4913-bca4-dda1b4423c26",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U04",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、私の息子を手伝いたかった先生です",
+    "target_text": "that man is a teacher who wanted to help my son",
+    "target1_audio_id": "181d3b12-6fec-46f4-9671-9942b5b7d212",
+    "target2_audio_id": "abef18a2-82d6-47fa-ab2e-b1cd11b87651",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U04",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "1128d73d-eb25-43cf-b839-8d3332e72a58",
+    "known_text": "あの男性は、私の息子を手伝いたかった先生です",
+    "target_text": "that man is a teacher who wanted to help my son",
+    "target1_audio_id": "181d3b12-6fec-46f4-9671-9942b5b7d212",
+    "target2_audio_id": "abef18a2-82d6-47fa-ab2e-b1cd11b87651",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U05",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は今朝、助けを求めに来ました",
+    "target_text": "that man came to ask for help this morning",
+    "target1_audio_id": "5a869e95-fc55-4294-975f-f9d64d7e8ee0",
+    "target2_audio_id": "5901d0e5-38a9-42e8-87de-ae7a1177bd96",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U05",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e3ae2434-466f-4fae-b523-1dcee4424ca2",
+    "known_text": "あの男性は今朝、助けを求めに来ました",
+    "target_text": "that man came to ask for help this morning",
+    "target1_audio_id": "5a869e95-fc55-4294-975f-f9d64d7e8ee0",
+    "target2_audio_id": "5901d0e5-38a9-42e8-87de-ae7a1177bd96",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U06",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性が今日そこにいるつもりかどうか知っていますか？",
+    "target_text": "do you know if that man is going to be there today?",
+    "target1_audio_id": "ec1bcee8-a0c0-4ef9-baba-d02ba592aa05",
+    "target2_audio_id": "e3ef0634-1062-4870-86e8-dd560719f37d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U06",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "5810a7a9-1288-40aa-8f70-8d8fb0a8acfc",
+    "known_text": "あの男性が今日そこにいるつもりかどうか知っていますか？",
+    "target_text": "do you know if that man is going to be there today?",
+    "target1_audio_id": "ec1bcee8-a0c0-4ef9-baba-d02ba592aa05",
+    "target2_audio_id": "e3ef0634-1062-4870-86e8-dd560719f37d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U08",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性を見ました。彼はあなたと話したがっていました",
+    "target_text": "I saw that man and he wanted to speak with you",
+    "target1_audio_id": "13af05af-68e7-4785-8785-bbb031dac09d",
+    "target2_audio_id": "efea1d75-9971-4709-871d-e84d863142fb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U08",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "b2958493-73e7-40d5-9017-6ff1bec5144d",
+    "known_text": "あの男性を見ました。彼はあなたと話したがっていました",
+    "target_text": "I saw that man and he wanted to speak with you",
+    "target1_audio_id": "13af05af-68e7-4785-8785-bbb031dac09d",
+    "target2_audio_id": "efea1d75-9971-4709-871d-e84d863142fb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U09",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、何か大切なことについてあなたと話すつもりです",
+    "target_text": "that man is going to speak with you about something important",
+    "target1_audio_id": "1378b7be-24b0-4c83-9a3c-9d829982eb7b",
+    "target2_audio_id": "f8a00391-0eb3-4583-8bcf-8c707894cb4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U09",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e6eb4aa2-15dd-4661-8647-2b193e54114a",
+    "known_text": "あの男性は、何か大切なことについてあなたと話すつもりです",
+    "target_text": "that man is going to speak with you about something important",
+    "target1_audio_id": "1378b7be-24b0-4c83-9a3c-9d829982eb7b",
+    "target2_audio_id": "f8a00391-0eb3-4583-8bcf-8c707894cb4b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U10",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は助けを求めたかったけれど、確かではなかったと思います",
+    "target_text": "I think that man wanted to ask for help but wasn't sure",
+    "target1_audio_id": "92d56177-faef-432b-ac98-c55bc038a5eb",
+    "target2_audio_id": "33e3b8bf-5925-48bd-91f1-7194b5517707",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U10",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "98c842e2-96f6-42a6-bdb0-6f01762f601e",
+    "known_text": "あの男性は助けを求めたかったけれど、確かではなかったと思います",
+    "target_text": "I think that man wanted to ask for help but wasn't sure",
+    "target1_audio_id": "92d56177-faef-432b-ac98-c55bc038a5eb",
+    "target2_audio_id": "33e3b8bf-5925-48bd-91f1-7194b5517707",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U11",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あなたが答えを知らないとき、あの男性はとても辛抱強いです",
+    "target_text": "that man is very patient when you don't know the answer",
+    "target1_audio_id": "2bd06f7e-c310-4791-ad63-e1addef9506f",
+    "target2_audio_id": "fddbbf37-e5da-4f9d-838f-f781ea3feee7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U11",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "c2b9617b-f85f-45a0-a9bd-03df13de7f77",
+    "known_text": "あなたが答えを知らないとき、あの男性はとても辛抱強いです",
+    "target_text": "that man is very patient when you don't know the answer",
+    "target1_audio_id": "2bd06f7e-c310-4791-ad63-e1addef9506f",
+    "target2_audio_id": "fddbbf37-e5da-4f9d-838f-f781ea3feee7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U12",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は私たちに何か新しいことを教えるつもりだと思いますか？",
+    "target_text": "do you think that man is going to tell us something new?",
+    "target1_audio_id": "e7b84721-bc8e-4b48-b267-cbc1a2d414c2",
+    "target2_audio_id": "df2601a0-92fa-402a-a0fe-61a13adaff05",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U12",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e0b41116-9ab0-488c-98b0-e17fecd174c9",
+    "known_text": "あの男性は私たちに何か新しいことを教えるつもりだと思いますか？",
+    "target_text": "do you think that man is going to tell us something new?",
+    "target1_audio_id": "e7b84721-bc8e-4b48-b267-cbc1a2d414c2",
+    "target2_audio_id": "df2601a0-92fa-402a-a0fe-61a13adaff05",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U13",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、あなたが帰る前に私たちに何かを説明したがっていました",
+    "target_text": "that man wanted to explain something to us before you leave",
+    "target1_audio_id": "ce9ba80b-431a-4d75-808c-0142b5576b93",
+    "target2_audio_id": "41b2d066-7458-4f96-8ea9-2c2ca2f50847",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U13",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "4280a1b7-d5a8-4dcf-9cff-3679ebfc25e1",
+    "known_text": "あの男性は、あなたが帰る前に私たちに何かを説明したがっていました",
+    "target_text": "that man wanted to explain something to us before you leave",
+    "target1_audio_id": "ce9ba80b-431a-4d75-808c-0142b5576b93",
+    "target2_audio_id": "41b2d066-7458-4f96-8ea9-2c2ca2f50847",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U14",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性を知っています。彼は私を手伝おうとしています",
+    "target_text": "I know that man and he's trying to help me",
+    "target1_audio_id": "88cf183c-e624-49f5-ad39-753aeba7a273",
+    "target2_audio_id": "95f1b027-459d-437e-88d3-de12332b8b6d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U14",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "4c3c7c95-f488-49a6-a237-ebc1e4ee03a0",
+    "known_text": "あの男性を知っています。彼は私を手伝おうとしています",
+    "target_text": "I know that man and he's trying to help me",
+    "target1_audio_id": "88cf183c-e624-49f5-ad39-753aeba7a273",
+    "target2_audio_id": "95f1b027-459d-437e-88d3-de12332b8b6d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L02U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L02U15",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は後で来て、あなたを手伝うつもりです",
+    "target_text": "that man is going to come and help you later on",
+    "target1_audio_id": "52c4116c-eeaf-485c-a5c9-693a339f5b6e",
+    "target2_audio_id": "0f9a40d1-0159-46c0-bce4-4ad1e5a5e79c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L02U15",
+    "seed_number": 227,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "96f1a11b-117f-4f41-85e2-90bd81514768",
+    "known_text": "あの男性は後で来て、あなたを手伝うつもりです",
+    "target_text": "that man is going to come and help you later on",
+    "target1_audio_id": "52c4116c-eeaf-485c-a5c9-693a339f5b6e",
+    "target2_audio_id": "0f9a40d1-0159-46c0-bce4-4ad1e5a5e79c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B02",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はあなたに何かを教えるつもりです",
+    "target_text": "he is going to tell you something",
+    "target1_audio_id": "e93f97a1-56bd-4ddd-998e-107320e5c47a",
+    "target2_audio_id": "c9a46e1a-cf87-4e09-a120-b646ac29f7dd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B02",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "ce9091a8-d1e6-4f9a-a46d-30c88f2d3d89",
+    "known_text": "彼はあなたに何かを教えるつもりです",
+    "target_text": "he is going to tell you something",
+    "target1_audio_id": "e93f97a1-56bd-4ddd-998e-107320e5c47a",
+    "target2_audio_id": "c9a46e1a-cf87-4e09-a120-b646ac29f7dd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B03",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は私に何かを教えるつもりです",
+    "target_text": "she is going to tell me something",
+    "target1_audio_id": "5a7b30a5-cf0d-4aac-968c-4ac4fb60fab8",
+    "target2_audio_id": "5620f4c7-efc9-48f6-969b-596fc5a97c3c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B03",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "c20e844b-70a7-46fe-87e0-3a8b68d06c59",
+    "known_text": "彼女は私に何かを教えるつもりです",
+    "target_text": "she is going to tell me something",
+    "target1_audio_id": "5a7b30a5-cf0d-4aac-968c-4ac4fb60fab8",
+    "target2_audio_id": "5620f4c7-efc9-48f6-969b-596fc5a97c3c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B04",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は私たちに何か新しいことを教えるつもりです",
+    "target_text": "that man is going to tell us something new",
+    "target1_audio_id": "29f29f54-e9e8-4128-b1fe-40f0273cdf62",
+    "target2_audio_id": "10148c11-d61e-47cd-ba6a-04186d023a3f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B04",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "5c9fd8ec-8a02-4367-aead-7a5b50aab177",
+    "known_text": "あの男性は私たちに何か新しいことを教えるつもりです",
+    "target_text": "that man is going to tell us something new",
+    "target1_audio_id": "29f29f54-e9e8-4128-b1fe-40f0273cdf62",
+    "target2_audio_id": "10148c11-d61e-47cd-ba6a-04186d023a3f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B05",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はあなたが何をする必要があるか教えるつもりです",
+    "target_text": "he is going to tell you what you need to do",
+    "target1_audio_id": "cacc01a4-1319-42c5-80e0-856409c14c34",
+    "target2_audio_id": "bdc16744-ad92-40a6-937a-8a91bc36734b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B05",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "63b1a0a7-a5cd-46ec-986f-dee3952fd129",
+    "known_text": "彼はあなたが何をする必要があるか教えるつもりです",
+    "target_text": "he is going to tell you what you need to do",
+    "target1_audio_id": "cacc01a4-1319-42c5-80e0-856409c14c34",
+    "target2_audio_id": "bdc16744-ad92-40a6-937a-8a91bc36734b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B06",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女はあなたが言ったことを私に教えるつもりです",
+    "target_text": "she is going to tell me what you said",
+    "target1_audio_id": "7610aedf-497d-4ec9-a4ae-056e5d19ce0b",
+    "target2_audio_id": "9ef58cb3-e157-4ecb-990e-27c20935677b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B06",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "c5de2950-1a7f-4ea1-879e-6ae58d92e2dc",
+    "known_text": "彼女はあなたが言ったことを私に教えるつもりです",
+    "target_text": "she is going to tell me what you said",
+    "target1_audio_id": "7610aedf-497d-4ec9-a4ae-056e5d19ce0b",
+    "target2_audio_id": "9ef58cb3-e157-4ecb-990e-27c20935677b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B07",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はあなたに何か違うことを教えるつもりです",
+    "target_text": "he is going to tell you something different",
+    "target1_audio_id": "477ac8d5-008f-4b8d-aa63-d58baad8a046",
+    "target2_audio_id": "5dde2688-563e-4716-9a2d-2da9451c9c5f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B07",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "3af6d800-5dbc-49bc-ae4e-b2dd7b48e9b7",
+    "known_text": "彼はあなたに何か違うことを教えるつもりです",
+    "target_text": "he is going to tell you something different",
+    "target1_audio_id": "477ac8d5-008f-4b8d-aa63-d58baad8a046",
+    "target2_audio_id": "5dde2688-563e-4716-9a2d-2da9451c9c5f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03B08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03B08",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は私たちに何か大切なことを教えるつもりです",
+    "target_text": "she is going to tell us something important",
+    "target1_audio_id": "7b1c6b1b-c37d-46f7-9bff-5228661c6163",
+    "target2_audio_id": "7125ae04-80ab-4b87-adb8-551fa158c79e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03B08",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "b364c6e5-871b-4f8b-892b-60fd8f3f8f00",
+    "known_text": "彼女は私たちに何か大切なことを教えるつもりです",
+    "target_text": "she is going to tell us something important",
+    "target1_audio_id": "7b1c6b1b-c37d-46f7-9bff-5228661c6163",
+    "target2_audio_id": "7125ae04-80ab-4b87-adb8-551fa158c79e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 49,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U01"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U01",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は、あなたが帰る前に何か大切なことを教えるつもりです",
+    "target_text": "he is going to tell you something important before you leave",
+    "target1_audio_id": "f2a8235e-6ae5-4bc0-bd6b-70d5fdacaa69",
+    "target2_audio_id": "9809ccf6-08d5-4834-919e-05d4cacdaad3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U01",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "4f5fd05c-b824-4c81-84ba-c8a2d28c7852",
+    "known_text": "彼は、あなたが帰る前に何か大切なことを教えるつもりです",
+    "target_text": "he is going to tell you something important before you leave",
+    "target1_audio_id": "f2a8235e-6ae5-4bc0-bd6b-70d5fdacaa69",
+    "target2_audio_id": "9809ccf6-08d5-4834-919e-05d4cacdaad3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 50,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U02"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U02",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は、あなたが知りたかったことを私に教えるつもりです",
+    "target_text": "she is going to tell me what you wanted to know",
+    "target1_audio_id": "4086055d-25ec-46bc-b1f9-a2ab3ef4d7b0",
+    "target2_audio_id": "89e01db8-be25-49cf-8022-b96966fb461d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U02",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "f492ac75-1032-4f65-99fc-8bcda60688ba",
+    "known_text": "彼女は、あなたが知りたかったことを私に教えるつもりです",
+    "target_text": "she is going to tell me what you wanted to know",
+    "target1_audio_id": "4086055d-25ec-46bc-b1f9-a2ab3ef4d7b0",
+    "target2_audio_id": "89e01db8-be25-49cf-8022-b96966fb461d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 51,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U03"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U03",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、市役所について何か新しいことを私たちに教えるつもりです",
+    "target_text": "that man is going to tell us something new about the council",
+    "target1_audio_id": "85412961-1197-45b6-996e-43f9ec81fd53",
+    "target2_audio_id": "419064ef-e359-4905-94a5-c42ea86da5f4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U03",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "d6fefbb7-6d29-41bf-84cf-8a8aa740bd73",
+    "known_text": "あの男性は、市役所について何か新しいことを私たちに教えるつもりです",
+    "target_text": "that man is going to tell us something new about the council",
+    "target1_audio_id": "85412961-1197-45b6-996e-43f9ec81fd53",
+    "target2_audio_id": "419064ef-e359-4905-94a5-c42ea86da5f4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 52,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U04"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U04",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は今朝、あなたが何をする必要があるか教えるつもりです",
+    "target_text": "he is going to tell you what you need to do this morning",
+    "target1_audio_id": "23361a54-5e84-4e2e-83bd-4e2dd010a675",
+    "target2_audio_id": "8fb14610-fe8a-4900-9182-80239acda629",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U04",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "89f24436-d826-4514-8bfd-8c077f87021e",
+    "known_text": "彼は今朝、あなたが何をする必要があるか教えるつもりです",
+    "target_text": "he is going to tell you what you need to do this morning",
+    "target1_audio_id": "23361a54-5e84-4e2e-83bd-4e2dd010a675",
+    "target2_audio_id": "8fb14610-fe8a-4900-9182-80239acda629",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 53,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U05"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U05",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、私が大切だと思うことを私に教えるつもりです",
+    "target_text": "that man is going to tell me something I think is important",
+    "target1_audio_id": "e8e4dda9-ca4f-4555-b5bb-dc8486b46416",
+    "target2_audio_id": "d9da31c3-4eee-4290-9461-4fbe51a3e9d1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U05",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "5c3faaeb-8e86-42ab-8204-7ba69f477061",
+    "known_text": "あの男性は、私が大切だと思うことを私に教えるつもりです",
+    "target_text": "that man is going to tell me something I think is important",
+    "target1_audio_id": "e8e4dda9-ca4f-4555-b5bb-dc8486b46416",
+    "target2_audio_id": "d9da31c3-4eee-4290-9461-4fbe51a3e9d1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 54,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U06"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U06",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は、私が聞きたくなかったことを私に教えるつもりです",
+    "target_text": "she is going to tell me something that I didn't want to hear",
+    "target1_audio_id": "07a8710d-759d-47e8-9438-d90b213d0f1f",
+    "target2_audio_id": "15eff9c4-fd48-4696-8114-1027cce6dbed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U06",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "e4f01f6e-79b0-4578-b674-56cefa4cfa9d",
+    "known_text": "彼女は、私が聞きたくなかったことを私に教えるつもりです",
+    "target_text": "she is going to tell me something that I didn't want to hear",
+    "target1_audio_id": "07a8710d-759d-47e8-9438-d90b213d0f1f",
+    "target2_audio_id": "15eff9c4-fd48-4696-8114-1027cce6dbed",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 55,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U07"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U07",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は明日の朝、答えが何かあなたに教えるつもりです",
+    "target_text": "he is going to tell you what the answer is tomorrow morning",
+    "target1_audio_id": "75d190d6-285e-48b3-9205-542837e818fb",
+    "target2_audio_id": "b83c6f45-dfa7-4fd8-9d05-9bdceb419805",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U07",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "52d859f7-4e42-494f-a451-bc2f012559ef",
+    "known_text": "彼は明日の朝、答えが何かあなたに教えるつもりです",
+    "target_text": "he is going to tell you what the answer is tomorrow morning",
+    "target1_audio_id": "75d190d6-285e-48b3-9205-542837e818fb",
+    "target2_audio_id": "b83c6f45-dfa7-4fd8-9d05-9bdceb419805",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 56,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U08"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U08",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼は今日、あなたに何か違うことを教えるつもりだと思います",
+    "target_text": "I think he is going to tell you something different today",
+    "target1_audio_id": "074c089d-a9fa-45d2-af38-6b6f2674db23",
+    "target2_audio_id": "e816c84e-90d9-456c-92e3-720b4a5e1767",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U08",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "76b13738-49d7-49c9-a298-55871eb23253",
+    "known_text": "彼は今日、あなたに何か違うことを教えるつもりだと思います",
+    "target_text": "I think he is going to tell you something different today",
+    "target1_audio_id": "074c089d-a9fa-45d2-af38-6b6f2674db23",
+    "target2_audio_id": "e816c84e-90d9-456c-92e3-720b4a5e1767",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 57,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U09"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U09",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は、先週あなたがどこで会いたかったか私に教えるつもりです",
+    "target_text": "she is going to tell me where you wanted to meet last week",
+    "target1_audio_id": "e64bb4cc-ab0a-4f27-9a2f-00ce169e3c73",
+    "target2_audio_id": "449c1c7e-0914-41dc-95d3-72b7d417d00e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U09",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "52b8898b-37d5-46a7-a1ef-2e5e5404465f",
+    "known_text": "彼女は、先週あなたがどこで会いたかったか私に教えるつもりです",
+    "target_text": "she is going to tell me where you wanted to meet last week",
+    "target1_audio_id": "e64bb4cc-ab0a-4f27-9a2f-00ce169e3c73",
+    "target2_audio_id": "449c1c7e-0914-41dc-95d3-72b7d417d00e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 58,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U10"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U10",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はあなたに何か新しいことを教えるつもりだと思いますか？",
+    "target_text": "do you think he is going to tell you something new?",
+    "target1_audio_id": "bbcb6b1a-be67-406b-91b1-131f18e5d8e0",
+    "target2_audio_id": "fe0b8c58-041d-42ce-a6fc-39a63dfbea8e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U10",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "92da0368-f89e-4429-a5a5-f039686cf706",
+    "known_text": "彼はあなたに何か新しいことを教えるつもりだと思いますか？",
+    "target_text": "do you think he is going to tell you something new?",
+    "target1_audio_id": "bbcb6b1a-be67-406b-91b1-131f18e5d8e0",
+    "target2_audio_id": "fe0b8c58-041d-42ce-a6fc-39a63dfbea8e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 59,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U11"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U11",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はあなたに何か大切なことを教えるつもりです。そして、あなたは彼に聞いた方がいいです",
+    "target_text": "he is going to tell you something important and you should ask him",
+    "target1_audio_id": "1d2744c3-95e8-49a1-b934-3efbb0f7efbb",
+    "target2_audio_id": "740335f0-5402-41ae-b50f-28aa663bdde7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U11",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "8014cd83-ebad-4ccb-a073-b3e88416981e",
+    "known_text": "彼はあなたに何か大切なことを教えるつもりです。そして、あなたは彼に聞いた方がいいです",
+    "target_text": "he is going to tell you something important and you should ask him",
+    "target1_audio_id": "1d2744c3-95e8-49a1-b934-3efbb0f7efbb",
+    "target2_audio_id": "740335f0-5402-41ae-b50f-28aa663bdde7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 60,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U12"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U12",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "あの男性は、私の友達について私たちに何かを教えるつもりです",
+    "target_text": "that man is going to tell us something about my friend",
+    "target1_audio_id": "6237d2d7-0a42-446f-b9d8-7cf5fa20da06",
+    "target2_audio_id": "8515ef53-44cc-4602-9dee-656cc0a8a9eb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U12",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "f713026d-354d-4db6-a370-9e4250d6628a",
+    "known_text": "あの男性は、私の友達について私たちに何かを教えるつもりです",
+    "target_text": "that man is going to tell us something about my friend",
+    "target1_audio_id": "6237d2d7-0a42-446f-b9d8-7cf5fa20da06",
+    "target2_audio_id": "8515ef53-44cc-4602-9dee-656cc0a8a9eb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 61,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U13"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U13",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は、今朝言いたかったことを私に教えるつもりです",
+    "target_text": "she is going to tell me what she wanted to say this morning",
+    "target1_audio_id": "a8e62ec1-8641-42d5-b15c-72e840bf7bf6",
+    "target2_audio_id": "24a145fa-a51f-41dd-899b-78fef6e7f949",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U13",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "a36f3428-c932-4943-87a9-01463c77da68",
+    "known_text": "彼女は、今朝言いたかったことを私に教えるつもりです",
+    "target_text": "she is going to tell me what she wanted to say this morning",
+    "target1_audio_id": "a8e62ec1-8641-42d5-b15c-72e840bf7bf6",
+    "target2_audio_id": "24a145fa-a51f-41dd-899b-78fef6e7f949",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 62,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U14"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U14",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼はあなたに何か大切なことを教えるつもりなので、彼に聞いた方がいいです",
+    "target_text": "he is going to tell you something important so you should ask him",
+    "target1_audio_id": "60f35935-143a-403c-9051-f1cb3d95a927",
+    "target2_audio_id": "9564046a-fa75-4493-852b-b007563a9300",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U14",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "aa4242a3-0cbe-4fbb-8df5-4a7b70661bb2",
+    "known_text": "彼はあなたに何か大切なことを教えるつもりなので、彼に聞いた方がいいです",
+    "target_text": "he is going to tell you something important so you should ask him",
+    "target1_audio_id": "60f35935-143a-403c-9051-f1cb3d95a927",
+    "target2_audio_id": "9564046a-fa75-4493-852b-b007563a9300",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 63,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_jpn",
+    "id": "eng_for_jpn:S0227L03U15"
+   },
+   "before": {
+    "id": "eng_for_jpn:S0227L03U15",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "彼女は、来週私が何をする必要があるか教えるつもりだと思います",
+    "target_text": "I think she is going to tell me what I need to do next week",
+    "target1_audio_id": "17eccb33-176f-4919-baab-0cc471ff41af",
+    "target2_audio_id": "04a986fb-6917-4a50-97f1-e200ad2704eb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_jpn:S0227L03U15",
+    "seed_number": 227,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "10e42f9f-016d-408e-9581-689e6cf33952",
+    "known_text": "彼女は、来週私が何をする必要があるか教えるつもりだと思います",
+    "target_text": "I think she is going to tell me what I need to do next week",
+    "target1_audio_id": "17eccb33-176f-4919-baab-0cc471ff41af",
+    "target2_audio_id": "04a986fb-6917-4a50-97f1-e200ad2704eb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U14",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U13",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L03B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U14",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U13",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L02B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U15",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U14",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U13",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U12",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U11",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U10",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01B07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0227L01B01",
+   "set": {
+    "known_audio_id": null
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T12-47-14-701Z-dc1a1b2e-4d61-471e-af6b-148940deef9b.json"
+}

@@ -1,0 +1,61 @@
+{
+ "seed": 61,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "पण तुम्ही ते पुन्हा सांगाल का?",
+     "but could you say that again?"
+    ],
+    "U05": [
+     "मला खात्री नाही, तुम्ही ते पुन्हा सांगाल का?",
+     "I'm not sure, could you say that again?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आणि तुम्ही ते पुन्हा सांगाल का?",
+     "and could you say that again?"
+    ],
+    [
+     "use",
+     "मला समजलं नाही, तुम्ही ते पुन्हा सांगाल का?",
+     "I didn't understand, could you say that again?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "थोडं अधिक हळू बोलणे",
+     "to speak a little more slowly"
+    ],
+    "B03": [
+     "थोडं अधिक हळू वाचणे",
+     "to read a little more slowly"
+    ],
+    "U02": [
+     "तुम्ही थोडं अधिक हळू बोलाल का?",
+     "could you speak a little more slowly?"
+    ],
+    "U03": [
+     "मला थोडं अधिक हळू बोलायची गरज आहे",
+     "I need to speak a little more slowly"
+    ],
+    "U05": [
+     "मला ते थोडं अधिक हळू वाचायचं आहे",
+     "I want to read it a little more slowly"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ते थोडं अधिक हळू सांगणे",
+     "to say it a little more slowly"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

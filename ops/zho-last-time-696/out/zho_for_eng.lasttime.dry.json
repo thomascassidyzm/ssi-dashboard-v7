@@ -1,0 +1,367 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0572L02"
+   },
+   "before": {
+    "id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": "S0572L02",
+    "is_new": true,
+    "known_text": "last time",
+    "target_text": "上次",
+    "known_audio_id": "f8ba15f8-3969-423e-a230-75fd901255b1",
+    "target1_audio_id": "5a6d07df-9eb0-4900-b05b-b36f8aa87d28",
+    "target2_audio_id": "6a7b711a-bcb6-4c6a-b05f-1e71b6d82010",
+    "presentation_audio_id": "d372d216-d782-4619-a2d4-aca651f8933f"
+   },
+   "after": {
+    "id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": "S0572L02",
+    "is_new": false,
+    "known_text": "last time",
+    "target_text": "上次",
+    "known_audio_id": "f8ba15f8-3969-423e-a230-75fd901255b1",
+    "target1_audio_id": "5a6d07df-9eb0-4900-b05b-b36f8aa87d28",
+    "target2_audio_id": "6a7b711a-bcb6-4c6a-b05f-1e71b6d82010",
+    "presentation_audio_id": "d372d216-d782-4619-a2d4-aca651f8933f"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0572L02"
+   },
+   "before": {
+    "id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": "S0572L02",
+    "presentation_audio_id": "d372d216-d782-4619-a2d4-aca651f8933f",
+    "known_text": "last time",
+    "target_text": "上次",
+    "known_audio_id": "f8ba15f8-3969-423e-a230-75fd901255b1",
+    "target1_audio_id": "5a6d07df-9eb0-4900-b05b-b36f8aa87d28",
+    "target2_audio_id": "6a7b711a-bcb6-4c6a-b05f-1e71b6d82010"
+   },
+   "after": {
+    "id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": "S0572L02",
+    "presentation_audio_id": null,
+    "known_text": "last time",
+    "target_text": "上次",
+    "known_audio_id": "f8ba15f8-3969-423e-a230-75fd901255b1",
+    "target1_audio_id": "5a6d07df-9eb0-4900-b05b-b36f8aa87d28",
+    "target2_audio_id": "6a7b711a-bcb6-4c6a-b05f-1e71b6d82010"
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.insert",
+   "key": {
+    "id": "zho_for_eng:S0117L01U09"
+   },
+   "before": null,
+   "after": {
+    "id": "zho_for_eng:S0117L01U09",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "what happened last time?",
+    "target_text": "上次发生了什么？",
+    "known_audio_id": "7427cda4-3d33-4b88-8d4c-71b5eaeed11a",
+    "target1_audio_id": "c5b95be0-154c-4d50-82f3-650c8e3745cd",
+    "target2_audio_id": "dc183991-a72e-4e76-a218-662909099f14",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0572L02U04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0572L02U04",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "what happened last time?",
+    "target_text": "上次发生了什么？",
+    "known_audio_id": "7427cda4-3d33-4b88-8d4c-71b5eaeed11a",
+    "target1_audio_id": "c5b95be0-154c-4d50-82f3-650c8e3745cd",
+    "target2_audio_id": "dc183991-a72e-4e76-a218-662909099f14",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.insert",
+   "key": {
+    "id": "zho_for_eng:S0117L01U10"
+   },
+   "before": null,
+   "after": {
+    "id": "zho_for_eng:S0117L01U10",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "last time was great",
+    "target_text": "上次很好",
+    "known_audio_id": "b246722f-427c-4e99-b6ac-2e0e7c9cc703",
+    "target1_audio_id": "486b7a13-8f4e-4edf-9d4e-1ea8df0e435e",
+    "target2_audio_id": "2a7f6b96-34b2-472d-9993-9f057d399c63",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0572L02U05"
+   },
+   "before": {
+    "id": "zho_for_eng:S0572L02U05",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "last time was great",
+    "target_text": "上次很好",
+    "known_audio_id": "b246722f-427c-4e99-b6ac-2e0e7c9cc703",
+    "target1_audio_id": "486b7a13-8f4e-4edf-9d4e-1ea8df0e435e",
+    "target2_audio_id": "2a7f6b96-34b2-472d-9993-9f057d399c63",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.insert",
+   "key": {
+    "id": "zho_for_eng:S0367L01U07"
+   },
+   "before": null,
+   "after": {
+    "id": "zho_for_eng:S0367L01U07",
+    "seed_number": 367,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "nobody came last time",
+    "target_text": "上次没有人来",
+    "known_audio_id": "232cf502-0ccf-4f3c-b114-ed9f16c0d324",
+    "target1_audio_id": "98bdb7ae-437d-4221-916b-670ed0eb1ac7",
+    "target2_audio_id": "476d8899-368c-491b-9674-1c3c7c3634db",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0572L02U03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0572L02U03",
+    "seed_number": 572,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "nobody came last time",
+    "target_text": "上次没有人来",
+    "known_audio_id": "232cf502-0ccf-4f3c-b114-ed9f16c0d324",
+    "target1_audio_id": "98bdb7ae-437d-4221-916b-670ed0eb1ac7",
+    "target2_audio_id": "476d8899-368c-491b-9674-1c3c7c3634db",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0572L02U03",
+    "seed_number": 572,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "nobody came last time",
+    "target_text": "上次没有人来",
+    "word_count": 6,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-06-08T23:40:15.589Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-08T23:40:15.626Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "232cf502-0ccf-4f3c-b114-ed9f16c0d324",
+    "target1_audio_id": "98bdb7ae-437d-4221-916b-670ed0eb1ac7",
+    "target2_audio_id": "476d8899-368c-491b-9674-1c3c7c3634db",
+    "qa_checked": null,
+    "target1_duration_ms": 1440,
+    "target2_duration_ms": 1280,
+    "lego_id": null,
+    "target_text_roman": "shàng cì méi yǒu rén lái",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0367L01U07"
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0572L02U05",
+    "seed_number": 572,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "last time was great",
+    "target_text": "上次很好",
+    "word_count": 5,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-06-08T23:40:15.589Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-08T23:40:15.626Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "b246722f-427c-4e99-b6ac-2e0e7c9cc703",
+    "target1_audio_id": "486b7a13-8f4e-4edf-9d4e-1ea8df0e435e",
+    "target2_audio_id": "2a7f6b96-34b2-472d-9993-9f057d399c63",
+    "qa_checked": null,
+    "target1_duration_ms": 1152,
+    "target2_duration_ms": 984,
+    "lego_id": null,
+    "target_text_roman": "shàng cì hěn hǎo",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0117L01U10"
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0572L02U04",
+    "seed_number": 572,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "what happened last time?",
+    "target_text": "上次发生了什么？",
+    "word_count": 8,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-06-08T23:40:15.589Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-08T23:40:15.626Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "7427cda4-3d33-4b88-8d4c-71b5eaeed11a",
+    "target1_audio_id": "c5b95be0-154c-4d50-82f3-650c8e3745cd",
+    "target2_audio_id": "dc183991-a72e-4e76-a218-662909099f14",
+    "qa_checked": null,
+    "target1_duration_ms": 1320,
+    "target2_duration_ms": 1320,
+    "lego_id": null,
+    "target_text_roman": "shàng cì fāshēng le shénme?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0117L01U09"
+  },
+  {
+   "op": "lego.update",
+   "id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+   "set": {
+    "presentation_audio_id": "d372d216-d782-4619-a2d4-aca651f8933f"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+   "set": {
+    "is_new": true
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

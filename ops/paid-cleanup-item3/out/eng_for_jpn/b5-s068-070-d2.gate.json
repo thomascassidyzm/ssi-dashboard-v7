@@ -1,0 +1,389 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "b5-s068-070-d2.tsv",
+ "at": "2026-11-18T14:31:50.209Z",
+ "rows": [
+  {
+   "id": "S0068L01U04",
+   "role": "use",
+   "target": "what are you looking for with her?",
+   "old": "彼女のために何を探していますか",
+   "new": "彼女と何を探していますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L01U09",
+   "role": "use",
+   "target": "I think it's important to look after my friends",
+   "old": "あなたの友達の世話をすることが大切だと思います",
+   "new": "友達の世話をすることが大切だと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L01U10",
+   "role": "use",
+   "target": "who do you want to look after?",
+   "old": "誰の世話をしているのですか？",
+   "new": "誰の世話をしたいですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L01U11",
+   "role": "use",
+   "target": "it's important to look after my friends and to learn English",
+   "old": "友達を世話をすることと、英語の勉強を続けることの両方が重要です",
+   "new": "友達の世話をすることと英語を学ぶことが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L01U14",
+   "role": "use",
+   "target": "it's important to remember who you want to look after",
+   "old": "誰の世話をしているのかを覚えることが重要です",
+   "new": "誰の世話をしたいか覚えることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L02U08",
+   "role": "use",
+   "target": "you are very young and want to learn English",
+   "old": "あなたはとても若くて英語を学んでいます",
+   "new": "あなたはとても若くて、英語を学びたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L02U10",
+   "role": "use",
+   "target": "that dog is very young and fun",
+   "old": "あの犬はとても若く元気です",
+   "new": "あの犬はとても若くて楽しいです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"that dog is very young and fun\",\"unknown\":\"dog\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0069L02U12",
+   "role": "use",
+   "target": "you are very young but you want to learn English",
+   "old": "英語を学ぶにはとても若いですね",
+   "new": "あなたはとても若いですが、英語を学びたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L03U11",
+   "role": "use",
+   "target": "you are taking too much time to look after the dog",
+   "old": "あなたはその犬の世話をするのにたくさんの時間を使っています",
+   "new": "犬の世話をするのに時間をかけすぎています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L03U13",
+   "role": "use",
+   "target": "Are you going to be able to look after the young dog?",
+   "old": "あなたはその若い犬の世話をすることができますか？",
+   "new": "その若い犬の世話をすることができるようになりますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L03U15",
+   "role": "use",
+   "target": "She didn't want to look after the dog and that isn't easy",
+   "old": "彼女はその犬の世話をしたくなかったのでとても困りました",
+   "new": "彼女は犬の世話をしたくなかったし、それは簡単ではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L04U10",
+   "role": "use",
+   "target": "you are taking too much time to look after the young dog all afternoon",
+   "old": "あなたは午後ずっとその若い犬の世話をするのに時間を使っています",
+   "new": "午後ずっと若い犬の世話をするのに時間をかけすぎています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L04U13",
+   "role": "use",
+   "target": "It's important to take time to look after the young dog",
+   "old": "その若い犬の世話をするのにたくさんの時間がかかります",
+   "new": "若い犬の世話をする時間を取ることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L05U12",
+   "role": "use",
+   "target": "It's important to look after the dog all afternoon",
+   "old": "その犬の世話をするのに午後ずっとかかります",
+   "new": "午後ずっと犬の世話をすることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L06U02",
+   "role": "use",
+   "target": "I didn't want to look after the young dog but I wanted to help my friend",
+   "old": "私はその若い犬の世話をしたくなかったのですが、友達の犬なので仕方がありません",
+   "new": "若い犬の世話をしたくありませんでしたが、友達を手伝いたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L06U03",
+   "role": "use",
+   "target": "I didn't want to look after the dog but I wanted to do it",
+   "old": "私はその犬の世話をしたくなかったのですが、やっぱりその犬の世話をしました",
+   "new": "犬の世話をしたくありませんでしたが、したかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L06U04",
+   "role": "use",
+   "target": "He didn't want to look after the young dog so she wanted to help",
+   "old": "彼はその若い犬の世話をしたくなかったので、彼女が代わりに世話をしました",
+   "new": "彼は若い犬の世話をしたくなかったので、彼女が手伝いたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L01B02",
+   "role": "build",
+   "target": "didn't tell",
+   "old": "教えてくれない",
+   "new": "教えなかった",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L01B04",
+   "role": "build",
+   "target": "wanted to tell",
+   "old": "教えてくれた",
+   "new": "教えたかった",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L01U09",
+   "role": "use",
+   "target": "She didn't want to tell me anything at all",
+   "old": "彼女は私に何も教えてくれませんでした",
+   "new": "彼女は私に何も教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L01U14",
+   "role": "use",
+   "target": "I can tell you what the answer is",
+   "old": "私はあなたにこれが何か教えることができます",
+   "new": "答えが何か教えることができます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L02U05",
+   "role": "use",
+   "target": "She didn't want to tell me where it was at all",
+   "old": "彼女はそれがどこにあるかを私に教えてくれませんでした",
+   "new": "彼女はそれがどこにあるか全然教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L02U06",
+   "role": "use",
+   "target": "He didn't want to tell me where it was",
+   "old": "彼はそれがどこにあるかを知っていましたが教えたくありませんでした",
+   "new": "彼はそれがどこにあるか教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L02U07",
+   "role": "use",
+   "target": "I can't remember where it was at all",
+   "old": "私はそれがどこにあったかをもう覚えていません",
+   "new": "それがどこにあったか全然思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L02U13",
+   "role": "use",
+   "target": "She didn't want to tell me where it was all afternoon",
+   "old": "彼女はそれがどこにあったかをずっと知っていましたが教えたくなかったのです",
+   "new": "彼女は午後ずっと、それがどこにあるか教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L03U03",
+   "role": "use",
+   "target": "It was difficult but interesting",
+   "old": "それは難しかったですが頑張りました",
+   "new": "難しかったですが、面白かったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L03U08",
+   "role": "use",
+   "target": "It was very fun to do",
+   "old": "それはとても良かったです",
+   "new": "するのがとても楽しかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L03U09",
+   "role": "use",
+   "target": "It's useful to know where it was",
+   "old": "それはとても役に立ちました",
+   "new": "それがどこにあったか知るのは役に立ちます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L03U12",
+   "role": "use",
+   "target": "She didn't want to tell me where it was at all",
+   "old": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+   "new": "彼女はそれがどこにあるか全然教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L04U06",
+   "role": "use",
+   "target": "She didn't want to tell me where it was at all",
+   "old": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+   "new": "彼女はそれがどこにあるか全然教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L04U07",
+   "role": "use",
+   "target": "I can't remember where it was at all",
+   "old": "私はそれがどこにあったかをもう覚えていません",
+   "new": "それがどこにあったか全然思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L04U10",
+   "role": "use",
+   "target": "He didn't want to tell me where it was",
+   "old": "彼はそれがどこにあったかを知っていましたが教えたくありませんでした",
+   "new": "彼はそれがどこにあるか教えたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L04U13",
+   "role": "use",
+   "target": "I'm trying to remember why she didn't want to tell me where it was",
+   "old": "なぜ彼女はそれがどこにあったかを私に教えたくなかったのかをずっと考えています",
+   "new": "なぜ彼女がそれがどこにあるか教えたくなかったのか、思い出そうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L05U11",
+   "role": "use",
+   "target": "He didn't want to tell me the answer so I wanted to find it",
+   "old": "彼は私に教えたくなかったので私は自分で答えを調べようとしました",
+   "new": "彼は答えを教えたくなかったので、私は見つけたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L05U14",
+   "role": "use",
+   "target": "He didn't want to tell me something important so I wanted to ask my friend",
+   "old": "彼は私に大切なことを教えたくなかったので、私は友達に聞きました",
+   "new": "彼は大切なことを教えたくなかったので、友達に聞きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L05U15",
+   "role": "use",
+   "target": "She didn't want to tell me where it was and that isn't easy",
+   "old": "彼女はそれがどこにあるか私に教えたくなかったのでとても困りました",
+   "new": "彼女はそれがどこにあるか教えたくなかったし、それは簡単ではありません",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "68": {
+   "before": [
+    "L1: 2 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: 2 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "69": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I want to look after you\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"the young dog\", \"the young dog is very young\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"all afternoon\"",
+    "L5: vocab violations in 2 phrase(s)",
+    "L6: 1 duplicate phrase(s) within this LEGO: \"didn't want to look after\"",
+    "L6: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I want to look after you\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"the young dog\", \"the young dog is very young\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"all afternoon\"",
+    "L5: vocab violations in 2 phrase(s)",
+    "L6: 1 duplicate phrase(s) within this LEGO: \"didn't want to look after\"",
+    "L6: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "70": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Do you want to tell me something?\", \"Why didn't she want to tell me?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"He didn't want to tell me where it was\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"where it was\", \"He didn't want to tell me where it was\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"didn't want to tell me\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Do you want to tell me something?\", \"Why didn't she want to tell me?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"He didn't want to tell me where it was\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"where it was\", \"He didn't want to tell me where it was\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"didn't want to tell me\""
+   ],
+   "newFailures": []
+  }
+ }
+}
