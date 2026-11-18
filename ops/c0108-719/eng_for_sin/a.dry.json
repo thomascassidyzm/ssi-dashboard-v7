@@ -1,0 +1,1187 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "50df26e6-9741-4c16-a966-e1b5e6c03686",
+    "seed_number": 108,
+    "known_text": "රෑ මැද අවදි වෙනවා කියලා ආශා කළේ නෑ.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "38ee1e64-c2da-490e-a64a-6b102b988f4a",
+    "target1_audio_id": "b14c9ad8-b17c-497a-9aba-0d94994d1046",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "50df26e6-9741-4c16-a966-e1b5e6c03686",
+    "seed_number": 108,
+    "known_text": "රෑ මැද අවදි වෙනවා කියලා බලාපොරොත්තු වුණේ නෑ.",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "83aadc6e-b607-426b-b8df-094fb2c4f549",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "hope",
+    "known_text": "බලාපොරොත්තු වෙන්න",
+    "known_audio_id": "96d457eb-c05e-4981-8e66-a410fdd0ce4c",
+    "target1_audio_id": "37ef1dc9-2ada-4336-9320-7772a1f37215",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "338a50fc-968f-4f98-8746-e591a97751b5"
+   },
+   "after": {
+    "id": "83aadc6e-b607-426b-b8df-094fb2c4f549",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "expect",
+    "known_text": "බලාපොරොත්තු වෙන්න",
+    "known_audio_id": "96d457eb-c05e-4981-8e66-a410fdd0ce4c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01B01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "didn't hope to do it",
+    "known_text": "බලාපොරොත්තු නැත්තේ ඒක",
+    "known_audio_id": "b419d1a9-4cb4-4003-9732-fc0f5cd5bfbc",
+    "target1_audio_id": "57cb1fbe-5801-4f62-8b48-44691c732ca2",
+    "target2_audio_id": "4468b71f-b174-47c9-84d9-bca0e4a2a4f8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "didn't expect to do it",
+    "known_text": "බලාපොරොත්තු නැත්තේ ඒක",
+    "known_audio_id": "b419d1a9-4cb4-4003-9732-fc0f5cd5bfbc",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hope it is good",
+    "known_text": "බලාපොරොත්තු වෙනවා ඒක හොඳයි",
+    "known_audio_id": "ce227906-f8f9-477b-9ce5-ae1dfde7c876",
+    "target1_audio_id": "210ed4ea-10db-4e90-8578-d9411d0a6172",
+    "target2_audio_id": "3384d786-2fd2-41f4-a8ba-02eaf5a8b906",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "expect it is good",
+    "known_text": "බලාපොරොත්තු වෙනවා ඒක හොඳයි",
+    "known_audio_id": "ce227906-f8f9-477b-9ce5-ae1dfde7c876",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01B03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hope to do it",
+    "known_text": "බලාපොරොත්තු වෙනවා සිදු කරන්න ඒක",
+    "known_audio_id": "4a4e8a8f-baa9-4a00-aa83-80a13805c453",
+    "target1_audio_id": "257a1c37-bbf3-413b-ba36-3a21af3e6e3f",
+    "target2_audio_id": "b462991f-00e7-40db-9b42-9f3c4e82afc5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "expect to do it",
+    "known_text": "බලාපොරොත්තු වෙනවා සිදු කරන්න ඒක",
+    "known_audio_id": "4a4e8a8f-baa9-4a00-aa83-80a13805c453",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to do it",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ ඒක සිදු කරන්න",
+    "known_audio_id": "ec607ec9-0c25-4a59-9271-c051df498254",
+    "target1_audio_id": "5e38de01-b472-4ed5-9d71-842677a92148",
+    "target2_audio_id": "a115d9f4-c5ac-4985-b3b2-5c35a50a5520",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to do it",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ ඒක සිදු කරන්න",
+    "known_audio_id": "ec607ec9-0c25-4a59-9271-c051df498254",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U02"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope it will work",
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඒක වැඩ කරනවා",
+    "known_audio_id": "54ce3c1d-1eb4-495d-9d2e-0d468b1fb509",
+    "target1_audio_id": "4c5cac8c-feac-478a-9789-932f49dd2e98",
+    "target2_audio_id": "ed136228-0854-48b2-8290-f08165ce6e2f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect it will work",
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඒක වැඩ කරනවා",
+    "known_audio_id": "54ce3c1d-1eb4-495d-9d2e-0d468b1fb509",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "do you hope it will be easy?",
+    "known_text": "ඔයා බලාපොරොත්තු වෙනවාද ඒක පහසුද",
+    "known_audio_id": "36dde31d-5c57-4889-b1df-00dc385c7897",
+    "target1_audio_id": "8fb0562f-0cb0-4232-a0bc-fcab45802cea",
+    "target2_audio_id": "960d462f-8e61-4adf-a667-f76fa69246da",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "do you expect it will be easy?",
+    "known_text": "ඔයා බලාපොරොත්තු වෙනවාද ඒක පහසුද",
+    "known_audio_id": "36dde31d-5c57-4889-b1df-00dc385c7897",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to see you soon",
+    "known_text": "මම බලාපොරොත්තු වෙනවා බලන්න ඔයාව ඉක්මනට",
+    "known_audio_id": "c27da08a-55d8-413e-8a04-00eae4d784f9",
+    "target1_audio_id": "260d51b1-5aa2-4c10-95db-70ab1f01588b",
+    "target2_audio_id": "ad447e68-1a96-4ca5-93e7-42d1bc8d07fb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to see you soon",
+    "known_text": "මම බලාපොරොත්තු වෙනවා බලන්න ඔයාව ඉක්මනට",
+    "known_audio_id": "c27da08a-55d8-413e-8a04-00eae4d784f9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U05"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to learn a lot",
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඉගෙනගන්න බොහෝ",
+    "known_audio_id": "964e1135-923e-4157-86d9-1d6c548c0c24",
+    "target1_audio_id": "b637e3dd-9c63-472f-80ab-769e3fd9f5bb",
+    "target2_audio_id": "a095a4f2-4677-4644-9fce-2f1ef0834df0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to learn a lot",
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඉගෙනගන්න බොහෝ",
+    "known_audio_id": "964e1135-923e-4157-86d9-1d6c548c0c24",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U06"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "do you hope to change it?",
+    "known_text": "ඔයා බලාපොරොත්තු වෙනවාද ඒක වෙනස් කරන්න",
+    "known_audio_id": "f6b3011e-bc0c-4a0e-b907-c44852424001",
+    "target1_audio_id": "ab805886-d9f1-4b46-b31a-62f4c6efc482",
+    "target2_audio_id": "4744b906-ef67-4702-9509-fa5c1a030992",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "do you expect to change it?",
+    "known_text": "ඔයා බලාපොරොත්තු වෙනවාද ඒක වෙනස් කරන්න",
+    "known_audio_id": "f6b3011e-bc0c-4a0e-b907-c44852424001",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U07"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope it would be difficult",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ ඒක අමාරු වෙනවා",
+    "known_audio_id": "1dda72c2-c9a7-4f5d-99ef-2c8ebf429f10",
+    "target1_audio_id": "55798ec4-f1ab-4db1-af0f-f3f4cdf70c3a",
+    "target2_audio_id": "3ca4cb60-a729-4291-a71b-1620337e86f1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect it would be difficult",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ ඒක අමාරු වෙනවා",
+    "known_audio_id": "1dda72c2-c9a7-4f5d-99ef-2c8ebf429f10",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L01U08"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope it is working",
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඒක ක්‍රියා කරනවා",
+    "known_audio_id": "6da30f2e-fda3-4385-ac43-d5db568ef715",
+    "target1_audio_id": "6d106286-2bdc-4005-b299-a6950c2986b1",
+    "target2_audio_id": "74e68fd2-c659-4381-8a4b-5a18fc685753",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect it is working",
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඒක ක්‍රියා කරනවා",
+    "known_audio_id": "6da30f2e-fda3-4385-ac43-d5db568ef715",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "b22f13e5-c0ab-4c3b-8c77-3af872b4b899",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "wake",
+    "known_text": "නැගිටින්න",
+    "known_audio_id": "c869829d-0fef-411e-abf7-6b1cf2fc04c7",
+    "target1_audio_id": "d084c5e9-8b2c-4581-95a3-51bab68bb7e1",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "3006c5e7-f998-4218-9b8f-bbb05110f0c2"
+   },
+   "after": {
+    "id": "b22f13e5-c0ab-4c3b-8c77-3af872b4b899",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "wake up",
+    "known_text": "නැගිටින්න",
+    "known_audio_id": "c869829d-0fef-411e-abf7-6b1cf2fc04c7",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "should wake in the morning",
+    "known_text": "නැගිටින්න ඕනේ උදේට",
+    "known_audio_id": "609abe60-f5c0-449c-9bbb-e02df02a6ed8",
+    "target1_audio_id": "ec9b7477-cb25-4b20-be89-47713312f1d4",
+    "target2_audio_id": "09713049-9759-4a9f-934a-5dd7f78ba5d5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "should wake up in the morning",
+    "known_text": "නැගිටින්න ඕනේ උදේට",
+    "known_audio_id": "609abe60-f5c0-449c-9bbb-e02df02a6ed8",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake soon",
+    "known_text": "නැගිටින්න ඉක්මනට",
+    "known_audio_id": "5f5baf5d-f339-4df9-87e8-eed0f7cec073",
+    "target1_audio_id": "11815dee-fa36-4e61-872a-802b88c374e5",
+    "target2_audio_id": "d454ac12-854b-4142-84ab-c4cebc634e5f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake up soon",
+    "known_text": "නැගිටින්න ඉක්මනට",
+    "known_audio_id": "5f5baf5d-f339-4df9-87e8-eed0f7cec073",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "didn't wake",
+    "known_text": "නොනැගිටියා",
+    "known_audio_id": "ff5c794d-cfe5-4b91-8e7f-9cfce2aed552",
+    "target1_audio_id": "9efe0444-211e-49d8-898d-6dcb621a92ed",
+    "target2_audio_id": "a0a9bd8b-38f6-4314-96f0-f986d13e83c6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "didn't wake up",
+    "known_text": "නොනැගිටියා",
+    "known_audio_id": "ff5c794d-cfe5-4b91-8e7f-9cfce2aed552",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake at night",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ නැගිටින්න රෑ",
+    "known_audio_id": "f1f89dcd-947d-41c3-963a-9508e73e9e16",
+    "target1_audio_id": "34b3f7dc-6461-4527-96d1-51b010c19e8a",
+    "target2_audio_id": "28a62e94-1fcf-4ec3-add3-00ea0ce9d1b2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up at night",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ නැගිටින්න රෑ",
+    "known_audio_id": "f1f89dcd-947d-41c3-963a-9508e73e9e16",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake that quickly",
+    "known_text": "මට ඕනේ නෑ නැගිටින්න ඒ තරම් ඉක්මනට",
+    "known_audio_id": "debd5388-7945-41ee-a37f-5fe9be6ac785",
+    "target1_audio_id": "85838d1e-d030-472b-8c3a-6d9b2deae21a",
+    "target2_audio_id": "b9ce1ece-a736-490a-a9a7-e3517484240b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake up that quickly",
+    "known_text": "මට ඕනේ නෑ නැගිටින්න ඒ තරම් ඉක්මනට",
+    "known_audio_id": "debd5388-7945-41ee-a37f-5fe9be6ac785",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "did you wake last night?",
+    "known_text": "ඔයා නැගිටියාද ඊයේ රෑ",
+    "known_audio_id": "bed7ef0c-ad9f-4831-9395-48431ae6452c",
+    "target1_audio_id": "4556b33e-23e5-4867-9005-8750fcf188f6",
+    "target2_audio_id": "1e8a8123-1325-4d5f-a5b5-87e8aaaa5b6d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "did you wake up last night?",
+    "known_text": "ඔයා නැගිටියාද ඊයේ රෑ",
+    "known_audio_id": "bed7ef0c-ad9f-4831-9395-48431ae6452c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "you should wake soon tomorrow",
+    "known_text": "ඔයා නැගිටින්න ඕනේ ඉක්මනට හෙට",
+    "known_audio_id": "db74b7a6-be9a-4859-90c9-ff255ce7f8b9",
+    "target1_audio_id": "4db1d473-e25d-44ce-b47d-ff0b514ea482",
+    "target2_audio_id": "bc4cef30-db68-4293-8d4f-0ec4997bd88d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "you should wake up soon tomorrow",
+    "known_text": "ඔයා නැගිටින්න ඕනේ ඉක්මනට හෙට",
+    "known_audio_id": "db74b7a6-be9a-4859-90c9-ff255ce7f8b9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I didn't hope to wake that quickly",
+    "known_text": "මම බලාපොරොත්තු නැත්තේ නැගිටින්න ඒ තරම් ඉක්මනට",
+    "known_audio_id": "3dd3e5a1-32bf-45be-a0cb-ed653983d474",
+    "target1_audio_id": "b337a9bf-55ce-4012-ba17-239363c4cde1",
+    "target2_audio_id": "4207ab27-9371-4413-b89a-eb8a0d31e312",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I didn't expect to wake up that quickly",
+    "known_text": "මම බලාපොරොත්තු නැත්තේ නැගිටින්න ඒ තරම් ඉක්මනට",
+    "known_audio_id": "3dd3e5a1-32bf-45be-a0cb-ed653983d474",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U06"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "they did wake last night",
+    "known_text": "ඒ අය නැගිටියා ඊයේ රෑ",
+    "known_audio_id": "122cd994-c3df-459d-b26b-efe5a74dd96c",
+    "target1_audio_id": "5e89fdea-0d8d-42dc-92cd-32c7b90bf14a",
+    "target2_audio_id": "6c71ae4f-9e2b-4b1d-9fe2-cde43005316d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "they did wake up last night",
+    "known_text": "ඒ අය නැගිටියා ඊයේ රෑ",
+    "known_audio_id": "122cd994-c3df-459d-b26b-efe5a74dd96c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U07"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U07",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I did wake very quickly",
+    "known_text": "මම නැගිටියා ඉතා ඉක්මනට",
+    "known_audio_id": "57d3b129-343f-49d0-9559-028a34793202",
+    "target1_audio_id": "ccca1405-d6a2-417e-b54f-6a18b3b70ac0",
+    "target2_audio_id": "bea46d49-52fd-48ed-8768-7ad1fcb299b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U07",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I did wake up very quickly",
+    "known_text": "මම නැගිටියා ඉතා ඉක්මනට",
+    "known_audio_id": "57d3b129-343f-49d0-9559-028a34793202",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L02U08"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "you shouldn't wake that quickly",
+    "known_text": "ඔයා නැගිටින්න ඕනේ නෑ ඒ තරම් ඉක්මනට",
+    "known_audio_id": "7fcfdc58-b3f7-4c28-ae26-8f6b5afa88cb",
+    "target1_audio_id": "f0f35d6d-a720-4220-970a-79512e58d46a",
+    "target2_audio_id": "d76c124b-c2a7-4d55-966b-c9c2eff83447",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "you shouldn't wake up that quickly",
+    "known_text": "ඔයා නැගිටින්න ඕනේ නෑ ඒ තරම් ඉක්මනට",
+    "known_audio_id": "7fcfdc58-b3f7-4c28-ae26-8f6b5afa88cb",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L03U01"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ නැගිටින්න මැද භාගයේ රෑ",
+    "known_audio_id": "871732a5-b4cf-468a-9a8e-602b46783f0d",
+    "target1_audio_id": "b14c9ad8-b17c-497a-9aba-0d94994d1046",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ නැගිටින්න මැද භාගයේ රෑ",
+    "known_audio_id": "871732a5-b4cf-468a-9a8e-602b46783f0d",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L03U04"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "did you wake in the middle of the night?",
+    "known_text": "ඔයා නැගිටියාද මැද භාගයේ රෑ?",
+    "known_audio_id": "58ee49fe-1209-467a-a65c-f8412112509f",
+    "target1_audio_id": "2a64496c-d9b6-4b2b-b2ca-883eb0e1b0c8",
+    "target2_audio_id": "ae957e71-05a6-4b01-bcc8-3b2bfede1c52",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "did you wake up in the middle of the night?",
+    "known_text": "ඔයා නැගිටියාද මැද භාගයේ රෑ?",
+    "known_audio_id": "58ee49fe-1209-467a-a65c-f8412112509f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_sin",
+    "id": "eng_for_sin:S0108L03U08"
+   },
+   "before": {
+    "id": "eng_for_sin:S0108L03U08",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you shouldn't wake in the middle of the night",
+    "known_text": "ඔයා නැගිටින්න ඕනේ නෑ මැද භාගයේ රෑ",
+    "known_audio_id": "342ef34a-bdf0-426a-be62-e3e3691d5f93",
+    "target1_audio_id": "3c2c1cb8-60fe-4638-9cd5-4da682964f62",
+    "target2_audio_id": "6ca51b3b-7953-4b0c-8e6e-6808a05ae7e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_sin:S0108L03U08",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "you shouldn't wake up in the middle of the night",
+    "known_text": "ඔයා නැගිටින්න ඕනේ නෑ මැද භාගයේ රෑ",
+    "known_audio_id": "342ef34a-bdf0-426a-be62-e3e3691d5f93",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L03U08",
+   "set": {
+    "target_text": "you shouldn't wake in the middle of the night",
+    "target1_audio_id": "3c2c1cb8-60fe-4638-9cd5-4da682964f62",
+    "target2_audio_id": "6ca51b3b-7953-4b0c-8e6e-6808a05ae7e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L03U04",
+   "set": {
+    "target_text": "did you wake in the middle of the night?",
+    "target1_audio_id": "2a64496c-d9b6-4b2b-b2ca-883eb0e1b0c8",
+    "target2_audio_id": "ae957e71-05a6-4b01-bcc8-3b2bfede1c52"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L03U01",
+   "set": {
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "target1_audio_id": "b14c9ad8-b17c-497a-9aba-0d94994d1046",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U08",
+   "set": {
+    "target_text": "you shouldn't wake that quickly",
+    "target1_audio_id": "f0f35d6d-a720-4220-970a-79512e58d46a",
+    "target2_audio_id": "d76c124b-c2a7-4d55-966b-c9c2eff83447"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U07",
+   "set": {
+    "target_text": "I did wake very quickly",
+    "target1_audio_id": "ccca1405-d6a2-417e-b54f-6a18b3b70ac0",
+    "target2_audio_id": "bea46d49-52fd-48ed-8768-7ad1fcb299b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U06",
+   "set": {
+    "target_text": "they did wake last night",
+    "target1_audio_id": "5e89fdea-0d8d-42dc-92cd-32c7b90bf14a",
+    "target2_audio_id": "6c71ae4f-9e2b-4b1d-9fe2-cde43005316d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U05",
+   "set": {
+    "target_text": "I didn't hope to wake that quickly",
+    "target1_audio_id": "b337a9bf-55ce-4012-ba17-239363c4cde1",
+    "target2_audio_id": "4207ab27-9371-4413-b89a-eb8a0d31e312"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U04",
+   "set": {
+    "target_text": "you should wake soon tomorrow",
+    "target1_audio_id": "4db1d473-e25d-44ce-b47d-ff0b514ea482",
+    "target2_audio_id": "bc4cef30-db68-4293-8d4f-0ec4997bd88d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U03",
+   "set": {
+    "target_text": "did you wake last night?",
+    "target1_audio_id": "4556b33e-23e5-4867-9005-8750fcf188f6",
+    "target2_audio_id": "1e8a8123-1325-4d5f-a5b5-87e8aaaa5b6d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U02",
+   "set": {
+    "target_text": "I don't want to wake that quickly",
+    "target1_audio_id": "85838d1e-d030-472b-8c3a-6d9b2deae21a",
+    "target2_audio_id": "b9ce1ece-a736-490a-a9a7-e3517484240b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U01",
+   "set": {
+    "target_text": "we didn't hope to wake at night",
+    "target1_audio_id": "34b3f7dc-6461-4527-96d1-51b010c19e8a",
+    "target2_audio_id": "28a62e94-1fcf-4ec3-add3-00ea0ce9d1b2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02B03",
+   "set": {
+    "target_text": "didn't wake",
+    "target1_audio_id": "9efe0444-211e-49d8-898d-6dcb621a92ed",
+    "target2_audio_id": "a0a9bd8b-38f6-4314-96f0-f986d13e83c6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02B02",
+   "set": {
+    "target_text": "wake soon",
+    "target1_audio_id": "11815dee-fa36-4e61-872a-802b88c374e5",
+    "target2_audio_id": "d454ac12-854b-4142-84ab-c4cebc634e5f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02B01",
+   "set": {
+    "target_text": "should wake in the morning",
+    "target1_audio_id": "ec9b7477-cb25-4b20-be89-47713312f1d4",
+    "target2_audio_id": "09713049-9759-4a9f-934a-5dd7f78ba5d5"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "b22f13e5-c0ab-4c3b-8c77-3af872b4b899",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "d084c5e9-8b2c-4581-95a3-51bab68bb7e1",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "3006c5e7-f998-4218-9b8f-bbb05110f0c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U08",
+   "set": {
+    "target_text": "I hope it is working",
+    "target1_audio_id": "6d106286-2bdc-4005-b299-a6950c2986b1",
+    "target2_audio_id": "74e68fd2-c659-4381-8a4b-5a18fc685753"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U07",
+   "set": {
+    "target_text": "we didn't hope it would be difficult",
+    "target1_audio_id": "55798ec4-f1ab-4db1-af0f-f3f4cdf70c3a",
+    "target2_audio_id": "3ca4cb60-a729-4291-a71b-1620337e86f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U06",
+   "set": {
+    "target_text": "do you hope to change it?",
+    "target1_audio_id": "ab805886-d9f1-4b46-b31a-62f4c6efc482",
+    "target2_audio_id": "4744b906-ef67-4702-9509-fa5c1a030992"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U05",
+   "set": {
+    "target_text": "I hope to learn a lot",
+    "target1_audio_id": "b637e3dd-9c63-472f-80ab-769e3fd9f5bb",
+    "target2_audio_id": "a095a4f2-4677-4644-9fce-2f1ef0834df0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U04",
+   "set": {
+    "target_text": "I hope to see you soon",
+    "target1_audio_id": "260d51b1-5aa2-4c10-95db-70ab1f01588b",
+    "target2_audio_id": "ad447e68-1a96-4ca5-93e7-42d1bc8d07fb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U03",
+   "set": {
+    "target_text": "do you hope it will be easy?",
+    "target1_audio_id": "8fb0562f-0cb0-4232-a0bc-fcab45802cea",
+    "target2_audio_id": "960d462f-8e61-4adf-a667-f76fa69246da"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U02",
+   "set": {
+    "target_text": "I hope it will work",
+    "target1_audio_id": "4c5cac8c-feac-478a-9789-932f49dd2e98",
+    "target2_audio_id": "ed136228-0854-48b2-8290-f08165ce6e2f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U01",
+   "set": {
+    "target_text": "we didn't hope to do it",
+    "target1_audio_id": "5e38de01-b472-4ed5-9d71-842677a92148",
+    "target2_audio_id": "a115d9f4-c5ac-4985-b3b2-5c35a50a5520"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01B03",
+   "set": {
+    "target_text": "hope to do it",
+    "target1_audio_id": "257a1c37-bbf3-413b-ba36-3a21af3e6e3f",
+    "target2_audio_id": "b462991f-00e7-40db-9b42-9f3c4e82afc5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01B02",
+   "set": {
+    "target_text": "hope it is good",
+    "target1_audio_id": "210ed4ea-10db-4e90-8578-d9411d0a6172",
+    "target2_audio_id": "3384d786-2fd2-41f4-a8ba-02eaf5a8b906"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01B01",
+   "set": {
+    "target_text": "didn't hope to do it",
+    "target1_audio_id": "57cb1fbe-5801-4f62-8b48-44691c732ca2",
+    "target2_audio_id": "4468b71f-b174-47c9-84d9-bca0e4a2a4f8"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "83aadc6e-b607-426b-b8df-094fb2c4f549",
+   "set": {
+    "target_text": "hope",
+    "target1_audio_id": "37ef1dc9-2ada-4336-9320-7772a1f37215",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "338a50fc-968f-4f98-8746-e591a97751b5"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "රෑ මැද අවදි වෙනවා කියලා ආශා කළේ නෑ.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "38ee1e64-c2da-490e-a64a-6b102b988f4a",
+    "target1_audio_id": "b14c9ad8-b17c-497a-9aba-0d94994d1046",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

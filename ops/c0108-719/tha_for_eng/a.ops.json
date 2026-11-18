@@ -1,0 +1,56 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "พวกเราไม่ได้คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "phuak rao mai dai khat wa cha tuen klang duek"
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tha_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "khat wa cha tuen klang duek",
+    "known_text": "expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "hope to wake up in the middle of the night",
+    "target_text": "หวังจะตื่นกลางดึก"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tha_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "ไม่ได้คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "mai dai khat wa cha tuen klang duek",
+    "known_text": "didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "didn't hope to wake up in the middle",
+    "target_text": "ไม่ได้หวังจะตื่นกลางดึก"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tha_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "พวกเราไม่ได้คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "phuak rao mai dai khat wa cha tuen klang duek",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก"
+   }
+  }
+ ]
+}

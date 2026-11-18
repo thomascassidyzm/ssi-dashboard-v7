@@ -1,0 +1,173 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "我们没想到会半夜醒来",
+    "target_text": "We didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "我们不希望半夜醒来",
+    "target_text": "We didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "Didn't expect to wake up in the middle of the night",
+    "known_text": "没想到会半夜醒来",
+    "components": [
+     {
+      "known": "没想到会",
+      "target": "didn't expect to"
+     },
+     {
+      "known": "醒来",
+      "target": "wake up"
+     },
+     {
+      "known": "半夜",
+      "target": "in the middle of the night"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "不希望半夜醒来",
+    "target_text": "Didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B01",
+   "set": {
+    "target_text": "Didn't expect to wake up in the middle of the night",
+    "known_text": "没想到会半夜醒来"
+   },
+   "expect": {
+    "known_text": "不希望半夜醒来",
+    "target_text": "Didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B02",
+   "set": {
+    "target_text": "Didn't expect to wake up in the middle of the night today",
+    "known_text": "今天没想到会在半夜醒来"
+   },
+   "expect": {
+    "known_text": "今天没希望在半夜醒来",
+    "target_text": "Didn't hope to wake in the middle of the night today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B03",
+   "set": {
+    "target_text": "Didn't expect to wake up in the middle of the night again",
+    "known_text": "没想到会再次在半夜醒来"
+   },
+   "expect": {
+    "known_text": "没希望再次在半夜醒来",
+    "target_text": "Didn't hope to wake in the middle of the night again"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01B04",
+   "set": {
+    "target_text": "Didn't expect to wake up in the middle of the night now",
+    "known_text": "现在没想到会在半夜醒来"
+   },
+   "expect": {
+    "known_text": "现在没希望在半夜醒来",
+    "target_text": "Didn't hope to wake in the middle of the night now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01C01",
+   "set": {
+    "target_text": "Didn't expect to",
+    "known_text": "没想到会"
+   },
+   "expect": {
+    "known_text": "不希望",
+    "target_text": "Didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01C02",
+   "set": {
+    "target_text": "Wake up"
+   },
+   "expect": {
+    "known_text": "醒来",
+    "target_text": "Wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U01",
+   "set": {
+    "target_text": "We didn't expect to wake up in the middle of the night",
+    "known_text": "我们没想到会在半夜醒来"
+   },
+   "expect": {
+    "known_text": "我们没希望在半夜醒来",
+    "target_text": "We didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U02",
+   "set": {
+    "target_text": "I didn't expect to wake up in the middle of the night",
+    "known_text": "我没想到会在半夜醒来"
+   },
+   "expect": {
+    "known_text": "我没希望在半夜醒来",
+    "target_text": "I didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U03",
+   "set": {
+    "target_text": "They didn't expect to wake up in the middle of the night",
+    "known_text": "他们没想到会在半夜醒来"
+   },
+   "expect": {
+    "known_text": "他们没希望在半夜醒来",
+    "target_text": "They didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U04",
+   "set": {
+    "target_text": "Why do you think that we didn't expect to wake up in the middle of the night?",
+    "known_text": "你为什么觉得我们没想到会在半夜醒来？"
+   },
+   "expect": {
+    "known_text": "你为什么觉得我们没希望在半夜醒来？",
+    "target_text": "Why do you think that we didn't hope to wake in the middle of the night?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0108L01U05",
+   "set": {
+    "target_text": "He didn't expect to wake up in the middle of the night",
+    "known_text": "他没想到会在半夜醒来"
+   },
+   "expect": {
+    "known_text": "他没希望在半夜醒来",
+    "target_text": "He didn't hope to wake in the middle of the night"
+   }
+  }
+ ]
+}

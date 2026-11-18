@@ -1,0 +1,1208 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "95578322-8b7e-4048-8d94-327c11486667",
+    "seed_number": 108,
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে আশা করিনি।",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "23df632f-6396-4943-ae2d-ec160ee8963c",
+    "target1_audio_id": "961aa7b4-ca56-4f63-886d-9a201b82e787",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "95578322-8b7e-4048-8d94-327c11486667",
+    "seed_number": 108,
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে প্রত্যাশা করিনি।",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "fe125624-3c28-417e-875c-7d1b2bf438b0",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "hope",
+    "known_text": "আশা করা",
+    "known_audio_id": "2af8be69-2f79-4d03-86ca-459529c39182",
+    "target1_audio_id": "8d4abaf2-3ed3-4295-bfc8-a3e9be74ffb1",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "a895f91a-3e12-4ef5-ba75-dd61057f55ff"
+   },
+   "after": {
+    "id": "fe125624-3c28-417e-875c-7d1b2bf438b0",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "expect",
+    "known_text": "প্রত্যাশা করা",
+    "known_audio_id": "1d8c5e69-b0d2-43ae-aa1c-f8456b607753",
+    "target1_audio_id": "05ece00d-58fc-43fb-8119-da5b361d0f81",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01B01"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to speak",
+    "known_text": "আমি আশা করি কথা বলতে",
+    "known_audio_id": "cb5c8db1-354e-45db-a343-46281bf0e2f7",
+    "target1_audio_id": "b4252d00-8c9f-4fde-9f72-438f08c787b9",
+    "target2_audio_id": "831ab08b-9e91-4ac6-8c52-793365c2633b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to speak",
+    "known_text": "আমি প্রত্যাশা করি কথা বলতে",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hope to speak",
+    "known_text": "কথা বলতে আশা করি",
+    "known_audio_id": "98974c3d-c2a5-4703-9ac4-7ea2841595d7",
+    "target1_audio_id": "ad5e5f7b-016d-4c9e-8fa6-5f6f0b26623d",
+    "target2_audio_id": "154beb2b-0f17-40a2-b78b-5fb6e42456b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "expect to speak",
+    "known_text": "কথা বলতে প্রত্যাশা করি",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01B03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't hope",
+    "known_text": "আমি আশা করিনি",
+    "known_audio_id": "1157aee0-e287-4376-9ef5-e03e68bda860",
+    "target1_audio_id": "09092e0f-7aa0-499a-8bd0-2ef058c6c7b9",
+    "target2_audio_id": "c2d9f3d1-b6f1-40ee-9280-c1d4bcb14cd3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't expect",
+    "known_text": "আমি প্রত্যাশা করিনি",
+    "known_audio_id": "09ccb36d-8927-4800-b383-c580fcc69279",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01U01"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to speak English soon",
+    "known_text": "আমি আশা করি শীঘ্রই ইংরেজি কথা বলতে পারব।",
+    "known_audio_id": "aff8820d-cd18-4f03-a37b-2ee2119ae77a",
+    "target1_audio_id": "70ef9a35-5d92-48b7-9020-37339ac7d627",
+    "target2_audio_id": "29ac0926-c9e3-4f0e-8ac7-6edcfa7f3533",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to speak English soon",
+    "known_text": "আমি প্রত্যাশা করি শীঘ্রই ইংরেজি কথা বলতে পারব।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01U02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to practise with you",
+    "known_text": "আমি আশা করি আপনার সাথে অনুশীলন করতে।",
+    "known_audio_id": "24eed43d-a59b-4671-b67d-918c94f38443",
+    "target1_audio_id": "f2e39742-649b-4fbc-8e59-fdc64099d8e4",
+    "target2_audio_id": "796f3b02-e8dc-4a74-903c-88d7457d87c3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to practise with you",
+    "known_text": "আমি প্রত্যাশা করি আপনার সাথে অনুশীলন করতে।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01U03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to remember more words",
+    "known_text": "আমি আশা করি আরও শব্দ মনে রাখতে।",
+    "known_audio_id": "a1a04eb7-f246-48fd-84bb-1494a5448262",
+    "target1_audio_id": "53a802de-ec6a-464e-833a-028c82a44dc3",
+    "target2_audio_id": "912bc622-6449-494d-9e67-dab90eefa2d7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to remember more words",
+    "known_text": "আমি প্রত্যাশা করি আরও শব্দ মনে রাখতে।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01U04"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we hope to meet with you",
+    "known_text": "আমরা আশা করি তোমার সাথে দেখা করতে।",
+    "known_audio_id": "53752f03-39b3-44d8-88ec-3e11afb0f92a",
+    "target1_audio_id": "673ba128-0a22-4c15-8154-8de7409efd2a",
+    "target2_audio_id": "9f4219d7-d597-4244-9e9f-11f8dd8212a3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we expect to meet with you",
+    "known_text": "আমরা প্রত্যাশা করি তোমার সাথে দেখা করতে।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01U05"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I hope to learn a lot",
+    "known_text": "আমি আশা করি অনেক কিছু শিখতে।",
+    "known_audio_id": "8692f842-3d19-4478-b41f-e39cac1abf64",
+    "target1_audio_id": "ef097a1f-b9bc-4294-ab1a-fc512029ade4",
+    "target2_audio_id": "254296c0-164d-4164-862d-81ccb4a4e790",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I expect to learn a lot",
+    "known_text": "আমি প্রত্যাশা করি অনেক কিছু শিখতে।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L01U06"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "do you hope to speak as soon as you can?",
+    "known_text": "তুমি কি আশা করো যত তাড়াতাড়ি সম্ভব কথা বলতে?",
+    "known_audio_id": "06692431-74bc-4b4c-91c0-ac5af06f22ba",
+    "target1_audio_id": "f6f5a74a-e533-4a28-89f5-00e95da5a5b0",
+    "target2_audio_id": "31b739f9-fc4b-4ad7-acc1-acda28890bed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "do you expect to speak as soon as you can?",
+    "known_text": "তুমি কি প্রত্যাশা করো যত তাড়াতাড়ি সম্ভব কথা বলতে?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "cc7c26d5-342a-4f88-b363-c5a1a3f104a8",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "to wake",
+    "components": [
+     {
+      "known": "উঠতে",
+      "target": "to",
+      "introduce": false
+     },
+     {
+      "known": "জেগে",
+      "target": "wake"
+     }
+    ],
+    "known_text": "জেগে উঠতে",
+    "known_audio_id": "ea2f94e1-bc11-4a08-8451-6ceda8f842dc",
+    "target1_audio_id": "b97217d5-4d98-4dd6-bafe-533deb24f654",
+    "target2_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": "31c18a3a-5360-4169-807a-0e1f0192b21c"
+   },
+   "after": {
+    "id": "cc7c26d5-342a-4f88-b363-c5a1a3f104a8",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "to wake up",
+    "components": [
+     {
+      "known": "উঠতে",
+      "target": "to",
+      "introduce": false
+     },
+     {
+      "known": "জেগে",
+      "target": "wake up"
+     }
+    ],
+    "known_text": "জেগে উঠতে",
+    "known_audio_id": "ea2f94e1-bc11-4a08-8451-6ceda8f842dc",
+    "target1_audio_id": "ec18f08e-9f09-4f4c-8768-b8617708e7c1",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "to wake",
+    "known_text": "জেগে উঠতে",
+    "known_audio_id": "ea2f94e1-bc11-4a08-8451-6ceda8f842dc",
+    "target1_audio_id": "b97217d5-4d98-4dd6-bafe-533deb24f654",
+    "target2_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "to wake up",
+    "known_text": "জেগে উঠতে",
+    "known_audio_id": "ea2f94e1-bc11-4a08-8451-6ceda8f842dc",
+    "target1_audio_id": "ec18f08e-9f09-4f4c-8768-b8617708e7c1",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "hope to wake",
+    "known_text": "জেগে উঠতে আশা করা",
+    "known_audio_id": "fc044824-d1c2-45f4-86a5-e4eb0ee0cb9d",
+    "target1_audio_id": "a63b038a-c638-4fa2-a7ec-0f8b79e9bc57",
+    "target2_audio_id": "b2734143-43c5-4ebc-971c-17b2322afec8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "expect to wake up",
+    "known_text": "জেগে উঠতে প্রত্যাশা করা",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I want to wake",
+    "known_text": "আমি জেগে উঠতে চাই",
+    "known_audio_id": "36130029-7c5e-4ce8-9758-10e52359d6c3",
+    "target1_audio_id": "75d61f92-f2dc-4484-b860-fb529687bf30",
+    "target2_audio_id": "e39a73f3-3158-4251-b3be-4ce1d66a6c02",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I want to wake up",
+    "known_text": "আমি জেগে উঠতে চাই",
+    "known_audio_id": "36130029-7c5e-4ce8-9758-10e52359d6c3",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02B04"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake",
+    "known_text": "আমি জেগে উঠতে চাই না",
+    "known_audio_id": "39fc2100-ac6a-460f-a8c1-e01bf5166f0a",
+    "target1_audio_id": "ab9fb5c4-6847-44fa-8a40-5484e451b643",
+    "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake up",
+    "known_text": "আমি জেগে উঠতে চাই না",
+    "known_audio_id": "39fc2100-ac6a-460f-a8c1-e01bf5166f0a",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02C02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake",
+    "known_text": "জেগে",
+    "known_audio_id": "e6160cbd-d161-4f73-8ee3-c26b296cf13b",
+    "target1_audio_id": "6bb26b13-4b1a-4862-a9f6-8e7ff407b3c2",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "d57906ad-ba12-46ba-be7f-bd203d779832"
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake up",
+    "known_text": "জেগে",
+    "known_audio_id": "e6160cbd-d161-4f73-8ee3-c26b296cf13b",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "d57906ad-ba12-46ba-be7f-bd203d779832"
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I want to wake at six o'clock tomorrow",
+    "known_text": "আমি আগামীকাল ছয়টায় জেগে উঠতে চাই।",
+    "known_audio_id": "b2ca5d37-b3a4-4d86-8b59-8e4c2a92483c",
+    "target1_audio_id": "8f7f3182-b933-4df3-9736-0e19c56cb612",
+    "target2_audio_id": "9858ce73-2f78-45cf-8678-4057f5a322b9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I want to wake up at six o'clock tomorrow",
+    "known_text": "আমি আগামীকাল ছয়টায় জেগে উঠতে চাই।",
+    "known_audio_id": "b2ca5d37-b3a4-4d86-8b59-8e4c2a92483c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I hope to wake soon",
+    "known_text": "আমি শীঘ্রই জেগে উঠতে আশা করি।",
+    "known_audio_id": "7fc90176-95dd-4299-ae89-0959dd6d39a7",
+    "target1_audio_id": "616e8ab7-d3b5-49a0-b053-eb4dddaf45bb",
+    "target2_audio_id": "38655007-d7f4-4cb5-86c9-a63f1efb6899",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I expect to wake up soon",
+    "known_text": "আমি শীঘ্রই জেগে উঠতে প্রত্যাশা করি।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake when other people are here",
+    "known_text": "অন্য লোক আসার সময় আমি জেগে উঠতে চাই না।",
+    "known_audio_id": "af094792-df99-413f-90a5-1b2b551e1f74",
+    "target1_audio_id": "c081fbef-91ee-4959-a585-105fbccfdd9f",
+    "target2_audio_id": "7579301c-7f55-4039-a1a3-5ba4ba5e934b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake up when other people are here",
+    "known_text": "অন্য লোক আসার সময় আমি জেগে উঠতে চাই না।",
+    "known_audio_id": "af094792-df99-413f-90a5-1b2b551e1f74",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I'm trying to wake before I have to go",
+    "known_text": "যাওয়ার আগে জেগে উঠতে চেষ্টা করছি।",
+    "known_audio_id": "faecef0e-2399-4993-9710-148ce99f1ed8",
+    "target1_audio_id": "417f884e-3bc4-4ca1-b578-454d8181e0b3",
+    "target2_audio_id": "e4fddb30-41d6-4413-9df5-61436c54ac74",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I'm trying to wake up before I have to go",
+    "known_text": "যাওয়ার আগে জেগে উঠতে চেষ্টা করছি।",
+    "known_audio_id": "faecef0e-2399-4993-9710-148ce99f1ed8",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake",
+    "known_text": "আমরা জেগে উঠতে আশা করিনি।",
+    "known_audio_id": "b4febea0-6f34-4d2f-a58b-5fcf53429596",
+    "target1_audio_id": "1790ddf8-ec5f-4eaa-9620-93e3fc8a189c",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "আমরা জেগে উঠতে প্রত্যাশা করিনি।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L03B02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "to wake in the middle of the night",
+    "known_text": "রাতের মাঝখানে জেগে উঠতে",
+    "known_audio_id": "ce01158c-8f25-4b70-976b-1e6ec96b0926",
+    "target1_audio_id": "1171886c-a04a-401a-93df-50c15ab19eee",
+    "target2_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "to wake up in the middle of the night",
+    "known_text": "রাতের মাঝখানে জেগে উঠতে",
+    "known_audio_id": "ce01158c-8f25-4b70-976b-1e6ec96b0926",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L03B03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "hope to wake in the middle of the night",
+    "known_text": "আশা করা জেগে উঠতে রাতের মাঝখানে",
+    "known_audio_id": "4e77bd75-4aa5-40d2-ab38-7dc7e56a0c2c",
+    "target1_audio_id": "3e033f36-9dcd-4083-9806-ad827af88c73",
+    "target2_audio_id": "5bd8fc12-07f0-4689-ba54-da1275b01beb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "expect to wake up in the middle of the night",
+    "known_text": "প্রত্যাশা করা জেগে উঠতে রাতের মাঝখানে",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L03U02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I don't want to wake in the middle of the night",
+    "known_text": "আমি রাতের মাঝখানে জেগে উঠতে চাই না।",
+    "known_audio_id": "5c4b6000-cdd9-49fa-ba63-b65da275ee68",
+    "target1_audio_id": "72423127-cb71-458f-b949-ad70c648cf68",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I don't want to wake up in the middle of the night",
+    "known_text": "আমি রাতের মাঝখানে জেগে উঠতে চাই না।",
+    "known_audio_id": "5c4b6000-cdd9-49fa-ba63-b65da275ee68",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L03U03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে আশা করিনি।",
+    "known_audio_id": "23df632f-6396-4943-ae2d-ec160ee8963c",
+    "target1_audio_id": "961aa7b4-ca56-4f63-886d-9a201b82e787",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে প্রত্যাশা করিনি।",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0108L03U06"
+   },
+   "before": {
+    "id": "eng_for_ben:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "did you wake in the middle of the night?",
+    "known_text": "তুমি কি রাতের মাঝখানে জেগে উঠেছিলে?",
+    "known_audio_id": "c8d427f7-a930-4c6d-a274-f28694f5d20e",
+    "target1_audio_id": "aaa7dcd4-cd76-4142-a702-fae5d9afe7f9",
+    "target2_audio_id": "91b398f1-741d-4805-98e2-ee3d9086cc0f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "did you wake up in the middle of the night?",
+    "known_text": "তুমি কি রাতের মাঝখানে জেগে উঠেছিলে?",
+    "known_audio_id": "c8d427f7-a930-4c6d-a274-f28694f5d20e",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03U06",
+   "set": {
+    "target_text": "did you wake in the middle of the night?",
+    "target1_audio_id": "aaa7dcd4-cd76-4142-a702-fae5d9afe7f9",
+    "target2_audio_id": "91b398f1-741d-4805-98e2-ee3d9086cc0f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03U03",
+   "set": {
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে আশা করিনি।",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "23df632f-6396-4943-ae2d-ec160ee8963c",
+    "target1_audio_id": "961aa7b4-ca56-4f63-886d-9a201b82e787",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03U02",
+   "set": {
+    "target_text": "I don't want to wake in the middle of the night",
+    "target1_audio_id": "72423127-cb71-458f-b949-ad70c648cf68",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03B03",
+   "set": {
+    "known_text": "আশা করা জেগে উঠতে রাতের মাঝখানে",
+    "target_text": "hope to wake in the middle of the night",
+    "known_audio_id": "4e77bd75-4aa5-40d2-ab38-7dc7e56a0c2c",
+    "target1_audio_id": "3e033f36-9dcd-4083-9806-ad827af88c73",
+    "target2_audio_id": "5bd8fc12-07f0-4689-ba54-da1275b01beb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03B02",
+   "set": {
+    "target_text": "to wake in the middle of the night",
+    "target1_audio_id": "1171886c-a04a-401a-93df-50c15ab19eee",
+    "target2_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U05",
+   "set": {
+    "known_text": "আমরা জেগে উঠতে আশা করিনি।",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "b4febea0-6f34-4d2f-a58b-5fcf53429596",
+    "target1_audio_id": "1790ddf8-ec5f-4eaa-9620-93e3fc8a189c",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U04",
+   "set": {
+    "target_text": "I'm trying to wake before I have to go",
+    "target1_audio_id": "417f884e-3bc4-4ca1-b578-454d8181e0b3",
+    "target2_audio_id": "e4fddb30-41d6-4413-9df5-61436c54ac74"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U03",
+   "set": {
+    "target_text": "I don't want to wake when other people are here",
+    "target1_audio_id": "c081fbef-91ee-4959-a585-105fbccfdd9f",
+    "target2_audio_id": "7579301c-7f55-4039-a1a3-5ba4ba5e934b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U02",
+   "set": {
+    "known_text": "আমি শীঘ্রই জেগে উঠতে আশা করি।",
+    "target_text": "I hope to wake soon",
+    "known_audio_id": "7fc90176-95dd-4299-ae89-0959dd6d39a7",
+    "target1_audio_id": "616e8ab7-d3b5-49a0-b053-eb4dddaf45bb",
+    "target2_audio_id": "38655007-d7f4-4cb5-86c9-a63f1efb6899"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U01",
+   "set": {
+    "target_text": "I want to wake at six o'clock tomorrow",
+    "target1_audio_id": "8f7f3182-b933-4df3-9736-0e19c56cb612",
+    "target2_audio_id": "9858ce73-2f78-45cf-8678-4057f5a322b9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02C02",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "6bb26b13-4b1a-4862-a9f6-8e7ff407b3c2",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B04",
+   "set": {
+    "target_text": "I don't want to wake",
+    "target1_audio_id": "ab9fb5c4-6847-44fa-8a40-5484e451b643",
+    "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B03",
+   "set": {
+    "target_text": "I want to wake",
+    "target1_audio_id": "75d61f92-f2dc-4484-b860-fb529687bf30",
+    "target2_audio_id": "e39a73f3-3158-4251-b3be-4ce1d66a6c02"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B02",
+   "set": {
+    "known_text": "জেগে উঠতে আশা করা",
+    "target_text": "hope to wake",
+    "known_audio_id": "fc044824-d1c2-45f4-86a5-e4eb0ee0cb9d",
+    "target1_audio_id": "a63b038a-c638-4fa2-a7ec-0f8b79e9bc57",
+    "target2_audio_id": "b2734143-43c5-4ebc-971c-17b2322afec8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B01",
+   "set": {
+    "target_text": "to wake",
+    "target1_audio_id": "b97217d5-4d98-4dd6-bafe-533deb24f654",
+    "target2_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cc7c26d5-342a-4f88-b363-c5a1a3f104a8",
+   "set": {
+    "target_text": "to wake",
+    "components": [
+     {
+      "known": "উঠতে",
+      "target": "to",
+      "introduce": false
+     },
+     {
+      "known": "জেগে",
+      "target": "wake"
+     }
+    ],
+    "target1_audio_id": "b97217d5-4d98-4dd6-bafe-533deb24f654",
+    "target2_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": "31c18a3a-5360-4169-807a-0e1f0192b21c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U06",
+   "set": {
+    "known_text": "তুমি কি আশা করো যত তাড়াতাড়ি সম্ভব কথা বলতে?",
+    "target_text": "do you hope to speak as soon as you can?",
+    "known_audio_id": "06692431-74bc-4b4c-91c0-ac5af06f22ba",
+    "target1_audio_id": "f6f5a74a-e533-4a28-89f5-00e95da5a5b0",
+    "target2_audio_id": "31b739f9-fc4b-4ad7-acc1-acda28890bed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U05",
+   "set": {
+    "known_text": "আমি আশা করি অনেক কিছু শিখতে।",
+    "target_text": "I hope to learn a lot",
+    "known_audio_id": "8692f842-3d19-4478-b41f-e39cac1abf64",
+    "target1_audio_id": "ef097a1f-b9bc-4294-ab1a-fc512029ade4",
+    "target2_audio_id": "254296c0-164d-4164-862d-81ccb4a4e790"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U04",
+   "set": {
+    "known_text": "আমরা আশা করি তোমার সাথে দেখা করতে।",
+    "target_text": "we hope to meet with you",
+    "known_audio_id": "53752f03-39b3-44d8-88ec-3e11afb0f92a",
+    "target1_audio_id": "673ba128-0a22-4c15-8154-8de7409efd2a",
+    "target2_audio_id": "9f4219d7-d597-4244-9e9f-11f8dd8212a3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U03",
+   "set": {
+    "known_text": "আমি আশা করি আরও শব্দ মনে রাখতে।",
+    "target_text": "I hope to remember more words",
+    "known_audio_id": "a1a04eb7-f246-48fd-84bb-1494a5448262",
+    "target1_audio_id": "53a802de-ec6a-464e-833a-028c82a44dc3",
+    "target2_audio_id": "912bc622-6449-494d-9e67-dab90eefa2d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U02",
+   "set": {
+    "known_text": "আমি আশা করি আপনার সাথে অনুশীলন করতে।",
+    "target_text": "I hope to practise with you",
+    "known_audio_id": "24eed43d-a59b-4671-b67d-918c94f38443",
+    "target1_audio_id": "f2e39742-649b-4fbc-8e59-fdc64099d8e4",
+    "target2_audio_id": "796f3b02-e8dc-4a74-903c-88d7457d87c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U01",
+   "set": {
+    "known_text": "আমি আশা করি শীঘ্রই ইংরেজি কথা বলতে পারব।",
+    "target_text": "I hope to speak English soon",
+    "known_audio_id": "aff8820d-cd18-4f03-a37b-2ee2119ae77a",
+    "target1_audio_id": "70ef9a35-5d92-48b7-9020-37339ac7d627",
+    "target2_audio_id": "29ac0926-c9e3-4f0e-8ac7-6edcfa7f3533"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01B03",
+   "set": {
+    "known_text": "আমি আশা করিনি",
+    "target_text": "I didn't hope",
+    "known_audio_id": "1157aee0-e287-4376-9ef5-e03e68bda860",
+    "target1_audio_id": "09092e0f-7aa0-499a-8bd0-2ef058c6c7b9",
+    "target2_audio_id": "c2d9f3d1-b6f1-40ee-9280-c1d4bcb14cd3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01B02",
+   "set": {
+    "known_text": "কথা বলতে আশা করি",
+    "target_text": "hope to speak",
+    "known_audio_id": "98974c3d-c2a5-4703-9ac4-7ea2841595d7",
+    "target1_audio_id": "ad5e5f7b-016d-4c9e-8fa6-5f6f0b26623d",
+    "target2_audio_id": "154beb2b-0f17-40a2-b78b-5fb6e42456b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01B01",
+   "set": {
+    "known_text": "আমি আশা করি কথা বলতে",
+    "target_text": "I hope to speak",
+    "known_audio_id": "cb5c8db1-354e-45db-a343-46281bf0e2f7",
+    "target1_audio_id": "b4252d00-8c9f-4fde-9f72-438f08c787b9",
+    "target2_audio_id": "831ab08b-9e91-4ac6-8c52-793365c2633b"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "fe125624-3c28-417e-875c-7d1b2bf438b0",
+   "set": {
+    "known_text": "আশা করা",
+    "target_text": "hope",
+    "known_audio_id": "2af8be69-2f79-4d03-86ca-459529c39182",
+    "target1_audio_id": "8d4abaf2-3ed3-4295-bfc8-a3e9be74ffb1",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "a895f91a-3e12-4ef5-ba75-dd61057f55ff"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে আশা করিনি।",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "23df632f-6396-4943-ae2d-ec160ee8963c",
+    "target1_audio_id": "961aa7b4-ca56-4f63-886d-9a201b82e787",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

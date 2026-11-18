@@ -1,0 +1,872 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "a5235fe9-3939-4aa5-9d96-98863b9f2d1a",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "మనం అర్ధరాత్రి మెలకువ రావాలని ఆశించలేదు.",
+    "known_audio_id": "6276ee08-ad5e-4e22-a64f-2e524b4f7784",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "a5235fe9-3939-4aa5-9d96-98863b9f2d1a",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "మనం అర్ధరాత్రి మెలకువ వస్తుందని ఊహించలేదు.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "7894526c-3281-447e-8b65-fcb9bcaa128b",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "రావాలని",
+    "known_text": "wanting to come",
+    "known_audio_id": "bbf63698-73d6-47e3-9dc8-aa0bde8563f2",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "7894526c-3281-447e-8b65-fcb9bcaa128b",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "వస్తుందని",
+    "known_text": "that it would come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "రావాలని ఇక్కడ",
+    "known_text": "to come here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "వస్తుందని ఇక్కడ",
+    "known_text": "that it would come here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "కానీ రావాలని",
+    "known_text": "but to come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "కానీ వస్తుందని",
+    "known_text": "but that it would come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "మెలకువ రావాలని",
+    "known_text": "wake coming",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "మెలకువ వస్తుందని",
+    "known_text": "that we would wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "రావాలని ఇక్కడ ఉంది",
+    "known_text": "to come here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "వస్తుందని ఇక్కడ ఉంది",
+    "known_text": "that it would come here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "కానీ రావాలని ఉంది",
+    "known_text": "though to come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "కానీ వస్తుందని ఉంది",
+    "known_text": "though that it would come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "లేదా రావాలని ఉంది",
+    "known_text": "or to come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "లేదా వస్తుందని ఉంది",
+    "known_text": "or that it would come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "మెలకువ రావాలని ఉంది",
+    "known_text": "wake coming",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "మెలకువ వస్తుందని ఉంది",
+    "known_text": "that we would wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "రావాలని ఉపయోగకరం",
+    "known_text": "to come useful",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "వస్తుందని ఉపయోగకరం",
+    "known_text": "that it would come, useful",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "lego.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "95ae371d-4201-4383-9752-aa1356705af4",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "ఆశించలేదు",
+    "known_text": "didn't hope",
+    "known_audio_id": "60757e2d-15f6-4d3f-ac28-8de827f4beec",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "95ae371d-4201-4383-9752-aa1356705af4",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "ఊహించలేదు",
+    "known_text": "didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ఆశించలేదు ఇక్కడ",
+    "known_text": "didn't hope here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ఊహించలేదు ఇక్కడ",
+    "known_text": "didn't expect here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "కానీ ఆశించలేదు",
+    "known_text": "but didn't hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "కానీ ఊహించలేదు",
+    "known_text": "but didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "రావాలని ఆశించలేదు",
+    "known_text": "didn't hope to come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "వస్తుందని ఊహించలేదు",
+    "known_text": "didn't expect that it would come",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ఆశించలేదు ఇక్కడ ఉంది",
+    "known_text": "didn't hope here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ఊహించలేదు ఇక్కడ ఉంది",
+    "known_text": "didn't expect here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "కానీ ఆశించలేదు ఉంది",
+    "known_text": "though didn't hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "కానీ ఊహించలేదు ఉంది",
+    "known_text": "though didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "లేదా ఆశించలేదు ఉంది",
+    "known_text": "else didn't hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "లేదా ఊహించలేదు ఉంది",
+    "known_text": "else didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ఆశించలేదు ఉపయోగకరం",
+    "known_text": "didn't hope useful",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ఊహించలేదు ఉపయోగకరం",
+    "known_text": "didn't expect useful",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "మెలకువ రావాలని ఆశించలేదు",
+    "known_text": "wake didn't hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "మెలకువ వస్తుందని ఊహించలేదు",
+    "known_text": "didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L04U01"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L04U01",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "మనం అర్ధరాత్రి మెలకువ రావాలని ఆశించలేదు",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "6276ee08-ad5e-4e22-a64f-2e524b4f7784",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L04U01",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "మనం అర్ధరాత్రి మెలకువ వస్తుందని ఊహించలేదు",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tel_for_eng",
+    "id": "tel_for_eng:S0108L04U02"
+   },
+   "before": {
+    "id": "tel_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "అర్ధరాత్రి మెలకువ రావాలని ఆశించలేదు",
+    "known_text": "didn't hope to wake at midnight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tel_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "అర్ధరాత్రి మెలకువ వస్తుందని ఊహించలేదు",
+    "known_text": "didn't expect to wake up at midnight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L04U02",
+   "set": {
+    "known_text": "didn't hope to wake at midnight",
+    "target_text": "అర్ధరాత్రి మెలకువ రావాలని ఆశించలేదు"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L04U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "మనం అర్ధరాత్రి మెలకువ రావాలని ఆశించలేదు",
+    "known_audio_id": "6276ee08-ad5e-4e22-a64f-2e524b4f7784"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "wake didn't hope",
+    "target_text": "మెలకువ రావాలని ఆశించలేదు"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "didn't hope useful",
+    "target_text": "ఆశించలేదు ఉపయోగకరం"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "else didn't hope",
+    "target_text": "లేదా ఆశించలేదు ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "though didn't hope",
+    "target_text": "కానీ ఆశించలేదు ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "didn't hope here",
+    "target_text": "ఆశించలేదు ఇక్కడ ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "didn't hope to come",
+    "target_text": "రావాలని ఆశించలేదు"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "but didn't hope",
+    "target_text": "కానీ ఆశించలేదు"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "didn't hope here",
+    "target_text": "ఆశించలేదు ఇక్కడ"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "95ae371d-4201-4383-9752-aa1356705af4",
+   "set": {
+    "known_text": "didn't hope",
+    "target_text": "ఆశించలేదు",
+    "known_audio_id": "60757e2d-15f6-4d3f-ac28-8de827f4beec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "to come useful",
+    "target_text": "రావాలని ఉపయోగకరం"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "wake coming",
+    "target_text": "మెలకువ రావాలని ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "or to come",
+    "target_text": "లేదా రావాలని ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "though to come",
+    "target_text": "కానీ రావాలని ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "to come here",
+    "target_text": "రావాలని ఇక్కడ ఉంది"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake coming",
+    "target_text": "మెలకువ రావాలని"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "but to come",
+    "target_text": "కానీ రావాలని"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tel_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to come here",
+    "target_text": "రావాలని ఇక్కడ"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7894526c-3281-447e-8b65-fcb9bcaa128b",
+   "set": {
+    "known_text": "wanting to come",
+    "target_text": "రావాలని",
+    "known_audio_id": "bbf63698-73d6-47e3-9dc8-aa0bde8563f2"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "మనం అర్ధరాత్రి మెలకువ రావాలని ఆశించలేదు.",
+    "known_audio_id": "6276ee08-ad5e-4e22-a64f-2e524b4f7784"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

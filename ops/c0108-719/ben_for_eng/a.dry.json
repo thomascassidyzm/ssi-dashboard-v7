@@ -1,0 +1,530 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "3475cb23-b1a1-4649-9d94-0bd491bd19e0",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "আমরা মাঝরাতে জাগার আশা করিনি।",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "59c2f772-2066-435f-a7fa-b953a93cd69a",
+    "target2_audio_id": "bad82695-f57d-47da-80ad-a95196bed57b"
+   },
+   "after": {
+    "id": "3475cb23-b1a1-4649-9d94-0bd491bd19e0",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "আমরা মাঝরাতে জাগার আশা করিনি।",
+    "known_audio_id": null,
+    "target1_audio_id": "59c2f772-2066-435f-a7fa-b953a93cd69a",
+    "target2_audio_id": "bad82695-f57d-47da-80ad-a95196bed57b"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "c82d3c2a-b096-424d-bafe-fe0ffef6a65d",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "we",
+      "target": "আমরা"
+     },
+     {
+      "known": "not",
+      "target": "আশা করিনি"
+     }
+    ],
+    "target_text": "আমরা ... আশা করিনি",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "a82db570-1398-466a-9b7c-13b68070d972",
+    "target2_audio_id": "8fa98d3b-c3d2-4182-aec7-0044c444a36b",
+    "presentation_audio_id": "d9c91f4a-1ef4-4836-9231-840f9dbe3fee"
+   },
+   "after": {
+    "id": "c82d3c2a-b096-424d-bafe-fe0ffef6a65d",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we",
+      "target": "আমরা"
+     },
+     {
+      "known": "didn't expect",
+      "target": "আশা করিনি"
+     }
+    ],
+    "target_text": "আমরা ... আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "a82db570-1398-466a-9b7c-13b68070d972",
+    "target2_audio_id": "8fa98d3b-c3d2-4182-aec7-0044c444a36b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope",
+    "target_text": "আমরা ... আশা করিনি",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "a82db570-1398-466a-9b7c-13b68070d972",
+    "target2_audio_id": "8fa98d3b-c3d2-4182-aec7-0044c444a36b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect",
+    "target_text": "আমরা ... আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "a82db570-1398-466a-9b7c-13b68070d972",
+    "target2_audio_id": "8fa98d3b-c3d2-4182-aec7-0044c444a36b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope",
+    "target_text": "আমরা আশা করিনি",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "0d5404d7-ef8a-47b8-b1be-661049dbd341",
+    "target2_audio_id": "6a3c4ee1-36e5-4d5e-b9bf-91f69d2c3a84",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect",
+    "target_text": "আমরা আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "0d5404d7-ef8a-47b8-b1be-661049dbd341",
+    "target2_audio_id": "6a3c4ee1-36e5-4d5e-b9bf-91f69d2c3a84",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope now",
+    "target_text": "আমরা এখন আশা করিনি",
+    "known_audio_id": "e389327e-f794-44b6-a2c5-49667dfbd69e",
+    "target1_audio_id": "86089b30-5369-4774-9066-f383f5261dde",
+    "target2_audio_id": "d054822f-0856-4286-a577-7c930ae779cc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect now",
+    "target_text": "আমরা এখন আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "86089b30-5369-4774-9066-f383f5261dde",
+    "target2_audio_id": "d054822f-0856-4286-a577-7c930ae779cc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03B04"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope it would work",
+    "target_text": "আমরা আশা করিনি এটা কাজ করবে",
+    "known_audio_id": "5ffbd923-1362-4505-be72-0e8210442f8c",
+    "target1_audio_id": "1ab3b767-7fd7-49b2-8b20-6d23f61977c6",
+    "target2_audio_id": "a8482bde-3980-400c-8143-65b3cb451057",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect it would work",
+    "target_text": "আমরা আশা করিনি এটা কাজ করবে",
+    "known_audio_id": null,
+    "target1_audio_id": "1ab3b767-7fd7-49b2-8b20-6d23f61977c6",
+    "target2_audio_id": "a8482bde-3980-400c-8143-65b3cb451057",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03C02"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03C02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "not",
+    "target_text": "আশা করিনি",
+    "known_audio_id": "13c97600-d075-443b-b66a-978a4012586b",
+    "target1_audio_id": "bf885e27-7fd1-4f5c-a3de-558b886e77aa",
+    "target2_audio_id": "c55943dd-40ce-40d1-a04f-012126054172",
+    "presentation_audio_id": "dcde170c-0f33-4cbe-af54-7d32cc7aa396"
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03C02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "didn't expect",
+    "target_text": "আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "bf885e27-7fd1-4f5c-a3de-558b886e77aa",
+    "target2_audio_id": "c55943dd-40ce-40d1-a04f-012126054172",
+    "presentation_audio_id": "dcde170c-0f33-4cbe-af54-7d32cc7aa396"
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "আমরা মাঝরাতে জাগার আশা করিনি",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7281d39c-c736-4baf-9577-85ff721d70fb",
+    "target2_audio_id": "8597f33f-f4d4-4593-b2e8-8f3aa2ce2129",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "আমরা মাঝরাতে জাগার আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "7281d39c-c736-4baf-9577-85ff721d70fb",
+    "target2_audio_id": "8597f33f-f4d4-4593-b2e8-8f3aa2ce2129",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to go home",
+    "target_text": "আমরা বাড়ি যেতে আশা করিনি",
+    "known_audio_id": "4d75365b-094c-43f0-bd61-1ccde4020a5a",
+    "target1_audio_id": "42774aa6-7081-4181-b401-4ed03c155ec8",
+    "target2_audio_id": "e6c7f12d-af14-45cb-a67d-3d66ea5e7513",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to go home",
+    "target_text": "আমরা বাড়ি যেতে আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "42774aa6-7081-4181-b401-4ed03c155ec8",
+    "target2_audio_id": "e6c7f12d-af14-45cb-a67d-3d66ea5e7513",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to learn Bengali",
+    "target_text": "আমরা বাংলা শিখতে আশা করিনি",
+    "known_audio_id": "dac799a0-4979-40de-ae93-7e0bf8c2e4d0",
+    "target1_audio_id": "b754a904-da0f-436f-91ff-25c8027c90d5",
+    "target2_audio_id": "38296285-9726-46f2-bde5-eb8c9161ab1c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to learn Bengali",
+    "target_text": "আমরা বাংলা শিখতে আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "b754a904-da0f-436f-91ff-25c8027c90d5",
+    "target2_audio_id": "38296285-9726-46f2-bde5-eb8c9161ab1c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to hear the truth",
+    "target_text": "আমরা সত্যিটা শুনতে আশা করিনি",
+    "known_audio_id": "23983a7c-ebdd-464d-b426-f4c57287f7ee",
+    "target1_audio_id": "aedbf689-0f08-4ca3-8634-fe1db944ffcf",
+    "target2_audio_id": "76374cd7-20cf-4e90-bdc4-c63de65d4937",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to hear the truth",
+    "target_text": "আমরা সত্যিটা শুনতে আশা করিনি",
+    "known_audio_id": null,
+    "target1_audio_id": "aedbf689-0f08-4ca3-8634-fe1db944ffcf",
+    "target2_audio_id": "76374cd7-20cf-4e90-bdc4-c63de65d4937",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ben_for_eng",
+    "id": "ben_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "ben_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope, that's the truth",
+    "target_text": "আমরা আশা করিনি, এটাই সত্যিটা",
+    "known_audio_id": "98dbec70-0c9d-4723-ba95-764bae4e6773",
+    "target1_audio_id": "d8cc0bfe-b3c8-41ce-99e5-89a7877f11a3",
+    "target2_audio_id": "8cac9c17-b186-4555-b6c8-8bed63e11fd2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ben_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect it, that's the truth",
+    "target_text": "আমরা আশা করিনি, এটাই সত্যিটা",
+    "known_audio_id": null,
+    "target1_audio_id": "d8cc0bfe-b3c8-41ce-99e5-89a7877f11a3",
+    "target2_audio_id": "8cac9c17-b186-4555-b6c8-8bed63e11fd2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we didn't hope, that's the truth",
+    "known_audio_id": "98dbec70-0c9d-4723-ba95-764bae4e6773"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "we didn't hope to hear the truth",
+    "known_audio_id": "23983a7c-ebdd-464d-b426-f4c57287f7ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we didn't hope to learn Bengali",
+    "known_audio_id": "dac799a0-4979-40de-ae93-7e0bf8c2e4d0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we didn't hope to go home",
+    "known_audio_id": "4d75365b-094c-43f0-bd61-1ccde4020a5a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03C02",
+   "set": {
+    "known_text": "not",
+    "known_audio_id": "13c97600-d075-443b-b66a-978a4012586b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "we didn't hope it would work",
+    "known_audio_id": "5ffbd923-1362-4505-be72-0e8210442f8c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we didn't hope now",
+    "known_audio_id": "e389327e-f794-44b6-a2c5-49667dfbd69e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ben_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c82d3c2a-b096-424d-bafe-fe0ffef6a65d",
+   "set": {
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "we",
+      "target": "আমরা"
+     },
+     {
+      "known": "not",
+      "target": "আশা করিনি"
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": "d9c91f4a-1ef4-4836-9231-840f9dbe3fee"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

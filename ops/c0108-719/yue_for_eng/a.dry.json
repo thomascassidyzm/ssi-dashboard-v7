@@ -1,0 +1,409 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "0e202b3b-9f48-47ef-8956-a542f5b64017",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "我哋唔希望半夜瞓醒。",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "0e202b3b-9f48-47ef-8956-a542f5b64017",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "我哋估唔到會半夜瞓醒。",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "71cc27fc-aa11-47ae-bbd5-785bcb574894",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake",
+    "target_text": "瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "71cc27fc-aa11-47ae-bbd5-785bcb574894",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake up",
+    "target_text": "瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake",
+    "target_text": "瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up",
+    "target_text": "瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I woke",
+    "target_text": "我瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I woke up",
+    "target_text": "我瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "don't want to wake",
+    "target_text": "唔想瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "don't want to wake up",
+    "target_text": "唔想瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我哋唔希望半夜瞓醒",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我哋估唔到會半夜瞓醒",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "therefore, I don't want to wake",
+    "target_text": "所以我唔想瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "therefore, I don't want to wake up",
+    "target_text": "所以我唔想瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we hope not to wake",
+    "target_text": "我哋希望唔會瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we hope not to wake up",
+    "target_text": "我哋希望唔會瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he's not ready to wake yet",
+    "target_text": "佢仲未準備好瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he's not ready to wake up yet",
+    "target_text": "佢仲未準備好瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "yue_for_eng",
+    "id": "yue_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "yue_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "everyone else woke too",
+    "target_text": "其他人都瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "yue_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "everyone else woke up too",
+    "target_text": "其他人都瞓醒",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "everyone else woke too"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "he's not ready to wake yet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we hope not to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "therefore, I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我哋唔希望半夜瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I woke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to wake"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "71cc27fc-aa11-47ae-bbd5-785bcb574894",
+   "set": {
+    "known_text": "to wake"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "我哋唔希望半夜瞓醒。"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

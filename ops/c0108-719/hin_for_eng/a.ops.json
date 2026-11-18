@@ -1,0 +1,80 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "expect to wake up"
+   },
+   "expect": {
+    "known_text": "hope to wake",
+    "target_text": "जागने की उम्मीद"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "no need to wake up"
+   },
+   "expect": {
+    "known_text": "no need to wake",
+    "target_text": "जागने की ज़रूरत नहीं है।"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "so no need to wake up at night"
+   },
+   "expect": {
+    "known_text": "so no need to wake at night",
+    "target_text": "तो रात में जागने की ज़रूरत नहीं है।"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "I don't expect to wake up"
+   },
+   "expect": {
+    "known_text": "I hope not to wake",
+    "target_text": "मुझे जागने की उम्मीद नहीं है।"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "wake up in middle of night"
+   },
+   "expect": {
+    "known_text": "wake in middle of night",
+    "target_text": "रात के बीच में जागने"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।"
+   }
+  }
+ ]
+}
