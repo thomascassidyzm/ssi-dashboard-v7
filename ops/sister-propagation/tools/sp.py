@@ -111,6 +111,7 @@ def audio(d, mode):
         if not dry and ledger['spent'] + len(text) > CAP:
             out[f'{role}|{text}'] = {'status': 0, 'rows': ids, 'ok': False, 'code': 'JOB_BUDGET', 'message': 'not rendered: 4,500-char share would be exceeded'}
             print('SKIP budget', role, text[:60]); continue
+        if not dry: __import__('time').sleep(float(os.environ.get('SP_SLEEP') or 0) / 2)
         st, res = call('POST', '/api/audio/render', {'courseCode': P['course'], 'role': role, 'text': text, 'purpose': P['purpose'], 'dryRun': dry}, timeout=300)
         out[f'{role}|{text}'] = {'status': st, 'rows': ids, **{k: res.get(k) for k in ('ok', 'source', 'audioId', 'charsSpent', 'wouldSpendChars', 'code', 'error', 'message') if k in res}}
         if st == 409 and res.get('code') == 'EXISTS_IN_LANGUAGE' and res.get('existing'):
@@ -189,6 +190,7 @@ def post(d, mode):
         body = {'ops': b, 'apply': mode == 'apply', 'reason': P['purpose']}
         st, r = call('POST', f'/api/production/{C}/edit-batch', body, timeout=120)
         res.append({'batch': i, 'status': st, 'n': len(b), 'result': r})
+        import time; time.sleep(float(os.environ.get('SP_SLEEP') or 0))   # cs #725·AI: pace writes on the shared DB
         print(i, st, len(b), r.get('ok'), r.get('eventId') or r.get('event_id') or '', (r.get('error') or r.get('code') or '')[:200] if isinstance(r.get('error') or r.get('code'), str) else r.get('error'), flush=True)
         if st >= 400 or r.get('ok') is False:
             if mode == 'apply': break
