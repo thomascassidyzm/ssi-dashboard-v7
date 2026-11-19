@@ -1,0 +1,127 @@
+[
+ {
+  "id": "S0010L01",
+  "seed": 10,
+  "known": "je ne suis pas sûr de pouvoir me souvenir",
+  "target": "I'm not sure if I can remember",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "je ne suis pas sûr de",
+    "target": "I'm not sure if",
+    "where": "S0010L01 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "pouvoir me souvenir",
+    "target": "I can remember",
+    "where": "S0010L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. I'm-not-sure-if-I-can-re-mem-ber. \"remember | me souvenir\" alone was not offered as the second piece: \"me souvenir\" already answers to \"to remember\" (seed 6), and one prompt must have one answer; so the second piece is \"I can remember | pouvoir me souvenir\"."
+ },
+ {
+  "id": "S0024L01",
+  "seed": 24,
+  "known": "je ne vais pas pouvoir",
+  "target": "I'm not going to be able to",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "je ne vais pas",
+    "target": "I'm not going to",
+    "where": "S0024L01 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "pouvoir",
+    "target": "to be able to",
+    "where": "S0024L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. English table cut: \"I'm not going to\" + \"to be able to\" (the two share \"to\": overlap is normal). In French \"to be able to | pouvoir\" was only ever taught inside \"I'd like to be able to\" (seed 11), so here it is a new LEGO with its own basket."
+ },
+ {
+  "id": "S0035L01",
+  "seed": 35,
+  "known": "elle ne veut rien lire",
+  "target": "she doesn't want to read anything",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "elle ne veut",
+    "target": "she doesn't want",
+    "where": "S0035L01 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "rien lire",
+    "target": "to read anything",
+    "where": "S0035L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. she-does-n't-want-to-read-a-ny-thing. The French \"ne … rien\" wraps the verb, so the cut that is whole on both sides is \"elle ne veut | she doesn't want\" + \"rien lire | to read anything\"."
+ },
+ {
+  "id": "S0143L02",
+  "seed": 143,
+  "known": "dont on parlait tout à l'heure",
+  "target": "as we were talking about earlier",
+  "syllables_recount": 10,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "dont on parlait",
+    "target": "as we were talking about",
+    "where": "S0143L02 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "tout à l'heure",
+    "target": "earlier",
+    "where": "S0143L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. English table cut: \"as we were talking about\" + \"earlier\". KEPT AT 7 syllables: \"as we were talking about\" — the French \"dont\" carries both \"as\" and \"about\", which sit at the two ends of the English, so it cannot be cut smaller without a gap."
+ },
+ {
+  "id": "S0152L01",
+  "seed": 152,
+  "known": "je l'aurais fait différemment",
+  "target": "I would have done it differently",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "je l'aurais fait",
+    "target": "I would have done it",
+    "where": "S0152L01 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "différemment",
+    "target": "differently",
+    "where": "S0152L04 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. I-would-have-done-it-dif-fer-ent-ly. English table cut: \"I would have done it\" + \"differently\"."
+ }
+]

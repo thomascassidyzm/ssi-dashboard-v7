@@ -51,5 +51,3 @@ The ROOM (Kai's Watson, conversation 31fdb8d3) then dispatched ten of the eleven
 | x-for-jpn-zho (8 courses) | NOT DISPATCHED | - | - | still a gap: this job is at its child ceiling and the room did not send it |
 
 Every job so far is on kai-gmail. Void numbers (acknowledged then refused, no worker ran): #456, #457, #458, #459, #464.
-
-17 Nov 14:45Z: all ten room-dispatched slices DONE (#467–#476, all kai-gmail, opus); their report files are folded into reports/ here and FIX-LIST.md is rebuilt from FIX-LIST.head.md + reports/*.md by build-fix-list.py. One headline claim per slice was re-read from a fresh live dump; all held. Still not run: x-for-jpn-zho (8 courses); ara_sy_for_eng unreadable.

@@ -1,0 +1,851 @@
+{
+ "course": "eng_for_fra",
+ "legos": [
+  {
+   "id": "S0010L01",
+   "verdict": "recut",
+   "known": "je ne suis pas sûr de",
+   "target": "I'm not sure if",
+   "type": "M",
+   "components": [
+    [
+     "je ne suis pas sûr",
+     "I'm not sure"
+    ],
+    [
+     "de",
+     "if"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "pouvoir me souvenir",
+      "target_text": "I can remember",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "pouvoir",
+        "target": "I can"
+       },
+       {
+        "known": "me souvenir",
+        "target": "remember"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03B01",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "pouvoir me souvenir d'un mot",
+      "target_text": "I can remember a word",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03B02",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "pouvoir me souvenir de quelque chose",
+      "target_text": "I can remember something",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03B03",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "pouvoir me souvenir de ce que je veux dire",
+      "target_text": "I can remember what I mean",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03U01",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "je ne suis pas sûre de pouvoir me souvenir d'un mot maintenant",
+      "target_text": "I'm not sure if I can remember a word now",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03U02",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "je ne suis pas sûre de pouvoir me souvenir de quelque chose aujourd'hui",
+      "target_text": "I'm not sure if I can remember something today",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03U03",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "je ne suis pas sûre de pouvoir me souvenir de ce que je veux dire maintenant",
+      "target_text": "I'm not sure if I can remember what I mean now",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03U04",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "je ne suis pas sûre de pouvoir me souvenir d'un mot en anglais maintenant",
+      "target_text": "I'm not sure if I can remember a word in English now",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0010L03U05",
+      "course_code": "eng_for_fra",
+      "seed_number": 10,
+      "lego_index": 3,
+      "known_text": "je ne suis pas sûre de pouvoir me souvenir de quelque chose en anglais aujourd'hui",
+      "target_text": "I'm not sure if I can remember something in English today",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. I'm-not-sure-if-I-can-re-mem-ber. \"remember | me souvenir\" alone was not offered as the second piece: \"me souvenir\" already answers to \"to remember\" (seed 6), and one prompt must have one answer; so the second piece is \"I can remember | pouvoir me souvenir\". Pieces: “I'm not sure if” = “je ne suis pas sûr de” [S0010L01 (in place), NEW]; “I can remember” = “pouvoir me souvenir” [S0010L03 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0024L01",
+   "verdict": "recut",
+   "known": "je ne vais pas",
+   "target": "I'm not going to",
+   "type": "M",
+   "components": [
+    [
+     "je ne",
+     "I'm not"
+    ],
+    [
+     "vais pas",
+     "going to"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "pouvoir",
+      "target_text": "to be able to",
+      "type": "A",
+      "is_new": true
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03B01",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "pouvoir parler",
+      "target_text": "to be able to speak",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03B02",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "pouvoir me souvenir",
+      "target_text": "to be able to remember",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03B03",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "pouvoir essayer",
+      "target_text": "to be able to try",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03U01",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "j'aimerais pouvoir parler",
+      "target_text": "I'd like to be able to speak",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03U02",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "j'aimerais pouvoir me souvenir",
+      "target_text": "I'd like to be able to remember",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03U03",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "je ne vais pas pouvoir parler demain",
+      "target_text": "I'm not going to be able to speak tomorrow",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03U04",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "je ne vais pas pouvoir essayer aujourd'hui",
+      "target_text": "I'm not going to be able to try today",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0024L03U05",
+      "course_code": "eng_for_fra",
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "j'aimerais pouvoir parler en anglais",
+      "target_text": "I'd like to be able to speak in English",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. English table cut: \"I'm not going to\" + \"to be able to\" (the two share \"to\": overlap is normal). In French \"to be able to | pouvoir\" was only ever taught inside \"I'd like to be able to\" (seed 11), so here it is a new LEGO with its own basket. Pieces: “I'm not going to” = “je ne vais pas” [S0024L01 (in place), NEW]; “to be able to” = “pouvoir” [S0024L03 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0035L01",
+   "verdict": "recut",
+   "known": "elle ne veut",
+   "target": "she doesn't want",
+   "type": "M",
+   "components": [
+    [
+     "elle",
+     "she"
+    ],
+    [
+     "ne veut",
+     "doesn't want"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "rien lire",
+      "target_text": "to read anything",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "rien",
+        "target": "to read"
+       },
+       {
+        "known": "lire",
+        "target": "anything"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03B01",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "rien lire aujourd'hui",
+      "target_text": "to read anything today",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03B02",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "rien lire ce soir",
+      "target_text": "to read anything this evening",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03B03",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "rien lire maintenant",
+      "target_text": "to read anything now",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03U01",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "elle ne veut rien lire aujourd'hui avec quelqu'un d'autre",
+      "target_text": "she doesn't want to read anything today with someone else",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03U02",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "elle ne veut rien lire maintenant avec quelqu'un d'autre",
+      "target_text": "she doesn't want to read anything now with someone else",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03U03",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "elle ne veut rien lire demain avec quelqu'un d'autre",
+      "target_text": "she doesn't want to read anything tomorrow with someone else",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03U04",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "elle ne veut rien lire ce soir quand il y a d'autres personnes ici",
+      "target_text": "she doesn't want to read anything this evening when other people are here",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 13,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0035L03U05",
+      "course_code": "eng_for_fra",
+      "seed_number": 35,
+      "lego_index": 3,
+      "known_text": "elle ne veut rien lire aujourd'hui avant que je doive partir",
+      "target_text": "she doesn't want to read anything today before I have to go",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. she-does-n't-want-to-read-a-ny-thing. The French \"ne … rien\" wraps the verb, so the cut that is whole on both sides is \"elle ne veut | she doesn't want\" + \"rien lire | to read anything\". Pieces: “she doesn't want” = “elle ne veut” [S0035L01 (in place), NEW]; “to read anything” = “rien lire” [S0035L03 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0143L02",
+   "verdict": "recut",
+   "known": "dont on parlait",
+   "target": "as we were talking about",
+   "type": "M",
+   "components": [
+    [
+     "dont",
+     "as"
+    ],
+    [
+     "on parlait",
+     "we were talking about"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "tout à l'heure",
+      "target_text": "earlier",
+      "type": "A",
+      "is_new": true
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03B01",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "pas la même chose dont on parlait tout à l'heure",
+      "target_text": "not the same thing as we were talking about earlier",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03B02",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "la même chose dont on parlait tout à l'heure",
+      "target_text": "the same thing as we were talking about earlier",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03B03",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "la même idée dont on parlait tout à l'heure",
+      "target_text": "the same idea as we were talking about earlier",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03U01",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "je pense que c'est la même idée dont on parlait tout à l'heure",
+      "target_text": "I think it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03U02",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "c'est pas la même idée dont on parlait tout à l'heure",
+      "target_text": "it's not the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03U03",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "bien sûr que c'est la même idée dont on parlait tout à l'heure",
+      "target_text": "of course it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03U04",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "je ne suis pas sûre que c'est la même idée dont on parlait tout à l'heure",
+      "target_text": "I'm not sure it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 13,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0143L03U05",
+      "course_code": "eng_for_fra",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "je suis surprise que c'est la même idée dont on parlait tout à l'heure",
+      "target_text": "I'm surprised it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 10 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. English table cut: \"as we were talking about\" + \"earlier\". KEPT AT 7 syllables: \"as we were talking about\" — the French \"dont\" carries both \"as\" and \"about\", which sit at the two ends of the English, so it cannot be cut smaller without a gap. Pieces: “as we were talking about” = “dont on parlait” [S0143L02 (in place), NEW]; “earlier” = “tout à l'heure” [S0143L03 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0152L01",
+   "verdict": "recut",
+   "known": "je l'aurais fait",
+   "target": "I would have done it",
+   "type": "M",
+   "components": [
+    [
+     "je l'aurais",
+     "I would have"
+    ],
+    [
+     "fait",
+     "done it"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "différemment",
+      "target_text": "differently",
+      "type": "A",
+      "is_new": true
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04B01",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "je l'aurais fait différemment aujourd'hui",
+      "target_text": "I would have done it differently today",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04B02",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "je l'aurais fait différemment maintenant",
+      "target_text": "I would have done it differently now",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04B03",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "bien sûr je l'aurais fait différemment aujourd'hui",
+      "target_text": "of course I would have done it differently today",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04U01",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "je pense que je l'aurais fait différemment ce matin",
+      "target_text": "I think I would have done it differently this morning",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04U02",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "je ne sais pas si je l'aurais fait différemment aujourd'hui",
+      "target_text": "I don't know if I would have done it differently today",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04U03",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "je suis désolée, je l'aurais fait différemment ce matin",
+      "target_text": "I'm sorry, I would have done it differently this morning",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04U04",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "j'espère que tu comprends que je l'aurais fait différemment aujourd'hui",
+      "target_text": "I hope you understand I would have done it differently today",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_fra:S0152L04U05",
+      "course_code": "eng_for_fra",
+      "seed_number": 152,
+      "lego_index": 4,
+      "known_text": "je l'aurais fait différemment ce matin mais pas de problème",
+      "target_text": "I would have done it differently this morning but no problem",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. I-would-have-done-it-dif-fer-ent-ly. English table cut: \"I would have done it\" + \"differently\". Pieces: “I would have done it” = “je l'aurais fait” [S0152L01 (in place), NEW]; “differently” = “différemment” [S0152L04 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0082L01",
+   "verdict": "recut",
+   "is_new": false,
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del"
+   },
+   "why": "Knock-on of the cut at S0024L01: this LEGO is now word for word the piece taught there (\"I'm not going to\" = \"je ne vais pas\"). A pair is introduced once; the later copy becomes not-new, and a not-new LEGO has no played basket, so its 8 rows are removed (the piece keeps its full basket at S0024L01). "
+  }
+ ]
+}

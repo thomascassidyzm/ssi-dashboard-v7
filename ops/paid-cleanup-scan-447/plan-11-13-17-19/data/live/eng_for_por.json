@@ -1,0 +1,764 @@
+{
+"250": {
+"at": "2026-11-18T18:43:05Z",
+"known": "Pode dizer-me mais alguma coisa antes de eu responder?",
+"legos": [
+{
+"id": "S0250L01",
+"idx": 1,
+"is_new": true,
+"known": "mais alguma coisa antes de eu responder",
+"phrases": [
+{
+"id": "66a1d14f-92d8-444e-b6b1-e712ed29eb83",
+"ka": "b47515e4-1e77-4797-9960-76da3955c70a",
+"known": "mais alguma coisa antes de eu responder",
+"pos": 0,
+"t1": "e4c3f4b1-ba90-4c81-acf5-3a3d9c257ca6",
+"t2": "5280140b-4414-4951-b7b6-eba7e67b1992",
+"target": "anything more before I answer",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_por:S0250L01C01",
+"ka": "79545cfb-0810-4b5a-98b2-81fb9afde21a",
+"known": "mais alguma coisa",
+"pos": 1,
+"t1": "07694b48-8922-415d-bfce-5694d79258c3",
+"t2": "2d8ffd5f-63f8-4e61-8b7a-c28e281c0444",
+"target": "anything more",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0250L01C02",
+"ka": "a17b5d58-36d1-4245-bf52-e42116f63c4b",
+"known": "antes de eu responder",
+"pos": 2,
+"t1": "72ec268e-ff0c-4fa9-af23-67af0dd16f57",
+"t2": "45b815ab-152d-491f-9248-bfba1e5825e8",
+"target": "before I answer",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0250L01B01",
+"ka": "b47515e4-1e77-4797-9960-76da3955c70a",
+"known": "mais alguma coisa antes de eu responder",
+"pos": 3,
+"t1": "e4c3f4b1-ba90-4c81-acf5-3a3d9c257ca6",
+"t2": "5280140b-4414-4951-b7b6-eba7e67b1992",
+"target": "anything more before I answer",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0250L01B02",
+"ka": "21a31373-25b1-48f7-be04-96b0f3a169d6",
+"known": "pode dizer-me mais alguma coisa antes de eu responder?",
+"pos": 4,
+"t1": "22f619b3-cd72-4fe1-889c-b285af2b0e9c",
+"t2": "5807d1ee-349f-4e67-8a59-630e79ed29ad",
+"target": "can you tell me anything more before I answer?",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0250L01B03",
+"ka": "d0b3bb15-b5ef-4120-92a4-5a5ed670e1e8",
+"known": "há mais alguma coisa antes de eu responder?",
+"pos": 5,
+"t1": "84381f5f-2768-46a3-a840-8ace29b2e626",
+"t2": "b51d8e57-4b4e-4895-8a92-d9c50df0058a",
+"target": "is there anything more before I answer?",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0250L01B04",
+"ka": "e95870b2-3950-4d81-9746-c307c6d2e690",
+"known": "quero saber se há mais alguma coisa antes de eu responder",
+"pos": 6,
+"t1": "6483d208-0a44-4a6e-908f-12abe51d1f95",
+"t2": "b7365f09-ede4-4d6b-a71e-60cb368fe117",
+"target": "I want to know if there is anything more before I answer",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0250L01U01",
+"ka": "dd124b10-3bec-4852-bac2-8910317cfc6a",
+"known": "não sei se há mais alguma coisa antes de eu responder",
+"pos": 7,
+"t1": "75ab8ac5-4989-4e10-ae0f-a7a54759a406",
+"t2": "840b2d8b-c4b8-4cbc-88fc-62648d4de856",
+"target": "I don't know if there is anything more before I answer",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0250L01U02",
+"ka": "ae19641f-8ed2-461e-996c-3d8d2119a6ec",
+"known": "quero que me diga se há mais alguma coisa antes de eu responder",
+"pos": 8,
+"t1": "02422ee2-8e3f-4597-a498-d23bb81427d0",
+"t2": "5dd68249-b762-4268-a7c1-d884ffbe6158",
+"target": "I want you to tell me if there is anything more before I answer",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0250L01U03",
+"ka": "7942ac8c-ae8d-4405-bbb0-7e3c0e8f6253",
+"known": "já disse tudo ou há mais alguma coisa antes de eu responder?",
+"pos": 9,
+"t1": "d80aac66-c381-4bb4-8ae5-112724af954c",
+"t2": "fc3965b4-5b29-421e-8257-ef12b7644ddf",
+"target": "have you said everything or is there anything more before I answer?",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0250L01U04",
+"ka": "00284bca-ad21-42f9-ba57-eb4cbd373430",
+"known": "não tenho a certeza se há mais alguma coisa antes de eu responder",
+"pos": 10,
+"t1": "56d431ef-844d-4fc3-a7c6-33ded51bbbba",
+"t2": "83420537-1fc8-46ec-a8c5-69689068114c",
+"target": "I'm not sure if there is anything more before I answer",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0250L01U05",
+"ka": "578989a9-c90d-4e36-b51e-c97be01f406e",
+"known": "disse que queria saber se há mais alguma coisa antes de eu responder",
+"pos": 11,
+"t1": "80d8c10d-4f40-4788-b829-4ac0c9d89bb8",
+"t2": "c9d2edac-5e63-475a-ad3c-5ffc38daa1fa",
+"target": "he said that he wanted to know if there is anything more before I answer",
+"type": "use"
+}
+],
+"target": "anything more before I answer",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Can you tell me something else before I answer?"
+},
+"260": {
+"at": "2026-11-18T18:43:05Z",
+"known": "Não faço a mínima ideia.",
+"legos": [
+{
+"id": "S0260L01",
+"idx": 1,
+"is_new": true,
+"known": "não faço a mínima ideia",
+"phrases": [
+{
+"id": "5044b186-3418-4bff-a153-134b688198c0",
+"ka": "d5842956-7466-4aa5-89dd-d340d382f5fb",
+"known": "não faço a mínima ideia",
+"pos": 0,
+"t1": "152b4497-005c-4014-a268-89f8e67055c5",
+"t2": "b0ce4d07-dab7-4ce5-a723-b7dab2d6fb04",
+"target": "I don't have the faintest idea",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_por:S0260L01C01",
+"ka": "60f8fa14-306d-4bd8-b19a-355182a3ff34",
+"known": "não faço",
+"pos": 1,
+"t1": "4760fe14-0146-4689-bc15-7ea570ed596f",
+"t2": "f006eedc-b711-4cf0-9a04-766228cfb6ec",
+"target": "I don't have",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0260L01C02",
+"ka": "938a67c8-1fb8-40e1-a809-3167766be190",
+"known": "a mínima ideia",
+"pos": 2,
+"t1": "c978af55-d25a-44f0-850b-e905a7030186",
+"t2": "62a37aac-02eb-4870-a0dd-d35ff8e58510",
+"target": "the faintest idea",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0260L01B01",
+"ka": "d5842956-7466-4aa5-89dd-d340d382f5fb",
+"known": "não faço a mínima ideia",
+"pos": 3,
+"t1": "152b4497-005c-4014-a268-89f8e67055c5",
+"t2": "b0ce4d07-dab7-4ce5-a723-b7dab2d6fb04",
+"target": "I don't have the faintest idea",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0260L01B02",
+"ka": "c45cab20-1bf6-4672-96ec-0e8f507c6537",
+"known": "disse que não faço a mínima ideia",
+"pos": 4,
+"t1": "671e8d4d-4945-4d75-b09d-da6c4996e650",
+"t2": "13e62274-4aa9-4884-98a4-fa92f729b823",
+"target": "I said that I don't have the faintest idea",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0260L01B03",
+"ka": "35fc4b33-7fe7-4779-9b92-b5f1083eb5cb",
+"known": "não faço a mínima ideia do que é aquela coisa azul ali",
+"pos": 5,
+"t1": "ddf2408e-de07-428c-ab6c-4f70d5b126be",
+"t2": "4f3b5b4b-c93d-4172-add0-b0a047a696df",
+"target": "I don't have the faintest idea what that blue thing over there is",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0260L01U01",
+"ka": "20e50251-a0d0-498e-9349-85908ab45647",
+"known": "o meu pai disse que não faço a mínima ideia",
+"pos": 6,
+"t1": "5e60ab5b-2c53-4c0c-861e-a23545788221",
+"t2": "a561828b-de08-40ba-b874-06b3f53addb2",
+"target": "my father said that I don't have the faintest idea",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0260L01U02",
+"ka": "1bff9a83-a394-4dc2-9432-54e50c42f48f",
+"known": "não faço a mínima ideia quando é que vou estar pronto para começar",
+"pos": 7,
+"t1": "47704313-9bd6-4cc4-8241-0b33529ba14e",
+"t2": "d7b2ad79-dcaa-4966-b942-4750672a2c53",
+"target": "I don't have the faintest idea when I'm going to be ready to start",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0260L01U03",
+"ka": "0c04c2a0-93ff-4c0e-a121-ae5b1458bdcd",
+"known": "não faço a mínima ideia se vou estar pronto em menos de uma hora",
+"pos": 8,
+"t1": "536e101d-58c4-421b-bb4c-0f77fc88391d",
+"t2": "1784ba7b-f72e-4e12-b516-1539a27d0697",
+"target": "I don't have the faintest idea if I'm going to be ready in less than an hour",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0260L01U04",
+"ka": "eebb2e6b-d5ed-431e-b7a0-dc7ec1730424",
+"known": "não faço a mínima ideia do que o meu pai queria dizer-lhe",
+"pos": 9,
+"t1": "fe4afe28-58ba-46c0-a367-c603d31ed1ab",
+"t2": "b6d4416e-2bee-44e0-91c9-77ac78038dc2",
+"target": "I don't have the faintest idea what my father wanted to tell you",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0260L01U05",
+"ka": "e8f37744-be66-43f6-8da9-a9b65bce4090",
+"known": "não faço a mínima ideia quando é que vou estar pronto para sair",
+"pos": 10,
+"t1": "eb0af599-500e-4ca7-af56-279a5fe5e36e",
+"t2": "e875a87d-3261-4fed-ab96-44bc3532e764",
+"target": "I don't have the faintest idea when I'm going to be ready to leave",
+"type": "use"
+}
+],
+"target": "I don't have the faintest idea",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I don't have the faintest idea."
+},
+"281": {
+"at": "2026-11-18T18:43:06Z",
+"known": "Importa-se se terminar o meu café antes de começar?",
+"legos": [
+{
+"id": "S0281L01",
+"idx": 1,
+"is_new": true,
+"known": "terminar o meu café antes de começar",
+"phrases": [
+{
+"id": "7a1a3895-5fe0-490c-9773-08af8abb34f8",
+"ka": "6ded36de-2ceb-4db6-b3db-0e77cdd98a63",
+"known": "terminar o meu café antes de começar",
+"pos": 0,
+"t1": "a299f715-a938-432a-8f6c-50acef65f130",
+"t2": "37ca6740-0d48-4fad-95a2-c7fa2a56e6bf",
+"target": "finish my coffee before we start",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_por:S0281L01C01",
+"ka": "10a8f7a1-6629-4913-9977-fec70dfba6cb",
+"known": "terminar o meu café",
+"pos": 1,
+"t1": "bd27198c-4245-4199-98ad-a0aadba3376e",
+"t2": "c808d036-b247-4d8c-a501-943b658e8b6c",
+"target": "finish my coffee",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0281L01C02",
+"ka": "a3242897-384c-4ec6-a1a1-cf905552ddd7",
+"known": "antes de começar",
+"pos": 2,
+"t1": "667ff77c-39a1-46ee-913f-7bd21ae958b0",
+"t2": "161b1b51-b362-49a0-b2ee-20e62baa06d9",
+"target": "before we start",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0281L01B01",
+"ka": "6ded36de-2ceb-4db6-b3db-0e77cdd98a63",
+"known": "terminar o meu café antes de começar",
+"pos": 3,
+"t1": "a299f715-a938-432a-8f6c-50acef65f130",
+"t2": "37ca6740-0d48-4fad-95a2-c7fa2a56e6bf",
+"target": "finish my coffee before we start",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0281L01B02",
+"ka": "8c637860-85ca-4268-933f-42afc5541db2",
+"known": "importa-se se terminar o meu café antes de começar?",
+"pos": 4,
+"t1": "e5e8e829-fba1-4d61-a920-12b066c5deca",
+"t2": "7ed91a4b-27d9-418e-b40f-51391e3e0cc0",
+"target": "do you mind if I finish my coffee before we start?",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0281L01B03",
+"ka": "5d3c1f8b-1405-4538-89e4-e5bacb03d2b1",
+"known": "quero terminar o meu café antes de começar",
+"pos": 5,
+"t1": "fecc2c4f-46d3-4eb2-9a8b-e75b76edaf3e",
+"t2": "e4a62198-bff1-43ea-8ceb-07ce0553ed5a",
+"target": "I want to finish my coffee before we start",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0281L01B04",
+"ka": "38fc0552-502d-486f-a9ec-13b6d744fb0b",
+"known": "disse que queria terminar o meu café antes de começar",
+"pos": 6,
+"t1": "593b3603-3890-4a44-adfd-1475b7ebe564",
+"t2": "21712c70-29de-47c6-8899-be1c44a5e423",
+"target": "he said that he wanted to finish my coffee before we start",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0281L01U01",
+"ka": "eb44d165-ac8f-4803-a3b5-28fbb7328d7d",
+"known": "acho que devia terminar o meu café antes de começar a falar",
+"pos": 7,
+"t1": "bb4e6fa8-992a-4ba3-b1e9-f26cd0e758db",
+"t2": "52bdb4ce-0c2a-4229-8c74-52a0511393bf",
+"target": "I think I should finish my coffee before we start to talk",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0281L01U02",
+"ka": "0b764c28-3cfc-40a6-8fb0-f7caad7ff03b",
+"known": "ela disse que eu devia terminar o meu café antes de começar",
+"pos": 8,
+"t1": "70d60f79-f6d6-4d65-a50d-a63914595628",
+"t2": "6815791f-01d2-4e43-be2a-1854ca4f58f8",
+"target": "she said that I should finish my coffee before we start",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0281L01U03",
+"ka": "fa3e3aeb-4acf-4141-876b-bd3fddfc5e6a",
+"known": "posso terminar o meu café antes de começar a trabalhar?",
+"pos": 9,
+"t1": "8826c348-32b8-484f-8711-2fcc793926b7",
+"t2": "fc3f4d8e-ecf9-423a-9222-9a64099632b6",
+"target": "can I finish my coffee before we start working?",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0281L01U04",
+"ka": "750bb0da-c799-4db0-9248-adc640536669",
+"known": "quero terminar o meu café antes de começar porque não há muito tempo",
+"pos": 10,
+"t1": "87616853-64d7-4970-8271-7de0d9c231f6",
+"t2": "fd76be1a-9f08-4d9a-9ad0-ce4a3a67ed55",
+"target": "I want to finish my coffee before we start because there isn't much time",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0281L01U05",
+"ka": "fededcc2-7b9a-408a-ba3d-217d30e7677b",
+"known": "disse que eu devia terminar o meu café antes de começar a reunião",
+"pos": 11,
+"t1": "2592f71f-8364-414d-bf6e-cc721c926235",
+"t2": "50692529-af6c-408d-9bd7-d2f569c74978",
+"target": "he said that I should finish my coffee before we start the meeting",
+"type": "use"
+}
+],
+"target": "finish my coffee before we start",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Do you mind if I finish my coffee before you start?"
+},
+"29": {
+"at": "2026-11-18T18:43:04Z",
+"known": "Estou ansiosa para falar melhor o mais cedo possível.",
+"legos": [
+{
+"id": "S0029L01",
+"idx": 1,
+"is_new": true,
+"known": "melhor",
+"phrases": [
+{
+"id": "b008dc4b-0cae-4723-bba7-ce1a1241349e",
+"ka": "9f701b68-506e-4b20-bd9c-e7d9564645fa",
+"known": "melhor",
+"pos": 0,
+"t1": "e136662c-424e-4316-9859-6f97a5e9d355",
+"t2": "27e7222e-d5c4-4e91-b306-f377aa6314e9",
+"target": "better",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_por:S0029L01B01",
+"ka": "c7d77fef-5a5a-4f66-8625-cda4933cbfcb",
+"known": "aprender melhor",
+"pos": 1,
+"t1": "c4330960-20af-40dd-8408-9d2b3a4451b6",
+"t2": "41f39c6f-056f-4b9d-b167-423334200924",
+"target": "to learn better",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L01B02",
+"ka": "00457bba-f2fc-4aab-96b3-266a92ab6193",
+"known": "responder melhor",
+"pos": 2,
+"t1": "e77bbec2-a84e-497c-813a-5dab534b17e7",
+"t2": "d45bcf0b-554d-4cee-bc4c-56d728fc6fa5",
+"target": "to answer better",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L01B03",
+"ka": "3a6300e6-3518-4f4f-b1fd-6387c2306472",
+"known": "falar inglês melhor",
+"pos": 3,
+"t1": "50552ef8-48ee-4c2a-89c1-e3e3a03b15ea",
+"t2": "a899311b-3d41-4e34-835a-4e5008dc8ccd",
+"target": "to speak English better",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L01U01",
+"ka": "0776ed5b-df37-4073-8fad-15d3e141a646",
+"known": "quero falar inglês melhor em breve",
+"pos": 4,
+"t1": "fbb18830-e856-4850-a506-afd6f62abb4c",
+"t2": "d15b0d2b-a79d-4f06-9a58-d9fc8412538b",
+"target": "I want to speak English better soon",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L01U02",
+"ka": "b89fc76a-61c5-40e8-a1f5-a7fd571e2ce7",
+"known": "não tenho a certeza se consigo falar melhor agora",
+"pos": 5,
+"t1": "020d46f5-943b-4f44-95d6-4fa72fb768e4",
+"t2": "8a2c2787-06e8-4136-9891-f574b2c9aa4a",
+"target": "I'm not sure if I can speak better now",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L01U03",
+"ka": "7222c304-0ff9-451e-b9ed-a9b58744d91b",
+"known": "porque eu quero falar inglês melhor",
+"pos": 6,
+"t1": "486d7293-b563-4383-aedc-1050b5ec4828",
+"t2": "41aa7d1c-c861-4ec4-ba29-77ba8ae1c63d",
+"target": "because I want to speak English better",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L01U04",
+"ka": "9f2af992-ca53-451c-9b24-93792f370006",
+"known": "ela quer aprender a falar inglês melhor",
+"pos": 7,
+"t1": "bbffe49d-4950-4e8b-9f87-fc208dacf20e",
+"t2": "976497da-4211-4735-99fe-9dd574605e38",
+"target": "she wants to learn to speak English better",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L01U05",
+"ka": "8b50d948-ab4f-4223-99a3-1fc747085fe4",
+"known": "gostaria de conseguir responder melhor em inglês",
+"pos": 8,
+"t1": "0c4b51fc-c990-432f-a393-5a862003ff2b",
+"t2": "866afead-3901-49d5-9621-28e22f189911",
+"target": "I'd like to be able to answer better in English",
+"type": "use"
+}
+],
+"target": "better",
+"type": "A"
+},
+{
+"id": "S0029L02",
+"idx": 2,
+"is_new": true,
+"known": "falar melhor o mais cedo possível",
+"phrases": [
+{
+"id": "ca7b4072-6187-40ef-a428-3f0eaee8e18e",
+"ka": "cbc623f9-1422-49fb-8a71-4f04c2022e15",
+"known": "falar melhor o mais cedo possível",
+"pos": 0,
+"t1": "873b55a5-e8dc-46d4-a631-7d7e36c142b7",
+"t2": "b47a5c98-a542-4424-84e4-0cdec9436394",
+"target": "to speak better as soon as possible",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_por:S0029L02C01",
+"ka": "18bec71d-a52c-4dde-91c8-3c5c5e2a8524",
+"known": "falar melhor",
+"pos": 1,
+"t1": "bae31587-8487-4913-b9bd-08590b89b19e",
+"t2": "f650436f-9c6d-44df-9954-06e054f26c79",
+"target": "to speak better",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0029L02C02",
+"ka": "840df372-500c-4544-9a6c-aa1d16661d69",
+"known": "o mais cedo possível",
+"pos": 2,
+"t1": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+"t2": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb",
+"target": "as soon as possible",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0029L02B01",
+"ka": "cbc623f9-1422-49fb-8a71-4f04c2022e15",
+"known": "falar melhor o mais cedo possível",
+"pos": 3,
+"t1": "873b55a5-e8dc-46d4-a631-7d7e36c142b7",
+"t2": "b47a5c98-a542-4424-84e4-0cdec9436394",
+"target": "to speak better as soon as possible",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L02B02",
+"ka": "b497b435-e8be-4571-8130-f4eacfacf183",
+"known": "quero falar melhor o mais cedo possível",
+"pos": 4,
+"t1": "6aeb9379-f450-4175-a89a-de00f6d3f2bb",
+"t2": "77f30c50-06cd-4a2d-aab5-c5bb8139ee67",
+"target": "I want to speak better as soon as possible",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L02B03",
+"ka": "44c869c1-15d0-48dd-8a3c-68a06bac70ae",
+"known": "gostaria de falar melhor o mais cedo possível",
+"pos": 5,
+"t1": "43fbc54a-2fb2-4fde-ae69-fecf8d2977a0",
+"t2": "2a37a69d-c98b-4f36-b664-d4c3dceed7c2",
+"target": "I'd like to speak better as soon as possible",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L02U01",
+"ka": "444382f9-719c-4bbd-9b1d-f131886223c5",
+"known": "estou a tentar falar melhor o mais cedo possível",
+"pos": 6,
+"t1": "d918588e-b5ac-4a36-9f14-ea7e89e51a90",
+"t2": "04c70098-dd7f-42c9-9db8-2335f55cf3a5",
+"target": "I'm trying to speak better as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L02U02",
+"ka": "c75a83b1-3991-4e94-aca0-03f05d1a3820",
+"known": "quero falar inglês melhor o mais cedo possível",
+"pos": 7,
+"t1": "923973a1-1830-4e4b-928b-21bcf852d413",
+"t2": "3385ed3b-ad6c-4231-a2aa-30be5a945ab2",
+"target": "I want to speak English better as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L02U03",
+"ka": "6209043f-a7c8-4635-beb0-8f42920581ac",
+"known": "vou tentar falar melhor o mais cedo possível",
+"pos": 8,
+"t1": "ebacd5d9-6103-4f00-9641-c26a9cef51ca",
+"t2": "eaf9cb61-8a7b-4369-9ca1-5f9c309892c9",
+"target": "I'm going to try to speak better as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L02U04",
+"ka": "57dde0b0-181f-4af5-a7fc-8dd303fe1e71",
+"known": "quero aprender a falar melhor o mais cedo possível",
+"pos": 9,
+"t1": "d5c2de06-2f51-453d-808d-c64757294c45",
+"t2": "7a51657a-4d04-4187-8863-b77b710ad992",
+"target": "I want to learn to speak better as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L02U05",
+"ka": "34d21451-ba65-43d4-8c30-3619848fcfee",
+"known": "vou tentar falar inglês melhor o mais cedo possível",
+"pos": 10,
+"t1": "294bf43d-c4db-4564-8c27-c956d1f6ec9c",
+"t2": "717c7045-2463-4135-8243-1ed2984d5007",
+"target": "I'm going to try to speak English better as soon as possible",
+"type": "use"
+}
+],
+"target": "to speak better as soon as possible",
+"type": "M"
+},
+{
+"id": "S0029L03",
+"idx": 3,
+"is_new": true,
+"known": "estou ansiosa para",
+"phrases": [
+{
+"id": "8dbb5a49-6afc-40e3-af13-7ee75e41faa9",
+"ka": "ecd99832-f6d2-46dc-869b-129ccaffb137",
+"known": "estou ansiosa para",
+"pos": 0,
+"t1": "5f42f937-2c22-4880-bb5b-30e9ee779e03",
+"t2": "fff2e534-b3b7-48aa-aa3d-f384e12a255d",
+"target": "I'm looking forward to",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_por:S0029L03C01",
+"ka": "f8fa7632-1849-46f2-8e7d-eecc1fb86774",
+"known": "estou ansiosa",
+"pos": 1,
+"t1": "57dda8ac-41b3-4374-a9f6-3570de078d16",
+"t2": "0db1bf2d-a287-41d8-b8b1-3c65429cf8b1",
+"target": "I'm looking forward",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0029L03C02",
+"ka": "24b41138-3a7b-4f10-8761-411d76a44465",
+"known": "para",
+"pos": 2,
+"t1": "cb0150e2-a93a-4a36-a66c-5fd1de927de7",
+"t2": "dd376b86-6359-4c03-86ae-507b38f4c3c3",
+"target": "to",
+"type": "component"
+},
+{
+"id": "eng_for_por:S0029L03B01",
+"ka": "ecd99832-f6d2-46dc-869b-129ccaffb137",
+"known": "estou ansiosa para",
+"pos": 3,
+"t1": "5f42f937-2c22-4880-bb5b-30e9ee779e03",
+"t2": "fff2e534-b3b7-48aa-aa3d-f384e12a255d",
+"target": "I'm looking forward to",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L03B02",
+"ka": "a734a838-bc0c-4aa2-a71c-50ac849954bf",
+"known": "estou ansiosa para falar melhor",
+"pos": 4,
+"t1": "3ff71b3e-8e59-4804-9f42-5bcd8f7b9621",
+"t2": "a7f13399-9b3e-43d8-a37f-aa2cca03e900",
+"target": "I'm looking forward to speaking better",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L03B03",
+"ka": "30990f7b-4f23-40c4-86b1-3503b18b803a",
+"known": "estou ansiosa para falar inglês",
+"pos": 5,
+"t1": "0f84d681-35e0-4717-bd3b-b2114682990d",
+"t2": "fd64ccb9-3c05-460a-8915-564c1e48fa30",
+"target": "I'm looking forward to speaking English",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L03B04",
+"ka": "44251498-e10f-4171-896c-ac560b4c58a6",
+"known": "estou ansiosa para falar inglês muito bem",
+"pos": 6,
+"t1": "c2bac2a6-25d8-4d37-8da8-a7fa001dd539",
+"t2": "d703cdc7-6a0f-4e6f-844e-ea7f5dd0d2c8",
+"target": "I'm looking forward to speaking English very well",
+"type": "build"
+},
+{
+"id": "eng_for_por:S0029L03U01",
+"ka": "ab222298-1864-453d-85f9-f32f8a3d6914",
+"known": "estou ansiosa para falar inglês melhor em breve",
+"pos": 7,
+"t1": "a0dbde5a-2e15-4a3d-a50b-536c8ea08dd9",
+"t2": "84c7f99a-52fd-4e8d-bfba-cd4b9943f2dd",
+"target": "I'm looking forward to speaking English better soon",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L03U02",
+"ka": "6123e523-ce01-4106-98d3-a5a43e628d99",
+"known": "estou ansiosa para falar melhor o mais cedo possível",
+"pos": 8,
+"t1": "d6b77c08-2a18-4458-9831-3c6607091d04",
+"t2": "99796ea1-46ea-4339-9541-c9b2fd6ceaec",
+"target": "I'm looking forward to speaking better as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L03U03",
+"ka": "6cbf6dea-a774-445b-b3c4-6b86963edfff",
+"known": "estou ansiosa para falar inglês com outra pessoa",
+"pos": 9,
+"t1": "15eda3a5-f300-4fed-bebe-bc1c87b22aa3",
+"t2": "dac10aa9-55ed-4469-b35e-8cabd608bf3f",
+"target": "I'm looking forward to speaking English with someone else",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L03U04",
+"ka": "3da8414f-a471-4da8-b6cf-625b87361147",
+"known": "estou ansiosa para falar inglês melhor o mais cedo possível",
+"pos": 10,
+"t1": "5f3ea39f-5e34-4d86-8073-65b45fb284fd",
+"t2": "2972dbf0-12a1-425b-be49-4849c87bd06d",
+"target": "I'm looking forward to speaking English better as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_por:S0029L03U05",
+"ka": "f1a2da9a-38da-4801-adc9-105f30bdc341",
+"known": "estou ansiosa para falar inglês com pessoas que falam inglês",
+"pos": 11,
+"t1": "5e6c5841-cbf7-44bf-b2b7-5d56a625a911",
+"t2": "82b4943e-ca1d-4ced-8d12-c57ecc4d3dfa",
+"target": "I'm looking forward to speaking English with people who speak English",
+"type": "use"
+}
+],
+"target": "I'm looking forward to",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I'm looking forward to speaking better as soon as I can."
+}
+}

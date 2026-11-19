@@ -1,0 +1,706 @@
+#!/usr/bin/env python3
+"""zho_for_eng item-10 decisions, shard b: candidates in seeds 451-663 (cs #742·AI), hand-authored per LEGO.
+Writes zho_for_eng-b.json for `tools/plan.py zho_for_eng <dump> --tag b`. Same schema as zho_for_eng.py (#714·AI).
+Verdicts: regloss · grow · seed (KAI) · delete (seed part covered by another LEGO of the seed) · keep · kai (held: ZUT clash).
+Basket: 'k' keep, 'd' delete, (known, target) rebuild; unlisted rows are auto-kept when they still hold the LEGO.
+L13 note used below: where a grown LEGO now holds a word whose own LEGO sits later in the same seed, the order is left as it
+is (lego.reorder refuses an apply while learner state exists) and the later LEGO is named in `knock`."""
+import json, os
+OUT = []
+
+
+def D(id, verdict, **kw):
+    kw['id'] = id
+    kw['verdict'] = verdict
+    b = kw.pop('b', None)
+    if b:
+        kw['basket'] = {k: ('keep' if v == 'k' else 'del' if v == 'd' else list(v)) for k, v in b.items()}
+    if 'comps' in kw:
+        kw['components'] = kw.pop('comps')
+    OUT.append(kw)
+
+
+def dl(*ids):
+    return {i: 'd' for i in ids}
+
+
+C = 'zho_for_eng:'
+
+# ---- 451 "they said what they wanted to do | 他们说了他们想做的事"
+D('S0451L01', 'grow', known='what they wanted to do', target='他们想做的事', type='M',
+  comps=[['they', '他们'], ['want', '想'], ['do', '做'], ['thing', '的事']],
+  why='"thing" is not in the seed; the seed\'s "what they wanted to do" is 他们想做的事 (6 syllables, contiguous). "thing | 的事" stays a literal component.',
+  b={'B01': ('what they wanted to do', '他们想做的事'), 'B02': ('say what they wanted to do', '说他们想做的事'), 'B03': ('what they want to do', '他们想做的事'),
+     'U01': 'k', 'U02': ('I told her what they wanted to do', '我告诉她他们想做的事'), 'U03': ('do you know what they want to do?', '你知道他们想做的事吗？'),
+     'U04': ('she said what they wanted to do', '她说了他们想做的事'), 'U05': 'k', 'U06': ('let me know what they want to do', '告诉我他们想做的事')},
+  extra=[{'op': 'phrase.update', 'phrase_id': C + 'S0642L02B04', 'set': {'known_text': 'what they want to do now'},
+          'expect': {'known_text': 'the thing they want to do now', 'target_text': '他们现在想做的事'}},
+         {'op': 'phrase.update', 'phrase_id': C + 'S0644L01B04', 'set': {'known_text': 'what she wants to do again'},
+          'expect': {'known_text': 'the thing she wants to do again', 'target_text': '她想再做的事'}}],
+  knock='Two later rows said "the thing … want(s) to do" for the same Chinese (S0642L02B04, S0644L01B04): re-worded here as extras.')
+
+# ---- 453 "did they say who they saw last night? | 他们说过昨晚见了谁吗？"
+D('S0453L01', 'regloss', known='said',
+  why='"mentioned" is not in the seed; the seed\'s word is "say" and 说过 is its experiential "said" (K6: say/said). No LEGO is glossed exactly "said", so no clash; "to say | 说" keeps its own gloss.',
+  b={'B01': ('said', '说过'), 'B02': ('said this', '说过这个'), 'B03': 'k', 'U01': 'k', 'U02': 'k', 'U03': 'k',
+     'U04': ('he never said it', '他从没说过'), 'U05': 'k', 'U06': ('has anyone said this?', '有人说过这个吗？')})
+
+# ---- 454 "our friends came round at about six o'clock | 我们的朋友大约六点来了"
+D('S0454L01', 'grow', known="about six o'clock", target='大约六点', type='M', comps=[['approximately', '大约'], ["six o'clock", '六点']],
+  why='"approximately" is not in the seed, and re-glossing 大约 to "about" would clash with S0038L02 "about | 大概" (ZUT). Grows by the next word to the seed\'s "about six o\'clock"; every row already said 大约六点. Row B01 "about | 大约" was that clash and goes.',
+  b={'B01': 'd', 'B02': ("about six o'clock", '大约六点'), 'U01': 'k', 'U02': ("she arrived at about six o'clock", '她大约六点来了'),
+     'U03': ("I'll be there at about six o'clock", '我大约六点到'), 'U04': ("he said he'd arrive at about six o'clock", '他说他大约六点到'), 'U05': 'k', 'U06': 'k'})
+
+# ---- 455 "we had to leave because the children were tired | 我们因为孩子们累了而离开"
+D('S0455L04', 'grow', known='to leave because tired', target='累了而离开', type='M',
+  comps=[['tired', '累'], ['(change of state)', '了'], ['and so', '而'], ['to leave', '离开']],
+  why='而 is the second half of the 因为…而… frame and has no English of its own; "and so" is not in the seed. L22: the bound element grows to the verb in its own seed, 累了而离开 (5 syllables, contiguous) = the seed\'s "leave because … tired". The full frame 因为孩子们累了而离开 is 10 syllables, too long for one LEGO. Rows that taught 而 = "yet" go.',
+  b={'B01': 'd', 'B02': ('to leave because tired', '累了而离开'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U04': 'k',
+     'U06': ('they left because they were tired', '他们因为累了而离开')},
+  add=[('u', 'she left because she was tired', '她因为累了而离开'), ('u', 'the children left because they were tired', '孩子们因为累了而离开'),
+       ('u', 'he left because he was tired', '他因为累了而离开')])
+
+# ---- 456 "he might be there but it's not very likely | 他可能会在那里，但是不太可能"
+D('S0456L01', 'regloss', known='might',
+  why='"possible" is not in the seed; "might" is, and "might | 可能" is already taught (S0024L02), so this not-new LEGO takes that pair and stays not-new. The seed\'s "not very likely | 不太可能" still has no LEGO of its own (coverage, not item 10).',
+  b={'B01': ('might', '可能'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'k', 'U04': 'd', 'U05': 'd', 'U06': 'k'},
+  add=[('u', 'she might be there', '她可能会在那里'), ('u', "he might come but it's not very likely", '他可能会来，但是不太可能')])
+
+# ---- 458 "it was all much easier in the past | 过去一切都容易得多"
+D('S0458L01', 'grow', known='much easier', target='容易得多', type='M', comps=[['easy', '容易'], ['much more', '得多']],
+  why='"more" is not in the seed; 得多 cannot stand alone and the seed says "much easier" = 容易得多 (4 syllables).',
+  b={'B01': 'd', 'B02': ('much easier', '容易得多'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'k', 'U04': 'k', 'U05': 'd', 'U06': 'k'},
+  add=[('b', 'much easier now', '现在容易得多'), ('u', 'it was much easier in the past', '过去容易得多'), ('u', 'I think this way is much easier', '我觉得这样容易得多')])
+
+D('S0462L05', 'keep', why='"to fight" / seed "fought": the same word inflected (K6). Not a defect.')
+
+# ---- 474 "I don't even want it as a free offer | 即使是免费的，我也不想要"
+D('S0474L01', 'grow', known='even as a free offer', target='即使是免费的', type='M', is_new=True,
+  comps=[['even if', '即使'], ['is', '是'], ['free', '免费'], ['(one)', '的']],
+  why='"if" is not in the seed; the seed\'s own words for 即使是免费的 are "even … as a free offer" (6 syllables, contiguous). The earlier pair "even if | 即使" stays a component; the LEGO becomes NEW (L31) with its own rows.',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'even as a free offer', '即使是免费的'), ('u', "I don't even want it as a free offer", '即使是免费的，我也不想要'),
+       ('u', "she doesn't even want it as a free offer", '即使是免费的，她也不想要'), ('u', "he doesn't even want it as a free offer", '即使是免费的，他也不想要'),
+       ('u', "we don't even want it as a free offer", '即使是免费的，我们也不想要'), ('u', "they don't even want it as a free offer", '即使是免费的，他们也不想要'),
+       ('u', "I don't even like it as a free offer", '即使是免费的，我也不喜欢')],
+  knock='L13: L02 "free | 免费" sits after this LEGO in the seed and should be taught first.')
+
+# ---- 475 "there are many reasons to consider waiting | 有很多理由值得考虑等待"
+D('S0475L02', 'delete',
+  why='"worth" is not in the seed. 值得 is the seed\'s "to" in "reasons to consider"; it is taught inside L04, which grows to 值得考虑等待 "to consider waiting" (below), so this LEGO\'s part of the seed is covered and it goes.')
+D('S0475L04', 'grow', known='to consider waiting', target='值得考虑等待', type='M',
+  comps=[['worth', '值得'], ['to consider', '考虑'], ['to wait', '等待']],
+  why='"for" is not in the seed, and "to wait | 等待" would clash with S0082L01 "to wait | 等" (ZUT). Grows to the seed span 值得考虑等待 "to consider waiting" (6 syllables), taking in 值得 (L02, deleted). L03 "to consider | 考虑" is taught before it.',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'd'},
+  add=[('b', 'to consider waiting', '值得考虑等待'), ('b', 'reasons to consider waiting', '理由值得考虑等待'),
+       ('u', 'there are reasons to consider waiting', '有理由值得考虑等待'), ('u', 'we have many reasons to consider waiting', '我们有很多理由值得考虑等待'),
+       ('u', 'I think there are reasons to consider waiting', '我觉得有理由值得考虑等待'), ('u', 'she said there are many reasons to consider waiting', '她说有很多理由值得考虑等待'),
+       ('u', 'are there reasons to consider waiting?', '有理由值得考虑等待吗？')])
+
+# ---- 477 "he's been sick since the second day of the holidays | 他从假期的第二天起就生病了"
+D('S0477L03', 'regloss', known='to be sick',
+  why='"get" is not in the seed; the seed says "he\'s been sick". 生病 covers both, so the LEGO takes the seed\'s "to be sick"; the rows that say "get sick" keep the word "sick" and stay.',
+  b={'B01': ('to be sick', '生病'), 'B02': ('was sick', '生病了'), 'B03': ('since he was sick', '自从他生病了')})
+
+# ---- 479 "it's the least I could do | 这是我至少能做的事"
+D('S0479L01', 'grow', known='the least I could do', target='我至少能做的事', type='M',
+  comps=[['I', '我'], ['at least', '至少'], ['can', '能'], ['do', '做'], ['thing', '的事']],
+  why='"at" is not in the seed; the seed\'s "the least I could do" is 我至少能做的事 (7 syllables, contiguous). "at least | 至少" stays a component (K29).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('the least I could do', '我至少能做的事'), 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U06': 'd'},
+  add=[('u', "that's the least I could do", '那是我至少能做的事'), ('u', "but it's the least I could do", '但是这是我至少能做的事'),
+       ('u', "I think it's the least I could do", '我觉得这是我至少能做的事'), ('u', "she said it's the least I could do", '她说这是我至少能做的事'),
+       ('u', 'helping you is the least I could do', '帮你是我至少能做的事')])
+
+# ---- 481 "it's the only real hope we have left | 这是我们唯一剩下的真正希望"
+D('S0481L02', 'regloss', known='have left',
+  why='"remaining" is not in the seed; the seed says "we have left". Plain "left" would clash with S0185L01 "left | 落" (ZUT), so the gloss is the seed\'s two words "have left".',
+  b={'B01': ('have left', '剩下'), 'B02': 'd', 'B03': ('the only one we have left', '我们唯一剩下的'),
+     'U01': 'k', 'U02': ("she's the only one we have left", '她是我们唯一剩下的'), 'U03': 'k',
+     'U04': ('the only thing we have left is hope', '我们唯一剩下的就是希望'), 'U05': 'd', 'U06': 'k'},
+  add=[('u', "it's the only hope we have left", '这是我们唯一剩下的希望')])
+
+# ---- 484 "it's meant to be a challenge | 它本来就应该是个挑战"
+D('S0484L01', 'grow', known='meant to be', target='本来就应该是', type='M', is_new=True,
+  comps=[['originally', '本来'], ['just', '就'], ['should', '应该'], ['to be', '是']],
+  why='"originally" is not in the seed; the seed\'s "meant to be" is 本来就应该是 (6 syllables). The earlier pair "originally | 本来" stays a component and the LEGO becomes NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('meant to be', '本来就应该是'), 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'k', 'U06': 'd'},
+  add=[('u', "this is meant to be easy", '这本来就应该是容易的'), ('u', "it's meant to be difficult", '它本来就应该是很难的'),
+       ('u', "she said it's meant to be that way", '她说本来就应该是这样'), ('u', "I think it's meant to be that way", '我觉得本来就应该是这样')])
+
+# ---- 485 "nothing would make me happier than to get away | 没有什么比离开更让我开心的了"
+D('S0485L01', 'keep', why='"happy" / seed "happier": the same word in its comparative (K6); the pair is S0106L01. Not a defect.')
+D('S0485L02', 'grow', known='make me happier', target='更让我开心', type='M', is_new=True,
+  comps=[['even more', '更'], ['make', '让'], ['me', '我'], ['happy', '开心']],
+  why='"even more" is not in the seed; 更 is the "-er" of "happier" and cannot be glossed alone. Grows to the seed span 更让我开心 "make me happier" (5 syllables); L01 "happy | 开心" is taught before it. NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'U01': 'k', 'U02': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', 'make me happier', '更让我开心'), ('b', 'nothing would make me happier', '没有什么更让我开心'),
+       ('u', 'that would make me happier', '那会更让我开心'), ('u', 'what would make me happier?', '什么会更让我开心？'),
+       ('u', 'nothing would make me happier than to help you', '没有什么比帮你更让我开心的了'),
+       ('u', 'nothing would make me happier than to see her', '没有什么比见她更让我开心的了')])
+
+# ---- 489 "if you don't make me a strong cup of coffee right now | 如果你现在不给我泡一杯浓咖啡"
+D('S0489L03', 'grow', known='make me', target='给我泡', type='M', comps=[['for', '给'], ['me', '我'], ['to brew', '泡']],
+  why='"brew" is not in the seed, and "to make | 泡" would clash with S0116L01 "to make | 做出" (ZUT). Grows to the seed\'s "make me" = 给我泡 (3 syllables).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'k'},
+  add=[('b', 'make me', '给我泡'), ('b', 'make me a coffee', '给我泡咖啡'), ('b', 'make me a strong coffee', '给我泡浓咖啡'),
+       ('u', 'she made me a coffee', '她给我泡了咖啡'), ('u', "he didn't make me a coffee", '他没给我泡咖啡'),
+       ('u', 'can you make me a strong cup of coffee?', '你能给我泡一杯浓咖啡吗？')])
+
+# ---- 491 "I love the way you try to help | 我喜欢你努力帮忙的方式"
+D('S0491L01', 'delete',
+  why='"hard" is not in the seed, and "to try | 努力" would clash with S0002L01 "to try | 试试" (ZUT). 努力 was taught at seed 7 (S0007L02) and here it is wholly inside L02 "to try to help | 努力帮忙", so this LEGO\'s part of the seed is covered and it goes.')
+
+# ---- 493 "what's going to come next? | 接下来会发生什么？"
+D('S0493L02', 'grow', known="what's going to come", target='会发生什么', type='M', is_new=True,
+  comps=[['will', '会'], ['to happen', '发生'], ['what', '什么']],
+  why='"happen" is not in the seed; the seed\'s "what\'s going to come" is 会发生什么 (5 syllables). Two English prompts for one Chinese chunk is fine (S0012 teaches "what\'s going to happen"); "to happen | 发生" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ("what's going to come", '会发生什么'), 'U01': 'k', 'U02': 'd', 'U03': 'd',
+     'U04': ("I don't know what's going to come", '我不知道会发生什么'), 'U05': ("nobody knows what's going to come next", '没有人知道接下来会发生什么'),
+     'U06': ("what's going to come now?", '现在会发生什么？')},
+  add=[('u', "she asked what's going to come next", '她问接下来会发生什么'), ('u', "do you know what's going to come next?", '你知道接下来会发生什么吗？')])
+
+# ---- 495 "when it matters | 在真正重要的时候"
+D('S0495L01', 'grow', known='when it matters', target='重要的时候', type='M', is_new=True,
+  comps=[['important', '重要'], ['(of)', '的'], ['time', '时候']],
+  why='"important" is not in the seed; the seed\'s "when it matters" is 重要的时候 (5 syllables). "important | 重要" stays a component; NEW (L31). 真正 "really" in this seed still has no LEGO (coverage, not item 10).',
+  b={'B01': 'd', 'B03': ('when it really matters', '真正重要的时候'), 'U01': 'k', 'U02': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'I want to be there when it matters', '我想在重要的时候在那里'), ('u', 'he helps me when it matters', '他在重要的时候帮我'),
+       ('u', 'I want to help when it matters', '我想在重要的时候帮忙'), ('u', 'you need to listen when it matters', '你需要在重要的时候听'),
+       ('u', 'I hope you can come when it matters', '我希望你能在重要的时候来')])
+
+D('S0496L01', 'keep', why='"to plan" / seed "planning": the same word inflected (K6). Not a defect.')
+
+# ---- 497 "that sounds as though you need to get some sleep | 听起来你需要睡一觉"
+D('S0497L01', 'regloss', known='sounds as though',
+  why='"like" is not in the seed; the seed says "sounds as though". 听起来 is already "sounds" (S0272L02); a second English for the same Chinese is fine, a second Chinese for one English is not, and "sounds as though" is new English.',
+  b={'B01': ('sounds as though', '听起来'), 'B03': 'd', 'U01': 'd', 'U02': ("it sounds as though she's coming", '听起来她要来了'), 'U03': 'd',
+     'U04': ("that sounds as though it's a great idea", '听起来是个好主意'), 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'that sounds as though you need', '听起来你需要'), ('u', 'that sounds as though you need to get some sleep', '听起来你需要睡一觉'),
+       ('u', "it sounds as though he's tired", '听起来他累了'), ('u', "it sounds as though they're not coming", '听起来他们不来了'),
+       ('u', 'that sounds as though she wants to go', '听起来她想去')])
+
+# ---- 501 "if only I could trust you to play together without arguing | 要是我能相信你们能一起玩而不吵架就好了"
+D('S0501L02', 'grow', known='without arguing', target='而不吵架', type='M', comps=[['and', '而'], ['not', '不'], ['to quarrel', '吵架']],
+  why='"quarrel" is not in the seed, and "to argue | 吵架" would clash with S0593L02 "to argue | 争论" (ZUT). Grows to the seed\'s "without arguing" = 而不吵架 (4 syllables).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'k', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'k', 'U06': 'k'},
+  add=[('b', 'play together without arguing', '一起玩而不吵架'), ('u', 'I want you to play without arguing', '我想让你们玩而不吵架'),
+       ('u', 'can they play together without arguing?', '他们能一起玩而不吵架吗？'),
+       ('u', 'if only you could play together without arguing', '要是你们能一起玩而不吵架就好了')])
+
+# ---- 503 "I hate making trouble but that one's mine | 我讨厌惹麻烦，但是那个是我的"
+D('S0503L02', 'regloss', known='to make trouble',
+  why='"cause" is not in the seed; the seed says "making trouble". Known side only.',
+  b={'B01': ('to make trouble', '惹麻烦'), 'B02': ('hate making trouble', '讨厌惹麻烦'), 'B03': ("don't make trouble", '不要惹麻烦'), 'U01': 'k',
+     'U02': ("I don't want to make trouble", '我不想惹麻烦'), 'U03': ("she said don't make trouble", '她说不要惹麻烦'),
+     'U04': ('nobody wants to make trouble', '没有人想惹麻烦'), 'U05': ('I hate making trouble', '我讨厌惹麻烦'), 'U06': ("it's better not to make trouble", '最好不要惹麻烦')})
+
+# ---- 506 "I used to live around here years ago before we moved | 多年前我们搬走之前，我曾住在这附近"
+D('S0506L01', 'regloss', known='years ago',
+  why='"many" is not in the seed; the seed says "years ago". Known side only.',
+  b={'B01': ('years ago', '多年前'), 'B02': 'k', 'U01': 'k', 'U02': ('she left years ago', '她在多年前离开了'), 'U03': ('I lived here years ago', '我在多年前住在这里'),
+     'U04': ('nobody remembers what happened years ago', '没有人记得多年前的事了'), 'U05': ('he said it was years ago', '他说那是多年前的事了'),
+     'U06': ('she arrived years ago', '她在多年前到了')})
+D('S0506L02', 'grow', known='before we moved', target='我们搬走之前', type='M', comps=[['we', '我们'], ['to move away', '搬走'], ['before', '之前']],
+  why='"away" is not in the seed, and "to move | 搬走" would clash with S0319L01 "to move | 搬" (ZUT). Grows to the seed\'s "before we moved" = 我们搬走之前 (6 syllables).',
+  b={'B01': 'd', 'B02': ('before we moved', '我们搬走之前'), 'B03': 'd', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'years ago before we moved', '多年前我们搬走之前'), ('u', 'I lived here before we moved', '我们搬走之前，我住在这里'),
+       ('u', 'it was much easier before we moved', '我们搬走之前容易得多'), ('u', 'we lived here before we moved', '我们搬走之前住在这里'),
+       ('u', 'I wanted to see her before we moved', '我们搬走之前，我想见她'), ('u', 'she came back before we moved', '我们搬走之前，她回来了')])
+
+# ---- 513 "it hurts most when I move my head up and down | 我一抬头就最疼"
+D('S0513L01', 'grow', known='when I move my head up and down', target='我一抬头', type='M', comps=[['I', '我'], ['as soon as', '一'], ['to raise head', '抬头']],
+  why='"raise" is not in the seed; the seed\'s words for 我一抬头 are "when I move my head up and down" (4 syllables, contiguous). 抬头 stays a literal component.',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'when I move my head up and down', '我一抬头'), ('u', 'it hurts when I move my head up and down', '我一抬头就疼'),
+       ('u', 'it hurts most when I move my head up and down', '我一抬头就最疼'), ('u', 'it hurts a lot when I move my head up and down', '我一抬头就很疼'),
+       ('u', 'it hurts here when I move my head up and down', '我一抬头这里就疼'), ('u', 'but it hurts when I move my head up and down', '但是我一抬头就疼')],
+  knock='The rows use L02 "to hurt | 疼", taught after this LEGO in the same seed (L13).')
+
+# ---- 514 "I found the perfect house on the first day | 我第一天就找到了那所完美的房子"
+D('S0514L02', 'regloss', known='the perfect house',
+  why='"that" is not in the seed; the seed says "the perfect house". The old basket drilled 所 / 那所 ("that one", "a building") and not one row but the seed held the LEGO (P17), so it is rebuilt.',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'k'},
+  add=[('b', 'the perfect house', '那所完美的房子'), ('b', 'found the perfect house', '找到了那所完美的房子'),
+       ('u', 'she found the perfect house', '她找到了那所完美的房子'), ('u', 'I want to see the perfect house', '我想看那所完美的房子'),
+       ('u', 'we found the perfect house yesterday', '我们昨天找到了那所完美的房子'), ('u', 'where is the perfect house?', '那所完美的房子在哪里？')],
+  knock='L13: L03 "house | 房子" sits after this LEGO in the seed.')
+
+# ---- 517 "but they left with each other | 但是他们是一起离开的"
+D('S0517L01', 'regloss', known='with each other', is_new=True,
+  why='"together" is not in the seed; the seed says "with each other". A new English for 一起 (no LEGO is glossed "with each other"; "each other | 互相" is a different prompt), so the LEGO becomes NEW with a played basket (L31).',
+  b={'B01': 'k', 'B03': ('came with each other', '一起来'), 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U05': 'd', 'U06': ('they left with each other', '他们一起离开了')},
+  add=[('u', 'they came with each other', '他们一起来了'), ('u', 'they want to go with each other', '他们想一起去'),
+       ('u', 'but they came back with each other', '但是他们是一起回来的'), ('u', 'they live with each other', '他们住在一起')])
+
+# ---- 518 "I couldn't imagine myself having exactly the same problem | 我无法想象自己也遇到完全一样的问题"
+D('S0518L01', 'regloss', known="couldn't",
+  why='"unable" is not in the seed; the seed says "couldn\'t". No LEGO is glossed "couldn\'t". Known side only.',
+  b={'B01': ("couldn't", '无法'), 'B02': ("couldn't say", '无法说'), 'B03': ("couldn't do it", '无法做'), 'U01': ("I couldn't do this", '我无法做这个'),
+     'U02': ("she said she couldn't", '她说她无法'), 'U04': ("I couldn't explain it", '我无法解释'), 'U05': 'd', 'U06': ("I couldn't say", '我无法说')},
+  add=[('u', "I couldn't imagine", '我无法想象')])
+D('S0518L03', 'kai',
+  why='HELD (ZUT). "encounter" is not in the seed; the seed\'s word is "having". The only gloss from the seed is "having | 遇到", which sets a second Chinese beside S0356L01 "to have | 有" for one English word, and the seed span that would carry the context, 遇到完全一样的问题 "having exactly the same problem", is 9 syllables (over the 8 a LEGO may hold). Recommended when ruled: take the 9-syllable chunk, or the seed English "running into exactly the same problem".')
+D('S0518L04', 'regloss', known='exactly',
+  why='"completely" is not in the seed; the seed says "exactly the same". No LEGO is glossed "exactly". Rows that need "completely" to make sense go.',
+  b={'B01': ('exactly', '完全'), 'B02': ('exactly the same', '完全一样'), 'B03': 'k', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'k', 'U05': 'd'},
+  add=[('u', 'I have exactly the same problem', '我有完全一样的问题'), ('u', "that's exactly the same problem", '那是完全一样的问题'),
+       ('u', 'it looks exactly the same', '看起来完全一样'), ('u', 'she said exactly the same', '她说的完全一样')])
+
+# ---- 520 "it might have happened to the whole family | 这可能发生在整个家庭身上"
+D('S0520L03', 'grow', known='to the whole family', target='在整个家庭身上', type='M',
+  comps=[['at', '在'], ['the whole', '整个'], ['family', '家庭'], ['on (a person)', '身上']],
+  why='"on someone" is not in the seed; 身上 only works with its 在 and its noun. Grows to the seed\'s "to the whole family" = 在整个家庭身上 (7 syllables); L01 and L02 are taught before it.',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('to the whole family', '在整个家庭身上'), 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'happened to the whole family', '发生在整个家庭身上'), ('u', 'it happened to the whole family', '这发生在整个家庭身上了'),
+       ('u', "I don't want that to happen to the whole family", '我不想这发生在整个家庭身上'),
+       ('u', 'she said it happened to the whole family', '她说这发生在整个家庭身上了'), ('u', 'what happened to the whole family?', '什么发生在整个家庭身上了？')])
+
+# ---- 529 "can you all put your hands up? | 你们都能把手举起来吗？"
+D('S0529L02', 'grow', known='put your hands up', target='把手举起来', type='M', is_new=True,
+  comps=[['(object marker)', '把'], ['hands', '手'], ['to raise up', '举起来']],
+  why='"raise" is not in the seed; the seed\'s "put your hands up" is 把手举起来 (5 syllables). L01 "hands | 手" is taught before it; "to raise up | 举起来" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('put your hands up', '把手举起来'), 'U01': 'k', 'U02': 'k', 'U03': ('can you put your hand up?', '你能把手举起来吗？'),
+     'U04': 'k', 'U05': 'k', 'U06': 'k'},
+  knock='The rows say "her hand", "their hands", "his hands": Chinese 把手 carries no possessive, so the English pronoun moves with the subject (K6).')
+
+# ---- 532 "unless they're lucky | 除非他们运气好"
+D('S0532L02', 'grow', known="they're lucky", target='他们运气好', type='M', comps=[['they', '他们'], ['luck', '运气'], ['good', '好']],
+  why='"luck" is not in the seed; the seed says "lucky" = 运气好, but "lucky | 运气好" would clash with S0379L02 "lucky | 幸运" (ZUT), so it grows to "they\'re lucky" = 他们运气好 (5 syllables).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ("they're lucky", '他们运气好'), 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('u', "I think they're lucky", '我觉得他们运气好'), ('u', "she said they're lucky", '她说他们运气好'), ('u', "if they're lucky", '如果他们运气好'),
+       ('u', "I hope they're lucky", '我希望他们运气好'), ('u', "do you think they're lucky?", '你觉得他们运气好吗？')])
+
+# ---- 533 "she won't listen to every word you say | 她不会听你说的每一句话"
+D('S0533L02', 'grow', known='every word', target='每一句话', type='M', comps=[['every', '每'], ['one', '一'], ['sentence', '句'], ['words', '话']],
+  why='"sentence" is not in the seed; 句 is a measure word here and the seed\'s "every word" is 每一句话 (4 syllables).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'k', 'U01': 'k', 'U02': 'k', 'U03': 'd', 'U04': 'k', 'U05': 'd'},
+  add=[('u', 'she listens to every word you say', '她听你说的每一句话'), ('u', 'I remember every word', '我记得每一句话'),
+       ('u', 'every word is important', '每一句话都很重要')],
+  knock='L13: L03 "words | 话" sits after this LEGO in the seed.')
+
+D('S0534L03', 'keep', why='"to go out" / seed "go outside": "outside" is "out" + side and the learner connects them without thought (K6); the gloss is the earlier pair S0349L03 and every row already prompts "go outside". Re-glossing would break that pair (L31) for no gain.')
+
+# ---- 536 "I used to think that being crazy was bad | 我以前以为疯狂是坏事"
+D('S0536L03', 'grow', known='was bad', target='是坏事', type='M', comps=[['to be', '是'], ['bad', '坏'], ['matter', '事']],
+  why='"thing" is not in the seed, and "bad | 坏事" would clash with S0248L01 "bad | 糟" (ZUT). Grows by the verb to the seed\'s "was bad" = 是坏事 (3 syllables).',
+  b={'B01': 'd', 'B02': ('that was bad', '那是坏事'), 'B03': ('being crazy was bad', '疯狂是坏事'), 'U01': 'k', 'U02': ('she said that was bad', '她说那是坏事'),
+     'U03': ("I don't think that was bad", '我不觉得那是坏事'), 'U04': 'd', 'U05': ('that was not bad', '那不是坏事'), 'U06': ('she thinks that was bad', '她觉得那是坏事')})
+
+# ---- 539 "but it's getting late | 但是时间不早了"
+D('S0539L02', 'delete',
+  why='"time" is not in the seed. 时间 (taught at S0027L03) is wholly inside L03, which grows to 时间不早了 "it\'s getting late" (below), so this not-new LEGO\'s part of the seed is covered and it goes.')
+D('S0539L03', 'grow', known="it's getting late", target='时间不早了', type='M',
+  comps=[['time', '时间'], ['not', '不'], ['early', '早'], ['(change of state)', '了']],
+  why='"early" is not in the seed; the seed\'s "it\'s getting late" is 时间不早了 (5 syllables). "early | 早" stays a literal component (K29).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ("it's getting late", '时间不早了'), 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'k', 'U06': 'd', 'U07': 'd'},
+  add=[('u', "I think it's getting late", '我觉得时间不早了'), ('u', "she said it's getting late", '她说时间不早了'),
+       ('u', "because it's getting late", '因为时间不早了'), ('u', "it's getting late now", '现在时间不早了'),
+       ('u', "it's getting late, I want to go home", '时间不早了，我想回家')],
+  knock='S0606L01 "early | 早" (not-new on this LEGO) loses its pair; it is re-cut at seed 606 in this plan.')
+
+# ---- 540 "I don't mind if you want to leave without the car | 如果你想不开车离开，我也不介意"
+D('S0540L01', 'grow', known='without the car', target='不开车', type='M', is_new=True, comps=[['not', '不'], ['to drive a car', '开车']],
+  why='"drive" is not in the seed; the seed\'s "without the car" is 不开车 (3 syllables). "to drive a car | 开车" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': ('leave without the car', '不开车离开'), 'B03': 'k', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'k'},
+  add=[('u', 'I want to leave without the car', '我想不开车离开'), ('u', 'she left without the car', '她不开车离开了'),
+       ('u', 'can we go without the car?', '我们能不开车去吗？'), ("u", "I don't mind going without the car", '我不介意不开车去')])
+
+# ---- 544 "whoever said it would be difficult was absolutely right | 谁说这会很难，那个人完全说对了"
+D('S0544L01', 'grow', known='whoever said', target='谁说', type='M', is_new=True, comps=[['who', '谁'], ['to say', '说']],
+  why='"who" is not in the seed; the seed says "whoever said" = 谁说 (2 syllables). "who | 谁" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': 'k', 'U01': 'd', 'U02': 'k', 'U06': 'd'},
+  add=[('u', 'whoever said it would be difficult', '谁说这会很难'), ('u', 'whoever said it would be easy', '谁说这会很容易'),
+       ('u', 'whoever said that is my friend', '谁说那个就是我的朋友'),
+       ('u', 'whoever said it would be difficult was absolutely right', '谁说这会很难，那个人完全说对了')])
+
+# ---- 545 "it's your turn to take the clean clothes upstairs | 该你把干净的衣服拿到楼上了"
+D('S0545L05', 'grow', known='to take upstairs', target='拿到楼上', type='M', comps=[['to carry', '拿'], ['to', '到'], ['upstairs', '楼上']],
+  why='"carry" is not in the seed, and "to take | 拿" would clash with S0580L01 "to take | 带" (ZUT). Grows to the seed\'s "take … upstairs" = 拿到楼上 (4 syllables).',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'to take upstairs', '拿到楼上'), ('b', 'take the clothes upstairs', '把衣服拿到楼上'),
+       ('u', 'can you take this upstairs?', '你能把这个拿到楼上吗？'), ('u', 'she took the clean clothes upstairs', '她把干净的衣服拿到楼上了'),
+       ('u', "it's your turn to take the clothes upstairs", '该你把衣服拿到楼上了'), ('u', 'I want to take it upstairs', '我想把它拿到楼上'),
+       ('u', "I'll take the clean clothes upstairs", '我会把干净的衣服拿到楼上')],
+  knock='L13: L06 "upstairs | 楼上" sits after this LEGO in the seed.')
+
+# ---- 546 "the dog is dirty and wet | 那只狗又脏又湿"
+D('S0546L04', 'grow', known='dirty and wet', target='又脏又湿', type='M', comps=[['both', '又'], ['dirty', '脏'], ['wet', '湿']],
+  why='"also" is not in the seed; 又…又… is a frame and the seed\'s "dirty and wet" is 又脏又湿 whole (4 syllables, L32: no gapped LEGO). Rows that taught 又 = "again" go.',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U05', 'U06'),
+  add=[('b', 'dirty and wet', '又脏又湿'), ('b', 'the dog is dirty and wet', '那只狗又脏又湿'), ('u', 'my clothes are dirty and wet', '我的衣服又脏又湿'),
+       ('u', 'she said the dog is dirty and wet', '她说那只狗又脏又湿'), ('u', 'the car is dirty and wet', '车又脏又湿'),
+       ('u', 'why is the dog dirty and wet?', '那只狗为什么又脏又湿？'), ('u', 'the children are dirty and wet', '孩子们又脏又湿')],
+  knock='L13: L05 "wet | 湿" sits after this LEGO in the seed.')
+
+# ---- 547 "because he has been playing in the mud | 因为它一直在泥里玩"
+D('S0547L01', 'grow', known='has been playing in the mud', target='一直在泥里玩', type='M',
+  comps=[['all along', '一直'], ['in', '在'], ['mud', '泥'], ['inside', '里'], ['to play', '玩']],
+  why='"all along" is not in the seed; 一直 is the seed\'s "has been …ing" and cannot be glossed alone. The 在 after it belongs to 在泥里, so the shortest contiguous span that says the seed\'s words is 一直在泥里玩 "has been playing in the mud" (6 syllables).',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'has been playing in the mud', '一直在泥里玩'), ('u', 'because he has been playing in the mud', '因为它一直在泥里玩'),
+       ('u', 'the dog has been playing in the mud', '那只狗一直在泥里玩'), ('u', 'she has been playing in the mud', '她一直在泥里玩'),
+       ('u', 'the children have been playing in the mud', '孩子们一直在泥里玩'), ('u', 'who has been playing in the mud?', '谁一直在泥里玩？'),
+       ('u', 'he is dirty because he has been playing in the mud', '它很脏，因为它一直在泥里玩')],
+  knock='L13: L02 "mud | 泥" sits after this LEGO in the seed.')
+
+# ---- 549 "because I have got to be quiet | 因为我得保持安静"
+D('S0549L02', 'grow', known='to be quiet', target='保持安静', type='M', comps=[['to maintain', '保持'], ['quiet', '安静']],
+  why='"maintain" is not in the seed (and 保持 is already "to remain", S0403L01). The seed\'s "to be quiet" is 保持安静 (4 syllables).',
+  b={'B01': 'd', 'B02': ('to be quiet', '保持安静'), 'U01': ('I have got to be quiet', '我得保持安静'), 'U02': 'd', 'U03': 'd',
+     'U04': ('nobody can be quiet', '没有人能保持安静'), 'U07': 'k'},
+  add=[('u', 'you have got to be quiet', '你得保持安静'), ('u', 'he has got to be quiet', '他得保持安静'), ('u', 'she said we have got to be quiet', '她说我们得保持安静')])
+
+# ---- 553 "I think the small church is very ugly | 我觉得那座小教堂非常丑"
+D('S0553L02', 'seed', seed_known='I think the small church is extremely ugly',
+  why='The Chinese seed says 非常丑 "extremely ugly". The English seed\'s "very" cannot be taught on it: "very | 非常" would clash with S0013L02 "very | 很", and the grown chunk "very ugly | 非常丑" would clash with the row S0551L03B02 "very ugly | 很丑" two seeds earlier (ZUT both ways). "extremely | 非常" is the taught pair (S0125L01) and is right for the Chinese; the English seed is the loose side. KAI: seed edit (L25 rung 3). 丑 has no LEGO in this seed (coverage, not item 10).')
+
+# ---- 558 "it's so late at night | 夜已经很深了"
+D('S0558L01', 'grow', known="it's so late at night", target='夜已经很深了', type='M', is_new=True,
+  comps=[['night', '夜'], ['already', '已经'], ['very', '很'], ['deep', '深'], ['(change of state)', '了']],
+  why='"already" is not in the seed and no part of 夜已经很深了 maps onto a part of "it\'s so late at night"; the seed is one idiom of 6 syllables, taught whole. "already | 已经" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', "it's so late at night", '夜已经很深了'), ('u', "but it's so late at night", '但是夜已经很深了'), ('u', "because it's so late at night", '因为夜已经很深了'),
+       ('u', "she said it's so late at night", '她说夜已经很深了'), ('u', "it's so late at night and I'm tired", '夜已经很深了，我累了'),
+       ('u', "it's so late at night, you need to get some sleep", '夜已经很深了，你需要睡一觉')])
+
+# ---- 559 "have you found the path through the wood? | 你找到穿过树林的小路了吗？"
+D('S0559L01', 'regloss', known='through', why='"pass" is not in the seed; the seed says "through". No LEGO is glossed "through". Known side only.',
+  b={'B01': ('through', '穿过'), 'B02': ('through the village', '穿过村子')})
+D('S0559L02', 'regloss', known='wood', why='"forest" is not in the seed; the seed says "wood". Known side only; every row is re-worded to "wood".',
+  b={'B01': ('wood', '树林'), 'B02': ('through the wood', '穿过树林'), 'B03': ('in the wood', '在树林里'), 'U01': ('she went through the wood', '她穿过了树林'),
+     'U02': ('nobody is in the wood', '没有人在树林里'), 'U03': ('I want to go through the wood', '我想穿过树林'),
+     'U04': ('the village is next to the wood', '村子在树林旁边'), 'U05': ("it's quiet in the wood", '树林里很安静'),
+     'U06': ('she found the path through the wood', '她找到了穿过树林的路')})
+D('S0559L03', 'regloss', known='path', why='"small" is not in the seed; the seed says "path". Known side only (and two rows that said "forest" now say "wood").',
+  b={'B01': ('path', '小路'), 'U05': ('the path through the wood is beautiful', '穿过树林的小路很美'), 'U06': ('she found a path in the wood', '她在树林里找到了小路')})
+
+# ---- 560 "it goes down to the beach | 它通向海滩"
+D('S0560L01', 'regloss', known='goes down to',
+  why='"lead" is not in the seed; the seed says "goes down to". Known side only.',
+  b={'B01': ('goes down to', '通向'), 'B02': ('goes down to the village', '通向村子'), 'B03': ('the path goes down to', '小路通向'),
+     'U01': ('the path goes down to the village', '小路通向村子'), 'U02': ('she said the road goes down to there', '她说那条路通向那里'),
+     'U03': ('nobody knows where it goes down to', '没有人知道它通向哪里'), 'U04': ('the path goes down to the end', '小路通向尽头'),
+     'U05': ('the road goes down to the wood', '路通向树林'), 'U06': ('it goes down to the village', '它通向村子')})
+
+# ---- 562 "I just want to get there safely | 我只想安全到达"
+D('S0562L02', 'regloss', known='to get there',
+  why='"arrive" is not in the seed; the seed says "get there". No LEGO is glossed "to get there". Known side only; rows about arriving AT a place go.',
+  b={'B01': ('to get there', '到达'), 'B02': 'k', 'B03': 'd', 'U01': 'k', 'U02': ('she got there safely', '她安全到达了'),
+     'U03': ('I want to get there before her', '我想比她早到达'), 'U04': ('nobody got there safely', '没有人安全到达'), 'U05': 'd',
+     'U06': ('she hopes to get there safely', '她希望安全到达')},
+  add=[('u', 'when did you get there?', '你什么时候到达的？'), ('u', 'we got there yesterday', '我们昨天到达了')])
+
+# ---- 563 "I wouldn't have been able to keep going any longer | 没有你的帮助，我坚持不了更久"
+D('S0563L01', 'seed', seed_known="I wouldn't have been able to keep going any longer without your help",
+  why='The Chinese seed opens 没有你的帮助 "without your help", which the English seed never says, so "help | 帮助" (right for the Chinese, and the course\'s teaching of 帮助) has no English to stand on. The English seed is the short side. KAI: seed edit (L25 rung 3).')
+D('S0563L03', 'grow', known='any longer', target='更久', type='M', comps=[['more', '更'], ['long time', '久']],
+  why='"time" is not in the seed; the seed says "any longer" = 更久 (2 syllables). "longer | 更久" is S0275L01, and a second English for the same Chinese is fine. 久 stays a literal component.',
+  b={'B01': 'd', 'B02': ('any longer', '更久'), 'B03': ("can't keep going any longer", '坚持不了更久'), 'U01': 'k', 'U02': 'd', 'U04': 'd', 'U05': 'd',
+     'U06': ("I couldn't keep going any longer", '我坚持不了更久了'), 'U08': 'd', 'U09': 'd', 'U10': 'd'},
+  add=[('u', "she couldn't keep going any longer", '她坚持不了更久'), ('u', "he can't keep going any longer", '他坚持不了更久'), ('u', "we can't stay any longer", '我们不能待更久')])
+
+# ---- 564 "I wouldn't have been able to without your help | 没有你的帮助，我做不到"
+D('S0564L01', 'regloss', known="wouldn't have been able to",
+  why='"unable … achieve" is not in the seed; the seed says "wouldn\'t have been able to". (S0352L02 teaches the same Chinese as "wouldn\'t be able to"; two English for one Chinese is fine.) Known side only.',
+  b={'B01': ("wouldn't have been able to", '做不到'), 'B02': ("wouldn't have been able to without help", '没有帮助，做不到'),
+     'B03': ("I wouldn't have been able to do this", '我做不到这个'), 'U01': 'k', 'U02': ("she said she wouldn't have been able to", '她说她做不到'),
+     'U03': ("I wouldn't have been able to either", '我也做不到'), 'U04': ("I wouldn't have been able to without help", '没有帮助，我做不到'),
+     'U06': ("she knows I wouldn't have been able to", '她知道我做不到')})
+
+# ---- 566 "I'd have thought more if it had been my choice | 如果是我的选择，我会多想想"
+D('S0566L01', 'grow', known='to think more', target='多想想', type='M', comps=[['more', '多'], ['to think for a bit', '想想']],
+  why='"for a bit" is not in the seed; the seed says "thought more" = 多想想 (3 syllables; think/thought, K6).',
+  b={'B01': 'd', 'B02': ('to think more', '多想想'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U04': 'k', 'U06': 'd'},
+  add=[('u', "I'd have thought more", '我会多想想'), ('u', 'you need to think more', '你需要多想想'), ('u', 'she said she wants to think more', '她说她想多想想'),
+       ('u', 'please think more', '请多想想'), ('u', 'I think we should think more', '我觉得我们应该多想想')])
+
+# ---- 568 "I'm expecting to see an improvement next time we meet | 我期待下次见面时看到进步"
+D('S0568L03', 'regloss', known='to meet', is_new=False,
+  why='"face to face" is not in the seed; the seed says "meet", and "to meet | 见面" is already taught (S0018L03). The LEGO takes that pair and goes not-new (taught once).',
+  b={'B01': ('to meet', '见面')})
+
+# ---- 571 "I'm not convinced that would be a very good idea | 我不太相信这是个好主意"
+D('S0571L01', 'grow', known="I'm not convinced", target='我不太相信', type='M', is_new=True, comps=[['I', '我'], ['not very', '不太'], ['to believe', '相信']],
+  why='"believe" is not in the seed; the seed\'s "I\'m not convinced" is 我不太相信 (5 syllables). "to believe | 相信" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'k', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'k', 'U07': 'k'},
+  add=[('u', "I'm not convinced she's right", '我不太相信她是对的'), ('u', "I'm not convinced that would be easy", '我不太相信这会很容易'),
+       ('u', "but I'm not convinced", '但是我不太相信')])
+
+D('S0572L01', 'keep', why='"to forget" / seed "forgotten": the same word inflected (K6). Not a defect.')
+
+# ---- 573 "it's the kind of thing that makes the holidays very special | 这正是让假期变得特别的那种事情"
+D('S0573L03', 'grow', known='makes the holidays very special', target='让假期变得特别', type='M',
+  comps=[['make', '让'], ['holiday', '假期'], ['to become', '变得'], ['special', '特别']],
+  why='"become" is not in the seed; 变得 has no English of its own there. L22/L25: it grows to the seed span 让假期变得特别 "makes the holidays very special" (7 syllables); L01 and L02 are taught before it.',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'makes the holidays very special', '让假期变得特别'), ('u', 'this makes the holidays very special', '这让假期变得特别'),
+       ('u', 'she makes the holidays very special', '她让假期变得特别'), ('u', 'what makes the holidays very special?', '什么让假期变得特别？'),
+       ('u', 'good weather makes the holidays very special', '好天气让假期变得特别'), ('u', 'my family makes the holidays very special', '我的家人让假期变得特别'),
+       ('u', "it's the kind of thing that makes the holidays very special", '这正是让假期变得特别的那种事情')],
+  knock='L13: L04 "special | 特别" sits after this LEGO in the seed.')
+
+# ---- 574 "the holidays are very special for everyone | 假期对每个人来说都很特别"
+D('S0574L01', 'grow', known='for everyone', target='对每个人来说', type='M', comps=[['towards', '对'], ['everyone', '每个人'], ['speaking', '来说']],
+  why='"someone" is not in the seed; 对…来说 is a frame that needs its middle (L32). The seed\'s "for everyone" is 对每个人来说 (6 syllables), like S0429L01 "for them | 对他们来说".',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'k', 'U01': 'd', 'U02': 'd', 'U03': 'k', 'U05': 'd', 'U06': 'k', 'U07': 'k'},
+  add=[('u', 'for everyone it is very special', '对每个人来说都很特别'), ('u', 'she said it is good for everyone', '她说对每个人来说都很好'),
+       ('u', 'it is difficult for everyone', '对每个人来说都很难')])
+D('S0574L02', 'delete',
+  why='"towards" is not in the seed; 对 here is the opening of 对每个人来说, now L01 "for everyone", so this not-new LEGO\'s part of the seed is covered and it goes.')
+
+# ---- 576 "it has been very upsetting waiting | 等待真的让人很难过"
+D('S0576L01', 'grow', known='very upsetting', target='真的让人很难过', type='M', comps=[['truly', '真的'], ['upsetting', '让人很难过']],
+  why='"truly" is not in the seed, and "very | 真的" would clash with S0013L02 "very | 很" (ZUT). Grows to the seed\'s "very upsetting" = 真的让人很难过 (7 syllables); "upsetting | 让人很难过" is S0575L01.',
+  b={'B01': 'd', 'B02': ('very upsetting', '真的让人很难过'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'that is very upsetting', '那真的让人很难过'), ('u', 'she said it has been very upsetting', '她说这真的让人很难过'),
+       ('u', 'I think it is very upsetting', '我觉得这真的让人很难过'), ('u', 'the weather has been very upsetting', '天气真的让人很难过'),
+       ('u', 'it has been very upsetting for everyone', '对每个人来说这真的让人很难过')])
+
+# ---- 582 "what's it like to grow up here? | 在这里长大是什么感觉？"
+D('S0582L02', 'grow', known="what's it like to grow up", target='长大是什么感觉', type='M', is_new=True,
+  comps=[['to grow up', '长大'], ['to be', '是'], ['what', '什么'], ['feeling', '感觉']],
+  why='"feeling" is not in the seed. 是什么感觉 alone would be "what\'s it like", which S0583L01 teaches as 是什么样的 (ZUT), so it grows to 长大是什么感觉 "what\'s it like to grow up" (7 syllables); L01 "to grow up" is taught before it. NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', "what's it like to grow up", '长大是什么感觉'), ('u', "what's it like to grow up there?", '在那里长大是什么感觉？'),
+       ('u', "what's it like to grow up in a village?", '在村子里长大是什么感觉？'), ('u', "I want to know what it's like to grow up here", '我想知道在这里长大是什么感觉'),
+       ('u', "she told me what it's like to grow up here", '她告诉我在这里长大是什么感觉'),
+       ('u', "do you know what it's like to grow up here?", '你知道在这里长大是什么感觉吗？')])
+D('S0583L01', 'keep',
+  why='"what is it like" IS the seed\'s "what\'s it like" (the scan split the contraction). Not a defect. One row of its basket, U02, prompts seed 582\'s exact English with a different Chinese (ZUT against the seed) and is deleted as an extra.',
+  extra=[{'op': 'phrase.delete', 'phrase_id': C + 'S0583L01U02', 'expect': {'known_text': "what's it like to grow up here?", 'target_text': '在这里长大是什么样的？'}}])
+
+# ---- 589 "she told me she'd just seen the last bus | 她告诉我她刚看到最后一班车"
+D('S0589L03', 'grow', known='the last bus', target='最后一班车', type='M', comps=[['last', '最后'], ['one', '一'], ['scheduled trip', '班'], ['vehicle', '车']],
+  why='"scheduled trip" is not in the seed; 班 is a measure word here and the seed\'s "the last bus" is 最后一班车 (5 syllables), like S0095L03 "the next bus | 下一班车". L02 "last" is taught before it.',
+  b={'B01': 'd', 'B02': ('the last bus', '最后一班车'), 'B03': 'd'})
+
+# ---- 592 "and along the main road | 然后沿着主干道走"
+D('S0592L01', 'regloss', known='and',
+  why='"then" is not in the seed; the seed says "and". "and | 和" (S0639L01) is re-cut to "with you | 和你" in this plan, so no LEGO is glossed "and" but this one; "and then | 然后" (S0221L02) keeps its own English.',
+  b={'B01': ('and', '然后'), 'B02': ('and she went', '然后她去了'), 'B03': ('and went to the village', '然后去了村子'),
+     'U01': ('she arrived and went to the shops', '她到达了，然后去了商店'), 'U02': ('I decided and left', '我决定了，然后离开了'),
+     'U03': ('nobody came and she waited', '没有人来，然后她等待了'), 'U04': ('she woke up and went outside', '她醒来了，然后出去了'),
+     'U05': ('I followed her and stopped', '我跟着她，然后停了'), 'U06': ('she arrived at the station and left', '她到达车站，然后离开了')},
+  add=[('u', 'and along the main road', '然后沿着主干道走')],
+  knock='"and" is prompted with 和 between nouns elsewhere in the course (K23: the sequence sense is carried by the clause it joins).')
+
+# ---- 597 "I suspect that he's heard a hundred stories about it | 我怀疑他已经听过一百个关于这件事的故事"
+D('S0597L03', 'grow', known='about it', target='关于这件事', type='M', is_new=True,
+  comps=[['regarding', '关于'], ['this', '这'], ['(measure word)', '件'], ['matter', '事']],
+  why='"regarding" is not in the seed, and "about | 关于" would clash with S0038L02 "about | 大概" (ZUT). Grows to the seed\'s "about it" = 关于这件事 (5 syllables). NEW (L31).',
+  b={'B01': 'd', 'B02': ('about it', '关于这件事'), 'B03': 'd', 'U01': 'k', 'U02': 'k', 'U03': 'k', 'U07': 'k'},
+  add=[('u', 'I heard a story about it', '我听过一个关于这件事的故事'), ('u', 'she told me a story about it', '她给我讲了一个关于这件事的故事')])
+
+# ---- 601 "we were talking about how it all started | 我们在聊这一切是怎么开始的"
+D('S0601L01', 'regloss', known='to talk about',
+  why='"chat" is not in the seed; the seed says "talking about". No LEGO is glossed "to talk about" ("to talk | 说话" is a different prompt). Rows built on 聊天 "chatting" go.',
+  b={'B01': ('to talk about', '聊'), 'B02': 'k', 'B03': 'k', 'U01': 'd', 'U02': 'd', 'U03': ('I want to talk about it', '我想聊这个'), 'U04': 'd',
+     'U05': ('she talked about it', '她聊了这件事'), 'U06': ('I was talking about how it started', '我在聊它是怎么开始的'), 'U07': 'k'},
+  add=[('u', 'what were you talking about?', '你们在聊什么？'), ('u', 'they were talking about the holidays', '他们在聊假期')])
+D('S0601L02', 'grow', known='it all', target='这一切', type='M', is_new=True, comps=[['this', '这'], ['everything', '一切']],
+  why='"everything" is not in the seed; the seed\'s "it all" is 这一切 (3 syllables). "everything | 一切" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': ('it all', '这一切'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': ("it's all upsetting", '这一切让人很难过'), 'U06': 'd'},
+  add=[('u', 'when did it all start?', '这一切是什么时候开始的？'), ('u', 'I know how it all started', '我知道这一切是怎么开始的'),
+       ('u', 'she told me how it all started', '她告诉我这一切是怎么开始的'), ('u', 'it all started yesterday', '这一切是昨天开始的')])
+
+D('S0604L01', 'keep', why='"to offer" / seed "offered": the same word inflected (K6). Not a defect.')
+
+# ---- 606 "if I'd known then what I know now I'd have waited | 如果我早知道现在知道的这些，我会等的"
+D('S0606L01', 'grow', known="I'd known then", target='我早知道', type='M', is_new=True, comps=[['I', '我'], ['early', '早'], ['to know', '知道']],
+  why='"early" is not in the seed; the seed\'s "I\'d known then" is 我早知道 (4 syllables). 早 stays a literal component. NEW (its pair S0539L03 is re-cut in this plan, L31).',
+  b={'B01': 'd', 'B02': ("I'd known then", '我早知道'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'd'},
+  add=[('u', "if I'd known then", '如果我早知道'), ('u', "if I'd known then, I'd have waited", '如果我早知道，我会等的'),
+       ('u', "if I'd known then, I'd have helped", '如果我早知道，我会帮忙的'), ('u', "if I'd known then, I'd have come", '如果我早知道，我会来的'),
+       ('u', "if I'd known then, I wouldn't have gone", '如果我早知道，我不会去的')])
+D('S0606L02', 'grow', known='what I know now', target='现在知道的这些', type='M', is_new=True,
+  comps=[['now', '现在'], ['to know', '知道'], ['(of)', '的'], ['these', '这些']],
+  why='"these" is not in the seed; the seed\'s "what I know now" is 现在知道的这些 (7 syllables). "these | 这些" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('what I know now', '现在知道的这些'), 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', "if I'd known then what I know now", '如果我早知道现在知道的这些'), ('u', 'what I know now is important', '现在知道的这些很重要'),
+       ('u', 'what I know now is different', '现在知道的这些不一样'), ('u', "she doesn't know what I know now", '她不知道我现在知道的这些'),
+       ('u', 'he wants to know what I know now', '他想知道我现在知道的这些'), ('u', 'I want to tell you what I know now', '我想告诉你我现在知道的这些')])
+
+# ---- 607 "if I'd known I'd have done things differently | 如果我知道，我会做得不一样"
+D('S0607L01', 'grow', known='done things differently', target='做得不一样', type='M', is_new=True,
+  comps=[['to do', '做'], ['(manner)', '得'], ['not the same', '不一样']],
+  why='"not the same" is not in the seed; the seed\'s "done things differently" is 做得不一样 (5 syllables). "not the same | 不一样" stays a component. NEW (L31).',
+  b=dl('B01', 'U03', 'U05', 'U06'),
+  add=[('b', 'done things differently', '做得不一样'), ('u', "I'd have done things differently", '我会做得不一样'),
+       ('u', "she'd have done things differently", '她会做得不一样'), ('u', "we'd have done things differently", '我们会做得不一样'),
+       ('u', "he said he'd have done things differently", '他说他会做得不一样'), ('u', "I think you'd have done things differently", '我觉得你会做得不一样'),
+       ('u', "if I'd known I'd have done things differently", '如果我知道，我会做得不一样')])
+
+# ---- 608 "it would have been the sensible thing to do | 那本来是明智的做法"
+D('S0608L01', 'grow', known='it would have been', target='那本来是', type='M', is_new=True, comps=[['that', '那'], ['originally', '本来'], ['to be', '是']],
+  why='"originally" is not in the seed; the seed\'s "it would have been" is 那本来是 (4 syllables). "originally | 本来" stays a component. NEW (L31).',
+  b={'B01': 'd', 'B02': ('it would have been', '那本来是'), 'B03': 'd', 'U01': 'd', 'U02': ('it would have been easy', '那本来是很容易的'), 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'it would have been a good idea', '那本来是个好主意'), ('u', 'it would have been a challenge', '那本来是个挑战'),
+       ('u', 'she said it would have been easy', '她说那本来是很容易的'), ('u', 'I think it would have been a good idea', '我觉得那本来是个好主意'),
+       ('u', 'it would have been difficult', '那本来是很难的')])
+D('S0608L03', 'grow', known='the sensible thing to do', target='明智的做法', type='M', comps=[['sensible', '明智'], ['(of)', '的'], ['way of doing', '做法']],
+  why='"way of doing" is not in the seed; the seed\'s "the sensible thing to do" is 明智的做法 (5 syllables). L02 "sensible" is taught before it.',
+  b={'B01': 'd', 'B02': ('the sensible thing to do', '明智的做法'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'k'},
+  add=[('u', "that's the sensible thing to do", '那是明智的做法'), ('u', "that's not the sensible thing to do", '那不是明智的做法'),
+       ('u', "what's the sensible thing to do?", '明智的做法是什么？'), ('u', 'the sensible thing to do is to start early', '明智的做法是早开始'),
+       ('u', 'I think waiting is the sensible thing to do', '我觉得等待是明智的做法')])
+
+# ---- 611 "I would have been ready to look somewhere else | 我本来可以准备去别的地方找"
+D('S0611L01', 'grow', known='ready to look somewhere else', target='准备去别的地方找', type='M', is_new=True,
+  comps=[['to prepare', '准备'], ['to go', '去'], ['else', '别的'], ['place', '地方'], ['to look for', '找']],
+  why='"prepare" is not in the seed, and "ready | 准备" would clash with S0088L01 "ready | 准备好" (ZUT). Grows to the seed\'s "ready to look somewhere else" = 准备去别的地方找 (8 syllables, the most a LEGO may hold). NEW (L31).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'ready to look somewhere else', '准备去别的地方找'), ('u', "I'm ready to look somewhere else", '我准备去别的地方找'),
+       ('u', "she's ready to look somewhere else", '她准备去别的地方找'), ('u', 'are you ready to look somewhere else?', '你准备去别的地方找吗？'),
+       ('u', "we're not ready to look somewhere else", '我们不准备去别的地方找'), ('u', 'he said he was ready to look somewhere else', '他说他准备去别的地方找')])
+
+# ---- 612 "we would have bought something | 我们本来会买点东西"
+D('S0612L01', 'keep', why='"to buy" / seed "bought": the same word inflected (K6). Not a defect.')
+D('S0612L02', 'grow', known='to buy something', target='买点东西', type='M', comps=[['to buy', '买'], ['a bit', '点'], ['stuff', '东西']],
+  why='"stuff" is not in the seed, and "something | 东西" would clash with S0004L02 "something | 点什么" (ZUT). Grows to the seed\'s "bought something" = 买点东西 (4 syllables; buy/bought, K6); L01 "to buy" is taught before it.',
+  b={'B01': 'd', 'B02': ('to buy something', '买点东西'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'd'},
+  add=[('u', 'I want to buy something', '我想买点东西'), ('u', "let's go buy something", '我们去买点东西'), ('u', 'she went to buy something', '她去买点东西了'),
+       ('u', 'do you want to buy something?', '你想买点东西吗？'), ('u', 'we would have bought something there', '我们本来会在那里买点东西')])
+
+# ---- 613 "we probably would have bought a house there | 我们可能会在那里买房子"
+D('S0613L01', 'regloss', known='probably', is_new=True,
+  why='"possible" is not in the seed; the seed says "probably". A new English for 可能 (no LEGO is glossed "probably"), so the LEGO becomes NEW with a played basket (L31).',
+  b={'B01': ('probably', '可能'), 'B02': 'k', 'B03': ('would probably buy', '可能会买'), 'U01': 'k', 'U02': ('she will probably come', '她可能会来'),
+     'U03': ("she probably didn't know", '她可能不知道'), 'U04': ('everything will probably change', '一切可能会改变'),
+     'U05': ("it's probably not right", '这可能不对'), 'U06': ("I'll probably need your help", '我可能需要你的帮助')})
+
+# ---- 614 "it's near where your family live | 那里离你家人住的地方很近"
+D('S0614L01', 'grow', known='where your family live', target='离你家人住的地方', type='M',
+  comps=[['away from', '离'], ['your family', '你家人'], ['to live', '住'], ['(of)', '的'], ['place', '地方']],
+  why='"away from" is not in the seed; 离 is bound to the place it measures from (L22) and the seed\'s words for 离你家人住的地方 are "where your family live" (8 syllables, the most a LEGO may hold).',
+  b=dl('B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'where your family live', '离你家人住的地方'), ('u', "it's near where your family live", '那里离你家人住的地方很近'),
+       ('u', "it's not far from where your family live", '离你家人住的地方不远'), ('u', 'the school is near where your family live', '学校离你家人住的地方很近'),
+       ('u', 'the village is near where your family live', '那个村子离你家人住的地方很近'), ('u', 'is it far from where your family live?', '离你家人住的地方远吗？'),
+       ('u', 'I live near where your family live', '我住的地方离你家人住的地方很近')],
+  extra=[{'op': 'phrase.delete', 'phrase_id': C + 'S0614L02B03', 'expect': {'known_text': 'where your family live', 'target_text': '你家人住的地方'}}],
+  knock='L13: L02 "your family | 你家人" sits after this LEGO in the seed. Its row B03 prompted "where your family live" for 你家人住的地方 (without 离), the same English as this LEGO: deleted as an extra (ZUT).')
+
+# ---- 615 "I thought you were very brave to say that | 我觉得你能说出那样的话很勇敢"
+D('S0615L02', 'grow', known='to say that', target='说出那样的话', type='M', comps=[['to say out', '说出'], ['like that', '那样'], ['(of)', '的'], ['words', '话']],
+  why='"out loud" is not in the seed; the seed\'s "to say that" is 说出那样的话 (6 syllables).',
+  b={'B01': 'd', 'B02': ('to say that', '说出那样的话'), 'B03': 'd', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('u', "I didn't want to say that", '我不想说出那样的话'), ('u', 'why did you say that?', '你为什么说出那样的话？'),
+       ('u', "he shouldn't say that", '他不应该说出那样的话'), ('u', 'nobody wanted to say that', '没有人想说出那样的话'),
+       ('u', 'she was very brave to say that', '她能说出那样的话很勇敢'), ('u', 'I thought you were very brave to say that', '我觉得你能说出那样的话很勇敢')],
+  knock='The last two rows use L04 "brave | 勇敢", taught after this LEGO in the same seed (L13).')
+D('S0615L03', 'delete',
+  why='"like" is not in the seed; 那样 here is wholly inside L02 "to say that | 说出那样的话" (where it stays a literal component), so this LEGO\'s part of the seed is covered and it goes.',
+  knock='This was the course\'s only LEGO for "like that | 那样" (12 rows); later rows may use 那样 bare (K29, component of L02).')
+
+D('S0619L01', 'keep', why='"to see" / seed "saw": the same word inflected (K6); the pair is S0182L01. Not a defect. (The rest of this seed has no LEGO: coverage, not item 10.)')
+
+# ---- 620 "it's a very long time since we last saw each other | 我们已经很久没见了"
+D('S0620L01', 'grow', known="a very long time since we last saw each other", target='已经很久没见了', type='M', is_new=True,
+  comps=[['already', '已经'], ['very', '很'], ['long time', '久'], ['not', '没'], ['to see', '见'], ['(change of state)', '了']],
+  why='"already" is not in the seed and no part of the Chinese maps onto a part of the English; the seed is one idiom. Whole it is 9 syllables, one over what a LEGO may hold, so the LEGO is the seed without its subject, 已经很久没见了 (7 syllables), and every row supplies 我们. "already | 已经" stays a component. NEW (L31).',
+  b=dl('B01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', "a very long time since we last saw each other", '已经很久没见了'), ('u', "it's a very long time since we last saw each other", '我们已经很久没见了'),
+       ('u', "but it's a very long time since we last saw each other", '但是我们已经很久没见了'),
+       ('u', "because it's a very long time since we last saw each other", '因为我们已经很久没见了'),
+       ('u', "she said it's a very long time since we last saw each other", '她说我们已经很久没见了'),
+       ('u', "I know it's a very long time since we last saw each other", '我知道我们已经很久没见了'),
+       ('u', "I think it's a very long time since we last saw each other", '我觉得我们已经很久没见了')])
+
+# ---- 623 "do you want a cup of coffee or tea? | 你想喝咖啡还是茶？"
+D('S0623L01', 'grow', known='want a cup of', target='想喝', type='M', is_new=True, comps=[['to want', '想'], ['to drink', '喝']],
+  why='"drink" is not in the seed; the seed\'s words for 想喝 are "want a cup of" (2 syllables). "to drink | 喝" stays a component; every row names the drink, so the prompt is never ambiguous (K23). NEW (L31).',
+  b={'B01': 'd', 'B02': ('want a cup of', '想喝'), 'B03': 'd', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'do you want a cup of coffee?', '你想喝咖啡吗？'), ('u', 'I want a cup of coffee', '我想喝咖啡'), ('u', 'she wants a cup of coffee', '她想喝咖啡'),
+       ('u', "I don't want a cup of coffee", '我不想喝咖啡'), ('u', 'why do you want a cup of coffee?', '你为什么想喝咖啡？'),
+       ('u', 'he wants a cup of strong coffee', '他想喝浓咖啡')])
+
+# ---- 624 "yes, that would be great, please | 好的，那太好了，谢谢"
+D('S0624L02', 'grow', known='that would be great, please', target='那太好了，谢谢', type='M', comps=[['that', '那'], ['great', '太好了'], ['thank you', '谢谢']],
+  why='"thank" is not in the seed; the seed\'s word is "please", but "please | 谢谢" alone would be prompted wherever the course says "please" for 请 (K23). It grows to the seed span that carries the sense, 那太好了，谢谢 "that would be great, please" (6 syllables).',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('that would be great, please', '那太好了，谢谢'), 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'tea? that would be great, please', '茶？那太好了，谢谢'), ('u', 'water? that would be great, please', '水？那太好了，谢谢'),
+       ('u', 'a coffee? yes, that would be great, please', '咖啡？好的，那太好了，谢谢'),
+       ('u', 'a strong coffee? that would be great, please', '一杯浓咖啡？那太好了，谢谢')])
+
+# ---- 629 "I like it with milk but without sugar | 我喜欢加牛奶，不加糖"
+D('S0629L01', 'grow', known='with milk', target='加牛奶', type='M', comps=[['to add', '加'], ['milk', '牛奶']],
+  why='"add" is not in the seed, and "with | 加" would clash with S0088L02 "with | 跟" (ZUT). Grows to the seed\'s "with milk" = 加牛奶 (3 syllables).',
+  b=dl('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'with milk', '加牛奶'), ('b', 'I like it with milk', '我喜欢加牛奶'), ('u', 'do you like it with milk?', '你喜欢加牛奶吗？'),
+       ('u', 'she likes it with milk', '她喜欢加牛奶'), ('u', "I don't like it with milk", '我不喜欢加牛奶'), ('u', 'coffee with milk', '加牛奶的咖啡'),
+       ('u', 'I like it with milk but without sugar', '我喜欢加牛奶，不加糖')],
+  knock='L13: L02 "milk | 牛奶" sits after this LEGO in the seed.')
+
+# ---- 633 "a large glass of water would be fine | 一大杯水就好"
+D('S0633L01', 'regloss', known='would be fine',
+  why='"just" is not in the seed; the seed says "would be fine". Known side only.',
+  b={'B01': ('would be fine', '就好'), 'B02': ('one cup would be fine', '一杯就好'), 'B03': ('a glass of water would be fine', '一杯水就好'), 'U01': 'k',
+     'U02': ('that would be fine', '那就好'), 'U03': ('just a little would be fine', '一点就好'), 'U04': 'd', 'U05': 'd'},
+  add=[('u', 'tea would be fine', '茶就好'), ('u', 'a coffee would be fine', '一杯咖啡就好')])
+
+D('S0635L01', 'regloss', known='Jane', why='The gloss IS the seed\'s word ("Jane\'s", K6); the scan only tripped on the lower-case "jane". The capital is restored; nothing else changes.')
+D('S0638L01', 'keep', why='"am thinking": "am" is the seed\'s "I\'m" (the scan split the contraction) and "thinking" is its "think" inflected (K6). Not a defect.')
+
+# ---- 639 "with you sir | 和你一起，先生"
+D('S0639L01', 'grow', known='with you', target='和你', type='M', is_new=False, comps=[['and', '和'], ['you', '你']],
+  why='"and" is not in the seed; the seed says "with you" and "with you | 和你" is the course\'s very first seed (S0001L04). "with | 和" would clash with S0088L02 "with | 跟" (ZUT). The LEGO takes the S0001L04 pair and goes not-new.',
+  b={'B01': 'd', 'B02': 'k', 'B03': 'd', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'I want to go with you', '我想和你一起去'), ('u', 'she wants to speak with you', '她想和你说话'), ('u', 'with you sir', '和你一起，先生')],
+  extra=[{'op': 'phrase.delete', 'phrase_id': C + 'S0639L03B02', 'expect': {'known_text': 'with you, sir', 'target_text': '和你，先生'}}],
+  knock='This was the course\'s only LEGO glossed "and | 和" (rows: "she and I", "tea and water"); 和 stays a component here. S0592L01 takes "and" for 然后 in this plan. Row S0639L03B02 prompted the seed\'s exact English "with you, sir" for 和你，先生 (the seed is 和你一起，先生): deleted as an extra (ZUT against the seed).')
+
+# ---- 642 / 644: a not-new word of the Chinese seed that the English seed never says, wholly inside the seed's whole-sentence LEGO
+D('S0642L02', 'delete',
+  why='"now" is not in the seed ("how do you feel madam?"); 现在 is wholly inside L01, the whole-seed LEGO 您现在感觉怎么样，女士, so this not-new LEGO\'s part of the seed is covered and it goes.')
+D('S0644L01', 'delete',
+  why='"again" is not in the seed ("could you say that sir?"); 再 is wholly inside L02, the whole-seed LEGO 先生，您能再说一遍吗, so this not-new LEGO\'s part of the seed is covered and it goes.')
+
+# ---- 646 "what are you doing, sir? | 先生，您正在做什么？"
+D('S0646L01', 'grow', known='doing', target='正在做', type='M', is_new=True, comps=[['currently', '正在'], ['to do', '做']],
+  why='"currently" is not in the seed; 正在 is the seed\'s "-ing" and the seed\'s "doing" is 正在做 (3 syllables). No LEGO is glossed "doing". NEW (L31).',
+  b={'B01': ('doing', '正在做'), 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U05': 'k', 'U06': 'd'},
+  add=[('u', 'what is she doing?', '她正在做什么？'), ('u', 'what are they doing?', '他们正在做什么？'), ('u', 'I know what he is doing', '我知道他正在做什么'),
+       ('u', 'what are you doing, madam?', '女士，您正在做什么？')])
+
+# ---- 654 "I'm not sure if I can help you, sir | 先生，我不确定我能不能帮您"
+D('S0654L01', 'keep', why='"to be sure": "be" is the seed\'s "I\'m" (am = be, K6) and "sure" is in the seed; the pair is S0406L01. Not a defect.')
+D('S0654L02', 'grow', known='if I can', target='我能不能', type='M', comps=[['I', '我'], ['can', '能'], ["can't", '不能']],
+  why='"or cannot" is not in the seed; the seed says "if I can" = 我能不能 (4 syllables). Same re-cut as S0010L03 in #714·AI\'s plan.',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'd'},
+  add=[('b', 'if I can', '我能不能'), ('b', 'if I can help', '我能不能帮'), ('u', "I'm not sure if I can come", '我不确定我能不能来'),
+       ('u', "I don't know if I can do it", '我不知道我能不能做'), ('u', "I'm not sure if I can help you", '我不确定我能不能帮你'),
+       ('u', 'she asked if I can come', '她问我能不能来'), ('u', "I'll tell you if I can come", '我会告诉你我能不能来')],
+  knock='Once #714·AI\'s plan grows S0010L03 to "if I can | 我能不能", this LEGO is its exact duplicate and goes not-new (taught once); it is NEW only while seed 10 still says "whether can | 能不能".')
+
+# ---- 661 "what are you all doing? | 你们正在做什么？"
+D('S0661L01', 'grow', known='what are you all doing', target='你们正在做什么', type='M',
+  comps=[['you all', '你们'], ['currently', '正在'], ['to do', '做'], ['what', '什么']],
+  why='"currently" is not in the seed; the seed\'s "what are you all doing" is 你们正在做什么 whole (7 syllables), like its neighbours ("do you all want | 你们想要").',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'B04': 'd', 'U01': 'k', 'U02': 'k', 'U03': 'k', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'what are you all doing', '你们正在做什么'), ('u', 'I want to know what you are all doing', '我想知道你们正在做什么'),
+       ('u', 'he asked what you are all doing', '他问你们正在做什么'), ('u', 'but what are you all doing?', '但是你们正在做什么？')])
+
+# ---- 663 "what you all said | 你们刚才说的"
+D('S0663L01', 'grow', known='what you all said', target='你们刚才说的', type='M', comps=[['you all', '你们'], ['just now', '刚才'], ['said', '说的']],
+  why='"was just" is not in the seed; the seed\'s "what you all said" is 你们刚才说的 whole (6 syllables).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'k', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd', 'U07': 'd'},
+  add=[('b', 'what you all said', '你们刚才说的'), ('u', 'I heard what you all said', '我听到你们刚才说的了'), ('u', 'I agree with what you all said', '我同意你们刚才说的'),
+       ('u', "she didn't hear what you all said", '她没有听到你们刚才说的'), ('u', 'I remember what you all said', '我记得你们刚才说的'),
+       ('u', 'is that what you all said?', '那是你们刚才说的吗？')])
+
+# Romanisation read by hand where tools/roman.py picked the wrong reading of a polyphone (只 zhī measure word, 得 děi "have to",
+# 待 dāi "stay", 不了 bu liǎo, 觉 jiào in 睡一觉) or joined 的话; spellings follow the course's own rows.
+ROMAN = {
+    '那只狗又脏又湿': 'nà zhī gǒu yòu zāng yòu shī', '她说那只狗又脏又湿': 'tā shuō nà zhī gǒu yòu zāng yòu shī',
+    '那只狗为什么又脏又湿？': 'nà zhī gǒu wèishénme yòu zāng yòu shī?', '那只狗一直在泥里玩': 'nà zhī gǒu yīzhí zài ní lǐ wán',
+    '那只狗非常丑': 'nà zhī gǒu fēicháng chǒu', '你得保持安静': 'nǐ děi bǎochí ānjìng', '她说我们得保持安静': 'tā shuō wǒmen děi bǎochí ānjìng', '他得保持安静': 'tā děi bǎochí ānjìng',
+    '她坚持不了更久': 'tā jiānchí bu liǎo gèng jiǔ', '他坚持不了更久': 'tā jiānchí bu liǎo gèng jiǔ', '我们不能待更久': 'wǒmen bù néng dāi gèng jiǔ', '最后一班车': 'zuìhòu yī bān chē',
+    '听起来你需要睡一觉': 'tīngqǐlái nǐ xūyào shuì yī jiào', '夜已经很深了，你需要睡一觉': 'yè yǐjīng hěn shēn le, nǐ xūyào shuì yī jiào',
+    '说出那样的话': 'shuō chū nàyàng de huà', '我不想说出那样的话': 'wǒ bù xiǎng shuō chū nàyàng de huà',
+    '你为什么说出那样的话？': 'nǐ wèishénme shuō chū nàyàng de huà?', '他不应该说出那样的话': 'tā bù yīnggāi shuō chū nàyàng de huà',
+    '没有人想说出那样的话': 'méiyǒu rén xiǎng shuō chū nàyàng de huà', '她能说出那样的话很勇敢': 'tā néng shuō chū nàyàng de huà hěn yǒnggǎn',
+    '我觉得你能说出那样的话很勇敢': 'wǒ juéde nǐ néng shuō chū nàyàng de huà hěn yǒnggǎn',
+}
+json.dump({'course': 'zho_for_eng', 'shard': 'b (seeds 451-663)', 'roman': ROMAN, 'legos': OUT},
+          open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'zho_for_eng-b.json'), 'w'), ensure_ascii=False, indent=1)
+print(len(OUT), 'decisions')
