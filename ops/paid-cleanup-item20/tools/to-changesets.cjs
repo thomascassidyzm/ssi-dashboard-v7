@@ -113,6 +113,9 @@ function run(course) {
     held_rows: held.drift.length + held.row.length + held.lego.reduce((n, x) => n + x.rows, 0) + held.seed.reduce((n, x) => n + x.rows, 0),
     reserved: { owned_legos: Object.keys(res.owned).length, inserts: res.inserts.length }, warnings: check.warnings.length, held };
   fs.writeFileSync(path.join(odir, 'summary.json'), JSON.stringify(summary, null, 1));
+  // The touched seeds' /v2/validate overrides, for validate-copy.cjs (the course-builder's own sweep, on the copy).
+  const touchedSeeds = new Set(guards.map((g) => g.seed_number));
+  fs.writeFileSync(path.join(odir, 'overrides.json'), JSON.stringify(rd(path.join(cdir, 'batches', 'cs79.overrides.json')).filter((o) => touchedSeeds.has(o.seed_number))));
   fs.writeFileSync(path.join(odir, 'check.json'), JSON.stringify({ errors: check.errors, warnings: check.warnings, checks: check.checks }, null, 1));
   for (const f of fs.readdirSync(path.join(cdir, 'batches')).filter((f) => f.startsWith('cs79.'))) fs.unlinkSync(path.join(cdir, 'batches', f));
   fs.rmSync(wdir, { recursive: true, force: true });

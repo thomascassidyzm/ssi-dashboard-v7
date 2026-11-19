@@ -39,6 +39,13 @@ const issuesBySeed = (v) => new Map((v.failures || []).map(f => [f.seed, f.issue
       const b = issuesBySeed(rd(path.join(cdir, 'validate-before.json'))), a = issuesBySeed(r.body);
       const touched = new Set();
       for (const f of fs.existsSync(bdir) ? fs.readdirSync(bdir).filter(f => f.endsWith('.apply.json')) : []) for (const s of rd(path.join(bdir, f)).seeds || []) touched.add(s);
+      // cs #79·AJ: the changeset path (apply-changeset.cjs) has no .apply.json; its touched seeds are the ledger's applied ops.
+      const csf = path.join(cdir, 'changesets', 'item20.changeset.jsonl');
+      if (fs.existsSync(csf)) {
+        const { slotsFor } = require(path.join(L.ITEM_DIR, '../paid-cleanup-item9/tools/ledger-state.cjs'));
+        const { ops, ledger } = slotsFor(csf);
+        ops.forEach((o, i) => { if (ledger.get(i) === 'applied') touched.add(o.op === 'phrase.insert' ? o.row.seed_number : Number(String(o.phrase_id).split(':').pop().slice(1, 5))); });
+      }
       const rows = [...touched].sort((x, y) => x - y).map(s => ({ seed: s, before: b.get(s) || [], after: a.get(s) || [] }));
       const worse = rows.filter(x => x.after.some(i => !x.before.includes(i)));
       wr(path.join(cdir, 'validate-diff.json'), { touched: rows.length, pass_after: rows.filter(x => !x.after.length).length,

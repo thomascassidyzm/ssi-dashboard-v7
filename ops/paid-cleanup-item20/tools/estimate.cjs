@@ -13,7 +13,9 @@
 const fs = require('fs'); const path = require('path'); const os = require('os');
 const L = require('./lib.cjs');
 const COURSES = ['eng_for_urd', 'eng_for_pan', 'eng_for_ben', 'eng_for_mar', 'eng_for_guj'];
-const KNOWN_PROV = { eng_for_ben: 'cartesia' };
+// cs #79·AJ: since the 19 Nov language cast (#998·AI) GET /api/courses/<c>/voice-config/resolved puts the known side of
+// pan (Navjot/Gurpreet), mar (Asha), guj (Isha/Amit) and ben (Arindam) on Cartesia; only urd (Uzma/Asad) stays Azure.
+const KNOWN_PROV = { eng_for_ben: 'cartesia', eng_for_pan: 'cartesia', eng_for_mar: 'cartesia', eng_for_guj: 'cartesia' };
 const SNAP = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-717/snap');
 const n = (t) => String(t || '').normalize('NFKC').toLowerCase().replace(/[\s\p{P}]+/gu, ' ').trim();
 const clips = (f) => { const d = JSON.parse(fs.readFileSync(path.join(SNAP, f), 'utf8')); const c = d.clips; return Array.isArray(c) ? c : Object.values(c || {}); };
@@ -57,7 +59,30 @@ if (fs.existsSync(cacheF)) for (const [k, v] of Object.entries(JSON.parse(fs.rea
   const offFree = role === 'known' ? knownLib[c].has(t) : en.has(t);
   if (liveFree !== offFree) disagree.push({ c, role, t, live: v.source || v.code, offline: offFree ? 'free' : 'render' });
 }
-const out = { at: new Date().toISOString(), qa_copy: 'ssi_copy_20261118t033000z', per_course: per, total: tot, self_check: { checked, disagree } };
+// cs #79·AJ: CAST-VOICE price. The 18 Nov figure counted English recorded in ANY voice as free, but 37 of the 97 live answers
+// were EXISTS_IN_LANGUAGE: a clip in another voice (e.g. Azure Sonia, *_for_eng known) that link-clip's voice check will not
+// put in a Charlotte/Tom-006 slot, so the route renders a fresh cast-voice take under Kai's approval token (paid). Here a
+// slot is free only if a clip of those words exists in THAT slot's cast voice (any course: the library is per language).
+const CAST = { target1: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121', target2: 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9' };
+const inVoice = { target1: new Set(), target2: new Set() };
+for (const f of fs.readdirSync(SNAP).filter(f => f.endsWith('.json'))) for (const c of clips(f)) for (const r of ['target1', 'target2']) if (c.voice_id === CAST[r]) inVoice[r].add(n(c.text));
+const cast = { per_course: {}, total: { cartesia: 0, azure: 0 } }; const paidT = { target1: new Set(), target2: new Set() };
+for (const c of COURSES) {
+  const s = cast.per_course[c] = { en_slots_free: 0, en_slots_paid: 0, en_chars: 0, known_chars: per[c][KNOWN_PROV[c] || 'azure'] - (KNOWN_PROV[c] ? per[c].cartesia - (per[c].cartesia - 0) : 0) };
+  s.known_chars = 0;
+  const seenK = new Set();
+  for (const o of JSON.parse(fs.readFileSync(path.join(L.ITEM_DIR, c, 'batches', 'plan.ops.json'), 'utf8')).ops) {
+    const row = o.op === 'phrase.insert' ? o.row : o.op === 'phrase.update' ? o.set : null; if (!row) continue;
+    const e = n(row.target_text);
+    for (const r of ['target1', 'target2']) { if (inVoice[r].has(e) || paidT[r].has(e)) s.en_slots_free++; else { paidT[r].add(e); s.en_slots_paid++; s.en_chars += [...e].length; } }
+    const k = n(row.known_text);
+    if (!seenK.has(k) && !knownLib[c].has(k)) { seenK.add(k); s.known_chars += [...k].length; }
+  }
+  cast.total.cartesia += s.en_chars + (KNOWN_PROV[c] ? s.known_chars : 0);
+  cast.total.azure += KNOWN_PROV[c] ? 0 : s.known_chars;
+}
+const out = { at: new Date().toISOString(), qa_copy: 'ssi_copy_20261118t033000z', per_course: per, total: tot, cast_voice: cast, self_check: { checked, disagree } };
+console.log('CAST-VOICE price', JSON.stringify(cast, null, 1));
 fs.writeFileSync(path.join(L.ITEM_DIR, 'audio', 'estimate.json'), JSON.stringify(out, null, 1));
 console.log(JSON.stringify({ per_course: per, total: tot, self_check: { checked, disagree: disagree.length } }, null, 1));
 for (const d of disagree.slice(0, 10)) console.log('DISAGREE', JSON.stringify(d));

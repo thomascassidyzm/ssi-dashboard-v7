@@ -18,6 +18,11 @@
  *   - per UTC day: this runner's charsSpent across ALL day logs dated today + item-9 reserve ≤ 600,000
  *   - four-day total: all runner logs + item-9 reserve ≤ 2,000,000 (=> remaining cycle credit 2.45M − total ≥ 450k)
  *     item-9 reserve = 52,000 (its published gross upper bound, #960·AI) while its night timer is still armed, else 0.
+ *     + FIX RESERVES (cs #79·AJ): every fixes.json entry with status "approved" and a "utc_day" (other than item9-night,
+ *     counted above) reserves its Cartesia: on the four-day total, max(chars, its real spend) until its spend_file says
+ *     done, then its real spend; on a UTC day, its real spend dated that day, plus (on its own utc_day, until done) what
+ *     is left of chars. spend_file (under $HOME) = {done, total, byDay:{YYYY-MM-DD: n}}, written by that fix's runner.
+ *     So item 20 (Sat 21 Nov) goes first and the a2c remainder takes what is left of both caps.
  *   - STOP at the first: HTTP 402; codes DAILY_TOTAL_CAP, DAILY_CAP, POOL_*, PROVIDER_POOL, USAGE_UNREADABLE, LEDGER,
  *     TRIPPED, STOPPED_BY_TOM, NOT_IN_CHAIN, APPROVAL_UNVERIFIED, RATE_CAPPED, IDENTITY_REQUIRED; any error text naming a
  *     quota/credit/limit/402; any other 5xx except a 503 (phase8 restarting), which counts as a timeout.
@@ -76,12 +81,28 @@ function allLogged() {
 function item9Armed() {
   try { return execFileSync('systemctl', ['--user', 'is-active', 'cs-long-keep-item9-night.timer'], { encoding: 'utf8' }).trim() === 'active' } catch { return false }
 }
+function fixReserve(today) {
+  let day = 0, total = 0
+  let fixes = []
+  try { fixes = JSON.parse(fs.readFileSync(path.join(HERE, 'fixes.json'), 'utf8')).fixes || [] } catch { return { day: 0, total: 0 } }
+  for (const f of fixes) {
+    if (f.status !== 'approved' || !f.utc_day || f.id === 'item9-night') continue
+    let sp = { done: false, total: 0, byDay: {} }
+    if (f.spend_file) try { sp = { ...sp, ...JSON.parse(fs.readFileSync(path.join(os.homedir(), f.spend_file), 'utf8')) } } catch {}
+    const real = Number(sp.total) || 0
+    total += sp.done ? real : Math.max(Number(f.chars) || 0, real)
+    day += (Number((sp.byDay || {})[today]) || 0) + (!sp.done && f.utc_day === today ? Math.max(0, (Number(f.chars) || 0) - real) : 0)
+  }
+  return { day, total }
+}
 function tally() {
   const rows = allLogged().filter((r) => r.kind === 'render')
   const today = utcDay(Date.now())
   const spent = (rs) => rs.reduce((s, r) => s + (Number(r.charsSpent) || 0), 0)
-  const reserve = item9Armed() ? ITEM9_RESERVE : 0
-  return { total: spent(rows), today: spent(rows.filter((r) => utcDay(r.at) === today)), reserve }
+  const item9 = item9Armed() ? ITEM9_RESERVE : 0
+  const fx = fixReserve(today)
+  // reserve = what OTHER approved work holds back: on the total cap item 9 + fix totals; on the day cap item 9 + fix day.
+  return { total: spent(rows) + fx.total, today: spent(rows.filter((r) => utcDay(r.at) === today)) + fx.day, reserve: item9, fixTotal: fx.total, fixDay: fx.day }
 }
 
 async function post(url, body, headers, timeoutMs) {
@@ -154,8 +175,8 @@ async function main() {
     if (nextCheckpoint === null) nextCheckpoint = Math.floor(t.total / CHECKPOINT) * CHECKPOINT + CHECKPOINT
     if (t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
     const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // gender prep can lengthen a line a little
-    if (t.today + t.reserve + want > DAY_CAP) { stop = `day cap: today ${t.today} + item-9 reserve ${t.reserve} + next ask ${want} > ${DAY_CAP}`; break }
-    if (t.total + t.reserve + want > TOTAL_CAP) { stop = `four-day cap: total ${t.total} + item-9 reserve ${t.reserve} + next ask ${want} > ${TOTAL_CAP}`; break }
+    if (t.today + t.reserve + want > DAY_CAP) { stop = `day cap: today ${t.today} (incl. fix reserve ${t.fixDay}) + item-9 reserve ${t.reserve} + next ask ${want} > ${DAY_CAP}`; break }
+    if (t.total + t.reserve + want > TOTAL_CAP) { stop = `four-day cap: total ${t.total} (incl. fix reserve ${t.fixTotal}) + item-9 reserve ${t.reserve} + next ask ${want} > ${TOTAL_CAP}`; break }
     if (CYCLE_CREDIT - (t.total + t.reserve + want) < RESERVE) { stop = `credit reserve: 2.45M − ${t.total + t.reserve + want} < 450k` ; break }
 
     const body = { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE, approval: APPROVAL }
