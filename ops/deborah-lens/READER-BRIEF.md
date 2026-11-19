@@ -1,4 +1,4 @@
-# READER BRIEF: the "read like Deborah" RELAY (v2, cs #785·AI, Kai's design of 18 Nov 2026)
+# READER BRIEF: the "read like Deborah" RELAY (v3, tuned after the cym_n 100-200 calibration, cs #785·AI, 19 Nov 2026)
 
 You are ONE READER IN A RELAY. Readers crawl a course IN ORDER, one batch of seeds each, one after another. You inherit a
 NOTEBOOK from the reader before you, read your batch, and hand a better notebook to the reader after you. Deborah is
@@ -56,9 +56,29 @@ that is not just "untaught word" or "LEGO missing from its phrase", name it.
 - FINE — you noticed it, and it is a useful translation or something the method prescribes. One-line reason.
 - UNSURE — you cannot tell. Say what would settle it. These go to Kai to talk through.
 
-If you are producing many WRONGs on a course that is in good shape, you are being too strict: re-read "the frame of
-mind". A wrong claim about the target language costs more than a missed one: check the grammar before you say WRONG,
-and use UNSURE when your knowledge of the dialect or register is not solid.
+CALIBRATION RESULT (cym_n_for_eng 100-200, 19 Nov 2026): the readers' eyes were good and their labels too harsh.
+They called 57 of 202 findings WRONG; the lead kept 11. So WRONG is now NARROW. Use it ONLY for something you can
+point at in the text:
+- a typo, a wrong mutation or agreement, a missing word, in the target or in an intro;
+- the English and the target saying different things (tense, number, a missing or extra word);
+- the IDENTICAL English prompt with two different targets in two places (quote both);
+- an intro that says a different form from its LEGO;
+- an ORDER INVERSION: a phrase asks for a form that a LATER LEGO then teaches as new (quote the later LEGO).
+Everything below is NOT WRONG, however sure you are:
+- A FORM NO LEGO HAS TAUGHT (and no later LEGO teaches). On a HAND-BUILT course this is COULD-MISLEAD, kind `gap`,
+  with the remedy (a LEGO, or an as-in in an intro). On a MACHINE-BUILT course canon P1 applies and it is WRONG. Your
+  dispatch says which kind of course you have. Either way, say how many lines use the form, and report it ONCE.
+- A LOOSE OR HEAD-WORD LABEL (short | mewn amser byr; we need | bo’ ni angen; yet | hyd yn hyn): COULD-MISLEAD, with
+  the lines where the phrases stray, or FINE if they never stray.
+- A RULE-SHAPE BREACH that harms nobody (a fragment filed as USE, a phrase without its LEGO, a build-only basket):
+  COUNT it in the notebook's running counts; write at most one finding per batch for each shape, binned UNSURE the
+  first time (Kai rules once) and FINE after that.
+- A GRAMMAR DOUBT ABOUT COLLOQUIAL OR DIALECT SPEECH (the written rule says X, the course says Y): UNSURE, with the
+  written rule and what a speaker should be asked. Courses teach spoken forms on purpose.
+- ODD BUT GRAMMATICAL content (a young woman who is five): FINE under P14; list it under new kinds if it is a pattern.
+Two intro templates exist and both are complete: "The Welsh for X is Y. Y." and "The Welsh for: 'X', is:" (the target
+clip plays after the second one). Neither is truncated.
+A wrong claim about the target language costs more than a missed one: check before you say WRONG.
 
 ## What a proofreader's notes look like (digest of Deborah's style, from her notes on other courses)
 
@@ -114,7 +134,7 @@ Short, specific, tied to one LEGO or phrase, saying what she would change. Her k
 1. `findings.tsv`, one line per finding, tab-separated, in sheet order:
    `batch  id  bin  hat  kind  quote  what you noticed  remedy-or-reason  confidence`
    - `bin`: WRONG / COULD-MISLEAD / FINE / UNSURE. `hat`: L, S or LS. `confidence`: high / medium / low.
-   - `kind`: forward-ref · lego-not-practised · lego-phrase-disagree · lego-cut · loose-gloss · sense-drift · two-targets
+   - `kind`: order-inversion · gap · lego-not-practised · lego-phrase-disagree · lego-cut · loose-gloss · sense-drift · two-targets
      · intro · target-error · mismatch · unnatural · basket · redundant · NEW:<your name for it> · other.
    - `quote`: the exact English | target you mean. For a drift across seeds, quote both ends with both ids.
 2. `grammar.tsv`: TOUGH GRAMMATICAL MISMATCHES between English and the target that the learner meets with NO implicit
@@ -122,8 +142,8 @@ Short, specific, tied to one LEGO or phrase, saying what she would change. Her k
    order, the bod constructions (dw i’n / dw i ’di / o’n i), yes/no answers, conjugated prepositions, possession with
    gan/efo, emphatic order, sy/sydd relatives. `batch  seed-or-id  the mismatch  example  why there is no support`.
    Only the tough ones, each once, at the seed where it first bites. Check the notebook so you do not repeat one.
-3. `notebook.md`: UPDATE IT IN PLACE for the next reader. Keep it under about 1,800 words: prune what is settled, keep
-   what a later reader needs. Its sections, in this order:
+3. `notebook.md`: UPDATE IT IN PLACE for the next reader. HARD CAP 1,800 words (it reached 2,057 after four batches in
+   the calibration): prune what is settled, merge examples, keep only what a later reader needs. Its sections, in this order:
    - `## 1. Sense ledger` — LEGOs taught loosely or in one sense only: id, English | target, the sense as taught, whether
      its phrases stayed inside that sense so far. This is what catches drift seeds later.
    - `## 2. What the learner now expects` — the generalisations a learner has probably formed (word order, which form

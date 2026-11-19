@@ -11,6 +11,8 @@ Then read, in this order:
   4. {DIR}/vocab-{VOCAB}.txt — every LEGO in course order; grep it to see what was taught earlier and how it was glossed. Do not read past your own batch in it except to check a LATER-LEGO hint.
 Do not read the other batch sheets. You may read earlier lines of {DIR}/findings.tsv and grammar.tsv to avoid repeating a point.
 
+COURSE KIND: {COURSE_KIND} (hand-built or machine-built: the brief bins a never-taught form differently for each).
+
 HARD LIMITS: read-only text read. No database access of any kind (reads included), no Popty API calls, no audio, no renders, no tests, no typecheck. Do not open Basecamp and do not search for earlier review notes on this course. You do not need course-methodology-canon.md itself (385k characters): the digest in the brief is enough; if you truly need one rule in full, grep that single rule id in it.
 
 Use they/them for anyone whose pronouns you have not been told. Scratch files go in $CS_SCRATCH, never /tmp.
