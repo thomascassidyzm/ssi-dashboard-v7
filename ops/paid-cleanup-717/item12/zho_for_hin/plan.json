@@ -1,0 +1,4977 @@
+{
+ "course": "zho_for_hin",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:09.142Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 5,
+   "id": "S0005L03U06",
+   "lego": "S0005L03",
+   "known": "मैं किसी और के साथ बोलने का अभ्यास करने वाला हूँ।",
+   "target": "我要和别人练习说。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0005L03U06",
+      "seed_number": 5,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "मैं किसी और के साथ बोलने का अभ्यास करने वाला हूँ।",
+      "target_text": "我要和别人练习说。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 5,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0005L03U06",
+     "slot": "known",
+     "audio_id": "22363e43-08cb-4a65-b3ad-46b0bd5e19e2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0005L03U06",
+     "slot": "target1",
+     "audio_id": "e9789f1f-e291-4ed9-be84-89c49d06fbe7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0005L03U06",
+     "slot": "target2",
+     "audio_id": "ab06237e-3da9-4e34-8038-688dd60b0e2f"
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "id": "S0008L03U06",
+   "lego": "S0008L03",
+   "known": "मैं अपना मतलब समझाने की कोशिश करने वाला हूँ।",
+   "target": "我要试试解释我的意思。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0008L03U06",
+      "seed_number": 8,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "मैं अपना मतलब समझाने की कोशिश करने वाला हूँ।",
+      "target_text": "我要试试解释我的意思。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 8,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0008L03U06",
+     "slot": "known",
+     "audio_id": "0be6fdf3-3fc2-4658-8e4b-36d97a6c97c5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0008L03U06",
+     "slot": "target1",
+     "audio_id": "f333d05d-1c72-4c65-b86f-d444ec6581bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0008L03U06",
+     "slot": "target2",
+     "audio_id": "ab74eda4-31d2-4e70-a23a-b3273051d711"
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "id": "S0012L03U06",
+   "lego": "S0012L03",
+   "known": "मैं अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होने वाला है।",
+   "target": "我不想猜明天会发生什么。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0012L03U06",
+      "seed_number": 12,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "मैं अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होने वाला है।",
+      "target_text": "我不想猜明天会发生什么。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 12,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0012L03U06",
+     "slot": "known",
+     "audio_id": "a0a3d670-467b-4f64-93d6-2401b1f97224"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0012L03U06",
+     "slot": "target1",
+     "audio_id": "73bdbf6a-d49d-4a3d-b989-35a75ff9b6db"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0012L03U06",
+     "slot": "target2",
+     "audio_id": "1c19a654-bfd6-4209-a4de-124e1c327fde"
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "id": "S0015L02U06",
+   "lego": "S0015L02",
+   "known": "और मैं चाहता हूँ कि आप कल मेरे साथ चीनी बोलें।",
+   "target": "我想让你明天跟我说中文。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0015L02U06",
+      "seed_number": 15,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "और मैं चाहता हूँ कि आप कल मेरे साथ चीनी बोलें।",
+      "target_text": "我想让你明天跟我说中文。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 15,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0015L02U06",
+     "slot": "known",
+     "audio_id": "d1d38951-e6bd-4796-86f3-d6b3931905d8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0015L02U06",
+     "slot": "target1",
+     "audio_id": "92d4a335-6ed4-4c15-85f8-1e176cc2a542"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0015L02U06",
+     "slot": "target2",
+     "audio_id": "37183368-ae06-463a-a0f0-c0fb7745d5b6"
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "id": "S0016L04U06",
+   "lego": "S0016L04",
+   "known": "वह बाद में सबके साथ वापस आना चाहता है।",
+   "target": "他想过一会儿跟大家一起回来。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0016L04U06",
+      "seed_number": 16,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "वह बाद में सबके साथ वापस आना चाहता है।",
+      "target_text": "他想过一会儿跟大家一起回来。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 16,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0016L04U06",
+     "slot": "known",
+     "audio_id": "5a9c7d9f-939a-46cc-9c7a-25b0e332037c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0016L04U06",
+     "slot": "target1",
+     "audio_id": "86553bbb-32c4-44e2-aab9-e2d62302467c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0016L04U06",
+     "slot": "target2",
+     "audio_id": "9c1501b0-f133-458a-8bb2-d126f30b5d66"
+    }
+   ]
+  },
+  {
+   "seed": 63,
+   "id": "S0063L02U06",
+   "lego": "S0063L02",
+   "known": "क्या आपको सच में मेरी मदद करने में कोई दिक्कत नहीं है?",
+   "target": "你真的不介意帮我吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0063L02U06",
+      "seed_number": 63,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "क्या आपको सच में मेरी मदद करने में कोई दिक्कत नहीं है?",
+      "target_text": "你真的不介意帮我吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 63,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0063L02U06",
+     "slot": "known",
+     "audio_id": "29dc6905-41f9-4c31-a741-16e44f54fa4e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0063L02U06",
+     "slot": "target1",
+     "audio_id": "1c681578-c66c-4126-b08f-b878bb1d752e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0063L02U06",
+     "slot": "target2",
+     "audio_id": "040f8957-80f8-4238-9a48-8083f78dda7c"
+    }
+   ]
+  },
+  {
+   "seed": 97,
+   "id": "S0097L01U08",
+   "lego": "S0097L01",
+   "known": "हाँ, आप जब चाहें मैं जाने के लिए तैयार हूँ।",
+   "target": "好的，你什么时候想走我就准备好了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0097L01U08",
+      "seed_number": 97,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "हाँ, आप जब चाहें मैं जाने के लिए तैयार हूँ।",
+      "target_text": "好的，你什么时候想走我就准备好了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 97,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0097L01U08",
+     "slot": "known",
+     "audio_id": "4a4797a5-b8bd-449e-9a3a-63a46043cad4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0097L01U08",
+     "slot": "target1",
+     "audio_id": "fe881a6a-dce8-4905-940e-4c50b8ec75bc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0097L01U08",
+     "slot": "target2",
+     "audio_id": "8ebc9bb9-94b3-4213-a2bb-5e6c6fb0e7fe"
+    }
+   ]
+  },
+  {
+   "seed": 101,
+   "id": "S0101L03U08",
+   "lego": "S0101L03",
+   "known": "मुझे इस भाषा के बारे में और जानना अच्छा लग रहा है।",
+   "target": "我喜欢进一步了解这门语言。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0101L03U08",
+      "seed_number": 101,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "मुझे इस भाषा के बारे में और जानना अच्छा लग रहा है।",
+      "target_text": "我喜欢进一步了解这门语言。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 101,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0101L03U08",
+     "slot": "known",
+     "audio_id": "75bec34d-8099-49de-9bb1-f3031b773266"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0101L03U08",
+     "slot": "target1",
+     "audio_id": "1aac2558-079b-4561-adf2-76ed99ed24a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0101L03U08",
+     "slot": "target2",
+     "audio_id": "f990aabe-be7a-49de-b1f9-44b3e9f0f094"
+    }
+   ]
+  },
+  {
+   "seed": 119,
+   "id": "S0119L02U08",
+   "lego": "S0119L02",
+   "known": "आपके जाने से पहले क्या मैं आपसे कुछ पूछ सकता हूँ?",
+   "target": "在你离开之前我可以问你一件事吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0119L02U08",
+      "seed_number": 119,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "आपके जाने से पहले क्या मैं आपसे कुछ पूछ सकता हूँ?",
+      "target_text": "在你离开之前我可以问你一件事吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 119,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0119L02U08",
+     "slot": "known",
+     "audio_id": "9999e998-3de0-4096-a0bf-ae079e94c35b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0119L02U08",
+     "slot": "target1",
+     "audio_id": "557f71ff-883a-4d00-ac36-6b5a8e1f6189"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0119L02U08",
+     "slot": "target2",
+     "audio_id": "3e844f06-34e5-4394-81e9-6f547fe1bf00"
+    }
+   ]
+  },
+  {
+   "seed": 146,
+   "id": "S0146L04U06",
+   "lego": "S0146L04",
+   "known": "जब से हमने इसे ठीक करने की कोशिश की, तब से कुछ भी काम नहीं कर रहा लगता।",
+   "target": "自从我们试图修好以后，什么都好像不管用。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0146L04U06",
+      "seed_number": 146,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "जब से हमने इसे ठीक करने की कोशिश की, तब से कुछ भी काम नहीं कर रहा लगता।",
+      "target_text": "自从我们试图修好以后，什么都好像不管用。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 146,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 18,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0146L04U06",
+     "slot": "known",
+     "audio_id": "c9d7c8dd-6933-4e8e-8c73-506ceaf91b94"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0146L04U06",
+     "slot": "target1",
+     "audio_id": "4b3c5cd4-fa4d-400a-83e0-28d506cc67c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0146L04U06",
+     "slot": "target2",
+     "audio_id": "f3303bdc-935f-43cf-a8cc-6dd421a7e608"
+    }
+   ]
+  },
+  {
+   "seed": 147,
+   "id": "S0147L03U06",
+   "lego": "S0147L03",
+   "known": "जब उसने मुझे घबराया हुआ देखा तो वह बहुत मेहरबान थी।",
+   "target": "她看到我紧张的时候，对我很好。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0147L03U06",
+      "seed_number": 147,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "जब उसने मुझे घबराया हुआ देखा तो वह बहुत मेहरबान थी।",
+      "target_text": "她看到我紧张的时候，对我很好。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 147,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0147L03U06",
+     "slot": "known",
+     "audio_id": "f87016b9-420b-4dde-a623-deed06803d10"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0147L03U06",
+     "slot": "target1",
+     "audio_id": "a5b139d5-1f5a-4e66-9581-b8cfc5d06fa6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0147L03U06",
+     "slot": "target2",
+     "audio_id": "a3a7b23c-597d-4c2b-b7a2-486959dc3ab8"
+    }
+   ]
+  },
+  {
+   "seed": 148,
+   "id": "S0148L01U06",
+   "lego": "S0148L01",
+   "known": "जब मैं जवाब नहीं दे पाया तो उसमें ज़्यादा सब्र नहीं था।",
+   "target": "我回答不上来的时候，他不太有耐心。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0148L01U06",
+      "seed_number": 148,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "जब मैं जवाब नहीं दे पाया तो उसमें ज़्यादा सब्र नहीं था।",
+      "target_text": "我回答不上来的时候，他不太有耐心。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 148,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 12,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0148L01U06",
+     "slot": "known",
+     "audio_id": "f606c375-dd10-4fbc-a5dd-d98794586a3d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0148L01U06",
+     "slot": "target1",
+     "audio_id": "219e4fc3-2271-4d0a-ab7c-989ac30df69d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0148L01U06",
+     "slot": "target2",
+     "audio_id": "cd1158cf-8e52-419d-bd80-9e9d8d5c79cc"
+    }
+   ]
+  },
+  {
+   "seed": 149,
+   "id": "S0149L03U06",
+   "lego": "S0149L03",
+   "known": "यह ज़्यादा मुश्किल नहीं है, इसलिए मुझे उम्मीद है कि आप जल्दी ख़त्म कर लेंगे।",
+   "target": "这不太难，所以我希望你快点做完。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0149L03U06",
+      "seed_number": 149,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "यह ज़्यादा मुश्किल नहीं है, इसलिए मुझे उम्मीद है कि आप जल्दी ख़त्म कर लेंगे।",
+      "target_text": "这不太难，所以我希望你快点做完。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 149,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 15,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0149L03U06",
+     "slot": "known",
+     "audio_id": "77e7cb20-ee4f-4dcf-8319-6ab8186cf62f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0149L03U06",
+     "slot": "target1",
+     "audio_id": "470119c4-34e4-465f-8d2f-1a5ce0969dbd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0149L03U06",
+     "slot": "target2",
+     "audio_id": "ac04e18a-8c7d-4460-8161-59c4bc05fa43"
+    }
+   ]
+  },
+  {
+   "seed": 184,
+   "id": "S0184L03U06",
+   "lego": "S0184L03",
+   "known": "हाँ, मैंने उन्हें कुछ देर पहले दफ़्तर में देखा था।",
+   "target": "有，我刚才在办公室看到它们了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0184L03U06",
+      "seed_number": 184,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "हाँ, मैंने उन्हें कुछ देर पहले दफ़्तर में देखा था।",
+      "target_text": "有，我刚才在办公室看到它们了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 184,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0184L03U06",
+     "slot": "known",
+     "audio_id": "56ebe536-7f77-4dc2-96ae-c4f7b3851f4f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0184L03U06",
+     "slot": "target1",
+     "audio_id": "0a84fba0-b9a4-4d08-ab9d-ba423e1e54aa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0184L03U06",
+     "slot": "target2",
+     "audio_id": "3b465c76-03f5-4be0-8de3-6ddcc3774120"
+    }
+   ]
+  },
+  {
+   "seed": 187,
+   "id": "S0187L02U06",
+   "lego": "S0187L02",
+   "known": "मैं अब तक ख़ुश हूँ।",
+   "target": "我到目前为止很开心。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0187L02U06",
+      "seed_number": 187,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "मैं अब तक ख़ुश हूँ।",
+      "target_text": "我到目前为止很开心。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 187,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0187L02U06",
+     "slot": "known",
+     "audio_id": "3cd85d90-a0cf-4547-a63f-26473cd87300"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0187L02U06",
+     "slot": "target1",
+     "audio_id": "3e20b4da-8e80-45e5-8fe6-016a08d70194"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0187L02U06",
+     "slot": "target2",
+     "audio_id": "ce7df2cf-6d23-4cc8-b7aa-3652b7e25d1c"
+    }
+   ]
+  },
+  {
+   "seed": 190,
+   "id": "S0190L02U06",
+   "lego": "S0190L02",
+   "known": "क्या आपको बुरा लगेगा अगर मैं आपसे कुछ सवाल पूछूँ?",
+   "target": "你介意我问你几个问题吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0190L02U06",
+      "seed_number": 190,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "क्या आपको बुरा लगेगा अगर मैं आपसे कुछ सवाल पूछूँ?",
+      "target_text": "你介意我问你几个问题吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 190,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0190L02U06",
+     "slot": "known",
+     "audio_id": "fbd3154f-ec81-41a3-84c4-c20718480b79"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0190L02U06",
+     "slot": "target1",
+     "audio_id": "b5ef6f7a-09a3-4982-9df2-976bcd6b782c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0190L02U06",
+     "slot": "target2",
+     "audio_id": "6c88a844-7e33-47e2-b5e7-73eb7bccc6ae"
+    }
+   ]
+  },
+  {
+   "seed": 195,
+   "id": "S0195L02U06",
+   "lego": "S0195L02",
+   "known": "मैं वह पैसा ढूँढ रहा हूँ जो मैंने मेज़ पर छोड़ा था।",
+   "target": "我在找我放在桌上的钱。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0195L02U06",
+      "seed_number": 195,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "मैं वह पैसा ढूँढ रहा हूँ जो मैंने मेज़ पर छोड़ा था।",
+      "target_text": "我在找我放在桌上的钱。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 195,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0195L02U06",
+     "slot": "known",
+     "audio_id": "56c83c63-5012-4a52-95a5-10a0f2588829"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0195L02U06",
+     "slot": "target1",
+     "audio_id": "6c16cb5d-2984-4041-a595-524bf2e96663"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0195L02U06",
+     "slot": "target2",
+     "audio_id": "1505ba46-e80e-4708-b504-0d538314cbee"
+    }
+   ]
+  },
+  {
+   "seed": 196,
+   "id": "S0196L03U06",
+   "lego": "S0196L03",
+   "known": "क्या आपने सबसे नया विचार सुना है?",
+   "target": "你听说最新的想法了吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0196L03U06",
+      "seed_number": 196,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "क्या आपने सबसे नया विचार सुना है?",
+      "target_text": "你听说最新的想法了吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 196,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0196L03U06",
+     "slot": "known",
+     "audio_id": "f1ec0f9e-0b27-4537-aa50-fc7c012e6b1a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0196L03U06",
+     "slot": "target1",
+     "audio_id": "0292b79c-e26a-4022-ab2a-dabfa7a3f350"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0196L03U06",
+     "slot": "target2",
+     "audio_id": "2299d31e-1054-4a0b-b247-130546cb5f9c"
+    }
+   ]
+  },
+  {
+   "seed": 198,
+   "id": "S0198L01U06",
+   "lego": "S0198L01",
+   "known": "मेरी बेटी काउंसिल के लिए काम करती है।",
+   "target": "我女儿在政府部门工作。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0198L01U06",
+      "seed_number": 198,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "मेरी बेटी काउंसिल के लिए काम करती है।",
+      "target_text": "我女儿在政府部门工作。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 198,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0198L01U06",
+     "slot": "known",
+     "audio_id": "1b84acd6-277b-4611-ab90-bcdf55cd3ad9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0198L01U06",
+     "slot": "target1",
+     "audio_id": "63675079-0b90-4d11-b236-dd0eed1ab939"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0198L01U06",
+     "slot": "target2",
+     "audio_id": "23bced16-f84f-49fc-a406-bda0232a2ac8"
+    }
+   ]
+  },
+  {
+   "seed": 200,
+   "id": "S0200L03U06",
+   "lego": "S0200L03",
+   "known": "वे कहते हैं कि वे यह सुनिश्चित करना चाहते हैं कि हम सब कुछ समय पर ख़त्म कर लें।",
+   "target": "他们说想确保我们按时完成所有事情。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0200L03U06",
+      "seed_number": 200,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "वे कहते हैं कि वे यह सुनिश्चित करना चाहते हैं कि हम सब कुछ समय पर ख़त्म कर लें।",
+      "target_text": "他们说想确保我们按时完成所有事情。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 200,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 19,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0200L03U06",
+     "slot": "known",
+     "audio_id": "b1a99fa8-209e-4b36-8685-cc3038f6e90f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0200L03U06",
+     "slot": "target1",
+     "audio_id": "3a63a72b-ccd9-4339-af2f-5981c4c55a21"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0200L03U06",
+     "slot": "target2",
+     "audio_id": "184169a6-8485-4041-afd2-c57f3bd1bbad"
+    }
+   ]
+  },
+  {
+   "seed": 228,
+   "id": "S0228L01U06",
+   "lego": "S0228L01",
+   "known": "उस आदमी ने अभी-अभी बोलने का अभ्यास करना शुरू किया है।",
+   "target": "那个男人刚开始练习说话。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0228L01U06",
+      "seed_number": 228,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "उस आदमी ने अभी-अभी बोलने का अभ्यास करना शुरू किया है।",
+      "target_text": "那个男人刚开始练习说话。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 228,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0228L01U06",
+     "slot": "known",
+     "audio_id": "197ea5a9-799e-434a-8646-999388afa06f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0228L01U06",
+     "slot": "target1",
+     "audio_id": "8bab7999-25fd-4662-be30-d781b68f5fa5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0228L01U06",
+     "slot": "target2",
+     "audio_id": "3b7bcf8a-6249-4bdc-aea8-cc349d6a3b83"
+    }
+   ]
+  },
+  {
+   "seed": 230,
+   "id": "S0230L02U06",
+   "lego": "S0230L02",
+   "known": "मैं एक नौजवान को जानता हूँ जो आपके साथ काम करना चाहता है।",
+   "target": "我认识一个年轻男人，他想跟你一起工作。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0230L02U06",
+      "seed_number": 230,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "मैं एक नौजवान को जानता हूँ जो आपके साथ काम करना चाहता है।",
+      "target_text": "我认识一个年轻男人，他想跟你一起工作。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 230,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 13,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0230L02U06",
+     "slot": "known",
+     "audio_id": "2dcf0352-bc3f-4bcd-b0a7-2297ed43e609"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0230L02U06",
+     "slot": "target1",
+     "audio_id": "cf67a38f-1acc-4b83-b5e8-69a1ebfb34ec"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0230L02U06",
+     "slot": "target2",
+     "audio_id": "b0ba447e-31cf-4d47-a99a-8f3474096b8a"
+    }
+   ]
+  },
+  {
+   "seed": 246,
+   "id": "S0246L01U06",
+   "lego": "S0246L01",
+   "known": "मैं चाहता था कि वह आपकी मदद करे लेकिन वह बहुत व्यस्त थी।",
+   "target": "我想让她帮你，但她太忙了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0246L01U06",
+      "seed_number": 246,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "मैं चाहता था कि वह आपकी मदद करे लेकिन वह बहुत व्यस्त थी।",
+      "target_text": "我想让她帮你，但她太忙了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 246,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 13,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0246L01U06",
+     "slot": "known",
+     "audio_id": "1553c8c7-e46f-42ac-8e84-40f7811184d8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0246L01U06",
+     "slot": "target1",
+     "audio_id": "8e27b4f9-8269-4a94-b946-9f9a6052b3e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0246L01U06",
+     "slot": "target2",
+     "audio_id": "b481df2a-72b5-4314-bedb-af1476955372"
+    }
+   ]
+  },
+  {
+   "seed": 248,
+   "id": "S0248L02U06",
+   "lego": "S0248L02",
+   "known": "मुझे लगा कि वह फ़िल्म पूरी तरह बकवास थी और मुझे अपने पैसे वापस चाहिए।",
+   "target": "我觉得那部电影完全是垃圾，我想要退款。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0248L02U06",
+      "seed_number": 248,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "मुझे लगा कि वह फ़िल्म पूरी तरह बकवास थी और मुझे अपने पैसे वापस चाहिए।",
+      "target_text": "我觉得那部电影完全是垃圾，我想要退款。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 248,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 15,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0248L02U06",
+     "slot": "known",
+     "audio_id": "b951f602-daa6-4d5e-a3dc-391861a3842f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0248L02U06",
+     "slot": "target1",
+     "audio_id": "490182a6-41f8-4d7d-9107-000d0ffe3e89"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0248L02U06",
+     "slot": "target2",
+     "audio_id": "3766bd99-51a7-4f70-afcd-3bbdc3f21ad8"
+    }
+   ]
+  },
+  {
+   "seed": 250,
+   "id": "S0250L02U06",
+   "lego": "S0250L02",
+   "known": "जवाब देने से पहले क्या आप मुझे कुछ और बता सकते हैं?",
+   "target": "在我回答之前，你能告诉我另一件事吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0250L02U06",
+      "seed_number": 250,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "जवाब देने से पहले क्या आप मुझे कुछ और बता सकते हैं?",
+      "target_text": "在我回答之前，你能告诉我另一件事吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 250,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0250L02U06",
+     "slot": "known",
+     "audio_id": "b2f5319f-fede-43a2-abaa-4520fbb5fda0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0250L02U06",
+     "slot": "target1",
+     "audio_id": "6e5bdd38-6b15-423a-b048-e4cf8f8c33a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0250L02U06",
+     "slot": "target2",
+     "audio_id": "162cb083-6e74-4a44-a483-867b86324449"
+    }
+   ]
+  },
+  {
+   "seed": 251,
+   "id": "S0251L02U06",
+   "lego": "S0251L02",
+   "known": "मैं हमारे ख़त्म करने के बाद तक पता नहीं लगाना चाहता।",
+   "target": "我不想在我们做完之后才知道。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0251L02U06",
+      "seed_number": 251,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "मैं हमारे ख़त्म करने के बाद तक पता नहीं लगाना चाहता।",
+      "target_text": "我不想在我们做完之后才知道。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 251,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0251L02U06",
+     "slot": "known",
+     "audio_id": "5770e7e1-5b63-440f-99f0-4416327f21b4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0251L02U06",
+     "slot": "target1",
+     "audio_id": "0eba2bba-fb7c-480d-bc7f-e671c0919b26"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0251L02U06",
+     "slot": "target2",
+     "audio_id": "dca5c163-c0d5-44ba-82f8-5035ac4ef168"
+    }
+   ]
+  },
+  {
+   "seed": 260,
+   "id": "S0260L01U06",
+   "lego": "S0260L01",
+   "known": "मुझे ज़रा भी अंदाज़ा नहीं है।",
+   "target": "我完全不知道。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0260L01U06",
+      "seed_number": 260,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "मुझे ज़रा भी अंदाज़ा नहीं है।",
+      "target_text": "我完全不知道。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 260,
+       "canon": "P26"
+      },
+      "word_count": 7,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0260L01U06",
+     "slot": "known",
+     "audio_id": "f0a95f2f-614a-4d8b-adf4-044f1cdd6b3a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0260L01U06",
+     "slot": "target1",
+     "audio_id": "7c487ec1-1194-4ff8-946e-4ff3c826214b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0260L01U06",
+     "slot": "target2",
+     "audio_id": "172878ae-7d1d-4ea9-afcc-2938a131eb20"
+    }
+   ]
+  },
+  {
+   "seed": 261,
+   "id": "S0261L02U06",
+   "lego": "S0261L02",
+   "known": "मुझे लगता है कि यह कुछ ज़रूरी हो सकता है।",
+   "target": "我觉得那可能是重要的事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0261L02U06",
+      "seed_number": 261,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "मुझे लगता है कि यह कुछ ज़रूरी हो सकता है।",
+      "target_text": "我觉得那可能是重要的事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 261,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0261L02U06",
+     "slot": "known",
+     "audio_id": "be5ee4fe-50cf-4cb2-848f-c9d0e2bbec36"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0261L02U06",
+     "slot": "target1",
+     "audio_id": "20aa4b14-a3be-4da6-9ebd-93b05e3b92d2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0261L02U06",
+     "slot": "target2",
+     "audio_id": "3a6feafc-ad6e-47be-ae15-2a80efb856f5"
+    }
+   ]
+  },
+  {
+   "seed": 267,
+   "id": "S0267L03U06",
+   "lego": "S0267L03",
+   "known": "क्या आपको अपने दोस्त की कोई ख़बर मिली?",
+   "target": "你收到你朋友的消息了吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0267L03U06",
+      "seed_number": 267,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "क्या आपको अपने दोस्त की कोई ख़बर मिली?",
+      "target_text": "你收到你朋友的消息了吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 267,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0267L03U06",
+     "slot": "known",
+     "audio_id": "a1408cef-aa53-471b-88aa-02799811ef87"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0267L03U06",
+     "slot": "target1",
+     "audio_id": "dc71b429-0a29-469f-a872-5b1ecca06628"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0267L03U06",
+     "slot": "target2",
+     "audio_id": "ed51ed46-59dc-41f5-8980-d4eb75bbff0c"
+    }
+   ]
+  },
+  {
+   "seed": 268,
+   "id": "S0268L03U06",
+   "lego": "S0268L03",
+   "known": "हाँ, उसने मुझे पिछले हफ़्ते दो ईमेल भेजे।",
+   "target": "是的，她上星期发给我两封电子邮件。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0268L03U06",
+      "seed_number": 268,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "हाँ, उसने मुझे पिछले हफ़्ते दो ईमेल भेजे।",
+      "target_text": "是的，她上星期发给我两封电子邮件。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 268,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0268L03U06",
+     "slot": "known",
+     "audio_id": "974e00c9-361d-404f-8837-147f1a856011"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0268L03U06",
+     "slot": "target1",
+     "audio_id": "efc0ef44-c285-4e43-aba3-42c0ec3c3343"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0268L03U06",
+     "slot": "target2",
+     "audio_id": "64ceede0-0c19-4502-818f-fd2dcbbb5ad5"
+    }
+   ]
+  },
+  {
+   "seed": 281,
+   "id": "S0281L01U06",
+   "lego": "S0281L01",
+   "known": "क्या आपको बुरा लगेगा अगर आपके शुरू करने से पहले मैं अपनी कॉफ़ी ख़त्म कर लूँ?",
+   "target": "你介意我喝完咖啡再开始吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0281L01U06",
+      "seed_number": 281,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "क्या आपको बुरा लगेगा अगर आपके शुरू करने से पहले मैं अपनी कॉफ़ी ख़त्म कर लूँ?",
+      "target_text": "你介意我喝完咖啡再开始吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 16,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0281L01U06",
+     "slot": "known",
+     "audio_id": "c6fde850-41b8-495e-85e2-78f7418cec56"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0281L01U06",
+     "slot": "target1",
+     "audio_id": "fc679086-389f-4f28-a3f8-77f1fd0742f3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0281L01U06",
+     "slot": "target2",
+     "audio_id": "67b536bd-c83d-4abb-a6b7-727a6e72c97d"
+    }
+   ]
+  },
+  {
+   "seed": 302,
+   "id": "S0302L01U06",
+   "lego": "S0302L01",
+   "known": "उसने कहा कि वह शहर में नहीं रहना चाहती।",
+   "target": "她说她不想住在城市里。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0302L01U06",
+      "seed_number": 302,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "उसने कहा कि वह शहर में नहीं रहना चाहती।",
+      "target_text": "她说她不想住在城市里。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 302,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0302L01U06",
+     "slot": "known",
+     "audio_id": "3d548ac6-ebfd-4ca6-972b-5d0e6a8dbe52"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0302L01U06",
+     "slot": "target1",
+     "audio_id": "d21ddaf3-bcf5-4909-9766-3eb1f36a3603"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0302L01U06",
+     "slot": "target2",
+     "audio_id": "ed0d5434-d347-490b-9228-bd67f1443d25"
+    }
+   ]
+  },
+  {
+   "seed": 311,
+   "id": "S0311L02U06",
+   "lego": "S0311L02",
+   "known": "वह उन तीन सबसे ज़रूरी तथ्यों पर यकीन नहीं कर पा रहा था।",
+   "target": "他不相信那三个最重要的事实。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0311L02U06",
+      "seed_number": 311,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "वह उन तीन सबसे ज़रूरी तथ्यों पर यकीन नहीं कर पा रहा था।",
+      "target_text": "他不相信那三个最重要的事实。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 311,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 13,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0311L02U06",
+     "slot": "known",
+     "audio_id": "831f1467-9193-4914-9b96-977d4025dc8a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0311L02U06",
+     "slot": "target1",
+     "audio_id": "d494e656-4ced-4a73-acb7-5b91f8fd3a71"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0311L02U06",
+     "slot": "target2",
+     "audio_id": "01f94145-711c-46db-80ba-d187bae60761"
+    }
+   ]
+  },
+  {
+   "seed": 312,
+   "id": "S0312L01U06",
+   "lego": "S0312L01",
+   "known": "उसने कहा कि वह कल रात दूसरा कमरा इस्तेमाल कर सकती है।",
+   "target": "她说她明天晚上可以用另一个房间。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0312L01U06",
+      "seed_number": 312,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "उसने कहा कि वह कल रात दूसरा कमरा इस्तेमाल कर सकती है।",
+      "target_text": "她说她明天晚上可以用另一个房间。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 312,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 12,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0312L01U06",
+     "slot": "known",
+     "audio_id": "de12c996-ca56-40ac-a510-6110043e31e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0312L01U06",
+     "slot": "target1",
+     "audio_id": "939d9db0-a087-49e8-9a94-4ed704bf524a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0312L01U06",
+     "slot": "target2",
+     "audio_id": "ef6257ed-60f6-4a98-9f80-fb3ed651eb20"
+    }
+   ]
+  },
+  {
+   "seed": 317,
+   "id": "S0317L03U06",
+   "lego": "S0317L03",
+   "known": "हाँ, मुझे लगता है कि अगर वह चाहे तो ला सकती है।",
+   "target": "是的，我觉得她愿意的话可以。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0317L03U06",
+      "seed_number": 317,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "हाँ, मुझे लगता है कि अगर वह चाहे तो ला सकती है।",
+      "target_text": "是的，我觉得她愿意的话可以。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 317,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0317L03U06",
+     "slot": "known",
+     "audio_id": "fb5d536e-d511-4367-b4d2-9c36d268c992"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0317L03U06",
+     "slot": "target1",
+     "audio_id": "ddc309d9-977a-45f4-a4f2-4f00716cdffa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0317L03U06",
+     "slot": "target2",
+     "audio_id": "06b3ffd9-2260-41e9-ac21-5d9a1fe18a05"
+    }
+   ]
+  },
+  {
+   "seed": 355,
+   "id": "S0355L03U06",
+   "lego": "S0355L03",
+   "known": "क्या उसे उस औरत से बात करनी थी जिसे आप जानते हैं?",
+   "target": "她需要跟你认识的那个女人谈吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0355L03U06",
+      "seed_number": 355,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "क्या उसे उस औरत से बात करनी थी जिसे आप जानते हैं?",
+      "target_text": "她需要跟你认识的那个女人谈吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 355,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 12,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0355L03U06",
+     "slot": "known",
+     "audio_id": "adee8461-52af-4f47-8645-357b3e084bb7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0355L03U06",
+     "slot": "target1",
+     "audio_id": "77bf2c60-5ae4-40cb-991c-a2f49ab5254d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0355L03U06",
+     "slot": "target2",
+     "audio_id": "64e7969e-288c-475a-be42-21c1eab2f3c6"
+    }
+   ]
+  },
+  {
+   "seed": 384,
+   "id": "S0384L02U06",
+   "lego": "S0384L02",
+   "known": "उसने अभी जो कहा उससे मैं सहमत नहीं हो सका।",
+   "target": "我不同意他刚才说的话。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0384L02U06",
+      "seed_number": 384,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "उसने अभी जो कहा उससे मैं सहमत नहीं हो सका।",
+      "target_text": "我不同意他刚才说的话。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 384,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0384L02U06",
+     "slot": "known",
+     "audio_id": "ca7ed6d8-ca63-49e7-b32d-7bdf1780ea02"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0384L02U06",
+     "slot": "target1",
+     "audio_id": "4b10f521-821a-4d88-b156-41926748b3dc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0384L02U06",
+     "slot": "target2",
+     "audio_id": "e9114144-ecaa-4dfe-8719-4e3b178ef134"
+    }
+   ]
+  },
+  {
+   "seed": 387,
+   "id": "S0387L01U06",
+   "lego": "S0387L01",
+   "known": "नहीं, मुझे नहीं लगा कि वह सही थी।",
+   "target": "不，我不觉得她说得对。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0387L01U06",
+      "seed_number": 387,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "नहीं, मुझे नहीं लगा कि वह सही थी।",
+      "target_text": "不，我不觉得她说得对。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 387,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0387L01U06",
+     "slot": "known",
+     "audio_id": "5e9d4e55-01f3-41aa-95ac-eade9144fc66"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0387L01U06",
+     "slot": "target1",
+     "audio_id": "d93c1a29-31f3-4bf0-9a16-3e8c30b24d00"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0387L01U06",
+     "slot": "target2",
+     "audio_id": "742bd231-7eb7-4bd3-a105-9f975e3f9f29"
+    }
+   ]
+  },
+  {
+   "seed": 388,
+   "id": "S0388L02U06",
+   "lego": "S0388L02",
+   "known": "वह इंसान जिसके साथ आप काम करते हैं।",
+   "target": "那个跟你一起工作的人。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0388L02U06",
+      "seed_number": 388,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "वह इंसान जिसके साथ आप काम करते हैं।",
+      "target_text": "那个跟你一起工作的人。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 388,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0388L02U06",
+     "slot": "known",
+     "audio_id": "c4724c84-f5c4-41ef-a6ba-aed872a608f7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0388L02U06",
+     "slot": "target1",
+     "audio_id": "59138b95-aff1-4571-bf88-7fbea8dc942f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0388L02U06",
+     "slot": "target2",
+     "audio_id": "0c59f037-48d3-4688-ad6a-a5ea654a2800"
+    }
+   ]
+  },
+  {
+   "seed": 390,
+   "id": "S0390L02U06",
+   "lego": "S0390L02",
+   "known": "वह जो प्रवेश द्वार के पास खड़ा है।",
+   "target": "站在入口附近的那个人。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0390L02U06",
+      "seed_number": 390,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "वह जो प्रवेश द्वार के पास खड़ा है।",
+      "target_text": "站在入口附近的那个人。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 390,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0390L02U06",
+     "slot": "known",
+     "audio_id": "7e6eab2e-6bef-4b61-8aca-ee3ca0cb8538"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0390L02U06",
+     "slot": "target1",
+     "audio_id": "d2fa2048-a5e0-43b8-9906-587749508682"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0390L02U06",
+     "slot": "target2",
+     "audio_id": "fe263be8-a397-441e-9e10-0155e48ede7e"
+    }
+   ]
+  },
+  {
+   "seed": 392,
+   "id": "S0392L01U06",
+   "lego": "S0392L01",
+   "known": "डाकघर के सामने काले बालों वाला वह बच्चा।",
+   "target": "邮局对面那个黑头发的孩子。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0392L01U06",
+      "seed_number": 392,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "डाकघर के सामने काले बालों वाला वह बच्चा।",
+      "target_text": "邮局对面那个黑头发的孩子。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 392,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0392L01U06",
+     "slot": "known",
+     "audio_id": "35e31125-2030-4e99-8089-dff93e297654"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0392L01U06",
+     "slot": "target1",
+     "audio_id": "553a3f62-a3eb-4b92-beed-834b439e6774"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0392L01U06",
+     "slot": "target2",
+     "audio_id": "f26d76c7-0fb3-4e99-a273-589daca12074"
+    }
+   ]
+  },
+  {
+   "seed": 396,
+   "id": "S0396L04U06",
+   "lego": "S0396L04",
+   "known": "हमें तब तक खड़े रहने की ज़रूरत नहीं है जब तक बाक़ी सब तैयार न हो जाएँ।",
+   "target": "我们不需要站着等到其他人都准备好。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0396L04U06",
+      "seed_number": 396,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "हमें तब तक खड़े रहने की ज़रूरत नहीं है जब तक बाक़ी सब तैयार न हो जाएँ।",
+      "target_text": "我们不需要站着等到其他人都准备好。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 396,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 17,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0396L04U06",
+     "slot": "known",
+     "audio_id": "2c0d9703-74cc-481c-bb5f-9a04e6974a5f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0396L04U06",
+     "slot": "target1",
+     "audio_id": "da2e3722-e8b5-4e78-b14c-ae2de334f53b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0396L04U06",
+     "slot": "target2",
+     "audio_id": "0b181f19-221c-4f59-b881-bfd5c47818e6"
+    }
+   ]
+  },
+  {
+   "seed": 401,
+   "id": "S0401L02U06",
+   "lego": "S0401L02",
+   "known": "नहीं, सीधे घर जाना बेहतर होगा।",
+   "target": "不，最好直接回家。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0401L02U06",
+      "seed_number": 401,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "नहीं, सीधे घर जाना बेहतर होगा।",
+      "target_text": "不，最好直接回家。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 401,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0401L02U06",
+     "slot": "known",
+     "audio_id": "e47b3697-587b-489d-bad2-6de749ed5b58"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0401L02U06",
+     "slot": "target1",
+     "audio_id": "5ff71568-5cda-41db-aebb-9ce7918929a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0401L02U06",
+     "slot": "target2",
+     "audio_id": "ee1d8b19-91ad-4096-905e-7a375a6752a3"
+    }
+   ]
+  },
+  {
+   "seed": 402,
+   "id": "S0402L03U06",
+   "lego": "S0402L03",
+   "known": "हाँ, खाने के लिए कहीं रुकना अच्छा होगा।",
+   "target": "是的，在某个地方停下来吃东西会很好。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0402L03U06",
+      "seed_number": 402,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "हाँ, खाने के लिए कहीं रुकना अच्छा होगा।",
+      "target_text": "是的，在某个地方停下来吃东西会很好。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 402,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0402L03U06",
+     "slot": "known",
+     "audio_id": "465e5420-201e-4092-84da-ba974e411d22"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0402L03U06",
+     "slot": "target1",
+     "audio_id": "35b9eb06-bd3f-4ed7-917a-4547e457f0cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0402L03U06",
+     "slot": "target2",
+     "audio_id": "23084acb-6c96-4489-8299-e07d2addb27d"
+    }
+   ]
+  },
+  {
+   "seed": 404,
+   "id": "S0404L03U06",
+   "lego": "S0404L03",
+   "known": "हमें गुरुवार से पहले ख़त्म करने की उम्मीद नहीं करनी चाहिए।",
+   "target": "我们不应该指望在星期四之前做完。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0404L03U06",
+      "seed_number": 404,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "हमें गुरुवार से पहले ख़त्म करने की उम्मीद नहीं करनी चाहिए।",
+      "target_text": "我们不应该指望在星期四之前做完。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 404,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0404L03U06",
+     "slot": "known",
+     "audio_id": "f2385108-70c2-4740-98cf-2bd185cd7e3f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0404L03U06",
+     "slot": "target1",
+     "audio_id": "e79df4eb-b920-4706-b081-b329d8b6c413"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0404L03U06",
+     "slot": "target2",
+     "audio_id": "871f681e-cc8e-4766-83ff-9535fdd3899e"
+    }
+   ]
+  },
+  {
+   "seed": 405,
+   "id": "S0405L02U06",
+   "lego": "S0405L02",
+   "known": "क्या हमें पूछना चाहिए कि हमें बुकिंग करनी है या नहीं?",
+   "target": "我们应该问一下是否需要预订吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0405L02U06",
+      "seed_number": 405,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "क्या हमें पूछना चाहिए कि हमें बुकिंग करनी है या नहीं?",
+      "target_text": "我们应该问一下是否需要预订吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 405,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0405L02U06",
+     "slot": "known",
+     "audio_id": "7514682e-afee-4605-a5cf-5261767024fb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0405L02U06",
+     "slot": "target1",
+     "audio_id": "bb7c2585-72d0-4a19-9b0c-e98ca23d0d80"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0405L02U06",
+     "slot": "target2",
+     "audio_id": "6eda6ce0-1ba4-4fca-b7f6-34d6fa725b2e"
+    }
+   ]
+  },
+  {
+   "seed": 406,
+   "id": "S0406L01U06",
+   "lego": "S0406L01",
+   "known": "नहीं, मुझे यकीन है कि सब ठीक रहेगा।",
+   "target": "不，我确定没问题的。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0406L01U06",
+      "seed_number": 406,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "नहीं, मुझे यकीन है कि सब ठीक रहेगा।",
+      "target_text": "不，我确定没问题的。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 406,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0406L01U06",
+     "slot": "known",
+     "audio_id": "158691fa-8922-4d0e-86a5-2c4b4efbab03"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0406L01U06",
+     "slot": "target1",
+     "audio_id": "bd06cc76-2e71-43ec-aa28-e2f0c1b1c92b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0406L01U06",
+     "slot": "target2",
+     "audio_id": "2227a797-3df9-4e17-93c6-f2c85e0b4158"
+    }
+   ]
+  },
+  {
+   "seed": 408,
+   "id": "S0408L03U06",
+   "lego": "S0408L03",
+   "known": "हाँ, एक ख़ुशहाल परिवार बनाने का यही सबसे अच्छा तरीका है।",
+   "target": "是的，那是建立幸福家庭的最好方法。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0408L03U06",
+      "seed_number": 408,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "हाँ, एक ख़ुशहाल परिवार बनाने का यही सबसे अच्छा तरीका है।",
+      "target_text": "是的，那是建立幸福家庭的最好方法。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 408,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0408L03U06",
+     "slot": "known",
+     "audio_id": "2d3c051b-c0d8-4ea0-9637-cbf69e041700"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0408L03U06",
+     "slot": "target1",
+     "audio_id": "c2d1dc93-c070-40e7-b4d3-def0338265ff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0408L03U06",
+     "slot": "target2",
+     "audio_id": "1ec9f35e-7e01-4032-b891-047f7811d718"
+    }
+   ]
+  },
+  {
+   "seed": 409,
+   "id": "S0409L02U06",
+   "lego": "S0409L02",
+   "known": "नहीं, हम जो भी करें उससे कोई फ़र्क़ नहीं पड़ता।",
+   "target": "不，我们做什么都没关系。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0409L02U06",
+      "seed_number": 409,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "नहीं, हम जो भी करें उससे कोई फ़र्क़ नहीं पड़ता।",
+      "target_text": "不，我们做什么都没关系。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 409,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0409L02U06",
+     "slot": "known",
+     "audio_id": "db4cb766-2ee6-4509-8e63-f9019f83b3eb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0409L02U06",
+     "slot": "target1",
+     "audio_id": "001fb117-efc5-43c7-9cdc-ab2dcb48f8bd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0409L02U06",
+     "slot": "target2",
+     "audio_id": "4cd1d8d8-9709-40fb-b3ee-596538a30d14"
+    }
+   ]
+  },
+  {
+   "seed": 411,
+   "id": "S0411L03U06",
+   "lego": "S0411L03",
+   "known": "हम आज रात चार लोगों के लिए एक मेज़ बुक करना चाहेंगे।",
+   "target": "我们想预订一张今晚四人的桌子。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0411L03U06",
+      "seed_number": 411,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "हम आज रात चार लोगों के लिए एक मेज़ बुक करना चाहेंगे।",
+      "target_text": "我们想预订一张今晚四人的桌子。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 411,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0411L03U06",
+     "slot": "known",
+     "audio_id": "49869887-45f9-4241-be8d-63ce705b9af0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0411L03U06",
+     "slot": "target1",
+     "audio_id": "55af49dd-f3bf-428f-ae14-14509a16812b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0411L03U06",
+     "slot": "target2",
+     "audio_id": "55022c58-6199-47d9-82c7-56e9e94f4fb4"
+    }
+   ]
+  },
+  {
+   "seed": 412,
+   "id": "S0412L02U06",
+   "lego": "S0412L02",
+   "known": "हम उन्हें सब कुछ जीतने नहीं दे सकते थे।",
+   "target": "我们不能让他们赢得一切。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0412L02U06",
+      "seed_number": 412,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "हम उन्हें सब कुछ जीतने नहीं दे सकते थे।",
+      "target_text": "我们不能让他们赢得一切。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 412,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0412L02U06",
+     "slot": "known",
+     "audio_id": "108df8cf-2b43-4392-bef1-378dfec3cf4a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0412L02U06",
+     "slot": "target1",
+     "audio_id": "974fda03-71a7-4b78-b5c1-91bd8e785c87"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0412L02U06",
+     "slot": "target2",
+     "audio_id": "61acc816-7e3e-4dee-8779-819e8d54f584"
+    }
+   ]
+  },
+  {
+   "seed": 421,
+   "id": "S0421L03U06",
+   "lego": "S0421L03",
+   "known": "क्योंकि वे पहले से ही जानते हैं कि वह कमज़ोर होता जा रहा है।",
+   "target": "因为他们已经知道他越来越虚弱了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0421L03U06",
+      "seed_number": 421,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "क्योंकि वे पहले से ही जानते हैं कि वह कमज़ोर होता जा रहा है।",
+      "target_text": "因为他们已经知道他越来越虚弱了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 421,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 14,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0421L03U06",
+     "slot": "known",
+     "audio_id": "246ab92a-d711-470b-b38d-075a2944ee2a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0421L03U06",
+     "slot": "target1",
+     "audio_id": "6981f4b0-4df4-4e6c-a098-33b9a2d5b8bd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0421L03U06",
+     "slot": "target2",
+     "audio_id": "f00f6b6c-9ed7-431c-abde-ee4ccca40a1f"
+    }
+   ]
+  },
+  {
+   "seed": 423,
+   "id": "S0423L04U06",
+   "lego": "S0423L04",
+   "known": "क्या उन्हें इतना ज़ाहिर सवाल पूछने की ज़रूरत है?",
+   "target": "他们需要问这么明显的问题吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0423L04U06",
+      "seed_number": 423,
+      "lego_index": 4,
+      "position": 12,
+      "known_text": "क्या उन्हें इतना ज़ाहिर सवाल पूछने की ज़रूरत है?",
+      "target_text": "他们需要问这么明显的问题吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 423,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0423L04U06",
+     "slot": "known",
+     "audio_id": "d0dabf55-578b-4dcc-9649-b4d5f16a12bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0423L04U06",
+     "slot": "target1",
+     "audio_id": "e275fce9-18f7-4017-a158-febe4cf296cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0423L04U06",
+     "slot": "target2",
+     "audio_id": "f964352e-9cd1-488d-8186-f66794046d41"
+    }
+   ]
+  },
+  {
+   "seed": 424,
+   "id": "S0424L02U06",
+   "lego": "S0424L02",
+   "known": "नहीं, वे सबका समय बर्बाद कर रहे हैं।",
+   "target": "不，他们在浪费大家的时间。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0424L02U06",
+      "seed_number": 424,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "नहीं, वे सबका समय बर्बाद कर रहे हैं।",
+      "target_text": "不，他们在浪费大家的时间。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 424,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0424L02U06",
+     "slot": "known",
+     "audio_id": "f2b6d9a9-6a8a-4f75-9937-5fbd38d90b2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0424L02U06",
+     "slot": "target1",
+     "audio_id": "7c214b81-6706-4554-b043-dc93b890ba40"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0424L02U06",
+     "slot": "target2",
+     "audio_id": "c87cd418-8604-4439-a45e-1457e240d60b"
+    }
+   ]
+  },
+  {
+   "seed": 425,
+   "id": "S0425L01U06",
+   "lego": "S0425L01",
+   "known": "हाँ, उन्हें यह सुनिश्चित करना है कि वे समझ गए हैं।",
+   "target": "是的，他们需要确保自己理解了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0425L01U06",
+      "seed_number": 425,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "हाँ, उन्हें यह सुनिश्चित करना है कि वे समझ गए हैं।",
+      "target_text": "是的，他们需要确保自己理解了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 425,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 11,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0425L01U06",
+     "slot": "known",
+     "audio_id": "69f7f8c1-d521-4e08-a04a-0a01a5d68d93"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0425L01U06",
+     "slot": "target1",
+     "audio_id": "e43ba73c-623e-4038-9449-9aa18a484c02"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0425L01U06",
+     "slot": "target2",
+     "audio_id": "9b804e7b-67c1-4f1f-bc37-d9e7d4257ee5"
+    }
+   ]
+  },
+  {
+   "seed": 426,
+   "id": "S0426L03U06",
+   "lego": "S0426L03",
+   "known": "वे एक-दूसरे से प्यार करना चाहते हैं लेकिन वे ख़ुश नहीं हैं।",
+   "target": "他们想相爱，但他们不快乐。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0426L03U06",
+      "seed_number": 426,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "वे एक-दूसरे से प्यार करना चाहते हैं लेकिन वे ख़ुश नहीं हैं।",
+      "target_text": "他们想相爱，但他们不快乐。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 426,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0426L03U06",
+     "slot": "known",
+     "audio_id": "1ca27e73-b87b-4495-a329-949bc3276c48"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0426L03U06",
+     "slot": "target1",
+     "audio_id": "599dfb8c-5043-49b7-bf91-6de83453a47c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0426L03U06",
+     "slot": "target2",
+     "audio_id": "04a1bfc8-1a37-4832-9a08-517840531cca"
+    }
+   ]
+  },
+  {
+   "seed": 429,
+   "id": "S0429L02U06",
+   "lego": "S0429L02",
+   "known": "हाँ, वह उनके लिए बिल्कुल सही होगा।",
+   "target": "是的，那对他们来说非常合适。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0429L02U06",
+      "seed_number": 429,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "हाँ, वह उनके लिए बिल्कुल सही होगा।",
+      "target_text": "是的，那对他们来说非常合适。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 429,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0429L02U06",
+     "slot": "known",
+     "audio_id": "4e2b06f7-b791-4d4a-81d2-6ef24fccd284"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0429L02U06",
+     "slot": "target1",
+     "audio_id": "fd6ed032-9460-423f-a5f8-980e358af14b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0429L02U06",
+     "slot": "target2",
+     "audio_id": "9a622ead-d84a-4ecf-aa31-421c73ca24a4"
+    }
+   ]
+  },
+  {
+   "seed": 435,
+   "id": "S0435L01U06",
+   "lego": "S0435L01",
+   "known": "हाँ, वे चाहें तो कर सकते हैं।",
+   "target": "是的，他们愿意的话可以。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0435L01U06",
+      "seed_number": 435,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "हाँ, वे चाहें तो कर सकते हैं।",
+      "target_text": "是的，他们愿意的话可以。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 435,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0435L01U06",
+     "slot": "known",
+     "audio_id": "0f3f4797-8d95-4e90-b3d3-4af814befc71"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0435L01U06",
+     "slot": "target1",
+     "audio_id": "ca69e28b-d0b3-4f5a-bf21-97d68a626d2c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0435L01U06",
+     "slot": "target2",
+     "audio_id": "04662ca7-4c37-41bf-906e-8b64e8456bcb"
+    }
+   ]
+  },
+  {
+   "seed": 452,
+   "id": "S0452L01U07",
+   "lego": "S0452L01",
+   "known": "उन्होंने नहीं कहा कि वे क्या करना चाहते हैं।",
+   "target": "他们没说他们想做什么。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0452L01U07",
+      "seed_number": 452,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "उन्होंने नहीं कहा कि वे क्या करना चाहते हैं।",
+      "target_text": "他们没说他们想做什么。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 452,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0452L01U07",
+     "slot": "known",
+     "audio_id": "c0edab75-4809-4cd8-9881-4d0759a4f327"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0452L01U07",
+     "slot": "target1",
+     "audio_id": "350514a0-0e2f-4520-be1a-141d2e58b567"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0452L01U07",
+     "slot": "target2",
+     "audio_id": "7c4fb147-870c-4242-a865-bccdfffe4fdf"
+    }
+   ]
+  },
+  {
+   "seed": 461,
+   "id": "S0461L01U06",
+   "lego": "S0461L01",
+   "known": "एक दुकान जहाँ मैं कुछ पोस्टकार्ड ख़रीद सकूँ।",
+   "target": "一家可以买明信片的商店。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0461L01U06",
+      "seed_number": 461,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "एक दुकान जहाँ मैं कुछ पोस्टकार्ड ख़रीद सकूँ।",
+      "target_text": "一家可以买明信片的商店。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 461,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0461L01U06",
+     "slot": "known",
+     "audio_id": "fa3e2132-c9d6-4aa6-a59f-65d78cbc7beb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0461L01U06",
+     "slot": "target1",
+     "audio_id": "0f83a59f-9be1-41d5-b199-7f40898a2063"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0461L01U06",
+     "slot": "target2",
+     "audio_id": "acbd8323-9c7f-4ea1-a75b-c9be9cb18e4a"
+    }
+   ]
+  },
+  {
+   "seed": 462,
+   "id": "S0462L03U06",
+   "lego": "S0462L03",
+   "known": "मेरे दादा युद्ध के दौरान इटली में लड़े थे।",
+   "target": "我爷爷战争期间在意大利打过仗。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0462L03U06",
+      "seed_number": 462,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "मेरे दादा युद्ध के दौरान इटली में लड़े थे।",
+      "target_text": "我爷爷战争期间在意大利打过仗。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 462,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0462L03U06",
+     "slot": "known",
+     "audio_id": "09475c3d-88c8-44ac-8b4c-f4a1607ca7fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0462L03U06",
+     "slot": "target1",
+     "audio_id": "f733ae0c-9151-4be2-b470-113f3b549745"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0462L03U06",
+     "slot": "target2",
+     "audio_id": "2d7e4ce2-eb46-45a5-a2ed-075b50693349"
+    }
+   ]
+  },
+  {
+   "seed": 464,
+   "id": "S0464L01U06",
+   "lego": "S0464L01",
+   "known": "मैंने उसे अपना कमरा नंबर एक बार बताया था लेकिन वह भूल गई।",
+   "target": "我告诉过她我的房间号码一次，但她忘了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0464L01U06",
+      "seed_number": 464,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "मैंने उसे अपना कमरा नंबर एक बार बताया था लेकिन वह भूल गई।",
+      "target_text": "我告诉过她我的房间号码一次，但她忘了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 464,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 13,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0464L01U06",
+     "slot": "known",
+     "audio_id": "ef4d75cb-f4f9-45f9-b994-31916a107b54"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0464L01U06",
+     "slot": "target1",
+     "audio_id": "6f61a30b-48ab-4aae-8c4f-22f2081f2675"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0464L01U06",
+     "slot": "target2",
+     "audio_id": "cdb442ba-6df8-4619-a709-d9f245a76cfc"
+    }
+   ]
+  },
+  {
+   "seed": 470,
+   "id": "S0470L03U06",
+   "lego": "S0470L03",
+   "known": "रुकने से पहले आप कितनी ऊँचाई तक चढ़ना चाहते हैं?",
+   "target": "你想爬多高才停下来？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0470L03U06",
+      "seed_number": 470,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "रुकने से पहले आप कितनी ऊँचाई तक चढ़ना चाहते हैं?",
+      "target_text": "你想爬多高才停下来？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 470,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0470L03U06",
+     "slot": "known",
+     "audio_id": "e4a399a3-b9c1-4a87-84ff-d105cb398896"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0470L03U06",
+     "slot": "target1",
+     "audio_id": "8b1df553-e265-403d-96e5-1663380ca5e4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0470L03U06",
+     "slot": "target2",
+     "audio_id": "7c37f646-ab99-4609-8787-15a1db6195b7"
+    }
+   ]
+  },
+  {
+   "seed": 479,
+   "id": "S0479L02U06",
+   "lego": "S0479L02",
+   "known": "यह कम से कम जो मैं कर सकता था।",
+   "target": "这是我能做的最少的事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0479L02U06",
+      "seed_number": 479,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "यह कम से कम जो मैं कर सकता था।",
+      "target_text": "这是我能做的最少的事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 479,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0479L02U06",
+     "slot": "known",
+     "audio_id": "6e21681d-fa56-43aa-91f9-4559c2d13a03"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0479L02U06",
+     "slot": "target1",
+     "audio_id": "7892d05b-4437-45cc-b270-6ef024ff4c2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0479L02U06",
+     "slot": "target2",
+     "audio_id": "58570a69-2bc3-4e93-b054-20d836f152fa"
+    }
+   ]
+  },
+  {
+   "seed": 492,
+   "id": "S0492L01U06",
+   "lego": "S0492L01",
+   "known": "आपको लगता है कि उन जगहों में से कौन-सी सबसे दिलचस्प है?",
+   "target": "你觉得那些地方哪个最有意思？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0492L01U06",
+      "seed_number": 492,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "आपको लगता है कि उन जगहों में से कौन-सी सबसे दिलचस्प है?",
+      "target_text": "你觉得那些地方哪个最有意思？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 492,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0492L01U06",
+     "slot": "known",
+     "audio_id": "279cada5-e7bd-4212-84fa-bec9eebcf8cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0492L01U06",
+     "slot": "target1",
+     "audio_id": "224cb8da-3504-4b75-bb5d-2182f43134b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0492L01U06",
+     "slot": "target2",
+     "audio_id": "03a35403-69e2-4dca-8056-8aa74ba6ef97"
+    }
+   ]
+  },
+  {
+   "seed": 516,
+   "id": "S0516L03U06",
+   "lego": "S0516L03",
+   "known": "वे दोनों अपने आप आए।",
+   "target": "他们两个都自己来了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0516L03U06",
+      "seed_number": 516,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "वे दोनों अपने आप आए।",
+      "target_text": "他们两个都自己来了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 516,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 5,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0516L03U06",
+     "slot": "known",
+     "audio_id": "871b11ff-c3b5-4bed-9401-97a57932433a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0516L03U06",
+     "slot": "target1",
+     "audio_id": "e319914b-7ad7-42d4-bda1-6be0e87fd099"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0516L03U06",
+     "slot": "target2",
+     "audio_id": "5c05217d-4f5e-4d3f-8527-bd719e0b8003"
+    }
+   ]
+  },
+  {
+   "seed": 517,
+   "id": "S0517L01U06",
+   "lego": "S0517L01",
+   "known": "लेकिन वे एक-दूसरे के साथ चले गए।",
+   "target": "但他们一起离开了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0517L01U06",
+      "seed_number": 517,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "लेकिन वे एक-दूसरे के साथ चले गए।",
+      "target_text": "但他们一起离开了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 517,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0517L01U06",
+     "slot": "known",
+     "audio_id": "06497f3b-ef55-499a-96ac-1de46d75a840"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0517L01U06",
+     "slot": "target1",
+     "audio_id": "45ed491c-0a18-402a-bd89-6442346ffd94"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0517L01U06",
+     "slot": "target2",
+     "audio_id": "edb27cdd-1e5b-436c-91d0-980e000920d1"
+    }
+   ]
+  },
+  {
+   "seed": 519,
+   "id": "S0519L01U06",
+   "lego": "S0519L01",
+   "known": "मैंने अभी तक उनका नया बच्चा नहीं देखा।",
+   "target": "我还没见过他们的新生宝宝。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0519L01U06",
+      "seed_number": 519,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "मैंने अभी तक उनका नया बच्चा नहीं देखा।",
+      "target_text": "我还没见过他们的新生宝宝。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 519,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0519L01U06",
+     "slot": "known",
+     "audio_id": "2aef8af6-d385-47bb-9725-32a4e9ce75de"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0519L01U06",
+     "slot": "target1",
+     "audio_id": "388da043-1075-4e52-9fa5-582f367f05b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0519L01U06",
+     "slot": "target2",
+     "audio_id": "26a3ed04-1635-4143-9c1a-17e8cc4cb988"
+    }
+   ]
+  },
+  {
+   "seed": 522,
+   "id": "S0522L02U06",
+   "lego": "S0522L02",
+   "known": "चलिए मान लेते हैं कि सच बताना बेवक़ूफ़ी थी।",
+   "target": "我们同意说出真相是愚蠢的。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0522L02U06",
+      "seed_number": 522,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "चलिए मान लेते हैं कि सच बताना बेवक़ूफ़ी थी।",
+      "target_text": "我们同意说出真相是愚蠢的。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 522,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0522L02U06",
+     "slot": "known",
+     "audio_id": "19dd5595-676c-4e77-93e9-4dd89ffd2b48"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0522L02U06",
+     "slot": "target1",
+     "audio_id": "93771ba7-8400-4fe8-9be9-823d4559f9eb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0522L02U06",
+     "slot": "target2",
+     "audio_id": "b66139de-da0e-42ef-b4b8-1d0a4d113017"
+    }
+   ]
+  },
+  {
+   "seed": 524,
+   "id": "S0524L03U07",
+   "lego": "S0524L03",
+   "known": "मैं आपको तीन-चार मिनट में वापस फ़ोन करूँगा।",
+   "target": "我三四分钟后给你回电话。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0524L03U07",
+      "seed_number": 524,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "मैं आपको तीन-चार मिनट में वापस फ़ोन करूँगा।",
+      "target_text": "我三四分钟后给你回电话。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 524,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0524L03U07",
+     "slot": "known",
+     "audio_id": "40895e6f-fae7-4ef1-9003-ca95776414e2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0524L03U07",
+     "slot": "target1",
+     "audio_id": "316e7014-359a-45d2-8296-53045fbf6b09"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0524L03U07",
+     "slot": "target2",
+     "audio_id": "4c6937c6-7da7-4c2e-97c8-cc192210a59d"
+    }
+   ]
+  },
+  {
+   "seed": 528,
+   "id": "S0528L01U06",
+   "lego": "S0528L01",
+   "known": "मुझे शायद उन चीज़ों को किसी दूसरे कमरे में रखना चाहिए।",
+   "target": "我可能应该把那些东西放在另一个房间里。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0528L01U06",
+      "seed_number": 528,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "मुझे शायद उन चीज़ों को किसी दूसरे कमरे में रखना चाहिए।",
+      "target_text": "我可能应该把那些东西放在另一个房间里。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 528,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0528L01U06",
+     "slot": "known",
+     "audio_id": "7283a056-30cc-4570-b3b4-94ac61cb84b9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0528L01U06",
+     "slot": "target1",
+     "audio_id": "b92c27a6-8363-4b40-9324-3b1c14905df6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0528L01U06",
+     "slot": "target2",
+     "audio_id": "09516913-8bd3-4ee8-99ea-0bb0195ad648"
+    }
+   ]
+  },
+  {
+   "seed": 534,
+   "id": "S0534L01U06",
+   "lego": "S0534L01",
+   "known": "चलिए इस भयानक मौसम में बाहर न जाएँ।",
+   "target": "我们不要在这么糟糕的天气出去。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0534L01U06",
+      "seed_number": 534,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "चलिए इस भयानक मौसम में बाहर न जाएँ।",
+      "target_text": "我们不要在这么糟糕的天气出去。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 534,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0534L01U06",
+     "slot": "known",
+     "audio_id": "8e6e7109-94e2-4a03-a521-fdfb8e17b7c2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0534L01U06",
+     "slot": "target1",
+     "audio_id": "2cd2ca9f-9d1d-4189-878f-0860ba792c2e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0534L01U06",
+     "slot": "target2",
+     "audio_id": "9b29fcae-723f-4ee4-bae9-4eb31656a9fe"
+    }
+   ]
+  },
+  {
+   "seed": 540,
+   "id": "S0540L01U06",
+   "lego": "S0540L01",
+   "known": "अगर आप बिना कार के जाना चाहते हैं तो मुझे कोई दिक्कत नहीं है।",
+   "target": "如果你想不开车走，我不介意。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0540L01U06",
+      "seed_number": 540,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "अगर आप बिना कार के जाना चाहते हैं तो मुझे कोई दिक्कत नहीं है।",
+      "target_text": "如果你想不开车走，我不介意。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 540,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 14,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0540L01U06",
+     "slot": "known",
+     "audio_id": "9d25bf2f-2546-435a-be6f-bffd72b9c9d4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0540L01U06",
+     "slot": "target1",
+     "audio_id": "924da761-43cc-4d07-aa63-472cba18b2e7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0540L01U06",
+     "slot": "target2",
+     "audio_id": "16ef3ff1-b353-4428-b5ae-aba6106c6bd2"
+    }
+   ]
+  },
+  {
+   "seed": 557,
+   "id": "S0557L03U06",
+   "lego": "S0557L03",
+   "known": "काश वे इतना तेज़ संगीत न बजाते।",
+   "target": "我希望他们不要放这么大声的音乐。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0557L03U06",
+      "seed_number": 557,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "काश वे इतना तेज़ संगीत न बजाते।",
+      "target_text": "我希望他们不要放这么大声的音乐。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 557,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0557L03U06",
+     "slot": "known",
+     "audio_id": "ee54ba7e-fc8c-41b4-96d0-74585424074d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0557L03U06",
+     "slot": "target1",
+     "audio_id": "1991fdfe-16cf-4b44-9432-6b342f7b9b7e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0557L03U06",
+     "slot": "target2",
+     "audio_id": "331e7291-4099-4c94-b581-71471a953469"
+    }
+   ]
+  },
+  {
+   "seed": 567,
+   "id": "S0567L03U06",
+   "lego": "S0567L03",
+   "known": "बाहर बच्चों को खेलते हुए देखते हुए समय बिताना बहुत अच्छा रहा।",
+   "target": "在户外看孩子们玩耍，花时间真的很美好。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0567L03U06",
+      "seed_number": 567,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "बाहर बच्चों को खेलते हुए देखते हुए समय बिताना बहुत अच्छा रहा।",
+      "target_text": "在户外看孩子们玩耍，花时间真的很美好。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 567,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0567L03U06",
+     "slot": "known",
+     "audio_id": "d170c5bd-3135-4163-858a-773e74d395e7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0567L03U06",
+     "slot": "target1",
+     "audio_id": "071caa8e-0324-487f-9c0c-4eccaade1662"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0567L03U06",
+     "slot": "target2",
+     "audio_id": "d2031f14-8abf-4a6a-a0a0-9e55c640b618"
+    }
+   ]
+  },
+  {
+   "seed": 568,
+   "id": "S0568L03U06",
+   "lego": "S0568L03",
+   "known": "मुझे उम्मीद है कि अगली बार जब हम मिलेंगे तो मुझे प्रगति दिखेगी।",
+   "target": "我期待下次见面时看到进步。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0568L03U06",
+      "seed_number": 568,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "मुझे उम्मीद है कि अगली बार जब हम मिलेंगे तो मुझे प्रगति दिखेगी।",
+      "target_text": "我期待下次见面时看到进步。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 568,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 13,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0568L03U06",
+     "slot": "known",
+     "audio_id": "522000f9-f96e-4f6f-a638-bb1567e527d2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0568L03U06",
+     "slot": "target1",
+     "audio_id": "b8cdf0e1-96aa-45a6-a40d-1c7b765e1227"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0568L03U06",
+     "slot": "target2",
+     "audio_id": "1c636d36-12ca-4906-919a-56e9f60c6f92"
+    }
+   ]
+  },
+  {
+   "seed": 569,
+   "id": "S0569L03U06",
+   "lego": "S0569L03",
+   "known": "क्या आपने तय किया है कि आप कितना भुगतान करने को तैयार हैं?",
+   "target": "你决定好愿意付多少了吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0569L03U06",
+      "seed_number": 569,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "क्या आपने तय किया है कि आप कितना भुगतान करने को तैयार हैं?",
+      "target_text": "你决定好愿意付多少了吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 569,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 13,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0569L03U06",
+     "slot": "known",
+     "audio_id": "28cf35d8-d412-490c-bbaa-7f6c8b4800da"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0569L03U06",
+     "slot": "target1",
+     "audio_id": "e68dec13-4dec-4ad3-998f-129d8de5a955"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0569L03U06",
+     "slot": "target2",
+     "audio_id": "8220cf9b-abcd-4e58-8715-33a7c79f611c"
+    }
+   ]
+  },
+  {
+   "seed": 570,
+   "id": "S0570L02U06",
+   "lego": "S0570L02",
+   "known": "आप अपनी टिकट के लिए कितना भुगतान करने को तैयार हैं?",
+   "target": "你愿意为你的票付多少钱？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0570L02U06",
+      "seed_number": 570,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "आप अपनी टिकट के लिए कितना भुगतान करने को तैयार हैं?",
+      "target_text": "你愿意为你的票付多少钱？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 570,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0570L02U06",
+     "slot": "known",
+     "audio_id": "bdfe7628-0021-412c-af0e-4a30efafd0b9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0570L02U06",
+     "slot": "target1",
+     "audio_id": "8046c656-1ad5-4df7-8164-dc83ba91509d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0570L02U06",
+     "slot": "target2",
+     "audio_id": "b5b62303-689d-445c-bde4-d6cefadeb79f"
+    }
+   ]
+  },
+  {
+   "seed": 572,
+   "id": "S0572L03U06",
+   "lego": "S0572L03",
+   "known": "क्या आप भूल गए कि पिछली बार जब वे हमसे मिलने आए थे तब क्या हुआ था?",
+   "target": "你忘了上次他们来拜访我们时发生的事吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0572L03U06",
+      "seed_number": 572,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "क्या आप भूल गए कि पिछली बार जब वे हमसे मिलने आए थे तब क्या हुआ था?",
+      "target_text": "你忘了上次他们来拜访我们时发生的事吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 572,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 17,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0572L03U06",
+     "slot": "known",
+     "audio_id": "d945342e-0076-47eb-8a7f-fe6367b68ed7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0572L03U06",
+     "slot": "target1",
+     "audio_id": "86a392dd-c9a0-404d-a966-91507a1d2e5a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0572L03U06",
+     "slot": "target2",
+     "audio_id": "48c050b0-bdba-4980-8e68-df60ec2391d5"
+    }
+   ]
+  },
+  {
+   "seed": 578,
+   "id": "S0578L02U06",
+   "lego": "S0578L02",
+   "known": "कोई ज़्यादा गर्म जगह।",
+   "target": "某个更暖和的地方。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0578L02U06",
+      "seed_number": 578,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "कोई ज़्यादा गर्म जगह।",
+      "target_text": "某个更暖和的地方。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 578,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0578L02U06",
+     "slot": "known",
+     "audio_id": "124f75b6-69e5-4a72-9c95-9cf25e867f1a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0578L02U06",
+     "slot": "target1",
+     "audio_id": "5d47e096-b74c-4c8f-8cf3-011ac6b9ab42"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0578L02U06",
+     "slot": "target2",
+     "audio_id": "452ec9c2-20e2-4869-a806-c829c176a2a0"
+    }
+   ]
+  },
+  {
+   "seed": 581,
+   "id": "S0581L01U06",
+   "lego": "S0581L01",
+   "known": "वह उसके बारे में थोड़ा और जानना चाहेगा कि वह कैसा है।",
+   "target": "他想多了解一些那是什么样子。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0581L01U06",
+      "seed_number": 581,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "वह उसके बारे में थोड़ा और जानना चाहेगा कि वह कैसा है।",
+      "target_text": "他想多了解一些那是什么样子。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 581,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 12,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0581L01U06",
+     "slot": "known",
+     "audio_id": "5ba56ee0-d677-4b98-8c73-517f6b03b072"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0581L01U06",
+     "slot": "target1",
+     "audio_id": "f8bdfb71-dd19-41e8-9616-0e881cdac0b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0581L01U06",
+     "slot": "target2",
+     "audio_id": "e45a4686-06a2-44a7-93f2-ef97f1288655"
+    }
+   ]
+  },
+  {
+   "seed": 590,
+   "id": "S0590L01U07",
+   "lego": "S0590L01",
+   "known": "मैंने आख़िरी बस को स्टेशन से जाते हुए देखा।",
+   "target": "我看到最后一班车离开了站。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0590L01U07",
+      "seed_number": 590,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "मैंने आख़िरी बस को स्टेशन से जाते हुए देखा।",
+      "target_text": "我看到最后一班车离开了站。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 590,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0590L01U07",
+     "slot": "known",
+     "audio_id": "5c6491aa-7aab-4390-b157-04f243d2e92a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0590L01U07",
+     "slot": "target1",
+     "audio_id": "1705cb0f-7dff-4738-9ca4-3d9218066586"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0590L01U07",
+     "slot": "target2",
+     "audio_id": "24fcea33-0801-4084-93a9-b254cbdb591f"
+    }
+   ]
+  },
+  {
+   "seed": 598,
+   "id": "S0598L01U06",
+   "lego": "S0598L01",
+   "known": "उसने उनके बारे में हज़ार कहानियाँ सुनी हैं कि वे क्या कर रहे थे।",
+   "target": "他听说了一千个关于他们在做什么的故事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0598L01U06",
+      "seed_number": 598,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "उसने उनके बारे में हज़ार कहानियाँ सुनी हैं कि वे क्या कर रहे थे।",
+      "target_text": "他听说了一千个关于他们在做什么的故事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 598,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 14,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0598L01U06",
+     "slot": "known",
+     "audio_id": "8c349a93-93f1-4844-b8b0-2f6567e50481"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0598L01U06",
+     "slot": "target1",
+     "audio_id": "88dcb303-862b-4d3c-80ea-e0be06263983"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0598L01U06",
+     "slot": "target2",
+     "audio_id": "934d7222-4ab4-44e1-b4be-dfc6b790c370"
+    }
+   ]
+  },
+  {
+   "seed": 621,
+   "id": "S0621L02U06",
+   "lego": "S0621L02",
+   "known": "मुझे उसे यह बताने की हिम्मत नहीं हुई कि वह टूट गया है।",
+   "target": "我不敢告诉她那个坏了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_hin:S0621L02U06",
+      "seed_number": 621,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "मुझे उसे यह बताने की हिम्मत नहीं हुई कि वह टूट गया है।",
+      "target_text": "我不敢告诉她那个坏了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 621,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 13,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0621L02U06",
+     "slot": "known",
+     "audio_id": "660afae0-2ffb-4c3b-ae0e-8b7835b0fc15"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0621L02U06",
+     "slot": "target1",
+     "audio_id": "92ea571b-e96d-4588-8fa4-b92279c270a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_hin:S0621L02U06",
+     "slot": "target2",
+     "audio_id": "ad8a1d6b-7232-4996-aa95-af731e301fa5"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 2,
+    "known": "मैं सीखने की कोशिश कर रहा हूँ।",
+    "target": "我试试学习。",
+    "legos": [
+     "S0002L01 कोशिश कर रहा हूँ | 试试",
+     "S0002L02 सीखना | 学习"
+    ]
+   },
+   {
+    "seed": 186,
+    "known": "क्या आप अगले हफ़्ते किसी अलग चीज़ के बारे में बात करना चाहते हैं?",
+    "target": "下个星期你想聊不同的话题吗？",
+    "legos": [
+     "S0186L01 अगले सप्ताह | 下个星期",
+     "S0186L02 विषय | 话题"
+    ]
+   },
+   {
+    "seed": 191,
+    "known": "नहीं, मुझे बिल्कुल बुरा नहीं लगेगा।",
+    "target": "不，我完全不介意。",
+    "legos": [
+     "S0191L01 बिल्कुल एतराज़ नहीं | 完全不介意"
+    ]
+   },
+   {
+    "seed": 203,
+    "known": "अगर मैं आपसे मेरी मदद करने को कहूँ तो आप क्या करेंगे?",
+    "target": "如果我让你帮我，你会怎么做？",
+    "legos": [
+     "S0203L01 करने को कहना | 让"
+    ]
+   },
+   {
+    "seed": 205,
+    "known": "मैं वह शब्द भूल गया जो मैं कहने की कोशिश कर रहा था।",
+    "target": "我忘了我想说的那个词。",
+    "legos": [
+     "S0205L01 भूल जाना | 忘了",
+     "S0205L02 वह एक | 那个"
+    ]
+   },
+   {
+    "seed": 213,
+    "known": "हम नहीं जानते कि वे क्या हासिल करने की कोशिश कर रहे हैं।",
+    "target": "我们不知道他们想实现什么。",
+    "legos": [
+     "S0213L01 हासिल करना | 实现"
+    ]
+   },
+   {
+    "seed": 245,
+    "known": "मैं इस बात से ख़ुश हूँ कि मैंने कम समय में कितना किया है",
+    "target": "我对自己这么短的时间里做了这么多感到高兴",
+    "legos": [
+     "S0245L01 ख़ुश महसूस होना | 感到高兴",
+     "S0245L02 मैं अपने आप पर | 我对自己",
+     "S0245L03 इतने कम समय में | 这么短的时间里",
+     "S0245L04 इतना कुछ किया | 做了这么多"
+    ]
+   },
+   {
+    "seed": 272,
+    "known": "हाँ, यह एक बहुत अच्छा विचार लगता है।",
+    "target": "好的，听起来是个好主意。",
+    "legos": [
+     "S0272L01 सुनने में लगता है | 听起来"
+    ]
+   },
+   {
+    "seed": 286,
+    "known": "वे लोग जिन्हें चीनी बोलना पसंद है।",
+    "target": "喜欢说中文的人。",
+    "legos": [
+     "S0286L01 पसंद करना | 喜欢"
+    ]
+   },
+   {
+    "seed": 391,
+    "known": "वह जो बस की ओर चल रहा है।",
+    "target": "走向公共汽车的那个人。",
+    "legos": [
+     "S0391L01 जो बस की ओर चल रहा है | 走向公共汽车",
+     "S0391L02(old) वह जो | 的那个人"
+    ]
+   },
+   {
+    "seed": 397,
+    "known": "क्या हमें जल्दी तैयार होने की ज़रूरत है?",
+    "target": "我们需要快点准备好吗？",
+    "legos": [
+     "S0397L01(old) हमें ज़रूरत है | 我们需要",
+     "S0397L02 क्या जल्दी तैयार होना | 快点准备好吗"
+    ]
+   },
+   {
+    "seed": 403,
+    "known": "हमें जितनी देर हो सके उतनी देर चुप रहना चाहिए।",
+    "target": "我们应该尽可能安静地待着。",
+    "legos": [
+     "S0403L01 हमें चाहिए | 我们应该",
+     "S0403L02(old) जितना हो सके | 尽可能",
+     "S0403L03 चुपचाप बैठे रहना | 安静地待着"
+    ]
+   },
+   {
+    "seed": 436,
+    "known": "नहीं, उन्हें एक न्यूनतम संख्या चाहिए।",
+    "target": "不，他们有最低人数要求。",
+    "legos": [
+     "S0436L01 एक न्यूनतम संख्या चाहिए | 最低人数要求"
+    ]
+   },
+   {
+    "seed": 443,
+    "known": "नहीं, वे इसे उसी तरह करते रहना चाहते थे।",
+    "target": "不，他们想继续用同样的方式做。",
+    "legos": [
+     "S0443L01 उसी तरह करना | 用同样的方式做"
+    ]
+   },
+   {
+    "seed": 518,
+    "known": "मैं ख़ुद को बिल्कुल वैसी ही समस्या में नहीं सोच सकता।",
+    "target": "我无法想象自己遇到完全一样的问题。",
+    "legos": [
+     "S0518L01 नहीं कर पाना | 无法",
+     "S0518L02 कल्पना करना | 想象",
+     "S0518L03 सामना करना | 遇到"
+    ]
+   },
+   {
+    "seed": 520,
+    "known": "यह पूरे परिवार के साथ हो सकता था।",
+    "target": "这件事可能发生在全家人身上。",
+    "legos": [
+     "S0520L01 पूरा परिवार | 全家人",
+     "S0520L02 किसी पर | 身上"
+    ]
+   },
+   {
+    "seed": 521,
+    "known": "मुझे डर है कि आप भूल जाएँगे कि हमें यहाँ रुकने की ज़रूरत क्यों थी।",
+    "target": "我担心你会忘记我们为什么需要留在这里。",
+    "legos": [
+     "S0521L01 याद न रहना | 忘记"
+    ]
+   },
+   {
+    "seed": 523,
+    "known": "किसी बहाने देने के बजाय।",
+    "target": "而不是找一个借口。",
+    "legos": [
+     "S0523L01 बहाना | 借口",
+     "S0523L02 के बजाय | 而不是"
+    ]
+   },
+   {
+    "seed": 526,
+    "known": "मुझे यक़ीन करना मुश्किल लग रहा है कि आप अंदाज़ा नहीं लगा सकते।",
+    "target": "我发现很难相信你猜不到。",
+    "legos": [
+     "S0526L01 पता चलना | 发现",
+     "S0526L02 अंदाज़ा न लगा पाना | 猜不到"
+    ]
+   },
+   {
+    "seed": 536,
+    "known": "मैं पहले सोचता था कि पागल होना बुरी बात है।",
+    "target": "我以前认为疯狂是不好的。",
+    "legos": [
+     "S0536L01 मानना | 认为",
+     "S0536L02 पागलपन | 疯狂"
+    ]
+   },
+   {
+    "seed": 548,
+    "known": "मैं इस समय उदास महसूस कर रहा हूँ।",
+    "target": "我现在感到有些难过。",
+    "legos": [
+     "S0548L01 थोड़ा सा | 有些"
+    ]
+   },
+   {
+    "seed": 555,
+    "known": "और मैं इतना थका हुआ हूँ कि नया लाने नहीं जा सकता।",
+    "target": "我太累了，不想去拿一条新的。",
+    "legos": [
+     "S0555L01 बहुत थका हुआ | 太累了"
+    ]
+   },
+   {
+    "seed": 596,
+    "known": "और मुझे कुछ देर अपनी आँखें बंद करने की ज़रूरत है।",
+    "target": "我需要闭上眼睛一会儿。",
+    "legos": [
+     "S0596L01 आँखें बंद करना | 闭上眼睛"
+    ]
+   },
+   {
+    "seed": 599,
+    "known": "अगर आपने मुझे बताया होता तो मैं ख़ुशी से गाड़ी चलाता।",
+    "target": "如果你告诉了我，我很乐意开车。",
+    "legos": [
+     "S0599L01 आपने बता दिया | 你告诉了"
+    ]
+   },
+   {
+    "seed": 600,
+    "known": "अगर आपने मुझे बताया होता कि आप कितने थके हुए हैं तो मैं गाड़ी चलाता।",
+    "target": "如果你告诉我你那么累，我就开车了。",
+    "legos": [
+     "S0600L01 इतने थके हुए | 那么累",
+     "S0600L02 तो गाड़ी चलाता | 就开车了"
+    ]
+   },
+   {
+    "seed": 646,
+    "known": "आप कुछ कर रहे हैं, सर।",
+    "target": "您在做什么，先生。",
+    "legos": [
+     "S0646L01 आप कर रहे हैं, सर | 您在做什么"
+    ]
+   },
+   {
+    "seed": 661,
+    "known": "आप सब कुछ कर रहे हैं",
+    "target": "你们大家都在做什么",
+    "legos": [
+     "S0661L01 आप सब क्या कर रहे हैं | 都在做什么"
+    ]
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 9,
+    "known": "मैं अब थोड़ी चीनी बोलता हूँ।",
+    "target": "我现在会说一点中文。",
+    "row": "S0009L02U02",
+    "row_known": "मैं अभी थोड़ी चीनी बोलता हूँ।",
+    "row_target": "我现在会说一点中文。"
+   },
+   {
+    "seed": 266,
+    "known": "वह मेरे पिता का एक पुराना दोस्त था।",
+    "target": "他是我爸爸的一个老朋友。",
+    "row": "S0266L03U02",
+    "row_known": "वह मेरे पिता का एक पुराना दोस्त है।",
+    "row_target": "他是我爸爸的一个老朋友。"
+   },
+   {
+    "seed": 324,
+    "known": "उस छात्रा ने अपने दोनों हाथ ऊपर उठाए हुए हैं।",
+    "target": "那个学生两只手都举起来了。",
+    "row": "S0324L03U01",
+    "row_known": "उस छात्र ने अपने दोनों हाथ ऊपर उठाए हुए हैं",
+    "row_target": "那个学生两只手都举起来了"
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 11,
+    "known": "आप बात ख़त्म करने के बाद मैं बोल पाना चाहता हूँ।",
+    "target": "你说完以后，我想能够开口说。",
+    "row": "S0011L03U02",
+    "row_known": "आप बात ख़त्म करने के बाद मैं बोल पाना चाहता हूँ।",
+    "row_target": "你说完以后,我想能够开口说。"
+   },
+   {
+    "seed": 173,
+    "known": "नहीं धन्यवाद, मैं ख़ुद कर लूँगा।",
+    "target": "不用了，谢谢，我可以自己来。",
+    "row": "S0173L03U01",
+    "row_known": "नहीं धन्यवाद, मैं ख़ुद कर लूँगा।",
+    "row_target": "我可以自己来。"
+   },
+   {
+    "seed": 231,
+    "known": "मैं एक बूढ़े आदमी को जानता हूँ जो मदद माँगना चाहता था।",
+    "target": "我认识一个老男人，他想请求帮助。",
+    "row": "S0231L01U01",
+    "row_known": "मैं एक बूढ़े आदमी को जानता हूँ जो मदद माँगना चाहता था",
+    "row_target": "我认识一个老男人，他以前想请求帮助"
+   },
+   {
+    "seed": 386,
+    "known": "हाँ, मैं उससे सहमत हुआ।",
+    "target": "是的，我同意她说的。",
+    "row": "S0386L01B03",
+    "row_known": "हाँ, मैं उससे सहमत हुआ",
+    "row_target": "是的，我同意他"
+   },
+   {
+    "seed": 431,
+    "known": "वे अभी तैयार नहीं हैं लेकिन वे जल्द ही तैयार हो जाएँगे।",
+    "target": "他们还没准备好，但很快就会准备好。",
+    "row": "S0431L02U01",
+    "row_known": "वे अभी तैयार नहीं हैं लेकिन वे जल्द ही तैयार हो जाएँगे",
+    "row_target": "他们还没准备好但很快就会准备好"
+   },
+   {
+    "seed": 450,
+    "known": "नहीं, उन्हें ख़ुद ट्रेन पकड़नी है।",
+    "target": "不，他们必须自己去赶火车。",
+    "row": "S0450L02U01",
+    "row_known": "नहीं, उन्हें ख़ुद ट्रेन पकड़नी है",
+    "row_target": "他们必须自己去赶火车"
+   },
+   {
+    "seed": 455,
+    "known": "हमें जाना पड़ा क्योंकि बच्चे थक गए थे।",
+    "target": "我们不得不离开，因为孩子们累了。",
+    "row": "S0455L02U01",
+    "row_known": "हमें जाना पड़ा क्योंकि बच्चे थक गए थे",
+    "row_target": "我们不得不离开因为孩子们累了"
+   },
+   {
+    "seed": 456,
+    "known": "वह वहाँ हो सकता है लेकिन यह बहुत संभव नहीं है।",
+    "target": "他可能在那里，但不太可能。",
+    "row": "S0456L02U01",
+    "row_known": "वह वहाँ हो सकता है लेकिन यह बहुत संभव नहीं है",
+    "row_target": "他可能在那里但不太可能"
+   },
+   {
+    "seed": 474,
+    "known": "मुफ़्त में भी मुझे यह नहीं चाहिए।",
+    "target": "就算免费我也不想要。",
+    "row": "S0474L01U01",
+    "row_known": "मुफ़्त में भी मुझे यह नहीं चाहिए",
+    "row_target": "就算免费我不想要它"
+   },
+   {
+    "seed": 543,
+    "known": "वह सही थी।",
+    "target": "她是对的。",
+    "row": "S0387L02B01",
+    "row_known": "वह सही थी",
+    "row_target": "她说得对"
+   },
+   {
+    "seed": 628,
+    "known": "क्या आपको चाय पसंद है?",
+    "target": "你喜欢喝茶吗？",
+    "row": "S0623L01U01",
+    "row_known": "क्या आपको चाय पसंद है?",
+    "row_target": "你喜欢茶吗？"
+   },
+   {
+    "seed": 639,
+    "known": "आपके साथ, सर",
+    "target": "跟您一起，先生",
+    "row": "S0639L01B01",
+    "row_known": "आपके साथ, सर",
+    "row_target": "跟您"
+   },
+   {
+    "seed": 643,
+    "known": "आप चाहते हैं, सर",
+    "target": "您想要，先生",
+    "row": "S0643L01B01",
+    "row_known": "आप चाहते हैं, सर",
+    "row_target": "您想要"
+   },
+   {
+    "seed": 648,
+    "known": "आपने जो कहा, मैडम",
+    "target": "您说的话，女士",
+    "row": "S0648L01B01",
+    "row_known": "आपने जो कहा, मैडम",
+    "row_target": "您说的话"
+   },
+   {
+    "seed": 656,
+    "known": "आप सबके साथ",
+    "target": "跟你们大家一起",
+    "row": "S0501L01B01",
+    "row_known": "आप सबके साथ",
+    "row_target": "和你们"
+   },
+   {
+    "seed": 660,
+    "known": "मैं आप सबकी मदद कर सकता हूँ",
+    "target": "我可以帮助你们大家",
+    "row": "S0656L01U02",
+    "row_known": "मैं आप सबकी मदद कर सकता हूँ।",
+    "row_target": "我可以帮你们大家。"
+   },
+   {
+    "seed": 664,
+    "known": "क्या आप सब तैयार हैं?",
+    "target": "你们大家都准备好了吗？",
+    "row": "S0501L01U03",
+    "row_known": "क्या आप सब तैयार हैं?",
+    "row_target": "你们准备好了吗？"
+   }
+  ],
+  "sibling": [
+   {
+    "seed": 185,
+    "known": "मुझे लगता है कि आप उन्हें काम पर भूल आए।",
+    "target": "我想你把它们留在工作的地方了。"
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 259,
+    "known": "एक विचार।",
+    "target": "一个想法。"
+   },
+   {
+    "seed": 275,
+    "known": "थोड़ा और लंबा।",
+    "target": "再久一点。"
+   },
+   {
+    "seed": 305,
+    "known": "औरत।",
+    "target": "女人。"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 84,
+  "no_home": 27,
+  "variant_form": 3,
+  "variant_zut": 17,
+  "sibling": 1,
+  "lego_is_seed": 3
+ }
+}

@@ -1,0 +1,1707 @@
+{
+ "course": "eng_for_zho",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0003L02U06": {
+   "seed": {
+    "seed_number": 3,
+    "known_text": "怎么尽可能多地说",
+    "target_text": "How to speak as often as possible",
+    "known_audio_id": "b1b503db-221f-4f46-b76f-c68a5d2df5ee",
+    "target1_audio_id": "ad47cebc-7fc5-42c4-abdb-59a25ea035aa",
+    "target2_audio_id": "0e38028e-991d-43c9-b0b1-cd3aa3de4786"
+   },
+   "lego": {
+    "lego_id": "S0003L02",
+    "known_text": "尽可能多地",
+    "target_text": "As often as possible",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0004L02U06": {
+   "seed": {
+    "seed_number": 4,
+    "known_text": "怎么用英语说一些东西",
+    "target_text": "How to say something in English",
+    "known_audio_id": "0368911e-a60e-4419-b67d-6702543e6477",
+    "target1_audio_id": "31ee8b0c-4983-4558-a22e-7f6b29c6f82d",
+    "target2_audio_id": "053cbde9-200d-45bc-8fc0-9002a91569a4"
+   },
+   "lego": {
+    "lego_id": "S0004L02",
+    "known_text": "用英语",
+    "target_text": "In English",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0008L02U06": {
+   "seed": {
+    "seed_number": 8,
+    "known_text": "我打算试着解释我的意思",
+    "target_text": "I'm going to try to explain what I mean",
+    "known_audio_id": "806bf48c-ea9c-4e43-98cf-855146a34cc4",
+    "target1_audio_id": "747edfe2-c67c-4076-9a50-209792189b7b",
+    "target2_audio_id": "0e079b34-df8b-40a1-aa4b-148878270039"
+   },
+   "lego": {
+    "lego_id": "S0008L02",
+    "known_text": "我的意思",
+    "target_text": "What I mean",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0011L05U09": {
+   "seed": {
+    "seed_number": 11,
+    "known_text": "我想在你说完以后能说话",
+    "target_text": "I'd like to be able to speak after you finish",
+    "known_audio_id": "55b47ca0-cfea-4371-b5b0-c76763c69465",
+    "target1_audio_id": "6eea0705-4fb2-4750-891c-519e482e58bb",
+    "target2_audio_id": "e239a81b-965a-4024-843f-5ec4a1090bca"
+   },
+   "lego": {
+    "lego_id": "S0011L05",
+    "known_text": "你说完以后",
+    "target_text": "After you finish",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0013L02U09": {
+   "seed": {
+    "seed_number": 13,
+    "known_text": "你英语说得很好",
+    "target_text": "You speak English very well",
+    "known_audio_id": "d38899bf-45f4-46e0-9971-68433bc769e8",
+    "target1_audio_id": "9b15dd9b-5681-444f-ba19-ad00e757f53b",
+    "target2_audio_id": "cdfa1443-1746-426b-b0ac-35aeec7b8042"
+   },
+   "lego": {
+    "lego_id": "S0013L02",
+    "known_text": "很好",
+    "target_text": "Very well",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0015L01U08": {
+   "seed": {
+    "seed_number": 15,
+    "known_text": "我想让你明天和我说英语",
+    "target_text": "And I want you to speak English with me tomorrow",
+    "known_audio_id": "587a186a-6619-4193-8a84-8cd20d755fe1",
+    "target1_audio_id": "b271ff41-d403-4c45-bfdd-67123a8ae127",
+    "target2_audio_id": "afbbca75-6cf0-4714-8293-174ad56d08be"
+   },
+   "lego": {
+    "lego_id": "S0015L01",
+    "known_text": "和我",
+    "target_text": "With me",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0020L02U09": {
+   "seed": {
+    "seed_number": 20,
+    "known_text": "你想快点知道他的名字",
+    "target_text": "You want to learn his name quickly",
+    "known_audio_id": "d30215dd-4b07-4b13-802c-5d50999c88bb",
+    "target1_audio_id": "b1c7d4af-babe-41ef-b244-0b9af59945b4",
+    "target2_audio_id": "a44ebbe2-4b7c-4367-8c21-8ef9d3f586fa"
+   },
+   "lego": {
+    "lego_id": "S0020L02",
+    "known_text": "他的名字",
+    "target_text": "His name",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0021L04U06": {
+   "seed": {
+    "seed_number": 21,
+    "known_text": "你为什么在学她的名字？",
+    "target_text": "Why are you learning her name?",
+    "known_audio_id": "50aca126-04a1-4268-8b7c-f180e146773b",
+    "target1_audio_id": "c1087801-a0c3-4b4b-936e-8e0915ee8465",
+    "target2_audio_id": "4a0965fb-751e-4a46-b5f3-2d2a697ab57c"
+   },
+   "lego": {
+    "lego_id": "S0021L04",
+    "known_text": "她的",
+    "target_text": "Her",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0023L03U09": {
+   "seed": {
+    "seed_number": 23,
+    "known_text": "我打算很快开始多说",
+    "target_text": "I'm going to start talking more soon",
+    "known_audio_id": "f2709f72-1f09-4d68-8a65-edf9206ed578",
+    "target1_audio_id": "60bbe20d-4c70-4820-b579-f9e698362587",
+    "target2_audio_id": "80da2e09-0427-44d7-823a-d298c0666f7d"
+   },
+   "lego": {
+    "lego_id": "S0023L03",
+    "known_text": "很快",
+    "target_text": "Soon",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0025L04U06": {
+   "seed": {
+    "seed_number": 25,
+    "known_text": "在我必须走之前你能帮我吗？",
+    "target_text": "Are you going to help me before I have to go?",
+    "known_audio_id": "d0620f37-62c6-4e1f-873a-aecb6f3f3cdf",
+    "target1_audio_id": "fb2c2315-99ae-4adf-a1dc-dde8b86fd4ad",
+    "target2_audio_id": "6c883f23-b155-48f1-a42f-8e7a45c4e8c1"
+   },
+   "lego": {
+    "lego_id": "S0025L04",
+    "known_text": "帮我",
+    "target_text": "To help me",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0026L04U06": {
+   "seed": {
+    "seed_number": 26,
+    "known_text": "我喜欢那种快要准备好出发的感觉",
+    "target_text": "I like feeling as if I'm nearly ready to go",
+    "known_audio_id": "b403e554-3104-416a-9f50-79b25dd3c74f",
+    "target1_audio_id": "b51837a2-1bc7-4610-8590-55b5f6969754",
+    "target2_audio_id": "cb067b9b-4ba4-43cf-85d8-2f9d1b3d7a0b"
+   },
+   "lego": {
+    "lego_id": "S0026L04",
+    "known_text": "快要准备好",
+    "target_text": "Nearly ready",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0030L03U06": {
+   "seed": {
+    "seed_number": 30,
+    "known_text": "我昨天想问你一件事",
+    "target_text": "I wanted to ask you something yesterday",
+    "known_audio_id": "298be65f-f2ee-4d08-9d9a-85a32e05a23e",
+    "target1_audio_id": "d0278a09-fa37-4605-bf20-b4465cd72125",
+    "target2_audio_id": "843dee4c-06c3-4d09-9b14-31b1324168aa"
+   },
+   "lego": {
+    "lego_id": "S0030L03",
+    "known_text": "昨天",
+    "target_text": "Yesterday",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0031L01U06": {
+   "seed": {
+    "seed_number": 31,
+    "known_text": "你今晚想和我说话",
+    "target_text": "You wanted to speak with me tonight",
+    "known_audio_id": "7fcb5954-e0dd-4ce1-ac41-6c376da2bd58",
+    "target1_audio_id": "c06fb89c-f915-43ee-b41c-69c0a245c301",
+    "target2_audio_id": "0c427289-dcc9-4b92-86ce-33e45f3ac922"
+   },
+   "lego": {
+    "lego_id": "S0031L01",
+    "known_text": "今晚",
+    "target_text": "Tonight",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0034L05U06": {
+   "seed": {
+    "seed_number": 34,
+    "known_text": "他不想在别人在的时候保持安静",
+    "target_text": "He doesn't want to be quiet when other people are here",
+    "known_audio_id": "484b8382-6cdc-4918-a866-869d205d8e35",
+    "target1_audio_id": "6c205d11-dc72-48a3-9e60-94f08c1add6c",
+    "target2_audio_id": "acebd3bc-1404-484b-90d0-84937f197f1c"
+   },
+   "lego": {
+    "lego_id": "S0034L05",
+    "known_text": "他不想",
+    "target_text": "He doesn't want",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0035L03U06": {
+   "seed": {
+    "seed_number": 35,
+    "known_text": "她今天下午不想读任何东西",
+    "target_text": "She doesn't want to read anything this afternoon",
+    "known_audio_id": "b026e818-3a26-4da2-acdf-06c5fbb3698b",
+    "target1_audio_id": "b88bc1c3-d921-474e-8f28-30448fbfd0e3",
+    "target2_audio_id": "525da92d-f6a4-4084-8f74-27c2ee7e3e6a"
+   },
+   "lego": {
+    "lego_id": "S0035L03",
+    "known_text": "今天下午",
+    "target_text": "This afternoon",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0040L02U06": {
+   "seed": {
+    "seed_number": 40,
+    "known_text": "你现在感觉怎么样？",
+    "target_text": "How do you feel at the moment?",
+    "known_audio_id": "64287864-83f9-41ea-a1bf-af962b040d83",
+    "target1_audio_id": "e3493c70-9f88-4efe-a903-f9289276d3c1",
+    "target2_audio_id": "961e9b49-714b-4f17-8bce-07e38958452d"
+   },
+   "lego": {
+    "lego_id": "S0040L02",
+    "known_text": "感觉怎么样",
+    "target_text": "How do you feel",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0064L02U06": {
+   "seed": {
+    "seed_number": 64,
+    "known_text": "学英语不容易，但是很有趣",
+    "target_text": "Learning English isn't easy but it is fun",
+    "known_audio_id": "bc791807-cbce-4d0d-8f91-f07ae65718d2",
+    "target1_audio_id": "0ffc4622-0a67-42ed-b537-425769407087",
+    "target2_audio_id": "15605400-43a2-44d0-8481-bfeedc15c901"
+   },
+   "lego": {
+    "lego_id": "S0064L02",
+    "known_text": "不容易但是很有趣",
+    "target_text": "Isn't easy but it is fun",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0076L02U06": {
+   "seed": {
+    "seed_number": 76,
+    "known_text": "我对自己已经学到的东西很满意",
+    "target_text": "I'm very happy with how much I've learnt already",
+    "known_audio_id": "1f886955-ead7-498d-af49-7e621e5c5e5b",
+    "target1_audio_id": "783bf36c-aeab-4571-bf88-f8611c43f6dd",
+    "target2_audio_id": "ca9d13e4-9b48-473d-a5e5-80537192c505"
+   },
+   "lego": {
+    "lego_id": "S0076L02",
+    "known_text": "已经学到的东西很满意",
+    "target_text": "Very happy with how much I've learnt already",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0077L01U06": {
+   "seed": {
+    "seed_number": 77,
+    "known_text": "我对自己开始理解的速度感到惊讶",
+    "target_text": "I'm surprised at how quickly I'm starting to understand",
+    "known_audio_id": "424a9d3c-ebe1-407f-9bb1-0ce86834bbb5",
+    "target1_audio_id": "32911a85-12a3-4451-9ef8-55e9742fbcd0",
+    "target2_audio_id": "a1bcab41-d4e4-4732-a5c6-074223ee85cc"
+   },
+   "lego": {
+    "lego_id": "S0077L01",
+    "known_text": "惊讶",
+    "target_text": "Surprised",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0080L01U07": {
+   "seed": {
+    "seed_number": 80,
+    "known_text": "我不确定我什么时候能准备好",
+    "target_text": "I'm not sure when I'll be ready",
+    "known_audio_id": "b1f416dc-7269-4655-bede-71d09507825b",
+    "target1_audio_id": "1fefbae8-7e9a-49e4-ad36-d045610dadb9",
+    "target2_audio_id": "8911c8aa-8619-4cd7-a581-def3b3b39302"
+   },
+   "lego": {
+    "lego_id": "S0080L01",
+    "known_text": "能准备好",
+    "target_text": "I'll be ready",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L03U06": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "我不打算等你。为什么不等？",
+    "target_text": "I'm not going to wait for you. Why not?",
+    "known_audio_id": "3a2f3066-2b0b-4a9a-90ec-ffac94a8837c",
+    "target1_audio_id": "5cc7f456-0057-477f-8393-f77cb8b71e8b",
+    "target2_audio_id": "8b6ab253-71a2-4f4c-8cdd-4866b06ae823"
+   },
+   "lego": {
+    "lego_id": "S0082L03",
+    "known_text": "为什么不",
+    "target_text": "Why not",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0088L01U06": {
+   "seed": {
+    "seed_number": 88,
+    "known_text": "我还没准备好和不认识的人说话",
+    "target_text": "I'm not ready to talk to people I don't know yet",
+    "known_audio_id": "deea7ced-b084-4d70-9634-24982ae67e39",
+    "target1_audio_id": "d64e06ca-4066-449a-87c4-11b6021a4cbd",
+    "target2_audio_id": "4c6a8dff-c3ad-4d60-b5ca-c93c1d9734f8"
+   },
+   "lego": {
+    "lego_id": "S0088L01",
+    "known_text": "和不认识的人说话",
+    "target_text": "To talk to people I don't know",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0090L02U06": {
+   "seed": {
+    "seed_number": 90,
+    "known_text": "如果你能说慢一点就好了",
+    "target_text": "If you can speak more slowly that would be great",
+    "known_audio_id": "34d87d38-9af2-4cb7-a80d-aba122e698d6",
+    "target1_audio_id": "8927f46a-2e85-496a-8828-f6d7a3b6eead",
+    "target2_audio_id": "029a9110-9d98-45ce-8d71-234c91104d2d"
+   },
+   "lego": {
+    "lego_id": "S0090L02",
+    "known_text": "就好了",
+    "target_text": "That would be great",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0091L01U06": {
+   "seed": {
+    "seed_number": 91,
+    "known_text": "要想得够快来及时回答是很难的",
+    "target_text": "It's difficult to think quickly enough to answer in time",
+    "known_audio_id": "1d97af5c-7451-4793-8de4-cfa7aa1090f8",
+    "target1_audio_id": "6adfe4d0-be35-404f-895d-b2675005f3f0",
+    "target2_audio_id": "7254f28c-e23f-4f5e-9d5a-939cd832f98a"
+   },
+   "lego": {
+    "lego_id": "S0091L01",
+    "known_text": "想得够快来及时回答",
+    "target_text": "To think quickly enough to answer in time",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0092L02U06": {
+   "seed": {
+    "seed_number": 92,
+    "known_text": "我想继续这样做一会儿",
+    "target_text": "I'd like to keep on doing this for a while",
+    "known_audio_id": "2f62a185-767b-415d-840c-d5dd2ac9509b",
+    "target1_audio_id": "e46e9ca3-5cb9-468a-8c07-dcd9fa97bc1c",
+    "target2_audio_id": "85b50c46-79fb-47cb-96a6-1d6791c9407a"
+   },
+   "lego": {
+    "lego_id": "S0092L02",
+    "known_text": "一会儿",
+    "target_text": "For a while",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0094L02U06": {
+   "seed": {
+    "seed_number": 94,
+    "known_text": "这是唯一能行得通的办法",
+    "target_text": "This is the only way it will work",
+    "known_audio_id": "57b6a12b-5fa4-40fd-b145-09ffccd0a1bd",
+    "target1_audio_id": "d24becc7-40d7-4ead-a304-993a3eb2c04b",
+    "target2_audio_id": "b60ffd64-4327-4642-861e-daecf1494160"
+   },
+   "lego": {
+    "lego_id": "S0094L02",
+    "known_text": "能行得通",
+    "target_text": "It will work",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0095L02U06": {
+   "seed": {
+    "seed_number": 95,
+    "known_text": "你准备好坐下一班车回家了吗？",
+    "target_text": "Are you ready to go home on the next bus?",
+    "known_audio_id": "4167fe02-c957-40f7-a649-15cd947219f5",
+    "target1_audio_id": "54d84dd3-a0d1-47b5-9424-9683d911bb9d",
+    "target2_audio_id": "118e6db0-e451-4a2b-94b0-977818537024"
+   },
+   "lego": {
+    "lego_id": "S0095L02",
+    "known_text": "坐下一班车",
+    "target_text": "On the next bus",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0096L02U06": {
+   "seed": {
+    "seed_number": 96,
+    "known_text": "不，我还没准备好，我需要多一点时间",
+    "target_text": "No I'm not ready yet, I need a little more time",
+    "known_audio_id": "acdad24f-fc15-4f58-8058-19bfff60026f",
+    "target1_audio_id": "d84dc803-5135-46b1-96db-6a52bfe9a0f0",
+    "target2_audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+   },
+   "lego": {
+    "lego_id": "S0096L02",
+    "known_text": "多一点时间",
+    "target_text": "A little more time",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0097L01U06": {
+   "seed": {
+    "seed_number": 97,
+    "known_text": "是的，你想走的时候我就准备好了",
+    "target_text": "Yes I'm ready to go as soon as you want",
+    "known_audio_id": "c6829d95-66d2-4565-90b6-b9b28b482f5f",
+    "target1_audio_id": "daf2efc4-6974-41f2-871a-d5e735f17a6f",
+    "target2_audio_id": "9fe209c3-eeb1-464b-ba5f-97796ab048d7"
+   },
+   "lego": {
+    "lego_id": "S0097L01",
+    "known_text": "好",
+    "target_text": "Yes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0099L02U06": {
+   "seed": {
+    "seed_number": 99,
+    "known_text": "你应该问问自己为什么不行",
+    "target_text": "You should ask yourself why it's not working",
+    "known_audio_id": "032532fa-abde-48a0-a38a-9db06e804011",
+    "target1_audio_id": "d7a67cf1-b542-4a2e-87e8-600cf4ae2ba1",
+    "target2_audio_id": "f1e033ae-6255-457d-a627-82f620c89cee"
+   },
+   "lego": {
+    "lego_id": "S0099L02",
+    "known_text": "不行",
+    "target_text": "It's not working",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0107L02U06": {
+   "seed": {
+    "seed_number": 107,
+    "known_text": "我们希望看到你在做什么",
+    "target_text": "We hoped to see what you were doing",
+    "known_audio_id": "d9054bb9-5f4f-4136-895c-a3f66d3fb69b",
+    "target1_audio_id": "ef1038f7-4d14-4485-b37a-fbce9568c6e7",
+    "target2_audio_id": "4e1b3390-8c08-4eb1-bffa-5d674cfa6aa7"
+   },
+   "lego": {
+    "lego_id": "S0107L02",
+    "known_text": "你在做什么",
+    "target_text": "What you were doing",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0110L02U06": {
+   "seed": {
+    "seed_number": 110,
+    "known_text": "我们是朋友，结束以后我想放松一下",
+    "target_text": "We're friends, and after we finish I'd like to relax",
+    "known_audio_id": "f7b03747-6f7f-4cf2-bb7c-786f797aea7f",
+    "target1_audio_id": "b4e0ec54-d66c-4b91-b40e-dc7b890b2563",
+    "target2_audio_id": "1e46f2a9-8bdf-4677-a016-d9376716be4c"
+   },
+   "lego": {
+    "lego_id": "S0110L02",
+    "known_text": "放松一下",
+    "target_text": "To relax",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0112L02U06": {
+   "seed": {
+    "seed_number": 112,
+    "known_text": "那非常有意思，我没想到",
+    "target_text": "That was very interesting, and I wasn't expecting it",
+    "known_audio_id": "23219016-c853-4850-adeb-392aff04ac7a",
+    "target1_audio_id": "4aa7d891-2f26-47b2-abb7-867113ede09c",
+    "target2_audio_id": "f104e66d-741e-4060-9d0d-8c3826ac7dd4"
+   },
+   "lego": {
+    "lego_id": "S0112L02",
+    "known_text": "没想到",
+    "target_text": "I wasn't expecting",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0115L01U06": {
+   "seed": {
+    "seed_number": 115,
+    "known_text": "我觉得我还没准备好进行对话",
+    "target_text": "I don't feel as if I'm ready to have a conversation",
+    "known_audio_id": "5c37f2b4-b897-4380-ae00-d0738eea9bfa",
+    "target1_audio_id": "1e91320e-91a5-487b-b3fc-553f3cee8e9d",
+    "target2_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d"
+   },
+   "lego": {
+    "lego_id": "S0115L01",
+    "known_text": "进行对话",
+    "target_text": "To have a conversation",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0117L02U06": {
+   "seed": {
+    "seed_number": 117,
+    "known_text": "我肯定比上次我们聊天的时候做得好了",
+    "target_text": "I'm definitely doing better than I was last time we talked to each other",
+    "known_audio_id": "a9814ab2-1e88-456f-bcb2-3c20061cec36",
+    "target1_audio_id": "5dcc79ea-cd83-47e3-b554-056988f984e7",
+    "target2_audio_id": "1e91876c-cd0e-4db8-99a6-a7b037c0997e"
+   },
+   "lego": {
+    "lego_id": "S0117L02",
+    "known_text": "上次我们聊天的时候",
+    "target_text": "Last time we talked to each other",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0119L02U06": {
+   "seed": {
+    "seed_number": 119,
+    "known_text": "你走之前我能问你一件事吗？",
+    "target_text": "Can I ask you something before you leave?",
+    "known_audio_id": "af8504a5-d954-436e-aa6a-cb1e9dfb9d60",
+    "target1_audio_id": "8bdac048-6190-4912-8ec5-6b6f01495b93",
+    "target2_audio_id": "768af793-4d1e-4e39-b2d1-59cf82d17846"
+   },
+   "lego": {
+    "lego_id": "S0119L02",
+    "known_text": "你走之前",
+    "target_text": "Before you leave",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0121L03U06": {
+   "seed": {
+    "seed_number": 121,
+    "known_text": "你不喜欢用你的车，这很不寻常",
+    "target_text": "It's unusual that you don't like to use your car",
+    "known_audio_id": "e29c3ec7-39b4-45fc-9af8-9201087989d6",
+    "target1_audio_id": "5321b3b6-b48a-46db-8e93-3bc798b08465",
+    "target2_audio_id": "058f72c0-0c10-4714-be63-b9db5d0732ac"
+   },
+   "lego": {
+    "lego_id": "S0121L03",
+    "known_text": "你的车",
+    "target_text": "Your car",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0122L02U06": {
+   "seed": {
+    "seed_number": 122,
+    "known_text": "开始觉得容易了，我对进展很兴奋",
+    "target_text": "It's starting to feel easier and I'm excited about how it's going",
+    "known_audio_id": "3f4845f1-3b5c-48d8-8947-09a69b0b5f70",
+    "target1_audio_id": "1a038c2f-631b-4807-8bed-a6a2f1a6e04e",
+    "target2_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375"
+   },
+   "lego": {
+    "lego_id": "S0122L02",
+    "known_text": "对进展很兴奋",
+    "target_text": "Excited about how it's going",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0124L01U06": {
+   "seed": {
+    "seed_number": 124,
+    "known_text": "我那时候觉得那是个好主意",
+    "target_text": "I thought that was a good idea",
+    "known_audio_id": "74985fcd-0067-4949-bebf-b2a4b40a2aed",
+    "target1_audio_id": "c1c8fe02-a94e-4b10-9e13-73e93088a752",
+    "target2_audio_id": "36831321-51b4-4779-83c7-82d1c2946a8d"
+   },
+   "lego": {
+    "lego_id": "S0124L01",
+    "known_text": "那时候觉得那是个好主意",
+    "target_text": "Thought that was a good idea",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0126L02U06": {
+   "seed": {
+    "seed_number": 126,
+    "known_text": "这项工作正在改变我的大脑结构",
+    "target_text": "This work is changing the shape of my brain",
+    "known_audio_id": "d1017f21-1507-44cc-8a4a-2980720d3132",
+    "target1_audio_id": "b89be063-e187-49e8-a857-bfec2e22ec43",
+    "target2_audio_id": "323e58e0-f2bf-4bd6-b802-3430a3e88303"
+   },
+   "lego": {
+    "lego_id": "S0126L02",
+    "known_text": "我的大脑结构",
+    "target_text": "The shape of my brain",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0129L02U06": {
+   "seed": {
+    "seed_number": 129,
+    "known_text": "你做得这么好，我太高兴了",
+    "target_text": "I'm so happy that you're doing so well",
+    "known_audio_id": "ed2f9d57-b60f-4210-927d-f63d4ddcb8b7",
+    "target1_audio_id": "8f7c60fa-7694-4dbb-bd46-1fedbeb60757",
+    "target2_audio_id": "02ed50f9-bf9a-4946-8e8f-905ce4f6b4a9"
+   },
+   "lego": {
+    "lego_id": "S0129L02",
+    "known_text": "做得这么好",
+    "target_text": "You're doing so well",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0131L02U06": {
+   "seed": {
+    "seed_number": 131,
+    "known_text": "我脑子里有太多想法了",
+    "target_text": "There are too many ideas going around in my head",
+    "known_audio_id": "f4cfd7ca-5646-42f8-9437-73133bb2e59d",
+    "target1_audio_id": "1f131c8a-8a24-459c-9026-80928424ea0c",
+    "target2_audio_id": "398c4544-56a5-4217-8a2b-6ddfa307ae8c"
+   },
+   "lego": {
+    "lego_id": "S0131L02",
+    "known_text": "太多想法",
+    "target_text": "Too many ideas",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0132L02U06": {
+   "seed": {
+    "seed_number": 132,
+    "known_text": "那没有她说的那么令人兴奋",
+    "target_text": "That's less exciting than what she was saying",
+    "known_audio_id": "4f8a388a-ac65-4e6f-ab88-6b42657f8607",
+    "target1_audio_id": "25629391-1620-4d6e-8634-4a0cbe7c94be",
+    "target2_audio_id": "96ebd897-6d29-43e9-b846-b00b56e4cf42"
+   },
+   "lego": {
+    "lego_id": "S0132L02",
+    "known_text": "她说的",
+    "target_text": "What she was saying",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0133L02U06": {
+   "seed": {
+    "seed_number": 133,
+    "known_text": "一起工作的时候你会很了解一个人",
+    "target_text": "You get to know someone very well when you work together",
+    "known_audio_id": "bc0d3d24-3a49-4d39-a39c-03196d8e28e5",
+    "target1_audio_id": "5022852e-a257-4acd-bfe5-8c2b791731c5",
+    "target2_audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd"
+   },
+   "lego": {
+    "lego_id": "S0133L02",
+    "known_text": "一起",
+    "target_text": "Together",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0134L03U06": {
+   "seed": {
+    "seed_number": 134,
+    "known_text": "和他们一起做困难的事情不是问题",
+    "target_text": "It's not a problem when you work at something difficult with them",
+    "known_audio_id": "79de0421-b01f-4ccb-b53d-965878a69f83",
+    "target1_audio_id": "cb9ce419-00de-4b4d-b266-2a036084f02e",
+    "target2_audio_id": "7905f342-2385-45aa-b5fb-a1a28b12464f"
+   },
+   "lego": {
+    "lego_id": "S0134L03",
+    "known_text": "和他们",
+    "target_text": "With them",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0138L03U06": {
+   "seed": {
+    "seed_number": 138,
+    "known_text": "这就是我朋友想和我们见面的地方",
+    "target_text": "This was where my friend wanted to meet us",
+    "known_audio_id": "a7811386-19f0-4752-ab6b-d24a734c44a2",
+    "target1_audio_id": "c6316673-14ef-4716-82cb-264a63f340df",
+    "target2_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+   },
+   "lego": {
+    "lego_id": "S0138L03",
+    "known_text": "和我们见面",
+    "target_text": "To meet us",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0139L02U06": {
+   "seed": {
+    "seed_number": 139,
+    "known_text": "对不起，我需要这么早就走",
+    "target_text": "I'm sorry that I need to leave so early",
+    "known_audio_id": "4315b97f-4bc8-4965-96f2-9330f599409b",
+    "target1_audio_id": "01a670a1-ae5c-4d01-b967-cb78b3d75f2a",
+    "target2_audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1"
+   },
+   "lego": {
+    "lego_id": "S0139L02",
+    "known_text": "这么早就走",
+    "target_text": "To leave so early",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0140L02U06": {
+   "seed": {
+    "seed_number": 140,
+    "known_text": "对不起，我看不到你想给我看的东西",
+    "target_text": "I'm sorry that I can't see what you're trying to show me",
+    "known_audio_id": "510d1de0-c85d-4f4f-8c76-b32f2cae9547",
+    "target1_audio_id": "a350d77d-9128-4e39-9011-5cf3ac0a1ee8",
+    "target2_audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922"
+   },
+   "lego": {
+    "lego_id": "S0140L02",
+    "known_text": "你想给我看的东西",
+    "target_text": "What you're trying to show me",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0142L02U07": {
+   "seed": {
+    "seed_number": 142,
+    "known_text": "你真好，我很感谢你的帮助",
+    "target_text": "That's very kind of you and I'm grateful to you for helping",
+    "known_audio_id": "6d89a19d-8c78-4c85-93c3-7ec2b36b8652",
+    "target1_audio_id": "c66e427e-8348-4647-8dd0-ffca6609811b",
+    "target2_audio_id": "4248dfa4-9a66-4bba-a8cd-7978a7c691cf"
+   },
+   "lego": {
+    "lego_id": "S0142L02",
+    "known_text": "很感谢你的帮助",
+    "target_text": "Grateful to you for helping",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0144L01U06": {
+   "seed": {
+    "seed_number": 144,
+    "known_text": "我今天早上醒得比我想的早",
+    "target_text": "I woke earlier than I wanted to this morning",
+    "known_audio_id": "75a13417-ade4-40fe-83ba-2c7995637040",
+    "target1_audio_id": "08ef98a5-d149-493a-9aef-3cda59ce499d",
+    "target2_audio_id": "6cdbae69-48c8-4836-b1d2-acdc7ac46644"
+   },
+   "lego": {
+    "lego_id": "S0144L01",
+    "known_text": "醒得",
+    "target_text": "Woke",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0146L02U06": {
+   "seed": {
+    "seed_number": 146,
+    "known_text": "自从我们试着修好它以后，好像什么都不行了",
+    "target_text": "Nothing seems to be working since we tried to fix it",
+    "known_audio_id": "eb962d0b-807d-4c80-885a-386ed6985ca1",
+    "target1_audio_id": "778ed0ab-06d3-45b2-81b6-06a4cf1913c0",
+    "target2_audio_id": "97c6d9f1-2ba8-4455-85e3-d451475dbef9"
+   },
+   "lego": {
+    "lego_id": "S0146L02",
+    "known_text": "自从我们试着修好它以后",
+    "target_text": "Since we tried to fix it",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0147L02U06": {
+   "seed": {
+    "seed_number": 147,
+    "known_text": "她看到我紧张的时候很友好",
+    "target_text": "She was very kind when she saw me feeling nervous",
+    "known_audio_id": "6d7b2d9d-19eb-4211-ab19-3a90ff48ccc5",
+    "target1_audio_id": "3c6023f4-7f7e-41cd-a2d0-de208ffff1c4",
+    "target2_audio_id": "564e7b71-6774-44a0-804a-35d3dbbe8908"
+   },
+   "lego": {
+    "lego_id": "S0147L02",
+    "known_text": "看到",
+    "target_text": "She saw me feeling nervous",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0148L01U06": {
+   "seed": {
+    "seed_number": 148,
+    "known_text": "我回答不了的时候他不太有耐心",
+    "target_text": "He wasn't very patient when I couldn't answer",
+    "known_audio_id": "2cb2fdff-4ea8-4cad-9299-56ed51f3b146",
+    "target1_audio_id": "144897b6-679e-40fd-93b5-6de8df584710",
+    "target2_audio_id": "11df6998-50cb-49a7-b899-d71262a688f8"
+   },
+   "lego": {
+    "lego_id": "S0148L01",
+    "known_text": "他不太有耐心",
+    "target_text": "He wasn't very patient",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0152L02U06": {
+   "seed": {
+    "seed_number": 152,
+    "known_text": "如果我知道你想要什么，我会做得不一样",
+    "target_text": "I would have done it differently if I had known what you wanted",
+    "known_audio_id": "488a517e-7e2c-40cd-92fc-ac30dd192cff",
+    "target1_audio_id": "c5be72e3-6dfd-41cb-9399-1300e4ab2aa4",
+    "target2_audio_id": "7dc29f92-8b83-4ce6-a9f1-fea39f604945"
+   },
+   "lego": {
+    "lego_id": "S0152L02",
+    "known_text": "如果我知道你想要什么",
+    "target_text": "If I had known what you wanted",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0153L02U06": {
+   "seed": {
+    "seed_number": 153,
+    "known_text": "我不会用完全一样的方式说",
+    "target_text": "I wouldn't have said it in exactly the same way",
+    "known_audio_id": "b267b33b-785a-4f14-995d-20ef4dfcafff",
+    "target1_audio_id": "94e9a944-d139-4d3b-85df-4cf56ec05075",
+    "target2_audio_id": "f66140a3-06c7-4a0e-b3f4-f49673482629"
+   },
+   "lego": {
+    "lego_id": "S0153L02",
+    "known_text": "用完全一样的方式",
+    "target_text": "In exactly the same way",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0154L01U06": {
+   "seed": {
+    "seed_number": 154,
+    "known_text": "你星期六晚上想在哪里见面？",
+    "target_text": "Where do you want to meet on Saturday night?",
+    "known_audio_id": "cf99fb41-396e-4cfb-b309-7ef9b236cc98",
+    "target1_audio_id": "d84f6095-d454-4c0a-aea9-d787dc55d61d",
+    "target2_audio_id": "ee81ba2c-d47b-4f4b-8dd7-45b24735b530"
+   },
+   "lego": {
+    "lego_id": "S0154L01",
+    "known_text": "星期六晚上",
+    "target_text": "On Saturday night",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0157L02U06": {
+   "seed": {
+    "seed_number": 157,
+    "known_text": "下个月我不能去那里",
+    "target_text": "I won't be able to be there next month",
+    "known_audio_id": "57c3be4c-6ab7-495b-86eb-1e6a8d777e51",
+    "target1_audio_id": "477ef56d-4489-4a6e-a955-6185e1a39630",
+    "target2_audio_id": "aae34b9b-7880-428f-bce1-2f5f917540e3"
+   },
+   "lego": {
+    "lego_id": "S0157L02",
+    "known_text": "下个月",
+    "target_text": "Next month",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0161L02U06": {
+   "seed": {
+    "seed_number": 161,
+    "known_text": "星期天早上你能把那本书给我吗？",
+    "target_text": "Can you give me that book on Sunday morning?",
+    "known_audio_id": "d308fb2d-f132-4825-847b-a47b2cd03c57",
+    "target1_audio_id": "03f130de-abf7-4dcd-84ef-0302e0e7ca9e",
+    "target2_audio_id": "b89a5d50-772d-467c-8a69-fed6efa42c60"
+   },
+   "lego": {
+    "lego_id": "S0161L02",
+    "known_text": "星期天早上",
+    "target_text": "On Sunday morning",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0162L01U06": {
+   "seed": {
+    "seed_number": 162,
+    "known_text": "你觉得那个怎么样？",
+    "target_text": "What do you think about that?",
+    "known_audio_id": "8325f949-8f2f-45f3-9092-f8214a40d097",
+    "target1_audio_id": "f3a8081a-5d8a-4f8a-b3ce-860438df84c8",
+    "target2_audio_id": "cc17f925-73bd-49c9-b36c-7b2c902a5341"
+   },
+   "lego": {
+    "lego_id": "S0162L01",
+    "known_text": "觉得那个怎么样",
+    "target_text": "Think about that",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0163L01U06": {
+   "seed": {
+    "seed_number": 163,
+    "known_text": "我觉得很有意思",
+    "target_text": "I think that it's interesting",
+    "known_audio_id": "682b3b91-6e68-4de9-81df-68d3c43e0cc9",
+    "target1_audio_id": "d3f41c2a-631a-44c1-919a-a60326aa7bc2",
+    "target2_audio_id": "9f524b51-3ead-4ff8-b648-7b279d7b2dc1"
+   },
+   "lego": {
+    "lego_id": "S0163L01",
+    "known_text": "觉得很有意思",
+    "target_text": "Think that it's interesting",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0166L01U06": {
+   "seed": {
+    "seed_number": 166,
+    "known_text": "我的名字不是很特别",
+    "target_text": "My name is not very unusual",
+    "known_audio_id": "ecbca6d3-6884-4dde-9c31-369378384857",
+    "target1_audio_id": "a0d7e8f4-5a17-47f7-a7da-5297a4de6b65",
+    "target2_audio_id": "d09ee5d0-a794-4bd2-af77-aa2d9c70ee81"
+   },
+   "lego": {
+    "lego_id": "S0166L01",
+    "known_text": "我的名字",
+    "target_text": "My name",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0168L02U06": {
+   "seed": {
+    "seed_number": 168,
+    "known_text": "然后我晚一点就能来帮忙了",
+    "target_text": "And then I'll be able to come and help later on",
+    "known_audio_id": "febfcde8-764f-497d-bdb9-812a4d9056a2",
+    "target1_audio_id": "fdbd1edc-5d84-4e22-8710-fcaa22d21408",
+    "target2_audio_id": "c2a4abeb-d9d7-462e-aeab-b8c7d088a423"
+   },
+   "lego": {
+    "lego_id": "S0168L02",
+    "known_text": "晚一点就能来帮忙",
+    "target_text": "I'll be able to come and help",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0173L01U06": {
+   "seed": {
+    "seed_number": 173,
+    "known_text": "不用了谢谢，我自己能行",
+    "target_text": "No thank you I can manage on my own",
+    "known_audio_id": "68f8ce65-b898-4cdc-a2b7-11379dbc9d32",
+    "target1_audio_id": "778d1a4b-2790-47f5-9bcd-081236d351ef",
+    "target2_audio_id": "de13fc62-a42e-4617-9b07-c5d646d44c73"
+   },
+   "lego": {
+    "lego_id": "S0173L01",
+    "known_text": "自己能行",
+    "target_text": "Can manage on my own",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0180L01U06": {
+   "seed": {
+    "seed_number": 180,
+    "known_text": "我想看一会儿书",
+    "target_text": "I'd like to read my book for a while",
+    "known_audio_id": "975d6de7-d0bb-4286-9c93-281fdfa74ab5",
+    "target1_audio_id": "06c9dd31-034a-40af-8fd1-e8e1135d2186",
+    "target2_audio_id": "09468477-573a-4872-b598-803fd705749b"
+   },
+   "lego": {
+    "lego_id": "S0180L01",
+    "known_text": "看一会儿书",
+    "target_text": "To read my book for a while",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0182L03U06": {
+   "seed": {
+    "seed_number": 182,
+    "known_text": "你在哪里看到过我的钥匙吗？",
+    "target_text": "Have you seen my keys anywhere?",
+    "known_audio_id": "d5c05f1b-ec83-4715-9f43-eddea4841aa8",
+    "target1_audio_id": "fbcbb54e-79e7-4a3d-b7be-51372f06aba3",
+    "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b"
+   },
+   "lego": {
+    "lego_id": "S0182L03",
+    "known_text": "我的钥匙",
+    "target_text": "My keys",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0183L02U06": {
+   "seed": {
+    "seed_number": 183,
+    "known_text": "没有，恐怕我没看到过",
+    "target_text": "No I'm afraid I haven't seen them",
+    "known_audio_id": "e12502f4-c1f6-4dcb-99ab-f0a5d3d00114",
+    "target1_audio_id": "dbb4f739-d571-4036-b61f-1680255ffc6f",
+    "target2_audio_id": "9157e133-8b49-4bc0-a6e4-57b0991d160c"
+   },
+   "lego": {
+    "lego_id": "S0183L02",
+    "known_text": "没看到过",
+    "target_text": "Haven't seen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0184L02U06": {
+   "seed": {
+    "seed_number": 184,
+    "known_text": "看到过，刚才在办公室看到了",
+    "target_text": "Yes I saw them in the office a while ago",
+    "known_audio_id": "f7b56fc3-cfe6-4fe1-8abc-8cd3288098ec",
+    "target1_audio_id": "8e1d604d-aaaf-45ce-b720-65af6a272cc6",
+    "target2_audio_id": "f8f820e1-4315-4f2e-ab6e-00bbc8199951"
+   },
+   "lego": {
+    "lego_id": "S0184L02",
+    "known_text": "刚才",
+    "target_text": "Ago",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0185L01U06": {
+   "seed": {
+    "seed_number": 185,
+    "known_text": "我觉得你把它们落在公司了",
+    "target_text": "I think you left them at work",
+    "known_audio_id": "cdd448cb-7af6-4fb0-a7b8-683f75b093ce",
+    "target1_audio_id": "9a4c737c-2de1-490d-8880-61bc4168e43e",
+    "target2_audio_id": "ef34e53b-a9b2-4cc8-94ab-62b3c1a0b69a"
+   },
+   "lego": {
+    "lego_id": "S0185L01",
+    "known_text": "落在公司",
+    "target_text": "Left them at work",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0186L01U06": {
+   "seed": {
+    "seed_number": 186,
+    "known_text": "你下个星期想说点不同的东西吗？",
+    "target_text": "Do you want to talk about something different next week?",
+    "known_audio_id": "23abbbdd-54ab-4107-bbce-b5908e65b306",
+    "target1_audio_id": "99957d40-5cd6-4830-86a2-8d2803096d5c",
+    "target2_audio_id": "88c36369-9683-48df-b411-bd3498de437a"
+   },
+   "lego": {
+    "lego_id": "S0186L01",
+    "known_text": "说点不同的东西",
+    "target_text": "Talk about something different",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0195L02U06": {
+   "seed": {
+    "seed_number": 195,
+    "known_text": "我在试着找我放在桌子上的钱",
+    "target_text": "I'm trying to find the money I left on the table",
+    "known_audio_id": "9d837d4b-c2ef-49d3-aae8-94689da9a13f",
+    "target1_audio_id": "a45a2f7f-9c58-45b7-b3ac-fe83ef7669d2",
+    "target2_audio_id": "a5a108a5-d788-4017-942c-9d55a224f495"
+   },
+   "lego": {
+    "lego_id": "S0195L02",
+    "known_text": "放在桌子上",
+    "target_text": "On the table",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0196L02U06": {
+   "seed": {
+    "seed_number": 196,
+    "known_text": "你听说最新的想法了吗？",
+    "target_text": "Have you heard the latest idea?",
+    "known_audio_id": "a8ba60fc-a8c1-483b-a4f4-765beb649c02",
+    "target1_audio_id": "79de3ebc-254e-4eca-a3a3-17a47e22ec71",
+    "target2_audio_id": "12c9fa17-caa8-4e6d-82dd-81f7b08cdc6b"
+   },
+   "lego": {
+    "lego_id": "S0196L02",
+    "known_text": "最新的想法",
+    "target_text": "The latest idea",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0198L02U06": {
+   "seed": {
+    "seed_number": 198,
+    "known_text": "我女儿在政府工作",
+    "target_text": "My daughter works for the council",
+    "known_audio_id": "f2ef54b5-1f21-4fbe-aa9c-bbcfffc57323",
+    "target1_audio_id": "3428c7ae-7ec9-408e-bca6-23983a837795",
+    "target2_audio_id": "46c2f808-da49-4cfd-a50e-4e065df893a2"
+   },
+   "lego": {
+    "lego_id": "S0198L02",
+    "known_text": "政府",
+    "target_text": "Works for the council",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0200L01U06": {
+   "seed": {
+    "seed_number": 200,
+    "known_text": "他们说他们想确保我们按时完成所有的事情",
+    "target_text": "They say they want to make sure that we finish everything in time",
+    "known_audio_id": "1e04b667-328b-4099-9988-6a75b8e6a309",
+    "target1_audio_id": "60e0fc02-55f8-49b8-8cfd-5ad995b26790",
+    "target2_audio_id": "4739b4a6-27ec-4aa7-927c-b7bdc429bba8"
+   },
+   "lego": {
+    "lego_id": "S0200L01",
+    "known_text": "确保",
+    "target_text": "Make sure",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0202L02U06": {
+   "seed": {
+    "seed_number": 202,
+    "known_text": "没有人确定怎么回答这个问题",
+    "target_text": "Nobody was sure how to answer the question",
+    "known_audio_id": "8f1537bd-ee8f-4dd8-a81f-afea82a8dea6",
+    "target1_audio_id": "8f6a4b8b-1360-4058-97d2-65140407bb1b",
+    "target2_audio_id": "0443e07e-f4e6-4d70-8509-8a951d2e9ed9"
+   },
+   "lego": {
+    "lego_id": "S0202L02",
+    "known_text": "回答这个问题",
+    "target_text": "Answer the question",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0206L01U06": {
+   "seed": {
+    "seed_number": 206,
+    "known_text": "我很享受和你练习说话的机会",
+    "target_text": "I enjoy the chance to practise speaking with you",
+    "known_audio_id": "64a78b30-5a30-43d8-b7e8-875f6980be25",
+    "target1_audio_id": "219a53bb-ffd1-4c98-a75f-4861fa4e7da9",
+    "target2_audio_id": "ecd5cecc-7f3d-49c5-8ff0-072d98508bdf"
+   },
+   "lego": {
+    "lego_id": "S0206L01",
+    "known_text": "机会",
+    "target_text": "The chance",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0209L02U06": {
+   "seed": {
+    "seed_number": 209,
+    "known_text": "他们想花更多时间作为一个团体见面",
+    "target_text": "They want to spend more time meeting as a group",
+    "known_audio_id": "29f4e294-ffad-45b2-b669-c074a3fef8cf",
+    "target1_audio_id": "a9691635-4787-4487-83a5-b93123a06f99",
+    "target2_audio_id": "55476cc7-29a4-4c8e-8374-dae862669855"
+   },
+   "lego": {
+    "lego_id": "S0209L02",
+    "known_text": "作为一个团体见面",
+    "target_text": "Meeting as a group",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0212L01U06": {
+   "seed": {
+    "seed_number": 212,
+    "known_text": "他们想请求帮助",
+    "target_text": "They wanted to ask for help",
+    "known_audio_id": "f648e67b-8528-4cbc-828e-5082619dbfe9",
+    "target1_audio_id": "a3f9df48-50b3-461f-b7be-a8eed2d42b01",
+    "target2_audio_id": "99c8cddb-54c6-4b87-9208-377d18006aa9"
+   },
+   "lego": {
+    "lego_id": "S0212L01",
+    "known_text": "请求帮助",
+    "target_text": "To ask for help",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0213L01U06": {
+   "seed": {
+    "seed_number": 213,
+    "known_text": "我们不知道他们想要达到什么",
+    "target_text": "We don't know what they're trying to achieve",
+    "known_audio_id": "faa0e0e7-61a4-4b41-9a06-f5058e79326c",
+    "target1_audio_id": "22e15a75-cf9b-4324-adff-ead59b26cb73",
+    "target2_audio_id": "9d037a28-c3da-4d46-862f-b36eb8ab3dcf"
+   },
+   "lego": {
+    "lego_id": "S0213L01",
+    "known_text": "想要达到",
+    "target_text": "They're trying to achieve",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0214L02U06": {
+   "seed": {
+    "seed_number": 214,
+    "known_text": "你周末过得好吗？",
+    "target_text": "Did you have a good time at the weekend?",
+    "known_audio_id": "ea8c28e0-c140-46a8-8937-bdd01a92d678",
+    "target1_audio_id": "5fd1451f-493c-4c55-b9a7-9204a265aec5",
+    "target2_audio_id": "0096c7be-76e2-4125-9a51-3cccd96de052"
+   },
+   "lego": {
+    "lego_id": "S0214L02",
+    "known_text": "周末",
+    "target_text": "At the weekend",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0216L01U06": {
+   "seed": {
+    "seed_number": 216,
+    "known_text": "我见了几个朋友",
+    "target_text": "I saw a few friends",
+    "known_audio_id": "a34c93d3-4096-4394-ba70-61557e44cf79",
+    "target1_audio_id": "54d07b0b-7357-4567-bc3a-e737152163ec",
+    "target2_audio_id": "634770c8-07c1-4a24-87a6-e46dcd8922d6"
+   },
+   "lego": {
+    "lego_id": "S0216L01",
+    "known_text": "见了几个朋友",
+    "target_text": "Saw a few friends",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0218L02U06": {
+   "seed": {
+    "seed_number": 218,
+    "known_text": "星期天我没做什么",
+    "target_text": "I didn't do much on Sunday",
+    "known_audio_id": "02377d0a-05a4-471e-8e94-d6dd7d260942",
+    "target1_audio_id": "c12d0567-714d-4829-afe8-dbde0deca0f1",
+    "target2_audio_id": "b5fb6479-1bcf-497d-a094-b9b045155c27"
+   },
+   "lego": {
+    "lego_id": "S0218L02",
+    "known_text": "星期天",
+    "target_text": "On Sunday",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0219L01U06": {
+   "seed": {
+    "seed_number": 219,
+    "known_text": "能放松一会儿很好",
+    "target_text": "It was nice to relax for a while",
+    "known_audio_id": "790ae381-27fe-49df-8dd1-2cdbf6fad6fb",
+    "target1_audio_id": "8b35cfd8-e1f9-4520-8ffa-5fcc63a80cee",
+    "target2_audio_id": "62006f13-99ec-4bfc-acef-1f97b3a48ace"
+   },
+   "lego": {
+    "lego_id": "S0219L01",
+    "known_text": "放松一会儿很好",
+    "target_text": "Nice to relax for a while",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0223L01U06": {
+   "seed": {
+    "seed_number": 223,
+    "known_text": "他打算明天问你",
+    "target_text": "He's going to ask you tomorrow",
+    "known_audio_id": "52ec94c6-e526-4b58-b2ce-3a8d6d4367b8",
+    "target1_audio_id": "43dc14b7-2d76-48d5-9f77-1d6f61883320",
+    "target2_audio_id": "e4fb87d5-e3c2-4741-a801-7f8bb04d9938"
+   },
+   "lego": {
+    "lego_id": "S0223L01",
+    "known_text": "他打算",
+    "target_text": "He's going to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0226L01U06": {
+   "seed": {
+    "seed_number": 226,
+    "known_text": "那个男人在试着帮我",
+    "target_text": "The man is trying to help me",
+    "known_audio_id": "68e62780-4cc7-42cf-a279-a9b1e781aade",
+    "target1_audio_id": "aea2c9bf-5932-4d33-8340-56e5d79f3689",
+    "target2_audio_id": "15c2d98b-59e9-4e14-89c8-a1280e778efd"
+   },
+   "lego": {
+    "lego_id": "S0226L01",
+    "known_text": "男人",
+    "target_text": "The man",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0229L01U06": {
+   "seed": {
+    "seed_number": 229,
+    "known_text": "如果那个女人能帮你的话，她会帮的",
+    "target_text": "That woman would help you if she could",
+    "known_audio_id": "d8c8112e-c222-40b4-a733-8c87038eb08a",
+    "target1_audio_id": "601e9d3f-0356-4e5f-a6ff-2bb22be8ad27",
+    "target2_audio_id": "c3341a8f-95c1-4548-adf6-5b5a4e03d170"
+   },
+   "lego": {
+    "lego_id": "S0229L01",
+    "known_text": "女人",
+    "target_text": "Woman",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0230L02U06": {
+   "seed": {
+    "seed_number": 230,
+    "known_text": "我认识一个想和你一起工作的年轻人",
+    "target_text": "I know a young man who wants to work with you",
+    "known_audio_id": "7bb301bd-e82d-4fb0-b7f3-a8bd51d1f369",
+    "target1_audio_id": "6a0d1cf5-e1cc-49f2-8678-f7f7bb5687fc",
+    "target2_audio_id": "195b76ac-ca91-439c-a228-19a57426c75d"
+   },
+   "lego": {
+    "lego_id": "S0230L02",
+    "known_text": "想和你一起工作的",
+    "target_text": "Who wants to work with you",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0231L02U06": {
+   "seed": {
+    "seed_number": 231,
+    "known_text": "我认识一个想请求帮助的老人",
+    "target_text": "I know an old man who wanted to ask for help",
+    "known_audio_id": "94b6fcb6-0035-4907-b904-dd51bba39d78",
+    "target1_audio_id": "345fe9a9-1851-49bc-81ab-c91135083d4e",
+    "target2_audio_id": "21fa8541-f7e8-4309-9b5d-5c5d282bc59b"
+   },
+   "lego": {
+    "lego_id": "S0231L02",
+    "known_text": "想请求帮助的",
+    "target_text": "Who wanted to ask for help",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0232L01U06": {
+   "seed": {
+    "seed_number": 232,
+    "known_text": "我认识一个能记住答案的老太太",
+    "target_text": "I know an old woman who can remember the answer",
+    "known_audio_id": "5c95cde7-3cc2-4e1e-8807-9561805af5ea",
+    "target1_audio_id": "8be6c75a-1f8d-442a-a146-167e03d65e6e",
+    "target2_audio_id": "ad5edfba-26bb-4a68-8c9b-c4b643b13c86"
+   },
+   "lego": {
+    "lego_id": "S0232L01",
+    "known_text": "能记住答案的",
+    "target_text": "Who can remember the answer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0233L02U06": {
+   "seed": {
+    "seed_number": 233,
+    "known_text": "我认识一个认识你姐姐的年轻女人",
+    "target_text": "I know a young woman who knows your sister",
+    "known_audio_id": "c0743150-7815-40de-8c73-a145e02c3ca2",
+    "target1_audio_id": "0967aa21-2f4c-4e1f-86c3-cb6530121ae1",
+    "target2_audio_id": "3c347bf4-82dd-4018-acbd-58930134941d"
+   },
+   "lego": {
+    "lego_id": "S0233L02",
+    "known_text": "认识你姐姐的",
+    "target_text": "Who knows your sister",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0234L03U06": {
+   "seed": {
+    "seed_number": 234,
+    "known_text": "我昨晚遇到了一个和你哥哥一起工作的人",
+    "target_text": "I met someone last night who works with your brother",
+    "known_audio_id": "765cea71-9270-4a26-a2ed-2847ebb2e2f7",
+    "target1_audio_id": "e7e6b4c9-c40d-4cac-862b-8d7538cab2c7",
+    "target2_audio_id": "19ad3519-0688-4591-9d8f-d5032562b18e"
+   },
+   "lego": {
+    "lego_id": "S0234L03",
+    "known_text": "和你哥哥一起工作的",
+    "target_text": "Who works with your brother",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0243L01U06": {
+   "seed": {
+    "seed_number": 243,
+    "known_text": "我打算点一样的东西吃",
+    "target_text": "I'm going to ask for the same thing to eat",
+    "known_audio_id": "326dc719-3faa-4d11-b7b2-09b731545d50",
+    "target1_audio_id": "1644d450-545a-4ae9-adb3-0db97b8f3881",
+    "target2_audio_id": "7a8858e7-013c-4c84-8cec-f72fda6300ee"
+   },
+   "lego": {
+    "lego_id": "S0243L01",
+    "known_text": "吃",
+    "target_text": "To eat",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0248L02U06": {
+   "seed": {
+    "seed_number": 248,
+    "known_text": "我觉得那部电影太烂了，我要退钱",
+    "target_text": "I thought the film was complete rubbish and I want my money back",
+    "known_audio_id": "e7506ffc-41a3-43cb-af9d-943210943e21",
+    "target1_audio_id": "7d10d21b-61b1-4b73-a7dc-84f21899a416",
+    "target2_audio_id": "870c3434-3583-4d9d-8d9a-93d16d8c7d1e"
+   },
+   "lego": {
+    "lego_id": "S0248L02",
+    "known_text": "太烂了",
+    "target_text": "Complete rubbish",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0256L01U06": {
+   "seed": {
+    "seed_number": 256,
+    "known_text": "我觉得不到一个小时就能准备好",
+    "target_text": "I think I'll be ready in less than an hour",
+    "known_audio_id": "e2da7ed9-a23f-49c7-9ea3-eae438806c43",
+    "target1_audio_id": "cd093982-d4d6-4601-87f9-954d3dfa230c",
+    "target2_audio_id": "9413a076-e080-438c-8934-87c08e9ea159"
+   },
+   "lego": {
+    "lego_id": "S0256L01",
+    "known_text": "不到一个小时就能准备好",
+    "target_text": "I'll be ready in less than an hour",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0260L01U06": {
+   "seed": {
+    "seed_number": 260,
+    "known_text": "我一点都不知道",
+    "target_text": "I don't have the faintest idea",
+    "known_audio_id": "202894a1-9453-41c8-8dcc-3ad5c02f11fb",
+    "target1_audio_id": "cd5c38f2-9779-4c2e-96d4-b73aa6199582",
+    "target2_audio_id": "b0ce4d07-dab7-4ce5-a723-b7dab2d6fb04"
+   },
+   "lego": {
+    "lego_id": "S0260L01",
+    "known_text": "一点都不知道",
+    "target_text": "Don't have the faintest idea",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0261L01U06": {
+   "seed": {
+    "seed_number": 261,
+    "known_text": "我觉得那可能是很重要的东西",
+    "target_text": "I think it might be something important",
+    "known_audio_id": "3654877b-124a-4a25-a6a6-dc11346ed97d",
+    "target1_audio_id": "bc18b16b-64d1-4d4d-abef-7ebe53d2cb7c",
+    "target2_audio_id": "19e8107b-8e30-413e-8b27-50de4f51bea9"
+   },
+   "lego": {
+    "lego_id": "S0261L01",
+    "known_text": "可能是很重要的东西",
+    "target_text": "It might be something important",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L01U06": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "是的，她上个星期给我发了两封邮件",
+    "target_text": "Yes she sent me two emails last week",
+    "known_audio_id": "7dea569d-0a4b-4bc4-bc7e-26ab8e057b07",
+    "target1_audio_id": "e62f2700-275d-496b-adaa-5bc428fee4e4",
+    "target2_audio_id": "5c17f963-3cf3-4a9b-863c-4bcfa7f3a008"
+   },
+   "lego": {
+    "lego_id": "S0268L01",
+    "known_text": "给我发了两封邮件",
+    "target_text": "Sent me two emails",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0274L01U06": {
+   "seed": {
+    "seed_number": 274,
+    "known_text": "你是不是几天后就得走了？",
+    "target_text": "Do you have to leave in a few days?",
+    "known_audio_id": "d504f0e8-3530-480e-9807-37b3b60989b3",
+    "target1_audio_id": "99654470-5949-4179-b514-5a8e3b14be96",
+    "target2_audio_id": "e5d0beac-f204-4437-a6c9-cc183791a095"
+   },
+   "lego": {
+    "lego_id": "S0274L01",
+    "known_text": "几天后",
+    "target_text": "In a few days",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0281L01U06": {
+   "seed": {
+    "seed_number": 281,
+    "known_text": "你介意在你开始之前让我喝完咖啡吗？",
+    "target_text": "Do you mind if I finish my coffee before you start?",
+    "known_audio_id": "e65cdc20-1b9b-40f4-8e90-9fad2f753eb8",
+    "target1_audio_id": "49c99c9f-3e35-43ce-9634-77875294d164",
+    "target2_audio_id": "93b60170-31ac-4146-b338-74e941d6599b"
+   },
+   "lego": {
+    "lego_id": "S0281L01",
+    "known_text": "咖啡",
+    "target_text": "Coffee",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0295L01U06": {
+   "seed": {
+    "seed_number": 295,
+    "known_text": "我没说过我想一天之内完成",
+    "target_text": "I didn't say that I wanted to finish in a day",
+    "known_audio_id": "4d28e3ac-9869-418c-ac08-eaceef8fa7fc",
+    "target1_audio_id": "71785e92-5d70-442d-a7b9-d8a1b033b84e",
+    "target2_audio_id": "7098fded-e3a8-46a6-b91e-b462d22f0c9a"
+   },
+   "lego": {
+    "lego_id": "S0295L01",
+    "known_text": "一天之内",
+    "target_text": "In a day",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0300L02U06": {
+   "seed": {
+    "seed_number": 300,
+    "known_text": "她不想显得不友好",
+    "target_text": "She doesn't want to seem unfriendly",
+    "known_audio_id": "7ef6474e-6010-4f3e-a393-581138d2feca",
+    "target1_audio_id": "75bc9b1e-25de-417b-a55e-754c99b98e8c",
+    "target2_audio_id": "7b608881-4b69-430b-ad5d-8689a7ed7668"
+   },
+   "lego": {
+    "lego_id": "S0300L02",
+    "known_text": "不友好",
+    "target_text": "Unfriendly",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

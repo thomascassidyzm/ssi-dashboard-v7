@@ -1,0 +1,41 @@
+{
+ "course": "ita_for_eng",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0474L01U06": {
+   "seed": {
+    "seed_number": 474,
+    "known_text": "I don't even want it as a free offer",
+    "target_text": "non lo voglio nemmeno gratis",
+    "known_audio_id": "3d32af1e-69e2-42cc-9691-a73844c8cd26",
+    "target1_audio_id": "ebdfd8fc-4ec7-49b0-b428-94db0f66a374",
+    "target2_audio_id": "6b8cd30b-cb53-481d-b26a-0e245eab4e5e"
+   },
+   "lego": {
+    "lego_id": "S0474L01",
+    "known_text": "even",
+    "target_text": "nemmeno",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0480L03U08": {
+   "seed": {
+    "seed_number": 480,
+    "known_text": "whatever he says it's not far ahead now",
+    "target_text": "qualunque cosa dica, ormai non è lontano",
+    "known_audio_id": "cf1b4dfe-0153-4717-aa7c-0d88f7d3403f",
+    "target1_audio_id": "c6c2e7bb-204e-4163-a94b-ad84b11cf52e",
+    "target2_audio_id": "b64968b7-9347-447e-a141-31689952fb58"
+   },
+   "lego": {
+    "lego_id": "S0480L03",
+    "known_text": "not far",
+    "target_text": "non è lontano",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

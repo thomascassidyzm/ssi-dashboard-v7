@@ -1,0 +1,242 @@
+{
+ "course": "deu_for_eng",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:02.058Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 461,
+   "id": "S0461L03U08",
+   "lego": "S0461L03",
+   "known": "a shop where I can buy some postcards",
+   "target": "ein Geschäft, wo ich ein paar Postkarten kaufen kann",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_eng:S0461L03U08",
+      "seed_number": 461,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "a shop where I can buy some postcards",
+      "target_text": "ein Geschäft, wo ich ein paar Postkarten kaufen kann",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 461,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_eng:S0461L03U08",
+     "slot": "known",
+     "audio_id": "a8c32c2b-7f1d-43cc-b7b2-e846a7aee958"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_eng:S0461L03U08",
+     "slot": "target1",
+     "audio_id": "c2f78f2b-a7ad-469a-a631-6051229cebf6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_eng:S0461L03U08",
+     "slot": "target2",
+     "audio_id": "eada1027-311d-4c86-9184-b72085111ef6"
+    }
+   ]
+  },
+  {
+   "seed": 525,
+   "id": "S0525L01U06",
+   "lego": "S0525L01",
+   "known": "to check if you've been able to finish",
+   "target": "um zu überprüfen, ob du fertig werden konntest",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_eng:S0525L01U06",
+      "seed_number": 525,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "to check if you've been able to finish",
+      "target_text": "um zu überprüfen, ob du fertig werden konntest",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 525,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_eng:S0525L01U06",
+     "slot": "known",
+     "audio_id": "5d12566a-75dd-4d61-807e-93de34c38066"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_eng:S0525L01U06",
+     "slot": "target1",
+     "audio_id": "daf11106-a756-4e7d-a7d9-8d6bcfd15b70"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_eng:S0525L01U06",
+     "slot": "target2",
+     "audio_id": "77c83f3c-4a43-4138-9084-b03230161bb3"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "covered": [
+   {
+    "seed": 222,
+    "known": "he's trying to tell me what he wants",
+    "target": "er versucht mir zu sagen, was er will"
+   },
+   {
+    "seed": 223,
+    "known": "he's going to ask you tomorrow",
+    "target": "er wird dich morgen fragen"
+   },
+   {
+    "seed": 254,
+    "known": "I've been ready since this morning",
+    "target": "Ich bin seit heute Morgen bereit"
+   },
+   {
+    "seed": 255,
+    "known": "when do you think you'll be ready to leave?",
+    "target": "wann denkst du, wirst du bereit sein zu gehen?"
+   },
+   {
+    "seed": 330,
+    "known": "no I don't think it's very important",
+    "target": "nein, ich denke nicht, dass es sehr wichtig ist"
+   },
+   {
+    "seed": 348,
+    "known": "she didn't want to know what was going to happen",
+    "target": "Sie wollte nicht wissen, was passieren würde"
+   },
+   {
+    "seed": 351,
+    "known": "no he didn't want to leave me on my own",
+    "target": "nein, er wollte mich nicht allein lassen"
+   },
+   {
+    "seed": 375,
+    "known": "no I didn't know what she was doing",
+    "target": "nein, ich wusste nicht, was sie gemacht hat"
+   },
+   {
+    "seed": 376,
+    "known": "I didn't go anywhere last month",
+    "target": "Ich bin letzten Monat nirgendwohin gegangen"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 278,
+    "known": "did you have to finish everything last night?",
+    "target": "musstest du gestern Abend alles fertig machen?",
+    "legos": [
+     "S0278L01(old) to finish everything | alles fertig machen"
+    ]
+   },
+   {
+    "seed": 337,
+    "known": "do you think that he can continue to play?",
+    "target": "denkst du, dass er weiterspielen kann?",
+    "legos": [
+     "S0337L01 to play | spielen",
+     "S0337L02 to continue playing | weiterspielen"
+    ]
+   },
+   {
+    "seed": 431,
+    "known": "they're not ready yet but they'll be ready soon",
+    "target": "Sie sind noch nicht bereit, aber sie werden bald bereit sein",
+    "legos": [
+     "S0431L01(old) ready | bereit",
+     "S0431L02(old) soon | bald"
+    ]
+   },
+   {
+    "seed": 452,
+    "known": "they didn't say what they wanted to do",
+    "target": "Sie haben nicht gesagt, was sie machen wollten",
+    "legos": [
+     "S0452L01(old) said | gesagt"
+    ]
+   },
+   {
+    "seed": 613,
+    "known": "we probably would have bought a house there",
+    "target": "wir hätten wahrscheinlich dort ein Haus gekauft",
+    "legos": [
+     "S0613L01(old) probably | wahrscheinlich",
+     "S0613L02(old) house | Haus"
+    ]
+   },
+   {
+    "seed": 655,
+    "known": "I think that you're doing very well, madam",
+    "target": "Ich denke, dass Sie sehr gut machen, gnädige Frau",
+    "legos": [
+     "S0655L01(old) very | sehr"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 316,
+    "known": "do you think that she could bring her brother on Monday?",
+    "target": "denkst du, dass sie am Montag ihren Bruder mitbringen könnte?",
+    "row": "S0316L04U01",
+    "row_known": "do you think that she could bring her brother on Monday?",
+    "row_target": "denkst du, dass sie ihren Bruder am Montag mitbringen könnte?"
+   },
+   {
+    "seed": 317,
+    "known": "yes I think she could if she wanted to",
+    "target": "ja, ich denke, sie könnte, wenn sie wollte",
+    "row": "S0317L01U01",
+    "row_known": "yes I think she could if she wanted to",
+    "row_target": "ja, ich denke, dass sie könnte, wenn sie wollte"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 2,
+  "covered": 9,
+  "no_home": 6,
+  "variant_zut": 2
+ }
+}
