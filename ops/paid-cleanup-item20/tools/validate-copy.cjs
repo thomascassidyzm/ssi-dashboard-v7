@@ -9,13 +9,14 @@ const fs = require('fs'); const path = require('path'); const { execFileSync } =
 const ITEM = path.resolve(__dirname, '..');
 const READER = path.resolve(ITEM, '../paid-cleanup-scan-447/copy-read.cjs');
 let bad = 0;
-for (const course of process.argv.slice(2)) {
+for (const course of process.argv.slice(2).filter((a) => !a.startsWith('--'))) {
   const cdir = path.join(ITEM, course), odir = path.join(cdir, 'changesets');
   const ovs = JSON.parse(fs.readFileSync(path.join(odir, 'overrides.json'), 'utf8'));
   const tmp = process.env.CS_SCRATCH || require('os').tmpdir();
   const rq = path.join(tmp, `${course}.vreq.json`), out = path.join(tmp, `${course}.vout.json`);
   fs.writeFileSync(rq, JSON.stringify([{ fromSeed: 0 }, ...ovs.map((o) => ({ fromSeed: o.seed_number, override: o }))]));
-  execFileSync('node', [READER, 'validate', course, rq, out], { stdio: ['ignore', 'ignore', 'inherit'] });
+  // --reuse: classify the copy sweep's saved answer again (no new sweep) when its request list is unchanged.
+  if (!(process.argv.includes('--reuse') && fs.existsSync(out))) execFileSync('node', [READER, 'validate', course, rq, out], { stdio: ['ignore', 'ignore', 'inherit'] });
   const ans = JSON.parse(fs.readFileSync(out, 'utf8'));
   const before = new Map(ans[0].failures.map((f) => [f.seed, f.issues]));
   const touched = new Map(); // seed -> Set("L<idx>:")
@@ -23,7 +24,11 @@ for (const course of process.argv.slice(2)) {
   const rows = ovs.map((o, i) => {
     const after = (ans[i + 1].failures.find((f) => f.seed === o.seed_number) || {}).issues || [];
     const was = before.get(o.seed_number) || [];
-    const fresh = after.filter((x) => !was.includes(x));
+    // An issue is the same issue whatever row the sweep quotes for it: a duplicate pair is quoted by whichever row comes first,
+    // and that order moves with the override (e.g. mar S0312L03 U06 "She's going to be there tomorrow night." vs U08).
+    const key = (x) => x.replace(/"[^"]*"/g, '"…"');
+    const wasK = new Set(was.map(key));
+    const fresh = after.filter((x) => !wasK.has(key(x)));
     const onTouched = fresh.filter((x) => [...touched.get(o.seed_number)].some((t) => x.startsWith(t)));
     const blocking = onTouched.filter((x) => !/^L\d+: USE:/.test(x));
     const useUnmasked = onTouched.filter((x) => /^L\d+: USE:/.test(x));
