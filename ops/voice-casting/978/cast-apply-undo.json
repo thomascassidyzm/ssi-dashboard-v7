@@ -2498,27 +2498,17 @@
     "skippedTotal": 0,
     "reach": 1
    }
-  }
- ],
- "held": [
+  },
   {
    "key": "course:por_for_aze:presentation",
-   "planned_old": {
-    "voiceId": "",
-    "provider": "elevenlabs",
+   "kind": "course-role",
+   "course": "por_for_aze",
+   "role": "presentation",
+   "old": {
     "name": "",
+    "voiceId": "",
     "language": "",
-    "settings": {
-     "speed": 1,
-     "stability": 0.5,
-     "similarityBoost": 0.75
-    }
-   },
-   "live": {
-    "voiceId": "lt-LT-OnaNeural",
-    "provider": "azure",
-    "name": "Ona",
-    "language": "",
+    "provider": "elevenlabs",
     "settings": {
      "speed": 1,
      "stability": 0.5,
@@ -2533,12 +2523,44 @@
      "speed": 1.0
     }
    },
-   "why": "unconfigured course: the PATCH route mutated the shared default (see por_for_lit entry); not written"
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   },
+   "note": "cs #21 2026-11-19 on prod 68dd7b73 (updateVoiceRole fix): live pre-check matched old; shared default (GET voice-config of a course with no row) read before, after por_for_aze and after por_for_lit — unchanged each time. Undo: PATCH presentation back to 'old'."
   },
   {
    "key": "course:por_for_lit:presentation",
-   "why": "reverted, same cause",
-   "new": "lt-LT-OnaNeural"
+   "kind": "course-role",
+   "course": "por_for_lit",
+   "role": "presentation",
+   "old": {
+    "name": "",
+    "voiceId": "",
+    "language": "",
+    "provider": "elevenlabs",
+    "settings": {
+     "speed": 1,
+     "stability": 0.5,
+     "similarityBoost": 0.75
+    }
+   },
+   "new": {
+    "voiceId": "lt-LT-OnaNeural",
+    "name": "Ona",
+    "provider": "azure",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   },
+   "note": "cs #21 2026-11-19 on prod 68dd7b73 (updateVoiceRole fix): live pre-check matched old; shared default (GET voice-config of a course with no row) read before, after por_for_aze and after por_for_lit — unchanged each time. Undo: PATCH presentation back to 'old'."
   }
- ]
+ ],
+ "held": []
 }
