@@ -12,6 +12,9 @@ const path = require('path');
 const [, , topic, title, htmlDir] = process.argv;
 const run = JSON.parse(fs.readFileSync(path.join(__dirname, `out-${topic}.json`), 'utf8'));
 const T = run.T;
+// v4 (#992): layer-3 move tags, judged in chain.cjs, shown as stage directions (never in the spoken text)
+const MOVES = Object.fromEntries(require('../../../services/shared/metagraph/moves.json').map(m => [m.id, m]));
+const moveLabel = id => id ? `${id} ${MOVES[id] ? MOVES[id].name : ''}`.trim() : null;
 
 // Where does the next speaker come in on line i? Character offset into T[i].line, or null.
 // Cut-in: the cut speaker gets a word or two out after the interrupter starts (that is what an
@@ -48,6 +51,7 @@ const lines = T.map((e, i) => ({
   cutIn: !!e.cutIn,
   overlap: !!e.overlap,
   bcs: bcList(e),
+  move: moveLabel(e.move),
 }));
 
 // ---- 1. Churchill script ----
@@ -59,11 +63,11 @@ function scriptLine(l) {
   for (const x of ins) { s += l.text.slice(k, x.at) + x.s; k = x.at; }
   s += l.text.slice(k);
   if (l.cutOff) s = s.replace(/[\s,;:.]+$/, '') + '—';
-  return `**${l.speaker.toUpperCase()}** ${s}`;
+  return `**${l.speaker.toUpperCase()}**${l.move ? ` *[move ${l.move}]*` : ''} ${s}`;
 }
 const scriptMd = `# ${title} (script)
 
-*How to read it:* a **/** marks where the next speaker starts talking over the line. A line ending in **—** is cut off there. Short back-channels like *(Dean: mm)* sit in brackets where they land. [Watch it as a timed replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/${topic}.html).
+*How to read it:* a **/** marks where the next speaker starts talking over the line. A line ending in **—** is cut off there. Short back-channels like *(Dean: mm)* sit in brackets where they land. *[move F16 …]* is a stage direction naming the layer-3 group-contribution move that turn performs (metagraph id); it is never spoken. [Watch it as a timed replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/${topic}.html).
 
 *${run.topic}*
 
@@ -100,13 +104,14 @@ button.on{border-color:var(--text)}
 .cut{color:var(--muted)}
 .bc{font-size:13px;color:var(--muted);font-style:italic;animation:in .25s ease}
 .sl{color:var(--muted);font-weight:700;padding:0 1px}
+.mv{display:block;font-size:11px;color:var(--muted);letter-spacing:.02em;font-style:italic}
 @keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
 @keyframes blink{50%{opacity:0}}
 </style></head><body>
 <header>
 <h1>${title}</h1>
 <p class="q">${run.topic.replace(/</g, '&lt;')}</p>
-<div class="key">/ = the next speaker starts here · — = cut off · (Name: mm) = back-channel · indented = talking over</div>
+<div class="key">/ = the next speaker starts here · — = cut off · (Name: mm) = back-channel · indented = talking over · <i>move F…</i> = the group-contribution move that turn makes</div>
 </header>
 <div class="bar"><div class="ctl">
 <button id="play">Pause</button><button id="restart">↺</button>
@@ -136,7 +141,7 @@ LINES.forEach((l,i)=>{
 });
 const feed=document.getElementById('feed'); let els=[]; let speed=1, playing=true, clock=0, last=null;
 function esc(x){return x.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function build(){feed.innerHTML='';els=LINES.map((l,i)=>{const d=document.createElement('div');d.className='msg'+(l.cutIn||l.overlap?' over':'');d.style.setProperty('--c',COL[l.speaker]||'#999');d.innerHTML='<span class="who">'+l.speaker+'</span><span class="t"></span>';d.hidden=true;feed.appendChild(d);return {d,t:d.querySelector('.t'),n:-1}})}
+function build(){feed.innerHTML='';els=LINES.map((l,i)=>{const d=document.createElement('div');d.className='msg'+(l.cutIn||l.overlap?' over':'');d.style.setProperty('--c',COL[l.speaker]||'#999');d.innerHTML=(l.move?'<span class="mv">move '+esc(l.move)+'</span>':'')+'<span class="who">'+l.speaker+'</span><span class="t"></span>';d.hidden=true;feed.appendChild(d);return {d,t:d.querySelector('.t'),n:-1}})}
 function render(i,n){
   const l=LINES[i],p=plan[i],e=els[i]; if(e.n===n) return; e.n=n;
   let h='',k=0; const ins=[];

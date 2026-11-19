@@ -4,132 +4,204 @@
 // cut_in, overlap, backchannels} out. Mirrors the live-chain design (/d/bb491252 §9): the previous
 // line is fully written before the next is generated, so a cut-in is the player fading that speaker
 // at a word — in text, the previous line is truncated at that point and ends with an em dash.
-// Usage: node chain.cjs <topicKey> <turns> <model>
+// Usage: node chain.cjs <topicKey> <turns> <model>   (env: OUT_KEY, AVOID_FILE, STYLE_FILE)
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 const [, , topicKey, turnsArg = '30', model = 'opus'] = process.argv;
-// v3 (#986): Tom on round 2, "No one talks about this in a pub". Each topic is a pub-talk moment with
-// energy already in it (a story, a hot take, a daft hypothetical), never a seminar question; the talk
-// may wander off it the way pub talk does. Each keeps its own ending shape so no two samples close alike.
+// v4 (#992): Tom on round 3, "we should be using this for structure but making the content somewhat more
+// elevated / The idea is to make things more interesting". Same rhythm; the moment is now something
+// genuinely interesting that arrived the way a pub arrives at things (something seen, read, found or
+// half-remembered), and each evening carries a PLAN of layer-3 group-contribution moves (the metagraph's
+// F-ids, services/shared/metagraph/moves.json) that the engine steers towards and a judge checks.
+// plan entries: {id, from, to, hint, followup?}. from/to = turn window (1-based). F303 is two-part:
+// a "coin" entry (not tagged) and a later redeploy entry that carries the tag.
 const TOPICS = {
-  lisbon: {
-    moment: "Danny got back last night from a long weekend in Lisbon with Kasia. The airline lost his suitcase on the way out, he spent four days in clothes from the airport shop and a market stall, and he's wearing one of the shirts now. Jess has just noticed it.",
-    ending: "In the last few turns the talk has drifted onto a tangent that one remark opened (not food, not drinks, not going home) and it is simply on that tangent when it stops.",
+  tickle: {
+    moment: "Danny's daughter rang him this afternoon and told him you physically can't tickle yourself, and that it's something to do with the brain. He has spent ten minutes trying under the table and has just told the others. Jess is already trying it.",
+    ending: "The talk has moved on to a question the tickling opened up (about what else the brain predicts or ignores, or what that means for people) and someone is mid-way through a half-formed idea about it, unresolved, when it stops.",
+    plan: [
+      { id: 'F302', from: 3, to: 8, hint: "someone who half-knows why (Femi or Sunny) first marks down their own authority, plainly, and then says what they think the reason is at full strength" },
+      { id: 'F9', from: 8, to: 13, hint: "someone else, before pushing back, offers back their own version of that explanation to check they've got it; the person who gave it confirms or corrects it next turn", followup: "confirm-or-correct" },
+      { id: 'F303', role: 'coin', from: 9, to: 15, hint: "someone coins a short, vivid phrase for the idea under discussion that the others pick up" },
+      { id: 'F16', from: 14, to: 22, hint: "someone concedes the point another person just made, and then holds their own different view with a but" },
+      { id: 'F11', from: 18, to: 26, hint: "someone is asked a direct question, answers it briefly, and in the same turn hands the same question to someone at the table who has said little" },
+      { id: 'F303', role: 'reuse', from: 24, to: 33, hint: "a different person redeploys the phrase coined earlier as a tease, shorthand or argument; its ownership can be contested" },
+    ],
   },
-  lastpage: {
-    moment: "Rhi has just said, casually, that she always reads the last page of a book first, and of a box set she watches the final episode first, so she knows whether it's worth it. Jess has put her glass down.",
-    ending: "It does not resolve: the last turns are still the table split and teasing, with someone mid-defence of something indefensible.",
+  letters: {
+    moment: "Rhi lifted floorboards in an old house on Mill Street this morning and found a bundle of letters from 1944, a soldier writing to a woman who, judging by the address, was not the woman he married. The owners told her to bin them. They're in her van. She's just told the table she can't decide what to do.",
+    ending: "It does not resolve: the last turns have found the real question underneath and two people are still on opposite sides of it, mid-thought, when it stops.",
+    plan: [
+      { id: 'F2', from: 2, to: 7, hint: "someone asks Rhi a plain factual question about the letters; she answers it and then volunteers a detail nobody asked for that changes the picture" },
+      { id: 'F301', from: 7, to: 14, hint: "after someone has been building a view for a few turns, a listener hands it back compressed into a sharper name for what is really at stake; the person who built the view ratifies it and adopts that name next turn", followup: "ratify-and-adopt" },
+      { id: 'F305', from: 13, to: 21, hint: "someone pushes back with a counterexample; the person under pressure welcomes it and folds it in as making their own point stronger, not weaker" },
+      { id: 'F16', from: 19, to: 27, hint: "someone concedes the point they've just been given, and then holds their own position with a but" },
+      { id: 'F304', from: 23, to: 31, hint: "someone remarks on how the table itself is talking (talking over each other, everyone suddenly whispering, everyone having changed sides) and uses that observation as a move in the argument" },
+      { id: 'F11', from: 26, to: 33, hint: "someone answers a direct question briefly and in the same turn hands the identical question to a person who has said little" },
+    ],
   },
-  zombie: {
-    moment: "At breakfast Femi's seven-year-old asked him which of his pub friends would survive longest in a zombie apocalypse. Femi has just admitted to the table that he said Hugh would last longest and Danny would go first.",
-    ending: "Near the end someone starts a new story that the conversation has sparked, and it is still going, mid-flow, when it stops.",
+  sheep: {
+    moment: "Hugh has just said his ewes know him by his face from across a field and ignore Will, and Jess has said that's sentimental nonsense. Femi says he half-remembers reading that sheep can recognise faces, maybe even from photos, but can't remember how many or where he read it.",
+    ending: "The talk has drifted from sheep onto what that means for something else (people, faces, memory, being recognised) and someone has just started a new thought that the others are poking at when it stops.",
+    plan: [
+      { id: 'F302', from: 3, to: 8, hint: "Hugh, or whoever is defending the claim, first says plainly that they've no study or proof, it's only what they've seen, and then delivers the claim at full strength" },
+      { id: 'F2', from: 5, to: 11, hint: "someone asks a plain question (how many faces, how long, how would you even test it); the person asked answers and then volunteers something unexpected nobody asked for" },
+      { id: 'F305', from: 10, to: 17, hint: "someone throws a counterexample at the claim; the claimant welcomes it and folds it in as making the claim stronger" },
+      { id: 'F306', from: 15, to: 23, hint: "someone adds a thought and the next speaker takes it up as exactly where they were about to go, then carries it on along the merged line" },
+      { id: 'F9', from: 20, to: 28, hint: "before disagreeing, someone offers back their own version of what another person just argued; that person confirms or corrects it next turn", followup: "confirm-or-correct" },
+      { id: 'F304', from: 25, to: 33, hint: "someone comments on the conversation itself as play (how long they've been on sheep, everyone talking at once, how the argument has flipped) and uses it as a move" },
+    ],
   },
+  probe: null,
 };
+// the probe reuses the tickle moment with a compressed 10-turn plan
+TOPICS.probe = { ...TOPICS.tickle, plan: [
+  { id: 'F302', from: 2, to: 4, hint: TOPICS.tickle.plan[0].hint },
+  { id: 'F9', from: 4, to: 7, hint: TOPICS.tickle.plan[1].hint, followup: 'confirm-or-correct' },
+  { id: 'F16', from: 7, to: 10, hint: TOPICS.tickle.plan[3].hint },
+] };
 const T0 = TOPICS[topicKey];
 if (!T0) { console.error('unknown topic'); process.exit(2); }
-const TOPIC = T0.moment;
 const NAMES = ['Rhi', 'Hugh', 'Jess', 'Femi', 'Danny', 'Sunny'];
 const cards = fs.readFileSync(path.join(__dirname, 'personas.md'), 'utf8');
 // Cross-sample memory (#980): bits already used on other evenings, so no running gag recurs across samples.
 // v3 (#986): real recorded talk as a texture anchor (Tom+Aran, ~/podcast-tom-aran), plus optional
 // STYLE_FILE for further corpus excerpts. Texture only: the engine is told never to lift words from it.
 const STYLE = [path.join(__dirname, 'style-real-talk.md'), process.env.STYLE_FILE].filter(f => f && fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8').trim()).join('\n\n');
+const MOVES = Object.fromEntries(require('../../../services/shared/metagraph/moves.json').map(m => [m.id, m]));
+for (const p of T0.plan) if (!MOVES[p.id]) { console.error('move not in moves.json: ' + p.id); process.exit(2); }
 const AVOID = process.env.AVOID_FILE ? fs.readFileSync(process.env.AVOID_FILE, 'utf8').trim() : '';
 
 const SYSTEM = `You are the "next turn" engine for a live, unscripted group conversation around a table. You are NOT a writer of a scene; you produce exactly ONE next turn of a conversation already in progress, as it would really happen.
 
 ${cards}
 
-WHAT THIS TABLE IS: six quick, funny, articulate friends on an ordinary good night in the pub. They are NOT debating anything. This is real pub talk: someone telling what just happened to them while the others pick holes in it, strong opinions about everyday nonsense, daft hypotheticals taken far too seriously, films and telly, mild gossip about people in town, and a lot of teasing. Their intelligence shows in wit, timing, comebacks and how they tell a story, never in arguments about society.
+WHAT THIS TABLE IS: six bright, curious friends on an ordinary good night in the pub, and tonight something genuinely interesting has come up. They are into it. They know things and half-know things, test each other's claims, bring in what they've read, seen or noticed, push on each other's ideas, and sometimes change their minds. It is still pub talk, not a seminar and not a debate: short turns, teasing, warmth, cut-ins, side remarks. But the content has substance. A good evening here is one where by the end the question has turned into a better question.
 
-HOW THIS TABLE TALKS (follow this, it is the whole job):
-- SHORT TURNS. Most turns are one sentence, often less: a fragment, a "No!", a laugh, "Go on", a question, a jab, a sentence someone else finishes. Two sentences is a normal long turn. Over about 40 words only when someone is genuinely telling a story, and a story gets interrupted, questioned and heckled as it goes.
-- Messy, not polished. Real speech: false starts, "wait, wait", trailing off, two people answering at once, someone repeating the punchline of a story wrongly, a question that nobody answers. Lines should NOT be well-turned aphorisms; a line that sounds written is wrong. Laughs come from the situation and the people, not from crafted jokes.
-- Everyone is bright. Nobody is dim, malapropistic or comic relief; nobody gets facts wrong for laughs; nobody has a catchphrase or pet phrase. Don't sprinkle "honestly", "actually", "to be fair", "literally" across everyone.
-- A line should be identifiable as its speaker with the name hidden, from what they'd notice, what they'd tease, where they're from. The cards describe people, never wording: never echo a card's phrasing in a line.
-- Talk wanders. A story sparks another story, a hot take sparks a tangent, someone drags it back. Gossip about people in town (invented, mild, named by first name) is fine.
-- React to what was JUST said. Take the bait, pile on, defend yourself, change sides for fun. Nobody moderates, nobody plays host, nobody says "great point".
-- NO VARIETY OF MOVE REPEATS FOR A SPEAKER. Before writing, look at everything this speaker has already said tonight. Do something of a different kind from each of their previous turns (if they've already teased X, they don't tease X again; if they've told a story, they don't start another one; if they've done a one-word reaction, the next is something else). No story, image, joke or comparison is used twice in the evening.
-- Consistent facts: ages, dates and details stay as the cards and the earlier transcript give them. Nobody contradicts a fact already stated.
+THE REGISTER (the whole point of this round):
+- Between two failures. NOT a seminar: nobody gives a speech, explains at length, or debates policy. NOT a lads' night: no toilet humour, no daft one-liners for their own sake, no running gags.
+- Substance comes in small pieces: one detail someone knows, one question that tests a claim, one example from their own life, one "but then why does...". The table builds the idea together, a few words at a time.
+- Facts stated as facts are true. Anything shaky is flagged as half-remembered and gets challenged. Nobody makes up statistics or studies.
+- Most good lines get a REPLY, not a laugh. The table takes each other seriously enough to answer. Wit is welcome; it comes from the person and the moment, never from a crafted punchline.
 
-${STYLE ? 'WHAT REAL SPEECH SOUNDS LIKE (texture reference; your lines must sound this unrehearsed, but never reuse its words, phrases or subject):\n' + STYLE + '\n\n' : ''}${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED SET PIECES (never write these):
-- anyone misquoting or misattributing a thinker, writer or study and being corrected; name-dropping philosophers or academics at all;
-- anyone fetching, refilling or offering drinks or food to change the subject; "whose round is it"; last orders; anyone leaving;
-- a touching, sentimental or reconciling moment near the end; a closing punchline; a toast; anyone summing up what the evening has shown;
-- any politics, policy, tax, housing, planning, education, NHS or current-affairs debate; anyone's job turned into a case study;
-- lecture or explanation turns: nobody explains how something works, gives background, or makes a point with "the thing is…" followed by a paragraph.
+HOW THIS TABLE TALKS:
+- SHORT TURNS. Most turns are one sentence, often less: a fragment, a "No, hang on", a question, a jab, a sentence someone else finishes. Two sentences is a normal long turn. Never more than about 35 words: real talk has nothing longer, and a long turn gets interrupted.
+- Messy, not polished. False starts, "wait, wait", trailing off, two people answering at once, a question nobody answers, someone restarting a sentence. A line that sounds written is wrong; a line that sounds like an aphorism is wrong.
+- Everyone is bright. Nobody is dim or comic relief; nobody has a catchphrase. Don't sprinkle "honestly", "actually", "to be fair", "literally" across everyone.
+- A line should be identifiable as its speaker with the name hidden, from what they'd know, notice or tease. The cards describe people, never wording: never echo a card's phrasing in a line.
+- Talk moves. Someone's example opens a new angle, someone drags it back, the question shifts. Nobody moderates, nobody plays host, nobody says "great point" or "good question".
+- NO VARIETY OF MOVE REPEATS FOR A SPEAKER. Look at everything this speaker has already said tonight; do something of a different kind this time. No example, image or comparison is used twice in the evening.
+- Consistent facts: ages, dates and details stay as the cards and the transcript give them.
 
-RENDERING OVERLAP IN TEXT (the live system can fade a speaker at a word boundary, or start the next speaker early over the tail):
-- "cut_in": if your speaker interrupts the PREVIOUS speaker before they finished, give the exact contiguous words from the previous line after which they get cut off (must appear verbatim in the previous line; choose a natural point mid-thought). The previous speaker's remaining words are never heard. Use this when the character would genuinely jump in (impatience, objection, excitement, a joke) — roughly 1 turn in 3 overall: this table talks over each other all the time, especially when someone is telling a story or defending themselves.
-- "overlap": true if your speaker starts over the last couple of words of the previous line without cutting it (eager agreement, a quick reaction). Otherwise false.
-- "backchannels": usually an EMPTY list. Only about one turn in three gets one, and never more than one. Laughter ("ha") only when something is actually funny. Otherwise: tiny listener noises from OTHER people heard DURING the previous line ("mm", "yeah", "ha", "oh God", "no way"), each with "after": exact words in the previous line where it lands.
-- A speaker who was cut off may later fight back in ("—no, let me finish") or give up on the point. Two people may start at once: then one stops after a word or two ("I just—" / "Go on.").
+${STYLE ? 'STRUCTURE OF REAL TALK (copy ONLY its structure: turn length, overlap, abandoned sentences, how the floor passes, drift. These sources are licence-restricted: NEVER reuse, translate or rework any of their words, phrases, situations or subjects):\n' + STYLE + '\n\n' : ''}${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED (never write these):
+- laughter reactions as filler: no "ha", "haha", nobody laughing at a line as a reply;
+- anyone misquoting a thinker and being corrected; name-dropping philosophers or academics;
+- fetching or offering drinks or food to change the subject; "whose round is it"; last orders; anyone leaving;
+- a touching or reconciling moment near the end; a closing punchline; a toast; anyone summing up the evening;
+- politics, policy, tax, housing, planning, education policy, NHS policy or current-affairs debate; anyone's job turned into a case study;
+- lecture turns: nobody explains how something works in a paragraph or starts "the thing is…" and holds forth;
+- toilet humour.
 
-RULES OF WHO SPEAKS NEXT (you choose):
+RENDERING OVERLAP IN TEXT:
+- "cut_in": if your speaker interrupts the PREVIOUS speaker before they finished, give the exact contiguous words from the previous line after which they get cut off (verbatim from the previous line, a natural point mid-thought). The rest is never heard. Roughly 1 turn in 3: this table talks over each other, especially when someone is getting going.
+- "overlap": true if your speaker starts over the last couple of words of the previous line without cutting it. Otherwise false.
+- "backchannels": usually EMPTY. At most one turn in four gets one, never more than one. Tiny listener noises from OTHER people during the previous line ("mm", "yeah", "no", "right", "go on", "really?"), each with "after": exact words in the previous line where it lands. NOT laughter.
+- A speaker who was cut off may later fight back in or give up on the point. Two people may start at once: then one stops after a word or two.
+
+RULES OF WHO SPEAKS NEXT (you choose, unless the turn instructions name the speaker):
 - No two people ping-ponging for more than about 3 turns before someone else joins or cuts in.
-- Someone just named, teased, contradicted or asked a question is likely to respond — but not always.
-- Quiet people get drawn in, but not on a rota. Over a whole conversation everyone speaks, unevenly.
+- Someone just named, contradicted or asked a question is likely to respond, but not always.
+- Quiet people get drawn in, not on a rota. Over the evening everyone speaks, unevenly.
 - The same person may speak twice in a row only if they were cut off and are reclaiming, or nobody picked up their question.
 
+GROUP-CONTRIBUTION MOVES: the turn instructions sometimes ask for one of these moves from the metagraph. When asked, perform it for real, in natural words that never name the move, between at least three people who are in on this part of the talk. Set "move" to the move id only when this very turn performs it; otherwise "move" is null.
+
 OUTPUT: only a JSON object, nothing else:
-{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}]}
+{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}], "move": "F…" or null}
 Plain English speech only: no stage directions, no asterisks, no parentheses, no speaker name inside "line".`;
 
-// transcript as HEARD: each entry {speaker, line, cutOff:boolean, overlap, backchannels:[{who,text,after}]}
+// transcript as HEARD: each entry {speaker, line, cutOff:boolean, overlap, backchannels:[{who,text,after}], move}
 const T = [];
 
 function heardText(e) { return e.cutOff ? e.line + '—' : e.line; }
-function transcriptForModel() {
-  return T.map(e => {
+function transcriptForModel(withNums) {
+  return T.map((e, i) => {
     let s = heardText(e);
     for (const b of e.backchannels || []) s = s.replace(b.after, `${b.after} [${b.who}: ${b.text}]`);
-    return `${e.overlap ? '[starting over the end] ' : ''}${e.speaker}: ${s}`;
+    return `${withNums ? (i + 1) + '. ' : ''}${e.overlap ? '[starting over the end] ' : ''}${e.speaker}: ${s}`;
   }).join('\n');
 }
 
-function call(prompt) {
+function claude(system, prompt) {
   const out = execFileSync(path.join(process.env.HOME, '.local/bin/claude'), [
-    '-p', '--model', model, '--system-prompt', SYSTEM, '--tools', '', '--no-session-persistence',
+    '-p', '--model', model, '--system-prompt', system, '--tools', '', '--no-session-persistence',
     '--setting-sources', '', '--strict-mcp-config',
   ], { input: prompt, encoding: 'utf8', maxBuffer: 1 << 20, timeout: 180000 });
   const m = out.match(/\{[\s\S]*\}/);
   if (!m) throw new Error('no JSON: ' + out.slice(0, 300));
   return JSON.parse(m[0]);
 }
+const call = prompt => claude(SYSTEM, prompt);
+
+const moveText = id => `${id} "${MOVES[id].name}". Its test: ${MOVES[id].test}`;
+const planOverview = T0.plan.map(p => `- ${p.role === 'coin' ? 'set-up for ' : ''}${p.id} "${MOVES[p.id].name}" somewhere around turns ${p.from}-${p.to}`).join('\n');
+const LAUGH = /\b(ha|haha|hah|heh|lol)\b|laugh|@/i;
 
 const turns = parseInt(turnsArg, 10);
 const outKey = process.env.OUT_KEY || topicKey;
 const log = [];
+const done = new Set();        // plan indices already performed
+let pending = null;            // forced follow-up for a two-part move
+let coined = null;             // F303: {turn, speaker}
 for (let i = 0; i < turns; i++) {
-  const counts = Object.fromEntries(NAMES.map(n => [n, T.filter(e => e.speaker === n).length]));
+  const n = i + 1;
+  const counts = Object.fromEntries(NAMES.map(x => [x, T.filter(e => e.speaker === x).length]));
   const rr = Math.random();
-  const band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.4 ? 'SHORT: 1-6 words (a laugh, "No!", "Go on", a jab, a question, a half-start)' : rr < 0.88 ? 'MEDIUM: 7-25 words, one sentence or two' : 'STORY: 25-45 words, only if someone is genuinely telling a story; otherwise MEDIUM';
-  // Cut-in pressure (#980 probe: 10 turns came out with no cut-ins at all, too courteous for a hot argument).
+  let band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.4 ? 'SHORT: 1-6 words (a "No, hang on", a question, a jab, a half-start, one fact)' : rr < 0.9 ? 'MEDIUM: 7-22 words, one sentence or two' : 'LONGER: 22-35 words, only if someone is genuinely telling or building something; otherwise MEDIUM';
+  // which planned move (if any) is live this turn: earliest open window; forced on its last turn
+  let moveAsk = '', forced = null, livePlan = -1;
+  if (pending) {
+    forced = pending.speaker;
+    moveAsk = pending.kind === 'confirm-or-correct'
+      ? `\nTHIS TURN: ${pending.speaker} answers the read-back just offered of what they said: they confirm it, or correct it, and carry on. Speaker MUST be ${pending.speaker}. "move" is null.`
+      : `\nTHIS TURN: ${pending.speaker} takes up the sharper name just handed back for what they were building, ratifies it, and USES it in carrying their point on (adopts it as their own). Speaker MUST be ${pending.speaker}. "move" is null.`;
+    band = 'SHORT or MEDIUM';
+  } else {
+    livePlan = T0.plan.findIndex((p, k) => !done.has(k) && n >= p.from && n <= p.to && (p.role !== 'reuse' || coined));
+    if (livePlan >= 0) {
+      const p = T0.plan[livePlan];
+      const last = n === p.to;
+      if (p.role === 'coin') moveAsk = `\n${last ? 'THIS TURN MUST' : 'IF IT FITS THIS TURN NATURALLY,'} set up a later move: ${p.hint}. Keep the phrase short and memorable but not a punchline. Set "move" to "F303-coin" if this turn coins it.`;
+      else moveAsk = `\n${last ? 'THIS TURN MUST PERFORM' : 'IF IT FITS THIS TURN NATURALLY, PERFORM (otherwise just keep the talk moving towards it):'} ${moveText(p.id)}. At this table: ${p.hint}.${p.role === 'reuse' ? ` The phrase coined earlier was in turn ${coined.turn}, by ${coined.speaker}: "${T[coined.turn - 1].line}". Whoever redeploys it is NOT ${coined.speaker}.` : ''} Set "move" to "${p.id}" only if this turn performs it.`;
+      if (last) band = 'whatever length the move needs, still under 35 words';
+    }
+  }
   const sinceCut = T.length - 1 - T.map(e => !!e.cutIn).lastIndexOf(true);
-  const cutNudge = T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
-  const prompt = `THE MOMENT: ${TOPIC}
+  const cutNudge = !forced && T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
+  const prompt = `THE MOMENT: ${T0.moment}
+
+THIS EVENING'S MOVE PLAN (for your awareness; let the talk grow towards these, never force or name them):
+${planOverview}
 
 TRANSCRIPT SO FAR (as heard; "—" at the end of a line = that speaker was cut off there):
 ${T.length ? transcriptForModel() : '(nothing said yet: the moment has just happened. The FIRST turn is under 15 words and lands right in the middle of it, as if mid-evening, with no scene-setting)'}
 
-Turns so far per person: ${JSON.stringify(counts)}. This is turn ${i + 1} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up.' : 'keep it live; the talk may wander off the opening moment.'}
-LENGTH FOR THIS TURN: ${band}. Pick a speaker for whom that length is natural right now.${cutNudge}
+Turns so far per person: ${JSON.stringify(counts)}. This is turn ${n} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up, no punchline.' : 'keep it live and moving.'}
+LENGTH FOR THIS TURN: ${band}.${forced ? '' : ' Pick a speaker for whom that length is natural right now.'}${moveAsk}${cutNudge}
 Write the single next turn as JSON.`;
   let r, tries = 0;
   while (true) {
-    try { r = call(prompt); break; } catch (e) { if (++tries > 2) throw e; }
+    try { r = call(prompt); if (!NAMES.includes(r.speaker) || (forced && r.speaker !== forced)) throw new Error('speaker ' + r.speaker); break; } catch (e) { if (++tries > 2) throw e; }
   }
-  if (!NAMES.includes(r.speaker)) { i--; continue; }
-  // v3 (#986): hard length cap. Over 50 words (or a first line over 15) is regenerated once.
   const wc = String(r.line).split(/\s+/).filter(Boolean).length;
-  if ((wc > 50 || (i === 0 && wc > 15)) && !r._retried) {
-    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. Keep this turn short.'); if (NAMES.includes(r2.speaker)) r = r2; } catch (e) {}
+  if (wc > 35 || (i === 0 && wc > 15)) {
+    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. Keep this turn well under 35 words.'); if (NAMES.includes(r2.speaker) && (!forced || r2.speaker === forced)) r = r2; } catch (e) {}
   }
   const prev = T[T.length - 1];
   let cutApplied = false;
-  if (r.cut_in && prev && !prev.cutOff) {
+  if (r.cut_in && prev && !prev.cutOff && !forced) {
     const idx = prev.line.indexOf(r.cut_in);
     if (idx >= 0 && idx + r.cut_in.length < prev.line.length - 1) {
       prev.full = prev.line;
@@ -140,12 +212,54 @@ Write the single next turn as JSON.`;
   }
   if (prev && Array.isArray(r.backchannels)) {
     prev.backchannels = (prev.backchannels || []).concat(
-      r.backchannels.filter(b => b && NAMES.includes(b.who) && b.who !== prev.speaker && prev.line.includes(b.after)).slice(0, 2));
+      r.backchannels.filter(b => b && NAMES.includes(b.who) && b.who !== prev.speaker && prev.line.includes(b.after) && !LAUGH.test(b.text)).slice(0, 1));
   }
-  T.push({ speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [] });
-  log.push({ turn: i + 1, raw: r, cutApplied });
-  process.stderr.write(`${i + 1} ${r.speaker}${cutApplied ? ' [cut-in]' : ''}\n`);
+  // move bookkeeping
+  let move = null;
+  if (livePlan >= 0) {
+    const p = T0.plan[livePlan];
+    if (p.role === 'coin' && r.move === 'F303-coin') { coined = { turn: n, speaker: r.speaker }; done.add(livePlan); }
+    else if (p.role !== 'coin' && r.move === p.id && !(p.role === 'reuse' && r.speaker === coined.speaker)) {
+      move = p.id; done.add(livePlan);
+      if (p.followup) pending = { kind: p.followup, speaker: null, after: n };
+    }
+  }
+  const entry = { speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [], move };
+  T.push(entry);
+  // the follow-up goes to the person whose view was read back / named: the most recent other speaker who isn't the mover
+  if (pending && pending.after === n) {
+    const target = [...T].reverse().slice(1).find(e => e.speaker !== r.speaker);
+    pending.speaker = target ? target.speaker : null;
+    if (!pending.speaker) pending = null;
+  } else if (pending) pending = null;
+  log.push({ turn: n, raw: r, cutApplied, planned: livePlan >= 0 ? T0.plan[livePlan].id + (T0.plan[livePlan].role ? '-' + T0.plan[livePlan].role : '') : null });
+  process.stderr.write(`${n} ${r.speaker}${cutApplied ? ' [cut-in]' : ''}${move ? ' {' + move + '}' : ''}${r.move === 'F303-coin' ? ' {coin}' : ''}\n`);
 }
+
+// ---- move judge: every tag must pass its move's own test, between 3+ people, or it is removed ----
+const JUDGE = `You check whether one turn of a recorded group conversation genuinely performs a named conversational move. Be strict: a tag on a turn that does not pass the move's test is a failure. Output only JSON: {"pass": true/false, "reason": "one sentence"}.`;
+const judgements = [];
+for (let k = 0; k < T.length; k++) {
+  const e = T[k];
+  if (!e.move) continue;
+  const lo = Math.max(0, k - 8), hi = Math.min(T.length, k + 3);
+  const ctx = transcriptForModel(true).split('\n').slice(lo, hi).join('\n');
+  const extra = e.move === 'F303' ? `\nThe phrase was coined in an earlier turn: ${log.find(l => l.raw.move === 'F303-coin')?.turn}. Full transcript lines involved:\n${transcriptForModel(true)}` : '';
+  const q = `MOVE: ${moveText(e.move)}
+GROUP RULE: the move must happen in a part of the talk where at least three people are taking part; a two-person exchange does not count. Where the test needs the other party's response (confirming, ratifying, adopting), that response must actually be there in the following turns.
+TRANSCRIPT EXCERPT (numbered turns):
+${ctx}${extra}
+
+Does turn ${k + 1} (${e.speaker}) perform ${e.move}?`;
+  let v;
+  try { v = claude(JUDGE, q); } catch (err) { v = { pass: false, reason: 'judge failed: ' + err.message.slice(0, 100) }; }
+  judgements.push({ turn: k + 1, speaker: e.speaker, move: e.move, pass: !!v.pass, reason: v.reason });
+  process.stderr.write(`judge ${k + 1} ${e.move} ${v.pass ? 'PASS' : 'FAIL'}: ${v.reason}\n`);
+  if (!v.pass) { e.moveRejected = e.move; e.move = null; }
+}
+const planned = T0.plan.filter(p => p.role !== 'coin').map(p => p.id);
+const hit = T.map((e, k) => e.move ? { id: e.move, turn: k + 1 } : null).filter(Boolean);
+const unplaced = planned.filter(id => !hit.some(h => h.id === id));
 
 // Render for humans
 function render() {
@@ -155,9 +269,10 @@ function render() {
     for (const b of e.backchannels || []) { if (seen.has(b.after)) continue; seen.add(b.after); s = s.replace(b.after, `${b.after} *[${b.who}: ${b.text}]*`); }
     const lead = e.cutIn ? '—' : '';
     const tag = e.overlap ? ' *[over the end]*' : '';
-    return `**${e.speaker}:**${tag} ${lead}${s}`;
+    const mv = e.move ? ` *{${e.move} ${MOVES[e.move].name}}*` : '';
+    return `**${e.speaker}:**${tag}${mv} ${lead}${s}`;
   }).join('\n\n');
 }
-fs.writeFileSync(path.join(__dirname, `out-${outKey}.json`), JSON.stringify({ topic: TOPIC, model, T, log }, null, 2));
-fs.writeFileSync(path.join(__dirname, `out-${outKey}.md`), `*${TOPIC}*\n\n${render()}\n`);
-console.log('done', topicKey, T.length);
+fs.writeFileSync(path.join(__dirname, `out-${outKey}.json`), JSON.stringify({ topic: T0.moment, model, plan: T0.plan, T, log, judgements, hit, unplaced }, null, 2));
+fs.writeFileSync(path.join(__dirname, `out-${outKey}.md`), `*${T0.moment}*\n\n${render()}\n\nMoves hit: ${hit.map(h => h.id + '@' + h.turn).join(', ') || 'none'}. Not placed: ${unplaced.join(', ') || 'none'}.\n`);
+console.log('done', topicKey, T.length, 'hit', JSON.stringify(hit), 'unplaced', unplaced.join(','));
