@@ -658,6 +658,10 @@ const boothKeyGate = boothLinks.createBoothKeyGate({
 })
 logger.info(`[BoothKey] private booth links: grace ${boothKeyGate.graceOn() ? 'ON (id-only links served and logged)' : 'OFF (id-only links refused)'}`)
 
+// The booth is a person waiting: its DB statements bypass the load gate (cs #965). Agent-identified callers
+// (x-agent-id / x-agent-role / x-service-name) on these paths stay governed. Mounted before every /api/recording router.
+app.use('/api/recording', require('./shared/db-load-gate.cjs').interactiveHumans)
+
 // "Edit this line" in the booth (Aran, 2026-10-15, job #709): God admins only, relaunch courses
 // only, and every write goes through Popty's course-edit door with the caller's own session.
 // Mounted BEFORE the artists router so its own gate answers its own paths.
