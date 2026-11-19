@@ -1,0 +1,29 @@
+{
+ "seed": 95,
+ "legos": {
+  "L02": {
+   "delete": [
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14"
+   ],
+   "accept_gap": "back-fill 3 BUILD + 4 USE authored from taught chunks before these deletes apply (backfill.json)"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

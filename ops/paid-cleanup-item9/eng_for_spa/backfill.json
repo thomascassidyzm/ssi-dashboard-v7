@@ -1,0 +1,332 @@
+{
+ "course": "eng_for_spa",
+ "at": "2026-11-18T18:40:51.765Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0011L03": {
+   "lego": "después de | after",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 44,
+   "rows": [
+    {
+     "row": "S0011L03U06",
+     "role": "use",
+     "known": "me gustaría volver y hablar contigo después de aprender inglés",
+     "target": "I'd like to come back and speak with you after learning English",
+     "untaught": [
+      "come",
+      "back",
+      "and",
+      "learning"
+     ]
+    }
+   ]
+  },
+  "S0026L04": {
+   "lego": "irme | to go",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 19,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0026L04B03",
+     "role": "build",
+     "known": "tengo que irme",
+     "target": "I need to leave",
+     "untaught": [
+      "need",
+      "leave"
+     ]
+    }
+   ]
+  },
+  "S0040L01": {
+   "lego": "sentirte | feel",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0040L01B02",
+     "role": "build",
+     "known": "me siento bien",
+     "target": "I feel okay",
+     "untaught": [
+      "okay"
+     ]
+    },
+    {
+     "row": "S0040L01U04",
+     "role": "use",
+     "known": "me siento bien esta noche",
+     "target": "I feel okay tonight",
+     "untaught": [
+      "okay"
+     ]
+    }
+   ]
+  },
+  "S0043L01": {
+   "lego": "no estaba pensando en | I wasn't thinking about",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0043L01U06",
+     "role": "use",
+     "known": "no estaba pensando en contestar tan rápido",
+     "target": "I wasn't thinking about answering so quickly",
+     "untaught": [
+      "answering",
+      "so"
+     ]
+    }
+   ]
+  },
+  "S0063L02": {
+   "lego": "estás seguro de que | are you sure",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0063L02U05",
+     "role": "use",
+     "known": "¿estás seguro de que no te importa esperarme?",
+     "target": "are you sure you don't mind waiting for me?",
+     "untaught": [
+      "waiting"
+     ]
+    }
+   ]
+  },
+  "S0064L02": {
+   "lego": "no es fácil | isn't easy",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0064L02U05",
+     "role": "use",
+     "known": "contestar en inglés no es fácil todavía",
+     "target": "answering in English isn't easy yet",
+     "untaught": [
+      "answering"
+     ]
+    }
+   ]
+  },
+  "S0082L01": {
+   "lego": "esperarte | wait for you",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0082L01U06",
+     "role": "use",
+     "known": "voy a esperarte un rato más tarde",
+     "target": "I'm going to wait for you for a while later on",
+     "untaught": [
+      "while"
+     ]
+    }
+   ]
+  },
+  "S0096L01": {
+   "lego": "no | no",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0096L01B03",
+     "role": "build",
+     "known": "no, gracias",
+     "target": "no thanks",
+     "untaught": [
+      "thanks"
+     ]
+    }
+   ]
+  },
+  "S0099L02": {
+   "lego": "por qué no está funcionando | why it's not working",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0099L02U04",
+     "role": "use",
+     "known": "me pregunto por qué no está funcionando",
+     "target": "I ask myself why it's not working",
+     "untaught": [
+      "myself"
+     ]
+    }
+   ]
+  },
+  "S0145L02": {
+   "lego": "por qué no estás contento | why are you not happy",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0145L02U06",
+     "role": "use",
+     "known": "¿por qué no estás contento desde esta mañana?",
+     "target": "why are you not happy since this morning?",
+     "untaught": [
+      "since"
+     ]
+    }
+   ]
+  },
+  "S0184L02": {
+   "lego": "en la oficina | in the office",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0184L02U05",
+     "role": "use",
+     "known": "las dejaste en la oficina hace un rato",
+     "target": "you left them in the office a little while ago",
+     "untaught": [
+      "left",
+      "ago"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

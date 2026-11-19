@@ -1,0 +1,784 @@
+{
+ "course": "eng_for_fra",
+ "at": "2026-11-18T18:40:47.841Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0004L01": {
+   "lego": "dire | to say",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0004L01U06",
+     "role": "use",
+     "known": "j'essaie de me souvenir comment dire quelque chose en anglais",
+     "target": "I'm trying to remember how to say something in English",
+     "untaught": [
+      "remember",
+      "something",
+      "in"
+     ]
+    }
+   ]
+  },
+  "S0007L01": {
+   "lego": "essayer | to try",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0007L01B04",
+     "role": "build",
+     "known": "elle veut essayer",
+     "target": "she wants to try",
+     "untaught": [
+      "she",
+      "wants"
+     ]
+    }
+   ]
+  },
+  "S0012L02": {
+   "lego": "deviner | to guess",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 32,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0012L02U07",
+     "role": "use",
+     "known": "je n'aimerais pas deviner la réponse aujourd'hui",
+     "target": "I wouldn't like to guess the answer today",
+     "untaught": [
+      "answer"
+     ]
+    }
+   ]
+  },
+  "S0014L01": {
+   "lego": "est-ce que | do",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0014L01B04",
+     "role": "build",
+     "known": "est-ce que tu parles anglais avec moi ?",
+     "target": "do you speak English with me?",
+     "untaught": [
+      "me"
+     ]
+    }
+   ]
+  },
+  "S0019L03": {
+   "lego": "arrêter de parler | to stop talking",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0019L03U05",
+     "role": "use",
+     "known": "elle ne veut pas arrêter de parler avec quelqu'un d'autre",
+     "target": "she doesn't want to stop talking with someone else",
+     "untaught": [
+      "doesn't"
+     ]
+    }
+   ]
+  },
+  "S0025L02": {
+   "lego": "avant que je doive partir | before I have to go",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 39,
+   "rows": [
+    {
+     "row": "S0025L02U01",
+     "role": "use",
+     "known": "je veux me souvenir de ça avant que je doive partir",
+     "target": "I want to remember that before I have to go",
+     "untaught": [
+      "that"
+     ]
+    }
+   ]
+  },
+  "S0026L02": {
+   "lego": "me sentir | feeling",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 36,
+   "rows": [
+    {
+     "row": "S0026L02U06",
+     "role": "use",
+     "known": "j'aime me sentir bien quand j'apprends quelque chose de nouveau",
+     "target": "I like feeling well when I learn something new",
+     "untaught": [
+      "when",
+      "new"
+     ]
+    }
+   ]
+  },
+  "S0026L04": {
+   "lego": "presque prêt à partir | nearly ready to go",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0026L04U06",
+     "role": "use",
+     "known": "je commence à me sentir presque prête à partir",
+     "target": "I'm starting to feel nearly ready to go",
+     "untaught": [
+      "starting",
+      "feel"
+     ]
+    }
+   ]
+  },
+  "S0027L01": {
+   "lego": "je n'aime pas | I don't like",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0027L01B04",
+     "role": "build",
+     "known": "je n'aime pas me souvenir de ça",
+     "target": "I don't like to remember that",
+     "untaught": [
+      "that"
+     ]
+    }
+   ]
+  },
+  "S0037L01": {
+   "lego": "j'ai commencé à y penser | I started to think about it",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0037L01U07",
+     "role": "use",
+     "known": "j'ai commencé à y penser quand je me sentais fatiguée",
+     "target": "I started to think about it when I was feeling tired",
+     "untaught": [
+      "was",
+      "tired"
+     ]
+    }
+   ]
+  },
+  "S0038L01": {
+   "lego": "j'apprends depuis | I've been learning for",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 37,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0038L01U05",
+     "role": "use",
+     "known": "j'apprends depuis environ une semaine et je commence à comprendre",
+     "target": "I've been learning for about a week and I'm starting to understand",
+     "untaught": [
+      "week",
+      "starting",
+      "understand"
+     ]
+    },
+    {
+     "row": "S0038L01U06",
+     "role": "use",
+     "known": "j'apprends l'anglais depuis environ une semaine mais je n'ai pas appris beaucoup de nouveaux mots",
+     "target": "I've been learning English for about a week but I haven't learnt a lot of new words",
+     "untaught": [
+      "week",
+      "haven't",
+      "learnt",
+      "lot",
+      "of",
+      "new",
+      "words"
+     ]
+    }
+   ]
+  },
+  "S0043L01": {
+   "lego": "je ne pensais pas à | I wasn't thinking about",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 2,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0043L01B02",
+     "role": "build",
+     "known": "je ne pensais pas à ça",
+     "target": "I wasn't thinking about that",
+     "untaught": [
+      "that"
+     ]
+    },
+    {
+     "row": "S0043L01B03",
+     "role": "build",
+     "known": "je ne pensais pas à ça ce matin",
+     "target": "I wasn't thinking about that this morning",
+     "untaught": [
+      "that"
+     ]
+    },
+    {
+     "row": "S0043L01U03",
+     "role": "use",
+     "known": "je ne pensais pas à ça aujourd'hui",
+     "target": "I wasn't thinking about that today",
+     "untaught": [
+      "that"
+     ]
+    }
+   ]
+  },
+  "S0046L01": {
+   "lego": "je ne m'inquiète pas de | I don't worry about",
+   "before": "ok",
+   "delete": 5,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 3,
+   "author_use": 2,
+   "avg_target_chars": 28,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0046L01B02",
+     "role": "build",
+     "known": "mais je ne m'inquiète pas de ça",
+     "target": "but I don't worry about that",
+     "untaught": [
+      "that"
+     ]
+    },
+    {
+     "row": "S0046L01B03",
+     "role": "build",
+     "known": "je ne m'inquiète pas de ça aujourd'hui",
+     "target": "I don't worry about that today",
+     "untaught": [
+      "that"
+     ]
+    },
+    {
+     "row": "S0046L01B04",
+     "role": "build",
+     "known": "je ne m'inquiète pas de ça ce matin",
+     "target": "I don't worry about that this morning",
+     "untaught": [
+      "that"
+     ]
+    },
+    {
+     "row": "S0046L01U04",
+     "role": "use",
+     "known": "je ne m'inquiète pas de ça maintenant",
+     "target": "I don't worry about that now",
+     "untaught": [
+      "that"
+     ]
+    },
+    {
+     "row": "S0046L01U05",
+     "role": "use",
+     "known": "je ne m'inquiète pas de ça ce soir",
+     "target": "I don't worry about that this evening",
+     "untaught": [
+      "that"
+     ]
+    }
+   ]
+  },
+  "S0055L01": {
+   "lego": "je n'aime pas me réveiller | I don't enjoy waking up",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 35,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0055L01U06",
+     "role": "use",
+     "known": "je n'aime pas me réveiller tôt quand je suis fatiguée",
+     "target": "I don't enjoy waking up early when I'm tired",
+     "untaught": [
+      "early"
+     ]
+    },
+    {
+     "row": "S0055L01U07",
+     "role": "use",
+     "known": "je n'aime pas me réveiller au milieu de la nuit",
+     "target": "I don't enjoy waking up in the middle of the night",
+     "untaught": [
+      "middle",
+      "of"
+     ]
+    }
+   ]
+  },
+  "S0089L02": {
+   "lego": "en peu de temps | in a short time",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0089L02U02",
+     "role": "use",
+     "known": "je serai prête à parler à des gens en peu de temps",
+     "target": "I will be ready to talk to people in a short time",
+     "untaught": [
+      "will"
+     ]
+    }
+   ]
+  },
+  "S0090L01": {
+   "lego": "si tu peux | if you can",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 29,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0090L01U01",
+     "role": "use",
+     "known": "si tu peux m'aider à comprendre je serai très contente",
+     "target": "if you can help me understand I will be very happy",
+     "untaught": [
+      "will"
+     ]
+    },
+    {
+     "row": "S0090L01U02",
+     "role": "use",
+     "known": "si tu peux m'attendre je serai prête bientôt",
+     "target": "if you can wait for you I will be ready soon",
+     "untaught": [
+      "will"
+     ]
+    },
+    {
+     "row": "S0090L01U05",
+     "role": "use",
+     "known": "si tu peux m'aider à me souvenir je serai très contente",
+     "target": "if you can help me remember I will be very happy",
+     "untaught": [
+      "will"
+     ]
+    }
+   ]
+  },
+  "S0091L03": {
+   "lego": "répondre à temps | answer in time",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0091L03U05",
+     "role": "use",
+     "known": "je serai prête à répondre à temps bientôt",
+     "target": "I will be ready to answer in time soon",
+     "untaught": [
+      "will"
+     ]
+    }
+   ]
+  },
+  "S0196L02": {
+   "lego": "la dernière | the latest",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0196L02U06",
+     "role": "use",
+     "known": "tu as entendu la dernière sur mon fils ?",
+     "target": "have you heard the latest about my son?",
+     "untaught": [
+      "son"
+     ]
+    }
+   ]
+  },
+  "S0201L02": {
+   "lego": "ce qui allait se passer | what was going to happen",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 39,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0201L02U06",
+     "role": "use",
+     "known": "personne n'était sûr de ce qui allait se passer hier soir",
+     "target": "nobody was sure what was going to happen last night",
+     "untaught": [
+      "nobody"
+     ]
+    }
+   ]
+  },
+  "S0225L01": {
+   "lego": "il te donnerait une réponse | he would give you an answer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0225L01U02",
+     "role": "use",
+     "known": "il te donnerait une réponse s'il savait",
+     "target": "he would give you an answer if he knew",
+     "untaught": [
+      "knew"
+     ]
+    }
+   ]
+  },
+  "S0226L01": {
+   "lego": "l'homme | the man",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 1,
+   "author_use": 3,
+   "avg_target_chars": 27,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0226L01B03",
+     "role": "build",
+     "known": "l'homme vient de",
+     "target": "the man has just",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0226L01U02",
+     "role": "use",
+     "known": "l'homme vient de regarder un film",
+     "target": "the man has just watched a film",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0226L01U04",
+     "role": "use",
+     "known": "l'homme vient de voir quelques amis",
+     "target": "the man has just seen a few friends",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0226L01U05",
+     "role": "use",
+     "known": "l'homme vient d'oublier quelque chose",
+     "target": "the man has just forgotten something",
+     "untaught": [
+      "has"
+     ]
+    }
+   ]
+  },
+  "S0227L01": {
+   "lego": "cet homme | that man",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 1,
+   "author_use": 3,
+   "avg_target_chars": 28,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0227L01B03",
+     "role": "build",
+     "known": "cet homme vient de regarder le foot",
+     "target": "that man has just watched the football",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0227L01U02",
+     "role": "use",
+     "known": "cet homme vient de commencer à apprendre l'anglais",
+     "target": "that man has just started to learn English",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0227L01U03",
+     "role": "use",
+     "known": "cet homme vient d'oublier quelque chose",
+     "target": "that man has just forgotten something",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0227L01U05",
+     "role": "use",
+     "known": "cet homme vient de voir quelques amis",
+     "target": "that man has just seen a few friends",
+     "untaught": [
+      "has"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

@@ -1,0 +1,52 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0040L01U04",
+   "expect": {
+    "known_text": "நாளை மனநிலை நன்றாக இருக்கும்",
+    "target_text": "내일 기분이 좋을 거예요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0041L01U04",
+   "expect": {
+    "known_text": "சரியாக உணர்கிறேன், ஆனால் அதைப் பற்றி கவலைப்படுவதில்லை",
+    "target_text": "괜찮은데, 그것에 대해 걱정하지 않아요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0041L01U05",
+   "expect": {
+    "known_text": "சரியாக உணர்கிறேன், ஆனால் இன்னும் நன்றாக உணரத் தொடங்கியிருந்தேன்",
+    "target_text": "괜찮은데, 더 나아지기 시작하고 있었어요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0042L01U05",
+   "expect": {
+    "known_text": "நாளை இரவை விட நன்றாக இருக்கும்",
+    "target_text": "내일 저녁보다 좋을 거예요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0074L01U03",
+   "expect": {
+    "known_text": "புரிந்துகொள்ள உதவுகிறது",
+    "target_text": "이해하는 데 도움이 돼요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0076L01U03",
+   "expect": {
+    "known_text": "ஏற்கனவே உதவுகிறது",
+    "target_text": "이미 도움이 돼요"
+   }
+  }
+ ]
+}

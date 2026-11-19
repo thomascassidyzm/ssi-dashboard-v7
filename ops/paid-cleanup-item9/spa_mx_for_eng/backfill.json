@@ -1,0 +1,242 @@
+{
+ "course": "spa_mx_for_eng",
+ "at": "2026-11-18T18:40:58.215Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0150L01": {
+   "lego": "you are called | llamas",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0150L01U02",
+     "role": "use",
+     "known": "what is your name exactly?",
+     "target": "¿cómo te llamas tú?",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0150L02": {
+   "lego": "your name is | te llamas",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 10
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0150L02B03",
+     "role": "build",
+     "known": "what is your name exactly?",
+     "target": "¿cómo te llamas tú?",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0201L01": {
+   "lego": "was going | iba",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0201L01U05",
+     "role": "use",
+     "known": "was going to look for the money on the table",
+     "target": "iba a buscar el dinero en la mesa",
+     "untaught": [
+      "buscar"
+     ]
+    }
+   ]
+  },
+  "S0204L01": {
+   "lego": "she would help | ayudara",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0204L01U03",
+     "role": "use",
+     "known": "I wanted her to help look for the money",
+     "target": "quería que ayudara a buscar el dinero",
+     "untaught": [
+      "buscar"
+     ]
+    }
+   ]
+  },
+  "S0343L01": {
+   "lego": "worried | preocupada",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0343L01U08",
+     "role": "use",
+     "known": "I'm more worried than you",
+     "target": "estoy más preocupada que tú",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0364L03": {
+   "lego": "place | lugar",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0364L03U06",
+     "role": "use",
+     "known": "are you going to look for a place?",
+     "target": "¿vas a buscar un lugar?",
+     "untaught": [
+      "buscar"
+     ]
+    },
+    {
+     "row": "S0364L03U07",
+     "role": "use",
+     "known": "you should look for a place",
+     "target": "deberías buscar un lugar",
+     "untaught": [
+      "buscar"
+     ]
+    }
+   ]
+  },
+  "S0610L01": {
+   "lego": "needs to look for work | necesita buscar trabajo",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0610L01U07",
+     "role": "use",
+     "known": "he needs to look for work more than you",
+     "target": "necesita buscar trabajo más que tú",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0662L01": {
+   "lego": "they speak | hablan",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 16
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 16
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0662L01B04",
+     "role": "build",
+     "known": "they speak better than you",
+     "target": "hablan mejor que tú",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

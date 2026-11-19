@@ -1,0 +1,276 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0004L01U03",
+   "expect": {
+    "known_text": "我想试着说一些东西",
+    "target_text": "I want to try to say something"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0004L01U04",
+   "expect": {
+    "known_text": "我想今天用英语说一些东西",
+    "target_text": "I want to say something in English today"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0004L02U05",
+   "expect": {
+    "known_text": "我在努力练习用英语说",
+    "target_text": "I'm trying to practise speaking in English"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0005L01U03",
+   "expect": {
+    "known_text": "我想今天和别人练习说",
+    "target_text": "I want to practise speaking with someone else today"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0006L01U04",
+   "expect": {
+    "known_text": "我想试着记住这个词",
+    "target_text": "I want to try to remember the word"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0006L01U05",
+   "expect": {
+    "known_text": "我在努力记住用英语怎么说",
+    "target_text": "I'm trying to remember how to say it in English"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L03B02",
+   "expect": {
+    "known_text": "说完练习说",
+    "target_text": "To finish practising speaking"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L03U08",
+   "expect": {
+    "known_text": "我想说完练习说英语",
+    "target_text": "I want to finish practising speaking English"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L04B02",
+   "expect": {
+    "known_text": "以后练习说",
+    "target_text": "After practising speaking"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L04U01",
+   "expect": {
+    "known_text": "我想说完以后回家",
+    "target_text": "I want to go home after I finish"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L04U02",
+   "expect": {
+    "known_text": "你说完以后我想问你一些东西",
+    "target_text": "I want to ask you something after you finish"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L04U03",
+   "expect": {
+    "known_text": "他想晚一点以后回来",
+    "target_text": "He wants to come back later on"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L04U04",
+   "expect": {
+    "known_text": "我想练习说以后和你见面",
+    "target_text": "I want to practise speaking after I meet you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0011L04U05",
+   "expect": {
+    "known_text": "她想今天晚上以后和我们见面",
+    "target_text": "She wants to meet us after this evening"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0015L01U06",
+   "expect": {
+    "known_text": "他想今天晚上和我练习说英语",
+    "target_text": "He wants to practise speaking English with me this evening"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0015L01U07",
+   "expect": {
+    "known_text": "你想现在和我说话吗",
+    "target_text": "Do you want to talk with me now?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0019L03B04",
+   "expect": {
+    "known_text": "今天停止学习",
+    "target_text": "To stop learning today"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0042L01U07",
+   "expect": {
+    "known_text": "他比我更累",
+    "target_text": "He's more tired than me"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0067L01U04",
+   "expect": {
+    "known_text": "你为什么想停下来，因为你做得很好",
+    "target_text": "Why do you want to stop when you're doing very well?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0067L01U05",
+   "expect": {
+    "known_text": "你为什么想停下来，还是想继续这样做",
+    "target_text": "Why do you want to stop or do you want to keep on doing this?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0082L03U05",
+   "expect": {
+    "known_text": "你想停下来，但是为什么不继续",
+    "target_text": "You want to stop but why not keep on doing this?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0105L01U05",
+   "expect": {
+    "known_text": "这就是为什么我想花更多时间学习",
+    "target_text": "That is why I want to spend more time learning"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0111L01U06",
+   "expect": {
+    "known_text": "我没想到当我们学到新东西的时候，它会改变我们的大脑",
+    "target_text": "I wasn't expecting that when we learn something new it changes our brain"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0148L01U04",
+   "expect": {
+    "known_text": "他不太有耐心，虽然他很友好",
+    "target_text": "He wasn't very patient although he was very kind"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0241L01U05",
+   "expect": {
+    "known_text": "我现在不想给他，因为我自己还需要它",
+    "target_text": "I don't want to give it to him now because I still need it myself"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0245L01U05",
+   "expect": {
+    "known_text": "我对自己在短时间内做了这么多很满意，但我还想做更多",
+    "target_text": "I'm happy with how much I've done in a short time but I still want to do more"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0246L01U05",
+   "expect": {
+    "known_text": "我想让她帮你，但是她太忙了，所以我打算自己来做",
+    "target_text": "I wanted her to help you but she was too busy so I'm going to do it myself"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0254L01U05",
+   "expect": {
+    "known_text": "我从今天早上就准备好了，所以我们什么时候都可以开始",
+    "target_text": "I've been ready since this morning so we can start whenever you want"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0255L01U06",
+   "expect": {
+    "known_text": "你觉得你什么时候能准备好走，还是你想多待一会儿",
+    "target_text": "When do you think you'll be ready to leave or do you want to stay a little longer?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0269L01U05",
+   "expect": {
+    "known_text": "你为什么不想等你爸爸，还是你担心你要迟到了",
+    "target_text": "Why don't you want to wait for your father or are you worried that you're going to be late?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0284L01U05",
+   "expect": {
+    "known_text": "你认识我姐姐的朋友吗，因为她也会说英语",
+    "target_text": "Do you know my sister's friend because she speaks English too?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0288L01U05",
+   "expect": {
+    "known_text": "我认识的大多数人都喜欢看电视，但我更喜欢读书",
+    "target_text": "Most people I know like watching television but I prefer to read"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0291L01U05",
+   "expect": {
+    "known_text": "我希望我很快能说得更好，因为我每天都在努力",
+    "target_text": "I hope I'll be able to speak better soon because I'm trying hard every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0293L01U05",
+   "expect": {
+    "known_text": "我得找到他打算在哪里和我见面，因为他还没告诉我",
+    "target_text": "I have to find out where he's going to meet me because he hasn't told me yet"
+   }
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "course": "spa_mx_for_eng",
+ "batch": "auto",
+ "seeds": [
+  150,
+  177,
+  178,
+  181,
+  201,
+  204,
+  343,
+  357,
+  364,
+  389,
+  610,
+  662
+ ],
+ "counts": {
+  "lego_insert": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "update": 0,
+  "delete": 15
+ },
+ "structural": false,
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [
+  "S0150L01: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows)",
+  "S0150L02: after the edit: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0201L01: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0204L01: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0343L01: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows)",
+  "S0364L03: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows)",
+  "S0610L01: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows)",
+  "S0662L01: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json))"
+ ],
+ "checks": [
+  {
+   "lego": "S0150L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 2,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows"
+  },
+  {
+   "lego": "S0150L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 1,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0177L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0178L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0181L05",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 2,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0201L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 4",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0204L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 4",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0343L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 2,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows"
+  },
+  {
+   "lego": "S0357L03",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 4,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0364L03",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 2,
+   "deleted": 2,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows"
+  },
+  {
+   "lego": "S0389L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0610L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 2,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "basket was already under the floor before item 9 (BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows"
+  },
+  {
+   "lego": "S0662L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 2,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json)"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "seed": 126,
+ "legos": {
+  "L01": {
+   "delete": [
+    "U09"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"we don't need to feel happy we just need to work hard\"); deletes do not lower its counted rows"
+  },
+  "L02": {
+   "delete": [
+    "U02",
+    "U11"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"when we learn something new it changes our brain\"); deletes do not lower its counted rows"
+  },
+  "L03": {
+   "delete": [
+    "U14"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (2 duplicate phrase(s) within this LEGO: \"the shape of my brain\", \"this work is changing the shape of my brain\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

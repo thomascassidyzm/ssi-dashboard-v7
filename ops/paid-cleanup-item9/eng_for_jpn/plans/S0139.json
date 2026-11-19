@@ -1,0 +1,25 @@
+{
+ "seed": 139,
+ "legos": {
+  "L01": {
+   "delete": [
+    "B05",
+    "B07",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U12",
+    "U13"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (3 duplicate phrase(s) within this LEGO: \"I'm sorry that\", \"I'm sorry that I need to leave so early\", \"I'm sorry that I couldn't speak to you\"); deletes do not lower its counted rows"
+  },
+  "L02": {
+   "delete": [
+    "U06"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (2 duplicate phrase(s) within this LEGO: \"need to leave\", \"I'm sorry that I need to leave so early\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

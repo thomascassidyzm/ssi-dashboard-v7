@@ -1,0 +1,452 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0053L03U02",
+   "expect": {
+    "known_text": "she wants to put things in this letter",
+    "target_text": "elle veut mettre des choses dans cette lettre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0053L03U07",
+   "expect": {
+    "known_text": "she wanted to put something in this letter",
+    "target_text": "elle voulait mettre quelque chose dans cette lettre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0063L01U04",
+   "expect": {
+    "known_text": "you are very good",
+    "target_text": "tu es très bon"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0063L02U06",
+   "expect": {
+    "known_text": "I don't mind at all",
+    "target_text": "ça ne me dérange pas du tout"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0069L03U07",
+   "expect": {
+    "known_text": "she can't look after the dog this evening",
+    "target_text": "elle ne peut pas s'occuper du chien ce soir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0071L03U10",
+   "expect": {
+    "known_text": "she can't see anyone here",
+    "target_text": "elle ne peut voir personne ici"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0080L02U03",
+   "expect": {
+    "known_text": "are you asking me when I'll be ready?",
+    "target_text": "tu me demandes de quand je serai prêt ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0080L02U04",
+   "expect": {
+    "known_text": "I'll tell you when I'll be ready to learn",
+    "target_text": "je te dirai de quand je serai prêt à apprendre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0094L02U04",
+   "expect": {
+    "known_text": "she doesn't know the way it will work",
+    "target_text": "elle ne sait pas la façon que ça fonctionne"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0094L03U03",
+   "expect": {
+    "known_text": "do you think it works?",
+    "target_text": "tu penses que ça fonctionne ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0108L03U07",
+   "expect": {
+    "known_text": "I can't sleep in the middle of the night",
+    "target_text": "je ne peux pas dormir au milieu de la nuit"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0117L03U09",
+   "expect": {
+    "known_text": "I liked when we talked yesterday",
+    "target_text": "j'ai aimé quand nous avons parlé hier"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0118L01U08",
+   "expect": {
+    "known_text": "I felt better when we were with my friends",
+    "target_text": "je me sentais mieux quand nous étions avec mes amis"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0120L01U09",
+   "expect": {
+    "known_text": "it's interesting that you can speak French now",
+    "target_text": "c'est intéressant que tu puisses parler français maintenant"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0120L01U10",
+   "expect": {
+    "known_text": "it's interesting that we learn together",
+    "target_text": "c'est intéressant que nous apprenions ensemble"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0120L01U11",
+   "expect": {
+    "known_text": "it's interesting that you remember all of that",
+    "target_text": "c'est intéressant que tu te souviennes de tout ça"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0121L01U04",
+   "expect": {
+    "known_text": "do you think it's unusual?",
+    "target_text": "tu penses que c'est inhabituel ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0123L02U04",
+   "expect": {
+    "known_text": "do you think it's a good idea?",
+    "target_text": "tu penses que c'est une bonne idée ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0132L01U07",
+   "expect": {
+    "known_text": "he worked less than I thought",
+    "target_text": "il a travaillé moins que je pensais"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0163L01U04",
+   "expect": {
+    "known_text": "I think that it's interesting, don't you think so?",
+    "target_text": "je pense que c'est intéressant, vous ne pensez pas?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0164L01U05",
+   "expect": {
+    "known_text": "Can you give me an interesting book?",
+    "target_text": "pouvez-vous me donner un livre intéressant?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0168L02U07",
+   "expect": {
+    "known_text": "Can you come to the restaurant?",
+    "target_text": "pouvez-vous venir au restaurant?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0168L02U08",
+   "expect": {
+    "known_text": "Can you come and help me tomorrow?",
+    "target_text": "pouvez-vous venir m'aider demain?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0169L02U07",
+   "expect": {
+    "known_text": "Can you tell me what you want me to do?",
+    "target_text": "pouvez-vous me dire ce que vous voulez que je fasse?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L01U04",
+   "expect": {
+    "known_text": "I'd like you to tell me what you think",
+    "target_text": "je voudrais que vous me disiez ce que vous pensez"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0171L01U02",
+   "expect": {
+    "known_text": "do you want me to show you something?",
+    "target_text": "voulez-vous que je vous montre quelque chose ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0171L02U09",
+   "expect": {
+    "known_text": "Can you help me look for my bag?",
+    "target_text": "pouvez-vous m'aider à chercher mon sac?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0178L02U05",
+   "expect": {
+    "known_text": "although it's difficult, I want to learn",
+    "target_text": "bien que ce soit difficile, je veux apprendre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0178L02U06",
+   "expect": {
+    "known_text": "although I'm tired, I want to continue",
+    "target_text": "bien que je sois fatigué, je veux continuer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0178L02U07",
+   "expect": {
+    "known_text": "although you can't come, I understand",
+    "target_text": "bien que tu ne puisses pas venir, je comprends"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0182L03U03",
+   "expect": {
+    "known_text": "are you going anywhere tomorrow?",
+    "target_text": "vous allez quelque part demain?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0190L01U01",
+   "expect": {
+    "known_text": "I'm asking you a question now",
+    "target_text": "je te pose une question maintenant"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0190L01U02",
+   "expect": {
+    "known_text": "if I ask a question, can you answer?",
+    "target_text": "si je pose une question, tu peux répondre ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0190L01U03",
+   "expect": {
+    "known_text": "he asks me difficult questions",
+    "target_text": "il me pose des questions difficiles"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0190L01U04",
+   "expect": {
+    "known_text": "I ask this question because I want to learn",
+    "target_text": "je pose cette question parce que je veux apprendre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0195L03U02",
+   "expect": {
+    "known_text": "the book you're looking for is on the table here",
+    "target_text": "le livre que vous cherchez est sur la table ici"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0219L02U12",
+   "expect": {
+    "known_text": "she needed to relax for a while",
+    "target_text": "elle avait besoin de se détendre pendant un moment"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0220L03U09",
+   "expect": {
+    "known_text": "I want to watch television now",
+    "target_text": "je veux regarder la télévision maintenant"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0220L03U10",
+   "expect": {
+    "known_text": "he doesn't want to watch television with us",
+    "target_text": "il ne veut pas regarder la télévision avec nous"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0225L02U03",
+   "expect": {
+    "known_text": "I remember that he could do that easily",
+    "target_text": "je me souviens qu'il pouvait faire ça facilement"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0225L02U04",
+   "expect": {
+    "known_text": "she didn't know he could do that",
+    "target_text": "elle ne savait pas qu'il pouvait faire ça"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0225L02U05",
+   "expect": {
+    "known_text": "I didn't know she could come",
+    "target_text": "je ne savais pas qu'elle pouvait venir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0324L06U01",
+   "expect": {
+    "known_text": "she needed to walk with both of her hands up",
+    "target_text": "elle devait marcher avec ses deux mains levées"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0324L06U02",
+   "expect": {
+    "known_text": "that student said she had both of her hands up",
+    "target_text": "cette élève a dit qu'elle avait ses deux mains levées"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0324L06U04",
+   "expect": {
+    "known_text": "she was trying to read the book with both of her hands up",
+    "target_text": "elle essayait de lire le livre avec ses deux mains levées"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0365L01U01",
+   "expect": {
+    "known_text": "he knew what she said to him",
+    "target_text": "il savait ce qu'elle lui a dit"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0365L01U02",
+   "expect": {
+    "known_text": "he didn't know what she said to him",
+    "target_text": "il ne savait pas ce qu'elle lui a dit"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0366L02U01",
+   "expect": {
+    "known_text": "she knew what he wanted to grow",
+    "target_text": "elle savait ce qu'il voulait faire pousser"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0366L02U03",
+   "expect": {
+    "known_text": "she knew what he wanted to do",
+    "target_text": "elle savait ce qu'il voulait faire"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0366L02U04",
+   "expect": {
+    "known_text": "she knew what he wanted to say",
+    "target_text": "elle savait ce qu'il voulait dire"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0372L01U01",
+   "expect": {
+    "known_text": "she knew what she was trying to do",
+    "target_text": "elle savait ce qu'elle essayait de faire"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0372L01U03",
+   "expect": {
+    "known_text": "he knew what she was trying to do",
+    "target_text": "il savait ce qu'elle essayait de faire"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0424L03U02",
+   "expect": {
+    "known_text": "it takes time",
+    "target_text": "ça prend du temps"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0559L04U06",
+   "expect": {
+    "known_text": "have you found what you were looking for?",
+    "target_text": "as-tu trouvé ce que tu cherchais ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0648L01U02",
+   "expect": {
+    "known_text": "I understood what you said madam",
+    "target_text": "j'ai compris ce que vous avez dit madame"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0663L01U01",
+   "expect": {
+    "known_text": "I understood what you all said",
+    "target_text": "j'ai compris ce que vous avez tous dit"
+   }
+  }
+ ]
+}
