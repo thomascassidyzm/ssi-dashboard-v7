@@ -1,0 +1,40 @@
+{
+ "seed": 378,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला वाटतं माझ्याकडे पुरेसे पैसे नव्हते",
+     "I think I didn't have enough money",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "माझ्याकडे सुट्टीसाठी पुरेसा वेळ नाही",
+     "I don't have enough time for holidays",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "माझ्याकडे गेल्या वर्षी पुरेसे पैसे नव्हते",
+     "I didn't have enough money last year",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0378L01B01": "नव्हते|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

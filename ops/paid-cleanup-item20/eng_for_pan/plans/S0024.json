@@ -1,0 +1,41 @@
+{
+ "seed": 24,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਬੋਲ ਨਹੀਂ ਪਾਵਾਂਗਾ",
+     "I'm not going to be able to speak",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਕੱਲ੍ਹ ਉਸਦਾ ਨਾਂ ਯਾਦ ਨਹੀਂ ਕਰ ਪਾਵਾਂਗਾ",
+     "I'm not going to be able to remember his name tomorrow",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ਆਸਾਨੀ ਨਾਲ ਬੋਲਣਾ",
+     "to speak easily",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0024L01B01": "ਪਾਵਾਂਗਾ|seed 24's own sentence uses ਪਾਵਾਂਗਾ for 'going to be able to'",
+  "S0024L02B01": "ਪਾਵਾਂਗਾ|seed 24's own sentence uses ਪਾਵਾਂਗਾ for 'going to be able to'"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,40 @@
+{
+ "seed": 542,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्हाला राग येत असेल तर माझी हरकत नाही",
+     "I don't mind if you feel angry",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "जेव्हा जेव्हा तो खूश असतो",
+     "whenever he's happy",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "जेव्हा जेव्हा आयुष्य सोपं नसतं",
+     "whenever life isn't easy",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0542L02B01": "असतो|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

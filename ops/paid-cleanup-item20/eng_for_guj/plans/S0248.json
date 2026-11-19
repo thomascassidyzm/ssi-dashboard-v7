@@ -1,0 +1,48 @@
+{
+ "seed": 248,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "મને એ ફિલ્મ ગમતી નથી",
+     "I don't like the film",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "મને લાગ્યું કે વાર્તા સાવ નકામી હતી",
+     "I thought the story was complete rubbish",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "હું આજે મારા પૈસા પાછા ઈચ્છું છું",
+     "I want my money back today",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "મને લાગે છે કે હું મારા પૈસા પાછા ઈચ્છું છું",
+     "I think I want my money back",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

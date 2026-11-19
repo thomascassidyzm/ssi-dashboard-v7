@@ -1,0 +1,40 @@
+{
+ "seed": 25,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "তুমি কি শীঘ্রই আমাকে সাহায্য করবে",
+     "are you going to help me soon",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "যাওয়ার আগে ফিরে আসা",
+     "to come back before I have to go",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "তুমি কি আজ আমাকে সাহায্য করবে",
+     "are you going to help me today",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0025L01B01": "করবে|form of taught করা, the seed's own wording"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

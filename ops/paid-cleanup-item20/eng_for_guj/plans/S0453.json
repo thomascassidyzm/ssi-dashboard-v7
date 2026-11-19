@@ -1,0 +1,38 @@
+{
+ "seed": 453,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "મેં પૂછ્યું કે તેઓએ ગઈ કાલ રાત્રે કોને જોયો",
+     "I asked who they saw last night",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "શું તેઓએ કહ્યું કે ફિલ્મ ક્યારે શરૂ થઈ?",
+     "did they say when the film started?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "શું તેઓએ કહ્યું કે એ જે કહ્યું?",
+     "did they say what he said?",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

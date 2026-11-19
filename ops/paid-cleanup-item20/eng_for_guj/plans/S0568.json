@@ -1,0 +1,50 @@
+{
+ "seed": 568,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "આપણે આવતી વખતે મળીશું ત્યારે હું તૈયાર થઈ જઈશ",
+     "I'll be ready next time we meet",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "હું સુધારો જોવાની અપેક્ષા રાખું છું",
+     "I'm expecting to see an improvement",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "કદાચ એ સુધારો છે",
+     "it might be an improvement",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "હું એક મિત્રને જોવાની અપેક્ષા રાખું છું",
+     "I'm expecting to see a friend",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0568L02B01": "રાખું|the known wording of this seed's own later LEGO, which the English row already uses"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,56 @@
+{
+ "seed": 498,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত সে ওখানে একা দাঁড়িয়ে আছে",
+     "I'm sure he's standing alone over there",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "এটা প্রবেশদ্বারের কাছে ছিল না",
+     "it wasn't near the entrance",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমাদের প্রবেশদ্বারের কাছে দাঁড়ানোর দরকার নেই",
+     "we don't need to stand near the entrance",
+     null,
+     null,
+     null
+    ],
+    [
+     "build",
+     "যে প্রবেশদ্বারের কাছে হেঁটে যাচ্ছে",
+     "the one who is walking near the entrance",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "আমি প্রবেশদ্বারের ভেতরে একজন বন্ধুর জন্য অপেক্ষা করছি",
+     "I'm waiting for a friend inside the entrance",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

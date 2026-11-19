@@ -1,0 +1,48 @@
+{
+ "seed": 1,
+ "generated": true,
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "बोलायचं आहे",
+     "want to speak",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "तुमच्याशी इंग्रजी बोलणे",
+     "to speak English with you",
+     null,
+     null
+    ]
+   }
+  },
+  "L05": {
+   "insert": [
+    [
+     "build",
+     "आत्ता तुमच्याशी",
+     "with you now",
+     null,
+     null,
+     null
+    ],
+    [
+     "build",
+     "मला आत्ता बोलायचं आहे",
+     "I want to speak now",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

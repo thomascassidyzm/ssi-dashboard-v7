@@ -1,0 +1,64 @@
+{
+ "seed": 3,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "কীভাবে ইংরেজিতে কথা বলতে হয়",
+     "how to speak English",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি শিখতে চাই কীভাবে কথা বলতে হয়",
+     "I want to learn how to speak",
+     null,
+     null,
+     null
+    ],
+    [
+     "build",
+     "আমি শিখতে চাই কীভাবে ইংরেজিতে কথা বলতে হয়",
+     "I want to learn how to speak English",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি যতটা সম্ভব ঘন ঘন কথা বলতে চাই",
+     "I want to speak as often as possible",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি যতটা সম্ভব ঘন ঘন শেখার চেষ্টা করছি",
+     "I'm trying to learn as often as possible",
+     null,
+     null,
+     null
+    ],
+    [
+     "build",
+     "আমি যতটা সম্ভব ঘন ঘন কথা বলার চেষ্টা করছি",
+     "I'm trying to speak as often as possible",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

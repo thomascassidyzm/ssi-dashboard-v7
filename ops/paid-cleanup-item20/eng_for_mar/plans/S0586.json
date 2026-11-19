@@ -1,0 +1,30 @@
+{
+ "seed": 586,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला उकडलेली अंडी आवडत नाहीत",
+     "I don't like boiled eggs",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला वीस उकडलेल्या अंड्यांची गरज आहे",
+     "I need twenty boiled eggs",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0586L02B01": "उकडलेल्या अंड्यांची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

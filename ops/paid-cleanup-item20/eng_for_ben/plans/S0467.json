@@ -1,0 +1,30 @@
+{
+ "seed": 467,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "এটা হয়তো কার পার্ক",
+     "it might be the car park",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি মনে করি এটা কার পার্কের পাশে",
+     "I think it's next to the car park",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0467L01B01": "কার|the seed's own wording, taught in the next LEGO (car park)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,48 @@
+{
+ "seed": 478,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "એ અંગ્રેજી બોલે છે અને એ ઘણી દયાળુ હતી",
+     "she speaks English and she was very kind",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "હા, તેનું હૃદય ખૂબ દયાળુ છે",
+     "yes she has such a kind heart",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "મને લાગે છે કે તેનું હૃદય ખૂબ દયાળુ છે",
+     "I think she has such a kind heart",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "મને ખાતરી છે કે તેનું હૃદય ખૂબ દયાળુ છે",
+     "I'm sure she has such a kind heart",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

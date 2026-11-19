@@ -1,0 +1,48 @@
+{
+ "seed": 577,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি হাসপাতাল থেকে খবরের জন্য অপেক্ষা করছি",
+     "I'm waiting for the news from the hospital",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি এই মুহূর্তে হাসপাতাল থেকে খবরের জন্য অপেক্ষা করছি",
+     "I'm waiting for the news from the hospital at the moment",
+     null,
+     null,
+     "খবরের|form of taught খবর, this seed's own wording"
+    ],
+    [
+     "build",
+     "আমার বাবা হাসপাতালে",
+     "my father is in the hospital",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত আমরা হাসপাতাল থেকে খবরের জন্য অপেক্ষা করছিলাম",
+     "I'm sure we've been waiting for the news from the hospital",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0577L01B01": "খবরের|form of taught খবর, this seed's own wording"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

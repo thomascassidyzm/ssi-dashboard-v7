@@ -1,0 +1,40 @@
+{
+ "seed": 462,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি ইতালিতে থাকতে পারি",
+     "I can stay in Italy",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমার দাদা আগে ইতালিতে কাজ করতেন",
+     "my grandfather used to work in Italy",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "যুদ্ধের সময় সব কিছু অনেক বেশি সহজ ছিল",
+     "it was all much easier during the war",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0462L02B01": "করতেন|respect form of taught করত"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

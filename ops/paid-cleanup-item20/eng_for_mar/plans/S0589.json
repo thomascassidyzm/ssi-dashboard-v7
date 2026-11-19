@@ -1,0 +1,40 @@
+{
+ "seed": 589,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तिने मला हे सांगितलं",
+     "she told me this",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी शेवटच्या बसची वाट पाहतोय",
+     "I'm waiting for the last bus",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "तिने आत्ताच हे पाहिलं होतं",
+     "she'd just seen this",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0589L02B01": "शेवटच्या|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

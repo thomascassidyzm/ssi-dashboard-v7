@@ -1,0 +1,1045 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0001L04B03",
+    "seed_number": 1,
+    "lego_index": 4,
+    "position": 8,
+    "known_text": "آپ کے ساتھ بولنا چاہتا ہوں",
+    "target_text": "want to speak with you",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 22,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0001L05B02",
+    "seed_number": 1,
+    "lego_index": 5,
+    "position": 7,
+    "known_text": "ابھی انگریزی بولنا",
+    "target_text": "to speak English now",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 20,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0001L05B03",
+    "seed_number": 1,
+    "lego_index": 5,
+    "position": 8,
+    "known_text": "ابھی بولنا چاہتا ہوں",
+    "target_text": "want to speak now",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 17,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0002L02B03",
+    "seed_number": 2,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "میں ابھی سیکھنے کی کوشش کر رہا ہوں",
+    "target_text": "I'm trying to learn now",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 23,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0003L01B02",
+    "seed_number": 3,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "کیسے بولنا",
+    "target_text": "how to speak",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 12,
+    "lego_count": 2,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0003L01B03",
+    "seed_number": 3,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "انگریزی کیسے بولنا",
+    "target_text": "how to speak English",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 20,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0003L02B03",
+    "seed_number": 3,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "جتنا ممکن ہو سکے انگریزی بولنا",
+    "target_text": "to speak English as often as possible",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 37,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0175L01B04",
+    "seed_number": 175,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "آپ آج شام کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do this evening?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 36,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0214L01B03",
+    "seed_number": 214,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "ویک اینڈ پر مصروف",
+    "target_text": "busy at the weekend",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 19,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0224L01B03",
+    "seed_number": 224,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "اس نے ابھی انگریزی بولنا شروع کیا ہے",
+    "target_text": "he's just started to speak English",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 34,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0243L01B03",
+    "seed_number": 243,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "میں کھانا چاہوں گا",
+    "target_text": "I'd like to eat",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0244L01B02",
+    "seed_number": 244,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "پہلے سے بہت کچھ سیکھ لیا",
+    "target_text": "learnt a lot already",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 20,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0244L01B03",
+    "seed_number": 244,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "مجھے لگتا ہے کہ میں نے پہلے سے بہت کچھ کر لیا ہے",
+    "target_text": "I think I've done a lot already",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 31,
+    "lego_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0254L01B03",
+    "seed_number": 254,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "آج صبح سے مصروف",
+    "target_text": "busy since this morning",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 23,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0262L01B03",
+    "seed_number": 262,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "وہ لوگ جن سے آپ کل بات کر رہے تھے",
+    "target_text": "the people you were talking to yesterday",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 40,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0263L01B04",
+    "seed_number": 263,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "میں جانتا ہوں آپ کا مطلب کون سے ہے",
+    "target_text": "I know who you mean",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 19,
+    "lego_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0281L02B04",
+    "seed_number": 281,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "شروع کرنے سے پہلے مجھے بتائیں",
+    "target_text": "tell me before you start",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 24,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0283L02B03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "آپ کے دوستوں میں سے کچھ",
+    "target_text": "some of your friends",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 20,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0311L03B02",
+    "seed_number": 311,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "وہ مجھ پر یقین نہیں کر سکتا تھا",
+    "target_text": "he couldn't believe me",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 22,
+    "lego_count": 8,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0311L03B03",
+    "seed_number": 311,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "وہ جواب پر یقین نہیں کر سکتا تھا",
+    "target_text": "he couldn't believe the answer",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 30,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0315L01B02",
+    "seed_number": 315,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "یہ وہ گاڑی نہیں جو وہ چاہتا تھا",
+    "target_text": "it's not the car that he wanted",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 31,
+    "lego_count": 8,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0315L01B03",
+    "seed_number": 315,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "میں وہ گاڑی جانتا ہوں جو وہ چاہتا تھا",
+    "target_text": "I know the car that he wanted",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 29,
+    "lego_count": 9,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0315L02B04",
+    "seed_number": 315,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "گاڑی اس کی استطاعت سے باہر تھی",
+    "target_text": "he couldn't afford the car",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 26,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0324L02B04",
+    "seed_number": 324,
+    "lego_index": 2,
+    "position": 14,
+    "known_text": "میری بہن کے دونوں ہاتھ اوپر ہیں",
+    "target_text": "my sister has both of her hands up",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 34,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0329L01B04",
+    "seed_number": 329,
+    "lego_index": 1,
+    "position": 15,
+    "known_text": "لیکن یہ اہم ہے",
+    "target_text": "but it's important",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0607L01B04",
+    "seed_number": 607,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "ہم نے چیزیں مختلف طریقے سے کیں",
+    "target_text": "we've done things differently",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 29,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0616L01B03",
+    "seed_number": 616,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "میں نے سنا کہ آپ نے یہ سوچا",
+    "target_text": "I heard that you thought that",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 29,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0618L01B04",
+    "seed_number": 618,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "یہ زیادہ عرصہ لگ سکتا ہے",
+    "target_text": "it can feel like a long time",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0620L01B03",
+    "seed_number": 620,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "جہاں ہم آخری بار ملے",
+    "target_text": "where we last saw each other",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0636L01B03",
+    "seed_number": 636,
+    "lego_index": 1,
+    "position": 20,
+    "known_text": "وہ جین کا بیگ ہے",
+    "target_text": "that's Jane's bag",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 17,
+    "lego_count": 5,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0001L04B01",
+   "expect": {
+    "known_text": "آپ کے ساتھ",
+    "target_text": "with you"
+   },
+   "set": {
+    "known_text": "آپ کے ساتھ بولنا",
+    "target_text": "to speak with you",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0002L02B01",
+   "expect": {
+    "known_text": "کوشش کر رہا ہوں",
+    "target_text": "I'm trying to"
+   },
+   "set": {
+    "known_text": "میں ابھی بولنے کی کوشش کر رہا ہوں",
+    "target_text": "I'm trying to speak now",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0003L02B01",
+   "expect": {
+    "known_text": "جتنا ممکن ہو سکے",
+    "target_text": "as often as possible"
+   },
+   "set": {
+    "known_text": "جتنا ممکن ہو سکے بولنا",
+    "target_text": "to speak as often as possible",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0073L02B01",
+   "expect": {
+    "known_text": "مجھے ابھی اور سیکھنا ہے",
+    "target_text": "I've got more to learn"
+   },
+   "set": {
+    "known_text": "لیکن مجھے ابھی اور سیکھنا ہے",
+    "target_text": "but I've got more to learn",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0073L02B02",
+   "expect": {
+    "known_text": "مجھے اور سیکھنا ہے",
+    "target_text": "I've got more to learn"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ مجھے ابھی اور سیکھنا ہے",
+    "target_text": "I think I've got more to learn",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0175L01B01",
+   "expect": {
+    "known_text": "آپ کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do?"
+   },
+   "set": {
+    "known_text": "آپ بعد میں کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do later on?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0214L01B01",
+   "expect": {
+    "known_text": "ویک اینڈ پر",
+    "target_text": "at the weekend"
+   },
+   "set": {
+    "known_text": "ویک اینڈ پر آرام کرنا",
+    "target_text": "to relax at the weekend",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0224L01B01",
+   "expect": {
+    "known_text": "ابھی شروع کیا ہے",
+    "target_text": "he's just started"
+   },
+   "set": {
+    "known_text": "اس نے ابھی بولنا شروع کیا ہے",
+    "target_text": "he's just started to speak",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0243L01B01",
+   "expect": {
+    "known_text": "کھانا",
+    "target_text": "eat"
+   },
+   "set": {
+    "known_text": "کچھ کھانے کو",
+    "target_text": "something to eat",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0244L01B01",
+   "expect": {
+    "known_text": "پہلے سے بہت کچھ",
+    "target_text": "a lot already"
+   },
+   "set": {
+    "known_text": "پہلے سے بہت کچھ کر لیا",
+    "target_text": "done a lot already",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0254L01B01",
+   "expect": {
+    "known_text": "آج صبح سے",
+    "target_text": "since this morning"
+   },
+   "set": {
+    "known_text": "آج صبح سے یہاں",
+    "target_text": "here since this morning",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0262L01B01",
+   "expect": {
+    "known_text": "آپ کل بات کر رہے تھے",
+    "target_text": "you were talking to yesterday"
+   },
+   "set": {
+    "known_text": "وہ عورت جس سے آپ کل بات کر رہے تھے",
+    "target_text": "the woman you were talking to yesterday",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0263L01B01",
+   "expect": {
+    "known_text": "آپ کا مطلب کون سے",
+    "target_text": "who you mean"
+   },
+   "set": {
+    "known_text": "میں جاننا چاہتا ہوں کہ آپ کا مطلب کون سے ہے",
+    "target_text": "I want to know who you mean",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0281L02B01",
+   "expect": {
+    "known_text": "شروع کرنے سے پہلے",
+    "target_text": "before you start"
+   },
+   "set": {
+    "known_text": "شروع کرنے سے پہلے کافی",
+    "target_text": "coffee before you start",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0283L02B01",
+   "expect": {
+    "known_text": "آپ کے دوستوں میں سے",
+    "target_text": "of your friends"
+   },
+   "set": {
+    "known_text": "آپ کے دوستوں میں سے کتنے",
+    "target_text": "how many of your friends",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0311L03B01",
+   "expect": {
+    "known_text": "یقین نہیں کر سکتا تھا",
+    "target_text": "he couldn't believe"
+   },
+   "set": {
+    "known_text": "وہ اس پر یقین نہیں کر سکتا تھا",
+    "target_text": "he couldn't believe it",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0315L01B01",
+   "expect": {
+    "known_text": "جو گاڑی چاہتا تھا",
+    "target_text": "the car that he wanted"
+   },
+   "set": {
+    "known_text": "جو گاڑی وہ چاہتا تھا وہ کہاں ہے؟",
+    "target_text": "where is the car that he wanted?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0315L02B01",
+   "expect": {
+    "known_text": "استطاعت سے باہر تھا",
+    "target_text": "he couldn't afford"
+   },
+   "set": {
+    "known_text": "یہ اس کی استطاعت سے باہر تھا",
+    "target_text": "he couldn't afford it",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0324L02B01",
+   "expect": {
+    "known_text": "کے دونوں ہاتھ اوپر ہیں",
+    "target_text": "has both of her hands up"
+   },
+   "set": {
+    "known_text": "اس کے دونوں ہاتھ اوپر ہیں",
+    "target_text": "she has both of her hands up",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0329L01B01",
+   "expect": {
+    "known_text": "یہ اہم ہے",
+    "target_text": "it's important"
+   },
+   "set": {
+    "known_text": "میں جانتا ہوں کہ یہ اہم ہے",
+    "target_text": "I know it's important",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0607L01B01",
+   "expect": {
+    "known_text": "چیزیں مختلف طریقے سے کیں",
+    "target_text": "done things differently"
+   },
+   "set": {
+    "known_text": "میں چیزیں مختلف طریقے سے کرتا",
+    "target_text": "I'd have done things differently",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0616L01B01",
+   "expect": {
+    "known_text": "آپ نے یہ سوچا",
+    "target_text": "you thought that"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ آپ نے یہ سوچا",
+    "target_text": "I'm sure you thought that",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0618L01B01",
+   "expect": {
+    "known_text": "زیادہ عرصہ لگتا",
+    "target_text": "feel like a long time"
+   },
+   "set": {
+    "known_text": "یہ زیادہ عرصہ نہیں لگے گا",
+    "target_text": "it won't feel like a long time",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0620L01B01",
+   "expect": {
+    "known_text": "ہم آخری بار ملے",
+    "target_text": "we last saw each other"
+   },
+   "set": {
+    "known_text": "جب ہم آخری بار ملے",
+    "target_text": "when we last saw each other",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0636L01B01",
+   "expect": {
+    "known_text": "جین کا بیگ",
+    "target_text": "jane's bag"
+   },
+   "set": {
+    "known_text": "جین کا بیگ یہاں ہے",
+    "target_text": "Jane's bag is here",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": null
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "seed": 540,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्हाला निघायचं असेल तर माझी अजिबात हरकत नाही",
+     "I don't mind at all if you want to leave",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मला खात्री आहे की तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "I'm sure I don't mind if you want to leave without the car",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "तुम्हाला निघायचं असेल तर मी तयार असेन",
+     "I'll be ready if you want to leave",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मला वाटतं की तुम्हाला गाडीशिवाय निघायचं असेल तर माझी हरकत नाही",
+     "I think that I don't mind if you want to leave without the car",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

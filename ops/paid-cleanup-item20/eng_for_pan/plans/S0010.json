@@ -1,0 +1,41 @@
+{
+ "seed": 10,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਮੈਨੂੰ ਅੱਜ ਯਕੀਨ ਨਹੀਂ",
+     "I'm not sure today",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਨੂੰ ਯਕੀਨ ਨਹੀਂ ਕਿ ਮੈਂ ਸ਼ਬਦ ਯਾਦ ਕਰ ਸਕਦਾ ਹਾਂ",
+     "I'm not sure if I can remember a word",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ਪੂਰਾ ਵਾਕ ਕਹਿਣਾ",
+     "to say the whole sentence",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0010L01B01": "ਮੈਨੂੰ|the seed's own sentence uses ਮੈਨੂੰ (form of ਮੈਂ) for this structure",
+  "S0010L02B01": "ਮੈਨੂੰ|the seed's own sentence uses ਮੈਨੂੰ (form of ਮੈਂ) for this structure"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

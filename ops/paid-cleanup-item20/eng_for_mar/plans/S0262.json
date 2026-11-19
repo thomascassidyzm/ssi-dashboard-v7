@@ -1,0 +1,38 @@
+{
+ "seed": 262,
+ "generated": true,
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "म्हणजे तो माणूस कोण होता?",
+     "so who was that man?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आणि तो माणूस कोण होता?",
+     "and who was that man?",
+     null,
+     null,
+     null
+    ],
+    [
+     "build",
+     "पबमध्ये तो माणूस कोण होता?",
+     "who was that man in the pub?",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0262L02B01": "कोण|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

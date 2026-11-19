@@ -1,0 +1,48 @@
+{
+ "seed": 274,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मी काही दिवसांत तयार असेन",
+     "I'll be ready in a few days",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मला काही दिवसांत सुरुवात करायची आहे",
+     "I want to start in a few days",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "म्हणजे तुम्हाला निघावं लागेल का?",
+     "so do you have to leave?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्हाला आज निघावं लागेल का?",
+     "do you have to leave today?",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

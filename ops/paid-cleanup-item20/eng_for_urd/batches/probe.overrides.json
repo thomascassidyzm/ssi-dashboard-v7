@@ -1,0 +1,1973 @@
+[
+ {
+  "seed_number": 1,
+  "phrases": {
+   "1:1": [
+    {
+     "known_text": "میں",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "چاہتا ہوں",
+     "target_text": "want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "میں چاہتا ہوں",
+     "target_text": "I want",
+     "phrase_role": "build"
+    }
+   ],
+   "1:2": [
+    {
+     "known_text": "بولنا چاہتا ہوں",
+     "target_text": "want to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں بولنا چاہتا ہوں",
+     "target_text": "I want to speak",
+     "phrase_role": "use"
+    }
+   ],
+   "1:3": [
+    {
+     "known_text": "انگریزی بولنا",
+     "target_text": "to speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں انگریزی بولنا چاہتا ہوں",
+     "target_text": "I want to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "انگریزی بولنا چاہتا ہوں",
+     "target_text": "want to speak English",
+     "phrase_role": "use"
+    }
+   ],
+   "1:4": [
+    {
+     "known_text": "آپ",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "کے ساتھ",
+     "target_text": "with",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آپ کے ساتھ بولنا",
+     "target_text": "to speak with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "انگریزی بولنا آپ کے ساتھ",
+     "target_text": "to speak English with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں آپ کے ساتھ بولنا چاہتا ہوں",
+     "target_text": "I want to speak with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں آپ کے ساتھ انگریزی بولنا چاہتا ہوں",
+     "target_text": "I want to speak English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے ساتھ انگریزی بولنا چاہتا ہوں",
+     "target_text": "want to speak English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے ساتھ بولنا چاہتا ہوں",
+     "target_text": "want to speak with you",
+     "phrase_role": "build"
+    }
+   ],
+   "1:5": [
+    {
+     "known_text": "ابھی بولنا",
+     "target_text": "to speak now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں ابھی بولنا چاہتا ہوں",
+     "target_text": "I want to speak now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ابھی انگریزی بولنا چاہتا ہوں",
+     "target_text": "I want to speak English now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ابھی آپ کے ساتھ بولنا چاہتا ہوں",
+     "target_text": "I want to speak with you now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ابھی آپ کے ساتھ انگریزی بولنا چاہتا ہوں",
+     "target_text": "I want to speak English with you now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ابھی آپ کے ساتھ بولنا چاہتا ہوں",
+     "target_text": "want to speak with you now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ابھی انگریزی بولنا",
+     "target_text": "to speak English now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ابھی بولنا چاہتا ہوں",
+     "target_text": "want to speak now",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 2,
+  "phrases": {
+   "2:1": [
+    {
+     "known_text": "سیکھنا چاہتا ہوں",
+     "target_text": "want to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "انگریزی سیکھنا",
+     "target_text": "to learn English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں انگریزی سیکھنا چاہتا ہوں",
+     "target_text": "I want to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں آپ کے ساتھ سیکھنا چاہتا ہوں",
+     "target_text": "I want to learn with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ابھی سیکھنا چاہتا ہوں",
+     "target_text": "I want to learn now",
+     "phrase_role": "use"
+    }
+   ],
+   "2:2": [
+    {
+     "known_text": "کوشش",
+     "target_text": "trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "رہا ہوں",
+     "target_text": "I'm",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "میں ابھی بولنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to speak now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ابھی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں سیکھنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں بولنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to speak",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں انگریزی بولنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں آپ کے ساتھ بولنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to speak with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں انگریزی سیکھنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ابھی سیکھنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to learn now",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 3,
+  "phrases": {
+   "3:1": [
+    {
+     "known_text": "کیسے سیکھنا",
+     "target_text": "how to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں کیسے سیکھنا چاہتا ہوں",
+     "target_text": "I want to learn how",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں انگریزی کیسے بولنا سیکھنا چاہتا ہوں",
+     "target_text": "I want to learn how to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیسے سیکھنا چاہتا ہوں",
+     "target_text": "want to learn how",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیسے بولنا",
+     "target_text": "how to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "انگریزی کیسے بولنا",
+     "target_text": "how to speak English",
+     "phrase_role": "build"
+    }
+   ],
+   "3:2": [
+    {
+     "known_text": "ممکن",
+     "target_text": "possible",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جتنا",
+     "target_text": "as often as",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جتنا ممکن ہو سکے بولنا",
+     "target_text": "to speak as often as possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "سیکھنا جتنا ممکن ہو سکے",
+     "target_text": "to learn as often as possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں جتنا ممکن ہو بولنا چاہتا ہوں",
+     "target_text": "I want to speak as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جتنا ممکن ہو انگریزی بولنا چاہتا ہوں",
+     "target_text": "I want to speak English as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جتنا ممکن ہو سیکھنے کی کوشش کر رہا ہوں",
+     "target_text": "I'm trying to learn as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جتنا ممکن ہو آپ کے ساتھ بولنا چاہتا ہوں",
+     "target_text": "I want to speak with you as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "جتنا ممکن ہو سیکھنا چاہتا ہوں",
+     "target_text": "want to learn as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "جتنا ممکن ہو سکے انگریزی بولنا",
+     "target_text": "to speak English as often as possible",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 73,
+  "phrases": {
+   "73:1": [
+    {
+     "known_text": "شکریہ",
+     "target_text": "thank you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بہت بہت",
+     "target_text": "very much",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بہت بہت شکریہ",
+     "target_text": "thank you very much",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بہت بہت شکریہ مدد کے لیے",
+     "target_text": "thank you very much for helping",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بہت بہت شکریہ سیکھنے کے لیے",
+     "target_text": "thank you very much for learning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بہت بہت شکریہ آہستہ بولنے کے لیے",
+     "target_text": "thank you very much for speaking slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بہت بہت شکریہ سمجھنے میں مدد کے لیے",
+     "target_text": "thank you very much for helping me to understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بہت بہت شکریہ کوشش کرنے کے لیے",
+     "target_text": "thank you very much for trying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بہت بہت شکریہ مجھے دیکھ بھال کے لیے",
+     "target_text": "thank you very much for looking after me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بہت بہت شکریہ بولنے میں مدد کے لیے",
+     "target_text": "thank you very much for helping me to speak",
+     "phrase_role": "use"
+    }
+   ],
+   "73:2": [
+    {
+     "known_text": "مجھے",
+     "target_text": "I've got",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ابھی اور",
+     "target_text": "more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "سیکھنا ہے",
+     "target_text": "to learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لیکن مجھے ابھی اور سیکھنا ہے",
+     "target_text": "but I've got more to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ مجھے ابھی اور سیکھنا ہے",
+     "target_text": "I think I've got more to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بہت کچھ سیکھنا ہے مجھے",
+     "target_text": "I've got more to learn today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "مجھے ابھی اور سیکھنا ہے ابھی تک",
+     "target_text": "I've got more to learn yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بہت بہت شکریہ لیکن مجھے ابھی اور سیکھنا ہے",
+     "target_text": "thank you very much but I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے ابھی اور سیکھنا ہے لیکن آسان نہیں",
+     "target_text": "I've got more to learn but it isn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے معلوم ہے کہ مجھے ابھی اور سیکھنا ہے",
+     "target_text": "I know I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے ابھی اور سیکھنا ہے لیکن مجھے پسند ہے",
+     "target_text": "I've got more to learn but I like it",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 175,
+  "phrases": {
+   "175:1": [
+    {
+     "known_text": "کیا کرنا",
+     "target_text": "to do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آپ چاہتے ہیں",
+     "target_text": "what do you want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آپ بعد میں کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do later on?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آپ آج کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آپ کل کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do tomorrow?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ آج رات کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do tonight?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کل دوپہر کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do tomorrow afternoon?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ اب کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ اتوار کی صبح کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do on Sunday morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ آج صبح کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do this morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ آج شام کیا کرنا چاہتے ہیں؟",
+     "target_text": "what do you want to do this evening?",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 214,
+  "phrases": {
+   "214:1": [
+    {
+     "known_text": "ویک اینڈ",
+     "target_text": "weekend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "پر",
+     "target_text": "at the",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ویک اینڈ پر آرام کرنا",
+     "target_text": "to relax at the weekend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ویک اینڈ پر اچھا وقت",
+     "target_text": "a good time at the weekend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کیا آپ کا ویک اینڈ پر اچھا وقت تھا؟",
+     "target_text": "did you have a good time at the weekend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ ویک اینڈ پر کیا کرنے والے ہیں؟",
+     "target_text": "what are you going to do at the weekend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ویک اینڈ پر آرام کرنا چاہتا ہوں",
+     "target_text": "I want to relax at the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ ویک اینڈ پر مصروف ہیں؟",
+     "target_text": "are you busy at the weekend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ویک اینڈ پر اپنی ماں سے ملنا چاہتا ہوں",
+     "target_text": "I want to see my mother at the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہم نے ویک اینڈ پر ایک دوسرے سے بات کی",
+     "target_text": "we talked to each other at the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ویک اینڈ پر مصروف",
+     "target_text": "busy at the weekend",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 224,
+  "phrases": {
+   "224:1": [
+    {
+     "known_text": "ابھی",
+     "target_text": "just",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "شروع کیا ہے",
+     "target_text": "he's started",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اس نے ابھی بولنا شروع کیا ہے",
+     "target_text": "he's just started to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اس نے ابھی شروع کیا ہے",
+     "target_text": "he's just started it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اس نے ابھی سیکھنا شروع کیا ہے",
+     "target_text": "he's just started to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "اس نے ابھی کام شروع کیا ہے",
+     "target_text": "he's just started to work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "اس نے ابھی ٹیلی ویژن دیکھنا شروع کیا ہے",
+     "target_text": "he's just started to watch television",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "اس نے ابھی انگریزی بولنا شروع کیا ہے",
+     "target_text": "he's just started to speak English",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 243,
+  "phrases": {
+   "243:1": [
+    {
+     "known_text": "کچھ کھانے کو",
+     "target_text": "something to eat",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کھانے کو",
+     "target_text": "to eat",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں کھانا مانگنے والا ہوں",
+     "target_text": "I'm going to ask for something to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کھانا چاہتے ہیں؟",
+     "target_text": "do you want something to eat?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ کھانا پسند کرتی ہے",
+     "target_text": "she likes to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کھانا اچھا لگتا ہے",
+     "target_text": "it's nice to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے کھانا چاہیے",
+     "target_text": "I need something to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں کھانا چاہوں گا",
+     "target_text": "I'd like to eat",
+     "phrase_role": "build"
+    }
+   ],
+   "243:2": [
+    {
+     "known_text": "وہی",
+     "target_text": "same",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "چیز",
+     "target_text": "thing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "وہی چیز",
+     "target_text": "the same thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہی چیز مانگنا",
+     "target_text": "ask for the same thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہی چیز کھانا",
+     "target_text": "eat the same thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں کھانے میں وہی چیز مانگنے والا ہوں",
+     "target_text": "I'm going to ask for the same thing to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں وہی چیز مانگنے والا ہوں",
+     "target_text": "I'm going to ask for the same thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ وہی چیز چاہتے ہیں؟",
+     "target_text": "do you want the same thing?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے وہی چیز ملی جو پہلے تھی",
+     "target_text": "I got the same thing as before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ وہی چیز کرنا چاہتی ہے",
+     "target_text": "she wants to do the same thing",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 244,
+  "phrases": {
+   "244:1": [
+    {
+     "known_text": "پہلے سے",
+     "target_text": "already",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بہت کچھ",
+     "target_text": "a lot",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "پہلے سے بہت کچھ کر لیا",
+     "target_text": "done a lot already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں نے پہلے سے بہت کچھ سیکھ لیا ہے",
+     "target_text": "I've learnt a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں نے پہلے سے بہت کچھ کر لیا ہے",
+     "target_text": "I've done a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے خوشی ہے کہ میں نے پہلے سے بہت کچھ کیا",
+     "target_text": "I'm happy I've done a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں تھکا ہوا ہوں لیکن میں نے پہلے سے بہت کچھ سیکھ لیا ہے",
+     "target_text": "I'm tired but I've learnt a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "پہلے سے بہت کچھ سیکھ لیا",
+     "target_text": "learnt a lot already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ میں نے پہلے سے بہت کچھ کر لیا ہے",
+     "target_text": "I think I've done a lot already",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 254,
+  "phrases": {
+   "254:1": [
+    {
+     "known_text": "آج صبح",
+     "target_text": "this morning",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "سے",
+     "target_text": "since",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آج صبح سے یہاں",
+     "target_text": "here since this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آج صبح سے تیار",
+     "target_text": "ready since this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں آج صبح سے تیار ہوں",
+     "target_text": "I've been ready since this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں آج صبح سے یہاں ہوں",
+     "target_text": "I've been here since this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں آج صبح سے کام کر رہا ہوں",
+     "target_text": "I've been working since this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ آج صبح سے مصروف ہے",
+     "target_text": "she's been busy since this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں آج صبح سے اس بارے میں سوچ رہا ہوں",
+     "target_text": "I've been thinking about this since this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آج صبح سے مصروف",
+     "target_text": "busy since this morning",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 262,
+  "phrases": {
+   "262:1": [
+    {
+     "known_text": "آپ",
+     "target_text": "you were",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "کل بات کر رہے تھے",
+     "target_text": "talking to yesterday",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "وہ عورت جس سے آپ کل بات کر رہے تھے",
+     "target_text": "the woman you were talking to yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہ آدمی آپ کل بات کر رہے تھے",
+     "target_text": "the man you were talking to yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہ آدمی کون تھا جس سے آپ کل بات کر رہے تھے؟",
+     "target_text": "who was that man you were talking to yesterday?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کل کس سے بات کر رہے تھے؟",
+     "target_text": "who were you talking to yesterday?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے یاد ہے کہ آپ کل بات کر رہے تھے",
+     "target_text": "I remember you were talking to someone yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کل دفتر میں بات کر رہے تھے",
+     "target_text": "you were talking to someone in the office yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں نے دیکھا کہ آپ کل بات کر رہے تھے",
+     "target_text": "I saw that you were talking to someone yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ لوگ جن سے آپ کل بات کر رہے تھے",
+     "target_text": "the people you were talking to yesterday",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 263,
+  "phrases": {
+   "263:1": [
+    {
+     "known_text": "آپ کا مطلب",
+     "target_text": "you mean",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "کون سے",
+     "target_text": "who",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "میں جاننا چاہتا ہوں کہ آپ کا مطلب کون سے ہے",
+     "target_text": "I want to know who you mean",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بتائیں آپ کا مطلب کون سے ہے",
+     "target_text": "tell me who you mean",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "مجھے نہیں معلوم آپ کا مطلب کون سے شخص سے ہے",
+     "target_text": "I don't know who you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ مجھے بتا سکتے ہیں آپ کا مطلب کون سے ہے؟",
+     "target_text": "can you tell me who you mean?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے سمجھ نہیں آ رہا آپ کا مطلب کون سے ہے",
+     "target_text": "I don't understand who you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کا مطلب کون سے ہے؟",
+     "target_text": "who do you mean?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے یقین نہیں آپ کا مطلب کون سے ہے",
+     "target_text": "I'm not sure who you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہم جاننا چاہتے تھے کہ آپ کا مطلب کون ہے",
+     "target_text": "we wanted to know who you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جانتا ہوں آپ کا مطلب کون سے ہے",
+     "target_text": "I know who you mean",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 281,
+  "phrases": {
+   "281:1": [
+    {
+     "known_text": "اپنی کافی ختم کرنا",
+     "target_text": "finish my coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کافی ختم کرنا",
+     "target_text": "finish the coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اپنی کافی",
+     "target_text": "my coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کیا آپ کو کافی چاہیے؟",
+     "target_text": "would you like coffee?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں اپنی کافی ختم کرنا چاہتا ہوں",
+     "target_text": "I want to finish my coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے کافی پسند ہے",
+     "target_text": "I like coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو کافی پسند ہے؟",
+     "target_text": "do you like coffee?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے ابھی کافی چاہیے",
+     "target_text": "I need coffee now",
+     "phrase_role": "use"
+    }
+   ],
+   "281:2": [
+    {
+     "known_text": "شروع کرنے سے پہلے",
+     "target_text": "before you start",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "شروع کرنا",
+     "target_text": "start",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "شروع کرنے سے پہلے کافی",
+     "target_text": "coffee before you start",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "رکنا شروع کرنے سے پہلے",
+     "target_text": "wait before you start",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کیا آپ شروع کرنے سے پہلے تیار ہیں؟",
+     "target_text": "are you ready before you start?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے شروع کرنے سے پہلے کافی چاہیے",
+     "target_text": "I need coffee before you start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں شروع کرنے سے پہلے تیار ہو جاؤں گا",
+     "target_text": "I'll be ready before you start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ شروع کرنے سے پہلے انتظار کرنا چاہتے ہیں؟",
+     "target_text": "do you want to wait before you start?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں اپنی کافی ختم کرنا چاہتا ہوں شروع کرنے سے پہلے",
+     "target_text": "I want to finish my coffee before you start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "شروع کرنے سے پہلے مجھے بتائیں",
+     "target_text": "tell me before you start",
+     "phrase_role": "build"
+    }
+   ],
+   "281:3": [
+    {
+     "known_text": "اعتراض ہے",
+     "target_text": "mind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اگر",
+     "target_text": "if",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اعتراض ہے اگر",
+     "target_text": "mind if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اعتراض ہے اگر میں رکوں",
+     "target_text": "mind if I stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اعتراض ہے اگر میں جاؤں",
+     "target_text": "mind if I go",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اعتراض ہے اگر میں انتظار کروں",
+     "target_text": "mind if I wait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کیا آپ کو اعتراض ہے اگر میں رکوں؟",
+     "target_text": "do you mind if I stop?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو اعتراض ہے اگر میں جاؤں؟",
+     "target_text": "do you mind if I go?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو اعتراض ہے اگر میں شروع کرنے سے پہلے اپنی کافی ختم کروں؟",
+     "target_text": "do you mind if I finish my coffee before you start?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو اعتراض ہے اگر میں انتظار کروں؟",
+     "target_text": "do you mind if I wait?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو اعتراض ہے اگر میں یہاں ہوں؟",
+     "target_text": "do you mind if I'm here?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 283,
+  "phrases": {
+   "283:1": [
+    {
+     "known_text": "کون وہاں ہے؟",
+     "target_text": "which is there?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کون ابھی تیار ہے؟",
+     "target_text": "which is ready now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کون یہاں ہے؟",
+     "target_text": "which is here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کون تیار ہے؟",
+     "target_text": "which is ready?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کون سب سے اہم ہے؟",
+     "target_text": "which is the most important?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کون آج وہاں ہے؟",
+     "target_text": "which is there today?",
+     "phrase_role": "use"
+    }
+   ],
+   "283:2": [
+    {
+     "known_text": "آپ کے دوستوں",
+     "target_text": "your friends",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "میں سے",
+     "target_text": "of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کتنے",
+     "target_text": "how many of your friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کون",
+     "target_text": "which of your friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کون انگریزی بولتا ہے؟",
+     "target_text": "which of your friends speak English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کون وہاں ہے؟",
+     "target_text": "which of your friends is there?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کون یہاں ہے؟",
+     "target_text": "which of your friends is here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کتنے لوگ انگریزی بولتے ہیں؟",
+     "target_text": "how many of your friends speak English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کون جانتا ہے؟",
+     "target_text": "which of your friends knows?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے دوستوں میں سے کچھ",
+     "target_text": "some of your friends",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 311,
+  "phrases": {
+   "311:1": [
+    {
+     "known_text": "حقائق",
+     "target_text": "facts",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اہم حقائق",
+     "target_text": "important facts",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "یہ حقائق",
+     "target_text": "the facts",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں یہ حقائق جانتا ہوں",
+     "target_text": "I know the facts",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ ان حقائق کے بارے میں جانتے ہیں؟",
+     "target_text": "do you know about the facts?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "یہ حقائق بہت اہم ہیں",
+     "target_text": "the facts are very important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ان حقائق کے بارے میں بات کرنا چاہتا ہوں",
+     "target_text": "I want to talk about the facts",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں کچھ اہم حقائق جانتا ہوں",
+     "target_text": "I know some important facts",
+     "phrase_role": "use"
+    }
+   ],
+   "311:2": [
+    {
+     "known_text": "تین",
+     "target_text": "three",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "سب سے",
+     "target_text": "most",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اہم",
+     "target_text": "important",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تین سب سے اہم",
+     "target_text": "the three most important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تین سب سے اہم حقائق",
+     "target_text": "the three most important facts",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تین سب سے اہم باتیں",
+     "target_text": "the three most important things",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں تین سب سے اہم حقائق جانتا ہوں",
+     "target_text": "I know the three most important facts",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ تین سب سے اہم حقائق جانتے ہیں؟",
+     "target_text": "do you know the three most important facts?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تین سب سے اہم باتیں یہاں ہیں",
+     "target_text": "the three most important things are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں ان تین سب سے اہم حقائق کے بارے میں جانتا ہوں",
+     "target_text": "I know about the three most important facts",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں تین سب سے اہم حقائق لکھنا چاہتا ہوں",
+     "target_text": "I want to write the three most important facts",
+     "phrase_role": "use"
+    }
+   ],
+   "311:3": [
+    {
+     "known_text": "یقین",
+     "target_text": "believe",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "نہیں کر سکتا تھا",
+     "target_text": "couldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "وہ اس پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہ ان حقائق پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe the facts",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ اس کہانی پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe that story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ آپ پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ وہ یقین نہیں کر سکتا تھا",
+     "target_text": "I think that he couldn't believe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ تین سب سے اہم حقائق پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe the three most important facts",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ مجھ پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہ جواب پر یقین نہیں کر سکتا تھا",
+     "target_text": "he couldn't believe the answer",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 315,
+  "phrases": {
+   "315:1": [
+    {
+     "known_text": "گاڑی",
+     "target_text": "car",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جو چاہتا تھا",
+     "target_text": "that he wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جو گاڑی وہ چاہتا تھا وہ کہاں ہے؟",
+     "target_text": "where is the car that he wanted?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "کیا آپ وہ گاڑی جانتے ہیں جو وہ چاہتا تھا؟",
+     "target_text": "do you know the car that he wanted?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ گاڑی جو وہ چاہتا تھا بہت اچھی ہے",
+     "target_text": "the car that he wanted is very good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں نے وہ گاڑی دیکھی جو وہ چاہتا تھا",
+     "target_text": "I saw the car that he wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا وہ گاڑی جو وہ چاہتا تھا یہاں ہے؟",
+     "target_text": "is the car that he wanted here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں وہ گاڑی چاہتا ہوں جو وہ چاہتا تھا",
+     "target_text": "I want the car that he wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "یہ وہ گاڑی نہیں جو وہ چاہتا تھا",
+     "target_text": "it's not the car that he wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں وہ گاڑی جانتا ہوں جو وہ چاہتا تھا",
+     "target_text": "I know the car that he wanted",
+     "phrase_role": "build"
+    }
+   ],
+   "315:2": [
+    {
+     "known_text": "استطاعت سے باہر",
+     "target_text": "afford",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تھا",
+     "target_text": "couldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "یہ اس کی استطاعت سے باہر تھا",
+     "target_text": "he couldn't afford it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ٹیلی ویژن استطاعت سے باہر تھا",
+     "target_text": "he couldn't afford the television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "وہ جو گاڑی چاہتا تھا اسے خریدنا استطاعت سے باہر تھا",
+     "target_text": "he couldn't afford the car that he wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "گاڑی اس کی استطاعت سے باہر تھی",
+     "target_text": "he couldn't afford the car",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 324,
+  "phrases": {
+   "324:1": [
+    {
+     "known_text": "اس",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "طالبہ",
+     "target_text": "student",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اس طالبہ",
+     "target_text": "that student",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اس طالبہ کو",
+     "target_text": "to that student",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اس طالبہ کے ساتھ",
+     "target_text": "with that student",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں اس طالبہ کے ساتھ انگریزی بولنا چاہتا ہوں",
+     "target_text": "I want to speak English with that student",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں اس طالبہ کے ساتھ سیکھنا چاہتا ہوں",
+     "target_text": "I want to learn with that student",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں اس طالبہ کے ساتھ بات کرنا چاہتا ہوں",
+     "target_text": "I want to talk with that student",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں اس طالبہ کے ساتھ پڑھنا چاہتا ہوں",
+     "target_text": "I want to read with that student",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں اس طالبہ کے ساتھ ابھی بولنا چاہتا ہوں",
+     "target_text": "I want to speak with that student now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ طالبہ جو وہاں بیٹھی ہے",
+     "target_text": "that student who's sitting over there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہم آج شام اس طالبہ سے ملنے والے ہیں",
+     "target_text": "we're going to meet that student this evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے یقین نہیں اس طالبہ کو جواب کیسے دوں",
+     "target_text": "I'm not sure how to answer that student",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں نے اس طالبہ کو کبھی نہیں دیکھا",
+     "target_text": "I've never seen that student",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "اس طالبہ کے بارے میں ایک کہانی لکھ",
+     "target_text": "write a story about that student",
+     "phrase_role": "use"
+    }
+   ],
+   "324:2": [
+    {
+     "known_text": "کے",
+     "target_text": "has",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "دونوں",
+     "target_text": "both",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ہاتھ",
+     "target_text": "hands",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اوپر",
+     "target_text": "up",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ہیں",
+     "target_text": "are",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اس کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "she has both of her hands up",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اس عورت کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "that woman has both of her hands up",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اس طالبہ کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "that student has both of her hands up",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ اس طالبہ کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "I think that student has both of her hands up",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو لگتا ہے کہ اس طالبہ کے دونوں ہاتھ اوپر ہیں؟",
+     "target_text": "do you think that student has both of her hands up?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "نہیں مجھے نہیں لگتا کہ اس طالبہ کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "no I don't think that student has both of her hands up",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "اس نوجوان عورت کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "that young woman has both of her hands up",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میری بہن کے دونوں ہاتھ اوپر ہیں",
+     "target_text": "my sister has both of her hands up",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 329,
+  "phrases": {
+   "329:1": [
+    {
+     "known_text": "یہ",
+     "target_text": "it's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اہم",
+     "target_text": "important",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ہے",
+     "target_text": "is",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "میں جانتا ہوں کہ یہ اہم ہے",
+     "target_text": "I know it's important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ہاں یہ اہم ہے",
+     "target_text": "yes it's important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ یہ اہم ہے",
+     "target_text": "I think that it's important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو لگتا ہے کہ یہ اہم ہے؟",
+     "target_text": "do you think that it's important?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ یہ آج اہم ہے",
+     "target_text": "I think that it's important today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو لگتا ہے کہ یہ اس سال اہم ہے؟",
+     "target_text": "do you think that it's important this year?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے یقین نہیں کہ یہ اہم ہے",
+     "target_text": "I'm not sure it's important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بہتر کرنا اہم ہے",
+     "target_text": "it's important to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وقت نکالنا اہم ہے",
+     "target_text": "it's important to take time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے امید ہے کہ یہ اہم ہے",
+     "target_text": "I hope it's important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لیکن یہ اہم ہے",
+     "target_text": "but it's important",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 607,
+  "phrases": {
+   "607:1": [
+    {
+     "known_text": "کیں",
+     "target_text": "done",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "چیزیں",
+     "target_text": "things",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "مختلف طریقے سے",
+     "target_text": "differently",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "میں چیزیں مختلف طریقے سے کرتا",
+     "target_text": "I'd have done things differently",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "میں نے پہلے چیزیں مختلف طریقے سے کیں",
+     "target_text": "done things differently before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اگر مجھے معلوم ہوتا تو میں چیزیں مختلف طریقے سے کرتا",
+     "target_text": "if I'd known, I'd have done things differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگتا ہے میں چیزیں مختلف طریقے سے کرتا",
+     "target_text": "I think I'd have done things differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جانتا ہوں کہ میں چیزیں مختلف طریقے سے کرتا",
+     "target_text": "I know I'd have done things differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "شاید میں پہلے چیزیں مختلف طریقے سے کرتا",
+     "target_text": "maybe I'd have done things differently before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "اگر مجھے یہ معلوم ہوتا تو میں چیزیں مختلف طریقے سے کرتا",
+     "target_text": "if I'd known that, I'd have done things differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہم نے چیزیں مختلف طریقے سے کیں",
+     "target_text": "we've done things differently",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 616,
+  "phrases": {
+   "616:1": [
+    {
+     "known_text": "آپ",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "یہ سوچا",
+     "target_text": "thought that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "مجھے یقین ہے کہ آپ نے یہ سوچا",
+     "target_text": "I'm sure you thought that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "یہ کہنا کہ آپ نے یہ سوچا",
+     "target_text": "to say you thought that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آپ نے بہت ہمت سے کہا کہ آپ یہ سوچتے تھے",
+     "target_text": "you were very brave to say you thought that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جانتا ہوں کہ آپ نے یہ سوچا",
+     "target_text": "I know you thought that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ بہادر تھے کہ آپ نے یہ سوچا",
+     "target_text": "you were brave to say you thought that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگا کہ آپ نے یہ سوچا",
+     "target_text": "I thought you thought that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "شاید آپ نے یہ سوچا",
+     "target_text": "maybe you thought that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں نے سنا کہ آپ نے یہ سوچا",
+     "target_text": "I heard that you thought that",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 618,
+  "phrases": {
+   "618:1": [
+    {
+     "known_text": "لگتا",
+     "target_text": "feel like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "زیادہ عرصہ",
+     "target_text": "a long time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "یہ زیادہ عرصہ نہیں لگے گا",
+     "target_text": "it won't feel like a long time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "شاید زیادہ عرصہ لگتا",
+     "target_text": "maybe feel like a long time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "یہ زیادہ عرصہ نہیں لگتا",
+     "target_text": "it doesn't feel like a long time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "یہ آج زیادہ عرصہ نہیں لگتا",
+     "target_text": "it doesn't feel like a long time today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "یہ ابھی زیادہ عرصہ نہیں لگتا",
+     "target_text": "it doesn't feel like a long time now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لیکن یہ زیادہ عرصہ نہیں لگتا",
+     "target_text": "but it doesn't feel like a long time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "یہ بالکل زیادہ عرصہ نہیں لگتا",
+     "target_text": "it doesn't feel like a long time at all",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "یہ زیادہ عرصہ لگ سکتا ہے",
+     "target_text": "it can feel like a long time",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 620,
+  "phrases": {
+   "620:1": [
+    {
+     "known_text": "ہم",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آخری بار ملے",
+     "target_text": "last saw each other",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جب ہم آخری بار ملے",
+     "target_text": "when we last saw each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "جب سے ہم آخری بار ملے",
+     "target_text": "since we last saw each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ہمیں آخری بار ملے بہت لمبا عرصہ ہو گیا ہے",
+     "target_text": "it's a very long time since we last saw each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہمیں آخری بار ملے بہت عرصہ ہو گیا ہے",
+     "target_text": "it's a long time since we last saw each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگتا ہے ہمیں آخری بار ملے بہت عرصہ ہو گیا ہے",
+     "target_text": "I think it's a long time since we last saw each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہمیں آخری بار ملے تھوڑا عرصہ ہو گیا ہے",
+     "target_text": "it's been a while since we last saw each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہمیں آخری بار ملے کافی لمبا عرصہ ہو گیا ہے",
+     "target_text": "it's been a very long time since we last saw each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "جہاں ہم آخری بار ملے",
+     "target_text": "where we last saw each other",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 636,
+  "phrases": {
+   "636:1": [
+    {
+     "known_text": "جین کا",
+     "target_text": "Jane's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بیگ",
+     "target_text": "bag",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جین کا بیگ یہاں ہے",
+     "target_text": "Jane's bag is here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "یہ جین کا بیگ",
+     "target_text": "this Jane's bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "مجھے لگتا ہے کہ یہ جین کا بیگ ہے",
+     "target_text": "I think that that is Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے لگتا ہے یہ جین کا بیگ ہے",
+     "target_text": "I think that is Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا وہ جین کا بیگ ہے؟",
+     "target_text": "is that Jane's bag?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "جین کا بیگ کہاں ہے؟",
+     "target_text": "where is Jane's bag?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "میں جانتا ہوں یہ جین کا بیگ ہے",
+     "target_text": "I know that is Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے امید ہے کہ میں جین کا بیگ ڈھونڈ پاؤں گا",
+     "target_text": "I hope I'll be able to find Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہمیں جین کا بیگ ڈھونڈنا ہے",
+     "target_text": "we need to find Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ہمیں جین کا بیگ نہیں لے جانا چاہیے",
+     "target_text": "we shouldn't take Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ جین کا بیگ ہو سکتا ہے",
+     "target_text": "that might be Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "مجھے امید ہے کہ وہ جین کا بیگ ہے",
+     "target_text": "I hope that's Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آپ کے دوست نے کہا کہ جین کا بیگ بڑا ہے",
+     "target_text": "your friend said that Jane's bag is large",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "جین کا بیگ میرے بیگ سے بہتر ہے",
+     "target_text": "Jane's bag is better than my bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ نے جین کا بیگ دیکھا ہے",
+     "target_text": "have you seen Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "کیا آپ کو جین کا بیگ پسند ہے",
+     "target_text": "do you like Jane's bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "وہ جین کا بیگ ہے",
+     "target_text": "that's Jane's bag",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

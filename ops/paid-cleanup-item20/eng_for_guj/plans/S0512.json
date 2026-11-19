@@ -1,0 +1,60 @@
+{
+ "seed": 512,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "શું તમે આવતા અઠવાડિયે બારણું ખુલ્લું રાખી શકો?",
+     "can you hold the door open next week?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "શું તમે આ સવારે બારણું ખુલ્લું રાખી શકો?",
+     "can you hold the door open this morning?",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "જ્યારે હું મારી કૉફી પૂરી કરું ત્યારે શું તમે રાહ જોઈ શકો?",
+     "can you wait while I finish my coffee?",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "શું તમે ટેબલ પર મારી ચાવી જોઈ?",
+     "have you seen my keys on the table?",
+     null,
+     null
+    ]
+   }
+  },
+  "L05": {
+   "update": {
+    "B01": [
+     "જ્યારે હું ચાવી લઈ આવું ત્યારે શું તમે રાહ જોઈ શકો?",
+     "can you wait while I fetch the keys?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0512L01B01": "ખુલ્લું બારણું|the known wording of this seed's own later LEGO, which the English row already uses"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

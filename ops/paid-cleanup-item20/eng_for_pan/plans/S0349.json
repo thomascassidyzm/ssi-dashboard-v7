@@ -1,0 +1,38 @@
+{
+ "seed": 349,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਕੀ ਉਹ ਭੁਗਤਾਨ ਕਰਨਾ ਚਾਹੁੰਦਾ ਸੀ?",
+     "did he want to pay?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਕੀ ਉਹ ਖੇਡਣਾ ਚਾਹੁੰਦਾ ਸੀ?",
+     "did he want to play?",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+     "I want to go out",
+     null,
+     "f"
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

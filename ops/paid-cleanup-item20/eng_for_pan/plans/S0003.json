@@ -1,0 +1,40 @@
+{
+ "seed": 3,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "insert": [
+    [
+     "build",
+     "ਮੈਂ ਅੰਗਰੇਜ਼ੀ ਕਿਵੇਂ ਬੋਲਣਾ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "I want to learn how to speak English",
+     null,
+     "m",
+     null
+    ],
+    [
+     "build",
+     "ਤੁਹਾਡੇ ਨਾਲ ਕਿਵੇਂ ਬੋਲਣਾ",
+     "how to speak with you",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਜਿੰਨਾ ਹੋ ਸਕੇ ਅਕਸਰ ਬੋਲਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+     "I want to speak as often as possible",
+     null,
+     "f"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0003L02B01": "ਚਾਹੁੰਦੀ|feminine form of the taught ਚਾਹੁੰਦਾ"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

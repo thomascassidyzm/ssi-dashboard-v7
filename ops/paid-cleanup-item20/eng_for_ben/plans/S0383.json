@@ -1,0 +1,38 @@
+{
+ "seed": 383,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি বাগানে একজনের সাথে দেখা করেছিলাম",
+     "I met someone in the garden",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি এটা বাগানে রাখতে চাই",
+     "I want to put it in the garden",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "সে কি এটা বাগানে রাখতে চেয়েছিল?",
+     "did he want to put it in the garden?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
