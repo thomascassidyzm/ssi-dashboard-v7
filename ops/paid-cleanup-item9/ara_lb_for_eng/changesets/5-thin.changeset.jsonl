@@ -1,0 +1,28 @@
+{"format":"ssi-changeset/1","id":"item9-ara_lb_for_eng-5-thin","course":"ara_lb_for_eng","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:29:48.710Z","ops":27,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0030L01U02","expect":{"known_text":"I wanted to start talking sooner","target_text":"كنت بدي أبدأ أحكي أبكر"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0031L01U02","expect":{"known_text":"you wanted to start talking sooner","target_text":"كنت بدك تبدأ تحكي أبكر"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0044L01U04","expect":{"known_text":"I can speak Arabic or explain in English","target_text":"أقدر أحكي عربي أو أشرح بالإنجليزي"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0047L02U01","expect":{"known_text":"I believe that mistakes help","target_text":"بعتقد إن الأغلاط بيساعدوا"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0053L03B03","expect":{"known_text":"she put his letter","target_text":"حطت رسالتو"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0057L01U03","expect":{"known_text":"I wanted to say it in Arabic","target_text":"كنت بدي أقولو بالعربي"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0057L01U05","expect":{"known_text":"I can't remember what I wanted to say","target_text":"ما فيني أتذكر شو كنت بدي أقولو"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0061L03B02","expect":{"known_text":"can you say?","target_text":"فيك تقول؟"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0061L03U03","expect":{"known_text":"can you say that slowly?","target_text":"فيك تقول هيك بشوي؟"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0061L03U04","expect":{"known_text":"can you say what you said again?","target_text":"فيك تقول شو قلت تاني؟"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0071L01U04","expect":{"known_text":"any person is welcome","target_text":"أي حدا مرحب فيه"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0071L03U03","expect":{"known_text":"he heard the truth now","target_text":"سمع الحقيقة هلق"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0087L01B02","expect":{"known_text":"they are people too","target_text":"هودي كمان ناس"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0106L01U03","expect":{"known_text":"he does it seriously","target_text":"يعملها بجد"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0106L03B02","expect":{"known_text":"feel joy too","target_text":"أحس بانبساط كمان"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0108L02U05","expect":{"known_text":"I stopped in the middle","target_text":"وقفت بنص"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0117L01B02","expect":{"known_text":"once more","target_text":"مرة كمان"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0117L01U01","expect":{"known_text":"do it once more","target_text":"أعمل مرة كمان"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0117L01U04","expect":{"known_text":"she came once","target_text":"إجت مرة"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0121L01B03","expect":{"known_text":"I see your car","target_text":"بشوف سيارتك"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0124L01U02","expect":{"known_text":"he thinks that it was good","target_text":"بيفكر إنها كانت منيحة"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0202L02U05","expect":{"known_text":"he wants to learn how to answer the question","target_text":"بدو يتعلم كيف يجاوب على السؤال"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0262L02U06","expect":{"known_text":"do you remember that man who was here yesterday?","target_text":"تذكر هالرجل اللي كان هون إمبارح؟"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0267L01U01","expect":{"known_text":"have you heard from your friend this week?","target_text":"سمعت من صاحبك هالأسبوع؟"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0267L01U02","expect":{"known_text":"haven't you heard from your friend in a while?","target_text":"ما سمعت من صاحبك من مدة؟"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0267L01U04","expect":{"known_text":"you told me that you heard from your friend","target_text":"حكيتلي إنو سمعت من صاحبك"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0287L03U02","expect":{"known_text":"you know they like watching together?","target_text":"بتعرف بيحبوا يتفرجوا مع بعض؟"}}

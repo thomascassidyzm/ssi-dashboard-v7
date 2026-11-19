@@ -1,0 +1,12 @@
+{"format":"ssi-changeset/1","id":"item9-ita_for_eng-5-thin","course":"ita_for_eng","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:29:57.419Z","ops":11,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0040L02U03","expect":{"known_text":"I'm starting to speak better at the moment","target_text":"sto cominciando a parlare meglio al momento"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0049L01U03","expect":{"known_text":"it's like this when I learn more","target_text":"è così quando imparo di più"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L02U04","expect":{"known_text":"it is useful to take time to understand","target_text":"è utile prendersi il tempo per capire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0137L01U02","expect":{"known_text":"they are not perfect but they are learning","target_text":"non sono perfetti ma stanno imparando"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0221L01U02","expect":{"known_text":"I want to watch football this evening","target_text":"voglio guardare il calcio questa sera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0396L03U04","expect":{"known_text":"she asked to wait until I finished","target_text":"ha chiesto di aspettare finché non finivo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0402L03U01","expect":{"known_text":"I want to stop somewhere","target_text":"voglio fermarmi da qualche parte"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0402L03U04","expect":{"known_text":"we need to stop somewhere","target_text":"dobbiamo fermarci da qualche parte"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0402L04U04","expect":{"known_text":"we need to stop somewhere for food","target_text":"dobbiamo fermarci da qualche parte per mangiare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0505L02U03","expect":{"known_text":"I'm working so that I don't get left behind","target_text":"sto lavorando così non rimango indietro"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0506L01U04","expect":{"known_text":"he was there years ago","target_text":"era là anni fa"}}

@@ -1,0 +1,12 @@
+{"format":"ssi-changeset/1","id":"item9-eng_for_spa-5-thin","course":"eng_for_spa","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:30:12.116Z","ops":11,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0011L03U06","expect":{"known_text":"me gustaría volver y hablar contigo después de aprender inglés","target_text":"I'd like to come back and speak with you after learning English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0040L01B02","expect":{"known_text":"me siento bien","target_text":"I feel okay"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0040L01U04","expect":{"known_text":"me siento bien esta noche","target_text":"I feel okay tonight"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0043L01U06","expect":{"known_text":"no estaba pensando en contestar tan rápido","target_text":"I wasn't thinking about answering so quickly"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0063L02U05","expect":{"known_text":"¿estás seguro de que no te importa esperarme?","target_text":"are you sure you don't mind waiting for me?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0064L02U05","expect":{"known_text":"contestar en inglés no es fácil todavía","target_text":"answering in English isn't easy yet"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0082L01U06","expect":{"known_text":"voy a esperarte un rato más tarde","target_text":"I'm going to wait for you for a while later on"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0096L01B03","expect":{"known_text":"no, gracias","target_text":"no thanks"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0099L02U04","expect":{"known_text":"me pregunto por qué no está funcionando","target_text":"I ask myself why it's not working"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0145L02U06","expect":{"known_text":"¿por qué no estás contento desde esta mañana?","target_text":"why are you not happy since this morning?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0184L02U05","expect":{"known_text":"las dejaste en la oficina hace un rato","target_text":"you left them in the office a little while ago"}}
