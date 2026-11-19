@@ -1,0 +1,448 @@
+{
+ "course": "deu_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:57:50Z",
+ "decisions": 3,
+ "verdicts": {
+  "grow": 1,
+  "kai": 1,
+  "keep": 1
+ },
+ "touched_seeds": [
+  459
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0459L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'blue | blauen' is one ending of a word whose plain form is 'blau'; the ending comes from 'dem … Schild'. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'the blue sign | dem blauen Schild' (5 syllables). Every row already says 'dem blauen' with the English 'the blue one' — 'one' is not in the seed (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ) — so each row gains 'Schild / sign'. Read row by row, not find-and-replace alone (R0.13).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 459,
+    "known": "it wasn't in front of the blue sign",
+    "target": "es war nicht vor dem blauen Schild"
+   },
+   "before": {
+    "known": "blue",
+    "target": "blauen",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "the blue sign",
+    "target": "dem blauen Schild",
+    "type": "M",
+    "components": [
+     [
+      "the",
+      "dem"
+     ],
+     [
+      "blue",
+      "blauen"
+     ],
+     [
+      "sign",
+      "Schild"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "deu_for_eng:S0459L02B01",
+     "role": "build",
+     "before": [
+      "blue",
+      "blauen"
+     ],
+     "action": [
+      "the blue sign",
+      "dem blauen Schild"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02B02",
+     "role": "build",
+     "before": [
+      "the blue one",
+      "dem blauen"
+     ],
+     "action": [
+      "but the blue sign",
+      "aber dem blauen Schild"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02B03",
+     "role": "build",
+     "before": [
+      "not in front of the blue one",
+      "nicht vor dem blauen"
+     ],
+     "action": [
+      "not in front of the blue sign",
+      "nicht vor dem blauen Schild"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02U01",
+     "role": "use",
+     "before": [
+      "I think it was in front of the blue one",
+      "ich denke, dass es vor dem blauen war"
+     ],
+     "action": [
+      "I think it was in front of the blue sign",
+      "ich denke, dass es vor dem blauen Schild war"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02U02",
+     "role": "use",
+     "before": [
+      "I thought it was not in front of the blue one",
+      "ich dachte, dass es nicht vor dem blauen war"
+     ],
+     "action": [
+      "I thought it was not in front of the blue sign",
+      "ich dachte, dass es nicht vor dem blauen Schild war"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02U03",
+     "role": "use",
+     "before": [
+      "she told me it was not in front of the blue one",
+      "sie hat mir gesagt, dass es nicht vor dem blauen war"
+     ],
+     "action": [
+      "she told me it was not in front of the blue sign",
+      "sie hat mir gesagt, dass es nicht vor dem blauen Schild war"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02U04",
+     "role": "use",
+     "before": [
+      "I believe it was in front of the blue one",
+      "ich glaube, dass es vor dem blauen war"
+     ],
+     "action": [
+      "I believe it was in front of the blue sign",
+      "ich glaube, dass es vor dem blauen Schild war"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02U05",
+     "role": "use",
+     "before": [
+      "please could it be in front of the blue one",
+      "bitte könnte es vor dem blauen sein"
+     ],
+     "action": [
+      "please could it be in front of the blue sign",
+      "bitte könnte es vor dem blauen Schild sein"
+     ]
+    },
+    {
+     "id": "deu_for_eng:S0459L02U06",
+     "role": "use",
+     "before": [
+      "I knew it was not in front of the blue one",
+      "ich wusste, dass es nicht vor dem blauen war"
+     ],
+     "action": [
+      "I knew it was not in front of the blue sign",
+      "ich wusste, dass es nicht vor dem blauen Schild war"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 9,
+    "sample": [
+     {
+      "id": "deu_for_eng:S0459L03B02",
+      "known": "blue sign",
+      "target": "blauen Schild",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03B03",
+      "known": "not in front of the blue sign",
+      "target": "nicht vor dem blauen Schild",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U01",
+      "known": "it was not in front of the blue sign",
+      "target": "es war nicht vor dem blauen Schild",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U02",
+      "known": "I think it was in front of the blue sign",
+      "target": "ich denke, dass es vor dem blauen Schild war",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U03",
+      "known": "I thought it was in front of the blue sign",
+      "target": "ich dachte, dass es vor dem blauen Schild war",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U04",
+      "known": "she told me it was in front of the blue sign",
+      "target": "sie hat mir gesagt, dass es vor dem blauen Schild war",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U05",
+      "known": "I think we want to be in front of the blue sign",
+      "target": "ich denke, dass wir vor dem blauen Schild sein wollen",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U06",
+      "known": "I knew it was in front of the blue sign",
+      "target": "ich wusste, dass es vor dem blauen Schild war",
+      "seed": 459
+     },
+     {
+      "id": "deu_for_eng:S0459L03U07",
+      "known": "it wasn't in front of the blue sign",
+      "target": "es war nicht vor dem blauen Schild",
+      "seed": 459
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0408L03",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD. 'to have | zu haben' (seed 408) is marked not-new although nothing earlier teaches it, so its 9 good rows never play; 'to have | haben' (seed 414, after 'could we') is the NEW one. One prompt, two answers, and German needs both (with and without 'zu'). Growing 408's to its seed piece gives 'eine glückliche Familie zu haben', 11 syllables. Two ways: (1) teach 'to have | zu haben' as NEW at 408 (L31) and mark 414's 'haben' not-new as a pattern the learner now knows (L17), moving its seed sentence under 'red wine'; (2) leave 408 dark and keep 414. Recommended (1).",
+   "closes": [
+    "13",
+    "16"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 408,
+    "known": "yes that's the best way to have a happy family",
+    "target": "ja, das ist der beste Weg, eine glückliche Familie zu haben"
+   },
+   "before": {
+    "known": "to have",
+    "target": "zu haben",
+    "type": "M",
+    "is_new": false
+   },
+   "extra": []
+  },
+  {
+   "id": "S0639L01",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "NOT planned here — it is item 15 (formal LEGOs without sir/madam). The LEGO is 'with you sir | mit Ihnen, mein Herr' but 9 of its 11 rows say 'with you | mit Ihnen', the same prompt as S0001L05 'with you | mit dir'. Adding ', sir' / ', mein Herr' to those rows fixes both the clash and the rows that do not contain their LEGO.",
+   "closes": [
+    "13",
+    "15"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 639,
+    "known": "with you sir",
+    "target": "mit Ihnen, mein Herr"
+   },
+   "before": {
+    "known": "with you sir",
+    "target": "mit Ihnen, mein Herr",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0459L02",
+   "set": {
+    "known_text": "the blue sign",
+    "target_text": "dem blauen Schild",
+    "type": "M",
+    "components": [
+     {
+      "known": "the",
+      "target": "dem"
+     },
+     {
+      "known": "blue",
+      "target": "blauen"
+     },
+     {
+      "known": "sign",
+      "target": "Schild"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "blue",
+    "target_text": "blauen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02B01",
+   "set": {
+    "known_text": "the blue sign",
+    "target_text": "dem blauen Schild"
+   },
+   "expect": {
+    "known_text": "blue",
+    "target_text": "blauen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02B02",
+   "set": {
+    "known_text": "but the blue sign",
+    "target_text": "aber dem blauen Schild"
+   },
+   "expect": {
+    "known_text": "the blue one",
+    "target_text": "dem blauen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02B03",
+   "set": {
+    "known_text": "not in front of the blue sign",
+    "target_text": "nicht vor dem blauen Schild"
+   },
+   "expect": {
+    "known_text": "not in front of the blue one",
+    "target_text": "nicht vor dem blauen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02U01",
+   "set": {
+    "known_text": "I think it was in front of the blue sign",
+    "target_text": "ich denke, dass es vor dem blauen Schild war"
+   },
+   "expect": {
+    "known_text": "I think it was in front of the blue one",
+    "target_text": "ich denke, dass es vor dem blauen war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02U02",
+   "set": {
+    "known_text": "I thought it was not in front of the blue sign",
+    "target_text": "ich dachte, dass es nicht vor dem blauen Schild war"
+   },
+   "expect": {
+    "known_text": "I thought it was not in front of the blue one",
+    "target_text": "ich dachte, dass es nicht vor dem blauen war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02U03",
+   "set": {
+    "known_text": "she told me it was not in front of the blue sign",
+    "target_text": "sie hat mir gesagt, dass es nicht vor dem blauen Schild war"
+   },
+   "expect": {
+    "known_text": "she told me it was not in front of the blue one",
+    "target_text": "sie hat mir gesagt, dass es nicht vor dem blauen war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02U04",
+   "set": {
+    "known_text": "I believe it was in front of the blue sign",
+    "target_text": "ich glaube, dass es vor dem blauen Schild war"
+   },
+   "expect": {
+    "known_text": "I believe it was in front of the blue one",
+    "target_text": "ich glaube, dass es vor dem blauen war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02U05",
+   "set": {
+    "known_text": "please could it be in front of the blue sign",
+    "target_text": "bitte könnte es vor dem blauen Schild sein"
+   },
+   "expect": {
+    "known_text": "please could it be in front of the blue one",
+    "target_text": "bitte könnte es vor dem blauen sein"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0459L02U06",
+   "set": {
+    "known_text": "I knew it was not in front of the blue sign",
+    "target_text": "ich wusste, dass es nicht vor dem blauen Schild war"
+   },
+   "expect": {
+    "known_text": "I knew it was not in front of the blue one",
+    "target_text": "ich wusste, dass es nicht vor dem blauen war"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:58:10Z",
+  "baseline_failing_seeds": 563,
+  "per_seed": {
+   "459": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

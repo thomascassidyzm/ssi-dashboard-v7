@@ -1,0 +1,68 @@
+{
+ "course": "spa_mx_for_eng",
+ "legos": [
+  {
+   "id": "S0133L02",
+   "verdict": "delete",
+   "pattern": "W",
+   "why": "'to know' is the prompt for saber (S0045L01) and for conocer (here). The larger LEGO that L34 asks for is already in this seed: S0133L03 'you get to know | llegas a conocer'. So the bare one is retired with its 9 rows (three repeat S0133L03's). spa_for_eng avoids the clash the same way (its S0133L01 is 'you get to know someone'). STRUCTURAL: a LEGO delete, needs Kai's go. This also settles the scan row for S0045L01."
+  },
+  {
+   "id": "S0194L01",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "what are you",
+   "target": "qué estás",
+   "type": "M",
+   "components": [
+    [
+     "what",
+     "qué"
+    ],
+    [
+     "are you",
+     "estás"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "what are you",
+     "qué estás"
+    ],
+    "B02": [
+     "what are you doing?",
+     "¿qué estás haciendo?"
+    ],
+    "B03": [
+     "what are you looking for?",
+     "¿qué estás buscando?"
+    ],
+    "U01": [
+     "what are you learning?",
+     "¿qué estás aprendiendo?"
+    ],
+    "U02": [
+     "what are you thinking?",
+     "¿qué estás pensando?"
+    ],
+    "U03": [
+     "what are you saying?",
+     "¿qué estás diciendo?"
+    ],
+    "U04": [
+     "what are you trying to do?",
+     "¿qué estás intentando hacer?"
+    ],
+    "U05": "keep"
+   },
+   "add": [
+    [
+     "b",
+     "what are you doing here?",
+     "¿qué estás haciendo aquí?"
+    ]
+   ],
+   "why": "'you are' is the prompt for eres (S0128L01) and for estás (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'what are you | qué estás' (3 syllables), exactly as spa_for_eng cuts the same seed (S0194L01), with that course's rows as the model. This also settles the scan row for S0128L01."
+  }
+ ]
+}

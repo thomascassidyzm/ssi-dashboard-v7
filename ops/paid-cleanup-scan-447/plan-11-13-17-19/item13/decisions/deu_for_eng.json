@@ -1,0 +1,84 @@
+{
+ "course": "deu_for_eng",
+ "legos": [
+  {
+   "id": "S0459L02",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "the blue sign",
+   "target": "dem blauen Schild",
+   "type": "M",
+   "components": [
+    [
+     "the",
+     "dem"
+    ],
+    [
+     "blue",
+     "blauen"
+    ],
+    [
+     "sign",
+     "Schild"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "the blue sign",
+     "dem blauen Schild"
+    ],
+    "B02": [
+     "but the blue sign",
+     "aber dem blauen Schild"
+    ],
+    "B03": [
+     "not in front of the blue sign",
+     "nicht vor dem blauen Schild"
+    ],
+    "U01": [
+     "I think it was in front of the blue sign",
+     "ich denke, dass es vor dem blauen Schild war"
+    ],
+    "U02": [
+     "I thought it was not in front of the blue sign",
+     "ich dachte, dass es nicht vor dem blauen Schild war"
+    ],
+    "U03": [
+     "she told me it was not in front of the blue sign",
+     "sie hat mir gesagt, dass es nicht vor dem blauen Schild war"
+    ],
+    "U04": [
+     "I believe it was in front of the blue sign",
+     "ich glaube, dass es vor dem blauen Schild war"
+    ],
+    "U05": [
+     "please could it be in front of the blue sign",
+     "bitte könnte es vor dem blauen Schild sein"
+    ],
+    "U06": [
+     "I knew it was not in front of the blue sign",
+     "ich wusste, dass es nicht vor dem blauen Schild war"
+    ]
+   },
+   "why": "'blue | blauen' is one ending of a word whose plain form is 'blau'; the ending comes from 'dem … Schild'. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'the blue sign | dem blauen Schild' (5 syllables). Every row already says 'dem blauen' with the English 'the blue one' — 'one' is not in the seed (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ) — so each row gains 'Schild / sign'. Read row by row, not find-and-replace alone (R0.13)."
+  },
+  {
+   "id": "S0408L03",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. 'to have | zu haben' (seed 408) is marked not-new although nothing earlier teaches it, so its 9 good rows never play; 'to have | haben' (seed 414, after 'could we') is the NEW one. One prompt, two answers, and German needs both (with and without 'zu'). Growing 408's to its seed piece gives 'eine glückliche Familie zu haben', 11 syllables. Two ways: (1) teach 'to have | zu haben' as NEW at 408 (L31) and mark 414's 'haben' not-new as a pattern the learner now knows (L17), moving its seed sentence under 'red wine'; (2) leave 408 dark and keep 414. Recommended (1).",
+   "closes": [
+    "16"
+   ]
+  },
+  {
+   "id": "S0639L01",
+   "verdict": "keep",
+   "pattern": "R",
+   "closes": [
+    "15"
+   ],
+   "why": "NOT planned here — it is item 15 (formal LEGOs without sir/madam). The LEGO is 'with you sir | mit Ihnen, mein Herr' but 9 of its 11 rows say 'with you | mit Ihnen', the same prompt as S0001L05 'with you | mit dir'. Adding ', sir' / ', mein Herr' to those rows fixes both the clash and the rows that do not contain their LEGO."
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "course": "deu_at_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:58:10Z",
+ "decisions": 1,
+ "verdicts": {
+  "kai": 1
+ },
+ "touched_seeds": [],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0194L01",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD. Seeds 68 and 194 are the SAME English sentence, 'what are you looking for?', with two Austrian answers: 'wos suachst'n?' and 'wos suachst denn?'. The clash is in the seed sentences themselves, so only a seed change removes it (L34: 'first try to unify') and that is Kai's call (L25). Recommended: seed 194 takes seed 68's form, and S0194L01 'you look for | suachst' goes not-new.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 194,
+    "known": "what are you looking for?",
+    "target": "wos suachst denn?"
+   },
+   "before": {
+    "known": "you look for",
+    "target": "suachst",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [],
+ "validator": {
+  "at": "2026-11-19T11:58:14Z",
+  "baseline_failing_seeds": 218,
+  "per_seed": {},
+  "seeds_with_new_issues": []
+ }
+}

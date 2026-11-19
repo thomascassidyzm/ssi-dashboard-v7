@@ -1,0 +1,1026 @@
+{
+ "course": "fra_ca_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:58:30Z",
+ "decisions": 4,
+ "verdicts": {
+  "grow": 2,
+  "regloss": 2
+ },
+ "touched_seeds": [
+  79,
+  490,
+  505,
+  631
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0079L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "The prompt was written 'when...?' with dots — a label, which a LEGO may never carry. Without them, 'when' would be a second prompt for a second French word. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'when did you | quand est-ce que t'as' (5 syllables). Four rows already say it; three with other subjects are rewritten.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 79,
+    "known": "when did you start to learn?",
+    "target": "Quand est-ce que t'as commencé à apprendre?"
+   },
+   "before": {
+    "known": "when...?",
+    "target": "quand est-ce que",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "when did you",
+    "target": "quand est-ce que t'as",
+    "type": "M",
+    "components": [
+     [
+      "when",
+      "quand est-ce que"
+     ],
+     [
+      "did you",
+      "t'as"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_ca_for_eng:S0079L02C01",
+     "role": "component",
+     "before": [
+      "when",
+      "quand"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02C02",
+     "role": "component",
+     "before": [
+      "is it that",
+      "est-ce que"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02B01",
+     "role": "build",
+     "before": [
+      "when...?",
+      "quand est-ce que"
+     ],
+     "action": [
+      "when did you",
+      "quand est-ce que t'as"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02B02",
+     "role": "build",
+     "before": [
+      "when did you say that?",
+      "quand est-ce que t'as dit ça?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02B03",
+     "role": "build",
+     "before": [
+      "when did he start?",
+      "quand est-ce que y'a commencé?"
+     ],
+     "action": [
+      "when did you start?",
+      "quand est-ce que t'as commencé?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02U01",
+     "role": "use",
+     "before": [
+      "when did you start to learn?",
+      "quand est-ce que t'as commencé à apprendre?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02U02",
+     "role": "use",
+     "before": [
+      "when did you finish?",
+      "quand est-ce que t'as fini?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02U03",
+     "role": "use",
+     "before": [
+      "when do you want to practise?",
+      "quand est-ce que tu veux pratiquer?"
+     ],
+     "action": [
+      "when did you say that to me?",
+      "quand est-ce que t'as dit ça à moi?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02U04",
+     "role": "use",
+     "before": [
+      "when do you want to speak québécois with me?",
+      "quand est-ce que tu veux parler québécois avec moi?"
+     ],
+     "action": [
+      "when did you start to speak québécois?",
+      "quand est-ce que t'as commencé à parler québécois?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0079L02U05",
+     "role": "use",
+     "before": [
+      "when did you start to write?",
+      "quand est-ce que t'as commencé à écrire?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 4,
+    "sample": [
+     {
+      "id": "fra_ca_for_eng:S0081L01U01",
+      "known": "when do you want to start?",
+      "target": "quand est-ce que tu veux commencer?",
+      "seed": 81
+     },
+     {
+      "id": "fra_ca_for_eng:S0252L01U01",
+      "known": "when will you be ready to start?",
+      "target": "quand est-ce que tu vas être prêt à commencer?",
+      "seed": 252
+     },
+     {
+      "id": "fra_ca_for_eng:S0252L01U03",
+      "known": "when will you be ready?",
+      "target": "quand est-ce que tu vas être prêt?",
+      "seed": 252
+     },
+     {
+      "id": "fra_ca_for_eng:S0255L01U01",
+      "known": "when do you think you'll be ready to leave?",
+      "target": "quand est-ce que tu penses que tu vas être prêt à partir?",
+      "seed": 255
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0631L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "The prompt was written 'what...?' with dots. Grown to its seed, 'what would you like? | qu'est-ce que tu voudrais' (5 syllables) (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ). The whole basket drilled 'qu'est-ce que tu veux' ('what do you want'), a form this seed does not say; each row is turned to 'tu voudrais / would you like'. 'you would like | tu voudrais' (S0631L02) overlaps by design.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 631,
+    "known": "what would you like?",
+    "target": "Qu'est-ce que tu voudrais?"
+   },
+   "before": {
+    "known": "what...?",
+    "target": "qu'est-ce que",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "what would you like?",
+    "target": "qu'est-ce que tu voudrais",
+    "type": "M",
+    "components": [
+     [
+      "what",
+      "qu'est-ce que"
+     ],
+     [
+      "you would like",
+      "tu voudrais"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "fra_ca_for_eng:S0631L01B01",
+     "role": "build",
+     "before": [
+      "what do you want",
+      "qu'est-ce que tu veux"
+     ],
+     "action": [
+      "what would you like?",
+      "qu'est-ce que tu voudrais?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01B02",
+     "role": "build",
+     "before": [
+      "what do you want today",
+      "qu'est-ce que tu veux aujourd'hui"
+     ],
+     "action": [
+      "what would you like today?",
+      "qu'est-ce que tu voudrais aujourd'hui?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01B03",
+     "role": "build",
+     "before": [
+      "what do you want to pay",
+      "qu'est-ce que tu veux payer"
+     ],
+     "action": [
+      "what would you like to pay",
+      "qu'est-ce que tu voudrais payer"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01U01",
+     "role": "use",
+     "before": [
+      "what do you want right now?",
+      "qu'est-ce que tu veux tout de suite?"
+     ],
+     "action": [
+      "what would you like right now?",
+      "qu'est-ce que tu voudrais tout de suite?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01U02",
+     "role": "use",
+     "before": [
+      "what do you want to drink?",
+      "qu'est-ce que tu veux boire?"
+     ],
+     "action": [
+      "what would you like to drink?",
+      "qu'est-ce que tu voudrais boire?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01U03",
+     "role": "use",
+     "before": [
+      "what do you want to search for?",
+      "qu'est-ce que tu veux chercher?"
+     ],
+     "action": [
+      "what would you like to search for?",
+      "qu'est-ce que tu voudrais chercher?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01U04",
+     "role": "use",
+     "before": [
+      "what do you want to close?",
+      "qu'est-ce que tu veux fermer?"
+     ],
+     "action": [
+      "what would you like to close?",
+      "qu'est-ce que tu voudrais fermer?"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0631L01U05",
+     "role": "use",
+     "before": [
+      "what do you want here?",
+      "qu'est-ce que tu veux ici?"
+     ],
+     "action": [
+      "what would you like here?",
+      "qu'est-ce que tu voudrais ici?"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "fra_ca_for_eng:S0631L01B04",
+     "course_code": "fra_ca_for_eng",
+     "seed_number": 631,
+     "lego_index": 1,
+     "known_text": "what would you like here?",
+     "target_text": "qu'est-ce que tu voudrais ici?",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 5,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 32,
+    "sample": [
+     {
+      "id": "fra_ca_for_eng:S0068L01B01",
+      "known": "what are you looking for now",
+      "target": "qu'est-ce que tu cherches là",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01B02",
+      "known": "what are you looking for today",
+      "target": "qu'est-ce que tu cherches aujourd'hui",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01B03",
+      "known": "what are you looking for this morning",
+      "target": "qu'est-ce que tu cherches à matin",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01U01",
+      "known": "what are you looking for?",
+      "target": "qu'est-ce que tu cherches?",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01U02",
+      "known": "what are you looking for at the moment?",
+      "target": "qu'est-ce que tu cherches asteure?",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01U03",
+      "known": "what are you looking for this evening?",
+      "target": "qu'est-ce que tu cherches à soir?",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01U04",
+      "known": "but what are you looking for?",
+      "target": "mais qu'est-ce que tu cherches?",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0068L01U05",
+      "known": "so what are you looking for?",
+      "target": "faque qu'est-ce que tu cherches?",
+      "seed": 68
+     },
+     {
+      "id": "fra_ca_for_eng:S0162L01B01",
+      "known": "what do you think about that",
+      "target": "qu'est-ce que t'en penses",
+      "seed": 162
+     },
+     {
+      "id": "fra_ca_for_eng:S0162L01B02",
+      "known": "what do you think about that yesterday",
+      "target": "qu'est-ce que t'en penses hier",
+      "seed": 162
+     },
+     {
+      "id": "fra_ca_for_eng:S0162L01B03",
+      "known": "what do you think about that today",
+      "target": "qu'est-ce que t'en penses aujourd'hui",
+      "seed": 162
+     },
+     {
+      "id": "fra_ca_for_eng:S0162L01B04",
+      "known": "what do you think about that now",
+      "target": "qu'est-ce que t'en penses là",
+      "seed": 162
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0505L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "The prompt was written 'so that...not' with dots. Every row already says 'so that I don't …'; the LEGO takes those words. The French is unchanged.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 505,
+    "known": "so that I don't get left behind",
+    "target": "Pour pas me faire laisser en arrière"
+   },
+   "before": {
+    "known": "so that...not",
+    "target": "pour pas",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "so that I don't",
+    "target": "pour pas",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "fra_ca_for_eng:S0505L01B01",
+     "role": "build",
+     "before": [
+      "so that I don't sleep",
+      "pour pas dormir"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01B02",
+     "role": "build",
+     "before": [
+      "so that I don't leave",
+      "pour pas partir"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01B03",
+     "role": "build",
+     "before": [
+      "so that I don't wait",
+      "pour pas attendre"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01U01",
+     "role": "use",
+     "before": [
+      "so that I don't lose right now",
+      "pour pas perdre tout de suite"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01U02",
+     "role": "use",
+     "before": [
+      "so that I don't sleep here today",
+      "pour pas dormir ici aujourd'hui"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01U03",
+     "role": "use",
+     "before": [
+      "so that I don't leave today",
+      "pour pas partir aujourd'hui"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01U04",
+     "role": "use",
+     "before": [
+      "so that I don't make trouble",
+      "pour pas faire du trouble"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0505L01U05",
+     "role": "use",
+     "before": [
+      "so that I don't close the door",
+      "pour pas fermer la porte"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0490L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "The prompt was written 'I will never...again' with dots. Gap-free: 'I will never again'. Rows ('I will never help again') keep their natural English, with the verb inside (K49). The French is unchanged.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 490,
+    "known": "then I will never trust anyone ever again",
+    "target": "Ben là m'as pus jamais faire confiance à personne"
+   },
+   "before": {
+    "known": "I will never...again",
+    "target": "m'as pus jamais",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "I will never again",
+    "target": "m'as pus jamais",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "fra_ca_for_eng:S0490L02C01",
+     "role": "component",
+     "before": [
+      "I will",
+      "m'as"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02C02",
+     "role": "component",
+     "before": [
+      "no more",
+      "pus"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02C03",
+     "role": "component",
+     "before": [
+      "ever",
+      "jamais"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02B01",
+     "role": "build",
+     "before": [
+      "I will never...again",
+      "m'as pus jamais"
+     ],
+     "action": [
+      "I will never again",
+      "m'as pus jamais"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02B02",
+     "role": "build",
+     "before": [
+      "I will never go home again",
+      "m'as pus jamais rentrer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02B03",
+     "role": "build",
+     "before": [
+      "then I will never...again",
+      "ben là m'as pus jamais"
+     ],
+     "action": [
+      "then I will never again",
+      "ben là m'as pus jamais"
+     ]
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02U01",
+     "role": "use",
+     "before": [
+      "I will never help again",
+      "m'as pus jamais aider"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02U02",
+     "role": "use",
+     "before": [
+      "I will never book a table again",
+      "m'as pus jamais réserver une table"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02U03",
+     "role": "use",
+     "before": [
+      "I will never lead the way again",
+      "m'as pus jamais montrer le chemin"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02U04",
+     "role": "use",
+     "before": [
+      "I will never pose a question again",
+      "m'as pus jamais poser une question"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_ca_for_eng:S0490L02U05",
+     "role": "use",
+     "before": [
+      "I will never go there again",
+      "m'as pus jamais aller là-bas"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 2,
+    "sample": [
+     {
+      "id": "fra_ca_for_eng:S0490L03B02",
+      "known": "I will never trust anyone again",
+      "target": "m'as pus jamais faire confiance à personne",
+      "seed": 490
+     },
+     {
+      "id": "fra_ca_for_eng:S0490L03U01",
+      "known": "then I will never trust anyone ever again",
+      "target": "ben là m'as pus jamais faire confiance à personne",
+      "seed": 490
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0079L02",
+   "set": {
+    "known_text": "when did you",
+    "target_text": "quand est-ce que t'as",
+    "components": [
+     {
+      "known": "when",
+      "target": "quand est-ce que"
+     },
+     {
+      "known": "did you",
+      "target": "t'as"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "when...?",
+    "target_text": "quand est-ce que"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0079L02B01",
+   "set": {
+    "known_text": "when did you",
+    "target_text": "quand est-ce que t'as"
+   },
+   "expect": {
+    "known_text": "when...?",
+    "target_text": "quand est-ce que"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0079L02B03",
+   "set": {
+    "known_text": "when did you start?",
+    "target_text": "quand est-ce que t'as commencé?"
+   },
+   "expect": {
+    "known_text": "when did he start?",
+    "target_text": "quand est-ce que y'a commencé?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0079L02U03",
+   "set": {
+    "known_text": "when did you say that to me?",
+    "target_text": "quand est-ce que t'as dit ça à moi?"
+   },
+   "expect": {
+    "known_text": "when do you want to practise?",
+    "target_text": "quand est-ce que tu veux pratiquer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0079L02U04",
+   "set": {
+    "known_text": "when did you start to speak québécois?",
+    "target_text": "quand est-ce que t'as commencé à parler québécois?"
+   },
+   "expect": {
+    "known_text": "when do you want to speak québécois with me?",
+    "target_text": "quand est-ce que tu veux parler québécois avec moi?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0631L01",
+   "set": {
+    "known_text": "what would you like?",
+    "target_text": "qu'est-ce que tu voudrais",
+    "type": "M",
+    "components": [
+     {
+      "known": "what",
+      "target": "qu'est-ce que"
+     },
+     {
+      "known": "you would like",
+      "target": "tu voudrais"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "what...?",
+    "target_text": "qu'est-ce que"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01B01",
+   "set": {
+    "known_text": "what would you like?",
+    "target_text": "qu'est-ce que tu voudrais?"
+   },
+   "expect": {
+    "known_text": "what do you want",
+    "target_text": "qu'est-ce que tu veux"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01B02",
+   "set": {
+    "known_text": "what would you like today?",
+    "target_text": "qu'est-ce que tu voudrais aujourd'hui?"
+   },
+   "expect": {
+    "known_text": "what do you want today",
+    "target_text": "qu'est-ce que tu veux aujourd'hui"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01B03",
+   "set": {
+    "known_text": "what would you like to pay",
+    "target_text": "qu'est-ce que tu voudrais payer"
+   },
+   "expect": {
+    "known_text": "what do you want to pay",
+    "target_text": "qu'est-ce que tu veux payer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01U01",
+   "set": {
+    "known_text": "what would you like right now?",
+    "target_text": "qu'est-ce que tu voudrais tout de suite?"
+   },
+   "expect": {
+    "known_text": "what do you want right now?",
+    "target_text": "qu'est-ce que tu veux tout de suite?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01U02",
+   "set": {
+    "known_text": "what would you like to drink?",
+    "target_text": "qu'est-ce que tu voudrais boire?"
+   },
+   "expect": {
+    "known_text": "what do you want to drink?",
+    "target_text": "qu'est-ce que tu veux boire?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01U03",
+   "set": {
+    "known_text": "what would you like to search for?",
+    "target_text": "qu'est-ce que tu voudrais chercher?"
+   },
+   "expect": {
+    "known_text": "what do you want to search for?",
+    "target_text": "qu'est-ce que tu veux chercher?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01U04",
+   "set": {
+    "known_text": "what would you like to close?",
+    "target_text": "qu'est-ce que tu voudrais fermer?"
+   },
+   "expect": {
+    "known_text": "what do you want to close?",
+    "target_text": "qu'est-ce que tu veux fermer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0631L01U05",
+   "set": {
+    "known_text": "what would you like here?",
+    "target_text": "qu'est-ce que tu voudrais ici?"
+   },
+   "expect": {
+    "known_text": "what do you want here?",
+    "target_text": "qu'est-ce que tu veux ici?"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_ca_for_eng:S0631L01B04",
+    "course_code": "fra_ca_for_eng",
+    "seed_number": 631,
+    "lego_index": 1,
+    "known_text": "what would you like here?",
+    "target_text": "qu'est-ce que tu voudrais ici?",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0505L01",
+   "set": {
+    "known_text": "so that I don't"
+   },
+   "expect": {
+    "known_text": "so that...not",
+    "target_text": "pour pas"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0490L02",
+   "set": {
+    "known_text": "I will never again"
+   },
+   "expect": {
+    "known_text": "I will never...again",
+    "target_text": "m'as pus jamais"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0490L02B01",
+   "set": {
+    "known_text": "I will never again"
+   },
+   "expect": {
+    "known_text": "I will never...again",
+    "target_text": "m'as pus jamais"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0490L02B03",
+   "set": {
+    "known_text": "then I will never again"
+   },
+   "expect": {
+    "known_text": "then I will never...again",
+    "target_text": "ben là m'as pus jamais"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:59:43Z",
+  "baseline_failing_seeds": 448,
+  "per_seed": {
+   "79": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "490": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "505": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "631": {
+    "seed_issues_planned": [
+     "L1: 1 duplicate phrase(s) within this LEGO: \"qu'est-ce que tu voudrais ici?\""
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "631": [
+      "L1: 1 duplicate phrase(s) within this LEGO: \"qu'est-ce que tu voudrais ici?\""
+     ]
+    },
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": [
+   631
+  ]
+ }
+}

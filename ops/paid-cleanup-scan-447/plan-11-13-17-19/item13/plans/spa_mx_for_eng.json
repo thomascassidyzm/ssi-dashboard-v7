@@ -1,0 +1,452 @@
+{
+ "course": "spa_mx_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:58:50Z",
+ "decisions": 2,
+ "verdicts": {
+  "delete": 1,
+  "grow": 1
+ },
+ "touched_seeds": [
+  133,
+  194
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0133L02",
+   "verdict": "delete",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'to know' is the prompt for saber (S0045L01) and for conocer (here). The larger LEGO that L34 asks for is already in this seed: S0133L03 'you get to know | llegas a conocer'. So the bare one is retired with its 9 rows (three repeat S0133L03's). spa_for_eng avoids the clash the same way (its S0133L01 is 'you get to know someone'). STRUCTURAL: a LEGO delete, needs Kai's go. This also settles the scan row for S0045L01.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 133,
+    "known": "you get to know someone very well when you work together",
+    "target": "llegas a conocer a alguien muy bien cuando trabajas juntos"
+   },
+   "before": {
+    "known": "to know",
+    "target": "conocer",
+    "type": "M",
+    "is_new": true
+   },
+   "deleted_rows": [
+    "spa_mx_for_eng:S0133L02B01",
+    "spa_mx_for_eng:S0133L02B02",
+    "spa_mx_for_eng:S0133L02B03",
+    "spa_mx_for_eng:S0133L02U01",
+    "spa_mx_for_eng:S0133L02U02",
+    "spa_mx_for_eng:S0133L02U04",
+    "spa_mx_for_eng:S0133L02U05",
+    "spa_mx_for_eng:S0133L02U06",
+    "spa_mx_for_eng:S0133L02U07"
+   ]
+  },
+  {
+   "id": "S0194L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'you are' is the prompt for eres (S0128L01) and for estás (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'what are you | qué estás' (3 syllables), exactly as spa_for_eng cuts the same seed (S0194L01), with that course's rows as the model. This also settles the scan row for S0128L01.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 194,
+    "known": "what are you looking for?",
+    "target": "¿Qué estás buscando?"
+   },
+   "before": {
+    "known": "you are",
+    "target": "estás",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "what are you",
+    "target": "qué estás",
+    "type": "M",
+    "components": [
+     [
+      "what",
+      "qué"
+     ],
+     [
+      "are you",
+      "estás"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "spa_mx_for_eng:S0194L01B01",
+     "role": "build",
+     "before": [
+      "you are here",
+      "estás aquí"
+     ],
+     "action": [
+      "what are you",
+      "qué estás"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01B02",
+     "role": "build",
+     "before": [
+      "you are busy",
+      "estás ocupado"
+     ],
+     "action": [
+      "what are you doing?",
+      "¿qué estás haciendo?"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01B03",
+     "role": "build",
+     "before": [
+      "you are looking for",
+      "estás buscando"
+     ],
+     "action": [
+      "what are you looking for?",
+      "¿qué estás buscando?"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01U01",
+     "role": "use",
+     "before": [
+      "I know you are here",
+      "sé que estás aquí"
+     ],
+     "action": [
+      "what are you learning?",
+      "¿qué estás aprendiendo?"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01U02",
+     "role": "use",
+     "before": [
+      "you are not busy on Sunday",
+      "no estás ocupado el domingo"
+     ],
+     "action": [
+      "what are you thinking?",
+      "¿qué estás pensando?"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01U03",
+     "role": "use",
+     "before": [
+      "you are looking for something different",
+      "estás buscando algo diferente"
+     ],
+     "action": [
+      "what are you saying?",
+      "¿qué estás diciendo?"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01U04",
+     "role": "use",
+     "before": [
+      "you are too busy tomorrow",
+      "estás demasiado ocupado mañana"
+     ],
+     "action": [
+      "what are you trying to do?",
+      "¿qué estás intentando hacer?"
+     ]
+    },
+    {
+     "id": "spa_mx_for_eng:S0194L01U05",
+     "role": "use",
+     "before": [
+      "what are you looking for in the office?",
+      "¿qué estás buscando en la oficina?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "spa_mx_for_eng:S0194L01B04",
+     "course_code": "spa_mx_for_eng",
+     "seed_number": 194,
+     "lego_index": 1,
+     "known_text": "what are you doing here?",
+     "target_text": "¿qué estás haciendo aquí?",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "start",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 74,
+    "sample": [
+     {
+      "id": "spa_mx_for_eng:S0021L02B01",
+      "known": "are you learning?",
+      "target": "¿estás aprendiendo?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02B02",
+      "known": "why are you learning Spanish?",
+      "target": "¿por qué estás aprendiendo español?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02B03",
+      "known": "why are you learning Spanish today?",
+      "target": "¿por qué estás aprendiendo español hoy?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02B04",
+      "known": "are you learning with someone else today?",
+      "target": "¿estás aprendiendo con otra persona hoy?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02U01",
+      "known": "are you learning a little Spanish now?",
+      "target": "¿estás aprendiendo un poco de español ahora?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02U02",
+      "known": "are you learning how to say something in Spanish?",
+      "target": "¿estás aprendiendo cómo decir algo en español?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02U03",
+      "known": "Are you learning how to explain something in Spanish?",
+      "target": "¿estás aprendiendo cómo explicar algo en español?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02U04",
+      "known": "are you learning to say something in Spanish now?",
+      "target": "¿estás aprendiendo a decir algo en español ahora?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02U05",
+      "known": "are you learning to speak Spanish with someone else?",
+      "target": "¿estás aprendiendo a hablar español con otra persona?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L02U06",
+      "known": "are you learning how to speak as frequently as possible?",
+      "target": "¿estás aprendiendo cómo hablar lo más seguido posible?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L03U03",
+      "known": "why are you learning her name?",
+      "target": "¿por qué estás aprendiendo su nombre?",
+      "seed": 21
+     },
+     {
+      "id": "spa_mx_for_eng:S0021L03U05",
+      "known": "why are you learning her name today?",
+      "target": "¿por qué estás aprendiendo su nombre hoy?",
+      "seed": 21
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.delete",
+   "lego_id": "S0133L02",
+   "cascade_phrases": true,
+   "expect": {
+    "known_text": "to know",
+    "target_text": "conocer"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0194L01",
+   "set": {
+    "known_text": "what are you",
+    "target_text": "qué estás",
+    "type": "M",
+    "components": [
+     {
+      "known": "what",
+      "target": "qué"
+     },
+     {
+      "known": "are you",
+      "target": "estás"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "you are",
+    "target_text": "estás"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01B01",
+   "set": {
+    "known_text": "what are you",
+    "target_text": "qué estás"
+   },
+   "expect": {
+    "known_text": "you are here",
+    "target_text": "estás aquí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01B02",
+   "set": {
+    "known_text": "what are you doing?",
+    "target_text": "¿qué estás haciendo?"
+   },
+   "expect": {
+    "known_text": "you are busy",
+    "target_text": "estás ocupado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01B03",
+   "set": {
+    "known_text": "what are you looking for?",
+    "target_text": "¿qué estás buscando?"
+   },
+   "expect": {
+    "known_text": "you are looking for",
+    "target_text": "estás buscando"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01U01",
+   "set": {
+    "known_text": "what are you learning?",
+    "target_text": "¿qué estás aprendiendo?"
+   },
+   "expect": {
+    "known_text": "I know you are here",
+    "target_text": "sé que estás aquí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01U02",
+   "set": {
+    "known_text": "what are you thinking?",
+    "target_text": "¿qué estás pensando?"
+   },
+   "expect": {
+    "known_text": "you are not busy on Sunday",
+    "target_text": "no estás ocupado el domingo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01U03",
+   "set": {
+    "known_text": "what are you saying?",
+    "target_text": "¿qué estás diciendo?"
+   },
+   "expect": {
+    "known_text": "you are looking for something different",
+    "target_text": "estás buscando algo diferente"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0194L01U04",
+   "set": {
+    "known_text": "what are you trying to do?",
+    "target_text": "¿qué estás intentando hacer?"
+   },
+   "expect": {
+    "known_text": "you are too busy tomorrow",
+    "target_text": "estás demasiado ocupado mañana"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_mx_for_eng:S0194L01B04",
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 194,
+    "lego_index": 1,
+    "known_text": "what are you doing here?",
+    "target_text": "¿qué estás haciendo aquí?",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:59:51Z",
+  "baseline_failing_seeds": 462,
+  "per_seed": {
+   "133": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "194": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

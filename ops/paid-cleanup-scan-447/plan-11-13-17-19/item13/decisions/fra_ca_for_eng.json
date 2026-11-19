@@ -1,0 +1,132 @@
+{
+ "course": "fra_ca_for_eng",
+ "legos": [
+  {
+   "id": "S0079L02",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "when did you",
+   "target": "quand est-ce que t'as",
+   "type": "M",
+   "components": [
+    [
+     "when",
+     "quand est-ce que"
+    ],
+    [
+     "did you",
+     "t'as"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "when did you",
+     "quand est-ce que t'as"
+    ],
+    "B03": [
+     "when did you start?",
+     "quand est-ce que t'as commencé?"
+    ],
+    "U03": [
+     "when did you say that to me?",
+     "quand est-ce que t'as dit ça à moi?"
+    ],
+    "U04": [
+     "when did you start to speak québécois?",
+     "quand est-ce que t'as commencé à parler québécois?"
+    ]
+   },
+   "why": "The prompt was written 'when...?' with dots — a label, which a LEGO may never carry. Without them, 'when' would be a second prompt for a second French word. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'when did you | quand est-ce que t'as' (5 syllables). Four rows already say it; three with other subjects are rewritten."
+  },
+  {
+   "id": "S0631L01",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "what would you like?",
+   "target": "qu'est-ce que tu voudrais",
+   "type": "M",
+   "components": [
+    [
+     "what",
+     "qu'est-ce que"
+    ],
+    [
+     "you would like",
+     "tu voudrais"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "what would you like?",
+     "qu'est-ce que tu voudrais?"
+    ],
+    "B02": [
+     "what would you like today?",
+     "qu'est-ce que tu voudrais aujourd'hui?"
+    ],
+    "B03": [
+     "what would you like to pay",
+     "qu'est-ce que tu voudrais payer"
+    ],
+    "U01": [
+     "what would you like right now?",
+     "qu'est-ce que tu voudrais tout de suite?"
+    ],
+    "U02": [
+     "what would you like to drink?",
+     "qu'est-ce que tu voudrais boire?"
+    ],
+    "U03": [
+     "what would you like to search for?",
+     "qu'est-ce que tu voudrais chercher?"
+    ],
+    "U04": [
+     "what would you like to close?",
+     "qu'est-ce que tu voudrais fermer?"
+    ],
+    "U05": [
+     "what would you like here?",
+     "qu'est-ce que tu voudrais ici?"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "what would you like here?",
+     "qu'est-ce que tu voudrais ici?"
+    ]
+   ],
+   "why": "The prompt was written 'what...?' with dots. Grown to its seed, 'what would you like? | qu'est-ce que tu voudrais' (5 syllables) (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ). The whole basket drilled 'qu'est-ce que tu veux' ('what do you want'), a form this seed does not say; each row is turned to 'tu voudrais / would you like'. 'you would like | tu voudrais' (S0631L02) overlaps by design."
+  },
+  {
+   "id": "S0505L01",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "so that I don't",
+   "ack": [
+    "known"
+   ],
+   "why": "The prompt was written 'so that...not' with dots. Every row already says 'so that I don't …'; the LEGO takes those words. The French is unchanged."
+  },
+  {
+   "id": "S0490L02",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "I will never again",
+   "ack": [
+    "known"
+   ],
+   "basket": {
+    "B01": [
+     "I will never again",
+     "m'as pus jamais"
+    ],
+    "B03": [
+     "then I will never again",
+     "ben là m'as pus jamais"
+    ]
+   },
+   "why": "The prompt was written 'I will never...again' with dots. Gap-free: 'I will never again'. Rows ('I will never help again') keep their natural English, with the verb inside (K49). The French is unchanged."
+  }
+ ]
+}

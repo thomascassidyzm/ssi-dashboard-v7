@@ -1,0 +1,76 @@
+{
+ "course": "deu_ch_for_eng",
+ "legos": [
+  {
+   "id": "S0010L03",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. 'if' is the prompt for öb (whether: 'I'm not sure if…', seed 10) and for wenn (conditional, seed 501). Neither can grow honestly: 'öb ich … cha' and 'wenn ich … nu chönt' are both split in their seeds. K23: 'keep the clash, explain the sense in the presentation, and never let the marked sense be prompted without its context'. Recommended: öb's intro says 'if, as in whether'; its three bare build rows ('if I can | öb ich cha') gain 'I'm not sure'. Kai's call because it is a presentation wording."
+  },
+  {
+   "id": "S0149L02",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "so I hope",
+   "target": "drum hoff ich",
+   "type": "M",
+   "components": [
+    [
+     "so",
+     "drum"
+    ],
+    [
+     "I hope",
+     "hoff ich"
+    ]
+   ],
+   "basket": {
+    "U02": [
+     "so i hope that everything is okay",
+     "drum hoff ich, dass alles okay isch"
+    ],
+    "U03": [
+     "so i hope you're not nervous",
+     "drum hoff ich, dass du nöd nervös bisch"
+    ],
+    "U04": [
+     "so i hope she's patient",
+     "drum hoff ich, dass si geduldig isch"
+    ],
+    "U05": [
+     "so i hope she's finished soon",
+     "drum hoff ich, dass si bald fertig isch"
+    ],
+    "B01": [
+     "so I hope",
+     "drum hoff ich"
+    ],
+    "B02": [
+     "so I hope that",
+     "drum hoff ich, dass"
+    ],
+    "B03": [
+     "but so I hope",
+     "aber drum hoff ich"
+    ],
+    "B04": "del",
+    "B05": "del",
+    "U01": "keep"
+   },
+   "ack_rows": [
+    "U02",
+    "U03",
+    "U04",
+    "U05"
+   ],
+   "add": [
+    [
+     "b",
+     "and so I hope",
+     "und drum hoff ich"
+    ]
+   ],
+   "why": "'I hope' is the prompt for 'ich hoff' (S0668L01) and for bare 'hoff' (here). Seed 149 says 'drum hoff ich' — after 'drum' the verb comes first. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to that seed piece, 'so I hope | drum hoff ich' (3 syllables), which shows why the order differs. The basket drilled only 'ich hoff'; its rows are turned to 'drum hoff ich, dass …'."
+  }
+ ]
+}

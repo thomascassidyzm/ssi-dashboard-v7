@@ -15,6 +15,14 @@ L34 = "L34: 'one English prompt with two target answers: FIRST try to unify to o
 L26 = "L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. "
 DUP = "L27: 'a LEGO that grows into one that already exists is a duplicate and is introduced once' — so the later copy goes not-new, and (P25) its rows stop playing. "
 def notnew(seed, idx, k, t): return {'op': 'lego.insert', 'row': {'seed_number': seed, 'lego_index': idx, 'known_text': k, 'target_text': t, 'type': 'A', 'is_new': False}}
+import sys
+sys.path.insert(0, os.path.join(HERE, '..', '..', 'tools'))
+from snap import live as _live
+def rows(course, lid):
+    """[(suffix, known, target)] of a LEGO's build/use rows, from today's live read"""
+    s = _live(course)[str(int(lid[1:5]))]
+    l = next(x for x in s['legos'] if x['id'] == lid)
+    return [(p['id'][-3:], p['known'], p['target']) for p in l['phrases'] if p['type'] in ('build', 'use')]
 for f in sorted(glob.glob(os.path.join(HERE, 'parts', '*.py'))):
     exec(compile(open(f).read(), f, 'exec'))
 for course, legos in D.items():

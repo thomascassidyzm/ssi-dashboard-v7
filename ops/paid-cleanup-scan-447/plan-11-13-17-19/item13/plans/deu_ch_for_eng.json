@@ -1,0 +1,449 @@
+{
+ "course": "deu_ch_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:58:15Z",
+ "decisions": 2,
+ "verdicts": {
+  "kai": 1,
+  "grow": 1
+ },
+ "touched_seeds": [
+  149
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0010L03",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD. 'if' is the prompt for öb (whether: 'I'm not sure if…', seed 10) and for wenn (conditional, seed 501). Neither can grow honestly: 'öb ich … cha' and 'wenn ich … nu chönt' are both split in their seeds. K23: 'keep the clash, explain the sense in the presentation, and never let the marked sense be prompted without its context'. Recommended: öb's intro says 'if, as in whether'; its three bare build rows ('if I can | öb ich cha') gain 'I'm not sure'. Kai's call because it is a presentation wording.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 10,
+    "known": "I'm not sure if I can remember the whole sentence.",
+    "target": "Ich bi mir nöd sicher, öb ich mi an de ganz Satz cha erinnere."
+   },
+   "before": {
+    "known": "if",
+    "target": "öb",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0149L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'I hope' is the prompt for 'ich hoff' (S0668L01) and for bare 'hoff' (here). Seed 149 says 'drum hoff ich' — after 'drum' the verb comes first. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to that seed piece, 'so I hope | drum hoff ich' (3 syllables), which shows why the order differs. The basket drilled only 'ich hoff'; its rows are turned to 'drum hoff ich, dass …'.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 149,
+    "known": "This isn't very difficult, so I hope you'll finish soon.",
+    "target": "Das isch nöd sehr schwierig, drum hoff ich, dass du bald fertig bisch."
+   },
+   "before": {
+    "known": "i hope",
+    "target": "hoff",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "so I hope",
+    "target": "drum hoff ich",
+    "type": "M",
+    "components": [
+     [
+      "so",
+      "drum"
+     ],
+     [
+      "I hope",
+      "hoff ich"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "deu_ch_for_eng:S0149L02B01",
+     "role": "build",
+     "before": [
+      "I hope",
+      "ich hoff"
+     ],
+     "action": [
+      "so I hope",
+      "drum hoff ich"
+     ]
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02B02",
+     "role": "build",
+     "before": [
+      "I hope that",
+      "ich hoff, dass"
+     ],
+     "action": [
+      "so I hope that",
+      "drum hoff ich, dass"
+     ]
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02B03",
+     "role": "build",
+     "before": [
+      "I hope so",
+      "ich hoff so"
+     ],
+     "action": [
+      "but so I hope",
+      "aber drum hoff ich"
+     ]
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02B04",
+     "role": "build",
+     "before": [
+      "I hope, so",
+      "ich hoff, drum"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02B05",
+     "role": "build",
+     "before": [
+      "not, I hope",
+      "nöd, ich hoff"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02U01",
+     "role": "use",
+     "before": [
+      "this isn't very difficult, so I hope you'll finish soon",
+      "das isch nöd sehr schwierig, drum hoff ich, dass du bald fertig bisch"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02U02",
+     "role": "use",
+     "before": [
+      "I hope that everything is okay",
+      "ich hoff, dass alles okay isch"
+     ],
+     "action": [
+      "so i hope that everything is okay",
+      "drum hoff ich, dass alles okay isch"
+     ]
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02U03",
+     "role": "use",
+     "before": [
+      "I hope you're not nervous",
+      "ich hoff, dass du nöd nervös bisch"
+     ],
+     "action": [
+      "so i hope you're not nervous",
+      "drum hoff ich, dass du nöd nervös bisch"
+     ]
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02U04",
+     "role": "use",
+     "before": [
+      "I hope she's patient",
+      "ich hoff, dass si geduldig isch"
+     ],
+     "action": [
+      "so i hope she's patient",
+      "drum hoff ich, dass si geduldig isch"
+     ]
+    },
+    {
+     "id": "deu_ch_for_eng:S0149L02U05",
+     "role": "use",
+     "before": [
+      "I hope she's finished soon",
+      "ich hoff, dass si bald fertig isch"
+     ],
+     "action": [
+      "so i hope she's finished soon",
+      "drum hoff ich, dass si bald fertig isch"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "deu_ch_for_eng:S0149L02B06",
+     "course_code": "deu_ch_for_eng",
+     "seed_number": 149,
+     "lego_index": 2,
+     "known_text": "and so I hope",
+     "target_text": "und drum hoff ich",
+     "phrase_role": "build",
+     "position": 11,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 36,
+    "sample": [
+     {
+      "id": "deu_ch_for_eng:S0150L01U04",
+      "known": "I hope you can tell me what you're called",
+      "target": "ich hoff, dass du mir chasch säge, wie du heissisch",
+      "seed": 150
+     },
+     {
+      "id": "deu_ch_for_eng:S0154L01U02",
+      "known": "I hope you can work on Saturday",
+      "target": "ich hoff, dass du am Samschtig chasch schaffe",
+      "seed": 154
+     },
+     {
+      "id": "deu_ch_for_eng:S0155L02U04",
+      "known": "I hope you can wait a few minutes",
+      "target": "ich hoff, dass du es paar Minute chasch warte",
+      "seed": 155
+     },
+     {
+      "id": "deu_ch_for_eng:S0157L01U04",
+      "known": "I hope you can be there",
+      "target": "ich hoff, dass du chasch det sii",
+      "seed": 157
+     },
+     {
+      "id": "deu_ch_for_eng:S0161L01B05",
+      "known": "the book, I hope",
+      "target": "das Buech, ich hoff",
+      "seed": 161
+     },
+     {
+      "id": "deu_ch_for_eng:S0161L01U02",
+      "known": "I hope you can give me the book",
+      "target": "ich hoff, dass du mir das Buech chasch gää",
+      "seed": 161
+     },
+     {
+      "id": "deu_ch_for_eng:S0204L02B03",
+      "known": "I hope that she helps you",
+      "target": "ich hoff, dass si dir hilft",
+      "seed": 204
+     },
+     {
+      "id": "deu_ch_for_eng:S0204L02U02",
+      "known": "I hope that she helps you today",
+      "target": "ich hoff, dass si dir hüt hilft",
+      "seed": 204
+     },
+     {
+      "id": "deu_ch_for_eng:S0204L03U03",
+      "known": "I hope you can help me with the arrangements",
+      "target": "ich hoff, du chasch mir mit de Vorbereitige hälfe",
+      "seed": 204
+     },
+     {
+      "id": "deu_ch_for_eng:S0204L04U02",
+      "known": "I hope she helps you to deal with the arrangements",
+      "target": "ich hoff, dass si dir hilft, mit de Vorbereitige klarzcho",
+      "seed": 204
+     },
+     {
+      "id": "deu_ch_for_eng:S0205L01U05",
+      "known": "I hope you can explain the word",
+      "target": "ich hoff, du chasch s Wort erkläre",
+      "seed": 205
+     },
+     {
+      "id": "deu_ch_for_eng:S0205L03U05",
+      "known": "I hope that's the word I was trying to say",
+      "target": "ich hoff, das isch s Wort, wo ich ha wölle säge",
+      "seed": 205
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0149L02",
+   "set": {
+    "known_text": "so I hope",
+    "target_text": "drum hoff ich",
+    "type": "M",
+    "components": [
+     {
+      "known": "so",
+      "target": "drum"
+     },
+     {
+      "known": "I hope",
+      "target": "hoff ich"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "i hope",
+    "target_text": "hoff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02B01",
+   "set": {
+    "known_text": "so I hope",
+    "target_text": "drum hoff ich"
+   },
+   "expect": {
+    "known_text": "I hope",
+    "target_text": "ich hoff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02B02",
+   "set": {
+    "known_text": "so I hope that",
+    "target_text": "drum hoff ich, dass"
+   },
+   "expect": {
+    "known_text": "I hope that",
+    "target_text": "ich hoff, dass"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02B03",
+   "set": {
+    "known_text": "but so I hope",
+    "target_text": "aber drum hoff ich"
+   },
+   "expect": {
+    "known_text": "I hope so",
+    "target_text": "ich hoff so"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_ch_for_eng:S0149L02B04",
+   "expect": {
+    "known_text": "I hope, so",
+    "target_text": "ich hoff, drum"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_ch_for_eng:S0149L02B05",
+   "expect": {
+    "known_text": "not, I hope",
+    "target_text": "nöd, ich hoff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02U02",
+   "set": {
+    "known_text": "so i hope that everything is okay",
+    "target_text": "drum hoff ich, dass alles okay isch"
+   },
+   "expect": {
+    "known_text": "I hope that everything is okay",
+    "target_text": "ich hoff, dass alles okay isch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02U03",
+   "set": {
+    "known_text": "so i hope you're not nervous",
+    "target_text": "drum hoff ich, dass du nöd nervös bisch"
+   },
+   "expect": {
+    "known_text": "I hope you're not nervous",
+    "target_text": "ich hoff, dass du nöd nervös bisch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02U04",
+   "set": {
+    "known_text": "so i hope she's patient",
+    "target_text": "drum hoff ich, dass si geduldig isch"
+   },
+   "expect": {
+    "known_text": "I hope she's patient",
+    "target_text": "ich hoff, dass si geduldig isch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0149L02U05",
+   "set": {
+    "known_text": "so i hope she's finished soon",
+    "target_text": "drum hoff ich, dass si bald fertig isch"
+   },
+   "expect": {
+    "known_text": "I hope she's finished soon",
+    "target_text": "ich hoff, dass si bald fertig isch"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_ch_for_eng:S0149L02B06",
+    "course_code": "deu_ch_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "known_text": "and so I hope",
+    "target_text": "und drum hoff ich",
+    "phrase_role": "build",
+    "position": 11,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:59:29Z",
+  "baseline_failing_seeds": 546,
+  "per_seed": {
+   "149": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}
