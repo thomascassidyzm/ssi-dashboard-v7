@@ -1,0 +1,87 @@
+{
+ "course": "ara_for_eng",
+ "legos": [
+  {
+   "id": "S0110L01",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "we",
+   "why": "'we are' is the prompt for نَحْنُ (here) and for نَكونُ (S0407L02). نَحْنُ is the pronoun 'we' — Arabic has no 'are' in 'we're friends' — so its honest prompt is 'we | نَحْنُ'. Rows all contain 'we' and stay. Not fixed here: S0407L02's own text (نَكونُ where its seed has نَكونَ, and 'we are' where its seed says 'to set') belongs to items 6 and 10.",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0403L01",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "remain quiet",
+   "target": "نَبْقى هادِئينَ",
+   "type": "M",
+   "components": [
+    [
+     "we remain",
+     "نَبْقى"
+    ],
+    [
+     "quiet",
+     "هادِئينَ"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "remain quiet",
+     "نَبْقى هادِئينَ"
+    ],
+    "B02": [
+     "we remain quiet here",
+     "نَبْقى هادِئينَ هُنا"
+    ],
+    "B03": [
+     "we want to remain quiet",
+     "نُريدُ أَنْ نَبْقى هادِئينَ"
+    ],
+    "B04": [
+     "we want to remain quiet here",
+     "نُريدُ أَنْ نَبْقى هادِئينَ هُنا"
+    ],
+    "U01": [
+     "we remain quiet at the entrance",
+     "نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+    ],
+    "U02": [
+     "we should remain quiet",
+     "يَجِبُ أَنْ نَبْقى هادِئينَ"
+    ],
+    "U03": [
+     "we should remain quiet here",
+     "يَجِبُ أَنْ نَبْقى هادِئينَ هُنا"
+    ],
+    "U04": [
+     "we should remain quiet at the entrance",
+     "يَجِبُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+    ],
+    "U05": [
+     "we want to remain quiet at the entrance",
+     "نُريدُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+    ]
+   },
+   "extra": [
+    {
+     "op": "lego.reorder",
+     "seed_number": 403,
+     "order": [
+      "S0403L02",
+      "S0403L01",
+      "S0403L03"
+     ],
+     "phrases_default": "keep"
+    }
+   ],
+   "why": "'quiet' is the prompt for هادئ (S0034L02) and for هادِئينَ (plural, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The plural grows to the verb that makes it plural, in its own seed: 'remain quiet | نَبْقى هادِئينَ' (6 syllables). 'we remain | نَبْقى' (S0403L02) is swapped in front so the small piece is taught first (L13) — STRUCTURAL reorder, needs Kai's go and may be refused while learners are on these LEGOs; the fix stands without it. All 9 rows are rebuilt: they said 'هُمْ هادِئينَ', which is also wrong Arabic (it needs هادِئونَ there).",
+   "closes": [
+    "6"
+   ]
+  }
+ ]
+}

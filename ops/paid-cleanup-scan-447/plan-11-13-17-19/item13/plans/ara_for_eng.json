@@ -1,0 +1,614 @@
+{
+ "course": "ara_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:51:53Z",
+ "decisions": 2,
+ "verdicts": {
+  "regloss": 1,
+  "grow": 1
+ },
+ "touched_seeds": [
+  110,
+  403
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0110L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'we are' is the prompt for نَحْنُ (here) and for نَكونُ (S0407L02). نَحْنُ is the pronoun 'we' — Arabic has no 'are' in 'we're friends' — so its honest prompt is 'we | نَحْنُ'. Rows all contain 'we' and stay. Not fixed here: S0407L02's own text (نَكونُ where its seed has نَكونَ, and 'we are' where its seed says 'to set') belongs to items 6 and 10.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 110,
+    "known": "we're friends, and after we finish I'd like to relax",
+    "target": "نَحْنُ أَصْدِقاء، وَبَعْدَ أَنْ نَنْتَهِيَ أَوَدُّ أَنْ أَسْتَريح"
+   },
+   "before": {
+    "known": "we are",
+    "target": "نَحْنُ",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "we",
+    "target": "نَحْنُ",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0110L01B01",
+     "role": "build",
+     "before": [
+      "we are here",
+      "نَحْنُ هُنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01B02",
+     "role": "build",
+     "before": [
+      "we are trying",
+      "نَحْنُ نُحاوِلُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01B03",
+     "role": "build",
+     "before": [
+      "we need",
+      "نَحْنُ نَحْتاجُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01U01",
+     "role": "use",
+     "before": [
+      "we are trying to learn Arabic",
+      "نَحْنُ نُحاوِلُ أَنْ نَتَعَلَّمَ العَرَبِيَّةَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01U02",
+     "role": "use",
+     "before": [
+      "what do we want to say?",
+      "ماذا نُريدُ أَنْ نَقولَ نَحْنُ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01U03",
+     "role": "use",
+     "before": [
+      "we need to change what we're doing",
+      "نَحْنُ نَحْتاجُ أَنْ نُغَيِّرَ ما نَفْعَلُهُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01U04",
+     "role": "use",
+     "before": [
+      "we are working hard to learn new words",
+      "نَحْنُ نَعْمَلُ بِجِدٍّ لِنَتَعَلَّمَ كَلِماتٍ جَديدَةً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0110L01U05",
+     "role": "use",
+     "before": [
+      "we hope to see what he knows",
+      "نَحْنُ نَأْمَلُ أَنْ نَرى ما يَعْرِفُ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 12,
+    "sample": [
+     {
+      "id": "ara_for_eng:S0110L02B01",
+      "known": "we are friends",
+      "target": "نَحْنُ أَصْدِقاءُ",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L02B03",
+      "known": "are we friends?",
+      "target": "هَلْ نَحْنُ أَصْدِقاءُ؟",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L02U01",
+      "known": "we are friends and we need to learn new words",
+      "target": "نَحْنُ أَصْدِقاءُ نَحْتاجُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L02U03",
+      "known": "we are friends, we hope to work hard",
+      "target": "نَحْنُ أَصْدِقاءُ نَأْمَلُ أَنْ نَعْمَلَ بِجِدٍّ",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L02U04",
+      "known": "we are friends, that is why we are here",
+      "target": "نَحْنُ أَصْدِقاءُ لِذٰلِكَ نَحْنُ هُنا",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L02U05",
+      "known": "we are friends and we need to say something",
+      "target": "نَحْنُ أَصْدِقاءُ نَحْتاجُ أَنْ نَقولَ شَيْئاً",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L04U01",
+      "known": "we are friends and after this we need to say something",
+      "target": "نَحْنُ أَصْدِقاءُ وَبَعْدَ هٰذا نَحْتاجُ أَنْ نَقولَ شَيْئاً",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L04U02",
+      "known": "we are working hard and after this we hope to learn a new word",
+      "target": "نَحْنُ نَعْمَلُ بِجِدٍّ وَبَعْدَ هٰذا نَأْمَلُ أَنْ نَتَعَلَّمَ كَلِمَةً جَديدَةً",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0110L04U04",
+      "known": "we are friends and after we finish we need to change",
+      "target": "نَحْنُ أَصْدِقاءُ وَبَعْدَ أَنْ نَنْتَهِيَ نَحْتاجُ أَنْ نُغَيِّرَ",
+      "seed": 110
+     },
+     {
+      "id": "ara_for_eng:S0111L01U05",
+      "known": "we are friends and we want to learn something new",
+      "target": "نَحْنُ أَصْدِقاءُ نُريدُ أَنْ نَتَعَلَّمَ شَيْئاً جَديداً",
+      "seed": 111
+     },
+     {
+      "id": "ara_for_eng:S0112L02U05",
+      "known": "we are friends and that was very interesting",
+      "target": "نَحْنُ أَصْدِقاءُ كانَ ذٰلِكَ مُمْتِعاً جِدّاً",
+      "seed": 112
+     },
+     {
+      "id": "ara_for_eng:S0112L04U04",
+      "known": "we are friends, and I wasn't expecting that",
+      "target": "نَحْنُ أَصْدِقاءُ، وَلَمْ أَكُنْ أَتَوَقَّعُ ذٰلِكَ",
+      "seed": 112
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0403L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'quiet' is the prompt for هادئ (S0034L02) and for هادِئينَ (plural, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The plural grows to the verb that makes it plural, in its own seed: 'remain quiet | نَبْقى هادِئينَ' (6 syllables). 'we remain | نَبْقى' (S0403L02) is swapped in front so the small piece is taught first (L13) — STRUCTURAL reorder, needs Kai's go and may be refused while learners are on these LEGOs; the fix stands without it. All 9 rows are rebuilt: they said 'هُمْ هادِئينَ', which is also wrong Arabic (it needs هادِئونَ there).",
+   "closes": [
+    "13",
+    "6"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 403,
+    "known": "we should remain quiet for as long as possible",
+    "target": "يَجِبُ أَنْ نَبْقى هادِئينَ لِأَطْوَلِ فَتْرَةٍ مُمْكِنَةٍ"
+   },
+   "before": {
+    "known": "quiet",
+    "target": "هادِئينَ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "remain quiet",
+    "target": "نَبْقى هادِئينَ",
+    "type": "M",
+    "components": [
+     [
+      "we remain",
+      "نَبْقى"
+     ],
+     [
+      "quiet",
+      "هادِئينَ"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0403L01B01",
+     "role": "build",
+     "before": [
+      "quiet",
+      "هادِئينَ"
+     ],
+     "action": [
+      "remain quiet",
+      "نَبْقى هادِئينَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01B02",
+     "role": "build",
+     "before": [
+      "they are quiet",
+      "هُمْ هادِئينَ"
+     ],
+     "action": [
+      "we remain quiet here",
+      "نَبْقى هادِئينَ هُنا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01B03",
+     "role": "build",
+     "before": [
+      "the people are quiet",
+      "الناسُ هادِئينَ"
+     ],
+     "action": [
+      "we want to remain quiet",
+      "نُريدُ أَنْ نَبْقى هادِئينَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01B04",
+     "role": "build",
+     "before": [
+      "we want the group to be quiet",
+      "نُريدُ أَنْ يَكونَ الجَميعُ هادِئينَ"
+     ],
+     "action": [
+      "we want to remain quiet here",
+      "نُريدُ أَنْ نَبْقى هادِئينَ هُنا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01U01",
+     "role": "use",
+     "before": [
+      "they are quiet at the entrance",
+      "هُمْ هادِئينَ عِنْدَ المَدْخَلِ"
+     ],
+     "action": [
+      "we remain quiet at the entrance",
+      "نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01U02",
+     "role": "use",
+     "before": [
+      "she told me they are quiet",
+      "قالَتْ لي أَنَّهُمْ هادِئينَ"
+     ],
+     "action": [
+      "we should remain quiet",
+      "يَجِبُ أَنْ نَبْقى هادِئينَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01U03",
+     "role": "use",
+     "before": [
+      "the people in the bus are quiet",
+      "الناسُ في الحافِلَةِ هادِئينَ"
+     ],
+     "action": [
+      "we should remain quiet here",
+      "يَجِبُ أَنْ نَبْقى هادِئينَ هُنا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01U04",
+     "role": "use",
+     "before": [
+      "all the people there are quiet",
+      "الجَميعُ هُناكَ هادِئينَ"
+     ],
+     "action": [
+      "we should remain quiet at the entrance",
+      "يَجِبُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0403L01U05",
+     "role": "use",
+     "before": [
+      "the group at the entrance is quiet",
+      "المَجْموعَةُ عِنْدَ المَدْخَلِ هادِئينَ"
+     ],
+     "action": [
+      "we want to remain quiet at the entrance",
+      "نُريدُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.reorder",
+     "seed_number": 403,
+     "order": [
+      "S0403L02",
+      "S0403L01",
+      "S0403L03"
+     ],
+     "phrases_default": "keep"
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 7,
+    "sample": [
+     {
+      "id": "ara_for_eng:S0403L02B04",
+      "known": "we want to stay quiet",
+      "target": "نُريدُ أَنْ نَبْقى هادِئينَ",
+      "seed": 403
+     },
+     {
+      "id": "ara_for_eng:S0403L02U05",
+      "known": "I think we should stay quiet",
+      "target": "أَظُنُّ أَنَّنا يَجِبُ أَنْ نَبْقى هادِئينَ",
+      "seed": 403
+     },
+     {
+      "id": "ara_for_eng:S0403L03B03",
+      "known": "we want to stay quiet for as long as possible",
+      "target": "نُريدُ أَنْ نَبْقى هادِئينَ لِأَطْوَلِ فَتْرَةٍ مُمْكِنَةٍ",
+      "seed": 403
+     },
+     {
+      "id": "ara_for_eng:S0403L03U01",
+      "known": "we should remain quiet for as long as possible",
+      "target": "يَجِبُ أَنْ نَبْقى هادِئينَ لِأَطْوَلِ فَتْرَةٍ مُمْكِنَةٍ",
+      "seed": 403
+     },
+     {
+      "id": "ara_for_eng:S0403L03U03",
+      "known": "she told me we should be quiet for as long as possible",
+      "target": "قالَتْ لي أَنَّنا يَجِبُ أَنْ نَبْقى هادِئينَ لِأَطْوَلِ فَتْرَةٍ مُمْكِنَةٍ",
+      "seed": 403
+     },
+     {
+      "id": "ara_for_eng:S0403L03U05",
+      "known": "do you think we should stay quiet for as long as possible?",
+      "target": "هَلْ تَظُنُّ أَنَّنا يَجِبُ أَنْ نَبْقى هادِئينَ لِأَطْوَلِ فَتْرَةٍ مُمْكِنَةٍ؟",
+      "seed": 403
+     },
+     {
+      "id": "ara_for_eng:S0407L02U05",
+      "known": "she told me we should be quiet",
+      "target": "قالَتْ لي إِنَّنا يَجِبُ أَنْ نَكونَ هادِئينَ",
+      "seed": 407
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0110L01",
+   "set": {
+    "known_text": "we"
+   },
+   "expect": {
+    "known_text": "we are",
+    "target_text": "نَحْنُ"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0403L01",
+   "set": {
+    "known_text": "remain quiet",
+    "target_text": "نَبْقى هادِئينَ",
+    "components": [
+     {
+      "known": "we remain",
+      "target": "نَبْقى"
+     },
+     {
+      "known": "quiet",
+      "target": "هادِئينَ"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "quiet",
+    "target_text": "هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01B01",
+   "set": {
+    "known_text": "remain quiet",
+    "target_text": "نَبْقى هادِئينَ"
+   },
+   "expect": {
+    "known_text": "quiet",
+    "target_text": "هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01B02",
+   "set": {
+    "known_text": "we remain quiet here",
+    "target_text": "نَبْقى هادِئينَ هُنا"
+   },
+   "expect": {
+    "known_text": "they are quiet",
+    "target_text": "هُمْ هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01B03",
+   "set": {
+    "known_text": "we want to remain quiet",
+    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ"
+   },
+   "expect": {
+    "known_text": "the people are quiet",
+    "target_text": "الناسُ هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01B04",
+   "set": {
+    "known_text": "we want to remain quiet here",
+    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ هُنا"
+   },
+   "expect": {
+    "known_text": "we want the group to be quiet",
+    "target_text": "نُريدُ أَنْ يَكونَ الجَميعُ هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01U01",
+   "set": {
+    "known_text": "we remain quiet at the entrance",
+    "target_text": "نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+   },
+   "expect": {
+    "known_text": "they are quiet at the entrance",
+    "target_text": "هُمْ هادِئينَ عِنْدَ المَدْخَلِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01U02",
+   "set": {
+    "known_text": "we should remain quiet",
+    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ"
+   },
+   "expect": {
+    "known_text": "she told me they are quiet",
+    "target_text": "قالَتْ لي أَنَّهُمْ هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01U03",
+   "set": {
+    "known_text": "we should remain quiet here",
+    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ هُنا"
+   },
+   "expect": {
+    "known_text": "the people in the bus are quiet",
+    "target_text": "الناسُ في الحافِلَةِ هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01U04",
+   "set": {
+    "known_text": "we should remain quiet at the entrance",
+    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+   },
+   "expect": {
+    "known_text": "all the people there are quiet",
+    "target_text": "الجَميعُ هُناكَ هادِئينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0403L01U05",
+   "set": {
+    "known_text": "we want to remain quiet at the entrance",
+    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+   },
+   "expect": {
+    "known_text": "the group at the entrance is quiet",
+    "target_text": "المَجْموعَةُ عِنْدَ المَدْخَلِ هادِئينَ"
+   }
+  },
+  {
+   "op": "lego.reorder",
+   "seed_number": 403,
+   "order": [
+    "S0403L02",
+    "S0403L01",
+    "S0403L03"
+   ],
+   "phrases_default": "keep"
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:52:03Z",
+  "baseline_failing_seeds": 556,
+  "per_seed": {
+   "110": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "403": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

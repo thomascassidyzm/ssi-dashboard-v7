@@ -1,0 +1,748 @@
+{
+"17": {
+"at": "2026-11-19T11:47:35Z",
+"known": "ඇය පිළිතුර මොකද කියලා දැනගන්න ඕනේ.",
+"legos": [
+{
+"id": "S0017L01",
+"idx": 1,
+"is_new": true,
+"known": "ඇයට ඕනේ",
+"phrases": [
+{
+"id": "13fec895-2eba-4f83-86eb-3eff69e09b65",
+"ka": "5f36252d-8595-45a0-a17f-41a2dca22a2b",
+"known": "ඇයට ඕනේ",
+"pos": 0,
+"t1": "6f3a7851-3049-4785-85fb-7d59b853286d",
+"t2": "bb25a130-435d-4221-8482-177c94e85c9f",
+"target": "she wants",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_sin:S0017L01C01",
+"ka": "173ddf18-dac1-40da-9894-ef1d01ea04d0",
+"known": "ඇය",
+"pos": 1,
+"t1": "c17ead05-3d52-4685-927f-9218d0547dab",
+"t2": "043af4f9-e21e-4ba7-9035-ba88bb2e0d1b",
+"target": "she",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0017L01C02",
+"ka": "87849b7a-5fcd-4270-b719-5a901c7f80c4",
+"known": "ඕනේ",
+"pos": 2,
+"t1": "0b1458bd-2cf2-46cf-895c-52fdbcd7dc29",
+"t2": "37df032d-56c6-426c-9012-22e192943ef6",
+"target": "wants",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0017L01B01",
+"ka": "5f36252d-8595-45a0-a17f-41a2dca22a2b",
+"known": "ඇයට ඕනේ",
+"pos": 3,
+"t1": "6f3a7851-3049-4785-85fb-7d59b853286d",
+"t2": "bb25a130-435d-4221-8482-177c94e85c9f",
+"target": "she wants",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L01B02",
+"ka": "042dcd59-50a6-4b0d-aafc-8c1de8daeaf7",
+"known": "ඇයට කතා කරන්න ඕනේ",
+"pos": 4,
+"t1": "82ca6130-fccf-4dfa-af80-3d973740483e",
+"t2": "45035736-29a6-400d-bd9d-9c30417e5e5d",
+"target": "she wants to speak",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L01B03",
+"ka": "72199e7c-b41a-43f8-9a4d-abab176080ca",
+"known": "ඇයට ඉගෙනගන්න ඕනේ",
+"pos": 5,
+"t1": "cf1b3d65-e661-4fa4-b3d2-c6987bcff34c",
+"t2": "f848f287-4ad7-460b-9f2e-f23cac8ba0c6",
+"target": "she wants to learn",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L01B04",
+"ka": "77f4826c-6a36-4cac-80a4-92784b42954f",
+"known": "ඇයට ආපහු එන්න ඕනේ",
+"pos": 6,
+"t1": "15210a63-dc21-4c4c-a6c3-bf2b4695adad",
+"t2": "7d34ca7c-9263-4d81-8e7f-c0103a1b3424",
+"target": "she wants to come back",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L01U01",
+"ka": "6c053720-358c-41e6-bbd5-1e7b9cc67542",
+"known": "ඇයට ඉංග්‍රීසි ඉගෙනගන්න ඕනේ",
+"pos": 7,
+"t1": "56a88324-051c-407b-baf8-9b6b146bf2f5",
+"t2": "77edaf6b-b3e4-4484-bb67-f1ad8b6c7ca2",
+"target": "she wants to learn English",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L01U02",
+"ka": "33c8d9f3-0e60-48e0-bd68-7849c84cb6db",
+"known": "ඇයට ඉංග්‍රීසි කතා කරන්න ඕනේ",
+"pos": 8,
+"t1": "085fb01b-420c-443a-976b-c74bc768ba8c",
+"t2": "f83c4d7a-28ea-49e4-8d2b-3268d2877e00",
+"target": "she wants to speak English",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L01U03",
+"ka": "1cd16b25-ee5d-435e-930c-5a345f854dff",
+"known": "ඇයට හෙට ආපහු එන්න ඕනේ",
+"pos": 9,
+"t1": "1169417f-cf48-4f40-8daa-cdd664d8704c",
+"t2": "b787cef2-a1e2-4ad2-a822-cc578f48ae25",
+"target": "she wants to come back tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L01U04",
+"ka": "db1b1f03-2898-4a6a-b76a-10d6426fed6d",
+"known": "ඇයට මොකක් හරි පැහැදිලි කරන්න ඕනේ",
+"pos": 10,
+"t1": "3697445e-7fd7-4b58-8dd5-878f7191aba7",
+"t2": "27b025ed-dd56-4174-a29d-0ed1ed2c1aae",
+"target": "she wants to explain something",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L01U05",
+"ka": "a1d1247b-ef89-43a3-a9eb-7b54bf659f24",
+"known": "ඇයට පස්සේ ඔයා එක්ක කතා කරන්න ඕනේ",
+"pos": 11,
+"t1": "21104ce1-34f2-4f60-a59b-1cf55142b3de",
+"t2": "cc6949b7-13c4-4698-a06e-5e8f19b4d1f3",
+"target": "she wants to speak with you later on",
+"type": "use"
+}
+],
+"target": "she wants",
+"type": "M"
+},
+{
+"id": "S0017L02",
+"idx": 2,
+"is_new": true,
+"known": "දැනගන්න",
+"phrases": [
+{
+"id": "bec29d29-a27c-4d2c-bfbc-00607257db33",
+"ka": "29b25d1f-6619-4277-9627-f8863fc2072c",
+"known": "දැනගන්න",
+"pos": 0,
+"t1": "44db9eab-52a8-4295-9ee5-1591aeb34f30",
+"t2": "587ec7b2-4b66-4bc6-aeff-4ec01bdc6433",
+"target": "to find out",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_sin:S0017L02B01",
+"ka": "802f891e-adac-4dab-937d-5fd418a83d97",
+"known": "ඇයට දැනගන්න ඕනේ",
+"pos": 1,
+"t1": "bfcd2e13-2001-4bbd-aad8-5f058b39646e",
+"t2": "34025f23-2682-4a86-a3aa-b9d429d9a69e",
+"target": "she wants to find out",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L02B02",
+"ka": "77670bd7-29e0-4714-8724-cce1f30d6d67",
+"known": "මට දැනගන්න ඕනේ",
+"pos": 2,
+"t1": "a86a5378-b4e8-4a65-a66d-702723b8e83e",
+"t2": "d8b959c5-2b3c-4fee-9b2f-39d1ba053e38",
+"target": "I want to find out",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L02B03",
+"ka": "bf2e435d-28fe-4e67-be65-46ca185c18ed",
+"known": "ඔහුට දැනගන්න ඕනේ",
+"pos": 3,
+"t1": "18310473-2f46-453c-8f2c-267cca4a1ba0",
+"t2": "ddef01ed-5706-449a-bb22-8f790dfc741d",
+"target": "he wants to find out",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L02U01",
+"ka": "77642c2c-2b52-47da-a89d-3855edaf6e8c",
+"known": "මට මොකක් හරි දැනගන්න ඕනේ",
+"pos": 4,
+"t1": "75835c12-db7a-48d0-b982-aa376c82314a",
+"t2": "632b12a5-2434-4ce8-9f3e-a1216d930cc4",
+"target": "I want to find out something",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L02U02",
+"ka": "1df05dab-5034-4ec4-b661-5f9d442839eb",
+"known": "ඇයට දැන් දැනගන්න ඕනේ",
+"pos": 5,
+"t1": "28b0579d-f2b0-408a-96ce-6d2c03df3e67",
+"t2": "05b92238-e58c-406e-af5e-9685161ef683",
+"target": "she wants to find out now",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L02U03",
+"ka": "8c6b840d-93bb-4f40-9876-dca8578e47c9",
+"known": "මම දැනගන්න උත්සාහ කරනවා",
+"pos": 6,
+"t1": "4260dcde-7ab8-498a-9bb2-7f1e1f73feab",
+"t2": "cf731d1e-89b7-4d15-bc98-b5308f90f9d5",
+"target": "I'm trying to find out",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L02U04",
+"ka": "3fef9996-e869-46ca-abc1-4e9c6993a679",
+"known": "ඔහුට අද දැනගන්න ඕනේ",
+"pos": 7,
+"t1": "9fc2e25c-7773-414a-852d-bf6e29842cba",
+"t2": "9a53029e-8c2e-4ec1-8d7d-6cecd7c48116",
+"target": "he wants to find out today",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L02U05",
+"ka": "4d66dd60-3902-4553-9dc3-82d99ee886b0",
+"known": "මට ආසයි දැනගන්න",
+"pos": 8,
+"t1": "bb7f6787-fb63-4923-89bf-8b7e1b29e096",
+"t2": "ff1532f3-ab64-4c62-9562-bc660deaaf30",
+"target": "I'd like to find out",
+"type": "use"
+}
+],
+"target": "to find out",
+"type": "A"
+},
+{
+"id": "S0017L03",
+"idx": 3,
+"is_new": true,
+"known": "පිළිතුර මොකද කියලා",
+"phrases": [
+{
+"id": "8a799f54-f76f-467a-a380-46a123f408cd",
+"ka": "d2753b0b-ae92-42bf-bfbd-f445919f10ed",
+"known": "පිළිතුර මොකද කියලා",
+"pos": 0,
+"t1": "40142a7e-9d3a-4a1f-a03c-667cbee2797a",
+"t2": "745fe862-7b83-4ff2-b8fd-1313ec9a04cf",
+"target": "what the answer is",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_sin:S0017L03C01",
+"ka": "f6f490b0-566b-4032-bed7-ee01768d97ef",
+"known": "පිළිතුර",
+"pos": 1,
+"t1": "78b293dd-ceb9-4470-af74-84dde20e4209",
+"t2": "c8b20352-a888-467e-9ca9-453af7bafea5",
+"target": "answer",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0017L03C02",
+"ka": "f5edd556-75f8-4fab-bae4-9619e6dddddc",
+"known": "මොකද",
+"pos": 2,
+"t1": "1980b788-157f-4629-9a05-52ac6598330d",
+"t2": "d76e7774-22b6-478a-9dbc-2e0d0187ae2e",
+"target": "what",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0017L03C03",
+"ka": "bec846e4-50f6-4c99-850a-aecbf809a2b5",
+"known": "කියලා",
+"pos": 3,
+"t1": "51fdb62a-afb8-4ccf-846c-7a3e3d0d7c49",
+"t2": "2e12b859-911c-4ef3-b9b7-1cdc81703243",
+"target": "is",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0017L03B01",
+"ka": "d2753b0b-ae92-42bf-bfbd-f445919f10ed",
+"known": "පිළිතුර මොකද කියලා",
+"pos": 4,
+"t1": "40142a7e-9d3a-4a1f-a03c-667cbee2797a",
+"t2": "745fe862-7b83-4ff2-b8fd-1313ec9a04cf",
+"target": "what the answer is",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L03B02",
+"ka": "d7f2eca9-d915-4f42-9c8c-8261e5b25070",
+"known": "පිළිතුර මොකද කියලා දැනගන්න",
+"pos": 5,
+"t1": "34caf99a-723e-4ce2-8824-b02d4e91c8dc",
+"t2": "1dfdbdb8-e098-4f51-ab29-27eba1ccb50e",
+"target": "to find out what the answer is",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L03B03",
+"ka": "d796600c-89bd-46dc-8d6a-b9a498c63813",
+"known": "පිළිතුර මොකද කියලා කියන්න",
+"pos": 6,
+"t1": "6dea57b2-362c-497a-b9b5-fa9ae4cd9a52",
+"t2": "4449d0eb-de0b-4d90-9809-61c79095a249",
+"target": "to say what the answer is",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L03B04",
+"ka": "3dbc346e-7f01-47e5-90a4-25f9112c7d7a",
+"known": "පිළිතුර මොකද කියලා මතක් කරගන්න",
+"pos": 7,
+"t1": "2440077e-72e6-4009-add5-a669d096359c",
+"t2": "217f7a54-8775-463b-a08e-68537f27b29b",
+"target": "to remember what the answer is",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0017L03U01",
+"ka": "549cd565-5579-460b-a6de-d8b953bade8f",
+"known": "ඇයට පිළිතුර මොකද කියලා දැනගන්න ඕනේ",
+"pos": 8,
+"t1": "ad16a4f9-7d76-4ca6-bb21-8db653edec11",
+"t2": "de3f3976-e437-43ec-823b-8428cad99020",
+"target": "she wants to find out what the answer is",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L03U02",
+"ka": "fb5d44fd-c53b-44f5-8ab3-64feb46cebc1",
+"known": "මට පිළිතුර මොකද කියලා දැනගන්න ඕනේ",
+"pos": 9,
+"t1": "2515a20b-b278-4b6d-9db9-b2f1807fadfa",
+"t2": "61b9b57d-0fbb-48c1-9190-ce07b4a4384c",
+"target": "I want to find out what the answer is",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L03U03",
+"ka": "d383046e-3fc6-45d5-9151-16407fd67eca",
+"known": "මම දන්නේ නෑ පිළිතුර මොකද කියලා",
+"pos": 10,
+"t1": "3781ff71-9853-4755-9c2b-909f6d7661eb",
+"t2": "91e1f803-4eed-4897-bf2e-90424572a089",
+"target": "I'm not sure what the answer is",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L03U04",
+"ka": "ffd1681c-30e2-4147-b914-a7d27cb45c31",
+"known": "මම පිළිතුර මොකද කියලා පැහැදිලි කරන්න හදනවා",
+"pos": 11,
+"t1": "3798da6d-24e6-4738-9b71-b6ee219d3e99",
+"t2": "47f579f3-3650-4d64-b0ca-856abaa39163",
+"target": "I'm going to explain what the answer is",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L03U05",
+"ka": "89759dbc-a367-4ee0-a66d-2de06fda34d3",
+"known": "ඔහුට පිළිතුර මොකද කියලා දැනගන්න ඕනේ",
+"pos": 12,
+"t1": "a255a065-4b42-4975-8e85-220942627fb8",
+"t2": "4df5e684-51bf-4aed-823b-0292e37f4947",
+"target": "he wants to find out what the answer is",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0017L03U06",
+"ka": "c66d7286-c94c-49ca-be37-155ae8dcea64",
+"known": "මම පිළිතුර මොකද කියලා මතක් කරගන්න උත්සාහ කරනවා",
+"pos": 13,
+"t1": "6aa92247-ffd6-42e1-910e-8f6ac1a94c88",
+"t2": "6a01d29d-e445-4dfe-a6c7-fc4c9df8afc3",
+"target": "I'm trying to remember what the answer is",
+"type": "use"
+}
+],
+"target": "what the answer is",
+"type": "M"
+}
+],
+"status": "released",
+"target": "She wants to find out what the answer is."
+},
+"353": {
+"at": "2026-11-19T11:47:36Z",
+"known": "ඇයට ක්‍රීඩාංගනේ වටේ දිව යන්නයි ඕනේ.",
+"legos": [
+{
+"id": "S0353L01",
+"idx": 1,
+"is_new": true,
+"known": "ක්‍රීඩාංගනේ",
+"phrases": [
+{
+"id": "74fffdbf-9d5d-4605-a8a8-9cea000d2a13",
+"ka": "20537d93-86f5-47d2-84bc-54be62ed5c51",
+"known": "ක්‍රීඩාංගනේ",
+"pos": 0,
+"t1": "cbc57246-2d64-42eb-ab0f-09283d095fdf",
+"t2": "3c00d85a-2e31-4d88-bfd1-4a595ceb7a0d",
+"target": "the field",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_sin:S0353L01B01",
+"ka": "d16b3141-95c8-41dd-a076-7985c92d317b",
+"known": "ක්‍රීඩාංගනේ වටේ",
+"pos": 1,
+"t1": "1fffb5a8-58f2-4199-92b4-ce1422229be0",
+"t2": "3211e934-84a1-40c8-a4ea-4986237dd8da",
+"target": "around the field",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L01B02",
+"ka": "d7e9a8ad-6f5b-4c40-a9b5-33bdc23a4d06",
+"known": "ක්‍රීඩාංගනේ ලෙයිකයි",
+"pos": 2,
+"t1": "c6032764-632c-4a2c-927d-8d1d70f8d030",
+"t2": "824cfdcc-0bf9-435f-9b47-3865213fae45",
+"target": "liked the field",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L01B03",
+"ka": "2e755db6-88e3-451a-9e0e-d05961a8ee93",
+"known": "ක්‍රීඩාංගනේ දකින්නයි",
+"pos": 3,
+"t1": "442e2906-bb0d-4c79-9d77-ab996e7d8d5f",
+"t2": "d3068422-0409-48cb-9987-9131d46789d9",
+"target": "to see the field",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L01U01",
+"ka": "ec7f7bd1-0342-4493-80a5-0a4dc251afc6",
+"known": "මම ලෙයිකයි ක්‍රීඩාංගනේ",
+"pos": 4,
+"t1": "246f73a7-86eb-4522-9363-a501f4e47395",
+"t2": "ffdf5826-6e3f-4b75-817c-79aff1222455",
+"target": "I liked the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L01U02",
+"ka": "3268d842-d81f-41d5-8405-2b698d317456",
+"known": "ඔහුට ඕනේ ක්‍රීඩාංගනේ දකින්නයි",
+"pos": 5,
+"t1": "36812ff0-4403-413c-93f2-2b280c7451b4",
+"t2": "733d50ab-0d5f-4ec0-99fc-f2f2cb1ae267",
+"target": "he wants to see the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L01U03",
+"ka": "49511123-e9d4-44ce-9ead-36f623f95f68",
+"known": "ඇය කිව්ව ක්‍රීඩාංගනේ",
+"pos": 6,
+"t1": "02fd124e-4d68-4ea0-97e6-aa2edbb3c31f",
+"t2": "00f3f778-b0ef-415b-9628-19c9cf109bd3",
+"target": "she talked about the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L01U04",
+"ka": "8c1500e6-37c1-46f0-b7c7-88e15a2a8e55",
+"known": "මම හිතනවා ක්‍රීඩාංගනේ",
+"pos": 7,
+"t1": "f4891045-9111-433c-908d-392463f9749b",
+"t2": "551cd598-9173-451d-ba16-e312b5d1eaa5",
+"target": "I think about the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L01U05",
+"ka": "f17d839c-40c7-4d33-87a6-a61152203b12",
+"known": "අපි ලෙයිකයි ක්‍රීඩාංගනේ",
+"pos": 8,
+"t1": "7c0d6c35-a014-4366-9e4f-228d46b87b1d",
+"t2": "1d54f868-48e5-4f6c-a2fc-d084eea5469b",
+"target": "we liked the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L01B04",
+"ka": "3d09831a-558b-4106-bfbe-225cbe168128",
+"known": "ක්‍රීඩාංගනේ හොයන්න",
+"pos": 9,
+"t1": "27e2598d-c991-458b-bab5-01efee618cc7",
+"t2": "0a5d59f3-8091-4cac-bb7f-e2e41050fede",
+"target": "Look for the field",
+"type": "build"
+}
+],
+"target": "the field",
+"type": "A"
+},
+{
+"id": "S0353L02",
+"idx": 2,
+"is_new": true,
+"known": "වටේ දිව යන්නයි",
+"phrases": [
+{
+"id": "a316fee5-bf39-4af8-9930-4c2e8c52e3b9",
+"ka": "d67fac30-bdbc-4d83-b677-b513c6b56b3e",
+"known": "වටේ දිව යන්නයි",
+"pos": 0,
+"t1": "ae650623-ed7d-4df2-a54f-f20bb6fad89e",
+"t2": "c1b0b5b3-39f7-452c-85ac-00cc42d65675",
+"target": "to run around",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_sin:S0353L02C01",
+"ka": "c3bcf146-8a40-4418-895c-9b3589aae8c0",
+"known": "වටේ",
+"pos": 1,
+"t1": "38237e46-36b3-4f6f-bf30-d2f47bd52728",
+"t2": "26de4c00-1c57-4339-a9a5-8e00005aebb2",
+"target": "around",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0353L02C02",
+"ka": "9d428a0b-fdd3-40ce-96e7-030f42960469",
+"known": "දිව යන්නයි",
+"pos": 2,
+"t1": "47f1a92a-5b0b-45c9-a9da-7f7fe17a767d",
+"t2": "a3191736-b03d-4f49-92f2-99d4db56a16c",
+"target": "to run",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0353L02B01",
+"ka": "d67fac30-bdbc-4d83-b677-b513c6b56b3e",
+"known": "වටේ දිව යන්නයි",
+"pos": 3,
+"t1": "ae650623-ed7d-4df2-a54f-f20bb6fad89e",
+"t2": "c1b0b5b3-39f7-452c-85ac-00cc42d65675",
+"target": "to run around",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L02B02",
+"ka": "1643f14b-8411-4695-b771-d60b0b31ce62",
+"known": "වටේ දිව යන්නයි ඕනේ",
+"pos": 4,
+"t1": "61a2bd97-278a-44cf-bea4-937e0af6ebdc",
+"t2": "6b8abf0f-c278-4148-9a2b-3b7d7ef48a8e",
+"target": "want to run around",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L02B03",
+"ka": "b13c4665-d02c-48a3-8511-5247b1ae563a",
+"known": "ක්‍රීඩාංගනේ වටේ දිව යන්නයි",
+"pos": 5,
+"t1": "501c3709-e030-4992-b4cc-de18745a2d84",
+"t2": "bddaf487-6dff-4331-9874-7f1acd6b3efe",
+"target": "to run around the field",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L02U01",
+"ka": "12861c5a-d137-4cde-8c3e-22ccab14cf54",
+"known": "මට ඕනේ වටේ දිව යන්නයි",
+"pos": 6,
+"t1": "ec2854d4-1b82-4fd9-9f0b-fb6702c0704f",
+"t2": "e095bea2-20ab-4aa4-8c16-8ba21f896b5d",
+"target": "I want to run around",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L02U02",
+"ka": "4164bf2c-3348-4cd3-a190-0f5ca92d5183",
+"known": "ඔහුට ඕනේ වටේ දිව යන්නයි",
+"pos": 7,
+"t1": "2c082d68-fbc7-406d-b9fa-f19c2736388d",
+"t2": "ac58779e-de12-453e-b575-ca802342e6c6",
+"target": "he wants to run around",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L02U03",
+"ka": "f32bfcf1-90c0-479a-9cfe-be94b72dc169",
+"known": "අපි ලෙයිකයි වටේ දිව යන්නයි",
+"pos": 8,
+"t1": "64968df3-1a00-4388-bac9-cb825dd18789",
+"t2": "15419899-fdb0-4d65-90fb-9cfa8e588c2f",
+"target": "we liked to run around",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L02U05",
+"ka": "91fd0f3d-c557-4dea-95af-e9ad4d487474",
+"known": "ඇය කිව්ව වටේ දිව යන්නයි",
+"pos": 10,
+"t1": "e94cd2ec-a535-4478-baae-fc937ce6dd0b",
+"t2": "7fc82cb8-dc85-47ef-b8ad-85aa5b03d99f",
+"target": "she said to run around",
+"type": "use"
+}
+],
+"target": "to run around",
+"type": "M"
+},
+{
+"id": "S0353L03",
+"idx": 3,
+"is_new": true,
+"known": "ඇයට ... ඕනේ",
+"phrases": [
+{
+"id": "7b790d33-a88e-4087-9192-e6f59df2da57",
+"ka": "62e2b6b6-1ee3-4955-bb88-8c4c1fcac9dd",
+"known": "ඇයට ... ඕනේ",
+"pos": 0,
+"t1": "0911f113-b014-4d60-b333-17760927657d",
+"t2": "b76c9ef5-312e-4579-b5ca-3c31847b1b9b",
+"target": "she needed",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_sin:S0353L03C01",
+"ka": "50fab145-8c35-4a52-8dcb-f8c32944da3e",
+"known": "ඇයට",
+"pos": 1,
+"t1": "c17ead05-3d52-4685-927f-9218d0547dab",
+"t2": "043af4f9-e21e-4ba7-9035-ba88bb2e0d1b",
+"target": "she",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0353L03C02",
+"ka": "87849b7a-5fcd-4270-b719-5a901c7f80c4",
+"known": "ඕනේ",
+"pos": 2,
+"t1": "a135f9db-b59d-4ccf-9c29-5ddc13fc0bea",
+"t2": "23f46568-eb1f-41b6-8d93-5a8560397feb",
+"target": "needed",
+"type": "component"
+},
+{
+"id": "eng_for_sin:S0353L03B01",
+"ka": "62e2b6b6-1ee3-4955-bb88-8c4c1fcac9dd",
+"known": "ඇයට ... ඕනේ",
+"pos": 3,
+"t1": "0911f113-b014-4d60-b333-17760927657d",
+"t2": "b76c9ef5-312e-4579-b5ca-3c31847b1b9b",
+"target": "she needed",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L03B02",
+"ka": "316f11a9-8228-4644-bac3-541c74717550",
+"known": "ඇයට ඕනේ අද",
+"pos": 4,
+"t1": "b2b5c181-5077-4ea1-9021-6d3c07cba6a1",
+"t2": "6e36648b-6ba2-4722-b54b-8c892b77eb4f",
+"target": "she needed today",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L03B03",
+"ka": "466f66b3-b4e7-42d7-b65c-806d469e1b12",
+"known": "ඇයට ඕනේ ගොඩ",
+"pos": 5,
+"t1": "0e261ca2-d63a-4ade-b0f7-2f740c32c43f",
+"t2": "ecef23c5-8052-4c44-ac73-23465aec0db3",
+"target": "she needed a lot",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L03B04",
+"ka": "286c24d4-8722-44bc-8686-799d34474a71",
+"known": "ඇයට ඕනේ දැන්",
+"pos": 6,
+"t1": "f06403cc-56c2-4d88-93fd-44ae91020cba",
+"t2": "1890f48a-8279-4b52-9f02-b27f50ecf690",
+"target": "she needed now",
+"type": "build"
+},
+{
+"id": "eng_for_sin:S0353L03U01",
+"ka": "e05b6361-8ead-4e54-81d0-da6a8abbcb90",
+"known": "ඇයට ක්‍රීඩාංගනේ වටේ දිව යන්නයි ඕනේ",
+"pos": 7,
+"t1": "043e905b-6fd0-4ec0-a2a0-b0f007b99bb4",
+"t2": "82a93390-530c-446f-96fd-ba783d650b95",
+"target": "she needed to run around the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L03U02",
+"ka": "667114aa-3012-4fc6-85de-56a9357ff419",
+"known": "ඇයට ඕනේ ක්‍රීඩාංගනේ දකින්නයි",
+"pos": 8,
+"t1": "12f1abde-c188-46ce-b2ac-b5605d2159a4",
+"t2": "cc2f245b-0b95-405f-9a11-b8fd10f66c83",
+"target": "she needed to see the field",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L03U03",
+"ka": "f6a802c1-13bb-4132-a64b-3b933698ec09",
+"known": "ඔහු කිව්ව ඇයට ඕනේ",
+"pos": 9,
+"t1": "1c9df745-64a5-4bd1-a8cb-2120cd07c16b",
+"t2": "af05950f-b3c2-415d-b31e-2ee3fd7a9104",
+"target": "he said she needed",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L03U04",
+"ka": "6418eed7-a456-40ae-9e0f-d843d9649212",
+"known": "මම හිතනවා ඇයට ඕනේ",
+"pos": 10,
+"t1": "f46bc132-1cc9-4449-9582-c95d98eb54d7",
+"t2": "fe090343-e66a-47e4-bea1-d96a8c6774e9",
+"target": "I think she needed",
+"type": "use"
+},
+{
+"id": "eng_for_sin:S0353L03U05",
+"ka": "7b194468-2aa4-4090-96b5-ed8bd993ac6c",
+"known": "ඇයට ඕනේ පරාණ පොත",
+"pos": 11,
+"t1": "fc646a1b-8947-4e0c-981d-264d94548819",
+"t2": "432db055-ee06-491c-86fc-91829a3660dc",
+"target": "she needed the old book",
+"type": "use"
+}
+],
+"target": "she needed",
+"type": "M"
+}
+],
+"status": "released",
+"target": "She needed to run around the field."
+}
+}

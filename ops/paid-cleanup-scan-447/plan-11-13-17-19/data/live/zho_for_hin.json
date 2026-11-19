@@ -1,4 +1,432 @@
 {
+"17": {
+"at": "2026-11-19T11:48:10Z",
+"known": "वह जानना चाहती है कि जवाब क्या है।",
+"legos": [
+{
+"id": "S0017L01",
+"idx": 1,
+"is_new": true,
+"known": "वह चाहती है",
+"phrases": [
+{
+"id": "8494ccb2-d68a-4cbc-a8dc-caab0c91b053",
+"ka": "a48c36dc-f6ab-4604-8dbd-0cd50f718de2",
+"known": "वह चाहती है",
+"pos": 0,
+"t1": "3a470dc4-cc4f-4b2d-ad22-63ba19439f67",
+"t2": "77eb2cde-0101-40b6-b436-691b085081ee",
+"target": "她想",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0017L01B01",
+"ka": "a48c36dc-f6ab-4604-8dbd-0cd50f718de2",
+"known": "वह चाहती है",
+"pos": 1,
+"t1": "3a470dc4-cc4f-4b2d-ad22-63ba19439f67",
+"t2": "77eb2cde-0101-40b6-b436-691b085081ee",
+"target": "她想",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L01B02",
+"ka": "5639619d-8d3d-4736-ae98-edd79f907c10",
+"known": "वह सीखना चाहती है",
+"pos": 2,
+"t1": "5abe9d18-fd27-45ea-a07e-e304be78dcca",
+"t2": "a1935a98-90bc-4b55-a070-92353df3dc0f",
+"target": "她想学习",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L01B03",
+"ka": "a99c41c6-66d4-4af5-821b-49960544f360",
+"known": "वह अभ्यास करना चाहती है",
+"pos": 3,
+"t1": "c24c24be-7f9f-4af2-aead-e903d7b42eeb",
+"t2": "1adb0230-aff0-4dd5-9f51-6b1465a2d699",
+"target": "她想练习",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L01U01",
+"ka": "7ae0bf1b-a0e8-4b21-b771-a42e1f14437a",
+"known": "वह चीनी सीखना चाहती है।",
+"pos": 4,
+"t1": "a4da98e1-da58-4abb-aa10-c5ab400bc089",
+"t2": "281742f5-218b-46d1-8650-221d01ad1e59",
+"target": "她想学习中文。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L01U02",
+"ka": "48fd068c-89a2-430d-9932-2f17b0f2b3f6",
+"known": "वह चीनी बोलना चाहती है।",
+"pos": 5,
+"t1": "a221dbc2-aed5-4811-8fe1-e7ea27b52d15",
+"t2": "7f6441c4-0f6b-49ba-b419-02d91b8746af",
+"target": "她想说中文。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L01U03",
+"ka": "ba3c060c-a4e1-4499-889e-538a1186d776",
+"known": "वह मेरे साथ बोलना चाहती है।",
+"pos": 6,
+"t1": "9863bc0f-fd80-456b-ad22-91703eab76c2",
+"t2": "ffd9ee9e-627a-4f34-9a00-0f0677ed7336",
+"target": "她想跟我说。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L01U04",
+"ka": "5afe834c-b86e-460d-91d7-09a6916a1c83",
+"known": "वह याद रखना चाहती है।",
+"pos": 7,
+"t1": "5bcf7ed1-9508-4d1a-9d39-a1a6f5151937",
+"t2": "71a48e97-2e9b-45e4-9629-5e0fa147dca1",
+"target": "她想记住。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L01U05",
+"ka": "d26ed21b-dd52-4b46-9631-815025936785",
+"known": "अभी वह अभ्यास करना चाहती है।",
+"pos": 8,
+"t1": "db809d89-2b20-494a-975d-b6b15bf6e16b",
+"t2": "449f399a-abd4-406c-990f-bce45e1d554d",
+"target": "现在她想练习。",
+"type": "use"
+}
+],
+"target": "她想",
+"type": "A"
+},
+{
+"id": "S0017L02",
+"idx": 2,
+"is_new": true,
+"known": "जानना",
+"phrases": [
+{
+"id": "5c583311-c865-4a16-9768-70476119693c",
+"ka": "b1a283a7-6284-44e1-af53-4a61ee6212a4",
+"known": "जानना",
+"pos": 0,
+"t1": "f7d35e45-a3c3-44ea-b06c-0d61dc618c2c",
+"t2": "31c946c5-9ede-458f-a750-560bcec4fe22",
+"target": "知道",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0017L02B01",
+"ka": "b1a283a7-6284-44e1-af53-4a61ee6212a4",
+"known": "जानना",
+"pos": 1,
+"t1": "f7d35e45-a3c3-44ea-b06c-0d61dc618c2c",
+"t2": "31c946c5-9ede-458f-a750-560bcec4fe22",
+"target": "知道",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L02B02",
+"ka": "bd7bf8fd-cd19-48a0-8039-65b4151f7cea",
+"known": "आज जानना",
+"pos": 2,
+"t1": "aa0f8ea0-97ee-4f44-af5b-a99c9049339f",
+"t2": "2f169c26-bb67-4980-b925-85c684716e87",
+"target": "今天知道",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L02B03",
+"ka": "40680175-24bf-4565-bad3-69eef8326752",
+"known": "अभी जानना",
+"pos": 3,
+"t1": "ca5983ae-9d74-48e8-bdb6-f49bf7370de6",
+"t2": "4446cfee-8287-4752-a09c-b0cdd9d5cdbc",
+"target": "现在知道",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L02U01",
+"ka": "0cfcd71e-727f-46d1-b1ad-fababa443c2e",
+"known": "वह जानना चाहती है।",
+"pos": 4,
+"t1": "f3810594-f4c9-4bf2-bb3c-d7ee7c577a6e",
+"t2": "3109ec66-afad-40ea-b58f-a45915e5aef9",
+"target": "她想知道。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L02U02",
+"ka": "76487cee-9b52-4b8d-aea6-6e101fcf968f",
+"known": "मैं जानना चाहता हूँ।",
+"pos": 5,
+"t1": "08cc30d4-9c5f-479b-83ef-de270565c12b",
+"t2": "e2f44ef6-0403-4645-8d3e-6af10bfb2c96",
+"target": "我想知道。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L02U03",
+"ka": "6af8aef5-4ba7-4f73-a144-5ae724905089",
+"known": "बाद में मैं जानना चाहता हूँ।",
+"pos": 6,
+"t1": "c7b97836-d577-4182-a896-77ab7ca32c35",
+"t2": "c42f2967-dddf-4823-b0b8-1f4160627202",
+"target": "过一会儿我想知道。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L02U04",
+"ka": "711fa88f-c0e9-4e34-afa9-2e84aa89a75d",
+"known": "वह अभी जानना चाहती है।",
+"pos": 7,
+"t1": "7a5d2e00-32eb-4a8b-81f0-5fa333081c63",
+"t2": "cc680e12-61ad-43d1-bd88-474fdd30265d",
+"target": "现在她想知道。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L02U05",
+"ka": "17f18234-6829-4239-af87-8c155c22ff66",
+"known": "बात ख़त्म करने के बाद, वह जानना चाहती है।",
+"pos": 8,
+"t1": "24ec213a-754a-47b6-8573-6d1a02094026",
+"t2": "5483bc1b-596f-4d8a-8dfe-5573e6f95e93",
+"target": "说完以后,她想知道。",
+"type": "use"
+}
+],
+"target": "知道",
+"type": "A"
+},
+{
+"id": "S0017L03",
+"idx": 3,
+"is_new": true,
+"known": "जवाब",
+"phrases": [
+{
+"id": "fd704ba2-fa16-4f75-abaf-b70163243593",
+"ka": "7b5b080e-4b0b-4031-8ba4-cfb1942b358c",
+"known": "जवाब",
+"pos": 0,
+"t1": "6156f5b6-8d6b-4e70-b7ba-9a9cf8c04d00",
+"t2": "fa82d972-dc88-48ed-a6dd-8c534eb0fd03",
+"target": "答案",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0017L03B01",
+"ka": "7b5b080e-4b0b-4031-8ba4-cfb1942b358c",
+"known": "जवाब",
+"pos": 1,
+"t1": "6156f5b6-8d6b-4e70-b7ba-9a9cf8c04d00",
+"t2": "fa82d972-dc88-48ed-a6dd-8c534eb0fd03",
+"target": "答案",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L03B02",
+"ka": "fb7f8ce1-8fd3-49e6-ad46-d9b66afa61de",
+"known": "जवाब जानना",
+"pos": 2,
+"t1": "6cae00d9-1030-42d9-afab-5cac368dc1f8",
+"t2": "b863cfa7-ce55-48c7-9022-a8ce3ee80dc1",
+"target": "知道答案",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L03B03",
+"ka": "56679312-7211-489f-8a0c-5d81f7bb6b93",
+"known": "जवाब याद रखना",
+"pos": 3,
+"t1": "852b0252-9cde-4a35-b553-963b26119262",
+"t2": "f3e10f83-04c3-4900-ab7d-96434e73e7cc",
+"target": "记住答案",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L03U01",
+"ka": "9aef5c23-1f48-4f19-bdeb-b076844df492",
+"known": "वह जवाब जानना चाहती है।",
+"pos": 4,
+"t1": "22f55df5-4fd0-40e3-a033-7f26a6e2b986",
+"t2": "a5cb8c00-b6a0-4902-a435-a62023cb0947",
+"target": "她想知道答案。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L03U02",
+"ka": "bb0e020c-fcc6-40af-bf07-e4fa7cdbe5ee",
+"known": "मैं जवाब जानना चाहता हूँ।",
+"pos": 5,
+"t1": "8dcab15a-8097-4c51-ab02-cc9d0a519e88",
+"t2": "a952e555-dc67-4bfa-b779-0e7f53b1651d",
+"target": "我想知道答案。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L03U03",
+"ka": "010194fa-d828-43d1-b541-1e19c53c5884",
+"known": "मैं जवाब याद रखना चाहता हूँ।",
+"pos": 6,
+"t1": "9d3e90c0-e125-4599-835e-169a1daadf87",
+"t2": "b155c8af-bada-4ca5-9038-1797a4e72bdf",
+"target": "我想记住答案。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L03U04",
+"ka": "8f57f37c-3c84-4171-9881-e47b40b64fa2",
+"known": "बाद में वह जवाब जानना चाहती है।",
+"pos": 7,
+"t1": "8a2d340e-b640-4247-9c66-7daa876354fe",
+"t2": "e23c070d-551b-4962-94e3-c11fb0248d63",
+"target": "过一会儿她想知道答案。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L03U05",
+"ka": "2172d13e-7368-498b-b5d3-8c49ed2514b6",
+"known": "मैं चीनी में जवाब कहना चाहता हूँ।",
+"pos": 8,
+"t1": "50122bbd-6098-4e4b-b216-8cf893065adc",
+"t2": "0e73b0ac-6026-4d5c-a92f-736139ac359e",
+"target": "我想用中文说答案。",
+"type": "use"
+}
+],
+"target": "答案",
+"type": "A"
+},
+{
+"id": "S0017L04",
+"idx": 4,
+"is_new": true,
+"known": "क्या है",
+"phrases": [
+{
+"id": "2989fe60-105e-4e2e-9659-3b81edabb7dd",
+"ka": "9b9c8c51-98ba-49a6-973a-278ee81463c7",
+"known": "क्या है",
+"pos": 0,
+"t1": "429a9e7e-95b0-4b67-b9a4-4573572170cc",
+"t2": "a410910c-5053-40db-afd4-45a302194c33",
+"target": "是什么",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0017L04C01",
+"ka": "a57b3ebd-ec48-44a9-ad21-760ae4b29529",
+"known": "क्या",
+"pos": 1,
+"t1": "004b9938-35ff-4277-8688-da19a52e457e",
+"t2": "b513d954-7ef9-4015-8838-58a4572f876d",
+"target": "什么",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0017L04C02",
+"ka": "5802a846-ef57-4312-a63b-8f86411a6c1e",
+"known": "है",
+"pos": 2,
+"t1": "e9044531-b504-4d60-8542-6ac16b7b6423",
+"t2": "3d0e41af-474f-40ce-a5bd-306adc4e80cd",
+"target": "是",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0017L04B01",
+"ka": "9b9c8c51-98ba-49a6-973a-278ee81463c7",
+"known": "क्या है",
+"pos": 3,
+"t1": "429a9e7e-95b0-4b67-b9a4-4573572170cc",
+"t2": "a410910c-5053-40db-afd4-45a302194c33",
+"target": "是什么",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L04B02",
+"ka": "d3043111-d3ba-42c8-b1d4-a7051c53651b",
+"known": "अभी क्या है",
+"pos": 4,
+"t1": "e881c4d3-8f95-4586-a462-83542b0c57d6",
+"t2": "0d041dd3-7761-47db-966a-6c479db66077",
+"target": "现在是什么",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L04B03",
+"ka": "c4b7ea82-c516-4616-8f75-93f57773ed8f",
+"known": "वह जानना चाहती है क्या है",
+"pos": 5,
+"t1": "47131d19-6b65-40bf-a867-bd7ca6c8c3b2",
+"t2": "f360e532-165c-4591-8d35-eaa2e8bf9a47",
+"target": "她想知道是什么",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0017L04U01",
+"ka": "161b80bb-4cb4-47e9-a3a7-5f62a5c155cf",
+"known": "वह जानना चाहती है कि जवाब क्या है।",
+"pos": 6,
+"t1": "ef34c29a-1527-461d-91db-8fc7b4d17e69",
+"t2": "470c3200-a0a1-42ca-bb71-127e3fadaaf6",
+"target": "她想知道答案是什么。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L04U02",
+"ka": "c460c51f-283b-4b26-985f-af0fe2996324",
+"known": "जवाब क्या है?",
+"pos": 7,
+"t1": "2480400f-6db7-45c5-a8b8-2e2a5143b7cb",
+"t2": "28a6bb86-7dbd-4a7a-aff8-74611fb33fb8",
+"target": "答案是什么？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L04U03",
+"ka": "49b283c3-84fd-4b65-a694-a472763e2e0c",
+"known": "मैं जानना चाहता हूँ कि जवाब क्या है।",
+"pos": 8,
+"t1": "441e1713-351c-4581-a50c-239855b8e06a",
+"t2": "e12fb5b4-5249-41ab-aab6-8adb4135d0f3",
+"target": "我想知道答案是什么。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L04U04",
+"ka": "74f7049d-ac1c-4ba0-a039-f5ef318a5ed9",
+"known": "आज क्या है?",
+"pos": 9,
+"t1": "0beb4d8a-88e1-43a9-9c3c-3dd799822e6b",
+"t2": "1b96ec4a-8440-4a58-82f9-e3473e18b29a",
+"target": "今天是什么？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0017L04U05",
+"ka": "649fa0b9-b1f3-485d-a76a-71c7a31853fa",
+"known": "मेरा मतलब क्या है?",
+"pos": 10,
+"t1": "6930e052-1ead-41b2-8e10-bbbd5cf626e8",
+"t2": "0bdd1c4d-475b-462f-86ea-d93092281ee6",
+"target": "我的意思是什么？",
+"type": "use"
+}
+],
+"target": "是什么",
+"type": "M"
+}
+],
+"status": "released",
+"target": "她想知道答案是什么。"
+},
 "182": {
 "at": "2026-11-18T18:34:21Z",
 "known": "क्या आपने मेरी चाबियाँ कहीं देखी हैं?",

@@ -1,0 +1,708 @@
+{
+"15": {
+"at": "2026-11-19T11:45:59Z",
+"known": "और मैं चाहती हूँ कि आप कल मेरे साथ अंग्रेज़ी बोलें।",
+"legos": [
+{
+"id": "S0015L01",
+"idx": 1,
+"is_new": true,
+"known": "मेरे साथ",
+"phrases": [
+{
+"id": "c457edfe-75b7-43d1-991e-8fc65fd66c7d",
+"ka": "c2d8cf53-0b38-4979-9ab6-4049fb06988c",
+"known": "मेरे साथ",
+"pos": 0,
+"t1": "c8baa1d3-6d45-42a7-a105-5ede8e22ae03",
+"t2": "27f669b4-bb3b-4c1c-864d-a992923f89ad",
+"target": "with me",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_hin:S0015L01C01",
+"ka": "83b33472-147b-4059-afba-dc37451aced9",
+"known": "मेरे",
+"pos": 1,
+"t1": "f961828f-712e-4e7c-ba23-1811f0b15610",
+"t2": "4a6dff07-f5f7-4c3f-a56e-2cc3a1635907",
+"target": "me",
+"type": "component"
+},
+{
+"id": "eng_for_hin:S0015L01C02",
+"ka": "07bc2e8a-f6c8-4683-983e-6f0d4487754d",
+"known": "साथ",
+"pos": 2,
+"t1": "b7b59942-098b-4e3d-a996-b595a8de3a88",
+"t2": "12d05560-8c4a-4863-94d0-74b47418b5f1",
+"target": "with",
+"type": "component"
+},
+{
+"id": "eng_for_hin:S0015L01B01",
+"ka": "beb379b4-88af-4c84-8e38-01ef3f798227",
+"known": "मेरे साथ अंग्रेज़ी बोलना",
+"pos": 3,
+"t1": "13b20ccf-84d7-4fb2-8a21-b9eca5d6117e",
+"t2": "d93d531f-3a7f-4f21-87d9-277abb1d8f97",
+"target": "to speak English with me",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L01B02",
+"ka": "bd63b311-75ac-4481-a663-f9f7a59aa11b",
+"known": "मेरे साथ सीखना",
+"pos": 4,
+"t1": "83290b61-8e45-43a2-94c8-61ad6d378cd3",
+"t2": "e1383e88-3eef-4ca5-8c45-0d2d14f4cd0a",
+"target": "to learn with me",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L01B03",
+"ka": "6b806034-4778-4a21-b77a-80ef9fe3290c",
+"known": "मेरे साथ बात करने का अभ्यास करना",
+"pos": 5,
+"t1": "03b0bc9d-ce8f-4c47-a151-a467595fac71",
+"t2": "f0036e3e-1252-46fb-bdf5-480fda0edebf",
+"target": "to practise speaking with me",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L01U01",
+"ka": "09686091-7f94-4ce2-9192-b229f1671ec1",
+"known": "क्या आप मेरे साथ अंग्रेज़ी बोलते हैं?",
+"pos": 6,
+"t1": "88e796eb-a2c4-4d68-84c6-702050192fd8",
+"t2": "2df5951b-065b-4393-8365-e29588bd7e4a",
+"target": "do you speak English with me?",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L01U02",
+"ka": "7dcd0c06-4b3b-478e-9407-958b5edaaf9a",
+"known": "आप मेरे साथ अंग्रेज़ी बोलते हैं।",
+"pos": 7,
+"t1": "00078148-95b3-465e-a5ed-8daacb27ebca",
+"t2": "05dfa6bc-a14c-4650-b291-4c1b60ead7b8",
+"target": "you speak English with me",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L01U03",
+"ka": "dc1c76fa-42b7-4564-8f59-07a887b633b8",
+"known": "क्या आप मेरे साथ पूरे दिन अंग्रेज़ी बोलते हैं?",
+"pos": 8,
+"t1": "ecb78b2b-9665-4937-8ff4-0170918c4cfc",
+"t2": "ec574c47-c24a-430f-b290-ae2876a33dbc",
+"target": "do you speak English with me all day?",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L01U04",
+"ka": "f3f9e3a8-00c3-4604-a043-2bf2a1f9425d",
+"known": "आप मेरे साथ बहुत अच्छी अंग्रेज़ी बोलते हैं।",
+"pos": 9,
+"t1": "ce848f72-baf0-41da-8801-6d964085e029",
+"t2": "08e518aa-d2b4-40e4-877a-ad2989ef4b28",
+"target": "you speak English very well with me",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L01U05",
+"ka": "b1b12dcb-655d-4ddb-9bca-c749a8fb8d18",
+"known": "क्या आप आज मेरे साथ अंग्रेज़ी बोलते हैं?",
+"pos": 10,
+"t1": "ef230e35-f694-45b6-93eb-6f7701b84e13",
+"t2": "eb65ab34-c1a1-47b5-94b6-05491fdfc4db",
+"target": "do you speak English with me today?",
+"type": "use"
+}
+],
+"target": "with me",
+"type": "M"
+},
+{
+"id": "S0015L02",
+"idx": 2,
+"is_new": true,
+"known": "और मैं चाहती हूँ",
+"phrases": [
+{
+"id": "2a083396-2396-4b91-91e6-e9d09b407b17",
+"ka": "ae013292-360e-45be-b109-37e89cee6b4b",
+"known": "और मैं चाहती हूँ",
+"pos": 0,
+"t1": "b668c37b-37cd-49b2-a858-977fa541dbbf",
+"t2": "1ab4c057-b75e-470b-a27c-69298e70eff7",
+"target": "and I want",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_hin:S0015L02C01",
+"ka": "27145eee-bf11-42cf-b9f2-134c331bc44a",
+"known": "और",
+"pos": 1,
+"t1": "be4b9d61-303b-4bb4-b0bd-c80bb5ddf560",
+"t2": "62b48614-a96b-4bbd-86e6-3cfe38130408",
+"target": "and",
+"type": "component"
+},
+{
+"id": "eng_for_hin:S0015L02C02",
+"ka": "4f9d4c4f-69fd-4846-9a42-4350af488110",
+"known": "मैं चाहता हूँ",
+"pos": 2,
+"t1": "dc1329f7-cd5a-4704-a8a5-5b36d8a7cbe4",
+"t2": "7f86735b-6e70-4244-8018-b2525320a63f",
+"target": "I want",
+"type": "component"
+},
+{
+"id": "eng_for_hin:S0015L02B01",
+"ka": "29f7d034-d34b-439a-814c-2a60842d833a",
+"known": "और मैं अंग्रेज़ी में बात करना चाहती हूँ",
+"pos": 3,
+"t1": "14273ef5-da75-441f-b86c-942662e04f5c",
+"t2": "2b2b1306-ac7f-4228-9f59-f5bf1091c437",
+"target": "and I want to speak in English",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L02B02",
+"ka": "2cd35864-3a8e-42c7-8fd9-0d4c50fb0451",
+"known": "और मैं आज सीखना चाहता हूँ",
+"pos": 4,
+"t1": "0432abc5-44d6-41ea-9505-70fff2cd9ff7",
+"t2": "cfb10853-eca8-4fd8-a4e2-02cd8488882b",
+"target": "and I want to learn today",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L02B03",
+"ka": "6e994208-2992-4af3-a01b-333f47877843",
+"known": "और मैं बहुत अच्छी अंग्रेज़ी बोलना चाहता हूँ",
+"pos": 5,
+"t1": "13dc58a4-46d5-4a3b-adaa-ea3215a40775",
+"t2": "aadbe948-33dd-4d7f-95f7-55a764d83486",
+"target": "and I want to speak English very well",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L02U01",
+"ka": "99d840f1-687c-4349-a693-af6d3b9960cd",
+"known": "और मैं अब कुछ कहना चाहती हूँ।",
+"pos": 6,
+"t1": "0c10421f-5d2a-487c-8753-285b7c1550a8",
+"t2": "ac22cd24-7e6d-413f-a51f-b81999b6016b",
+"target": "and I want to say something now",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L02U02",
+"ka": "4cadade2-48bf-4d6e-a378-891cff3170af",
+"known": "और मैं पूरे दिन अंग्रेज़ी बोलना चाहता हूँ।",
+"pos": 7,
+"t1": "44a49299-bc76-49a7-b65f-7c9c2e0ae069",
+"t2": "c9eceee1-14f3-46ae-8d05-c7143ee9da39",
+"target": "and I want to speak English all day",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L02U03",
+"ka": "13a2b02f-37b9-43b8-b566-e68e1c8d1b6a",
+"known": "और मैं पूरा वाक्य याद करना चाहता हूँ।",
+"pos": 8,
+"t1": "86224f98-2585-4a82-aae0-00fff0e17cfe",
+"t2": "c67a0be5-c834-4719-af0d-7e9383887391",
+"target": "and I want to remember the whole sentence",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L02U04",
+"ka": "6bd1a653-45cb-462b-b735-3440d97b3380",
+"known": "और मैं किसी और के साथ बात करने का अभ्यास करना चाहती हूँ।",
+"pos": 9,
+"t1": "26caedce-a582-4929-b7c0-7e7b3317ab0f",
+"t2": "d7f3d890-7740-4987-bc69-e8dd872ee176",
+"target": "and I want to practise speaking with someone else",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L02U05",
+"ka": "e5bc09c5-dc00-4d57-a5fe-bf61ffa0d9fb",
+"known": "और मैं आज अपनी पूरी कोशिश करना चाहती हूँ।",
+"pos": 10,
+"t1": "2c807693-0bf5-4601-a15a-d2897468f4ef",
+"t2": "1adad878-91cd-4b3e-993c-617f980da50a",
+"target": "and I want to try as hard as I can today",
+"type": "use"
+}
+],
+"target": "and I want",
+"type": "M"
+},
+{
+"id": "S0015L03",
+"idx": 3,
+"is_new": true,
+"known": "कल",
+"phrases": [
+{
+"id": "ef985466-422d-45f4-b239-5e9215296f8c",
+"ka": "b2f6ccbc-497c-4544-ad09-99c416f48b94",
+"known": "कल",
+"pos": 0,
+"t1": "596f34d0-8b96-47a9-b4a2-6b5bcdf064d8",
+"t2": "7ad29397-06e9-4b4b-8bdd-2f68f7eb0e84",
+"target": "tomorrow",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_hin:S0015L03B01",
+"ka": "4524c99f-6dde-433f-90b9-4aeddf18cf63",
+"known": "कल अंग्रेज़ी बोलना",
+"pos": 1,
+"t1": "ae417f5a-40ed-4b6c-a0cb-1a26b79ce7c2",
+"t2": "c6527b7c-cf38-4d50-991a-c7e2c3284ee2",
+"target": "to speak English tomorrow",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L03B02",
+"ka": "51058e0a-a0f8-41ff-9726-d290c44f184a",
+"known": "कल सीखना",
+"pos": 2,
+"t1": "8242b708-70cb-4c8b-bf20-13527f22a121",
+"t2": "e6877550-2dfa-477d-9371-a8dd92ffe370",
+"target": "to learn tomorrow",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L03B03",
+"ka": "959719a4-bd05-42fa-875a-607a2e1cf158",
+"known": "कल आपके साथ बात करना",
+"pos": 3,
+"t1": "564ff490-4415-4896-b508-23862b5e54e6",
+"t2": "1724672a-0362-45b2-951e-aa23186c88c8",
+"target": "to speak with you tomorrow",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0015L03U01",
+"ka": "8273b319-07e6-4828-9b55-fb5b2df5053e",
+"known": "मैं कल थोड़ी अंग्रेज़ी बोलना चाहता हूँ।",
+"pos": 4,
+"t1": "839a5699-efc2-431b-8358-8751e80e11f2",
+"t2": "bf05d4cd-e3f0-4d88-b0d6-c38ae56be8f4",
+"target": "I want to speak a little English tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L03U02",
+"ka": "202225ff-effc-462f-9013-700bbbb39f6e",
+"known": "मैं कल सीखने की कोशिश करना चाहता हूँ।",
+"pos": 5,
+"t1": "bcd5e213-b583-4c0b-9789-8117c8c4fa78",
+"t2": "a4bd30bf-f78b-46dc-834e-ec3739124466",
+"target": "I want to try to learn tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L03U03",
+"ka": "68c86d09-4b03-445e-a665-43c26ed4ee24",
+"known": "मैं कल पूरा वाक्य याद करना चाहती हूँ।",
+"pos": 6,
+"t1": "5782d2a6-ac80-40f7-b999-2573e9c23215",
+"t2": "e15acdce-ece9-4e57-b735-da46155790de",
+"target": "I want to remember the whole sentence tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L03U04",
+"ka": "d6142b2e-ec17-4fca-b410-8b2597d45b84",
+"known": "मैं कल किसी और के साथ बात करने का अभ्यास करूँगा।",
+"pos": 7,
+"t1": "4b726c26-787d-4db0-a90b-a614d477952e",
+"t2": "e15b2678-42e7-4d36-b752-4c9ae8edb0d1",
+"target": "I'm going to practise speaking with someone else tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L03U05",
+"ka": "fbb7b19c-0713-415b-b8ca-3236925b4487",
+"known": "मैं कल अपनी पूरी कोशिश करना चाहती हूँ।",
+"pos": 8,
+"t1": "026483b5-a377-444d-9193-fb5a8f685436",
+"t2": "51643a09-3f60-48bb-b630-5a9a0917e4c7",
+"target": "I want to try as hard as I can tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0015L03U06",
+"ka": "5d886f62-5410-44a6-bd36-36ba5d8b1e32",
+"known": "मैं कल अंदाज़ा लगाना चाहूँगी।",
+"pos": 9,
+"t1": "58e8e3c9-5dd8-4f7f-a8d1-5faeb0ae7e85",
+"t2": "5d41dbdb-944a-4872-8746-ee4a100f6b22",
+"target": "I'd like to guess tomorrow",
+"type": "use"
+}
+],
+"target": "tomorrow",
+"type": "A"
+}
+],
+"status": "released",
+"target": "And I want you to speak English with me tomorrow."
+},
+"30": {
+"at": "2026-11-19T11:46:01Z",
+"known": "मैं कल आपसे कुछ पूछना चाहती थी।",
+"legos": [
+{
+"id": "S0030L01",
+"idx": 1,
+"is_new": true,
+"known": "आपसे पूछना",
+"phrases": [
+{
+"id": "495f6ba3-3bae-4656-b84e-e8252441edae",
+"ka": "930225b2-48f2-45cd-b325-18df2cc106d5",
+"known": "आपसे पूछना",
+"pos": 0,
+"t1": "e61ab388-1645-4ca9-ae56-a54699a66e54",
+"t2": "a4234a32-8579-4487-998b-a35cce9b7462",
+"target": "to ask you",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_hin:S0030L01C01",
+"ka": "234fe85c-a714-42d8-a3fb-eeca2b5845d8",
+"known": "आपसे",
+"pos": 1,
+"t1": "289d25f0-6705-4dfd-9ef9-2846a6cf7e25",
+"t2": "f9ec8adf-beba-49f0-846a-53dc7c9c17be",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_hin:S0030L01C02",
+"ka": "3ffad68f-395d-4e62-a831-7b1628cf7fa0",
+"known": "पूछना",
+"pos": 2,
+"t1": "ad5e4182-81f1-458b-923b-8c4c3d16d48d",
+"t2": "2b72ed5c-ca5f-4523-b522-3b0ab52a12a8",
+"target": "to ask",
+"type": "component"
+},
+{
+"id": "eng_for_hin:S0030L01B01",
+"ka": "c4e89235-6ad7-410e-a682-ac3e6d4d1935",
+"known": "आज आपसे पूछना",
+"pos": 3,
+"t1": "63d39b98-e41f-4482-9998-e9a22fb7dd99",
+"t2": "dc590c65-0919-468b-8a4d-49a8b2fb90f0",
+"target": "to ask you today",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L01B02",
+"ka": "5f46bd94-483d-4f97-9b3a-31b4054715de",
+"known": "आपसे कुछ पूछना",
+"pos": 4,
+"t1": "604278dd-7804-4e03-83d0-8990018aebaf",
+"t2": "462fd0b7-e643-40ca-bb99-14a56cf2916b",
+"target": "to ask you something",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L01B03",
+"ka": "9d16b0dc-8192-4c23-875d-e7ff6be0bf86",
+"known": "जल्दी से आपसे पूछना",
+"pos": 5,
+"t1": "6238dda2-8390-41c6-b785-5bde8fdebb1a",
+"t2": "b19a54c3-4b95-417e-a4c9-fba67849daef",
+"target": "to ask you quickly",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L01U01",
+"ka": "ccfa104b-36f2-47e3-bd4b-0030826f957c",
+"known": "मैं आपसे कुछ पूछना चाहती हूँ।",
+"pos": 6,
+"t1": "f9977080-21e8-40cc-9d66-fd818b2d0884",
+"t2": "37c21fb4-c0bd-49ff-9df5-11a1f274404a",
+"target": "I want to ask you something",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L01U02",
+"ka": "5ee5a0b8-1393-48a7-8335-4acc205b7054",
+"known": "वह आपसे कुछ पूछना चाहती है।",
+"pos": 7,
+"t1": "60a45b8f-c42e-4936-b5ee-4878e16d6cff",
+"t2": "cf1f407f-e038-40fa-9932-40d6d5b00323",
+"target": "she wants to ask you something",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L01U03",
+"ka": "86b49436-1f98-4464-8f5f-1b8d05c9a7ba",
+"known": "हम आज शाम आपसे पूछना चाहते हैं।",
+"pos": 8,
+"t1": "0ba1e56c-8ab7-43b1-bf3c-dfbb69bc7df2",
+"t2": "846ac587-d009-4c1f-9c6e-da649b2e497a",
+"target": "we want to ask you this evening",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L01U04",
+"ka": "755a30db-c184-40c2-b734-7e3ece8706dd",
+"known": "मैं जल्द ही आपसे कुछ पूछना चाहती हूँ।",
+"pos": 9,
+"t1": "c384b37a-39ac-4fd5-bc3e-bf1b3145ea6c",
+"t2": "0cbd5967-cf15-49c8-bbb3-09e357feabca",
+"target": "I want to ask you something soon",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L01U05",
+"ka": "121373df-4788-465c-b16e-52406fde78ee",
+"known": "मुझे आपसे पूछना पसंद नहीं है।",
+"pos": 10,
+"t1": "3ec76450-aee0-4898-867c-544730515284",
+"t2": "519ce452-2b2f-4aec-bb6b-8ced37a677ed",
+"target": "I don't like to ask you",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L01U06",
+"ka": "f342923e-068b-4987-8e81-bf16109c8adf",
+"known": "मैं आपसे पूछना चाहता था कि कल क्या होगा।",
+"pos": 11,
+"t1": "8199aee7-22ef-463f-ac3b-bd138b98e3ae",
+"t2": "3c7c0fdb-58b8-413b-a717-4a26e3532480",
+"target": "I wanted to ask you what's going to happen tomorrow",
+"type": "use"
+}
+],
+"target": "to ask you",
+"type": "M"
+},
+{
+"id": "S0030L02",
+"idx": 2,
+"is_new": true,
+"known": "मैं चाहती थी",
+"phrases": [
+{
+"id": "3e5e60f2-aebb-4826-8bb8-b23e2aefb528",
+"ka": "37b887d5-e80a-4ac7-84ea-883d849034aa",
+"known": "मैं चाहती थी",
+"pos": 0,
+"t1": "b64e3e54-7df4-47e1-b0f0-bcd2027daffd",
+"t2": "f0f2f5e4-1d7f-42d4-afeb-00198acac83e",
+"target": "I wanted",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_hin:S0030L02B01",
+"ka": "5f5b0eeb-8296-4a0f-81e1-38226d9d7962",
+"known": "मैं आपसे पूछना चाहता था",
+"pos": 1,
+"t1": "34b0e8d1-2a35-43a7-92af-fa3174eb863a",
+"t2": "33af74ec-1ac2-4e9c-b6dd-cd15b8844137",
+"target": "I wanted to ask you",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L02B02",
+"ka": "ab4228d0-eb47-4eac-8167-06335f06d1b6",
+"known": "मैं बोलना चाहती थी",
+"pos": 2,
+"t1": "5b4e096e-e909-4a2b-8efc-5de64f04edba",
+"t2": "34a17272-f4de-4d03-a04d-62f41cdb17d4",
+"target": "I wanted to speak",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L02B03",
+"ka": "76b8c64e-2d53-48c4-af7d-5b5e303680a9",
+"known": "मैं लोगों से मिलना चाहती थी",
+"pos": 3,
+"t1": "ae38c1b1-9246-4054-bf01-7f988f0a4e43",
+"t2": "03f32c98-b417-4e32-9545-fc72e8135cc0",
+"target": "I wanted to meet people",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L02U01",
+"ka": "b6270cb2-15d7-4f70-b76c-0b13bdfdd693",
+"known": "मैं अंग्रेज़ी बोलना चाहता था।",
+"pos": 4,
+"t1": "b303797a-93a8-4ca4-b9e6-ced4d7e75896",
+"t2": "2ea1e037-02ff-4bb9-9322-a624f21fefaa",
+"target": "I wanted to speak English",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L02U02",
+"ka": "4c5b6f85-061d-41a1-8272-d2166a1d8205",
+"known": "मैं जवाब जानना चाहता था।",
+"pos": 5,
+"t1": "9b2460a8-681b-4ebf-96fd-a6f55ab19402",
+"t2": "973cd170-04ad-4e53-93ab-9a7d096daf39",
+"target": "I wanted to find out the answer",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L02U03",
+"ka": "e380c587-2c7f-4229-8372-02133b0afbeb",
+"known": "मैं आपके साथ बोलना चाहती थी।",
+"pos": 6,
+"t1": "b991651e-5f57-4448-abf6-4a0595a4e7b0",
+"t2": "736728e5-a9e1-4d7a-9474-68bd7bf103ad",
+"target": "I wanted to speak with you",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L02U04",
+"ka": "e34879ab-6d23-4597-9d5c-4e8edcf7cdc7",
+"known": "मैं बेहतर बोलना चाहती थी।",
+"pos": 7,
+"t1": "bdaae91f-3383-490a-8ec3-233e197a02fb",
+"t2": "4b0f5e9c-1bdc-4499-898d-0a36a27580e8",
+"target": "I wanted to speak better",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L02U05",
+"ka": "d9108b04-e240-4448-87b9-ebc13796d9bb",
+"known": "मैं जल्दी से जवाब देना चाहता था।",
+"pos": 8,
+"t1": "0be03bd9-e9b7-4040-a5c7-48130d3e577c",
+"t2": "b9602904-c358-4ee8-a3db-dd6b3d043b14",
+"target": "I wanted to answer quickly",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L02U06",
+"ka": "95bc01e7-1075-4875-a790-8e1e11faebcb",
+"known": "लेकिन मैं आपसे कुछ पूछना चाहता था।",
+"pos": 9,
+"t1": "252cc6d8-6d2a-45d2-b3a8-aa587472809a",
+"t2": "5ca99d37-0668-40ed-a056-18d77f416e17",
+"target": "but I wanted to ask you something",
+"type": "use"
+}
+],
+"target": "I wanted",
+"type": "A"
+},
+{
+"id": "S0030L03",
+"idx": 3,
+"is_new": true,
+"known": "कल",
+"phrases": [
+{
+"id": "780313e2-c562-45d2-ad60-44e5fb45fa45",
+"ka": "b2f6ccbc-497c-4544-ad09-99c416f48b94",
+"known": "कल",
+"pos": 0,
+"t1": "23d723ee-b7ed-410b-8d44-6d7fa8cc6928",
+"t2": "310359fb-afba-446d-a4f3-49ef5187a378",
+"target": "yesterday",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_hin:S0030L03B01",
+"ka": "ddf004dd-c63f-4e39-b26f-09f6f6e771eb",
+"known": "मैं कल अंग्रेज़ी बोलना चाहती थी",
+"pos": 1,
+"t1": "e4f05cd5-66ce-4857-8bbc-a78691861cfb",
+"t2": "d2c08850-6c39-4612-aaea-d32e5f19c2da",
+"target": "I wanted to speak English yesterday",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L03B02",
+"ka": "792b610e-2f76-42ef-b4a5-eda5591925ff",
+"known": "मैं कल वापस आना चाहता था",
+"pos": 2,
+"t1": "2f9ae810-bca0-4a88-b9bf-ee8c4d4f07f5",
+"t2": "115536b4-7309-47dc-92e7-79bd38ba5a0d",
+"target": "I wanted to come back yesterday",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L03B03",
+"ka": "03496fb2-d772-4ac1-8449-79b37006417e",
+"known": "मैं कल जवाब जानना चाहती थी",
+"pos": 3,
+"t1": "1fbe463e-946b-4c13-a506-00d22d8e5b1e",
+"t2": "ffc3513b-9dbd-466a-a4dc-2ae8ddb7b718",
+"target": "I wanted to find out the answer yesterday",
+"type": "build"
+},
+{
+"id": "eng_for_hin:S0030L03U01",
+"ka": "aef488ad-5900-4cbe-a937-d97de82af676",
+"known": "मैं कल आपके साथ बोलना चाहता था।",
+"pos": 4,
+"t1": "78320164-0483-4888-8b07-80d26a23ca7b",
+"t2": "322f7383-4862-44b9-9381-f163a00ea009",
+"target": "I wanted to speak with you yesterday",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L03U02",
+"ka": "de348a41-16ef-4553-8284-526477554f82",
+"known": "मैं कल लोगों से मिलना चाहता था।",
+"pos": 5,
+"t1": "225cba0f-842d-44d7-b550-16991eabfe9a",
+"t2": "b981a1ea-67d8-4a5a-b9c6-79da19f4defd",
+"target": "I wanted to meet people yesterday",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L03U03",
+"ka": "6d1cf0e3-d335-4766-a5b3-954d20ca419d",
+"known": "मैं कल उसका नाम याद करना चाहती थी।",
+"pos": 6,
+"t1": "7f6dcbfa-24ea-4f90-aa32-644b385f8ec6",
+"t2": "24a63739-3ec5-406d-8c72-497d7584c685",
+"target": "I wanted to remember his name yesterday",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L03U04",
+"ka": "f8c63a70-2fde-4c56-be80-0ccae9245cad",
+"known": "मैं कल बोलना शुरू करना चाहती थी।",
+"pos": 7,
+"t1": "1086c55d-5559-40a1-ad7a-4b5787e78d6e",
+"t2": "1546f3c8-d7ff-4fb6-9747-56d238c3eb36",
+"target": "I wanted to start talking yesterday",
+"type": "use"
+},
+{
+"id": "eng_for_hin:S0030L03U05",
+"ka": "6774b7f5-0180-40d3-a0d1-f8fb7756a2e4",
+"known": "मैं कल बेहतर बोलना चाहता था।",
+"pos": 8,
+"t1": "a8e1bbbf-7750-40db-8426-8a46654a9768",
+"t2": "3d780b65-5c9c-494a-a029-be7ef96892de",
+"target": "I wanted to speak better yesterday",
+"type": "use"
+}
+],
+"target": "yesterday",
+"type": "A"
+}
+],
+"status": "released",
+"target": "I wanted to ask you something yesterday."
+}
+}

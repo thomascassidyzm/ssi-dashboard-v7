@@ -1636,5 +1636,2380 @@
    }
   },
   "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:52:50Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 46,
+    "status": 200,
+    "secs": 249.3,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "lego_id": "S0182L01"
+       },
+       "before": {
+        "id": "271a3a2c-b805-4dcb-8831-02791f54047a",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": "S0182L01",
+        "known_text": "क्या ... है",
+        "target_text": "有没有",
+        "components": [
+         {
+          "known": "है",
+          "target": "有"
+         },
+         {
+          "known": "नहीं है",
+          "target": "没有"
+         }
+        ],
+        "known_audio_id": "020148b0-0610-4765-a73e-d50b6a334c1e",
+        "target1_audio_id": "9c02d303-9ab9-4bc6-a2b2-d98963209434",
+        "target2_audio_id": "bb50c17e-612b-4f95-a03a-cd23a6231f50",
+        "presentation_audio_id": "0a9aa076-5591-4c11-aabb-5add80334acc"
+       },
+       "after": {
+        "id": "271a3a2c-b805-4dcb-8831-02791f54047a",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": "S0182L01",
+        "known_text": "क्या आपने देखा है",
+        "target_text": "你有没有看到",
+        "components": [
+         {
+          "known": "आपने",
+          "target": "你"
+         },
+         {
+          "known": "है या नहीं",
+          "target": "有没有"
+         },
+         {
+          "known": "देखा",
+          "target": "看到"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01B01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01B01",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या ... है",
+        "target_text": "有没有",
+        "known_audio_id": "020148b0-0610-4765-a73e-d50b6a334c1e",
+        "target1_audio_id": "9c02d303-9ab9-4bc6-a2b2-d98963209434",
+        "target2_audio_id": "bb50c17e-612b-4f95-a03a-cd23a6231f50",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01B01",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने देखा है",
+        "target_text": "你有没有看到",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01B02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01B02",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "समय है या नहीं",
+        "target_text": "有没有时间",
+        "known_audio_id": "56ca18bd-f879-4fe7-8d16-c0227403fff8",
+        "target1_audio_id": "eeb76515-9ebc-42af-a283-52b0cf537d32",
+        "target2_audio_id": "1c4d2efb-c641-4d86-bb75-051fdadb3810",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01B02",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने उसे देखा है",
+        "target_text": "你有没有看到他",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01B03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01B03",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "देखा या नहीं",
+        "target_text": "有没有看到",
+        "known_audio_id": "46ff56c3-bd5f-440c-ae7f-4aea9a8bc226",
+        "target1_audio_id": "c0951ae2-446b-49fd-a286-d919f8e9811f",
+        "target2_audio_id": "c4a6d587-6796-460b-bbd6-9c90ed3ffd74",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01B03",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने मुझे देखा है",
+        "target_text": "你有没有看到我",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01B04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01B04",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "किताब है या नहीं",
+        "target_text": "有没有书",
+        "known_audio_id": "165135f0-f13b-4a03-86ff-f437c3822df2",
+        "target1_audio_id": "92c119ca-241e-44a7-a9ad-dd848367907d",
+        "target2_audio_id": "ebcd8616-0a4c-4ea9-b158-ab32e31e89e4",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01B04",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने यह देखा है",
+        "target_text": "你有没有看到这个",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01U01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01U01",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपके पास समय है?",
+        "target_text": "你有没有时间？",
+        "known_audio_id": "573c2857-3007-4d1a-b25e-6feea7400113",
+        "target1_audio_id": "d642cfc2-79ef-4bad-aaf1-17206a4566c5",
+        "target2_audio_id": "d16375ba-14d0-4e65-aeea-eb28b5ed1ac9",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01U01",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने आज उसे देखा है?",
+        "target_text": "今天你有没有看到他？",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01U02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01U02",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपके पास चीनी किताब है?",
+        "target_text": "你有没有中文书？",
+        "known_audio_id": "8ae5238c-4439-4003-b3a6-dc3aaa2b7739",
+        "target1_audio_id": "f2513bdf-1230-4f2b-9f88-42502a1b4bd1",
+        "target2_audio_id": "5d3fdd28-5a3c-4165-b2db-b55f10f0dcaa",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01U02",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने मेरी चीनी किताब देखी है?",
+        "target_text": "你有没有看到我的中文书？",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01U03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01U03",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने मेरी किताब देखी?",
+        "target_text": "你有没有看到我的书？",
+        "known_audio_id": "79460fb3-3c10-4f43-aeae-9a2757fc7b21",
+        "target1_audio_id": "1a75a814-d11c-4a7d-95d9-f0123c5dd67b",
+        "target2_audio_id": "5c51d8bd-c2ea-4355-954b-307dd3c655b8",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01U03",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने मेरी किताब देखी है?",
+        "target_text": "你有没有看到我的书？",
+        "known_audio_id": null,
+        "target1_audio_id": "1a75a814-d11c-4a7d-95d9-f0123c5dd67b",
+        "target2_audio_id": "5c51d8bd-c2ea-4355-954b-307dd3c655b8",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01U04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01U04",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपके पास अभ्यास करने का समय है?",
+        "target_text": "你有没有时间练习？",
+        "known_audio_id": "bf0d087b-5f4b-4dfa-83ba-7eba9f601807",
+        "target1_audio_id": "e7edd3a3-674f-4726-bcda-6f926bbefad8",
+        "target2_audio_id": "b3e137c6-3613-446e-9d20-504ca07386db",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01U04",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने मेरे दोस्त को देखा है?",
+        "target_text": "你有没有看到我的朋友？",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01U05"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01U05",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने उसे देखा?",
+        "target_text": "你有没有看到他？",
+        "known_audio_id": "5a6c5ad0-d10a-4878-b4e1-21747abbed85",
+        "target1_audio_id": "1f228fff-5963-4e8e-9b32-47d5017ec5ac",
+        "target2_audio_id": "5af2d001-5f21-40cd-8185-d0647aee1e70",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0182L01U05",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आपने वह किताब देखी है?",
+        "target_text": "你有没有看到那本书？",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0182L01U06"
+       },
+       "before": {
+        "id": "zho_for_hin:S0182L01U06",
+        "seed_number": 182,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या आप चीनी सीखते हैं?",
+        "target_text": "你有没有学中文？",
+        "known_audio_id": "dc62859d-415c-464b-a141-c39d9a2f7846",
+        "target1_audio_id": "fb468c1e-0d09-4b48-a461-fd6fb02ab52a",
+        "target2_audio_id": "ed8a7db3-6c79-4921-8b03-110d3d321327",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "lego.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "lego_id": "S0395L01"
+       },
+       "before": {
+        "id": "e83b488b-4b8b-49b2-ae17-e86c4ed4aa5c",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": "S0395L01",
+        "known_text": "हमें ...ना है",
+        "target_text": "我们要",
+        "components": [
+         {
+          "known": "हमें",
+          "target": "我们"
+         },
+         {
+          "known": "ना है",
+          "target": "要"
+         }
+        ],
+        "known_audio_id": "db43d0b2-4768-4af1-b132-ce49c9660b11",
+        "target1_audio_id": "9cd0dddc-ef35-4e44-8cbf-34e73bc6d9f2",
+        "target2_audio_id": "622aa03b-71c9-4511-b7cb-de32452f66bf",
+        "presentation_audio_id": "7a4c6848-fb16-4b97-b289-293d69ec9041"
+       },
+       "after": {
+        "id": "e83b488b-4b8b-49b2-ae17-e86c4ed4aa5c",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": "S0395L01",
+        "known_text": "हमें बाएँ मुड़ना है",
+        "target_text": "我们要向左转",
+        "components": [
+         {
+          "known": "हमें",
+          "target": "我们"
+         },
+         {
+          "known": "ना है",
+          "target": "要"
+         },
+         {
+          "known": "बाएँ मुड़ना",
+          "target": "向左转"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01B01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01B01",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें ...ना है",
+        "target_text": "我们要",
+        "known_audio_id": "db43d0b2-4768-4af1-b132-ce49c9660b11",
+        "target1_audio_id": "9cd0dddc-ef35-4e44-8cbf-34e73bc6d9f2",
+        "target2_audio_id": "622aa03b-71c9-4511-b7cb-de32452f66bf",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01B01",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें बाएँ मुड़ना है",
+        "target_text": "我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01B02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01B02",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें अभ्यास करना है",
+        "target_text": "我们要练习",
+        "known_audio_id": "4b07bfbc-cec9-4b24-b436-630eaa5059e7",
+        "target1_audio_id": "8f370a72-47ca-4e1c-8d1c-7af7e011262f",
+        "target2_audio_id": "8c85bdda-8d6c-4bad-a1de-c1b9a8999c15",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01B02",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "आज हमें बाएँ मुड़ना है",
+        "target_text": "今天我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01B03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01B03",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें सीखना है",
+        "target_text": "我们要学习",
+        "known_audio_id": "f7d2a592-768d-4e68-8fde-502025e91249",
+        "target1_audio_id": "e9d30ce5-083e-41bf-b39c-874d267de7c1",
+        "target2_audio_id": "3d27ff64-f277-4d82-8351-4f1942081cac",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01B03",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "अब हमें बाएँ मुड़ना है",
+        "target_text": "现在我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01U01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01U01",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें चीनी सीखनी है",
+        "target_text": "我们要学习中文",
+        "known_audio_id": "31f33246-36cc-44e9-b694-27cf4d8121cf",
+        "target1_audio_id": "4e4106e1-6558-4ecd-aa11-4d03b1bcc1f1",
+        "target2_audio_id": "c9432f0b-f7c5-4cd2-af15-03c40849526b",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01U01",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "मुझे लगता है कि हमें बाएँ मुड़ना है",
+        "target_text": "我觉得我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01U02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01U02",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें कुछ कहना है",
+        "target_text": "我们要说点什么",
+        "known_audio_id": "83320974-0c43-4533-817b-12d3648d2418",
+        "target1_audio_id": "11d835eb-4a49-41e8-978e-1db966aeb0e4",
+        "target2_audio_id": "0ece8ba0-94eb-41c4-b69f-96ad7f90f65c",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01U02",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उसने कहा कि हमें बाएँ मुड़ना है",
+        "target_text": "他说我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01U03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01U03",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "आज हमें अभ्यास करना है",
+        "target_text": "今天我们要练习",
+        "known_audio_id": "c578f79a-753a-43ec-9042-cfc371b94b51",
+        "target1_audio_id": "e636a74a-e7a6-49c5-b4ed-b5c57516f1a2",
+        "target2_audio_id": "9e9f541c-53e0-4d37-b121-df223ae466e2",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01U03",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "वह जानता है कि हमें बाएँ मुड़ना है",
+        "target_text": "他知道我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01U04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01U04",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें उससे पूछना है",
+        "target_text": "我们要问他",
+        "known_audio_id": "9c24530f-c490-4aa5-90b5-af7595107ca2",
+        "target1_audio_id": "44ff9bba-6c6d-4efc-af48-79428a50217f",
+        "target2_audio_id": "4b8c3221-9aa8-4ef8-93eb-a77a7a46c203",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01U04",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या हमें बाएँ मुड़ना है?",
+        "target_text": "我们要向左转吗？",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0395L01U05"
+       },
+       "before": {
+        "id": "zho_for_hin:S0395L01U05",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "हमें तैयार होना है",
+        "target_text": "我们要准备好",
+        "known_audio_id": "f0243026-0ee3-4ad2-83ed-6eb2edecac4c",
+        "target1_audio_id": "ba2d40f9-f0fa-470a-bc7b-c00f72eaf9d3",
+        "target2_audio_id": "fe6a3108-ab2f-4e19-83f7-7cfded3ab050",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0395L01U05",
+        "seed_number": 395,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "मुझे नहीं लगता कि हमें बाएँ मुड़ना है",
+        "target_text": "我不觉得我们要向左转",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "lego.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "lego_id": "S0418L01"
+       },
+       "before": {
+        "id": "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": "S0418L01",
+        "known_text": "उन्हें ...ना है",
+        "target_text": "他们需要",
+        "components": [
+         {
+          "known": "उन्हें",
+          "target": "他们"
+         },
+         {
+          "known": "ना है",
+          "target": "需要"
+         }
+        ],
+        "known_audio_id": "0ba62518-c4c5-473f-835b-0325c8abc3bd",
+        "target1_audio_id": "e0bc1daa-63a8-434a-ab62-69fa00940250",
+        "target2_audio_id": "4bdad5e5-1519-4f97-ae72-18585fe6f4a1",
+        "presentation_audio_id": "93a6af98-7b87-4d97-8f25-226d3a17e9ce"
+       },
+       "after": {
+        "id": "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": "S0418L01",
+        "known_text": "उन्हें समुदाय की सेवा करनी है",
+        "target_text": "他们需要服务社区",
+        "components": [
+         {
+          "known": "उन्हें",
+          "target": "他们"
+         },
+         {
+          "known": "ना है",
+          "target": "需要"
+         },
+         {
+          "known": "समुदाय की सेवा कर",
+          "target": "服务社区"
+         }
+        ],
+        "known_audio_id": "0d74270a-85fd-4cbc-8ba5-9a2066f33abf",
+        "target1_audio_id": "b7fea2e4-a50c-4354-b883-29caa42eb2d9",
+        "target2_audio_id": "e23813f8-bbe8-4632-a65b-2d5d76f3d854",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01B01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01B01",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें ...ना है",
+        "target_text": "他们需要",
+        "known_audio_id": "0ba62518-c4c5-473f-835b-0325c8abc3bd",
+        "target1_audio_id": "e0bc1daa-63a8-434a-ab62-69fa00940250",
+        "target2_audio_id": "4bdad5e5-1519-4f97-ae72-18585fe6f4a1",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01B01",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें समुदाय की सेवा करनी है",
+        "target_text": "他们需要服务社区",
+        "known_audio_id": "0d74270a-85fd-4cbc-8ba5-9a2066f33abf",
+        "target1_audio_id": "b7fea2e4-a50c-4354-b883-29caa42eb2d9",
+        "target2_audio_id": "e23813f8-bbe8-4632-a65b-2d5d76f3d854",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01B02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01B02",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें सीखना है",
+        "target_text": "他们需要学习",
+        "known_audio_id": "f6be3e9e-bfaf-4501-a2bc-9b89cc29e442",
+        "target1_audio_id": "5630528c-7a54-42bf-a16c-7e34340be444",
+        "target2_audio_id": "2717dddd-212a-45f7-9a35-35e03dffb9e5",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01B02",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "आज उन्हें समुदाय की सेवा करनी है",
+        "target_text": "今天他们需要服务社区",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 23,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01B03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01B03",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें अभ्यास करना है",
+        "target_text": "他们需要练习",
+        "known_audio_id": "4f4ce329-ea52-4192-816e-02f8090f0a17",
+        "target1_audio_id": "eb836876-4a10-4366-a285-2b828ab02b32",
+        "target2_audio_id": "8e5cf54d-f7e1-4af2-891b-4089e363d47b",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01B03",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "अब उन्हें समुदाय की सेवा करनी है",
+        "target_text": "现在他们需要服务社区",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 24,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01U01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01U01",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें चीनी सीखनी है",
+        "target_text": "他们需要学习中文",
+        "known_audio_id": "5fbaf7fd-7aa2-4ae6-8b89-17c6ec4553df",
+        "target1_audio_id": "27819e72-eca7-4e53-826d-ecab261075c5",
+        "target2_audio_id": "ff7c40e8-54c0-4961-9335-0f6af259d0ec",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01U01",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "मुझे लगता है कि उन्हें समुदाय की सेवा करनी है",
+        "target_text": "我觉得他们需要服务社区",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 25,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01U02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01U02",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें तैयार होना है",
+        "target_text": "他们需要准备好",
+        "known_audio_id": "6dbb874f-e11c-40c2-b55a-b24c7d114978",
+        "target1_audio_id": "b0b26d1f-2690-4988-8fb0-b73b6d553b4b",
+        "target2_audio_id": "dada5f58-9616-4c95-b6b1-3ac53b95afb3",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01U02",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उसने कहा कि उन्हें समुदाय की सेवा करनी है",
+        "target_text": "他说他们需要服务社区",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 26,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01U03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01U03",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें उससे पूछना है",
+        "target_text": "他们需要问他",
+        "known_audio_id": "b5cd0adb-2e4b-417c-8520-4a061b900393",
+        "target1_audio_id": "8b37461e-d781-40fb-b9e7-a9a4c0277d94",
+        "target2_audio_id": "2c6e82e4-75dd-413f-8d2e-cba5a0a5af86",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01U03",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "वह जानता है कि उन्हें समुदाय की सेवा करनी है",
+        "target_text": "他知道他们需要服务社区",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 27,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01U04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01U04",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "आज उन्हें अभ्यास करना है",
+        "target_text": "今天他们需要练习",
+        "known_audio_id": "00284b85-231b-4ec0-a812-7269a7e20c27",
+        "target1_audio_id": "a4923b44-f814-4006-8ff6-d1ef4f7e5545",
+        "target2_audio_id": "1327bf60-a91e-405f-b46d-80530ed4914e",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01U04",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "क्या उन्हें समुदाय की सेवा करनी है?",
+        "target_text": "他们需要服务社区吗？",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 28,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0418L01U05"
+       },
+       "before": {
+        "id": "zho_for_hin:S0418L01U05",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "उन्हें कुछ कहना है",
+        "target_text": "他们需要说点什么",
+        "known_audio_id": "6eae62bc-eb78-494c-8390-d7b7c6f1179e",
+        "target1_audio_id": "ae10f03d-ec29-457b-b133-99f3385e7c25",
+        "target2_audio_id": "dc190b9f-f8f7-4ce2-b8e9-1d88d8e07916",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0418L01U05",
+        "seed_number": 418,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "मुझे नहीं लगता कि उन्हें समुदाय की सेवा करनी है",
+        "target_text": "我不觉得他们需要服务社区",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 29,
+       "op": "lego.reorder",
+       "key": {
+        "course_code": "zho_for_hin",
+        "seed_number": 418
+       },
+       "before": [
+        {
+         "id": "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+         "lego_id": "S0418L01",
+         "known_text": "उन्हें समुदाय की सेवा करनी है",
+         "target_text": "他们需要服务社区"
+        },
+        {
+         "id": "48056176-691d-4685-81e6-fbe27a4cb3a9",
+         "lego_id": "S0418L02",
+         "known_text": "समुदाय की सेवा करना",
+         "target_text": "服务社区"
+        }
+       ],
+       "after": [
+        {
+         "id": "48056176-691d-4685-81e6-fbe27a4cb3a9",
+         "lego_id": "S0418L01",
+         "known_text": "समुदाय की सेवा करना",
+         "target_text": "服务社区"
+        },
+        {
+         "id": "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+         "lego_id": "S0418L02",
+         "known_text": "उन्हें समुदाय की सेवा करनी है",
+         "target_text": "他们需要服务社区"
+        }
+       ],
+       "label_map": {
+        "S0418L02": "S0418L01",
+        "S0418L01": "S0418L02"
+       },
+       "phrase_id_map": {
+        "zho_for_hin:S0418L01B01": "zho_for_hin:S0418L02B01",
+        "zho_for_hin:S0418L01B02": "zho_for_hin:S0418L02B02",
+        "zho_for_hin:S0418L01B03": "zho_for_hin:S0418L02B03",
+        "zho_for_hin:S0418L01C01": "zho_for_hin:S0418L02C01",
+        "zho_for_hin:S0418L01C02": "zho_for_hin:S0418L02C02",
+        "zho_for_hin:S0418L01U03": "zho_for_hin:S0418L02U03",
+        "zho_for_hin:S0418L01U05": "zho_for_hin:S0418L02U05",
+        "zho_for_hin:S0418L01U01": "zho_for_hin:S0418L02U01",
+        "zho_for_hin:S0418L01U02": "zho_for_hin:S0418L02U02",
+        "zho_for_hin:S0418L01U04": "zho_for_hin:S0418L02U04",
+        "zho_for_hin:S0418L02B02": "zho_for_hin:S0418L01B02",
+        "zho_for_hin:S0418L02B01": "zho_for_hin:S0418L01B01",
+        "zho_for_hin:S0418L02B03": "zho_for_hin:S0418L01B03",
+        "zho_for_hin:S0418L02C02": "zho_for_hin:S0418L01C02",
+        "zho_for_hin:S0418L02C01": "zho_for_hin:S0418L01C01",
+        "zho_for_hin:S0418L02U01": "zho_for_hin:S0418L01U01",
+        "zho_for_hin:S0418L02U03": "zho_for_hin:S0418L01U03",
+        "zho_for_hin:S0418L02U02": "zho_for_hin:S0418L01U02",
+        "zho_for_hin:S0418L02U04": "zho_for_hin:S0418L01U04",
+        "zho_for_hin:S0418L02U05": "zho_for_hin:S0418L01U05"
+       },
+       "moved": {
+        "course_legos": 2,
+        "course_practice_phrases (lego_index / id)": 20,
+        "course_practice_phrases (id renamed)": 20,
+        "course_qa_flags.phrase_id": 0,
+        "course_practice_phrases.lego_id": 0,
+        "course_practice_phrases.connected_lego_ids": 0,
+        "decomposition phrases": 16,
+        "decomposition tiles": 17,
+        "course_qa_flags.lego_id": 0,
+        "course_audio.lego_id": 2,
+        "course_audio_usage.lego_id": 0,
+        "lego_introductions.lego_id": 2,
+        "course_lego_positions.lego_id": 0,
+        "phrases kept": 1,
+        "phrases moved": 0,
+        "phrases deleted": 0
+       },
+       "learner_state": {
+        "lego_progress": 0,
+        "learner_lego_metrics": 0,
+        "learner_l1_state": 0,
+        "course_enrollments": 0,
+        "classes": 0,
+        "class_sessions": 0,
+        "total": 0
+       },
+       "phrases": [
+        {
+         "id": "zho_for_hin:S0418L01B02",
+         "id_before_reorder": "zho_for_hin:S0418L02B02",
+         "phrase_role": "build",
+         "basket": "S0418L01",
+         "known_text": "उन्हें समुदाय की सेवा करनी है",
+         "target_text": "他们需要服务社区",
+         "status": "newly_reaches_forward",
+         "uses_later_pieces": [
+          "S0418L02"
+         ],
+         "move_to": "S0418L02",
+         "proposed": "move",
+         "why": "move to S0418L02's basket, the first where every piece it uses is taught (or edit it with a phrase.update and keep, or delete)",
+         "options": [
+          "keep",
+          "move",
+          "delete"
+         ],
+         "decision": "keep"
+        }
+       ],
+       "not_carried": {
+        "course_round_signoffs": null
+       },
+       "changed": true
+      },
+      {
+       "index": 30,
+       "op": "lego.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "lego_id": "S0530L02"
+       },
+       "before": {
+        "id": "d33ecd79-cc49-4161-b491-abce46142576",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": "S0530L02",
+        "known_text": "ताकि मैं ... सकूँ",
+        "target_text": "这样我就能",
+        "components": [
+         {
+          "known": "ताकि",
+          "target": "这样"
+         },
+         {
+          "known": "मैं",
+          "target": "我"
+         },
+         {
+          "known": "सकूँ",
+          "target": "就能"
+         }
+        ],
+        "known_audio_id": "a4899b6c-73cd-4c35-baf1-107bb57dea4d",
+        "target1_audio_id": "ecc21496-4df9-45ee-933d-f584000a66da",
+        "target2_audio_id": "d93c1263-761c-419a-9ba5-2a42a95fa886",
+        "presentation_audio_id": "f8041e0b-0a9e-48a5-af26-0f4934ee70f1"
+       },
+       "after": {
+        "id": "d33ecd79-cc49-4161-b491-abce46142576",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": "S0530L02",
+        "known_text": "ताकि मैं गिन सकूँ",
+        "target_text": "这样我就能数",
+        "components": [
+         {
+          "known": "ताकि",
+          "target": "这样"
+         },
+         {
+          "known": "मैं",
+          "target": "我"
+         },
+         {
+          "known": "सकूँ",
+          "target": "就能"
+         },
+         {
+          "known": "गिन",
+          "target": "数"
+         }
+        ],
+        "known_audio_id": "a45950fd-5c11-4093-a552-cdcdd919792c",
+        "target1_audio_id": "9f9bf331-7b07-4df4-87b3-91e9ff9b876b",
+        "target2_audio_id": "9c821daa-ddd5-4f2a-96d6-c97dfcf4e058",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 31,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02B01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02B01",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ताकि मैं ... सकूँ",
+        "target_text": "这样我就能",
+        "known_audio_id": "a4899b6c-73cd-4c35-baf1-107bb57dea4d",
+        "target1_audio_id": "ecc21496-4df9-45ee-933d-f584000a66da",
+        "target2_audio_id": "d93c1263-761c-419a-9ba5-2a42a95fa886",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02B01",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ताकि मैं गिन सकूँ",
+        "target_text": "这样我就能数",
+        "known_audio_id": "a45950fd-5c11-4093-a552-cdcdd919792c",
+        "target1_audio_id": "9f9bf331-7b07-4df4-87b3-91e9ff9b876b",
+        "target2_audio_id": "9c821daa-ddd5-4f2a-96d6-c97dfcf4e058",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 32,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02B02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02B02",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ताकि मैं गिन सकूँ",
+        "target_text": "这样我就能数",
+        "known_audio_id": "a45950fd-5c11-4093-a552-cdcdd919792c",
+        "target1_audio_id": "9f9bf331-7b07-4df4-87b3-91e9ff9b876b",
+        "target2_audio_id": "9c821daa-ddd5-4f2a-96d6-c97dfcf4e058",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02B02",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे बताइए ताकि मैं गिन सकूँ",
+        "target_text": "告诉我，这样我就能数",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 33,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02B03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02B03",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ताकि मैं जा सकूँ",
+        "target_text": "这样我就能去",
+        "known_audio_id": "ba046e66-cbb6-4027-9b9f-678b909f9bde",
+        "target1_audio_id": "9a1173e7-baa4-4b04-8c8a-4a1043f96f57",
+        "target2_audio_id": "0342e599-0b65-4c92-a765-bb457253edcd",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02B03",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "इसे यहाँ रखिए ताकि मैं गिन सकूँ",
+        "target_text": "放在这里，这样我就能数",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 34,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02B04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02B04",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ताकि मैं देख सकूँ",
+        "target_text": "这样我就能看",
+        "known_audio_id": "6af244d9-4cc0-44c4-9f48-865cfab0cbe9",
+        "target1_audio_id": "00423bc2-c37e-4b6b-b111-b79770bc0968",
+        "target2_audio_id": "68018aa9-6bc4-4b7a-84f4-5628032ec115",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02B04",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं गिन सकूँ",
+        "target_text": "给我一点时间，这样我就能数",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 35,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02U02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02U02",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे बताइए ताकि मैं समझ सकूँ",
+        "target_text": "告诉我，这样我就能理解",
+        "known_audio_id": "2922e480-b339-4bc4-85fe-6a8b7a8ce62f",
+        "target1_audio_id": "edfb7cca-f67e-4602-8969-aa82ba1941de",
+        "target2_audio_id": "6b3d434f-87d2-4d5e-b038-3864fbed4fb9",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02U02",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे बताइए ताकि मैं उन्हें गिन सकूँ",
+        "target_text": "告诉我，这样我就能数了",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 36,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02U03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02U03",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "इसे यहाँ रखिए ताकि मैं देख सकूँ",
+        "target_text": "放在这里，这样我就能看",
+        "known_audio_id": "a06250de-6583-4af0-ae9e-554b971c29e7",
+        "target1_audio_id": "c0803ccc-1fcb-4d95-93dd-14facf9dd28e",
+        "target2_audio_id": "d23a223f-8dd6-4426-bb46-12d88a9a3aa3",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02U03",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "इसे यहाँ रखिए ताकि मैं उन्हें गिन सकूँ",
+        "target_text": "放在这里，这样我就能数了",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 37,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02U04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02U04",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं ख़त्म कर सकूँ",
+        "target_text": "给我一点时间，这样我就能做完",
+        "known_audio_id": "6175b016-8938-4351-a29b-24b9d0b4c2c0",
+        "target1_audio_id": "f26d8f5d-1dac-45aa-b2d4-c8243651ce6c",
+        "target2_audio_id": "d577a95b-c49d-4e3c-9d4c-136a3001478b",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02U04",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं उन्हें गिन सकूँ",
+        "target_text": "给我一点时间，这样我就能数了",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 38,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0530L02U05"
+       },
+       "before": {
+        "id": "zho_for_hin:S0530L02U05",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मुझे बताइए ताकि मैं आपकी मदद कर सकूँ",
+        "target_text": "告诉我，这样我就能帮你",
+        "known_audio_id": "3057325d-e89a-4e11-9feb-b9a07fc6469c",
+        "target1_audio_id": "1dd4128c-088b-4148-95e5-256e6f6028ef",
+        "target2_audio_id": "442573d4-9f46-4c5d-908a-4c2a2e5a602c",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0530L02U05",
+        "seed_number": 530,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मेरी मदद कीजिए ताकि मैं गिन सकूँ",
+        "target_text": "帮我，这样我就能数",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 39,
+       "op": "lego.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "lego_id": "S0570L02"
+       },
+       "before": {
+        "id": "b77060eb-c216-4d0e-85b4-adeafca38149",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": "S0570L02",
+        "known_text": "अपनी ... के लिए",
+        "target_text": "为你的",
+        "components": [
+         {
+          "known": "के लिए",
+          "target": "为"
+         },
+         {
+          "known": "अपनी",
+          "target": "你的"
+         }
+        ],
+        "known_audio_id": "9b2cf5f7-8ffe-42cf-91a5-7ce4b9bf7ca5",
+        "target1_audio_id": "999afcbf-6cbd-4ebe-834d-f600168f1991",
+        "target2_audio_id": "1cd7f79f-cc32-4b4d-89ca-5f8fa51b9292",
+        "presentation_audio_id": "6fbcfc16-1740-42e7-a086-86d8d998a390"
+       },
+       "after": {
+        "id": "b77060eb-c216-4d0e-85b4-adeafca38149",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": "S0570L02",
+        "known_text": "अपनी टिकट के लिए",
+        "target_text": "为你的票",
+        "components": [
+         {
+          "known": "के लिए",
+          "target": "为"
+         },
+         {
+          "known": "अपनी",
+          "target": "你的"
+         },
+         {
+          "known": "टिकट",
+          "target": "票"
+         }
+        ],
+        "known_audio_id": "603e512e-d37c-40e2-8ecf-796f9ea6e1f3",
+        "target1_audio_id": "359df375-d931-4c1b-b979-ef01140759ff",
+        "target2_audio_id": "360657e2-5d66-4ecb-9f13-71dcba7db782",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 40,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0570L02B01"
+       },
+       "before": {
+        "id": "zho_for_hin:S0570L02B01",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपनी ... के लिए",
+        "target_text": "为你的",
+        "known_audio_id": "9b2cf5f7-8ffe-42cf-91a5-7ce4b9bf7ca5",
+        "target1_audio_id": "999afcbf-6cbd-4ebe-834d-f600168f1991",
+        "target2_audio_id": "1cd7f79f-cc32-4b4d-89ca-5f8fa51b9292",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0570L02B01",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपनी टिकट के लिए",
+        "target_text": "为你的票",
+        "known_audio_id": "603e512e-d37c-40e2-8ecf-796f9ea6e1f3",
+        "target1_audio_id": "359df375-d931-4c1b-b979-ef01140759ff",
+        "target2_audio_id": "360657e2-5d66-4ecb-9f13-71dcba7db782",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 41,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0570L02B02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0570L02B02",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपनी टिकट के लिए",
+        "target_text": "为你的票",
+        "known_audio_id": "603e512e-d37c-40e2-8ecf-796f9ea6e1f3",
+        "target1_audio_id": "359df375-d931-4c1b-b979-ef01140759ff",
+        "target2_audio_id": "360657e2-5d66-4ecb-9f13-71dcba7db782",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0570L02B02",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपनी टिकट के लिए भुगतान",
+        "target_text": "为你的票付钱",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 42,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0570L02B03"
+       },
+       "before": {
+        "id": "zho_for_hin:S0570L02B03",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपने काम के लिए",
+        "target_text": "为你的工作",
+        "known_audio_id": "25d61a22-8f8a-446f-bef1-806546576c70",
+        "target1_audio_id": "0bb321e0-e1b3-4709-88a7-35c698251f82",
+        "target2_audio_id": "97974c91-4df3-4f92-95bd-7bb858e9a65b",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0570L02B03",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपनी टिकट के लिए कितना",
+        "target_text": "为你的票付多少钱",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 43,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0570L02B04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0570L02B04",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपने घर के लिए",
+        "target_text": "为你的家",
+        "known_audio_id": "bb79bc09-33b2-4afe-8a38-ee720bfc7747",
+        "target1_audio_id": "f82f5464-6879-446f-90bc-8aea616c82da",
+        "target2_audio_id": "afb29e2f-0f03-41bb-9954-5fd3798a5b52",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0570L02B04",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "अपनी टिकट के लिए काम",
+        "target_text": "为你的票工作",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 44,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0570L02U02"
+       },
+       "before": {
+        "id": "zho_for_hin:S0570L02U02",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मैं आपके काम के लिए भुगतान करूँगा",
+        "target_text": "我为你的工作付钱",
+        "known_audio_id": "047ef0d5-c8f8-406a-b557-7f64c5f334e3",
+        "target1_audio_id": "beb1898a-301b-406b-9f4e-91ddba8985f9",
+        "target2_audio_id": "bc9ddb23-3a71-4149-b180-52949defa05e",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0570L02U02",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मैं आपकी टिकट के लिए भुगतान करूँगा",
+        "target_text": "我为你的票付钱",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 45,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "zho_for_hin",
+        "id": "zho_for_hin:S0570L02U04"
+       },
+       "before": {
+        "id": "zho_for_hin:S0570L02U04",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मैं आपके घर के लिए काम करता हूँ",
+        "target_text": "我为你的家工作",
+        "known_audio_id": "8f6dcded-9007-4b55-9bd7-abe0cef9dfbb",
+        "target1_audio_id": "987525b9-417b-4fa8-88e7-8123ed45bc62",
+        "target2_audio_id": "8e143595-51ba-4af9-9108-0ddcac95f012",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "zho_for_hin:S0570L02U04",
+        "seed_number": 570,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "मैं आपकी टिकट के लिए काम करता हूँ",
+        "target_text": "我为你的票工作",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0182L01",
+         "S0395L01",
+         "S0418L01",
+         "S0530L02",
+         "S0570L02"
+        ]
+       },
+       "skipped": true,
+       "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+       "changed": false
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0570L02U04",
+       "set": {
+        "known_text": "मैं आपके घर के लिए काम करता हूँ",
+        "target_text": "我为你的家工作",
+        "known_audio_id": "8f6dcded-9007-4b55-9bd7-abe0cef9dfbb",
+        "target1_audio_id": "987525b9-417b-4fa8-88e7-8123ed45bc62",
+        "target2_audio_id": "8e143595-51ba-4af9-9108-0ddcac95f012"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0570L02U02",
+       "set": {
+        "known_text": "मैं आपके काम के लिए भुगतान करूँगा",
+        "target_text": "我为你的工作付钱",
+        "known_audio_id": "047ef0d5-c8f8-406a-b557-7f64c5f334e3",
+        "target1_audio_id": "beb1898a-301b-406b-9f4e-91ddba8985f9",
+        "target2_audio_id": "bc9ddb23-3a71-4149-b180-52949defa05e"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0570L02B04",
+       "set": {
+        "known_text": "अपने घर के लिए",
+        "target_text": "为你的家",
+        "known_audio_id": "bb79bc09-33b2-4afe-8a38-ee720bfc7747",
+        "target1_audio_id": "f82f5464-6879-446f-90bc-8aea616c82da",
+        "target2_audio_id": "afb29e2f-0f03-41bb-9954-5fd3798a5b52"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0570L02B03",
+       "set": {
+        "known_text": "अपने काम के लिए",
+        "target_text": "为你的工作",
+        "known_audio_id": "25d61a22-8f8a-446f-bef1-806546576c70",
+        "target1_audio_id": "0bb321e0-e1b3-4709-88a7-35c698251f82",
+        "target2_audio_id": "97974c91-4df3-4f92-95bd-7bb858e9a65b"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0570L02B02",
+       "set": {
+        "known_text": "अपनी टिकट के लिए",
+        "target_text": "为你的票",
+        "known_audio_id": "603e512e-d37c-40e2-8ecf-796f9ea6e1f3",
+        "target1_audio_id": "359df375-d931-4c1b-b979-ef01140759ff",
+        "target2_audio_id": "360657e2-5d66-4ecb-9f13-71dcba7db782"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0570L02B01",
+       "set": {
+        "known_text": "अपनी ... के लिए",
+        "target_text": "为你的",
+        "known_audio_id": "9b2cf5f7-8ffe-42cf-91a5-7ce4b9bf7ca5",
+        "target1_audio_id": "999afcbf-6cbd-4ebe-834d-f600168f1991",
+        "target2_audio_id": "1cd7f79f-cc32-4b4d-89ca-5f8fa51b9292"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "b77060eb-c216-4d0e-85b4-adeafca38149",
+       "set": {
+        "known_text": "अपनी ... के लिए",
+        "target_text": "为你的",
+        "components": [
+         {
+          "known": "के लिए",
+          "target": "为"
+         },
+         {
+          "known": "अपनी",
+          "target": "你的"
+         }
+        ],
+        "known_audio_id": "9b2cf5f7-8ffe-42cf-91a5-7ce4b9bf7ca5",
+        "target1_audio_id": "999afcbf-6cbd-4ebe-834d-f600168f1991",
+        "target2_audio_id": "1cd7f79f-cc32-4b4d-89ca-5f8fa51b9292",
+        "presentation_audio_id": "6fbcfc16-1740-42e7-a086-86d8d998a390"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02U05",
+       "set": {
+        "known_text": "मुझे बताइए ताकि मैं आपकी मदद कर सकूँ",
+        "target_text": "告诉我，这样我就能帮你",
+        "known_audio_id": "3057325d-e89a-4e11-9feb-b9a07fc6469c",
+        "target1_audio_id": "1dd4128c-088b-4148-95e5-256e6f6028ef",
+        "target2_audio_id": "442573d4-9f46-4c5d-908a-4c2a2e5a602c"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02U04",
+       "set": {
+        "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं ख़त्म कर सकूँ",
+        "target_text": "给我一点时间，这样我就能做完",
+        "known_audio_id": "6175b016-8938-4351-a29b-24b9d0b4c2c0",
+        "target1_audio_id": "f26d8f5d-1dac-45aa-b2d4-c8243651ce6c",
+        "target2_audio_id": "d577a95b-c49d-4e3c-9d4c-136a3001478b"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02U03",
+       "set": {
+        "known_text": "इसे यहाँ रखिए ताकि मैं देख सकूँ",
+        "target_text": "放在这里，这样我就能看",
+        "known_audio_id": "a06250de-6583-4af0-ae9e-554b971c29e7",
+        "target1_audio_id": "c0803ccc-1fcb-4d95-93dd-14facf9dd28e",
+        "target2_audio_id": "d23a223f-8dd6-4426-bb46-12d88a9a3aa3"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02U02",
+       "set": {
+        "known_text": "मुझे बताइए ताकि मैं समझ सकूँ",
+        "target_text": "告诉我，这样我就能理解",
+        "known_audio_id": "2922e480-b339-4bc4-85fe-6a8b7a8ce62f",
+        "target1_audio_id": "edfb7cca-f67e-4602-8969-aa82ba1941de",
+        "target2_audio_id": "6b3d434f-87d2-4d5e-b038-3864fbed4fb9"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02B04",
+       "set": {
+        "known_text": "ताकि मैं देख सकूँ",
+        "target_text": "这样我就能看",
+        "known_audio_id": "6af244d9-4cc0-44c4-9f48-865cfab0cbe9",
+        "target1_audio_id": "00423bc2-c37e-4b6b-b111-b79770bc0968",
+        "target2_audio_id": "68018aa9-6bc4-4b7a-84f4-5628032ec115"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02B03",
+       "set": {
+        "known_text": "ताकि मैं जा सकूँ",
+        "target_text": "这样我就能去",
+        "known_audio_id": "ba046e66-cbb6-4027-9b9f-678b909f9bde",
+        "target1_audio_id": "9a1173e7-baa4-4b04-8c8a-4a1043f96f57",
+        "target2_audio_id": "0342e599-0b65-4c92-a765-bb457253edcd"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02B02",
+       "set": {
+        "known_text": "ताकि मैं गिन सकूँ",
+        "target_text": "这样我就能数",
+        "known_audio_id": "a45950fd-5c11-4093-a552-cdcdd919792c",
+        "target1_audio_id": "9f9bf331-7b07-4df4-87b3-91e9ff9b876b",
+        "target2_audio_id": "9c821daa-ddd5-4f2a-96d6-c97dfcf4e058"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0530L02B01",
+       "set": {
+        "known_text": "ताकि मैं ... सकूँ",
+        "target_text": "这样我就能",
+        "known_audio_id": "a4899b6c-73cd-4c35-baf1-107bb57dea4d",
+        "target1_audio_id": "ecc21496-4df9-45ee-933d-f584000a66da",
+        "target2_audio_id": "d93c1263-761c-419a-9ba5-2a42a95fa886"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "d33ecd79-cc49-4161-b491-abce46142576",
+       "set": {
+        "known_text": "ताकि मैं ... सकूँ",
+        "target_text": "这样我就能",
+        "components": [
+         {
+          "known": "ताकि",
+          "target": "这样"
+         },
+         {
+          "known": "मैं",
+          "target": "我"
+         },
+         {
+          "known": "सकूँ",
+          "target": "就能"
+         }
+        ],
+        "known_audio_id": "a4899b6c-73cd-4c35-baf1-107bb57dea4d",
+        "target1_audio_id": "ecc21496-4df9-45ee-933d-f584000a66da",
+        "target2_audio_id": "d93c1263-761c-419a-9ba5-2a42a95fa886",
+        "presentation_audio_id": "f8041e0b-0a9e-48a5-af26-0f4934ee70f1"
+       }
+      },
+      {
+       "op": "lego.reorder",
+       "seed_number": 418,
+       "order": [
+        "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+        "48056176-691d-4685-81e6-fbe27a4cb3a9"
+       ],
+       "phrases_default": "keep"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01U05",
+       "set": {
+        "known_text": "उन्हें कुछ कहना है",
+        "target_text": "他们需要说点什么",
+        "known_audio_id": "6eae62bc-eb78-494c-8390-d7b7c6f1179e",
+        "target1_audio_id": "ae10f03d-ec29-457b-b133-99f3385e7c25",
+        "target2_audio_id": "dc190b9f-f8f7-4ce2-b8e9-1d88d8e07916"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01U04",
+       "set": {
+        "known_text": "आज उन्हें अभ्यास करना है",
+        "target_text": "今天他们需要练习",
+        "known_audio_id": "00284b85-231b-4ec0-a812-7269a7e20c27",
+        "target1_audio_id": "a4923b44-f814-4006-8ff6-d1ef4f7e5545",
+        "target2_audio_id": "1327bf60-a91e-405f-b46d-80530ed4914e"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01U03",
+       "set": {
+        "known_text": "उन्हें उससे पूछना है",
+        "target_text": "他们需要问他",
+        "known_audio_id": "b5cd0adb-2e4b-417c-8520-4a061b900393",
+        "target1_audio_id": "8b37461e-d781-40fb-b9e7-a9a4c0277d94",
+        "target2_audio_id": "2c6e82e4-75dd-413f-8d2e-cba5a0a5af86"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01U02",
+       "set": {
+        "known_text": "उन्हें तैयार होना है",
+        "target_text": "他们需要准备好",
+        "known_audio_id": "6dbb874f-e11c-40c2-b55a-b24c7d114978",
+        "target1_audio_id": "b0b26d1f-2690-4988-8fb0-b73b6d553b4b",
+        "target2_audio_id": "dada5f58-9616-4c95-b6b1-3ac53b95afb3"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01U01",
+       "set": {
+        "known_text": "उन्हें चीनी सीखनी है",
+        "target_text": "他们需要学习中文",
+        "known_audio_id": "5fbaf7fd-7aa2-4ae6-8b89-17c6ec4553df",
+        "target1_audio_id": "27819e72-eca7-4e53-826d-ecab261075c5",
+        "target2_audio_id": "ff7c40e8-54c0-4961-9335-0f6af259d0ec"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01B03",
+       "set": {
+        "known_text": "उन्हें अभ्यास करना है",
+        "target_text": "他们需要练习",
+        "known_audio_id": "4f4ce329-ea52-4192-816e-02f8090f0a17",
+        "target1_audio_id": "eb836876-4a10-4366-a285-2b828ab02b32",
+        "target2_audio_id": "8e5cf54d-f7e1-4af2-891b-4089e363d47b"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01B02",
+       "set": {
+        "known_text": "उन्हें सीखना है",
+        "target_text": "他们需要学习",
+        "known_audio_id": "f6be3e9e-bfaf-4501-a2bc-9b89cc29e442",
+        "target1_audio_id": "5630528c-7a54-42bf-a16c-7e34340be444",
+        "target2_audio_id": "2717dddd-212a-45f7-9a35-35e03dffb9e5"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0418L01B01",
+       "set": {
+        "known_text": "उन्हें ...ना है",
+        "target_text": "他们需要",
+        "known_audio_id": "0ba62518-c4c5-473f-835b-0325c8abc3bd",
+        "target1_audio_id": "e0bc1daa-63a8-434a-ab62-69fa00940250",
+        "target2_audio_id": "4bdad5e5-1519-4f97-ae72-18585fe6f4a1"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+       "set": {
+        "known_text": "उन्हें ...ना है",
+        "target_text": "他们需要",
+        "components": [
+         {
+          "known": "उन्हें",
+          "target": "他们"
+         },
+         {
+          "known": "ना है",
+          "target": "需要"
+         }
+        ],
+        "known_audio_id": "0ba62518-c4c5-473f-835b-0325c8abc3bd",
+        "target1_audio_id": "e0bc1daa-63a8-434a-ab62-69fa00940250",
+        "target2_audio_id": "4bdad5e5-1519-4f97-ae72-18585fe6f4a1",
+        "presentation_audio_id": "93a6af98-7b87-4d97-8f25-226d3a17e9ce"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01U05",
+       "set": {
+        "known_text": "हमें तैयार होना है",
+        "target_text": "我们要准备好",
+        "known_audio_id": "f0243026-0ee3-4ad2-83ed-6eb2edecac4c",
+        "target1_audio_id": "ba2d40f9-f0fa-470a-bc7b-c00f72eaf9d3",
+        "target2_audio_id": "fe6a3108-ab2f-4e19-83f7-7cfded3ab050"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01U04",
+       "set": {
+        "known_text": "हमें उससे पूछना है",
+        "target_text": "我们要问他",
+        "known_audio_id": "9c24530f-c490-4aa5-90b5-af7595107ca2",
+        "target1_audio_id": "44ff9bba-6c6d-4efc-af48-79428a50217f",
+        "target2_audio_id": "4b8c3221-9aa8-4ef8-93eb-a77a7a46c203"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01U03",
+       "set": {
+        "known_text": "आज हमें अभ्यास करना है",
+        "target_text": "今天我们要练习",
+        "known_audio_id": "c578f79a-753a-43ec-9042-cfc371b94b51",
+        "target1_audio_id": "e636a74a-e7a6-49c5-b4ed-b5c57516f1a2",
+        "target2_audio_id": "9e9f541c-53e0-4d37-b121-df223ae466e2"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01U02",
+       "set": {
+        "known_text": "हमें कुछ कहना है",
+        "target_text": "我们要说点什么",
+        "known_audio_id": "83320974-0c43-4533-817b-12d3648d2418",
+        "target1_audio_id": "11d835eb-4a49-41e8-978e-1db966aeb0e4",
+        "target2_audio_id": "0ece8ba0-94eb-41c4-b69f-96ad7f90f65c"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01U01",
+       "set": {
+        "known_text": "हमें चीनी सीखनी है",
+        "target_text": "我们要学习中文",
+        "known_audio_id": "31f33246-36cc-44e9-b694-27cf4d8121cf",
+        "target1_audio_id": "4e4106e1-6558-4ecd-aa11-4d03b1bcc1f1",
+        "target2_audio_id": "c9432f0b-f7c5-4cd2-af15-03c40849526b"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01B03",
+       "set": {
+        "known_text": "हमें सीखना है",
+        "target_text": "我们要学习",
+        "known_audio_id": "f7d2a592-768d-4e68-8fde-502025e91249",
+        "target1_audio_id": "e9d30ce5-083e-41bf-b39c-874d267de7c1",
+        "target2_audio_id": "3d27ff64-f277-4d82-8351-4f1942081cac"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01B02",
+       "set": {
+        "known_text": "हमें अभ्यास करना है",
+        "target_text": "我们要练习",
+        "known_audio_id": "4b07bfbc-cec9-4b24-b436-630eaa5059e7",
+        "target1_audio_id": "8f370a72-47ca-4e1c-8d1c-7af7e011262f",
+        "target2_audio_id": "8c85bdda-8d6c-4bad-a1de-c1b9a8999c15"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0395L01B01",
+       "set": {
+        "known_text": "हमें ...ना है",
+        "target_text": "我们要",
+        "known_audio_id": "db43d0b2-4768-4af1-b132-ce49c9660b11",
+        "target1_audio_id": "9cd0dddc-ef35-4e44-8cbf-34e73bc6d9f2",
+        "target2_audio_id": "622aa03b-71c9-4511-b7cb-de32452f66bf"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "e83b488b-4b8b-49b2-ae17-e86c4ed4aa5c",
+       "set": {
+        "known_text": "हमें ...ना है",
+        "target_text": "我们要",
+        "components": [
+         {
+          "known": "हमें",
+          "target": "我们"
+         },
+         {
+          "known": "ना है",
+          "target": "要"
+         }
+        ],
+        "known_audio_id": "db43d0b2-4768-4af1-b132-ce49c9660b11",
+        "target1_audio_id": "9cd0dddc-ef35-4e44-8cbf-34e73bc6d9f2",
+        "target2_audio_id": "622aa03b-71c9-4511-b7cb-de32452f66bf",
+        "presentation_audio_id": "7a4c6848-fb16-4b97-b289-293d69ec9041"
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "zho_for_hin:S0182L01U06",
+        "seed_number": 182,
+        "lego_index": 1,
+        "position": 12,
+        "known_text": "क्या आप चीनी सीखते हैं?",
+        "target_text": "你有没有学中文？",
+        "word_count": 8,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 6,
+         "format": "build_use",
+         "scored_at": "2026-07-27T23:38:34.790Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-07-27T23:38:34.832Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "dc62859d-415c-464b-a141-c39d9a2f7846",
+        "target1_audio_id": "fb468c1e-0d09-4b48-a461-fd6fb02ab52a",
+        "target2_audio_id": "ed8a7db3-6c79-4921-8b03-110d3d321327",
+        "qa_checked": null,
+        "target1_duration_ms": 1680,
+        "target2_duration_ms": 1584,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "你",
+          "isGhost": true
+         },
+         {
+          "known": "क्या ... है",
+          "legoId": "S0182L01",
+          "target": "有没有",
+          "isGhost": false
+         },
+         {
+          "known": "चीनी सीखना",
+          "legoId": "S0064L01",
+          "target": "学中文",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "？",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1429,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01U05",
+       "set": {
+        "known_text": "क्या आपने उसे देखा?",
+        "target_text": "你有没有看到他？",
+        "known_audio_id": "5a6c5ad0-d10a-4878-b4e1-21747abbed85",
+        "target1_audio_id": "1f228fff-5963-4e8e-9b32-47d5017ec5ac",
+        "target2_audio_id": "5af2d001-5f21-40cd-8185-d0647aee1e70"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01U04",
+       "set": {
+        "known_text": "क्या आपके पास अभ्यास करने का समय है?",
+        "target_text": "你有没有时间练习？",
+        "known_audio_id": "bf0d087b-5f4b-4dfa-83ba-7eba9f601807",
+        "target1_audio_id": "e7edd3a3-674f-4726-bcda-6f926bbefad8",
+        "target2_audio_id": "b3e137c6-3613-446e-9d20-504ca07386db"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01U03",
+       "set": {
+        "known_text": "क्या आपने मेरी किताब देखी?",
+        "known_audio_id": "79460fb3-3c10-4f43-aeae-9a2757fc7b21"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01U02",
+       "set": {
+        "known_text": "क्या आपके पास चीनी किताब है?",
+        "target_text": "你有没有中文书？",
+        "known_audio_id": "8ae5238c-4439-4003-b3a6-dc3aaa2b7739",
+        "target1_audio_id": "f2513bdf-1230-4f2b-9f88-42502a1b4bd1",
+        "target2_audio_id": "5d3fdd28-5a3c-4165-b2db-b55f10f0dcaa"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01U01",
+       "set": {
+        "known_text": "क्या आपके पास समय है?",
+        "target_text": "你有没有时间？",
+        "known_audio_id": "573c2857-3007-4d1a-b25e-6feea7400113",
+        "target1_audio_id": "d642cfc2-79ef-4bad-aaf1-17206a4566c5",
+        "target2_audio_id": "d16375ba-14d0-4e65-aeea-eb28b5ed1ac9"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01B04",
+       "set": {
+        "known_text": "किताब है या नहीं",
+        "target_text": "有没有书",
+        "known_audio_id": "165135f0-f13b-4a03-86ff-f437c3822df2",
+        "target1_audio_id": "92c119ca-241e-44a7-a9ad-dd848367907d",
+        "target2_audio_id": "ebcd8616-0a4c-4ea9-b158-ab32e31e89e4"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01B03",
+       "set": {
+        "known_text": "देखा या नहीं",
+        "target_text": "有没有看到",
+        "known_audio_id": "46ff56c3-bd5f-440c-ae7f-4aea9a8bc226",
+        "target1_audio_id": "c0951ae2-446b-49fd-a286-d919f8e9811f",
+        "target2_audio_id": "c4a6d587-6796-460b-bbd6-9c90ed3ffd74"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01B02",
+       "set": {
+        "known_text": "समय है या नहीं",
+        "target_text": "有没有时间",
+        "known_audio_id": "56ca18bd-f879-4fe7-8d16-c0227403fff8",
+        "target1_audio_id": "eeb76515-9ebc-42af-a283-52b0cf537d32",
+        "target2_audio_id": "1c4d2efb-c641-4d86-bb75-051fdadb3810"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "zho_for_hin:S0182L01B01",
+       "set": {
+        "known_text": "क्या ... है",
+        "target_text": "有没有",
+        "known_audio_id": "020148b0-0610-4765-a73e-d50b6a334c1e",
+        "target1_audio_id": "9c02d303-9ab9-4bc6-a2b2-d98963209434",
+        "target2_audio_id": "bb50c17e-612b-4f95-a03a-cd23a6231f50"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "271a3a2c-b805-4dcb-8831-02791f54047a",
+       "set": {
+        "known_text": "क्या ... है",
+        "target_text": "有没有",
+        "components": [
+         {
+          "known": "है",
+          "target": "有"
+         },
+         {
+          "known": "नहीं है",
+          "target": "没有"
+         }
+        ],
+        "known_audio_id": "020148b0-0610-4765-a73e-d50b6a334c1e",
+        "target1_audio_id": "9c02d303-9ab9-4bc6-a2b2-d98963209434",
+        "target2_audio_id": "bb50c17e-612b-4f95-a03a-cd23a6231f50",
+        "presentation_audio_id": "0a9aa076-5591-4c11-aabb-5add80334acc"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
  }
 }

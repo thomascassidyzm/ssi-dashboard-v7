@@ -1,0 +1,678 @@
+{
+ "course": "ara_eg_for_eng",
+ "legos": [
+  {
+   "id": "S0020L01",
+   "verdict": "regloss",
+   "pattern": "P",
+   "known": "you learn",
+   "add": [
+    [
+     "b",
+     "you learn Arabic",
+     "تتعلم عربي"
+    ]
+   ],
+   "why": "'to learn' is the prompt for أتعلم (I-form, S0002L02) and for تتعلم (you-form, here). K26: 'the PERSON must match on both sides — where the target verb marks a person the known language marks with a pronoun, the known side carries that pronoun'. The first-taught form keeps 'to learn'; this later one becomes 'you learn | تتعلم', as the course itself already writes it at S0079L02. All 8 rows say 'you want to learn …' and stay. POV pass (precedent S0079L02, S0061L02 'you say | تقول')."
+  },
+  {
+   "id": "S0079L02",
+   "verdict": "regloss",
+   "pattern": "P",
+   "is_new": false,
+   "closes": [
+    "dup"
+   ],
+   "basket": {
+    "U05": "keep"
+   },
+   "why": "knock-on of S0020L01: 'you learn | تتعلم' is now taught at seed 20, so this copy at seed 79 is a duplicate. L27: 'a LEGO that grows into one that already exists is a duplicate and is introduced once' — so the later copy goes not-new, and (P25) its rows stop playing. Its seed sentence already sits under S0079L01 once that LEGO is re-cut (below)."
+  },
+  {
+   "id": "S0079L01",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "when did you start",
+   "target": "إمتى بدأت",
+   "type": "M",
+   "components": [
+    [
+     "when",
+     "إمتى"
+    ],
+    [
+     "did you start",
+     "بدأت"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "when did you start",
+     "إمتى بدأت"
+    ],
+    "B02": [
+     "when did you start here",
+     "إمتى بدأت هنا"
+    ],
+    "B03": [
+     "but when did you start",
+     "بس إمتى بدأت"
+    ],
+    "U01": [
+     "when did you start to learn",
+     "إنت إمتى بدأت تتعلم"
+    ],
+    "U02": [
+     "when did you start to learn Arabic",
+     "إمتى بدأت تتعلم عربي"
+    ],
+    "U03": "keep",
+    "U04": [
+     "when did you start to speak Arabic",
+     "إمتى بدأت تتكلم عربي"
+    ],
+    "U05": "keep"
+   },
+   "ack_rows": [
+    "U01"
+   ],
+   "add": [
+    [
+     "b",
+     "when did you start with me",
+     "إمتى بدأت معايا"
+    ]
+   ],
+   "why": "'when' is the prompt for لما (the joining word, S0034L03) and for إمتى (the question word, here), and this LEGO carries a '?' as a label — Kai: never disambiguating labels on LEGOs, 'a would-be clash stays inside the bigger LEGO'. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Both words are needed, so the question word grows to its seed piece: 'when did you start | إمتى بدأت' (4 syllables), as the course already does at S0081L01 'when do you want to | إمتى عايز' and S0255L02. Three rows already say it; three were machine filler ('when question before') and two had no 'start'; those five are rewritten. The seed sentence is one of the rows (P26). S0252L02 (not-new 'when | إمتى') is never played and is left as it is."
+  },
+  {
+   "id": "S0222L02",
+   "verdict": "grow",
+   "pattern": "P",
+   "known": "he tells me",
+   "target": "يقول لي",
+   "type": "M",
+   "components": [
+    [
+     "he tells",
+     "يقول"
+    ],
+    [
+     "me",
+     "لي"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "he tells me",
+     "يقول لي"
+    ],
+    "B02": [
+     "he wants to tell me",
+     "عايز يقول لي"
+    ],
+    "B03": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U03": [
+     "I know what he wants to tell me",
+     "أنا عارف اللي عايز يقول لي"
+    ],
+    "U04": "keep"
+   },
+   "why": "'to say' is the prompt for أقول (I-form, S0004L01) and for يقول (he-form, here) — and seed 222 does not say 'say' at all, it says 'tell me' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). K26: 'the PERSON must match on both sides — where the target verb marks a person the known language marks with a pronoun, the known side carries that pronoun'. New LEGO 'he tells me | يقول لي' (3 syllables) is the seed's own piece and also covers لي, which no LEGO of this seed taught. It cannot be 'to tell me': that prompt already belongs to تقول لي (S0070L03). 4 of 7 rows already say يقول لي."
+  },
+  {
+   "id": "S0022L02",
+   "verdict": "regloss",
+   "pattern": "P",
+   "known": "I meet",
+   "basket": {
+    "B03": "keep",
+    "U03": "keep"
+   },
+   "why": "'to meet' is the prompt for نتقابل (we-form, S0018L02, taught first) and for أتقابل (I-form, here). K26: 'the PERSON must match on both sides — where the target verb marks a person the known language marks with a pronoun, the known side carries that pronoun'. This later one becomes 'I meet | أتقابل'. It cannot be done the other way round: 'we meet | نتقابل' is already a LEGO at S0138L04. Rows are read at plan time."
+  },
+  {
+   "id": "S0204L02",
+   "verdict": "regloss",
+   "pattern": "P",
+   "ack": [
+    "known"
+   ],
+   "known": "she helps you",
+   "basket": {
+    "B01": [
+     "she helps you",
+     "تساعدك"
+    ],
+    "B02": "keep",
+    "B03": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep",
+    "U06": "keep"
+   },
+   "why": "'help you' is the prompt for أساعدك (I-form, S0062L01, taught first) and for تساعدك (she-form, here). K26: 'the PERSON must match on both sides — where the target verb marks a person the known language marks with a pronoun, the known side carries that pronoun'. This one becomes 'she helps you | تساعدك'. All rows already name her ('I wanted her to help you', 'she needs to help you') and stay."
+  },
+  {
+   "id": "S0045L01",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "to know",
+   "why": "'I know' is the prompt for أعرف (here) and for عارف (S0059L01). Seed 45 says 'I don't need TO KNOW everything', not 'I know' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Re-glossed to the seed's own 'to know | أعرف'; 'I know | عارف' keeps its prompt. All 7 rows already say 'to know' and stay. This also settles the scan row for S0059L01."
+  },
+  {
+   "id": "S0077L04",
+   "verdict": "grow",
+   "pattern": "S",
+   "known": "I'm starting to understand",
+   "target": "بدأت أفهم",
+   "type": "M",
+   "components": [
+    [
+     "I'm starting",
+     "بدأت"
+    ],
+    [
+     "to understand",
+     "أفهم"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "I'm starting to understand",
+     "بدأت أفهم"
+    ],
+    "B02": [
+     "I'm starting to understand here",
+     "بدأت أفهم هنا"
+    ],
+    "B03": [
+     "I'm starting to understand quickly",
+     "بدأت أفهم بسرعة"
+    ],
+    "U02": [
+     "I'm starting to understand Arabic",
+     "بدأت أفهم عربي"
+    ],
+    "U03": [
+     "I'm starting to understand today",
+     "بدأت أفهم النهارده"
+    ],
+    "U04": [
+     "I'm surprised at how quickly I'm starting to understand",
+     "أنا متفاجئ إزاي بسرعة بدأت أفهم"
+    ],
+    "U05": [
+     "I'm starting to understand a lot",
+     "بدأت أفهم كتير"
+    ]
+   },
+   "ack_rows": [
+    "U04"
+   ],
+   "add": [
+    [
+     "b",
+     "but I'm starting to understand",
+     "بس بدأت أفهم"
+    ]
+   ],
+   "why": "'I started' is the prompt for أنا بدأت (S0037L01) and for بدأت (here) — the same words with and without 'I', so a learner cannot know which is wanted. Seed 77 does not say 'I started'; it says 'I'm starting to understand' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed's piece 'I'm starting to understand | بدأت أفهم' (4 syllables), which also covers أفهم, in no LEGO of this seed. Two rows already say it; five are rewritten and the seed sentence becomes a row (P26)."
+  },
+  {
+   "id": "S0038L04",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "about a week",
+   "target": "حوالي أسبوع",
+   "type": "M",
+   "components": [
+    [
+     "about",
+     "حوالي"
+    ],
+    [
+     "a week",
+     "أسبوع"
+    ]
+   ],
+   "ack": [
+    "thin"
+   ],
+   "add": [
+    [
+     "b",
+     "for about a week now",
+     "حوالي أسبوع دلوقتي"
+    ]
+   ],
+   "why": "'about' is the prompt for حوالي ('roughly', here) and for عن ('concerning', S0158L03). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The rarer one grows to its seed piece: 'about a week | حوالي أسبوع' (5 syllables; 'a week' is S0038L03, taught just before). All 8 rows already say 'about a week' and stay. عن keeps 'about'. This also settles the scan row for S0158L03."
+  },
+  {
+   "id": "S0047L02",
+   "verdict": "grow",
+   "pattern": "S",
+   "known": "it's a good thing",
+   "target": "دي حاجة كويسة",
+   "type": "M",
+   "components": [
+    [
+     "it's",
+     "دي"
+    ],
+    [
+     "a thing",
+     "حاجة"
+    ],
+    [
+     "good",
+     "كويسة"
+    ]
+   ],
+   "ack": [
+    "thin"
+   ],
+   "basket": {
+    "B02": [
+     "it's a good thing",
+     "دي حاجة كويسة"
+    ],
+    "U02": [
+     "I think that it's a good thing",
+     "أنا بفكر إن دي حاجة كويسة"
+    ],
+    "U05": [
+     "because I think that it's a good thing",
+     "علشان أنا بفكر إن دي حاجة كويسة"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "but it's a good thing",
+     "بس دي حاجة كويسة"
+    ],
+    [
+     "b",
+     "it's a good thing now",
+     "دي حاجة كويسة دلوقتي"
+    ],
+    [
+     "u",
+     "but I think that it's a good thing",
+     "بس أنا بفكر إن دي حاجة كويسة"
+    ],
+    [
+     "u",
+     "I think that it's a good thing now",
+     "أنا بفكر إن دي حاجة كويسة دلوقتي"
+    ]
+   ],
+   "why": "'this' is the prompt for دي (feminine, here) and for ده (masculine, S0061L03). Seed 47 does not say 'this'; it says 'it's a good thing' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed's piece 'it's a good thing | دي حاجة كويسة' (6 syllables): the noun حاجة shows why it is دي (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ). The basket had 3 rows, two of them wrong Arabic ('دي مفيد'); they are rewritten and 4 added. This also settles the scan row for S0061L03 (its own 'this' for the seed's 'that' is item 10's).",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0298L02",
+   "verdict": "grow",
+   "pattern": "S",
+   "known": "left to say",
+   "target": "فاضلة أقولها",
+   "type": "M",
+   "components": [
+    [
+     "left",
+     "فاضلة"
+    ],
+    [
+     "to say",
+     "أقولها"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "left to say",
+     "فاضلة أقولها"
+    ],
+    "B02": [
+     "nothing left to say today",
+     "حاجة فاضلة أقولها النهارده"
+    ]
+   },
+   "why": "'to say it' is the prompt for أقوله (S0057L03) and for أقولها (here) — the two differ only by the gender of an 'it' that seed 298 never says (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed's own piece 'left to say | فاضلة أقولها' (6 syllables). Every row but one already contains it."
+  },
+  {
+   "id": "S0294L02",
+   "verdict": "regloss",
+   "pattern": "U",
+   "target": "كفاية",
+   "is_new": false,
+   "closes": [
+    "dup",
+    "10"
+   ],
+   "basket": {
+    "B01": "keep",
+    "B02": "keep",
+    "B03": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_eg_for_eng:S0294L03U03",
+     "set": {
+      "target_text": "معيش وقت كفاية أتصل هنا"
+     },
+     "expect": {
+      "known_text": "not enough time to call",
+      "target_text": "معيش وقت كافي أتصل هنا"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_eg_for_eng:S0294L04B03",
+     "set": {
+      "target_text": "معيش وقت كفاية أتصل بيك"
+     },
+     "expect": {
+      "known_text": "not enough time to call you",
+      "target_text": "معيش وقت كافي أتصل بيك"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_eg_for_eng:S0294L04U02",
+     "set": {
+      "target_text": "معيش وقت كفاية أتصل بيك الليلة"
+     },
+     "expect": {
+      "known_text": "no time to call you tonight",
+      "target_text": "معيش وقت كافي أتصل بيك الليلة"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_eg_for_eng:S0294L04U03",
+     "set": {
+      "target_text": "معيش وقت كفاية أتصل بيك الليلة دي"
+     },
+     "expect": {
+      "known_text": "I don't have enough time to call you tonight",
+      "target_text": "معيش وقت كافي أتصل بيك الليلة دي"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_eg_for_eng:S0444L01U12",
+     "set": {
+      "target_text": "فكروا إنه كفاية"
+     },
+     "expect": {
+      "known_text": "they thought it was enough",
+      "target_text": "فكروا إنه كافي"
+     }
+    }
+   ],
+   "why": "'enough' is the prompt for كفاية (S0058L04) and for كافي (here) — but seed 294 itself says كفاية ('ما عنديش وقت كفاية'), so this LEGO teaches a word its seed does not say (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Unified to كفاية, which makes it the same pair as S0058L04. L27: 'a LEGO that grows into one that already exists is a duplicate and is introduced once' — so the later copy goes not-new, and (P25) its rows stop playing. Its 8 rows carry the wrong word and go dark. 5 rows in OTHER baskets also say كافي; each is changed to كفاية so no row uses a word that is no longer taught (O12)."
+  },
+  {
+   "id": "S0134L02",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "something difficult",
+   "target": "حاجة صعبة",
+   "type": "M",
+   "components": [
+    [
+     "something",
+     "حاجة"
+    ],
+    [
+     "difficult",
+     "صعبة"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "something difficult",
+     "حاجة صعبة"
+    ],
+    "B02": [
+     "something difficult today",
+     "حاجة صعبة النهارده"
+    ],
+    "B03": [
+     "not something difficult",
+     "مش حاجة صعبة"
+    ],
+    "U01": [
+     "something very difficult",
+     "حاجة صعبة قوي"
+    ],
+    "U02": [
+     "it's something difficult",
+     "دي حاجة صعبة"
+    ],
+    "U03": [
+     "it's not something difficult",
+     "دي مش حاجة صعبة"
+    ],
+    "U04": [
+     "it's something very difficult",
+     "دي حاجة صعبة قوي"
+    ],
+    "U05": [
+     "something difficult like this",
+     "حاجة صعبة كده"
+    ]
+   },
+   "why": "'difficult' is the prompt for صعب (S0066L01) and for صعبة (feminine, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The feminine form grows to its noun in its own seed, which shows why: 'something difficult | حاجة صعبة' (4 syllables). Rows that said bare صعبة are rewritten round it."
+  },
+  {
+   "id": "S0136L04",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "she's my friend",
+   "target": "هي صاحبتي",
+   "type": "M",
+   "components": [
+    [
+     "she's",
+     "هي"
+    ],
+    [
+     "my friend",
+     "صاحبتي"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "she's my friend",
+     "هي صاحبتي"
+    ],
+    "B02": [
+     "of course she's my friend",
+     "طبعًا هي صاحبتي"
+    ],
+    "B03": [
+     "but she's my friend",
+     "بس هي صاحبتي"
+    ],
+    "U01": [
+     "she's my friend here",
+     "هي صاحبتي هنا"
+    ],
+    "U02": "keep",
+    "U03": [
+     "you can ask her because she's my friend",
+     "تقدر تسألها علشان هي صاحبتي"
+    ],
+    "U04": "keep",
+    "U05": [
+     "she's my friend today",
+     "هي صاحبتي النهارده"
+    ]
+   },
+   "why": "'my friend' is the prompt for صاحبي (a man, S0084L02) and for صاحبتي (a woman, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'she's my friend | هي صاحبتي' (5 syllables): 'she' shows why. Three rows already say it; five are rewritten."
+  },
+  {
+   "id": "S0232L02",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "an old woman",
+   "target": "ست كبيرة",
+   "type": "M",
+   "components": [
+    [
+     "woman",
+     "ست"
+    ],
+    [
+     "old",
+     "كبيرة"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "an old woman",
+     "ست كبيرة"
+    ],
+    "B02": [
+     "I know an old woman",
+     "أعرف ست كبيرة"
+    ],
+    "B03": [
+     "I know an old woman here",
+     "أعرف ست كبيرة هنا"
+    ],
+    "U01": [
+     "I know an old woman who wants something",
+     "أعرف ست كبيرة عايزة حاجة"
+    ],
+    "U02": [
+     "she is an old woman",
+     "دي ست كبيرة"
+    ],
+    "U03": [
+     "but I know an old woman",
+     "بس أعرف ست كبيرة"
+    ],
+    "U04": [
+     "an old woman who can help you",
+     "ست كبيرة تساعدك"
+    ],
+    "U06": [
+     "I know an old woman with you",
+     "أعرف ست كبيرة معاك"
+    ]
+   },
+   "why": "'old' is the prompt for كبير (S0231L01) and for كبيرة (feminine, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its noun in its own seed: 'an old woman | ست كبيرة' (4 syllables). Every row already says ست كبيرة; their English said 'old lady' where the seed says 'old woman' and is corrected (prompt clips only)."
+  },
+  {
+   "id": "S0035L03",
+   "verdict": "grow",
+   "pattern": "S",
+   "known": "this afternoon",
+   "target": "بعد الضهر",
+   "type": "M",
+   "components": [
+    [
+     "after",
+     "بعد"
+    ],
+    [
+     "noon",
+     "الضهر"
+    ]
+   ],
+   "add": [
+    [
+     "b",
+     "but this afternoon",
+     "بس بعد الضهر"
+    ]
+   ],
+   "why": "'afternoon | الضهر' teaches the word for NOON; the seed says بعد الضهر, 'this afternoon' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed's piece (4 syllables). All 8 rows already say 'this afternoon | بعد الضهر' and stay.",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0289L03",
+   "verdict": "regloss",
+   "pattern": "S",
+   "is_new": false,
+   "closes": [
+    "dup"
+   ],
+   "why": "knock-on of S0035L03: 'this afternoon | بعد الضهر' is now taught at seed 35, so this copy at seed 289 is a duplicate. L27: 'a LEGO that grows into one that already exists is a duplicate and is introduced once' — so the later copy goes not-new, and (P25) its rows stop playing. "
+  },
+  {
+   "id": "S0267L01",
+   "verdict": "grow",
+   "pattern": "G",
+   "pov": "hold",
+   "known": "from your friend",
+   "target": "من صاحبتك",
+   "type": "M",
+   "components": [
+    [
+     "from",
+     "من"
+    ],
+    [
+     "your friend",
+     "صاحبتك"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "from your friend",
+     "من صاحبتك"
+    ],
+    "B02": [
+     "heard from your friend",
+     "سمعت من صاحبتك"
+    ],
+    "B03": [
+     "but from your friend",
+     "بس من صاحبتك"
+    ],
+    "U01": "keep",
+    "U02": [
+     "have you heard from your friend today?",
+     "سمعت من صاحبتك النهارده؟"
+    ],
+    "U03": [
+     "have you heard from your friend here?",
+     "سمعت من صاحبتك هنا؟"
+    ],
+    "U04": [
+     "you heard from your friend there",
+     "سمعت من صاحبتك هناك"
+    ],
+    "U05": [
+     "but have you heard from your friend?",
+     "بس سمعت من صاحبتك؟"
+    ]
+   },
+   "why": "HOLD (needs Kai's yes on the presentation). 'your friend' is the prompt for صاحبك (a man, S0083L02) and for صاحبتك (a woman, here), and seed 267's English ('Have you heard from your friend?') gives no clue that the friend is a woman. Planned: grow to the seed piece 'from your friend | من صاحبتك' (5 syllables), so the bare prompt 'your friend' has one answer again — but the bigger LEGO still does not show WHY it is feminine, which L34 asks for. K23: 'explain the sense in the presentation' — the intro would say this friend is a woman. Kai's call: that intro line, or change the seed to صاحبك."
+  },
+  {
+   "id": "S0284L02",
+   "verdict": "delete",
+   "pattern": "G",
+   "why": "'friend' is the prompt for صاحب (S0216L01) and for صاحبة (a woman, here). The larger LEGO that L34 asks for is already in this seed: S0284L03 'my sister's friend | صاحبة أختي'. So this bare one is retired with its 7 rows (three of them repeat S0284L03's rows; 'I have a friend | أنا عندي صاحبة' is itself a prompt with two answers). STRUCTURAL: a LEGO delete, needs Kai's go."
+  }
+ ]
+}

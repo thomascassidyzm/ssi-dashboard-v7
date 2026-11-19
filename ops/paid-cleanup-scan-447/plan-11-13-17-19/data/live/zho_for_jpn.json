@@ -1,0 +1,5438 @@
+{
+"101": {
+"at": "2026-11-19T11:48:18Z",
+"known": "この言語についてもっと発見するのを楽しんでいます。",
+"legos": [
+{
+"id": "S0101L01",
+"idx": 1,
+"is_new": true,
+"known": "知る",
+"phrases": [
+{
+"id": "50859ce7-bfe0-4991-8b7f-35a8646949a8",
+"ka": "72da3d15-445a-4409-bfdd-3e9adcebb929",
+"known": "知る",
+"pos": 0,
+"t1": "3689345d-0ebe-4d42-8866-1467a61f4938",
+"t2": "e2dfddc0-3cd8-4a2f-93cb-b11f41e4720d",
+"target": "了解",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0101L01B01",
+"ka": "72da3d15-445a-4409-bfdd-3e9adcebb929",
+"known": "知る。",
+"pos": 1,
+"t1": "3689345d-0ebe-4d42-8866-1467a61f4938",
+"t2": "e2dfddc0-3cd8-4a2f-93cb-b11f41e4720d",
+"target": "了解。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L01B02",
+"ka": "0f04017e-8949-4657-89d1-a5f813c9135a",
+"known": "もっと知る。",
+"pos": 2,
+"t1": "62f6a4c7-6114-4424-8652-a2578b765795",
+"t2": "46231cfb-18c2-4765-a052-f8c90385ec67",
+"target": "多了解。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L01B03",
+"ka": "3e3dc83b-e84a-42b4-a290-afee93da4a4b",
+"known": "もっと知るのが好き。",
+"pos": 3,
+"t1": "aeda3bc4-900c-4ae9-815c-1a02575385f9",
+"t2": "cfd9e157-e2cc-47c8-b5d8-04afa91db586",
+"target": "喜欢多了解。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L01U01",
+"ka": "82a390d7-0588-4378-be13-aeea55a77a6f",
+"known": "もっと知りたいです。",
+"pos": 4,
+"t1": "9fb3d5d9-5ab7-427a-b871-13e294fc381a",
+"t2": "27c2f0e3-bd07-4758-80aa-d3f1157ee33a",
+"target": "我想了解更多。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L01U02",
+"ka": "20637f5d-b0d0-4ee2-afba-61a4efe5e66d",
+"known": "あなたはこれを知っていますか？",
+"pos": 5,
+"t1": "5c9a9d09-223c-4967-b732-011f60a9a820",
+"t2": "b29d05ef-28df-4176-8128-29d4960278f7",
+"target": "你了解这个吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L01U04",
+"ka": "0a86c30e-9eab-4ff5-a504-27c3c09fbc66",
+"known": "彼はこの方法をよく知っています。",
+"pos": 7,
+"t1": "424119d5-5409-4c39-b801-49033db7964b",
+"t2": "1d2eaa91-c887-45ae-9a65-a5a8831887e4",
+"target": "他很了解这个方法。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L01U05",
+"ka": "a4e89101-b93c-4a15-96f9-551f6011b4d5",
+"known": "もう少し時間をかけて知る必要があります。",
+"pos": 8,
+"t1": "7b42efe3-12dc-4e2b-b8e3-8bbdf27b8e6a",
+"t2": "58fc573f-3262-4221-bdaf-46c9065a2b72",
+"target": "我需要多了解一会儿。",
+"type": "use"
+}
+],
+"target": "了解",
+"type": "A"
+},
+{
+"id": "S0101L02",
+"idx": 2,
+"is_new": true,
+"known": "この",
+"phrases": [
+{
+"id": "e13f05b5-cc3d-4903-95ab-db0047ea4527",
+"ka": "47990286-4f87-483f-bc63-7befd54e1251",
+"known": "この",
+"pos": 0,
+"t1": "da1cf13a-e055-4f42-a26b-0462704afcf4",
+"t2": "eff66a9b-b9bf-4e17-b5cc-a9fa8fe283ab",
+"target": "门",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0101L02B01",
+"ka": "2a435210-e79c-4ec3-b0b1-943616be47f9",
+"known": "この科目。",
+"pos": 1,
+"t1": "31d4ec36-f9e4-40b1-aa88-df3c1060c162",
+"t2": "4947d143-4619-436b-b56d-02496e177c60",
+"target": "这门。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L02B02",
+"ka": "055074bb-2f4a-4f84-8e54-529a508aa44f",
+"known": "この科目はとても難しいです。",
+"pos": 2,
+"t1": "bf49541e-a730-4e4b-96f9-b8b7f1e0e689",
+"t2": "2f7429f2-a1b9-495f-b1c2-4e3e62e84079",
+"target": "这门很难。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L02U01",
+"ka": "19042123-0eed-485d-8b22-edfcfe824ec3",
+"known": "私はこの科目が好きです。",
+"pos": 4,
+"t1": "b18c33c8-fa74-49ad-a3a0-e0b35e4856e5",
+"t2": "274ba3a2-140f-4139-923c-9f80dfacb128",
+"target": "我喜欢这门。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L02U02",
+"ka": "ae0901ad-d1ce-41d0-baf9-7f0f23ff240e",
+"known": "彼はこの科目を学んでいます。",
+"pos": 5,
+"t1": "7192f3e2-bfd4-4b7f-a30f-9f888a7fe333",
+"t2": "d7ed7f3f-019d-438d-bfcc-0ce62c52e678",
+"target": "他在学这门。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L02U03",
+"ka": "21b05349-bde6-48b5-9898-43fa5f58ff53",
+"known": "この科目は重要です。",
+"pos": 6,
+"t1": "106bf19b-22da-4ae0-98d3-a31391161a25",
+"t2": "4cd00d2c-cc00-415d-8a50-a84ea9e511fe",
+"target": "这门很重要。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L02U04",
+"ka": "c8247f02-c1a5-4b2c-83ac-0bc92e6612f5",
+"known": "あなたはこの科目を知っていますか？",
+"pos": 7,
+"t1": "cdba413d-493a-47fc-9cb5-0916368bc118",
+"t2": "5b69db35-e1d8-444f-b7b9-2e5ac4d20c02",
+"target": "你了解这门吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L02U05",
+"ka": "90742086-934f-4609-b4e9-3dd3a7d7286a",
+"known": "このことをもっと知りたいです。",
+"pos": 8,
+"t1": "25a969e1-5444-470c-ac64-1a4a06df56e4",
+"t2": "d3593420-477d-4e8f-bf3b-dccc049d9302",
+"target": "我想多了解这门。",
+"type": "use"
+}
+],
+"target": "门",
+"type": "A"
+},
+{
+"id": "S0101L03",
+"idx": 3,
+"is_new": true,
+"known": "この言語",
+"phrases": [
+{
+"id": "2c883484-0315-4155-b450-37ab177daf08",
+"ka": "6a4c07d3-1873-4181-9211-21a6a9556765",
+"known": "この言語",
+"pos": 0,
+"t1": "ee1b2781-db03-4ca3-b467-1fd65dc97e8c",
+"t2": "03dd4f61-ff74-49dd-9d83-9fce509bdd6d",
+"target": "语言",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0101L03B01",
+"ka": "99303ccf-00cb-4c60-a796-b99dde03346f",
+"known": "言語。",
+"pos": 1,
+"t1": "ee1b2781-db03-4ca3-b467-1fd65dc97e8c",
+"t2": "03dd4f61-ff74-49dd-9d83-9fce509bdd6d",
+"target": "语言。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L03B02",
+"ka": "6a4c07d3-1873-4181-9211-21a6a9556765",
+"known": "この言語。",
+"pos": 2,
+"t1": "4c1fa4eb-0c75-4fb8-9306-2b0b0e237016",
+"t2": "724ba249-0865-43da-a464-fa92e3ce66fa",
+"target": "这门语言。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L03B03",
+"ka": "84dff3dc-fd5b-4770-803c-f6e5b4f9ec01",
+"known": "この言語はとても難しいです。",
+"pos": 3,
+"t1": "e7c62b69-7449-492d-9d2f-2c0d4bcfba2e",
+"t2": "d558d590-ce76-4e32-9529-22640a29b738",
+"target": "这门语言很难。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0101L03U01",
+"ka": "ed07b315-61e9-4b8c-ae66-88773015236d",
+"known": "彼はこの言語をよく知っています。",
+"pos": 4,
+"t1": "ec79ad7a-3674-48df-8d3d-3e098c57fcf1",
+"t2": "f0064fee-ca37-46b5-860b-8d08070b3bbc",
+"target": "他了解这门语言。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L03U03",
+"ka": "5d52bc3c-9de8-430a-82a2-4170498a2661",
+"known": "私はこの言語を学ぶのが好きです。",
+"pos": 6,
+"t1": "30282836-11e1-4535-84e5-565475a4d892",
+"t2": "98e49673-c14e-42de-acbf-8f1ace76ee97",
+"target": "我喜欢学这门语言。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L03U04",
+"ka": "71e00b28-18f0-4393-a4b3-b4a6885cef94",
+"known": "この言語をもっと知りたいです。",
+"pos": 7,
+"t1": "930f723b-5695-44ae-b497-112db0154d72",
+"t2": "3d05b645-9460-4258-ba8b-bea1c0b16d40",
+"target": "我想多了解这门语言。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0101L03U05",
+"ka": "b5f6b280-812c-4545-a5b3-cecdf285e681",
+"known": "この言語には学ぶことがたくさんあります。",
+"pos": 8,
+"t1": "9c2a53a0-7642-4ead-9374-d5bb57453827",
+"t2": "f6440769-fb33-4bc4-88e6-ca47d5e45bd9",
+"target": "这门语言有很多要学的。",
+"type": "use"
+}
+],
+"target": "语言",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我喜欢多了解这门语言。"
+},
+"103": {
+"at": "2026-11-19T11:48:19Z",
+"known": "もっとたくさんの言葉を聞こうとしているわけではありません。",
+"legos": [
+{
+"id": "S0103L01",
+"idx": 1,
+"is_new": true,
+"known": "聞く",
+"phrases": [
+{
+"id": "0c6e0087-5a95-408a-a5b9-a44c01f4cb41",
+"ka": "2051fcfa-1868-45e5-b0fd-98d26ee2a847",
+"known": "聞く",
+"pos": 0,
+"t1": "679464ef-1775-4a45-8879-7a7838abee63",
+"t2": "0354032d-dd16-47fd-9656-cbe24bbf9d51",
+"target": "听",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0103L01B01",
+"ka": "2051fcfa-1868-45e5-b0fd-98d26ee2a847",
+"known": "聞く。",
+"pos": 1,
+"t1": "679464ef-1775-4a45-8879-7a7838abee63",
+"t2": "0354032d-dd16-47fd-9656-cbe24bbf9d51",
+"target": "听。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0103L01B02",
+"ka": "4aac0371-9bc2-47b4-b774-afb3bccde418",
+"known": "たくさん聞く。",
+"pos": 2,
+"t1": "1779d9c8-6bd5-4244-b2fb-ac60f42432b0",
+"t2": "9b521de3-d7c8-4dd2-a28a-97a339796857",
+"target": "听很多。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0103L01B03",
+"ka": "24dd2a38-ce1d-43ac-9391-a5834572d696",
+"known": "あなたは聞いていますか？",
+"pos": 3,
+"t1": "e8b2ee29-31a6-4056-9b09-353cf9248262",
+"t2": "c6c5e7f0-9bb6-462e-b9fd-5a69a343f224",
+"target": "你在听吗？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0103L01U02",
+"ka": "f6fc512a-6b63-4d40-9a8a-1645ad99763e",
+"known": "もっと聞くべきです。",
+"pos": 5,
+"t1": "fcc5ceb4-2330-45db-8a43-ca7cc2e4fc7e",
+"t2": "28e5f37d-f390-4578-8e49-97916b06fae2",
+"target": "你该多听。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0103L01U03",
+"ka": "9b216d8c-9b97-46f1-a8a8-6476168142af",
+"known": "しばらく聞いてください。",
+"pos": 6,
+"t1": "0553331f-fa4d-4ecb-9f44-5d858412f720",
+"t2": "db68698e-a4af-4aa0-8f84-662ec999416d",
+"target": "听一会儿。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0103L01U04",
+"ka": "f27c1d0b-2588-449b-9657-70f6c34b54bd",
+"known": "彼はたくさん聞きました。",
+"pos": 7,
+"t1": "5d7471ac-bf79-471d-b15c-21282826c492",
+"t2": "0b9eb9a3-70ee-4a9b-89b4-b47b40b6b4d3",
+"target": "他听了很多。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0103L01U05",
+"ka": "6ef34bc8-4935-44be-a051-33a971453ab9",
+"known": "私は彼女の話を聞きたいです。",
+"pos": 8,
+"t1": "5df2557c-9193-4254-8a49-c6f2636376d4",
+"t2": "32c316ae-4e0f-4c5f-8190-34a05381568d",
+"target": "我想听她说话。",
+"type": "use"
+}
+],
+"target": "听",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我们不试着听很多词。"
+},
+"109": {
+"at": "2026-11-19T11:48:19Z",
+"known": "たくさんの新しい言葉を学ぶために一生懸命働かなければなりません。",
+"legos": [
+{
+"id": "S0109L01",
+"idx": 1,
+"is_new": true,
+"known": "〜しなければならない",
+"phrases": [
+{
+"id": "84ab2ac1-b8b2-42a7-bccd-65304c97f8b8",
+"ka": "fd490864-c0ec-4740-b210-944e92e52f58",
+"known": "〜しなければならない",
+"pos": 0,
+"t1": "fbee9f6f-274d-4b8d-a041-6ba8796edd63",
+"t2": "2f20ff61-a47c-4773-b6d3-3dd3c6557f0c",
+"target": "必须",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0109L01B01",
+"ka": "338effd2-360d-43ef-a2c6-7a6397ce8a5c",
+"known": "しなければならない。",
+"pos": 1,
+"t1": "fbee9f6f-274d-4b8d-a041-6ba8796edd63",
+"t2": "2f20ff61-a47c-4773-b6d3-3dd3c6557f0c",
+"target": "必须。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0109L01B02",
+"ka": "da80dcc1-ec74-402f-b842-771f934003d5",
+"known": "頑張らなければならない。",
+"pos": 2,
+"t1": "91324c7e-ff0a-420b-95a9-208d506a3674",
+"t2": "4d38a09d-e38b-4021-984c-7b5126d12b8d",
+"target": "必须努力。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0109L01B03",
+"ka": "68b9f792-09dc-4b5f-9256-e260965ee84a",
+"known": "彼は戻らなければなりません。",
+"pos": 3,
+"t1": "00c15001-b3e3-4f50-9609-e884c843f8c5",
+"t2": "a074f28f-8212-4f8a-aa4a-cb653cf50bce",
+"target": "他必须回来。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0109L01U01",
+"ka": "00f0045e-e318-41af-9330-90d46f4e578f",
+"known": "準備ができていなければなりません。",
+"pos": 4,
+"t1": "ca71bd24-b0e2-4ee1-9893-960d73a7210a",
+"t2": "bf33c737-b5a7-43b7-94ed-52f4c5fb452c",
+"target": "你必须准备好。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0109L01U02",
+"ka": "8090fb45-152f-4e83-8256-2f5e25c5af31",
+"known": "彼女は間に合うように完成しなければなりません。",
+"pos": 5,
+"t1": "1e6cf8bc-29b1-4324-9543-73fe119267c4",
+"t2": "b5200371-f86b-4cc2-bd80-5ee6eaf8d513",
+"target": "她必须及时完成。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0109L01U04",
+"ka": "d64946b9-9e7c-4ce8-8b48-14c239ccf29e",
+"known": "あなたは真相を教えなければなりません。",
+"pos": 7,
+"t1": "57301839-b114-41b8-8f1d-56a38800ddcf",
+"t2": "9e492673-e3eb-426d-a96d-d198c65f7abc",
+"target": "你必须告诉我真相。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0109L01U05",
+"ka": "7e148168-b295-477d-a496-70666b88c4a9",
+"known": "私たちは方法を変えなければなりません。",
+"pos": 8,
+"t1": "671fb81e-72c3-4b41-b677-a6c56920f1ba",
+"t2": "286bfc40-c3d5-4d5f-9516-4d4e79127b1e",
+"target": "我们必须改变方法。",
+"type": "use"
+}
+],
+"target": "必须",
+"type": "A"
+},
+{
+"id": "S0109L02",
+"idx": 2,
+"is_new": true,
+"known": "新しい",
+"phrases": [
+{
+"id": "929ccc7e-f641-45f2-be7b-f1788935d78c",
+"ka": "cd667be7-c64f-488c-868e-3b208cc22f7e",
+"known": "新しい",
+"pos": 0,
+"t1": "36ba1c83-55d9-429f-94bd-9038f378f455",
+"t2": "e89dd64c-e1ad-4a50-8a47-508fcbbc03de",
+"target": "新",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0109L02B01",
+"ka": "cd667be7-c64f-488c-868e-3b208cc22f7e",
+"known": "新しい。",
+"pos": 1,
+"t1": "36ba1c83-55d9-429f-94bd-9038f378f455",
+"t2": "e89dd64c-e1ad-4a50-8a47-508fcbbc03de",
+"target": "新。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0109L02B02",
+"ka": "c066b8cf-b284-4719-8174-1ae9db8e587e",
+"known": "新しい言葉。",
+"pos": 2,
+"t1": "42d563a5-5a17-4656-8b9d-efe2b5acfa5f",
+"t2": "b3defd9b-6af4-4e7f-9f6b-9ca5cf021670",
+"target": "新词。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0109L02B03",
+"ka": "9b57235a-426f-4092-a5dc-db5f52ac38f8",
+"known": "これは新しい方法です。",
+"pos": 3,
+"t1": "dd77ad09-d9ec-4f95-b89b-2ca48646d114",
+"t2": "dc65744f-ad16-4e84-a596-a600cc36cd1c",
+"target": "这是一个新方法。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0109L02U01",
+"ka": "b5370321-30c8-455d-a9fc-fda895df1952",
+"known": "私は新しいものを学ぶのが好きです。",
+"pos": 4,
+"t1": "87502ca5-9070-4c1c-a5aa-28873c7a502c",
+"t2": "5db67a6a-7450-4df0-8949-d131b04ffeb9",
+"target": "我喜欢学新东西。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0109L02U03",
+"ka": "f74b57b7-88c6-4e8a-993f-0e8a58ce47e9",
+"known": "新しい方法を考えるべきです。",
+"pos": 6,
+"t1": "efb4b81b-6d6d-4c25-912e-6f48173881ef",
+"t2": "21b44805-c56c-402a-8fdc-4865b3e3bdd5",
+"target": "你该考虑新方法。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0109L02U04",
+"ka": "1accca71-9f7b-45ec-8021-734e72292c4c",
+"known": "彼女は学ぶべき新しい言葉がたくさんあります。",
+"pos": 7,
+"t1": "9be01b91-b38d-4691-a2b2-b64fd2c16f5f",
+"t2": "db76e484-5116-4468-84d8-c18de65d94ab",
+"target": "她有很多新词要学。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0109L02U05",
+"ka": "fbb1f53c-e91c-43f9-bfc1-511ee176f605",
+"known": "この言語には新しい言葉がたくさんあります。",
+"pos": 8,
+"t1": "1b1fed0d-ecac-4d53-83df-1c1e38562783",
+"t2": "2c0f5ade-8a7e-4832-9836-351661c08846",
+"target": "这门语言有很多新词。",
+"type": "use"
+}
+],
+"target": "新",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我们必须努力学很多新词。"
+},
+"123": {
+"at": "2026-11-19T11:48:20Z",
+"known": "それはいい考えだと思います。",
+"legos": [
+{
+"id": "S0123L01",
+"idx": 1,
+"is_new": true,
+"known": "考え",
+"phrases": [
+{
+"id": "9f03446f-f7d1-4d1c-9b6a-25e526c69edd",
+"ka": "4e27c1a7-2890-4ce7-b257-c8979aff98f9",
+"known": "考え",
+"pos": 0,
+"t1": "4773d341-97e0-4dfb-8375-0a203d732731",
+"t2": "c6f8be46-2a80-4260-8ef4-ecdc205f98d9",
+"target": "主意",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0123L01B03",
+"ka": "2f38d779-e04a-4826-8979-ef2531ade187",
+"known": "それはいい考えだ。",
+"pos": 3,
+"t1": "9a1c08cc-ba27-4f65-b134-90db4903c489",
+"t2": "ec256b77-8205-48ee-8cbe-c458d6d02ecb",
+"target": "那是个好主意。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0123L01U01",
+"ka": "a8f718eb-eef0-43ae-8f7e-e1b38142f4c8",
+"known": "いい考えがある。",
+"pos": 4,
+"t1": "654e6b9c-e305-4330-b4fa-fbe55362aadf",
+"t2": "fc823d56-ea24-474a-ac88-f02d7dfbfb92",
+"target": "我有个好主意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0123L01U02",
+"ka": "3bc118c6-d706-4d45-bc22-f52e65e659a9",
+"known": "あなたの考えは何？",
+"pos": 5,
+"t1": "7184945b-6885-4adb-9ea9-aba7035ad2e6",
+"t2": "66e548b1-0c9c-4b6b-89f0-81e4372945ed",
+"target": "你的主意是什么？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0123L01U03",
+"ka": "2af6220c-07e0-4056-9857-d3b46f160f58",
+"known": "いい考えが必要だ。",
+"pos": 6,
+"t1": "68471914-e152-4598-80ff-e616267e8c05",
+"t2": "1f580187-69bd-46c6-8d05-8d0d79d2055e",
+"target": "我需要个好主意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0123L01U04",
+"ka": "60b1134e-c145-4f1a-a906-e0c0bf4838f7",
+"known": "それはいい考えじゃない。",
+"pos": 7,
+"t1": "618d2b75-17e6-41ba-aff2-1505f9bcade6",
+"t2": "9cdf911e-a1bc-4457-8ad5-1370dce52671",
+"target": "那不是个好主意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0123L01U05",
+"ka": "6327214d-c172-4dc9-8a1e-f5fd704b0684",
+"known": "それはいい考えだと思います。",
+"pos": 8,
+"t1": "9aa154e8-93e7-445c-9213-15fe0ce9844c",
+"t2": "776ebeb1-c797-4b54-a538-383f881b9f47",
+"target": "我觉得那是个好主意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0123L01U06",
+"ka": "51ab577a-0d4e-43b1-b02f-84ad71deab45",
+"known": "いい考えだと思う？",
+"pos": 9,
+"t1": "c1f9c624-3d1f-4b53-acf4-baca76c639c6",
+"t2": "351685df-1123-47fa-bbac-cab8426fda2b",
+"target": "你觉得那是个好主意吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0123L01U07",
+"ka": "5255b561-8ead-4720-bf96-0e8cb1ced9a6",
+"known": "いい考えだとは思わない。",
+"pos": 10,
+"t1": "aee82122-8a9f-4f78-8c01-8921f741eaaf",
+"t2": "d3e00c98-87b4-4d36-8028-8e26ac5c0e0d",
+"target": "我不觉得那是个好主意。",
+"type": "use"
+}
+],
+"target": "主意",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我觉得那是个好主意。"
+},
+"127": {
+"at": "2026-11-19T11:48:21Z",
+"known": "それはあなたに会いたかった理由ではありません。",
+"legos": [
+{
+"id": "S0127L01",
+"idx": 1,
+"is_new": true,
+"known": "会う",
+"phrases": [
+{
+"id": "e66f4731-f616-4f67-b46c-5018fc4c0867",
+"ka": "12535403-66d3-46ab-9e97-148f383b3347",
+"known": "会う",
+"pos": 0,
+"t1": "8a976658-b6c9-4767-94f0-00dd8672bd2c",
+"t2": "53c12ca4-31a2-40f8-96f0-9ee6f4e28eae",
+"target": "见",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0127L01B01",
+"ka": "320c50f8-0ee0-473d-9ac3-ef7577c1a4c7",
+"known": "あなたに会いたい",
+"pos": 1,
+"t1": "30968fb2-b118-4f73-8d53-8a481211c59c",
+"t2": "454dd314-c4a2-4d69-8ff9-ab5a66a1a13a",
+"target": "想见你",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0127L01B02",
+"ka": "320c50f8-0ee0-473d-9ac3-ef7577c1a4c7",
+"known": "あなたに会いたい。",
+"pos": 2,
+"t1": "f889d303-22ce-429b-bd8e-0f8db2a1135a",
+"t2": "1d01fc7c-af9a-4c38-a550-88245138b6f2",
+"target": "我想见你。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0127L01B03",
+"ka": "6cffd96d-55d9-4d9e-9786-4650299c77a9",
+"known": "私に会いたい？",
+"pos": 3,
+"t1": "2c0dbeef-4532-43bc-86e8-0501d43fec8c",
+"t2": "0abdee0f-2ae6-4f76-bfd9-8ed821d04982",
+"target": "你想见我吗？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0127L01U01",
+"ka": "10c2b595-c4c7-436c-b836-365edb2a2d4d",
+"known": "彼らに会いたい？",
+"pos": 4,
+"t1": "56867fa3-738d-4bdb-996f-acb5dfa23d63",
+"t2": "533557b4-f7ab-4378-8daa-498af4c10196",
+"target": "你想见他们吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L01U02",
+"ka": "e49bbea6-7d93-4cbd-989a-a9d07c5fb970",
+"known": "会いたいと思っていた。",
+"pos": 5,
+"t1": "af3bcfcc-65a4-4ad2-802a-cbd46dcd7a5f",
+"t2": "f440884e-bcb2-4438-b8f2-ccd4962d4eea",
+"target": "我以为你想见我。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L01U04",
+"ka": "fb5212de-8dcd-4986-bd79-8ee538fadc93",
+"known": "今は会いたくない。",
+"pos": 7,
+"t1": "ca6845ac-7fa5-4590-a259-103cc62e6dbf",
+"t2": "9a321efe-508f-4e5f-ad0b-4950165e3de1",
+"target": "我现在不想见你。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L01U05",
+"ka": "3c4bd150-1d83-4877-99f7-70311dc7b4f0",
+"known": "会う必要があると信じている。",
+"pos": 8,
+"t1": "a8e5af68-8b68-48fd-a53c-deea003db386",
+"t2": "5373b119-0adc-4137-add8-118a18e31906",
+"target": "我相信我需要见你。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L01U06",
+"ka": "d8c39ecb-5f1b-4c5a-b29a-be913e23b053",
+"known": "会いたくないのは奇妙だ。",
+"pos": 9,
+"t1": "6dee6361-1bfc-4d63-bfc2-d5efea4677c7",
+"t2": "4db5e8b3-38b8-489e-b875-f25d37088153",
+"target": "奇怪的是你不想见。",
+"type": "use"
+}
+],
+"target": "见",
+"type": "A"
+},
+{
+"id": "S0127L02",
+"idx": 2,
+"is_new": true,
+"known": "理由",
+"phrases": [
+{
+"id": "4cb2f15c-8b0a-4e18-b652-e24565f1d70f",
+"ka": "f5d3ef3c-7751-448e-8bf7-6c4c0da96fec",
+"known": "理由",
+"pos": 0,
+"t1": "4735e06c-a0f1-4827-9da3-dd223c4875f7",
+"t2": "d88ab4f4-a30b-4da3-bd76-2b78a8cf943d",
+"target": "原因",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0127L02B01",
+"ka": "e410ffa2-ab29-41ec-bafd-9885acc1a728",
+"known": "理由は何？",
+"pos": 1,
+"t1": "a4407697-a6b8-4ecc-a67d-8cc131b2af02",
+"t2": "8e484fc4-1f39-44d2-950a-0d2a9c8a7e14",
+"target": "原因是什么？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0127L02B02",
+"ka": "223a5b4e-3d90-4a3e-b9e6-86d1b1d7a41a",
+"known": "会いたかった理由",
+"pos": 2,
+"t1": "02b6424c-687e-4669-a9e7-3c72a802b661",
+"t2": "3088a8c0-443d-496c-bfdd-8a1aabd13c1e",
+"target": "我想见你的原因",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0127L02B03",
+"ka": "41e07a4b-44fd-46f6-a96c-7aa5cb57eb96",
+"known": "理由がわからない。",
+"pos": 3,
+"t1": "327fda52-d9d2-40a6-b84f-98c2f3b5c264",
+"t2": "428823c4-d40e-4d92-ab26-5a49d81cb70d",
+"target": "我不理解原因。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0127L02U01",
+"ka": "acd88965-146d-4a9d-8f98-cb9590b9a712",
+"known": "理由を知っている？",
+"pos": 4,
+"t1": "ff18ed3b-fdf2-4a2e-815f-1c3502133d74",
+"t2": "d425440f-e4c2-4014-9da7-33f6d742f395",
+"target": "你知道原因吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L02U02",
+"ka": "251cd6f2-77cd-4134-8d74-9379518b0c04",
+"known": "それが理由だと信じている。",
+"pos": 5,
+"t1": "f01d421b-e905-49cd-9374-d5199cc8aa14",
+"t2": "a31b773b-5154-4c10-9b4a-34c3f8f6618f",
+"target": "我相信那是原因。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L02U03",
+"ka": "007f3a3a-5c6f-496c-a177-76a838eead8c",
+"known": "始めたい理由だ。",
+"pos": 6,
+"t1": "e16755ae-8626-409a-9065-7f410d360625",
+"t2": "936be0fe-e609-4893-a2f6-53878ff35225",
+"target": "那是我想开始的原因。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L02U04",
+"ka": "b99bb6ff-26ef-4348-b427-742e93eb81ed",
+"known": "理由は面白いと思っていた。",
+"pos": 7,
+"t1": "c776162d-488b-4929-a663-db47fae75201",
+"t2": "1f1378c0-3356-467a-aeb9-f196186248c4",
+"target": "我以为原因是有趣的。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L02U05",
+"ka": "cc7ee743-3054-4c64-8548-b03e3d83a5f5",
+"known": "行きたい理由じゃない。",
+"pos": 8,
+"t1": "d5b154ad-3cc0-4127-a82e-3048392b1c09",
+"t2": "ae9c891e-38c7-49eb-9603-5b619e0bd66c",
+"target": "那不是我想去的原因。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0127L02U06",
+"ka": "920dc85b-21aa-456a-874c-6a765b7b0793",
+"known": "それはあなたに会いたかった理由ではありません。",
+"pos": 9,
+"t1": "d79a97fd-b3ab-4cef-94dd-de99432905eb",
+"t2": "32685deb-e0f9-48e8-8dae-aca32422fa7a",
+"target": "那不是我想见你的原因。",
+"type": "use"
+}
+],
+"target": "原因",
+"type": "A"
+}
+],
+"status": "released",
+"target": "那不是我想见你的原因。"
+},
+"131": {
+"at": "2026-11-19T11:48:21Z",
+"known": "頭の中にたくさんの考えがぐるぐる回っています。",
+"legos": [
+{
+"id": "S0131L01",
+"idx": 1,
+"is_new": true,
+"known": "頭の中に",
+"phrases": [
+{
+"id": "fd33ac68-b258-4aba-8802-782d5174d768",
+"ka": "28ade0e5-09db-4d9b-8cc2-67f8fc8dc7cb",
+"known": "頭の中に",
+"pos": 0,
+"t1": "1b779f36-b7f7-43ed-aaef-cae1c58ecf3a",
+"t2": "94e56326-8867-442b-8737-679c03198151",
+"target": "子",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0131L01B02",
+"ka": "28ade0e5-09db-4d9b-8cc2-67f8fc8dc7cb",
+"known": "頭の中に",
+"pos": 2,
+"t1": "577de9fa-e0ef-4769-97f0-1d5d1ad17340",
+"t2": "40918617-bd4b-4041-ae0a-9baff078381a",
+"target": "我脑子里",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0131L01B03",
+"ka": "f6c1523b-88a1-49dd-865b-1d5306c549a3",
+"known": "頭の中に多すぎる。",
+"pos": 3,
+"t1": "d3d06224-8411-4907-a6d7-90c53ef3b64c",
+"t2": "8ec92abf-674c-4104-a36d-29ec955ea61a",
+"target": "我脑子里有太多。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0131L01U01",
+"ka": "f6c1523b-88a1-49dd-865b-1d5306c549a3",
+"known": "頭の中に多すぎる？",
+"pos": 4,
+"t1": "b54ad845-6387-49a0-a639-948ce1344dd5",
+"t2": "78cd9394-ceaa-4b16-99e8-89b2d5bb5ab8",
+"target": "你脑子里有太多吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L01U03",
+"ka": "7bacebbb-0106-4bf3-90ab-cd6f3828155d",
+"known": "頭の中に多すぎると信じている。",
+"pos": 6,
+"t1": "b1a92878-9758-4219-b291-499683b070e4",
+"t2": "5a8adb71-9002-4cbe-81ff-deda3f9e905a",
+"target": "我相信我脑子里有太多。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L01U04",
+"ka": "7ceb97fc-49fd-4e6e-a293-fa9397d4cc68",
+"known": "頭の中に多すぎると思う。",
+"pos": 7,
+"t1": "2c184664-60f2-4bef-b896-a0b7c5293087",
+"t2": "82e6523b-2224-481f-a190-86cc86d75629",
+"target": "我觉得我脑子里有太多。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L01U06",
+"ka": "2f835764-7d17-4a77-b658-9e3b7d179eb1",
+"known": "頭の中に多すぎると感じ始めた。",
+"pos": 9,
+"t1": "65cc68b4-aa26-459d-a92f-592468654ca0",
+"t2": "63a76a17-548e-479e-ad5c-64dd16b4eff4",
+"target": "我开始觉得我脑子里有太多。",
+"type": "use"
+}
+],
+"target": "子",
+"type": "A"
+},
+{
+"id": "S0131L02",
+"idx": 2,
+"is_new": true,
+"known": "考え",
+"phrases": [
+{
+"id": "99a9db85-8e8c-4648-bc8a-120a9b18fc5a",
+"ka": "4e27c1a7-2890-4ce7-b257-c8979aff98f9",
+"known": "考え",
+"pos": 0,
+"t1": "bc491319-db67-4c9d-81e1-e08201bf529a",
+"t2": "3f990c56-4aa2-46ca-bfc3-1a1bccf69fbd",
+"target": "想法",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0131L02C01",
+"ka": "3a00c70e-c1e4-4b61-bcd3-1194a4e10ad8",
+"known": "思う",
+"pos": 1,
+"t1": "74a1d38c-07e9-47e3-ab70-88508f838fde",
+"t2": "e36da060-1bcd-4e10-8089-ec562503b13b",
+"target": "想",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0131L02C02",
+"ka": "162b40be-4884-4177-b6ec-3acbe65ae49e",
+"known": "法",
+"pos": 2,
+"t1": "70a09a64-40bd-498a-ad00-97b14e111e3f",
+"t2": "0a80cfd7-29aa-49fe-89f4-0e316fa6c277",
+"target": "法",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0131L02B01",
+"ka": "4e27c1a7-2890-4ce7-b257-c8979aff98f9",
+"known": "考え",
+"pos": 3,
+"t1": "bc491319-db67-4c9d-81e1-e08201bf529a",
+"t2": "3f990c56-4aa2-46ca-bfc3-1a1bccf69fbd",
+"target": "想法",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0131L02B02",
+"ka": "a8f718eb-eef0-43ae-8f7e-e1b38142f4c8",
+"known": "いい考えがある？",
+"pos": 4,
+"t1": "f84618ab-ae43-4299-96de-2d43fb28c0a2",
+"t2": "5bec8656-6985-496b-baa7-d6e677ba65fc",
+"target": "你有好想法吗？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0131L02B03",
+"ka": "a8f718eb-eef0-43ae-8f7e-e1b38142f4c8",
+"known": "いい考えがある。",
+"pos": 5,
+"t1": "822f835e-0515-49d8-96aa-83d7550044a8",
+"t2": "c3aa58e1-3cc4-4ec9-86d1-1cad395feb68",
+"target": "我有个好想法。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0131L02B04",
+"ka": "3bc118c6-d706-4d45-bc22-f52e65e659a9",
+"known": "あなたの考えは何？",
+"pos": 6,
+"t1": "0fb4f272-1749-4bfd-8fe6-8521bc352e02",
+"t2": "bd09afce-1b70-4987-94db-c155b6b653c7",
+"target": "你的想法是什么？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0131L02U01",
+"ka": "a6920655-961b-4393-9efd-9dd2f2296b10",
+"known": "あなたの考えは面白い。",
+"pos": 7,
+"t1": "fe48243c-547e-4b0a-9ab5-67a68e3e18a7",
+"t2": "15db5ddd-66d6-4063-bc79-175dce4bad27",
+"target": "你的想法是有趣的。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L02U02",
+"ka": "c7980fce-8f41-46f4-b90e-7cb323203a6f",
+"known": "頭の中にたくさんの考えがぐるぐる回っています。",
+"pos": 8,
+"t1": "996126af-eb89-4930-b2fb-75260414d378",
+"t2": "dda002b6-da8f-424c-b28b-df126414126c",
+"target": "我脑子里有太多想法。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L02U03",
+"ka": "7dd9fda7-67f9-4812-a71d-7d6284a922c8",
+"known": "あなたの考えはいいと信じている。",
+"pos": 9,
+"t1": "675894bd-b14d-4932-8f9b-db4d2fb992ea",
+"t2": "7ba22cea-2706-40cd-8c32-6b5b188fee97",
+"target": "我相信你的想法很好。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L02U04",
+"ka": "486cf190-83b2-4b6f-8564-370b81c21a1f",
+"known": "あなたの考えはいいと思っていた。",
+"pos": 10,
+"t1": "f354289f-e464-400b-af45-1c426149b840",
+"t2": "efd1e593-b7a1-4593-8d57-f9d1af41bfd6",
+"target": "我以为你的想法很好。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0131L02U06",
+"ka": "3d680a48-d4fa-4c15-a67b-ddc215af4686",
+"known": "あなたの考えを理解し始めた。",
+"pos": 12,
+"t1": "00084477-2df5-4e89-893b-b4e391dab415",
+"t2": "c0596272-3a6a-4392-b58c-c01653e892b2",
+"target": "我开始理解你的想法了。",
+"type": "use"
+}
+],
+"target": "想法",
+"type": "M"
+}
+],
+"status": "released",
+"target": "我脑子里有太多想法。"
+},
+"137": {
+"at": "2026-11-19T11:48:22Z",
+"known": "完璧であるより頻繁に話す方が大切です。",
+"legos": [
+{
+"id": "S0137L01",
+"idx": 1,
+"is_new": true,
+"known": "よく",
+"phrases": [
+{
+"id": "8d63441b-e9bb-486b-b55a-520be3d7322e",
+"ka": "38a56348-96ef-4963-8540-285468bcc761",
+"known": "よく",
+"pos": 0,
+"t1": "dadcd1c3-86a1-4f01-86b4-82ac45d34a24",
+"t2": "a10a7678-3ed2-4756-a953-1e00f5b0e216",
+"target": "经常",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0137L01B01",
+"ka": "9f8c8951-ca35-4509-be32-e9136282f150",
+"known": "よく話す",
+"pos": 1,
+"t1": "80552e89-0c0e-467f-a6d1-15a3f55ee76a",
+"t2": "0fcbe376-377f-451d-93c9-bb1231493083",
+"target": "经常说",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L01B02",
+"ka": "c897e1f2-795b-47bb-9a23-c1d445807fa7",
+"known": "彼女はよく聞いてくる。",
+"pos": 2,
+"t1": "4be8e296-00c0-4874-ad3a-bd02a690ca70",
+"t2": "5ee0fad2-d572-4532-bf2d-89b5b5b16f10",
+"target": "她经常问我。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L01B03",
+"ka": "8265c735-ad04-4be5-8f8a-181ee4a8ddb5",
+"known": "よくこのことを考える。",
+"pos": 3,
+"t1": "f407d98c-297b-4896-a267-7a06d46eda6c",
+"t2": "94285d74-93d9-488d-a3f6-99ec2833949e",
+"target": "我经常想这个事情。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L01U01",
+"ka": "98368222-b0fc-45d6-a64c-c94951944e85",
+"known": "もちろんよくやっている。",
+"pos": 4,
+"t1": "ef9c8c36-bc5d-4fef-8aff-2687a69b57cb",
+"t2": "7597aa5e-9010-4cd0-8c52-c5dd5327d7e2",
+"target": "当然我经常做这个。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L01U02",
+"ka": "59cb8a65-04f0-4ec1-9a79-e8aa55f605b0",
+"known": "よく彼女と一緒に働く。",
+"pos": 5,
+"t1": "5d94eda4-856e-4b63-9edf-11526c391711",
+"t2": "d322f536-6c68-4024-83ff-52fca8f179fb",
+"target": "我经常跟她一起工作。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L01U03",
+"ka": "ec065979-c1ae-49e1-ba32-c20514580813",
+"known": "よく友達に会う？",
+"pos": 6,
+"t1": "dc6e4ae1-4c56-4e55-8c59-4f75b6f0b022",
+"t2": "314380b6-a4b5-437a-a9b4-5a6ea12de50b",
+"target": "你经常见你的朋友吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L01U05",
+"ka": "bfb6de39-58a7-432a-a588-24e5533b686f",
+"known": "なぜよくやるかわからない。",
+"pos": 8,
+"t1": "17f6edcd-3f87-4066-b37f-0908994f2bec",
+"t2": "4064e1d5-6236-487f-8755-ca3592b7a9a6",
+"target": "我不知道为什么你经常做这个。",
+"type": "use"
+}
+],
+"target": "经常",
+"type": "A"
+},
+{
+"id": "S0137L02",
+"idx": 2,
+"is_new": true,
+"known": "話",
+"phrases": [
+{
+"id": "2dddd313-4838-4bcf-bc13-5d0e8bc632b6",
+"ka": "bbb0f949-58cd-443e-82e9-1b1c7ddc4f9a",
+"known": "話",
+"pos": 0,
+"t1": "7212132d-8838-4067-878b-f67c2be65c58",
+"t2": "3162400a-d14b-4d27-8961-c38b8ca1c7bd",
+"target": "话",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0137L02B01",
+"ka": "7b631a8d-a382-419f-8544-4357a6572b84",
+"known": "話す",
+"pos": 1,
+"t1": "f3f1a5bc-1c54-4569-b119-4b876ca0158d",
+"t2": "1eb2d953-db90-4fd8-8de6-764400e69350",
+"target": "说话",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L02B02",
+"ka": "9f8c8951-ca35-4509-be32-e9136282f150",
+"known": "よく話す",
+"pos": 2,
+"t1": "8d4a6d37-d80a-4705-9271-1b48d9e8703a",
+"t2": "15093842-9aad-4ea7-8bda-e3869e7647be",
+"target": "经常说话",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L02B03",
+"ka": "6cea9472-7d26-4e32-bd74-791058e9cb67",
+"known": "あなたと話したい。",
+"pos": 3,
+"t1": "aec9f660-fe8e-451b-9d24-f3800ab00684",
+"t2": "f5c36857-4a71-46c8-9f52-b31906e57e9b",
+"target": "我想跟你说话。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L02U01",
+"ka": "c0be7a9b-efaf-45ce-b87b-d023c32feaa5",
+"known": "彼女はよく私と話す。",
+"pos": 4,
+"t1": "76e12000-7930-4961-859a-735aeeafc31d",
+"t2": "6e4e5778-6abd-4b20-a5ab-089b59b17f84",
+"target": "她经常跟我说话。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L02U02",
+"ka": "3e6e58da-4f55-4148-85d1-224082dece6d",
+"known": "もちろん彼女と話したい。",
+"pos": 5,
+"t1": "97421606-8c5e-470e-a16b-5a57a19addb4",
+"t2": "a3477ce6-68ed-42d8-a1e0-9cbb71cb2bcd",
+"target": "当然我想跟她说话。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L02U03",
+"ka": "0b4692d9-0a0e-40f3-a87a-6502ed6ae09d",
+"known": "話すことは重要だと信じている。",
+"pos": 6,
+"t1": "7bc04e01-e96a-489d-b9d0-779fe7db10a8",
+"t2": "4bb2b0e4-d9d0-42a6-9466-925380d1d23a",
+"target": "我相信说话很重要。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L02U04",
+"ka": "7c43a273-46b2-43f6-b060-066534ea18bf",
+"known": "彼らと話したい？",
+"pos": 7,
+"t1": "09bbfe3a-c504-4b19-8c3a-e517cfaf25ca",
+"t2": "7e9fea3a-4d38-4908-994a-200d0309b41e",
+"target": "你想跟他们说话吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L02U06",
+"ka": "a32907e3-566e-4c15-9dbd-ecc59b8b85c5",
+"known": "よく友達と話す。",
+"pos": 9,
+"t1": "613e47d4-8181-406e-a08f-07663c80fa15",
+"t2": "cf323768-ee5f-4e58-84de-86d0663a8d5d",
+"target": "我经常跟我的朋友说话。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L02U07",
+"ka": "a90ab468-7080-4c73-ac0c-6e9bfde51bcd",
+"known": "なぜ話したいかわからない。",
+"pos": 10,
+"t1": "8d014c50-4611-4817-842e-eac18517c8ea",
+"t2": "5313f4a6-2f9c-4385-a8bc-bd89f544a078",
+"target": "我不知道为什么你想说话。",
+"type": "use"
+}
+],
+"target": "话",
+"type": "A"
+},
+{
+"id": "S0137L03",
+"idx": 3,
+"is_new": true,
+"known": "完璧",
+"phrases": [
+{
+"id": "e8b3f9de-a515-4d6b-abeb-cd53d3eb4681",
+"ka": "185e221b-729d-4297-8a8a-3e60035bcb78",
+"known": "完璧",
+"pos": 0,
+"t1": "7dd91d7a-2e8d-4a8d-b7f8-8da5bcfb5ac7",
+"t2": "e7be9547-4fc6-4ffa-8ecf-05d7d48559bb",
+"target": "完美",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0137L03C01",
+"ka": "12bc7b95-b473-4260-84da-91658b36af64",
+"known": "終わる",
+"pos": 1,
+"t1": "149a18bc-aea2-4579-8cd2-95e24d0960d3",
+"t2": "c52773d4-2e06-4cd0-875c-78871c73ccac",
+"target": "完",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0137L03C02",
+"ka": "4c53c6be-ba96-4697-b71b-e0d518cfcffc",
+"known": "美しい",
+"pos": 2,
+"t1": "4c179bb6-8351-4468-91de-621772cfc7ee",
+"t2": "06f2ac90-0778-4097-b089-aaabcc7f022a",
+"target": "美",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0137L03B01",
+"ka": "185e221b-729d-4297-8a8a-3e60035bcb78",
+"known": "完璧",
+"pos": 3,
+"t1": "7dd91d7a-2e8d-4a8d-b7f8-8da5bcfb5ac7",
+"t2": "e7be9547-4fc6-4ffa-8ecf-05d7d48559bb",
+"target": "完美",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L03B02",
+"ka": "28a92974-02b8-41e3-a38d-81eab763c8ea",
+"known": "これは完璧？",
+"pos": 4,
+"t1": "6ce2584f-7b97-4f75-8734-b4330983788b",
+"t2": "da89abc8-6031-4955-ac05-23368bf8df4f",
+"target": "这个是完美的吗？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L03B03",
+"ka": "170b3c52-cca2-4165-9c4e-47f0b8a0d651",
+"known": "完璧だと思う。",
+"pos": 5,
+"t1": "fb1f548d-19e8-4175-ab79-7486aa3e1e84",
+"t2": "875a1653-9216-4273-a0cd-cf8f2f37cb0a",
+"target": "我觉得那是完美的。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L03B04",
+"ka": "16deeacc-fd16-4ee1-b6a8-f3144c8f4f68",
+"known": "完璧だと思っていた。",
+"pos": 6,
+"t1": "de6fd8b5-c6c1-4ce4-9b60-847565de19f8",
+"t2": "ea4a961f-d6e1-4e94-b6b7-dd13c01d1899",
+"target": "我以为那是完美的。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0137L03U01",
+"ka": "f4e0a791-dc5e-4263-8fe6-c42132341b48",
+"known": "彼女は完璧だと思っている。",
+"pos": 7,
+"t1": "c0a91a81-de26-4f15-80b9-87793f3a4b8c",
+"t2": "793c45c4-44e7-4268-8e06-2794cc2424d3",
+"target": "她觉得那是完美的。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L03U02",
+"ka": "a9f2b991-9e7f-40ba-9c84-1deac039b364",
+"known": "一緒に働くのは完璧だ。",
+"pos": 8,
+"t1": "8b2e4931-7b94-4872-8888-e69819da204e",
+"t2": "a42ead5e-afe8-4d28-b5e3-9196118e38e6",
+"target": "一起工作是完美的。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0137L03U05",
+"ka": "104cfa31-50cf-4ee9-a4e9-70b0f9ec353a",
+"known": "あなたの考えは完璧だと信じている。",
+"pos": 11,
+"t1": "eb56eb0d-3047-4614-adbb-950f6eb7add1",
+"t2": "108e58b9-2ca2-48aa-9f59-7a4f9e6d68d1",
+"target": "我相信你的想法是完美的。",
+"type": "use"
+}
+],
+"target": "完美",
+"type": "M"
+}
+],
+"status": "released",
+"target": "经常说话比完美更重要。"
+},
+"139": {
+"at": "2026-11-19T11:48:23Z",
+"known": "こんなに早く出なければならなくてすみません。",
+"legos": [
+{
+"id": "S0139L01",
+"idx": 1,
+"is_new": true,
+"known": "すみません、",
+"phrases": [
+{
+"id": "efaadb95-a62e-46ba-86ea-44027c9a697d",
+"ka": "76b9a81b-280a-46a4-b0ce-0eef7506c473",
+"known": "すみません、",
+"pos": 0,
+"t1": "6a591fdf-9475-4e06-83ba-a0670996f18d",
+"t2": "2820d2c8-22a3-4ebf-96e9-83450fd203b2",
+"target": "对不起",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0139L01B01",
+"ka": "2bc99576-c15c-41a3-86fb-948d44206dfc",
+"known": "すみません、問題がある。",
+"pos": 1,
+"t1": "61c16304-87b7-4311-a4bd-f0dcaf2355c6",
+"t2": "2cf2ce9c-ce01-460d-a75a-eb4fc520ccda",
+"target": "对不起，有问题。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0139L01B02",
+"ka": "6636ba73-9056-42c9-9919-8d6ae0344483",
+"known": "すみません、行かなければならない。",
+"pos": 2,
+"t1": "a229323d-0c6a-470c-8100-4aeaeaf48c1f",
+"t2": "811e9d7d-a129-4533-9d49-57be42f61ec5",
+"target": "对不起，我需要去。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0139L01B03",
+"ka": "dfe440b9-99ee-4673-86f2-54bdd0c5ddc2",
+"known": "すみません、わからない。",
+"pos": 3,
+"t1": "7bc54d57-46f5-4fe2-8273-22b666c2f551",
+"t2": "4ec85310-3c36-4430-8b6a-16f45e330e41",
+"target": "对不起，我不理解。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0139L01U01",
+"ka": "15227e82-37f9-43d8-8268-1d4bbbc2e56b",
+"known": "すみません、会えない。",
+"pos": 4,
+"t1": "7e0c6ebb-403a-48dc-b473-707a80b64f80",
+"t2": "5d30d397-0685-40ec-ada1-56cfc961008d",
+"target": "对不起，我不能见你。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L01U02",
+"ka": "025991ad-cd3b-4f11-926b-64e5be86a6c9",
+"known": "すみません、仕事しなければならない。",
+"pos": 5,
+"t1": "9bca9434-d3dc-41ea-be27-05dbceaf7e98",
+"t2": "9a9a84d4-d55d-4b0a-90d3-6e4943d4caa7",
+"target": "对不起，我需要工作。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L01U03",
+"ka": "ca449025-5ee8-4850-b8e5-7ba7ff4b18b3",
+"known": "すみません、なぜかわからない。",
+"pos": 6,
+"t1": "7a528db1-ecf6-45a7-a6f5-c756e20ee12b",
+"t2": "549b1af6-2db8-4de1-9593-5cf546f711f0",
+"target": "对不起，我不知道为什么。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L01U04",
+"ka": "0f464ccd-fd44-401b-97e4-a61de4373d75",
+"known": "すみません、今始められない。",
+"pos": 7,
+"t1": "698629c7-7bed-4237-8ac6-8d3e09332682",
+"t2": "6926cc22-dc3d-483e-a1c0-ce5906a1f7f8",
+"target": "对不起，我现在不能开始。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L01U05",
+"ka": "88ccce33-8eed-45e1-b5b4-691780551689",
+"known": "すみません、友達と話さなければならない。",
+"pos": 8,
+"t1": "497e603d-f67a-46f9-a128-51f0aaa3b6cc",
+"t2": "28e48a32-0968-4378-8700-9444e5006df2",
+"target": "对不起，我需要跟朋友说话。",
+"type": "use"
+}
+],
+"target": "对不起",
+"type": "A"
+},
+{
+"id": "S0139L02",
+"idx": 2,
+"is_new": true,
+"known": "早く",
+"phrases": [
+{
+"id": "0f0ed14b-27fb-49df-a506-d5f3d99bba9f",
+"ka": "e1ceb6a6-d457-4602-a79f-34321fe839e5",
+"known": "早く",
+"pos": 0,
+"t1": "463a7c0a-5cb2-4761-ad43-acf429c6dbf0",
+"t2": "ba17dad2-a845-4426-a5bb-d8f1a36f1d2c",
+"target": "早",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0139L02B01",
+"ka": "a96274f1-337d-4fba-9c6f-f79da65a3060",
+"known": "こんなに早く",
+"pos": 1,
+"t1": "8fe5f8ca-35b5-403c-927b-857716fab589",
+"t2": "708a8a3e-25ac-4a94-a222-5dcb6b3bc2ae",
+"target": "这么早",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0139L02B02",
+"ka": "d92d8397-7cd0-4565-a098-ce690786b082",
+"known": "こんなに早く出る",
+"pos": 2,
+"t1": "e17d3d9c-9a88-4633-b418-97ac7ec05613",
+"t2": "98b31671-521d-45d9-8f11-a9fc42bc6666",
+"target": "这么早走",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0139L02B03",
+"ka": "4912f500-502a-42f3-b9e8-7395e083c4ad",
+"known": "早く始めたい。",
+"pos": 3,
+"t1": "77e9363e-e0a2-4a09-a1db-b331b91142db",
+"t2": "f52cb099-02b8-4b83-bb6d-5727f7c72de5",
+"target": "我想早开始。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0139L02U01",
+"ka": "ea3a3775-fc6b-4571-8411-6189e077869c",
+"known": "彼女はよくこんなに早く出る。",
+"pos": 4,
+"t1": "7994c43c-6211-4241-8ff6-c4ea2f400e6a",
+"t2": "d51f732b-a15e-4940-8633-921db2dc55c3",
+"target": "她经常这么早走。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L02U02",
+"ka": "362d870e-ee82-47f5-a99f-7b27a17cc7b0",
+"known": "早く始めるほうがいいと信じている。",
+"pos": 5,
+"t1": "d7e8fb3c-3eb7-4780-ae6f-7b3508912f6c",
+"t2": "8b52c4ad-15b3-4138-acee-94a0944dc4d8",
+"target": "我相信早开始更好。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L02U03",
+"ka": "5655addc-2083-4c19-8f90-4311774a2015",
+"known": "なぜこんなに早く？",
+"pos": 6,
+"t1": "f504f071-5a8e-4ffe-bf24-837372ad2b79",
+"t2": "11d67763-9b38-4264-ba0c-c20cdc49b2f3",
+"target": "你为什么这么早走？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L02U05",
+"ka": "982c6162-3680-4892-b6f2-54beb37d8fc6",
+"known": "こんなに早く出なければならなくてすみません。",
+"pos": 8,
+"t1": "6fe47f5e-c909-4670-84de-b89994181229",
+"t2": "fd91632e-9330-42dc-88ce-ba5500bf6175",
+"target": "对不起我需要这么早走。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0139L02U06",
+"ka": "6597e529-d5b2-4498-9f63-594c363edf79",
+"known": "なぜこんなに早く出るの？",
+"pos": 9,
+"t1": "b6c1c429-e544-460f-99cc-a2f164086c8a",
+"t2": "f5231e3c-8c24-49d2-ac2a-4c4573979833",
+"target": "为什么你需要这么早走？",
+"type": "use"
+}
+],
+"target": "早",
+"type": "A"
+}
+],
+"status": "released",
+"target": "对不起我需要这么早走。"
+},
+"173": {
+"at": "2026-11-19T11:48:23Z",
+"known": "いいえ、大丈夫です、一人でできます。",
+"legos": [
+{
+"id": "S0173L01",
+"idx": 1,
+"is_new": true,
+"known": "ありがとう",
+"phrases": [
+{
+"id": "a8e1f54a-f4d5-42a2-9f99-9f913f570120",
+"ka": "d2c2a3ed-f0d7-4a26-8f9b-5ff9c95fc058",
+"known": "ありがとう",
+"pos": 0,
+"t1": "7f947cc2-343d-4030-a78a-83dd0a12620b",
+"t2": "ce2ecfc3-9e69-4d1b-ab63-8724d87786fd",
+"target": "谢谢",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0173L01B01",
+"ka": "cafdffd0-02c3-4df9-beb7-92f35ffc5f94",
+"known": "来てくれてありがとう",
+"pos": 1,
+"t1": "0dfebcee-7515-45d6-a43f-d37d9da93962",
+"t2": "1bde24cb-fcf7-4f91-b801-5081ce293c39",
+"target": "谢谢你来。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0173L01B02",
+"ka": "ab80da91-5ae7-4d81-b53c-bdee5d8c2480",
+"known": "本をありがとう",
+"pos": 2,
+"t1": "10a03d77-a268-4fa7-af70-66cc1564a289",
+"t2": "0745253b-b15b-49c4-96bf-4eb20db2cce6",
+"target": "谢谢你的书。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0173L01B03",
+"ka": "8424a544-4679-440e-aa5f-4354cdf62dca",
+"known": "ありがとうと言いたいです",
+"pos": 3,
+"t1": "7a4b2c5d-a9ae-4f1e-b4c4-9ca8ee7608a8",
+"t2": "4d0bbaae-af5d-447f-80f8-a311aad2ecf5",
+"target": "我想说谢谢。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0173L01U02",
+"ka": "797ac5a6-c64f-4349-acbe-92c84653dc2e",
+"known": "手伝ってくれてありがとう",
+"pos": 5,
+"t1": "a76d9ac5-6432-49ed-87c6-cbdbbe4666dc",
+"t2": "3aa787a2-60ae-4d88-a02c-aa9c14469686",
+"target": "谢谢你帮忙。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0173L01U03",
+"ka": "c5022f7a-5dc4-4e61-bf59-21da6ed01a81",
+"known": "助けてくれてありがとう",
+"pos": 6,
+"t1": "9614a4ca-cfb6-4e45-9174-e68380186d4b",
+"t2": "62f66958-e871-408a-9451-b9be688e7bb8",
+"target": "谢谢你的帮助。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0173L01U04",
+"ka": "ac8c90d6-896b-4e80-bdda-250e71613bbb",
+"known": "教えてくれてありがとう",
+"pos": 7,
+"t1": "e821dd05-4835-49f6-b0cf-8c1eee39c227",
+"t2": "b8bb153b-8216-45e4-abcd-2f008392a572",
+"target": "谢谢你告诉我。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0173L01U05",
+"ka": "8e5f6a10-e0ce-4a50-8f26-fceb68b2cdf3",
+"known": "ありがとう、いりません",
+"pos": 8,
+"t1": "db6dc2a4-be2c-4399-82a7-38e6f7755a45",
+"t2": "0fed528f-c28a-437f-a868-018559384e0c",
+"target": "谢谢，不用了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0173L01U06",
+"ka": "193e6f6c-04fd-4398-b9d6-f2a88a103bcc",
+"known": "ありがとう、自分でできます",
+"pos": 9,
+"t1": "a87b4f18-87d0-4b31-b680-5c468e269300",
+"t2": "ef69333b-3699-4e81-b81c-8adc476d66e5",
+"target": "谢谢，我自己能行。",
+"type": "use"
+}
+],
+"target": "谢谢",
+"type": "A"
+}
+],
+"status": "released",
+"target": "不用了谢谢，我自己能行。"
+},
+"18": {
+"at": "2026-11-19T11:48:11Z",
+"known": "今晩6時に会いたいです。",
+"legos": [
+{
+"id": "S0018L01",
+"idx": 1,
+"is_new": true,
+"known": "私たち",
+"phrases": [
+{
+"id": "d2118478-3ebb-49a6-a498-f200ccbb9209",
+"ka": "d8035eb6-d035-4c15-8262-40a5f1d5c6c5",
+"known": "私たち",
+"pos": 0,
+"t1": "d7481176-02ac-4611-972f-7f1a6d96c63d",
+"t2": "2da223eb-eec8-4802-939b-da4e2b16a626",
+"target": "我们",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0018L01B01",
+"ka": "00799b2b-cab2-4a62-97e0-023afac3c02f",
+"known": "私たちは中国語を話したい",
+"pos": 1,
+"t1": "f67c1c48-8baa-4aa0-9045-756053d5922c",
+"t2": "afddb666-a052-4be4-b609-6cf77b55eaef",
+"target": "我们想说中文",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L01B02",
+"ka": "1b9a9126-ebc2-4448-8777-60e1df5d7c27",
+"known": "私たちは学ぼうとしている",
+"pos": 2,
+"t1": "63b0f4d9-666f-4edd-971d-947ce44aa68d",
+"t2": "54667d50-9e83-491b-b79b-8b07c3ebcace",
+"target": "我们在试着学",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L01B03",
+"ka": "d4d169f5-2f4b-4c8e-bfbb-906b7e673814",
+"known": "私たちは一緒に練習できる",
+"pos": 3,
+"t1": "4224bc84-492c-416e-950a-a18dffb48f34",
+"t2": "67cb6eeb-e557-4242-a738-e1a371b338c8",
+"target": "我们能一起练习",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L01U01",
+"ka": "795e4f6d-6e2d-4754-a6fe-13704fdf91d5",
+"known": "私たちは一緒に中国語を話したいです",
+"pos": 4,
+"t1": "440f9656-13cc-4f38-8700-0697718ce264",
+"t2": "fdee9361-9446-43c4-9d9f-16c2deab9907",
+"target": "我们想一起说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L01U02",
+"ka": "e4f85e2c-f0f5-420c-ab68-4b4b2d6ed6f9",
+"known": "私たちは中国語を学ぼうとしています",
+"pos": 5,
+"t1": "ade9c23c-2657-42a7-98d8-58237d895583",
+"t2": "48307204-44aa-489a-b582-78039b6b29a9",
+"target": "我们在试着学中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L01U03",
+"ka": "326a7423-00a5-4a77-aa46-d7a65bd1d757",
+"known": "一緒に練習できますか",
+"pos": 6,
+"t1": "a68d4e37-eb40-4413-979c-985e6c830b7a",
+"t2": "54b8e9f6-bcac-4541-913b-6492e80d457c",
+"target": "我们能一起练习吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L01U04",
+"ka": "9f47e18d-3e03-42b7-aafc-4c475aedfe55",
+"known": "私たちはできるだけ中国語を話すつもりです",
+"pos": 7,
+"t1": "aeb23e97-ea74-46fa-b2b0-ee667099076c",
+"t2": "3e6fbf6e-d228-4639-aef9-56ade56d5ef6",
+"target": "我们要尽量多说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L01U05",
+"ka": "09adacc2-aee8-4f7b-992e-0f73750ddb38",
+"known": "私たちはどう言えばいいかわかりません",
+"pos": 8,
+"t1": "c260b458-f642-4804-8e4a-1cf3feed972b",
+"t2": "2f71d626-eb8b-4c44-8f22-0c3203cea10c",
+"target": "我们不确定怎么说",
+"type": "use"
+}
+],
+"target": "我们",
+"type": "A"
+},
+{
+"id": "S0018L02",
+"idx": 2,
+"is_new": true,
+"known": "今晩",
+"phrases": [
+{
+"id": "95527961-dc6e-4d69-ae83-d3c149cc7f1e",
+"ka": "d4402ab0-d90c-47c7-ade2-c1f463e02cb1",
+"known": "今晩",
+"pos": 0,
+"t1": "642fc12d-195f-4ea9-a614-97b3b06be299",
+"t2": "34b52d2d-ac90-43cb-888f-89bbe40fc4dd",
+"target": "晚上",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0018L02B01",
+"ka": "d4402ab0-d90c-47c7-ade2-c1f463e02cb1",
+"known": "今晩",
+"pos": 1,
+"t1": "d03703d2-3664-4cf1-a412-8a49b74ce9d1",
+"t2": "1e802063-7aac-4477-b569-ca83e68b828c",
+"target": "今天晚上",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L02B02",
+"ka": "b9d19c45-4f58-4783-983e-d0a03b2b4ce8",
+"known": "今晩練習したい",
+"pos": 2,
+"t1": "5fe5baa0-8472-4631-b65c-d000c91fdc26",
+"t2": "566990e5-b66f-4578-9919-3cdcff478e66",
+"target": "今天晚上想练习",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L02B03",
+"ka": "0e665ced-ced8-4fce-bd1c-086bf0f3bee5",
+"known": "今晩中国語を話すつもり",
+"pos": 3,
+"t1": "b07636f7-e2d3-44d4-9974-58ff664ffe23",
+"t2": "41dba09d-66f6-4aa2-9b0b-2d435c7dd17c",
+"target": "今天晚上要说中文",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L02U01",
+"ka": "565ec994-10ac-4b05-8eeb-8db938257c52",
+"known": "今晩中国語を話す練習をしたいです",
+"pos": 4,
+"t1": "ac97cace-5c86-4858-b256-24f7e0aac327",
+"t2": "f1a8e989-9df3-4971-a4a5-658265005848",
+"target": "我想今天晚上练习说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L02U02",
+"ka": "6581f58e-4475-43d1-834c-6e2ccf75163a",
+"known": "今晩一緒に中国語を話すつもりです",
+"pos": 5,
+"t1": "c825433a-b494-4437-aa71-2087d8a4cc08",
+"t2": "67b42474-322d-40a7-98dc-b070e4ee00df",
+"target": "我们今天晚上要一起说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L02U03",
+"ka": "90aaf4e1-53bd-4e65-a231-b814a4f6176f",
+"known": "今晩私と話せますか",
+"pos": 6,
+"t1": "d6082545-3f90-4acd-a1e4-bdec3414371f",
+"t2": "11976140-57b8-43a2-baaf-488cab4a2748",
+"target": "你今天晚上能和我说话吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L02U04",
+"ka": "933f67c8-c186-4019-9b05-6cfe2e6e1e40",
+"known": "彼は今晩戻りたいです",
+"pos": 7,
+"t1": "41c32192-f002-4ffd-9e1e-14a097fb772b",
+"t2": "73e74f22-3867-46ad-a187-ccb6511458ae",
+"target": "他今天晚上想回来",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L02U05",
+"ka": "d616ea9c-bdab-449c-b4ba-d6c0b4ec8a9a",
+"known": "今晩できるだけたくさん練習したいです",
+"pos": 8,
+"t1": "8f69b802-516a-4c25-878c-410166590a40",
+"t2": "f945c621-38e3-4502-985e-d4f5c4d1597b",
+"target": "我今天晚上想尽量多练习",
+"type": "use"
+}
+],
+"target": "晚上",
+"type": "A"
+},
+{
+"id": "S0018L03",
+"idx": 3,
+"is_new": true,
+"known": "6時",
+"phrases": [
+{
+"id": "87e7b501-c942-4707-911a-5abea27a0912",
+"ka": "251c4141-7309-407f-8e85-27b80401dbfa",
+"known": "6時",
+"pos": 0,
+"t1": "1ec4a82a-10be-47d6-94c5-3768a85191c4",
+"t2": "5fe39b8a-2f36-4482-9b6f-1c6b0825b272",
+"target": "六点",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0018L03C01",
+"ka": "83371aa1-c189-4b41-a59c-702515eae039",
+"known": "6",
+"pos": 1,
+"t1": "cc83120f-708c-4c6b-b463-c9175bed52bb",
+"t2": "a361186c-93f1-4794-a0bd-a0d59eacc44b",
+"target": "六",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0018L03C02",
+"ka": "f509212d-3063-4c18-b8e2-f23044ee3f61",
+"known": "時",
+"pos": 2,
+"t1": "4c6b4bca-143f-4a48-9092-9defcf63beae",
+"t2": "edb44cd3-e1b9-4774-9383-768846e74cb8",
+"target": "点",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0018L03B01",
+"ka": "251c4141-7309-407f-8e85-27b80401dbfa",
+"known": "6時",
+"pos": 3,
+"t1": "1ec4a82a-10be-47d6-94c5-3768a85191c4",
+"t2": "5fe39b8a-2f36-4482-9b6f-1c6b0825b272",
+"target": "六点",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L03B02",
+"ka": "7603e941-9a3f-4a15-85e6-90e2d1bf1ae3",
+"known": "今晩6時",
+"pos": 4,
+"t1": "f7f8eb8a-f983-4724-833c-b988be520e71",
+"t2": "f1f47854-2793-4a0d-a13a-f93708cd4875",
+"target": "今天晚上六点",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L03B03",
+"ka": "d0885e13-ce66-461a-b8b4-76b396a5b9f0",
+"known": "6時に練習したい",
+"pos": 5,
+"t1": "953492a4-6094-4d74-8553-fbbb04eba4b3",
+"t2": "71916de8-4827-463a-99b7-7abf0b43a4cd",
+"target": "六点想练习",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L03B04",
+"ka": "21184ee1-4b41-4b95-8e00-f07656ef40a2",
+"known": "6時に戻る",
+"pos": 6,
+"t1": "ab2dec65-da50-45e7-95cc-691618ef4080",
+"t2": "87b1e85a-0fce-45ad-a0d9-13a2aa6a38a0",
+"target": "六点回来",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L03U01",
+"ka": "866d62c6-c6fb-44df-ae97-579cf3326611",
+"known": "今晩6時に練習したいです",
+"pos": 7,
+"t1": "597f59fc-b7c9-4c6a-bcfe-306c44d5f883",
+"t2": "30e5161f-389a-4f50-b656-39b2b2e5ec97",
+"target": "我想今天晚上六点练习",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L03U02",
+"ka": "d79dd6e5-7e85-4e5f-9125-482e18bd9bc3",
+"known": "今晩6時に戻れますか",
+"pos": 8,
+"t1": "45da936b-60d4-416c-ab68-4edc9725f0d2",
+"t2": "b95bfb18-9030-43d2-8358-6e44945799fa",
+"target": "你今天晚上六点能回来吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L03U03",
+"ka": "3e288de2-a258-478a-ab3e-efc9beee7a34",
+"known": "彼は今晩6時に私と話すつもりです",
+"pos": 9,
+"t1": "d563e030-1759-4f9b-9b4d-83a57b72e5ce",
+"t2": "454afa36-f8f3-48d0-bd55-e30660f8e281",
+"target": "他今天晚上六点要和我说话",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L03U04",
+"ka": "b2e3149e-727b-48b1-8284-dc5ce8012727",
+"known": "6時に一緒に練習できますか",
+"pos": 10,
+"t1": "a0567bd8-ed16-473d-b3c5-5bfeb49c9874",
+"t2": "75dc0296-1c2e-4486-a818-86363438daef",
+"target": "我们六点能一起练习吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L03U05",
+"ka": "971dcd1a-b069-4af3-a056-ffa22201ffe6",
+"known": "私たちは今晩6時に一緒に中国語を話したいです",
+"pos": 11,
+"t1": "0096f046-48f4-41b0-84d0-46fb1b4a4f50",
+"t2": "8bbcbad0-ecf0-435f-8743-a9ed982cec12",
+"target": "我们想今天晚上六点一起说中文",
+"type": "use"
+}
+],
+"target": "六点",
+"type": "M"
+},
+{
+"id": "S0018L04",
+"idx": 4,
+"is_new": true,
+"known": "会う",
+"phrases": [
+{
+"id": "e56449a3-b43c-4dc3-b6ca-5eb1be8ef452",
+"ka": "12535403-66d3-46ab-9e97-148f383b3347",
+"known": "会う",
+"pos": 0,
+"t1": "567f6347-35b4-4ce3-8d4f-666d7d12425d",
+"t2": "bea35d1c-16ee-4e50-b6cc-e3eb7e8af31d",
+"target": "见面",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0018L04C01",
+"ka": "052e1d06-fd06-4a40-a682-57771ffc3b4a",
+"known": "見る",
+"pos": 1,
+"t1": "8a976658-b6c9-4767-94f0-00dd8672bd2c",
+"t2": "53c12ca4-31a2-40f8-96f0-9ee6f4e28eae",
+"target": "见",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0018L04C02",
+"ka": "872150b2-5865-4a69-9458-8d094422a9cb",
+"known": "顔",
+"pos": 2,
+"t1": "3faaf642-1534-4aaa-8ae2-1d049e67010a",
+"t2": "3800b5da-737f-4009-916c-f00da80b4c8b",
+"target": "面",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0018L04B01",
+"ka": "12535403-66d3-46ab-9e97-148f383b3347",
+"known": "会う",
+"pos": 3,
+"t1": "567f6347-35b4-4ce3-8d4f-666d7d12425d",
+"t2": "bea35d1c-16ee-4e50-b6cc-e3eb7e8af31d",
+"target": "见面",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L04B02",
+"ka": "526e2834-14d7-4f05-83c3-b47da8e81fea",
+"known": "会いたい",
+"pos": 4,
+"t1": "51f34bfb-d2a0-4dff-b97e-cd7cecc51f14",
+"t2": "32690eb1-9296-4bcf-aef7-4a09edb26c43",
+"target": "想见面",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L04B03",
+"ka": "62f2a33e-cf19-4add-b8c6-4c69aa074c20",
+"known": "今晩会うつもり",
+"pos": 5,
+"t1": "7a8816aa-35e5-456b-a139-6279ecdc950f",
+"t2": "c879df46-d094-4cf8-9d5f-2eda5ef2657c",
+"target": "今天晚上要见面",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L04B04",
+"ka": "3ff499f4-82aa-4f5d-ae94-ec9d0242b757",
+"known": "6時に会う",
+"pos": 6,
+"t1": "c9fc0317-d870-4f1e-ac76-7014b6abd171",
+"t2": "266dddb5-f64e-4723-872f-0782abe0d27e",
+"target": "六点见面",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0018L04U01",
+"ka": "00974a46-208c-4948-b612-1584a5a53e4d",
+"known": "今日会いたいです",
+"pos": 7,
+"t1": "6eee7f2e-c0e5-43ed-af58-cc2d3f1dbd65",
+"t2": "3ef4ed40-f685-4339-925e-2041065656eb",
+"target": "我们想今天见面",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L04U02",
+"ka": "b5858547-43ef-4d2b-bd10-8f837af225a2",
+"known": "明日あなたと会いたいです",
+"pos": 8,
+"t1": "1c1ed3d3-986c-44bb-bc06-08046b523cb7",
+"t2": "dc6c1fc7-1fa9-4f8b-bfb8-4389dd2707b1",
+"target": "我想明天和你见面",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L04U03",
+"ka": "24b70af0-cf76-48ad-b76f-3c4505c320be",
+"known": "今晩6時に会えますか",
+"pos": 9,
+"t1": "07bb585a-a1d6-42e9-a790-69dae83bf975",
+"t2": "1899eeaf-26fb-4031-8afe-db0c1171115f",
+"target": "你今天晚上六点能和我见面吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L04U04",
+"ka": "cc475850-a3e9-4464-bbf9-3aaa3f5c1cb1",
+"known": "彼は後で彼女と会いたいです",
+"pos": 10,
+"t1": "ac8d5ee4-5f07-465c-a0f7-f97cfd25c486",
+"t2": "9bbffc96-5694-43c3-a5ca-3db5d305964e",
+"target": "他想以后和她见面",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0018L04U05",
+"ka": "d9306945-bffd-4022-862b-385d3903470e",
+"known": "一緒に会いますか",
+"pos": 11,
+"t1": "35088486-955d-4330-8f98-9ac863adee83",
+"t2": "fe7062da-dbfc-4666-93d8-1314af89e377",
+"target": "我们要一起见面吗",
+"type": "use"
+}
+],
+"target": "见面",
+"type": "M"
+}
+],
+"status": "released",
+"target": "我们想今天晚上六点见面。"
+},
+"20": {
+"at": "2026-11-19T11:48:12Z",
+"known": "彼の名前を早く覚えたいですね。",
+"legos": [
+{
+"id": "S0020L01",
+"idx": 1,
+"is_new": true,
+"known": "早く",
+"phrases": [
+{
+"id": "099d7b69-21ca-4871-8703-9b15e7448fa2",
+"ka": "e1ceb6a6-d457-4602-a79f-34321fe839e5",
+"known": "早く",
+"pos": 0,
+"t1": "bb26cb21-c903-457a-8912-9d27978ae926",
+"t2": "a590fb5d-1db6-48f6-ac00-7b4229e5f87d",
+"target": "快点",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0020L01B01",
+"ka": "0280bd6e-b30c-4a69-b295-a646f6ef812f",
+"known": "早く話す",
+"pos": 1,
+"t1": "e8489b14-bca9-44c0-9435-64526f46fe80",
+"t2": "d676fdc0-95a8-4cff-84a5-9e082089cd0a",
+"target": "快点说",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L01B02",
+"ka": "fb5cf2d4-fa2a-4973-9643-6af66e9099b5",
+"known": "早く学ぶ",
+"pos": 2,
+"t1": "e9660322-0b8b-4feb-851e-ba229ae0d2e8",
+"t2": "e4cfc223-a3aa-47e7-9d00-72f8855be5ea",
+"target": "快点学",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L01B03",
+"ka": "15fb7aa9-25ca-4ea1-a35d-018d2695b638",
+"known": "早く戻る",
+"pos": 3,
+"t1": "7ef16c80-f033-4acb-8de4-c9a588bdd068",
+"t2": "d017450b-3d97-4000-b85a-b4dbbf0e37d7",
+"target": "快点回来",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L01U01",
+"ka": "08ce5742-3894-46e9-b641-b3e218e1ba8e",
+"known": "早く中国語を学びたいです",
+"pos": 4,
+"t1": "206ca153-096a-459d-b18a-1f5b24064a6e",
+"t2": "02af09dd-478e-44df-95da-d5b225718eef",
+"target": "我想快点学中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L01U02",
+"ka": "77f55ee9-f7d5-4fb0-98c8-a5a2493252b0",
+"known": "早く話せますか",
+"pos": 5,
+"t1": "12d259f1-eacf-4c6b-a398-b0662a67ee8f",
+"t2": "af180e51-1754-4902-aaee-699546458345",
+"target": "你能快点说吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L01U03",
+"ka": "dffca838-436a-4d3b-8ad5-fa906dcf7088",
+"known": "早く文全体を覚えるつもりです",
+"pos": 6,
+"t1": "b2508c79-01c8-4393-a157-63e58b471f1f",
+"t2": "09648db0-4433-4f52-99f4-feffe0d6b8c8",
+"target": "我要快点记住整个句子",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L01U04",
+"ka": "2909a346-0f41-4851-8ffb-4e2bff95bd7b",
+"known": "彼は早く戻りたいです",
+"pos": 7,
+"t1": "cc238083-c967-4a1c-ae9c-62f2a5abe5a9",
+"t2": "7efebec0-9afe-4cda-82a9-b20dd01cb3cf",
+"target": "他想快点回来",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L01U05",
+"ka": "88f7025c-36be-49c6-9cce-b541d136303f",
+"known": "早く練習しなければなりません",
+"pos": 8,
+"t1": "ee6bd219-83b9-442f-9192-424b57723a59",
+"t2": "29074e60-b434-4869-ab37-2cb883a6f0ca",
+"target": "我们要快点练习",
+"type": "use"
+}
+],
+"target": "快点",
+"type": "A"
+},
+{
+"id": "S0020L02",
+"idx": 2,
+"is_new": true,
+"known": "彼の",
+"phrases": [
+{
+"id": "c91ac18b-251d-4489-b5bf-78bbd0b85380",
+"ka": "40de1736-8072-4235-8b33-b03c162f6247",
+"known": "彼の",
+"pos": 0,
+"t1": "f1c3eb85-1bd7-4ccf-ab17-2968cde1d49b",
+"t2": "bbecf3e7-7aad-4c32-8849-b729ff2ff9ae",
+"target": "他的",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0020L02C01",
+"ka": "a6d2b876-fbb5-4b70-96f5-882ec38b250a",
+"known": "彼",
+"pos": 1,
+"t1": "15bf3d58-7faa-4c86-888a-7ddfabfa25ab",
+"t2": "04b112e4-ae14-45b1-884c-7ae8e1f66c1f",
+"target": "他",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0020L02B01",
+"ka": "40de1736-8072-4235-8b33-b03c162f6247",
+"known": "彼の",
+"pos": 2,
+"t1": "f1c3eb85-1bd7-4ccf-ab17-2968cde1d49b",
+"t2": "bbecf3e7-7aad-4c32-8849-b729ff2ff9ae",
+"target": "他的",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L02B02",
+"ka": "bfd23d5b-3079-4d80-9e2b-1b46e09c350d",
+"known": "彼の言いたいこと",
+"pos": 3,
+"t1": "faeecd84-0308-4f0a-a117-16d525d7f43e",
+"t2": "689def68-5ba4-455f-958a-70885a034f62",
+"target": "他的意思",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L02B03",
+"ka": "3eb137c1-d54a-4b61-981a-a7b307d295ad",
+"known": "彼の答え",
+"pos": 4,
+"t1": "bf3dc0f3-8a3c-45e5-bddf-7d32b1974908",
+"t2": "0d038340-eed8-4a03-addb-3d1b53b3372b",
+"target": "他的答案",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L02B04",
+"ka": "71681992-6407-423e-aa55-6f5b5cbb06af",
+"known": "彼の答えを学ぶ",
+"pos": 5,
+"t1": "85550c8b-fed3-4d39-badf-2eda90519600",
+"t2": "6bf51b80-8982-43a0-8e0b-a525e28745b1",
+"target": "学他的答案",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L02U01",
+"ka": "c4fce28e-b42a-4116-b96d-584ab406f6ee",
+"known": "彼の言いたいことが何かわかりません",
+"pos": 6,
+"t1": "281e0e7c-3b99-4935-8fa2-028b21f1510a",
+"t2": "ccc7aaa5-0191-43e2-9eb4-44dfee79beae",
+"target": "我不确定他的意思是什么",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L02U02",
+"ka": "823cacda-6e0e-4248-812a-e9d3fad8e9ea",
+"known": "彼の答えを早く見つけたいです",
+"pos": 7,
+"t1": "0a4202a2-2a4f-4fbd-928a-c51dd7a2c89c",
+"t2": "5eaa5f20-a6cc-42a2-9de4-2f18231358b1",
+"target": "我想快点找出他的答案",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L02U03",
+"ka": "88a390b3-b125-4d56-9895-5fdce4a27f73",
+"known": "彼の言いたいことを学びたいですか",
+"pos": 8,
+"t1": "4e356e2d-83bf-48ad-950c-649dab6cd43e",
+"t2": "0ce1d418-278a-4bed-837f-0446a7ff90ba",
+"target": "你想学他的意思吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L02U04",
+"ka": "e5bcce2b-8832-4d86-a581-269cd3720f20",
+"known": "彼の言いたいことは何ですか",
+"pos": 9,
+"t1": "496aee40-d40d-43ac-a36d-e06e428f1641",
+"t2": "0e64b96f-d4f2-45c8-a874-0bc91d16c102",
+"target": "他的意思是什么",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L02U05",
+"ka": "3f8f2d21-c4a9-409f-b271-7571ebcadbdf",
+"known": "彼の言いたいことを説明しようとしています",
+"pos": 10,
+"t1": "0b0c17f0-46fa-432d-8acd-cfdff006151b",
+"t2": "6af0bd0b-8bfa-4b26-b382-d9502a5e39cc",
+"target": "我在试着解释他的意思",
+"type": "use"
+}
+],
+"target": "他的",
+"type": "M"
+},
+{
+"id": "S0020L03",
+"idx": 3,
+"is_new": true,
+"known": "名前",
+"phrases": [
+{
+"id": "6d3d80d1-5c83-43be-878c-51c05468672c",
+"ka": "e4cd8588-0f4e-4389-98c4-0afa4fa5f584",
+"known": "名前",
+"pos": 0,
+"t1": "b26294be-dde5-4593-92ca-c6c1e029afa1",
+"t2": "20b626bc-baa0-4dbb-911e-a622d23201f9",
+"target": "名字",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0020L03B01",
+"ka": "8b2c9883-d622-4154-ace8-9dafca01d64d",
+"known": "彼の名前",
+"pos": 1,
+"t1": "d5693dc2-8a7c-4494-b181-7eb36a203c3a",
+"t2": "ca4b3e65-eec0-402c-8047-f44042168b46",
+"target": "他的名字",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L03B02",
+"ka": "be21e249-cd58-4de9-b4f3-4e0399bc29ae",
+"known": "彼の名前を覚える",
+"pos": 2,
+"t1": "97c7a658-39b2-46be-a348-12e3c07a677e",
+"t2": "22c25b75-eace-452b-974e-5ed6ef4789af",
+"target": "记住他的名字",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L03B03",
+"ka": "701c94be-f7ea-43d1-8f38-1f8bac5a220b",
+"known": "彼の名前を早く学びたい",
+"pos": 3,
+"t1": "52c8d345-e412-40bc-a7d3-cc9b19c24cfe",
+"t2": "2b920157-1d2b-448c-97c0-e399a9199057",
+"target": "想快点学他的名字",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0020L03U01",
+"ka": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+"known": "彼の名前を早く覚えたいですね",
+"pos": 4,
+"t1": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+"t2": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+"target": "你想快点记住他的名字",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L03U02",
+"ka": "c3d4bb77-cbe1-4f93-937b-3cdba0c41401",
+"known": "彼の名前がわかりません",
+"pos": 5,
+"t1": "f407ad76-bbcc-4d1f-922d-81c967b7a427",
+"t2": "612f4570-164f-498a-a085-04646466c3b1",
+"target": "我不确定他的名字",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L03U03",
+"ka": "c8115d17-cf36-4709-a4c3-8dac84b7e2c8",
+"known": "彼の名前を覚えたいです",
+"pos": 6,
+"t1": "f2983850-350b-4d4d-84ec-2ea7695192cf",
+"t2": "a724ad0b-ad8b-4233-b8a9-b7ceb9da5776",
+"target": "我想记住他的名字",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L03U04",
+"ka": "1b0bdab0-6eaf-48ec-8814-85e43354d4be",
+"known": "彼の名前を覚えようとしています",
+"pos": 7,
+"t1": "cdf0d241-136f-4121-b0c0-85cad4b8a597",
+"t2": "b4a84511-e510-4d88-881c-a6e1539b73e6",
+"target": "我在试着记住他的名字",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0020L03U05",
+"ka": "2203eeea-01ec-4b65-819f-d6fa8980962d",
+"known": "彼の名前は何ですか",
+"pos": 8,
+"t1": "d94b37f8-5ec4-4776-aab7-9179bbbe984f",
+"t2": "7f6c1f64-c11f-4c1e-9869-f9ec9f5055ee",
+"target": "他的名字是什么",
+"type": "use"
+}
+],
+"target": "名字",
+"type": "A"
+}
+],
+"status": "released",
+"target": "你想快点记住他的名字。"
+},
+"272": {
+"at": "2026-11-19T11:48:24Z",
+"known": "はい、それはいい考えですね。",
+"legos": [
+{
+"id": "S0272L01",
+"idx": 1,
+"is_new": true,
+"known": "〜ね・そうですね",
+"phrases": [
+{
+"id": "245e84e4-789b-4985-8c33-97d3a8cd7f48",
+"ka": "30d6f30b-8552-4ee0-928e-7b0831e97fde",
+"known": "〜ね・そうですね",
+"pos": 0,
+"t1": "a698d948-a3f3-4935-a7af-57ce89e8a091",
+"t2": "af4b4222-c6db-48a7-a81f-52855cd82a35",
+"target": "啊",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0272L01B01",
+"ka": "33d1bb85-3a2d-4d74-be24-6643f69a1f17",
+"known": "いいね",
+"pos": 1,
+"t1": "5d9128e4-3f67-4f21-9ccc-f965804da66c",
+"t2": "cfac185a-a768-4704-a83f-4ef622c76c6c",
+"target": "好啊",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L01B02",
+"ka": "0c937d99-2ad5-4a69-94a4-89106220454a",
+"known": "そうだね",
+"pos": 2,
+"t1": "a5a36714-0c3b-43c5-9436-4027efeee2bc",
+"t2": "592421e5-ebf6-4781-9394-e3aec9e56f90",
+"target": "对啊",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L01B03",
+"ka": "9b1431a8-ea7f-4e95-86c4-a4a5dfcdc24b",
+"known": "いいね、手伝うよ",
+"pos": 3,
+"t1": "af8fa992-9f92-4284-b76e-f5932bfdef88",
+"t2": "7e1c301e-ebff-4d70-92c9-2301036cfe2d",
+"target": "好啊，我愿意",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L01U01",
+"ka": "dc54f8e8-77cb-4a4d-a6c2-7f6ad5367420",
+"known": "いいね、私は手伝う気があります。",
+"pos": 4,
+"t1": "1d04e31a-8b52-48d5-8111-d6742fc058cf",
+"t2": "fef921cf-9f4f-4b2e-a614-0d405e33a5d5",
+"target": "好啊，我愿意帮忙。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L01U02",
+"ka": "076eb344-cc72-41ab-a5d7-cbdd9fdfe6d4",
+"known": "そうだね、それは良いアイデアだ。",
+"pos": 5,
+"t1": "39f5d3d6-8c72-4cba-9c4d-82dd8474a09b",
+"t2": "c74d41dd-8c83-40cd-96dd-8c7f99afd66a",
+"target": "对啊，那是一个好主意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L01U03",
+"ka": "83fe206b-c20b-4e00-aad1-9b4f8172ba1c",
+"known": "いいね、一緒に行こう。",
+"pos": 6,
+"t1": "26dfb4ed-a01c-4181-b5cc-88b1a373d97b",
+"t2": "fc34e02e-e9c1-4d78-9a1d-791e7f843d25",
+"target": "好啊，我们一起去。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L01U04",
+"ka": "0283632a-33d6-40b2-b549-58155b56fa36",
+"known": "いいね、来月に。",
+"pos": 7,
+"t1": "26c80a31-2bc9-4cd0-b974-9e46967e0a0c",
+"t2": "6862fe5f-b32b-4210-9a76-392cf413be76",
+"target": "好啊，下个月见。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L01U05",
+"ka": "7a5fadda-dcc8-4bfa-a669-f5878d346c4c",
+"known": "そうだね、彼に伝えるべきだ。",
+"pos": 8,
+"t1": "b935212b-4d2f-43e7-b9e5-9a456b128cff",
+"t2": "58c506fe-6e40-491a-9053-aa382a850d29",
+"target": "对啊，你应该告诉他。",
+"type": "use"
+}
+],
+"target": "啊",
+"type": "A"
+},
+{
+"id": "S0272L02",
+"idx": 2,
+"is_new": true,
+"known": "〜に聞こえる・〜そうだ",
+"phrases": [
+{
+"id": "907b43aa-7c7d-4150-8007-4bae11fdb176",
+"ka": "d5aded9e-f90e-48e4-8daa-a35da2b69fc9",
+"known": "〜に聞こえる・〜そうだ",
+"pos": 0,
+"t1": "e48dff78-e327-419f-9e5b-127f8568cc14",
+"t2": "0f452d5a-6bab-4e17-b844-a3a5e32a4f6c",
+"target": "听起来",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0272L02C01",
+"ka": "2051fcfa-1868-45e5-b0fd-98d26ee2a847",
+"known": "聞く",
+"pos": 1,
+"t1": "679464ef-1775-4a45-8879-7a7838abee63",
+"t2": "0354032d-dd16-47fd-9656-cbe24bbf9d51",
+"target": "听",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0272L02C02",
+"ka": null,
+"known": "〜し始める",
+"pos": 2,
+"t1": "4202dfed-5657-4c29-bf1c-550cfc52a347",
+"t2": "b30381f9-331f-49dd-b9ea-3aa295669445",
+"target": "起来",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0272L02B01",
+"ka": "d5aded9e-f90e-48e4-8daa-a35da2b69fc9",
+"known": "〜に聞こえる・〜そうだ",
+"pos": 3,
+"t1": "e48dff78-e327-419f-9e5b-127f8568cc14",
+"t2": "0f452d5a-6bab-4e17-b844-a3a5e32a4f6c",
+"target": "听起来",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L02B02",
+"ka": "d4a93fea-d34b-4e6d-aecd-b49b507ec7c7",
+"known": "とても良さそうに聞こえる",
+"pos": 4,
+"t1": "6d1782e1-c2bd-4c33-b902-ade0eaf384b0",
+"t2": "16293d29-b288-49e0-b061-c16ae51a60b8",
+"target": "听起来很好",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L02B03",
+"ka": "06d67a0d-8602-4b64-9d2c-6e0e681dfa89",
+"known": "大事そうに聞こえる",
+"pos": 5,
+"t1": "fe47471a-7b50-41cc-9e21-773ff93fd08b",
+"t2": "54554da2-6225-48a6-aef3-d34078e0a148",
+"target": "听起来很重要",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L02U01",
+"ka": "3e0046a0-2cf6-41ae-9f00-4e73892992e2",
+"known": "それはとても大事に聞こえる。",
+"pos": 6,
+"t1": "b0314e68-6358-4601-9f4c-cd8e54b17cfa",
+"t2": "da4b8af3-23dd-415a-9c76-f9feeb685db1",
+"target": "它听起来很重要。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L02U03",
+"ka": "383f8424-9a4a-49e0-978c-9c18d8f279e3",
+"known": "そのアイデアはとても良く聞こえる。",
+"pos": 8,
+"t1": "3b633edc-ed3e-4828-9094-08a78ff297d3",
+"t2": "324d784b-ce52-493f-b9fd-bc85d8b432f4",
+"target": "那个主意听起来很好。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L02U04",
+"ka": "34951a83-80d6-42b1-83d0-e19d2242e585",
+"known": "彼はもう行ったように聞こえる。",
+"pos": 9,
+"t1": "9cf8d4c5-7759-41c6-969e-6f5392217543",
+"t2": "6464dd1f-ac8b-4a1d-9667-e7bbed87f325",
+"target": "听起来他已经走了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L02U05",
+"ka": "d65d411d-7b56-436e-8658-8c781d05dfd6",
+"known": "そのニュースは良く聞こえる。",
+"pos": 10,
+"t1": "889c8636-8df2-4ad1-8bf6-e19f5be5c5b0",
+"t2": "9f8a5222-c878-4fa2-a2d3-2650df1c8507",
+"target": "那个消息听起来很好。",
+"type": "use"
+}
+],
+"target": "听起来",
+"type": "M"
+},
+{
+"id": "S0272L03",
+"idx": 3,
+"is_new": true,
+"known": "すごい",
+"phrases": [
+{
+"id": "aaad865c-2dcf-4188-a591-c27d17bbeb38",
+"ka": "6d2d5392-1e15-43d2-bd91-ef7470c27ce9",
+"known": "すごい",
+"pos": 0,
+"t1": "d537d00f-e2e3-4562-a30b-23709cd4cd2b",
+"t2": "519b86d3-dc80-41b7-b443-776240be8c0a",
+"target": "棒",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0272L03B01",
+"ka": "6d2d5392-1e15-43d2-bd91-ef7470c27ce9",
+"known": "すごい",
+"pos": 1,
+"t1": "d537d00f-e2e3-4562-a30b-23709cd4cd2b",
+"t2": "519b86d3-dc80-41b7-b443-776240be8c0a",
+"target": "棒",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L03B02",
+"ka": "ee977d96-4517-40a4-81c8-965d4e6dcc2d",
+"known": "とてもすごい",
+"pos": 2,
+"t1": "90bb6884-6c28-498b-a688-9925ac5b739c",
+"t2": "deea6145-b74f-4d3d-b65c-4e11bbde602f",
+"target": "很棒",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L03B03",
+"ka": "b9ec5d70-fdf0-4a1b-a8df-c4b8ac4c53de",
+"known": "すごすぎる",
+"pos": 3,
+"t1": "4b23db17-54b2-44fa-9f93-d7d01e3f37d8",
+"t2": "8b66e95c-985a-4d0d-97c4-886f8c8c0a1b",
+"target": "太棒了",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0272L03U01",
+"ka": "21d400be-6ccb-4c65-afc0-64ce836db780",
+"known": "いいね、とても素晴らしく聞こえる。",
+"pos": 4,
+"t1": "7c42f283-bc83-4ca6-a447-6f90fc06c2a6",
+"t2": "2e03ebf5-16c5-40e1-9822-b1c08ccc5f04",
+"target": "好啊，听起来很棒。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L03U02",
+"ka": "5b524b19-b982-465b-a276-e0194b53e7e0",
+"known": "そのアイデアはすごい。",
+"pos": 5,
+"t1": "4ada8e51-f4d7-4793-8933-6900cad0d2a6",
+"t2": "5a72eb3b-ca85-414e-8d6b-3e16611dc9bf",
+"target": "那个主意很棒。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L03U03",
+"ka": "18fe77ff-d033-4d09-a803-0648b150baf3",
+"known": "あなたはとてもよくやった。",
+"pos": 6,
+"t1": "c6c2f1f0-0c17-40d3-9481-8068aa067cdd",
+"t2": "f11eb996-187d-4750-8dd9-2ce23a779d8e",
+"target": "你做得很棒。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L03U04",
+"ka": "1fab2bad-654b-4f8b-9fa2-d0c866859f70",
+"known": "あなたの友達はすごい。",
+"pos": 7,
+"t1": "0be52787-9ef5-44f8-91d3-b5a0aa66da42",
+"t2": "c5cb0a1e-b727-4b9f-8066-5e4f44b0a5cb",
+"target": "你朋友很棒。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0272L03U06",
+"ka": "d8db983b-78a6-4879-9751-39c86d91acfb",
+"known": "あのニュースはすごいと思う。",
+"pos": 9,
+"t1": "67dbc113-2db6-4351-a55b-f3255a7e8529",
+"t2": "a22cda70-51ad-412f-b3f5-4e3e21225db3",
+"target": "我觉得那个消息很棒。",
+"type": "use"
+}
+],
+"target": "棒",
+"type": "A"
+}
+],
+"status": "released",
+"target": "好啊，听起来很棒。"
+},
+"273": {
+"at": "2026-11-19T11:48:25Z",
+"known": "いいえ、残念ながら仕事が多すぎます。",
+"legos": [
+{
+"id": "S0273L01",
+"idx": 1,
+"is_new": true,
+"known": "だめ",
+"phrases": [
+{
+"id": "74a3e22c-e790-4e75-ae05-328827e6f0dc",
+"ka": "aff97b40-8354-46d3-ae39-2dfe178ef2ea",
+"known": "だめ",
+"pos": 0,
+"t1": "57115c1f-3aef-4fb5-8895-70922e2f32e7",
+"t2": "11bd4243-f941-47d0-8e74-83343051a7f8",
+"target": "不行",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0273L01B01",
+"ka": "aff97b40-8354-46d3-ae39-2dfe178ef2ea",
+"known": "だめ",
+"pos": 1,
+"t1": "57115c1f-3aef-4fb5-8895-70922e2f32e7",
+"t2": "11bd4243-f941-47d0-8e74-83343051a7f8",
+"target": "不行",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0273L01B02",
+"ka": "31cf5c73-c534-4e0e-926c-107b72c08405",
+"known": "だめ、なぜなら",
+"pos": 2,
+"t1": "61271a7d-20df-415a-8be6-a6f843026128",
+"t2": "8a2bc855-ae89-4c04-9886-e5cbc3d62620",
+"target": "不行，因为",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0273L01B03",
+"ka": "433065d0-7f9e-4bf9-b7ba-45b766f65cd2",
+"known": "それはだめ",
+"pos": 3,
+"t1": "8ffa3fc9-7d20-45af-a579-7e1f75d60603",
+"t2": "7870b465-79bb-45a1-a34c-f9ed93261bec",
+"target": "那不行",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0273L01U01",
+"ka": "01c6e76c-4997-499d-9c86-fc83501c26cc",
+"known": "だめ、忙しすぎる。",
+"pos": 4,
+"t1": "45ba4740-3937-40c6-847a-2b7e75aa1910",
+"t2": "39cebf8d-dae5-43c3-b4a2-9f46e9c37cff",
+"target": "不行，我太忙了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L01U02",
+"ka": "07866b37-7f6c-4146-a5d5-9fe0f1eb7942",
+"known": "それはだめ、時間がないから。",
+"pos": 5,
+"t1": "6358df0a-38de-4aec-a72f-c746f87605c9",
+"t2": "3c2ee1e2-759d-4dc7-afa9-e819b0006e0d",
+"target": "那不行，因为我没有时间。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L01U03",
+"ka": "6d517920-0b22-4ca7-8fcb-f45240355e6f",
+"known": "彼はだめだと言った。",
+"pos": 6,
+"t1": "9f69b2bb-ce33-41a5-8055-8571242fddb5",
+"t2": "2e57c3da-db09-48bd-b19b-fd292bf6be92",
+"target": "他说不行。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L01U04",
+"ka": "bb3026e0-3cad-43f1-83af-c9363c4d0e8e",
+"known": "それはだめ、彼に伝えるべきだ。",
+"pos": 7,
+"t1": "86849a21-6559-4d7d-8ab7-5d72b4e35e53",
+"t2": "b40a10ad-3bbc-4751-b30b-e55774ec2627",
+"target": "那不行，你应该告诉他。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L01U05",
+"ka": "0a6a9a64-5023-4329-9b0d-87504437d432",
+"known": "だめ、遅刻するのが心配だ。",
+"pos": 8,
+"t1": "cadccd63-987f-4a50-93ca-3cbab9d0df09",
+"t2": "01f776ae-0e94-4b9a-8e69-618048c03c65",
+"target": "不行，我担心会迟到。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L01U06",
+"ka": "b123cb4c-9d58-4a84-ace6-22850ef4af3d",
+"known": "それはだめ、あのことは大事だから。",
+"pos": 9,
+"t1": "0cf8506c-807d-4fa3-b43d-532fe18d8f6e",
+"t2": "4f32bcd8-9b83-4638-bb66-580cf5b5e3d3",
+"target": "那不行，因为那件事很重要。",
+"type": "use"
+}
+],
+"target": "不行",
+"type": "A"
+},
+{
+"id": "S0273L02",
+"idx": 2,
+"is_new": true,
+"known": "残念",
+"phrases": [
+{
+"id": "a4652655-1729-41d7-a8a1-f6338cc44731",
+"ka": "9b21719e-c702-4b85-abb9-0cf42d702e64",
+"known": "残念",
+"pos": 0,
+"t1": "56d3a9e6-89f0-4188-8163-d0aca45d54e1",
+"t2": "ed66b5ab-8438-4162-b175-c3b36bde0696",
+"target": "遗憾",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0273L02B01",
+"ka": "9b21719e-c702-4b85-abb9-0cf42d702e64",
+"known": "残念",
+"pos": 1,
+"t1": "56d3a9e6-89f0-4188-8163-d0aca45d54e1",
+"t2": "ed66b5ab-8438-4162-b175-c3b36bde0696",
+"target": "遗憾",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0273L02B02",
+"ka": "4d0cb9c2-2b45-44ab-99bf-104e7cfee0e4",
+"known": "とても残念",
+"pos": 2,
+"t1": "5e427827-575b-4a56-95b5-d2bc317b2fb7",
+"t2": "a28a8133-ce32-4319-a9d1-39cb446f034c",
+"target": "很遗憾",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0273L02B03",
+"ka": "a3ded953-e682-4f68-96b8-293e0aeb77ac",
+"known": "少し残念",
+"pos": 3,
+"t1": "20aa1ea0-715f-49b0-bf98-45f92d5d4142",
+"t2": "5367007d-d266-4626-9ac0-dd4a8a1dd077",
+"target": "一点遗憾",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0273L02U01",
+"ka": "fd675e55-3cd0-46ff-a9bc-b4e7342fc28e",
+"known": "だめです、残念ながら仕事が多すぎます。",
+"pos": 4,
+"t1": "3a39b510-6c39-4697-9de4-c9ae204108fd",
+"t2": "51c624e8-cf99-498e-a9a1-cf1662ed65b9",
+"target": "不行，很遗憾，我工作太多。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L02U02",
+"ka": "6d4ba18c-3743-408c-8fd0-65f59a0ab83b",
+"known": "残念ながら、彼は手伝う気がない。",
+"pos": 5,
+"t1": "7cc14527-b5f5-4c3e-9c5f-1cf2dfa36c98",
+"t2": "ceeb6797-30d8-4b3d-b5b8-3a99e5f8d3dd",
+"target": "很遗憾，他不愿意帮忙。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L02U03",
+"ka": "6e94cc70-1f35-476c-8b86-31a55e994fd4",
+"known": "私はとても残念に思います。",
+"pos": 6,
+"t1": "60d6c007-374d-4956-b109-8a31aad121e6",
+"t2": "923aed17-475e-4061-827b-da1346acd04f",
+"target": "我觉得很遗憾。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L02U04",
+"ka": "b358832e-48f3-42cd-91ed-c6af412ada0f",
+"known": "残念です、あれは良いアイデアだったから。",
+"pos": 7,
+"t1": "5140438f-0fe2-458b-b905-ccc6a21a9cf9",
+"t2": "65133373-db9b-473d-bd11-9bae410f485d",
+"target": "很遗憾，因为那是一个好主意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L02U05",
+"ka": "52acf133-575f-40ab-b28d-6616c4d36cc4",
+"known": "残念ながら、彼はもう行きました。",
+"pos": 8,
+"t1": "1a2f0381-6193-4f98-8020-b4c69bfe663d",
+"t2": "b05e31ed-69a8-4a7e-a5e8-6cbbc0aef76d",
+"target": "很遗憾，他已经走了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0273L02U06",
+"ka": "2a414887-f32a-478e-acc1-8b90621d66f1",
+"known": "残念ながら、行けません。",
+"pos": 9,
+"t1": "62a4e1b0-eda1-415f-9873-f7a67d0ffdf1",
+"t2": "cf3724a2-77f7-4305-84c9-8cc43e5ab3d6",
+"target": "很遗憾，我不能去。",
+"type": "use"
+}
+],
+"target": "遗憾",
+"type": "A"
+}
+],
+"status": "released",
+"target": "不行，很遗憾，我工作太多。"
+},
+"274": {
+"at": "2026-11-19T11:48:25Z",
+"known": "数日後に出発しなければなりませんか？",
+"legos": [
+{
+"id": "S0274L01",
+"idx": 1,
+"is_new": true,
+"known": "〜後",
+"phrases": [
+{
+"id": "4bf8dda1-ce9b-4e37-ad9a-552f8f615e1c",
+"ka": "a8de07aa-e269-4408-be8e-dfbd62d7086c",
+"known": "〜後",
+"pos": 0,
+"t1": "4ed8f5b8-cc33-4328-adb9-083949b8ae01",
+"t2": "ef3cadc5-0465-4f85-bffd-176216abbb6d",
+"target": "后",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0274L01B01",
+"ka": "a8de07aa-e269-4408-be8e-dfbd62d7086c",
+"known": "〜後",
+"pos": 1,
+"t1": "4ed8f5b8-cc33-4328-adb9-083949b8ae01",
+"t2": "ef3cadc5-0465-4f85-bffd-176216abbb6d",
+"target": "后",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L01B02",
+"ka": "17855763-b054-49ca-9a46-97d02d8dac47",
+"known": "終わった後",
+"pos": 2,
+"t1": "ddb86d25-7156-4bc7-ad00-90fd5036ad1a",
+"t2": "fa35ad82-17a5-4413-8bb3-7dc5d66e4b5b",
+"target": "完成后",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L01B03",
+"ka": "75761529-7e77-46ca-90e5-092acb6119c6",
+"known": "行った後",
+"pos": 3,
+"t1": "265690a6-480b-47f1-a224-89b7415b8069",
+"t2": "35764b09-8b86-46cc-8800-30dcb5a68793",
+"target": "走后",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L01U01",
+"ka": "bfbfb885-0ed9-4d9d-a2f3-3c7fbe5c403d",
+"known": "終わったら伝えて。",
+"pos": 4,
+"t1": "bac9ad28-1ac4-4e5d-8d67-2ff4d379a7c6",
+"t2": "2c129acf-5c65-4f94-a643-c37ebc70ab4e",
+"target": "完成后告诉我。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L01U02",
+"ka": "3ad55fba-f3ac-4b58-8a24-df163fca2a04",
+"known": "数分後に彼は戻ってきた。",
+"pos": 5,
+"t1": "9575ffba-7c15-4346-b47f-1221270d04d1",
+"t2": "5954ac2e-03e5-44ba-9b96-1bb884b59c79",
+"target": "几分钟后他回来了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L01U04",
+"ka": "3c245884-2cc9-4db0-bda3-21720785b8fd",
+"known": "始めた後はもう心配しない。",
+"pos": 7,
+"t1": "46614bf2-36b1-430b-97ac-7e194c6dafc6",
+"t2": "d4392228-9f02-4f69-85f6-d789a6188da2",
+"target": "开始后就不担心了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L01U05",
+"ka": "6054e148-ef78-4642-9f3c-9a4952d1148c",
+"known": "一時間後に手伝う気がありますか？",
+"pos": 8,
+"t1": "07af2c58-d53b-4758-80e7-d333a0782d07",
+"t2": "d8b41b19-5327-450d-92a9-013490cfcd6c",
+"target": "一个小时后你愿意帮忙吗？",
+"type": "use"
+}
+],
+"target": "后",
+"type": "A"
+},
+{
+"id": "S0274L02",
+"idx": 2,
+"is_new": true,
+"known": "日",
+"phrases": [
+{
+"id": "e4e2646b-5fea-40e0-abf4-3316df4509ec",
+"ka": "07393697-1284-4ff5-ab92-6ab81236acac",
+"known": "日",
+"pos": 0,
+"t1": "2569a5bb-acf8-4b79-a0a1-b84383a2725d",
+"t2": "cdd658b1-f7b7-4f42-b39a-c79036217151",
+"target": "天",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0274L02B01",
+"ka": "07393697-1284-4ff5-ab92-6ab81236acac",
+"known": "日",
+"pos": 1,
+"t1": "2569a5bb-acf8-4b79-a0a1-b84383a2725d",
+"t2": "cdd658b1-f7b7-4f42-b39a-c79036217151",
+"target": "天",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L02B02",
+"ka": "8704460f-446d-40cb-af49-e4358c241d77",
+"known": "数日",
+"pos": 2,
+"t1": "c51e55b2-b3ab-41db-80f1-94c76258eaf5",
+"t2": "c68265ec-d938-4f92-ad25-055d8be1f68e",
+"target": "几天",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L02B03",
+"ka": "a7da4519-a36b-4973-aeaa-ed2f37d8719c",
+"known": "数日後",
+"pos": 3,
+"t1": "f4ee7142-6c33-4e3b-9504-eaea5446e320",
+"t2": "014f387a-60da-406a-b35f-1c1a767443d0",
+"target": "几天后",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L02U01",
+"ka": "b9977ad9-1063-4a5a-bfd8-538437648f4b",
+"known": "私は数日後に戻ります。",
+"pos": 4,
+"t1": "7435ed04-b1a8-4645-8dc8-1073bd04939b",
+"t2": "87029a84-91b5-492b-b8a7-7bacfca5fa1b",
+"target": "我几天后回来。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L02U02",
+"ka": "0a8aa889-63e9-467d-be71-12da981fac4c",
+"known": "彼は数日後に行きます。",
+"pos": 5,
+"t1": "f32b6e1e-7b8a-47d0-baed-993cda782391",
+"t2": "877801c2-59ff-498d-9d4c-b59bd1b8d63f",
+"target": "他几天后走。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L02U03",
+"ka": "4862ec24-f52c-4d8f-9435-a63b92dc54b6",
+"known": "あなたは数日後に時間がありますか？",
+"pos": 6,
+"t1": "883bf508-4435-4bea-b38e-e284e1ebb14d",
+"t2": "081da927-c7a1-4915-8c99-52aedc1fbba7",
+"target": "你几天后有时间吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L02U04",
+"ka": "df79d8dd-4768-4d22-a2b9-b760f22616fe",
+"known": "私はもう数日待ちました。",
+"pos": 7,
+"t1": "9ba60633-44c1-4531-a52c-ccef115240cd",
+"t2": "937a40f6-519d-4e32-8610-11c52fff1163",
+"target": "我已经等了几天了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L02U05",
+"ka": "ad264537-1650-4983-845b-02c42ce4eaad",
+"known": "彼女は数日後に準備ができます。",
+"pos": 8,
+"t1": "321340f9-ddd3-444a-82a0-b47a92df7954",
+"t2": "e2cd09a6-95ee-4ac0-a837-368985f0d154",
+"target": "她几天后就准备好了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L02U06",
+"ka": "56c93116-2680-4634-b079-f645d7876e84",
+"known": "父は数日後に戻ります。",
+"pos": 9,
+"t1": "5d810c46-40e1-4661-b43f-cff4619b0863",
+"t2": "af7c4a85-e880-4dbc-be7e-9c5d1badedad",
+"target": "我父亲几天后回来。",
+"type": "use"
+}
+],
+"target": "天",
+"type": "A"
+},
+{
+"id": "S0274L03",
+"idx": 3,
+"is_new": true,
+"known": "〜しなければならない",
+"phrases": [
+{
+"id": "c278138c-707b-4d4a-82c7-4bdfc1b2a1c8",
+"ka": "fd490864-c0ec-4740-b210-944e92e52f58",
+"known": "〜しなければならない",
+"pos": 0,
+"t1": "d5c03050-9f47-492b-9520-4ff1c16cedc2",
+"t2": "5127abaa-39b5-4259-89ba-dc7af2883994",
+"target": "得",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0274L03B01",
+"ka": "fd490864-c0ec-4740-b210-944e92e52f58",
+"known": "〜しなければならない",
+"pos": 1,
+"t1": "d5c03050-9f47-492b-9520-4ff1c16cedc2",
+"t2": "5127abaa-39b5-4259-89ba-dc7af2883994",
+"target": "得",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L03B02",
+"ka": "82ccb1bb-d973-4374-b637-14cc5357b22d",
+"known": "行かなければならない",
+"pos": 2,
+"t1": "7aa6e731-3a0d-48db-a522-67144003255e",
+"t2": "ef8a402e-083b-4dcd-a57f-710e37768a5a",
+"target": "得走",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L03B03",
+"ka": "41dcebb2-82f5-4ff9-b0af-81fe423c1b35",
+"known": "終わらせなければならない",
+"pos": 3,
+"t1": "c55b8cdc-c59c-4e17-ba83-d6f4e0756486",
+"t2": "07893423-718a-48bd-b0eb-1d8039022e28",
+"target": "得完成",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0274L03U01",
+"ka": "3c46d3db-bd5e-499e-862f-189bbab72b87",
+"known": "あなたは数日後にもう行かなければなりませんか？",
+"pos": 4,
+"t1": "d8faadfd-6c39-4653-a97f-c5e9ff890207",
+"t2": "2111cc67-3d44-454c-9f03-33f12ca2627e",
+"target": "你几天后就得走吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L03U02",
+"ka": "566b4e07-6829-4faf-8900-41f6f7d1470b",
+"known": "私はあなたにあることを伝えなければならない。",
+"pos": 5,
+"t1": "904896ee-9008-4159-be17-fec3cb9320f1",
+"t2": "07ec5071-cf0b-43e9-82ea-5682d10cbe85",
+"target": "我得告诉你一件事。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L03U03",
+"ka": "9f89dd92-c427-48d6-8338-b6b277f96f8e",
+"known": "彼は戻らなければならない。",
+"pos": 6,
+"t1": "deadbbc5-43e7-4aff-85b9-9f4798fde472",
+"t2": "d6534d3c-4a38-4985-b23e-306a62cd15f2",
+"target": "他得回来。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L03U05",
+"ka": "919263d1-c1bd-463a-b8f7-734611879ff7",
+"known": "あなたは私を待たなければならない。",
+"pos": 8,
+"t1": "a2a11984-9764-4427-80d9-2cc082e8bdda",
+"t2": "7f59b5bf-11df-4363-83bc-675c114f1794",
+"target": "你得等我。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0274L03U06",
+"ka": "a28740b8-8faa-49b2-89f6-32a9ce8c08f5",
+"known": "行く前に終わらせなければならない。",
+"pos": 9,
+"t1": "d80c2502-a8e7-4d4d-b44f-2957c00dcc9e",
+"t2": "439434a9-3d04-4728-bdbb-100d8650f048",
+"target": "走以前得完成。",
+"type": "use"
+}
+],
+"target": "得",
+"type": "A"
+}
+],
+"status": "released",
+"target": "你几天后就得走吗？"
+},
+"30": {
+"at": "2026-11-19T11:48:12Z",
+"known": "昨日あなたに何か聞きたかったです。",
+"legos": [
+{
+"id": "S0030L01",
+"idx": 1,
+"is_new": true,
+"known": "昨日",
+"phrases": [
+{
+"id": "5e9410bd-60c4-4af8-8755-7d49e34a13b8",
+"ka": "75500a00-c4a1-4aef-964a-ed4591dd2ed8",
+"known": "昨日",
+"pos": 0,
+"t1": "c5dc044a-38c0-4022-be63-c3ac547248df",
+"t2": "4e28d077-4be7-4e40-be14-9d3285d15ace",
+"target": "昨天",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0030L01B01",
+"ka": "abc92591-95e0-47e2-9c49-563b17fac0ed",
+"known": "昨日〜したかった",
+"pos": 1,
+"t1": "3b4c57a2-5800-4781-883f-9289a71771e7",
+"t2": "a54cecf5-a277-4b80-906f-7f800883c3f3",
+"target": "昨天想",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0030L01B02",
+"ka": "44f2ddcb-a41c-41dc-b64e-e3389343003a",
+"known": "昨日勉強した",
+"pos": 2,
+"t1": "daa8f8e5-3e7a-4bb0-8fab-15af5ce590c8",
+"t2": "b4db4388-8e09-4e5d-8d83-fc955ce08f84",
+"target": "昨天学了",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0030L01B03",
+"ka": "cff57879-4490-4c01-ae53-155ae1fde60e",
+"known": "昨日あなたと話した",
+"pos": 3,
+"t1": "582f303b-568c-46fe-ba76-b85132bccf64",
+"t2": "95ab7f3a-4eef-4881-b87d-b237e83d18bc",
+"target": "昨天和你说话了",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0030L01U01",
+"ka": "5ba0f167-df80-43eb-80be-12775c887491",
+"known": "昨日中国語を話したかったです",
+"pos": 4,
+"t1": "44b4ec83-b27e-408c-9e55-7b708e2983e1",
+"t2": "679f98e7-dd6d-4399-b0c5-dc8379893762",
+"target": "我昨天想说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L01U02",
+"ka": "3b912c0f-6d63-441c-8e48-fa033886453c",
+"known": "彼女は昨日中国語を学んでいました",
+"pos": 5,
+"t1": "86423b53-072f-4936-a962-9f531e9cabdd",
+"t2": "c4578729-2313-45ab-8388-c301fe18383b",
+"target": "她昨天在学中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L01U03",
+"ka": "6d12b0b7-5179-4015-ba49-7d6f55abc7f8",
+"known": "昨日あなたを手伝いました",
+"pos": 6,
+"t1": "3d19da1e-5920-4d28-a5af-c09a519e0ca1",
+"t2": "cb3fa99a-0471-45d2-9cf3-bb809a1d2a0e",
+"target": "我昨天帮你了",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L01U04",
+"ka": "2ed88153-f1ce-44e0-8272-e82340bebbee",
+"known": "昨日あなたはもっと上手に話していましたね",
+"pos": 7,
+"t1": "e18c8b6c-5973-440f-a529-9ddcd7ab6ee9",
+"t2": "e46cb44a-95c7-4e86-9c24-63e50b343f5a",
+"target": "昨天你说得更好了",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L01U05",
+"ka": "407c2f6d-2f18-4a29-9eda-dd0736442b99",
+"known": "彼は昨日行きたかったです",
+"pos": 8,
+"t1": "e91fd2d1-edd3-4972-857a-e860ac956069",
+"t2": "a11740d3-0768-47b4-bafc-d85df2847f8a",
+"target": "他昨天想走了",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L01U06",
+"ka": "79900d0f-ae0c-4187-885d-32e9cbd0f1af",
+"known": "昨日他の人と中国語を練習しました",
+"pos": 9,
+"t1": "f9c7c3db-268c-4b37-9952-b7ee60f7f21d",
+"t2": "0335c0d6-d00a-4aa9-a953-c44c8733be9a",
+"target": "我昨天和别人练习说中文了",
+"type": "use"
+}
+],
+"target": "昨天",
+"type": "A"
+},
+{
+"id": "S0030L02",
+"idx": 2,
+"is_new": true,
+"known": "聞く",
+"phrases": [
+{
+"id": "86a747c2-bd61-4fb7-bd1f-2d1d1dde04d3",
+"ka": "2051fcfa-1868-45e5-b0fd-98d26ee2a847",
+"known": "聞く",
+"pos": 0,
+"t1": "948b69a0-3fd9-4501-847c-ba6adfa5694b",
+"t2": "c45fa397-175e-4497-b88a-00f0a6383c01",
+"target": "问",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0030L02B01",
+"ka": "98fd3a4f-14e7-4fd8-9222-358f79061caa",
+"known": "あなたに聞く",
+"pos": 1,
+"t1": "116d5886-b585-4ad0-b9bb-76786624747c",
+"t2": "f048f015-91ec-4de2-a70a-3fb6feabb57a",
+"target": "问你",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0030L02B02",
+"ka": "95ced93b-1212-475e-9847-cdade90e7d79",
+"known": "聞きたい",
+"pos": 2,
+"t1": "04630cd9-d357-4352-a451-81f4e821eea2",
+"t2": "06587da9-9c1e-43ef-8ac9-86089947647b",
+"target": "想问",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0030L02B03",
+"ka": "8679c863-3673-4561-8820-b6b5ec7b3863",
+"known": "昨日聞いた",
+"pos": 3,
+"t1": "3e4c1c21-6b9e-4fac-9d8b-40e5973a99fb",
+"t2": "e5749a6a-a39b-411e-86d3-7c68c725ca34",
+"target": "昨天问了",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0030L02U01",
+"ka": "d7f2dc5f-0ba5-4002-a2d3-6bd79aba3474",
+"known": "あなたに何か聞きたいです",
+"pos": 4,
+"t1": "1b28b574-5cd2-4ee9-b42a-5f3e6d79c36b",
+"t2": "d6c4613e-86e2-491b-b068-0426ba43f7de",
+"target": "我想问你一些东西",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L02U02",
+"ka": "6ea914c8-6088-4342-9e37-7fbe91e319df",
+"known": "私に聞きたいですか",
+"pos": 5,
+"t1": "185f98cb-4992-4563-aa93-e98c3f93fd38",
+"t2": "dfcf5ad6-e097-4a2b-8363-af2f886c54c8",
+"target": "你要问我吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L02U03",
+"ka": "615a1be2-b40b-43c6-b7a4-ab92a5a9b7d1",
+"known": "彼女は昨日私の言っていることの意味を聞きました",
+"pos": 6,
+"t1": "51e08f00-b7cb-4546-ba21-5ba2da777911",
+"t2": "0e0cb8a4-16e4-41ef-b00e-b8d4332daff7",
+"target": "她昨天问了我的意思",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L02U04",
+"ka": "2218d6a6-1c86-4542-b0a2-10e61a73c58a",
+"known": "昨日あなたに何か聞きたかったです",
+"pos": 7,
+"t1": "d836b74c-3cda-43b4-aeac-95fe0535a186",
+"t2": "39038408-6c96-4dde-80a4-8390380e01c4",
+"target": "我昨天想问你一些东西",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L02U05",
+"ka": "c67eeead-0740-41e6-9330-ed03256ae22b",
+"known": "彼は中国語の話し方を聞きたいです",
+"pos": 8,
+"t1": "fb5d634f-7412-421d-a5e4-ab167bc796ab",
+"t2": "18df64e1-8ee5-461d-8d80-e93ecccac3b5",
+"target": "他想问怎么说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0030L02U06",
+"ka": "c5281285-8980-44ba-a516-18ee0a22e71c",
+"known": "なぜ聞かないのですか",
+"pos": 9,
+"t1": "2577e772-da06-4be3-a8ed-e7b36defcfd1",
+"t2": "05c19412-cc37-4a88-973c-d8e51c8fc508",
+"target": "你为什么不问",
+"type": "use"
+}
+],
+"target": "问",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我昨天想问你一些东西。"
+},
+"36": {
+"at": "2026-11-19T11:48:13Z",
+"known": "話を中断したくありません。",
+"legos": [
+{
+"id": "S0036L01",
+"idx": 1,
+"is_new": true,
+"known": "中断する",
+"phrases": [
+{
+"id": "b696106c-6910-4972-8065-87cfeb73ec4d",
+"ka": "805a727a-3130-4026-92d0-0c42007d1819",
+"known": "中断する",
+"pos": 0,
+"t1": "6627f255-224c-4408-918d-7b8f0ad5aeb2",
+"t2": "00162ab0-ee56-4aa5-97be-0e78eed6daf6",
+"target": "打断",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0036L01B01",
+"ka": "2390d9d9-5c18-4a4d-b617-98ea761bf6ca",
+"known": "中断したくない",
+"pos": 1,
+"t1": "3bb4ad85-eec0-4320-9dea-c1af0292e3bf",
+"t2": "a4cfa946-b1e6-433e-bad1-b89e8ab90427",
+"target": "不想打断",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0036L01B02",
+"ka": "7f7a303e-01f1-4a84-802b-75dee4824df0",
+"known": "あなたを中断する",
+"pos": 2,
+"t1": "f8973784-0575-4768-8093-b4b5680f5056",
+"t2": "4fab09c2-0ca2-44f2-80ca-bcf87515aa35",
+"target": "打断你",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0036L01B03",
+"ka": "92fea51f-909f-4c74-9b34-ec378d78546f",
+"known": "彼が話しているのを中断する",
+"pos": 3,
+"t1": "16bee994-3073-4efb-82b8-f4538d387bd7",
+"t2": "39df4020-0b37-42dc-babc-f6cfe29333d6",
+"target": "打断他说话",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0036L01U01",
+"ka": "6b9761be-2c0c-425c-a7f8-c5835bb2e104",
+"known": "私たちはあなたを中断したくありません",
+"pos": 4,
+"t1": "9b5e019d-8428-4617-90d2-c3801df1dbe9",
+"t2": "aa6cdce5-801b-4df4-8ac1-66ca817e13f7",
+"target": "我们不想打断你",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L01U02",
+"ka": "bb7fb0ad-8bc5-4475-99d6-41ab667e3a56",
+"known": "他の人を中断するのが好きじゃありません",
+"pos": 5,
+"t1": "d266c69e-3e66-4f0b-a6cb-db222cdcf21d",
+"t2": "c5990ade-8fd9-4a3b-ab30-04d2d432b6f2",
+"target": "我不喜欢打断别人",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L01U03",
+"ka": "847b24cb-98e7-4f68-9902-1616d321dcfd",
+"known": "あなたが中国語を話している時、中断したくありません",
+"pos": 6,
+"t1": "dfcecb53-e5c1-4f12-96a2-444c79ab1e73",
+"t2": "0096679c-190a-41b6-9c34-3db939c298cf",
+"target": "你在说中文的时候，我不想打断你",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L01U04",
+"ka": "00e347e0-51d3-4adc-b75c-c9ba3663c128",
+"known": "昨日あなたが話しているのを中断してしまいました",
+"pos": 7,
+"t1": "ffef1d6b-d3e5-4b04-b302-008e3b332edb",
+"t2": "d5837108-354f-4b5f-ab07-148664697ae7",
+"target": "昨天你打断了我说话",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L01U05",
+"ka": "6d31d683-c529-404c-90ff-82ffaa48f9b8",
+"known": "他の人が話しているのを中断するのが好きじゃありません",
+"pos": 8,
+"t1": "01f17014-a36b-4a1e-9812-f99bedbe3f6d",
+"t2": "3d20a6e9-491b-4aee-b8df-65eab47e1b3c",
+"target": "我不喜欢打断别人说话",
+"type": "use"
+}
+],
+"target": "打断",
+"type": "A"
+},
+{
+"id": "S0036L02",
+"idx": 2,
+"is_new": true,
+"known": "話",
+"phrases": [
+{
+"id": "6950fcea-699b-4559-a6be-012a025b5597",
+"ka": "bbb0f949-58cd-443e-82e9-1b1c7ddc4f9a",
+"known": "話",
+"pos": 0,
+"t1": "73971155-f401-4aad-b842-4d4485db4df6",
+"t2": "dff4c5b4-bc93-409c-810f-cd1d6d3bd0a5",
+"target": "故事",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0036L02B01",
+"ka": "faaa8e32-9ce1-4aba-8c97-9be1933164c0",
+"known": "物語を読む",
+"pos": 1,
+"t1": "a4dc3a75-4d59-41bc-86ad-4d790294b737",
+"t2": "3dec33b3-df1a-4f8c-bd65-b1bdd339a925",
+"target": "读故事",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0036L02B02",
+"ka": "58caf2c8-667e-4d37-8108-aa6fcf553ffe",
+"known": "物語を見る",
+"pos": 2,
+"t1": "2f99efa6-515d-475e-a838-aed45c359a2c",
+"t2": "23f2debe-2455-4a45-b6ce-551e376b656f",
+"target": "看故事",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0036L02B03",
+"ka": "d4aed3dd-b637-479e-8200-376967be60c2",
+"known": "物語を中断する",
+"pos": 3,
+"t1": "8ed6e35f-cd04-490e-b897-9363d01f0d96",
+"t2": "b1a28448-e742-4bb7-ab3b-c00750389ad2",
+"target": "打断故事",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0036L02U01",
+"ka": "96cb829e-61cd-44fe-8b6d-c1595887fae5",
+"known": "私たちは話を中断したくありません",
+"pos": 4,
+"t1": "d8e23db8-81c4-4dfc-980d-b859ca89e173",
+"t2": "4c17b28d-9963-4c5a-b505-a00c740bd409",
+"target": "我们不想打断故事",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L02U02",
+"ka": "76f17f36-fdcc-4551-aa41-ead4b22fddf4",
+"known": "今日の午後に物語を読みたいです",
+"pos": 5,
+"t1": "14c47cf3-73df-4c29-b0f2-528a958010c2",
+"t2": "149d93df-2a95-4a65-aebd-4e50d3690c94",
+"target": "我今天下午想读故事",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L02U03",
+"ka": "3c1d9e1f-4de0-4e60-aa33-a85cade25ee8",
+"known": "物語を見せてくれますか",
+"pos": 6,
+"t1": "469dedc9-83f6-471b-9f49-fa7e80cf1340",
+"t2": "f5cc1e31-14e9-41da-9f7c-09344a86df76",
+"target": "你能给我看一个故事吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L02U04",
+"ka": "16edb256-8f78-4ced-a591-a4e1e31a7974",
+"known": "彼女は昨日物語を読みました",
+"pos": 7,
+"t1": "924c6dfb-dca9-4209-bed5-67908712ea6d",
+"t2": "0fca5142-78d4-4629-b650-728b94ee292d",
+"target": "她昨天读了一个故事",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0036L02U05",
+"ka": "d5bc5436-e8ce-46d7-ab17-ece5d64f6b6a",
+"known": "どんな物語を読みたいですか",
+"pos": 8,
+"t1": "354b4b4a-3ed7-4ddd-b5af-ee8b5d3e4f6b",
+"t2": "021c0cec-9d69-41b1-92a2-0148bf4cf418",
+"target": "你想读什么故事",
+"type": "use"
+}
+],
+"target": "故事",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我们不想打断故事。"
+},
+"45": {
+"at": "2026-11-19T11:48:14Z",
+"known": "すべてを知る必要はありません。",
+"legos": [
+{
+"id": "S0045L01",
+"idx": 1,
+"is_new": true,
+"known": "知る",
+"phrases": [
+{
+"id": "9a47ada6-564c-4e9b-9973-521406669410",
+"ka": "72da3d15-445a-4409-bfdd-3e9adcebb929",
+"known": "知る",
+"pos": 0,
+"t1": "5903781b-c287-465d-8941-c1385693c9d1",
+"t2": "b7885ddb-e14b-46a4-8afb-c27d500fd967",
+"target": "知道",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0045L01B01",
+"ka": "d0e6d130-86ab-40d1-bf8d-47cc999e494e",
+"known": "私は知らない",
+"pos": 1,
+"t1": "7f9a2fbb-6156-42b6-9827-ce1e7e4c5538",
+"t2": "8927b489-6881-41c2-bfc9-a920bd0a7148",
+"target": "我不知道",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0045L01B02",
+"ka": "1dbdc282-8fbb-462e-b840-99d4c9948589",
+"known": "あなたは知っていますか",
+"pos": 2,
+"t1": "f0abec33-cc9a-43df-b154-050668948165",
+"t2": "322d8261-6d5b-40d1-b6a2-b2c5e1c83d47",
+"target": "你知道吗",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0045L01B03",
+"ka": "d3b50d09-fd11-4952-acc1-35e51506e379",
+"known": "彼は答えを知っている",
+"pos": 3,
+"t1": "1440fd5c-e7ea-4ffd-8210-f66ec8a0dc6e",
+"t2": "5f54ea85-2e75-4fad-9378-d59874544de2",
+"target": "他知道答案",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0045L01U01",
+"ka": "746ad26a-06e1-4bca-99c8-c0ec34bcaf32",
+"known": "私は答えが何か知らない",
+"pos": 4,
+"t1": "16519428-3fa4-4a90-b47a-f0b86b47853e",
+"t2": "56a69f63-f52f-4375-b56a-3297c198e3a8",
+"target": "我不知道答案是什么",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L01U02",
+"ka": "12cc8104-9003-4393-99cb-718be5faf295",
+"known": "あなたは中国語でどう言うか知っていますか",
+"pos": 5,
+"t1": "b17963b3-a97f-484a-81cb-cd0052fbb723",
+"t2": "bb5c3c30-6dbb-4006-9b91-fd1cb987dcb6",
+"target": "你知道怎么用中文说吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L01U03",
+"ka": "1fb6e361-ee33-4fa2-9c59-ce4e68b48a7c",
+"known": "彼は何が起こるか知らない",
+"pos": 6,
+"t1": "954e5199-b43a-42d6-af14-c309979f9fb4",
+"t2": "3db0a1ec-04ea-426e-b610-037e47a2d581",
+"target": "他不知道会发生什么",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L01U04",
+"ka": "fe6c064d-c7d9-4f31-bd01-5f66bc6d41c6",
+"known": "私は彼女の名前を知らない",
+"pos": 7,
+"t1": "e0776f5d-a353-4ef5-a33b-83204aa7997f",
+"t2": "2fc5d3c3-27bf-4d97-9aa0-6c35ae55e14d",
+"target": "我不知道她的名字",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L01U05",
+"ka": "33c21e43-c59e-407b-b42a-141e0cf08f56",
+"known": "あなたは私が言いたいことを知っていますか",
+"pos": 8,
+"t1": "205c122d-fcdf-4e54-81e5-45e2431c841d",
+"t2": "b01acb1b-7401-4ac2-bbfa-03e534d75ef8",
+"target": "你知道我想说什么吗",
+"type": "use"
+}
+],
+"target": "知道",
+"type": "A"
+},
+{
+"id": "S0045L02",
+"idx": 2,
+"is_new": true,
+"known": "すべて・一切",
+"phrases": [
+{
+"id": "05ac3b7d-a2b3-4fee-af45-ef10d103e54c",
+"ka": "e0d1789a-52a8-47fa-8fd3-e5f1a15b5644",
+"known": "すべて・一切",
+"pos": 0,
+"t1": "2a47db2d-4146-41c2-abcd-2a926f5f4ee2",
+"t2": "1ecd904c-c1e9-494b-9f22-906d3eeb3dd2",
+"target": "一切",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0045L02B01",
+"ka": "09666a1d-b3b8-4958-86d5-24d2ee1b4f7c",
+"known": "すべてを知りたい",
+"pos": 1,
+"t1": "68378e20-6cce-4537-aa78-7c6961a017db",
+"t2": "6235e0cc-edbf-4d53-926d-058f8a70e3e0",
+"target": "想知道一切",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0045L02B02",
+"ka": "7263a255-d7ee-476b-8dd7-bc89b7b07962",
+"known": "すべてを知る必要はない",
+"pos": 2,
+"t1": "9a73a816-64d6-4cc2-a547-0008e373c1d2",
+"t2": "c101a173-b02a-4d41-87fc-1a82af9c2308",
+"target": "不需要知道一切",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0045L02B03",
+"ka": "3576bdb4-355f-424e-99c0-2d9c8ee9e965",
+"known": "すべてを見せて",
+"pos": 3,
+"t1": "fae8756e-a741-42fa-85e7-ef543605f35a",
+"t2": "d5be7757-5b21-4090-8f40-c78c71713f3d",
+"target": "给我看一切",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0045L02U01",
+"ka": "3f9d7d35-fdaf-4019-a778-069ce9f88978",
+"known": "私はすべてを知る必要はない",
+"pos": 4,
+"t1": "0273d257-8ea9-4c5e-b6f7-29005fc44134",
+"t2": "69e22d96-48bb-4810-84ec-31e278227333",
+"target": "我不需要知道一切",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L02U02",
+"ka": "0b8846c0-6cdc-4312-b4f1-5b35fd6acba5",
+"known": "あなたはすべてを知る必要がありますか",
+"pos": 5,
+"t1": "5ce6c933-22f4-44ec-839a-c781efd3985c",
+"t2": "3df8e9b7-c452-4f62-965a-aebe7551228c",
+"target": "你需要知道一切吗",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L02U03",
+"ka": "83fb5a52-3942-412f-b87a-9fca5a5a1748",
+"known": "彼はすべてを知りたくない",
+"pos": 6,
+"t1": "7cdac46e-4045-4998-ae8a-340fea8cf391",
+"t2": "883a446a-93ef-48fd-81af-9c2d04c8cbe0",
+"target": "他不想知道一切",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L02U04",
+"ka": "5d0bddbf-ef0b-42b7-b664-78eca4a9977a",
+"known": "私はすべてをできるだけ早く知りたい",
+"pos": 7,
+"t1": "a0a9cba9-83a0-46a3-9b59-799557b75ebf",
+"t2": "84282042-e5e8-4751-9a09-c56056162346",
+"target": "我想尽快知道一切",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0045L02U05",
+"ka": "23e3205b-d455-436a-b094-03bb04bda681",
+"known": "もしすべてを知りたいなら、注意深く考える必要がある",
+"pos": 8,
+"t1": "b3ef63a8-9879-456f-bf27-5884a6fcec1f",
+"t2": "57d99de5-c2fa-4784-b5b5-e219d669d83e",
+"target": "如果你想知道一切你需要仔细想",
+"type": "use"
+}
+],
+"target": "一切",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我不需要知道一切。"
+},
+"73": {
+"at": "2026-11-19T11:48:14Z",
+"known": "ありがとう。でも、まだ学ぶことがある。",
+"legos": [
+{
+"id": "S0073L01",
+"idx": 1,
+"is_new": true,
+"known": "とても",
+"phrases": [
+{
+"id": "60cd9c95-c6f8-4e6b-9dba-9c778039ee3b",
+"ka": "ffdec0d4-537a-45e4-a0c4-172ef71d08b4",
+"known": "とても",
+"pos": 0,
+"t1": "403ff1a3-c4db-4d19-9616-04563ff84309",
+"t2": "38d1105f-61dc-407e-ae47-6397ed1bb0b3",
+"target": "非常",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0073L01B01",
+"ka": "a5314859-cebf-4357-a316-9b84a23109f5",
+"known": "とてもいい",
+"pos": 1,
+"t1": "c4d808a7-7c99-4774-a049-fcbce6ac33bc",
+"t2": "8b2afa32-18f9-4586-891f-7520e7be2d5d",
+"target": "非常好",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L01B02",
+"ka": "2d869e29-4903-4b32-8e0b-5c244ca65c4f",
+"known": "とても多い",
+"pos": 2,
+"t1": "cda9ff40-d553-4521-b389-2949443c50d0",
+"t2": "dd4a7a1b-4a14-40ca-87ea-1c767881397f",
+"target": "非常多",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L01B03",
+"ka": "849e8c88-3081-4b46-8fa9-b6d952de3857",
+"known": "とても速い",
+"pos": 3,
+"t1": "d2195372-ca38-4170-8a25-ab859f9d70bc",
+"t2": "b3a04cf3-2734-4650-8afa-a36fe929a39b",
+"target": "非常快",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L01U01",
+"ka": "827bd3fb-25c4-44f3-a43d-eef867bfb800",
+"known": "こうするのがとてもいいと思う",
+"pos": 4,
+"t1": "5608a19c-1b68-402a-a68e-91486ae1c625",
+"t2": "ccdeb3a3-2797-4b1b-a7c8-6bccbba4267a",
+"target": "我觉得这样非常好",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L01U02",
+"ka": "c690c69a-b3b6-418d-8e81-ce8dd8ee44ec",
+"known": "私はとても中国語を学びたい",
+"pos": 5,
+"t1": "5ce6b5f9-3b99-4005-85d2-62a37c495060",
+"t2": "511df8cf-6ca6-4815-a965-dcaaee50dba0",
+"target": "我非常想学中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L01U03",
+"ka": "83fa0556-5f59-4b3e-8f57-09f785ad824e",
+"known": "あなたはとても上手に話す",
+"pos": 6,
+"t1": "1071761a-4205-4ecc-8e3e-3b5b897b6c4d",
+"t2": "d5ba6a75-2436-4875-982a-53b6820e38b0",
+"target": "你说得非常好",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L01U04",
+"ka": "ac429d94-8667-422a-8110-4af9c7e411e4",
+"known": "私はとてもあなたと話したい",
+"pos": 7,
+"t1": "43d100b3-d56d-4b28-903d-9c58357596b6",
+"t2": "92ae773d-b77e-4d5a-8965-5f1171543679",
+"target": "我非常想和你说话",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L01U05",
+"ka": "e7d69620-f816-4ae3-9795-c644130df198",
+"known": "今とても中国語で話したい",
+"pos": 8,
+"t1": "7d5ebd9d-4595-4dde-ab9b-1ead21553657",
+"t2": "8aa6b4d0-70e3-49c9-82a7-7a7d568bcb5c",
+"target": "我现在非常想说中文",
+"type": "use"
+}
+],
+"target": "非常",
+"type": "A"
+},
+{
+"id": "S0073L02",
+"idx": 2,
+"is_new": true,
+"known": "ありがとう",
+"phrases": [
+{
+"id": "bb684bcf-7830-40c1-8b45-761f97b14662",
+"ka": "d2c2a3ed-f0d7-4a26-8f9b-5ff9c95fc058",
+"known": "ありがとう",
+"pos": 0,
+"t1": "e2a1c471-22af-4476-9b22-9001cf906cdb",
+"t2": "9fd28cda-92ad-45da-80c0-33c5fb9f3376",
+"target": "非常感谢",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0073L02C01",
+"ka": "ffdec0d4-537a-45e4-a0c4-172ef71d08b4",
+"known": "とても",
+"pos": 1,
+"t1": "403ff1a3-c4db-4d19-9616-04563ff84309",
+"t2": "38d1105f-61dc-407e-ae47-6397ed1bb0b3",
+"target": "非常",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L02C02",
+"ka": "3f388e2f-6dbf-48d9-b11f-ba13b2cd600c",
+"known": "感謝する",
+"pos": 2,
+"t1": "93cec9a4-0682-4e5f-adf7-e2a435dc01e1",
+"t2": "9b5bd6e1-1236-4396-9ee4-f3a6f35d0897",
+"target": "感谢",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L02B01",
+"ka": "d2c2a3ed-f0d7-4a26-8f9b-5ff9c95fc058",
+"known": "ありがとう",
+"pos": 3,
+"t1": "e2a1c471-22af-4476-9b22-9001cf906cdb",
+"t2": "9fd28cda-92ad-45da-80c0-33c5fb9f3376",
+"target": "非常感谢",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L02B02",
+"ka": "2063e18c-209e-4858-9eca-aee87fd99c1c",
+"known": "ありがとうございます",
+"pos": 4,
+"t1": "9180c861-a9e2-44ea-98f4-f7a4e668df6c",
+"t2": "e414bee5-b46b-4562-94cd-0c0dbc9284ff",
+"target": "非常感谢你",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L02B03",
+"ka": "ac8c90d6-896b-4e80-bdda-250e71613bbb",
+"known": "教えてくれてありがとう",
+"pos": 5,
+"t1": "b9e40a56-7413-41ee-97f1-87220a0800b3",
+"t2": "df9209f1-ffa1-40d9-9d96-47b4a7c3d94b",
+"target": "非常感谢你告诉我",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L02B04",
+"ka": "b3d6f1c2-681b-4a39-8879-3d42264d6544",
+"known": "ありがとう、とてもいい",
+"pos": 6,
+"t1": "dfa35eb8-00b8-4c77-9890-1500db2641f5",
+"t2": "ef6e983a-b0e9-4e3f-b903-c1513239d456",
+"target": "非常感谢，非常好",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L02U01",
+"ka": "cafdffd0-02c3-4df9-beb7-92f35ffc5f94",
+"known": "来てくれてありがとう",
+"pos": 7,
+"t1": "0f0e84dc-3db4-4fac-89d7-ab6627bf1a44",
+"t2": "53285ff0-53b7-4c06-aa05-ab0d8f6f444e",
+"target": "非常感谢你来",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L02U02",
+"ka": "e528b505-eb37-43a5-8c3d-5be9cf5c9d4d",
+"known": "中国語で話してくれてありがとう",
+"pos": 8,
+"t1": "08dd6eaa-bd43-4470-afab-749c2a7205a1",
+"t2": "9744fca1-205b-4286-80e2-fbebfaf53b15",
+"target": "非常感谢你和我说中文",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L02U03",
+"ka": "797ac5a6-c64f-4349-acbe-92c84653dc2e",
+"known": "手伝ってくれてありがとう",
+"pos": 9,
+"t1": "3a921154-cad1-4107-a7b6-1e05e03b560f",
+"t2": "ba61c6ef-d536-4008-8ea1-f6caf6503cfa",
+"target": "非常感谢你帮我",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L02U04",
+"ka": "00d4bef3-0257-4637-a118-561e29367e4d",
+"known": "私に見せてくれてありがとう",
+"pos": 10,
+"t1": "2a1be29c-b593-402e-a400-0527d8c01355",
+"t2": "286d2e05-0bd9-4110-95f0-9175a3db3816",
+"target": "非常感谢你让我看",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L02U05",
+"ka": "c65d5ae2-9c4a-4414-9aaa-32b874495ad3",
+"known": "もっとゆっくり話してくれてありがとう",
+"pos": 11,
+"t1": "e8e9a2ff-bc1a-4ef7-b907-7788a5834f2f",
+"t2": "da13d6f6-8361-4046-8a96-9d56e6f107a4",
+"target": "非常感谢你说得慢一点",
+"type": "use"
+}
+],
+"target": "非常感谢",
+"type": "M"
+},
+{
+"id": "S0073L03",
+"idx": 3,
+"is_new": true,
+"known": "まだ学ぶことがたくさんある",
+"phrases": [
+{
+"id": "2997f90f-96b7-441f-8a28-7fd14586a301",
+"ka": "16e0f3d8-0d65-496b-9d4e-f8ff90da9b1e",
+"known": "まだ学ぶことがたくさんある",
+"pos": 0,
+"t1": "92b74968-c42e-4ec2-8672-17a5a36b0050",
+"t2": "10f43ae1-e92d-4f64-9c92-4482285ab7cb",
+"target": "还有很多要学",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0073L03C01",
+"ka": "ba05ce8f-ccba-43e6-9f40-6f9960259757",
+"known": "まだ",
+"pos": 1,
+"t1": "4d57f551-9607-40f5-9181-358e83c233e7",
+"t2": "8ac84e23-6607-43f9-a5a2-25c7666a46e1",
+"target": "还",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L03C02",
+"ka": "9901b851-2752-4bc8-9616-f023e2ed3a34",
+"known": "ある",
+"pos": 2,
+"t1": "cbe172fc-f4b7-47ef-af89-fbdd0cc40a7e",
+"t2": "c21a12a7-e535-4735-b838-3716578c9a03",
+"target": "有",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L03C03",
+"ka": "0324b1db-be2d-4ecb-a58a-27c413d7568f",
+"known": "たくさん",
+"pos": 3,
+"t1": "ddc91ba1-cc71-4949-90d2-bda897fc241f",
+"t2": "e67bb134-6c6b-461b-b1e8-c516ca00cb3c",
+"target": "很多",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L03C04",
+"ka": "2f7763ac-fc78-4810-bcea-c37d2d301898",
+"known": "〜する必要がある",
+"pos": 4,
+"t1": "6a23b10b-6111-4ee4-a13b-8392d91596ad",
+"t2": "ebff482c-d223-4b8f-a9d8-e7b11c34830e",
+"target": "要",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L03C05",
+"ka": "f5b5f349-a69a-4af2-97fc-45656717ebf5",
+"known": "学ぶ",
+"pos": 5,
+"t1": "9b5cee2a-ecb8-44fd-84af-d279cb59f071",
+"t2": "f67cdd62-c046-4bbf-9b89-e4650f371678",
+"target": "学",
+"type": "component"
+},
+{
+"id": "zho_for_jpn:S0073L03B01",
+"ka": "16e0f3d8-0d65-496b-9d4e-f8ff90da9b1e",
+"known": "まだ学ぶことがたくさんある",
+"pos": 6,
+"t1": "92b74968-c42e-4ec2-8672-17a5a36b0050",
+"t2": "10f43ae1-e92d-4f64-9c92-4482285ab7cb",
+"target": "还有很多要学",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L03B02",
+"ka": "07e0e331-e15a-4ec2-8c9f-58e17229282b",
+"known": "私はまだ学ぶことがたくさんある",
+"pos": 7,
+"t1": "4d511321-8618-4fc9-a48e-7065562ca3d6",
+"t2": "dcfdd166-71a7-496f-b770-d98da99f943f",
+"target": "我还有很多要学",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L03B03",
+"ka": "50c1fbc4-4b49-4bf0-a7f5-792abbf4fdf0",
+"known": "ありがとう、でもまだ学ぶことがたくさんある",
+"pos": 8,
+"t1": "8fea30fb-90d1-42ea-b698-d291efa8da8f",
+"t2": "543f1aa2-8e4e-424d-a958-acf328981e90",
+"target": "非常感谢但是还有很多要学",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L03B04",
+"ka": "91cbbaaa-733f-46db-bc57-6838e5564cd5",
+"known": "中国語はまだ学ぶことがたくさんある",
+"pos": 9,
+"t1": "28066f25-9e9a-4682-ba96-b4d0d4ccbda2",
+"t2": "6d0eaebc-c14f-44a2-8e63-adaf86ff7f31",
+"target": "中文还有很多要学",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0073L03U01",
+"ka": "50c1fbc4-4b49-4bf0-a7f5-792abbf4fdf0",
+"known": "ありがとう、でもまだ学ぶことがたくさんある",
+"pos": 10,
+"t1": "69d25809-22c6-4e1c-b921-d8ed1cfee220",
+"t2": "8927a13a-e7f2-4392-b05b-02209b6b3111",
+"target": "非常感谢，但是我还有很多要学",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L03U02",
+"ka": "a4b63270-af88-41c2-a86e-ed13dadb51cc",
+"known": "まだ学ぶことがたくさんあると知っている",
+"pos": 11,
+"t1": "adc1f401-41c0-4dd4-9ef9-c6ce7899dd3e",
+"t2": "bfd2fc85-f18e-461c-b8cb-52978b978d87",
+"target": "我知道我还有很多要学",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L03U03",
+"ka": "ccd85502-41f3-4b46-92da-9fd7330c026b",
+"known": "まだ学ぶことがたくさんあると思う",
+"pos": 12,
+"t1": "c0676e6c-dec5-4ee5-823e-12f082f29bfe",
+"t2": "94ea2a65-0dd5-4170-83e1-e43312716aa3",
+"target": "我觉得还有很多要学",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L03U04",
+"ka": "867d107b-baab-416f-9dfb-9a9b211b4311",
+"known": "まだ学ぶことがたくさんあるけど、大丈夫",
+"pos": 13,
+"t1": "121c709e-7a14-40e6-bf75-5ed206b154d3",
+"t2": "3dd9ea99-c3ca-47ba-a46c-cce3200c48c3",
+"target": "还有很多要学但是还可以",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0073L03U05",
+"ka": "2260775c-54ff-46bc-92d7-e75805930546",
+"known": "まだ学ぶことがたくさんあるから、練習したい",
+"pos": 14,
+"t1": "3b24a5ea-4cde-4294-be68-88c1cd7ea586",
+"t2": "19bbe131-ce6b-41e6-897d-951e2573be09",
+"target": "还有很多要学所以我想练习",
+"type": "use"
+}
+],
+"target": "还有很多要学",
+"type": "M"
+}
+],
+"status": "released",
+"target": "非常感谢，但是我还有很多要学。"
+},
+"86": {
+"at": "2026-11-19T11:48:15Z",
+"known": "残念ながら、それは不可能でした。",
+"legos": [
+{
+"id": "S0086L01",
+"idx": 1,
+"is_new": true,
+"known": "残念",
+"phrases": [
+{
+"id": "da6935f4-f4b6-440e-bda4-774585a34ad5",
+"ka": "9b21719e-c702-4b85-abb9-0cf42d702e64",
+"known": "残念",
+"pos": 0,
+"t1": "929313cf-9bae-4729-96a5-a9ecc128d4ee",
+"t2": "09f27fa8-a6f3-4965-8098-9186d8253927",
+"target": "可惜",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0086L01B01",
+"ka": "9b21719e-c702-4b85-abb9-0cf42d702e64",
+"known": "残念。",
+"pos": 1,
+"t1": "929313cf-9bae-4729-96a5-a9ecc128d4ee",
+"t2": "09f27fa8-a6f3-4965-8098-9186d8253927",
+"target": "可惜。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0086L01B02",
+"ka": "4d0cb9c2-2b45-44ab-99bf-104e7cfee0e4",
+"known": "とても残念。",
+"pos": 2,
+"t1": "349f434c-e781-4bb0-936b-29381b71fe6f",
+"t2": "3c4aab4d-59fa-40cc-a569-c19533575d53",
+"target": "很可惜。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0086L01B03",
+"ka": "8c0da1e5-40f7-4171-9ac8-5aab21105e85",
+"known": "残念だけど。",
+"pos": 3,
+"t1": "e1e009c3-64f4-436d-b421-6524791f74e1",
+"t2": "409d2728-0e4e-472e-968e-494c30a13bd2",
+"target": "很可惜，但是。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0086L01U01",
+"ka": "7f0ed6bb-1508-48fa-97aa-f56073114f77",
+"known": "私はとても残念だと思います。",
+"pos": 4,
+"t1": "d21e9203-c77d-4961-9f99-9e5dabe70aa5",
+"t2": "568cd332-8729-428d-a07b-8c204190d6a0",
+"target": "我觉得很可惜。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L01U02",
+"ka": "96321033-7598-4955-a182-aaf02229c279",
+"known": "残念ながら彼女は同意しません。",
+"pos": 5,
+"t1": "afffd037-21b4-4361-a239-ddaca72d0f2d",
+"t2": "81631f65-1b66-494a-b3d1-b1cdd3eb869c",
+"target": "很可惜她不同意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L01U03",
+"ka": "6b75bd89-49f3-42f2-ba85-da030b491ef1",
+"known": "残念ながら、彼は理解していません。",
+"pos": 6,
+"t1": "7e5a9eb4-0295-4775-a84e-081152778db3",
+"t2": "840de0e4-fe9d-4e35-aa28-67e4c29580da",
+"target": "很可惜，他不理解。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L01U04",
+"ka": "2d0e1635-2d0a-4450-89a4-2795c23c49b3",
+"known": "残念ながら彼は戻って来ません。",
+"pos": 7,
+"t1": "7eec09e4-c0be-40f6-8a2b-25115a1ea5d9",
+"t2": "4f452d5d-3984-4efa-85d4-65253382373d",
+"target": "很可惜他不会回来了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L01U05",
+"ka": "e9a7a86a-2d54-4e79-8ced-602678137990",
+"known": "残念ですが、私は同意しません。",
+"pos": 8,
+"t1": "a7d942d4-ba8c-4082-9b47-7c5482e0b9d2",
+"t2": "c3f2faae-b231-44e8-b6be-d559169efe3b",
+"target": "很可惜，但是我不同意。",
+"type": "use"
+}
+],
+"target": "可惜",
+"type": "A"
+},
+{
+"id": "S0086L02",
+"idx": 2,
+"is_new": true,
+"known": "可能",
+"phrases": [
+{
+"id": "1828bb2f-968f-4c13-be4d-1c560f17cac7",
+"ka": "d4bf439f-0148-4dd5-b109-836b705cbd77",
+"known": "可能",
+"pos": 0,
+"t1": "e7344495-b593-4a7a-9adb-74bafbc8a3c3",
+"t2": "ce1240db-70ef-4cbb-9e0f-e80690973a06",
+"target": "可能",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0086L02B01",
+"ka": "d4bf439f-0148-4dd5-b109-836b705cbd77",
+"known": "可能。",
+"pos": 1,
+"t1": "e7344495-b593-4a7a-9adb-74bafbc8a3c3",
+"t2": "ce1240db-70ef-4cbb-9e0f-e80690973a06",
+"target": "可能。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0086L02B02",
+"ka": "7e401d43-2e59-4aaa-aaad-f887db5192fa",
+"known": "不可能。",
+"pos": 2,
+"t1": "1d84dfbf-534d-4e43-a9f3-36dd0c7ec0b9",
+"t2": "181fca45-2c85-434e-ae7d-78dfc1490005",
+"target": "不可能。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0086L02B03",
+"ka": "faa6d3ca-9be4-41e7-8a23-39697c8dee6d",
+"known": "彼は不可能だと感じています。",
+"pos": 3,
+"t1": "869118e6-b04e-4b32-9fbf-30062384c7ce",
+"t2": "4879e79d-f842-42b8-8ec6-a04c61455e23",
+"target": "他觉得不可能。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0086L02U01",
+"ka": "b3d9ae58-0314-41b3-a306-6e18de6ef9e2",
+"known": "彼は来るかもしれません。",
+"pos": 4,
+"t1": "92604bfa-db27-468d-b274-9e248bbc7b52",
+"t2": "6986cfcd-7698-495b-8e7c-1cfdd302d67f",
+"target": "他可能会回来。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L02U02",
+"ka": "466a75c1-88cd-447f-84b7-b7ec2a5f8efc",
+"known": "彼女は同意しないかもしれません。",
+"pos": 5,
+"t1": "176e2db8-a832-43a8-9441-908f707ce1ce",
+"t2": "b43e7ead-cf21-4a39-8457-c69c0f634505",
+"target": "她可能不同意。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L02U03",
+"ka": "fe5d80ed-9481-49f4-906b-2a6cfe2deab2",
+"known": "彼女は戻って来るかもしれないと言いました。",
+"pos": 6,
+"t1": "6a3bfbdb-136f-4a69-ae17-8f8b5576b278",
+"t2": "7c50002a-2623-4a87-9f3c-3cfcb42902b9",
+"target": "她说可能会回来。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0086L02U04",
+"ka": "67b640d4-7237-43fb-b10b-25796869f0c7",
+"known": "完成するのは不可能だと思います。",
+"pos": 7,
+"t1": "b463cdda-bc7f-4543-b942-d4f802764466",
+"t2": "765fb5ed-7f7a-44d6-92a6-1a1162939c9d",
+"target": "我觉得不可能完成。",
+"type": "use"
+}
+],
+"target": "可能",
+"type": "A"
+}
+],
+"status": "released",
+"target": "很可惜，不可能。"
+},
+"90": {
+"at": "2026-11-19T11:48:16Z",
+"known": "もっとゆっくり話していただければ嬉しいです。",
+"legos": [
+{
+"id": "S0090L01",
+"idx": 1,
+"is_new": true,
+"known": "もう",
+"phrases": [
+{
+"id": "a45ef652-306f-4af4-86b4-283d1e065b78",
+"ka": "e57d93d9-f57f-421b-b21e-c22fe6dba104",
+"known": "もう",
+"pos": 0,
+"t1": "03a66044-5dfc-4ee5-bf77-37a2cd06f59e",
+"t2": "179cd97f-1b62-4ab2-8034-4bfac76bb78b",
+"target": "就",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0090L01B01",
+"ka": "41a14908-2f65-4812-87e9-cca335978a45",
+"known": "彼はそうやったのです。",
+"pos": 1,
+"t1": "3bab1885-8560-4d96-893d-079249973d15",
+"t2": "2ec27ae6-5c3b-488a-802c-271571edb35b",
+"target": "他就是这样做的。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0090L01B02",
+"ka": "928b3591-4a20-42aa-a759-b0db4582b583",
+"known": "もしできるなら、手伝ってください。",
+"pos": 2,
+"t1": "0764cb66-52ae-47bc-92ce-1aaa3c67a92c",
+"t2": "dca017ea-29d1-4913-8f73-029c43b504a0",
+"target": "如果你会，就帮我。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0090L01B03",
+"ka": "62d67399-c798-4fe8-b7dc-40d8502dc09c",
+"known": "もし理解したら、すぐやってください。",
+"pos": 3,
+"t1": "9280ba36-0455-4071-9911-32c761b70357",
+"t2": "c8856dd0-190a-42fc-98d1-f8fd419a93c7",
+"target": "如果你理解了，就做。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0090L01U01",
+"ka": "ac34c02c-4ef1-4e1e-9a01-7091ef738fb6",
+"known": "彼女が同意したら、すぐ始めます。",
+"pos": 4,
+"t1": "1308a868-1820-42f9-a8d8-37d7a8cdb0fb",
+"t2": "8577b198-9898-4db8-bf93-b3cb9ce8651d",
+"target": "如果她同意，就开始。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L01U02",
+"ka": "7845cfda-ddf5-4a07-988a-c268d4915042",
+"known": "もし知っていたら、教えてください。",
+"pos": 5,
+"t1": "f2d95b6c-3512-463e-83e4-e2ac9496a9f0",
+"t2": "35c57a00-11dd-4f8b-bcd9-6b7d6c53d811",
+"target": "如果你知道，就告诉我。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L01U03",
+"ka": "241f8a32-2051-42de-bbb3-cf94d87cb1cf",
+"known": "もし難しくなければ、すぐ完成します。",
+"pos": 6,
+"t1": "782b32fd-0e06-40af-9485-cf3d349635c1",
+"t2": "8927bb47-3289-4af6-87bb-6df2e82f10ea",
+"target": "如果不难，就可以完成。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L01U04",
+"ka": "777380a2-0023-4c8e-a41d-9952a237b689",
+"known": "もし手伝ってもらえたら、嬉しいです。",
+"pos": 7,
+"t1": "7809aad7-d3d2-462c-afc4-a74cbef6f337",
+"t2": "d0b326f9-0cc1-4b61-975c-9f9f2b523aeb",
+"target": "如果你可以帮我，就好了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L01U05",
+"ka": "267d4f02-2b99-4e97-b0a9-9dd0f95ba5ff",
+"known": "準備ができたら、始めましょう。",
+"pos": 8,
+"t1": "9f5bcf02-0247-471b-98eb-01e880c21b5d",
+"t2": "9493abf9-5f9c-460a-9120-e8d1244b4ce7",
+"target": "如果你准备好了，就开始。",
+"type": "use"
+}
+],
+"target": "就",
+"type": "A"
+},
+{
+"id": "S0090L02",
+"idx": 2,
+"is_new": true,
+"known": "すごい",
+"phrases": [
+{
+"id": "11ba7199-6648-41a5-890f-b0324fe3e7a6",
+"ka": "6d2d5392-1e15-43d2-bd91-ef7470c27ce9",
+"known": "すごい",
+"pos": 0,
+"t1": "2f78f08e-26e8-46f8-848f-30e102c851a6",
+"t2": "e57a4779-f492-4cee-a26a-b9e4435bee13",
+"target": "太好了",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0090L02B01",
+"ka": "6d2d5392-1e15-43d2-bd91-ef7470c27ce9",
+"known": "すごい。",
+"pos": 1,
+"t1": "2f78f08e-26e8-46f8-848f-30e102c851a6",
+"t2": "e57a4779-f492-4cee-a26a-b9e4435bee13",
+"target": "太好了。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0090L02B02",
+"ka": "8cff3646-4a35-474a-8d22-aa2376d739e9",
+"known": "それならすごい。",
+"pos": 2,
+"t1": "cce2d960-bb44-4df2-ad2e-4e62cc38fc93",
+"t2": "6896029e-0dcb-42c7-9393-ad7defdcfc10",
+"target": "就太好了。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0090L02B03",
+"ka": "2a0bfe73-6c10-4a63-8332-f6877c29738d",
+"known": "今日はすごい。",
+"pos": 3,
+"t1": "cdf227a0-3d11-4df5-8e1a-8092f98514d1",
+"t2": "60dbc653-5c5d-4b7e-98a7-f495438ee63c",
+"target": "今天太好了。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0090L02U01",
+"ka": "817fb6b3-df96-46c3-98e2-598e4051281d",
+"known": "すごいと思います。",
+"pos": 4,
+"t1": "8bb4131f-00fe-4a1f-89b2-cf0e1e3193dc",
+"t2": "4afbf494-f9c3-4f9e-bac5-6345234689c2",
+"target": "我觉得太好了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L02U02",
+"ka": "08ed4a8a-3cb5-4c29-a52e-27131afbf314",
+"known": "彼女が戻ってきたらすごい。",
+"pos": 5,
+"t1": "332516da-7690-433e-8ffa-97a80230e95f",
+"t2": "c0805208-7cc0-43fc-8a04-a56f7404aa02",
+"target": "如果她回来了就太好了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L02U03",
+"ka": "259cad06-980b-4b83-a3f0-68b7ae7e56d8",
+"known": "すごい、戻ってきたね。",
+"pos": 6,
+"t1": "0d567d9c-31b1-476d-9689-0eea0bbb2b7c",
+"t2": "544a0157-e86c-451e-ba8c-7634a8f92803",
+"target": "太好了，你回来了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0090L02U05",
+"ka": "c6e69930-6be1-49c6-aeda-89de5e7da820",
+"known": "もし彼女が手伝ってくれたらすごい。",
+"pos": 8,
+"t1": "c99e3a42-c182-4814-a80c-d7a2a0aee35e",
+"t2": "71436004-0ab2-4dfb-aa5a-9102793b3a41",
+"target": "如果她能帮我就太好了。",
+"type": "use"
+}
+],
+"target": "太好了",
+"type": "M"
+}
+],
+"status": "released",
+"target": "如果你可以说慢一点就太好了。"
+},
+"92": {
+"at": "2026-11-19T11:48:16Z",
+"known": "しばらくこれを続けたいです。",
+"legos": [
+{
+"id": "S0092L01",
+"idx": 1,
+"is_new": true,
+"known": "続ける",
+"phrases": [
+{
+"id": "adf376fc-eee6-4576-99c9-419c86176981",
+"ka": "3c253af6-1a15-4e5e-b5de-373125c3c45d",
+"known": "続ける",
+"pos": 0,
+"t1": "618c2c28-af13-45c6-ac62-c3bd85d52587",
+"t2": "39c62090-66fa-48d7-b456-500e00c03e3d",
+"target": "继续",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0092L01B01",
+"ka": "3c253af6-1a15-4e5e-b5de-373125c3c45d",
+"known": "続ける。",
+"pos": 1,
+"t1": "618c2c28-af13-45c6-ac62-c3bd85d52587",
+"t2": "39c62090-66fa-48d7-b456-500e00c03e3d",
+"target": "继续。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L01B02",
+"ka": "d2dfe439-4f98-440c-bcdb-1e4a818497b7",
+"known": "続けたい。",
+"pos": 2,
+"t1": "1d4eabe5-1a77-4b5d-9ccc-a21fd221a358",
+"t2": "5eabe9d5-e099-47bc-a12e-14cc0926214c",
+"target": "想继续。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L01B03",
+"ka": "4f91623b-1d64-4371-8a82-a8567e5f954e",
+"known": "やり続ける。",
+"pos": 3,
+"t1": "99f242c7-2b58-4342-99b3-23b73163976c",
+"t2": "ea983917-5f37-4cac-8c9d-f1933716949a",
+"target": "继续做。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L01U01",
+"ka": "f8d67a36-7848-4296-9fe7-08e4d42ea327",
+"known": "あなたは続けますか？",
+"pos": 4,
+"t1": "af0e2338-9776-4a84-9233-a217b4c26a45",
+"t2": "4bebba93-8dd9-471a-9a31-eec1c92cce9a",
+"target": "你会继续吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L01U02",
+"ka": "c85e87d7-ea6e-489e-a427-af262ce2303c",
+"known": "彼女は話し続けました。",
+"pos": 5,
+"t1": "4c92030f-75c3-479d-a9c6-ed87f73b2b9d",
+"t2": "15ef49c2-6d27-4cbc-ad22-5ed053f97bc5",
+"target": "她继续说话。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L01U03",
+"ka": "67caeef2-b1ce-4cb8-bdea-2e90d6e306ec",
+"known": "彼はもう続けたくないです。",
+"pos": 6,
+"t1": "4ffa20bd-ffd6-4b4e-854f-4d4da5996d52",
+"t2": "a4102b85-c01a-4a98-85e6-349f4ab2f052",
+"target": "他不想继续了。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L01U04",
+"ka": "9cc80232-732b-45b8-ad6f-d4a03e44a6d3",
+"known": "私はあなたを手伝い続けます。",
+"pos": 7,
+"t1": "41d14fc5-551a-4152-8ebf-02d160d16ab7",
+"t2": "761fbdd5-ab80-4a2f-89b3-ebbe98899224",
+"target": "我会继续帮你。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L01U05",
+"ka": "464d96c6-d16f-4af0-bca5-fa9806804490",
+"known": "彼らは学び続けています。",
+"pos": 8,
+"t1": "ce628282-746b-4c35-91ea-700dbd060b3a",
+"t2": "4a24b22b-c9f4-427c-ab2e-b04bdc64446b",
+"target": "他们继续在学。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L01U06",
+"ka": "d831d8a2-0530-4cae-83f8-b080b953922a",
+"known": "私は中国語を学び続けたいです。",
+"pos": 9,
+"t1": "e858b43f-ca38-4b65-b1fe-e1e6947226e3",
+"t2": "d2516d26-6277-4dc8-9098-36355d72ac00",
+"target": "我想继续学中文。",
+"type": "use"
+}
+],
+"target": "继续",
+"type": "A"
+},
+{
+"id": "S0092L02",
+"idx": 2,
+"is_new": true,
+"known": "これ",
+"phrases": [
+{
+"id": "dece67b0-2a73-4640-8b38-d6973e6d6a2e",
+"ka": "1b216ecf-e5a0-4e26-b072-af8cf705d688",
+"known": "これ",
+"pos": 0,
+"t1": "751ad8a1-a3eb-445f-bd9e-b17dd0e71054",
+"t2": "54488b71-6f1c-42cc-b7e4-92bed210ecda",
+"target": "这个",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0092L02B01",
+"ka": "1b216ecf-e5a0-4e26-b072-af8cf705d688",
+"known": "これ。",
+"pos": 1,
+"t1": "751ad8a1-a3eb-445f-bd9e-b17dd0e71054",
+"t2": "54488b71-6f1c-42cc-b7e4-92bed210ecda",
+"target": "这个。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L02B02",
+"ka": "83a0765d-6737-4569-90cd-fc1f7d4f76ab",
+"known": "これをやり続ける。",
+"pos": 2,
+"t1": "40323617-79d6-4058-bf4a-88379fd429ae",
+"t2": "826acc11-cedd-4d09-a27b-7a92db531bf9",
+"target": "继续做这个。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L02B03",
+"ka": "a381183f-59af-4d23-9a4e-78f815c35377",
+"known": "あなたはこれに同意しますか？",
+"pos": 3,
+"t1": "db2d5c7d-13a3-4c11-b295-257baf9f6508",
+"t2": "4685c0c2-44b1-433e-827d-b0c1bf2babb8",
+"target": "你同意这个吗？",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L02U01",
+"ka": "3c75ea97-9c66-40f2-be33-3a3f316ddbd9",
+"known": "私はこれが分かりません。",
+"pos": 4,
+"t1": "117cc58b-a127-44be-8703-c9951e56b2ff",
+"t2": "15616e62-04c3-474c-9dc7-167b0488e878",
+"target": "我不理解这个。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L02U02",
+"ka": "7cab95d1-8121-4b2a-b241-30141c25af63",
+"known": "彼はこの人を知りません。",
+"pos": 5,
+"t1": "c2cc1eaa-bc3f-4110-a5a5-1c9777e7012e",
+"t2": "f3cec7e0-c7dc-4036-99fd-81bc28095717",
+"target": "他不认识这个人。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L02U03",
+"ka": "abfbe47f-c5bf-4235-a742-cd3f7a57ec22",
+"known": "これをやり続けたいです。",
+"pos": 6,
+"t1": "f9c20f02-f6dc-405d-94c5-9e433119a0cf",
+"t2": "9b6d4ef6-f6df-4af1-9e15-a65ef7613b8e",
+"target": "我想继续做这个。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L02U05",
+"ka": "315d3449-a422-4b07-8c09-fba2bb7b3d2e",
+"known": "これについて、私は同意しません。",
+"pos": 8,
+"t1": "f092ba5e-53c9-4139-882f-089fdbbc4b8b",
+"t2": "e293a971-6e41-4215-a32e-cbbc200ed34a",
+"target": "关于这个，我不同意。",
+"type": "use"
+}
+],
+"target": "这个",
+"type": "A"
+},
+{
+"id": "S0092L03",
+"idx": 3,
+"is_new": true,
+"known": "しばらく",
+"phrases": [
+{
+"id": "fb33a540-a122-4130-9b0d-b9c51d34bbdb",
+"ka": "669be62a-650d-45cd-a7b3-87e2880880c4",
+"known": "しばらく",
+"pos": 0,
+"t1": "11d8b7c3-a878-46f4-9fdb-0efb08fad0be",
+"t2": "ffdc133f-0af9-41b5-897e-42539afb96b3",
+"target": "一会儿",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0092L03B01",
+"ka": "669be62a-650d-45cd-a7b3-87e2880880c4",
+"known": "しばらく。",
+"pos": 1,
+"t1": "11d8b7c3-a878-46f4-9fdb-0efb08fad0be",
+"t2": "ffdc133f-0af9-41b5-897e-42539afb96b3",
+"target": "一会儿。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L03B02",
+"ka": "db82419b-df6a-4fdf-b103-f115d9d191a9",
+"known": "しばらく待ってください。",
+"pos": 2,
+"t1": "7a013d45-1fa0-4998-a1d6-7aa5bc8dd394",
+"t2": "c13c2b2f-2f66-476e-8526-d74771e5933e",
+"target": "等我一会儿。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L03B03",
+"ka": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+"known": "これをしばらくやる。",
+"pos": 3,
+"t1": "06a0aadd-dc89-4cd5-a003-d66f82561cba",
+"t2": "27a9022e-c491-4926-98fb-b18dc06332d8",
+"target": "做一会儿这个。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0092L03U01",
+"ka": "2f631318-f075-4318-a008-ea45af87ed85",
+"known": "彼女はしばらく続けたいです。",
+"pos": 4,
+"t1": "5c6fb491-9650-436c-8705-7dee2be7e675",
+"t2": "a9ffe768-122f-42a1-b1bd-9f7a4d2139f4",
+"target": "她想继续一会儿。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L03U02",
+"ka": "5fc4f044-2b31-4fc3-bb3f-030c84fd149e",
+"known": "彼はしばらく話しました。",
+"pos": 5,
+"t1": "ae5364d4-529f-4881-b02e-38a1b5160d1a",
+"t2": "e40b05eb-81a9-4d60-853e-441f19b8de4d",
+"target": "他说话说了一会儿。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L03U04",
+"ka": "56d647c9-5ed9-4ead-9bb1-fb95daa0df6a",
+"known": "私はしばらく学び続けます。",
+"pos": 7,
+"t1": "6b3f7afc-450a-4046-b6ba-276acfcb40d3",
+"t2": "c86b7981-8742-4923-bca5-35187b127e4c",
+"target": "我会继续学一会儿。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0092L03U05",
+"ka": "9f43a20f-0127-454f-b1c9-271be607f7c9",
+"known": "彼はしばらく彼女を手伝いました。",
+"pos": 8,
+"t1": "9059610f-39a2-42a5-ab0f-46454cf8ba24",
+"t2": "ad035034-2a80-43cc-99e8-2e9988d13320",
+"target": "他帮她帮了一会儿。",
+"type": "use"
+}
+],
+"target": "一会儿",
+"type": "A"
+}
+],
+"status": "released",
+"target": "我想继续做一会儿这个。"
+},
+"94": {
+"at": "2026-11-19T11:48:17Z",
+"known": "これがうまくいく唯一の方法です。",
+"legos": [
+{
+"id": "S0094L01",
+"idx": 1,
+"is_new": true,
+"known": "これ",
+"phrases": [
+{
+"id": "0a2b14e6-c3f1-4643-9ff0-5be5f0192628",
+"ka": "1b216ecf-e5a0-4e26-b072-af8cf705d688",
+"known": "これ",
+"pos": 0,
+"t1": "66e3e334-747b-44c9-b671-a909ff8bb553",
+"t2": "895a92d5-0835-4544-82b3-a90628bc70d2",
+"target": "这",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0094L01B01",
+"ka": "1b216ecf-e5a0-4e26-b072-af8cf705d688",
+"known": "これ。",
+"pos": 1,
+"t1": "66e3e334-747b-44c9-b671-a909ff8bb553",
+"t2": "895a92d5-0835-4544-82b3-a90628bc70d2",
+"target": "这。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L01B02",
+"ka": "a42cbbd7-6009-4220-a91d-97b1925f9da2",
+"known": "これは。",
+"pos": 2,
+"t1": "1aafc9af-1c6a-43cb-9349-12eb664d632b",
+"t2": "17acebfb-1aca-4f71-b4f1-e776a6ce1fbf",
+"target": "这是。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L01B03",
+"ka": "37509c0f-33c4-4e86-9968-4957285b6265",
+"known": "これではない。",
+"pos": 3,
+"t1": "f993798b-a258-4e86-9d3f-25d6db13d83b",
+"t2": "6efcfe2b-5940-4bd8-bb67-cbfa49ffe0af",
+"target": "这不是。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L01U01",
+"ka": "0dc7e564-6edb-4b79-a5db-67c02b5002d1",
+"known": "これは何ですか？",
+"pos": 4,
+"t1": "8d68d53a-e186-46be-8f6c-4000b10e8ea9",
+"t2": "8fe64bab-156a-480a-823e-f7878566ae68",
+"target": "这是什么？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L01U02",
+"ka": "9ec7d9c1-4a40-4c14-b560-9437cb9db9db",
+"known": "これは理解しにくいです。",
+"pos": 5,
+"t1": "9e509bc8-d9a1-4dc3-8c37-e0f59a76ed66",
+"t2": "b55b2159-b0cd-4a80-b9de-56314e841806",
+"target": "这很难理解。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L01U03",
+"ka": "d1879b7b-1899-41ee-8c75-58b85d38493c",
+"known": "これは難しいかもしれません。",
+"pos": 6,
+"t1": "47475a2e-cbf7-4425-8551-0d83c75013bc",
+"t2": "341e23d1-8ad9-432d-8be0-848ed3f536da",
+"target": "这可能很难。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L01U04",
+"ka": "fb39ef34-b472-48d5-8474-497a34c253c1",
+"known": "これは私の友達です。",
+"pos": 7,
+"t1": "c4fad9a5-598c-41f4-b4da-a22d73f5d143",
+"t2": "6a776282-c0d0-4791-b205-904884d3bd62",
+"target": "这是我朋友。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L01U05",
+"ka": "521b419c-70bd-4fcb-ae27-a7d24796b6ab",
+"known": "彼はこれはとても重要だと言いました。",
+"pos": 8,
+"t1": "81075d1b-57d2-4c48-a9e7-147bd4363c27",
+"t2": "0d16c152-c67c-4441-b67c-4f07c250dda3",
+"target": "他说这很重要。",
+"type": "use"
+}
+],
+"target": "这",
+"type": "A"
+},
+{
+"id": "S0094L02",
+"idx": 2,
+"is_new": true,
+"known": "唯一の",
+"phrases": [
+{
+"id": "77878cd7-4937-43a4-8d83-1484ef40f62c",
+"ka": "1c3860f4-27d6-4686-a3a9-eb2424e6d404",
+"known": "唯一の",
+"pos": 0,
+"t1": "46183935-6fac-47fb-b973-c1a5213ea171",
+"t2": "15fd63f3-1771-402e-b28e-cf82d8975ad8",
+"target": "唯一",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0094L02B01",
+"ka": "1c3860f4-27d6-4686-a3a9-eb2424e6d404",
+"known": "唯一の。",
+"pos": 1,
+"t1": "db7b767e-d917-414e-a704-b11bd1fe98c7",
+"t2": "4119183c-b993-48b9-a078-c929054ac2c4",
+"target": "唯一的。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L02B02",
+"ka": "273e8853-9e1c-43f5-8a6c-f0daac90a36e",
+"known": "唯一役に立つ。",
+"pos": 2,
+"t1": "d5698c91-8099-48f8-bad1-15816c0784d5",
+"t2": "fa273760-cd01-424d-b847-23042dd476e9",
+"target": "唯一有用的。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L02B03",
+"ka": "b54bf607-88f6-475c-9279-535ddd8b6f93",
+"known": "これは唯一役に立つものです。",
+"pos": 3,
+"t1": "bfa61960-8eae-4eb5-8b3b-9a82fa5a1690",
+"t2": "db5a373d-98c9-4cad-a365-2813f40596b1",
+"target": "这是唯一有用的。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L02U01",
+"ka": "f18f31a7-7395-45ba-be22-44c4b275f76e",
+"known": "これは唯一可能なものです。",
+"pos": 4,
+"t1": "6b85486e-74a3-4ba4-9896-7a310de9c581",
+"t2": "75700531-77d5-4a42-97aa-0d94f6b4700d",
+"target": "这是唯一可能的。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L02U02",
+"ka": "522625d7-e80b-454e-9d4f-94f1727dc0f2",
+"known": "彼は理解する唯一の人です。",
+"pos": 5,
+"t1": "5de131b5-dd77-4a22-b9ed-a40c8d65ce41",
+"t2": "ca0f3576-dcef-4019-89b1-600e1cb77c1a",
+"target": "他是唯一理解的人。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L02U03",
+"ka": "ddc4fa0a-26e2-4499-a0c2-81009bb3c682",
+"known": "私は同意しない唯一の人です。",
+"pos": 6,
+"t1": "0517ba3f-cef3-46b1-82a7-f6abedd04d38",
+"t2": "a1873d84-f9c8-45b3-82f6-84d7b1d2829f",
+"target": "我是唯一不同意的人。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L02U04",
+"ka": "3edbef2b-7110-4dfb-8d6d-7c66fe932cd3",
+"known": "彼女は準備ができている唯一の人です。",
+"pos": 7,
+"t1": "5970a24c-b46a-45bb-9c1a-24915411bbba",
+"t2": "5a94edcd-f62d-405c-99f7-a8f11a81990f",
+"target": "她是唯一准备好的人。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L02U05",
+"ka": "b280394b-9f39-41aa-a2d5-619f53f169c7",
+"known": "彼は真相を知る唯一の人です。",
+"pos": 8,
+"t1": "27f6cbde-d198-4648-b05a-c46503e6a62e",
+"t2": "cf4f4597-5b9c-4a2e-908c-fa398bae89b7",
+"target": "他是唯一知道真相的人。",
+"type": "use"
+}
+],
+"target": "唯一",
+"type": "A"
+},
+{
+"id": "S0094L03",
+"idx": 3,
+"is_new": true,
+"known": "方法",
+"phrases": [
+{
+"id": "01592af0-679c-491a-92fd-97fadc641051",
+"ka": "1f30fdd6-eec4-41f0-9131-72bcbd8b7e64",
+"known": "方法",
+"pos": 0,
+"t1": "91f4c727-2345-4dca-bcc8-eeba978d611b",
+"t2": "02cc5cd9-3bd5-4c2b-984a-6c1306fc9a4f",
+"target": "方法",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_jpn:S0094L03B01",
+"ka": "1f30fdd6-eec4-41f0-9131-72bcbd8b7e64",
+"known": "方法。",
+"pos": 1,
+"t1": "91f4c727-2345-4dca-bcc8-eeba978d611b",
+"t2": "02cc5cd9-3bd5-4c2b-984a-6c1306fc9a4f",
+"target": "方法。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L03B02",
+"ka": "3b8b57f2-9e8b-472b-ae71-8c39e1137d1b",
+"known": "唯一の方法。",
+"pos": 2,
+"t1": "0f8ccdb5-afb5-4a37-8070-850aa552e24d",
+"t2": "d8471b79-ba0d-478d-9ab0-266551313e54",
+"target": "唯一的方法。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L03B03",
+"ka": "7a24a70c-d539-423e-92f5-67811d9a0f8f",
+"known": "この方法は難しいです。",
+"pos": 3,
+"t1": "31f7be3c-04c7-416c-89ea-7263f4995a63",
+"t2": "d3ce64e8-0add-4873-a1b6-3009d3555c22",
+"target": "这个方法很难。",
+"type": "build"
+},
+{
+"id": "zho_for_jpn:S0094L03U01",
+"ka": "5cec9aa8-964f-4856-805a-07d818e048ac",
+"known": "彼は方法を見つけました。",
+"pos": 4,
+"t1": "82e8dfb1-f200-445a-80c4-95d1c0408440",
+"t2": "0d22ac26-d0fa-4f76-9f16-b98c14d0ccbf",
+"target": "他找到了方法。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L03U02",
+"ka": "65b481c6-adf0-419e-9087-fa1df85bce10",
+"known": "もっと良い方法はありますか？",
+"pos": 5,
+"t1": "abc29d01-f04a-4b88-9043-36f1d2894ea7",
+"t2": "f65ff394-8d84-40e4-a2b7-1772d0431b9f",
+"target": "你有更好的方法吗？",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L03U03",
+"ka": "d9217118-de1c-4efe-8a4a-6c7bd80b49b1",
+"known": "これは唯一役に立つ方法です。",
+"pos": 6,
+"t1": "07eab908-6a18-4d08-bf39-f3fba5b4287a",
+"t2": "52ca834b-e662-4144-902e-8f060b62d6ff",
+"target": "这是唯一有用的方法。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L03U04",
+"ka": "520e1967-7255-4b11-a89b-9f67f6351afc",
+"known": "彼女はもっと良い方法を見つけました。",
+"pos": 7,
+"t1": "60daccdc-c7d1-40a6-8e7c-3b61a819d81c",
+"t2": "768887b5-c49b-441c-89ed-412ecc474f03",
+"target": "她找到了更好的方法。",
+"type": "use"
+},
+{
+"id": "zho_for_jpn:S0094L03U05",
+"ka": "692a6fa4-fd1a-4bc9-a4da-338e0f1284ac",
+"known": "この方法は不可能だと思います。",
+"pos": 8,
+"t1": "88990cf9-31bf-4ae6-b106-b4f4799acddc",
+"t2": "10de45d3-1698-4d5e-b926-441874ee4870",
+"target": "我觉得这个方法不可能。",
+"type": "use"
+}
+],
+"target": "方法",
+"type": "A"
+}
+],
+"status": "released",
+"target": "这是唯一有用的方法。"
+}
+}

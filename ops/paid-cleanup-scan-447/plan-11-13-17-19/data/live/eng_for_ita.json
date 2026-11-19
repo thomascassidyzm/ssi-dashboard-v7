@@ -1,0 +1,1600 @@
+{
+"20": {
+"at": "2026-11-19T11:46:04Z",
+"known": "Vuoi imparare il suo nome in fretta.",
+"legos": [
+{
+"id": "S0020L01",
+"idx": 1,
+"is_new": true,
+"known": "vuoi",
+"phrases": [
+{
+"id": "4417f81f-6a23-425d-a711-99bdea19916d",
+"ka": "2db2a2de-9002-4a8a-8b2c-3f741d61351c",
+"known": "vuoi",
+"pos": 0,
+"t1": "efe82b39-fc18-4fd5-a514-f39b4e6e15bb",
+"t2": "42c0ea3a-0e68-4a33-8aa9-e146aaf2e508",
+"target": "you want",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0020L01B01",
+"ka": "0983c79e-dcf9-4527-a385-d252cc2857a6",
+"known": "vuoi imparare",
+"pos": 1,
+"t1": "a107cb35-ddd4-40c1-ba6c-f767056da827",
+"t2": "300a4216-db04-47e0-bc04-4eded6dc9f4e",
+"target": "you want to learn",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L01B02",
+"ka": "39e2ed75-b3cb-49a2-a343-cd33af4127ff",
+"known": "vuoi parlare",
+"pos": 2,
+"t1": "d7149712-c56e-4bf6-97a9-53c7a69ddd3d",
+"t2": "b207a1af-50b7-41cc-ba54-35a856ed2d0a",
+"target": "you want to speak",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L01B03",
+"ka": "c0e122e5-4486-4826-bcde-a1aa11add943",
+"known": "vuoi tornare",
+"pos": 3,
+"t1": "0546a19e-2ee3-4ab8-be7b-e14932a21f70",
+"t2": "5605769c-b705-48da-9996-eaed66b22888",
+"target": "you want to come back",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L01U01",
+"ka": "04353b02-8a68-4109-a411-e4a52be53109",
+"known": "vuoi parlare inglese molto bene",
+"pos": 4,
+"t1": "45449d9e-4421-44d2-a2a6-66f7f96febc9",
+"t2": "77882128-df7a-471b-84bf-df6aa04e20fd",
+"target": "you want to speak English very well",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L01U02",
+"ka": "b669e177-501a-4e42-9fbb-18c7f92639de",
+"known": "vuoi imparare inglese tutto il giorno",
+"pos": 5,
+"t1": "ae80706c-c1cf-4eb6-8a9e-5ed777d2eeb0",
+"t2": "10ecc1f4-304e-4769-814c-6a2b20cd49fd",
+"target": "you want to learn English all day",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L01U03",
+"ka": "2dec7190-b871-4d64-a6ff-9b99b66ff48a",
+"known": "vuoi tornare con tutti gli altri più tardi",
+"pos": 6,
+"t1": "e0929438-9803-449f-be94-1bee4f0f09be",
+"t2": "98009396-ed65-43aa-a672-010fe3487963",
+"target": "you want to come back with everyone else later on",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L01U04",
+"ka": "503720cb-2654-4c83-81fe-28e91bbd268d",
+"known": "vuoi scoprire qual è la risposta",
+"pos": 7,
+"t1": "687c240c-1ca7-4300-93c0-31fb528bef06",
+"t2": "7ea7b318-6982-472d-80d9-b7d137e4f5ad",
+"target": "you want to find out what the answer is",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L01U05",
+"ka": "cb389d3e-c61d-41f2-93b1-f520628366d8",
+"known": "vuoi incontrarci di questa sera",
+"pos": 8,
+"t1": "5f85377c-d451-43bf-8ddc-593d9353a4a7",
+"t2": "b80c8400-6273-4eb6-aaa4-7dd287c6c51b",
+"target": "you want to meet this evening",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L01U06",
+"ka": "a35706b7-d2a3-44ad-8b95-965d711ae61a",
+"known": "vuoi smettere di parlare adesso",
+"pos": 9,
+"t1": "be4d47c6-4cfd-4139-92d9-0de4f1d4b87f",
+"t2": "083068d1-2d29-49f1-8731-66a6ed84609d",
+"target": "you want to stop talking now",
+"type": "use"
+}
+],
+"target": "you want",
+"type": "A"
+},
+{
+"id": "S0020L02",
+"idx": 2,
+"is_new": true,
+"known": "il suo nome",
+"phrases": [
+{
+"id": "749dbc2c-0381-423f-92f7-370449f905e2",
+"ka": "947b5de3-c744-4449-83c8-73cbae39983d",
+"known": "il suo nome",
+"pos": 0,
+"t1": "8db2aac4-ecd6-40ca-98de-05589c9cd0fe",
+"t2": "c5d03736-9363-4f92-8f9b-3bd1ee60031f",
+"target": "his name",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0020L02C01",
+"ka": "1cc63da8-4296-4a31-829c-671cd91f8cd3",
+"known": "il suo",
+"pos": 1,
+"t1": "286e41ad-90d7-4827-9571-3f6caf51d649",
+"t2": "65830c96-8457-4187-bf73-4b372581045a",
+"target": "his",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0020L02C02",
+"ka": "b4d9b67b-f1fd-4673-95ee-5cc0b82896fe",
+"known": "nome",
+"pos": 2,
+"t1": "cc587716-046a-4333-b332-50ff36c50c51",
+"t2": "d24e3097-4a96-42d0-8d21-35354b4e8b0d",
+"target": "name",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0020L02B01",
+"ka": "947b5de3-c744-4449-83c8-73cbae39983d",
+"known": "il suo nome",
+"pos": 3,
+"t1": "8db2aac4-ecd6-40ca-98de-05589c9cd0fe",
+"t2": "c5d03736-9363-4f92-8f9b-3bd1ee60031f",
+"target": "his name",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L02B02",
+"ka": "f4ad22f2-2830-4c3f-811d-0a2fe2f9da11",
+"known": "imparare il suo nome",
+"pos": 4,
+"t1": "bbfd73b6-7303-4017-b753-b147a95dbda3",
+"t2": "decb1ff5-95ad-435f-be51-8bf9e62866de",
+"target": "to learn his name",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L02B03",
+"ka": "01b22149-1f86-4abb-be85-35aa7fe86139",
+"known": "vuoi imparare il suo nome",
+"pos": 5,
+"t1": "174378f9-a25b-47cd-a77a-d01829652930",
+"t2": "35f5c9a8-c72d-494e-baa5-afe0f6dffa75",
+"target": "you want to learn his name",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L02B04",
+"ka": "523c6bab-f9ff-426a-ae68-fea6a2352cd4",
+"known": "voglio ricordare il suo nome",
+"pos": 6,
+"t1": "12974744-47f7-499c-bb9b-0bd0e6196119",
+"t2": "7f139cf4-20b8-4b83-81d8-618c57f19fa0",
+"target": "I want to remember his name",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L02U01",
+"ka": "500a2f00-5a38-4354-87cd-51efedb71919",
+"known": "mi piacerebbe scoprire il suo nome",
+"pos": 7,
+"t1": "42762cda-b521-46f7-8c15-1bd4492e99b3",
+"t2": "a72483db-48d7-4652-b7c6-3ec80b190588",
+"target": "I'd like to find out his name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L02U02",
+"ka": "fd900d25-166e-4a25-9aeb-1052b9bca328",
+"known": "non sono sicura se riesco a ricordare il suo nome",
+"pos": 8,
+"t1": "13c249f2-2c96-434f-b7e4-5d3f1db55092",
+"t2": "a165d2ec-06e5-41d5-bbbb-a9f46ed3ab48",
+"target": "I'm not sure if I can remember his name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L02U03",
+"ka": "db6b20c4-b961-4ab6-b5bb-ed6b5c039a29",
+"known": "lui vuole imparare il suo nome",
+"pos": 9,
+"t1": "90b48ef8-8a34-4554-830c-5a7022ab1182",
+"t2": "83c30d5d-2685-485e-80ea-814745899372",
+"target": "he wants to learn his name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L02U04",
+"ka": "4a23fcb3-2271-4bf4-8081-253c6363c8f7",
+"known": "lei vuole scoprire il suo nome",
+"pos": 10,
+"t1": "29baca17-988f-4dae-8f55-a40021c3e20d",
+"t2": "c6a7848d-70db-4c2e-b1ef-a72e935190e0",
+"target": "she wants to find out his name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L02U05",
+"ka": "5be88f66-fffd-4886-b5bc-54adf2ebe29d",
+"known": "voglio spiegare il suo nome in inglese",
+"pos": 11,
+"t1": "2657b659-e7a3-4c71-9c58-a3a988a74c18",
+"t2": "39ecbcee-7638-4f7f-b695-f98409619a6a",
+"target": "I want to explain his name in English",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L02U06",
+"ka": "adabe89a-a531-4171-89e2-c451f32bd4e9",
+"known": "vuoi ricordare il suo nome",
+"pos": 12,
+"t1": "dc978eb0-6659-4691-90f3-8ac4c2a7aa74",
+"t2": "932fbf66-ceb6-42c2-ae56-27a9aa6f1a8b",
+"target": "you want to remember his name",
+"type": "use"
+}
+],
+"target": "his name",
+"type": "M"
+},
+{
+"id": "S0020L03",
+"idx": 3,
+"is_new": true,
+"known": "in fretta",
+"phrases": [
+{
+"id": "31ad91f9-297b-420a-83a9-d4423644a1ac",
+"ka": "13ab0a7e-e825-4235-88ab-0cf1c81fc12a",
+"known": "in fretta",
+"pos": 0,
+"t1": "3e105f83-aec9-4e17-bcdb-834e2fcd1ff8",
+"t2": "342eb66b-d664-4a28-8d97-582c53f1210f",
+"target": "quickly",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0020L03C01",
+"ka": "06535849-9629-482b-80ed-da9fae1b5e3d",
+"known": "in",
+"pos": 1,
+"t1": "2bf2f6ca-e571-4784-b279-768d776296f7",
+"t2": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+"target": "in",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0020L03B01",
+"ka": "13ab0a7e-e825-4235-88ab-0cf1c81fc12a",
+"known": "in fretta",
+"pos": 2,
+"t1": "3e105f83-aec9-4e17-bcdb-834e2fcd1ff8",
+"t2": "342eb66b-d664-4a28-8d97-582c53f1210f",
+"target": "quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L03B02",
+"ka": "47ebaa56-2dbc-4ef7-b364-f6f15ecf61ba",
+"known": "imparare in fretta",
+"pos": 3,
+"t1": "703caff4-5218-49b4-867d-40e56b7da3b3",
+"t2": "b1ffc73e-5d5c-4d76-8566-d3b3459db824",
+"target": "to learn quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L03B03",
+"ka": "f745f44b-cbc3-464c-90bf-45d2e64d1973",
+"known": "vuoi imparare in fretta",
+"pos": 4,
+"t1": "7c9e61eb-cbdf-4965-8b3f-4b42b6cbfa32",
+"t2": "87ae68f2-bcfd-4095-9552-93b7859d22d9",
+"target": "you want to learn quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L03B04",
+"ka": "f036e15d-e330-4434-9e0c-b372cfc6fc38",
+"known": "voglio parlare inglese in fretta",
+"pos": 5,
+"t1": "aef5f5df-745b-4bdb-96a1-13d755839573",
+"t2": "5689f9f0-64b8-4984-be73-da961ad45a0e",
+"target": "I want to speak English quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0020L03U01",
+"ka": "9cb00d7f-8d5c-4049-a56c-3db58a1ecfa6",
+"known": "voglio imparare inglese in fretta",
+"pos": 6,
+"t1": "b9ddf6c8-46cd-418a-b1c9-47624e683b67",
+"t2": "008ab799-4227-4de6-8cda-2db7cf0feb08",
+"target": "I want to learn English quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L03U02",
+"ka": "6aa52d1a-270f-4a7e-9562-653b45e6e82b",
+"known": "lei vuole tornare in fretta",
+"pos": 7,
+"t1": "33c9a252-dc91-461e-bedc-f3555e35b9ad",
+"t2": "af38de10-167e-42e6-9e0e-2667e7f436d3",
+"target": "she wants to come back quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L03U03",
+"ka": "17064869-9607-4b10-8308-f2c601e2f8ba",
+"known": "mi piacerebbe riuscire a parlare inglese in fretta",
+"pos": 8,
+"t1": "da1aa090-80f3-45e7-9a4d-b61287eca284",
+"t2": "33f1006c-c346-4f41-870a-7d2ac7a88a16",
+"target": "I'd like to be able to speak English quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L03U04",
+"ka": "c70ec689-67ff-4ddb-950b-2ebe57cad43f",
+"known": "lui vuole imparare in fretta",
+"pos": 9,
+"t1": "9e44f502-1898-4819-8f97-94b85cc2b599",
+"t2": "58c45bea-78cd-4d5f-b35f-7111f96b7cf7",
+"target": "he wants to learn quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L03U05",
+"ka": "bd09e46d-67d0-4f96-a2fe-f93163aee683",
+"known": "voglio scoprire il suo nome in fretta",
+"pos": 10,
+"t1": "de2816a6-1b17-47d3-825b-4edeeeb718e9",
+"t2": "9b5ab879-cfea-4d2f-88e0-7e4776058508",
+"target": "I want to find out his name quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0020L03U06",
+"ka": "8d7e29ea-e639-4d10-be64-4eb31d9288dd",
+"known": "vuoi imparare il suo nome in fretta",
+"pos": 11,
+"t1": "f8ddda90-0e09-449a-a9e8-b853999b0d9f",
+"t2": "27e64e41-2a73-42dd-89dd-e8391a8cc6f7",
+"target": "you want to learn his name quickly",
+"type": "use"
+}
+],
+"target": "quickly",
+"type": "M"
+}
+],
+"status": "released",
+"target": "You want to learn his name quickly."
+},
+"209": {
+"at": "2026-11-19T11:46:11Z",
+"known": "Vogliono passare più tempo incontrandosi in gruppo.",
+"legos": [
+{
+"id": "S0209L01",
+"idx": 1,
+"is_new": true,
+"known": "passare",
+"phrases": [
+{
+"id": "1e02e9d4-ad98-40ef-ad19-542bbfd32fb9",
+"ka": "b0c8e1b0-7f45-49cd-a46b-c63b0bca4206",
+"known": "passare",
+"pos": 0,
+"t1": "02b69c52-9eb6-4715-a040-9436762cf812",
+"t2": "1957899c-c5bd-4aaf-b580-2f1e8ed023ba",
+"target": "spend",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0209L01B01",
+"ka": "fb4ac6cf-4910-41f2-9c62-4ecc4b841d8b",
+"known": "nessuno voleva passare più tempo su quello",
+"pos": 1,
+"t1": "c0a6f2c9-c216-4981-a5d0-e57bd1886878",
+"t2": "75412520-e5d9-410b-9be3-17fea1423d69",
+"target": "nobody wanted to spend more time on it",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L01B02",
+"ka": "59f79550-6aea-4a36-bd52-b45584c0246f",
+"known": "non volevo passare più tempo su quello",
+"pos": 2,
+"t1": "6f52ced9-0a08-4c70-b42e-1ebd820c4eb5",
+"t2": "45370787-5a1c-45d2-8d21-78fef1683984",
+"target": "I didn't want to spend more time on that",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L01B03",
+"ka": "d5e02b9e-24c1-43a6-bf9a-e32090866aaf",
+"known": "avevo bisogno di passare più tempo sulla domanda",
+"pos": 3,
+"t1": "9ecad8b0-64fc-41d1-b4ec-a3715c6c45e2",
+"t2": "0e0dd774-1822-4fda-9068-50d07d35212c",
+"target": "I needed to spend more time on the question",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L01U01",
+"ka": "992430ef-a1f0-4793-98ae-de55a082fa80",
+"known": "lei voleva passare più tempo a parlare con me",
+"pos": 4,
+"t1": "a0748d28-68f4-46f4-9c86-b42656819fc1",
+"t2": "59b02389-6e06-443c-91f2-10810b55155c",
+"target": "she wanted to spend more time speaking with me",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L01U02",
+"ka": "1f3f958f-5794-4689-9419-49d5483dcbea",
+"known": "lui voleva passare più tempo a parlare con lei",
+"pos": 5,
+"t1": "f4c6795c-a87c-45bb-97f4-6164f5b484a3",
+"t2": "9bc255ca-e287-46cb-9668-521be3e3a265",
+"target": "he wanted to spend more time speaking with her",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L01U03",
+"ka": "933ac86f-481e-4417-b7c5-ea2f867783ce",
+"known": "avevamo bisogno di passare più tempo su quello che hai fatto",
+"pos": 6,
+"t1": "2a912149-03bb-4096-ae01-06517dbf7ea2",
+"t2": "dfeb3a8a-0365-448a-9992-7ce92698d716",
+"target": "we needed to spend more time on what you've done",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L01U04",
+"ka": "d38803f4-bd96-47c5-8064-8cdfe4ce4feb",
+"known": "mi ha chiesto se volevo passare più tempo al lavoro",
+"pos": 7,
+"t1": "507bebfc-6582-4ac8-acd3-872b257dab61",
+"t2": "7ca16a04-b4da-4aef-a48e-ea5d38542aa6",
+"target": "she asked me if I wanted to spend more time at work",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L01U05",
+"ka": "a187c582-50dc-4797-a1bd-4107946a5f9d",
+"known": "volevano passare più tempo a parlare con tutti",
+"pos": 8,
+"t1": "cd713e54-680c-4dca-af91-8c46dda0fe83",
+"t2": "ce868493-0df8-41da-a5ba-97c3aaf4bdf0",
+"target": "they wanted to spend more time speaking with everyone",
+"type": "use"
+}
+],
+"target": "spend",
+"type": "A"
+},
+{
+"id": "S0209L02",
+"idx": 2,
+"is_new": true,
+"known": "incontrare",
+"phrases": [
+{
+"id": "7cbc347c-6323-4f6b-bcba-d97e0bdaa4e6",
+"ka": "b085b50e-0235-427d-b5bd-1758dca14cea",
+"known": "incontrare",
+"pos": 0,
+"t1": "5b0a29ee-fd44-4aed-8a9c-5ed2f35c73f4",
+"t2": "9d99d259-ef8f-460a-9ef4-b07fd4c8bde4",
+"target": "meeting",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0209L02B01",
+"ka": "962df0d6-7083-4f43-967a-ea679ac64f77",
+"known": "mi piace incontrare le persone",
+"pos": 1,
+"t1": "50d219a7-8cef-4a0a-b5d3-aec544f560f1",
+"t2": "bae295c3-d811-481f-8cc7-62b885e63387",
+"target": "I enjoy meeting people",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L02B03",
+"ka": "58433bc9-d70c-437d-bf02-76f59922ed27",
+"known": "vogliono passare più tempo a incontrarsi",
+"pos": 3,
+"t1": "9b12b894-e9ac-4ca3-bf29-8c0c45442605",
+"t2": "7b849b2e-0713-4e51-859b-7438e04bbfde",
+"target": "they want to spend more time meeting",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L02U02",
+"ka": "ec9cf639-fb2a-452b-b3aa-0c7a99ac6431",
+"known": "mi piace incontrare le persone e parlare con loro",
+"pos": 5,
+"t1": "38838ee0-2bc2-4ce5-9f12-62766b880c5e",
+"t2": "4cd5060b-7ced-4636-9236-b2e578ab6ae6",
+"target": "I enjoy meeting people and speaking with them",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L02U03",
+"ka": "f9ec6249-1da7-47e6-920c-4e230812b6ef",
+"known": "voleva passare più tempo a incontrare lei",
+"pos": 6,
+"t1": "b434f04a-230e-422d-9fcc-b01360642c7d",
+"t2": "0efa35e5-0155-4b5d-8909-7104653326a7",
+"target": "he wanted to spend more time meeting with her",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L02U04",
+"ka": "68bd3e49-1e75-46f4-a685-cc076b2ece43",
+"known": "mi sto divertendo a incontrare persone che mi vogliono aiutare",
+"pos": 7,
+"t1": "77886b69-d61b-48bb-b4a6-fa916c1d9e19",
+"t2": "34e74d0e-e6d5-45f3-bea2-5899be3920a7",
+"target": "I'm enjoying meeting people that want to help me",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L02U05",
+"ka": "34bd7dc4-0e46-4208-a2bc-c8da5f6a6750",
+"known": "mi piace incontrare tutti per parlare dei preparativi",
+"pos": 8,
+"t1": "36cea4d5-f284-488d-b3cd-9c960b049777",
+"t2": "bacb96e5-6884-4dcb-8147-cfc5263775fb",
+"target": "I enjoy meeting everyone to talk about the arrangements",
+"type": "use"
+}
+],
+"target": "meeting",
+"type": "A"
+},
+{
+"id": "S0209L03",
+"idx": 3,
+"is_new": true,
+"known": "in gruppo",
+"phrases": [
+{
+"id": "2181d7f7-3875-49bf-b1a7-f806458799d3",
+"ka": "5c653071-4a12-4e11-8066-ca0688a9ad27",
+"known": "in gruppo",
+"pos": 0,
+"t1": "f9804bec-df74-4e29-b936-be94a607d855",
+"t2": "42840439-3a30-4a3c-9db9-9fe9518a9ab1",
+"target": "as a group",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0209L03C01",
+"ka": "06535849-9629-482b-80ed-da9fae1b5e3d",
+"known": "in",
+"pos": 1,
+"t1": "aa4790c4-4e55-4cf6-b9de-7113b8a9854b",
+"t2": "4fa02f2d-b98b-4962-8085-c4c0db7f820b",
+"target": "as",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0209L03C02",
+"ka": "a3bb1dbc-43d1-4dca-b80d-f13508bdda9f",
+"known": "gruppo",
+"pos": 2,
+"t1": "8f8ce0d6-9d20-4188-bb50-2dace37fd19c",
+"t2": "72224711-9ab1-4e3e-93ba-fcc9197fc59f",
+"target": "group",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0209L03B01",
+"ka": "5c653071-4a12-4e11-8066-ca0688a9ad27",
+"known": "in gruppo",
+"pos": 3,
+"t1": "f9804bec-df74-4e29-b936-be94a607d855",
+"t2": "42840439-3a30-4a3c-9db9-9fe9518a9ab1",
+"target": "as a group",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L03B02",
+"ka": "1413c266-72d7-4285-ab64-aadfd1fd43f7",
+"known": "nessuno voleva lavorare in gruppo",
+"pos": 4,
+"t1": "6d0ba75f-903a-4e26-9ce8-37d711add46f",
+"t2": "e9267bd6-d8a8-4fd5-aada-01e1a74b6462",
+"target": "nobody wanted to work as a group",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L03B03",
+"ka": "b62da589-4000-4b4e-96f2-4fff074d7964",
+"known": "mi piace l'opportunità di lavorare in gruppo",
+"pos": 5,
+"t1": "e4f269bc-3758-47c4-a855-10d758e88f1d",
+"t2": "0a3ea2a5-65f6-4a18-814c-87993665c7bd",
+"target": "I enjoy the chance to work as a group",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0209L03U01",
+"ka": "2ba0b3ba-faef-4fd3-83b4-de20cf1e0dce",
+"known": "volevamo affrontare la domanda in gruppo",
+"pos": 7,
+"t1": "17be7fb4-011c-4949-9b57-d00dc1f448d9",
+"t2": "677e4c18-82ca-4264-9868-972767bdb9f0",
+"target": "we wanted to deal with the question as a group",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L03U02",
+"ka": "5eaeeaf6-0e0f-4547-9725-f72d21d0bf10",
+"known": "volevo passare più tempo a incontrarci in gruppo",
+"pos": 8,
+"t1": "8ee410a9-6224-4378-a89b-529ee98fd441",
+"t2": "fd89e68f-c988-459f-bf1d-c1ffc7d44f70",
+"target": "I wanted to spend more time meeting as a group",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L03U03",
+"ka": "9e6c6ddc-647e-4d03-8de0-a1d4c1075d30",
+"known": "vogliono passare più tempo a incontrarsi in gruppo",
+"pos": 9,
+"t1": "4b519d41-7f03-41ac-b000-00afc116b1fe",
+"t2": "55476cc7-29a4-4c8e-8374-dae862669855",
+"target": "they want to spend more time meeting as a group",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L03U04",
+"ka": "04f19d9f-292b-4b3c-8ef9-f4ea51bd83bf",
+"known": "mi ha chiesto se volevamo lavorare in gruppo di nuovo",
+"pos": 10,
+"t1": "6fdd04b4-cd2c-4159-99d0-79fa648731b3",
+"t2": "1be212f1-5755-4f12-a185-f0e578b2e660",
+"target": "he asked me if we wanted to work as a group again",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0209L03U05",
+"ka": "160ac8e0-55a9-4965-b551-a8193a30b08a",
+"known": "avevamo bisogno di parlare dei preparativi in gruppo",
+"pos": 11,
+"t1": "8972fefc-14ce-4638-86f3-ab757378bbb4",
+"t2": "d51004a7-4907-43b1-a8c5-d12f55a24853",
+"target": "we needed to talk about the arrangements as a group",
+"type": "use"
+}
+],
+"target": "as a group",
+"type": "M"
+}
+],
+"status": "released",
+"target": "They want to spend more time meeting as a group."
+},
+"21": {
+"at": "2026-11-19T11:46:07Z",
+"known": "Perché stai imparando il suo nome?",
+"legos": [
+{
+"id": "S0021L01",
+"idx": 1,
+"is_new": true,
+"known": "perché",
+"phrases": [
+{
+"id": "393ec198-9ae1-43a9-b2fe-6793fa800a5e",
+"ka": "7ae98f4d-9e88-47dd-af2f-7500c96b50e3",
+"known": "perché",
+"pos": 0,
+"t1": "30fb9db1-134a-4859-9eb0-ef00afafda10",
+"t2": "9ff1ea37-64ce-4784-87ee-814e5b7724e9",
+"target": "why",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0021L01B01",
+"ka": "3f30c2d7-a2a4-4252-b7da-66f1c190608c",
+"known": "perché vuoi imparare?",
+"pos": 1,
+"t1": "119acf86-a6b2-4a98-9b48-680a18c58941",
+"t2": "bb1e6579-32f7-4b9e-aaed-a309b511e79c",
+"target": "why do you want to learn?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L01B02",
+"ka": "5bb60286-9391-423d-b9ab-6a82a5876ebe",
+"known": "perché vogliamo incontrarci?",
+"pos": 2,
+"t1": "949f2a49-ed9a-47ca-a743-cbad5ed7b39d",
+"t2": "44bdb72c-323d-4f4b-93f8-4b046ad8efb9",
+"target": "why do we want to meet?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L01B03",
+"ka": "11eb1c17-ce58-4c86-ac7d-6997a725672a",
+"known": "perché non voglio tornare?",
+"pos": 3,
+"t1": "8897f1f2-4310-4683-b18a-08535e161d22",
+"t2": "8e70e1fd-df77-428e-ba80-a51a2c953690",
+"target": "why don't I want to come back?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L01U01",
+"ka": "8a0131c7-04e0-4166-8d6e-c99421186434",
+"known": "perché vuoi parlare inglese tutto il giorno?",
+"pos": 4,
+"t1": "86937d15-b6b4-464e-ac08-6065e2237592",
+"t2": "bb435e20-0cf4-493c-8e90-5bfd37f67805",
+"target": "why do you want to speak English all day?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L01U02",
+"ka": "c6a143fd-6943-45d8-9e98-db15d87e0b87",
+"known": "perché vogliamo incontrarci alle sei?",
+"pos": 5,
+"t1": "22ada23c-ba19-4888-927f-c13f68b56c6b",
+"t2": "ac94a419-23d3-46b4-9bb6-8b73ab994417",
+"target": "why do we want to meet at six o'clock?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L01U03",
+"ka": "6554d82a-cbdb-4cc3-b502-5bcd11084c2e",
+"known": "perché vuoi imparare in fretta?",
+"pos": 6,
+"t1": "ca2307b0-b3c7-4b3d-9e69-b1e5eb3f347e",
+"t2": "5bfbdeac-29fd-4e87-8c18-64ddd2c311ea",
+"target": "why do you want to learn quickly?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L01U04",
+"ka": "2d182760-e8e0-46e2-bdf1-bd819818070c",
+"known": "perché non voglio smettere di parlare?",
+"pos": 7,
+"t1": "e18e8c43-9c85-4883-b65e-0e6e96256be4",
+"t2": "92926cfb-cfae-440a-8a1c-66e0ba9f39cb",
+"target": "why don't I want to stop talking?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L01U05",
+"ka": "756b484b-38ef-4043-9f28-07555aeb1fbb",
+"known": "perché vuoi scoprire qual è la risposta?",
+"pos": 8,
+"t1": "6e19fe78-8c35-415e-81f2-45c14aec3281",
+"t2": "1b31fe2d-2175-48a0-b8ca-f0c2759245cc",
+"target": "why do you want to find out what the answer is?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L01U06",
+"ka": "ba2b660f-cc18-40fa-a5c9-4827e39538fb",
+"known": "perché vogliamo tornare di questa sera?",
+"pos": 9,
+"t1": "39e30614-c4af-427d-9c2b-808e03039bea",
+"t2": "4ad8aaaa-dad5-425c-be14-861857fd68bd",
+"target": "why do we want to come back this evening?",
+"type": "use"
+}
+],
+"target": "why",
+"type": "A"
+},
+{
+"id": "S0021L02",
+"idx": 2,
+"is_new": true,
+"known": "stai imparando",
+"phrases": [
+{
+"id": "74ec32e5-4c4c-4803-b757-458669473a70",
+"ka": "7887a333-3fac-4db9-becf-1dced1dda1bd",
+"known": "stai imparando",
+"pos": 0,
+"t1": "31d3e48e-c940-4ddc-aa8d-11a9c2d86f7f",
+"t2": "cced00c9-f0a0-4880-9db8-e30014f871e7",
+"target": "are you learning",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0021L02C01",
+"ka": "019e142b-814f-49e3-b1e8-727af508447e",
+"known": "stai",
+"pos": 1,
+"t1": "e77f30a4-a8da-4ae2-a77a-c0c9b98a49d1",
+"t2": "cd88ccdc-d16e-4b16-8f51-6731977ee8e0",
+"target": "are you",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0021L02C02",
+"ka": "d490cd79-836a-4b9b-b560-eac705946639",
+"known": "imparando",
+"pos": 2,
+"t1": "bca99648-4dc7-4f76-a252-81ad4b1a5aa8",
+"t2": "ca8d2d28-d9b9-4be3-8ee4-082455f74bc0",
+"target": "learning",
+"type": "component"
+},
+{
+"id": "eng_for_ita:S0021L02B01",
+"ka": "2a2d666a-8a2e-4651-8826-972b839305c8",
+"known": "stai imparando?",
+"pos": 3,
+"t1": "31d3e48e-c940-4ddc-aa8d-11a9c2d86f7f",
+"t2": "b2afb444-83cc-41f0-b822-d9a371f1c06f",
+"target": "are you learning?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L02B02",
+"ka": "09d8d9a6-2147-4b6d-b692-05c0a57c984c",
+"known": "perché stai imparando?",
+"pos": 4,
+"t1": "7c0c3397-59fb-490a-85ad-aa6dc702d5d8",
+"t2": "6fda7125-be0b-4cfb-92d0-0bc77556c377",
+"target": "why are you learning?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L02B03",
+"ka": "977e2c6e-369e-43fe-885f-97c56e774edd",
+"known": "stai imparando inglese?",
+"pos": 5,
+"t1": "f0dc7d1d-d909-4212-9af9-1d5e3e775d49",
+"t2": "3065e99f-ded3-44d6-82a5-4a9658d2f938",
+"target": "are you learning English?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L02B04",
+"ka": "7c428235-de33-442c-af43-7d15efd2742c",
+"known": "stai imparando in fretta?",
+"pos": 6,
+"t1": "af0170a1-3627-4af1-bd3f-cce82a2e2a29",
+"t2": "41a3dca1-d21c-4f75-ac8e-ad8c45c48b4e",
+"target": "are you learning quickly?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L02U01",
+"ka": "87f76ccb-83d8-4fe1-a030-aba2cad5288c",
+"known": "perché stai imparando inglese?",
+"pos": 7,
+"t1": "0d6a8be6-c37b-46d1-9017-645aadf99727",
+"t2": "89c0620d-3276-4a03-9345-f95af1a8f9b4",
+"target": "why are you learning English?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L02U02",
+"ka": "b887fe80-6862-415b-8145-f6934d8411df",
+"known": "perché stai imparando in fretta?",
+"pos": 8,
+"t1": "22dfe81e-efd3-45d1-a18a-9990eeba5690",
+"t2": "0b2b57ce-fb1c-4c6f-bd13-611b55544549",
+"target": "why are you learning quickly?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L02U03",
+"ka": "c7beb660-4491-406b-afb9-e63e449f2816",
+"known": "stai imparando inglese tutto il giorno?",
+"pos": 9,
+"t1": "63c30985-55e7-45d7-98ac-f81f5020815b",
+"t2": "1cf23abe-1e53-445a-a5a0-6eea85d8f68b",
+"target": "are you learning English all day?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L02U04",
+"ka": "ff112ff0-918f-4b56-8801-ae51865b3329",
+"known": "perché stai imparando adesso?",
+"pos": 10,
+"t1": "b23ce4aa-3e7b-45b0-a3ca-8d2313e3e4a2",
+"t2": "66bcc3d5-6ef6-4b65-ac81-47c8a94bfef3",
+"target": "why are you learning now?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L02U05",
+"ka": "fe0513b5-ed93-45e5-b06a-5cda654c6446",
+"known": "stai imparando molto bene?",
+"pos": 11,
+"t1": "6c491f50-882b-4980-895e-b6e247852440",
+"t2": "1f599821-b089-4880-8f40-884955b0b98e",
+"target": "are you learning very well?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L02U06",
+"ka": "e98f6d07-d2ac-4720-a4d8-1327d38ff7d8",
+"known": "perché stai imparando inglese con me?",
+"pos": 12,
+"t1": "7d979bc1-e131-443d-84c5-e83b1f7470b3",
+"t2": "71f18901-e0ff-4612-a143-be283a723118",
+"target": "why are you learning English with me?",
+"type": "use"
+}
+],
+"target": "are you learning",
+"type": "M"
+},
+{
+"id": "S0021L03",
+"idx": 3,
+"is_new": true,
+"known": "suo",
+"phrases": [
+{
+"id": "740bc7c1-710e-455a-b06b-2e838506ca80",
+"ka": "195ce273-461c-4a2b-a91c-c2683d7108fa",
+"known": "suo",
+"pos": 0,
+"t1": "be96303c-b12a-484d-9b9c-199addd93412",
+"t2": "5ac8676b-49d8-4947-9cfb-d2fa2b3376a0",
+"target": "her",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0021L03B01",
+"ka": "947b5de3-c744-4449-83c8-73cbae39983d",
+"known": "il suo nome",
+"pos": 1,
+"t1": "ece74179-09da-4f04-a783-4d101fe16e74",
+"t2": "66542f04-1e97-45bb-8774-d629427c4316",
+"target": "her name",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L03B02",
+"ka": "f4ad22f2-2830-4c3f-811d-0a2fe2f9da11",
+"known": "imparare il suo nome",
+"pos": 2,
+"t1": "3b8183dd-55b9-496e-8eac-8c4009f03ae9",
+"t2": "4c47cd95-6a81-4f7c-882a-1e70fd97f5d7",
+"target": "to learn her name",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L03B03",
+"ka": "93796b26-4606-4d0b-8f5c-e283fea8f179",
+"known": "stai imparando il suo nome?",
+"pos": 3,
+"t1": "5c7692f8-a9bc-4a8a-a01f-42b8eec880a4",
+"t2": "64fb4bb2-8862-4a67-bfa4-5fd9c67a975c",
+"target": "are you learning her name?",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0021L03U01",
+"ka": "1a9c315d-e5bb-407d-9c25-1a895eeb6335",
+"known": "perché stai imparando il suo nome?",
+"pos": 4,
+"t1": "a0220343-066e-4d1e-9d0e-ce7e70c2c93f",
+"t2": "b9952e37-bd69-47d6-a129-f2bc666bb0d7",
+"target": "why are you learning her name?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L03U02",
+"ka": "523c6bab-f9ff-426a-ae68-fea6a2352cd4",
+"known": "voglio ricordare il suo nome",
+"pos": 5,
+"t1": "430aa8db-441a-435a-a924-c6826fe8ab2a",
+"t2": "787ec14c-8df7-4329-8013-c59045554302",
+"target": "I want to remember her name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L03U03",
+"ka": "500a2f00-5a38-4354-87cd-51efedb71919",
+"known": "mi piacerebbe scoprire il suo nome",
+"pos": 6,
+"t1": "02c9d801-6e91-4607-bd6f-c0c587af7022",
+"t2": "733887c5-c220-412a-908b-18b58572ed7a",
+"target": "I'd like to find out her name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L03U04",
+"ka": "33c3ff9b-536b-4410-96d3-3d3934fe0dd2",
+"known": "lui vuole imparare il suo nome in fretta",
+"pos": 7,
+"t1": "190dbc99-a785-4499-97a7-4d1482da4ab5",
+"t2": "26c9ebf2-c836-45fd-b516-14836559936c",
+"target": "he wants to learn her name quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L03U05",
+"ka": "adabe89a-a531-4171-89e2-c451f32bd4e9",
+"known": "vuoi ricordare il suo nome",
+"pos": 8,
+"t1": "28369495-68c5-413c-a895-2a40a7705876",
+"t2": "5d46463d-d294-4507-a49b-81c16aff3aad",
+"target": "you want to remember her name",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0021L03U06",
+"ka": "6d17622e-b565-4ba3-8f58-2c97199bbfb4",
+"known": "perché vuoi imparare il suo nome?",
+"pos": 9,
+"t1": "a1a7548b-f118-40c2-9421-68e9e9073ee9",
+"t2": "fddf150d-0429-4191-b2b4-32008c4af2bb",
+"target": "why do you want to learn her name?",
+"type": "use"
+}
+],
+"target": "her",
+"type": "A"
+}
+],
+"status": "released",
+"target": "Why are you learning her name?"
+},
+"240": {
+"at": "2026-11-19T11:46:14Z",
+"known": "A mio padre non piace smettere di parlare.",
+"legos": [
+{
+"id": "S0240L01",
+"idx": 1,
+"is_new": true,
+"known": "padre",
+"phrases": [
+{
+"id": "b93a67da-737c-48b1-8642-565b0c4da730",
+"ka": "79b9fb2e-d37a-4773-a317-f9e72ec4f08c",
+"known": "padre",
+"pos": 0,
+"t1": "22dc576e-e375-4d0e-949d-0c7f52b44d09",
+"t2": "594c7de7-bdb5-469e-acb1-b8646aac3b6f",
+"target": "father",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0240L01B01",
+"ka": "6af5f013-4da3-417e-9c39-dc4909b794c7",
+"known": "mio padre",
+"pos": 1,
+"t1": "b0033e49-2ece-46fe-8ffa-7f1091dca8de",
+"t2": "42bb9541-a39f-417a-9fdf-3f5595d5aefb",
+"target": "my father",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0240L01B02",
+"ka": "02d4c6c0-bbf3-4ce9-b61b-75dda6f9e38f",
+"known": "suo padre ha detto che poteva aiutare se glielo chiedevamo",
+"pos": 2,
+"t1": "e779b7bb-c152-4409-9264-e511c7387426",
+"t2": "820f5aa8-5e5c-4832-ae95-d1edbb69d0f0",
+"target": "her father said he could help if we asked him",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0240L01B03",
+"ka": "7fbe04ab-6c6d-43b5-8a42-b02ffd700851",
+"known": "mio padre voleva chiederti dei preparativi",
+"pos": 3,
+"t1": "321dfb84-41c2-418d-9186-83af35e09aa5",
+"t2": "cabd0b80-b992-4885-9f25-b8e4203983ba",
+"target": "my father wanted to ask you about the arrangements",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0240L01U01",
+"ka": "57e911d6-eefa-4e99-bd2d-6fe88137edcc",
+"known": "suo padre conosce tuo fratello e voleva dirtelo",
+"pos": 4,
+"t1": "65695cbd-bee6-4c57-8aac-20305e45751e",
+"t2": "a03f0bad-9ae5-4e99-900f-77afceab58cc",
+"target": "his father knows your brother and wanted to tell you",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L01U02",
+"ka": "66493f61-5fe9-4ab4-8346-60645168d95b",
+"known": "suo padre ci ha detto cosa avrebbe cercato di raggiungere",
+"pos": 5,
+"t1": "e52b7794-af73-48af-9a1b-14f158bd0ff8",
+"t2": "19f5bdd5-cc46-4d94-8b99-ba9e135cdab4",
+"target": "his father told us what he was going to try to achieve",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L01U03",
+"ka": "0b7e6754-4ac4-4659-98d2-574ad1c991c0",
+"known": "suo padre ha incontrato qualcuno che poteva aiutare con il problema",
+"pos": 6,
+"t1": "153c5bc2-57d3-4094-b277-4962920f2b0a",
+"t2": "6d836479-0e4d-49b3-a11a-bdb6ee25c3ff",
+"target": "her father met someone who could help with the problem",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L01U04",
+"ka": "a745e913-3d06-4315-ad4f-66384dc7f0ab",
+"known": "mio padre mi ha detto che ha appena iniziato a esercitarsi a parlare",
+"pos": 7,
+"t1": "5ab99697-f406-4a13-8c55-b1ad3e1ffaae",
+"t2": "039c01f1-c874-42e1-bccf-e15b042cdfca",
+"target": "my father told me he has just started to practise speaking",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L01U05",
+"ka": "eca044b7-3e19-4855-90a2-411abcd9a806",
+"known": "mio padre mi ha chiesto di darti una risposta prima del fine settimana",
+"pos": 8,
+"t1": "fb670167-6369-4cfb-ba8f-1c7044561150",
+"t2": "c57a6e39-6357-4728-b858-c1b111ca3cf4",
+"target": "my father asked me to give you an answer before the weekend",
+"type": "use"
+}
+],
+"target": "father",
+"type": "A"
+},
+{
+"id": "S0240L02",
+"idx": 2,
+"is_new": true,
+"known": "parlare",
+"phrases": [
+{
+"id": "a6084bdf-5755-4933-998c-45ffce8ebd25",
+"ka": "8a85be27-89cf-439d-92e0-6131e65eee73",
+"known": "parlare",
+"pos": 0,
+"t1": "cda03b0c-b2a5-47b1-9642-0d528cfa30d1",
+"t2": "90651522-fd02-48f4-b727-cfa4a3001f76",
+"target": "talking",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0240L02B01",
+"ka": "c5ffa821-678f-47f3-b0a5-456795df8f09",
+"known": "a mio padre non piace smettere di parlare",
+"pos": 1,
+"t1": "6c51e8bf-7ede-4299-a739-ca971ce7b3f8",
+"t2": "41e55883-de57-4628-b087-fbfd2735410f",
+"target": "my father doesn't like to stop talking",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0240L02B02",
+"ka": "ee1950e6-e59c-40f6-9efa-ed551636b445",
+"known": "le piace parlare quando incontra persone",
+"pos": 2,
+"t1": "50b79146-5af4-4f77-a9ac-e1232c1a671f",
+"t2": "3debdd1c-2c22-42f5-be3e-affdd216129a",
+"target": "she likes talking when she is meeting people",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0240L02B03",
+"ka": "c149149e-6623-4c78-a6ed-abec7f2462b6",
+"known": "non gli piace smettere di parlare del problema",
+"pos": 3,
+"t1": "079c2322-6b91-4de1-80f3-c840561b00bd",
+"t2": "b753915b-fbfc-4fc6-a80f-579515d07bec",
+"target": "he doesn't like to stop talking about the problem",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0240L02U01",
+"ka": "ff40ea3e-1830-4f46-a495-a047b658c98e",
+"known": "a mia madre piace parlare con tua sorella al fine settimana",
+"pos": 4,
+"t1": "7d3a304e-ec9f-4389-864b-8479b75b9ab1",
+"t2": "0d4034d7-8bc1-4eb8-b071-0e43e58cf5d0",
+"target": "my mother likes talking with your sister at the weekend",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L02U02",
+"ka": "787be6df-be7d-46ae-b9c1-31bca5dd694c",
+"known": "mi piace parlare con qualcuno che può darmi una buona risposta",
+"pos": 5,
+"t1": "d96ef687-895d-4a03-ba93-b12d7a334a8c",
+"t2": "ea85424a-d37d-4592-b85c-1b9e3f2933c9",
+"target": "I like talking with someone who can give me a good answer",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L02U03",
+"ka": "b3c9f44d-301c-4cd3-b5f9-919288b4abbd",
+"known": "stava parlando di qualcosa di nuovo che voleva dirti",
+"pos": 6,
+"t1": "c867153f-3730-4a82-b03e-534aad8dea76",
+"t2": "9ddfd151-cd66-4e51-bd20-a34da151d09c",
+"target": "he was talking about something new that he wanted to tell you",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L02U04",
+"ka": "bea8ecb6-10f7-410d-bf82-5780c4c8e18a",
+"known": "mi ha detto che le piace parlare di cosa sta cercando di raggiungere",
+"pos": 7,
+"t1": "9bf23f58-dca5-4985-803d-7e2f1797d1bf",
+"t2": "3a3d1092-cc11-42e6-b9f9-3eb1a53cc48d",
+"target": "she told me she likes talking about what she is trying to achieve",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0240L02U05",
+"ka": "7c478c7a-0ffe-48d5-ba7c-4315e9f30a2a",
+"known": "ho incontrato qualcuno che stava parlando del problema che dobbiamo discutere",
+"pos": 8,
+"t1": "58febf37-794b-4ca6-a5cd-5254cbbaa6bd",
+"t2": "d190bf57-83fa-4d16-998c-07fcb3ca7ec6",
+"target": "I met someone who was talking about the problem we need to discuss",
+"type": "use"
+}
+],
+"target": "talking",
+"type": "A"
+}
+],
+"status": "released",
+"target": "My father doesn't like to stop talking."
+},
+"283": {
+"at": "2026-11-19T11:46:31Z",
+"known": "Quali dei tuoi amici parlano inglese?",
+"legos": [
+{
+"id": "S0283L01",
+"idx": 1,
+"is_new": true,
+"known": "quali",
+"phrases": [
+{
+"id": "8582bf99-fd9c-4e5e-b1dd-1b6f1c47c650",
+"ka": "d1f5c26f-a8a6-44b2-8469-e196ea5e5791",
+"known": "quali",
+"pos": 0,
+"t1": "0f1bd756-0c84-46f4-9cf3-626d8fadabad",
+"t2": "3f88bd61-c82c-4309-9812-fccc5423b5ac",
+"target": "which",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0283L01B01",
+"ka": "d1f5c26f-a8a6-44b2-8469-e196ea5e5791",
+"known": "quali",
+"pos": 1,
+"t1": "0f1bd756-0c84-46f4-9cf3-626d8fadabad",
+"t2": "3f88bd61-c82c-4309-9812-fccc5423b5ac",
+"target": "which",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0283L01B02",
+"ka": "e5b00525-3ec2-4900-8033-ba9900c65719",
+"known": "quale lavoro",
+"pos": 2,
+"t1": "06696449-fb87-410f-aac3-b1f4531e8702",
+"t2": "e86ffe41-cc2a-4cb8-9728-e78cd41238d9",
+"target": "which job",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0283L01B03",
+"ka": "5f8590be-1f83-4a70-b0a9-15e0d2fb9d8e",
+"known": "quali dei tuoi amici",
+"pos": 3,
+"t1": "9e602844-4eaf-4810-8f46-f99cc06a18d2",
+"t2": "31ce01bf-047e-43b7-b676-fbbb268d772d",
+"target": "which of your friends",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0283L01U01",
+"ka": "37408c4b-abb7-4c14-a12a-f1ca45f0ba9e",
+"known": "qual è il lavoro più importante?",
+"pos": 4,
+"t1": "f489bd4a-8f86-45aa-96f3-6e9d3c172d96",
+"t2": "c60c703b-25ee-4192-a2bd-671ba49aa3bd",
+"target": "which job is the most important?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L01U02",
+"ka": "36d6e0eb-8501-4089-8932-860c2a3f0e5d",
+"known": "quale di quelle persone conosci?",
+"pos": 5,
+"t1": "c705b616-e559-4b84-a22a-d9de0f7869dd",
+"t2": "8c8cdc53-910e-43f6-b6ac-ea9517b5cecb",
+"target": "which of those people do you know?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L01U03",
+"ka": "57bb1f8f-f87f-41a9-a56c-95aa8d5b37a7",
+"known": "da quale amico hai avuto notizie ieri?",
+"pos": 6,
+"t1": "af7c6bfd-c174-4ae4-9f03-12871ede1fec",
+"t2": "53773b61-1258-4257-99bb-5cf2cf2e4f8d",
+"target": "which friend did you hear from yesterday?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L01U04",
+"ka": "3961f444-71fc-4b13-84f0-0575a932fe2e",
+"known": "quale dei tuoi amici sarà là?",
+"pos": 7,
+"t1": "13c892bb-05c2-4e1c-badc-2f1a9b1202d3",
+"t2": "bf6c1d40-2352-4695-8df6-beaf6cc4def0",
+"target": "which of your friends is going to be there?",
+"type": "use"
+}
+],
+"target": "which",
+"type": "A"
+},
+{
+"id": "S0283L02",
+"idx": 2,
+"is_new": true,
+"known": "parlare",
+"phrases": [
+{
+"id": "ed1b34c7-2780-43e0-830f-117a6f9e18a2",
+"ka": "8a85be27-89cf-439d-92e0-6131e65eee73",
+"known": "parlare",
+"pos": 0,
+"t1": "529da3ea-3cc9-4065-af8b-0ae81ec7d542",
+"t2": "9693ba14-ac16-43af-8a71-ee8b60845c6c",
+"target": "speak",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0283L02B01",
+"ka": "a0e9a76d-8c83-41ca-b0d2-8e469309b6db",
+"known": "parlano",
+"pos": 1,
+"t1": "529da3ea-3cc9-4065-af8b-0ae81ec7d542",
+"t2": "9693ba14-ac16-43af-8a71-ee8b60845c6c",
+"target": "speak",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0283L02B02",
+"ka": "4c6106f2-ff93-40a3-9447-6a791ca0b901",
+"known": "parlano inglese",
+"pos": 2,
+"t1": "6f6c20a1-088a-4df5-bf01-ea1d4ed57565",
+"t2": "0639c551-9072-4a85-9956-7c8a364774e8",
+"target": "speak English",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0283L02B03",
+"ka": "421a361b-c229-4ef7-8e37-69709d6b7f45",
+"known": "amici parlano inglese",
+"pos": 3,
+"t1": "8d944b0d-18f8-4faf-8f48-f7b8a760e0f2",
+"t2": "f2459e7e-b9ed-4daa-8473-52f909f7ac0c",
+"target": "friends speak English",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0283L02U01",
+"ka": "cb329cc0-478a-4df1-ab62-277fa028f76b",
+"known": "quali dei tuoi amici parlano inglese?",
+"pos": 4,
+"t1": "04ad8391-1e10-4957-90e7-ddbbb355d4e6",
+"t2": "cf3fbb26-dbc7-42ab-861b-7c292f215072",
+"target": "which of your friends speak English?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L02U02",
+"ka": "c64cca5f-f78b-40f8-a48c-99e68230f6e5",
+"known": "parli inglese con i tuoi amici?",
+"pos": 5,
+"t1": "e07fd646-2050-4555-9c0a-3154ae4ad16e",
+"t2": "1fde12ca-3ee1-40b8-84f6-7dddd7ed44a9",
+"target": "do you speak English with your friends?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L02U03",
+"ka": "7aa11b63-14a6-4520-94a3-84135c900a09",
+"known": "la maggior parte delle persone che conosco non parla inglese",
+"pos": 6,
+"t1": "e3c9417c-7e11-40ea-bd06-fccda96ea93e",
+"t2": "aab52a28-90c6-49a7-a4b2-d1c10df4e1fc",
+"target": "most people I know don't speak English",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L02U04",
+"ka": "fbf360b1-0bdf-4acd-b500-7673460d0fee",
+"known": "quanti dei tuoi amici parlano inglese?",
+"pos": 7,
+"t1": "572af4fc-475b-496a-aef0-2a36a63d5c7e",
+"t2": "ac1875f4-1cb7-4883-ae1d-5bb58f271a48",
+"target": "how many of your friends speak English?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L02U05",
+"ka": "1b58a7d6-2e44-4286-aab7-8e3047249986",
+"known": "voleva trovare qualcuno che potesse parlare inglese",
+"pos": 8,
+"t1": "1b657417-0586-4069-bbf9-cf85db5ecdea",
+"t2": "3fb1f681-30ea-4bb1-89f1-27b45ed6391d",
+"target": "she wanted someone who could speak English",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0283L02U06",
+"ka": "50519b4f-7e76-423b-9962-1640849153ff",
+"known": "non conosco molte persone che parlano inglese qui",
+"pos": 9,
+"t1": "efdabf95-43e5-44fa-98db-f076c29d2e38",
+"t2": "8f63b220-b6d8-40d6-a0fa-062a5faac708",
+"target": "I don't know many people who speak English here",
+"type": "use"
+}
+],
+"target": "speak",
+"type": "A"
+}
+],
+"status": "released",
+"target": "Which of your friends speak English?"
+},
+"293": {
+"at": "2026-11-19T11:46:42Z",
+"known": "Devo scoprire dove mi incontrerà.",
+"legos": [
+{
+"id": "S0293L01",
+"idx": 1,
+"is_new": true,
+"known": "incontrare",
+"phrases": [
+{
+"id": "2d0e435e-f4aa-4c1b-afb4-4392fc58fdec",
+"ka": "b085b50e-0235-427d-b5bd-1758dca14cea",
+"known": "incontrare",
+"pos": 0,
+"t1": "6b970995-f405-41da-86fb-3496a66662e7",
+"t2": "88c158a6-e577-42b2-a063-3fdc4cfafa2f",
+"target": "meet",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ita:S0293L01B01",
+"ka": "b085b50e-0235-427d-b5bd-1758dca14cea",
+"known": "incontrare",
+"pos": 1,
+"t1": "6b970995-f405-41da-86fb-3496a66662e7",
+"t2": "88c158a6-e577-42b2-a063-3fdc4cfafa2f",
+"target": "meet",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0293L01B02",
+"ka": "08ce88ac-529d-4275-92ab-b477811345ce",
+"known": "andare a incontrare",
+"pos": 2,
+"t1": "c4d918eb-ba66-4063-a5a1-5a1ed85a0924",
+"t2": "7b257132-ffcf-4b1e-8cfe-a8e8cd0e810a",
+"target": "going to meet",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0293L01B03",
+"ka": "4e448dfb-d4c3-4784-bf1c-8391f5877a14",
+"known": "mi incontrerà",
+"pos": 3,
+"t1": "a107dd7a-5899-40c0-b46e-a1e9ba83027c",
+"t2": "4b3e8dc2-66e5-4425-9233-ce93024ebcd4",
+"target": "he is going to meet me",
+"type": "build"
+},
+{
+"id": "eng_for_ita:S0293L01U01",
+"ka": "282c0b54-ead9-452b-9403-3592ce6ee9aa",
+"known": "dove vorresti incontrarci?",
+"pos": 4,
+"t1": "9d844859-9803-4303-a8ab-5f2c1bd18d6a",
+"t2": "429a000f-f58a-41a2-88c2-bfe22cc3e3e9",
+"target": "where would you like to meet?",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0293L01U02",
+"ka": "4c936fd6-8823-4388-9291-5fcc6f84ba56",
+"known": "vuole incontrarci alla festa",
+"pos": 5,
+"t1": "6572cb50-23da-4ebb-a962-a33ce0564a1b",
+"t2": "4ad7412e-bf73-4ac0-baf2-fce10d3b2b00",
+"target": "she wants to meet us at the party",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0293L01U03",
+"ka": "51f6a8b6-7294-4676-8758-4fdaaa6ac282",
+"known": "mi chiedo dove ci incontrerà",
+"pos": 6,
+"t1": "0c3cb84a-847a-48fb-a19e-613b84d86ca6",
+"t2": "f0cd3732-f10a-43d5-aa4e-b30f801210f8",
+"target": "I wonder where he is going to meet us",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0293L01U04",
+"ka": "ed47633a-1910-4b68-9432-1f124e800e3a",
+"known": "devo scoprire dove mi incontrerà",
+"pos": 7,
+"t1": "9451cb9f-3264-4654-b22c-93d411635478",
+"t2": "14d41833-a2ef-4800-81bf-2f097334d874",
+"target": "I have to find out where he is going to meet me",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0293L01U05",
+"ka": "2666ad64-97e6-4abf-8130-36df658b4ca0",
+"known": "spero di poter incontrare l'amica di tua sorella",
+"pos": 8,
+"t1": "ec7a709a-8746-4096-ba54-e3f082e9e03b",
+"t2": "2b4a6fc2-5204-4948-bdae-aeabad87176d",
+"target": "I hope I'll be able to meet your sister's friend",
+"type": "use"
+},
+{
+"id": "eng_for_ita:S0293L01U06",
+"ka": "8d01bb6a-426d-4ae6-8c10-65d55f3eddb0",
+"known": "quante persone incontrerai alla festa?",
+"pos": 9,
+"t1": "bcad2204-9fd5-4e8d-8fd6-1e852d4f1659",
+"t2": "f45bcffe-ba7e-4cee-82b8-fcc4017f068a",
+"target": "how many people are you going to meet at the party?",
+"type": "use"
+}
+],
+"target": "meet",
+"type": "A"
+}
+],
+"status": "released",
+"target": "I have to find out where he's going to meet me."
+}
+}
