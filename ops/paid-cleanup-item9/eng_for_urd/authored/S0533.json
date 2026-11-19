@@ -1,0 +1,54 @@
+{
+ "seed": 533,
+ "lego_ops": {
+  "L01": {
+   "set": {
+    "known_text": "ہر بات سننا",
+    "target_text": "listen to every word",
+    "type": "M",
+    "components": [
+     {
+      "known": "سننا",
+      "target": "listen to"
+     },
+     {
+      "known": "ہر بات",
+      "target": "every word"
+     }
+    ]
+   },
+   "why": "S3: 'every' is in the seed ('She won't listen to every word you say') and no LEGO carries it; L01 'listen' is the seed's only LEGO, so it grows to 'listen to every word' (6 syllables, ungapped, a piece of the seed). The Urdu is the seed's own ہر بات … سننا; the old known side (دھیان سے سننا) matched none of the rows."
+  }
+ },
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "میں ہر بات سنتا ہوں",
+     "I listen to every word"
+    ],
+    "B02": [
+     "آپ کی ہر بات سننا",
+     "listen to every word you say"
+    ],
+    "B03": [
+     "غور سے ہر بات سننا",
+     "listen to every word carefully"
+    ],
+    "U02": [
+     "کیا آپ ہر بات سن سکتے ہیں؟",
+     "can you listen to every word?"
+    ],
+    "U03": [
+     "میں آپ کی ہر بات سننا چاہتا ہوں",
+     "I want to listen to every word you say"
+    ],
+    "U04": [
+     "مجھے ہر بات سننی چاہیے",
+     "I should listen to every word"
+    ]
+   }
+  }
+ },
+ "notes": "cs #813: re-cut: 'listen' -> 'listen to every word'. U01 and U05 already contain it. This also closes the 'every' half of S0584's gap (with S0108 for 'wake', S0584 needs no change). Cost: 'listen to me' and 'listen carefully' go."
+}

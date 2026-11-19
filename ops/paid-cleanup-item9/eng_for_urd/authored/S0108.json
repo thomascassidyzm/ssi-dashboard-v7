@@ -1,0 +1,50 @@
+{
+ "seed": 108,
+ "lego_ops": {
+  "L03": {
+   "set": {
+    "known_text": "رات کے وسط میں جاگنا",
+    "target_text": "wake in the middle of the night",
+    "type": "M",
+    "components": [
+     {
+      "known": "جاگنا",
+      "target": "wake"
+     },
+     {
+      "known": "رات کے وسط میں",
+      "target": "in the middle of the night"
+     }
+    ]
+   },
+   "why": "S3: 'wake' is in the seed ('We didn't hope to wake in the middle of the night') and no LEGO of the seed carries it (S0055 teaches 'waking up'). L03 grows by the one word (8 syllables, at the cap, ungapped, a piece of the seed) rather than L02 'hope', because five of L03's rows already say 'wake in the middle of the night' and L02's 'I hope that…' rows would all have been lost."
+  }
+ },
+ "legos": {
+  "L03": {
+   "update": {
+    "B01": [
+     "رات کے وسط میں جاگنا",
+     "wake in the middle of the night"
+    ],
+    "B02": [
+     "رات کے وسط میں جاگنے کی امید",
+     "hope to wake in the middle of the night"
+    ],
+    "B03": [
+     "دوبارہ رات کے وسط میں جاگنا",
+     "wake in the middle of the night again"
+    ],
+    "B04": [
+     "رات کے وسط میں نہیں جاگنا چاہتا",
+     "don't want to wake in the middle of the night"
+    ],
+    "U04": [
+     "مجھے رات کے وسط میں جاگنا پسند نہیں",
+     "I don't like to wake in the middle of the night"
+    ]
+   }
+  }
+ },
+ "notes": "cs #813: re-cut: 'in the middle of the night' -> 'wake in the middle of the night'. U01-U03 and U05 already contain it and are untouched. This also closes the 'wake' half of S0584's gap. Not touched: L01/L02 rows of this seed that already say 'wake' ahead of L03."
+}

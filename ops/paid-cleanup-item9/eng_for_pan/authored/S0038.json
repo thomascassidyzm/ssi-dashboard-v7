@@ -1,0 +1,10 @@
+{ "seed": 38,
+  "lego_ops": { "L02": { "set": { "known_text": "ਲਗਭਗ ਇੱਕ ਹਫ਼ਤੇ ਤੋਂ", "target_text": "for about a week", "type": "M",
+      "components": [ { "known": "ਲਗਭਗ", "target": "about" }, { "known": "ਇੱਕ ਹਫ਼ਤੇ", "target": "a week" }, { "known": "ਤੋਂ", "target": "for" } ] },
+    "why": "S3: 'for' is in the seed ('I've been learning for about a week') and no LEGO of the seed carried it, yet seven rows of this basket and S0038L03U01 already say 'for about a week'. L02 grows by the one word (5 syllables, ungapped, a piece of the seed); the Punjabi grows by ਤੋਂ, which is what the rows and the seed already say." } },
+  "legos": { "L02": { "update": {
+    "B01": ["ਲਗਭਗ ਇੱਕ ਹਫ਼ਤੇ ਤੋਂ", "for about a week"],
+    "B02": ["ਇੱਥੇ ਲਗਭਗ ਇੱਕ ਹਫ਼ਤੇ ਤੋਂ", "here for about a week"],
+    "B03": ["ਲਗਭਗ ਇੱਕ ਹਫ਼ਤੇ ਤੋਂ ਸਿੱਖਣਾ", "learning for about a week"],
+    "B04": ["ਲਗਭਗ ਇੱਕ ਹਫ਼ਤੇ ਤੋਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣਾ", "speaking English for about a week"] } } },
+  "notes": "cs #813 re-cut: 'about a week' -> 'for about a week'. The six USE rows already contain the whole new LEGO and are untouched; the four BUILDs are re-said (B02 was the old 'for about a week' row and would now duplicate the bare row). This also makes legal the later rows that use 'for' before S0068 (S0054L02B03, S0065L01U04, S0065L02U05, S0066L01U03). Known-side caution, not changed here: the USE rows pair ਤੋਂ ('since') with 'wanted to …', which reads oddly in Punjabi; that is a known-prompt matter, not item 9." }

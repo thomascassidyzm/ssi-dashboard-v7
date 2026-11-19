@@ -1,0 +1,58 @@
+{
+ "seed": 423,
+ "lego_ops": {
+  "L01": {
+   "set": {
+    "known_text": "اتنا واضح",
+    "target_text": "such an obvious",
+    "type": "M",
+    "components": [
+     {
+      "known": "اتنا",
+      "target": "such an"
+     },
+     {
+      "known": "واضح",
+      "target": "obvious"
+     }
+    ]
+   },
+   "why": "S3: 'such' is in the seed ('Do they need to ask such an obvious question?') and no LEGO carries it; this is the first of three seeds that use it (S0478, S0557). Shortest cut: 'obvious' grows to 'such an obvious' (5 syllables, ungapped, a piece of the seed); 'question' is already S0202."
+  }
+ },
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "اتنا واضح سوال",
+     "such an obvious question"
+    ],
+    "B02": [
+     "اتنا واضح جواب",
+     "such an obvious answer"
+    ],
+    "B03": [
+     "اتنی واضح مثال",
+     "such an obvious example"
+    ],
+    "U02": [
+     "یہ اتنا واضح سوال ہے",
+     "this is such an obvious question"
+    ],
+    "U03": [
+     "مجھے لگتا ہے یہ اتنا واضح جواب ہے",
+     "I think this is such an obvious answer"
+    ],
+    "U04": [
+     "یہ اتنی واضح مثال ہے",
+     "this is such an obvious example"
+    ],
+    "U05": [
+     "میں اتنا واضح سوال نہیں پوچھنا چاہتا تھا",
+     "I didn't want to ask such an obvious question"
+    ]
+   }
+  }
+ },
+ "notes": "cs #813: re-cut: 'obvious' -> 'such an obvious'. U01 (the seed sentence) already contains it. With 'such' taught here, S0478 ('such a kind heart') and S0557 ('such loud music') need no change. Cost: the plain 'very obvious' rows go."
+}
