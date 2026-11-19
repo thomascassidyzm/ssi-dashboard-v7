@@ -14,6 +14,21 @@ const [, , topicKey, turnsArg = '30', model = 'opus'] = process.argv;
 // energy already in it (a story, a hot take, a daft hypothetical), never a seminar question; the talk
 // may wander off it the way pub talk does. Each keeps its own ending shape so no two samples close alike.
 const TOPICS = {
+  // v3b (#986 after #988): layer 3, "how to contribute to a group conversation". Questions a pub table
+  // has genuinely been chewing on, rooted in something that just happened: elevated and interesting,
+  // not a seminar, not a lads' holiday. The argument has to MOVE.
+  tellher: {
+    moment: "Rhi has just told the table that on Saturday she saw Gwen Price's husband Gareth having a very cosy dinner in a hotel in Ludlow with a woman who is not Gwen. Gwen is a customer and a friend of hers. Rhi hasn't said anything to anyone yet, and she's asking the table what she should do.",
+    ending: "It does not resolve: the table is still split, and the last turn is a live point nobody has answered yet.",
+  },
+  eulogy: {
+    moment: "Hugh has been asked by the widow to give the eulogy on Friday for Clive Morgan, who farmed next door to him for forty years and was, by common agreement in town, a difficult, mean-spirited man who once moved a boundary fence by six feet. Hugh has just said to the table: 'I don't know what I'm meant to say about him.'",
+    ending: "Near the end someone concedes a point grudgingly, and the talk moves on with it left hanging; no touching moment, no reconciliation.",
+  },
+  knowday: {
+    moment: "Femi's seven-year-old asked him at bedtime whether he'd want to know the exact day he was going to die, and Femi said yes without thinking. He's just told the table, and Sunny has said, flatly: 'No you wouldn't.'",
+    ending: "In the last few turns the talk drifts onto a tangent one remark opened (not food, drinks or going home) and it is on that tangent when it stops.",
+  },
   lisbon: {
     moment: "Danny got back last night from a long weekend in Lisbon with Kasia. The airline lost his suitcase on the way out, he spent four days in clothes from the airport shop and a market stall, and he's wearing one of the shirts now. Jess has just noticed it.",
     ending: "In the last few turns the talk has drifted onto a tangent that one remark opened (not food, not drinks, not going home) and it is simply on that tangent when it stops.",
@@ -36,13 +51,27 @@ const cards = fs.readFileSync(path.join(__dirname, 'personas.md'), 'utf8');
 // v3 (#986): real recorded talk as a texture anchor (Tom+Aran, ~/podcast-tom-aran), plus optional
 // STYLE_FILE for further corpus excerpts. Texture only: the engine is told never to lift words from it.
 const STYLE = [path.join(__dirname, 'style-real-talk.md'), process.env.STYLE_FILE].filter(f => f && fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8').trim()).join('\n\n');
+// Layer-3 moves (#988, /d/108cdbeb; IDs are the shape metagraph's own, services/shared/metagraph/moves.json).
+const MOVES = {
+  F9: "Let me check I've got it: before disagreeing, someone states another person's position back as a candidate, and that person confirms or corrects it.",
+  F301: "So what you're saying is: someone hands back a sharper compression or a name for what another just built; the original speaker accepts it and uses it.",
+  F305: "Absorb and build: someone pushed back on gets the counterexample and folds it in, making their own point stronger rather than defending the old version.",
+  F16: "Fair enough, but I still: concede the point the other person earned, then hold your own position with a 'but'.",
+  F2: "Do it and throw something in: answer the question you were asked, then add something nobody asked for and nobody expected.",
+  F303: "The shared line: a phrase coined earlier tonight gets redeployed later by SOMEONE ELSE as shorthand, a tease or an argument; it now belongs to the table.",
+  F304: "Comment on the medium: someone remarks on the conversation's own machinery (everyone talking over each other, the volume, who's been quiet, the hour) as play, and it gets used.",
+  F306: "Exactly where I'm about to go: someone's contribution is taken by the next speaker as the move they were already about to make; the floor merges rather than passes.",
+  F11: "And you?: someone answers, then hands the floor to someone who hasn't said much, with a real question, by name.",
+  F302: "It proves nothing, accept it anyway: say what you can't know or prove, then say what you still think, at full strength.",
+};
+const USE_MOVES = TOPICS[topicKey] && ['tellher', 'eulogy', 'knowday'].includes(topicKey);
 const AVOID = process.env.AVOID_FILE ? fs.readFileSync(process.env.AVOID_FILE, 'utf8').trim() : '';
 
 const SYSTEM = `You are the "next turn" engine for a live, unscripted group conversation around a table. You are NOT a writer of a scene; you produce exactly ONE next turn of a conversation already in progress, as it would really happen.
 
 ${cards}
 
-WHAT THIS TABLE IS: six quick, funny, articulate friends on an ordinary good night in the pub. They are NOT debating anything. This is real pub talk: someone telling what just happened to them while the others pick holes in it, strong opinions about everyday nonsense, daft hypotheticals taken far too seriously, films and telly, mild gossip about people in town, and a lot of teasing. Their intelligence shows in wit, timing, comebacks and how they tell a story, never in arguments about society.
+${USE_MOVES ? 'TONIGHT: the table is chewing on a real question that came out of something that just happened. It is a pub table that has been thinking: the sentences are good, the thinking is interesting and the argument MOVES (positions shift, the question itself turns into a better question), but it is never a seminar, never policy, and never a lads\' holiday (no toilet, sex or drunk humour). Wit and teasing stay; the talk is about the question and the people, and it may wander and come back.\n\nTHE CONVERSATIONAL MOVES this table uses (each is a test; tag a turn with a move ID ONLY if it genuinely passes the test):\n' + Object.entries(MOVES).map(([k, v]) => k + ' — ' + v).join('\n') + '\nMoves happen between three or more people. They must sound like pub speech, never like a textbook example: nobody says "so what you\'re saying is" or "fair enough, but" every time; find the natural way this person would do it.\n\n' : ''}WHAT THIS TABLE IS: six quick, funny, articulate friends on an ordinary good night in the pub. They are NOT debating anything. This is real pub talk: someone telling what just happened to them while the others pick holes in it, strong opinions about everyday nonsense, daft hypotheticals taken far too seriously, films and telly, mild gossip about people in town, and a lot of teasing. Their intelligence shows in wit, timing, comebacks and how they tell a story, never in arguments about society.
 
 HOW THIS TABLE TALKS (follow this, it is the whole job):
 - SHORT TURNS. Most turns are one sentence, often less: a fragment, a "No!", a laugh, "Go on", a question, a jab, a sentence someone else finishes. Two sentences is a normal long turn. Over about 40 words only when someone is genuinely telling a story, and a story gets interrupted, questioned and heckled as it goes.
@@ -74,7 +103,7 @@ RULES OF WHO SPEAKS NEXT (you choose):
 - The same person may speak twice in a row only if they were cut off and are reclaiming, or nobody picked up their question.
 
 OUTPUT: only a JSON object, nothing else:
-{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}]}
+{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say",${USE_MOVES ? ' "move": a move ID from the list if this turn genuinely passes that test, else null,' : ''} "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}]}
 Plain English speech only: no stage directions, no asterisks, no parentheses, no speaker name inside "line".`;
 
 // transcript as HEARD: each entry {speaker, line, cutOff:boolean, overlap, backchannels:[{who,text,after}]}
@@ -105,17 +134,24 @@ const log = [];
 for (let i = 0; i < turns; i++) {
   const counts = Object.fromEntries(NAMES.map(n => [n, T.filter(e => e.speaker === n).length]));
   const rr = Math.random();
-  const band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.4 ? 'SHORT: 1-6 words (a laugh, "No!", "Go on", a jab, a question, a half-start)' : rr < 0.88 ? 'MEDIUM: 7-25 words, one sentence or two' : 'STORY: 25-45 words, only if someone is genuinely telling a story; otherwise MEDIUM';
+  const band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.45 ? 'SHORT: 1-6 words (a laugh, "No!", "Go on", a jab, a question, a half-start)' : rr < 0.88 ? 'MEDIUM: 7-25 words, one sentence or two' : 'STORY: 25-45 words, only if someone is genuinely telling a story; otherwise MEDIUM';
   // Cut-in pressure (#980 probe: 10 turns came out with no cut-ins at all, too courteous for a hot argument).
   const sinceCut = T.length - 1 - T.map(e => !!e.cutIn).lastIndexOf(true);
   const cutNudge = T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
+  let moveNudge = '';
+  if (USE_MOVES) {
+    const placed = T.map((e, k) => e.move ? e.move + '@' + (k + 1) : null).filter(Boolean);
+    const unplaced = Object.keys(MOVES).filter(m => !T.some(e => e.move === m));
+    moveNudge = '\nMoves placed so far: ' + (placed.join(', ') || 'none') + '. Not yet placed: ' + unplaced.join(', ') + '.' +
+      (i >= 4 && i < turns - 3 && unplaced.length && Math.random() < 0.45 ? ' If it fits naturally right now, make this turn one of the unplaced moves (' + unplaced.slice(0, 4).join(', ') + ').' : '');
+  }
   const prompt = `THE MOMENT: ${TOPIC}
 
 TRANSCRIPT SO FAR (as heard; "—" at the end of a line = that speaker was cut off there):
 ${T.length ? transcriptForModel() : '(nothing said yet: the moment has just happened. The FIRST turn is under 15 words and lands right in the middle of it, as if mid-evening, with no scene-setting)'}
 
 Turns so far per person: ${JSON.stringify(counts)}. This is turn ${i + 1} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up.' : 'keep it live; the talk may wander off the opening moment.'}
-LENGTH FOR THIS TURN: ${band}. Pick a speaker for whom that length is natural right now.${cutNudge}
+LENGTH FOR THIS TURN: ${band}. Pick a speaker for whom that length is natural right now.${cutNudge}${moveNudge}
 Write the single next turn as JSON.`;
   let r, tries = 0;
   while (true) {
@@ -142,7 +178,7 @@ Write the single next turn as JSON.`;
     prev.backchannels = (prev.backchannels || []).concat(
       r.backchannels.filter(b => b && NAMES.includes(b.who) && b.who !== prev.speaker && prev.line.includes(b.after)).slice(0, 2));
   }
-  T.push({ speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [] });
+  T.push({ speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [], move: USE_MOVES && r.move && MOVES[r.move] ? r.move : null });
   log.push({ turn: i + 1, raw: r, cutApplied });
   process.stderr.write(`${i + 1} ${r.speaker}${cutApplied ? ' [cut-in]' : ''}\n`);
 }
