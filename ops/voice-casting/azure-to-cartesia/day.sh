@@ -14,15 +14,15 @@ WAKE() { node "$HOME/command-surface/tools/cs-wake-send.cjs" "$CONV" "$CS_CONV_T
 ts() { date -u +%FT%TZ; }
 echo "$(ts) day $DAY starting in $(pwd) at $(git rev-parse --short HEAD)"
 
-# An earlier day still running: wait for it (bounded 10 h), never run two at once.
-for i in $(seq 1 600); do
+# An earlier day still running: wait for it (bounded 18 h: day 1 is ~34k sequential asks at ~2.3 s each), never run two at once.
+for i in $(seq 1 1080); do
   busy=""
   for d in 1 2 4; do [ "$d" -lt "$DAY" ] && [ "$(systemctl --user is-active cs-long-keep-a2c-day$d.service 2>/dev/null)" = active ] && busy=$d; done
   [ -z "$busy" ] && break
   [ "$i" = 1 ] && echo "$(ts) day $busy still running; waiting"
   sleep 60
 done
-if [ -n "$busy" ]; then WAKE "WAKE: azure-to-cartesia day $DAY NOT run: day $busy still running after 10 h"; exit 1; fi
+if [ -n "$busy" ]; then WAKE "WAKE: azure-to-cartesia day $DAY NOT run: day $busy still running after 18 h"; exit 1; fi
 
 # Tom's audio stop. NOTE: from a cs-long unit this reads the nightly QA copy (db shim), so it is the copy's view;
 # the live stop is enforced by the render route itself (STOPPED_BY_TOM stops the runner at the first ask).
