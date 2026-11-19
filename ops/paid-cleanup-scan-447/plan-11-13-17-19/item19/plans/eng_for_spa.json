@@ -1,7 +1,7 @@
 {
  "course": "eng_for_spa",
  "roman_flags": [],
- "dumped": "2026-11-18T18:49:38Z",
+ "dumped": "2026-11-19T11:05:55Z",
  "decisions": 5,
  "verdicts": {
   "recut": 5
@@ -2099,8 +2099,12 @@
    }
   }
  ],
+ "source": "qa-copy",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
  "validator": {
-  "at": "2026-11-18T18:49:50Z",
+  "at": "2026-11-19T11:20:33Z",
+  "on": "nightly copy ssi_copy_20261119t033000z",
   "baseline_failing_seeds": 246,
   "per_seed": {
    "24": {
@@ -3453,6 +3457,7 @@
      "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
     }
    }
-  ]
+  ],
+  "note": "carried from #807·AI (live edit door, before cs #937 tile refresh); ops byte-identical to this copy-based plan"
  }
 }

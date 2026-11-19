@@ -34,6 +34,17 @@ target chunk of a kept/new row taught by that seed) so failures are named per ro
 Edit-door lessons: a `phrase.insert` needs `lego_count`; a target change on a row carrying romanisation needs a new
 `target_text_roman` (`ROMAN_STALE`); `expect` catches rows other cleanup items changed (`DRIFT`) — re-dump and re-plan.
 
+## Proof of the copy-only kit (cs #931·AI, 19 Nov, zho_for_jpn seeds 1-150)
+- READ: `copy-read.cjs where` → `postgres://ssi_copy:***@/ssi_copy_20261119t033000z?host=/home/tomcassidy/ssi-restore/sock&port=5433`
+  (copy built 2026-11-19T03:41:21Z). Dump 245 seeds / 475 LEGOs / 4,387 rows; baskets 118 LEGOs / 919 rows — all from the copy.
+- PLAN: 401 ops, byte-identical to #743·AI's live-read plan of 18 Nov.
+- VALIDATOR on the copy (in process, 4 s): baseline 150 failing seeds, NEW issues seeds 91 and 122 — exactly #743's live answer.
+- DRY RUN through `POST /api/production/zho_for_jpn/edit-batch` (no apply), chunk 50, gated: chunk 1 → 200 (158 s);
+  chunks 2-3 → 409 statement timeout (cs #937 tile refresh, landed 11:00Z); stopped by hand, gate back to green within
+  seconds; chunks 4-9 not sent. Stored in `plans/zho_for_jpn.json` "dryRun" (complete:false). Re-run at night with --chunk 10.
+- Nothing else contacted live: no Popty read route, no :3471, no pg client to anything but the copy.
+
 ## Status per course
+See QUEUE.md (per-plan table, 19 Nov).
 
 See the job journal / the published doc. Probe: zho_for_eng seeds 3-36 (22 LEGOs) dry-run clean, validator 0 new, 18 Nov.

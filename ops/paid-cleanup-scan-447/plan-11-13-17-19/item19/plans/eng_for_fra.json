@@ -1,7 +1,7 @@
 {
  "course": "eng_for_fra",
  "roman_flags": [],
- "dumped": "2026-11-18T23:08:53Z",
+ "dumped": "2026-11-19T11:05:45Z",
  "decisions": 6,
  "verdicts": {
   "recut": 6
@@ -2629,8 +2629,12 @@
    }
   }
  ],
+ "source": "qa-copy",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
  "validator": {
-  "at": "2026-11-18T23:09:11Z",
+  "at": "2026-11-19T11:20:37Z",
+  "on": "nightly copy ssi_copy_20261119t033000z",
   "baseline_failing_seeds": 237,
   "per_seed": {
    "10": {
@@ -4962,6 +4966,7 @@
      "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
     }
    }
-  ]
+  ],
+  "note": "carried from #807·AI (live edit door, before cs #937 tile refresh); ops byte-identical to this copy-based plan"
  }
 }

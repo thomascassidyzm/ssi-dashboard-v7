@@ -1,7 +1,7 @@
 {
  "course": "eng_for_ita",
  "roman_flags": [],
- "dumped": "2026-11-19T10:03:44Z",
+ "dumped": "2026-11-19T11:05:47Z",
  "decisions": 5,
  "verdicts": {
   "kai": 1,
@@ -1672,56 +1672,23 @@
    }
   }
  ],
- "validator": {
-  "at": "2026-11-19T10:03:59Z",
-  "baseline_failing_seeds": 234,
-  "per_seed": {
-   "26": {
-    "seed_issues_planned": [],
-    "seed_issues_live": [],
-    "new_issues_anywhere": {},
-    "error": null
-   },
-   "115": {
-    "seed_issues_planned": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "seed_issues_live": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "new_issues_anywhere": {},
-    "error": null
-   },
-   "143": {
-    "seed_issues_planned": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "seed_issues_live": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "new_issues_anywhere": {},
-    "error": null
-   },
-   "273": {
-    "seed_issues_planned": [],
-    "seed_issues_live": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "new_issues_anywhere": {},
-    "error": null
-   }
-  },
-  "seeds_with_new_issues": []
- },
+ "source": "qa-copy",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
  "dryRun": {
-  "at": "2026-11-19T10:04:11Z",
+  "at": "2026-11-19T11:23:53Z",
+  "route": "POST /api/production/<course>/edit-batch (no apply)",
+  "agent": "cs-931-item19-plan (dry run only)",
+  "chunk": 10,
+  "ops_sig": "2727bad5a163",
+  "complete": true,
   "chunks": [
    {
     "from": 0,
-    "n": 33,
+    "n": 10,
     "status": 200,
-    "secs": 10.8,
+    "secs": 26.9,
+    "gate": "green",
     "answer": {
      "ok": true,
      "dryRun": true,
@@ -1798,7 +1765,7 @@
        },
        "before": null,
        "after": {
-        "id": "e93437df-ee93-436a-b343-1341a74d830c",
+        "id": "0840c4cc-a817-4a06-aae9-76edfb4a63ba",
         "seed_number": 26,
         "lego_index": 3,
         "lego_id": "S0026L03",
@@ -1980,7 +1947,1102 @@
        "changed": true
       },
       {
-       "index": 10,
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0026L02",
+         "S0026L03"
+        ]
+       },
+       "considered": 11,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_ita:S0026L02U04",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "tornare",
+           "legoId": "S0016L02",
+           "target": " to come back",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0016L02",
+           "target": " to come back",
+           "known": "tornare",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02B01",
+         "before": [
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": "feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L02",
+           "target": "feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0149L01U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "it's",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " not",
+           "isGhost": true
+          },
+          {
+           "known": "molto difficile",
+           "legoId": "S0149L01",
+           "target": " very difficult",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "e",
+           "legoId": "S0015L01",
+           "target": " and",
+           "isGhost": false
+          },
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": " I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "it's",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " not",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0149L01",
+           "target": " very difficult",
+           "known": "molto difficile",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0015L01",
+           "target": " and",
+           "known": "e",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L01",
+           "target": " I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02U06",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "scoprire",
+           "legoId": "S0017L02",
+           "target": " to find out",
+           "isGhost": false
+          },
+          {
+           "known": "qual è la risposta",
+           "legoId": "S0017L03",
+           "target": " what the answer is",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0017L02",
+           "target": " to find out",
+           "known": "scoprire",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0017L03",
+           "target": " what the answer is",
+           "known": "qual è la risposta",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02B03",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "imparare",
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "known": "imparare",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02U02",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "incontrarci",
+           "legoId": "S0018L02",
+           "target": " to meet",
+           "isGhost": false
+          },
+          {
+           "known": "persone che parlano",
+           "legoId": "S0022L02",
+           "target": " people who speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " English",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0018L02",
+           "target": " to meet",
+           "known": "incontrarci",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0022L02",
+           "target": " people who speak",
+           "known": "persone che parlano",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " English",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02U01",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " speak",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " English",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " speak",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " English",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02U03",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "iniziare a parlare",
+           "legoId": "S0023L01",
+           "target": " to start talking",
+           "isGhost": false
+          },
+          {
+           "known": "di più",
+           "legoId": "S0023L02",
+           "target": " more",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0023L01",
+           "target": " to start talking",
+           "known": "iniziare a parlare",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0023L02",
+           "target": " more",
+           "known": "di più",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02B04",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "andare",
+           "legoId": "S0025L03",
+           "target": " to go",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0025L03",
+           "target": " to go",
+           "known": "andare",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02U05",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "spiegare",
+           "legoId": "S0008L01",
+           "target": " to explain",
+           "isGhost": false
+          },
+          {
+           "known": "cosa intendo",
+           "legoId": "S0008L02",
+           "target": " what I mean",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0008L01",
+           "target": " to explain",
+           "known": "spiegare",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0008L02",
+           "target": " what I mean",
+           "known": "cosa intendo",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0026L02B02",
+         "before": [
+          {
+           "known": "mi piace",
+           "legoId": "S0026L01",
+           "target": "I like",
+           "isGhost": false
+          },
+          {
+           "known": "sentirmi come se fossi quasi pronto",
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm nearly ready",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0026L01",
+           "target": "I like",
+           "known": "mi piace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0026L02",
+           "target": " feeling as if I'm",
+           "known": "sentirmi come se fossi",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0026L03",
+           "target": " nearly ready",
+           "known": "quasi pronto",
+           "isGhost": false
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "spiegare",
+          "legoId": "S0008L01",
+          "target": " to explain",
+          "isGhost": false
+         },
+         {
+          "known": "cosa intendo",
+          "legoId": "S0008L02",
+          "target": " what I mean",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "andare",
+          "legoId": "S0025L03",
+          "target": " to go",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "iniziare a parlare",
+          "legoId": "S0023L01",
+          "target": " to start talking",
+          "isGhost": false
+         },
+         {
+          "known": "di più",
+          "legoId": "S0023L02",
+          "target": " more",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " speak",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " English",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "incontrarci",
+          "legoId": "S0018L02",
+          "target": " to meet",
+          "isGhost": false
+         },
+         {
+          "known": "persone che parlano",
+          "legoId": "S0022L02",
+          "target": " people who speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " English",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "imparare",
+          "legoId": "S0002L02",
+          "target": " to learn",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02U06",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "scoprire",
+          "legoId": "S0017L02",
+          "target": " to find out",
+          "isGhost": false
+         },
+         {
+          "known": "qual è la risposta",
+          "legoId": "S0017L03",
+          "target": " what the answer is",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0149L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "it's",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " not",
+          "isGhost": true
+         },
+         {
+          "known": "molto difficile",
+          "legoId": "S0149L01",
+          "target": " very difficult",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "e",
+          "legoId": "S0015L01",
+          "target": " and",
+          "isGhost": false
+         },
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": " I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": "feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0026L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi piace",
+          "legoId": "S0026L01",
+          "target": "I like",
+          "isGhost": false
+         },
+         {
+          "known": "sentirmi come se fossi quasi pronto",
+          "legoId": "S0026L02",
+          "target": " feeling as if I'm nearly ready",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "tornare",
+          "legoId": "S0016L02",
+          "target": " to come back",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "0840c4cc-a817-4a06-aae9-76edfb4a63ba"
+      },
+      {
+       "op": "lego.update",
+       "id": "0a2ced0c-0ad8-470b-9fa5-9d95e5b8373c",
+       "set": {
+        "known_text": "sentirmi come se fossi quasi pronto",
+        "target_text": "feeling as if I'm nearly ready",
+        "components": [
+         {
+          "known": "sentirmi",
+          "target": "feeling"
+         },
+         {
+          "known": "come se fossi",
+          "target": "as if I'm"
+         },
+         {
+          "known": "quasi",
+          "target": "nearly"
+         },
+         {
+          "known": "pronto",
+          "target": "ready"
+         }
+        ],
+        "known_audio_id": "4512a138-e6bb-47b9-b040-9964e94055d2",
+        "target1_audio_id": "91e8b8ab-cffe-470c-848b-89f4c1aca340",
+        "target2_audio_id": "52ced910-4956-49b3-9f23-87c664547505",
+        "presentation_audio_id": "c76446a3-7bb1-4103-be4b-57f757b0b568"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   },
+   {
+    "from": 10,
+    "n": 10,
+    "status": 200,
+    "secs": 37.4,
+    "gate": "green",
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
        "op": "lego.update",
        "key": {
         "course_code": "eng_for_ita",
@@ -2033,7 +3095,7 @@
        "changed": true
       },
       {
-       "index": 11,
+       "index": 1,
        "op": "lego.insert",
        "key": {
         "seed_number": 115,
@@ -2041,7 +3103,7 @@
        },
        "before": null,
        "after": {
-        "id": "1fc296db-6213-4f26-aed7-256c02949118",
+        "id": "7003cef3-f12e-4163-9fd0-b655743ac857",
         "seed_number": 115,
         "lego_index": 3,
         "lego_id": "S0115L03",
@@ -2055,7 +3117,7 @@
        "changed": true
       },
       {
-       "index": 12,
+       "index": 2,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03B01"
@@ -2076,7 +3138,7 @@
        "changed": true
       },
       {
-       "index": 13,
+       "index": 3,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03B02"
@@ -2097,7 +3159,7 @@
        "changed": true
       },
       {
-       "index": 14,
+       "index": 4,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03B03"
@@ -2118,7 +3180,7 @@
        "changed": true
       },
       {
-       "index": 15,
+       "index": 5,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03U01"
@@ -2139,7 +3201,7 @@
        "changed": true
       },
       {
-       "index": 16,
+       "index": 6,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03U02"
@@ -2160,7 +3222,7 @@
        "changed": true
       },
       {
-       "index": 17,
+       "index": 7,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03U03"
@@ -2181,7 +3243,7 @@
        "changed": true
       },
       {
-       "index": 18,
+       "index": 8,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03U04"
@@ -2202,7 +3264,7 @@
        "changed": true
       },
       {
-       "index": 19,
+       "index": 9,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0115L03U05"
@@ -2223,7 +3285,961 @@
        "changed": true
       },
       {
-       "index": 20,
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0115L02",
+         "S0115L03"
+        ]
+       },
+       "considered": 10,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_ita:S0115L02B03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " not",
+           "isGhost": true
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " not",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02U03",
+         "before": [
+          {
+           "known": "mi sento come se stessi",
+           "legoId": "S0114L01",
+           "target": "I feel as if I'm",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " nearly",
+           "isGhost": true
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0114L01",
+           "target": "I feel as if I'm",
+           "known": "mi sento come se stessi",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " nearly",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02U04",
+         "before": [
+          {
+           "known": "non me lo aspettavo",
+           "legoId": "S0112L02",
+           "target": "I wasn't expecting it",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " be",
+           "isGhost": true
+          },
+          {
+           "known": "quindi",
+           "legoId": "S0056L01",
+           "target": " so",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " difficult",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " be",
+           "isGhost": true
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0112L02",
+           "target": "I wasn't expecting it",
+           "known": "non me lo aspettavo",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " be",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0056L01",
+           "target": " so",
+           "known": "quindi",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " difficult",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " be",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02U05",
+         "before": [
+          {
+           "known": "non mi sento come se fossi",
+           "legoId": "S0115L01",
+           "target": "I don't feel as if I'm",
+           "isGhost": false
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "oggi",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0115L01",
+           "target": "I don't feel as if I'm",
+           "known": "non mi sento come se fossi",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "oggi",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0118L01U05",
+         "before": [
+          {
+           "known": "mi sentivo",
+           "legoId": "S0118L01",
+           "target": "I felt",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "sicuramente",
+           "legoId": "S0117L01",
+           "target": " definitely",
+           "isGhost": false
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false
+          },
+          {
+           "known": "l'ultima volta",
+           "legoId": "S0117L03",
+           "target": " last time",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0118L01",
+           "target": "I felt",
+           "known": "mi sentivo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0117L01",
+           "target": " definitely",
+           "known": "sicuramente",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0117L03",
+           "target": " last time",
+           "known": "l'ultima volta",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02U02",
+         "before": [
+          {
+           "known": "ecco perché",
+           "legoId": "S0105L01",
+           "target": "that is why",
+           "isGhost": false
+          },
+          {
+           "known": "mi piacerebbe",
+           "legoId": "S0011L01",
+           "target": " I'd like",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " be",
+           "isGhost": true
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0105L01",
+           "target": "that is why",
+           "known": "ecco perché",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0011L01",
+           "target": " I'd like",
+           "known": "mi piacerebbe",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " be",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02B02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "nearly",
+           "isGhost": true
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "nearly",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02B04",
+         "before": [
+          {
+           "known": "non mi sento come se fossi",
+           "legoId": "S0115L01",
+           "target": "I don't feel as if I'm",
+           "isGhost": false
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0115L01",
+           "target": "I don't feel as if I'm",
+           "known": "non mi sento come se fossi",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02B01",
+         "before": [
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": "ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0115L03",
+           "target": "ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0115L02U01",
+         "before": [
+          {
+           "known": "non mi sento come se fossi",
+           "legoId": "S0115L01",
+           "target": "I don't feel as if I'm",
+           "isGhost": false
+          },
+          {
+           "known": "pronto ad avere una conversazione",
+           "legoId": "S0115L02",
+           "target": " ready to have a conversation",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "ancora",
+           "legoId": "S0060L02",
+           "target": " yet",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0115L01",
+           "target": "I don't feel as if I'm",
+           "known": "non mi sento come se fossi",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L03",
+           "target": " ready to",
+           "known": "pronto ad",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0115L02",
+           "target": " have a conversation",
+           "known": "avere una conversazione",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0060L02",
+           "target": " yet",
+           "known": "ancora",
+           "isGhost": false
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "non mi sento come se fossi",
+          "legoId": "S0115L01",
+          "target": "I don't feel as if I'm",
+          "isGhost": false
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "ancora",
+          "legoId": "S0060L02",
+          "target": " yet",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": "ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "non mi sento come se fossi",
+          "legoId": "S0115L01",
+          "target": "I don't feel as if I'm",
+          "isGhost": false
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "nearly",
+          "isGhost": true
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ecco perché",
+          "legoId": "S0105L01",
+          "target": "that is why",
+          "isGhost": false
+         },
+         {
+          "known": "mi piacerebbe",
+          "legoId": "S0011L01",
+          "target": " I'd like",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " be",
+          "isGhost": true
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0118L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi sentivo",
+          "legoId": "S0118L01",
+          "target": "I felt",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "sicuramente",
+          "legoId": "S0117L01",
+          "target": " definitely",
+          "isGhost": false
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false
+         },
+         {
+          "known": "l'ultima volta",
+          "legoId": "S0117L03",
+          "target": " last time",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "non mi sento come se fossi",
+          "legoId": "S0115L01",
+          "target": "I don't feel as if I'm",
+          "isGhost": false
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "oggi",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "non me lo aspettavo",
+          "legoId": "S0112L02",
+          "target": "I wasn't expecting it",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " be",
+          "isGhost": true
+         },
+         {
+          "known": "quindi",
+          "legoId": "S0056L01",
+          "target": " so",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " difficult",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " be",
+          "isGhost": true
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi sento come se stessi",
+          "legoId": "S0114L01",
+          "target": "I feel as if I'm",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " nearly",
+          "isGhost": true
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0115L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " not",
+          "isGhost": true
+         },
+         {
+          "known": "pronto ad avere una conversazione",
+          "legoId": "S0115L02",
+          "target": " ready to have a conversation",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "7003cef3-f12e-4163-9fd0-b655743ac857"
+      },
+      {
+       "op": "lego.update",
+       "id": "c8b16b0e-a344-4f31-b7db-5e149c08294d",
+       "set": {
+        "known_text": "pronto ad avere una conversazione",
+        "target_text": "ready to have a conversation",
+        "components": [
+         {
+          "known": "pronto",
+          "target": "ready"
+         },
+         {
+          "known": "ad avere una conversazione",
+          "target": "to have a conversation"
+         }
+        ],
+        "known_audio_id": "1b5194e4-ec96-49c6-8bc4-fcc809830889",
+        "target1_audio_id": "a8021bbb-93a4-4ac4-b9ef-a82daecf1a0f",
+        "target2_audio_id": "7fecd572-63a3-4ad4-8e4a-115fe331bd16",
+        "presentation_audio_id": "0a391cf3-6475-4777-a37c-69c0fd8342af"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   },
+   {
+    "from": 20,
+    "n": 10,
+    "status": 200,
+    "secs": 29.2,
+    "gate": "green",
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
        "op": "lego.update",
        "key": {
         "course_code": "eng_for_ita",
@@ -2267,7 +4283,7 @@
        "changed": true
       },
       {
-       "index": 21,
+       "index": 1,
        "op": "lego.insert",
        "key": {
         "seed_number": 143,
@@ -2275,7 +4291,7 @@
        },
        "before": null,
        "after": {
-        "id": "dc8c04be-9ec7-4777-ad56-8444551e7ab9",
+        "id": "7a0f458e-4d11-4335-a1a1-d76613dce786",
         "seed_number": 143,
         "lego_index": 3,
         "lego_id": "S0143L03",
@@ -2289,7 +4305,7 @@
        "changed": true
       },
       {
-       "index": 22,
+       "index": 2,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03B01"
@@ -2310,7 +4326,7 @@
        "changed": true
       },
       {
-       "index": 23,
+       "index": 3,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03B02"
@@ -2331,7 +4347,7 @@
        "changed": true
       },
       {
-       "index": 24,
+       "index": 4,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03B03"
@@ -2352,7 +4368,7 @@
        "changed": true
       },
       {
-       "index": 25,
+       "index": 5,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03U01"
@@ -2373,7 +4389,7 @@
        "changed": true
       },
       {
-       "index": 26,
+       "index": 6,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03U02"
@@ -2394,7 +4410,7 @@
        "changed": true
       },
       {
-       "index": 27,
+       "index": 7,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03U03"
@@ -2415,7 +4431,7 @@
        "changed": true
       },
       {
-       "index": 28,
+       "index": 8,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03U04"
@@ -2436,7 +4452,7 @@
        "changed": true
       },
       {
-       "index": 29,
+       "index": 9,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0143L03U05"
@@ -2457,7 +4473,794 @@
        "changed": true
       },
       {
-       "index": 30,
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0143L02",
+         "S0143L03"
+        ]
+       },
+       "considered": 8,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_ita:S0143L02U05",
+         "before": [
+          {
+           "known": "credo",
+           "legoId": "S0125L01",
+           "target": "I believe",
+           "isGhost": false
+          },
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "ma sono",
+           "legoId": "S0039L01",
+           "target": " but I'm",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " not",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " sure",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0125L01",
+           "target": "I believe",
+           "known": "credo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0039L01",
+           "target": " but I'm",
+           "known": "ma sono",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " not",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " sure",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02B01",
+         "before": [
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": "as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0143L02",
+           "target": "as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02U01",
+         "before": [
+          {
+           "known": "sono così contento",
+           "legoId": "S0129L01",
+           "target": "I'm so happy",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          },
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0129L01",
+           "target": "I'm so happy",
+           "known": "sono così contento",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02U03",
+         "before": [
+          {
+           "known": "nessun problema",
+           "legoId": "S0141L01",
+           "target": "no problem",
+           "isGhost": false
+          },
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0141L01",
+           "target": "no problem",
+           "known": "nessun problema",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02U02",
+         "before": [
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": "it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "e",
+           "legoId": "S0015L01",
+           "target": " and",
+           "isGhost": false
+          },
+          {
+           "known": "ti sono grato per l'aiuto",
+           "legoId": "S0142L02",
+           "target": " I'm grateful to you for helping",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0143L01",
+           "target": "it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0015L01",
+           "target": " and",
+           "known": "e",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0142L02",
+           "target": " I'm grateful to you for helping",
+           "known": "ti sono grato per l'aiuto",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02B02",
+         "before": [
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": "it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0143L01",
+           "target": "it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02B03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " think",
+           "isGhost": true
+          },
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " think",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0143L02U04",
+         "before": [
+          {
+           "known": "mi dispiace",
+           "legoId": "S0139L01",
+           "target": "I'm sorry",
+           "isGhost": false
+          },
+          {
+           "known": "non riuscire a vedere",
+           "legoId": "S0140L01",
+           "target": " that I can't see",
+           "isGhost": false
+          },
+          {
+           "known": "è la stessa cosa",
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "isGhost": false
+          },
+          {
+           "known": "di cui stavamo parlando prima",
+           "legoId": "S0143L02",
+           "target": " as we were talking about earlier",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0139L01",
+           "target": "I'm sorry",
+           "known": "mi dispiace",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0140L01",
+           "target": " that I can't see",
+           "known": "non riuscire a vedere",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L01",
+           "target": " it's the same thing",
+           "known": "è la stessa cosa",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0143L02",
+           "target": " as we were talking about",
+           "known": "di cui stavamo parlando",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0143L03",
+           "target": " earlier",
+           "known": "prima",
+           "isGhost": false
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "mi dispiace",
+          "legoId": "S0139L01",
+          "target": "I'm sorry",
+          "isGhost": false
+         },
+         {
+          "known": "non riuscire a vedere",
+          "legoId": "S0140L01",
+          "target": " that I can't see",
+          "isGhost": false
+         },
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": " it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " think",
+          "isGhost": true
+         },
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": " it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": "it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": "it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "e",
+          "legoId": "S0015L01",
+          "target": " and",
+          "isGhost": false
+         },
+         {
+          "known": "ti sono grato per l'aiuto",
+          "legoId": "S0142L02",
+          "target": " I'm grateful to you for helping",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "nessun problema",
+          "legoId": "S0141L01",
+          "target": "no problem",
+          "isGhost": false
+         },
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": " it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "sono così contento",
+          "legoId": "S0129L01",
+          "target": "I'm so happy",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         },
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": " it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": "as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0143L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "credo",
+          "legoId": "S0125L01",
+          "target": "I believe",
+          "isGhost": false
+         },
+         {
+          "known": "è la stessa cosa",
+          "legoId": "S0143L01",
+          "target": " it's the same thing",
+          "isGhost": false
+         },
+         {
+          "known": "di cui stavamo parlando prima",
+          "legoId": "S0143L02",
+          "target": " as we were talking about earlier",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "ma sono",
+          "legoId": "S0039L01",
+          "target": " but I'm",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " not",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " sure",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "7a0f458e-4d11-4335-a1a1-d76613dce786"
+      },
+      {
+       "op": "lego.update",
+       "id": "879d9fcb-9dfa-4eaf-b383-796c29d1bf4d",
+       "set": {
+        "known_text": "di cui stavamo parlando prima",
+        "target_text": "as we were talking about earlier",
+        "components": [],
+        "known_audio_id": "76ba1ac6-d1ec-40f6-a724-855c70a262ca",
+        "target1_audio_id": "c7531772-81b7-4d63-8993-418b5c2415db",
+        "target2_audio_id": "ffd8ea9f-cd12-4166-9688-a26850bf75b0",
+        "presentation_audio_id": "586e5fd2-3f33-4a2d-8fd2-a64b585f8e0f"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   },
+   {
+    "from": 30,
+    "n": 3,
+    "status": 200,
+    "secs": 4.9,
+    "gate": "green",
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
        "op": "lego.update",
        "key": {
         "course_code": "eng_for_ita",
@@ -2514,7 +5317,7 @@
        "changed": true
       },
       {
-       "index": 31,
+       "index": 1,
        "op": "phrase.insert",
        "key": {
         "id": "eng_for_ita:S0273L01U06"
@@ -2535,7 +5338,7 @@
        "changed": true
       },
       {
-       "index": 32,
+       "index": 2,
        "op": "lego.insert",
        "key": {
         "seed_number": 273,
@@ -2543,7 +5346,7 @@
        },
        "before": null,
        "after": {
-        "id": "292f5c43-7684-4be9-a452-f075b39952a9",
+        "id": "5305077d-06d4-40a6-b74c-57e425aa9830",
         "seed_number": 273,
         "lego_index": 2,
         "lego_id": "S0273L02",
@@ -2555,12 +5358,670 @@
         "presentation_audio_id": null
        },
        "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0273L01",
+         "S0273L02"
+        ]
+       },
+       "considered": 7,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_ita:S0273L01U05",
+         "before": [
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": "unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " work",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "andare via",
+           "legoId": "S0255L01",
+           "target": " leave",
+           "isGhost": false
+          },
+          {
+           "known": "il mese prossimo",
+           "legoId": "S0271L02",
+           "target": " next month",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0086L02",
+           "target": "unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " work",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0255L01",
+           "target": " leave",
+           "known": "andare via",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0271L02",
+           "target": " next month",
+           "known": "il mese prossimo",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0273L01U02",
+         "before": [
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": "unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " work",
+           "isGhost": true
+          },
+          {
+           "known": "aspettare",
+           "legoId": "S0082L01",
+           "target": " to wait",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " for",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " him",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0086L02",
+           "target": "unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " work",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0082L01",
+           "target": " to wait",
+           "known": "aspettare",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " for",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " him",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0273L01B03",
+         "before": [
+          {
+           "known": "no",
+           "legoId": "S0096L01",
+           "target": "no",
+           "isGhost": false
+          },
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": " unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " work",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0096L01",
+           "target": "no",
+           "known": "no",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0086L02",
+           "target": " unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " work",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0273L01U04",
+         "before": [
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": "unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " work",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " come",
+           "isGhost": true
+          },
+          {
+           "known": "con te",
+           "legoId": "S0001L02",
+           "target": " with you",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0086L02",
+           "target": "unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " work",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " come",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " with you",
+           "known": "con te",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0273L01U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "it",
+           "isGhost": true
+          },
+          {
+           "known": "sembra",
+           "legoId": "S0272L01",
+           "target": " sounds like",
+           "isGhost": false
+          },
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": " unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " do",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "it",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0272L01",
+           "target": " sounds like",
+           "known": "sembra",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0086L02",
+           "target": " unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " do",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0273L01B02",
+         "before": [
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": "unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " work",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0086L02",
+           "target": "unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " work",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ita:S0273L01B01",
+         "before": [
+          {
+           "known": "purtroppo ho troppo",
+           "legoId": "S0273L01",
+           "target": "unfortunately I've got too much",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0086L02",
+           "target": "unfortunately",
+           "known": "purtroppo",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0273L01",
+           "target": " I've got too much",
+           "known": "ho troppo",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
       }
      ],
      "undo_ops": [
       {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": "unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": "unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " work",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "it",
+          "isGhost": true
+         },
+         {
+          "known": "sembra",
+          "legoId": "S0272L01",
+          "target": " sounds like",
+          "isGhost": false
+         },
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": " unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " do",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": "unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " work",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " come",
+          "isGhost": true
+         },
+         {
+          "known": "con te",
+          "legoId": "S0001L02",
+          "target": " with you",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "no",
+          "legoId": "S0096L01",
+          "target": "no",
+          "isGhost": false
+         },
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": " unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " work",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": "unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " work",
+          "isGhost": true
+         },
+         {
+          "known": "aspettare",
+          "legoId": "S0082L01",
+          "target": " to wait",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " for",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " him",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ita:S0273L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "purtroppo ho troppo",
+          "legoId": "S0273L01",
+          "target": "unfortunately I've got too much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " work",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "andare via",
+          "legoId": "S0255L01",
+          "target": " leave",
+          "isGhost": false
+         },
+         {
+          "known": "il mese prossimo",
+          "legoId": "S0271L02",
+          "target": " next month",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
        "op": "lego.delete",
-       "id": "292f5c43-7684-4be9-a452-f075b39952a9"
+       "id": "5305077d-06d4-40a6-b74c-57e425aa9830"
       },
       {
        "op": "phrase.delete",
@@ -2590,179 +6051,6 @@
         "target1_audio_id": "d6e6b293-dba8-42ea-a04d-7ee85a3c119e",
         "target2_audio_id": "e5a8bab8-b5bd-4861-bbcd-4ca325a3edf1",
         "presentation_audio_id": "0e696df4-238f-43db-b576-f8a9784a3b58"
-       }
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03U05"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03U04"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03U03"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03U02"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03U01"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03B03"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03B02"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0143L03B01"
-      },
-      {
-       "op": "lego.delete",
-       "id": "dc8c04be-9ec7-4777-ad56-8444551e7ab9"
-      },
-      {
-       "op": "lego.update",
-       "id": "879d9fcb-9dfa-4eaf-b383-796c29d1bf4d",
-       "set": {
-        "known_text": "di cui stavamo parlando prima",
-        "target_text": "as we were talking about earlier",
-        "components": [],
-        "known_audio_id": "76ba1ac6-d1ec-40f6-a724-855c70a262ca",
-        "target1_audio_id": "c7531772-81b7-4d63-8993-418b5c2415db",
-        "target2_audio_id": "ffd8ea9f-cd12-4166-9688-a26850bf75b0",
-        "presentation_audio_id": "586e5fd2-3f33-4a2d-8fd2-a64b585f8e0f"
-       }
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03U05"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03U04"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03U03"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03U02"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03U01"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03B03"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03B02"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0115L03B01"
-      },
-      {
-       "op": "lego.delete",
-       "id": "1fc296db-6213-4f26-aed7-256c02949118"
-      },
-      {
-       "op": "lego.update",
-       "id": "c8b16b0e-a344-4f31-b7db-5e149c08294d",
-       "set": {
-        "known_text": "pronto ad avere una conversazione",
-        "target_text": "ready to have a conversation",
-        "components": [
-         {
-          "known": "pronto",
-          "target": "ready"
-         },
-         {
-          "known": "ad avere una conversazione",
-          "target": "to have a conversation"
-         }
-        ],
-        "known_audio_id": "1b5194e4-ec96-49c6-8bc4-fcc809830889",
-        "target1_audio_id": "a8021bbb-93a4-4ac4-b9ef-a82daecf1a0f",
-        "target2_audio_id": "7fecd572-63a3-4ad4-8e4a-115fe331bd16",
-        "presentation_audio_id": "0a391cf3-6475-4777-a37c-69c0fd8342af"
-       }
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03U05"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03U04"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03U03"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03U02"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03U01"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03B03"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03B02"
-      },
-      {
-       "op": "phrase.delete",
-       "phrase_id": "eng_for_ita:S0026L03B01"
-      },
-      {
-       "op": "lego.delete",
-       "id": "e93437df-ee93-436a-b343-1341a74d830c"
-      },
-      {
-       "op": "lego.update",
-       "id": "0a2ced0c-0ad8-470b-9fa5-9d95e5b8373c",
-       "set": {
-        "known_text": "sentirmi come se fossi quasi pronto",
-        "target_text": "feeling as if I'm nearly ready",
-        "components": [
-         {
-          "known": "sentirmi",
-          "target": "feeling"
-         },
-         {
-          "known": "come se fossi",
-          "target": "as if I'm"
-         },
-         {
-          "known": "quasi",
-          "target": "nearly"
-         },
-         {
-          "known": "pronto",
-          "target": "ready"
-         }
-        ],
-        "known_audio_id": "4512a138-e6bb-47b9-b040-9964e94055d2",
-        "target1_audio_id": "91e8b8ab-cffe-470c-848b-89f4c1aca340",
-        "target2_audio_id": "52ced910-4956-49b3-9f23-87c664547505",
-        "presentation_audio_id": "c76446a3-7bb1-4103-be4b-57f757b0b568"
        }
       }
      ],

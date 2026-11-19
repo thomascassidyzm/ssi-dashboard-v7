@@ -25,3 +25,13 @@ python3 -I tools/plan.py item19 <course> $CS_SCRATCH/dumps/<course>.json
 python3 -I tools/validate.py item19 <course> $CS_SCRATCH/dumps/<course>.json
 python3 -I tools/dryrun.py item19 <course>
 ```
+
+## Proof of the copy-only kit (cs #931·AI, 19 Nov, eng_for_ita)
+- READ: nightly copy `ssi_copy_20261119t033000z` (socket /home/tomcassidy/ssi-restore/sock, login ssi_copy, built 03:41:21Z)
+  via `tools/mkdump.py` (dump 300 seeds / 6,187 rows; snapshot 668 seeds). `data/live/` → `data/copy/`, all 16 regenerated.
+- PLAN: `item19/decisions/eng_for_ita.py` → plan.py: 5 LEGOs (4 recut, 1 hold), 33 ops, 0 problems — identical to #807·AI's.
+- VALIDATOR on the copy: no NEW issues. (eng_for_spa 42 ops, eng_for_fra 59 ops also re-planned identical, validator clean.)
+- DRY RUN: `POST /api/production/eng_for_ita/edit-batch` (no apply), 4 chunks of <= 10, all 200 (27 s, 37 s, 29 s, 5 s;
+  #807's single 33-op run before cs #937 took 10.8 s). Stored in the plan.
+- CHANGESET: `item19/plans/eng_for_ita.changeset.jsonl`, `apply-changeset.cjs --check` → OK, 33 ops (no DB touched). NOT applied.
+- Nothing else contacted live.
