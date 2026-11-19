@@ -17,50 +17,48 @@ const [, , topicKey, turnsArg = '30', model = 'opus'] = process.argv;
 // F-ids, services/shared/metagraph/moves.json) that the engine steers towards and a judge checks.
 // plan entries: {id, from, to, hint, followup?}. from/to = turn window (1-based). F303 is two-part:
 // a "coin" entry (not tagged) and a later redeploy entry that carries the tag.
+// v5 (#992, round 5): Tom on round 3, "Zombie is a lot better ... I think the topic is still a bit obvious
+// and perhaps overdone". Keep zombie's energy (banter, wander, gossip) but no stock pub topics: each moment
+// is specific, grows out of one of these people's lives, has just happened, and has a surprising angle a
+// bright person at the table can bring. Moves at a realistic density: four per evening, spread out.
 const TOPICS = {
-  tickle: {
-    moment: "Danny's daughter rang him this afternoon and told him you physically can't tickle yourself, and that it's something to do with the brain. He has spent ten minutes trying under the table and has just told the others. Jess is already trying it.",
-    ending: "The talk has moved on to a question the tickling opened up (about what else the brain predicts or ignores, or what that means for people) and someone is mid-way through a half-formed idea about it, unresolved, when it stops.",
+  hamster: {
+    moment: "Over half-term the hamster in Femi's daughter's class died, and the school quietly bought an identical one. His daughter worked it out because the new one bites. At tea tonight she asked him whether he'd do the same if she died. He has just told the table.",
+    ending: "Near the end someone starts a new story the talk has sparked, and it is still going, mid-flow, when it stops.",
     plan: [
-      { id: 'F302', from: 3, to: 8, hint: "someone who half-knows why (Femi or Sunny) first marks down their own authority, plainly, and then says what they think the reason is at full strength" },
-      { id: 'F9', from: 8, to: 13, hint: "someone else, before pushing back, offers back an accurate version of that explanation in their own words, as a check before they push on it; the person who gave it confirms it next turn", followup: "confirm-or-correct" },
-      { id: 'F303', role: 'coin', from: 9, to: 15, hint: "someone coins a short, vivid phrase for the idea under discussion that the others pick up" },
-      { id: 'F16', from: 14, to: 22, hint: "someone concedes the point another person just made, and then holds their own different view with a but" },
-      { id: 'F11', from: 18, to: 26, hint: "someone is asked a direct question, answers it briefly, and in the same turn hands the identical question on, minimally, by name, to someone at the table who has said little" },
-      { id: 'F303', role: 'reuse', from: 24, to: 33, hint: "a different person redeploys the phrase coined earlier as a tease, shorthand or argument; its ownership can be contested" },
+      { id: 'F2', from: 5, to: 9, hint: "someone asks Femi a plain question about the hamster, the school or his daughter; he answers and throws in a detail nobody asked for" },
+      { id: 'F303', role: 'coin', from: 8, to: 13, hint: "someone coins a short phrase for what the school did, which the others could pick up" },
+      { id: 'F16', from: 15, to: 20, hint: "someone grants the point just made against them, then holds their own view with a but" },
+      { id: 'F11', from: 21, to: 25, hint: "someone answers a direct question briefly and in the same turn hands the identical question on, minimally, by name, to someone quiet" },
+      { id: 'F303', role: 'reuse', from: 27, to: 32, hint: "someone other than the coiner reuses the phrase coined earlier, as a tease or as shorthand" },
     ],
   },
-  warsaw: {
-    moment: "Danny is back from three days in Warsaw visiting his cousin. He's just told the table that the beautiful old town there, which looks medieval, was flattened in the war and rebuilt in the fifties, partly from eighteenth-century paintings by a Venetian painter, and that where the painter got a detail wrong they sometimes built it wrong on purpose. Hugh has asked whether that makes it fake.",
-    ending: "It does not resolve: the last turns have found the real question underneath and two people are still on opposite sides of it, mid-thought, when it stops.",
+  kettle: {
+    moment: "Jess's landlord has finally put a smart meter in her damp flat, and the app shows her electricity minute by minute. She has just told the table she can see the exact minute Matt gets up in the night to make toast, and that she's started checking it at work.",
+    ending: "In the last few turns the talk has drifted onto a tangent one remark opened (not food, drinks or going home) and it is simply on that tangent when it stops.",
     plan: [
-      { id: 'F2', from: 2, to: 7, hint: "someone asks Danny a plain factual question about the place or the rebuilding; he answers it and then volunteers a detail nobody asked for that changes the picture" },
-      { id: 'F301', from: 7, to: 14, hint: "after someone has been building a view for a few turns, a listener hands it back compressed into a sharper name for what is really at stake; the person who built the view ratifies it and adopts that name next turn", followup: "ratify-and-adopt" },
-      { id: 'F305', from: 13, to: 21, hint: "someone pushes back with a counterexample; the person under pressure welcomes it and folds it in as making their own point stronger, not weaker" },
-      { id: 'F16', from: 19, to: 27, hint: "someone concedes the point they've just been given, and then holds their own position with a but" },
-      { id: 'F304', from: 23, to: 31, hint: "someone remarks on how the table itself is talking (talking over each other, everyone suddenly whispering, everyone having changed sides) and uses that observation as a move in the argument" },
-      { id: 'F11', from: 26, to: 33, hint: "someone answers a direct question briefly and in the same turn hands the identical question to a person who has said little" },
+      { id: 'F302', from: 5, to: 9, hint: "someone who half-knows something surprising about electricity, the grid or what meters reveal first says plainly they can't swear to it, then says it at full strength" },
+      { id: 'F9', from: 13, to: 17, hint: "before pushing back, someone offers back an accurate version of what another person just claimed, in their own words, as a check; that person confirms it next turn", followup: 'confirm-or-correct' },
+      { id: 'F305', from: 20, to: 24, hint: "someone pushes back with a counterexample; the person under pressure welcomes it and folds it in as making their own point stronger" },
+      { id: 'F304', from: 27, to: 31, hint: "someone remarks on the table itself as play (everyone suddenly checking their own phones, everyone confessing at once, how fast they've all turned on Matt) and uses it as a move" },
     ],
   },
-  sheep: {
-    moment: "Hugh has just said his ewes know him by his face from across a field and ignore Will, and Jess has said that's sentimental nonsense. Femi says he half-remembers reading that sheep can recognise faces, maybe even from photos, but can't remember how many or where he read it.",
-    ending: "The talk has drifted from sheep onto what that means for something else (people, faces, memory, being recognised) and someone has just started a new thought that the others are poking at when it stops.",
+  wallpaper: {
+    moment: "Rhi stripped wallpaper in a front room on Broad Street today and found a note pencilled on the plaster by the man who papered it in 1962: his name, the date, the score of a Cardiff City match, and the words 'whoever reads this, I hope you're happier than me'. She's photographed it and is passing her phone round.",
+    ending: "It does not resolve: the last turns are still split on what Rhi should do with the wall, someone mid-defence of their idea, when it stops.",
     plan: [
-      { id: 'F302', from: 3, to: 8, hint: "Hugh, or whoever is defending the claim, first says plainly that they've no study or proof, it's only what they've seen, and then delivers the claim at full strength" },
-      { id: 'F2', from: 5, to: 11, hint: "someone asks a plain question (how many faces, how long, how would you even test it); the person asked answers and then volunteers something unexpected nobody asked for" },
-      { id: 'F305', from: 10, to: 17, hint: "someone throws a counterexample at the claim; the claimant welcomes it and folds it in as making the claim stronger" },
-      { id: 'F306', from: 15, to: 23, hint: "someone adds a thought and the next speaker takes it up as exactly where they were about to go, then carries it on along the merged line" },
-      { id: 'F9', from: 20, to: 28, hint: "before disagreeing, someone offers back an accurate version, in their own words, of what another person just argued, as a check; that person confirms it next turn", followup: "confirm-or-correct" },
-      { id: 'F304', from: 25, to: 33, hint: "someone comments on the conversation itself as play (how long they've been on sheep, everyone talking at once, how the argument has flipped) and uses it as a move" },
+      { id: 'F306', from: 6, to: 10, hint: "someone adds a thought and the next speaker takes it up as exactly where they were about to go, then carries it on along the merged line" },
+      { id: 'F301', from: 14, to: 18, hint: "after someone has been building a view for a few turns, a listener hands it back compressed into a sharper name; the person who built it ratifies it and uses that name next turn", followup: 'ratify-and-adopt' },
+      { id: 'F11', from: 21, to: 25, hint: "someone answers a direct question briefly and in the same turn hands the identical question on, minimally, by name, to someone quiet" },
+      { id: 'F16', from: 28, to: 32, hint: "someone grants the point just made against them, then holds their own view with a but" },
     ],
   },
   probe: null,
 };
-// the probe reuses the tickle moment with a compressed 10-turn plan
-TOPICS.probe = { ...TOPICS.tickle, plan: [
-  { id: 'F302', from: 2, to: 4, hint: TOPICS.tickle.plan[0].hint },
-  { id: 'F9', from: 4, to: 7, hint: TOPICS.tickle.plan[1].hint, followup: 'confirm-or-correct' },
-  { id: 'F16', from: 7, to: 10, hint: TOPICS.tickle.plan[3].hint },
+// the probe reuses the hamster moment with a compressed 10-turn plan
+TOPICS.probe = { ...TOPICS.hamster, plan: [
+  { id: 'F2', from: 3, to: 5, hint: TOPICS.hamster.plan[0].hint },
+  { id: 'F16', from: 7, to: 10, hint: TOPICS.hamster.plan[2].hint },
 ] };
 const T0 = TOPICS[topicKey];
 if (!T0) { console.error('unknown topic'); process.exit(2); }
@@ -78,17 +76,17 @@ const SYSTEM = `You are the "next turn" engine for a live, unscripted group conv
 
 ${cards}
 
-WHAT THIS TABLE IS: six bright, curious friends on an ordinary good night in the pub, and tonight something genuinely interesting has come up. They are into it. They know things and half-know things, test each other's claims, bring in what they've read, seen or noticed, push on each other's ideas, and sometimes change their minds. It is still pub talk, not a seminar and not a debate: short turns, teasing, warmth, cut-ins, side remarks. But the content has substance. A good evening here is one where by the end the question has turned into a better question.
+WHAT THIS TABLE IS: six quick, funny, bright friends on an ordinary good night in the pub. Real pub talk: someone telling what just happened while the others pick holes in it, teasing, mild gossip about people in town, a story sparking another story. Tonight's moment is specific and a bit odd, and somebody at the table always has a surprising angle on it from their own life or what they know: a fact from the farm, the surgery, the classroom, a book. That angle is said in a sentence, fought over, teased, and taken somewhere. Not a seminar, not a debate, not a lads' night.
 
-THE REGISTER (the whole point of this round):
-- Between two failures. NOT a seminar: nobody gives a speech, explains at length, or debates policy. NOT a lads' night: no toilet humour, no daft one-liners for their own sake, no running gags.
-- Substance comes in small pieces: one detail someone knows, one question that tests a claim, one example from their own life, one "but then why does...". The table builds the idea together, a few words at a time.
-- Facts stated as facts are true. Anything shaky is flagged as half-remembered and gets challenged. Nobody makes up statistics or studies.
-- Most good lines get a REPLY, not a laugh. The table takes each other seriously enough to answer. Wit is welcome; it comes from the person and the moment, never from a crafted punchline.
+THE REGISTER:
+- The energy of friends winding each other up, with something worth chewing on underneath. Substance comes in small pieces: one detail someone knows, one question that tests a claim, one example from their own life.
+- Facts stated as facts are true. Anything shaky is flagged as half-remembered and gets challenged. Nobody invents statistics or studies.
+- Most good lines get a REPLY, not a laugh. Wit comes from the person and the moment, never from a crafted punchline.
 
 HOW THIS TABLE TALKS:
 - SHORT TURNS. Most turns are one sentence, often less: a fragment, a "No, hang on", a question, a jab, a sentence someone else finishes. Two sentences is a normal long turn. Never more than about 35 words: real talk has nothing longer, and a long turn gets interrupted.
-- Messy, not polished. False starts, "wait, wait", trailing off, two people answering at once, a question nobody answers, someone restarting a sentence. A line that sounds written is wrong; a line that sounds like an aphorism is wrong.
+- Messy, not polished. Real talk is full of "yeah", "right", "mm", "no", "go on" as whole turns; false starts ("I— no, the other one"); people saying the same thing twice; trailing off; abandoning a sentence and starting another; a question nobody answers; two people saying the same word at once. A line that sounds written, quotable, balanced or neatly turned is WRONG. No line ends on a twist. No lists of three.
+- The physical scene breaks in. Glasses, crisps, plates, the bar, the barman, a phone, the dog under the table, someone's coat, the fire, the door. Every so often a turn is about that ("mind your glass", "is that mine?", "pass us those") and then the talk carries on. It never changes the subject for good.
 - Everyone is bright. Nobody is dim or comic relief; nobody has a catchphrase. Don't sprinkle "honestly", "actually", "to be fair", "literally" across everyone.
 - A line should be identifiable as its speaker with the name hidden, from what they'd know, notice or tease. The cards describe people, never wording: never echo a card's phrasing in a line.
 - Talk moves. Someone's example opens a new angle, someone drags it back, the question shifts. Nobody moderates, nobody plays host, nobody says "great point" or "good question".
@@ -98,7 +96,7 @@ HOW THIS TABLE TALKS:
 ${STYLE ? 'STRUCTURE OF REAL TALK (copy ONLY its structure: turn length, overlap, abandoned sentences, how the floor passes, drift. These sources are licence-restricted: NEVER reuse, translate or rework any of their words, phrases, situations or subjects):\n' + STYLE + '\n\n' : ''}${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED (never write these):
 - laughter reactions as filler: no "ha", "haha", nobody laughing at a line as a reply;
 - anyone misquoting a thinker and being corrected; name-dropping philosophers or academics;
-- fetching or offering drinks or food to change the subject; "whose round is it"; last orders; anyone leaving;
+- side business used to change the subject for good; "whose round is it"; last orders; anyone leaving;
 - a touching or reconciling moment near the end; a closing punchline; a toast; anyone summing up the evening;
 - politics, policy, tax, housing, planning, education policy, NHS policy or current-affairs debate; anyone's job turned into a case study;
 - lecture turns: nobody explains how something works in a paragraph or starts "the thing is…" and holds forth;
@@ -116,11 +114,11 @@ RULES OF WHO SPEAKS NEXT (you choose, unless the turn instructions name the spea
 - Quiet people get drawn in, not on a rota. Over the evening everyone speaks, unevenly.
 - The same person may speak twice in a row only if they were cut off and are reclaiming, or nobody picked up their question.
 
-GROUP-CONTRIBUTION MOVES: the turn instructions sometimes ask for one of these moves from the metagraph. When asked, perform it for real, in natural words that never name the move, between at least three people who are in on this part of the talk. Set "move" to the move id only when this very turn performs it; otherwise "move" is null.
+GROUP-CONTRIBUTION MOVES: these are rare at a real table. Only a handful happen in an evening, spaced out. The turn instructions sometimes ask for one of these moves from the metagraph. When asked, perform it for real, in natural words that never name the move, between at least three people who are in on this part of the talk. Set "move" to the move id only when this very turn performs it; otherwise "move" is null.
 
 OUTPUT: only a JSON object, nothing else:
-{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}], "move": "F…" or null, "move_target": for a move that reads back, names or builds on ANOTHER person's view, that person's name, else null}
-Plain English speech only: no stage directions, no asterisks, no parentheses, no speaker name inside "line".`;
+{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}], "move": "F…" or null, "event": a very short stage direction for something physical that happens just before this line (e.g. "Hugh's pint goes over", "the barman drops a tray") or null, "move_target": for a move that reads back, names or builds on ANOTHER person's view, that person's name, else null}
+Plain English speech only in "line": no stage directions, no asterisks, no parentheses, no speaker name inside "line".`;
 
 // transcript as HEARD: each entry {speaker, line, cutOff:boolean, overlap, backchannels:[{who,text,after}], move}
 const T = [];
@@ -130,7 +128,7 @@ function transcriptForModel(withNums) {
   return T.map((e, i) => {
     let s = heardText(e);
     for (const b of e.backchannels || []) s = s.replace(b.after, `${b.after} [${b.who}: ${b.text}]`);
-    return `${withNums ? (i + 1) + '. ' : ''}${e.overlap ? '[starting over the end] ' : ''}${e.speaker}: ${s}`;
+    return `${e.event ? '[' + e.event + '] ' : ''}${withNums ? (i + 1) + '. ' : ''}${e.overlap ? '[starting over the end] ' : ''}${e.speaker}: ${s}`;
   }).join('\n');
 }
 
@@ -163,7 +161,7 @@ for (let i = 0; i < turns; i++) {
   const n = i + 1;
   const counts = Object.fromEntries(NAMES.map(x => [x, T.filter(e => e.speaker === x).length]));
   const rr = Math.random();
-  let band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.5 ? 'SHORT: 1-6 words (a "No, hang on", a question, a jab, a half-start, one fact)' : rr < 0.9 ? 'MEDIUM: 7-22 words, one sentence or two' : 'LONGER: 22-35 words, only if someone is genuinely telling or building something; otherwise MEDIUM';
+  let band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.5 ? 'SHORT: 1-6 words (a "yeah", a "no, hang on", a question, a jab, a half-start, a one-word reaction)' : rr < 0.9 ? 'MEDIUM: 7-22 words, one sentence or two' : 'LONGER: 22-35 words, only if someone is genuinely telling or building something; otherwise MEDIUM';
   // which planned move (if any) is live this turn: earliest open window; forced on its last turn
   let moveAsk = '', forced = null, livePlan = -1;
   if (pending) {
@@ -184,6 +182,11 @@ for (let i = 0; i < turns; i++) {
   }
   const sinceCut = T.length - 1 - T.map(e => !!e.cutIn).lastIndexOf(true);
   const cutNudge = !forced && T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
+  // v5: loosen tidy lines and let the room in (Tom: "loosen the tidy lines"; the corpus: side business breaks in)
+  const lastEvent = T.map(e => !!e.event).lastIndexOf(true);
+  const eventsSoFar = T.filter(e => e.event).length;
+  const messNudge = !forced && i > 0 && Math.random() < 0.3 ? '\nTHIS TURN IS UNPOLISHED: a restart, a stall, a self-correction, two goes at the same word, or trailing off. Nothing neat.' : '';
+  const eventNudge = !forced && i >= 4 && i < turns - 2 && i - lastEvent >= 6 && eventsSoFar < 5 && Math.random() < 0.4 ? '\nSOMETHING PHYSICAL HAPPENS just before this turn (set "event"); this line reacts to it briefly, then the talk carries on next turn.' : '';
   const prompt = `THE MOMENT: ${T0.moment}
 
 THIS EVENING'S MOVE PLAN (for your awareness; let the talk grow towards these, never force or name them):
@@ -193,7 +196,7 @@ TRANSCRIPT SO FAR (as heard; "—" at the end of a line = that speaker was cut o
 ${T.length ? transcriptForModel() : '(nothing said yet: the moment has just happened. The FIRST turn is under 15 words and lands right in the middle of it, as if mid-evening, with no scene-setting)'}
 
 Turns so far per person: ${JSON.stringify(counts)}. This is turn ${n} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up, no punchline.' : 'keep it live and moving.'}
-LENGTH FOR THIS TURN: ${band}.${forced ? '' : ' Pick a speaker for whom that length is natural right now.'}${moveAsk}${cutNudge}
+LENGTH FOR THIS TURN: ${band}.${forced ? '' : ' Pick a speaker for whom that length is natural right now.'}${moveAsk}${cutNudge}${messNudge}${eventNudge}
 Write the single next turn as JSON.`;
   let r, tries = 0;
   while (true) {
@@ -229,7 +232,8 @@ Write the single next turn as JSON.`;
       if (p.followup) pending = { kind: p.followup, speaker: null, after: n };
     }
   }
-  const entry = { speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [], move };
+  const ev = typeof r.event === 'string' && r.event.trim() && (i - lastEvent >= 4) && eventsSoFar < 5 ? r.event.trim().replace(/[.]$/, '') : null;
+  const entry = { event: ev, speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [], move };
   T.push(entry);
   // the follow-up goes to the person whose view was read back / named: the most recent other speaker who isn't the mover
   // tickle take 1 lesson (#992): the follow-up went to the last other speaker, not the person whose view was
@@ -291,7 +295,7 @@ function render() {
     const lead = e.cutIn ? '—' : '';
     const tag = e.overlap ? ' *[over the end]*' : '';
     const mv = e.move ? ` *{${e.move} ${MOVES[e.move].name}}*` : '';
-    return `**${e.speaker}:**${tag}${mv} ${lead}${s}`;
+    return `${e.event ? '*[' + e.event + ']*\n\n' : ''}**${e.speaker}:**${tag}${mv} ${lead}${s}`;
   }).join('\n\n');
 }
 fs.writeFileSync(path.join(__dirname, `out-${outKey}.json`), JSON.stringify({ topic: T0.moment, model, plan: T0.plan, T, log, judgements, hit, unplaced }, null, 2));
