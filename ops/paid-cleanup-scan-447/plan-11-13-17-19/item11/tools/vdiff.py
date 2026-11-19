@@ -4,7 +4,7 @@ override answer, so untouched defects show as NEW. This runs validate.py a secon
 (the seed as it is live, through the same override door; nothing written) and prints, per seed, only the issues the
 plan really adds and the ones it removes. Run after tools/validate.py.  usage: python3 -I item11/tools/vdiff.py <course>
 Writes plans/<course>.json "validator_vs_unchanged"."""
-import json, os, subprocess, sys
+import json, os, re, subprocess, sys
 FAM = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); P = os.path.dirname(FAM)
 course = sys.argv[1]; S = os.environ['CS_SCRATCH']
 pf = os.path.join(FAM, 'plans', f'{course}.json'); plan = json.load(open(pf))
@@ -15,7 +15,14 @@ subprocess.run(['python3', '-I', os.path.join(P, 'tools', 'validate.py'), 'item1
 base = json.load(open(bf))['validator']['per_seed']; os.remove(bf)
 out = {}
 for n, r in plan['validator']['per_seed'].items():
-    a, b = set(r['seed_issues_planned']), set(base[n]['seed_issues_planned'])
+    # compare like with like: drop the "(N component phrases excluded)" aside, and treat a "need N+, got M" shortfall
+    # as added only when M went DOWN (the same shortfall, or a smaller one, was already there)
+    def key(i): return re.sub(r' \(\d+ component phrases excluded\)', '', i)
+    def short(i):
+        m = re.match(r'(L\d+: (?:BUILD|USE)): need \d+\+, got (\d+)', i); return (m.group(1), int(m.group(2))) if m else None
+    was = dict(filter(None, (short(i) for i in base[n]['seed_issues_planned'])))
+    a = {key(i) for i in r['seed_issues_planned'] if not (short(i) and short(i)[0] in was and short(i)[1] >= was[short(i)[0]])}
+    b = {key(i) for i in base[n]['seed_issues_planned']}
     other = {k: v for k, v in r['new_issues_anywhere'].items() if str(k) != str(n)}
     out[n] = {'added': sorted(a - b), 'removed': sorted(b - a), 'other_seeds': other, 'error': r.get('error') or base[n].get('error')}
     if a - b or other or out[n]['error']:
