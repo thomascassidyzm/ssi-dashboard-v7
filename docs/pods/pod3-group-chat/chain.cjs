@@ -181,7 +181,7 @@ for (let i = 0; i < turns; i++) {
     }
   }
   const sinceCut = T.length - 1 - T.map(e => !!e.cutIn).lastIndexOf(true);
-  const cutNudge = !forced && T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
+  const cutNudge = !forced && !(T.length && T[T.length - 1].move) && T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
   // v5: loosen tidy lines and let the room in (Tom: "loosen the tidy lines"; the corpus: side business breaks in)
   const lastEvent = T.map(e => !!e.event).lastIndexOf(true);
   const eventsSoFar = T.filter(e => e.event).length;
@@ -209,7 +209,8 @@ Write the single next turn as JSON.`;
   }
   const prev = T[T.length - 1];
   let cutApplied = false;
-  if (r.cut_in && prev && !prev.cutOff && !forced) {
+  // round 5 probe: an F16 was cut off before its "but", so it failed its test. A turn carrying a move is never cut.
+  if (r.cut_in && prev && !prev.cutOff && !forced && !prev.move) {
     const idx = prev.line.indexOf(r.cut_in);
     if (idx >= 0 && idx + r.cut_in.length < prev.line.length - 1) {
       prev.full = prev.line;

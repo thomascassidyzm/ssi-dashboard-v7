@@ -1,0 +1,309 @@
+{
+  "topic": "Over half-term the hamster in Femi's daughter's class died, and the school quietly bought an identical one. His daughter worked it out because the new one bites. At tea tonight she asked him whether he'd do the same if she died. He has just told the table.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F2",
+      "from": 3,
+      "to": 5,
+      "hint": "someone asks Femi a plain question about the hamster, the school or his daughter; he answers and throws in a detail nobody asked for"
+    },
+    {
+      "id": "F16",
+      "from": 7,
+      "to": 10,
+      "hint": "someone grants the point just made against them, then holds their own view with a but"
+    }
+  ],
+  "T": [
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Please tell me you hesitated. Even a little.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "oh no",
+          "after": "Even a little."
+        }
+      ],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Femi",
+      "line": "I said no, obviously, and she said that's what the school would say too.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "Hang on, how'd she know it wasn't just the same hamster in a mood",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Hang on, how'd she know it wasn't just the same hamster in a mood after a week at some teacher's house?"
+    },
+    {
+      "event": null,
+      "speaker": "Femi",
+      "line": "She checked its feet. Wrong colour.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null,
+      "moveRejected": "F2"
+    },
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Feet. She'll make a stockman.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Sunny",
+      "line": "Which feet? Front or back?",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "Alright, the feet, I'll give her the feet",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Alright, the feet, I'll give her the feet. But anything'd bite after a week in some stranger's kitchen over half-term.",
+      "moveRejected": "F16"
+    },
+    {
+      "event": null,
+      "speaker": "Jess",
+      "line": "We did that. Twice. Goldfish.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Who's we? You or your mum?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Jess",
+      "line": "Mum. I was eight, and she—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Please tell me you hesitated. Even a little.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Femi",
+        "line": "I said no, obviously, and she said that's what the school would say too.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "oh no",
+            "after": "Even a little."
+          }
+        ],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Hang on, how'd she know it wasn't just the same hamster in a mood after a week at some teacher's house?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F2"
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Femi",
+        "line": "She checked its feet. Wrong colour.",
+        "cut_in": "the same hamster in a mood",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F2",
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": "F2"
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Feet. She'll make a stockman.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Which feet? Front or back?",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Alright, the feet, I'll give her the feet. But anything'd bite after a week in some stranger's kitchen over half-term.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F16",
+        "event": null,
+        "move_target": "Femi"
+      },
+      "cutApplied": false,
+      "planned": "F16"
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Jess",
+        "line": "We did that. Twice. Goldfish.",
+        "cut_in": "Alright, the feet, I'll give her the feet.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Who's we? You or your mum?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Mum. I was eight, and she—",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 4,
+      "speaker": "Femi",
+      "move": "F2",
+      "pass": false,
+      "reason": "Femi's 'She checked its feet. Wrong colour.' only answers Rhi's question of how she knew, since the colour detail is part of that answer, and he volunteers nothing beyond what was asked."
+    },
+    {
+      "turn": 7,
+      "speaker": "Rhi",
+      "move": "F16",
+      "pass": false,
+      "reason": "Rhi concedes Femi's point (\"I'll give her the feet\") but breaks off before any \"but\" or restatement of her same-hamster doubt, so she never holds her own position and only the concession half of the move is present."
+    }
+  ],
+  "hit": [],
+  "unplaced": [
+    "F2",
+    "F16"
+  ]
+}
