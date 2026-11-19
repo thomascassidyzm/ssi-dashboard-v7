@@ -1,0 +1,806 @@
+{
+ "course": "eng_for_fra",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0003L02U06": {
+   "seed": {
+    "seed_number": 3,
+    "known_text": "comment parler aussi souvent que possible.",
+    "target_text": "how to speak as often as possible.",
+    "known_audio_id": "5e8f1029-5061-4ad5-a4f3-9aabad4ebe8b",
+    "target1_audio_id": "542765fd-c87d-4b15-84a3-9f47fc07cffe",
+    "target2_audio_id": "0e332c79-e8ef-478e-8eb1-b822c6a68958"
+   },
+   "lego": {
+    "lego_id": "S0003L02",
+    "known_text": "aussi souvent que possible",
+    "target_text": "as often as possible",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0004L03U06": {
+   "seed": {
+    "seed_number": 4,
+    "known_text": "comment dire quelque chose en anglais",
+    "target_text": "how to say something in English",
+    "known_audio_id": "24fc76f8-2f02-492c-9614-7991b1407581",
+    "target1_audio_id": "32d857e5-8e21-49e9-9a26-622bec24da05",
+    "target2_audio_id": "7e78d12d-42fb-4394-8ecf-ca46d040f035"
+   },
+   "lego": {
+    "lego_id": "S0004L03",
+    "known_text": "en anglais",
+    "target_text": "in English",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0009L02U06": {
+   "seed": {
+    "seed_number": 9,
+    "known_text": "Je parle un peu anglais maintenant.",
+    "target_text": "I speak a little English now.",
+    "known_audio_id": "43376002-46ac-4c4c-aba4-dc76a9b9d02b",
+    "target1_audio_id": "27a09c0f-997f-40b6-bc03-426a6146d8a0",
+    "target2_audio_id": "b7a4727e-ed8d-4e9d-b539-c9d6c77c9b6e"
+   },
+   "lego": {
+    "lego_id": "S0009L02",
+    "known_text": "un peu",
+    "target_text": "a little",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0012L04U06": {
+   "seed": {
+    "seed_number": 12,
+    "known_text": "Je n'aimerais pas deviner ce qui va se passer demain.",
+    "target_text": "I wouldn't like to guess what's going to happen tomorrow.",
+    "known_audio_id": "ba51e8ca-1c97-4649-a490-83d8562eccce",
+    "target1_audio_id": "b36ebd82-1ab6-463a-b5da-4db0cc8a124d",
+    "target2_audio_id": "ac25d05b-a88a-4de9-bd67-8a4c6d664d8e"
+   },
+   "lego": {
+    "lego_id": "S0012L04",
+    "known_text": "demain",
+    "target_text": "tomorrow",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0015L03U06": {
+   "seed": {
+    "seed_number": 15,
+    "known_text": "Et je veux que tu parles anglais avec moi demain.",
+    "target_text": "And I want you to speak English with me tomorrow.",
+    "known_audio_id": "2d2c3575-ab42-4421-89ff-183d6f9e5b1e",
+    "target1_audio_id": "e3602588-b25a-45ae-ba9a-56d521ac2f04",
+    "target2_audio_id": "1d4666b1-d6ba-4aec-8a35-bc0b2c195cff"
+   },
+   "lego": {
+    "lego_id": "S0015L03",
+    "known_text": "avec moi",
+    "target_text": "with me",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0019L03U06": {
+   "seed": {
+    "seed_number": 19,
+    "known_text": "Mais je ne veux pas arrêter de parler.",
+    "target_text": "But I don't want to stop talking.",
+    "known_audio_id": "a30c3986-1147-405b-a3c8-f63240c40f60",
+    "target1_audio_id": "35578f2c-26cf-45d0-833a-3a356594db7f",
+    "target2_audio_id": "77410f8a-a716-4b6a-ba4c-a796857ce65f"
+   },
+   "lego": {
+    "lego_id": "S0019L03",
+    "known_text": "arrêter de parler",
+    "target_text": "to stop talking",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0020L02U06": {
+   "seed": {
+    "seed_number": 20,
+    "known_text": "Tu veux apprendre son prénom rapidement.",
+    "target_text": "You want to learn his name quickly.",
+    "known_audio_id": "8c45620a-7d65-41f8-8c39-fdda9e3220f2",
+    "target1_audio_id": "1c283542-ad89-46fe-b724-078e13a32110",
+    "target2_audio_id": "2a5d1e2a-2969-4463-85c3-7dc2c9eb0a48"
+   },
+   "lego": {
+    "lego_id": "S0020L02",
+    "known_text": "rapidement",
+    "target_text": "quickly",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0022L03U06": {
+   "seed": {
+    "seed_number": 22,
+    "known_text": "Parce que je veux rencontrer des gens qui parlent anglais.",
+    "target_text": "Because I want to meet people who speak English.",
+    "known_audio_id": "7b7a2a13-b5c7-424f-84cf-f491d2446ce1",
+    "target1_audio_id": "144cd3d2-90e9-4206-b4e4-f08b1a77ce1b",
+    "target2_audio_id": "5520708d-c15e-450e-8fd8-a620d99336af"
+   },
+   "lego": {
+    "lego_id": "S0022L03",
+    "known_text": "qui parlent anglais",
+    "target_text": "who speak English",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0023L03U06": {
+   "seed": {
+    "seed_number": 23,
+    "known_text": "Je vais commencer à parler plus bientôt.",
+    "target_text": "I'm going to start talking more soon.",
+    "known_audio_id": "4e3a1cc6-0544-456c-a8c6-a3640f3e4623",
+    "target1_audio_id": "059dbd50-79d8-4960-bccc-f4867ffd8da9",
+    "target2_audio_id": "c340d99e-9eff-434a-938d-7e9c7c9182ab"
+   },
+   "lego": {
+    "lego_id": "S0023L03",
+    "known_text": "bientôt",
+    "target_text": "soon",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0031L01U06": {
+   "seed": {
+    "seed_number": 31,
+    "known_text": "Tu voulais parler avec moi ce soir.",
+    "target_text": "You wanted to speak with me tonight.",
+    "known_audio_id": "3068a3d8-66b9-4cd9-b79c-78c406dc6217",
+    "target1_audio_id": "a40bfa53-8d65-432a-a8dc-2b8654f8613f",
+    "target2_audio_id": "fd1b8d6b-83e3-4625-8016-3dae296235d7"
+   },
+   "lego": {
+    "lego_id": "S0031L01",
+    "known_text": "tu voulais",
+    "target_text": "you wanted",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0041L02U06": {
+   "seed": {
+    "seed_number": 41,
+    "known_text": "Je me sens bien, mais je commence à me sentir fatigué.",
+    "target_text": "I feel okay, but I'm starting to feel tired.",
+    "known_audio_id": "d00b5301-e905-438c-8495-ac6af77b62b7",
+    "target1_audio_id": "affe1a12-c67b-4777-bec9-2ae1b201afb4",
+    "target2_audio_id": "70615eb3-e2c8-4972-a9e8-da8e3acf97b0"
+   },
+   "lego": {
+    "lego_id": "S0041L02",
+    "known_text": "je commence à me sentir",
+    "target_text": "I'm starting to feel",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0050L03U06": {
+   "seed": {
+    "seed_number": 50,
+    "known_text": "Je n'essaie pas de finir aussi vite que possible.",
+    "target_text": "I'm not trying to finish as quickly as possible.",
+    "known_audio_id": "525e6e0f-8755-499c-9313-cbc6053623c1",
+    "target1_audio_id": "31d7a45d-de3f-47b3-ab8b-5bfc4f1a4324",
+    "target2_audio_id": "fd9a0848-3ba8-40c3-b427-f41dce428bdf"
+   },
+   "lego": {
+    "lego_id": "S0050L03",
+    "known_text": "aussi vite que possible",
+    "target_text": "as quickly as possible",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0058L02U06": {
+   "seed": {
+    "seed_number": 58,
+    "known_text": "C'est intéressant quand tu comprends assez de mots.",
+    "target_text": "It's interesting when you understand enough words.",
+    "known_audio_id": "9b953583-6abd-4c17-a83e-7370d590218d",
+    "target1_audio_id": "c589cc5b-cd8b-4a8f-84dc-03f5044a9622",
+    "target2_audio_id": "76d516d6-f09e-4857-8889-9b1e0287a92f"
+   },
+   "lego": {
+    "lego_id": "S0058L02",
+    "known_text": "assez de mots",
+    "target_text": "enough words",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0079L01U06": {
+   "seed": {
+    "seed_number": 79,
+    "known_text": "Quand est-ce que tu as commencé à apprendre ?",
+    "target_text": "When did you start to learn?",
+    "known_audio_id": "e8c4f744-85f7-4dee-8eb5-5be55d337b33",
+    "target1_audio_id": "619fb044-8d07-4ac6-b5cf-6e409ae97819",
+    "target2_audio_id": "032479a7-5cfd-499d-8131-f92023f6cf58"
+   },
+   "lego": {
+    "lego_id": "S0079L01",
+    "known_text": "quand est-ce que tu as commencé",
+    "target_text": "when did you start",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L03U06": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "Je ne vais pas t'attendre. Pourquoi pas ?",
+    "target_text": "I'm not going to wait for you. Why not?",
+    "known_audio_id": "c79a02ab-ac6e-4cb6-8a91-63f58554812e",
+    "target1_audio_id": "980cdb18-9f6f-465a-a9a1-40ffeed6dabc",
+    "target2_audio_id": "ed4ee405-2177-4507-8764-278dc1c2c1db"
+   },
+   "lego": {
+    "lego_id": "S0082L03",
+    "known_text": "pourquoi pas",
+    "target_text": "why not",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0086L02U06": {
+   "seed": {
+    "seed_number": 86,
+    "known_text": "Ce n'était pas possible, malheureusement.",
+    "target_text": "It wasn't possible, unfortunately.",
+    "known_audio_id": "7675ff69-c02e-4830-9fde-595e13757593",
+    "target1_audio_id": "6c1e7b0b-862b-472b-a4fa-627b28bc5d83",
+    "target2_audio_id": "8046481e-bc64-4c30-b3d9-6555787cfd28"
+   },
+   "lego": {
+    "lego_id": "S0086L02",
+    "known_text": "malheureusement",
+    "target_text": "unfortunately",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0093L02U06": {
+   "seed": {
+    "seed_number": 93,
+    "known_text": "C'est l'heure de partir maintenant.",
+    "target_text": "It's time to go now.",
+    "known_audio_id": "89606afa-d6ca-415c-b00d-689f7f3f2a2d",
+    "target1_audio_id": "075c1e5b-4a03-4858-89bd-6a2fc369dcb5",
+    "target2_audio_id": "63b394ea-bb30-48f8-8f64-a5e039ab4f63"
+   },
+   "lego": {
+    "lego_id": "S0093L02",
+    "known_text": "partir",
+    "target_text": "to go",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0095L02U06": {
+   "seed": {
+    "seed_number": 95,
+    "known_text": "Tu es prêt à rentrer à la maison avec le prochain bus ?",
+    "target_text": "Are you ready to go home on the next bus?",
+    "known_audio_id": "62a73652-a886-4bd2-afe6-6677124a1868",
+    "target1_audio_id": "531f4ce2-7810-49bd-a330-bb93b4ddf673",
+    "target2_audio_id": "546e022c-87b0-4eeb-b4e4-a22c03f5f7d1"
+   },
+   "lego": {
+    "lego_id": "S0095L02",
+    "known_text": "le prochain bus",
+    "target_text": "the next bus",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0096L02U06": {
+   "seed": {
+    "seed_number": 96,
+    "known_text": "Non je ne suis pas encore prête, j'ai besoin d'un peu plus de temps.",
+    "target_text": "No I'm not ready yet, I need a little more time.",
+    "known_audio_id": "3df588a5-a097-4866-aee6-f53ab9cfa5cb",
+    "target1_audio_id": "beaad486-de82-4ddb-b866-19b55cff0a72",
+    "target2_audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+   },
+   "lego": {
+    "lego_id": "S0096L02",
+    "known_text": "j'ai besoin de",
+    "target_text": "I need",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0103L02U06": {
+   "seed": {
+    "seed_number": 103,
+    "known_text": "Nous n'essayons pas d'entendre beaucoup plus de mots.",
+    "target_text": "We're not trying to hear many more words.",
+    "known_audio_id": "c4c3e604-1da7-4b7b-9fbb-22c6cf6178fe",
+    "target1_audio_id": "fad82055-5a66-4471-bbb6-03e7cc9c52a7",
+    "target2_audio_id": "fcf3e0c1-71c2-47de-85ad-c653586ad3bd"
+   },
+   "lego": {
+    "lego_id": "S0103L02",
+    "known_text": "beaucoup plus de mots",
+    "target_text": "many more words",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0122L03U06": {
+   "seed": {
+    "seed_number": 122,
+    "known_text": "Ça commence à sembler plus facile et je suis enthousiaste à propos de comment ça se passe.",
+    "target_text": "It's starting to feel easier and I'm excited about how it's going.",
+    "known_audio_id": "e8f42596-fa07-45c3-8ac5-585497fb26ba",
+    "target1_audio_id": "84bb8034-f69d-4be8-95a7-ad3bd77e56a2",
+    "target2_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375"
+   },
+   "lego": {
+    "lego_id": "S0122L03",
+    "known_text": "comment ça se passe",
+    "target_text": "how it's going",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0134L02U06": {
+   "seed": {
+    "seed_number": 134,
+    "known_text": "Ce n'est pas un problème quand tu travailles sur quelque chose de difficile avec eux.",
+    "target_text": "It's not a problem when you work at something difficult with them.",
+    "known_audio_id": "beecee46-4f7a-45fd-8dbf-ce60c7acbce1",
+    "target1_audio_id": "c6578d77-4c04-4dcc-b359-2db34f38abd8",
+    "target2_audio_id": "7905f342-2385-45aa-b5fb-a1a28b12464f"
+   },
+   "lego": {
+    "lego_id": "S0134L02",
+    "known_text": "avec eux",
+    "target_text": "with them",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0136L02U06": {
+   "seed": {
+    "seed_number": 136,
+    "known_text": "Bien sûr tu peux lui demander parce qu'elle est mon amie.",
+    "target_text": "Of course you can ask her because she's my friend.",
+    "known_audio_id": "a37d2b40-6468-40fa-807c-ef49231db78b",
+    "target1_audio_id": "03c27e85-6d01-486b-932d-07cffbfbd896",
+    "target2_audio_id": "e1c432a1-cc51-459a-99c0-0d8f9840e83d"
+   },
+   "lego": {
+    "lego_id": "S0136L02",
+    "known_text": "lui demander",
+    "target_text": "ask her",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0141L02U06": {
+   "seed": {
+    "seed_number": 141,
+    "known_text": "Pas de problème. Tout va bien.",
+    "target_text": "No problem. Everything is okay.",
+    "known_audio_id": "ca0a9a7d-8940-4343-b96a-1c4d5e075154",
+    "target1_audio_id": "ab139152-41f8-4fc2-9a7c-2c444217dab2",
+    "target2_audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace"
+   },
+   "lego": {
+    "lego_id": "S0141L02",
+    "known_text": "tout va bien",
+    "target_text": "everything is okay",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0144L02U06": {
+   "seed": {
+    "seed_number": 144,
+    "known_text": "Je me suis réveillé plus tôt que je ne voulais ce matin.",
+    "target_text": "I woke earlier than I wanted to this morning.",
+    "known_audio_id": "ce64a948-17b3-4be7-9482-32226fa150b6",
+    "target1_audio_id": "6069037a-dfa0-4e7a-92db-b38010b291e5",
+    "target2_audio_id": "6cdbae69-48c8-4836-b1d2-acdc7ac46644"
+   },
+   "lego": {
+    "lego_id": "S0144L02",
+    "known_text": "plus tôt que je ne voulais",
+    "target_text": "earlier than I wanted to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0149L03U06": {
+   "seed": {
+    "seed_number": 149,
+    "known_text": "Ce n'est pas très difficile, donc j'espère que tu vas finir bientôt.",
+    "target_text": "This isn't very difficult, so I hope you'll finish soon.",
+    "known_audio_id": "9bf35945-7dfa-4efb-8703-75bab166cd10",
+    "target1_audio_id": "70de5edf-9be9-4ac0-a3f9-8c035524d159",
+    "target2_audio_id": "741b7be4-6122-4207-8e59-323ad862fcd8"
+   },
+   "lego": {
+    "lego_id": "S0149L03",
+    "known_text": "tu vas finir bientôt",
+    "target_text": "you'll finish soon",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0156L02U07": {
+   "seed": {
+    "seed_number": 156,
+    "known_text": "Tu veux aller au restaurant ce soir ?",
+    "target_text": "Do you want to go to a restaurant tonight?",
+    "known_audio_id": "dd96ae75-d3d9-46a5-b6ab-0217b7548e7c",
+    "target1_audio_id": "68c13933-e9db-4e86-9b19-dacbfa349ae8",
+    "target2_audio_id": "f80b20d2-f177-4598-beb1-9ce9921dd415"
+   },
+   "lego": {
+    "lego_id": "S0156L02",
+    "known_text": "au restaurant",
+    "target_text": "to a restaurant",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0168L03U06": {
+   "seed": {
+    "seed_number": 168,
+    "known_text": "Et ensuite je pourrai venir aider plus tard.",
+    "target_text": "And then I'll be able to come and help later on.",
+    "known_audio_id": "24c536fc-fbf4-4ea8-a25a-9f631b85b744",
+    "target1_audio_id": "223b47b0-7d18-4f27-b028-d7c434176098",
+    "target2_audio_id": "c2a4abeb-d9d7-462e-aeab-b8c7d088a423"
+   },
+   "lego": {
+    "lego_id": "S0168L03",
+    "known_text": "venir aider",
+    "target_text": "come and help",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0173L02U06": {
+   "seed": {
+    "seed_number": 173,
+    "known_text": "Non merci je peux me débrouiller seul.",
+    "target_text": "No thank you I can manage on my own.",
+    "known_audio_id": "0592721f-5dbb-413c-b878-15922a58dec3",
+    "target1_audio_id": "5d769fb2-d481-413c-a689-414e3170610f",
+    "target2_audio_id": "de13fc62-a42e-4617-9b07-c5d646d44c73"
+   },
+   "lego": {
+    "lego_id": "S0173L02",
+    "known_text": "seul",
+    "target_text": "on my own",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0178L03U06": {
+   "seed": {
+    "seed_number": 178,
+    "known_text": "Je n'avais pas le temps, bien que je voulais te voir.",
+    "target_text": "I didn't have time, although I wanted to see you.",
+    "known_audio_id": "6dc90e79-5be4-41f3-baee-35c418b97c3c",
+    "target1_audio_id": "f7debce3-79f1-4a2c-a576-fd40cec16fd2",
+    "target2_audio_id": "c07d61f8-8839-484c-b0c3-3be3dfdb765b"
+   },
+   "lego": {
+    "lego_id": "S0178L03",
+    "known_text": "te voir",
+    "target_text": "to see you",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0180L02U06": {
+   "seed": {
+    "seed_number": 180,
+    "known_text": "J'aimerais lire mon livre pendant un moment.",
+    "target_text": "I'd like to read my book for a while.",
+    "known_audio_id": "3a8979f5-594d-4071-a4b2-818ca1517c3a",
+    "target1_audio_id": "26423197-34aa-4338-80fa-f9751ec174b3",
+    "target2_audio_id": "09468477-573a-4872-b598-803fd705749b"
+   },
+   "lego": {
+    "lego_id": "S0180L02",
+    "known_text": "mon livre",
+    "target_text": "my book",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0181L04U06": {
+   "seed": {
+    "seed_number": 181,
+    "known_text": "Mais je dois emmener ma mère chez le médecin.",
+    "target_text": "But I have to take my mother to the doctor.",
+    "known_audio_id": "8eb0eb55-006c-413c-b6fc-8fb2a07abbe1",
+    "target1_audio_id": "ff1a46cf-a74c-498d-85e9-a66b96143633",
+    "target2_audio_id": "f553830c-e4d1-4cf6-9b7c-a38cdc469912"
+   },
+   "lego": {
+    "lego_id": "S0181L04",
+    "known_text": "chez le médecin",
+    "target_text": "to the doctor",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0184L03U06": {
+   "seed": {
+    "seed_number": 184,
+    "known_text": "Oui je les ai vues au bureau il y a un moment.",
+    "target_text": "Yes I saw them in the office a while ago.",
+    "known_audio_id": "cf4581da-55f0-4d74-b907-83f0689b5a17",
+    "target1_audio_id": "7b0b10c4-42eb-4160-95b2-7f6806d36e87",
+    "target2_audio_id": "f8f820e1-4315-4f2e-ab6e-00bbc8199951"
+   },
+   "lego": {
+    "lego_id": "S0184L03",
+    "known_text": "il y a un moment",
+    "target_text": "a while ago",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0186L02U06": {
+   "seed": {
+    "seed_number": 186,
+    "known_text": "Tu veux parler de quelque chose de différent la semaine prochaine ?",
+    "target_text": "Do you want to talk about something different next week?",
+    "known_audio_id": "1a619bad-eed5-49ed-bc94-8c09184b5fca",
+    "target1_audio_id": "0a5764c1-20f0-4fa5-a7f3-3e47a5f096c6",
+    "target2_audio_id": "88c36369-9683-48df-b411-bd3498de437a"
+   },
+   "lego": {
+    "lego_id": "S0186L02",
+    "known_text": "quelque chose de différent",
+    "target_text": "something different",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0211L02U05": {
+   "seed": {
+    "seed_number": 211,
+    "known_text": "Ils nous ont dit qu'ils ne voulaient pas expliquer.",
+    "target_text": "They told us that they didn't want to explain.",
+    "known_audio_id": "897a9736-3876-423b-a5bc-7e783f5abf9c",
+    "target1_audio_id": "bd64edcd-ce5a-427f-b2a5-00cdff8180f5",
+    "target2_audio_id": "0244fbc6-0188-4dfd-8c5b-2b5758664311"
+   },
+   "lego": {
+    "lego_id": "S0211L02",
+    "known_text": "ils ne voulaient pas",
+    "target_text": "they didn't want to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0223L01U06": {
+   "seed": {
+    "seed_number": 223,
+    "known_text": "Il va te demander demain.",
+    "target_text": "He's going to ask you tomorrow.",
+    "known_audio_id": "560213c3-c15c-414c-b06c-95ed1e3e176f",
+    "target1_audio_id": "aa0d356e-c21b-4671-a24e-32284ffca168",
+    "target2_audio_id": "e4fb87d5-e3c2-4741-a801-7f8bb04d9938"
+   },
+   "lego": {
+    "lego_id": "S0223L01",
+    "known_text": "il va te",
+    "target_text": "he's going to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0227L01U06": {
+   "seed": {
+    "seed_number": 227,
+    "known_text": "Cet homme va me dire quelque chose de nouveau.",
+    "target_text": "That man is going to tell me something new.",
+    "known_audio_id": "69f51701-062e-4b22-878f-8d98b0520ab0",
+    "target1_audio_id": "38db1121-34fc-4bf1-8fa0-667583fcc4e7",
+    "target2_audio_id": "f527f1f1-d976-45f6-8d68-82416c084f8e"
+   },
+   "lego": {
+    "lego_id": "S0227L01",
+    "known_text": "cet homme",
+    "target_text": "that man",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0234L02U06": {
+   "seed": {
+    "seed_number": 234,
+    "known_text": "J'ai rencontré quelqu'un hier soir qui travaille avec ton frère.",
+    "target_text": "I met someone last night who works with your brother.",
+    "known_audio_id": "d50418c5-9b65-4eab-b1af-11883d371176",
+    "target1_audio_id": "c73d74f1-1dbb-4b84-99d9-6cb3c42c3283",
+    "target2_audio_id": "19ad3519-0688-4591-9d8f-d5032562b18e"
+   },
+   "lego": {
+    "lego_id": "S0234L02",
+    "known_text": "qui travaille avec ton frère",
+    "target_text": "who works with your brother",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0238L01U06": {
+   "seed": {
+    "seed_number": 238,
+    "known_text": "Il voulait que tu me le dises hier.",
+    "target_text": "He wanted you to tell me yesterday.",
+    "known_audio_id": "7befadf3-e675-412d-9337-3ad9aab261d1",
+    "target1_audio_id": "8d83fbdc-cf2e-4c90-8355-823e03a89e43",
+    "target2_audio_id": "7ad3e42d-bfad-4462-a2e2-eee4102e2e6a"
+   },
+   "lego": {
+    "lego_id": "S0238L01",
+    "known_text": "il voulait que tu me le dises",
+    "target_text": "he wanted you to tell me",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0249L02U06": {
+   "seed": {
+    "seed_number": 249,
+    "known_text": "Je veux que tu m'aides avant de partir.",
+    "target_text": "I want you to help me before you go.",
+    "known_audio_id": "a775ff3e-33e6-4413-89d0-eed967159ad9",
+    "target1_audio_id": "34e75a9a-cc50-4ca2-b927-46578afe13ba",
+    "target2_audio_id": "67b94ec3-6d26-4dee-812d-202e280e2f48"
+   },
+   "lego": {
+    "lego_id": "S0249L02",
+    "known_text": "avant de partir",
+    "target_text": "before you go",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0257L02U06": {
+   "seed": {
+    "seed_number": 257,
+    "known_text": "J'aime bien ce truc bleu.",
+    "target_text": "I like that blue thing.",
+    "known_audio_id": "0e7df16a-72e4-4ece-b9d6-c70894a2b575",
+    "target1_audio_id": "4a977f69-2e53-49cd-8bd9-fb69a8f35883",
+    "target2_audio_id": "ea2e2018-7f50-43ea-b93f-c548d2fb5e63"
+   },
+   "lego": {
+    "lego_id": "S0257L02",
+    "known_text": "bleu",
+    "target_text": "blue",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L02U05": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "Oui elle m'a envoyé deux emails la semaine dernière.",
+    "target_text": "Yes she sent me two emails last week.",
+    "known_audio_id": "20ac28a4-66cf-4d50-a9c3-3781ac909ec2",
+    "target1_audio_id": "e8737ac4-9d25-466d-9212-6539ce3941b7",
+    "target2_audio_id": "5c17f963-3cf3-4a9b-863c-4bcfa7f3a008"
+   },
+   "lego": {
+    "lego_id": "S0268L02",
+    "known_text": "deux emails",
+    "target_text": "two emails",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0272L02U06": {
+   "seed": {
+    "seed_number": 272,
+    "known_text": "Oui ça ressemble à une excellente idée.",
+    "target_text": "Yes that sounds like a great idea.",
+    "known_audio_id": "4d1cbee9-2429-49be-9d69-1706b8541384",
+    "target1_audio_id": "568eb2f4-a277-4c11-98be-89f02410e5eb",
+    "target2_audio_id": "e9f6ba72-361a-433e-9216-c420228cb57c"
+   },
+   "lego": {
+    "lego_id": "S0272L02",
+    "known_text": "une excellente idée",
+    "target_text": "a great idea",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0273L01U06": {
+   "seed": {
+    "seed_number": 273,
+    "known_text": "Non malheureusement j'ai trop de travail.",
+    "target_text": "No unfortunately I've got too much work.",
+    "known_audio_id": "7a498a57-ce94-47d8-8d50-9ec4d7dad772",
+    "target1_audio_id": "7fc1ccdc-cad5-4ccf-a7ba-136f2da98aee",
+    "target2_audio_id": "8b93969c-bbf3-4ae8-b697-1d20d3efe78d"
+   },
+   "lego": {
+    "lego_id": "S0273L01",
+    "known_text": "j'ai trop de travail",
+    "target_text": "I've got too much work",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0276L02U06": {
+   "seed": {
+    "seed_number": 276,
+    "known_text": "Non je peux rester ici encore un peu.",
+    "target_text": "No I can stay here for a little longer.",
+    "known_audio_id": "fd8b6323-6683-4900-81a1-31ab5429a4f5",
+    "target1_audio_id": "b360f44c-fa34-4df7-b652-70cdeac65d18",
+    "target2_audio_id": "dcfb50c8-6160-4e80-9726-ea2e82a93978"
+   },
+   "lego": {
+    "lego_id": "S0276L02",
+    "known_text": "ici encore un peu",
+    "target_text": "here for a little longer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0277L02U06": {
+   "seed": {
+    "seed_number": 277,
+    "known_text": "Oui j'ai une réunion importante en début de semaine prochaine.",
+    "target_text": "Yes I've got an important meeting early next week.",
+    "known_audio_id": "e770f4fa-12dd-41af-ba2a-8db1e7b61e02",
+    "target1_audio_id": "941ebd40-cb47-4760-908b-c876546e1bd7",
+    "target2_audio_id": "0d5c4a7e-3e9d-4ae5-9fe2-7a91c68cf5e6"
+   },
+   "lego": {
+    "lego_id": "S0277L02",
+    "known_text": "en début de semaine prochaine",
+    "target_text": "early next week",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0280L02U06": {
+   "seed": {
+    "seed_number": 280,
+    "known_text": "Non je devais seulement faire le travail le plus important.",
+    "target_text": "No I only had to do the most important job.",
+    "known_audio_id": "29afe421-73cb-460e-ab24-63d2c9a690b0",
+    "target1_audio_id": "d3f6c957-5948-45bc-98fe-d55aebada55f",
+    "target2_audio_id": "888f4aaf-b587-43a9-92f5-160b75a39bb9"
+   },
+   "lego": {
+    "lego_id": "S0280L02",
+    "known_text": "le travail le plus important",
+    "target_text": "the most important job",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

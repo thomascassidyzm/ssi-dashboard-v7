@@ -17,3 +17,7 @@ Snapshots, `recount/` and `item12/*/plan.json` regenerated from `ssi_copy_202611
 - Items 14 (2,883 rows), 16 (645 LEGOs), 18 (3,775 same-basket + 2,603 cross-basket): counts only, in `recount/`.
   Too heavy to apply by day, and Kai's 18 Nov 22:03Z ruling bars scripted fix plans without his specific OK.
 - Item 15 (86 formal rows in deu/deu_at/deu_ch/fra_ca/ita): rewording + new audio; no renders in this job. Held.
+- Kai's live pre-check rule (19 Nov 10:38Z) applies to these changesets: `item12/<course>/precheck.json` (`tools/precheck12.cjs`)
+  holds, per planned row, the seed (texts + 3 clip ids) and home LEGO (texts + is_new) it was built on. `apply-changeset.cjs`
+  checks neither the LEGO nor the seed, so DO NOT run the item 12 changesets with it as it stands: first pre-check each
+  batch on live against precheck.json (hold mismatches) — or add that step to the applier.

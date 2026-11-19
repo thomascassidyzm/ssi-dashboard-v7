@@ -1,0 +1,721 @@
+{
+ "course": "deu_for_jpn",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0007L01U06": {
+   "seed": {
+    "seed_number": 7,
+    "known_text": "今日できるだけ頑張りたいです。",
+    "target_text": "Ich möchte heute so hart wie möglich versuchen.",
+    "known_audio_id": "f2eca77e-9f69-40c5-830c-4cf71655300c",
+    "target1_audio_id": "3ae852ab-a800-40c9-af0d-bc89422d3aa6",
+    "target2_audio_id": "fd696fc4-c712-4120-bc4e-dc6f47815f64"
+   },
+   "lego": {
+    "lego_id": "S0007L01",
+    "known_text": "今日",
+    "target_text": "heute",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0011L02U07": {
+   "seed": {
+    "seed_number": 11,
+    "known_text": "あなたが終わったら話せるようになりたいです。",
+    "target_text": "Ich möchte sprechen können, nachdem du fertig bist.",
+    "known_audio_id": "76a97166-172a-4dac-8252-87ad846f04ea",
+    "target1_audio_id": "1226fbf9-b269-401b-a6cc-08afbe8ad2de",
+    "target2_audio_id": "205a37c9-e86f-46cf-ae54-a705edb5d514"
+   },
+   "lego": {
+    "lego_id": "S0011L02",
+    "known_text": "あなたが終わったら",
+    "target_text": "nachdem du fertig bist",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0013L02U07": {
+   "seed": {
+    "seed_number": 13,
+    "known_text": "ドイツ語がとても上手ですね。",
+    "target_text": "Du sprichst sehr gut Deutsch.",
+    "known_audio_id": "8e7c6eb5-1029-4097-afe7-8bc7324d73c4",
+    "target1_audio_id": "1e2019b3-a5e3-4b21-a3a1-f73107250480",
+    "target2_audio_id": "5b3b664d-0876-4d39-b125-1f86bf51bf4e"
+   },
+   "lego": {
+    "lego_id": "S0013L02",
+    "known_text": "上手",
+    "target_text": "gut",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0016L03U07": {
+   "seed": {
+    "seed_number": 16,
+    "known_text": "彼は後で皆と一緒に戻りたいです。",
+    "target_text": "Er möchte später mit allen anderen zurückkommen.",
+    "known_audio_id": "bdd1fe17-874f-455b-a263-04a41c79a0b4",
+    "target1_audio_id": "630c4679-61a2-483e-b68e-bd05fc4ec212",
+    "target2_audio_id": "5b05fa43-3355-47f3-b70d-bd8473531a59"
+   },
+   "lego": {
+    "lego_id": "S0016L03",
+    "known_text": "皆と一緒に",
+    "target_text": "mit allen anderen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0018L02U06": {
+   "seed": {
+    "seed_number": 18,
+    "known_text": "今晩6時に会いたいです。",
+    "target_text": "Wir möchten uns heute Abend um sechs Uhr treffen.",
+    "known_audio_id": "7336d737-68e1-4254-913f-32d02551666b",
+    "target1_audio_id": "ee9ecd38-e95f-4d90-86b7-1484f41b8028",
+    "target2_audio_id": "7e9617e1-25a8-4867-8a6c-0225727042a5"
+   },
+   "lego": {
+    "lego_id": "S0018L02",
+    "known_text": "6時に",
+    "target_text": "um sechs Uhr",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0020L02U07": {
+   "seed": {
+    "seed_number": 20,
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "target_text": "Du möchtest seinen Namen schnell lernen.",
+    "known_audio_id": "18b6efb8-eb69-442a-9552-e6d0c835c234",
+    "target1_audio_id": "55e7968d-733f-418f-b43d-626bb373ace7",
+    "target2_audio_id": "dd7d6a9e-e260-45cc-9890-932da4fa52cc"
+   },
+   "lego": {
+    "lego_id": "S0020L02",
+    "known_text": "彼の名前",
+    "target_text": "seinen Namen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0023L02U07": {
+   "seed": {
+    "seed_number": 23,
+    "known_text": "もうすぐもっと話し始めるつもりです。",
+    "target_text": "Ich werde bald mehr sprechen.",
+    "known_audio_id": "624df810-a553-4f2e-b55c-e6a7cdfb4557",
+    "target1_audio_id": "28256091-9139-4698-8c5d-df06b550d92e",
+    "target2_audio_id": "5743f321-edc8-4d5d-8720-c104cf5d26ae"
+   },
+   "lego": {
+    "lego_id": "S0023L02",
+    "known_text": "もっと",
+    "target_text": "mehr",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0024L01U07": {
+   "seed": {
+    "seed_number": 24,
+    "known_text": "簡単には覚えられないでしょう。",
+    "target_text": "Ich werde nicht leicht erinnern können.",
+    "known_audio_id": "f1b9d721-a5f2-47fe-beb6-8e2c9f3bb249",
+    "target1_audio_id": "2568fbfb-087f-4825-882b-73f3c51564ed",
+    "target2_audio_id": "cc449833-4e57-4476-a9c0-e739885b28f4"
+   },
+   "lego": {
+    "lego_id": "S0024L01",
+    "known_text": "簡単に",
+    "target_text": "leicht",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0026L01U07": {
+   "seed": {
+    "seed_number": 26,
+    "known_text": "もうすぐ行ける準備ができているように感じるのが好きです。",
+    "target_text": "Ich mag das Gefühl, fast bereit zu sein.",
+    "known_audio_id": "627f6d2f-2db7-4c88-81a6-c6ba510ec342",
+    "target1_audio_id": "3e0bede5-3109-4c3f-b9c1-ff6eb70b2d7c",
+    "target2_audio_id": "7f74a40c-7a2d-494c-aec0-0890fe61b77a"
+   },
+   "lego": {
+    "lego_id": "S0026L01",
+    "known_text": "好き",
+    "target_text": "mag",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0029L01U06": {
+   "seed": {
+    "seed_number": 29,
+    "known_text": "できるだけ早くもっと上手に話せるようになるのを楽しみにしています。",
+    "target_text": "Ich freue mich darauf, so schnell wie möglich besser zu sprechen.",
+    "known_audio_id": "63106bf6-478d-4b4d-9e71-c1e01c49ade1",
+    "target1_audio_id": "05406554-d78d-4596-a2d4-7632320e31b0",
+    "target2_audio_id": "41fdb6c1-0993-4217-ab0f-f6b3e3f9d04e"
+   },
+   "lego": {
+    "lego_id": "S0029L01",
+    "known_text": "上手に",
+    "target_text": "besser",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0030L01U01": {
+   "seed": {
+    "seed_number": 30,
+    "known_text": "昨日あなたに何か聞きたかったです。",
+    "target_text": "Ich wollte dich gestern etwas fragen.",
+    "known_audio_id": "31c8cfd8-c9c3-4e54-bac2-004fe28a44d5",
+    "target1_audio_id": "5f4e08ce-1b9b-482b-85f8-99c474d668fd",
+    "target2_audio_id": "0ce8ac6c-6c88-49ec-8ad1-375b3ec0df59"
+   },
+   "lego": {
+    "lego_id": "S0030L01",
+    "known_text": "昨日",
+    "target_text": "gestern",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0033L01U06": {
+   "seed": {
+    "seed_number": 33,
+    "known_text": "ドイツ語をどのくらい学んでいますか？",
+    "target_text": "Wie lange lernst du schon Deutsch?",
+    "known_audio_id": "427d4a25-1b25-49e6-b1c2-1e3a4ce8d801",
+    "target1_audio_id": "560b4bdd-e43c-4c7a-bce0-e7ed5a44df93",
+    "target2_audio_id": "595f85b7-836c-44ff-b321-1208837570f1"
+   },
+   "lego": {
+    "lego_id": "S0033L01",
+    "known_text": "どのくらい",
+    "target_text": "wie lange",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0034L03U05": {
+   "seed": {
+    "seed_number": 34,
+    "known_text": "彼は他の人がいる時に静かにしたくありません。",
+    "target_text": "Er möchte nicht still sein, wenn andere Leute hier sind.",
+    "known_audio_id": "4c96670d-ee75-46d9-8dea-ec0f3bc0a4f0",
+    "target1_audio_id": "dc00037f-ce19-4186-b61d-1188eb5b5fca",
+    "target2_audio_id": "6e02e153-f542-44a2-b5a5-fd039412cde8"
+   },
+   "lego": {
+    "lego_id": "S0034L03",
+    "known_text": "いる",
+    "target_text": "sind",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0035L03U06": {
+   "seed": {
+    "seed_number": 35,
+    "known_text": "彼女は今日の午後何も読みたくありません。",
+    "target_text": "Sie möchte heute Nachmittag nichts lesen.",
+    "known_audio_id": "3832d13e-a51c-47af-ae2b-ee22507736c0",
+    "target1_audio_id": "e9f8de6d-6e28-4f5d-a092-0ea75a52b6f7",
+    "target2_audio_id": "2f72fa07-5348-43e4-9098-517a66cda57a"
+   },
+   "lego": {
+    "lego_id": "S0035L03",
+    "known_text": "午後",
+    "target_text": "nachmittag",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0038L02U01": {
+   "seed": {
+    "seed_number": 38,
+    "known_text": "約一週間学んでいます。",
+    "target_text": "Ich lerne seit etwa einer Woche.",
+    "known_audio_id": "a587767f-6abb-4736-8fa2-10f0c8567456",
+    "target1_audio_id": "35149603-29c4-469c-8811-cd44f503c06f",
+    "target2_audio_id": "df97d2c1-ebf9-4f34-b752-7697ebb08b8f"
+   },
+   "lego": {
+    "lego_id": "S0038L02",
+    "known_text": "一週間",
+    "target_text": "einer Woche",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0039L02U06": {
+   "seed": {
+    "seed_number": 39,
+    "known_text": "でも今朝は少し疲れています。",
+    "target_text": "Aber ich bin heute Morgen ein bisschen müde.",
+    "known_audio_id": "d305ecc4-74af-4f82-8655-9c703b7bf0f1",
+    "target1_audio_id": "69fdfec8-8309-40f1-b59d-e5bc51e3e8b3",
+    "target2_audio_id": "8e962257-8e83-48db-967a-4672478ab7aa"
+   },
+   "lego": {
+    "lego_id": "S0039L02",
+    "known_text": "今朝",
+    "target_text": "heute Morgen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0044L02U06": {
+   "seed": {
+    "seed_number": 44,
+    "known_text": "または改善する必要があるかどうか。",
+    "target_text": "Oder ob ich mich verbessern muss.",
+    "known_audio_id": "a9e96b4e-2f0b-4d84-b347-7c909de9f8a2",
+    "target1_audio_id": "8e5341aa-0d06-49d7-8684-e8a71558681a",
+    "target2_audio_id": "841c95f0-f6e5-4431-9842-13efca9939a5"
+   },
+   "lego": {
+    "lego_id": "S0044L02",
+    "known_text": "または",
+    "target_text": "oder",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0045L02U06": {
+   "seed": {
+    "seed_number": 45,
+    "known_text": "すべてを知る必要はありません。",
+    "target_text": "Ich muss nicht alles wissen.",
+    "known_audio_id": "9ce6d90e-bd1e-4cd1-9f74-fa093f1b0a0c",
+    "target1_audio_id": "b7ff5591-3b96-4893-9dd8-192ff0f37569",
+    "target2_audio_id": "bd6a443c-db2e-4171-a560-b86228c8c063"
+   },
+   "lego": {
+    "lego_id": "S0045L02",
+    "known_text": "すべて",
+    "target_text": "alles",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0050L01U06": {
+   "seed": {
+    "seed_number": 50,
+    "known_text": "できるだけ早く終わらせようとしているわけではありません。",
+    "target_text": "Ich versuche nicht so schnell wie möglich fertig zu werden.",
+    "known_audio_id": "82602195-60ae-4a54-ab9c-890425d2d851",
+    "target1_audio_id": "8b6da66c-eb5f-4904-b13b-0d48ea43db6f",
+    "target2_audio_id": "9e6eefd7-946a-413f-ad9b-587fdb70b193"
+   },
+   "lego": {
+    "lego_id": "S0050L01",
+    "known_text": "できるだけ早く",
+    "target_text": "so schnell wie möglich",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0051L02U06": {
+   "seed": {
+    "seed_number": 51,
+    "known_text": "友達と面白いことをするのを楽しんでいます。",
+    "target_text": "Ich genieße es, interessante Dinge mit meinen Freunden zu machen.",
+    "known_audio_id": "2a8fa2b5-d8a3-4bb2-89c5-968b7f1eec9d",
+    "target1_audio_id": "0871b9a8-c9d3-4e07-929e-683b7a71bb5d",
+    "target2_audio_id": "b81242f6-28f7-4da1-bc96-045c76b117f9"
+   },
+   "lego": {
+    "lego_id": "S0051L02",
+    "known_text": "面白いこと",
+    "target_text": "interessante Dinge",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0052L05U06": {
+   "seed": {
+    "seed_number": 52,
+    "known_text": "彼は先週友達に手紙を書きたかったです。",
+    "target_text": "Er wollte letzte Woche einen Brief an seinen Freund schreiben.",
+    "known_audio_id": "950f07cf-bd2c-4a87-948e-31e1712cce12",
+    "target1_audio_id": "a4fc939e-e2d6-45b4-9f7d-177985c836b3",
+    "target2_audio_id": "926fe456-7e66-4f92-8599-a4960d17e58d"
+   },
+   "lego": {
+    "lego_id": "S0052L05",
+    "known_text": "先週",
+    "target_text": "letzte Woche",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0056L03U07": {
+   "seed": {
+    "seed_number": 56,
+    "known_text": "だからいくつかの言葉の言い方を覚えられます。",
+    "target_text": "Also kann ich erinnern, wie man ein paar Wörter sagt.",
+    "known_audio_id": "d8098cad-bb94-4503-b012-1f86afbf33b8",
+    "target1_audio_id": "0a191fc7-b51e-424a-876f-b222df8db746",
+    "target2_audio_id": "e2cedaf6-6f8d-4376-951a-e3ddb3d29b24"
+   },
+   "lego": {
+    "lego_id": "S0056L03",
+    "known_text": "言葉",
+    "target_text": "wörter",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0058L02U06": {
+   "seed": {
+    "seed_number": 58,
+    "known_text": "十分な言葉がわかると面白いです。",
+    "target_text": "Es ist interessant, wenn man genug Wörter versteht.",
+    "known_audio_id": "1d07f825-3139-4cd9-a40a-f47661fd4f7a",
+    "target1_audio_id": "20efa7e8-cb07-49dc-ab88-7d2faf66344a",
+    "target2_audio_id": "29cbbd95-3dc8-4350-a9b5-d5658794d2c2"
+   },
+   "lego": {
+    "lego_id": "S0058L02",
+    "known_text": "十分な",
+    "target_text": "genug",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0061L02U06": {
+   "seed": {
+    "seed_number": 61,
+    "known_text": "もう少しゆっくりもう一度言っていただけますか？",
+    "target_text": "Kannst du das noch einmal ein bisschen langsamer sagen?",
+    "known_audio_id": "471c1a4d-2ede-4b12-966a-6298aadfdb16",
+    "target1_audio_id": "eef7f358-3978-4932-ad7f-84c5032c4853",
+    "target2_audio_id": "864f8219-50a5-42bd-931d-5b463c2cb1d8"
+   },
+   "lego": {
+    "lego_id": "S0061L02",
+    "known_text": "一度",
+    "target_text": "einmal",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0062L01U05": {
+   "seed": {
+    "seed_number": 62,
+    "known_text": "同時にあなたを手伝えるかどうかわかりません。",
+    "target_text": "Ich bin nicht sicher, ob ich dir gleichzeitig helfen kann.",
+    "known_audio_id": "712602a3-52af-42e3-8cae-818f70704af8",
+    "target1_audio_id": "2402b849-d0c5-4ecf-b5c6-db2ee22db93e",
+    "target2_audio_id": "10e46b0d-7a25-4d54-8625-7a368dd067b9"
+   },
+   "lego": {
+    "lego_id": "S0062L01",
+    "known_text": "同時に",
+    "target_text": "gleichzeitig",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0070L01U06": {
+   "seed": {
+    "seed_number": 70,
+    "known_text": "彼女はそれがどこにあるか教えたくありませんでした。",
+    "target_text": "Sie wollte mir nicht sagen, wo es war.",
+    "known_audio_id": "52dbb9a2-22c3-4e1b-8089-5f3deb238ddc",
+    "target1_audio_id": "8aac4d79-273f-45cc-a5f1-f4dc4f9b8f07",
+    "target2_audio_id": "a8370991-3766-4757-a955-c6023ff149d1"
+   },
+   "lego": {
+    "lego_id": "S0070L01",
+    "known_text": "どこ",
+    "target_text": "wo",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0071L02U06": {
+   "seed": {
+    "seed_number": 71,
+    "known_text": "誰にも本当のことを聞かせたくありませんでした。",
+    "target_text": "Wir wollten niemanden die Wahrheit hören lassen.",
+    "known_audio_id": "2e4f02a2-d4f8-4e3e-a738-16baaad0a0d6",
+    "target1_audio_id": "93571097-7c05-490c-adbc-59e12c11ad63",
+    "target2_audio_id": "be713a41-183e-4e47-a17e-1afcfea34ee7"
+   },
+   "lego": {
+    "lego_id": "S0071L02",
+    "known_text": "本当のこと",
+    "target_text": "wahrheit",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0074L01U06": {
+   "seed": {
+    "seed_number": 74,
+    "known_text": "理解するのを手伝ってくれてどうもありがとうございます。",
+    "target_text": "Danke sehr, dass du mir geholfen hast zu verstehen.",
+    "known_audio_id": "e236e04b-2277-418c-88af-7d80219721c1",
+    "target1_audio_id": "d537deda-3b2e-4a28-9d75-321b6dd5dc53",
+    "target2_audio_id": "4c047801-bfa4-4937-baad-c38d151e363c"
+   },
+   "lego": {
+    "lego_id": "S0074L01",
+    "known_text": "理解する",
+    "target_text": "verstehen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L01U06": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "あなたを待つつもりはありません。なぜですか？",
+    "target_text": "Ich werde nicht auf dich warten. Warum nicht?",
+    "known_audio_id": "7570d797-c704-4024-9d92-2ae0b68532b2",
+    "target1_audio_id": "2cb7a66e-8152-4379-aa70-2e3e7056b18b",
+    "target2_audio_id": "dad29173-949b-4b3c-b508-3f1ec08ef91b"
+   },
+   "lego": {
+    "lego_id": "S0082L01",
+    "known_text": "待つ",
+    "target_text": "warten",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0084L02U06": {
+   "seed": {
+    "seed_number": 84,
+    "known_text": "彼が私の友達について言ったことに同意しません。",
+    "target_text": "Ich stimme nicht mit dem überein, was er über meinen Freund gesagt hat.",
+    "known_audio_id": "e61382d7-d35b-4bae-b5e3-3070eb3456ed",
+    "target1_audio_id": "9029532e-5882-424c-8975-ef2508d217ea",
+    "target2_audio_id": "274c9b18-f0ef-48ad-98af-25dce1fe8c1c"
+   },
+   "lego": {
+    "lego_id": "S0084L02",
+    "known_text": "私の",
+    "target_text": "meinen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0108L01U06": {
+   "seed": {
+    "seed_number": 108,
+    "known_text": "夜中に起きることを望んでいませんでした。",
+    "target_text": "Wir hofften nicht, mitten in der Nacht aufzuwachen.",
+    "known_audio_id": "a4da2ea8-7e71-4e95-a46d-47a44902da2b",
+    "target1_audio_id": "491c1f43-94c0-47d2-8cdb-2be5238d812f",
+    "target2_audio_id": "7668b989-bd68-4a67-a12d-674c68425189"
+   },
+   "lego": {
+    "lego_id": "S0108L01",
+    "known_text": "夜中に",
+    "target_text": "mitten in der Nacht",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0127L01U06": {
+   "seed": {
+    "seed_number": 127,
+    "known_text": "それはあなたに会いたかった理由ではありません。",
+    "target_text": "Das ist nicht der Grund, warum ich dich sehen wollte.",
+    "known_audio_id": "bd535ed4-06bd-4724-8b1c-f25a2798d4bc",
+    "target1_audio_id": "4abca663-5df0-4fb5-bd8e-491cb96a8fa7",
+    "target2_audio_id": "c206b36a-4c0c-42d8-8f82-3fa3cdb4637c"
+   },
+   "lego": {
+    "lego_id": "S0127L01",
+    "known_text": "理由",
+    "target_text": "grund",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0151L02U06": {
+   "seed": {
+    "seed_number": 151,
+    "known_text": "それは私が起こると期待していたことではありませんでした。",
+    "target_text": "Das war nicht das, was ich gehofft hatte, dass es passieren würde.",
+    "known_audio_id": "c43093fb-2107-4033-a423-fa27fc348986",
+    "target1_audio_id": "55d689cd-2c5e-427f-bcf8-791f508999fc",
+    "target2_audio_id": "94feffe0-083c-42ee-9172-c7941178a735"
+   },
+   "lego": {
+    "lego_id": "S0151L02",
+    "known_text": "期待していた",
+    "target_text": "hatte",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0184L02U06": {
+   "seed": {
+    "seed_number": 184,
+    "known_text": "はい、しばらく前にオフィスで見ました。",
+    "target_text": "Ja, ich habe sie vor einer Weile im Büro gesehen.",
+    "known_audio_id": "42254291-d0e1-4dda-afe7-bbce6c1c290d",
+    "target1_audio_id": "3fa6bdfe-9a95-49ed-b0ec-a3fb79f4d513",
+    "target2_audio_id": "232dac51-5ee1-4816-af34-11f38955931b"
+   },
+   "lego": {
+    "lego_id": "S0184L02",
+    "known_text": "オフィスで",
+    "target_text": "im Büro",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0210L01U06": {
+   "seed": {
+    "seed_number": 210,
+    "known_text": "彼らは私たちが問題について話し合う必要があると思っています。",
+    "target_text": "Sie denken, dass wir das Problem besprechen müssen.",
+    "known_audio_id": "b500bccc-0f9a-4cf1-80ca-d240b8224e77",
+    "target1_audio_id": "fa3b52ed-46b7-48fb-8f6c-d41c53a47f90",
+    "target2_audio_id": "9c4d61dc-f6b5-4eb6-8c90-c3c83d925c46"
+   },
+   "lego": {
+    "lego_id": "S0210L01",
+    "known_text": "話し合う",
+    "target_text": "besprechen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0220L02U06": {
+   "seed": {
+    "seed_number": 220,
+    "known_text": "テレビを少し見ましたか？",
+    "target_text": "Hast du ein bisschen Fernsehen geschaut?",
+    "known_audio_id": "cdfe6a60-4d04-49a0-bd4b-aa190b95854e",
+    "target1_audio_id": "90fd7e66-1e82-4cd4-9e57-34b62a16e7d4",
+    "target2_audio_id": "d87d2975-ea62-4273-b198-8b84032918a7"
+   },
+   "lego": {
+    "lego_id": "S0220L02",
+    "known_text": "テレビ",
+    "target_text": "fernsehen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0259L01U06": {
+   "seed": {
+    "seed_number": 259,
+    "known_text": "アイデア。",
+    "target_text": "Eine Idee.",
+    "known_audio_id": "c92457f4-175e-46c4-b46c-fe3ed045fd6c",
+    "target1_audio_id": "cc567673-369d-4c2b-8096-f0f4e47fe42b",
+    "target2_audio_id": "2c095212-c1bc-4f0f-9174-724916f2312d"
+   },
+   "lego": {
+    "lego_id": "S0259L01",
+    "known_text": "アイデア",
+    "target_text": "idee",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0280L03U06": {
+   "seed": {
+    "seed_number": 280,
+    "known_text": "いいえ、一番大事な仕事だけしなければなりませんでした。",
+    "target_text": "Nein, ich musste nur die wichtigste Arbeit erledigen.",
+    "known_audio_id": "735d2956-ae86-4837-a602-2bd43e0e0330",
+    "target1_audio_id": "3b25ece7-dc98-4c8b-8ece-efa37086427e",
+    "target2_audio_id": "8d4a6fc8-3af1-4445-9f61-1f0d3252084b"
+   },
+   "lego": {
+    "lego_id": "S0280L03",
+    "known_text": "一番大事な",
+    "target_text": "wichtigste",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0281L01U06": {
+   "seed": {
+    "seed_number": 281,
+    "known_text": "コーヒー飲み終わるまで待っていい？",
+    "target_text": "Macht es dir etwas aus, wenn ich meinen Kaffee austrinke, bevor du anfängst?",
+    "known_audio_id": "953160a7-e965-4514-a240-203933066d32",
+    "target1_audio_id": "0f26c745-8e29-4ec2-8b5d-747440842fe4",
+    "target2_audio_id": "4961db99-2628-49fa-a293-261666ec8b69"
+   },
+   "lego": {
+    "lego_id": "S0281L01",
+    "known_text": "コーヒー",
+    "target_text": "kaffee",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0287L01U06": {
+   "seed": {
+    "seed_number": 287,
+    "known_text": "テレビ見るのが好きな人、何人知ってる？",
+    "target_text": "Wie viele Menschen kennst du, die gerne fernsehen?",
+    "known_audio_id": "eb437cd8-dee0-4d36-9a64-f7afb31567b2",
+    "target1_audio_id": "d3411d88-c8e9-4281-8b4b-9ecb0e2cb96e",
+    "target2_audio_id": "91178943-57e0-4c3d-a3b2-19058dcf57f9"
+   },
+   "lego": {
+    "lego_id": "S0287L01",
+    "known_text": "何人",
+    "target_text": "wie viele",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0294L01U05": {
+   "seed": {
+    "seed_number": 294,
+    "known_text": "今夜は電話する時間がない。",
+    "target_text": "Ich habe heute Abend nicht genug Zeit, um dich anzurufen.",
+    "known_audio_id": "709c820a-0950-4e7e-a111-8aa4ee715f09",
+    "target1_audio_id": "2c25a04c-3eb9-41de-829a-e2c60f189273",
+    "target2_audio_id": "310ce1fe-527c-47ca-ad3a-3107d7f8df39"
+   },
+   "lego": {
+    "lego_id": "S0294L01",
+    "known_text": "電話する",
+    "target_text": "anzurufen",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0299L02U05": {
+   "seed": {
+    "seed_number": 299,
+    "known_text": "半分払いたい。",
+    "target_text": "Er möchte die Hälfte bezahlen.",
+    "known_audio_id": "7ad8bb17-477f-48c1-b7f0-32be46a5c253",
+    "target1_audio_id": "5cb5f013-5c30-4d1a-8cec-cb89736dd592",
+    "target2_audio_id": "48df5cdd-7144-4761-92e4-e401158f2739"
+   },
+   "lego": {
+    "lego_id": "S0299L02",
+    "known_text": "半分",
+    "target_text": "hälfte",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}
