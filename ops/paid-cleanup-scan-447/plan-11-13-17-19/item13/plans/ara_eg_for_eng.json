@@ -3391,7 +3391,8 @@
     "position": 9,
     "word_count": 2,
     "lego_position": "start",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "tit'allim 'arabi"
    }
   },
   {
@@ -3421,7 +3422,8 @@
       "known": "did you start",
       "target": "بدأت"
      }
-    ]
+    ],
+    "target_text_roman": "imta bada't"
    },
    "expect": {
     "known_text": "when?",
@@ -3433,7 +3435,8 @@
    "phrase_id": "ara_eg_for_eng:S0079L01B01",
    "set": {
     "known_text": "when did you start",
-    "target_text": "إمتى بدأت"
+    "target_text": "إمتى بدأت",
+    "target_text_roman": "imta bada't"
    },
    "expect": {
     "known_text": "when question before",
@@ -3445,7 +3448,8 @@
    "phrase_id": "ara_eg_for_eng:S0079L01B02",
    "set": {
     "known_text": "when did you start here",
-    "target_text": "إمتى بدأت هنا"
+    "target_text": "إمتى بدأت هنا",
+    "target_text_roman": "imta bada't hina"
    },
    "expect": {
     "known_text": "when question after",
@@ -3457,7 +3461,8 @@
    "phrase_id": "ara_eg_for_eng:S0079L01B03",
    "set": {
     "known_text": "but when did you start",
-    "target_text": "بس إمتى بدأت"
+    "target_text": "بس إمتى بدأت",
+    "target_text_roman": "bas imta bada't"
    },
    "expect": {
     "known_text": "when question from before",
@@ -3469,7 +3474,8 @@
    "phrase_id": "ara_eg_for_eng:S0079L01U01",
    "set": {
     "known_text": "when did you start to learn",
-    "target_text": "إنت إمتى بدأت تتعلم"
+    "target_text": "إنت إمتى بدأت تتعلم",
+    "target_text_roman": "inta imta bada't tit'allim"
    },
    "expect": {
     "known_text": "when did you start",
@@ -3481,7 +3487,8 @@
    "phrase_id": "ara_eg_for_eng:S0079L01U02",
    "set": {
     "known_text": "when did you start to learn Arabic",
-    "target_text": "إمتى بدأت تتعلم عربي"
+    "target_text": "إمتى بدأت تتعلم عربي",
+    "target_text_roman": "imta bada't tit'allim 'arabi"
    },
    "expect": {
     "known_text": "when are you here",
@@ -3493,7 +3500,8 @@
    "phrase_id": "ara_eg_for_eng:S0079L01U04",
    "set": {
     "known_text": "when did you start to speak Arabic",
-    "target_text": "إمتى بدأت تتكلم عربي"
+    "target_text": "إمتى بدأت تتكلم عربي",
+    "target_text_roman": "imta bada't titkallim 'arabi"
    },
    "expect": {
     "known_text": "when are you happy",
@@ -3513,7 +3521,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "start",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "imta bada't ma'aaya"
    }
   },
   {
@@ -3532,7 +3541,8 @@
       "known": "me",
       "target": "لي"
      }
-    ]
+    ],
+    "target_text_roman": "yi'uul li"
    },
    "expect": {
     "known_text": "to say",
@@ -3544,7 +3554,8 @@
    "phrase_id": "ara_eg_for_eng:S0222L02B01",
    "set": {
     "known_text": "he tells me",
-    "target_text": "يقول لي"
+    "target_text": "يقول لي",
+    "target_text_roman": "yi'uul li"
    },
    "expect": {
     "known_text": "to say",
@@ -3556,7 +3567,8 @@
    "phrase_id": "ara_eg_for_eng:S0222L02B02",
    "set": {
     "known_text": "he wants to tell me",
-    "target_text": "عايز يقول لي"
+    "target_text": "عايز يقول لي",
+    "target_text_roman": "'aayiz yi'uul li"
    },
    "expect": {
     "known_text": "to tell me",
@@ -3568,7 +3580,8 @@
    "phrase_id": "ara_eg_for_eng:S0222L02U03",
    "set": {
     "known_text": "I know what he wants to tell me",
-    "target_text": "أنا عارف اللي عايز يقول لي"
+    "target_text": "أنا عارف اللي عايز يقول لي",
+    "target_text_roman": "ana 'aarif illi 'aayiz yi'uul li"
    },
    "expect": {
     "known_text": "I know what he wants to say",
@@ -3635,7 +3648,8 @@
       "known": "to understand",
       "target": "أفهم"
      }
-    ]
+    ],
+    "target_text_roman": "bada't afham"
    },
    "expect": {
     "known_text": "I started",
@@ -3647,7 +3661,8 @@
    "phrase_id": "ara_eg_for_eng:S0077L04B01",
    "set": {
     "known_text": "I'm starting to understand",
-    "target_text": "بدأت أفهم"
+    "target_text": "بدأت أفهم",
+    "target_text_roman": "bada't afham"
    },
    "expect": {
     "known_text": "I started before",
@@ -3659,7 +3674,8 @@
    "phrase_id": "ara_eg_for_eng:S0077L04B02",
    "set": {
     "known_text": "I'm starting to understand here",
-    "target_text": "بدأت أفهم هنا"
+    "target_text": "بدأت أفهم هنا",
+    "target_text_roman": "bada't afham hina"
    },
    "expect": {
     "known_text": "I started here",
@@ -3671,7 +3687,8 @@
    "phrase_id": "ara_eg_for_eng:S0077L04B03",
    "set": {
     "known_text": "I'm starting to understand quickly",
-    "target_text": "بدأت أفهم بسرعة"
+    "target_text": "بدأت أفهم بسرعة",
+    "target_text_roman": "bada't afham bisur'a"
    },
    "expect": {
     "known_text": "I started quickly here",
@@ -3683,7 +3700,8 @@
    "phrase_id": "ara_eg_for_eng:S0077L04U02",
    "set": {
     "known_text": "I'm starting to understand Arabic",
-    "target_text": "بدأت أفهم عربي"
+    "target_text": "بدأت أفهم عربي",
+    "target_text_roman": "bada't afham 'arabi"
    },
    "expect": {
     "known_text": "started understanding",
@@ -3695,7 +3713,8 @@
    "phrase_id": "ara_eg_for_eng:S0077L04U03",
    "set": {
     "known_text": "I'm starting to understand today",
-    "target_text": "بدأت أفهم النهارده"
+    "target_text": "بدأت أفهم النهارده",
+    "target_text_roman": "bada't afham al-nahaarda"
    },
    "expect": {
     "known_text": "I started quickly",
@@ -3707,7 +3726,8 @@
    "phrase_id": "ara_eg_for_eng:S0077L04U04",
    "set": {
     "known_text": "I'm surprised at how quickly I'm starting to understand",
-    "target_text": "أنا متفاجئ إزاي بسرعة بدأت أفهم"
+    "target_text": "أنا متفاجئ إزاي بسرعة بدأت أفهم",
+    "target_text_roman": "ana mutfaagi' izzaay bisur'a bada't afham"
    },
    "expect": {
     "known_text": "I started today",
@@ -3738,7 +3758,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bas bada't afham"
    }
   },
   {
@@ -3757,7 +3778,8 @@
       "known": "a week",
       "target": "أسبوع"
      }
-    ]
+    ],
+    "target_text_roman": "hawaali usbuu'"
    },
    "expect": {
     "known_text": "about",
@@ -3777,7 +3799,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "start",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "hawaali usbuu' dilwa'ti"
    }
   },
   {
@@ -3800,7 +3823,8 @@
       "known": "good",
       "target": "كويسة"
      }
-    ]
+    ],
+    "target_text_roman": "di haaga kwayyisa"
    },
    "expect": {
     "known_text": "this",
@@ -3812,7 +3836,8 @@
    "phrase_id": "ara_eg_for_eng:S0047L02B02",
    "set": {
     "known_text": "it's a good thing",
-    "target_text": "دي حاجة كويسة"
+    "target_text": "دي حاجة كويسة",
+    "target_text_roman": "di haaga kwayyisa"
    },
    "expect": {
     "known_text": "this is a thing",
@@ -3824,7 +3849,8 @@
    "phrase_id": "ara_eg_for_eng:S0047L02U02",
    "set": {
     "known_text": "I think that it's a good thing",
-    "target_text": "أنا بفكر إن دي حاجة كويسة"
+    "target_text": "أنا بفكر إن دي حاجة كويسة",
+    "target_text_roman": "ana bafakkar inn di haaga kwayyisa"
    },
    "expect": {
     "known_text": "I think that this is useful",
@@ -3836,7 +3862,8 @@
    "phrase_id": "ara_eg_for_eng:S0047L02U05",
    "set": {
     "known_text": "because I think that it's a good thing",
-    "target_text": "علشان أنا بفكر إن دي حاجة كويسة"
+    "target_text": "علشان أنا بفكر إن دي حاجة كويسة",
+    "target_text_roman": "'alshaan ana bafakkar inn di haaga kwayyisa"
    },
    "expect": {
     "known_text": "I wasn't thinking that this was useful",
@@ -3856,7 +3883,8 @@
     "position": 9,
     "word_count": 4,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bas di haaga kwayyisa"
    }
   },
   {
@@ -3872,7 +3900,8 @@
     "position": 10,
     "word_count": 4,
     "lego_position": "start",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "di haaga kwayyisa dilwa'ti"
    }
   },
   {
@@ -3888,7 +3917,8 @@
     "position": 11,
     "word_count": 7,
     "lego_position": "end",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bas ana bafakkar inn di haaga kwayyisa"
    }
   },
   {
@@ -3904,7 +3934,8 @@
     "position": 12,
     "word_count": 7,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "ana bafakkar inn di haaga kwayyisa dilwa'ti"
    }
   },
   {
@@ -3923,7 +3954,8 @@
       "known": "to say",
       "target": "أقولها"
      }
-    ]
+    ],
+    "target_text_roman": "faadla a'uulha"
    },
    "expect": {
     "known_text": "to say it",
@@ -3935,7 +3967,8 @@
    "phrase_id": "ara_eg_for_eng:S0298L02B01",
    "set": {
     "known_text": "left to say",
-    "target_text": "فاضلة أقولها"
+    "target_text": "فاضلة أقولها",
+    "target_text_roman": "faadla a'uulha"
    },
    "expect": {
     "known_text": "I say it",
@@ -3947,7 +3980,8 @@
    "phrase_id": "ara_eg_for_eng:S0298L02B02",
    "set": {
     "known_text": "nothing left to say today",
-    "target_text": "حاجة فاضلة أقولها النهارده"
+    "target_text": "حاجة فاضلة أقولها النهارده",
+    "target_text_roman": "haaga faadla a'uulha al-nahaarda"
    },
    "expect": {
     "known_text": "nothing to say",
@@ -3959,7 +3993,8 @@
    "lego_id": "S0294L02",
    "set": {
     "target_text": "كفاية",
-    "is_new": false
+    "is_new": false,
+    "target_text_roman": "kifaaya"
    },
    "expect": {
     "known_text": "enough",
@@ -3970,7 +4005,8 @@
    "op": "phrase.update",
    "phrase_id": "ara_eg_for_eng:S0294L03U03",
    "set": {
-    "target_text": "معيش وقت كفاية أتصل هنا"
+    "target_text": "معيش وقت كفاية أتصل هنا",
+    "target_text_roman": "ma'iish wa't kifaaya attasil hina"
    },
    "expect": {
     "known_text": "not enough time to call",
@@ -3981,7 +4017,8 @@
    "op": "phrase.update",
    "phrase_id": "ara_eg_for_eng:S0294L04B03",
    "set": {
-    "target_text": "معيش وقت كفاية أتصل بيك"
+    "target_text": "معيش وقت كفاية أتصل بيك",
+    "target_text_roman": "ma'iish wa't kifaaya attasil biik"
    },
    "expect": {
     "known_text": "not enough time to call you",
@@ -3992,7 +4029,8 @@
    "op": "phrase.update",
    "phrase_id": "ara_eg_for_eng:S0294L04U02",
    "set": {
-    "target_text": "معيش وقت كفاية أتصل بيك الليلة"
+    "target_text": "معيش وقت كفاية أتصل بيك الليلة",
+    "target_text_roman": "ma'iish wa't kifaaya attasil biik al-leela"
    },
    "expect": {
     "known_text": "no time to call you tonight",
@@ -4003,7 +4041,8 @@
    "op": "phrase.update",
    "phrase_id": "ara_eg_for_eng:S0294L04U03",
    "set": {
-    "target_text": "معيش وقت كفاية أتصل بيك الليلة دي"
+    "target_text": "معيش وقت كفاية أتصل بيك الليلة دي",
+    "target_text_roman": "ma'iish wa't kifaaya attasil biik al-leela di"
    },
    "expect": {
     "known_text": "I don't have enough time to call you tonight",
@@ -4014,7 +4053,8 @@
    "op": "phrase.update",
    "phrase_id": "ara_eg_for_eng:S0444L01U12",
    "set": {
-    "target_text": "فكروا إنه كفاية"
+    "target_text": "فكروا إنه كفاية",
+    "target_text_roman": "fakkaru innu kifaaya"
    },
    "expect": {
     "known_text": "they thought it was enough",
@@ -4037,7 +4077,8 @@
       "known": "difficult",
       "target": "صعبة"
      }
-    ]
+    ],
+    "target_text_roman": "haaga sa'ba"
    },
    "expect": {
     "known_text": "difficult",
@@ -4049,7 +4090,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02B01",
    "set": {
     "known_text": "something difficult",
-    "target_text": "حاجة صعبة"
+    "target_text": "حاجة صعبة",
+    "target_text_roman": "haaga sa'ba"
    },
    "expect": {
     "known_text": "difficult",
@@ -4061,7 +4103,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02B02",
    "set": {
     "known_text": "something difficult today",
-    "target_text": "حاجة صعبة النهارده"
+    "target_text": "حاجة صعبة النهارده",
+    "target_text_roman": "haaga sa'ba al-nahaarda"
    },
    "expect": {
     "known_text": "difficult before",
@@ -4073,7 +4116,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02B03",
    "set": {
     "known_text": "not something difficult",
-    "target_text": "مش حاجة صعبة"
+    "target_text": "مش حاجة صعبة",
+    "target_text_roman": "mish haaga sa'ba"
    },
    "expect": {
     "known_text": "difficult today",
@@ -4085,7 +4129,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02U01",
    "set": {
     "known_text": "something very difficult",
-    "target_text": "حاجة صعبة قوي"
+    "target_text": "حاجة صعبة قوي",
+    "target_text_roman": "haaga sa'ba 'awi"
    },
    "expect": {
     "known_text": "something difficult",
@@ -4097,7 +4142,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02U02",
    "set": {
     "known_text": "it's something difficult",
-    "target_text": "دي حاجة صعبة"
+    "target_text": "دي حاجة صعبة",
+    "target_text_roman": "di haaga sa'ba"
    },
    "expect": {
     "known_text": "difficult today",
@@ -4109,7 +4155,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02U03",
    "set": {
     "known_text": "it's not something difficult",
-    "target_text": "دي مش حاجة صعبة"
+    "target_text": "دي مش حاجة صعبة",
+    "target_text_roman": "di mish haaga sa'ba"
    },
    "expect": {
     "known_text": "not difficult",
@@ -4121,7 +4168,8 @@
    "phrase_id": "ara_eg_for_eng:S0134L02U04",
    "set": {
     "known_text": "it's something very difficult",
-    "target_text": "دي حاجة صعبة قوي"
+    "target_text": "دي حاجة صعبة قوي",
+    "target_text_roman": "di haaga sa'ba 'awi"
    },
    "expect": {
     "known_text": "very difficult",
@@ -4155,7 +4203,8 @@
       "known": "my friend",
       "target": "صاحبتي"
      }
-    ]
+    ],
+    "target_text_roman": "hiya saahbiti"
    },
    "expect": {
     "known_text": "my friend",
@@ -4167,7 +4216,8 @@
    "phrase_id": "ara_eg_for_eng:S0136L04B01",
    "set": {
     "known_text": "she's my friend",
-    "target_text": "هي صاحبتي"
+    "target_text": "هي صاحبتي",
+    "target_text_roman": "hiya saahbiti"
    },
    "expect": {
     "known_text": "my friend",
@@ -4179,7 +4229,8 @@
    "phrase_id": "ara_eg_for_eng:S0136L04B02",
    "set": {
     "known_text": "of course she's my friend",
-    "target_text": "طبعًا هي صاحبتي"
+    "target_text": "طبعًا هي صاحبتي",
+    "target_text_roman": "tab'an hiya saahbiti"
    },
    "expect": {
     "known_text": "my friend before",
@@ -4191,7 +4242,8 @@
    "phrase_id": "ara_eg_for_eng:S0136L04B03",
    "set": {
     "known_text": "but she's my friend",
-    "target_text": "بس هي صاحبتي"
+    "target_text": "بس هي صاحبتي",
+    "target_text_roman": "bas hiya saahbiti"
    },
    "expect": {
     "known_text": "my friend today",
@@ -4203,7 +4255,8 @@
    "phrase_id": "ara_eg_for_eng:S0136L04U01",
    "set": {
     "known_text": "she's my friend here",
-    "target_text": "هي صاحبتي هنا"
+    "target_text": "هي صاحبتي هنا",
+    "target_text_roman": "hiya saahbiti hina"
    },
    "expect": {
     "known_text": "she's my friend",
@@ -4215,7 +4268,8 @@
    "phrase_id": "ara_eg_for_eng:S0136L04U03",
    "set": {
     "known_text": "you can ask her because she's my friend",
-    "target_text": "تقدر تسألها علشان هي صاحبتي"
+    "target_text": "تقدر تسألها علشان هي صاحبتي",
+    "target_text_roman": "ti'dar tis'alha 'alshaan hiya saahbiti"
    },
    "expect": {
     "known_text": "my friend today",
@@ -4227,7 +4281,8 @@
    "phrase_id": "ara_eg_for_eng:S0136L04U05",
    "set": {
     "known_text": "she's my friend today",
-    "target_text": "هي صاحبتي النهارده"
+    "target_text": "هي صاحبتي النهارده",
+    "target_text_roman": "hiya saahbiti al-nahaarda"
    },
    "expect": {
     "known_text": "my friend here",
@@ -4250,7 +4305,8 @@
       "known": "old",
       "target": "كبيرة"
      }
-    ]
+    ],
+    "target_text_roman": "sitt kibiira"
    },
    "expect": {
     "known_text": "old",
@@ -4262,7 +4318,8 @@
    "phrase_id": "ara_eg_for_eng:S0232L02B01",
    "set": {
     "known_text": "an old woman",
-    "target_text": "ست كبيرة"
+    "target_text": "ست كبيرة",
+    "target_text_roman": "sitt kibiira"
    },
    "expect": {
     "known_text": "old",
@@ -4274,7 +4331,8 @@
    "phrase_id": "ara_eg_for_eng:S0232L02B02",
    "set": {
     "known_text": "I know an old woman",
-    "target_text": "أعرف ست كبيرة"
+    "target_text": "أعرف ست كبيرة",
+    "target_text_roman": "a'raf sitt kibiira"
    },
    "expect": {
     "known_text": "an old lady",
@@ -4286,7 +4344,8 @@
    "phrase_id": "ara_eg_for_eng:S0232L02B03",
    "set": {
     "known_text": "I know an old woman here",
-    "target_text": "أعرف ست كبيرة هنا"
+    "target_text": "أعرف ست كبيرة هنا",
+    "target_text_roman": "a'raf sitt kibiira hina"
    },
    "expect": {
     "known_text": "I know an old lady",
@@ -4320,7 +4379,8 @@
    "phrase_id": "ara_eg_for_eng:S0232L02U03",
    "set": {
     "known_text": "but I know an old woman",
-    "target_text": "بس أعرف ست كبيرة"
+    "target_text": "بس أعرف ست كبيرة",
+    "target_text_roman": "bas a'raf sitt kibiira"
    },
    "expect": {
     "known_text": "I know an old lady here",
@@ -4365,7 +4425,8 @@
       "known": "noon",
       "target": "الضهر"
      }
-    ]
+    ],
+    "target_text_roman": "ba'd al-duhr"
    },
    "expect": {
     "known_text": "afternoon",
@@ -4385,7 +4446,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bas ba'd al-duhr"
    }
   },
   {
@@ -4415,7 +4477,8 @@
       "known": "your friend",
       "target": "صاحبتك"
      }
-    ]
+    ],
+    "target_text_roman": "min sahbitak"
    },
    "expect": {
     "known_text": "your friend",
@@ -4427,7 +4490,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01B01",
    "set": {
     "known_text": "from your friend",
-    "target_text": "من صاحبتك"
+    "target_text": "من صاحبتك",
+    "target_text_roman": "min sahbitak"
    },
    "expect": {
     "known_text": "your friend",
@@ -4439,7 +4503,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01B02",
    "set": {
     "known_text": "heard from your friend",
-    "target_text": "سمعت من صاحبتك"
+    "target_text": "سمعت من صاحبتك",
+    "target_text_roman": "simi't min sahbitak"
    },
    "expect": {
     "known_text": "from your friend",
@@ -4451,7 +4516,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01B03",
    "set": {
     "known_text": "but from your friend",
-    "target_text": "بس من صاحبتك"
+    "target_text": "بس من صاحبتك",
+    "target_text_roman": "bas min sahbitak"
    },
    "expect": {
     "known_text": "about your friend",
@@ -4463,7 +4529,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01U02",
    "set": {
     "known_text": "have you heard from your friend today?",
-    "target_text": "سمعت من صاحبتك النهارده؟"
+    "target_text": "سمعت من صاحبتك النهارده؟",
+    "target_text_roman": "simi't min sahbitak al-nahaarda"
    },
    "expect": {
     "known_text": "your friend is important",
@@ -4475,7 +4542,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01U03",
    "set": {
     "known_text": "have you heard from your friend here?",
-    "target_text": "سمعت من صاحبتك هنا؟"
+    "target_text": "سمعت من صاحبتك هنا؟",
+    "target_text_roman": "simi't min sahbitak hina"
    },
    "expect": {
     "known_text": "who is your friend?",
@@ -4487,7 +4555,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01U04",
    "set": {
     "known_text": "you heard from your friend there",
-    "target_text": "سمعت من صاحبتك هناك"
+    "target_text": "سمعت من صاحبتك هناك",
+    "target_text_roman": "simi't min sahbitak hinaak"
    },
    "expect": {
     "known_text": "your friend was there",
@@ -4499,7 +4568,8 @@
    "phrase_id": "ara_eg_for_eng:S0267L01U05",
    "set": {
     "known_text": "but have you heard from your friend?",
-    "target_text": "بس سمعت من صاحبتك؟"
+    "target_text": "بس سمعت من صاحبتك؟",
+    "target_text_roman": "bas simi't min saahbitak"
    },
    "expect": {
     "known_text": "do you know your friend well?",
@@ -4778,5 +4848,6 @@
     }
    }
   ]
- }
+ },
+ "roman_missing": []
 }

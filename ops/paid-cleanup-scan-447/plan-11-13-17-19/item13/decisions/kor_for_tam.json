@@ -1,0 +1,114 @@
+{
+ "course": "kor_for_tam",
+ "legos": [
+  {
+   "id": "S0023L02",
+   "verdict": "grow",
+   "pattern": "W",
+   "ack": [
+    "known"
+   ],
+   "known": "இன்னும் அதிகமாக",
+   "target": "더 많이",
+   "type": "M",
+   "components": [
+    [
+     "இன்னும்",
+     "더"
+    ],
+    [
+     "அதிகமாக",
+     "많이"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "இன்னும் அதிகமாக",
+     "더 많이"
+    ],
+    "B02": [
+     "இன்னும் அதிகமாக பேசுகிறேன்",
+     "더 많이 말해요"
+    ],
+    "B03": [
+     "இன்னும் அதிகமாக கற்றுக்கொள்ள முயற்சிக்கிறேன்",
+     "더 많이 배우려고 해요"
+    ],
+    "U01": [
+     "நான் இன்னும் அதிகமாக நினைவில் கொள்ளப் போகிறேன்",
+     "더 많이 기억할 거예요"
+    ],
+    "U02": [
+     "நாங்கள் இன்னும் அதிகமாக சந்திக்க விரும்புகிறோம்",
+     "우리는 더 많이 만나고 싶어요"
+    ],
+    "U03": [
+     "அவள் இன்னும் அதிகமாக கண்டுபிடிக்க விரும்புகிறாள்",
+     "그녀는 더 많이 알고 싶어 해요"
+    ],
+    "U04": [
+     "நான் இன்னும் அதிகமாக பேச விரும்புகிறேன்",
+     "더 많이 말하고 싶어요"
+    ],
+    "U05": [
+     "நான் இன்னும் அதிகமாக யூகிக்க விரும்பவில்லை",
+     "더 많이 추측하고 싶지 않아요"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "விரைவில் இன்னும் அதிகமாக",
+     "곧 더 많이"
+    ]
+   ],
+   "why": "'இன்னும்' means both 'more' (더, here) and 'still/yet' elsewhere in the course, so the bare prompt has two answers. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'இன்னும் அதிகமாக | 더 많이' (3 syllables; 'அதிகமாக | 많이' is the next LEGO and overlaps by design). Each row gains 많이 / அதிகமாக. Read row by row (R0.13)."
+  },
+  {
+   "id": "S0057L02",
+   "verdict": "grow",
+   "pattern": "S",
+   "known": "நினைவில் கொள்ள முடியவில்லை",
+   "target": "기억할 수 없어요",
+   "type": "M",
+   "components": [
+    [
+     "நினைவில் கொள்ள",
+     "기억할"
+    ],
+    [
+     "முடியவில்லை",
+     "수 없어요"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "நினைவில் கொள்ள முடியவில்லை",
+     "기억할 수 없어요"
+    ],
+    "B02": [
+     "ஏன் நினைவில் கொள்ள முடியவில்லை",
+     "왜 기억할 수 없어요"
+    ],
+    "B03": [
+     "இப்போது நினைவில் கொள்ள முடியவில்லை",
+     "지금 기억할 수 없어요"
+    ],
+    "U02": [
+     "மேலும் நினைவில் கொள்ள முடியவில்லை",
+     "그리고 기억할 수 없어요"
+    ]
+   },
+   "why": "'இல்லை | 없어요': 'இல்லை' is not a word of seed 57's Tamil (it is the tail of முடியவில்லை, 'cannot') (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ), and as a bare prompt it has other answers. Grown to the seed's piece 'நினைவில் கொள்ள முடியவில்லை | 기억할 수 없어요' (7 syllables, kept at 7: 수 없어요 leans on its verb). Five rows already say it; three ('왜 없어요') are rewritten.",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0088L06",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). 'தயாராக இல்லை' is 되지 않았어요 here (seed 88) and 안 됐어요 at seed 96 — and seed 88 says 안 됐어요 in both sister courses (kor_for_eng, kor_for_hin). Recommended: seed 88's Korean takes 안 됐어요, this LEGO and its 7 rows with it."
+  }
+ ]
+}

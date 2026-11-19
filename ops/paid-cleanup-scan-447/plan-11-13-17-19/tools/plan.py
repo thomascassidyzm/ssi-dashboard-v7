@@ -147,7 +147,7 @@ def main():
     for d in dec['legos']:
         lid = d['id']
         l = L.get(lid)
-        rec = {'id': lid, 'verdict': d['verdict'], 'pov': d.get('pov', 'hold' if d['verdict'] == 'kai' else 'pass'), 'pattern': d.get('pattern'), 'why': d.get('why'), 'closes': [FAMNO] + d.get('closes', []), 'knock': d.get('knock')}
+        rec = {'id': lid, 'verdict': d['verdict'], 'proposed': d.get('proposed'), 'pov': d.get('pov', 'hold' if d['verdict'] == 'kai' else 'pass'), 'pattern': d.get('pattern'), 'why': d.get('why'), 'closes': [FAMNO] + d.get('closes', []), 'knock': d.get('knock')}
         if not l:
             problems.append(f'{lid}: not in the live dump'); continue
         s = SD[l['seed']]

@@ -1,0 +1,1176 @@
+{
+ "course": "kor_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:12:50Z",
+ "decisions": 5,
+ "verdicts": {
+  "kai": 1,
+  "keep": 1,
+  "grow": 1,
+  "regloss": 1,
+  "recut": 1
+ },
+ "touched_seeds": [
+  124,
+  183,
+  454
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0526L01",
+   "verdict": "kai",
+   "proposed": null,
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD — the cut is decided, the rows are not written. 'can't' is 수 없어요 (S0331L04) and 못 (here); 못 cannot stand alone, and all 8 of its rows are broken Korean ('못 지금', '못 알아요?'). Cut, as the combined list says ('re-cut 526 so it tiles'): 'that you can't guess | 못 맞추겠다는 게' (7 syllables, kept at 7: 못 and 게 both lean on the verb), 'to believe | 믿기' unchanged, and S0526L03 becomes 'I'm finding it hard | 어려워요'. That is 16 rows of new Korean; they belong with the Korean re-cut under item 10, which rebuilds this seed's baskets anyway. Not planned twice.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 526,
+    "known": "I'm finding it hard to believe that you can't guess",
+    "target": "못 맞추겠다는 게 믿기 어려워요"
+   },
+   "before": {
+    "known": "can't",
+    "target": "못",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0345L01",
+   "verdict": "keep",
+   "proposed": null,
+   "pov": "hold",
+   "pattern": "W",
+   "why": "KEEP under K23, with one line for Kai. 'leave | 떠날' and 'to leave | 떠나고' (S0540L02) are two joining forms of one verb; the prompts differ only by 'to'. K23: 'keep the clash, explain the sense in the presentation, and never let the marked sense be prompted without its context'. Neither basket has a bare row: every 떠날 row carries the word it leans on (떠날 시간, 떠날 준비가) and every 떠나고 row carries 싶어요. Growing 떠날 to 'ready to leave | 떠날 준비가', as the scan proposed, would cost 9 good rows. Kai's yes is for the two intro lines.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 345,
+    "known": "who said that he's not ready to leave yet",
+    "target": "아직 떠날 준비가 안 됐다고 했어요"
+   },
+   "before": {
+    "known": "leave",
+    "target": "떠날",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0454L01",
+   "verdict": "grow",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'to visit | 놀러' is not in seed 454 on either side — the seed says 'came round | 놀러 왔어요' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ) — and 놀러 cannot stand without its verb. Grown to the seed piece (4 syllables; 'came | 왔어요' overlaps by design). All 8 rows were broken Korean ('놀러 들었어요 | I heard about visiting') and are rewritten.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 454,
+    "known": "our friends came round at about six o'clock",
+    "target": "친구들이 여섯 시쯤 놀러 왔어요"
+   },
+   "before": {
+    "known": "to visit",
+    "target": "놀러",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "came round",
+    "target": "놀러 왔어요",
+    "type": "M",
+    "components": [
+     [
+      "to visit",
+      "놀러"
+     ],
+     [
+      "came",
+      "왔어요"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "kor_for_eng:S0454L01B01",
+     "role": "build",
+     "before": [
+      "to visit",
+      "놀러"
+     ],
+     "action": [
+      "came round",
+      "놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01B02",
+     "role": "build",
+     "before": [
+      "visit today",
+      "오늘 놀러"
+     ],
+     "action": [
+      "came round today",
+      "오늘 놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01B03",
+     "role": "build",
+     "before": [
+      "visit together",
+      "같이 놀러"
+     ],
+     "action": [
+      "came round together",
+      "같이 놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01U01",
+     "role": "use",
+     "before": [
+      "I heard about visiting",
+      "놀러 들었어요"
+     ],
+     "action": [
+      "my friend came round",
+      "제 친구가 놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01U02",
+     "role": "use",
+     "before": [
+      "she knows about visiting",
+      "놀러 알아요"
+     ],
+     "action": [
+      "she came round today",
+      "그녀는 오늘 놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01U03",
+     "role": "use",
+     "before": [
+      "he told me about visiting",
+      "놀러 했다고 했어요"
+     ],
+     "action": [
+      "he came round yesterday",
+      "그는 어제 놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01U04",
+     "role": "use",
+     "before": [
+      "she heard about visiting today",
+      "오늘 놀러 들었어요"
+     ],
+     "action": [
+      "my friend came round today",
+      "제 친구가 오늘 놀러 왔어요"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0454L01U05",
+     "role": "use",
+     "before": [
+      "I saw them visiting just now",
+      "방금 놀러 봤어요"
+     ],
+     "action": [
+      "my friend came round just now",
+      "제 친구가 방금 놀러 왔어요"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "kor_for_eng:S0454L01B04",
+     "course_code": "kor_for_eng",
+     "seed_number": 454,
+     "lego_index": 1,
+     "known_text": "came round yesterday",
+     "target_text": "어제 놀러 왔어요",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 7,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 6,
+    "sample": [
+     {
+      "id": "kor_for_eng:S0454L03B02",
+      "known": "came to visit",
+      "target": "놀러 왔어요",
+      "seed": 454
+     },
+     {
+      "id": "kor_for_eng:S0454L03U03",
+      "known": "he came to visit at about six",
+      "target": "여섯 시쯤 놀러 왔어요",
+      "seed": 454
+     },
+     {
+      "id": "kor_for_eng:S0454L03U04",
+      "known": "she came to visit today",
+      "target": "오늘 놀러 왔어요",
+      "seed": 454
+     },
+     {
+      "id": "kor_for_eng:S0454L03U05",
+      "known": "I saw him come to visit just now",
+      "target": "방금 놀러 왔어요",
+      "seed": 454
+     },
+     {
+      "id": "kor_for_eng:S0454L04U02",
+      "known": "my friends came to visit today",
+      "target": "오늘 친구들이 놀러 왔어요",
+      "seed": 454
+     },
+     {
+      "id": "kor_for_eng:S0454L04U04",
+      "known": "my friends came to visit just now",
+      "target": "방금 친구들이 놀러 왔어요",
+      "seed": 454
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0124L01",
+   "verdict": "regloss",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'a good idea | 좋은 생각이라고': the ending 이라고 is 'that it was', which the English left out, so 'a good idea' had a second, different answer. The seed says 'that was a good idea'; the LEGO takes 'was a good idea'. Prompt clip only; rows stay (they say 'that's / it's a good idea', the same word in another form — K6).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 124,
+    "known": "I thought that was a good idea",
+    "target": "그건 좋은 생각이라고 생각했어요"
+   },
+   "before": {
+    "known": "a good idea",
+    "target": "좋은 생각이라고",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "was a good idea",
+    "target": "좋은 생각이라고",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "kor_for_eng:S0124L01C01",
+     "role": "component",
+     "before": [
+      "good",
+      "좋은"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_eng:S0124L01C02",
+     "role": "component",
+     "before": [
+      "idea",
+      "생각이라고"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_eng:S0124L01B01",
+     "role": "build",
+     "before": [
+      "a good idea",
+      "좋은 생각이라고"
+     ],
+     "action": [
+      "was a good idea",
+      "좋은 생각이라고"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0124L01B02",
+     "role": "build",
+     "before": [
+      "I think that's a good idea",
+      "좋은 생각이라고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0124L01B03",
+     "role": "build",
+     "before": [
+      "I think that's a good idea right now",
+      "지금 좋은 생각이라고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0124L01U01",
+     "role": "use",
+     "before": [
+      "I think it'll be a good idea later",
+      "나중에 좋은 생각이라고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0124L01U02",
+     "role": "use",
+     "before": [
+      "I think it's a good idea again",
+      "다시 좋은 생각이라고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0124L01U03",
+     "role": "use",
+     "before": [
+      "I think it's a good idea today",
+      "오늘 좋은 생각이라고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0124L01U05",
+     "role": "use",
+     "before": [
+      "I really think that's a good idea",
+      "정말 좋은 생각이라고 생각해요"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 12,
+    "sample": [
+     {
+      "id": "kor_for_eng:S0124L02B01",
+      "known": "I thought that was a good idea",
+      "target": "좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0124L02B03",
+      "known": "I thought before that was a good idea",
+      "target": "전에 좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0124L02U01",
+      "known": "I thought that was a good idea later",
+      "target": "나중에 좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0124L02U02",
+      "known": "I thought today that was a good idea",
+      "target": "오늘 좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0124L02U03",
+      "known": "I thought yesterday that was a good idea",
+      "target": "어제 좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0124L02U04",
+      "known": "I thought right now that was a good idea",
+      "target": "지금 좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0124L02U05",
+      "known": "I really thought that was a good idea",
+      "target": "정말 좋은 생각이라고 생각했어요",
+      "seed": 124
+     },
+     {
+      "id": "kor_for_eng:S0125L01B02",
+      "known": "I believe it is a good idea",
+      "target": "좋은 생각이라고 믿어요",
+      "seed": 125
+     },
+     {
+      "id": "kor_for_eng:S0125L01U03",
+      "known": "I definitely believe it is a good idea",
+      "target": "확실히 좋은 생각이라고 믿어요",
+      "seed": 125
+     },
+     {
+      "id": "kor_for_eng:S0125L01U06",
+      "known": "I still believe it is a good idea",
+      "target": "아직 좋은 생각이라고 믿어요",
+      "seed": 125
+     },
+     {
+      "id": "kor_for_eng:S0125L03B04",
+      "known": "I believe that idea is a good idea",
+      "target": "그 생각이 좋은 생각이라고 믿어요",
+      "seed": 125
+     },
+     {
+      "id": "kor_for_eng:S0427L03U07",
+      "known": "even if you wanted them to think that it's a good idea they still fight",
+      "target": "좋은 생각이라고 생각하기를 원하더라도 아직도 싸워요",
+      "seed": 427
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0183L01",
+   "verdict": "recut",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'I'm afraid I haven't seen them | 안타깝지만': the English says a whole clause, the Korean only 'I'm afraid'. This LEGO becomes 'I'm afraid | 안타깝지만' and a NEW LEGO 'I haven't seen them | 못 봤어요' is added with its own basket (growing the first one instead would be 9 syllables). Every existing row already contains both pieces; three exact twins are removed. STRUCTURAL: one LEGO insert, needs Kai's go.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 183,
+    "known": "no I'm afraid I haven't seen them",
+    "target": "아니요 안타깝지만 못 봤어요"
+   },
+   "before": {
+    "known": "I'm afraid I haven't seen them",
+    "target": "안타깝지만",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "I'm afraid",
+    "target": "안타깝지만",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "kor_for_eng:S0183L01C01",
+     "role": "component",
+     "before": [
+      "I'm afraid",
+      "안타깝지만"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_eng:S0183L01C02",
+     "role": "component",
+     "before": [
+      "haven't seen",
+      "못 봤어요"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_eng:S0183L01B01",
+     "role": "build",
+     "before": [
+      "I'm afraid I haven't seen them",
+      "안타깝지만 못 봤어요"
+     ],
+     "action": [
+      "I'm afraid",
+      "안타깝지만"
+     ]
+    },
+    {
+     "id": "kor_for_eng:S0183L01B02",
+     "role": "build",
+     "before": [
+      "I'm afraid I haven't seen them",
+      "안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01B03",
+     "role": "build",
+     "before": [
+      "really I'm afraid I haven't seen them",
+      "정말 안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01B04",
+     "role": "build",
+     "before": [
+      "so I'm afraid I haven't seen them",
+      "그래서 안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U01",
+     "role": "use",
+     "before": [
+      "I'm afraid I haven't seen them",
+      "안타깝지만 못 봤어요"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U02",
+     "role": "use",
+     "before": [
+      "really I'm afraid I haven't seen them",
+      "정말 안타깝지만 못 봤어요"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U03",
+     "role": "use",
+     "before": [
+      "so I'm afraid I haven't seen them",
+      "그래서 안타깝지만 못 봤어요"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U04",
+     "role": "use",
+     "before": [
+      "no I'm afraid I haven't seen them",
+      "아니요 안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U05",
+     "role": "use",
+     "before": [
+      "then I'm afraid I haven't seen them",
+      "그러면 안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U06",
+     "role": "use",
+     "before": [
+      "I'm afraid I haven't seen them anywhere",
+      "안타깝지만 어디서도 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U07",
+     "role": "use",
+     "before": [
+      "yes I'm afraid I haven't seen them",
+      "네 안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_eng:S0183L01U08",
+     "role": "use",
+     "before": [
+      "it's okay I'm afraid I haven't seen them",
+      "괜찮아요 안타깝지만 못 봤어요"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "I haven't seen them",
+      "target_text": "못 봤어요",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "haven't",
+        "target": "못"
+       },
+       {
+        "known": "seen them",
+        "target": "봤어요"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02B01",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "I haven't seen them",
+      "target_text": "못 봤어요",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 2,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02B02",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "really I haven't seen them",
+      "target_text": "정말 못 봤어요",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02B03",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "so I haven't seen them",
+      "target_text": "그래서 못 봤어요",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02B04",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "I haven't seen them anywhere",
+      "target_text": "어디서도 못 봤어요",
+      "phrase_role": "build",
+      "position": 4,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02U01",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "I'm afraid I haven't seen them",
+      "target_text": "안타깝지만 못 봤어요",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02U02",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "no I'm afraid I haven't seen them",
+      "target_text": "아니요 안타깝지만 못 봤어요",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 4,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02U03",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "no I haven't seen them",
+      "target_text": "아니요 못 봤어요",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02U04",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "I'm afraid I haven't seen them anywhere",
+      "target_text": "안타깝지만 어디서도 못 봤어요",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 4,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0183L02U05",
+      "course_code": "kor_for_eng",
+      "seed_number": 183,
+      "lego_index": 2,
+      "known_text": "then I haven't seen them",
+      "target_text": "그러면 못 봤어요",
+      "phrase_role": "use",
+      "position": 9,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0454L01",
+   "set": {
+    "known_text": "came round",
+    "target_text": "놀러 왔어요",
+    "components": [
+     {
+      "known": "to visit",
+      "target": "놀러"
+     },
+     {
+      "known": "came",
+      "target": "왔어요"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "to visit",
+    "target_text": "놀러"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01B01",
+   "set": {
+    "known_text": "came round",
+    "target_text": "놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "to visit",
+    "target_text": "놀러"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01B02",
+   "set": {
+    "known_text": "came round today",
+    "target_text": "오늘 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "visit today",
+    "target_text": "오늘 놀러"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01B03",
+   "set": {
+    "known_text": "came round together",
+    "target_text": "같이 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "visit together",
+    "target_text": "같이 놀러"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01U01",
+   "set": {
+    "known_text": "my friend came round",
+    "target_text": "제 친구가 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "I heard about visiting",
+    "target_text": "놀러 들었어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01U02",
+   "set": {
+    "known_text": "she came round today",
+    "target_text": "그녀는 오늘 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "she knows about visiting",
+    "target_text": "놀러 알아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01U03",
+   "set": {
+    "known_text": "he came round yesterday",
+    "target_text": "그는 어제 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "he told me about visiting",
+    "target_text": "놀러 했다고 했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01U04",
+   "set": {
+    "known_text": "my friend came round today",
+    "target_text": "제 친구가 오늘 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "she heard about visiting today",
+    "target_text": "오늘 놀러 들었어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0454L01U05",
+   "set": {
+    "known_text": "my friend came round just now",
+    "target_text": "제 친구가 방금 놀러 왔어요"
+   },
+   "expect": {
+    "known_text": "I saw them visiting just now",
+    "target_text": "방금 놀러 봤어요"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0454L01B04",
+    "course_code": "kor_for_eng",
+    "seed_number": 454,
+    "lego_index": 1,
+    "known_text": "came round yesterday",
+    "target_text": "어제 놀러 왔어요",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 7,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0124L01",
+   "set": {
+    "known_text": "was a good idea"
+   },
+   "expect": {
+    "known_text": "a good idea",
+    "target_text": "좋은 생각이라고"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0124L01B01",
+   "set": {
+    "known_text": "was a good idea"
+   },
+   "expect": {
+    "known_text": "a good idea",
+    "target_text": "좋은 생각이라고"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0183L01",
+   "set": {
+    "known_text": "I'm afraid"
+   },
+   "expect": {
+    "known_text": "I'm afraid I haven't seen them",
+    "target_text": "안타깝지만"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0183L01B01",
+   "set": {
+    "known_text": "I'm afraid",
+    "target_text": "안타깝지만"
+   },
+   "expect": {
+    "known_text": "I'm afraid I haven't seen them",
+    "target_text": "안타깝지만 못 봤어요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_eng:S0183L01U01",
+   "expect": {
+    "known_text": "I'm afraid I haven't seen them",
+    "target_text": "안타깝지만 못 봤어요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_eng:S0183L01U02",
+   "expect": {
+    "known_text": "really I'm afraid I haven't seen them",
+    "target_text": "정말 안타깝지만 못 봤어요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_eng:S0183L01U03",
+   "expect": {
+    "known_text": "so I'm afraid I haven't seen them",
+    "target_text": "그래서 안타깝지만 못 봤어요"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "I haven't seen them",
+    "target_text": "못 봤어요",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "haven't",
+      "target": "못"
+     },
+     {
+      "known": "seen them",
+      "target": "봤어요"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02B01",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "I haven't seen them",
+    "target_text": "못 봤어요",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 2,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02B02",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "really I haven't seen them",
+    "target_text": "정말 못 봤어요",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02B03",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "so I haven't seen them",
+    "target_text": "그래서 못 봤어요",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02B04",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "I haven't seen them anywhere",
+    "target_text": "어디서도 못 봤어요",
+    "phrase_role": "build",
+    "position": 4,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02U01",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "I'm afraid I haven't seen them",
+    "target_text": "안타깝지만 못 봤어요",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02U02",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "no I'm afraid I haven't seen them",
+    "target_text": "아니요 안타깝지만 못 봤어요",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02U03",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "no I haven't seen them",
+    "target_text": "아니요 못 봤어요",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02U04",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "I'm afraid I haven't seen them anywhere",
+    "target_text": "안타깝지만 어디서도 못 봤어요",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_eng:S0183L02U05",
+    "course_code": "kor_for_eng",
+    "seed_number": 183,
+    "lego_index": 2,
+    "known_text": "then I haven't seen them",
+    "target_text": "그러면 못 봤어요",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  }
+ ]
+}

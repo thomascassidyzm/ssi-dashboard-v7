@@ -1,0 +1,190 @@
+{
+ "course": "zho_for_jpn",
+ "legos": [
+  {
+   "id": "S0127L01",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). '会う' is the prompt for 见面 (S0018L04) and for 见 (here). 见 needs its object. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'あなたに会う | 见你' (2 syllables). The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "proposed": {
+    "known": "あなたに会う",
+    "target": "见你",
+    "type": "M",
+    "components": [
+     [
+      "会う",
+      "见"
+     ],
+     [
+      "あなたに",
+      "你"
+     ]
+    ]
+   },
+   "was_verdict": "grow",
+   "pov": "hold"
+  },
+  {
+   "id": "S0139L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). '早く' is the prompt for 快点 ('quickly', S0020L01) and for 早 ('early', here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'こんなに早く | 这么早' (3 syllables), which shows the 'early' sense. The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "proposed": {
+    "known": "こんなに早く",
+    "target": "这么早",
+    "type": "M",
+    "components": [
+     [
+      "こんなに",
+      "这么"
+     ],
+     [
+      "早く",
+      "早"
+     ]
+    ]
+   },
+   "was_verdict": "grow",
+   "pov": "hold"
+  },
+  {
+   "id": "S0030L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). '聞く' is the prompt for 问 ('ask', here) and for 听 ('listen', S0103L01) — one Japanese verb, and both seeds use it. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The 'ask' one grows to its seed piece 'あなたに聞く | 问你' (2 syllables): asking is 'of someone'. 听 keeps bare 聞く. The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "proposed": {
+    "known": "あなたに聞く",
+    "target": "问你",
+    "type": "M",
+    "components": [
+     [
+      "聞く",
+      "问"
+     ],
+     [
+      "あなたに",
+      "你"
+     ]
+    ]
+   },
+   "was_verdict": "grow",
+   "pov": "hold"
+  },
+  {
+   "id": "S0137L02",
+   "verdict": "kai",
+   "pattern": "S",
+   "why": "HOLD (cut proposed, rows owed — not validated). '話' is the prompt for 故事 ('story', S0036L02) and for 话 (here) — but seed 137 has no noun 話: it says 話す, 'to talk', and its Chinese is 说话 (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed's own piece '頻繁に話す | 经常说话' (4 syllables). The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "closes": [
+    "10"
+   ],
+   "proposed": {
+    "known": "頻繁に話す",
+    "target": "经常说话",
+    "type": "M",
+    "components": [
+     [
+      "頻繁に",
+      "经常"
+     ],
+     [
+      "話す",
+      "说话"
+     ]
+    ]
+   },
+   "was_verdict": "grow",
+   "pov": "hold"
+  },
+  {
+   "id": "S0101L01",
+   "verdict": "kai",
+   "pattern": "S",
+   "pov": "hold",
+   "why": "HOLD (rows owed). '知る' is the prompt for 知道 (S0045L01) and for 了解 (here) — but seed 101's Japanese does not say 知る, it says 発見する (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). The LEGO should take its seed's word, '発見する | 了解'. Its 7 rows still prompt with 知る and each needs its Japanese reworded by hand; not written here.",
+   "closes": [
+    "10"
+   ],
+   "proposed": {
+    "known": "発見する"
+   },
+   "was_verdict": "regloss"
+  },
+  {
+   "id": "S0073L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). 'ありがとう' is 非常感谢 (seed 73) and 谢谢 (seed 173). 非常感谢 is 'thank you VERY MUCH'; seed 73's Japanese says only ありがとう. Recommended: seed 73's Japanese becomes どうもありがとう, and the LEGO with it."
+  },
+  {
+   "id": "S0273L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). '残念(ながら)' is 可惜 at seed 86 and 遗憾 at seed 273 — the same Japanese phrase in both seeds. Recommended: seed 273's Chinese takes 很可惜, and S0273L02 goes not-new."
+  },
+  {
+   "id": "S0272L03",
+   "verdict": "kai",
+   "pattern": "W",
+   "closes": [
+    "10"
+   ],
+   "why": "HOLD — item 10's. 'すごい' is 太好了 (S0090L02) and 棒 (here), but neither seed's Japanese says すごい (seed 90 says 嬉しい, seed 272 says いい考え). Both LEGOs must first be re-glossed to their seeds' own words (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ), which is item 10's plan for this course; the clash goes with it."
+  },
+  {
+   "id": "S0094L01",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). 'これ' is the prompt for 这个 (S0092L02) and for 这 (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'これが | 这是' (2 syllables), which shows when it is 这. The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "proposed": {
+    "known": "これが",
+    "target": "这是",
+    "type": "M",
+    "components": [
+     [
+      "これ",
+      "这"
+     ],
+     [
+      "が",
+      "是"
+     ]
+    ]
+   },
+   "was_verdict": "grow",
+   "pov": "hold"
+  },
+  {
+   "id": "S0123L01",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). '考え' is the prompt for 主意 (here) and for 想法 (S0131L02) — the same clash the main Chinese course already has on Kai's known list. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The earlier one grows to its seed piece 'いい考え | 好主意' (3 syllables): an idea you can call good is 主意. 想法 keeps bare 考え. The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "proposed": {
+    "known": "いい考え",
+    "target": "好主意",
+    "type": "M",
+    "components": [
+     [
+      "いい",
+      "好"
+     ],
+     [
+      "考え",
+      "主意"
+     ]
+    ]
+   },
+   "was_verdict": "grow",
+   "pov": "hold"
+  },
+  {
+   "id": "S0274L03",
+   "verdict": "keep",
+   "pattern": "W",
+   "closes": [
+    "10"
+   ],
+   "why": "SETTLED by item 10. '〜しなければならない' was the prompt for 必须 (S0109L01) and 得 (here). Item 10's plan for this course already re-glosses the first ('しなければなりません | 必须') and grows this one ('出発しなければなりません | 得走'). Inherited, not planned twice."
+  }
+ ]
+}

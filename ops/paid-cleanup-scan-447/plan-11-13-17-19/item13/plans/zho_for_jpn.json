@@ -1,0 +1,1455 @@
+{
+ "course": "zho_for_jpn",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:12:53Z",
+ "decisions": 11,
+ "verdicts": {
+  "grow": 6,
+  "regloss": 1,
+  "kai": 3,
+  "keep": 1
+ },
+ "touched_seeds": [
+  30,
+  94,
+  101,
+  123,
+  127,
+  137,
+  139
+ ],
+ "problems": [
+  "S0127L01: known words not in seed: ['あなたに会う']",
+  "S0127L01 B01 UNDECIDED: あなたに会いたい | 想见你",
+  "S0127L01 B02 UNDECIDED: あなたに会いたい。 | 我想见你。",
+  "S0127L01 B03 UNDECIDED: 私に会いたい？ | 你想见我吗？",
+  "S0127L01 U01 UNDECIDED: 彼らに会いたい？ | 你想见他们吗？",
+  "S0127L01 U02 UNDECIDED: 会いたいと思っていた。 | 我以为你想见我。",
+  "S0127L01 U04 UNDECIDED: 今は会いたくない。 | 我现在不想见你。",
+  "S0127L01 U05 UNDECIDED: 会う必要があると信じている。 | 我相信我需要见你。",
+  "S0127L01 U06 UNDECIDED: 会いたくないのは奇妙だ。 | 奇怪的是你不想见。",
+  "S0127L01: thin basket after plan ({})",
+  "S0139L02 B03 UNDECIDED: 早く始めたい。 | 我想早开始。",
+  "S0139L02 U02 UNDECIDED: 早く始めるほうがいいと信じている。 | 我相信早开始更好。",
+  "S0030L02: known words not in seed: ['あなたに聞く']",
+  "S0030L02 B02 UNDECIDED: 聞きたい | 想问",
+  "S0030L02 B03 UNDECIDED: 昨日聞いた | 昨天问了",
+  "S0030L02 U01 UNDECIDED: あなたに何か聞きたいです | 我想问你一些东西",
+  "S0030L02 U02 UNDECIDED: 私に聞きたいですか | 你要问我吗",
+  "S0030L02 U03 UNDECIDED: 彼女は昨日私の言っていることの意味を聞きました | 她昨天问了我的意思",
+  "S0030L02 U04 UNDECIDED: 昨日あなたに何か聞きたかったです | 我昨天想问你一些东西",
+  "S0030L02 U05 UNDECIDED: 彼は中国語の話し方を聞きたいです | 他想问怎么说中文",
+  "S0030L02 U06 UNDECIDED: なぜ聞かないのですか | 你为什么不问",
+  "S0030L02: thin basket after plan ({'build': 1})",
+  "S0137L02 B01 UNDECIDED: 話す | 说话",
+  "S0137L02 B02 UNDECIDED: よく話す | 经常说话",
+  "S0137L02 B03 UNDECIDED: あなたと話したい。 | 我想跟你说话。",
+  "S0137L02 U01 UNDECIDED: 彼女はよく私と話す。 | 她经常跟我说话。",
+  "S0137L02 U02 UNDECIDED: もちろん彼女と話したい。 | 当然我想跟她说话。",
+  "S0137L02 U03 UNDECIDED: 話すことは重要だと信じている。 | 我相信说话很重要。",
+  "S0137L02 U04 UNDECIDED: 彼らと話したい？ | 你想跟他们说话吗？",
+  "S0137L02 U06 UNDECIDED: よく友達と話す。 | 我经常跟我的朋友说话。",
+  "S0137L02 U07 UNDECIDED: なぜ話したいかわからない。 | 我不知道为什么你想说话。",
+  "S0137L02: thin basket after plan ({})",
+  "S0101L01 B02 UNDECIDED: もっと知る。 | 多了解。",
+  "S0101L01 B03 UNDECIDED: もっと知るのが好き。 | 喜欢多了解。",
+  "S0101L01 U01 UNDECIDED: もっと知りたいです。 | 我想了解更多。",
+  "S0101L01 U02 UNDECIDED: あなたはこれを知っていますか？ | 你了解这个吗？",
+  "S0101L01 U04 UNDECIDED: 彼はこの方法をよく知っています。 | 他很了解这个方法。",
+  "S0101L01 U05 UNDECIDED: もう少し時間をかけて知る必要があります。 | 我需要多了解一会儿。",
+  "S0101L01: thin basket after plan ({'build': 1})",
+  "S0094L01 B01 UNDECIDED: これ。 | 这。",
+  "S0094L01 B02 UNDECIDED: これは。 | 这是。",
+  "S0094L01 B03 UNDECIDED: これではない。 | 这不是。",
+  "S0094L01 U01 UNDECIDED: これは何ですか？ | 这是什么？",
+  "S0094L01 U02 UNDECIDED: これは理解しにくいです。 | 这很难理解。",
+  "S0094L01 U03 UNDECIDED: これは難しいかもしれません。 | 这可能很难。",
+  "S0094L01 U04 UNDECIDED: これは私の友達です。 | 这是我朋友。",
+  "S0094L01 U05 UNDECIDED: 彼はこれはとても重要だと言いました。 | 他说这很重要。",
+  "S0094L01: thin basket after plan ({})",
+  "S0123L01 U02 UNDECIDED: あなたの考えは何？ | 你的主意是什么？"
+ ],
+ "auto_substitutions": [
+  "S0101L01 B01: 知る。 -> 発見する。"
+ ],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0127L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'会う' is the prompt for 见面 (S0018L04) and for 见 (here). 见 needs its object. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'あなたに会う | 见你' (2 syllables).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 127,
+    "known": "それはあなたに会いたかった理由ではありません。",
+    "target": "那不是我想见你的原因。"
+   },
+   "before": {
+    "known": "会う",
+    "target": "见",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "あなたに会う",
+    "target": "见你",
+    "type": "M",
+    "components": [
+     [
+      "会う",
+      "见"
+     ],
+     [
+      "あなたに",
+      "你"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": [
+     "あなたに会う"
+    ],
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0127L01B01",
+     "role": "build",
+     "before": [
+      "あなたに会いたい",
+      "想见你"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01B02",
+     "role": "build",
+     "before": [
+      "あなたに会いたい。",
+      "我想见你。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01B03",
+     "role": "build",
+     "before": [
+      "私に会いたい？",
+      "你想见我吗？"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01U01",
+     "role": "use",
+     "before": [
+      "彼らに会いたい？",
+      "你想见他们吗？"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01U02",
+     "role": "use",
+     "before": [
+      "会いたいと思っていた。",
+      "我以为你想见我。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01U04",
+     "role": "use",
+     "before": [
+      "今は会いたくない。",
+      "我现在不想见你。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01U05",
+     "role": "use",
+     "before": [
+      "会う必要があると信じている。",
+      "我相信我需要见你。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0127L01U06",
+     "role": "use",
+     "before": [
+      "会いたくないのは奇妙だ。",
+      "奇怪的是你不想见。"
+     ],
+     "action": "UNDECIDED"
+    }
+   ],
+   "add": [],
+   "basket_after": {},
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 18,
+    "sample": [
+     {
+      "id": "zho_for_jpn:S0018L04B01",
+      "known": "会う",
+      "target": "见面",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_jpn:S0018L04B03",
+      "known": "今晩会うつもり",
+      "target": "今天晚上要见面",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_jpn:S0018L04B04",
+      "known": "6時に会う",
+      "target": "六点见面",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_jpn:S0022L02B02",
+      "known": "中国語を話す人に会う",
+      "target": "见说中文的人",
+      "seed": 22
+     },
+     {
+      "id": "zho_for_jpn:S0044L01U03",
+      "known": "あるいは私たちは今夜六時に会うことができます",
+      "target": "或者我们今天晚上六点见面",
+      "seed": 44
+     },
+     {
+      "id": "zho_for_jpn:S0059L01B01",
+      "known": "来週会う",
+      "target": "下星期见面",
+      "seed": 59
+     },
+     {
+      "id": "zho_for_jpn:S0083L01U02",
+      "known": "私たちはどこで会うかに同意する",
+      "target": "我们同意在哪里见面",
+      "seed": 83
+     },
+     {
+      "id": "zho_for_jpn:S0137L01U03",
+      "known": "よく友達に会う？",
+      "target": "你经常见你的朋友吗？",
+      "seed": 137
+     },
+     {
+      "id": "zho_for_jpn:S0154L01U01",
+      "known": "土曜日に会うと思いました",
+      "target": "我以为我们星期六见面",
+      "seed": 154
+     },
+     {
+      "id": "zho_for_jpn:S0154L01U04",
+      "known": "土曜日にどこで会うかわかりません",
+      "target": "我不知道星期六在哪里见面",
+      "seed": 154
+     },
+     {
+      "id": "zho_for_jpn:S0154L01U05",
+      "known": "土曜日は会うのにいい時だと信じています",
+      "target": "我相信星期六是见面的好时候",
+      "seed": 154
+     },
+     {
+      "id": "zho_for_jpn:S0206L01U03",
+      "known": "あなたに会う機会が欲しいです。",
+      "target": "我想有机会见你。",
+      "seed": 206
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0139L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'早く' is the prompt for 快点 ('quickly', S0020L01) and for 早 ('early', here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'こんなに早く | 这么早' (3 syllables), which shows the 'early' sense.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 139,
+    "known": "こんなに早く出なければならなくてすみません。",
+    "target": "对不起我需要这么早走。"
+   },
+   "before": {
+    "known": "早く",
+    "target": "早",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "こんなに早く",
+    "target": "这么早",
+    "type": "M",
+    "components": [
+     [
+      "こんなに",
+      "这么"
+     ],
+     [
+      "早く",
+      "早"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0139L02B01",
+     "role": "build",
+     "before": [
+      "こんなに早く",
+      "这么早"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02B02",
+     "role": "build",
+     "before": [
+      "こんなに早く出る",
+      "这么早走"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02B03",
+     "role": "build",
+     "before": [
+      "早く始めたい。",
+      "我想早开始。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02U01",
+     "role": "use",
+     "before": [
+      "彼女はよくこんなに早く出る。",
+      "她经常这么早走。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02U02",
+     "role": "use",
+     "before": [
+      "早く始めるほうがいいと信じている。",
+      "我相信早开始更好。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02U03",
+     "role": "use",
+     "before": [
+      "なぜこんなに早く？",
+      "你为什么这么早走？"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02U05",
+     "role": "use",
+     "before": [
+      "こんなに早く出なければならなくてすみません。",
+      "对不起我需要这么早走。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0139L02U06",
+     "role": "use",
+     "before": [
+      "なぜこんなに早く出るの？",
+      "为什么你需要这么早走？"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0030L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'聞く' is the prompt for 问 ('ask', here) and for 听 ('listen', S0103L01) — one Japanese verb, and both seeds use it. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The 'ask' one grows to its seed piece 'あなたに聞く | 问你' (2 syllables): asking is 'of someone'. 听 keeps bare 聞く.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 30,
+    "known": "昨日あなたに何か聞きたかったです。",
+    "target": "我昨天想问你一些东西。"
+   },
+   "before": {
+    "known": "聞く",
+    "target": "问",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "あなたに聞く",
+    "target": "问你",
+    "type": "M",
+    "components": [
+     [
+      "聞く",
+      "问"
+     ],
+     [
+      "あなたに",
+      "你"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": [
+     "あなたに聞く"
+    ],
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0030L02B01",
+     "role": "build",
+     "before": [
+      "あなたに聞く",
+      "问你"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02B02",
+     "role": "build",
+     "before": [
+      "聞きたい",
+      "想问"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02B03",
+     "role": "build",
+     "before": [
+      "昨日聞いた",
+      "昨天问了"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02U01",
+     "role": "use",
+     "before": [
+      "あなたに何か聞きたいです",
+      "我想问你一些东西"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02U02",
+     "role": "use",
+     "before": [
+      "私に聞きたいですか",
+      "你要问我吗"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02U03",
+     "role": "use",
+     "before": [
+      "彼女は昨日私の言っていることの意味を聞きました",
+      "她昨天问了我的意思"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02U04",
+     "role": "use",
+     "before": [
+      "昨日あなたに何か聞きたかったです",
+      "我昨天想问你一些东西"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02U05",
+     "role": "use",
+     "before": [
+      "彼は中国語の話し方を聞きたいです",
+      "他想问怎么说中文"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0030L02U06",
+     "role": "use",
+     "before": [
+      "なぜ聞かないのですか",
+      "你为什么不问"
+     ],
+     "action": "UNDECIDED"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0137L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'話' is the prompt for 故事 ('story', S0036L02) and for 话 (here) — but seed 137 has no noun 話: it says 話す, 'to talk', and its Chinese is 说话 (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed's own piece '頻繁に話す | 经常说话' (4 syllables).",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 137,
+    "known": "完璧であるより頻繁に話す方が大切です。",
+    "target": "经常说话比完美更重要。"
+   },
+   "before": {
+    "known": "話",
+    "target": "话",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "頻繁に話す",
+    "target": "经常说话",
+    "type": "M",
+    "components": [
+     [
+      "頻繁に",
+      "经常"
+     ],
+     [
+      "話す",
+      "说话"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0137L02B01",
+     "role": "build",
+     "before": [
+      "話す",
+      "说话"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02B02",
+     "role": "build",
+     "before": [
+      "よく話す",
+      "经常说话"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02B03",
+     "role": "build",
+     "before": [
+      "あなたと話したい。",
+      "我想跟你说话。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02U01",
+     "role": "use",
+     "before": [
+      "彼女はよく私と話す。",
+      "她经常跟我说话。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02U02",
+     "role": "use",
+     "before": [
+      "もちろん彼女と話したい。",
+      "当然我想跟她说话。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02U03",
+     "role": "use",
+     "before": [
+      "話すことは重要だと信じている。",
+      "我相信说话很重要。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02U04",
+     "role": "use",
+     "before": [
+      "彼らと話したい？",
+      "你想跟他们说话吗？"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02U06",
+     "role": "use",
+     "before": [
+      "よく友達と話す。",
+      "我经常跟我的朋友说话。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0137L02U07",
+     "role": "use",
+     "before": [
+      "なぜ話したいかわからない。",
+      "我不知道为什么你想说话。"
+     ],
+     "action": "UNDECIDED"
+    }
+   ],
+   "add": [],
+   "basket_after": {},
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 104,
+    "sample": [
+     {
+      "id": "zho_for_jpn:S0005L04B01",
+      "known": "話をする練習",
+      "target": "练习说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04B02",
+      "known": "他の人と話をする練習",
+      "target": "和别人练习说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04B03",
+      "known": "中国語で話をする",
+      "target": "用中文说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04U01",
+      "known": "あなたと話したいです",
+      "target": "我想和你说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04U02",
+      "known": "他の人と話す練習をするつもりです",
+      "target": "我要和别人练习说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04U03",
+      "known": "できるだけたくさん話そうとしています",
+      "target": "我在试着尽量多说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04U04",
+      "known": "中国語で話したいです",
+      "target": "我想用中文说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0005L04U05",
+      "known": "今あなたと話したいです",
+      "target": "我现在想和你说话",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_jpn:S0007L01U02",
+      "known": "今日あなたと話したいです",
+      "target": "我今天想和你说话",
+      "seed": 7
+     },
+     {
+      "id": "zho_for_jpn:S0007L01U05",
+      "known": "今日他の人と話す練習をしたいです",
+      "target": "我今天想和别人练习说话",
+      "seed": 7
+     },
+     {
+      "id": "zho_for_jpn:S0007L02U03",
+      "known": "今日頑張って話す練習をするつもりです",
+      "target": "我今天要努力练习说话",
+      "seed": 7
+     },
+     {
+      "id": "zho_for_jpn:S0010L02U04",
+      "known": "今日話す練習ができるかどうかわかりません",
+      "target": "我不确定我今天能不能练习说话",
+      "seed": 10
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0101L01",
+   "verdict": "regloss",
+   "pov": "hold",
+   "pattern": "S",
+   "why": "HOLD (rows owed). '知る' is the prompt for 知道 (S0045L01) and for 了解 (here) — but seed 101's Japanese does not say 知る, it says 発見する (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). The LEGO should take its seed's word, '発見する | 了解'. Its 7 rows still prompt with 知る and each needs its Japanese reworded by hand; not written here.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 101,
+    "known": "この言語についてもっと発見するのを楽しんでいます。",
+    "target": "我喜欢多了解这门语言。"
+   },
+   "before": {
+    "known": "知る",
+    "target": "了解",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "発見する",
+    "target": "了解",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0101L01B01",
+     "role": "build",
+     "before": [
+      "知る。",
+      "了解。"
+     ],
+     "action": [
+      "発見する。",
+      "了解。"
+     ]
+    },
+    {
+     "id": "zho_for_jpn:S0101L01B02",
+     "role": "build",
+     "before": [
+      "もっと知る。",
+      "多了解。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0101L01B03",
+     "role": "build",
+     "before": [
+      "もっと知るのが好き。",
+      "喜欢多了解。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0101L01U01",
+     "role": "use",
+     "before": [
+      "もっと知りたいです。",
+      "我想了解更多。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0101L01U02",
+     "role": "use",
+     "before": [
+      "あなたはこれを知っていますか？",
+      "你了解这个吗？"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0101L01U04",
+     "role": "use",
+     "before": [
+      "彼はこの方法をよく知っています。",
+      "他很了解这个方法。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0101L01U05",
+     "role": "use",
+     "before": [
+      "もう少し時間をかけて知る必要があります。",
+      "我需要多了解一会儿。"
+     ],
+     "action": "UNDECIDED"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "zho_for_jpn:S0122L02U05",
+      "known": "進展について知る必要がある。",
+      "target": "我需要了解进展。",
+      "seed": 122
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0073L02",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). 'ありがとう' is 非常感谢 (seed 73) and 谢谢 (seed 173). 非常感谢 is 'thank you VERY MUCH'; seed 73's Japanese says only ありがとう. Recommended: seed 73's Japanese becomes どうもありがとう, and the LEGO with it.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 73,
+    "known": "ありがとう。でも、まだ学ぶことがある。",
+    "target": "非常感谢，但是我还有很多要学。"
+   },
+   "before": {
+    "known": "ありがとう",
+    "target": "非常感谢",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0273L02",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). '残念(ながら)' is 可惜 at seed 86 and 遗憾 at seed 273 — the same Japanese phrase in both seeds. Recommended: seed 273's Chinese takes 很可惜, and S0273L02 goes not-new.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 273,
+    "known": "いいえ、残念ながら仕事が多すぎます。",
+    "target": "不行，很遗憾，我工作太多。"
+   },
+   "before": {
+    "known": "残念",
+    "target": "遗憾",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0272L03",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD — item 10's. 'すごい' is 太好了 (S0090L02) and 棒 (here), but neither seed's Japanese says すごい (seed 90 says 嬉しい, seed 272 says いい考え). Both LEGOs must first be re-glossed to their seeds' own words (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ), which is item 10's plan for this course; the clash goes with it.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 272,
+    "known": "はい、それはいい考えですね。",
+    "target": "好啊，听起来很棒。"
+   },
+   "before": {
+    "known": "すごい",
+    "target": "棒",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0094L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'これ' is the prompt for 这个 (S0092L02) and for 这 (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'これが | 这是' (2 syllables), which shows when it is 这.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 94,
+    "known": "これがうまくいく唯一の方法です。",
+    "target": "这是唯一有用的方法。"
+   },
+   "before": {
+    "known": "これ",
+    "target": "这",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "これが",
+    "target": "这是",
+    "type": "M",
+    "components": [
+     [
+      "これ",
+      "这"
+     ],
+     [
+      "が",
+      "是"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0094L01B01",
+     "role": "build",
+     "before": [
+      "これ。",
+      "这。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01B02",
+     "role": "build",
+     "before": [
+      "これは。",
+      "这是。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01B03",
+     "role": "build",
+     "before": [
+      "これではない。",
+      "这不是。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01U01",
+     "role": "use",
+     "before": [
+      "これは何ですか？",
+      "这是什么？"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01U02",
+     "role": "use",
+     "before": [
+      "これは理解しにくいです。",
+      "这很难理解。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01U03",
+     "role": "use",
+     "before": [
+      "これは難しいかもしれません。",
+      "这可能很难。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01U04",
+     "role": "use",
+     "before": [
+      "これは私の友達です。",
+      "这是我朋友。"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0094L01U05",
+     "role": "use",
+     "before": [
+      "彼はこれはとても重要だと言いました。",
+      "他说这很重要。"
+     ],
+     "action": "UNDECIDED"
+    }
+   ],
+   "add": [],
+   "basket_after": {},
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 61,
+    "sample": [
+     {
+      "id": "zho_for_jpn:S0077L03B01",
+      "known": "これほど早い",
+      "target": "这么快",
+      "seed": 77
+     },
+     {
+      "id": "zho_for_jpn:S0077L03B02",
+      "known": "これほど良い",
+      "target": "这么好",
+      "seed": 77
+     },
+     {
+      "id": "zho_for_jpn:S0077L03B03",
+      "known": "これほど多く理解した",
+      "target": "懂得这么多",
+      "seed": 77
+     },
+     {
+      "id": "zho_for_jpn:S0077L03U04",
+      "known": "これほど早く学んで非常に良い",
+      "target": "学了这么快非常好",
+      "seed": 77
+     },
+     {
+      "id": "zho_for_jpn:S0092L02B01",
+      "known": "これ。",
+      "target": "这个。",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0092L02B02",
+      "known": "これをやり続ける。",
+      "target": "继续做这个。",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0092L02B03",
+      "known": "あなたはこれに同意しますか？",
+      "target": "你同意这个吗？",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0092L02U01",
+      "known": "私はこれが分かりません。",
+      "target": "我不理解这个。",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0092L02U03",
+      "known": "これをやり続けたいです。",
+      "target": "我想继续做这个。",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0092L02U05",
+      "known": "これについて、私は同意しません。",
+      "target": "关于这个，我不同意。",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0092L03B03",
+      "known": "これをしばらくやる。",
+      "target": "做一会儿这个。",
+      "seed": 92
+     },
+     {
+      "id": "zho_for_jpn:S0093L01U05",
+      "known": "私はこれを終わらせる時間です。",
+      "target": "我该完成这个了。",
+      "seed": 93
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0123L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'考え' is the prompt for 主意 (here) and for 想法 (S0131L02) — the same clash the main Chinese course already has on Kai's known list. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The earlier one grows to its seed piece 'いい考え | 好主意' (3 syllables): an idea you can call good is 主意. 想法 keeps bare 考え.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 123,
+    "known": "それはいい考えだと思います。",
+    "target": "我觉得那是个好主意。"
+   },
+   "before": {
+    "known": "考え",
+    "target": "主意",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "いい考え",
+    "target": "好主意",
+    "type": "M",
+    "components": [
+     [
+      "いい",
+      "好"
+     ],
+     [
+      "考え",
+      "主意"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "zho_for_jpn:S0123L01B03",
+     "role": "build",
+     "before": [
+      "それはいい考えだ。",
+      "那是个好主意。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U01",
+     "role": "use",
+     "before": [
+      "いい考えがある。",
+      "我有个好主意。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U02",
+     "role": "use",
+     "before": [
+      "あなたの考えは何？",
+      "你的主意是什么？"
+     ],
+     "action": "UNDECIDED"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U03",
+     "role": "use",
+     "before": [
+      "いい考えが必要だ。",
+      "我需要个好主意。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U04",
+     "role": "use",
+     "before": [
+      "それはいい考えじゃない。",
+      "那不是个好主意。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U05",
+     "role": "use",
+     "before": [
+      "それはいい考えだと思います。",
+      "我觉得那是个好主意。"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U06",
+     "role": "use",
+     "before": [
+      "いい考えだと思う？",
+      "你觉得那是个好主意吗？"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_jpn:S0123L01U07",
+     "role": "use",
+     "before": [
+      "いい考えだとは思わない。",
+      "我不觉得那是个好主意。"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 6
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "zho_for_jpn:S0125L01U06",
+      "known": "あなたの考えはとても良かったと信じています。",
+      "target": "我相信你的主意很好。",
+      "seed": 125
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0274L03",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "SETTLED by item 10. '〜しなければならない' was the prompt for 必须 (S0109L01) and 得 (here). Item 10's plan for this course already re-glosses the first ('しなければなりません | 必须') and grows this one ('出発しなければなりません | 得走'). Inherited, not planned twice.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 274,
+    "known": "数日後に出発しなければなりませんか？",
+    "target": "你几天后就得走吗？"
+   },
+   "before": {
+    "known": "〜しなければならない",
+    "target": "得",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0127L01",
+   "set": {
+    "known_text": "あなたに会う",
+    "target_text": "见你",
+    "type": "M",
+    "components": [
+     {
+      "known": "会う",
+      "target": "见"
+     },
+     {
+      "known": "あなたに",
+      "target": "你"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "会う",
+    "target_text": "见"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0139L02",
+   "set": {
+    "known_text": "こんなに早く",
+    "target_text": "这么早",
+    "type": "M",
+    "components": [
+     {
+      "known": "こんなに",
+      "target": "这么"
+     },
+     {
+      "known": "早く",
+      "target": "早"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "早く",
+    "target_text": "早"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0030L02",
+   "set": {
+    "known_text": "あなたに聞く",
+    "target_text": "问你",
+    "type": "M",
+    "components": [
+     {
+      "known": "聞く",
+      "target": "问"
+     },
+     {
+      "known": "あなたに",
+      "target": "你"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "聞く",
+    "target_text": "问"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0137L02",
+   "set": {
+    "known_text": "頻繁に話す",
+    "target_text": "经常说话",
+    "type": "M",
+    "components": [
+     {
+      "known": "頻繁に",
+      "target": "经常"
+     },
+     {
+      "known": "話す",
+      "target": "说话"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "話",
+    "target_text": "话"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0101L01",
+   "set": {
+    "known_text": "発見する"
+   },
+   "expect": {
+    "known_text": "知る",
+    "target_text": "了解"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0101L01B01",
+   "set": {
+    "known_text": "発見する。"
+   },
+   "expect": {
+    "known_text": "知る。",
+    "target_text": "了解。"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0094L01",
+   "set": {
+    "known_text": "これが",
+    "target_text": "这是",
+    "type": "M",
+    "components": [
+     {
+      "known": "これ",
+      "target": "这"
+     },
+     {
+      "known": "が",
+      "target": "是"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "これ",
+    "target_text": "这"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0123L01",
+   "set": {
+    "known_text": "いい考え",
+    "target_text": "好主意",
+    "type": "M",
+    "components": [
+     {
+      "known": "いい",
+      "target": "好"
+     },
+     {
+      "known": "考え",
+      "target": "主意"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "考え",
+    "target_text": "主意"
+   }
+  }
+ ]
+}

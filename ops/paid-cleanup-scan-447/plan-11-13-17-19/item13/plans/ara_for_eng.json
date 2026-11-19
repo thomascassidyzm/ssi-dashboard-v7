@@ -454,7 +454,8 @@
       "known": "quiet",
       "target": "هادِئينَ"
      }
-    ]
+    ],
+    "target_text_roman": "nabqaa haadi'eena"
    },
    "expect": {
     "known_text": "quiet",
@@ -466,7 +467,8 @@
    "phrase_id": "ara_for_eng:S0403L01B01",
    "set": {
     "known_text": "remain quiet",
-    "target_text": "نَبْقى هادِئينَ"
+    "target_text": "نَبْقى هادِئينَ",
+    "target_text_roman": "nabqaa haadi'eena"
    },
    "expect": {
     "known_text": "quiet",
@@ -478,7 +480,8 @@
    "phrase_id": "ara_for_eng:S0403L01B02",
    "set": {
     "known_text": "we remain quiet here",
-    "target_text": "نَبْقى هادِئينَ هُنا"
+    "target_text": "نَبْقى هادِئينَ هُنا",
+    "target_text_roman": "nabqaa haadi'eena hunaa"
    },
    "expect": {
     "known_text": "they are quiet",
@@ -490,7 +493,8 @@
    "phrase_id": "ara_for_eng:S0403L01B03",
    "set": {
     "known_text": "we want to remain quiet",
-    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ"
+    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ",
+    "target_text_roman": "nureedu an nabqaa haadi'eena"
    },
    "expect": {
     "known_text": "the people are quiet",
@@ -502,7 +506,8 @@
    "phrase_id": "ara_for_eng:S0403L01B04",
    "set": {
     "known_text": "we want to remain quiet here",
-    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ هُنا"
+    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ هُنا",
+    "target_text_roman": "nureedu an nabqaa haadi'eena hunaa"
    },
    "expect": {
     "known_text": "we want the group to be quiet",
@@ -514,7 +519,8 @@
    "phrase_id": "ara_for_eng:S0403L01U01",
    "set": {
     "known_text": "we remain quiet at the entrance",
-    "target_text": "نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+    "target_text": "نَبْقى هادِئينَ عِنْدَ المَدْخَلِ",
+    "target_text_roman": "nabqaa haadi'eena 'inda al-madkhali"
    },
    "expect": {
     "known_text": "they are quiet at the entrance",
@@ -526,7 +532,8 @@
    "phrase_id": "ara_for_eng:S0403L01U02",
    "set": {
     "known_text": "we should remain quiet",
-    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ"
+    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ",
+    "target_text_roman": "yajibu an nabqaa haadi'eena"
    },
    "expect": {
     "known_text": "she told me they are quiet",
@@ -538,7 +545,8 @@
    "phrase_id": "ara_for_eng:S0403L01U03",
    "set": {
     "known_text": "we should remain quiet here",
-    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ هُنا"
+    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ هُنا",
+    "target_text_roman": "yajibu an nabqaa haadi'eena hunaa"
    },
    "expect": {
     "known_text": "the people in the bus are quiet",
@@ -550,7 +558,8 @@
    "phrase_id": "ara_for_eng:S0403L01U04",
    "set": {
     "known_text": "we should remain quiet at the entrance",
-    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+    "target_text": "يَجِبُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ",
+    "target_text_roman": "yajibu an nabqaa haadi'eena 'inda al-madkhali"
    },
    "expect": {
     "known_text": "all the people there are quiet",
@@ -562,7 +571,8 @@
    "phrase_id": "ara_for_eng:S0403L01U05",
    "set": {
     "known_text": "we want to remain quiet at the entrance",
-    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ"
+    "target_text": "نُريدُ أَنْ نَبْقى هادِئينَ عِنْدَ المَدْخَلِ",
+    "target_text_roman": "nureedu an nabqaa haadi'eena 'inda al-madkhali"
    },
    "expect": {
     "known_text": "the group at the entrance is quiet",
@@ -627,5 +637,6 @@
     }
    }
   ]
- }
+ },
+ "roman_missing": []
 }

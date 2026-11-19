@@ -48,6 +48,9 @@
     "target_in_seed": true,
     "syllables": 6
    },
+   "rows_checked_by_hand": [
+    "U02"
+   ],
    "basket": [
     {
      "id": "eng_for_tel:S0094L01B01",
@@ -102,8 +105,8 @@
       "this is the only way"
      ],
      "action": [
-      "అవును, ఇదొక్కటే మార్గం",
-      "yes, this is the only way"
+      "ఇదొక్కటే మార్గమని నాకు తెలుసు",
+      "I know that this is the only way"
      ]
     },
     {
@@ -218,8 +221,8 @@
    "op": "phrase.update",
    "phrase_id": "eng_for_tel:S0094L01U02",
    "set": {
-    "known_text": "అవును, ఇదొక్కటే మార్గం",
-    "target_text": "yes, this is the only way"
+    "known_text": "ఇదొక్కటే మార్గమని నాకు తెలుసు",
+    "target_text": "I know that this is the only way"
    },
    "expect": {
     "known_text": "ఇదొక్కటే మార్గం",
@@ -228,27 +231,20 @@
   }
  ],
  "validator": {
-  "at": "2026-11-19T12:07:40Z",
+  "at": "2026-11-19T12:09:48Z",
   "baseline_failing_seeds": 603,
   "per_seed": {
    "94": {
     "seed_issues_planned": [
-     "L1: vocab violations in 1 phrase(s)",
      "L2: USE: need 5+, got 4 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
     ],
     "seed_issues_live": [
      "L2: USE: need 5+, got 4 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
     ],
-    "new_issues_anywhere": {
-     "94": [
-      "L1: vocab violations in 1 phrase(s)"
-     ]
-    },
+    "new_issues_anywhere": {},
     "error": null
    }
   },
-  "seeds_with_new_issues": [
-   94
-  ]
+  "seeds_with_new_issues": []
  }
 }

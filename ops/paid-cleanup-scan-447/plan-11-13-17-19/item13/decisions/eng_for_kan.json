@@ -32,8 +32,8 @@
      "op": "phrase.update",
      "phrase_id": "eng_for_kan:S0134L04U03",
      "set": {
-      "known_text": "ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
-      "target_text": "but it's not a problem"
+      "known_text": "ಆದರೆ ಇವತ್ತು ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
+      "target_text": "but it's not a problem today"
      },
      "expect": {
       "known_text": "ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
@@ -41,7 +41,7 @@
      }
     }
    ],
-   "why": "PATTERN R (a row, not a LEGO). 'ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ' is taught as 'no that's not a problem' (S0282L01); this row says 'no it's not a problem' for the same Kannada. It must keep its own LEGO, 'it's not a problem', so the row changes on both sides to 'but it's not a problem | ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ'."
+   "why": "PATTERN R (a row, not a LEGO). 'ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ' is taught as 'no that's not a problem' (S0282L01); this row says 'no it's not a problem' for the same Kannada. It must keep its own LEGO, 'it's not a problem', so the row changes on both sides to 'but it's not a problem today | ಆದರೆ ಇವತ್ತು ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ'."
   },
   {
    "id": "S0089L03",

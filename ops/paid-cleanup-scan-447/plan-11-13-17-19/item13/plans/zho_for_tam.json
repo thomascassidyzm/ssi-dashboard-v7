@@ -1,0 +1,115 @@
+{
+ "course": "zho_for_tam",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:12:52Z",
+ "decisions": 2,
+ "verdicts": {
+  "keep": 2
+ },
+ "touched_seeds": [
+  51,
+  170
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0170L01",
+   "verdict": "keep",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'உங்களுக்கு என்ன வேண்டும்?' is the whole of seed 631 ('你想要什么？', what do you want) and also this row ('你需要什么？', what do you need): வேண்டும் covers both. This row's prompt takes தேவை ('need').",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 170,
+    "known": "உங்களுக்கு என்ன வேண்டும் என்று நீங்கள் எனக்குச் சொல்ல வேண்டும் என்று நான் விரும்புகிறேன்.",
+    "target": "我想让你告诉我你需要什么。"
+   },
+   "before": {
+    "known": "உங்களுக்கு என்ன வேண்டும் என்று",
+    "target": "你需要什么",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0170L01U01",
+     "set": {
+      "known_text": "உங்களுக்கு என்ன தேவை?"
+     },
+     "expect": {
+      "known_text": "உங்களுக்கு என்ன வேண்டும்?",
+      "target_text": "你需要什么？"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0051L02",
+   "verdict": "keep",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'நீங்கள் என்ன செய்கிறீர்கள்' is taught as 你在做什么 ('what are you doing', S0107L03); this earlier row answers it 你做什么. The row's prompt takes the habitual form செய்வீர்கள் ('what do you do'). (在 is not taught until later, so the Chinese cannot change.)",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 51,
+    "known": "என் நண்பர்களோடு சுவாரஸ்யமான விஷயங்களைச் செய்வது எனக்குப் பிடிக்கும்.",
+    "target": "我喜欢跟朋友做有趣的事情。"
+   },
+   "before": {
+    "known": "செய்ய",
+    "target": "做",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0051L02U01",
+     "set": {
+      "known_text": "நீங்கள் என்ன செய்வீர்கள்?"
+     },
+     "expect": {
+      "known_text": "நீங்கள் என்ன செய்கிறீர்கள்?",
+      "target_text": "你做什么？"
+     }
+    }
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_tam:S0170L01U01",
+   "set": {
+    "known_text": "உங்களுக்கு என்ன தேவை?"
+   },
+   "expect": {
+    "known_text": "உங்களுக்கு என்ன வேண்டும்?",
+    "target_text": "你需要什么？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_tam:S0051L02U01",
+   "set": {
+    "known_text": "நீங்கள் என்ன செய்வீர்கள்?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன செய்கிறீர்கள்?",
+    "target_text": "你做什么？"
+   }
+  }
+ ]
+}

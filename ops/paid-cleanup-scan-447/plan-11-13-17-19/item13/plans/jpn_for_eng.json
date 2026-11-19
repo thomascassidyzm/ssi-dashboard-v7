@@ -1,0 +1,134 @@
+{
+ "course": "jpn_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:12:49Z",
+ "decisions": 4,
+ "verdicts": {
+  "kai": 3,
+  "keep": 1
+ },
+ "touched_seeds": [],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0194L01",
+   "verdict": "kai",
+   "proposed": null,
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). Seeds 68 and 194 are the same English sentence, 'what are you looking for?', answered 何を探してる at 68 and 何探してる at 194 — and three rows in seed 68's own basket already say 何探してる. Recommended: seed 68 keeps を (it is what teaches 'what are you | 何を'), its three rows take 何を探してる, and seed 194's intro says this is the same sentence with を dropped in speech.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 194,
+    "known": "what are you looking for?",
+    "target": "何探してる？"
+   },
+   "before": {
+    "known": "what are you looking for",
+    "target": "何探してる",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0336L01",
+   "verdict": "keep",
+   "proposed": null,
+   "pov": "hold",
+   "pattern": "W",
+   "why": "KEEP under K23, with one line for Kai. 'that' is それが (S0127L01: 'that' as the subject) and その (here: 'that' before a thing). K23: 'keep the clash, explain the sense in the presentation, and never let the marked sense be prompted without its context'. All 11 rows already carry a noun (その本, その部屋) and there is no bare 'that | その' row. Growing it to 'that door | そのドア' would mean rebuilding 11 good rows. What is left is the intro: 'that, before a thing'. Kai's yes is for that line (the intro text is not readable from here: a gap).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 336,
+    "known": "I don't think that she can open the door",
+    "target": "そのドアは開けられないと思う"
+   },
+   "before": {
+    "known": "that",
+    "target": "その",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0524L02",
+   "verdict": "kai",
+   "proposed": {
+    "known": "in three or four minutes",
+    "target": "三、四分で",
+    "type": "M",
+    "components": [
+     [
+      "three",
+      "三"
+     ],
+     [
+      "in four minutes",
+      "四分で"
+     ]
+    ]
+   },
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). 'three' is the prompt for 三つ (S0311L01) and for bare 三 (S0524L01), and 三 only works with a counter after it. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. This LEGO grows to the seed's own piece, 'in three or four minutes | 三、四分で'; each of its rows gains 三、. Read row by row (R0.13). The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 524,
+    "known": "I'll call you back in three or four minutes",
+    "target": "三、四分でかけ直す"
+   },
+   "before": {
+    "known": "in four minutes",
+    "target": "四分で",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0524L01",
+   "verdict": "kai",
+   "proposed": {},
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD (cut proposed, rows owed — not validated). neighbour of S0524L02: the bare 'three | 三' is retired — it is now inside S0524L02 — with its 7 rows, which are not Japanese sentences ('三から', '三と言ってた'). STRUCTURAL: a LEGO delete, needs Kai's go. The rows of this basket have not been re-read against the new cut; several use the word with other objects and would need rewording.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 524,
+    "known": "I'll call you back in three or four minutes",
+    "target": "三、四分でかけ直す"
+   },
+   "before": {
+    "known": "three",
+    "target": "三",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [],
+ "validator": {
+  "at": "2026-11-19T12:13:45Z",
+  "baseline_failing_seeds": 508,
+  "per_seed": {},
+  "seeds_with_new_issues": []
+ }
+}

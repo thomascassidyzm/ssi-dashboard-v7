@@ -1630,7 +1630,8 @@
       "known": "enough",
       "target": "كافي"
      }
-    ]
+    ],
+    "target_text_roman": "wa't kaafi"
    },
    "expect": {
     "known_text": "enough",
@@ -1642,7 +1643,8 @@
    "phrase_id": "ara_lb_for_eng:S0294L01B01",
    "set": {
     "known_text": "enough time",
-    "target_text": "وقت كافي"
+    "target_text": "وقت كافي",
+    "target_text_roman": "wa't kaafi"
    },
    "expect": {
     "known_text": "enough",
@@ -1654,7 +1656,8 @@
    "phrase_id": "ara_lb_for_eng:S0294L01B02",
    "set": {
     "known_text": "I don't have enough time",
-    "target_text": "ما عندي وقت كافي"
+    "target_text": "ما عندي وقت كافي",
+    "target_text_roman": "ma 'indi wa't kaafi"
    },
    "expect": {
     "known_text": "enough time",
@@ -1666,7 +1669,8 @@
    "phrase_id": "ara_lb_for_eng:S0294L01B03",
    "set": {
     "known_text": "enough time tonight",
-    "target_text": "وقت كافي الليلة"
+    "target_text": "وقت كافي الليلة",
+    "target_text_roman": "wa't kaafi al-leele"
    },
    "expect": {
     "known_text": "enough for it",
@@ -1678,7 +1682,8 @@
    "phrase_id": "ara_lb_for_eng:S0294L01U01",
    "set": {
     "known_text": "I don't have enough time tonight",
-    "target_text": "ما عندي وقت كافي الليلة"
+    "target_text": "ما عندي وقت كافي الليلة",
+    "target_text_roman": "ma 'indi wa't kaafi al-leele"
    },
    "expect": {
     "known_text": "enough",
@@ -1698,7 +1703,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bass wa't kaafi"
    }
   },
   {
@@ -1717,7 +1723,8 @@
       "known": "my friend",
       "target": "صاحبتي"
      }
-    ]
+    ],
+    "target_text_roman": "la'annu saahibti"
    },
    "expect": {
     "known_text": "my friend",
@@ -1729,7 +1736,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03B01",
    "set": {
     "known_text": "because she's my friend",
-    "target_text": "لأنها صاحبتي"
+    "target_text": "لأنها صاحبتي",
+    "target_text_roman": "la'annu saahibti"
    },
    "expect": {
     "known_text": "my friend",
@@ -1741,7 +1749,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03B02",
    "set": {
     "known_text": "ask her because she's my friend",
-    "target_text": "تسأليها لأنها صاحبتي"
+    "target_text": "تسأليها لأنها صاحبتي",
+    "target_text_roman": "tis'aliha la'annu saahibti"
    },
    "expect": {
     "known_text": "she's my friend",
@@ -1753,7 +1762,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03B03",
    "set": {
     "known_text": "you can ask her because she's my friend",
-    "target_text": "فيك تسأليها لأنها صاحبتي"
+    "target_text": "فيك تسأليها لأنها صاحبتي",
+    "target_text_roman": "fiik tis'aliha la'annu saahibti"
    },
    "expect": {
     "known_text": "my friend knows",
@@ -1765,7 +1775,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03U02",
    "set": {
     "known_text": "of course, because she's my friend",
-    "target_text": "أكيد لأنها صاحبتي"
+    "target_text": "أكيد لأنها صاحبتي",
+    "target_text_roman": "akiid la'annu saahibti"
    },
    "expect": {
     "known_text": "ask her, she's my friend",
@@ -1777,7 +1788,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03U03",
    "set": {
     "known_text": "she knows what to do because she's my friend",
-    "target_text": "بتعرف شو تعمل لأنها صاحبتي"
+    "target_text": "بتعرف شو تعمل لأنها صاحبتي",
+    "target_text_roman": "bta'rif shu ta'mil la'annu saahibti"
    },
    "expect": {
     "known_text": "my friend knows what to do",
@@ -1789,7 +1801,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03U04",
    "set": {
     "known_text": "because she's my friend, of course",
-    "target_text": "لأنها صاحبتي أكيد"
+    "target_text": "لأنها صاحبتي أكيد",
+    "target_text_roman": "la'annu saahibti akiid"
    },
    "expect": {
     "known_text": "my friend can help",
@@ -1801,7 +1814,8 @@
    "phrase_id": "ara_lb_for_eng:S0136L03U05",
    "set": {
     "known_text": "she knows this well because she's my friend",
-    "target_text": "بتعرف هيدا منيح لأنها صاحبتي"
+    "target_text": "بتعرف هيدا منيح لأنها صاحبتي",
+    "target_text_roman": "bta'rif hayda mniih la'annu saahibti"
    },
    "expect": {
     "known_text": "my friend knows this well",
@@ -1824,7 +1838,8 @@
       "known": "was",
       "target": "كانت"
      }
-    ]
+    ],
+    "target_text_roman": "innha kaanit"
    },
    "expect": {
     "known_text": "that it",
@@ -1836,7 +1851,8 @@
    "phrase_id": "ara_lb_for_eng:S0124L01B01",
    "set": {
     "known_text": "that was",
-    "target_text": "إنها كانت"
+    "target_text": "إنها كانت",
+    "target_text_roman": "innha kaanit"
    },
    "expect": {
     "known_text": "that it",
@@ -1848,7 +1864,8 @@
    "phrase_id": "ara_lb_for_eng:S0124L01B02",
    "set": {
     "known_text": "I know that was",
-    "target_text": "بعرف إنها كانت"
+    "target_text": "بعرف إنها كانت",
+    "target_text_roman": "ba'rif innha kaanit"
    },
    "expect": {
     "known_text": "that it was",
@@ -1860,7 +1877,8 @@
    "phrase_id": "ara_lb_for_eng:S0124L01B03",
    "set": {
     "known_text": "I think that was",
-    "target_text": "بفكر إنها كانت"
+    "target_text": "بفكر إنها كانت",
+    "target_text_roman": "bfakkir innha kaanit"
    },
    "expect": {
     "known_text": "I know that it",
@@ -1872,7 +1890,8 @@
    "phrase_id": "ara_lb_for_eng:S0124L01U01",
    "set": {
     "known_text": "I know that was a good idea",
-    "target_text": "بعرف إنها كانت فكرة منيحة"
+    "target_text": "بعرف إنها كانت فكرة منيحة",
+    "target_text_roman": "ba'rif innha kaanit fikra mniiihe"
    },
    "expect": {
     "known_text": "I know that it's a good idea",
@@ -1884,7 +1903,8 @@
    "phrase_id": "ara_lb_for_eng:S0124L01U02",
    "set": {
     "known_text": "I think that was good",
-    "target_text": "بفكر إنها كانت منيحة"
+    "target_text": "بفكر إنها كانت منيحة",
+    "target_text_roman": "bfakkir innha kaanit mniiihe"
    },
    "expect": {
     "known_text": "he thinks that it was good",
@@ -1907,7 +1927,8 @@
    "phrase_id": "ara_lb_for_eng:S0124L01U05",
    "set": {
     "known_text": "I think that was a good idea",
-    "target_text": "بفكر إنها كانت فكرة منيحة"
+    "target_text": "بفكر إنها كانت فكرة منيحة",
+    "target_text_roman": "bfakkir innha kaanit fikra mniiihe"
    },
    "expect": {
     "known_text": "I think that it's not easy",
@@ -1930,7 +1951,8 @@
       "known": "Saturday",
       "target": "السبت"
      }
-    ]
+    ],
+    "target_text_roman": "leelit al-sabt"
    },
    "expect": {
     "known_text": "night",
@@ -1942,7 +1964,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01B01",
    "set": {
     "known_text": "on Saturday night",
-    "target_text": "ليلة السبت"
+    "target_text": "ليلة السبت",
+    "target_text_roman": "leelit al-sabt"
    },
    "expect": {
     "known_text": "night",
@@ -1954,7 +1977,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01B03",
    "set": {
     "known_text": "meet on Saturday night",
-    "target_text": "نلتقي ليلة السبت"
+    "target_text": "نلتقي ليلة السبت",
+    "target_text_roman": "nilta'i leelit al-sabt"
    },
    "expect": {
     "known_text": "meet at night",
@@ -1966,7 +1990,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01U01",
    "set": {
     "known_text": "where do you want to meet on Saturday night?",
-    "target_text": "وين بدك نلتقي ليلة السبت؟"
+    "target_text": "وين بدك نلتقي ليلة السبت؟",
+    "target_text_roman": "ween biddak nilta'i leelit al-sabt"
    },
    "expect": {
     "known_text": "where do you want to meet at night?",
@@ -1978,7 +2003,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01U02",
    "set": {
     "known_text": "I want to meet on Saturday night",
-    "target_text": "بدي نلتقي ليلة السبت"
+    "target_text": "بدي نلتقي ليلة السبت",
+    "target_text_roman": "biddi nilta'i leelit al-sabt"
    },
    "expect": {
     "known_text": "I want to meet at night",
@@ -1990,7 +2016,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01U03",
    "set": {
     "known_text": "meet here on Saturday night",
-    "target_text": "نلتقي هون ليلة السبت"
+    "target_text": "نلتقي هون ليلة السبت",
+    "target_text_roman": "nilta'i hoon leelit al-sabt"
    },
    "expect": {
     "known_text": "meet me at night here",
@@ -2002,7 +2029,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01U04",
    "set": {
     "known_text": "I'll be here on Saturday night",
-    "target_text": "رح أكون هون ليلة السبت"
+    "target_text": "رح أكون هون ليلة السبت",
+    "target_text_roman": "rah akuun hoon leelit al-sabt"
    },
    "expect": {
     "known_text": "I'll be here at night",
@@ -2014,7 +2042,8 @@
    "phrase_id": "ara_lb_for_eng:S0154L01U05",
    "set": {
     "known_text": "what do you want to do on Saturday night?",
-    "target_text": "شو بدك تعمل ليلة السبت؟"
+    "target_text": "شو بدك تعمل ليلة السبت؟",
+    "target_text_roman": "shu biddak ta'mil leelit al-sabt"
    },
    "expect": {
     "known_text": "what do you want to do at night?",
@@ -2034,7 +2063,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bass leelit al-sabt"
    }
   },
   {
@@ -2053,7 +2083,8 @@
       "known": "new",
       "target": "جديد"
      }
-    ]
+    ],
+    "target_text_roman": "shi jdiid"
    },
    "expect": {
     "known_text": "new",
@@ -2064,7 +2095,8 @@
    "op": "phrase.update",
    "phrase_id": "ara_lb_for_eng:S0111L01B01",
    "set": {
-    "target_text": "شي جديد"
+    "target_text": "شي جديد",
+    "target_text_roman": "shi jdiid"
    },
    "expect": {
     "known_text": "something new",
@@ -2076,7 +2108,8 @@
    "phrase_id": "ara_lb_for_eng:S0111L01B02",
    "set": {
     "known_text": "something new here",
-    "target_text": "شي جديد هون"
+    "target_text": "شي جديد هون",
+    "target_text_roman": "shi jdiid hoon"
    },
    "expect": {
     "known_text": "a lot new",
@@ -2088,7 +2121,8 @@
    "phrase_id": "ara_lb_for_eng:S0111L01B03",
    "set": {
     "known_text": "not something new",
-    "target_text": "مش شي جديد"
+    "target_text": "مش شي جديد",
+    "target_text_roman": "mish shi jdiid"
    },
    "expect": {
     "known_text": "not new",
@@ -2100,7 +2134,8 @@
    "phrase_id": "ara_lb_for_eng:S0111L01U05",
    "set": {
     "known_text": "there's something new here",
-    "target_text": "في شي جديد هون"
+    "target_text": "في شي جديد هون",
+    "target_text_roman": "fii shi jdiid hoon"
    },
    "expect": {
     "known_text": "there's a lot of new stuff here",
@@ -2120,7 +2155,8 @@
     "position": 9,
     "word_count": 3,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "bass shi jdiid"
    }
   },
   {
@@ -2143,7 +2179,8 @@
       "known": "kind",
       "target": "طيبة"
      }
-    ]
+    ],
+    "target_text_roman": "kaanit ktiir tayyibe"
    },
    "expect": {
     "known_text": "kind",
@@ -2155,7 +2192,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01B01",
    "set": {
     "known_text": "she was very kind",
-    "target_text": "كانت كتير طيبة"
+    "target_text": "كانت كتير طيبة",
+    "target_text_roman": "kaanit ktiir tayyibe"
    },
    "expect": {
     "known_text": "kind",
@@ -2167,7 +2205,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01B02",
    "set": {
     "known_text": "but she was very kind",
-    "target_text": "بس كانت كتير طيبة"
+    "target_text": "بس كانت كتير طيبة",
+    "target_text_roman": "bass kaanit ktiir tayyibe"
    },
    "expect": {
     "known_text": "very kind",
@@ -2179,7 +2218,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01B03",
    "set": {
     "known_text": "she was very kind here",
-    "target_text": "كانت كتير طيبة هون"
+    "target_text": "كانت كتير طيبة هون",
+    "target_text_roman": "kaanit ktiir tayyibe hoon"
    },
    "expect": {
     "known_text": "she was kind",
@@ -2191,7 +2231,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01U01",
    "set": {
     "known_text": "she was very kind today",
-    "target_text": "كانت كتير طيبة اليوم"
+    "target_text": "كانت كتير طيبة اليوم",
+    "target_text_roman": "kaanit ktiir tayyibe al-yoom"
    },
    "expect": {
     "known_text": "she was very kind",
@@ -2203,7 +2244,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01U02",
    "set": {
     "known_text": "I know she was very kind",
-    "target_text": "بعرف إنو كانت كتير طيبة"
+    "target_text": "بعرف إنو كانت كتير طيبة",
+    "target_text_roman": "ba'rif inno kaanit ktiir tayyibe"
    },
    "expect": {
     "known_text": "she's a kind person",
@@ -2215,7 +2257,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01U03",
    "set": {
     "known_text": "I think she was very kind",
-    "target_text": "بفكر إنو كانت كتير طيبة"
+    "target_text": "بفكر إنو كانت كتير طيبة",
+    "target_text_roman": "bfakkir inno kaanit ktiir tayyibe"
    },
    "expect": {
     "known_text": "she's so kind",
@@ -2227,7 +2270,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01U04",
    "set": {
     "known_text": "she was very kind here today",
-    "target_text": "كانت كتير طيبة هون اليوم"
+    "target_text": "كانت كتير طيبة هون اليوم",
+    "target_text_roman": "kaanit ktiir tayyibe hoon al-yoom"
    },
    "expect": {
     "known_text": "she's kind here too",
@@ -2239,7 +2283,8 @@
    "phrase_id": "ara_lb_for_eng:S0147L01U05",
    "set": {
     "known_text": "she was very kind before",
-    "target_text": "كانت كتير طيبة قبل هيك"
+    "target_text": "كانت كتير طيبة قبل هيك",
+    "target_text_roman": "kaanit ktiir tayyibe 'abl hiik"
    },
    "expect": {
     "known_text": "she was kind before too",
@@ -2266,7 +2311,8 @@
       "known": "too",
       "target": "كتير"
      }
-    ]
+    ],
+    "target_text_roman": "kaanit mashghuule ktiir"
    },
    "expect": {
     "known_text": "busy",
@@ -2278,7 +2324,8 @@
    "phrase_id": "ara_lb_for_eng:S0246L02B02",
    "set": {
     "known_text": "she was too busy",
-    "target_text": "كانت مشغولة كتير"
+    "target_text": "كانت مشغولة كتير",
+    "target_text_roman": "kaanit mashghuule ktiir"
    },
    "expect": {
     "known_text": "very busy",
@@ -2290,7 +2337,8 @@
    "phrase_id": "ara_lb_for_eng:S0246L02B03",
    "set": {
     "known_text": "but she was too busy",
-    "target_text": "بس كانت مشغولة كتير"
+    "target_text": "بس كانت مشغولة كتير",
+    "target_text_roman": "bass kaanit mashghuule ktiir"
    },
    "expect": {
     "known_text": "too busy",
@@ -2302,7 +2350,8 @@
    "phrase_id": "ara_lb_for_eng:S0246L02U01",
    "set": {
     "known_text": "she was too busy today",
-    "target_text": "كانت مشغولة كتير اليوم"
+    "target_text": "كانت مشغولة كتير اليوم",
+    "target_text_roman": "kaanit mashghuule ktiir al-yoom"
    },
    "expect": {
     "known_text": "she was busy",
@@ -2314,7 +2363,8 @@
    "phrase_id": "ara_lb_for_eng:S0246L02U03",
    "set": {
     "known_text": "I knew she was too busy",
-    "target_text": "كنت بعرف إنو كانت مشغولة كتير"
+    "target_text": "كنت بعرف إنو كانت مشغولة كتير",
+    "target_text_roman": "kunt ba'rif inno kaanit mashghuule ktiir"
    },
    "expect": {
     "known_text": "I knew she was busy",
@@ -2326,7 +2376,8 @@
    "phrase_id": "ara_lb_for_eng:S0246L02U04",
    "set": {
     "known_text": "she said she was too busy",
-    "target_text": "قالت إنها كانت مشغولة كتير"
+    "target_text": "قالت إنها كانت مشغولة كتير",
+    "target_text_roman": "'aalit innha kaanit mashghuule ktiir"
    },
    "expect": {
     "known_text": "she said she was busy",
@@ -2357,7 +2408,8 @@
     "position": 9,
     "word_count": 4,
     "lego_position": "middle",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "kaanit mashghuule ktiir hoon"
    }
   },
   {
@@ -2376,7 +2428,8 @@
       "known": "the car",
       "target": "السيارة"
      }
-    ]
+    ],
+    "target_text_roman": "biduun al-sayyaara"
    },
    "expect": {
     "known_text": "without",
@@ -2388,7 +2441,8 @@
    "phrase_id": "ara_lb_for_eng:S0540L02B01",
    "set": {
     "known_text": "without the car",
-    "target_text": "بدون السيارة"
+    "target_text": "بدون السيارة",
+    "target_text_roman": "biduun al-sayyaara"
    },
    "expect": {
     "known_text": "without",
@@ -2400,7 +2454,8 @@
    "phrase_id": "ara_lb_for_eng:S0540L02B02",
    "set": {
     "known_text": "but without the car",
-    "target_text": "بس بدون السيارة"
+    "target_text": "بس بدون السيارة",
+    "target_text_roman": "bass biduun al-sayyaara"
    },
    "expect": {
     "known_text": "without the car",
@@ -2412,7 +2467,8 @@
    "phrase_id": "ara_lb_for_eng:S0501L06U04",
    "set": {
     "known_text": "I went without asking anything",
-    "target_text": "رحت من دون ما أسأل شي"
+    "target_text": "رحت من دون ما أسأل شي",
+    "target_text_roman": "rihit min duun ma is'al shi"
    },
    "expect": {
     "known_text": "I need it without a problem",
@@ -2424,7 +2480,8 @@
    "phrase_id": "ara_lb_for_eng:S0501L06U05",
    "set": {
     "known_text": "I agreed without trying",
-    "target_text": "اتفقت من دون ما أحاول"
+    "target_text": "اتفقت من دون ما أحاول",
+    "target_text_roman": "ittafa't min duun ma ahaawil"
    },
    "expect": {
     "known_text": "I want it without a challenge",
@@ -2564,5 +2621,6 @@
     }
    }
   ]
- }
+ },
+ "roman_missing": []
 }

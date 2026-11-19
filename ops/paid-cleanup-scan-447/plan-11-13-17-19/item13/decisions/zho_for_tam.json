@@ -1,0 +1,43 @@
+{
+ "course": "zho_for_tam",
+ "legos": [
+  {
+   "id": "S0170L01",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0170L01U01",
+     "set": {
+      "known_text": "உங்களுக்கு என்ன தேவை?"
+     },
+     "expect": {
+      "known_text": "உங்களுக்கு என்ன வேண்டும்?",
+      "target_text": "你需要什么？"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'உங்களுக்கு என்ன வேண்டும்?' is the whole of seed 631 ('你想要什么？', what do you want) and also this row ('你需要什么？', what do you need): வேண்டும் covers both. This row's prompt takes தேவை ('need')."
+  },
+  {
+   "id": "S0051L02",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0051L02U01",
+     "set": {
+      "known_text": "நீங்கள் என்ன செய்வீர்கள்?"
+     },
+     "expect": {
+      "known_text": "நீங்கள் என்ன செய்கிறீர்கள்?",
+      "target_text": "你做什么？"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'நீங்கள் என்ன செய்கிறீர்கள்' is taught as 你在做什么 ('what are you doing', S0107L03); this earlier row answers it 你做什么. The row's prompt takes the habitual form செய்வீர்கள் ('what do you do'). (在 is not taught until later, so the Chinese cannot change.)"
+  }
+ ]
+}

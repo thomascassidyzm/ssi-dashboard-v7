@@ -77,7 +77,7 @@
    "verdict": "keep",
    "pov": "pass",
    "pattern": "R",
-   "why": "PATTERN R (a row, not a LEGO). 'ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ' is taught as 'no that's not a problem' (S0282L01); this row says 'no it's not a problem' for the same Kannada. It must keep its own LEGO, 'it's not a problem', so the row changes on both sides to 'but it's not a problem | ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ'.",
+   "why": "PATTERN R (a row, not a LEGO). 'ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ' is taught as 'no that's not a problem' (S0282L01); this row says 'no it's not a problem' for the same Kannada. It must keep its own LEGO, 'it's not a problem', so the row changes on both sides to 'but it's not a problem today | ಆದರೆ ಇವತ್ತು ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ'.",
    "closes": [
     "13"
    ],
@@ -98,8 +98,8 @@
      "op": "phrase.update",
      "phrase_id": "eng_for_kan:S0134L04U03",
      "set": {
-      "known_text": "ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
-      "target_text": "but it's not a problem"
+      "known_text": "ಆದರೆ ಇವತ್ತು ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
+      "target_text": "but it's not a problem today"
      },
      "expect": {
       "known_text": "ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
@@ -157,8 +157,8 @@
    "op": "phrase.update",
    "phrase_id": "eng_for_kan:S0134L04U03",
    "set": {
-    "known_text": "ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
-    "target_text": "but it's not a problem"
+    "known_text": "ಆದರೆ ಇವತ್ತು ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
+    "target_text": "but it's not a problem today"
    },
    "expect": {
     "known_text": "ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
@@ -178,7 +178,7 @@
   }
  ],
  "validator": {
-  "at": "2026-11-19T12:08:04Z",
+  "at": "2026-11-19T12:10:07Z",
   "baseline_failing_seeds": 461,
   "per_seed": {
    "89": {
@@ -195,21 +195,15 @@
    },
    "134": {
     "seed_issues_planned": [
-     "L4: 2 duplicate phrase(s) within this LEGO: \"it's not a problem\", \"but it's not a problem\""
+     "L4: 1 duplicate phrase(s) within this LEGO: \"it's not a problem\""
     ],
     "seed_issues_live": [
      "L4: 1 duplicate phrase(s) within this LEGO: \"it's not a problem\""
     ],
-    "new_issues_anywhere": {
-     "134": [
-      "L4: 2 duplicate phrase(s) within this LEGO: \"it's not a problem\", \"but it's not a problem\""
-     ]
-    },
+    "new_issues_anywhere": {},
     "error": null
    }
   },
-  "seeds_with_new_issues": [
-   134
-  ]
+  "seeds_with_new_issues": []
  }
 }

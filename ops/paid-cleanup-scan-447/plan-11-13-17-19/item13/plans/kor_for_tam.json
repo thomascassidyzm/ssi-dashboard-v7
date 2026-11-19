@@ -1,0 +1,708 @@
+{
+ "course": "kor_for_tam",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:12:51Z",
+ "decisions": 3,
+ "verdicts": {
+  "grow": 2,
+  "kai": 1
+ },
+ "touched_seeds": [
+  23,
+  57
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0023L02",
+   "verdict": "grow",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'இன்னும்' means both 'more' (더, here) and 'still/yet' elsewhere in the course, so the bare prompt has two answers. L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'இன்னும் அதிகமாக | 더 많이' (3 syllables; 'அதிகமாக | 많이' is the next LEGO and overlaps by design). Each row gains 많이 / அதிகமாக. Read row by row (R0.13).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 23,
+    "known": "நான் விரைவில் இன்னும் அதிகமாகப் பேசத் தொடங்கப் போகிறேன்.",
+    "target": "곧 더 많이 말하기 시작할 거예요."
+   },
+   "before": {
+    "known": "இன்னும்",
+    "target": "더",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "இன்னும் அதிகமாக",
+    "target": "더 많이",
+    "type": "M",
+    "components": [
+     [
+      "இன்னும்",
+      "더"
+     ],
+     [
+      "அதிகமாக",
+      "많이"
+     ]
+    ],
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['அதிகமாக']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "kor_for_tam:S0023L02B01",
+     "role": "build",
+     "before": [
+      "விரைவில் இன்னும்",
+      "곧 더"
+     ],
+     "action": [
+      "இன்னும் அதிகமாக",
+      "더 많이"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02B02",
+     "role": "build",
+     "before": [
+      "இன்னும் பேசுகிறேன்",
+      "더 말해요"
+     ],
+     "action": [
+      "இன்னும் அதிகமாக பேசுகிறேன்",
+      "더 많이 말해요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02B03",
+     "role": "build",
+     "before": [
+      "இன்னும் கற்றுக்கொள்ள முயற்சிக்கிறேன்",
+      "더 배우려고 해요"
+     ],
+     "action": [
+      "இன்னும் அதிகமாக கற்றுக்கொள்ள முயற்சிக்கிறேன்",
+      "더 많이 배우려고 해요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02U01",
+     "role": "use",
+     "before": [
+      "நான் இன்னும் நினைவில் கொள்ளப் போகிறேன்",
+      "더 기억할 거예요"
+     ],
+     "action": [
+      "நான் இன்னும் அதிகமாக நினைவில் கொள்ளப் போகிறேன்",
+      "더 많이 기억할 거예요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02U02",
+     "role": "use",
+     "before": [
+      "நாங்கள் இன்னும் சந்திக்க விரும்புகிறோம்",
+      "우리는 더 만나고 싶어요"
+     ],
+     "action": [
+      "நாங்கள் இன்னும் அதிகமாக சந்திக்க விரும்புகிறோம்",
+      "우리는 더 많이 만나고 싶어요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02U03",
+     "role": "use",
+     "before": [
+      "அவள் இன்னும் கண்டுபிடிக்க விரும்புகிறாள்",
+      "그녀는 더 알고 싶어 해요"
+     ],
+     "action": [
+      "அவள் இன்னும் அதிகமாக கண்டுபிடிக்க விரும்புகிறாள்",
+      "그녀는 더 많이 알고 싶어 해요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02U04",
+     "role": "use",
+     "before": [
+      "நான் இன்னும் பேச விரும்புகிறேன்",
+      "더 말하고 싶어요"
+     ],
+     "action": [
+      "நான் இன்னும் அதிகமாக பேச விரும்புகிறேன்",
+      "더 많이 말하고 싶어요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0023L02U05",
+     "role": "use",
+     "before": [
+      "நான் இன்னும் யூகிக்க விரும்பவில்லை",
+      "더 추측하고 싶지 않아요"
+     ],
+     "action": [
+      "நான் இன்னும் அதிகமாக யூகிக்க விரும்பவில்லை",
+      "더 많이 추측하고 싶지 않아요"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "kor_for_tam:S0023L02B04",
+     "course_code": "kor_for_tam",
+     "seed_number": 23,
+     "lego_index": 2,
+     "known_text": "விரைவில் இன்னும் அதிகமாக",
+     "target_text": "곧 더 많이",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 176,
+    "sample": [
+     {
+      "id": "kor_for_tam:S0023L03B01",
+      "known": "இன்னும் அதிகமாக",
+      "target": "더 많이",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0023L03U03",
+      "known": "அவர் இன்னும் அதிகமாக பேச விரும்புகிறார்",
+      "target": "그는 더 많이 말하고 싶어 해요",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0023L04B01",
+      "known": "இன்னும் அதிகமாக பேசுதல்",
+      "target": "더 많이 말하기",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0023L04U04",
+      "known": "நான் இன்னும் பேசுதல் பயிற்சி செய்கிறேன்",
+      "target": "더 말하기 연습을 해요",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0023L05B04",
+      "known": "இன்னும் தொடங்கப் போகிறேன்",
+      "target": "더 시작할 거예요",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0023L05U01",
+      "known": "நான் விரைவில் இன்னும் அதிகமாகப் பேசத் தொடங்கப் போகிறேன்",
+      "target": "곧 더 많이 말하기 시작할 거예요",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0023L05U05",
+      "known": "நான் இன்னும் அதிகமாக பேசுதல் தொடங்கப் போகிறேன்",
+      "target": "더 많이 말하기 시작할 거예요",
+      "seed": 23
+     },
+     {
+      "id": "kor_for_tam:S0029L01B03",
+      "known": "இன்னும் ஆவலுடன் எதிர்பார்ப்பது",
+      "target": "더 기대하고",
+      "seed": 29
+     },
+     {
+      "id": "kor_for_tam:S0029L01U05",
+      "known": "நான் இன்னும் ஆவலுடன் எதிர்பார்க்கிறேன்",
+      "target": "더 기대하고 있어요",
+      "seed": 29
+     },
+     {
+      "id": "kor_for_tam:S0029L02B02",
+      "known": "இன்னும் நன்றாக பேசக்கூடிய திறனை",
+      "target": "더 잘 말할 수 있기를",
+      "seed": 29
+     },
+     {
+      "id": "kor_for_tam:S0029L02U01",
+      "known": "என்னால் முடிந்தவுடன் இன்னும் நன்றாகப் பேசுவதை நான் ஆவலுடன் எதிர்பார்க்கிறேன்",
+      "target": "가능한 한 빨리 더 잘 말할 수 있기를 기대하고 있어요",
+      "seed": 29
+     },
+     {
+      "id": "kor_for_tam:S0029L02U03",
+      "known": "இன்னும் நன்றாக பேசக்கூடிய திறனை ஆவலுடன் எதிர்பார்க்கிறேன்",
+      "target": "더 잘 말할 수 있기를 기대하고 있어요",
+      "seed": 29
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0057L02",
+   "verdict": "grow",
+   "proposed": null,
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'இல்லை | 없어요': 'இல்லை' is not a word of seed 57's Tamil (it is the tail of முடியவில்லை, 'cannot') (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ), and as a bare prompt it has other answers. Grown to the seed's piece 'நினைவில் கொள்ள முடியவில்லை | 기억할 수 없어요' (7 syllables, kept at 7: 수 없어요 leans on its verb). Five rows already say it; three ('왜 없어요') are rewritten.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 57,
+    "known": "நான் சொல்ல விரும்பியதை எப்படிச் சொல்வது என்று என்னால் நினைவில் கொள்ள முடியவில்லை.",
+    "target": "말하고 싶었던 것을 어떻게 말하는지 기억할 수 없어요."
+   },
+   "before": {
+    "known": "இல்லை",
+    "target": "없어요",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "நினைவில் கொள்ள முடியவில்லை",
+    "target": "기억할 수 없어요",
+    "type": "M",
+    "components": [
+     [
+      "நினைவில் கொள்ள",
+      "기억할"
+     ],
+     [
+      "முடியவில்லை",
+      "수 없어요"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "kor_for_tam:S0057L02B01",
+     "role": "build",
+     "before": [
+      "மேலும் இல்லை",
+      "그리고 없어요"
+     ],
+     "action": [
+      "நினைவில் கொள்ள முடியவில்லை",
+      "기억할 수 없어요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0057L02B02",
+     "role": "build",
+     "before": [
+      "ஏன் இல்லை",
+      "왜 없어요"
+     ],
+     "action": [
+      "ஏன் நினைவில் கொள்ள முடியவில்லை",
+      "왜 기억할 수 없어요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0057L02B03",
+     "role": "build",
+     "before": [
+      "இப்போது இல்லை",
+      "지금 없어요"
+     ],
+     "action": [
+      "இப்போது நினைவில் கொள்ள முடியவில்லை",
+      "지금 기억할 수 없어요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0057L02U01",
+     "role": "use",
+     "before": [
+      "நான் சொல்ல விரும்பியதை எப்படிச் சொல்வது என்று என்னால் நினைவில் கொள்ள முடியவில்லை",
+      "말하고 싶었던 것을 어떻게 말하는지 기억할 수 없어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0057L02U02",
+     "role": "use",
+     "before": [
+      "நினைவில் கொள்ள முடியவில்லை",
+      "기억할 수 없어요"
+     ],
+     "action": [
+      "மேலும் நினைவில் கொள்ள முடியவில்லை",
+      "그리고 기억할 수 없어요"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0057L02U03",
+     "role": "use",
+     "before": [
+      "இன்று நினைவில் கொள்ள முடியவில்லை",
+      "오늘 기억할 수 없어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0057L02U04",
+     "role": "use",
+     "before": [
+      "அதனால் நினைவில் கொள்ள முடியவில்லை",
+      "그래서 기억할 수 없어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0057L02U05",
+     "role": "use",
+     "before": [
+      "எப்படிச் சொல்வது நினைவில் கொள்ள முடியவில்லை",
+      "어떻게 말하는지 기억할 수 없어요"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 57,
+    "sample": [
+     {
+      "id": "kor_for_tam:S0045L02B01",
+      "known": "மேலும் வேண்டிய அவசியம் இல்லை",
+      "target": "그리고 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02B02",
+      "known": "ஏன் வேண்டிய அவசியம் இல்லை",
+      "target": "왜 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02B03",
+      "known": "எல்லாவற்றையும் வேண்டிய அவசியம் இல்லை",
+      "target": "모든 것을 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02U01",
+      "known": "வேண்டிய அவசியம் இல்லை",
+      "target": "필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02U02",
+      "known": "இன்று வேண்டிய அவசியம் இல்லை",
+      "target": "오늘 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02U03",
+      "known": "அல்லது வேண்டிய அவசியம் இல்லை",
+      "target": "아니면 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02U04",
+      "known": "இப்போது வேண்டிய அவசியம் இல்லை",
+      "target": "지금 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L02U05",
+      "known": "அதைப் பற்றி வேண்டிய அவசியம் இல்லை",
+      "target": "그것에 대해 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L03U01",
+      "known": "எனக்கு எல்லாவற்றையும் தெரிந்திருக்க வேண்டிய அவசியம் இல்லை",
+      "target": "모든 것을 알 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L03U02",
+      "known": "தெரிந்திருக்க வேண்டிய அவசியம் இல்லை",
+      "target": "알 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L03U03",
+      "known": "இன்று தெரிந்திருக்க வேண்டிய அவசியம் இல்லை",
+      "target": "오늘 알 필요는 없어요",
+      "seed": 45
+     },
+     {
+      "id": "kor_for_tam:S0045L03U04",
+      "known": "இப்போது தெரிந்திருக்க வேண்டிய அவசியம் இல்லை",
+      "target": "지금 알 필요는 없어요",
+      "seed": 45
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0088L06",
+   "verdict": "kai",
+   "proposed": null,
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD — the clash is in the seed sentences themselves. L34 says 'first try to unify', and unifying here means changing a seed sentence, which is Kai's call (L25: 'bring to me and discuss'). 'தயாராக இல்லை' is 되지 않았어요 here (seed 88) and 안 됐어요 at seed 96 — and seed 88 says 안 됐어요 in both sister courses (kor_for_eng, kor_for_hin). Recommended: seed 88's Korean takes 안 됐어요, this LEGO and its 7 rows with it.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 88,
+    "known": "எனக்கு இன்னும் தெரியாத மக்களோடு பேசுவதற்கு நான் தயாராக இல்லை.",
+    "target": "아직 모르는 사람들과 이야기할 준비가 되지 않았어요."
+   },
+   "before": {
+    "known": "தயாராக இல்லை",
+    "target": "되지 않았어요",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0023L02",
+   "set": {
+    "known_text": "இன்னும் அதிகமாக",
+    "target_text": "더 많이",
+    "type": "M",
+    "components": [
+     {
+      "known": "இன்னும்",
+      "target": "더"
+     },
+     {
+      "known": "அதிகமாக",
+      "target": "많이"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "இன்னும்",
+    "target_text": "더"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02B01",
+   "set": {
+    "known_text": "இன்னும் அதிகமாக",
+    "target_text": "더 많이"
+   },
+   "expect": {
+    "known_text": "விரைவில் இன்னும்",
+    "target_text": "곧 더"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02B02",
+   "set": {
+    "known_text": "இன்னும் அதிகமாக பேசுகிறேன்",
+    "target_text": "더 많이 말해요"
+   },
+   "expect": {
+    "known_text": "இன்னும் பேசுகிறேன்",
+    "target_text": "더 말해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02B03",
+   "set": {
+    "known_text": "இன்னும் அதிகமாக கற்றுக்கொள்ள முயற்சிக்கிறேன்",
+    "target_text": "더 많이 배우려고 해요"
+   },
+   "expect": {
+    "known_text": "இன்னும் கற்றுக்கொள்ள முயற்சிக்கிறேன்",
+    "target_text": "더 배우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02U01",
+   "set": {
+    "known_text": "நான் இன்னும் அதிகமாக நினைவில் கொள்ளப் போகிறேன்",
+    "target_text": "더 많이 기억할 거예요"
+   },
+   "expect": {
+    "known_text": "நான் இன்னும் நினைவில் கொள்ளப் போகிறேன்",
+    "target_text": "더 기억할 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02U02",
+   "set": {
+    "known_text": "நாங்கள் இன்னும் அதிகமாக சந்திக்க விரும்புகிறோம்",
+    "target_text": "우리는 더 많이 만나고 싶어요"
+   },
+   "expect": {
+    "known_text": "நாங்கள் இன்னும் சந்திக்க விரும்புகிறோம்",
+    "target_text": "우리는 더 만나고 싶어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02U03",
+   "set": {
+    "known_text": "அவள் இன்னும் அதிகமாக கண்டுபிடிக்க விரும்புகிறாள்",
+    "target_text": "그녀는 더 많이 알고 싶어 해요"
+   },
+   "expect": {
+    "known_text": "அவள் இன்னும் கண்டுபிடிக்க விரும்புகிறாள்",
+    "target_text": "그녀는 더 알고 싶어 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02U04",
+   "set": {
+    "known_text": "நான் இன்னும் அதிகமாக பேச விரும்புகிறேன்",
+    "target_text": "더 많이 말하고 싶어요"
+   },
+   "expect": {
+    "known_text": "நான் இன்னும் பேச விரும்புகிறேன்",
+    "target_text": "더 말하고 싶어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0023L02U05",
+   "set": {
+    "known_text": "நான் இன்னும் அதிகமாக யூகிக்க விரும்பவில்லை",
+    "target_text": "더 많이 추측하고 싶지 않아요"
+   },
+   "expect": {
+    "known_text": "நான் இன்னும் யூகிக்க விரும்பவில்லை",
+    "target_text": "더 추측하고 싶지 않아요"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "kor_for_tam:S0023L02B04",
+    "course_code": "kor_for_tam",
+    "seed_number": 23,
+    "lego_index": 2,
+    "known_text": "விரைவில் இன்னும் அதிகமாக",
+    "target_text": "곧 더 많이",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0057L02",
+   "set": {
+    "known_text": "நினைவில் கொள்ள முடியவில்லை",
+    "target_text": "기억할 수 없어요",
+    "type": "M",
+    "components": [
+     {
+      "known": "நினைவில் கொள்ள",
+      "target": "기억할"
+     },
+     {
+      "known": "முடியவில்லை",
+      "target": "수 없어요"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "இல்லை",
+    "target_text": "없어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0057L02B01",
+   "set": {
+    "known_text": "நினைவில் கொள்ள முடியவில்லை",
+    "target_text": "기억할 수 없어요"
+   },
+   "expect": {
+    "known_text": "மேலும் இல்லை",
+    "target_text": "그리고 없어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0057L02B02",
+   "set": {
+    "known_text": "ஏன் நினைவில் கொள்ள முடியவில்லை",
+    "target_text": "왜 기억할 수 없어요"
+   },
+   "expect": {
+    "known_text": "ஏன் இல்லை",
+    "target_text": "왜 없어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0057L02B03",
+   "set": {
+    "known_text": "இப்போது நினைவில் கொள்ள முடியவில்லை",
+    "target_text": "지금 기억할 수 없어요"
+   },
+   "expect": {
+    "known_text": "இப்போது இல்லை",
+    "target_text": "지금 없어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0057L02U02",
+   "set": {
+    "known_text": "மேலும் நினைவில் கொள்ள முடியவில்லை",
+    "target_text": "그리고 기억할 수 없어요"
+   },
+   "expect": {
+    "known_text": "நினைவில் கொள்ள முடியவில்லை",
+    "target_text": "기억할 수 없어요"
+   }
+  }
+ ]
+}
