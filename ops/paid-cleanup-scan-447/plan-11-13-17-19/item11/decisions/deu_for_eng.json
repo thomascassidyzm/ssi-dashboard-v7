@@ -1,0 +1,1771 @@
+{
+ "course": "deu_for_eng",
+ "legos": [
+  {
+   "why": "The LEGO 'to think | denken' is the seed's own word. Four rows drill a different verb, nachdenken, which no LEGO teaches. Rewritten with denken. P17 (every practice phrase under a LEGO contains the whole LEGO); P1 (no untaught words). U09 'I cannot think' keeps: after a modal English drops 'to' (K54).",
+   "add": [
+    [
+     "u",
+     "it's difficult to think quickly enough",
+     "es ist schwierig, schnell genug zu denken"
+    ],
+    [
+     "b",
+     "to think quickly enough",
+     "schnell genug zu denken"
+    ]
+   ],
+   "id": "S0091L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "to think quickly",
+     "schnell denken"
+    ],
+    "B02": "keep",
+    "U01": [
+     "I need to think quickly before I can answer you",
+     "Ich muss schnell denken, bevor ich dir antworten kann"
+    ],
+    "U02": [
+     "I'd like to think quickly enough",
+     "Ich möchte schnell genug denken"
+    ],
+    "U08": [
+     "It's difficult to think because I am too tired",
+     "Es ist schwierig zu denken, weil ich zu müde bin"
+    ],
+    "U09": "keep"
+   }
+  },
+  {
+   "why": "Six rows drill 'viel' alone (a lot), which is taught later (seed 244). The LEGO 'many more words | viel mehr Wörter' is the seed's own span; a re-cut to 'viel' would need the gloss 'a lot', which the seed does not say (L26). Rows rewritten around the whole LEGO, keeping their other words. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "add": [
+    [
+     "b",
+     "not many more words",
+     "nicht viel mehr Wörter"
+    ]
+   ],
+   "id": "S0103L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B02": [
+     "many more words to learn",
+     "viel mehr Wörter zu lernen"
+    ],
+    "B03": [
+     "to hear many more words",
+     "viel mehr Wörter zu hören"
+    ],
+    "U02": [
+     "I would like to practise many more words to get better",
+     "Ich möchte viel mehr Wörter üben, um besser zu werden"
+    ],
+    "U03": [
+     "You learned many more words today",
+     "Du hast heute viel mehr Wörter gelernt"
+    ],
+    "U04": [
+     "I'd like to learn many more words this week",
+     "Ich möchte diese Woche viel mehr Wörter lernen"
+    ],
+    "U05": [
+     "I have learned many more words today",
+     "Ich habe heute viel mehr Wörter gelernt"
+    ],
+    "U06": "keep"
+   }
+  },
+  {
+   "known": "after",
+   "target": "nachdem",
+   "type": "A",
+   "why": "All five rows drill 'after | nachdem' with other clauses; none says 'nachdem wir fertig sind'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay). 'nachdem' is a seed word, no other LEGO has 'after' or 'nachdem', so no clash and no duplicate. The basket had only 1 build + 4 use rows, so four rows are added (two build, two use, the seed sentence among them). The rest of the old LEGO (wir, fertig, sind) is taught earlier; 'finished | fertig' (seed 11) is added back as a not-new LEGO (Kai 12 Nov: every seed part is a LEGO). All rows stay. Structural: one not-new LEGO appended.",
+   "add": [
+    [
+     "b",
+     "after we finish",
+     "nachdem wir fertig sind"
+    ],
+    [
+     "b",
+     "after I speak with you",
+     "nachdem ich mit dir spreche"
+    ],
+    [
+     "u",
+     "I'd like to relax after we finish",
+     "Ich möchte mich entspannen, nachdem wir fertig sind"
+    ],
+    [
+     "u",
+     "we're friends, and after we finish I'd like to relax",
+     "wir sind Freunde, und nachdem wir fertig sind, möchte ich mich entspannen"
+    ]
+   ],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 110,
+      "lego_index": 4,
+      "known_text": "finished",
+      "target_text": "fertig",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "id": "S0110L02",
+   "verdict": "recut-small",
+   "components": []
+  },
+  {
+   "why": "Rows drill 'ich helfe / helfen' in main clauses; none has 'dass ich dir helfe'. A re-cut to 'help | helfe' would clash with 'help | Hilfe' (seed 564): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); rows rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "add": [
+    [
+     "u",
+     "I think she wants me to help you",
+     "ich denke, sie will, dass ich dir helfe"
+    ],
+    [
+     "b",
+     "she wants me to help you",
+     "sie will, dass ich dir helfe"
+    ]
+   ],
+   "id": "S0171L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "you want me to help you",
+     "du willst, dass ich dir helfe"
+    ],
+    "B02": [
+     "do you want me to help you?",
+     "willst du, dass ich dir helfe?"
+    ],
+    "U11": [
+     "Do you want me to help you understand that?",
+     "Willst du, dass ich dir helfe, das zu verstehen?"
+    ],
+    "U12": [
+     "Do you want me to help you find it?",
+     "Willst du, dass ich dir helfe, es zu finden?"
+    ],
+    "U13": [
+     "Do you want me to help you learn German?",
+     "Willst du, dass ich dir helfe, Deutsch zu lernen?"
+    ],
+    "U14": [
+     "Do you want me to help you if I can?",
+     "Willst du, dass ich dir helfe, wenn ich kann?"
+    ]
+   }
+  },
+  {
+   "known": "woman who",
+   "target": "Frau, die",
+   "type": "M",
+   "why": "The LEGO 'a woman who | eine Frau, die' is not a span of the seed (the seed says 'eine alte Frau, die'), and every row drills 'die Frau, die'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): the piece all rows share and the seed says is 'woman who | Frau, die'. L26 (a LEGO holds only words its seed says, in the seed's order). 'eine alte Frau' is the seed's own first LEGO. All six rows stay; U17's English gains the 'who' its German already has.",
+   "add": [
+    [
+     "b",
+     "a woman who",
+     "eine Frau, die"
+    ],
+    [
+     "b",
+     "an old woman who",
+     "eine alte Frau, die"
+    ]
+   ],
+   "id": "S0232L02",
+   "verdict": "recut-small",
+   "basket": {
+    "U17": [
+     "The woman who I know speaks very good German",
+     "Die Frau die ich kenne spricht sehr gut Deutsch"
+    ]
+   },
+   "components": [
+    [
+     "woman",
+     "Frau"
+    ],
+    [
+     "who",
+     "die"
+    ]
+   ]
+  },
+  {
+   "why": "Rows drill 'wen' as a question word (Wen hast du gesehen?). A re-cut to 'who | wen' would clash with 'who | wer' (seed 527) and double 'whom | wen' (seed 453): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (4 syllables); rows rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "add": [
+    [
+     "b",
+     "do you know who you mean?",
+     "weißt du, wen du meinst?"
+    ]
+   ],
+   "id": "S0263L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "I know who you mean",
+     "Ich weiß, wen du meinst"
+    ],
+    "B02": [
+     "I think I know who you mean",
+     "Ich glaube, ich weiß, wen du meinst"
+    ],
+    "U01": [
+     "I'd like to know who you mean",
+     "Ich möchte wissen, wen du meinst"
+    ],
+    "U02": [
+     "I'm not sure who you mean",
+     "Ich bin mir nicht sicher, wen du meinst"
+    ],
+    "U07": [
+     "Can you tell me who you mean?",
+     "Kannst du mir sagen, wen du meinst?"
+    ],
+    "U08": [
+     "I can't remember who you mean",
+     "Ich kann mich nicht erinnern, wen du meinst"
+    ],
+    "U09": "keep"
+   }
+  },
+  {
+   "why": "Seven rows drill 'machen / etwas machen' without 'was wir'. 'machen' is already taught twice (seed 48 'to make', seed 438 'to do'), so a re-cut would only make a third copy. LEGO kept (4 syllables); rows rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "add": [
+    [
+     "b",
+     "I know what we do",
+     "ich weiß, was wir machen"
+    ]
+   ],
+   "id": "S0409L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "what we do is important",
+     "was wir machen, ist wichtig"
+    ],
+    "B02": "keep",
+    "B03": [
+     "it doesn't matter what we do",
+     "es ist egal, was wir machen"
+    ],
+    "U01": "keep",
+    "U07": "keep",
+    "U02": [
+     "I think it doesn't matter what we do",
+     "ich denke, dass es egal ist, was wir machen"
+    ],
+    "U03": [
+     "I don't know what we do",
+     "ich weiß nicht, was wir machen"
+    ],
+    "U04": [
+     "she told me it doesn't matter what we do",
+     "sie hat mir gesagt, dass es egal ist, was wir machen"
+    ],
+    "U05": [
+     "I think it is important what we do",
+     "ich denke, dass es wichtig ist, was wir machen"
+    ],
+    "U06": [
+     "that is what we do",
+     "das ist, was wir machen"
+    ]
+   }
+  },
+  {
+   "why": "Six rows say 'solange wir' (we), not the LEGO's 'solange sie' (they). A re-cut to 'while | solange' would clash with 'while | während' (seed 512): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept; the six rows move from 'we' to 'they'. B02, B03, U05 keep: 'they are / they were' for 'they're' is the same word inflected (K6). P17 (every practice phrase under a LEGO contains the whole LEGO); K26 (the person matches on both sides).",
+   "id": "S0440L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "while they're here",
+     "solange sie hier sind"
+    ],
+    "B02": "keep",
+    "B03": "keep",
+    "U05": "keep",
+    "U01": [
+     "I think they should travel while they're still here",
+     "ich denke, dass sie reisen sollten, solange sie noch hier sind"
+    ],
+    "U02": [
+     "I thought they had to travel while they're still here",
+     "ich dachte, dass sie reisen müssen, solange sie noch hier sind"
+    ],
+    "U03": [
+     "she told me they want to travel while they're still young",
+     "sie hat mir gesagt, dass sie reisen wollen, solange sie noch jung sind"
+    ],
+    "U04": [
+     "I knew they had to travel while they're still young",
+     "ich wusste, dass sie reisen müssen, solange sie noch jung sind"
+    ],
+    "U06": [
+     "please could they travel while they're still here",
+     "bitte könnten sie reisen, solange sie noch hier sind"
+    ]
+   }
+  },
+  {
+   "why": "Eight rows drill 'meins' (mine) and 'mein Zimmer', not the LEGO's 'meine'. The LEGO is the seed's own word. Rows rewritten with 'meine' before feminine nouns already taught. P17 (every practice phrase under a LEGO contains the whole LEGO); K8 (target side: exactly the taught form).",
+   "add": [
+    [
+     "b",
+     "that is my answer",
+     "das ist meine Antwort"
+    ]
+   ],
+   "id": "S0463L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": "keep",
+    "B02": [
+     "my room number",
+     "meine Zimmernummer"
+    ],
+    "B03": [
+     "this is my room number",
+     "das ist meine Zimmernummer"
+    ],
+    "U01": [
+     "I think that is my room number",
+     "ich denke, dass das meine Zimmernummer ist"
+    ],
+    "U02": [
+     "I thought that was my room number",
+     "ich dachte, dass das meine Zimmernummer war"
+    ],
+    "U03": [
+     "I believe that is my answer",
+     "ich glaube, dass das meine Antwort ist"
+    ],
+    "U04": [
+     "I want to know if that is my room number",
+     "ich will wissen, ob das meine Zimmernummer ist"
+    ],
+    "U05": [
+     "I think my idea is important",
+     "ich denke, dass meine Idee wichtig ist"
+    ],
+    "U06": [
+     "I knew that was my answer",
+     "ich wusste, dass das meine Antwort war"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'werde / ich werde' in other word orders. A re-cut to 'will | werde' would clash with 'will | wird' (seed 94), and 'I will | werde ich' keeps none of the nine: Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (6 syllables); seven rows rewritten, the two 'I would' rows deleted (the basket keeps 5 build + 6 use). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0465L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "next time I will try it",
+     "nächstes Mal werde ich es versuchen"
+    ],
+    "B02": [
+     "next time I will ask her",
+     "nächstes Mal werde ich sie fragen"
+    ],
+    "B03": [
+     "next time I will do it",
+     "nächstes Mal werde ich es machen"
+    ],
+    "B04": "keep",
+    "B05": "keep",
+    "U07": "keep",
+    "U08": "keep",
+    "U02": "del",
+    "U06": "del",
+    "U01": [
+     "I think next time I will do it",
+     "ich denke, nächstes Mal werde ich es machen"
+    ],
+    "U03": [
+     "I believe next time I will stay at home",
+     "ich glaube, nächstes Mal werde ich zu Hause bleiben"
+    ],
+    "U04": [
+     "next time I will ask her what she wants",
+     "nächstes Mal werde ich sie fragen, was sie will"
+    ],
+    "U05": [
+     "next time I will understand it",
+     "nächstes Mal werde ich es verstehen"
+    ]
+   }
+  },
+  {
+   "why": "Rows drill 'kennen' and 'die Fakten kennen' without 'nicht'. A re-cut to 'to know | kennen' would clash with 'to know | wissen': Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (6 syllables); rows rewritten as verb-last clauses, which is where this word order lives. U01 is the same sentence as U07 ('do not' for 'don't'), which the builder refuses as a duplicate once the basket is clean, so U01 is deleted. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0472L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "that we don't know the facts",
+     "dass wir die Fakten nicht kennen"
+    ],
+    "B02": [
+     "because we don't know the facts",
+     "weil wir die Fakten nicht kennen"
+    ],
+    "B03": [
+     "if we don't know the facts",
+     "wenn wir die Fakten nicht kennen"
+    ],
+    "U01": "del",
+    "U07": "keep",
+    "U02": [
+     "I think that we don't know the facts",
+     "ich denke, dass wir die Fakten nicht kennen"
+    ],
+    "U03": [
+     "she says that they don't know the facts",
+     "sie sagt, dass sie die Fakten nicht kennen"
+    ],
+    "U04": [
+     "I believe the problem is that we don't know the facts",
+     "ich glaube, das Problem ist, dass wir die Fakten nicht kennen"
+    ],
+    "U05": [
+     "it's a problem if we don't know the facts",
+     "es ist ein Problem, wenn wir die Fakten nicht kennen"
+    ],
+    "U06": [
+     "we can't help because we don't know the facts",
+     "wir können nicht helfen, weil wir die Fakten nicht kennen"
+    ]
+   }
+  },
+  {
+   "known": "could trust",
+   "target": "vertrauen könnte",
+   "type": "M",
+   "closes": [
+    "19"
+   ],
+   "why": "The LEGO is 9 syllables (wenn-ich-dir-nur-ver-trau-en-könn-te), over the cap of 8 (L3, hard), and nine rows drill only 'könnte'. 'could | könnte' alone would clash with 'could | konnte' (seed 518): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). The shortest cut without a clash is 'could trust | vertrauen könnte' (5 syllables), a span of the seed on both sides. wenn, ich, dir, nur are taught earlier; 'if | wenn' (seed 413) is added back as a not-new LEGO. Rows rebuilt around the new LEGO. Also closes this LEGO for item 19. Structural: one not-new LEGO appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 501,
+      "lego_index": 6,
+      "known_text": "if",
+      "target_text": "wenn",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "id": "S0501L05",
+   "verdict": "recut-small",
+   "basket": {
+    "B01": [
+     "if I could trust you",
+     "wenn ich dir vertrauen könnte"
+    ],
+    "B02": [
+     "if only I could trust you",
+     "wenn ich dir nur vertrauen könnte"
+    ],
+    "B03": [
+     "if only I could trust him",
+     "wenn ich ihm nur vertrauen könnte"
+    ],
+    "U01": "keep",
+    "U02": [
+     "she asked if she could trust you",
+     "sie hat gefragt, ob sie dir vertrauen könnte"
+    ],
+    "U03": [
+     "if only I could trust her",
+     "wenn ich ihr nur vertrauen könnte"
+    ],
+    "U04": [
+     "if only she could trust me",
+     "wenn sie mir nur vertrauen könnte"
+    ],
+    "U05": [
+     "if only I could trust you to play without arguing",
+     "wenn ich dir nur vertrauen könnte, zu spielen, ohne zu streiten"
+    ],
+    "U06": [
+     "I don't know if I could trust him",
+     "ich weiß nicht, ob ich ihm vertrauen könnte"
+    ],
+    "U07": [
+     "if only he could trust us",
+     "wenn er uns nur vertrauen könnte"
+    ]
+   },
+   "components": [
+    [
+     "to trust",
+     "vertrauen"
+    ],
+    [
+     "could",
+     "könnte"
+    ]
+   ]
+  },
+  {
+   "why": "Nine rows drill 'darüber' (over it), a different word from the LEGO's 'über', and say 'over' where the LEGO says 'across'. The LEGO is the seed's own word. Rows rewritten with 'über' + a noun. P17 (every practice phrase under a LEGO contains the whole LEGO); K8 (exactly the taught form).",
+   "add": [
+    [
+     "b",
+     "to go across the grass",
+     "über das Gras gehen"
+    ]
+   ],
+   "id": "S0504L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "across",
+     "über"
+    ],
+    "B02": [
+     "across the grass",
+     "über das Gras"
+    ],
+    "B03": [
+     "to run across the grass",
+     "über das Gras rennen"
+    ],
+    "U01": [
+     "she can run across the grass",
+     "sie kann über das Gras rennen"
+    ],
+    "U02": [
+     "I want to go across the grass",
+     "ich will über das Gras gehen"
+    ],
+    "U03": [
+     "can you run across the grass?",
+     "kannst du über das Gras rennen?"
+    ],
+    "U04": [
+     "she wants to go across the grass",
+     "sie will über das Gras gehen"
+    ],
+    "U05": [
+     "he went across the grass",
+     "er ist über das Gras gegangen"
+    ],
+    "U06": [
+     "why did you go across the grass?",
+     "warum bist du über das Gras gegangen?"
+    ],
+    "U07": [
+     "she can go across the grass too",
+     "sie kann auch über das Gras gehen"
+    ]
+   }
+  },
+  {
+   "why": "Six rows drill 'einen Platz' (a place) without 'sicheren'; 'einen Platz' is not a span of the seed, so no re-cut. Four more have the German but say 'a safe place' where the LEGO says 'somewhere safe' (a different word, K6). All ten rewritten: 'sicheren' goes in, the English says 'somewhere safe'. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0510L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "somewhere safe to park",
+     "einen sicheren Platz zum Parken"
+    ],
+    "B02": [
+     "to look for somewhere safe",
+     "einen sicheren Platz suchen"
+    ],
+    "B03": [
+     "they need somewhere safe",
+     "sie brauchen einen sicheren Platz"
+    ],
+    "U01": [
+     "I need somewhere safe",
+     "ich brauche einen sicheren Platz"
+    ],
+    "U02": [
+     "is there somewhere safe nearby?",
+     "gibt es einen sicheren Platz in der Nähe?"
+    ],
+    "U03": [
+     "she wants somewhere safe",
+     "sie will einen sicheren Platz"
+    ],
+    "U04": [
+     "there is somewhere safe here",
+     "es gibt einen sicheren Platz hier"
+    ],
+    "U05": [
+     "she has somewhere safe",
+     "sie hat einen sicheren Platz"
+    ],
+    "U06": [
+     "he has somewhere safe too",
+     "er hat auch einen sicheren Platz"
+    ],
+    "U07": [
+     "do you want somewhere safe to park?",
+     "willst du einen sicheren Platz zum Parken?"
+    ],
+    "U08": "keep"
+   }
+  },
+  {
+   "known": "new",
+   "target": "neuen",
+   "type": "A",
+   "why": "Seven rows drill 'neuen' alone (einen neuen). Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'new | neuen' is a seed word, no other LEGO has 'new' as its English, and the rest of the old LEGO is already the seed's own LEGOs ('of the | des', 'year | Jahres'). All ten rows stay, the three seed-sentence rows included.",
+   "add": [
+    [
+     "b",
+     "of the new year",
+     "des neuen Jahres"
+    ]
+   ],
+   "id": "S0515L03",
+   "verdict": "recut-small",
+   "components": []
+  },
+  {
+   "known": "needed to",
+   "target": "mussten",
+   "type": "A",
+   "why": "Nine of ten rows drill 'mussten' alone. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): the LEGO becomes 'needed to | mussten', the seed's own words (L26). No LEGO has 'needed to'; 'had to' is 'musste' at seed 353, so the rows' English moves from 'had to' to the seed's 'needed to' (German unchanged). The rest (warum, wir, hier, bleiben) is taught earlier: 'why' is already the seed's LEGO, 'here | hier' and 'to stay | bleiben' are added back as not-new LEGOs. Structural: two not-new LEGOs appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 521,
+      "lego_index": 6,
+      "known_text": "here",
+      "target_text": "hier",
+      "type": "A",
+      "is_new": false
+     }
+    },
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 521,
+      "lego_index": 7,
+      "known_text": "to stay",
+      "target_text": "bleiben",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "add": [
+    [
+     "b",
+     "we needed to stay",
+     "wir mussten bleiben"
+    ]
+   ],
+   "id": "S0521L05",
+   "verdict": "recut-small",
+   "basket": {
+    "B01": [
+     "needed to",
+     "mussten"
+    ],
+    "B02": [
+     "we needed to",
+     "wir mussten"
+    ],
+    "B03": [
+     "they needed to stay",
+     "sie mussten bleiben"
+    ],
+    "U01": "keep",
+    "U02": [
+     "we needed to stay here",
+     "wir mussten hier bleiben"
+    ],
+    "U03": [
+     "they needed to stay here",
+     "sie mussten hier bleiben"
+    ],
+    "U04": [
+     "we needed to try",
+     "wir mussten versuchen"
+    ],
+    "U05": [
+     "we needed to do that",
+     "wir mussten das machen"
+    ],
+    "U06": [
+     "why did we need to stay?",
+     "warum mussten wir bleiben?"
+    ],
+    "U07": [
+     "did we need to stay?",
+     "mussten wir bleiben?"
+    ]
+   },
+   "components": []
+  },
+  {
+   "known": "that funny story",
+   "why": "The seed says 'that funny story'; the LEGO says 'this funny story' (L26: a LEGO holds only words its seed says). Eight rows drill 'diese Geschichte' without 'lustige'. 'that | diese' alone would clash with 'that | dass': Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept at 8 syllables (die-se-lus-ti-ge-Ge-schich-te, at the cap), English corrected to the seed's word, rows rebuilt with 'lustige' in. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "add": [
+    [
+     "b",
+     "told me that funny story",
+     "mir diese lustige Geschichte erzählt"
+    ]
+   ],
+   "id": "S0527L04",
+   "verdict": "regloss-rebuild",
+   "basket": {
+    "B01": [
+     "told that funny story",
+     "diese lustige Geschichte erzählt"
+    ],
+    "B02": [
+     "who told that funny story",
+     "wer diese lustige Geschichte erzählt hat"
+    ],
+    "B03": [
+     "that funny story",
+     "diese lustige Geschichte"
+    ],
+    "U01": [
+     "she told that funny story",
+     "sie hat diese lustige Geschichte erzählt"
+    ],
+    "U02": [
+     "guess who told that funny story",
+     "rate mal, wer diese lustige Geschichte erzählt hat"
+    ],
+    "U03": [
+     "I like that funny story",
+     "ich mag diese lustige Geschichte"
+    ],
+    "U04": [
+     "he told her that funny story",
+     "er hat ihr diese lustige Geschichte erzählt"
+    ],
+    "U05": [
+     "she told me that funny story",
+     "sie hat mir diese lustige Geschichte erzählt"
+    ],
+    "U06": [
+     "what is that funny story?",
+     "was ist diese lustige Geschichte?"
+    ],
+    "U07": [
+     "do you know that funny story?",
+     "kennst du diese lustige Geschichte?"
+    ]
+   }
+  },
+  {
+   "known": "those things",
+   "why": "The seed says 'those things'; the LEGO says 'these things' (L26), and 'those | diese' is the course's own pair (seed 417). Seven rows drill 'die Sachen / alle Sachen' without 'diese'. A re-cut to 'things | Sachen' would clash with 'things | Dinge' (seed 607): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept, English corrected, rows rebuilt. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0528L02",
+   "verdict": "regloss-rebuild",
+   "basket": {
+    "B01": [
+     "to keep those things",
+     "diese Sachen aufbewahren"
+    ],
+    "B02": [
+     "those things there",
+     "diese Sachen da"
+    ],
+    "B03": [
+     "all those things",
+     "alle diese Sachen"
+    ],
+    "U01": [
+     "she has those things here",
+     "sie hat diese Sachen hier"
+    ],
+    "U02": [
+     "those things are here",
+     "diese Sachen sind hier"
+    ],
+    "U03": [
+     "all those things are here",
+     "alle diese Sachen sind hier"
+    ],
+    "U04": [
+     "she found all those things",
+     "sie hat alle diese Sachen gefunden"
+    ],
+    "U05": [
+     "she has those things",
+     "sie hat diese Sachen"
+    ],
+    "U06": [
+     "where are those things?",
+     "wo sind diese Sachen?"
+    ],
+    "U07": [
+     "can you find those things?",
+     "kannst du diese Sachen finden?"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'ich finde' alone, which is already its own LEGO ('I find | ich finde', seed 486). Here the seed's English is 'I think', and 'I think | ich finde' would clash with 'I think | ich denke' (seed 47): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). So the LEGO is kept at 8 syllables (ich-fin-de-die-klei-ne-Kir-che, at the cap) and the rows are rebuilt around it. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0553L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "I think the small church is ugly",
+     "ich finde die kleine Kirche hässlich"
+    ],
+    "B02": [
+     "I think the small church is good",
+     "ich finde die kleine Kirche gut"
+    ],
+    "B03": [
+     "I think the small church is very good",
+     "ich finde die kleine Kirche sehr gut"
+    ],
+    "U01": "keep",
+    "U02": [
+     "I think the small church is very old",
+     "ich finde die kleine Kirche sehr alt"
+    ],
+    "U03": [
+     "I think the small church is very interesting",
+     "ich finde die kleine Kirche sehr interessant"
+    ],
+    "U04": [
+     "yes, I think the small church is ugly",
+     "ja, ich finde die kleine Kirche hässlich"
+    ],
+    "U05": [
+     "I think the small church is too old",
+     "ich finde die kleine Kirche zu alt"
+    ],
+    "U06": [
+     "I think the small church is very bad",
+     "ich finde die kleine Kirche sehr schlecht"
+    ],
+    "U07": [
+     "I think the small church is very sad",
+     "ich finde die kleine Kirche sehr traurig"
+    ]
+   }
+  },
+  {
+   "why": "Ten of 18 rows drill 'nur' or 'sie will nur' (she), not 'ich will nur'. 'just | nur' alone would clash with 'just | gerade' (seed 224): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept. The three build rows are rewritten; the seven 'she only wants' use rows are deleted, because the basket still holds eight good use rows (U08 to U15). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0562L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "I just want that",
+     "ich will nur das"
+    ],
+    "B02": [
+     "I just want to go",
+     "ich will nur gehen"
+    ],
+    "B03": [
+     "I just want to try once",
+     "ich will nur einmal versuchen"
+    ],
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U07": "del"
+   }
+  },
+  {
+   "known": "you are willing to pay",
+   "target": "du bereit bist zu zahlen",
+   "type": "M",
+   "why": "No row holds the LEGO: they drill 'zahlen' and 'ist bereit zu zahlen'. The LEGO's German has 'bist' (you are) but its English does not (L26). 'to pay | zahlen' alone would clash with 'to pay | bezahlen' (seed 299): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). So the LEGO grows by one seed word to say on both sides what the seed says, 'you are willing to pay | du bereit bist zu zahlen' (7 syllables), and the rows are rebuilt as the verb-last clauses this order lives in. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0569L04",
+   "verdict": "grow-rebuild",
+   "basket": {
+    "B01": [
+     "if you are willing to pay",
+     "wenn du bereit bist zu zahlen"
+    ],
+    "B02": [
+     "how much you are willing to pay",
+     "wie viel du bereit bist zu zahlen"
+    ],
+    "B03": [
+     "that you are willing to pay",
+     "dass du bereit bist zu zahlen"
+    ],
+    "U01": [
+     "I know that you are willing to pay",
+     "ich weiß, dass du bereit bist zu zahlen"
+    ],
+    "U02": [
+     "she said that you are willing to pay",
+     "sie hat gesagt, dass du bereit bist zu zahlen"
+    ],
+    "U03": [
+     "I'd like to know how much you are willing to pay",
+     "ich möchte wissen, wie viel du bereit bist zu zahlen"
+    ],
+    "U04": [
+     "do you know how much you are willing to pay?",
+     "weißt du, wie viel du bereit bist zu zahlen?"
+    ],
+    "U05": [
+     "it's good if you are willing to pay",
+     "es ist gut, wenn du bereit bist zu zahlen"
+    ],
+    "U06": [
+     "she asked if you are willing to pay",
+     "sie hat gefragt, ob du bereit bist zu zahlen"
+    ],
+    "U07": [
+     "have you decided how much you are willing to pay?",
+     "hast du entschieden, wie viel du bereit bist zu zahlen?"
+    ]
+   },
+   "components": [
+    [
+     "you",
+     "du"
+    ],
+    [
+     "willing",
+     "bereit"
+    ],
+    [
+     "are",
+     "bist"
+    ],
+    [
+     "to pay",
+     "zu zahlen"
+    ]
+   ]
+  },
+  {
+   "why": "No row holds the LEGO: they drill 'diese Sache' and 'eine Art von Sache'. A re-cut to 'thing | Sache' would clash with 'thing | Ding' (seed 257): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); rows rebuilt. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0573L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "that's the kind of thing",
+     "das ist die Art von Sache"
+    ],
+    "B02": [
+     "the kind of thing that I like",
+     "die Art von Sache, die ich mag"
+    ],
+    "B03": [
+     "it's the kind of thing",
+     "es ist die Art von Sache"
+    ],
+    "U01": [
+     "it's the kind of thing that makes me happy",
+     "es ist die Art von Sache, die mich glücklich macht"
+    ],
+    "U02": [
+     "that's the kind of thing I'd like to do",
+     "das ist die Art von Sache, die ich machen möchte"
+    ],
+    "U03": [
+     "it's not the kind of thing that I like",
+     "es ist nicht die Art von Sache, die ich mag"
+    ],
+    "U04": [
+     "is that the kind of thing you want?",
+     "ist das die Art von Sache, die du willst?"
+    ],
+    "U05": [
+     "she wants the kind of thing that is special",
+     "sie will die Art von Sache, die besonders ist"
+    ],
+    "U06": [
+     "it's the kind of thing that makes the holidays special",
+     "es ist die Art von Sache, die die Feiertage besonders macht"
+    ],
+    "U07": [
+     "she said it's the kind of thing that is good",
+     "sie hat gesagt, es ist die Art von Sache, die gut ist"
+    ]
+   }
+  },
+  {
+   "why": "Eight rows say 'sie möchte / ich möchte / möchte' (she, I), not the LEGO's 'er möchte' (he). 'would like | möchte' is not the seed's wording and 'I'd like | ich möchte' is taught at seed 11, so the LEGO stays and the rows move to 'he'. Rows that say 'he would like' for 'he'd like' keep (K6). P17 (every practice phrase under a LEGO contains the whole LEGO); K26 (the person matches on both sides).",
+   "id": "S0581L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "he'd like to know",
+     "er möchte wissen"
+    ],
+    "B02": [
+     "he'd like more",
+     "er möchte mehr"
+    ],
+    "B03": "keep",
+    "U01": "keep",
+    "U08": "keep",
+    "U09": "keep",
+    "U10": "keep",
+    "U02": [
+     "he'd like to stay",
+     "er möchte bleiben"
+    ],
+    "U03": [
+     "he'd like to try",
+     "er möchte versuchen"
+    ],
+    "U04": [
+     "he'd like to know more",
+     "er möchte mehr wissen"
+    ],
+    "U05": [
+     "he'd like to be here",
+     "er möchte hier sein"
+    ],
+    "U06": [
+     "she said he'd like to",
+     "sie hat gesagt, er möchte"
+    ],
+    "U07": [
+     "he'd like a little more",
+     "er möchte ein bisschen mehr"
+    ]
+   }
+  },
+  {
+   "why": "Five rows say 'dort aufzuwachsen' (there), not 'hier aufzuwachsen'. A re-cut to 'to grow up | aufzuwachsen' would clash with 'to grow up | aufwachsen' (seed 588): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); the five rows move from 'there' to 'here'. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0582L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "lovely to grow up here",
+     "schön, hier aufzuwachsen"
+    ],
+    "B02": [
+     "it is upsetting to grow up here",
+     "es ist beunruhigend, hier aufzuwachsen"
+    ],
+    "B03": [
+     "what was it like to grow up here?",
+     "wie war es, hier aufzuwachsen?"
+    ],
+    "U03": [
+     "it was upsetting to grow up here",
+     "es war beunruhigend, hier aufzuwachsen"
+    ],
+    "U06": [
+     "it was lovely to grow up here",
+     "es war schön, hier aufzuwachsen"
+    ]
+   }
+  },
+  {
+   "known": "had",
+   "target": "hatten",
+   "type": "A",
+   "closes": [
+    "19"
+   ],
+   "why": "The LEGO is 11 syllables (dass-wir-Ei-er-zum-A-bend-es-sen-hat-ten), over the cap of 8 (L3, hard), and nine rows drill 'hatten' alone. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): the LEGO becomes 'had | hatten'. Precedent in this course: seed 603 already lists 'had | hatten' as a not-new LEGO, which only makes sense if it is taught here first. 'had | hatte' (seed 363, not-new) is the same English for the singular; this course carries person pairs that way throughout (want | wollen / wollt). The rest is taught earlier: 'supper' is the seed's own LEGO, 'that | dass' and 'eggs | Eier' are added back as not-new LEGOs. Eight rows stay; B02 and U06 are deleted because they use 'dort', which no LEGO teaches (P1), and two build rows are added. Also closes this LEGO for item 19. Structural: two not-new LEGOs appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 587,
+      "lego_index": 5,
+      "known_text": "that",
+      "target_text": "dass",
+      "type": "A",
+      "is_new": false
+     }
+    },
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 587,
+      "lego_index": 6,
+      "known_text": "eggs",
+      "target_text": "Eier",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "add": [
+    [
+     "b",
+     "we had eggs",
+     "wir hatten Eier"
+    ],
+    [
+     "b",
+     "we had eggs for supper",
+     "wir hatten Eier zum Abendessen"
+    ]
+   ],
+   "id": "S0587L04",
+   "verdict": "recut-small",
+   "basket": {
+    "U05": "keep",
+    "B02": "del",
+    "U06": "del"
+   },
+   "components": []
+  },
+  {
+   "why": "Nine rows drill 'glücklich' without 'gewesen'. A re-cut to 'happy | glücklich' would clash with 'happy | zufrieden' (seed 245): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); rows rebuilt. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0599L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "would have been happy",
+     "wäre glücklich gewesen"
+    ],
+    "B02": [
+     "she would also have been happy",
+     "sie wäre auch glücklich gewesen"
+    ],
+    "B03": [
+     "I would have been happy",
+     "ich wäre glücklich gewesen"
+    ],
+    "U01": [
+     "she has been happy",
+     "sie ist glücklich gewesen"
+    ],
+    "U02": [
+     "she said she has been happy",
+     "sie hat gesagt, sie ist glücklich gewesen"
+    ],
+    "U03": [
+     "I'd have been happy to drive",
+     "ich wäre glücklich gewesen zu fahren"
+    ],
+    "U04": [
+     "he would have been happy",
+     "er wäre glücklich gewesen"
+    ],
+    "U05": [
+     "she said she would have been happy",
+     "sie hat gesagt, sie wäre glücklich gewesen"
+    ],
+    "U06": "keep",
+    "U07": [
+     "she has also been happy",
+     "sie ist auch glücklich gewesen"
+    ]
+   }
+  },
+  {
+   "known": "help",
+   "target": "Hilfe",
+   "type": "A",
+   "is_new": false,
+   "why": "All ten rows drill 'Hilfe' alone, and 'help | Hilfe' is already taught with its own basket at seed 564. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): the LEGO shrinks to 'help | Hilfe', which is an exact earlier pair, so it becomes NOT-NEW (L17/L27: introduced once). A not-new LEGO's basket is never played (P25), so its ten rows are deleted; they duplicate seed 564's drill. The seed sentence keeps a played home: it is row U01 of the seed's other LEGO 'needed | gebraucht' (P26). weil, wir, haben are taught earlier. No audio.",
+   "id": "S0605L01",
+   "verdict": "notnew",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U07": "del"
+   },
+   "components": []
+  },
+  {
+   "why": "Six rows say 'kann sie / sie kann' (she), not the LEGO's 'kann ich'. The LEGO is the seed's own piece. The six rows move to 'can I'. P17 (every practice phrase under a LEGO contains the whole LEGO); K26 (the person matches).",
+   "add": [
+    [
+     "b",
+     "can I go?",
+     "kann ich gehen?"
+    ]
+   ],
+   "id": "S0630L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U02": [
+     "can I do it now?",
+     "kann ich das jetzt machen?"
+    ],
+    "U03": [
+     "can I stay here?",
+     "kann ich hier bleiben?"
+    ],
+    "U04": [
+     "can I have something to drink?",
+     "kann ich etwas zu trinken haben?"
+    ],
+    "U05": [
+     "can I help?",
+     "kann ich helfen?"
+    ],
+    "U06": [
+     "can I try it?",
+     "kann ich es versuchen?"
+    ],
+    "U07": [
+     "can I have that?",
+     "kann ich das haben?"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'wollen' in statements ('Sie wollen', 'sie wollen' = they) with no 'sir'. K32 (a formal LEGO keeps sir/madam; in its phrases the LEGO is treated as cut, and sir/madam is always added back at the end of every phrase on both sides). The cut LEGO is 'wollen Sie'; every row now holds it and ends in 'sir | mein Herr'. The checker's 'does not contain the LEGO' on these rows is this rule at work, not a miss. Precedent: Italian seed 644 under the same rule.",
+   "id": "S0643L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "do you want that sir?",
+     "wollen Sie das, mein Herr?"
+    ],
+    "B02": [
+     "do you want to stay sir?",
+     "wollen Sie bleiben, mein Herr?"
+    ],
+    "B03": [
+     "do you want to do it sir?",
+     "wollen Sie das machen, mein Herr?"
+    ],
+    "U01": "keep",
+    "U02": [
+     "do you also want to stay sir?",
+     "wollen Sie auch bleiben, mein Herr?"
+    ],
+    "U03": [
+     "what do you want sir?",
+     "was wollen Sie, mein Herr?"
+    ],
+    "U04": [
+     "do you want that too sir?",
+     "wollen Sie das auch, mein Herr?"
+    ],
+    "U05": [
+     "do you want to go sir?",
+     "wollen Sie gehen, mein Herr?"
+    ],
+    "U06": [
+     "do you want to try it sir?",
+     "wollen Sie es versuchen, mein Herr?"
+    ],
+    "U07": [
+     "why do you want that sir?",
+     "warum wollen Sie das, mein Herr?"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'könnten' in other shapes ('ob Sie … könnten', 'könnten sie' = they) with no 'sir'. K32 (a formal LEGO keeps sir/madam; in its phrases the LEGO is treated as cut, and sir/madam is always added back at the end of every phrase on both sides). The canon's own worked case is this seed in Italian: the LEGO is NOT re-cut, its phrases drill the core 'could you' and every one ends in 'sir'. Same here: core 'könnten Sie', rest of the seed ('to say | sagen', seed 4) added back as a not-new LEGO so the core is licensed the way the canon describes. The checker's 'does not contain the LEGO' on these rows is that rule at work. Structural: one not-new LEGO appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 644,
+      "lego_index": 2,
+      "known_text": "to say",
+      "target_text": "sagen",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "id": "S0644L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "could you sir?",
+     "könnten Sie, mein Herr?"
+    ],
+    "B02": [
+     "could you do it sir?",
+     "könnten Sie das machen, mein Herr?"
+    ],
+    "B03": [
+     "could you stay sir?",
+     "könnten Sie bleiben, mein Herr?"
+    ],
+    "U01": "keep",
+    "U02": [
+     "could you help me sir?",
+     "könnten Sie mir helfen, mein Herr?"
+    ],
+    "U03": [
+     "could you also stay sir?",
+     "könnten Sie auch bleiben, mein Herr?"
+    ],
+    "U04": [
+     "could you say that again sir?",
+     "könnten Sie das noch einmal sagen, mein Herr?"
+    ],
+    "U05": [
+     "could you say that slowly sir?",
+     "könnten Sie das langsam sagen, mein Herr?"
+    ],
+    "U06": [
+     "could you try it sir?",
+     "könnten Sie es versuchen, mein Herr?"
+    ],
+    "U07": [
+     "could you also do it sir?",
+     "könnten Sie das auch machen, mein Herr?"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'sprechen' with other subjects and no 'madam'. K32 (a formal LEGO keeps sir/madam; in its phrases the LEGO is treated as cut, and sir/madam is always added back at the end of every phrase on both sides). The cut LEGO is 'Sie sprechen es'; every row now holds it and ends in 'madam | gnädige Frau'. The checker's 'does not contain the LEGO' on these rows is this rule at work.",
+   "id": "S0647L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "you speak it well madam",
+     "Sie sprechen es gut, gnädige Frau"
+    ],
+    "B02": [
+     "you speak it very well madam",
+     "Sie sprechen es sehr gut, gnädige Frau"
+    ],
+    "B03": [
+     "I think you speak it madam",
+     "ich denke, Sie sprechen es, gnädige Frau"
+    ],
+    "U01": "keep",
+    "U02": [
+     "you speak it better now madam",
+     "Sie sprechen es jetzt besser, gnädige Frau"
+    ],
+    "U03": [
+     "you speak it too madam",
+     "Sie sprechen es auch, gnädige Frau"
+    ],
+    "U04": [
+     "she said you speak it madam",
+     "sie hat gesagt, Sie sprechen es, gnädige Frau"
+    ],
+    "U05": [
+     "you speak it every day madam",
+     "Sie sprechen es jeden Tag, gnädige Frau"
+    ],
+    "U06": [
+     "I know you speak it well madam",
+     "ich weiß, Sie sprechen es gut, gnädige Frau"
+    ],
+    "U07": [
+     "you speak it here madam",
+     "Sie sprechen es hier, gnädige Frau"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'sind' in other shapes ('ob Sie bereit sind', 'sind sie' = they) with no 'sir'. K32 (a formal LEGO keeps sir/madam; in its phrases the LEGO is treated as cut, and sir/madam is always added back at the end of every phrase on both sides). The cut LEGO is 'sind Sie bereit'; every row now holds it and ends in 'sir | mein Herr'. The checker's 'does not contain the LEGO' on these rows is this rule at work.",
+   "id": "S0649L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "are you ready to go sir?",
+     "sind Sie bereit zu gehen, mein Herr?"
+    ],
+    "B02": [
+     "are you ready to try it sir?",
+     "sind Sie bereit, es zu versuchen, mein Herr?"
+    ],
+    "B03": [
+     "and are you ready sir?",
+     "und sind Sie bereit, mein Herr?"
+    ],
+    "U01": "keep",
+    "U02": [
+     "are you ready to say that sir?",
+     "sind Sie bereit, das zu sagen, mein Herr?"
+    ],
+    "U03": [
+     "are you ready to pay sir?",
+     "sind Sie bereit zu zahlen, mein Herr?"
+    ],
+    "U04": [
+     "are you ready to help sir?",
+     "sind Sie bereit zu helfen, mein Herr?"
+    ],
+    "U05": [
+     "are you ready to stay here sir?",
+     "sind Sie bereit, hier zu bleiben, mein Herr?"
+    ],
+    "U06": [
+     "are you ready to do it sir?",
+     "sind Sie bereit, das zu machen, mein Herr?"
+    ],
+    "U07": [
+     "are you ready to speak German sir?",
+     "sind Sie bereit, Deutsch zu sprechen, mein Herr?"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows drill 'denken' with other subjects and no 'madam'. K32 (a formal LEGO keeps sir/madam; in its phrases the LEGO is treated as cut, and sir/madam is always added back at the end of every phrase on both sides). The cut LEGO is 'was denken Sie'; every row now holds it and ends in 'madam | gnädige Frau'. The checker's 'does not contain the LEGO' on these rows is this rule at work.",
+   "id": "S0651L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "what do you think about it madam?",
+     "was denken Sie darüber, gnädige Frau?"
+    ],
+    "B02": [
+     "and what do you think madam?",
+     "und was denken Sie, gnädige Frau?"
+    ],
+    "B03": [
+     "what do you think now madam?",
+     "was denken Sie jetzt, gnädige Frau?"
+    ],
+    "U01": "keep",
+    "U02": [
+     "what do you think today madam?",
+     "was denken Sie heute, gnädige Frau?"
+    ],
+    "U03": [
+     "what do you think about the answer madam?",
+     "was denken Sie über die Antwort, gnädige Frau?"
+    ],
+    "U04": [
+     "what do you think about the problem madam?",
+     "was denken Sie über das Problem, gnädige Frau?"
+    ],
+    "U05": [
+     "what do you think about the story madam?",
+     "was denken Sie über die Geschichte, gnädige Frau?"
+    ],
+    "U06": [
+     "but what do you think madam?",
+     "aber was denken Sie, gnädige Frau?"
+    ],
+    "U07": [
+     "what do you think about the idea madam?",
+     "was denken Sie über die Idee, gnädige Frau?"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows say 'wollt ihr / ihr wollt' without 'alle', though their English already says 'you all'. The LEGO is the whole seed and already the shortest piece. 'alle' goes into each row. Precedent: seed 660 in this block, rebuilt the same way on 18 Nov. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0658L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "do you all want that?",
+     "wollt ihr alle das?"
+    ],
+    "B02": [
+     "do you all want to try?",
+     "wollt ihr alle versuchen?"
+    ],
+    "B03": [
+     "do you all want to do it?",
+     "wollt ihr alle das machen?"
+    ],
+    "U01": "keep",
+    "U08": "keep",
+    "U02": [
+     "do you all want to stay?",
+     "wollt ihr alle bleiben?"
+    ],
+    "U03": [
+     "do you all want to help?",
+     "wollt ihr alle helfen?"
+    ],
+    "U04": [
+     "do you all want to stay here?",
+     "wollt ihr alle hier bleiben?"
+    ],
+    "U05": [
+     "do you all also want to stay?",
+     "wollt ihr alle auch bleiben?"
+    ],
+    "U06": [
+     "what do you all want?",
+     "was wollt ihr alle?"
+    ],
+    "U07": [
+     "do you all also want to do it?",
+     "wollt ihr alle das auch machen?"
+    ]
+   }
+  },
+  {
+   "known": "could you all",
+   "target": "könntet ihr alle",
+   "type": "M",
+   "why": "Nine rows drill 'könntet ihr' + other verbs; none says 'das sagen'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): the LEGO becomes 'could you all | könntet ihr alle', a span of the seed, matching its formal twin at seed 644 (core 'could you'). 'das' is taught earlier and 'to say | sagen' (seed 4) is added back as a not-new LEGO. Rows gain 'alle', which their English already says. Structural: one not-new LEGO appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 659,
+      "lego_index": 2,
+      "known_text": "to say",
+      "target_text": "sagen",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "id": "S0659L01",
+   "verdict": "recut-small",
+   "basket": {
+    "B01": [
+     "could you all do it?",
+     "könntet ihr alle das machen?"
+    ],
+    "B02": [
+     "could you all stay?",
+     "könntet ihr alle bleiben?"
+    ],
+    "B03": [
+     "could you all help?",
+     "könntet ihr alle helfen?"
+    ],
+    "U01": "keep",
+    "U02": [
+     "could you all try it?",
+     "könntet ihr alle es versuchen?"
+    ],
+    "U03": [
+     "could you all also do it?",
+     "könntet ihr alle das auch machen?"
+    ],
+    "U04": [
+     "could you all stay here?",
+     "könntet ihr alle hier bleiben?"
+    ],
+    "U05": [
+     "could you all come?",
+     "könntet ihr alle kommen?"
+    ],
+    "U06": [
+     "could you all say that again?",
+     "könntet ihr alle das noch einmal sagen?"
+    ],
+    "U07": [
+     "could you all also stay?",
+     "könntet ihr alle auch bleiben?"
+    ]
+   },
+   "components": [
+    [
+     "could",
+     "könntet"
+    ],
+    [
+     "you all",
+     "ihr"
+    ],
+    [
+     "all",
+     "alle"
+    ]
+   ]
+  },
+  {
+   "why": "The three build rows were rebuilt on 18 Nov (proofreader pass) and now hold the LEGO; six use rows still drill 'helfen' alone with 'she'. They are rebuilt the same way, around the whole LEGO. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0660L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": "keep",
+    "B02": "keep",
+    "B03": "keep",
+    "U01": "keep",
+    "U08": "keep",
+    "U02": [
+     "I can help you all if you want",
+     "ich kann euch allen helfen, wenn ihr wollt"
+    ],
+    "U03": [
+     "she said I can help you all",
+     "sie hat gesagt, ich kann euch allen helfen"
+    ],
+    "U04": [
+     "I'm sure I can help you all",
+     "ich bin mir sicher, ich kann euch allen helfen"
+    ],
+    "U05": [
+     "I can help you all to learn German",
+     "ich kann euch allen helfen, Deutsch zu lernen"
+    ],
+    "U06": [
+     "I can help you all to find it",
+     "ich kann euch allen helfen, es zu finden"
+    ],
+    "U07": [
+     "I can help you all, but not today",
+     "ich kann euch allen helfen, aber nicht heute"
+    ]
+   }
+  },
+  {
+   "why": "Nine rows say 'ihr sprecht / sprecht ihr es' without 'alle' and in other orders. The LEGO is the whole seed (5 syllables). Rows rebuilt around it. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0662L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "you all speak it well",
+     "ihr alle sprecht es gut"
+    ],
+    "B02": [
+     "I think you all speak it",
+     "ich denke, ihr alle sprecht es"
+    ],
+    "B03": [
+     "you all speak it very well",
+     "ihr alle sprecht es sehr gut"
+    ],
+    "U01": "keep",
+    "U02": [
+     "you all speak it better now",
+     "ihr alle sprecht es jetzt besser"
+    ],
+    "U03": [
+     "you all speak it too",
+     "ihr alle sprecht es auch"
+    ],
+    "U04": [
+     "she said you all speak it",
+     "sie hat gesagt, ihr alle sprecht es"
+    ],
+    "U05": [
+     "you all speak it every day",
+     "ihr alle sprecht es jeden Tag"
+    ],
+    "U06": [
+     "I know you all speak it well",
+     "ich weiß, ihr alle sprecht es gut"
+    ],
+    "U07": [
+     "you all speak it here",
+     "ihr alle sprecht es hier"
+    ]
+   }
+  },
+  {
+   "known": "are you all",
+   "target": "seid ihr alle",
+   "type": "M",
+   "why": "Rows drill 'seid ihr alle' + other words (hier, auch bereit) or the verb-last 'ob ihr alle … seid'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): the LEGO becomes 'are you all | seid ihr alle', a span of the seed; 'ready | bereit' (seed 26) is added back as a not-new LEGO. Four rows stay as they are; six are rewritten to the question order. Structural: one not-new LEGO appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 664,
+      "lego_index": 2,
+      "known_text": "ready",
+      "target_text": "bereit",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "id": "S0664L01",
+   "verdict": "recut-small",
+   "basket": {
+    "B01": [
+     "are you all there?",
+     "seid ihr alle da?"
+    ],
+    "B02": [
+     "are you all ready to go?",
+     "seid ihr alle bereit zu gehen?"
+    ],
+    "B03": [
+     "are you all tired?",
+     "seid ihr alle müde?"
+    ],
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U05": "keep",
+    "U04": [
+     "are you all happy?",
+     "seid ihr alle glücklich?"
+    ],
+    "U06": [
+     "are you all at home?",
+     "seid ihr alle zu Hause?"
+    ],
+    "U07": [
+     "are you all friends?",
+     "seid ihr alle Freunde?"
+    ]
+   },
+   "components": [
+    [
+     "are",
+     "seid"
+    ],
+    [
+     "you all",
+     "ihr"
+    ],
+    [
+     "all",
+     "alle"
+    ]
+   ]
+  },
+  {
+   "why": "Nine rows drill 'denkt' with 'she' or in verb-last order. The LEGO is the whole seed (4 syllables). Six rows rebuilt around it; three 'she also thinks' rows deleted (the basket keeps 3 build + 6 use). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0666L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "and what do you all think?",
+     "und was denkt ihr alle?"
+    ],
+    "B02": [
+     "what do you all think about it?",
+     "was denkt ihr alle darüber?"
+    ],
+    "B03": [
+     "what do you all think now?",
+     "was denkt ihr alle jetzt?"
+    ],
+    "U01": "keep",
+    "U08": "keep",
+    "U09": "keep",
+    "U02": [
+     "what do you all think about the idea?",
+     "was denkt ihr alle über die Idee?"
+    ],
+    "U03": [
+     "what do you all think about the problem?",
+     "was denkt ihr alle über das Problem?"
+    ],
+    "U04": [
+     "but what do you all think?",
+     "aber was denkt ihr alle?"
+    ],
+    "U05": "del",
+    "U06": "del",
+    "U07": "del"
+   }
+  }
+ ]
+}
