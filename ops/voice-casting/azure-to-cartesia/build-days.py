@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Turn an azure-census.cjs output into the four-day plan (cs #35). No DB, no network: reads the census JSON only.
 
-  python3 -I ops/voice-casting/azure-to-cartesia/build-days.py <census.json> <outdir>
+  python3 -I ops/voice-casting/azure-to-cartesia/build-days.py <census.json> <outdir> [--batch-day N]
+
+--batch-day N (cs #59): write <outdir>/dayN-batch.jsonl for day N's replacement courses instead of day1-batch.jsonl
+(day-of re-census for days 2-4, so that day's edits are respected).
 
 Writes <outdir>/course-summary.json (every in-scope course, premium/live order), <outdir>/day-plan.json (the four days),
 and <outdir>/day1-batch.jsonl (one line per render ask for day 1: course, role, text, voiceId, chars, slots).
@@ -21,7 +24,7 @@ DAYS = [  # (label, UTC window, replacement courses) — fixes come from fixes.j
 ]
 TOTAL_CAP, DAY_CAP = 2_000_000, 600_000
 
-def main(census_path, outdir):
+def main(census_path, outdir, batch_day=1):
     d = json.load(open(census_path))
     by = {c['course']: c for c in d['courses'] if not c.get('skipped')}
     order = {'live': 0, 'beta': 1}
@@ -66,8 +69,8 @@ def main(census_path, outdir):
     os.makedirs(outdir, exist_ok=True)
     json.dump(summary, open(os.path.join(outdir, 'course-summary.json'), 'w'), indent=1)
     json.dump({'census': census_path, 'censusGeneratedAt': d['generatedAt'], 'db': d.get('db'), 'dayCap': DAY_CAP, 'totalCap': TOTAL_CAP, 'days': plan}, open(os.path.join(outdir, 'day-plan.json'), 'w'), indent=1)
-    with open(os.path.join(outdir, 'day1-batch.jsonl'), 'w') as f:
-        for code in DAYS[0][2]:
+    with open(os.path.join(outdir, 'day%d-batch.jsonl' % batch_day), 'w') as f:
+        for code in DAYS[batch_day - 1][2]:
             for a in by[code]['asks']:
                 f.write(json.dumps({'course': code, 'role': a['role'], 'text': a['text'], 'voiceId': a['voiceId'], 'language': a['language'], 'chars': a['chars'],
                                     'freeInCourse': a['freeInCourse'], 'firstSeed': a['firstSeed'],
@@ -76,4 +79,5 @@ def main(census_path, outdir):
         print(p['day'], 'fixes', p['fixChars'], 'replacement', p['replacementChars'], 'day', p['dayChars'], 'running', p['runningChars'], [(r['course'], r['chars']) for r in p['courses']])
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    bd = int(sys.argv[sys.argv.index('--batch-day') + 1]) if '--batch-day' in sys.argv else 1
+    main(sys.argv[1], sys.argv[2], bd)
