@@ -33,6 +33,9 @@ const TOPIC = T0.moment;
 const NAMES = ['Rhi', 'Hugh', 'Jess', 'Femi', 'Danny', 'Sunny'];
 const cards = fs.readFileSync(path.join(__dirname, 'personas.md'), 'utf8');
 // Cross-sample memory (#980): bits already used on other evenings, so no running gag recurs across samples.
+// v3 (#986): real recorded talk as a texture anchor (Tom+Aran, ~/podcast-tom-aran), plus optional
+// STYLE_FILE for further corpus excerpts. Texture only: the engine is told never to lift words from it.
+const STYLE = [path.join(__dirname, 'style-real-talk.md'), process.env.STYLE_FILE].filter(f => f && fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8').trim()).join('\n\n');
 const AVOID = process.env.AVOID_FILE ? fs.readFileSync(process.env.AVOID_FILE, 'utf8').trim() : '';
 
 const SYSTEM = `You are the "next turn" engine for a live, unscripted group conversation around a table. You are NOT a writer of a scene; you produce exactly ONE next turn of a conversation already in progress, as it would really happen.
@@ -51,7 +54,7 @@ HOW THIS TABLE TALKS (follow this, it is the whole job):
 - NO VARIETY OF MOVE REPEATS FOR A SPEAKER. Before writing, look at everything this speaker has already said tonight. Do something of a different kind from each of their previous turns (if they've already teased X, they don't tease X again; if they've told a story, they don't start another one; if they've done a one-word reaction, the next is something else). No story, image, joke or comparison is used twice in the evening.
 - Consistent facts: ages, dates and details stay as the cards and the earlier transcript give them. Nobody contradicts a fact already stated.
 
-${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED SET PIECES (never write these):
+${STYLE ? 'WHAT REAL SPEECH SOUNDS LIKE (texture reference; your lines must sound this unrehearsed, but never reuse its words, phrases or subject):\n' + STYLE + '\n\n' : ''}${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED SET PIECES (never write these):
 - anyone misquoting or misattributing a thinker, writer or study and being corrected; name-dropping philosophers or academics at all;
 - anyone fetching, refilling or offering drinks or food to change the subject; "whose round is it"; last orders; anyone leaving;
 - a touching, sentimental or reconciling moment near the end; a closing punchline; a toast; anyone summing up what the evening has shown;
