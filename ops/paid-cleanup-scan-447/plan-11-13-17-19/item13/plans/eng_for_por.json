@@ -1,0 +1,79 @@
+{
+ "course": "eng_for_por",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:04:43Z",
+ "decisions": 1,
+ "verdicts": {
+  "keep": 1
+ },
+ "touched_seeds": [
+  32
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0032L01",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'querias mostrar-me algo ontem' is answered as a statement here and as a question ('did you want to show me something yesterday?') in the next basket; spoken, only the tone differs. This row's prompt gains 'tu', which marks it as the statement. (Deleting it, as the scan proposed, would leave the basket under five use rows.)",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 32,
+    "known": "Querias mostrar-me algo?",
+    "target": "Did you want to show me something?"
+   },
+   "before": {
+    "known": "mostrar-me",
+    "target": "to show me",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_por:S0032L01U02",
+     "set": {
+      "known_text": "tu querias mostrar-me algo ontem"
+     },
+     "expect": {
+      "known_text": "querias mostrar-me algo ontem",
+      "target_text": "you wanted to show me something yesterday"
+     }
+    }
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_por:S0032L01U02",
+   "set": {
+    "known_text": "tu querias mostrar-me algo ontem"
+   },
+   "expect": {
+    "known_text": "querias mostrar-me algo ontem",
+    "target_text": "you wanted to show me something yesterday"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:08:19Z",
+  "baseline_failing_seeds": 193,
+  "per_seed": {
+   "32": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

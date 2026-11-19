@@ -1,0 +1,479 @@
+{
+ "course": "eng_for_mar",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:05:00Z",
+ "decisions": 6,
+ "verdicts": {
+  "regloss": 1,
+  "keep": 5
+ },
+ "touched_seeds": [
+  65,
+  90,
+  94,
+  136,
+  161
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0136L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'course | अर्थातच' is not English; the seed says 'Of course' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). The LEGO and its three build rows take 'of course'.",
+   "closes": [
+    "13",
+    "5"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 136,
+    "known": "अर्थातच तुम्ही तिला विचारू शकता कारण ती माझी मैत्रीण आहे.",
+    "target": "Of course you can ask her because she's my friend."
+   },
+   "before": {
+    "known": "अर्थातच",
+    "target": "course",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "अर्थातच",
+    "target": "of course",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_mar:S0136L01B01",
+     "role": "build",
+     "before": [
+      "अर्थातच",
+      "course"
+     ],
+     "action": [
+      "अर्थातच",
+      "of course"
+     ]
+    },
+    {
+     "id": "eng_for_mar:S0136L01B02",
+     "role": "build",
+     "before": [
+      "अर्थातच तुम्ही शकता",
+      "course you can"
+     ],
+     "action": [
+      "अर्थातच तुम्ही शकता",
+      "of course you can"
+     ]
+    },
+    {
+     "id": "eng_for_mar:S0136L01B03",
+     "role": "build",
+     "before": [
+      "अर्थातच तुम्ही",
+      "course you"
+     ],
+     "action": [
+      "अर्थातच तुम्ही",
+      "of course you"
+     ]
+    },
+    {
+     "id": "eng_for_mar:S0136L01U01",
+     "role": "use",
+     "before": [
+      "अर्थातच तुम्ही विचारू शकता",
+      "of course you can ask"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0136L01U02",
+     "role": "use",
+     "before": [
+      "अर्थातच",
+      "of course"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0136L01U03",
+     "role": "use",
+     "before": [
+      "अर्थातच तुम्ही",
+      "of course you"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0136L01U04",
+     "role": "use",
+     "before": [
+      "अर्थातच इथे",
+      "of course here"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0136L01U05",
+     "role": "use",
+     "before": [
+      "अर्थातच तुम्ही शकता",
+      "of course you can"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "eng_for_mar:S0136L02U01",
+      "known": "अर्थातच तुम्ही तिला विचारू शकता कारण ती माझी मैत्रीण आहे",
+      "target": "of course you can ask her because she's my friend",
+      "seed": 136
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0090L03",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'छान होईल' is 'would be great' here and 'it would be nice' at S0402L01; its neighbour U02 already says 'that would be great'. Deleted.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 90,
+    "known": "तुम्ही अजून हळू बोलू शकलात तर ते छान होईल.",
+    "target": "If you can speak more slowly that would be great."
+   },
+   "before": {
+    "known": "छान",
+    "target": "great",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0090L03U04",
+     "expect": {
+      "known_text": "छान होईल",
+      "target_text": "would be great"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0094L03",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'ते चालेल' is 'it will work' here and 'that would be fine' at S0633L02. Deleted.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 94,
+    "known": "हे चालण्याचा हाच एकमेव मार्ग आहे.",
+    "target": "This is the only way it will work."
+   },
+   "before": {
+    "known": "चालेल",
+    "target": "will work",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0094L03U02",
+     "expect": {
+      "known_text": "ते चालेल",
+      "target_text": "it will work"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0065L01",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'important something' is not English, and 'something important' is taught later (seed 261). Deleted.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 65,
+    "known": "स्वतःची परीक्षा घ्यायला वेळ देणं महत्त्वाचं आहे.",
+    "target": "It's important to take time to test yourself."
+   },
+   "before": {
+    "known": "महत्त्वाचं",
+    "target": "important",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0065L01U05",
+     "expect": {
+      "known_text": "काहीतरी महत्त्वाचं",
+      "target_text": "important something"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0161L02",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). the Marathi says 'here' and the English does not. Deleted.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 161,
+    "known": "तुम्ही मला ते पुस्तक रविवारी सकाळी द्याल का?",
+    "target": "Can you give me that book on Sunday morning?"
+   },
+   "before": {
+    "known": "रविवारी",
+    "target": "on Sunday",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0161L02U03",
+     "expect": {
+      "known_text": "रविवारी सकाळी इथे",
+      "target_text": "on Sunday morning"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0161L02",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). the same Marathi as U03, with a second English answer. Deleted.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 161,
+    "known": "तुम्ही मला ते पुस्तक रविवारी सकाळी द्याल का?",
+    "target": "Can you give me that book on Sunday morning?"
+   },
+   "before": {
+    "known": "रविवारी",
+    "target": "on Sunday",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0161L02U05",
+     "expect": {
+      "known_text": "रविवारी सकाळी इथे",
+      "target_text": "Sunday morning here"
+     }
+    }
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0136L01",
+   "set": {
+    "target_text": "of course"
+   },
+   "expect": {
+    "known_text": "अर्थातच",
+    "target_text": "course"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01B01",
+   "set": {
+    "target_text": "of course"
+   },
+   "expect": {
+    "known_text": "अर्थातच",
+    "target_text": "course"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01B02",
+   "set": {
+    "target_text": "of course you can"
+   },
+   "expect": {
+    "known_text": "अर्थातच तुम्ही शकता",
+    "target_text": "course you can"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01B03",
+   "set": {
+    "target_text": "of course you"
+   },
+   "expect": {
+    "known_text": "अर्थातच तुम्ही",
+    "target_text": "course you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0090L03U04",
+   "expect": {
+    "known_text": "छान होईल",
+    "target_text": "would be great"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0094L03U02",
+   "expect": {
+    "known_text": "ते चालेल",
+    "target_text": "it will work"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0065L01U05",
+   "expect": {
+    "known_text": "काहीतरी महत्त्वाचं",
+    "target_text": "important something"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0161L02U03",
+   "expect": {
+    "known_text": "रविवारी सकाळी इथे",
+    "target_text": "on Sunday morning"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_mar:S0161L02U05",
+   "expect": {
+    "known_text": "रविवारी सकाळी इथे",
+    "target_text": "Sunday morning here"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:06:03Z",
+  "baseline_failing_seeds": 496,
+  "per_seed": {
+   "65": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "90": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "94": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "136": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "161": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 4 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (4 component phrases excluded)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 5 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (5 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

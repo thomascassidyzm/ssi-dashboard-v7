@@ -445,5 +445,561 @@
    }
   },
   "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T12:07:06Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 11,
+    "status": 200,
+    "secs": 81.0,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "lego_id": "S0149L02"
+       },
+       "before": {
+        "id": "07d56d7f-fef2-4f40-abdb-6aa1a8e26e49",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": "S0149L02",
+        "known_text": "i hope",
+        "target_text": "hoff",
+        "type": "A",
+        "components": [],
+        "known_audio_id": "7299d208-d3f4-40fa-819e-0eabe0345591",
+        "target1_audio_id": "ed7e7daa-0968-471d-8258-e77e58ec1134",
+        "target2_audio_id": "f8c8ad26-1d09-40eb-863d-7377ffab81c0",
+        "presentation_audio_id": "dcab7273-7774-4f4a-b1b3-95e765b8b5d1"
+       },
+       "after": {
+        "id": "07d56d7f-fef2-4f40-abdb-6aa1a8e26e49",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": "S0149L02",
+        "known_text": "so I hope",
+        "target_text": "drum hoff ich",
+        "type": "M",
+        "components": [
+         {
+          "known": "so",
+          "target": "drum"
+         },
+         {
+          "known": "I hope",
+          "target": "hoff ich"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02B01"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02B01",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope",
+        "target_text": "ich hoff",
+        "known_audio_id": "7299d208-d3f4-40fa-819e-0eabe0345591",
+        "target1_audio_id": "43885030-2853-48b0-b641-340bc0bc2e4d",
+        "target2_audio_id": "4653d491-ef62-46ba-88e5-3b61e9e639ce",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02B01",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "so I hope",
+        "target_text": "drum hoff ich",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02B02"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02B02",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope that",
+        "target_text": "ich hoff, dass",
+        "known_audio_id": "8a09dfab-f064-4a2b-a4ea-1a1693fd7309",
+        "target1_audio_id": "bed1ee2c-c3ee-40f5-b70e-602296d4aa30",
+        "target2_audio_id": "e547aea6-df3e-4ee1-9ce9-56baf742dad3",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02B02",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "so I hope that",
+        "target_text": "drum hoff ich, dass",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02B03"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02B03",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope so",
+        "target_text": "ich hoff so",
+        "known_audio_id": "1a323d54-c2f7-408c-bd26-08b690f839f4",
+        "target1_audio_id": "cf3f281d-78f6-42ff-bac3-3ca65b7620b4",
+        "target2_audio_id": "c0fec6d9-f933-4924-a81b-ab035a3f1ec2",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02B03",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "but so I hope",
+        "target_text": "aber drum hoff ich",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02B04"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02B04",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope, so",
+        "target_text": "ich hoff, drum",
+        "known_audio_id": "9d1369ee-385d-4f8b-8b79-5345f6f9ba47",
+        "target1_audio_id": "883ec48d-9e29-4426-9ce1-c433f5dcde57",
+        "target2_audio_id": "c9bb9a8f-2412-4b44-8585-32083851dbc3",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02B05"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02B05",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "not, I hope",
+        "target_text": "nöd, ich hoff",
+        "known_audio_id": "3a88c7d6-be74-4e59-893e-a7082ca700e8",
+        "target1_audio_id": "136e6de7-b648-431a-83d9-dc32ed36ea14",
+        "target2_audio_id": "8941200d-4cf5-4589-b9ba-18de5972798d",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02U02"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02U02",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope that everything is okay",
+        "target_text": "ich hoff, dass alles okay isch",
+        "known_audio_id": "0f3ac61c-ecd2-4d02-a70d-15249c6a5270",
+        "target1_audio_id": "cbe0eadc-be22-4852-b178-c825efb94320",
+        "target2_audio_id": "069e418f-5cb3-4fa6-8001-c365ba22762f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02U02",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "so i hope that everything is okay",
+        "target_text": "drum hoff ich, dass alles okay isch",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02U03"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02U03",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope you're not nervous",
+        "target_text": "ich hoff, dass du nöd nervös bisch",
+        "known_audio_id": "532d57c4-6ad8-4b63-bd68-724409c58ff1",
+        "target1_audio_id": "f8d84248-fda9-4169-b565-e1061c3b4526",
+        "target2_audio_id": "1383055b-d73b-495e-8aef-02c3f68fd45f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02U03",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "so i hope you're not nervous",
+        "target_text": "drum hoff ich, dass du nöd nervös bisch",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02U04"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02U04",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope she's patient",
+        "target_text": "ich hoff, dass si geduldig isch",
+        "known_audio_id": "28d3b9d4-8d96-48ac-b03d-2b32a1cc9892",
+        "target1_audio_id": "ed521027-2aad-4282-afbb-18b9b135046d",
+        "target2_audio_id": "c4a59f7c-e790-4855-9fd5-1526d2e8d328",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02U04",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "so i hope she's patient",
+        "target_text": "drum hoff ich, dass si geduldig isch",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "deu_ch_for_eng",
+        "id": "deu_ch_for_eng:S0149L02U05"
+       },
+       "before": {
+        "id": "deu_ch_for_eng:S0149L02U05",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I hope she's finished soon",
+        "target_text": "ich hoff, dass si bald fertig isch",
+        "known_audio_id": "abeea841-3bb4-4218-b848-217a5d434ce1",
+        "target1_audio_id": "58517855-7863-40f8-a056-dc6d67ffd97b",
+        "target2_audio_id": "4739daf5-9675-4713-b374-63bd50c736cc",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02U05",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "so i hope she's finished soon",
+        "target_text": "drum hoff ich, dass si bald fertig isch",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.insert",
+       "key": {
+        "id": "deu_ch_for_eng:S0149L02B06"
+       },
+       "before": null,
+       "after": {
+        "id": "deu_ch_for_eng:S0149L02B06",
+        "seed_number": 149,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "and so I hope",
+        "target_text": "und drum hoff ich",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0149L02"
+        ]
+       },
+       "skipped": true,
+       "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+       "changed": false
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.delete",
+       "phrase_id": "deu_ch_for_eng:S0149L02B06"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02U05",
+       "set": {
+        "known_text": "I hope she's finished soon",
+        "target_text": "ich hoff, dass si bald fertig isch",
+        "known_audio_id": "abeea841-3bb4-4218-b848-217a5d434ce1",
+        "target1_audio_id": "58517855-7863-40f8-a056-dc6d67ffd97b",
+        "target2_audio_id": "4739daf5-9675-4713-b374-63bd50c736cc"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02U04",
+       "set": {
+        "known_text": "I hope she's patient",
+        "target_text": "ich hoff, dass si geduldig isch",
+        "known_audio_id": "28d3b9d4-8d96-48ac-b03d-2b32a1cc9892",
+        "target1_audio_id": "ed521027-2aad-4282-afbb-18b9b135046d",
+        "target2_audio_id": "c4a59f7c-e790-4855-9fd5-1526d2e8d328"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02U03",
+       "set": {
+        "known_text": "I hope you're not nervous",
+        "target_text": "ich hoff, dass du nöd nervös bisch",
+        "known_audio_id": "532d57c4-6ad8-4b63-bd68-724409c58ff1",
+        "target1_audio_id": "f8d84248-fda9-4169-b565-e1061c3b4526",
+        "target2_audio_id": "1383055b-d73b-495e-8aef-02c3f68fd45f"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02U02",
+       "set": {
+        "known_text": "I hope that everything is okay",
+        "target_text": "ich hoff, dass alles okay isch",
+        "known_audio_id": "0f3ac61c-ecd2-4d02-a70d-15249c6a5270",
+        "target1_audio_id": "cbe0eadc-be22-4852-b178-c825efb94320",
+        "target2_audio_id": "069e418f-5cb3-4fa6-8001-c365ba22762f"
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "deu_ch_for_eng:S0149L02B05",
+        "seed_number": 149,
+        "lego_index": 2,
+        "position": 5,
+        "known_text": "not, I hope",
+        "target_text": "nöd, ich hoff",
+        "word_count": 13,
+        "lego_count": 3,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-07-16T05:09:55.220Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": "3a88c7d6-be74-4e59-893e-a7082ca700e8",
+        "target1_audio_id": "136e6de7-b648-431a-83d9-dc32ed36ea14",
+        "target2_audio_id": "8941200d-4cf5-4589-b9ba-18de5972798d",
+        "qa_checked": null,
+        "target1_duration_ms": 1656,
+        "target2_duration_ms": 1760,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "deu_ch_for_eng:S0149L02B04",
+        "seed_number": 149,
+        "lego_index": 2,
+        "position": 4,
+        "known_text": "I hope, so",
+        "target_text": "ich hoff, drum",
+        "word_count": 14,
+        "lego_count": 3,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-07-16T05:09:55.220Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "9d1369ee-385d-4f8b-8b79-5345f6f9ba47",
+        "target1_audio_id": "883ec48d-9e29-4426-9ce1-c433f5dcde57",
+        "target2_audio_id": "c9bb9a8f-2412-4b44-8585-32083851dbc3",
+        "qa_checked": null,
+        "target1_duration_ms": 1488,
+        "target2_duration_ms": 1200,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02B03",
+       "set": {
+        "known_text": "I hope so",
+        "target_text": "ich hoff so",
+        "known_audio_id": "1a323d54-c2f7-408c-bd26-08b690f839f4",
+        "target1_audio_id": "cf3f281d-78f6-42ff-bac3-3ca65b7620b4",
+        "target2_audio_id": "c0fec6d9-f933-4924-a81b-ab035a3f1ec2"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02B02",
+       "set": {
+        "known_text": "I hope that",
+        "target_text": "ich hoff, dass",
+        "known_audio_id": "8a09dfab-f064-4a2b-a4ea-1a1693fd7309",
+        "target1_audio_id": "bed1ee2c-c3ee-40f5-b70e-602296d4aa30",
+        "target2_audio_id": "e547aea6-df3e-4ee1-9ce9-56baf742dad3"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "deu_ch_for_eng:S0149L02B01",
+       "set": {
+        "known_text": "I hope",
+        "target_text": "ich hoff",
+        "known_audio_id": "7299d208-d3f4-40fa-819e-0eabe0345591",
+        "target1_audio_id": "43885030-2853-48b0-b641-340bc0bc2e4d",
+        "target2_audio_id": "4653d491-ef62-46ba-88e5-3b61e9e639ce"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "07d56d7f-fef2-4f40-abdb-6aa1a8e26e49",
+       "set": {
+        "type": "A",
+        "known_text": "i hope",
+        "target_text": "hoff",
+        "components": [],
+        "known_audio_id": "7299d208-d3f4-40fa-819e-0eabe0345591",
+        "target1_audio_id": "ed7e7daa-0968-471d-8258-e77e58ec1134",
+        "target2_audio_id": "f8c8ad26-1d09-40eb-863d-7377ffab81c0",
+        "presentation_audio_id": "dcab7273-7774-4f4a-b1b3-95e765b8b5d1"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
  }
 }

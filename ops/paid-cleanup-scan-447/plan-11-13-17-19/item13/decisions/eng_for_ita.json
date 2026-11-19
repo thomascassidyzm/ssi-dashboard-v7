@@ -1,0 +1,53 @@
+{
+ "course": "eng_for_ita",
+ "legos": [
+  {
+   "id": "S0209L02",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "incontrandosi",
+   "ack": [
+    "thin"
+   ],
+   "basket": {
+    "B01": "keep",
+    "B03": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "why": "'incontrare' is the prompt for 'meeting' (here) and for 'meet' (S0293L01). Seed 209's Italian says 'incontrandosi', not 'incontrare' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ): the LEGO takes its seed's own form. Prompt clip only; the rows keep 'incontrare' in their sentences (K6: 'the known side may use uninstructed forms of taught words').",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0283L02",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "parlano",
+   "basket": {
+    "B01": "keep",
+    "B02": "keep",
+    "B03": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep",
+    "U06": "keep"
+   },
+   "why": "'parlare' is the prompt for 'talking' (S0240L02) and for 'speak' (here). Seed 283's Italian says 'parlano' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ): the LEGO takes its seed's own form, 'parlano | speak'. Prompt clip only. (The scan proposed growing S0240L02 instead; this is the shorter cut.)",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0021L03",
+   "verdict": "kai",
+   "pattern": "R",
+   "why": "HOLD — Kai's call (P15: whether to mix or separate a confusable contrast is his). 'mi piacerebbe scoprire il suo nome' and 'vuoi ricordare il suo nome' each appear twice, once answered 'his name' (seed 20) and once 'her name' (seed 21): Italian 'suo' is both. If seeds 20/21 teach his/her on purpose, the two her-rows (S0021L03U03, U05) need a prompt that shows it; otherwise delete them. Recommended: delete the two rows."
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "course": "eng_for_por",
+ "legos": [
+  {
+   "id": "S0032L01",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_por:S0032L01U02",
+     "set": {
+      "known_text": "tu querias mostrar-me algo ontem"
+     },
+     "expect": {
+      "known_text": "querias mostrar-me algo ontem",
+      "target_text": "you wanted to show me something yesterday"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'querias mostrar-me algo ontem' is answered as a statement here and as a question ('did you want to show me something yesterday?') in the next basket; spoken, only the tone differs. This row's prompt gains 'tu', which marks it as the statement. (Deleting it, as the scan proposed, would leave the basket under five use rows.)"
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "course": "eng_for_guj",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:06:03Z",
+ "decisions": 3,
+ "verdicts": {
+  "keep": 3
+ },
+ "touched_seeds": [
+  55,
+  255,
+  493
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0493L02",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). 'હવે શું આવવા નું છે?' is the seed's own prompt for 'What's going to come next?' (S0493L03); this row answers it 'what is going to come now?'. It cannot take the LEGO's English, because 'next' is taught after this basket; deleted.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 493,
+    "known": "હવે શું આવવા નું છે?",
+    "target": "What's going to come next?"
+   },
+   "before": {
+    "known": "આવવા નું છે",
+    "target": "going to come",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_guj:S0493L02U05",
+     "expect": {
+      "known_text": "હવે શું આવવા નું છે?",
+      "target_text": "what is going to come now?"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0055L02",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). the English says 'a little tired', the Gujarati does not. The English drops 'a little'.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 55,
+    "known": "જ્યારે મને સારી ઊંઘ ન આવી હોય ત્યારે ઊઠવું મને ગમતું નથી.",
+    "target": "I don't enjoy waking up when I didn't sleep very well."
+   },
+   "before": {
+    "known": "ઊઠવું મને ગમતું નથી",
+    "target": "I don't enjoy waking up",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_guj:S0055L02U03",
+     "set": {
+      "target_text": "I don't enjoy waking up when I'm tired"
+     },
+     "expect": {
+      "known_text": "ઊઠવું મને ગમતું નથી જ્યારે હું થાકેલો છું",
+      "target_text": "I don't enjoy waking up when I'm a little tired"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S0255L01",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "R",
+   "why": "PATTERN R (a row, not a LEGO). this row and U03 share one Gujarati prompt ('ready to speak English') with two answers. This row's prompt is corrected to say 'ready to answer'.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 255,
+    "known": "તમને શું લાગે છે કે તમે ક્યારે નીકળવા તૈયાર થશો?",
+    "target": "When do you think you'll be ready to leave?"
+   },
+   "before": {
+    "known": "તમને શું લાગે છે કે તમે ક્યારે તૈયાર થશો",
+    "target": "when do you think you'll be ready",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_guj:S0255L01U05",
+     "set": {
+      "known_text": "તમને શું લાગે છે કે તમે ક્યારે જવાબ આપવા તૈયાર થશો?"
+     },
+     "expect": {
+      "known_text": "તમને શું લાગે છે કે તમે ક્યારે અંગ્રેજી બોલવા તૈયાર થશો?",
+      "target_text": "when do you think you'll be ready to answer?"
+     }
+    }
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_guj:S0493L02U05",
+   "expect": {
+    "known_text": "હવે શું આવવા નું છે?",
+    "target_text": "what is going to come now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0055L02U03",
+   "set": {
+    "target_text": "I don't enjoy waking up when I'm tired"
+   },
+   "expect": {
+    "known_text": "ઊઠવું મને ગમતું નથી જ્યારે હું થાકેલો છું",
+    "target_text": "I don't enjoy waking up when I'm a little tired"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0255L01U05",
+   "set": {
+    "known_text": "તમને શું લાગે છે કે તમે ક્યારે જવાબ આપવા તૈયાર થશો?"
+   },
+   "expect": {
+    "known_text": "તમને શું લાગે છે કે તમે ક્યારે અંગ્રેજી બોલવા તૈયાર થશો?",
+    "target_text": "when do you think you'll be ready to answer?"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:06:34Z",
+  "baseline_failing_seeds": 544,
+  "per_seed": {
+   "55": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "255": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "493": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: USE: need 5+, got 4 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: USE: need 5+, got 4 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

@@ -2547,5 +2547,22 @@
    }
   },
   "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T12:04:32Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 59,
+    "status": 409,
+    "secs": 19.8,
+    "answer": {
+     "error": "op 0: lego.update: target_text changes but this row carries a target_text_roman (pinyin/romaji/romanisation) written for the old text. Send the new target_text_roman with it, read by hand (polyphones need a reader), or target_text_roman: null to clear it deliberately.",
+     "code": "ROMAN_STALE",
+     "index": 0,
+     "applied": false
+    }
+   }
+  ]
  }
 }

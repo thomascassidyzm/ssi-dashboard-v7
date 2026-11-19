@@ -1,0 +1,76 @@
+{
+ "course": "eng_for_kor",
+ "legos": [
+  {
+   "id": "S0109L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. The Korean prompt '열심히 일해야 해요' has two English answers: 'need to work hard' (S0106L03) and 'must work hard' (here) — each is its own seed's wording, and four of this LEGO's own rows say 'need to'. Only a different Korean prompt separates them (L20: 'a distinct KNOWN word per sense'): '열심히 일해야만 해요' for 'must'. That changes seed 109's Korean sentence, which is Kai's call. If yes: the seed, this LEGO and its 8 rows take 해야만, and the four 'need to' rows become 'must'."
+  },
+  {
+   "id": "S0012L01",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD, same kind. '…고 싶지 않아요' is 'I wouldn't like to' here (seed 12) and 'I don't want to' at S0019L02, so the same Korean row has two English answers across the two baskets. The scan's remedy is a softer Korean for seed 12 ('…고 싶지는 않아요'), a seed-sentence change: Kai's call. (The three rows the scan named inside this basket are already gone.)"
+  },
+  {
+   "id": "S0146L02",
+   "verdict": "grow",
+   "pattern": "S",
+   "known": "아무것도 작동하지 않는 것 같아요",
+   "target": "nothing seems to be working",
+   "type": "M",
+   "components": [
+    [
+     "아무것도",
+     "nothing"
+    ],
+    [
+     "작동하지 않는 것 같아요",
+     "seems to be working"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "아무것도 작동하지 않는 것 같아요",
+     "nothing seems to be working"
+    ],
+    "B02": [
+     "지금 아무것도 작동하지 않는 것 같아요",
+     "nothing seems to be working now"
+    ],
+    "B03": [
+     "오늘 아무것도 작동하지 않는 것 같아요",
+     "nothing seems to be working today"
+    ],
+    "U01": "keep",
+    "U02": [
+     "왜 아무것도 작동하지 않는 것 같은지 모르겠어요",
+     "I don't know why nothing seems to be working"
+    ],
+    "U03": [
+     "아무것도 작동하지 않는 것 같아요, 하지만 확실하지 않아요",
+     "nothing seems to be working but I'm not sure"
+    ],
+    "U04": "keep",
+    "U05": "del"
+   },
+   "ack": [
+    "known"
+   ],
+   "ack_rows": [
+    "U02"
+   ],
+   "why": "'아무것도' is the prompt for 'anything' (S0035L02) and for 'nothing' (S0146L01). And S0146L02 pairs '작동하지 않는 것 같아요' — 'seems NOT to be working' — with 'seems to be working'. Both faults close together (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ): this LEGO grows to the seed's own piece, '아무것도 작동하지 않는 것 같아요 | nothing seems to be working' (7 syllables, kept at 7: the Korean 'not' cannot be separated from 'nothing'). Rows that said 'it seems to be working well' over a different Korean are reworded or dropped.",
+   "closes": [
+    "10"
+   ]
+  },
+  {
+   "id": "S0146L01",
+   "verdict": "delete",
+   "pattern": "W",
+   "why": "neighbour of S0146L02: the bare '아무것도 | nothing' is retired — its piece of the seed is now inside S0146L02, and its 8 rows do not match their own prompts ('아무것도 하고 싶지 않아요 | I don't want to do nothing today'). STRUCTURAL: a LEGO delete, needs Kai's go."
+  }
+ ]
+}

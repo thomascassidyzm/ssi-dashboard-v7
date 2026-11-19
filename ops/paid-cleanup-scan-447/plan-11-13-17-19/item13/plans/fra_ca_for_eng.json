@@ -346,12 +346,12 @@
      "course_code": "fra_ca_for_eng",
      "seed_number": 631,
      "lego_index": 1,
-     "known_text": "what would you like here?",
-     "target_text": "qu'est-ce que tu voudrais ici?",
+     "known_text": "what would you like to drink today?",
+     "target_text": "qu'est-ce que tu voudrais boire aujourd'hui?",
      "phrase_role": "build",
      "position": 9,
-     "word_count": 5,
-     "lego_position": "middle",
+     "word_count": 6,
+     "lego_position": "start",
      "lego_count": 1
     }
    ],
@@ -918,12 +918,12 @@
     "course_code": "fra_ca_for_eng",
     "seed_number": 631,
     "lego_index": 1,
-    "known_text": "what would you like here?",
-    "target_text": "qu'est-ce que tu voudrais ici?",
+    "known_text": "what would you like to drink today?",
+    "target_text": "qu'est-ce que tu voudrais boire aujourd'hui?",
     "phrase_role": "build",
     "position": 9,
-    "word_count": 5,
-    "lego_position": "middle",
+    "word_count": 6,
+    "lego_position": "start",
     "lego_count": 1
    }
   },
@@ -973,7 +973,7 @@
   }
  ],
  "validator": {
-  "at": "2026-11-19T11:59:43Z",
+  "at": "2026-11-19T12:01:00Z",
   "baseline_failing_seeds": 448,
   "per_seed": {
    "79": {
@@ -1007,20 +1007,12 @@
     "error": null
    },
    "631": {
-    "seed_issues_planned": [
-     "L1: 1 duplicate phrase(s) within this LEGO: \"qu'est-ce que tu voudrais ici?\""
-    ],
+    "seed_issues_planned": [],
     "seed_issues_live": [],
-    "new_issues_anywhere": {
-     "631": [
-      "L1: 1 duplicate phrase(s) within this LEGO: \"qu'est-ce que tu voudrais ici?\""
-     ]
-    },
+    "new_issues_anywhere": {},
     "error": null
    }
   },
-  "seeds_with_new_issues": [
-   631
-  ]
+  "seeds_with_new_issues": []
  }
 }

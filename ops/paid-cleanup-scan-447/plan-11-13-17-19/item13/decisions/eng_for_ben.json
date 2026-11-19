@@ -1,0 +1,71 @@
+{
+ "course": "eng_for_ben",
+ "legos": [
+  {
+   "id": "S0176L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. 'তাকে' is 'him' (here) and 'her' (S0177L01, marked not-new although 'her' was never taught): Bengali does not mark he/she. K23: keep both, 'explain the sense in the presentation'. Recommended: S0177L01 becomes NEW with an intro that says তাকে is also 'her' (as eng_for_hin does at S0020L01), and its rows keep a 'she' somewhere in the sentence. Kai's call because it is an intro wording.",
+   "closes": [
+    "16"
+   ]
+  },
+  {
+   "id": "S0201L01",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_ben:S0201L01U01",
+     "set": {
+      "target_text": "he wanted to know"
+     },
+     "expect": {
+      "known_text": "সে জানতে চেয়েছিল",
+      "target_text": "she wanted to know"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'সে জানতে চেয়েছিল' is taught as 'he wanted to know' (S0347L03); this row says 'she wanted to know' for the same Bengali. Unified on 'he' (L34). (সে is also 'she' — the same question as S0176L02 above.)"
+  },
+  {
+   "id": "S0041L01",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_ben:S0041L01U03",
+     "set": {
+      "known_text": "তুমি কি আরও ভালো অনুভব করছো?"
+     },
+     "expect": {
+      "known_text": "তুমি কি ভালো অনুভব করছো?",
+      "target_text": "do you feel better?"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). the same Bengali is 'do you feel better?' here and 'do you feel good?' at S0047L02U05. This row's prompt gains আরও ('more'), so it says 'better'."
+  },
+  {
+   "id": "S0058L02",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_ben:S0058L02U05",
+     "set": {
+      "known_text": "আমি এখন যথেষ্ট বুঝতে পারছি না"
+     },
+     "expect": {
+      "known_text": "আমি এখনো যথেষ্ট বুঝতে পারছি না",
+      "target_text": "I can't understand enough now"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). the same Bengali is 'I can't understand enough now' here and '…yet' at S0060L02U02. The prompt's এখনো ('yet') becomes এখন ('now') to match this row's English. (The scan proposed changing the English to 'yet', but 'yet' is not taught until seed 60.)"
+  }
+ ]
+}

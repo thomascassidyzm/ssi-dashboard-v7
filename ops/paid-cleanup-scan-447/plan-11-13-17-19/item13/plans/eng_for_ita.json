@@ -1,0 +1,431 @@
+{
+ "course": "eng_for_ita",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:04:34Z",
+ "decisions": 3,
+ "verdicts": {
+  "regloss": 2,
+  "kai": 1
+ },
+ "touched_seeds": [
+  209,
+  283
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0209L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'incontrare' is the prompt for 'meeting' (here) and for 'meet' (S0293L01). Seed 209's Italian says 'incontrandosi', not 'incontrare' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ): the LEGO takes its seed's own form. Prompt clip only; the rows keep 'incontrare' in their sentences (K6: 'the known side may use uninstructed forms of taught words').",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 209,
+    "known": "Vogliono passare più tempo incontrandosi in gruppo.",
+    "target": "They want to spend more time meeting as a group."
+   },
+   "before": {
+    "known": "incontrare",
+    "target": "meeting",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "incontrandosi",
+    "target": "meeting",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_ita:S0209L02B01",
+     "role": "build",
+     "before": [
+      "mi piace incontrare le persone",
+      "I enjoy meeting people"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0209L02B03",
+     "role": "build",
+     "before": [
+      "vogliono passare più tempo a incontrarsi",
+      "they want to spend more time meeting"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0209L02U02",
+     "role": "use",
+     "before": [
+      "mi piace incontrare le persone e parlare con loro",
+      "I enjoy meeting people and speaking with them"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0209L02U03",
+     "role": "use",
+     "before": [
+      "voleva passare più tempo a incontrare lei",
+      "he wanted to spend more time meeting with her"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0209L02U04",
+     "role": "use",
+     "before": [
+      "mi sto divertendo a incontrare persone che mi vogliono aiutare",
+      "I'm enjoying meeting people that want to help me"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0209L02U05",
+     "role": "use",
+     "before": [
+      "mi piace incontrare tutti per parlare dei preparativi",
+      "I enjoy meeting everyone to talk about the arrangements"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 5,
+    "sample": [
+     {
+      "id": "eng_for_ita:S0214L01B02",
+      "known": "ti sei divertito a incontrare le persone?",
+      "target": "did you have a good time meeting people?",
+      "seed": 214
+     },
+     {
+      "id": "eng_for_ita:S0214L01U03",
+      "known": "ti sei divertito a incontrare tutti al lavoro?",
+      "target": "did you have a good time meeting everyone at work?",
+      "seed": 214
+     },
+     {
+      "id": "eng_for_ita:S0217L01U03",
+      "known": "mi sono divertito a incontrare qualche amico nel fine settimana",
+      "target": "I had a good time meeting a few friends at the weekend",
+      "seed": 217
+     },
+     {
+      "id": "eng_for_ita:S0222L01U02",
+      "known": "sta cercando di passare più tempo a incontrare le persone",
+      "target": "he's trying to spend more time meeting people",
+      "seed": 222
+     },
+     {
+      "id": "eng_for_ita:S0226L02U05",
+      "known": "sta cercando di passare più tempo a incontrare le persone in gruppo",
+      "target": "she is trying to spend more time meeting people as a group",
+      "seed": 226
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0283L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'parlare' is the prompt for 'talking' (S0240L02) and for 'speak' (here). Seed 283's Italian says 'parlano' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ): the LEGO takes its seed's own form, 'parlano | speak'. Prompt clip only. (The scan proposed growing S0240L02 instead; this is the shorter cut.)",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 283,
+    "known": "Quali dei tuoi amici parlano inglese?",
+    "target": "Which of your friends speak English?"
+   },
+   "before": {
+    "known": "parlare",
+    "target": "speak",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "parlano",
+    "target": "speak",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_ita:S0283L02B01",
+     "role": "build",
+     "before": [
+      "parlano",
+      "speak"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02B02",
+     "role": "build",
+     "before": [
+      "parlano inglese",
+      "speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02B03",
+     "role": "build",
+     "before": [
+      "amici parlano inglese",
+      "friends speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02U01",
+     "role": "use",
+     "before": [
+      "quali dei tuoi amici parlano inglese?",
+      "which of your friends speak English?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02U02",
+     "role": "use",
+     "before": [
+      "parli inglese con i tuoi amici?",
+      "do you speak English with your friends?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02U03",
+     "role": "use",
+     "before": [
+      "la maggior parte delle persone che conosco non parla inglese",
+      "most people I know don't speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02U04",
+     "role": "use",
+     "before": [
+      "quanti dei tuoi amici parlano inglese?",
+      "how many of your friends speak English?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02U05",
+     "role": "use",
+     "before": [
+      "voleva trovare qualcuno che potesse parlare inglese",
+      "she wanted someone who could speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0283L02U06",
+     "role": "use",
+     "before": [
+      "non conosco molte persone che parlano inglese qui",
+      "I don't know many people who speak English here"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 286,
+    "sample": [
+     {
+      "id": "eng_for_ita:S0001L01B01",
+      "known": "voglio parlare inglese",
+      "target": "I want to speak English",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L02B02",
+      "known": "parlare con te",
+      "target": "to speak with you",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L02B03",
+      "known": "voglio parlare inglese con te",
+      "target": "I want to speak English with you",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L02U01",
+      "known": "voglio parlare con te",
+      "target": "I want to speak with you",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L03B01",
+      "known": "parlare adesso",
+      "target": "to speak now",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L03B02",
+      "known": "voglio parlare adesso",
+      "target": "I want to speak now",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L03U01",
+      "known": "voglio parlare inglese adesso",
+      "target": "I want to speak English now",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L03U02",
+      "known": "voglio parlare inglese con te adesso",
+      "target": "I want to speak English with you now",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0001L03U03",
+      "known": "voglio parlare con te adesso",
+      "target": "I want to speak with you now",
+      "seed": 1
+     },
+     {
+      "id": "eng_for_ita:S0002L01B02",
+      "known": "sto cercando di parlare",
+      "target": "I'm trying to speak",
+      "seed": 2
+     },
+     {
+      "id": "eng_for_ita:S0002L01B03",
+      "known": "sto cercando di parlare inglese",
+      "target": "I'm trying to speak English",
+      "seed": 2
+     },
+     {
+      "id": "eng_for_ita:S0002L01U01",
+      "known": "sto cercando di parlare con te",
+      "target": "I'm trying to speak with you",
+      "seed": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0021L03",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "R",
+   "why": "HOLD — Kai's call (P15: whether to mix or separate a confusable contrast is his). 'mi piacerebbe scoprire il suo nome' and 'vuoi ricordare il suo nome' each appear twice, once answered 'his name' (seed 20) and once 'her name' (seed 21): Italian 'suo' is both. If seeds 20/21 teach his/her on purpose, the two her-rows (S0021L03U03, U05) need a prompt that shows it; otherwise delete them. Recommended: delete the two rows.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 21,
+    "known": "Perché stai imparando il suo nome?",
+    "target": "Why are you learning her name?"
+   },
+   "before": {
+    "known": "suo",
+    "target": "her",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0209L02",
+   "set": {
+    "known_text": "incontrandosi"
+   },
+   "expect": {
+    "known_text": "incontrare",
+    "target_text": "meeting"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0283L02",
+   "set": {
+    "known_text": "parlano"
+   },
+   "expect": {
+    "known_text": "parlare",
+    "target_text": "speak"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:08:15Z",
+  "baseline_failing_seeds": 234,
+  "per_seed": {
+   "209": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "283": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

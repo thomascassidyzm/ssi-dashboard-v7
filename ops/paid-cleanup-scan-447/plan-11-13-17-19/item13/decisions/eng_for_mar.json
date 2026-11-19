@@ -1,0 +1,112 @@
+{
+ "course": "eng_for_mar",
+ "legos": [
+  {
+   "id": "S0136L01",
+   "verdict": "regloss",
+   "pattern": "S",
+   "target": "of course",
+   "basket": {
+    "B01": [
+     "अर्थातच",
+     "of course"
+    ],
+    "B02": [
+     "अर्थातच तुम्ही शकता",
+     "of course you can"
+    ],
+    "B03": [
+     "अर्थातच तुम्ही",
+     "of course you"
+    ]
+   },
+   "ack": [
+    "thin"
+   ],
+   "why": "'course | अर्थातच' is not English; the seed says 'Of course' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). The LEGO and its three build rows take 'of course'.",
+   "closes": [
+    "5"
+   ]
+  },
+  {
+   "id": "S0090L03",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0090L03U04",
+     "expect": {
+      "known_text": "छान होईल",
+      "target_text": "would be great"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'छान होईल' is 'would be great' here and 'it would be nice' at S0402L01; its neighbour U02 already says 'that would be great'. Deleted."
+  },
+  {
+   "id": "S0094L03",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0094L03U02",
+     "expect": {
+      "known_text": "ते चालेल",
+      "target_text": "it will work"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'ते चालेल' is 'it will work' here and 'that would be fine' at S0633L02. Deleted."
+  },
+  {
+   "id": "S0065L01",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0065L01U05",
+     "expect": {
+      "known_text": "काहीतरी महत्त्वाचं",
+      "target_text": "important something"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'important something' is not English, and 'something important' is taught later (seed 261). Deleted."
+  },
+  {
+   "id": "S0161L02",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0161L02U03",
+     "expect": {
+      "known_text": "रविवारी सकाळी इथे",
+      "target_text": "on Sunday morning"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). the Marathi says 'here' and the English does not. Deleted."
+  },
+  {
+   "id": "S0161L02",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_mar:S0161L02U05",
+     "expect": {
+      "known_text": "रविवारी सकाळी इथे",
+      "target_text": "Sunday morning here"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). the same Marathi as U03, with a second English answer. Deleted."
+  }
+ ]
+}

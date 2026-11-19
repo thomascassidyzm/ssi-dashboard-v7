@@ -1,0 +1,18 @@
+{
+ "course": "eng_for_zho",
+ "legos": [
+  {
+   "id": "S0097L01",
+   "verdict": "regloss",
+   "pattern": "S",
+   "known": "是的",
+   "why": "'好' is the prompt for 'Well' (S0013L01) and for 'Yes' (here) — but seed 97's Chinese says 是的, and so does every row of this basket (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). The LEGO takes the seed's own word; prompt clip only."
+  },
+  {
+   "id": "S0151L01",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. '那不是' is the prompt for 'That wasn't' (here) and 'That isn't what' (S0159L01); Chinese marks neither the tense nor the 'what'. Growing either to its seed piece passes 8 English syllables. It belongs with the eng_for_zho prompt read (decision D2 on the combined list); recommended there: give seed 151's prompt a past-time word so the two prompts differ."
+  }
+ ]
+}

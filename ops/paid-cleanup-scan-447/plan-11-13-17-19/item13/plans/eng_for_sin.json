@@ -1,0 +1,47 @@
+{
+ "course": "eng_for_sin",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:03:26Z",
+ "decisions": 1,
+ "verdicts": {
+  "kai": 1
+ },
+ "touched_seeds": [],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0353L03",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD behind decision D1 (the Sinhala seeds 345–668 rebuild). 'ඇයට ඕනේ' is 'she wants' (S0017L01) and 'she needed' (here, written with dots); the Sinhala seed itself says 'wants'. Not planned until D1 is ruled.",
+   "closes": [
+    "13",
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 353,
+    "known": "ඇයට ක්‍රීඩාංගනේ වටේ දිව යන්නයි ඕනේ.",
+    "target": "She needed to run around the field."
+   },
+   "before": {
+    "known": "ඇයට ... ඕනේ",
+    "target": "she needed",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [],
+ "validator": {
+  "at": "2026-11-19T12:03:32Z",
+  "baseline_failing_seeds": 491,
+  "per_seed": {},
+  "seeds_with_new_issues": []
+ }
+}

@@ -1,0 +1,254 @@
+{
+ "course": "eng_for_tel",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:03:32Z",
+ "decisions": 2,
+ "verdicts": {
+  "regloss": 1,
+  "kai": 1
+ },
+ "touched_seeds": [
+  94
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0094L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "The Telugu 'ఇదొక్కటే మార్గం' is answered 'is the only way' by the LEGO and 'this is the only way' by its own rows. The seed says 'This is the only way' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ): the LEGO and its three build rows take 'this' (6 syllables).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 94,
+    "known": "ఇది పని చేయాలంటే ఇదొక్కటే మార్గం.",
+    "target": "This is the only way it will work."
+   },
+   "before": {
+    "known": "ఇదొక్కటే మార్గం",
+    "target": "is the only way",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "ఇదొక్కటే మార్గం",
+    "target": "this is the only way",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tel:S0094L01B01",
+     "role": "build",
+     "before": [
+      "ఇదొక్కటే మార్గం ఇప్పుడు",
+      "is the only way now"
+     ],
+     "action": [
+      "ఇదొక్కటే మార్గం ఇప్పుడు",
+      "this is the only way now"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0094L01B02",
+     "role": "build",
+     "before": [
+      "ఇదొక్కటే మార్గం ఎవరితోనైనా",
+      "is the only way with someone"
+     ],
+     "action": [
+      "ఇదొక్కటే మార్గం ఎవరితోనైనా",
+      "this is the only way with someone"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0094L01B03",
+     "role": "build",
+     "before": [
+      "సహాయం చేసినందుకు ఇదొక్కటే మార్గం",
+      "is the only way for helping"
+     ],
+     "action": [
+      "సహాయం చేసినందుకు ఇదొక్కటే మార్గం",
+      "this is the only way for helping"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0094L01U01",
+     "role": "use",
+     "before": [
+      "ఇది పని చేయాలంటే ఇదొక్కటే మార్గం",
+      "this is the only way it will work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tel:S0094L01U02",
+     "role": "use",
+     "before": [
+      "ఇదొక్కటే మార్గం",
+      "this is the only way"
+     ],
+     "action": [
+      "అవును, ఇదొక్కటే మార్గం",
+      "yes, this is the only way"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0094L01U03",
+     "role": "use",
+     "before": [
+      "ఇదొక్కటే మార్గమని నేను అనుకుంటాను",
+      "I think that this is the only way"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tel:S0094L01U04",
+     "role": "use",
+     "before": [
+      "ఇంగ్లీష్ మాట్లాడటానికి ఇదొక్కటే మార్గం",
+      "this is the only way to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tel:S0094L01U05",
+     "role": "use",
+     "before": [
+      "ఇంగ్లీష్ నేర్చుకోవడానికి ఇదొక్కటే మార్గం",
+      "this is the only way to learn English"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0124L02",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD. 'అది మంచి ఆలోచన' is 'that was a good idea' here and 'that's a good idea' in a row of seed 123. This LEGO's own five use rows already use a past-marked Telugu ('అది మంచి ఆలోచనగా ఉండింది'), which the seed's Telugu does not say. Recommended: the LEGO's prompt takes the form its rows use. Kai's call because it departs from the seed's own Telugu (L26) and nobody has judged the Telugu.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 124,
+    "known": "అది మంచి ఆలోచన అని నేను అనుకున్నాను.",
+    "target": "I thought that was a good idea."
+   },
+   "before": {
+    "known": "అది మంచి ఆలోచన",
+    "target": "that was a good idea",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0094L01",
+   "set": {
+    "target_text": "this is the only way"
+   },
+   "expect": {
+    "known_text": "ఇదొక్కటే మార్గం",
+    "target_text": "is the only way"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0094L01B01",
+   "set": {
+    "target_text": "this is the only way now"
+   },
+   "expect": {
+    "known_text": "ఇదొక్కటే మార్గం ఇప్పుడు",
+    "target_text": "is the only way now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0094L01B02",
+   "set": {
+    "target_text": "this is the only way with someone"
+   },
+   "expect": {
+    "known_text": "ఇదొక్కటే మార్గం ఎవరితోనైనా",
+    "target_text": "is the only way with someone"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0094L01B03",
+   "set": {
+    "target_text": "this is the only way for helping"
+   },
+   "expect": {
+    "known_text": "సహాయం చేసినందుకు ఇదొక్కటే మార్గం",
+    "target_text": "is the only way for helping"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0094L01U02",
+   "set": {
+    "known_text": "అవును, ఇదొక్కటే మార్గం",
+    "target_text": "yes, this is the only way"
+   },
+   "expect": {
+    "known_text": "ఇదొక్కటే మార్గం",
+    "target_text": "this is the only way"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:07:40Z",
+  "baseline_failing_seeds": 603,
+  "per_seed": {
+   "94": {
+    "seed_issues_planned": [
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: USE: need 5+, got 4 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: USE: need 5+, got 4 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "94": [
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": [
+   94
+  ]
+ }
+}

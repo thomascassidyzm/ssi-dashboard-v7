@@ -1,0 +1,66 @@
+{
+ "course": "eng_for_kan",
+ "legos": [
+  {
+   "id": "S0118L03",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.delete",
+     "phrase_id": "eng_for_kan:S0118L03U01",
+     "expect": {
+      "known_text": "ಈಗ ನನಗೆ ಚೆನ್ನಾಗಿ ಅನಿಸ್ತಿದೆ",
+      "target_text": "I feel better now"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). The LEGO's Kannada (which includes 'now') is answered 'I feel better' by the LEGO and 'I feel better now' by its own row U01. The seed's English has no 'now'. The row is deleted (9 rows remain)."
+  },
+  {
+   "id": "S0193L01",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. 'ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ' ('I have a lot of work') is taught as 'I'm too busy' here, and two later rows (S0273L02U01, S0277L03U02) answer the same Kannada 'I've got too much work' — each inside a basket whose LEGO needs those very words ('too much work', 'I've got'). Deleting the two rows leaves both baskets under five use rows, and any replacement with 'ನನಗೆ … ತುಂಬಾ ಕೆಲಸ ಇದೆ' clashes again: the two English sentences are one Kannada sentence. Recommended for Kai: K23 — keep both, and let the 'too much work' rows carry a second clause that shows the sense. Kannada rows need a reader who has the language."
+  },
+  {
+   "id": "S0134L04",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_kan:S0134L04U03",
+     "set": {
+      "known_text": "ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
+      "target_text": "but it's not a problem"
+     },
+     "expect": {
+      "known_text": "ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
+      "target_text": "no it's not a problem"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). 'ಇಲ್ಲ, ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ' is taught as 'no that's not a problem' (S0282L01); this row says 'no it's not a problem' for the same Kannada. It must keep its own LEGO, 'it's not a problem', so the row changes on both sides to 'but it's not a problem | ಆದರೆ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ'."
+  },
+  {
+   "id": "S0089L03",
+   "verdict": "keep",
+   "pattern": "R",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_kan:S0089L03U02",
+     "set": {
+      "target_text": "I think that it's interesting"
+     },
+     "expect": {
+      "known_text": "ಅದು ಆಸಕ್ತಿಕರ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ",
+      "target_text": "I think it's interesting"
+     }
+    }
+   ],
+   "why": "PATTERN R (a row, not a LEGO). this row's Kannada is exactly S0163L01's ('I think that it's interesting') but its English drops 'that'. Unified on the LEGO's wording (L34)."
+  }
+ ]
+}

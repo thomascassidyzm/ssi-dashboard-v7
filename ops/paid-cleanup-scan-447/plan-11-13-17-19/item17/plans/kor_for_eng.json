@@ -1540,18 +1540,1499 @@
   "seeds_with_new_issues": []
  },
  "dryRun": {
-  "at": "2026-11-19T11:38:48Z",
+  "at": "2026-11-19T12:01:46Z",
   "chunks": [
    {
     "from": 0,
     "n": 34,
-    "status": 409,
-    "secs": 1.4,
+    "status": 200,
+    "secs": 28.6,
     "answer": {
-     "error": "op 0: lego.update: target_text changes but this row carries a target_text_roman (pinyin/romaji/romanisation) written for the old text. Send the new target_text_roman with it, read by hand (polyphones need a reader), or target_text_roman: null to clear it deliberately.",
-     "code": "ROMAN_STALE",
-     "index": 0,
-     "applied": false
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "lego_id": "S0126L01"
+       },
+       "before": {
+        "id": "98a03c3c-0522-4193-9ee1-a7d48da44eb1",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": "S0126L01",
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "components": [
+         {
+          "known": "this work",
+          "target": "이 일이"
+         },
+         {
+          "known": "is changing",
+          "target": "바꾸고 있어요"
+         }
+        ],
+        "target_text_roman": "i i-ri ba-kku-go i-sseo-yo",
+        "known_audio_id": "53bf89e0-59b0-408e-b5ea-e3146af5445d",
+        "target1_audio_id": "db4326e1-d9e0-4457-8c79-98f9e49b09c0",
+        "target2_audio_id": "98b4c691-5d8f-4b0c-9d10-3e879f81e11f",
+        "presentation_audio_id": "54a0a5bb-f014-4499-989c-5f430668b83c"
+       },
+       "after": {
+        "id": "98a03c3c-0522-4193-9ee1-a7d48da44eb1",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": "S0126L01",
+        "known_text": "this work",
+        "target_text": "이 일이",
+        "components": [
+         {
+          "known": "this",
+          "target": "이"
+         },
+         {
+          "known": "work",
+          "target": "일이"
+         }
+        ],
+        "target_text_roman": "i i-ri",
+        "known_audio_id": null,
+        "target1_audio_id": "5eb50382-0b13-40a1-b18a-cb6c2b06aba7",
+        "target2_audio_id": "d4183857-aa9e-4fdc-852b-de1e8ba3fa3c",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0126L01B01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0126L01B01",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "target_text_roman": "i i-ri ba-kku-go i-sseo-yo",
+        "known_audio_id": "53bf89e0-59b0-408e-b5ea-e3146af5445d",
+        "target1_audio_id": "db4326e1-d9e0-4457-8c79-98f9e49b09c0",
+        "target2_audio_id": "98b4c691-5d8f-4b0c-9d10-3e879f81e11f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0126L01B01",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "this work",
+        "target_text": "이 일이",
+        "target_text_roman": "i i-ri",
+        "known_audio_id": null,
+        "target1_audio_id": "5eb50382-0b13-40a1-b18a-cb6c2b06aba7",
+        "target2_audio_id": "d4183857-aa9e-4fdc-852b-de1e8ba3fa3c",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0126L01B02"
+       },
+       "before": {
+        "id": "kor_for_eng:S0126L01B02",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "target_text_roman": "i i-ri ba-kku-go i-sseo-yo",
+        "known_audio_id": "53bf89e0-59b0-408e-b5ea-e3146af5445d",
+        "target1_audio_id": "db4326e1-d9e0-4457-8c79-98f9e49b09c0",
+        "target2_audio_id": "98b4c691-5d8f-4b0c-9d10-3e879f81e11f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0126L01B02",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "but this work",
+        "target_text": "하지만 이 일이",
+        "target_text_roman": "ha-ji-man i i-ri",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L01B03"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L01B03",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "so this work",
+        "target_text": "그래서 이 일이",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L01B04"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L01B04",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "definitely this work",
+        "target_text": "확실히 이 일이",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L01U09"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L01U09",
+        "seed_number": 126,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "this work is changing things now",
+        "target_text": "이 일이 지금 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 126,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "6750e0fa-d169-4dcf-ad79-d138b30edc2d",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": "S0126L03",
+        "known_text": "is changing",
+        "target_text": "바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03B01"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03B01",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "is changing",
+        "target_text": "바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03B02"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03B02",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03B03"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03B03",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "is changing the shape of my brain",
+        "target_text": "뇌의 모양을 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03B04"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03B04",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "but this work is changing",
+        "target_text": "하지만 이 일이 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03U01"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03U01",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "this work is changing the shape of my brain",
+        "target_text": "이 일이 뇌의 모양을 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03U02"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03U02",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "but this work is changing the shape of my brain",
+        "target_text": "하지만 이 일이 뇌의 모양을 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03U03"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03U03",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "so this work is changing the shape of my brain",
+        "target_text": "그래서 이 일이 뇌의 모양을 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03U04"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03U04",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "definitely this work is changing the shape of my brain",
+        "target_text": "확실히 이 일이 뇌의 모양을 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.insert",
+       "key": {
+        "id": "kor_for_eng:S0126L03U05"
+       },
+       "before": null,
+       "after": {
+        "id": "kor_for_eng:S0126L03U05",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "so this work is changing",
+        "target_text": "그래서 이 일이 바꾸고 있어요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "lego_id": "S0132L01"
+       },
+       "before": {
+        "id": "4c0ce9dd-dcbb-4851-b690-e619e653762f",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": "S0132L01",
+        "known_text": "that's less exciting",
+        "target_text": "그건 덜 신나요",
+        "components": [
+         {
+          "known": "that",
+          "target": "그건"
+         },
+         {
+          "known": "less",
+          "target": "덜"
+         },
+         {
+          "known": "exciting",
+          "target": "신나요"
+         }
+        ],
+        "target_text_roman": "geu-geon deol sin-na-yo",
+        "known_audio_id": "96a5cffc-de7c-48cc-b6e2-1c6af6abb8ac",
+        "target1_audio_id": "400a0150-3c63-4de1-bf34-13ce09ad1184",
+        "target2_audio_id": "4e4387d3-1acb-4bc5-9a85-6043ff54dc85",
+        "presentation_audio_id": "a92ae497-eb50-4ab1-a344-8450784c9024"
+       },
+       "after": {
+        "id": "4c0ce9dd-dcbb-4851-b690-e619e653762f",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": "S0132L01",
+        "known_text": "less exciting",
+        "target_text": "덜 신나요",
+        "components": [
+         {
+          "known": "less",
+          "target": "덜"
+         },
+         {
+          "known": "exciting",
+          "target": "신나요"
+         }
+        ],
+        "target_text_roman": "deol sin-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0132L01B01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0132L01B01",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "that's less exciting",
+        "target_text": "그건 덜 신나요",
+        "target_text_roman": "geu-geon deol sin-na-yo",
+        "known_audio_id": "96a5cffc-de7c-48cc-b6e2-1c6af6abb8ac",
+        "target1_audio_id": "400a0150-3c63-4de1-bf34-13ce09ad1184",
+        "target2_audio_id": "4e4387d3-1acb-4bc5-9a85-6043ff54dc85",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0132L01B01",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "less exciting",
+        "target_text": "덜 신나요",
+        "target_text_roman": "deol sin-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0132L01U01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0132L01U01",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "that's less exciting",
+        "target_text": "그건 덜 신나요",
+        "target_text_roman": "geu-geon deol sin-na-yo",
+        "known_audio_id": "96a5cffc-de7c-48cc-b6e2-1c6af6abb8ac",
+        "target1_audio_id": "400a0150-3c63-4de1-bf34-13ce09ad1184",
+        "target2_audio_id": "4e4387d3-1acb-4bc5-9a85-6043ff54dc85",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0132L01U01",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "that's less exciting now",
+        "target_text": "그건 지금 덜 신나요",
+        "target_text_roman": "geu-geon ji-geum deol sin-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0132L01U02"
+       },
+       "before": {
+        "id": "kor_for_eng:S0132L01U02",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "but that's less exciting",
+        "target_text": "하지만 그건 덜 신나요",
+        "target_text_roman": "ha-ji-man geu-geon deol sin-na-yo",
+        "known_audio_id": "3b9295c9-8284-4f89-9aac-9f0370a906a5",
+        "target1_audio_id": "484f88ac-edbd-436e-b547-10245b2b7648",
+        "target2_audio_id": "e290cd8a-96c2-4243-92f4-c294847969ee",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0132L01U02",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "that's less exciting today",
+        "target_text": "그건 오늘 덜 신나요",
+        "target_text_roman": "geu-geon o-neul deol sin-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0132L01U03"
+       },
+       "before": {
+        "id": "kor_for_eng:S0132L01U03",
+        "seed_number": 132,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "so that's less exciting",
+        "target_text": "그래서 그건 덜 신나요",
+        "known_audio_id": "6a9ca670-cf1e-45b3-9edb-614f814d6cb3",
+        "target1_audio_id": "5e157907-bb0d-4e05-a042-7eada77c6323",
+        "target2_audio_id": "4d7353ef-a6ba-436d-ae07-9b8dbe0b1605",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 132,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "d549de73-71c8-4507-8915-20827433bb60",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": "S0132L03",
+        "known_text": "that",
+        "target_text": "그건",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "lego_id": "S0145L01"
+       },
+       "before": {
+        "id": "c6cb76e1-50e6-492d-9eb6-f0186037fb94",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": "S0145L01",
+        "known_text": "why are you not happy",
+        "target_text": "왜 행복하지 않아요",
+        "components": [
+         {
+          "known": "why",
+          "target": "왜"
+         },
+         {
+          "known": "not happy",
+          "target": "행복하지 않아요"
+         }
+        ],
+        "target_text_roman": "wae haeng-bok-ha-ji an-a-yo",
+        "known_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+        "target1_audio_id": "f9362539-188d-4bfe-9c41-abd77b34661b",
+        "target2_audio_id": "ed3954ce-5238-412d-8fe5-77d979583328",
+        "presentation_audio_id": "3247520b-2294-4254-939b-d176347110cd"
+       },
+       "after": {
+        "id": "c6cb76e1-50e6-492d-9eb6-f0186037fb94",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": "S0145L01",
+        "known_text": "are you not happy",
+        "target_text": "행복하지 않아요",
+        "components": [
+         {
+          "known": "happy",
+          "target": "행복하지"
+         },
+         {
+          "known": "are you not",
+          "target": "않아요"
+         }
+        ],
+        "target_text_roman": "haeng-bok-ha-ji a-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": "19a794ad-83e4-40c0-9322-fc9d1af7618d",
+        "target2_audio_id": "4ccaf3e1-1a33-4afa-9226-7190ac537236",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 23,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0145L01B01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0145L01B01",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "why are you not happy",
+        "target_text": "왜 행복하지 않아요",
+        "target_text_roman": "wae haeng-bok-ha-ji an-a-yo",
+        "known_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+        "target1_audio_id": "f9362539-188d-4bfe-9c41-abd77b34661b",
+        "target2_audio_id": "ed3954ce-5238-412d-8fe5-77d979583328",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0145L01B01",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "are you not happy",
+        "target_text": "행복하지 않아요",
+        "target_text_roman": "haeng-bok-ha-ji a-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": "19a794ad-83e4-40c0-9322-fc9d1af7618d",
+        "target2_audio_id": "4ccaf3e1-1a33-4afa-9226-7190ac537236",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 24,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0145L01B04"
+       },
+       "before": {
+        "id": "kor_for_eng:S0145L01B04",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I don't know why you're not happy",
+        "target_text": "왜 행복하지 않은지 모르겠어요",
+        "target_text_roman": "wae haeng-bok-ha-ji an-eun-ji mo-reu-ge-sseo-yo",
+        "known_audio_id": "c719d280-3bf5-4b4f-9ffc-dc81457c1a71",
+        "target1_audio_id": "bb00db2a-aa91-4f66-b416-7bf0a25ef4ef",
+        "target2_audio_id": "0869c146-37dc-4584-96e4-6457748a03e3",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0145L01B04",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "are you not happy now",
+        "target_text": "지금 행복하지 않아요",
+        "target_text_roman": "ji-geum haeng-bok-ha-ji a-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 25,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0145L01U01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0145L01U01",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "why are you not happy",
+        "target_text": "왜 행복하지 않아요",
+        "target_text_roman": "wae haeng-bok-ha-ji an-a-yo",
+        "known_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+        "target1_audio_id": "f9362539-188d-4bfe-9c41-abd77b34661b",
+        "target2_audio_id": "ed3954ce-5238-412d-8fe5-77d979583328",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0145L01U01",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "why are you not happy now",
+        "target_text": "왜 지금 행복하지 않아요",
+        "target_text_roman": "wae ji-geum haeng-bok-ha-ji a-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 26,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0145L01U02"
+       },
+       "before": {
+        "id": "kor_for_eng:S0145L01U02",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "but why are you not happy",
+        "target_text": "하지만 왜 행복하지 않아요",
+        "target_text_roman": "ha-ji-man wae haeng-bo-ka-ji a-na-yo",
+        "known_audio_id": "45c82253-1d7a-4a35-9e59-faed2e4e4291",
+        "target1_audio_id": "77922491-f56d-4e95-97c9-9922308fb55b",
+        "target2_audio_id": "d1ef8edd-aee9-4746-b2c0-822e055a5a15",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0145L01U02",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "why are you not happy today",
+        "target_text": "왜 오늘 행복하지 않아요",
+        "target_text_roman": "wae o-neul haeng-bok-ha-ji a-na-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 27,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 145,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "85c7821f-16a1-4da1-b4c9-bd6da59c61e9",
+        "seed_number": 145,
+        "lego_index": 3,
+        "lego_id": "S0145L03",
+        "known_text": "why",
+        "target_text": "왜",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 28,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "lego_id": "S0147L01"
+       },
+       "before": {
+        "id": "d29d1627-2b1b-4c27-a02b-a577d9cf121c",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": "S0147L01",
+        "known_text": "she was very kind",
+        "target_text": "그녀는 아주 친절했어요",
+        "components": [
+         {
+          "known": "she",
+          "target": "그녀는"
+         },
+         {
+          "known": "very",
+          "target": "아주"
+         },
+         {
+          "known": "was kind",
+          "target": "친절했어요"
+         }
+        ],
+        "target_text_roman": "geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": "09ca414b-6188-442d-b520-31f65797c95e",
+        "target1_audio_id": "c32c1803-ddbc-457a-af0a-26ffdf06a140",
+        "target2_audio_id": "ff3bd96c-4e1c-4813-b4a2-ed47554dc1df",
+        "presentation_audio_id": "33909319-df57-491c-a45c-727486ea6520"
+       },
+       "after": {
+        "id": "d29d1627-2b1b-4c27-a02b-a577d9cf121c",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": "S0147L01",
+        "known_text": "was very kind",
+        "target_text": "아주 친절했어요",
+        "components": [
+         {
+          "known": "very",
+          "target": "아주"
+         },
+         {
+          "known": "was kind",
+          "target": "친절했어요"
+         }
+        ],
+        "target_text_roman": "a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 29,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0147L01B01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0147L01B01",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "she was very kind",
+        "target_text": "그녀는 아주 친절했어요",
+        "target_text_roman": "geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": "09ca414b-6188-442d-b520-31f65797c95e",
+        "target1_audio_id": "c32c1803-ddbc-457a-af0a-26ffdf06a140",
+        "target2_audio_id": "ff3bd96c-4e1c-4813-b4a2-ed47554dc1df",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0147L01B01",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "was very kind",
+        "target_text": "아주 친절했어요",
+        "target_text_roman": "a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 30,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0147L01U01"
+       },
+       "before": {
+        "id": "kor_for_eng:S0147L01U01",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "she was very kind",
+        "target_text": "그녀는 아주 친절했어요",
+        "target_text_roman": "geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": "09ca414b-6188-442d-b520-31f65797c95e",
+        "target1_audio_id": "c32c1803-ddbc-457a-af0a-26ffdf06a140",
+        "target2_audio_id": "ff3bd96c-4e1c-4813-b4a2-ed47554dc1df",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0147L01U01",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "she was very kind today",
+        "target_text": "그녀는 오늘 아주 친절했어요",
+        "target_text_roman": "geu-nyeo-neun o-neul a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 31,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0147L01U02"
+       },
+       "before": {
+        "id": "kor_for_eng:S0147L01U02",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "but she was very kind",
+        "target_text": "하지만 그녀는 아주 친절했어요",
+        "target_text_roman": "ha-ji-man geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": "8817ae01-a17e-4e57-bbac-cc4d478498ce",
+        "target1_audio_id": "eafc8b2c-1579-4d2e-9c2c-be0ba0bd7f23",
+        "target2_audio_id": "b022c6b0-7a83-4c1a-be14-74e59316b323",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_eng:S0147L01U02",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "she was very kind yesterday",
+        "target_text": "그녀는 어제 아주 친절했어요",
+        "target_text_roman": "geu-nyeo-neun eo-je a-ju chin-jeol-hae-sseo-yo",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 32,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "kor_for_eng",
+        "id": "kor_for_eng:S0147L01U03"
+       },
+       "before": {
+        "id": "kor_for_eng:S0147L01U03",
+        "seed_number": 147,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "really she was very kind",
+        "target_text": "정말 그녀는 아주 친절했어요",
+        "known_audio_id": "47c8edd7-790c-4ee2-a316-b6e2183a59f7",
+        "target1_audio_id": "645d6afb-9368-42b7-8467-9ebaf84a856c",
+        "target2_audio_id": "b9441aad-4b0d-4157-bc01-5edb393d8e77",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 33,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 147,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "79cc1e95-7dbd-4042-9123-658a83bed24c",
+        "seed_number": 147,
+        "lego_index": 3,
+        "lego_id": "S0147L03",
+        "known_text": "she",
+        "target_text": "그녀는",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0126L01",
+         "S0126L03",
+         "S0132L01",
+         "S0132L03",
+         "S0145L01",
+         "S0145L03",
+         "S0147L01",
+         "S0147L03"
+        ]
+       },
+       "skipped": true,
+       "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+       "changed": false
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "lego.delete",
+       "id": "79cc1e95-7dbd-4042-9123-658a83bed24c"
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "kor_for_eng:S0147L01U03",
+        "seed_number": 147,
+        "lego_index": 1,
+        "position": 10,
+        "known_text": "really she was very kind",
+        "target_text": "정말 그녀는 아주 친절했어요",
+        "word_count": 15,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-13T13:45:26.653Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-13T13:45:26.728Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "47c8edd7-790c-4ee2-a316-b6e2183a59f7",
+        "target1_audio_id": "645d6afb-9368-42b7-8467-9ebaf84a856c",
+        "target2_audio_id": "b9441aad-4b0d-4157-bc01-5edb393d8e77",
+        "qa_checked": "2026-02-14T19:49:49.041Z",
+        "target1_duration_ms": 4104,
+        "target2_duration_ms": 4200,
+        "lego_id": null,
+        "target_text_roman": "jeong-mal geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo",
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "really",
+          "legoId": "S0063L01",
+          "target": "정말",
+          "isGhost": false
+         },
+         {
+          "known": "she was very kind",
+          "legoId": "S0147L01",
+          "target": " 그녀는 아주 친절했어요",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0147L01U02",
+       "set": {
+        "known_text": "but she was very kind",
+        "target_text": "하지만 그녀는 아주 친절했어요",
+        "known_audio_id": "8817ae01-a17e-4e57-bbac-cc4d478498ce",
+        "target1_audio_id": "eafc8b2c-1579-4d2e-9c2c-be0ba0bd7f23",
+        "target2_audio_id": "b022c6b0-7a83-4c1a-be14-74e59316b323",
+        "target_text_roman": "ha-ji-man geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0147L01U01",
+       "set": {
+        "known_text": "she was very kind",
+        "target_text": "그녀는 아주 친절했어요",
+        "known_audio_id": "09ca414b-6188-442d-b520-31f65797c95e",
+        "target1_audio_id": "c32c1803-ddbc-457a-af0a-26ffdf06a140",
+        "target2_audio_id": "ff3bd96c-4e1c-4813-b4a2-ed47554dc1df",
+        "target_text_roman": "geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0147L01B01",
+       "set": {
+        "known_text": "she was very kind",
+        "target_text": "그녀는 아주 친절했어요",
+        "known_audio_id": "09ca414b-6188-442d-b520-31f65797c95e",
+        "target1_audio_id": "c32c1803-ddbc-457a-af0a-26ffdf06a140",
+        "target2_audio_id": "ff3bd96c-4e1c-4813-b4a2-ed47554dc1df",
+        "target_text_roman": "geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "d29d1627-2b1b-4c27-a02b-a577d9cf121c",
+       "set": {
+        "known_text": "she was very kind",
+        "target_text": "그녀는 아주 친절했어요",
+        "components": [
+         {
+          "known": "she",
+          "target": "그녀는"
+         },
+         {
+          "known": "very",
+          "target": "아주"
+         },
+         {
+          "known": "was kind",
+          "target": "친절했어요"
+         }
+        ],
+        "known_audio_id": "09ca414b-6188-442d-b520-31f65797c95e",
+        "target1_audio_id": "c32c1803-ddbc-457a-af0a-26ffdf06a140",
+        "target2_audio_id": "ff3bd96c-4e1c-4813-b4a2-ed47554dc1df",
+        "presentation_audio_id": "33909319-df57-491c-a45c-727486ea6520",
+        "target_text_roman": "geu-nyeo-neun a-ju chin-jeol-hae-sseo-yo"
+       }
+      },
+      {
+       "op": "lego.delete",
+       "id": "85c7821f-16a1-4da1-b4c9-bd6da59c61e9"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0145L01U02",
+       "set": {
+        "known_text": "but why are you not happy",
+        "target_text": "하지만 왜 행복하지 않아요",
+        "known_audio_id": "45c82253-1d7a-4a35-9e59-faed2e4e4291",
+        "target1_audio_id": "77922491-f56d-4e95-97c9-9922308fb55b",
+        "target2_audio_id": "d1ef8edd-aee9-4746-b2c0-822e055a5a15",
+        "target_text_roman": "ha-ji-man wae haeng-bo-ka-ji a-na-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0145L01U01",
+       "set": {
+        "known_text": "why are you not happy",
+        "target_text": "왜 행복하지 않아요",
+        "known_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+        "target1_audio_id": "f9362539-188d-4bfe-9c41-abd77b34661b",
+        "target2_audio_id": "ed3954ce-5238-412d-8fe5-77d979583328",
+        "target_text_roman": "wae haeng-bok-ha-ji an-a-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0145L01B04",
+       "set": {
+        "known_text": "I don't know why you're not happy",
+        "target_text": "왜 행복하지 않은지 모르겠어요",
+        "known_audio_id": "c719d280-3bf5-4b4f-9ffc-dc81457c1a71",
+        "target1_audio_id": "bb00db2a-aa91-4f66-b416-7bf0a25ef4ef",
+        "target2_audio_id": "0869c146-37dc-4584-96e4-6457748a03e3",
+        "target_text_roman": "wae haeng-bok-ha-ji an-eun-ji mo-reu-ge-sseo-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0145L01B01",
+       "set": {
+        "known_text": "why are you not happy",
+        "target_text": "왜 행복하지 않아요",
+        "known_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+        "target1_audio_id": "f9362539-188d-4bfe-9c41-abd77b34661b",
+        "target2_audio_id": "ed3954ce-5238-412d-8fe5-77d979583328",
+        "target_text_roman": "wae haeng-bok-ha-ji an-a-yo"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "c6cb76e1-50e6-492d-9eb6-f0186037fb94",
+       "set": {
+        "known_text": "why are you not happy",
+        "target_text": "왜 행복하지 않아요",
+        "components": [
+         {
+          "known": "why",
+          "target": "왜"
+         },
+         {
+          "known": "not happy",
+          "target": "행복하지 않아요"
+         }
+        ],
+        "known_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+        "target1_audio_id": "f9362539-188d-4bfe-9c41-abd77b34661b",
+        "target2_audio_id": "ed3954ce-5238-412d-8fe5-77d979583328",
+        "presentation_audio_id": "3247520b-2294-4254-939b-d176347110cd",
+        "target_text_roman": "wae haeng-bok-ha-ji an-a-yo"
+       }
+      },
+      {
+       "op": "lego.delete",
+       "id": "d549de73-71c8-4507-8915-20827433bb60"
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "kor_for_eng:S0132L01U03",
+        "seed_number": 132,
+        "lego_index": 1,
+        "position": 10,
+        "known_text": "so that's less exciting",
+        "target_text": "그래서 그건 덜 신나요",
+        "word_count": 12,
+        "lego_count": 4,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 6,
+         "format": "build_use",
+         "scored_at": "2026-02-13T13:37:27.644Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-13T13:37:27.741Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "6a9ca670-cf1e-45b3-9edb-614f814d6cb3",
+        "target1_audio_id": "5e157907-bb0d-4e05-a042-7eada77c6323",
+        "target2_audio_id": "4d7353ef-a6ba-436d-ae07-9b8dbe0b1605",
+        "qa_checked": "2026-02-14T19:50:27.177Z",
+        "target1_duration_ms": 3456,
+        "target2_duration_ms": 3696,
+        "lego_id": null,
+        "target_text_roman": "geu-rae-seo geu-geon deol sin-na-yo",
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "so",
+          "legoId": "S0056L01",
+          "target": "그래서",
+          "isGhost": false
+         },
+         {
+          "known": "that's less exciting",
+          "legoId": "S0132L01",
+          "target": " 그건 덜 신나요",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0132L01U02",
+       "set": {
+        "known_text": "but that's less exciting",
+        "target_text": "하지만 그건 덜 신나요",
+        "known_audio_id": "3b9295c9-8284-4f89-9aac-9f0370a906a5",
+        "target1_audio_id": "484f88ac-edbd-436e-b547-10245b2b7648",
+        "target2_audio_id": "e290cd8a-96c2-4243-92f4-c294847969ee",
+        "target_text_roman": "ha-ji-man geu-geon deol sin-na-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0132L01U01",
+       "set": {
+        "known_text": "that's less exciting",
+        "target_text": "그건 덜 신나요",
+        "known_audio_id": "96a5cffc-de7c-48cc-b6e2-1c6af6abb8ac",
+        "target1_audio_id": "400a0150-3c63-4de1-bf34-13ce09ad1184",
+        "target2_audio_id": "4e4387d3-1acb-4bc5-9a85-6043ff54dc85",
+        "target_text_roman": "geu-geon deol sin-na-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0132L01B01",
+       "set": {
+        "known_text": "that's less exciting",
+        "target_text": "그건 덜 신나요",
+        "known_audio_id": "96a5cffc-de7c-48cc-b6e2-1c6af6abb8ac",
+        "target1_audio_id": "400a0150-3c63-4de1-bf34-13ce09ad1184",
+        "target2_audio_id": "4e4387d3-1acb-4bc5-9a85-6043ff54dc85",
+        "target_text_roman": "geu-geon deol sin-na-yo"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "4c0ce9dd-dcbb-4851-b690-e619e653762f",
+       "set": {
+        "known_text": "that's less exciting",
+        "target_text": "그건 덜 신나요",
+        "components": [
+         {
+          "known": "that",
+          "target": "그건"
+         },
+         {
+          "known": "less",
+          "target": "덜"
+         },
+         {
+          "known": "exciting",
+          "target": "신나요"
+         }
+        ],
+        "known_audio_id": "96a5cffc-de7c-48cc-b6e2-1c6af6abb8ac",
+        "target1_audio_id": "400a0150-3c63-4de1-bf34-13ce09ad1184",
+        "target2_audio_id": "4e4387d3-1acb-4bc5-9a85-6043ff54dc85",
+        "presentation_audio_id": "a92ae497-eb50-4ab1-a344-8450784c9024",
+        "target_text_roman": "geu-geon deol sin-na-yo"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03B04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "6750e0fa-d169-4dcf-ad79-d138b30edc2d"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L01U09"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L01B04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "kor_for_eng:S0126L01B03"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0126L01B02",
+       "set": {
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "known_audio_id": "53bf89e0-59b0-408e-b5ea-e3146af5445d",
+        "target1_audio_id": "db4326e1-d9e0-4457-8c79-98f9e49b09c0",
+        "target2_audio_id": "98b4c691-5d8f-4b0c-9d10-3e879f81e11f",
+        "target_text_roman": "i i-ri ba-kku-go i-sseo-yo"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_eng:S0126L01B01",
+       "set": {
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "known_audio_id": "53bf89e0-59b0-408e-b5ea-e3146af5445d",
+        "target1_audio_id": "db4326e1-d9e0-4457-8c79-98f9e49b09c0",
+        "target2_audio_id": "98b4c691-5d8f-4b0c-9d10-3e879f81e11f",
+        "target_text_roman": "i i-ri ba-kku-go i-sseo-yo"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "98a03c3c-0522-4193-9ee1-a7d48da44eb1",
+       "set": {
+        "known_text": "this work is changing",
+        "target_text": "이 일이 바꾸고 있어요",
+        "components": [
+         {
+          "known": "this work",
+          "target": "이 일이"
+         },
+         {
+          "known": "is changing",
+          "target": "바꾸고 있어요"
+         }
+        ],
+        "known_audio_id": "53bf89e0-59b0-408e-b5ea-e3146af5445d",
+        "target1_audio_id": "db4326e1-d9e0-4457-8c79-98f9e49b09c0",
+        "target2_audio_id": "98b4c691-5d8f-4b0c-9d10-3e879f81e11f",
+        "presentation_audio_id": "54a0a5bb-f014-4499-989c-5f430668b83c",
+        "target_text_roman": "i i-ri ba-kku-go i-sseo-yo"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
     }
    }
   ]

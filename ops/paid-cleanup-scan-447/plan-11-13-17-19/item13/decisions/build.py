@@ -23,6 +23,16 @@ def rows(course, lid):
     s = _live(course)[str(int(lid[1:5]))]
     l = next(x for x in s['legos'] if x['id'] == lid)
     return [(p['id'][-3:], p['known'], p['target']) for p in l['phrases'] if p['type'] in ('build', 'use')]
+def rowop(course, pid, known=None, target=None, delete=False):
+    """one edit-batch op on a single ROW (pid like S0041L01U03), with today's live text as the expect guard"""
+    k, t = next((k, t) for s, k, t in rows(course, pid[:8]) if s == pid[8:])
+    full = f'{course}:{pid}'
+    if delete: return {'op': 'phrase.delete', 'phrase_id': full, 'expect': {'known_text': k, 'target_text': t}}
+    st = {}
+    if known is not None: st['known_text'] = known
+    if target is not None: st['target_text'] = target
+    return {'op': 'phrase.update', 'phrase_id': full, 'set': st, 'expect': {'known_text': k, 'target_text': t}}
+R = "PATTERN R (a row, not a LEGO). "
 for f in sorted(glob.glob(os.path.join(HERE, 'parts', '*.py'))):
     exec(compile(open(f).read(), f, 'exec'))
 for course, legos in D.items():

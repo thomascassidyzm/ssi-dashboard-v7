@@ -444,5 +444,21 @@
    }
   },
   "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T12:05:40Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 10,
+    "status": 409,
+    "secs": 63.2,
+    "answer": {
+     "error": "canceling statement due to statement timeout",
+     "code": "57014",
+     "applied": false
+    }
+   }
+  ]
  }
 }

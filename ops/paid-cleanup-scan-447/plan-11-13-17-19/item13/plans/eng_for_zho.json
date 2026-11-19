@@ -1,0 +1,199 @@
+{
+ "course": "eng_for_zho",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:03:18Z",
+ "decisions": 2,
+ "verdicts": {
+  "regloss": 1,
+  "kai": 1
+ },
+ "touched_seeds": [
+  97
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0097L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'好' is the prompt for 'Well' (S0013L01) and for 'Yes' (here) — but seed 97's Chinese says 是的, and so does every row of this basket (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). The LEGO takes the seed's own word; prompt clip only.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 97,
+    "known": "是的，你想走的时候我就准备好了",
+    "target": "Yes I'm ready to go as soon as you want"
+   },
+   "before": {
+    "known": "好",
+    "target": "Yes",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "是的",
+    "target": "Yes",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0097L01B01",
+     "role": "build",
+     "before": [
+      "是的，我知道",
+      "Yes I know"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01B02",
+     "role": "build",
+     "before": [
+      "是的，我",
+      "Yes I do"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01B03",
+     "role": "build",
+     "before": [
+      "是的，我想",
+      "Yes I want"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01U01",
+     "role": "use",
+     "before": [
+      "是的，我准备好走了",
+      "Yes I'm ready to go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01U02",
+     "role": "use",
+     "before": [
+      "是的，我同意你",
+      "Yes I agree with you"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01U03",
+     "role": "use",
+     "before": [
+      "是的，我想继续做这个",
+      "Yes I want to keep on doing this"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01U04",
+     "role": "use",
+     "before": [
+      "是的，我觉得会成功",
+      "Yes I think that it will work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0097L01U05",
+     "role": "use",
+     "before": [
+      "是的，我想再多一点时间",
+      "Yes I'd like a little more time"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 2,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0097L02U01",
+      "known": "是的，我准备好随时可以走",
+      "target": "Yes I'm ready to go as soon as you want",
+      "seed": 97
+     },
+     {
+      "id": "eng_for_zho:S0272L01U01",
+      "known": "是的，听起来是个好主意",
+      "target": "Yes that sounds like a great idea",
+      "seed": 272
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0151L01",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD. '那不是' is the prompt for 'That wasn't' (here) and 'That isn't what' (S0159L01); Chinese marks neither the tense nor the 'what'. Growing either to its seed piece passes 8 English syllables. It belongs with the eng_for_zho prompt read (decision D2 on the combined list); recommended there: give seed 151's prompt a past-time word so the two prompts differ.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 151,
+    "known": "那不是我希望会发生的事情",
+    "target": "That wasn't what I was hoping would happen"
+   },
+   "before": {
+    "known": "那不是",
+    "target": "That wasn't",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0097L01",
+   "set": {
+    "known_text": "是的"
+   },
+   "expect": {
+    "known_text": "好",
+    "target_text": "Yes"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:03:23Z",
+  "baseline_failing_seeds": 72,
+  "per_seed": {
+   "97": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "course": "eng_for_tel",
+ "legos": [
+  {
+   "id": "S0094L01",
+   "verdict": "regloss",
+   "pattern": "S",
+   "target": "this is the only way",
+   "basket": {
+    "B01": [
+     "ఇదొక్కటే మార్గం ఇప్పుడు",
+     "this is the only way now"
+    ],
+    "B02": [
+     "ఇదొక్కటే మార్గం ఎవరితోనైనా",
+     "this is the only way with someone"
+    ],
+    "B03": [
+     "సహాయం చేసినందుకు ఇదొక్కటే మార్గం",
+     "this is the only way for helping"
+    ],
+    "U02": [
+     "అవును, ఇదొక్కటే మార్గం",
+     "yes, this is the only way"
+    ],
+    "U03": "keep"
+   },
+   "ack": [
+    "thin"
+   ],
+   "why": "The Telugu 'ఇదొక్కటే మార్గం' is answered 'is the only way' by the LEGO and 'this is the only way' by its own rows. The seed says 'This is the only way' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ): the LEGO and its three build rows take 'this' (6 syllables)."
+  },
+  {
+   "id": "S0124L02",
+   "verdict": "kai",
+   "pattern": "W",
+   "why": "HOLD. 'అది మంచి ఆలోచన' is 'that was a good idea' here and 'that's a good idea' in a row of seed 123. This LEGO's own five use rows already use a past-marked Telugu ('అది మంచి ఆలోచనగా ఉండింది'), which the seed's Telugu does not say. Recommended: the LEGO's prompt takes the form its rows use. Kai's call because it departs from the seed's own Telugu (L26) and nobody has judged the Telugu."
+  }
+ ]
+}

@@ -1,0 +1,390 @@
+{
+ "course": "eng_for_kor",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:03:12Z",
+ "decisions": 4,
+ "verdicts": {
+  "kai": 2,
+  "grow": 1,
+  "delete": 1
+ },
+ "touched_seeds": [
+  146
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0109L02",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD. The Korean prompt '열심히 일해야 해요' has two English answers: 'need to work hard' (S0106L03) and 'must work hard' (here) — each is its own seed's wording, and four of this LEGO's own rows say 'need to'. Only a different Korean prompt separates them (L20: 'a distinct KNOWN word per sense'): '열심히 일해야만 해요' for 'must'. That changes seed 109's Korean sentence, which is Kai's call. If yes: the seed, this LEGO and its 8 rows take 해야만, and the four 'need to' rows become 'must'.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 109,
+    "known": "우리는 많은 새 단어를 배우기 위해 열심히 일해야 해요",
+    "target": "We must work hard to learn a lot of new words"
+   },
+   "before": {
+    "known": "열심히 일해야 해요",
+    "target": "must work hard",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0012L01",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD, same kind. '…고 싶지 않아요' is 'I wouldn't like to' here (seed 12) and 'I don't want to' at S0019L02, so the same Korean row has two English answers across the two baskets. The scan's remedy is a softer Korean for seed 12 ('…고 싶지는 않아요'), a seed-sentence change: Kai's call. (The three rows the scan named inside this basket are already gone.)",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 12,
+    "known": "저는 내일 무슨 일이 일어날지 추측하고 싶지 않아요",
+    "target": "I wouldn't like to guess what's going to happen tomorrow"
+   },
+   "before": {
+    "known": "싶지 않아요",
+    "target": "I wouldn't like to",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0146L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "S",
+   "why": "'아무것도' is the prompt for 'anything' (S0035L02) and for 'nothing' (S0146L01). And S0146L02 pairs '작동하지 않는 것 같아요' — 'seems NOT to be working' — with 'seems to be working'. Both faults close together (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ): this LEGO grows to the seed's own piece, '아무것도 작동하지 않는 것 같아요 | nothing seems to be working' (7 syllables, kept at 7: the Korean 'not' cannot be separated from 'nothing'). Rows that said 'it seems to be working well' over a different Korean are reworded or dropped.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 146,
+    "known": "우리가 고치려고 한 이후로 아무것도 작동하지 않는 것 같아요",
+    "target": "Nothing seems to be working since we tried to fix it"
+   },
+   "before": {
+    "known": "작동하지 않는 것 같아요",
+    "target": "seems to be working",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "아무것도 작동하지 않는 것 같아요",
+    "target": "nothing seems to be working",
+    "type": "M",
+    "components": [
+     [
+      "아무것도",
+      "nothing"
+     ],
+     [
+      "작동하지 않는 것 같아요",
+      "seems to be working"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "rows_checked_by_hand": [
+    "U02"
+   ],
+   "basket": [
+    {
+     "id": "eng_for_kor:S0146L02C01",
+     "role": "component",
+     "before": [
+      "작동하지 않는",
+      "working"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_kor:S0146L02C02",
+     "role": "component",
+     "before": [
+      "것 같아요",
+      "seems to be"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_kor:S0146L02B01",
+     "role": "build",
+     "before": [
+      "작동하지 않는 것 같아요",
+      "seems to be working"
+     ],
+     "action": [
+      "아무것도 작동하지 않는 것 같아요",
+      "nothing seems to be working"
+     ]
+    },
+    {
+     "id": "eng_for_kor:S0146L02B02",
+     "role": "build",
+     "before": [
+      "아무것도 작동하지 않는 것 같아요",
+      "nothing seems to be working"
+     ],
+     "action": [
+      "지금 아무것도 작동하지 않는 것 같아요",
+      "nothing seems to be working now"
+     ]
+    },
+    {
+     "id": "eng_for_kor:S0146L02B03",
+     "role": "build",
+     "before": [
+      "잘 작동하는 것 같아요",
+      "it seems to be working well"
+     ],
+     "action": [
+      "오늘 아무것도 작동하지 않는 것 같아요",
+      "nothing seems to be working today"
+     ]
+    },
+    {
+     "id": "eng_for_kor:S0146L02U01",
+     "role": "use",
+     "before": [
+      "아무것도 작동하지 않는 것 같은데, 왜 그런지 모르겠어요",
+      "nothing seems to be working and I don't know why"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_kor:S0146L02U02",
+     "role": "use",
+     "before": [
+      "왜 작동하지 않는 것 같은지 모르겠어요",
+      "I don't know why nothing seems to be working"
+     ],
+     "action": [
+      "왜 아무것도 작동하지 않는 것 같은지 모르겠어요",
+      "I don't know why nothing seems to be working"
+     ]
+    },
+    {
+     "id": "eng_for_kor:S0146L02U03",
+     "role": "use",
+     "before": [
+      "작동하는 것 같아요, 하지만 확실하지 않아요",
+      "it seems to be working but I'm not sure"
+     ],
+     "action": [
+      "아무것도 작동하지 않는 것 같아요, 하지만 확실하지 않아요",
+      "nothing seems to be working but I'm not sure"
+     ]
+    },
+    {
+     "id": "eng_for_kor:S0146L02U04",
+     "role": "use",
+     "before": [
+      "아무것도 작동하지 않는 것 같아서 걱정이에요",
+      "I'm not happy that nothing seems to be working"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_kor:S0146L02U05",
+     "role": "use",
+     "before": [
+      "잘 작동하는 것 같아요, 지금은",
+      "it seems to be working very well now"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "eng_for_kor:S0146L03U01",
+      "known": "우리가 고치려고 한 이후로 아무것도 작동하지 않는 것 같아요",
+      "target": "nothing seems to be working since we tried to fix it",
+      "seed": 146
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0146L01",
+   "verdict": "delete",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "neighbour of S0146L02: the bare '아무것도 | nothing' is retired — its piece of the seed is now inside S0146L02, and its 8 rows do not match their own prompts ('아무것도 하고 싶지 않아요 | I don't want to do nothing today'). STRUCTURAL: a LEGO delete, needs Kai's go.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 146,
+    "known": "우리가 고치려고 한 이후로 아무것도 작동하지 않는 것 같아요",
+    "target": "Nothing seems to be working since we tried to fix it"
+   },
+   "before": {
+    "known": "아무것도",
+    "target": "nothing",
+    "type": "M",
+    "is_new": true
+   },
+   "deleted_rows": [
+    "eng_for_kor:S0146L01C01",
+    "eng_for_kor:S0146L01B01",
+    "eng_for_kor:S0146L01B02",
+    "eng_for_kor:S0146L01B03",
+    "eng_for_kor:S0146L01U01",
+    "eng_for_kor:S0146L01U02",
+    "eng_for_kor:S0146L01U03",
+    "eng_for_kor:S0146L01U04",
+    "eng_for_kor:S0146L01U05"
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0146L02",
+   "set": {
+    "known_text": "아무것도 작동하지 않는 것 같아요",
+    "target_text": "nothing seems to be working",
+    "components": [
+     {
+      "known": "아무것도",
+      "target": "nothing"
+     },
+     {
+      "known": "작동하지 않는 것 같아요",
+      "target": "seems to be working"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "작동하지 않는 것 같아요",
+    "target_text": "seems to be working"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02B01",
+   "set": {
+    "known_text": "아무것도 작동하지 않는 것 같아요",
+    "target_text": "nothing seems to be working"
+   },
+   "expect": {
+    "known_text": "작동하지 않는 것 같아요",
+    "target_text": "seems to be working"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02B02",
+   "set": {
+    "known_text": "지금 아무것도 작동하지 않는 것 같아요",
+    "target_text": "nothing seems to be working now"
+   },
+   "expect": {
+    "known_text": "아무것도 작동하지 않는 것 같아요",
+    "target_text": "nothing seems to be working"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02B03",
+   "set": {
+    "known_text": "오늘 아무것도 작동하지 않는 것 같아요",
+    "target_text": "nothing seems to be working today"
+   },
+   "expect": {
+    "known_text": "잘 작동하는 것 같아요",
+    "target_text": "it seems to be working well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02U02",
+   "set": {
+    "known_text": "왜 아무것도 작동하지 않는 것 같은지 모르겠어요"
+   },
+   "expect": {
+    "known_text": "왜 작동하지 않는 것 같은지 모르겠어요",
+    "target_text": "I don't know why nothing seems to be working"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02U03",
+   "set": {
+    "known_text": "아무것도 작동하지 않는 것 같아요, 하지만 확실하지 않아요",
+    "target_text": "nothing seems to be working but I'm not sure"
+   },
+   "expect": {
+    "known_text": "작동하는 것 같아요, 하지만 확실하지 않아요",
+    "target_text": "it seems to be working but I'm not sure"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0146L02U05",
+   "expect": {
+    "known_text": "잘 작동하는 것 같아요, 지금은",
+    "target_text": "it seems to be working very well now"
+   }
+  },
+  {
+   "op": "lego.delete",
+   "lego_id": "S0146L01",
+   "cascade_phrases": true,
+   "expect": {
+    "known_text": "아무것도",
+    "target_text": "nothing"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T12:07:25Z",
+  "baseline_failing_seeds": 238,
+  "per_seed": {
+   "146": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}
