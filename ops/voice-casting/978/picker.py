@@ -396,9 +396,12 @@ def popty(method, path, body=None):
     """One Popty call as Kai's agent (signed, kai key). Sequential: this tool is ONE writer, never a fan-out."""
     import subprocess
     cmd = ['node', CALL, '--key', 'kai', '--agent', 'kai-998', method, path] + ([json.dumps(body, ensure_ascii=False)] if body is not None else [])
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    try: return json.loads(r.stdout)
-    except Exception: return {'error': (r.stdout + r.stderr)[-500:], 'exit': r.returncode}
+    import tempfile
+    with tempfile.TemporaryFile('w+') as out:   # a file, not a pipe: call.cjs exits before a >64 KB pipe drains
+        r = subprocess.run(cmd, stdout=out, stderr=subprocess.PIPE, text=True)
+        out.seek(0); txt = out.read()
+    try: return json.loads(txt)
+    except Exception: return {'error': (txt[-300:] + r.stderr[-300:]), 'exit': r.returncode, 'len': len(txt)}
 
 
 def live_slots(code):
@@ -485,7 +488,8 @@ def castapply(a):
                     print(key, snap.get('voiceId'), '->', body['voiceId'], 'OK' if r.get('success') else r)
                 else:
                     print('DRY', key, snap.get('voiceId'), '->', body['voiceId'])
-    undo['held'] = undo.get('held', []) + held; save()
+    applied = {e['key'] for e in undo['entries'] if e.get('status') == 'applied'}
+    undo['held'] = [h for h in undo.get('held', []) if h['key'] not in applied and h['key'] not in {x['key'] for x in held}] + held; save()
     print(json.dumps({'wrote': wrote, 'held': len(held)}))
 
 

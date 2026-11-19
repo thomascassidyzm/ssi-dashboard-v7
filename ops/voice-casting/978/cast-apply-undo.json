@@ -1,0 +1,2544 @@
+{
+ "how_to_undo": "castapply --undo-from: phrase/known rows PUT back (DELETE where old is null); course roles PATCHed back with the saved object",
+ "entries": [
+  {
+   "key": "course:eng_for_kan:presentation",
+   "kind": "course-role",
+   "course": "eng_for_kan",
+   "role": "presentation",
+   "old": {
+    "provider": "azure",
+    "name": "Sapna",
+    "settings": {
+     "speed": 1
+    },
+    "voiceId": "kn-IN-SapnaNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+    "name": "Chetan",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:kan:phrase:m",
+   "kind": "language-slot",
+   "language": "kan",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_6baae46d-1226-45b5-a976-c7f9b797aae2",
+   "new": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "kan",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+    "swapped": false,
+    "displaced": "cartesia_6baae46d-1226-45b5-a976-c7f9b797aae2",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:kan:phrase:f",
+   "kind": "language-slot",
+   "language": "kan",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_7c6219d2-e8d2-462c-89d8-7ecba7c75d65",
+   "new": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "kan",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+    "swapped": false,
+    "displaced": "cartesia_7c6219d2-e8d2-462c-89d8-7ecba7c75d65",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:kan:known:m",
+   "kind": "language-slot",
+   "language": "kan",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "kan",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:kan:known:f",
+   "kind": "language-slot",
+   "language": "kan",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "kan",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:ben:phrase:m",
+   "kind": "language-slot",
+   "language": "ben",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_2ba861ea-7cdc-43d1-8608-4045b5a41de5",
+   "new": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ben",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+    "swapped": false,
+    "displaced": "cartesia_2ba861ea-7cdc-43d1-8608-4045b5a41de5",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:ben:phrase:f",
+   "kind": "language-slot",
+   "language": "ben",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_59ba7dee-8f9a-432f-a6c0-ffb33666b654",
+   "new": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ben",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+    "swapped": false,
+    "displaced": "cartesia_59ba7dee-8f9a-432f-a6c0-ffb33666b654",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:ben:known:m",
+   "kind": "language-slot",
+   "language": "ben",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ben",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:ben:known:f",
+   "kind": "language-slot",
+   "language": "ben",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ben",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:eng_for_ben:presentation",
+   "kind": "course-role",
+   "course": "eng_for_ben",
+   "role": "presentation",
+   "old": {
+    "name": "Eve",
+    "settings": {
+     "speed": 0.9
+    },
+    "provider": "xai",
+    "voiceId": "eve"
+   },
+   "new": {
+    "voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+    "name": "Poulomi",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:bul:phrase:m",
+   "kind": "language-slot",
+   "language": "bul",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_d132064c-b931-4a80-bf0d-02a331ec4572",
+   "new": "cartesia_cb5e08c5-299e-4908-8409-b6549292e29b",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "bul",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_cb5e08c5-299e-4908-8409-b6549292e29b",
+    "swapped": false,
+    "displaced": "cartesia_d132064c-b931-4a80-bf0d-02a331ec4572",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:bul:phrase:f",
+   "kind": "language-slot",
+   "language": "bul",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_fcbecbcc-0cef-4615-8b5a-712fe1b39dd0",
+   "new": "cartesia_3c90f2ab-ff91-434e-9e59-5ca2dcf6abc9",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "bul",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_3c90f2ab-ff91-434e-9e59-5ca2dcf6abc9",
+    "swapped": false,
+    "displaced": "cartesia_fcbecbcc-0cef-4615-8b5a-712fe1b39dd0",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:heb:phrase:m",
+   "kind": "language-slot",
+   "language": "heb",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_3e32f3c5-9ac0-4192-9994-87fdb277120f",
+   "new": "cartesia_95d91579-a3f1-4bb3-b5e1-9a97ef401628",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "heb",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_95d91579-a3f1-4bb3-b5e1-9a97ef401628",
+    "swapped": false,
+    "displaced": "cartesia_3e32f3c5-9ac0-4192-9994-87fdb277120f",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:hun:phrase:f",
+   "kind": "language-slot",
+   "language": "hun",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_e97c3b37-1aa5-46af-afb7-9545086aaa92",
+   "new": "cartesia_42e4da1d-34d8-4fe0-8fc6-086afd6df348",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "hun",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_42e4da1d-34d8-4fe0-8fc6-086afd6df348",
+    "swapped": false,
+    "displaced": "cartesia_e97c3b37-1aa5-46af-afb7-9545086aaa92",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:ind:phrase:m",
+   "kind": "language-slot",
+   "language": "ind",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_a053f6bc-7df4-40de-96d4-de026bc47ce8",
+   "new": "cartesia_04b567df-2923-4b0c-896b-4b7df0a07e1a",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ind",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_04b567df-2923-4b0c-896b-4b7df0a07e1a",
+    "swapped": false,
+    "displaced": "cartesia_a053f6bc-7df4-40de-96d4-de026bc47ce8",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:ind:phrase:f",
+   "kind": "language-slot",
+   "language": "ind",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_b441c4fd-4910-4c55-ae56-f0291057e2cc",
+   "new": "cartesia_6a3fe952-63f8-4c99-865a-44887175ea26",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ind",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_6a3fe952-63f8-4c99-865a-44887175ea26",
+    "swapped": false,
+    "displaced": "cartesia_b441c4fd-4910-4c55-ae56-f0291057e2cc",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:mar:phrase:m",
+   "kind": "language-slot",
+   "language": "mar",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_f227bc18-3704-47fe-b759-8c78a450fdfa",
+   "new": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mar",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+    "swapped": false,
+    "displaced": "cartesia_f227bc18-3704-47fe-b759-8c78a450fdfa",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:mar:phrase:f",
+   "kind": "language-slot",
+   "language": "mar",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_5c32dce6-936a-4892-b131-bafe474afe5f",
+   "new": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mar",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+    "swapped": false,
+    "displaced": "cartesia_5c32dce6-936a-4892-b131-bafe474afe5f",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:mar:known:m",
+   "kind": "language-slot",
+   "language": "mar",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": "azure_mr-IN-ManoharNeural",
+   "new": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mar",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+    "swapped": false,
+    "displaced": "azure_mr-IN-ManoharNeural",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:mar:known:f",
+   "kind": "language-slot",
+   "language": "mar",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mar",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:eng_for_mar:presentation",
+   "kind": "course-role",
+   "course": "eng_for_mar",
+   "role": "presentation",
+   "old": {
+    "name": "Manohar",
+    "settings": {
+     "speed": 1
+    },
+    "provider": "azure",
+    "voiceId": "mr-IN-ManoharNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+    "name": "Chinmay",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:nor:phrase:m",
+   "kind": "language-slot",
+   "language": "nor",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_d6dca1b6-cdd8-4e9c-823c-e03979261740",
+   "new": "cartesia_311174e8-4bf6-4467-9a84-352c5dae28a5",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "nor",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_311174e8-4bf6-4467-9a84-352c5dae28a5",
+    "swapped": false,
+    "displaced": "cartesia_d6dca1b6-cdd8-4e9c-823c-e03979261740",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:pol:phrase:f",
+   "kind": "language-slot",
+   "language": "pol",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_dcf62f33-7cff-4f20-85b2-2efaa68cbc32",
+   "new": "cartesia_f8aacd6e-1ac2-42d3-bcbf-125336ecd0f2",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "pol",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_f8aacd6e-1ac2-42d3-bcbf-125336ecd0f2",
+    "swapped": false,
+    "displaced": "cartesia_dcf62f33-7cff-4f20-85b2-2efaa68cbc32",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:ron:phrase:m",
+   "kind": "language-slot",
+   "language": "ron",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_3f64ef99-d87b-4b51-b217-df7351f7886a",
+   "new": "cartesia_a98af725-3118-44e3-a7f6-6bd4fca20b32",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ron",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_a98af725-3118-44e3-a7f6-6bd4fca20b32",
+    "swapped": false,
+    "displaced": "cartesia_3f64ef99-d87b-4b51-b217-df7351f7886a",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:ron:phrase:f",
+   "kind": "language-slot",
+   "language": "ron",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_34acfaee-c556-41ee-a5f6-c687fb20357c",
+   "new": "cartesia_26aa0590-65e4-436e-8dd9-b02e6caa5a37",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "ron",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_26aa0590-65e4-436e-8dd9-b02e6caa5a37",
+    "swapped": false,
+    "displaced": "cartesia_34acfaee-c556-41ee-a5f6-c687fb20357c",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:swe:phrase:m",
+   "kind": "language-slot",
+   "language": "swe",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_ebe0038b-1790-40bd-98cd-924313e58d3b",
+   "new": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "swe",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+    "swapped": true,
+    "displaced": "cartesia_ebe0038b-1790-40bd-98cd-924313e58d3b",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:tel:phrase:m",
+   "kind": "language-slot",
+   "language": "tel",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b",
+   "new": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tel",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+    "swapped": false,
+    "displaced": "cartesia_82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:tel:phrase:f",
+   "kind": "language-slot",
+   "language": "tel",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_4418bb06-8329-49a1-bb11-53bb64ca0547",
+   "new": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tel",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+    "swapped": false,
+    "displaced": "cartesia_4418bb06-8329-49a1-bb11-53bb64ca0547",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:tel:known:m",
+   "kind": "language-slot",
+   "language": "tel",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tel",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:tel:known:f",
+   "kind": "language-slot",
+   "language": "tel",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": "azure_te-IN-ShrutiNeural",
+   "new": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tel",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+    "swapped": false,
+    "displaced": "azure_te-IN-ShrutiNeural",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:eng_for_tel:presentation",
+   "kind": "course-role",
+   "course": "eng_for_tel",
+   "role": "presentation",
+   "old": {
+    "name": "Shruti",
+    "settings": {
+     "speed": 1
+    },
+    "provider": "azure",
+    "voiceId": "te-IN-ShrutiNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+    "name": "Vikram",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:tha:phrase:m",
+   "kind": "language-slot",
+   "language": "tha",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_5de076e9-7b28-4442-b279-e7d80d573505",
+   "new": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tha",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+    "swapped": true,
+    "displaced": "cartesia_5de076e9-7b28-4442-b279-e7d80d573505",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:tha:phrase:f",
+   "kind": "language-slot",
+   "language": "tha",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_4ff0f045-c140-4aa3-9210-529083f86fca",
+   "new": "cartesia_273193f7-dbff-438e-b8af-fcc499200b1c",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tha",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_273193f7-dbff-438e-b8af-fcc499200b1c",
+    "swapped": false,
+    "displaced": "cartesia_4ff0f045-c140-4aa3-9210-529083f86fca",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:tur:phrase:m",
+   "kind": "language-slot",
+   "language": "tur",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": "cartesia_39f753ef-b0eb-41cd-aa53-2f3c284f948f",
+   "new": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tur",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+    "swapped": true,
+    "displaced": "cartesia_39f753ef-b0eb-41cd-aa53-2f3c284f948f",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:guj:known:m",
+   "kind": "language-slot",
+   "language": "guj",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": "azure_gu-IN-NiranjanNeural",
+   "new": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "guj",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+    "swapped": false,
+    "displaced": "azure_gu-IN-NiranjanNeural",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:guj:known:f",
+   "kind": "language-slot",
+   "language": "guj",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": "azure_gu-IN-DhwaniNeural",
+   "new": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "guj",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+    "swapped": false,
+    "displaced": "azure_gu-IN-DhwaniNeural",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:eng_for_guj:presentation",
+   "kind": "course-role",
+   "course": "eng_for_guj",
+   "role": "presentation",
+   "old": {
+    "name": "Dhwani",
+    "settings": {
+     "speed": 0.9
+    },
+    "provider": "azure",
+    "voiceId": "gu-IN-DhwaniNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+    "name": "Isha",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "course:eng_for_guj:known",
+   "kind": "course-role",
+   "course": "eng_for_guj",
+   "role": "known",
+   "old": {
+    "name": "Dhwani",
+    "settings": {
+     "speed": 0.95
+    },
+    "byGender": {
+     "f": {
+      "name": "Dhwani",
+      "gender": "f",
+      "voiceId": "gu-IN-DhwaniNeural",
+      "language": "gu-IN",
+      "provider": "azure"
+     },
+     "m": {
+      "name": "Niranjan",
+      "gender": "m",
+      "voiceId": "gu-IN-NiranjanNeural",
+      "language": "gu-IN",
+      "provider": "azure"
+     }
+    },
+    "gender": "f",
+    "provider": "azure",
+    "voiceId": "gu-IN-DhwaniNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+    "name": "Isha",
+    "provider": "cartesia",
+    "gender": "f",
+    "byGender": {
+     "m": {
+      "voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+      "name": "Amit",
+      "provider": "cartesia",
+      "gender": "m"
+     },
+     "f": {
+      "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+      "name": "Isha",
+      "provider": "cartesia",
+      "gender": "f"
+     }
+    },
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:pan:phrase:f",
+   "kind": "language-slot",
+   "language": "pan",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_991c62ce-631f-48b0-8060-2a0ebecbd15b",
+   "new": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "pan",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+    "swapped": false,
+    "displaced": "cartesia_991c62ce-631f-48b0-8060-2a0ebecbd15b",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:pan:known:m",
+   "kind": "language-slot",
+   "language": "pan",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": "azure_pa-IN-OjasNeural",
+   "new": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "pan",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+    "swapped": false,
+    "displaced": "azure_pa-IN-OjasNeural",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:pan:known:f",
+   "kind": "language-slot",
+   "language": "pan",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": "azure_pa-IN-VaaniNeural",
+   "new": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "pan",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+    "swapped": false,
+    "displaced": "azure_pa-IN-VaaniNeural",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:eng_for_pan:presentation",
+   "kind": "course-role",
+   "course": "eng_for_pan",
+   "role": "presentation",
+   "old": {
+    "name": "Vaani",
+    "settings": {
+     "speed": 0.9
+    },
+    "provider": "azure",
+    "voiceId": "pa-IN-VaaniNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+    "name": "Navjot",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:tam:phrase:f",
+   "kind": "language-slot",
+   "language": "tam",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": "cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2",
+   "new": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tam",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+    "swapped": false,
+    "displaced": "cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2",
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 3
+   }
+  },
+  {
+   "key": "lang:tam:known:m",
+   "kind": "language-slot",
+   "language": "tam",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tam",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 3
+   }
+  },
+  {
+   "key": "lang:tam:known:f",
+   "kind": "language-slot",
+   "language": "tam",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "tam",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 3
+   }
+  },
+  {
+   "key": "course:eng_for_tam:presentation",
+   "kind": "course-role",
+   "course": "eng_for_tam",
+   "role": "presentation",
+   "old": {
+    "name": "Kumar",
+    "settings": {
+     "speed": 1
+    },
+    "provider": "azure",
+    "voiceId": "ta-LK-KumarNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+    "name": "Nila",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "course:kor_for_tam:presentation",
+   "kind": "course-role",
+   "course": "kor_for_tam",
+   "role": "presentation",
+   "old": {
+    "name": "Saranya",
+    "settings": {
+     "speed": 1
+    },
+    "provider": "azure",
+    "voiceId": "ta-LK-SaranyaNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+    "name": "Nila",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "course:zho_for_tam:presentation",
+   "kind": "course-role",
+   "course": "zho_for_tam",
+   "role": "presentation",
+   "old": {
+    "name": "Saranya",
+    "settings": {
+     "speed": 1
+    },
+    "provider": "azure",
+    "voiceId": "ta-LK-SaranyaNeural"
+   },
+   "new": {
+    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+    "name": "Nila",
+    "provider": "cartesia",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:glg:phrase:m",
+   "kind": "language-slot",
+   "language": "glg",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_gl-ES-RoiNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "glg",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_gl-ES-RoiNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:glg:phrase:f",
+   "kind": "language-slot",
+   "language": "glg",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_gl-ES-SabelaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "glg",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_gl-ES-SabelaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:eus:phrase:m",
+   "kind": "language-slot",
+   "language": "eus",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_eu-ES-AnderNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "eus",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_eu-ES-AnderNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:eus:phrase:f",
+   "kind": "language-slot",
+   "language": "eus",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_eu-ES-AinhoaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "eus",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_eu-ES-AinhoaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:gle:phrase:m",
+   "kind": "language-slot",
+   "language": "gle",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-ColmNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-ColmNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 7
+   }
+  },
+  {
+   "key": "lang:gle:phrase:f",
+   "kind": "language-slot",
+   "language": "gle",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-OrlaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 7
+   }
+  },
+  {
+   "key": "lang:gle:known:m",
+   "kind": "language-slot",
+   "language": "gle",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-OrlaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:gle:known:f",
+   "kind": "language-slot",
+   "language": "gle",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-OrlaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "course:zho_for_gle:presentation",
+   "kind": "course-role",
+   "course": "zho_for_gle",
+   "role": "presentation",
+   "old": {
+    "name": "Orla",
+    "settings": {
+     "speed": 0.95
+    },
+    "provider": "azure",
+    "voiceId": "ga-IE-OrlaNeural"
+   },
+   "new": {
+    "voiceId": "ga-IE-ColmNeural",
+    "name": "Colm",
+    "provider": "azure",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:est:phrase:m",
+   "kind": "language-slot",
+   "language": "est",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_et-EE-KertNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "est",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_et-EE-KertNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:est:phrase:f",
+   "kind": "language-slot",
+   "language": "est",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_et-EE-AnuNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "est",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_et-EE-AnuNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:fas:phrase:m",
+   "kind": "language-slot",
+   "language": "fas",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_fa-IR-FaridNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "fas",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_fa-IR-FaridNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:fas:phrase:f",
+   "kind": "language-slot",
+   "language": "fas",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_fa-IR-DilaraNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "fas",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_fa-IR-DilaraNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:gle_connemara:phrase:m",
+   "kind": "language-slot",
+   "language": "gle_connemara",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-ColmNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle_connemara",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-ColmNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 0
+   }
+  },
+  {
+   "key": "lang:gle_connemara:phrase:f",
+   "kind": "language-slot",
+   "language": "gle_connemara",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-OrlaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle_connemara",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 0
+   }
+  },
+  {
+   "key": "lang:gle_munster:phrase:m",
+   "kind": "language-slot",
+   "language": "gle_munster",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-ColmNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle_munster",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-ColmNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 0
+   }
+  },
+  {
+   "key": "lang:gle_munster:phrase:f",
+   "kind": "language-slot",
+   "language": "gle_munster",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-OrlaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle_munster",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 0
+   }
+  },
+  {
+   "key": "lang:gle_ulster:phrase:m",
+   "kind": "language-slot",
+   "language": "gle_ulster",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-ColmNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle_ulster",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-ColmNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 0
+   }
+  },
+  {
+   "key": "lang:gle_ulster:phrase:f",
+   "kind": "language-slot",
+   "language": "gle_ulster",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ga-IE-OrlaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "gle_ulster",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 0
+   }
+  },
+  {
+   "key": "lang:hye:phrase:m",
+   "kind": "language-slot",
+   "language": "hye",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_hy-AM-HaykNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "hye",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_hy-AM-HaykNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:hye:phrase:f",
+   "kind": "language-slot",
+   "language": "hye",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_hy-AM-AnahitNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "hye",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_hy-AM-AnahitNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:isl:phrase:m",
+   "kind": "language-slot",
+   "language": "isl",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_is-IS-GunnarNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "isl",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_is-IS-GunnarNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:isl:phrase:f",
+   "kind": "language-slot",
+   "language": "isl",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_is-IS-GudrunNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "isl",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_is-IS-GudrunNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:lav:phrase:m",
+   "kind": "language-slot",
+   "language": "lav",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_lv-LV-NilsNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "lav",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_lv-LV-NilsNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:lav:phrase:f",
+   "kind": "language-slot",
+   "language": "lav",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_lv-LV-EveritaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "lav",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_lv-LV-EveritaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:lit:phrase:m",
+   "kind": "language-slot",
+   "language": "lit",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_lt-LT-LeonasNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "lit",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_lt-LT-LeonasNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:lit:phrase:f",
+   "kind": "language-slot",
+   "language": "lit",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_lt-LT-OnaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "lit",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_lt-LT-OnaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 2
+   }
+  },
+  {
+   "key": "lang:lit:known:m",
+   "kind": "language-slot",
+   "language": "lit",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_lt-LT-LeonasNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "lit",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_lt-LT-LeonasNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:lit:known:f",
+   "kind": "language-slot",
+   "language": "lit",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_lt-LT-LeonasNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "lit",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_lt-LT-LeonasNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:por_for_lit:presentation",
+   "kind": "course-role",
+   "course": "por_for_lit",
+   "role": "presentation",
+   "old": {
+    "name": "",
+    "settings": {
+     "speed": 1,
+     "stability": 0.5,
+     "similarityBoost": 0.75
+    },
+    "provider": "elevenlabs",
+    "voiceId": ""
+   },
+   "new": {
+    "voiceId": "lt-LT-OnaNeural",
+    "name": "Ona",
+    "provider": "azure",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "reverted",
+   "response": {
+    "success": true,
+    "error": null
+   },
+   "note": "por_for_lit had NO stored voice_config; the PATCH route mutated the shared in-memory default (every unconfigured course read presentation=Ona). Reverted 2026-11-19 by PATCHing the default presentation back on por_for_lit, then on por_for_aze (which restored the in-process default). Both rows now hold the plain default config instead of NULL. Fixed in services/voice-config-service.cjs updateVoiceRole."
+  },
+  {
+   "key": "lang:mkd:phrase:m",
+   "kind": "language-slot",
+   "language": "mkd",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_mk-MK-AleksandarNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mkd",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_mk-MK-AleksandarNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:mkd:phrase:f",
+   "kind": "language-slot",
+   "language": "mkd",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_mk-MK-MarijaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mkd",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_mk-MK-MarijaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:mlt:phrase:m",
+   "kind": "language-slot",
+   "language": "mlt",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_mt-MT-JosephNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mlt",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_mt-MT-JosephNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:mlt:phrase:f",
+   "kind": "language-slot",
+   "language": "mlt",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_mt-MT-GraceNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "mlt",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_mt-MT-GraceNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:nep:phrase:m",
+   "kind": "language-slot",
+   "language": "nep",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ne-NP-SagarNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "nep",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ne-NP-SagarNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:nep:phrase:f",
+   "kind": "language-slot",
+   "language": "nep",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ne-NP-HemkalaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "nep",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ne-NP-HemkalaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:srp:phrase:m",
+   "kind": "language-slot",
+   "language": "srp",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_sr-Latn-RS-NicholasNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "srp",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_sr-Latn-RS-NicholasNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:srp:phrase:f",
+   "kind": "language-slot",
+   "language": "srp",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_sr-Latn-RS-SophieNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "srp",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_sr-Latn-RS-SophieNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:swa:phrase:m",
+   "kind": "language-slot",
+   "language": "swa",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_sw-KE-RafikiNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "swa",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_sw-KE-RafikiNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:swa:phrase:f",
+   "kind": "language-slot",
+   "language": "swa",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_sw-KE-ZuriNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "swa",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_sw-KE-ZuriNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:yue:phrase:m",
+   "kind": "language-slot",
+   "language": "yue",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_zh-HK-WanLungNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "yue",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_zh-HK-WanLungNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:yue:phrase:f",
+   "kind": "language-slot",
+   "language": "yue",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_zh-HK-HiuMaanNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "yue",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_zh-HK-HiuMaanNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:aze:phrase:m",
+   "kind": "language-slot",
+   "language": "aze",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_az-AZ-BabekNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "aze",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_az-AZ-BabekNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:aze:phrase:f",
+   "kind": "language-slot",
+   "language": "aze",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_az-AZ-BanuNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "aze",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_az-AZ-BanuNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:aze:known:m",
+   "kind": "language-slot",
+   "language": "aze",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_az-AZ-BanuNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "aze",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_az-AZ-BanuNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:aze:known:f",
+   "kind": "language-slot",
+   "language": "aze",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_az-AZ-BanuNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "aze",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_az-AZ-BanuNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:sin:phrase:m",
+   "kind": "language-slot",
+   "language": "sin",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_si-LK-SameeraNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "sin",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_si-LK-SameeraNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:sin:phrase:f",
+   "kind": "language-slot",
+   "language": "sin",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_si-LK-ThiliniNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "sin",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_si-LK-ThiliniNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:sin:known:m",
+   "kind": "language-slot",
+   "language": "sin",
+   "slot": "known",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_si-LK-SameeraNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "sin",
+    "slot": "known",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_si-LK-SameeraNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:sin:known:f",
+   "kind": "language-slot",
+   "language": "sin",
+   "slot": "known",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_si-LK-SameeraNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "sin",
+    "slot": "known",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_si-LK-SameeraNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "course:eng_for_sin:presentation",
+   "kind": "course-role",
+   "course": "eng_for_sin",
+   "role": "presentation",
+   "old": {
+    "name": "Sameera",
+    "settings": {
+     "speed": 1
+    },
+    "provider": "azure",
+    "voiceId": "si-LK-SameeraNeural"
+   },
+   "new": {
+    "voiceId": "si-LK-ThiliniNeural",
+    "name": "Thilini",
+    "provider": "azure",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "status": "applied",
+   "response": {
+    "success": true,
+    "error": null
+   }
+  },
+  {
+   "key": "lang:urd:phrase:m",
+   "kind": "language-slot",
+   "language": "urd",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ur-PK-AsadNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "urd",
+    "slot": "phrase",
+    "gender": "m",
+    "rank": 0,
+    "voiceId": "azure_ur-PK-AsadNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  },
+  {
+   "key": "lang:urd:phrase:f",
+   "kind": "language-slot",
+   "language": "urd",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "old": null,
+   "new": "azure_ur-PK-UzmaNeural",
+   "status": "applied",
+   "response": {
+    "ok": true,
+    "language": "urd",
+    "slot": "phrase",
+    "gender": "f",
+    "rank": 0,
+    "voiceId": "azure_ur-PK-UzmaNeural",
+    "swapped": false,
+    "displaced": null,
+    "skipped": [],
+    "skippedTotal": 0,
+    "reach": 1
+   }
+  }
+ ],
+ "held": [
+  {
+   "key": "course:por_for_aze:presentation",
+   "planned_old": {
+    "voiceId": "",
+    "provider": "elevenlabs",
+    "name": "",
+    "language": "",
+    "settings": {
+     "speed": 1,
+     "stability": 0.5,
+     "similarityBoost": 0.75
+    }
+   },
+   "live": {
+    "voiceId": "lt-LT-OnaNeural",
+    "provider": "azure",
+    "name": "Ona",
+    "language": "",
+    "settings": {
+     "speed": 1,
+     "stability": 0.5,
+     "similarityBoost": 0.75
+    }
+   },
+   "new": {
+    "voiceId": "az-AZ-BabekNeural",
+    "name": "Babek",
+    "provider": "azure",
+    "settings": {
+     "speed": 1.0
+    }
+   },
+   "why": "unconfigured course: the PATCH route mutated the shared default (see por_for_lit entry); not written"
+  },
+  {
+   "key": "course:por_for_lit:presentation",
+   "why": "reverted, same cause",
+   "new": "lt-LT-OnaNeural"
+  }
+ ]
+}
