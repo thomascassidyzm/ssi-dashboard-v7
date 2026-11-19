@@ -65,6 +65,8 @@ ADD('S0124L01', ('b', 'I thought about it today', 'فكرت في ده النها
 ADD('S0133L04', ('b', 'with him here today', 'معاه هنا النهارده'))
 ADD('S0150L01', ('b', 'may I speak today', 'ممكن أتكلم النهارده'))
 ADD('S0150L01', ('u', 'may I try today', 'ممكن أحاول النهارده'))
+next(x for x in OUT if x['id'] == 'S0150L01')['basket']['U02'] = ['may I speak here', 'ممكن أتكلم هنا']
+next(x for x in OUT if x['id'] == 'S0150L01')['why'] += ' U02 "may I | ممكن" was the bare LEGO a second time (the builder counts it as a duplicate of B01) and becomes a phrase.'
 
 json.dump({'course': 'ara_eg_for_eng', 'legos': OUT}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ara_eg_for_eng.json'), 'w'), ensure_ascii=False, indent=1)
 print(len(OUT), 'decisions')

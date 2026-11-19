@@ -711,7 +711,7 @@
   {
    "id": "S0150L01",
    "verdict": "rebuild-rows",
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says \"can you | تقدر\", a different word, under the LEGO \"may | ممكن\". It is replaced by a ممكن phrase. (U03 and U05 hold ممكن with the English \"can\", the seed's own word for it, and stay.) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says \"can you | تقدر\", a different word, under the LEGO \"may | ممكن\". It is replaced by a ممكن phrase. (U03 and U05 hold ممكن with the English \"can\", the seed's own word for it, and stay.) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught. U02 \"may I | ممكن\" was the bare LEGO a second time (the builder counts it as a duplicate of B01) and becomes a phrase.",
    "closes": [
     "11"
    ],
@@ -789,7 +789,10 @@
       "may I",
       "ممكن"
      ],
-     "action": "keep"
+     "action": [
+      "may I speak here",
+      "ممكن أتكلم هنا"
+     ]
     },
     {
      "id": "ara_eg_for_eng:S0150L01U03",
@@ -1056,6 +1059,19 @@
    }
   },
   {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0150L01U02",
+   "set": {
+    "known_text": "may I speak here",
+    "target_text": "ممكن أتكلم هنا",
+    "target_text_roman": "mumkin atkallim hina"
+   },
+   "expect": {
+    "known_text": "may I",
+    "target_text": "ممكن"
+   }
+  },
+  {
    "op": "phrase.insert",
    "row": {
     "id": "ara_eg_for_eng:S0150L01B04",
@@ -1091,7 +1107,7 @@
   }
  ],
  "validator": {
-  "at": "2026-11-19T11:31:39Z",
+  "at": "2026-11-19T11:32:33Z",
   "baseline_failing_seeds": 577,
   "per_seed": {
    "65": {
@@ -1168,7 +1184,6 @@
    },
    "150": {
     "seed_issues_planned": [
-     "L1: 1 duplicate phrase(s) within this LEGO: \"ممكن\"",
      "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
      "L2: vocab violations in 1 phrase(s)",
      "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
@@ -1180,17 +1195,11 @@
      "L2: vocab violations in 1 phrase(s)",
      "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
     ],
-    "new_issues_anywhere": {
-     "150": [
-      "L1: 1 duplicate phrase(s) within this LEGO: \"ممكن\""
-     ]
-    },
+    "new_issues_anywhere": {},
     "error": null
    }
   },
-  "seeds_with_new_issues": [
-   150
-  ]
+  "seeds_with_new_issues": []
  },
  "validator_vs_unchanged": {
   "65": {
@@ -1243,9 +1252,7 @@
    "error": null
   },
   "150": {
-   "added": [
-    "L1: 1 duplicate phrase(s) within this LEGO: \"ممكن\""
-   ],
+   "added": [],
    "removed": [
     "L1: 1 phrase(s) fail containment",
     "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
@@ -1253,5 +1260,22 @@
    "other_seeds": {},
    "error": null
   }
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:33:36Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 17,
+    "status": 404,
+    "secs": 46.2,
+    "answer": {
+     "error": "op 0: phrase.update: no row {\"course_code\":\"ara_eg_for_eng\",\"id\":\"ara_eg_for_eng:S0065L03U05\"}",
+     "code": "NOT_FOUND",
+     "index": 0,
+     "applied": false
+    }
+   }
+  ]
  }
 }

@@ -1463,5 +1463,22 @@
    "other_seeds": {},
    "error": null
   }
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:35:04Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 21,
+    "status": 404,
+    "secs": 86.4,
+    "answer": {
+     "error": "op 0: phrase.update: no row {\"course_code\":\"ara_lb_for_eng\",\"id\":\"ara_lb_for_eng:S0077L02B03\"}",
+     "code": "NOT_FOUND",
+     "index": 0,
+     "applied": false
+    }
+   }
+  ]
  }
 }

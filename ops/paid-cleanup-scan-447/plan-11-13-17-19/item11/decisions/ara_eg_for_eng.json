@@ -119,7 +119,7 @@
    "ack": [
     "known"
    ],
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says \"can you | تقدر\", a different word, under the LEGO \"may | ممكن\". It is replaced by a ممكن phrase. (U03 and U05 hold ممكن with the English \"can\", the seed's own word for it, and stay.) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says \"can you | تقدر\", a different word, under the LEGO \"may | ممكن\". It is replaced by a ممكن phrase. (U03 and U05 hold ممكن with the English \"can\", the seed's own word for it, and stay.) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught. U02 \"may I | ممكن\" was the bare LEGO a second time (the builder counts it as a duplicate of B01) and becomes a phrase.",
    "id": "S0150L01",
    "verdict": "rebuild-rows",
    "basket": {
@@ -128,7 +128,11 @@
      "ممكن أتكلم"
     ],
     "U03": "keep",
-    "U05": "keep"
+    "U05": "keep",
+    "U02": [
+     "may I speak here",
+     "ممكن أتكلم هنا"
+    ]
    },
    "add": [
     [
@@ -159,6 +163,7 @@
   "تشتغل معاه النهارده": "tishtaghal ma'aah al-nahaarda",
   "معاه هنا النهارده": "ma'aah hina al-nahaarda",
   "ممكن أتكلم": "mumkin atkallim",
+  "ممكن أتكلم هنا": "mumkin atkallim hina",
   "ممكن أتكلم النهارده": "mumkin atkallim al-nahaarda",
   "ممكن أحاول النهارده": "mumkin ahaawil al-nahaarda"
  }
