@@ -8,10 +8,14 @@
 //                                            undo file name and undo ops -> batches/<batch>.apply.json, events.json
 //   (set ITEM9_OWNER=<your job label digits> so each worker keeps its own events-<owner>.json)
 //   node post.cjs after    <course>          full /v2/validate after the edits -> validate-after.json + diff vs before
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+// The item-9 NIGHT runner (../night-run.sh) does not use this file; it applies through tools/changeset and night-audio.cjs.
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const L = require('./lib.cjs');
 const [mode, course, batch] = process.argv.slice(2);
+if (['baseline', 'after', 'validate', 'dry', 'apply'].includes(mode)) LIVEGATE.requireLive(`item9 post.cjs ${mode} ${course}`);
 const cdir = path.join(L.ITEM_DIR, course);
 const bdir = path.join(cdir, 'batches');
 const H = { 'Content-Type': 'application/json', 'x-agent-id': 'cs-778-item9', 'x-agent-role': 'paid-cleanup-item9' };
@@ -84,6 +88,16 @@ const issuesBySeed = (v) => new Map((v.failures || []).map(f => [f.seed, f.issue
       catch (e) { txt = String(e.stdout || e.message); }
       let j; try { j = JSON.parse(txt); } catch { j = { raw: txt.slice(0, 2000) }; }
       r = { status: j.applied ? 200 : 500, body: j };
+    } else if (mode === 'dry' && (ops.ops || []).length > LIVEGATE.MAX_CHUNK) {
+      // cs #968·AI: a dry run goes in chunks of <= 10 ops; the first failing chunk stops it (its op index is re-based).
+      const results = [];
+      for (let i = 0; i < ops.ops.length; i += LIVEGATE.MAX_CHUNK) {
+        r = await post(`http://localhost:3470/api/production/${course}/edit-batch`, { ...ops, ops: ops.ops.slice(i, i + LIVEGATE.MAX_CHUNK), apply: false });
+        if (r.body.index != null) r.body.index += i;
+        results.push(...(r.body.results || []));
+        if (r.status !== 200 || r.body.ok !== true) break;
+      }
+      r.body = { ...r.body, results };
     } else r = await post(`http://localhost:3470/api/production/${course}/edit-batch`, { ...ops, apply: mode === 'apply' });
     const ms = Date.now() - t0;
     const b = r.body;

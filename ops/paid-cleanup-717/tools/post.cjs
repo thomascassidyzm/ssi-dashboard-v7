@@ -10,6 +10,9 @@
 // Writes <item>/<course>/post-<mode>.json (append-only log of chunks) and events.json (applied events).
 // Undo: POST :3470/api/production/<course>/edit-batch {"undo_file":"<name>","apply":true}
 'use strict';
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+// Dry runs (and the dry run before each apply) go in chunks of 10 or fewer: --chunk above 10 is clamped.
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const L = require('./lib.cjs');
@@ -18,8 +21,9 @@ const L = require('./lib.cjs');
 
 const [item, course, mode] = process.argv.slice(2);
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? Number(process.argv[i + 1]) : d; };
-const CHUNK = arg('--chunk', 100), LIMIT = arg('--limit', Infinity);
-if (!item || !course || !['dry', 'apply'].includes(mode)) { console.error('usage: post.cjs <item> <course> dry|apply [--chunk N] [--limit N]'); process.exit(2); }
+const CHUNK = LIVEGATE.clampChunk(arg('--chunk', LIVEGATE.MAX_CHUNK)), LIMIT = arg('--limit', Infinity);
+if (!item || !course || !['dry', 'apply'].includes(mode)) { console.error("usage: post.cjs <item> <course> dry|apply [--chunk N<=10] [--limit N] --live-ok '<why>'"); process.exit(2); }
+LIVEGATE.requireLive(`717 post.cjs ${item} ${course} ${mode}`);
 const dir = path.join(L.ITEM_DIR, item, course);
 const plan = L.rd(path.join(dir, 'plan.json'));
 const H = { 'Content-Type': 'application/json', 'x-agent-id': 'cs-717-paid-cleanup', 'x-agent-role': `paid-cleanup-717-${item}` };
