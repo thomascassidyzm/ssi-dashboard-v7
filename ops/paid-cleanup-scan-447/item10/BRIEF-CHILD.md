@@ -5,12 +5,12 @@ detailed plan before applying". You write per-LEGO decisions for YOUR courses an
 never send `"apply": true`, never render audio (no /api/audio/render at all — the parent prices audio), never PATCH a seed,
 never run a cascade. Tests are off estate-wide: run none. No Whisper/transcription. No native-speaker holds or proofreader
 question lists (Kai: fix it with online sources and evidence; the proofreader reads the finished course later).
-HARD RULE: no hand-written code against the database (no psql, node -e, curl to Supabase). Read only through Popty HTTP
-(:3470, course-builder :3471) — the tools in `tools/` already do this. Parsing JSON you fetched from Popty in a script is fine.
+HARD RULE: no hand-written code against the database. Since cs #931·AI every READ is from the NIGHTLY COPY via ../copy-read.cjs
+(no Popty read route, no :3471, nothing to live); the one live call is tools/dryrun.py (edit-batch, no apply). See BRIEF.md.
 Scratch goes in $CS_SCRATCH, never /tmp.
 
 ## Setup
-Your worktree is off origin/main. First: `git fetch origin cs/714-paid-cleanup-item-10-plan-only-l && git merge --no-edit FETCH_HEAD`.
+Your worktree is off origin/main, which carries this kit since cs #931·AI.
 Read, in order: `course-methodology-canon.md` (repo root — the live rulebook; L25-L32, K29, K49, K54, L7-L10, S3/S4/S15 matter
 most), `ops/paid-cleanup-scan-447/item10/README.md` (the pipeline), and `decisions/zho_for_eng.py` (the worked example: the
 format and the depth of judgement expected, including the FIX block at the end). Your candidate rows:

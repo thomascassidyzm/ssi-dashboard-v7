@@ -14,18 +14,20 @@ Nothing here has been applied. The apply is a later job that sends each `plans/<
 | `lexicon/lex-<course>.json` | the course's own char/word readings for romanisation (zho) | `tools/lexicon_zho.py` from `baskets --all` |
 | `review.md`, `audio-price.json` | cross-family review, audio price | later milestones |
 
-## Pipeline (all READ-ONLY against the course; Popty HTTP routes only)
+## Pipeline (reads: the nightly copy only; the one live call is the dry run — BRIEF.md "Database rule")
 
 ```
-python3 -I ../dump-course.py <course> $CS_SCRATCH/dumps/<course>.json      # GET script-view, 50-seed windows
+node ../copy-read.cjs where                                               # which copy (URL redacted)
+node ../copy-read.cjs dump <course> $CS_SCRATCH/dumps/<course>.json        # the course as the nightly copy holds it
 python3 -I decisions/<course>.py                                          # hand decisions -> json
-python3 -I tools/baskets.py <course> $CS_SCRATCH/dumps/<course>.json       # full rows incl. target_text_roman (touched seeds)
+python3 -I tools/baskets.py <course> $CS_SCRATCH/dumps/<course>.json       # full rows incl. target_text_roman (copy)
 python3 -I tools/plan.py <course> $CS_SCRATCH/dumps/<course>.json          # -> plans/<course>.json; prints problems
-python3 -I tools/dryrun.py <course>                                       # POST edit-batch WITHOUT apply (rolled back)
-python3 -I tools/validate.py <course> $CS_SCRATCH/dumps/<course>.json      # POST :3471/api/v2/validate override per touched seed
+python3 -I tools/validate.py <course> $CS_SCRATCH/dumps/<course>.json      # course-builder validator checks, in process, on the copy
+python3 -I tools/dryrun.py <course>                                       # POST edit-batch WITHOUT apply, <=100/chunk, gated; + changeset
 ```
 
-A course is DONE when: `plan.py` prints 0 problems, `dryRun.chunks[*].status == 200`, `validator.seeds_with_new_issues == []`.
+A course is DONE when: `plan.py` prints 0 problems, `dryRun.chunks[*].status == 200`, `validator.seeds_with_new_issues == []`,
+and `plans/<course>.changeset.jsonl` passes `node tools/changeset/apply-changeset.cjs <file> --check`.
 
 `plan.py` mirrors the course-builder validator (floor build 3+/use 5+ after seed 3, a bare-LEGO row never counts; every
 target chunk of a kept/new row taught by that seed) so failures are named per row; `validate.py` is the authority.

@@ -2,9 +2,10 @@
 Shared by every item-10 shard worker. PLAN ONLY — nothing is applied, no audio is rendered.
 
 ## What you produce, per course in your shard
-`decisions/<course>.py` (hand-authored, writes `decisions/<course>.json`) → `python3 -I tools/plan.py <course> <dump>` →
-`plans/<course>.json` → `tools/dbslot.sh python3 -I tools/validate.py <course> <dump>` →
-`tools/dbslot.sh python3 -I tools/dryrun.py <course> --chunk 50` → `python3 -I tools/price.py <course>`.
+`node ../copy-read.cjs dump <course> $CS_SCRATCH/dumps/<course>.json` (nightly copy) → `decisions/<course>.py`
+(hand-authored, writes `decisions/<course>.json`) → `python3 -I tools/fetch_baskets.py <course>` →
+`python3 -I tools/plan.py <course> <dump>` → `plans/<course>.json` → `python3 -I tools/validate.py <course> <dump>` →
+`python3 -I tools/dryrun.py <course> --chunk 50` (writes `plans/<course>.changeset.jsonl` when clean) → `python3 -I tools/price.py <course>`.
 Model your decisions file on `decisions/zho_for_eng.py` (#714·AI's 22 LEGOs, seeds 3-36 — already done, do not redo them).
 Candidates: `recount.json` rows where `course` is yours (and seed range if your shard names one). Each row is a
 CANDIDATE from a regex/LLM scan, not a verdict: read every LEGO in its seed and decide.
@@ -26,12 +27,17 @@ M-LEGO containing it. S3 coverage HARD, S4 overlap fine. P17 every row contains 
 K6 known side may inflect taught words. K54 as above. ZUT one known → one target. R0.13 anything regex-touched is read by hand.
 R0.3 rewording or deleting a phrase is legitimate. Kai: easy words matter early only; one target / many English is fine.
 
-## Load rules (Kai, 18 Nov — a live email send was starved by our writes)
-EVERY step that reaches Popty or the course-builder (dump, baskets fetch, validate.py, dryrun.py, lexicon harvest) runs inside
-`tools/dbslot.sh` — it takes the shared lock (one item-10 worker on the shared store at a time) and waits while it is busy.
-Dump with `tools/dbslot.sh python3 -I ../dump-course.py <course> $CS_SCRATCH/dumps/<course>.json`. No parallel fan-out,
-no xargs -P. dryrun.py with `--chunk 50` (≤50 ops per rolled-back transaction). If dbslot exits 75, record it and move on.
-NEVER send "apply": true. No hand-written code against the store — only these committed tools and Popty GET routes.
+## Database rule (cs #931·AI, 19 Nov — the planners were cancelled at ~10:20Z for reading live)
+Every READ is from the NIGHTLY COPY through `../copy-read.cjs`, which refuses any database URL that is not the local
+ssi_copy login (it finds ~/ssi-restore/qa-copy.env or qa-copy-fresh.env itself). No Python, psql or other client reaches
+live; no Popty read route (script-view, lego/seed baskets), no :3471 validate, no `../dump-course.py`. The ONE call towards
+live is the DRY RUN: `dryrun.py` → POST /api/production/<course>/edit-batch WITHOUT "apply", chunks of at most 100
+(default 50), paced, each chunk only while /health shows dbLoadGate governed + green (`../copykit.py` gate; exit 75 after
+30 min not green — record it, move on). An all-200 dry run also writes `plans/<course><tag>.changeset.jsonl` and runs
+`node tools/changeset/apply-changeset.cjs <file> --check` (offline). Never run the applier without `--check`: applying is a
+later, separate yes from Kai. `tools/dbslot.sh` is no longer part of the pipeline. A copy is up to a day old, so a dry run
+may answer DRIFT on a row changed since: re-dump from the next nightly copy and re-plan; never read live to catch up.
+No parallel fan-out, no xargs -P. NEVER send "apply": true.
 
 ## Romanisation
 zho rows carry `target_text_roman` (tools/roman.py; lexicon harvested by tools/lexicon_zho.py — adapt it for your course).
