@@ -21,3 +21,11 @@ Snapshots, `recount/` and `item12/*/plan.json` regenerated from `ssi_copy_202611
   holds, per planned row, the seed (texts + 3 clip ids) and home LEGO (texts + is_new) it was built on. `apply-changeset.cjs`
   checks neither the LEGO nor the seed, so DO NOT run the item 12 changesets with it as it stands: first pre-check each
   batch on live against precheck.json (hold mismatches) — or add that step to the applier.
+
+## #957·AI, 19 Nov — item 12 spot-checked and scheduled (Kai yes, 12:02Z)
+- `item12/SPOTCHECK.md`: 26 rows dropped from 15 files (the header's `dropped` lists them), eng_for_sin held whole. 47/47 pass `--check`.
+- `item12/night-run.sh` runs nightly from the user timer `cs-long-keep-item12-night.timer` (22:30 UTC), in the persistent
+  worktree `~/.cs-long/item12/popty` (never recreate it: the `.applied.jsonl` ledgers live there). Once all are done it disables itself.
+- Kai's live pre-check is enforced only as far as the applier's door enforces it (phrase.insert refuses an existing id).
+  Seed/LEGO drift since the copy is NOT re-checked against precheck.json; see the #957 report.
+- NEVER edit a changeset after its first night: the ledger records ops by line index.
