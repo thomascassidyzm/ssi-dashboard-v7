@@ -60,11 +60,13 @@ const zk = (t) => L.normalizeForZUT(t, chinese);
 // LEGO re-cuts and additions, applied in memory before anything is checked, so vocab, containment
 // and ZUT all see the NEW split. l._was keeps the live texts for expect / the report.
 const legoOps = [];
+const gapBefore = new Map(); // cs #960: each re-cut seed's uncovered words BEFORE the re-cut (see the S3 check below)
 const toks = (t) => (String(t || '').toLowerCase().normalize('NFC').match(/[\p{L}\p{M}\p{N}]+(?:['’][\p{L}\p{M}]+)*/gu) || []);
 const { checkLegoSyllables } = require(require('path').join(L.ROOT, 'services/course-builder/lib/language-config.cjs'));
 for (const p of plans) {
   const s = seeds.find(x => x.seed_number === p.seed);
   if (!s) { E(`S${p.seed}`, 'seed not in the live course'); continue; }
+  if (p.lego_ops) { const cov = new Set(s.legos.flatMap(l => toks(l.target_text))); gapBefore.set(p.seed, new Set(toks(s.target_text).filter(t => !cov.has(t)))); }
   for (const [li, o] of Object.entries(p.lego_ops || {})) {
     const lid = `S${String(p.seed).padStart(4, '0')}${li}`;
     if (o.set) {
@@ -118,7 +120,14 @@ for (const p of plans) if (p.lego_ops) {
   const s = seeds.find(x => x.seed_number === p.seed);
   const covered = new Set(s.legos.flatMap(l => toks(l.target_text)));
   const gap = toks(s.target_text).filter(t => !covered.has(t));
-  if (gap.length) E(`S${p.seed}`, `after the re-cut the seed still has words no LEGO of it carries: ${gap.join(', ')} (S3)`);
+  // cs #960: many seeds in these courses never had every word in one of their own LEGOs (single-LEGO seeds whose
+  // other words were taught earlier). A re-cut must not ADD an uncovered word and must cover at least one; words that
+  // were already uncovered before it are reported, not blocking (the re-cut did not cause them).
+  const before = gapBefore.get(p.seed) || new Set();
+  const added = gap.filter(t => !before.has(t));
+  if (added.length) E(`S${p.seed}`, `after the re-cut the seed has words no LEGO of it carries that were covered before: ${added.join(', ')} (S3)`);
+  else if (gap.length >= before.size && before.size) E(`S${p.seed}`, `the re-cut covers none of the seed's uncovered words: ${gap.join(', ')} (S3)`);
+  else if (gap.length) W(`S${p.seed}`, `words no LEGO of the seed carries, already so before the re-cut: ${gap.join(', ')} (S3)`);
 }
 
 const ops = { inserts: [], updates: [], deletes: [] };

@@ -13,7 +13,9 @@ const { checkBuildUsePhrases, computeLegoPosition, isBareLegoPhrase, makePhraseI
 const { checkVocabViolations } = req('services/course-builder/lib/validation.cjs');
 const { isChinese } = req('services/course-builder/lib/language-config.cjs');
 
-const LIVE_DIR = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item9/live');
+// cs #960: ITEM9_LIVE_DIR points the tools at a snapshot rebuilt from the NIGHTLY COPY (copy-live.cjs) instead of the
+// 18 Nov live reads; every op's expect then carries what the copy holds.
+const LIVE_DIR = process.env.ITEM9_LIVE_DIR || path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item9/live');
 const ITEM_DIR = path.resolve(__dirname, '..');
 const TODAY = '2026-11-18';
 
