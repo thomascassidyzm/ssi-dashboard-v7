@@ -1,7 +1,7 @@
 {
  "course": "deu_for_eng",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:30:57.225Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:02.058Z",
  "ops": [],
  "rows": [
   {
@@ -197,6 +197,15 @@
     ]
    },
    {
+    "seed": 613,
+    "known": "we probably would have bought a house there",
+    "target": "wir hätten wahrscheinlich dort ein Haus gekauft",
+    "legos": [
+     "S0613L01(old) probably | wahrscheinlich",
+     "S0613L02(old) house | Haus"
+    ]
+   },
+   {
     "seed": 655,
     "known": "I think that you're doing very well, madam",
     "target": "Ich denke, dass Sie sehr gut machen, gnädige Frau",
@@ -227,7 +236,7 @@
  "counts": {
   "planned": 2,
   "covered": 9,
-  "no_home": 5,
+  "no_home": 6,
   "variant_zut": 2
  }
 }

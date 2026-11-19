@@ -1,14 +1,14 @@
 {
  "course": "ita_for_zho",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:02.246Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:06.908Z",
  "ops": [],
  "rows": [
   {
    "seed": 4,
    "id": "S0004L02U06",
    "lego": "S0004L02",
-   "known": "怎么用中文说一些东西",
+   "known": "怎么用意大利语说一些东西",
    "target": "come dire qualcosa in italiano",
    "ops": [
     {
@@ -18,7 +18,7 @@
       "seed_number": 4,
       "lego_index": 2,
       "position": 12,
-      "known_text": "怎么用中文说一些东西",
+      "known_text": "怎么用意大利语说一些东西",
       "target_text": "come dire qualcosa in italiano",
       "phrase_role": "use",
       "introduce": true,
@@ -40,7 +40,7 @@
      "target": "phrase",
      "phrase_id": "ita_for_zho:S0004L02U06",
      "slot": "known",
-     "audio_id": "3e28b667-c990-424d-afcc-1d3da7bde44d"
+     "audio_id": "37a4474b-07d5-448a-9d21-6c18553e5fea"
     },
     {
      "op": "audio.link",
@@ -170,7 +170,7 @@
    "seed": 15,
    "id": "S0015L03U06",
    "lego": "S0015L03",
-   "known": "而且我想让你明天和我说中文。",
+   "known": "而且我想让你明天和我说意大利语。",
    "target": "E voglio che tu parli italiano con me domani.",
    "ops": [
     {
@@ -180,7 +180,7 @@
       "seed_number": 15,
       "lego_index": 3,
       "position": 12,
-      "known_text": "而且我想让你明天和我说中文。",
+      "known_text": "而且我想让你明天和我说意大利语。",
       "target_text": "E voglio che tu parli italiano con me domani.",
       "phrase_role": "use",
       "introduce": true,
@@ -202,7 +202,7 @@
      "target": "phrase",
      "phrase_id": "ita_for_zho:S0015L03U06",
      "slot": "known",
-     "audio_id": "5b4cd963-d3f3-4417-96e7-4d08c9d2054e"
+     "audio_id": "99cc0508-af8c-44a2-8d4e-8dd1b31d543a"
     },
     {
      "op": "audio.link",
@@ -433,60 +433,6 @@
      "phrase_id": "ita_for_zho:S0029L02U06",
      "slot": "target2",
      "audio_id": "90854a3c-b41e-4a56-888c-26aad0d3da63"
-    }
-   ]
-  },
-  {
-   "seed": 33,
-   "id": "S0033L01U06",
-   "lego": "S0033L01",
-   "known": "你学中文学了多久了?",
-   "target": "Da quanto tempo stai imparando l'italiano?",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "ita_for_zho:S0033L01U06",
-      "seed_number": 33,
-      "lego_index": 1,
-      "position": 9,
-      "known_text": "你学中文学了多久了?",
-      "target_text": "Da quanto tempo stai imparando l'italiano?",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 33,
-       "canon": "P26"
-      },
-      "word_count": 42,
-      "lego_count": 1,
-      "lego_position": null
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "ita_for_zho:S0033L01U06",
-     "slot": "known",
-     "audio_id": "7f81df15-f1c6-4828-b147-25e4a4c7e604"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "ita_for_zho:S0033L01U06",
-     "slot": "target1",
-     "audio_id": "a75e06fd-91ea-4577-9122-2c94d8c23c32"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "ita_for_zho:S0033L01U06",
-     "slot": "target2",
-     "audio_id": "2973fbec-aece-447d-af43-e836dec7d634"
     }
    ]
   },
@@ -1405,6 +1351,60 @@
      "phrase_id": "ita_for_zho:S0154L01U06",
      "slot": "target2",
      "audio_id": "7852d664-11a7-4beb-a3be-ac3a4e832069"
+    }
+   ]
+  },
+  {
+   "seed": 160,
+   "id": "S0160L02U06",
+   "lego": "S0160L02",
+   "known": "这个词用意大利语怎么说？",
+   "target": "Come si dice questa parola in italiano?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ita_for_zho:S0160L02U06",
+      "seed_number": 160,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "这个词用意大利语怎么说？",
+      "target_text": "Come si dice questa parola in italiano?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 160,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ita_for_zho:S0160L02U06",
+     "slot": "known",
+     "audio_id": "d705ca4e-c4a0-4ace-9189-0b7282338875"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ita_for_zho:S0160L02U06",
+     "slot": "target1",
+     "audio_id": "af7aea1b-c8b1-4aa5-91ea-5131ec30f5b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ita_for_zho:S0160L02U06",
+     "slot": "target2",
+     "audio_id": "d25be76d-b1e0-42db-856f-00ad7bb37339"
     }
    ]
   },
@@ -2933,10 +2933,10 @@
    },
    {
     "seed": 13,
-    "known": "你中文说得很好。",
+    "known": "你意大利语说得很好。",
     "target": "Parli italiano molto bene.",
     "row": "S0013L03U01",
-    "row_known": "你说中文说得很好",
+    "row_known": "你说意大利语说得很好",
     "row_target": "parli italiano molto bene"
    },
    {
@@ -3098,7 +3098,7 @@
    },
    {
     "seed": 64,
-    "known": "学中文不容易但是很有趣。",
+    "known": "学意大利语不容易但是很有趣。",
     "target": "Imparare l'italiano non è facile ma è divertente.",
     "legos": [
      "S0064L01(old) 容易 | facile",
@@ -3415,14 +3415,6 @@
     "row": "S0157L01U01",
     "row_known": "我下个月不能在那里。",
     "row_target": "non posso essere lì il mese prossimo"
-   },
-   {
-    "seed": 160,
-    "known": "这个词用中文怎么说？",
-    "target": "Come si dice questa parola in italiano?",
-    "row": "S0160L02U01",
-    "row_known": "这个词用中文怎么说？",
-    "row_target": "come si dice questa parola in cinese?"
    },
    {
     "seed": 182,
@@ -5340,7 +5332,7 @@
   "variant_form": 19,
   "no_home": 33,
   "covered": 1,
-  "variant_zut": 16,
+  "variant_zut": 15,
   "not_built": 367
  }
 }

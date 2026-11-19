@@ -1,7 +1,7 @@
 {
  "course": "eng_for_kor",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:30:59.302Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:04.136Z",
  "ops": [],
  "rows": [
   {
@@ -1625,60 +1625,6 @@
    ]
   },
   {
-   "seed": 182,
-   "id": "S0182L02U05",
-   "lego": "S0182L02",
-   "known": "어디선가 제 열쇠를 봤어요?",
-   "target": "Have you seen my keys anywhere?",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0182L02U05",
-      "seed_number": 182,
-      "lego_index": 2,
-      "position": 10,
-      "known_text": "어디선가 제 열쇠를 봤어요?",
-      "target_text": "Have you seen my keys anywhere?",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 182,
-       "canon": "P26"
-      },
-      "word_count": 31,
-      "lego_count": 4,
-      "lego_position": null
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0182L02U05",
-     "slot": "known",
-     "audio_id": "9e8aa355-43d9-4131-a96d-ec6f005fd89a"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0182L02U05",
-     "slot": "target1",
-     "audio_id": "cc3b5d90-c66d-45e3-a712-0cec59ac1f07"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0182L02U05",
-     "slot": "target2",
-     "audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b"
-    }
-   ]
-  },
-  {
    "seed": 184,
    "id": "S0184L02U05",
    "lego": "S0184L02",
@@ -1949,168 +1895,6 @@
    ]
   },
   {
-   "seed": 201,
-   "id": "S0201L01U06",
-   "lego": "S0201L01",
-   "known": "우리는 무슨 일이 일어날지 알고 싶었어요",
-   "target": "We wanted to know what was going to happen",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0201L01U06",
-      "seed_number": 201,
-      "lego_index": 1,
-      "position": 11,
-      "known_text": "우리는 무슨 일이 일어날지 알고 싶었어요",
-      "target_text": "We wanted to know what was going to happen",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 201,
-       "canon": "P26"
-      },
-      "word_count": 42,
-      "lego_count": 6,
-      "lego_position": null
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0201L01U06",
-     "slot": "known",
-     "audio_id": "bb675695-bf1b-4fcb-a3f3-9fb7ebce81db"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0201L01U06",
-     "slot": "target1",
-     "audio_id": "ec66e28d-4e2c-4e63-8304-b37d2f12e9c4"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0201L01U06",
-     "slot": "target2",
-     "audio_id": "fb252e9d-f857-4317-81cc-f3687f7e043e"
-    }
-   ]
-  },
-  {
-   "seed": 202,
-   "id": "S0202L03U05",
-   "lego": "S0202L03",
-   "known": "아무도 질문에 어떻게 대답할지 확신하지 못했어요",
-   "target": "Nobody was sure how to answer the question",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0202L03U05",
-      "seed_number": 202,
-      "lego_index": 3,
-      "position": 12,
-      "known_text": "아무도 질문에 어떻게 대답할지 확신하지 못했어요",
-      "target_text": "Nobody was sure how to answer the question",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 202,
-       "canon": "P26"
-      },
-      "word_count": 42,
-      "lego_count": 6,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0202L03U05",
-     "slot": "known",
-     "audio_id": "058a812e-ed31-47c3-8902-648ffbeeaede"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0202L03U05",
-     "slot": "target1",
-     "audio_id": "e989fa0e-d6aa-4aa7-a5d1-49c4a41f103e"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0202L03U05",
-     "slot": "target2",
-     "audio_id": "0443e07e-f4e6-4d70-8509-8a951d2e9ed9"
-    }
-   ]
-  },
-  {
-   "seed": 203,
-   "id": "S0203L01U06",
-   "lego": "S0203L01",
-   "known": "제가 도움을 요청하면 어떻게 할 거예요?",
-   "target": "What would you do if I asked you to help me?",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0203L01U06",
-      "seed_number": 203,
-      "lego_index": 1,
-      "position": 11,
-      "known_text": "제가 도움을 요청하면 어떻게 할 거예요?",
-      "target_text": "What would you do if I asked you to help me?",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 203,
-       "canon": "P26"
-      },
-      "word_count": 44,
-      "lego_count": 6,
-      "lego_position": null
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0203L01U06",
-     "slot": "known",
-     "audio_id": "e36e176c-25ca-4aa4-bf64-63ad5262edb5"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0203L01U06",
-     "slot": "target1",
-     "audio_id": "a5d97c2b-9e83-414e-8224-ba543ad61733"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0203L01U06",
-     "slot": "target2",
-     "audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a"
-    }
-   ]
-  },
-  {
    "seed": 204,
    "id": "S0204L03U06",
    "lego": "S0204L03",
@@ -2165,60 +1949,6 @@
    ]
   },
   {
-   "seed": 205,
-   "id": "S0205L02U06",
-   "lego": "S0205L02",
-   "known": "저는 말하려던 단어를 잊어버렸어요",
-   "target": "I've forgotten the word I was trying to say",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0205L02U06",
-      "seed_number": 205,
-      "lego_index": 2,
-      "position": 11,
-      "known_text": "저는 말하려던 단어를 잊어버렸어요",
-      "target_text": "I've forgotten the word I was trying to say",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 205,
-       "canon": "P26"
-      },
-      "word_count": 43,
-      "lego_count": 4,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0205L02U06",
-     "slot": "known",
-     "audio_id": "9032173a-a467-4a3e-aa74-9378c997a676"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0205L02U06",
-     "slot": "target1",
-     "audio_id": "2759d09d-3a70-4a27-a075-56651d18f53b"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0205L02U06",
-     "slot": "target2",
-     "audio_id": "7f0811cc-4eed-4df8-9003-495c8f2354cd"
-    }
-   ]
-  },
-  {
    "seed": 209,
    "id": "S0209L03U05",
    "lego": "S0209L03",
@@ -2269,60 +1999,6 @@
      "phrase_id": "eng_for_kor:S0209L03U05",
      "slot": "target2",
      "audio_id": "55476cc7-29a4-4c8e-8374-dae862669855"
-    }
-   ]
-  },
-  {
-   "seed": 211,
-   "id": "S0211L02U06",
-   "lego": "S0211L02",
-   "known": "그들은 설명하고 싶지 않다고 우리에게 말했어요",
-   "target": "They told us that they didn't want to explain",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0211L02U06",
-      "seed_number": 211,
-      "lego_index": 2,
-      "position": 11,
-      "known_text": "그들은 설명하고 싶지 않다고 우리에게 말했어요",
-      "target_text": "They told us that they didn't want to explain",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 211,
-       "canon": "P26"
-      },
-      "word_count": 45,
-      "lego_count": 6,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0211L02U06",
-     "slot": "known",
-     "audio_id": "c71b85d8-074f-4528-86d4-45c581e09b77"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0211L02U06",
-     "slot": "target1",
-     "audio_id": "c6b497fa-478f-4f0b-9d1a-aa38d5799f5a"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0211L02U06",
-     "slot": "target2",
-     "audio_id": "0244fbc6-0188-4dfd-8c5b-2b5758664311"
     }
    ]
   },
@@ -2597,168 +2273,6 @@
    ]
   },
   {
-   "seed": 230,
-   "id": "S0230L01U06",
-   "lego": "S0230L01",
-   "known": "저는 당신과 함께 일하고 싶은 젊은 남자를 알아요",
-   "target": "I know a young man who wants to work with you",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0230L01U06",
-      "seed_number": 230,
-      "lego_index": 1,
-      "position": 12,
-      "known_text": "저는 당신과 함께 일하고 싶은 젊은 남자를 알아요",
-      "target_text": "I know a young man who wants to work with you",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 230,
-       "canon": "P26"
-      },
-      "word_count": 45,
-      "lego_count": 8,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0230L01U06",
-     "slot": "known",
-     "audio_id": "589b5cc3-d4ee-4faf-a7f2-cb942ceabaf4"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0230L01U06",
-     "slot": "target1",
-     "audio_id": "eb94aede-6894-4b30-b4c7-a285cc17fdfc"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0230L01U06",
-     "slot": "target2",
-     "audio_id": "195b76ac-ca91-439c-a228-19a57426c75d"
-    }
-   ]
-  },
-  {
-   "seed": 232,
-   "id": "S0232L02U06",
-   "lego": "S0232L02",
-   "known": "저는 답을 기억할 수 있는 나이 든 여자를 알아요",
-   "target": "I know an old woman who can remember the answer",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0232L02U06",
-      "seed_number": 232,
-      "lego_index": 2,
-      "position": 12,
-      "known_text": "저는 답을 기억할 수 있는 나이 든 여자를 알아요",
-      "target_text": "I know an old woman who can remember the answer",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 232,
-       "canon": "P26"
-      },
-      "word_count": 47,
-      "lego_count": 9,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0232L02U06",
-     "slot": "known",
-     "audio_id": "0fd5474f-71e4-4f3a-8ca5-76d6f929a5ad"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0232L02U06",
-     "slot": "target1",
-     "audio_id": "be523d01-4a99-4f10-963c-47df71ead2cb"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0232L02U06",
-     "slot": "target2",
-     "audio_id": "ad5edfba-26bb-4a68-8c9b-c4b643b13c86"
-    }
-   ]
-  },
-  {
-   "seed": 233,
-   "id": "S0233L02U06",
-   "lego": "S0233L02",
-   "known": "저는 당신의 여동생을 아는 젊은 여자를 알아요",
-   "target": "I know a young woman who knows your sister",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0233L02U06",
-      "seed_number": 233,
-      "lego_index": 2,
-      "position": 9,
-      "known_text": "저는 당신의 여동생을 아는 젊은 여자를 알아요",
-      "target_text": "I know a young woman who knows your sister",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 233,
-       "canon": "P26"
-      },
-      "word_count": 42,
-      "lego_count": 7,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0233L02U06",
-     "slot": "known",
-     "audio_id": "2eddf4e1-5ebe-4db2-9f70-d0665c26d571"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0233L02U06",
-     "slot": "target1",
-     "audio_id": "9cb7e2d6-2a7a-48d4-aa5e-3e32c3f5777a"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0233L02U06",
-     "slot": "target2",
-     "audio_id": "3c347bf4-82dd-4018-acbd-58930134941d"
-    }
-   ]
-  },
-  {
    "seed": 234,
    "id": "S0234L03U06",
    "lego": "S0234L03",
@@ -2809,60 +2323,6 @@
      "phrase_id": "eng_for_kor:S0234L03U06",
      "slot": "target2",
      "audio_id": "19ad3519-0688-4591-9d8f-d5032562b18e"
-    }
-   ]
-  },
-  {
-   "seed": 235,
-   "id": "S0235L02U06",
-   "lego": "S0235L02",
-   "known": "저는 당신에게 무언가 말하고 싶다고 한 사람을 만났어요",
-   "target": "I met someone who said that he wanted to tell you something",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_kor:S0235L02U06",
-      "seed_number": 235,
-      "lego_index": 2,
-      "position": 12,
-      "known_text": "저는 당신에게 무언가 말하고 싶다고 한 사람을 만났어요",
-      "target_text": "I met someone who said that he wanted to tell you something",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 235,
-       "canon": "P26"
-      },
-      "word_count": 59,
-      "lego_count": 8,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0235L02U06",
-     "slot": "known",
-     "audio_id": "08dec3e8-e6c0-47e2-bb05-93eb10cea0b9"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0235L02U06",
-     "slot": "target1",
-     "audio_id": "4bb1db72-fb15-4530-a3f4-4aa2d40ad503"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_kor:S0235L02U06",
-     "slot": "target2",
-     "audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e"
     }
    ]
   },
@@ -3299,6 +2759,114 @@
    ]
   },
   {
+   "seed": 281,
+   "id": "S0281L01U06",
+   "lego": "S0281L01",
+   "known": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+   "target": "Do you mind if I finish my coffee before you start?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0281L01U06",
+      "seed_number": 281,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+      "target_text": "Do you mind if I finish my coffee before you start?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0281L01U06",
+     "slot": "known",
+     "audio_id": "0f6e01d6-7680-4649-ac43-354cdec63864"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0281L01U06",
+     "slot": "target1",
+     "audio_id": "873bf45b-4a40-49a9-b2ee-e51bde8ebdc7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0281L01U06",
+     "slot": "target2",
+     "audio_id": "93b60170-31ac-4146-b338-74e941d6599b"
+    }
+   ]
+  },
+  {
+   "seed": 283,
+   "id": "S0283L01U06",
+   "lego": "S0283L01",
+   "known": "당신 친구들 중 누가 영어를 해요?",
+   "target": "Which of your friends speak English?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0283L01U06",
+      "seed_number": 283,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "당신 친구들 중 누가 영어를 해요?",
+      "target_text": "Which of your friends speak English?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 283,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0283L01U06",
+     "slot": "known",
+     "audio_id": "7d3fb67d-8ba8-43cc-8c40-71d6b551c5cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0283L01U06",
+     "slot": "target1",
+     "audio_id": "389ee070-b04f-4184-8898-901367a346cf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0283L01U06",
+     "slot": "target2",
+     "audio_id": "9a084b94-4b42-4dd3-a45c-47ad18fd9705"
+    }
+   ]
+  },
+  {
    "seed": 297,
    "id": "S0297L01U06",
    "lego": "S0297L01",
@@ -3569,6 +3137,16 @@
      "S0299L01 내다 | pay",
      "S0299L02 절반 | half"
     ]
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 182,
+    "known": "어디선가 제 열쇠를 봤어요?",
+    "target": "Have you seen my keys anywhere?",
+    "row": "S0182L02B02",
+    "row_known": "어디선가 제 열쇠를 봤나요?",
+    "row_target": "have you seen my keys anywhere?"
    }
   ],
   "not_built": [
@@ -5385,10 +4963,11 @@
   ]
  },
  "counts": {
-  "planned": 62,
+  "planned": 54,
   "variant_zut": 18,
   "lego_is_seed": 2,
   "no_home": 7,
+  "variant_form": 1,
   "not_built": 362
  }
 }

@@ -1,7 +1,7 @@
 {
  "course": "eng_for_tam",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:00.434Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:05.227Z",
  "ops": [],
  "rows": [
   {
@@ -4433,60 +4433,6 @@
    ]
   },
   {
-   "seed": 128,
-   "id": "S0128L01U06",
-   "lego": "S0128L01",
-   "known": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்.",
-   "target": "You're like someone I used to know.",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_tam:S0128L01U06",
-      "seed_number": 128,
-      "lego_index": 1,
-      "position": 9,
-      "known_text": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்.",
-      "target_text": "You're like someone I used to know.",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 128,
-       "canon": "P26"
-      },
-      "word_count": 35,
-      "lego_count": 7,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_tam:S0128L01U06",
-     "slot": "known",
-     "audio_id": "0888a54e-e0ee-4d89-b8e8-bca1fbc62498"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_tam:S0128L01U06",
-     "slot": "target1",
-     "audio_id": "c1bf9e84-992f-4257-966b-1a135c97374b"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_tam:S0128L01U06",
-     "slot": "target2",
-     "audio_id": "e4e63ab6-a17a-45d1-a8ff-bd845ce98883"
-    }
-   ]
-  },
-  {
    "seed": 129,
    "id": "S0129L03U06",
    "lego": "S0129L03",
@@ -4650,7 +4596,7 @@
   },
   {
    "seed": 133,
-   "id": "S0133L02U06",
+   "id": "S0133L02U05",
    "lego": "S0133L02",
    "known": "நீங்கள் ஒன்றாக வேலை செய்யும்போது யாரையாவது மிகவும் நன்றாக அறிவீர்கள்.",
    "target": "You get to know someone very well when you work together.",
@@ -4658,10 +4604,10 @@
     {
      "op": "phrase.insert",
      "row": {
-      "id": "eng_for_tam:S0133L02U06",
+      "id": "eng_for_tam:S0133L02U05",
       "seed_number": 133,
       "lego_index": 2,
-      "position": 10,
+      "position": 9,
       "known_text": "நீங்கள் ஒன்றாக வேலை செய்யும்போது யாரையாவது மிகவும் நன்றாக அறிவீர்கள்.",
       "target_text": "You get to know someone very well when you work together.",
       "phrase_role": "use",
@@ -4682,21 +4628,21 @@
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "eng_for_tam:S0133L02U06",
+     "phrase_id": "eng_for_tam:S0133L02U05",
      "slot": "known",
      "audio_id": "7406b6d9-4907-4a3f-943d-d4d74b962d4a"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "eng_for_tam:S0133L02U06",
+     "phrase_id": "eng_for_tam:S0133L02U05",
      "slot": "target1",
      "audio_id": "016da31d-90cd-47b9-80b7-63a7b7feea08"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "eng_for_tam:S0133L02U06",
+     "phrase_id": "eng_for_tam:S0133L02U05",
      "slot": "target2",
      "audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd"
     }
@@ -11277,7 +11223,7 @@
      "S0142L02 நன்றியுள்ளவன் | grateful",
      "S0142L03 உதவி | helping",
      "S0142L04 நன்றியுள்ளவன் நீங்களுக்கு உதவிக்காக | grateful to you for helping",
-     "S0142L05 இது மிகவும் கருணையான நீங்கள் மற்றும் நான் | thats very kind of you and im"
+     "S0142L05 இது மிகவும் கருணையான நீங்கள் மற்றும் நான் | that's very kind of you and I'm"
     ]
    },
    {
@@ -12296,7 +12242,7 @@
   ]
  },
  "counts": {
-  "planned": 203,
+  "planned": 202,
   "variant_zut": 22,
   "variant_form": 3,
   "no_home": 131

@@ -1,7 +1,7 @@
 {
  "course": "zho_for_eng",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:04.333Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:08.977Z",
  "ops": [],
  "rows": [
   {
@@ -1894,6 +1894,15 @@
     ]
    },
    {
+    "seed": 572,
+    "known": "have you forgotten what happened the last time they visited us?",
+    "target": "你忘了他们上次来看我们时发生的事了吗？",
+    "legos": [
+     "S0572L01(old) to forget | 忘",
+     "S0572L02(old) last time | 上次"
+    ]
+   },
+   {
     "seed": 579,
     "known": "we've often tried.",
     "target": "我们经常试过",
@@ -2077,7 +2086,7 @@
  },
  "counts": {
   "planned": 26,
-  "no_home": 68,
+  "no_home": 69,
   "variant_zut": 4,
   "covered": 2,
   "variant_form": 3

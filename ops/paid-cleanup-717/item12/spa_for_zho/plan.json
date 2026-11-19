@@ -1,63 +1,9 @@
 {
  "course": "spa_for_zho",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:04.004Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:08.658Z",
  "ops": [],
  "rows": [
-  {
-   "seed": 1,
-   "id": "S0001L05U06",
-   "lego": "S0001L05",
-   "known": "我现在想和你说中文。",
-   "target": "Quiero hablar español contigo ahora.",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "spa_for_zho:S0001L05U06",
-      "seed_number": 1,
-      "lego_index": 5,
-      "position": 8,
-      "known_text": "我现在想和你说中文。",
-      "target_text": "Quiero hablar español contigo ahora.",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 1,
-       "canon": "P26"
-      },
-      "word_count": 36,
-      "lego_count": 1,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0001L05U06",
-     "slot": "known",
-     "audio_id": "66fd7ceb-34fb-4033-bde5-4fb89cb24d00"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0001L05U06",
-     "slot": "target1",
-     "audio_id": "7b89fa2b-fa36-4d75-99b1-9a05df093c6d"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0001L05U06",
-     "slot": "target2",
-     "audio_id": "bf1afed6-b337-4a61-9fd3-d440a2f94cad"
-    }
-   ]
-  },
   {
    "seed": 3,
    "id": "S0003L02U06",
@@ -163,60 +109,6 @@
      "phrase_id": "spa_for_zho:S0007L02U06",
      "slot": "target2",
      "audio_id": "820a65ee-7553-4052-a7e9-7d96237dc1b0"
-    }
-   ]
-  },
-  {
-   "seed": 9,
-   "id": "S0009L01U06",
-   "lego": "S0009L01",
-   "known": "我现在说一点中文。",
-   "target": "Hablo un poco de español ahora.",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "spa_for_zho:S0009L01U06",
-      "seed_number": 9,
-      "lego_index": 1,
-      "position": 13,
-      "known_text": "我现在说一点中文。",
-      "target_text": "Hablo un poco de español ahora.",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 9,
-       "canon": "P26"
-      },
-      "word_count": 31,
-      "lego_count": 1,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0009L01U06",
-     "slot": "known",
-     "audio_id": "709123d0-983a-452f-96bf-7c5db0fdfcfd"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0009L01U06",
-     "slot": "target1",
-     "audio_id": "b5072bae-e29e-4227-baef-9b8f42e6a790"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0009L01U06",
-     "slot": "target2",
-     "audio_id": "196aabb0-9035-441d-afff-0926760c1526"
     }
    ]
   },
@@ -386,7 +278,7 @@
    "seed": 14,
    "id": "S0014L01U06",
    "lego": "S0014L01",
-   "known": "你整天说中文吗？",
+   "known": "你整天说西班牙语吗？",
    "target": "¿Hablas español todo el día?",
    "ops": [
     {
@@ -396,7 +288,7 @@
       "seed_number": 14,
       "lego_index": 1,
       "position": 12,
-      "known_text": "你整天说中文吗？",
+      "known_text": "你整天说西班牙语吗？",
       "target_text": "¿Hablas español todo el día?",
       "phrase_role": "use",
       "introduce": true,
@@ -418,7 +310,7 @@
      "target": "phrase",
      "phrase_id": "spa_for_zho:S0014L01U06",
      "slot": "known",
-     "audio_id": "eabc7f3b-2da2-42ea-93f3-b01d1784341b"
+     "audio_id": "5c717f02-727c-4f6c-a7a7-ed70aa885c72"
     },
     {
      "op": "audio.link",
@@ -440,7 +332,7 @@
    "seed": 15,
    "id": "S0015L03U06",
    "lego": "S0015L03",
-   "known": "而且我想让你明天和我说中文。",
+   "known": "而且我想让你明天和我说西班牙语。",
    "target": "Y quiero que hables español conmigo mañana.",
    "ops": [
     {
@@ -450,7 +342,7 @@
       "seed_number": 15,
       "lego_index": 3,
       "position": 12,
-      "known_text": "而且我想让你明天和我说中文。",
+      "known_text": "而且我想让你明天和我说西班牙语。",
       "target_text": "Y quiero que hables español conmigo mañana.",
       "phrase_role": "use",
       "introduce": true,
@@ -472,7 +364,7 @@
      "target": "phrase",
      "phrase_id": "spa_for_zho:S0015L03U06",
      "slot": "known",
-     "audio_id": "10eddff4-b6e3-4793-a666-e14754f52f2d"
+     "audio_id": "cb20dd22-c19d-491b-8b30-96657a9faace"
     },
     {
      "op": "audio.link",
@@ -703,60 +595,6 @@
      "phrase_id": "spa_for_zho:S0032L01U09",
      "slot": "target2",
      "audio_id": "0131fcc6-13a1-491a-a919-2f65f403143e"
-    }
-   ]
-  },
-  {
-   "seed": 33,
-   "id": "S0033L02U06",
-   "lego": "S0033L02",
-   "known": "你学中文学了多久了?",
-   "target": "¿Cuánto tiempo llevas aprendiendo español?",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "spa_for_zho:S0033L02U06",
-      "seed_number": 33,
-      "lego_index": 2,
-      "position": 11,
-      "known_text": "你学中文学了多久了?",
-      "target_text": "¿Cuánto tiempo llevas aprendiendo español?",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 33,
-       "canon": "P26"
-      },
-      "word_count": 42,
-      "lego_count": 1,
-      "lego_position": "middle"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0033L02U06",
-     "slot": "known",
-     "audio_id": "238bceec-d4a6-4fcc-b61a-ac8905efff86"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0033L02U06",
-     "slot": "target1",
-     "audio_id": "1c915c8c-0590-4156-bd9f-97a55e605e28"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0033L02U06",
-     "slot": "target2",
-     "audio_id": "f7737ff3-23c0-4b77-9d83-558df2922895"
     }
    ]
   },
@@ -1304,7 +1142,7 @@
    "seed": 64,
    "id": "S0064L01U06",
    "lego": "S0064L01",
-   "known": "学中文不容易但是很有趣。",
+   "known": "学西班牙语不容易但是很有趣。",
    "target": "Aprender español no es fácil pero es divertido.",
    "ops": [
     {
@@ -1314,7 +1152,7 @@
       "seed_number": 64,
       "lego_index": 1,
       "position": 12,
-      "known_text": "学中文不容易但是很有趣。",
+      "known_text": "学西班牙语不容易但是很有趣。",
       "target_text": "Aprender español no es fácil pero es divertido.",
       "phrase_role": "use",
       "introduce": true,
@@ -1336,7 +1174,7 @@
      "target": "phrase",
      "phrase_id": "spa_for_zho:S0064L01U06",
      "slot": "known",
-     "audio_id": "798bec62-483a-49c7-91bd-1d2a059f120c"
+     "audio_id": "f146ca22-48d4-4155-868b-b74dcd4b3113"
     },
     {
      "op": "audio.link",
@@ -2485,60 +2323,6 @@
      "phrase_id": "spa_for_zho:S0150L02U07",
      "slot": "target2",
      "audio_id": "86fcce52-451f-491e-bb42-9f4b5a4fab78"
-    }
-   ]
-  },
-  {
-   "seed": 159,
-   "id": "S0159L01U06",
-   "lego": "S0159L01",
-   "known": "这个词用中文怎么说？",
-   "target": "¿Cómo se dice esta palabra en español?",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "spa_for_zho:S0159L01U06",
-      "seed_number": 159,
-      "lego_index": 1,
-      "position": 10,
-      "known_text": "这个词用中文怎么说？",
-      "target_text": "¿Cómo se dice esta palabra en español?",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 159,
-       "canon": "P26"
-      },
-      "word_count": 38,
-      "lego_count": 1,
-      "lego_position": "start"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0159L01U06",
-     "slot": "known",
-     "audio_id": "e86b150b-b3a9-4a28-8c06-00ccaa8cccba"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0159L01U06",
-     "slot": "target1",
-     "audio_id": "5f8eb6fa-94e3-4dff-bf4a-7278ab86b32a"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_for_zho:S0159L01U06",
-     "slot": "target2",
-     "audio_id": "58e02a05-a2b3-4115-8c9e-b5367483234a"
     }
    ]
   },
@@ -6489,7 +6273,7 @@
   ]
  },
  "counts": {
-  "planned": 72,
+  "planned": 68,
   "variant_form": 35,
   "variant_zut": 35,
   "no_home": 25,

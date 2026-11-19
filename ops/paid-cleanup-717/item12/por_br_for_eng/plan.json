@@ -1,7 +1,7 @@
 {
  "course": "por_br_for_eng",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:03.286Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:07.941Z",
  "ops": [],
  "rows": [
   {
@@ -222,7 +222,7 @@
   },
   {
    "seed": 49,
-   "id": "S0049L01U09",
+   "id": "S0049L01U08",
    "lego": "S0049L01",
    "known": "it's like this, if you know what I mean",
    "target": "É assim, se você entende o que eu quero dizer",
@@ -230,10 +230,10 @@
     {
      "op": "phrase.insert",
      "row": {
-      "id": "por_br_for_eng:S0049L01U09",
+      "id": "por_br_for_eng:S0049L01U08",
       "seed_number": 49,
       "lego_index": 1,
-      "position": 22,
+      "position": 21,
       "known_text": "it's like this, if you know what I mean",
       "target_text": "É assim, se você entende o que eu quero dizer",
       "phrase_role": "use",
@@ -254,21 +254,21 @@
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0049L01U09",
+     "phrase_id": "por_br_for_eng:S0049L01U08",
      "slot": "known",
      "audio_id": "4ebeb13f-c057-4d01-a675-5f857b7c5056"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0049L01U09",
+     "phrase_id": "por_br_for_eng:S0049L01U08",
      "slot": "target1",
      "audio_id": "a7699ec1-bfa5-4fa6-9350-cda73012a028"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0049L01U09",
+     "phrase_id": "por_br_for_eng:S0049L01U08",
      "slot": "target2",
      "audio_id": "01228e54-260a-4b05-89a4-67426232ea2f"
     }
@@ -869,6 +869,60 @@
    ]
   },
   {
+   "seed": 189,
+   "id": "S0189L01U06",
+   "lego": "S0189L01",
+   "known": "yes that's a good idea",
+   "target": "sim, é uma boa ideia",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "por_br_for_eng:S0189L01U06",
+      "seed_number": 189,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "yes that's a good idea",
+      "target_text": "sim, é uma boa ideia",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 189,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "por_br_for_eng:S0189L01U06",
+     "slot": "known",
+     "audio_id": "4047b9cb-ace1-46ca-98bf-011e75f6551e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "por_br_for_eng:S0189L01U06",
+     "slot": "target1",
+     "audio_id": "514329ed-6f0f-4148-bbe9-74a657b719b0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "por_br_for_eng:S0189L01U06",
+     "slot": "target2",
+     "audio_id": "9dae5dee-5787-4dba-b01e-2b284aa44396"
+    }
+   ]
+  },
+  {
    "seed": 243,
    "id": "S0243L01U06",
    "lego": "S0243L01",
@@ -1032,7 +1086,7 @@
   },
   {
    "seed": 256,
-   "id": "S0256L02U06",
+   "id": "S0256L02U07",
    "lego": "S0256L02",
    "known": "I think I'll be ready in less than an hour",
    "target": "eu acho que vou estar pronto em menos de uma hora",
@@ -1040,10 +1094,10 @@
     {
      "op": "phrase.insert",
      "row": {
-      "id": "por_br_for_eng:S0256L02U06",
+      "id": "por_br_for_eng:S0256L02U07",
       "seed_number": 256,
       "lego_index": 2,
-      "position": 9,
+      "position": 10,
       "known_text": "I think I'll be ready in less than an hour",
       "target_text": "eu acho que vou estar pronto em menos de uma hora",
       "phrase_role": "use",
@@ -1064,21 +1118,21 @@
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0256L02U06",
+     "phrase_id": "por_br_for_eng:S0256L02U07",
      "slot": "known",
      "audio_id": "9413a076-e080-438c-8934-87c08e9ea159"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0256L02U06",
+     "phrase_id": "por_br_for_eng:S0256L02U07",
      "slot": "target1",
      "audio_id": "c6d0146a-9006-4f61-8363-f61d0755cff7"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0256L02U06",
+     "phrase_id": "por_br_for_eng:S0256L02U07",
      "slot": "target2",
      "audio_id": "d5e2185f-ab14-408a-a9db-b39ea3428769"
     }
@@ -1302,7 +1356,7 @@
   },
   {
    "seed": 287,
-   "id": "S0287L01U06",
+   "id": "S0287L01U07",
    "lego": "S0287L01",
    "known": "how many people do you know who like watching television?",
    "target": "quantas pessoas você conhece que gostam de ver televisão?",
@@ -1310,10 +1364,10 @@
     {
      "op": "phrase.insert",
      "row": {
-      "id": "por_br_for_eng:S0287L01U06",
+      "id": "por_br_for_eng:S0287L01U07",
       "seed_number": 287,
       "lego_index": 1,
-      "position": 9,
+      "position": 11,
       "known_text": "how many people do you know who like watching television?",
       "target_text": "quantas pessoas você conhece que gostam de ver televisão?",
       "phrase_role": "use",
@@ -1334,21 +1388,21 @@
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0287L01U06",
+     "phrase_id": "por_br_for_eng:S0287L01U07",
      "slot": "known",
      "audio_id": "9f0e580a-c3cf-48a1-a6e0-c302f6589029"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0287L01U06",
+     "phrase_id": "por_br_for_eng:S0287L01U07",
      "slot": "target1",
      "audio_id": "3cb2cfd3-8a09-48ac-9909-5cef53818d6f"
     },
     {
      "op": "audio.link",
      "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0287L01U06",
+     "phrase_id": "por_br_for_eng:S0287L01U07",
      "slot": "target2",
      "audio_id": "4ce0f52b-8eda-4498-8d63-f28de7cbdde8"
     }
@@ -1405,60 +1459,6 @@
      "phrase_id": "por_br_for_eng:S0331L02U06",
      "slot": "target2",
      "audio_id": "88cbc219-5d0f-4840-aeff-11d09beb2b8d"
-    }
-   ]
-  },
-  {
-   "seed": 419,
-   "id": "S0419L03U06",
-   "lego": "S0419L03",
-   "known": "if they want people to like them",
-   "target": "se querem que as pessoas gostem deles",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "por_br_for_eng:S0419L03U06",
-      "seed_number": 419,
-      "lego_index": 3,
-      "position": 11,
-      "known_text": "if they want people to like them",
-      "target_text": "se querem que as pessoas gostem deles",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 419,
-       "canon": "P26"
-      },
-      "word_count": 37,
-      "lego_count": 7,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0419L03U06",
-     "slot": "known",
-     "audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0419L03U06",
-     "slot": "target1",
-     "audio_id": "8dff9760-2e04-48eb-9381-28b4899eff80"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0419L03U06",
-     "slot": "target2",
-     "audio_id": "1e937bcb-ded3-49cd-b3b5-9b9b20987300"
     }
    ]
   },
@@ -1583,7 +1583,7 @@
       "id": "por_br_for_eng:S0450L04U09",
       "seed_number": 450,
       "lego_index": 4,
-      "position": 14,
+      "position": 15,
       "known_text": "no they have to catch the train themselves",
       "target_text": "não, eles têm que pegar o trem",
       "phrase_role": "use",
@@ -1637,7 +1637,7 @@
       "id": "por_br_for_eng:S0486L02U06",
       "seed_number": 486,
       "lego_index": 2,
-      "position": 11,
+      "position": 12,
       "known_text": "I think your eyes are beautiful",
       "target_text": "eu acho que seus olhos são bonitos",
       "phrase_role": "use",
@@ -1691,7 +1691,7 @@
       "id": "por_br_for_eng:S0507L02U10",
       "seed_number": 507,
       "lego_index": 2,
-      "position": 15,
+      "position": 16,
       "known_text": "we moved to the city",
       "target_text": "nos mudamos para a cidade",
       "phrase_role": "use",
@@ -1745,7 +1745,7 @@
       "id": "por_br_for_eng:S0615L03U06",
       "seed_number": 615,
       "lego_index": 3,
-      "position": 11,
+      "position": 12,
       "known_text": "I thought you were very brave to say that",
       "target_text": "eu achei que você foi muito corajoso em dizer isso",
       "phrase_role": "use",
@@ -1787,60 +1787,6 @@
    ]
   },
   {
-   "seed": 616,
-   "id": "S0616L04U06",
-   "lego": "S0616L04",
-   "known": "you were very brave to say you thought that",
-   "target": "você foi muito corajoso ao dizer que achava isso",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "por_br_for_eng:S0616L04U06",
-      "seed_number": 616,
-      "lego_index": 4,
-      "position": 11,
-      "known_text": "you were very brave to say you thought that",
-      "target_text": "você foi muito corajoso ao dizer que achava isso",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 616,
-       "canon": "P26"
-      },
-      "word_count": 48,
-      "lego_count": 9,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0616L04U06",
-     "slot": "known",
-     "audio_id": "6b3a7105-11aa-42ac-b785-c6cee8174856"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0616L04U06",
-     "slot": "target1",
-     "audio_id": "aab0841a-bc68-4395-a3a7-0b9a85b600d2"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "por_br_for_eng:S0616L04U06",
-     "slot": "target2",
-     "audio_id": "56071e65-4eb2-4070-9ab8-d7e4bf95b4c3"
-    }
-   ]
-  },
-  {
    "seed": 620,
    "id": "S0620L02U06",
    "lego": "S0620L02",
@@ -1853,7 +1799,7 @@
       "id": "por_br_for_eng:S0620L02U06",
       "seed_number": 620,
       "lego_index": 2,
-      "position": 9,
+      "position": 10,
       "known_text": "it's a very long time since we last saw each other",
       "target_text": "já passou muito tempo desde a última vez que nos vimos",
       "phrase_role": "use",
@@ -2723,7 +2669,7 @@
   ]
  },
  "counts": {
-  "planned": 35,
+  "planned": 34,
   "variant_zut": 77,
   "no_home": 18,
   "covered": 10

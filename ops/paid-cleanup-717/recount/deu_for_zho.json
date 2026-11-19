@@ -1,6 +1,6 @@
 {
  "course": "deu_for_zho",
- "db": "ssi_copy_20261118t033000z",
+ "db": "ssi_copy_20261119t033000z",
  "item12": [
   6,
   11,
@@ -21,6 +21,7 @@
   43,
   44,
   47,
+  49,
   50,
   53,
   54,
@@ -646,6 +647,11 @@
    "kind": "notnew_untaught"
   },
   {
+   "id": "S0160L03",
+   "kind": "dup_debut",
+   "earlier": "S0001L03"
+  },
+  {
    "id": "S0161L02",
    "kind": "dup_debut",
    "earlier": "S0054L01"
@@ -885,6 +891,10 @@
   {
    "id": "S0158L02B01",
    "first": "S0098L02B01"
+  },
+  {
+   "id": "S0160L03B02",
+   "first": "S0004L02B01"
   },
   {
    "id": "S0161L02B01",

@@ -1,7 +1,7 @@
 {
  "course": "eng_for_spa",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:00.238Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:05.061Z",
  "ops": [],
  "rows": [
   {
@@ -873,7 +873,7 @@
    "id": "S0108L03U06",
    "lego": "S0108L03",
    "known": "no esperábamos despertarnos en mitad de la noche",
-   "target": "we didn't hope to wake in the middle of the night",
+   "target": "we didn't expect to wake up in the middle of the night",
    "ops": [
     {
      "op": "phrase.insert",
@@ -883,7 +883,7 @@
       "lego_index": 3,
       "position": 902,
       "known_text": "no esperábamos despertarnos en mitad de la noche",
-      "target_text": "we didn't hope to wake in the middle of the night",
+      "target_text": "we didn't expect to wake up in the middle of the night",
       "phrase_role": "use",
       "introduce": true,
       "connected_lego_ids": [],
@@ -894,7 +894,7 @@
        "seed_sentence_of": 108,
        "canon": "P26"
       },
-      "word_count": 49,
+      "word_count": 54,
       "lego_count": 8,
       "lego_position": "start"
      }
@@ -911,14 +911,14 @@
      "target": "phrase",
      "phrase_id": "eng_for_spa:S0108L03U06",
      "slot": "target1",
-     "audio_id": "b305a61d-3c1a-4b6f-a581-818dd8f3eea5"
+     "audio_id": "61fabd56-8832-4f64-b4e8-c63e6c2148d9"
     },
     {
      "op": "audio.link",
      "target": "phrase",
      "phrase_id": "eng_for_spa:S0108L03U06",
      "slot": "target2",
-     "audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+     "audio_id": "a6186058-7268-43d2-9c05-de9feadb3ab9"
     }
    ]
   },

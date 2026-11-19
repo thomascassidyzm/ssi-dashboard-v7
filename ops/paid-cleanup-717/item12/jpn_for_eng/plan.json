@@ -1,7 +1,7 @@
 {
  "course": "jpn_for_eng",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:02.392Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:07.032Z",
  "ops": [],
  "rows": [
   {
@@ -445,61 +445,6 @@
    ]
   },
   {
-   "seed": 34,
-   "id": "S0034L02U07",
-   "lego": "S0034L02",
-   "known": "he doesn't want to be quiet when other people are here",
-   "target": "他の人がいると、彼は静かにしたくない",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "jpn_for_eng:S0034L02U07",
-      "seed_number": 34,
-      "lego_index": 2,
-      "position": 11,
-      "known_text": "he doesn't want to be quiet when other people are here",
-      "target_text": "他の人がいると、彼は静かにしたくない",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 34,
-       "canon": "P26"
-      },
-      "word_count": 18,
-      "lego_count": 11,
-      "lego_position": "start",
-      "target_text_roman": "hoka no hito ga iru to, kare wa shizuka ni shitakunai."
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "jpn_for_eng:S0034L02U07",
-     "slot": "known",
-     "audio_id": "85606933-ab0b-47ad-9d24-e30a0fcba186"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "jpn_for_eng:S0034L02U07",
-     "slot": "target1",
-     "audio_id": "4e29d8be-7b64-4d4b-b0ac-52dd05636510"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "jpn_for_eng:S0034L02U07",
-     "slot": "target2",
-     "audio_id": "95a06c05-e9ee-4b63-8bf5-186f740f51f5"
-    }
-   ]
-  },
-  {
    "seed": 38,
    "id": "S0038L01U06",
    "lego": "S0038L01",
@@ -559,7 +504,7 @@
    "id": "S0041L01U06",
    "lego": "S0041L01",
    "known": "I feel okay, but I'm starting to feel tired",
-   "target": "大丈夫。でも、疲れてきてる",
+   "target": "大丈夫、でも、疲れてきてる",
    "ops": [
     {
      "op": "phrase.insert",
@@ -569,7 +514,7 @@
       "lego_index": 1,
       "position": 9,
       "known_text": "I feel okay, but I'm starting to feel tired",
-      "target_text": "大丈夫。でも、疲れてきてる",
+      "target_text": "大丈夫、でも、疲れてきてる",
       "phrase_role": "use",
       "introduce": true,
       "connected_lego_ids": [],
@@ -583,7 +528,7 @@
       "word_count": 13,
       "lego_count": 9,
       "lego_position": "start",
-      "target_text_roman": "daijoobu. demo, tsukarete kiteru."
+      "target_text_roman": "daijoobu, demo, tsukarete kiteru"
      }
     },
     {
@@ -598,14 +543,14 @@
      "target": "phrase",
      "phrase_id": "jpn_for_eng:S0041L01U06",
      "slot": "target1",
-     "audio_id": "139f1ff1-7a62-400e-938b-1deaa8a7b593"
+     "audio_id": "05183446-a831-4923-a5af-1c692c826220"
     },
     {
      "op": "audio.link",
      "target": "phrase",
      "phrase_id": "jpn_for_eng:S0041L01U06",
      "slot": "target2",
-     "audio_id": "022cd33a-af4b-4e59-884f-fc4ff6d6eca2"
+     "audio_id": "2fbed221-e6aa-45ef-9ce5-77eb7caf2d4a"
     }
    ]
   },
@@ -2091,61 +2036,6 @@
      "phrase_id": "jpn_for_eng:S0248L02U08",
      "slot": "target2",
      "audio_id": "67ff8493-7226-495a-a83e-4d4129ef7f56"
-    }
-   ]
-  },
-  {
-   "seed": 258,
-   "id": "S0258L01U06",
-   "lego": "S0258L01",
-   "known": "what's that blue thing over there?",
-   "target": "あそこにある青いの、何？",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "jpn_for_eng:S0258L01U06",
-      "seed_number": 258,
-      "lego_index": 1,
-      "position": 9,
-      "known_text": "what's that blue thing over there?",
-      "target_text": "あそこにある青いの、何？",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 258,
-       "canon": "P26"
-      },
-      "word_count": 12,
-      "lego_count": 6,
-      "lego_position": "start",
-      "target_text_roman": "asoko ni aru aoi no, nani?"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "jpn_for_eng:S0258L01U06",
-     "slot": "known",
-     "audio_id": "36240c5c-d61c-4520-b213-07453aa730d9"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "jpn_for_eng:S0258L01U06",
-     "slot": "target1",
-     "audio_id": "de019f25-0b64-48b2-9eaa-9e87dca23618"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "jpn_for_eng:S0258L01U06",
-     "slot": "target2",
-     "audio_id": "3ba14121-5e97-4fe6-a721-452976ccebda"
     }
    ]
   },
@@ -8463,7 +8353,7 @@
   ]
  },
  "counts": {
-  "planned": 145,
+  "planned": 143,
   "variant_zut": 11,
   "no_home": 54,
   "variant_form": 2,

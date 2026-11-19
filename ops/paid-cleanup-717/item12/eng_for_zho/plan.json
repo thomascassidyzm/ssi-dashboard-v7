@@ -1,7 +1,7 @@
 {
  "course": "eng_for_zho",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:01.153Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:05.863Z",
  "ops": [],
  "rows": [
   {
@@ -599,60 +599,6 @@
    ]
   },
   {
-   "seed": 28,
-   "id": "S0028L03U06",
-   "lego": "S0028L03",
-   "known": "尽快开始说话是有用的",
-   "target": "It's useful to start talking as soon as you can",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_zho:S0028L03U06",
-      "seed_number": 28,
-      "lego_index": 3,
-      "position": 9,
-      "known_text": "尽快开始说话是有用的",
-      "target_text": "It's useful to start talking as soon as you can",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 28,
-       "canon": "P26"
-      },
-      "word_count": 47,
-      "lego_count": 1,
-      "lego_position": null
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_zho:S0028L03U06",
-     "slot": "known",
-     "audio_id": "21c80cc8-f0f8-4b69-9a16-fe9a6ffbb3e2"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_zho:S0028L03U06",
-     "slot": "target1",
-     "audio_id": "26c8a5b7-8d5b-4323-a29f-e1b4a309f62a"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_zho:S0028L03U06",
-     "slot": "target2",
-     "audio_id": "eae8c71a-4296-48f9-8b3a-3af3d64716f3"
-    }
-   ]
-  },
-  {
    "seed": 30,
    "id": "S0030L03U06",
    "lego": "S0030L03",
@@ -973,60 +919,6 @@
      "phrase_id": "eng_for_zho:S0064L02U06",
      "slot": "target2",
      "audio_id": "15605400-43a2-44d0-8481-bfeedc15c901"
-    }
-   ]
-  },
-  {
-   "seed": 71,
-   "id": "S0071L02U06",
-   "lego": "S0071L02",
-   "known": "我们不想让任何人听到真相",
-   "target": "We didn't want to let anyone hear the truth",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "eng_for_zho:S0071L02U06",
-      "seed_number": 71,
-      "lego_index": 2,
-      "position": 14,
-      "known_text": "我们不想让任何人听到真相",
-      "target_text": "We didn't want to let anyone hear the truth",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 71,
-       "canon": "P26"
-      },
-      "word_count": 43,
-      "lego_count": 1,
-      "lego_position": null
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_zho:S0071L02U06",
-     "slot": "known",
-     "audio_id": "97ceb58d-c620-495f-9c91-68b4c71b2410"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_zho:S0071L02U06",
-     "slot": "target1",
-     "audio_id": "13e84be5-8037-4ba5-b22c-b1ddb9a3c3e7"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "eng_for_zho:S0071L02U06",
-     "slot": "target2",
-     "audio_id": "c7d45a63-237c-4750-8b64-9a0dc69f9cca"
     }
    ]
   },
@@ -7886,7 +7778,7 @@
   ]
  },
  "counts": {
-  "planned": 102,
+  "planned": 100,
   "variant_form": 58,
   "variant_zut": 3,
   "no_home": 4,

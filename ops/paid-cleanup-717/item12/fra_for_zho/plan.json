@@ -1,7 +1,7 @@
 {
  "course": "fra_for_zho",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:01.869Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:06.538Z",
  "ops": [],
  "rows": [
   {
@@ -62,7 +62,7 @@
    "seed": 4,
    "id": "S0004L02U06",
    "lego": "S0004L02",
-   "known": "怎么用中文说一些东西",
+   "known": "怎么用法语说一些东西",
    "target": "comment dire quelque chose en français",
    "ops": [
     {
@@ -72,7 +72,7 @@
       "seed_number": 4,
       "lego_index": 2,
       "position": 12,
-      "known_text": "怎么用中文说一些东西",
+      "known_text": "怎么用法语说一些东西",
       "target_text": "comment dire quelque chose en français",
       "phrase_role": "use",
       "introduce": true,
@@ -94,7 +94,7 @@
      "target": "phrase",
      "phrase_id": "fra_for_zho:S0004L02U06",
      "slot": "known",
-     "audio_id": "0acb3688-0e3e-4cc8-812b-6c023e003ad3"
+     "audio_id": "abfee8d6-2012-4379-9b58-0da620842bdd"
     },
     {
      "op": "audio.link",
@@ -332,7 +332,7 @@
    "seed": 13,
    "id": "S0013L02U05",
    "lego": "S0013L02",
-   "known": "你中文说得很好。",
+   "known": "你法语说得很好。",
    "target": "Tu parles très bien français.",
    "ops": [
     {
@@ -342,7 +342,7 @@
       "seed_number": 13,
       "lego_index": 2,
       "position": 10,
-      "known_text": "你中文说得很好。",
+      "known_text": "你法语说得很好。",
       "target_text": "Tu parles très bien français.",
       "phrase_role": "use",
       "introduce": true,
@@ -364,7 +364,7 @@
      "target": "phrase",
      "phrase_id": "fra_for_zho:S0013L02U05",
      "slot": "known",
-     "audio_id": "489d6489-f26f-494a-974c-93f5a9fb859d"
+     "audio_id": "8267de72-a793-4f86-a70c-c403f62eced8"
     },
     {
      "op": "audio.link",
@@ -386,7 +386,7 @@
    "seed": 15,
    "id": "S0015L02U07",
    "lego": "S0015L02",
-   "known": "而且我想让你明天和我说中文。",
+   "known": "而且我想让你明天和我说法语。",
    "target": "Et je veux que tu parles français avec moi demain.",
    "ops": [
     {
@@ -396,7 +396,7 @@
       "seed_number": 15,
       "lego_index": 2,
       "position": 10,
-      "known_text": "而且我想让你明天和我说中文。",
+      "known_text": "而且我想让你明天和我说法语。",
       "target_text": "Et je veux que tu parles français avec moi demain.",
       "phrase_role": "use",
       "introduce": true,
@@ -418,7 +418,7 @@
      "target": "phrase",
      "phrase_id": "fra_for_zho:S0015L02U07",
      "slot": "known",
-     "audio_id": "a41d0187-39b2-4698-b043-1cff31085256"
+     "audio_id": "c25caf64-6fc9-4bc6-84ac-af5a4c8b819a"
     },
     {
      "op": "audio.link",
@@ -1736,7 +1736,7 @@
    "seed": 160,
    "id": "S0160L01U06",
    "lego": "S0160L01",
-   "known": "这个词用中文怎么说？",
+   "known": "这个词用法语怎么说？",
    "target": "Comment est-ce qu'on dit ce mot en français ?",
    "ops": [
     {
@@ -1746,7 +1746,7 @@
       "seed_number": 160,
       "lego_index": 1,
       "position": 9,
-      "known_text": "这个词用中文怎么说？",
+      "known_text": "这个词用法语怎么说？",
       "target_text": "Comment est-ce qu'on dit ce mot en français ?",
       "phrase_role": "use",
       "introduce": true,
@@ -1768,7 +1768,7 @@
      "target": "phrase",
      "phrase_id": "fra_for_zho:S0160L01U06",
      "slot": "known",
-     "audio_id": "13b6ba61-c475-4f4e-94be-3e1d6b23874c"
+     "audio_id": "f0ebddf7-3212-4c67-b23c-e4bff588085d"
     },
     {
      "op": "audio.link",
@@ -2601,19 +2601,11 @@
   "variant_form": [
    {
     "seed": 1,
-    "known": "我现在想和你说中文。",
+    "known": "我现在想和你说法语。",
     "target": "Je veux parler français avec toi maintenant.",
     "row": "S0001L05U02",
-    "row_known": "我想现在和你说中文。",
+    "row_known": "我想现在和你说法语。",
     "row_target": "je veux parler français avec toi maintenant"
-   },
-   {
-    "seed": 9,
-    "known": "我现在说一点中文。",
-    "target": "Je parle un peu français maintenant.",
-    "row": "S0009L02U01",
-    "row_known": "我现在说一点法语",
-    "row_target": "je parle un peu français maintenant"
    },
    {
     "seed": 18,
@@ -2784,7 +2776,7 @@
    },
    {
     "seed": 64,
-    "known": "学中文不容易但是很有趣。",
+    "known": "学法语不容易但是很有趣。",
     "target": "Apprendre le français n'est pas facile mais c'est amusant.",
     "legos": [
      "S0064L01 不是 | n'est pas",
@@ -4858,7 +4850,7 @@
  },
  "counts": {
   "planned": 48,
-  "variant_form": 19,
+  "variant_form": 18,
   "no_home": 28,
   "variant_zut": 5,
   "not_built": 365

@@ -1,7 +1,7 @@
 {
  "course": "fra_ca_for_eng",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:01.301Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:05.993Z",
  "ops": [],
  "rows": [
   {
@@ -1137,60 +1137,6 @@
      "audio_id": "2c6fd1f5-4de9-4e1d-88e5-3ddae7b3eefc"
     }
    ]
-  },
-  {
-   "seed": 559,
-   "id": "S0559L03U06",
-   "lego": "S0559L03",
-   "known": "have you found the path through the wood?",
-   "target": "As-tu trouvé le sentier à travers le bois?",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "fra_ca_for_eng:S0559L03U06",
-      "seed_number": 559,
-      "lego_index": 3,
-      "position": 12,
-      "known_text": "have you found the path through the wood?",
-      "target_text": "As-tu trouvé le sentier à travers le bois?",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 559,
-       "canon": "P26"
-      },
-      "word_count": 42,
-      "lego_count": 8,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "fra_ca_for_eng:S0559L03U06",
-     "slot": "known",
-     "audio_id": "f6fdce79-683e-4069-9a45-73bc169819d8"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "fra_ca_for_eng:S0559L03U06",
-     "slot": "target1",
-     "audio_id": "b4e806fd-2df1-47e0-b69e-0bdf72a2c28a"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "fra_ca_for_eng:S0559L03U06",
-     "slot": "target2",
-     "audio_id": "f7fd50c1-9dbd-4223-bf08-1173788a2df3"
-    }
-   ]
   }
  ],
  "listed": {
@@ -1308,7 +1254,7 @@
   ]
  },
  "counts": {
-  "planned": 22,
+  "planned": 21,
   "no_home": 12,
   "variant_form": 1
  }

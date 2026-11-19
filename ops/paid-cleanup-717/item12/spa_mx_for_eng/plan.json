@@ -1,7 +1,7 @@
 {
  "course": "spa_mx_for_eng",
- "db": "ssi_copy_20261118t033000z",
- "at": "2026-11-18T13:31:04.137Z",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:08.776Z",
  "ops": [],
  "rows": [
   {
@@ -1031,60 +1031,6 @@
    ]
   },
   {
-   "seed": 108,
-   "id": "S0108L03U14",
-   "lego": "S0108L03",
-   "known": "we didn't hope to wake in the middle of the night",
-   "target": "no esperábamos despertarnos en medio de la noche",
-   "ops": [
-    {
-     "op": "phrase.insert",
-     "row": {
-      "id": "spa_mx_for_eng:S0108L03U14",
-      "seed_number": 108,
-      "lego_index": 3,
-      "position": 20,
-      "known_text": "we didn't hope to wake in the middle of the night",
-      "target_text": "no esperábamos despertarnos en medio de la noche",
-      "phrase_role": "use",
-      "introduce": true,
-      "connected_lego_ids": [],
-      "status": "draft",
-      "metadata": {
-       "format": "build_use",
-       "pipeline": "cs717-item12-seed-sentence",
-       "seed_sentence_of": 108,
-       "canon": "P26"
-      },
-      "word_count": 48,
-      "lego_count": 11,
-      "lego_position": "end"
-     }
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_mx_for_eng:S0108L03U14",
-     "slot": "known",
-     "audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_mx_for_eng:S0108L03U14",
-     "slot": "target1",
-     "audio_id": "186029d3-04ae-4676-965c-bb4c87305fb1"
-    },
-    {
-     "op": "audio.link",
-     "target": "phrase",
-     "phrase_id": "spa_mx_for_eng:S0108L03U14",
-     "slot": "target2",
-     "audio_id": "edb729d0-f7de-4e6b-8494-1183887a563c"
-    }
-   ]
-  },
-  {
    "seed": 109,
    "id": "S0109L03U14",
    "lego": "S0109L03",
@@ -1520,7 +1466,7 @@
    "seed": 138,
    "id": "S0138L05U09",
    "lego": "S0138L05",
-   "known": "this was where my friend wanted to meet us",
+   "known": "this is where my friend wanted to meet us",
    "target": "aquí es donde mi amigo quería reunirse con nosotros",
    "ops": [
     {
@@ -1530,7 +1476,7 @@
       "seed_number": 138,
       "lego_index": 5,
       "position": 12,
-      "known_text": "this was where my friend wanted to meet us",
+      "known_text": "this is where my friend wanted to meet us",
       "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
       "phrase_role": "use",
       "introduce": true,
@@ -1552,7 +1498,7 @@
      "target": "phrase",
      "phrase_id": "spa_mx_for_eng:S0138L05U09",
      "slot": "known",
-     "audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+     "audio_id": "0951ad7a-f622-45b4-b75a-7a71834ad532"
     },
     {
      "op": "audio.link",
@@ -5898,6 +5844,15 @@
     ]
    },
    {
+    "seed": 419,
+    "known": "if they want people to appreciate them",
+    "target": "si quieren que la gente les aprecie",
+    "legos": [
+     "S0419L01 everyone | gente",
+     "S0419L02 to like them | les aprecie"
+    ]
+   },
+   {
     "seed": 458,
     "known": "it was all much easier in the past",
     "target": "Todo era mucho más fácil en el pasado",
@@ -6068,6 +6023,11 @@
     "target": "no necesitamos sentirnos contentos, solo necesitamos trabajar duro"
    },
    {
+    "seed": 108,
+    "known": "we didn't expect to wake up in the middle of the night",
+    "target": "no esperábamos despertarnos en medio de la noche"
+   },
+   {
     "seed": 159,
     "known": "that isn't what I'm trying to say",
     "target": "eso no es lo que estoy tratando de decir"
@@ -6091,13 +6051,13 @@
    },
    {
     "seed": 139,
-    "known": "I'm sorry that I need to leave so early",
-    "target": "lo siento que necesito irme tan temprano"
+    "known": "I'm sorry, but I need to leave so early",
+    "target": "lo siento, pero necesito irme tan temprano"
    },
    {
     "seed": 140,
-    "known": "I'm sorry that I can't see what you're trying to show me",
-    "target": "lo siento que no puedo ver lo que intentas mostrarme"
+    "known": "I'm sorry, but I can't see what you're trying to show me",
+    "target": "lo siento, pero no puedo ver lo que intentas mostrarme"
    },
    {
     "seed": 163,
@@ -6157,10 +6117,10 @@
   ]
  },
  "counts": {
-  "planned": 103,
+  "planned": 102,
   "variant_zut": 5,
-  "no_home": 49,
-  "covered": 10,
+  "no_home": 50,
+  "covered": 11,
   "sibling": 9,
   "lego_is_seed": 1,
   "variant_form": 2
