@@ -30,11 +30,11 @@ const TOPICS = {
       { id: 'F303', role: 'reuse', from: 24, to: 33, hint: "a different person redeploys the phrase coined earlier as a tease, shorthand or argument; its ownership can be contested" },
     ],
   },
-  letters: {
-    moment: "Rhi lifted floorboards in an old house on Mill Street this morning and found a bundle of letters from 1944, a soldier writing to a woman who, judging by the address, was not the woman he married. The owners told her to bin them. They're in her van. She's just told the table she can't decide what to do.",
+  warsaw: {
+    moment: "Danny is back from three days in Warsaw visiting his cousin. He's just told the table that the beautiful old town there, which looks medieval, was flattened in the war and rebuilt in the fifties, partly from eighteenth-century paintings by a Venetian painter, and that where the painter got a detail wrong they sometimes built it wrong on purpose. Hugh has asked whether that makes it fake.",
     ending: "It does not resolve: the last turns have found the real question underneath and two people are still on opposite sides of it, mid-thought, when it stops.",
     plan: [
-      { id: 'F2', from: 2, to: 7, hint: "someone asks Rhi a plain factual question about the letters; she answers it and then volunteers a detail nobody asked for that changes the picture" },
+      { id: 'F2', from: 2, to: 7, hint: "someone asks Danny a plain factual question about the place or the rebuilding; he answers it and then volunteers a detail nobody asked for that changes the picture" },
       { id: 'F301', from: 7, to: 14, hint: "after someone has been building a view for a few turns, a listener hands it back compressed into a sharper name for what is really at stake; the person who built the view ratifies it and adopts that name next turn", followup: "ratify-and-adopt" },
       { id: 'F305', from: 13, to: 21, hint: "someone pushes back with a counterexample; the person under pressure welcomes it and folds it in as making their own point stronger, not weaker" },
       { id: 'F16', from: 19, to: 27, hint: "someone concedes the point they've just been given, and then holds their own position with a but" },
