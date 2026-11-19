@@ -28,6 +28,11 @@
  *     quota/credit/limit/402; any other 5xx except a 503 (phase8 restarting), which counts as a timeout.
  *   - a timeout is one failed ask (logged, moved past); 5 in a row stops the day.
  *   - APPROVAL_UNVERIFIED while the Command Surface is DOWN: wait 2 min, send that one ask once more (Kai 19 Nov); surface UP: stop.
+ *   - POPTY-RESTART RULE (Kai, 19 Nov, after Popty refused connections at 22:54:43Z and 5 eng_for_tam asks failed in 0.6 s):
+ *     a CONNECTION-level failure only (fetch failed / ECONNREFUSED / socket reset; never a timeout, provider error, quota, 402
+ *     or limit) polls :3470/health every 15 s for up to 10 min; once green, THAT ask is sent ONCE more and the run carries on.
+ *     Still down after 10 min: stop. Asks logged with a connection failure BEFORE this rule existed (no connRule mark) get
+ *     one more attempt at the END of their list (re-queue), under the same limit checks.
  *   - NEVER otherwise retries an ask or a batch. A relaunch resumes after the last logged ask: a rendered ask is never re-sent,
  *     and an ask whose render landed but whose links did not get logged is resumed at the link step only.
  * PACE FIX (cs #95, Kai 19 Nov): a paid render takes ~4.6 s whatever its length and 93% of asks are paid, so credit burned
@@ -127,7 +132,7 @@ async function post(url, body, headers, timeoutMs) {
     const json = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status} (no JSON)` }))
     return { http: res.status, json }
   } catch (e) {
-    return { http: 0, json: { ok: false, error: e.name === 'AbortError' ? 'TIMEOUT' : e.message } }
+    return { http: 0, json: { ok: false, error: e.name === 'AbortError' ? 'TIMEOUT' : [e.message, e.cause && (e.cause.code || e.cause.message)].filter(Boolean).join(': ') } }
   } finally { clearTimeout(t) }
 }
 
@@ -142,6 +147,18 @@ function stopReason(http, json) {
 async function surfaceDown(error) {
   if (/could not be reached|ECONNREFUSED|ECONNRESET|socket hang up/i.test(String(error || ''))) return true
   try { const res = await fetch(SURFACE + '/api/version', { signal: AbortSignal.timeout(5000) }); return !res.ok } catch { return true }
+}
+
+const CONN_FAIL = /fetch failed|ECONNREFUSED|ECONNRESET|socket hang up|other side closed|UND_ERR_SOCKET/i
+const connFailed = (r) => r.http === 0 && r.json && r.json.error !== 'TIMEOUT' && CONN_FAIL.test(String(r.json.error || ''))
+async function poptyGreen() {
+  try { const res = await fetch(BASE + '/health', { signal: AbortSignal.timeout(5000) }); const j = await res.json(); return res.ok && j.status === 'ok' && j.supabase === 'connected' } catch { return false }
+}
+// Up to 10 min of /health polls every 15 s; true once Popty answers green.
+async function waitPoptyGreen() {
+  const end = Date.now() + 600_000
+  while (Date.now() < end) { await sleep(15_000); if (await poptyGreen()) return true }
+  return false
 }
 
 const linkOf = (s) => (s.legoId ? { legoId: s.legoId } : s.phraseId ? { phraseId: s.phraseId } : s.seedNumber != null ? { seedNumber: s.seedNumber } : null)
@@ -179,11 +196,16 @@ async function main() {
   append({ kind: 'start', at: new Date().toISOString(), day: DAY, order: ORDER, until: Number.isFinite(UNTIL) ? new Date(UNTIL).toISOString() : null, batch: path.relative(path.join(HERE, '../../..'), BATCH), asks: asks.length, resumedPast: rendered.size, tally: start })
   console.log(`day ${DAY}: ${asks.length} asks, ${rendered.size} already logged; own tally today ${start.today}, total ${start.total}, item-9 reserve ${start.reserve}`)
 
+  // RE-QUEUE (Kai 19 Nov): asks whose latest row is a pre-rule connection failure get ONE more attempt after the list.
+  const requeue = asks.filter((a) => { const p = rendered.get(askKey(a)); return p && p.http === 0 && !p.connRule && !p.requeue && p.error !== 'TIMEOUT' })
+  const items = [...asks.map((a) => ({ ask: a, requeue: false })), ...requeue.map((a) => ({ ask: a, requeue: true }))]
+  if (requeue.length) console.log(`${requeue.length} pre-rule connection failure(s) re-queued at the end of the list`)
   let timeouts = 0, sent = 0, nextCheckpoint = null, stop = null
-  for (let idx = 0; idx < asks.length; idx++) {
-    const ask = asks[idx]
+  for (let idx = 0; idx < items.length; idx++) {
+    const ask = items[idx].ask
+    const isRequeue = items[idx].requeue
     const key = askKey(ask)
-    const prior = rendered.get(key)
+    const prior = isRequeue ? null : rendered.get(key)
     if (prior) {
       // Resume: a rendered/linked ask whose link step never got logged is linked now; nothing is re-sent to the render route.
       if (prior.audioId && !linkedKey.has(key)) append({ ...(await linkSlots(idx, ask, prior.audioId)), key })
@@ -218,11 +240,22 @@ async function main() {
       await sleep(120_000)
       r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
     }
+    // POPTY-RESTART RULE (header): connection-level failure → wait for green /health (≤10 min) → this ask once more.
+    let connRetried = false
+    if (connFailed(r)) {
+      append({ kind: 'popty-down', idx, key, at: new Date().toISOString(), error: String(r.json.error || '').slice(0, 300) })
+      if (!(await waitPoptyGreen())) {
+        append({ kind: 'render', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, http: 0, ok: false, charsSpent: 0, connRule: true, ...(isRequeue ? { requeue: true } : {}), error: String(r.json.error || '').slice(0, 300) })
+        stop = `ask ${idx}: Popty unreachable and /health not green within 10 min (${r.json.error})`; break
+      }
+      r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
+      connRetried = true
+    }
     sent++
     const j = r.json || {}
     const rec = { kind: 'render', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, http: r.http,
       ok: !!j.ok, source: j.source, code: j.code, charsSpent: Number(j.charsSpent) || 0, audioId: j.audioId, voiceId: j.voiceId,
-      error: j.ok ? undefined : String(j.error || '').slice(0, 300) }
+      error: j.ok ? undefined : String(j.error || '').slice(0, 300), connRule: true, ...(connRetried ? { connRetried: true } : {}), ...(isRequeue ? { requeue: true } : {}) }
     if (j.ok && j.source === 'rendered' && !(Number(j.charsSpent) > 0)) rec.charsSpent = ask.chars // never under-count a paid render
     append(rec)
     const why = stopReason(r.http, j)
@@ -235,7 +268,7 @@ async function main() {
       append(l)
       if (l.http === 401 || l.http === 403) { stop = `link-clip refused identity (HTTP ${l.http}): ${l.error}`; break }
     }
-    if (sent % 200 === 0) console.log(`${new Date().toISOString()} ask ${idx + 1}/${asks.length}`)
+    if (sent % 200 === 0) console.log(`${new Date().toISOString()} ask ${idx + 1}/${items.length}`)
     await sleep(100)
   }
   const end = tally()
