@@ -1,0 +1,112 @@
+[
+ {
+  "id": "S0024L01",
+  "seed": 24,
+  "known": "non riuscirò a",
+  "target": "I'm not going to be able to",
+  "syllables_recount": 9,
+  "verdict": "hold",
+  "pieces": null,
+  "reason": "Italian says \"I'm not going to be able\" in ONE word (riuscirò, the future of riuscire), so the shared English cut (\"I'm not going to\" + \"to be able to\") has no Italian piece to sit on. The only cut that is whole on both sides is \"non riuscirò | I'm not going to be able\" (8 syllables) + \"a ricordare | to remember\", which leaves an English LEGO ending on \"be able\" and has no precedent in the course. Recommendation: keep this one LEGO at 9 as a stated exception. Yes / no?"
+ },
+ {
+  "id": "S0026L02",
+  "seed": 26,
+  "known": "sentirmi come se fossi quasi pronto",
+  "target": "feeling as if I'm nearly ready",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "sentirmi come se fossi",
+    "target": "feeling as if I'm",
+    "where": "S0026L02 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "quasi pronto",
+    "target": "nearly ready",
+    "where": "S0026L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. fee-ling-as-if-I'm-near-ly-rea-dy. Cut on the LEGO's own component rows: \"feeling as if I'm\" + \"nearly ready\"."
+ },
+ {
+  "id": "S0115L02",
+  "seed": 115,
+  "known": "pronto ad avere una conversazione",
+  "target": "ready to have a conversation",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "avere una conversazione",
+    "target": "have a conversation",
+    "where": "S0115L02 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "pronto ad",
+    "target": "ready to",
+    "where": "S0115L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. rea-dy-to-have-a-con-ver-sa-tion. English table cut: \"ready to\" + \"have a conversation\" (the Spanish sister course already teaches \"have a conversation\" as its own LEGO in this seed). All rows stay under \"have a conversation\"."
+ },
+ {
+  "id": "S0143L02",
+  "seed": 143,
+  "known": "di cui stavamo parlando prima",
+  "target": "as we were talking about earlier",
+  "syllables_recount": 10,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "di cui stavamo parlando",
+    "target": "as we were talking about",
+    "where": "S0143L02 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "prima",
+    "target": "earlier",
+    "where": "S0143L03 (appended)",
+    "is_new": true,
+    "pair_of": null
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. English table cut: \"as we were talking about\" + \"earlier\". KEPT AT 7 syllables: \"as we were talking about\" — the Italian \"di cui\" carries both \"as\" and \"about\", which sit at the two ends of the English, so it cannot be cut smaller without a gap."
+ },
+ {
+  "id": "S0273L01",
+  "seed": 273,
+  "known": "purtroppo ho troppo",
+  "target": "unfortunately I've got too much",
+  "syllables_recount": 9,
+  "verdict": "cut",
+  "pieces": [
+   {
+    "known": "ho troppo",
+    "target": "I've got too much",
+    "where": "S0273L01 (in place)",
+    "is_new": true,
+    "pair_of": null
+   },
+   {
+    "known": "purtroppo",
+    "target": "unfortunately",
+    "where": "S0273L02 (appended)",
+    "is_new": false,
+    "pair_of": "S0086L02"
+   }
+  ],
+  "reason": "Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. un-for-tu-nate-ly-I've-got-too-much. \"unfortunately | purtroppo\" is already taught (seed 86), so it joins this seed as a not-new LEGO and the LEGO shrinks to \"I've got too much | ho troppo\". Every row stays; one use row is added because the basket had only 4."
+ }
+]

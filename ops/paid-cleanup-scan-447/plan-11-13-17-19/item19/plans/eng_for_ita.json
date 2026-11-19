@@ -1,0 +1,2775 @@
+{
+ "course": "eng_for_ita",
+ "roman_flags": [],
+ "dumped": "2026-11-19T10:03:44Z",
+ "decisions": 5,
+ "verdicts": {
+  "kai": 1,
+  "recut": 4
+ },
+ "touched_seeds": [
+  26,
+  115,
+  143,
+  273
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0024L01",
+   "verdict": "kai",
+   "why": "Re-count: 9 syllables. HOLD — KAI: Italian says \"I'm not going to be able\" in ONE word (riuscirò, the future of riuscire), so the shared English cut (\"I'm not going to\" + \"to be able to\") has no Italian piece to sit on. The only cut that is whole on both sides is \"non riuscirò | I'm not going to be able\" (8 syllables) + \"a ricordare | to remember\", which leaves an English LEGO ending on \"be able\" and has no precedent in the course. Recommendation: keep this one LEGO at 9 as a stated exception. Yes / no?",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 24,
+    "known": "Non riuscirò a ricordare facilmente.",
+    "target": "I'm not going to be able to remember easily."
+   },
+   "before": {
+    "known": "non riuscirò a",
+    "target": "I'm not going to be able to",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0026L02",
+   "verdict": "recut",
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. fee-ling-as-if-I'm-near-ly-rea-dy. Cut on the LEGO's own component rows: \"feeling as if I'm\" + \"nearly ready\". Pieces: “feeling as if I'm” = “sentirmi come se fossi” [S0026L02 (in place), NEW]; “nearly ready” = “quasi pronto” [S0026L03 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 26,
+    "known": "Mi piace sentirmi come se fossi quasi pronto ad andare.",
+    "target": "I like feeling as if I'm nearly ready to go."
+   },
+   "before": {
+    "known": "sentirmi come se fossi quasi pronto",
+    "target": "feeling as if I'm nearly ready",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "sentirmi come se fossi",
+    "target": "feeling as if I'm",
+    "type": "M",
+    "components": [
+     [
+      "sentirmi",
+      "feeling"
+     ],
+     [
+      "come se fossi",
+      "as if I'm"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_ita:S0026L02C01",
+     "role": "component",
+     "before": [
+      "sentirmi",
+      "feeling"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0026L02C02",
+     "role": "component",
+     "before": [
+      "come se fossi",
+      "as if I'm"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0026L02C03",
+     "role": "component",
+     "before": [
+      "quasi",
+      "nearly"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0026L02C04",
+     "role": "component",
+     "before": [
+      "pronto",
+      "ready"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0026L02B01",
+     "role": "build",
+     "before": [
+      "sentirmi come se fossi quasi pronto",
+      "feeling as if I'm nearly ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02B02",
+     "role": "build",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto",
+      "I like feeling as if I'm nearly ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02B03",
+     "role": "build",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto ad imparare",
+      "I like feeling as if I'm nearly ready to learn"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02B04",
+     "role": "build",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto ad andare",
+      "I like feeling as if I'm nearly ready to go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02U01",
+     "role": "use",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto a parlare inglese",
+      "I like feeling as if I'm nearly ready to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02U02",
+     "role": "use",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto a incontrare persone che parlano inglese",
+      "I like feeling as if I'm nearly ready to meet people who speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02U03",
+     "role": "use",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto a iniziare a parlare di più",
+      "I like feeling as if I'm nearly ready to start talking more"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02U04",
+     "role": "use",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto a tornare",
+      "I like feeling as if I'm nearly ready to come back"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02U05",
+     "role": "use",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto a spiegare cosa intendo",
+      "I like feeling as if I'm nearly ready to explain what I mean"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0026L02U06",
+     "role": "use",
+     "before": [
+      "mi piace sentirmi come se fossi quasi pronto a scoprire qual è la risposta",
+      "I like feeling as if I'm nearly ready to find out what the answer is"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "quasi pronto",
+      "target_text": "nearly ready",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "quasi",
+        "target": "nearly"
+       },
+       {
+        "known": "pronto",
+        "target": "ready"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03B01",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "quasi pronto ad imparare",
+      "target_text": "nearly ready to learn",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03B02",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "quasi pronto a parlare",
+      "target_text": "nearly ready to speak",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03B03",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "quasi pronto a tornare",
+      "target_text": "nearly ready to come back",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03U01",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "mi piace sentirmi come se fossi quasi pronto a parlare",
+      "target_text": "I like feeling as if I'm nearly ready to speak",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03U02",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "mi piace sentirmi come se fossi quasi pronto a iniziare a parlare",
+      "target_text": "I like feeling as if I'm nearly ready to start talking",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03U03",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "mi piace sentirmi come se fossi quasi pronto a spiegare",
+      "target_text": "I like feeling as if I'm nearly ready to explain",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03U04",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "mi piace sentirmi come se fossi quasi pronto a incontrare persone",
+      "target_text": "I like feeling as if I'm nearly ready to meet people",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0026L03U05",
+      "course_code": "eng_for_ita",
+      "seed_number": 26,
+      "lego_index": 3,
+      "known_text": "mi piace sentirmi come se fossi quasi pronto a parlare inglese molto bene",
+      "target_text": "I like feeling as if I'm nearly ready to speak English very well",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 13,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0115L02",
+   "verdict": "recut",
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. rea-dy-to-have-a-con-ver-sa-tion. English table cut: \"ready to\" + \"have a conversation\" (the Spanish sister course already teaches \"have a conversation\" as its own LEGO in this seed). All rows stay under \"have a conversation\". Pieces: “have a conversation” = “avere una conversazione” [S0115L02 (in place), NEW]; “ready to” = “pronto ad” [S0115L03 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 115,
+    "known": "Non mi sento come se fossi pronto ad avere una conversazione.",
+    "target": "I don't feel as if I'm ready to have a conversation."
+   },
+   "before": {
+    "known": "pronto ad avere una conversazione",
+    "target": "ready to have a conversation",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "avere una conversazione",
+    "target": "have a conversation",
+    "type": "M",
+    "components": [
+     [
+      "avere",
+      "have"
+     ],
+     [
+      "una conversazione",
+      "a conversation"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_ita:S0115L02C01",
+     "role": "component",
+     "before": [
+      "pronto",
+      "ready"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0115L02C02",
+     "role": "component",
+     "before": [
+      "ad avere una conversazione",
+      "to have a conversation"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0115L02B01",
+     "role": "build",
+     "before": [
+      "pronto ad avere una conversazione",
+      "ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02B02",
+     "role": "build",
+     "before": [
+      "quasi pronto ad avere una conversazione",
+      "nearly ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02B03",
+     "role": "build",
+     "before": [
+      "non sono pronta ad avere una conversazione",
+      "I'm not ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02B04",
+     "role": "build",
+     "before": [
+      "non mi sento come se fossi pronto ad avere una conversazione",
+      "I don't feel as if I'm ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02U01",
+     "role": "use",
+     "before": [
+      "non mi sento come se fossi pronto ad avere una conversazione ancora",
+      "I don't feel as if I'm ready to have a conversation yet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02U02",
+     "role": "use",
+     "before": [
+      "ecco perché mi piacerebbe essere pronto ad avere una conversazione",
+      "that is why I'd like to be ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02U03",
+     "role": "use",
+     "before": [
+      "mi sento come se fossi quasi pronto ad avere una conversazione",
+      "I feel as if I'm nearly ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02U04",
+     "role": "use",
+     "before": [
+      "non me lo aspettavo così difficile essere pronto ad avere una conversazione",
+      "I wasn't expecting it to be so difficult to be ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0115L02U05",
+     "role": "use",
+     "before": [
+      "non mi sento come se fossi pronto ad avere una conversazione oggi",
+      "I don't feel as if I'm ready to have a conversation today"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "pronto ad",
+      "target_text": "ready to",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "pronto",
+        "target": "ready"
+       },
+       {
+        "known": "ad",
+        "target": "to"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03B01",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "pronto ad imparare",
+      "target_text": "ready to learn",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03B02",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "pronto ad andare",
+      "target_text": "ready to go",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03B03",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "quasi pronto ad andare",
+      "target_text": "nearly ready to go",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03U01",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "non mi sento come se fossi pronto ad andare",
+      "target_text": "I don't feel as if I'm ready to go",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03U02",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "non mi sento come se fossi pronto ad imparare oggi",
+      "target_text": "I don't feel as if I'm ready to learn today",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03U03",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "non mi sento come se fossi pronto ad andare oggi",
+      "target_text": "I don't feel as if I'm ready to go today",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03U04",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "ecco perché mi piacerebbe essere pronto ad andare",
+      "target_text": "that is why I'd like to be ready to go",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0115L03U05",
+      "course_code": "eng_for_ita",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "ecco perché mi piacerebbe essere pronto ad imparare",
+      "target_text": "that is why I'd like to be ready to learn",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 2,
+    "sample": [
+     {
+      "id": "eng_for_ita:S0118L01U05",
+      "known": "mi sentivo sicuramente pronto ad avere una conversazione l'ultima volta",
+      "target": "I felt definitely ready to have a conversation last time",
+      "seed": 118
+     },
+     {
+      "id": "eng_for_ita:S0122L01U02",
+      "known": "sta iniziando a sembrare come se fossi pronto ad avere una conversazione",
+      "target": "it's starting to feel as if I'm ready to have a conversation",
+      "seed": 122
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0143L02",
+   "verdict": "recut",
+   "why": "Re-count: 10 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. English table cut: \"as we were talking about\" + \"earlier\". KEPT AT 7 syllables: \"as we were talking about\" — the Italian \"di cui\" carries both \"as\" and \"about\", which sit at the two ends of the English, so it cannot be cut smaller without a gap. Pieces: “as we were talking about” = “di cui stavamo parlando” [S0143L02 (in place), NEW]; “earlier” = “prima” [S0143L03 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 143,
+    "known": "È la stessa cosa di cui stavamo parlando prima.",
+    "target": "It's the same thing as we were talking about earlier."
+   },
+   "before": {
+    "known": "di cui stavamo parlando prima",
+    "target": "as we were talking about earlier",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "di cui stavamo parlando",
+    "target": "as we were talking about",
+    "type": "M",
+    "components": [
+     [
+      "di cui",
+      "as"
+     ],
+     [
+      "stavamo parlando",
+      "we were talking about"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_ita:S0143L02B01",
+     "role": "build",
+     "before": [
+      "di cui stavamo parlando prima",
+      "as we were talking about earlier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02B02",
+     "role": "build",
+     "before": [
+      "È la stessa cosa di cui stavamo parlando prima",
+      "it's the same thing as we were talking about earlier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02B03",
+     "role": "build",
+     "before": [
+      "penso che sia la stessa cosa di cui stavamo parlando prima",
+      "I think it's the same thing as we were talking about earlier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02U01",
+     "role": "use",
+     "before": [
+      "sono così contento che sia la stessa cosa di cui stavamo parlando prima",
+      "I'm so happy that it's the same thing as we were talking about earlier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02U02",
+     "role": "use",
+     "before": [
+      "È la stessa cosa di cui stavamo parlando prima e ti sono grato per l'aiuto",
+      "it's the same thing as we were talking about earlier and I'm grateful to you for helping"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02U03",
+     "role": "use",
+     "before": [
+      "nessun problema, è la stessa cosa di cui stavamo parlando prima",
+      "no problem it's the same thing as we were talking about earlier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02U04",
+     "role": "use",
+     "before": [
+      "mi dispiace non riuscire a vedere che è la stessa cosa di cui stavamo parlando prima",
+      "I'm sorry that I can't see it's the same thing as we were talking about earlier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0143L02U05",
+     "role": "use",
+     "before": [
+      "credo che sia la stessa cosa di cui stavamo parlando prima ma non sono sicura",
+      "I believe it's the same thing as we were talking about earlier but I'm not sure"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "prima",
+      "target_text": "earlier",
+      "type": "A",
+      "is_new": true
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03B01",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "la stessa cosa di cui stavamo parlando prima",
+      "target_text": "the same thing as we were talking about earlier",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03B02",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "la stessa idea di cui stavamo parlando prima",
+      "target_text": "the same idea as we were talking about earlier",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03B03",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "non è la stessa cosa di cui stavamo parlando prima",
+      "target_text": "it's not the same thing as we were talking about earlier",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03U01",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "è la stessa idea di cui stavamo parlando prima",
+      "target_text": "it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 10,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03U02",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "penso che sia la stessa idea di cui stavamo parlando prima",
+      "target_text": "I think it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03U03",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "credo che sia la stessa idea di cui stavamo parlando prima",
+      "target_text": "I believe it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03U04",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "nessun problema, è la stessa idea di cui stavamo parlando prima",
+      "target_text": "no problem it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0143L03U05",
+      "course_code": "eng_for_ita",
+      "seed_number": 143,
+      "lego_index": 3,
+      "known_text": "sono così contento che sia la stessa idea di cui stavamo parlando prima",
+      "target_text": "I'm so happy that it's the same idea as we were talking about earlier",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 14,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0273L01",
+   "verdict": "recut",
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): cut at the natural join, each piece the seed's own words. un-for-tu-nate-ly-I've-got-too-much. \"unfortunately | purtroppo\" is already taught (seed 86), so it joins this seed as a not-new LEGO and the LEGO shrinks to \"I've got too much | ho troppo\". Every row stays; one use row is added because the basket had only 4. Pieces: “I've got too much” = “ho troppo” [S0273L01 (in place), NEW]; “unfortunately” = “purtroppo” [S0273L02 (appended), not new: taught at S0086L02]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 273,
+    "known": "No, purtroppo ho troppo lavoro.",
+    "target": "No unfortunately I've got too much work."
+   },
+   "before": {
+    "known": "purtroppo ho troppo",
+    "target": "unfortunately I've got too much",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "ho troppo",
+    "target": "I've got too much",
+    "type": "M",
+    "components": [
+     [
+      "ho",
+      "I've got"
+     ],
+     [
+      "troppo",
+      "too much"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_ita:S0273L01C01",
+     "role": "component",
+     "before": [
+      "purtroppo",
+      "unfortunately"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0273L01C02",
+     "role": "component",
+     "before": [
+      "ho",
+      "I've got"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0273L01C03",
+     "role": "component",
+     "before": [
+      "troppo",
+      "too much"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ita:S0273L01B01",
+     "role": "build",
+     "before": [
+      "purtroppo ho troppo",
+      "unfortunately I've got too much"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0273L01B02",
+     "role": "build",
+     "before": [
+      "purtroppo ho troppo lavoro",
+      "unfortunately I've got too much work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0273L01B03",
+     "role": "build",
+     "before": [
+      "no, purtroppo ho troppo lavoro",
+      "no unfortunately I've got too much work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0273L01U02",
+     "role": "use",
+     "before": [
+      "purtroppo ho troppo lavoro per aspettarlo",
+      "unfortunately I've got too much work to wait for him"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0273L01U03",
+     "role": "use",
+     "before": [
+      "sembra che purtroppo ho troppo da fare",
+      "it sounds like unfortunately I've got too much to do"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0273L01U04",
+     "role": "use",
+     "before": [
+      "purtroppo ho troppo lavoro per venire con voi",
+      "unfortunately I've got too much work to come with you"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ita:S0273L01U05",
+     "role": "use",
+     "before": [
+      "purtroppo ho troppo lavoro per partire il mese prossimo",
+      "unfortunately I've got too much work to leave next month"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_ita:S0273L01U06",
+     "course_code": "eng_for_ita",
+     "seed_number": 273,
+     "lego_index": 1,
+     "known_text": "purtroppo ho troppo lavoro oggi",
+     "target_text": "unfortunately I've got too much work today",
+     "phrase_role": "use",
+     "position": 12,
+     "word_count": 7,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 273,
+      "lego_index": 2,
+      "known_text": "purtroppo",
+      "target_text": "unfortunately",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0026L02",
+   "set": {
+    "known_text": "sentirmi come se fossi",
+    "target_text": "feeling as if I'm",
+    "components": [
+     {
+      "known": "sentirmi",
+      "target": "feeling"
+     },
+     {
+      "known": "come se fossi",
+      "target": "as if I'm"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "sentirmi come se fossi quasi pronto",
+    "target_text": "feeling as if I'm nearly ready"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "quasi pronto",
+    "target_text": "nearly ready",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "quasi",
+      "target": "nearly"
+     },
+     {
+      "known": "pronto",
+      "target": "ready"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03B01",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "quasi pronto ad imparare",
+    "target_text": "nearly ready to learn",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03B02",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "quasi pronto a parlare",
+    "target_text": "nearly ready to speak",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03B03",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "quasi pronto a tornare",
+    "target_text": "nearly ready to come back",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03U01",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "mi piace sentirmi come se fossi quasi pronto a parlare",
+    "target_text": "I like feeling as if I'm nearly ready to speak",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03U02",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "mi piace sentirmi come se fossi quasi pronto a iniziare a parlare",
+    "target_text": "I like feeling as if I'm nearly ready to start talking",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03U03",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "mi piace sentirmi come se fossi quasi pronto a spiegare",
+    "target_text": "I like feeling as if I'm nearly ready to explain",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03U04",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "mi piace sentirmi come se fossi quasi pronto a incontrare persone",
+    "target_text": "I like feeling as if I'm nearly ready to meet people",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0026L03U05",
+    "course_code": "eng_for_ita",
+    "seed_number": 26,
+    "lego_index": 3,
+    "known_text": "mi piace sentirmi come se fossi quasi pronto a parlare inglese molto bene",
+    "target_text": "I like feeling as if I'm nearly ready to speak English very well",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 13,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0115L02",
+   "set": {
+    "known_text": "avere una conversazione",
+    "target_text": "have a conversation",
+    "components": [
+     {
+      "known": "avere",
+      "target": "have"
+     },
+     {
+      "known": "una conversazione",
+      "target": "a conversation"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "pronto ad avere una conversazione",
+    "target_text": "ready to have a conversation"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "pronto ad",
+    "target_text": "ready to",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "pronto",
+      "target": "ready"
+     },
+     {
+      "known": "ad",
+      "target": "to"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03B01",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "pronto ad imparare",
+    "target_text": "ready to learn",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03B02",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "pronto ad andare",
+    "target_text": "ready to go",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03B03",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "quasi pronto ad andare",
+    "target_text": "nearly ready to go",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03U01",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "non mi sento come se fossi pronto ad andare",
+    "target_text": "I don't feel as if I'm ready to go",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03U02",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "non mi sento come se fossi pronto ad imparare oggi",
+    "target_text": "I don't feel as if I'm ready to learn today",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03U03",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "non mi sento come se fossi pronto ad andare oggi",
+    "target_text": "I don't feel as if I'm ready to go today",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03U04",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "ecco perché mi piacerebbe essere pronto ad andare",
+    "target_text": "that is why I'd like to be ready to go",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0115L03U05",
+    "course_code": "eng_for_ita",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "ecco perché mi piacerebbe essere pronto ad imparare",
+    "target_text": "that is why I'd like to be ready to learn",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0143L02",
+   "set": {
+    "known_text": "di cui stavamo parlando",
+    "target_text": "as we were talking about",
+    "components": [
+     {
+      "known": "di cui",
+      "target": "as"
+     },
+     {
+      "known": "stavamo parlando",
+      "target": "we were talking about"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "di cui stavamo parlando prima",
+    "target_text": "as we were talking about earlier"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "prima",
+    "target_text": "earlier",
+    "type": "A",
+    "is_new": true
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03B01",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "la stessa cosa di cui stavamo parlando prima",
+    "target_text": "the same thing as we were talking about earlier",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03B02",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "la stessa idea di cui stavamo parlando prima",
+    "target_text": "the same idea as we were talking about earlier",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03B03",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "non è la stessa cosa di cui stavamo parlando prima",
+    "target_text": "it's not the same thing as we were talking about earlier",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03U01",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "è la stessa idea di cui stavamo parlando prima",
+    "target_text": "it's the same idea as we were talking about earlier",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 10,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03U02",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "penso che sia la stessa idea di cui stavamo parlando prima",
+    "target_text": "I think it's the same idea as we were talking about earlier",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 12,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03U03",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "credo che sia la stessa idea di cui stavamo parlando prima",
+    "target_text": "I believe it's the same idea as we were talking about earlier",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 12,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03U04",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "nessun problema, è la stessa idea di cui stavamo parlando prima",
+    "target_text": "no problem it's the same idea as we were talking about earlier",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 12,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0143L03U05",
+    "course_code": "eng_for_ita",
+    "seed_number": 143,
+    "lego_index": 3,
+    "known_text": "sono così contento che sia la stessa idea di cui stavamo parlando prima",
+    "target_text": "I'm so happy that it's the same idea as we were talking about earlier",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 14,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0273L01",
+   "set": {
+    "known_text": "ho troppo",
+    "target_text": "I've got too much",
+    "components": [
+     {
+      "known": "ho",
+      "target": "I've got"
+     },
+     {
+      "known": "troppo",
+      "target": "too much"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "purtroppo ho troppo",
+    "target_text": "unfortunately I've got too much"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ita:S0273L01U06",
+    "course_code": "eng_for_ita",
+    "seed_number": 273,
+    "lego_index": 1,
+    "known_text": "purtroppo ho troppo lavoro oggi",
+    "target_text": "unfortunately I've got too much work today",
+    "phrase_role": "use",
+    "position": 12,
+    "word_count": 7,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 273,
+    "lego_index": 2,
+    "known_text": "purtroppo",
+    "target_text": "unfortunately",
+    "type": "A",
+    "is_new": false
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T10:03:59Z",
+  "baseline_failing_seeds": 234,
+  "per_seed": {
+   "26": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "115": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "143": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "273": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T10:04:11Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 33,
+    "status": 200,
+    "secs": 10.8,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ita",
+        "lego_id": "S0026L02"
+       },
+       "before": {
+        "id": "0a2ced0c-0ad8-470b-9fa5-9d95e5b8373c",
+        "seed_number": 26,
+        "lego_index": 2,
+        "lego_id": "S0026L02",
+        "known_text": "sentirmi come se fossi quasi pronto",
+        "target_text": "feeling as if I'm nearly ready",
+        "components": [
+         {
+          "known": "sentirmi",
+          "target": "feeling"
+         },
+         {
+          "known": "come se fossi",
+          "target": "as if I'm"
+         },
+         {
+          "known": "quasi",
+          "target": "nearly"
+         },
+         {
+          "known": "pronto",
+          "target": "ready"
+         }
+        ],
+        "known_audio_id": "4512a138-e6bb-47b9-b040-9964e94055d2",
+        "target1_audio_id": "91e8b8ab-cffe-470c-848b-89f4c1aca340",
+        "target2_audio_id": "52ced910-4956-49b3-9f23-87c664547505",
+        "presentation_audio_id": "c76446a3-7bb1-4103-be4b-57f757b0b568"
+       },
+       "after": {
+        "id": "0a2ced0c-0ad8-470b-9fa5-9d95e5b8373c",
+        "seed_number": 26,
+        "lego_index": 2,
+        "lego_id": "S0026L02",
+        "known_text": "sentirmi come se fossi",
+        "target_text": "feeling as if I'm",
+        "components": [
+         {
+          "known": "sentirmi",
+          "target": "feeling"
+         },
+         {
+          "known": "come se fossi",
+          "target": "as if I'm"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 26,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "e93437df-ee93-436a-b343-1341a74d830c",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": "S0026L03",
+        "known_text": "quasi pronto",
+        "target_text": "nearly ready",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03B01",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "quasi pronto ad imparare",
+        "target_text": "nearly ready to learn",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03B02",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "quasi pronto a parlare",
+        "target_text": "nearly ready to speak",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03B03",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "quasi pronto a tornare",
+        "target_text": "nearly ready to come back",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03U01",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "mi piace sentirmi come se fossi quasi pronto a parlare",
+        "target_text": "I like feeling as if I'm nearly ready to speak",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03U02",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "mi piace sentirmi come se fossi quasi pronto a iniziare a parlare",
+        "target_text": "I like feeling as if I'm nearly ready to start talking",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03U03",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "mi piace sentirmi come se fossi quasi pronto a spiegare",
+        "target_text": "I like feeling as if I'm nearly ready to explain",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03U04",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "mi piace sentirmi come se fossi quasi pronto a incontrare persone",
+        "target_text": "I like feeling as if I'm nearly ready to meet people",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0026L03U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0026L03U05",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "mi piace sentirmi come se fossi quasi pronto a parlare inglese molto bene",
+        "target_text": "I like feeling as if I'm nearly ready to speak English very well",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ita",
+        "lego_id": "S0115L02"
+       },
+       "before": {
+        "id": "c8b16b0e-a344-4f31-b7db-5e149c08294d",
+        "seed_number": 115,
+        "lego_index": 2,
+        "lego_id": "S0115L02",
+        "known_text": "pronto ad avere una conversazione",
+        "target_text": "ready to have a conversation",
+        "components": [
+         {
+          "known": "pronto",
+          "target": "ready"
+         },
+         {
+          "known": "ad avere una conversazione",
+          "target": "to have a conversation"
+         }
+        ],
+        "known_audio_id": "1b5194e4-ec96-49c6-8bc4-fcc809830889",
+        "target1_audio_id": "a8021bbb-93a4-4ac4-b9ef-a82daecf1a0f",
+        "target2_audio_id": "7fecd572-63a3-4ad4-8e4a-115fe331bd16",
+        "presentation_audio_id": "0a391cf3-6475-4777-a37c-69c0fd8342af"
+       },
+       "after": {
+        "id": "c8b16b0e-a344-4f31-b7db-5e149c08294d",
+        "seed_number": 115,
+        "lego_index": 2,
+        "lego_id": "S0115L02",
+        "known_text": "avere una conversazione",
+        "target_text": "have a conversation",
+        "components": [
+         {
+          "known": "avere",
+          "target": "have"
+         },
+         {
+          "known": "una conversazione",
+          "target": "a conversation"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 115,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "1fc296db-6213-4f26-aed7-256c02949118",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": "S0115L03",
+        "known_text": "pronto ad",
+        "target_text": "ready to",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03B01",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "pronto ad imparare",
+        "target_text": "ready to learn",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03B02",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "pronto ad andare",
+        "target_text": "ready to go",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03B03",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "quasi pronto ad andare",
+        "target_text": "nearly ready to go",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03U01",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "non mi sento come se fossi pronto ad andare",
+        "target_text": "I don't feel as if I'm ready to go",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03U02",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "non mi sento come se fossi pronto ad imparare oggi",
+        "target_text": "I don't feel as if I'm ready to learn today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03U03",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "non mi sento come se fossi pronto ad andare oggi",
+        "target_text": "I don't feel as if I'm ready to go today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03U04",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "ecco perché mi piacerebbe essere pronto ad andare",
+        "target_text": "that is why I'd like to be ready to go",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0115L03U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0115L03U05",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "ecco perché mi piacerebbe essere pronto ad imparare",
+        "target_text": "that is why I'd like to be ready to learn",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ita",
+        "lego_id": "S0143L02"
+       },
+       "before": {
+        "id": "879d9fcb-9dfa-4eaf-b383-796c29d1bf4d",
+        "seed_number": 143,
+        "lego_index": 2,
+        "lego_id": "S0143L02",
+        "known_text": "di cui stavamo parlando prima",
+        "target_text": "as we were talking about earlier",
+        "components": [],
+        "known_audio_id": "76ba1ac6-d1ec-40f6-a724-855c70a262ca",
+        "target1_audio_id": "c7531772-81b7-4d63-8993-418b5c2415db",
+        "target2_audio_id": "ffd8ea9f-cd12-4166-9688-a26850bf75b0",
+        "presentation_audio_id": "586e5fd2-3f33-4a2d-8fd2-a64b585f8e0f"
+       },
+       "after": {
+        "id": "879d9fcb-9dfa-4eaf-b383-796c29d1bf4d",
+        "seed_number": 143,
+        "lego_index": 2,
+        "lego_id": "S0143L02",
+        "known_text": "di cui stavamo parlando",
+        "target_text": "as we were talking about",
+        "components": [
+         {
+          "known": "di cui",
+          "target": "as"
+         },
+         {
+          "known": "stavamo parlando",
+          "target": "we were talking about"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 143,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "dc8c04be-9ec7-4777-ad56-8444551e7ab9",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": "S0143L03",
+        "known_text": "prima",
+        "target_text": "earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03B01",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "la stessa cosa di cui stavamo parlando prima",
+        "target_text": "the same thing as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 23,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03B02",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "la stessa idea di cui stavamo parlando prima",
+        "target_text": "the same idea as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 24,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03B03",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "non è la stessa cosa di cui stavamo parlando prima",
+        "target_text": "it's not the same thing as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 25,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03U01",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "è la stessa idea di cui stavamo parlando prima",
+        "target_text": "it's the same idea as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 26,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03U02",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "penso che sia la stessa idea di cui stavamo parlando prima",
+        "target_text": "I think it's the same idea as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 27,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03U03",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "credo che sia la stessa idea di cui stavamo parlando prima",
+        "target_text": "I believe it's the same idea as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 28,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03U04",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "nessun problema, è la stessa idea di cui stavamo parlando prima",
+        "target_text": "no problem it's the same idea as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 29,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0143L03U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0143L03U05",
+        "seed_number": 143,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "sono così contento che sia la stessa idea di cui stavamo parlando prima",
+        "target_text": "I'm so happy that it's the same idea as we were talking about earlier",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 30,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ita",
+        "lego_id": "S0273L01"
+       },
+       "before": {
+        "id": "2ad73ce1-7bbe-4524-88e9-e4452fa957cb",
+        "seed_number": 273,
+        "lego_index": 1,
+        "lego_id": "S0273L01",
+        "known_text": "purtroppo ho troppo",
+        "target_text": "unfortunately I've got too much",
+        "components": [
+         {
+          "known": "purtroppo",
+          "target": "unfortunately"
+         },
+         {
+          "known": "ho",
+          "target": "I've got"
+         },
+         {
+          "known": "troppo",
+          "target": "too much"
+         }
+        ],
+        "known_audio_id": "e54f8a97-0280-4090-be6d-c65786d3447e",
+        "target1_audio_id": "d6e6b293-dba8-42ea-a04d-7ee85a3c119e",
+        "target2_audio_id": "e5a8bab8-b5bd-4861-bbcd-4ca325a3edf1",
+        "presentation_audio_id": "0e696df4-238f-43db-b576-f8a9784a3b58"
+       },
+       "after": {
+        "id": "2ad73ce1-7bbe-4524-88e9-e4452fa957cb",
+        "seed_number": 273,
+        "lego_index": 1,
+        "lego_id": "S0273L01",
+        "known_text": "ho troppo",
+        "target_text": "I've got too much",
+        "components": [
+         {
+          "known": "ho",
+          "target": "I've got"
+         },
+         {
+          "known": "troppo",
+          "target": "too much"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 31,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ita:S0273L01U06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ita:S0273L01U06",
+        "seed_number": 273,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "purtroppo ho troppo lavoro oggi",
+        "target_text": "unfortunately I've got too much work today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 32,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 273,
+        "lego_index": 2
+       },
+       "before": null,
+       "after": {
+        "id": "292f5c43-7684-4be9-a452-f075b39952a9",
+        "seed_number": 273,
+        "lego_index": 2,
+        "lego_id": "S0273L02",
+        "known_text": "purtroppo",
+        "target_text": "unfortunately",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "lego.delete",
+       "id": "292f5c43-7684-4be9-a452-f075b39952a9"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0273L01U06"
+      },
+      {
+       "op": "lego.update",
+       "id": "2ad73ce1-7bbe-4524-88e9-e4452fa957cb",
+       "set": {
+        "known_text": "purtroppo ho troppo",
+        "target_text": "unfortunately I've got too much",
+        "components": [
+         {
+          "known": "purtroppo",
+          "target": "unfortunately"
+         },
+         {
+          "known": "ho",
+          "target": "I've got"
+         },
+         {
+          "known": "troppo",
+          "target": "too much"
+         }
+        ],
+        "known_audio_id": "e54f8a97-0280-4090-be6d-c65786d3447e",
+        "target1_audio_id": "d6e6b293-dba8-42ea-a04d-7ee85a3c119e",
+        "target2_audio_id": "e5a8bab8-b5bd-4861-bbcd-4ca325a3edf1",
+        "presentation_audio_id": "0e696df4-238f-43db-b576-f8a9784a3b58"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0143L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "dc8c04be-9ec7-4777-ad56-8444551e7ab9"
+      },
+      {
+       "op": "lego.update",
+       "id": "879d9fcb-9dfa-4eaf-b383-796c29d1bf4d",
+       "set": {
+        "known_text": "di cui stavamo parlando prima",
+        "target_text": "as we were talking about earlier",
+        "components": [],
+        "known_audio_id": "76ba1ac6-d1ec-40f6-a724-855c70a262ca",
+        "target1_audio_id": "c7531772-81b7-4d63-8993-418b5c2415db",
+        "target2_audio_id": "ffd8ea9f-cd12-4166-9688-a26850bf75b0",
+        "presentation_audio_id": "586e5fd2-3f33-4a2d-8fd2-a64b585f8e0f"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0115L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "1fc296db-6213-4f26-aed7-256c02949118"
+      },
+      {
+       "op": "lego.update",
+       "id": "c8b16b0e-a344-4f31-b7db-5e149c08294d",
+       "set": {
+        "known_text": "pronto ad avere una conversazione",
+        "target_text": "ready to have a conversation",
+        "components": [
+         {
+          "known": "pronto",
+          "target": "ready"
+         },
+         {
+          "known": "ad avere una conversazione",
+          "target": "to have a conversation"
+         }
+        ],
+        "known_audio_id": "1b5194e4-ec96-49c6-8bc4-fcc809830889",
+        "target1_audio_id": "a8021bbb-93a4-4ac4-b9ef-a82daecf1a0f",
+        "target2_audio_id": "7fecd572-63a3-4ad4-8e4a-115fe331bd16",
+        "presentation_audio_id": "0a391cf3-6475-4777-a37c-69c0fd8342af"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ita:S0026L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "e93437df-ee93-436a-b343-1341a74d830c"
+      },
+      {
+       "op": "lego.update",
+       "id": "0a2ced0c-0ad8-470b-9fa5-9d95e5b8373c",
+       "set": {
+        "known_text": "sentirmi come se fossi quasi pronto",
+        "target_text": "feeling as if I'm nearly ready",
+        "components": [
+         {
+          "known": "sentirmi",
+          "target": "feeling"
+         },
+         {
+          "known": "come se fossi",
+          "target": "as if I'm"
+         },
+         {
+          "known": "quasi",
+          "target": "nearly"
+         },
+         {
+          "known": "pronto",
+          "target": "ready"
+         }
+        ],
+        "known_audio_id": "4512a138-e6bb-47b9-b040-9964e94055d2",
+        "target1_audio_id": "91e8b8ab-cffe-470c-848b-89f4c1aca340",
+        "target2_audio_id": "52ced910-4956-49b3-9f23-87c664547505",
+        "presentation_audio_id": "c76446a3-7bb1-4103-be4b-57f757b0b568"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
+}
