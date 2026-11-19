@@ -19,12 +19,20 @@ M=database/migrations/20261119b_lego_relink_normtext_idx
 OWNER_ENV="${SSI_OWNER_ENV:-/etc/popty/owner.env}"
 [ -r "$OWNER_ENV" ] || OWNER_ENV="$HOME/.config/ssi-db/owner.env"
 url=$(sed -n 's/^DATABASE_URL=//p' "$OWNER_ENV" 2>/dev/null | head -1 | tr -d '\r"'"'")
-[[ "$url" =~ ^postgres(ql)?://([^:]+):([^@]+)@([^:/]+):?([0-9]*)/?([^?]*) ]] || { echo "cannot parse $OWNER_ENV"; exit 64; }
-urldecode() { local s="${1//+/ }"; printf '%b' "${s//%/\\x}"; }
-export PGUSER="$(urldecode "${BASH_REMATCH[2]}")" PGPASSWORD="$(urldecode "${BASH_REMATCH[3]}")" PGHOST="${BASH_REMATCH[4]}"
-export PGPORT="${BASH_REMATCH[5]:-5432}" PGDATABASE="${BASH_REMATCH[6]:-postgres}" PGAPPNAME=popty-migration-20261119-lego-relink PGCONNECT_TIMEOUT=15
+export PGAPPNAME=popty-migration-20261119-lego-relink PGCONNECT_TIMEOUT=15
+DB_ARG=()
+if [[ "$url" =~ ^postgres(ql)?://([^:]+):([^@]+)@([^:/]+):?([0-9]*)/?([^?]*) ]]; then
+  urldecode() { local s="${1//+/ }"; printf '%b' "${s//%/\\x}"; }
+  export PGUSER="$(urldecode "${BASH_REMATCH[2]}")" PGPASSWORD="$(urldecode "${BASH_REMATCH[3]}")" PGHOST="${BASH_REMATCH[4]}"
+  export PGPORT="${BASH_REMATCH[5]:-5432}" PGDATABASE="${BASH_REMATCH[6]:-postgres}"
+elif [[ "$url" =~ ^postgres(ql)?://[^:@/]*@ ]]; then
+  # Password-less socket URI (the nightly QA copy): nothing secret in it, so it may go on argv.
+  DB_ARG=(-d "$url")
+else
+  echo "cannot parse $OWNER_ENV"; exit 64
+fi
 unset url
-run() { psql -X -v ON_ERROR_STOP=1 -f "$1"; }
+run() { psql -X "${DB_ARG[@]}" -v ON_ERROR_STOP=1 -f "$1"; }
 case "$MODE" in
   save-old) run "$M.SAVE_OLD.sql" ;;
   measure)  run "$M.MEASURE.sql" ;;
