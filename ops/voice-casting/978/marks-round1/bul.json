@@ -1,0 +1,40 @@
+{
+ "ok": true,
+ "title": "Voices round 1 · Bulgarian (bul): like or no",
+ "items": [
+  {
+   "id": "bul.m.cb5e08c5",
+   "source": "Bulgarian (bul) · male target voice (target 1 / 2) · now: cast voice Georgi is GONE (Cartesia withdrew it)",
+   "proposed": "Nikola — Cartesia · male · bulgarian (bg-BG) · Dependable Troubleshooter — Grounded and precise with a natural cadence, perfect for step-by-step problem resolution, transactional flows, and user confirmations.",
+   "note": "Every voice reads the same line: «Искам да говоря с теб на български сега.» (bul_for_eng seed 1)",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/8207aa8c/file"
+  },
+  {
+   "id": "bul.f.3c90f2ab",
+   "source": "Bulgarian (bul) · female target voice (target 1 / 2) · now: cast voice Ivana is GONE (Cartesia withdrew it)",
+   "proposed": "Teodora — Cartesia · female · bulgarian (bg-BG) · Courteous Representative — Offers a polite, methodical manner suited for front-desk reception, concierge services, and structured problem resolution.",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/ffcc1edb/file"
+  }
+ ],
+ "answers": {
+  "bul.f.3c90f2ab": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "bul.m.cb5e08c5": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  }
+ },
+ "submitted_ts": 1795094612978
+}

@@ -1,0 +1,55 @@
+{
+ "ok": true,
+ "title": "Voices round 1 · Turkish (tur): like or no",
+ "items": [
+  {
+   "id": "tur.m.c1cfee3d",
+   "source": "Turkish (tur) · male target voice (target 1 / 2) · now: cast voice Emre is GONE (Cartesia withdrew it)",
+   "proposed": "Taylan · male · istanbul (tr-TR) · Expressive Voice — Versatile articulate male for storytelling",
+   "note": "Every voice reads the same line: «Şimdi seninle Türkçe konuşmak istiyorum.» (tur_for_eng seed 1)",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/6635f5a6/file"
+  },
+  {
+   "id": "tur.f.fa7bfcdc",
+   "source": "Turkish (tur) · female target voice (target 1 / 2) · now: cast Leyla is the 2026-09-04 mechanical draft",
+   "proposed": "Leyla · female · istanbul (tr-TR) · Story Companion — Expressive female for conversational support",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/32eecd82/file"
+  },
+  {
+   "id": "tur.f.8036098f",
+   "source": "Turkish (tur) · female target voice (target 1 / 2) · now: cast Leyla is the 2026-09-04 mechanical draft",
+   "proposed": "Elif — Cartesia · female · istanbul (tr-TR) · Structured Supporter — Methodical adult female for precise and reliable assistance.",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/5b7e3079/file"
+  }
+ ],
+ "answers": {
+  "tur.m.c1cfee3d": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "tur.f.fa7bfcdc": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "tur.f.8036098f": {
+   "choice": "option",
+   "option": 1,
+   "text": "no"
+  }
+ },
+ "submitted_ts": 1795095419509
+}

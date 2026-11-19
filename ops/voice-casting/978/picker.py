@@ -42,6 +42,7 @@ NAMES = {'ben': 'Bengali', 'bul': 'Bulgarian', 'ces': 'Czech', 'dan': 'Danish', 
          'heb': 'Hebrew', 'hun': 'Hungarian', 'ind': 'Indonesian', 'kan': 'Kannada', 'mar': 'Marathi', 'nld': 'Dutch',
          'nor': 'Norwegian', 'pan': 'Punjabi', 'pol': 'Polish', 'ron': 'Romanian', 'rus': 'Russian', 'swe': 'Swedish',
          'tam': 'Tamil', 'tel': 'Telugu', 'tha': 'Thai', 'tur': 'Turkish', 'ukr': 'Ukrainian', 'ell': 'Greek'}
+EXCLUDED = {'deu_at'}
 LIKE, NO = 'like', 'no'
 FAV, NOT = 'favourite', 'not this one'
 KNOWN, PRES, NEITHER = 'known voice', 'presentation voice', 'neither'
@@ -172,8 +173,9 @@ def picked(a, yes):
 def round2(a):
     man = load(a.manifest)['languages']
     marks = read_marks(a.marks)
-    unanswered, own, not_done = [], [], []
+    unanswered, own, not_done, settled = [], [], [], []
     for code, L in man.items():
+        if code in EXCLUDED: continue   # deu_at: needs ElevenLabs (Kai, 19 Nov 13:38Z), not a Cartesia pick
         items = []
         for s in L['slots']:
             pool = [v for v in L['voices'] if v['gender'] == s['gender']]
@@ -186,6 +188,8 @@ def round2(a):
                 not_done.append(f"{code}.{s['gender']}"); continue   # round-1 page not marked yet: no verdict to build on
             liked = [v for v in pool if picked(ans[v['voiceId']], LIKE)]
             none = not liked
+            if len(liked) == 1:   # exactly one like = already decided
+                settled.append({'slot': f"{code}.{s['gender']}", 'voice': describe(liked[0]), 'voiceId': liked[0]['voiceId']}); continue
             for v in (pool if none else liked):
                 items.append({'id': f"r2.{code}.{s['gender']}.{vid(v)}",
                               'source': f"{lang_label(L)} · {slot_label(L, s['gender'])}" + (
@@ -195,7 +199,7 @@ def round2(a):
         if items:
             dump({'title': f"Voices round 2 · {lang_label(L)}: favourites", 'conv_id': KAI_ROOM, 'items': items},
                  os.path.join(a.out, 'round2', code + '.json'))
-    dump({'slots_not_marked_in_round1': not_done, 'unanswered_round1': unanswered, 'own_words_round1': own}, os.path.join(a.out, 'round2-notes.json'))
+    dump({'settled': settled, 'slots_not_marked_in_round1': not_done, 'unanswered_round1': unanswered, 'own_words_round1': own}, os.path.join(a.out, 'round2-notes.json'))
     print(json.dumps({'slots_not_marked_in_round1': len(not_done), 'unanswered_round1': len(unanswered), 'own_words_round1': len(own)}))
 
 

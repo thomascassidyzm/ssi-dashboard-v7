@@ -1,0 +1,40 @@
+{
+ "ok": true,
+ "title": "Voices round 1 · Danish (dan): like or no",
+ "items": [
+  {
+   "id": "dan.m.a466f9e2",
+   "source": "Danish (dan) · male target voice (target 1 / 2) · now: cast Søren is the 2026-09-04 mechanical draft",
+   "proposed": "Søren · male · danish (da-DK) · Steady Strategist — Steady, Danish male voice for reassuring professional dialogue.",
+   "note": "Every voice reads the same line: «Hun vil gerne finde ud af hvad svaret er.» (dan_for_eng seed 17)",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/7cbfe2ec/file"
+  },
+  {
+   "id": "dan.f.eb929394",
+   "source": "Danish (dan) · female target voice (target 1 / 2) · now: cast Mette is the 2026-09-04 mechanical draft",
+   "proposed": "Mette · female · danish (da-DK) · Polished Facilitator — Bright, professional Danish female for welcoming customer service.",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/748c8ddf/file"
+  }
+ ],
+ "answers": {
+  "dan.m.a466f9e2": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "dan.f.eb929394": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  }
+ },
+ "submitted_ts": 1795094655646
+}
