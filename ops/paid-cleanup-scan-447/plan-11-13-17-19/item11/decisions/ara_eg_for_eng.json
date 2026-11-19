@@ -2,26 +2,9 @@
  "course": "ara_eg_for_eng",
  "legos": [
   {
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows use the noun الاختبار / اختبار (\"testing\"), never taught, under the verb LEGO \"test | تختبر\". Both are reworded to the verb. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "why": "ALREADY-FIXED: the scan named two rows with the noun الاختبار (U05, U06) under this LEGO; another cleanup job deleted both after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (2 builds that put the LEGO in a phrase) and is owed a back-fill by the job that deleted the rows.",
    "id": "S0065L03",
-   "verdict": "rebuild-rows",
-   "basket": {
-    "U05": [
-     "it's useful to test",
-     "مفيد تختبر"
-    ],
-    "U06": [
-     "it's important to test more",
-     "مهم إنك تختبر أكتر"
-    ]
-   },
-   "add": [
-    [
-     "b",
-     "it's useful to test more",
-     "مفيد تختبر أكتر"
-    ]
-   ]
+   "verdict": "keep"
   },
   {
    "ack": [
@@ -42,30 +25,9 @@
    }
   },
   {
-   "ack": [
-    "known"
-   ],
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says أرتاح (\"I relax\") under the LEGO \"we relax | نرتاح\", a different verb form. It is reworded to the seed's own ending, which says نرتاح (the seed's English there is \"I'd like to relax\"). One use row is added to reach five. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
-   "add": [
-    [
-     "u",
-     "we relax here today",
-     "نرتاح هنا النهارده"
-    ],
-    [
-     "u",
-     "after we finish we relax",
-     "بعد ما نخلص نرتاح"
-    ]
-   ],
+   "why": "ALREADY-FIXED: the scan named one row that said أرتاح (U03) under this LEGO; another cleanup job deleted it after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (3 uses) and is owed a back-fill by the job that deleted the rows.",
    "id": "S0110L03",
-   "verdict": "rebuild-rows",
-   "basket": {
-    "U03": [
-     "after we finish I'd like to relax",
-     "بعد ما نخلص أنا حابب نرتاح"
-    ]
-   }
+   "verdict": "keep"
   },
   {
    "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say افتكرت (a different verb: \"remembered / reckoned\") under the LEGO \"I thought | فكرت\". The row is the seed sentence, still in the wording the seed had before it was changed; it is brought to the seed's live words, English unchanged. The other row takes فكرت in the same sentence. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
@@ -149,14 +111,8 @@
   }
  ],
  "roman": {
-  "مفيد تختبر": "mufiid tikhtibir",
-  "مهم إنك تختبر أكتر": "muhimm innak tikhtibir aktar",
-  "مفيد تختبر أكتر": "mufiid tikhtibir aktar",
   "ده السبب ليه": "da al-sabab leeh",
   "ده السبب ليه ماكانش عارف الإجابة": "da al-sabab leeh makaansh 'aarif al-ijaaba",
-  "بعد ما نخلص أنا حابب نرتاح": "ba'd ma nkhallas ana haabib nirtaah",
-  "نرتاح هنا النهارده": "nirtaah hina al-nahaarda",
-  "بعد ما نخلص نرتاح": "ba'd ma nkhallas nirtaah",
   "فكرت إنه كويس": "fakkart innu kwayyis",
   "أنا فكرت إن دي فكرة كويسة": "ana fakkart inn di fikra kwayyisa",
   "فكرت في ده النهارده": "fakkart fi da al-nahaarda",

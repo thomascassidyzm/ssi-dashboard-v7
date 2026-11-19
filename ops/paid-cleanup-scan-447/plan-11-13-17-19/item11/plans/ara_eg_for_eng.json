@@ -1,16 +1,15 @@
 {
  "course": "ara_eg_for_eng",
  "roman_flags": [],
- "dumped": "2026-11-18T18:43:10Z",
+ "dumped": "2026-11-19T11:42:37Z",
  "decisions": 7,
  "verdicts": {
-  "rebuild-rows": 6,
+  "keep": 2,
+  "rebuild-rows": 4,
   "kai": 1
  },
  "touched_seeds": [
-  65,
   105,
-  110,
   124,
   133,
   150
@@ -25,8 +24,8 @@
  "legos": [
   {
    "id": "S0065L03",
-   "verdict": "rebuild-rows",
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows use the noun الاختبار / اختبار (\"testing\"), never taught, under the verb LEGO \"test | تختبر\". Both are reworded to the verb. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "verdict": "keep",
+   "why": "ALREADY-FIXED: the scan named two rows with the noun الاختبار (U05, U06) under this LEGO; another cleanup job deleted both after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (2 builds that put the LEGO in a phrase) and is owed a back-fill by the job that deleted the rows.",
    "closes": [
     "11"
    ],
@@ -41,127 +40,6 @@
     "target": "تختبر",
     "type": "A",
     "is_new": true
-   },
-   "after": {
-    "known": "test",
-    "target": "تختبر",
-    "type": "A",
-    "components": null,
-    "is_new": true
-   },
-   "checks": {
-    "known_in_seed": true,
-    "target_in_seed": true,
-    "syllables": 0
-   },
-   "basket": [
-    {
-     "id": "ara_eg_for_eng:S0065L03B01",
-     "role": "build",
-     "before": [
-      "test",
-      "تختبر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03B02",
-     "role": "build",
-     "before": [
-      "take time to test",
-      "تاخد وقت تختبر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03B03",
-     "role": "build",
-     "before": [
-      "it's key to test",
-      "مهم تختبر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03U01",
-     "role": "use",
-     "before": [
-      "it's important to take time to test",
-      "مهم إنك تاخد وقت تختبر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03U02",
-     "role": "use",
-     "before": [
-      "take time to test more",
-      "تاخد وقت تختبر أكتر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03U03",
-     "role": "use",
-     "before": [
-      "it's important to test",
-      "مهم إنك تختبر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03U04",
-     "role": "use",
-     "before": [
-      "could you test",
-      "ممكن تختبر؟"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03U05",
-     "role": "use",
-     "before": [
-      "testing is useful",
-      "الاختبار مفيد"
-     ],
-     "action": [
-      "it's useful to test",
-      "مفيد تختبر"
-     ]
-    },
-    {
-     "id": "ara_eg_for_eng:S0065L03U06",
-     "role": "use",
-     "before": [
-      "testing Arabic is fun",
-      "اختبار العربي ممتع"
-     ],
-     "action": [
-      "it's important to test more",
-      "مهم إنك تختبر أكتر"
-     ]
-    }
-   ],
-   "add": [
-    {
-     "id": "ara_eg_for_eng:S0065L03B04",
-     "course_code": "ara_eg_for_eng",
-     "seed_number": 65,
-     "lego_index": 3,
-     "known_text": "it's useful to test more",
-     "target_text": "مفيد تختبر أكتر",
-     "phrase_role": "build",
-     "position": 10,
-     "word_count": 3,
-     "lego_position": "middle",
-     "lego_count": 1,
-     "target_text_roman": "mufiid tikhtibir aktar"
-    }
-   ],
-   "basket_after": {
-    "build": 4,
-    "use": 6
    },
    "extra": []
   },
@@ -288,8 +166,8 @@
   },
   {
    "id": "S0110L03",
-   "verdict": "rebuild-rows",
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says أرتاح (\"I relax\") under the LEGO \"we relax | نرتاح\", a different verb form. It is reworded to the seed's own ending, which says نرتاح (the seed's English there is \"I'd like to relax\"). One use row is added to reach five. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "verdict": "keep",
+   "why": "ALREADY-FIXED: the scan named one row that said أرتاح (U03) under this LEGO; another cleanup job deleted it after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (3 uses) and is owed a back-fill by the job that deleted the rows.",
    "closes": [
     "11"
    ],
@@ -304,120 +182,6 @@
     "target": "نرتاح",
     "type": "A",
     "is_new": true
-   },
-   "after": {
-    "known": "we relax",
-    "target": "نرتاح",
-    "type": "A",
-    "components": null,
-    "is_new": true
-   },
-   "checks": {
-    "known_in_seed": true,
-    "target_in_seed": true,
-    "syllables": 0
-   },
-   "basket": [
-    {
-     "id": "ara_eg_for_eng:S0110L03B01",
-     "role": "build",
-     "before": [
-      "we relax before",
-      "نرتاح قبل"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03B02",
-     "role": "build",
-     "before": [
-      "we relax from before",
-      "نرتاح من قبل"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03B03",
-     "role": "build",
-     "before": [
-      "we relax today",
-      "نرتاح النهارده كده"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03U02",
-     "role": "use",
-     "before": [
-      "we relax",
-      "نرتاح"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03U03",
-     "role": "use",
-     "before": [
-      "I'd like to relax",
-      "حابب أرتاح"
-     ],
-     "action": [
-      "after we finish I'd like to relax",
-      "بعد ما نخلص أنا حابب نرتاح"
-     ]
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03U04",
-     "role": "use",
-     "before": [
-      "we relax today",
-      "نرتاح النهارده"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03U05",
-     "role": "use",
-     "before": [
-      "we relax here",
-      "نرتاح هنا"
-     ],
-     "action": "keep"
-    }
-   ],
-   "add": [
-    {
-     "id": "ara_eg_for_eng:S0110L03U06",
-     "course_code": "ara_eg_for_eng",
-     "seed_number": 110,
-     "lego_index": 3,
-     "known_text": "we relax here today",
-     "target_text": "نرتاح هنا النهارده",
-     "phrase_role": "use",
-     "position": 9,
-     "word_count": 3,
-     "lego_position": "start",
-     "lego_count": 1,
-     "target_text_roman": "nirtaah hina al-nahaarda"
-    },
-    {
-     "id": "ara_eg_for_eng:S0110L03U07",
-     "course_code": "ara_eg_for_eng",
-     "seed_number": 110,
-     "lego_index": 3,
-     "known_text": "after we finish we relax",
-     "target_text": "بعد ما نخلص نرتاح",
-     "phrase_role": "use",
-     "position": 10,
-     "word_count": 4,
-     "lego_position": "end",
-     "lego_count": 1,
-     "target_text_roman": "ba'd ma nkhallas nirtaah"
-    }
-   ],
-   "basket_after": {
-    "build": 3,
-    "use": 6
    },
    "extra": []
   },
@@ -862,49 +626,6 @@
  "ops": [
   {
    "op": "phrase.update",
-   "phrase_id": "ara_eg_for_eng:S0065L03U05",
-   "set": {
-    "known_text": "it's useful to test",
-    "target_text": "مفيد تختبر",
-    "target_text_roman": "mufiid tikhtibir"
-   },
-   "expect": {
-    "known_text": "testing is useful",
-    "target_text": "الاختبار مفيد"
-   }
-  },
-  {
-   "op": "phrase.update",
-   "phrase_id": "ara_eg_for_eng:S0065L03U06",
-   "set": {
-    "known_text": "it's important to test more",
-    "target_text": "مهم إنك تختبر أكتر",
-    "target_text_roman": "muhimm innak tikhtibir aktar"
-   },
-   "expect": {
-    "known_text": "testing Arabic is fun",
-    "target_text": "اختبار العربي ممتع"
-   }
-  },
-  {
-   "op": "phrase.insert",
-   "row": {
-    "id": "ara_eg_for_eng:S0065L03B04",
-    "course_code": "ara_eg_for_eng",
-    "seed_number": 65,
-    "lego_index": 3,
-    "known_text": "it's useful to test more",
-    "target_text": "مفيد تختبر أكتر",
-    "phrase_role": "build",
-    "position": 10,
-    "word_count": 3,
-    "lego_position": "middle",
-    "lego_count": 1,
-    "target_text_roman": "mufiid tikhtibir aktar"
-   }
-  },
-  {
-   "op": "phrase.update",
    "phrase_id": "ara_eg_for_eng:S0105L01U01",
    "set": {
     "target_text": "ده السبب ليه",
@@ -925,53 +646,6 @@
    "expect": {
     "known_text": "that is why he didn't know the answer",
     "target_text": "علشان كده ماكانش عارف الإجابة"
-   }
-  },
-  {
-   "op": "phrase.update",
-   "phrase_id": "ara_eg_for_eng:S0110L03U03",
-   "set": {
-    "known_text": "after we finish I'd like to relax",
-    "target_text": "بعد ما نخلص أنا حابب نرتاح",
-    "target_text_roman": "ba'd ma nkhallas ana haabib nirtaah"
-   },
-   "expect": {
-    "known_text": "I'd like to relax",
-    "target_text": "حابب أرتاح"
-   }
-  },
-  {
-   "op": "phrase.insert",
-   "row": {
-    "id": "ara_eg_for_eng:S0110L03U06",
-    "course_code": "ara_eg_for_eng",
-    "seed_number": 110,
-    "lego_index": 3,
-    "known_text": "we relax here today",
-    "target_text": "نرتاح هنا النهارده",
-    "phrase_role": "use",
-    "position": 9,
-    "word_count": 3,
-    "lego_position": "start",
-    "lego_count": 1,
-    "target_text_roman": "nirtaah hina al-nahaarda"
-   }
-  },
-  {
-   "op": "phrase.insert",
-   "row": {
-    "id": "ara_eg_for_eng:S0110L03U07",
-    "course_code": "ara_eg_for_eng",
-    "seed_number": 110,
-    "lego_index": 3,
-    "known_text": "after we finish we relax",
-    "target_text": "بعد ما نخلص نرتاح",
-    "phrase_role": "use",
-    "position": 10,
-    "word_count": 4,
-    "lego_position": "end",
-    "lego_count": 1,
-    "target_text_roman": "ba'd ma nkhallas nirtaah"
    }
   },
   {
@@ -1107,44 +781,14 @@
   }
  ],
  "validator": {
-  "at": "2026-11-19T11:32:33Z",
+  "at": "2026-11-19T11:42:54Z",
   "baseline_failing_seeds": 577,
   "per_seed": {
-   "65": {
-    "seed_issues_planned": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L1: vocab violations in 1 phrase(s)",
-     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "seed_issues_live": [
-     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L1: vocab violations in 1 phrase(s)",
-     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "new_issues_anywhere": {},
-    "error": null
-   },
    "105": {
     "seed_issues_planned": [],
     "seed_issues_live": [
      "L1: 2 phrase(s) fail containment",
      "L1: USE: need 5+, got 3 (2 component phrases excluded)"
-    ],
-    "new_issues_anywhere": {},
-    "error": null
-   },
-   "110": {
-    "seed_issues_planned": [
-     "L1: USE: need 5+, got 4",
-     "L1: vocab violations in 1 phrase(s)"
-    ],
-    "seed_issues_live": [
-     "L1: USE: need 5+, got 4",
-     "L1: vocab violations in 1 phrase(s)",
-     "L3: USE: need 5+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
     ],
     "new_issues_anywhere": {},
     "error": null
@@ -1202,31 +846,11 @@
   "seeds_with_new_issues": []
  },
  "validator_vs_unchanged": {
-  "65": {
-   "added": [],
-   "removed": [
-    "L3: 2 phrase(s) fail containment",
-    "L3: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-    "L3: vocab violations in 2 phrase(s)"
-   ],
-   "other_seeds": {},
-   "error": null
-  },
   "105": {
    "added": [],
    "removed": [
     "L1: 2 phrase(s) fail containment",
     "L1: USE: need 5+, got 3 (2 component phrases excluded)"
-   ],
-   "other_seeds": {},
-   "error": null
-  },
-  "110": {
-   "added": [],
-   "removed": [
-    "L3: 1 phrase(s) fail containment",
-    "L3: USE: need 5+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-    "L3: vocab violations in 1 phrase(s)"
    ],
    "other_seeds": {},
    "error": null
@@ -1262,18 +886,445 @@
   }
  },
  "dryRun": {
-  "at": "2026-11-19T11:33:36Z",
+  "at": "2026-11-19T11:44:46Z",
   "chunks": [
    {
     "from": 0,
-    "n": 17,
-    "status": 404,
-    "secs": 46.2,
+    "n": 11,
+    "status": 200,
+    "secs": 97.5,
     "answer": {
-     "error": "op 0: phrase.update: no row {\"course_code\":\"ara_eg_for_eng\",\"id\":\"ara_eg_for_eng:S0065L03U05\"}",
-     "code": "NOT_FOUND",
-     "index": 0,
-     "applied": false
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0105L01U01"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0105L01U01",
+        "seed_number": 105,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "علشان كده",
+        "target_text_roman": "'alshaan kida",
+        "known_text": "that is why",
+        "known_audio_id": "7f74c303-ebda-46ce-8b94-3e7e9465cf83",
+        "target1_audio_id": "cf2bf48a-b38e-468f-b6e2-2e4de6cc6fd4",
+        "target2_audio_id": "74a9cf6d-c124-4f7d-9374-05bce1701b1f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0105L01U01",
+        "seed_number": 105,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "ده السبب ليه",
+        "target_text_roman": "da al-sabab leeh",
+        "known_text": "that is why",
+        "known_audio_id": "7f74c303-ebda-46ce-8b94-3e7e9465cf83",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0105L01U05"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0105L01U05",
+        "seed_number": 105,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "علشان كده ماكانش عارف الإجابة",
+        "target_text_roman": "'alshaan kida makaansh 'aarif al-ijaaba",
+        "known_text": "that is why he didn't know the answer",
+        "known_audio_id": "c62a14d3-3160-4f2e-acdc-355528749705",
+        "target1_audio_id": "bd9dc9e1-7541-4e13-9100-1bde02631459",
+        "target2_audio_id": "d2af2e8f-990b-46d4-b8ec-79fde820e09f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0105L01U05",
+        "seed_number": 105,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "ده السبب ليه ماكانش عارف الإجابة",
+        "target_text_roman": "da al-sabab leeh makaansh 'aarif al-ijaaba",
+        "known_text": "that is why he didn't know the answer",
+        "known_audio_id": "c62a14d3-3160-4f2e-acdc-355528749705",
+        "target1_audio_id": "c70ac42b-51c8-4b57-8dea-bf1bd64c05b8",
+        "target2_audio_id": "f44b96de-ba48-4b8f-8a81-d14b42570993",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0124L01U01"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0124L01U01",
+        "seed_number": 124,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "افتكرت إنه كويس",
+        "target_text_roman": "iftakart innu kwayyis",
+        "known_text": "I thought it was good",
+        "known_audio_id": "dcfd1ad5-bf65-4ae0-b76c-c7b8e7c33838",
+        "target1_audio_id": "f0b84d9c-37a9-4f37-be04-9ac4d8627c6a",
+        "target2_audio_id": "63a66ad4-0a4c-4818-ae34-1c8ffe161932",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0124L01U01",
+        "seed_number": 124,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "فكرت إنه كويس",
+        "target_text_roman": "fakkart innu kwayyis",
+        "known_text": "I thought it was good",
+        "known_audio_id": "dcfd1ad5-bf65-4ae0-b76c-c7b8e7c33838",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0124L01U05"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0124L01U05",
+        "seed_number": 124,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "افتكرت إن دي فكرة كويسة",
+        "target_text_roman": "iftakart inn di fikra kwayyisa",
+        "known_text": "I thought that was a good idea",
+        "known_audio_id": "36831321-51b4-4779-83c7-82d1c2946a8d",
+        "target1_audio_id": "d0ad151c-ae43-457c-a5b3-fe321fdfa5e2",
+        "target2_audio_id": "bc07fc99-58a8-43f6-849e-2280efa7c367",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0124L01U05",
+        "seed_number": 124,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "أنا فكرت إن دي فكرة كويسة",
+        "target_text_roman": "ana fakkart inn di fikra kwayyisa",
+        "known_text": "I thought that was a good idea",
+        "known_audio_id": "36831321-51b4-4779-83c7-82d1c2946a8d",
+        "target1_audio_id": "5f4ee753-b88d-4712-b617-d12064b9c4a8",
+        "target2_audio_id": "b5595aa8-0e9c-4f3a-b3fa-9ed2d5525149",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_eg_for_eng:S0124L01B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_eg_for_eng:S0124L01B04",
+        "seed_number": 124,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I thought about it today",
+        "target_text": "فكرت في ده النهارده",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0133L04U03"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0133L04U03",
+        "seed_number": 133,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "get to know him",
+        "target_text": "تتعرف عليه",
+        "target_text_roman": "tit'arrif 'aliiih",
+        "known_audio_id": "0d4ed9f8-0015-40c6-8818-c0b78009c4c0",
+        "target1_audio_id": "da26d097-7e7a-42c2-93d6-5723703e219e",
+        "target2_audio_id": "6e771ef7-b844-4793-8131-d4f12fde6308",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0133L04U03",
+        "seed_number": 133,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "you work with him today",
+        "target_text": "تشتغل معاه النهارده",
+        "target_text_roman": "tishtaghal ma'aah al-nahaarda",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_eg_for_eng:S0133L04B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_eg_for_eng:S0133L04B04",
+        "seed_number": 133,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "with him here today",
+        "target_text": "معاه هنا النهارده",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0150L01U01"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0150L01U01",
+        "seed_number": 150,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "can you",
+        "target_text": "تقدر",
+        "target_text_roman": "ti'dar",
+        "known_audio_id": "00d8644c-d05a-4571-a8ea-fcf6f558d518",
+        "target1_audio_id": "945c3f9a-ee7b-46b0-ad55-661d089aa6fe",
+        "target2_audio_id": "9ed80565-e3e6-4db9-bd3e-3ab195860e3a",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0150L01U01",
+        "seed_number": 150,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "may I speak",
+        "target_text": "ممكن أتكلم",
+        "target_text_roman": "mumkin atkallim",
+        "known_audio_id": null,
+        "target1_audio_id": "97176d12-96e7-4851-98e9-f5f679f3e154",
+        "target2_audio_id": "98c86a3f-2077-40f8-b329-3cd3b81763aa",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_eg_for_eng",
+        "id": "ara_eg_for_eng:S0150L01U02"
+       },
+       "before": {
+        "id": "ara_eg_for_eng:S0150L01U02",
+        "seed_number": 150,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "may I",
+        "target_text": "ممكن",
+        "target_text_roman": "mumkin",
+        "known_audio_id": "0f6c415c-068f-4110-ab0f-460f80eaedc9",
+        "target1_audio_id": "2c09f30f-b103-4bea-a8e3-b40cbba2825b",
+        "target2_audio_id": "42ee64af-6d05-48f3-a77f-099eca00f585",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_eg_for_eng:S0150L01U02",
+        "seed_number": 150,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "may I speak here",
+        "target_text": "ممكن أتكلم هنا",
+        "target_text_roman": "mumkin atkallim hina",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_eg_for_eng:S0150L01B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_eg_for_eng:S0150L01B04",
+        "seed_number": 150,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "may I speak today",
+        "target_text": "ممكن أتكلم النهارده",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_eg_for_eng:S0150L01U06"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_eg_for_eng:S0150L01U06",
+        "seed_number": 150,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "may I try today",
+        "target_text": "ممكن أحاول النهارده",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_eg_for_eng:S0150L01U06"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_eg_for_eng:S0150L01B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0150L01U02",
+       "set": {
+        "known_text": "may I",
+        "target_text": "ممكن",
+        "known_audio_id": "0f6c415c-068f-4110-ab0f-460f80eaedc9",
+        "target1_audio_id": "2c09f30f-b103-4bea-a8e3-b40cbba2825b",
+        "target2_audio_id": "42ee64af-6d05-48f3-a77f-099eca00f585",
+        "target_text_roman": "mumkin"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0150L01U01",
+       "set": {
+        "known_text": "can you",
+        "target_text": "تقدر",
+        "known_audio_id": "00d8644c-d05a-4571-a8ea-fcf6f558d518",
+        "target1_audio_id": "945c3f9a-ee7b-46b0-ad55-661d089aa6fe",
+        "target2_audio_id": "9ed80565-e3e6-4db9-bd3e-3ab195860e3a",
+        "target_text_roman": "ti'dar"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_eg_for_eng:S0133L04B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0133L04U03",
+       "set": {
+        "known_text": "get to know him",
+        "target_text": "تتعرف عليه",
+        "known_audio_id": "0d4ed9f8-0015-40c6-8818-c0b78009c4c0",
+        "target1_audio_id": "da26d097-7e7a-42c2-93d6-5723703e219e",
+        "target2_audio_id": "6e771ef7-b844-4793-8131-d4f12fde6308",
+        "target_text_roman": "tit'arrif 'aliiih"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_eg_for_eng:S0124L01B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0124L01U05",
+       "set": {
+        "target_text": "افتكرت إن دي فكرة كويسة",
+        "target1_audio_id": "d0ad151c-ae43-457c-a5b3-fe321fdfa5e2",
+        "target2_audio_id": "bc07fc99-58a8-43f6-849e-2280efa7c367",
+        "target_text_roman": "iftakart inn di fikra kwayyisa"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0124L01U01",
+       "set": {
+        "target_text": "افتكرت إنه كويس",
+        "target1_audio_id": "f0b84d9c-37a9-4f37-be04-9ac4d8627c6a",
+        "target2_audio_id": "63a66ad4-0a4c-4818-ae34-1c8ffe161932",
+        "target_text_roman": "iftakart innu kwayyis"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0105L01U05",
+       "set": {
+        "target_text": "علشان كده ماكانش عارف الإجابة",
+        "target1_audio_id": "bd9dc9e1-7541-4e13-9100-1bde02631459",
+        "target2_audio_id": "d2af2e8f-990b-46d4-b8ec-79fde820e09f",
+        "target_text_roman": "'alshaan kida makaansh 'aarif al-ijaaba"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_eg_for_eng:S0105L01U01",
+       "set": {
+        "target_text": "علشان كده",
+        "target1_audio_id": "cf2bf48a-b38e-468f-b6e2-2e4de6cc6fd4",
+        "target2_audio_id": "74a9cf6d-c124-4f7d-9374-05bce1701b1f",
+        "target_text_roman": "'alshaan kida"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
     }
    }
   ]

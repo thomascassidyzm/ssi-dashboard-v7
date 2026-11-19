@@ -1,14 +1,14 @@
 {
  "course": "ara_lb_for_eng",
  "roman_flags": [],
- "dumped": "2026-11-18T18:43:10Z",
+ "dumped": "2026-11-19T11:38:45Z",
  "decisions": 9,
  "verdicts": {
-  "rebuild-rows": 7,
+  "keep": 1,
+  "rebuild-rows": 6,
   "kai": 2
  },
  "touched_seeds": [
-  77,
   78,
   83,
   98,
@@ -27,8 +27,8 @@
  "legos": [
   {
    "id": "S0077L02",
-   "verdict": "rebuild-rows",
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say بلشت, a different verb for \"I began\" that the course does not teach here, under the LEGO \"I began | صرت\". Both are reworded to صرت; the English stays.",
+   "verdict": "keep",
+   "why": "ALREADY-FIXED: the scan named two rows that said بلشت (B03, U04) under this LEGO; another cleanup job deleted both after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (2 builds that put the LEGO in a phrase, 4 uses) and is owed a back-fill by the job that deleted the rows.",
    "closes": [
     "11"
    ],
@@ -43,106 +43,6 @@
     "target": "صرت",
     "type": "A",
     "is_new": true
-   },
-   "after": {
-    "known": "I began",
-    "target": "صرت",
-    "type": "A",
-    "components": null,
-    "is_new": true
-   },
-   "acknowledged": [
-    "known not a literal span of the seed: ['i', 'began']"
-   ],
-   "checks": {
-    "known_in_seed": true,
-    "target_in_seed": true,
-    "syllables": 0
-   },
-   "basket": [
-    {
-     "id": "ara_lb_for_eng:S0077L02B01",
-     "role": "build",
-     "before": [
-      "I began now",
-      "صرت هلق"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02B02",
-     "role": "build",
-     "before": [
-      "I began more",
-      "صرت أكتر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02B03",
-     "role": "build",
-     "before": [
-      "how I began",
-      "كيف بلشت"
-     ],
-     "action": [
-      "how I began",
-      "كيف صرت"
-     ]
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02U01",
-     "role": "use",
-     "before": [
-      "I'm surprised at how quickly I'm starting to understand",
-      "مندهش كيف صرت أفهم بسرعة"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02U02",
-     "role": "use",
-     "before": [
-      "I began to understand quickly",
-      "صرت أفهم بسرعة"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02U03",
-     "role": "use",
-     "before": [
-      "I began to learn more",
-      "صرت أتعلم أكتر"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02U04",
-     "role": "use",
-     "before": [
-      "I'm surprised at how I began",
-      "مندهش كيف بلشت"
-     ],
-     "action": [
-      "I'm surprised at how I began",
-      "مندهش كيف صرت"
-     ]
-    },
-    {
-     "id": "ara_lb_for_eng:S0077L02U05",
-     "role": "use",
-     "before": [
-      "I began to understand a lot",
-      "صرت أفهم كتير"
-     ],
-     "action": "keep"
-    }
-   ],
-   "add": [],
-   "basket_after": {
-    "build": 3,
-    "use": 5
    },
    "extra": []
   },
@@ -998,30 +898,6 @@
  "ops": [
   {
    "op": "phrase.update",
-   "phrase_id": "ara_lb_for_eng:S0077L02B03",
-   "set": {
-    "target_text": "كيف صرت",
-    "target_text_roman": "kiif sirt"
-   },
-   "expect": {
-    "known_text": "how I began",
-    "target_text": "كيف بلشت"
-   }
-  },
-  {
-   "op": "phrase.update",
-   "phrase_id": "ara_lb_for_eng:S0077L02U04",
-   "set": {
-    "target_text": "مندهش كيف صرت",
-    "target_text_roman": "mundahish kiif sirt"
-   },
-   "expect": {
-    "known_text": "I'm surprised at how I began",
-    "target_text": "مندهش كيف بلشت"
-   }
-  },
-  {
-   "op": "phrase.update",
    "phrase_id": "ara_lb_for_eng:S0078L01U01",
    "set": {
     "target_text": "ما فهمت شو قلت",
@@ -1290,20 +1166,9 @@
   }
  ],
  "validator": {
-  "at": "2026-11-19T11:31:05Z",
+  "at": "2026-11-19T11:39:02Z",
   "baseline_failing_seeds": 595,
   "per_seed": {
-   "77": {
-    "seed_issues_planned": [
-     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
-    ],
-    "seed_issues_live": [
-     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-     "L2: BUILD: need 3+, got 2"
-    ],
-    "new_issues_anywhere": {},
-    "error": null
-   },
    "78": {
     "seed_issues_planned": [],
     "seed_issues_live": [
@@ -1395,16 +1260,6 @@
   ]
  },
  "validator_vs_unchanged": {
-  "77": {
-   "added": [],
-   "removed": [
-    "L2: 2 phrase(s) fail containment",
-    "L2: BUILD: need 3+, got 2 (2 component phrases excluded)",
-    "L2: vocab violations in 2 phrase(s)"
-   ],
-   "other_seeds": {},
-   "error": null
-  },
   "78": {
    "added": [],
    "removed": [
@@ -1465,18 +1320,756 @@
   }
  },
  "dryRun": {
-  "at": "2026-11-19T11:35:04Z",
+  "at": "2026-11-19T11:46:55Z",
   "chunks": [
    {
     "from": 0,
-    "n": 21,
-    "status": 404,
-    "secs": 86.4,
+    "n": 19,
+    "status": 200,
+    "secs": 123.7,
     "answer": {
-     "error": "op 0: phrase.update: no row {\"course_code\":\"ara_lb_for_eng\",\"id\":\"ara_lb_for_eng:S0077L02B03\"}",
-     "code": "NOT_FOUND",
-     "index": 0,
-     "applied": false
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0078L01U01"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0078L01U01",
+        "seed_number": 78,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "مش فاهم شو قلت",
+        "target_text_roman": "mish faahim shu 'ult",
+        "known_text": "I don't understand what you said",
+        "known_audio_id": "825d6202-e68f-4f6d-8f94-7205bc3f359e",
+        "target1_audio_id": "65ec6c34-9195-4e77-bff2-814c455a4562",
+        "target2_audio_id": "e5ebb8fc-70b3-44e5-8514-ab5ffa346285",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0078L01U01",
+        "seed_number": 78,
+        "lego_index": 1,
+        "lego_id": null,
+        "target_text": "ما فهمت شو قلت",
+        "target_text_roman": "ma fihimt shu 'ult",
+        "known_text": "I don't understand what you said",
+        "known_audio_id": "825d6202-e68f-4f6d-8f94-7205bc3f359e",
+        "target1_audio_id": "c2bff3f9-ee69-4ae2-837b-e8cbc15ba38b",
+        "target2_audio_id": "8873cdee-7fe0-45fc-bcd4-1dc24141d76c",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0078L01B03"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0078L01B03",
+        "seed_number": 78,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I understood now",
+        "target_text": "فهمت هلق",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0078L01B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0078L01B04",
+        "seed_number": 78,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I understood more",
+        "target_text": "فهمت أكتر",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0083L01U03"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0083L01U03",
+        "seed_number": 83,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I'm surprised about what happened",
+        "target_text": "مندهش من شو صار",
+        "target_text_roman": "mundahish min shu saar",
+        "known_audio_id": "3f98f713-75fd-44c9-800a-fe06650208b1",
+        "target1_audio_id": "a7e4f553-16ba-4ac0-ab75-a39ba1e1a94b",
+        "target2_audio_id": "157190e0-9d1a-4c07-900d-d267d9e322a9",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0083L01U03",
+        "seed_number": 83,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I want to know about what happened",
+        "target_text": "بدي أعرف عن شو صار",
+        "target_text_roman": "biddi a'rif 'an shu saar",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0083L01U06"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0083L01U06",
+        "seed_number": 83,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I want to know more about what happened",
+        "target_text": "بدي أعرف أكتر عن شو صار",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0083L01B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0083L01B04",
+        "seed_number": 83,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "more about this",
+        "target_text": "أكتر عن هيك",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0098L01U01"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0098L01U01",
+        "seed_number": 98,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "something good",
+        "target_text": "شي منيح",
+        "target_text_roman": "shi mniih",
+        "known_audio_id": "7f45dfaa-f891-4b52-8c16-645f3d55eb93",
+        "target1_audio_id": "0aa53fe1-2398-4298-8e34-9a5d7d8d1ba8",
+        "target2_audio_id": "c55c438b-85c4-47e1-abc6-9b7cee720043",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0098L01U01",
+        "seed_number": 98,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I'm thinking of something good",
+        "target_text": "عم بفكر بشي منيح",
+        "target_text_roman": "'am bfakkir bishi mniih",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0098L01U02"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0098L01U02",
+        "seed_number": 98,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I know it now",
+        "target_text": "بعرفو هلق",
+        "target_text_roman": "ba'refo halla'",
+        "known_audio_id": "b2d40841-7761-42b1-9c83-8668fc9dba05",
+        "target1_audio_id": "e5322367-b777-4f73-a144-cd3741cc6a07",
+        "target2_audio_id": "ebbfb32a-1440-4c16-a7c6-82b9ddaa52b8",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0098L01U02",
+        "seed_number": 98,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "I'm thinking of something else",
+        "target_text": "عم بفكر بشي تاني",
+        "target_text_roman": "'am bfakkir bishi taani",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0126L03B03"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0126L03B03",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "it's changing",
+        "target_text": "عم يتغير",
+        "target_text_roman": "'am yitghayyar",
+        "known_audio_id": "2f390b25-2d0a-47c4-a6ec-8053a9906347",
+        "target1_audio_id": "390ddb8c-988a-484d-9c73-3f1216c6206d",
+        "target2_audio_id": "9f6e9ebe-8b5c-4c9d-9372-f4c05aa25aa7",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0126L03B03",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "he is changing shape",
+        "target_text": "عم يغير شكل",
+        "target_text_roman": "'am yighayyir shakil",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0126L03U01"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0126L03U01",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "he changes the shape",
+        "target_text": "يغير الشكل",
+        "target_text_roman": "yighayyir al-shakl",
+        "known_audio_id": "2a71e886-97d9-42c6-a461-e5a46001bd1d",
+        "target1_audio_id": "bb6ddc38-df4f-42b3-aef4-25fc025590a3",
+        "target2_audio_id": "7dcbc28e-ee56-4733-ad91-dc313d91764d",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0126L03U01",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "he changes shape a lot here",
+        "target_text": "يغير شكل كتير هون",
+        "target_text_roman": "yighayyir shakil ktiir hoon",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0126L03U02"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0126L03U02",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "it's changing now",
+        "target_text": "عم يتغير هلق",
+        "target_text_roman": "'am yitghayyar halla'",
+        "known_audio_id": "000ff04a-1704-4362-812e-23350b22670d",
+        "target1_audio_id": "ee2dd77b-2494-48a1-888d-27b87665daeb",
+        "target2_audio_id": "0b58e9aa-d5f9-47cc-8242-2e2852b256fe",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0126L03U02",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "he is changing shape now",
+        "target_text": "عم يغير شكل هلق",
+        "target_text_roman": "'am yighayyir shakil halla'",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0126L03B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0126L03B04",
+        "seed_number": 126,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "he changes shape here",
+        "target_text": "يغير شكل هون",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "lego.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "lego_id": "S0144L03"
+       },
+       "before": {
+        "id": "40e0727a-3d8d-4c8a-8544-f662d9474380",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": "S0144L03",
+        "known_text": "th",
+        "target_text": "مما",
+        "known_audio_id": "72541090-bdfd-4175-9a41-ae1139a2b084",
+        "target1_audio_id": "101aec6d-5466-4289-9000-cdf337a05c85",
+        "target2_audio_id": "c6017cc7-292f-45d9-909e-8a42d28f6c20",
+        "presentation_audio_id": "9bc90baf-4775-43ec-b38f-ae29414ac1a0"
+       },
+       "after": {
+        "id": "40e0727a-3d8d-4c8a-8544-f662d9474380",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": "S0144L03",
+        "known_text": "than",
+        "target_text": "مما",
+        "known_audio_id": null,
+        "target1_audio_id": "101aec6d-5466-4289-9000-cdf337a05c85",
+        "target2_audio_id": "c6017cc7-292f-45d9-909e-8a42d28f6c20",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0144L03B02"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0144L03B02",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "earlier th",
+        "target_text": "أبكر مما",
+        "known_audio_id": "d307966a-bf97-449b-afc6-195e9d6b56ae",
+        "target1_audio_id": "018c3f2a-251b-4a28-bad8-c30f468e9507",
+        "target2_audio_id": "32494355-8188-48b1-a47b-fdba9c7a3350",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0144L03B02",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "earlier than",
+        "target_text": "أبكر مما",
+        "known_audio_id": "dd98a879-1964-4507-9220-d962567f57c5",
+        "target1_audio_id": "018c3f2a-251b-4a28-bad8-c30f468e9507",
+        "target2_audio_id": "32494355-8188-48b1-a47b-fdba9c7a3350",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0144L03B03"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0144L03B03",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "more th",
+        "target_text": "أكتر مما",
+        "known_audio_id": "b3834cd9-76dc-42c2-8487-26aeefb7c537",
+        "target1_audio_id": "5006761c-062e-47d8-a00e-a5aafd372daa",
+        "target2_audio_id": "18fc109f-c311-4e59-b910-c00951bfc89a",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0144L03B03",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "more than",
+        "target_text": "أكتر مما",
+        "known_audio_id": null,
+        "target1_audio_id": "5006761c-062e-47d8-a00e-a5aafd372daa",
+        "target2_audio_id": "18fc109f-c311-4e59-b910-c00951bfc89a",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0144L03U02"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0144L03U02",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "I know more than what I thought",
+        "target_text": "بعرف أكتر من اللي فكرت",
+        "target_text_roman": "ba'rif aktar min illi fakart",
+        "known_audio_id": "bda3e18c-245d-4833-9b6f-30208bd221b5",
+        "target1_audio_id": "4a03666b-a2dd-445b-a8de-8c173d47e546",
+        "target2_audio_id": "6078a542-d27b-45a3-9d9c-55e2d98cc2e6",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0144L03U02",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "I know more than what I need",
+        "target_text": "بعرف أكتر مما بدي",
+        "target_text_roman": "ba'rif aktar mimma biddi",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0144L03B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0144L03B04",
+        "seed_number": 144,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "more than I want",
+        "target_text": "أكتر مما بدي",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_lb_for_eng",
+        "id": "ara_lb_for_eng:S0145L01B03"
+       },
+       "before": {
+        "id": "ara_lb_for_eng:S0145L01B03",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "not happy now",
+        "target_text": "مش مبسوط هلق",
+        "target_text_roman": "mish mabsuut halla'",
+        "known_audio_id": "ab3a2e0f-6fa8-43bf-9aa7-32f17a5b5e93",
+        "target1_audio_id": "09672d9b-37ca-40ab-9a70-27c69c4df006",
+        "target2_audio_id": "48d14f79-68d6-4d52-a96d-0f9d603bb3d7",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_lb_for_eng:S0145L01B03",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "not happy anymore here",
+        "target_text": "مش مبسوط بعد هون",
+        "target_text_roman": "mish mabsuut ba'd hoon",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.insert",
+       "key": {
+        "id": "ara_lb_for_eng:S0145L01B04"
+       },
+       "before": null,
+       "after": {
+        "id": "ara_lb_for_eng:S0145L01B04",
+        "seed_number": 145,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "not happy anymore now",
+        "target_text": "مش مبسوط بعد هلق",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0144L03"
+        ]
+       },
+       "skipped": true,
+       "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+       "changed": false
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0145L01B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0145L01B03",
+       "set": {
+        "known_text": "not happy now",
+        "target_text": "مش مبسوط هلق",
+        "known_audio_id": "ab3a2e0f-6fa8-43bf-9aa7-32f17a5b5e93",
+        "target1_audio_id": "09672d9b-37ca-40ab-9a70-27c69c4df006",
+        "target2_audio_id": "48d14f79-68d6-4d52-a96d-0f9d603bb3d7",
+        "target_text_roman": "mish mabsuut halla'"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0144L03B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0144L03U02",
+       "set": {
+        "known_text": "I know more than what I thought",
+        "target_text": "بعرف أكتر من اللي فكرت",
+        "known_audio_id": "bda3e18c-245d-4833-9b6f-30208bd221b5",
+        "target1_audio_id": "4a03666b-a2dd-445b-a8de-8c173d47e546",
+        "target2_audio_id": "6078a542-d27b-45a3-9d9c-55e2d98cc2e6",
+        "target_text_roman": "ba'rif aktar min illi fakart"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0144L03B03",
+       "set": {
+        "known_text": "more th",
+        "known_audio_id": "b3834cd9-76dc-42c2-8487-26aeefb7c537"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0144L03B02",
+       "set": {
+        "known_text": "earlier th",
+        "known_audio_id": "d307966a-bf97-449b-afc6-195e9d6b56ae"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "40e0727a-3d8d-4c8a-8544-f662d9474380",
+       "set": {
+        "known_text": "th",
+        "known_audio_id": "72541090-bdfd-4175-9a41-ae1139a2b084",
+        "presentation_audio_id": "9bc90baf-4775-43ec-b38f-ae29414ac1a0"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0126L03B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0126L03U02",
+       "set": {
+        "known_text": "it's changing now",
+        "target_text": "عم يتغير هلق",
+        "known_audio_id": "000ff04a-1704-4362-812e-23350b22670d",
+        "target1_audio_id": "ee2dd77b-2494-48a1-888d-27b87665daeb",
+        "target2_audio_id": "0b58e9aa-d5f9-47cc-8242-2e2852b256fe",
+        "target_text_roman": "'am yitghayyar halla'"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0126L03U01",
+       "set": {
+        "known_text": "he changes the shape",
+        "target_text": "يغير الشكل",
+        "known_audio_id": "2a71e886-97d9-42c6-a461-e5a46001bd1d",
+        "target1_audio_id": "bb6ddc38-df4f-42b3-aef4-25fc025590a3",
+        "target2_audio_id": "7dcbc28e-ee56-4733-ad91-dc313d91764d",
+        "target_text_roman": "yighayyir al-shakl"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0126L03B03",
+       "set": {
+        "known_text": "it's changing",
+        "target_text": "عم يتغير",
+        "known_audio_id": "2f390b25-2d0a-47c4-a6ec-8053a9906347",
+        "target1_audio_id": "390ddb8c-988a-484d-9c73-3f1216c6206d",
+        "target2_audio_id": "9f6e9ebe-8b5c-4c9d-9372-f4c05aa25aa7",
+        "target_text_roman": "'am yitghayyar"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0098L01U02",
+       "set": {
+        "known_text": "I know it now",
+        "target_text": "بعرفو هلق",
+        "known_audio_id": "b2d40841-7761-42b1-9c83-8668fc9dba05",
+        "target1_audio_id": "e5322367-b777-4f73-a144-cd3741cc6a07",
+        "target2_audio_id": "ebbfb32a-1440-4c16-a7c6-82b9ddaa52b8",
+        "target_text_roman": "ba'refo halla'"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0098L01U01",
+       "set": {
+        "known_text": "something good",
+        "target_text": "شي منيح",
+        "known_audio_id": "7f45dfaa-f891-4b52-8c16-645f3d55eb93",
+        "target1_audio_id": "0aa53fe1-2398-4298-8e34-9a5d7d8d1ba8",
+        "target2_audio_id": "c55c438b-85c4-47e1-abc6-9b7cee720043",
+        "target_text_roman": "shi mniih"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0083L01B04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0083L01U06"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0083L01U03",
+       "set": {
+        "known_text": "I'm surprised about what happened",
+        "target_text": "مندهش من شو صار",
+        "known_audio_id": "3f98f713-75fd-44c9-800a-fe06650208b1",
+        "target1_audio_id": "a7e4f553-16ba-4ac0-ab75-a39ba1e1a94b",
+        "target2_audio_id": "157190e0-9d1a-4c07-900d-d267d9e322a9",
+        "target_text_roman": "mundahish min shu saar"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0078L01B04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "ara_lb_for_eng:S0078L01B03"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_lb_for_eng:S0078L01U01",
+       "set": {
+        "target_text": "مش فاهم شو قلت",
+        "target1_audio_id": "65ec6c34-9195-4e77-bff2-814c455a4562",
+        "target2_audio_id": "e5ebb8fc-70b3-44e5-8514-ab5ffa346285",
+        "target_text_roman": "mish faahim shu 'ult"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
     }
    }
   ]

@@ -22,9 +22,8 @@ P17 = 'Rule: every practice phrase under a LEGO contains the whole LEGO, in exac
 THIN = 'The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.'
 
 # ---- seed 77 "I'm surprised at how quickly I'm starting to understand | مندهش كيف صرت أفهم بسرعة"
-D('S0077L02', 'rebuild-rows', ack=['known'],
-  why=P17 + ' Two rows say بلشت, a different verb for "I began" that the course does not teach here, under the LEGO "I began | صرت". Both are reworded to صرت; the English stays.',
-  b={'B03': ('how I began', 'كيف صرت'), 'U04': ("I'm surprised at how I began", 'مندهش كيف صرت'), 'U01': 'k'})
+D('S0077L02', 'keep',
+  why='ALREADY-FIXED: the scan named two rows that said بلشت (B03, U04) under this LEGO; another cleanup job deleted both after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (2 builds that put the LEGO in a phrase, 4 uses) and is owed a back-fill by the job that deleted the rows.')
 
 # ---- seed 78 "I don't understand what you said | ما فهمت شو قلت"
 D('S0078L01', 'rebuild-rows', ack=['known'],

@@ -23,18 +23,15 @@ THIN = 'The builder wants 3 build rows that put the LEGO inside a phrase and 5 u
 
 SEEDCOPY = ' The row is the seed sentence, still in the wording the seed had before it was changed; it is brought to the seed\'s live words, English unchanged.'
 # ---- seed 65 "It's important to take time to test yourself | مهم إنك تاخد وقت تختبر نفسك"
-D('S0065L03', 'rebuild-rows',
-  why=P17 + ' Two rows use the noun الاختبار / اختبار ("testing"), never taught, under the verb LEGO "test | تختبر". Both are reworded to the verb.',
-  b={'U05': ("it's useful to test", 'مفيد تختبر'), 'U06': ("it's important to test more", 'مهم إنك تختبر أكتر')})
+D('S0065L03', 'keep',
+  why='ALREADY-FIXED: the scan named two rows with the noun الاختبار (U05, U06) under this LEGO; another cleanup job deleted both after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (2 builds that put the LEGO in a phrase) and is owed a back-fill by the job that deleted the rows.')
 # ---- seed 105 "That is why he didn't know the answer | ده السبب ليه ماكانش عارف الإجابة"
 D('S0105L01', 'rebuild-rows', ack=['known'],
   why=P17 + ' Two rows say علشان كده ("that is why"), the seed\'s OLD wording, under the LEGO "the reason | السبب".' + SEEDCOPY + ' U01 becomes the seed\'s opening "that is why | ده السبب ليه". Their English is the seed\'s own ("that is why"), which is why it does not literally say "the reason".',
   b={'U01': ('that is why', 'ده السبب ليه'), 'U05': ("that is why he didn't know the answer", 'ده السبب ليه ماكانش عارف الإجابة')})
 # ---- seed 110 "We're friends, and after we finish I'd like to relax | إحنا أصحاب، و بعد ما نخلص أنا حابب نرتاح"
-D('S0110L03', 'rebuild-rows', ack=['known'],
-  why=P17 + ' One row says أرتاح ("I relax") under the LEGO "we relax | نرتاح", a different verb form. It is reworded to the seed\'s own ending, which says نرتاح (the seed\'s English there is "I\'d like to relax"). One use row is added to reach five.',
-  b={'U03': ("after we finish I'd like to relax", 'بعد ما نخلص أنا حابب نرتاح')},
-  add=[('u', 'we relax here today', 'نرتاح هنا النهارده')])
+D('S0110L03', 'keep',
+  why='ALREADY-FIXED: the scan named one row that said أرتاح (U03) under this LEGO; another cleanup job deleted it after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (3 uses) and is owed a back-fill by the job that deleted the rows.')
 # ---- seed 124 "I thought that was a good idea | أنا فكرت إن دي فكرة كويسة"
 D('S0124L01', 'rebuild-rows',
   why=P17 + ' Two rows say افتكرت (a different verb: "remembered / reckoned") under the LEGO "I thought | فكرت".' + SEEDCOPY + ' The other row takes فكرت in the same sentence.',
@@ -59,8 +56,6 @@ def ADD(id, *rows):
         d['why'] += ' ' + THIN
 
 
-ADD('S0065L03', ('b', "it's useful to test more", 'مفيد تختبر أكتر'))
-ADD('S0110L03', ('u', 'after we finish we relax', 'بعد ما نخلص نرتاح'))
 ADD('S0124L01', ('b', 'I thought about it today', 'فكرت في ده النهارده'))
 ADD('S0133L04', ('b', 'with him here today', 'معاه هنا النهارده'))
 ADD('S0150L01', ('b', 'may I speak today', 'ممكن أتكلم النهارده'))

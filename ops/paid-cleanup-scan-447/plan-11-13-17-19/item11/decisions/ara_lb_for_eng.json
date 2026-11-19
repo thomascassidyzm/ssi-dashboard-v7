@@ -2,23 +2,9 @@
  "course": "ara_lb_for_eng",
  "legos": [
   {
-   "ack": [
-    "known"
-   ],
-   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say بلشت, a different verb for \"I began\" that the course does not teach here, under the LEGO \"I began | صرت\". Both are reworded to صرت; the English stays.",
+   "why": "ALREADY-FIXED: the scan named two rows that said بلشت (B03, U04) under this LEGO; another cleanup job deleted both after 18:45Z on 18 Nov (re-read live 19 Nov 11:38Z), so every remaining row holds the LEGO. Nothing to do for this family. The basket is now short for the builder (2 builds that put the LEGO in a phrase, 4 uses) and is owed a back-fill by the job that deleted the rows.",
    "id": "S0077L02",
-   "verdict": "rebuild-rows",
-   "basket": {
-    "B03": [
-     "how I began",
-     "كيف صرت"
-    ],
-    "U04": [
-     "I'm surprised at how I began",
-     "مندهش كيف صرت"
-    ],
-    "U01": "keep"
-   }
+   "verdict": "keep"
   },
   {
    "ack": [
@@ -189,8 +175,6 @@
   }
  ],
  "roman": {
-  "كيف صرت": "kiif sirt",
-  "مندهش كيف صرت": "mundahish kiif sirt",
   "ما فهمت شو قلت": "ma fihimt shu 'ult",
   "فهمت هلق": "fihimt halla'",
   "فهمت أكتر": "fihimt aktar",
