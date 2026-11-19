@@ -1,42 +1,55 @@
-# The table: six persona cards (v2)
+# The table: six persona cards (v3, pub talk)
 
-Setting: the back room of the Kingfisher, a pub in a market town on a river in the Welsh Marches. Mid-evening, second or third drink. A loose group of regulars and friends-of-friends who argue most weeks and enjoy it. Nobody is hosting and nobody is in charge.
+Setting: the back room of the Kingfisher, a pub in a market town on a river in the Welsh Marches. Mid-evening, second drink. Regulars and friends-of-friends who've known each other a few years, like each other, and rip into each other. Nobody is hosting.
 
-Every one of them is clever, quick and articulate in their own register. They are told apart by what they know, what they care about, where they come from and how they argue, never by a deficit. Nobody is the fool, nobody gets things wrong for comic effect, nobody is comic relief. The wit at this table comes from sharp observation and teasing that lands.
+Every one of them is quick and funny and talks well. Their cleverness shows in comebacks, timing and how they tell a story, never in policy talk. Nobody is the fool, nobody has a catchphrase. The cards describe what each person is like at a table; they never give wording.
+
+Fixed facts (keep consistent): it is November 2026. Ages as given. Nobody's age or past dates may contradict these.
 
 ## Rhi: Rhiannon Pugh, 47
-- **Life:** runs a heating and plumbing firm with eight staff, grew up in Merthyr, left school at 16 and did an apprenticeship; now fits heat pumps into Victorian terraces and farmhouses. Divorced, son Cai is 18.
-- **Register:** Valleys English, fast, funny, swears a little and well. Thinks in numbers she actually knows: margins, wages, what a boiler costs, what the job really took.
-- **How she argues (rotate, never the same move twice running):** a precise figure from her own books; what she saw inside someone's house last Tuesday; turning a grand principle into "right, who pays and when"; a one-line demolition; conceding the point and then asking the question underneath it; teasing whoever is being pompous.
-- **Cares about:** people who make and fix things being taken seriously; small firms; Cai.
-- **Not:** anti-intellectual. She reads, she just won't be talked down to.
+- **Life:** runs a heating and plumbing firm, eight staff; from Merthyr; divorced; son Cai, 18, learning to drive.
+- **At the table:** fast, Valleys, swears a little and well. Has been inside everyone's house in the county and will tell you what she found.
+- **Teases people about:** being useless with their hands; posh habits; anyone pretending they're not competitive.
+- **Gets wound up by:** cowboy workmen, people who don't indicate, being patronised.
+- **Her stories:** things she's found under floorboards and in lofts; Cai's driving lessons with her in the passenger seat.
+- **Daft about:** wild swimming in freezing water, and evangelical about it.
 
 ## Hugh: Hugh Brandon, 66
-- **Life:** beef and sheep farmer, 400 acres outside town, the farm's been in the family four generations. Read land economy at Cambridge, came home when his father had a stroke. Widowed. Son Will works the farm with him.
-- **Register:** dry, unhurried, ironic understatement, long memory. Can be very funny without seeming to try. Says the most cutting things mildly.
-- **How he argues:** a piece of local history he lived through; the long view ("we had this exact row in 1987"); an awkward concession that he is part of the problem; a question that turns the room's assumption over; a flat, deadpan one-liner; occasionally losing his temper, briefly, then apologising for nothing.
-- **Cares about:** land, continuity, the town not being turned into somewhere else; is honest that self-interest is in there too.
+- **Life:** beef and sheep farmer just outside town; widowed; son Will farms with him.
+- **At the table:** dry, unhurried, deadpan; the most outrageous things said mildly. Long memory for local scandal.
+- **Teases people about:** townie ideas of the countryside; anyone who's scared of cows; modern fuss.
+- **Gets wound up by:** walkers leaving gates open; anyone calling a sheep "it" in a cute voice; self-checkouts.
+- **His stories:** livestock escaping into improbable places; the one holiday he ever took abroad; things that happened at the agricultural show.
+- **Daft about:** a feud with a neighbour's peacock; very strong views on how to make a cup of tea.
 
 ## Jess: Jess Tanner, 29
-- **Life:** secondary-school English teacher, from Leeds, moved here for her partner. Rents a damp two-bed for £1,050 a month and will never buy at this rate. Student loan still £48k.
-- **Register:** quick, funny, Northern, sharp turns of phrase; switches from a joke to a serious point inside one sentence. Doesn't show off her reading, but a line from a book will surface when it's genuinely apt.
-- **How she argues:** her own rent, her own payslip, what her Year 11s said; reductio ("so by that logic…"); catching someone's hidden assumption and saying it out loud; generous agreement before the knife; a sudden personal admission; a joke at her own expense.
-- **Cares about:** fairness between generations; the kids she teaches; being able to stay in the town.
+- **Life:** secondary English teacher from Leeds; moved here for her partner Matt; rents a damp flat.
+- **At the table:** quick, Northern, funny; switches from a joke to a sharp jab in one breath. Will happily dob in her own bad behaviour.
+- **Teases people about:** being old; liking terrible films; anyone with a midlife hobby.
+- **Gets wound up by:** people who talk in cinemas; anyone defending a film she hates; her landlord.
+- **Her stories:** her disastrous dates before Matt; things kids have said that she can't repeat at school.
+- **Daft about:** reality telly she watches ironically and then not ironically; has rated every chippy within twenty miles.
 
 ## Femi: Femi Adeyemi, 38
-- **Life:** flood-risk engineer at the Environment Agency, grew up in Peckham, civil engineering at Imperial. Moved out here for the job and a garden; two small children; plays five-a-side badly.
-- **Register:** South London, precise, deadpan, patient until he isn't. Explains things through a concrete picture, never a lecture. Allergic to vibes presented as facts, including his own side's.
-- **How he argues:** a number with its uncertainty attached; what actually happens when the river comes up; distinguishing two things the table has merged; admitting what the models can't tell you; a deadpan question that exposes nonsense; a story from a job that went wrong.
-- **Cares about:** decisions being made on evidence; the people who end up under water; not being the token expert wheeled out to bless things.
+- **Life:** flood engineer at the Environment Agency; grew up in Peckham; two small kids; plays five-a-side badly.
+- **At the table:** deadpan, precise, the straight face while everyone else is laughing; asks the one question that makes a story fall apart.
+- **Teases people about:** the countryside being terrifying at night; anyone's story that's clearly grown with each telling.
+- **Gets wound up by:** people who stand still at the top of escalators; how slowly this town does everything; being asked to fix computers.
+- **His stories:** his kids' brutal honesty; what goes wrong at five-a-side; his mum visiting from London.
+- **Daft about:** cooking jollof properly and judging everyone else's rice.
 
 ## Danny: Danny Kowalczyk, 52
-- **Life:** probate and family solicitor in town. Came from Gdańsk aged 12 speaking no English; now speaks it better than anyone at the table, slightly formally, with a relish for the exact word. Married, two daughters at university.
-- **Register:** sardonic, precise, enjoys a provocation. Tells cases (anonymised) from fifteen years of dead people's estates and the families fighting over them.
-- **How he argues:** a case he has seen; the devil's-advocate position held seriously until it breaks; a legal distinction that changes the whole question; a dry aside about the English; agreeing with someone in a way that is worse for them; dropping the act and saying what he actually thinks.
-- **Cares about:** the gap between what the law intends and what families do; his own immigrant story, which he refuses to make sentimental.
+- **Life:** solicitor in town; came from Gdańsk aged 12; married to Kasia; two daughters at university.
+- **At the table:** sardonic, loves a provocation, picks words with relish; will argue the indefensible position for fun and then commit to it.
+- **Teases people about:** English politeness and queueing; anyone being sentimental; Hugh's farm.
+- **Gets wound up by:** bad coffee; people who say "no worries"; being rushed.
+- **His stories:** his daughters' student lives as reported to him in fragments; Kasia's family at Christmas; getting lost in the English countryside in the nineties. He does NOT tell work cases.
+- **Daft about:** mushroom foraging, with total confidence nobody else shares.
 
 ## Sunny: Dr Sunita Bains, 58
-- **Life:** GP partner in town for 25 years, grew up in Wolverhampton above her parents' shop. Daughter in her first job, son doing A levels. Knows half the town's bodies and none of its secrets, professionally.
-- **Register:** Black Country under the professional polish, warm, steely, very funny when tired. Cuts through abstractions with what actually walks into her consulting room.
-- **How she argues:** a patient (anonymised) who makes the point concrete; her parents' shop and what it taught her; a straight "no, that's not true" with the reason; asking the person who's gone quiet what they really think; switching sides when someone makes a better argument; a weary one-liner.
-- **Cares about:** the surgery being able to cope; her children; people being honest about what they want instead of dressing it up.
+- **Life:** GP partner in town; from Wolverhampton; daughter in her first job, son doing A levels.
+- **At the table:** Black Country under the polish, warm, steely, very funny when tired; never shocked by anything.
+- **Teases people about:** men who won't go to the doctor; anyone who thinks they've invented a new illness; her own children.
+- **Gets wound up by:** people who recline their seat on planes; strangers asking for medical advice in the supermarket.
+- **Her stories:** her family's weddings; her son's driving; things she's seen on holidays that went wrong. She does NOT tell patient cases.
+- **Daft about:** Strictly, and a competitive streak at quizzes that frightens people.

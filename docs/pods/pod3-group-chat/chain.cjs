@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Pod 3 text-only live-chain test (#961·AI; v2 cards, topics and rules #980).
+// Pod 3 text-only live-chain test (#961·AI; v2 cards, topics and rules #980; v3 pub talk, short turns #986).
 // One "next turn" call per turn: shared transcript (AS HEARD) + six persona cards in, {speaker, line,
 // cut_in, overlap, backchannels} out. Mirrors the live-chain design (/d/bb491252 §9): the previous
 // line is fully written before the next is generated, so a cut-in is the player fading that speaker
@@ -10,20 +10,21 @@ const fs = require('fs');
 const path = require('path');
 
 const [, , topicKey, turnsArg = '30', model = 'opus'] = process.argv;
-// v2 (#980): substantive topics with real stakes for the people at the table, and a distinct
-// ending shape per topic so no two samples close the same way.
+// v3 (#986): Tom on round 2, "No one talks about this in a pub". Each topic is a pub-talk moment with
+// energy already in it (a story, a hot take, a daft hypothetical), never a seminar question; the talk
+// may wander off it the way pub talk does. Each keeps its own ending shape so no two samples close alike.
 const TOPICS = {
-  inherit: {
-    moment: "Hugh has just told the table that under the new rules on farms, when he dies his son Will is looking at an inheritance-tax bill that means selling about a third of the land. Jess said, before she could stop herself: 'Good.' Question on the table: should inheritance be taxed heavily, farms and family homes included?",
-    ending: "This conversation does not resolve. It stops mid-argument: the last turns are still live disagreement, someone has just made a point that has not been answered.",
+  lisbon: {
+    moment: "Danny got back last night from a long weekend in Lisbon with Kasia. The airline lost his suitcase on the way out, he spent four days in clothes from the airport shop and a market stall, and he's wearing one of the shirts now. Jess has just noticed it.",
+    ending: "In the last few turns the talk has drifted onto a tangent that one remark opened (not food, not drinks, not going home) and it is simply on that tangent when it stops.",
   },
-  estate: {
-    moment: "A planning inspector has just overruled the council and the town's consultation (two thirds against) and approved 300 homes on the water meadow below the bridge. Femi's team at the Environment Agency did not object, and someone has just said so, pointedly. Question on the table: when the experts and the town disagree about something like this, who should win?",
-    ending: "Near the end, someone concedes a point grudgingly and with bad grace, and the talk does not tie it up: it moves on with the concession left hanging.",
+  lastpage: {
+    moment: "Rhi has just said, casually, that she always reads the last page of a book first, and of a box set she watches the final episode first, so she knows whether it's worth it. Jess has put her glass down.",
+    ending: "It does not resolve: the last turns are still the table split and teasing, with someone mid-defence of something indefensible.",
   },
-  degree: {
-    moment: "Rhi's son Cai has two offers for September: history at Bristol, which means about £55k of debt, or a paid degree apprenticeship in engineering at an aerospace firm in Filton. He wants the history; Rhi has just said she's told him it's his choice, and then said, 'But I know what I think.' Question on the table: is university still worth it?",
-    ending: "In the last few turns the talk drifts sideways onto a tangent that one remark has opened (not food, not drinks, not going home) and the conversation is simply on that tangent when it stops.",
+  zombie: {
+    moment: "At breakfast Femi's seven-year-old asked him which of his pub friends would survive longest in a zombie apocalypse. Femi has just admitted to the table that he said Hugh would last longest and Danny would go first.",
+    ending: "Near the end someone starts a new story that the conversation has sparked, and it is still going, mid-flow, when it stops.",
   },
 };
 const T0 = TOPICS[topicKey];
@@ -38,28 +39,29 @@ const SYSTEM = `You are the "next turn" engine for a live, unscripted group conv
 
 ${cards}
 
-WHAT THIS TABLE IS: six intelligent native speakers who express themselves very well, arguing about something that matters to them, the way clever friends do on a good evening in a pub. Lively, witty, well-informed; never a seminar, never banter about nothing. The interest is in the ARGUMENT: real positions, rooted in each person's own life and work, that genuinely collide.
+WHAT THIS TABLE IS: six quick, funny, articulate friends on an ordinary good night in the pub. They are NOT debating anything. This is real pub talk: someone telling what just happened to them while the others pick holes in it, strong opinions about everyday nonsense, daft hypotheticals taken far too seriously, films and telly, mild gossip about people in town, and a lot of teasing. Their intelligence shows in wit, timing, comebacks and how they tell a story, never in arguments about society.
 
 HOW THIS TABLE TALKS (follow this, it is the whole job):
-- Every speaker is articulate and quick in their own register. Nobody is dim, inarticulate, malapropistic or comic relief; nobody misuses words or gets facts wrong for laughs. A plumber can be the sharpest person at the table.
-- Distinctness comes from what each person knows, what is at stake for them, where they're from and how they argue. A line should be identifiable as its speaker with the name hidden. No catchphrases: do NOT give anyone a repeated tic or pet phrase, and do not sprinkle generic markers ("honestly", "actually", "to be fair", "you know", "exactly") across everyone.
-- The cards describe moves, never wording: never echo a card's phrasing in a line (e.g. nobody says "merged" or "who pays and when" because a card mentions it).
-- Each card lists several ways that person argues. Rotate them; a speaker never uses the same kind of move twice in a row, and no single story, image or joke is used twice in the conversation.
-- Floor-holding is wildly uneven. Some turns are 2 words ("Rubbish."), some are a 100-word case or story that earns its length. Never settle into even, one-thought-per-turn ping-pong.
-- Intelligent is not the same as polished. Thinking happens out loud: false starts, restarts, conceding half a point mid-sentence, changing your mind as you speak, finishing someone else's sentence for them, sometimes wrongly. NO lecture-style turns, no tidy essay paragraphs, no list of points, no "on the one hand", no summaries of "both sides". Facts come in as ammunition tied to something the speaker has seen or done, not as information.
-- React to what was JUST said, not to the topic in the abstract: push back, take it personally, catch the hidden assumption, turn someone's own example against them, ignore a question, answer a better one. People do not politely summarise each other. Nobody says "great point" or "that's a good question".
-- Disagreement is real and sometimes sharp, occasionally a bit personal, and it is not smoothed over by anyone playing host. Nobody moderates. Points are not all resolved.
-- Wit is part of it: teasing that lands, a deadpan put-down, a funny true observation. It comes from sharpness, never from someone being foolish.
+- SHORT TURNS. Most turns are one sentence, often less: a fragment, a "No!", a laugh, "Go on", a question, a jab, a sentence someone else finishes. Two sentences is a normal long turn. Over about 40 words only when someone is genuinely telling a story, and a story gets interrupted, questioned and heckled as it goes.
+- Messy, not polished. Real speech: false starts, "wait, wait", trailing off, two people answering at once, someone repeating the punchline of a story wrongly, a question that nobody answers. Lines should NOT be well-turned aphorisms; a line that sounds written is wrong. Laughs come from the situation and the people, not from crafted jokes.
+- Everyone is bright. Nobody is dim, malapropistic or comic relief; nobody gets facts wrong for laughs; nobody has a catchphrase or pet phrase. Don't sprinkle "honestly", "actually", "to be fair", "literally" across everyone.
+- A line should be identifiable as its speaker with the name hidden, from what they'd notice, what they'd tease, where they're from. The cards describe people, never wording: never echo a card's phrasing in a line.
+- Talk wanders. A story sparks another story, a hot take sparks a tangent, someone drags it back. Gossip about people in town (invented, mild, named by first name) is fine.
+- React to what was JUST said. Take the bait, pile on, defend yourself, change sides for fun. Nobody moderates, nobody plays host, nobody says "great point".
+- NO VARIETY OF MOVE REPEATS FOR A SPEAKER. Before writing, look at everything this speaker has already said tonight. Do something of a different kind from each of their previous turns (if they've already teased X, they don't tease X again; if they've told a story, they don't start another one; if they've done a one-word reaction, the next is something else). No story, image, joke or comparison is used twice in the evening.
+- Consistent facts: ages, dates and details stay as the cards and the earlier transcript give them. Nobody contradicts a fact already stated.
 
 ${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED SET PIECES (never write these):
 - anyone misquoting or misattributing a thinker, writer or study and being corrected; name-dropping philosophers or academics at all;
 - anyone fetching, refilling or offering drinks or food to change the subject; "whose round is it"; last orders; anyone leaving;
-- a touching, sentimental or reconciling moment near the end; a closing punchline; a toast; anyone summing up what the evening has shown.
+- a touching, sentimental or reconciling moment near the end; a closing punchline; a toast; anyone summing up what the evening has shown;
+- any politics, policy, tax, housing, planning, education, NHS or current-affairs debate; anyone's job turned into a case study;
+- lecture or explanation turns: nobody explains how something works, gives background, or makes a point with "the thing is…" followed by a paragraph.
 
 RENDERING OVERLAP IN TEXT (the live system can fade a speaker at a word boundary, or start the next speaker early over the tail):
-- "cut_in": if your speaker interrupts the PREVIOUS speaker before they finished, give the exact contiguous words from the previous line after which they get cut off (must appear verbatim in the previous line; choose a natural point mid-thought). The previous speaker's remaining words are never heard. Use this when the character would genuinely jump in (impatience, objection, excitement, a joke) — roughly 1 turn in 4 overall; more often when the argument is hot.
+- "cut_in": if your speaker interrupts the PREVIOUS speaker before they finished, give the exact contiguous words from the previous line after which they get cut off (must appear verbatim in the previous line; choose a natural point mid-thought). The previous speaker's remaining words are never heard. Use this when the character would genuinely jump in (impatience, objection, excitement, a joke) — roughly 1 turn in 3 overall: this table talks over each other all the time, especially when someone is telling a story or defending themselves.
 - "overlap": true if your speaker starts over the last couple of words of the previous line without cutting it (eager agreement, a quick reaction). Otherwise false.
-- "backchannels": usually an EMPTY list. Only about one turn in three gets one, and never more than one. Laughter ("ha") is rare — save it for something actually funny. Otherwise: tiny listener noises from OTHER people heard DURING the previous line ("mm", "yeah", "ha", "oh God", "no way"), each with "after": exact words in the previous line where it lands.
+- "backchannels": usually an EMPTY list. Only about one turn in three gets one, and never more than one. Laughter ("ha") only when something is actually funny. Otherwise: tiny listener noises from OTHER people heard DURING the previous line ("mm", "yeah", "ha", "oh God", "no way"), each with "after": exact words in the previous line where it lands.
 - A speaker who was cut off may later fight back in ("—no, let me finish") or give up on the point. Two people may start at once: then one stops after a word or two ("I just—" / "Go on.").
 
 RULES OF WHO SPEAKS NEXT (you choose):
@@ -100,16 +102,16 @@ const log = [];
 for (let i = 0; i < turns; i++) {
   const counts = Object.fromEntries(NAMES.map(n => [n, T.filter(e => e.speaker === n).length]));
   const rr = Math.random();
-  const band = rr < 0.3 ? 'SHORT: 1-8 words (a reaction, a jab, a question, a half-start)' : rr < 0.75 ? 'MEDIUM: 10-35 words' : 'LONG: 40-110 words (someone takes the floor: a case, a story, an argument built as they go)';
+  const band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.4 ? 'SHORT: 1-6 words (a laugh, "No!", "Go on", a jab, a question, a half-start)' : rr < 0.88 ? 'MEDIUM: 7-25 words, one sentence or two' : 'STORY: 25-45 words, only if someone is genuinely telling a story; otherwise MEDIUM';
   // Cut-in pressure (#980 probe: 10 turns came out with no cut-ins at all, too courteous for a hot argument).
   const sinceCut = T.length - 1 - T.map(e => !!e.cutIn).lastIndexOf(true);
-  const cutNudge = T.length >= 3 && sinceCut >= 5 ? '\nNobody has interrupted anyone for a while and this argument is hot: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
+  const cutNudge = T.length >= 3 && sinceCut >= 3 ? '\nNobody has cut anyone off for a few turns and this table talks over each other: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
   const prompt = `THE MOMENT: ${TOPIC}
 
 TRANSCRIPT SO FAR (as heard; "—" at the end of a line = that speaker was cut off there):
-${T.length ? transcriptForModel() : '(the question has just been asked; nobody has answered yet)'}
+${T.length ? transcriptForModel() : '(nothing said yet: the moment has just happened. The FIRST turn is under 15 words and lands right in the middle of it, as if mid-evening, with no scene-setting)'}
 
-Turns so far per person: ${JSON.stringify(counts)}. This is turn ${i + 1} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up.' : 'keep it live.'}
+Turns so far per person: ${JSON.stringify(counts)}. This is turn ${i + 1} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up.' : 'keep it live; the talk may wander off the opening moment.'}
 LENGTH FOR THIS TURN: ${band}. Pick a speaker for whom that length is natural right now.${cutNudge}
 Write the single next turn as JSON.`;
   let r, tries = 0;
@@ -117,6 +119,11 @@ Write the single next turn as JSON.`;
     try { r = call(prompt); break; } catch (e) { if (++tries > 2) throw e; }
   }
   if (!NAMES.includes(r.speaker)) { i--; continue; }
+  // v3 (#986): hard length cap. Over 50 words (or a first line over 15) is regenerated once.
+  const wc = String(r.line).split(/\s+/).filter(Boolean).length;
+  if ((wc > 50 || (i === 0 && wc > 15)) && !r._retried) {
+    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. Keep this turn short.'); if (NAMES.includes(r2.speaker)) r = r2; } catch (e) {}
+  }
   const prev = T[T.length - 1];
   let cutApplied = false;
   if (r.cut_in && prev && !prev.cutOff) {
