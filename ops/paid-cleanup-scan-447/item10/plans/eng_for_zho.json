@@ -2,9 +2,9 @@
  "course": "eng_for_zho",
  "roman_flags": [],
  "dumped": "2026-11-19T11:47:11Z",
- "decisions": 11,
+ "decisions": 12,
  "verdicts": {
-  "regloss": 8,
+  "regloss": 9,
   "seed": 1,
   "delete": 1,
   "grow": 1
@@ -19,18 +19,12 @@
   57,
   59,
   103,
+  116,
   218
  ],
- "problems": [
-  "ZUT introduced/changed: \"能\" -> ['make', 'to be able']"
- ],
+ "problems": [],
  "auto_substitutions": [],
- "zut_after_changed": {
-  "能": [
-   "make",
-   "to be able"
-  ]
- },
+ "zut_after_changed": {},
  "later_duplicates": [],
  "legos": [
   {
@@ -1457,11 +1451,11 @@
      "course_code": "eng_for_zho",
      "seed_number": 103,
      "lego_index": 2,
-     "known_text": "学更多的词",
-     "target_text": "learn more words",
+     "known_text": "试着听更多的词",
+     "target_text": "trying to hear more words",
      "phrase_role": "build",
      "position": 11,
-     "word_count": 3,
+     "word_count": 5,
      "lego_count": 1,
      "connected_lego_ids": [],
      "metadata": {
@@ -1493,8 +1487,8 @@
      "course_code": "eng_for_zho",
      "seed_number": 103,
      "lego_index": 2,
-     "known_text": "我们需要学更多的词",
-     "target_text": "we need to learn more words",
+     "known_text": "我们在试着听更多的词",
+     "target_text": "we're trying to hear more words",
      "phrase_role": "use",
      "position": 13,
      "word_count": 6,
@@ -1511,8 +1505,8 @@
      "course_code": "eng_for_zho",
      "seed_number": 103,
      "lego_index": 2,
-     "known_text": "我今天想学更多的词",
-     "target_text": "I want to learn more words today",
+     "known_text": "我不想听更多的词",
+     "target_text": "I don't want to hear more words",
      "phrase_role": "use",
      "position": 14,
      "word_count": 7,
@@ -1789,6 +1783,176 @@
      }
     ]
    }
+  },
+  {
+   "id": "S0116L03",
+   "verdict": "regloss",
+   "why": "Knock-on, found by hand: \"能 | Make\" is out of step (能 is \"could\"; the seed's \"make\" is 做出) and would put 能 over two English answers once S0011L01 is mended (ZUT). Known → 做出; rows on 做点什么/做什么 go.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 116,
+    "known": "这不是我能做出的最好的选择",
+    "target": "This isn't the best choice I could make"
+   },
+   "before": {
+    "known": "能",
+    "target": "Make",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "做出",
+    "target": "Make",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0116L03B01",
+     "role": "build",
+     "before": [
+      "做出最好的选择",
+      "Make the best choice"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0116L03B02",
+     "role": "build",
+     "before": [
+      "做出选择",
+      "Make a choice"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0116L03B03",
+     "role": "build",
+     "before": [
+      "做点什么",
+      "Make something"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0116L03U01",
+     "role": "use",
+     "before": [
+      "这不是我能做出的最好选择",
+      "This isn't the best choice I could make"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0116L03U02",
+     "role": "use",
+     "before": [
+      "我想做出最好的选择",
+      "I want to make the best choice"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0116L03U03",
+     "role": "use",
+     "before": [
+      "我不确定要做什么选择",
+      "I'm not sure what choice to make"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0116L03U04",
+     "role": "use",
+     "before": [
+      "我需要快点做出最好的选择",
+      "I need to make the best choice soon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0116L03U05",
+     "role": "use",
+     "before": [
+      "我昨天没有做出最好的选择",
+      "I didn't make the best choice yesterday"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_zho:S0116L03B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 116,
+     "lego_index": 3,
+     "known_text": "做出好的选择",
+     "target_text": "make a good choice",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    },
+    {
+     "id": "eng_for_zho:S0116L03U06",
+     "course_code": "eng_for_zho",
+     "seed_number": 116,
+     "lego_index": 3,
+     "known_text": "她想做出最好的选择",
+     "target_text": "she wants to make the best choice",
+     "phrase_role": "use",
+     "position": 10,
+     "word_count": 7,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0151L01U02",
+      "known": "那不是我能做出的最好选择",
+      "target": "That wasn't the best choice I could make",
+      "seed": 151
+     }
+    ]
+   }
   }
  ],
  "ops": [
@@ -1997,11 +2161,11 @@
     "course_code": "eng_for_zho",
     "seed_number": 103,
     "lego_index": 2,
-    "known_text": "学更多的词",
-    "target_text": "learn more words",
+    "known_text": "试着听更多的词",
+    "target_text": "trying to hear more words",
     "phrase_role": "build",
     "position": 11,
-    "word_count": 3,
+    "word_count": 5,
     "lego_count": 1,
     "connected_lego_ids": [],
     "metadata": {
@@ -2039,8 +2203,8 @@
     "course_code": "eng_for_zho",
     "seed_number": 103,
     "lego_index": 2,
-    "known_text": "我们需要学更多的词",
-    "target_text": "we need to learn more words",
+    "known_text": "我们在试着听更多的词",
+    "target_text": "we're trying to hear more words",
     "phrase_role": "use",
     "position": 13,
     "word_count": 6,
@@ -2060,8 +2224,8 @@
     "course_code": "eng_for_zho",
     "seed_number": 103,
     "lego_index": 2,
-    "known_text": "我今天想学更多的词",
-    "target_text": "I want to learn more words today",
+    "known_text": "我不想听更多的词",
+    "target_text": "I don't want to hear more words",
     "phrase_role": "use",
     "position": 14,
     "word_count": 7,
@@ -2290,6 +2454,2909 @@
     "introduce": true,
     "lego_position": "start"
    }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0116L03",
+   "set": {
+    "known_text": "做出"
+   },
+   "expect": {
+    "known_text": "能",
+    "target_text": "Make"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0116L03B03",
+   "expect": {
+    "known_text": "做点什么",
+    "target_text": "Make something"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0116L03U03",
+   "expect": {
+    "known_text": "我不确定要做什么选择",
+    "target_text": "I'm not sure what choice to make"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0116L03B04",
+    "course_code": "eng_for_zho",
+    "seed_number": 116,
+    "lego_index": 3,
+    "known_text": "做出好的选择",
+    "target_text": "make a good choice",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0116L03U06",
+    "course_code": "eng_for_zho",
+    "seed_number": 116,
+    "lego_index": 3,
+    "known_text": "她想做出最好的选择",
+    "target_text": "she wants to make the best choice",
+    "phrase_role": "use",
+    "position": 10,
+    "word_count": 7,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
   }
- ]
+ ],
+ "dryRun": {
+  "at": "2026-11-19T11:59:04Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 40,
+    "status": 200,
+    "secs": 9.0,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0011L01"
+       },
+       "before": {
+        "id": "5bead7ff-f07b-41db-ab17-4ef10860a564",
+        "seed_number": 11,
+        "lego_index": 1,
+        "lego_id": "S0011L01",
+        "known_text": "我想",
+        "target_text": "To be able",
+        "known_audio_id": "d456da99-01f1-4798-9614-f835d2d64662",
+        "target1_audio_id": "a49bca73-fdea-483d-9188-65cdece973ac",
+        "target2_audio_id": "59911736-0bd3-4c9a-a1d9-ee9d0082e527",
+        "presentation_audio_id": "ed9a0351-ae01-406e-a8ec-1557ee527879"
+       },
+       "after": {
+        "id": "5bead7ff-f07b-41db-ab17-4ef10860a564",
+        "seed_number": 11,
+        "lego_index": 1,
+        "lego_id": "S0011L01",
+        "known_text": "能",
+        "target_text": "To be able",
+        "known_audio_id": "56a048ed-91c6-4635-99ea-57248cc587fc",
+        "target1_audio_id": "a49bca73-fdea-483d-9188-65cdece973ac",
+        "target2_audio_id": "59911736-0bd3-4c9a-a1d9-ee9d0082e527",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0012L02"
+       },
+       "before": {
+        "id": "7ed365c9-89ea-42f0-b379-8c977fa8d86c",
+        "seed_number": 12,
+        "lego_index": 2,
+        "lego_id": "S0012L02",
+        "target_text": "Doesn't want",
+        "known_text": "不想",
+        "known_audio_id": "5837aefb-452c-4da3-9f12-07e2db4a5cb0",
+        "target1_audio_id": "28cc4a85-537e-4ebb-858e-05243cd08f5c",
+        "target2_audio_id": "05b35996-7503-4442-9300-2339571e9d26",
+        "presentation_audio_id": "94e9bf9f-c702-4e9c-9301-04ae7a035a60"
+       },
+       "after": {
+        "id": "7ed365c9-89ea-42f0-b379-8c977fa8d86c",
+        "seed_number": 12,
+        "lego_index": 2,
+        "lego_id": "S0012L02",
+        "target_text": "wouldn't like",
+        "known_text": "不想",
+        "known_audio_id": "5837aefb-452c-4da3-9f12-07e2db4a5cb0",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "seed.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "seed_number": 26
+       },
+       "before": {
+        "id": "48455af6-040b-486a-86b7-403e1d63b7d1",
+        "seed_number": 26,
+        "known_text": "我喜欢那种快要准备好出发的感觉",
+        "target_text": "I like feeling as if I'm nearly ready to go",
+        "known_audio_id": "b403e554-3104-416a-9f50-79b25dd3c74f",
+        "target1_audio_id": "b51837a2-1bc7-4610-8590-55b5f6969754",
+        "target2_audio_id": "cb067b9b-4ba4-43cf-85d8-2f9d1b3d7a0b"
+       },
+       "after": {
+        "id": "48455af6-040b-486a-86b7-403e1d63b7d1",
+        "seed_number": 26,
+        "known_text": "我喜欢那种好像快要准备好出发的感觉",
+        "target_text": "I like feeling as if I'm nearly ready to go",
+        "known_audio_id": null,
+        "target1_audio_id": "b51837a2-1bc7-4610-8590-55b5f6969754",
+        "target2_audio_id": "cb067b9b-4ba4-43cf-85d8-2f9d1b3d7a0b"
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0026L03"
+       },
+       "before": {
+        "id": "999bc4ee-d7b4-427f-b2b3-9dca6aa6b0ae",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": "S0026L03",
+        "target_text": "Seems",
+        "known_text": "好像",
+        "known_audio_id": "1819a16b-4b2a-4bd9-9b5f-051a71ba6f69",
+        "target1_audio_id": "cc09d48e-243c-4915-83d0-da8902f9f9e3",
+        "target2_audio_id": "11f93db4-3a14-4b9c-a512-98a7141793f9",
+        "presentation_audio_id": "d10ccc24-cae5-447b-8c96-c9bd10383119"
+       },
+       "after": {
+        "id": "999bc4ee-d7b4-427f-b2b3-9dca6aa6b0ae",
+        "seed_number": 26,
+        "lego_index": 3,
+        "lego_id": "S0026L03",
+        "target_text": "as if",
+        "known_text": "好像",
+        "known_audio_id": "1819a16b-4b2a-4bd9-9b5f-051a71ba6f69",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "lego.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0033L01"
+       },
+       "before": {
+        "id": "4cc815a1-0c5d-4095-b4ab-7708d9cf5e93",
+        "seed_number": 33,
+        "lego_index": 1,
+        "lego_id": "S0033L01",
+        "known_text": "长时间",
+        "target_text": "A long time",
+        "known_audio_id": "1819c48b-bd69-4c03-9603-01ea3f070d0d",
+        "target1_audio_id": "58083150-baec-44b2-b332-06753f08f6c8",
+        "target2_audio_id": "4bdd1596-317d-4a5a-a167-723ed5b095fd",
+        "presentation_audio_id": "17dc799d-ad35-4f71-b5e7-c6ce8c39908e"
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0034L02"
+       },
+       "before": {
+        "id": "632ac3f5-e373-4fe9-9b03-89248253ddef",
+        "seed_number": 34,
+        "lego_index": 2,
+        "lego_id": "S0034L02",
+        "target_text": "To be quiet",
+        "known_text": "的时候",
+        "known_audio_id": "1f2bb0f8-c547-4049-8758-e075c37f4381",
+        "target1_audio_id": "28ce44be-93cb-43ce-9f7c-e1bc71a34f24",
+        "target2_audio_id": "6c35b4fd-be77-4ba6-969e-7bbcb443d83f",
+        "presentation_audio_id": "ee4f3442-8841-47ec-a1e2-7eca52aa9d6f"
+       },
+       "after": {
+        "id": "632ac3f5-e373-4fe9-9b03-89248253ddef",
+        "seed_number": 34,
+        "lego_index": 2,
+        "lego_id": "S0034L02",
+        "target_text": "when",
+        "known_text": "的时候",
+        "known_audio_id": "1f2bb0f8-c547-4049-8758-e075c37f4381",
+        "target1_audio_id": "6ea0c07b-fecf-42eb-a2cf-2271f8362889",
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0055L03"
+       },
+       "before": {
+        "id": "1a67c88f-2365-4bcb-9384-d4dba7b1d2dd",
+        "seed_number": 55,
+        "lego_index": 3,
+        "lego_id": "S0055L03",
+        "target_text": "Doesn't like",
+        "known_text": "不喜欢",
+        "known_audio_id": "b0724ed7-9409-4381-b8bd-92aa3b76fec7",
+        "target1_audio_id": "9fbc6b8b-b6d1-4d6a-a4c4-55c713d3d382",
+        "target2_audio_id": "325e7719-5630-4f71-af7a-c4ca57bcfee5",
+        "presentation_audio_id": "7c60b692-dcdc-4f69-86dd-9f3423a2a26c"
+       },
+       "after": {
+        "id": "1a67c88f-2365-4bcb-9384-d4dba7b1d2dd",
+        "seed_number": 55,
+        "lego_index": 3,
+        "lego_id": "S0055L03",
+        "target_text": "don't enjoy",
+        "known_text": "不喜欢",
+        "known_audio_id": "b0724ed7-9409-4381-b8bd-92aa3b76fec7",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0055L03B01"
+       },
+       "before": {
+        "id": "eng_for_zho:S0055L03B01",
+        "seed_number": 55,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "不喜欢",
+        "target_text": "Doesn't like",
+        "known_audio_id": "b0724ed7-9409-4381-b8bd-92aa3b76fec7",
+        "target1_audio_id": "9fbc6b8b-b6d1-4d6a-a4c4-55c713d3d382",
+        "target2_audio_id": "325e7719-5630-4f71-af7a-c4ca57bcfee5",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0055L03B02"
+       },
+       "before": {
+        "id": "eng_for_zho:S0055L03B02",
+        "seed_number": 55,
+        "lego_index": 3,
+        "lego_id": null,
+        "target_text": "Don't like waking up",
+        "known_text": "不喜欢醒来",
+        "known_audio_id": "ad8013d5-0fee-4549-8773-792f675bbfac",
+        "target1_audio_id": "352bab04-7478-4f44-9e7c-155fe6f3dc33",
+        "target2_audio_id": "781f6704-7678-48ac-9c20-0d81676c96e7",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_zho:S0055L03B02",
+        "seed_number": 55,
+        "lego_index": 3,
+        "lego_id": null,
+        "target_text": "Don't enjoy waking up",
+        "known_text": "不喜欢醒来",
+        "known_audio_id": "ad8013d5-0fee-4549-8773-792f675bbfac",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0057L01"
+       },
+       "before": {
+        "id": "7d4bea27-023c-4b4e-8d9e-b6b84272516e",
+        "seed_number": 57,
+        "lego_index": 1,
+        "lego_id": "S0057L01",
+        "known_text": "说",
+        "target_text": "Can't remember",
+        "known_audio_id": "58503e1e-37a4-4a63-90cb-efae0224a99f",
+        "target1_audio_id": "c46b6c68-cfef-4848-97ff-9e57b0ac6749",
+        "target2_audio_id": "ee2e1a28-5fc0-46f5-9faa-ae256d7c0c18",
+        "presentation_audio_id": "d5e7eec4-78e7-4eca-b259-df3188e77a47"
+       },
+       "after": {
+        "id": "7d4bea27-023c-4b4e-8d9e-b6b84272516e",
+        "seed_number": 57,
+        "lego_index": 1,
+        "lego_id": "S0057L01",
+        "known_text": "记不住",
+        "target_text": "Can't remember",
+        "known_audio_id": "c0992036-b085-4fd5-943b-66bf03af48f2",
+        "target1_audio_id": "c46b6c68-cfef-4848-97ff-9e57b0ac6749",
+        "target2_audio_id": "ee2e1a28-5fc0-46f5-9faa-ae256d7c0c18",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0059L02"
+       },
+       "before": {
+        "id": "76807ce1-7afe-4616-bce6-cf3bd6712755",
+        "seed_number": 59,
+        "lego_index": 2,
+        "lego_id": "S0059L02",
+        "known_text": "做",
+        "target_text": "Next week",
+        "known_audio_id": "ef6ccaea-403c-4fae-8b10-9db975d309ca",
+        "target1_audio_id": "cc0164f3-ee8c-4eec-a623-48e5421dc1b8",
+        "target2_audio_id": "42312f8e-af52-49d0-a59c-4a364044a432",
+        "presentation_audio_id": "b7be333b-a450-47f9-a7ae-be1d52123f7e"
+       },
+       "after": {
+        "id": "76807ce1-7afe-4616-bce6-cf3bd6712755",
+        "seed_number": 59,
+        "lego_index": 2,
+        "lego_id": "S0059L02",
+        "known_text": "下个星期",
+        "target_text": "Next week",
+        "known_audio_id": "450742a5-1b40-4ef9-8015-9b9716590691",
+        "target1_audio_id": "cc0164f3-ee8c-4eec-a623-48e5421dc1b8",
+        "target2_audio_id": "42312f8e-af52-49d0-a59c-4a364044a432",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0103L02B01"
+       },
+       "before": {
+        "id": "eng_for_zho:S0103L02B01",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "很多词",
+        "target_text": "Many words",
+        "known_audio_id": "1729d7b7-227e-49eb-8575-a2e982fa407f",
+        "target1_audio_id": "738aae81-ceaf-4951-a86f-89c064ae3882",
+        "target2_audio_id": "a6510766-c38a-4aec-9784-a199957b92c0",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0103L02B03"
+       },
+       "before": {
+        "id": "eng_for_zho:S0103L02B03",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "很多人",
+        "target_text": "Many people",
+        "known_audio_id": "8e74dc49-0d52-47df-ab46-87107886d6f3",
+        "target1_audio_id": "5779b38e-175b-4654-8c3b-d1b855e4f7f7",
+        "target2_audio_id": "68262590-bd44-4950-ba4b-832d9e0bf51e",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0103L02U02"
+       },
+       "before": {
+        "id": "eng_for_zho:S0103L02U02",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "我还不知道很多词",
+        "target_text": "I don't know many words yet",
+        "known_audio_id": "f001f9c5-1418-43e6-b66c-3b30005ba97a",
+        "target1_audio_id": "843ae405-01d4-4994-979c-3834b9cd51a1",
+        "target2_audio_id": "cb5eeec1-3394-43df-b2d0-0766cd52745d",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0103L02U04"
+       },
+       "before": {
+        "id": "eng_for_zho:S0103L02U04",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "你认识很多人吗？",
+        "target_text": "Do you know many people?",
+        "known_audio_id": "738e0243-42e8-4fd7-800e-654a2152389f",
+        "target1_audio_id": "67dd996c-4911-4da6-8000-a27e9c9206fc",
+        "target2_audio_id": "90486285-4bcd-476c-93c4-1578861b526b",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0103L02U05"
+       },
+       "before": {
+        "id": "eng_for_zho:S0103L02U05",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "我做了很多，现在我知道很多词了",
+        "target_text": "I've done a lot and I know many words now",
+        "known_audio_id": "ab665fb1-ac86-41a6-bbc9-5e280aa7c6b2",
+        "target1_audio_id": "5df9c0d3-8b05-4bd4-a825-a9030b528744",
+        "target2_audio_id": "d6bdc4e4-afb0-47d7-a187-b342879bf608",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0103L02B04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0103L02B04",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "更多的词",
+        "target_text": "more words",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0103L02B05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0103L02B05",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "听更多的词",
+        "target_text": "hear more words",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0103L02B06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0103L02B06",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "试着听更多的词",
+        "target_text": "trying to hear more words",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0103L02U06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0103L02U06",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "我想听更多的词",
+        "target_text": "I want to hear more words",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0103L02U07"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0103L02U07",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "我们在试着听更多的词",
+        "target_text": "we're trying to hear more words",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0103L02U08"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0103L02U08",
+        "seed_number": 103,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "我不想听更多的词",
+        "target_text": "I don't want to hear more words",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0218L01"
+       },
+       "before": {
+        "id": "ba3d5030-4d8b-4dfc-bb24-e7be57b566de",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": "S0218L01",
+        "known_text": "多少",
+        "target_text": "How much",
+        "type": "A",
+        "components": [],
+        "known_audio_id": "1f719aad-14b9-4b51-bfc7-cad1d518f4af",
+        "target1_audio_id": "4ac7520d-ed10-4055-ad76-34b2df5ee2b8",
+        "target2_audio_id": "33c745b7-48fa-4bea-a477-9969dddc89ba",
+        "presentation_audio_id": "883c8d18-920d-40fe-b16b-0273ab150092"
+       },
+       "after": {
+        "id": "ba3d5030-4d8b-4dfc-bb24-e7be57b566de",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": "S0218L01",
+        "known_text": "没做什么",
+        "target_text": "didn't do much",
+        "type": "M",
+        "components": [
+         {
+          "known": "没",
+          "target": "didn't"
+         },
+         {
+          "known": "做",
+          "target": "do"
+         },
+         {
+          "known": "什么",
+          "target": "much"
+         }
+        ],
+        "known_audio_id": "8f52223a-2226-4693-996d-8f7f55fa9502",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 23,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0218L01U01"
+       },
+       "before": {
+        "id": "eng_for_zho:S0218L01U01",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我周末没做多少",
+        "target_text": "I didn't do much at the weekend",
+        "known_audio_id": "586bcbd9-daf1-49f8-95e3-d6c93e7b826d",
+        "target1_audio_id": "4d57a45f-dba9-4193-8a99-aa52e7a2ee4d",
+        "target2_audio_id": "33581e97-22fe-4c7f-be58-e77c384e46d0",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_zho:S0218L01U01",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我周末没做什么",
+        "target_text": "I didn't do much at the weekend",
+        "known_audio_id": null,
+        "target1_audio_id": "4d57a45f-dba9-4193-8a99-aa52e7a2ee4d",
+        "target2_audio_id": "33581e97-22fe-4c7f-be58-e77c384e46d0",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 24,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0218L01U02"
+       },
+       "before": {
+        "id": "eng_for_zho:S0218L01U02",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "她没说多少关于那件事",
+        "target_text": "She didn't say much about it",
+        "known_audio_id": "996c1241-1664-4d86-b302-65e81d353c26",
+        "target1_audio_id": "e2592c87-8fbd-4420-bb80-95bab3a9fa50",
+        "target2_audio_id": "97a8b394-31d2-4f18-ad9b-fe1df3c6d54c",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 25,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0218L01U03"
+       },
+       "before": {
+        "id": "eng_for_zho:S0218L01U03",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我能做的帮助不多",
+        "target_text": "There isn't much I can do to help",
+        "known_audio_id": "cd650043-2578-462c-84be-4172434ab7c5",
+        "target1_audio_id": "b6838dae-f246-4367-b98b-84a316489912",
+        "target2_audio_id": "58420ee9-8cc8-44eb-a64c-4572df19b62f",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 26,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0218L01U04"
+       },
+       "before": {
+        "id": "eng_for_zho:S0218L01U04",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "没有人说多少关于他们想实现什么",
+        "target_text": "Nobody said much about what they're trying to achieve",
+        "known_audio_id": "205c143b-4122-4c34-a592-24eb7c8b8f1f",
+        "target1_audio_id": "7502698a-0485-464c-98fd-493feb058c50",
+        "target2_audio_id": "9915f060-dcd1-4fe8-9d31-ef06e47bb0ed",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 27,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0218L01U05"
+       },
+       "before": {
+        "id": "eng_for_zho:S0218L01U05",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "到目前为止我没做多少，虽然我想做",
+        "target_text": "I haven't done much so far although I want to",
+        "known_audio_id": "45afa508-9b73-4d55-877f-cce1f183d5c5",
+        "target1_audio_id": "bce1a0a4-0535-4324-9518-5790aa7f5614",
+        "target2_audio_id": "8c05d664-2038-42f2-87eb-36cf20db5f54",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 28,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01B01",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我昨天没做什么",
+        "target_text": "I didn't do much yesterday",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 29,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01B02",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "他没做什么",
+        "target_text": "he didn't do much",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 30,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01B03",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我们没做什么",
+        "target_text": "we didn't do much",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 31,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01U06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01U06",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "星期天我没做什么",
+        "target_text": "I didn't do much on Sunday",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 32,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01U07"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01U07",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我今天没做什么",
+        "target_text": "I didn't do much today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 33,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01U08"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01U08",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "她上个星期没做什么",
+        "target_text": "she didn't do much last week",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 34,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0218L01U09"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0218L01U09",
+        "seed_number": 218,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "我今天早上没做什么",
+        "target_text": "I didn't do much this morning",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 35,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0116L03"
+       },
+       "before": {
+        "id": "f8604148-9b7e-4a88-9124-492059ef0e1b",
+        "seed_number": 116,
+        "lego_index": 3,
+        "lego_id": "S0116L03",
+        "known_text": "能",
+        "target_text": "Make",
+        "known_audio_id": "56a048ed-91c6-4635-99ea-57248cc587fc",
+        "target1_audio_id": "f6e51cb3-f666-43a4-8f97-10e5eaa59c50",
+        "target2_audio_id": "2f6cd179-edf5-436b-8300-8ce93b291e4b",
+        "presentation_audio_id": "626a8f2d-cbf2-40f2-8594-098d9143bfee"
+       },
+       "after": {
+        "id": "f8604148-9b7e-4a88-9124-492059ef0e1b",
+        "seed_number": 116,
+        "lego_index": 3,
+        "lego_id": "S0116L03",
+        "known_text": "做出",
+        "target_text": "Make",
+        "known_audio_id": "230c5e34-ab7b-4d32-8ed0-40931b8e62f4",
+        "target1_audio_id": "f6e51cb3-f666-43a4-8f97-10e5eaa59c50",
+        "target2_audio_id": "2f6cd179-edf5-436b-8300-8ce93b291e4b",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 36,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0116L03B03"
+       },
+       "before": {
+        "id": "eng_for_zho:S0116L03B03",
+        "seed_number": 116,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "做点什么",
+        "target_text": "Make something",
+        "known_audio_id": "353d5792-1d05-4e51-aea4-a661d63484e9",
+        "target1_audio_id": "90fcd332-0217-48a6-915f-1c01f08522f4",
+        "target2_audio_id": "70d2e210-ca50-4c18-b0aa-5f7a5626c9d4",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 37,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0116L03U03"
+       },
+       "before": {
+        "id": "eng_for_zho:S0116L03U03",
+        "seed_number": 116,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "我不确定要做什么选择",
+        "target_text": "I'm not sure what choice to make",
+        "known_audio_id": "5ff07c72-5692-4eca-816a-e3ad420c8288",
+        "target1_audio_id": "5a5511a6-4f84-4cd5-8f28-6f023dd16417",
+        "target2_audio_id": "07b2a6a2-5cec-4c8c-9208-fa4c6a069b35",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 38,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0116L03B04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0116L03B04",
+        "seed_number": 116,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "做出好的选择",
+        "target_text": "make a good choice",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 39,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_zho:S0116L03U06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_zho:S0116L03U06",
+        "seed_number": 116,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "她想做出最好的选择",
+        "target_text": "she wants to make the best choice",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0011L01",
+         "S0012L02",
+         "S0026L03",
+         "S0033L01",
+         "S0034L02",
+         "S0055L03",
+         "S0057L01",
+         "S0059L02",
+         "S0218L01",
+         "S0116L03"
+        ]
+       },
+       "skipped": true,
+       "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+       "changed": false
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0116L03U06"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0116L03B04"
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0116L03U03",
+        "seed_number": 116,
+        "lego_index": 3,
+        "position": 6,
+        "known_text": "我不确定要做什么选择",
+        "target_text": "I'm not sure what choice to make",
+        "word_count": 32,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T05:46:36.924Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:46:36.960Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": "5ff07c72-5692-4eca-816a-e3ad420c8288",
+        "target1_audio_id": "5a5511a6-4f84-4cd5-8f28-6f023dd16417",
+        "target2_audio_id": "07b2a6a2-5cec-4c8c-9208-fa4c6a069b35",
+        "qa_checked": null,
+        "target1_duration_ms": 1992,
+        "target2_duration_ms": 1992,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "不确定",
+          "legoId": "S0010L01",
+          "target": " not sure",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " what",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " choice",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "能",
+          "legoId": "S0116L03",
+          "target": " make",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0116L03B03",
+        "seed_number": 116,
+        "lego_index": 3,
+        "position": 3,
+        "known_text": "做点什么",
+        "target_text": "Make something",
+        "word_count": 14,
+        "lego_count": 2,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:46:36.960Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "353d5792-1d05-4e51-aea4-a661d63484e9",
+        "target1_audio_id": "90fcd332-0217-48a6-915f-1c01f08522f4",
+        "target2_audio_id": "70d2e210-ca50-4c18-b0aa-5f7a5626c9d4",
+        "qa_checked": null,
+        "target1_duration_ms": 1008,
+        "target2_duration_ms": 1080,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "能",
+          "legoId": "S0116L03",
+          "target": "Make",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " something",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "f8604148-9b7e-4a88-9124-492059ef0e1b",
+       "set": {
+        "known_text": "能",
+        "known_audio_id": "56a048ed-91c6-4635-99ea-57248cc587fc",
+        "presentation_audio_id": "626a8f2d-cbf2-40f2-8594-098d9143bfee"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01U09"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01U08"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01U07"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01U06"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0218L01B01"
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0218L01U05",
+        "seed_number": 218,
+        "lego_index": 1,
+        "position": 8,
+        "known_text": "到目前为止我没做多少，虽然我想做",
+        "target_text": "I haven't done much so far although I want to",
+        "word_count": 45,
+        "lego_count": 10,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T06:47:41.968Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T06:47:41.999Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "45afa508-9b73-4d55-877f-cce1f183d5c5",
+        "target1_audio_id": "bce1a0a4-0535-4324-9518-5790aa7f5614",
+        "target2_audio_id": "8c05d664-2038-42f2-87eb-36cf20db5f54",
+        "qa_checked": null,
+        "target1_duration_ms": 3024,
+        "target2_duration_ms": 3264,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " haven't",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " done",
+          "isGhost": true
+         },
+         {
+          "known": "多少",
+          "legoId": "S0218L01",
+          "target": " much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "目前",
+          "legoId": "S0187L01",
+          "target": " so far",
+          "isGhost": false
+         },
+         {
+          "known": "虽然",
+          "legoId": "S0178L01",
+          "target": " although",
+          "isGhost": false
+         },
+         {
+          "known": "我想",
+          "legoId": "S0001L01",
+          "target": " I want",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0218L01U04",
+        "seed_number": 218,
+        "lego_index": 1,
+        "position": 7,
+        "known_text": "没有人说多少关于他们想实现什么",
+        "target_text": "Nobody said much about what they're trying to achieve",
+        "word_count": 53,
+        "lego_count": 9,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T06:47:41.968Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T06:47:41.999Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "205c143b-4122-4c34-a592-24eb7c8b8f1f",
+        "target1_audio_id": "7502698a-0485-464c-98fd-493feb058c50",
+        "target2_audio_id": "9915f060-dcd1-4fe8-9d31-ef06e47bb0ed",
+        "qa_checked": null,
+        "target1_duration_ms": 3840,
+        "target2_duration_ms": 3120,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "没有人",
+          "legoId": "S0202L01",
+          "target": "Nobody",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " said",
+          "isGhost": true
+         },
+         {
+          "known": "多少",
+          "legoId": "S0218L01",
+          "target": " much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " about",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " what",
+          "isGhost": true
+         },
+         {
+          "known": "想要达到",
+          "legoId": "S0213L01",
+          "target": " they're trying to achieve",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0218L01U03",
+        "seed_number": 218,
+        "lego_index": 1,
+        "position": 6,
+        "known_text": "我能做的帮助不多",
+        "target_text": "There isn't much I can do to help",
+        "word_count": 33,
+        "lego_count": 8,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 7,
+         "format": "build_use",
+         "scored_at": "2026-02-20T06:47:41.968Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T06:47:41.999Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "cd650043-2578-462c-84be-4172434ab7c5",
+        "target1_audio_id": "b6838dae-f246-4367-b98b-84a316489912",
+        "target2_audio_id": "58420ee9-8cc8-44eb-a64c-4572df19b62f",
+        "qa_checked": null,
+        "target1_duration_ms": 2064,
+        "target2_duration_ms": 2112,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "There",
+          "isGhost": true
+         },
+         {
+          "known": "不是",
+          "legoId": "S0116L01",
+          "target": " isn't",
+          "isGhost": false
+         },
+         {
+          "known": "多少",
+          "legoId": "S0218L01",
+          "target": " much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " can",
+          "isGhost": true
+         },
+         {
+          "known": "吗",
+          "legoId": "S0014L01",
+          "target": " do",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " help",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0218L01U02",
+        "seed_number": 218,
+        "lego_index": 1,
+        "position": 5,
+        "known_text": "她没说多少关于那件事",
+        "target_text": "She didn't say much about it",
+        "word_count": 28,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 6,
+         "format": "build_use",
+         "scored_at": "2026-02-20T06:47:41.968Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T06:47:41.999Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "996c1241-1664-4d86-b302-65e81d353c26",
+        "target1_audio_id": "e2592c87-8fbd-4420-bb80-95bab3a9fa50",
+        "target2_audio_id": "97a8b394-31d2-4f18-ad9b-fe1df3c6d54c",
+        "qa_checked": null,
+        "target1_duration_ms": 1704,
+        "target2_duration_ms": 1824,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "She",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " didn't",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " say",
+          "isGhost": true
+         },
+         {
+          "known": "多少",
+          "legoId": "S0218L01",
+          "target": " much",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "这件事",
+          "legoId": "S0037L04",
+          "target": " about it",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0218L01U01",
+       "set": {
+        "known_text": "我周末没做多少",
+        "known_audio_id": "586bcbd9-daf1-49f8-95e3-d6c93e7b826d"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "ba3d5030-4d8b-4dfc-bb24-e7be57b566de",
+       "set": {
+        "type": "A",
+        "known_text": "多少",
+        "target_text": "How much",
+        "components": [],
+        "known_audio_id": "1f719aad-14b9-4b51-bfc7-cad1d518f4af",
+        "target1_audio_id": "4ac7520d-ed10-4055-ad76-34b2df5ee2b8",
+        "target2_audio_id": "33c745b7-48fa-4bea-a477-9969dddc89ba",
+        "presentation_audio_id": "883c8d18-920d-40fe-b16b-0273ab150092"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0103L02U08"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0103L02U07"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0103L02U06"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0103L02B06"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0103L02B05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_zho:S0103L02B04"
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0103L02U05",
+        "seed_number": 103,
+        "lego_index": 2,
+        "position": 8,
+        "known_text": "我做了很多，现在我知道很多词了",
+        "target_text": "I've done a lot and I know many words now",
+        "word_count": 41,
+        "lego_count": 10,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T05:32:15.831Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:32:15.864Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": "ab665fb1-ac86-41a6-bbc9-5e280aa7c6b2",
+        "target1_audio_id": "5df9c0d3-8b05-4bd4-a825-a9030b528744",
+        "target2_audio_id": "d6bdc4e4-afb0-47d7-a187-b342879bf608",
+        "qa_checked": null,
+        "target1_duration_ms": 2808,
+        "target2_duration_ms": 2736,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "做了",
+          "legoId": "S0089L01",
+          "target": "I've done a lot",
+          "isGhost": false
+         },
+         {
+          "known": "而且",
+          "legoId": "S0015L02",
+          "target": " and",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I",
+          "isGhost": true
+         },
+         {
+          "known": "明白",
+          "legoId": "S0049L02",
+          "target": " know",
+          "isGhost": false
+         },
+         {
+          "known": "更多",
+          "legoId": "S0103L02",
+          "target": " many",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " words",
+          "isGhost": true
+         },
+         {
+          "known": "现在",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0103L02U04",
+        "seed_number": 103,
+        "lego_index": 2,
+        "position": 7,
+        "known_text": "你认识很多人吗？",
+        "target_text": "Do you know many people?",
+        "word_count": 24,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 7,
+         "format": "build_use",
+         "scored_at": "2026-02-20T05:32:15.831Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:32:15.864Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "738e0243-42e8-4fd7-800e-654a2152389f",
+        "target1_audio_id": "67dd996c-4911-4da6-8000-a27e9c9206fc",
+        "target2_audio_id": "90486285-4bcd-476c-93c4-1578861b526b",
+        "qa_checked": null,
+        "target1_duration_ms": 1512,
+        "target2_duration_ms": 1584,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "吗",
+          "legoId": "S0014L01",
+          "target": "Do",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "明白",
+          "legoId": "S0049L02",
+          "target": " know",
+          "isGhost": false
+         },
+         {
+          "known": "更多",
+          "legoId": "S0103L02",
+          "target": " many",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " people?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0103L02U02",
+        "seed_number": 103,
+        "lego_index": 2,
+        "position": 5,
+        "known_text": "我还不知道很多词",
+        "target_text": "I don't know many words yet",
+        "word_count": 27,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 7,
+         "format": "build_use",
+         "scored_at": "2026-02-20T05:32:15.831Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:32:15.864Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "f001f9c5-1418-43e6-b66c-3b30005ba97a",
+        "target1_audio_id": "843ae405-01d4-4994-979c-3834b9cd51a1",
+        "target2_audio_id": "cb5eeec1-3394-43df-b2d0-0766cd52745d",
+        "qa_checked": null,
+        "target1_duration_ms": 1824,
+        "target2_duration_ms": 2016,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I",
+          "isGhost": true
+         },
+         {
+          "known": "不要",
+          "legoId": "S0019L02",
+          "target": " don't",
+          "isGhost": false
+         },
+         {
+          "known": "明白",
+          "legoId": "S0049L02",
+          "target": " know",
+          "isGhost": false
+         },
+         {
+          "known": "更多",
+          "legoId": "S0103L02",
+          "target": " many",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " words",
+          "isGhost": true
+         },
+         {
+          "known": "还",
+          "legoId": "S0060L02",
+          "target": " yet",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0103L02B03",
+        "seed_number": 103,
+        "lego_index": 2,
+        "position": 3,
+        "known_text": "很多人",
+        "target_text": "Many people",
+        "word_count": 11,
+        "lego_count": 2,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:32:15.864Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "8e74dc49-0d52-47df-ab46-87107886d6f3",
+        "target1_audio_id": "5779b38e-175b-4654-8c3b-d1b855e4f7f7",
+        "target2_audio_id": "68262590-bd44-4950-ba4b-832d9e0bf51e",
+        "qa_checked": null,
+        "target1_duration_ms": 984,
+        "target2_duration_ms": 1080,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "更多",
+          "legoId": "S0103L02",
+          "target": "Many",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " people",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0103L02B01",
+        "seed_number": 103,
+        "lego_index": 2,
+        "position": 1,
+        "known_text": "很多词",
+        "target_text": "Many words",
+        "word_count": 10,
+        "lego_count": 2,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T05:32:15.864Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "1729d7b7-227e-49eb-8575-a2e982fa407f",
+        "target1_audio_id": "738aae81-ceaf-4951-a86f-89c064ae3882",
+        "target2_audio_id": "a6510766-c38a-4aec-9784-a199957b92c0",
+        "qa_checked": null,
+        "target1_duration_ms": 1200,
+        "target2_duration_ms": 1320,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "更多",
+          "legoId": "S0103L02",
+          "target": "Many",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " words",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "76807ce1-7afe-4616-bce6-cf3bd6712755",
+       "set": {
+        "known_text": "做",
+        "known_audio_id": "ef6ccaea-403c-4fae-8b10-9db975d309ca",
+        "presentation_audio_id": "b7be333b-a450-47f9-a7ae-be1d52123f7e"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "7d4bea27-023c-4b4e-8d9e-b6b84272516e",
+       "set": {
+        "known_text": "说",
+        "known_audio_id": "58503e1e-37a4-4a63-90cb-efae0224a99f",
+        "presentation_audio_id": "d5e7eec4-78e7-4eca-b259-df3188e77a47"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0055L03B02",
+       "set": {
+        "target_text": "Don't like waking up",
+        "target1_audio_id": "352bab04-7478-4f44-9e7c-155fe6f3dc33",
+        "target2_audio_id": "781f6704-7678-48ac-9c20-0d81676c96e7"
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0055L03B01",
+        "seed_number": 55,
+        "lego_index": 3,
+        "position": 3,
+        "known_text": "不喜欢",
+        "target_text": "Doesn't like",
+        "word_count": 11,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "buildup": "lego"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T04:06:55.754Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "b0724ed7-9409-4381-b8bd-92aa3b76fec7",
+        "target1_audio_id": "9fbc6b8b-b6d1-4d6a-a4c4-55c713d3d382",
+        "target2_audio_id": "325e7719-5630-4f71-af7a-c4ca57bcfee5",
+        "qa_checked": null,
+        "target1_duration_ms": 984,
+        "target2_duration_ms": 1224,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "不喜欢",
+          "legoId": "S0055L03",
+          "target": "Don't enjoy",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "1a67c88f-2365-4bcb-9384-d4dba7b1d2dd",
+       "set": {
+        "target_text": "Doesn't like",
+        "target1_audio_id": "9fbc6b8b-b6d1-4d6a-a4c4-55c713d3d382",
+        "target2_audio_id": "325e7719-5630-4f71-af7a-c4ca57bcfee5",
+        "presentation_audio_id": "7c60b692-dcdc-4f69-86dd-9f3423a2a26c"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "632ac3f5-e373-4fe9-9b03-89248253ddef",
+       "set": {
+        "target_text": "To be quiet",
+        "target1_audio_id": "28ce44be-93cb-43ce-9f7c-e1bc71a34f24",
+        "target2_audio_id": "6c35b4fd-be77-4ba6-969e-7bbcb443d83f",
+        "presentation_audio_id": "ee4f3442-8841-47ec-a1e2-7eca52aa9d6f"
+       }
+      },
+      {
+       "op": "lego.insert",
+       "row": {
+        "id": "4cc815a1-0c5d-4095-b4ab-7708d9cf5e93",
+        "seed_number": 33,
+        "lego_index": 1,
+        "type": "A",
+        "is_new": true,
+        "known_text": "长时间",
+        "target_text": "A long time",
+        "components": [],
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.520Z",
+        "known_audio_id": "1819c48b-bd69-4c03-9603-01ea3f070d0d",
+        "target1_audio_id": "58083150-baec-44b2-b332-06753f08f6c8",
+        "target2_audio_id": "4bdd1596-317d-4a5a-a167-723ed5b095fd",
+        "presentation_audio_id": "17dc799d-ad35-4f71-b5e7-c6ce8c39908e",
+        "target1_duration_ms": 1104,
+        "target2_duration_ms": 1392,
+        "target_text_roman": null,
+        "target_lego_id": null,
+        "known_gloss_segments": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01B03",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 3,
+        "known_text": "长时间学英语",
+        "target_text": "A long time learning English",
+        "word_count": 28,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "ad53cae7-705b-43f3-bddd-a0a3a3edd251",
+        "target1_audio_id": "b869b49d-b551-4440-8121-ae4d19f9e319",
+        "target2_audio_id": "e57dbd9a-e3c6-4a31-8e2f-51787d1b59a8",
+        "qa_checked": null,
+        "target1_duration_ms": 1896,
+        "target2_duration_ms": 2376,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": "A long time",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "学",
+          "legoId": "S0021L03",
+          "target": " learning",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01B02",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 2,
+        "known_text": "长时间说英语",
+        "target_text": "A long time speaking English",
+        "word_count": 28,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "e055b94d-b43b-4a1f-91db-0486ae64f7aa",
+        "target1_audio_id": "953294ec-7fb1-4680-8d1c-d8f5f14da304",
+        "target2_audio_id": "57c577e0-0b79-4a34-b11b-f47fe82471e2",
+        "qa_checked": null,
+        "target1_duration_ms": 1944,
+        "target2_duration_ms": 2328,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": "A long time",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " speaking",
+          "isGhost": true
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01B01",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 1,
+        "known_text": "花长时间",
+        "target_text": "Taking a long time",
+        "word_count": 18,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": "6d6f9d29-af39-4647-bf11-15bf62ecae2f",
+        "target1_audio_id": "21ddb18f-af0f-473e-9c3a-f6f6787eefc4",
+        "target2_audio_id": "69362805-fda0-4285-b26a-a7d4cb1395b0",
+        "qa_checked": null,
+        "target1_duration_ms": 1632,
+        "target2_duration_ms": 1584,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "Taking",
+          "isGhost": true
+         },
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": " a long time",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01U02",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 5,
+        "known_text": "我不喜欢花长时间",
+        "target_text": "I don't like taking a long time",
+        "word_count": 31,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T03:33:27.530Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": "c7cb9395-75ec-43f0-980d-071bf5065f62",
+        "target1_audio_id": "bf0e4169-b46d-45f3-a71d-148d4e5fa325",
+        "target2_audio_id": "6214789d-f5ab-475c-8bbb-9531e0bd6f71",
+        "qa_checked": null,
+        "target1_duration_ms": 2112,
+        "target2_duration_ms": 2040,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I",
+          "isGhost": true
+         },
+         {
+          "known": "不要",
+          "legoId": "S0019L02",
+          "target": " don't",
+          "isGhost": false
+         },
+         {
+          "known": "喜欢",
+          "legoId": "S0026L01",
+          "target": " like",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " taking",
+          "isGhost": true
+         },
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": " a long time",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01U01",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 4,
+        "known_text": "我在花长时间",
+        "target_text": "I'm taking a long time",
+        "word_count": 22,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 7,
+         "format": "build_use",
+         "scored_at": "2026-02-20T03:33:27.530Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": "c730fd12-2816-438d-bd0a-7c862fdde6a4",
+        "target1_audio_id": "66814a18-23f3-4c0e-8b5f-702931095b78",
+        "target2_audio_id": "7fddbb8d-2489-4941-85b1-8f72e1775be0",
+        "qa_checked": null,
+        "target1_duration_ms": 1704,
+        "target2_duration_ms": 1680,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " taking",
+          "isGhost": true
+         },
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": " a long time",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01U05",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 8,
+        "known_text": "我花长时间回答",
+        "target_text": "I'm taking a long time to answer",
+        "word_count": 32,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T03:33:27.530Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "6720d9a3-18d2-47b7-b753-a8f29792c93d",
+        "target1_audio_id": "606c8749-87a3-4076-892e-79430789f3e6",
+        "target2_audio_id": "9d0cf9a2-67ab-4b17-866c-edc12f67c30d",
+        "qa_checked": null,
+        "target1_duration_ms": 2088,
+        "target2_duration_ms": 2304,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " taking",
+          "isGhost": true
+         },
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": " a long time",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "回答",
+          "legoId": "S0027L01",
+          "target": " to answer",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01U04",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 7,
+        "known_text": "你在花长时间说英语",
+        "target_text": "You are taking a long time speaking English",
+        "word_count": 43,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T03:33:27.530Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "0dac293c-2322-48a6-b60d-0852291c7c17",
+        "target1_audio_id": "1c3eea35-4436-40eb-a90e-2ee08d506558",
+        "target2_audio_id": "b0a301b8-c78e-4306-8e90-99ce36c63762",
+        "qa_checked": null,
+        "target1_duration_ms": 2856,
+        "target2_duration_ms": 2856,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "You",
+          "isGhost": true
+         },
+         {
+          "known": "在",
+          "legoId": "S0021L02",
+          "target": " are",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " taking",
+          "isGhost": true
+         },
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": " a long time",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " speaking",
+          "isGhost": true
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_zho:S0033L01U03",
+        "seed_number": 33,
+        "lego_index": 1,
+        "position": 6,
+        "known_text": "我花长时间学英语",
+        "target_text": "I'm taking a long time learning English",
+        "word_count": 39,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-02-20T03:33:27.530Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-20T03:33:27.564Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "8cd4986e-28bb-4f6f-8c2e-f3b98c779232",
+        "target1_audio_id": "7e2729a2-3def-46e0-a6ab-da09c247179a",
+        "target2_audio_id": "ff801e96-4f27-49a9-98d0-22caf8462503",
+        "qa_checked": null,
+        "target1_duration_ms": 2688,
+        "target2_duration_ms": 2784,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " taking",
+          "isGhost": true
+         },
+         {
+          "known": "长时间",
+          "legoId": "S0033L01",
+          "target": " a long time",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "学",
+          "legoId": "S0021L03",
+          "target": " learning",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "999bc4ee-d7b4-427f-b2b3-9dca6aa6b0ae",
+       "set": {
+        "target_text": "Seems",
+        "target1_audio_id": "cc09d48e-243c-4915-83d0-da8902f9f9e3",
+        "target2_audio_id": "11f93db4-3a14-4b9c-a512-98a7141793f9",
+        "presentation_audio_id": "d10ccc24-cae5-447b-8c96-c9bd10383119"
+       }
+      },
+      {
+       "op": "seed.update",
+       "seed_number": 26,
+       "set": {
+        "known_text": "我喜欢那种快要准备好出发的感觉",
+        "known_audio_id": "b403e554-3104-416a-9f50-79b25dd3c74f"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "7ed365c9-89ea-42f0-b379-8c977fa8d86c",
+       "set": {
+        "target_text": "Doesn't want",
+        "target1_audio_id": "28cc4a85-537e-4ebb-858e-05243cd08f5c",
+        "target2_audio_id": "05b35996-7503-4442-9300-2339571e9d26",
+        "presentation_audio_id": "94e9bf9f-c702-4e9c-9301-04ae7a035a60"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "5bead7ff-f07b-41db-ab17-4ef10860a564",
+       "set": {
+        "known_text": "我想",
+        "known_audio_id": "d456da99-01f1-4798-9614-f835d2d64662",
+        "presentation_audio_id": "ed9a0351-ae01-406e-a8ec-1557ee527879"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ },
+ "validator": {
+  "at": "2026-11-19T12:00:29Z",
+  "baseline_failing_seeds": 72,
+  "per_seed": {
+   "11": {
+    "seed_issues_planned": [
+     "L3: vocab violations in 2 phrase(s)",
+     "L4: 1 phrase(s) fail containment",
+     "L4: USE: need 5+, got 4 (1 component phrases excluded)",
+     "L4: vocab violations in 6 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L3: vocab violations in 2 phrase(s)",
+     "L4: 1 phrase(s) fail containment",
+     "L4: USE: need 5+, got 4 (1 component phrases excluded)",
+     "L4: vocab violations in 6 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "12": {
+    "seed_issues_planned": [
+     "L4: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [wouldn't]",
+     "L2: 11 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (11 component phrases excluded)",
+     "L2: vocab violations in 11 phrase(s)",
+     "L3: vocab violations in 1 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: vocab violations in 2 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "26": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L3: 8 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "33": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "34": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [when]",
+     "L2: 4 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 1 (4 component phrases excluded)",
+     "L2: vocab violations in 8 phrase(s)",
+     "L3: vocab violations in 3 phrase(s)",
+     "L4: vocab violations in 1 phrase(s)",
+     "L5: vocab violations in 2 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "55": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [when]",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [when]",
+     "L3: 8 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (8 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "57": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "59": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "103": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [many]",
+     "L2: vocab violations in 2 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [many]",
+     "L2: 5 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (5 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 7 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {
+     "103": [
+      "L2: vocab violations in 7 phrase(s) -> L2: vocab violations in 2 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "116": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   },
+   "218": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 5 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (5 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "improved": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
 }

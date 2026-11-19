@@ -38,15 +38,20 @@ D('S0059L02', 'regloss', known='下个星期',
 D('S0103L02', 'regloss',
   why='The pair 更多 | More is right and in the seed (the scanner split 更多的词). But five rows drill 很多 "many", a different word this LEGO does not teach: they go, and the basket is back-filled with 更多.',
   b={'B01': 'd', 'B03': 'd', 'U02': 'd', 'U04': 'd', 'U05': 'd'},
-  add=[('b', '更多的词', 'more words'), ('b', '听更多的词', 'hear more words'), ('b', '学更多的词', 'learn more words'),
-       ('u', '我想听更多的词', 'I want to hear more words'), ('u', '我们需要学更多的词', 'we need to learn more words'),
-       ('u', '我今天想学更多的词', 'I want to learn more words today')])
+  add=[('b', '更多的词', 'more words'), ('b', '听更多的词', 'hear more words'), ('b', '试着听更多的词', 'trying to hear more words'),
+       ('u', '我想听更多的词', 'I want to hear more words'), ('u', '我们在试着听更多的词', "we're trying to hear more words"),
+       ('u', '我不想听更多的词', "I don't want to hear more words")])
 D('S0218L01', 'grow', known='没做什么', target="didn't do much", type='M', comps=[['没', "didn't"], ['做', 'do'], ['什么', 'much']],
   why='"多少 | How much": neither side is in the seed (星期天我没做什么 / "I didn\'t do much on Sunday"). The seed\'s chunk is 没做什么 = "didn\'t do much" (L25: re-chunked to what the seed says).',
   b={'U01': ('我周末没做什么', "I didn't do much at the weekend"), 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
   add=[('b', '我昨天没做什么', "I didn't do much yesterday"), ('b', '他没做什么', "he didn't do much"), ('b', '我们没做什么', "we didn't do much"),
        ('u', '星期天我没做什么', "I didn't do much on Sunday"), ('u', '我今天没做什么', "I didn't do much today"),
        ('u', '她上个星期没做什么', "she didn't do much last week"), ('u', '我今天早上没做什么', "I didn't do much this morning")])
+
+D('S0116L03', 'regloss', known='做出',
+  why='Knock-on, found by hand: "能 | Make" is out of step (能 is "could"; the seed\'s "make" is 做出) and would put 能 over two English answers once S0011L01 is mended (ZUT). Known → 做出; rows on 做点什么/做什么 go.',
+  b={'B03': 'd', 'U03': 'd'},
+  add=[('b', '做出好的选择', 'make a good choice'), ('u', '她想做出最好的选择', 'she wants to make the best choice')])
 
 json.dump({'course': 'eng_for_zho', 'legos': OUT}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'eng_for_zho.json'), 'w'), ensure_ascii=False, indent=1)
 print(len(OUT), 'decisions')

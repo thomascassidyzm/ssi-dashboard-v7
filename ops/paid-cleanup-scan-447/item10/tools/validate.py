@@ -4,7 +4,7 @@
 in-memory "override" (that seed's proposed LEGOs + phrases) with fromSeed = that seed, and compares the failures against
 a baseline of the live course. A failure that is NEW under the plan is reported; pre-existing ones are counted, not blamed.
 usage: python3 -I validate.py <course> <dump.json>"""
-import json, os, sys, urllib.request, collections, time
+import json, os, re, sys, urllib.request, collections, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 course, dumpf = sys.argv[1], sys.argv[2]
@@ -72,12 +72,23 @@ for n in plan['touched_seeds']:
     seed_known = next((o['set']['known_text'] for o in ops if o['op'] == 'seed.update' and o['seed_number'] == n and 'known_text' in o['set']), s['known'])
     ans = post({'fromSeed': n, 'override': {'seed_number': n, 'known_text': seed_known, 'target_text': s['target'], 'legos': legos, 'phrases': dict(phrases)}})
     fails = {f['seed']: f['issues'] for f in ans.get('failures', [])}
-    new = {}
+    new, improved = {}, {}
     for sd, iss in fails.items():
-        extra = [i for i in iss if i not in basefail.get(sd, [])]
+        extra = []
+        for i in iss:
+            if i in basefail.get(sd, []):
+                continue
+            # cs #808: "<LEGO>: vocab violations in N phrase(s)" with N lower than the live count of the same check is an
+            # improvement the plan made, not a new issue (the string differs only by the count)
+            m = re.match(r'(.*?)(\d+)( phrase\(s\).*)$', i)
+            prior = [b for b in basefail.get(sd, []) if m and re.match(re.escape(m.group(1)) + r'(\d+)' + re.escape(m.group(3)) + '$', b)]
+            if prior and int(m.group(2)) <= int(re.search(r'(\d+)' + re.escape(m.group(3)) + '$', prior[0]).group(1)):
+                improved.setdefault(sd, []).append(f'{prior[0]} -> {i}')
+                continue
+            extra.append(i)
         if extra:
             new[sd] = extra
-    results[n] = {'seed_issues_planned': fails.get(n, []), 'seed_issues_live': basefail.get(n, []), 'new_issues_anywhere': new, 'error': ans.get('error')}
+    results[n] = {'seed_issues_planned': fails.get(n, []), 'seed_issues_live': basefail.get(n, []), 'new_issues_anywhere': new, 'improved': improved, 'error': ans.get('error')}
     print(n, 'NEW' if new else 'ok', json.dumps(new, ensure_ascii=False)[:400])
 plan['validator'] = {'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'baseline_failing_seeds': len(basefail),
                      'per_seed': results, 'seeds_with_new_issues': sorted(k for k, v in results.items() if v['new_issues_anywhere'])}
