@@ -8323,6 +8323,15 @@ async function courseEditConnect() {
   return client
 }
 
+// WHO AND WHEN ON EVERY course-edit LOG LINE (cs #888): this service's log carries no timestamps, and a
+// dry run or a refused batch writes no content_edit_events row (its transaction rolls back) — so on
+// 2026-11-18 23:06-23:12Z a batch that ran real UPDATE/INSERTs on live and rolled back left no record of
+// who sent it. Every line now names the caller, the time, the size and whether it was a dry run.
+function courseEditTag(req, ops, apply) {
+  const who = req.editorIdentity?.id || req.get?.('x-agent-id') || 'unidentified'
+  return `at ${new Date().toISOString()} by ${who} (${Array.isArray(ops) ? ops.length : 0} op(s), ${apply ? 'apply' : 'dry run'})`
+}
+
 async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {}, onApplied = null, eventDetail = {} }) {
   let plans
   try {
@@ -8387,7 +8396,9 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
           fs.chmodSync(undoFile, 0o664)
         } catch (e) { undoFileError = e.message; undoFile = null }
       }
-      logger.info(`[course-edit] ${courseCode}: ${ops.length} op(s) applied by ${req.editorIdentity?.id} (event ${req.contentEdit?.eventId})`)
+      logger.info(`[course-edit] ${courseCode}: ${ops.length} op(s) applied by ${req.editorIdentity?.id} (event ${req.contentEdit?.eventId}) ${courseEditTag(req, ops, true)}`)
+    } else {
+      logger.info(`[course-edit] ${courseCode}: dry run rolled back ${courseEditTag(req, ops, false)}`)
     }
     res.json({
       ok: true,
@@ -8407,7 +8418,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
     const refusedByDb = !!err.severity && /^[0-9A-Z]{5}$/.test(String(err.code || ''))
     const status = err.code === 'BAD_APPROVAL' ? 400 : err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
     if (status !== 500) req.contentEdit?.wroteNothing()
-    logger.warn(`[course-edit] ${courseCode}: refused/failed — ${err.message}`)
+    logger.warn(`[course-edit] ${courseCode}: refused/failed ${courseEditTag(req, ops, apply)} — ${err.message}`)
     res.status(status).json({ error: err.message, code: err.code || 'EDIT_FAILED', index: err.index, applied: false })
   }
 }
