@@ -95,7 +95,7 @@ function run(course) {
   for (const [s, list] of recut) files[`4-recut-S${String(s).padStart(4, '0')}`] = list.sort((a, b) => order[a.op] - order[b.op]);
   const odir = path.join(cdir, 'changesets');
   fs.mkdirSync(odir, { recursive: true });
-  for (const f of fs.readdirSync(odir)) if (/\.changeset\.jsonl$/.test(f)) fs.unlinkSync(path.join(odir, f));
+  for (const f of fs.readdirSync(odir)) if (/\.(changeset\.jsonl|guards\.json)$/.test(f)) fs.unlinkSync(path.join(odir, f));
   const why = { '1-backfill': 'back-fill rows authored from taught chunks (#811/#812/#813), applied BEFORE 3-filled',
     '2-free': 'deletes of rows using an untaught target word, LEGO keeps its floor without back-fill',
     '3-filled': 'deletes of rows using an untaught target word whose LEGO floor depends on 1-backfill (runner gates it)' };
@@ -107,6 +107,22 @@ function run(course) {
       why: `paid cleanup item 9 (untaught words): ${why[name] || `seed re-cut ${name.slice(8)} (LEGO grown to carry the word, its basket re-said); apply with --batch 8`}`,
       source: `nightly copy ${copy.copy_db} built ${copy.copy_built}` }, list.map((o) => cs.op(o.op, Object.fromEntries(Object.entries(o).filter(([k]) => k !== 'op')))));
     written[name] = list.length;
+    // Kai's rule (19 Nov): an apply is a live pre-check of row + LEGO + seed; a mismatch is held, never forced. The door's
+    // `expect` only asserts the op's own row and it has no assert-only op (a no-op lego.update would still write the LEGO
+    // and refresh tiles), so each op's seed and LEGO text go in a sidecar that precheck-guards.cjs compares with live
+    // through Popty's read route before the applier runs. A re-cut's phrase ops also accept the LEGO text its own
+    // lego.update sets, so a file stopped mid-way resumes.
+    const legoAfter = new Map(list.filter((o) => o.op === 'lego.update').map((o) => [o.lego_id, { known_text: o.set.known_text ?? o.expect.known_text, target_text: o.set.target_text ?? o.expect.target_text }]));
+    const guards = list.map((o) => {
+      const sn = seedOf(o), lid = lidOf(o);
+      const seed = copy.seeds.find((x) => x.seed_number === sn);
+      const lego = seed && seed.legos.find((l) => l.lego_id === lid);
+      if (!seed || !lego) throw new Error(`${course}: no copy seed/LEGO for ${lid}`);
+      const now = { known_text: lego.known_text, target_text: lego.target_text };
+      return { seed_number: sn, seed: { known_text: seed.known_text, target_text: seed.target_text }, lego_id: lid,
+        lego: [now, ...(legoAfter.has(lid) ? [legoAfter.get(lid)] : [])] };
+    });
+    fs.writeFileSync(file.replace(/\.changeset\.jsonl$/, '.guards.json'), JSON.stringify({ changeset: `item9-${course}-${name}`, copy_db: copy.copy_db, guards }));
   }
   const count = (list, op) => list.filter((o) => o.op === op).length;
   const allRe = [...recut.values()].flat();
