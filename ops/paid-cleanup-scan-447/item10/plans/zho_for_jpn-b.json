@@ -25202,6 +25202,13 @@
   "seeds_with_new_issues": [
    90,
    283
-  ]
+  ],
+  "note": "run 18 Nov 18:40Z before the store pause; not re-run since (PENDING any re-run, store paused)"
+ },
+ "dryRun": {
+  "status": "PENDING (store paused)",
+  "reason": "Tom ruled 18 Nov 19:57Z: no store steps until Popty load gate is governed and writers are resumed; dry run never ran for this shard",
+  "run_when_allowed": "tools/dbslot.sh python3 -I tools/dryrun.py zho_for_jpn --tag -b --chunk 50",
+  "chunks": []
  }
 }
