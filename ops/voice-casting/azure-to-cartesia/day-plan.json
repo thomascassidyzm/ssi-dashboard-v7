@@ -8,6 +8,14 @@
   {
    "day": "Day 1",
    "window": "19 Nov UTC, from Kai's Y/N (spills into 20 Nov 00:00-06:00 UTC if late)",
+   "fixes": [
+    {
+     "id": "item9-night",
+     "chars": 52000,
+     "status": "approved"
+    }
+   ],
+   "fixChars": 52000,
    "courses": [
     {
      "course": "ita_for_eng",
@@ -64,26 +72,6 @@
      "chars": 76
     },
     {
-     "course": "por_for_eng",
-     "roles": [
-      "known",
-      "target1",
-      "target2"
-     ],
-     "asks": 19843,
-     "freeInCourse": 76,
-     "slots": 23830,
-     "chars": 582004
-    }
-   ],
-   "dayChars": 584269,
-   "runningChars": 584269
-  },
-  {
-   "day": "Day 2",
-   "window": "20 Nov UTC",
-   "courses": [
-    {
      "course": "jpn_for_eng",
      "roles": [
       "known",
@@ -107,33 +95,26 @@
      "chars": 225426
     }
    ],
-   "dayChars": 387420,
-   "runningChars": 971689
+   "replacementChars": 389685,
+   "dayChars": 441685,
+   "runningChars": 441685
   },
   {
-   "day": "Day 3",
-   "window": "21 Nov UTC",
-   "courses": [
+   "day": "Day 2",
+   "window": "20 Nov UTC",
+   "fixes": [
     {
-     "course": "eng_for_tel",
-     "roles": [
-      "known",
-      "presentation",
-      "target1",
-      "target2"
-     ],
-     "asks": 13216,
-     "freeInCourse": 0,
-     "slots": 14713,
-     "chars": 501496
+     "id": "item20-indic",
+     "chars": 43026,
+     "status": "awaiting"
+    },
+    {
+     "id": "sister-priced",
+     "chars": 32176,
+     "status": "awaiting"
     }
    ],
-   "dayChars": 501496,
-   "runningChars": 1473185
-  },
-  {
-   "day": "Day 4",
-   "window": "22 Nov UTC (Popty's Cartesia cycle restarts 23 Nov 00:00 UTC: tts-spend-guard cycleStartDay 23)",
+   "fixChars": 75202,
    "courses": [
     {
      "course": "eng_for_tam",
@@ -149,8 +130,88 @@
      "chars": 488964
     }
    ],
-   "dayChars": 488964,
-   "runningChars": 1962149
+   "replacementChars": 488964,
+   "dayChars": 564166,
+   "runningChars": 1005851
+  },
+  {
+   "day": "Day 3",
+   "window": "21 Nov UTC",
+   "fixes": [
+    {
+     "id": "pan-male-known",
+     "chars": 143964,
+     "status": "awaiting"
+    },
+    {
+     "id": "jpn-item3-d2",
+     "chars": 41000,
+     "status": "awaiting"
+    },
+    {
+     "id": "fra-female-male-form",
+     "chars": 9312,
+     "status": "awaiting"
+    },
+    {
+     "id": "ita-own-lego",
+     "chars": 7740,
+     "status": "awaiting"
+    },
+    {
+     "id": "jpn-held",
+     "chars": 4600,
+     "status": "awaiting"
+    },
+    {
+     "id": "fra-held",
+     "chars": 4350,
+     "status": "awaiting"
+    },
+    {
+     "id": "por-held",
+     "chars": 1300,
+     "status": "awaiting"
+    },
+    {
+     "id": "hrv-pod1",
+     "chars": 1137,
+     "status": "awaiting"
+    },
+    {
+     "id": "small-followups",
+     "chars": 1000,
+     "status": "awaiting"
+    }
+   ],
+   "fixChars": 214403,
+   "courses": [],
+   "replacementChars": 0,
+   "dayChars": 214403,
+   "runningChars": 1220254
+  },
+  {
+   "day": "Day 4",
+   "window": "22 Nov UTC (Popty's Cartesia cycle restarts 23 Nov 00:00 UTC: tts-spend-guard cycleStartDay 23)",
+   "fixes": [],
+   "fixChars": 0,
+   "courses": [
+    {
+     "course": "por_for_eng",
+     "roles": [
+      "known",
+      "target1",
+      "target2"
+     ],
+     "asks": 19843,
+     "freeInCourse": 76,
+     "slots": 23830,
+     "chars": 582004
+    }
+   ],
+   "replacementChars": 582004,
+   "dayChars": 582004,
+   "runningChars": 1802258
   }
  ]
 }

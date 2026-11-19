@@ -13,11 +13,11 @@ Clips already in the cast voice in OTHER courses are not visible to the census; 
 """
 import json, sys, os
 
-DAYS = [  # (label, UTC window, courses) — Kai approves one day at a time; days 2-4 are re-censused before their Y/N.
-    ('Day 1', '19 Nov UTC, from Kai\'s Y/N (spills into 20 Nov 00:00-06:00 UTC if late)', ['ita_for_eng', 'eng_for_hin', 'eng_for_urd', 'eng_for_ben', 'zho_for_eng', 'por_for_eng']),
-    ('Day 2', '20 Nov UTC', ['jpn_for_eng', 'kor_for_eng']),
-    ('Day 3', '21 Nov UTC', ['eng_for_tel']),
-    ('Day 4', '22 Nov UTC (Popty\'s Cartesia cycle restarts 23 Nov 00:00 UTC: tts-spend-guard cycleStartDay 23)', ['eng_for_tam']),
+DAYS = [  # (label, UTC window, replacement courses) — fixes come from fixes.json by their "day"; fixes are charged first.
+    ('Day 1', '19 Nov UTC, from Kai\'s Y/N (spills into 20 Nov 00:00-06:00 UTC if late)', ['ita_for_eng', 'eng_for_hin', 'eng_for_urd', 'eng_for_ben', 'zho_for_eng', 'jpn_for_eng', 'kor_for_eng']),
+    ('Day 2', '20 Nov UTC', ['eng_for_tam']),
+    ('Day 3', '21 Nov UTC', []),
+    ('Day 4', '22 Nov UTC (Popty\'s Cartesia cycle restarts 23 Nov 00:00 UTC: tts-spend-guard cycleStartDay 23)', ['por_for_eng']),
 ]
 TOTAL_CAP, DAY_CAP = 2_000_000, 600_000
 
@@ -41,7 +41,10 @@ def main(census_path, outdir):
         })
     summary.sort(key=lambda s: (s['pricing_tier'] != 'premium', order.get(s['new_app_status'], 2), -s['inScopeChars']))
     seen, running, plan = set(), 0, []
-    for label, window, courses in DAYS:
+    fixes = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fixes.json')))['fixes']
+    for n, (label, window, courses) in enumerate(DAYS, 1):
+        dayFixes = [f for f in fixes if f['day'] == n]
+        fixChars = sum(f['chars'] for f in dayFixes)
         rows, day = [], 0
         for code in courses:
             c = by[code]
@@ -56,9 +59,9 @@ def main(census_path, outdir):
             rows.append({'course': code, 'roles': roles, 'asks': len(c['asks']), 'freeInCourse': sum(1 for a in c['asks'] if a['freeInCourse']),
                          'slots': sum(len(a['slots']) for a in c['asks']), 'chars': charged})
             day += charged
-        running += day
-        plan.append({'day': label, 'window': window, 'courses': rows, 'dayChars': day, 'runningChars': running})
-        assert day <= DAY_CAP, (label, day)
+        running += day + fixChars
+        plan.append({'day': label, 'window': window, 'fixes': [{k: f[k] for k in ('id', 'chars', 'status')} for f in dayFixes], 'fixChars': fixChars, 'courses': rows, 'replacementChars': day, 'dayChars': day + fixChars, 'runningChars': running})
+        assert day + fixChars <= DAY_CAP, (label, day + fixChars)
     assert running <= TOTAL_CAP, running
     os.makedirs(outdir, exist_ok=True)
     json.dump(summary, open(os.path.join(outdir, 'course-summary.json'), 'w'), indent=1)
@@ -70,7 +73,7 @@ def main(census_path, outdir):
                                     'freeInCourse': a['freeInCourse'], 'firstSeed': a['firstSeed'],
                                     'slots': [{k: v for k, v in s.items() if k != 'role'} for s in a['slots']]}, ensure_ascii=False) + '\n')
     for p in plan:
-        print(p['day'], p['window'], p['dayChars'], 'running', p['runningChars'], [(r['course'], r['chars']) for r in p['courses']])
+        print(p['day'], 'fixes', p['fixChars'], 'replacement', p['replacementChars'], 'day', p['dayChars'], 'running', p['runningChars'], [(r['course'], r['chars']) for r in p['courses']])
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])

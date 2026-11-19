@@ -1,0 +1,17 @@
+{
+ "_what": "Cartesia characters still owed for COURSE FIXES, charged FIRST inside the 2.0M cap (Kai, 19 Nov). Figures are each job's own published price (upper bounds unless noted), NOT re-measured here; pan-male is computed by this job. status: approved = Kai said yes and a runner is armed; awaiting = plan ready, needs Kai's Y/N.",
+ "fixes": [
+  {"id": "item9-night", "what": "Paid cleanup item 9 untaught words: 28 night changesets (back-fill, deletes, re-cuts) incl. guj S0071L02 B04 t2", "chars": 52000, "status": "approved", "basis": "#960·AI ~52k GROSS audio chars (Cartesia + Azure not split, so an upper bound); timer cs-long-keep-item9-night 22:35 UTC nightly", "doc": "d/2b1212d7", "day": 1},
+  {"id": "item20-indic", "what": "Paid cleanup item 20 thin Indic baskets (urd/pan/ben/mar/guj), 3,439 rows", "chars": 43026, "status": "awaiting", "basis": "#740·AI QA-copy estimate checked vs 97 live dry runs (ben 26,418)", "doc": "d/a1c696a6", "day": 2},
+  {"id": "sister-priced", "what": "Sister-course propagation, priced not applied: spa_mx A pienso->creo 20,200, I seed 147 1,300, S0402 sitio 1,500; por_br 93 rows 6,320; zho_for_tam 486; deu_at 370; deu_ch 14 re-cuts 2,000 (spa_mx C seed 27 excluded: needs Tom's go; urd thin basket is inside item 20)", "chars": 32176, "status": "awaiting", "basis": "#695·AI price list", "doc": "d/2aac0761", "day": 2},
+  {"id": "pan-male-known", "what": "eng_for_pan known male half (Gurpreet) after cs #17 two-voice switch; the whole known side is still Azure Vaani", "chars": 143964, "status": "awaiting", "basis": "this job: services/shared/known-voice-gender.cjs hashGender over the census's 11,187 pan known asks (phrase lines only; seeds/LEGOs anchored female; stored gender pairs not read) = 4,616 asks. eng_for_urd male (Asad) is Azure: 0 Cartesia", "doc": "d/3a41a2c9", "day": 3},
+  {"id": "jpn-item3-d2", "what": "eng_for_jpn item 3 known prompts, D2 seeds 74-300 (~1,280 rows)", "chars": 41000, "status": "awaiting", "basis": "scaled from #726·AI: 13,832 chars for 424 rows", "doc": "d/3956b3da", "day": 3},
+  {"id": "fra-female-male-form", "what": "fra_for_eng 233 female-voice clips saying the male form, re-record", "chars": 9312, "status": "awaiting", "basis": "#175·AI quote", "doc": "d/2e88fb0f", "day": 3},
+  {"id": "ita-own-lego", "what": "ita 82 phrases missing their own LEGO: 71 re-words, 7 deletes", "chars": 7740, "status": "awaiting", "basis": "#942·AI (eng 6,901, jpn 839)", "doc": "d/785f163d", "day": 3},
+  {"id": "jpn-held", "what": "jpn_for_eng 33 held items, 8 families", "chars": 4600, "status": "awaiting", "basis": "#421 (~4.6k)", "doc": "d/71221f73", "day": 3},
+  {"id": "fra-held", "what": "fra_for_eng 21 held items, 8 families", "chars": 4350, "status": "awaiting", "basis": "#424·AI", "doc": "d/b6a2a5d7", "day": 3},
+  {"id": "por-held", "what": "por_for_eng 15 held items, 7 families", "chars": 1300, "status": "awaiting", "basis": "#426·AI", "doc": "d/f1e11f9f", "day": 3},
+  {"id": "hrv-pod1", "what": "hrv Pod 1 scene 6 speaker swap + 7.4 Zeljela", "chars": 1137, "status": "awaiting", "basis": "#780·AI (737 Croatian + <=400 English)", "doc": "d/34f0f311", "day": 3},
+  {"id": "small-followups", "what": "unpriced small follow-ups (listening fixes #984 deu 626 not|nicht, item 12 follow-ups)", "chars": 1000, "status": "awaiting", "basis": "contingency, not measured", "doc": "d/995fbe63", "day": 3}
+ ]
+}
