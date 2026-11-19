@@ -12,6 +12,11 @@ already published (/d/<id>/file); a voice without one is listed as a gap, never 
   round2  --manifest voices.json --marks STATE.json [STATE.json …] --out DIR
   round3  --manifest voices.json --marks STATE.json [STATE.json …] --out DIR
           STATE = GET /api/review-page/state?id=<page id> (answers keyed by item id), one per page.
+  podpool --manifest voices.json --marks1 R1STATE.json … --marks2 R2STATE.json … --out pod-pool.json
+          Kai, 19 Nov 12:54Z: pods may use many Cartesia voices for different characters (the Learner
+          need not be one character). Per language, the pod pool is every voice he marked 'like' in
+          round 1 that did NOT become a target 1 / target 2 favourite in round 2. Data for pod casting
+          to read later; this tool changes no pod casting.
   fetch   --pages PAGES.json --out DIR      saves each page's state as DIR/<lang>.json (env CS_CONV = x-cs-conv)
   post    --dir PAYLOAD_DIR --pages-out PAGES.json   POSTs each payload to /api/review-page (env CS_CONV)
 
@@ -44,7 +49,7 @@ KNOWN, PRES, NEITHER = 'known voice', 'presentation voice', 'neither'
 
 def load(p): return json.load(open(p))
 def dump(o, p):
-    os.makedirs(os.path.dirname(p), exist_ok=True)
+    os.makedirs(os.path.dirname(p) or '.', exist_ok=True)
     json.dump(o, open(p, 'w'), ensure_ascii=False, indent=1)
 
 
@@ -218,6 +223,28 @@ def round3(a):
     print(json.dumps({'slots_without_exactly_one_favourite': len(problems)}))
 
 
+def podpool(a):
+    man = load(a.manifest)['languages']
+    m1, m2 = read_marks(a.marks1), read_marks(a.marks2)
+    out = {}
+    for code, L in man.items():
+        pool, pending = [], []
+        for s in L['slots']:
+            g = s['gender']
+            vs = [v for v in L['voices'] if v['gender'] == g]
+            if vs and all(m2.get(f"r2.{code}.{g}.{vid(v)}") is None for v in vs): pending.append(g)
+            for v in vs:
+                if not picked(m1.get(f"{code}.{g}.{vid(v)}"), LIKE): continue
+                if picked(m2.get(f"r2.{code}.{g}.{vid(v)}"), FAV): continue
+                pool.append({'voiceId': v['voiceId'], 'name': v['name'], 'gender': g, 'accent': v.get('accent'),
+                             'locale': v.get('locale'), 'tagline': v.get('tagline'), 'sample': v['audio']})
+        out[code] = {'language': L['name'], 'pool': pool,
+                     **({'round2_not_marked': pending} if pending else {})}
+    dump({'rule': "voices Kai marked 'like' in round 1 that did not become a target 1/2 favourite in round 2 (Kai, 2026-11-19 12:54Z)",
+          'languages': out}, a.out)
+    print(json.dumps({c: len(v['pool']) for c, v in out.items()}))
+
+
 SURFACE = 'http://localhost:4317'
 
 
@@ -249,7 +276,9 @@ if __name__ == '__main__':
     r1 = sub.add_parser('round1'); r1.add_argument('--reg', required=True); r1.add_argument('--e716', required=True); r1.add_argument('--out', required=True)
     for n in ('round2', 'round3'):
         r = sub.add_parser(n); r.add_argument('--manifest', required=True); r.add_argument('--marks', nargs='+', required=True); r.add_argument('--out', required=True)
+    pp = sub.add_parser('podpool'); pp.add_argument('--manifest', required=True); pp.add_argument('--marks1', nargs='+', required=True)
+    pp.add_argument('--marks2', nargs='+', required=True); pp.add_argument('--out', required=True)
     f = sub.add_parser('fetch'); f.add_argument('--pages', required=True); f.add_argument('--out', required=True)
     p = sub.add_parser('post'); p.add_argument('--dir', required=True); p.add_argument('--pages-out', required=True)
     a = ap.parse_args()
-    {'round1': round1, 'round2': round2, 'round3': round3, 'fetch': fetch, 'post': post}[a.cmd](a)
+    {'round1': round1, 'round2': round2, 'round3': round3, 'fetch': fetch, 'post': post, 'podpool': podpool}[a.cmd](a)
