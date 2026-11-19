@@ -1,0 +1,760 @@
+{
+ "course": "fra_for_eng",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:31:01.566Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 28,
+   "id": "S0028L01U09",
+   "lego": "S0028L01",
+   "known": "It's useful to start talking as soon as you can",
+   "target": "il est utile de commencer à parler dès que possible",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0028L01U09",
+      "seed_number": 28,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "It's useful to start talking as soon as you can",
+      "target_text": "il est utile de commencer à parler dès que possible",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 28,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0028L01U09",
+     "slot": "known",
+     "audio_id": "515620b8-d881-46c5-861c-78768da8109a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0028L01U09",
+     "slot": "target1",
+     "audio_id": "d8586bf8-04f3-4d3e-80aa-885d0534abf6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0028L01U09",
+     "slot": "target2",
+     "audio_id": "9621dfae-2486-4f42-99ca-2c2d62a9a9c1"
+    }
+   ]
+  },
+  {
+   "seed": 49,
+   "id": "S0049L02U09",
+   "lego": "S0049L02",
+   "known": "It's like this, if you know what I mean",
+   "target": "C'est comme ça, si tu vois ce que je veux dire",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0049L02U09",
+      "seed_number": 49,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "It's like this, if you know what I mean",
+      "target_text": "C'est comme ça, si tu vois ce que je veux dire",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 49,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0049L02U09",
+     "slot": "known",
+     "audio_id": "4ebeb13f-c057-4d01-a675-5f857b7c5056"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0049L02U09",
+     "slot": "target1",
+     "audio_id": "ea9a6c79-0cd6-4f59-ad4b-1e068254a446"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0049L02U09",
+     "slot": "target2",
+     "audio_id": "9c07e8de-d07a-432f-a62c-ea316e3c7435"
+    }
+   ]
+  },
+  {
+   "seed": 139,
+   "id": "S0139L04U06",
+   "lego": "S0139L04",
+   "known": "I'm sorry that I need to leave so early",
+   "target": "Je suis désolé de devoir partir si tôt",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0139L04U06",
+      "seed_number": 139,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "I'm sorry that I need to leave so early",
+      "target_text": "Je suis désolé de devoir partir si tôt",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 139,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0139L04U06",
+     "slot": "known",
+     "audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0139L04U06",
+     "slot": "target1",
+     "audio_id": "e361b089-d4e1-4d11-98b0-e08041219604"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0139L04U06",
+     "slot": "target2",
+     "audio_id": "0a4a1509-a9af-4e87-95f2-5c94fab2cfc7"
+    }
+   ]
+  },
+  {
+   "seed": 140,
+   "id": "S0140L02U09",
+   "lego": "S0140L02",
+   "known": "I'm sorry that I can't see what you're trying to show me",
+   "target": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0140L02U09",
+      "seed_number": 140,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "I'm sorry that I can't see what you're trying to show me",
+      "target_text": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 140,
+       "canon": "P26"
+      },
+      "word_count": 69,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0140L02U09",
+     "slot": "known",
+     "audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0140L02U09",
+     "slot": "target1",
+     "audio_id": "7f214ae5-0313-47ec-b505-dae767b6b144"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0140L02U09",
+     "slot": "target2",
+     "audio_id": "370e5214-dfef-4a42-8937-39da3df6310a"
+    }
+   ]
+  },
+  {
+   "seed": 170,
+   "id": "S0170L01U11",
+   "lego": "S0170L01",
+   "known": "I'd like you to tell me what you need",
+   "target": "Je voudrais que vous me disiez ce dont vous avez besoin",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0170L01U11",
+      "seed_number": 170,
+      "lego_index": 1,
+      "position": 17,
+      "known_text": "I'd like you to tell me what you need",
+      "target_text": "Je voudrais que vous me disiez ce dont vous avez besoin",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 170,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 9,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0170L01U11",
+     "slot": "known",
+     "audio_id": "ab4a3dde-ec52-4d57-bdfa-9aa7944d736b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0170L01U11",
+     "slot": "target1",
+     "audio_id": "fe39df6b-19ce-4874-9108-7ad8e20d75ef"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0170L01U11",
+     "slot": "target2",
+     "audio_id": "a17fc1ea-4996-4d04-b617-0c8793f94bb0"
+    }
+   ]
+  },
+  {
+   "seed": 238,
+   "id": "S0238L01U09",
+   "lego": "S0238L01",
+   "known": "he wanted you to tell me yesterday",
+   "target": "il voulait que tu me dises hier",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0238L01U09",
+      "seed_number": 238,
+      "lego_index": 1,
+      "position": 17,
+      "known_text": "he wanted you to tell me yesterday",
+      "target_text": "il voulait que tu me dises hier",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 238,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0238L01U09",
+     "slot": "known",
+     "audio_id": "7ad3e42d-bfad-4462-a2e2-eee4102e2e6a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0238L01U09",
+     "slot": "target1",
+     "audio_id": "01a201ec-8d6b-4c74-b89a-3323caa7cf29"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0238L01U09",
+     "slot": "target2",
+     "audio_id": "eb8a0f21-33da-490b-a265-d700580de13a"
+    }
+   ]
+  },
+  {
+   "seed": 240,
+   "id": "S0240L02U09",
+   "lego": "S0240L02",
+   "known": "my father doesn't like to stop talking",
+   "target": "mon père n'aime pas s'arrêter de parler",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0240L02U09",
+      "seed_number": 240,
+      "lego_index": 2,
+      "position": 17,
+      "known_text": "my father doesn't like to stop talking",
+      "target_text": "mon père n'aime pas s'arrêter de parler",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 240,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0240L02U09",
+     "slot": "known",
+     "audio_id": "41e55883-de57-4628-b087-fbfd2735410f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0240L02U09",
+     "slot": "target1",
+     "audio_id": "ef60916d-d7fb-4e55-897b-96cdc0e6236d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0240L02U09",
+     "slot": "target2",
+     "audio_id": "6427eef4-d979-4fc0-983e-c64848b8c3e0"
+    }
+   ]
+  },
+  {
+   "seed": 248,
+   "id": "S0248L02U09",
+   "lego": "S0248L02",
+   "known": "I thought the film was complete rubbish and I want my money back",
+   "target": "Je pensais que le film était vraiment nul et je veux récupérer mon argent",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0248L02U09",
+      "seed_number": 248,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I thought the film was complete rubbish and I want my money back",
+      "target_text": "Je pensais que le film était vraiment nul et je veux récupérer mon argent",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 248,
+       "canon": "P26"
+      },
+      "word_count": 73,
+      "lego_count": 13,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0248L02U09",
+     "slot": "known",
+     "audio_id": "870c3434-3583-4d9d-8d9a-93d16d8c7d1e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0248L02U09",
+     "slot": "target1",
+     "audio_id": "7ef4bfaf-32cc-4dfc-9ef7-5292028861c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0248L02U09",
+     "slot": "target2",
+     "audio_id": "a7e4024e-ee80-4905-a443-c38f0610c748"
+    }
+   ]
+  },
+  {
+   "seed": 280,
+   "id": "S0280L01U10",
+   "lego": "S0280L01",
+   "known": "no I only had to do the most important job",
+   "target": "non je devais seulement faire le travail le plus important",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0280L01U10",
+      "seed_number": 280,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "no I only had to do the most important job",
+      "target_text": "non je devais seulement faire le travail le plus important",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 280,
+       "canon": "P26"
+      },
+      "word_count": 58,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0280L01U10",
+     "slot": "known",
+     "audio_id": "888f4aaf-b587-43a9-92f5-160b75a39bb9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0280L01U10",
+     "slot": "target1",
+     "audio_id": "5018ad45-91e1-44af-ba26-7141a215ba3f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0280L01U10",
+     "slot": "target2",
+     "audio_id": "4ee1dd11-a880-4ac3-8d29-85f5fe3603ae"
+    }
+   ]
+  },
+  {
+   "seed": 326,
+   "id": "S0326L02U17",
+   "lego": "S0326L02",
+   "known": "I don't think that she needs to sell the company",
+   "target": "Je ne pense pas qu'elle ait besoin de vendre l'entreprise",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0326L02U17",
+      "seed_number": 326,
+      "lego_index": 2,
+      "position": 22,
+      "known_text": "I don't think that she needs to sell the company",
+      "target_text": "Je ne pense pas qu'elle ait besoin de vendre l'entreprise",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 326,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0326L02U17",
+     "slot": "known",
+     "audio_id": "43c2ff61-5889-466b-802d-bdd90a1e1635"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0326L02U17",
+     "slot": "target1",
+     "audio_id": "384bd143-64f5-4b88-acd1-c8af69674471"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0326L02U17",
+     "slot": "target2",
+     "audio_id": "69c3ecfa-10ec-491f-80f9-59a5d6576990"
+    }
+   ]
+  },
+  {
+   "seed": 480,
+   "id": "S0480L02U15",
+   "lego": "S0480L02",
+   "known": "whatever he says it's not far ahead now",
+   "target": "quoi qu'il dise ce n'est plus très loin maintenant",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0480L02U15",
+      "seed_number": 480,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "whatever he says it's not far ahead now",
+      "target_text": "quoi qu'il dise ce n'est plus très loin maintenant",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 480,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0480L02U15",
+     "slot": "known",
+     "audio_id": "cf1b4dfe-0153-4717-aa7c-0d88f7d3403f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0480L02U15",
+     "slot": "target1",
+     "audio_id": "6c97b337-388c-4321-a3c0-4ec49f64f325"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0480L02U15",
+     "slot": "target2",
+     "audio_id": "214a6ce9-7ce1-4780-9bec-28f9bf409231"
+    }
+   ]
+  },
+  {
+   "seed": 614,
+   "id": "S0614L03U10",
+   "lego": "S0614L03",
+   "known": "It's near where your family live",
+   "target": "C'est près de là où ta famille habite",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_eng:S0614L03U10",
+      "seed_number": 614,
+      "lego_index": 3,
+      "position": 15,
+      "known_text": "It's near where your family live",
+      "target_text": "C'est près de là où ta famille habite",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 614,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0614L03U10",
+     "slot": "known",
+     "audio_id": "4b67c539-1806-4dbe-97d2-fdb816fb1793"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0614L03U10",
+     "slot": "target1",
+     "audio_id": "ffca989b-13e7-42d1-9ad6-9a6f683695cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_eng:S0614L03U10",
+     "slot": "target2",
+     "audio_id": "780a83fa-dd6a-421f-9585-4d29a65b0d24"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 82,
+    "known": "I'm not going to wait for you. Why not?",
+    "target": "Je ne vais pas t'attendre. Pourquoi pas ?",
+    "legos": [
+     "S0082L01 to wait | attendre"
+    ]
+   },
+   {
+    "seed": 278,
+    "known": "did you have to finish everything last night?",
+    "target": "est-ce que tu as dû tout finir la nuit dernière?",
+    "legos": [
+     "S0278L01 I've had to | j'ai dû"
+    ]
+   },
+   {
+    "seed": 543,
+    "known": "she was right",
+    "target": "elle avait raison",
+    "legos": [
+     "S0543L01 and she was right | elle avait raison"
+    ]
+   },
+   {
+    "seed": 655,
+    "known": "I think that you're doing very well, madam",
+    "target": "Je pense que vous vous en sortez très bien, madame",
+    "legos": [
+     "S0655L01 you are doing very well madam | vous vous en sortez très bien madame"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 174,
+    "known": "Can you understand what I'm saying?",
+    "target": "pouvez-vous comprendre ce que je dis?",
+    "row": "S0174L01U04",
+    "row_known": "Can you understand what I'm saying?",
+    "row_target": "peux-tu comprendre ce que je dis?"
+   },
+   {
+    "seed": 275,
+    "known": "longer",
+    "target": "plus longtemps",
+    "row": "S0275L01B01",
+    "row_known": "longer",
+    "row_target": "longtemps"
+   },
+   {
+    "seed": 319,
+    "known": "she needs to move to a different country",
+    "target": "elle a besoin de déménager dans un autre pays",
+    "row": "S0319L03U01",
+    "row_known": "she needs to move to a different country",
+    "row_target": "elle doit déménager dans un pays différent"
+   },
+   {
+    "seed": 516,
+    "known": "they both came on their own",
+    "target": "ils sont tous les deux venus seuls",
+    "row": "S0516L02U01",
+    "row_known": "they both came on their own",
+    "row_target": "ils sont venus tous les deux seuls"
+   }
+  ],
+  "covered": [
+   {
+    "seed": 582,
+    "known": "what's it like to grow up here?",
+    "target": "C'est comment de grandir ici ?"
+   },
+   {
+    "seed": 646,
+    "known": "you're doing something sir",
+    "target": "vous faites quelque chose monsieur"
+   },
+   {
+    "seed": 661,
+    "known": "you're all doing something",
+    "target": "vous faites tous quelque chose"
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 600,
+    "known": "I'd have driven if you'd told me how tired you were",
+    "target": "j'aurais conduit si tu m'avais dit à quel point tu étais fatigué",
+    "row": "S0600L05U01",
+    "row_known": "I'd have driven if you told me how tired you were",
+    "row_target": "j'aurais conduit si tu m'avais dit à quel point tu étais fatigué"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 12,
+  "no_home": 4,
+  "variant_zut": 4,
+  "covered": 3,
+  "variant_form": 1
+ }
+}

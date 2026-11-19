@@ -1,0 +1,4309 @@
+{
+ "course": "eng_for_ita",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:30:58.741Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 3,
+   "id": "S0003L02U06",
+   "lego": "S0003L02",
+   "known": "come parlare il più spesso possibile.",
+   "target": "how to speak as often as possible.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0003L02U06",
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "come parlare il più spesso possibile.",
+      "target_text": "how to speak as often as possible.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 3,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0003L02U06",
+     "slot": "known",
+     "audio_id": "6cb77c8b-6c50-4166-a009-4f92b611695b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0003L02U06",
+     "slot": "target1",
+     "audio_id": "5e0ab1ba-7640-4503-ae8b-8ef09937965b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0003L02U06",
+     "slot": "target2",
+     "audio_id": "9b3ad3ae-06eb-4550-8b19-d2bc31af8f50"
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "id": "S0005L03U08",
+   "lego": "S0005L03",
+   "known": "Ho intenzione di esercitarmi a parlare con qualcun altro.",
+   "target": "I'm going to practise speaking with someone else.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0005L03U08",
+      "seed_number": 5,
+      "lego_index": 3,
+      "position": 15,
+      "known_text": "Ho intenzione di esercitarmi a parlare con qualcun altro.",
+      "target_text": "I'm going to practise speaking with someone else.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 5,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0005L03U08",
+     "slot": "known",
+     "audio_id": "7f5dfcfe-1abd-420c-9cd5-64d9bda3192a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0005L03U08",
+     "slot": "target1",
+     "audio_id": "2d0e99b3-7317-4137-a8a6-8eb1015e9e95"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0005L03U08",
+     "slot": "target2",
+     "audio_id": "509c3a71-3acb-4335-9152-3d408c374210"
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "id": "S0015L03U07",
+   "lego": "S0015L03",
+   "known": "E voglio che tu parli inglese con me domani.",
+   "target": "And I want you to speak English with me tomorrow.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0015L03U07",
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "E voglio che tu parli inglese con me domani.",
+      "target_text": "And I want you to speak English with me tomorrow.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 15,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0015L03U07",
+     "slot": "known",
+     "audio_id": "51b094d7-1af9-4178-a180-385ae23e2eb1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0015L03U07",
+     "slot": "target1",
+     "audio_id": "3fb58e89-5fcc-4350-a05d-acd29435b8e3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0015L03U07",
+     "slot": "target2",
+     "audio_id": "fe7eda40-bdf3-403c-a75c-4b17bf512f6c"
+    }
+   ]
+  },
+  {
+   "seed": 47,
+   "id": "S0047L03U07",
+   "lego": "S0047L03",
+   "known": "Perché penso che sia una buona cosa fare errori.",
+   "target": "Because I think that it's a good thing to make mistakes.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0047L03U07",
+      "seed_number": 47,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "Perché penso che sia una buona cosa fare errori.",
+      "target_text": "Because I think that it's a good thing to make mistakes.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 47,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0047L03U07",
+     "slot": "known",
+     "audio_id": "5dbd6cc7-cb73-4fb5-8d0f-93eaf46cf494"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0047L03U07",
+     "slot": "target1",
+     "audio_id": "c41ab6a4-e033-48c0-8746-bccad4d96ddd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0047L03U07",
+     "slot": "target2",
+     "audio_id": "83abf118-1744-4725-97d2-f536dafdea95"
+    }
+   ]
+  },
+  {
+   "seed": 53,
+   "id": "S0053L04U06",
+   "lego": "S0053L04",
+   "known": "Lei voleva mettere la sua lettera nella sua borsa.",
+   "target": "She wanted to put his letter in her bag.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0053L04U06",
+      "seed_number": 53,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "Lei voleva mettere la sua lettera nella sua borsa.",
+      "target_text": "She wanted to put his letter in her bag.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 53,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0053L04U06",
+     "slot": "known",
+     "audio_id": "2294a3eb-a865-4d18-ab86-7f525c659b49"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0053L04U06",
+     "slot": "target1",
+     "audio_id": "8499b7ed-4ebd-4b93-b277-71e467c93689"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0053L04U06",
+     "slot": "target2",
+     "audio_id": "223c3140-87ac-42ef-903f-19448c051368"
+    }
+   ]
+  },
+  {
+   "seed": 54,
+   "id": "S0054L02U06",
+   "lego": "S0054L02",
+   "known": "Volevamo darti un po' più di tempo.",
+   "target": "We wanted to give you a little more time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0054L02U06",
+      "seed_number": 54,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "Volevamo darti un po' più di tempo.",
+      "target_text": "We wanted to give you a little more time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 54,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0054L02U06",
+     "slot": "known",
+     "audio_id": "c6cfb83a-cbdd-4ccf-beb9-de6abb5b5849"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0054L02U06",
+     "slot": "target1",
+     "audio_id": "59ad39cf-6f3b-42c9-afa0-08b7323e52fa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0054L02U06",
+     "slot": "target2",
+     "audio_id": "1b7dbb8f-511a-40ba-bdf8-771d8674ec70"
+    }
+   ]
+  },
+  {
+   "seed": 55,
+   "id": "S0055L02U06",
+   "lego": "S0055L02",
+   "known": "Non mi piace svegliarmi quando non ho dormito molto bene.",
+   "target": "I don't enjoy waking up when I didn't sleep very well.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0055L02U06",
+      "seed_number": 55,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "Non mi piace svegliarmi quando non ho dormito molto bene.",
+      "target_text": "I don't enjoy waking up when I didn't sleep very well.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 55,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0055L02U06",
+     "slot": "known",
+     "audio_id": "2cfaaa83-bf86-4a9e-9c17-bf3dc3ec0a45"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0055L02U06",
+     "slot": "target1",
+     "audio_id": "45ead5f2-14b4-4de1-b0f7-fcaa9e47755a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0055L02U06",
+     "slot": "target2",
+     "audio_id": "041ad0d1-5695-4bc5-b8ae-453ea7293646"
+    }
+   ]
+  },
+  {
+   "seed": 56,
+   "id": "S0056L02U06",
+   "lego": "S0056L02",
+   "known": "Quindi riesco a ricordare come dire alcune parole.",
+   "target": "So I can remember how to say a few words.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0056L02U06",
+      "seed_number": 56,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "Quindi riesco a ricordare come dire alcune parole.",
+      "target_text": "So I can remember how to say a few words.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 56,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0056L02U06",
+     "slot": "known",
+     "audio_id": "34bd5184-57e9-4a18-b755-7ffb521032ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0056L02U06",
+     "slot": "target1",
+     "audio_id": "42a07706-fb0d-4112-9733-4b142b60f941"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0056L02U06",
+     "slot": "target2",
+     "audio_id": "97fa26e8-dc0a-49c3-b586-c94456a3fd0c"
+    }
+   ]
+  },
+  {
+   "seed": 57,
+   "id": "S0057L02U06",
+   "lego": "S0057L02",
+   "known": "Non riesco a ricordare come dire quello che volevo dire.",
+   "target": "I can't remember how to say what I wanted to say.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0057L02U06",
+      "seed_number": 57,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "Non riesco a ricordare come dire quello che volevo dire.",
+      "target_text": "I can't remember how to say what I wanted to say.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 57,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0057L02U06",
+     "slot": "known",
+     "audio_id": "d3abc295-405f-4bed-ba3d-fe74a4c27b98"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0057L02U06",
+     "slot": "target1",
+     "audio_id": "c0c1b712-24b2-4b2c-bf0c-0cb76bc2875d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0057L02U06",
+     "slot": "target2",
+     "audio_id": "ac43dbfa-6a79-434f-98fa-6f14cb91d672"
+    }
+   ]
+  },
+  {
+   "seed": 58,
+   "id": "S0058L03U06",
+   "lego": "S0058L03",
+   "known": "È interessante quando capisci abbastanza parole.",
+   "target": "It's interesting when you understand enough words.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0058L03U06",
+      "seed_number": 58,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "È interessante quando capisci abbastanza parole.",
+      "target_text": "It's interesting when you understand enough words.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 58,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0058L03U06",
+     "slot": "known",
+     "audio_id": "06f5ed5e-bda8-416a-bdf5-0878269829d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0058L03U06",
+     "slot": "target1",
+     "audio_id": "ff3087cf-7f04-47ce-b6d5-fc3f0f2c262c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0058L03U06",
+     "slot": "target2",
+     "audio_id": "f324beea-8ff2-48b6-8d4f-ca28116b79ef"
+    }
+   ]
+  },
+  {
+   "seed": 60,
+   "id": "S0060L03U06",
+   "lego": "S0060L03",
+   "known": "Non so ancora come dire abbastanza parole diverse.",
+   "target": "I don't know how to say enough different words yet.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0060L03U06",
+      "seed_number": 60,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Non so ancora come dire abbastanza parole diverse.",
+      "target_text": "I don't know how to say enough different words yet.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 60,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0060L03U06",
+     "slot": "known",
+     "audio_id": "e339959d-c8db-4b08-822d-69981700a82b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0060L03U06",
+     "slot": "target1",
+     "audio_id": "14796443-a36d-4f50-bb0c-ead3b039c88f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0060L03U06",
+     "slot": "target2",
+     "audio_id": "6b403750-a271-4ec7-beb8-781e807fccc5"
+    }
+   ]
+  },
+  {
+   "seed": 62,
+   "id": "S0062L02U06",
+   "lego": "S0062L02",
+   "known": "Non sono sicuro se riesco ad aiutarti allo stesso tempo.",
+   "target": "I'm not sure if I can help you at the same time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0062L02U06",
+      "seed_number": 62,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "Non sono sicuro se riesco ad aiutarti allo stesso tempo.",
+      "target_text": "I'm not sure if I can help you at the same time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 62,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0062L02U06",
+     "slot": "known",
+     "audio_id": "ee015a58-43dd-4785-ae46-5c54cfd27218"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0062L02U06",
+     "slot": "target1",
+     "audio_id": "93c04443-1a0c-4cfa-a570-f5d697369770"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0062L02U06",
+     "slot": "target2",
+     "audio_id": "a1a32da4-e935-4a34-a2df-9373d1fae106"
+    }
+   ]
+  },
+  {
+   "seed": 65,
+   "id": "S0065L03U06",
+   "lego": "S0065L03",
+   "known": "È importante prendersi del tempo per mettersi alla prova.",
+   "target": "It's important to take time to test yourself.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0065L03U06",
+      "seed_number": 65,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "È importante prendersi del tempo per mettersi alla prova.",
+      "target_text": "It's important to take time to test yourself.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 65,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0065L03U06",
+     "slot": "known",
+     "audio_id": "cc02f77d-fbca-41c4-bd74-463af2a0f7cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0065L03U06",
+     "slot": "target1",
+     "audio_id": "a21bd1e9-be19-400a-9e44-93a6e09930a5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0065L03U06",
+     "slot": "target2",
+     "audio_id": "5c33cad2-166b-4216-a7af-2e15a63d33fb"
+    }
+   ]
+  },
+  {
+   "seed": 69,
+   "id": "S0069L03U06",
+   "lego": "S0069L03",
+   "known": "Lui non voleva badare al giovane cane per tutto il pomeriggio.",
+   "target": "He didn't want to look after the young dog all afternoon.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0069L03U06",
+      "seed_number": 69,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "Lui non voleva badare al giovane cane per tutto il pomeriggio.",
+      "target_text": "He didn't want to look after the young dog all afternoon.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 69,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0069L03U06",
+     "slot": "known",
+     "audio_id": "b28a9baa-d363-4662-8ca1-5cc32928d642"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0069L03U06",
+     "slot": "target1",
+     "audio_id": "9c394c8a-baea-499e-8ff9-7141ade00d6c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0069L03U06",
+     "slot": "target2",
+     "audio_id": "6b544d57-4e64-41b9-9b26-6424d6f8ac45"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L03U06",
+   "lego": "S0082L03",
+   "known": "Non aspetterò. Perché no?",
+   "target": "I'm not going to wait for you. Why not?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0082L03U06",
+      "seed_number": 82,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "Non aspetterò. Perché no?",
+      "target_text": "I'm not going to wait for you. Why not?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0082L03U06",
+     "slot": "known",
+     "audio_id": "91689cb7-4855-4872-a5aa-87fee026c675"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0082L03U06",
+     "slot": "target1",
+     "audio_id": "ffa30516-5ca1-48a2-a2a3-6b094056aded"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0082L03U06",
+     "slot": "target2",
+     "audio_id": "f5804ed2-f6c1-4d73-8cd1-8f719c72424d"
+    }
+   ]
+  },
+  {
+   "seed": 110,
+   "id": "S0110L03U06",
+   "lego": "S0110L03",
+   "known": "Siamo amici, e dopo aver finito mi piacerebbe rilassarmi.",
+   "target": "We're friends, and after we finish I'd like to relax.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0110L03U06",
+      "seed_number": 110,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Siamo amici, e dopo aver finito mi piacerebbe rilassarmi.",
+      "target_text": "We're friends, and after we finish I'd like to relax.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 110,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0110L03U06",
+     "slot": "known",
+     "audio_id": "38dddb26-d163-4ce4-a297-2d3959bab6b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0110L03U06",
+     "slot": "target1",
+     "audio_id": "5f9c1316-7ad9-4f91-b6ca-6b05b006854b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0110L03U06",
+     "slot": "target2",
+     "audio_id": "1e46f2a9-8bdf-4677-a016-d9376716be4c"
+    }
+   ]
+  },
+  {
+   "seed": 118,
+   "id": "S0118L02U06",
+   "lego": "S0118L02",
+   "known": "Mi sento meglio di come mi sentivo quando eravamo al pub.",
+   "target": "I feel better than I felt when we were in the pub.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0118L02U06",
+      "seed_number": 118,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "Mi sento meglio di come mi sentivo quando eravamo al pub.",
+      "target_text": "I feel better than I felt when we were in the pub.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 118,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0118L02U06",
+     "slot": "known",
+     "audio_id": "93a0ed52-d944-4c5e-805d-3ede123889d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0118L02U06",
+     "slot": "target1",
+     "audio_id": "2e78eb77-3d28-4f19-9b58-76b9258e730a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0118L02U06",
+     "slot": "target2",
+     "audio_id": "15430d76-5101-4ced-88ed-0224f171b544"
+    }
+   ]
+  },
+  {
+   "seed": 153,
+   "id": "S0153L03U06",
+   "lego": "S0153L03",
+   "known": "Non lo avrei detto esattamente nello stesso modo.",
+   "target": "I wouldn't have said it in exactly the same way.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0153L03U06",
+      "seed_number": 153,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "Non lo avrei detto esattamente nello stesso modo.",
+      "target_text": "I wouldn't have said it in exactly the same way.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 153,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 8,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0153L03U06",
+     "slot": "known",
+     "audio_id": "fc5a014c-60a1-4f00-ae63-4c7f7c27e789"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0153L03U06",
+     "slot": "target1",
+     "audio_id": "bac34e44-40e9-447a-8d6d-c14dd03556d1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0153L03U06",
+     "slot": "target2",
+     "audio_id": "f66140a3-06c7-4a0e-b3f4-f49673482629"
+    }
+   ]
+  },
+  {
+   "seed": 165,
+   "id": "S0165L01U06",
+   "lego": "S0165L01",
+   "known": "Ma non sono sicuro se sia vero.",
+   "target": "But I'm not sure if it's true.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0165L01U06",
+      "seed_number": 165,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Ma non sono sicuro se sia vero.",
+      "target_text": "But I'm not sure if it's true.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 165,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0165L01U06",
+     "slot": "known",
+     "audio_id": "41cf6f5a-f848-499a-b6cb-22aa4c57951a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0165L01U06",
+     "slot": "target1",
+     "audio_id": "be1e9dcb-d82c-4a08-bb6d-8bdac2429a30"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0165L01U06",
+     "slot": "target2",
+     "audio_id": "7a05ae32-14f2-4a4c-9714-42fce79b6b9e"
+    }
+   ]
+  },
+  {
+   "seed": 168,
+   "id": "S0168L02U06",
+   "lego": "S0168L02",
+   "known": "E poi riuscirò a venire ad aiutare più tardi.",
+   "target": "And then I'll be able to come and help later on.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0168L02U06",
+      "seed_number": 168,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "E poi riuscirò a venire ad aiutare più tardi.",
+      "target_text": "And then I'll be able to come and help later on.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 168,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0168L02U06",
+     "slot": "known",
+     "audio_id": "58ab55e2-85ae-4bbc-879b-8d100fa101b9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0168L02U06",
+     "slot": "target1",
+     "audio_id": "2b2abe1c-6957-4167-9a21-dc560c19616e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0168L02U06",
+     "slot": "target2",
+     "audio_id": "c2a4abeb-d9d7-462e-aeab-b8c7d088a423"
+    }
+   ]
+  },
+  {
+   "seed": 173,
+   "id": "S0173L02U06",
+   "lego": "S0173L02",
+   "known": "No grazie, riesco da solo.",
+   "target": "No thank you I can manage on my own.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0173L02U06",
+      "seed_number": 173,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "No grazie, riesco da solo.",
+      "target_text": "No thank you I can manage on my own.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 173,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0173L02U06",
+     "slot": "known",
+     "audio_id": "7859a299-6a13-4e46-930b-143cf1194ca6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0173L02U06",
+     "slot": "target1",
+     "audio_id": "c60771f4-e3d5-47d1-82e9-cc09dc9abdc7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0173L02U06",
+     "slot": "target2",
+     "audio_id": "de13fc62-a42e-4617-9b07-c5d646d44c73"
+    }
+   ]
+  },
+  {
+   "seed": 181,
+   "id": "S0181L02U06",
+   "lego": "S0181L02",
+   "known": "Ma devo portare mia madre dal medico.",
+   "target": "But I have to take my mother to the doctor.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0181L02U06",
+      "seed_number": 181,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "Ma devo portare mia madre dal medico.",
+      "target_text": "But I have to take my mother to the doctor.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 181,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0181L02U06",
+     "slot": "known",
+     "audio_id": "eff42099-aa06-4ea3-a6b0-ee9fe396c876"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0181L02U06",
+     "slot": "target1",
+     "audio_id": "8331dd41-cbe1-4347-b5d1-f39c69bbd02d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0181L02U06",
+     "slot": "target2",
+     "audio_id": "f553830c-e4d1-4cf6-9b7c-a38cdc469912"
+    }
+   ]
+  },
+  {
+   "seed": 183,
+   "id": "S0183L02U05",
+   "lego": "S0183L02",
+   "known": "No, purtroppo non le ho viste.",
+   "target": "No I'm afraid I haven't seen them.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0183L02U05",
+      "seed_number": 183,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "No, purtroppo non le ho viste.",
+      "target_text": "No I'm afraid I haven't seen them.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 183,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0183L02U05",
+     "slot": "known",
+     "audio_id": "ca89e2e8-3eba-44fb-8410-ed1b32f912a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0183L02U05",
+     "slot": "target1",
+     "audio_id": "36b4734a-e4c2-42ff-9f2e-628afdc931da"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0183L02U05",
+     "slot": "target2",
+     "audio_id": "9157e133-8b49-4bc0-a6e4-57b0991d160c"
+    }
+   ]
+  },
+  {
+   "seed": 184,
+   "id": "S0184L03U04",
+   "lego": "S0184L03",
+   "known": "Sì, le ho viste in ufficio poco fa.",
+   "target": "Yes I saw them in the office a while ago.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0184L03U04",
+      "seed_number": 184,
+      "lego_index": 3,
+      "position": 8,
+      "known_text": "Sì, le ho viste in ufficio poco fa.",
+      "target_text": "Yes I saw them in the office a while ago.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 184,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0184L03U04",
+     "slot": "known",
+     "audio_id": "38f90f2a-61f8-4053-b8ef-5ee6b693aba2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0184L03U04",
+     "slot": "target1",
+     "audio_id": "11d11a60-6948-4d84-b243-ffc1945e10d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0184L03U04",
+     "slot": "target2",
+     "audio_id": "f8f820e1-4315-4f2e-ab6e-00bbc8199951"
+    }
+   ]
+  },
+  {
+   "seed": 193,
+   "id": "S0193L01U06",
+   "lego": "S0193L01",
+   "known": "Mi dispiace ma sono troppo occupato oggi.",
+   "target": "I'm sorry but I'm too busy today.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0193L01U06",
+      "seed_number": 193,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "Mi dispiace ma sono troppo occupato oggi.",
+      "target_text": "I'm sorry but I'm too busy today.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 193,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0193L01U06",
+     "slot": "known",
+     "audio_id": "22d51879-9121-405b-a4c6-a9a8f24396ab"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0193L01U06",
+     "slot": "target1",
+     "audio_id": "eaa97611-2f67-4d18-9fee-e7569bd7b3cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0193L01U06",
+     "slot": "target2",
+     "audio_id": "edb55484-1290-4bfa-aa00-8e82a34f1390"
+    }
+   ]
+  },
+  {
+   "seed": 199,
+   "id": "S0199L01U06",
+   "lego": "S0199L01",
+   "known": "Il mio amico lavorava in un ufficio.",
+   "target": "My friend used to work in an office.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0199L01U06",
+      "seed_number": 199,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Il mio amico lavorava in un ufficio.",
+      "target_text": "My friend used to work in an office.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 199,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0199L01U06",
+     "slot": "known",
+     "audio_id": "461f77d4-d3c4-42bd-bd9a-a23da9f6addc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0199L01U06",
+     "slot": "target1",
+     "audio_id": "5f09cb8c-41a4-4c28-b6e3-110a4e6820e6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0199L01U06",
+     "slot": "target2",
+     "audio_id": "ff93f505-e073-4825-8acc-7ab2cd24aa03"
+    }
+   ]
+  },
+  {
+   "seed": 200,
+   "id": "S0200L03U06",
+   "lego": "S0200L03",
+   "known": "Dicono che vogliono assicurarsi che finiamo tutto in tempo.",
+   "target": "They say they want to make sure that we finish everything in time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0200L03U06",
+      "seed_number": 200,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Dicono che vogliono assicurarsi che finiamo tutto in tempo.",
+      "target_text": "They say they want to make sure that we finish everything in time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 200,
+       "canon": "P26"
+      },
+      "word_count": 66,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0200L03U06",
+     "slot": "known",
+     "audio_id": "aee60679-9039-424f-b0b9-f3ae84848900"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0200L03U06",
+     "slot": "target1",
+     "audio_id": "fe64055a-b390-4c24-a38a-f811044550a5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0200L03U06",
+     "slot": "target2",
+     "audio_id": "4739b4a6-27ec-4aa7-927c-b7bdc429bba8"
+    }
+   ]
+  },
+  {
+   "seed": 205,
+   "id": "S0205L02U06",
+   "lego": "S0205L02",
+   "known": "Ho dimenticato la parola che stavo cercando di dire.",
+   "target": "I've forgotten the word I was trying to say.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0205L02U06",
+      "seed_number": 205,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "Ho dimenticato la parola che stavo cercando di dire.",
+      "target_text": "I've forgotten the word I was trying to say.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 205,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0205L02U06",
+     "slot": "known",
+     "audio_id": "bb36649c-669d-45ea-abfa-40268f0bdb90"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0205L02U06",
+     "slot": "target1",
+     "audio_id": "33ad5cb2-1a27-4c8c-987b-46d346a76a32"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0205L02U06",
+     "slot": "target2",
+     "audio_id": "7f0811cc-4eed-4df8-9003-495c8f2354cd"
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "id": "S0209L03U06",
+   "lego": "S0209L03",
+   "known": "Vogliono passare più tempo incontrandosi in gruppo.",
+   "target": "They want to spend more time meeting as a group.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0209L03U06",
+      "seed_number": 209,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "Vogliono passare più tempo incontrandosi in gruppo.",
+      "target_text": "They want to spend more time meeting as a group.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 209,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0209L03U06",
+     "slot": "known",
+     "audio_id": "2a052dcb-cc07-4fd8-b8aa-fd16a6333a2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0209L03U06",
+     "slot": "target1",
+     "audio_id": "4b519d41-7f03-41ac-b000-00afc116b1fe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0209L03U06",
+     "slot": "target2",
+     "audio_id": "55476cc7-29a4-4c8e-8374-dae862669855"
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "id": "S0210L03U06",
+   "lego": "S0210L03",
+   "known": "Pensano che dobbiamo discutere il problema.",
+   "target": "They think that we need to discuss the problem.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0210L03U06",
+      "seed_number": 210,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Pensano che dobbiamo discutere il problema.",
+      "target_text": "They think that we need to discuss the problem.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 210,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0210L03U06",
+     "slot": "known",
+     "audio_id": "29deaa3c-32a9-4fa2-9c2e-a69c9e0fa51d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0210L03U06",
+     "slot": "target1",
+     "audio_id": "5e3ec238-6786-4beb-a931-ba1cd6418ad4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0210L03U06",
+     "slot": "target2",
+     "audio_id": "c307be71-6783-42f3-b060-2d88adf54fac"
+    }
+   ]
+  },
+  {
+   "seed": 217,
+   "id": "S0217L02U06",
+   "lego": "S0217L02",
+   "known": "Ho bevuto uno o due bicchieri d'acqua.",
+   "target": "I had a glass or two of water.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0217L02U06",
+      "seed_number": 217,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "Ho bevuto uno o due bicchieri d'acqua.",
+      "target_text": "I had a glass or two of water.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 217,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0217L02U06",
+     "slot": "known",
+     "audio_id": "2bbad716-ecb8-403d-adbc-fa0c24de35cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0217L02U06",
+     "slot": "target1",
+     "audio_id": "eb61d56a-5274-49c2-9feb-0701a49edca2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0217L02U06",
+     "slot": "target2",
+     "audio_id": "5c7e2c4d-ef8a-465c-b07b-61d1f380e51f"
+    }
+   ]
+  },
+  {
+   "seed": 227,
+   "id": "S0227L01U06",
+   "lego": "S0227L01",
+   "known": "Quell'uomo mi dirà qualcosa di nuovo.",
+   "target": "That man is going to tell me something new.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0227L01U06",
+      "seed_number": 227,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "Quell'uomo mi dirà qualcosa di nuovo.",
+      "target_text": "That man is going to tell me something new.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 227,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0227L01U06",
+     "slot": "known",
+     "audio_id": "cb8acdda-c5f2-451b-add9-8832b613d3ed"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0227L01U06",
+     "slot": "target1",
+     "audio_id": "7518a2ac-791f-48aa-bc9a-554efe9f949b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0227L01U06",
+     "slot": "target2",
+     "audio_id": "f527f1f1-d976-45f6-8d68-82416c084f8e"
+    }
+   ]
+  },
+  {
+   "seed": 233,
+   "id": "S0233L03U06",
+   "lego": "S0233L03",
+   "known": "Conosco una giovane donna che conosce tua sorella.",
+   "target": "I know a young woman who knows your sister.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0233L03U06",
+      "seed_number": 233,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Conosco una giovane donna che conosce tua sorella.",
+      "target_text": "I know a young woman who knows your sister.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 233,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0233L03U06",
+     "slot": "known",
+     "audio_id": "79eb1d3f-ce6e-428e-8a8b-43b1dde01413"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0233L03U06",
+     "slot": "target1",
+     "audio_id": "1fb86cbe-e9bd-48cf-8411-72a741c4f154"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0233L03U06",
+     "slot": "target2",
+     "audio_id": "3c347bf4-82dd-4018-acbd-58930134941d"
+    }
+   ]
+  },
+  {
+   "seed": 234,
+   "id": "S0234L02U07",
+   "lego": "S0234L02",
+   "known": "Ho incontrato qualcuno ieri sera che lavora con tuo fratello.",
+   "target": "I met someone last night who works with your brother.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0234L02U07",
+      "seed_number": 234,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "Ho incontrato qualcuno ieri sera che lavora con tuo fratello.",
+      "target_text": "I met someone last night who works with your brother.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 234,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0234L02U07",
+     "slot": "known",
+     "audio_id": "ef5dbb7d-5e4d-4d58-b896-835fa72ad8f9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0234L02U07",
+     "slot": "target1",
+     "audio_id": "19240c07-12c0-4d71-b495-ad8a27cf66cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0234L02U07",
+     "slot": "target2",
+     "audio_id": "19ad3519-0688-4591-9d8f-d5032562b18e"
+    }
+   ]
+  },
+  {
+   "seed": 236,
+   "id": "S0236L01U06",
+   "lego": "S0236L01",
+   "known": "Conosco qualcuno che ha detto che avrebbe cercato di aiutare.",
+   "target": "I know someone who said that she was going to try to help.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0236L01U06",
+      "seed_number": 236,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Conosco qualcuno che ha detto che avrebbe cercato di aiutare.",
+      "target_text": "I know someone who said that she was going to try to help.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 236,
+       "canon": "P26"
+      },
+      "word_count": 58,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0236L01U06",
+     "slot": "known",
+     "audio_id": "d3e74cb6-1f6a-464c-932c-a01edb1430a0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0236L01U06",
+     "slot": "target1",
+     "audio_id": "2e80d736-c1dd-4119-bc6f-2400f07fac51"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0236L01U06",
+     "slot": "target2",
+     "audio_id": "5f7a5f15-b1b6-43f6-abe3-0fa757fcd8d6"
+    }
+   ]
+  },
+  {
+   "seed": 248,
+   "id": "S0248L03U06",
+   "lego": "S0248L03",
+   "known": "Pensavo che il film fosse una vera spazzatura e voglio i miei soldi indietro.",
+   "target": "I thought the film was complete rubbish and I want my money back.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0248L03U06",
+      "seed_number": 248,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Pensavo che il film fosse una vera spazzatura e voglio i miei soldi indietro.",
+      "target_text": "I thought the film was complete rubbish and I want my money back.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 248,
+       "canon": "P26"
+      },
+      "word_count": 65,
+      "lego_count": 14,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0248L03U06",
+     "slot": "known",
+     "audio_id": "17914874-e6cc-4967-87ca-dc97c53d80ce"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0248L03U06",
+     "slot": "target1",
+     "audio_id": "d56ae0cf-1ea7-4f92-920b-07e1a919af14"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0248L03U06",
+     "slot": "target2",
+     "audio_id": "870c3434-3583-4d9d-8d9a-93d16d8c7d1e"
+    }
+   ]
+  },
+  {
+   "seed": 251,
+   "id": "S0251L02U06",
+   "lego": "S0251L02",
+   "known": "Non voglio scoprirlo prima che finiamo.",
+   "target": "I don't want to find out until after we finish.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0251L02U06",
+      "seed_number": 251,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "Non voglio scoprirlo prima che finiamo.",
+      "target_text": "I don't want to find out until after we finish.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 251,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0251L02U06",
+     "slot": "known",
+     "audio_id": "079ba1e2-0745-497d-9f8a-f2ffcdcc9a69"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0251L02U06",
+     "slot": "target1",
+     "audio_id": "cfc60d1b-f915-43b4-a138-7db79c55c765"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0251L02U06",
+     "slot": "target2",
+     "audio_id": "1f9685a7-c351-478f-b8a1-0ec10b317469"
+    }
+   ]
+  },
+  {
+   "seed": 289,
+   "id": "S0289L01U06",
+   "lego": "S0289L01",
+   "known": "Mi chiedo se sarà lì questo pomeriggio.",
+   "target": "I wonder if she's going to be there this afternoon.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0289L01U06",
+      "seed_number": 289,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Mi chiedo se sarà lì questo pomeriggio.",
+      "target_text": "I wonder if she's going to be there this afternoon.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 289,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0289L01U06",
+     "slot": "known",
+     "audio_id": "4aab9976-def5-4398-a9fa-43c8fc22d6d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0289L01U06",
+     "slot": "target1",
+     "audio_id": "d86d06c5-7d6f-4ee0-9d87-d90cef4af3f4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0289L01U06",
+     "slot": "target2",
+     "audio_id": "075bbef5-3f34-4b73-bc3d-fa3e931707d3"
+    }
+   ]
+  },
+  {
+   "seed": 292,
+   "id": "S0292L01U06",
+   "lego": "S0292L01",
+   "known": "Spero che tu riesca a venire alla festa.",
+   "target": "I hope you'll be able to come to the party.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0292L01U06",
+      "seed_number": 292,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Spero che tu riesca a venire alla festa.",
+      "target_text": "I hope you'll be able to come to the party.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 292,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0292L01U06",
+     "slot": "known",
+     "audio_id": "c9c9c9bd-d970-40e4-826d-f4ef20517ca8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0292L01U06",
+     "slot": "target1",
+     "audio_id": "6de99191-9d59-4da3-80c4-8a702e9f3b7d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0292L01U06",
+     "slot": "target2",
+     "audio_id": "53876034-8ae5-4807-abfe-61d968dcd027"
+    }
+   ]
+  },
+  {
+   "seed": 299,
+   "id": "S0299L02U06",
+   "lego": "S0299L02",
+   "known": "Lui vuole pagare la metà.",
+   "target": "He wants to pay half.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0299L02U06",
+      "seed_number": 299,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "Lui vuole pagare la metà.",
+      "target_text": "He wants to pay half.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 299,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0299L02U06",
+     "slot": "known",
+     "audio_id": "574ce86c-f614-454a-84c1-8f12a4c9d5b7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0299L02U06",
+     "slot": "target1",
+     "audio_id": "9b7f0976-22fa-4347-89a4-77063e5ce4ad"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0299L02U06",
+     "slot": "target2",
+     "audio_id": "e24aa52f-55b3-4526-9fbf-8d57aeed41b7"
+    }
+   ]
+  },
+  {
+   "seed": 300,
+   "id": "S0300L02U06",
+   "lego": "S0300L02",
+   "known": "Lei non vuole sembrare scortese.",
+   "target": "She doesn't want to seem unfriendly.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ita:S0300L02U06",
+      "seed_number": 300,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "Lei non vuole sembrare scortese.",
+      "target_text": "She doesn't want to seem unfriendly.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 300,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0300L02U06",
+     "slot": "known",
+     "audio_id": "1f1dfdd2-1d28-4312-8850-0d7986f415cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0300L02U06",
+     "slot": "target1",
+     "audio_id": "eea04971-6e39-47bd-8aa0-b52e82500b8a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ita:S0300L02U06",
+     "slot": "target2",
+     "audio_id": "7b608881-4b69-430b-ad5d-8689a7ed7668"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_form": [
+   {
+    "seed": 10,
+    "known": "Non sono sicuro se riesco a ricordare tutta la frase.",
+    "target": "I'm not sure if I can remember the whole sentence.",
+    "row": "S0010L04U01",
+    "row_known": "non sono sicura se riesco a ricordare tutta la frase",
+    "row_target": "I'm not sure if I can remember the whole sentence"
+   },
+   {
+    "seed": 77,
+    "known": "Sono sorpreso di quanto velocemente sto iniziando a capire.",
+    "target": "I'm surprised at how quickly I'm starting to understand.",
+    "row": "S0077L02U01",
+    "row_known": "sono sorpresa di quanto velocemente sto iniziando a capire",
+    "row_target": "I'm surprised at how quickly I'm starting to understand"
+   },
+   {
+    "seed": 80,
+    "known": "Non sono sicuro di quando sarò pronto.",
+    "target": "I'm not sure when I'll be ready.",
+    "row": "S0080L01U01",
+    "row_known": "non sono sicura di quando sarò pronto",
+    "row_target": "I'm not sure when I'll be ready"
+   },
+   {
+    "seed": 97,
+    "known": "Sì, sono pronto ad andare quando vuoi.",
+    "target": "Yes I'm ready to go as soon as you want.",
+    "row": "S0097L02U01",
+    "row_known": "sì, sono pronta ad andare quando vuoi",
+    "row_target": "yes I'm ready to go as soon as you want"
+   },
+   {
+    "seed": 187,
+    "known": "Sono contento finora.",
+    "target": "I'm happy so far.",
+    "row": "S0187L02B02",
+    "row_known": "sono contenta finora",
+    "row_target": "I'm happy so far"
+   },
+   {
+    "seed": 245,
+    "known": "Sono contento di quanto ho fatto in poco tempo",
+    "target": "I'm happy with how much I've done in a short time",
+    "row": "S0245L01U02",
+    "row_known": "sono contenta di quanto ho fatto in poco tempo",
+    "row_target": "I'm happy with how much I've done in a short time"
+   },
+   {
+    "seed": 254,
+    "known": "Sono pronto fin da stamattina.",
+    "target": "I've been ready since this morning.",
+    "row": "S0254L02B02",
+    "row_known": "sono pronta fin da stamattina",
+    "row_target": "I've been ready since this morning"
+   },
+   {
+    "seed": 270,
+    "known": "Perché sono preoccupato di fare tardi.",
+    "target": "Because I'm worried that I'm going to be late.",
+    "row": "S0270L02U05",
+    "row_known": "perché sono preoccupata di fare tardi",
+    "row_target": "because I'm worried that I'm going to be late"
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 40,
+    "known": "Come ti senti in questo momento?",
+    "target": "How do you feel at the moment?",
+    "row": "S0040L02B02",
+    "row_known": "come ti senti in questo momento?",
+    "row_target": "how do you feel right now?"
+   },
+   {
+    "seed": 49,
+    "known": "È così, se sai cosa intendo.",
+    "target": "It's like this, if you know what I mean.",
+    "row": "S0049L02U01",
+    "row_known": "È così, se sai cosa intendo",
+    "row_target": "that's how it is, if you know what I mean"
+   },
+   {
+    "seed": 61,
+    "known": "Potresti dirlo di nuovo un po' più lentamente?",
+    "target": "Could you say that again a little more slowly?",
+    "row": "S0061L03U05",
+    "row_known": "potresti dirlo di nuovo un po' più lentamente?",
+    "row_target": "could you say it again a little more slowly?"
+   },
+   {
+    "seed": 70,
+    "known": "Lei non voleva dirmi dove era.",
+    "target": "She didn't want to tell me where it was.",
+    "row": "S0070L03B03",
+    "row_known": "lei non voleva dirmi dove era",
+    "row_target": "she didn't want to tell me where she was"
+   },
+   {
+    "seed": 72,
+    "known": "Penso che tu stia andando molto bene.",
+    "target": "I think that you're doing very well.",
+    "row": "S0072L01U01",
+    "row_known": "penso che tu stia andando molto bene",
+    "row_target": "I think you're going very well"
+   },
+   {
+    "seed": 132,
+    "known": "Questo è meno entusiasmante di quello che lei stava dicendo.",
+    "target": "That's less exciting than what she was saying.",
+    "row": "S0132L02B02",
+    "row_known": "questo è meno entusiasmante di quello che lei stava dicendo",
+    "row_target": "this is less exciting than what she was saying"
+   },
+   {
+    "seed": 144,
+    "known": "Mi sono svegliato prima del voluto stamattina.",
+    "target": "I woke earlier than I wanted to this morning.",
+    "row": "S0144L02B03",
+    "row_known": "mi sono svegliato prima del voluto stamattina",
+    "row_target": "I woke up earlier than I wanted to this morning"
+   },
+   {
+    "seed": 155,
+    "known": "Non mi dispiace aspettare qualche minuto domani mattina.",
+    "target": "I don't mind waiting for a few minutes tomorrow morning.",
+    "row": "S0155L03B03",
+    "row_known": "non mi dispiace aspettare qualche minuto domani mattina",
+    "row_target": "I don't mind waiting a few minutes tomorrow morning"
+   },
+   {
+    "seed": 163,
+    "known": "Penso che sia interessante.",
+    "target": "I think that it's interesting.",
+    "row": "S0163L01B02",
+    "row_known": "penso che sia interessante",
+    "row_target": "I think that's interesting"
+   },
+   {
+    "seed": 167,
+    "known": "Cosa devi fare domani pomeriggio?",
+    "target": "What do you need to do tomorrow afternoon?",
+    "row": "S0167L02B03",
+    "row_known": "cosa devi fare domani pomeriggio?",
+    "row_target": "what do you have to do tomorrow afternoon?"
+   },
+   {
+    "seed": 179,
+    "known": "Cosa farai domenica pomeriggio?",
+    "target": "What are you going to do on Sunday afternoon?",
+    "row": "S0179L02B02",
+    "row_known": "cosa farai domenica pomeriggio?",
+    "row_target": "what will you do on Sunday afternoon?"
+   },
+   {
+    "seed": 282,
+    "known": "No, non è un problema.",
+    "target": "No that's not a problem.",
+    "row": "S0134L01B03",
+    "row_known": "no, non è un problema",
+    "row_target": "no it's not a problem"
+   }
+  ],
+  "covered": [
+   {
+    "seed": 64,
+    "known": "Imparare l'inglese non è facile ma è divertente.",
+    "target": "Learning English isn't easy but it is fun."
+   },
+   {
+    "seed": 66,
+    "known": "Non è difficile trovare la risposta.",
+    "target": "It's not difficult to find the answer."
+   },
+   {
+    "seed": 159,
+    "known": "Non è questo quello che sto cercando di dire.",
+    "target": "That isn't what I'm trying to say."
+   },
+   {
+    "seed": 166,
+    "known": "Il mio nome non è molto insolito.",
+    "target": "My name is not very unusual."
+   },
+   {
+    "seed": 255,
+    "known": "Quando pensi che sarai pronto ad andare?",
+    "target": "When do you think you'll be ready to leave?"
+   },
+   {
+    "seed": 256,
+    "known": "Penso che sarò pronto in meno di un'ora.",
+    "target": "I think I'll be ready in less than an hour."
+   },
+   {
+    "seed": 293,
+    "known": "Devo scoprire dove mi incontrerà.",
+    "target": "I have to find out where he's going to meet me."
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 74,
+    "known": "Grazie mille per avermi aiutato a capire.",
+    "target": "Thank you very much for helping me to understand.",
+    "legos": [
+     "S0074L01 non devi essere | you don't have to be",
+     "S0074L02 così duro | so hard",
+     "S0074L03 con te stesso | on yourself"
+    ]
+   },
+   {
+    "seed": 154,
+    "known": "Dove vuoi incontrarci sabato sera?",
+    "target": "Where do you want to meet on Saturday night?",
+    "legos": [
+     "S0154L01 sabato sera | saturday evening"
+    ]
+   },
+   {
+    "seed": 156,
+    "known": "Vuoi andare al ristorante stasera?",
+    "target": "Do you want to go to a restaurant tonight?",
+    "legos": [
+     "S0156L01 al ristorante | to the restaurant"
+    ]
+   },
+   {
+    "seed": 257,
+    "known": "Mi piace quella cosa blu.",
+    "target": "I like that blue thing.",
+    "legos": [
+     "S0257L01(old) blu | blue"
+    ]
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 301,
+    "known": "Ha detto che vuole mostrarti qualcosa.",
+    "target": "He said that he wants to show you something."
+   },
+   {
+    "seed": 302,
+    "known": "Ha detto che non vuole vivere in una città.",
+    "target": "She said that she doesn't want to live in a city."
+   },
+   {
+    "seed": 303,
+    "known": "Penso che voglia sedersi.",
+    "target": "I think that he wants to sit down."
+   },
+   {
+    "seed": 304,
+    "known": "Penso che non voglia lavorare da casa.",
+    "target": "I think that she doesn't want to work from home."
+   },
+   {
+    "seed": 306,
+    "known": "Conosco quella giovane donna che sta parlando con il tuo amico.",
+    "target": "I know that young woman who's talking to your friend."
+   },
+   {
+    "seed": 307,
+    "known": "Conosco quel giovane che è seduto là.",
+    "target": "I know that young man who's sitting over there."
+   },
+   {
+    "seed": 308,
+    "known": "Sì, è un'amica di mia madre.",
+    "target": "Yes she's a friend of my mother."
+   },
+   {
+    "seed": 309,
+    "known": "No, non l'ho mai vista prima.",
+    "target": "No I've never seen her before."
+   },
+   {
+    "seed": 310,
+    "known": "Potrebbe scrivere una storia su quell'uomo.",
+    "target": "She could write a story about that man."
+   },
+   {
+    "seed": 311,
+    "known": "Non riusciva a credere ai tre fatti più importanti.",
+    "target": "He couldn't believe the three most important facts."
+   },
+   {
+    "seed": 312,
+    "known": "Ha detto che potrebbe usare l'altra stanza domani sera.",
+    "target": "She said that she could use the other room tomorrow night."
+   },
+   {
+    "seed": 313,
+    "known": "Ha detto che non riusciva a guardare tutte e cinque le partite.",
+    "target": "He said that he couldn't watch all five games."
+   },
+   {
+    "seed": 314,
+    "known": "Penso che potrebbe metterlo sul tavolo.",
+    "target": "I think that she could put it on the table."
+   },
+   {
+    "seed": 315,
+    "known": "Penso che non potesse permettersi la macchina che voleva.",
+    "target": "I think that he couldn't afford the car that he wanted."
+   },
+   {
+    "seed": 316,
+    "known": "Pensi che potrebbe portare suo fratello lunedì?",
+    "target": "Do you think that she could bring her brother on Monday?"
+   },
+   {
+    "seed": 317,
+    "known": "Sì, penso che potrebbe se volesse.",
+    "target": "Yes I think she could if she wanted to."
+   },
+   {
+    "seed": 318,
+    "known": "No, non penso che potrebbe questa volta.",
+    "target": "No I don't think she could this time."
+   },
+   {
+    "seed": 319,
+    "known": "Deve trasferirsi in un paese diverso.",
+    "target": "She needs to move to a different country."
+   },
+   {
+    "seed": 320,
+    "known": "Non ha bisogno di comprare un'altra televisione quest'anno.",
+    "target": "He doesn't need to buy another television this year."
+   },
+   {
+    "seed": 321,
+    "known": "Un libro.",
+    "target": "A book."
+   },
+   {
+    "seed": 322,
+    "known": "Ha detto che deve leggere lo stesso libro.",
+    "target": "She said that she needs to read the same book."
+   },
+   {
+    "seed": 323,
+    "known": "Ha detto che non ha bisogno di andare a scuola a piedi.",
+    "target": "He said that he doesn't need to walk to school."
+   },
+   {
+    "seed": 324,
+    "known": "Quella studentessa ha entrambe le mani alzate.",
+    "target": "That student has both of her hands up."
+   },
+   {
+    "seed": 325,
+    "known": "Penso che debba considerare dieci possibili problemi.",
+    "target": "I think that he needs to consider ten possible problems."
+   },
+   {
+    "seed": 326,
+    "known": "Non penso che debba vendere l'azienda.",
+    "target": "I don't think that she needs to sell the company."
+   },
+   {
+    "seed": 327,
+    "known": "Pensi che debba offrire un altro modo?",
+    "target": "Do you think that she needs to offer another way?"
+   },
+   {
+    "seed": 328,
+    "known": "Sì, penso che dovrebbe.",
+    "target": "Yes I think she ought to."
+   },
+   {
+    "seed": 330,
+    "known": "No, non penso che sia molto importante.",
+    "target": "No I don't think it's very important."
+   },
+   {
+    "seed": 331,
+    "known": "Non riesce a fornire tutte le risposte.",
+    "target": "She can't provide all the answers."
+   },
+   {
+    "seed": 332,
+    "known": "Può costruire una nuova vita per sua sorella.",
+    "target": "He can build a new life for his sister."
+   },
+   {
+    "seed": 333,
+    "known": "Ha detto che non riesce a passare molto tempo con il gruppo.",
+    "target": "She said that she can't spend much time with the group."
+   },
+   {
+    "seed": 334,
+    "known": "Ha detto che ti può lasciare tenere il gattino",
+    "target": "He said that he can let you hold the kitten"
+   },
+   {
+    "seed": 335,
+    "known": "Penso che possa aggiungere alcune idee preziose.",
+    "target": "I think that he can add some valuable ideas."
+   },
+   {
+    "seed": 336,
+    "known": "Non penso che riesca ad aprire la porta.",
+    "target": "I don't think that she can open the door."
+   },
+   {
+    "seed": 337,
+    "known": "Pensi che riesca a continuare a giocare?",
+    "target": "Do you think that he can continue to play?"
+   },
+   {
+    "seed": 338,
+    "known": "Male.",
+    "target": "Badly."
+   },
+   {
+    "seed": 339,
+    "known": "No, penso che si sia fatto del male piuttosto gravemente.",
+    "target": "No I think he's hurt himself quite badly."
+   },
+   {
+    "seed": 340,
+    "known": "Sì, sono sicuro che starà bene.",
+    "target": "Yes I'm sure he's going to be okay."
+   },
+   {
+    "seed": 341,
+    "known": "Ho incontrato qualcuno qualche giorno fa.",
+    "target": "I met someone a few days ago."
+   },
+   {
+    "seed": 342,
+    "known": "Ho incontrato qualcuno che ha detto qualcosa.",
+    "target": "I met someone who said something."
+   },
+   {
+    "seed": 343,
+    "known": "Che ha detto che è preoccupata per l'economia.",
+    "target": "Who said that she's worried about the economy."
+   },
+   {
+    "seed": 344,
+    "known": "Che ha detto che è felice di aiutarti.",
+    "target": "Who said that he's happy to help you."
+   },
+   {
+    "seed": 345,
+    "known": "Che ha detto che non è ancora pronto ad andare.",
+    "target": "Who said that he's not ready to leave yet."
+   },
+   {
+    "seed": 346,
+    "known": "Volevo che sapesse che mi piaceva il suo libro.",
+    "target": "I wanted her to know that I liked her book."
+   },
+   {
+    "seed": 347,
+    "known": "Voleva sapere cosa stava succedendo una settimana fa.",
+    "target": "He wanted to know what was happening a week ago."
+   },
+   {
+    "seed": 348,
+    "known": "Non voleva sapere cosa sarebbe successo.",
+    "target": "She didn't want to know what was going to happen."
+   },
+   {
+    "seed": 349,
+    "known": "Voleva uscire venerdì sera?",
+    "target": "Did he want to go out on Friday night?"
+   },
+   {
+    "seed": 350,
+    "known": "Sì, voleva vedere alcuni vecchi amici.",
+    "target": "Yes he wanted to see some old friends."
+   },
+   {
+    "seed": 351,
+    "known": "No, non voleva lasciarmi da solo.",
+    "target": "No he didn't want to leave me on my own."
+   },
+   {
+    "seed": 352,
+    "known": "Anche se volesse non riuscirebbe.",
+    "target": "Even if he wanted to he wouldn't be able to."
+   },
+   {
+    "seed": 353,
+    "known": "Doveva correre intorno al campo.",
+    "target": "She needed to run around the field."
+   },
+   {
+    "seed": 354,
+    "known": "Non aveva bisogno di sembrare arrabbiato.",
+    "target": "He didn't need to appear angry."
+   },
+   {
+    "seed": 355,
+    "known": "Doveva parlare con quella donna che conosci?",
+    "target": "Did she need to talk to that woman you know?"
+   },
+   {
+    "seed": 356,
+    "known": "Sì, avevano qualcosa di importante di cui discutere.",
+    "target": "Yes they had something important to discuss."
+   },
+   {
+    "seed": 357,
+    "known": "No, voleva solo mandarle un messaggio.",
+    "target": "No she just wanted to send her a message."
+   },
+   {
+    "seed": 358,
+    "known": "La tua amica ha detto che non riusciva ad arrivare in cima.",
+    "target": "Your friend said that she couldn't reach the top."
+   },
+   {
+    "seed": 359,
+    "known": "Il tuo amico ha detto che poteva girare a sinistra.",
+    "target": "Your friend said that he could turn left."
+   },
+   {
+    "seed": 360,
+    "known": "Il tuo amico ha detto qualcos'altro?",
+    "target": "Did your friend say anything else?"
+   },
+   {
+    "seed": 361,
+    "known": "Era silenzioso.",
+    "target": "He was quiet."
+   },
+   {
+    "seed": 362,
+    "known": "No, era piuttosto silenzioso dopo che sei andato.",
+    "target": "No he was rather quiet after you left."
+   },
+   {
+    "seed": 363,
+    "known": "Sì, aveva voglia di parlare molto.",
+    "target": "Yes he felt like talking a lot."
+   },
+   {
+    "seed": 364,
+    "known": "Ho sentito che non gli piaceva quel posto.",
+    "target": "I heard that he didn't like that place."
+   },
+   {
+    "seed": 365,
+    "known": "Non ho sentito quello che gli ha detto.",
+    "target": "I didn't hear what she said to him."
+   },
+   {
+    "seed": 366,
+    "known": "Hai sentito cosa voleva coltivare?",
+    "target": "Did you hear what he wanted to grow?"
+   },
+   {
+    "seed": 367,
+    "known": "No, nessuno me l'ha detto.",
+    "target": "No nobody told me."
+   },
+   {
+    "seed": 368,
+    "known": "Sì, ho sentito che voleva coltivare pomodori.",
+    "target": "Yes I heard that he wanted to grow tomatoes."
+   },
+   {
+    "seed": 369,
+    "known": "Ho visto diversi cavalli sulla strada.",
+    "target": "I saw several horses on the road."
+   },
+   {
+    "seed": 370,
+    "known": "Non ho visto nessuno che conoscevo.",
+    "target": "I didn't see anyone that I knew."
+   },
+   {
+    "seed": 371,
+    "known": "Sono andato a vedere un film mercoledì.",
+    "target": "I went to see a film on Wednesday."
+   },
+   {
+    "seed": 372,
+    "known": "Hai visto cosa stava cercando di creare?",
+    "target": "Did you see what she was trying to create?"
+   },
+   {
+    "seed": 373,
+    "known": "Era bellissimo.",
+    "target": "It was beautiful."
+   },
+   {
+    "seed": 374,
+    "known": "Sì, pensavo che fosse molto bello.",
+    "target": "Yes I thought it was very beautiful."
+   },
+   {
+    "seed": 375,
+    "known": "No, non sapevo cosa stesse facendo.",
+    "target": "No I didn't know what she was doing."
+   },
+   {
+    "seed": 376,
+    "known": "Non sono andato da nessuna parte il mese scorso.",
+    "target": "I didn't go anywhere last month."
+   },
+   {
+    "seed": 377,
+    "known": "Sei andato da qualche parte nel mondo l'anno scorso?",
+    "target": "Did you go anywhere in the world last year?"
+   },
+   {
+    "seed": 378,
+    "known": "No, non avevo abbastanza soldi per le vacanze.",
+    "target": "No I didn't have enough money for holidays."
+   },
+   {
+    "seed": 379,
+    "known": "Sì, sono stato abbastanza fortunato da viaggiare in Africa.",
+    "target": "Yes I was lucky enough to travel to Africa."
+   },
+   {
+    "seed": 380,
+    "known": "Ho chiesto cosa voleva includere.",
+    "target": "I asked what she wanted to include."
+   },
+   {
+    "seed": 381,
+    "known": "Non ho chiesto se voleva seguirci.",
+    "target": "I didn't ask if he wanted to follow us."
+   },
+   {
+    "seed": 382,
+    "known": "Gli hai chiesto dove voleva metterlo?",
+    "target": "Did you ask where he wanted to put it?"
+   },
+   {
+    "seed": 383,
+    "known": "Sì, ha detto che voleva metterlo in giardino.",
+    "target": "Yes he said he wanted to put it in the garden."
+   },
+   {
+    "seed": 384,
+    "known": "Non potevo essere d'accordo con quello che ha detto un momento fa.",
+    "target": "I couldn't agree with what he said a moment ago."
+   },
+   {
+    "seed": 385,
+    "known": "Eri d'accordo con lei?",
+    "target": "Did you agree with her?"
+   },
+   {
+    "seed": 386,
+    "known": "Sì, ero d'accordo con lei.",
+    "target": "Yes I agreed with her."
+   },
+   {
+    "seed": 387,
+    "known": "No, non pensavo che avesse ragione.",
+    "target": "No I didn't think she was right."
+   },
+   {
+    "seed": 388,
+    "known": "Quella persona con cui lavori.",
+    "target": "That person you work with."
+   },
+   {
+    "seed": 389,
+    "known": "Quella persona là.",
+    "target": "That person over there."
+   },
+   {
+    "seed": 390,
+    "known": "Quello che è in piedi vicino all'ingresso.",
+    "target": "The one who is standing near the entrance."
+   },
+   {
+    "seed": 391,
+    "known": "Quello che sta camminando verso l'autobus.",
+    "target": "The one who is walking towards the bus."
+   },
+   {
+    "seed": 392,
+    "known": "Quel bambino con i capelli neri di fronte all'ufficio postale.",
+    "target": "That child with the black hair opposite the post office."
+   },
+   {
+    "seed": 393,
+    "known": "Quel ragazzo con la camicia verde.",
+    "target": "That boy with the green shirt."
+   },
+   {
+    "seed": 394,
+    "known": "Quella ragazza con il vestito giallo.",
+    "target": "That girl with the yellow dress."
+   },
+   {
+    "seed": 395,
+    "known": "Dobbiamo girare a sinistra al prossimo angolo.",
+    "target": "We need to turn left at the next corner."
+   },
+   {
+    "seed": 396,
+    "known": "Non abbiamo bisogno di alzarci finché tutti gli altri non sono pronti.",
+    "target": "We don't need to stand until everybody else is ready."
+   },
+   {
+    "seed": 397,
+    "known": "Dobbiamo prepararci presto?",
+    "target": "Do we need to get ready soon?"
+   },
+   {
+    "seed": 398,
+    "known": "Vogliamo diventare più pazienti con i nostri figli.",
+    "target": "We want to become more patient with our children."
+   },
+   {
+    "seed": 399,
+    "known": "Non vogliamo perdere la speranza.",
+    "target": "We don't want to lose hope."
+   },
+   {
+    "seed": 400,
+    "known": "Vogliamo mangiare qualcosa più tardi?",
+    "target": "Do we want to eat something later on?"
+   },
+   {
+    "seed": 401,
+    "known": "No, sarebbe meglio andare direttamente a casa.",
+    "target": "No it would be better to go straight home."
+   },
+   {
+    "seed": 402,
+    "known": "Sì, sarebbe bello fermarsi da qualche parte per mangiare.",
+    "target": "Yes it would be nice to stop somewhere for food."
+   },
+   {
+    "seed": 403,
+    "known": "Dovremmo restare in silenzio il più a lungo possibile.",
+    "target": "We should remain quiet for as long as possible."
+   },
+   {
+    "seed": 404,
+    "known": "Non dovremmo aspettarci di finire prima di giovedì.",
+    "target": "We shouldn't expect to finish before Thursday."
+   },
+   {
+    "seed": 405,
+    "known": "Dovremmo chiedere se dobbiamo prenotare?",
+    "target": "Should we ask if we have to book?"
+   },
+   {
+    "seed": 406,
+    "known": "No, sono sicuro che andrà bene.",
+    "target": "No I'm sure it will be okay."
+   },
+   {
+    "seed": 407,
+    "known": "Non dovremmo cercare di dare il buon esempio?",
+    "target": "Shouldn't we try to set a good example?"
+   },
+   {
+    "seed": 408,
+    "known": "Sì, è il modo migliore per creare una famiglia felice.",
+    "target": "Yes that's the best way to make a happy family."
+   },
+   {
+    "seed": 409,
+    "known": "No, non importa quello che facciamo.",
+    "target": "No it doesn't matter what we do."
+   },
+   {
+    "seed": 410,
+    "known": "Litigano ancora tra di loro.",
+    "target": "They still fight with each other."
+   },
+   {
+    "seed": 411,
+    "known": "Vorremmo prenotare un tavolo per quattro stasera.",
+    "target": "We would like to reserve a table for four tonight."
+   },
+   {
+    "seed": 412,
+    "known": "Non potevamo permettere loro di vincere tutto.",
+    "target": "We couldn't allow them to win everything."
+   },
+   {
+    "seed": 413,
+    "known": "Potremmo cadere se andiamo troppo vicino al bordo.",
+    "target": "We could fall if we go too close to the edge."
+   },
+   {
+    "seed": 414,
+    "known": "Potremmo avere una bottiglia di vino rosso per favore?",
+    "target": "Could we have a bottle of red wine please?"
+   },
+   {
+    "seed": 415,
+    "known": "Non sarebbe un problema a mio avviso.",
+    "target": "That wouldn't be a problem if you ask me."
+   },
+   {
+    "seed": 416,
+    "known": "Vogliono fare da guida l'anno prossimo.",
+    "target": "They want to lead the way next year."
+   },
+   {
+    "seed": 417,
+    "known": "Vogliono uccidere quelle formiche?",
+    "target": "Do they want to kill those ants?"
+   },
+   {
+    "seed": 418,
+    "known": "Devono servire la comunità.",
+    "target": "They need to serve the community."
+   },
+   {
+    "seed": 419,
+    "known": "Se vogliono che le persone li apprezzino.",
+    "target": "If they want people to like them."
+   },
+   {
+    "seed": 420,
+    "known": "Non hanno bisogno di chiedere quanti anni ha.",
+    "target": "They don't need to ask how old he is."
+   },
+   {
+    "seed": 421,
+    "known": "Perché sanno già che sta diventando debole.",
+    "target": "Because they already know he's getting weak."
+   },
+   {
+    "seed": 422,
+    "known": "Una domanda.",
+    "target": "A question."
+   },
+   {
+    "seed": 423,
+    "known": "Devono fare una domanda così ovvia?",
+    "target": "Do they need to ask such an obvious question?"
+   },
+   {
+    "seed": 424,
+    "known": "No, stanno sprecando il tempo di tutti.",
+    "target": "No they're wasting everybody's time."
+   },
+   {
+    "seed": 425,
+    "known": "Sì, devono assicurarsi di capire.",
+    "target": "Yes they need to make sure they understand."
+   },
+   {
+    "seed": 426,
+    "known": "Vorrebbero volersi bene ma sono infelici.",
+    "target": "They would like to love each other but they're unhappy."
+   },
+   {
+    "seed": 427,
+    "known": "Non vorrebbero che tu pensassi che si annoiano.",
+    "target": "They wouldn't like you to think that they're bored."
+   },
+   {
+    "seed": 428,
+    "known": "Vorrebbero venirci a trovare martedì?",
+    "target": "Would they like to visit us on Tuesday?"
+   },
+   {
+    "seed": 429,
+    "known": "Sì, sarebbe perfetto per loro.",
+    "target": "Yes that would be perfect for them."
+   },
+   {
+    "seed": 430,
+    "known": "No, non sarebbe possibile.",
+    "target": "No that wouldn't be possible."
+   },
+   {
+    "seed": 431,
+    "known": "Non sono ancora pronti ma saranno pronti presto.",
+    "target": "They're not ready yet but they'll be ready soon."
+   },
+   {
+    "seed": 432,
+    "known": "Potrebbero intendere che vogliono che tu chieda.",
+    "target": "They could mean that they want you to ask."
+   },
+   {
+    "seed": 433,
+    "known": "Non riuscivano a scoprire quando iniziava il film.",
+    "target": "They couldn't find out when the film started."
+   },
+   {
+    "seed": 434,
+    "known": "Potrebbero ridurre il numero di studenti che accettano?",
+    "target": "Could they cut the number of students they take?"
+   },
+   {
+    "seed": 435,
+    "known": "Sì, potrebbero se volessero.",
+    "target": "Yes they could if they wanted to."
+   },
+   {
+    "seed": 436,
+    "known": "No, c'è un numero minimo di cui hanno bisogno.",
+    "target": "No there's a minimum number they need."
+   },
+   {
+    "seed": 437,
+    "known": "Volevano raccogliere il più possibile per beneficenza.",
+    "target": "They wanted to raise as much as possible for charity."
+   },
+   {
+    "seed": 438,
+    "known": "Non volevano decidere cosa dovesse fare.",
+    "target": "They didn't want to decide what he should do."
+   },
+   {
+    "seed": 439,
+    "known": "Non vogliono morire.",
+    "target": "They don't want to die."
+   },
+   {
+    "seed": 440,
+    "known": "Vogliono viaggiare mentre sono ancora giovani.",
+    "target": "They want to travel while they're still young."
+   },
+   {
+    "seed": 441,
+    "known": "Un approccio.",
+    "target": "An approach."
+   },
+   {
+    "seed": 442,
+    "known": "Volevano sviluppare un nuovo approccio?",
+    "target": "Did they want to develop a new approach?"
+   },
+   {
+    "seed": 443,
+    "known": "No, volevano continuare a farlo nello stesso modo.",
+    "target": "No they wanted to keep doing it the same way."
+   },
+   {
+    "seed": 444,
+    "known": "Sì, pensavano che si potesse fare in modo più efficiente.",
+    "target": "Yes they thought it could be done more efficiently."
+   },
+   {
+    "seed": 445,
+    "known": "Riusciranno a portare quella valigia.",
+    "target": "They will be able to carry that suitcase."
+   },
+   {
+    "seed": 446,
+    "known": "Non riusciranno a rompere quella finestra.",
+    "target": "They won't be able to break that window."
+   },
+   {
+    "seed": 447,
+    "known": "Riusciranno a portarci a casa dopo il pasto?",
+    "target": "Will they be able to drive us home after the meal?"
+   },
+   {
+    "seed": 448,
+    "known": "Sì, saranno felici di aiutare.",
+    "target": "Yes they'll be happy to help."
+   },
+   {
+    "seed": 449,
+    "known": "Hanno detto che erano quasi pronti.",
+    "target": "They said that they were almost ready."
+   },
+   {
+    "seed": 450,
+    "known": "No, devono prendere il treno da soli.",
+    "target": "No they have to catch the train themselves."
+   },
+   {
+    "seed": 451,
+    "known": "Hanno detto cosa volevano fare.",
+    "target": "They said what they wanted to do."
+   },
+   {
+    "seed": 452,
+    "known": "Non hanno detto cosa volevano fare.",
+    "target": "They didn't say what they wanted to do."
+   },
+   {
+    "seed": 453,
+    "known": "Hanno detto chi hanno visto ieri sera?",
+    "target": "Did they say who they saw last night?"
+   },
+   {
+    "seed": 454,
+    "known": "I nostri amici sono venuti a trovarci verso le sei.",
+    "target": "Our friends came round at about six o'clock."
+   },
+   {
+    "seed": 455,
+    "known": "Dovevamo andarcene perché i bambini erano stanchi.",
+    "target": "We had to leave because the children were tired."
+   },
+   {
+    "seed": 456,
+    "known": "Potrebbe essere lì ma non è molto probabile.",
+    "target": "He might be there but it's not very likely."
+   },
+   {
+    "seed": 457,
+    "known": "Parte del problema è il numero di aree diverse.",
+    "target": "Part of the problem is the number of different areas."
+   },
+   {
+    "seed": 458,
+    "known": "Era tutto molto più facile in passato.",
+    "target": "It was all much easier in the past."
+   },
+   {
+    "seed": 459,
+    "known": "Non era di fronte al cartello blu.",
+    "target": "It wasn't in front of the blue sign."
+   },
+   {
+    "seed": 460,
+    "known": "Voglio trovare un negozio vicino all'hotel.",
+    "target": "I want to find a shop near the hotel."
+   },
+   {
+    "seed": 461,
+    "known": "Un negozio dove posso comprare delle cartoline.",
+    "target": "A shop where I can buy some postcards."
+   },
+   {
+    "seed": 462,
+    "known": "Mio nonno ha combattuto in Italia durante la guerra.",
+    "target": "My grandfather fought in Italy during the war."
+   },
+   {
+    "seed": 463,
+    "known": "Il numero della mia camera.",
+    "target": "My room number."
+   },
+   {
+    "seed": 464,
+    "known": "Le ho detto il numero della mia camera una volta ma lo ha dimenticato.",
+    "target": "I told her my room number once but she forgot it."
+   },
+   {
+    "seed": 465,
+    "known": "La prossima volta le chiederò come si chiama.",
+    "target": "Next time I will ask her what her name is."
+   },
+   {
+    "seed": 466,
+    "known": "Lasciami lanciarlo oltre il muro.",
+    "target": "Let me throw it over the wall."
+   },
+   {
+    "seed": 467,
+    "known": "È accanto al parcheggio.",
+    "target": "It's next to the car park."
+   },
+   {
+    "seed": 468,
+    "known": "È un mondo grande.",
+    "target": "It's a big world."
+   },
+   {
+    "seed": 469,
+    "known": "Ma questo non vuol dire che non possiamo cambiarlo.",
+    "target": "But that doesn't mean we can't change it."
+   },
+   {
+    "seed": 470,
+    "known": "Quanto in alto vuoi salire prima che ci fermiamo?",
+    "target": "How high do you want to climb before we stop?"
+   },
+   {
+    "seed": 471,
+    "known": "Vuoi fermarti per riposare?",
+    "target": "Do you want to stop for a rest?"
+   },
+   {
+    "seed": 472,
+    "known": "Parte del problema è che non conosciamo i fatti.",
+    "target": "Part of the problem is that we don't know the facts."
+   },
+   {
+    "seed": 473,
+    "known": "Non lo voglio.",
+    "target": "I don't want it."
+   },
+   {
+    "seed": 474,
+    "known": "Non lo voglio nemmeno come offerta gratuita.",
+    "target": "I don't even want it as a free offer."
+   },
+   {
+    "seed": 475,
+    "known": "Ci sono molte ragioni per considerare di aspettare.",
+    "target": "There are many reasons to consider waiting."
+   },
+   {
+    "seed": 476,
+    "known": "Sto aspettando la fine del secondo tempo.",
+    "target": "I'm waiting for the end of the second half."
+   },
+   {
+    "seed": 477,
+    "known": "È malato dal secondo giorno delle vacanze.",
+    "target": "He's been sick since the second day of the holidays."
+   },
+   {
+    "seed": 478,
+    "known": "Ha un cuore così gentile.",
+    "target": "She has such a kind heart."
+   },
+   {
+    "seed": 479,
+    "known": "È il minimo che potessi fare.",
+    "target": "It's the least I could do."
+   },
+   {
+    "seed": 480,
+    "known": "Qualunque cosa dica non è lontano adesso.",
+    "target": "Whatever he says it's not far ahead now."
+   },
+   {
+    "seed": 481,
+    "known": "È l'unica vera speranza che ci rimane.",
+    "target": "It's the only real hope we have left."
+   },
+   {
+    "seed": 482,
+    "known": "L'unica vera speranza è che non facciano sul serio.",
+    "target": "The only real hope is that they're not serious."
+   },
+   {
+    "seed": 483,
+    "known": "La vita non è facile ma non è fatta per essere facile.",
+    "target": "Life isn't easy but it's not meant to be easy."
+   },
+   {
+    "seed": 484,
+    "known": "È fatta per essere una sfida.",
+    "target": "It's meant to be a challenge."
+   },
+   {
+    "seed": 485,
+    "known": "Niente mi renderebbe più felice che andarmene.",
+    "target": "Nothing would make me happier than to get away."
+   },
+   {
+    "seed": 486,
+    "known": "Penso che i tuoi occhi siano bellissimi.",
+    "target": "I think your eyes are beautiful."
+   },
+   {
+    "seed": 487,
+    "known": "È sotto il ponte.",
+    "target": "It's under the bridge."
+   },
+   {
+    "seed": 488,
+    "known": "È dall'altra parte di quella linea gialla.",
+    "target": "It's on the other side of that yellow line."
+   },
+   {
+    "seed": 489,
+    "known": "Se non mi fai una tazza di caffè forte adesso.",
+    "target": "If you don't make me a strong cup of coffee right now."
+   },
+   {
+    "seed": 490,
+    "known": "Allora non mi fiderò mai più di nessuno.",
+    "target": "Then I will never trust anyone ever again."
+   },
+   {
+    "seed": 491,
+    "known": "Amo il modo in cui cerchi di aiutare.",
+    "target": "I love the way you try to help."
+   },
+   {
+    "seed": 492,
+    "known": "Quale di quei posti pensi sia il più interessante?",
+    "target": "Which of those places do you think is the most interesting?"
+   },
+   {
+    "seed": 493,
+    "known": "Cosa verrà dopo?",
+    "target": "What's going to come next?"
+   },
+   {
+    "seed": 494,
+    "known": "Cosa succede dopo la prima parte dello spettacolo?",
+    "target": "What happens after the first part of the show?"
+   },
+   {
+    "seed": 495,
+    "known": "Quando conta.",
+    "target": "When it matters."
+   },
+   {
+    "seed": 496,
+    "known": "Non ho intenzione di perdere quando conta davvero.",
+    "target": "I'm not planning to lose when it really matters."
+   },
+   {
+    "seed": 497,
+    "known": "Sembra che tu abbia bisogno di dormire.",
+    "target": "That sounds as though you need to get some sleep."
+   },
+   {
+    "seed": 498,
+    "known": "È in piedi da solo là dentro l'ingresso.",
+    "target": "He's standing alone over there inside the entrance."
+   },
+   {
+    "seed": 499,
+    "known": "Forse dovremmo aprire la porta e chiudere la finestra.",
+    "target": "Maybe we should open the door and close the window."
+   },
+   {
+    "seed": 500,
+    "known": "Perché non vuoi sederti tra le due ragazze?",
+    "target": "Why don't you want to sit between the two girls?"
+   },
+   {
+    "seed": 501,
+    "known": "Se solo potessi fidarmi di te per giocare insieme senza litigare.",
+    "target": "If only I could trust you to play together without arguing."
+   },
+   {
+    "seed": 502,
+    "known": "Si è quasi persa perché ha girato a sinistra invece che a destra.",
+    "target": "She almost got lost because she turned left instead of right."
+   },
+   {
+    "seed": 503,
+    "known": "Odio creare problemi ma quello è mio.",
+    "target": "I hate making trouble but that one's mine."
+   },
+   {
+    "seed": 504,
+    "known": "Correrò attraverso l'erba.",
+    "target": "I'm going to run across the grass."
+   },
+   {
+    "seed": 505,
+    "known": "Per non essere lasciato indietro.",
+    "target": "So that I don't get left behind."
+   },
+   {
+    "seed": 506,
+    "known": "Abitavo da queste parti anni fa prima che ci trasferissimo.",
+    "target": "I used to live around here years ago before we moved."
+   },
+   {
+    "seed": 507,
+    "known": "Ci siamo trasferiti in città.",
+    "target": "We moved to the city."
+   },
+   {
+    "seed": 508,
+    "known": "Non ha senso preoccuparsi di come pagherai.",
+    "target": "There's no point worrying about how you're going to pay."
+   },
+   {
+    "seed": 509,
+    "known": "Ho sentito che pagherai per un nuovo letto.",
+    "target": "I heard that you're going to pay for a new bed."
+   },
+   {
+    "seed": 510,
+    "known": "È andata a cercare un posto sicuro dove parcheggiare la macchina.",
+    "target": "She's gone to look for somewhere safe to park the car."
+   },
+   {
+    "seed": 511,
+    "known": "La notizia ha impiegato diverse ore per raggiungere tutti in ufficio.",
+    "target": "The news took several hours to reach everyone in the office."
+   },
+   {
+    "seed": 512,
+    "known": "Puoi tenere la porta aperta mentre vado a prendere le chiavi?",
+    "target": "Can you hold the door open while I fetch the keys?"
+   },
+   {
+    "seed": 513,
+    "known": "Fa più male quando muovo la testa su e giù.",
+    "target": "It hurts most when I move my head up and down."
+   },
+   {
+    "seed": 514,
+    "known": "Ho trovato la casa perfetta il primo giorno.",
+    "target": "I found the perfect house on the first day."
+   },
+   {
+    "seed": 515,
+    "known": "Il primo giorno del nuovo anno.",
+    "target": "On the first day of the new year."
+   },
+   {
+    "seed": 516,
+    "known": "Sono venuti entrambi da soli.",
+    "target": "They both came on their own."
+   },
+   {
+    "seed": 517,
+    "known": "Ma sono andati via insieme.",
+    "target": "But they left with each other."
+   },
+   {
+    "seed": 518,
+    "known": "Non riuscivo a immaginare me stesso con esattamente lo stesso problema.",
+    "target": "I couldn't imagine myself having exactly the same problem."
+   },
+   {
+    "seed": 519,
+    "known": "Non ho ancora visto il loro bambino nuovo.",
+    "target": "I haven't seen their new baby yet."
+   },
+   {
+    "seed": 520,
+    "known": "Potrebbe essere successo all'intera famiglia.",
+    "target": "It might have happened to the whole family."
+   },
+   {
+    "seed": 521,
+    "known": "Ho paura che dimenticherai perché dovevamo restare qui.",
+    "target": "I'm afraid that you'll forget why we needed to stay here."
+   },
+   {
+    "seed": 522,
+    "known": "Siamo d'accordo che è stato stupido dire la verità.",
+    "target": "Let's agree that it was stupid to tell the truth."
+   },
+   {
+    "seed": 523,
+    "known": "Invece di dare una scusa.",
+    "target": "Instead of giving an excuse."
+   },
+   {
+    "seed": 524,
+    "known": "Ti richiamerò in tre o quattro minuti.",
+    "target": "I'll call you back in three or four minutes."
+   },
+   {
+    "seed": 525,
+    "known": "Per controllare se sei riuscito a finire.",
+    "target": "To check if you've been able to finish."
+   },
+   {
+    "seed": 526,
+    "known": "Faccio fatica a credere che non riesci a indovinare.",
+    "target": "I'm finding it hard to believe that you can't guess."
+   },
+   {
+    "seed": 527,
+    "known": "Indovina chi mi ha raccontato quella storia divertente.",
+    "target": "Guess who told me that funny story."
+   },
+   {
+    "seed": 528,
+    "known": "Probabilmente dovrei tenere quelle cose in un'altra stanza.",
+    "target": "I'm probably supposed to keep those things in another room."
+   },
+   {
+    "seed": 529,
+    "known": "Potete alzare tutti la mano?",
+    "target": "Can you all put your hands up?"
+   },
+   {
+    "seed": 530,
+    "known": "Così posso contarle",
+    "target": "So I can count them"
+   },
+   {
+    "seed": 531,
+    "known": "Non è vero che chiunque può vincere la partita.",
+    "target": "It isn't true that anyone can win the game."
+   },
+   {
+    "seed": 532,
+    "known": "A meno che non siano fortunati.",
+    "target": "Unless they're lucky."
+   },
+   {
+    "seed": 533,
+    "known": "Non ascolterà ogni parola che dici.",
+    "target": "She won't listen to every word you say."
+   },
+   {
+    "seed": 534,
+    "known": "Non usciamo con questo tempo orribile.",
+    "target": "Let's not go outside in this dreadful weather."
+   },
+   {
+    "seed": 535,
+    "known": "Ha fatto una promessa che non avrebbe scelto il lavoro sbagliato.",
+    "target": "He made a promise that he wouldn't choose the wrong job."
+   },
+   {
+    "seed": 536,
+    "known": "Pensavo che essere pazzo fosse una cosa brutta.",
+    "target": "I used to think that being crazy was bad."
+   },
+   {
+    "seed": 537,
+    "known": "Ma avevo torto.",
+    "target": "But I was wrong."
+   },
+   {
+    "seed": 538,
+    "known": "Non voglio sembrare come se non mi importasse.",
+    "target": "I don't want to seem as though I don't care."
+   },
+   {
+    "seed": 539,
+    "known": "Ma si sta facendo tardi.",
+    "target": "But it's getting late."
+   },
+   {
+    "seed": 540,
+    "known": "Non mi dispiace se vuoi andare via senza la macchina.",
+    "target": "I don't mind if you want to leave without the car."
+   },
+   {
+    "seed": 541,
+    "known": "È una buona idea cercare di respirare lentamente.",
+    "target": "It's a good idea to try and breathe slowly."
+   },
+   {
+    "seed": 542,
+    "known": "Ogni volta che ti senti arrabbiato.",
+    "target": "Whenever you feel angry."
+   },
+   {
+    "seed": 543,
+    "known": "Lei aveva ragione.",
+    "target": "She was right."
+   },
+   {
+    "seed": 544,
+    "known": "Chiunque abbia detto che sarebbe stato difficile aveva assolutamente ragione.",
+    "target": "Whoever said it would be difficult was absolutely right."
+   },
+   {
+    "seed": 545,
+    "known": "È il tuo turno di portare i vestiti puliti di sopra.",
+    "target": "It's your turn to take the clean clothes upstairs."
+   },
+   {
+    "seed": 546,
+    "known": "Il cane è sporco e bagnato.",
+    "target": "The dog is dirty and wet."
+   },
+   {
+    "seed": 547,
+    "known": "Perché ha giocato nel fango.",
+    "target": "Because he has been playing in the mud."
+   },
+   {
+    "seed": 548,
+    "known": "Mi sento triste in questo momento.",
+    "target": "I am feeling sad at the moment."
+   },
+   {
+    "seed": 549,
+    "known": "Perché devo stare in silenzio.",
+    "target": "Because I have got to be quiet."
+   },
+   {
+    "seed": 550,
+    "known": "La fine del villaggio.",
+    "target": "The end of the village."
+   },
+   {
+    "seed": 551,
+    "known": "La chiesa è brutta.",
+    "target": "The church is ugly."
+   },
+   {
+    "seed": 552,
+    "known": "La chiesa all'altra estremità del villaggio è brutta.",
+    "target": "The church at the other end of the village is ugly."
+   },
+   {
+    "seed": 553,
+    "known": "Penso che la piccola chiesa sia molto brutta.",
+    "target": "I think the small church is very ugly."
+   },
+   {
+    "seed": 554,
+    "known": "Questo asciugamano non è asciutto.",
+    "target": "This towel isn't dry."
+   },
+   {
+    "seed": 555,
+    "known": "E sono troppo stanco per andare a prenderne uno nuovo.",
+    "target": "And I'm too tired to fetch a new one."
+   },
+   {
+    "seed": 556,
+    "known": "Suonano musica a tarda notte.",
+    "target": "They play music late at night."
+   },
+   {
+    "seed": 557,
+    "known": "Vorrei che non suonassero una musica così alta.",
+    "target": "I wish they wouldn't play such loud music."
+   },
+   {
+    "seed": 558,
+    "known": "È così tardi di notte.",
+    "target": "It's so late at night."
+   },
+   {
+    "seed": 559,
+    "known": "Hai trovato il sentiero attraverso il bosco?",
+    "target": "Have you found the path through the wood?"
+   },
+   {
+    "seed": 560,
+    "known": "Scende fino alla spiaggia",
+    "target": "It goes down to the beach"
+   },
+   {
+    "seed": 561,
+    "known": "Non mi importa se è una macchina veloce.",
+    "target": "I don't care if it's a fast car."
+   },
+   {
+    "seed": 562,
+    "known": "Voglio solo arrivarci in sicurezza.",
+    "target": "I just want to get there safely."
+   },
+   {
+    "seed": 563,
+    "known": "Non sarei riuscito ad andare avanti più a lungo.",
+    "target": "I wouldn't have been able to keep going any longer."
+   },
+   {
+    "seed": 564,
+    "known": "Non sarei riuscito senza il tuo aiuto.",
+    "target": "I wouldn't have been able to without your help."
+   },
+   {
+    "seed": 565,
+    "known": "Ci avrei pensato con più attenzione.",
+    "target": "I'd have thought about it more carefully."
+   },
+   {
+    "seed": 566,
+    "known": "Avrei pensato di più se fosse stata la mia scelta.",
+    "target": "I'd have thought more if it had been my choice."
+   },
+   {
+    "seed": 567,
+    "known": "È stato bello passare del tempo all'aperto a guardare i bambini giocare.",
+    "target": "It's been lovely spending time outdoors watching the children play."
+   },
+   {
+    "seed": 568,
+    "known": "Mi aspetto di vedere un miglioramento la prossima volta che ci incontriamo.",
+    "target": "I'm expecting to see an improvement next time we meet."
+   },
+   {
+    "seed": 569,
+    "known": "Hai deciso quanto sei disposto a pagare?",
+    "target": "Have you decided how much you are willing to pay?"
+   },
+   {
+    "seed": 570,
+    "known": "Quanto sei disposto a pagare per il tuo biglietto?",
+    "target": "How much are you willing to pay for your ticket?"
+   },
+   {
+    "seed": 571,
+    "known": "Non sono convinto che sarebbe una buona idea.",
+    "target": "I'm not convinced that would be a very good idea."
+   },
+   {
+    "seed": 572,
+    "known": "Hai dimenticato cosa è successo l'ultima volta che ci hanno visitato?",
+    "target": "Have you forgotten what happened the last time they visited us?"
+   },
+   {
+    "seed": 573,
+    "known": "È il tipo di cosa che rende le vacanze molto speciali.",
+    "target": "It's the kind of thing that makes the holidays very special."
+   },
+   {
+    "seed": 574,
+    "known": "Le vacanze sono molto speciali per tutti.",
+    "target": "The holidays are very special for everyone."
+   },
+   {
+    "seed": 575,
+    "known": "È stato sconvolgente.",
+    "target": "It's been upsetting."
+   },
+   {
+    "seed": 576,
+    "known": "È stato molto doloroso aspettare.",
+    "target": "It has been very upsetting waiting."
+   },
+   {
+    "seed": 577,
+    "known": "Stavamo aspettando le notizie dall'ospedale.",
+    "target": "We've been waiting for the news from the hospital."
+   },
+   {
+    "seed": 578,
+    "known": "Da qualche parte più calda.",
+    "target": "Somewhere warmer."
+   },
+   {
+    "seed": 579,
+    "known": "Abbiamo spesso cercato.",
+    "target": "We've often tried."
+   },
+   {
+    "seed": 580,
+    "known": "Abbiamo spesso voluto portare i bambini da qualche parte un po' più calda.",
+    "target": "We've often wanted to take the children somewhere a little warmer."
+   },
+   {
+    "seed": 581,
+    "known": "Gli piacerebbe sapere un po' di più su com'è.",
+    "target": "He'd like to know a little more about what it's like."
+   },
+   {
+    "seed": 582,
+    "known": "Com'è crescere qui?",
+    "target": "What's it like to grow up here?"
+   },
+   {
+    "seed": 583,
+    "known": "Com'è in questa parte del mondo?",
+    "target": "What's it like in this part of the world?"
+   },
+   {
+    "seed": 584,
+    "known": "Com'è svegliarsi ogni mattina e vedere le montagne?",
+    "target": "What's it like to wake up every morning and see the mountains?"
+   },
+   {
+    "seed": 585,
+    "known": "Riesco a vedere le montagne dalla finestra della mia camera da letto.",
+    "target": "I can see the mountains out of my bedroom window."
+   },
+   {
+    "seed": 586,
+    "known": "Voglio venti uova sode.",
+    "target": "I want twenty boiled eggs."
+   },
+   {
+    "seed": 587,
+    "known": "Insisteva che mangiassimo uova a cena.",
+    "target": "She used to insist that we had eggs for supper."
+   },
+   {
+    "seed": 588,
+    "known": "Così volevo crescere e lasciare casa.",
+    "target": "So I wanted to grow up and leave home."
+   },
+   {
+    "seed": 589,
+    "known": "Mi ha detto che aveva appena visto l'ultimo autobus.",
+    "target": "She told me she'd just seen the last bus."
+   },
+   {
+    "seed": 590,
+    "known": "Ho visto l'ultimo autobus che partiva dalla stazione.",
+    "target": "I saw the last bus leaving the station."
+   },
+   {
+    "seed": 591,
+    "known": "Mi ha seguito fino ai negozi.",
+    "target": "She followed me down to the shops."
+   },
+   {
+    "seed": 592,
+    "known": "E lungo la strada principale.",
+    "target": "And along the main road."
+   },
+   {
+    "seed": 593,
+    "known": "Per quanto argomentassi dovevo comunque condividere.",
+    "target": "However much I argued I still had to share."
+   },
+   {
+    "seed": 594,
+    "known": "Dovevo condividere i miei giocattoli con mia sorella.",
+    "target": "I had to share my toys with my sister."
+   },
+   {
+    "seed": 595,
+    "known": "Ho bisogno di sdraiarmi in giardino.",
+    "target": "I need to lie down in the garden."
+   },
+   {
+    "seed": 596,
+    "known": "E ho bisogno di chiudere gli occhi per un po'.",
+    "target": "And I need to close my eyes for a while."
+   },
+   {
+    "seed": 597,
+    "known": "Sospetto che abbia sentito cento storie al riguardo.",
+    "target": "I suspect that he's heard a hundred stories about it."
+   },
+   {
+    "seed": 598,
+    "known": "Ha sentito mille storie su quello che stavano facendo.",
+    "target": "He's heard a thousand stories about what they were doing."
+   },
+   {
+    "seed": 599,
+    "known": "Sarei stato felice di guidare se me lo avessi detto.",
+    "target": "I'd have been happy to drive if you'd told me."
+   },
+   {
+    "seed": 600,
+    "known": "Avrei guidato se mi avessi detto quanto eri stanco.",
+    "target": "I'd have driven if you'd told me how tired you were."
+   },
+   {
+    "seed": 601,
+    "known": "Stavamo parlando di come è iniziato tutto.",
+    "target": "We were talking about how it all started."
+   },
+   {
+    "seed": 602,
+    "known": "Di come è iniziato in primo luogo.",
+    "target": "How it started in the first place."
+   },
+   {
+    "seed": 603,
+    "known": "All'epoca non avevamo un posto dove vivere.",
+    "target": "We didn't have anywhere to live at the time."
+   },
+   {
+    "seed": 604,
+    "known": "Si è offerta di farci stare da lei.",
+    "target": "She offered to let us stay with her."
+   },
+   {
+    "seed": 605,
+    "known": "Perché avevamo bisogno di aiuto.",
+    "target": "Because we needed help."
+   },
+   {
+    "seed": 606,
+    "known": "Se allora avessi saputo quello che so adesso avrei aspettato.",
+    "target": "If I'd known then what I know now I'd have waited."
+   },
+   {
+    "seed": 607,
+    "known": "Se lo avessi saputo avrei fatto le cose diversamente.",
+    "target": "If I'd known I'd have done things differently."
+   },
+   {
+    "seed": 608,
+    "known": "Sarebbe stata la cosa sensata da fare.",
+    "target": "It would have been the sensible thing to do."
+   },
+   {
+    "seed": 609,
+    "known": "La cosa sensata da fare sarebbe stata chiedere.",
+    "target": "The sensible thing to do would have been to ask."
+   },
+   {
+    "seed": 610,
+    "known": "Ha bisogno di cercare lavoro.",
+    "target": "He needs to look for work."
+   },
+   {
+    "seed": 611,
+    "known": "Sarei stato pronto a cercare da qualche altra parte.",
+    "target": "I would have been ready to look somewhere else."
+   },
+   {
+    "seed": 612,
+    "known": "Avremmo comprato qualcosa.",
+    "target": "We would have bought something."
+   },
+   {
+    "seed": 613,
+    "known": "Probabilmente avremmo comprato una casa lì.",
+    "target": "We probably would have bought a house there."
+   },
+   {
+    "seed": 614,
+    "known": "È vicino a dove vive la tua famiglia.",
+    "target": "It's near where your family live."
+   },
+   {
+    "seed": 615,
+    "known": "Pensavo che fossi molto coraggioso a dire quello.",
+    "target": "I thought you were very brave to say that."
+   },
+   {
+    "seed": 616,
+    "known": "Eri molto coraggioso a dire che la pensavi così.",
+    "target": "You were very brave to say you thought that."
+   },
+   {
+    "seed": 617,
+    "known": "Pensavi che fosse un errore.",
+    "target": "You thought that it was a mistake."
+   },
+   {
+    "seed": 618,
+    "known": "Non sembra molto tempo.",
+    "target": "It doesn't feel like a long time."
+   },
+   {
+    "seed": 619,
+    "known": "È tanto tempo che non ci vediamo.",
+    "target": "It's a long time since we saw each other."
+   },
+   {
+    "seed": 620,
+    "known": "È moltissimo tempo dall'ultima volta che ci siamo visti.",
+    "target": "It's a very long time since we last saw each other."
+   },
+   {
+    "seed": 621,
+    "known": "Non avrei osato dirle che era rotto.",
+    "target": "I wouldn't have dared to tell her that it was broken."
+   },
+   {
+    "seed": 622,
+    "known": "Sapevo che i bambini lo avevano rotto.",
+    "target": "I knew that the children had broken it."
+   },
+   {
+    "seed": 623,
+    "known": "Vuoi una tazza di caffè o tè?",
+    "target": "Do you want a cup of coffee or tea?"
+   },
+   {
+    "seed": 624,
+    "known": "Sì, sarebbe fantastico, grazie.",
+    "target": "Yes, that would be great, please."
+   },
+   {
+    "seed": 625,
+    "known": "Vuoi qualcosa da bere?",
+    "target": "Do you want something to drink?"
+   },
+   {
+    "seed": 626,
+    "known": "No, non ho sete, grazie.",
+    "target": "No, I'm not thirsty, thank you."
+   },
+   {
+    "seed": 627,
+    "known": "Il tuo caffè è pronto.",
+    "target": "Your coffee is ready."
+   },
+   {
+    "seed": 628,
+    "known": "Ti piace il tè?",
+    "target": "Do you like tea?"
+   },
+   {
+    "seed": 629,
+    "known": "Mi piace con il latte ma senza zucchero.",
+    "target": "I like it with milk but without sugar."
+   },
+   {
+    "seed": 630,
+    "known": "Posso avere qualcosa da bere per favore?",
+    "target": "Can I have something to drink please?"
+   },
+   {
+    "seed": 631,
+    "known": "Cosa vorresti?",
+    "target": "What would you like?"
+   },
+   {
+    "seed": 632,
+    "known": "Un bicchiere d'acqua.",
+    "target": "A glass of water."
+   },
+   {
+    "seed": 633,
+    "known": "Un bicchiere grande d'acqua andrebbe bene.",
+    "target": "A large glass of water would be fine."
+   },
+   {
+    "seed": 634,
+    "known": "Vorrei uno di quelli.",
+    "target": "I'd like one of those."
+   },
+   {
+    "seed": 635,
+    "known": "Quella è la borsa di Jane.",
+    "target": "That is Jane's bag."
+   },
+   {
+    "seed": 636,
+    "known": "Penso che quella sia la borsa di Jane.",
+    "target": "I think that that is Jane's bag."
+   },
+   {
+    "seed": 637,
+    "known": "Dov'è la sua borsa?",
+    "target": "Where is her bag?"
+   },
+   {
+    "seed": 638,
+    "known": "Sto cercando di pensare.",
+    "target": "I'm trying to think."
+   },
+   {
+    "seed": 639,
+    "known": "con lei signore",
+    "target": "with you sir"
+   },
+   {
+    "seed": 640,
+    "known": "È quello rosso.",
+    "target": "It's the red one."
+   },
+   {
+    "seed": 641,
+    "known": "Penso che sia quello rosso su quella sedia.",
+    "target": "I think that it's the red one on that chair."
+   },
+   {
+    "seed": 642,
+    "known": "come si sente signora?",
+    "target": "how do you feel madam?"
+   },
+   {
+    "seed": 643,
+    "known": "Vuole signore",
+    "target": "Do you want sir"
+   },
+   {
+    "seed": 644,
+    "known": "Potrebbe dirlo signore?",
+    "target": "Could you say that sir?"
+   },
+   {
+    "seed": 645,
+    "known": "Posso aiutarla signora",
+    "target": "I can help you madam"
+   },
+   {
+    "seed": 646,
+    "known": "Sta facendo qualcosa signore.",
+    "target": "You're doing something sir."
+   },
+   {
+    "seed": 647,
+    "known": "Lo parla signora",
+    "target": "You speak it madam"
+   },
+   {
+    "seed": 648,
+    "known": "quello che ha detto signora",
+    "target": "what you said madam"
+   },
+   {
+    "seed": 649,
+    "known": "È pronto signore?",
+    "target": "Are you ready sir?"
+   },
+   {
+    "seed": 650,
+    "known": "Vuole andare signora?",
+    "target": "Do you want to go madam?"
+   },
+   {
+    "seed": 651,
+    "known": "Cosa ne pensa signora?",
+    "target": "What do you think madam?"
+   },
+   {
+    "seed": 652,
+    "known": "Di cosa ha bisogno signore?",
+    "target": "What do you need sir?"
+   },
+   {
+    "seed": 653,
+    "known": "Le dispiace signora?",
+    "target": "Do you mind madam?"
+   },
+   {
+    "seed": 654,
+    "known": "Non sono sicuro se riesco ad aiutarla, signore.",
+    "target": "I'm not sure if I can help you, sir."
+   },
+   {
+    "seed": 655,
+    "known": "Penso che stia andando molto bene, signora.",
+    "target": "I think that you're doing very well, madam."
+   },
+   {
+    "seed": 656,
+    "known": "con tutti voi",
+    "target": "with you all"
+   },
+   {
+    "seed": 657,
+    "known": "come vi sentite tutti?",
+    "target": "how do you all feel?"
+   },
+   {
+    "seed": 658,
+    "known": "Volete tutti?",
+    "target": "Do you all want?"
+   },
+   {
+    "seed": 659,
+    "known": "Potreste dirlo tutti",
+    "target": "Could you all say that"
+   },
+   {
+    "seed": 660,
+    "known": "Posso aiutarvi tutti",
+    "target": "I can help you all"
+   },
+   {
+    "seed": 661,
+    "known": "state tutti facendo qualcosa",
+    "target": "you're all doing something"
+   },
+   {
+    "seed": 662,
+    "known": "lo parlate tutti",
+    "target": "you all speak it"
+   },
+   {
+    "seed": 663,
+    "known": "quello che avete detto tutti",
+    "target": "what you all said"
+   },
+   {
+    "seed": 664,
+    "known": "Siete tutti pronti?",
+    "target": "Are you all ready?"
+   },
+   {
+    "seed": 665,
+    "known": "Volete andare tutti?",
+    "target": "Do you all want to go?"
+   },
+   {
+    "seed": 666,
+    "known": "Cosa pensate tutti?",
+    "target": "What do you all think?"
+   },
+   {
+    "seed": 667,
+    "known": "Vi dispiace a tutti?",
+    "target": "Do you all mind?"
+   },
+   {
+    "seed": 668,
+    "known": "Spero che riusciate ad andare tutti",
+    "target": "I hope you'll all be able to go"
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 305,
+    "known": "Donna.",
+    "target": "Woman."
+   }
+  ]
+ },
+ "counts": {
+  "planned": 41,
+  "variant_form": 8,
+  "variant_zut": 12,
+  "covered": 7,
+  "no_home": 4,
+  "not_built": 366,
+  "lego_is_seed": 1
+ }
+}

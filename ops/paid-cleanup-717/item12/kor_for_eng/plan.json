@@ -1,0 +1,6994 @@
+{
+ "course": "kor_for_eng",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:31:02.572Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 1,
+   "id": "S0001L04U06",
+   "lego": "S0001L04",
+   "known": "I want to speak Korean with you now",
+   "target": "지금 같이 한국어로 말하고 싶어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0001L04U06",
+      "seed_number": 1,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "I want to speak Korean with you now",
+      "target_text": "지금 같이 한국어로 말하고 싶어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 1,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 8,
+      "lego_position": "middle",
+      "target_text_roman": "ji-geum ga-chi han-gu-geo-ro mal-ha-go si-peo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0001L04U06",
+     "slot": "known",
+     "audio_id": "009608dd-3aa2-4988-a2b7-69ccdad7b487"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0001L04U06",
+     "slot": "target1",
+     "audio_id": "6921d9f3-322f-46a7-ac12-0065c0b2a1a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0001L04U06",
+     "slot": "target2",
+     "audio_id": "f9f265c8-55a3-48df-93cd-ff6458489797"
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "id": "S0009L02U06",
+   "lego": "S0009L02",
+   "known": "I speak a little Korean now",
+   "target": "지금 한국어를 조금 말해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0009L02U06",
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "I speak a little Korean now",
+      "target_text": "지금 한국어를 조금 말해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 9,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 6,
+      "lego_position": "middle",
+      "target_text_roman": "ji-geum han-gu-geo-reul jo-geum mal-hae-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0009L02U06",
+     "slot": "known",
+     "audio_id": "2bd58eb5-81fb-4cd0-80c7-4af22ba0ac6a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0009L02U06",
+     "slot": "target1",
+     "audio_id": "ae2dd459-aa8d-48f6-b9cc-b704551c3444"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0009L02U06",
+     "slot": "target2",
+     "audio_id": "e3166b4d-b831-457a-bd35-4a5982c3727a"
+    }
+   ]
+  },
+  {
+   "seed": 26,
+   "id": "S0026L02U09",
+   "lego": "S0026L02",
+   "known": "I like feeling as if I'm nearly ready to go",
+   "target": "갈 준비가 거의 된 것 같은 느낌이 좋아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0026L02U09",
+      "seed_number": 26,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "I like feeling as if I'm nearly ready to go",
+      "target_text": "갈 준비가 거의 된 것 같은 느낌이 좋아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 26,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 10,
+      "lego_position": "start",
+      "target_text_roman": "gal jun-bi-ga geo-ui doen got ga-teun neuk-kkim-i jo-a-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0026L02U09",
+     "slot": "known",
+     "audio_id": "269db71a-a82a-4b9b-bce5-7388e5d562c9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0026L02U09",
+     "slot": "target1",
+     "audio_id": "9945b9db-15eb-4a56-8ca3-83869c7587ad"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0026L02U09",
+     "slot": "target2",
+     "audio_id": "d59e07ec-efe8-4b09-8bb6-1a8aa78743b3"
+    }
+   ]
+  },
+  {
+   "seed": 27,
+   "id": "S0027L03U06",
+   "lego": "S0027L03",
+   "known": "I don't like taking too much time to answer",
+   "target": "대답하는 데 너무 오래 걸리는 게 싫어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "대답하는 데 너무 오래 걸리는 게 싫어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 27,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 9,
+      "lego_position": "start",
+      "target_text_roman": "dae-da-pa-neun de neo-mu o-rae geol-li-neun ge si-reo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0027L03U06",
+     "slot": "known",
+     "audio_id": "d123260b-fa56-433c-902b-1c86d32d286d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0027L03U06",
+     "slot": "target1",
+     "audio_id": "cb99c673-8a4e-48a6-95a2-6b0964dde078"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0027L03U06",
+     "slot": "target2",
+     "audio_id": "ed493d48-38fe-44a2-8965-16c82bc739b2"
+    }
+   ]
+  },
+  {
+   "seed": 39,
+   "id": "S0039L03U09",
+   "lego": "S0039L03",
+   "known": "but I'm a little tired this morning",
+   "target": "하지만 오늘 아침에 좀 피곤해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0039L03U09",
+      "seed_number": 39,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "but I'm a little tired this morning",
+      "target_text": "하지만 오늘 아침에 좀 피곤해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 39,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 7,
+      "lego_position": "end",
+      "target_text_roman": "ha-ji-man o-neul a-chi-me jom pi-go-nae-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0039L03U09",
+     "slot": "known",
+     "audio_id": "2833c233-9ef5-4f02-b4f3-65fdddffbf63"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0039L03U09",
+     "slot": "target1",
+     "audio_id": "7367ffc8-d35b-4b0f-be3a-5a990cdf96bc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0039L03U09",
+     "slot": "target2",
+     "audio_id": "1f485dff-ff0a-414c-bde3-055cef6bdecf"
+    }
+   ]
+  },
+  {
+   "seed": 54,
+   "id": "S0054L02U09",
+   "lego": "S0054L02",
+   "known": "we wanted to give you a little more time",
+   "target": "우리는 시간을 조금 더 주고 싶었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0054L02U09",
+      "seed_number": 54,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "we wanted to give you a little more time",
+      "target_text": "우리는 시간을 조금 더 주고 싶었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 54,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 9,
+      "lego_position": "start",
+      "target_text_roman": "u-ri-neun si-ga-neul jo-geum deo ju-go si-peo-sseo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0054L02U09",
+     "slot": "known",
+     "audio_id": "6a3068c7-3fc1-4f61-a975-d2d55a366aa2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0054L02U09",
+     "slot": "target1",
+     "audio_id": "6f07c277-6bcc-46a4-9b68-aea3bb74b586"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0054L02U09",
+     "slot": "target2",
+     "audio_id": "cc828fe9-42b1-4c1f-be0e-115ca69124a3"
+    }
+   ]
+  },
+  {
+   "seed": 66,
+   "id": "S0066L02U09",
+   "lego": "S0066L02",
+   "known": "it's not difficult to find the answer",
+   "target": "답을 찾는 건 어렵지 않아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0066L02U09",
+      "seed_number": 66,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "it's not difficult to find the answer",
+      "target_text": "답을 찾는 건 어렵지 않아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 66,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 7,
+      "lego_position": "start",
+      "target_text_roman": "da-beul chan-neun geon eo-ryeop-ji a-na-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0066L02U09",
+     "slot": "known",
+     "audio_id": "46a07aa3-516a-4ddb-aaaf-d0800f13a4b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0066L02U09",
+     "slot": "target1",
+     "audio_id": "050f255b-18d9-4d66-aab6-e39433865a69"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0066L02U09",
+     "slot": "target2",
+     "audio_id": "6473b745-7457-4352-ba25-4684d401af3b"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L02U03",
+   "lego": "S0082L02",
+   "known": "I'm not going to wait for you. Why not?",
+   "target": "기다리지 않을 거예요. 왜요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0082L02U03",
+      "seed_number": 82,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I'm not going to wait for you. Why not?",
+      "target_text": "기다리지 않을 거예요. 왜요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "gi-da-ri-ji a-neul geo-ye-yo. wae-yo?"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0082L02U03",
+     "slot": "known",
+     "audio_id": "199fc8fc-87b1-43f3-8002-8c8948711cfc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0082L02U03",
+     "slot": "target1",
+     "audio_id": "1f2555f9-3f83-4e4d-aa98-c17a79e88d00"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0082L02U03",
+     "slot": "target2",
+     "audio_id": "9d164fa0-4df4-4388-b80d-f3af4bab091b"
+    }
+   ]
+  },
+  {
+   "seed": 86,
+   "id": "S0086L02U09",
+   "lego": "S0086L02",
+   "known": "it wasn't possible, unfortunately",
+   "target": "안타깝게도 가능하지 않았어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0086L02U09",
+      "seed_number": 86,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "it wasn't possible, unfortunately",
+      "target_text": "안타깝게도 가능하지 않았어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 86,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 4,
+      "lego_position": "end",
+      "target_text_roman": "an-ta-kkap-ge-do ga-neung-ha-ji a-na-sseo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0086L02U09",
+     "slot": "known",
+     "audio_id": "7d77cbf8-cc32-4455-9cd9-fc10fa91811d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0086L02U09",
+     "slot": "target1",
+     "audio_id": "fe0f1f80-2752-40c7-8f5a-5b8c70ccea30"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0086L02U09",
+     "slot": "target2",
+     "audio_id": "6af7766b-4904-4d16-abac-9f2bdaddb057"
+    }
+   ]
+  },
+  {
+   "seed": 89,
+   "id": "S0089L02U09",
+   "lego": "S0089L02",
+   "known": "I think that I've done a lot in a short time",
+   "target": "짧은 시간에 많이 했다고 생각해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0089L02U09",
+      "seed_number": 89,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "I think that I've done a lot in a short time",
+      "target_text": "짧은 시간에 많이 했다고 생각해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 89,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 11,
+      "lego_position": "start",
+      "target_text_roman": "jjal-beun si-gan-e man-i haet-da-go saeng-gak-hae-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0089L02U09",
+     "slot": "known",
+     "audio_id": "594ddd3f-0f7c-44e4-a472-5a0ccb2dddb4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0089L02U09",
+     "slot": "target1",
+     "audio_id": "3d3b6b19-ed94-4109-870b-dca4614973ff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0089L02U09",
+     "slot": "target2",
+     "audio_id": "0f44eeb4-2d78-4b7e-bc29-2078def04a2a"
+    }
+   ]
+  },
+  {
+   "seed": 117,
+   "id": "S0117L02U09",
+   "lego": "S0117L02",
+   "known": "I'm definitely doing better than I was last time we talked to each other",
+   "target": "저번에 서로 말했을 때보다 확실히 더 잘하고 있어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0117L02U09",
+      "seed_number": 117,
+      "lego_index": 2,
+      "position": 16,
+      "known_text": "I'm definitely doing better than I was last time we talked to each other",
+      "target_text": "저번에 서로 말했을 때보다 확실히 더 잘하고 있어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 117,
+       "canon": "P26"
+      },
+      "word_count": 28,
+      "lego_count": 14,
+      "lego_position": "start",
+      "target_text_roman": "jeo-beon-e seo-ro mal-hae-sseul ttae-bo-da hwak-sil-hi deo jal-ha-go i-sseo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0117L02U09",
+     "slot": "known",
+     "audio_id": "1e91876c-cd0e-4db8-99a6-a7b037c0997e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0117L02U09",
+     "slot": "target1",
+     "audio_id": "481c0c23-a63c-4cd2-9b57-5ae901166201"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0117L02U09",
+     "slot": "target2",
+     "audio_id": "f59e010e-ca11-4633-98e8-9d0e97445949"
+    }
+   ]
+  },
+  {
+   "seed": 125,
+   "id": "S0125L03U09",
+   "lego": "S0125L03",
+   "known": "I believe that your idea was very good",
+   "target": "그 생각이 아주 좋았다고 믿어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0125L03U09",
+      "seed_number": 125,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "I believe that your idea was very good",
+      "target_text": "그 생각이 아주 좋았다고 믿어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 125,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 8,
+      "lego_position": "start",
+      "target_text_roman": "geu saeng-ga-gi a-ju jo-at-da-go mi-deo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0125L03U09",
+     "slot": "known",
+     "audio_id": "bd08f489-0ecc-4549-a6db-c96785655675"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0125L03U09",
+     "slot": "target1",
+     "audio_id": "bfb197ba-ceec-4a71-b24f-8230cfad93ba"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0125L03U09",
+     "slot": "target2",
+     "audio_id": "a876a9e9-2993-49a4-bbc6-e7cbcf35797e"
+    }
+   ]
+  },
+  {
+   "seed": 136,
+   "id": "S0136L03U09",
+   "lego": "S0136L03",
+   "known": "of course you can ask her because she's my friend",
+   "target": "물론 그녀한테 물어봐도 돼요, 제 친구니까요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0136L03U09",
+      "seed_number": 136,
+      "lego_index": 3,
+      "position": 15,
+      "known_text": "of course you can ask her because she's my friend",
+      "target_text": "물론 그녀한테 물어봐도 돼요, 제 친구니까요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 136,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "mul-lon geu-nyeo-han-te mu-reo-bwa-do dwae-yo je chin-gu-ni-kka-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0136L03U09",
+     "slot": "known",
+     "audio_id": "e1c432a1-cc51-459a-99c0-0d8f9840e83d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0136L03U09",
+     "slot": "target1",
+     "audio_id": "5812b7ad-2069-4712-a1a3-c62802617eb0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0136L03U09",
+     "slot": "target2",
+     "audio_id": "3109ac72-cb14-479e-b7ee-be5e2d37dacc"
+    }
+   ]
+  },
+  {
+   "seed": 204,
+   "id": "S0204L03U06",
+   "lego": "S0204L03",
+   "known": "I wanted her to help you to deal with the arrangements",
+   "target": "그녀가 준비를 도와주길 바랐어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0204L03U06",
+      "seed_number": 204,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "I wanted her to help you to deal with the arrangements",
+      "target_text": "그녀가 준비를 도와주길 바랐어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 204,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 11,
+      "lego_position": "middle",
+      "target_text_roman": "geu-nyeo-ga jun-bi-reul do-wa-ju-gil ba-ra-sseo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0204L03U06",
+     "slot": "known",
+     "audio_id": "e5f13539-3682-4494-a341-448c75e19b98"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0204L03U06",
+     "slot": "target1",
+     "audio_id": "6094a5c8-bad5-4144-af6f-390a5387eaf6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0204L03U06",
+     "slot": "target2",
+     "audio_id": "6b6c7773-ccb1-4c8e-ae60-f5cc0eadada0"
+    }
+   ]
+  },
+  {
+   "seed": 235,
+   "id": "S0235L01U09",
+   "lego": "S0235L01",
+   "known": "I met someone who said that he wanted to tell you something",
+   "target": "뭔가 말하고 싶다고 한 사람을 만났어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0235L01U09",
+      "seed_number": 235,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "I met someone who said that he wanted to tell you something",
+      "target_text": "뭔가 말하고 싶다고 한 사람을 만났어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 235,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 12,
+      "lego_position": "middle",
+      "target_text_roman": "mwon-ga mal-ha-go sip-da-go han sa-ra-meul man-na-sseo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0235L01U09",
+     "slot": "known",
+     "audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0235L01U09",
+     "slot": "target1",
+     "audio_id": "1be189ab-35fc-4aba-9759-9c6cf90e235b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0235L01U09",
+     "slot": "target2",
+     "audio_id": "2993a3c9-4154-46d5-babb-5482cf14e44a"
+    }
+   ]
+  },
+  {
+   "seed": 236,
+   "id": "S0236L01U10",
+   "lego": "S0236L01",
+   "known": "I know someone who said that she was going to try to help",
+   "target": "도와주려고 할 거라고 한 사람을 알아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0236L01U10",
+      "seed_number": 236,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "I know someone who said that she was going to try to help",
+      "target_text": "도와주려고 할 거라고 한 사람을 알아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 236,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 13,
+      "lego_position": "middle",
+      "target_text_roman": "do-wa-ju-ryeo-go hal geo-ra-go han sa-ram-eul a-ra-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0236L01U10",
+     "slot": "known",
+     "audio_id": "5f7a5f15-b1b6-43f6-abe3-0fa757fcd8d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0236L01U10",
+     "slot": "target1",
+     "audio_id": "8e2c828a-ff0d-48d8-8fde-77a820858f6c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0236L01U10",
+     "slot": "target2",
+     "audio_id": "ff484986-fc09-45bf-8ab8-0e6ccb8a346b"
+    }
+   ]
+  },
+  {
+   "seed": 237,
+   "id": "S0237L02U06",
+   "lego": "S0237L02",
+   "known": "he wanted me to tell you before the weekend",
+   "target": "그는 주말 전에 제가 말해 주길 바랐어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0237L02U06",
+      "seed_number": 237,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "he wanted me to tell you before the weekend",
+      "target_text": "그는 주말 전에 제가 말해 주길 바랐어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 237,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "geu-neun ju-mal jeo-ne je-ga mal-hae ju-gil ba-ra-sseo-yo"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0237L02U06",
+     "slot": "known",
+     "audio_id": "f4e86136-7fe3-4fb3-a85a-06382e5c3e15"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0237L02U06",
+     "slot": "target1",
+     "audio_id": "fbbb2a70-ebe3-4e3c-8033-e7e042332f0f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0237L02U06",
+     "slot": "target2",
+     "audio_id": "ce9741d8-a940-4628-b8a2-6b4815d46b47"
+    }
+   ]
+  },
+  {
+   "seed": 301,
+   "id": "S0301L02U12",
+   "lego": "S0301L02",
+   "known": "he said that he wants to show you something",
+   "target": "그는 뭔가 보여 주고 싶다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0301L02U12",
+      "seed_number": 301,
+      "lego_index": 2,
+      "position": 22,
+      "known_text": "he said that he wants to show you something",
+      "target_text": "그는 뭔가 보여 주고 싶다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 301,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0301L02U12",
+     "slot": "known",
+     "audio_id": "41e27acd-034f-448f-9c35-7d3790442f7d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0301L02U12",
+     "slot": "target1",
+     "audio_id": "afdc22a0-8b2f-445c-9d01-7301ffd856f4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0301L02U12",
+     "slot": "target2",
+     "audio_id": "6108d387-4141-467a-a4a1-87c7474abc2c"
+    }
+   ]
+  },
+  {
+   "seed": 302,
+   "id": "S0302L03U12",
+   "lego": "S0302L03",
+   "known": "she said that she doesn't want to live in a city",
+   "target": "그녀는 도시에서 살고 싶지 않다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0302L03U12",
+      "seed_number": 302,
+      "lego_index": 3,
+      "position": 21,
+      "known_text": "she said that she doesn't want to live in a city",
+      "target_text": "그녀는 도시에서 살고 싶지 않다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 302,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0302L03U12",
+     "slot": "known",
+     "audio_id": "c9ad5cb2-6262-4c2b-95ae-090725ff8d78"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0302L03U12",
+     "slot": "target1",
+     "audio_id": "5759bfe9-d8bd-4459-a500-631f846da6ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0302L03U12",
+     "slot": "target2",
+     "audio_id": "339c6a0a-14b2-437e-b540-cdac8b2c8d55"
+    }
+   ]
+  },
+  {
+   "seed": 303,
+   "id": "S0303L02U12",
+   "lego": "S0303L02",
+   "known": "I think that he wants to sit down",
+   "target": "그가 앉고 싶어하는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0303L02U12",
+      "seed_number": 303,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "I think that he wants to sit down",
+      "target_text": "그가 앉고 싶어하는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 303,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0303L02U12",
+     "slot": "known",
+     "audio_id": "0d0e425e-2dad-4bda-bebd-bc88fe5e69be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0303L02U12",
+     "slot": "target1",
+     "audio_id": "fcefc477-1772-4291-97a9-b469b71bf6b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0303L02U12",
+     "slot": "target2",
+     "audio_id": "7f3561d8-7b9b-4ff7-8edf-f569fa7f583a"
+    }
+   ]
+  },
+  {
+   "seed": 304,
+   "id": "S0304L02U12",
+   "lego": "S0304L02",
+   "known": "I think that she doesn't want to work from home",
+   "target": "그녀가 집에서 일하고 싶어하지 않는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0304L02U12",
+      "seed_number": 304,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "I think that she doesn't want to work from home",
+      "target_text": "그녀가 집에서 일하고 싶어하지 않는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 304,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0304L02U12",
+     "slot": "known",
+     "audio_id": "d53577a5-5ad1-411c-b07c-01fe3019fb33"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0304L02U12",
+     "slot": "target1",
+     "audio_id": "1a8bdede-f32d-4ddc-98d8-a57447d404a0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0304L02U12",
+     "slot": "target2",
+     "audio_id": "c3180fd0-48f7-4f59-890d-22670064167a"
+    }
+   ]
+  },
+  {
+   "seed": 306,
+   "id": "S0306L02U12",
+   "lego": "S0306L02",
+   "known": "I know that young woman who's talking to your friend",
+   "target": "친구와 이야기하고 있는 그 젊은 여자를 알아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0306L02U12",
+      "seed_number": 306,
+      "lego_index": 2,
+      "position": 21,
+      "known_text": "I know that young woman who's talking to your friend",
+      "target_text": "친구와 이야기하고 있는 그 젊은 여자를 알아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 306,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0306L02U12",
+     "slot": "known",
+     "audio_id": "f7bf4841-3143-4fdd-98e4-622f33e06971"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0306L02U12",
+     "slot": "target1",
+     "audio_id": "39ab038c-5777-4def-95ae-d52ecf37a3e6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0306L02U12",
+     "slot": "target2",
+     "audio_id": "599209c0-888f-45e6-821f-ed15d6cef2c1"
+    }
+   ]
+  },
+  {
+   "seed": 307,
+   "id": "S0307L02U12",
+   "lego": "S0307L02",
+   "known": "I know that young man who's sitting over there",
+   "target": "저기 앉아 있는 그 젊은 남자를 알아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0307L02U12",
+      "seed_number": 307,
+      "lego_index": 2,
+      "position": 21,
+      "known_text": "I know that young man who's sitting over there",
+      "target_text": "저기 앉아 있는 그 젊은 남자를 알아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 307,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0307L02U12",
+     "slot": "known",
+     "audio_id": "f203f0f9-aba8-4517-8ec3-e653cf17a42e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0307L02U12",
+     "slot": "target1",
+     "audio_id": "d1fb41ea-21bc-4598-88b3-04006cf8c3d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0307L02U12",
+     "slot": "target2",
+     "audio_id": "123a5387-6ed5-40c7-b018-1e6c1560fd3f"
+    }
+   ]
+  },
+  {
+   "seed": 309,
+   "id": "S0309L01U13",
+   "lego": "S0309L01",
+   "known": "no I've never seen her before",
+   "target": "아니요 전에 한 번도 본 적 없어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0309L01U13",
+      "seed_number": 309,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "no I've never seen her before",
+      "target_text": "아니요 전에 한 번도 본 적 없어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 309,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0309L01U13",
+     "slot": "known",
+     "audio_id": "54c05b0b-1c7b-4f0a-b699-29fd56b7beb9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0309L01U13",
+     "slot": "target1",
+     "audio_id": "97906bf9-eb86-4f56-993e-f6f09d7572e0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0309L01U13",
+     "slot": "target2",
+     "audio_id": "7f22a3f1-7438-425c-bb16-090e15b5df5d"
+    }
+   ]
+  },
+  {
+   "seed": 310,
+   "id": "S0310L02U11",
+   "lego": "S0310L02",
+   "known": "she could write a story about that man",
+   "target": "그녀는 그 남자에 대해 이야기를 쓸 수 있어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0310L02U11",
+      "seed_number": 310,
+      "lego_index": 2,
+      "position": 17,
+      "known_text": "she could write a story about that man",
+      "target_text": "그녀는 그 남자에 대해 이야기를 쓸 수 있어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 310,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0310L02U11",
+     "slot": "known",
+     "audio_id": "becfa6f2-22aa-4f8a-a675-450bc71d3e5c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0310L02U11",
+     "slot": "target1",
+     "audio_id": "9cf795fc-d53c-4e0a-8b93-f947f0a9a92d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0310L02U11",
+     "slot": "target2",
+     "audio_id": "24864098-12f0-4d24-938d-fe191d9e623c"
+    }
+   ]
+  },
+  {
+   "seed": 312,
+   "id": "S0312L03U12",
+   "lego": "S0312L03",
+   "known": "she said that she could use the other room tomorrow night",
+   "target": "그녀는 내일 밤에 다른 방을 쓸 수 있다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0312L03U12",
+      "seed_number": 312,
+      "lego_index": 3,
+      "position": 21,
+      "known_text": "she said that she could use the other room tomorrow night",
+      "target_text": "그녀는 내일 밤에 다른 방을 쓸 수 있다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 312,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0312L03U12",
+     "slot": "known",
+     "audio_id": "ed23a0b2-2d9b-45a3-bd82-c9b1273467b0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0312L03U12",
+     "slot": "target1",
+     "audio_id": "ebdf4b4f-8ca9-4c61-b035-b821898b9e6d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0312L03U12",
+     "slot": "target2",
+     "audio_id": "b5f7bedf-f9f3-4db0-82bb-41a68b1a755d"
+    }
+   ]
+  },
+  {
+   "seed": 313,
+   "id": "S0313L04U13",
+   "lego": "S0313L04",
+   "known": "he said that he couldn't watch all five games",
+   "target": "그는 다섯 경기를 다 볼 수 없다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0313L04U13",
+      "seed_number": 313,
+      "lego_index": 4,
+      "position": 22,
+      "known_text": "he said that he couldn't watch all five games",
+      "target_text": "그는 다섯 경기를 다 볼 수 없다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 313,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0313L04U13",
+     "slot": "known",
+     "audio_id": "f03e7e8d-7088-4ec4-bccd-edcec3dc20a1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0313L04U13",
+     "slot": "target1",
+     "audio_id": "e7eebf0d-4c32-4ab7-a550-d17af0744bc8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0313L04U13",
+     "slot": "target2",
+     "audio_id": "e71c4582-08dd-4053-9c7b-fc3aea2e9209"
+    }
+   ]
+  },
+  {
+   "seed": 314,
+   "id": "S0314L01U22",
+   "lego": "S0314L01",
+   "known": "I think that she could put it on the table",
+   "target": "그녀가 그걸 탁자 위에 놓을 수 있을 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0314L01U22",
+      "seed_number": 314,
+      "lego_index": 1,
+      "position": 29,
+      "known_text": "I think that she could put it on the table",
+      "target_text": "그녀가 그걸 탁자 위에 놓을 수 있을 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 314,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0314L01U22",
+     "slot": "known",
+     "audio_id": "c6ebf03a-e5ee-47d1-9626-b94a187723a3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0314L01U22",
+     "slot": "target1",
+     "audio_id": "a053e460-8d6c-43e5-830e-742733ddcbdb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0314L01U22",
+     "slot": "target2",
+     "audio_id": "5681e9ae-6d9e-412e-8a1a-2e7b6b6583f8"
+    }
+   ]
+  },
+  {
+   "seed": 315,
+   "id": "S0315L04U13",
+   "lego": "S0315L04",
+   "known": "I think that he couldn't afford the car that he wanted",
+   "target": "그가 원했던 차를 살 여유가 없었던 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0315L04U13",
+      "seed_number": 315,
+      "lego_index": 4,
+      "position": 20,
+      "known_text": "I think that he couldn't afford the car that he wanted",
+      "target_text": "그가 원했던 차를 살 여유가 없었던 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 315,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0315L04U13",
+     "slot": "known",
+     "audio_id": "05fb9723-9a20-4fbb-a601-b5a51e26ee3f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0315L04U13",
+     "slot": "target1",
+     "audio_id": "a5724bf8-0006-4606-b694-f03127f5023e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0315L04U13",
+     "slot": "target2",
+     "audio_id": "30d08576-1164-4353-89d3-76bfc2c9756e"
+    }
+   ]
+  },
+  {
+   "seed": 316,
+   "id": "S0316L02U12",
+   "lego": "S0316L02",
+   "known": "do you think that she could bring her brother on Monday?",
+   "target": "그녀가 월요일에 남동생을 데려올 수 있을 것 같아요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0316L02U12",
+      "seed_number": 316,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "do you think that she could bring her brother on Monday?",
+      "target_text": "그녀가 월요일에 남동생을 데려올 수 있을 것 같아요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 316,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0316L02U12",
+     "slot": "known",
+     "audio_id": "146ad304-d908-400a-8a8d-4e402352461d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0316L02U12",
+     "slot": "target1",
+     "audio_id": "28cf6b71-b181-4610-9f7d-ca057da94a08"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0316L02U12",
+     "slot": "target2",
+     "audio_id": "b11c9086-6663-457c-830e-d84adbfa96d6"
+    }
+   ]
+  },
+  {
+   "seed": 317,
+   "id": "S0317L01U11",
+   "lego": "S0317L01",
+   "known": "yes I think she could if she wanted to",
+   "target": "네 원하면 할 수 있을 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0317L01U11",
+      "seed_number": 317,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "yes I think she could if she wanted to",
+      "target_text": "네 원하면 할 수 있을 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 317,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0317L01U11",
+     "slot": "known",
+     "audio_id": "bcf900d5-602f-40a6-924f-f3c5482f1885"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0317L01U11",
+     "slot": "target1",
+     "audio_id": "3ac132c1-082e-485a-9fa0-c456bb224d05"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0317L01U11",
+     "slot": "target2",
+     "audio_id": "21bb0dcb-0845-4b84-89d4-054bd22fc59a"
+    }
+   ]
+  },
+  {
+   "seed": 318,
+   "id": "S0318L01U20",
+   "lego": "S0318L01",
+   "known": "no I don't think she could this time",
+   "target": "아니요 이번에는 할 수 없을 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0318L01U20",
+      "seed_number": 318,
+      "lego_index": 1,
+      "position": 27,
+      "known_text": "no I don't think she could this time",
+      "target_text": "아니요 이번에는 할 수 없을 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 318,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0318L01U20",
+     "slot": "known",
+     "audio_id": "6f1a4fa6-db2c-4b43-93c8-ff1f9b6d23b9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0318L01U20",
+     "slot": "target1",
+     "audio_id": "8e38da17-ac8a-4d88-9ef2-48ab4eabc181"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0318L01U20",
+     "slot": "target2",
+     "audio_id": "af89a8a1-1e8f-4148-b436-c86f9595d542"
+    }
+   ]
+  },
+  {
+   "seed": 319,
+   "id": "S0319L02U12",
+   "lego": "S0319L02",
+   "known": "she needs to move to a different country",
+   "target": "그녀는 다른 나라로 이사해야 해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0319L02U12",
+      "seed_number": 319,
+      "lego_index": 2,
+      "position": 21,
+      "known_text": "she needs to move to a different country",
+      "target_text": "그녀는 다른 나라로 이사해야 해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 319,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0319L02U12",
+     "slot": "known",
+     "audio_id": "cecde518-dad1-4112-9257-f626d652ae41"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0319L02U12",
+     "slot": "target1",
+     "audio_id": "10f2684a-02da-48d3-ae62-5421a5af3ee9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0319L02U12",
+     "slot": "target2",
+     "audio_id": "8fafa848-5efc-4ea7-af88-20c5bda92314"
+    }
+   ]
+  },
+  {
+   "seed": 320,
+   "id": "S0320L03U09",
+   "lego": "S0320L03",
+   "known": "he doesn't need to buy another television this year",
+   "target": "그는 올해 TV를 또 살 필요가 없어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0320L03U09",
+      "seed_number": 320,
+      "lego_index": 3,
+      "position": 15,
+      "known_text": "he doesn't need to buy another television this year",
+      "target_text": "그는 올해 TV를 또 살 필요가 없어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 320,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0320L03U09",
+     "slot": "known",
+     "audio_id": "6a7a7e27-839d-4156-82df-cd1eb32fd4be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0320L03U09",
+     "slot": "target1",
+     "audio_id": "8557d825-559f-422d-902e-aedb9bc976d0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0320L03U09",
+     "slot": "target2",
+     "audio_id": "8f3a4e3f-151d-41d8-8838-efcaf5457c3b"
+    }
+   ]
+  },
+  {
+   "seed": 321,
+   "id": "S0321L01U14",
+   "lego": "S0321L01",
+   "known": "a book",
+   "target": "책",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0321L01U14",
+      "seed_number": 321,
+      "lego_index": 1,
+      "position": 21,
+      "known_text": "a book",
+      "target_text": "책",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 321,
+       "canon": "P26"
+      },
+      "word_count": 1,
+      "lego_count": 2,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0321L01U14",
+     "slot": "known",
+     "audio_id": "d0cf281d-ab65-4e6a-bf16-01b183992b73"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0321L01U14",
+     "slot": "target1",
+     "audio_id": "86b9624c-6157-4ccc-91ea-99118a7e92ca"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0321L01U14",
+     "slot": "target2",
+     "audio_id": "c70ffbb3-2cf6-4be3-9039-b64913395ce8"
+    }
+   ]
+  },
+  {
+   "seed": 322,
+   "id": "S0322L02U13",
+   "lego": "S0322L02",
+   "known": "she said that she needs to read the same book",
+   "target": "그녀는 같은 책을 읽어야 한다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0322L02U13",
+      "seed_number": 322,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "she said that she needs to read the same book",
+      "target_text": "그녀는 같은 책을 읽어야 한다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 322,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0322L02U13",
+     "slot": "known",
+     "audio_id": "af714295-4f0b-4606-89af-a9cb8383a49f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0322L02U13",
+     "slot": "target1",
+     "audio_id": "a42d84e0-617e-4274-9c5c-1350ea637d9b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0322L02U13",
+     "slot": "target2",
+     "audio_id": "1ec33367-5d56-4a50-8150-1f54e52bc054"
+    }
+   ]
+  },
+  {
+   "seed": 323,
+   "id": "S0323L02U13",
+   "lego": "S0323L02",
+   "known": "he said that he doesn't need to walk to school",
+   "target": "그는 학교까지 걸어갈 필요가 없다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0323L02U13",
+      "seed_number": 323,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "he said that he doesn't need to walk to school",
+      "target_text": "그는 학교까지 걸어갈 필요가 없다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 323,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0323L02U13",
+     "slot": "known",
+     "audio_id": "90e734d7-cae8-4eeb-bc95-711618812ecf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0323L02U13",
+     "slot": "target1",
+     "audio_id": "725a6422-00b2-49e2-aa81-01fec729a672"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0323L02U13",
+     "slot": "target2",
+     "audio_id": "96680ef6-6456-4232-a733-3fc28af87932"
+    }
+   ]
+  },
+  {
+   "seed": 325,
+   "id": "S0325L05U12",
+   "lego": "S0325L05",
+   "known": "I think that he needs to consider ten possible problems",
+   "target": "그가 열 가지 가능한 문제를 생각해 봐야 하는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0325L05U12",
+      "seed_number": 325,
+      "lego_index": 5,
+      "position": 21,
+      "known_text": "I think that he needs to consider ten possible problems",
+      "target_text": "그가 열 가지 가능한 문제를 생각해 봐야 하는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 325,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0325L05U12",
+     "slot": "known",
+     "audio_id": "5ed0f3e8-cdbc-4c6f-846f-3ba788cb8cde"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0325L05U12",
+     "slot": "target1",
+     "audio_id": "04528647-8947-4ea3-a483-c9fdc2047578"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0325L05U12",
+     "slot": "target2",
+     "audio_id": "8732715c-bd43-48e1-9db5-4c72d4788cfc"
+    }
+   ]
+  },
+  {
+   "seed": 326,
+   "id": "S0326L02U13",
+   "lego": "S0326L02",
+   "known": "I don't think that she needs to sell the company",
+   "target": "그녀가 회사를 팔 필요가 없는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0326L02U13",
+      "seed_number": 326,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "I don't think that she needs to sell the company",
+      "target_text": "그녀가 회사를 팔 필요가 없는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 326,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0326L02U13",
+     "slot": "known",
+     "audio_id": "43c2ff61-5889-466b-802d-bdd90a1e1635"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0326L02U13",
+     "slot": "target1",
+     "audio_id": "900ec3bd-96ec-4398-8faf-bcbe0fe50ac8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0326L02U13",
+     "slot": "target2",
+     "audio_id": "978afc6e-cbd5-4eb2-958d-634ed2569144"
+    }
+   ]
+  },
+  {
+   "seed": 327,
+   "id": "S0327L03U12",
+   "lego": "S0327L03",
+   "known": "do you think that she needs to offer another way?",
+   "target": "그녀가 다른 방법을 제안해야 한다고 생각해요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0327L03U12",
+      "seed_number": 327,
+      "lego_index": 3,
+      "position": 21,
+      "known_text": "do you think that she needs to offer another way?",
+      "target_text": "그녀가 다른 방법을 제안해야 한다고 생각해요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 327,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0327L03U12",
+     "slot": "known",
+     "audio_id": "ce8f112f-fe5b-4bf8-a72a-993ea28d9963"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0327L03U12",
+     "slot": "target1",
+     "audio_id": "21689190-d934-4b1f-be27-2df41b0ca2b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0327L03U12",
+     "slot": "target2",
+     "audio_id": "aca1b1cd-c9f6-4d5f-a50d-6bb261ef8fa1"
+    }
+   ]
+  },
+  {
+   "seed": 328,
+   "id": "S0328L01U12",
+   "lego": "S0328L01",
+   "known": "yes I think she ought to",
+   "target": "네 그래야 하는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0328L01U12",
+      "seed_number": 328,
+      "lego_index": 1,
+      "position": 21,
+      "known_text": "yes I think she ought to",
+      "target_text": "네 그래야 하는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 328,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0328L01U12",
+     "slot": "known",
+     "audio_id": "15834690-322f-4cc7-8ca5-972897e5bd39"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0328L01U12",
+     "slot": "target1",
+     "audio_id": "eb1cc5a3-d544-4f59-a70c-8acd7d6d7090"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0328L01U12",
+     "slot": "target2",
+     "audio_id": "d374e711-0b7b-403f-81f1-c92435c470ba"
+    }
+   ]
+  },
+  {
+   "seed": 331,
+   "id": "S0331L04U12",
+   "lego": "S0331L04",
+   "known": "she can't provide all the answers",
+   "target": "그녀는 모든 답을 줄 수 없어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0331L04U12",
+      "seed_number": 331,
+      "lego_index": 4,
+      "position": 19,
+      "known_text": "she can't provide all the answers",
+      "target_text": "그녀는 모든 답을 줄 수 없어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 331,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0331L04U12",
+     "slot": "known",
+     "audio_id": "f46b6ed1-e291-48d8-a4b2-dfe6f861b63b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0331L04U12",
+     "slot": "target1",
+     "audio_id": "a84338b3-1aeb-4412-8357-0d7435fe8b24"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0331L04U12",
+     "slot": "target2",
+     "audio_id": "30c4bc21-deff-4c8c-990a-18156c3e1d9a"
+    }
+   ]
+  },
+  {
+   "seed": 332,
+   "id": "S0332L04U13",
+   "lego": "S0332L04",
+   "known": "he can build a new life for his sister",
+   "target": "그는 여동생을 위해 새로운 삶을 만들 수 있어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0332L04U13",
+      "seed_number": 332,
+      "lego_index": 4,
+      "position": 19,
+      "known_text": "he can build a new life for his sister",
+      "target_text": "그는 여동생을 위해 새로운 삶을 만들 수 있어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 332,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0332L04U13",
+     "slot": "known",
+     "audio_id": "89c9ddae-6b18-4e41-bc1f-36e201ac4f27"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0332L04U13",
+     "slot": "target1",
+     "audio_id": "953392d4-1c30-4264-89f5-844ad48b3335"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0332L04U13",
+     "slot": "target2",
+     "audio_id": "b0d08794-bd82-46da-8c1c-e357abce1b3c"
+    }
+   ]
+  },
+  {
+   "seed": 333,
+   "id": "S0333L02U11",
+   "lego": "S0333L02",
+   "known": "she said that she can't spend much time with the group",
+   "target": "그녀는 그 모임과 많은 시간을 보낼 수 없다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0333L02U11",
+      "seed_number": 333,
+      "lego_index": 2,
+      "position": 17,
+      "known_text": "she said that she can't spend much time with the group",
+      "target_text": "그녀는 그 모임과 많은 시간을 보낼 수 없다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 333,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0333L02U11",
+     "slot": "known",
+     "audio_id": "e7183b6a-d0cb-4588-9d6f-f26243f17cb4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0333L02U11",
+     "slot": "target1",
+     "audio_id": "46f3020e-14f5-437a-8350-29f4524ecc8f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0333L02U11",
+     "slot": "target2",
+     "audio_id": "00eb40f1-3e04-400a-8a64-f050394e77e9"
+    }
+   ]
+  },
+  {
+   "seed": 334,
+   "id": "S0334L01U06",
+   "lego": "S0334L01",
+   "known": "he said that he can let you hold the kitten",
+   "target": "그는 새끼 고양이를 안게 해 줄 수 있다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0334L01U06",
+      "seed_number": 334,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "he said that he can let you hold the kitten",
+      "target_text": "그는 새끼 고양이를 안게 해 줄 수 있다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 334,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0334L01U06",
+     "slot": "known",
+     "audio_id": "209e48ec-0b17-46bd-aa98-e3b7fe3fa07c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0334L01U06",
+     "slot": "target1",
+     "audio_id": "24f1087d-bf07-410d-9812-bd3a911c029e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0334L01U06",
+     "slot": "target2",
+     "audio_id": "bbff9e90-f617-4063-9de3-77465a3803e0"
+    }
+   ]
+  },
+  {
+   "seed": 335,
+   "id": "S0335L03U11",
+   "lego": "S0335L03",
+   "known": "I think that he can add some valuable ideas",
+   "target": "그가 귀중한 생각을 추가할 수 있는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0335L03U11",
+      "seed_number": 335,
+      "lego_index": 3,
+      "position": 18,
+      "known_text": "I think that he can add some valuable ideas",
+      "target_text": "그가 귀중한 생각을 추가할 수 있는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 335,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0335L03U11",
+     "slot": "known",
+     "audio_id": "62efdde7-e915-4b53-9784-754a614b1c07"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0335L03U11",
+     "slot": "target1",
+     "audio_id": "f302f6f4-2974-491d-b9f0-f901b80815ff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0335L03U11",
+     "slot": "target2",
+     "audio_id": "930da6a2-0f2b-4db6-aed3-33cbc8bc4861"
+    }
+   ]
+  },
+  {
+   "seed": 336,
+   "id": "S0336L01U13",
+   "lego": "S0336L01",
+   "known": "I don't think that she can open the door",
+   "target": "그녀가 문을 열 수 없는 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0336L01U13",
+      "seed_number": 336,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "I don't think that she can open the door",
+      "target_text": "그녀가 문을 열 수 없는 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 336,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0336L01U13",
+     "slot": "known",
+     "audio_id": "c0f259c7-83e9-4bb3-88d7-bacd4caefec7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0336L01U13",
+     "slot": "target1",
+     "audio_id": "85df0966-776b-4841-bb7c-6a1912d55157"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0336L01U13",
+     "slot": "target2",
+     "audio_id": "412ee737-c669-4c0e-a4db-a857f0b1a3a1"
+    }
+   ]
+  },
+  {
+   "seed": 337,
+   "id": "S0337L01U12",
+   "lego": "S0337L01",
+   "known": "do you think that he can continue to play?",
+   "target": "그가 계속 할 수 있다고 생각해요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0337L01U12",
+      "seed_number": 337,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "do you think that he can continue to play?",
+      "target_text": "그가 계속 할 수 있다고 생각해요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 337,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0337L01U12",
+     "slot": "known",
+     "audio_id": "0be569c2-fcd1-4525-bc64-60d9e007b26e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0337L01U12",
+     "slot": "target1",
+     "audio_id": "5f172d13-8dea-4500-9bf4-6c0958a31f6f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0337L01U12",
+     "slot": "target2",
+     "audio_id": "49270ef4-50a3-4cea-ab47-43f31ded3ce0"
+    }
+   ]
+  },
+  {
+   "seed": 339,
+   "id": "S0339L01U11",
+   "lego": "S0339L01",
+   "known": "no I think he's hurt himself quite badly",
+   "target": "아니요 꽤 심하게 다친 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0339L01U11",
+      "seed_number": 339,
+      "lego_index": 1,
+      "position": 17,
+      "known_text": "no I think he's hurt himself quite badly",
+      "target_text": "아니요 꽤 심하게 다친 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 339,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0339L01U11",
+     "slot": "known",
+     "audio_id": "3d4b05f8-aa4b-4d7a-8d37-23b1e57b0909"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0339L01U11",
+     "slot": "target1",
+     "audio_id": "84837dc2-cbc2-4a51-99a1-31712822958a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0339L01U11",
+     "slot": "target2",
+     "audio_id": "d013359a-09db-4d54-9370-204a364ed8eb"
+    }
+   ]
+  },
+  {
+   "seed": 340,
+   "id": "S0340L01U12",
+   "lego": "S0340L01",
+   "known": "yes I'm sure he's going to be okay",
+   "target": "네 확실히 괜찮을 거예요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0340L01U12",
+      "seed_number": 340,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "yes I'm sure he's going to be okay",
+      "target_text": "네 확실히 괜찮을 거예요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 340,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0340L01U12",
+     "slot": "known",
+     "audio_id": "6cd048a4-8adf-40ca-9eb2-aa2e0038f3ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0340L01U12",
+     "slot": "target1",
+     "audio_id": "d16b65f8-c68e-45a2-b382-6bca74c746fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0340L01U12",
+     "slot": "target2",
+     "audio_id": "2fbd6a44-10f2-4822-b2c7-bbcd6997055d"
+    }
+   ]
+  },
+  {
+   "seed": 341,
+   "id": "S0341L01U12",
+   "lego": "S0341L01",
+   "known": "I met someone a few days ago",
+   "target": "며칠 전에 누군가를 만났어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0341L01U12",
+      "seed_number": 341,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "I met someone a few days ago",
+      "target_text": "며칠 전에 누군가를 만났어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 341,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0341L01U12",
+     "slot": "known",
+     "audio_id": "927aad94-8b3b-406e-bf58-210f2890d517"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0341L01U12",
+     "slot": "target1",
+     "audio_id": "94ed86c5-cb1c-48ef-9a75-99b4097b0115"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0341L01U12",
+     "slot": "target2",
+     "audio_id": "937e68f3-6cdc-4228-8d92-86916975efdd"
+    }
+   ]
+  },
+  {
+   "seed": 342,
+   "id": "S0342L01U12",
+   "lego": "S0342L01",
+   "known": "I met someone who said something",
+   "target": "뭔가 말한 사람을 만났어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0342L01U12",
+      "seed_number": 342,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "I met someone who said something",
+      "target_text": "뭔가 말한 사람을 만났어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 342,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0342L01U12",
+     "slot": "known",
+     "audio_id": "da93a15e-55db-4a73-a7d7-fbdb3530cc97"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0342L01U12",
+     "slot": "target1",
+     "audio_id": "16c8d039-045f-4008-8e81-82dc42cab38a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0342L01U12",
+     "slot": "target2",
+     "audio_id": "ff800f56-2eae-45cd-a487-36dd04298902"
+    }
+   ]
+  },
+  {
+   "seed": 345,
+   "id": "S0345L03U11",
+   "lego": "S0345L03",
+   "known": "who said that he's not ready to leave yet",
+   "target": "아직 떠날 준비가 안 됐다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0345L03U11",
+      "seed_number": 345,
+      "lego_index": 3,
+      "position": 18,
+      "known_text": "who said that he's not ready to leave yet",
+      "target_text": "아직 떠날 준비가 안 됐다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 345,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0345L03U11",
+     "slot": "known",
+     "audio_id": "61c35a58-09fa-425b-8ea1-520330643d9a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0345L03U11",
+     "slot": "target1",
+     "audio_id": "dc45c95d-8c25-410d-a427-640a7527c64d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0345L03U11",
+     "slot": "target2",
+     "audio_id": "51b07f74-67da-4b67-8f85-757415304d65"
+    }
+   ]
+  },
+  {
+   "seed": 346,
+   "id": "S0346L01U12",
+   "lego": "S0346L01",
+   "known": "I wanted her to know that I liked her book",
+   "target": "그녀의 책이 좋았다는 걸 알려 주고 싶었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0346L01U12",
+      "seed_number": 346,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "I wanted her to know that I liked her book",
+      "target_text": "그녀의 책이 좋았다는 걸 알려 주고 싶었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 346,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0346L01U12",
+     "slot": "known",
+     "audio_id": "8118d934-b55c-4642-a275-22c81af974b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0346L01U12",
+     "slot": "target1",
+     "audio_id": "b34d389b-0a35-4d7f-a39c-b0a540acc615"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0346L01U12",
+     "slot": "target2",
+     "audio_id": "378d0d26-0385-43bd-a8bc-41ad507cc8a7"
+    }
+   ]
+  },
+  {
+   "seed": 348,
+   "id": "S0348L01U10",
+   "lego": "S0348L01",
+   "known": "she didn't want to know what was going to happen",
+   "target": "그녀는 무슨 일이 일어날지 알고 싶어하지 않았어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0348L01U10",
+      "seed_number": 348,
+      "lego_index": 1,
+      "position": 17,
+      "known_text": "she didn't want to know what was going to happen",
+      "target_text": "그녀는 무슨 일이 일어날지 알고 싶어하지 않았어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 348,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0348L01U10",
+     "slot": "known",
+     "audio_id": "3bb67301-b4c3-4e4c-af69-9e137e020154"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0348L01U10",
+     "slot": "target1",
+     "audio_id": "8eb209b9-f06d-4f5d-8fdd-284e9b323812"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0348L01U10",
+     "slot": "target2",
+     "audio_id": "a9bc4602-543d-4d61-9f3a-3bc07920688c"
+    }
+   ]
+  },
+  {
+   "seed": 349,
+   "id": "S0349L02U11",
+   "lego": "S0349L02",
+   "known": "did he want to go out on Friday night?",
+   "target": "그는 금요일 밤에 나가고 싶어했어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0349L02U11",
+      "seed_number": 349,
+      "lego_index": 2,
+      "position": 17,
+      "known_text": "did he want to go out on Friday night?",
+      "target_text": "그는 금요일 밤에 나가고 싶어했어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 349,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0349L02U11",
+     "slot": "known",
+     "audio_id": "189db3d9-0e28-4293-abdd-fb589eea6225"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0349L02U11",
+     "slot": "target1",
+     "audio_id": "be510704-790a-40cb-947e-dccf58f918b0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0349L02U11",
+     "slot": "target2",
+     "audio_id": "57f45f79-38cc-4602-887b-abbc15f373f0"
+    }
+   ]
+  },
+  {
+   "seed": 350,
+   "id": "S0350L01U13",
+   "lego": "S0350L01",
+   "known": "yes he wanted to see some old friends",
+   "target": "네 오래된 친구들을 만나고 싶어했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0350L01U13",
+      "seed_number": 350,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "yes he wanted to see some old friends",
+      "target_text": "네 오래된 친구들을 만나고 싶어했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 350,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0350L01U13",
+     "slot": "known",
+     "audio_id": "5a69d18c-79e7-402b-b4ef-7b520429396e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0350L01U13",
+     "slot": "target1",
+     "audio_id": "700b095c-e0c4-436e-a0ca-2e59a47f745e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0350L01U13",
+     "slot": "target2",
+     "audio_id": "285df3a3-b8a0-4b9a-a82a-84fb8c46ac99"
+    }
+   ]
+  },
+  {
+   "seed": 353,
+   "id": "S0353L02U10",
+   "lego": "S0353L02",
+   "known": "she needed to run around the field",
+   "target": "그녀는 운동장 주위를 뛰어야 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0353L02U10",
+      "seed_number": 353,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "she needed to run around the field",
+      "target_text": "그녀는 운동장 주위를 뛰어야 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 353,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0353L02U10",
+     "slot": "known",
+     "audio_id": "82a93390-530c-446f-96fd-ba783d650b95"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0353L02U10",
+     "slot": "target1",
+     "audio_id": "db7e51ed-7354-4637-bef2-d3bd239b6adb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0353L02U10",
+     "slot": "target2",
+     "audio_id": "97bededa-9d1b-49d9-9587-fda372686dab"
+    }
+   ]
+  },
+  {
+   "seed": 354,
+   "id": "S0354L02U12",
+   "lego": "S0354L02",
+   "known": "he didn't need to appear angry",
+   "target": "그는 화나 보일 필요가 없었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0354L02U12",
+      "seed_number": 354,
+      "lego_index": 2,
+      "position": 18,
+      "known_text": "he didn't need to appear angry",
+      "target_text": "그는 화나 보일 필요가 없었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 354,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0354L02U12",
+     "slot": "known",
+     "audio_id": "6baa2433-6229-4952-8b0f-a3b40d02b185"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0354L02U12",
+     "slot": "target1",
+     "audio_id": "834dd648-efeb-42aa-9245-0fe30221ba2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0354L02U12",
+     "slot": "target2",
+     "audio_id": "0881b61f-e8ec-4fe5-8586-edb56c62c304"
+    }
+   ]
+  },
+  {
+   "seed": 355,
+   "id": "S0355L02U12",
+   "lego": "S0355L02",
+   "known": "did she need to talk to that woman you know?",
+   "target": "아는 그 여자와 이야기해야 했어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0355L02U12",
+      "seed_number": 355,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "did she need to talk to that woman you know?",
+      "target_text": "아는 그 여자와 이야기해야 했어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 355,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0355L02U12",
+     "slot": "known",
+     "audio_id": "e0538a08-0b7b-4e7e-bf5c-ed61bce3da23"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0355L02U12",
+     "slot": "target1",
+     "audio_id": "cffb86f4-3018-4022-b97b-6f4afb0965b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0355L02U12",
+     "slot": "target2",
+     "audio_id": "4e1b5b12-781b-41cd-b816-a7e19a7e2b97"
+    }
+   ]
+  },
+  {
+   "seed": 356,
+   "id": "S0356L01U10",
+   "lego": "S0356L01",
+   "known": "yes they had something important to discuss",
+   "target": "네 그들은 논의할 중요한 게 있었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0356L01U10",
+      "seed_number": 356,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "yes they had something important to discuss",
+      "target_text": "네 그들은 논의할 중요한 게 있었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 356,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0356L01U10",
+     "slot": "known",
+     "audio_id": "392692bc-14fb-494d-b75b-dfa1bf0a27f9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0356L01U10",
+     "slot": "target1",
+     "audio_id": "e48df3a5-9c05-4527-b41c-2b044c311f58"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0356L01U10",
+     "slot": "target2",
+     "audio_id": "2f667953-df1f-4383-a43b-5f56f4081297"
+    }
+   ]
+  },
+  {
+   "seed": 357,
+   "id": "S0357L02U13",
+   "lego": "S0357L02",
+   "known": "no she just wanted to send her a message",
+   "target": "아니요 그녀는 그냥 메시지를 보내고 싶었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0357L02U13",
+      "seed_number": 357,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "no she just wanted to send her a message",
+      "target_text": "아니요 그녀는 그냥 메시지를 보내고 싶었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 357,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0357L02U13",
+     "slot": "known",
+     "audio_id": "b953ab8d-409f-49ed-bb04-ea7e93ce06d1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0357L02U13",
+     "slot": "target1",
+     "audio_id": "d6016ecb-ddfa-4c0c-b203-c12c32d9c446"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0357L02U13",
+     "slot": "target2",
+     "audio_id": "e1a2014b-c979-4390-bb6a-41bfced201c6"
+    }
+   ]
+  },
+  {
+   "seed": 358,
+   "id": "S0358L02U12",
+   "lego": "S0358L02",
+   "known": "your friend said that she couldn't reach the top",
+   "target": "친구가 꼭대기에 닿을 수 없다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0358L02U12",
+      "seed_number": 358,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "your friend said that she couldn't reach the top",
+      "target_text": "친구가 꼭대기에 닿을 수 없다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 358,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0358L02U12",
+     "slot": "known",
+     "audio_id": "28337762-3244-4c39-8841-f8a1901d705f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0358L02U12",
+     "slot": "target1",
+     "audio_id": "74eb6253-e76d-42e7-a35c-179965a1a5b1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0358L02U12",
+     "slot": "target2",
+     "audio_id": "d12475e8-5ea6-42d4-8309-90d7d89f7e85"
+    }
+   ]
+  },
+  {
+   "seed": 359,
+   "id": "S0359L02U13",
+   "lego": "S0359L02",
+   "known": "your friend said that he could turn left",
+   "target": "친구가 왼쪽으로 돌 수 있다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0359L02U13",
+      "seed_number": 359,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "your friend said that he could turn left",
+      "target_text": "친구가 왼쪽으로 돌 수 있다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 359,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0359L02U13",
+     "slot": "known",
+     "audio_id": "8990ba55-f1cf-4514-8886-af2b9a3b4503"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0359L02U13",
+     "slot": "target1",
+     "audio_id": "95605fb3-4ce8-4d34-a480-7bbeb8bda20f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0359L02U13",
+     "slot": "target2",
+     "audio_id": "7cbcf316-be3e-4b8f-afaf-a8c9b4529bb4"
+    }
+   ]
+  },
+  {
+   "seed": 360,
+   "id": "S0360L01U12",
+   "lego": "S0360L01",
+   "known": "did your friend say anything else?",
+   "target": "친구가 다른 말도 했어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0360L01U12",
+      "seed_number": 360,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "did your friend say anything else?",
+      "target_text": "친구가 다른 말도 했어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 360,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0360L01U12",
+     "slot": "known",
+     "audio_id": "0e927c87-dd11-4ab4-a4f4-213b90c8ac8e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0360L01U12",
+     "slot": "target1",
+     "audio_id": "e3c43d5e-a0b8-4a18-8b46-b3d25b57f6c4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0360L01U12",
+     "slot": "target2",
+     "audio_id": "184ccc30-9adf-4889-a0df-e67439f60c02"
+    }
+   ]
+  },
+  {
+   "seed": 361,
+   "id": "S0361L01U12",
+   "lego": "S0361L01",
+   "known": "he was quiet",
+   "target": "그는 조용했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0361L01U12",
+      "seed_number": 361,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "he was quiet",
+      "target_text": "그는 조용했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 361,
+       "canon": "P26"
+      },
+      "word_count": 8,
+      "lego_count": 3,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0361L01U12",
+     "slot": "known",
+     "audio_id": "0e06acf6-8bda-4628-82b5-ab8fbee531c8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0361L01U12",
+     "slot": "target1",
+     "audio_id": "16346bf6-9695-4e5a-8e13-320b1e79a48a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0361L01U12",
+     "slot": "target2",
+     "audio_id": "e0d45c42-9ba3-4208-9f07-a4c7f89ff5f3"
+    }
+   ]
+  },
+  {
+   "seed": 363,
+   "id": "S0363L01U19",
+   "lego": "S0363L01",
+   "known": "yes he felt like talking a lot",
+   "target": "네 그는 많이 이야기하고 싶어했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0363L01U19",
+      "seed_number": 363,
+      "lego_index": 1,
+      "position": 28,
+      "known_text": "yes he felt like talking a lot",
+      "target_text": "네 그는 많이 이야기하고 싶어했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 363,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0363L01U19",
+     "slot": "known",
+     "audio_id": "bb9a89a1-f250-47f9-afb5-c287d139c152"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0363L01U19",
+     "slot": "target1",
+     "audio_id": "5f52df16-7efd-492b-95f1-5cd04f8ce422"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0363L01U19",
+     "slot": "target2",
+     "audio_id": "a1dc8a46-a1c0-4180-9969-bc7762c723da"
+    }
+   ]
+  },
+  {
+   "seed": 364,
+   "id": "S0364L01U14",
+   "lego": "S0364L01",
+   "known": "I heard that he didn't like that place",
+   "target": "그가 그곳을 안 좋아한다고 들었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0364L01U14",
+      "seed_number": 364,
+      "lego_index": 1,
+      "position": 22,
+      "known_text": "I heard that he didn't like that place",
+      "target_text": "그가 그곳을 안 좋아한다고 들었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 364,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0364L01U14",
+     "slot": "known",
+     "audio_id": "937a6fee-46c8-4b83-af15-4db99fc468a3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0364L01U14",
+     "slot": "target1",
+     "audio_id": "90d4fa07-9642-4b18-8adc-9d59932e04a5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0364L01U14",
+     "slot": "target2",
+     "audio_id": "4aff66d5-9ee0-48e2-b5a2-2edd231d8a11"
+    }
+   ]
+  },
+  {
+   "seed": 366,
+   "id": "S0366L01U13",
+   "lego": "S0366L01",
+   "known": "did you hear what he wanted to grow?",
+   "target": "그가 뭘 키우고 싶어하는지 들었어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0366L01U13",
+      "seed_number": 366,
+      "lego_index": 1,
+      "position": 21,
+      "known_text": "did you hear what he wanted to grow?",
+      "target_text": "그가 뭘 키우고 싶어하는지 들었어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 366,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0366L01U13",
+     "slot": "known",
+     "audio_id": "7191f89e-fa53-44e2-ab38-9f957459c8dc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0366L01U13",
+     "slot": "target1",
+     "audio_id": "025431cd-7914-4903-84cf-ec17c0f00aeb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0366L01U13",
+     "slot": "target2",
+     "audio_id": "739ff144-8e1d-4228-870c-aab22818b451"
+    }
+   ]
+  },
+  {
+   "seed": 367,
+   "id": "S0367L01U13",
+   "lego": "S0367L01",
+   "known": "no nobody told me",
+   "target": "아니요 아무도 저한테 말 안 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0367L01U13",
+      "seed_number": 367,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "no nobody told me",
+      "target_text": "아니요 아무도 저한테 말 안 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 367,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0367L01U13",
+     "slot": "known",
+     "audio_id": "70112e76-b432-44ff-9f8d-74294b337eff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0367L01U13",
+     "slot": "target1",
+     "audio_id": "6b60c805-c505-44f4-a51c-5e83ca7f509d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0367L01U13",
+     "slot": "target2",
+     "audio_id": "8599e2f5-538a-41d2-b31e-383de14637e3"
+    }
+   ]
+  },
+  {
+   "seed": 368,
+   "id": "S0368L01U13",
+   "lego": "S0368L01",
+   "known": "yes I heard that he wanted to grow tomatoes",
+   "target": "네 토마토를 키우고 싶어한다고 들었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0368L01U13",
+      "seed_number": 368,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "yes I heard that he wanted to grow tomatoes",
+      "target_text": "네 토마토를 키우고 싶어한다고 들었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 368,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0368L01U13",
+     "slot": "known",
+     "audio_id": "f0c015ce-ac7e-4f1f-89c7-5c76059ff012"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0368L01U13",
+     "slot": "target1",
+     "audio_id": "2535638b-c451-4a8c-8363-a0e7dbe12c07"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0368L01U13",
+     "slot": "target2",
+     "audio_id": "10928ba0-8528-4454-9336-95fe61408ec4"
+    }
+   ]
+  },
+  {
+   "seed": 371,
+   "id": "S0371L02U14",
+   "lego": "S0371L02",
+   "known": "I went to see a film on Wednesday",
+   "target": "수요일에 영화를 보러 갔어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0371L02U14",
+      "seed_number": 371,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "I went to see a film on Wednesday",
+      "target_text": "수요일에 영화를 보러 갔어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 371,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0371L02U14",
+     "slot": "known",
+     "audio_id": "d0744d9a-a3de-466e-ae70-24b1dbe620b7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0371L02U14",
+     "slot": "target1",
+     "audio_id": "f1944b53-ffb0-43c6-82b8-7e87bc981ab6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0371L02U14",
+     "slot": "target2",
+     "audio_id": "549a6c5e-a885-4cd8-b434-3ebb543db422"
+    }
+   ]
+  },
+  {
+   "seed": 372,
+   "id": "S0372L01U12",
+   "lego": "S0372L01",
+   "known": "did you see what she was trying to create?",
+   "target": "그녀가 뭘 만들려고 하는지 봤어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0372L01U12",
+      "seed_number": 372,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "did you see what she was trying to create?",
+      "target_text": "그녀가 뭘 만들려고 하는지 봤어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 372,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0372L01U12",
+     "slot": "known",
+     "audio_id": "33367bab-769f-40f3-b9a2-1ebf32d1149b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0372L01U12",
+     "slot": "target1",
+     "audio_id": "0673757f-37e3-4c4e-9e7d-090d814b21d8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0372L01U12",
+     "slot": "target2",
+     "audio_id": "cf10ca47-5e64-4059-b365-881c2a674ceb"
+    }
+   ]
+  },
+  {
+   "seed": 373,
+   "id": "S0373L01U11",
+   "lego": "S0373L01",
+   "known": "it was beautiful",
+   "target": "아름다웠어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0373L01U11",
+      "seed_number": 373,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "it was beautiful",
+      "target_text": "아름다웠어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 373,
+       "canon": "P26"
+      },
+      "word_count": 6,
+      "lego_count": 3,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0373L01U11",
+     "slot": "known",
+     "audio_id": "c0460cd3-03d7-4cfa-9fb7-2ac3fcec1d3c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0373L01U11",
+     "slot": "target1",
+     "audio_id": "56f26c85-3592-4d7b-b503-42802fdda871"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0373L01U11",
+     "slot": "target2",
+     "audio_id": "65317073-838f-4ad2-a579-d5d4fe1f76ad"
+    }
+   ]
+  },
+  {
+   "seed": 375,
+   "id": "S0375L01U12",
+   "lego": "S0375L01",
+   "known": "no I didn't know what she was doing",
+   "target": "아니요 그녀가 뭘 하고 있었는지 몰랐어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0375L01U12",
+      "seed_number": 375,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "no I didn't know what she was doing",
+      "target_text": "아니요 그녀가 뭘 하고 있었는지 몰랐어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 375,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0375L01U12",
+     "slot": "known",
+     "audio_id": "e66a8e30-56a1-4caf-8daa-cefff5da65a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0375L01U12",
+     "slot": "target1",
+     "audio_id": "59068bbb-e2ad-4662-9e61-daa425ad5001"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0375L01U12",
+     "slot": "target2",
+     "audio_id": "8f27bd43-fc8a-4da3-8ce8-555303a7dc77"
+    }
+   ]
+  },
+  {
+   "seed": 376,
+   "id": "S0376L01U12",
+   "lego": "S0376L01",
+   "known": "I didn't go anywhere last month",
+   "target": "지난달에 아무 데도 안 갔어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0376L01U12",
+      "seed_number": 376,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "I didn't go anywhere last month",
+      "target_text": "지난달에 아무 데도 안 갔어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 376,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0376L01U12",
+     "slot": "known",
+     "audio_id": "01ad1d22-f7b1-4b22-aa28-59c44a6dfa5e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0376L01U12",
+     "slot": "target1",
+     "audio_id": "799bed44-345d-42b0-bfe9-f6b945bf10ff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0376L01U12",
+     "slot": "target2",
+     "audio_id": "c17e4471-8d98-425f-b944-d950047f0646"
+    }
+   ]
+  },
+  {
+   "seed": 379,
+   "id": "S0379L03U09",
+   "lego": "S0379L03",
+   "known": "yes I was lucky enough to travel to Africa",
+   "target": "네 운 좋게도 아프리카에 여행 갔어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0379L03U09",
+      "seed_number": 379,
+      "lego_index": 3,
+      "position": 17,
+      "known_text": "yes I was lucky enough to travel to Africa",
+      "target_text": "네 운 좋게도 아프리카에 여행 갔어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 379,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0379L03U09",
+     "slot": "known",
+     "audio_id": "17058213-4f61-43ab-8838-e6ad0d3b8055"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0379L03U09",
+     "slot": "target1",
+     "audio_id": "ad3b8645-6211-459f-bc8d-e711efbc1cfb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0379L03U09",
+     "slot": "target2",
+     "audio_id": "86a9753c-7227-4837-8328-019cbae237df"
+    }
+   ]
+  },
+  {
+   "seed": 380,
+   "id": "S0380L03U13",
+   "lego": "S0380L03",
+   "known": "I asked what she wanted to include",
+   "target": "그녀가 뭘 포함하고 싶어하는지 물어봤어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0380L03U13",
+      "seed_number": 380,
+      "lego_index": 3,
+      "position": 20,
+      "known_text": "I asked what she wanted to include",
+      "target_text": "그녀가 뭘 포함하고 싶어하는지 물어봤어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 380,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0380L03U13",
+     "slot": "known",
+     "audio_id": "628610c9-77c7-4ce7-a53f-0568e32a2ada"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0380L03U13",
+     "slot": "target1",
+     "audio_id": "989cbccd-18c4-43e3-981a-3475d509d1f2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0380L03U13",
+     "slot": "target2",
+     "audio_id": "c17babe3-157e-4f8c-9007-a7f8b6ef564d"
+    }
+   ]
+  },
+  {
+   "seed": 381,
+   "id": "S0381L03U12",
+   "lego": "S0381L03",
+   "known": "I didn't ask if he wanted to follow us",
+   "target": "그가 우리를 따라오고 싶어하는지 물어보지 않았어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0381L03U12",
+      "seed_number": 381,
+      "lego_index": 3,
+      "position": 19,
+      "known_text": "I didn't ask if he wanted to follow us",
+      "target_text": "그가 우리를 따라오고 싶어하는지 물어보지 않았어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 381,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0381L03U12",
+     "slot": "known",
+     "audio_id": "7a2991b8-5cb2-4bf5-b659-316c2c3ce61b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0381L03U12",
+     "slot": "target1",
+     "audio_id": "47fb50c1-400a-4262-b912-4b3b51442ffd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0381L03U12",
+     "slot": "target2",
+     "audio_id": "b0253d8f-418d-4af4-a26a-338a76071068"
+    }
+   ]
+  },
+  {
+   "seed": 382,
+   "id": "S0382L01U16",
+   "lego": "S0382L01",
+   "known": "did you ask where he wanted to put it?",
+   "target": "그가 그걸 어디에 놓고 싶어하는지 물어봤어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0382L01U16",
+      "seed_number": 382,
+      "lego_index": 1,
+      "position": 23,
+      "known_text": "did you ask where he wanted to put it?",
+      "target_text": "그가 그걸 어디에 놓고 싶어하는지 물어봤어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 382,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0382L01U16",
+     "slot": "known",
+     "audio_id": "f284cbf4-d10b-4908-889a-4ba92763dae0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0382L01U16",
+     "slot": "target1",
+     "audio_id": "68035684-490c-4d6a-b87f-938afe44ec4d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0382L01U16",
+     "slot": "target2",
+     "audio_id": "f52c1461-2991-4fb3-a424-96bb2a591d03"
+    }
+   ]
+  },
+  {
+   "seed": 383,
+   "id": "S0383L01U12",
+   "lego": "S0383L01",
+   "known": "yes he said he wanted to put it in the garden",
+   "target": "네 정원에 놓고 싶다고 했어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0383L01U12",
+      "seed_number": 383,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "yes he said he wanted to put it in the garden",
+      "target_text": "네 정원에 놓고 싶다고 했어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 383,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 11,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0383L01U12",
+     "slot": "known",
+     "audio_id": "5d601db8-60a8-4939-b574-6487b992a205"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0383L01U12",
+     "slot": "target1",
+     "audio_id": "5c1329b2-9d62-44a5-9473-d8b93241e6b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0383L01U12",
+     "slot": "target2",
+     "audio_id": "86faa886-f9c5-4c4b-ba95-d9a2c545dc87"
+    }
+   ]
+  },
+  {
+   "seed": 384,
+   "id": "S0384L01U16",
+   "lego": "S0384L01",
+   "known": "I couldn't agree with what he said a moment ago",
+   "target": "방금 그가 한 말에 동의할 수 없었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0384L01U16",
+      "seed_number": 384,
+      "lego_index": 1,
+      "position": 23,
+      "known_text": "I couldn't agree with what he said a moment ago",
+      "target_text": "방금 그가 한 말에 동의할 수 없었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 384,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0384L01U16",
+     "slot": "known",
+     "audio_id": "a1fbf03f-7752-4d1b-8f5a-0b2ffd084691"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0384L01U16",
+     "slot": "target1",
+     "audio_id": "398ceae3-86ff-4b10-ab56-0b6a63de2546"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0384L01U16",
+     "slot": "target2",
+     "audio_id": "9c0aea89-9e59-41de-ba3e-3bd2f043afc2"
+    }
+   ]
+  },
+  {
+   "seed": 385,
+   "id": "S0385L01U09",
+   "lego": "S0385L01",
+   "known": "did you agree with her?",
+   "target": "그녀에게 동의했어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0385L01U09",
+      "seed_number": 385,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "did you agree with her?",
+      "target_text": "그녀에게 동의했어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 385,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 5,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0385L01U09",
+     "slot": "known",
+     "audio_id": "cc9b6032-1bd0-4c5f-9a79-393b7289c7f2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0385L01U09",
+     "slot": "target1",
+     "audio_id": "45b993c0-2bba-4500-967b-ffedfe59db69"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0385L01U09",
+     "slot": "target2",
+     "audio_id": "eb947895-2d72-4c5e-9bb9-6b49f665d600"
+    }
+   ]
+  },
+  {
+   "seed": 388,
+   "id": "S0388L01U13",
+   "lego": "S0388L01",
+   "known": "that person you work with",
+   "target": "같이 일하는 그 사람",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0388L01U13",
+      "seed_number": 388,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "that person you work with",
+      "target_text": "같이 일하는 그 사람",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 388,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0388L01U13",
+     "slot": "known",
+     "audio_id": "06f219e8-8a9f-45ef-a78d-65ed69c0292b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0388L01U13",
+     "slot": "target1",
+     "audio_id": "30f89126-5e75-4a34-9bc8-8a32448c3f40"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0388L01U13",
+     "slot": "target2",
+     "audio_id": "0ccd7bcf-31d6-4641-b54a-3fa7b1003bd8"
+    }
+   ]
+  },
+  {
+   "seed": 390,
+   "id": "S0390L03U13",
+   "lego": "S0390L03",
+   "known": "the one who is standing near the entrance",
+   "target": "입구 근처에 서 있는 사람",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0390L03U13",
+      "seed_number": 390,
+      "lego_index": 3,
+      "position": 20,
+      "known_text": "the one who is standing near the entrance",
+      "target_text": "입구 근처에 서 있는 사람",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 390,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0390L03U13",
+     "slot": "known",
+     "audio_id": "35ba1be7-0e14-4c22-9bc9-c763844f4bbe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0390L03U13",
+     "slot": "target1",
+     "audio_id": "ae6f1eca-4539-4d08-81c6-8a051f8e4183"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0390L03U13",
+     "slot": "target2",
+     "audio_id": "215ba326-df67-458f-b1a0-939187e4a87d"
+    }
+   ]
+  },
+  {
+   "seed": 391,
+   "id": "S0391L02U11",
+   "lego": "S0391L02",
+   "known": "the one who is walking towards the bus",
+   "target": "버스 쪽으로 걷고 있는 사람",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0391L02U11",
+      "seed_number": 391,
+      "lego_index": 2,
+      "position": 18,
+      "known_text": "the one who is walking towards the bus",
+      "target_text": "버스 쪽으로 걷고 있는 사람",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 391,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0391L02U11",
+     "slot": "known",
+     "audio_id": "9139cd5b-4f9c-4cc8-b1ba-4bc7abfcee2e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0391L02U11",
+     "slot": "target1",
+     "audio_id": "bd1e9807-b53b-4939-a08c-28184b78b1fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0391L02U11",
+     "slot": "target2",
+     "audio_id": "eb97739f-075a-475d-a406-2c7e6038cdd5"
+    }
+   ]
+  },
+  {
+   "seed": 392,
+   "id": "S0392L05U11",
+   "lego": "S0392L05",
+   "known": "that child with the black hair opposite the post office",
+   "target": "우체국 맞은편에 있는 검은 머리 아이",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0392L05U11",
+      "seed_number": 392,
+      "lego_index": 5,
+      "position": 17,
+      "known_text": "that child with the black hair opposite the post office",
+      "target_text": "우체국 맞은편에 있는 검은 머리 아이",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 392,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0392L05U11",
+     "slot": "known",
+     "audio_id": "28a04339-6100-4325-8019-106c761f11e1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0392L05U11",
+     "slot": "target1",
+     "audio_id": "c318dedc-d319-4c56-862c-f85ab850fb93"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0392L05U11",
+     "slot": "target2",
+     "audio_id": "ac014541-85a8-4145-a6b9-f06dce813b4b"
+    }
+   ]
+  },
+  {
+   "seed": 393,
+   "id": "S0393L04U14",
+   "lego": "S0393L04",
+   "known": "that boy with the green shirt",
+   "target": "초록색 셔츠를 입은 그 남자아이",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0393L04U14",
+      "seed_number": 393,
+      "lego_index": 4,
+      "position": 22,
+      "known_text": "that boy with the green shirt",
+      "target_text": "초록색 셔츠를 입은 그 남자아이",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 393,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0393L04U14",
+     "slot": "known",
+     "audio_id": "438ab837-69ac-4ceb-a887-0d87f7847ddc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0393L04U14",
+     "slot": "target1",
+     "audio_id": "d143599f-7196-4985-9bc2-e465eca674b4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0393L04U14",
+     "slot": "target2",
+     "audio_id": "c64a778a-2b73-45ee-ab94-415df079eea6"
+    }
+   ]
+  },
+  {
+   "seed": 394,
+   "id": "S0394L03U13",
+   "lego": "S0394L03",
+   "known": "that girl with the yellow dress",
+   "target": "노란 원피스를 입은 그 여자아이",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0394L03U13",
+      "seed_number": 394,
+      "lego_index": 3,
+      "position": 20,
+      "known_text": "that girl with the yellow dress",
+      "target_text": "노란 원피스를 입은 그 여자아이",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 394,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0394L03U13",
+     "slot": "known",
+     "audio_id": "3f7f139b-461a-4404-9de5-07dc09ac22fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0394L03U13",
+     "slot": "target1",
+     "audio_id": "7fe23c20-16b1-4f7d-9c00-4033c1acac4f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0394L03U13",
+     "slot": "target2",
+     "audio_id": "dbc1ddd6-5c66-4ccf-b6c4-a2b7ffe989bc"
+    }
+   ]
+  },
+  {
+   "seed": 395,
+   "id": "S0395L02U12",
+   "lego": "S0395L02",
+   "known": "we need to turn left at the next corner",
+   "target": "다음 모퉁이에서 왼쪽으로 돌아야 해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0395L02U12",
+      "seed_number": 395,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "we need to turn left at the next corner",
+      "target_text": "다음 모퉁이에서 왼쪽으로 돌아야 해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 395,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0395L02U12",
+     "slot": "known",
+     "audio_id": "07e1822b-9ecb-4763-8a30-6b23c4cb488f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0395L02U12",
+     "slot": "target1",
+     "audio_id": "647cd26f-abd1-45e2-a05f-775b7735905f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0395L02U12",
+     "slot": "target2",
+     "audio_id": "3944fadf-9d7e-4bac-8d77-29d4829d272d"
+    }
+   ]
+  },
+  {
+   "seed": 396,
+   "id": "S0396L02U10",
+   "lego": "S0396L02",
+   "known": "we don't need to stand until everybody else is ready",
+   "target": "다른 사람들이 다 준비될 때까지 서 있을 필요 없어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0396L02U10",
+      "seed_number": 396,
+      "lego_index": 2,
+      "position": 17,
+      "known_text": "we don't need to stand until everybody else is ready",
+      "target_text": "다른 사람들이 다 준비될 때까지 서 있을 필요 없어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 396,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0396L02U10",
+     "slot": "known",
+     "audio_id": "29ef530b-edfe-4ebc-aa1b-a8c16decb93f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0396L02U10",
+     "slot": "target1",
+     "audio_id": "741839ff-a2c3-4281-9fc8-bf05b7658745"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0396L02U10",
+     "slot": "target2",
+     "audio_id": "f0575b19-212a-4593-ac58-5d8447881fd5"
+    }
+   ]
+  },
+  {
+   "seed": 397,
+   "id": "S0397L01U16",
+   "lego": "S0397L01",
+   "known": "do we need to get ready soon?",
+   "target": "곧 준비해야 해요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0397L01U16",
+      "seed_number": 397,
+      "lego_index": 1,
+      "position": 23,
+      "known_text": "do we need to get ready soon?",
+      "target_text": "곧 준비해야 해요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 397,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0397L01U16",
+     "slot": "known",
+     "audio_id": "7dcd075a-b2f8-4b21-9e26-b1b9f4642781"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0397L01U16",
+     "slot": "target1",
+     "audio_id": "f5fcfdc2-fcee-4376-8d46-e4e9413e2985"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0397L01U16",
+     "slot": "target2",
+     "audio_id": "38f6625e-3c6d-4b21-a1c8-ab1a094bcf7c"
+    }
+   ]
+  },
+  {
+   "seed": 398,
+   "id": "S0398L04U13",
+   "lego": "S0398L04",
+   "known": "we want to become more patient with our children",
+   "target": "아이들에게 더 참을성 있게 되고 싶어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0398L04U13",
+      "seed_number": 398,
+      "lego_index": 4,
+      "position": 20,
+      "known_text": "we want to become more patient with our children",
+      "target_text": "아이들에게 더 참을성 있게 되고 싶어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 398,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0398L04U13",
+     "slot": "known",
+     "audio_id": "0c076ca2-46b4-42e2-a559-3a7e7254f197"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0398L04U13",
+     "slot": "target1",
+     "audio_id": "5aa85b5c-5c79-4907-94d5-8976481dfde9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0398L04U13",
+     "slot": "target2",
+     "audio_id": "b1f7d21a-b9fc-40e9-b4ac-4ca85a794560"
+    }
+   ]
+  },
+  {
+   "seed": 400,
+   "id": "S0400L01U15",
+   "lego": "S0400L01",
+   "known": "do we want to eat something later on?",
+   "target": "나중에 뭔가 먹고 싶어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0400L01U15",
+      "seed_number": 400,
+      "lego_index": 1,
+      "position": 21,
+      "known_text": "do we want to eat something later on?",
+      "target_text": "나중에 뭔가 먹고 싶어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 400,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0400L01U15",
+     "slot": "known",
+     "audio_id": "3cacd090-107f-4fc7-b46e-d430b210741e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0400L01U15",
+     "slot": "target1",
+     "audio_id": "82bfee68-e99f-435a-921d-28456a0b4e1b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0400L01U15",
+     "slot": "target2",
+     "audio_id": "3f191ec3-151e-4c28-b4bb-a31414c98013"
+    }
+   ]
+  },
+  {
+   "seed": 401,
+   "id": "S0401L01U12",
+   "lego": "S0401L01",
+   "known": "no it would be better to go straight home",
+   "target": "아니요 바로 집에 가는 게 나을 거예요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0401L01U12",
+      "seed_number": 401,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "no it would be better to go straight home",
+      "target_text": "아니요 바로 집에 가는 게 나을 거예요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 401,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0401L01U12",
+     "slot": "known",
+     "audio_id": "decaaa65-b5ac-4075-a777-3acc0915d6c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0401L01U12",
+     "slot": "target1",
+     "audio_id": "d0528041-192f-493e-a2ad-39dd032a79ba"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0401L01U12",
+     "slot": "target2",
+     "audio_id": "7049631f-21f8-43f2-a01d-f29c912e42a3"
+    }
+   ]
+  },
+  {
+   "seed": 402,
+   "id": "S0402L04U11",
+   "lego": "S0402L04",
+   "known": "yes it would be nice to stop somewhere for food",
+   "target": "네 어딘가에 들러서 음식을 먹으면 좋을 것 같아요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0402L04U11",
+      "seed_number": 402,
+      "lego_index": 4,
+      "position": 18,
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "네 어딘가에 들러서 음식을 먹으면 좋을 것 같아요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 402,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0402L04U11",
+     "slot": "known",
+     "audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0402L04U11",
+     "slot": "target1",
+     "audio_id": "7a2f16d4-0807-4f07-a22a-7b9cf8339f36"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0402L04U11",
+     "slot": "target2",
+     "audio_id": "57419683-2937-4ae5-9257-cd740b2de3c2"
+    }
+   ]
+  },
+  {
+   "seed": 404,
+   "id": "S0404L02U14",
+   "lego": "S0404L02",
+   "known": "we shouldn't expect to finish before Thursday",
+   "target": "목요일 전에 끝낼 거라고 기대하면 안 돼요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0404L02U14",
+      "seed_number": 404,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "we shouldn't expect to finish before Thursday",
+      "target_text": "목요일 전에 끝낼 거라고 기대하면 안 돼요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 404,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0404L02U14",
+     "slot": "known",
+     "audio_id": "3c9a6d06-bfdf-46e5-a4a9-43f92916866d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0404L02U14",
+     "slot": "target1",
+     "audio_id": "cd8c9383-f107-44c0-b57d-8a384bd106d4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0404L02U14",
+     "slot": "target2",
+     "audio_id": "bfe172a0-9260-44b7-b654-7272dd203692"
+    }
+   ]
+  },
+  {
+   "seed": 405,
+   "id": "S0405L03U12",
+   "lego": "S0405L03",
+   "known": "should we ask if we have to book?",
+   "target": "예약해야 하는지 물어봐야 할까요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0405L03U12",
+      "seed_number": 405,
+      "lego_index": 3,
+      "position": 19,
+      "known_text": "should we ask if we have to book?",
+      "target_text": "예약해야 하는지 물어봐야 할까요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 405,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0405L03U12",
+     "slot": "known",
+     "audio_id": "659fe734-9dae-4671-963a-558c40a81e3a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0405L03U12",
+     "slot": "target1",
+     "audio_id": "657328c7-575a-4216-9cb9-aa2d21475d91"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0405L03U12",
+     "slot": "target2",
+     "audio_id": "f0bd8372-da55-4876-873c-3d2da939946e"
+    }
+   ]
+  },
+  {
+   "seed": 407,
+   "id": "S0407L02U09",
+   "lego": "S0407L02",
+   "known": "shouldn't we try to set a good example?",
+   "target": "좋은 모범을 보여야 하지 않아요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0407L02U09",
+      "seed_number": 407,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "shouldn't we try to set a good example?",
+      "target_text": "좋은 모범을 보여야 하지 않아요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 407,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0407L02U09",
+     "slot": "known",
+     "audio_id": "902dde8e-52bf-4791-8407-98ba4f5c636e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0407L02U09",
+     "slot": "target1",
+     "audio_id": "3911cfb3-8266-4532-bbd7-22e0645c39b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0407L02U09",
+     "slot": "target2",
+     "audio_id": "f10eb309-6a5f-44ef-a45a-62ec4d6b51b6"
+    }
+   ]
+  },
+  {
+   "seed": 408,
+   "id": "S0408L03U12",
+   "lego": "S0408L03",
+   "known": "yes that's the best way to make a happy family",
+   "target": "네 그게 행복한 가족을 만드는 가장 좋은 방법이에요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0408L03U12",
+      "seed_number": 408,
+      "lego_index": 3,
+      "position": 19,
+      "known_text": "yes that's the best way to make a happy family",
+      "target_text": "네 그게 행복한 가족을 만드는 가장 좋은 방법이에요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 408,
+       "canon": "P26"
+      },
+      "word_count": 28,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0408L03U12",
+     "slot": "known",
+     "audio_id": "b6dcb668-de49-49f9-ad0a-8b96d1c2cc19"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0408L03U12",
+     "slot": "target1",
+     "audio_id": "4fa3e9dd-b97e-4c9c-bd7f-29ce503ce3f1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0408L03U12",
+     "slot": "target2",
+     "audio_id": "79151015-8583-4885-92b6-b46b078af4fe"
+    }
+   ]
+  },
+  {
+   "seed": 411,
+   "id": "S0411L03U12",
+   "lego": "S0411L03",
+   "known": "we would like to reserve a table for four tonight",
+   "target": "오늘 밤에 네 명 자리를 예약하고 싶어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0411L03U12",
+      "seed_number": 411,
+      "lego_index": 3,
+      "position": 19,
+      "known_text": "we would like to reserve a table for four tonight",
+      "target_text": "오늘 밤에 네 명 자리를 예약하고 싶어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 411,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0411L03U12",
+     "slot": "known",
+     "audio_id": "784e3502-6c50-4cdb-a2ba-48bdbfd92855"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0411L03U12",
+     "slot": "target1",
+     "audio_id": "d6d007b5-e0c2-4a16-857e-4d0d38d5f4d3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0411L03U12",
+     "slot": "target2",
+     "audio_id": "e1f4a68a-5e41-431d-85d5-2b2561fb8d1a"
+    }
+   ]
+  },
+  {
+   "seed": 412,
+   "id": "S0412L01U12",
+   "lego": "S0412L01",
+   "known": "we couldn't allow them to win everything",
+   "target": "그들이 다 이기게 할 수 없었어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0412L01U12",
+      "seed_number": 412,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "we couldn't allow them to win everything",
+      "target_text": "그들이 다 이기게 할 수 없었어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 412,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0412L01U12",
+     "slot": "known",
+     "audio_id": "38da1eb1-000e-496a-b493-39facc16c868"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0412L01U12",
+     "slot": "target1",
+     "audio_id": "7f993511-bb6d-49cb-b5cf-b688e29899c0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0412L01U12",
+     "slot": "target2",
+     "audio_id": "0bdc614d-7963-4d81-8215-6608729393e1"
+    }
+   ]
+  },
+  {
+   "seed": 413,
+   "id": "S0413L04U13",
+   "lego": "S0413L04",
+   "known": "we could fall if we go too close to the edge",
+   "target": "가장자리에 너무 가까이 가면 넘어질 수 있어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0413L04U13",
+      "seed_number": 413,
+      "lego_index": 4,
+      "position": 19,
+      "known_text": "we could fall if we go too close to the edge",
+      "target_text": "가장자리에 너무 가까이 가면 넘어질 수 있어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 413,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 11,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0413L04U13",
+     "slot": "known",
+     "audio_id": "85148a5a-70f8-4cbf-9925-a79f528062a1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0413L04U13",
+     "slot": "target1",
+     "audio_id": "d3866492-8bc3-4334-b847-38379f53a28d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0413L04U13",
+     "slot": "target2",
+     "audio_id": "3988d421-c4e3-4a07-a5c9-af6943c4d1ac"
+    }
+   ]
+  },
+  {
+   "seed": 414,
+   "id": "S0414L03U11",
+   "lego": "S0414L03",
+   "known": "could we have a bottle of red wine please?",
+   "target": "레드 와인 한 병 주실 수 있어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0414L03U11",
+      "seed_number": 414,
+      "lego_index": 3,
+      "position": 17,
+      "known_text": "could we have a bottle of red wine please?",
+      "target_text": "레드 와인 한 병 주실 수 있어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 414,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0414L03U11",
+     "slot": "known",
+     "audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0414L03U11",
+     "slot": "target1",
+     "audio_id": "f207df0f-c432-48aa-8f56-21f49c68f060"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0414L03U11",
+     "slot": "target2",
+     "audio_id": "50c4b2bd-b275-41ed-9783-a34b2aa05a4f"
+    }
+   ]
+  },
+  {
+   "seed": 416,
+   "id": "S0416L01U12",
+   "lego": "S0416L01",
+   "known": "they want to lead the way next year",
+   "target": "그들은 내년에 앞장서고 싶어해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0416L01U12",
+      "seed_number": 416,
+      "lego_index": 1,
+      "position": 19,
+      "known_text": "they want to lead the way next year",
+      "target_text": "그들은 내년에 앞장서고 싶어해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 416,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0416L01U12",
+     "slot": "known",
+     "audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0416L01U12",
+     "slot": "target1",
+     "audio_id": "b8cc8a5c-f758-49ed-8737-4b0c89a8a8ef"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0416L01U12",
+     "slot": "target2",
+     "audio_id": "1d4ef6ba-d213-4aae-9a04-02707c9118df"
+    }
+   ]
+  },
+  {
+   "seed": 417,
+   "id": "S0417L02U13",
+   "lego": "S0417L02",
+   "known": "do they want to kill those ants?",
+   "target": "그들은 그 개미들을 죽이고 싶어해요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0417L02U13",
+      "seed_number": 417,
+      "lego_index": 2,
+      "position": 20,
+      "known_text": "do they want to kill those ants?",
+      "target_text": "그들은 그 개미들을 죽이고 싶어해요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 417,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0417L02U13",
+     "slot": "known",
+     "audio_id": "f291eb24-4233-4583-80b8-711d323c4501"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0417L02U13",
+     "slot": "target1",
+     "audio_id": "d58efbdb-d694-48a7-80f5-c82c8a04520d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0417L02U13",
+     "slot": "target2",
+     "audio_id": "856bf6a1-b134-4ebd-ba78-39ff11fc9233"
+    }
+   ]
+  },
+  {
+   "seed": 418,
+   "id": "S0418L03U14",
+   "lego": "S0418L03",
+   "known": "they need to serve the community",
+   "target": "그들은 지역 사회에 봉사해야 해요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0418L03U14",
+      "seed_number": 418,
+      "lego_index": 3,
+      "position": 20,
+      "known_text": "they need to serve the community",
+      "target_text": "그들은 지역 사회에 봉사해야 해요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 418,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0418L03U14",
+     "slot": "known",
+     "audio_id": "c4094acf-ac42-45a2-b802-627a426ebfa1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0418L03U14",
+     "slot": "target1",
+     "audio_id": "91ca0eb1-ab15-48b8-ad3f-12c15f85e3f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0418L03U14",
+     "slot": "target2",
+     "audio_id": "e773b038-a754-4ef7-9269-3236c06820f4"
+    }
+   ]
+  },
+  {
+   "seed": 419,
+   "id": "S0419L02U11",
+   "lego": "S0419L02",
+   "known": "if they want people to like them",
+   "target": "사람들이 자기들을 좋아하길 원하면",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0419L02U11",
+      "seed_number": 419,
+      "lego_index": 2,
+      "position": 18,
+      "known_text": "if they want people to like them",
+      "target_text": "사람들이 자기들을 좋아하길 원하면",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 419,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0419L02U11",
+     "slot": "known",
+     "audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0419L02U11",
+     "slot": "target1",
+     "audio_id": "7d57f6f9-4067-45dd-8205-d3d7f6d9e8cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0419L02U11",
+     "slot": "target2",
+     "audio_id": "2a0f298c-5b42-453c-b4c4-ba65701dbe3e"
+    }
+   ]
+  },
+  {
+   "seed": 420,
+   "id": "S0420L02U16",
+   "lego": "S0420L02",
+   "known": "they don't need to ask how old he is",
+   "target": "그들은 그가 몇 살인지 물어볼 필요 없어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0420L02U16",
+      "seed_number": 420,
+      "lego_index": 2,
+      "position": 23,
+      "known_text": "they don't need to ask how old he is",
+      "target_text": "그들은 그가 몇 살인지 물어볼 필요 없어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 420,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0420L02U16",
+     "slot": "known",
+     "audio_id": "fa21f604-5332-4307-98c4-3b3ecb96b231"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0420L02U16",
+     "slot": "target1",
+     "audio_id": "d8807de5-4a1f-4515-ba75-ea5ed16213d9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0420L02U16",
+     "slot": "target2",
+     "audio_id": "69a6c099-013b-40f2-b008-336f7051280c"
+    }
+   ]
+  },
+  {
+   "seed": 422,
+   "id": "S0422L01U12",
+   "lego": "S0422L01",
+   "known": "a question",
+   "target": "질문",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0422L01U12",
+      "seed_number": 422,
+      "lego_index": 1,
+      "position": 20,
+      "known_text": "a question",
+      "target_text": "질문",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 422,
+       "canon": "P26"
+      },
+      "word_count": 2,
+      "lego_count": 2,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0422L01U12",
+     "slot": "known",
+     "audio_id": "16307316-061e-4823-ae2c-26112413b19f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0422L01U12",
+     "slot": "target1",
+     "audio_id": "aef685b9-0345-4a1a-a522-aaf79672aaf0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0422L01U12",
+     "slot": "target2",
+     "audio_id": "ff7e865b-4896-4dd6-82fe-ed107079fba6"
+    }
+   ]
+  },
+  {
+   "seed": 423,
+   "id": "S0423L03U12",
+   "lego": "S0423L03",
+   "known": "do they need to ask such an obvious question?",
+   "target": "그런 뻔한 질문을 해야 해요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0423L03U12",
+      "seed_number": 423,
+      "lego_index": 3,
+      "position": 19,
+      "known_text": "do they need to ask such an obvious question?",
+      "target_text": "그런 뻔한 질문을 해야 해요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 423,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0423L03U12",
+     "slot": "known",
+     "audio_id": "818ae955-ac76-4a3c-80a9-47611c782e2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0423L03U12",
+     "slot": "target1",
+     "audio_id": "ea55749d-2f7e-4dfe-a897-dfccc260cfa9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0423L03U12",
+     "slot": "target2",
+     "audio_id": "38448bb3-bef4-4501-9b56-2f151ba47123"
+    }
+   ]
+  },
+  {
+   "seed": 424,
+   "id": "S0424L02U12",
+   "lego": "S0424L02",
+   "known": "no they're wasting everybody's time",
+   "target": "아니요 모두의 시간을 낭비하고 있어요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0424L02U12",
+      "seed_number": 424,
+      "lego_index": 2,
+      "position": 19,
+      "known_text": "no they're wasting everybody's time",
+      "target_text": "아니요 모두의 시간을 낭비하고 있어요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 424,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0424L02U12",
+     "slot": "known",
+     "audio_id": "290dc5e0-ce95-4da8-944d-12fca8d4a189"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0424L02U12",
+     "slot": "target1",
+     "audio_id": "26941276-4626-4ad1-82a5-bce90c1b5416"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0424L02U12",
+     "slot": "target2",
+     "audio_id": "ed354eec-a380-4fd5-b662-2c68bd4f2055"
+    }
+   ]
+  },
+  {
+   "seed": 428,
+   "id": "S0428L02U18",
+   "lego": "S0428L02",
+   "known": "would they like to visit us on Tuesday?",
+   "target": "그들은 화요일에 우리를 방문하고 싶어할까요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0428L02U18",
+      "seed_number": 428,
+      "lego_index": 2,
+      "position": 25,
+      "known_text": "would they like to visit us on Tuesday?",
+      "target_text": "그들은 화요일에 우리를 방문하고 싶어할까요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 428,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0428L02U18",
+     "slot": "known",
+     "audio_id": "95f914aa-3be6-4358-8622-deb4a1e36133"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0428L02U18",
+     "slot": "target1",
+     "audio_id": "b6407b9e-7f50-47bb-8507-d40ee6cb2f3b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0428L02U18",
+     "slot": "target2",
+     "audio_id": "3f80851b-f0f8-4efe-b90b-4786fc75f339"
+    }
+   ]
+  },
+  {
+   "seed": 429,
+   "id": "S0429L02U11",
+   "lego": "S0429L02",
+   "known": "yes that would be perfect for them",
+   "target": "네 그러면 그들에게 완벽할 거예요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0429L02U11",
+      "seed_number": 429,
+      "lego_index": 2,
+      "position": 18,
+      "known_text": "yes that would be perfect for them",
+      "target_text": "네 그러면 그들에게 완벽할 거예요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 429,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0429L02U11",
+     "slot": "known",
+     "audio_id": "c4329229-ea29-409c-b176-5d306c351f8d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0429L02U11",
+     "slot": "target1",
+     "audio_id": "2472ed07-20d3-4594-bd6f-97ac7804bd55"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0429L02U11",
+     "slot": "target2",
+     "audio_id": "857950b7-89d3-4f8f-9a59-78de18578498"
+    }
+   ]
+  },
+  {
+   "seed": 430,
+   "id": "S0430L01U11",
+   "lego": "S0430L01",
+   "known": "no that wouldn't be possible",
+   "target": "아니요 그건 가능하지 않을 거예요",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0430L01U11",
+      "seed_number": 430,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "no that wouldn't be possible",
+      "target_text": "아니요 그건 가능하지 않을 거예요",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 430,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0430L01U11",
+     "slot": "known",
+     "audio_id": "78286993-4a71-4510-86a3-605d2f5cd58a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0430L01U11",
+     "slot": "target1",
+     "audio_id": "320850a4-d384-4354-9a05-d774b9bfe5c7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0430L01U11",
+     "slot": "target2",
+     "audio_id": "2d75630c-c603-42d8-8397-7cd39b7fe7b8"
+    }
+   ]
+  },
+  {
+   "seed": 559,
+   "id": "S0559L02U07",
+   "lego": "S0559L02",
+   "known": "have you found the path through the wood?",
+   "target": "숲을 지나는 길을 찾았어요?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0559L02U07",
+      "seed_number": 559,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "have you found the path through the wood?",
+      "target_text": "숲을 지나는 길을 찾았어요?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 559,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0559L02U07",
+     "slot": "known",
+     "audio_id": "8be50bb8-be74-4be0-b7a9-9c0aba7db646"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0559L02U07",
+     "slot": "target1",
+     "audio_id": "95a29fef-7181-47c8-8b3f-bf4adf3dbc50"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "kor_for_eng:S0559L02U07",
+     "slot": "target2",
+     "audio_id": "f1e519a2-c1b0-4a7f-afa9-28c3d20a1a6d"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_form": [
+   {
+    "seed": 5,
+    "known": "I'm going to practise speaking with someone else",
+    "target": "다른 사람과 말하는 연습을 할 거예요",
+    "row": "S0005L03U05",
+    "row_known": "I'm going to practice speaking with someone else",
+    "row_target": "다른 사람과 말하는 연습을 할 거예요"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 75,
+    "known": "have you got more to learn?",
+    "target": "더 배울 게 있어요?",
+    "legos": [
+     "S0075L01(old) still more to learn | 아직 더 배울 게 있어요"
+    ]
+   },
+   {
+    "seed": 344,
+    "known": "who said that he's happy to help you",
+    "target": "그가 기꺼이 도와주겠다고 했어요",
+    "legos": [
+     "S0344L01 willingly | 기꺼이",
+     "S0344L02 will help | 도와주겠다고"
+    ]
+   },
+   {
+    "seed": 347,
+    "known": "he wanted to know what was happening a week ago",
+    "target": "그는 일주일 전에 무슨 일이 있었는지 알고 싶어했어요",
+    "legos": [
+     "S0347L01 whether there was | 있었는지"
+    ]
+   },
+   {
+    "seed": 362,
+    "known": "no he was rather quiet after you left",
+    "target": "아니요 떠난 후에 그는 좀 조용했어요",
+    "legos": [
+     "S0362L01 who left | 떠난"
+    ]
+   },
+   {
+    "seed": 365,
+    "known": "I didn't hear what she said to him",
+    "target": "그녀가 그한테 뭐라고 했는지 못 들었어요",
+    "legos": [
+     "S0365L01 couldn't hear | 못 들었어요"
+    ]
+   },
+   {
+    "seed": 370,
+    "known": "I didn't see anyone that I knew",
+    "target": "아는 사람을 아무도 못 봤어요",
+    "legos": [
+     "S0370L01 a person I know | 아는 사람을"
+    ]
+   },
+   {
+    "seed": 374,
+    "known": "yes I thought it was very beautiful",
+    "target": "네 아주 아름다웠다고 생각했어요",
+    "legos": [
+     "S0374L01 was beautiful - reported | 아름다웠다고"
+    ]
+   },
+   {
+    "seed": 386,
+    "known": "yes I agreed with her",
+    "target": "네 그녀에게 동의했어요",
+    "legos": [
+     "S0386L01(old) yes | 네"
+    ]
+   },
+   {
+    "seed": 387,
+    "known": "no I didn't think she was right",
+    "target": "아니요 그녀가 맞다고 생각하지 않았어요",
+    "legos": [
+     "S0387L01 that it's right | 맞다고",
+     "S0387L02 don't think | 생각하지"
+    ]
+   },
+   {
+    "seed": 389,
+    "known": "that person over there",
+    "target": "저기 있는 그 사람",
+    "legos": [
+     "S0389L01(old) over there | 저기"
+    ]
+   },
+   {
+    "seed": 403,
+    "known": "we should remain quiet for as long as possible",
+    "target": "가능한 한 오래 조용히 있어야 해요",
+    "legos": [
+     "S0403L01 need to be | 있어야"
+    ]
+   },
+   {
+    "seed": 406,
+    "known": "no I'm sure it will be okay",
+    "target": "아니요 분명 괜찮을 거예요",
+    "legos": [
+     "S0406L01 certainly | 분명"
+    ]
+   },
+   {
+    "seed": 409,
+    "known": "no it doesn't matter what we do",
+    "target": "아니요 뭘 해도 상관없어요",
+    "legos": [
+     "S0409L01 even if | 해도"
+    ]
+   },
+   {
+    "seed": 415,
+    "known": "that wouldn't be a problem if you ask me",
+    "target": "제 생각에는 그건 문제가 안 될 거예요",
+    "legos": [
+     "S0415L01 in my opinion | 생각에는"
+    ]
+   },
+   {
+    "seed": 425,
+    "known": "yes they need to make sure they understand",
+    "target": "네 확실히 이해해야 해요",
+    "legos": [
+     "S0425L01 must understand | 이해해야"
+    ]
+   },
+   {
+    "seed": 495,
+    "known": "when it matters",
+    "target": "중요할 때",
+    "legos": [
+     "S0495L01 important | 중요할"
+    ]
+   },
+   {
+    "seed": 498,
+    "known": "he's standing alone over there inside the entrance",
+    "target": "그는 저기 입구 안에 혼자 서 있어요",
+    "legos": [
+     "S0498L01(old) standing | 서"
+    ]
+   },
+   {
+    "seed": 620,
+    "known": "it's a very long time since we last saw each other",
+    "target": "마지막으로 서로 본 지 아주 오래됐어요",
+    "legos": [
+     "S0620L01(old) last time | 마지막으로"
+    ]
+   },
+   {
+    "seed": 640,
+    "known": "it's the red one",
+    "target": "빨간 거예요",
+    "legos": [
+     "S0640L01 red-colored | 빨간",
+     "S0640L02 it is | 거예요"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 88,
+    "known": "I'm not ready to talk to people I don't know yet",
+    "target": "아직 모르는 사람들과 말할 준비가 안 됐어요",
+    "row": "S0088L02U01",
+    "row_known": "I'm not ready to talk to people I don't know yet",
+    "row_target": "아직 모르는 사람들한테 말할 준비가 안 됐어요"
+   },
+   {
+    "seed": 94,
+    "known": "this is the only way it will work",
+    "target": "이게 유일한 방법이에요",
+    "row": "S0094L02B04",
+    "row_known": "this is the only way it will work",
+    "row_target": "이게 될 수 있는 유일한 방법이에요"
+   },
+   {
+    "seed": 96,
+    "known": "no I'm not ready yet, I need a little more time",
+    "target": "아니요 아직 준비 안 됐어요, 시간이 조금 더 필요해요",
+    "row": "S0096L03U01",
+    "row_known": "no I'm not ready yet, I need a little more time",
+    "row_target": "아니요 아직 준비 안 됐어요, 시간이 좀 더 필요해요"
+   },
+   {
+    "seed": 99,
+    "known": "you should ask yourself why it's not working",
+    "target": "왜 안 되는지 자신에게 물어봐야 해요",
+    "row": "S0099L02B03",
+    "row_known": "you should ask yourself why it's not working",
+    "row_target": "왜 안 되는지 자신한테 물어봐야 해요"
+   },
+   {
+    "seed": 101,
+    "known": "I'm enjoying finding out more about this language",
+    "target": "이 언어에 대해 더 알아가는 게 즐거워요",
+    "row": "S0101L01B03",
+    "row_known": "I'm enjoying finding out more about this language",
+    "row_target": "이 언어에 대해서 더 알아가는 게 즐거워요"
+   },
+   {
+    "seed": 102,
+    "known": "we're trying to say that it's not like that",
+    "target": "그렇지 않다고 말하려고 해요",
+    "row": "S0102L01U01",
+    "row_known": "we're trying to say that it's not like that",
+    "row_target": "우리는 그렇지 않다고 말하려고 해요"
+   },
+   {
+    "seed": 103,
+    "known": "we're not trying to hear many more words",
+    "target": "더 많은 단어를 들으려고 하는 게 아니에요",
+    "row": "S0103L02U01",
+    "row_known": "we're not trying to hear many more words",
+    "row_target": "우리는 더 많은 단어를 들으려고 하는 게 아니에요"
+   },
+   {
+    "seed": 104,
+    "known": "we need to change what we're doing",
+    "target": "하고 있는 걸 바꿔야 해요",
+    "row": "S0104L02U01",
+    "row_known": "we need to change what we're doing",
+    "row_target": "우리가 하고 있는 걸 바꿔야 해요"
+   },
+   {
+    "seed": 105,
+    "known": "that is why he didn't know the answer",
+    "target": "그래서 그가 답을 몰랐어요",
+    "row": "S0105L01B04",
+    "row_known": "that is why he didn't know the answer",
+    "row_target": "그래서 그는 답을 몰랐어요"
+   },
+   {
+    "seed": 107,
+    "known": "we hoped to see what you were doing",
+    "target": "뭘 하고 있었는지 보고 싶었어요",
+    "row": "S0107L02U01",
+    "row_known": "we hoped to see what you were doing",
+    "row_target": "우리는 뭘 하고 있었는지 보고 싶었어요"
+   },
+   {
+    "seed": 109,
+    "known": "we must work hard to learn a lot of new words",
+    "target": "새로운 단어를 많이 배우려면 열심히 해야 해요",
+    "row": "S0109L02U01",
+    "row_known": "we must work hard to learn a lot of new words",
+    "row_target": "새 단어를 많이 배우려면 열심히 해야 해요"
+   },
+   {
+    "seed": 111,
+    "known": "when we learn something new it changes our brain",
+    "target": "새로운 걸 배우면 뇌가 바뀌어요",
+    "row": "S0111L02B03",
+    "row_known": "when we learn something new it changes our brain",
+    "row_target": "새로운 걸 배우면 우리 뇌가 바뀌어요"
+   },
+   {
+    "seed": 113,
+    "known": "why can't I remember what you said?",
+    "target": "왜 뭐라고 했는지 기억 못 해요?",
+    "row": "S0113L01B01",
+    "row_known": "why can't I remember what you said",
+    "row_target": "왜 뭐라고 했는지 기억하지 못해요"
+   },
+   {
+    "seed": 124,
+    "known": "I thought that was a good idea",
+    "target": "그건 좋은 생각이라고 생각했어요",
+    "row": "S0124L02B01",
+    "row_known": "I thought that was a good idea",
+    "row_target": "좋은 생각이라고 생각했어요"
+   },
+   {
+    "seed": 128,
+    "known": "you're like someone I used to know",
+    "target": "전에 알았던 사람 같아요",
+    "row": "S0128L01B03",
+    "row_known": "you're like someone I used to know",
+    "row_target": "예전에 알던 사람 같아요"
+   },
+   {
+    "seed": 129,
+    "known": "I'm so happy that you're doing so well",
+    "target": "이렇게 잘 하고 있어서 아주 기뻐요",
+    "row": "S0129L01U01",
+    "row_known": "I'm so happy that you're doing so well",
+    "row_target": "이렇게 잘하고 있어서 너무 기뻐요"
+   },
+   {
+    "seed": 130,
+    "known": "that was a surprise, because he's my friend",
+    "target": "놀라웠어요, 그는 제 친구니까요",
+    "row": "S0130L02B03",
+    "row_known": "that was a surprise because he's my friend",
+    "row_target": "그건 놀라웠어요, 그는 제 친구니까요"
+   },
+   {
+    "seed": 135,
+    "known": "I don't know why you think that it's so good",
+    "target": "왜 그렇게 좋다고 생각하는지 모르겠어요",
+    "row": "S0135L02B03",
+    "row_known": "I don't know why you think that it's so good",
+    "row_target": "왜 그게 그렇게 좋다고 생각하는지 모르겠어요"
+   },
+   {
+    "seed": 140,
+    "known": "I'm sorry that I can't see what you're trying to show me",
+    "target": "보여 주려고 하는 걸 볼 수 없어서 미안해요",
+    "row": "S0140L02U01",
+    "row_known": "I'm sorry that I can't see what you're trying to show me",
+    "row_target": "보여주려는 걸 볼 수 없어서 미안해요"
+   },
+   {
+    "seed": 153,
+    "known": "I wouldn't have said it in exactly the same way",
+    "target": "정확히 같은 방식으로 말하지는 않았을 거예요",
+    "row": "S0153L02B03",
+    "row_known": "I wouldn't have said it in exactly the same way",
+    "row_target": "정확히 같은 방식으로 말하지 않았을 거예요"
+   },
+   {
+    "seed": 154,
+    "known": "where do you want to meet on Saturday night?",
+    "target": "토요일 밤에 어디서 만나고 싶어요?",
+    "row": "S0154L02B03",
+    "row_known": "where do you want to meet on Saturday night",
+    "row_target": "토요일 밤에 어디에서 만나고 싶어요"
+   },
+   {
+    "seed": 159,
+    "known": "that isn't what I'm trying to say",
+    "target": "그건 제가 말하려고 하는 게 아니에요",
+    "row": "S0159L01B01",
+    "row_known": "that isn't what I'm trying to say",
+    "row_target": "그건 제가 말하려는 게 아니에요"
+   },
+   {
+    "seed": 162,
+    "known": "what do you think about that?",
+    "target": "그것에 대해 어떻게 생각해요?",
+    "row": "S0162L01B01",
+    "row_known": "what do you think about that",
+    "row_target": "그거에 대해서 어떻게 생각해요"
+   },
+   {
+    "seed": 171,
+    "known": "do you want me to help you look for it?",
+    "target": "그걸 찾는 거 도와줄까요?",
+    "row": "S0171L01B01",
+    "row_known": "do you want me to help you look for it",
+    "row_target": "찾는 거 도와줄까요"
+   },
+   {
+    "seed": 176,
+    "known": "I'll ask him if he'll be able to help next year",
+    "target": "내년에 도와줄 수 있는지 그한테 물어볼 거예요",
+    "row": "S0176L02U01",
+    "row_known": "I'll ask him if he'll be able to help next year",
+    "row_target": "그한테 내년에 도와줄 수 있는지 물어볼 거예요"
+   },
+   {
+    "seed": 184,
+    "known": "yes I saw them in the office a while ago",
+    "target": "네 조금 전에 사무실에서 봤어요",
+    "row": "S0184L01U05",
+    "row_known": "yes I saw them in the office a while ago",
+    "row_target": "네 아까 사무실에서 봤어요"
+   },
+   {
+    "seed": 188,
+    "known": "so I don't need to change",
+    "target": "그래서 바꿀 필요는 없어요",
+    "row": "S0188L01U04",
+    "row_known": "so I don't need to change",
+    "row_target": "그래서 바꿀 필요 없어요"
+   },
+   {
+    "seed": 201,
+    "known": "we wanted to know what was going to happen",
+    "target": "우리는 무슨 일이 일어날지 알고 싶었어요",
+    "row": "S0201L01B01",
+    "row_known": "we wanted to know what was going to happen",
+    "row_target": "무슨 일이 일어날지 알고 싶었어요"
+   },
+   {
+    "seed": 208,
+    "known": "I didn't want to ask you how to say it",
+    "target": "그걸 어떻게 말하는지 물어보고 싶지 않았어요",
+    "row": "S0208L01B01",
+    "row_known": "I didn't want to ask you how to say it",
+    "row_target": "어떻게 말하는지 물어보고 싶지 않았어요"
+   },
+   {
+    "seed": 217,
+    "known": "I had a glass or two of water",
+    "target": "물을 한두 잔 마셨어요",
+    "row": "S0217L01B02",
+    "row_known": "I had a glass or two of water",
+    "row_target": "물 한두 잔 마셨어요"
+   },
+   {
+    "seed": 221,
+    "known": "I watched the football and then I watched a film",
+    "target": "축구를 보고 나서 영화를 봤어요",
+    "row": "S0221L01B02",
+    "row_known": "I watched the football and then I watched a film",
+    "row_target": "축구를 보고 그 다음에 영화를 봤어요"
+   },
+   {
+    "seed": 222,
+    "known": "he's trying to tell me what he wants",
+    "target": "그는 뭘 원하는지 저한테 말하려고 해요",
+    "row": "S0222L01B01",
+    "row_known": "he's trying to tell me what he wants",
+    "row_target": "그는 뭘 원하는지 말하려고 해요"
+   },
+   {
+    "seed": 226,
+    "known": "the man is trying to help me",
+    "target": "그 남자는 저를 도와주려고 해요",
+    "row": "S0226L01B01",
+    "row_known": "the man is trying to help me",
+    "row_target": "그 남자가 도와주려고 해요"
+   },
+   {
+    "seed": 227,
+    "known": "that man is going to tell me something new",
+    "target": "그 남자는 저한테 새로운 걸 말할 거예요",
+    "row": "S0227L01B02",
+    "row_known": "that man is going to tell me something new",
+    "row_target": "그 남자가 새로운 거 말해 줄 거예요"
+   },
+   {
+    "seed": 228,
+    "known": "that man has just started to practise speaking",
+    "target": "그 남자는 막 말하는 연습을 시작했어요",
+    "row": "S0228L01B02",
+    "row_known": "that man has just started to practise speaking",
+    "row_target": "그 남자는 막 말하기 연습을 시작했어요"
+   },
+   {
+    "seed": 238,
+    "known": "he wanted you to tell me yesterday",
+    "target": "그는 어제 저한테 말해 주길 바랐어요",
+    "row": "S0238L01B01",
+    "row_known": "he wanted you to tell me yesterday",
+    "row_target": "그는 어제 말해 주길 바랐어요"
+   },
+   {
+    "seed": 239,
+    "known": "my mother likes to read",
+    "target": "제 어머니는 읽는 걸 좋아해요",
+    "row": "S0239L01B01",
+    "row_known": "my mother likes to read",
+    "row_target": "제 어머니는 읽는 것을 좋아해요"
+   },
+   {
+    "seed": 241,
+    "known": "I don't want to give it to him",
+    "target": "그한테 그걸 주고 싶지 않아요",
+    "row": "S0241L01B01",
+    "row_known": "I don't want to give it to him",
+    "row_target": "그한테 주고 싶지 않아요"
+   },
+   {
+    "seed": 258,
+    "known": "what's that blue thing over there?",
+    "target": "저기 있는 그 파란 건 뭐예요?",
+    "row": "S0258L01B01",
+    "row_known": "what's that blue thing over there",
+    "row_target": "저기 그 파란 것은 뭐예요"
+   },
+   {
+    "seed": 262,
+    "known": "who was that man you were talking to yesterday?",
+    "target": "어제 이야기하고 있었던 그 남자 누구였어요?",
+    "row": "S0262L01B01",
+    "row_known": "who was that man you were talking to yesterday",
+    "row_target": "어제 이야기하고 있던 그 남자는 누구였어요"
+   },
+   {
+    "seed": 266,
+    "known": "he was an old friend of my father",
+    "target": "그는 아버지의 오래된 친구였어요",
+    "row": "S0266L01B01",
+    "row_known": "he was an old friend of my father",
+    "row_target": "그는 제 아버지의 오래된 친구였어요"
+   },
+   {
+    "seed": 267,
+    "known": "have you heard from your friend?",
+    "target": "친구한테 연락 받았어요?",
+    "row": "S0267L01B01",
+    "row_known": "have you heard from your friend",
+    "row_target": "친구한테서 연락 받았어요"
+   },
+   {
+    "seed": 275,
+    "known": "longer",
+    "target": "더 오래요",
+    "row": "S0275L01B01",
+    "row_known": "longer",
+    "row_target": "더 오래"
+   },
+   {
+    "seed": 276,
+    "known": "no I can stay here for a little longer",
+    "target": "아니요 여기서 좀 더 있을 수 있어요",
+    "row": "S0276L01B01",
+    "row_known": "no I can stay here for a little longer",
+    "row_target": "아니요 조금 더 여기 있을 수 있어요"
+   },
+   {
+    "seed": 280,
+    "known": "no I only had to do the most important job",
+    "target": "아니요 가장 중요한 일만 하면 됐어요",
+    "row": "S0280L01B01",
+    "row_known": "no I only had to do the most important job",
+    "row_target": "아니요 제일 중요한 일만 하면 됐어요"
+   },
+   {
+    "seed": 282,
+    "known": "no that's not a problem",
+    "target": "아니요 문제없어요",
+    "row": "S0282L01B01",
+    "row_known": "no that's not a problem",
+    "row_target": "아니요 문제 없어요"
+   },
+   {
+    "seed": 284,
+    "known": "do you know my sister's friend?",
+    "target": "제 여동생의 친구를 알아요?",
+    "row": "S0284L01B01",
+    "row_known": "do you know my sister's friend",
+    "row_target": "제 여동생 친구를 알아요"
+   },
+   {
+    "seed": 286,
+    "known": "people who like speaking Korean",
+    "target": "한국어로 말하는 걸 좋아하는 사람들",
+    "row": "S0286L01U01",
+    "row_known": "people who like speaking Korean",
+    "row_target": "한국어 말하는 것을 좋아하는 사람들"
+   },
+   {
+    "seed": 287,
+    "known": "how many people do you know who like watching television?",
+    "target": "TV 보는 걸 좋아하는 사람을 몇 명이나 알아요?",
+    "row": "S0287L01B01",
+    "row_known": "how many people do you know who like watching television",
+    "row_target": "TV 보는 것을 좋아하는 사람을 몇 명이나 알아요"
+   },
+   {
+    "seed": 288,
+    "known": "most people I know like watching television",
+    "target": "제가 아는 사람들은 대부분 TV 보는 걸 좋아해요",
+    "row": "S0288L01B01",
+    "row_known": "most people I know like watching television",
+    "row_target": "제가 아는 대부분의 사람들은 TV 보는 것을 좋아해요"
+   },
+   {
+    "seed": 290,
+    "known": "I wonder if he knows the answer",
+    "target": "그가 답을 아는지 궁금해요",
+    "row": "S0290L01B01",
+    "row_known": "I wonder if he knows the answer",
+    "row_target": "그가 답을 알고 있는지 궁금해요"
+   },
+   {
+    "seed": 293,
+    "known": "I have to find out where he's going to meet me",
+    "target": "그가 저를 어디서 만날 건지 알아내야 해요",
+    "row": "S0293L01B01",
+    "row_known": "I have to find out where he's going to meet me",
+    "row_target": "그가 어디서 만날 건지 알아내야 해요"
+   },
+   {
+    "seed": 298,
+    "known": "I've got nothing left to say",
+    "target": "더 할 말이 없어요",
+    "row": "S0298L01B01",
+    "row_known": "I've got nothing left to say",
+    "row_target": "더 이상 할 말이 없어요"
+   },
+   {
+    "seed": 579,
+    "known": "we've often tried",
+    "target": "자주 해 봤어요",
+    "row": "S0579L02U01",
+    "row_known": "we've often tried",
+    "row_target": "자주 해봤어요"
+   },
+   {
+    "seed": 582,
+    "known": "what's it like to grow up here?",
+    "target": "여기서 자라는 건 어때요?",
+    "row": "S0582L03U01",
+    "row_known": "what's it like to grow up here?",
+    "row_target": "여기서 자라는 게 어때요?"
+   },
+   {
+    "seed": 591,
+    "known": "she followed me down to the shops",
+    "target": "그녀는 가게까지 저를 따라왔어요",
+    "row": "S0591L03U01",
+    "row_known": "she followed me down to the shops",
+    "row_target": "그녀는 가게까지 나를 따라왔어요"
+   },
+   {
+    "seed": 595,
+    "known": "I need to lie down in the garden",
+    "target": "정원에 누워야 해요",
+    "row": "S0595L03U01",
+    "row_known": "I need to lie down in the garden",
+    "row_target": "정원에서 누워야 해요"
+   },
+   {
+    "seed": 598,
+    "known": "he's heard a thousand stories about what they were doing",
+    "target": "그들이 뭘 하고 있었는지에 대해 천 가지 이야기를 들었어요",
+    "row": "S0598L07U01",
+    "row_known": "he's heard a thousand stories about what they were doing",
+    "row_target": "그는 그들이 뭘 하고 있었는지에 대한 천 가지 이야기를 들었어요"
+   },
+   {
+    "seed": 606,
+    "known": "if I'd known then what I know now I'd have waited",
+    "target": "지금 아는 걸 그때 알았더라면 기다렸을 거예요",
+    "row": "S0606L05U01",
+    "row_known": "if I'd known then what I know now I'd have waited",
+    "row_target": "지금 알고 있는 걸 그때 알았더라면 기다렸을 거예요"
+   },
+   {
+    "seed": 608,
+    "known": "it would have been the sensible thing to do",
+    "target": "그게 현명한 일이었을 거예요",
+    "row": "S0608L02U01",
+    "row_known": "it would have been the sensible thing to do",
+    "row_target": "현명한 일이었을 거예요"
+   },
+   {
+    "seed": 612,
+    "known": "we would have bought something",
+    "target": "뭔가 샀을 거예요",
+    "row": "S0612L03U01",
+    "row_known": "we would have bought something",
+    "row_target": "우리는 뭔가를 샀을 거예요"
+   },
+   {
+    "seed": 619,
+    "known": "it's a long time since we saw each other",
+    "target": "서로 본 지 오래됐어요",
+    "row": "S0619L03U01",
+    "row_known": "it's a long time since we saw each other",
+    "row_target": "우리가 서로 본 지 오래됐어요"
+   },
+   {
+    "seed": 622,
+    "known": "I knew that the children had broken it",
+    "target": "아이들이 그걸 부쉈다는 걸 알았어요",
+    "row": "S0622L05U01",
+    "row_known": "I knew that the children had broken it",
+    "row_target": "아이들이 그것을 부쉈다는 걸 알았어요"
+   },
+   {
+    "seed": 646,
+    "known": "you're doing something sir",
+    "target": "선생님 뭔가 하고 계세요",
+    "row": "S0646L03U01",
+    "row_known": "you're doing something sir",
+    "row_target": "선생님 뭔가를 하고 계세요"
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 181,
+    "known": "but I have to take my mother to the doctor",
+    "target": "하지만 어머니를 병원에 데려가야 해요"
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 305,
+    "known": "woman",
+    "target": "여자"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 116,
+  "variant_form": 1,
+  "no_home": 19,
+  "variant_zut": 64,
+  "not_built": 1,
+  "lego_is_seed": 1
+ }
+}

@@ -1,0 +1,349 @@
+{
+ "course": "spa_for_eng",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:31:03.694Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 138,
+   "id": "S0138L01U09",
+   "lego": "S0138L01",
+   "known": "this is where my friend wanted to meet us",
+   "target": "aquí es donde mi amigo quería reunirse con nosotros",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "spa_for_eng:S0138L01U09",
+      "seed_number": 138,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "this is where my friend wanted to meet us",
+      "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 138,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0138L01U09",
+     "slot": "known",
+     "audio_id": "e1fb9081-ab9d-4ae0-b655-fd208530204d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0138L01U09",
+     "slot": "target1",
+     "audio_id": "46addb28-4445-48f2-8c4a-2a5ebab49a7d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0138L01U09",
+     "slot": "target2",
+     "audio_id": "9c4d1ea7-92bc-4c7b-8948-d095614b5588"
+    }
+   ]
+  },
+  {
+   "seed": 450,
+   "id": "S0450L03U06",
+   "lego": "S0450L03",
+   "known": "no they have to catch the train themselves",
+   "target": "no, ellos tienen que coger el tren",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "spa_for_eng:S0450L03U06",
+      "seed_number": 450,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "no they have to catch the train themselves",
+      "target_text": "no, ellos tienen que coger el tren",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 450,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0450L03U06",
+     "slot": "known",
+     "audio_id": "2b5937d3-4ceb-4232-b6bf-5e7c74e86b83"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0450L03U06",
+     "slot": "target1",
+     "audio_id": "0d84c770-8d66-4f47-8289-58a098be1bd8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0450L03U06",
+     "slot": "target2",
+     "audio_id": "2cb96265-0ba6-4c1d-99a3-78ae45a0a70f"
+    }
+   ]
+  },
+  {
+   "seed": 532,
+   "id": "S0532L02U07",
+   "lego": "S0532L02",
+   "known": "unless they're lucky",
+   "target": "a menos que tengan suerte",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "spa_for_eng:S0532L02U07",
+      "seed_number": 532,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "unless they're lucky",
+      "target_text": "a menos que tengan suerte",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 532,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 3,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0532L02U07",
+     "slot": "known",
+     "audio_id": "452d3c3f-c423-4f8f-994e-3ae344842f31"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0532L02U07",
+     "slot": "target1",
+     "audio_id": "9fd28b07-6754-4b7b-bf68-8b841272f160"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "spa_for_eng:S0532L02U07",
+     "slot": "target2",
+     "audio_id": "3933e35c-3d82-41de-81bd-4fee0d392435"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 71,
+    "known": "we didn't want to let anyone hear the truth",
+    "target": "no queríamos dejar que nadie oyera la verdad",
+    "legos": [
+     "S0071L01 we wanted | queríamos",
+     "S0071L02 heard the truth | oyera la verdad",
+     "S0071L03 no one | nadie",
+     "S0071L04 to let that | dejar que"
+    ]
+   },
+   {
+    "seed": 144,
+    "known": "I woke earlier than I wanted to this morning",
+    "target": "Me desperté más temprano de lo que quería esta mañana",
+    "legos": [
+     "S0144L01 I woke up | me desperté",
+     "S0144L02(old) early | temprano"
+    ]
+   },
+   {
+    "seed": 238,
+    "known": "he wanted you to tell me yesterday",
+    "target": "Él quería que me dijeras ayer",
+    "legos": [
+     "S0238L01 you told | dijeras"
+    ]
+   },
+   {
+    "seed": 277,
+    "known": "yes I've got an important meeting early next week",
+    "target": "sí, tengo una reunión importante a principios de la semana que viene",
+    "legos": [
+     "S0277L01 a meeting | una reunión",
+     "S0277L02(old) important | importante",
+     "S0277L03 at the beginning of | a principios de",
+     "S0277L04(old) next week | la semana que viene"
+    ]
+   },
+   {
+    "seed": 279,
+    "known": "yes because there wasn't much time left",
+    "target": "sí, porque no quedaba mucho tiempo",
+    "legos": [
+     "S0279L01(old) much | mucho",
+     "S0279L02 there was left | quedaba"
+    ]
+   },
+   {
+    "seed": 374,
+    "known": "yes I thought it was very beautiful",
+    "target": "sí, pensé que era muy bonito",
+    "legos": [
+     "S0374L01 pretty | bonito"
+    ]
+   },
+   {
+    "seed": 463,
+    "known": "my room number",
+    "target": "mi número de habitación",
+    "legos": [
+     "S0463L01(old) room | habitación"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 241,
+    "known": "I don't want to give it to him",
+    "target": "no quiero dárselo a él",
+    "row": "S0241L01B05",
+    "row_known": "I don't want to give it to him",
+    "row_target": "No quiero dárselo"
+   },
+   {
+    "seed": 285,
+    "known": "She speaks Spanish",
+    "target": "ella habla español",
+    "row": "S0285L01B03",
+    "row_known": "She speaks Spanish",
+    "row_target": "Habla español"
+   },
+   {
+    "seed": 349,
+    "known": "did he want to go out on Friday night?",
+    "target": "¿Quería él salir el viernes por la noche?",
+    "row": "S0349L02U01",
+    "row_known": "did he want to go out on Friday night?",
+    "row_target": "¿quería salir el viernes por la noche?"
+   },
+   {
+    "seed": 493,
+    "known": "what's going to come next?",
+    "target": "¿Qué viene después?",
+    "row": "S0493L03U01",
+    "row_known": "what's going to come next?",
+    "row_target": "¿qué va a venir después?"
+   },
+   {
+    "seed": 509,
+    "known": "I heard that you're going to pay for a new bed",
+    "target": "oí que vas a pagar una cama nueva",
+    "row": "S0509L03U01",
+    "row_known": "I heard that you're going to pay for a new bed",
+    "row_target": "escuché que vas a pagar por una cama nueva"
+   },
+   {
+    "seed": 510,
+    "known": "she's gone to look for somewhere safe to park the car",
+    "target": "ha ido a buscar un sitio seguro para aparcar el coche",
+    "row": "S0510L03U01",
+    "row_known": "she's gone to look for somewhere safe to park the car",
+    "row_target": "se ha ido a buscar un lugar seguro para aparcar el coche"
+   },
+   {
+    "seed": 528,
+    "known": "I'm probably supposed to keep those things in another room",
+    "target": "probablemente debería guardar esas cosas en otra habitación",
+    "row": "S0528L04U01",
+    "row_known": "I'm probably supposed to keep those things in another room",
+    "row_target": "probablemente se supone que debo guardar esas cosas en otra habitación"
+   },
+   {
+    "seed": 534,
+    "known": "let's not go outside in this dreadful weather",
+    "target": "no salgamos con este tiempo tan horrible",
+    "row": "S0534L02U01",
+    "row_known": "let's not go outside in this dreadful weather",
+    "row_target": "no salgamos fuera con este tiempo horrible"
+   },
+   {
+    "seed": 563,
+    "known": "I wouldn't have been able to keep going any longer",
+    "target": "no habría podido seguir más tiempo",
+    "row": "S0563L03U01",
+    "row_known": "I wouldn't have been able to keep going any longer",
+    "row_target": "no habría podido seguir adelante por más tiempo"
+   },
+   {
+    "seed": 578,
+    "known": "somewhere warmer",
+    "target": "un sitio más cálido",
+    "row": "S0578L01B01",
+    "row_known": "somewhere warmer",
+    "row_target": "algún lugar más cálido"
+   },
+   {
+    "seed": 581,
+    "known": "he'd like to know a little more about what it's like",
+    "target": "a él le gustaría saber un poco más sobre cómo es",
+    "row": "S0581L03U01",
+    "row_known": "he'd like to know a little more about what it's like",
+    "row_target": "le gustaría saber un poco más sobre cómo es"
+   },
+   {
+    "seed": 656,
+    "known": "with you all",
+    "target": "con todos vosotros",
+    "row": "S0656L01B02",
+    "row_known": "with you all",
+    "row_target": "con vosotros"
+   }
+  ],
+  "covered": [
+   {
+    "seed": 420,
+    "known": "they don't need to ask how old he is",
+    "target": "no necesitan preguntar cuántos años tiene"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 3,
+  "no_home": 7,
+  "variant_zut": 12,
+  "covered": 1
+ }
+}

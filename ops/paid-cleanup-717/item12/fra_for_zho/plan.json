@@ -1,0 +1,4866 @@
+{
+ "course": "fra_for_zho",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:31:01.869Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 3,
+   "id": "S0003L02U06",
+   "lego": "S0003L02",
+   "known": "怎么尽量多说。",
+   "target": "comment parler le plus souvent possible.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0003L02U06",
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "怎么尽量多说。",
+      "target_text": "comment parler le plus souvent possible.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 3,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0003L02U06",
+     "slot": "known",
+     "audio_id": "8e84d770-9162-47dc-8364-c23349d27cc6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0003L02U06",
+     "slot": "target1",
+     "audio_id": "ef920bc6-c757-4824-89cc-a3facdabb893"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0003L02U06",
+     "slot": "target2",
+     "audio_id": "1ef3bef3-4d6f-431d-8f01-75a69f04bfd0"
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "id": "S0004L02U06",
+   "lego": "S0004L02",
+   "known": "怎么用中文说一些东西",
+   "target": "comment dire quelque chose en français",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0004L02U06",
+      "seed_number": 4,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "怎么用中文说一些东西",
+      "target_text": "comment dire quelque chose en français",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 4,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0004L02U06",
+     "slot": "known",
+     "audio_id": "0acb3688-0e3e-4cc8-812b-6c023e003ad3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0004L02U06",
+     "slot": "target1",
+     "audio_id": "3b7c249a-ca19-49b3-85bf-d7221899963a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0004L02U06",
+     "slot": "target2",
+     "audio_id": "75ef1ff3-d3e4-4ab3-ba2e-8f458a705e89"
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "id": "S0005L03U06",
+   "lego": "S0005L03",
+   "known": "我要和别人练习说话。",
+   "target": "Je vais m'entraîner à parler avec quelqu'un d'autre.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0005L03U06",
+      "seed_number": 5,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "我要和别人练习说话。",
+      "target_text": "Je vais m'entraîner à parler avec quelqu'un d'autre.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 5,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0005L03U06",
+     "slot": "known",
+     "audio_id": "72b0edc4-313d-496a-ab1c-99d937de1ff5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0005L03U06",
+     "slot": "target1",
+     "audio_id": "c22e5284-c4d9-441c-bad2-3cf7a5d96fa5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0005L03U06",
+     "slot": "target2",
+     "audio_id": "68bb1258-60f1-4ffb-9dd3-d6f40d2ccfeb"
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "id": "S0010L03U05",
+   "lego": "S0010L03",
+   "known": "我不确定我能不能记住整个句子。",
+   "target": "Je ne suis pas sûr de pouvoir me souvenir de toute la phrase.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0010L03U05",
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "我不确定我能不能记住整个句子。",
+      "target_text": "Je ne suis pas sûr de pouvoir me souvenir de toute la phrase.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 10,
+       "canon": "P26"
+      },
+      "word_count": 61,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0010L03U05",
+     "slot": "known",
+     "audio_id": "bc1c783f-738a-4ffb-8140-800dfe29477d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0010L03U05",
+     "slot": "target1",
+     "audio_id": "719e5a19-c21e-4560-a5bb-89340a6c1c29"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0010L03U05",
+     "slot": "target2",
+     "audio_id": "0111ad7a-f6d2-4d8f-ac00-1bb7bf5c1df2"
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "id": "S0011L03U06",
+   "lego": "S0011L03",
+   "known": "我想在你说完以后能说。",
+   "target": "J'aimerais pouvoir parler après que tu as fini.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0011L03U06",
+      "seed_number": 11,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "我想在你说完以后能说。",
+      "target_text": "J'aimerais pouvoir parler après que tu as fini.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 11,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0011L03U06",
+     "slot": "known",
+     "audio_id": "f4d7587f-d598-4f12-b3a3-1f62b66d41cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0011L03U06",
+     "slot": "target1",
+     "audio_id": "8ff407c1-f0da-4da5-99ce-54e757a5d805"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0011L03U06",
+     "slot": "target2",
+     "audio_id": "0cd1fd1c-4784-43af-be12-751001b9d1ce"
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "id": "S0012L04U05",
+   "lego": "S0012L04",
+   "known": "我不想猜明天会发生什么。",
+   "target": "Je n'aimerais pas deviner ce qui va se passer demain.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0012L04U05",
+      "seed_number": 12,
+      "lego_index": 4,
+      "position": 8,
+      "known_text": "我不想猜明天会发生什么。",
+      "target_text": "Je n'aimerais pas deviner ce qui va se passer demain.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 12,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0012L04U05",
+     "slot": "known",
+     "audio_id": "17acb0ae-e8d5-42da-9e1d-89ce236539c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0012L04U05",
+     "slot": "target1",
+     "audio_id": "77981935-bca6-4a65-87d1-f65e05dad685"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0012L04U05",
+     "slot": "target2",
+     "audio_id": "970c3c42-06ce-4f06-bfe7-0dcac7cc5c27"
+    }
+   ]
+  },
+  {
+   "seed": 13,
+   "id": "S0013L02U05",
+   "lego": "S0013L02",
+   "known": "你中文说得很好。",
+   "target": "Tu parles très bien français.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0013L02U05",
+      "seed_number": 13,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "你中文说得很好。",
+      "target_text": "Tu parles très bien français.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 13,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0013L02U05",
+     "slot": "known",
+     "audio_id": "489d6489-f26f-494a-974c-93f5a9fb859d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0013L02U05",
+     "slot": "target1",
+     "audio_id": "2662c269-d184-46b0-9a84-b049380bc3b2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0013L02U05",
+     "slot": "target2",
+     "audio_id": "3935291d-9b2d-44b8-a113-cb93c8f53b3c"
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "id": "S0015L02U07",
+   "lego": "S0015L02",
+   "known": "而且我想让你明天和我说中文。",
+   "target": "Et je veux que tu parles français avec moi demain.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0015L02U07",
+      "seed_number": 15,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "而且我想让你明天和我说中文。",
+      "target_text": "Et je veux que tu parles français avec moi demain.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 15,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0015L02U07",
+     "slot": "known",
+     "audio_id": "a41d0187-39b2-4698-b043-1cff31085256"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0015L02U07",
+     "slot": "target1",
+     "audio_id": "b24f7878-b407-462b-90ba-bce8b4073fb4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0015L02U07",
+     "slot": "target2",
+     "audio_id": "41319891-2667-47dc-9768-1b5e88d236c0"
+    }
+   ]
+  },
+  {
+   "seed": 17,
+   "id": "S0017L03U01",
+   "lego": "S0017L03",
+   "known": "她想找出答案是什么。",
+   "target": "Elle veut trouver quelle est la réponse.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0017L03U01",
+      "seed_number": 17,
+      "lego_index": 3,
+      "position": 7,
+      "known_text": "她想找出答案是什么。",
+      "target_text": "Elle veut trouver quelle est la réponse.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 17,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0017L03U01",
+     "slot": "known",
+     "audio_id": "bda5d9c4-6449-4210-aaa6-664cd3063a8f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0017L03U01",
+     "slot": "target1",
+     "audio_id": "b31b2bb4-b4ed-43e5-944f-0b715e27e2ac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0017L03U01",
+     "slot": "target2",
+     "audio_id": "b7bb1643-6307-458a-a207-d67f4f0fcb35"
+    }
+   ]
+  },
+  {
+   "seed": 35,
+   "id": "S0035L03U06",
+   "lego": "S0035L03",
+   "known": "她今天下午不想读任何东西。",
+   "target": "Elle ne veut rien lire cet après-midi.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0035L03U06",
+      "seed_number": 35,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "她今天下午不想读任何东西。",
+      "target_text": "Elle ne veut rien lire cet après-midi.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 35,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0035L03U06",
+     "slot": "known",
+     "audio_id": "4caf738f-92ee-4cae-8f14-09cf9c68c299"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0035L03U06",
+     "slot": "target1",
+     "audio_id": "446c07a0-0ec6-4c05-8394-665d5169bd4e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0035L03U06",
+     "slot": "target2",
+     "audio_id": "68205e93-e132-47eb-815a-7aad15700382"
+    }
+   ]
+  },
+  {
+   "seed": 41,
+   "id": "S0041L02U06",
+   "lego": "S0041L02",
+   "known": "我感觉还可以,但是我开始感觉累了。",
+   "target": "Je me sens bien, mais je commence à me sentir fatigué.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0041L02U06",
+      "seed_number": 41,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "我感觉还可以,但是我开始感觉累了。",
+      "target_text": "Je me sens bien, mais je commence à me sentir fatigué.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 41,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0041L02U06",
+     "slot": "known",
+     "audio_id": "ecb73b05-1748-4357-9044-f2878ecee26d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0041L02U06",
+     "slot": "target1",
+     "audio_id": "171c40a9-bdb4-43a8-b264-2f7d61be6982"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0041L02U06",
+     "slot": "target2",
+     "audio_id": "e3fcfab2-311e-45f5-b139-5e8e796dbdda"
+    }
+   ]
+  },
+  {
+   "seed": 46,
+   "id": "S0046L02U06",
+   "lego": "S0046L02",
+   "known": "但是我不担心犯错。",
+   "target": "Mais je ne m'inquiète pas de faire des erreurs.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0046L02U06",
+      "seed_number": 46,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "但是我不担心犯错。",
+      "target_text": "Mais je ne m'inquiète pas de faire des erreurs.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 46,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0046L02U06",
+     "slot": "known",
+     "audio_id": "408d79ac-0b6f-42cd-a53f-64f4a2009390"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0046L02U06",
+     "slot": "target1",
+     "audio_id": "af71bfea-45b8-4cda-b289-da06473d9e42"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0046L02U06",
+     "slot": "target2",
+     "audio_id": "1621de24-eaed-4194-99e9-b6268ff114eb"
+    }
+   ]
+  },
+  {
+   "seed": 47,
+   "id": "S0047L02U06",
+   "lego": "S0047L02",
+   "known": "因为我觉得犯错是好事。",
+   "target": "Parce que je pense que c'est une bonne chose de faire des erreurs.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0047L02U06",
+      "seed_number": 47,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "因为我觉得犯错是好事。",
+      "target_text": "Parce que je pense que c'est une bonne chose de faire des erreurs.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 47,
+       "canon": "P26"
+      },
+      "word_count": 66,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0047L02U06",
+     "slot": "known",
+     "audio_id": "9978e0a1-1001-4449-a7fe-60c93b25dee9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0047L02U06",
+     "slot": "target1",
+     "audio_id": "90b5f6b9-a568-4e5b-8b43-ef7482cc60bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0047L02U06",
+     "slot": "target2",
+     "audio_id": "f6d9fa92-9ec5-4216-9c35-ed34597cb2e9"
+    }
+   ]
+  },
+  {
+   "seed": 56,
+   "id": "S0056L02U06",
+   "lego": "S0056L02",
+   "known": "所以我能记住怎么说几个词。",
+   "target": "Pour que je puisse me souvenir comment dire quelques mots.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0056L02U06",
+      "seed_number": 56,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "所以我能记住怎么说几个词。",
+      "target_text": "Pour que je puisse me souvenir comment dire quelques mots.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 56,
+       "canon": "P26"
+      },
+      "word_count": 58,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0056L02U06",
+     "slot": "known",
+     "audio_id": "9479d8dd-9688-43b3-8ea5-7eea4b8d79cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0056L02U06",
+     "slot": "target1",
+     "audio_id": "c8b9caf1-7d05-4fc2-afa1-beb00f993a3e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0056L02U06",
+     "slot": "target2",
+     "audio_id": "8e1c9048-3283-4f0a-9d5d-96914dded863"
+    }
+   ]
+  },
+  {
+   "seed": 57,
+   "id": "S0057L01U06",
+   "lego": "S0057L01",
+   "known": "我不能记住怎么说我想说的。",
+   "target": "Je ne me souviens plus comment dire ce que je voulais dire.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0057L01U06",
+      "seed_number": 57,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "我不能记住怎么说我想说的。",
+      "target_text": "Je ne me souviens plus comment dire ce que je voulais dire.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 57,
+       "canon": "P26"
+      },
+      "word_count": 59,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0057L01U06",
+     "slot": "known",
+     "audio_id": "29056fd6-4cbe-4624-9a19-6a611b7764c8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0057L01U06",
+     "slot": "target1",
+     "audio_id": "bbbd4f00-682d-4aab-80ad-9c8029a885be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0057L01U06",
+     "slot": "target2",
+     "audio_id": "032ae348-f6a1-421c-a6a6-333c82fb5406"
+    }
+   ]
+  },
+  {
+   "seed": 58,
+   "id": "S0058L03U06",
+   "lego": "S0058L03",
+   "known": "你懂够多词的时候很有趣。",
+   "target": "C'est intéressant quand tu comprends assez de mots.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0058L03U06",
+      "seed_number": 58,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "你懂够多词的时候很有趣。",
+      "target_text": "C'est intéressant quand tu comprends assez de mots.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 58,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0058L03U06",
+     "slot": "known",
+     "audio_id": "39b89ab5-19fc-4b93-b9d2-cbda99de2530"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0058L03U06",
+     "slot": "target1",
+     "audio_id": "cf2bd697-5032-45bc-aa99-ee19b46431d9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0058L03U06",
+     "slot": "target2",
+     "audio_id": "9cedbd92-37c6-4556-b19b-f756deabaa92"
+    }
+   ]
+  },
+  {
+   "seed": 59,
+   "id": "S0059L02U05",
+   "lego": "S0059L02",
+   "known": "我知道下星期怎么做我需要做的。",
+   "target": "Je sais comment faire ce que j'ai besoin de faire la semaine prochaine.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0059L02U05",
+      "seed_number": 59,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "我知道下星期怎么做我需要做的。",
+      "target_text": "Je sais comment faire ce que j'ai besoin de faire la semaine prochaine.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 59,
+       "canon": "P26"
+      },
+      "word_count": 71,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0059L02U05",
+     "slot": "known",
+     "audio_id": "3d6f6c4f-309c-4d3b-9d21-c1e225bc820b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0059L02U05",
+     "slot": "target1",
+     "audio_id": "fa546633-c39e-4fcb-b733-45ffcf28c98d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0059L02U05",
+     "slot": "target2",
+     "audio_id": "9385371b-c37b-4c1c-8ce3-aa3e73b122f7"
+    }
+   ]
+  },
+  {
+   "seed": 60,
+   "id": "S0060L03U06",
+   "lego": "S0060L03",
+   "known": "我还不知道怎么说够多不同的词。",
+   "target": "Je ne sais pas encore comment dire assez de mots différents.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0060L03U06",
+      "seed_number": 60,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "我还不知道怎么说够多不同的词。",
+      "target_text": "Je ne sais pas encore comment dire assez de mots différents.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 60,
+       "canon": "P26"
+      },
+      "word_count": 60,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0060L03U06",
+     "slot": "known",
+     "audio_id": "d04192cb-882d-47b5-ba85-92655d9e0fde"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0060L03U06",
+     "slot": "target1",
+     "audio_id": "c458c866-f670-4617-9a91-c605c8568012"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0060L03U06",
+     "slot": "target2",
+     "audio_id": "2ac14c80-e7c3-4995-af99-05387e4502c3"
+    }
+   ]
+  },
+  {
+   "seed": 63,
+   "id": "S0063L02U02",
+   "lego": "S0063L02",
+   "known": "你确定你不介意帮我吗？",
+   "target": "Tu es sûr que ça ne te dérange pas de m'aider ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0063L02U02",
+      "seed_number": 63,
+      "lego_index": 2,
+      "position": 7,
+      "known_text": "你确定你不介意帮我吗？",
+      "target_text": "Tu es sûr que ça ne te dérange pas de m'aider ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 63,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0063L02U02",
+     "slot": "known",
+     "audio_id": "2a709edf-5f9b-4070-8ffc-d293ed4ce258"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0063L02U02",
+     "slot": "target1",
+     "audio_id": "e9b798a7-a5d2-4c52-868a-15986de54f52"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0063L02U02",
+     "slot": "target2",
+     "audio_id": "8b103942-b3f7-43a3-8aba-9fb7f84f646f"
+    }
+   ]
+  },
+  {
+   "seed": 97,
+   "id": "S0097L03U06",
+   "lego": "S0097L03",
+   "known": "好，我准备好了，你想什么时候走都可以。",
+   "target": "Oui je suis prêt à partir dès que tu veux.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0097L03U06",
+      "seed_number": 97,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "好，我准备好了，你想什么时候走都可以。",
+      "target_text": "Oui je suis prêt à partir dès que tu veux.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 97,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0097L03U06",
+     "slot": "known",
+     "audio_id": "4b7f224a-421d-4d59-a526-cfe0288448a1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0097L03U06",
+     "slot": "target1",
+     "audio_id": "bc1fbca8-3532-45a3-943c-0811b6a9d603"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0097L03U06",
+     "slot": "target2",
+     "audio_id": "770d9a76-0170-4e7e-b730-bfb4f2890ce4"
+    }
+   ]
+  },
+  {
+   "seed": 119,
+   "id": "S0119L01U05",
+   "lego": "S0119L01",
+   "known": "你走之前我能问你什么吗？",
+   "target": "Je peux te demander quelque chose avant que tu partes ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0119L01U05",
+      "seed_number": 119,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "你走之前我能问你什么吗？",
+      "target_text": "Je peux te demander quelque chose avant que tu partes ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 119,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0119L01U05",
+     "slot": "known",
+     "audio_id": "040e55c5-e8fd-4a97-b4c7-e8069f77abb9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0119L01U05",
+     "slot": "target1",
+     "audio_id": "d31bada7-6ad3-438c-a833-dca4f114a620"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0119L01U05",
+     "slot": "target2",
+     "audio_id": "7e9b4088-36f6-49f9-8bdb-a2e12226a761"
+    }
+   ]
+  },
+  {
+   "seed": 123,
+   "id": "S0123L02U06",
+   "lego": "S0123L02",
+   "known": "我觉得那是个好主意。",
+   "target": "Je pense que c'est une bonne idée.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0123L02U06",
+      "seed_number": 123,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "我觉得那是个好主意。",
+      "target_text": "Je pense que c'est une bonne idée.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 123,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0123L02U06",
+     "slot": "known",
+     "audio_id": "357166ea-d339-4710-8649-cfbc0a5dad21"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0123L02U06",
+     "slot": "target1",
+     "audio_id": "77783253-48ba-497b-b7b5-25e1ee2696f7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0123L02U06",
+     "slot": "target2",
+     "audio_id": "a1da7933-043b-45f4-b4fe-dc448437f635"
+    }
+   ]
+  },
+  {
+   "seed": 134,
+   "id": "S0134L01U06",
+   "lego": "S0134L01",
+   "known": "跟他们一起做难的事情的时候没有问题。",
+   "target": "Ce n'est pas un problème quand on travaille sur quelque chose de difficile ensemble.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0134L01U06",
+      "seed_number": 134,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "跟他们一起做难的事情的时候没有问题。",
+      "target_text": "Ce n'est pas un problème quand on travaille sur quelque chose de difficile ensemble.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 134,
+       "canon": "P26"
+      },
+      "word_count": 84,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0134L01U06",
+     "slot": "known",
+     "audio_id": "74424745-312a-44d4-b4e6-3c2c6b886112"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0134L01U06",
+     "slot": "target1",
+     "audio_id": "d4903db9-7ebe-4c66-879b-b6dac7fd2819"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0134L01U06",
+     "slot": "target2",
+     "audio_id": "ab46cf0f-ed1a-40fc-9243-81531467771c"
+    }
+   ]
+  },
+  {
+   "seed": 135,
+   "id": "S0135L01U06",
+   "lego": "S0135L01",
+   "known": "我不知道为什么你觉得那么好。",
+   "target": "Je ne sais pas pourquoi tu penses que c'est si bien.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0135L01U06",
+      "seed_number": 135,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "我不知道为什么你觉得那么好。",
+      "target_text": "Je ne sais pas pourquoi tu penses que c'est si bien.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 135,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0135L01U06",
+     "slot": "known",
+     "audio_id": "e1aaf849-8df9-4cf6-ab6d-84ba3395b6c8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0135L01U06",
+     "slot": "target1",
+     "audio_id": "be7eb28a-52aa-42d2-9b1b-364e690ce4cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0135L01U06",
+     "slot": "target2",
+     "audio_id": "e6e2acce-c365-491c-9eb5-887da7b45dde"
+    }
+   ]
+  },
+  {
+   "seed": 136,
+   "id": "S0136L02U06",
+   "lego": "S0136L02",
+   "known": "当然你可以问她因为她是我的朋友。",
+   "target": "Bien sûr que tu peux lui demander parce qu'elle est mon amie.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0136L02U06",
+      "seed_number": 136,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "当然你可以问她因为她是我的朋友。",
+      "target_text": "Bien sûr que tu peux lui demander parce qu'elle est mon amie.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 136,
+       "canon": "P26"
+      },
+      "word_count": 61,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0136L02U06",
+     "slot": "known",
+     "audio_id": "d9eb51bf-c893-4528-988b-358eaf8eab7a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0136L02U06",
+     "slot": "target1",
+     "audio_id": "51a550fa-14a0-4a11-967f-31754c414fd8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0136L02U06",
+     "slot": "target2",
+     "audio_id": "acf20b93-1637-45c5-83a5-7b3b29bcb569"
+    }
+   ]
+  },
+  {
+   "seed": 138,
+   "id": "S0138L01U06",
+   "lego": "S0138L01",
+   "known": "这是我的朋友想跟我们见面的地方。",
+   "target": "C'est là que mon ami voulait nous retrouver.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0138L01U06",
+      "seed_number": 138,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "这是我的朋友想跟我们见面的地方。",
+      "target_text": "C'est là que mon ami voulait nous retrouver.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 138,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0138L01U06",
+     "slot": "known",
+     "audio_id": "fc001485-1b1b-4f48-b880-bc1acf117447"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0138L01U06",
+     "slot": "target1",
+     "audio_id": "0efae775-df8f-46db-880f-b8a2f079b7d8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0138L01U06",
+     "slot": "target2",
+     "audio_id": "c214dd5a-a12d-4600-aa04-29f4bfdb0d34"
+    }
+   ]
+  },
+  {
+   "seed": 142,
+   "id": "S0142L04U06",
+   "lego": "S0142L04",
+   "known": "你太好了，我很感谢你帮忙。",
+   "target": "C'est très gentil de ta part et je te suis reconnaissant de m'avoir aidé.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0142L04U06",
+      "seed_number": 142,
+      "lego_index": 4,
+      "position": 10,
+      "known_text": "你太好了，我很感谢你帮忙。",
+      "target_text": "C'est très gentil de ta part et je te suis reconnaissant de m'avoir aidé.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 142,
+       "canon": "P26"
+      },
+      "word_count": 73,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0142L04U06",
+     "slot": "known",
+     "audio_id": "e6cb4b12-d8d3-4855-ba27-5d76dc95c709"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0142L04U06",
+     "slot": "target1",
+     "audio_id": "1096ac06-48b9-4c8a-b831-7b8f62c81512"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0142L04U06",
+     "slot": "target2",
+     "audio_id": "c0d25c39-724f-4901-bc76-58cfa0586c6d"
+    }
+   ]
+  },
+  {
+   "seed": 152,
+   "id": "S0152L01U06",
+   "lego": "S0152L01",
+   "known": "如果我知道你想要什么，我会做得不一样。",
+   "target": "J'aurais fait différemment si j'avais su ce que tu voulais.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0152L01U06",
+      "seed_number": 152,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "如果我知道你想要什么，我会做得不一样。",
+      "target_text": "J'aurais fait différemment si j'avais su ce que tu voulais.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 152,
+       "canon": "P26"
+      },
+      "word_count": 59,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0152L01U06",
+     "slot": "known",
+     "audio_id": "9b66bf36-28e5-454c-85b3-9e20b9f6dcb0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0152L01U06",
+     "slot": "target1",
+     "audio_id": "753b9a21-035d-4d1d-8469-7171f727af34"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0152L01U06",
+     "slot": "target2",
+     "audio_id": "6a9ed6bd-eed9-4aea-a393-494b80b222e5"
+    }
+   ]
+  },
+  {
+   "seed": 154,
+   "id": "S0154L01U05",
+   "lego": "S0154L01",
+   "known": "星期六晚上你想在哪里见面？",
+   "target": "Où est-ce que tu veux se retrouver samedi soir ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0154L01U05",
+      "seed_number": 154,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "星期六晚上你想在哪里见面？",
+      "target_text": "Où est-ce que tu veux se retrouver samedi soir ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 154,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0154L01U05",
+     "slot": "known",
+     "audio_id": "2f5ca739-7e30-4fa7-b6a2-eecefa867b96"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0154L01U05",
+     "slot": "target1",
+     "audio_id": "52de202c-cd24-4247-b7f2-b3c01338b0b7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0154L01U05",
+     "slot": "target2",
+     "audio_id": "e4518333-8f33-4905-b20f-34f483e99e82"
+    }
+   ]
+  },
+  {
+   "seed": 155,
+   "id": "S0155L01U06",
+   "lego": "S0155L01",
+   "known": "我不介意明天早上等几分钟。",
+   "target": "Ça ne me dérange pas d'attendre quelques minutes demain matin.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0155L01U06",
+      "seed_number": 155,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "我不介意明天早上等几分钟。",
+      "target_text": "Ça ne me dérange pas d'attendre quelques minutes demain matin.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 155,
+       "canon": "P26"
+      },
+      "word_count": 62,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0155L01U06",
+     "slot": "known",
+     "audio_id": "8550ed6e-71ff-492b-a4f4-bf2ff5366ef1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0155L01U06",
+     "slot": "target1",
+     "audio_id": "0309eba8-ba93-43cd-98cb-876cb4ff135e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0155L01U06",
+     "slot": "target2",
+     "audio_id": "7d208d31-0e9f-4f06-9977-825d31c37695"
+    }
+   ]
+  },
+  {
+   "seed": 157,
+   "id": "S0157L02U06",
+   "lego": "S0157L02",
+   "known": "我下个月不能在那里。",
+   "target": "Je ne pourrai pas être là le mois prochain.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0157L02U06",
+      "seed_number": 157,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "我下个月不能在那里。",
+      "target_text": "Je ne pourrai pas être là le mois prochain.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 157,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0157L02U06",
+     "slot": "known",
+     "audio_id": "2e5fda06-e6d4-4347-bc62-f0aa5bd203aa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0157L02U06",
+     "slot": "target1",
+     "audio_id": "61e57641-4df5-4279-8d86-bc28e0cf9310"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0157L02U06",
+     "slot": "target2",
+     "audio_id": "0262653d-ab85-456d-95da-be55dcf8bca4"
+    }
+   ]
+  },
+  {
+   "seed": 158,
+   "id": "S0158L01U06",
+   "lego": "S0158L01",
+   "known": "我们说别的吧。",
+   "target": "Parlons d'autre chose.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0158L01U06",
+      "seed_number": 158,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "我们说别的吧。",
+      "target_text": "Parlons d'autre chose.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 158,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0158L01U06",
+     "slot": "known",
+     "audio_id": "eddd649c-9dc0-406e-ac23-ddd7d0d6eff0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0158L01U06",
+     "slot": "target1",
+     "audio_id": "f4dd0ef0-9ecf-4fd8-a27e-ab9937b230e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0158L01U06",
+     "slot": "target2",
+     "audio_id": "ba9bb921-a0b9-4857-aa60-ec76461626bb"
+    }
+   ]
+  },
+  {
+   "seed": 160,
+   "id": "S0160L01U06",
+   "lego": "S0160L01",
+   "known": "这个词用中文怎么说？",
+   "target": "Comment est-ce qu'on dit ce mot en français ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0160L01U06",
+      "seed_number": 160,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "这个词用中文怎么说？",
+      "target_text": "Comment est-ce qu'on dit ce mot en français ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 160,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0160L01U06",
+     "slot": "known",
+     "audio_id": "13b6ba61-c475-4f4e-94be-3e1d6b23874c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0160L01U06",
+     "slot": "target1",
+     "audio_id": "936a87b5-a82e-466c-aaee-f356db5657b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0160L01U06",
+     "slot": "target2",
+     "audio_id": "38798a1f-0144-4eb2-a532-dcf900b51377"
+    }
+   ]
+  },
+  {
+   "seed": 165,
+   "id": "S0165L03U06",
+   "lego": "S0165L03",
+   "known": "但是我不确定是不是真的。",
+   "target": "Mais je ne suis pas sûr que ce soit vrai.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0165L03U06",
+      "seed_number": 165,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "但是我不确定是不是真的。",
+      "target_text": "Mais je ne suis pas sûr que ce soit vrai.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 165,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0165L03U06",
+     "slot": "known",
+     "audio_id": "2205c798-7009-4cf3-b121-4ac60328b4ad"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0165L03U06",
+     "slot": "target1",
+     "audio_id": "2fe8df1d-803b-4036-962e-4a17c97c6571"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0165L03U06",
+     "slot": "target2",
+     "audio_id": "dc03c5b3-5211-410e-8988-c69a4f01efaa"
+    }
+   ]
+  },
+  {
+   "seed": 173,
+   "id": "S0173L02U07",
+   "lego": "S0173L02",
+   "known": "不用了谢谢，我自己能行。",
+   "target": "Non merci je peux me débrouiller tout seul.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0173L02U07",
+      "seed_number": 173,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "不用了谢谢，我自己能行。",
+      "target_text": "Non merci je peux me débrouiller tout seul.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 173,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0173L02U07",
+     "slot": "known",
+     "audio_id": "19ef2967-c51a-41d8-aab3-a0927d046ba7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0173L02U07",
+     "slot": "target1",
+     "audio_id": "d4651b4c-1113-46e7-838b-730f5b6a7d6f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0173L02U07",
+     "slot": "target2",
+     "audio_id": "3a5717fe-90b3-4949-a45f-e1b0b867c768"
+    }
+   ]
+  },
+  {
+   "seed": 178,
+   "id": "S0178L01U05",
+   "lego": "S0178L01",
+   "known": "我没有时间，虽然我想见你。",
+   "target": "Je n'avais pas le temps, bien que je voulais te voir.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0178L01U05",
+      "seed_number": 178,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "我没有时间，虽然我想见你。",
+      "target_text": "Je n'avais pas le temps, bien que je voulais te voir.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 178,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0178L01U05",
+     "slot": "known",
+     "audio_id": "d43d99e0-7480-4bd7-819a-9dfb645e6d40"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0178L01U05",
+     "slot": "target1",
+     "audio_id": "26be5053-4699-4aca-9a9b-825e3e7add79"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0178L01U05",
+     "slot": "target2",
+     "audio_id": "38c83118-541c-486f-89b4-89f70f04019d"
+    }
+   ]
+  },
+  {
+   "seed": 190,
+   "id": "S0190L01U07",
+   "lego": "S0190L01",
+   "known": "你介意我问你几个问题吗？",
+   "target": "Ça ne te dérange pas si je te pose quelques questions ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0190L01U07",
+      "seed_number": 190,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "你介意我问你几个问题吗？",
+      "target_text": "Ça ne te dérange pas si je te pose quelques questions ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 190,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0190L01U07",
+     "slot": "known",
+     "audio_id": "d74848b5-32bf-461d-b5fd-9634b62ee1f0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0190L01U07",
+     "slot": "target1",
+     "audio_id": "69a1f6ec-b3dd-4e99-9029-74de9cdd4ee2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0190L01U07",
+     "slot": "target2",
+     "audio_id": "c54a60f5-aea8-48e5-b203-146b009a1060"
+    }
+   ]
+  },
+  {
+   "seed": 191,
+   "id": "S0191L02U08",
+   "lego": "S0191L02",
+   "known": "没有，我一点都不介意。",
+   "target": "Non ça ne me dérange pas du tout.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0191L02U08",
+      "seed_number": 191,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "没有，我一点都不介意。",
+      "target_text": "Non ça ne me dérange pas du tout.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 191,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0191L02U08",
+     "slot": "known",
+     "audio_id": "923ac0d2-83fc-4436-a10f-3155f5d056f5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0191L02U08",
+     "slot": "target1",
+     "audio_id": "1851647d-34ca-46af-876c-2458a4ebfbb2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0191L02U08",
+     "slot": "target2",
+     "audio_id": "22dc145d-3af1-4aa9-8fbc-662c43a6f6cf"
+    }
+   ]
+  },
+  {
+   "seed": 193,
+   "id": "S0193L01U08",
+   "lego": "S0193L01",
+   "known": "对不起，但是我今天太忙了。",
+   "target": "Je suis désolé mais je suis trop occupé aujourd'hui.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0193L01U08",
+      "seed_number": 193,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "对不起，但是我今天太忙了。",
+      "target_text": "Je suis désolé mais je suis trop occupé aujourd'hui.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 193,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0193L01U08",
+     "slot": "known",
+     "audio_id": "df23e6b1-5a15-4256-b25a-005735e2ee42"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0193L01U08",
+     "slot": "target1",
+     "audio_id": "70597629-946f-43f8-9d86-569e607da728"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0193L01U08",
+     "slot": "target2",
+     "audio_id": "86fb01ca-985e-41e8-b3c7-389303a80dc3"
+    }
+   ]
+  },
+  {
+   "seed": 195,
+   "id": "S0195L03U06",
+   "lego": "S0195L03",
+   "known": "我在试着找我留在桌子上的钱。",
+   "target": "J'essaie de trouver l'argent que j'ai laissé sur la table.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0195L03U06",
+      "seed_number": 195,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "我在试着找我留在桌子上的钱。",
+      "target_text": "J'essaie de trouver l'argent que j'ai laissé sur la table.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 195,
+       "canon": "P26"
+      },
+      "word_count": 58,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0195L03U06",
+     "slot": "known",
+     "audio_id": "a1c0a57c-38f0-45ea-bbbf-6571773b93de"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0195L03U06",
+     "slot": "target1",
+     "audio_id": "929be81b-5c23-42be-b31e-fd8cd40e9233"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0195L03U06",
+     "slot": "target2",
+     "audio_id": "0ed04dcd-b663-4a08-a546-283f90fb4184"
+    }
+   ]
+  },
+  {
+   "seed": 202,
+   "id": "S0202L01U06",
+   "lego": "S0202L01",
+   "known": "没有人知道怎么回答问题。",
+   "target": "Personne n'était sûr comment répondre à la question.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0202L01U06",
+      "seed_number": 202,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "没有人知道怎么回答问题。",
+      "target_text": "Personne n'était sûr comment répondre à la question.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 202,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0202L01U06",
+     "slot": "known",
+     "audio_id": "24157c6b-3455-429c-bc1c-530003bcf243"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0202L01U06",
+     "slot": "target1",
+     "audio_id": "54fc7e55-2697-4b4e-bc0d-d7e2f6df01ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0202L01U06",
+     "slot": "target2",
+     "audio_id": "63bc4c40-3b05-44ed-acd3-36646d6c2a04"
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "id": "S0213L01U06",
+   "lego": "S0213L01",
+   "known": "我们不知道他们想做什么。",
+   "target": "Nous ne savons pas ce qu'ils essaient d'accomplir.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0213L01U06",
+      "seed_number": 213,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "我们不知道他们想做什么。",
+      "target_text": "Nous ne savons pas ce qu'ils essaient d'accomplir.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 213,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0213L01U06",
+     "slot": "known",
+     "audio_id": "311f38ef-69d6-444a-95ca-e398b2ab3bac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0213L01U06",
+     "slot": "target1",
+     "audio_id": "1e082a3a-fe9f-42ff-8224-d80055276cdb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0213L01U06",
+     "slot": "target2",
+     "audio_id": "9a4b0cc0-160b-4416-9d33-9732d5f62be1"
+    }
+   ]
+  },
+  {
+   "seed": 225,
+   "id": "S0225L02U06",
+   "lego": "S0225L02",
+   "known": "如果他能的话，他会给你一个答案。",
+   "target": "Il te donnerait une réponse s'il pouvait.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0225L02U06",
+      "seed_number": 225,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "如果他能的话，他会给你一个答案。",
+      "target_text": "Il te donnerait une réponse s'il pouvait.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 225,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0225L02U06",
+     "slot": "known",
+     "audio_id": "3a5d2614-134c-4d60-b226-49dc4d5223a8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0225L02U06",
+     "slot": "target1",
+     "audio_id": "8006e815-35b2-4ea3-978c-8e73e6a5fee2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0225L02U06",
+     "slot": "target2",
+     "audio_id": "433862f9-e1ee-4646-b8b6-2cb0408462ba"
+    }
+   ]
+  },
+  {
+   "seed": 232,
+   "id": "S0232L01U06",
+   "lego": "S0232L01",
+   "known": "我认识一个老女人能记住答案。",
+   "target": "Je connais une vieille femme qui peut se souvenir de la réponse.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0232L01U06",
+      "seed_number": 232,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "我认识一个老女人能记住答案。",
+      "target_text": "Je connais une vieille femme qui peut se souvenir de la réponse.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 232,
+       "canon": "P26"
+      },
+      "word_count": 64,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0232L01U06",
+     "slot": "known",
+     "audio_id": "69914566-13b8-4176-8bfd-912a025ac5e2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0232L01U06",
+     "slot": "target1",
+     "audio_id": "f9397abc-1e43-4ed1-bb39-160911efd4e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0232L01U06",
+     "slot": "target2",
+     "audio_id": "79d2ca2b-7fbe-47b1-8788-59e26908ff31"
+    }
+   ]
+  },
+  {
+   "seed": 239,
+   "id": "S0239L02U06",
+   "lego": "S0239L02",
+   "known": "我妈妈喜欢看书。",
+   "target": "Ma mère aime lire.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0239L02U06",
+      "seed_number": 239,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "我妈妈喜欢看书。",
+      "target_text": "Ma mère aime lire.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 239,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0239L02U06",
+     "slot": "known",
+     "audio_id": "58cf5e1d-a04a-4ece-b57c-15e2d3ad7db6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0239L02U06",
+     "slot": "target1",
+     "audio_id": "6154816c-16a3-445d-a236-8223c1f75846"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0239L02U06",
+     "slot": "target2",
+     "audio_id": "34e25c3b-1501-4d52-ae58-9264ab1f1bda"
+    }
+   ]
+  },
+  {
+   "seed": 268,
+   "id": "S0268L03U06",
+   "lego": "S0268L03",
+   "known": "有，她上周给我发了两封邮件。",
+   "target": "Oui elle m'a envoyé deux e-mails la semaine dernière.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0268L03U06",
+      "seed_number": 268,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "有，她上周给我发了两封邮件。",
+      "target_text": "Oui elle m'a envoyé deux e-mails la semaine dernière.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 268,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0268L03U06",
+     "slot": "known",
+     "audio_id": "1fd40e52-11b4-466a-8c91-d1e50600805b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0268L03U06",
+     "slot": "target1",
+     "audio_id": "9fdd4773-80ec-4239-91be-a002af208f03"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0268L03U06",
+     "slot": "target2",
+     "audio_id": "188d9b27-5512-42ee-8d99-a4834e8b4e16"
+    }
+   ]
+  },
+  {
+   "seed": 281,
+   "id": "S0281L04U06",
+   "lego": "S0281L04",
+   "known": "你介意我喝完咖啡你再开始吗？",
+   "target": "Ça ne te dérange pas si je finis mon café avant que tu commences ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0281L04U06",
+      "seed_number": 281,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "你介意我喝完咖啡你再开始吗？",
+      "target_text": "Ça ne te dérange pas si je finis mon café avant que tu commences ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 66,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0281L04U06",
+     "slot": "known",
+     "audio_id": "a1e73fdf-6019-40c2-adcd-831c37749253"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0281L04U06",
+     "slot": "target1",
+     "audio_id": "320b6bd3-b5a8-47d8-a867-717163847ab7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0281L04U06",
+     "slot": "target2",
+     "audio_id": "0d525dc9-f5d0-424d-aac8-bdfc3dcfd234"
+    }
+   ]
+  },
+  {
+   "seed": 283,
+   "id": "S0283L02U06",
+   "lego": "S0283L02",
+   "known": "你哪些朋友会说法语？",
+   "target": "Lesquels de tes amis parlent français ?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_for_zho:S0283L02U06",
+      "seed_number": 283,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "你哪些朋友会说法语？",
+      "target_text": "Lesquels de tes amis parlent français ?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 283,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0283L02U06",
+     "slot": "known",
+     "audio_id": "62fcfe35-68af-4b77-bd51-2eb344a7e7aa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0283L02U06",
+     "slot": "target1",
+     "audio_id": "0ca3af69-01f3-4393-b217-efe6679dd21a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "fra_for_zho:S0283L02U06",
+     "slot": "target2",
+     "audio_id": "879b04c0-f60b-4af1-84de-3ffebd115d83"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_form": [
+   {
+    "seed": 1,
+    "known": "我现在想和你说中文。",
+    "target": "Je veux parler français avec toi maintenant.",
+    "row": "S0001L05U02",
+    "row_known": "我想现在和你说中文。",
+    "row_target": "je veux parler français avec toi maintenant"
+   },
+   {
+    "seed": 9,
+    "known": "我现在说一点中文。",
+    "target": "Je parle un peu français maintenant.",
+    "row": "S0009L02U01",
+    "row_known": "我现在说一点法语",
+    "row_target": "je parle un peu français maintenant"
+   },
+   {
+    "seed": 18,
+    "known": "我们想今天晚上六点见面。",
+    "target": "Nous voulons nous retrouver à six heures ce soir.",
+    "row": "S0018L03U01",
+    "row_known": "我们想今晚六点见面",
+    "row_target": "nous voulons nous retrouver à six heures ce soir"
+   },
+   {
+    "seed": 19,
+    "known": "但是我不想停止说话。",
+    "target": "Mais je ne veux pas arrêter de parler.",
+    "row": "S0019L03B03",
+    "row_known": "但是不想停止说话",
+    "row_target": "mais je ne veux pas arrêter de parler"
+   },
+   {
+    "seed": 21,
+    "known": "你为什么在学她的名字？",
+    "target": "Pourquoi est-ce que tu apprends son prénom ?",
+    "row": "S0021L02B03",
+    "row_known": "你为什么在学名字？",
+    "row_target": "pourquoi est-ce que tu apprends son prénom?"
+   },
+   {
+    "seed": 37,
+    "known": "我上个月开始仔细想它。",
+    "target": "J'ai commencé à y penser avec soin le mois dernier.",
+    "row": "S0037L04B03",
+    "row_known": "我上个月开始了仔细想它",
+    "row_target": "j'ai commencé à y penser avec soin le mois dernier"
+   },
+   {
+    "seed": 49,
+    "known": "就是这样,如果你知道我的意思。",
+    "target": "C'est comme ça, si tu vois ce que je veux dire.",
+    "row": "S0049L02U02",
+    "row_known": "就是这样，如果你知道我的意思。",
+    "row_target": "c'est comme ça si tu vois ce que je veux dire"
+   },
+   {
+    "seed": 62,
+    "known": "我不确定我能不能同时帮你。",
+    "target": "Je ne suis pas sûr de pouvoir t'aider en même temps.",
+    "row": "S0062L02U01",
+    "row_known": "我不确定我能同时帮你。",
+    "row_target": "je ne suis pas sûr de pouvoir t'aider en même temps"
+   },
+   {
+    "seed": 70,
+    "known": "她不想告诉我它在哪里。",
+    "target": "Elle ne voulait pas me dire où c'était.",
+    "row": "S0070L02U01",
+    "row_known": "她不想告诉我它以前在哪里",
+    "row_target": "elle ne voulait pas me dire où c'était"
+   },
+   {
+    "seed": 121,
+    "known": "奇怪的是你不喜欢用你的车。",
+    "target": "C'est bizarre que tu n'aimes pas utiliser ta voiture.",
+    "row": "S0121L05U04",
+    "row_known": "奇怪的是你不喜欢用你的汽车。",
+    "row_target": "c'est bizarre que tu n'aimes pas utiliser ta voiture"
+   },
+   {
+    "seed": 140,
+    "known": "对不起我看不到你在试着给我看的。",
+    "target": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer.",
+    "row": "S0140L01U03",
+    "row_known": "对不起我看不到你试着给我看的。",
+    "row_target": "je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer"
+   },
+   {
+    "seed": 151,
+    "known": "那不是我希望会发生的事情。",
+    "target": "Ce n'était pas ce que j'espérais qu'il se passe.",
+    "row": "S0151L02B03",
+    "row_known": "那不是我希望会发生的。",
+    "row_target": "ce n'était pas ce que j'espérais qu'il se passe"
+   },
+   {
+    "seed": 221,
+    "known": "我看了足球，然后我看了电影。",
+    "target": "J'ai regardé le foot et ensuite j'ai regardé un film.",
+    "row": "S0221L02U01",
+    "row_known": "我看了足球然后看了电影",
+    "row_target": "j'ai regardé le foot et ensuite j'ai regardé un film"
+   },
+   {
+    "seed": 260,
+    "known": "我一点都不知道。",
+    "target": "Je n'en ai pas la moindre idée.",
+    "row": "S0260L01B01",
+    "row_known": "一点都不知道",
+    "row_target": "je n'en ai pas la moindre idée"
+   },
+   {
+    "seed": 261,
+    "known": "我觉得它可能是件重要的事。",
+    "target": "Je pense que c'est peut-être quelque chose d'important.",
+    "row": "S0261L02U03",
+    "row_known": "我觉得它也许是件重要的事。",
+    "row_target": "je pense que c'est peut-être quelque chose d'important"
+   },
+   {
+    "seed": 270,
+    "known": "因为我担心我会迟到。",
+    "target": "Parce que j'ai peur d'être en retard.",
+    "row": "S0270L03B02",
+    "row_known": "因为我担心会迟到",
+    "row_target": "parce que j'ai peur d'être en retard"
+   },
+   {
+    "seed": 294,
+    "known": "我今晚没足够时间给你打电话。",
+    "target": "Je n'ai pas assez de temps pour t'appeler ce soir.",
+    "row": "S0294L01U04",
+    "row_known": "我今晚没时间给你打电话",
+    "row_target": "je n'ai pas assez de temps pour t'appeler ce soir"
+   },
+   {
+    "seed": 305,
+    "known": "一个女人。",
+    "target": "Femme.",
+    "row": "S0229L01B01",
+    "row_known": "女人",
+    "row_target": "femme"
+   },
+   {
+    "seed": 329,
+    "known": "这很重要。",
+    "target": "C'est important.",
+    "row": "S0065L01B01",
+    "row_known": "很重要",
+    "row_target": "c'est important"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 23,
+    "known": "我很快要开始多说话了。",
+    "target": "Je vais commencer à parler davantage bientôt.",
+    "legos": [
+     "S0023L01 开始说话 | commencer à parler",
+     "S0023L02 更多 | davantage",
+     "S0023L03 很快就 | bientôt"
+    ]
+   },
+   {
+    "seed": 31,
+    "known": "你今天晚上想和我说话。",
+    "target": "Tu voulais parler avec moi ce soir.",
+    "legos": [
+     "S0031L01 你昨天想 | tu voulais"
+    ]
+   },
+   {
+    "seed": 34,
+    "known": "我觉得我知道你的意思。",
+    "target": "Il ne veut pas se taire quand d'autres personnes sont là.",
+    "legos": [
+     "S0034L01 他不想 | il ne veut pas",
+     "S0034L02 安静 | se taire",
+     "S0034L03 其他人 | d'autres personnes",
+     "S0034L04 当有人在 | quand des gens sont là"
+    ]
+   },
+   {
+    "seed": 64,
+    "known": "学中文不容易但是很有趣。",
+    "target": "Apprendre le français n'est pas facile mais c'est amusant.",
+    "legos": [
+     "S0064L01 不是 | n'est pas",
+     "S0064L02 不难 | facile",
+     "S0064L03 好玩 | amusant"
+    ]
+   },
+   {
+    "seed": 105,
+    "known": "那就是为什么他不知道答案。",
+    "target": "C'est pourquoi il ne savait pas la réponse.",
+    "legos": [
+     "S0105L01(old) 知道 | savait"
+    ]
+   },
+   {
+    "seed": 115,
+    "known": "我不觉得好像我准备好聊天了。",
+    "target": "Je n'ai pas l'impression d'être prêt à avoir une conversation.",
+    "legos": [
+     "S0115L01 对话 | conversation"
+    ]
+   },
+   {
+    "seed": 129,
+    "known": "我很高兴你做得这么好。",
+    "target": "Je suis tellement content que tu te débrouilles si bien.",
+    "legos": [
+     "S0129L01 那么 | tellement"
+    ]
+   },
+   {
+    "seed": 141,
+    "known": "没问题。一切都好。",
+    "target": "Pas de problème. Tout va bien.",
+    "legos": [
+     "S0141L01(old) 问题 | problème"
+    ]
+   },
+   {
+    "seed": 143,
+    "known": "这个和我们刚才说的是一样的东西。",
+    "target": "C'est la même chose que ce dont nous parlions tout à l'heure.",
+    "legos": [
+     "S0143L01 我们在聊 | parlions"
+    ]
+   },
+   {
+    "seed": 148,
+    "known": "我回答不了的时候他不太有耐心。",
+    "target": "Il n'était pas très patient quand je ne pouvais pas répondre.",
+    "legos": [
+     "S0148L01 有耐心的 | patient"
+    ]
+   },
+   {
+    "seed": 163,
+    "known": "我觉得那很有意思。",
+    "target": "Je pense que c'est intéressant.",
+    "legos": [
+     "S0163L01(old) 我觉得 | je pense que"
+    ]
+   },
+   {
+    "seed": 169,
+    "known": "你想让我做什么？",
+    "target": "Qu'est-ce que tu veux que je fasse ?",
+    "legos": [
+     "S0169L01(old) 做 | fasse"
+    ]
+   },
+   {
+    "seed": 170,
+    "known": "我想让你告诉我你需要什么。",
+    "target": "J'aimerais que tu me dises ce dont tu as besoin.",
+    "legos": [
+     "S0170L01(old) 想 | dises"
+    ]
+   },
+   {
+    "seed": 188,
+    "known": "所以我不需要改变。",
+    "target": "Donc je n'ai pas besoin de changer.",
+    "legos": [
+     "S0188L01(old) 没有 | n'ai"
+    ]
+   },
+   {
+    "seed": 199,
+    "known": "我朋友以前在办公室工作。",
+    "target": "Mon ami travaillait dans un bureau.",
+    "legos": [
+     "S0199L01(old) 工作 | travaillait"
+    ]
+   },
+   {
+    "seed": 207,
+    "known": "你做了你需要做的。",
+    "target": "Tu as fait ce que tu avais besoin de faire.",
+    "legos": [
+     "S0207L01(old) 有 | avais"
+    ]
+   },
+   {
+    "seed": 219,
+    "known": "放松一会儿很好。",
+    "target": "C'était bien de se détendre un moment.",
+    "legos": [
+     "S0219L01(old) 放松 | se détendre"
+    ]
+   },
+   {
+    "seed": 222,
+    "known": "他在试着告诉我他想要什么",
+    "target": "Il essaie de me dire ce qu'il veut.",
+    "legos": [
+     "S0222L01(old) 他 | qu'il"
+    ]
+   },
+   {
+    "seed": 228,
+    "known": "那个男人刚开始练习说。",
+    "target": "Cet homme vient juste de commencer à s'entraîner à parler.",
+    "legos": [
+     "S0228L01(old) 练习 | s'entraîner"
+    ]
+   },
+   {
+    "seed": 249,
+    "known": "我想让你走以前帮我。",
+    "target": "Je veux que tu m'aides avant de partir.",
+    "legos": [
+     "S0249L01(old) 帮我 | que tu m'aides"
+    ]
+   },
+   {
+    "seed": 255,
+    "known": "你觉得你什么时候准备好走？",
+    "target": "Quand est-ce que tu penses que tu seras prêt à partir ?",
+    "legos": [
+     "S0255L01(old) 你觉得 | tu penses que"
+    ]
+   },
+   {
+    "seed": 262,
+    "known": "你昨天在跟哪个男人说话？",
+    "target": "C'était qui cet homme à qui tu parlais hier ?",
+    "legos": [
+     "S0262L01 在跟…说话 | à qui tu parlais"
+    ]
+   },
+   {
+    "seed": 269,
+    "known": "你为什么不想等你爸爸？",
+    "target": "Pourquoi est-ce que tu ne veux pas attendre ton père ?",
+    "legos": [
+     "S0269L01(old) 等 | attendre ton père"
+    ]
+   },
+   {
+    "seed": 273,
+    "known": "不行，很遗憾，我工作太多。",
+    "target": "Non malheureusement j'ai trop de travail.",
+    "legos": [
+     "S0273L01 遗憾地 | malheureusement",
+     "S0273L02(old) 工作 | trop de travail"
+    ]
+   },
+   {
+    "seed": 285,
+    "known": "她会说法语。",
+    "target": "Elle parle français.",
+    "legos": [
+     "S0285L01(old) 说 | elle parle"
+    ]
+   },
+   {
+    "seed": 291,
+    "known": "我希望我很快就能说得更好。",
+    "target": "J'espère que je pourrai parler mieux bientôt.",
+    "legos": [
+     "S0291L01(old) 我希望 | j'espère"
+    ]
+   },
+   {
+    "seed": 293,
+    "known": "我得弄清楚他要在哪里见我。",
+    "target": "Je dois trouver où il va me retrouver.",
+    "legos": [
+     "S0293L01(old) 见我 | me retrouver"
+    ]
+   },
+   {
+    "seed": 296,
+    "known": "我说我需要多一点时间。",
+    "target": "J'ai dit que j'avais besoin d'un peu plus de temps.",
+    "legos": [
+     "S0296L01 我已经说了 | j'ai dit"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 75,
+    "known": "你还有更多要学的吗？",
+    "target": "Est-ce que tu as encore beaucoup à apprendre ?",
+    "row": "S0075L01U01",
+    "row_known": "你还有更多要学的吗?",
+    "row_target": "tu as encore beaucoup à apprendre?"
+   },
+   {
+    "seed": 76,
+    "known": "我很高兴我已经学了这么多。",
+    "target": "Je suis très content de tout ce que j'ai déjà appris.",
+    "row": "S0076L05U01",
+    "row_known": "我很高兴我已经学了这么多",
+    "row_target": "je suis content, j'ai déjà appris autant"
+   },
+   {
+    "seed": 89,
+    "known": "我觉得我在短时间内做了很多。",
+    "target": "Je pense que j'ai beaucoup fait en peu de temps.",
+    "row": "S0089L01U01",
+    "row_known": "我觉得我在短时间内做了很多",
+    "row_target": "je pense que j'ai fait beaucoup en un peu de temps"
+   },
+   {
+    "seed": 90,
+    "known": "如果你可以说慢一点就太好了。",
+    "target": "Si tu peux parler plus lentement ce serait super.",
+    "row": "S0090L04U01",
+    "row_known": "如果你可以说慢一点就太好了",
+    "row_target": "ce serait super si tu pouvais parler un peu plus lentement"
+   },
+   {
+    "seed": 95,
+    "known": "你准备好坐下一班车回家了吗？",
+    "target": "Est-ce que tu es prêt à rentrer à la maison dans le prochain bus ?",
+    "row": "S0095L05U01",
+    "row_known": "你准备好坐下一班车回家了吗",
+    "row_target": "tu es prêt à prendre le prochain bus pour rentrer à la maison?"
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 301,
+    "known": "他想给你看点东西。",
+    "target": "Il a dit qu'il veut te montrer quelque chose."
+   },
+   {
+    "seed": 302,
+    "known": "她说她不想住在城市里。",
+    "target": "Elle a dit qu'elle ne veut pas habiter en ville."
+   },
+   {
+    "seed": 303,
+    "known": "我觉得他想坐下来。",
+    "target": "Je pense qu'il veut s'asseoir."
+   },
+   {
+    "seed": 304,
+    "known": "我觉得她不想在家工作。",
+    "target": "Je pense qu'elle ne veut pas travailler depuis chez elle."
+   },
+   {
+    "seed": 306,
+    "known": "我认识那个正在和你朋友说话的年轻女人。",
+    "target": "Je connais cette jeune femme qui parle avec ton ami."
+   },
+   {
+    "seed": 307,
+    "known": "我认识那个坐在那边的年轻男人。",
+    "target": "Je connais ce jeune homme qui est assis là-bas."
+   },
+   {
+    "seed": 308,
+    "known": "是的，她是我妈妈的朋友。",
+    "target": "Oui c'est une amie de ma mère."
+   },
+   {
+    "seed": 309,
+    "known": "不，我以前从没见过她。",
+    "target": "Non je ne l'ai jamais vue avant."
+   },
+   {
+    "seed": 310,
+    "known": "她可以写一个关于那个男人的故事。",
+    "target": "Elle pourrait écrire une histoire sur cet homme."
+   },
+   {
+    "seed": 311,
+    "known": "他不敢相信那三个最重要的事实。",
+    "target": "Il ne pouvait pas croire les trois faits les plus importants."
+   },
+   {
+    "seed": 312,
+    "known": "她说她明晚可以用另一个房间。",
+    "target": "Elle a dit qu'elle pourrait utiliser l'autre pièce demain soir."
+   },
+   {
+    "seed": 313,
+    "known": "他说他不能看完那五场比赛。",
+    "target": "Il a dit qu'il ne pouvait pas regarder les cinq matchs."
+   },
+   {
+    "seed": 314,
+    "known": "我觉得她可以把它放在桌子上。",
+    "target": "Je pense qu'elle pourrait le mettre sur la table."
+   },
+   {
+    "seed": 315,
+    "known": "我觉得他买不起他想要的那辆车。",
+    "target": "Je pense qu'il ne pouvait pas se payer la voiture qu'il voulait."
+   },
+   {
+    "seed": 316,
+    "known": "你觉得她周一能带她哥哥来吗？",
+    "target": "Tu penses qu'elle pourrait amener son frère lundi ?"
+   },
+   {
+    "seed": 317,
+    "known": "是的，我觉得她如果想的话可以。",
+    "target": "Oui je pense qu'elle pourrait si elle voulait."
+   },
+   {
+    "seed": 318,
+    "known": "不，我觉得她这次不行。",
+    "target": "Non je ne pense pas qu'elle pourrait cette fois."
+   },
+   {
+    "seed": 319,
+    "known": "她需要搬到另一个国家。",
+    "target": "Elle doit déménager dans un autre pays."
+   },
+   {
+    "seed": 320,
+    "known": "他今年不需要再买一台电视。",
+    "target": "Il n'a pas besoin d'acheter une autre télévision cette année."
+   },
+   {
+    "seed": 321,
+    "known": "一本书。",
+    "target": "Un livre."
+   },
+   {
+    "seed": 322,
+    "known": "她说她需要读同一本书。",
+    "target": "Elle a dit qu'elle a besoin de lire le même livre."
+   },
+   {
+    "seed": 323,
+    "known": "他说他不需要走路去学校。",
+    "target": "Il a dit qu'il n'a pas besoin d'aller à l'école à pied."
+   },
+   {
+    "seed": 324,
+    "known": "那个学生双手都举起来了。",
+    "target": "Cet étudiant a ses deux mains levées."
+   },
+   {
+    "seed": 325,
+    "known": "我觉得他需要考虑十个可能的问题。",
+    "target": "Je pense qu'il a besoin d'envisager dix problèmes possibles."
+   },
+   {
+    "seed": 326,
+    "known": "我觉得她不需要卖掉公司。",
+    "target": "Je ne pense pas qu'elle a besoin de vendre la société."
+   },
+   {
+    "seed": 327,
+    "known": "你觉得她需要提供另一种办法吗？",
+    "target": "Tu penses qu'elle a besoin de proposer une autre façon ?"
+   },
+   {
+    "seed": 328,
+    "known": "是的，我觉得她应该这样做。",
+    "target": "Oui je pense qu'elle devrait."
+   },
+   {
+    "seed": 330,
+    "known": "不，我觉得这不太重要。",
+    "target": "Non je ne pense pas que ce soit très important."
+   },
+   {
+    "seed": 331,
+    "known": "她不能提供所有答案。",
+    "target": "Elle ne peut pas fournir toutes les réponses."
+   },
+   {
+    "seed": 332,
+    "known": "他可以为他妹妹建立新的生活。",
+    "target": "Il peut construire une nouvelle vie pour sa sœur."
+   },
+   {
+    "seed": 333,
+    "known": "她说她不能花太多时间和大家在一起。",
+    "target": "Elle a dit qu'elle ne peut pas passer beaucoup de temps avec le groupe."
+   },
+   {
+    "seed": 334,
+    "known": "他说他可以让你抱那只小猫。",
+    "target": "Il a dit qu'il peut te laisser tenir le chaton."
+   },
+   {
+    "seed": 335,
+    "known": "我觉得他可以增加一些有价值的想法。",
+    "target": "Je pense qu'il peut apporter des idées intéressantes."
+   },
+   {
+    "seed": 336,
+    "known": "我觉得她打不开那扇门。",
+    "target": "Je ne pense pas qu'elle peut ouvrir la porte."
+   },
+   {
+    "seed": 337,
+    "known": "你觉得他还能继续玩吗？",
+    "target": "Tu penses qu'il peut continuer à jouer ?"
+   },
+   {
+    "seed": 338,
+    "known": "很糟糕。",
+    "target": "Mal."
+   },
+   {
+    "seed": 339,
+    "known": "不，我觉得他伤得挺严重的。",
+    "target": "Non je pense qu'il s'est blessé assez sérieusement."
+   },
+   {
+    "seed": 340,
+    "known": "是的，我确定他会没事的。",
+    "target": "Oui je suis sûr qu'il va aller bien."
+   },
+   {
+    "seed": 341,
+    "known": "我几天前见过一个人。",
+    "target": "J'ai rencontré quelqu'un il y a quelques jours."
+   },
+   {
+    "seed": 342,
+    "known": "我见过一个说过话的人。",
+    "target": "J'ai rencontré quelqu'un qui a dit quelque chose."
+   },
+   {
+    "seed": 343,
+    "known": "那个人说她对经济感到担心。",
+    "target": "Qui a dit qu'elle s'inquiète pour l'économie."
+   },
+   {
+    "seed": 344,
+    "known": "那个人说他很高兴帮你。",
+    "target": "Qui a dit qu'il est content de t'aider."
+   },
+   {
+    "seed": 345,
+    "known": "那个人说他还没准备好离开。",
+    "target": "Qui a dit qu'il n'est pas encore prêt à partir."
+   },
+   {
+    "seed": 346,
+    "known": "我想让她知道我喜欢她的书。",
+    "target": "Je voulais qu'elle sache que j'aimais son livre."
+   },
+   {
+    "seed": 347,
+    "known": "他想知道一周前发生了什么。",
+    "target": "Il voulait savoir ce qui se passait il y a une semaine."
+   },
+   {
+    "seed": 348,
+    "known": "她不想知道将要发生什么。",
+    "target": "Elle ne voulait pas savoir ce qui allait se passer."
+   },
+   {
+    "seed": 349,
+    "known": "他周五晚上想出去吗？",
+    "target": "Est-ce qu'il voulait sortir vendredi soir ?"
+   },
+   {
+    "seed": 350,
+    "known": "是的，他想去见一些老朋友。",
+    "target": "Oui il voulait voir de vieux amis."
+   },
+   {
+    "seed": 351,
+    "known": "不，他不想让我一个人待着。",
+    "target": "Non il ne voulait pas me laisser seul."
+   },
+   {
+    "seed": 352,
+    "known": "即使他想，他也做不到。",
+    "target": "Même s'il voulait il ne pourrait pas."
+   },
+   {
+    "seed": 353,
+    "known": "她需要在场地里跑来跑去。",
+    "target": "Elle avait besoin de courir autour du terrain."
+   },
+   {
+    "seed": 354,
+    "known": "他没必要显得生气。",
+    "target": "Il n'avait pas besoin d'avoir l'air en colère."
+   },
+   {
+    "seed": 355,
+    "known": "她需要和你认识的那个女人说话吗？",
+    "target": "Est-ce qu'elle avait besoin de parler à cette femme que tu connais ?"
+   },
+   {
+    "seed": 356,
+    "known": "是的，他们有重要的事情要讨论。",
+    "target": "Oui elles avaient quelque chose d'important à discuter."
+   },
+   {
+    "seed": 357,
+    "known": "不，她只是想给她发个消息。",
+    "target": "Non elle voulait juste lui envoyer un message."
+   },
+   {
+    "seed": 358,
+    "known": "你的朋友说她到不了顶端。",
+    "target": "Ton ami a dit qu'elle ne pouvait pas atteindre le sommet."
+   },
+   {
+    "seed": 359,
+    "known": "你的朋友说他可以向左转。",
+    "target": "Ton ami a dit qu'il pouvait tourner à gauche."
+   },
+   {
+    "seed": 360,
+    "known": "你的朋友还说了别的吗？",
+    "target": "Est-ce que ton ami a dit autre chose ?"
+   },
+   {
+    "seed": 361,
+    "known": "他很安静。",
+    "target": "Il était silencieux."
+   },
+   {
+    "seed": 362,
+    "known": "不，你走后他挺安静的。",
+    "target": "Non il était plutôt silencieux après ton départ."
+   },
+   {
+    "seed": 363,
+    "known": "是的，他很想多说话。",
+    "target": "Oui il avait envie de beaucoup parler."
+   },
+   {
+    "seed": 364,
+    "known": "我听说他不喜欢那个地方。",
+    "target": "J'ai entendu qu'il n'aimait pas cet endroit."
+   },
+   {
+    "seed": 365,
+    "known": "我没听清她对他说了什么。",
+    "target": "Je n'ai pas entendu ce qu'elle lui a dit."
+   },
+   {
+    "seed": 366,
+    "known": "你听说他想种什么了吗？",
+    "target": "Tu as entendu ce qu'il voulait faire pousser ?"
+   },
+   {
+    "seed": 367,
+    "known": "不，没有人告诉我。",
+    "target": "Non personne ne me l'a dit."
+   },
+   {
+    "seed": 368,
+    "known": "是的，我听说他想种西红柿。",
+    "target": "Oui j'ai entendu qu'il voulait faire pousser des tomates."
+   },
+   {
+    "seed": 369,
+    "known": "我在路上看到几匹马。",
+    "target": "J'ai vu plusieurs chevaux sur la route."
+   },
+   {
+    "seed": 370,
+    "known": "我没看到任何我认识的人。",
+    "target": "Je n'ai vu personne que je connaissais."
+   },
+   {
+    "seed": 371,
+    "known": "我周三去看了一场电影。",
+    "target": "Je suis allé voir un film mercredi."
+   },
+   {
+    "seed": 372,
+    "known": "你看到她想做什么了吗？",
+    "target": "Tu as vu ce qu'elle essayait de créer ?"
+   },
+   {
+    "seed": 373,
+    "known": "很漂亮。",
+    "target": "C'était beau."
+   },
+   {
+    "seed": 374,
+    "known": "是的，我觉得非常漂亮。",
+    "target": "Oui je pensais que c'était très beau."
+   },
+   {
+    "seed": 375,
+    "known": "不，我不知道她在做什么。",
+    "target": "Non je ne savais pas ce qu'elle faisait."
+   },
+   {
+    "seed": 376,
+    "known": "上个月我哪儿也没去。",
+    "target": "Je ne suis allé nulle part le mois dernier."
+   },
+   {
+    "seed": 377,
+    "known": "去年你去过世界上的什么地方吗？",
+    "target": "Tu es allé quelque part dans le monde l'année dernière ?"
+   },
+   {
+    "seed": 378,
+    "known": "不，我没钱去度假。",
+    "target": "Non je n'avais pas assez d'argent pour les vacances."
+   },
+   {
+    "seed": 379,
+    "known": "是的，我很幸运能去非洲旅行。",
+    "target": "Oui j'ai eu la chance de voyager en Afrique."
+   },
+   {
+    "seed": 380,
+    "known": "我问了她想包括什么。",
+    "target": "J'ai demandé ce qu'elle voulait inclure."
+   },
+   {
+    "seed": 381,
+    "known": "我没问他想不想跟我们走。",
+    "target": "Je n'ai pas demandé s'il voulait nous suivre."
+   },
+   {
+    "seed": 382,
+    "known": "你问过他想把它放在哪里吗？",
+    "target": "Tu as demandé où il voulait le mettre ?"
+   },
+   {
+    "seed": 383,
+    "known": "是的，他说他想把它放在花园里。",
+    "target": "Oui il a dit qu'il voulait le mettre dans le jardin."
+   },
+   {
+    "seed": 384,
+    "known": "我不同意他刚才说的。",
+    "target": "Je ne pouvais pas être d'accord avec ce qu'il a dit il y a un moment."
+   },
+   {
+    "seed": 385,
+    "known": "你同意她的说法吗？",
+    "target": "Tu étais d'accord avec elle ?"
+   },
+   {
+    "seed": 386,
+    "known": "是的，我同意她。",
+    "target": "Oui j'étais d'accord avec elle."
+   },
+   {
+    "seed": 387,
+    "known": "不，我觉得她不对。",
+    "target": "Non je ne pensais pas qu'elle avait raison."
+   },
+   {
+    "seed": 388,
+    "known": "和你一起工作的人。",
+    "target": "Cette personne avec qui tu travailles."
+   },
+   {
+    "seed": 389,
+    "known": "那边的那个人。",
+    "target": "Cette personne là-bas."
+   },
+   {
+    "seed": 390,
+    "known": "站在入口附近的那个人。",
+    "target": "Celui qui est debout près de l'entrée."
+   },
+   {
+    "seed": 391,
+    "known": "正朝公交车走去的那个人。",
+    "target": "Celui qui marche vers le bus."
+   },
+   {
+    "seed": 392,
+    "known": "邮局对面那个黑头发的孩子。",
+    "target": "Cet enfant aux cheveux noirs en face de la poste."
+   },
+   {
+    "seed": 393,
+    "known": "穿绿色衬衫的那个男孩。",
+    "target": "Ce garçon avec la chemise verte."
+   },
+   {
+    "seed": 394,
+    "known": "穿黄色连衣裙的那个女孩。",
+    "target": "Cette fille avec la robe jaune."
+   },
+   {
+    "seed": 395,
+    "known": "我们需要在下一个路口左转。",
+    "target": "Nous devons tourner à gauche au prochain coin."
+   },
+   {
+    "seed": 396,
+    "known": "我们不需要等所有人都准备好。",
+    "target": "Nous n'avons pas besoin de nous lever avant que tout le monde soit prêt."
+   },
+   {
+    "seed": 397,
+    "known": "我们需要马上准备好吗？",
+    "target": "Nous avons besoin de nous préparer bientôt ?"
+   },
+   {
+    "seed": 398,
+    "known": "我们想对孩子更有耐心。",
+    "target": "Nous voulons devenir plus patients avec nos enfants."
+   },
+   {
+    "seed": 399,
+    "known": "我们不想失去希望。",
+    "target": "Nous ne voulons pas perdre espoir."
+   },
+   {
+    "seed": 400,
+    "known": "我们等会儿要不要吃点东西？",
+    "target": "Est-ce qu'on veut manger quelque chose plus tard ?"
+   },
+   {
+    "seed": 401,
+    "known": "不，直接回家会更好。",
+    "target": "Non il vaudrait mieux rentrer directement à la maison."
+   },
+   {
+    "seed": 402,
+    "known": "是的，停下来吃点东西会很好。",
+    "target": "Oui ce serait bien de s'arrêter quelque part pour manger."
+   },
+   {
+    "seed": 403,
+    "known": "我们应该尽可能长时间保持安静。",
+    "target": "Nous devrions rester silencieux le plus longtemps possible."
+   },
+   {
+    "seed": 404,
+    "known": "我们不应该指望在周四之前完成。",
+    "target": "Nous ne devrions pas espérer finir avant jeudi."
+   },
+   {
+    "seed": 405,
+    "known": "我们需要问一下要不要预订吗？",
+    "target": "On devrait demander si on doit réserver ?"
+   },
+   {
+    "seed": 406,
+    "known": "不，我确定没问题。",
+    "target": "Non je suis sûr que ça ira."
+   },
+   {
+    "seed": 407,
+    "known": "我们不应该试着树立好榜样吗？",
+    "target": "On ne devrait pas essayer de donner le bon exemple ?"
+   },
+   {
+    "seed": 408,
+    "known": "是的，这是建立幸福家庭的最好方式。",
+    "target": "Oui c'est la meilleure façon de créer une famille heureuse."
+   },
+   {
+    "seed": 409,
+    "known": "不，我们做什么都无所谓。",
+    "target": "Non ça n'a pas d'importance ce qu'on fait."
+   },
+   {
+    "seed": 410,
+    "known": "他们还在互相争吵。",
+    "target": "Ils se disputent encore entre eux."
+   },
+   {
+    "seed": 411,
+    "known": "我们今晚想预订一张四人的桌子。",
+    "target": "Nous voudrions réserver une table pour quatre ce soir."
+   },
+   {
+    "seed": 412,
+    "known": "我们不能让他们赢得一切。",
+    "target": "Nous ne pouvions pas les laisser tout gagner."
+   },
+   {
+    "seed": 413,
+    "known": "如果我们靠得太近，可能会摔倒。",
+    "target": "Nous pourrions tomber si on s'approche trop du bord."
+   },
+   {
+    "seed": 414,
+    "known": "请给我们一瓶红酒。",
+    "target": "On pourrait avoir une bouteille de vin rouge s'il vous plaît ?"
+   },
+   {
+    "seed": 415,
+    "known": "如果你问我，那不会是个问题。",
+    "target": "Ce ne serait pas un problème à mon avis."
+   },
+   {
+    "seed": 416,
+    "known": "他们明年想带头。",
+    "target": "Ils veulent montrer la voie l'année prochaine."
+   },
+   {
+    "seed": 417,
+    "known": "他们想杀掉那些蚂蚁吗？",
+    "target": "Ils veulent tuer ces fourmis ?"
+   },
+   {
+    "seed": 418,
+    "known": "他们需要为社区服务。",
+    "target": "Ils doivent servir la communauté."
+   },
+   {
+    "seed": 419,
+    "known": "如果他们想让人们喜欢他们。",
+    "target": "S'ils veulent que les gens les aiment."
+   },
+   {
+    "seed": 420,
+    "known": "他们不需要问他多大年纪。",
+    "target": "Ils n'ont pas besoin de demander quel âge il a."
+   },
+   {
+    "seed": 421,
+    "known": "因为他们已经知道他身体在变弱。",
+    "target": "Parce qu'ils savent déjà qu'il vieillit."
+   },
+   {
+    "seed": 422,
+    "known": "一个问题。",
+    "target": "Une question."
+   },
+   {
+    "seed": 423,
+    "known": "他们需要问这么明显的问题吗？",
+    "target": "Ont-ils besoin de poser une question aussi évidente ?"
+   },
+   {
+    "seed": 424,
+    "known": "不，他们在浪费大家的时间。",
+    "target": "Non ils font perdre du temps à tout le monde."
+   },
+   {
+    "seed": 425,
+    "known": "是的，他们需要确保他们理解了。",
+    "target": "Oui ils doivent s'assurer qu'ils comprennent."
+   },
+   {
+    "seed": 426,
+    "known": "他们想彼此相爱，但他们并不开心。",
+    "target": "Ils voudraient s'aimer mais ils sont malheureux."
+   },
+   {
+    "seed": 427,
+    "known": "他们不想让你觉得他们很无聊。",
+    "target": "Ils n'aimeraient pas que tu penses qu'ils s'ennuient."
+   },
+   {
+    "seed": 428,
+    "known": "他们周二想来拜访我们吗？",
+    "target": "Est-ce qu'ils voudraient nous rendre visite mardi ?"
+   },
+   {
+    "seed": 429,
+    "known": "是的，那对他们来说太好了。",
+    "target": "Oui ce serait parfait pour eux."
+   },
+   {
+    "seed": 430,
+    "known": "不，那是不可能的。",
+    "target": "Non ce ne serait pas possible."
+   },
+   {
+    "seed": 431,
+    "known": "他们还没准备好，但很快就会准备好。",
+    "target": "Ils ne sont pas encore prêts mais ils le seront bientôt."
+   },
+   {
+    "seed": 432,
+    "known": "他们可能是想让你去问。",
+    "target": "Ils pourraient vouloir dire que tu devrais demander."
+   },
+   {
+    "seed": 433,
+    "known": "他们不知道电影什么时候开始。",
+    "target": "Ils ne pouvaient pas savoir quand le film commençait."
+   },
+   {
+    "seed": 434,
+    "known": "他们能减少招收的学生人数吗？",
+    "target": "Pourraient-ils réduire le nombre d'élèves qu'ils acceptent ?"
+   },
+   {
+    "seed": 435,
+    "known": "是的，如果他们想的话可以。",
+    "target": "Oui ils pourraient s'ils voulaient."
+   },
+   {
+    "seed": 436,
+    "known": "不，他们有最低人数要求。",
+    "target": "Non il y a un nombre minimum dont ils ont besoin."
+   },
+   {
+    "seed": 437,
+    "known": "他们想为慈善筹集尽可能多的钱。",
+    "target": "Ils voulaient récolter le plus possible pour une association caritative."
+   },
+   {
+    "seed": 438,
+    "known": "他们不想决定他该做什么。",
+    "target": "Ils ne voulaient pas décider ce qu'il devrait faire."
+   },
+   {
+    "seed": 439,
+    "known": "他们不想死。",
+    "target": "Ils ne veulent pas mourir."
+   },
+   {
+    "seed": 440,
+    "known": "他们想趁年轻去旅行。",
+    "target": "Ils veulent voyager pendant qu'ils sont encore jeunes."
+   },
+   {
+    "seed": 441,
+    "known": "一种方法。",
+    "target": "Une approche."
+   },
+   {
+    "seed": 442,
+    "known": "他们想开发一种新方法吗？",
+    "target": "Voulaient-ils développer une nouvelle approche ?"
+   },
+   {
+    "seed": 443,
+    "known": "不，他们想继续用同样的方法做。",
+    "target": "Non ils voulaient continuer à le faire de la même façon."
+   },
+   {
+    "seed": 444,
+    "known": "是的，他们觉得可以更高效地完成。",
+    "target": "Oui ils pensaient que ça pouvait se faire plus efficacement."
+   },
+   {
+    "seed": 445,
+    "known": "他们能拿得动那个行李箱。",
+    "target": "Ils pourront porter cette valise."
+   },
+   {
+    "seed": 446,
+    "known": "他们不能打破那扇窗户。",
+    "target": "Ils ne pourront pas casser cette fenêtre."
+   },
+   {
+    "seed": 447,
+    "known": "吃完饭后他们能开车送我们回家吗？",
+    "target": "Est-ce qu'ils pourront nous ramener à la maison après le repas ?"
+   },
+   {
+    "seed": 448,
+    "known": "是的，他们很乐意帮忙。",
+    "target": "Oui ils seront contents d'aider."
+   },
+   {
+    "seed": 449,
+    "known": "他们说他们几乎准备好了。",
+    "target": "Ils ont dit qu'ils étaient presque prêts."
+   },
+   {
+    "seed": 450,
+    "known": "不，他们得自己赶火车。",
+    "target": "Non ils doivent prendre le train eux-mêmes."
+   },
+   {
+    "seed": 451,
+    "known": "他们说了他们想做的事。",
+    "target": "Ils ont dit ce qu'ils voulaient faire."
+   },
+   {
+    "seed": 452,
+    "known": "他们没说他们想做什么。",
+    "target": "Ils n'ont pas dit ce qu'ils voulaient faire."
+   },
+   {
+    "seed": 453,
+    "known": "他们说过昨晚见了谁吗？",
+    "target": "Ont-ils dit qui ils ont vu hier soir ?"
+   },
+   {
+    "seed": 454,
+    "known": "我们的朋友大约六点来了。",
+    "target": "Nos amis sont passés vers six heures."
+   },
+   {
+    "seed": 455,
+    "known": "我们因为孩子们累了而离开。",
+    "target": "Nous avons dû partir parce que les enfants étaient fatigués."
+   },
+   {
+    "seed": 456,
+    "known": "他可能会在那里，但不太可能。",
+    "target": "Il est peut-être là mais c'est peu probable."
+   },
+   {
+    "seed": 457,
+    "known": "问题的一部分是不同领域的数量。",
+    "target": "Une partie du problème c'est le nombre de domaines différents."
+   },
+   {
+    "seed": 458,
+    "known": "过去一切都容易得多。",
+    "target": "Tout était beaucoup plus facile dans le passé."
+   },
+   {
+    "seed": 459,
+    "known": "它不在那个蓝色标志前面。",
+    "target": "Ce n'était pas devant le panneau bleu."
+   },
+   {
+    "seed": 460,
+    "known": "我想找一家靠近酒店的商店。",
+    "target": "Je veux trouver un magasin près de l'hôtel."
+   },
+   {
+    "seed": 461,
+    "known": "我想买明信片的商店。",
+    "target": "Un magasin où je peux acheter des cartes postales."
+   },
+   {
+    "seed": 462,
+    "known": "我爷爷在战争期间在意大利作战。",
+    "target": "Mon grand-père a combattu en Italie pendant la guerre."
+   },
+   {
+    "seed": 463,
+    "known": "我的房间号码。",
+    "target": "Mon numéro de chambre."
+   },
+   {
+    "seed": 464,
+    "known": "我告诉过她我的房间号码一次，但她忘了。",
+    "target": "Je lui ai dit mon numéro de chambre une fois mais elle l'a oublié."
+   },
+   {
+    "seed": 465,
+    "known": "下次我会问她叫什么名字。",
+    "target": "La prochaine fois je lui demanderai comment elle s'appelle."
+   },
+   {
+    "seed": 466,
+    "known": "让我把它扔过墙去。",
+    "target": "Laisse-moi le jeter par-dessus le mur."
+   },
+   {
+    "seed": 467,
+    "known": "它在停车场旁边。",
+    "target": "C'est à côté du parking."
+   },
+   {
+    "seed": 468,
+    "known": "世界很大。",
+    "target": "C'est un grand monde."
+   },
+   {
+    "seed": 469,
+    "known": "但是这不意味着我们不能改变它。",
+    "target": "Mais ça ne veut pas dire qu'on ne peut pas le changer."
+   },
+   {
+    "seed": 470,
+    "known": "在我们停下来之前你想爬多高？",
+    "target": "Jusqu'où tu veux grimper avant qu'on s'arrête ?"
+   },
+   {
+    "seed": 471,
+    "known": "你想停下来休息一下吗？",
+    "target": "Tu veux s'arrêter pour se reposer ?"
+   },
+   {
+    "seed": 472,
+    "known": "问题的一部分是我们不知道事实。",
+    "target": "Une partie du problème c'est qu'on ne connaît pas les faits."
+   },
+   {
+    "seed": 473,
+    "known": "我不想要它。",
+    "target": "Je n'en veux pas."
+   },
+   {
+    "seed": 474,
+    "known": "即使是免费的，我也不想要。",
+    "target": "Je n'en veux même pas si c'est gratuit."
+   },
+   {
+    "seed": 475,
+    "known": "有很多理由值得考虑等待。",
+    "target": "Il y a beaucoup de raisons d'envisager d'attendre."
+   },
+   {
+    "seed": 476,
+    "known": "我在等下半场结束。",
+    "target": "J'attends la fin de la deuxième mi-temps."
+   },
+   {
+    "seed": 477,
+    "known": "他从假期的第二天起就生病了。",
+    "target": "Il est malade depuis le deuxième jour des vacances."
+   },
+   {
+    "seed": 478,
+    "known": "她有一颗非常善良的心。",
+    "target": "Elle a un cœur tellement gentil."
+   },
+   {
+    "seed": 479,
+    "known": "这是我至少能做的事。",
+    "target": "C'est le moins que je puisse faire."
+   },
+   {
+    "seed": 480,
+    "known": "不管他说什么，现在都不远了。",
+    "target": "Quoi qu'il dise ce n'est plus très loin maintenant."
+   },
+   {
+    "seed": 481,
+    "known": "这是我们唯一剩下的真正希望。",
+    "target": "C'est le seul vrai espoir qui nous reste."
+   },
+   {
+    "seed": 482,
+    "known": "唯一真正的希望是他们并不认真。",
+    "target": "Le seul vrai espoir c'est qu'ils ne sont pas sérieux."
+   },
+   {
+    "seed": 483,
+    "known": "生活并不容易，但也不是应该容易的。",
+    "target": "La vie n'est pas facile mais elle n'est pas censée être facile."
+   },
+   {
+    "seed": 484,
+    "known": "它本来就应该是个挑战。",
+    "target": "C'est censé être un défi."
+   },
+   {
+    "seed": 485,
+    "known": "没有什么比离开更让我开心的了。",
+    "target": "Rien ne me rendrait plus heureux que de partir."
+   },
+   {
+    "seed": 486,
+    "known": "我觉得你的眼睛很漂亮。",
+    "target": "Je trouve que tes yeux sont beaux."
+   },
+   {
+    "seed": 487,
+    "known": "它在桥下面。",
+    "target": "C'est sous le pont."
+   },
+   {
+    "seed": 488,
+    "known": "它在那条黄色线的另一边。",
+    "target": "C'est de l'autre côté de cette ligne jaune."
+   },
+   {
+    "seed": 489,
+    "known": "如果你现在不给我泡一杯浓咖啡。",
+    "target": "Si tu ne me fais pas un café bien fort tout de suite."
+   },
+   {
+    "seed": 490,
+    "known": "那我再也不会相信任何人了。",
+    "target": "Je ne ferai plus jamais confiance à personne."
+   },
+   {
+    "seed": 491,
+    "known": "我喜欢你努力帮忙的方式。",
+    "target": "J'aime la façon dont tu essaies d'aider."
+   },
+   {
+    "seed": 492,
+    "known": "在那些地方中，你觉得哪个最有意思？",
+    "target": "Lequel de ces endroits tu trouves le plus intéressant ?"
+   },
+   {
+    "seed": 493,
+    "known": "接下来会发生什么？",
+    "target": "Qu'est-ce qui va venir ensuite ?"
+   },
+   {
+    "seed": 494,
+    "known": "演出的第一部分之后会发生什么？",
+    "target": "Qu'est-ce qui se passe après la première partie du spectacle ?"
+   },
+   {
+    "seed": 495,
+    "known": "在真正重要的时候。",
+    "target": "Quand ça compte."
+   },
+   {
+    "seed": 496,
+    "known": "在真正重要的时候我不打算输。",
+    "target": "Je ne prévois pas de perdre quand ça compte vraiment."
+   },
+   {
+    "seed": 497,
+    "known": "听起来你需要睡一觉。",
+    "target": "Ça semble dire que tu as besoin de dormir."
+   },
+   {
+    "seed": 498,
+    "known": "他独自站在入口里面。",
+    "target": "Il est debout seul là-bas à l'intérieur de l'entrée."
+   },
+   {
+    "seed": 499,
+    "known": "也许我们应该开门关窗。",
+    "target": "Peut-être qu'on devrait ouvrir la porte et fermer la fenêtre."
+   },
+   {
+    "seed": 500,
+    "known": "你为什么不想坐在那两个女孩中间？",
+    "target": "Pourquoi est-ce que tu ne veux pas t'asseoir entre les deux filles ?"
+   },
+   {
+    "seed": 501,
+    "known": "要是我能相信你们能一起玩而不吵架就好了。",
+    "target": "Si seulement je pouvais te faire confiance pour jouer ensemble sans vous disputer."
+   },
+   {
+    "seed": 502,
+    "known": "她差点迷路，因为她左转而不是右转。",
+    "target": "Elle a failli se perdre parce qu'elle a tourné à gauche au lieu de droite."
+   },
+   {
+    "seed": 503,
+    "known": "我讨厌惹麻烦，但那个是我的。",
+    "target": "Je déteste faire des histoires mais celui-là c'est le mien."
+   },
+   {
+    "seed": 504,
+    "known": "我要跑过草地。",
+    "target": "Je vais courir à travers l'herbe."
+   },
+   {
+    "seed": 505,
+    "known": "这样我就不会被落下。",
+    "target": "Pour ne pas me faire distancer."
+   },
+   {
+    "seed": 506,
+    "known": "多年前我们搬走之前，我曾住在这附近。",
+    "target": "J'habitais par ici il y a des années avant qu'on déménage."
+   },
+   {
+    "seed": 507,
+    "known": "我们搬到了城市里。",
+    "target": "Nous avons déménagé en ville."
+   },
+   {
+    "seed": 508,
+    "known": "担心你怎么付钱没有意义。",
+    "target": "Ça ne sert à rien de s'inquiéter de comment tu vas payer."
+   },
+   {
+    "seed": 509,
+    "known": "我听说你要为一张新床付钱。",
+    "target": "J'ai entendu que tu vas payer pour un nouveau lit."
+   },
+   {
+    "seed": 510,
+    "known": "她去找一个安全的地方停车了。",
+    "target": "Elle est partie chercher un endroit sûr pour garer la voiture."
+   },
+   {
+    "seed": 511,
+    "known": "这个消息花了好几个小时才传到办公室里的每个人。",
+    "target": "La nouvelle a mis plusieurs heures à atteindre tout le monde au bureau."
+   },
+   {
+    "seed": 512,
+    "known": "你能在我去拿钥匙的时候帮我把门打开吗？",
+    "target": "Tu peux tenir la porte ouverte pendant que je vais chercher les clés ?"
+   },
+   {
+    "seed": 513,
+    "known": "我一抬头就最疼。",
+    "target": "Ça fait le plus mal quand je bouge la tête de haut en bas."
+   },
+   {
+    "seed": 514,
+    "known": "我第一天就找到了那所完美的房子。",
+    "target": "J'ai trouvé la maison parfaite le premier jour."
+   },
+   {
+    "seed": 515,
+    "known": "在新年的第一天。",
+    "target": "Le premier jour de la nouvelle année."
+   },
+   {
+    "seed": 516,
+    "known": "他们都是自己来的。",
+    "target": "Ils sont tous les deux venus seuls."
+   },
+   {
+    "seed": 517,
+    "known": "但他们是一起离开的。",
+    "target": "Mais ils sont partis ensemble."
+   },
+   {
+    "seed": 518,
+    "known": "我无法想象自己也遇到完全一样的问题。",
+    "target": "Je ne pouvais pas m'imaginer avoir exactement le même problème."
+   },
+   {
+    "seed": 519,
+    "known": "我还没见过他们的新宝宝。",
+    "target": "Je n'ai pas encore vu leur nouveau bébé."
+   },
+   {
+    "seed": 520,
+    "known": "这可能发生在整个家庭身上。",
+    "target": "Ça aurait pu arriver à toute la famille."
+   },
+   {
+    "seed": 521,
+    "known": "我担心你会忘记我们为什么需要留在这里。",
+    "target": "J'ai peur que tu oublies pourquoi nous devions rester ici."
+   },
+   {
+    "seed": 522,
+    "known": "我们就同意说实话是件傻事吧。",
+    "target": "Convenons que c'était stupide de dire la vérité."
+   },
+   {
+    "seed": 523,
+    "known": "而不是找个借口。",
+    "target": "Au lieu de donner une excuse."
+   },
+   {
+    "seed": 524,
+    "known": "我三四分钟后给你回电话。",
+    "target": "Je te rappelle dans trois ou quatre minutes."
+   },
+   {
+    "seed": 525,
+    "known": "看看你能不能完成。",
+    "target": "Pour vérifier si tu as pu finir."
+   },
+   {
+    "seed": 526,
+    "known": "我很难相信你猜不到。",
+    "target": "J'ai du mal à croire que tu ne peux pas deviner."
+   },
+   {
+    "seed": 527,
+    "known": "猜猜是谁给我讲了那个有趣的故事。",
+    "target": "Devine qui m'a raconté cette histoire drôle."
+   },
+   {
+    "seed": 528,
+    "known": "我可能应该把那些东西放在另一个房间。",
+    "target": "Je suis probablement censé garder ces choses dans une autre pièce."
+   },
+   {
+    "seed": 529,
+    "known": "你们都能把手举起来吗？",
+    "target": "Vous pouvez tous lever la main ?"
+   },
+   {
+    "seed": 530,
+    "known": "这样我就能数一数。",
+    "target": "Pour que je puisse les compter."
+   },
+   {
+    "seed": 531,
+    "known": "并不是每个人都能赢得比赛。",
+    "target": "Ce n'est pas vrai que n'importe qui peut gagner le jeu."
+   },
+   {
+    "seed": 532,
+    "known": "除非他们运气好。",
+    "target": "À moins d'avoir de la chance."
+   },
+   {
+    "seed": 533,
+    "known": "她不会听你说的每一句话。",
+    "target": "Elle ne va pas écouter chaque mot que tu dis."
+   },
+   {
+    "seed": 534,
+    "known": "我们别在这种糟糕的天气里出去。",
+    "target": "N'allons pas dehors par ce temps affreux."
+   },
+   {
+    "seed": 535,
+    "known": "他答应过他不会选错工作。",
+    "target": "Il a fait la promesse de ne pas choisir le mauvais travail."
+   },
+   {
+    "seed": 536,
+    "known": "我以前以为疯狂是坏事。",
+    "target": "Je pensais autrefois qu'être fou c'était une mauvaise chose."
+   },
+   {
+    "seed": 537,
+    "known": "但我错了。",
+    "target": "Mais j'avais tort."
+   },
+   {
+    "seed": 538,
+    "known": "我不想显得我不在乎。",
+    "target": "Je ne veux pas sembler m'en ficher."
+   },
+   {
+    "seed": 539,
+    "known": "但是时间不早了。",
+    "target": "Mais il se fait tard."
+   },
+   {
+    "seed": 540,
+    "known": "如果你想不开车离开，我也不介意。",
+    "target": "Ça ne me dérange pas si tu veux partir sans la voiture."
+   },
+   {
+    "seed": 541,
+    "known": "慢慢呼吸是个好主意。",
+    "target": "C'est une bonne idée d'essayer de respirer lentement."
+   },
+   {
+    "seed": 542,
+    "known": "每当你感到生气的时候。",
+    "target": "Chaque fois que tu te sens en colère."
+   },
+   {
+    "seed": 543,
+    "known": "她是对的。",
+    "target": "Elle avait raison."
+   },
+   {
+    "seed": 544,
+    "known": "谁说这会很难，那个人完全说对了。",
+    "target": "Quiconque a dit que ce serait difficile avait tout à fait raison."
+   },
+   {
+    "seed": 545,
+    "known": "该你把干净的衣服拿到楼上了。",
+    "target": "C'est ton tour de monter les vêtements propres en haut."
+   },
+   {
+    "seed": 546,
+    "known": "那只狗又脏又湿。",
+    "target": "Le chien est sale et mouillé."
+   },
+   {
+    "seed": 547,
+    "known": "因为它一直在泥里玩。",
+    "target": "Parce qu'il a joué dans la boue."
+   },
+   {
+    "seed": 548,
+    "known": "我现在感到很难过。",
+    "target": "Je me sens triste en ce moment."
+   },
+   {
+    "seed": 549,
+    "known": "因为我得保持安静。",
+    "target": "Parce que je dois rester silencieux."
+   },
+   {
+    "seed": 550,
+    "known": "村子的尽头。",
+    "target": "La fin du village."
+   },
+   {
+    "seed": 551,
+    "known": "那座教堂很丑。",
+    "target": "L'église est laide."
+   },
+   {
+    "seed": 552,
+    "known": "村子另一头的那座教堂很丑。",
+    "target": "L'église à l'autre bout du village est laide."
+   },
+   {
+    "seed": 553,
+    "known": "我觉得那座小教堂非常丑。",
+    "target": "Je trouve que la petite église est très laide."
+   },
+   {
+    "seed": 554,
+    "known": "这条毛巾不干。",
+    "target": "Cette serviette n'est pas sèche."
+   },
+   {
+    "seed": 555,
+    "known": "而我太累了，不想去拿新的。",
+    "target": "Et je suis trop fatigué pour en chercher une nouvelle."
+   },
+   {
+    "seed": 556,
+    "known": "他们深夜放音乐。",
+    "target": "Ils jouent de la musique tard le soir."
+   },
+   {
+    "seed": 557,
+    "known": "我希望他们不要放这么吵的音乐。",
+    "target": "J'aimerais qu'ils ne jouent pas une musique aussi forte."
+   },
+   {
+    "seed": 558,
+    "known": "夜已经很深了。",
+    "target": "Il est tellement tard le soir."
+   },
+   {
+    "seed": 559,
+    "known": "你找到穿过树林的小路了吗？",
+    "target": "Tu as trouvé le chemin à travers le bois ?"
+   },
+   {
+    "seed": 560,
+    "known": "它通向海滩。",
+    "target": "Il descend jusqu'à la plage."
+   },
+   {
+    "seed": 561,
+    "known": "我不在乎车有多快。",
+    "target": "Je m'en fiche si c'est une voiture rapide."
+   },
+   {
+    "seed": 562,
+    "known": "我只想安全到达。",
+    "target": "Je veux juste arriver en sécurité."
+   },
+   {
+    "seed": 563,
+    "known": "没有你的帮助，我坚持不了更久。",
+    "target": "Je n'aurais pas pu continuer plus longtemps."
+   },
+   {
+    "seed": 564,
+    "known": "没有你的帮助，我做不到。",
+    "target": "Je n'aurais pas pu y arriver sans ton aide."
+   },
+   {
+    "seed": 565,
+    "known": "如果是我选的，我会想得更仔细。",
+    "target": "J'y aurais réfléchi plus soigneusement."
+   },
+   {
+    "seed": 566,
+    "known": "如果是我的选择，我会多想想。",
+    "target": "J'aurais réfléchi davantage si ça avait été mon choix."
+   },
+   {
+    "seed": 567,
+    "known": "在户外看着孩子们玩真的很美好。",
+    "target": "C'était un plaisir de passer du temps dehors à regarder les enfants jouer."
+   },
+   {
+    "seed": 568,
+    "known": "我期待下次见面时看到进步。",
+    "target": "Je m'attends à voir une amélioration la prochaine fois que nous nous verrons."
+   },
+   {
+    "seed": 569,
+    "known": "你决定好愿意付多少钱了吗？",
+    "target": "Tu as décidé combien tu es prêt à payer ?"
+   },
+   {
+    "seed": 570,
+    "known": "你愿意为你的票付多少钱？",
+    "target": "Combien tu es prêt à payer pour ton billet ?"
+   },
+   {
+    "seed": 571,
+    "known": "我不太相信这是个好主意。",
+    "target": "Je ne suis pas convaincu que ce serait une très bonne idée."
+   },
+   {
+    "seed": 572,
+    "known": "你忘了他们上次来看我们时发生的事了吗？",
+    "target": "Tu as oublié ce qui s'est passé la dernière fois qu'ils nous ont rendu visite ?"
+   },
+   {
+    "seed": 573,
+    "known": "这正是让假期变得特别的那种事情。",
+    "target": "C'est le genre de chose qui rend les vacances très spéciales."
+   },
+   {
+    "seed": 574,
+    "known": "假期对每个人来说都很特别。",
+    "target": "Les vacances sont très spéciales pour tout le monde."
+   },
+   {
+    "seed": 575,
+    "known": "这让人很难过。",
+    "target": "C'a été pénible."
+   },
+   {
+    "seed": 576,
+    "known": "等待真的让人很难过。",
+    "target": "C'a été très pénible d'attendre."
+   },
+   {
+    "seed": 577,
+    "known": "我们一直在等医院的消息。",
+    "target": "Nous attendions les nouvelles de l'hôpital."
+   },
+   {
+    "seed": 578,
+    "known": "去更暖和的地方。",
+    "target": "Quelque part de plus chaud."
+   },
+   {
+    "seed": 579,
+    "known": "我们经常试过。",
+    "target": "Nous avons souvent essayé."
+   },
+   {
+    "seed": 580,
+    "known": "我们经常想带孩子们去暖和一点的地方。",
+    "target": "Nous avons souvent voulu emmener les enfants quelque part un peu plus chaud."
+   },
+   {
+    "seed": 581,
+    "known": "他想多了解一点那是什么样的。",
+    "target": "Il aimerait en savoir un peu plus sur ce que c'est."
+   },
+   {
+    "seed": 582,
+    "known": "在这里长大是什么感觉？",
+    "target": "C'est comment de grandir ici ?"
+   },
+   {
+    "seed": 583,
+    "known": "这个地方是什么样的？",
+    "target": "C'est comment dans cette partie du monde ?"
+   },
+   {
+    "seed": 584,
+    "known": "每天早上醒来看到群山是什么感觉？",
+    "target": "C'est comment de se réveiller chaque matin et de voir les montagnes ?"
+   },
+   {
+    "seed": 585,
+    "known": "我从卧室的窗户能看到群山。",
+    "target": "Je peux voir les montagnes depuis la fenêtre de ma chambre."
+   },
+   {
+    "seed": 586,
+    "known": "我想要二十个水煮蛋。",
+    "target": "Je veux vingt œufs durs."
+   },
+   {
+    "seed": 587,
+    "known": "她以前坚持我们晚饭要吃鸡蛋。",
+    "target": "Elle insistait toujours pour qu'on mange des œufs au dîner."
+   },
+   {
+    "seed": 588,
+    "known": "所以我想长大后离开家。",
+    "target": "Alors je voulais grandir et quitter la maison."
+   },
+   {
+    "seed": 589,
+    "known": "她告诉我她刚看到最后一班车。",
+    "target": "Elle m'a dit qu'elle venait juste de voir le dernier bus."
+   },
+   {
+    "seed": 590,
+    "known": "我看到最后一班车离开了车站。",
+    "target": "J'ai vu le dernier bus quitter la gare."
+   },
+   {
+    "seed": 591,
+    "known": "她跟着我走到商店。",
+    "target": "Elle m'a suivi jusqu'aux magasins."
+   },
+   {
+    "seed": 592,
+    "known": "然后沿着主干道走。",
+    "target": "Et le long de la route principale."
+   },
+   {
+    "seed": 593,
+    "known": "不管我怎么争论，我还是得分享。",
+    "target": "Même si je me disputais j'avais quand même à partager."
+   },
+   {
+    "seed": 594,
+    "known": "我得和我妹妹分享我的玩具。",
+    "target": "Je devais partager mes jouets avec ma sœur."
+   },
+   {
+    "seed": 595,
+    "known": "我需要躺在花园里。",
+    "target": "J'ai besoin de m'allonger dans le jardin."
+   },
+   {
+    "seed": 596,
+    "known": "然后闭上眼睛一会儿。",
+    "target": "Et j'ai besoin de fermer les yeux un moment."
+   },
+   {
+    "seed": 597,
+    "known": "我怀疑他已经听过一百个关于这件事的故事。",
+    "target": "Je pense qu'il a entendu cent histoires à ce sujet."
+   },
+   {
+    "seed": 598,
+    "known": "他听过一千个关于他们在做什么的故事。",
+    "target": "Il a entendu mille histoires sur ce qu'ils faisaient."
+   },
+   {
+    "seed": 599,
+    "known": "如果你告诉我，我会很乐意开车。",
+    "target": "J'aurais été content de conduire si tu me l'avais dit."
+   },
+   {
+    "seed": 600,
+    "known": "如果你告诉我你有多累，我会开车的。",
+    "target": "J'aurais conduit si tu m'avais dit à quel point tu étais fatigué."
+   },
+   {
+    "seed": 601,
+    "known": "我们在聊这一切是怎么开始的。",
+    "target": "Nous parlions de comment tout ça a commencé."
+   },
+   {
+    "seed": 602,
+    "known": "一开始是怎么开始的。",
+    "target": "Comment ça a commencé au départ."
+   },
+   {
+    "seed": 603,
+    "known": "那时我们没有地方住。",
+    "target": "Nous n'avions nulle part où habiter à l'époque."
+   },
+   {
+    "seed": 604,
+    "known": "她提出让我们住在她那里。",
+    "target": "Elle a proposé de nous laisser rester chez elle."
+   },
+   {
+    "seed": 605,
+    "known": "因为我们需要帮助。",
+    "target": "Parce que nous avions besoin d'aide."
+   },
+   {
+    "seed": 606,
+    "known": "如果我早知道现在知道的这些，我会等的。",
+    "target": "Si j'avais su alors ce que je sais maintenant j'aurais attendu."
+   },
+   {
+    "seed": 607,
+    "known": "如果我知道，我会做得不一样。",
+    "target": "Si j'avais su j'aurais fait les choses différemment."
+   },
+   {
+    "seed": 608,
+    "known": "那本来是明智的做法。",
+    "target": "Ça aurait été la chose raisonnable à faire."
+   },
+   {
+    "seed": 609,
+    "known": "明智的做法是去问。",
+    "target": "La chose raisonnable à faire aurait été de demander."
+   },
+   {
+    "seed": 610,
+    "known": "他需要找工作。",
+    "target": "Il a besoin de chercher du travail."
+   },
+   {
+    "seed": 611,
+    "known": "我本来可以准备去别的地方找。",
+    "target": "J'aurais été prêt à chercher ailleurs."
+   },
+   {
+    "seed": 612,
+    "known": "我们本来会买点东西。",
+    "target": "Nous aurions acheté quelque chose."
+   },
+   {
+    "seed": 613,
+    "known": "我们可能会在那里买房子。",
+    "target": "Nous aurions probablement acheté une maison là-bas."
+   },
+   {
+    "seed": 614,
+    "known": "那里离你家人住的地方很近。",
+    "target": "C'est près de l'endroit où habite ta famille."
+   },
+   {
+    "seed": 615,
+    "known": "我觉得你能说出那样的话很勇敢。",
+    "target": "Je trouvais que tu étais très courageux de dire ça."
+   },
+   {
+    "seed": 616,
+    "known": "你很勇敢说出你的想法。",
+    "target": "Tu étais très courageux de dire que tu pensais ça."
+   },
+   {
+    "seed": 617,
+    "known": "你觉得那是个错误。",
+    "target": "Tu pensais que c'était une erreur."
+   },
+   {
+    "seed": 618,
+    "known": "感觉不像过了很久。",
+    "target": "Ça ne semble pas être long."
+   },
+   {
+    "seed": 619,
+    "known": "我们很久没见了。",
+    "target": "Ça fait longtemps qu'on ne s'est pas vus."
+   },
+   {
+    "seed": 620,
+    "known": "我们已经很久没见了。",
+    "target": "Ça fait très longtemps qu'on ne s'est pas vus."
+   },
+   {
+    "seed": 621,
+    "known": "我不敢告诉她它坏了。",
+    "target": "Je n'aurais pas osé lui dire que c'était cassé."
+   },
+   {
+    "seed": 622,
+    "known": "我知道是孩子们把它弄坏的。",
+    "target": "Je savais que les enfants l'avaient cassé."
+   },
+   {
+    "seed": 623,
+    "known": "你想喝咖啡还是茶？",
+    "target": "Tu veux un café ou un thé ?"
+   },
+   {
+    "seed": 624,
+    "known": "好的，那太好了，谢谢。",
+    "target": "Oui ce serait super, merci."
+   },
+   {
+    "seed": 625,
+    "known": "你想喝点什么吗？",
+    "target": "Tu veux quelque chose à boire ?"
+   },
+   {
+    "seed": 626,
+    "known": "不，我不渴，谢谢。",
+    "target": "Non je n'ai pas soif, merci."
+   },
+   {
+    "seed": 627,
+    "known": "你的咖啡好了。",
+    "target": "Ton café est prêt."
+   },
+   {
+    "seed": 628,
+    "known": "你喜欢喝茶吗？",
+    "target": "Tu aimes le thé ?"
+   },
+   {
+    "seed": 629,
+    "known": "我喜欢加牛奶，不加糖。",
+    "target": "Je l'aime avec du lait mais sans sucre."
+   },
+   {
+    "seed": 630,
+    "known": "我可以喝点什么吗？",
+    "target": "Je peux avoir quelque chose à boire s'il vous plaît ?"
+   },
+   {
+    "seed": 631,
+    "known": "你想要什么？",
+    "target": "Qu'est-ce que vous désirez ?"
+   },
+   {
+    "seed": 633,
+    "known": "一大杯水就好。",
+    "target": "Un grand verre d'eau ça ira."
+   },
+   {
+    "seed": 634,
+    "known": "我想要那个。",
+    "target": "J'en voudrais un de ceux-là."
+   },
+   {
+    "seed": 635,
+    "known": "那是简的包。",
+    "target": "C'est le sac de Jane."
+   },
+   {
+    "seed": 636,
+    "known": "我觉得那是简的包。",
+    "target": "Je pense que c'est le sac de Jane."
+   },
+   {
+    "seed": 637,
+    "known": "她的包在哪里？",
+    "target": "Où est son sac ?"
+   },
+   {
+    "seed": 638,
+    "known": "我在想。",
+    "target": "J'essaie de réfléchir."
+   },
+   {
+    "seed": 639,
+    "known": "和你一起，先生。",
+    "target": "avec vous monsieur"
+   },
+   {
+    "seed": 640,
+    "known": "是红色的那个。",
+    "target": "C'est le rouge."
+   },
+   {
+    "seed": 641,
+    "known": "我觉得是那把椅子上的红色那个。",
+    "target": "Je pense que c'est le rouge sur cette chaise."
+   },
+   {
+    "seed": 642,
+    "known": "您现在感觉怎么样，女士？",
+    "target": "comment vous sentez-vous madame ?"
+   },
+   {
+    "seed": 643,
+    "known": "先生，您想要吗？",
+    "target": "Vous voulez monsieur ?"
+   },
+   {
+    "seed": 644,
+    "known": "先生，您能再说一遍吗？",
+    "target": "Vous pouvez répéter ça monsieur ?"
+   },
+   {
+    "seed": 645,
+    "known": "女士，我可以帮您。",
+    "target": "Je peux vous aider madame."
+   },
+   {
+    "seed": 646,
+    "known": "先生，您正在做什么？",
+    "target": "Vous faites quelque chose monsieur."
+   },
+   {
+    "seed": 647,
+    "known": "女士，您说得很好。",
+    "target": "Vous le parlez madame."
+   },
+   {
+    "seed": 648,
+    "known": "女士，您刚才说的。",
+    "target": "ce que vous avez dit madame"
+   },
+   {
+    "seed": 649,
+    "known": "先生，您准备好了吗？",
+    "target": "Vous êtes prêt monsieur ?"
+   },
+   {
+    "seed": 650,
+    "known": "女士，您想走吗？",
+    "target": "Vous voulez partir madame ?"
+   },
+   {
+    "seed": 651,
+    "known": "女士，您觉得怎么样？",
+    "target": "Qu'est-ce que vous pensez madame ?"
+   },
+   {
+    "seed": 652,
+    "known": "先生，您需要什么？",
+    "target": "Qu'est-ce dont vous avez besoin monsieur ?"
+   },
+   {
+    "seed": 653,
+    "known": "女士，您介意吗？",
+    "target": "Ça vous dérange madame ?"
+   },
+   {
+    "seed": 654,
+    "known": "先生，我不确定我能不能帮您。",
+    "target": "Je ne suis pas sûr de pouvoir vous aider, monsieur."
+   },
+   {
+    "seed": 655,
+    "known": "女士，我觉得您做得很好。",
+    "target": "Je pense que vous vous débrouillez très bien, madame."
+   },
+   {
+    "seed": 656,
+    "known": "和你们一起。",
+    "target": "avec vous tous"
+   },
+   {
+    "seed": 657,
+    "known": "你们现在感觉怎么样？",
+    "target": "comment vous sentez-vous tous ?"
+   },
+   {
+    "seed": 658,
+    "known": "你们想要吗？",
+    "target": "Vous voulez tous ?"
+   },
+   {
+    "seed": 659,
+    "known": "你们能再说一遍吗？",
+    "target": "Vous pouvez tous répéter ça ?"
+   },
+   {
+    "seed": 660,
+    "known": "我可以帮你们。",
+    "target": "Je peux vous aider tous."
+   },
+   {
+    "seed": 661,
+    "known": "你们正在做什么？",
+    "target": "vous faites tous quelque chose"
+   },
+   {
+    "seed": 662,
+    "known": "你们说得很好。",
+    "target": "vous le parlez tous"
+   },
+   {
+    "seed": 663,
+    "known": "你们刚才说的。",
+    "target": "ce que vous avez tous dit"
+   },
+   {
+    "seed": 664,
+    "known": "你们准备好了吗？",
+    "target": "Vous êtes tous prêts ?"
+   },
+   {
+    "seed": 665,
+    "known": "你们想走吗？",
+    "target": "Vous voulez tous partir ?"
+   },
+   {
+    "seed": 666,
+    "known": "你们觉得怎么样？",
+    "target": "Qu'est-ce que vous en pensez tous ?"
+   },
+   {
+    "seed": 667,
+    "known": "你们介意吗？",
+    "target": "Ça vous dérange à tous ?"
+   },
+   {
+    "seed": 668,
+    "known": "我希望你们都能去。",
+    "target": "J'espère que vous pourrez tous y aller."
+   }
+  ]
+ },
+ "counts": {
+  "planned": 48,
+  "variant_form": 19,
+  "no_home": 28,
+  "variant_zut": 5,
+  "not_built": 365
+ }
+}

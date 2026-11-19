@@ -1,0 +1,4623 @@
+{
+ "course": "eng_for_ara",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:30:57.612Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 8,
+   "id": "S0008L02U06",
+   "lego": "S0008L02",
+   "known": "سأحاول أن أشرح ما أقصده.",
+   "target": "I'm going to try to explain what I mean.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0008L02U06",
+      "seed_number": 8,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "سأحاول أن أشرح ما أقصده.",
+      "target_text": "I'm going to try to explain what I mean.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 8,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0008L02U06",
+     "slot": "known",
+     "audio_id": "2fff7c01-0571-44bc-92ce-299f95f6750e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0008L02U06",
+     "slot": "target1",
+     "audio_id": "2f99cefc-6b3b-4e62-b69d-1a5e5602c47b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0008L02U06",
+     "slot": "target2",
+     "audio_id": "05512809-19c3-4c80-a794-39eef9d55a69"
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "id": "S0010L03U06",
+   "lego": "S0010L03",
+   "known": "لست متأكداً إذا كنت أستطيع أن أتذكر الجملة كلها.",
+   "target": "I'm not sure if I can remember the whole sentence.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0010L03U06",
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "لست متأكداً إذا كنت أستطيع أن أتذكر الجملة كلها.",
+      "target_text": "I'm not sure if I can remember the whole sentence.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 10,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0010L03U06",
+     "slot": "known",
+     "audio_id": "231c9148-033c-4198-902f-9f20765d9cd2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0010L03U06",
+     "slot": "target1",
+     "audio_id": "a58bd834-cfb8-4536-8061-d674d665a7f4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0010L03U06",
+     "slot": "target2",
+     "audio_id": "1305b63f-b58a-4b82-9c57-81fe2981b54e"
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "id": "S0012L04U06",
+   "lego": "S0012L04",
+   "known": "لا أود أن أخمن ما سيحدث غداً.",
+   "target": "I wouldn't like to guess what's going to happen tomorrow.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0012L04U06",
+      "seed_number": 12,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "لا أود أن أخمن ما سيحدث غداً.",
+      "target_text": "I wouldn't like to guess what's going to happen tomorrow.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 12,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0012L04U06",
+     "slot": "known",
+     "audio_id": "65c9946c-9cb7-4ec1-928f-00e4e12d6bf4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0012L04U06",
+     "slot": "target1",
+     "audio_id": "0fb258c6-deaf-4702-8c85-ac6a7531854d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0012L04U06",
+     "slot": "target2",
+     "audio_id": "6d664a2e-83ff-4857-836e-94ddff920fc9"
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "id": "S0015L03U06",
+   "lego": "S0015L03",
+   "known": "وأريدك أن تتكلم الإنجليزية معي غداً.",
+   "target": "And I want you to speak English with me tomorrow.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0015L03U06",
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "وأريدك أن تتكلم الإنجليزية معي غداً.",
+      "target_text": "And I want you to speak English with me tomorrow.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 15,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0015L03U06",
+     "slot": "known",
+     "audio_id": "1715f381-c7eb-4132-a575-1219f41831e9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0015L03U06",
+     "slot": "target1",
+     "audio_id": "f2439e92-864e-4ebe-8c4a-21ba05ece619"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0015L03U06",
+     "slot": "target2",
+     "audio_id": "482bf20e-928b-40bf-993b-71cc35165a93"
+    }
+   ]
+  },
+  {
+   "seed": 24,
+   "id": "S0024L02U06",
+   "lego": "S0024L02",
+   "known": "لن أستطيع أن أتذكر بسهولة.",
+   "target": "I'm not going to be able to remember easily.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0024L02U06",
+      "seed_number": 24,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "لن أستطيع أن أتذكر بسهولة.",
+      "target_text": "I'm not going to be able to remember easily.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 24,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0024L02U06",
+     "slot": "known",
+     "audio_id": "835f77a7-70d1-4b65-9113-9f81648d87e1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0024L02U06",
+     "slot": "target1",
+     "audio_id": "2aca7265-76b7-47a7-9884-a9eefa0253e7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0024L02U06",
+     "slot": "target2",
+     "audio_id": "4668f734-1233-4d8e-bac4-7d0c3e281c15"
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "id": "S0029L02U06",
+   "lego": "S0029L02",
+   "known": "أتطلع إلى الكلام بشكل أفضل في أقرب وقت ممكن.",
+   "target": "I'm looking forward to speaking better as soon as I can.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0029L02U06",
+      "seed_number": 29,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "أتطلع إلى الكلام بشكل أفضل في أقرب وقت ممكن.",
+      "target_text": "I'm looking forward to speaking better as soon as I can.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 29,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0029L02U06",
+     "slot": "known",
+     "audio_id": "dc258bc8-16f1-43f1-9426-c7c418432dce"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0029L02U06",
+     "slot": "target1",
+     "audio_id": "64a8087d-b6d4-49f1-bff2-736266b98494"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0029L02U06",
+     "slot": "target2",
+     "audio_id": "2d38b241-696f-400b-80d2-0370814ab7ae"
+    }
+   ]
+  },
+  {
+   "seed": 31,
+   "id": "S0031L02U06",
+   "lego": "S0031L02",
+   "known": "أردت أن تتكلم معي الليلة.",
+   "target": "You wanted to speak with me tonight.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0031L02U06",
+      "seed_number": 31,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "أردت أن تتكلم معي الليلة.",
+      "target_text": "You wanted to speak with me tonight.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 31,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0031L02U06",
+     "slot": "known",
+     "audio_id": "15fa5b3e-fcb1-4dfe-b361-604845712756"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0031L02U06",
+     "slot": "target1",
+     "audio_id": "4df0a196-3a70-421a-a416-b221340807ff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0031L02U06",
+     "slot": "target2",
+     "audio_id": "53a6bb17-a277-4efb-9e84-09a67a8f5a8e"
+    }
+   ]
+  },
+  {
+   "seed": 32,
+   "id": "S0032L02U06",
+   "lego": "S0032L02",
+   "known": "هل أردت أن تريني شيئاً؟",
+   "target": "Did you want to show me something?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0032L02U06",
+      "seed_number": 32,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "هل أردت أن تريني شيئاً؟",
+      "target_text": "Did you want to show me something?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 32,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0032L02U06",
+     "slot": "known",
+     "audio_id": "a74a97f5-e56d-495f-94b7-18c5941ce3d8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0032L02U06",
+     "slot": "target1",
+     "audio_id": "8bfe2139-031e-40fd-a5df-60c6e2b3a52a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0032L02U06",
+     "slot": "target2",
+     "audio_id": "24c2e742-5fa8-49f5-842a-865153822409"
+    }
+   ]
+  },
+  {
+   "seed": 41,
+   "id": "S0041L03U06",
+   "lego": "S0041L03",
+   "known": "أشعر بخير، لكنني أبدأ في الشعور بالتعب.",
+   "target": "I feel okay, but I'm starting to feel tired.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0041L03U06",
+      "seed_number": 41,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "أشعر بخير، لكنني أبدأ في الشعور بالتعب.",
+      "target_text": "I feel okay, but I'm starting to feel tired.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 41,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0041L03U06",
+     "slot": "known",
+     "audio_id": "099013c3-dd30-46a1-8061-67531f66efb0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0041L03U06",
+     "slot": "target1",
+     "audio_id": "f10ec994-0d40-4984-bef7-80dc833cdccc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0041L03U06",
+     "slot": "target2",
+     "audio_id": "306f1dda-5909-4ec5-be0d-12eb3951ecb2"
+    }
+   ]
+  },
+  {
+   "seed": 43,
+   "id": "S0043L01U06",
+   "lego": "S0043L01",
+   "known": "لم أكن أفكر في كيفية الإجابة.",
+   "target": "I wasn't thinking about how to answer.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0043L01U06",
+      "seed_number": 43,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "لم أكن أفكر في كيفية الإجابة.",
+      "target_text": "I wasn't thinking about how to answer.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 43,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0043L01U06",
+     "slot": "known",
+     "audio_id": "2dbdb576-66cd-43be-b2ae-d7a3fc1c2e8d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0043L01U06",
+     "slot": "target1",
+     "audio_id": "678cebe9-3798-4f5c-877d-891a9080f5a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0043L01U06",
+     "slot": "target2",
+     "audio_id": "ed7739c6-9e0a-4063-9a18-aefd1931bfc5"
+    }
+   ]
+  },
+  {
+   "seed": 48,
+   "id": "S0048L01U06",
+   "lego": "S0048L01",
+   "known": "لا يهمني ارتكاب الأخطاء.",
+   "target": "I don't care about making mistakes.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0048L01U06",
+      "seed_number": 48,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "لا يهمني ارتكاب الأخطاء.",
+      "target_text": "I don't care about making mistakes.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 48,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 4,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0048L01U06",
+     "slot": "known",
+     "audio_id": "b31dfa23-a9da-4a81-a9c6-90f2c01126d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0048L01U06",
+     "slot": "target1",
+     "audio_id": "c3311ac8-d7ff-4ce7-903d-092c94d6873b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0048L01U06",
+     "slot": "target2",
+     "audio_id": "c265e85e-5c9d-4db2-b0f7-81f0ca6eb61c"
+    }
+   ]
+  },
+  {
+   "seed": 49,
+   "id": "S0049L01U06",
+   "lego": "S0049L01",
+   "known": "الأمر هكذا، إذا كنت تفهم ما أقصده.",
+   "target": "It's like this, if you know what I mean.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0049L01U06",
+      "seed_number": 49,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "الأمر هكذا، إذا كنت تفهم ما أقصده.",
+      "target_text": "It's like this, if you know what I mean.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 49,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0049L01U06",
+     "slot": "known",
+     "audio_id": "373187f2-a932-4131-8806-64219403232e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0049L01U06",
+     "slot": "target1",
+     "audio_id": "dcc2da0c-2fbd-42e7-beef-cd1c6db2f7bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0049L01U06",
+     "slot": "target2",
+     "audio_id": "1888a073-2570-48be-a9d6-b2e9b929cb87"
+    }
+   ]
+  },
+  {
+   "seed": 70,
+   "id": "S0070L03U06",
+   "lego": "S0070L03",
+   "known": "لم تُرد أن تخبرني أين كان.",
+   "target": "She didn't want to tell me where it was.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0070L03U06",
+      "seed_number": 70,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "لم تُرد أن تخبرني أين كان.",
+      "target_text": "She didn't want to tell me where it was.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 70,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0070L03U06",
+     "slot": "known",
+     "audio_id": "6fd67043-e83c-446f-a6d1-0cfd54e9dfda"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0070L03U06",
+     "slot": "target1",
+     "audio_id": "86f0349d-3722-4597-8671-aa1b91e82f74"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0070L03U06",
+     "slot": "target2",
+     "audio_id": "a9dc6b32-a986-4132-ae2d-bf2614e11db6"
+    }
+   ]
+  },
+  {
+   "seed": 71,
+   "id": "S0071L04U06",
+   "lego": "S0071L04",
+   "known": "لم نُرد أن ندع أحداً يسمع الحقيقة.",
+   "target": "We didn't want to let anyone hear the truth.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0071L04U06",
+      "seed_number": 71,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "لم نُرد أن ندع أحداً يسمع الحقيقة.",
+      "target_text": "We didn't want to let anyone hear the truth.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 71,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0071L04U06",
+     "slot": "known",
+     "audio_id": "42a6e73d-14cd-4c88-8c4e-f2ef423d9da2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0071L04U06",
+     "slot": "target1",
+     "audio_id": "64b3c414-8629-4cf0-9345-f64f70337c73"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0071L04U06",
+     "slot": "target2",
+     "audio_id": "a94c8041-5d7b-439d-aaab-008751d5bda3"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L02U06",
+   "lego": "S0082L02",
+   "known": "لن أنتظرك. لماذا لا؟",
+   "target": "I'm not going to wait for you. Why not?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0082L02U06",
+      "seed_number": 82,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "لن أنتظرك. لماذا لا؟",
+      "target_text": "I'm not going to wait for you. Why not?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0082L02U06",
+     "slot": "known",
+     "audio_id": "2f47c16a-0a4d-4a31-99e1-780ebf416cad"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0082L02U06",
+     "slot": "target1",
+     "audio_id": "b7536ac9-803a-4771-9e27-5d9ffa66e5d1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0082L02U06",
+     "slot": "target2",
+     "audio_id": "efda51d0-3636-4d26-a11c-c6b2357e0b9f"
+    }
+   ]
+  },
+  {
+   "seed": 86,
+   "id": "S0086L02U06",
+   "lego": "S0086L02",
+   "known": "لم يكن ممكناً، للأسف.",
+   "target": "It wasn't possible, unfortunately.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0086L02U06",
+      "seed_number": 86,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "لم يكن ممكناً، للأسف.",
+      "target_text": "It wasn't possible, unfortunately.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 86,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 4,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0086L02U06",
+     "slot": "known",
+     "audio_id": "6f0abf53-aa0f-46a7-bf83-1e376c97f94b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0086L02U06",
+     "slot": "target1",
+     "audio_id": "3eb8bde5-910f-4282-baa6-62f17de7a7c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0086L02U06",
+     "slot": "target2",
+     "audio_id": "2a2e2da3-14f4-4324-8c00-10b11cb0d548"
+    }
+   ]
+  },
+  {
+   "seed": 95,
+   "id": "S0095L02U06",
+   "lego": "S0095L02",
+   "known": "هل أنت مستعد للذهاب إلى المنزل بالحافلة القادمة؟",
+   "target": "Are you ready to go home on the next bus?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0095L02U06",
+      "seed_number": 95,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "هل أنت مستعد للذهاب إلى المنزل بالحافلة القادمة؟",
+      "target_text": "Are you ready to go home on the next bus?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 95,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0095L02U06",
+     "slot": "known",
+     "audio_id": "7f0e8e89-51f6-4e3b-89f1-d713b193bbde"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0095L02U06",
+     "slot": "target1",
+     "audio_id": "1f394f91-db7d-4d28-b78c-b622ce7e2f04"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0095L02U06",
+     "slot": "target2",
+     "audio_id": "443e42d9-22bf-45e9-a480-50ed188e7c7a"
+    }
+   ]
+  },
+  {
+   "seed": 96,
+   "id": "S0096L02U06",
+   "lego": "S0096L02",
+   "known": "لا، لست مستعداً بعد، أحتاج وقتاً أكثر قليلاً.",
+   "target": "No I'm not ready yet, I need a little more time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0096L02U06",
+      "seed_number": 96,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "لا، لست مستعداً بعد، أحتاج وقتاً أكثر قليلاً.",
+      "target_text": "No I'm not ready yet, I need a little more time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 96,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0096L02U06",
+     "slot": "known",
+     "audio_id": "4926157d-982b-4a71-ab29-29eb6e0b1a0e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0096L02U06",
+     "slot": "target1",
+     "audio_id": "af321f80-2369-4935-893f-b1db66767261"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0096L02U06",
+     "slot": "target2",
+     "audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+    }
+   ]
+  },
+  {
+   "seed": 105,
+   "id": "S0105L02U06",
+   "lego": "S0105L02",
+   "known": "لهذا لم يكن يعرف الإجابة.",
+   "target": "That is why he didn't know the answer.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0105L02U06",
+      "seed_number": 105,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "لهذا لم يكن يعرف الإجابة.",
+      "target_text": "That is why he didn't know the answer.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 105,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0105L02U06",
+     "slot": "known",
+     "audio_id": "6ed10bd7-77a6-40dd-92bf-27d08a85eecc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0105L02U06",
+     "slot": "target1",
+     "audio_id": "7769f339-7e67-4d65-a08a-b3c9174eba74"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0105L02U06",
+     "slot": "target2",
+     "audio_id": "c62a14d3-3160-4f2e-acdc-355528749705"
+    }
+   ]
+  },
+  {
+   "seed": 106,
+   "id": "S0106L02U06",
+   "lego": "S0106L02",
+   "known": "لا نحتاج أن نشعر بالسعادة، نحتاج فقط أن نعمل بجد.",
+   "target": "We don't need to feel happy, we just need to work hard.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0106L02U06",
+      "seed_number": 106,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "لا نحتاج أن نشعر بالسعادة، نحتاج فقط أن نعمل بجد.",
+      "target_text": "We don't need to feel happy, we just need to work hard.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 106,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0106L02U06",
+     "slot": "known",
+     "audio_id": "93501a78-48d1-4789-b7f9-7c60c83b7b7b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0106L02U06",
+     "slot": "target1",
+     "audio_id": "13b3daf8-37fe-4f9f-af75-7fb4ba2ceea5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0106L02U06",
+     "slot": "target2",
+     "audio_id": "0635331a-9468-4b80-8ed7-727b8e725ddb"
+    }
+   ]
+  },
+  {
+   "seed": 113,
+   "id": "S0113L01U06",
+   "lego": "S0113L01",
+   "known": "لماذا لا أستطيع أن أتذكر ما قلته؟",
+   "target": "Why can't I remember what you said?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0113L01U06",
+      "seed_number": 113,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "لماذا لا أستطيع أن أتذكر ما قلته؟",
+      "target_text": "Why can't I remember what you said?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 113,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0113L01U06",
+     "slot": "known",
+     "audio_id": "4cde177a-5a26-430c-a193-c6c6900e163f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0113L01U06",
+     "slot": "target1",
+     "audio_id": "83751f15-686e-4d01-8364-1d87357f4725"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0113L01U06",
+     "slot": "target2",
+     "audio_id": "2edfe1f1-327f-4a6b-beb3-ef005a2e096f"
+    }
+   ]
+  },
+  {
+   "seed": 144,
+   "id": "S0144L02U06",
+   "lego": "S0144L02",
+   "known": "استيقظت هذا الصباح مبكراً أكثر مما أردت.",
+   "target": "I woke earlier than I wanted to this morning.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0144L02U06",
+      "seed_number": 144,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "استيقظت هذا الصباح مبكراً أكثر مما أردت.",
+      "target_text": "I woke earlier than I wanted to this morning.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 144,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0144L02U06",
+     "slot": "known",
+     "audio_id": "addaf693-c1c9-47b0-9b05-d10171871361"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0144L02U06",
+     "slot": "target1",
+     "audio_id": "11c4d82d-f37c-4763-a1da-d40bb43759ac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0144L02U06",
+     "slot": "target2",
+     "audio_id": "6cdbae69-48c8-4836-b1d2-acdc7ac46644"
+    }
+   ]
+  },
+  {
+   "seed": 158,
+   "id": "S0158L01U06",
+   "lego": "S0158L01",
+   "known": "لنتحدث عن شيء آخر.",
+   "target": "Let's talk about something else.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0158L01U06",
+      "seed_number": 158,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "لنتحدث عن شيء آخر.",
+      "target_text": "Let's talk about something else.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 158,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0158L01U06",
+     "slot": "known",
+     "audio_id": "88518188-0001-443f-a164-048edfb3208e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0158L01U06",
+     "slot": "target1",
+     "audio_id": "c9f05fa8-c5a4-43a0-a71b-5f9281bab1df"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0158L01U06",
+     "slot": "target2",
+     "audio_id": "58b8b56d-024e-4403-8161-1e87512185c5"
+    }
+   ]
+  },
+  {
+   "seed": 160,
+   "id": "S0160L01U09",
+   "lego": "S0160L01",
+   "known": "كيف تقول هذه الكلمة بالإنجليزية؟",
+   "target": "How do you say this word in English?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0160L01U09",
+      "seed_number": 160,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "كيف تقول هذه الكلمة بالإنجليزية؟",
+      "target_text": "How do you say this word in English?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 160,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0160L01U09",
+     "slot": "known",
+     "audio_id": "fc5860c9-e9e7-48b6-9d58-b19a40df2446"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0160L01U09",
+     "slot": "target1",
+     "audio_id": "64491b8c-b334-4a70-8ab7-8f7b53ff8d1c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0160L01U09",
+     "slot": "target2",
+     "audio_id": "7d176532-f2ee-493f-88ec-374b06837e19"
+    }
+   ]
+  },
+  {
+   "seed": 175,
+   "id": "S0175L01U06",
+   "lego": "S0175L01",
+   "known": "ماذا تريد أن تفعل صباح الأحد؟",
+   "target": "What do you want to do on Sunday morning?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0175L01U06",
+      "seed_number": 175,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "ماذا تريد أن تفعل صباح الأحد؟",
+      "target_text": "What do you want to do on Sunday morning?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 175,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0175L01U06",
+     "slot": "known",
+     "audio_id": "a7071a64-bb86-492d-bd71-c19dc4033aa1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0175L01U06",
+     "slot": "target1",
+     "audio_id": "3123698d-17b3-4baa-9220-192f81335000"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0175L01U06",
+     "slot": "target2",
+     "audio_id": "8eabf03b-584b-45ea-b0f5-cb525c15a846"
+    }
+   ]
+  },
+  {
+   "seed": 180,
+   "id": "S0180L01U06",
+   "lego": "S0180L01",
+   "known": "أود أن أقرأ كتابي لبعض الوقت.",
+   "target": "I'd like to read my book for a while.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0180L01U06",
+      "seed_number": 180,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "أود أن أقرأ كتابي لبعض الوقت.",
+      "target_text": "I'd like to read my book for a while.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 180,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0180L01U06",
+     "slot": "known",
+     "audio_id": "0d6f9a5e-9b4a-4f1f-879d-37cbf1ee299b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0180L01U06",
+     "slot": "target1",
+     "audio_id": "8c058213-014a-489f-93e9-56ea55b6d965"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0180L01U06",
+     "slot": "target2",
+     "audio_id": "09468477-573a-4872-b598-803fd705749b"
+    }
+   ]
+  },
+  {
+   "seed": 182,
+   "id": "S0182L02U06",
+   "lego": "S0182L02",
+   "known": "هل رأيت مفاتيحي في أي مكان؟",
+   "target": "Have you seen my keys anywhere?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0182L02U06",
+      "seed_number": 182,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "هل رأيت مفاتيحي في أي مكان؟",
+      "target_text": "Have you seen my keys anywhere?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 182,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0182L02U06",
+     "slot": "known",
+     "audio_id": "bd470a0b-70a2-4eb2-8aee-d70438935599"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0182L02U06",
+     "slot": "target1",
+     "audio_id": "85b66e5e-e0e4-4098-8ad4-1ad121aed032"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0182L02U06",
+     "slot": "target2",
+     "audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b"
+    }
+   ]
+  },
+  {
+   "seed": 183,
+   "id": "S0183L01U05",
+   "lego": "S0183L01",
+   "known": "لا، أخشى أنني لم أرهم.",
+   "target": "No I'm afraid I haven't seen them.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0183L01U05",
+      "seed_number": 183,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "لا، أخشى أنني لم أرهم.",
+      "target_text": "No I'm afraid I haven't seen them.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 183,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0183L01U05",
+     "slot": "known",
+     "audio_id": "ef65d05e-3365-44c6-a6c4-4d6c22f0a74f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0183L01U05",
+     "slot": "target1",
+     "audio_id": "2808f74c-09bd-4158-9d30-9917d145cf20"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0183L01U05",
+     "slot": "target2",
+     "audio_id": "9157e133-8b49-4bc0-a6e4-57b0991d160c"
+    }
+   ]
+  },
+  {
+   "seed": 185,
+   "id": "S0185L02U06",
+   "lego": "S0185L02",
+   "known": "أعتقد أنك تركتهم في العمل.",
+   "target": "I think you left them at work.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0185L02U06",
+      "seed_number": 185,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "أعتقد أنك تركتهم في العمل.",
+      "target_text": "I think you left them at work.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 185,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0185L02U06",
+     "slot": "known",
+     "audio_id": "7bdd7058-bcfa-4bab-a5e9-455d758b1fed"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0185L02U06",
+     "slot": "target1",
+     "audio_id": "80990006-163e-4ff8-9a83-c5456dc7ca45"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0185L02U06",
+     "slot": "target2",
+     "audio_id": "ef34e53b-a9b2-4cc8-94ab-62b3c1a0b69a"
+    }
+   ]
+  },
+  {
+   "seed": 186,
+   "id": "S0186L01U06",
+   "lego": "S0186L01",
+   "known": "هل تريد أن نتحدث عن شيء مختلف الأسبوع القادم؟",
+   "target": "Do you want to talk about something different next week?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0186L01U06",
+      "seed_number": 186,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "هل تريد أن نتحدث عن شيء مختلف الأسبوع القادم؟",
+      "target_text": "Do you want to talk about something different next week?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 186,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0186L01U06",
+     "slot": "known",
+     "audio_id": "7ab5159b-497f-4eba-a17d-2c473b457a42"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0186L01U06",
+     "slot": "target1",
+     "audio_id": "867349aa-603e-404a-a972-a84aae9dd1b5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0186L01U06",
+     "slot": "target2",
+     "audio_id": "88c36369-9683-48df-b411-bd3498de437a"
+    }
+   ]
+  },
+  {
+   "seed": 193,
+   "id": "S0193L02U06",
+   "lego": "S0193L02",
+   "known": "آسف لكنني مشغول جداً اليوم.",
+   "target": "I'm sorry but I'm too busy today.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0193L02U06",
+      "seed_number": 193,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "آسف لكنني مشغول جداً اليوم.",
+      "target_text": "I'm sorry but I'm too busy today.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 193,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0193L02U06",
+     "slot": "known",
+     "audio_id": "eb6f357d-e208-42ed-b74b-dc99dcc3ba30"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0193L02U06",
+     "slot": "target1",
+     "audio_id": "8466acba-2783-46df-baca-e00cbceb537a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0193L02U06",
+     "slot": "target2",
+     "audio_id": "edb55484-1290-4bfa-aa00-8e82a34f1390"
+    }
+   ]
+  },
+  {
+   "seed": 200,
+   "id": "S0200L01U07",
+   "lego": "S0200L01",
+   "known": "يقولون إنهم يريدون التأكد من أننا ننهي كل شيء في الوقت المناسب.",
+   "target": "They say they want to make sure that we finish everything in time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0200L01U07",
+      "seed_number": 200,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "يقولون إنهم يريدون التأكد من أننا ننهي كل شيء في الوقت المناسب.",
+      "target_text": "They say they want to make sure that we finish everything in time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 200,
+       "canon": "P26"
+      },
+      "word_count": 66,
+      "lego_count": 12,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0200L01U07",
+     "slot": "known",
+     "audio_id": "388c7a6c-3134-4e4a-8fc3-234e03aeddeb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0200L01U07",
+     "slot": "target1",
+     "audio_id": "e8e06441-a169-45db-be29-3019dda92884"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0200L01U07",
+     "slot": "target2",
+     "audio_id": "4739b4a6-27ec-4aa7-927c-b7bdc429bba8"
+    }
+   ]
+  },
+  {
+   "seed": 218,
+   "id": "S0218L01U06",
+   "lego": "S0218L01",
+   "known": "لم أفعل الكثير يوم الأحد.",
+   "target": "I didn't do much on Sunday.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0218L01U06",
+      "seed_number": 218,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "لم أفعل الكثير يوم الأحد.",
+      "target_text": "I didn't do much on Sunday.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 218,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 5,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0218L01U06",
+     "slot": "known",
+     "audio_id": "b7fa5ee0-91cd-40c2-be8f-a67d86f2cd0f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0218L01U06",
+     "slot": "target1",
+     "audio_id": "aad2f271-8332-4fa7-aa94-7ef561a611bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0218L01U06",
+     "slot": "target2",
+     "audio_id": "b5fb6479-1bcf-497d-a094-b9b045155c27"
+    }
+   ]
+  },
+  {
+   "seed": 219,
+   "id": "S0219L01U06",
+   "lego": "S0219L01",
+   "known": "كان من الجميل الاسترخاء لبعض الوقت.",
+   "target": "It was nice to relax for a while.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0219L01U06",
+      "seed_number": 219,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "كان من الجميل الاسترخاء لبعض الوقت.",
+      "target_text": "It was nice to relax for a while.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 219,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0219L01U06",
+     "slot": "known",
+     "audio_id": "0bfe3cc0-2bdd-4d15-8984-e9d30d579dd3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0219L01U06",
+     "slot": "target1",
+     "audio_id": "9b1884df-9a8f-46b5-adfa-34bff0f88c7f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0219L01U06",
+     "slot": "target2",
+     "audio_id": "62006f13-99ec-4bfc-acef-1f97b3a48ace"
+    }
+   ]
+  },
+  {
+   "seed": 221,
+   "id": "S0221L03U06",
+   "lego": "S0221L03",
+   "known": "شاهدت كرة القدم ثم شاهدت فيلماً.",
+   "target": "I watched the football and then I watched a film.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0221L03U06",
+      "seed_number": 221,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "شاهدت كرة القدم ثم شاهدت فيلماً.",
+      "target_text": "I watched the football and then I watched a film.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 221,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0221L03U06",
+     "slot": "known",
+     "audio_id": "a01a8d2f-50cc-4256-9b62-8620ce304df4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0221L03U06",
+     "slot": "target1",
+     "audio_id": "5ef65959-0fe5-4992-8313-0c91720dbeb3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0221L03U06",
+     "slot": "target2",
+     "audio_id": "09468a89-8052-4ef8-b98d-9a737ac9f6d4"
+    }
+   ]
+  },
+  {
+   "seed": 223,
+   "id": "S0223L01U06",
+   "lego": "S0223L01",
+   "known": "سيسألك غداً.",
+   "target": "He's going to ask you tomorrow.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0223L01U06",
+      "seed_number": 223,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "سيسألك غداً.",
+      "target_text": "He's going to ask you tomorrow.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 223,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 2,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0223L01U06",
+     "slot": "known",
+     "audio_id": "eed30ac4-bbd7-4121-b5db-b199cbe4126d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0223L01U06",
+     "slot": "target1",
+     "audio_id": "722219d0-d74b-4c38-818a-2d5bf2c41e0f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0223L01U06",
+     "slot": "target2",
+     "audio_id": "e4fb87d5-e3c2-4741-a801-7f8bb04d9938"
+    }
+   ]
+  },
+  {
+   "seed": 224,
+   "id": "S0224L01U06",
+   "lego": "S0224L01",
+   "known": "لقد بدأ للتو في التعلم.",
+   "target": "He's just started to learn.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0224L01U06",
+      "seed_number": 224,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "لقد بدأ للتو في التعلم.",
+      "target_text": "He's just started to learn.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 224,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0224L01U06",
+     "slot": "known",
+     "audio_id": "fd3a4d78-9cb8-4217-b52e-4550e58e469d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0224L01U06",
+     "slot": "target1",
+     "audio_id": "da2eb49e-3947-48b2-99db-91086b5bf6d1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0224L01U06",
+     "slot": "target2",
+     "audio_id": "8f627525-457d-463f-a47d-2a2a4bd396ed"
+    }
+   ]
+  },
+  {
+   "seed": 228,
+   "id": "S0228L01U06",
+   "lego": "S0228L01",
+   "known": "ذلك الرجل بدأ للتو في التدرب على الكلام.",
+   "target": "That man has just started to practise speaking.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0228L01U06",
+      "seed_number": 228,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "ذلك الرجل بدأ للتو في التدرب على الكلام.",
+      "target_text": "That man has just started to practise speaking.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 228,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0228L01U06",
+     "slot": "known",
+     "audio_id": "126e6576-f96a-46fd-878f-c42640b85c9c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0228L01U06",
+     "slot": "target1",
+     "audio_id": "23769441-f2e4-4e08-bee2-1d6304ef99f7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0228L01U06",
+     "slot": "target2",
+     "audio_id": "fb678bf5-44b3-491f-aa5d-9e8731ee05d3"
+    }
+   ]
+  },
+  {
+   "seed": 235,
+   "id": "S0235L02U06",
+   "lego": "S0235L02",
+   "known": "قابلت شخصاً قال إنه أراد أن يخبرك بشيء.",
+   "target": "I met someone who said that he wanted to tell you something.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0235L02U06",
+      "seed_number": 235,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "قابلت شخصاً قال إنه أراد أن يخبرك بشيء.",
+      "target_text": "I met someone who said that he wanted to tell you something.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 235,
+       "canon": "P26"
+      },
+      "word_count": 60,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0235L02U06",
+     "slot": "known",
+     "audio_id": "09dbf63e-39f9-48c9-a910-25044d1da9a6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0235L02U06",
+     "slot": "target1",
+     "audio_id": "08b6894c-afbe-4868-9f3a-3c1af6d7c2c6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0235L02U06",
+     "slot": "target2",
+     "audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e"
+    }
+   ]
+  },
+  {
+   "seed": 238,
+   "id": "S0238L01U06",
+   "lego": "S0238L01",
+   "known": "أرادك أن تخبرني أمس.",
+   "target": "He wanted you to tell me yesterday.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0238L01U06",
+      "seed_number": 238,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "أرادك أن تخبرني أمس.",
+      "target_text": "He wanted you to tell me yesterday.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 238,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0238L01U06",
+     "slot": "known",
+     "audio_id": "5211d49f-99dc-4ae3-bc49-16ca269a681f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0238L01U06",
+     "slot": "target1",
+     "audio_id": "b73a5415-3d0e-4951-9bd8-493072ae4d98"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0238L01U06",
+     "slot": "target2",
+     "audio_id": "7ad3e42d-bfad-4462-a2e2-eee4102e2e6a"
+    }
+   ]
+  },
+  {
+   "seed": 270,
+   "id": "S0270L02U06",
+   "lego": "S0270L02",
+   "known": "لأنني قلق من أنني سأتأخر.",
+   "target": "Because I'm worried that I'm going to be late.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0270L02U06",
+      "seed_number": 270,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "لأنني قلق من أنني سأتأخر.",
+      "target_text": "Because I'm worried that I'm going to be late.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 270,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0270L02U06",
+     "slot": "known",
+     "audio_id": "0f578365-a6f6-483e-98de-b179b6b9ccc3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0270L02U06",
+     "slot": "target1",
+     "audio_id": "810285bd-88fa-4e39-93f0-beeeee660a7a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0270L02U06",
+     "slot": "target2",
+     "audio_id": "67ec4c22-5bbc-421e-b0a7-258c28b7c23d"
+    }
+   ]
+  },
+  {
+   "seed": 276,
+   "id": "S0276L02U06",
+   "lego": "S0276L02",
+   "known": "لا، أستطيع البقاء هنا لفترة أطول قليلاً.",
+   "target": "No I can stay here for a little longer.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0276L02U06",
+      "seed_number": 276,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "لا، أستطيع البقاء هنا لفترة أطول قليلاً.",
+      "target_text": "No I can stay here for a little longer.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 276,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0276L02U06",
+     "slot": "known",
+     "audio_id": "542f951a-b728-4a60-a2b1-355dde6d5560"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0276L02U06",
+     "slot": "target1",
+     "audio_id": "09a5e7e4-7ae6-48a2-ad19-bae99736b7a6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0276L02U06",
+     "slot": "target2",
+     "audio_id": "dcfb50c8-6160-4e80-9726-ea2e82a93978"
+    }
+   ]
+  },
+  {
+   "seed": 277,
+   "id": "S0277L02U06",
+   "lego": "S0277L02",
+   "known": "نعم، لدي اجتماع مهم في بداية الأسبوع القادم.",
+   "target": "Yes I've got an important meeting early next week.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0277L02U06",
+      "seed_number": 277,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "نعم، لدي اجتماع مهم في بداية الأسبوع القادم.",
+      "target_text": "Yes I've got an important meeting early next week.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 277,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0277L02U06",
+     "slot": "known",
+     "audio_id": "36e8868e-02ff-41ac-8eb0-4b532b5e25ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0277L02U06",
+     "slot": "target1",
+     "audio_id": "399210d4-c579-48fa-a796-7e12acf386d7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0277L02U06",
+     "slot": "target2",
+     "audio_id": "0d5c4a7e-3e9d-4ae5-9fe2-7a91c68cf5e6"
+    }
+   ]
+  },
+  {
+   "seed": 278,
+   "id": "S0278L01U06",
+   "lego": "S0278L01",
+   "known": "هل كان عليك إنهاء كل شيء الليلة الماضية؟",
+   "target": "Did you have to finish everything last night?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0278L01U06",
+      "seed_number": 278,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "هل كان عليك إنهاء كل شيء الليلة الماضية؟",
+      "target_text": "Did you have to finish everything last night?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 278,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 8,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0278L01U06",
+     "slot": "known",
+     "audio_id": "7a8d4d8a-d36d-4256-9531-6f904fbdaf76"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0278L01U06",
+     "slot": "target1",
+     "audio_id": "5166ff34-7aeb-493c-a590-e7fab590816d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0278L01U06",
+     "slot": "target2",
+     "audio_id": "b6b38fce-6676-4b43-b98d-88f839ef5c5e"
+    }
+   ]
+  },
+  {
+   "seed": 279,
+   "id": "S0279L02U06",
+   "lego": "S0279L02",
+   "known": "نعم، لأنه لم يكن هناك الكثير من الوقت المتبقي.",
+   "target": "Yes because there wasn't much time left.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0279L02U06",
+      "seed_number": 279,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "نعم، لأنه لم يكن هناك الكثير من الوقت المتبقي.",
+      "target_text": "Yes because there wasn't much time left.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 279,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0279L02U06",
+     "slot": "known",
+     "audio_id": "f059ca01-2e8d-4f95-85e0-b4fef93fa0f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0279L02U06",
+     "slot": "target1",
+     "audio_id": "a704bb14-0133-4771-b435-e2f777068f52"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0279L02U06",
+     "slot": "target2",
+     "audio_id": "08e5dedf-920d-4baf-9a3f-529c4ab20f74"
+    }
+   ]
+  },
+  {
+   "seed": 280,
+   "id": "S0280L02U06",
+   "lego": "S0280L02",
+   "known": "لا، كان علي فعل العمل الأكثر أهمية فقط.",
+   "target": "No I only had to do the most important job.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0280L02U06",
+      "seed_number": 280,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "لا، كان علي فعل العمل الأكثر أهمية فقط.",
+      "target_text": "No I only had to do the most important job.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 280,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0280L02U06",
+     "slot": "known",
+     "audio_id": "0c104c7d-4e90-4546-991b-7cd96a61cf49"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0280L02U06",
+     "slot": "target1",
+     "audio_id": "6177e3e8-d20f-477c-9878-82abc072d8ab"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0280L02U06",
+     "slot": "target2",
+     "audio_id": "888f4aaf-b587-43a9-92f5-160b75a39bb9"
+    }
+   ]
+  },
+  {
+   "seed": 282,
+   "id": "S0282L01U06",
+   "lego": "S0282L01",
+   "known": "لا، هذه ليست مشكلة.",
+   "target": "No that's not a problem.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0282L01U06",
+      "seed_number": 282,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "لا، هذه ليست مشكلة.",
+      "target_text": "No that's not a problem.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 282,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0282L01U06",
+     "slot": "known",
+     "audio_id": "65c1bbca-0eff-4839-b3d0-91b1191379b4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0282L01U06",
+     "slot": "target1",
+     "audio_id": "c9be1447-a99f-47a4-a231-d4eac51bddde"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0282L01U06",
+     "slot": "target2",
+     "audio_id": "a065e577-7d7d-4c75-9db4-7fec8211b4c8"
+    }
+   ]
+  },
+  {
+   "seed": 289,
+   "id": "S0289L02U06",
+   "lego": "S0289L02",
+   "known": "أتساءل إذا كانت ستكون هناك هذا بعد الظهر.",
+   "target": "I wonder if she's going to be there this afternoon.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0289L02U06",
+      "seed_number": 289,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "أتساءل إذا كانت ستكون هناك هذا بعد الظهر.",
+      "target_text": "I wonder if she's going to be there this afternoon.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 289,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0289L02U06",
+     "slot": "known",
+     "audio_id": "6d98f51e-9196-4cc4-b7f1-e2dea4e7e9a1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0289L02U06",
+     "slot": "target1",
+     "audio_id": "fd5eeaff-0171-40ac-bcb6-613087da5f13"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0289L02U06",
+     "slot": "target2",
+     "audio_id": "075bbef5-3f34-4b73-bc3d-fa3e931707d3"
+    }
+   ]
+  },
+  {
+   "seed": 291,
+   "id": "S0291L01U06",
+   "lego": "S0291L01",
+   "known": "آمل أن أستطيع الكلام بشكل أفضل قريباً.",
+   "target": "I hope I'll be able to speak better soon.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0291L01U06",
+      "seed_number": 291,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "آمل أن أستطيع الكلام بشكل أفضل قريباً.",
+      "target_text": "I hope I'll be able to speak better soon.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 291,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0291L01U06",
+     "slot": "known",
+     "audio_id": "b321160c-3b4c-4d85-a6dc-357fef9dc5c3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0291L01U06",
+     "slot": "target1",
+     "audio_id": "b4ee3ac0-1e38-42b1-b381-266baf07d9f9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0291L01U06",
+     "slot": "target2",
+     "audio_id": "5265e5a8-43ee-4c9c-82c6-1fd4376819e1"
+    }
+   ]
+  },
+  {
+   "seed": 296,
+   "id": "S0296L01U06",
+   "lego": "S0296L01",
+   "known": "قلت إنني كنت بحاجة إلى وقت أكثر قليلاً.",
+   "target": "I said that I needed a little more time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ara:S0296L01U06",
+      "seed_number": 296,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "قلت إنني كنت بحاجة إلى وقت أكثر قليلاً.",
+      "target_text": "I said that I needed a little more time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 296,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0296L01U06",
+     "slot": "known",
+     "audio_id": "210e56de-335d-48f2-ab03-fc6d52fa43ba"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0296L01U06",
+     "slot": "target1",
+     "audio_id": "ce5acbdb-80d2-462a-8161-24bd2025994d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_ara:S0296L01U06",
+     "slot": "target2",
+     "audio_id": "4bfe6b50-a115-4016-a9e4-74a1d9c668af"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_zut": [
+   {
+    "seed": 47,
+    "known": "لأنني أعتقد أن ارتكاب الأخطاء شيء جيد.",
+    "target": "Because I think that it's a good thing to make mistakes.",
+    "row": "S0047L02U05",
+    "row_known": "لأنني أعتقد أن ارتكاب الأخطاء شيء جيد",
+    "row_target": "because I think that making mistakes is a good thing"
+   },
+   {
+    "seed": 60,
+    "known": "لا أعرف بعد كيف أقول كلمات مختلفة كافية.",
+    "target": "I don't know how to say enough different words yet.",
+    "row": "S0060L02B03",
+    "row_known": "لا أعرف بعد كيف أقول كلمات مختلفة كافية",
+    "row_target": "I don't know yet how to say enough different words"
+   },
+   {
+    "seed": 247,
+    "known": "اعتقدت أن ذلك الكتاب كان جيداً إلى حد ما.",
+    "target": "I thought that book was fairly good.",
+    "row": "S0247L01B02",
+    "row_known": "اعتقدت أن ذلك الكتاب كان جيداً إلى حد ما",
+    "row_target": "I thought that that book was fairly good"
+   },
+   {
+    "seed": 248,
+    "known": "اعتقدت أن الفيلم كان تافهاً تماماً وأريد أموالي عائدة.",
+    "target": "I thought the film was complete rubbish and I want my money back.",
+    "row": "S0248L02B02",
+    "row_known": "اعتقدت أن الفيلم كان تافهاً تماماً وأريد أموالي عائدة",
+    "row_target": "I thought that the film was complete rubbish and I want my money back"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 207,
+    "known": "لقد فعلت ما كنت بحاجة لفعله.",
+    "target": "You've done what you needed to do.",
+    "legos": [
+     "S0207L01(old) لقد فعلت ما كنت بحاجة لفعله | you've done what you needed to do"
+    ]
+   },
+   {
+    "seed": 257,
+    "known": "أحب ذلك الشيء الأزرق.",
+    "target": "I like that blue thing.",
+    "legos": [
+     "S0257L01(old) الأزرق | blue"
+    ]
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 265,
+    "known": "صديق.",
+    "target": "A friend."
+   },
+   {
+    "seed": 275,
+    "known": "أطول.",
+    "target": "Longer."
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 301,
+    "known": "قال إنه يريد أن يريك شيئاً.",
+    "target": "He said that he wants to show you something."
+   },
+   {
+    "seed": 302,
+    "known": "قالت إنها لا تريد أن تعيش في مدينة.",
+    "target": "She said that she doesn't want to live in a city."
+   },
+   {
+    "seed": 303,
+    "known": "أعتقد أنه يريد الجلوس.",
+    "target": "I think that he wants to sit down."
+   },
+   {
+    "seed": 304,
+    "known": "أعتقد أنها لا تريد العمل من المنزل.",
+    "target": "I think that she doesn't want to work from home."
+   },
+   {
+    "seed": 305,
+    "known": "امرأة.",
+    "target": "Woman."
+   },
+   {
+    "seed": 306,
+    "known": "أعرف تلك المرأة الشابة التي تتحدث مع صديقك.",
+    "target": "I know that young woman who's talking to your friend."
+   },
+   {
+    "seed": 307,
+    "known": "أعرف ذلك الرجل الشاب الجالس هناك.",
+    "target": "I know that young man who's sitting over there."
+   },
+   {
+    "seed": 308,
+    "known": "نعم، هي صديقة لوالدتي.",
+    "target": "Yes she's a friend of my mother."
+   },
+   {
+    "seed": 309,
+    "known": "لا، لم أرها من قبل.",
+    "target": "No I've never seen her before."
+   },
+   {
+    "seed": 310,
+    "known": "يمكنها أن تكتب قصة عن ذلك الرجل.",
+    "target": "She could write a story about that man."
+   },
+   {
+    "seed": 311,
+    "known": "لم يستطع تصديق الحقائق الثلاث الأكثر أهمية.",
+    "target": "He couldn't believe the three most important facts."
+   },
+   {
+    "seed": 312,
+    "known": "قالت إنها تستطيع استخدام الغرفة الأخرى ليلة الغد.",
+    "target": "She said that she could use the other room tomorrow night."
+   },
+   {
+    "seed": 313,
+    "known": "قال إنه لم يستطع مشاهدة المباريات الخمس كلها.",
+    "target": "He said that he couldn't watch all five games."
+   },
+   {
+    "seed": 314,
+    "known": "أعتقد أنها تستطيع وضعه على الطاولة.",
+    "target": "I think that she could put it on the table."
+   },
+   {
+    "seed": 315,
+    "known": "أعتقد أنه لم يستطع تحمل تكلفة السيارة التي أرادها.",
+    "target": "I think that he couldn't afford the car that he wanted."
+   },
+   {
+    "seed": 316,
+    "known": "هل تعتقد أنها تستطيع إحضار أخيها يوم الاثنين؟",
+    "target": "Do you think that she could bring her brother on Monday?"
+   },
+   {
+    "seed": 317,
+    "known": "نعم، أعتقد أنها تستطيع إذا أرادت.",
+    "target": "Yes I think she could if she wanted to."
+   },
+   {
+    "seed": 318,
+    "known": "لا، لا أعتقد أنها تستطيع هذه المرة.",
+    "target": "No I don't think she could this time."
+   },
+   {
+    "seed": 319,
+    "known": "تحتاج إلى الانتقال إلى بلد مختلف.",
+    "target": "She needs to move to a different country."
+   },
+   {
+    "seed": 320,
+    "known": "لا يحتاج إلى شراء تلفاز آخر هذا العام.",
+    "target": "He doesn't need to buy another television this year."
+   },
+   {
+    "seed": 321,
+    "known": "كتاب.",
+    "target": "A book."
+   },
+   {
+    "seed": 322,
+    "known": "قالت إنها تحتاج إلى قراءة نفس الكتاب.",
+    "target": "She said that she needs to read the same book."
+   },
+   {
+    "seed": 323,
+    "known": "قال إنه لا يحتاج إلى المشي إلى المدرسة.",
+    "target": "He said that he doesn't need to walk to school."
+   },
+   {
+    "seed": 324,
+    "known": "تلك الطالبة رفعت كلتا يديها.",
+    "target": "That student has both of her hands up."
+   },
+   {
+    "seed": 325,
+    "known": "أعتقد أنه يحتاج إلى مراعاة عشرة مشاكل محتملة.",
+    "target": "I think that he needs to consider ten possible problems."
+   },
+   {
+    "seed": 326,
+    "known": "لا أعتقد أنها تحتاج إلى بيع الشركة.",
+    "target": "I don't think that she needs to sell the company."
+   },
+   {
+    "seed": 327,
+    "known": "هل تعتقد أنها تحتاج إلى تقديم طريقة أخرى؟",
+    "target": "Do you think that she needs to offer another way?"
+   },
+   {
+    "seed": 328,
+    "known": "نعم، أعتقد أن عليها ذلك.",
+    "target": "Yes I think she ought to."
+   },
+   {
+    "seed": 329,
+    "known": "إنه مهم.",
+    "target": "It's important."
+   },
+   {
+    "seed": 330,
+    "known": "لا، لا أعتقد أنه مهم جداً.",
+    "target": "No I don't think it's very important."
+   },
+   {
+    "seed": 331,
+    "known": "لا تستطيع تقديم جميع الإجابات.",
+    "target": "She can't provide all the answers."
+   },
+   {
+    "seed": 332,
+    "known": "يستطيع بناء حياة جديدة لأخته.",
+    "target": "He can build a new life for his sister."
+   },
+   {
+    "seed": 333,
+    "known": "قالت إنها لا تستطيع قضاء الكثير من الوقت مع المجموعة.",
+    "target": "She said that she can't spend much time with the group."
+   },
+   {
+    "seed": 334,
+    "known": "قال إنه يستطيع أن يدعك تمسك القطة الصغيرة",
+    "target": "He said that he can let you hold the kitten"
+   },
+   {
+    "seed": 335,
+    "known": "أعتقد أنه يستطيع إضافة بعض الأفكار القيّمة.",
+    "target": "I think that he can add some valuable ideas."
+   },
+   {
+    "seed": 336,
+    "known": "لا أعتقد أنها تستطيع فتح الباب.",
+    "target": "I don't think that she can open the door."
+   },
+   {
+    "seed": 337,
+    "known": "هل تعتقد أنه يستطيع الاستمرار في اللعب؟",
+    "target": "Do you think that he can continue to play?"
+   },
+   {
+    "seed": 338,
+    "known": "بشكل سيئ.",
+    "target": "Badly."
+   },
+   {
+    "seed": 339,
+    "known": "لا، أعتقد أنه أصاب نفسه بشكل سيئ إلى حد ما.",
+    "target": "No I think he's hurt himself quite badly."
+   },
+   {
+    "seed": 340,
+    "known": "نعم، أنا متأكد أنه سيكون بخير.",
+    "target": "Yes I'm sure he's going to be okay."
+   },
+   {
+    "seed": 341,
+    "known": "قابلت شخصاً قبل بضعة أيام.",
+    "target": "I met someone a few days ago."
+   },
+   {
+    "seed": 342,
+    "known": "قابلت شخصاً قال شيئاً.",
+    "target": "I met someone who said something."
+   },
+   {
+    "seed": 343,
+    "known": "قال إنها قلقة بشأن الاقتصاد.",
+    "target": "Who said that she's worried about the economy."
+   },
+   {
+    "seed": 344,
+    "known": "قال إنه سعيد بمساعدتك.",
+    "target": "Who said that he's happy to help you."
+   },
+   {
+    "seed": 345,
+    "known": "قال إنه ليس مستعداً للمغادرة بعد.",
+    "target": "Who said that he's not ready to leave yet."
+   },
+   {
+    "seed": 346,
+    "known": "أردتها أن تعرف أنني أحببت كتابها.",
+    "target": "I wanted her to know that I liked her book."
+   },
+   {
+    "seed": 347,
+    "known": "أراد أن يعرف ما كان يحدث قبل أسبوع.",
+    "target": "He wanted to know what was happening a week ago."
+   },
+   {
+    "seed": 348,
+    "known": "لم تُرد أن تعرف ما كان سيحدث.",
+    "target": "She didn't want to know what was going to happen."
+   },
+   {
+    "seed": 349,
+    "known": "هل أراد الخروج ليلة الجمعة؟",
+    "target": "Did he want to go out on Friday night?"
+   },
+   {
+    "seed": 350,
+    "known": "نعم، أراد رؤية بعض الأصدقاء القدامى.",
+    "target": "Yes he wanted to see some old friends."
+   },
+   {
+    "seed": 351,
+    "known": "لا، لم يُرد تركي بمفردي.",
+    "target": "No he didn't want to leave me on my own."
+   },
+   {
+    "seed": 352,
+    "known": "حتى لو أراد، لن يستطيع.",
+    "target": "Even if he wanted to he wouldn't be able to."
+   },
+   {
+    "seed": 353,
+    "known": "كانت بحاجة إلى الجري حول الملعب.",
+    "target": "She needed to run around the field."
+   },
+   {
+    "seed": 354,
+    "known": "لم يكن بحاجة إلى الظهور بمظهر غاضب.",
+    "target": "He didn't need to appear angry."
+   },
+   {
+    "seed": 355,
+    "known": "هل كانت بحاجة إلى الكلام مع تلك المرأة التي تعرفها؟",
+    "target": "Did she need to talk to that woman you know?"
+   },
+   {
+    "seed": 356,
+    "known": "نعم، كان لديهم شيء مهم لمناقشته.",
+    "target": "Yes they had something important to discuss."
+   },
+   {
+    "seed": 357,
+    "known": "لا، أرادت فقط إرسال رسالة لها.",
+    "target": "No she just wanted to send her a message."
+   },
+   {
+    "seed": 358,
+    "known": "قالت صديقتك إنها لم تستطع الوصول إلى القمة.",
+    "target": "Your friend said that she couldn't reach the top."
+   },
+   {
+    "seed": 359,
+    "known": "قال صديقك إنه يستطيع الانعطاف يساراً.",
+    "target": "Your friend said that he could turn left."
+   },
+   {
+    "seed": 360,
+    "known": "هل قال صديقك أي شيء آخر؟",
+    "target": "Did your friend say anything else?"
+   },
+   {
+    "seed": 361,
+    "known": "كان هادئاً.",
+    "target": "He was quiet."
+   },
+   {
+    "seed": 362,
+    "known": "لا، كان هادئاً نسبياً بعد أن غادرت.",
+    "target": "No he was rather quiet after you left."
+   },
+   {
+    "seed": 363,
+    "known": "نعم، كان يشعر بالرغبة في الكلام كثيراً.",
+    "target": "Yes he felt like talking a lot."
+   },
+   {
+    "seed": 364,
+    "known": "سمعت أنه لم يحب ذلك المكان.",
+    "target": "I heard that he didn't like that place."
+   },
+   {
+    "seed": 365,
+    "known": "لم أسمع ما قالته له.",
+    "target": "I didn't hear what she said to him."
+   },
+   {
+    "seed": 366,
+    "known": "هل سمعت ما الذي أراد زراعته؟",
+    "target": "Did you hear what he wanted to grow?"
+   },
+   {
+    "seed": 367,
+    "known": "لا، لم يخبرني أحد.",
+    "target": "No nobody told me."
+   },
+   {
+    "seed": 368,
+    "known": "نعم، سمعت أنه أراد زراعة الطماطم.",
+    "target": "Yes I heard that he wanted to grow tomatoes."
+   },
+   {
+    "seed": 369,
+    "known": "رأيت عدة خيول على الطريق.",
+    "target": "I saw several horses on the road."
+   },
+   {
+    "seed": 370,
+    "known": "لم أرَ أحداً أعرفه.",
+    "target": "I didn't see anyone that I knew."
+   },
+   {
+    "seed": 371,
+    "known": "ذهبت لمشاهدة فيلم يوم الأربعاء.",
+    "target": "I went to see a film on Wednesday."
+   },
+   {
+    "seed": 372,
+    "known": "هل رأيت ما كانت تحاول إنشاءه؟",
+    "target": "Did you see what she was trying to create?"
+   },
+   {
+    "seed": 373,
+    "known": "كان جميلاً.",
+    "target": "It was beautiful."
+   },
+   {
+    "seed": 374,
+    "known": "نعم، اعتقدت أنه كان جميلاً جداً.",
+    "target": "Yes I thought it was very beautiful."
+   },
+   {
+    "seed": 375,
+    "known": "لا، لم أكن أعرف ما كانت تفعله.",
+    "target": "No I didn't know what she was doing."
+   },
+   {
+    "seed": 376,
+    "known": "لم أذهب إلى أي مكان الشهر الماضي.",
+    "target": "I didn't go anywhere last month."
+   },
+   {
+    "seed": 377,
+    "known": "هل ذهبت إلى أي مكان في العالم العام الماضي؟",
+    "target": "Did you go anywhere in the world last year?"
+   },
+   {
+    "seed": 378,
+    "known": "لا، لم يكن لدي ما يكفي من المال للعطلات.",
+    "target": "No I didn't have enough money for holidays."
+   },
+   {
+    "seed": 379,
+    "known": "نعم، كنت محظوظاً بما يكفي للسفر إلى أفريقيا.",
+    "target": "Yes I was lucky enough to travel to Africa."
+   },
+   {
+    "seed": 380,
+    "known": "سألت عما أرادت تضمينه.",
+    "target": "I asked what she wanted to include."
+   },
+   {
+    "seed": 381,
+    "known": "لم أسأل إذا كان يريد اتباعنا.",
+    "target": "I didn't ask if he wanted to follow us."
+   },
+   {
+    "seed": 382,
+    "known": "هل سألت أين أراد وضعه؟",
+    "target": "Did you ask where he wanted to put it?"
+   },
+   {
+    "seed": 383,
+    "known": "نعم، قال إنه أراد وضعه في الحديقة.",
+    "target": "Yes he said he wanted to put it in the garden."
+   },
+   {
+    "seed": 384,
+    "known": "لم أستطع الموافقة على ما قاله منذ لحظة.",
+    "target": "I couldn't agree with what he said a moment ago."
+   },
+   {
+    "seed": 385,
+    "known": "هل وافقت عليها؟",
+    "target": "Did you agree with her?"
+   },
+   {
+    "seed": 386,
+    "known": "نعم، وافقت عليها.",
+    "target": "Yes I agreed with her."
+   },
+   {
+    "seed": 387,
+    "known": "لا، لم أعتقد أنها كانت على حق.",
+    "target": "No I didn't think she was right."
+   },
+   {
+    "seed": 388,
+    "known": "ذلك الشخص الذي تعمل معه.",
+    "target": "That person you work with."
+   },
+   {
+    "seed": 389,
+    "known": "ذلك الشخص هناك.",
+    "target": "That person over there."
+   },
+   {
+    "seed": 390,
+    "known": "الذي يقف بالقرب من المدخل.",
+    "target": "The one who is standing near the entrance."
+   },
+   {
+    "seed": 391,
+    "known": "الذي يسير نحو الحافلة.",
+    "target": "The one who is walking towards the bus."
+   },
+   {
+    "seed": 392,
+    "known": "ذلك الطفل ذو الشعر الأسود أمام مكتب البريد.",
+    "target": "That child with the black hair opposite the post office."
+   },
+   {
+    "seed": 393,
+    "known": "ذلك الصبي بالقميص الأخضر.",
+    "target": "That boy with the green shirt."
+   },
+   {
+    "seed": 394,
+    "known": "تلك الفتاة بالفستان الأصفر.",
+    "target": "That girl with the yellow dress."
+   },
+   {
+    "seed": 395,
+    "known": "نحتاج إلى الانعطاف يساراً عند الزاوية القادمة.",
+    "target": "We need to turn left at the next corner."
+   },
+   {
+    "seed": 396,
+    "known": "لا نحتاج إلى الوقوف حتى يكون الجميع مستعداً.",
+    "target": "We don't need to stand until everybody else is ready."
+   },
+   {
+    "seed": 397,
+    "known": "هل نحتاج إلى الاستعداد قريباً؟",
+    "target": "Do we need to get ready soon?"
+   },
+   {
+    "seed": 398,
+    "known": "نريد أن نصبح أكثر صبراً مع أطفالنا.",
+    "target": "We want to become more patient with our children."
+   },
+   {
+    "seed": 399,
+    "known": "لا نريد أن نفقد الأمل.",
+    "target": "We don't want to lose hope."
+   },
+   {
+    "seed": 400,
+    "known": "هل نريد أن نأكل شيئاً في وقت لاحق؟",
+    "target": "Do we want to eat something later on?"
+   },
+   {
+    "seed": 401,
+    "known": "لا، سيكون من الأفضل الذهاب مباشرة إلى المنزل.",
+    "target": "No it would be better to go straight home."
+   },
+   {
+    "seed": 402,
+    "known": "نعم، سيكون من الجميل التوقف في مكان ما للأكل.",
+    "target": "Yes it would be nice to stop somewhere for food."
+   },
+   {
+    "seed": 403,
+    "known": "يجب أن نبقى هادئين لأطول وقت ممكن.",
+    "target": "We should remain quiet for as long as possible."
+   },
+   {
+    "seed": 404,
+    "known": "لا يجب أن نتوقع الإنهاء قبل الخميس.",
+    "target": "We shouldn't expect to finish before Thursday."
+   },
+   {
+    "seed": 405,
+    "known": "هل يجب أن نسأل إذا كان علينا الحجز؟",
+    "target": "Should we ask if we have to book?"
+   },
+   {
+    "seed": 406,
+    "known": "لا، أنا متأكد أنه سيكون بخير.",
+    "target": "No I'm sure it will be okay."
+   },
+   {
+    "seed": 407,
+    "known": "ألا يجب أن نحاول ضرب مثال جيد؟",
+    "target": "Shouldn't we try to set a good example?"
+   },
+   {
+    "seed": 408,
+    "known": "نعم، هذه هي أفضل طريقة لإنشاء عائلة سعيدة.",
+    "target": "Yes that's the best way to make a happy family."
+   },
+   {
+    "seed": 409,
+    "known": "لا، لا يهم ما نفعله.",
+    "target": "No it doesn't matter what we do."
+   },
+   {
+    "seed": 410,
+    "known": "لا يزالون يتشاجرون مع بعضهم البعض.",
+    "target": "They still fight with each other."
+   },
+   {
+    "seed": 411,
+    "known": "نود حجز طاولة لأربعة أشخاص الليلة.",
+    "target": "We would like to reserve a table for four tonight."
+   },
+   {
+    "seed": 412,
+    "known": "لم نستطع السماح لهم بالفوز بكل شيء.",
+    "target": "We couldn't allow them to win everything."
+   },
+   {
+    "seed": 413,
+    "known": "يمكننا السقوط إذا اقتربنا جداً من الحافة.",
+    "target": "We could fall if we go too close to the edge."
+   },
+   {
+    "seed": 414,
+    "known": "هل يمكننا الحصول على زجاجة نبيذ أحمر من فضلك؟",
+    "target": "Could we have a bottle of red wine please?"
+   },
+   {
+    "seed": 415,
+    "known": "لن تكون مشكلة إذا سألتني.",
+    "target": "That wouldn't be a problem if you ask me."
+   },
+   {
+    "seed": 416,
+    "known": "يريدون قيادة الطريق العام القادم.",
+    "target": "They want to lead the way next year."
+   },
+   {
+    "seed": 417,
+    "known": "هل يريدون قتل تلك النمل؟",
+    "target": "Do they want to kill those ants?"
+   },
+   {
+    "seed": 418,
+    "known": "يحتاجون إلى خدمة المجتمع.",
+    "target": "They need to serve the community."
+   },
+   {
+    "seed": 419,
+    "known": "إذا أرادوا أن يحبهم الناس.",
+    "target": "If they want people to like them."
+   },
+   {
+    "seed": 420,
+    "known": "لا يحتاجون إلى سؤاله عن عمره.",
+    "target": "They don't need to ask how old he is."
+   },
+   {
+    "seed": 421,
+    "known": "لأنهم يعرفون بالفعل أنه يضعف.",
+    "target": "Because they already know he's getting weak."
+   },
+   {
+    "seed": 422,
+    "known": "سؤال.",
+    "target": "A question."
+   },
+   {
+    "seed": 423,
+    "known": "هل يحتاجون إلى طرح مثل هذا السؤال الواضح؟",
+    "target": "Do they need to ask such an obvious question?"
+   },
+   {
+    "seed": 424,
+    "known": "لا، إنهم يضيعون وقت الجميع.",
+    "target": "No they're wasting everybody's time."
+   },
+   {
+    "seed": 425,
+    "known": "نعم، يحتاجون إلى التأكد من أنهم يفهمون.",
+    "target": "Yes they need to make sure they understand."
+   },
+   {
+    "seed": 426,
+    "known": "يودون أن يحبوا بعضهم البعض لكنهم غير سعداء.",
+    "target": "They would like to love each other but they're unhappy."
+   },
+   {
+    "seed": 427,
+    "known": "لا يودون أن تعتقد أنهم يشعرون بالملل.",
+    "target": "They wouldn't like you to think that they're bored."
+   },
+   {
+    "seed": 428,
+    "known": "هل يودون زيارتنا يوم الثلاثاء؟",
+    "target": "Would they like to visit us on Tuesday?"
+   },
+   {
+    "seed": 429,
+    "known": "نعم، سيكون ذلك مثالياً لهم.",
+    "target": "Yes that would be perfect for them."
+   },
+   {
+    "seed": 430,
+    "known": "لا، لن يكون ذلك ممكناً.",
+    "target": "No that wouldn't be possible."
+   },
+   {
+    "seed": 431,
+    "known": "لم يكونوا مستعدين بعد لكنهم سيكونون مستعدين قريباً.",
+    "target": "They're not ready yet but they'll be ready soon."
+   },
+   {
+    "seed": 432,
+    "known": "يمكن أن يعنوا أنهم يريدونك أن تسأل.",
+    "target": "They could mean that they want you to ask."
+   },
+   {
+    "seed": 433,
+    "known": "لم يستطيعوا معرفة متى بدأ الفيلم.",
+    "target": "They couldn't find out when the film started."
+   },
+   {
+    "seed": 434,
+    "known": "هل يستطيعون تقليل عدد الطلاب الذين يقبلونهم؟",
+    "target": "Could they cut the number of students they take?"
+   },
+   {
+    "seed": 435,
+    "known": "نعم، يستطيعون إذا أرادوا.",
+    "target": "Yes they could if they wanted to."
+   },
+   {
+    "seed": 436,
+    "known": "لا، هناك حد أدنى من العدد الذي يحتاجونه.",
+    "target": "No there's a minimum number they need."
+   },
+   {
+    "seed": 437,
+    "known": "أرادوا جمع أكبر قدر ممكن للجمعيات الخيرية.",
+    "target": "They wanted to raise as much as possible for charity."
+   },
+   {
+    "seed": 438,
+    "known": "لم يريدوا تحديد ما يجب عليه فعله.",
+    "target": "They didn't want to decide what he should do."
+   },
+   {
+    "seed": 439,
+    "known": "لا يريدون الموت.",
+    "target": "They don't want to die."
+   },
+   {
+    "seed": 440,
+    "known": "يريدون السفر بينما لا يزالون شباباً.",
+    "target": "They want to travel while they're still young."
+   },
+   {
+    "seed": 441,
+    "known": "نهج.",
+    "target": "An approach."
+   },
+   {
+    "seed": 442,
+    "known": "هل أرادوا تطوير نهج جديد؟",
+    "target": "Did they want to develop a new approach?"
+   },
+   {
+    "seed": 443,
+    "known": "لا، أرادوا الاستمرار في فعله بنفس الطريقة.",
+    "target": "No they wanted to keep doing it the same way."
+   },
+   {
+    "seed": 444,
+    "known": "نعم، اعتقدوا أنه يمكن إنجازه بشكل أكثر كفاءة.",
+    "target": "Yes they thought it could be done more efficiently."
+   },
+   {
+    "seed": 445,
+    "known": "سيستطيعون حمل تلك الحقيبة.",
+    "target": "They will be able to carry that suitcase."
+   },
+   {
+    "seed": 446,
+    "known": "لن يستطيعوا كسر تلك النافذة.",
+    "target": "They won't be able to break that window."
+   },
+   {
+    "seed": 447,
+    "known": "هل سيستطيعون قيادتنا إلى المنزل بعد الوجبة؟",
+    "target": "Will they be able to drive us home after the meal?"
+   },
+   {
+    "seed": 448,
+    "known": "نعم، سيكونون سعداء بالمساعدة.",
+    "target": "Yes they'll be happy to help."
+   },
+   {
+    "seed": 449,
+    "known": "قالوا إنهم كانوا على وشك الاستعداد.",
+    "target": "They said that they were almost ready."
+   },
+   {
+    "seed": 450,
+    "known": "لا، يجب عليهم اللحاق بالقطار بأنفسهم.",
+    "target": "No they have to catch the train themselves."
+   },
+   {
+    "seed": 451,
+    "known": "قالوا ما الذي أرادوا فعله.",
+    "target": "They said what they wanted to do."
+   },
+   {
+    "seed": 452,
+    "known": "لم يقولوا ما الذي أرادوا فعله.",
+    "target": "They didn't say what they wanted to do."
+   },
+   {
+    "seed": 453,
+    "known": "هل قالوا من رأوا الليلة الماضية؟",
+    "target": "Did they say who they saw last night?"
+   },
+   {
+    "seed": 454,
+    "known": "جاء أصدقاؤنا في حوالي الساعة السادسة.",
+    "target": "Our friends came round at about six o'clock."
+   },
+   {
+    "seed": 455,
+    "known": "كان علينا المغادرة لأن الأطفال كانوا متعبين.",
+    "target": "We had to leave because the children were tired."
+   },
+   {
+    "seed": 456,
+    "known": "قد يكون هناك لكن من غير المحتمل كثيراً.",
+    "target": "He might be there but it's not very likely."
+   },
+   {
+    "seed": 457,
+    "known": "جزء من المشكلة هو عدد المناطق المختلفة.",
+    "target": "Part of the problem is the number of different areas."
+   },
+   {
+    "seed": 458,
+    "known": "كان كل شيء أسهل بكثير في الماضي.",
+    "target": "It was all much easier in the past."
+   },
+   {
+    "seed": 459,
+    "known": "لم يكن أمام اللافتة الزرقاء.",
+    "target": "It wasn't in front of the blue sign."
+   },
+   {
+    "seed": 460,
+    "known": "أريد إيجاد محل قريب من الفندق.",
+    "target": "I want to find a shop near the hotel."
+   },
+   {
+    "seed": 461,
+    "known": "محل يمكنني فيه شراء بعض البطاقات البريدية.",
+    "target": "A shop where I can buy some postcards."
+   },
+   {
+    "seed": 462,
+    "known": "جدي قاتل في إيطاليا خلال الحرب.",
+    "target": "My grandfather fought in Italy during the war."
+   },
+   {
+    "seed": 463,
+    "known": "رقم غرفتي.",
+    "target": "My room number."
+   },
+   {
+    "seed": 464,
+    "known": "أخبرتها برقم غرفتي مرة لكنها نسيته.",
+    "target": "I told her my room number once but she forgot it."
+   },
+   {
+    "seed": 465,
+    "known": "في المرة القادمة سأسألها ما اسمها.",
+    "target": "Next time I will ask her what her name is."
+   },
+   {
+    "seed": 466,
+    "known": "دعني أرميه فوق الجدار.",
+    "target": "Let me throw it over the wall."
+   },
+   {
+    "seed": 467,
+    "known": "إنه بجوار موقف السيارات.",
+    "target": "It's next to the car park."
+   },
+   {
+    "seed": 468,
+    "known": "إنه عالم كبير.",
+    "target": "It's a big world."
+   },
+   {
+    "seed": 469,
+    "known": "لكن هذا لا يعني أننا لا نستطيع تغييره.",
+    "target": "But that doesn't mean we can't change it."
+   },
+   {
+    "seed": 470,
+    "known": "إلى أي ارتفاع تريد الصعود قبل أن نتوقف؟",
+    "target": "How high do you want to climb before we stop?"
+   },
+   {
+    "seed": 471,
+    "known": "هل تريد التوقف للراحة؟",
+    "target": "Do you want to stop for a rest?"
+   },
+   {
+    "seed": 472,
+    "known": "جزء من المشكلة هو أننا لا نعرف الحقائق.",
+    "target": "Part of the problem is that we don't know the facts."
+   },
+   {
+    "seed": 473,
+    "known": "لا أريده.",
+    "target": "I don't want it."
+   },
+   {
+    "seed": 474,
+    "known": "لا أريده حتى كعرض مجاني.",
+    "target": "I don't even want it as a free offer."
+   },
+   {
+    "seed": 475,
+    "known": "هناك أسباب كثيرة للتفكير في الانتظار.",
+    "target": "There are many reasons to consider waiting."
+   },
+   {
+    "seed": 476,
+    "known": "أنا أنتظر نهاية الشوط الثاني.",
+    "target": "I'm waiting for the end of the second half."
+   },
+   {
+    "seed": 477,
+    "known": "كان مريضاً منذ اليوم الثاني من الإجازات.",
+    "target": "He's been sick since the second day of the holidays."
+   },
+   {
+    "seed": 478,
+    "known": "لديها قلب لطيف جداً.",
+    "target": "She has such a kind heart."
+   },
+   {
+    "seed": 479,
+    "known": "هذا أقل ما يمكنني فعله.",
+    "target": "It's the least I could do."
+   },
+   {
+    "seed": 480,
+    "known": "مهما قال، فإنه ليس بعيداً الآن.",
+    "target": "Whatever he says it's not far ahead now."
+   },
+   {
+    "seed": 481,
+    "known": "إنه الأمل الحقيقي الوحيد الذي تبقى لدينا.",
+    "target": "It's the only real hope we have left."
+   },
+   {
+    "seed": 482,
+    "known": "الأمل الحقيقي الوحيد هو أنهم غير جادين.",
+    "target": "The only real hope is that they're not serious."
+   },
+   {
+    "seed": 483,
+    "known": "الحياة ليست سهلة لكنها لم تكن لتكون سهلة.",
+    "target": "Life isn't easy but it's not meant to be easy."
+   },
+   {
+    "seed": 484,
+    "known": "إنها مقصودة لتكون تحدياً.",
+    "target": "It's meant to be a challenge."
+   },
+   {
+    "seed": 485,
+    "known": "لا شيء سيجعلني أسعد من المغادرة.",
+    "target": "Nothing would make me happier than to get away."
+   },
+   {
+    "seed": 486,
+    "known": "أعتقد أن عينيك جميلتان.",
+    "target": "I think your eyes are beautiful."
+   },
+   {
+    "seed": 487,
+    "known": "إنه تحت الجسر.",
+    "target": "It's under the bridge."
+   },
+   {
+    "seed": 488,
+    "known": "إنه على الجانب الآخر من ذلك الخط الأصفر.",
+    "target": "It's on the other side of that yellow line."
+   },
+   {
+    "seed": 489,
+    "known": "إذا لم تصنع لي كوباً قوياً من القهوة الآن.",
+    "target": "If you don't make me a strong cup of coffee right now."
+   },
+   {
+    "seed": 490,
+    "known": "إذن لن أثق بأحد أبداً بعد الآن.",
+    "target": "Then I will never trust anyone ever again."
+   },
+   {
+    "seed": 491,
+    "known": "أحب الطريقة التي تحاول بها المساعدة.",
+    "target": "I love the way you try to help."
+   },
+   {
+    "seed": 492,
+    "known": "أي من تلك الأماكن تعتقد أنه الأكثر إثارة للاهتمام؟",
+    "target": "Which of those places do you think is the most interesting?"
+   },
+   {
+    "seed": 493,
+    "known": "ماذا سيأتي بعد ذلك؟",
+    "target": "What's going to come next?"
+   },
+   {
+    "seed": 494,
+    "known": "ماذا يحدث بعد الجزء الأول من العرض؟",
+    "target": "What happens after the first part of the show?"
+   },
+   {
+    "seed": 495,
+    "known": "عندما يكون الأمر مهماً.",
+    "target": "When it matters."
+   },
+   {
+    "seed": 496,
+    "known": "لا أخطط للخسارة عندما يكون الأمر مهماً حقاً.",
+    "target": "I'm not planning to lose when it really matters."
+   },
+   {
+    "seed": 497,
+    "known": "يبدو هذا كأنك بحاجة إلى النوم قليلاً.",
+    "target": "That sounds as though you need to get some sleep."
+   },
+   {
+    "seed": 498,
+    "known": "إنه يقف بمفرده هناك داخل المدخل.",
+    "target": "He's standing alone over there inside the entrance."
+   },
+   {
+    "seed": 499,
+    "known": "ربما يجب أن نفتح الباب ونغلق النافذة.",
+    "target": "Maybe we should open the door and close the window."
+   },
+   {
+    "seed": 500,
+    "known": "لماذا لا تريد الجلوس بين الفتاتين؟",
+    "target": "Why don't you want to sit between the two girls?"
+   },
+   {
+    "seed": 501,
+    "known": "ليتني أستطيع الوثوق بك للعب معاً دون جدال.",
+    "target": "If only I could trust you to play together without arguing."
+   },
+   {
+    "seed": 502,
+    "known": "كادت تضل الطريق لأنها انعطفت يساراً بدلاً من اليمين.",
+    "target": "She almost got lost because she turned left instead of right."
+   },
+   {
+    "seed": 503,
+    "known": "أكره إثارة المشاكل لكن ذلك الشيء ملكي.",
+    "target": "I hate making trouble but that one's mine."
+   },
+   {
+    "seed": 504,
+    "known": "سأجري عبر العشب.",
+    "target": "I'm going to run across the grass."
+   },
+   {
+    "seed": 505,
+    "known": "حتى لا أتخلف عن الركب.",
+    "target": "So that I don't get left behind."
+   },
+   {
+    "seed": 506,
+    "known": "كنت أعيش هنا منذ سنوات قبل أن ننتقل.",
+    "target": "I used to live around here years ago before we moved."
+   },
+   {
+    "seed": 507,
+    "known": "انتقلنا إلى المدينة.",
+    "target": "We moved to the city."
+   },
+   {
+    "seed": 508,
+    "known": "لا فائدة من القلق بشأن كيفية الدفع.",
+    "target": "There's no point worrying about how you're going to pay."
+   },
+   {
+    "seed": 509,
+    "known": "سمعت أنك ستدفع ثمن سرير جديد.",
+    "target": "I heard that you're going to pay for a new bed."
+   },
+   {
+    "seed": 510,
+    "known": "ذهبت للبحث عن مكان آمن لإيقاف السيارة.",
+    "target": "She's gone to look for somewhere safe to park the car."
+   },
+   {
+    "seed": 511,
+    "known": "استغرق الخبر عدة ساعات للوصول إلى الجميع في المكتب.",
+    "target": "The news took several hours to reach everyone in the office."
+   },
+   {
+    "seed": 512,
+    "known": "هل يمكنك إبقاء الباب مفتوحاً بينما أجلب المفاتيح؟",
+    "target": "Can you hold the door open while I fetch the keys?"
+   },
+   {
+    "seed": 513,
+    "known": "يؤلمني أكثر عندما أحرك رأسي لأعلى ولأسفل.",
+    "target": "It hurts most when I move my head up and down."
+   },
+   {
+    "seed": 514,
+    "known": "وجدت المنزل المثالي في اليوم الأول.",
+    "target": "I found the perfect house on the first day."
+   },
+   {
+    "seed": 515,
+    "known": "في اليوم الأول من السنة الجديدة.",
+    "target": "On the first day of the new year."
+   },
+   {
+    "seed": 516,
+    "known": "جاء كلاهما بمفردهما.",
+    "target": "They both came on their own."
+   },
+   {
+    "seed": 517,
+    "known": "لكنهما غادرا معاً.",
+    "target": "But they left with each other."
+   },
+   {
+    "seed": 518,
+    "known": "لم أستطع تخيل نفسي أواجه نفس المشكلة تماماً.",
+    "target": "I couldn't imagine myself having exactly the same problem."
+   },
+   {
+    "seed": 519,
+    "known": "لم أرَ طفلهم الجديد بعد.",
+    "target": "I haven't seen their new baby yet."
+   },
+   {
+    "seed": 520,
+    "known": "ربما حدث ذلك للعائلة كلها.",
+    "target": "It might have happened to the whole family."
+   },
+   {
+    "seed": 521,
+    "known": "أخشى أن تنسى لماذا كنا بحاجة للبقاء هنا.",
+    "target": "I'm afraid that you'll forget why we needed to stay here."
+   },
+   {
+    "seed": 522,
+    "known": "لنتفق على أنه كان من الغباء قول الحقيقة.",
+    "target": "Let's agree that it was stupid to tell the truth."
+   },
+   {
+    "seed": 523,
+    "known": "بدلاً من تقديم عذر.",
+    "target": "Instead of giving an excuse."
+   },
+   {
+    "seed": 524,
+    "known": "سأعاود الاتصال بك في ثلاث أو أربع دقائق.",
+    "target": "I'll call you back in three or four minutes."
+   },
+   {
+    "seed": 525,
+    "known": "للتحقق من أنك استطعت الإنهاء.",
+    "target": "To check if you've been able to finish."
+   },
+   {
+    "seed": 526,
+    "known": "أجد صعوبة في تصديق أنك لا تستطيع التخمين.",
+    "target": "I'm finding it hard to believe that you can't guess."
+   },
+   {
+    "seed": 527,
+    "known": "خمن من أخبرني تلك القصة المضحكة.",
+    "target": "Guess who told me that funny story."
+   },
+   {
+    "seed": 528,
+    "known": "يُفترض على الأرجح أن أحتفظ بتلك الأشياء في غرفة أخرى.",
+    "target": "I'm probably supposed to keep those things in another room."
+   },
+   {
+    "seed": 529,
+    "known": "هل يمكنكم جميعاً رفع أيديكم؟",
+    "target": "Can you all put your hands up?"
+   },
+   {
+    "seed": 530,
+    "known": "حتى أستطيع عدّهم",
+    "target": "So I can count them"
+   },
+   {
+    "seed": 531,
+    "known": "ليس صحيحاً أن أي شخص يمكنه الفوز باللعبة.",
+    "target": "It isn't true that anyone can win the game."
+   },
+   {
+    "seed": 532,
+    "known": "إلا إذا كانوا محظوظين.",
+    "target": "Unless they're lucky."
+   },
+   {
+    "seed": 533,
+    "known": "لن تستمع إلى كل كلمة تقولها.",
+    "target": "She won't listen to every word you say."
+   },
+   {
+    "seed": 534,
+    "known": "لا نذهب إلى الخارج في هذا الطقس الرهيب.",
+    "target": "Let's not go outside in this dreadful weather."
+   },
+   {
+    "seed": 535,
+    "known": "قطع وعداً بأنه لن يختار الوظيفة الخاطئة.",
+    "target": "He made a promise that he wouldn't choose the wrong job."
+   },
+   {
+    "seed": 536,
+    "known": "كنت أعتقد أن الجنون كان شيئاً سيئاً.",
+    "target": "I used to think that being crazy was bad."
+   },
+   {
+    "seed": 537,
+    "known": "لكنني كنت مخطئاً.",
+    "target": "But I was wrong."
+   },
+   {
+    "seed": 538,
+    "known": "لا أريد أن أبدو كأنني لا أهتم.",
+    "target": "I don't want to seem as though I don't care."
+   },
+   {
+    "seed": 539,
+    "known": "لكن الوقت يتأخر.",
+    "target": "But it's getting late."
+   },
+   {
+    "seed": 540,
+    "known": "لا أمانع إذا أردت المغادرة بدون السيارة.",
+    "target": "I don't mind if you want to leave without the car."
+   },
+   {
+    "seed": 541,
+    "known": "إنها فكرة جيدة أن تحاول التنفس ببطء.",
+    "target": "It's a good idea to try and breathe slowly."
+   },
+   {
+    "seed": 542,
+    "known": "في كل مرة تشعر فيها بالغضب.",
+    "target": "Whenever you feel angry."
+   },
+   {
+    "seed": 543,
+    "known": "كانت على حق.",
+    "target": "She was right."
+   },
+   {
+    "seed": 544,
+    "known": "من قال إن ذلك سيكون صعباً كان على حق تماماً.",
+    "target": "Whoever said it would be difficult was absolutely right."
+   },
+   {
+    "seed": 545,
+    "known": "إنه دورك لأخذ الملابس النظيفة إلى أعلى.",
+    "target": "It's your turn to take the clean clothes upstairs."
+   },
+   {
+    "seed": 546,
+    "known": "الكلب متسخ ومبتل.",
+    "target": "The dog is dirty and wet."
+   },
+   {
+    "seed": 547,
+    "known": "لأنه كان يلعب في الطين.",
+    "target": "Because he has been playing in the mud."
+   },
+   {
+    "seed": 548,
+    "known": "أشعر بالحزن في الوقت الحالي.",
+    "target": "I am feeling sad at the moment."
+   },
+   {
+    "seed": 549,
+    "known": "لأنني يجب أن أكون هادئاً.",
+    "target": "Because I have got to be quiet."
+   },
+   {
+    "seed": 550,
+    "known": "نهاية القرية.",
+    "target": "The end of the village."
+   },
+   {
+    "seed": 551,
+    "known": "الكنيسة قبيحة.",
+    "target": "The church is ugly."
+   },
+   {
+    "seed": 552,
+    "known": "الكنيسة في الطرف الآخر من القرية قبيحة.",
+    "target": "The church at the other end of the village is ugly."
+   },
+   {
+    "seed": 553,
+    "known": "أعتقد أن الكنيسة الصغيرة قبيحة جداً.",
+    "target": "I think the small church is very ugly."
+   },
+   {
+    "seed": 554,
+    "known": "هذه المنشفة ليست جافة.",
+    "target": "This towel isn't dry."
+   },
+   {
+    "seed": 555,
+    "known": "وأنا متعب جداً لأجلب واحدة جديدة.",
+    "target": "And I'm too tired to fetch a new one."
+   },
+   {
+    "seed": 556,
+    "known": "يعزفون الموسيقى في وقت متأخر من الليل.",
+    "target": "They play music late at night."
+   },
+   {
+    "seed": 557,
+    "known": "أتمنى أن لا يعزفوا مثل هذه الموسيقى الصاخبة.",
+    "target": "I wish they wouldn't play such loud music."
+   },
+   {
+    "seed": 558,
+    "known": "إنه في وقت متأخر جداً من الليل.",
+    "target": "It's so late at night."
+   },
+   {
+    "seed": 559,
+    "known": "هل وجدت الطريق عبر الغابة؟",
+    "target": "Have you found the path through the wood?"
+   },
+   {
+    "seed": 560,
+    "known": "يمتد حتى الشاطئ",
+    "target": "It goes down to the beach"
+   },
+   {
+    "seed": 561,
+    "known": "لا يهمني إذا كانت سيارة سريعة.",
+    "target": "I don't care if it's a fast car."
+   },
+   {
+    "seed": 562,
+    "known": "أريد فقط الوصول إلى هناك بأمان.",
+    "target": "I just want to get there safely."
+   },
+   {
+    "seed": 563,
+    "known": "لم أكن سأستطيع الاستمرار أكثر من ذلك.",
+    "target": "I wouldn't have been able to keep going any longer."
+   },
+   {
+    "seed": 564,
+    "known": "لم أكن سأستطيع بدون مساعدتك.",
+    "target": "I wouldn't have been able to without your help."
+   },
+   {
+    "seed": 565,
+    "known": "كنت سأفكر في الأمر بعناية أكبر.",
+    "target": "I'd have thought about it more carefully."
+   },
+   {
+    "seed": 566,
+    "known": "كنت سأفكر أكثر لو كان الاختيار لي.",
+    "target": "I'd have thought more if it had been my choice."
+   },
+   {
+    "seed": 567,
+    "known": "كان من الجميل قضاء الوقت في الخارج مشاهدة الأطفال يلعبون.",
+    "target": "It's been lovely spending time outdoors watching the children play."
+   },
+   {
+    "seed": 568,
+    "known": "أتوقع رؤية تحسن في المرة القادمة التي نلتقي فيها.",
+    "target": "I'm expecting to see an improvement next time we meet."
+   },
+   {
+    "seed": 569,
+    "known": "هل قررت كم أنت على استعداد للدفع؟",
+    "target": "Have you decided how much you are willing to pay?"
+   },
+   {
+    "seed": 570,
+    "known": "كم أنت على استعداد للدفع مقابل تذكرتك؟",
+    "target": "How much are you willing to pay for your ticket?"
+   },
+   {
+    "seed": 571,
+    "known": "لا أقتنع بأن تلك ستكون فكرة جيدة جداً.",
+    "target": "I'm not convinced that would be a very good idea."
+   },
+   {
+    "seed": 572,
+    "known": "هل نسيت ما حدث في آخر مرة زارونا فيها؟",
+    "target": "Have you forgotten what happened the last time they visited us?"
+   },
+   {
+    "seed": 573,
+    "known": "إنه النوع من الأشياء التي تجعل الإجازات مميزة جداً.",
+    "target": "It's the kind of thing that makes the holidays very special."
+   },
+   {
+    "seed": 574,
+    "known": "الإجازات مميزة جداً للجميع.",
+    "target": "The holidays are very special for everyone."
+   },
+   {
+    "seed": 575,
+    "known": "كان الأمر مؤلماً.",
+    "target": "It's been upsetting."
+   },
+   {
+    "seed": 576,
+    "known": "كان الانتظار مؤلماً جداً.",
+    "target": "It has been very upsetting waiting."
+   },
+   {
+    "seed": 577,
+    "known": "كنا ننتظر الأخبار من المستشفى.",
+    "target": "We've been waiting for the news from the hospital."
+   },
+   {
+    "seed": 578,
+    "known": "مكان أدفأ.",
+    "target": "Somewhere warmer."
+   },
+   {
+    "seed": 579,
+    "known": "حاولنا في كثير من الأحيان.",
+    "target": "We've often tried."
+   },
+   {
+    "seed": 580,
+    "known": "أردنا في كثير من الأحيان أخذ الأطفال إلى مكان أدفأ قليلاً.",
+    "target": "We've often wanted to take the children somewhere a little warmer."
+   },
+   {
+    "seed": 581,
+    "known": "يود معرفة المزيد قليلاً عن ما هو عليه الأمر.",
+    "target": "He'd like to know a little more about what it's like."
+   },
+   {
+    "seed": 582,
+    "known": "كيف هو الأمر أن تكبر هنا؟",
+    "target": "What's it like to grow up here?"
+   },
+   {
+    "seed": 583,
+    "known": "كيف هو الأمر في هذا الجزء من العالم؟",
+    "target": "What's it like in this part of the world?"
+   },
+   {
+    "seed": 584,
+    "known": "كيف هو الأمر أن تستيقظ كل صباح وترى الجبال؟",
+    "target": "What's it like to wake up every morning and see the mountains?"
+   },
+   {
+    "seed": 585,
+    "known": "أستطيع رؤية الجبال من نافذة غرفة نومي.",
+    "target": "I can see the mountains out of my bedroom window."
+   },
+   {
+    "seed": 586,
+    "known": "أريد عشرين بيضة مسلوقة.",
+    "target": "I want twenty boiled eggs."
+   },
+   {
+    "seed": 587,
+    "known": "كانت تصر على أن نأكل البيض في العشاء.",
+    "target": "She used to insist that we had eggs for supper."
+   },
+   {
+    "seed": 588,
+    "known": "لذلك أردت الكبر ومغادرة المنزل.",
+    "target": "So I wanted to grow up and leave home."
+   },
+   {
+    "seed": 589,
+    "known": "أخبرتني أنها رأت للتو آخر حافلة.",
+    "target": "She told me she'd just seen the last bus."
+   },
+   {
+    "seed": 590,
+    "known": "رأيت آخر حافلة تغادر المحطة.",
+    "target": "I saw the last bus leaving the station."
+   },
+   {
+    "seed": 591,
+    "known": "تبعتني حتى المحلات.",
+    "target": "She followed me down to the shops."
+   },
+   {
+    "seed": 592,
+    "known": "وعلى طول الطريق الرئيسي.",
+    "target": "And along the main road."
+   },
+   {
+    "seed": 593,
+    "known": "مهما جادلت، كان لا يزال يجب علي المشاركة.",
+    "target": "However much I argued I still had to share."
+   },
+   {
+    "seed": 594,
+    "known": "كان علي مشاركة ألعابي مع أختي.",
+    "target": "I had to share my toys with my sister."
+   },
+   {
+    "seed": 595,
+    "known": "أحتاج إلى الاستلقاء في الحديقة.",
+    "target": "I need to lie down in the garden."
+   },
+   {
+    "seed": 596,
+    "known": "وأحتاج إلى إغماض عيني لبعض الوقت.",
+    "target": "And I need to close my eyes for a while."
+   },
+   {
+    "seed": 597,
+    "known": "أشك في أنه سمع مئة قصة عنه.",
+    "target": "I suspect that he's heard a hundred stories about it."
+   },
+   {
+    "seed": 598,
+    "known": "سمع ألف قصة عما كانوا يفعلونه.",
+    "target": "He's heard a thousand stories about what they were doing."
+   },
+   {
+    "seed": 599,
+    "known": "كنت سأكون سعيداً بالقيادة لو أخبرتني.",
+    "target": "I'd have been happy to drive if you'd told me."
+   },
+   {
+    "seed": 600,
+    "known": "كنت سأقود لو أخبرتني مدى تعبك.",
+    "target": "I'd have driven if you'd told me how tired you were."
+   },
+   {
+    "seed": 601,
+    "known": "كنا نتحدث عن كيف بدأ كل شيء.",
+    "target": "We were talking about how it all started."
+   },
+   {
+    "seed": 602,
+    "known": "كيف بدأ في المقام الأول.",
+    "target": "How it started in the first place."
+   },
+   {
+    "seed": 603,
+    "known": "لم يكن لدينا مكان نعيش فيه في ذلك الوقت.",
+    "target": "We didn't have anywhere to live at the time."
+   },
+   {
+    "seed": 604,
+    "known": "عرضت أن تدعنا نبقى معها.",
+    "target": "She offered to let us stay with her."
+   },
+   {
+    "seed": 605,
+    "known": "لأننا كنا بحاجة إلى المساعدة.",
+    "target": "Because we needed help."
+   },
+   {
+    "seed": 606,
+    "known": "لو كنت أعرف آنذاك ما أعرفه الآن، كنت سأنتظر.",
+    "target": "If I'd known then what I know now I'd have waited."
+   },
+   {
+    "seed": 607,
+    "known": "لو كنت أعرف، كنت سأفعل الأشياء بشكل مختلف.",
+    "target": "If I'd known I'd have done things differently."
+   },
+   {
+    "seed": 608,
+    "known": "كان ذلك سيكون الأمر المعقول للفعل.",
+    "target": "It would have been the sensible thing to do."
+   },
+   {
+    "seed": 609,
+    "known": "الأمر المعقول للفعل كان سيكون أن يسأل.",
+    "target": "The sensible thing to do would have been to ask."
+   },
+   {
+    "seed": 610,
+    "known": "يحتاج إلى البحث عن عمل.",
+    "target": "He needs to look for work."
+   },
+   {
+    "seed": 611,
+    "known": "كنت سأكون مستعداً للبحث في مكان آخر.",
+    "target": "I would have been ready to look somewhere else."
+   },
+   {
+    "seed": 612,
+    "known": "كنا سنشتري شيئاً.",
+    "target": "We would have bought something."
+   },
+   {
+    "seed": 613,
+    "known": "على الأرجح كنا سنشتري منزلاً هناك.",
+    "target": "We probably would have bought a house there."
+   },
+   {
+    "seed": 614,
+    "known": "إنه قريب من حيث تعيش عائلتك.",
+    "target": "It's near where your family live."
+   },
+   {
+    "seed": 615,
+    "known": "اعتقدت أنك كنت شجاعاً جداً لقول ذلك.",
+    "target": "I thought you were very brave to say that."
+   },
+   {
+    "seed": 616,
+    "known": "كنت شجاعاً جداً لقول أنك اعتقدت ذلك.",
+    "target": "You were very brave to say you thought that."
+   },
+   {
+    "seed": 617,
+    "known": "اعتقدت أنه كان خطأً.",
+    "target": "You thought that it was a mistake."
+   },
+   {
+    "seed": 618,
+    "known": "لا يبدو أنه وقت طويل.",
+    "target": "It doesn't feel like a long time."
+   },
+   {
+    "seed": 619,
+    "known": "مضى وقت طويل منذ رأينا بعضنا.",
+    "target": "It's a long time since we saw each other."
+   },
+   {
+    "seed": 620,
+    "known": "مضى وقت طويل جداً منذ رأينا بعضنا آخر مرة.",
+    "target": "It's a very long time since we last saw each other."
+   },
+   {
+    "seed": 621,
+    "known": "لم أكن لأجرؤ على إخبارها بأنه كان مكسوراً.",
+    "target": "I wouldn't have dared to tell her that it was broken."
+   },
+   {
+    "seed": 622,
+    "known": "كنت أعرف أن الأطفال كسروه.",
+    "target": "I knew that the children had broken it."
+   },
+   {
+    "seed": 623,
+    "known": "هل تريد كوباً من القهوة أو الشاي؟",
+    "target": "Do you want a cup of coffee or tea?"
+   },
+   {
+    "seed": 624,
+    "known": "نعم، سيكون ذلك رائعاً، من فضلك.",
+    "target": "Yes, that would be great, please."
+   },
+   {
+    "seed": 625,
+    "known": "هل تريد شيئاً تشربه؟",
+    "target": "Do you want something to drink?"
+   },
+   {
+    "seed": 626,
+    "known": "لا، لست عطشاناً، شكراً.",
+    "target": "No, I'm not thirsty, thank you."
+   },
+   {
+    "seed": 627,
+    "known": "قهوتك جاهزة.",
+    "target": "Your coffee is ready."
+   },
+   {
+    "seed": 628,
+    "known": "هل تحب الشاي؟",
+    "target": "Do you like tea?"
+   },
+   {
+    "seed": 629,
+    "known": "أحبه بالحليب لكن بدون سكر.",
+    "target": "I like it with milk but without sugar."
+   },
+   {
+    "seed": 630,
+    "known": "هل يمكنني الحصول على شيء أشربه من فضلك؟",
+    "target": "Can I have something to drink please?"
+   },
+   {
+    "seed": 631,
+    "known": "ماذا تريد؟",
+    "target": "What would you like?"
+   },
+   {
+    "seed": 632,
+    "known": "كوب من الماء.",
+    "target": "A glass of water."
+   },
+   {
+    "seed": 633,
+    "known": "كوب كبير من الماء سيكون مناسباً.",
+    "target": "A large glass of water would be fine."
+   },
+   {
+    "seed": 634,
+    "known": "أود أن أحصل على واحد من تلك.",
+    "target": "I'd like one of those."
+   },
+   {
+    "seed": 635,
+    "known": "تلك حقيبة جين.",
+    "target": "That is Jane's bag."
+   },
+   {
+    "seed": 636,
+    "known": "أعتقد أن تلك حقيبة جين.",
+    "target": "I think that that is Jane's bag."
+   },
+   {
+    "seed": 637,
+    "known": "أين حقيبتها؟",
+    "target": "Where is her bag?"
+   },
+   {
+    "seed": 638,
+    "known": "أنا أحاول التفكير.",
+    "target": "I'm trying to think."
+   },
+   {
+    "seed": 639,
+    "known": "معك يا سيدي",
+    "target": "with you sir"
+   },
+   {
+    "seed": 640,
+    "known": "إنه الأحمر.",
+    "target": "It's the red one."
+   },
+   {
+    "seed": 641,
+    "known": "أعتقد أنه الأحمر على تلك الكرسي.",
+    "target": "I think that it's the red one on that chair."
+   },
+   {
+    "seed": 642,
+    "known": "كيف تشعرين يا سيدتي؟",
+    "target": "how do you feel madam?"
+   },
+   {
+    "seed": 643,
+    "known": "هل تريد يا سيدي",
+    "target": "Do you want sir"
+   },
+   {
+    "seed": 644,
+    "known": "هل يمكنك قول ذلك يا سيدي؟",
+    "target": "Could you say that sir?"
+   },
+   {
+    "seed": 645,
+    "known": "أستطيع مساعدتك يا سيدتي",
+    "target": "I can help you madam"
+   },
+   {
+    "seed": 646,
+    "known": "أنت تفعل شيئاً يا سيدي.",
+    "target": "You're doing something sir."
+   },
+   {
+    "seed": 647,
+    "known": "أنتِ تتكلمينه يا سيدتي",
+    "target": "You speak it madam"
+   },
+   {
+    "seed": 648,
+    "known": "ما قلتِه يا سيدتي",
+    "target": "what you said madam"
+   },
+   {
+    "seed": 649,
+    "known": "هل أنت مستعد يا سيدي؟",
+    "target": "Are you ready sir?"
+   },
+   {
+    "seed": 650,
+    "known": "هل تريدين الذهاب يا سيدتي؟",
+    "target": "Do you want to go madam?"
+   },
+   {
+    "seed": 651,
+    "known": "ماذا تعتقدين يا سيدتي؟",
+    "target": "What do you think madam?"
+   },
+   {
+    "seed": 652,
+    "known": "ماذا تحتاج يا سيدي؟",
+    "target": "What do you need sir?"
+   },
+   {
+    "seed": 653,
+    "known": "هل تمانعين يا سيدتي؟",
+    "target": "Do you mind madam?"
+   },
+   {
+    "seed": 654,
+    "known": "لست متأكداً إذا كنت أستطيع مساعدتك يا سيدي.",
+    "target": "I'm not sure if I can help you, sir."
+   },
+   {
+    "seed": 655,
+    "known": "أعتقد أنك تسيرين بشكل جيد جداً يا سيدتي.",
+    "target": "I think that you're doing very well, madam."
+   },
+   {
+    "seed": 656,
+    "known": "معكم جميعاً",
+    "target": "with you all"
+   },
+   {
+    "seed": 657,
+    "known": "كيف تشعرون جميعاً؟",
+    "target": "how do you all feel?"
+   },
+   {
+    "seed": 658,
+    "known": "هل تريدون جميعاً؟",
+    "target": "Do you all want?"
+   },
+   {
+    "seed": 659,
+    "known": "هل يمكنكم جميعاً قول ذلك",
+    "target": "Could you all say that"
+   },
+   {
+    "seed": 660,
+    "known": "أستطيع مساعدتكم جميعاً",
+    "target": "I can help you all"
+   },
+   {
+    "seed": 661,
+    "known": "أنتم جميعاً تفعلون شيئاً",
+    "target": "you're all doing something"
+   },
+   {
+    "seed": 662,
+    "known": "أنتم جميعاً تتكلمونه",
+    "target": "you all speak it"
+   },
+   {
+    "seed": 663,
+    "known": "ما قلتموه جميعاً",
+    "target": "what you all said"
+   },
+   {
+    "seed": 664,
+    "known": "هل أنتم جميعاً مستعدون؟",
+    "target": "Are you all ready?"
+   },
+   {
+    "seed": 665,
+    "known": "هل تريدون جميعاً الذهاب؟",
+    "target": "Do you all want to go?"
+   },
+   {
+    "seed": 666,
+    "known": "ماذا تعتقدون جميعاً؟",
+    "target": "What do you all think?"
+   },
+   {
+    "seed": 667,
+    "known": "هل تمانعون جميعاً؟",
+    "target": "Do you all mind?"
+   },
+   {
+    "seed": 668,
+    "known": "آمل أن تستطيعوا جميعاً الذهاب",
+    "target": "I hope you'll all be able to go"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 50,
+  "variant_zut": 4,
+  "no_home": 2,
+  "lego_is_seed": 2,
+  "not_built": 368
+ }
+}

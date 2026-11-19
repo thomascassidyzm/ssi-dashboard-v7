@@ -1,0 +1,2085 @@
+{
+ "course": "zho_for_eng",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:31:04.333Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 9,
+   "id": "S0009L02U06",
+   "lego": "S0009L02",
+   "known": "I speak a little Chinese now",
+   "target": "我现在会说一点中文",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0009L02U06",
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "I speak a little Chinese now",
+      "target_text": "我现在会说一点中文",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 9,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 6,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ xiànzài huì shuō yīdiǎn zhōngwén。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0009L02U06",
+     "slot": "known",
+     "audio_id": "412bd5e1-9864-4491-b321-bd409a251fd2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0009L02U06",
+     "slot": "target1",
+     "audio_id": "2225ac92-434b-4152-969c-00f4050f91b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0009L02U06",
+     "slot": "target2",
+     "audio_id": "ccbe5720-9cc4-4a22-97f3-7cbb12cf1bd7"
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "id": "S0010L05U12",
+   "lego": "S0010L05",
+   "known": "I'm not sure if I can remember the whole sentence",
+   "target": "我不确定我能不能记住整个句子",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0010L05U12",
+      "seed_number": 10,
+      "lego_index": 5,
+      "position": 15,
+      "known_text": "I'm not sure if I can remember the whole sentence",
+      "target_text": "我不确定我能不能记住整个句子",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 10,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "wǒ bù quèdìng wǒ néng bu néng jìzhù zhěnggè jùzi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0010L05U12",
+     "slot": "known",
+     "audio_id": "bab867cd-c739-417d-aa29-b701d9456acc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0010L05U12",
+     "slot": "target1",
+     "audio_id": "713947c2-09cc-4a86-a56f-fbb7d9b6022f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0010L05U12",
+     "slot": "target2",
+     "audio_id": "eafe0eaa-34e1-440b-9d3c-e46a39541700"
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "id": "S0016L04U05",
+   "lego": "S0016L04",
+   "known": "he wants to come back with everyone else later on",
+   "target": "他想晚点和别人一起回来",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0016L04U05",
+      "seed_number": 16,
+      "lego_index": 4,
+      "position": 8,
+      "known_text": "he wants to come back with everyone else later on",
+      "target_text": "他想晚点和别人一起回来",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 16,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "tā xiǎng wǎn diǎn hé biérén yīqǐ huílái。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0016L04U05",
+     "slot": "known",
+     "audio_id": "5199ee3a-9feb-45e8-a110-3ec1893aba17"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0016L04U05",
+     "slot": "target1",
+     "audio_id": "d8651a3d-f92c-4f9f-bd15-26121b145047"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0016L04U05",
+     "slot": "target2",
+     "audio_id": "bf2a7d4b-f938-4e9d-b339-3b14ad633a4f"
+    }
+   ]
+  },
+  {
+   "seed": 27,
+   "id": "S0027L04U09",
+   "lego": "S0027L04",
+   "known": "I don't like taking too much time to answer",
+   "target": "我不喜欢花太多时间回答",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0027L04U09",
+      "seed_number": 27,
+      "lego_index": 4,
+      "position": 12,
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "我不喜欢花太多时间回答",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 27,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "wǒ bù xǐhuān huā tài duō shíjiān huídá。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0027L04U09",
+     "slot": "known",
+     "audio_id": "d123260b-fa56-433c-902b-1c86d32d286d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0027L04U09",
+     "slot": "target1",
+     "audio_id": "f192a8ce-290b-4186-867c-c0a65599fdd6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0027L04U09",
+     "slot": "target2",
+     "audio_id": "75d54ae4-a3f7-4cb3-8db5-95e872ed13dc"
+    }
+   ]
+  },
+  {
+   "seed": 49,
+   "id": "S0049L04U09",
+   "lego": "S0049L04",
+   "known": "it's like this, if you know what I mean",
+   "target": "就是这样，如果你懂我的意思",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0049L04U09",
+      "seed_number": 49,
+      "lego_index": 4,
+      "position": 12,
+      "known_text": "it's like this, if you know what I mean",
+      "target_text": "就是这样，如果你懂我的意思",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 49,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 9,
+      "lego_position": "start",
+      "target_text_roman": "jiù shì zhèyàng，rúguǒ nǐ dǒng wǒ de yìsi。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0049L04U09",
+     "slot": "known",
+     "audio_id": "4ebeb13f-c057-4d01-a675-5f857b7c5056"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0049L04U09",
+     "slot": "target1",
+     "audio_id": "c6a6f24e-c358-44ce-99c0-c3996d48880e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0049L04U09",
+     "slot": "target2",
+     "audio_id": "0ae8e2a6-cfff-43c6-ac53-58cb8b172503"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L02U08",
+   "lego": "S0082L02",
+   "known": "I'm not going to wait for you. Why not?",
+   "target": "我不会等你。为什么不？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0082L02U08",
+      "seed_number": 82,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "I'm not going to wait for you. Why not?",
+      "target_text": "我不会等你。为什么不？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "wǒ bù huì děng nǐ。wèishénme bù？"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0082L02U08",
+     "slot": "known",
+     "audio_id": "199fc8fc-87b1-43f3-8002-8c8948711cfc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0082L02U08",
+     "slot": "target1",
+     "audio_id": "5b68e2db-bf74-47fb-ac4c-aff05d653f8b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0082L02U08",
+     "slot": "target2",
+     "audio_id": "c24875fb-39ac-4027-a336-84e06b6fff0e"
+    }
+   ]
+  },
+  {
+   "seed": 115,
+   "id": "S0115L01U09",
+   "lego": "S0115L01",
+   "known": "I don't feel as if I'm ready to have a conversation",
+   "target": "我觉得我还没准备好进行对话",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0115L01U09",
+      "seed_number": 115,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "I don't feel as if I'm ready to have a conversation",
+      "target_text": "我觉得我还没准备好进行对话",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 115,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "wǒ juéde wǒ hái méi zhǔnbèi hǎo jìnxíng duìhuà."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0115L01U09",
+     "slot": "known",
+     "audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0115L01U09",
+     "slot": "target1",
+     "audio_id": "579778be-e9ac-4dd2-b4f1-1fca1455a9bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0115L01U09",
+     "slot": "target2",
+     "audio_id": "86afa96f-a0cc-4f95-b385-4bca5deaa792"
+    }
+   ]
+  },
+  {
+   "seed": 118,
+   "id": "S0118L01U08",
+   "lego": "S0118L01",
+   "known": "I feel better than I felt when we were in the pub",
+   "target": "我感觉比我们在酒吧时更好",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0118L01U08",
+      "seed_number": 118,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "I feel better than I felt when we were in the pub",
+      "target_text": "我感觉比我们在酒吧时更好",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 118,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 12,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ gǎnjué bǐ wǒmen zài jiǔbā shí gèng hǎo."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0118L01U08",
+     "slot": "known",
+     "audio_id": "15430d76-5101-4ced-88ed-0224f171b544"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0118L01U08",
+     "slot": "target1",
+     "audio_id": "06b87d4d-7553-41f8-b35d-92ae7170d368"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0118L01U08",
+     "slot": "target2",
+     "audio_id": "e46d8d1a-a77c-4839-8f32-31bc1a65f592"
+    }
+   ]
+  },
+  {
+   "seed": 135,
+   "id": "S0135L01U07",
+   "lego": "S0135L01",
+   "known": "I don't know why you think that it's so good",
+   "target": "我不知道你为什么觉得那这么好",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0135L01U07",
+      "seed_number": 135,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "I don't know why you think that it's so good",
+      "target_text": "我不知道你为什么觉得那这么好",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 135,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 10,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde nà zhème hǎo."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0135L01U07",
+     "slot": "known",
+     "audio_id": "66312221-3b15-42b8-97e2-cd3d016890ac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0135L01U07",
+     "slot": "target1",
+     "audio_id": "1a25765c-344a-492f-b311-d83c0536ed7c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0135L01U07",
+     "slot": "target2",
+     "audio_id": "94de5f42-47b5-4e7f-b619-c9163de72b25"
+    }
+   ]
+  },
+  {
+   "seed": 148,
+   "id": "S0148L02U09",
+   "lego": "S0148L02",
+   "known": "he wasn't very patient when I couldn't answer",
+   "target": "当我答不上来时，他不太有耐心",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0148L02U09",
+      "seed_number": 148,
+      "lego_index": 2,
+      "position": 16,
+      "known_text": "he wasn't very patient when I couldn't answer",
+      "target_text": "当我答不上来时，他不太有耐心",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 148,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 8,
+      "lego_position": "end",
+      "target_text_roman": "dāng wǒ dá bu shànglái shí，tā bù tài yǒu nàixīn。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0148L02U09",
+     "slot": "known",
+     "audio_id": "11df6998-50cb-49a7-b899-d71262a688f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0148L02U09",
+     "slot": "target1",
+     "audio_id": "c0cd18ee-9e4a-41ff-b942-66d3d607f6af"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0148L02U09",
+     "slot": "target2",
+     "audio_id": "9fade294-a833-4e5a-b1a1-1eb2b46fd51e"
+    }
+   ]
+  },
+  {
+   "seed": 162,
+   "id": "S0162L01U07",
+   "lego": "S0162L01",
+   "known": "what do you think about that?",
+   "target": "你觉得怎么样？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0162L01U07",
+      "seed_number": 162,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "what do you think about that?",
+      "target_text": "你觉得怎么样？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 162,
+       "canon": "P26"
+      },
+      "word_count": 7,
+      "lego_count": 6,
+      "lego_position": "middle",
+      "target_text_roman": "nǐ juéde zěnmeyàng"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0162L01U07",
+     "slot": "known",
+     "audio_id": "cc17f925-73bd-49c9-b36c-7b2c902a5341"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0162L01U07",
+     "slot": "target1",
+     "audio_id": "93216469-a1cb-40d1-9e87-7a7f58ee508f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0162L01U07",
+     "slot": "target2",
+     "audio_id": "52a06bbe-f293-40a7-95b6-f008263690bd"
+    }
+   ]
+  },
+  {
+   "seed": 192,
+   "id": "S0192L01U11",
+   "lego": "S0192L01",
+   "known": "I'm busy tomorrow night",
+   "target": "我明晚很忙",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0192L01U11",
+      "seed_number": 192,
+      "lego_index": 1,
+      "position": 17,
+      "known_text": "I'm busy tomorrow night",
+      "target_text": "我明晚很忙",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 192,
+       "canon": "P26"
+      },
+      "word_count": 5,
+      "lego_count": 4,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ míngwǎn hěn máng."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0192L01U11",
+     "slot": "known",
+     "audio_id": "5019658a-6b4c-4b84-b023-ae3ec1b30a76"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0192L01U11",
+     "slot": "target1",
+     "audio_id": "04c0fd52-492f-4ce3-a1f4-7d5df46432c3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0192L01U11",
+     "slot": "target2",
+     "audio_id": "36263468-77ec-41bf-b40d-3dc0acfd09c4"
+    }
+   ]
+  },
+  {
+   "seed": 233,
+   "id": "S0233L01U10",
+   "lego": "S0233L01",
+   "known": "I know a young woman who knows your sister",
+   "target": "我认识一个年轻女人，她认识你妹妹",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0233L01U10",
+      "seed_number": 233,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "I know a young woman who knows your sister",
+      "target_text": "我认识一个年轻女人，她认识你妹妹",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 233,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ rènshi yīgè niánqīng nǚrén，tā rènshi nǐ mèimei。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0233L01U10",
+     "slot": "known",
+     "audio_id": "3c347bf4-82dd-4018-acbd-58930134941d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0233L01U10",
+     "slot": "target1",
+     "audio_id": "fa418689-a91c-45c4-9f23-b57786b752be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0233L01U10",
+     "slot": "target2",
+     "audio_id": "0ab36c15-f409-4c73-88e6-6fd6b2fbbbb8"
+    }
+   ]
+  },
+  {
+   "seed": 259,
+   "id": "S0259L01U08",
+   "lego": "S0259L01",
+   "known": "an idea",
+   "target": "一个想法",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0259L01U08",
+      "seed_number": 259,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "an idea",
+      "target_text": "一个想法",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 259,
+       "canon": "P26"
+      },
+      "word_count": 4,
+      "lego_count": 2,
+      "lego_position": "end",
+      "target_text_roman": "yī gè xiǎngfǎ."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0259L01U08",
+     "slot": "known",
+     "audio_id": "ac4f8352-c27f-4048-bc71-2f9b429f4b58"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0259L01U08",
+     "slot": "target1",
+     "audio_id": "158e4706-6282-4b28-b188-ebd3e9c8ffb7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0259L01U08",
+     "slot": "target2",
+     "audio_id": "69fd20b6-d557-4bd2-9b39-4d1cd72c5b52"
+    }
+   ]
+  },
+  {
+   "seed": 293,
+   "id": "S0293L02U09",
+   "lego": "S0293L02",
+   "known": "I have to find out where he's going to meet me",
+   "target": "我得弄清楚他要在哪里见我",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0293L02U09",
+      "seed_number": 293,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "I have to find out where he's going to meet me",
+      "target_text": "我得弄清楚他要在哪里见我",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 293,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "wǒ děi nòng qīngchǔ tā yào zài nǎlǐ jiàn wǒ。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0293L02U09",
+     "slot": "known",
+     "audio_id": "a8c1d26d-ef78-4882-b6ec-9355c1fcd20e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0293L02U09",
+     "slot": "target1",
+     "audio_id": "ef43bbda-70c3-4460-a7d1-9dda22eff7a7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0293L02U09",
+     "slot": "target2",
+     "audio_id": "f629889c-84d7-4349-b4ec-ec37ca4f213e"
+    }
+   ]
+  },
+  {
+   "seed": 295,
+   "id": "S0295L01U09",
+   "lego": "S0295L01",
+   "known": "I didn't say that I wanted to finish in a day",
+   "target": "我没说我想一天就完成",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0295L01U09",
+      "seed_number": 295,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "I didn't say that I wanted to finish in a day",
+      "target_text": "我没说我想一天就完成",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 295,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 11,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ méi shuō wǒ xiǎng yī tiān jiù wánchéng。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0295L01U09",
+     "slot": "known",
+     "audio_id": "7098fded-e3a8-46a6-b91e-b462d22f0c9a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0295L01U09",
+     "slot": "target1",
+     "audio_id": "e0449e65-26b9-4234-8db5-dd55f3131b55"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0295L01U09",
+     "slot": "target2",
+     "audio_id": "4b84a9d7-704d-4015-a26f-684196f8a907"
+    }
+   ]
+  },
+  {
+   "seed": 296,
+   "id": "S0296L01U09",
+   "lego": "S0296L01",
+   "known": "I said that I needed a little more time",
+   "target": "我说我需要多一点时间",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0296L01U09",
+      "seed_number": 296,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "I said that I needed a little more time",
+      "target_text": "我说我需要多一点时间",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 296,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "wǒ shuō wǒ xūyào duō yīdiǎn shíjiān。"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0296L01U09",
+     "slot": "known",
+     "audio_id": "4bfe6b50-a115-4016-a9e4-74a1d9c668af"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0296L01U09",
+     "slot": "target1",
+     "audio_id": "ad62ae0b-fa8d-45f7-8c75-08f0f234164a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0296L01U09",
+     "slot": "target2",
+     "audio_id": "c053ae0b-bebd-474b-8819-3ae2156ebd7e"
+    }
+   ]
+  },
+  {
+   "seed": 345,
+   "id": "S0345L01U09",
+   "lego": "S0345L01",
+   "known": "that person said he's not ready to leave yet",
+   "target": "那个人说他还没准备好离开",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0345L01U09",
+      "seed_number": 345,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "that person said he's not ready to leave yet",
+      "target_text": "那个人说他还没准备好离开",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 345,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "nà ge rén shuō tā hái méi zhǔnbèi hǎo líkāi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0345L01U09",
+     "slot": "known",
+     "audio_id": "47e3f0ae-fb3e-400d-a1f9-6cd93d9f32fe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0345L01U09",
+     "slot": "target1",
+     "audio_id": "a93029fc-1ce6-4384-922f-d0427afaacbd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0345L01U09",
+     "slot": "target2",
+     "audio_id": "bf1796fb-97e3-4f69-ba31-b95cb30c9dc0"
+    }
+   ]
+  },
+  {
+   "seed": 358,
+   "id": "S0358L01U08",
+   "lego": "S0358L01",
+   "known": "your friend said that she couldn't reach the top.",
+   "target": "你的朋友说她到不了顶端",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0358L01U08",
+      "seed_number": 358,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "your friend said that she couldn't reach the top.",
+      "target_text": "你的朋友说她到不了顶端",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 358,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "nǐ de péngyou shuō tā dào bu liǎo dǐngduān."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0358L01U08",
+     "slot": "known",
+     "audio_id": "28337762-3244-4c39-8841-f8a1901d705f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0358L01U08",
+     "slot": "target1",
+     "audio_id": "eca22e72-14f4-4773-bb50-f9640a8f8552"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0358L01U08",
+     "slot": "target2",
+     "audio_id": "b01ea7c0-4b5c-4e95-ae98-59570f6273a8"
+    }
+   ]
+  },
+  {
+   "seed": 359,
+   "id": "S0359L02U07",
+   "lego": "S0359L02",
+   "known": "your friend said that he could turn left.",
+   "target": "你的朋友说他可以向左转",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0359L02U07",
+      "seed_number": 359,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "your friend said that he could turn left.",
+      "target_text": "你的朋友说他可以向左转",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 359,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 8,
+      "lego_position": "middle",
+      "target_text_roman": "nǐ de péngyou shuō tā kěyǐ xiàng zuǒ zhuǎn."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0359L02U07",
+     "slot": "known",
+     "audio_id": "8990ba55-f1cf-4514-8886-af2b9a3b4503"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0359L02U07",
+     "slot": "target1",
+     "audio_id": "79e7a963-0fda-42e2-b45d-f5ee074d46a0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0359L02U07",
+     "slot": "target2",
+     "audio_id": "e7276789-0a96-4d22-a19a-513f1b00ae05"
+    }
+   ]
+  },
+  {
+   "seed": 373,
+   "id": "S0373L01U09",
+   "lego": "S0373L01",
+   "known": "it was beautiful.",
+   "target": "很漂亮",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0373L01U09",
+      "seed_number": 373,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "it was beautiful.",
+      "target_text": "很漂亮",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 373,
+       "canon": "P26"
+      },
+      "word_count": 3,
+      "lego_count": 3,
+      "lego_position": "middle",
+      "target_text_roman": "hěn piàoliang."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0373L01U09",
+     "slot": "known",
+     "audio_id": "c0460cd3-03d7-4cfa-9fb7-2ac3fcec1d3c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0373L01U09",
+     "slot": "target1",
+     "audio_id": "1e1d91ff-9d23-4b84-8351-3e5335b45523"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0373L01U09",
+     "slot": "target2",
+     "audio_id": "3f6baadc-8416-484f-8233-640dce65d42a"
+    }
+   ]
+  },
+  {
+   "seed": 509,
+   "id": "S0509L01U07",
+   "lego": "S0509L01",
+   "known": "I heard that you're going to pay for a new bed.",
+   "target": "我听说你要为一张新床付钱",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0509L01U07",
+      "seed_number": 509,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "I heard that you're going to pay for a new bed.",
+      "target_text": "我听说你要为一张新床付钱",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 509,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "wǒ tīngshuō nǐ yào wèi yī zhāng xīn chuáng fùqián."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0509L01U07",
+     "slot": "known",
+     "audio_id": "9b8dab1c-e818-4bda-91c8-ca015fb4014d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0509L01U07",
+     "slot": "target1",
+     "audio_id": "c829a0e2-bcf4-4194-823d-b2f124fe1db3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0509L01U07",
+     "slot": "target2",
+     "audio_id": "a4cca71e-b163-493d-b7be-46e12afca69f"
+    }
+   ]
+  },
+  {
+   "seed": 525,
+   "id": "S0525L01U07",
+   "lego": "S0525L01",
+   "known": "to check if you've been able to finish.",
+   "target": "看看你能不能完成",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0525L01U07",
+      "seed_number": 525,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "to check if you've been able to finish.",
+      "target_text": "看看你能不能完成",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 525,
+       "canon": "P26"
+      },
+      "word_count": 8,
+      "lego_count": 8,
+      "lego_position": "start",
+      "target_text_roman": "kànkan nǐ néng bu néng wánchéng."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0525L01U07",
+     "slot": "known",
+     "audio_id": "5d12566a-75dd-4d61-807e-93de34c38066"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0525L01U07",
+     "slot": "target1",
+     "audio_id": "0a6d3b83-9667-4d83-8e71-b0792c4b0add"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0525L01U07",
+     "slot": "target2",
+     "audio_id": "9b51b37e-d0db-4593-b31c-6533d3cef7d3"
+    }
+   ]
+  },
+  {
+   "seed": 529,
+   "id": "S0529L01U07",
+   "lego": "S0529L01",
+   "known": "can you all put your hands up?",
+   "target": "你们都能把手举起来吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0529L01U07",
+      "seed_number": 529,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "can you all put your hands up?",
+      "target_text": "你们都能把手举起来吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 529,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 7,
+      "lego_position": "middle",
+      "target_text_roman": "nǐmen dōu néng bǎ shǒu jǔ qǐlái ma?"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0529L01U07",
+     "slot": "known",
+     "audio_id": "c719e744-5d7c-43da-bc0e-90dd046d9c95"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0529L01U07",
+     "slot": "target1",
+     "audio_id": "907231f2-deff-4a98-97f4-4abbfba91e41"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0529L01U07",
+     "slot": "target2",
+     "audio_id": "ee142ecd-e0df-4ed6-9391-16ec80999b79"
+    }
+   ]
+  },
+  {
+   "seed": 535,
+   "id": "S0535L03U10",
+   "lego": "S0535L03",
+   "known": "he made a promise that he wouldn't choose the wrong job.",
+   "target": "他答应过他不会选错工作",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0535L03U10",
+      "seed_number": 535,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "he made a promise that he wouldn't choose the wrong job.",
+      "target_text": "他答应过他不会选错工作",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 535,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "tā dāying guo tā bù huì xuǎn cuò gōngzuò."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0535L03U10",
+     "slot": "known",
+     "audio_id": "30cc8afe-071a-4319-99f7-48f9213d535b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0535L03U10",
+     "slot": "target1",
+     "audio_id": "ee8db3c3-8c6e-40ae-8198-672022ff4640"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0535L03U10",
+     "slot": "target2",
+     "audio_id": "f2d63dfe-1baf-42c3-ba64-aef05b20a8bf"
+    }
+   ]
+  },
+  {
+   "seed": 577,
+   "id": "S0577L01U08",
+   "lego": "S0577L01",
+   "known": "we've been waiting for the news from the hospital.",
+   "target": "我们一直在等医院的消息",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_eng:S0577L01U08",
+      "seed_number": 577,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "we've been waiting for the news from the hospital.",
+      "target_text": "我们一直在等医院的消息",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 577,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "wǒmen yīzhí zài děng yīyuàn de xiāoxi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0577L01U08",
+     "slot": "known",
+     "audio_id": "88246d11-ee6e-4e34-9f43-6582cfa0743d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0577L01U08",
+     "slot": "target1",
+     "audio_id": "2f329723-faaa-4fc3-9ed8-3f53be544a63"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_eng:S0577L01U08",
+     "slot": "target2",
+     "audio_id": "e2beaaad-e698-4880-b71e-b9a756711ec4"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 31,
+    "known": "you wanted to speak with me tonight",
+    "target": "你今晚想和我说",
+    "legos": [
+     "S0031L01(old) you | 你"
+    ]
+   },
+   {
+    "seed": 40,
+    "known": "how do you feel at the moment?",
+    "target": "你现在感觉怎么样？",
+    "legos": [
+     "S0040L01 how is it | 怎么样"
+    ]
+   },
+   {
+    "seed": 43,
+    "known": "I wasn't thinking about how to answer",
+    "target": "我当时没在想怎么回答",
+    "legos": [
+     "S0043L01 didn't | 没",
+     "S0043L02 at that time | 当时"
+    ]
+   },
+   {
+    "seed": 119,
+    "known": "can I ask you something before you leave?",
+    "target": "你走之前我能问你一件事吗？",
+    "legos": [
+     "S0119L01(old) before | 之前"
+    ]
+   },
+   {
+    "seed": 125,
+    "known": "I believe that your idea was very good",
+    "target": "我相信你的主意非常好",
+    "legos": [
+     "S0125L01 extremely | 非常"
+    ]
+   },
+   {
+    "seed": 127,
+    "known": "that isn't why I wanted to see you",
+    "target": "那不是我想见你的原因",
+    "legos": [
+     "S0127L01(old) reason | 原因"
+    ]
+   },
+   {
+    "seed": 129,
+    "known": "I'm so happy that you're doing so well",
+    "target": "我很高兴你做得这么好",
+    "legos": [
+     "S0129L01 so happy | 这么高兴"
+    ]
+   },
+   {
+    "seed": 151,
+    "known": "that wasn't what I was hoping would happen",
+    "target": "那不是我希望发生的事",
+    "legos": [
+     "S0151L01(old) to happen | 发生"
+    ]
+   },
+   {
+    "seed": 158,
+    "known": "let's talk about something else",
+    "target": "我们聊点别的吧",
+    "legos": [
+     "S0158L01(old) something else | 别的"
+    ]
+   },
+   {
+    "seed": 163,
+    "known": "I think that it's interesting",
+    "target": "我觉得这很有意思",
+    "legos": [
+     "S0163L01 very interesting | 很有意思"
+    ]
+   },
+   {
+    "seed": 170,
+    "known": "I'd like you to tell me what you need",
+    "target": "我想让你告诉我你需要什么",
+    "legos": [
+     "S0170L01 I want you to | 我想让你"
+    ]
+   },
+   {
+    "seed": 171,
+    "known": "do you want me to help you look for it?",
+    "target": "你想让我帮你找吗？",
+    "legos": [
+     "S0171L01(old) to let | 让"
+    ]
+   },
+   {
+    "seed": 174,
+    "known": "can you understand what I'm saying?",
+    "target": "你能听懂我在说什么吗？",
+    "legos": [
+     "S0174L01 to follow what someone's saying | 听懂"
+    ]
+   },
+   {
+    "seed": 190,
+    "known": "do you mind if I ask you some questions?",
+    "target": "你介意我问你几个问题吗？",
+    "legos": [
+     "S0190L01(old) to mind | 介意"
+    ]
+   },
+   {
+    "seed": 196,
+    "known": "have you heard the latest idea?",
+    "target": "你听说最新的想法了吗？",
+    "legos": [
+     "S0196L01(old) new | 新"
+    ]
+   },
+   {
+    "seed": 218,
+    "known": "I didn't do much on Sunday",
+    "target": "周日我没做什么",
+    "legos": [
+     "S0218L01(old) on Sunday | 周日"
+    ]
+   },
+   {
+    "seed": 225,
+    "known": "he would give you an answer if he could",
+    "target": "如果他能，他会给你一个答案",
+    "legos": [
+     "S0225L01(old) woman | 如果",
+     "S0225L02(old) answer | 答案"
+    ]
+   },
+   {
+    "seed": 228,
+    "known": "that man has just started to practise speaking",
+    "target": "那个男人刚开始练习说话",
+    "legos": [
+     "S0228L01(old) to practise | 练习",
+     "S0228L02(old) to speak; speaking | 说话"
+    ]
+   },
+   {
+    "seed": 250,
+    "known": "can you tell me something else before I answer?",
+    "target": "我回答之前你能再告诉我点别的吗？",
+    "legos": [
+     "S0250L01(old) something else | 别的"
+    ]
+   },
+   {
+    "seed": 276,
+    "known": "no I can stay here for a little longer",
+    "target": "不，我还能在这里待一会儿",
+    "legos": [
+     "S0276L01 a little while | 一会儿"
+    ]
+   },
+   {
+    "seed": 294,
+    "known": "I don't have enough time to call you tonight",
+    "target": "我今晚没足够时间给你打电话",
+    "legos": [
+     "S0294L01(old) enough | 足够"
+    ]
+   },
+   {
+    "seed": 302,
+    "known": "she said that she doesn't want to live in a city",
+    "target": "她说她不想住在城市里",
+    "legos": [
+     "S0302L01 in the city | 在城市里"
+    ]
+   },
+   {
+    "seed": 307,
+    "known": "I know the young man who is sitting over there",
+    "target": "我认识那个坐在那边的年轻男人",
+    "legos": [
+     "S0307L01(old) over there | 那边"
+    ]
+   },
+   {
+    "seed": 318,
+    "known": "no, I don't think she can this time",
+    "target": "不，我觉得她这次不行",
+    "legos": [
+     "S0318L01(old) this time | 这次",
+     "S0318L02(old) not okay | 不行"
+    ]
+   },
+   {
+    "seed": 344,
+    "known": "that person said he's very happy to help you",
+    "target": "那个人说他很高兴帮你",
+    "legos": [
+     "S0344L01(old) to help | 帮"
+    ]
+   },
+   {
+    "seed": 346,
+    "known": "I want to let her know I like her book",
+    "target": "我想让她知道我喜欢她的书",
+    "legos": [
+     "S0346L01(old) to let | 让",
+     "S0346L02(old) book | 书"
+    ]
+   },
+   {
+    "seed": 347,
+    "known": "he wants to know what happened a week ago",
+    "target": "他想知道一周前发生了什么",
+    "legos": [
+     "S0347L01(old) to happen | 发生",
+     "S0347L02(old) what | 什么"
+    ]
+   },
+   {
+    "seed": 361,
+    "known": "he was quiet.",
+    "target": "他很安静",
+    "legos": [
+     "S0361L01(old) quiet | 安静"
+    ]
+   },
+   {
+    "seed": 363,
+    "known": "yes he felt like talking a lot.",
+    "target": "是的，他很想多说话",
+    "legos": [
+     "S0363L01(old) more | 多"
+    ]
+   },
+   {
+    "seed": 388,
+    "known": "that person you work with.",
+    "target": "和你一起工作的人",
+    "legos": [
+     "S0388L01(old) together | 一起"
+    ]
+   },
+   {
+    "seed": 389,
+    "known": "that person over there.",
+    "target": "那边的那个人",
+    "legos": [
+     "S0389L01(old) over there | 那边"
+    ]
+   },
+   {
+    "seed": 396,
+    "known": "we don't need to wait until everybody else is ready.",
+    "target": "我们不需要等所有人都准备好",
+    "legos": [
+     "S0396L01 everyone | 所有人"
+    ]
+   },
+   {
+    "seed": 397,
+    "known": "do we need to get ready soon?",
+    "target": "我们需要马上准备好吗？",
+    "legos": [
+     "S0397L01 right away | 马上"
+    ]
+   },
+   {
+    "seed": 398,
+    "known": "we want to become more patient with our children.",
+    "target": "我们想对孩子更有耐心",
+    "legos": [
+     "S0398L01 to be patient | 有耐心"
+    ]
+   },
+   {
+    "seed": 402,
+    "known": "yes it would be nice to stop somewhere for food.",
+    "target": "是的，停下来吃点东西会很好",
+    "legos": [
+     "S0402L01(old) to stop | 停下来"
+    ]
+   },
+   {
+    "seed": 415,
+    "known": "that wouldn't be a problem if you ask me.",
+    "target": "如果你问我，那不会是个问题",
+    "legos": [
+     "S0415L01(old) problem | 问题"
+    ]
+   },
+   {
+    "seed": 425,
+    "known": "yes they need to make sure they understand.",
+    "target": "是的，他们需要确保他们理解了",
+    "legos": [
+     "S0425L01(old) to make sure | 确保",
+     "S0425L02(old) to really understand | 理解"
+    ]
+   },
+   {
+    "seed": 431,
+    "known": "they're not ready yet but they'll be ready soon.",
+    "target": "他们还没准备好，但是很快就会准备好",
+    "legos": [
+     "S0431L01(old) very soon | 很快就"
+    ]
+   },
+   {
+    "seed": 433,
+    "known": "they couldn't find out when the film started.",
+    "target": "他们不知道电影什么时候开始",
+    "legos": [
+     "S0433L01(old) film | 电影"
+    ]
+   },
+   {
+    "seed": 456,
+    "known": "he might be there but it's not very likely.",
+    "target": "他可能会在那里，但是不太可能",
+    "legos": [
+     "S0456L01(old) possible | 可能"
+    ]
+   },
+   {
+    "seed": 468,
+    "known": "it's a big world.",
+    "target": "世界很大",
+    "legos": [
+     "S0468L01(old) world | 世界"
+    ]
+   },
+   {
+    "seed": 469,
+    "known": "but that doesn't mean we can't change it.",
+    "target": "但是这不意味着我们不能改变它",
+    "legos": [
+     "S0469L01 to mean | 意味着",
+     "S0469L02(old) to change | 改变"
+    ]
+   },
+   {
+    "seed": 483,
+    "known": "life isn't easy but it's not meant to be easy.",
+    "target": "生活并不容易，但是也不是应该容易的",
+    "legos": [
+     "S0483L01(old) life | 生活",
+     "S0483L02(old) easy | 容易"
+    ]
+   },
+   {
+    "seed": 485,
+    "known": "nothing would make me happier than to get away.",
+    "target": "没有什么比离开更让我开心的了",
+    "legos": [
+     "S0485L01(old) happy | 开心",
+     "S0485L02(old) even more | 更"
+    ]
+   },
+   {
+    "seed": 495,
+    "known": "when it matters.",
+    "target": "在真正重要的时候",
+    "legos": [
+     "S0495L01(old) important | 重要"
+    ]
+   },
+   {
+    "seed": 512,
+    "known": "can you hold the door open while I fetch the keys?",
+    "target": "你能在我去拿钥匙的时候帮我把门打开吗？",
+    "legos": [
+     "S0512L01(old) keys | 钥匙",
+     "S0512L02(old) to open | 打开"
+    ]
+   },
+   {
+    "seed": 517,
+    "known": "but they left with each other.",
+    "target": "但是他们是一起离开的",
+    "legos": [
+     "S0517L01(old) together | 一起"
+    ]
+   },
+   {
+    "seed": 526,
+    "known": "I'm finding it hard to believe that you can't guess.",
+    "target": "我很难相信你猜不到",
+    "legos": [
+     "S0526L01(old) to guess | 猜"
+    ]
+   },
+   {
+    "seed": 528,
+    "known": "I'm probably supposed to keep those things in another room.",
+    "target": "我可能应该把那些东西放在另一个房间",
+    "legos": [
+     "S0528L01(old) room | 房间"
+    ]
+   },
+   {
+    "seed": 540,
+    "known": "I don't mind if you want to leave without the car.",
+    "target": "如果你想不开车离开，我也不介意",
+    "legos": [
+     "S0540L01(old) to drive a car | 开车",
+     "S0540L02(old) to mind | 介意"
+    ]
+   },
+   {
+    "seed": 544,
+    "known": "whoever said it would be difficult was absolutely right.",
+    "target": "谁说这会很难，那个人完全说对了",
+    "legos": [
+     "S0544L01(old) who | 谁",
+     "S0544L02(old) difficult | 难"
+    ]
+   },
+   {
+    "seed": 555,
+    "known": "and I'm too tired to fetch a new one.",
+    "target": "而我太累了，不想去拿新的",
+    "legos": [
+     "S0555L01(old) too | 太",
+     "S0555L02(old) tired | 累"
+    ]
+   },
+   {
+    "seed": 558,
+    "known": "it's so late at night.",
+    "target": "夜已经很深了",
+    "legos": [
+     "S0558L01(old) already | 已经"
+    ]
+   },
+   {
+    "seed": 569,
+    "known": "have you decided how much you are willing to pay?",
+    "target": "你决定好愿意付多少钱了吗？",
+    "legos": [
+     "S0569L01(old) to decide | 决定",
+     "S0569L02(old) willing | 愿意",
+     "S0569L03(old) to pay | 付"
+    ]
+   },
+   {
+    "seed": 571,
+    "known": "I'm not convinced that would be a very good idea.",
+    "target": "我不太相信这是个好主意",
+    "legos": [
+     "S0571L01(old) to believe | 相信"
+    ]
+   },
+   {
+    "seed": 579,
+    "known": "we've often tried.",
+    "target": "我们经常试过",
+    "legos": [
+     "S0579L01(old) often | 经常"
+    ]
+   },
+   {
+    "seed": 599,
+    "known": "I'd have been happy to drive if you'd told me.",
+    "target": "如果你告诉我，我会很乐意开车",
+    "legos": [
+     "S0599L01(old) happy to | 乐意"
+    ]
+   },
+   {
+    "seed": 606,
+    "known": "if I'd known then what I know now I'd have waited.",
+    "target": "如果我早知道现在知道的这些，我会等的",
+    "legos": [
+     "S0606L01(old) early | 早",
+     "S0606L02(old) these | 这些",
+     "S0606L03(old) to wait | 等"
+    ]
+   },
+   {
+    "seed": 607,
+    "known": "if I'd known I'd have done things differently.",
+    "target": "如果我知道，我会做得不一样",
+    "legos": [
+     "S0607L01(old) not the same | 不一样"
+    ]
+   },
+   {
+    "seed": 609,
+    "known": "the sensible thing to do would have been to ask.",
+    "target": "明智的做法是去问",
+    "legos": [
+     "S0609L01(old) to ask | 问"
+    ]
+   },
+   {
+    "seed": 611,
+    "known": "I would have been ready to look somewhere else.",
+    "target": "我本来可以准备去别的地方找",
+    "legos": [
+     "S0611L01(old) to prepare | 准备",
+     "S0611L02(old) else | 别的"
+    ]
+   },
+   {
+    "seed": 613,
+    "known": "we probably would have bought a house there.",
+    "target": "我们可能会在那里买房子",
+    "legos": [
+     "S0613L01(old) possible | 可能",
+     "S0613L02(old) house | 房子"
+    ]
+   },
+   {
+    "seed": 645,
+    "known": "I can help you madam",
+    "target": "女士，我可以帮您",
+    "legos": [
+     "S0645L01(old) to help | 帮"
+    ]
+   },
+   {
+    "seed": 646,
+    "known": "what are you doing, sir?",
+    "target": "先生，您正在做什么？",
+    "legos": [
+     "S0646L01(old) currently | 正在"
+    ]
+   },
+   {
+    "seed": 647,
+    "known": "you speak very well, madam",
+    "target": "女士，您说得很好",
+    "legos": [
+     "S0647L01(old) manner particle de | 得"
+    ]
+   },
+   {
+    "seed": 648,
+    "known": "what you said madam",
+    "target": "女士，您刚才说的",
+    "legos": [
+     "S0648L01(old) just now | 刚才"
+    ]
+   },
+   {
+    "seed": 650,
+    "known": "do you want to go madam?",
+    "target": "女士，您想走吗？",
+    "legos": [
+     "S0650L01(old) to go | 走"
+    ]
+   },
+   {
+    "seed": 653,
+    "known": "do you mind madam?",
+    "target": "女士，您介意吗？",
+    "legos": [
+     "S0653L01(old) to mind | 介意"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 66,
+    "known": "it's not difficult to find the answer",
+    "target": "找到答案并不难",
+    "row": "S0066L02U08",
+    "row_known": "it's not difficult to find the answer",
+    "row_target": "找到答案不难"
+   },
+   {
+    "seed": 86,
+    "known": "it wasn't possible, unfortunately",
+    "target": "很遗憾，那是不可能的",
+    "row": "S0086L02U04",
+    "row_known": "it wasn't possible unfortunately",
+    "row_target": "很遗憾那是不可能的"
+   },
+   {
+    "seed": 203,
+    "known": "what would you do if I asked you to help me?",
+    "target": "如果我请你帮我，你会怎么做？",
+    "row": "S0203L01B01",
+    "row_known": "what would you do if I asked you to help me",
+    "row_target": "如果我请你帮我你会怎么做"
+   },
+   {
+    "seed": 279,
+    "known": "yes because there wasn't much time left",
+    "target": "是的，因为剩下的时间不多了",
+    "row": "S0279L01U04",
+    "row_known": "yes because there wasn't much time left",
+    "row_target": "是的因为剩下的时间不多了"
+   }
+  ],
+  "covered": [
+   {
+    "seed": 80,
+    "known": "I'm not sure when I'll be ready",
+    "target": "我不确定我什么时候才会准备好"
+   },
+   {
+    "seed": 159,
+    "known": "that isn't what I'm trying to say",
+    "target": "那不是我想说的"
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 224,
+    "known": "he's just started to learn",
+    "target": "他刚开始学",
+    "row": "S0224L02U02",
+    "row_known": "he just started to learn",
+    "row_target": "他刚开始学"
+   },
+   {
+    "seed": 226,
+    "known": "the man is trying to help me",
+    "target": "那个男人在试试帮我",
+    "row": "S0226L01U01",
+    "row_known": "that man is trying to help me",
+    "row_target": "那个男人在试试帮我"
+   },
+   {
+    "seed": 553,
+    "known": "I think the small church is very ugly.",
+    "target": "我觉得那座小教堂非常丑",
+    "row": "S0551L03U09",
+    "row_known": "I think that small church is very ugly",
+    "row_target": "我觉得那座小教堂非常丑"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 26,
+  "no_home": 68,
+  "variant_zut": 4,
+  "covered": 2,
+  "variant_form": 3
+ }
+}
