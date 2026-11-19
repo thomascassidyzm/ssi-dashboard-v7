@@ -1,0 +1,6 @@
+{"scope":"#695/#698 target1 (female seat) clips in spa_mx_for_eng, fra_ca_for_eng, ara_lb_for_eng; deu/zho do not mark speaker gender on these rows",
+ "systemic":"POST /api/audio/render (services/shared/audio-render-entry.cjs) has no gender lookup; only phase8-audio-from-baskets applies expandForVoice. #695 sent plain row text, so every render-route fill of a speaker-gendered line in a female seat says the male form. No course_gender_expansions row existed for any #695 text either (QA copy 19 Nov 03:30Z).",
+ "found":8,"fixed":8,"method":"re-record in place (replaceAudioId + spokenText female form, course text unchanged), Kai approval token; same as #130/#142",
+ "chars":{"cartesia_spa_mx":368,"azure_ara_lb":24},
+ "clips":"gender-render.jsonl (ids unchanged, revision 2, each verified serving its new S3 object)",
+ "fra_ca":"5 target1 texts, all 'on veut se voir ...' - nothing gendered"}

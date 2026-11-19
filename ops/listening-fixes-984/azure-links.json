@@ -1,0 +1,8 @@
+{"source":"ops/sister-propagation/*/audio-real*.json (#695/#698/#702): 41 slots linked rather than rendered (library / EXISTS_IN_LANGUAGE / spliced intro); voices via tools/audio/clip-voices.cjs -> linked-voices.json",
+ "off_cast":[
+  {"course":"spa_mx_for_eng","row":"S0090L03U05","role":"target1","was":"dd64d763 azure_es-MX-CarlotaNeural","now":"37c5cbed cartesia_5c5ad5e7 (cast)","chars":25},
+  {"course":"spa_mx_for_eng","row":"S0090L03U05","role":"target2","was":"85a43dd2 azure_es-MX-LucianoNeural","now":"9836e034 cartesia_3a35daa1 (cast)","chars":25},
+  {"course":"spa_mx_for_eng","row":"S0402L01U04","role":"known","was":"4961357a xai_gfzdpspr5fdp","now":"2a4d4ee0 cartesia_d293d509 (cast)","chars":29}],
+ "azure_but_cast":[{"course":"ara_lb_for_eng","row":"seed 64","roles":["target1 d05cc043 Layla","target2 d2cfaf63 Rami"],"note":"ara_lb's render-route cast IS Azure (all 30 of #698's fresh ara_lb renders came out Layla/Rami); not off-cast, part of the whole-course Azure->Cartesia question Kai said to leave"}],
+ "decision":"3 off-cast <= 25 -> re-rendered with Kai approval token (EXISTS_IN_LANGUAGE grant), relinked replace+expectCurrent, link event f081340d",
+ "chars":79}
