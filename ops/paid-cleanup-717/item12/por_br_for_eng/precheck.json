@@ -1,0 +1,585 @@
+{
+ "course": "por_br_for_eng",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0003L02U04": {
+   "seed": {
+    "seed_number": 3,
+    "known_text": "how to speak as often as possible",
+    "target_text": "como falar o mais frequentemente possível",
+    "known_audio_id": "e40b94c6-5de6-4ac2-bf2b-952c1142af28",
+    "target1_audio_id": "7b687824-c22c-43c6-8cef-3833aa5486cf",
+    "target2_audio_id": "f4ef5d31-22e2-4796-9110-20612480ba0a"
+   },
+   "lego": {
+    "lego_id": "S0003L02",
+    "known_text": "often",
+    "target_text": "frequentemente",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0007L03U06": {
+   "seed": {
+    "seed_number": 7,
+    "known_text": "I want to try as hard as I can today",
+    "target_text": "eu quero tentar com toda a força que puder hoje",
+    "known_audio_id": "21a0add9-3cca-4f11-a778-c2760843dd77",
+    "target1_audio_id": "15039dfd-d68e-4a9b-878d-764d79ea71f4",
+    "target2_audio_id": "0e4c6347-21d4-4606-948f-789f2e354e18"
+   },
+   "lego": {
+    "lego_id": "S0007L03",
+    "known_text": "today",
+    "target_text": "hoje",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0010L02U06": {
+   "seed": {
+    "seed_number": 10,
+    "known_text": "I'm not sure if I can remember the whole sentence",
+    "target_text": "não tenho certeza se consigo me lembrar da frase inteira",
+    "known_audio_id": "a7bc4974-9987-4a81-9d5e-9eda7555fbb4",
+    "target1_audio_id": "12e61e7b-512e-496d-bcd7-047830b8af7d",
+    "target2_audio_id": "85a6e39c-e8dd-48be-964f-d686e5fe9fd3"
+   },
+   "lego": {
+    "lego_id": "S0010L02",
+    "known_text": "if I can",
+    "target_text": "se consigo",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0041L02U06": {
+   "seed": {
+    "seed_number": 41,
+    "known_text": "I feel okay, but I'm starting to feel tired",
+    "target_text": "me sinto bem, mas estou começando a me sentir cansado",
+    "known_audio_id": "fe1c9235-fd27-44ba-b38c-83cad7908ce5",
+    "target1_audio_id": "a930dd23-40d4-4623-8aea-a5445bee9e09",
+    "target2_audio_id": "912cb67a-a7d9-48d0-abaf-f9b17fdd4d86"
+   },
+   "lego": {
+    "lego_id": "S0041L02",
+    "known_text": "I'm starting to",
+    "target_text": "estou começando a",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0049L01U08": {
+   "seed": {
+    "seed_number": 49,
+    "known_text": "it's like this, if you know what I mean",
+    "target_text": "É assim, se você entende o que eu quero dizer",
+    "known_audio_id": "4ebeb13f-c057-4d01-a675-5f857b7c5056",
+    "target1_audio_id": "a7699ec1-bfa5-4fa6-9350-cda73012a028",
+    "target2_audio_id": "01228e54-260a-4b05-89a4-67426232ea2f"
+   },
+   "lego": {
+    "lego_id": "S0049L01",
+    "known_text": "it's like this",
+    "target_text": "é assim",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0058L03U06": {
+   "seed": {
+    "seed_number": 58,
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "é interessante quando você percebe palavras suficientes",
+    "known_audio_id": "0b38663f-1675-42ce-ae9f-a67cf28645c9",
+    "target1_audio_id": "020249f6-d565-4df9-943a-ac1ffd3673ea",
+    "target2_audio_id": "68c15450-b291-45c9-a298-5bdfdba7954b"
+   },
+   "lego": {
+    "lego_id": "S0058L03",
+    "known_text": "enough words",
+    "target_text": "palavras suficientes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0060L02U06": {
+   "seed": {
+    "seed_number": 60,
+    "known_text": "I don't know how to say enough different words yet",
+    "target_text": "eu ainda não sei como dizer palavras diferentes suficientes",
+    "known_audio_id": "d4007992-fdf8-429a-bfc5-7c4aaa87da17",
+    "target1_audio_id": "ccc62ae3-c645-42ef-87a1-a38fb486f127",
+    "target2_audio_id": "94c797e1-728c-44b6-94c1-6230d1374979"
+   },
+   "lego": {
+    "lego_id": "S0060L02",
+    "known_text": "how to say",
+    "target_text": "como dizer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0072L01U07": {
+   "seed": {
+    "seed_number": 72,
+    "known_text": "I think that you're doing very well",
+    "target_text": "eu acho que você está fazendo muito bem",
+    "known_audio_id": "d41d9269-9204-4cb4-966f-26398f387f03",
+    "target1_audio_id": "145a0204-8cfc-4808-96fd-9eaa05a59d05",
+    "target2_audio_id": "b6649b0d-5f8f-43c3-b7da-b1c63be849ef"
+   },
+   "lego": {
+    "lego_id": "S0072L01",
+    "known_text": "you're doing",
+    "target_text": "está fazendo",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0073L01U07": {
+   "seed": {
+    "seed_number": 73,
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "muito obrigado, mas tenho mais para aprender",
+    "known_audio_id": "07ac717c-f8c8-4cea-b3f4-1ed7dfaa350e",
+    "target1_audio_id": "ee292d8a-b3c5-41d1-9faf-75e3e7db6746",
+    "target2_audio_id": "897dbf94-2779-4d0a-bfbd-ffe0f851612c"
+   },
+   "lego": {
+    "lego_id": "S0073L01",
+    "known_text": "thank you",
+    "target_text": "obrigado",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0076L03U06": {
+   "seed": {
+    "seed_number": 76,
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "estou muito contente com o quanto já aprendi",
+    "known_audio_id": "ca9d13e4-9b48-473d-a5e5-80537192c505",
+    "target1_audio_id": "e80d7e6d-09e1-4f2b-8f57-1914bf0b2cde",
+    "target2_audio_id": "c6508c01-6224-467f-8ae2-2bfad94d958b"
+   },
+   "lego": {
+    "lego_id": "S0076L03",
+    "known_text": "I've already learnt",
+    "target_text": "já aprendi",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L02U09": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "I'm not going to wait for you. Why not?",
+    "target_text": "eu não vou esperar por você. Por que não?",
+    "known_audio_id": "199fc8fc-87b1-43f3-8002-8c8948711cfc",
+    "target1_audio_id": "aa6ee2ae-16ed-4e00-a03f-abf3308935fa",
+    "target2_audio_id": "e9d37f7a-e99a-4fbf-884a-b9f7a7fd6a58"
+   },
+   "lego": {
+    "lego_id": "S0082L02",
+    "known_text": "why not",
+    "target_text": "por que não",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0087L01U09": {
+   "seed": {
+    "seed_number": 87,
+    "known_text": "they are people I don't know",
+    "target_text": "são pessoas que eu não conheço",
+    "known_audio_id": "188e9e5a-61e6-4168-8d7f-36805ba7e216",
+    "target1_audio_id": "d9591e2a-1f39-4ad1-a3dd-b0e96c993c2b",
+    "target2_audio_id": "28b7800b-ab7e-4806-8f6c-27a4a486b1ae"
+   },
+   "lego": {
+    "lego_id": "S0087L01",
+    "known_text": "they are people",
+    "target_text": "são pessoas",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0088L01U10": {
+   "seed": {
+    "seed_number": 88,
+    "known_text": "I'm not ready to talk to people I don't know yet",
+    "target_text": "eu ainda não estou pronto para falar com pessoas que não conheço",
+    "known_audio_id": "6cc4483f-c56f-475d-a799-2c15ad1790cc",
+    "target1_audio_id": "32fd9261-3bf8-45b4-80d2-6fee3dc0a363",
+    "target2_audio_id": "0b88e6b0-3e43-44ba-af6a-068cdd5fd014"
+   },
+   "lego": {
+    "lego_id": "S0088L01",
+    "known_text": "I'm not ready yet",
+    "target_text": "ainda não estou pronto",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0112L01U09": {
+   "seed": {
+    "seed_number": 112,
+    "known_text": "that was very interesting, and I wasn't expecting it",
+    "target_text": "isso foi muito interessante, e eu não estava à espera",
+    "known_audio_id": "f104e66d-741e-4060-9d0d-8c3826ac7dd4",
+    "target1_audio_id": "65de4aed-ac2c-4eaa-bea8-f9ef7f079f4a",
+    "target2_audio_id": "d8179d6f-d3fa-4186-a83f-de8b0e90c4e2"
+   },
+   "lego": {
+    "lego_id": "S0112L01",
+    "known_text": "that was",
+    "target_text": "isso foi",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0122L03U07": {
+   "seed": {
+    "seed_number": 122,
+    "known_text": "it's starting to feel easier and I'm excited about how it's going",
+    "target_text": "Está começando a parecer mais fácil e estou entusiasmado com o progresso",
+    "known_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375",
+    "target1_audio_id": "e846b5d3-dfcb-4f46-af64-6caea20418ee",
+    "target2_audio_id": "d9449e3d-c3d1-444e-9c47-d834b1289143"
+   },
+   "lego": {
+    "lego_id": "S0122L03",
+    "known_text": "excited",
+    "target_text": "entusiasmado",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0137L03U06": {
+   "seed": {
+    "seed_number": 137,
+    "known_text": "it's more important to talk often than to be perfect",
+    "target_text": "É mais importante falar muitas vezes do que ser perfeito",
+    "known_audio_id": "5de99132-44e7-483d-9b15-29ce1dc00e28",
+    "target1_audio_id": "23d87f0d-ecfd-48c2-9b04-70a3508fc40e",
+    "target2_audio_id": "2d40217b-379d-4624-809b-069ed49fdbfa"
+   },
+   "lego": {
+    "lego_id": "S0137L03",
+    "known_text": "perfect",
+    "target_text": "perfeito",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0189L01U06": {
+   "seed": {
+    "seed_number": 189,
+    "known_text": "yes that's a good idea",
+    "target_text": "sim, é uma boa ideia",
+    "known_audio_id": "4047b9cb-ace1-46ca-98bf-011e75f6551e",
+    "target1_audio_id": "514329ed-6f0f-4148-bbe9-74a657b719b0",
+    "target2_audio_id": "9dae5dee-5787-4dba-b01e-2b284aa44396"
+   },
+   "lego": {
+    "lego_id": "S0189L01",
+    "known_text": "that's a good idea",
+    "target_text": "é uma boa ideia",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0243L01U06": {
+   "seed": {
+    "seed_number": 243,
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "eu vou pedir a mesma coisa para comer",
+    "known_audio_id": "7a8858e7-013c-4c84-8cec-f72fda6300ee",
+    "target1_audio_id": "c3bdcf86-d643-4e43-a944-f599491dcc27",
+    "target2_audio_id": "d13b0470-b2ca-4361-9fea-e370a989c6da"
+   },
+   "lego": {
+    "lego_id": "S0243L01",
+    "known_text": "to eat",
+    "target_text": "comer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0244L01U06": {
+   "seed": {
+    "seed_number": 244,
+    "known_text": "I've learnt a lot already",
+    "target_text": "eu já aprendi muito",
+    "known_audio_id": "baaa72d1-d156-48f7-97db-328df0ae758d",
+    "target1_audio_id": "9bd86d2a-eea3-4a38-88d5-4b8b4dd479b0",
+    "target2_audio_id": "653b67e8-5465-4cd3-bbda-8fe4e5e2530e"
+   },
+   "lego": {
+    "lego_id": "S0244L01",
+    "known_text": "I've already learnt a lot",
+    "target_text": "já aprendi muito",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0251L02U06": {
+   "seed": {
+    "seed_number": 251,
+    "known_text": "I don't want to find out until after we finish",
+    "target_text": "eu não quero descobrir até acabarmos",
+    "known_audio_id": "1f9685a7-c351-478f-b8a1-0ec10b317469",
+    "target1_audio_id": "0cc8b327-5271-4220-acf8-ab13e43ab657",
+    "target2_audio_id": "e07cb4d2-90cf-41d7-93c0-8b10609f5301"
+   },
+   "lego": {
+    "lego_id": "S0251L02",
+    "known_text": "to find out",
+    "target_text": "descobrir",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0256L02U07": {
+   "seed": {
+    "seed_number": 256,
+    "known_text": "I think I'll be ready in less than an hour",
+    "target_text": "eu acho que vou estar pronto em menos de uma hora",
+    "known_audio_id": "9413a076-e080-438c-8934-87c08e9ea159",
+    "target1_audio_id": "c6d0146a-9006-4f61-8363-f61d0755cff7",
+    "target2_audio_id": "d5e2185f-ab14-408a-a9db-b39ea3428769"
+   },
+   "lego": {
+    "lego_id": "S0256L02",
+    "known_text": "hour",
+    "target_text": "hora",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0260L02U06": {
+   "seed": {
+    "seed_number": 260,
+    "known_text": "I don't have the faintest idea",
+    "target_text": "eu não faço a mínima ideia",
+    "known_audio_id": "b0ce4d07-dab7-4ce5-a723-b7dab2d6fb04",
+    "target1_audio_id": "6387a4fc-c8a8-456e-8993-8bad797c407b",
+    "target2_audio_id": "ea431def-3f21-4b43-96d2-f350df08e560"
+   },
+   "lego": {
+    "lego_id": "S0260L02",
+    "known_text": "faintest",
+    "target_text": "mínima",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0263L01U07": {
+   "seed": {
+    "seed_number": 263,
+    "known_text": "I don't know who you mean",
+    "target_text": "eu não sei quem você quer dizer",
+    "known_audio_id": "cff5a806-443d-463b-9b9b-3029ef7da762",
+    "target1_audio_id": "0d254923-5442-44a4-a6ac-4ca0b2849ae5",
+    "target2_audio_id": "f48cb797-903d-4793-a02d-ae1400339e4e"
+   },
+   "lego": {
+    "lego_id": "S0263L01",
+    "known_text": "who you mean",
+    "target_text": "quem você quer dizer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0277L01U06": {
+   "seed": {
+    "seed_number": 277,
+    "known_text": "yes I've got an important meeting early next week",
+    "target_text": "sim, tenho uma reunião importante no início da próxima semana",
+    "known_audio_id": "0d5c4a7e-3e9d-4ae5-9fe2-7a91c68cf5e6",
+    "target1_audio_id": "24b14b87-d49c-4a65-bc5e-c06af14d0d15",
+    "target2_audio_id": "c656a378-53ba-403f-9a72-6e7e9aab877f"
+   },
+   "lego": {
+    "lego_id": "S0277L01",
+    "known_text": "an important meeting",
+    "target_text": "reunião importante",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0284L01U06": {
+   "seed": {
+    "seed_number": 284,
+    "known_text": "do you know my sister's friend?",
+    "target_text": "você conhece a amiga da minha irmã?",
+    "known_audio_id": "8b3b0391-45a3-46d5-ba6e-d438c71a1679",
+    "target1_audio_id": "6b930b09-fac1-4920-b981-bdbc6675e8a2",
+    "target2_audio_id": "5b945be2-1759-4408-96da-634faba01d6e"
+   },
+   "lego": {
+    "lego_id": "S0284L01",
+    "known_text": "you know",
+    "target_text": "conhece",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0287L01U07": {
+   "seed": {
+    "seed_number": 287,
+    "known_text": "how many people do you know who like watching television?",
+    "target_text": "quantas pessoas você conhece que gostam de ver televisão?",
+    "known_audio_id": "9f0e580a-c3cf-48a1-a6e0-c302f6589029",
+    "target1_audio_id": "3cb2cfd3-8a09-48ac-9909-5cef53818d6f",
+    "target2_audio_id": "4ce0f52b-8eda-4498-8d63-f28de7cbdde8"
+   },
+   "lego": {
+    "lego_id": "S0287L01",
+    "known_text": "how many",
+    "target_text": "quantas",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0331L02U06": {
+   "seed": {
+    "seed_number": 331,
+    "known_text": "she can't provide all the answers",
+    "target_text": "ela não consegue dar todas as respostas",
+    "known_audio_id": "f46b6ed1-e291-48d8-a4b2-dfe6f861b63b",
+    "target1_audio_id": "30cc3794-fb86-4bb2-a2fa-feb4fd3ab3ca",
+    "target2_audio_id": "88cbc219-5d0f-4840-aeff-11d09beb2b8d"
+   },
+   "lego": {
+    "lego_id": "S0331L02",
+    "known_text": "all the answers",
+    "target_text": "todas as respostas",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0433L03U06": {
+   "seed": {
+    "seed_number": 433,
+    "known_text": "they couldn't find out when the film started",
+    "target_text": "eles não conseguiram descobrir quando o filme começava",
+    "known_audio_id": "29fac157-11f8-47d0-9c89-e193b6482d1b",
+    "target1_audio_id": "7f0109f9-d157-423b-8cd7-e401ad35eefa",
+    "target2_audio_id": "3464002b-a0cc-4e7a-b549-c6b2352a35a4"
+   },
+   "lego": {
+    "lego_id": "S0433L03",
+    "known_text": "when the film",
+    "target_text": "quando o filme",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0435L03U06": {
+   "seed": {
+    "seed_number": 435,
+    "known_text": "yes they could if they wanted to",
+    "target_text": "sim, podiam se quisessem",
+    "known_audio_id": "49a3e4e0-23ef-4be7-8b02-775933c6de28",
+    "target1_audio_id": "549b13da-3c0e-4f5b-b131-934222bcd7cc",
+    "target2_audio_id": "1eb51ce2-391a-43e5-8f7a-12acc0e5db8c"
+   },
+   "lego": {
+    "lego_id": "S0435L03",
+    "known_text": "if they wanted to",
+    "target_text": "se quisessem",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0450L04U09": {
+   "seed": {
+    "seed_number": 450,
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "não, eles têm que pegar o trem",
+    "known_audio_id": "2b5937d3-4ceb-4232-b6bf-5e7c74e86b83",
+    "target1_audio_id": "df53985c-4c75-4ce8-9f65-30c8fc62c01f",
+    "target2_audio_id": "398fc310-98f8-4b1a-8565-54b2982248b0"
+   },
+   "lego": {
+    "lego_id": "S0450L04",
+    "known_text": "the train",
+    "target_text": "o trem",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0486L02U06": {
+   "seed": {
+    "seed_number": 486,
+    "known_text": "I think your eyes are beautiful",
+    "target_text": "eu acho que seus olhos são bonitos",
+    "known_audio_id": "a770d41d-f5eb-44fd-86be-438ceab43d74",
+    "target1_audio_id": "edfcff07-2553-4788-8ac9-657368ac35f2",
+    "target2_audio_id": "4ba229a0-0acc-4375-9d3e-06c61cd5f279"
+   },
+   "lego": {
+    "lego_id": "S0486L02",
+    "known_text": "your eyes",
+    "target_text": "seus olhos",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0507L02U10": {
+   "seed": {
+    "seed_number": 507,
+    "known_text": "we moved to the city",
+    "target_text": "nos mudamos para a cidade",
+    "known_audio_id": "e64ee11c-92fc-4530-b55b-9d76e5d83912",
+    "target1_audio_id": "997e3afd-657c-4dbe-836e-a55216d41d22",
+    "target2_audio_id": "0af2e3ad-31c8-4340-a20f-b01ce1ddcaf0"
+   },
+   "lego": {
+    "lego_id": "S0507L02",
+    "known_text": "to the city",
+    "target_text": "para a cidade",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0615L03U06": {
+   "seed": {
+    "seed_number": 615,
+    "known_text": "I thought you were very brave to say that",
+    "target_text": "eu achei que você foi muito corajoso em dizer isso",
+    "known_audio_id": "bc62ee64-5fc4-4544-b012-73d75d138669",
+    "target1_audio_id": "9aad0b43-0cb8-4a78-821f-816f984cfa19",
+    "target2_audio_id": "e6d74865-7a8b-49c4-8774-7345577f7694"
+   },
+   "lego": {
+    "lego_id": "S0615L03",
+    "known_text": "very brave",
+    "target_text": "muito corajoso",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0620L02U06": {
+   "seed": {
+    "seed_number": 620,
+    "known_text": "it's a very long time since we last saw each other",
+    "target_text": "já passou muito tempo desde a última vez que nos vimos",
+    "known_audio_id": "4c70c187-2617-43a4-a5c7-5e8de28ab555",
+    "target1_audio_id": "c47f8d9e-fb96-456c-af7d-fa6a2f5ca8e4",
+    "target2_audio_id": "cad17145-675a-4f01-be07-41b75346cc5b"
+   },
+   "lego": {
+    "lego_id": "S0620L02",
+    "known_text": "a very long time",
+    "target_text": "muito tempo",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

@@ -32,7 +32,17 @@ else
   echo "cannot parse $OWNER_ENV"; exit 64
 fi
 unset url
-run() { psql -X "${DB_ARG[@]}" -v ON_ERROR_STOP=1 -f "$1"; }
+# DEADLINE_UTC=HH:MM:SS (optional): psql gets SIGINT at that time today, which makes psql send the server a
+# cancel request, so an index build that would run past Kai's window is cancelled instead of overlapping it.
+run() {
+  if [ -n "${DEADLINE_UTC:-}" ]; then
+    local left=$(( $(date -u -d "today $DEADLINE_UTC" +%s) - $(date -u +%s) ))
+    [ "$left" -gt 0 ] || { echo "deadline $DEADLINE_UTC UTC already passed: not starting $1"; return 75; }
+    timeout -s INT -k 30 "$left" psql -X "${DB_ARG[@]}" -v ON_ERROR_STOP=1 -f "$1"
+  else
+    psql -X "${DB_ARG[@]}" -v ON_ERROR_STOP=1 -f "$1"
+  fi
+}
 case "$MODE" in
   save-old) run "$M.SAVE_OLD.sql" ;;
   measure)  run "$M.MEASURE.sql" ;;

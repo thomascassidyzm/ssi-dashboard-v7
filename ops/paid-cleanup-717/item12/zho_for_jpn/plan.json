@@ -1,0 +1,6727 @@
+{
+ "course": "zho_for_jpn",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:09.280Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 4,
+   "id": "S0004L02U06",
+   "lego": "S0004L02",
+   "known": "中国語で何かを言う方法",
+   "target": "怎么用中文说一些东西",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0004L02U06",
+      "seed_number": 4,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "中国語で何かを言う方法",
+      "target_text": "怎么用中文说一些东西",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 4,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0004L02U06",
+     "slot": "known",
+     "audio_id": "95d53164-902a-412d-af89-ce285b7f3782"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0004L02U06",
+     "slot": "target1",
+     "audio_id": "fdb47721-e528-4808-bb36-66df58bc99d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0004L02U06",
+     "slot": "target2",
+     "audio_id": "fb82c917-0635-43d5-95ed-af01262c7e7b"
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "id": "S0007L01U07",
+   "lego": "S0007L01",
+   "known": "今日できるだけ頑張りたいです。",
+   "target": "我今天想尽量努力试。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0007L01U07",
+      "seed_number": 7,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "今日できるだけ頑張りたいです。",
+      "target_text": "我今天想尽量努力试。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 7,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0007L01U07",
+     "slot": "known",
+     "audio_id": "4c2ac5f0-5bed-4780-a469-dceb10420018"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0007L01U07",
+     "slot": "target1",
+     "audio_id": "a931916e-55e4-4ad7-a65b-35bdbdfb0e17"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0007L01U07",
+     "slot": "target2",
+     "audio_id": "7cc7f03b-9171-4c86-bd24-e91e61ed0c2e"
+    }
+   ]
+  },
+  {
+   "seed": 18,
+   "id": "S0018L03U06",
+   "lego": "S0018L03",
+   "known": "今晩6時に会いたいです。",
+   "target": "我们想今天晚上六点见面。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0018L03U06",
+      "seed_number": 18,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "今晩6時に会いたいです。",
+      "target_text": "我们想今天晚上六点见面。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 18,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0018L03U06",
+     "slot": "known",
+     "audio_id": "6ffc723d-d963-49cd-8391-ca77fcc4e40f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0018L03U06",
+     "slot": "target1",
+     "audio_id": "494374d2-61e9-491f-9d72-ad9531609cdb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0018L03U06",
+     "slot": "target2",
+     "audio_id": "c9dfec41-22e1-4c8c-b335-97551c7c36ba"
+    }
+   ]
+  },
+  {
+   "seed": 21,
+   "id": "S0021L02U06",
+   "lego": "S0021L02",
+   "known": "なぜ彼女の名前を覚えていますか？",
+   "target": "你为什么在学她的名字？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0021L02U06",
+      "seed_number": 21,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "なぜ彼女の名前を覚えていますか？",
+      "target_text": "你为什么在学她的名字？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 21,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0021L02U06",
+     "slot": "known",
+     "audio_id": "5bb0db1e-b3e4-425e-a808-f8a2e77a1164"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0021L02U06",
+     "slot": "target1",
+     "audio_id": "b2903edb-c694-4963-bca6-109195819cf1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0021L02U06",
+     "slot": "target2",
+     "audio_id": "caddaac0-eda4-445b-9018-938a384d0d00"
+    }
+   ]
+  },
+  {
+   "seed": 33,
+   "id": "S0033L01U07",
+   "lego": "S0033L01",
+   "known": "中国語をどのくらい学んでいますか？",
+   "target": "你学中文学了多久了?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0033L01U07",
+      "seed_number": 33,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "中国語をどのくらい学んでいますか？",
+      "target_text": "你学中文学了多久了?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 33,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0033L01U07",
+     "slot": "known",
+     "audio_id": "ab1ab898-def5-457b-bd79-6828537cae4d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0033L01U07",
+     "slot": "target1",
+     "audio_id": "3aa3cf9b-426a-4110-b8b2-a7ac2a2caa7e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0033L01U07",
+     "slot": "target2",
+     "audio_id": "2ed4bb96-c4d6-4872-88db-c4ff3e820b0b"
+    }
+   ]
+  },
+  {
+   "seed": 36,
+   "id": "S0036L02U06",
+   "lego": "S0036L02",
+   "known": "話を中断したくありません。",
+   "target": "我们不想打断故事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0036L02U06",
+      "seed_number": 36,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "話を中断したくありません。",
+      "target_text": "我们不想打断故事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 36,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0036L02U06",
+     "slot": "known",
+     "audio_id": "4d8441df-15f6-443f-9d8e-5c2224ae09b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0036L02U06",
+     "slot": "target1",
+     "audio_id": "d8e23db8-81c4-4dfc-980d-b859ca89e173"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0036L02U06",
+     "slot": "target2",
+     "audio_id": "4c17b28d-9963-4c5a-b505-a00c740bd409"
+    }
+   ]
+  },
+  {
+   "seed": 44,
+   "id": "S0044L04U05",
+   "lego": "S0044L04",
+   "known": "または改善する必要があるかどうか。",
+   "target": "或者如果我需要改进。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0044L04U05",
+      "seed_number": 44,
+      "lego_index": 4,
+      "position": 8,
+      "known_text": "または改善する必要があるかどうか。",
+      "target_text": "或者如果我需要改进。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 44,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0044L04U05",
+     "slot": "known",
+     "audio_id": "1fc8c625-823c-4c92-8a1d-b9f14756e7c4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0044L04U05",
+     "slot": "target1",
+     "audio_id": "06cad771-3aa4-495f-8ed4-6357fa4752fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0044L04U05",
+     "slot": "target2",
+     "audio_id": "4b53d313-fef5-4159-8a97-abcd0c7dd67f"
+    }
+   ]
+  },
+  {
+   "seed": 45,
+   "id": "S0045L01U06",
+   "lego": "S0045L01",
+   "known": "すべてを知る必要はありません。",
+   "target": "我不需要知道一切。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0045L01U06",
+      "seed_number": 45,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "すべてを知る必要はありません。",
+      "target_text": "我不需要知道一切。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 45,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0045L01U06",
+     "slot": "known",
+     "audio_id": "8b2036fc-38e5-4627-970d-661a60d9ac49"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0045L01U06",
+     "slot": "target1",
+     "audio_id": "0273d257-8ea9-4c5e-b6f7-29005fc44134"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0045L01U06",
+     "slot": "target2",
+     "audio_id": "69e22d96-48bb-4810-84ec-31e278227333"
+    }
+   ]
+  },
+  {
+   "seed": 46,
+   "id": "S0046L02U06",
+   "lego": "S0046L02",
+   "known": "でも間違えることを心配しません。",
+   "target": "但是我不担心犯错。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0046L02U06",
+      "seed_number": 46,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "でも間違えることを心配しません。",
+      "target_text": "但是我不担心犯错。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 46,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0046L02U06",
+     "slot": "known",
+     "audio_id": "4a61c3d8-fd04-45ae-b911-dd9680c5a7bd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0046L02U06",
+     "slot": "target1",
+     "audio_id": "c2c34d6e-8080-4c62-9975-a8501b573903"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0046L02U06",
+     "slot": "target2",
+     "audio_id": "f67b970b-28bd-4bc1-8858-1d5d872af96c"
+    }
+   ]
+  },
+  {
+   "seed": 47,
+   "id": "S0047L02U06",
+   "lego": "S0047L02",
+   "known": "間違えることは良いことだと思うからです。",
+   "target": "因为我觉得犯错是好事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0047L02U06",
+      "seed_number": 47,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "間違えることは良いことだと思うからです。",
+      "target_text": "因为我觉得犯错是好事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 47,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0047L02U06",
+     "slot": "known",
+     "audio_id": "d5f698f9-1c1a-4fd4-9124-68b456775075"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0047L02U06",
+     "slot": "target1",
+     "audio_id": "8dda76dc-b757-4d01-8665-593da7c8d0f1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0047L02U06",
+     "slot": "target2",
+     "audio_id": "218cb25f-e49e-436d-95de-50988cbb77b3"
+    }
+   ]
+  },
+  {
+   "seed": 51,
+   "id": "S0051L01U06",
+   "lego": "S0051L01",
+   "known": "友達と面白いことをするのを楽しんでいます。",
+   "target": "我喜欢和朋友做有趣的事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0051L01U06",
+      "seed_number": 51,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "友達と面白いことをするのを楽しんでいます。",
+      "target_text": "我喜欢和朋友做有趣的事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 51,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0051L01U06",
+     "slot": "known",
+     "audio_id": "31730434-2d4b-40e8-817f-15f551d6dc02"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0051L01U06",
+     "slot": "target1",
+     "audio_id": "c9970751-6f0b-4aac-b1d0-d008f30e8924"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0051L01U06",
+     "slot": "target2",
+     "audio_id": "9e2d6b06-bf7b-48a0-9c0c-f2e53ab184b5"
+    }
+   ]
+  },
+  {
+   "seed": 54,
+   "id": "S0054L01U06",
+   "lego": "S0054L01",
+   "known": "もう少し時間をあげたかったです。",
+   "target": "我们想给你多一点时间。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0054L01U06",
+      "seed_number": 54,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "もう少し時間をあげたかったです。",
+      "target_text": "我们想给你多一点时间。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 54,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0054L01U06",
+     "slot": "known",
+     "audio_id": "3b714bfe-126f-47e3-aef5-f9b2be440fab"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0054L01U06",
+     "slot": "target1",
+     "audio_id": "3c715223-ce10-49d4-8312-87f859e8fc13"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0054L01U06",
+     "slot": "target2",
+     "audio_id": "c036667a-a621-4497-9775-0ac9ccaeaae0"
+    }
+   ]
+  },
+  {
+   "seed": 58,
+   "id": "S0058L01U06",
+   "lego": "S0058L01",
+   "known": "十分な言葉がわかると面白いです。",
+   "target": "你懂够多词的时候很有趣。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0058L01U06",
+      "seed_number": 58,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "十分な言葉がわかると面白いです。",
+      "target_text": "你懂够多词的时候很有趣。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 58,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0058L01U06",
+     "slot": "known",
+     "audio_id": "2d22cd14-2980-4b23-81b3-e7ee95538da5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0058L01U06",
+     "slot": "target1",
+     "audio_id": "9e2c7ff4-471f-4bac-8ff2-2815340de009"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0058L01U06",
+     "slot": "target2",
+     "audio_id": "4259271a-3016-4920-a66b-817eb6f766a5"
+    }
+   ]
+  },
+  {
+   "seed": 62,
+   "id": "S0062L01U05",
+   "lego": "S0062L01",
+   "known": "同時にあなたを手伝えるかどうかわかりません。",
+   "target": "我不确定我能不能同时帮你。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0062L01U05",
+      "seed_number": 62,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "同時にあなたを手伝えるかどうかわかりません。",
+      "target_text": "我不确定我能不能同时帮你。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 62,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0062L01U05",
+     "slot": "known",
+     "audio_id": "ad771a0f-0130-4405-b9ba-e74fc6521517"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0062L01U05",
+     "slot": "target1",
+     "audio_id": "c64710c9-c982-455e-afab-f49572fc7084"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0062L01U05",
+     "slot": "target2",
+     "audio_id": "25fc277e-2d6d-4e8a-8198-4267ff8b485c"
+    }
+   ]
+  },
+  {
+   "seed": 65,
+   "id": "S0065L03U06",
+   "lego": "S0065L03",
+   "known": "自分をテストする時間を取ることは大切です。",
+   "target": "花时间测试自己很重要。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0065L03U06",
+      "seed_number": 65,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "自分をテストする時間を取ることは大切です。",
+      "target_text": "花时间测试自己很重要。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 65,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0065L03U06",
+     "slot": "known",
+     "audio_id": "2811e447-f7af-41b5-bf27-aee67a64073f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0065L03U06",
+     "slot": "target1",
+     "audio_id": "e12ecf39-4ae1-4a04-b1b5-cac0b30ebd85"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0065L03U06",
+     "slot": "target2",
+     "audio_id": "e7df17fa-7a3a-4108-90be-0562120311e3"
+    }
+   ]
+  },
+  {
+   "seed": 70,
+   "id": "S0070L02U06",
+   "lego": "S0070L02",
+   "known": "彼女はそれがどこにあるか教えたくありませんでした。",
+   "target": "她不想告诉我它在哪里。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0070L02U06",
+      "seed_number": 70,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "彼女はそれがどこにあるか教えたくありませんでした。",
+      "target_text": "她不想告诉我它在哪里。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 70,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0070L02U06",
+     "slot": "known",
+     "audio_id": "e37e8b75-c337-425b-8b02-1664f3e031be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0070L02U06",
+     "slot": "target1",
+     "audio_id": "caa475fe-80fc-4709-8867-55574f23487d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0070L02U06",
+     "slot": "target2",
+     "audio_id": "73c090d6-fc75-4bfd-bc55-552e61bcd046"
+    }
+   ]
+  },
+  {
+   "seed": 73,
+   "id": "S0073L02U06",
+   "lego": "S0073L02",
+   "known": "ありがとう。でも、まだ学ぶことがある。",
+   "target": "非常感谢，但是我还有很多要学。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0073L02U06",
+      "seed_number": 73,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "ありがとう。でも、まだ学ぶことがある。",
+      "target_text": "非常感谢，但是我还有很多要学。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 73,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0073L02U06",
+     "slot": "known",
+     "audio_id": "db4e8185-9c3e-44f8-bb84-a2e7f11c87ce"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0073L02U06",
+     "slot": "target1",
+     "audio_id": "69d25809-22c6-4e1c-b921-d8ed1cfee220"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0073L02U06",
+     "slot": "target2",
+     "audio_id": "8927a13a-e7f2-4392-b05b-02209b6b3111"
+    }
+   ]
+  },
+  {
+   "seed": 74,
+   "id": "S0074L01U06",
+   "lego": "S0074L01",
+   "known": "理解するのを手伝ってくれてどうもありがとうございます。",
+   "target": "非常感谢帮我理解。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0074L01U06",
+      "seed_number": 74,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "理解するのを手伝ってくれてどうもありがとうございます。",
+      "target_text": "非常感谢帮我理解。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 74,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0074L01U06",
+     "slot": "known",
+     "audio_id": "9579baa1-4616-4d9c-a6bb-c7b1e43d3207"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0074L01U06",
+     "slot": "target1",
+     "audio_id": "c129c6ea-8503-46be-8e88-78a9f18baa3d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0074L01U06",
+     "slot": "target2",
+     "audio_id": "2cb1c9a7-2d3d-495d-b948-2c892f5b1f78"
+    }
+   ]
+  },
+  {
+   "seed": 79,
+   "id": "S0079L01U06",
+   "lego": "S0079L01",
+   "known": "いつ学び始めましたか？",
+   "target": "你什么时候开始学的？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0079L01U06",
+      "seed_number": 79,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "いつ学び始めましたか？",
+      "target_text": "你什么时候开始学的？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 79,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0079L01U06",
+     "slot": "known",
+     "audio_id": "83ad26ec-e130-49c2-952f-cb4b3e1ed9f0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0079L01U06",
+     "slot": "target1",
+     "audio_id": "32cc847f-4161-4355-bbf5-dba946ac197f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0079L01U06",
+     "slot": "target2",
+     "audio_id": "8b150d62-0383-452d-8a4e-f2b5dba774ce"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L01U06",
+   "lego": "S0082L01",
+   "known": "あなたを待つつもりはありません。なぜですか？",
+   "target": "我不会等你。为什么不？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0082L01U06",
+      "seed_number": 82,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "あなたを待つつもりはありません。なぜですか？",
+      "target_text": "我不会等你。为什么不？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0082L01U06",
+     "slot": "known",
+     "audio_id": "2f7e05b3-f642-4126-beb8-3c526d89e2ba"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0082L01U06",
+     "slot": "target1",
+     "audio_id": "853e10b3-f550-4ea1-9f6a-00b0ab1dc9db"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0082L01U06",
+     "slot": "target2",
+     "audio_id": "7b1b6350-da37-4015-9e65-0241324ab016"
+    }
+   ]
+  },
+  {
+   "seed": 83,
+   "id": "S0083L02U05",
+   "lego": "S0083L02",
+   "known": "あなたの友達について言ったことに同意します。",
+   "target": "我同意你说的关于你朋友的事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0083L02U05",
+      "seed_number": 83,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "あなたの友達について言ったことに同意します。",
+      "target_text": "我同意你说的关于你朋友的事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 83,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0083L02U05",
+     "slot": "known",
+     "audio_id": "69036f20-4188-4a05-8088-4cbeedded81d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0083L02U05",
+     "slot": "target1",
+     "audio_id": "022bf2a4-cf04-4b42-9b47-6231339f98e6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0083L02U05",
+     "slot": "target2",
+     "audio_id": "2b9941c5-33b3-425a-8e76-ebdf51dd6f4d"
+    }
+   ]
+  },
+  {
+   "seed": 86,
+   "id": "S0086L02U05",
+   "lego": "S0086L02",
+   "known": "残念ながら、それは不可能でした。",
+   "target": "很可惜，不可能。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0086L02U05",
+      "seed_number": 86,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "残念ながら、それは不可能でした。",
+      "target_text": "很可惜，不可能。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 86,
+       "canon": "P26"
+      },
+      "word_count": 8,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0086L02U05",
+     "slot": "known",
+     "audio_id": "74713af5-8a6f-4001-a4f3-52363636d1ad"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0086L02U05",
+     "slot": "target1",
+     "audio_id": "ceab4614-f4c5-41fe-9655-20d04b3fb751"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0086L02U05",
+     "slot": "target2",
+     "audio_id": "4a6b23fb-7919-4e10-9ee0-3621b92e1a41"
+    }
+   ]
+  },
+  {
+   "seed": 87,
+   "id": "S0087L01U07",
+   "lego": "S0087L01",
+   "known": "彼らは私が知らない人たちです。",
+   "target": "他们是我不认识的人。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0087L01U07",
+      "seed_number": 87,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "彼らは私が知らない人たちです。",
+      "target_text": "他们是我不认识的人。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 87,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0087L01U07",
+     "slot": "known",
+     "audio_id": "4fa216b4-823b-4945-8207-3a159db48746"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0087L01U07",
+     "slot": "target1",
+     "audio_id": "29ed2f5d-ca6c-4c21-a2e4-a57fea64b860"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0087L01U07",
+     "slot": "target2",
+     "audio_id": "489670cd-3ce9-4b85-8897-2cb063f77260"
+    }
+   ]
+  },
+  {
+   "seed": 88,
+   "id": "S0088L01U06",
+   "lego": "S0088L01",
+   "known": "まだ知らない人と話す準備ができていません。",
+   "target": "我还没准备好跟我不认识的人说话。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0088L01U06",
+      "seed_number": 88,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "まだ知らない人と話す準備ができていません。",
+      "target_text": "我还没准备好跟我不认识的人说话。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 88,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0088L01U06",
+     "slot": "known",
+     "audio_id": "ab811fcb-bae8-4d22-85ec-cf69c86c7db3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0088L01U06",
+     "slot": "target1",
+     "audio_id": "6b53e56e-dd1e-4f93-885b-24a4caa96804"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0088L01U06",
+     "slot": "target2",
+     "audio_id": "a8a89505-17da-4ce3-aba0-de864ce9a949"
+    }
+   ]
+  },
+  {
+   "seed": 89,
+   "id": "S0089L03U06",
+   "lego": "S0089L03",
+   "known": "短い時間でたくさんやったと思います。",
+   "target": "我觉得我在短时间内做了很多。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0089L03U06",
+      "seed_number": 89,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "短い時間でたくさんやったと思います。",
+      "target_text": "我觉得我在短时间内做了很多。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 89,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0089L03U06",
+     "slot": "known",
+     "audio_id": "a871420b-9601-43bc-b566-9baa38d844b9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0089L03U06",
+     "slot": "target1",
+     "audio_id": "7ecddbb9-c499-499c-b3ef-2f629f6748fe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0089L03U06",
+     "slot": "target2",
+     "audio_id": "aa38eba1-b4a2-43bf-8cfe-50c191b2ae94"
+    }
+   ]
+  },
+  {
+   "seed": 91,
+   "id": "S0091L02U06",
+   "lego": "S0091L02",
+   "known": "間に合うように答えるほど早く考えるのは難しいです。",
+   "target": "很难想得够快来及时回答。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0091L02U06",
+      "seed_number": 91,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "間に合うように答えるほど早く考えるのは難しいです。",
+      "target_text": "很难想得够快来及时回答。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 91,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0091L02U06",
+     "slot": "known",
+     "audio_id": "7de86c31-46fc-435d-9819-68d7e1fa1dda"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0091L02U06",
+     "slot": "target1",
+     "audio_id": "82655857-0d51-44c3-875e-68ed063b91f2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0091L02U06",
+     "slot": "target2",
+     "audio_id": "bb81deb7-1aff-4527-ac91-bfb2d867bdf3"
+    }
+   ]
+  },
+  {
+   "seed": 94,
+   "id": "S0094L03U06",
+   "lego": "S0094L03",
+   "known": "これがうまくいく唯一の方法です。",
+   "target": "这是唯一有用的方法。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0094L03U06",
+      "seed_number": 94,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "これがうまくいく唯一の方法です。",
+      "target_text": "这是唯一有用的方法。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 94,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0094L03U06",
+     "slot": "known",
+     "audio_id": "b17374aa-b7aa-4d65-b808-e8b526a20306"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0094L03U06",
+     "slot": "target1",
+     "audio_id": "07eab908-6a18-4d08-bf39-f3fba5b4287a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0094L03U06",
+     "slot": "target2",
+     "audio_id": "52ca834b-e662-4144-902e-8f060b62d6ff"
+    }
+   ]
+  },
+  {
+   "seed": 95,
+   "id": "S0095L03U06",
+   "lego": "S0095L03",
+   "known": "次のバスで家に帰る準備はできていますか？",
+   "target": "你准备好坐下一班车回家了吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0095L03U06",
+      "seed_number": 95,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "次のバスで家に帰る準備はできていますか？",
+      "target_text": "你准备好坐下一班车回家了吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 95,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0095L03U06",
+     "slot": "known",
+     "audio_id": "24107445-5791-4831-b565-f46401ac5efa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0095L03U06",
+     "slot": "target1",
+     "audio_id": "79629081-5c19-4364-9ec4-5b447fb17f10"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0095L03U06",
+     "slot": "target2",
+     "audio_id": "a764de4d-610e-4c46-9307-20f01c26bb31"
+    }
+   ]
+  },
+  {
+   "seed": 96,
+   "id": "S0096L01U06",
+   "lego": "S0096L01",
+   "known": "いいえ、まだ準備ができていません、もう少し時間が必要です。",
+   "target": "不，我还没准备好，我需要多一点时间。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0096L01U06",
+      "seed_number": 96,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "いいえ、まだ準備ができていません、もう少し時間が必要です。",
+      "target_text": "不，我还没准备好，我需要多一点时间。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 96,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0096L01U06",
+     "slot": "known",
+     "audio_id": "ddfd0641-2032-41a6-bbb0-93c5007a0012"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0096L01U06",
+     "slot": "target1",
+     "audio_id": "d0ae5d3b-4317-43af-9079-9a91a407f0b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0096L01U06",
+     "slot": "target2",
+     "audio_id": "8521989f-2533-43fe-875d-8cd9fd7646b2"
+    }
+   ]
+  },
+  {
+   "seed": 98,
+   "id": "S0098L04U06",
+   "lego": "S0098L04",
+   "known": "何か他のものをやることを考えた方がいいです。",
+   "target": "我该考虑玩别的东西。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0098L04U06",
+      "seed_number": 98,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "何か他のものをやることを考えた方がいいです。",
+      "target_text": "我该考虑玩别的东西。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 98,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0098L04U06",
+     "slot": "known",
+     "audio_id": "bf9b9225-2830-42c5-b6e1-dc1718a47e39"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0098L04U06",
+     "slot": "target1",
+     "audio_id": "0d72ac98-1a4a-4a57-9432-3a3d483760ec"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0098L04U06",
+     "slot": "target2",
+     "audio_id": "13c157aa-d427-49bf-b4bf-349d47a0af0b"
+    }
+   ]
+  },
+  {
+   "seed": 101,
+   "id": "S0101L03U06",
+   "lego": "S0101L03",
+   "known": "この言語についてもっと発見するのを楽しんでいます。",
+   "target": "我喜欢多了解这门语言。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0101L03U06",
+      "seed_number": 101,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "この言語についてもっと発見するのを楽しんでいます。",
+      "target_text": "我喜欢多了解这门语言。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 101,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0101L03U06",
+     "slot": "known",
+     "audio_id": "5011edd3-4437-4e57-826a-88f24f76914d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0101L03U06",
+     "slot": "target1",
+     "audio_id": "998afc86-feec-4eba-8f61-474abff39ce9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0101L03U06",
+     "slot": "target2",
+     "audio_id": "ac76147b-ee8e-4c92-b1f2-bb11bccbd4d9"
+    }
+   ]
+  },
+  {
+   "seed": 104,
+   "id": "S0104L01U06",
+   "lego": "S0104L01",
+   "known": "やっていることを変える必要があります。",
+   "target": "我们需要改变我们做的事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0104L01U06",
+      "seed_number": 104,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "やっていることを変える必要があります。",
+      "target_text": "我们需要改变我们做的事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 104,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0104L01U06",
+     "slot": "known",
+     "audio_id": "257b8e84-5d18-4557-aed6-193dbd65c062"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0104L01U06",
+     "slot": "target1",
+     "audio_id": "1425aac3-54d4-49e2-aa76-f6333b0943a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0104L01U06",
+     "slot": "target2",
+     "audio_id": "3746374e-3afc-47b7-aea7-373875927f16"
+    }
+   ]
+  },
+  {
+   "seed": 106,
+   "id": "S0106L02U06",
+   "lego": "S0106L02",
+   "known": "幸せを感じる必要はありません、ただ一生懸命働く必要があります。",
+   "target": "我们不需要觉得开心，我们只需要努力。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0106L02U06",
+      "seed_number": 106,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "幸せを感じる必要はありません、ただ一生懸命働く必要があります。",
+      "target_text": "我们不需要觉得开心，我们只需要努力。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 106,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0106L02U06",
+     "slot": "known",
+     "audio_id": "849f2dd5-ed69-451f-ac09-c57e63b7238e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0106L02U06",
+     "slot": "target1",
+     "audio_id": "27b40db3-c2a9-419f-908c-d9c55b10572e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0106L02U06",
+     "slot": "target2",
+     "audio_id": "2fb637f9-64aa-4c3b-96c1-74fd48e26eaf"
+    }
+   ]
+  },
+  {
+   "seed": 108,
+   "id": "S0108L01U06",
+   "lego": "S0108L01",
+   "known": "夜中に起きることを望んでいませんでした。",
+   "target": "我们没希望半夜醒。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0108L01U06",
+      "seed_number": 108,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "夜中に起きることを望んでいませんでした。",
+      "target_text": "我们没希望半夜醒。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 108,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0108L01U06",
+     "slot": "known",
+     "audio_id": "09f939a3-a062-40ba-9ee8-41305ad3b651"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0108L01U06",
+     "slot": "target1",
+     "audio_id": "fa4da533-bbab-4dd4-a3ca-0016b36d1e87"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0108L01U06",
+     "slot": "target2",
+     "audio_id": "bdfd8f67-a73c-4e0a-9e9e-06546939005d"
+    }
+   ]
+  },
+  {
+   "seed": 109,
+   "id": "S0109L02U06",
+   "lego": "S0109L02",
+   "known": "たくさんの新しい言葉を学ぶために一生懸命働かなければなりません。",
+   "target": "我们必须努力学很多新词。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0109L02U06",
+      "seed_number": 109,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "たくさんの新しい言葉を学ぶために一生懸命働かなければなりません。",
+      "target_text": "我们必须努力学很多新词。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 109,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0109L02U06",
+     "slot": "known",
+     "audio_id": "faa6d6bf-86e1-4d13-98b7-dc6dc1f50931"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0109L02U06",
+     "slot": "target1",
+     "audio_id": "824c6fb2-831c-4063-afb2-383e99648ee0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0109L02U06",
+     "slot": "target2",
+     "audio_id": "2a75480a-ed70-41b4-8084-6de0a8979458"
+    }
+   ]
+  },
+  {
+   "seed": 110,
+   "id": "S0110L01U07",
+   "lego": "S0110L01",
+   "known": "私たちは友達です、そして終わったらリラックスしたいです。",
+   "target": "我们是朋友，做完以后我想放松。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0110L01U07",
+      "seed_number": 110,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "私たちは友達です、そして終わったらリラックスしたいです。",
+      "target_text": "我们是朋友，做完以后我想放松。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 110,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0110L01U07",
+     "slot": "known",
+     "audio_id": "ef89685b-ab83-4c72-b7ab-f6e382e91425"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0110L01U07",
+     "slot": "target1",
+     "audio_id": "7366e333-758c-4753-b544-5a7dfe88b642"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0110L01U07",
+     "slot": "target2",
+     "audio_id": "91b073ae-9dd9-4671-88ed-9f0b31b7c1e2"
+    }
+   ]
+  },
+  {
+   "seed": 111,
+   "id": "S0111L01U06",
+   "lego": "S0111L01",
+   "known": "新しいことを学ぶと脳が変わります。",
+   "target": "我们学新东西的时候会改变我们的大脑。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0111L01U06",
+      "seed_number": 111,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "新しいことを学ぶと脳が変わります。",
+      "target_text": "我们学新东西的时候会改变我们的大脑。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 111,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0111L01U06",
+     "slot": "known",
+     "audio_id": "49f966b1-d875-4a15-9aab-33eb1d1eda5a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0111L01U06",
+     "slot": "target1",
+     "audio_id": "c14ca7dc-e748-44fe-b631-0bb1ac7e06d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0111L01U06",
+     "slot": "target2",
+     "audio_id": "65614370-9b85-4635-8da7-a49904c3339e"
+    }
+   ]
+  },
+  {
+   "seed": 136,
+   "id": "S0136L01U06",
+   "lego": "S0136L01",
+   "known": "もちろん彼女に聞いてもいいです、彼女は私の友達だからです。",
+   "target": "当然你可以问她因为她是我的朋友。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0136L01U06",
+      "seed_number": 136,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "もちろん彼女に聞いてもいいです、彼女は私の友達だからです。",
+      "target_text": "当然你可以问她因为她是我的朋友。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 136,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0136L01U06",
+     "slot": "known",
+     "audio_id": "9bd7e6e6-eff3-49ac-a4f4-946d5173a879"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0136L01U06",
+     "slot": "target1",
+     "audio_id": "4a692866-0d54-42c6-b68f-da25f496b030"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0136L01U06",
+     "slot": "target2",
+     "audio_id": "88f52b18-5d41-45d9-a998-6634c90f40ab"
+    }
+   ]
+  },
+  {
+   "seed": 137,
+   "id": "S0137L03U06",
+   "lego": "S0137L03",
+   "known": "完璧であるより頻繁に話す方が大切です。",
+   "target": "经常说话比完美更重要。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0137L03U06",
+      "seed_number": 137,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "完璧であるより頻繁に話す方が大切です。",
+      "target_text": "经常说话比完美更重要。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 137,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0137L03U06",
+     "slot": "known",
+     "audio_id": "61bc0604-43dc-4ebf-a35b-f50e4176c277"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0137L03U06",
+     "slot": "target1",
+     "audio_id": "600c477b-ba3f-4a49-ba8e-59e991b5172f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0137L03U06",
+     "slot": "target2",
+     "audio_id": "81596b3e-248a-4b82-971c-31603f0148e3"
+    }
+   ]
+  },
+  {
+   "seed": 140,
+   "id": "S0140L02U07",
+   "lego": "S0140L02",
+   "known": "あなたが見せようとしているものが見えなくてすみません。",
+   "target": "对不起我看不到你在试着给我看的。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0140L02U07",
+      "seed_number": 140,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "あなたが見せようとしているものが見えなくてすみません。",
+      "target_text": "对不起我看不到你在试着给我看的。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 140,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0140L02U07",
+     "slot": "known",
+     "audio_id": "41afdd80-2014-44bd-9e31-8d95e06a9f6d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0140L02U07",
+     "slot": "target1",
+     "audio_id": "e0c374dd-ff98-4133-b10f-368ea7333072"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0140L02U07",
+     "slot": "target2",
+     "audio_id": "081c987e-1da6-48f7-b23e-d29fe48b887e"
+    }
+   ]
+  },
+  {
+   "seed": 142,
+   "id": "S0142L01U06",
+   "lego": "S0142L01",
+   "known": "とても親切ですね、手伝ってくれて感謝しています。",
+   "target": "你太好了，我很感谢你帮忙。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0142L01U06",
+      "seed_number": 142,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "とても親切ですね、手伝ってくれて感謝しています。",
+      "target_text": "你太好了，我很感谢你帮忙。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 142,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0142L01U06",
+     "slot": "known",
+     "audio_id": "e917ada3-0a1a-4b9b-a9b8-a46cc9cc271a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0142L01U06",
+     "slot": "target1",
+     "audio_id": "c36295bf-c544-4a5a-9f82-e76c9b7c7954"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0142L01U06",
+     "slot": "target2",
+     "audio_id": "8337c9ad-bb79-4c44-9caf-93dd62a63080"
+    }
+   ]
+  },
+  {
+   "seed": 143,
+   "id": "S0143L02U07",
+   "lego": "S0143L02",
+   "known": "それは前に話していたことと同じです。",
+   "target": "这个和我们刚才说的是一样的东西。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0143L02U07",
+      "seed_number": 143,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "それは前に話していたことと同じです。",
+      "target_text": "这个和我们刚才说的是一样的东西。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 143,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0143L02U07",
+     "slot": "known",
+     "audio_id": "327aba98-e8c1-429a-9ad4-9a789ece60b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0143L02U07",
+     "slot": "target1",
+     "audio_id": "49d8c155-4721-49d3-9a6e-e8cff0492275"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0143L02U07",
+     "slot": "target2",
+     "audio_id": "26f5c9ce-c378-4f60-9fe8-1a66981beced"
+    }
+   ]
+  },
+  {
+   "seed": 146,
+   "id": "S0146L01U05",
+   "lego": "S0146L01",
+   "known": "直そうとしてから何もうまくいかないようです。",
+   "target": "我们试着修它以后什么都好像不行了。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0146L01U05",
+      "seed_number": 146,
+      "lego_index": 1,
+      "position": 7,
+      "known_text": "直そうとしてから何もうまくいかないようです。",
+      "target_text": "我们试着修它以后什么都好像不行了。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 146,
+       "canon": "P26"
+      },
+      "word_count": 17,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0146L01U05",
+     "slot": "known",
+     "audio_id": "3601b580-0f61-43ae-95e5-2b3ec92562a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0146L01U05",
+     "slot": "target1",
+     "audio_id": "42f838ce-f54c-40af-95d4-696cc630c84c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0146L01U05",
+     "slot": "target2",
+     "audio_id": "91c1300b-5a84-4715-b20b-26d77c48b89c"
+    }
+   ]
+  },
+  {
+   "seed": 154,
+   "id": "S0154L01U06",
+   "lego": "S0154L01",
+   "known": "土曜日の夜どこで会いたいですか？",
+   "target": "星期六晚上你想在哪里见面？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0154L01U06",
+      "seed_number": 154,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "土曜日の夜どこで会いたいですか？",
+      "target_text": "星期六晚上你想在哪里见面？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 154,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0154L01U06",
+     "slot": "known",
+     "audio_id": "dfab0c7e-739f-42c5-aed9-cd96826dfe1d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0154L01U06",
+     "slot": "target1",
+     "audio_id": "b1d30005-9460-40ba-ae96-1f457576f70b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0154L01U06",
+     "slot": "target2",
+     "audio_id": "8a80fe47-b148-49b3-9e10-82b7c1155a31"
+    }
+   ]
+  },
+  {
+   "seed": 156,
+   "id": "S0156L01U06",
+   "lego": "S0156L01",
+   "known": "今夜レストランに行きたいですか？",
+   "target": "你今天晚上想去饭店吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0156L01U06",
+      "seed_number": 156,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "今夜レストランに行きたいですか？",
+      "target_text": "你今天晚上想去饭店吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 156,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0156L01U06",
+     "slot": "known",
+     "audio_id": "e72c892f-6a30-4baa-8a07-12c020137dd7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0156L01U06",
+     "slot": "target1",
+     "audio_id": "f10a4495-5397-4098-aa88-611c30cc41bd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0156L01U06",
+     "slot": "target2",
+     "audio_id": "bdf5b81b-66df-4272-a444-44cb8746842f"
+    }
+   ]
+  },
+  {
+   "seed": 157,
+   "id": "S0157L02U06",
+   "lego": "S0157L02",
+   "known": "来月そこにいることができないでしょう。",
+   "target": "我下个月不能在那里。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0157L02U06",
+      "seed_number": 157,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "来月そこにいることができないでしょう。",
+      "target_text": "我下个月不能在那里。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 157,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0157L02U06",
+     "slot": "known",
+     "audio_id": "fb6b37c4-40fb-4591-afbd-31b30e114e42"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0157L02U06",
+     "slot": "target1",
+     "audio_id": "1f554635-a6d0-4b22-a3eb-15c32fede4ac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0157L02U06",
+     "slot": "target2",
+     "audio_id": "3d5dde7e-3531-4193-af66-1988236470ee"
+    }
+   ]
+  },
+  {
+   "seed": 161,
+   "id": "S0161L02U07",
+   "lego": "S0161L02",
+   "known": "日曜日の朝その本をくれますか？",
+   "target": "你星期天早上能给我那本书吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0161L02U07",
+      "seed_number": 161,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "日曜日の朝その本をくれますか？",
+      "target_text": "你星期天早上能给我那本书吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 161,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0161L02U07",
+     "slot": "known",
+     "audio_id": "9bbe2e10-0402-4703-bd53-7ef73c8846c4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0161L02U07",
+     "slot": "target1",
+     "audio_id": "24b8599f-3ea5-4221-a1ad-130ef21b88ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0161L02U07",
+     "slot": "target2",
+     "audio_id": "1998d4bd-8556-4a79-9d26-ddad88d934a3"
+    }
+   ]
+  },
+  {
+   "seed": 176,
+   "id": "S0176L01U07",
+   "lego": "S0176L01",
+   "known": "来年手伝えるかどうか彼に聞いてみます。",
+   "target": "我会问他明年能不能帮忙。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0176L01U07",
+      "seed_number": 176,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "来年手伝えるかどうか彼に聞いてみます。",
+      "target_text": "我会问他明年能不能帮忙。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 176,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0176L01U07",
+     "slot": "known",
+     "audio_id": "863b1431-b778-4838-8599-5c9290d322c8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0176L01U07",
+     "slot": "target1",
+     "audio_id": "289b1adb-a702-44b6-9ccd-8296bfbe297b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0176L01U07",
+     "slot": "target2",
+     "audio_id": "2e92b038-418c-49a1-b484-81dc78a64daa"
+    }
+   ]
+  },
+  {
+   "seed": 226,
+   "id": "S0226L01U07",
+   "lego": "S0226L01",
+   "known": "その男性は私を手伝おうとしています。",
+   "target": "这个男人在试着帮我。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0226L01U07",
+      "seed_number": 226,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "その男性は私を手伝おうとしています。",
+      "target_text": "这个男人在试着帮我。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 226,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0226L01U07",
+     "slot": "known",
+     "audio_id": "aead0b5c-a71a-4e49-a491-29bae6c1f9c0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0226L01U07",
+     "slot": "target1",
+     "audio_id": "6a1e1bd4-fc95-446e-a306-5b3c4cdb2b31"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0226L01U07",
+     "slot": "target2",
+     "audio_id": "6d1dffa3-535a-487f-889c-08824f348429"
+    }
+   ]
+  },
+  {
+   "seed": 232,
+   "id": "S0232L01U07",
+   "lego": "S0232L01",
+   "known": "答えを覚えている老婦人を知っています。",
+   "target": "我认识一个老女人能记住答案。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0232L01U07",
+      "seed_number": 232,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "答えを覚えている老婦人を知っています。",
+      "target_text": "我认识一个老女人能记住答案。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 232,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0232L01U07",
+     "slot": "known",
+     "audio_id": "be295f8c-9bea-45fb-85d2-d4d6897e733f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0232L01U07",
+     "slot": "target1",
+     "audio_id": "49f1d679-d296-40af-8982-0b13bbee0368"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0232L01U07",
+     "slot": "target2",
+     "audio_id": "d8071ac4-beef-4840-b181-b6e1aa427be3"
+    }
+   ]
+  },
+  {
+   "seed": 233,
+   "id": "S0233L01U07",
+   "lego": "S0233L01",
+   "known": "あなたの妹を知っている若い女性を知っています。",
+   "target": "我认识一个年轻女人认识你姐姐。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0233L01U07",
+      "seed_number": 233,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "あなたの妹を知っている若い女性を知っています。",
+      "target_text": "我认识一个年轻女人认识你姐姐。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 233,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0233L01U07",
+     "slot": "known",
+     "audio_id": "dff19c65-550c-4003-8ac7-9325bae09407"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0233L01U07",
+     "slot": "target1",
+     "audio_id": "65db9648-6889-455d-a82d-d87c52e83bc5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0233L01U07",
+     "slot": "target2",
+     "audio_id": "dab87f22-31f2-4637-b4c6-66507679b60d"
+    }
+   ]
+  },
+  {
+   "seed": 242,
+   "id": "S0242L01U07",
+   "lego": "S0242L01",
+   "known": "彼女にもっと時間をあげたいです。",
+   "target": "我想给她更多时间。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0242L01U07",
+      "seed_number": 242,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "彼女にもっと時間をあげたいです。",
+      "target_text": "我想给她更多时间。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 242,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0242L01U07",
+     "slot": "known",
+     "audio_id": "1b2d16f1-be9f-4a11-b71b-883938610bd3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0242L01U07",
+     "slot": "target1",
+     "audio_id": "644fa925-4dca-49bb-8e32-e5cb6b9fc406"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0242L01U07",
+     "slot": "target2",
+     "audio_id": "c97e1ec6-04ff-4656-a76e-4030f270b251"
+    }
+   ]
+  },
+  {
+   "seed": 247,
+   "id": "S0247L01U07",
+   "lego": "S0247L01",
+   "known": "その本はまあまあ良かったと思いました。",
+   "target": "我觉得那本书挺好的。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0247L01U07",
+      "seed_number": 247,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "その本はまあまあ良かったと思いました。",
+      "target_text": "我觉得那本书挺好的。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 247,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0247L01U07",
+     "slot": "known",
+     "audio_id": "0e6ea1b8-82c5-4e39-8fb6-1085993dfe43"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0247L01U07",
+     "slot": "target1",
+     "audio_id": "866cbbba-1eaa-4b71-8723-a75f3ce5b1ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0247L01U07",
+     "slot": "target2",
+     "audio_id": "026236dc-51ea-48c7-8722-3cadc965ad22"
+    }
+   ]
+  },
+  {
+   "seed": 253,
+   "id": "S0253L02U07",
+   "lego": "S0253L02",
+   "known": "数分で準備ができるはずです。",
+   "target": "我几分钟以后应该准备好。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0253L02U07",
+      "seed_number": 253,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "数分で準備ができるはずです。",
+      "target_text": "我几分钟以后应该准备好。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 253,
+       "canon": "P26"
+      },
+      "word_count": 12,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0253L02U07",
+     "slot": "known",
+     "audio_id": "e79bf3fe-29fa-4bd2-9e26-68748ca3865c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0253L02U07",
+     "slot": "target1",
+     "audio_id": "9f0e48ac-d8b6-490d-8dbc-d6a36e08ff76"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0253L02U07",
+     "slot": "target2",
+     "audio_id": "5475d19e-5bc2-4eb8-ab44-861655afdc23"
+    }
+   ]
+  },
+  {
+   "seed": 255,
+   "id": "S0255L01U07",
+   "lego": "S0255L01",
+   "known": "いつ出発の準備ができると思いますか？",
+   "target": "你觉得你什么时候准备好走？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0255L01U07",
+      "seed_number": 255,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "いつ出発の準備ができると思いますか？",
+      "target_text": "你觉得你什么时候准备好走？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 255,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0255L01U07",
+     "slot": "known",
+     "audio_id": "75bcb1f9-4c67-4ab8-bf3e-43a3f02a686a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0255L01U07",
+     "slot": "target1",
+     "audio_id": "dff62f93-320b-49e2-ae2a-b6978bcca536"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0255L01U07",
+     "slot": "target2",
+     "audio_id": "07bb00ad-f76c-4746-a152-58da32f4b8c7"
+    }
+   ]
+  },
+  {
+   "seed": 261,
+   "id": "S0261L02U07",
+   "lego": "S0261L02",
+   "known": "何か大事なことかもしれないと思います。",
+   "target": "我觉得它可能是件重要的事。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0261L02U07",
+      "seed_number": 261,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "何か大事なことかもしれないと思います。",
+      "target_text": "我觉得它可能是件重要的事。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 261,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0261L02U07",
+     "slot": "known",
+     "audio_id": "f8791b06-4bed-4773-a778-ded13835efaf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0261L02U07",
+     "slot": "target1",
+     "audio_id": "f84d5735-b89a-46ed-bb5e-2b4d96db0b7f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0261L02U07",
+     "slot": "target2",
+     "audio_id": "054dd2d1-6077-4264-ac3b-9e66c466002a"
+    }
+   ]
+  },
+  {
+   "seed": 263,
+   "id": "S0263L02U07",
+   "lego": "S0263L02",
+   "known": "誰のことを言っているのかわかりません。",
+   "target": "我不知道你指的是谁。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0263L02U07",
+      "seed_number": 263,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "誰のことを言っているのかわかりません。",
+      "target_text": "我不知道你指的是谁。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 263,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0263L02U07",
+     "slot": "known",
+     "audio_id": "5e3da1af-77b5-4e56-8509-9fb54999eaa5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0263L02U07",
+     "slot": "target1",
+     "audio_id": "6e6678cb-6a26-4586-ab08-14096800fdef"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0263L02U07",
+     "slot": "target2",
+     "audio_id": "ee8a6d3e-0de8-4c9a-a009-2a488b75ad60"
+    }
+   ]
+  },
+  {
+   "seed": 273,
+   "id": "S0273L02U07",
+   "lego": "S0273L02",
+   "known": "いいえ、残念ながら仕事が多すぎます。",
+   "target": "不行，很遗憾，我工作太多。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0273L02U07",
+      "seed_number": 273,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "いいえ、残念ながら仕事が多すぎます。",
+      "target_text": "不行，很遗憾，我工作太多。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 273,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0273L02U07",
+     "slot": "known",
+     "audio_id": "26555853-702d-4280-b983-fdbaa29aca31"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0273L02U07",
+     "slot": "target1",
+     "audio_id": "3a39b510-6c39-4697-9de4-c9ae204108fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0273L02U07",
+     "slot": "target2",
+     "audio_id": "51c624e8-cf99-498e-a9a1-cf1662ed65b9"
+    }
+   ]
+  },
+  {
+   "seed": 274,
+   "id": "S0274L02U07",
+   "lego": "S0274L02",
+   "known": "数日後に出発しなければなりませんか？",
+   "target": "你几天后就得走吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0274L02U07",
+      "seed_number": 274,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "数日後に出発しなければなりませんか？",
+      "target_text": "你几天后就得走吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 274,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0274L02U07",
+     "slot": "known",
+     "audio_id": "3afee700-d971-4a1a-99e5-aab7f5ba7e00"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0274L02U07",
+     "slot": "target1",
+     "audio_id": "d8faadfd-6c39-4653-a97f-c5e9ff890207"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0274L02U07",
+     "slot": "target2",
+     "audio_id": "2111cc67-3d44-454c-9f03-33f12ca2627e"
+    }
+   ]
+  },
+  {
+   "seed": 280,
+   "id": "S0280L03U07",
+   "lego": "S0280L03",
+   "known": "いいえ、一番大事な仕事だけしなければなりませんでした。",
+   "target": "不，我只需要做最重要的工作。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0280L03U07",
+      "seed_number": 280,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "いいえ、一番大事な仕事だけしなければなりませんでした。",
+      "target_text": "不，我只需要做最重要的工作。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 280,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0280L03U07",
+     "slot": "known",
+     "audio_id": "45734d5d-2d58-49f2-ad87-2acc1023216c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0280L03U07",
+     "slot": "target1",
+     "audio_id": "c7f83e02-55d8-41df-a518-fb9aaaa66c73"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0280L03U07",
+     "slot": "target2",
+     "audio_id": "606d3afa-1269-424f-bac2-2e3fdd8fb626"
+    }
+   ]
+  },
+  {
+   "seed": 281,
+   "id": "S0281L03U07",
+   "lego": "S0281L03",
+   "known": "コーヒー飲み終わるまで待っていい？",
+   "target": "你介意我喝完咖啡你再开始吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0281L03U07",
+      "seed_number": 281,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "コーヒー飲み終わるまで待っていい？",
+      "target_text": "你介意我喝完咖啡你再开始吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0281L03U07",
+     "slot": "known",
+     "audio_id": "1a6ce7c1-547c-4700-92e9-a15a46efaf12"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0281L03U07",
+     "slot": "target1",
+     "audio_id": "a254c6f4-b41f-45f4-a4c0-9c553f2c97c6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0281L03U07",
+     "slot": "target2",
+     "audio_id": "41f2def2-f28c-4f11-839a-ee2fe4dffa5c"
+    }
+   ]
+  },
+  {
+   "seed": 284,
+   "id": "S0284L02U07",
+   "lego": "S0284L02",
+   "known": "妹の友だち、知ってる？",
+   "target": "你认识我妹妹的朋友吗？",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0284L02U07",
+      "seed_number": 284,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "妹の友だち、知ってる？",
+      "target_text": "你认识我妹妹的朋友吗？",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 284,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0284L02U07",
+     "slot": "known",
+     "audio_id": "24d8f51b-2dd7-41d8-a1a9-70a7210a056f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0284L02U07",
+     "slot": "target1",
+     "audio_id": "b7b97916-ef04-4c71-8d50-04a1a2960b6c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0284L02U07",
+     "slot": "target2",
+     "audio_id": "34b7bdbb-ca86-4d20-b05d-51fe6636b669"
+    }
+   ]
+  },
+  {
+   "seed": 296,
+   "id": "S0296L01U07",
+   "lego": "S0296L01",
+   "known": "もう少し時間が必要って言った。",
+   "target": "我说我需要多一点时间。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0296L01U07",
+      "seed_number": 296,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "もう少し時間が必要って言った。",
+      "target_text": "我说我需要多一点时间。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 296,
+       "canon": "P26"
+      },
+      "word_count": 11,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0296L01U07",
+     "slot": "known",
+     "audio_id": "beae3e90-77e2-4cb8-8e21-6130e417a01c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0296L01U07",
+     "slot": "target1",
+     "audio_id": "ef1c9190-443a-4c71-9730-f6a454135c4a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0296L01U07",
+     "slot": "target2",
+     "audio_id": "8dc58f9f-2584-4791-9190-11ed24beea1e"
+    }
+   ]
+  },
+  {
+   "seed": 297,
+   "id": "S0297L01U07",
+   "lego": "S0297L01",
+   "known": "Chinese話せる人、あまり知らない。",
+   "target": "我不认识很多会说Chinese的人。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0297L01U07",
+      "seed_number": 297,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "Chinese話せる人、あまり知らない。",
+      "target_text": "我不认识很多会说Chinese的人。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 297,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0297L01U07",
+     "slot": "known",
+     "audio_id": "d787a1d1-5f6a-489e-88d4-48fa4ace5b08"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0297L01U07",
+     "slot": "target1",
+     "audio_id": "8f62ed7b-8874-4813-9855-ac9045370e36"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0297L01U07",
+     "slot": "target2",
+     "audio_id": "3efb7e8a-8152-463f-a4c9-3392ef331617"
+    }
+   ]
+  },
+  {
+   "seed": 299,
+   "id": "S0299L02U07",
+   "lego": "S0299L02",
+   "known": "半分払いたい。",
+   "target": "他想付一半。",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "zho_for_jpn:S0299L02U07",
+      "seed_number": 299,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "半分払いたい。",
+      "target_text": "他想付一半。",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 299,
+       "canon": "P26"
+      },
+      "word_count": 6,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0299L02U07",
+     "slot": "known",
+     "audio_id": "65c6f744-e64c-49a6-9775-8c06d6b30321"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0299L02U07",
+     "slot": "target1",
+     "audio_id": "2486e770-6dc4-4ff1-8237-518f45261e79"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "zho_for_jpn:S0299L02U07",
+     "slot": "target2",
+     "audio_id": "dd3b087a-b0eb-44d6-88be-9b24e761c1ca"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 2,
+    "known": "学ぼうとしています。",
+    "target": "我在试着学。",
+    "legos": [
+     "S0002L01 〜しようとしている | 在试着",
+     "S0002L02 学ぶ | 学"
+    ]
+   },
+   {
+    "seed": 3,
+    "known": "できるだけ頻繁に話す方法。",
+    "target": "怎么尽量多说。",
+    "legos": [
+     "S0003L01 どうやって | 怎么",
+     "S0003L02 できるだけたくさん | 尽量多"
+    ]
+   },
+   {
+    "seed": 6,
+    "known": "言葉を思い出そうとしています。",
+    "target": "我在试着记住一个词。",
+    "legos": [
+     "S0006L01 覚える | 记住",
+     "S0006L02 一つの言葉 | 一个词"
+    ]
+   },
+   {
+    "seed": 8,
+    "known": "私が言いたいことを説明しようとします。",
+    "target": "我要试着解释我的意思。",
+    "legos": [
+     "S0008L01 説明する | 解释",
+     "S0008L02 私の言いたいこと | 我的意思"
+    ]
+   },
+   {
+    "seed": 11,
+    "known": "あなたが終わったら話せるようになりたいです。",
+    "target": "我想在你说完以后能说。",
+    "legos": [
+     "S0011L01 言い終える | 说完",
+     "S0011L02 〜の後に | 以后"
+    ]
+   },
+   {
+    "seed": 25,
+    "known": "私が行かなければならない前に手伝ってくれますか？",
+    "target": "你会在我要走之前帮我吗?",
+    "legos": [
+     "S0025L01 行く | 走",
+     "S0025L02 〜の前に | 之前",
+     "S0025L03 手伝う | 帮"
+    ]
+   },
+   {
+    "seed": 31,
+    "known": "今夜私と話したかったですね。",
+    "target": "你今天晚上想和我说话。",
+    "legos": [
+     "S0031L01(old) 夜 | 晚上"
+    ]
+   },
+   {
+    "seed": 43,
+    "known": "答え方について考えていませんでした。",
+    "target": "我没想怎么回答。",
+    "legos": [
+     "S0043L01 〜しなかった | 没"
+    ]
+   },
+   {
+    "seed": 48,
+    "known": "間違えても気にしません。",
+    "target": "我不在乎犯错。",
+    "legos": [
+     "S0048L01 気にする | 在乎"
+    ]
+   },
+   {
+    "seed": 49,
+    "known": "こんな感じです、私が言いたいことがわかれば。",
+    "target": "就是这样,如果你知道我的意思。",
+    "legos": [
+     "S0049L01 〜ということです | 就是",
+     "S0049L02 そう | 这样"
+    ]
+   },
+   {
+    "seed": 50,
+    "known": "できるだけ早く終わらせようとしているわけではありません。",
+    "target": "我不是想尽快完成。",
+    "legos": [
+     "S0050L01 終わらせたい | 完成"
+    ]
+   },
+   {
+    "seed": 52,
+    "known": "彼は先週友達に手紙を書きたかったです。",
+    "target": "他上星期想给他的朋友写信。",
+    "legos": [
+     "S0052L01 〜に | 给",
+     "S0052L02 last week | 上星期",
+     "S0052L03 手紙を書く | 写信"
+    ]
+   },
+   {
+    "seed": 53,
+    "known": "彼女は彼の手紙を自分のかばんに入れたかったです。",
+    "target": "她想把他的信放在她的包里。",
+    "legos": [
+     "S0053L01 bag | 包",
+     "S0053L02 〜の中 | 里",
+     "S0053L03 置く | 放",
+     "S0053L04 〜を | 把"
+    ]
+   },
+   {
+    "seed": 55,
+    "known": "よく眠れなかった時に起きるのは楽しくありません。",
+    "target": "我睡不好的时候不喜欢醒来。",
+    "legos": [
+     "S0055L01 眠る・寝る | 睡",
+     "S0055L02 起きる・目が覚める | 醒来"
+    ]
+   },
+   {
+    "seed": 57,
+    "known": "言いたかったことの言い方を思い出せません。",
+    "target": "我不能记住怎么说我想说的。",
+    "legos": [
+     "S0057L01(old) 〜できる | 能"
+    ]
+   },
+   {
+    "seed": 60,
+    "known": "まだ十分な違う言葉の言い方を知りません。",
+    "target": "我还不知道怎么说够多不同的词。",
+    "legos": [
+     "S0060L01 まだ・まだ〜ない | 还",
+     "S0060L02 違う・異なる | 不同"
+    ]
+   },
+   {
+    "seed": 64,
+    "known": "中国語を学ぶのは簡単ではありませんが楽しいです。",
+    "target": "学中文不容易但是很有趣。",
+    "legos": [
+     "S0064L01 難しい・簡単ではない | 不容易"
+    ]
+   },
+   {
+    "seed": 66,
+    "known": "答えを見つけるのは難しくありません。",
+    "target": "找答案不难。",
+    "legos": [
+     "S0066L01 難しい | 难"
+    ]
+   },
+   {
+    "seed": 69,
+    "known": "彼は午後ずっと若い犬の世話をしたくありませんでした。",
+    "target": "他不想整个下午照顾小狗。",
+    "legos": [
+     "S0069L01 世話をする | 照顾",
+     "S0069L02 子犬・小さい犬 | 小狗"
+    ]
+   },
+   {
+    "seed": 71,
+    "known": "誰にも本当のことを聞かせたくありませんでした。",
+    "target": "我们不想让任何人听到真相。",
+    "legos": [
+     "S0071L01 誰でも・誰にも | 任何人",
+     "S0071L02 聴く・聞こえる | 听到",
+     "S0071L03 本当のこと・真相 | 真相"
+    ]
+   },
+   {
+    "seed": 72,
+    "known": "とても上手にやっていると思います。",
+    "target": "我觉得你做得很好。",
+    "legos": [
+     "S0072L01(old) 〜と思う | 觉得"
+    ]
+   },
+   {
+    "seed": 75,
+    "known": "もっと学ぶことがありますか？",
+    "target": "你还有更多要学的吗？",
+    "legos": [
+     "S0075L01(old) ある | 有"
+    ]
+   },
+   {
+    "seed": 76,
+    "known": "もう学んだことにとても満足しています。",
+    "target": "我很高兴我已经学了这么多。",
+    "legos": [
+     "S0076L01 嬉しい・満足している | 很高兴",
+     "S0076L02 すでに・もう〜した | 已经",
+     "S0076L03 こんなに多く・これだけ | 这么多"
+    ]
+   },
+   {
+    "seed": 77,
+    "known": "こんなに早く理解し始めていることに驚いています。",
+    "target": "我很惊讶我开始懂得这么快。",
+    "legos": [
+     "S0077L01 驚いている | 很惊讶",
+     "S0077L02 わかる | 懂得",
+     "S0077L03 こんなに・これほど | 这么"
+    ]
+   },
+   {
+    "seed": 78,
+    "known": "あなたが言ったことがわかりません。",
+    "target": "我不懂你说了什么。",
+    "legos": [
+     "S0078L01(old) わかる | 懂"
+    ]
+   },
+   {
+    "seed": 80,
+    "known": "いつ準備ができるかわかりません。",
+    "target": "我不确定我什么时候准备好。",
+    "legos": [
+     "S0080L01 準備できる・準備が整う | 准备好"
+    ]
+   },
+   {
+    "seed": 81,
+    "known": "いつ始めたいですか？",
+    "target": "你想什么时候开始？",
+    "legos": [
+     "S0081L01(old) いつ | 什么时候"
+    ]
+   },
+   {
+    "seed": 84,
+    "known": "彼が私の友達について言ったことに同意しません。",
+    "target": "我不同意他说的关于我朋友的事。",
+    "legos": [
+     "S0084L01(old) 同意する | 同意"
+    ]
+   },
+   {
+    "seed": 85,
+    "known": "あの人たちを知りません。",
+    "target": "我不认识那些人。",
+    "legos": [
+     "S0085L01 知っている | 认识",
+     "S0085L02 あれら | 那些",
+     "S0085L03(old) 人 | 人"
+    ]
+   },
+   {
+    "seed": 90,
+    "known": "もっとゆっくり話していただければ嬉しいです。",
+    "target": "如果你可以说慢一点就太好了。",
+    "legos": [
+     "S0090L01 もう | 就",
+     "S0090L02 すごい | 太好了"
+    ]
+   },
+   {
+    "seed": 97,
+    "known": "はい、あなたが望む時にすぐ行く準備ができています。",
+    "target": "好，我准备好了，你想什么时候走都可以。",
+    "legos": [
+     "S0097L01 全部 | 都"
+    ]
+   },
+   {
+    "seed": 99,
+    "known": "なぜうまくいかないのか自分に聞いた方がいいです。",
+    "target": "你该问自己为什么不行。",
+    "legos": [
+     "S0099L01(old) 聞く | 问",
+     "S0099L02 大丈夫／うまくいく | 行"
+    ]
+   },
+   {
+    "seed": 100,
+    "known": "似たようなことをすることを心配しなくてもいいです。",
+    "target": "你不该担心做类似的东西。",
+    "legos": [
+     "S0100L01 似ている | 类似"
+    ]
+   },
+   {
+    "seed": 102,
+    "known": "そうではないと言おうとしています。",
+    "target": "我们试着说不是那样的。",
+    "legos": [
+     "S0102L01 そのように・そう | 那样"
+    ]
+   },
+   {
+    "seed": 103,
+    "known": "もっとたくさんの言葉を聞こうとしているわけではありません。",
+    "target": "我们不试着听很多词。",
+    "legos": [
+     "S0103L01 聞く | 听"
+    ]
+   },
+   {
+    "seed": 105,
+    "known": "だから彼は答えを知りませんでした。",
+    "target": "那就是为什么他不知道答案。",
+    "legos": [
+     "S0105L01 あれ | 那"
+    ]
+   },
+   {
+    "seed": 107,
+    "known": "あなたがやっていることを見たいと思いました。",
+    "target": "我们希望看你在做什么。",
+    "legos": [
+     "S0107L01 望む／願う | 希望"
+    ]
+   },
+   {
+    "seed": 112,
+    "known": "それはとても面白かったです、そして予想していませんでした。",
+    "target": "那很有趣，我没想到。",
+    "legos": [
+     "S0112L01 面白い | 有趣"
+    ]
+   },
+   {
+    "seed": 119,
+    "known": "帰る前に何か聞いてもいいですか？",
+    "target": "你走之前我能问你什么吗？",
+    "legos": [
+     "S0119L01(old) 〜の前に | 之前"
+    ]
+   },
+   {
+    "seed": 120,
+    "known": "バスで行くのが好きなのは面白いですね。",
+    "target": "有趣的是你喜欢坐车去。",
+    "legos": [
+     "S0120L01 出かける | 去",
+     "S0120L02 車 | 车"
+    ]
+   },
+   {
+    "seed": 122,
+    "known": "簡単に感じ始めていて、どう進んでいるかにワクワクしています。",
+    "target": "开始觉得更容易，我对进展很兴奋。",
+    "legos": [
+     "S0122L01 〜に対して | 对",
+     "S0122L02 進展は | 进展",
+     "S0122L03 ワクワクする | 兴奋",
+     "S0122L04 始まる | 开始"
+    ]
+   },
+   {
+    "seed": 124,
+    "known": "それはいい考えだと思いました。",
+    "target": "我以为那是个好主意。",
+    "legos": [
+     "S0124L01 〜だと思い込む | 以为"
+    ]
+   },
+   {
+    "seed": 129,
+    "known": "あなたがこんなにうまくやっていてとても嬉しいです。",
+    "target": "我很高兴你做得这么好。",
+    "legos": [
+     "S0129L01(old) する・やる | 做"
+    ]
+   },
+   {
+    "seed": 132,
+    "known": "それは彼女が言っていたことより面白くないです。",
+    "target": "那没有她说的那么有趣。",
+    "legos": [
+     "S0132L01 そんなに | 那么",
+     "S0132L02(old) 彼女 | 她"
+    ]
+   },
+   {
+    "seed": 135,
+    "known": "なぜそんなにいいと思うのかわかりません。",
+    "target": "我不知道为什么你觉得那么好。",
+    "legos": [
+     "S0135L01(old) なぜ | 为什么"
+    ]
+   },
+   {
+    "seed": 141,
+    "known": "大丈夫です。全部大丈夫です。",
+    "target": "没问题。一切都好。",
+    "legos": [
+     "S0141L01(old) すべて | 一切"
+    ]
+   },
+   {
+    "seed": 144,
+    "known": "今朝起きたかった時間より早く起きました。",
+    "target": "今天早上我醒得比我想的早。",
+    "legos": [
+     "S0144L01(old) 今日 | 今天"
+    ]
+   },
+   {
+    "seed": 145,
+    "known": "なぜもう幸せじゃないのですか？",
+    "target": "你为什么不高兴了？",
+    "legos": [
+     "S0145L01(old) 嬉しい・喜ぶ | 高兴"
+    ]
+   },
+   {
+    "seed": 147,
+    "known": "私が緊張しているのを見た時、彼女はとても親切でした。",
+    "target": "她看到我紧张的时候对我很好。",
+    "legos": [
+     "S0147L01 緊張する | 紧张"
+    ]
+   },
+   {
+    "seed": 148,
+    "known": "私が答えられなかった時、彼はあまり辛抱強くありませんでした。",
+    "target": "我回答不了的时候他不太有耐心。",
+    "legos": [
+     "S0148L01(old) 答える | 回答",
+     "S0148L02 我慢 | 耐心"
+    ]
+   },
+   {
+    "seed": 149,
+    "known": "これはあまり難しくないので、すぐ終わるといいですね。",
+    "target": "这个不是很难所以我希望你会很快做完。",
+    "legos": [
+     "S0149L01(old) だから・そのため | 所以"
+    ]
+   },
+   {
+    "seed": 150,
+    "known": "お名前を教えていただけますか？",
+    "target": "你可以告诉我你叫什么名字吗？",
+    "legos": [
+     "S0150L01 〜という名前だ | 叫",
+     "S0150L02(old) 名前 | 名字"
+    ]
+   },
+   {
+    "seed": 151,
+    "known": "それは私が起こると期待していたことではありませんでした。",
+    "target": "那不是我希望会发生的事情。",
+    "legos": [
+     "S0151L01 これが起 | 发生"
+    ]
+   },
+   {
+    "seed": 152,
+    "known": "あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう。",
+    "target": "如果我知道你想要什么，我会做得不一样。",
+    "legos": [
+     "S0152L01(old) もし〜なら | 如果"
+    ]
+   },
+   {
+    "seed": 153,
+    "known": "全く同じ言い方はしなかったでしょう。",
+    "target": "我不会用完全一样的方式说。",
+    "legos": [
+     "S0153L01 完全に・全然 | 完全",
+     "S0153L02 やり方 | 方式"
+    ]
+   },
+   {
+    "seed": 155,
+    "known": "明日の朝数分待っても構いません。",
+    "target": "我不介意明天早上等几分钟。",
+    "legos": [
+     "S0155L01(old) 明日 | 明天",
+     "S0155L02 〜分間 | 分钟"
+    ]
+   },
+   {
+    "seed": 158,
+    "known": "何か他のことについて話しましょう。",
+    "target": "我们说别的吧。",
+    "legos": [
+     "S0158L01 話しましょう | 说吧"
+    ]
+   },
+   {
+    "seed": 159,
+    "known": "それは私が言おうとしていることではありません。",
+    "target": "那不是我想说的。",
+    "legos": [
+     "S0159L01(old) 話す | 说"
+    ]
+   },
+   {
+    "seed": 160,
+    "known": "この言葉は中国語でどう言いますか？",
+    "target": "这个词用中文怎么说？",
+    "legos": [
+     "S0160L01(old) どうやって | 怎么"
+    ]
+   },
+   {
+    "seed": 162,
+    "known": "それについてどう思いますか？",
+    "target": "你觉得那个怎么样？",
+    "legos": [
+     "S0162L01(old) 〜と思う | 觉得"
+    ]
+   },
+   {
+    "seed": 163,
+    "known": "面白いと思います。",
+    "target": "我觉得那很有意思。",
+    "legos": [
+     "S0163L01 意味 | 意思"
+    ]
+   },
+   {
+    "seed": 164,
+    "known": "面白い本",
+    "target": "一本有意思的书",
+    "legos": [
+     "S0164L01(old) 觉得 | 意思"
+    ]
+   },
+   {
+    "seed": 165,
+    "known": "でも本当かどうかわかりません。",
+    "target": "但是我不确定是不是真的。",
+    "legos": [
+     "S0165L01 本当に | 真"
+    ]
+   },
+   {
+    "seed": 166,
+    "known": "私の名前はあまり珍しくありません。",
+    "target": "我的名字不是很少见。",
+    "legos": [
+     "S0166L01 少ない | 少",
+     "S0166L02 珍しい | 少见"
+    ]
+   },
+   {
+    "seed": 167,
+    "known": "明日の午後何をする必要がありますか？",
+    "target": "你明天下午需要做什么？",
+    "legos": [
+     "S0167L01(old) 必要とする | 需要"
+    ]
+   },
+   {
+    "seed": 168,
+    "known": "そしたら後で来て手伝うことができます。",
+    "target": "然后我就能来帮忙了。",
+    "legos": [
+     "S0168L01 それから | 然后"
+    ]
+   },
+   {
+    "seed": 169,
+    "known": "私に何をしてほしいですか？",
+    "target": "你想让我做什么？",
+    "legos": [
+     "S0169L01(old) 〜させる・〜してもらう | 让"
+    ]
+   },
+   {
+    "seed": 170,
+    "known": "何が必要か教えてほしいです。",
+    "target": "我想让你告诉我你需要什么。",
+    "legos": [
+     "S0170L01(old) 伝える・教える | 告诉"
+    ]
+   },
+   {
+    "seed": 171,
+    "known": "探すのを手伝ってほしいですか？",
+    "target": "你想让我帮你找吗？",
+    "legos": [
+     "S0171L01(old) 見つける | 找"
+    ]
+   },
+   {
+    "seed": 172,
+    "known": "はい、それはとても助かります。",
+    "target": "是的，那会很有帮助。",
+    "legos": [
+     "S0172L01 助ける・助け・役に立つ | 帮助"
+    ]
+   },
+   {
+    "seed": 173,
+    "known": "いいえ、大丈夫です、一人でできます。",
+    "target": "不用了谢谢，我自己能行。",
+    "legos": [
+     "S0173L01 ありがとう | 谢谢"
+    ]
+   },
+   {
+    "seed": 174,
+    "known": "私が言っていることがわかりますか？",
+    "target": "你能了解我说的吗？",
+    "legos": [
+     "S0174L01(old) 理解する／知る | 了解"
+    ]
+   },
+   {
+    "seed": 175,
+    "known": "日曜日の朝何をしたいですか？",
+    "target": "你星期天早上想做什么？",
+    "legos": [
+     "S0175L01(old) 日曜日 | 星期天"
+    ]
+   },
+   {
+    "seed": 177,
+    "known": "どこに行きたいか彼女に聞いてみます。",
+    "target": "我会问她她想去哪里。",
+    "legos": [
+     "S0177L01(old) 〜するつもり | 会"
+    ]
+   },
+   {
+    "seed": 178,
+    "known": "あなたに会いたかったけど、時間がありませんでした。",
+    "target": "我没有时间，虽然我想见你。",
+    "legos": [
+     "S0178L01 〜けれども・〜ではあるが | 虽然"
+    ]
+   },
+   {
+    "seed": 179,
+    "known": "日曜日の午後何をするつもりですか？",
+    "target": "你星期天下午要做什么？",
+    "legos": [
+     "S0179L01(old) する | 做"
+    ]
+   },
+   {
+    "seed": 180,
+    "known": "しばらく本を読みたいです。",
+    "target": "我想看一会儿我的书。",
+    "legos": [
+     "S0180L01(old) 本 | 书"
+    ]
+   },
+   {
+    "seed": 181,
+    "known": "でも母を医者に連れて行かなければなりません。",
+    "target": "但是我必须带我妈妈去看医生。",
+    "legos": [
+     "S0181L01 連れて行く・連れてくる・持っていく・持ってくる | 带",
+     "S0181L02 お母さん・母 | 妈妈",
+     "S0181L03 医者・お医者さん | 医生"
+    ]
+   },
+   {
+    "seed": 186,
+    "known": "来週何か違うことについて話したいですか？",
+    "target": "你下星期想聊点不一样的吗？",
+    "legos": [
+     "S0186L01(old) 同じ | 一样"
+    ]
+   },
+   {
+    "seed": 188,
+    "known": "だから変える必要はありません。",
+    "target": "所以我不需要改变。",
+    "legos": [
+     "S0188L01(old) 変える | 改变"
+    ]
+   },
+   {
+    "seed": 189,
+    "known": "はい、それはいい考えですね。",
+    "target": "是的，那是个好主意。",
+    "legos": [
+     "S0189L01(old) アイデア | 主意"
+    ]
+   },
+   {
+    "seed": 190,
+    "known": "いくつか質問してもいいですか？",
+    "target": "你介意我问你几个问题吗？",
+    "legos": [
+     "S0190L01(old) 気にする | 介意"
+    ]
+   },
+   {
+    "seed": 191,
+    "known": "いいえ、全然構いません。",
+    "target": "没有，我一点都不介意。",
+    "legos": [
+     "S0191L01(old) 気にする | 介意"
+    ]
+   },
+   {
+    "seed": 192,
+    "known": "明日の夜は忙しいです。",
+    "target": "我明天晚上很忙。",
+    "legos": [
+     "S0192L01(old) 夜 | 晚上"
+    ]
+   },
+   {
+    "seed": 193,
+    "known": "すみませんが、今日は忙しすぎます。",
+    "target": "对不起，但是我今天太忙了。",
+    "legos": [
+     "S0193L01(old) すみません | 对不起"
+    ]
+   },
+   {
+    "seed": 199,
+    "known": "友達は以前オフィスで働いていました。",
+    "target": "我朋友以前在办公室工作。",
+    "legos": [
+     "S0199L01(old) 以前 | 以前"
+    ]
+   },
+   {
+    "seed": 201,
+    "known": "何が起こるか知りたかったです。",
+    "target": "我们想知道会发生什么。",
+    "legos": [
+     "S0201L01(old) 起こる | 发生"
+    ]
+   },
+   {
+    "seed": 202,
+    "known": "誰も質問にどう答えるかわかりませんでした。",
+    "target": "没有人知道怎么回答问题。",
+    "legos": [
+     "S0202L01(old) 答える | 回答"
+    ]
+   },
+   {
+    "seed": 207,
+    "known": "やる必要があったことをやりましたね。",
+    "target": "你做了你需要做的。",
+    "legos": [
+     "S0207L01(old) する | 做"
+    ]
+   },
+   {
+    "seed": 208,
+    "known": "どう言うか聞きたくありませんでした。",
+    "target": "我不想问你怎么说。",
+    "legos": [
+     "S0208L01(old) 聞く | 问"
+    ]
+   },
+   {
+    "seed": 209,
+    "known": "彼らはグループとして集まってもっと時間を過ごしたいです。",
+    "target": "他们想花更多时间一起开会。",
+    "legos": [
+     "S0209L01 会議を開く／ミーティングをする | 开会"
+    ]
+   },
+   {
+    "seed": 211,
+    "known": "彼らは説明したくないと言いました。",
+    "target": "他们告诉我们他们不想解释。",
+    "legos": [
+     "S0211L01(old) 説明する | 解释"
+    ]
+   },
+   {
+    "seed": 212,
+    "known": "彼らは助けを求めたかったです。",
+    "target": "他们想请人帮忙。",
+    "legos": [
+     "S0212L01(old) お願いする／頼む | 请"
+    ]
+   },
+   {
+    "seed": 213,
+    "known": "彼らが何を達成しようとしているかわかりません。",
+    "target": "我们不知道他们想做什么。",
+    "legos": [
+     "S0213L01(old) 知る・分かる | 知道"
+    ]
+   },
+   {
+    "seed": 216,
+    "known": "友達に何人か会いました。",
+    "target": "我见了几个朋友。",
+    "legos": [
+     "S0216L01(old) 顔を合わせる | 见"
+    ]
+   },
+   {
+    "seed": 218,
+    "known": "日曜日はあまり何もしませんでした。",
+    "target": "我星期天没做什么。",
+    "legos": [
+     "S0218L01(old) 日曜日 | 星期天"
+    ]
+   },
+   {
+    "seed": 219,
+    "known": "しばらくリラックスするのは良かったです。",
+    "target": "放松一会儿很好。",
+    "legos": [
+     "S0219L01(old) リラックスする | 放松"
+    ]
+   },
+   {
+    "seed": 222,
+    "known": "彼は何が欲しいか私に伝えようとしています。",
+    "target": "他在试着告诉我他想要什么",
+    "legos": [
+     "S0222L01(old) 伝える | 告诉"
+    ]
+   },
+   {
+    "seed": 223,
+    "known": "彼は明日あなたに聞くつもりです。",
+    "target": "他明天会问你。",
+    "legos": [
+     "S0223L01(old) 聞く | 问"
+    ]
+   },
+   {
+    "seed": 225,
+    "known": "できれば答えをくれるでしょう。",
+    "target": "如果他能的话，他会给你一个答案。",
+    "legos": [
+     "S0225L01 〜なら・〜の場合 | 的话"
+    ]
+   },
+   {
+    "seed": 227,
+    "known": "あの男性は私に何か新しいことを教えるつもりです。",
+    "target": "那个男人会告诉我新东西。",
+    "legos": [
+     "S0227L01(old) 男人 | 男人"
+    ]
+   },
+   {
+    "seed": 228,
+    "known": "あの男性は話す練習を始めたばかりです。",
+    "target": "那个男人刚开始练习说。",
+    "legos": [
+     "S0228L01(old) 〜したばかり・ちょうど | 刚"
+    ]
+   },
+   {
+    "seed": 229,
+    "known": "あの女性はできれば手伝ってくれるでしょう。",
+    "target": "如果她能的话，那个女人会帮你。",
+    "legos": [
+     "S0229L01 女性・女の人 | 女人"
+    ]
+   },
+   {
+    "seed": 230,
+    "known": "あなたと一緒に働きたい若い男性を知っています。",
+    "target": "我认识一个年轻人想和你工作。",
+    "legos": [
+     "S0230L01 若者 | 年轻人"
+    ]
+   },
+   {
+    "seed": 231,
+    "known": "助けを求めたかった老人を知っています。",
+    "target": "我认识一个老人想请人帮忙。",
+    "legos": [
+     "S0231L01 お年寄り | 老人"
+    ]
+   },
+   {
+    "seed": 234,
+    "known": "昨夜あなたの兄と一緒に働いている人に会いました。",
+    "target": "我昨天晚上见了一个和你哥哥工作的人。",
+    "legos": [
+     "S0234L01 昨日の夜・昨夜 | 昨天晚上",
+     "S0234L02 お兄さん・兄 | 哥哥",
+     "S0234L03 会う・見る | 见"
+    ]
+   },
+   {
+    "seed": 235,
+    "known": "あなたに何か伝えたいと言った人に会いました。",
+    "target": "我见了一个人说他想告诉你一些。",
+    "legos": [
+     "S0235L01 伝える・教える | 告诉",
+     "S0235L02 何か・いくつかの | 一些"
+    ]
+   },
+   {
+    "seed": 236,
+    "known": "助けようとするつもりだと言った人を知っています。",
+    "target": "我认识一个人说她会试着帮忙。",
+    "legos": [
+     "S0236L01 助ける・手伝う | 帮忙"
+    ]
+   },
+   {
+    "seed": 237,
+    "known": "彼は週末の前にあなたに伝えてほしかったです。",
+    "target": "他想让我周末以前告诉你。",
+    "legos": [
+     "S0237L01 〜させる・〜してもらう | 让",
+     "S0237L02 〜の前に・以前 | 以前"
+    ]
+   },
+   {
+    "seed": 238,
+    "known": "彼は昨日あなたが私に伝えてほしかったです。",
+    "target": "他昨天想让你告诉我。",
+    "legos": [
+     "S0238L01(old) 〜させる・〜してもらう | 让"
+    ]
+   },
+   {
+    "seed": 241,
+    "known": "彼にそれをあげたくありません。",
+    "target": "我不想给他。",
+    "legos": [
+     "S0241L01 にあげる | 给"
+    ]
+   },
+   {
+    "seed": 243,
+    "known": "同じ食べ物を頼むつもりです。",
+    "target": "我会要同样的东西吃。",
+    "legos": [
+     "S0243L01 同じ・同様の | 同样的",
+     "S0243L02 物・もの | 东西",
+     "S0243L03 食べる | 吃"
+    ]
+   },
+   {
+    "seed": 245,
+    "known": "短い時間でたくさんできたことが嬉しいです。",
+    "target": "我很高兴我在短时间内做了这么多。",
+    "legos": [
+     "S0245L01 嬉しい・喜ぶ | 高兴",
+     "S0245L02(old) 短い | 短",
+     "S0245L03 する・やる | 做",
+     "S0245L04 こんなに・そんなに多く | 这么多"
+    ]
+   },
+   {
+    "seed": 246,
+    "known": "彼女にあなたを手伝ってほしかったけど、彼女は忙しすぎました。",
+    "target": "我想让她帮你，但是她太忙了。",
+    "legos": [
+     "S0246L01 でも・しかし・だが | 但是",
+     "S0246L02 あまりにも・過度に | 太",
+     "S0246L03 忙しい | 忙"
+    ]
+   },
+   {
+    "seed": 248,
+    "known": "その映画は全くひどいと思ったので、お金を返してほしいです。",
+    "target": "我觉得那部电影很差，我想把钱要回来。",
+    "legos": [
+     "S0248L01 あの映画 | 那部电影",
+     "S0248L02 ひどい・悪い・下手 | 差",
+     "S0248L03 〜を | 把",
+     "S0248L04 返してもらう | 要回来"
+    ]
+   },
+   {
+    "seed": 249,
+    "known": "行く前に私を手伝ってほしいです。",
+    "target": "我想让你走以前帮我。",
+    "legos": [
+     "S0249L01 行く・去る・歩く | 走"
+    ]
+   },
+   {
+    "seed": 250,
+    "known": "答える前に何か他のことを教えてくれますか？",
+    "target": "我回答以前你能告诉我别的吗？",
+    "legos": [
+     "S0250L01 答える・返答する | 回答",
+     "S0250L02 他の・別の | 别的"
+    ]
+   },
+   {
+    "seed": 251,
+    "known": "終わるまで知りたくありません。",
+    "target": "我不想我们完成以前知道。",
+    "legos": [
+     "S0251L01 終わる・完成する | 完成"
+    ]
+   },
+   {
+    "seed": 254,
+    "known": "今朝からずっと準備ができています。",
+    "target": "我从今天早上就准备好了。",
+    "legos": [
+     "S0254L01 〜から・〜より | 从",
+     "S0254L02 朝・午前 | 早上",
+     "S0254L03 もう・ちょうど | 就"
+    ]
+   },
+   {
+    "seed": 257,
+    "known": "その青いものが好きです。",
+    "target": "我喜欢那个蓝色的东西。",
+    "legos": [
+     "S0257L01(old) 青い・青色 | 蓝色"
+    ]
+   },
+   {
+    "seed": 260,
+    "known": "全然わかりません。",
+    "target": "我一点都不知道。",
+    "legos": [
+     "S0260L01 少し・ちょっと | 一点",
+     "S0260L02 全部・全然 | 都"
+    ]
+   },
+   {
+    "seed": 262,
+    "known": "昨日話していたあの男の人は誰ですか？",
+    "target": "你昨天在跟哪个男人说话？",
+    "legos": [
+     "S0262L01 〜と | 跟",
+     "S0262L02 どの・どれ | 哪个"
+    ]
+   },
+   {
+    "seed": 264,
+    "known": "年を取った男の人。",
+    "target": "一个老人。",
+    "legos": [
+     "S0264L01(old) お年寄り | 老人"
+    ]
+   },
+   {
+    "seed": 267,
+    "known": "友達から聞きましたか？",
+    "target": "你有你朋友的消息吗？",
+    "legos": [
+     "S0267L01 ニュース・連絡・情報 | 消息"
+    ]
+   },
+   {
+    "seed": 269,
+    "known": "なぜお父さんを待ちたくないのですか？",
+    "target": "你为什么不想等你爸爸？",
+    "legos": [
+     "S0269L01 なぜ・どうして | 为什么",
+     "S0269L02(old) 待つ | 等"
+    ]
+   },
+   {
+    "seed": 272,
+    "known": "はい、それはいい考えですね。",
+    "target": "好啊，听起来很棒。",
+    "legos": [
+     "S0272L01 〜ね・そうですね | 啊",
+     "S0272L02 〜に聞こえる・〜そうだ | 听起来",
+     "S0272L03 すごい | 棒"
+    ]
+   },
+   {
+    "seed": 276,
+    "known": "いいえ、ここにもう少し長くいられます。",
+    "target": "不，我还能在这里待一会儿。",
+    "legos": [
+     "S0276L01 まだ・まだある | 还",
+     "S0276L02 ここで | 这里",
+     "S0276L03 いる・とどまる | 待",
+     "S0276L04 しばらく・少しの間 | 一会儿"
+    ]
+   },
+   {
+    "seed": 277,
+    "known": "はい、来週の初めに大事な予定があります。",
+    "target": "是的，我下周初有个重要会议。",
+    "legos": [
+     "S0277L01 はい・そうです | 是的",
+     "S0277L02 次の週 | 下周",
+     "S0277L03 初め・最初 | 初",
+     "S0277L04 会議・ミーティング | 会议"
+    ]
+   },
+   {
+    "seed": 278,
+    "known": "昨夜全部終わらせなければなりませんでしたか？",
+    "target": "你昨晚必须把一切都完成吗？",
+    "legos": [
+     "S0278L01 昨晩 | 昨晚",
+     "S0278L02 必ず〜しなければならない | 必须",
+     "S0278L03 すべて | 一切"
+    ]
+   },
+   {
+    "seed": 279,
+    "known": "はい、時間があまり残っていなかったからです。",
+    "target": "是的，因为剩下的时间不多了。",
+    "legos": [
+     "S0279L01 残る・残っている | 剩"
+    ]
+   },
+   {
+    "seed": 282,
+    "known": "うん、問題ない。",
+    "target": "不，那没问题。",
+    "legos": [
+     "S0282L01 問題・質問 | 问题"
+    ]
+   },
+   {
+    "seed": 283,
+    "known": "中国語を話す友だち、誰がいる？",
+    "target": "你哪些朋友会说中文？",
+    "legos": [
+     "S0283L01 どれ・どんな | 哪些",
+     "S0283L02(old) 中国語 | 中文"
+    ]
+   },
+   {
+    "seed": 285,
+    "known": "彼女、Chinese話せる。",
+    "target": "她会说Chinese。",
+    "legos": [
+     "S0285L01 話す | 说"
+    ]
+   },
+   {
+    "seed": 286,
+    "known": "Chineseを話すのが好きな人。",
+    "target": "喜欢说Chinese的人。",
+    "legos": [
+     "S0286L01(old) 好き・好む | 喜欢"
+    ]
+   },
+   {
+    "seed": 287,
+    "known": "テレビ見るのが好きな人、何人知ってる？",
+    "target": "你认识多少喜欢看电视的人？",
+    "legos": [
+     "S0287L01 どのくらい・どれだけ | 多少",
+     "S0287L02(old) テレビ | 电视"
+    ]
+   },
+   {
+    "seed": 288,
+    "known": "知ってる人のほとんどがテレビ好き。",
+    "target": "我认识的大多数人都喜欢看电视。",
+    "legos": [
+     "S0288L01 ほとんど・大部分 | 大多数"
+    ]
+   },
+   {
+    "seed": 289,
+    "known": "今日の午後、来るか気になる。",
+    "target": "我想知道她今天下午会不会在那里。",
+    "legos": [
+     "S0289L01 知る・分かる | 知道",
+     "S0289L02(old) 午後 | 下午",
+     "S0289L03 そこ・あそこ | 那里"
+    ]
+   },
+   {
+    "seed": 290,
+    "known": "答えを知ってるか気になる。",
+    "target": "我想知道他知不知道答案。",
+    "legos": [
+     "S0290L01 知る・知らない | 知",
+     "S0290L02 答え・解答 | 答案"
+    ]
+   },
+   {
+    "seed": 291,
+    "known": "もっと上手に話せるようになりたい。",
+    "target": "我希望我很快就能说得更好。",
+    "legos": [
+     "S0291L01 希望する・望む | 希望",
+     "S0291L02 すぐに・早く | 很快"
+    ]
+   },
+   {
+    "seed": 292,
+    "known": "パーティーに来られるといいな。",
+    "target": "我希望你能来参加聚会。",
+    "legos": [
+     "S0292L01 来る | 来",
+     "S0292L02 参加する | 参加",
+     "S0292L03 パーティー・集まり | 聚会"
+    ]
+   },
+   {
+    "seed": 293,
+    "known": "どこで会うか調べないと。",
+    "target": "我得弄清楚他要在哪里见我。",
+    "legos": [
+     "S0293L01 どこに | 哪里",
+     "S0293L02 会う・面会する | 见",
+     "S0293L03 はっきりさせる・明確にする | 弄清楚",
+     "S0293L04 〜しないと | 得"
+    ]
+   },
+   {
+    "seed": 294,
+    "known": "今夜は電話する時間がない。",
+    "target": "我今晚没足够时间给你打电话。",
+    "legos": [
+     "S0294L01 今夜・今晩 | 今晚",
+     "S0294L02 十分・十分な | 足够",
+     "S0294L03 に電話 | 打电话"
+    ]
+   },
+   {
+    "seed": 295,
+    "known": "一日で終わるって言ってない。",
+    "target": "我没说我想一天就完成。",
+    "legos": [
+     "S0295L01 すぐに・〜だけで | 就"
+    ]
+   },
+   {
+    "seed": 298,
+    "known": "もう言うことがない。",
+    "target": "我没什么好说的了。",
+    "legos": [
+     "S0298L01(old) 話す・言う | 说"
+    ]
+   },
+   {
+    "seed": 300,
+    "known": "冷たく見られたくない。",
+    "target": "她不想显得不友好。",
+    "legos": [
+     "S0300L01 友好・親切 | 友好",
+     "S0300L02 〜に見える・〜のように見える | 显得"
+    ]
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 26,
+    "known": "もうすぐ行ける準備ができているように感じるのが好きです。",
+    "target": "我喜欢感觉好像我快要走了。",
+    "row": "S0026L04U04",
+    "row_known": "もうすぐ行く準備ができているように感じるのが好きです",
+    "row_target": "我喜欢感觉好像我快要走了"
+   },
+   {
+    "seed": 41,
+    "known": "大丈夫ですが、疲れ始めています。",
+    "target": "我感觉还可以,但是我开始感觉累了。",
+    "row": "S0041L01U01",
+    "row_known": "大丈夫ですが疲れ始めています",
+    "row_target": "我感觉还可以,但是我开始感觉累了"
+   },
+   {
+    "seed": 56,
+    "known": "だからいくつかの言葉の言い方を覚えられます。",
+    "target": "所以我能记住怎么说几个词。",
+    "row": "S0056L03U01",
+    "row_known": "だからいくつかの言葉の言い方を覚えられる",
+    "row_target": "所以我能记住怎么说几个词"
+   },
+   {
+    "seed": 59,
+    "known": "来週やるべきことのやり方を知っています。",
+    "target": "我知道下星期怎么做我需要做的。",
+    "row": "S0059L01U01",
+    "row_known": "来週やるべきことのやり方を知っている",
+    "row_target": "我知道下星期怎么做我需要做的"
+   },
+   {
+    "seed": 239,
+    "known": "母は読書が好きです。",
+    "target": "我妈妈喜欢看书。",
+    "row": "S0239L02U01",
+    "row_known": "私の母は読書が好きです。",
+    "row_target": "我妈妈喜欢看书。"
+   },
+   {
+    "seed": 240,
+    "known": "父は話すのをやめたがりません。",
+    "target": "我爸爸不喜欢停止说话。",
+    "row": "S0240L03U01",
+    "row_known": "私の父は話すのをやめたがりません。",
+    "row_target": "我爸爸不喜欢停止说话。"
+   },
+   {
+    "seed": 244,
+    "known": "もうたくさん学びました。",
+    "target": "我已经学了很多了。",
+    "row": "S0244L02U01",
+    "row_known": "私はもうたくさん学びました。",
+    "row_target": "我已经学了很多了。"
+   },
+   {
+    "seed": 266,
+    "known": "彼は私の父の古い友達でした。",
+    "target": "他是我父亲的老朋友。",
+    "row": "S0266L02U01",
+    "row_known": "彼は私の父の古い友達です。",
+    "row_target": "他是我父亲的老朋友。"
+   },
+   {
+    "seed": 270,
+    "known": "遅れるのが心配だからです。",
+    "target": "因为我担心我会迟到。",
+    "row": "S0270L03U01",
+    "row_known": "遅刻するのが心配だからです。",
+    "row_target": "因为我担心我会迟到。"
+   },
+   {
+    "seed": 271,
+    "known": "来月私たちと一緒に来ませんか？",
+    "target": "你愿意下个月和我们一起去吗？",
+    "row": "S0271L04U01",
+    "row_known": "来月私たちと一緒に行きませんか？",
+    "row_target": "你愿意下个月和我们一起去吗？"
+   }
+  ],
+  "sibling": [
+   {
+    "seed": 92,
+    "known": "しばらくこれを続けたいです。",
+    "target": "我想继续做一会儿这个。"
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 259,
+    "known": "アイデア。",
+    "target": "一个主意。",
+    "row": "S0259L01B01",
+    "row_known": "アイデア",
+    "row_target": "主意"
+   },
+   {
+    "seed": 265,
+    "known": "友達。",
+    "target": "一个朋友。",
+    "row": "S0265L01B01",
+    "row_known": "友達",
+    "row_target": "朋友"
+   },
+   {
+    "seed": 321,
+    "known": "本。",
+    "target": "一本书。",
+    "row": "S0247L01B01",
+    "row_known": "本",
+    "row_target": "书"
+   },
+   {
+    "seed": 441,
+    "known": "やり方。",
+    "target": "一种方法。",
+    "row": "S0153L02B01",
+    "row_known": "やり方",
+    "row_target": "方式"
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 301,
+    "known": "彼は何か見せたいって言ってた。",
+    "target": "他想给你看点东西。"
+   },
+   {
+    "seed": 302,
+    "known": "彼女は都会に住みたくないって言ってた。",
+    "target": "她说她不想住在城市里。"
+   },
+   {
+    "seed": 303,
+    "known": "彼は座りたいんだと思う。",
+    "target": "我觉得他想坐下来。"
+   },
+   {
+    "seed": 304,
+    "known": "彼女は家で働きたくないと思う。",
+    "target": "我觉得她不想在家工作。"
+   },
+   {
+    "seed": 305,
+    "known": "女の人。",
+    "target": "一个女人。"
+   },
+   {
+    "seed": 306,
+    "known": "友だちと話してる若い女性を知ってる。",
+    "target": "我认识那个正在和你朋友说话的年轻女人。"
+   },
+   {
+    "seed": 307,
+    "known": "あそこに座ってる若い男性を知ってる。",
+    "target": "我认识那个坐在那边的年轻男人。"
+   },
+   {
+    "seed": 308,
+    "known": "うん、母の友だち。",
+    "target": "是的，她是我妈妈的朋友。"
+   },
+   {
+    "seed": 309,
+    "known": "いや、前に見たことない。",
+    "target": "不，我以前从没见过她。"
+   },
+   {
+    "seed": 310,
+    "known": "彼女なら、その人の話を書ける。",
+    "target": "她可以写一个关于那个男人的故事。"
+   },
+   {
+    "seed": 311,
+    "known": "彼は大事な三つの事実を信じられなかった。",
+    "target": "他不敢相信那三个最重要的事实。"
+   },
+   {
+    "seed": 312,
+    "known": "明日の夜、別の部屋を使えるって言ってた。",
+    "target": "她说她明晚可以用另一个房间。"
+   },
+   {
+    "seed": 313,
+    "known": "五試合全部は見られないって言ってた。",
+    "target": "他说他不能看完那五场比赛。"
+   },
+   {
+    "seed": 314,
+    "known": "テーブルに置けると思う。",
+    "target": "我觉得她可以把它放在桌子上。"
+   },
+   {
+    "seed": 315,
+    "known": "欲しかった車は買えなかったと思う。",
+    "target": "我觉得他买不起他想要的那辆车。"
+   },
+   {
+    "seed": 316,
+    "known": "月曜に兄を連れて来られると思う？",
+    "target": "你觉得她周一能带她哥哥来吗？"
+   },
+   {
+    "seed": 317,
+    "known": "うん、やりたければできると思う。",
+    "target": "是的，我觉得她如果想的话可以。"
+   },
+   {
+    "seed": 318,
+    "known": "今回は無理だと思う。",
+    "target": "不，我觉得她这次不行。"
+   },
+   {
+    "seed": 319,
+    "known": "別の国に引っ越す必要がある。",
+    "target": "她需要搬到另一个国家。"
+   },
+   {
+    "seed": 320,
+    "known": "今年はテレビを買う必要ない。",
+    "target": "他今年不需要再买一台电视。"
+   },
+   {
+    "seed": 322,
+    "known": "同じ本を読む必要があるって言ってた。",
+    "target": "她说她需要读同一本书。"
+   },
+   {
+    "seed": 323,
+    "known": "学校まで歩かなくていいって言ってた。",
+    "target": "他说他不需要走路去学校。"
+   },
+   {
+    "seed": 324,
+    "known": "あの生徒、両手を上げてる。",
+    "target": "那个学生双手都举起来了。"
+   },
+   {
+    "seed": 325,
+    "known": "考えるべき問題が十個あると思う。",
+    "target": "我觉得他需要考虑十个可能的问题。"
+   },
+   {
+    "seed": 326,
+    "known": "会社を売る必要はないと思う。",
+    "target": "我觉得她不需要卖掉公司。"
+   },
+   {
+    "seed": 327,
+    "known": "別の方法を出す必要あると思う？",
+    "target": "你觉得她需要提供另一种办法吗？"
+   },
+   {
+    "seed": 328,
+    "known": "うん、そうしたほうがいいと思う。",
+    "target": "是的，我觉得她应该这样做。"
+   },
+   {
+    "seed": 329,
+    "known": "大事なこと。",
+    "target": "这很重要。"
+   },
+   {
+    "seed": 330,
+    "known": "いや、そんなに大事じゃない。",
+    "target": "不，我觉得这不太重要。"
+   },
+   {
+    "seed": 331,
+    "known": "全部の答えは出せない。",
+    "target": "她不能提供所有答案。"
+   },
+   {
+    "seed": 332,
+    "known": "妹のために新しい人生を作れる。",
+    "target": "他可以为他妹妹建立新的生活。"
+   },
+   {
+    "seed": 333,
+    "known": "あまり長く一緒にいられないって言ってた。",
+    "target": "她说她不能花太多时间和大家在一起。"
+   },
+   {
+    "seed": 334,
+    "known": "子猫を抱いていいって言ってた。",
+    "target": "他说他可以让你抱那只小猫。"
+   },
+   {
+    "seed": 335,
+    "known": "いいアイデアを足せると思う。",
+    "target": "我觉得他可以增加一些有价值的想法。"
+   },
+   {
+    "seed": 336,
+    "known": "そのドアは開けられないと思う。",
+    "target": "我觉得她打不开那扇门。"
+   },
+   {
+    "seed": 337,
+    "known": "まだ続けられると思う？",
+    "target": "你觉得他还能继续玩吗？"
+   },
+   {
+    "seed": 338,
+    "known": "ひどく。",
+    "target": "很糟糕。"
+   },
+   {
+    "seed": 339,
+    "known": "結構ひどくケガしてると思う。",
+    "target": "不，我觉得他伤得挺严重的。"
+   },
+   {
+    "seed": 340,
+    "known": "うん、きっと大丈夫。",
+    "target": "是的，我确定他会没事的。"
+   },
+   {
+    "seed": 341,
+    "known": "数日前、人に会った。",
+    "target": "我几天前见过一个人。"
+   },
+   {
+    "seed": 342,
+    "known": "何か言ってた人に会った。",
+    "target": "我见过一个说过话的人。"
+   },
+   {
+    "seed": 343,
+    "known": "経済が心配だって言ってた。",
+    "target": "那个人说她对经济感到担心。"
+   },
+   {
+    "seed": 344,
+    "known": "喜んで手伝うって言ってた。",
+    "target": "那个人说他很高兴帮你。"
+   },
+   {
+    "seed": 345,
+    "known": "まだ出る準備ができてないって言ってた。",
+    "target": "那个人说他还没准备好离开。"
+   },
+   {
+    "seed": 346,
+    "known": "本が好きだって伝えたかった。",
+    "target": "我想让她知道我喜欢她的书。"
+   },
+   {
+    "seed": 347,
+    "known": "一週間前に何が起きてたか知りたがってた。",
+    "target": "他想知道一周前发生了什么。"
+   },
+   {
+    "seed": 348,
+    "known": "これから何が起きるか知りたくなかった。",
+    "target": "她不想知道将要发生什么。"
+   },
+   {
+    "seed": 349,
+    "known": "金曜の夜、出かけたかった？",
+    "target": "他周五晚上想出去吗？"
+   },
+   {
+    "seed": 350,
+    "known": "うん、昔の友だちに会いたかった。",
+    "target": "是的，他想去见一些老朋友。"
+   },
+   {
+    "seed": 351,
+    "known": "一人にしたくなかった。",
+    "target": "不，他不想让我一个人待着。"
+   },
+   {
+    "seed": 352,
+    "known": "やりたくても、できなかった。",
+    "target": "即使他想，他也做不到。"
+   },
+   {
+    "seed": 353,
+    "known": "フィールドを走り回る必要があった。",
+    "target": "她需要在场地里跑来跑去。"
+   },
+   {
+    "seed": 354,
+    "known": "怒ってるように見せる必要なかった。",
+    "target": "他没必要显得生气。"
+   },
+   {
+    "seed": 355,
+    "known": "知ってるあの女性と話す必要あった？",
+    "target": "她需要和你认识的那个女人说话吗？"
+   },
+   {
+    "seed": 356,
+    "known": "大事な話があった。",
+    "target": "是的，他们有重要的事情要讨论。"
+   },
+   {
+    "seed": 357,
+    "known": "ただメッセージを送りたかっただけ。",
+    "target": "不，她只是想给她发个消息。"
+   },
+   {
+    "seed": 358,
+    "known": "頂上に行けなかったって言ってた。",
+    "target": "你的朋友说她到不了顶端。"
+   },
+   {
+    "seed": 359,
+    "known": "左に曲がれるって言ってた。",
+    "target": "你的朋友说他可以向左转。"
+   },
+   {
+    "seed": 360,
+    "known": "他にも何か言ってた？",
+    "target": "你的朋友还说了别的吗？"
+   },
+   {
+    "seed": 361,
+    "known": "静かだった。",
+    "target": "他很安静。"
+   },
+   {
+    "seed": 362,
+    "known": "出たあと、ずっと静かだった。",
+    "target": "不，你走后他挺安静的。"
+   },
+   {
+    "seed": 363,
+    "known": "たくさん話したそうだった。",
+    "target": "是的，他很想多说话。"
+   },
+   {
+    "seed": 364,
+    "known": "あの場所が好きじゃないって聞いた。",
+    "target": "我听说他不喜欢那个地方。"
+   },
+   {
+    "seed": 365,
+    "known": "彼女が何て言ったか聞こえなかった。",
+    "target": "我没听清她对他说了什么。"
+   },
+   {
+    "seed": 366,
+    "known": "何を育てたいか聞いた？",
+    "target": "你听说他想种什么了吗？"
+   },
+   {
+    "seed": 367,
+    "known": "誰も教えてくれなかった。",
+    "target": "不，没有人告诉我。"
+   },
+   {
+    "seed": 368,
+    "known": "トマトを育てたいって聞いた。",
+    "target": "是的，我听说他想种西红柿。"
+   },
+   {
+    "seed": 369,
+    "known": "道で馬を何頭か見た。",
+    "target": "我在路上看到几匹马。"
+   },
+   {
+    "seed": 370,
+    "known": "知ってる人は誰も見なかった。",
+    "target": "我没看到任何我认识的人。"
+   },
+   {
+    "seed": 371,
+    "known": "水曜に映画を見に行った。",
+    "target": "我周三去看了一场电影。"
+   },
+   {
+    "seed": 372,
+    "known": "彼女が作ろうとしてたものを見た？",
+    "target": "你看到她想做什么了吗？"
+   },
+   {
+    "seed": 373,
+    "known": "きれいだった。",
+    "target": "很漂亮。"
+   },
+   {
+    "seed": 374,
+    "known": "うん、とてもきれいだった。",
+    "target": "是的，我觉得非常漂亮。"
+   },
+   {
+    "seed": 375,
+    "known": "何をしてたか分からなかった。",
+    "target": "不，我不知道她在做什么。"
+   },
+   {
+    "seed": 376,
+    "known": "先月はどこにも行かなかった。",
+    "target": "上个月我哪儿也没去。"
+   },
+   {
+    "seed": 377,
+    "known": "去年、どこか行った？",
+    "target": "去年你去过世界上的什么地方吗？"
+   },
+   {
+    "seed": 378,
+    "known": "休みに行くお金がなかった。",
+    "target": "不，我没钱去度假。"
+   },
+   {
+    "seed": 379,
+    "known": "運よくアフリカに行けた。",
+    "target": "是的，我很幸运能去非洲旅行。"
+   },
+   {
+    "seed": 380,
+    "known": "何を入れたいか聞いた。",
+    "target": "我问了她想包括什么。"
+   },
+   {
+    "seed": 381,
+    "known": "ついて来たいかは聞かなかった。",
+    "target": "我没问他想不想跟我们走。"
+   },
+   {
+    "seed": 382,
+    "known": "どこに置きたいか聞いた？",
+    "target": "你问过他想把它放在哪里吗？"
+   },
+   {
+    "seed": 383,
+    "known": "庭に置きたいって言ってた。",
+    "target": "是的，他说他想把它放在花园里。"
+   },
+   {
+    "seed": 384,
+    "known": "さっきの意見には同意できなかった。",
+    "target": "我不同意他刚才说的。"
+   },
+   {
+    "seed": 385,
+    "known": "彼女の意見には同意した？",
+    "target": "你同意她的说法吗？"
+   },
+   {
+    "seed": 386,
+    "known": "うん、同意した。",
+    "target": "是的，我同意她。"
+   },
+   {
+    "seed": 387,
+    "known": "いや、正しいとは思わなかった。",
+    "target": "不，我觉得她不对。"
+   },
+   {
+    "seed": 388,
+    "known": "一緒に働いてる人。",
+    "target": "和你一起工作的人。"
+   },
+   {
+    "seed": 389,
+    "known": "あそこにいる人。",
+    "target": "那边的那个人。"
+   },
+   {
+    "seed": 390,
+    "known": "入り口の近くに立ってる人。",
+    "target": "站在入口附近的那个人。"
+   },
+   {
+    "seed": 391,
+    "known": "バスのほうに歩いてる人。",
+    "target": "正朝公交车走去的那个人。"
+   },
+   {
+    "seed": 392,
+    "known": "郵便局の向かいの黒い髪の子。",
+    "target": "邮局对面那个黑头发的孩子。"
+   },
+   {
+    "seed": 393,
+    "known": "緑のシャツの男の子。",
+    "target": "穿绿色衬衫的那个男孩。"
+   },
+   {
+    "seed": 394,
+    "known": "黄色い服の女の子。",
+    "target": "穿黄色连衣裙的那个女孩。"
+   },
+   {
+    "seed": 395,
+    "known": "次の角で左に曲がる。",
+    "target": "我们需要在下一个路口左转。"
+   },
+   {
+    "seed": 396,
+    "known": "みんなが準備できるまで立たなくていい。",
+    "target": "我们不需要等所有人都准备好。"
+   },
+   {
+    "seed": 397,
+    "known": "もうすぐ準備する必要ある？",
+    "target": "我们需要马上准备好吗？"
+   },
+   {
+    "seed": 398,
+    "known": "子どもにもっと我慢強くなりたい。",
+    "target": "我们想对孩子更有耐心。"
+   },
+   {
+    "seed": 399,
+    "known": "希望を失いたくない。",
+    "target": "我们不想失去希望。"
+   },
+   {
+    "seed": 400,
+    "known": "あとで何か食べたい？",
+    "target": "我们等会儿要不要吃点东西？"
+   },
+   {
+    "seed": 401,
+    "known": "いや、まっすぐ帰ったほうがいい。",
+    "target": "不，直接回家会更好。"
+   },
+   {
+    "seed": 402,
+    "known": "うん、どこかで食べたい。",
+    "target": "是的，停下来吃点东西会很好。"
+   },
+   {
+    "seed": 403,
+    "known": "できるだけ静かにしていよう。",
+    "target": "我们应该尽可能长时间保持安静。"
+   },
+   {
+    "seed": 404,
+    "known": "木曜前に終わるとは思わない。",
+    "target": "我们不应该指望在周四之前完成。"
+   },
+   {
+    "seed": 405,
+    "known": "予約が必要か聞く？",
+    "target": "我们需要问一下要不要预订吗？"
+   },
+   {
+    "seed": 406,
+    "known": "いや、大丈夫だと思う。",
+    "target": "不，我确定没问题。"
+   },
+   {
+    "seed": 407,
+    "known": "良い例を見せたほうがいいんじゃない？",
+    "target": "我们不应该试着树立好榜样吗？"
+   },
+   {
+    "seed": 408,
+    "known": "うん、それが幸せな家族への一番の方法。",
+    "target": "是的，这是建立幸福家庭的最好方式。"
+   },
+   {
+    "seed": 409,
+    "known": "いや、何をしても関係ない。",
+    "target": "不，我们做什么都无所谓。"
+   },
+   {
+    "seed": 410,
+    "known": "彼らはまだケンカしてる。",
+    "target": "他们还在互相争吵。"
+   },
+   {
+    "seed": 411,
+    "known": "今夜、四人でテーブルを予約したい。",
+    "target": "我们今晚想预订一张四人的桌子。"
+   },
+   {
+    "seed": 412,
+    "known": "全部勝たせるわけにはいかなかった。",
+    "target": "我们不能让他们赢得一切。"
+   },
+   {
+    "seed": 413,
+    "known": "端に近づきすぎると落ちるかも。",
+    "target": "如果我们靠得太近，可能会摔倒。"
+   },
+   {
+    "seed": 414,
+    "known": "赤ワインを一本ください。",
+    "target": "请给我们一瓶红酒。"
+   },
+   {
+    "seed": 415,
+    "known": "それは問題にならないと思う。",
+    "target": "如果你问我，那不会是个问题。"
+   },
+   {
+    "seed": 416,
+    "known": "来年、先頭に立ちたいらしい。",
+    "target": "他们明年想带头。"
+   },
+   {
+    "seed": 417,
+    "known": "アリを殺したいの？",
+    "target": "他们想杀掉那些蚂蚁吗？"
+   },
+   {
+    "seed": 418,
+    "known": "地域に貢献する必要がある。",
+    "target": "他们需要为社区服务。"
+   },
+   {
+    "seed": 419,
+    "known": "人に好かれたいなら。",
+    "target": "如果他们想让人们喜欢他们。"
+   },
+   {
+    "seed": 420,
+    "known": "年齢を聞く必要はない。",
+    "target": "他们不需要问他多大年纪。"
+   },
+   {
+    "seed": 421,
+    "known": "もう弱ってきてるのを知ってるから。",
+    "target": "因为他们已经知道他身体在变弱。"
+   },
+   {
+    "seed": 422,
+    "known": "質問。",
+    "target": "一个问题。"
+   },
+   {
+    "seed": 423,
+    "known": "そんな分かりきった質問をする必要ある？",
+    "target": "他们需要问这么明显的问题吗？"
+   },
+   {
+    "seed": 424,
+    "known": "みんなの時間を無駄にしてる。",
+    "target": "不，他们在浪费大家的时间。"
+   },
+   {
+    "seed": 425,
+    "known": "ちゃんと理解する必要がある。",
+    "target": "是的，他们需要确保他们理解了。"
+   },
+   {
+    "seed": 426,
+    "known": "愛したいけど、幸せじゃない。",
+    "target": "他们想彼此相爱，但他们并不开心。"
+   },
+   {
+    "seed": 427,
+    "known": "退屈してると思われたくない。",
+    "target": "他们不想让你觉得他们很无聊。"
+   },
+   {
+    "seed": 428,
+    "known": "火曜に来たい？",
+    "target": "他们周二想来拜访我们吗？"
+   },
+   {
+    "seed": 429,
+    "known": "うん、それは完璧。",
+    "target": "是的，那对他们来说太好了。"
+   },
+   {
+    "seed": 430,
+    "known": "いや、それは無理。",
+    "target": "不，那是不可能的。"
+   },
+   {
+    "seed": 431,
+    "known": "まだ準備できてないけど、もうすぐ。",
+    "target": "他们还没准备好，但很快就会准备好。"
+   },
+   {
+    "seed": 432,
+    "known": "聞いてほしいって意味かもしれない。",
+    "target": "他们可能是想让你去问。"
+   },
+   {
+    "seed": 433,
+    "known": "映画の開始時間が分からなかった。",
+    "target": "他们不知道电影什么时候开始。"
+   },
+   {
+    "seed": 434,
+    "known": "学生の数を減らせると思う？",
+    "target": "他们能减少招收的学生人数吗？"
+   },
+   {
+    "seed": 435,
+    "known": "うん、やりたければできる。",
+    "target": "是的，如果他们想的话可以。"
+   },
+   {
+    "seed": 436,
+    "known": "いや、最低人数がある。",
+    "target": "不，他们有最低人数要求。"
+   },
+   {
+    "seed": 437,
+    "known": "できるだけ多く寄付を集めたかった。",
+    "target": "他们想为慈善筹集尽可能多的钱。"
+   },
+   {
+    "seed": 438,
+    "known": "何をすべきか決めたくなかった。",
+    "target": "他们不想决定他该做什么。"
+   },
+   {
+    "seed": 439,
+    "known": "死にたくない。",
+    "target": "他们不想死。"
+   },
+   {
+    "seed": 440,
+    "known": "若いうちに旅したい。",
+    "target": "他们想趁年轻去旅行。"
+   },
+   {
+    "seed": 442,
+    "known": "新しいやり方を考えたかった？",
+    "target": "他们想开发一种新方法吗？"
+   },
+   {
+    "seed": 443,
+    "known": "同じやり方を続けたかった。",
+    "target": "不，他们想继续用同样的方法做。"
+   },
+   {
+    "seed": 444,
+    "known": "もっと効率よくできると思った。",
+    "target": "是的，他们觉得可以更高效地完成。"
+   },
+   {
+    "seed": 445,
+    "known": "そのスーツケースは運べる。",
+    "target": "他们能拿得动那个行李箱。"
+   },
+   {
+    "seed": 446,
+    "known": "その窓は壊せない。",
+    "target": "他们不能打破那扇窗户。"
+   },
+   {
+    "seed": 447,
+    "known": "食事のあと、家まで運転できる？",
+    "target": "吃完饭后他们能开车送我们回家吗？"
+   },
+   {
+    "seed": 448,
+    "known": "うん、喜んで。",
+    "target": "是的，他们很乐意帮忙。"
+   },
+   {
+    "seed": 449,
+    "known": "もうすぐ準備できるって言ってた。",
+    "target": "他们说他们几乎准备好了。"
+   },
+   {
+    "seed": 450,
+    "known": "自分たちで電車に乗らないといけない。",
+    "target": "不，他们得自己赶火车。"
+   },
+   {
+    "seed": 451,
+    "known": "彼らは何をしたいか言った。",
+    "target": "他们说了他们想做的事。"
+   },
+   {
+    "seed": 452,
+    "known": "彼らは何をしたいか言わなかった。",
+    "target": "他们没说他们想做什么。"
+   },
+   {
+    "seed": 453,
+    "known": "昨夜、誰に会ったか言った？",
+    "target": "他们说过昨晚见了谁吗？"
+   },
+   {
+    "seed": 454,
+    "known": "友だちは六時ごろ来た。",
+    "target": "我们的朋友大约六点来了。"
+   },
+   {
+    "seed": 455,
+    "known": "子どもが疲れてたから帰らなきゃいけなかった。",
+    "target": "我们因为孩子们累了而离开。"
+   },
+   {
+    "seed": 456,
+    "known": "いるかもしれないけど、あまり可能性は高くない。",
+    "target": "他可能会在那里，但不太可能。"
+   },
+   {
+    "seed": 457,
+    "known": "問題の一部は分野が多すぎること。",
+    "target": "问题的一部分是不同领域的数量。"
+   },
+   {
+    "seed": 458,
+    "known": "昔はずっと簡単だった。",
+    "target": "过去一切都容易得多。"
+   },
+   {
+    "seed": 459,
+    "known": "青い標識の前じゃなかった。",
+    "target": "它不在那个蓝色标志前面。"
+   },
+   {
+    "seed": 460,
+    "known": "ホテルの近くで店を探したい。",
+    "target": "我想找一家靠近酒店的商店。"
+   },
+   {
+    "seed": 461,
+    "known": "はがきを買える店。",
+    "target": "我想买明信片的商店。"
+   },
+   {
+    "seed": 462,
+    "known": "祖父は戦争中にイタリアで戦った。",
+    "target": "我爷爷在战争期间在意大利作战。"
+   },
+   {
+    "seed": 463,
+    "known": "部屋番号。",
+    "target": "我的房间号码。"
+   },
+   {
+    "seed": 464,
+    "known": "部屋番号を一度言ったけど、忘れられた。",
+    "target": "我告诉过她我的房间号码一次，但她忘了。"
+   },
+   {
+    "seed": 465,
+    "known": "次は彼女の名前を聞く。",
+    "target": "下次我会问她叫什么名字。"
+   },
+   {
+    "seed": 466,
+    "known": "壁の向こうに投げさせて。",
+    "target": "让我把它扔过墙去。"
+   },
+   {
+    "seed": 467,
+    "known": "駐車場の隣。",
+    "target": "它在停车场旁边。"
+   },
+   {
+    "seed": 468,
+    "known": "世界は大きい。",
+    "target": "世界很大。"
+   },
+   {
+    "seed": 469,
+    "known": "でも、変えられないわけじゃない。",
+    "target": "但是这不意味着我们不能改变它。"
+   },
+   {
+    "seed": 470,
+    "known": "どこまで登りたい？",
+    "target": "在我们停下来之前你想爬多高？"
+   },
+   {
+    "seed": 471,
+    "known": "休憩したい？",
+    "target": "你想停下来休息一下吗？"
+   },
+   {
+    "seed": 472,
+    "known": "問題の一部は事実を知らないこと。",
+    "target": "问题的一部分是我们不知道事实。"
+   },
+   {
+    "seed": 473,
+    "known": "それはいらない。",
+    "target": "我不想要它。"
+   },
+   {
+    "seed": 474,
+    "known": "無料でもいらない。",
+    "target": "即使是免费的，我也不想要。"
+   },
+   {
+    "seed": 475,
+    "known": "待つ理由はたくさんある。",
+    "target": "有很多理由值得考虑等待。"
+   },
+   {
+    "seed": 476,
+    "known": "後半の終わりを待ってる。",
+    "target": "我在等下半场结束。"
+   },
+   {
+    "seed": 477,
+    "known": "休みの二日目からずっと具合が悪い。",
+    "target": "他从假期的第二天起就生病了。"
+   },
+   {
+    "seed": 478,
+    "known": "彼女はとても優しい心を持ってる。",
+    "target": "她有一颗非常善良的心。"
+   },
+   {
+    "seed": 479,
+    "known": "それくらいしかできなかった。",
+    "target": "这是我至少能做的事。"
+   },
+   {
+    "seed": 480,
+    "known": "彼が何を言っても、もうすぐだ。",
+    "target": "不管他说什么，现在都不远了。"
+   },
+   {
+    "seed": 481,
+    "known": "残った唯一の希望。",
+    "target": "这是我们唯一剩下的真正希望。"
+   },
+   {
+    "seed": 482,
+    "known": "唯一の希望は、彼らが本気じゃないこと。",
+    "target": "唯一真正的希望是他们并不认真。"
+   },
+   {
+    "seed": 483,
+    "known": "人生は簡単じゃない。",
+    "target": "生活并不容易，但也不是应该容易的。"
+   },
+   {
+    "seed": 484,
+    "known": "簡単なはずじゃない。",
+    "target": "它本来就应该是个挑战。"
+   },
+   {
+    "seed": 485,
+    "known": "逃げられたら何より嬉しい。",
+    "target": "没有什么比离开更让我开心的了。"
+   },
+   {
+    "seed": 486,
+    "known": "君の目はきれいだと思う。",
+    "target": "我觉得你的眼睛很漂亮。"
+   },
+   {
+    "seed": 487,
+    "known": "橋の下。",
+    "target": "它在桥下面。"
+   },
+   {
+    "seed": 488,
+    "known": "あの黄色い線の向こう。",
+    "target": "它在那条黄色线的另一边。"
+   },
+   {
+    "seed": 489,
+    "known": "今すぐ濃いコーヒーを作ってくれなかったら。",
+    "target": "如果你现在不给我泡一杯浓咖啡。"
+   },
+   {
+    "seed": 490,
+    "known": "二度と誰も信じない。",
+    "target": "那我再也不会相信任何人了。"
+   },
+   {
+    "seed": 491,
+    "known": "助けようとするところが好き。",
+    "target": "我喜欢你努力帮忙的方式。"
+   },
+   {
+    "seed": 492,
+    "known": "どの場所が一番面白いと思う？",
+    "target": "在那些地方中，你觉得哪个最有意思？"
+   },
+   {
+    "seed": 493,
+    "known": "次に何が来る？",
+    "target": "接下来会发生什么？"
+   },
+   {
+    "seed": 494,
+    "known": "ショーの最初のあとに何が起きる？",
+    "target": "演出的第一部分之后会发生什么？"
+   },
+   {
+    "seed": 495,
+    "known": "大事なとき。",
+    "target": "在真正重要的时候。"
+   },
+   {
+    "seed": 496,
+    "known": "本当に大事なときに負けるつもりはない。",
+    "target": "在真正重要的时候我不打算输。"
+   },
+   {
+    "seed": 497,
+    "known": "眠ったほうがよさそう。",
+    "target": "听起来你需要睡一觉。"
+   },
+   {
+    "seed": 498,
+    "known": "入り口の中で一人で立ってる。",
+    "target": "他独自站在入口里面。"
+   },
+   {
+    "seed": 499,
+    "known": "ドアを開けて、窓を閉めよう。",
+    "target": "也许我们应该开门关窗。"
+   },
+   {
+    "seed": 500,
+    "known": "なんで二人の女の子の間に座りたくないの？",
+    "target": "你为什么不想坐在那两个女孩中间？"
+   },
+   {
+    "seed": 501,
+    "known": "ケンカせずに一緒に遊んでくれたら。",
+    "target": "要是我能相信你们能一起玩而不吵架就好了。"
+   },
+   {
+    "seed": 502,
+    "known": "左に曲がって、迷いそうになった。",
+    "target": "她差点迷路，因为她左转而不是右转。"
+   },
+   {
+    "seed": 503,
+    "known": "トラブルは嫌だけど、それは私のもの。",
+    "target": "我讨厌惹麻烦，但那个是我的。"
+   },
+   {
+    "seed": 504,
+    "known": "草の上を走る。",
+    "target": "我要跑过草地。"
+   },
+   {
+    "seed": 505,
+    "known": "置いていかれないように。",
+    "target": "这样我就不会被落下。"
+   },
+   {
+    "seed": 506,
+    "known": "昔、この辺に住んでた。",
+    "target": "多年前我们搬走之前，我曾住在这附近。"
+   },
+   {
+    "seed": 507,
+    "known": "街に引っ越した。",
+    "target": "我们搬到了城市里。"
+   },
+   {
+    "seed": 508,
+    "known": "支払いの心配をしても意味がない。",
+    "target": "担心你怎么付钱没有意义。"
+   },
+   {
+    "seed": 509,
+    "known": "新しいベッド代を払うって聞いた。",
+    "target": "我听说你要为一张新床付钱。"
+   },
+   {
+    "seed": 510,
+    "known": "彼女は安全に停める場所を探しに行った。",
+    "target": "她去找一个安全的地方停车了。"
+   },
+   {
+    "seed": 511,
+    "known": "ニュースがオフィス全体に届くまで数時間かかった。",
+    "target": "这个消息花了好几个小时才传到办公室里的每个人。"
+   },
+   {
+    "seed": 512,
+    "known": "鍵を取る間、ドアを押さえてくれる？",
+    "target": "你能在我去拿钥匙的时候帮我把门打开吗？"
+   },
+   {
+    "seed": 513,
+    "known": "頭を上下に動かすと一番痛い。",
+    "target": "我一抬头就最疼。"
+   },
+   {
+    "seed": 514,
+    "known": "初日に完璧な家を見つけた。",
+    "target": "我第一天就找到了那所完美的房子。"
+   },
+   {
+    "seed": 515,
+    "known": "新年の最初の日。",
+    "target": "在新年的第一天。"
+   },
+   {
+    "seed": 516,
+    "known": "二人とも一人で来た。",
+    "target": "他们都是自己来的。"
+   },
+   {
+    "seed": 517,
+    "known": "でも、一緒に帰った。",
+    "target": "但他们是一起离开的。"
+   },
+   {
+    "seed": 518,
+    "known": "同じ問題を想像できなかった。",
+    "target": "我无法想象自己也遇到完全一样的问题。"
+   },
+   {
+    "seed": 519,
+    "known": "まだ新しい赤ちゃんを見てない。",
+    "target": "我还没见过他们的新宝宝。"
+   },
+   {
+    "seed": 520,
+    "known": "家族全員に起きたかもしれない。",
+    "target": "这可能发生在整个家庭身上。"
+   },
+   {
+    "seed": 521,
+    "known": "ここにいる理由を忘れそうで怖い。",
+    "target": "我担心你会忘记我们为什么需要留在这里。"
+   },
+   {
+    "seed": 522,
+    "known": "本当のことを言うのはバカだったとしよう。",
+    "target": "我们就同意说实话是件傻事吧。"
+   },
+   {
+    "seed": 523,
+    "known": "言い訳する代わりに。",
+    "target": "而不是找个借口。"
+   },
+   {
+    "seed": 524,
+    "known": "三、四分でかけ直す。",
+    "target": "我三四分钟后给你回电话。"
+   },
+   {
+    "seed": 525,
+    "known": "終わったか確認するため。",
+    "target": "看看你能不能完成。"
+   },
+   {
+    "seed": 526,
+    "known": "当てられないのが信じられない。",
+    "target": "我很难相信你猜不到。"
+   },
+   {
+    "seed": 527,
+    "known": "あの面白い話を誰が言ったと思う？",
+    "target": "猜猜是谁给我讲了那个有趣的故事。"
+   },
+   {
+    "seed": 528,
+    "known": "それは別の部屋に置くべきだと思う。",
+    "target": "我可能应该把那些东西放在另一个房间。"
+   },
+   {
+    "seed": 529,
+    "known": "みんな、手を上げて。",
+    "target": "你们都能把手举起来吗？"
+   },
+   {
+    "seed": 530,
+    "known": "数えるから。",
+    "target": "这样我就能数一数。"
+   },
+   {
+    "seed": 531,
+    "known": "誰でも勝てるわけじゃない。",
+    "target": "并不是每个人都能赢得比赛。"
+   },
+   {
+    "seed": 532,
+    "known": "運が良ければ別だけど。",
+    "target": "除非他们运气好。"
+   },
+   {
+    "seed": 533,
+    "known": "彼女は全部は聞かない。",
+    "target": "她不会听你说的每一句话。"
+   },
+   {
+    "seed": 534,
+    "known": "このひどい天気で外に出るのはやめよう。",
+    "target": "我们别在这种糟糕的天气里出去。"
+   },
+   {
+    "seed": 535,
+    "known": "彼は間違った仕事を選ばないと約束した。",
+    "target": "他答应过他不会选错工作。"
+   },
+   {
+    "seed": 536,
+    "known": "昔は、変なのは悪いと思ってた。",
+    "target": "我以前以为疯狂是坏事。"
+   },
+   {
+    "seed": 537,
+    "known": "でも、間違ってた。",
+    "target": "但我错了。"
+   },
+   {
+    "seed": 538,
+    "known": "気にしてないように見せたくない。",
+    "target": "我不想显得我不在乎。"
+   },
+   {
+    "seed": 539,
+    "known": "でも、もう遅い。",
+    "target": "但是时间不早了。"
+   },
+   {
+    "seed": 540,
+    "known": "車なしで帰っても気にしない。",
+    "target": "如果你想不开车离开，我也不介意。"
+   },
+   {
+    "seed": 541,
+    "known": "ゆっくり呼吸するのはいい考え。",
+    "target": "慢慢呼吸是个好主意。"
+   },
+   {
+    "seed": 542,
+    "known": "怒ったときは。",
+    "target": "每当你感到生气的时候。"
+   },
+   {
+    "seed": 543,
+    "known": "彼女が正しかった。",
+    "target": "她是对的。"
+   },
+   {
+    "seed": 544,
+    "known": "難しいと言った人は正しかった。",
+    "target": "谁说这会很难，那个人完全说对了。"
+   },
+   {
+    "seed": 545,
+    "known": "きれいな服を上に持っていく番。",
+    "target": "该你把干净的衣服拿到楼上了。"
+   },
+   {
+    "seed": 546,
+    "known": "犬は汚れて濡れてる。",
+    "target": "那只狗又脏又湿。"
+   },
+   {
+    "seed": 547,
+    "known": "泥で遊んだから。",
+    "target": "因为它一直在泥里玩。"
+   },
+   {
+    "seed": 548,
+    "known": "今、とても悲しい。",
+    "target": "我现在感到很难过。"
+   },
+   {
+    "seed": 549,
+    "known": "静かにしなきゃいけないから。",
+    "target": "因为我得保持安静。"
+   },
+   {
+    "seed": 550,
+    "known": "村の端。",
+    "target": "村子的尽头。"
+   },
+   {
+    "seed": 551,
+    "known": "教会は醜い。",
+    "target": "那座教堂很丑。"
+   },
+   {
+    "seed": 552,
+    "known": "村の反対側の教会は醜い。",
+    "target": "村子另一头的那座教堂很丑。"
+   },
+   {
+    "seed": 553,
+    "known": "小さな教会はとても醜いと思う。",
+    "target": "我觉得那座小教堂非常丑。"
+   },
+   {
+    "seed": 554,
+    "known": "このタオルは乾いてない。",
+    "target": "这条毛巾不干。"
+   },
+   {
+    "seed": 555,
+    "known": "もう一枚取りに行く元気がない。",
+    "target": "而我太累了，不想去拿新的。"
+   },
+   {
+    "seed": 556,
+    "known": "夜遅く音楽をかける。",
+    "target": "他们深夜放音乐。"
+   },
+   {
+    "seed": 557,
+    "known": "あんなに大きな音でかけなければいいのに。",
+    "target": "我希望他们不要放这么吵的音乐。"
+   },
+   {
+    "seed": 558,
+    "known": "もう夜遅い。",
+    "target": "夜已经很深了。"
+   },
+   {
+    "seed": 559,
+    "known": "森を通る道、見つけた？",
+    "target": "你找到穿过树林的小路了吗？"
+   },
+   {
+    "seed": 560,
+    "known": "浜まで下りる。",
+    "target": "它通向海滩。"
+   },
+   {
+    "seed": 561,
+    "known": "速い車でも気にしない。",
+    "target": "我不在乎车有多快。"
+   },
+   {
+    "seed": 562,
+    "known": "安全に着きたいだけ。",
+    "target": "我只想安全到达。"
+   },
+   {
+    "seed": 563,
+    "known": "これ以上続けられなかった。",
+    "target": "没有你的帮助，我坚持不了更久。"
+   },
+   {
+    "seed": 564,
+    "known": "君の助けなしでは無理だった。",
+    "target": "没有你的帮助，我做不到。"
+   },
+   {
+    "seed": 565,
+    "known": "もっとよく考えたはず。",
+    "target": "如果是我选的，我会想得更仔细。"
+   },
+   {
+    "seed": 566,
+    "known": "自分の選択だったら、もっと考えた。",
+    "target": "如果是我的选择，我会多想想。"
+   },
+   {
+    "seed": 567,
+    "known": "子どもが遊ぶのを外で見るのは楽しかった。",
+    "target": "在户外看着孩子们玩真的很美好。"
+   },
+   {
+    "seed": 568,
+    "known": "次に会うとき、良くなってるはず。",
+    "target": "我期待下次见面时看到进步。"
+   },
+   {
+    "seed": 569,
+    "known": "いくら払えるか決めた？",
+    "target": "你决定好愿意付多少钱了吗？"
+   },
+   {
+    "seed": 570,
+    "known": "チケットにいくら払える？",
+    "target": "你愿意为你的票付多少钱？"
+   },
+   {
+    "seed": 571,
+    "known": "それは良い考えだとは思えない。",
+    "target": "我不太相信这是个好主意。"
+   },
+   {
+    "seed": 572,
+    "known": "前に何が起きたか忘れた？",
+    "target": "你忘了他们上次来看我们时发生的事了吗？"
+   },
+   {
+    "seed": 573,
+    "known": "休みを特別にするようなこと。",
+    "target": "这正是让假期变得特别的那种事情。"
+   },
+   {
+    "seed": 574,
+    "known": "休みはみんなにとって特別。",
+    "target": "假期对每个人来说都很特别。"
+   },
+   {
+    "seed": 575,
+    "known": "つらかった。",
+    "target": "这让人很难过。"
+   },
+   {
+    "seed": 576,
+    "known": "待つのはとてもつらかった。",
+    "target": "等待真的让人很难过。"
+   },
+   {
+    "seed": 577,
+    "known": "病院からの連絡を待ってた。",
+    "target": "我们一直在等医院的消息。"
+   },
+   {
+    "seed": 578,
+    "known": "もっと暖かい場所。",
+    "target": "去更暖和的地方。"
+   },
+   {
+    "seed": 579,
+    "known": "何度も試した。",
+    "target": "我们经常试过。"
+   },
+   {
+    "seed": 580,
+    "known": "子どもを暖かい所に連れて行きたかった。",
+    "target": "我们经常想带孩子们去暖和一点的地方。"
+   },
+   {
+    "seed": 581,
+    "known": "どんな感じかもっと知りたい。",
+    "target": "他想多了解一点那是什么样的。"
+   },
+   {
+    "seed": 582,
+    "known": "ここで育つのはどんな感じ？",
+    "target": "在这里长大是什么感觉？"
+   },
+   {
+    "seed": 583,
+    "known": "この辺はどんな感じ？",
+    "target": "这个地方是什么样的？"
+   },
+   {
+    "seed": 584,
+    "known": "毎朝山を見るのはどんな感じ？",
+    "target": "每天早上醒来看到群山是什么感觉？"
+   },
+   {
+    "seed": 585,
+    "known": "寝室の窓から山が見える。",
+    "target": "我从卧室的窗户能看到群山。"
+   },
+   {
+    "seed": 586,
+    "known": "ゆで卵を二十個ほしい。",
+    "target": "我想要二十个水煮蛋。"
+   },
+   {
+    "seed": 587,
+    "known": "夕食は卵って言われてた。",
+    "target": "她以前坚持我们晚饭要吃鸡蛋。"
+   },
+   {
+    "seed": 588,
+    "known": "大人になって家を出たかった。",
+    "target": "所以我想长大后离开家。"
+   },
+   {
+    "seed": 589,
+    "known": "彼女は最後のバスを見たって言った。",
+    "target": "她告诉我她刚看到最后一班车。"
+   },
+   {
+    "seed": 590,
+    "known": "駅を出る最後のバスを見た。",
+    "target": "我看到最后一班车离开了车站。"
+   },
+   {
+    "seed": 591,
+    "known": "店までついて来た。",
+    "target": "她跟着我走到商店。"
+   },
+   {
+    "seed": 592,
+    "known": "大通りを通って。",
+    "target": "然后沿着主干道走。"
+   },
+   {
+    "seed": 593,
+    "known": "どんなに言い争っても、分けなきゃいけなかった。",
+    "target": "不管我怎么争论，我还是得分享。"
+   },
+   {
+    "seed": 594,
+    "known": "妹とおもちゃを分けた。",
+    "target": "我得和我妹妹分享我的玩具。"
+   },
+   {
+    "seed": 595,
+    "known": "庭で横になりたい。",
+    "target": "我需要躺在花园里。"
+   },
+   {
+    "seed": 596,
+    "known": "少し目を閉じたい。",
+    "target": "然后闭上眼睛一会儿。"
+   },
+   {
+    "seed": 597,
+    "known": "もう百回は聞いたと思う。",
+    "target": "我怀疑他已经听过一百个关于这件事的故事。"
+   },
+   {
+    "seed": 598,
+    "known": "千回は聞いた。",
+    "target": "他听过一千个关于他们在做什么的故事。"
+   },
+   {
+    "seed": 599,
+    "known": "言ってくれてたら運転したのに。",
+    "target": "如果你告诉我，我会很乐意开车。"
+   },
+   {
+    "seed": 600,
+    "known": "疲れてるって言ってくれてたら運転した。",
+    "target": "如果你告诉我你有多累，我会开车的。"
+   },
+   {
+    "seed": 601,
+    "known": "どうやって始まったか話してた。",
+    "target": "我们在聊这一切是怎么开始的。"
+   },
+   {
+    "seed": 602,
+    "known": "最初はどう始まったか。",
+    "target": "一开始是怎么开始的。"
+   },
+   {
+    "seed": 603,
+    "known": "その時、住む場所がなかった。",
+    "target": "那时我们没有地方住。"
+   },
+   {
+    "seed": 604,
+    "known": "彼女は泊めてくれると言ってくれた。",
+    "target": "她提出让我们住在她那里。"
+   },
+   {
+    "seed": 605,
+    "known": "助けが必要だったから。",
+    "target": "因为我们需要帮助。"
+   },
+   {
+    "seed": 606,
+    "known": "今のことを知ってたら、待ってた。",
+    "target": "如果我早知道现在知道的这些，我会等的。"
+   },
+   {
+    "seed": 607,
+    "known": "知ってたら、違うことをしてた。",
+    "target": "如果我知道，我会做得不一样。"
+   },
+   {
+    "seed": 608,
+    "known": "それが一番賢いやり方だった。",
+    "target": "那本来是明智的做法。"
+   },
+   {
+    "seed": 609,
+    "known": "賢いやり方は、聞くことだった。",
+    "target": "明智的做法是去问。"
+   },
+   {
+    "seed": 610,
+    "known": "彼は仕事を探す必要がある。",
+    "target": "他需要找工作。"
+   },
+   {
+    "seed": 611,
+    "known": "別の場所を探す準備はできてた。",
+    "target": "我本来可以准备去别的地方找。"
+   },
+   {
+    "seed": 612,
+    "known": "何かを買ってたはず。",
+    "target": "我们本来会买点东西。"
+   },
+   {
+    "seed": 613,
+    "known": "そこに家を買ってたと思う。",
+    "target": "我们可能会在那里买房子。"
+   },
+   {
+    "seed": 614,
+    "known": "家族が住んでる近く。",
+    "target": "那里离你家人住的地方很近。"
+   },
+   {
+    "seed": 615,
+    "known": "そう言ったのは勇気があったと思う。",
+    "target": "我觉得你能说出那样的话很勇敢。"
+   },
+   {
+    "seed": 616,
+    "known": "それが間違いだと思ったと言ったのは勇気があった。",
+    "target": "你很勇敢说出你的想法。"
+   },
+   {
+    "seed": 617,
+    "known": "それは間違いだと思ってた。",
+    "target": "你觉得那是个错误。"
+   },
+   {
+    "seed": 618,
+    "known": "あまり長い時間に感じない。",
+    "target": "感觉不像过了很久。"
+   },
+   {
+    "seed": 619,
+    "known": "会ってない時間が長い。",
+    "target": "我们很久没见了。"
+   },
+   {
+    "seed": 620,
+    "known": "最後に会ってから、すごく長い。",
+    "target": "我们已经很久没见了。"
+   },
+   {
+    "seed": 621,
+    "known": "壊れてるって言えなかった。",
+    "target": "我不敢告诉她它坏了。"
+   },
+   {
+    "seed": 622,
+    "known": "子どもが壊したって知ってた。",
+    "target": "我知道是孩子们把它弄坏的。"
+   },
+   {
+    "seed": 623,
+    "known": "コーヒーとお茶、どっちにする？",
+    "target": "你想喝咖啡还是茶？"
+   },
+   {
+    "seed": 624,
+    "known": "うん、それいい。",
+    "target": "好的，那太好了，谢谢。"
+   },
+   {
+    "seed": 625,
+    "known": "何か飲みたい？",
+    "target": "你想喝点什么吗？"
+   },
+   {
+    "seed": 626,
+    "known": "いや、喉乾いてない。",
+    "target": "不，我不渴，谢谢。"
+   },
+   {
+    "seed": 627,
+    "known": "コーヒーできたよ。",
+    "target": "你的咖啡好了。"
+   },
+   {
+    "seed": 628,
+    "known": "お茶、好き？",
+    "target": "你喜欢喝茶吗？"
+   },
+   {
+    "seed": 629,
+    "known": "ミルク入りで砂糖なしがいい。",
+    "target": "我喜欢加牛奶，不加糖。"
+   },
+   {
+    "seed": 630,
+    "known": "何か飲み物もらえる？",
+    "target": "我可以喝点什么吗？"
+   },
+   {
+    "seed": 631,
+    "known": "何がいい？",
+    "target": "你想要什么？"
+   },
+   {
+    "seed": 632,
+    "known": "水。",
+    "target": "一杯水。"
+   },
+   {
+    "seed": 633,
+    "known": "大きな水がいい。",
+    "target": "一大杯水就好。"
+   },
+   {
+    "seed": 634,
+    "known": "それがほしい。",
+    "target": "我想要那个。"
+   },
+   {
+    "seed": 635,
+    "known": "あれはジェーンのバッグ。",
+    "target": "那是简的包。"
+   },
+   {
+    "seed": 636,
+    "known": "あれはジェーンのバッグだと思う。",
+    "target": "我觉得那是简的包。"
+   },
+   {
+    "seed": 637,
+    "known": "彼女のバッグはどこ？",
+    "target": "她的包在哪里？"
+   },
+   {
+    "seed": 638,
+    "known": "考えてる。",
+    "target": "我在想。"
+   },
+   {
+    "seed": 639,
+    "known": "ご一緒します、先生。",
+    "target": "和你一起，先生。"
+   },
+   {
+    "seed": 640,
+    "known": "赤いやつ。",
+    "target": "是红色的那个。"
+   },
+   {
+    "seed": 641,
+    "known": "あの椅子の上の赤いやつだと思う。",
+    "target": "我觉得是那把椅子上的红色那个。"
+   },
+   {
+    "seed": 642,
+    "known": "ご気分はいかがですか、奥様。",
+    "target": "您现在感觉怎么样，女士？"
+   },
+   {
+    "seed": 643,
+    "known": "何になさいますか、先生。",
+    "target": "先生，您想要吗？"
+   },
+   {
+    "seed": 644,
+    "known": "もう一度言っていただけますか、先生。",
+    "target": "先生，您能再说一遍吗？"
+   },
+   {
+    "seed": 645,
+    "known": "お手伝いできます、奥様。",
+    "target": "女士，我可以帮您。"
+   },
+   {
+    "seed": 646,
+    "known": "何かされていますね、先生。",
+    "target": "先生，您正在做什么？"
+   },
+   {
+    "seed": 647,
+    "known": "お話しできますね、奥様。",
+    "target": "女士，您说得很好。"
+   },
+   {
+    "seed": 648,
+    "known": "今おっしゃったこと。",
+    "target": "女士，您刚才说的。"
+   },
+   {
+    "seed": 649,
+    "known": "ご準備はよろしいですか、先生。",
+    "target": "先生，您准备好了吗？"
+   },
+   {
+    "seed": 650,
+    "known": "出かけますか、奥様。",
+    "target": "女士，您想走吗？"
+   },
+   {
+    "seed": 651,
+    "known": "どう思われますか、奥様。",
+    "target": "女士，您觉得怎么样？"
+   },
+   {
+    "seed": 652,
+    "known": "何が必要ですか、先生。",
+    "target": "先生，您需要什么？"
+   },
+   {
+    "seed": 653,
+    "known": "お気になりませんか、奥様。",
+    "target": "女士，您介意吗？"
+   },
+   {
+    "seed": 654,
+    "known": "お手伝いできるか分かりません、先生。",
+    "target": "先生，我不确定我能不能帮您。"
+   },
+   {
+    "seed": 655,
+    "known": "とてもよくやっておられます、奥様。",
+    "target": "女士，我觉得您做得很好。"
+   },
+   {
+    "seed": 656,
+    "known": "ご一緒に。",
+    "target": "和你们一起。"
+   },
+   {
+    "seed": 657,
+    "known": "皆さん、いかがですか。",
+    "target": "你们现在感觉怎么样？"
+   },
+   {
+    "seed": 658,
+    "known": "皆さん、どうしますか。",
+    "target": "你们想要吗？"
+   },
+   {
+    "seed": 659,
+    "known": "もう一度言ってください。",
+    "target": "你们能再说一遍吗？"
+   },
+   {
+    "seed": 660,
+    "known": "皆さん、お手伝いできます。",
+    "target": "我可以帮你们。"
+   },
+   {
+    "seed": 661,
+    "known": "皆さん、何かされています。",
+    "target": "你们正在做什么？"
+   },
+   {
+    "seed": 662,
+    "known": "皆さん、話せますね。",
+    "target": "你们说得很好。"
+   },
+   {
+    "seed": 663,
+    "known": "今おっしゃったこと。",
+    "target": "你们刚才说的。"
+   },
+   {
+    "seed": 664,
+    "known": "準備はいいですか、皆さん。",
+    "target": "你们准备好了吗？"
+   },
+   {
+    "seed": 665,
+    "known": "出かけますか、皆さん。",
+    "target": "你们想走吗？"
+   },
+   {
+    "seed": 666,
+    "known": "どう思いますか、皆さん。",
+    "target": "你们觉得怎么样？"
+   },
+   {
+    "seed": 667,
+    "known": "気にしませんか、皆さん。",
+    "target": "你们介意吗？"
+   },
+   {
+    "seed": 668,
+    "known": "皆さん、行けるといいですね。",
+    "target": "我希望你们都能去。"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 65,
+  "no_home": 145,
+  "variant_form": 10,
+  "sibling": 1,
+  "variant_zut": 4,
+  "not_built": 366
+ }
+}

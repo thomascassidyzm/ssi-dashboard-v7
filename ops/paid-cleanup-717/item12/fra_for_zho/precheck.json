@@ -1,0 +1,823 @@
+{
+ "course": "fra_for_zho",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0003L02U06": {
+   "seed": {
+    "seed_number": 3,
+    "known_text": "怎么尽量多说。",
+    "target_text": "comment parler le plus souvent possible.",
+    "known_audio_id": "8e84d770-9162-47dc-8364-c23349d27cc6",
+    "target1_audio_id": "ef920bc6-c757-4824-89cc-a3facdabb893",
+    "target2_audio_id": "1ef3bef3-4d6f-431d-8f01-75a69f04bfd0"
+   },
+   "lego": {
+    "lego_id": "S0003L02",
+    "known_text": "尽量多",
+    "target_text": "le plus souvent possible",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0004L02U06": {
+   "seed": {
+    "seed_number": 4,
+    "known_text": "怎么用法语说一些东西",
+    "target_text": "comment dire quelque chose en français",
+    "known_audio_id": "abfee8d6-2012-4379-9b58-0da620842bdd",
+    "target1_audio_id": "3b7c249a-ca19-49b3-85bf-d7221899963a",
+    "target2_audio_id": "75ef1ff3-d3e4-4ab3-ba2e-8f458a705e89"
+   },
+   "lego": {
+    "lego_id": "S0004L02",
+    "known_text": "用法语",
+    "target_text": "en français",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0005L03U06": {
+   "seed": {
+    "seed_number": 5,
+    "known_text": "我要和别人练习说话。",
+    "target_text": "Je vais m'entraîner à parler avec quelqu'un d'autre.",
+    "known_audio_id": "72b0edc4-313d-496a-ab1c-99d937de1ff5",
+    "target1_audio_id": "c22e5284-c4d9-441c-bad2-3cf7a5d96fa5",
+    "target2_audio_id": "68bb1258-60f1-4ffb-9dd3-d6f40d2ccfeb"
+   },
+   "lego": {
+    "lego_id": "S0005L03",
+    "known_text": "和别人",
+    "target_text": "avec quelqu'un d'autre",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0010L03U05": {
+   "seed": {
+    "seed_number": 10,
+    "known_text": "我不确定我能不能记住整个句子。",
+    "target_text": "Je ne suis pas sûr de pouvoir me souvenir de toute la phrase.",
+    "known_audio_id": "bc1c783f-738a-4ffb-8140-800dfe29477d",
+    "target1_audio_id": "719e5a19-c21e-4560-a5bb-89340a6c1c29",
+    "target2_audio_id": "0111ad7a-f6d2-4d8f-ac00-1bb7bf5c1df2"
+   },
+   "lego": {
+    "lego_id": "S0010L03",
+    "known_text": "整个句子",
+    "target_text": "toute la phrase",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0011L03U06": {
+   "seed": {
+    "seed_number": 11,
+    "known_text": "我想在你说完以后能说。",
+    "target_text": "J'aimerais pouvoir parler après que tu as fini.",
+    "known_audio_id": "f4d7587f-d598-4f12-b3a3-1f62b66d41cb",
+    "target1_audio_id": "8ff407c1-f0da-4da5-99ce-54e757a5d805",
+    "target2_audio_id": "0cd1fd1c-4784-43af-be12-751001b9d1ce"
+   },
+   "lego": {
+    "lego_id": "S0011L03",
+    "known_text": "在你说完以后",
+    "target_text": "après que tu as fini",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0012L04U05": {
+   "seed": {
+    "seed_number": 12,
+    "known_text": "我不想猜明天会发生什么。",
+    "target_text": "Je n'aimerais pas deviner ce qui va se passer demain.",
+    "known_audio_id": "17acb0ae-e8d5-42da-9e1d-89ce236539c1",
+    "target1_audio_id": "77981935-bca6-4a65-87d1-f65e05dad685",
+    "target2_audio_id": "970c3c42-06ce-4f06-bfe7-0dcac7cc5c27"
+   },
+   "lego": {
+    "lego_id": "S0012L04",
+    "known_text": "明天",
+    "target_text": "demain",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0013L02U05": {
+   "seed": {
+    "seed_number": 13,
+    "known_text": "你法语说得很好。",
+    "target_text": "Tu parles très bien français.",
+    "known_audio_id": "8267de72-a793-4f86-a70c-c403f62eced8",
+    "target1_audio_id": "2662c269-d184-46b0-9a84-b049380bc3b2",
+    "target2_audio_id": "3935291d-9b2d-44b8-a113-cb93c8f53b3c"
+   },
+   "lego": {
+    "lego_id": "S0013L02",
+    "known_text": "很好",
+    "target_text": "très bien",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0015L02U07": {
+   "seed": {
+    "seed_number": 15,
+    "known_text": "而且我想让你明天和我说法语。",
+    "target_text": "Et je veux que tu parles français avec moi demain.",
+    "known_audio_id": "c25caf64-6fc9-4bc6-84ac-af5a4c8b819a",
+    "target1_audio_id": "b24f7878-b407-462b-90ba-bce8b4073fb4",
+    "target2_audio_id": "41319891-2667-47dc-9768-1b5e88d236c0"
+   },
+   "lego": {
+    "lego_id": "S0015L02",
+    "known_text": "而且",
+    "target_text": "et",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0017L03U01": {
+   "seed": {
+    "seed_number": 17,
+    "known_text": "她想找出答案是什么。",
+    "target_text": "Elle veut trouver quelle est la réponse.",
+    "known_audio_id": "bda5d9c4-6449-4210-aaa6-664cd3063a8f",
+    "target1_audio_id": "b31b2bb4-b4ed-43e5-944f-0b715e27e2ac",
+    "target2_audio_id": "b7bb1643-6307-458a-a207-d67f4f0fcb35"
+   },
+   "lego": {
+    "lego_id": "S0017L03",
+    "known_text": "答案是什么",
+    "target_text": "quelle est la réponse",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0035L03U06": {
+   "seed": {
+    "seed_number": 35,
+    "known_text": "她今天下午不想读任何东西。",
+    "target_text": "Elle ne veut rien lire cet après-midi.",
+    "known_audio_id": "4caf738f-92ee-4cae-8f14-09cf9c68c299",
+    "target1_audio_id": "446c07a0-0ec6-4c05-8394-665d5169bd4e",
+    "target2_audio_id": "68205e93-e132-47eb-815a-7aad15700382"
+   },
+   "lego": {
+    "lego_id": "S0035L03",
+    "known_text": "今天下午",
+    "target_text": "cet après-midi",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0041L02U06": {
+   "seed": {
+    "seed_number": 41,
+    "known_text": "我感觉还可以,但是我开始感觉累了。",
+    "target_text": "Je me sens bien, mais je commence à me sentir fatigué.",
+    "known_audio_id": "ecb73b05-1748-4357-9044-f2878ecee26d",
+    "target1_audio_id": "171c40a9-bdb4-43a8-b264-2f7d61be6982",
+    "target2_audio_id": "e3fcfab2-311e-45f5-b139-5e8e796dbdda"
+   },
+   "lego": {
+    "lego_id": "S0041L02",
+    "known_text": "我开始感觉",
+    "target_text": "je commence à me sentir",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0046L02U06": {
+   "seed": {
+    "seed_number": 46,
+    "known_text": "但是我不担心犯错。",
+    "target_text": "Mais je ne m'inquiète pas de faire des erreurs.",
+    "known_audio_id": "408d79ac-0b6f-42cd-a53f-64f4a2009390",
+    "target1_audio_id": "af71bfea-45b8-4cda-b289-da06473d9e42",
+    "target2_audio_id": "1621de24-eaed-4194-99e9-b6268ff114eb"
+   },
+   "lego": {
+    "lego_id": "S0046L02",
+    "known_text": "犯错",
+    "target_text": "faire des erreurs",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0047L02U06": {
+   "seed": {
+    "seed_number": 47,
+    "known_text": "因为我觉得犯错是好事。",
+    "target_text": "Parce que je pense que c'est une bonne chose de faire des erreurs.",
+    "known_audio_id": "9978e0a1-1001-4449-a7fe-60c93b25dee9",
+    "target1_audio_id": "90b5f6b9-a568-4e5b-8b43-ef7482cc60bb",
+    "target2_audio_id": "f6d9fa92-9ec5-4216-9c35-ed34597cb2e9"
+   },
+   "lego": {
+    "lego_id": "S0047L02",
+    "known_text": "好事",
+    "target_text": "c'est une bonne chose",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0056L02U06": {
+   "seed": {
+    "seed_number": 56,
+    "known_text": "所以我能记住怎么说几个词。",
+    "target_text": "Pour que je puisse me souvenir comment dire quelques mots.",
+    "known_audio_id": "9479d8dd-9688-43b3-8ea5-7eea4b8d79cc",
+    "target1_audio_id": "c8b9caf1-7d05-4fc2-afa1-beb00f993a3e",
+    "target2_audio_id": "8e1c9048-3283-4f0a-9d5d-96914dded863"
+   },
+   "lego": {
+    "lego_id": "S0056L02",
+    "known_text": "几个词",
+    "target_text": "quelques mots",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0057L01U06": {
+   "seed": {
+    "seed_number": 57,
+    "known_text": "我不能记住怎么说我想说的。",
+    "target_text": "Je ne me souviens plus comment dire ce que je voulais dire.",
+    "known_audio_id": "29056fd6-4cbe-4624-9a19-6a611b7764c8",
+    "target1_audio_id": "bbbd4f00-682d-4aab-80ad-9c8029a885be",
+    "target2_audio_id": "032ae348-f6a1-421c-a6a6-333c82fb5406"
+   },
+   "lego": {
+    "lego_id": "S0057L01",
+    "known_text": "我不能记住",
+    "target_text": "je ne me souviens plus",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0058L03U06": {
+   "seed": {
+    "seed_number": 58,
+    "known_text": "你懂够多词的时候很有趣。",
+    "target_text": "C'est intéressant quand tu comprends assez de mots.",
+    "known_audio_id": "39b89ab5-19fc-4b93-b9d2-cbda99de2530",
+    "target1_audio_id": "cf2bd697-5032-45bc-aa99-ee19b46431d9",
+    "target2_audio_id": "9cedbd92-37c6-4556-b19b-f756deabaa92"
+   },
+   "lego": {
+    "lego_id": "S0058L03",
+    "known_text": "够多词",
+    "target_text": "assez de mots",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0059L02U05": {
+   "seed": {
+    "seed_number": 59,
+    "known_text": "我知道下星期怎么做我需要做的。",
+    "target_text": "Je sais comment faire ce que j'ai besoin de faire la semaine prochaine.",
+    "known_audio_id": "3d6f6c4f-309c-4d3b-9d21-c1e225bc820b",
+    "target1_audio_id": "fa546633-c39e-4fcb-b733-45ffcf28c98d",
+    "target2_audio_id": "9385371b-c37b-4c1c-8ce3-aa3e73b122f7"
+   },
+   "lego": {
+    "lego_id": "S0059L02",
+    "known_text": "下星期",
+    "target_text": "la semaine prochaine",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0060L03U06": {
+   "seed": {
+    "seed_number": 60,
+    "known_text": "我还不知道怎么说够多不同的词。",
+    "target_text": "Je ne sais pas encore comment dire assez de mots différents.",
+    "known_audio_id": "d04192cb-882d-47b5-ba85-92655d9e0fde",
+    "target1_audio_id": "c458c866-f670-4617-9a91-c605c8568012",
+    "target2_audio_id": "2ac14c80-e7c3-4995-af99-05387e4502c3"
+   },
+   "lego": {
+    "lego_id": "S0060L03",
+    "known_text": "不同的",
+    "target_text": "différents",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0063L02U02": {
+   "seed": {
+    "seed_number": 63,
+    "known_text": "你确定你不介意帮我吗？",
+    "target_text": "Tu es sûr que ça ne te dérange pas de m'aider ?",
+    "known_audio_id": "2a709edf-5f9b-4070-8ffc-d293ed4ce258",
+    "target1_audio_id": "e9b798a7-a5d2-4c52-868a-15986de54f52",
+    "target2_audio_id": "8b103942-b3f7-43a3-8aba-9fb7f84f646f"
+   },
+   "lego": {
+    "lego_id": "S0063L02",
+    "known_text": "不介意",
+    "target_text": "ne te dérange pas",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0097L03U06": {
+   "seed": {
+    "seed_number": 97,
+    "known_text": "好，我准备好了，你想什么时候走都可以。",
+    "target_text": "Oui je suis prêt à partir dès que tu veux.",
+    "known_audio_id": "4b7f224a-421d-4d59-a526-cfe0288448a1",
+    "target1_audio_id": "bc1fbca8-3532-45a3-943c-0811b6a9d603",
+    "target2_audio_id": "770d9a76-0170-4e7e-b730-bfb4f2890ce4"
+   },
+   "lego": {
+    "lego_id": "S0097L03",
+    "known_text": "你想什么时候走都可以",
+    "target_text": "dès que tu veux",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0119L01U05": {
+   "seed": {
+    "seed_number": 119,
+    "known_text": "你走之前我能问你什么吗？",
+    "target_text": "Je peux te demander quelque chose avant que tu partes ?",
+    "known_audio_id": "040e55c5-e8fd-4a97-b4c7-e8069f77abb9",
+    "target1_audio_id": "d31bada7-6ad3-438c-a833-dca4f114a620",
+    "target2_audio_id": "7e9b4088-36f6-49f9-8bdb-a2e12226a761"
+   },
+   "lego": {
+    "lego_id": "S0119L01",
+    "known_text": "你走",
+    "target_text": "partes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0123L02U06": {
+   "seed": {
+    "seed_number": 123,
+    "known_text": "我觉得那是个好主意。",
+    "target_text": "Je pense que c'est une bonne idée.",
+    "known_audio_id": "357166ea-d339-4710-8649-cfbc0a5dad21",
+    "target1_audio_id": "77783253-48ba-497b-b7b5-25e1ee2696f7",
+    "target2_audio_id": "a1da7933-043b-45f4-b4fe-dc448437f635"
+   },
+   "lego": {
+    "lego_id": "S0123L02",
+    "known_text": "主意",
+    "target_text": "idée",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0134L01U06": {
+   "seed": {
+    "seed_number": 134,
+    "known_text": "跟他们一起做难的事情的时候没有问题。",
+    "target_text": "Ce n'est pas un problème quand on travaille sur quelque chose de difficile ensemble.",
+    "known_audio_id": "74424745-312a-44d4-b4e6-3c2c6b886112",
+    "target1_audio_id": "d4903db9-7ebe-4c66-879b-b6dac7fd2819",
+    "target2_audio_id": "ab46cf0f-ed1a-40fc-9243-81531467771c"
+   },
+   "lego": {
+    "lego_id": "S0134L01",
+    "known_text": "问题",
+    "target_text": "problème",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0135L01U06": {
+   "seed": {
+    "seed_number": 135,
+    "known_text": "我不知道为什么你觉得那么好。",
+    "target_text": "Je ne sais pas pourquoi tu penses que c'est si bien.",
+    "known_audio_id": "e1aaf849-8df9-4cf6-ab6d-84ba3395b6c8",
+    "target1_audio_id": "be7eb28a-52aa-42d2-9b1b-364e690ce4cb",
+    "target2_audio_id": "e6e2acce-c365-491c-9eb5-887da7b45dde"
+   },
+   "lego": {
+    "lego_id": "S0135L01",
+    "known_text": "你觉得",
+    "target_text": "penses",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0136L02U06": {
+   "seed": {
+    "seed_number": 136,
+    "known_text": "当然你可以问她因为她是我的朋友。",
+    "target_text": "Bien sûr que tu peux lui demander parce qu'elle est mon amie.",
+    "known_audio_id": "d9eb51bf-c893-4528-988b-358eaf8eab7a",
+    "target1_audio_id": "51a550fa-14a0-4a11-967f-31754c414fd8",
+    "target2_audio_id": "acf20b93-1637-45c5-83a5-7b3b29bcb569"
+   },
+   "lego": {
+    "lego_id": "S0136L02",
+    "known_text": "我的朋友",
+    "target_text": "amie",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0138L01U06": {
+   "seed": {
+    "seed_number": 138,
+    "known_text": "这是我的朋友想跟我们见面的地方。",
+    "target_text": "C'est là que mon ami voulait nous retrouver.",
+    "known_audio_id": "fc001485-1b1b-4f48-b880-bc1acf117447",
+    "target1_audio_id": "0efae775-df8f-46db-880f-b8a2f079b7d8",
+    "target2_audio_id": "c214dd5a-a12d-4600-aa04-29f4bfdb0d34"
+   },
+   "lego": {
+    "lego_id": "S0138L01",
+    "known_text": "朋友",
+    "target_text": "ami",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0142L04U06": {
+   "seed": {
+    "seed_number": 142,
+    "known_text": "你太好了，我很感谢你帮忙。",
+    "target_text": "C'est très gentil de ta part et je te suis reconnaissant de m'avoir aidé.",
+    "known_audio_id": "e6cb4b12-d8d3-4855-ba27-5d76dc95c709",
+    "target1_audio_id": "1096ac06-48b9-4c8a-b831-7b8f62c81512",
+    "target2_audio_id": "c0d25c39-724f-4901-bc76-58cfa0586c6d"
+   },
+   "lego": {
+    "lego_id": "S0142L04",
+    "known_text": "我很感谢你",
+    "target_text": "je te suis reconnaissant",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0152L01U06": {
+   "seed": {
+    "seed_number": 152,
+    "known_text": "如果我知道你想要什么，我会做得不一样。",
+    "target_text": "J'aurais fait différemment si j'avais su ce que tu voulais.",
+    "known_audio_id": "9b66bf36-28e5-454c-85b3-9e20b9f6dcb0",
+    "target1_audio_id": "753b9a21-035d-4d1d-8469-7171f727af34",
+    "target2_audio_id": "6a9ed6bd-eed9-4aea-a393-494b80b222e5"
+   },
+   "lego": {
+    "lego_id": "S0152L01",
+    "known_text": "不一样",
+    "target_text": "différemment",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0154L01U05": {
+   "seed": {
+    "seed_number": 154,
+    "known_text": "星期六晚上你想在哪里见面？",
+    "target_text": "Où est-ce que tu veux se retrouver samedi soir ?",
+    "known_audio_id": "2f5ca739-7e30-4fa7-b6a2-eecefa867b96",
+    "target1_audio_id": "52de202c-cd24-4247-b7f2-b3c01338b0b7",
+    "target2_audio_id": "e4518333-8f33-4905-b20f-34f483e99e82"
+   },
+   "lego": {
+    "lego_id": "S0154L01",
+    "known_text": "星期六",
+    "target_text": "samedi",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0155L01U06": {
+   "seed": {
+    "seed_number": 155,
+    "known_text": "我不介意明天早上等几分钟。",
+    "target_text": "Ça ne me dérange pas d'attendre quelques minutes demain matin.",
+    "known_audio_id": "8550ed6e-71ff-492b-a4f4-bf2ff5366ef1",
+    "target1_audio_id": "0309eba8-ba93-43cd-98cb-876cb4ff135e",
+    "target2_audio_id": "7d208d31-0e9f-4f06-9977-825d31c37695"
+   },
+   "lego": {
+    "lego_id": "S0155L01",
+    "known_text": "分钟",
+    "target_text": "minutes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0157L02U06": {
+   "seed": {
+    "seed_number": 157,
+    "known_text": "我下个月不能在那里。",
+    "target_text": "Je ne pourrai pas être là le mois prochain.",
+    "known_audio_id": "2e5fda06-e6d4-4347-bc62-f0aa5bd203aa",
+    "target1_audio_id": "61e57641-4df5-4279-8d86-bc28e0cf9310",
+    "target2_audio_id": "0262653d-ab85-456d-95da-be55dcf8bca4"
+   },
+   "lego": {
+    "lego_id": "S0157L02",
+    "known_text": "下",
+    "target_text": "être",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0158L01U06": {
+   "seed": {
+    "seed_number": 158,
+    "known_text": "我们说别的吧。",
+    "target_text": "Parlons d'autre chose.",
+    "known_audio_id": "eddd649c-9dc0-406e-ac23-ddd7d0d6eff0",
+    "target1_audio_id": "f4dd0ef0-9ecf-4fd8-a27e-ab9937b230e5",
+    "target2_audio_id": "ba9bb921-a0b9-4857-aa60-ec76461626bb"
+   },
+   "lego": {
+    "lego_id": "S0158L01",
+    "known_text": "我们说",
+    "target_text": "parlons",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0160L01U06": {
+   "seed": {
+    "seed_number": 160,
+    "known_text": "这个词用法语怎么说？",
+    "target_text": "Comment est-ce qu'on dit ce mot en français ?",
+    "known_audio_id": "f0ebddf7-3212-4c67-b23c-e4bff588085d",
+    "target1_audio_id": "936a87b5-a82e-466c-aaee-f356db5657b3",
+    "target2_audio_id": "38798a1f-0144-4eb2-a532-dcf900b51377"
+   },
+   "lego": {
+    "lego_id": "S0160L01",
+    "known_text": "词",
+    "target_text": "mot",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0165L03U06": {
+   "seed": {
+    "seed_number": 165,
+    "known_text": "但是我不确定是不是真的。",
+    "target_text": "Mais je ne suis pas sûr que ce soit vrai.",
+    "known_audio_id": "2205c798-7009-4cf3-b121-4ac60328b4ad",
+    "target1_audio_id": "2fe8df1d-803b-4036-962e-4a17c97c6571",
+    "target2_audio_id": "dc03c5b3-5211-410e-8988-c69a4f01efaa"
+   },
+   "lego": {
+    "lego_id": "S0165L03",
+    "known_text": "是真的",
+    "target_text": "vrai",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0173L02U07": {
+   "seed": {
+    "seed_number": 173,
+    "known_text": "不用了谢谢，我自己能行。",
+    "target_text": "Non merci je peux me débrouiller tout seul.",
+    "known_audio_id": "19ef2967-c51a-41d8-aab3-a0927d046ba7",
+    "target1_audio_id": "d4651b4c-1113-46e7-838b-730f5b6a7d6f",
+    "target2_audio_id": "3a5717fe-90b3-4949-a45f-e1b0b867c768"
+   },
+   "lego": {
+    "lego_id": "S0173L02",
+    "known_text": "能行",
+    "target_text": "débrouiller",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0178L01U05": {
+   "seed": {
+    "seed_number": 178,
+    "known_text": "我没有时间，虽然我想见你。",
+    "target_text": "Je n'avais pas le temps, bien que je voulais te voir.",
+    "known_audio_id": "d43d99e0-7480-4bd7-819a-9dfb645e6d40",
+    "target1_audio_id": "26be5053-4699-4aca-9a9b-825e3e7add79",
+    "target2_audio_id": "38c83118-541c-486f-89b4-89f70f04019d"
+   },
+   "lego": {
+    "lego_id": "S0178L01",
+    "known_text": "没有",
+    "target_text": "n'avais",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0190L01U07": {
+   "seed": {
+    "seed_number": 190,
+    "known_text": "你介意我问你几个问题吗？",
+    "target_text": "Ça ne te dérange pas si je te pose quelques questions ?",
+    "known_audio_id": "d74848b5-32bf-461d-b5fd-9634b62ee1f0",
+    "target1_audio_id": "69a1f6ec-b3dd-4e99-9029-74de9cdd4ee2",
+    "target2_audio_id": "c54a60f5-aea8-48e5-b203-146b009a1060"
+   },
+   "lego": {
+    "lego_id": "S0190L01",
+    "known_text": "问",
+    "target_text": "pose",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0191L02U08": {
+   "seed": {
+    "seed_number": 191,
+    "known_text": "没有，我一点都不介意。",
+    "target_text": "Non ça ne me dérange pas du tout.",
+    "known_audio_id": "923ac0d2-83fc-4436-a10f-3155f5d056f5",
+    "target1_audio_id": "1851647d-34ca-46af-876c-2458a4ebfbb2",
+    "target2_audio_id": "22dc145d-3af1-4aa9-8fbc-662c43a6f6cf"
+   },
+   "lego": {
+    "lego_id": "S0191L02",
+    "known_text": "一点都不",
+    "target_text": "du tout",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0193L01U08": {
+   "seed": {
+    "seed_number": 193,
+    "known_text": "对不起，但是我今天太忙了。",
+    "target_text": "Je suis désolé mais je suis trop occupé aujourd'hui.",
+    "known_audio_id": "df23e6b1-5a15-4256-b25a-005735e2ee42",
+    "target1_audio_id": "70597629-946f-43f8-9d86-569e607da728",
+    "target2_audio_id": "86fb01ca-985e-41e8-b3c7-389303a80dc3"
+   },
+   "lego": {
+    "lego_id": "S0193L01",
+    "known_text": "太忙",
+    "target_text": "occupé",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0195L03U06": {
+   "seed": {
+    "seed_number": 195,
+    "known_text": "我在试着找我留在桌子上的钱。",
+    "target_text": "J'essaie de trouver l'argent que j'ai laissé sur la table.",
+    "known_audio_id": "a1c0a57c-38f0-45ea-bbbf-6571773b93de",
+    "target1_audio_id": "929be81b-5c23-42be-b31e-fd8cd40e9233",
+    "target2_audio_id": "0ed04dcd-b663-4a08-a546-283f90fb4184"
+   },
+   "lego": {
+    "lego_id": "S0195L03",
+    "known_text": "桌子",
+    "target_text": "table",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0202L01U06": {
+   "seed": {
+    "seed_number": 202,
+    "known_text": "没有人知道怎么回答问题。",
+    "target_text": "Personne n'était sûr comment répondre à la question.",
+    "known_audio_id": "24157c6b-3455-429c-bc1c-530003bcf243",
+    "target1_audio_id": "54fc7e55-2697-4b4e-bc0d-d7e2f6df01ea",
+    "target2_audio_id": "63bc4c40-3b05-44ed-acd3-36646d6c2a04"
+   },
+   "lego": {
+    "lego_id": "S0202L01",
+    "known_text": "没有人",
+    "target_text": "personne",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0213L01U06": {
+   "seed": {
+    "seed_number": 213,
+    "known_text": "我们不知道他们想做什么。",
+    "target_text": "Nous ne savons pas ce qu'ils essaient d'accomplir.",
+    "known_audio_id": "311f38ef-69d6-444a-95ca-e398b2ab3bac",
+    "target1_audio_id": "1e082a3a-fe9f-42ff-8224-d80055276cdb",
+    "target2_audio_id": "9a4b0cc0-160b-4416-9d33-9732d5f62be1"
+   },
+   "lego": {
+    "lego_id": "S0213L01",
+    "known_text": "知道",
+    "target_text": "savons",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0225L02U06": {
+   "seed": {
+    "seed_number": 225,
+    "known_text": "如果他能的话，他会给你一个答案。",
+    "target_text": "Il te donnerait une réponse s'il pouvait.",
+    "known_audio_id": "3a5d2614-134c-4d60-b226-49dc4d5223a8",
+    "target1_audio_id": "8006e815-35b2-4ea3-978c-8e73e6a5fee2",
+    "target2_audio_id": "433862f9-e1ee-4646-b8b6-2cb0408462ba"
+   },
+   "lego": {
+    "lego_id": "S0225L02",
+    "known_text": "答案",
+    "target_text": "réponse",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0232L01U06": {
+   "seed": {
+    "seed_number": 232,
+    "known_text": "我认识一个老女人能记住答案。",
+    "target_text": "Je connais une vieille femme qui peut se souvenir de la réponse.",
+    "known_audio_id": "69914566-13b8-4176-8bfd-912a025ac5e2",
+    "target1_audio_id": "f9397abc-1e43-4ed1-bb39-160911efd4e5",
+    "target2_audio_id": "79d2ca2b-7fbe-47b1-8788-59e26908ff31"
+   },
+   "lego": {
+    "lego_id": "S0232L01",
+    "known_text": "老女人",
+    "target_text": "vieille femme",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0239L02U06": {
+   "seed": {
+    "seed_number": 239,
+    "known_text": "我妈妈喜欢看书。",
+    "target_text": "Ma mère aime lire.",
+    "known_audio_id": "58cf5e1d-a04a-4ece-b57c-15e2d3ad7db6",
+    "target1_audio_id": "6154816c-16a3-445d-a236-8223c1f75846",
+    "target2_audio_id": "34e25c3b-1501-4d52-ae58-9264ab1f1bda"
+   },
+   "lego": {
+    "lego_id": "S0239L02",
+    "known_text": "看书",
+    "target_text": "lire",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L03U06": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "有，她上周给我发了两封邮件。",
+    "target_text": "Oui elle m'a envoyé deux e-mails la semaine dernière.",
+    "known_audio_id": "1fd40e52-11b4-466a-8c91-d1e50600805b",
+    "target1_audio_id": "9fdd4773-80ec-4239-91be-a002af208f03",
+    "target2_audio_id": "188d9b27-5512-42ee-8d99-a4834e8b4e16"
+   },
+   "lego": {
+    "lego_id": "S0268L03",
+    "known_text": "上周",
+    "target_text": "la semaine dernière",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0281L04U06": {
+   "seed": {
+    "seed_number": 281,
+    "known_text": "你介意我喝完咖啡你再开始吗？",
+    "target_text": "Ça ne te dérange pas si je finis mon café avant que tu commences ?",
+    "known_audio_id": "a1e73fdf-6019-40c2-adcd-831c37749253",
+    "target1_audio_id": "320b6bd3-b5a8-47d8-a867-717163847ab7",
+    "target2_audio_id": "0d525dc9-f5d0-424d-aac8-bdfc3dcfd234"
+   },
+   "lego": {
+    "lego_id": "S0281L04",
+    "known_text": "开始",
+    "target_text": "commences",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0283L02U06": {
+   "seed": {
+    "seed_number": 283,
+    "known_text": "你哪些朋友会说法语？",
+    "target_text": "Lesquels de tes amis parlent français ?",
+    "known_audio_id": "62fcfe35-68af-4b77-bd51-2eb344a7e7aa",
+    "target1_audio_id": "0ca3af69-01f3-4393-b217-efe6679dd21a",
+    "target2_audio_id": "879b04c0-f60b-4af1-84de-3ffebd115d83"
+   },
+   "lego": {
+    "lego_id": "S0283L02",
+    "known_text": "哪些",
+    "target_text": "lesquels",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

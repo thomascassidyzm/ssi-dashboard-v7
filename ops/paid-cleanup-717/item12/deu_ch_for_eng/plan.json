@@ -1,0 +1,2430 @@
+{
+ "course": "deu_ch_for_eng",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:01.807Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 3,
+   "id": "S0003L02U06",
+   "lego": "S0003L02",
+   "known": "how to speak as often as possible.",
+   "target": "wie mä so oft wie mögli redet.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0003L02U06",
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "how to speak as often as possible.",
+      "target_text": "wie mä so oft wie mögli redet.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 3,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0003L02U06",
+     "slot": "known",
+     "audio_id": "5ea1148c-087c-460e-8178-5aced506cee5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0003L02U06",
+     "slot": "target1",
+     "audio_id": "ec5e3110-bd49-47ef-b961-fd79707857a2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0003L02U06",
+     "slot": "target2",
+     "audio_id": "6f88ad95-a372-4780-8fe1-60bdb74303e4"
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "id": "S0004L03U06",
+   "lego": "S0004L03",
+   "known": "how to say something in Swiss German",
+   "target": "wie mä öppis uf Schwiizerdütsch seit.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0004L03U06",
+      "seed_number": 4,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "how to say something in Swiss German",
+      "target_text": "wie mä öppis uf Schwiizerdütsch seit.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 4,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0004L03U06",
+     "slot": "known",
+     "audio_id": "5dfbac04-3c82-49a6-bde4-9edb97700f64"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0004L03U06",
+     "slot": "target1",
+     "audio_id": "e96eb899-3153-4d38-bfa6-003e6431d67e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0004L03U06",
+     "slot": "target2",
+     "audio_id": "1b4f4ab4-df75-4706-b550-89f6109b72bd"
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "id": "S0008L04U06",
+   "lego": "S0008L04",
+   "known": "I'm going to try to explain what I mean.",
+   "target": "Ich gaa versueche z erkläre, was ich mein.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0008L04U06",
+      "seed_number": 8,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "I'm going to try to explain what I mean.",
+      "target_text": "Ich gaa versueche z erkläre, was ich mein.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 8,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0008L04U06",
+     "slot": "known",
+     "audio_id": "28592fef-8bb7-4540-8015-034ee3de3de7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0008L04U06",
+     "slot": "target1",
+     "audio_id": "915edf5d-2801-4b8a-9f52-256311dc51dd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0008L04U06",
+     "slot": "target2",
+     "audio_id": "0b83a470-7744-44b5-86b6-785f2505a8ad"
+    }
+   ]
+  },
+  {
+   "seed": 76,
+   "id": "S0076L03U06",
+   "lego": "S0076L03",
+   "known": "I'm very happy with how much I've learnt already.",
+   "target": "Ich bi sehr zfriede mit dem, wie viil ich scho glernt ha.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0076L03U06",
+      "seed_number": 76,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "I'm very happy with how much I've learnt already.",
+      "target_text": "Ich bi sehr zfriede mit dem, wie viil ich scho glernt ha.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 76,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0076L03U06",
+     "slot": "known",
+     "audio_id": "d105c2c0-571f-42e7-834e-1aa03c72a655"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0076L03U06",
+     "slot": "target1",
+     "audio_id": "8afe98a8-dde0-4813-9f93-e56c3f6791a3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0076L03U06",
+     "slot": "target2",
+     "audio_id": "4d7e2b68-fa08-4520-a11c-4c4d67f7fa96"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L02U06",
+   "lego": "S0082L02",
+   "known": "I'm not going to wait for you. Why not?",
+   "target": "Ich gaa nöd uf di warte. Wieso nöd?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0082L02U06",
+      "seed_number": 82,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "I'm not going to wait for you. Why not?",
+      "target_text": "Ich gaa nöd uf di warte. Wieso nöd?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0082L02U06",
+     "slot": "known",
+     "audio_id": "f0e70eca-c026-4371-8aa4-aaf8389b10a0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0082L02U06",
+     "slot": "target1",
+     "audio_id": "84c83b46-3eb6-428d-8098-a9a142503e3f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0082L02U06",
+     "slot": "target2",
+     "audio_id": "86ca7b37-1770-45a5-8507-50801220e5f8"
+    }
+   ]
+  },
+  {
+   "seed": 113,
+   "id": "S0113L02U06",
+   "lego": "S0113L02",
+   "known": "Why can't I remember what you said?",
+   "target": "Wieso cha ich mi nöd erinnere, was du gseit hesch?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0113L02U06",
+      "seed_number": 113,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "Why can't I remember what you said?",
+      "target_text": "Wieso cha ich mi nöd erinnere, was du gseit hesch?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 113,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0113L02U06",
+     "slot": "known",
+     "audio_id": "55adf618-46e4-4864-bc50-79910c2d0dc6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0113L02U06",
+     "slot": "target1",
+     "audio_id": "70a1ff7c-0e40-47e0-944c-1ccafa13b931"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0113L02U06",
+     "slot": "target2",
+     "audio_id": "82a029e6-58f1-47eb-a13c-abb6f1c3dd96"
+    }
+   ]
+  },
+  {
+   "seed": 118,
+   "id": "S0118L01U06",
+   "lego": "S0118L01",
+   "known": "I feel better than I felt when we were in the pub.",
+   "target": "Ich füehl mi besser als wo mir i de Beiz gsi sind.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0118L01U06",
+      "seed_number": 118,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "I feel better than I felt when we were in the pub.",
+      "target_text": "Ich füehl mi besser als wo mir i de Beiz gsi sind.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 118,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 12,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0118L01U06",
+     "slot": "known",
+     "audio_id": "ea152ef5-dd91-4281-a817-95dc1aefc627"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0118L01U06",
+     "slot": "target1",
+     "audio_id": "bc75a29f-c16a-4cd1-8bf9-7a6bc34e132a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0118L01U06",
+     "slot": "target2",
+     "audio_id": "ee7fc4f2-04f7-4b67-99f8-4904759dc8e6"
+    }
+   ]
+  },
+  {
+   "seed": 125,
+   "id": "S0125L02U06",
+   "lego": "S0125L02",
+   "known": "I believe that your idea was very good.",
+   "target": "Ich glaub, dass dini Idee sehr guet gsi isch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0125L02U06",
+      "seed_number": 125,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "I believe that your idea was very good.",
+      "target_text": "Ich glaub, dass dini Idee sehr guet gsi isch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 125,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0125L02U06",
+     "slot": "known",
+     "audio_id": "02878517-2373-49a3-9def-72460afa76fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0125L02U06",
+     "slot": "target1",
+     "audio_id": "a5b45b28-3326-4023-b9b6-3b0b88837425"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0125L02U06",
+     "slot": "target2",
+     "audio_id": "82926a20-475f-40ad-b586-ba9baec6d5d5"
+    }
+   ]
+  },
+  {
+   "seed": 126,
+   "id": "S0126L03U06",
+   "lego": "S0126L03",
+   "known": "This work is changing the shape of my brain.",
+   "target": "Die Arbet veränderet d Form vo mim Hirn.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0126L03U06",
+      "seed_number": 126,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "This work is changing the shape of my brain.",
+      "target_text": "Die Arbet veränderet d Form vo mim Hirn.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 126,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 9,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0126L03U06",
+     "slot": "known",
+     "audio_id": "c7860ace-8cd3-4720-b97d-56b9b0431dbe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0126L03U06",
+     "slot": "target1",
+     "audio_id": "9625ae6b-3228-41f3-92c1-4aa71e54338c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0126L03U06",
+     "slot": "target2",
+     "audio_id": "4d54810d-4db3-49bd-8264-120e2101d971"
+    }
+   ]
+  },
+  {
+   "seed": 136,
+   "id": "S0136L01U06",
+   "lego": "S0136L01",
+   "known": "Of course you can ask her because she's my friend.",
+   "target": "Natürli chasch si frööge, wil si mini Fründin isch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0136L01U06",
+      "seed_number": 136,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "Of course you can ask her because she's my friend.",
+      "target_text": "Natürli chasch si frööge, wil si mini Fründin isch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 136,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 10,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0136L01U06",
+     "slot": "known",
+     "audio_id": "2d67bc77-cb74-4bb5-9eda-33eab646f503"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0136L01U06",
+     "slot": "target1",
+     "audio_id": "8aaf491a-d1af-4988-853d-a69027b192e1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0136L01U06",
+     "slot": "target2",
+     "audio_id": "bcb2f771-e40b-436e-8e72-93459fc28ad2"
+    }
+   ]
+  },
+  {
+   "seed": 143,
+   "id": "S0143L01U06",
+   "lego": "S0143L01",
+   "known": "It's the same thing as we were talking about earlier.",
+   "target": "Es isch s glieche, wo mir vorher drüber gredt händ.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0143L01U06",
+      "seed_number": 143,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "It's the same thing as we were talking about earlier.",
+      "target_text": "Es isch s glieche, wo mir vorher drüber gredt händ.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 143,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0143L01U06",
+     "slot": "known",
+     "audio_id": "7fa02621-7f92-4c88-88d5-e1c21d95a38b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0143L01U06",
+     "slot": "target1",
+     "audio_id": "8ff67321-25eb-4e28-be8f-57984b135fdc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0143L01U06",
+     "slot": "target2",
+     "audio_id": "26028da6-27ae-4a78-8279-0ef2ecc613ef"
+    }
+   ]
+  },
+  {
+   "seed": 214,
+   "id": "S0214L02U06",
+   "lego": "S0214L02",
+   "known": "Did you have a good time at the weekend?",
+   "target": "Hesch am Wuchenänd e schöni Ziit gha?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0214L02U06",
+      "seed_number": 214,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "Did you have a good time at the weekend?",
+      "target_text": "Hesch am Wuchenänd e schöni Ziit gha?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 214,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0214L02U06",
+     "slot": "known",
+     "audio_id": "de374ea4-c0e0-43ea-b0e2-8393a0d9f1f1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0214L02U06",
+     "slot": "target1",
+     "audio_id": "0906cd6a-3946-43c0-8613-26b76fd19857"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0214L02U06",
+     "slot": "target2",
+     "audio_id": "e93f563a-b032-4de5-948d-c9e169c94bca"
+    }
+   ]
+  },
+  {
+   "seed": 251,
+   "id": "S0251L02U06",
+   "lego": "S0251L02",
+   "known": "I don't want to find out until after we finish.",
+   "target": "Ich wott s ersch usefinde, nachdäm mir fertig sind.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0251L02U06",
+      "seed_number": 251,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "I don't want to find out until after we finish.",
+      "target_text": "Ich wott s ersch usefinde, nachdäm mir fertig sind.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 251,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0251L02U06",
+     "slot": "known",
+     "audio_id": "5d52c74b-8379-4866-bc0b-a4bd93e33fc4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0251L02U06",
+     "slot": "target1",
+     "audio_id": "c84c94dd-77d8-4447-a9ff-dc0522a323e3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0251L02U06",
+     "slot": "target2",
+     "audio_id": "b81b18b4-9519-45b3-9123-628e07d716a5"
+    }
+   ]
+  },
+  {
+   "seed": 280,
+   "id": "S0280L03U06",
+   "lego": "S0280L03",
+   "known": "No I only had to do the most important job.",
+   "target": "Nei, ich ha nu di wichtigscht Arbet müesse mache.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0280L03U06",
+      "seed_number": 280,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "No I only had to do the most important job.",
+      "target_text": "Nei, ich ha nu di wichtigscht Arbet müesse mache.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 280,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0280L03U06",
+     "slot": "known",
+     "audio_id": "dbb3874a-a4d3-4b46-8fee-a6960e433bd4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0280L03U06",
+     "slot": "target1",
+     "audio_id": "65500ca6-0a55-4ef8-a984-cbac56db49eb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0280L03U06",
+     "slot": "target2",
+     "audio_id": "67fb8b24-33cd-41c5-bf30-764689568fd3"
+    }
+   ]
+  },
+  {
+   "seed": 309,
+   "id": "S0309L04U06",
+   "lego": "S0309L04",
+   "known": "No I've never seen her before.",
+   "target": "Nei, ich ha si no nie gseh.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0309L04U06",
+      "seed_number": 309,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "No I've never seen her before.",
+      "target_text": "Nei, ich ha si no nie gseh.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 309,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0309L04U06",
+     "slot": "known",
+     "audio_id": "c83e18a4-e232-4696-bb99-c44f86927bf6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0309L04U06",
+     "slot": "target1",
+     "audio_id": "fc5eb5f0-0dee-4e70-aada-85e4258f0387"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0309L04U06",
+     "slot": "target2",
+     "audio_id": "49bf4e44-33de-4b35-9f99-f5109e5a12b5"
+    }
+   ]
+  },
+  {
+   "seed": 310,
+   "id": "S0310L02U06",
+   "lego": "S0310L02",
+   "known": "She could write a story about that man.",
+   "target": "Si chönt e Gschicht über dä Maa schriibe.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0310L02U06",
+      "seed_number": 310,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "She could write a story about that man.",
+      "target_text": "Si chönt e Gschicht über dä Maa schriibe.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 310,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0310L02U06",
+     "slot": "known",
+     "audio_id": "a00a69e8-c693-4da4-a9cf-761f850ed55d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0310L02U06",
+     "slot": "target1",
+     "audio_id": "ff1bcd9e-9eb5-4811-b2c8-1372a5e0e7ed"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0310L02U06",
+     "slot": "target2",
+     "audio_id": "5d7d29d2-a27f-488d-b8c5-44b490087730"
+    }
+   ]
+  },
+  {
+   "seed": 317,
+   "id": "S0317L04U06",
+   "lego": "S0317L04",
+   "known": "Yes I think she could if she wanted to.",
+   "target": "Ja, ich dänke, si chönt, wenn si wett.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0317L04U06",
+      "seed_number": 317,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "Yes I think she could if she wanted to.",
+      "target_text": "Ja, ich dänke, si chönt, wenn si wett.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 317,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0317L04U06",
+     "slot": "known",
+     "audio_id": "0d5cd8cd-a31d-418f-b384-3da264d60b83"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0317L04U06",
+     "slot": "target1",
+     "audio_id": "b43d84e7-bb2c-4368-a20c-976745024b8e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0317L04U06",
+     "slot": "target2",
+     "audio_id": "106e9aac-652f-4a3f-b825-ec3c0361f482"
+    }
+   ]
+  },
+  {
+   "seed": 318,
+   "id": "S0318L04U06",
+   "lego": "S0318L04",
+   "known": "No I don't think she could this time.",
+   "target": "Nei, ich dänke nöd, dass si das Mal chönt.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0318L04U06",
+      "seed_number": 318,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "No I don't think she could this time.",
+      "target_text": "Nei, ich dänke nöd, dass si das Mal chönt.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 318,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0318L04U06",
+     "slot": "known",
+     "audio_id": "d5f270ca-95b6-4f75-9019-c74d915667cd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0318L04U06",
+     "slot": "target1",
+     "audio_id": "09668ab0-c2a5-4417-81e3-62ca39bf2dc4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0318L04U06",
+     "slot": "target2",
+     "audio_id": "a94a36af-5011-44ec-a7a2-6c198c8889d6"
+    }
+   ]
+  },
+  {
+   "seed": 324,
+   "id": "S0324L03U06",
+   "lego": "S0324L03",
+   "known": "That student has both of her hands up.",
+   "target": "Die Schüelerin hät beidi Händ obe.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0324L03U06",
+      "seed_number": 324,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "That student has both of her hands up.",
+      "target_text": "Die Schüelerin hät beidi Händ obe.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 324,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0324L03U06",
+     "slot": "known",
+     "audio_id": "900f588b-f832-4f61-b163-1bc0179da6ce"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0324L03U06",
+     "slot": "target1",
+     "audio_id": "9a85645a-1418-465b-a503-99844da31f79"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0324L03U06",
+     "slot": "target2",
+     "audio_id": "21d848d1-4462-4cac-b00c-df252255e602"
+    }
+   ]
+  },
+  {
+   "seed": 330,
+   "id": "S0330L01U06",
+   "lego": "S0330L01",
+   "known": "No I don't think it's very important.",
+   "target": "Nei, ich dänke nöd, dass es sehr wichtig isch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0330L01U06",
+      "seed_number": 330,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "No I don't think it's very important.",
+      "target_text": "Nei, ich dänke nöd, dass es sehr wichtig isch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 330,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0330L01U06",
+     "slot": "known",
+     "audio_id": "edb82133-75be-4188-9c7a-4a0a41bc432a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0330L01U06",
+     "slot": "target1",
+     "audio_id": "c6f7e4fd-b0e4-4be6-aab5-10b78c9b5182"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0330L01U06",
+     "slot": "target2",
+     "audio_id": "afc5e1f8-bc7e-4891-8994-23180858be29"
+    }
+   ]
+  },
+  {
+   "seed": 412,
+   "id": "S0412L04U06",
+   "lego": "S0412L04",
+   "known": "We couldn't allow them to win everything.",
+   "target": "Mir händ ne nöd chöne erlaube, alles z gwünne.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0412L04U06",
+      "seed_number": 412,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "We couldn't allow them to win everything.",
+      "target_text": "Mir händ ne nöd chöne erlaube, alles z gwünne.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 412,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0412L04U06",
+     "slot": "known",
+     "audio_id": "194f0ffa-93d9-43e8-b428-a9e64208c09c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0412L04U06",
+     "slot": "target1",
+     "audio_id": "683bdee2-2a24-417c-8741-1678c4556674"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0412L04U06",
+     "slot": "target2",
+     "audio_id": "7bf5b29b-1505-46e0-90ea-52a5ee505248"
+    }
+   ]
+  },
+  {
+   "seed": 491,
+   "id": "S0491L03U06",
+   "lego": "S0491L03",
+   "known": "I love the way you try to help.",
+   "target": "Ich find s toll, wie du versuechsch z hälfe.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0491L03U06",
+      "seed_number": 491,
+      "lego_index": 3,
+      "position": 14,
+      "known_text": "I love the way you try to help.",
+      "target_text": "Ich find s toll, wie du versuechsch z hälfe.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 491,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0491L03U06",
+     "slot": "known",
+     "audio_id": "38869311-fbcd-43bf-96d8-72b9dd0fd70c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0491L03U06",
+     "slot": "target1",
+     "audio_id": "6c46040a-061c-4265-9f9f-f6c665638d87"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0491L03U06",
+     "slot": "target2",
+     "audio_id": "ce02dd77-133a-4143-b972-d6bcbaef69f2"
+    }
+   ]
+  },
+  {
+   "seed": 499,
+   "id": "S0499L07U06",
+   "lego": "S0499L07",
+   "known": "Maybe we should open the door and close the window.",
+   "target": "Villicht sötted mir d Tür ufmache und s Feischter zuemache.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0499L07U06",
+      "seed_number": 499,
+      "lego_index": 7,
+      "position": 10,
+      "known_text": "Maybe we should open the door and close the window.",
+      "target_text": "Villicht sötted mir d Tür ufmache und s Feischter zuemache.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 499,
+       "canon": "P26"
+      },
+      "word_count": 59,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0499L07U06",
+     "slot": "known",
+     "audio_id": "353af44a-7e08-4c36-996e-a6329af21946"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0499L07U06",
+     "slot": "target1",
+     "audio_id": "81d086d7-ff27-4b3a-8080-d31f7f58956c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0499L07U06",
+     "slot": "target2",
+     "audio_id": "f64a64f5-acbe-4711-9d06-e75340a60c13"
+    }
+   ]
+  },
+  {
+   "seed": 501,
+   "id": "S0501L08U06",
+   "lego": "S0501L08",
+   "known": "If only I could trust you to play together without arguing.",
+   "target": "Wenn ich eu nu chönt vertraue, dass ir zäme spiled ohni z schträite.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0501L08U06",
+      "seed_number": 501,
+      "lego_index": 8,
+      "position": 13,
+      "known_text": "If only I could trust you to play together without arguing.",
+      "target_text": "Wenn ich eu nu chönt vertraue, dass ir zäme spiled ohni z schträite.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 501,
+       "canon": "P26"
+      },
+      "word_count": 68,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0501L08U06",
+     "slot": "known",
+     "audio_id": "a703aa2f-81c3-4ff0-91c8-33c3255e9c11"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0501L08U06",
+     "slot": "target1",
+     "audio_id": "c93846a0-a623-419b-af20-6658cc78db66"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0501L08U06",
+     "slot": "target2",
+     "audio_id": "b8eeb42f-b66c-41ab-a288-cb4fcc4678a7"
+    }
+   ]
+  },
+  {
+   "seed": 519,
+   "id": "S0519L02U06",
+   "lego": "S0519L02",
+   "known": "I haven't seen their new baby yet.",
+   "target": "Ich ha ihres neus Baby no nöd gseh.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0519L02U06",
+      "seed_number": 519,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "I haven't seen their new baby yet.",
+      "target_text": "Ich ha ihres neus Baby no nöd gseh.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 519,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0519L02U06",
+     "slot": "known",
+     "audio_id": "e98445da-98bc-4adb-8c6e-3604db9056e7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0519L02U06",
+     "slot": "target1",
+     "audio_id": "61a6ecae-fd4f-46de-8aa5-733956e61532"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0519L02U06",
+     "slot": "target2",
+     "audio_id": "9e21b7d0-858b-46de-bd7a-b8a322719152"
+    }
+   ]
+  },
+  {
+   "seed": 531,
+   "id": "S0531L04U06",
+   "lego": "S0531L04",
+   "known": "It isn't true that anyone can win the game.",
+   "target": "Es stimmt nöd, dass jede s Spiel cha gwünne.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0531L04U06",
+      "seed_number": 531,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "It isn't true that anyone can win the game.",
+      "target_text": "Es stimmt nöd, dass jede s Spiel cha gwünne.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 531,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0531L04U06",
+     "slot": "known",
+     "audio_id": "c82eec5e-50c6-44be-b627-cdbfdf6048de"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0531L04U06",
+     "slot": "target1",
+     "audio_id": "a4f17174-7fcd-4ba8-a6de-5affe5c1b079"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0531L04U06",
+     "slot": "target2",
+     "audio_id": "440fedf1-b154-4485-9134-6ff2b41d0040"
+    }
+   ]
+  },
+  {
+   "seed": 532,
+   "id": "S0532L01U06",
+   "lego": "S0532L01",
+   "known": "Unless they're lucky.",
+   "target": "Usser si händ Glück.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0532L01U06",
+      "seed_number": 532,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Unless they're lucky.",
+      "target_text": "Usser si händ Glück.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 532,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 3,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0532L01U06",
+     "slot": "known",
+     "audio_id": "88e8fd84-e674-4010-99fc-f4f2ef2356b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0532L01U06",
+     "slot": "target1",
+     "audio_id": "ebdc46dd-85e0-4a1c-aa04-d4aa6984b764"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0532L01U06",
+     "slot": "target2",
+     "audio_id": "db4e3373-1125-45e6-a813-ee382cf1dc56"
+    }
+   ]
+  },
+  {
+   "seed": 535,
+   "id": "S0535L02U06",
+   "lego": "S0535L02",
+   "known": "He made a promise that he wouldn't choose the wrong job.",
+   "target": "Er hät versproche, dass er nöd de falsch Job wählt.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0535L02U06",
+      "seed_number": 535,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "He made a promise that he wouldn't choose the wrong job.",
+      "target_text": "Er hät versproche, dass er nöd de falsch Job wählt.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 535,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0535L02U06",
+     "slot": "known",
+     "audio_id": "4d240250-e785-48d5-919c-eae4c553e4ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0535L02U06",
+     "slot": "target1",
+     "audio_id": "aae82041-1643-45b1-8f73-01ac88fd34f3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0535L02U06",
+     "slot": "target2",
+     "audio_id": "b3e2b9cd-e100-4c28-9193-ce4df4002961"
+    }
+   ]
+  },
+  {
+   "seed": 542,
+   "id": "S0542L01U06",
+   "lego": "S0542L01",
+   "known": "Whenever you feel angry.",
+   "target": "Immer wenn du hässig bisch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0542L01U06",
+      "seed_number": 542,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "Whenever you feel angry.",
+      "target_text": "Immer wenn du hässig bisch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 542,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0542L01U06",
+     "slot": "known",
+     "audio_id": "34ffbe97-bce9-4d3b-ac97-65dc1cc7faca"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0542L01U06",
+     "slot": "target1",
+     "audio_id": "a3624464-97cd-45a4-9a83-b49478fad5f7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0542L01U06",
+     "slot": "target2",
+     "audio_id": "4d3dd3a0-f097-494f-aa52-8d7e02a3afd5"
+    }
+   ]
+  },
+  {
+   "seed": 545,
+   "id": "S0545L02U06",
+   "lego": "S0545L02",
+   "known": "It's your turn to take the clean clothes upstairs.",
+   "target": "Du bisch draa, die suubere Chleider ufe z träge.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0545L02U06",
+      "seed_number": 545,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "It's your turn to take the clean clothes upstairs.",
+      "target_text": "Du bisch draa, die suubere Chleider ufe z träge.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 545,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0545L02U06",
+     "slot": "known",
+     "audio_id": "566ff061-ce92-48d4-b6aa-21fb9684a39c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0545L02U06",
+     "slot": "target1",
+     "audio_id": "d8fa1ede-849b-499a-9c9a-933d699ffa5d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0545L02U06",
+     "slot": "target2",
+     "audio_id": "cb6ef5b2-54df-4c02-9a11-a1d4db9c613f"
+    }
+   ]
+  },
+  {
+   "seed": 576,
+   "id": "S0576L01U06",
+   "lego": "S0576L01",
+   "known": "It has been very upsetting waiting.",
+   "target": "S Warte isch sehr belaschtend gsi.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0576L01U06",
+      "seed_number": 576,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "It has been very upsetting waiting.",
+      "target_text": "S Warte isch sehr belaschtend gsi.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 576,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0576L01U06",
+     "slot": "known",
+     "audio_id": "a59b9166-2a3b-4d36-98a0-06bc68d0727d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0576L01U06",
+     "slot": "target1",
+     "audio_id": "c2d85548-0a78-444b-b80d-85eeabebafb4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0576L01U06",
+     "slot": "target2",
+     "audio_id": "b3a173f7-3e4b-4f22-96eb-af801b4819e9"
+    }
+   ]
+  },
+  {
+   "seed": 577,
+   "id": "S0577L05U06",
+   "lego": "S0577L05",
+   "known": "We've been waiting for the news from the hospital.",
+   "target": "Mir warted uf d Nachricht vom Schpital.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0577L05U06",
+      "seed_number": 577,
+      "lego_index": 5,
+      "position": 11,
+      "known_text": "We've been waiting for the news from the hospital.",
+      "target_text": "Mir warted uf d Nachricht vom Schpital.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 577,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0577L05U06",
+     "slot": "known",
+     "audio_id": "b8a4ddc8-cbeb-42c2-87b8-88d24c589358"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0577L05U06",
+     "slot": "target1",
+     "audio_id": "328bfd4b-8b37-48c9-8f34-70e7469cc55c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0577L05U06",
+     "slot": "target2",
+     "audio_id": "7149afad-c7ed-4555-815d-2cbd755e4561"
+    }
+   ]
+  },
+  {
+   "seed": 597,
+   "id": "S0597L04U06",
+   "lego": "S0597L04",
+   "known": "I suspect that he's heard a hundred stories about it.",
+   "target": "Ich vermuete, dass er hundert Gschichte drüber ghört hät.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0597L04U06",
+      "seed_number": 597,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "I suspect that he's heard a hundred stories about it.",
+      "target_text": "Ich vermuete, dass er hundert Gschichte drüber ghört hät.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 597,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0597L04U06",
+     "slot": "known",
+     "audio_id": "8cd1524a-f84e-4914-9420-dae4d1d9d2e1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0597L04U06",
+     "slot": "target1",
+     "audio_id": "434b6191-b7be-4340-9078-14f894d98a74"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0597L04U06",
+     "slot": "target2",
+     "audio_id": "3a831338-0441-4905-9377-31ecbae00821"
+    }
+   ]
+  },
+  {
+   "seed": 598,
+   "id": "S0598L02U06",
+   "lego": "S0598L02",
+   "known": "He's heard a thousand stories about what they were doing.",
+   "target": "Er hät tuusig Gschichte ghört, über das, wo si gmacht händ.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0598L02U06",
+      "seed_number": 598,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "He's heard a thousand stories about what they were doing.",
+      "target_text": "Er hät tuusig Gschichte ghört, über das, wo si gmacht händ.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 598,
+       "canon": "P26"
+      },
+      "word_count": 59,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0598L02U06",
+     "slot": "known",
+     "audio_id": "b4b95301-ac4d-434b-a7e0-ca29012ca025"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0598L02U06",
+     "slot": "target1",
+     "audio_id": "3f8f5fd3-7a93-40cf-ba11-ae8a39d90d6f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0598L02U06",
+     "slot": "target2",
+     "audio_id": "dbc7164e-d5c2-4f87-9ac4-f947f2c05e1a"
+    }
+   ]
+  },
+  {
+   "seed": 599,
+   "id": "S0599L04U06",
+   "lego": "S0599L04",
+   "known": "I'd have been happy to drive if you'd told me.",
+   "target": "Ich wär froh gsi z fahre, wenn du mir s gseit hättsch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0599L04U06",
+      "seed_number": 599,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "I'd have been happy to drive if you'd told me.",
+      "target_text": "Ich wär froh gsi z fahre, wenn du mir s gseit hättsch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 599,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0599L04U06",
+     "slot": "known",
+     "audio_id": "31d1a8c7-9514-41df-b4ca-65642bb7f904"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0599L04U06",
+     "slot": "target1",
+     "audio_id": "cbbde164-5781-4374-a37d-532096875c3c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0599L04U06",
+     "slot": "target2",
+     "audio_id": "e2a65cfe-352f-4f8c-8a8f-8ce341cfb917"
+    }
+   ]
+  },
+  {
+   "seed": 600,
+   "id": "S0600L01U06",
+   "lego": "S0600L01",
+   "known": "I'd have driven if you'd told me how tired you were.",
+   "target": "Ich wär gfahre, wenn du mir gseit hättsch, wie müed du bisch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0600L01U06",
+      "seed_number": 600,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "I'd have driven if you'd told me how tired you were.",
+      "target_text": "Ich wär gfahre, wenn du mir gseit hättsch, wie müed du bisch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 600,
+       "canon": "P26"
+      },
+      "word_count": 61,
+      "lego_count": 11,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0600L01U06",
+     "slot": "known",
+     "audio_id": "9b6c0f4d-d940-4958-887a-9150427b1eb5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0600L01U06",
+     "slot": "target1",
+     "audio_id": "044cc83f-f814-4b35-adc6-f7c3dafe9c5a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0600L01U06",
+     "slot": "target2",
+     "audio_id": "6607d922-2bb8-415b-a078-a7e9e3d547c1"
+    }
+   ]
+  },
+  {
+   "seed": 608,
+   "id": "S0608L01U06",
+   "lego": "S0608L01",
+   "known": "It would have been the sensible thing to do.",
+   "target": "Das wär s Vernünftig gsi.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0608L01U06",
+      "seed_number": 608,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "It would have been the sensible thing to do.",
+      "target_text": "Das wär s Vernünftig gsi.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 608,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0608L01U06",
+     "slot": "known",
+     "audio_id": "2835b03d-e340-4ae2-ac33-cc0e0302c1c3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0608L01U06",
+     "slot": "target1",
+     "audio_id": "3c72158f-c9a0-45da-a6df-70f31118afa7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0608L01U06",
+     "slot": "target2",
+     "audio_id": "66999b67-2ae8-4be1-a352-94bfe9343225"
+    }
+   ]
+  },
+  {
+   "seed": 616,
+   "id": "S0616L02U04",
+   "lego": "S0616L02",
+   "known": "You were very brave to say you thought that.",
+   "target": "Du bisch sehr muetig gsi z säge, dass du das dänksch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0616L02U04",
+      "seed_number": 616,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "You were very brave to say you thought that.",
+      "target_text": "Du bisch sehr muetig gsi z säge, dass du das dänksch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 616,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0616L02U04",
+     "slot": "known",
+     "audio_id": "d2d162a3-a11c-4245-9c90-7cec4c63cb9f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0616L02U04",
+     "slot": "target1",
+     "audio_id": "04b40e2a-3871-435a-83b9-72860a2191c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0616L02U04",
+     "slot": "target2",
+     "audio_id": "e2bfdd08-bb07-4b74-9045-04fdc8ec4c49"
+    }
+   ]
+  },
+  {
+   "seed": 645,
+   "id": "S0645L01U05",
+   "lego": "S0645L01",
+   "known": "I can help you madam",
+   "target": "Ich cha Ihne hälfe",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0645L01U05",
+      "seed_number": 645,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "I can help you madam",
+      "target_text": "Ich cha Ihne hälfe",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 645,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0645L01U05",
+     "slot": "known",
+     "audio_id": "61331dfd-d100-4736-b62a-851ffd80321c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0645L01U05",
+     "slot": "target1",
+     "audio_id": "1d07bc7e-88b3-4c11-84cd-21e34312311a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0645L01U05",
+     "slot": "target2",
+     "audio_id": "114e2d0e-0249-4ada-9486-eb6ea8311824"
+    }
+   ]
+  },
+  {
+   "seed": 648,
+   "id": "S0648L01U06",
+   "lego": "S0648L01",
+   "known": "what you said madam",
+   "target": "was Sie gseit händ",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0648L01U06",
+      "seed_number": 648,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "what you said madam",
+      "target_text": "was Sie gseit händ",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 648,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0648L01U06",
+     "slot": "known",
+     "audio_id": "ab3e8ca0-e2ac-4434-a8f9-c810745ccf75"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0648L01U06",
+     "slot": "target1",
+     "audio_id": "e07d158e-664c-43ef-8450-baef4f4b018b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0648L01U06",
+     "slot": "target2",
+     "audio_id": "0f775548-c622-4b2a-8d45-1fdf95591fe2"
+    }
+   ]
+  },
+  {
+   "seed": 650,
+   "id": "S0650L01U05",
+   "lego": "S0650L01",
+   "known": "Do you want to go madam?",
+   "target": "Wänd Sie gaa?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_ch_for_eng:S0650L01U05",
+      "seed_number": 650,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "Do you want to go madam?",
+      "target_text": "Wänd Sie gaa?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 650,
+       "canon": "P26"
+      },
+      "word_count": 13,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0650L01U05",
+     "slot": "known",
+     "audio_id": "a475e830-ec62-4e20-9386-7e95a6079653"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0650L01U05",
+     "slot": "target1",
+     "audio_id": "173e9eac-1f06-424f-b362-ca7c79aa2f19"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_ch_for_eng:S0650L01U05",
+     "slot": "target2",
+     "audio_id": "65b9fc31-e81d-47d9-8a6a-0e909b740199"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_form": [
+   {
+    "seed": 61,
+    "known": "Could you say that again a little more slowly?",
+    "target": "Chöntsch das nomal es bitzli langsamer säge?",
+    "row": "S0061L04U01",
+    "row_known": "could you say this again a little more slowly?",
+    "row_target": "chöntsch das nomal es bitzli langsamer säge?"
+   },
+   {
+    "seed": 87,
+    "known": "They are people I don't know.",
+    "target": "Das sind Lüt, wo ich nöd kenne.",
+    "row": "S0087L01U01",
+    "row_known": "these are people I don't know",
+    "row_target": "das sind Lüt, wo ich nöd kenne"
+   },
+   {
+    "seed": 314,
+    "known": "I think that she could put it on the table.",
+    "target": "Ich dänke, dass si s uf de Tisch chönt legge.",
+    "row": "S0314L03U02",
+    "row_known": "I think that she could put it onto the table",
+    "row_target": "ich dänke, dass si s uf de Tisch chönt legge"
+   },
+   {
+    "seed": 315,
+    "known": "I think that he couldn't afford the car that he wanted.",
+    "target": "Ich dänke, dass er sich s Auto, wo er wott, nöd hät chöne leischte.",
+    "row": "S0315L04U05",
+    "row_known": "I think that he couldn't afford the car that he wants",
+    "row_target": "ich dänke, dass er sich s Auto, wo er wott, nöd hät chöne leischte"
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 128,
+    "known": "You're like someone I used to know.",
+    "target": "Du bisch wie öpper, wo ich früener kennt ha.",
+    "row": "S0128L03U05",
+    "row_known": "you're like someone I used to know",
+    "row_target": "du bisch wie öpper, wo ich kennt ha"
+   },
+   {
+    "seed": 252,
+    "known": "When will you be ready to start?",
+    "target": "Wänn bisch parat zum Aafange?",
+    "row": "S0252L02U01",
+    "row_known": "when will you be ready to start",
+    "row_target": "wenn bisch parat zum Aafange?"
+   },
+   {
+    "seed": 654,
+    "known": "I'm not sure if I can help you, sir.",
+    "target": "Ich bi mir nöd sicher, öb ich Ihne cha hälfe.",
+    "row": "S0654L02U02",
+    "row_known": "I'm not sure if I can help you, sir",
+    "row_target": "ich bi mir nöd sicher, öb ich cha Ihne hälfe"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 129,
+    "known": "I'm so happy that you're doing so well.",
+    "target": "Ich bi so froh, dass du s so guet machsch.",
+    "legos": [
+     "S0129L01 pleased | froh"
+    ]
+   },
+   {
+    "seed": 193,
+    "known": "I'm sorry but I'm too busy today.",
+    "target": "Es tuet mir leid, aber ich bi hüt z bschäftigt.",
+    "legos": [
+     "S0193L01(old) too | z"
+    ]
+   },
+   {
+    "seed": 267,
+    "known": "Have you heard from your friend?",
+    "target": "Hesch vo dim Fründ ghört?",
+    "legos": [
+     "S0267L01(old) heard | ghört"
+    ]
+   },
+   {
+    "seed": 279,
+    "known": "Yes because there wasn't much time left.",
+    "target": "Ja, wil nöd viil Ziit übrig gsi isch.",
+    "legos": [
+     "S0279L01 was left | übrig gsi isch"
+    ]
+   },
+   {
+    "seed": 286,
+    "known": "People who like speaking Swiss German.",
+    "target": "Lüt, wo gern Schwiizerdütsch reded.",
+    "legos": [
+     "S0286L01(old) people | lüt"
+    ]
+   },
+   {
+    "seed": 291,
+    "known": "I hope I'll be able to speak better soon.",
+    "target": "Ich hoff, dass ich bald besser cha rede.",
+    "legos": [
+     "S0291L01(old) soon | bald",
+     "S0291L02(old) better | besser"
+    ]
+   },
+   {
+    "seed": 298,
+    "known": "I've got nothing left to say.",
+    "target": "Ich ha nüt meh z säge.",
+    "legos": [
+     "S0298L01(old) nothing | nüt"
+    ]
+   },
+   {
+    "seed": 321,
+    "known": "A book.",
+    "target": "Es Buech.",
+    "legos": [
+     "S0321L01(old) book | buech"
+    ]
+   },
+   {
+    "seed": 374,
+    "known": "Yes I thought it was very beautiful.",
+    "target": "Ja, ich ha dänkt, es isch sehr schön gsi.",
+    "legos": [
+     "S0374L01(old) thought | dänkt",
+     "S0374L02 she thought | hät dänkt"
+    ]
+   },
+   {
+    "seed": 579,
+    "known": "We've often tried.",
+    "target": "Mir händ s oft versuecht.",
+    "legos": [
+     "S0579L01(old) often | oft",
+     "S0579L02(old) tried | versuecht",
+     "S0579L03 we have tried it often | mir händ s oft versuecht"
+    ]
+   },
+   {
+    "seed": 601,
+    "known": "We were talking about how it all started.",
+    "target": "Mir händ drüber gredt, wie s aagfange hät.",
+    "legos": [
+     "S0601L01(old) talked | gredt",
+     "S0601L02(old) started | aagfange",
+     "S0601L03 we talked about how it started | mir händ drüber gredt, wie s aagfange hät"
+    ]
+   },
+   {
+    "seed": 607,
+    "known": "If I'd known I'd have done things differently.",
+    "target": "Wenn ich s gwüsst hätt, hätt ich d Sache anders gmacht.",
+    "legos": [
+     "S0607L01(old) things | sache",
+     "S0607L02 the things | d Sache",
+     "S0607L03(old) differently | anders"
+    ]
+   },
+   {
+    "seed": 619,
+    "known": "It's a long time since we saw each other.",
+    "target": "Es isch lang här, sit mir öis gseh händ.",
+    "legos": [
+     "S0619L01 a long time ago | lang här",
+     "S0619L02(old) since | sit"
+    ]
+   },
+   {
+    "seed": 620,
+    "known": "It's a very long time since we last saw each other.",
+    "target": "Es isch sehr lang här, sit mir öis s letscht Mal gseh händ.",
+    "legos": [
+     "S0620L01(old) the last time | s letscht Mal",
+     "S0620L02 the last time we | s letscht Mal wo mir"
+    ]
+   },
+   {
+    "seed": 655,
+    "known": "I think that you're doing very well, madam.",
+    "target": "Ich dänke, dass Sie s sehr guet mached.",
+    "legos": [
+     "S0655L01 you're doing it | sie s mached"
+    ]
+   }
+  ],
+  "covered": [
+   {
+    "seed": 308,
+    "known": "Yes she's a friend of my mother.",
+    "target": "Ja, si isch e Fründin vo minere Mueter."
+   }
+  ]
+ },
+ "counts": {
+  "planned": 41,
+  "variant_form": 4,
+  "variant_zut": 3,
+  "no_home": 15,
+  "covered": 1
+ }
+}
