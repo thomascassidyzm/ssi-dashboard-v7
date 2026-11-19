@@ -44,10 +44,13 @@ function copyUrl() {
     }
   }
   if (!url) throw new Error(`REFUSED: no DATABASE_URL and no copy env file (${ENV_FILES.join(', ')}) — the nightly copy is missing; report it, never read live`)
-  const u = new URL(url)
-  const host = u.searchParams.get('host') || u.hostname
-  const user = decodeURIComponent(u.username)
-  const dbn = decodeURIComponent(u.pathname.replace(/^\//, ''))
+  // postgres://user[:pass]@[host][:port]/db[?host=/socket/dir&...] — the copy uses the socket form, which URL() rejects
+  const m = url.match(/^postgres(?:ql)?:\/\/([^:@/]*)(?::[^@]*)?@([^/:?]*)(?::\d+)?\/([^?]*)(?:\?(.*))?$/)
+  if (!m) throw new Error('REFUSED: DATABASE_URL is not a postgres URL this tool can read')
+  const q = new URLSearchParams(m[4] || '')
+  const host = q.get('host') || m[2]
+  const user = decodeURIComponent(m[1])
+  const dbn = decodeURIComponent(m[3])
   const local = host.startsWith('/') || ['localhost', '127.0.0.1', '::1', '[::1]'].includes(host)
   if (/supabase/i.test(url) || !local || user !== 'ssi_copy' || !dbn.startsWith('ssi_copy_')) {
     throw new Error(`REFUSED: DATABASE_URL is not the local nightly copy (user=${user} host=${host} db=${dbn}) — these kits never read live`)
