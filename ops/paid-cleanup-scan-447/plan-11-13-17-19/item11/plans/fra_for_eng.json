@@ -1,0 +1,5352 @@
+{
+ "course": "fra_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:27:07Z",
+ "decisions": 25,
+ "verdicts": {
+  "rebuild-rows": 22,
+  "recut-small": 3
+ },
+ "touched_seeds": [
+  59,
+  67,
+  126,
+  147,
+  152,
+  168,
+  170,
+  246,
+  325,
+  330,
+  393,
+  414,
+  423,
+  429,
+  431,
+  440,
+  448,
+  457,
+  478,
+  481,
+  493,
+  527,
+  580,
+  615,
+  644
+ ],
+ "problems": [
+  "S0423L02: known words not in seed: ['a']",
+  "S0644L01 B01 rebuilt row does not contain the LEGO: ['to say that sir', 'dire cela monsieur']",
+  "S0644L01 B02 rebuilt row does not contain the LEGO: ['I think I can say that sir', 'je pense que je peux dire cela monsieur']",
+  "S0644L01 B03 rebuilt row does not contain the LEGO: ['yes I want to say that sir', 'oui je veux dire cela monsieur']",
+  "S0644L01 U01 rebuilt row does not contain the LEGO: ['I can say that sir', 'je peux dire cela monsieur']",
+  "S0644L01 U02 rebuilt row does not contain the LEGO: ['I would like to say that sir', 'je voudrais dire cela monsieur']",
+  "S0644L01 U03 rebuilt row does not contain the LEGO: ['she wanted to say that sir', 'elle voulait dire cela monsieur']",
+  "S0644L01 U04 rebuilt row does not contain the LEGO: ['I want to say that sir', 'je veux dire cela monsieur']",
+  "S0644L01 U05 rebuilt row does not contain the LEGO: ['we all want to say that sir', 'nous voulons tous dire cela monsieur']"
+ ],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0059L03",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. B03 'the next | la prochaine' drops 'semaine'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 59,
+    "known": "I know how to do what I need to do next week",
+    "target": "Je sais comment faire ce que je dois faire la semaine prochaine"
+   },
+   "before": {
+    "known": "next week",
+    "target": "la semaine prochaine",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "next week",
+    "target": "la semaine prochaine",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0059L03B01",
+     "role": "build",
+     "before": [
+      "next week",
+      "la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03B03",
+     "role": "build",
+     "before": [
+      "the next",
+      "la prochaine"
+     ],
+     "action": [
+      "before next week",
+      "avant la semaine prochaine"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0059L03U01",
+     "role": "use",
+     "before": [
+      "I'm going to finish next week",
+      "je vais finir la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U02",
+     "role": "use",
+     "before": [
+      "I wanted to speak with you next week",
+      "je voulais parler avec toi la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U03",
+     "role": "use",
+     "before": [
+      "you wanted to wake me up next week",
+      "tu voulais me réveiller la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U04",
+     "role": "use",
+     "before": [
+      "I know what I need to do next week",
+      "je sais ce que je dois faire la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U05",
+     "role": "use",
+     "before": [
+      "we wanted to meet my friends next week",
+      "nous voulions rencontrer mes amis la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U06",
+     "role": "use",
+     "before": [
+      "you can give me the letter next week",
+      "tu peux me donner la lettre la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U07",
+     "role": "use",
+     "before": [
+      "I'm trying to learn enough words before next week",
+      "j'essaie d'apprendre assez de mots avant la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U08",
+     "role": "use",
+     "before": [
+      "I wanted to finish reading before next week",
+      "je voulais finir de lire avant la semaine prochaine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0059L03U09",
+     "role": "use",
+     "before": [
+      "I know how to do what I need to do next week",
+      "Je sais comment faire ce que je dois faire la semaine prochaine"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 9
+   },
+   "extra": []
+  },
+  {
+   "id": "S0067L02",
+   "verdict": "rebuild-rows",
+   "why": "Two rows say 'tu pourrais t'arrêter' and 'je veux t'arrêter' (a different meaning: stop YOU), not the LEGO 'veux-tu t'arrêter'. Rewritten to hold it; the basket had only 1 build + 4 use rows, so two build rows and one use row are added. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 67,
+    "known": "Why do you want to stop?",
+    "target": "Pourquoi veux-tu t'arrêter ?"
+   },
+   "before": {
+    "known": "do you want to stop",
+    "target": "veux-tu t'arrêter",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "do you want to stop",
+    "target": "veux-tu t'arrêter",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0067L02B04",
+     "role": "build",
+     "before": [
+      "why do you want to stop",
+      "pourquoi veux-tu t'arrêter"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0067L02U01",
+     "role": "use",
+     "before": [
+      "Why do you want to stop?",
+      "pourquoi veux-tu t'arrêter ?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0067L02U06",
+     "role": "use",
+     "before": [
+      "you could stop",
+      "tu pourrais t'arrêter"
+     ],
+     "action": [
+      "do you want to stop now?",
+      "veux-tu t'arrêter maintenant ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0067L02U07",
+     "role": "use",
+     "before": [
+      "I want to stop you",
+      "je veux t'arrêter"
+     ],
+     "action": [
+      "how do you want to stop?",
+      "comment veux-tu t'arrêter ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0067L02U08",
+     "role": "use",
+     "before": [
+      "when do you want to stop?",
+      "quand veux-tu t'arrêter ?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "fra_for_eng:S0067L02B05",
+     "course_code": "fra_for_eng",
+     "seed_number": 67,
+     "lego_index": 2,
+     "known_text": "and do you want to stop?",
+     "target_text": "et veux-tu t'arrêter ?",
+     "phrase_role": "build",
+     "position": 15,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1
+    },
+    {
+     "id": "fra_for_eng:S0067L02B06",
+     "course_code": "fra_for_eng",
+     "seed_number": 67,
+     "lego_index": 2,
+     "known_text": "do you want to stop here?",
+     "target_text": "veux-tu t'arrêter ici ?",
+     "phrase_role": "build",
+     "position": 16,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1
+    },
+    {
+     "id": "fra_for_eng:S0067L02U09",
+     "course_code": "fra_for_eng",
+     "seed_number": 67,
+     "lego_index": 2,
+     "known_text": "do you want to stop or not?",
+     "target_text": "veux-tu t'arrêter ou pas ?",
+     "phrase_role": "use",
+     "position": 17,
+     "word_count": 5,
+     "lego_position": "start",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0126L01",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. U09 'I've got too much work' belongs to another seed and has no 'travail change'; deleted (12 rows stay). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 126,
+    "known": "this work is changing the shape of my brain",
+    "target": "ce travail change la forme de mon cerveau"
+   },
+   "before": {
+    "known": "work is changing",
+    "target": "travail change",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "work is changing",
+    "target": "travail change",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0126L01C01",
+     "role": "component",
+     "before": [
+      "work is",
+      "travail"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0126L01C02",
+     "role": "component",
+     "before": [
+      "changing",
+      "change"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0126L01B01",
+     "role": "build",
+     "before": [
+      "work is changing",
+      "travail change"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01B02",
+     "role": "build",
+     "before": [
+      "the work is changing",
+      "le travail change"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01B03",
+     "role": "build",
+     "before": [
+      "this work is changing",
+      "ce travail change"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01B04",
+     "role": "build",
+     "before": [
+      "the work is changing now",
+      "le travail change maintenant"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U01",
+     "role": "use",
+     "before": [
+      "the work is changing how I feel",
+      "le travail change comment je me sens"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U02",
+     "role": "use",
+     "before": [
+      "I think the work is changing now",
+      "je pense que le travail change maintenant"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U03",
+     "role": "use",
+     "before": [
+      "I believe the work is changing for the better",
+      "je crois que le travail change pour le mieux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U04",
+     "role": "use",
+     "before": [
+      "the work is changing and I'm excited about it",
+      "le travail change et je suis enthousiaste pour ça"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U05",
+     "role": "use",
+     "before": [
+      "I can see that the work is changing",
+      "je peux voir que le travail change"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U06",
+     "role": "use",
+     "before": [
+      "I think the work is changing everything",
+      "je pense que le travail change tout"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U07",
+     "role": "use",
+     "before": [
+      "the work is changing and it's starting to feel easier",
+      "le travail change et ça commence à sembler plus facile"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U08",
+     "role": "use",
+     "before": [
+      "I believe this work is changing how I think",
+      "je crois que ce travail change comment je pense"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0126L01U09",
+     "role": "use",
+     "before": [
+      "no unfortunately I've got too much work",
+      "non malheureusement j'ai trop de travail"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 8
+   },
+   "extra": []
+  },
+  {
+   "id": "S0147L02",
+   "verdict": "recut-small",
+   "why": "Seven rows drill 'gentille' without the full 'elle a été très gentille'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'kind | gentille' is a seed word, no other LEGO has 'kind' on its own, so no clash and no duplicate. The rest is covered: 'was | a été' is the seed's own first LEGO, 'elle' is taught, and 'very | très' is added back as a not-new LEGO. All ten rows stay. Structural: one not-new LEGO appended.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 147,
+    "known": "she was very kind when she saw me feeling nervous",
+    "target": "elle a été très gentille quand elle m'a vu nerveux"
+   },
+   "before": {
+    "known": "she was very kind",
+    "target": "elle a été très gentille",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "kind",
+    "target": "gentille",
+    "type": "A",
+    "components": [],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0147L02B01",
+     "role": "build",
+     "before": [
+      "kind",
+      "gentille"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02B02",
+     "role": "build",
+     "before": [
+      "very kind",
+      "très gentille"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02B03",
+     "role": "build",
+     "before": [
+      "she is very kind",
+      "elle est très gentille"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U01",
+     "role": "use",
+     "before": [
+      "she was very kind",
+      "elle a été très gentille"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U02",
+     "role": "use",
+     "before": [
+      "my friend was kind",
+      "mon amie a été gentille"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U03",
+     "role": "use",
+     "before": [
+      "you were kind yesterday",
+      "tu as été gentille hier"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U04",
+     "role": "use",
+     "before": [
+      "she was kind this morning",
+      "elle a été gentille ce matin"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U05",
+     "role": "use",
+     "before": [
+      "she was very kind before",
+      "elle a été très gentille avant"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U06",
+     "role": "use",
+     "before": [
+      "I think she was kind",
+      "je pense qu'elle a été gentille"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0147L02U07",
+     "role": "use",
+     "before": [
+      "she was very kind with me",
+      "elle a été très gentille avec moi"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 147,
+      "lego_index": 5,
+      "known_text": "very",
+      "target_text": "très",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "fra_for_eng:S0147L04U06",
+      "known": "she was very kind when she saw me feeling nervous",
+      "target": "elle a été très gentille quand elle m'a vu nerveux",
+      "seed": 147
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0152L03",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. U09 'I said that I needed a little more time' has no 'si j'avais su'; deleted (8 rows stay). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 152,
+    "known": "I would have done it differently if I had known what you wanted",
+    "target": "j'aurais fait différemment si j'avais su ce que vous vouliez"
+   },
+   "before": {
+    "known": "if I had known",
+    "target": "si j'avais su",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "if I had known",
+    "target": "si j'avais su",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0152L03C01",
+     "role": "component",
+     "before": [
+      "if",
+      "si"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0152L03C02",
+     "role": "component",
+     "before": [
+      "I had known",
+      "j'avais su"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0152L03B01",
+     "role": "build",
+     "before": [
+      "if I had known",
+      "si j'avais su"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03B02",
+     "role": "build",
+     "before": [
+      "if I had known",
+      "si j'avais su"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03B03",
+     "role": "build",
+     "before": [
+      "if I had known that",
+      "si j'avais su ça"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03B04",
+     "role": "build",
+     "before": [
+      "if I had known before",
+      "si j'avais su avant"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03U02",
+     "role": "use",
+     "before": [
+      "I would have helped if I had known",
+      "j'aurais aidé si j'avais su"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03U04",
+     "role": "use",
+     "before": [
+      "I would have done that if I had known",
+      "j'aurais fait ça si j'avais su"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03U07",
+     "role": "use",
+     "before": [
+      "if I had known, I would have said something",
+      "si j'avais su, j'aurais dit quelque chose"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03U08",
+     "role": "use",
+     "before": [
+      "I would have done it differently if I had known",
+      "j'aurais fait ça différemment si j'avais su"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0152L03U09",
+     "role": "use",
+     "before": [
+      "I said that I needed a little more time",
+      "j'ai dit que j'avais besoin d'un peu plus de temps"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0168L02",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. U03 uses 'revenir' (to come back), a different verb from the LEGO 'venir'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO); K8 (exactly the taught form).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 168,
+    "known": "and then I'll be able to come and help later on",
+    "target": "et puis je pourrai venir aider plus tard"
+   },
+   "before": {
+    "known": "to come",
+    "target": "venir",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "to come",
+    "target": "venir",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0168L02B01",
+     "role": "build",
+     "before": [
+      "to come",
+      "venir"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02B02",
+     "role": "build",
+     "before": [
+      "to come",
+      "venir"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02B03",
+     "role": "build",
+     "before": [
+      "able to come",
+      "pouvoir venir"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02U01",
+     "role": "use",
+     "before": [
+      "I'll be able to come and help",
+      "je pourrai venir aider"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02U02",
+     "role": "use",
+     "before": [
+      "I'll be able to come tomorrow",
+      "je pourrai venir demain"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02U03",
+     "role": "use",
+     "before": [
+      "I need to come back later",
+      "je dois revenir plus tard"
+     ],
+     "action": [
+      "I need to come later",
+      "je dois venir plus tard"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0168L02U04",
+     "role": "use",
+     "before": [
+      "I'd like to come with you",
+      "j'aimerais venir avec vous"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02U05",
+     "role": "use",
+     "before": [
+      "I'll be able to come later on",
+      "je pourrai venir plus tard"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02U06",
+     "role": "use",
+     "before": [
+      "I'm going to come on Sunday morning",
+      "je vais venir dimanche matin"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0168L02U09",
+     "role": "use",
+     "before": [
+      "and then I'll be able to come and help later on",
+      "et puis je pourrai venir aider plus tard"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0170L01",
+   "verdict": "rebuild-rows",
+   "why": "Two rows (U09 'I'd like to read my book', U10 'would you like to come with us') drill 'voudrais' alone, not 'je voudrais que vous me disiez'; deleted (11 rows stay). LEGO kept at 8 syllables (je-vou-drais-que-vous-me-di-siez): it is one subjunctive frame and all 11 other rows drill it whole. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 170,
+    "known": "I'd like you to tell me what you need",
+    "target": "Je voudrais que vous me disiez ce dont vous avez besoin"
+   },
+   "before": {
+    "known": "I'd like you to tell me",
+    "target": "je voudrais que vous me disiez",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "I'd like you to tell me",
+    "target": "je voudrais que vous me disiez",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0170L01C01",
+     "role": "component",
+     "before": [
+      "I'd like you to",
+      "je voudrais que vous"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0170L01C02",
+     "role": "component",
+     "before": [
+      "tell me",
+      "me disiez"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0170L01B01",
+     "role": "build",
+     "before": [
+      "I'd like you to tell me",
+      "je voudrais que vous me disiez"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01B02",
+     "role": "build",
+     "before": [
+      "I'd like you to tell me",
+      "je voudrais que vous me disiez"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01B03",
+     "role": "build",
+     "before": [
+      "I'd like you to tell me if",
+      "je voudrais que vous me disiez si"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01B04",
+     "role": "build",
+     "before": [
+      "I'd like you to tell me what",
+      "je voudrais que vous me disiez ce que"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U01",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me where that is",
+      "je voudrais que vous me disiez où c'est"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U02",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me if that's true",
+      "je voudrais que vous me disiez si c'est vrai"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U03",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me when that was",
+      "je voudrais que vous me disiez quand c'était"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U05",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me what you want",
+      "je voudrais que vous me disiez ce que vous voulez"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U06",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me if that's difficult",
+      "je voudrais que vous me disiez si c'est difficile"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U07",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me what I need to do",
+      "je voudrais que vous me disiez ce que je dois faire"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U08",
+     "role": "use",
+     "before": [
+      "I'd like you to tell me what I should do",
+      "je voudrais que vous me disiez ce que je devrais faire"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U09",
+     "role": "use",
+     "before": [
+      "I'd like to read my book for a while",
+      "je voudrais lire mon livre pendant un moment"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "fra_for_eng:S0170L01U10",
+     "role": "use",
+     "before": [
+      "would you like to come with us next month?",
+      "est-ce que tu voudrais venir avec nous le mois prochain?"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0246L01",
+   "verdict": "rebuild-rows",
+   "why": "Seven rows say 'veux qu'elle t'aide' (want) or only 'qu'elle t'aide', not the LEGO's 'voulais qu'elle t'aide'. The small piece 'her to help you | qu'elle t'aide' is already taught at seed 204, so a re-cut would only make a not-new copy with an unplayed basket. LEGO kept (5 syllables); five rows moved to 'wanted', two deleted (the basket keeps 4 build + 7 use). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 246,
+    "known": "I wanted her to help you but she was too busy",
+    "target": "Je voulais qu'elle t'aide mais elle était trop occupé"
+   },
+   "before": {
+    "known": "wanted her to help you",
+    "target": "voulais qu'elle t'aide",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "wanted her to help you",
+    "target": "voulais qu'elle t'aide",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0246L01C01",
+     "role": "component",
+     "before": [
+      "help you",
+      "t'aide"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0246L01B01",
+     "role": "build",
+     "before": [
+      "her to help you",
+      "qu'elle t'aide"
+     ],
+     "action": [
+      "I wanted her to help you now",
+      "je voulais qu'elle t'aide maintenant"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0246L01B02",
+     "role": "build",
+     "before": [
+      "her to help you",
+      "qu'elle t'aide"
+     ],
+     "action": [
+      "yes I wanted her to help you",
+      "oui je voulais qu'elle t'aide"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0246L01B03",
+     "role": "build",
+     "before": [
+      "I want her to help you",
+      "je veux qu'elle t'aide"
+     ],
+     "action": [
+      "but I wanted her to help you",
+      "mais je voulais qu'elle t'aide"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0246L01B04",
+     "role": "build",
+     "before": [
+      "I wanted her to help you",
+      "je voulais qu'elle t'aide"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U01",
+     "role": "use",
+     "before": [
+      "I want her to help you tomorrow",
+      "je veux qu'elle t'aide demain"
+     ],
+     "action": [
+      "I wanted her to help you tomorrow",
+      "je voulais qu'elle t'aide demain"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0246L01U02",
+     "role": "use",
+     "before": [
+      "I don't want her to help you",
+      "je ne veux pas qu'elle t'aide"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U03",
+     "role": "use",
+     "before": [
+      "I wanted her to help you with that",
+      "je voulais qu'elle t'aide avec ça"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U04",
+     "role": "use",
+     "before": [
+      "do you want her to help you?",
+      "est-ce que tu veux qu'elle t'aide?"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U05",
+     "role": "use",
+     "before": [
+      "I think I want her to help you",
+      "je pense que je veux qu'elle t'aide"
+     ],
+     "action": [
+      "I think I wanted her to help you",
+      "je pense que je voulais qu'elle t'aide"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0246L01U06",
+     "role": "use",
+     "before": [
+      "I wanted her to help you today",
+      "je voulais qu'elle t'aide aujourd'hui"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U07",
+     "role": "use",
+     "before": [
+      "I wanted her to help you before I go",
+      "je voulais qu'elle t'aide avant de partir"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U08",
+     "role": "use",
+     "before": [
+      "I wanted her to help you but she couldn't",
+      "je voulais qu'elle t'aide mais elle ne pouvait pas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0246L01U09",
+     "role": "use",
+     "before": [
+      "I wanted her to help you but she was too busy",
+      "Je voulais qu'elle t'aide mais elle était trop occupé"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0325L04",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. B01 'possible | possibles' drops 'problèmes'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 325,
+    "known": "I think that he needs to consider ten possible problems",
+    "target": "Je pense qu'il a besoin de considérer dix problèmes possibles"
+   },
+   "before": {
+    "known": "possible problems",
+    "target": "problèmes possibles",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "possible problems",
+    "target": "problèmes possibles",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0325L04B01",
+     "role": "build",
+     "before": [
+      "possible",
+      "possibles"
+     ],
+     "action": [
+      "the possible problems",
+      "les problèmes possibles"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0325L04B02",
+     "role": "build",
+     "before": [
+      "ten possible problems",
+      "dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04B03",
+     "role": "build",
+     "before": [
+      "two possible problems",
+      "deux problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U01",
+     "role": "use",
+     "before": [
+      "he could consider ten possible problems",
+      "il pourrait considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U02",
+     "role": "use",
+     "before": [
+      "she needs to consider ten possible problems",
+      "elle doit considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U03",
+     "role": "use",
+     "before": [
+      "that student could consider ten possible problems",
+      "cette élève pourrait considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U04",
+     "role": "use",
+     "before": [
+      "he said he could consider ten possible problems",
+      "il a dit qu'il pourrait considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U05",
+     "role": "use",
+     "before": [
+      "she said she needs to consider ten possible problems",
+      "elle a dit qu'elle doit considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U06",
+     "role": "use",
+     "before": [
+      "he needs to consider ten possible problems",
+      "il doit considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0325L04U07",
+     "role": "use",
+     "before": [
+      "I think that he needs to consider ten possible problems",
+      "Je pense qu'il a besoin de considérer dix problèmes possibles"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0330L01",
+   "verdict": "rebuild-rows",
+   "why": "Two rows ask 'penses-tu que ce soit' (do you think it's), not the LEGO 'je ne pense pas que ce soit'; rewritten. LEGO kept at 7 syllables (je-ne-pense-pas-que-ce-soit): 'ce soit' only exists after the negative, so the frame is the teaching unit. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 330,
+    "known": "no I don't think it's very important",
+    "target": "non je ne pense pas que ce soit très important"
+   },
+   "before": {
+    "known": "I don't think it's",
+    "target": "je ne pense pas que ce soit",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "I don't think it's",
+    "target": "je ne pense pas que ce soit",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0330L01C01",
+     "role": "component",
+     "before": [
+      "it",
+      "ce"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0330L01C02",
+     "role": "component",
+     "before": [
+      "is",
+      "soit"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0330L01B02",
+     "role": "build",
+     "before": [
+      "I don't think it is",
+      "je ne pense pas que ce soit"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01B03",
+     "role": "build",
+     "before": [
+      "I don't think it's that important",
+      "je ne pense pas que ce soit si important"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01B04",
+     "role": "build",
+     "before": [
+      "I don't think it's that good",
+      "je ne pense pas que ce soit si bien"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01U01",
+     "role": "use",
+     "before": [
+      "I don't think it's very important",
+      "je ne pense pas que ce soit très important"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01U02",
+     "role": "use",
+     "before": [
+      "I don't think it's true",
+      "je ne pense pas que ce soit vrai"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01U03",
+     "role": "use",
+     "before": [
+      "do you think it's true?",
+      "penses-tu que ce soit vrai ?"
+     ],
+     "action": [
+      "I don't think it's difficult",
+      "je ne pense pas que ce soit difficile"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0330L01U04",
+     "role": "use",
+     "before": [
+      "I don't think it's good",
+      "je ne pense pas que ce soit bien"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01U05",
+     "role": "use",
+     "before": [
+      "I don't think it's important",
+      "je ne pense pas que ce soit important"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0330L01U06",
+     "role": "use",
+     "before": [
+      "do you think it's useful?",
+      "penses-tu que ce soit utile ?"
+     ],
+     "action": [
+      "I don't think it's useful",
+      "je ne pense pas que ce soit utile"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0393L01",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. B01 'that | ce' drops 'garçon'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 393,
+    "known": "that boy with the green shirt",
+    "target": "ce garçon avec la chemise verte"
+   },
+   "before": {
+    "known": "that boy",
+    "target": "ce garçon",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "that boy",
+    "target": "ce garçon",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0393L01B01",
+     "role": "build",
+     "before": [
+      "that",
+      "ce"
+     ],
+     "action": [
+      "with that boy",
+      "avec ce garçon"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0393L01B03",
+     "role": "build",
+     "before": [
+      "yes that boy",
+      "oui ce garçon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0393L01U01",
+     "role": "use",
+     "before": [
+      "I know that boy well",
+      "je connais bien ce garçon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0393L01U02",
+     "role": "use",
+     "before": [
+      "I want to see that boy",
+      "je veux voir ce garçon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0393L01U03",
+     "role": "use",
+     "before": [
+      "she knows that boy",
+      "elle connaît ce garçon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0393L01U04",
+     "role": "use",
+     "before": [
+      "I can see that boy there",
+      "je peux voir ce garçon là"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0393L01U05",
+     "role": "use",
+     "before": [
+      "do you want to see that boy?",
+      "tu veux voir ce garçon ?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0414L06",
+   "verdict": "rebuild-rows",
+   "why": "Six rows drill 's'il vous plaît' without 'vin rouge'. A re-cut to 'please | s'il vous plaît' would clash with 'please | s'il te plaît' (seed 624): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); the six rows gain 'rouge'. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 414,
+    "known": "could we have a bottle of red wine please?",
+    "target": "pourrions-nous avoir une bouteille de vin rouge s'il vous plaît ?"
+   },
+   "before": {
+    "known": "red wine please",
+    "target": "vin rouge s'il vous plaît",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "red wine please",
+    "target": "vin rouge s'il vous plaît",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0414L06C01",
+     "role": "component",
+     "before": [
+      "if",
+      "si"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0414L06C02",
+     "role": "component",
+     "before": [
+      "you",
+      "vous"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0414L06C03",
+     "role": "component",
+     "before": [
+      "it pleases",
+      "plaît"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "fra_for_eng:S0414L06B01",
+     "role": "build",
+     "before": [
+      "please",
+      "s'il vous plaît"
+     ],
+     "action": [
+      "the red wine please",
+      "le vin rouge s'il vous plaît"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0414L06B02",
+     "role": "build",
+     "before": [
+      "a bottle please",
+      "une bouteille s'il vous plaît"
+     ],
+     "action": [
+      "more red wine please",
+      "plus de vin rouge s'il vous plaît"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0414L06B03",
+     "role": "build",
+     "before": [
+      "some wine please",
+      "du vin s'il vous plaît"
+     ],
+     "action": [
+      "a little red wine please",
+      "un peu de vin rouge s'il vous plaît"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0414L06B04",
+     "role": "build",
+     "before": [
+      "some red wine please",
+      "du vin rouge s'il vous plaît"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0414L06U01",
+     "role": "use",
+     "before": [
+      "could we have a bottle please?",
+      "pourrions-nous avoir une bouteille s'il vous plaît ?"
+     ],
+     "action": [
+      "could we have some red wine please?",
+      "pourrions-nous avoir du vin rouge s'il vous plaît ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0414L06U02",
+     "role": "use",
+     "before": [
+      "a bottle of wine please",
+      "une bouteille de vin s'il vous plaît"
+     ],
+     "action": [
+      "I would like some red wine please",
+      "je voudrais du vin rouge s'il vous plaît"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0414L06U03",
+     "role": "use",
+     "before": [
+      "a bottle of red wine please",
+      "une bouteille de vin rouge s'il vous plaît"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0414L06U04",
+     "role": "use",
+     "before": [
+      "could we have some wine please?",
+      "pourrions-nous avoir du vin s'il vous plaît ?"
+     ],
+     "action": [
+      "could we have the red wine please?",
+      "pourrions-nous avoir le vin rouge s'il vous plaît ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0414L06U05",
+     "role": "use",
+     "before": [
+      "do you want some red wine please?",
+      "voulez-vous du vin rouge s'il vous plaît ?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0414L06U06",
+     "role": "use",
+     "before": [
+      "could we have a bottle of red wine please?",
+      "pourrions-nous avoir une bouteille de vin rouge s'il vous plaît ?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0423L02",
+   "verdict": "rebuild-rows",
+   "why": "Four rows stop at 'poser' without 'une question' (in French 'poser' alone does not mean 'ask'). They gain the object. The LEGO itself is unchanged (the checker's note that 'a' is not in the seed is the seed's 'an obvious question': same article). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 423,
+    "known": "do they need to ask such an obvious question?",
+    "target": "ont-ils besoin de poser une question aussi évidente ?"
+   },
+   "before": {
+    "known": "to ask a question",
+    "target": "poser une question",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "to ask a question",
+    "target": "poser une question",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": [
+     "a"
+    ],
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0423L02B01",
+     "role": "build",
+     "before": [
+      "to ask",
+      "poser"
+     ],
+     "action": [
+      "to ask a question now",
+      "poser une question maintenant"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0423L02B02",
+     "role": "build",
+     "before": [
+      "to ask a question",
+      "poser une question"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0423L02B03",
+     "role": "build",
+     "before": [
+      "they need to ask",
+      "ils ont besoin de poser"
+     ],
+     "action": [
+      "need to ask a question",
+      "besoin de poser une question"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0423L02U01",
+     "role": "use",
+     "before": [
+      "they need to ask a question",
+      "ils ont besoin de poser une question"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0423L02U02",
+     "role": "use",
+     "before": [
+      "do they need to ask?",
+      "ont-ils besoin de poser ?"
+     ],
+     "action": [
+      "do they need to ask a question?",
+      "ont-ils besoin de poser une question ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0423L02U03",
+     "role": "use",
+     "before": [
+      "they want to ask a question",
+      "ils veulent poser une question"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0423L02U04",
+     "role": "use",
+     "before": [
+      "they also need to ask",
+      "ils ont aussi besoin de poser"
+     ],
+     "action": [
+      "they also need to ask a question",
+      "ils ont aussi besoin de poser une question"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0423L02U05",
+     "role": "use",
+     "before": [
+      "do they want to ask a question?",
+      "veulent-ils poser une question ?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0423L02U06",
+     "role": "use",
+     "before": [
+      "I hope I'll be able to ask a question",
+      "j'espère que je pourrai poser une question"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0423L02U07",
+     "role": "use",
+     "before": [
+      "why do they need to ask a question?",
+      "pourquoi ont-ils besoin de poser une question ?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0423L02U08",
+     "role": "use",
+     "before": [
+      "I want to ask a question as quickly as possible",
+      "je veux poser une question aussi vite que possible"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 8
+   },
+   "extra": []
+  },
+  {
+   "id": "S0429L03",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. B02 'with them | avec eux' is a different preposition; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 429,
+    "known": "yes that would be perfect for them",
+    "target": "oui ce serait parfait pour eux"
+   },
+   "before": {
+    "known": "for them",
+    "target": "pour eux",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "for them",
+    "target": "pour eux",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0429L03B01",
+     "role": "build",
+     "before": [
+      "for them",
+      "pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03B02",
+     "role": "build",
+     "before": [
+      "with them",
+      "avec eux"
+     ],
+     "action": [
+      "perfect for them",
+      "parfait pour eux"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0429L03B03",
+     "role": "build",
+     "before": [
+      "good for them",
+      "bien pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U01",
+     "role": "use",
+     "before": [
+      "yes that would be perfect for them",
+      "oui ce serait parfait pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U02",
+     "role": "use",
+     "before": [
+      "that would be good for them",
+      "ce serait bien pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U03",
+     "role": "use",
+     "before": [
+      "that would be perfect for them",
+      "ce serait parfait pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U04",
+     "role": "use",
+     "before": [
+      "it is good for them",
+      "c'est bien pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U05",
+     "role": "use",
+     "before": [
+      "that is perfect for them",
+      "c'est parfait pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U06",
+     "role": "use",
+     "before": [
+      "she said that it would be perfect for them",
+      "elle a dit que ce serait parfait pour eux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0429L03U07",
+     "role": "use",
+     "before": [
+      "if I had known, I would have done everything for them",
+      "si j'avais su, j'aurais tout fait pour eux"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0431L03",
+   "verdict": "rebuild-rows",
+   "why": "Six of seven rows drill 'prêts' or 'pas encore prêts' without the full LEGO. 'ready | prêts' would clash with 'ready | prêt' (seed 345) and 'not ready yet | pas encore prêts' with 'not ready yet | pas encore prêt' (seed 345): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept at 7 syllables (ils-ne-sont-pas-en-core-prêts); rows rebuilt and two use rows added (the basket had only four), the seed sentence among them. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 431,
+    "known": "they're not ready yet but they'll be ready soon",
+    "target": "ils ne sont pas encore prêts mais ils seront bientôt prêts"
+   },
+   "before": {
+    "known": "they're not ready yet",
+    "target": "ils ne sont pas encore prêts",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "they're not ready yet",
+    "target": "ils ne sont pas encore prêts",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0431L03B01",
+     "role": "build",
+     "before": [
+      "ready",
+      "prêts"
+     ],
+     "action": [
+      "no they're not ready yet",
+      "non ils ne sont pas encore prêts"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0431L03B02",
+     "role": "build",
+     "before": [
+      "not ready",
+      "pas prêts"
+     ],
+     "action": [
+      "but they're not ready yet",
+      "mais ils ne sont pas encore prêts"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0431L03B03",
+     "role": "build",
+     "before": [
+      "not ready yet",
+      "pas encore prêts"
+     ],
+     "action": [
+      "they're not ready to leave yet",
+      "ils ne sont pas encore prêts à partir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0431L03U01",
+     "role": "use",
+     "before": [
+      "they are not ready yet",
+      "ils ne sont pas encore prêts"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0431L03U02",
+     "role": "use",
+     "before": [
+      "they are not ready",
+      "ils ne sont pas prêts"
+     ],
+     "action": [
+      "they're not ready yet but they want to leave",
+      "ils ne sont pas encore prêts mais ils veulent partir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0431L03U03",
+     "role": "use",
+     "before": [
+      "they want to be ready",
+      "ils veulent être prêts"
+     ],
+     "action": [
+      "they want to leave but they're not ready yet",
+      "ils veulent partir mais ils ne sont pas encore prêts"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0431L03U04",
+     "role": "use",
+     "before": [
+      "they are ready to leave",
+      "ils sont prêts à partir"
+     ],
+     "action": [
+      "yes but they're not ready yet",
+      "oui mais ils ne sont pas encore prêts"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "fra_for_eng:S0431L03U05",
+     "course_code": "fra_for_eng",
+     "seed_number": 431,
+     "lego_index": 3,
+     "known_text": "they're not ready yet but they'll be ready soon",
+     "target_text": "ils ne sont pas encore prêts mais ils seront bientôt prêts",
+     "phrase_role": "use",
+     "position": 8,
+     "word_count": 11,
+     "lego_position": "start",
+     "lego_count": 1
+    },
+    {
+     "id": "fra_for_eng:S0431L03U06",
+     "course_code": "fra_for_eng",
+     "seed_number": 431,
+     "lego_index": 3,
+     "known_text": "I know, they're not ready yet",
+     "target_text": "je sais, ils ne sont pas encore prêts",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 8,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0440L03",
+   "verdict": "rebuild-rows",
+   "why": "Five rows drill 'jeunes' without 'encore'. 'young | jeunes' would clash with 'young | jeune' (seed 69): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept; rows gain 'encore'. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 440,
+    "known": "they want to travel while they're still young",
+    "target": "ils veulent voyager pendant qu'ils sont encore jeunes"
+   },
+   "before": {
+    "known": "still young",
+    "target": "encore jeunes",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "still young",
+    "target": "encore jeunes",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0440L03B01",
+     "role": "build",
+     "before": [
+      "young",
+      "jeunes"
+     ],
+     "action": [
+      "while they're still young",
+      "pendant qu'ils sont encore jeunes"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0440L03B02",
+     "role": "build",
+     "before": [
+      "still young",
+      "encore jeunes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0440L03B03",
+     "role": "build",
+     "before": [
+      "very young",
+      "très jeunes"
+     ],
+     "action": [
+      "my friends are still young",
+      "mes amis sont encore jeunes"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0440L03U01",
+     "role": "use",
+     "before": [
+      "they want to travel while they're still young",
+      "ils veulent voyager pendant qu'ils sont encore jeunes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0440L03U02",
+     "role": "use",
+     "before": [
+      "they are still young",
+      "ils sont encore jeunes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0440L03U03",
+     "role": "use",
+     "before": [
+      "they are very young",
+      "ils sont très jeunes"
+     ],
+     "action": [
+      "I think they are still young",
+      "je pense qu'ils sont encore jeunes"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0440L03U04",
+     "role": "use",
+     "before": [
+      "they are young",
+      "ils sont jeunes"
+     ],
+     "action": [
+      "they want to travel because they are still young",
+      "ils veulent voyager parce qu'ils sont encore jeunes"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0440L03U05",
+     "role": "use",
+     "before": [
+      "while they are young they want to travel",
+      "pendant qu'ils sont jeunes ils veulent voyager"
+     ],
+     "action": [
+      "while they are still young they want to travel",
+      "pendant qu'ils sont encore jeunes ils veulent voyager"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0448L02",
+   "verdict": "rebuild-rows",
+   "why": "Seven rows drill 'contents' with 'ils sont' or alone. 'happy | contents' would clash with 'happy | content' (seed 344) and 'happy | heureuse' (seed 408): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); rows rebuilt. U01 'they will be happy' keeps (K6). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 448,
+    "known": "yes they'll be happy to help",
+    "target": "oui ils seront contents d'aider"
+   },
+   "before": {
+    "known": "they'll be happy",
+    "target": "ils seront contents",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "they'll be happy",
+    "target": "ils seront contents",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0448L02B01",
+     "role": "build",
+     "before": [
+      "happy",
+      "contents"
+     ],
+     "action": [
+      "yes they'll be happy",
+      "oui ils seront contents"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0448L02B02",
+     "role": "build",
+     "before": [
+      "very happy",
+      "très contents"
+     ],
+     "action": [
+      "they'll be happy to help",
+      "ils seront contents d'aider"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0448L02B03",
+     "role": "build",
+     "before": [
+      "not happy",
+      "pas contents"
+     ],
+     "action": [
+      "but they'll be happy",
+      "mais ils seront contents"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0448L02U01",
+     "role": "use",
+     "before": [
+      "they will be happy",
+      "ils seront contents"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0448L02U02",
+     "role": "use",
+     "before": [
+      "they are very happy",
+      "ils sont très contents"
+     ],
+     "action": [
+      "they'll be happy to see you",
+      "ils seront contents de te voir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0448L02U03",
+     "role": "use",
+     "before": [
+      "they are not happy",
+      "ils ne sont pas contents"
+     ],
+     "action": [
+      "they'll be happy tomorrow",
+      "ils seront contents demain"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0448L02U04",
+     "role": "use",
+     "before": [
+      "they are happy",
+      "ils sont contents"
+     ],
+     "action": [
+      "they'll be happy to come",
+      "ils seront contents de venir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0448L02U05",
+     "role": "use",
+     "before": [
+      "they will be very happy",
+      "ils seront très contents"
+     ],
+     "action": [
+      "they'll be happy to learn French",
+      "ils seront contents d'apprendre le français"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "fra_for_eng:S0448L02U06",
+     "course_code": "fra_for_eng",
+     "seed_number": 448,
+     "lego_index": 2,
+     "known_text": "yes they'll be happy to help",
+     "target_text": "oui ils seront contents d'aider",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 5,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0457L04",
+   "verdict": "recut-small",
+   "why": "Seven rows drill 'différentes' without 'zones'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'different | différentes' is a seed word, no other LEGO has 'different', and 'areas | zones' is already the seed's own LEGO. All nine rows stay.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 457,
+    "known": "part of the problem is the number of different areas",
+    "target": "une partie du problème c'est le nombre de zones différentes"
+   },
+   "before": {
+    "known": "different areas",
+    "target": "zones différentes",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "different",
+    "target": "différentes",
+    "type": "A",
+    "components": [],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0457L04B01",
+     "role": "build",
+     "before": [
+      "very different",
+      "très différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04B02",
+     "role": "build",
+     "before": [
+      "quite different",
+      "assez différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04B03",
+     "role": "build",
+     "before": [
+      "really different",
+      "vraiment différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04U01",
+     "role": "use",
+     "before": [
+      "the areas are very different",
+      "les zones sont très différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04U02",
+     "role": "use",
+     "before": [
+      "they are very different",
+      "elles sont très différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04U03",
+     "role": "use",
+     "before": [
+      "all different areas",
+      "toutes les zones différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04U04",
+     "role": "use",
+     "before": [
+      "these are very different areas",
+      "ces zones sont très différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04U05",
+     "role": "use",
+     "before": [
+      "all areas are different",
+      "toutes les zones sont différentes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0457L04U06",
+     "role": "use",
+     "before": [
+      "part of the problem is the number of different areas",
+      "une partie du problème c'est le nombre de zones différentes"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0478L03",
+   "verdict": "rebuild-rows",
+   "why": "Seven rows drill 'gentil' (très gentil, si gentil) without 'un cœur'. 'so kind | si gentil' is not the seed's wording ('such a kind heart'), and 'kind | gentil' would clash with 'kind | gentille' (seed 147, this plan): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); rows rebuilt. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 478,
+    "known": "she has such a kind heart",
+    "target": "elle a un cœur si gentil"
+   },
+   "before": {
+    "known": "such a kind heart",
+    "target": "un cœur si gentil",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "such a kind heart",
+    "target": "un cœur si gentil",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0478L03B01",
+     "role": "build",
+     "before": [
+      "kind",
+      "gentil"
+     ],
+     "action": [
+      "has such a kind heart",
+      "a un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03B02",
+     "role": "build",
+     "before": [
+      "very kind",
+      "très gentil"
+     ],
+     "action": [
+      "he has such a kind heart",
+      "il a un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03B03",
+     "role": "build",
+     "before": [
+      "so kind",
+      "si gentil"
+     ],
+     "action": [
+      "you have such a kind heart",
+      "tu as un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03U01",
+     "role": "use",
+     "before": [
+      "he's very kind",
+      "il est très gentil"
+     ],
+     "action": [
+      "my friend has such a kind heart",
+      "mon ami a un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03U02",
+     "role": "use",
+     "before": [
+      "it's very kind",
+      "c'est très gentil"
+     ],
+     "action": [
+      "I think she has such a kind heart",
+      "je pense qu'elle a un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03U03",
+     "role": "use",
+     "before": [
+      "he's so kind",
+      "il est si gentil"
+     ],
+     "action": [
+      "I know he has such a kind heart",
+      "je sais qu'il a un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03U05",
+     "role": "use",
+     "before": [
+      "it's so kind",
+      "c'est si gentil"
+     ],
+     "action": [
+      "she said you have such a kind heart",
+      "elle a dit que tu as un cœur si gentil"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0478L03U06",
+     "role": "use",
+     "before": [
+      "she has such a kind heart",
+      "elle a un cœur si gentil"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0481L01",
+   "verdict": "rebuild-rows",
+   "why": "Eight rows drill 'le seul' with other nouns. 'the only | le seul' would clash with 'the only | la seule' (seed 94): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (5 syllables); rows rebuilt. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 481,
+    "known": "It's the only real hope we have left",
+    "target": "C'est le seul vrai espoir qu'il nous reste"
+   },
+   "before": {
+    "known": "the only real hope",
+    "target": "le seul vrai espoir",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "the only real hope",
+    "target": "le seul vrai espoir",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0481L01B01",
+     "role": "build",
+     "before": [
+      "only that",
+      "seul ça"
+     ],
+     "action": [
+      "it's the only real hope",
+      "c'est le seul vrai espoir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01B02",
+     "role": "build",
+     "before": [
+      "the only one",
+      "le seul"
+     ],
+     "action": [
+      "the only real hope we have",
+      "le seul vrai espoir que nous avons"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01B03",
+     "role": "build",
+     "before": [
+      "only here",
+      "seul là"
+     ],
+     "action": [
+      "the only real hope here",
+      "le seul vrai espoir ici"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01U01",
+     "role": "use",
+     "before": [
+      "it's the only one",
+      "c'est le seul"
+     ],
+     "action": [
+      "I think it's the only real hope",
+      "je pense que c'est le seul vrai espoir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01U02",
+     "role": "use",
+     "before": [
+      "the only moment",
+      "le seul moment"
+     ],
+     "action": [
+      "yes it's the only real hope",
+      "oui c'est le seul vrai espoir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01U03",
+     "role": "use",
+     "before": [
+      "it's the only problem",
+      "c'est le seul problème"
+     ],
+     "action": [
+      "It's the only real hope we have left",
+      "C'est le seul vrai espoir qu'il nous reste"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01U04",
+     "role": "use",
+     "before": [
+      "the only hope",
+      "le seul espoir"
+     ],
+     "action": [
+      "she said it's the only real hope",
+      "elle a dit que c'est le seul vrai espoir"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01U05",
+     "role": "use",
+     "before": [
+      "the only work",
+      "le seul travail"
+     ],
+     "action": [
+      "it's the only real hope for them",
+      "c'est le seul vrai espoir pour eux"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0481L01U06",
+     "role": "use",
+     "before": [
+      "it sounds like the only real hope",
+      "ça a l'air d'être le seul vrai espoir"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0493L02",
+   "verdict": "rebuild-rows",
+   "why": "Six rows drill 'ensuite' alone, and two have the German-style gloss 'to arrive next' where the LEGO says 'to come next'. 'next | ensuite' would clash with 'next | prochain' (seed 395): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept; rows rebuilt, U04/U05 English corrected to the LEGO's word. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 493,
+    "known": "what's going to come next?",
+    "target": "qu'est-ce qui va arriver ensuite ?"
+   },
+   "before": {
+    "known": "to come next",
+    "target": "arriver ensuite",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "to come next",
+    "target": "arriver ensuite",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0493L02B01",
+     "role": "build",
+     "before": [
+      "next",
+      "ensuite"
+     ],
+     "action": [
+      "going to come next",
+      "va arriver ensuite"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02B02",
+     "role": "build",
+     "before": [
+      "and next",
+      "et ensuite"
+     ],
+     "action": [
+      "it's going to come next",
+      "ça va arriver ensuite"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02B03",
+     "role": "build",
+     "before": [
+      "what's next",
+      "ensuite quoi"
+     ],
+     "action": [
+      "who is going to come next",
+      "qui va arriver ensuite"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02U01",
+     "role": "use",
+     "before": [
+      "what's next?",
+      "c'est quoi ensuite ?"
+     ],
+     "action": [
+      "what's going to come next?",
+      "qu'est-ce qui va arriver ensuite ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02U02",
+     "role": "use",
+     "before": [
+      "what's next for you?",
+      "et toi ensuite ?"
+     ],
+     "action": [
+      "do you know what's going to come next?",
+      "sais-tu ce qui va arriver ensuite ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02U03",
+     "role": "use",
+     "before": [
+      "so what's next?",
+      "alors ensuite ?"
+     ],
+     "action": [
+      "so what's going to come next?",
+      "alors qu'est-ce qui va arriver ensuite ?"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02U04",
+     "role": "use",
+     "before": [
+      "he's going to arrive next",
+      "il va arriver ensuite"
+     ],
+     "action": [
+      "he's going to come next",
+      "il va arriver ensuite"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0493L02U05",
+     "role": "use",
+     "before": [
+      "she's going to arrive next",
+      "elle va arriver ensuite"
+     ],
+     "action": [
+      "she's going to come next",
+      "elle va arriver ensuite"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0527L04",
+   "verdict": "recut-small",
+   "why": "Seven rows drill 'devine' without 'qui'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'guess | devine' is a seed word, no other LEGO has 'guess', and 'qui' is carried by the seed's own LEGO 'who told me | qui m'a raconté'. All eight rows stay.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 527,
+    "known": "guess who told me that funny story",
+    "target": "devine qui m'a raconté cette histoire drôle"
+   },
+   "before": {
+    "known": "guess who",
+    "target": "devine qui",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "guess",
+    "target": "devine",
+    "type": "A",
+    "components": [],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0527L04B01",
+     "role": "build",
+     "before": [
+      "guess",
+      "devine"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04B02",
+     "role": "build",
+     "before": [
+      "guess now",
+      "devine maintenant"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04B03",
+     "role": "build",
+     "before": [
+      "guess again",
+      "devine encore"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04U01",
+     "role": "use",
+     "before": [
+      "guess who told me that funny story",
+      "devine qui m'a raconté cette histoire drôle"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04U02",
+     "role": "use",
+     "before": [
+      "guess why",
+      "devine pourquoi"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04U03",
+     "role": "use",
+     "before": [
+      "guess already",
+      "devine déjà"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04U04",
+     "role": "use",
+     "before": [
+      "guess again now",
+      "devine encore maintenant"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0527L04U05",
+     "role": "use",
+     "before": [
+      "guess what I said",
+      "devine ce que j'ai dit"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "fra_for_eng:S0590L01U12",
+      "known": "guess who I saw at the station",
+      "target": "devine qui j'ai vu à la gare",
+      "seed": 590
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0580L03",
+   "verdict": "rebuild-rows",
+   "why": "Six rows drill 'voulu' with other subjects. 'wanted | voulu' would clash with 'wanted | voulait' (seed 52): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept at 7 syllables (nous-a-vons-sou-vent-vou-lu); rows rebuilt. U03 'we have often wanted' keeps (K6). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 580,
+    "known": "we've often wanted to take the children somewhere a little warmer",
+    "target": "nous avons souvent voulu emmener les enfants quelque part d'un peu plus chaud"
+   },
+   "before": {
+    "known": "we've often wanted",
+    "target": "nous avons souvent voulu",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "we've often wanted",
+    "target": "nous avons souvent voulu",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0580L03B01",
+     "role": "build",
+     "before": [
+      "wanted",
+      "voulu"
+     ],
+     "action": [
+      "we've often wanted that",
+      "nous avons souvent voulu ça"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0580L03B02",
+     "role": "build",
+     "before": [
+      "I have wanted",
+      "j'ai voulu"
+     ],
+     "action": [
+      "we've often wanted to go",
+      "nous avons souvent voulu aller"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0580L03B03",
+     "role": "build",
+     "before": [
+      "we have wanted",
+      "nous avons voulu"
+     ],
+     "action": [
+      "we've often wanted to help",
+      "nous avons souvent voulu aider"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0580L03U01",
+     "role": "use",
+     "before": [
+      "she has wanted",
+      "elle a voulu"
+     ],
+     "action": [
+      "we've often wanted to travel",
+      "nous avons souvent voulu voyager"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0580L03U02",
+     "role": "use",
+     "before": [
+      "he has wanted",
+      "il a voulu"
+     ],
+     "action": [
+      "we've often wanted to take the children",
+      "nous avons souvent voulu emmener les enfants"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0580L03U03",
+     "role": "use",
+     "before": [
+      "we have often wanted",
+      "nous avons souvent voulu"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0580L03U04",
+     "role": "use",
+     "before": [
+      "I have often wanted to go",
+      "j'ai souvent voulu aller"
+     ],
+     "action": [
+      "we've often wanted to go somewhere a little warmer",
+      "nous avons souvent voulu aller quelque part d'un peu plus chaud"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0580L03U05",
+     "role": "use",
+     "before": [
+      "we've often wanted to take the children somewhere a little warmer",
+      "nous avons souvent voulu emmener les enfants quelque part d'un peu plus chaud"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "fra_for_eng:S0580L03U06",
+     "course_code": "fra_for_eng",
+     "seed_number": 580,
+     "lego_index": 3,
+     "known_text": "we've often wanted to learn French",
+     "target_text": "nous avons souvent voulu apprendre le français",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 7,
+     "lego_position": "start",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0615L03",
+   "verdict": "rebuild-rows",
+   "why": "One stray row; the rest of the basket holds the LEGO. B01 'j'ai trouvé' drops 'que'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 615,
+    "known": "I thought you were very brave to say that",
+    "target": "j'ai trouvé que tu étais très courageux de dire ça"
+   },
+   "before": {
+    "known": "I thought",
+    "target": "j'ai trouvé que",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "I thought",
+    "target": "j'ai trouvé que",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0615L03B01",
+     "role": "build",
+     "before": [
+      "I thought",
+      "j'ai trouvé"
+     ],
+     "action": [
+      "I thought it was",
+      "j'ai trouvé que c'était"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0615L03B02",
+     "role": "build",
+     "before": [
+      "I thought that",
+      "j'ai trouvé que"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0615L03B03",
+     "role": "build",
+     "before": [
+      "I thought you were tired",
+      "j'ai trouvé que tu étais fatigué"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0615L03U01",
+     "role": "use",
+     "before": [
+      "I thought that you were brave",
+      "j'ai trouvé que tu étais courageux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0615L03U02",
+     "role": "use",
+     "before": [
+      "I thought you were very brave",
+      "j'ai trouvé que tu étais très courageux"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0615L03U03",
+     "role": "use",
+     "before": [
+      "I thought you were very brave to say that",
+      "j'ai trouvé que tu étais très courageux de dire ça"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0615L03U04",
+     "role": "use",
+     "before": [
+      "I thought it was good",
+      "j'ai trouvé que c'était bien"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "fra_for_eng:S0615L03U05",
+     "role": "use",
+     "before": [
+      "I thought that was sensible",
+      "j'ai trouvé que c'était sensée"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0644L01",
+   "verdict": "rebuild-rows",
+   "why": "Eight rows drill 'cela' alone with no 'sir'. K32 (a formal LEGO keeps sir/madam; in its phrases the LEGO is treated as cut, or as a named core where the seed's other LEGO carries the rest, and sir/madam is always added back at the end of every phrase on both sides). This seed's other LEGO is 'could you sir? | pourriez-vous monsieur ?', so the core here is 'say that | dire cela', and every row ends in 'sir | monsieur'. The checker's 'does not contain the LEGO' on these rows is that rule at work. Precedent: the canon's worked case, Italian seed 644.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 644,
+    "known": "could you say that sir?",
+    "target": "pourriez-vous dire cela monsieur ?"
+   },
+   "before": {
+    "known": "could you say that sir?",
+    "target": "pourriez-vous dire cela monsieur ?",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "could you say that sir?",
+    "target": "pourriez-vous dire cela monsieur ?",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "fra_for_eng:S0644L01B01",
+     "role": "build",
+     "before": [
+      "that",
+      "cela"
+     ],
+     "action": [
+      "to say that sir",
+      "dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01B02",
+     "role": "build",
+     "before": [
+      "I think that is right",
+      "je pense que cela est bien"
+     ],
+     "action": [
+      "I think I can say that sir",
+      "je pense que je peux dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01B03",
+     "role": "build",
+     "before": [
+      "yes that is what I want",
+      "oui cela c'est ce que je veux"
+     ],
+     "action": [
+      "yes I want to say that sir",
+      "oui je veux dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01U01",
+     "role": "use",
+     "before": [
+      "I know that",
+      "je sais cela"
+     ],
+     "action": [
+      "I can say that sir",
+      "je peux dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01U02",
+     "role": "use",
+     "before": [
+      "I understand that",
+      "je comprends cela"
+     ],
+     "action": [
+      "I would like to say that sir",
+      "je voudrais dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01U03",
+     "role": "use",
+     "before": [
+      "she said that",
+      "elle a dit cela"
+     ],
+     "action": [
+      "she wanted to say that sir",
+      "elle voulait dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01U04",
+     "role": "use",
+     "before": [
+      "I want to say that",
+      "je veux dire cela"
+     ],
+     "action": [
+      "I want to say that sir",
+      "je veux dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01U05",
+     "role": "use",
+     "before": [
+      "we all know that",
+      "nous savons tous cela"
+     ],
+     "action": [
+      "we all want to say that sir",
+      "nous voulons tous dire cela monsieur"
+     ]
+    },
+    {
+     "id": "fra_for_eng:S0644L01U06",
+     "role": "use",
+     "before": [
+      "could you say that sir?",
+      "pourriez-vous dire cela monsieur ?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0059L03B03",
+   "set": {
+    "known_text": "before next week",
+    "target_text": "avant la semaine prochaine"
+   },
+   "expect": {
+    "known_text": "the next",
+    "target_text": "la prochaine"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0067L02U06",
+   "set": {
+    "known_text": "do you want to stop now?",
+    "target_text": "veux-tu t'arrêter maintenant ?"
+   },
+   "expect": {
+    "known_text": "you could stop",
+    "target_text": "tu pourrais t'arrêter"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0067L02U07",
+   "set": {
+    "known_text": "how do you want to stop?",
+    "target_text": "comment veux-tu t'arrêter ?"
+   },
+   "expect": {
+    "known_text": "I want to stop you",
+    "target_text": "je veux t'arrêter"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0067L02B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 67,
+    "lego_index": 2,
+    "known_text": "and do you want to stop?",
+    "target_text": "et veux-tu t'arrêter ?",
+    "phrase_role": "build",
+    "position": 15,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0067L02B06",
+    "course_code": "fra_for_eng",
+    "seed_number": 67,
+    "lego_index": 2,
+    "known_text": "do you want to stop here?",
+    "target_text": "veux-tu t'arrêter ici ?",
+    "phrase_role": "build",
+    "position": 16,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0067L02U09",
+    "course_code": "fra_for_eng",
+    "seed_number": 67,
+    "lego_index": 2,
+    "known_text": "do you want to stop or not?",
+    "target_text": "veux-tu t'arrêter ou pas ?",
+    "phrase_role": "use",
+    "position": 17,
+    "word_count": 5,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0126L01U09",
+   "expect": {
+    "known_text": "no unfortunately I've got too much work",
+    "target_text": "non malheureusement j'ai trop de travail"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0147L02",
+   "set": {
+    "known_text": "kind",
+    "target_text": "gentille",
+    "type": "A",
+    "components": []
+   },
+   "expect": {
+    "known_text": "she was very kind",
+    "target_text": "elle a été très gentille"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 147,
+    "lego_index": 5,
+    "known_text": "very",
+    "target_text": "très",
+    "type": "A",
+    "is_new": false
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0152L03U09",
+   "expect": {
+    "known_text": "I said that I needed a little more time",
+    "target_text": "j'ai dit que j'avais besoin d'un peu plus de temps"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0168L02U03",
+   "set": {
+    "known_text": "I need to come later",
+    "target_text": "je dois venir plus tard"
+   },
+   "expect": {
+    "known_text": "I need to come back later",
+    "target_text": "je dois revenir plus tard"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L01U09",
+   "expect": {
+    "known_text": "I'd like to read my book for a while",
+    "target_text": "je voudrais lire mon livre pendant un moment"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L01U10",
+   "expect": {
+    "known_text": "would you like to come with us next month?",
+    "target_text": "est-ce que tu voudrais venir avec nous le mois prochain?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0246L01B01",
+   "set": {
+    "known_text": "I wanted her to help you now",
+    "target_text": "je voulais qu'elle t'aide maintenant"
+   },
+   "expect": {
+    "known_text": "her to help you",
+    "target_text": "qu'elle t'aide"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0246L01B02",
+   "set": {
+    "known_text": "yes I wanted her to help you",
+    "target_text": "oui je voulais qu'elle t'aide"
+   },
+   "expect": {
+    "known_text": "her to help you",
+    "target_text": "qu'elle t'aide"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0246L01B03",
+   "set": {
+    "known_text": "but I wanted her to help you",
+    "target_text": "mais je voulais qu'elle t'aide"
+   },
+   "expect": {
+    "known_text": "I want her to help you",
+    "target_text": "je veux qu'elle t'aide"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0246L01U01",
+   "set": {
+    "known_text": "I wanted her to help you tomorrow",
+    "target_text": "je voulais qu'elle t'aide demain"
+   },
+   "expect": {
+    "known_text": "I want her to help you tomorrow",
+    "target_text": "je veux qu'elle t'aide demain"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0246L01U02",
+   "expect": {
+    "known_text": "I don't want her to help you",
+    "target_text": "je ne veux pas qu'elle t'aide"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0246L01U04",
+   "expect": {
+    "known_text": "do you want her to help you?",
+    "target_text": "est-ce que tu veux qu'elle t'aide?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0246L01U05",
+   "set": {
+    "known_text": "I think I wanted her to help you",
+    "target_text": "je pense que je voulais qu'elle t'aide"
+   },
+   "expect": {
+    "known_text": "I think I want her to help you",
+    "target_text": "je pense que je veux qu'elle t'aide"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0325L04B01",
+   "set": {
+    "known_text": "the possible problems",
+    "target_text": "les problèmes possibles"
+   },
+   "expect": {
+    "known_text": "possible",
+    "target_text": "possibles"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0330L01U03",
+   "set": {
+    "known_text": "I don't think it's difficult",
+    "target_text": "je ne pense pas que ce soit difficile"
+   },
+   "expect": {
+    "known_text": "do you think it's true?",
+    "target_text": "penses-tu que ce soit vrai ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0330L01U06",
+   "set": {
+    "known_text": "I don't think it's useful",
+    "target_text": "je ne pense pas que ce soit utile"
+   },
+   "expect": {
+    "known_text": "do you think it's useful?",
+    "target_text": "penses-tu que ce soit utile ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0393L01B01",
+   "set": {
+    "known_text": "with that boy",
+    "target_text": "avec ce garçon"
+   },
+   "expect": {
+    "known_text": "that",
+    "target_text": "ce"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0414L06B01",
+   "set": {
+    "known_text": "the red wine please",
+    "target_text": "le vin rouge s'il vous plaît"
+   },
+   "expect": {
+    "known_text": "please",
+    "target_text": "s'il vous plaît"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0414L06B02",
+   "set": {
+    "known_text": "more red wine please",
+    "target_text": "plus de vin rouge s'il vous plaît"
+   },
+   "expect": {
+    "known_text": "a bottle please",
+    "target_text": "une bouteille s'il vous plaît"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0414L06B03",
+   "set": {
+    "known_text": "a little red wine please",
+    "target_text": "un peu de vin rouge s'il vous plaît"
+   },
+   "expect": {
+    "known_text": "some wine please",
+    "target_text": "du vin s'il vous plaît"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0414L06U01",
+   "set": {
+    "known_text": "could we have some red wine please?",
+    "target_text": "pourrions-nous avoir du vin rouge s'il vous plaît ?"
+   },
+   "expect": {
+    "known_text": "could we have a bottle please?",
+    "target_text": "pourrions-nous avoir une bouteille s'il vous plaît ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0414L06U02",
+   "set": {
+    "known_text": "I would like some red wine please",
+    "target_text": "je voudrais du vin rouge s'il vous plaît"
+   },
+   "expect": {
+    "known_text": "a bottle of wine please",
+    "target_text": "une bouteille de vin s'il vous plaît"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0414L06U04",
+   "set": {
+    "known_text": "could we have the red wine please?",
+    "target_text": "pourrions-nous avoir le vin rouge s'il vous plaît ?"
+   },
+   "expect": {
+    "known_text": "could we have some wine please?",
+    "target_text": "pourrions-nous avoir du vin s'il vous plaît ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0423L02B01",
+   "set": {
+    "known_text": "to ask a question now",
+    "target_text": "poser une question maintenant"
+   },
+   "expect": {
+    "known_text": "to ask",
+    "target_text": "poser"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0423L02B03",
+   "set": {
+    "known_text": "need to ask a question",
+    "target_text": "besoin de poser une question"
+   },
+   "expect": {
+    "known_text": "they need to ask",
+    "target_text": "ils ont besoin de poser"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0423L02U02",
+   "set": {
+    "known_text": "do they need to ask a question?",
+    "target_text": "ont-ils besoin de poser une question ?"
+   },
+   "expect": {
+    "known_text": "do they need to ask?",
+    "target_text": "ont-ils besoin de poser ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0423L02U04",
+   "set": {
+    "known_text": "they also need to ask a question",
+    "target_text": "ils ont aussi besoin de poser une question"
+   },
+   "expect": {
+    "known_text": "they also need to ask",
+    "target_text": "ils ont aussi besoin de poser"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0429L03B02",
+   "set": {
+    "known_text": "perfect for them",
+    "target_text": "parfait pour eux"
+   },
+   "expect": {
+    "known_text": "with them",
+    "target_text": "avec eux"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0431L03B01",
+   "set": {
+    "known_text": "no they're not ready yet",
+    "target_text": "non ils ne sont pas encore prêts"
+   },
+   "expect": {
+    "known_text": "ready",
+    "target_text": "prêts"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0431L03B02",
+   "set": {
+    "known_text": "but they're not ready yet",
+    "target_text": "mais ils ne sont pas encore prêts"
+   },
+   "expect": {
+    "known_text": "not ready",
+    "target_text": "pas prêts"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0431L03B03",
+   "set": {
+    "known_text": "they're not ready to leave yet",
+    "target_text": "ils ne sont pas encore prêts à partir"
+   },
+   "expect": {
+    "known_text": "not ready yet",
+    "target_text": "pas encore prêts"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0431L03U02",
+   "set": {
+    "known_text": "they're not ready yet but they want to leave",
+    "target_text": "ils ne sont pas encore prêts mais ils veulent partir"
+   },
+   "expect": {
+    "known_text": "they are not ready",
+    "target_text": "ils ne sont pas prêts"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0431L03U03",
+   "set": {
+    "known_text": "they want to leave but they're not ready yet",
+    "target_text": "ils veulent partir mais ils ne sont pas encore prêts"
+   },
+   "expect": {
+    "known_text": "they want to be ready",
+    "target_text": "ils veulent être prêts"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0431L03U04",
+   "set": {
+    "known_text": "yes but they're not ready yet",
+    "target_text": "oui mais ils ne sont pas encore prêts"
+   },
+   "expect": {
+    "known_text": "they are ready to leave",
+    "target_text": "ils sont prêts à partir"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0431L03U05",
+    "course_code": "fra_for_eng",
+    "seed_number": 431,
+    "lego_index": 3,
+    "known_text": "they're not ready yet but they'll be ready soon",
+    "target_text": "ils ne sont pas encore prêts mais ils seront bientôt prêts",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 11,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0431L03U06",
+    "course_code": "fra_for_eng",
+    "seed_number": 431,
+    "lego_index": 3,
+    "known_text": "I know, they're not ready yet",
+    "target_text": "je sais, ils ne sont pas encore prêts",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 8,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0440L03B01",
+   "set": {
+    "known_text": "while they're still young",
+    "target_text": "pendant qu'ils sont encore jeunes"
+   },
+   "expect": {
+    "known_text": "young",
+    "target_text": "jeunes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0440L03B03",
+   "set": {
+    "known_text": "my friends are still young",
+    "target_text": "mes amis sont encore jeunes"
+   },
+   "expect": {
+    "known_text": "very young",
+    "target_text": "très jeunes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0440L03U03",
+   "set": {
+    "known_text": "I think they are still young",
+    "target_text": "je pense qu'ils sont encore jeunes"
+   },
+   "expect": {
+    "known_text": "they are very young",
+    "target_text": "ils sont très jeunes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0440L03U04",
+   "set": {
+    "known_text": "they want to travel because they are still young",
+    "target_text": "ils veulent voyager parce qu'ils sont encore jeunes"
+   },
+   "expect": {
+    "known_text": "they are young",
+    "target_text": "ils sont jeunes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0440L03U05",
+   "set": {
+    "known_text": "while they are still young they want to travel",
+    "target_text": "pendant qu'ils sont encore jeunes ils veulent voyager"
+   },
+   "expect": {
+    "known_text": "while they are young they want to travel",
+    "target_text": "pendant qu'ils sont jeunes ils veulent voyager"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02B01",
+   "set": {
+    "known_text": "yes they'll be happy",
+    "target_text": "oui ils seront contents"
+   },
+   "expect": {
+    "known_text": "happy",
+    "target_text": "contents"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02B02",
+   "set": {
+    "known_text": "they'll be happy to help",
+    "target_text": "ils seront contents d'aider"
+   },
+   "expect": {
+    "known_text": "very happy",
+    "target_text": "très contents"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02B03",
+   "set": {
+    "known_text": "but they'll be happy",
+    "target_text": "mais ils seront contents"
+   },
+   "expect": {
+    "known_text": "not happy",
+    "target_text": "pas contents"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02U02",
+   "set": {
+    "known_text": "they'll be happy to see you",
+    "target_text": "ils seront contents de te voir"
+   },
+   "expect": {
+    "known_text": "they are very happy",
+    "target_text": "ils sont très contents"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02U03",
+   "set": {
+    "known_text": "they'll be happy tomorrow",
+    "target_text": "ils seront contents demain"
+   },
+   "expect": {
+    "known_text": "they are not happy",
+    "target_text": "ils ne sont pas contents"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02U04",
+   "set": {
+    "known_text": "they'll be happy to come",
+    "target_text": "ils seront contents de venir"
+   },
+   "expect": {
+    "known_text": "they are happy",
+    "target_text": "ils sont contents"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0448L02U05",
+   "set": {
+    "known_text": "they'll be happy to learn French",
+    "target_text": "ils seront contents d'apprendre le français"
+   },
+   "expect": {
+    "known_text": "they will be very happy",
+    "target_text": "ils seront très contents"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0448L02U06",
+    "course_code": "fra_for_eng",
+    "seed_number": 448,
+    "lego_index": 2,
+    "known_text": "yes they'll be happy to help",
+    "target_text": "oui ils seront contents d'aider",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0457L04",
+   "set": {
+    "known_text": "different",
+    "target_text": "différentes",
+    "type": "A",
+    "components": []
+   },
+   "expect": {
+    "known_text": "different areas",
+    "target_text": "zones différentes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03B01",
+   "set": {
+    "known_text": "has such a kind heart",
+    "target_text": "a un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "kind",
+    "target_text": "gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03B02",
+   "set": {
+    "known_text": "he has such a kind heart",
+    "target_text": "il a un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "very kind",
+    "target_text": "très gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03B03",
+   "set": {
+    "known_text": "you have such a kind heart",
+    "target_text": "tu as un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "so kind",
+    "target_text": "si gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03U01",
+   "set": {
+    "known_text": "my friend has such a kind heart",
+    "target_text": "mon ami a un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "he's very kind",
+    "target_text": "il est très gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03U02",
+   "set": {
+    "known_text": "I think she has such a kind heart",
+    "target_text": "je pense qu'elle a un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "it's very kind",
+    "target_text": "c'est très gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03U03",
+   "set": {
+    "known_text": "I know he has such a kind heart",
+    "target_text": "je sais qu'il a un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "he's so kind",
+    "target_text": "il est si gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0478L03U05",
+   "set": {
+    "known_text": "she said you have such a kind heart",
+    "target_text": "elle a dit que tu as un cœur si gentil"
+   },
+   "expect": {
+    "known_text": "it's so kind",
+    "target_text": "c'est si gentil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01B01",
+   "set": {
+    "known_text": "it's the only real hope",
+    "target_text": "c'est le seul vrai espoir"
+   },
+   "expect": {
+    "known_text": "only that",
+    "target_text": "seul ça"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01B02",
+   "set": {
+    "known_text": "the only real hope we have",
+    "target_text": "le seul vrai espoir que nous avons"
+   },
+   "expect": {
+    "known_text": "the only one",
+    "target_text": "le seul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01B03",
+   "set": {
+    "known_text": "the only real hope here",
+    "target_text": "le seul vrai espoir ici"
+   },
+   "expect": {
+    "known_text": "only here",
+    "target_text": "seul là"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01U01",
+   "set": {
+    "known_text": "I think it's the only real hope",
+    "target_text": "je pense que c'est le seul vrai espoir"
+   },
+   "expect": {
+    "known_text": "it's the only one",
+    "target_text": "c'est le seul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01U02",
+   "set": {
+    "known_text": "yes it's the only real hope",
+    "target_text": "oui c'est le seul vrai espoir"
+   },
+   "expect": {
+    "known_text": "the only moment",
+    "target_text": "le seul moment"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01U03",
+   "set": {
+    "known_text": "It's the only real hope we have left",
+    "target_text": "C'est le seul vrai espoir qu'il nous reste"
+   },
+   "expect": {
+    "known_text": "it's the only problem",
+    "target_text": "c'est le seul problème"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01U04",
+   "set": {
+    "known_text": "she said it's the only real hope",
+    "target_text": "elle a dit que c'est le seul vrai espoir"
+   },
+   "expect": {
+    "known_text": "the only hope",
+    "target_text": "le seul espoir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0481L01U05",
+   "set": {
+    "known_text": "it's the only real hope for them",
+    "target_text": "c'est le seul vrai espoir pour eux"
+   },
+   "expect": {
+    "known_text": "the only work",
+    "target_text": "le seul travail"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02B01",
+   "set": {
+    "known_text": "going to come next",
+    "target_text": "va arriver ensuite"
+   },
+   "expect": {
+    "known_text": "next",
+    "target_text": "ensuite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02B02",
+   "set": {
+    "known_text": "it's going to come next",
+    "target_text": "ça va arriver ensuite"
+   },
+   "expect": {
+    "known_text": "and next",
+    "target_text": "et ensuite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02B03",
+   "set": {
+    "known_text": "who is going to come next",
+    "target_text": "qui va arriver ensuite"
+   },
+   "expect": {
+    "known_text": "what's next",
+    "target_text": "ensuite quoi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02U01",
+   "set": {
+    "known_text": "what's going to come next?",
+    "target_text": "qu'est-ce qui va arriver ensuite ?"
+   },
+   "expect": {
+    "known_text": "what's next?",
+    "target_text": "c'est quoi ensuite ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02U02",
+   "set": {
+    "known_text": "do you know what's going to come next?",
+    "target_text": "sais-tu ce qui va arriver ensuite ?"
+   },
+   "expect": {
+    "known_text": "what's next for you?",
+    "target_text": "et toi ensuite ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02U03",
+   "set": {
+    "known_text": "so what's going to come next?",
+    "target_text": "alors qu'est-ce qui va arriver ensuite ?"
+   },
+   "expect": {
+    "known_text": "so what's next?",
+    "target_text": "alors ensuite ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02U04",
+   "set": {
+    "known_text": "he's going to come next"
+   },
+   "expect": {
+    "known_text": "he's going to arrive next",
+    "target_text": "il va arriver ensuite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0493L02U05",
+   "set": {
+    "known_text": "she's going to come next"
+   },
+   "expect": {
+    "known_text": "she's going to arrive next",
+    "target_text": "elle va arriver ensuite"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0527L04",
+   "set": {
+    "known_text": "guess",
+    "target_text": "devine",
+    "type": "A",
+    "components": []
+   },
+   "expect": {
+    "known_text": "guess who",
+    "target_text": "devine qui"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0580L03B01",
+   "set": {
+    "known_text": "we've often wanted that",
+    "target_text": "nous avons souvent voulu ça"
+   },
+   "expect": {
+    "known_text": "wanted",
+    "target_text": "voulu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0580L03B02",
+   "set": {
+    "known_text": "we've often wanted to go",
+    "target_text": "nous avons souvent voulu aller"
+   },
+   "expect": {
+    "known_text": "I have wanted",
+    "target_text": "j'ai voulu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0580L03B03",
+   "set": {
+    "known_text": "we've often wanted to help",
+    "target_text": "nous avons souvent voulu aider"
+   },
+   "expect": {
+    "known_text": "we have wanted",
+    "target_text": "nous avons voulu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0580L03U01",
+   "set": {
+    "known_text": "we've often wanted to travel",
+    "target_text": "nous avons souvent voulu voyager"
+   },
+   "expect": {
+    "known_text": "she has wanted",
+    "target_text": "elle a voulu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0580L03U02",
+   "set": {
+    "known_text": "we've often wanted to take the children",
+    "target_text": "nous avons souvent voulu emmener les enfants"
+   },
+   "expect": {
+    "known_text": "he has wanted",
+    "target_text": "il a voulu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0580L03U04",
+   "set": {
+    "known_text": "we've often wanted to go somewhere a little warmer",
+    "target_text": "nous avons souvent voulu aller quelque part d'un peu plus chaud"
+   },
+   "expect": {
+    "known_text": "I have often wanted to go",
+    "target_text": "j'ai souvent voulu aller"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0580L03U06",
+    "course_code": "fra_for_eng",
+    "seed_number": 580,
+    "lego_index": 3,
+    "known_text": "we've often wanted to learn French",
+    "target_text": "nous avons souvent voulu apprendre le français",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 7,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0615L03B01",
+   "set": {
+    "known_text": "I thought it was",
+    "target_text": "j'ai trouvé que c'était"
+   },
+   "expect": {
+    "known_text": "I thought",
+    "target_text": "j'ai trouvé"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01B01",
+   "set": {
+    "known_text": "to say that sir",
+    "target_text": "dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "that",
+    "target_text": "cela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01B02",
+   "set": {
+    "known_text": "I think I can say that sir",
+    "target_text": "je pense que je peux dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "I think that is right",
+    "target_text": "je pense que cela est bien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01B03",
+   "set": {
+    "known_text": "yes I want to say that sir",
+    "target_text": "oui je veux dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "yes that is what I want",
+    "target_text": "oui cela c'est ce que je veux"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01U01",
+   "set": {
+    "known_text": "I can say that sir",
+    "target_text": "je peux dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "I know that",
+    "target_text": "je sais cela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01U02",
+   "set": {
+    "known_text": "I would like to say that sir",
+    "target_text": "je voudrais dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "I understand that",
+    "target_text": "je comprends cela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01U03",
+   "set": {
+    "known_text": "she wanted to say that sir",
+    "target_text": "elle voulait dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "she said that",
+    "target_text": "elle a dit cela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01U04",
+   "set": {
+    "known_text": "I want to say that sir",
+    "target_text": "je veux dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "I want to say that",
+    "target_text": "je veux dire cela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0644L01U05",
+   "set": {
+    "known_text": "we all want to say that sir",
+    "target_text": "nous voulons tous dire cela monsieur"
+   },
+   "expect": {
+    "known_text": "we all know that",
+    "target_text": "nous savons tous cela"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:47:06Z",
+  "baseline_failing_seeds": 602,
+  "per_seed": {
+   "59": {
+    "seed_issues_planned": [
+     "L2: 1 duplicate phrase(s) within this LEGO: \"je dois faire ça aujourd'hui\"",
+     "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: 1 duplicate phrase(s) within this LEGO: \"je dois faire ça aujourd'hui\"",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "59": [
+      "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "67": {
+    "seed_issues_planned": [
+     "L2: 1 duplicate phrase(s) within this LEGO: \"pourquoi veux-tu t'arrêter ?\""
+    ],
+    "seed_issues_live": [
+     "L2: 2 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 1 (2 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {
+     "67": [
+      "L2: 1 duplicate phrase(s) within this LEGO: \"pourquoi veux-tu t'arrêter ?\""
+     ]
+    },
+    "error": null
+   },
+   "126": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "147": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 7 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (7 component phrases excluded)",
+     "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "147": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "152": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "152": [
+      "L3: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "168": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [aider]",
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [aider]",
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "168": [
+      "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "170": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 2 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "170": [
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "246": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [était]"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [était]",
+     "L1: 7 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (7 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "325": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: 1 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 2 (1 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "330": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 2 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "330": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "393": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 component phrases excluded)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "393": [
+      "L1: BUILD: need 3+, got 2"
+     ]
+    },
+    "error": null
+   },
+   "414": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L6: 6 phrase(s) fail containment",
+     "L6: BUILD: need 3+, got 1 (6 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "423": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: 4 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "423": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "429": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "429": [
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "431": {
+    "seed_issues_planned": [
+     "L1: USE: need 5+, got 4"
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 4",
+     "L3: 6 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (6 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "440": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L3: 5 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (5 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "440": [
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "448": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: 7 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (6 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "457": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L4: 7 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 0 (4 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "478": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L3: 7 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (7 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "481": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "493": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 6 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (6 component phrases excluded)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "527": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: 7 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 0 (7 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {
+     "527": [
+      "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "580": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 6 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (6 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "615": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "615": [
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "644": {
+    "seed_issues_planned": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": [
+   59,
+   67,
+   147,
+   152,
+   168,
+   170,
+   330,
+   393,
+   423,
+   429,
+   440,
+   527,
+   615
+  ],
+  "control": {
+   "at": "2026-11-19T11:48:26Z",
+   "per_seed": {
+    "59": {
+     "no_change": [
+      "L2: 1 duplicate phrase(s) within this LEGO: \"je dois faire ça aujourd'hui\"",
+      "L3: 1 phrase(s) fail containment",
+      "L3: BUILD: need 3+, got 0 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L2: 1 duplicate phrase(s) within this LEGO: \"je dois faire ça aujourd'hui\"",
+      "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "67": {
+     "no_change": [
+      "L2: 2 phrase(s) fail containment",
+      "L2: BUILD: need 3+, got 1 (2 component phrases excluded)"
+     ],
+     "planned": [
+      "L2: 1 duplicate phrase(s) within this LEGO: \"pourquoi veux-tu t'arrêter ?\""
+     ],
+     "added_by_plan": []
+    },
+    "147": {
+     "no_change": [
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: 7 phrase(s) fail containment",
+      "L2: BUILD: need 3+, got 0 (7 component phrases excluded)",
+      "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "152": {
+     "no_change": [
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: 1 phrase(s) fail containment",
+      "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "168": {
+     "no_change": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [aider]",
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 1 (1 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [aider]",
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "170": {
+     "no_change": [
+      "L1: 2 phrase(s) fail containment",
+      "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "330": {
+     "no_change": [
+      "L1: 2 phrase(s) fail containment",
+      "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "393": {
+     "no_change": [
+      "L1: 1 phrase(s) fail containment",
+      "L1: BUILD: need 3+, got 1 (1 component phrases excluded)",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L1: BUILD: need 3+, got 2",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "423": {
+     "no_change": [
+      "L2: 4 phrase(s) fail containment",
+      "L2: BUILD: need 3+, got 0 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "429": {
+     "no_change": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: 1 phrase(s) fail containment",
+      "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "440": {
+     "no_change": [
+      "L3: 5 phrase(s) fail containment",
+      "L3: BUILD: need 3+, got 0 (5 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "527": {
+     "no_change": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: 7 phrase(s) fail containment",
+      "L4: BUILD: need 3+, got 0 (7 component phrases excluded)"
+     ],
+     "planned": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    },
+    "615": {
+     "no_change": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: 1 phrase(s) fail containment",
+      "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "planned": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "added_by_plan": []
+    }
+   },
+   "seeds_with_issues_added_by_plan": []
+  }
+ }
+}
