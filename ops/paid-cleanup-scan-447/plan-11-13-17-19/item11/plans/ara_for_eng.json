@@ -2,22 +2,212 @@
  "course": "ara_for_eng",
  "roman_flags": [],
  "dumped": "2026-11-18T18:43:10Z",
- "decisions": 1,
+ "decisions": 31,
  "verdicts": {
-  "rebuild-rows": 1
+  "kai": 7,
+  "rebuild-rows": 23,
+  "recut-small": 1
  },
  "touched_seeds": [
-  109
+  102,
+  109,
+  144,
+  152,
+  202,
+  410,
+  424,
+  451,
+  462,
+  465,
+  470,
+  499,
+  570,
+  595,
+  619,
+  627,
+  630,
+  642,
+  648,
+  651,
+  657,
+  661,
+  662,
+  664
  ],
- "problems": [],
+ "problems": [
+  "S0642L01: target كَيْفَ تَشْعُرينَ سَيِّدَتي؟ estimated 10 syllables (>8) — hand-check",
+  "S0642L01 B01 rebuilt row does not contain the LEGO: ['I know how you feel madam', 'أَعْرِفُ كَيْفَ تَشْعُرينَ سَيِّدَتي']",
+  "S0642L01 B02 rebuilt row does not contain the LEGO: ['I want to know how you feel madam', 'أُريدُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي']",
+  "S0642L01 B03 rebuilt row does not contain the LEGO: ['I need to know how you feel madam', 'أَحْتاجُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي']",
+  "S0642L01 U03 rebuilt row does not contain the LEGO: ['I think I know how you feel madam', 'أَظُنُّ أَنَّني أَعْرِفُ كَيْفَ تَشْعُرينَ سَيِّدَتي']",
+  "S0642L01 U05 rebuilt row does not contain the LEGO: ['she said she wants to know how you feel madam', 'قالَتْ إِنَّها تُريدُ أَنْ تَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي']",
+  "S0651L01 B01 rebuilt row does not contain the LEGO: ['I need to know what you think madam', 'أَحْتاجُ أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي']",
+  "S0651L01 B02 rebuilt row does not contain the LEGO: ['I want to know what you think madam', 'أُريدُ أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي']",
+  "S0651L01 U02 rebuilt row does not contain the LEGO: ['she wants to know what you think madam', 'تُريدُ أَنْ تَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي']",
+  "S0651L01 U03 rebuilt row does not contain the LEGO: ['she asked what you think madam', 'سَأَلَتْ ماذا تَظُنّينَ سَيِّدَتي']",
+  "S0651L01 U04 rebuilt row does not contain the LEGO: ['I think I know what you think madam', 'أَظُنُّ أَنَّني أَعْرِفُ ماذا تَظُنّينَ سَيِّدَتي']",
+  "S0651L01 U05 rebuilt row does not contain the LEGO: ['can I know what you think madam?', 'هَلْ يُمْكِنُني أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي؟']",
+  "S0651L01 add ara_for_eng:S0651L01U06 does not contain the LEGO: I think she wants to know what you think madam | أَظُنُّ أَنَّها تُريدُ أَنْ تَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي"
+ ],
  "auto_substitutions": [],
  "zut_after_changed": {},
  "later_duplicates": [],
  "legos": [
   {
+   "id": "S0091L02",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: 7 of 8 rows drill \"think\" without \"quickly\" (3 of them the indicative تُفَكِّرُ, a form the seed does not say). The obvious short cut \"to think | أَنْ تُفَكِّرَ\" + not-new \"quickly | بِسُرْعَةٍ\" (taught at seed 20) keeps U02-U05 as they are, BUT the gloss \"to think\" is already owed to S0638L01 \"to think | أُفَكِّرَ\" and \"you to think\" to S0427L02 أَنْ تَظُنَّ, so a short cut needs a gloss that does not clash; if none is found the LEGO stays whole and the 7 rows take بِسُرْعَةٍ.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 91,
+    "known": "it's difficult to think quickly enough to answer in time",
+    "target": "مِنَ الصَّعْبِ أَنْ تُفَكِّرَ بِسُرْعَةٍ كافِيَةٍ لِلإِجابَةِ في الوَقْت"
+   },
+   "before": {
+    "known": "to think quickly",
+    "target": "أَنْ تُفَكِّرَ بِسُرْعَةٍ",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0102L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). The LEGO \"to say that | نَقولَ إِنَّ\" is the seed's own words and cannot shrink: \"we say | نَقولَ\" is already the LEGO before it, and a bare \"that | إِنَّ\" would be a lone particle. Six rows drill إِنَّ الأَمْرَ without نَقولَ, or the indicative نَقولُ. Each is reworded with the smallest change so it says نَقولَ إِنَّ after \"we want / we try / we need\". ",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 102,
+    "known": "we're trying to say that it's not like that",
+    "target": "نُحاوِلُ أَنْ نَقولَ إِنَّ الأَمْرَ لَيْسَ كَذٰلِك"
+   },
+   "before": {
+    "known": "to say that",
+    "target": "نَقولَ إِنَّ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "to say that",
+    "target": "نَقولَ إِنَّ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0102L03B01",
+     "role": "build",
+     "before": [
+      "that the matter",
+      "إِنَّ الأَمْرَ"
+     ],
+     "action": [
+      "we want to say that",
+      "نُريدُ أَنْ نَقولَ إِنَّ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0102L03B02",
+     "role": "build",
+     "before": [
+      "we say that",
+      "نَقولُ إِنَّ"
+     ],
+     "action": [
+      "we try to say that",
+      "نُحاوِلُ أَنْ نَقولَ إِنَّ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0102L03B03",
+     "role": "build",
+     "before": [
+      "that the matter is like that",
+      "إِنَّ الأَمْرَ هٰكَذا"
+     ],
+     "action": [
+      "we try to say that the matter",
+      "نُحاوِلُ أَنْ نَقولَ إِنَّ الأَمْرَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0102L03U01",
+     "role": "use",
+     "before": [
+      "we want to say that the matter is not like that",
+      "نُريدُ أَنْ نَقولَ إِنَّ الأَمْرَ لَيْسَ هٰكَذا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0102L03U02",
+     "role": "use",
+     "before": [
+      "we try to say that the matter is like that",
+      "نُحاوِلُ أَنْ نَقولَ إِنَّ الأَمْرَ هٰكَذا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0102L03U03",
+     "role": "use",
+     "before": [
+      "I said that the matter is not difficult",
+      "قُلْتُ إِنَّ الأَمْرَ لَيْسَ صَعْباً"
+     ],
+     "action": [
+      "we want to say that the matter is not difficult",
+      "نُريدُ أَنْ نَقولَ إِنَّ الأَمْرَ لَيْسَ صَعْباً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0102L03U04",
+     "role": "use",
+     "before": [
+      "you should know that the matter is not easy",
+      "يَجِبُ أَنْ تَعْرِفَ إِنَّ الأَمْرَ لَيْسَ سَهْلاً"
+     ],
+     "action": [
+      "we want to say that the matter is not easy",
+      "نُريدُ أَنْ نَقولَ إِنَّ الأَمْرَ لَيْسَ سَهْلاً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0102L03U05",
+     "role": "use",
+     "before": [
+      "we say that the language is fun",
+      "نَقولُ إِنَّ اللُّغَةَ مُمْتِعَة"
+     ],
+     "action": [
+      "we try to say that the language is fun",
+      "نُحاوِلُ أَنْ نَقولَ إِنَّ اللُّغَةَ مُمْتِعَة"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
    "id": "S0109L02",
    "verdict": "rebuild-rows",
-   "why": "Every practice phrase under a LEGO contains the whole LEGO (P17). The LEGO \"new words | كَلِماتٍ جَديدَةً\" is the seed's own words and 5 of 7 rows drill it; two rows use the singular كَلِمَةً جَديدَةً (\"a new word\"), a different form the seed does not say. Those two are reworded to the plural; nothing else moves.",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). The LEGO \"new words | كَلِماتٍ جَديدَةً\" is the seed's own words and 5 of 7 rows drill it; two rows use the singular كَلِمَةً جَديدَةً (\"a new word\"), a form the seed does not say. Those two are reworded to the plural, and one build row is added because the builder wants three builds that put the LEGO inside a phrase. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
    "closes": [
     "11"
    ],
@@ -116,15 +306,3416 @@
      "action": "keep"
     }
    ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0109L02B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 109,
+     "lego_index": 2,
+     "known_text": "we need to learn new words",
+     "target_text": "نَحْتاجُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 5,
+     "lego_position": "end",
+     "lego_count": 1,
+     "target_text_roman": "nahtaaju an nata'allam kalimaatin jadeedatan"
+    },
+    {
+     "id": "ara_for_eng:S0109L02U06",
+     "course_code": "ara_for_eng",
+     "seed_number": 109,
+     "lego_index": 2,
+     "known_text": "we hope to learn new words in Arabic",
+     "target_text": "نَأْمَلُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
+     "phrase_role": "use",
+     "position": 10,
+     "word_count": 6,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "na'malu an nata'allam kalimaatin jadeedatan bil'arabiyyati"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0144L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Six of eight rows stop at أَبْكَرَ (\"earlier\") and never say مِمّا (\"than\"). Shrinking the LEGO to \"earlier | أَبْكَرَ\" would leave مِمّا as a lone particle LEGO, which is not allowed, so the LEGO stays and the six rows gain \"than I should / than I expected\", the two endings the basket already uses in U01 and U02.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 144,
+    "known": "I woke earlier than I wanted to this morning",
+    "target": "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَرَدْتُ هٰذا الصَّباح"
+   },
+   "before": {
+    "known": "earlier than",
+    "target": "أَبْكَرَ مِمّا",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "earlier than",
+    "target": "أَبْكَرَ مِمّا",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0144L02B01",
+     "role": "build",
+     "before": [
+      "I woke up earlier",
+      "اسْتَيْقَظْتُ أَبْكَرَ"
+     ],
+     "action": [
+      "earlier than I should",
+      "أَبْكَرَ مِمّا يَجِبُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0144L02B02",
+     "role": "build",
+     "before": [
+      "I woke up earlier today",
+      "اسْتَيْقَظْتُ أَبْكَرَ اليَوْم"
+     ],
+     "action": [
+      "I woke up earlier than I should",
+      "اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0144L02B03",
+     "role": "build",
+     "before": [
+      "I woke up earlier this morning",
+      "اسْتَيْقَظْتُ أَبْكَرَ هٰذا الصَّباح"
+     ],
+     "action": [
+      "I woke up earlier than I expected",
+      "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَتَوَقَّعُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0144L02U01",
+     "role": "use",
+     "before": [
+      "I think I woke up earlier than I should today",
+      "أَعْتَقِدُ أَنَّني اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ اليَوْم"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0144L02U02",
+     "role": "use",
+     "before": [
+      "I woke up earlier than I expected this morning",
+      "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَتَوَقَّعُ هٰذا الصَّباح"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0144L02U03",
+     "role": "use",
+     "before": [
+      "I woke up earlier and I'm sorry",
+      "اسْتَيْقَظْتُ أَبْكَرَ وَأَنا آسِفٌ"
+     ],
+     "action": [
+      "I woke up earlier than I should and I'm sorry",
+      "اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ وَأَنا آسِفٌ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0144L02U04",
+     "role": "use",
+     "before": [
+      "I woke up earlier this morning and I'm tired",
+      "اسْتَيْقَظْتُ أَبْكَرَ هٰذا الصَّباح وَأَنا مُتْعَبٌ"
+     ],
+     "action": [
+      "I woke up earlier than I expected this morning and I'm tired",
+      "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَتَوَقَّعُ هٰذا الصَّباح وَأَنا مُتْعَبٌ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0144L02U05",
+     "role": "use",
+     "before": [
+      "of course I woke up earlier today",
+      "طَبْعاً اسْتَيْقَظْتُ أَبْكَرَ اليَوْم"
+     ],
+     "action": [
+      "of course I woke up earlier than I should today",
+      "طَبْعاً اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ اليَوْم"
+     ]
+    }
+   ],
    "add": [],
    "basket_after": {
     "build": 3,
-    "use": 4
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0152L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). All 8 rows drill \"if I were ready | لَوْ كُنْتُ مُستَعِدّاً\" or \"if that were\"; none says the LEGO \"if I had known | لَوْ عَرَفْتُ\". The LEGO is the seed's own words, so the basket is rebuilt: the same frames, now ending in لَوْ عَرَفْتُ.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 152,
+    "known": "I would have done it differently if I had known what you wanted",
+    "target": "كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ ما تُريد"
+   },
+   "before": {
+    "known": "if I had known",
+    "target": "لَوْ عَرَفْتُ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "if I had known",
+    "target": "لَوْ عَرَفْتُ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0152L03B01",
+     "role": "build",
+     "before": [
+      "if that were good",
+      "لَوْ كانَ ذٰلِك جَيِّداً"
+     ],
+     "action": [
+      "if I had known that",
+      "لَوْ عَرَفْتُ ذٰلِك"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03B02",
+     "role": "build",
+     "before": [
+      "if I were ready",
+      "لَوْ كُنْتُ مُستَعِدّاً"
+     ],
+     "action": [
+      "differently if I had known",
+      "بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03B03",
+     "role": "build",
+     "before": [
+      "I would have done it differently if I were ready",
+      "كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ كُنْتُ مُستَعِدّاً"
+     ],
+     "action": [
+      "I would have done it differently if I had known",
+      "كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03U01",
+     "role": "use",
+     "before": [
+      "if this had happened differently it would have been better",
+      "لَوْ كانَ هٰذا بِشَكْلٍ مُخْتَلِفٍ كانَ سَيَكونُ أَفضَل"
+     ],
+     "action": [
+      "I would have done it if I had known that",
+      "كُنْتُ سَأَفْعَلُهُ لَوْ عَرَفْتُ ذٰلِك"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03U02",
+     "role": "use",
+     "before": [
+      "I think I would have been better if I had been more ready",
+      "أَعتَقِدُ أَنَّني كُنْتُ سَأَكونُ أَفضَل لَوْ كُنْتُ مُستَعِدّاً أَكثَر"
+     ],
+     "action": [
+      "I think I would have done it differently if I had known",
+      "أَعتَقِدُ أَنَّني كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03U03",
+     "role": "use",
+     "before": [
+      "I think that wouldn't have happened if I had been ready",
+      "أَظُنُّ أَنَّ ذٰلِكَ لَمْ يَحْدُث لَوْ كُنْتُ مُستَعِدّاً"
+     ],
+     "action": [
+      "I think that wouldn't have happened if I had known",
+      "أَظُنُّ أَنَّ ذٰلِكَ لَمْ يَحْدُث لَوْ عَرَفْتُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03U04",
+     "role": "use",
+     "before": [
+      "I would have done it well if I had been ready",
+      "كُنْتُ سَأَفْعَلُهُ جَيِّداً لَوْ كُنْتُ مُستَعِدّاً"
+     ],
+     "action": [
+      "I would have done it well if I had known",
+      "كُنْتُ سَأَفْعَلُهُ جَيِّداً لَوْ عَرَفْتُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0152L03U05",
+     "role": "use",
+     "before": [
+      "if that were different it would be good",
+      "لَوْ كانَ ذٰلِك بِشَكْلٍ مُخْتَلِفٍ سَيَكونُ جَيِّداً"
+     ],
+     "action": [
+      "I would have done it well if I had known that",
+      "كُنْتُ سَأَفْعَلُهُ جَيِّداً لَوْ عَرَفْتُ ذٰلِك"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0202L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). The 9 rows are written without vowel marks and drill \"anyone | أحد\" in other frames (is anyone here?, nobody knows); only one says \"nobody was\", and it uses \"the office\", a word not taught until seed 511. The LEGO \"nobody was | لَمْ يَكُنْ أَحَدٌ\" is the seed's own words, so the basket is rebuilt, fully vowelled, from words taught by seed 202 (here, ready, sure, yesterday).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 202,
+    "known": "nobody was sure how to answer the question",
+    "target": "لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً كَيْفَ يُجيبُ عَنِ السُّؤال"
+   },
+   "before": {
+    "known": "nobody was",
+    "target": "لَمْ يَكُنْ أَحَدٌ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "nobody was",
+    "target": "لَمْ يَكُنْ أَحَدٌ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0202L01B01",
+     "role": "build",
+     "before": [
+      "anyone",
+      "أحد"
+     ],
+     "action": [
+      "nobody was here",
+      "لَمْ يَكُنْ أَحَدٌ هُنا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01B02",
+     "role": "build",
+     "before": [
+      "nobody knows",
+      "لم يعرف أحد"
+     ],
+     "action": [
+      "nobody was ready",
+      "لَمْ يَكُنْ أَحَدٌ مُسْتَعِدّاً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01B03",
+     "role": "build",
+     "before": [
+      "was anyone here?",
+      "هل كان أحد هنا؟"
+     ],
+     "action": [
+      "nobody was here yesterday",
+      "لَمْ يَكُنْ أَحَدٌ هُنا أَمْس"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01U01",
+     "role": "use",
+     "before": [
+      "is anyone here?",
+      "هل هناك أحد هنا؟"
+     ],
+     "action": [
+      "nobody was sure",
+      "لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01U02",
+     "role": "use",
+     "before": [
+      "nobody knows about this",
+      "لم يعرف أحد عن هٰذا"
+     ],
+     "action": [
+      "nobody was ready yesterday",
+      "لَمْ يَكُنْ أَحَدٌ مُسْتَعِدّاً أَمْس"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01U03",
+     "role": "use",
+     "before": [
+      "does anyone know what is happening?",
+      "هل يعرف أحد ما يحدث؟"
+     ],
+     "action": [
+      "I think that nobody was here",
+      "أَظُنُّ أَنَّهُ لَمْ يَكُنْ أَحَدٌ هُنا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01U04",
+     "role": "use",
+     "before": [
+      "nobody was at the office",
+      "لم يكن أحد في المكتب"
+     ],
+     "action": [
+      "I think that nobody was ready",
+      "أَظُنُّ أَنَّهُ لَمْ يَكُنْ أَحَدٌ مُسْتَعِدّاً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01U05",
+     "role": "use",
+     "before": [
+      "does anyone know about the council?",
+      "هل يعرف أحد عن المجلس؟"
+     ],
+     "action": [
+      "nobody was sure yesterday",
+      "لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً أَمْس"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0202L01U06",
+     "role": "use",
+     "before": [
+      "nobody knew what was going to happen",
+      "لم يعرف أحد ما كان سيحدث"
+     ],
+     "action": [
+      "I think that nobody was sure",
+      "أَظُنُّ أَنَّهُ لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0410L01",
+   "verdict": "recut-small",
+   "why": "The LEGO is glossed \"with each other\" but its Arabic is only بَعْضِهِمْ; six of eight rows already drill مَعَ بَعْضِهِمْ, which is what the seed says. The LEGO is re-cut to the piece the basket drills, \"with each other | مَعَ بَعْضِهِمْ\" (5 syllables). Two rows say بَعْضِنا (\"we … each other\"), a different form, and are reworded to \"they\"; the bare \"each other\" build becomes a phrase. U02 used يَكونوا, a form not taught by this seed, and is reworded; one use row is added to reach five.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 410,
+    "known": "they still fight with each other",
+    "target": "ما زالوا يَتَشاجَرونَ مَعَ بَعْضِهِمْ"
+   },
+   "before": {
+    "known": "with each other",
+    "target": "بَعْضِهِمْ",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "with each other",
+    "target": "مَعَ بَعْضِهِمْ",
+    "type": "M",
+    "components": [
+     [
+      "with",
+      "مَعَ"
+     ],
+     [
+      "each other",
+      "بَعْضِهِمْ"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0410L01B01",
+     "role": "build",
+     "before": [
+      "each other",
+      "بَعْضِهِمْ"
+     ],
+     "action": [
+      "that they are with each other",
+      "أَنَّهُمْ مَعَ بَعْضِهِمْ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0410L01B02",
+     "role": "build",
+     "before": [
+      "with each other",
+      "مَعَ بَعْضِهِمْ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0410L01B03",
+     "role": "build",
+     "before": [
+      "they are with each other",
+      "هُمْ مَعَ بَعْضِهِمْ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0410L01B04",
+     "role": "build",
+     "before": [
+      "I am sure they are with each other",
+      "أَنا مُتَأَكِّدٌ أَنَّهُمْ مَعَ بَعْضِهِمْ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0410L01U01",
+     "role": "use",
+     "before": [
+      "she told me they are with each other",
+      "قالَتْ لي إِنَّهُمْ مَعَ بَعْضِهِمْ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0410L01U02",
+     "role": "use",
+     "before": [
+      "she was right that they should be with each other",
+      "كانَتْ عَلى حَقٍّ أَنَّهُ يَجِبُ أَنْ يَكونوا مَعَ بَعْضِهِمْ"
+     ],
+     "action": [
+      "she was right that they are with each other",
+      "كانَتْ عَلى حَقٍّ أَنَّهُمْ مَعَ بَعْضِهِمْ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0410L01U03",
+     "role": "use",
+     "before": [
+      "I think we should go with each other",
+      "أَظُنُّ أَنَّنا يَجِبُ أَنْ نَذْهَبَ مَعَ بَعْضِنا"
+     ],
+     "action": [
+      "I think they are with each other",
+      "أَظُنُّ أَنَّهُمْ مَعَ بَعْضِهِمْ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0410L01U04",
+     "role": "use",
+     "before": [
+      "I want us to stay together",
+      "أُريدُ أَنْ نَبْقى مَعَ بَعْضِنا"
+     ],
+     "action": [
+      "I know they are with each other",
+      "أَعْرِفُ أَنَّهُمْ مَعَ بَعْضِهِمْ"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0410L01U05",
+     "course_code": "ara_for_eng",
+     "seed_number": 410,
+     "lego_index": 1,
+     "known_text": "she told me she thinks they are with each other",
+     "target_text": "قالَتْ لي إِنَّها تَظُنُّ أَنَّهُمْ مَعَ بَعْضِهِمْ",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 7,
+     "lego_position": "end",
+     "lego_count": 1,
+     "target_text_roman": "qaalat lee innahaa tazunnu annahum ma'a ba'dihim"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 5,
+    "sample": [
+     {
+      "id": "ara_for_eng:S0410L02B04",
+      "known": "I think they still fight with each other",
+      "target": "أَظُنُّ أَنَّهُمْ ما زالوا يَتَشاجَرونَ مَعَ بَعْضِهِمْ",
+      "seed": 410
+     },
+     {
+      "id": "ara_for_eng:S0410L02U01",
+      "known": "they still fight with each other",
+      "target": "ما زالوا يَتَشاجَرونَ مَعَ بَعْضِهِمْ",
+      "seed": 410
+     },
+     {
+      "id": "ara_for_eng:S0410L02U02",
+      "known": "she told me they still fight with each other",
+      "target": "قالَتْ لي إِنَّهُمْ ما زالوا يَتَشاجَرونَ مَعَ بَعْضِهِمْ",
+      "seed": 410
+     },
+     {
+      "id": "ara_for_eng:S0410L02U04",
+      "known": "I am sure they still fight with each other",
+      "target": "أَنا مُتَأَكِّدٌ أَنَّهُمْ ما زالوا يَتَشاجَرونَ مَعَ بَعْضِهِمْ",
+      "seed": 410
+     },
+     {
+      "id": "ara_for_eng:S0410L02U05",
+      "known": "do you think they still fight with each other?",
+      "target": "هَلْ تَظُنُّ أَنَّهُمْ ما زالوا يَتَشاجَرونَ مَعَ بَعْضِهِمْ؟",
+      "seed": 410
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0413L04",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: one row (U05) swaps the LEGO's verb for the noun الاقْتِرابَ, which is never taught, and three rows (U02-U04) say \"get too close\" in English where the LEGO says \"go too close\"; all four should be brought to the LEGO's own wording when the rows are re-homed.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 413,
+    "known": "we could fall if we go too close to the edge",
+    "target": "قَدْ نَسْقُطُ إِذا اقْتَرَبْنا كَثيراً مِنَ الحافَّةِ"
+   },
+   "before": {
+    "known": "if we go too close to the edge",
+    "target": "إِذا اقْتَرَبْنا كَثيراً مِنَ الحافَّةِ",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0424L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Seven of eight rows drill \"everybody | الجَميعَ\" (object ending) and never say وَقْتَ الجَميعِ. Shrinking the LEGO to \"everybody | الجَميعِ\" is blocked: \"everybody | الجَميعُ\" is already taught at seed 396 with a different ending, so one English prompt would have two answers. The LEGO stays and the basket is rebuilt on the two verbs taught by this point that can take \"time\" (they want, they need); it is narrow in meaning for that reason.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 424,
+    "known": "no they're wasting everybody's time",
+    "target": "لا، إِنَّهُمْ يُضَيِّعونَ وَقْتَ الجَميعِ"
+   },
+   "before": {
+    "known": "everybody's time",
+    "target": "وَقْتَ الجَميعِ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "everybody's time",
+    "target": "وَقْتَ الجَميعِ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0424L01B01",
+     "role": "build",
+     "before": [
+      "everybody",
+      "الجَميعِ"
+     ],
+     "action": [
+      "they want everybody's time",
+      "يُريدونَ وَقْتَ الجَميعِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0424L01B02",
+     "role": "build",
+     "before": [
+      "everybody's time",
+      "وَقْتَ الجَميعِ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0424L01B03",
+     "role": "build",
+     "before": [
+      "they want to serve everybody",
+      "يُريدونَ أَنْ يَخْدِموا الجَميعَ"
+     ],
+     "action": [
+      "they need everybody's time",
+      "يَحْتاجونَ وَقْتَ الجَميعِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0424L01U01",
+     "role": "use",
+     "before": [
+      "they know everybody",
+      "يَعْرِفونَ الجَميعَ"
+     ],
+     "action": [
+      "do they want everybody's time?",
+      "هَلْ يُريدونَ وَقْتَ الجَميعِ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0424L01U02",
+     "role": "use",
+     "before": [
+      "do they know everybody?",
+      "هَلْ يَعْرِفونَ الجَميعَ؟"
+     ],
+     "action": [
+      "do they need everybody's time?",
+      "هَلْ يَحْتاجونَ وَقْتَ الجَميعِ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0424L01U03",
+     "role": "use",
+     "before": [
+      "they want to lead everybody",
+      "يُريدونَ أَنْ يَقودوا الجَميعَ"
+     ],
+     "action": [
+      "they don't want everybody's time",
+      "لا يُريدونَ وَقْتَ الجَميعِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0424L01U04",
+     "role": "use",
+     "before": [
+      "they say they know everybody",
+      "يَقولونَ إِنَّهُمْ يَعْرِفونَ الجَميعَ"
+     ],
+     "action": [
+      "they say they want everybody's time",
+      "يَقولونَ إِنَّهُمْ يُريدونَ وَقْتَ الجَميعِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0424L01U05",
+     "role": "use",
+     "before": [
+      "they need to serve everybody",
+      "يَحْتاجونَ أَنْ يَخْدِموا الجَميعَ"
+     ],
+     "action": [
+      "they say they need everybody's time",
+      "يَقولونَ إِنَّهُمْ يَحْتاجونَ وَقْتَ الجَميعِ"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0424L01B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 424,
+     "lego_index": 1,
+     "known_text": "they don't need everybody's time",
+     "target_text": "لا يَحْتاجونَ وَقْتَ الجَميعِ",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "end",
+     "lego_count": 1,
+     "target_text_roman": "laa yahtaajoona waqta al-jamee'i"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0451L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). No row says أَرادوا: all 8 drill \"what | ما\" with other verbs (what they said, what they know, what they want). Shrinking to \"what | ما\" would be a lone particle, and \"they wanted | أَرادوا\" is already its own LEGO in this seed, so \"what they wanted | ما أَرادوا\" stays and the basket is rebuilt around it with the same lead-ins (they said, she knows, she asked, why ask).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 451,
+    "known": "they said what they wanted to do",
+    "target": "قالوا ما أَرادوا أَنْ يَفْعَلوهُ"
+   },
+   "before": {
+    "known": "what they wanted",
+    "target": "ما أَرادوا",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "what they wanted",
+    "target": "ما أَرادوا",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0451L01B01",
+     "role": "build",
+     "before": [
+      "what",
+      "ما"
+     ],
+     "action": [
+      "they said what they wanted",
+      "قالوا ما أَرادوا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01B02",
+     "role": "build",
+     "before": [
+      "what they said",
+      "ما قالوا"
+     ],
+     "action": [
+      "she knows what they wanted",
+      "تَعْرِفُ ما أَرادوا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01B03",
+     "role": "build",
+     "before": [
+      "what they know",
+      "ما يَعْرِفونَ"
+     ],
+     "action": [
+      "she asked what they wanted",
+      "سَأَلَتْ ما أَرادوا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01U01",
+     "role": "use",
+     "before": [
+      "what did they say?",
+      "ما الَّذي قالوهُ؟"
+     ],
+     "action": [
+      "did they say what they wanted?",
+      "هَلْ قالوا ما أَرادوا؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01U02",
+     "role": "use",
+     "before": [
+      "she asked what they know",
+      "سَأَلَتْ ما يَعْرِفونَ"
+     ],
+     "action": [
+      "she asked what they wanted yesterday",
+      "سَأَلَتْ ما أَرادوا أَمْس"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01U03",
+     "role": "use",
+     "before": [
+      "she knows what they want",
+      "تَعْرِفُ ما يُريدونَ"
+     ],
+     "action": [
+      "I know what they wanted",
+      "أَعْرِفُ ما أَرادوا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01U04",
+     "role": "use",
+     "before": [
+      "why ask what they want?",
+      "لِماذا نَسْأَلُ ما يُريدونَ؟"
+     ],
+     "action": [
+      "why ask what they wanted?",
+      "لِماذا نَسْأَلُ ما أَرادوا؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0451L01U05",
+     "role": "use",
+     "before": [
+      "she wonders what they think",
+      "تَسْأَلُ ما يَظُنّونَ"
+     ],
+     "action": [
+      "I think that she knows what they wanted",
+      "أَظُنُّ أَنَّها تَعْرِفُ ما أَرادوا"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0462L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One row uses another person's verb form, which the seed does not teach; it is reworded to the LEGO's own form. Nothing else in the basket moves. (U02 said حارَبوا \"they fought\" under \"fought | حارَبَ\".)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 462,
+    "known": "my grandfather fought in Italy during the war",
+    "target": "جَدّي حارَبَ في إِيطاليا أَثْناءَ الحَرْبِ"
+   },
+   "before": {
+    "known": "fought in Italy",
+    "target": "حارَبَ في إِيطاليا",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "fought in Italy",
+    "target": "حارَبَ في إِيطاليا",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0462L02C01",
+     "role": "component",
+     "before": [
+      "fought",
+      "حارَبَ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0462L02C02",
+     "role": "component",
+     "before": [
+      "in Italy",
+      "في إِيطاليا"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0462L02B01",
+     "role": "build",
+     "before": [
+      "fought in Italy",
+      "حارَبَ في إِيطاليا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02B02",
+     "role": "build",
+     "before": [
+      "she told me he fought in Italy",
+      "قالَتْ لي إِنَّهُ حارَبَ في إِيطاليا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02B03",
+     "role": "build",
+     "before": [
+      "my grandfather fought in Italy a long time ago",
+      "جَدّي حارَبَ في إِيطاليا مِنْ قَبْلُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02B04",
+     "role": "build",
+     "before": [
+      "I heard he fought in Italy in those days",
+      "سَمِعْتُ أَنَّهُ حارَبَ في إِيطاليا في ذلِكَ الوَقْتِ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02U01",
+     "role": "use",
+     "before": [
+      "I told her my grandfather fought in Italy",
+      "قُلْتُ لَها إِنَّ جَدّي حارَبَ في إِيطاليا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02U02",
+     "role": "use",
+     "before": [
+      "she said they fought in Italy",
+      "قالَتْ إِنَّهُمْ حارَبوا في إِيطاليا"
+     ],
+     "action": [
+      "she said he fought in Italy",
+      "قالَتْ إِنَّهُ حارَبَ في إِيطاليا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0462L02U03",
+     "role": "use",
+     "before": [
+      "I know she said he fought in Italy",
+      "أَعْرِفُ أَنَّها قالَتْ إِنَّهُ حارَبَ في إِيطاليا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02U04",
+     "role": "use",
+     "before": [
+      "I heard he fought in Italy a long time ago",
+      "سَمِعْتُ أَنَّهُ حارَبَ في إِيطاليا مِنْ قَبْلُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0462L02U05",
+     "role": "use",
+     "before": [
+      "she asked if she heard he fought in Italy",
+      "سَأَلَتْ إِنْ كانَتْ سَمِعَتْ أَنَّهُ حارَبَ في إِيطاليا"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0465L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One build row says عَنِ المَرَّةِ القادِمَةِ (\"about next time\"), dropping the LEGO's في; it is reworded to say the LEGO whole.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 465,
+    "known": "next time I will ask her what her name is",
+    "target": "في المَرَّةِ القادِمَةِ سَأَسْأَلُها ما اسْمُها"
+   },
+   "before": {
+    "known": "next time",
+    "target": "في المَرَّةِ القادِمَةِ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "next time",
+    "target": "في المَرَّةِ القادِمَةِ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0465L01C01",
+     "role": "component",
+     "before": [
+      "in the time",
+      "في المَرَّةِ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0465L01C02",
+     "role": "component",
+     "before": [
+      "the next",
+      "القادِمَةِ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0465L01B01",
+     "role": "build",
+     "before": [
+      "next time",
+      "في المَرَّةِ القادِمَةِ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01B02",
+     "role": "build",
+     "before": [
+      "next time I will ask",
+      "في المَرَّةِ القادِمَةِ سَأَسْأَلُها"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01B03",
+     "role": "build",
+     "before": [
+      "she said next time",
+      "قالَتْ في المَرَّةِ القادِمَةِ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01B04",
+     "role": "build",
+     "before": [
+      "I told her about next time",
+      "قُلْتُ لَها عَنِ المَرَّةِ القادِمَةِ"
+     ],
+     "action": [
+      "I told her next time",
+      "قُلْتُ لَها في المَرَّةِ القادِمَةِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0465L01U01",
+     "role": "use",
+     "before": [
+      "she said next time will be easier",
+      "قالَتْ إِنَّ في المَرَّةِ القادِمَةِ سَيَكونُ أَسْهَلَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01U02",
+     "role": "use",
+     "before": [
+      "I told her next time I will ask her",
+      "قُلْتُ لَها في المَرَّةِ القادِمَةِ سَأَسْأَلُها"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01U03",
+     "role": "use",
+     "before": [
+      "she asked what will happen next time",
+      "سَأَلَتْ ماذا سَيَحْدُثُ في المَرَّةِ القادِمَةِ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01U04",
+     "role": "use",
+     "before": [
+      "she thinks next time will be much better",
+      "تَظُنُّ أَنَّ في المَرَّةِ القادِمَةِ سَيَكونُ أَفْضَلَ بِكَثيرٍ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0465L01U05",
+     "role": "use",
+     "before": [
+      "I know next time will be better",
+      "أَعْرِفُ أَنَّ في المَرَّةِ القادِمَةِ سَيَكونُ أَفْضَلَ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0470L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One row uses another person's verb form, which the seed does not teach; it is reworded to the LEGO's own form. Nothing else in the basket moves. (U02 said يَتَسَلَّقَ \"he climbs\" under \"to climb | تَتَسَلَّقَ\"; يَتَسَلَّقَ is never taught.) U04 \"you should climb\" keeps the LEGO and is left as it is.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 470,
+    "known": "how high do you want to climb before we stop?",
+    "target": "إِلى أَيِّ ارْتِفاعٍ تُريدُ أَنْ تَتَسَلَّقَ قَبْلَ أَنْ نَتَوَقَّفَ؟"
+   },
+   "before": {
+    "known": "to climb",
+    "target": "تَتَسَلَّقَ",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "to climb",
+    "target": "تَتَسَلَّقَ",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0470L02B01",
+     "role": "build",
+     "before": [
+      "do you want to climb?",
+      "تُريدُ أَنْ تَتَسَلَّقَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0470L02B02",
+     "role": "build",
+     "before": [
+      "she wants to climb more",
+      "تُريدُ أَنْ تَتَسَلَّقَ أَكْثَرَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0470L02B03",
+     "role": "build",
+     "before": [
+      "how high do you want to climb?",
+      "إِلى أَيِّ ارْتِفاعٍ تُريدُ أَنْ تَتَسَلَّقَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0470L02U01",
+     "role": "use",
+     "before": [
+      "do you want to climb?",
+      "هَلْ تُريدُ أَنْ تَتَسَلَّقَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0470L02U02",
+     "role": "use",
+     "before": [
+      "she asked how high he wants to climb",
+      "سَأَلَتْ إِلى أَيِّ ارْتِفاعٍ يُريدُ أَنْ يَتَسَلَّقَ"
+     ],
+     "action": [
+      "she asked how high you want to climb",
+      "سَأَلَتْ إِلى أَيِّ ارْتِفاعٍ تُريدُ أَنْ تَتَسَلَّقَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0470L02U03",
+     "role": "use",
+     "before": [
+      "how high do you want to climb before we stop?",
+      "إِلى أَيِّ ارْتِفاعٍ تُريدُ أَنْ تَتَسَلَّقَ قَبْلَ أَنْ نَتَوَقَّفَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0470L02U04",
+     "role": "use",
+     "before": [
+      "she thinks you should climb before we stop",
+      "تَظُنُّ أَنَّهُ يَجِبُ أَنْ تَتَسَلَّقَ قَبْلَ أَنْ نَتَوَقَّفَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0470L02U05",
+     "role": "use",
+     "before": [
+      "I want you to climb before we stop",
+      "أُريدُ أَنْ تَتَسَلَّقَ قَبْلَ أَنْ نَتَوَقَّفَ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0499L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One row uses another person's verb form, which the seed does not teach; it is reworded to the LEGO's own form. Nothing else in the basket moves. (U05 said يَفْتَحَ \"he opens\" under \"we open the door | نَفْتَحَ البابَ\".) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 499,
+    "known": "maybe we should open the door and close the window",
+    "target": "رُبَّما يَجِبُ أَنْ نَفْتَحَ البابَ وَنُغْلِقَ النّافِذَةَ"
+   },
+   "before": {
+    "known": "we open the door",
+    "target": "نَفْتَحَ البابَ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "we open the door",
+    "target": "نَفْتَحَ البابَ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0499L02C01",
+     "role": "component",
+     "before": [
+      "we open",
+      "نَفْتَحَ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0499L02C02",
+     "role": "component",
+     "before": [
+      "the door",
+      "البابَ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0499L02B01",
+     "role": "build",
+     "before": [
+      "we open the door",
+      "نَفْتَحَ البابَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02B02",
+     "role": "build",
+     "before": [
+      "we should open the door",
+      "يَجِبُ أَنْ نَفْتَحَ البابَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02B03",
+     "role": "build",
+     "before": [
+      "maybe we should open the door a little",
+      "رُبَّما يَجِبُ أَنْ نَفْتَحَ البابَ قَليلاً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02U01",
+     "role": "use",
+     "before": [
+      "we should open the door now",
+      "يَجِبُ أَنْ نَفْتَحَ البابَ الآنَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02U02",
+     "role": "use",
+     "before": [
+      "maybe we should open the door",
+      "رُبَّما يَجِبُ أَنْ نَفْتَحَ البابَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02U03",
+     "role": "use",
+     "before": [
+      "we need to open the door",
+      "نَحْتاجُ أَنْ نَفْتَحَ البابَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02U04",
+     "role": "use",
+     "before": [
+      "do we need to open the door?",
+      "هَلْ نَحْتاجُ أَنْ نَفْتَحَ البابَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0499L02U05",
+     "role": "use",
+     "before": [
+      "he needs to open the door inside",
+      "يَحْتاجُ أَنْ يَفْتَحَ البابَ في الدَّاخِلِ"
+     ],
+     "action": [
+      "we need to open the door inside",
+      "نَحْتاجُ أَنْ نَفْتَحَ البابَ في الدَّاخِلِ"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0499L02B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 499,
+     "lego_index": 2,
+     "known_text": "we want to open the door",
+     "target_text": "نُريدُ أَنْ نَفْتَحَ البابَ",
+     "phrase_role": "build",
+     "position": 11,
+     "word_count": 4,
+     "lego_position": "end",
+     "lego_count": 1,
+     "target_text_roman": "nureedu an naftahha al-baaba"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0595L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One row uses another person's verb form, which the seed does not teach; it is reworded to the LEGO's own form. Nothing else in the basket moves. (U04 said تَسْتَلْقِيَ \"you lie down\" under \"lie down | أَسْتَلْقِيَ\".)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 595,
+    "known": "I need to lie down in the garden",
+    "target": "أَحْتاجُ أَنْ أَسْتَلْقِيَ في الحَديقَةِ"
+   },
+   "before": {
+    "known": "lie down",
+    "target": "أَسْتَلْقِيَ",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "lie down",
+    "target": "أَسْتَلْقِيَ",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0595L01B01",
+     "role": "build",
+     "before": [
+      "I want to lie down",
+      "أُريدُ أَنْ أَسْتَلْقِيَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01B02",
+     "role": "build",
+     "before": [
+      "I need to lie down",
+      "أَحْتاجُ أَنْ أَسْتَلْقِيَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01B03",
+     "role": "build",
+     "before": [
+      "I need to lie down now",
+      "أَحْتاجُ أَنْ أَسْتَلْقِيَ الآنَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01U01",
+     "role": "use",
+     "before": [
+      "I want to lie down today",
+      "أُريدُ أَنْ أَسْتَلْقِيَ اليَوْمَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01U02",
+     "role": "use",
+     "before": [
+      "I had to lie down here",
+      "كانَ عَلَيَّ أَنْ أَسْتَلْقِيَ هُنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01U03",
+     "role": "use",
+     "before": [
+      "she insisted I lie down",
+      "كانَتْ تُصِرُّ عَلى أَنْ أَسْتَلْقِيَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01U04",
+     "role": "use",
+     "before": [
+      "do you need to lie down now?",
+      "هَلْ تَحْتاجُ أَنْ تَسْتَلْقِيَ الآنَ؟"
+     ],
+     "action": [
+      "do I need to lie down now?",
+      "هَلْ أَحْتاجُ أَنْ أَسْتَلْقِيَ الآنَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0595L01U05",
+     "role": "use",
+     "before": [
+      "I need to lie down every morning",
+      "أَحْتاجُ أَنْ أَسْتَلْقِيَ كُلَّ صَباحٍ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01U06",
+     "role": "use",
+     "before": [
+      "I had to lie down every afternoon",
+      "كانَ عَلَيَّ أَنْ أَسْتَلْقِيَ كُلَّ بَعْدَ ظُهْرٍ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0595L01U07",
+     "role": "use",
+     "before": [
+      "I need to lie down in the garden",
+      "أَحْتاجُ أَنْ أَسْتَلْقِيَ في الحَديقَةِ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0570L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Four use rows say يَدْفَعَ (\"he pays\") under the LEGO مُسْتَعِدٌّ أَنْ تَدْفَعَ (\"you pay\"); the \"he\" form is not what the seed teaches. They are reworded to \"you\" (أَنَّكَ, taught at seed 63), keeping each lead-in. Note for the walk: this LEGO's English was changed by another job since the 17 Nov scan (it was \"you're willing to pay\", it is now \"willing to pay for it\"); the rows here follow the live wording. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 570,
+    "known": "how much are you willing to pay for your ticket?",
+    "target": "كَمْ أَنْتَ مُسْتَعِدٌّ أَنْ تَدْفَعَ ثَمَنَ تَذْكِرَتِكَ؟"
+   },
+   "before": {
+    "known": "willing to pay for it",
+    "target": "مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "willing to pay for it",
+    "target": "مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['it']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0570L02C01",
+     "role": "component",
+     "before": [
+      "willing",
+      "مُسْتَعِدٌّ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0570L02C02",
+     "role": "component",
+     "before": [
+      "to pay for it",
+      "أَنْ تَدْفَعَ"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_for_eng:S0570L02B01",
+     "role": "build",
+     "before": [
+      "willing to pay for it",
+      "مُسْتَعِدٌّ أَنْ تَدْفَعَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0570L02B03",
+     "role": "build",
+     "before": [
+      "maybe willing to pay for it",
+      "رُبَّما مُسْتَعِدٌّ أَنْ تَدْفَعَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0570L02U01",
+     "role": "use",
+     "before": [
+      "I know he is willing to pay for it",
+      "أَعْرِفُ أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+     ],
+     "action": [
+      "I know you are willing to pay for it",
+      "أَعْرِفُ أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0570L02U02",
+     "role": "use",
+     "before": [
+      "I'm afraid he's willing to pay for it",
+      "أَخْشى أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+     ],
+     "action": [
+      "I'm afraid you're willing to pay for it",
+      "أَخْشى أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0570L02U03",
+     "role": "use",
+     "before": [
+      "I suppose he's willing to pay for it",
+      "أَظُنُّ أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+     ],
+     "action": [
+      "I suppose you're willing to pay for it",
+      "أَظُنُّ أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0570L02U04",
+     "role": "use",
+     "before": [
+      "are you willing to pay for it for your ticket?",
+      "هَلْ أَنْتَ مُسْتَعِدٌّ أَنْ تَدْفَعَ ثَمَنَ تَذْكِرَتِكَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0570L02U05",
+     "role": "use",
+     "before": [
+      "I don't care that he's willing to pay for it",
+      "لا يَهُمُّني أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+     ],
+     "action": [
+      "I don't care that you're willing to pay for it",
+      "لا يَهُمُّني أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0570L02B04",
+     "role": "build",
+     "before": [
+      "willing to pay for your ticket",
+      "مُسْتَعِدٌّ أَنْ تَدْفَعَ ثَمَنَ تَذْكِرَتِكَ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0570L02B05",
+     "course_code": "ara_for_eng",
+     "seed_number": 570,
+     "lego_index": 2,
+     "known_text": "you are willing to pay for it",
+     "target_text": "أَنْتَ مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "anta musta'iddun an tadfa'a"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0619L04",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One build row is the fragment \"each other | بَعْضَنا\" without \"we saw\"; it is reworded to a phrase that holds the whole LEGO. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 619,
+    "known": "it's a long time since we saw each other",
+    "target": "مَرَّ وَقْتٌ طَويلٌ مُنْذُ أَنْ رَأَيْنا بَعْضَنا"
+   },
+   "before": {
+    "known": "we saw each other",
+    "target": "رَأَيْنا بَعْضَنا",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "we saw each other",
+    "target": "رَأَيْنا بَعْضَنا",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0619L04B01",
+     "role": "build",
+     "before": [
+      "each other",
+      "بَعْضَنا"
+     ],
+     "action": [
+      "we saw each other today",
+      "رَأَيْنا بَعْضَنا اليَوْم"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0619L04B02",
+     "role": "build",
+     "before": [
+      "we saw each other",
+      "رَأَيْنا بَعْضَنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0619L04B03",
+     "role": "build",
+     "before": [
+      "since we saw each other",
+      "مُنْذُ أَنْ رَأَيْنا بَعْضَنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0619L04U01",
+     "role": "use",
+     "before": [
+      "it's a long time since we saw each other",
+      "مَرَّ وَقْتٌ طَويلٌ مُنْذُ أَنْ رَأَيْنا بَعْضَنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0619L04U02",
+     "role": "use",
+     "before": [
+      "she said a long time passed since we saw each other",
+      "قالَتْ إِنَّهُ مَرَّ وَقْتٌ طَويلٌ مُنْذُ أَنْ رَأَيْنا بَعْضَنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0619L04U03",
+     "role": "use",
+     "before": [
+      "do you know it's been a long time since we saw each other?",
+      "هَلْ تَعْرِفُ أَنَّهُ مَرَّ وَقْتٌ طَويلٌ مُنْذُ أَنْ رَأَيْنا بَعْضَنا؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0619L04U04",
+     "role": "use",
+     "before": [
+      "I think it's been a long time since we saw each other",
+      "أَظُنُّ أَنَّهُ مَرَّ وَقْتٌ طَويلٌ مُنْذُ أَنْ رَأَيْنا بَعْضَنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0619L04U05",
+     "role": "use",
+     "before": [
+      "he said it's a long time since we saw each other",
+      "قالَ إِنَّهُ مَرَّ وَقْتٌ طَويلٌ مُنْذُ أَنْ رَأَيْنا بَعْضَنا"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0619L04B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 619,
+     "lego_index": 4,
+     "known_text": "I think we saw each other",
+     "target_text": "أَظُنُّ أَنَّنا رَأَيْنا بَعْضَنا",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "end",
+     "lego_count": 1,
+     "target_text_roman": "azunnu annanaa ra'aynaa ba'danaa"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0627L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Eight of nine rows drill \"it's ready\" without \"your coffee\". The short cut \"ready | جاهِزَةٌ\" (with \"your coffee\" already the seed's other LEGO) would keep five rows, BUT \"ready\" is already taught as مُسْتَعِدٌّ at seed 26, so one English prompt would have two answers. The LEGO therefore stays whole and the basket is rebuilt. Arabic limits the frames: after \"she said that / I think that\" the noun changes its ending (قَهْوَتَكَ), which would no longer be the taught form, so the rows use questions and plain statements.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 627,
+    "known": "your coffee is ready",
+    "target": "قَهْوَتُكَ جاهِزَةٌ"
+   },
+   "before": {
+    "known": "your coffee is ready",
+    "target": "قَهْوَتُكَ جاهِزَةٌ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "your coffee is ready",
+    "target": "قَهْوَتُكَ جاهِزَةٌ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0627L01B01",
+     "role": "build",
+     "before": [
+      "ready",
+      "جاهِزَةٌ"
+     ],
+     "action": [
+      "is your coffee ready?",
+      "هَلْ قَهْوَتُكَ جاهِزَةٌ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01B02",
+     "role": "build",
+     "before": [
+      "it's ready",
+      "إِنَّها جاهِزَةٌ"
+     ],
+     "action": [
+      "your coffee is ready now",
+      "قَهْوَتُكَ جاهِزَةٌ الآن"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01B03",
+     "role": "build",
+     "before": [
+      "she said it's not ready",
+      "قالَتْ إِنَّها لَيْسَتْ جاهِزَةً"
+     ],
+     "action": [
+      "yes, your coffee is ready",
+      "نَعَمْ، قَهْوَتُكَ جاهِزَةٌ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01U01",
+     "role": "use",
+     "before": [
+      "she said it's ready",
+      "قالَتْ إِنَّها جاهِزَةٌ"
+     ],
+     "action": [
+      "your coffee is ready today",
+      "قَهْوَتُكَ جاهِزَةٌ اليَوْم"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01U02",
+     "role": "use",
+     "before": [
+      "he said it's not ready",
+      "قالَ إِنَّها لَيْسَتْ جاهِزَةً"
+     ],
+     "action": [
+      "is your coffee ready now?",
+      "هَلْ قَهْوَتُكَ جاهِزَةٌ الآن؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01U03",
+     "role": "use",
+     "before": [
+      "I think it's ready",
+      "أَظُنُّ أَنَّها جاهِزَةٌ"
+     ],
+     "action": [
+      "your coffee is ready here",
+      "قَهْوَتُكَ جاهِزَةٌ هُنا"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01U04",
+     "role": "use",
+     "before": [
+      "do you know if it's ready?",
+      "هَلْ تَعْرِفُ إِنْ كانَتْ جاهِزَةً؟"
+     ],
+     "action": [
+      "she asked if your coffee is ready",
+      "سَأَلَتْ هَلْ قَهْوَتُكَ جاهِزَةٌ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01U05",
+     "role": "use",
+     "before": [
+      "I said it was ready",
+      "قُلْتُ إِنَّها جاهِزَةٌ"
+     ],
+     "action": [
+      "yes, your coffee is ready now",
+      "نَعَمْ، قَهْوَتُكَ جاهِزَةٌ الآن"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0627L01U06",
+     "role": "use",
+     "before": [
+      "your coffee is ready",
+      "قَهْوَتُكَ جاهِزَةٌ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0630L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). No row says الحُصولُ: all 8 drill \"can I | يُمْكِنُني أَنْ\" + a verb, which is the earlier LEGO of seed 119. Shrinking to \"can I | يُمْكِنُني\" is blocked, because \"can I\" already answers يُمْكِنُني أَنْ at seed 119 (one prompt, two answers). The LEGO stays and the basket is rebuilt as \"can I have …\" with things taught by this point (something, red wine, a bottle, a table for four), modelled on seed 414's \"could we have\" basket.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 630,
+    "known": "can I have something to drink please?",
+    "target": "هَلْ يُمْكِنُني الحُصولُ عَلى شَيْءٍ لِأَشْرَبَهُ مِنْ فَضْلِكَ؟"
+   },
+   "before": {
+    "known": "can I have",
+    "target": "يُمْكِنُني الحُصولُ",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "can I have",
+    "target": "يُمْكِنُني الحُصولُ",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0630L01B01",
+     "role": "build",
+     "before": [
+      "can I",
+      "يُمْكِنُني"
+     ],
+     "action": [
+      "can I have something?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى شَيْءٍ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01B02",
+     "role": "build",
+     "before": [
+      "is it possible for me",
+      "يُمْكِنُني أَنْ"
+     ],
+     "action": [
+      "can I have red wine?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى نَبيذٍ أَحْمَرَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01B03",
+     "role": "build",
+     "before": [
+      "can I speak",
+      "يُمْكِنُني أَنْ أَتَكَلَّمَ"
+     ],
+     "action": [
+      "can I have a bottle of red wine?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى زُجاجَةِ نَبيذٍ أَحْمَرَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01U01",
+     "role": "use",
+     "before": [
+      "can I speak Arabic?",
+      "هَلْ يُمْكِنُني أَنْ أَتَكَلَّمَ العَرَبِيَّةَ؟"
+     ],
+     "action": [
+      "can I have something here?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى شَيْءٍ هُنا؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01U02",
+     "role": "use",
+     "before": [
+      "can I try to speak?",
+      "هَلْ يُمْكِنُني أَنْ أُحاوِلَ أَنْ أَتَكَلَّمَ؟"
+     ],
+     "action": [
+      "can I have red wine tonight?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى نَبيذٍ أَحْمَرَ اللَّيْلَةَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01U03",
+     "role": "use",
+     "before": [
+      "can I learn something?",
+      "هَلْ يُمْكِنُني أَنْ أَتَعَلَّمَ شَيْئاً؟"
+     ],
+     "action": [
+      "can I have a bottle of red wine please?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى زُجاجَةِ نَبيذٍ أَحْمَرَ مِنْ فَضْلِكَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01U04",
+     "role": "use",
+     "before": [
+      "she said can I try?",
+      "قالَتْ هَلْ يُمْكِنُني أَنْ أُحاوِلَ؟"
+     ],
+     "action": [
+      "can I have a table for four please?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى طاوِلَةٍ لِأَرْبَعَةٍ مِنْ فَضْلِكَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0630L01U05",
+     "role": "use",
+     "before": [
+      "can I understand what you're saying?",
+      "هَلْ يُمْكِنُني أَنْ أَفْهَمَ ما تَقولُهُ؟"
+     ],
+     "action": [
+      "can I have wine tonight?",
+      "هَلْ يُمْكِنُني الحُصولُ عَلى نَبيذٍ اللَّيْلَةَ؟"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0642L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule for sir/madam LEGOs (Kai, 28 Sep): the LEGO keeps sir/madam, its phrases drill the LEGO minus the honorific, and sir/madam is added back at the END of every phrase on both sides. So a row that says the core is not a break. Only the rows that miss the core are reworded here, and each reworded row ends in the honorific. Core: \"how do you feel | كَيْفَ تَشْعُرينَ\". Two rows (B01, U04) say \"you feel\" without \"how\". The plan tool reports the two reworded rows as not containing the LEGO because the honorific is at the end rather than straight after the core: that is the rule above, answered by hand. Note: with madam the LEGO is 10 syllables, 6 without. SECOND PASS: the builder only accepts a row that holds the LEGO with its madam, and the sir/madam rule itself says the honorific goes back on the END of EVERY phrase. So every row of this basket now ends in madam on both sides (the Italian course did the same for these seeds), re-ordered where needed so the core and madam close the phrase. The plan tool still lists rows whose English is the statement order (how you feel / what you think) against the question gloss (how do you feel): the same words inside an embedded question, answered by hand; the builder passes them.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 642,
+    "known": "how do you feel madam?",
+    "target": "كَيْفَ تَشْعُرينَ سَيِّدَتي؟"
+   },
+   "before": {
+    "known": "how do you feel madam?",
+    "target": "كَيْفَ تَشْعُرينَ سَيِّدَتي؟",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "how do you feel madam?",
+    "target": "كَيْفَ تَشْعُرينَ سَيِّدَتي؟",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 10
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0642L01B01",
+     "role": "build",
+     "before": [
+      "you feel",
+      "تَشْعُرينَ"
+     ],
+     "action": [
+      "I know how you feel madam",
+      "أَعْرِفُ كَيْفَ تَشْعُرينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01B02",
+     "role": "build",
+     "before": [
+      "how do you feel",
+      "كَيْفَ تَشْعُرينَ"
+     ],
+     "action": [
+      "I want to know how you feel madam",
+      "أُريدُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01B03",
+     "role": "build",
+     "before": [
+      "I need to know how you feel",
+      "أَحْتاجُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ"
+     ],
+     "action": [
+      "I need to know how you feel madam",
+      "أَحْتاجُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01U01",
+     "role": "use",
+     "before": [
+      "how do you feel now?",
+      "كَيْفَ تَشْعُرينَ الآن؟"
+     ],
+     "action": [
+      "now how do you feel madam?",
+      "الآن كَيْفَ تَشْعُرينَ سَيِّدَتي؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01U02",
+     "role": "use",
+     "before": [
+      "she asked how do you feel",
+      "سَأَلَتْ كَيْفَ تَشْعُرينَ"
+     ],
+     "action": [
+      "she asked how do you feel madam",
+      "سَأَلَتْ كَيْفَ تَشْعُرينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01U03",
+     "role": "use",
+     "before": [
+      "I want to know how you feel",
+      "أُريدُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ"
+     ],
+     "action": [
+      "I think I know how you feel madam",
+      "أَظُنُّ أَنَّني أَعْرِفُ كَيْفَ تَشْعُرينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01U04",
+     "role": "use",
+     "before": [
+      "I think you feel good",
+      "أَظُنُّ أَنَّكِ تَشْعُرينَ بِخَيْرٍ"
+     ],
+     "action": [
+      "today how do you feel madam?",
+      "اليَوْم كَيْفَ تَشْعُرينَ سَيِّدَتي؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01U05",
+     "role": "use",
+     "before": [
+      "she said she wants to know how you feel",
+      "قالَتْ إِنَّها تُريدُ أَنْ تَعْرِفَ كَيْفَ تَشْعُرينَ"
+     ],
+     "action": [
+      "she said she wants to know how you feel madam",
+      "قالَتْ إِنَّها تُريدُ أَنْ تَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0642L01U06",
+     "role": "use",
+     "before": [
+      "how do you feel madam?",
+      "كَيْفَ تَشْعُرينَ سَيِّدَتي؟"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0644L01",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: the LEGO is the whole seed and every row but the seed drills only \"can you | يُمْكِنُكَ\" or \"can you say\". The Italian precedent for this same seed keeps a short core (\"could you\") with \"say\" as the seed's other LEGO and sir on the end of every phrase.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 644,
+    "known": "could you say that sir?",
+    "target": "هَلْ يُمْكِنُكَ أَنْ تَقولَ ذلِكَ سَيِّدي؟"
+   },
+   "before": {
+    "known": "could you say that sir?",
+    "target": "هَلْ يُمْكِنُكَ أَنْ تَقولَ ذلِكَ سَيِّدي؟",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0645L01",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: five rows miss \"I can | أَسْتَطيعُ\" (they say I need / I want / can I / she can); the sir/madam rule lets rows drop only the closing madam.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 645,
+    "known": "I can help you madam",
+    "target": "أَسْتَطيعُ مُساعَدَتَكِ سَيِّدَتي"
+   },
+   "before": {
+    "known": "I can help you madam",
+    "target": "أَسْتَطيعُ مُساعَدَتَكِ سَيِّدَتي",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0646L01",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: three rows miss \"something | شَيْئاً\" (they drill \"you do\" / \"what you're doing\").",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 646,
+    "known": "you're doing something sir",
+    "target": "أَنْتَ تَفْعَلُ شَيْئاً سَيِّدي"
+   },
+   "before": {
+    "known": "you're doing something sir",
+    "target": "أَنْتَ تَفْعَلُ شَيْئاً سَيِّدي",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0648L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule for sir/madam LEGOs (Kai, 28 Sep): the LEGO keeps sir/madam, its phrases drill the LEGO minus the honorific, and sir/madam is added back at the END of every phrase on both sides. So a row that says the core is not a break. Only the rows that miss the core are reworded here, and each reworded row ends in the honorific. Core: \"what you said | ما قُلْتِ\". B01 says \"you said\" without \"what\"; U03 says ماذا قُلْتِ (\"what did you say\"), a different word from the LEGO's ما. SECOND PASS: the builder only accepts a row that holds the LEGO with its madam, and the sir/madam rule itself says the honorific goes back on the END of EVERY phrase. So every row of this basket now ends in madam on both sides (the Italian course did the same for these seeds), re-ordered where needed so the core and madam close the phrase. The plan tool still lists rows whose English is the statement order (how you feel / what you think) against the question gloss (how do you feel): the same words inside an embedded question, answered by hand; the builder passes them.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 648,
+    "known": "what you said madam",
+    "target": "ما قُلْتِ سَيِّدَتي"
+   },
+   "before": {
+    "known": "what you said madam",
+    "target": "ما قُلْتِ سَيِّدَتي",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "what you said madam",
+    "target": "ما قُلْتِ سَيِّدَتي",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0648L01B01",
+     "role": "build",
+     "before": [
+      "you said",
+      "قُلْتِ"
+     ],
+     "action": [
+      "I heard what you said madam",
+      "سَمِعْتُ ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01B02",
+     "role": "build",
+     "before": [
+      "what you said",
+      "ما قُلْتِ"
+     ],
+     "action": [
+      "I know what you said madam",
+      "أَعْرِفُ ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01B03",
+     "role": "build",
+     "before": [
+      "I heard what you said just now",
+      "سَمِعْتُ ما قُلْتِ الآن"
+     ],
+     "action": [
+      "I heard just now what you said madam",
+      "سَمِعْتُ الآن ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01U01",
+     "role": "use",
+     "before": [
+      "what you said madam",
+      "ما قُلْتِ سَيِّدَتي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0648L01U02",
+     "role": "use",
+     "before": [
+      "I heard what you said",
+      "سَمِعْتُ ما قُلْتِ"
+     ],
+     "action": [
+      "I think I heard what you said madam",
+      "أَظُنُّ أَنَّني سَمِعْتُ ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01U03",
+     "role": "use",
+     "before": [
+      "what did you say madam?",
+      "ماذا قُلْتِ سَيِّدَتي؟"
+     ],
+     "action": [
+      "I think I know what you said madam",
+      "أَظُنُّ أَنَّني أَعْرِفُ ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01U04",
+     "role": "use",
+     "before": [
+      "I think what you said is good",
+      "أَظُنُّ أَنَّ ما قُلْتِ جَيِّدٌ"
+     ],
+     "action": [
+      "I think I agree with what you said madam",
+      "أَظُنُّ أَنَّني أَتَّفِقُ مَعَ ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01U05",
+     "role": "use",
+     "before": [
+      "she said she heard what you said",
+      "قالَتْ إِنَّها سَمِعَتْ ما قُلْتِ"
+     ],
+     "action": [
+      "she said she heard what you said madam",
+      "قالَتْ إِنَّها سَمِعَتْ ما قُلْتِ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0648L01U06",
+     "role": "use",
+     "before": [
+      "I won't be able to remember what you said madam",
+      "لَنْ أَسْتَطيعَ أَنْ أَتَذَكَّرَ ما قُلْتِ سَيِّدَتي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0648L01U07",
+     "role": "use",
+     "before": [
+      "I like what you said madam",
+      "أُحِبُّ ما قُلْتِ سَيِّدَتي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0648L01U08",
+     "role": "use",
+     "before": [
+      "I agree with what you said madam",
+      "أَتَّفِقُ مَعَ ما قُلْتِ سَيِّدَتي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0648L01U09",
+     "role": "use",
+     "before": [
+      "I liked what you said madam",
+      "أَحْبَبْتُ ما قُلْتِ سَيِّدَتي"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 9
+   },
+   "extra": []
+  },
+  {
+   "id": "S0651L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule for sir/madam LEGOs (Kai, 28 Sep): the LEGO keeps sir/madam, its phrases drill the LEGO minus the honorific, and sir/madam is added back at the END of every phrase on both sides. So a row that says the core is not a break. Only the rows that miss the core are reworded here, and each reworded row ends in the honorific. Core: \"what do you think | ماذا تَظُنّينَ\". Two rows (B01, U04) say \"you think\" without \"what\". The plan tool reports the two reworded rows because their English is the statement order \"what you think\" where the LEGO says \"what do you think\": the same words in an embedded question, answered by hand. SECOND PASS: the builder only accepts a row that holds the LEGO with its madam, and the sir/madam rule itself says the honorific goes back on the END of EVERY phrase. So every row of this basket now ends in madam on both sides (the Italian course did the same for these seeds), re-ordered where needed so the core and madam close the phrase. The plan tool still lists rows whose English is the statement order (how you feel / what you think) against the question gloss (how do you feel): the same words inside an embedded question, answered by hand; the builder passes them.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 651,
+    "known": "what do you think madam?",
+    "target": "ماذا تَظُنّينَ سَيِّدَتي؟"
+   },
+   "before": {
+    "known": "what do you think madam?",
+    "target": "ماذا تَظُنّينَ سَيِّدَتي؟",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "what do you think madam?",
+    "target": "ماذا تَظُنّينَ سَيِّدَتي؟",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0651L01B01",
+     "role": "build",
+     "before": [
+      "you think",
+      "تَظُنّينَ"
+     ],
+     "action": [
+      "I need to know what you think madam",
+      "أَحْتاجُ أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0651L01B02",
+     "role": "build",
+     "before": [
+      "what do you think",
+      "ماذا تَظُنّينَ"
+     ],
+     "action": [
+      "I want to know what you think madam",
+      "أُريدُ أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0651L01B03",
+     "role": "build",
+     "before": [
+      "what do you think now",
+      "ماذا تَظُنّينَ الآن"
+     ],
+     "action": [
+      "now what do you think madam?",
+      "الآن ماذا تَظُنّينَ سَيِّدَتي؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0651L01U01",
+     "role": "use",
+     "before": [
+      "what do you think madam?",
+      "ماذا تَظُنّينَ سَيِّدَتي؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0651L01U02",
+     "role": "use",
+     "before": [
+      "I want to know what you think",
+      "أُريدُ أَنْ أَعْرِفَ ماذا تَظُنّينَ"
+     ],
+     "action": [
+      "she wants to know what you think madam",
+      "تُريدُ أَنْ تَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0651L01U03",
+     "role": "use",
+     "before": [
+      "she asked what you think",
+      "سَأَلَتْ ماذا تَظُنّينَ"
+     ],
+     "action": [
+      "she asked what you think madam",
+      "سَأَلَتْ ماذا تَظُنّينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0651L01U04",
+     "role": "use",
+     "before": [
+      "I think you think that is good",
+      "أَظُنُّ أَنَّكِ تَظُنّينَ أَنَّ ذلِكَ جَيِّدٌ"
+     ],
+     "action": [
+      "I think I know what you think madam",
+      "أَظُنُّ أَنَّني أَعْرِفُ ماذا تَظُنّينَ سَيِّدَتي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0651L01U05",
+     "role": "use",
+     "before": [
+      "can I know what you think?",
+      "هَلْ يُمْكِنُني أَنْ أَعْرِفَ ماذا تَظُنّينَ؟"
+     ],
+     "action": [
+      "can I know what you think madam?",
+      "هَلْ يُمْكِنُني أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي؟"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0651L01U06",
+     "course_code": "ara_for_eng",
+     "seed_number": 651,
+     "lego_index": 1,
+     "known_text": "I think she wants to know what you think madam",
+     "target_text": "أَظُنُّ أَنَّها تُريدُ أَنْ تَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 8,
+     "lego_position": null,
+     "lego_count": 1,
+     "target_text_roman": "azunnu annahaa tureedu an ta'rifa maadhaa tazunneena sayyidatee"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0654L02",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: the LEGO is the whole seed, about 20 syllables; 7 of 9 rows drill \"I can help you | أَسْتَطيعُ مُساعَدَتَكَ\" or less. \"I'm not sure | لَسْتُ مُتَأَكِّداً\" is already taught at seed 10 and \"whether | إِنْ\" is the seed's other LEGO.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 654,
+    "known": "I'm not sure if I can help you, sir",
+    "target": "لَسْتُ مُتَأَكِّداً إِنْ كُنْتُ أَسْتَطيعُ مُساعَدَتَكَ سَيِّدي"
+   },
+   "before": {
+    "known": "I'm not sure if I can help you, sir",
+    "target": "لَسْتُ مُتَأَكِّداً إِنْ كُنْتُ أَسْتَطيعُ مُساعَدَتَكَ سَيِّدي",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0657L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). One build row says \"you all feel | تَشْعُرونَ\" without \"how\"; it is reworded. The other rows hold the LEGO (their English says \"how you all feel\", the same words re-ordered) and stay. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 657,
+    "known": "how do you all feel?",
+    "target": "كَيْفَ تَشْعُرونَ؟"
+   },
+   "before": {
+    "known": "how do you all feel?",
+    "target": "كَيْفَ تَشْعُرونَ؟",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "how do you all feel?",
+    "target": "كَيْفَ تَشْعُرونَ؟",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0657L01B01",
+     "role": "build",
+     "before": [
+      "you all feel",
+      "تَشْعُرونَ"
+     ],
+     "action": [
+      "how do you all feel today?",
+      "كَيْفَ تَشْعُرونَ اليَوْم؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0657L01B02",
+     "role": "build",
+     "before": [
+      "how all of you feel here",
+      "كَيْفَ تَشْعُرونَ هُنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0657L01B03",
+     "role": "build",
+     "before": [
+      "I want to know how you all feel",
+      "أُريدُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0657L01U01",
+     "role": "use",
+     "before": [
+      "how do you all feel?",
+      "كَيْفَ تَشْعُرونَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0657L01U02",
+     "role": "use",
+     "before": [
+      "I need to know how you all feel",
+      "أَحْتاجُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0657L01U03",
+     "role": "use",
+     "before": [
+      "she asked how you all feel",
+      "سَأَلَتْ كَيْفَ تَشْعُرونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0657L01U04",
+     "role": "use",
+     "before": [
+      "how do you all feel now?",
+      "كَيْفَ تَشْعُرونَ الآن؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0657L01U05",
+     "role": "use",
+     "before": [
+      "can I know how you all feel?",
+      "هَلْ يُمْكِنُني أَنْ أَعْرِفَ كَيْفَ تَشْعُرونَ؟"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0657L01U06",
+     "course_code": "ara_for_eng",
+     "seed_number": 657,
+     "lego_index": 1,
+     "known_text": "how do you all feel this morning?",
+     "target_text": "كَيْفَ تَشْعُرونَ هٰذا الصَّباح؟",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": null,
+     "lego_count": 1,
+     "target_text_roman": "kayfa tash'uroona haadhaa as-sabaah?"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0659L01",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row under the new pieces. Planning the rows here as well would plan the same basket twice. For that cut: the LEGO is the whole question and 8 of 9 rows drill only \"you all can | يُمْكِنُكُمْ\". The scan's suggestion is \"can you all | يُمْكِنُكُمْ\" + \"say that | أَنْ تَقولوا ذلِكَ\"; note \"can you all | هَلْ يُمْكِنُكُمْ جَميعاً\" is already a LEGO at seed 529, so the short piece needs a gloss that does not clash with it.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 659,
+    "known": "could you all say that?",
+    "target": "هَلْ يُمْكِنُكُمْ أَنْ تَقولوا ذلِكَ؟"
+   },
+   "before": {
+    "known": "could you all say that",
+    "target": "هَلْ يُمْكِنُكُمْ أَنْ تَقولوا ذلِكَ؟",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0661L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Two rows say تَفْعَلوا (the form after \"to\") under \"you all do | تَفْعَلونَ\"; a different verb form is a break. They are reworded to the taught form. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 661,
+    "known": "you're all doing something",
+    "target": "أَنْتُمْ تَفْعَلونَ شَيْئاً"
+   },
+   "before": {
+    "known": "you all do",
+    "target": "تَفْعَلونَ",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "you all do",
+    "target": "تَفْعَلونَ",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['you']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0661L02B01",
+     "role": "build",
+     "before": [
+      "you all do",
+      "تَفْعَلونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02B02",
+     "role": "build",
+     "before": [
+      "you all do something",
+      "تَفْعَلونَ شَيْئاً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02B03",
+     "role": "build",
+     "before": [
+      "you all are doing that",
+      "أَنْتُمْ تَفْعَلونَ ذلِكَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02U01",
+     "role": "use",
+     "before": [
+      "you're all doing something",
+      "أَنْتُمْ تَفْعَلونَ شَيْئاً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02U02",
+     "role": "use",
+     "before": [
+      "she sees what you all are doing",
+      "هِيَ تَرى ما تَفْعَلونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02U03",
+     "role": "use",
+     "before": [
+      "you all can do something for me",
+      "يُمْكِنُكُمْ أَنْ تَفْعَلوا شَيْئاً لي"
+     ],
+     "action": [
+      "you all do something for me",
+      "أَنْتُمْ تَفْعَلونَ شَيْئاً لي"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0661L02U04",
+     "role": "use",
+     "before": [
+      "I know what you all are doing",
+      "أَعْرِفُ ما تَفْعَلونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02U05",
+     "role": "use",
+     "before": [
+      "do you all want to do that?",
+      "هَلْ تُريدونَ أَنْ تَفْعَلوا ذلِكَ؟"
+     ],
+     "action": [
+      "do you all do that?",
+      "هَلْ تَفْعَلونَ ذلِكَ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0661L02U06",
+     "role": "use",
+     "before": [
+      "it's unusual what you all do",
+      "مِنَ الغَريبِ ما تَفْعَلونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0661L02U07",
+     "role": "use",
+     "before": [
+      "I like what you all do",
+      "أُحِبُّ ما تَفْعَلونَ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0661L02B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 661,
+     "lego_index": 2,
+     "known_text": "what you all do",
+     "target_text": "ما تَفْعَلونَ",
+     "phrase_role": "build",
+     "position": 11,
+     "word_count": 2,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "maa taf'aloona"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0662L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Four rows say أَنْ تَتَكَلَّموه (the form after \"to\") under \"you all speak it | تَتَكَلَّمونَهُ\", a different verb form; a fifth (U05) holds the LEGO but is not sound Arabic (أَرْجو أَنْ يُمْكِنُكُمْ تَتَكَلَّمونَهُ). All five are reworded to plain statements and questions with the taught form. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 662,
+    "known": "you all speak it",
+    "target": "أَنْتُمْ تَتَكَلَّمونَهُ"
+   },
+   "before": {
+    "known": "you all speak it",
+    "target": "تَتَكَلَّمونَهُ",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "you all speak it",
+    "target": "تَتَكَلَّمونَهُ",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0662L01B01",
+     "role": "build",
+     "before": [
+      "you all speak it",
+      "تَتَكَلَّمونَهُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0662L01B02",
+     "role": "build",
+     "before": [
+      "you all speak it well",
+      "تَتَكَلَّمونَهُ جَيِّداً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0662L01B03",
+     "role": "build",
+     "before": [
+      "can you all speak it?",
+      "هَلْ يُمْكِنُكُمْ أَنْ تَتَكَلَّموه؟"
+     ],
+     "action": [
+      "do you all speak it?",
+      "هَلْ تَتَكَلَّمونَهُ؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0662L01U01",
+     "role": "use",
+     "before": [
+      "you all speak it",
+      "أَنْتُمْ تَتَكَلَّمونَهُ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0662L01U02",
+     "role": "use",
+     "before": [
+      "do you all want to speak it?",
+      "هَلْ تُريدونَ أَنْ تَتَكَلَّموه؟"
+     ],
+     "action": [
+      "do you all speak it well?",
+      "هَلْ تَتَكَلَّمونَهُ جَيِّداً؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0662L01U03",
+     "role": "use",
+     "before": [
+      "you all can speak it very well",
+      "يُمْكِنُكُمْ أَنْ تَتَكَلَّموه جَيِّداً جِدّاً"
+     ],
+     "action": [
+      "you all speak it very well",
+      "أَنْتُمْ تَتَكَلَّمونَهُ جَيِّداً جِدّاً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0662L01U04",
+     "role": "use",
+     "before": [
+      "she asked if you all can speak it",
+      "سَأَلَتْ هَلْ يُمْكِنُكُمْ أَنْ تَتَكَلَّموه"
+     ],
+     "action": [
+      "she asked if you all speak it",
+      "سَأَلَتْ هَلْ تَتَكَلَّمونَهُ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0662L01U05",
+     "role": "use",
+     "before": [
+      "I hope you all can speak it",
+      "أَرْجو أَنْ يُمْكِنُكُمْ تَتَكَلَّمونَهُ"
+     ],
+     "action": [
+      "yes, you all speak it well",
+      "نَعَمْ، أَنْتُمْ تَتَكَلَّمونَهُ جَيِّداً"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0662L01U06",
+     "role": "use",
+     "before": [
+      "you all speak it better now",
+      "تَتَكَلَّمونَهُ أَفْضَلَ الآن"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0662L01B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 662,
+     "lego_index": 1,
+     "known_text": "you all speak it now",
+     "target_text": "تَتَكَلَّمونَهُ الآن",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 2,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "tatakallamoonahu al-aan"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0664L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form (a different verb form or case ending is a break). Five of nine rows already say the whole question هَلْ أَنْتُمْ مُسْتَعِدّونَ, so the LEGO stays. Four rows drop هَلْ and become statements (one of them a different form, تَكونوا مُسْتَعِدّينَ); they are reworded to hold the question. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; with the broken rows fixed this basket was still one short, so one row is added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 664,
+    "known": "are you all ready?",
+    "target": "هَلْ أَنْتُمْ مُسْتَعِدّونَ؟"
+   },
+   "before": {
+    "known": "are you all ready?",
+    "target": "هَلْ أَنْتُمْ مُسْتَعِدّونَ؟",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "are you all ready?",
+    "target": "هَلْ أَنْتُمْ مُسْتَعِدّونَ؟",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0664L01B01",
+     "role": "build",
+     "before": [
+      "ready",
+      "مُسْتَعِدّونَ"
+     ],
+     "action": [
+      "are you all ready today?",
+      "هَلْ أَنْتُمْ مُسْتَعِدّونَ اليَوْم؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0664L01B02",
+     "role": "build",
+     "before": [
+      "you all are ready",
+      "أَنْتُمْ مُسْتَعِدّونَ"
+     ],
+     "action": [
+      "are you all ready here?",
+      "هَلْ أَنْتُمْ مُسْتَعِدّونَ هُنا؟"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0664L01B03",
+     "role": "build",
+     "before": [
+      "are you all ready now?",
+      "هَلْ أَنْتُمْ مُسْتَعِدّونَ الآن؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0664L01U01",
+     "role": "use",
+     "before": [
+      "are you all ready?",
+      "هَلْ أَنْتُمْ مُسْتَعِدّونَ؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0664L01U02",
+     "role": "use",
+     "before": [
+      "yes, you all are ready now",
+      "نَعَمْ، أَنْتُمْ مُسْتَعِدّونَ الآن"
+     ],
+     "action": [
+      "I need to know if you all are ready",
+      "أَحْتاجُ أَنْ أَعْرِفَ هَلْ أَنْتُمْ مُسْتَعِدّونَ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0664L01U03",
+     "role": "use",
+     "before": [
+      "I want to know if you all are ready",
+      "أُريدُ أَنْ أَعْرِفَ هَلْ أَنْتُمْ مُسْتَعِدّونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0664L01U04",
+     "role": "use",
+     "before": [
+      "she asked if you all are ready",
+      "سَأَلَتْ هَلْ أَنْتُمْ مُسْتَعِدّونَ"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0664L01U05",
+     "role": "use",
+     "before": [
+      "I hope you all are ready",
+      "أَرْجو أَنْ تَكونوا مُسْتَعِدّينَ"
+     ],
+     "action": [
+      "I want to know if you all are ready now",
+      "أُريدُ أَنْ أَعْرِفَ هَلْ أَنْتُمْ مُسْتَعِدّونَ الآن"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_for_eng:S0664L01U06",
+     "course_code": "ara_for_eng",
+     "seed_number": 664,
+     "lego_index": 1,
+     "known_text": "are you all ready this morning?",
+     "target_text": "هَلْ أَنْتُمْ مُسْتَعِدّونَ هٰذا الصَّباح؟",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 5,
+     "lego_position": null,
+     "lego_count": 1,
+     "target_text_roman": "hal antum musta'iddoona haadhaa as-sabaah?"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
    },
    "extra": []
   }
  ],
  "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0102L03B01",
+   "set": {
+    "known_text": "we want to say that",
+    "target_text": "نُريدُ أَنْ نَقولَ إِنَّ",
+    "target_text_roman": "nureedu an naqoola inna"
+   },
+   "expect": {
+    "known_text": "that the matter",
+    "target_text": "إِنَّ الأَمْرَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0102L03B02",
+   "set": {
+    "known_text": "we try to say that",
+    "target_text": "نُحاوِلُ أَنْ نَقولَ إِنَّ",
+    "target_text_roman": "nuhhaawilu an naqoola inna"
+   },
+   "expect": {
+    "known_text": "we say that",
+    "target_text": "نَقولُ إِنَّ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0102L03B03",
+   "set": {
+    "known_text": "we try to say that the matter",
+    "target_text": "نُحاوِلُ أَنْ نَقولَ إِنَّ الأَمْرَ",
+    "target_text_roman": "nuhhaawilu an naqoola inna l-amra"
+   },
+   "expect": {
+    "known_text": "that the matter is like that",
+    "target_text": "إِنَّ الأَمْرَ هٰكَذا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0102L03U03",
+   "set": {
+    "known_text": "we want to say that the matter is not difficult",
+    "target_text": "نُريدُ أَنْ نَقولَ إِنَّ الأَمْرَ لَيْسَ صَعْباً",
+    "target_text_roman": "nureedu an naqoola inna l-amra laysa sa'ban"
+   },
+   "expect": {
+    "known_text": "I said that the matter is not difficult",
+    "target_text": "قُلْتُ إِنَّ الأَمْرَ لَيْسَ صَعْباً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0102L03U04",
+   "set": {
+    "known_text": "we want to say that the matter is not easy",
+    "target_text": "نُريدُ أَنْ نَقولَ إِنَّ الأَمْرَ لَيْسَ سَهْلاً",
+    "target_text_roman": "nureedu an naqoola inna l-amra laysa sahlan"
+   },
+   "expect": {
+    "known_text": "you should know that the matter is not easy",
+    "target_text": "يَجِبُ أَنْ تَعْرِفَ إِنَّ الأَمْرَ لَيْسَ سَهْلاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0102L03U05",
+   "set": {
+    "known_text": "we try to say that the language is fun",
+    "target_text": "نُحاوِلُ أَنْ نَقولَ إِنَّ اللُّغَةَ مُمْتِعَة",
+    "target_text_roman": "nuhhaawilu an naqoola inna l-lughata mumti'a"
+   },
+   "expect": {
+    "known_text": "we say that the language is fun",
+    "target_text": "نَقولُ إِنَّ اللُّغَةَ مُمْتِعَة"
+   }
+  },
   {
    "op": "phrase.update",
    "phrase_id": "ara_for_eng:S0109L02B01",
@@ -150,123 +3741,2064 @@
     "known_text": "I want to learn a new word in Arabic",
     "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ"
    }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0109L02B04",
+    "course_code": "ara_for_eng",
+    "seed_number": 109,
+    "lego_index": 2,
+    "known_text": "we need to learn new words",
+    "target_text": "نَحْتاجُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 5,
+    "lego_position": "end",
+    "lego_count": 1,
+    "target_text_roman": "nahtaaju an nata'allam kalimaatin jadeedatan"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0109L02U06",
+    "course_code": "ara_for_eng",
+    "seed_number": 109,
+    "lego_index": 2,
+    "known_text": "we hope to learn new words in Arabic",
+    "target_text": "نَأْمَلُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
+    "phrase_role": "use",
+    "position": 10,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "na'malu an nata'allam kalimaatin jadeedatan bil'arabiyyati"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0144L02B01",
+   "set": {
+    "known_text": "earlier than I should",
+    "target_text": "أَبْكَرَ مِمّا يَجِبُ",
+    "target_text_roman": "abkara mimma yajibu"
+   },
+   "expect": {
+    "known_text": "I woke up earlier",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0144L02B02",
+   "set": {
+    "known_text": "I woke up earlier than I should",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ",
+    "target_text_roman": "istayqazthu abkara mimma yajibu"
+   },
+   "expect": {
+    "known_text": "I woke up earlier today",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ اليَوْم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0144L02B03",
+   "set": {
+    "known_text": "I woke up earlier than I expected",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَتَوَقَّعُ",
+    "target_text_roman": "istayqazthu abkara mimma atawaqqa'u"
+   },
+   "expect": {
+    "known_text": "I woke up earlier this morning",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ هٰذا الصَّباح"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0144L02U03",
+   "set": {
+    "known_text": "I woke up earlier than I should and I'm sorry",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ وَأَنا آسِفٌ",
+    "target_text_roman": "istayqazthu abkara mimma yajibu wa'ana aasifun"
+   },
+   "expect": {
+    "known_text": "I woke up earlier and I'm sorry",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ وَأَنا آسِفٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0144L02U04",
+   "set": {
+    "known_text": "I woke up earlier than I expected this morning and I'm tired",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَتَوَقَّعُ هٰذا الصَّباح وَأَنا مُتْعَبٌ",
+    "target_text_roman": "istayqazthu abkara mimma atawaqqa'u haadhaa as-sabaah wa'ana mut'abun"
+   },
+   "expect": {
+    "known_text": "I woke up earlier this morning and I'm tired",
+    "target_text": "اسْتَيْقَظْتُ أَبْكَرَ هٰذا الصَّباح وَأَنا مُتْعَبٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0144L02U05",
+   "set": {
+    "known_text": "of course I woke up earlier than I should today",
+    "target_text": "طَبْعاً اسْتَيْقَظْتُ أَبْكَرَ مِمّا يَجِبُ اليَوْم",
+    "target_text_roman": "tab'an istayqazthu abkara mimma yajibu al-yawm"
+   },
+   "expect": {
+    "known_text": "of course I woke up earlier today",
+    "target_text": "طَبْعاً اسْتَيْقَظْتُ أَبْكَرَ اليَوْم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03B01",
+   "set": {
+    "known_text": "if I had known that",
+    "target_text": "لَوْ عَرَفْتُ ذٰلِك",
+    "target_text_roman": "law 'araftu dhaalika"
+   },
+   "expect": {
+    "known_text": "if that were good",
+    "target_text": "لَوْ كانَ ذٰلِك جَيِّداً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03B02",
+   "set": {
+    "known_text": "differently if I had known",
+    "target_text": "بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ",
+    "target_text_roman": "bishaklin mukhtalifin law 'araftu"
+   },
+   "expect": {
+    "known_text": "if I were ready",
+    "target_text": "لَوْ كُنْتُ مُستَعِدّاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03B03",
+   "set": {
+    "known_text": "I would have done it differently if I had known",
+    "target_text": "كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ",
+    "target_text_roman": "kuntu sa'af'aluhu bishaklin mukhtalifin law 'araftu"
+   },
+   "expect": {
+    "known_text": "I would have done it differently if I were ready",
+    "target_text": "كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ كُنْتُ مُستَعِدّاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03U01",
+   "set": {
+    "known_text": "I would have done it if I had known that",
+    "target_text": "كُنْتُ سَأَفْعَلُهُ لَوْ عَرَفْتُ ذٰلِك",
+    "target_text_roman": "kuntu sa'af'aluhu law 'araftu dhaalika"
+   },
+   "expect": {
+    "known_text": "if this had happened differently it would have been better",
+    "target_text": "لَوْ كانَ هٰذا بِشَكْلٍ مُخْتَلِفٍ كانَ سَيَكونُ أَفضَل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03U02",
+   "set": {
+    "known_text": "I think I would have done it differently if I had known",
+    "target_text": "أَعتَقِدُ أَنَّني كُنْتُ سَأَفْعَلُهُ بِشَكْلٍ مُخْتَلِفٍ لَوْ عَرَفْتُ",
+    "target_text_roman": "a'taqidu annanee kuntu sa'af'aluhu bishaklin mukhtalifin law 'araftu"
+   },
+   "expect": {
+    "known_text": "I think I would have been better if I had been more ready",
+    "target_text": "أَعتَقِدُ أَنَّني كُنْتُ سَأَكونُ أَفضَل لَوْ كُنْتُ مُستَعِدّاً أَكثَر"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03U03",
+   "set": {
+    "known_text": "I think that wouldn't have happened if I had known",
+    "target_text": "أَظُنُّ أَنَّ ذٰلِكَ لَمْ يَحْدُث لَوْ عَرَفْتُ",
+    "target_text_roman": "azunnu anna dhaalika lam yahduth law 'araftu"
+   },
+   "expect": {
+    "known_text": "I think that wouldn't have happened if I had been ready",
+    "target_text": "أَظُنُّ أَنَّ ذٰلِكَ لَمْ يَحْدُث لَوْ كُنْتُ مُستَعِدّاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03U04",
+   "set": {
+    "known_text": "I would have done it well if I had known",
+    "target_text": "كُنْتُ سَأَفْعَلُهُ جَيِّداً لَوْ عَرَفْتُ",
+    "target_text_roman": "kuntu sa'af'aluhu jayyidan law 'araftu"
+   },
+   "expect": {
+    "known_text": "I would have done it well if I had been ready",
+    "target_text": "كُنْتُ سَأَفْعَلُهُ جَيِّداً لَوْ كُنْتُ مُستَعِدّاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0152L03U05",
+   "set": {
+    "known_text": "I would have done it well if I had known that",
+    "target_text": "كُنْتُ سَأَفْعَلُهُ جَيِّداً لَوْ عَرَفْتُ ذٰلِك",
+    "target_text_roman": "kuntu sa'af'aluhu jayyidan law 'araftu dhaalika"
+   },
+   "expect": {
+    "known_text": "if that were different it would be good",
+    "target_text": "لَوْ كانَ ذٰلِك بِشَكْلٍ مُخْتَلِفٍ سَيَكونُ جَيِّداً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01B01",
+   "set": {
+    "known_text": "nobody was here",
+    "target_text": "لَمْ يَكُنْ أَحَدٌ هُنا",
+    "target_text_roman": "lam yakun ahhadun hunaa"
+   },
+   "expect": {
+    "known_text": "anyone",
+    "target_text": "أحد"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01B02",
+   "set": {
+    "known_text": "nobody was ready",
+    "target_text": "لَمْ يَكُنْ أَحَدٌ مُسْتَعِدّاً",
+    "target_text_roman": "lam yakun ahhadun musta'iddan"
+   },
+   "expect": {
+    "known_text": "nobody knows",
+    "target_text": "لم يعرف أحد"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01B03",
+   "set": {
+    "known_text": "nobody was here yesterday",
+    "target_text": "لَمْ يَكُنْ أَحَدٌ هُنا أَمْس",
+    "target_text_roman": "lam yakun ahhadun hunaa ams"
+   },
+   "expect": {
+    "known_text": "was anyone here?",
+    "target_text": "هل كان أحد هنا؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01U01",
+   "set": {
+    "known_text": "nobody was sure",
+    "target_text": "لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً",
+    "target_text_roman": "lam yakun ahhadun mutaakkidan"
+   },
+   "expect": {
+    "known_text": "is anyone here?",
+    "target_text": "هل هناك أحد هنا؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01U02",
+   "set": {
+    "known_text": "nobody was ready yesterday",
+    "target_text": "لَمْ يَكُنْ أَحَدٌ مُسْتَعِدّاً أَمْس",
+    "target_text_roman": "lam yakun ahhadun musta'iddan ams"
+   },
+   "expect": {
+    "known_text": "nobody knows about this",
+    "target_text": "لم يعرف أحد عن هٰذا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01U03",
+   "set": {
+    "known_text": "I think that nobody was here",
+    "target_text": "أَظُنُّ أَنَّهُ لَمْ يَكُنْ أَحَدٌ هُنا",
+    "target_text_roman": "azunnu annahu lam yakun ahhadun hunaa"
+   },
+   "expect": {
+    "known_text": "does anyone know what is happening?",
+    "target_text": "هل يعرف أحد ما يحدث؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01U04",
+   "set": {
+    "known_text": "I think that nobody was ready",
+    "target_text": "أَظُنُّ أَنَّهُ لَمْ يَكُنْ أَحَدٌ مُسْتَعِدّاً",
+    "target_text_roman": "azunnu annahu lam yakun ahhadun musta'iddan"
+   },
+   "expect": {
+    "known_text": "nobody was at the office",
+    "target_text": "لم يكن أحد في المكتب"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01U05",
+   "set": {
+    "known_text": "nobody was sure yesterday",
+    "target_text": "لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً أَمْس",
+    "target_text_roman": "lam yakun ahhadun mutaakkidan ams"
+   },
+   "expect": {
+    "known_text": "does anyone know about the council?",
+    "target_text": "هل يعرف أحد عن المجلس؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0202L01U06",
+   "set": {
+    "known_text": "I think that nobody was sure",
+    "target_text": "أَظُنُّ أَنَّهُ لَمْ يَكُنْ أَحَدٌ مُتَأَكِّداً",
+    "target_text_roman": "azunnu annahu lam yakun ahhadun mutaakkidan"
+   },
+   "expect": {
+    "known_text": "nobody knew what was going to happen",
+    "target_text": "لم يعرف أحد ما كان سيحدث"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0410L01",
+   "set": {
+    "target_text": "مَعَ بَعْضِهِمْ",
+    "type": "M",
+    "components": [
+     {
+      "known": "with",
+      "target": "مَعَ"
+     },
+     {
+      "known": "each other",
+      "target": "بَعْضِهِمْ"
+     }
+    ],
+    "target_text_roman": "ma'a ba'dihim"
+   },
+   "expect": {
+    "known_text": "with each other",
+    "target_text": "بَعْضِهِمْ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0410L01B01",
+   "set": {
+    "known_text": "that they are with each other",
+    "target_text": "أَنَّهُمْ مَعَ بَعْضِهِمْ",
+    "target_text_roman": "annahum ma'a ba'dihim"
+   },
+   "expect": {
+    "known_text": "each other",
+    "target_text": "بَعْضِهِمْ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0410L01U02",
+   "set": {
+    "known_text": "she was right that they are with each other",
+    "target_text": "كانَتْ عَلى حَقٍّ أَنَّهُمْ مَعَ بَعْضِهِمْ",
+    "target_text_roman": "kaanat 'alaa hhaqqin annahum ma'a ba'dihim"
+   },
+   "expect": {
+    "known_text": "she was right that they should be with each other",
+    "target_text": "كانَتْ عَلى حَقٍّ أَنَّهُ يَجِبُ أَنْ يَكونوا مَعَ بَعْضِهِمْ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0410L01U03",
+   "set": {
+    "known_text": "I think they are with each other",
+    "target_text": "أَظُنُّ أَنَّهُمْ مَعَ بَعْضِهِمْ",
+    "target_text_roman": "azunnu annahum ma'a ba'dihim"
+   },
+   "expect": {
+    "known_text": "I think we should go with each other",
+    "target_text": "أَظُنُّ أَنَّنا يَجِبُ أَنْ نَذْهَبَ مَعَ بَعْضِنا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0410L01U04",
+   "set": {
+    "known_text": "I know they are with each other",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مَعَ بَعْضِهِمْ",
+    "target_text_roman": "a'rifu annahum ma'a ba'dihim"
+   },
+   "expect": {
+    "known_text": "I want us to stay together",
+    "target_text": "أُريدُ أَنْ نَبْقى مَعَ بَعْضِنا"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0410L01U05",
+    "course_code": "ara_for_eng",
+    "seed_number": 410,
+    "lego_index": 1,
+    "known_text": "she told me she thinks they are with each other",
+    "target_text": "قالَتْ لي إِنَّها تَظُنُّ أَنَّهُمْ مَعَ بَعْضِهِمْ",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 7,
+    "lego_position": "end",
+    "lego_count": 1,
+    "target_text_roman": "qaalat lee innahaa tazunnu annahum ma'a ba'dihim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01B01",
+   "set": {
+    "known_text": "they want everybody's time",
+    "target_text": "يُريدونَ وَقْتَ الجَميعِ",
+    "target_text_roman": "yureedoona waqta al-jamee'i"
+   },
+   "expect": {
+    "known_text": "everybody",
+    "target_text": "الجَميعِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01B03",
+   "set": {
+    "known_text": "they need everybody's time",
+    "target_text": "يَحْتاجونَ وَقْتَ الجَميعِ",
+    "target_text_roman": "yahtaajoona waqta al-jamee'i"
+   },
+   "expect": {
+    "known_text": "they want to serve everybody",
+    "target_text": "يُريدونَ أَنْ يَخْدِموا الجَميعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01U01",
+   "set": {
+    "known_text": "do they want everybody's time?",
+    "target_text": "هَلْ يُريدونَ وَقْتَ الجَميعِ؟",
+    "target_text_roman": "hal yureedoona waqta al-jamee'i?"
+   },
+   "expect": {
+    "known_text": "they know everybody",
+    "target_text": "يَعْرِفونَ الجَميعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01U02",
+   "set": {
+    "known_text": "do they need everybody's time?",
+    "target_text": "هَلْ يَحْتاجونَ وَقْتَ الجَميعِ؟",
+    "target_text_roman": "hal yahtaajoona waqta al-jamee'i?"
+   },
+   "expect": {
+    "known_text": "do they know everybody?",
+    "target_text": "هَلْ يَعْرِفونَ الجَميعَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01U03",
+   "set": {
+    "known_text": "they don't want everybody's time",
+    "target_text": "لا يُريدونَ وَقْتَ الجَميعِ",
+    "target_text_roman": "laa yureedoona waqta al-jamee'i"
+   },
+   "expect": {
+    "known_text": "they want to lead everybody",
+    "target_text": "يُريدونَ أَنْ يَقودوا الجَميعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01U04",
+   "set": {
+    "known_text": "they say they want everybody's time",
+    "target_text": "يَقولونَ إِنَّهُمْ يُريدونَ وَقْتَ الجَميعِ",
+    "target_text_roman": "yaqooloona innahum yureedoona waqta al-jamee'i"
+   },
+   "expect": {
+    "known_text": "they say they know everybody",
+    "target_text": "يَقولونَ إِنَّهُمْ يَعْرِفونَ الجَميعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0424L01U05",
+   "set": {
+    "known_text": "they say they need everybody's time",
+    "target_text": "يَقولونَ إِنَّهُمْ يَحْتاجونَ وَقْتَ الجَميعِ",
+    "target_text_roman": "yaqooloona innahum yahtaajoona waqta al-jamee'i"
+   },
+   "expect": {
+    "known_text": "they need to serve everybody",
+    "target_text": "يَحْتاجونَ أَنْ يَخْدِموا الجَميعَ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0424L01B04",
+    "course_code": "ara_for_eng",
+    "seed_number": 424,
+    "lego_index": 1,
+    "known_text": "they don't need everybody's time",
+    "target_text": "لا يَحْتاجونَ وَقْتَ الجَميعِ",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "end",
+    "lego_count": 1,
+    "target_text_roman": "laa yahtaajoona waqta al-jamee'i"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01B01",
+   "set": {
+    "known_text": "they said what they wanted",
+    "target_text": "قالوا ما أَرادوا",
+    "target_text_roman": "qaaloo maa araadoo"
+   },
+   "expect": {
+    "known_text": "what",
+    "target_text": "ما"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01B02",
+   "set": {
+    "known_text": "she knows what they wanted",
+    "target_text": "تَعْرِفُ ما أَرادوا",
+    "target_text_roman": "ta'rifu maa araadoo"
+   },
+   "expect": {
+    "known_text": "what they said",
+    "target_text": "ما قالوا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01B03",
+   "set": {
+    "known_text": "she asked what they wanted",
+    "target_text": "سَأَلَتْ ما أَرادوا",
+    "target_text_roman": "sa'alat maa araadoo"
+   },
+   "expect": {
+    "known_text": "what they know",
+    "target_text": "ما يَعْرِفونَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01U01",
+   "set": {
+    "known_text": "did they say what they wanted?",
+    "target_text": "هَلْ قالوا ما أَرادوا؟",
+    "target_text_roman": "hal qaaloo maa araadoo?"
+   },
+   "expect": {
+    "known_text": "what did they say?",
+    "target_text": "ما الَّذي قالوهُ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01U02",
+   "set": {
+    "known_text": "she asked what they wanted yesterday",
+    "target_text": "سَأَلَتْ ما أَرادوا أَمْس",
+    "target_text_roman": "sa'alat maa araadoo ams"
+   },
+   "expect": {
+    "known_text": "she asked what they know",
+    "target_text": "سَأَلَتْ ما يَعْرِفونَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01U03",
+   "set": {
+    "known_text": "I know what they wanted",
+    "target_text": "أَعْرِفُ ما أَرادوا",
+    "target_text_roman": "a'rifu maa araadoo"
+   },
+   "expect": {
+    "known_text": "she knows what they want",
+    "target_text": "تَعْرِفُ ما يُريدونَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01U04",
+   "set": {
+    "known_text": "why ask what they wanted?",
+    "target_text": "لِماذا نَسْأَلُ ما أَرادوا؟",
+    "target_text_roman": "limaadhaa nas'alu maa araadoo?"
+   },
+   "expect": {
+    "known_text": "why ask what they want?",
+    "target_text": "لِماذا نَسْأَلُ ما يُريدونَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0451L01U05",
+   "set": {
+    "known_text": "I think that she knows what they wanted",
+    "target_text": "أَظُنُّ أَنَّها تَعْرِفُ ما أَرادوا",
+    "target_text_roman": "azunnu annahaa ta'rifu maa araadoo"
+   },
+   "expect": {
+    "known_text": "she wonders what they think",
+    "target_text": "تَسْأَلُ ما يَظُنّونَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0462L02U02",
+   "set": {
+    "known_text": "she said he fought in Italy",
+    "target_text": "قالَتْ إِنَّهُ حارَبَ في إِيطاليا",
+    "target_text_roman": "qaalat innahu hhaaraba fee eetaalyaa"
+   },
+   "expect": {
+    "known_text": "she said they fought in Italy",
+    "target_text": "قالَتْ إِنَّهُمْ حارَبوا في إِيطاليا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0465L01B04",
+   "set": {
+    "known_text": "I told her next time",
+    "target_text": "قُلْتُ لَها في المَرَّةِ القادِمَةِ",
+    "target_text_roman": "qultu lahaa fee al-marrati al-qaadimati"
+   },
+   "expect": {
+    "known_text": "I told her about next time",
+    "target_text": "قُلْتُ لَها عَنِ المَرَّةِ القادِمَةِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0470L02U02",
+   "set": {
+    "known_text": "she asked how high you want to climb",
+    "target_text": "سَأَلَتْ إِلى أَيِّ ارْتِفاعٍ تُريدُ أَنْ تَتَسَلَّقَ",
+    "target_text_roman": "sa'alat ilaa ayyi irtifaa'in tureedu an tatasallaqa"
+   },
+   "expect": {
+    "known_text": "she asked how high he wants to climb",
+    "target_text": "سَأَلَتْ إِلى أَيِّ ارْتِفاعٍ يُريدُ أَنْ يَتَسَلَّقَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0499L02U05",
+   "set": {
+    "known_text": "we need to open the door inside",
+    "target_text": "نَحْتاجُ أَنْ نَفْتَحَ البابَ في الدَّاخِلِ",
+    "target_text_roman": "nahtaaju an naftahha al-baaba fee ad-daakhili"
+   },
+   "expect": {
+    "known_text": "he needs to open the door inside",
+    "target_text": "يَحْتاجُ أَنْ يَفْتَحَ البابَ في الدَّاخِلِ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0499L02B04",
+    "course_code": "ara_for_eng",
+    "seed_number": 499,
+    "lego_index": 2,
+    "known_text": "we want to open the door",
+    "target_text": "نُريدُ أَنْ نَفْتَحَ البابَ",
+    "phrase_role": "build",
+    "position": 11,
+    "word_count": 4,
+    "lego_position": "end",
+    "lego_count": 1,
+    "target_text_roman": "nureedu an naftahha al-baaba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0595L01U04",
+   "set": {
+    "known_text": "do I need to lie down now?",
+    "target_text": "هَلْ أَحْتاجُ أَنْ أَسْتَلْقِيَ الآنَ؟",
+    "target_text_roman": "hal ahtaaju an astalqiya al-aana?"
+   },
+   "expect": {
+    "known_text": "do you need to lie down now?",
+    "target_text": "هَلْ تَحْتاجُ أَنْ تَسْتَلْقِيَ الآنَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0570L02U01",
+   "set": {
+    "known_text": "I know you are willing to pay for it",
+    "target_text": "أَعْرِفُ أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "target_text_roman": "a'rifu annaka musta'iddun an tadfa'a"
+   },
+   "expect": {
+    "known_text": "I know he is willing to pay for it",
+    "target_text": "أَعْرِفُ أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0570L02U02",
+   "set": {
+    "known_text": "I'm afraid you're willing to pay for it",
+    "target_text": "أَخْشى أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "target_text_roman": "akhshaa annaka musta'iddun an tadfa'a"
+   },
+   "expect": {
+    "known_text": "I'm afraid he's willing to pay for it",
+    "target_text": "أَخْشى أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0570L02U03",
+   "set": {
+    "known_text": "I suppose you're willing to pay for it",
+    "target_text": "أَظُنُّ أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "target_text_roman": "azunnu annaka musta'iddun an tadfa'a"
+   },
+   "expect": {
+    "known_text": "I suppose he's willing to pay for it",
+    "target_text": "أَظُنُّ أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0570L02U05",
+   "set": {
+    "known_text": "I don't care that you're willing to pay for it",
+    "target_text": "لا يَهُمُّني أَنَّكَ مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "target_text_roman": "laa yahummunee annaka musta'iddun an tadfa'a"
+   },
+   "expect": {
+    "known_text": "I don't care that he's willing to pay for it",
+    "target_text": "لا يَهُمُّني أَنَّهُ مُسْتَعِدٌّ أَنْ يَدْفَعَ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0570L02B05",
+    "course_code": "ara_for_eng",
+    "seed_number": 570,
+    "lego_index": 2,
+    "known_text": "you are willing to pay for it",
+    "target_text": "أَنْتَ مُسْتَعِدٌّ أَنْ تَدْفَعَ",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "anta musta'iddun an tadfa'a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0619L04B01",
+   "set": {
+    "known_text": "we saw each other today",
+    "target_text": "رَأَيْنا بَعْضَنا اليَوْم",
+    "target_text_roman": "ra'aynaa ba'danaa al-yawm"
+   },
+   "expect": {
+    "known_text": "each other",
+    "target_text": "بَعْضَنا"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0619L04B04",
+    "course_code": "ara_for_eng",
+    "seed_number": 619,
+    "lego_index": 4,
+    "known_text": "I think we saw each other",
+    "target_text": "أَظُنُّ أَنَّنا رَأَيْنا بَعْضَنا",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "end",
+    "lego_count": 1,
+    "target_text_roman": "azunnu annanaa ra'aynaa ba'danaa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01B01",
+   "set": {
+    "known_text": "is your coffee ready?",
+    "target_text": "هَلْ قَهْوَتُكَ جاهِزَةٌ؟",
+    "target_text_roman": "hal qahwatuka jaahizatun?"
+   },
+   "expect": {
+    "known_text": "ready",
+    "target_text": "جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01B02",
+   "set": {
+    "known_text": "your coffee is ready now",
+    "target_text": "قَهْوَتُكَ جاهِزَةٌ الآن",
+    "target_text_roman": "qahwatuka jaahizatun al-aan"
+   },
+   "expect": {
+    "known_text": "it's ready",
+    "target_text": "إِنَّها جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01B03",
+   "set": {
+    "known_text": "yes, your coffee is ready",
+    "target_text": "نَعَمْ، قَهْوَتُكَ جاهِزَةٌ",
+    "target_text_roman": "na'am qahwatuka jaahizatun"
+   },
+   "expect": {
+    "known_text": "she said it's not ready",
+    "target_text": "قالَتْ إِنَّها لَيْسَتْ جاهِزَةً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U01",
+   "set": {
+    "known_text": "your coffee is ready today",
+    "target_text": "قَهْوَتُكَ جاهِزَةٌ اليَوْم",
+    "target_text_roman": "qahwatuka jaahizatun al-yawm"
+   },
+   "expect": {
+    "known_text": "she said it's ready",
+    "target_text": "قالَتْ إِنَّها جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U02",
+   "set": {
+    "known_text": "is your coffee ready now?",
+    "target_text": "هَلْ قَهْوَتُكَ جاهِزَةٌ الآن؟",
+    "target_text_roman": "hal qahwatuka jaahizatun al-aan?"
+   },
+   "expect": {
+    "known_text": "he said it's not ready",
+    "target_text": "قالَ إِنَّها لَيْسَتْ جاهِزَةً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U03",
+   "set": {
+    "known_text": "your coffee is ready here",
+    "target_text": "قَهْوَتُكَ جاهِزَةٌ هُنا",
+    "target_text_roman": "qahwatuka jaahizatun hunaa"
+   },
+   "expect": {
+    "known_text": "I think it's ready",
+    "target_text": "أَظُنُّ أَنَّها جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U04",
+   "set": {
+    "known_text": "she asked if your coffee is ready",
+    "target_text": "سَأَلَتْ هَلْ قَهْوَتُكَ جاهِزَةٌ",
+    "target_text_roman": "sa'alat hal qahwatuka jaahizatun"
+   },
+   "expect": {
+    "known_text": "do you know if it's ready?",
+    "target_text": "هَلْ تَعْرِفُ إِنْ كانَتْ جاهِزَةً؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U05",
+   "set": {
+    "known_text": "yes, your coffee is ready now",
+    "target_text": "نَعَمْ، قَهْوَتُكَ جاهِزَةٌ الآن",
+    "target_text_roman": "na'am qahwatuka jaahizatun al-aan"
+   },
+   "expect": {
+    "known_text": "I said it was ready",
+    "target_text": "قُلْتُ إِنَّها جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01B01",
+   "set": {
+    "known_text": "can I have something?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى شَيْءٍ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa shay'in?"
+   },
+   "expect": {
+    "known_text": "can I",
+    "target_text": "يُمْكِنُني"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01B02",
+   "set": {
+    "known_text": "can I have red wine?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى نَبيذٍ أَحْمَرَ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa nabeedhin ahmara?"
+   },
+   "expect": {
+    "known_text": "is it possible for me",
+    "target_text": "يُمْكِنُني أَنْ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01B03",
+   "set": {
+    "known_text": "can I have a bottle of red wine?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى زُجاجَةِ نَبيذٍ أَحْمَرَ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa zujaajati nabeedhin ahmara?"
+   },
+   "expect": {
+    "known_text": "can I speak",
+    "target_text": "يُمْكِنُني أَنْ أَتَكَلَّمَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01U01",
+   "set": {
+    "known_text": "can I have something here?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى شَيْءٍ هُنا؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa shay'in hunaa?"
+   },
+   "expect": {
+    "known_text": "can I speak Arabic?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَتَكَلَّمَ العَرَبِيَّةَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01U02",
+   "set": {
+    "known_text": "can I have red wine tonight?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى نَبيذٍ أَحْمَرَ اللَّيْلَةَ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa nabeedhin ahmara al-laylata?"
+   },
+   "expect": {
+    "known_text": "can I try to speak?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أُحاوِلَ أَنْ أَتَكَلَّمَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01U03",
+   "set": {
+    "known_text": "can I have a bottle of red wine please?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى زُجاجَةِ نَبيذٍ أَحْمَرَ مِنْ فَضْلِكَ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa zujaajati nabeedhin ahmara min fadlika?"
+   },
+   "expect": {
+    "known_text": "can I learn something?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَتَعَلَّمَ شَيْئاً؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01U04",
+   "set": {
+    "known_text": "can I have a table for four please?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى طاوِلَةٍ لِأَرْبَعَةٍ مِنْ فَضْلِكَ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa taawilatin li'arba'atin min fadlika?"
+   },
+   "expect": {
+    "known_text": "she said can I try?",
+    "target_text": "قالَتْ هَلْ يُمْكِنُني أَنْ أُحاوِلَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01U05",
+   "set": {
+    "known_text": "can I have wine tonight?",
+    "target_text": "هَلْ يُمْكِنُني الحُصولُ عَلى نَبيذٍ اللَّيْلَةَ؟",
+    "target_text_roman": "hal yumkinunee al-hhusoolu 'alaa nabeedhin al-laylata?"
+   },
+   "expect": {
+    "known_text": "can I understand what you're saying?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَفْهَمَ ما تَقولُهُ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01B01",
+   "set": {
+    "known_text": "I know how you feel madam",
+    "target_text": "أَعْرِفُ كَيْفَ تَشْعُرينَ سَيِّدَتي",
+    "target_text_roman": "a'rifu kayfa tash'ureena sayyidatee"
+   },
+   "expect": {
+    "known_text": "you feel",
+    "target_text": "تَشْعُرينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01B02",
+   "set": {
+    "known_text": "I want to know how you feel madam",
+    "target_text": "أُريدُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي",
+    "target_text_roman": "ureedu an a'rifa kayfa tash'ureena sayyidatee"
+   },
+   "expect": {
+    "known_text": "how do you feel",
+    "target_text": "كَيْفَ تَشْعُرينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01B03",
+   "set": {
+    "known_text": "I need to know how you feel madam",
+    "target_text": "أَحْتاجُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي",
+    "target_text_roman": "ahtaaju an a'rifa kayfa tash'ureena sayyidatee"
+   },
+   "expect": {
+    "known_text": "I need to know how you feel",
+    "target_text": "أَحْتاجُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01U01",
+   "set": {
+    "known_text": "now how do you feel madam?",
+    "target_text": "الآن كَيْفَ تَشْعُرينَ سَيِّدَتي؟",
+    "target_text_roman": "al-aan kayfa tash'ureena sayyidatee?"
+   },
+   "expect": {
+    "known_text": "how do you feel now?",
+    "target_text": "كَيْفَ تَشْعُرينَ الآن؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01U02",
+   "set": {
+    "known_text": "she asked how do you feel madam",
+    "target_text": "سَأَلَتْ كَيْفَ تَشْعُرينَ سَيِّدَتي",
+    "target_text_roman": "sa'alat kayfa tash'ureena sayyidatee"
+   },
+   "expect": {
+    "known_text": "she asked how do you feel",
+    "target_text": "سَأَلَتْ كَيْفَ تَشْعُرينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01U03",
+   "set": {
+    "known_text": "I think I know how you feel madam",
+    "target_text": "أَظُنُّ أَنَّني أَعْرِفُ كَيْفَ تَشْعُرينَ سَيِّدَتي",
+    "target_text_roman": "azunnu annanee a'rifu kayfa tash'ureena sayyidatee"
+   },
+   "expect": {
+    "known_text": "I want to know how you feel",
+    "target_text": "أُريدُ أَنْ أَعْرِفَ كَيْفَ تَشْعُرينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01U04",
+   "set": {
+    "known_text": "today how do you feel madam?",
+    "target_text": "اليَوْم كَيْفَ تَشْعُرينَ سَيِّدَتي؟",
+    "target_text_roman": "al-yawm kayfa tash'ureena sayyidatee?"
+   },
+   "expect": {
+    "known_text": "I think you feel good",
+    "target_text": "أَظُنُّ أَنَّكِ تَشْعُرينَ بِخَيْرٍ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0642L01U05",
+   "set": {
+    "known_text": "she said she wants to know how you feel madam",
+    "target_text": "قالَتْ إِنَّها تُريدُ أَنْ تَعْرِفَ كَيْفَ تَشْعُرينَ سَيِّدَتي",
+    "target_text_roman": "qaalat innahaa tureedu an ta'rifa kayfa tash'ureena sayyidatee"
+   },
+   "expect": {
+    "known_text": "she said she wants to know how you feel",
+    "target_text": "قالَتْ إِنَّها تُريدُ أَنْ تَعْرِفَ كَيْفَ تَشْعُرينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01B01",
+   "set": {
+    "known_text": "I heard what you said madam",
+    "target_text": "سَمِعْتُ ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "sami'tu maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "you said",
+    "target_text": "قُلْتِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01B02",
+   "set": {
+    "known_text": "I know what you said madam",
+    "target_text": "أَعْرِفُ ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "a'rifu maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "what you said",
+    "target_text": "ما قُلْتِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01B03",
+   "set": {
+    "known_text": "I heard just now what you said madam",
+    "target_text": "سَمِعْتُ الآن ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "sami'tu al-aan maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "I heard what you said just now",
+    "target_text": "سَمِعْتُ ما قُلْتِ الآن"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01U02",
+   "set": {
+    "known_text": "I think I heard what you said madam",
+    "target_text": "أَظُنُّ أَنَّني سَمِعْتُ ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "azunnu annanee sami'tu maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "I heard what you said",
+    "target_text": "سَمِعْتُ ما قُلْتِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01U03",
+   "set": {
+    "known_text": "I think I know what you said madam",
+    "target_text": "أَظُنُّ أَنَّني أَعْرِفُ ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "azunnu annanee a'rifu maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "what did you say madam?",
+    "target_text": "ماذا قُلْتِ سَيِّدَتي؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01U04",
+   "set": {
+    "known_text": "I think I agree with what you said madam",
+    "target_text": "أَظُنُّ أَنَّني أَتَّفِقُ مَعَ ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "azunnu annanee aat'tafiqu ma'a maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "I think what you said is good",
+    "target_text": "أَظُنُّ أَنَّ ما قُلْتِ جَيِّدٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0648L01U05",
+   "set": {
+    "known_text": "she said she heard what you said madam",
+    "target_text": "قالَتْ إِنَّها سَمِعَتْ ما قُلْتِ سَيِّدَتي",
+    "target_text_roman": "qaalat innahaa sami'at maa qulti sayyidatee"
+   },
+   "expect": {
+    "known_text": "she said she heard what you said",
+    "target_text": "قالَتْ إِنَّها سَمِعَتْ ما قُلْتِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01B01",
+   "set": {
+    "known_text": "I need to know what you think madam",
+    "target_text": "أَحْتاجُ أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي",
+    "target_text_roman": "ahtaaju an a'rifa maadhaa tazunneena sayyidatee"
+   },
+   "expect": {
+    "known_text": "you think",
+    "target_text": "تَظُنّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01B02",
+   "set": {
+    "known_text": "I want to know what you think madam",
+    "target_text": "أُريدُ أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي",
+    "target_text_roman": "ureedu an a'rifa maadhaa tazunneena sayyidatee"
+   },
+   "expect": {
+    "known_text": "what do you think",
+    "target_text": "ماذا تَظُنّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01B03",
+   "set": {
+    "known_text": "now what do you think madam?",
+    "target_text": "الآن ماذا تَظُنّينَ سَيِّدَتي؟",
+    "target_text_roman": "al-aan maadhaa tazunneena sayyidatee?"
+   },
+   "expect": {
+    "known_text": "what do you think now",
+    "target_text": "ماذا تَظُنّينَ الآن"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01U02",
+   "set": {
+    "known_text": "she wants to know what you think madam",
+    "target_text": "تُريدُ أَنْ تَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي",
+    "target_text_roman": "tureedu an ta'rifa maadhaa tazunneena sayyidatee"
+   },
+   "expect": {
+    "known_text": "I want to know what you think",
+    "target_text": "أُريدُ أَنْ أَعْرِفَ ماذا تَظُنّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01U03",
+   "set": {
+    "known_text": "she asked what you think madam",
+    "target_text": "سَأَلَتْ ماذا تَظُنّينَ سَيِّدَتي",
+    "target_text_roman": "sa'alat maadhaa tazunneena sayyidatee"
+   },
+   "expect": {
+    "known_text": "she asked what you think",
+    "target_text": "سَأَلَتْ ماذا تَظُنّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01U04",
+   "set": {
+    "known_text": "I think I know what you think madam",
+    "target_text": "أَظُنُّ أَنَّني أَعْرِفُ ماذا تَظُنّينَ سَيِّدَتي",
+    "target_text_roman": "azunnu annanee a'rifu maadhaa tazunneena sayyidatee"
+   },
+   "expect": {
+    "known_text": "I think you think that is good",
+    "target_text": "أَظُنُّ أَنَّكِ تَظُنّينَ أَنَّ ذلِكَ جَيِّدٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0651L01U05",
+   "set": {
+    "known_text": "can I know what you think madam?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي؟",
+    "target_text_roman": "hal yumkinunee an a'rifa maadhaa tazunneena sayyidatee?"
+   },
+   "expect": {
+    "known_text": "can I know what you think?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَعْرِفَ ماذا تَظُنّينَ؟"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0651L01U06",
+    "course_code": "ara_for_eng",
+    "seed_number": 651,
+    "lego_index": 1,
+    "known_text": "I think she wants to know what you think madam",
+    "target_text": "أَظُنُّ أَنَّها تُريدُ أَنْ تَعْرِفَ ماذا تَظُنّينَ سَيِّدَتي",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 8,
+    "lego_position": null,
+    "lego_count": 1,
+    "target_text_roman": "azunnu annahaa tureedu an ta'rifa maadhaa tazunneena sayyidatee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0657L01B01",
+   "set": {
+    "known_text": "how do you all feel today?",
+    "target_text": "كَيْفَ تَشْعُرونَ اليَوْم؟",
+    "target_text_roman": "kayfa tash'uroona al-yawm?"
+   },
+   "expect": {
+    "known_text": "you all feel",
+    "target_text": "تَشْعُرونَ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0657L01U06",
+    "course_code": "ara_for_eng",
+    "seed_number": 657,
+    "lego_index": 1,
+    "known_text": "how do you all feel this morning?",
+    "target_text": "كَيْفَ تَشْعُرونَ هٰذا الصَّباح؟",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": null,
+    "lego_count": 1,
+    "target_text_roman": "kayfa tash'uroona haadhaa as-sabaah?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0661L02U03",
+   "set": {
+    "known_text": "you all do something for me",
+    "target_text": "أَنْتُمْ تَفْعَلونَ شَيْئاً لي",
+    "target_text_roman": "antum taf'aloona shay'an lee"
+   },
+   "expect": {
+    "known_text": "you all can do something for me",
+    "target_text": "يُمْكِنُكُمْ أَنْ تَفْعَلوا شَيْئاً لي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0661L02U05",
+   "set": {
+    "known_text": "do you all do that?",
+    "target_text": "هَلْ تَفْعَلونَ ذلِكَ؟",
+    "target_text_roman": "hal taf'aloona dhaalika?"
+   },
+   "expect": {
+    "known_text": "do you all want to do that?",
+    "target_text": "هَلْ تُريدونَ أَنْ تَفْعَلوا ذلِكَ؟"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0661L02B04",
+    "course_code": "ara_for_eng",
+    "seed_number": 661,
+    "lego_index": 2,
+    "known_text": "what you all do",
+    "target_text": "ما تَفْعَلونَ",
+    "phrase_role": "build",
+    "position": 11,
+    "word_count": 2,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "maa taf'aloona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0662L01B03",
+   "set": {
+    "known_text": "do you all speak it?",
+    "target_text": "هَلْ تَتَكَلَّمونَهُ؟",
+    "target_text_roman": "hal tatakallamoonahu?"
+   },
+   "expect": {
+    "known_text": "can you all speak it?",
+    "target_text": "هَلْ يُمْكِنُكُمْ أَنْ تَتَكَلَّموه؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0662L01U02",
+   "set": {
+    "known_text": "do you all speak it well?",
+    "target_text": "هَلْ تَتَكَلَّمونَهُ جَيِّداً؟",
+    "target_text_roman": "hal tatakallamoonahu jayyidan?"
+   },
+   "expect": {
+    "known_text": "do you all want to speak it?",
+    "target_text": "هَلْ تُريدونَ أَنْ تَتَكَلَّموه؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0662L01U03",
+   "set": {
+    "known_text": "you all speak it very well",
+    "target_text": "أَنْتُمْ تَتَكَلَّمونَهُ جَيِّداً جِدّاً",
+    "target_text_roman": "antum tatakallamoonahu jayyidan jiddan"
+   },
+   "expect": {
+    "known_text": "you all can speak it very well",
+    "target_text": "يُمْكِنُكُمْ أَنْ تَتَكَلَّموه جَيِّداً جِدّاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0662L01U04",
+   "set": {
+    "known_text": "she asked if you all speak it",
+    "target_text": "سَأَلَتْ هَلْ تَتَكَلَّمونَهُ",
+    "target_text_roman": "sa'alat hal tatakallamoonahu"
+   },
+   "expect": {
+    "known_text": "she asked if you all can speak it",
+    "target_text": "سَأَلَتْ هَلْ يُمْكِنُكُمْ أَنْ تَتَكَلَّموه"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0662L01U05",
+   "set": {
+    "known_text": "yes, you all speak it well",
+    "target_text": "نَعَمْ، أَنْتُمْ تَتَكَلَّمونَهُ جَيِّداً",
+    "target_text_roman": "na'am antum tatakallamoonahu jayyidan"
+   },
+   "expect": {
+    "known_text": "I hope you all can speak it",
+    "target_text": "أَرْجو أَنْ يُمْكِنُكُمْ تَتَكَلَّمونَهُ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0662L01B04",
+    "course_code": "ara_for_eng",
+    "seed_number": 662,
+    "lego_index": 1,
+    "known_text": "you all speak it now",
+    "target_text": "تَتَكَلَّمونَهُ الآن",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 2,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "tatakallamoonahu al-aan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0664L01B01",
+   "set": {
+    "known_text": "are you all ready today?",
+    "target_text": "هَلْ أَنْتُمْ مُسْتَعِدّونَ اليَوْم؟",
+    "target_text_roman": "hal antum musta'iddoona al-yawm?"
+   },
+   "expect": {
+    "known_text": "ready",
+    "target_text": "مُسْتَعِدّونَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0664L01B02",
+   "set": {
+    "known_text": "are you all ready here?",
+    "target_text": "هَلْ أَنْتُمْ مُسْتَعِدّونَ هُنا؟",
+    "target_text_roman": "hal antum musta'iddoona hunaa?"
+   },
+   "expect": {
+    "known_text": "you all are ready",
+    "target_text": "أَنْتُمْ مُسْتَعِدّونَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0664L01U02",
+   "set": {
+    "known_text": "I need to know if you all are ready",
+    "target_text": "أَحْتاجُ أَنْ أَعْرِفَ هَلْ أَنْتُمْ مُسْتَعِدّونَ",
+    "target_text_roman": "ahtaaju an a'rifa hal antum musta'iddoona"
+   },
+   "expect": {
+    "known_text": "yes, you all are ready now",
+    "target_text": "نَعَمْ، أَنْتُمْ مُسْتَعِدّونَ الآن"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0664L01U05",
+   "set": {
+    "known_text": "I want to know if you all are ready now",
+    "target_text": "أُريدُ أَنْ أَعْرِفَ هَلْ أَنْتُمْ مُسْتَعِدّونَ الآن",
+    "target_text_roman": "ureedu an a'rifa hal antum musta'iddoona al-aan"
+   },
+   "expect": {
+    "known_text": "I hope you all are ready",
+    "target_text": "أَرْجو أَنْ تَكونوا مُسْتَعِدّينَ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0664L01U06",
+    "course_code": "ara_for_eng",
+    "seed_number": 664,
+    "lego_index": 1,
+    "known_text": "are you all ready this morning?",
+    "target_text": "هَلْ أَنْتُمْ مُسْتَعِدّونَ هٰذا الصَّباح؟",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 5,
+    "lego_position": null,
+    "lego_count": 1,
+    "target_text_roman": "hal antum musta'iddoona haadhaa as-sabaah?"
+   }
   }
  ],
- "dryRun": {
-  "at": "2026-11-18T18:45:20Z",
-  "chunks": [
-   {
-    "from": 0,
-    "n": 2,
-    "status": 200,
-    "secs": 8.2,
-    "answer": {
-     "ok": true,
-     "dryRun": true,
-     "applied": false,
-     "event_id": null,
-     "results": [
-      {
-       "index": 0,
-       "op": "phrase.update",
-       "key": {
-        "course_code": "ara_for_eng",
-        "id": "ara_for_eng:S0109L02B01"
-       },
-       "before": {
-        "id": "ara_for_eng:S0109L02B01",
-        "seed_number": 109,
-        "lego_index": 2,
-        "lego_id": null,
-        "known_text": "a new word",
-        "target_text": "كَلِمَةً جَديدَةً",
-        "target_text_roman": "kalimat jadeedatan",
-        "known_audio_id": "917a122c-36af-40a0-bc4c-e5fbb287bd11",
-        "target1_audio_id": "ca16bc44-b4c8-4d1c-a1bb-73455a3b7cd8",
-        "target2_audio_id": "0bac7a22-375b-4987-bf3c-988c3e8f89a3",
-        "presentation_audio_id": null
-       },
-       "after": {
-        "id": "ara_for_eng:S0109L02B01",
-        "seed_number": 109,
-        "lego_index": 2,
-        "lego_id": null,
-        "known_text": "new words in Arabic",
-        "target_text": "كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
-        "target_text_roman": "kalimaatin jadeedatan bil'arabiyyati",
-        "known_audio_id": null,
-        "target1_audio_id": null,
-        "target2_audio_id": null,
-        "presentation_audio_id": null
-       },
-       "changed": true
-      },
-      {
-       "index": 1,
-       "op": "phrase.update",
-       "key": {
-        "course_code": "ara_for_eng",
-        "id": "ara_for_eng:S0109L02U03"
-       },
-       "before": {
-        "id": "ara_for_eng:S0109L02U03",
-        "seed_number": 109,
-        "lego_index": 2,
-        "lego_id": null,
-        "known_text": "I want to learn a new word in Arabic",
-        "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ",
-        "target_text_roman": "ureedu an ata'allam kalimat jadeedatan bil-'arabiyyati",
-        "known_audio_id": "1d7b9b91-e00d-45a3-9806-392bc0a7d002",
-        "target1_audio_id": "b6224aed-031d-4c4e-b3dd-147877b4a770",
-        "target2_audio_id": "64c12a69-203a-45b1-a6f2-da2fc0434f18",
-        "presentation_audio_id": null
-       },
-       "after": {
-        "id": "ara_for_eng:S0109L02U03",
-        "seed_number": 109,
-        "lego_index": 2,
-        "lego_id": null,
-        "known_text": "I want to learn new words in Arabic",
-        "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
-        "target_text_roman": "ureedu an ata'allama kalimaatin jadeedatan bil'arabiyyati",
-        "known_audio_id": null,
-        "target1_audio_id": null,
-        "target2_audio_id": null,
-        "presentation_audio_id": null
-       },
-       "changed": true
-      }
-     ],
-     "undo_ops": [
-      {
-       "op": "phrase.update",
-       "phrase_id": "ara_for_eng:S0109L02U03",
-       "set": {
-        "known_text": "I want to learn a new word in Arabic",
-        "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ",
-        "known_audio_id": "1d7b9b91-e00d-45a3-9806-392bc0a7d002",
-        "target1_audio_id": "b6224aed-031d-4c4e-b3dd-147877b4a770",
-        "target2_audio_id": "64c12a69-203a-45b1-a6f2-da2fc0434f18",
-        "target_text_roman": "ureedu an ata'allam kalimat jadeedatan bil-'arabiyyati"
-       }
-      },
-      {
-       "op": "phrase.update",
-       "phrase_id": "ara_for_eng:S0109L02B01",
-       "set": {
-        "known_text": "a new word",
-        "target_text": "كَلِمَةً جَديدَةً",
-        "known_audio_id": "917a122c-36af-40a0-bc4c-e5fbb287bd11",
-        "target1_audio_id": "ca16bc44-b4c8-4d1c-a1bb-73455a3b7cd8",
-        "target2_audio_id": "0bac7a22-375b-4987-bf3c-988c3e8f89a3",
-        "target_text_roman": "kalimat jadeedatan"
-       }
-      }
-     ],
-     "undo_file": null,
-     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
-    }
+ "validator": {
+  "at": "2026-11-19T11:16:43Z",
+  "baseline_failing_seeds": 556,
+  "per_seed": {
+   "102": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L3: 4 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "109": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 2 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 1 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "144": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: 6 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 0 (6 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "152": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L3: 8 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "202": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "410": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 2 phrase(s) fail containment",
+     "L1: USE: need 5+, got 2 (2 component phrases excluded)",
+     "L1: vocab violations in 3 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "424": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 7 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (7 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "451": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "462": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: 1 phrase(s) fail containment",
+     "L2: USE: need 5+, got 4 (1 component phrases excluded)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "465": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "470": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: 1 phrase(s) fail containment",
+     "L2: USE: need 5+, got 4 (1 component phrases excluded)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "499": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: 3 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 2 (3 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 3 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 1 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: 3 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 2 (3 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 3 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "570": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 4 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "595": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "619": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: 1 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "627": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "630": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "642": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "648": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 7 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (7 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "651": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 7 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (7 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "657": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (1 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "661": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 2 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 2 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "662": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 4 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 4 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "664": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 4 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (4 component phrases excluded)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
    }
-  ]
+  },
+  "seeds_with_new_issues": []
+ },
+ "validator_vs_unchanged": {
+  "102": {
+   "added": [],
+   "removed": [
+    "L3: 4 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 0 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "109": {
+   "added": [],
+   "removed": [
+    "L2: 2 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 1 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "144": {
+   "added": [],
+   "removed": [
+    "L2: 6 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 0 (6 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "152": {
+   "added": [],
+   "removed": [
+    "L3: 8 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 0 (8 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "202": {
+   "added": [],
+   "removed": [
+    "L1: 8 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "410": {
+   "added": [],
+   "removed": [
+    "L1: 2 phrase(s) fail containment",
+    "L1: USE: need 5+, got 2 (2 component phrases excluded)",
+    "L1: vocab violations in 3 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "424": {
+   "added": [],
+   "removed": [
+    "L1: 7 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (7 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "451": {
+   "added": [],
+   "removed": [
+    "L1: 8 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (8 component phrases excluded)",
+    "L1: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "462": {
+   "added": [],
+   "removed": [
+    "L2: 1 phrase(s) fail containment",
+    "L2: USE: need 5+, got 4 (1 component phrases excluded)",
+    "L2: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "465": {
+   "added": [],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "470": {
+   "added": [],
+   "removed": [
+    "L2: 1 phrase(s) fail containment",
+    "L2: USE: need 5+, got 4 (1 component phrases excluded)",
+    "L2: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "499": {
+   "added": [],
+   "removed": [
+    "L2: 1 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "570": {
+   "added": [],
+   "removed": [
+    "L2: 4 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "595": {
+   "added": [],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "619": {
+   "added": [],
+   "removed": [
+    "L4: 1 phrase(s) fail containment",
+    "L4: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "627": {
+   "added": [],
+   "removed": [
+    "L1: 8 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "630": {
+   "added": [],
+   "removed": [
+    "L1: 8 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "642": {
+   "added": [],
+   "removed": [
+    "L1: 8 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (8 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "648": {
+   "added": [],
+   "removed": [
+    "L1: 7 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (7 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "651": {
+   "added": [],
+   "removed": [
+    "L1: 7 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 0 (7 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "657": {
+   "added": [],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "661": {
+   "added": [],
+   "removed": [
+    "L2: 2 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: vocab violations in 2 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "662": {
+   "added": [],
+   "removed": [
+    "L1: 4 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 1 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 4 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "664": {
+   "added": [],
+   "removed": [
+    "L1: 4 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 1 (4 component phrases excluded)",
+    "L1: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  }
  }
 }
