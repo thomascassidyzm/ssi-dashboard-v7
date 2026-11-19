@@ -3,8 +3,8 @@
 usage here: python3 -I plan.py <fam-dir> <course> <dump.json> [--no-fetch]   (fam-dir = item17|item13|dups|item11|item19;
 decisions in <fam-dir>/decisions/<course>.json, plan written to <fam-dir>/plans/<course>.json; the dump comes from mkdump.py,
 and a decided LEGO whose seed was not re-read LIVE today is a plan problem). Original docstring:
-item10 plan builder (cs #714·AI). READ-ONLY: reads a Popty script-view dump (../../dump-course.py) and Popty's
-GET /api/production/<course>/seed/<S####>/baskets (components), plus a hand-authored decisions file, and writes
+item10 plan builder (cs #714·AI). READ-ONLY: reads a NIGHTLY-COPY dump (../../copy-read.cjs dump; cs #931·AI) and the copy's
+seed components (copy-read.cjs components), plus a hand-authored decisions file, and writes
 plans/<course>.json: per LEGO before -> after, basket ops, back-fill rows, checks, knock-on census, and the exact
 edit-batch op list. It never writes to a course: the ops are sent ONLY as a dry run by dryrun.py.
 
@@ -20,13 +20,14 @@ decisions/<course>.json = {"course":..,"legos":[{
 Unlisted basket rows: kept if they still contain the new LEGO on both sides; if only the known side lacks the new gloss
 and the OLD gloss appears in it as whole words, the old gloss is substituted (listed as "auto" for hand read-back, R0.13);
 otherwise the row is UNDECIDED and the plan fails until decided."""
-import json, os, re, sys, unicodedata, urllib.request, collections
+import json, os, re, sys, unicodedata, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FAM = sys.argv[1]; del sys.argv[1]
 ROOT = os.path.join(os.path.dirname(HERE), FAM)
 FAMNO = {'item17': '17', 'item13': '13', 'dups': 'dup', 'item11': '11', 'item19': '19'}.get(FAM, FAM)
-POPTY = 'http://localhost:3470'
+sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))  # ops/paid-cleanup-scan-447 (copykit)
+import copykit  # cs #931·AI: reads only the nightly copy
 
 
 def norm(t):
@@ -109,23 +110,19 @@ def _latin(t):
 
 
 def fetch_components(course, seed, cache_dir, offline):
+    """{lego_id: components} for one seed, from the NIGHTLY COPY (cs #931·AI: was GET seed/<id>/baskets on live)"""
     f = os.path.join(cache_dir, f'{seed}.json')
     if os.path.exists(f):
         return json.load(open(f))
     if offline:
         return None
-    url = f'{POPTY}/api/production/{course}/seed/S{seed:04d}/baskets'
-    d = json.load(urllib.request.urlopen(url, timeout=60))
-    out = {k: v.get('components') for k, v in (d.get('baskets') or {}).items()}
-    os.makedirs(cache_dir, exist_ok=True)
-    json.dump(out, open(f, 'w'), ensure_ascii=False)
-    return out
+    return copykit.components(course, seed, cache_dir)
 
 
 def main():
     course, dumpf = sys.argv[1], sys.argv[2]
     offline = '--no-fetch' in sys.argv
-    dump = json.load(open(dumpf))
+    dump = copykit.load_dump(dumpf)  # cs #931·AI: a nightly-copy dump or nothing
     dec = json.load(open(os.path.join(ROOT, 'decisions', f'{course}.json')))
     SD, L, P = {}, {}, {}
     for s in dump['seeds']:
@@ -385,6 +382,7 @@ def main():
            'touched_seeds': sorted(touched_seeds), 'problems': problems, 'auto_substitutions': autos,
            'zut_after_changed': {k: v for k, v in new_clash.items()}, 'later_duplicates': later_dups, 'legos': plans, 'ops': ops}
     os.makedirs(os.path.join(ROOT, 'plans'), exist_ok=True)
+    copykit.stamp(out, dump)
     json.dump(out, open(os.path.join(ROOT, 'plans', f'{course}.json'), 'w'), ensure_ascii=False, indent=1)
     print('  later duplicates:', later_dups)
     print(f'{course}: {len(plans)} LEGOs, verdicts {out["verdicts"]}, {len(ops)} ops, {len(autos)} auto known-subs, {len(problems)} problems')

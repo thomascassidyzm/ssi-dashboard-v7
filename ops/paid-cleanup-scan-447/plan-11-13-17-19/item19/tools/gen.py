@@ -47,7 +47,9 @@ class Course:
     def __init__(self, course):
         self.course = course
         self.dump = json.load(open(f'{S}/dumps/{course}.json'))
-        self.live = set(self.dump.get('live_seeds', []))
+        if self.dump.get('source') != 'qa-copy':  # cs #931·AI: plans are made from the nightly copy only
+            sys.exit(f'REFUSED: {S}/dumps/{course}.json is not a nightly-copy dump (tools/mkdump.py makes one)')
+        self.live = {s['n'] for s in self.dump['seeds']}  # every seed was read from the copy (name kept: 'live' = read)
         self.SD = {s['n']: s for s in self.dump['seeds']}
         self.L = {}
         for s in self.dump['seeds']:

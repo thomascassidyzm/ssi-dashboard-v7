@@ -8,43 +8,40 @@ You are one of three planning shards. Your own message names your family and you
   fix broke some other rule."
 - **Failure is:** (a) a proposal that breaks another rule (a re-cut that leaves a gap, a new one-prompt-two-answers clash,
   an untaught word, a LEGO its seed does not say); (b) ANY database write or render; (c) a proposal built on stale rows —
-  other cleanup jobs changed these courses today, so every seed you touch is re-read live first; (d) dozens of per-row
+  plans are made from the newest nightly copy; the dry run's `expect` catches a row changed since (DRIFT); (d) dozens of per-row
   questions for Kai — group into fix PATTERNS he rules on once.
 - **Price:** generous tokens on judgement; light compute; zero audio characters; zero writes. No tests, no typecheck, no
   builds, no audio checks, no listening pages. Do not look for new defect families. Do not touch other items.
 - **The 30-minute watcher stops a worker with no commit for 20 minutes.** Commit and push after EVERY course.
 
-## Set-up (your checkout is off origin/main; the shared directory is on the parent's branch)
+## Set-up (the kit is on origin/main since cs #931·AI; your checkout already has it)
 ```
-git fetch origin cs/784-plan-items-11-13-17-19-dup-legos
-git merge --no-edit origin/cs/784-plan-items-11-13-17-19-dup-legos
 cd ops/paid-cleanup-scan-447/plan-11-13-17-19            # P below
-mkdir -p $CS_SCRATCH/snap
-(set -a; . ~/ssi-restore/qa-copy-fresh.env; set +a; node ../../../tools/paid-cleanup-717/snapshot.cjs <course> $CS_SCRATCH/snap/<course>.json)
+python3 -I tools/mkdump.py <course>     # nightly copy -> $CS_SCRATCH/dumps/<course>.json + $CS_SCRATCH/snap/<course>.json
 ```
-Commit ONLY files under `P/<your family>/…` and `P/data/live/<your courses>.json` on YOUR branch and push it. Do not merge
+Commit ONLY files under `P/<your family>/…` and `P/data/copy/<your courses>.json` on YOUR branch and push it. Do not merge
 to main. The parent merges your branch.
 
 ## The data
 - `P/data/scan-P17.json` (item 11) and `P/data/scan-LONG.json` (item 19): the 17 Nov scan rows, fields
   `course,row,known,target,fix,confidence,canon,chars,family,slice`. `row` may name one LEGO, one phrase, or several.
   These are CANDIDATES read by a scan worker, not verdicts. Per-slice prose: `../reports/<slice>.md`, `../FIX-LIST.md`.
-- Whole-course reads: the nightly QA copy snapshot above (last night, BEFORE today's applies). Helpers: `tools/snap.py`.
-- **Live re-read, mandatory for every seed you propose to change:** `python3 -I tools/live_seeds.py <course> <seed> [...]`
-  (one small GET per seed through Popty's script-view, cached in `data/live/<course>.json`). Then
-  `python3 -I tools/mkdump.py <course>` overlays the live seeds on the snapshot → `$CS_SCRATCH/dumps/<course>.json`.
-  `plan.py` refuses a decision on a seed that was not re-read live. If the live LEGO or rows differ from the scan row,
-  the row was changed by another job today: drop it if fixed, re-judge it if not, and COUNT both.
-- **Database rule (Tom, HARD):** no hand-written code against the database, read-only included. Only the committed tools
-  above and Popty GET routes / dry-run POSTs. Your own Python over the JSON they return is fine.
+- Whole-course reads: the nightly copy (dump + snapshot above). Helpers: `tools/snap.py`. Record what you planned
+  against with `python3 -I tools/copy_seeds.py <course> <seed> [...]` → `data/copy/<course>.json`. If the copy's LEGO or
+  rows differ from the scan row, another job changed it: drop it if fixed, re-judge it if not, and COUNT both.
+- **Database rule (cs #931·AI, 19 Nov; Tom's HARD rule beneath it):** every READ is from the nightly copy through
+  `../copy-read.cjs` (refuses any URL that is not the local ssi_copy login). NO Python/psql/other client to live, NO Popty
+  read route (script-view, baskets), NO :3471 validate. The one call towards live is `tools/dryrun.py` (edit-batch, no
+  apply, <=100 ops a chunk, gated on /health dbLoadGate green). Your own Python over the JSON files is fine.
 
 ## The pipeline, per course
 1. Author `P/<fam>/decisions/<course>.py` (hand-written; it writes `<course>.json`; schema = `tools/plan.py` docstring).
 2. `python3 -I tools/plan.py <fam> <course> $CS_SCRATCH/dumps/<course>.json` → `P/<fam>/plans/<course>.json`; fix every
    "problem" it prints (or answer it by hand in `why` and list the row explicitly in `basket`).
 3. `python3 -I tools/validate.py <fam> <course> $CS_SCRATCH/dumps/<course>.json` — the course-builder's own validator
-   (:3471, in-memory override, nothing written); a seed with NEW issues is fixed or its proposal is marked HOLD.
-4. `python3 -I tools/dryrun.py <fam> <course> --chunk 50` — Popty's edit-batch as a DRY RUN (rolled back). It never sends
+   checks, run in process on the nightly copy with the plan overlaid; a seed with NEW issues is fixed or marked HOLD.
+4. `python3 -I tools/dryrun.py <fam> <course> --chunk 50` — Popty's edit-batch as a DRY RUN (rolled back), gated on
+   /health; all-200 also writes `<fam>/plans/<course>.changeset.jsonl` and checks it offline. It never sends
    `"apply": true` and neither do you. A dry run that times out is a GAP to record, never a loop.
 5. `python3 -I tools/price.py <fam> <course>` — estimated characters (new target ×2 voices + new known ×1 + intro).
 Run every network step SERIALLY (no xargs -P, no background fan-out): about ten other jobs are using Popty and at most
@@ -136,5 +133,5 @@ eng_for_sin seeds 345–668 are behind a pending rebuild decision (D1): list the
   words): a table per course (scan rows, dropped as already fixed, not-a-defect, proposals, holds, est. chars); then
   the FIX PATTERNS, each with 2–3 real examples (seed sentence, current LEGO(s), proposed LEGO(s) with not-new flags,
   what happens to the rows, why); then the HOLDS with reasons; then the list of LEGOs kept at 7+ syllables with reasons;
-  then gaps (seeds not re-read, dry runs that timed out, rows you could not judge).
+  then gaps (dry runs that timed out or answered DRIFT, rows you could not judge).
 - Your report: ONE paragraph (what you planned, where it is — your branch, not merged — and the honest gap) + landing line.

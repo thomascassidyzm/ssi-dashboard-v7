@@ -1,5 +1,5 @@
-"""Shared read-only helpers over the QA-copy snapshots ($CS_SCRATCH/snap/<course>.json, made by
-tools/paid-cleanup-717/snapshot.cjs) and the live per-seed cache (data/live). No network, no database."""
+"""Shared read-only helpers over the nightly-copy snapshots ($CS_SCRATCH/snap/<course>.json, made by tools/mkdump.py via
+../copy-read.cjs snap) and the per-seed copy cache (data/copy, tools/copy_seeds.py). No network, no database. (cs #931·AI)"""
 import json, os, functools
 HERE = os.path.dirname(os.path.abspath(__file__))
 SNAP = os.path.join(os.environ.get('CS_SCRATCH', '/tmp'), 'snap')
@@ -33,8 +33,8 @@ def phrases(course, lego_id):
     n, i = int(lego_id[1:5]), int(lego_id[6:8])
     return [p for p in snap(course)['phrases'] if p['seed_number'] == n and p['lego_index'] == i]
 
-def live(course):
-    f = os.path.join(HERE, '..', 'data', 'live', f'{course}.json')
+def live(course):  # name kept for callers: the per-seed cache, now read from the nightly copy
+    f = os.path.join(HERE, '..', 'data', 'copy', f'{course}.json')
     return json.load(open(f)) if os.path.exists(f) else {}
 
 def fmt(l):
