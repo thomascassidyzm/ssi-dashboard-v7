@@ -30,6 +30,15 @@
  *   - APPROVAL_UNVERIFIED while the Command Surface is DOWN: wait 2 min, send that one ask once more (Kai 19 Nov); surface UP: stop.
  *   - NEVER otherwise retries an ask or a batch. A relaunch resumes after the last logged ask: a rendered ask is never re-sent,
  *     and an ask whose render landed but whose links did not get logged is resumed at the link step only.
+ * PACE FIX (cs #95, Kai 19 Nov): a paid render takes ~4.6 s whatever its length and 93% of asks are paid, so credit burned
+ * before the 23 Nov 00:00Z reset is asks/h x chars/ask. Options used by chain.sh:
+ *   --order chars-desc   longest asks first (stable); the list stays the same approved list, only its order changes.
+ *   --until <ISO>        stop cleanly before the next ask once this instant is reached (the Cartesia cycle reset).
+ *   --wait-day-cap       when ONLY the per-UTC-day cap blocks the next ask, sleep to the next UTC day (+1 min) and go on
+ *                        (own pre-check, nothing was refused; a Popty refusal still stops at once).
+ * RESUME IS KEYED ON THE ASK'S IDENTITY (course|role|voiceId|text), never on its position, so a re-ordered or re-built list
+ * never re-sends a logged ask. Rows logged before cs #95 carry only idx: they are mapped through the committed list in its
+ * file order, which is the order they were written against.
  * Results: ~/ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/dayN-results.jsonl (append-only).
  */
 const fs = require('fs')
@@ -44,6 +53,11 @@ if (!Number.isInteger(DAY) || DAY < 1 || DAY > 4) { console.error('usage: run-da
 const HERE = __dirname
 const BATCH = opt('--batch', path.join(HERE, `day${DAY}-batch.jsonl`))
 const MAX_ASKS = Number(opt('--max-asks', Infinity))
+const ORDER = opt('--order', 'file')
+const UNTIL = opt('--until', null) ? Date.parse(opt('--until')) : Infinity
+const WAIT_DAY_CAP = argv.includes('--wait-day-cap')
+if (!['file', 'chars-desc'].includes(ORDER) || Number.isNaN(UNTIL)) { console.error('bad --order or --until'); process.exit(1) }
+const askKey = (a) => [a.course, a.role, a.voiceId, a.text].join('|')
 const EVID = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia')
 fs.mkdirSync(EVID, { recursive: true })
 const LOG = path.join(EVID, `day${DAY}-results.jsonl`)
@@ -151,30 +165,45 @@ async function linkSlots(idx, ask, audioId) {
 }
 
 async function main() {
-  const asks = fs.readFileSync(BATCH, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
+  const fileAsks = fs.readFileSync(BATCH, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
+  const asks = ORDER === 'chars-desc'
+    ? fileAsks.map((a, i) => [a, i]).sort((x, y) => ((y[0].chars || y[0].text.length) - (x[0].chars || x[0].text.length)) || (x[1] - y[1])).map((x) => x[0])
+    : fileAsks
   const append = (o) => fs.appendFileSync(LOG, JSON.stringify(o) + '\n')
   const own = fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []
-  const rendered = new Map(own.filter((r) => r.kind === 'render').map((r) => [r.idx, r]))
-  const linkedIdx = new Set(own.filter((r) => r.kind === 'link').map((r) => r.idx))
+  // identity of a logged row: its own key, else (pre-cs #95 rows) the ask at that idx in the committed file order.
+  const rowKey = (r) => r.key || (fileAsks[r.idx] ? askKey(fileAsks[r.idx]) : `idx:${r.idx}`)
+  const rendered = new Map(own.filter((r) => r.kind === 'render').map((r) => [rowKey(r), r]))
+  const linkedKey = new Set(own.filter((r) => r.kind === 'link').map(rowKey))
   const start = tally()
-  append({ kind: 'start', at: new Date().toISOString(), day: DAY, batch: path.relative(path.join(HERE, '../../..'), BATCH), asks: asks.length, resumedPast: rendered.size, tally: start })
+  append({ kind: 'start', at: new Date().toISOString(), day: DAY, order: ORDER, until: Number.isFinite(UNTIL) ? new Date(UNTIL).toISOString() : null, batch: path.relative(path.join(HERE, '../../..'), BATCH), asks: asks.length, resumedPast: rendered.size, tally: start })
   console.log(`day ${DAY}: ${asks.length} asks, ${rendered.size} already logged; own tally today ${start.today}, total ${start.total}, item-9 reserve ${start.reserve}`)
 
   let timeouts = 0, sent = 0, nextCheckpoint = null, stop = null
   for (let idx = 0; idx < asks.length; idx++) {
     const ask = asks[idx]
-    const prior = rendered.get(idx)
+    const key = askKey(ask)
+    const prior = rendered.get(key)
     if (prior) {
       // Resume: a rendered/linked ask whose link step never got logged is linked now; nothing is re-sent to the render route.
-      if (prior.audioId && !linkedIdx.has(idx)) append(await linkSlots(idx, ask, prior.audioId))
+      if (prior.audioId && !linkedKey.has(key)) append({ ...(await linkSlots(idx, ask, prior.audioId)), key })
       continue
     }
     if (sent >= MAX_ASKS) { stop = `--max-asks ${MAX_ASKS} reached`; break }
+    if (Date.now() >= UNTIL) { stop = `until ${new Date(UNTIL).toISOString()} reached`; break }
     // LIMIT CHECK, every ask.
     const t = tally()
     if (nextCheckpoint === null) nextCheckpoint = Math.floor(t.total / CHECKPOINT) * CHECKPOINT + CHECKPOINT
     if (t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
     const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // gender prep can lengthen a line a little
+    if (t.today + t.reserve + want > DAY_CAP && WAIT_DAY_CAP && t.total + t.reserve + want <= TOTAL_CAP) {
+      const next = Date.parse(utcDay(Date.now()) + 'T00:00:00Z') + 86_400_000 + 60_000
+      if (next < UNTIL) {
+        append({ kind: 'day-cap-wait', idx, key, at: new Date().toISOString(), until: new Date(next).toISOString(), tally: t })
+        console.log(`day cap at ask ${idx}: waiting to ${new Date(next).toISOString()}`)
+        await sleep(next - Date.now()); idx--; continue
+      }
+    }
     if (t.today + t.reserve + want > DAY_CAP) { stop = `day cap: today ${t.today} (incl. fix reserve ${t.fixDay}) + item-9 reserve ${t.reserve} + next ask ${want} > ${DAY_CAP}`; break }
     if (t.total + t.reserve + want > TOTAL_CAP) { stop = `four-day cap: total ${t.total} (incl. fix reserve ${t.fixTotal}) + item-9 reserve ${t.reserve} + next ask ${want} > ${TOTAL_CAP}`; break }
     if (CYCLE_CREDIT - (t.total + t.reserve + want) < RESERVE) { stop = `credit reserve: 2.45M − ${t.total + t.reserve + want} < 450k` ; break }
@@ -191,7 +220,7 @@ async function main() {
     }
     sent++
     const j = r.json || {}
-    const rec = { kind: 'render', idx, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, http: r.http,
+    const rec = { kind: 'render', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, http: r.http,
       ok: !!j.ok, source: j.source, code: j.code, charsSpent: Number(j.charsSpent) || 0, audioId: j.audioId, voiceId: j.voiceId,
       error: j.ok ? undefined : String(j.error || '').slice(0, 300) }
     if (j.ok && j.source === 'rendered' && !(Number(j.charsSpent) > 0)) rec.charsSpent = ask.chars // never under-count a paid render
@@ -202,7 +231,7 @@ async function main() {
     timeouts = timedOut ? timeouts + 1 : 0
     if (timeouts >= 5) { stop = `5 timeouts in a row (last at ask ${idx})`; break }
     if (j.ok && j.audioId) {
-      const l = await linkSlots(idx, ask, j.audioId)
+      const l = { ...(await linkSlots(idx, ask, j.audioId)), key }
       append(l)
       if (l.http === 401 || l.http === 403) { stop = `link-clip refused identity (HTTP ${l.http}): ${l.error}`; break }
     }

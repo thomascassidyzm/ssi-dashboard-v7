@@ -45,7 +45,8 @@ if [ "$DAY" != 1 ]; then
   echo "$(ts) day $DAY list: $(wc -l < $HERE/day$DAY-batch.jsonl) asks, $PUSH"
 fi
 
-node $HERE/run-day.cjs --day "$DAY"
+# A2C_RUN_ARGS (cs #95): extra run-day.cjs options set by chain.sh (--order chars-desc --until ... --wait-day-cap).
+node $HERE/run-day.cjs --day "$DAY" ${A2C_RUN_ARGS:-}
 END=$(tail -1 "$EVID/day$DAY-results.jsonl")
 EXTRA=""
 if [ "$DAY" = 2 ]; then
