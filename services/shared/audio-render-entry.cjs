@@ -38,6 +38,7 @@ const paidWrite = require('./paid-write.cjs')
 const standIn = require('./aran-clone-standin.cjs')
 const pronunciation = require('./pronunciation-overrides.cjs')
 const { sameVoice } = require('./resolve-voice.cjs')
+const genderPrep = require('./render-gender-prep.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
 
@@ -237,6 +238,8 @@ async function renderClip(input, deps) {
   return chain.run(`render:${req.requestedBy}`, async () => {
     if (req.trial) return trialRender(req, deps)
     if (req.adoptS3Key) return adoptPaid(req, deps)
+    // SPEAKER-GENDER PREP (cs #989·AI, services/shared/render-gender-prep.cjs): target seats only.
+    try { await genderPrep.holdIfPending(req, deps) } catch (e) { if (e instanceof genderPrep.GenderPrepError) throw new RenderRequestError(e.message, e.status, e.code); throw e }
     if (req.replaceAudioId) return rerecord(req, deps)
     if (isSharedRole(req.role)) return renderShared(req, deps)
     // HUMAN-SPLICED INTROS (Aran 2026-10-27, job #210): a course whose intros are made from a human reader's own takes

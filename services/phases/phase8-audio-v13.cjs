@@ -5739,6 +5739,12 @@ function buildRenderDeps({ verifiedApproval = null } = {}) {
         return !!(data && data.length)
       },
       immersionTurn: immersionTurnForRender,
+      // SPEAKER-GENDER PREP (cs #989·AI, shared/render-gender-prep.cjs): the course's gendered-ness, as ensureExpansionForText reads it.
+      genderCourse: async (courseCode) => {
+        const { data, error } = await supabase.from('courses').select('target_lang, needs_gender_prep').eq('course_code', courseCode).maybeSingle()
+        if (error) throw new Error(`courses unreadable (gender prep): ${error.message}`)
+        return data ? { ...data, gendered: genderHaikuService.GENDERED_LANGUAGES } : null
+      },
       // Per-language stop (job #352): every recording of these words in this language, any course / side / voice, and the
       // route's existing re-record authority that may let a second performance past it.
       clipsInLanguage: (want) => require('../shared/clip-library.cjs').existingClipsInLanguage(want),
