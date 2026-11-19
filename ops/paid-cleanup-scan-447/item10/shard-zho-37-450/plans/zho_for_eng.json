@@ -34,7 +34,7 @@
   "这是一种方法 -> zhè shì yī zhǒng fāngfǎ: 种: zhǒng (also zhòng)",
   "你有一种方法吗？ -> nǐ yǒu yī zhǒng fāngfǎ ma?: 种: zhǒng (also zhòng)"
  ],
- "dumped": "2026-11-18T14:40:38Z",
+ "dumped": "2026-11-19T11:15:30Z",
  "decisions": 130,
  "verdicts": {
   "grow": 57,
@@ -145,8 +145,101 @@
   450
  ],
  "problems": [
-  "S0191L01: known words not in seed: ['not']",
-  "S0245L01: target 短时间里做了这么多 estimated 9 syllables (>8) — hand-check"
+  "S0245L01: target 短时间里做了这么多 estimated 9 syllables (>8) — hand-check",
+  "S0041L02: below the validator floor after plan (build 2/3, use 8/5)",
+  "S0043L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0049L02: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0053L03: below the validator floor after plan (build 3/3, use 4/5)",
+  "S0054L01: below the validator floor after plan (build 2/3, use 7/5)",
+  "S0055L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0057L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0057L01: untaught target in row 'I can't remember what I wanted to say | 我想不起来我想说的话' (stuck at '起来我想说的话')",
+  "S0057L01: untaught target in row 'I can't remember how to say what I wanted to say | 我想不起来怎么说我想说的话' (stuck at '起来怎么说我想说的话')",
+  "S0058L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0061L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0066L03: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0074L01: below the validator floor after plan (build 1/3, use 7/5)",
+  "S0078L01: untaught target in row 'they don't understand | 他们不明白' (stuck at '们不明白')",
+  "S0083L03: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0101L03: below the validator floor after plan (build 0/3, use 7/5)",
+  "S0101L03: untaught target in row 'this language seems easier than I thought | 这门语言似乎比我想的容易' (stuck at '似乎比我想的容易')",
+  "S0101L03: untaught target in row 'we need to practice this language more | 我们需要更多练这门语言' (stuck at '练这门语言')",
+  "S0104L02: below the validator floor after plan (build 0/3, use 8/5)",
+  "S0108L01: below the validator floor after plan (build 1/3, use 8/5)",
+  "S0108L01: untaught target in row 'I hoped to sleep, not wake in the middle of the night | 我本来希望睡，不是半夜醒' (stuck at '睡不是半夜醒')",
+  "S0111L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0111L01: untaught target in row 'when we learn something new | 当我们学到新东西时' (stuck at '当我们学到新东西时')",
+  "S0116L02: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0116L02: untaught target in row 'this is the best | 这是最好的' (stuck at '这是最好的')",
+  "S0116L02: untaught target in row 'I think this is the best | 我觉得这是最好的' (stuck at '这是最好的')",
+  "S0117L03: below the validator floor after plan (build 3/3, use 4/5)",
+  "S0122L02: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0128L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0142L03: below the validator floor after plan (build 1/3, use 7/5)",
+  "S0144L02: below the validator floor after plan (build 2/3, use 4/5)",
+  "S0150L01: below the validator floor after plan (build 0/3, use 6/5)",
+  "S0150L01: untaught target in row 'I can't remember what your name is | 我想不起来你叫什么名字' (stuck at '起来你叫什么名字')",
+  "S0152L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0152L01: untaught target in row 'I would have done it differently if I had known what you wanted | 如果我早知道你想要什么，我会做得不一样' (stuck at '早知道你想要什么我会做得不一样')",
+  "S0163L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0165L02: below the validator floor after plan (build 1/3, use 8/5)",
+  "S0170L01: below the validator floor after plan (build 2/3, use 7/5)",
+  "S0191L01: below the validator floor after plan (build 1/3, use 8/5)",
+  "S0200L02: untaught target in row 'they say they want to make sure that we finish everything in time | 他们说他们想确保我们按时完成一切' (stuck at '们说他们想确保我们按时完成一切')",
+  "S0221L03: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0245L01: below the validator floor after plan (build 0/3, use 5/5)",
+  "S0248L01: below the validator floor after plan (build 0/3, use 6/5)",
+  "S0248L01: untaught target in row 'I think that film is complete rubbish | 我觉得那部电影太糟了' (stuck at '部电影太糟了')",
+  "S0248L02: below the validator floor after plan (build 1/3, use 7/5)",
+  "S0248L02: untaught target in row 'can I get my money back? | 我可以退钱吗' (stuck at '可以退钱吗')",
+  "S0248L02: untaught target in row 'I thought the film was complete rubbish and I want my money back | 我觉得那部电影太糟了，我想退钱' (stuck at '部电影太糟了我想退钱')",
+  "S0251L02: below the validator floor after plan (build 1/3, use 4/5)",
+  "S0267L01: below the validator floor after plan (build 0/3, use 6/5)",
+  "S0271L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0276L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0276L01: untaught target in row 'stay for a little longer | 待一会儿' (stuck at '待一会儿')",
+  "S0276L01: untaught target in row 'can you stay here for a little longer? | 你能在这里待一会儿吗' (stuck at '待一会儿吗')",
+  "S0276L01: untaught target in row 'unfortunately I can only stay for a little longer | 很遗憾我只能待一会儿' (stuck at '待一会儿')",
+  "S0276L01: untaught target in row 'no I can still stay here for a little longer | 不我还能在这里待一会儿' (stuck at '待一会儿')",
+  "S0313L02: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0315L01: below the validator floor after plan (build 0/3, use 7/5)",
+  "S0320L01: below the validator floor after plan (build 0/3, use 7/5)",
+  "S0327L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0335L02: below the validator floor after plan (build 0/3, use 7/5)",
+  "S0335L02: untaught target in row 'I hope to provide valuable information | 我希望提供有价值的信息' (stuck at '息')",
+  "S0335L02: untaught target in row 'this is the most valuable thing in my life | 这是我生活中最有价值的东西' (stuck at '中最有价值的东西')",
+  "S0335L02: untaught target in row 'I think he can add some valuable ideas | 我觉得他可以增加一些有价值的想法' (stuck at '些有价值的想法')",
+  "S0341L01: below the validator floor after plan (build 0/3, use 9/5)",
+  "S0348L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0351L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0363L01: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0370L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0375L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0378L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0385L01: below the validator floor after plan (build 0/3, use 7/5)",
+  "S0388L01: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0396L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0398L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0403L02: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0403L02: untaught target in row 'I want to stay here for as long as possible | 我想尽可能长时间待在这里' (stuck at '待在这里')",
+  "S0408L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0411L01: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0413L03: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0413L03: untaught target in row 'she almost fell | 她差点摔倒' (stuck at '差点摔倒')",
+  "S0419L01: below the validator floor after plan (build 1/3, use 7/5)",
+  "S0421L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0425L02: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0430L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0432L01: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0434L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0434L02: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0434L04: below the validator floor after plan (build 1/3, use 6/5)",
+  "S0436L02: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0441L02: below the validator floor after plan (build 1/3, use 5/5)",
+  "S0441L02: untaught target in row 'she proposed an approach | 她提出了一种方法' (stuck at '提出了一种方法')",
+  "S0447L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0447L03: below the validator floor after plan (build 0/3, use 6/5)",
+  "S0450L02: untaught target in row 'let's hurry or we won't catch the train | 我们快点，不然赶不上火车' (stuck at '点不然赶不上火车')"
  ],
  "auto_substitutions": [
   "S0421L02 B01: to become weak -> to get weak"
@@ -312,6 +405,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 4,
     "sample": [
@@ -501,6 +603,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 4,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -710,6 +821,15 @@
     "use": 8
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 477,
     "sample": [
@@ -998,6 +1118,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 73,
     "sample": [
@@ -1281,6 +1410,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 30,
     "sample": [
@@ -1555,6 +1693,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -1771,6 +1918,15 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1945,6 +2101,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 39,
     "sample": [
@@ -2192,6 +2357,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2342,6 +2516,26 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I can't remember what I wanted to say",
+     "target": "我想不起来我想说的话",
+     "uncovered": "起来我想说的话"
+    },
+    {
+     "known": "I can't remember how to say what I wanted to say",
+     "target": "我想不起来怎么说我想说的话",
+     "uncovered": "起来怎么说我想说的话"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2503,6 +2697,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 16,
     "sample": [
@@ -2771,6 +2974,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -2982,6 +3194,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3238,6 +3459,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -3467,6 +3697,21 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "they don't understand",
+     "target": "他们不明白",
+     "uncovered": "们不明白"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3725,6 +3970,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3963,6 +4217,26 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "this language seems easier than I thought",
+     "target": "这门语言似乎比我想的容易",
+     "uncovered": "似乎比我想的容易"
+    },
+    {
+     "known": "we need to practice this language more",
+     "target": "我们需要更多练这门语言",
+     "uncovered": "练这门语言"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4178,6 +4452,15 @@
     "use": 8
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -4386,6 +4669,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 9,
     "sample": [
@@ -4614,6 +4906,21 @@
     "use": 8
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I hoped to sleep, not wake in the middle of the night",
+     "target": "我本来希望睡，不是半夜醒",
+     "uncovered": "睡不是半夜醒"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4803,6 +5110,21 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "when we learn something new",
+     "target": "当我们学到新东西时",
+     "uncovered": "当我们学到新东西时"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4974,6 +5296,26 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "this is the best",
+     "target": "这是最好的",
+     "uncovered": "这是最好的"
+    },
+    {
+     "known": "I think this is the best",
+     "target": "我觉得这是最好的",
+     "uncovered": "这是最好的"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 25,
     "sample": [
@@ -5263,6 +5605,15 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -5449,6 +5800,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -5640,6 +6000,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -5926,6 +6295,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -6151,6 +6529,15 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -6437,6 +6824,21 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I can't remember what your name is",
+     "target": "我想不起来你叫什么名字",
+     "uncovered": "起来你叫什么名字"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -6663,6 +7065,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I would have done it differently if I had known what you wanted",
+     "target": "如果我早知道你想要什么，我会做得不一样",
+     "uncovered": "早知道你想要什么我会做得不一样"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -6892,6 +7309,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -7081,6 +7507,15 @@
     "use": 8
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -7281,6 +7716,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 8,
     "sample": [
@@ -7735,9 +8179,7 @@
     "is_new": true
    },
    "checks": {
-    "known_in_seed": [
-     "not"
-    ],
+    "known_in_seed": true,
     "target_in_seed": true,
     "syllables": 4
    },
@@ -7851,6 +8293,15 @@
     "use": 8
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -8126,6 +8577,21 @@
     "use": 11
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 11,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "they say they want to make sure that we finish everything in time",
+     "target": "他们说他们想确保我们按时完成一切",
+     "uncovered": "们说他们想确保我们按时完成一切"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -8380,6 +8846,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -8595,6 +9070,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 15,
     "sample": [
@@ -8925,6 +9409,15 @@
     "use": 14
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 14,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 5,
     "sample": [
@@ -9153,6 +9646,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -9411,6 +9913,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -9579,6 +10090,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I think that film is complete rubbish",
+     "target": "我觉得那部电影太糟了",
+     "uncovered": "部电影太糟了"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -9797,6 +10323,26 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "can I get my money back?",
+     "target": "我可以退钱吗",
+     "uncovered": "可以退钱吗"
+    },
+    {
+     "known": "I thought the film was complete rubbish and I want my money back",
+     "target": "我觉得那部电影太糟了，我想退钱",
+     "uncovered": "部电影太糟了我想退钱"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10034,6 +10580,15 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10345,6 +10900,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 9,
     "sample": [
@@ -10619,6 +11183,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 23,
     "sample": [
@@ -10880,6 +11453,36 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "stay for a little longer",
+     "target": "待一会儿",
+     "uncovered": "待一会儿"
+    },
+    {
+     "known": "can you stay here for a little longer?",
+     "target": "你能在这里待一会儿吗",
+     "uncovered": "待一会儿吗"
+    },
+    {
+     "known": "unfortunately I can only stay for a little longer",
+     "target": "很遗憾我只能待一会儿",
+     "uncovered": "待一会儿"
+    },
+    {
+     "known": "no I can still stay here for a little longer",
+     "target": "不我还能在这里待一会儿",
+     "uncovered": "待一会儿"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -11143,6 +11746,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -11335,6 +11947,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -11522,6 +12143,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -11720,6 +12350,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -11906,6 +12545,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -12137,6 +12785,31 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I hope to provide valuable information",
+     "target": "我希望提供有价值的信息",
+     "uncovered": "息"
+    },
+    {
+     "known": "this is the most valuable thing in my life",
+     "target": "这是我生活中最有价值的东西",
+     "uncovered": "中最有价值的东西"
+    },
+    {
+     "known": "I think he can add some valuable ideas",
+     "target": "我觉得他可以增加一些有价值的想法",
+     "uncovered": "些有价值的想法"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12364,6 +13037,15 @@
     "use": 9
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 9,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -12608,6 +13290,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12831,6 +13522,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -13100,6 +13800,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 125,
     "sample": [
@@ -13340,6 +14049,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13563,6 +14281,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13752,6 +14479,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -13963,6 +14699,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -14134,6 +14879,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14346,6 +15100,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14531,6 +15294,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 67,
     "sample": [
@@ -14754,6 +15526,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14921,6 +15702,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 8,
     "sample": [
@@ -15194,6 +15984,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 3,
     "sample": [
@@ -15435,6 +16234,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "I want to stay here for as long as possible",
+     "target": "我想尽可能长时间待在这里",
+     "uncovered": "待在这里"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 2,
     "sample": [
@@ -15804,6 +16618,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -16009,6 +16832,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16155,6 +16987,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "she almost fell",
+     "target": "她差点摔倒",
+     "uncovered": "差点摔倒"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16374,6 +17221,15 @@
     "use": 7
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 7,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16554,6 +17410,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16764,6 +17629,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 9,
     "sample": [
@@ -17003,6 +17877,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -17246,6 +18129,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -17413,6 +18305,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 5,
     "sample": [
@@ -17677,6 +18578,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -17861,6 +18771,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -18064,6 +18983,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -18266,6 +19194,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 1,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "she proposed an approach",
+     "target": "她提出了一种方法",
+     "uncovered": "提出了一种方法"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -18412,6 +19355,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 1,
     "sample": [
@@ -18632,6 +19584,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 0,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -18766,6 +19727,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "let's hurry or we won't catch the train",
+     "target": "我们快点，不然赶不上火车",
+     "uncovered": "点不然赶不上火车"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -30517,5 +31493,1467 @@
     "target_text": "我们快点，不然赶不上火车"
    }
   }
- ]
+ ],
+ "source": "qa-copy",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "validator": {
+  "at": "2026-11-19T11:18:14Z",
+  "on": "nightly copy ssi_copy_20261119t033000z",
+  "baseline_failing_seeds": 492,
+  "per_seed": {
+   "39": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "40": {
+    "seed_issues_planned": [
+     "L1: 3 duplicate phrase(s) within this LEGO: \"你的中文怎么样？\", \"故事怎么样？\", \"昨天怎么样？\""
+    ],
+    "seed_issues_live": [
+     "L1: 3 duplicate phrase(s) within this LEGO: \"故事怎么样？\", \"你的中文怎么样？\", \"昨天怎么样？\""
+    ],
+    "new_issues_anywhere": {
+     "40": [
+      "L1: 3 duplicate phrase(s) within this LEGO: \"你的中文怎么样？\", \"故事怎么样？\", \"昨天怎么样？\""
+     ]
+    },
+    "error": null
+   },
+   "41": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "41": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "43": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "43": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "49": {
+    "seed_issues_planned": [
+     "L1: USE: need 5+, got 4",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: 1 duplicate phrase(s) within this LEGO: \"不是这样\""
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 4",
+     "L3: 1 duplicate phrase(s) within this LEGO: \"就是不容易\"",
+     "L3: vocab violations in 1 phrase(s)",
+     "L4: 1 duplicate phrase(s) within this LEGO: \"不是这样\""
+    ],
+    "new_issues_anywhere": {
+     "49": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "53": {
+    "seed_issues_planned": [
+     "L1: USE: need 5+, got 4",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: USE: need 5+, got 4",
+     "L4: USE: need 5+, got 4"
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 4",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L4: USE: need 5+, got 4"
+    ],
+    "new_issues_anywhere": {
+     "53": [
+      "L3: USE: need 5+, got 4"
+     ]
+    },
+    "error": null
+   },
+   "54": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "55": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [却还要醒来]",
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 3 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [还要醒来]",
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 3 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "55": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [却还要醒来]",
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "108": [
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "57": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [起来怎么说我想说的话]",
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 2 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [起来怎么说我想说的话]",
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "57": [
+      "L1: vocab violations in 2 phrase(s)"
+     ],
+     "60": [
+      "L1: vocab violations in 5 phrase(s)"
+     ],
+     "64": [
+      "L2: vocab violations in 1 phrase(s)"
+     ],
+     "65": [
+      "L2: vocab violations in 1 phrase(s)"
+     ],
+     "69": [
+      "L2: vocab violations in 5 phrase(s)"
+     ],
+     "76": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [这么多很满意]"
+     ]
+    },
+    "error": null
+   },
+   "58": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [当你能听懂足够的词时这很有意思]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 3 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [当你能听懂足够的词时这很有意思]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 3 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "61": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "61": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "644": [
+      "L2: vocab violations in 3 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "66": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 duplicate phrase(s) within this LEGO: \"并不难\""
+    ],
+    "new_issues_anywhere": {
+     "66": [
+      "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "69": {
+    "seed_issues_planned": [
+     "L1: vocab violations in 5 phrase(s)",
+     "L2: BUILD: need 3+, got 2",
+     "L2: vocab violations in 7 phrase(s)",
+     "L4: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: vocab violations in 5 phrase(s)",
+     "L2: BUILD: need 3+, got 2",
+     "L2: vocab violations in 7 phrase(s)",
+     "L4: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "74": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "74": [
+      "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "76": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [的这么多很满意]",
+     "L1: BUILD: need 3+, got 2",
+     "L1: vocab violations in 4 phrase(s)",
+     "L2: 1 duplicate phrase(s) within this LEGO: \"她已经做了\"",
+     "L3: 2 duplicate phrase(s) within this LEGO: \"我很满意\", \"你满意吗？\"",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [的这么多很满意]",
+     "L1: BUILD: need 3+, got 2",
+     "L1: vocab violations in 4 phrase(s)",
+     "L2: 1 duplicate phrase(s) within this LEGO: \"她已经做了\"",
+     "L3: 2 duplicate phrase(s) within this LEGO: \"我很满意\", \"你满意吗？\"",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "78": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [的是什么]",
+     "L1: vocab violations in 2 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [的是什么]",
+     "L1: 1 duplicate phrase(s) within this LEGO: \"你明白吗？\"",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "78": [
+      "L1: vocab violations in 2 phrase(s)"
+     ],
+     "176": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [明年能不能帮忙]",
+      "L1: vocab violations in 8 phrase(s)"
+     ],
+     "520": [
+      "L1: vocab violations in 2 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "80": {
+    "seed_issues_planned": [
+     "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 4",
+     "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "83": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "83": [
+      "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "88": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [还没准备好跟我不认识的人说话]",
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 2 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [还没准备好跟我不认识的人说话]",
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 2 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "97": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "101": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 2 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: vocab violations in 4 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [这门语言]",
+     "L3: vocab violations in 7 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: vocab violations in 7 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "101": [
+      "L3: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L3: vocab violations in 2 phrase(s)",
+      "L4: vocab violations in 4 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "102": {
+    "seed_issues_planned": [
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "104": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "104": [
+      "L2: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "391": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [正朝公交车走去的那个人]",
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "105": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [这就是他不知道答案的原因]",
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [这就是他不知道答案的原因]",
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "107": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "108": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 1 (3 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "108": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "111": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [当我们学到新东西时它会改变我们的大脑]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [当我们学到新东西时它会改变我们的大脑]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 7 phrase(s)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "111": [
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "116": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [这不是我能做出的最好选择]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 2 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [这不是我能做出的最好选择]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "116": [
+      "L2: vocab violations in 2 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "117": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: USE: need 5+, got 4"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "117": [
+      "L3: USE: need 5+, got 4"
+     ]
+    },
+    "error": null
+   },
+   "122": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "122": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "125": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "128": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "138": {
+    "seed_issues_planned": [
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "142": {
+    "seed_issues_planned": [
+     "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "142": [
+      "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "144": [
+      "L1: vocab violations in 2 phrase(s)"
+     ],
+     "154": [
+      "L1: vocab violations in 3 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "144": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: 1 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "144": [
+      "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "150": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "150": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "152": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [早知道你想要什么我会做得不一样]",
+     "L1: BUILD: need 3+, got 2",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [早知道你想要什么我会做得不一样]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "152": [
+      "L1: BUILD: need 3+, got 2"
+     ]
+    },
+    "error": null
+   },
+   "163": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 3"
+    ],
+    "new_issues_anywhere": {
+     "163": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "165": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "165": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "170": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "171": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "174": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "191": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "191": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "198": {
+    "seed_issues_planned": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)",
+     "L1: vocab violations in 8 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: 8 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (8 component phrases excluded)",
+     "L1: vocab violations in 8 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "200": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [们说他们想确保我们按时完成一切]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [们说他们想确保我们按时完成一切]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "204": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "217": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 3 phrase(s)",
+     "L2: vocab violations in 3 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: vocab violations in 6 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 3 phrase(s)",
+     "L2: vocab violations in 3 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: vocab violations in 6 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "219": {
+    "seed_issues_planned": [
+     "L1: 3 duplicate phrase(s) within this LEGO: \"很舒服\", \"这里很舒服\", \"这个很舒服\""
+    ],
+    "seed_issues_live": [
+     "L1: 3 duplicate phrase(s) within this LEGO: \"很舒服\", \"这里很舒服\", \"这个很舒服\""
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "221": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2",
+     "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2",
+     "L3: USE: need 5+, got 4"
+    ],
+    "new_issues_anywhere": {
+     "221": [
+      "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "248": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [部电影太糟了我想退钱]",
+      "L1: vocab violations in 1 phrase(s)",
+      "L2: vocab violations in 3 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "234": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "245": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "245": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "246": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "248": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L2: vocab violations in 2 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "248": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "251": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "251": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "262": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "267": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [有你朋友的消息吗]",
+     "L1: vocab violations in 8 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "267": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "276": [
+      "L1: vocab violations in 4 phrase(s)"
+     ],
+     "277": [
+      "L1: vocab violations in 1 phrase(s)",
+      "L2: vocab violations in 2 phrase(s)"
+     ],
+     "335": [
+      "L2: vocab violations in 2 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "271": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "276": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [待一会儿]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 4 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [待一会儿]",
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 5 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "276": [
+      "L1: vocab violations in 4 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "301": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "306": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "313": {
+    "seed_issues_planned": [
+     "L1: vocab violations in 4 phrase(s)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: vocab violations in 4 phrase(s)",
+     "L2: USE: need 5+, got 4",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "313": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "371": [
+      "Tiling: Seed target contains vocabulary not covered by LEGOs: [场电影]",
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "315": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 2 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [车]",
+     "L1: vocab violations in 4 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "315": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L1: vocab violations in 2 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "320": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "320": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "327": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "327": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L1: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "332": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "335": {
+    "seed_issues_planned": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [些有价值的想法]",
+     "L1: USE: need 5+, got 4",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 0 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 2 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [些有价值的想法]",
+     "L1: USE: need 5+, got 4",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: vocab violations in 10 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "335": [
+      "L2: BUILD: need 3+, got 0 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: vocab violations in 2 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "341": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "341": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "348": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "351": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "351": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "363": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "363": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "365": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "370": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "370": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "374": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "375": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "375": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "378": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "378": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "382": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "385": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "385": [
+      "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "388": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "388": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "393": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "395": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "396": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "396": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "397": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "398": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "398": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "403": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "403": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L2: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "404": {
+    "seed_issues_planned": [
+     "L1: 9 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (9 component phrases excluded)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 9 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 0 (9 component phrases excluded)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "408": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "408": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "411": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "413": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "419": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 5 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (5 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {
+     "419": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "421": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "425": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {
+     "425": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "430": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "430": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "432": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "432": [
+      "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "434": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "434": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+      "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ],
+     "612": [
+      "L2: vocab violations in 1 phrase(s)"
+     ]
+    },
+    "error": null
+   },
+   "436": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "436": [
+      "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "441": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {
+     "441": [
+      "L2: BUILD: need 3+, got 1"
+     ]
+    },
+    "error": null
+   },
+   "447": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "447": [
+      "L3: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "450": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": [
+   40,
+   41,
+   43,
+   49,
+   53,
+   55,
+   57,
+   61,
+   66,
+   74,
+   78,
+   83,
+   101,
+   104,
+   108,
+   111,
+   116,
+   117,
+   122,
+   142,
+   144,
+   150,
+   152,
+   163,
+   165,
+   191,
+   221,
+   245,
+   248,
+   251,
+   267,
+   276,
+   313,
+   315,
+   320,
+   327,
+   335,
+   341,
+   351,
+   363,
+   370,
+   375,
+   378,
+   385,
+   388,
+   396,
+   398,
+   403,
+   408,
+   419,
+   425,
+   430,
+   432,
+   434,
+   436,
+   441,
+   447
+  ]
+ }
 }

@@ -1,7 +1,7 @@
 {
  "course": "zho_for_jpn",
  "roman_flags": [],
- "dumped": "2026-11-18T14:40:16Z",
+ "dumped": "2026-11-19T11:00:40Z",
  "decisions": 115,
  "verdicts": {
   "grow": 31,
@@ -78,7 +78,60 @@
   295,
   300
  ],
- "problems": [],
+ "problems": [
+  "S0090L01: untaught target in row 'もっとゆっくり話していただければ嬉しいです。 | 如果你可以说慢一点就太好了。' (stuck at '可以说慢一点就太好了')",
+  "S0153L01: below the validator floor after plan (build 3/3, use 4/5)",
+  "S0155L02: untaught target in row '彼女は数分待ちました | 她等了几分钟' (stuck at '几分钟')",
+  "S0155L02: untaught target in row 'もう数分待てます | 我能再等几分钟' (stuck at '几分钟')",
+  "S0155L02: untaught target in row '数分だけ必要です | 我只需要几分钟' (stuck at '几分钟')",
+  "S0155L02: untaught target in row '数分待ってもらえますか？ | 你能等几分钟吗？' (stuck at '几分钟吗')",
+  "S0155L02: untaught target in row 'もちろん数分待てます | 当然我能等几分钟' (stuck at '几分钟')",
+  "S0155L02: untaught target in row '数分しかかからないと思いました | 我以为只需要几分钟' (stuck at '几分钟')",
+  "S0155L02: untaught target in row '数分後に始められます | 几分钟以后我能开始' (stuck at '几分钟以后我能开始')",
+  "S0155L02: untaught target in row 'なぜ数分必要ですか？ | 为什么你需要几分钟？' (stuck at '几分钟')",
+  "S0172L01: below the validator floor after plan (build 3/3, use 4/5)",
+  "S0172L01: untaught target in row 'これはとても助かります | 这会很有帮助。' (stuck at '很有帮助')",
+  "S0181L02: untaught target in row '母はとても嬉しい | 妈妈非常高兴' (stuck at '高兴')",
+  "S0181L03: below the validator floor after plan (build 3/3, use 3/5)",
+  "S0234L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0234L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0236L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0239L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0240L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0244L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0244L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0247L02: untaught target in row '彼はなかなか嬉しそうだ。 | 他挺高兴的。' (stuck at '高兴的')",
+  "S0248L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0248L02: untaught target in row 'とてもひどい | 很差' (stuck at '很差')",
+  "S0248L02: untaught target in row 'あの映画はとてもひどい。 | 那部电影很差。' (stuck at '很差')",
+  "S0248L02: untaught target in row '私はあの本はとてもひどいと思う。 | 我觉得那本书很差。' (stuck at '很差')",
+  "S0248L02: untaught target in row '彼のやり方はとてもひどい。 | 他做得很差。' (stuck at '很差')",
+  "S0248L02: untaught target in row '父はあの本はとてもひどいと思う。 | 我爸爸觉得那本书很差。' (stuck at '很差')",
+  "S0250L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0251L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0254L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0256L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0258L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0259L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0260L01: untaught target in row '全然嬉しくない | 一点都不高兴' (stuck at '高兴')",
+  "S0260L01: untaught target in row '父は全然嬉しくない。 | 我爸爸一点都不高兴。' (stuck at '高兴')",
+  "S0261L04: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0262L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0266L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0267L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0270L03: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0271L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0277L04: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0278L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0279L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0280L01: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0280L02: below the validator floor after plan (build 2/3, use 6/5)",
+  "S0288L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0291L01: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0291L02: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0292L03: below the validator floor after plan (build 2/3, use 5/5)",
+  "S0300L02: below the validator floor after plan (build 3/3, use 4/5)"
+ ],
  "auto_substitutions": [],
  "zut_after_changed": {},
  "later_duplicates": [],
@@ -321,6 +374,21 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "もっとゆっくり話していただければ嬉しいです。",
+     "target": "如果你可以说慢一点就太好了。",
+     "uncovered": "可以说慢一点就太好了"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 8,
     "sample": [
@@ -509,6 +577,15 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -625,6 +702,56 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "彼女は数分待ちました",
+     "target": "她等了几分钟",
+     "uncovered": "几分钟"
+    },
+    {
+     "known": "もう数分待てます",
+     "target": "我能再等几分钟",
+     "uncovered": "几分钟"
+    },
+    {
+     "known": "数分だけ必要です",
+     "target": "我只需要几分钟",
+     "uncovered": "几分钟"
+    },
+    {
+     "known": "数分待ってもらえますか？",
+     "target": "你能等几分钟吗？",
+     "uncovered": "几分钟吗"
+    },
+    {
+     "known": "もちろん数分待てます",
+     "target": "当然我能等几分钟",
+     "uncovered": "几分钟"
+    },
+    {
+     "known": "数分しかかからないと思いました",
+     "target": "我以为只需要几分钟",
+     "uncovered": "几分钟"
+    },
+    {
+     "known": "数分後に始められます",
+     "target": "几分钟以后我能开始",
+     "uncovered": "几分钟以后我能开始"
+    },
+    {
+     "known": "なぜ数分必要ですか？",
+     "target": "为什么你需要几分钟？",
+     "uncovered": "几分钟"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -778,6 +905,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -817,11 +953,6 @@
     "target_in_seed": true,
     "syllables": 2
    },
-   "known_inflected_rows": [
-    "B02",
-    "U02",
-    "U05"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0172L01B01",
@@ -902,6 +1033,21 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "これはとても助かります",
+     "target": "这会很有帮助。",
+     "uncovered": "很有帮助"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1031,6 +1177,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1070,10 +1225,6 @@
     "target_in_seed": true,
     "syllables": 1
    },
-   "known_inflected_rows": [
-    "U06",
-    "U07"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0181L01B02",
@@ -1185,6 +1336,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1301,6 +1461,21 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "母はとても嬉しい",
+     "target": "妈妈非常高兴",
+     "uncovered": "高兴"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1399,6 +1574,15 @@
     "use": 3
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 3,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1515,6 +1699,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1558,13 +1751,6 @@
     "target_in_seed": true,
     "syllables": 1
    },
-   "known_inflected_rows": [
-    "B03",
-    "U01",
-    "U05",
-    "U06",
-    "U07"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0197L01B01",
@@ -1672,6 +1858,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1788,6 +1983,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -1827,12 +2031,6 @@
     "target_in_seed": true,
     "syllables": 1
    },
-   "known_inflected_rows": [
-    "U02",
-    "U03",
-    "U04",
-    "U05"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0203L01B01",
@@ -1925,6 +2123,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2045,6 +2252,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2161,6 +2377,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2277,6 +2502,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2428,6 +2662,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2464,13 +2707,6 @@
     "target_in_seed": true,
     "syllables": 2
    },
-   "known_inflected_rows": [
-    "B01",
-    "B02",
-    "U02",
-    "U03",
-    "U05"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0210L01B01",
@@ -2572,6 +2808,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2691,6 +2936,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2846,6 +3100,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -2971,6 +3234,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3096,6 +3368,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3221,6 +3502,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3486,6 +3776,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3538,13 +3837,6 @@
     "target_in_seed": true,
     "syllables": 5
    },
-   "known_inflected_rows": [
-    "U01",
-    "U05",
-    "B04",
-    "U07",
-    "U08"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0235L02B01",
@@ -3722,6 +4014,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -3761,14 +4062,6 @@
     "target_in_seed": true,
     "syllables": 2
    },
-   "known_inflected_rows": [
-    "B02",
-    "U01",
-    "U02",
-    "U03",
-    "U04",
-    "U05"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0236L01B01",
@@ -3873,6 +4166,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4086,6 +4388,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4268,6 +4579,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4518,6 +4838,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4643,6 +4972,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -4801,12 +5139,6 @@
     "target_in_seed": true,
     "syllables": 4
    },
-   "known_inflected_rows": [
-    "B02",
-    "B03",
-    "U02",
-    "U06"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0240L03B01",
@@ -4925,6 +5257,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -5172,6 +5513,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -5407,6 +5757,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -5532,6 +5891,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -6277,6 +6645,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -6404,6 +6781,21 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "彼はなかなか嬉しそうだ。",
+     "target": "他挺高兴的。",
+     "uncovered": "高兴的"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -6529,6 +6921,41 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "とてもひどい",
+     "target": "很差",
+     "uncovered": "很差"
+    },
+    {
+     "known": "あの映画はとてもひどい。",
+     "target": "那部电影很差。",
+     "uncovered": "很差"
+    },
+    {
+     "known": "私はあの本はとてもひどいと思う。",
+     "target": "我觉得那本书很差。",
+     "uncovered": "很差"
+    },
+    {
+     "known": "彼のやり方はとてもひどい。",
+     "target": "他做得很差。",
+     "uncovered": "很差"
+    },
+    {
+     "known": "父はあの本はとてもひどいと思う。",
+     "target": "我爸爸觉得那本书很差。",
+     "uncovered": "很差"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -6686,6 +7113,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -7048,6 +7484,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -7173,6 +7618,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -7622,6 +8076,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -7948,6 +8411,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -8142,6 +8614,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -8261,6 +8742,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -8426,10 +8916,6 @@
     "target_in_seed": true,
     "syllables": 5
    },
-   "known_inflected_rows": [
-    "B04",
-    "B05"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0254L03B01",
@@ -8558,6 +9044,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -8825,6 +9320,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -8950,6 +9454,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -9075,6 +9588,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -9313,6 +9835,26 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [
+    {
+     "known": "全然嬉しくない",
+     "target": "一点都不高兴",
+     "uncovered": "高兴"
+    },
+    {
+     "known": "父は全然嬉しくない。",
+     "target": "我爸爸一点都不高兴。",
+     "uncovered": "高兴"
+    }
+   ],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -9532,6 +10074,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -9792,6 +10343,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -9917,6 +10477,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10163,6 +10732,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10413,6 +10991,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10558,6 +11145,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10917,6 +11513,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -10958,9 +11563,6 @@
     "target_in_seed": true,
     "syllables": 2
    },
-   "known_inflected_rows": [
-    "B02"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0271L01B01",
@@ -11056,6 +11658,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -11101,13 +11712,6 @@
     "target_in_seed": true,
     "syllables": 3
    },
-   "known_inflected_rows": [
-    "B02",
-    "U02",
-    "U03",
-    "U05",
-    "U06"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0271L04B01",
@@ -11245,6 +11849,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -11395,6 +12008,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -11612,6 +12234,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -11850,6 +12481,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12013,6 +12653,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12189,12 +12838,8 @@
     "syllables": 4
    },
    "known_inflected_rows": [
-    "B02",
-    "U03",
-    "U05",
     "B04",
-    "U06",
-    "U07"
+    "U06"
    ],
    "basket": [
     {
@@ -12332,6 +12977,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12600,6 +13254,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12775,6 +13438,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -12891,6 +13563,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13022,6 +13703,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13265,6 +13955,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13390,6 +14089,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13533,6 +14241,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13574,14 +14291,6 @@
     "target_in_seed": true,
     "syllables": 2
    },
-   "known_inflected_rows": [
-    "B02",
-    "B03",
-    "U02",
-    "U03",
-    "U05",
-    "U06"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0281L01B01",
@@ -13740,13 +14449,6 @@
     "target_in_seed": true,
     "syllables": 2
    },
-   "known_inflected_rows": [
-    "U01",
-    "U03",
-    "U04",
-    "U05",
-    "B04"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0281L02B01",
@@ -13868,6 +14570,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -13916,13 +14627,6 @@
     "target_in_seed": true,
     "syllables": 3
    },
-   "known_inflected_rows": [
-    "U03",
-    "U04",
-    "U06",
-    "U07",
-    "U08"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0281L04B01",
@@ -14071,6 +14775,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14202,8 +14915,8 @@
    "knock": null,
    "seed": {
     "n": 283,
-    "known": "Chineseを話す友だち、誰がいる？",
-    "target": "你哪些朋友会说Chinese？"
+    "known": "中国語を話す友だち、誰がいる？",
+    "target": "你哪些朋友会说中文？"
    },
    "before": {
     "known": "どれ・どんな",
@@ -14234,13 +14947,6 @@
     "target_in_seed": true,
     "syllables": 4
    },
-   "known_inflected_rows": [
-    "B03",
-    "U02",
-    "U04",
-    "U06",
-    "B04"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0283L01B01",
@@ -14356,6 +15062,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14678,6 +15393,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14794,6 +15518,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -14839,14 +15572,6 @@
     "target_in_seed": true,
     "syllables": 3
    },
-   "known_inflected_rows": [
-    "U01",
-    "U02",
-    "U03",
-    "U04",
-    "U05",
-    "U06"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0289L01B01",
@@ -14977,6 +15702,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -15256,6 +15990,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -15502,6 +16245,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -15621,6 +16373,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -15737,6 +16498,15 @@
     "use": 5
    },
    "extra": [],
+   "floor": {
+    "build": 2,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16022,6 +16792,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16150,6 +16929,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16304,6 +17092,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16470,6 +17267,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16523,13 +17329,6 @@
     "target_in_seed": true,
     "syllables": 5
    },
-   "known_inflected_rows": [
-    "B05",
-    "B07",
-    "U08",
-    "U09",
-    "U10"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0295L01B01",
@@ -16724,6 +17523,15 @@
     "build": 4
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -16772,10 +17580,6 @@
     "target_in_seed": true,
     "syllables": 3
    },
-   "known_inflected_rows": [
-    "U07",
-    "U08"
-   ],
    "basket": [
     {
      "id": "zho_for_jpn:S0300L01B01",
@@ -16926,6 +17730,15 @@
     "use": 6
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 6,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -17039,6 +17852,15 @@
     "use": 4
    },
    "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 4,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
    "knock_census": {
     "rows_pairing_old_gloss": 0,
     "sample": []
@@ -23207,8 +24029,8 @@
     "known_text": "Chineseを話すのはどの友だち？"
    },
    "expect": {
-    "known_text": "Chineseを話す友だち、誰がいる？",
-    "target_text": "你哪些朋友会说Chinese？"
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？"
    }
   },
   {
@@ -24479,8 +25301,12 @@
    }
   }
  ],
+ "source": "qa-copy",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
  "validator": {
-  "at": "2026-11-18T18:40:01Z",
+  "at": "2026-11-19T11:19:26Z",
+  "on": "nightly copy ssi_copy_20261119t033000z",
   "baseline_failing_seeds": 150,
   "per_seed": {
    "90": {
@@ -25081,15 +25907,9 @@
     "error": null
    },
    "283": {
-    "seed_issues_planned": [
-     "L2: BUILD: need 3+, got 0"
-    ],
+    "seed_issues_planned": [],
     "seed_issues_live": [],
-    "new_issues_anywhere": {
-     "283": [
-      "L2: BUILD: need 3+, got 0"
-     ]
-    },
+    "new_issues_anywhere": {},
     "error": null
    },
    "284": {
@@ -25200,15 +26020,7 @@
    }
   },
   "seeds_with_new_issues": [
-   90,
-   283
-  ],
-  "note": "run 18 Nov 18:40Z before the store pause; not re-run since (PENDING any re-run, store paused)"
- },
- "dryRun": {
-  "status": "PENDING (store paused)",
-  "reason": "Tom ruled 18 Nov 19:57Z: no store steps until Popty load gate is governed and writers are resumed; dry run never ran for this shard",
-  "run_when_allowed": "tools/dbslot.sh python3 -I tools/dryrun.py zho_for_jpn --tag -b --chunk 50",
-  "chunks": []
+   90
+  ]
  }
 }
