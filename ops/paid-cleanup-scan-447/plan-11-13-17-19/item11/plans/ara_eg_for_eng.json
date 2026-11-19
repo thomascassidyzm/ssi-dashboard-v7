@@ -1,0 +1,1257 @@
+{
+ "course": "ara_eg_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-18T18:43:10Z",
+ "decisions": 7,
+ "verdicts": {
+  "rebuild-rows": 6,
+  "kai": 1
+ },
+ "touched_seeds": [
+  65,
+  105,
+  110,
+  124,
+  133,
+  150
+ ],
+ "problems": [
+  "S0105L01 U01 rebuilt row does not contain the LEGO: ['that is why', 'ده السبب ليه']",
+  "S0105L01 U05 rebuilt row does not contain the LEGO: [\"that is why he didn't know the answer\", 'ده السبب ليه ماكانش عارف الإجابة']"
+ ],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0065L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows use the noun الاختبار / اختبار (\"testing\"), never taught, under the verb LEGO \"test | تختبر\". Both are reworded to the verb. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 65,
+    "known": "It's important to take time to test yourself.",
+    "target": "مهم إنك تاخد وقت تختبر نفسك."
+   },
+   "before": {
+    "known": "test",
+    "target": "تختبر",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "test",
+    "target": "تختبر",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_eg_for_eng:S0065L03B01",
+     "role": "build",
+     "before": [
+      "test",
+      "تختبر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03B02",
+     "role": "build",
+     "before": [
+      "take time to test",
+      "تاخد وقت تختبر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03B03",
+     "role": "build",
+     "before": [
+      "it's key to test",
+      "مهم تختبر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03U01",
+     "role": "use",
+     "before": [
+      "it's important to take time to test",
+      "مهم إنك تاخد وقت تختبر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03U02",
+     "role": "use",
+     "before": [
+      "take time to test more",
+      "تاخد وقت تختبر أكتر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03U03",
+     "role": "use",
+     "before": [
+      "it's important to test",
+      "مهم إنك تختبر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03U04",
+     "role": "use",
+     "before": [
+      "could you test",
+      "ممكن تختبر؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03U05",
+     "role": "use",
+     "before": [
+      "testing is useful",
+      "الاختبار مفيد"
+     ],
+     "action": [
+      "it's useful to test",
+      "مفيد تختبر"
+     ]
+    },
+    {
+     "id": "ara_eg_for_eng:S0065L03U06",
+     "role": "use",
+     "before": [
+      "testing Arabic is fun",
+      "اختبار العربي ممتع"
+     ],
+     "action": [
+      "it's important to test more",
+      "مهم إنك تختبر أكتر"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_eg_for_eng:S0065L03B04",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 65,
+     "lego_index": 3,
+     "known_text": "it's useful to test more",
+     "target_text": "مفيد تختبر أكتر",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 3,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "mufiid tikhtibir aktar"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0105L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say علشان كده (\"that is why\"), the seed's OLD wording, under the LEGO \"the reason | السبب\". The row is the seed sentence, still in the wording the seed had before it was changed; it is brought to the seed's live words, English unchanged. U01 becomes the seed's opening \"that is why | ده السبب ليه\". Their English is the seed's own (\"that is why\"), which is why it does not literally say \"the reason\".",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 105,
+    "known": "That is why he didn't know the answer.",
+    "target": "ده السبب ليه ماكانش عارف الإجابة."
+   },
+   "before": {
+    "known": "the reason",
+    "target": "السبب",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "the reason",
+    "target": "السبب",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['reason']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_eg_for_eng:S0105L01B01",
+     "role": "build",
+     "before": [
+      "the reason before",
+      "السبب قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01B02",
+     "role": "build",
+     "before": [
+      "the reason from before",
+      "السبب من قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01B03",
+     "role": "build",
+     "before": [
+      "the reason today",
+      "السبب النهارده كده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01U01",
+     "role": "use",
+     "before": [
+      "that is why",
+      "علشان كده"
+     ],
+     "action": [
+      "that is why",
+      "ده السبب ليه"
+     ]
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01U02",
+     "role": "use",
+     "before": [
+      "the reason here",
+      "السبب هنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01U03",
+     "role": "use",
+     "before": [
+      "the reason today",
+      "السبب النهارده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01U04",
+     "role": "use",
+     "before": [
+      "that's the reason",
+      "ده السبب"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0105L01U05",
+     "role": "use",
+     "before": [
+      "that is why he didn't know the answer",
+      "علشان كده ماكانش عارف الإجابة"
+     ],
+     "action": [
+      "that is why he didn't know the answer",
+      "ده السبب ليه ماكانش عارف الإجابة"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0110L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says أرتاح (\"I relax\") under the LEGO \"we relax | نرتاح\", a different verb form. It is reworded to the seed's own ending, which says نرتاح (the seed's English there is \"I'd like to relax\"). One use row is added to reach five. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 110,
+    "known": "We're friends, and after we finish I'd like to relax.",
+    "target": "إحنا أصحاب، و بعد ما نخلص أنا حابب نرتاح."
+   },
+   "before": {
+    "known": "we relax",
+    "target": "نرتاح",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "we relax",
+    "target": "نرتاح",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_eg_for_eng:S0110L03B01",
+     "role": "build",
+     "before": [
+      "we relax before",
+      "نرتاح قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03B02",
+     "role": "build",
+     "before": [
+      "we relax from before",
+      "نرتاح من قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03B03",
+     "role": "build",
+     "before": [
+      "we relax today",
+      "نرتاح النهارده كده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03U02",
+     "role": "use",
+     "before": [
+      "we relax",
+      "نرتاح"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03U03",
+     "role": "use",
+     "before": [
+      "I'd like to relax",
+      "حابب أرتاح"
+     ],
+     "action": [
+      "after we finish I'd like to relax",
+      "بعد ما نخلص أنا حابب نرتاح"
+     ]
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03U04",
+     "role": "use",
+     "before": [
+      "we relax today",
+      "نرتاح النهارده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03U05",
+     "role": "use",
+     "before": [
+      "we relax here",
+      "نرتاح هنا"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_eg_for_eng:S0110L03U06",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 110,
+     "lego_index": 3,
+     "known_text": "we relax here today",
+     "target_text": "نرتاح هنا النهارده",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "nirtaah hina al-nahaarda"
+    },
+    {
+     "id": "ara_eg_for_eng:S0110L03U07",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 110,
+     "lego_index": 3,
+     "known_text": "after we finish we relax",
+     "target_text": "بعد ما نخلص نرتاح",
+     "phrase_role": "use",
+     "position": 10,
+     "word_count": 4,
+     "lego_position": "end",
+     "lego_count": 1,
+     "target_text_roman": "ba'd ma nkhallas nirtaah"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0124L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say افتكرت (a different verb: \"remembered / reckoned\") under the LEGO \"I thought | فكرت\". The row is the seed sentence, still in the wording the seed had before it was changed; it is brought to the seed's live words, English unchanged. The other row takes فكرت in the same sentence. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 124,
+    "known": "I thought that was a good idea.",
+    "target": "أنا فكرت إن دي فكرة كويسة."
+   },
+   "before": {
+    "known": "I thought",
+    "target": "فكرت",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "I thought",
+    "target": "فكرت",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_eg_for_eng:S0124L01B01",
+     "role": "build",
+     "before": [
+      "I thought",
+      "فكرت"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01B02",
+     "role": "build",
+     "before": [
+      "I thought before",
+      "فكرت من قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01B03",
+     "role": "build",
+     "before": [
+      "I thought today",
+      "فكرت النهارده كده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01U01",
+     "role": "use",
+     "before": [
+      "I thought it was good",
+      "افتكرت إنه كويس"
+     ],
+     "action": [
+      "I thought it was good",
+      "فكرت إنه كويس"
+     ]
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01U02",
+     "role": "use",
+     "before": [
+      "I thought about it",
+      "فكرت في ده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01U03",
+     "role": "use",
+     "before": [
+      "I thought that",
+      "فكرت إن"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01U04",
+     "role": "use",
+     "before": [
+      "I thought here",
+      "فكرت هنا"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0124L01U05",
+     "role": "use",
+     "before": [
+      "I thought that was a good idea",
+      "افتكرت إن دي فكرة كويسة"
+     ],
+     "action": [
+      "I thought that was a good idea",
+      "أنا فكرت إن دي فكرة كويسة"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_eg_for_eng:S0124L01B04",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 124,
+     "lego_index": 1,
+     "known_text": "I thought about it today",
+     "target_text": "فكرت في ده النهارده",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "fakkart fi da al-nahaarda"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0133L04",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row is \"get to know him | تتعرف عليه\", which belongs to another LEGO and has no معاه (\"with him\"); it is replaced by a phrase that holds the LEGO. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 133,
+    "known": "You get to know someone very well when you work together.",
+    "target": "بتتعرف على حد كويس قوي لما تشتغل معاه سوا."
+   },
+   "before": {
+    "known": "with him",
+    "target": "معاه",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "with him",
+    "target": "معاه",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['with', 'him']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_eg_for_eng:S0133L04B01",
+     "role": "build",
+     "before": [
+      "with him",
+      "معاه"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04B02",
+     "role": "build",
+     "before": [
+      "with him before",
+      "معاه من قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04B03",
+     "role": "build",
+     "before": [
+      "with him today",
+      "معاه النهارده كده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04U01",
+     "role": "use",
+     "before": [
+      "work with him",
+      "تشتغل معاه"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04U02",
+     "role": "use",
+     "before": [
+      "when you work with him",
+      "لما تشتغل معاه"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04U03",
+     "role": "use",
+     "before": [
+      "get to know him",
+      "تتعرف عليه"
+     ],
+     "action": [
+      "you work with him today",
+      "تشتغل معاه النهارده"
+     ]
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04U04",
+     "role": "use",
+     "before": [
+      "with him today",
+      "معاه النهارده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0133L04U05",
+     "role": "use",
+     "before": [
+      "with him here",
+      "معاه هنا"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_eg_for_eng:S0133L04B04",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 133,
+     "lego_index": 4,
+     "known_text": "with him here today",
+     "target_text": "معاه هنا النهارده",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "ma'aah hina al-nahaarda"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0143L01",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO \"same | نفس\" is an exact copy, both sides, of the earlier LEGO S0062L03, so it belongs to the duplicate-LEGO plan: a LEGO is introduced once and the later copy becomes not-new, whose basket is never played. The one bad row here (U05 \"same as before | زي قبل كده\", which has no نفس) goes with that decision; if the LEGO is kept as new instead, U05 is reworded to hold نفس.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 143,
+    "known": "It's the same thing as we were talking about earlier.",
+    "target": "نفس الحاجة اللي كنا بنتكلم عنها قبل كده."
+   },
+   "before": {
+    "known": "same",
+    "target": "نفس",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0150L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says \"can you | تقدر\", a different word, under the LEGO \"may | ممكن\". It is replaced by a ممكن phrase. (U03 and U05 hold ممكن with the English \"can\", the seed's own word for it, and stay.) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 150,
+    "known": "Can you tell me what your name is?",
+    "target": "ممكن تقول لي اسمك إيه؟"
+   },
+   "before": {
+    "known": "may",
+    "target": "ممكن",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "may",
+    "target": "ممكن",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['may']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_eg_for_eng:S0150L01B01",
+     "role": "build",
+     "before": [
+      "may",
+      "ممكن"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01B02",
+     "role": "build",
+     "before": [
+      "may before",
+      "ممكن من قبل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01B03",
+     "role": "build",
+     "before": [
+      "may today",
+      "ممكن النهارده كده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01U01",
+     "role": "use",
+     "before": [
+      "can you",
+      "تقدر"
+     ],
+     "action": [
+      "may I speak",
+      "ممكن أتكلم"
+     ]
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01U02",
+     "role": "use",
+     "before": [
+      "may I",
+      "ممكن"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01U03",
+     "role": "use",
+     "before": [
+      "can you speak",
+      "ممكن تتكلم"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01U04",
+     "role": "use",
+     "before": [
+      "may today",
+      "ممكن النهارده"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01U05",
+     "role": "use",
+     "before": [
+      "can I try",
+      "ممكن أحاول"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_eg_for_eng:S0150L01B04",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 150,
+     "lego_index": 1,
+     "known_text": "may I speak today",
+     "target_text": "ممكن أتكلم النهارده",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "mumkin atkallim al-nahaarda"
+    },
+    {
+     "id": "ara_eg_for_eng:S0150L01U06",
+     "course_code": "ara_eg_for_eng",
+     "seed_number": 150,
+     "lego_index": 1,
+     "known_text": "may I try today",
+     "target_text": "ممكن أحاول النهارده",
+     "phrase_role": "use",
+     "position": 10,
+     "word_count": 3,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "mumkin ahaawil al-nahaarda"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0065L03U05",
+   "set": {
+    "known_text": "it's useful to test",
+    "target_text": "مفيد تختبر",
+    "target_text_roman": "mufiid tikhtibir"
+   },
+   "expect": {
+    "known_text": "testing is useful",
+    "target_text": "الاختبار مفيد"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0065L03U06",
+   "set": {
+    "known_text": "it's important to test more",
+    "target_text": "مهم إنك تختبر أكتر",
+    "target_text_roman": "muhimm innak tikhtibir aktar"
+   },
+   "expect": {
+    "known_text": "testing Arabic is fun",
+    "target_text": "اختبار العربي ممتع"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0065L03B04",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 65,
+    "lego_index": 3,
+    "known_text": "it's useful to test more",
+    "target_text": "مفيد تختبر أكتر",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "mufiid tikhtibir aktar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0105L01U01",
+   "set": {
+    "target_text": "ده السبب ليه",
+    "target_text_roman": "da al-sabab leeh"
+   },
+   "expect": {
+    "known_text": "that is why",
+    "target_text": "علشان كده"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0105L01U05",
+   "set": {
+    "target_text": "ده السبب ليه ماكانش عارف الإجابة",
+    "target_text_roman": "da al-sabab leeh makaansh 'aarif al-ijaaba"
+   },
+   "expect": {
+    "known_text": "that is why he didn't know the answer",
+    "target_text": "علشان كده ماكانش عارف الإجابة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0110L03U03",
+   "set": {
+    "known_text": "after we finish I'd like to relax",
+    "target_text": "بعد ما نخلص أنا حابب نرتاح",
+    "target_text_roman": "ba'd ma nkhallas ana haabib nirtaah"
+   },
+   "expect": {
+    "known_text": "I'd like to relax",
+    "target_text": "حابب أرتاح"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0110L03U06",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 110,
+    "lego_index": 3,
+    "known_text": "we relax here today",
+    "target_text": "نرتاح هنا النهارده",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "nirtaah hina al-nahaarda"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0110L03U07",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 110,
+    "lego_index": 3,
+    "known_text": "after we finish we relax",
+    "target_text": "بعد ما نخلص نرتاح",
+    "phrase_role": "use",
+    "position": 10,
+    "word_count": 4,
+    "lego_position": "end",
+    "lego_count": 1,
+    "target_text_roman": "ba'd ma nkhallas nirtaah"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0124L01U01",
+   "set": {
+    "target_text": "فكرت إنه كويس",
+    "target_text_roman": "fakkart innu kwayyis"
+   },
+   "expect": {
+    "known_text": "I thought it was good",
+    "target_text": "افتكرت إنه كويس"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0124L01U05",
+   "set": {
+    "target_text": "أنا فكرت إن دي فكرة كويسة",
+    "target_text_roman": "ana fakkart inn di fikra kwayyisa"
+   },
+   "expect": {
+    "known_text": "I thought that was a good idea",
+    "target_text": "افتكرت إن دي فكرة كويسة"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0124L01B04",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 124,
+    "lego_index": 1,
+    "known_text": "I thought about it today",
+    "target_text": "فكرت في ده النهارده",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "fakkart fi da al-nahaarda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0133L04U03",
+   "set": {
+    "known_text": "you work with him today",
+    "target_text": "تشتغل معاه النهارده",
+    "target_text_roman": "tishtaghal ma'aah al-nahaarda"
+   },
+   "expect": {
+    "known_text": "get to know him",
+    "target_text": "تتعرف عليه"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0133L04B04",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 133,
+    "lego_index": 4,
+    "known_text": "with him here today",
+    "target_text": "معاه هنا النهارده",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "ma'aah hina al-nahaarda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0150L01U01",
+   "set": {
+    "known_text": "may I speak",
+    "target_text": "ممكن أتكلم",
+    "target_text_roman": "mumkin atkallim"
+   },
+   "expect": {
+    "known_text": "can you",
+    "target_text": "تقدر"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0150L01B04",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 150,
+    "lego_index": 1,
+    "known_text": "may I speak today",
+    "target_text": "ممكن أتكلم النهارده",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "mumkin atkallim al-nahaarda"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0150L01U06",
+    "course_code": "ara_eg_for_eng",
+    "seed_number": 150,
+    "lego_index": 1,
+    "known_text": "may I try today",
+    "target_text": "ممكن أحاول النهارده",
+    "phrase_role": "use",
+    "position": 10,
+    "word_count": 3,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "mumkin ahaawil al-nahaarda"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:31:39Z",
+  "baseline_failing_seeds": 577,
+  "per_seed": {
+   "65": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "105": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 2 phrase(s) fail containment",
+     "L1: USE: need 5+, got 3 (2 component phrases excluded)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "110": {
+    "seed_issues_planned": [
+     "L1: USE: need 5+, got 4",
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 4",
+     "L1: vocab violations in 1 phrase(s)",
+     "L3: USE: need 5+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "124": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 2 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 2 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "133": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 1 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 1 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: 1 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: vocab violations in 1 phrase(s)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "150": {
+    "seed_issues_planned": [
+     "L1: 1 duplicate phrase(s) within this LEGO: \"ممكن\"",
+     "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "150": [
+      "L1: 1 duplicate phrase(s) within this LEGO: \"ممكن\""
+     ]
+    },
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": [
+   150
+  ]
+ },
+ "validator_vs_unchanged": {
+  "65": {
+   "added": [],
+   "removed": [
+    "L3: 2 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 2 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "105": {
+   "added": [],
+   "removed": [
+    "L1: 2 phrase(s) fail containment",
+    "L1: USE: need 5+, got 3 (2 component phrases excluded)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "110": {
+   "added": [],
+   "removed": [
+    "L3: 1 phrase(s) fail containment",
+    "L3: USE: need 5+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "124": {
+   "added": [],
+   "removed": [
+    "L1: 2 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 2 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "133": {
+   "added": [],
+   "removed": [
+    "L4: 1 phrase(s) fail containment",
+    "L4: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "150": {
+   "added": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"ممكن\""
+   ],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  }
+ }
+}

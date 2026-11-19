@@ -1,0 +1,213 @@
+{
+ "course": "ara_lb_for_eng",
+ "legos": [
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say بلشت, a different verb for \"I began\" that the course does not teach here, under the LEGO \"I began | صرت\". Both are reworded to صرت; the English stays.",
+   "id": "S0077L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B03": [
+     "how I began",
+     "كيف صرت"
+    ],
+    "U04": [
+     "I'm surprised at how I began",
+     "مندهش كيف صرت"
+    ],
+    "U01": "keep"
+   }
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The seed sentence was changed to ما فهمت شو قلت, but its copy in this basket (U01) still says the old مش فاهم, which does not hold the LEGO \"I understood | فهمت\". U01 is brought to the seed's live words (its English is the seed's own, \"I don't understand\", which is why it does not literally say \"I understood\"). The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "add": [
+    [
+     "b",
+     "I understood now",
+     "فهمت هلق"
+    ],
+    [
+     "b",
+     "I understood more",
+     "فهمت أكتر"
+    ]
+   ],
+   "id": "S0078L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U01": [
+     "I don't understand what you said",
+     "ما فهمت شو قلت"
+    ],
+    "B01": "keep"
+   }
+  },
+  {
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says من (\"surprised FROM what happened\", which is the natural Lebanese after مندهش) under the LEGO \"about | عن\". Forcing عن into that sentence would be unnatural, so the row is replaced by one where عن is the natural word. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "add": [
+    [
+     "u",
+     "I want to know more about what happened",
+     "بدي أعرف أكتر عن شو صار"
+    ],
+    [
+     "b",
+     "more about this",
+     "أكتر عن هيك"
+    ]
+   ],
+   "id": "S0083L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U03": [
+     "I want to know about what happened",
+     "بدي أعرف عن شو صار"
+    ]
+   }
+  },
+  {
+   "why": "HOLD: KAI: the seed and its LEGO disagree, and no row fix is safe until one of them moves. The seed's Lebanese now ends كان أحلى; the LEGO is \"nicer | بيكون أحلى\" and the seed's own copy in the basket (U01) still says بيكون أحلى. Four rows drill أحلى alone or كان أحلى. Evidence: in Lebanese the b- form بيكون is the ordinary \"it will/would be\" after an open \"if you can…\" condition, while كان أحلى reads as past (\"it was / would have been nicer\"), so the likely right fix is the SEED back to بيكون أحلى (a seed edit, your call), after which the LEGO is the seed's words again and only B01, B03, U02, U04 need rewording to say بيكون أحلى. The LEGO's English \"nicer\" also does not match the seed's \"that would be great\".",
+   "id": "S0090L01",
+   "verdict": "kai"
+  },
+  {
+   "why": "HOLD: KAI: the LEGO was changed to \"the way | الطريقة\" but the seed still says الطريق and all 7 rows say الطريق. The scan expected a seed fix to الطريقة (the usual Lebanese word for \"way = method\"; الطريق is \"road\") that has not landed. If the seed becomes الطريقة الوحيدة اللي رح تشتغل, all 7 rows change الطريق → الطريقة with feminine agreement (اللي بتشتغل, منيحة); if the seed stays, the LEGO goes back to الطريق and nothing else moves (zero audio). Note \"a method | الطريقة\" is also a LEGO at seed 153.",
+   "id": "S0094L03",
+   "verdict": "kai"
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows do not say بشي at all (\"something good | شي منيح\", \"I know it now | بعرفو هلق\"); they are reworded onto the frame the basket already uses in U04 (\"I'm thinking of something\"). SEPARATE PROBLEM, not fixed here: this LEGO's English is \"in it\", but بشي means \"of/about something\"; the English of every row under it is built on that wrong gloss. That is the \"LEGO says what its seed does not\" family, which has no plan for this course yet; the two reworded rows carry correct English and will read oddly beside \"good in it | بشي منيح\" until the gloss is fixed. The basket stays one build row short for the builder; no row is added while the English gloss is wrong.",
+   "id": "S0098L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U01": [
+     "I'm thinking of something good",
+     "عم بفكر بشي منيح"
+    ],
+    "U02": [
+     "I'm thinking of something else",
+     "عم بفكر بشي تاني"
+    ],
+    "U03": "keep",
+    "U04": "keep"
+   }
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say عم يتغير (\"it is changing\", by itself), a different verb form from the LEGO \"he changes | يغير\" (changes something). They are reworded to the taught form with the seed's own \"shape\". The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught. U01 said الشكل (\"the shape\"), a form not taught by this seed (the LEGO is شكل), and is reworded too.",
+   "id": "S0126L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B03": [
+     "he is changing shape",
+     "عم يغير شكل"
+    ],
+    "U02": [
+     "he is changing shape now",
+     "عم يغير شكل هلق"
+    ],
+    "U01": [
+     "he changes shape a lot here",
+     "يغير شكل كتير هون"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "he changes shape here",
+     "يغير شكل هون"
+    ]
+   ]
+  },
+  {
+   "known": "than",
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says من اللي, another way to say \"than what\", under the LEGO مما; it is reworded to مما. ALSO: the LEGO's English is the broken text \"th\" (and its three build rows say \"th\", \"earlier th\", \"more th\"). That is damage, already there in last night's copy; the plan restores \"than\" on the LEGO and those rows, since the seed's own English is \"earlier than\". No other LEGO in the course is glossed \"than\". The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "id": "S0144L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": "keep",
+    "B02": [
+     "earlier than",
+     "أبكر مما"
+    ],
+    "B03": [
+     "more than",
+     "أكتر مما"
+    ],
+    "U02": [
+     "I know more than what I need",
+     "بعرف أكتر مما بدي"
+    ],
+    "U01": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "add": [
+    [
+     "b",
+     "more than I want",
+     "أكتر مما بدي"
+    ]
+   ]
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One build row says \"not happy now | مش مبسوط هلق\" and drops the LEGO's بعد (\"anymore\"); it is reworded to hold the whole LEGO. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "id": "S0145L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B03": [
+     "not happy anymore here",
+     "مش مبسوط بعد هون"
+    ],
+    "U01": "keep",
+    "U05": "keep"
+   },
+   "add": [
+    [
+     "b",
+     "not happy anymore now",
+     "مش مبسوط بعد هلق"
+    ]
+   ]
+  }
+ ],
+ "roman": {
+  "كيف صرت": "kiif sirt",
+  "مندهش كيف صرت": "mundahish kiif sirt",
+  "ما فهمت شو قلت": "ma fihimt shu 'ult",
+  "فهمت هلق": "fihimt halla'",
+  "فهمت أكتر": "fihimt aktar",
+  "بدي أعرف عن شو صار": "biddi a'rif 'an shu saar",
+  "بدي أعرف أكتر عن شو صار": "biddi a'rif aktar 'an shu saar",
+  "أكتر عن هيك": "aktar 'an hiik",
+  "عم بفكر بشي منيح": "'am bfakkir bishi mniih",
+  "عم بفكر بشي تاني": "'am bfakkir bishi taani",
+  "عم يغير شكل": "'am yighayyir shakil",
+  "عم يغير شكل هلق": "'am yighayyir shakil halla'",
+  "يغير شكل كتير هون": "yighayyir shakil ktiir hoon",
+  "يغير شكل هون": "yighayyir shakil hoon",
+  "أبكر مما": "abkar mimma",
+  "أكتر مما": "aktar mimma",
+  "بعرف أكتر مما بدي": "ba'rif aktar mimma biddi",
+  "أكتر مما بدي": "aktar mimma biddi",
+  "مش مبسوط بعد هون": "mish mabsuut ba'd hoon",
+  "مش مبسوط بعد هلق": "mish mabsuut ba'd halla'"
+ }
+}

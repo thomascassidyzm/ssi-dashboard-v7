@@ -1,0 +1,165 @@
+{
+ "course": "ara_eg_for_eng",
+ "legos": [
+  {
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows use the noun الاختبار / اختبار (\"testing\"), never taught, under the verb LEGO \"test | تختبر\". Both are reworded to the verb. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "id": "S0065L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U05": [
+     "it's useful to test",
+     "مفيد تختبر"
+    ],
+    "U06": [
+     "it's important to test more",
+     "مهم إنك تختبر أكتر"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "it's useful to test more",
+     "مفيد تختبر أكتر"
+    ]
+   ]
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say علشان كده (\"that is why\"), the seed's OLD wording, under the LEGO \"the reason | السبب\". The row is the seed sentence, still in the wording the seed had before it was changed; it is brought to the seed's live words, English unchanged. U01 becomes the seed's opening \"that is why | ده السبب ليه\". Their English is the seed's own (\"that is why\"), which is why it does not literally say \"the reason\".",
+   "id": "S0105L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U01": [
+     "that is why",
+     "ده السبب ليه"
+    ],
+    "U05": [
+     "that is why he didn't know the answer",
+     "ده السبب ليه ماكانش عارف الإجابة"
+    ]
+   }
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says أرتاح (\"I relax\") under the LEGO \"we relax | نرتاح\", a different verb form. It is reworded to the seed's own ending, which says نرتاح (the seed's English there is \"I'd like to relax\"). One use row is added to reach five. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "add": [
+    [
+     "u",
+     "we relax here today",
+     "نرتاح هنا النهارده"
+    ],
+    [
+     "u",
+     "after we finish we relax",
+     "بعد ما نخلص نرتاح"
+    ]
+   ],
+   "id": "S0110L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U03": [
+     "after we finish I'd like to relax",
+     "بعد ما نخلص أنا حابب نرتاح"
+    ]
+   }
+  },
+  {
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say افتكرت (a different verb: \"remembered / reckoned\") under the LEGO \"I thought | فكرت\". The row is the seed sentence, still in the wording the seed had before it was changed; it is brought to the seed's live words, English unchanged. The other row takes فكرت in the same sentence. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "id": "S0124L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U01": [
+     "I thought it was good",
+     "فكرت إنه كويس"
+    ],
+    "U05": [
+     "I thought that was a good idea",
+     "أنا فكرت إن دي فكرة كويسة"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "I thought about it today",
+     "فكرت في ده النهارده"
+    ]
+   ]
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row is \"get to know him | تتعرف عليه\", which belongs to another LEGO and has no معاه (\"with him\"); it is replaced by a phrase that holds the LEGO. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "id": "S0133L04",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U03": [
+     "you work with him today",
+     "تشتغل معاه النهارده"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "with him here today",
+     "معاه هنا النهارده"
+    ]
+   ]
+  },
+  {
+   "why": "HOLD: this LEGO \"same | نفس\" is an exact copy, both sides, of the earlier LEGO S0062L03, so it belongs to the duplicate-LEGO plan: a LEGO is introduced once and the later copy becomes not-new, whose basket is never played. The one bad row here (U05 \"same as before | زي قبل كده\", which has no نفس) goes with that decision; if the LEGO is kept as new instead, U05 is reworded to hold نفس.",
+   "id": "S0143L01",
+   "verdict": "kai"
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says \"can you | تقدر\", a different word, under the LEGO \"may | ممكن\". It is replaced by a ممكن phrase. (U03 and U05 hold ممكن with the English \"can\", the seed's own word for it, and stay.) The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "id": "S0150L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U01": [
+     "may I speak",
+     "ممكن أتكلم"
+    ],
+    "U03": "keep",
+    "U05": "keep"
+   },
+   "add": [
+    [
+     "b",
+     "may I speak today",
+     "ممكن أتكلم النهارده"
+    ],
+    [
+     "u",
+     "may I try today",
+     "ممكن أحاول النهارده"
+    ]
+   ]
+  }
+ ],
+ "roman": {
+  "مفيد تختبر": "mufiid tikhtibir",
+  "مهم إنك تختبر أكتر": "muhimm innak tikhtibir aktar",
+  "مفيد تختبر أكتر": "mufiid tikhtibir aktar",
+  "ده السبب ليه": "da al-sabab leeh",
+  "ده السبب ليه ماكانش عارف الإجابة": "da al-sabab leeh makaansh 'aarif al-ijaaba",
+  "بعد ما نخلص أنا حابب نرتاح": "ba'd ma nkhallas ana haabib nirtaah",
+  "نرتاح هنا النهارده": "nirtaah hina al-nahaarda",
+  "بعد ما نخلص نرتاح": "ba'd ma nkhallas nirtaah",
+  "فكرت إنه كويس": "fakkart innu kwayyis",
+  "أنا فكرت إن دي فكرة كويسة": "ana fakkart inn di fikra kwayyisa",
+  "فكرت في ده النهارده": "fakkart fi da al-nahaarda",
+  "تشتغل معاه النهارده": "tishtaghal ma'aah al-nahaarda",
+  "معاه هنا النهارده": "ma'aah hina al-nahaarda",
+  "ممكن أتكلم": "mumkin atkallim",
+  "ممكن أتكلم النهارده": "mumkin atkallim al-nahaarda",
+  "ممكن أحاول النهارده": "mumkin ahaawil al-nahaarda"
+ }
+}

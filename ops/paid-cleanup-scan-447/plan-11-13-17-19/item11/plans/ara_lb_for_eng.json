@@ -1,0 +1,1467 @@
+{
+ "course": "ara_lb_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-18T18:43:10Z",
+ "decisions": 9,
+ "verdicts": {
+  "rebuild-rows": 7,
+  "kai": 2
+ },
+ "touched_seeds": [
+  77,
+  78,
+  83,
+  98,
+  126,
+  144,
+  145
+ ],
+ "problems": [
+  "S0078L01 U01 rebuilt row does not contain the LEGO: [\"I don't understand what you said\", 'ما فهمت شو قلت']",
+  "S0098L01 U01 rebuilt row does not contain the LEGO: [\"I'm thinking of something good\", 'عم بفكر بشي منيح']",
+  "S0098L01 U02 rebuilt row does not contain the LEGO: [\"I'm thinking of something else\", 'عم بفكر بشي تاني']"
+ ],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0077L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say بلشت, a different verb for \"I began\" that the course does not teach here, under the LEGO \"I began | صرت\". Both are reworded to صرت; the English stays.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 77,
+    "known": "I'm surprised at how quickly I'm starting to understand.",
+    "target": "مندهش كيف صرت أفهم بسرعة."
+   },
+   "before": {
+    "known": "I began",
+    "target": "صرت",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "I began",
+    "target": "صرت",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['i', 'began']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0077L02B01",
+     "role": "build",
+     "before": [
+      "I began now",
+      "صرت هلق"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02B02",
+     "role": "build",
+     "before": [
+      "I began more",
+      "صرت أكتر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02B03",
+     "role": "build",
+     "before": [
+      "how I began",
+      "كيف بلشت"
+     ],
+     "action": [
+      "how I began",
+      "كيف صرت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02U01",
+     "role": "use",
+     "before": [
+      "I'm surprised at how quickly I'm starting to understand",
+      "مندهش كيف صرت أفهم بسرعة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02U02",
+     "role": "use",
+     "before": [
+      "I began to understand quickly",
+      "صرت أفهم بسرعة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02U03",
+     "role": "use",
+     "before": [
+      "I began to learn more",
+      "صرت أتعلم أكتر"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02U04",
+     "role": "use",
+     "before": [
+      "I'm surprised at how I began",
+      "مندهش كيف بلشت"
+     ],
+     "action": [
+      "I'm surprised at how I began",
+      "مندهش كيف صرت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0077L02U05",
+     "role": "use",
+     "before": [
+      "I began to understand a lot",
+      "صرت أفهم كتير"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0078L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The seed sentence was changed to ما فهمت شو قلت, but its copy in this basket (U01) still says the old مش فاهم, which does not hold the LEGO \"I understood | فهمت\". U01 is brought to the seed's live words (its English is the seed's own, \"I don't understand\", which is why it does not literally say \"I understood\"). The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 78,
+    "known": "I don't understand what you said.",
+    "target": "ما فهمت شو قلت."
+   },
+   "before": {
+    "known": "I understood",
+    "target": "فهمت",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "I understood",
+    "target": "فهمت",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['understood']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0078L01B01",
+     "role": "build",
+     "before": [
+      "I got it",
+      "فهمت"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01B02",
+     "role": "build",
+     "before": [
+      "I understood well",
+      "فهمت منيح"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01U01",
+     "role": "use",
+     "before": [
+      "I don't understand what you said",
+      "مش فاهم شو قلت"
+     ],
+     "action": [
+      "I don't understand what you said",
+      "ما فهمت شو قلت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01U02",
+     "role": "use",
+     "before": [
+      "I understood a lot",
+      "فهمت كتير"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01U03",
+     "role": "use",
+     "before": [
+      "I understood quickly",
+      "فهمت بسرعة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01U04",
+     "role": "use",
+     "before": [
+      "I understood more now",
+      "فهمت أكتر هلق"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01U05",
+     "role": "use",
+     "before": [
+      "I'm surprised at how much I understood",
+      "مندهش من قديش فهمت"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0078L01B03",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 78,
+     "lego_index": 1,
+     "known_text": "I understood now",
+     "target_text": "فهمت هلق",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 2,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "fihimt halla'"
+    },
+    {
+     "id": "ara_lb_for_eng:S0078L01B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 78,
+     "lego_index": 1,
+     "known_text": "I understood more",
+     "target_text": "فهمت أكتر",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 2,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "fihimt aktar"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0083L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says من (\"surprised FROM what happened\", which is the natural Lebanese after مندهش) under the LEGO \"about | عن\". Forcing عن into that sentence would be unnatural, so the row is replaced by one where عن is the natural word. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 83,
+    "known": "I agree with what you said about your friend.",
+    "target": "متفق مع شو قلتو عن صاحبك."
+   },
+   "before": {
+    "known": "about",
+    "target": "عن",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "about",
+    "target": "عن",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0083L01B01",
+     "role": "build",
+     "before": [
+      "about",
+      "عن"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01B02",
+     "role": "build",
+     "before": [
+      "about this",
+      "عن هيك"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01B03",
+     "role": "build",
+     "before": [
+      "about what happened",
+      "عن شو صار"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01U01",
+     "role": "use",
+     "before": [
+      "I know something about it",
+      "بعرف شي عن هيك"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01U03",
+     "role": "use",
+     "before": [
+      "I'm surprised about what happened",
+      "مندهش من شو صار"
+     ],
+     "action": [
+      "I want to know about what happened",
+      "بدي أعرف عن شو صار"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01U04",
+     "role": "use",
+     "before": [
+      "I feel good about it",
+      "أحس منيح عن هيك"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01U05",
+     "role": "use",
+     "before": [
+      "I want to know more about it",
+      "بدي أعرف أكتر عن هيك"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0083L01U06",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 83,
+     "lego_index": 1,
+     "known_text": "I want to know more about what happened",
+     "target_text": "بدي أعرف أكتر عن شو صار",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 6,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "biddi a'rif aktar 'an shu saar"
+    },
+    {
+     "id": "ara_lb_for_eng:S0083L01B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 83,
+     "lego_index": 1,
+     "known_text": "more about this",
+     "target_text": "أكتر عن هيك",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 3,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "aktar 'an hiik"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0090L01",
+   "verdict": "kai",
+   "why": "HOLD: KAI: the seed and its LEGO disagree, and no row fix is safe until one of them moves. The seed's Lebanese now ends كان أحلى; the LEGO is \"nicer | بيكون أحلى\" and the seed's own copy in the basket (U01) still says بيكون أحلى. Four rows drill أحلى alone or كان أحلى. Evidence: in Lebanese the b- form بيكون is the ordinary \"it will/would be\" after an open \"if you can…\" condition, while كان أحلى reads as past (\"it was / would have been nicer\"), so the likely right fix is the SEED back to بيكون أحلى (a seed edit, your call), after which the LEGO is the seed's words again and only B01, B03, U02, U04 need rewording to say بيكون أحلى. The LEGO's English \"nicer\" also does not match the seed's \"that would be great\".",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 90,
+    "known": "If you can speak more slowly that would be great.",
+    "target": "إذا فيك تحكي بشوي أكتر كان أحلى."
+   },
+   "before": {
+    "known": "nicer",
+    "target": "بيكون أحلى",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0094L03",
+   "verdict": "kai",
+   "why": "HOLD: KAI: the LEGO was changed to \"the way | الطريقة\" but the seed still says الطريق and all 7 rows say الطريق. The scan expected a seed fix to الطريقة (the usual Lebanese word for \"way = method\"; الطريق is \"road\") that has not landed. If the seed becomes الطريقة الوحيدة اللي رح تشتغل, all 7 rows change الطريق → الطريقة with feminine agreement (اللي بتشتغل, منيحة); if the seed stays, the LEGO goes back to الطريق and nothing else moves (zero audio). Note \"a method | الطريقة\" is also a LEGO at seed 153.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 94,
+    "known": "This is the only way it will work.",
+    "target": "هيدا هو الطريق الوحيد اللي رح يشتغل."
+   },
+   "before": {
+    "known": "the way",
+    "target": "الطريقة",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0098L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows do not say بشي at all (\"something good | شي منيح\", \"I know it now | بعرفو هلق\"); they are reworded onto the frame the basket already uses in U04 (\"I'm thinking of something\"). SEPARATE PROBLEM, not fixed here: this LEGO's English is \"in it\", but بشي means \"of/about something\"; the English of every row under it is built on that wrong gloss. That is the \"LEGO says what its seed does not\" family, which has no plan for this course yet; the two reworded rows carry correct English and will read oddly beside \"good in it | بشي منيح\" until the gloss is fixed. The basket stays one build row short for the builder; no row is added while the English gloss is wrong.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 98,
+    "known": "I should consider playing something else.",
+    "target": "لازم أفكر بشي تاني ألعبو."
+   },
+   "before": {
+    "known": "in it",
+    "target": "بشي",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "in it",
+    "target": "بشي",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['in', 'it']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0098L01B01",
+     "role": "build",
+     "before": [
+      "in it",
+      "بشي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0098L01B02",
+     "role": "build",
+     "before": [
+      "good in it",
+      "بشي منيح"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0098L01B03",
+     "role": "build",
+     "before": [
+      "else in it",
+      "بشي تاني"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0098L01U01",
+     "role": "use",
+     "before": [
+      "something good",
+      "شي منيح"
+     ],
+     "action": [
+      "I'm thinking of something good",
+      "عم بفكر بشي منيح"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0098L01U02",
+     "role": "use",
+     "before": [
+      "I know it now",
+      "بعرفو هلق"
+     ],
+     "action": [
+      "I'm thinking of something else",
+      "عم بفكر بشي تاني"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0098L01U03",
+     "role": "use",
+     "before": [
+      "there's something here",
+      "في بشي هون"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0098L01U04",
+     "role": "use",
+     "before": [
+      "I'm thinking of something",
+      "عم بفكر بشي"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0126L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two rows say عم يتغير (\"it is changing\", by itself), a different verb form from the LEGO \"he changes | يغير\" (changes something). They are reworded to the taught form with the seed's own \"shape\". The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught. U01 said الشكل (\"the shape\"), a form not taught by this seed (the LEGO is شكل), and is reworded too.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 126,
+    "known": "This work is changing the shape of my brain.",
+    "target": "هالشغل عم يغير شكل دماغي."
+   },
+   "before": {
+    "known": "he changes",
+    "target": "يغير",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "he changes",
+    "target": "يغير",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['he']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0126L03B01",
+     "role": "build",
+     "before": [
+      "he changes",
+      "يغير"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03B02",
+     "role": "build",
+     "before": [
+      "he changes shape",
+      "يغير شكل"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03B03",
+     "role": "build",
+     "before": [
+      "it's changing",
+      "عم يتغير"
+     ],
+     "action": [
+      "he is changing shape",
+      "عم يغير شكل"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03U01",
+     "role": "use",
+     "before": [
+      "he changes the shape",
+      "يغير الشكل"
+     ],
+     "action": [
+      "he changes shape a lot here",
+      "يغير شكل كتير هون"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03U02",
+     "role": "use",
+     "before": [
+      "it's changing now",
+      "عم يتغير هلق"
+     ],
+     "action": [
+      "he is changing shape now",
+      "عم يغير شكل هلق"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03U03",
+     "role": "use",
+     "before": [
+      "he changes a lot",
+      "يغير كتير"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03U04",
+     "role": "use",
+     "before": [
+      "he changes here",
+      "يغير هون"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0126L03U05",
+     "role": "use",
+     "before": [
+      "he changes what he knows",
+      "يغير شو بيعرف"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0126L03B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 126,
+     "lego_index": 3,
+     "known_text": "he changes shape here",
+     "target_text": "يغير شكل هون",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "start",
+     "lego_count": 1,
+     "target_text_roman": "yighayyir shakil hoon"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0144L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row says من اللي, another way to say \"than what\", under the LEGO مما; it is reworded to مما. ALSO: the LEGO's English is the broken text \"th\" (and its three build rows say \"th\", \"earlier th\", \"more th\"). That is damage, already there in last night's copy; the plan restores \"than\" on the LEGO and those rows, since the seed's own English is \"earlier than\". No other LEGO in the course is glossed \"than\". The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 144,
+    "known": "I woke earlier than I wanted to this morning.",
+    "target": "صحيت أبكر مما كنت بدي هالصبح."
+   },
+   "before": {
+    "known": "th",
+    "target": "مما",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "than",
+    "target": "مما",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0144L03B01",
+     "role": "build",
+     "before": [
+      "th",
+      "مما"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03B02",
+     "role": "build",
+     "before": [
+      "earlier th",
+      "أبكر مما"
+     ],
+     "action": [
+      "earlier than",
+      "أبكر مما"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03B03",
+     "role": "build",
+     "before": [
+      "more th",
+      "أكتر مما"
+     ],
+     "action": [
+      "more than",
+      "أكتر مما"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03U01",
+     "role": "use",
+     "before": [
+      "I woke earlier than I wanted to this morning",
+      "صحيت أبكر مما كنت بدي هالصبح"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03U02",
+     "role": "use",
+     "before": [
+      "I know more than what I thought",
+      "بعرف أكتر من اللي فكرت"
+     ],
+     "action": [
+      "I know more than what I need",
+      "بعرف أكتر مما بدي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03U03",
+     "role": "use",
+     "before": [
+      "that's better than what I expected",
+      "هيدا أحسن مما كنت متوقعو"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03U04",
+     "role": "use",
+     "before": [
+      "that's more than what I need",
+      "هيدا أكتر مما بدي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0144L03U05",
+     "role": "use",
+     "before": [
+      "it's earlier than what I wanted",
+      "هيدا أبكر مما كنت بدي"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0144L03B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 144,
+     "lego_index": 3,
+     "known_text": "more than I want",
+     "target_text": "أكتر مما بدي",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "aktar mimma biddi"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0145L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One build row says \"not happy now | مش مبسوط هلق\" and drops the LEGO's بعد (\"anymore\"); it is reworded to hold the whole LEGO. The builder wants 3 build rows that put the LEGO inside a phrase and 5 use rows; this basket was short once its broken rows were fixed, so rows are added from words already taught.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 145,
+    "known": "Why are you not happy any more?",
+    "target": "ليش مش مبسوط بعد؟"
+   },
+   "before": {
+    "known": "not happy anymore",
+    "target": "مش مبسوط بعد",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "not happy anymore",
+    "target": "مش مبسوط بعد",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['anymore']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0145L01C01",
+     "role": "component",
+     "before": [
+      "not happy",
+      "مش مبسوط"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01B01",
+     "role": "build",
+     "before": [
+      "not happy anymore",
+      "مش مبسوط بعد"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01B02",
+     "role": "build",
+     "before": [
+      "not happy anymore today",
+      "مش مبسوط بعد اليوم"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01B03",
+     "role": "build",
+     "before": [
+      "not happy now",
+      "مش مبسوط هلق"
+     ],
+     "action": [
+      "not happy anymore here",
+      "مش مبسوط بعد هون"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01U01",
+     "role": "use",
+     "before": [
+      "why are you not happy any more?",
+      "ليش مش مبسوط بعد؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01U02",
+     "role": "use",
+     "before": [
+      "I'm not happy anymore",
+      "أنا مش مبسوط بعد"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01U03",
+     "role": "use",
+     "before": [
+      "why am I not happy anymore?",
+      "ليش أنا مش مبسوط بعد؟"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01U04",
+     "role": "use",
+     "before": [
+      "he's not happy anymore",
+      "هو مش مبسوط بعد"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0145L01U05",
+     "role": "use",
+     "before": [
+      "I don't want to be unhappy anymore",
+      "ما بدي أكون مش مبسوط بعد"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0145L01B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 145,
+     "lego_index": 1,
+     "known_text": "not happy anymore now",
+     "target_text": "مش مبسوط بعد هلق",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1,
+     "target_text_roman": "mish mabsuut ba'd halla'"
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0077L02B03",
+   "set": {
+    "target_text": "كيف صرت",
+    "target_text_roman": "kiif sirt"
+   },
+   "expect": {
+    "known_text": "how I began",
+    "target_text": "كيف بلشت"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0077L02U04",
+   "set": {
+    "target_text": "مندهش كيف صرت",
+    "target_text_roman": "mundahish kiif sirt"
+   },
+   "expect": {
+    "known_text": "I'm surprised at how I began",
+    "target_text": "مندهش كيف بلشت"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0078L01U01",
+   "set": {
+    "target_text": "ما فهمت شو قلت",
+    "target_text_roman": "ma fihimt shu 'ult"
+   },
+   "expect": {
+    "known_text": "I don't understand what you said",
+    "target_text": "مش فاهم شو قلت"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0078L01B03",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 78,
+    "lego_index": 1,
+    "known_text": "I understood now",
+    "target_text": "فهمت هلق",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 2,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "fihimt halla'"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0078L01B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 78,
+    "lego_index": 1,
+    "known_text": "I understood more",
+    "target_text": "فهمت أكتر",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 2,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "fihimt aktar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0083L01U03",
+   "set": {
+    "known_text": "I want to know about what happened",
+    "target_text": "بدي أعرف عن شو صار",
+    "target_text_roman": "biddi a'rif 'an shu saar"
+   },
+   "expect": {
+    "known_text": "I'm surprised about what happened",
+    "target_text": "مندهش من شو صار"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0083L01U06",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 83,
+    "lego_index": 1,
+    "known_text": "I want to know more about what happened",
+    "target_text": "بدي أعرف أكتر عن شو صار",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "biddi a'rif aktar 'an shu saar"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0083L01B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 83,
+    "lego_index": 1,
+    "known_text": "more about this",
+    "target_text": "أكتر عن هيك",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "aktar 'an hiik"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0098L01U01",
+   "set": {
+    "known_text": "I'm thinking of something good",
+    "target_text": "عم بفكر بشي منيح",
+    "target_text_roman": "'am bfakkir bishi mniih"
+   },
+   "expect": {
+    "known_text": "something good",
+    "target_text": "شي منيح"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0098L01U02",
+   "set": {
+    "known_text": "I'm thinking of something else",
+    "target_text": "عم بفكر بشي تاني",
+    "target_text_roman": "'am bfakkir bishi taani"
+   },
+   "expect": {
+    "known_text": "I know it now",
+    "target_text": "بعرفو هلق"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0126L03B03",
+   "set": {
+    "known_text": "he is changing shape",
+    "target_text": "عم يغير شكل",
+    "target_text_roman": "'am yighayyir shakil"
+   },
+   "expect": {
+    "known_text": "it's changing",
+    "target_text": "عم يتغير"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0126L03U01",
+   "set": {
+    "known_text": "he changes shape a lot here",
+    "target_text": "يغير شكل كتير هون",
+    "target_text_roman": "yighayyir shakil ktiir hoon"
+   },
+   "expect": {
+    "known_text": "he changes the shape",
+    "target_text": "يغير الشكل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0126L03U02",
+   "set": {
+    "known_text": "he is changing shape now",
+    "target_text": "عم يغير شكل هلق",
+    "target_text_roman": "'am yighayyir shakil halla'"
+   },
+   "expect": {
+    "known_text": "it's changing now",
+    "target_text": "عم يتغير هلق"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0126L03B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 126,
+    "lego_index": 3,
+    "known_text": "he changes shape here",
+    "target_text": "يغير شكل هون",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "start",
+    "lego_count": 1,
+    "target_text_roman": "yighayyir shakil hoon"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0144L03",
+   "set": {
+    "known_text": "than"
+   },
+   "expect": {
+    "known_text": "th",
+    "target_text": "مما"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0144L03B02",
+   "set": {
+    "known_text": "earlier than"
+   },
+   "expect": {
+    "known_text": "earlier th",
+    "target_text": "أبكر مما"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0144L03B03",
+   "set": {
+    "known_text": "more than"
+   },
+   "expect": {
+    "known_text": "more th",
+    "target_text": "أكتر مما"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0144L03U02",
+   "set": {
+    "known_text": "I know more than what I need",
+    "target_text": "بعرف أكتر مما بدي",
+    "target_text_roman": "ba'rif aktar mimma biddi"
+   },
+   "expect": {
+    "known_text": "I know more than what I thought",
+    "target_text": "بعرف أكتر من اللي فكرت"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0144L03B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 144,
+    "lego_index": 3,
+    "known_text": "more than I want",
+    "target_text": "أكتر مما بدي",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "aktar mimma biddi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0145L01B03",
+   "set": {
+    "known_text": "not happy anymore here",
+    "target_text": "مش مبسوط بعد هون",
+    "target_text_roman": "mish mabsuut ba'd hoon"
+   },
+   "expect": {
+    "known_text": "not happy now",
+    "target_text": "مش مبسوط هلق"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0145L01B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 145,
+    "lego_index": 1,
+    "known_text": "not happy anymore now",
+    "target_text": "مش مبسوط بعد هلق",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1,
+    "target_text_roman": "mish mabsuut ba'd halla'"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:31:05Z",
+  "baseline_failing_seeds": 595,
+  "per_seed": {
+   "77": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "78": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "83": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: vocab violations in 1 phrase(s)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "98": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 2 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {
+     "98": [
+      "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+     ]
+    },
+    "error": null
+   },
+   "126": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 2 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 1 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: vocab violations in 3 phrase(s)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "144": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "145": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": [
+   98
+  ]
+ },
+ "validator_vs_unchanged": {
+  "77": {
+   "added": [],
+   "removed": [
+    "L2: 2 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (2 component phrases excluded)",
+    "L2: vocab violations in 2 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "78": {
+   "added": [],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "83": {
+   "added": [],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "98": {
+   "added": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "removed": [
+    "L1: 2 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 1 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "126": {
+   "added": [],
+   "removed": [
+    "L3: 2 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 1 (2 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 3 phrase(s)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "144": {
+   "added": [],
+   "removed": [
+    "L3: 1 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  },
+  "145": {
+   "added": [],
+   "removed": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "other_seeds": {},
+   "error": null
+  }
+ }
+}
