@@ -46,6 +46,15 @@
 //
 // Dry run is the DEFAULT. --apply is required to write.
 //
+// CHANGESET MODE (cs #937, r-2026-11-18-ssi-keeps-one-database): the way a big refresh reaches live.
+//   node tools/course-optimization/refresh-stale-phrase-decompositions.cjs --course=ita_for_eng \
+//     --changeset=ops/937-ita-tiles/ita_for_eng.changeset.jsonl --job='#937·AI' --out=<evidence dir>
+// Plans on whatever DATABASE_URL names (the nightly copy, by the guard's default) with the SAME
+// planner Popty's recompute door uses (services/shared/decomposition-refresh.cjs planRecompute),
+// and writes one phrase.update per rewritten row — set {decomposition, decomposition_course_version},
+// expect {decomposition: <copy value>} — for tools/changeset/apply-changeset.cjs to push to live in
+// quiet hours. Writes nothing to the database; refuses --apply.
+//
 // Every applied row's pre-write decomposition is kept verbatim in the log, so
 // an apply is fully reversible:
 //   node tools/course-optimization/refresh-stale-phrase-decompositions.cjs \
@@ -76,6 +85,12 @@ const OUT_DIR = typeof flag('out') === 'string'
   : path.join(__dirname, '..', '..', 'docs', `decomposition-refresh-${STAMP}`);
 
 const UNDO = typeof flag('undo') === 'string' ? flag('undo') : null;
+const CHANGESET = typeof flag('changeset') === 'string' ? flag('changeset') : null;
+const JOB = typeof flag('job') === 'string' ? flag('job') : null;
+if (CHANGESET && (APPLY || UNDO || !ONE_COURSE)) {
+  console.error('--changeset needs exactly one --course, and never --apply or --undo (the changeset applier writes, not this tool).');
+  process.exit(1);
+}
 
 if (!ALL && !ONE_COURSE && !UNDO) {
   console.error('Specify --course=<code>, --all, or --undo=<applied-log.json>.');
@@ -321,9 +336,37 @@ async function undoFromLog(client, logPath) {
   console.log(`\nLog: ${outPath}`);
 }
 
+/** Plan one course with the shared planner and write it as a changeset. Reads only. */
+async function changesetForCourse(client, courseCode, file) {
+  const { planRecompute } = require('../../services/shared/decomposition-refresh.cjs');
+  const changeset = require('../../services/shared/changeset.cjs');
+  const { rows: legos } = await client.query(
+    `SELECT seed_number, lego_index, target_text, known_text FROM course_legos WHERE course_code = $1`, [courseCode]);
+  const { rows: versionRows } = await client.query('SELECT version FROM courses WHERE course_code = $1', [courseCode]);
+  const { rows: phrases } = await client.query(
+    `SELECT id, seed_number, lego_index, target_text, decomposition
+       FROM course_practice_phrases
+      WHERE course_code = $1 AND decomposition IS NOT NULL
+      ORDER BY seed_number, lego_index, position`,
+    [courseCode]);
+  const plan = planRecompute({ courseCode, legos, phrases, courseVersion: versionRows[0]?.version ?? null });
+  changeset.write(file, { course: courseCode, job: JOB,
+    why: "stale word tiles: tiles naming a slot whose LEGO was re-cut or re-glossed (Kai's Watson finding #930); content-keyed recompute, earliest-taught tie-break (cs #937)" }, plan.ops);
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+  const logPath = path.join(OUT_DIR, `${courseCode}-changeset-plan-log.json`);
+  fs.writeFileSync(logPath, JSON.stringify({ course: courseCode, summary: plan.summary, rows: plan.rows }, null, 2));
+  console.log(`${courseCode}: ${JSON.stringify(plan.summary)}\nChangeset: ${file} (${plan.ops.length} ops)\nPlan log: ${logPath}`);
+}
+
 async function main() {
   const client = new Client({ connectionString: process.env.DATABASE_URL });
   await client.connect();
+
+  if (CHANGESET) {
+    await changesetForCourse(client, ONE_COURSE, CHANGESET);
+    await client.end();
+    return;
+  }
 
   if (UNDO) {
     await undoFromLog(client, UNDO);
