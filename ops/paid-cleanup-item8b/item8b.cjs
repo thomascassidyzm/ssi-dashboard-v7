@@ -28,6 +28,8 @@
  *   stored pair + 'unverified'/unasked  → kept in the DB, left out of the rewrite plan (voice still follows its form)
  *   no stored pair + 'gendered'         → gender.insert (text_side 'known')
  */
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+const LIVEGATE = require('../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const { buildGenderedKnownPlan } = require('../../services/known-gender/gendered-known-plan.cjs');
@@ -152,10 +154,12 @@ async function main() {
 
   if (mode === 'post') {
     const [opsFile, how] = rest;
+    LIVEGATE.requireLive(`item8b post ${course} ${how}`);
     const { ops } = rd(opsFile);
     const out = { at: new Date().toISOString(), batches: [] };
-    for (let i = 0; i < ops.length; i += 1000) {
-      const chunk = ops.slice(i, i + 1000);
+    const step = how === 'apply' ? 1000 : LIVEGATE.MAX_CHUNK; // cs #968·AI: dry runs in chunks of <= 10
+    for (let i = 0; i < ops.length; i += step) {
+      const chunk = ops.slice(i, i + step);
       const r = await post(`/api/production/${course}/edit-batch`, { ops: chunk, apply: how === 'apply', reason: PURPOSE });
       const b = r.body || {};
       out.batches.push({ from: i, n: chunk.length, status: r.status, ok: b.ok, event_id: b.event_id || null, undo_file: b.undo_file || null, undo_ops: b.undo_ops || null, error: b.error || null, code: b.code || null, index: b.index, counts: b.counts || b.summary || null });
@@ -167,6 +171,7 @@ async function main() {
   }
 
   if (mode === 'audio') {
+    LIVEGATE.requireLive(`item8b audio ${course}`);
     const [dumpFile, pairsFile, detFile, how] = rest;
     const maxChars = +(process.argv.includes('--max-chars') ? process.argv[process.argv.indexOf('--max-chars') + 1] : 60000);
     const d = loadDump(dumpFile), stored = rd(pairsFile), det = rd(detFile);
