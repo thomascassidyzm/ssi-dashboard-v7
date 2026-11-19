@@ -363,15 +363,6 @@
       "cutIn": false,
       "backchannels": [],
       "move": null
-    },
-    {
-      "speaker": "Jess",
-      "line": "Kids who remember my birthday, obviously.",
-      "cutOff": false,
-      "overlap": false,
-      "cutIn": false,
-      "backchannels": [],
-      "move": null
     }
   ],
   "log": [
@@ -950,5 +941,13 @@
       "turn": 25
     }
   ],
-  "unplaced": []
+  "unplaced": [],
+  "handEdits": [
+    {
+      "removedLastTurn": 36,
+      "speaker": "Jess",
+      "line": "Kids who remember my birthday, obviously.",
+      "why": "ended on a punchline; brief bans punchline endings; trimmed so the evening stops on an open question"
+    }
+  ]
 }

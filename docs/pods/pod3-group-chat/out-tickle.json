@@ -1,0 +1,985 @@
+{
+  "topic": "Danny's daughter rang him this afternoon and told him you physically can't tickle yourself, and that it's something to do with the brain. He has spent ten minutes trying under the table and has just told the others. Jess is already trying it.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F302",
+      "from": 3,
+      "to": 8,
+      "hint": "someone who half-knows why (Femi or Sunny) first marks down their own authority, plainly, and then says what they think the reason is at full strength"
+    },
+    {
+      "id": "F9",
+      "from": 8,
+      "to": 13,
+      "hint": "someone else, before pushing back, offers back an accurate version of that explanation in their own words, as a check before they push on it; the person who gave it confirms it next turn",
+      "followup": "confirm-or-correct"
+    },
+    {
+      "id": "F303",
+      "role": "coin",
+      "from": 9,
+      "to": 15,
+      "hint": "someone coins a short, vivid phrase for the idea under discussion that the others pick up"
+    },
+    {
+      "id": "F16",
+      "from": 14,
+      "to": 22,
+      "hint": "someone concedes the point another person just made, and then holds their own different view with a but"
+    },
+    {
+      "id": "F11",
+      "from": 18,
+      "to": 26,
+      "hint": "someone is asked a direct question, answers it briefly, and in the same turn hands the identical question on, minimally, by name, to someone at the table who has said little"
+    },
+    {
+      "id": "F303",
+      "role": "reuse",
+      "from": 24,
+      "to": 33,
+      "hint": "a different person redeploys the phrase coined earlier as a tease, shorthand or argument; its ownership can be contested"
+    }
+  ],
+  "T": [
+    {
+      "speaker": "Jess",
+      "line": "No, it's true, look, I'm going for my ribs and nothing. Nothing.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Your own ribs, though. You know exactly where your hand's going. Get Danny to do it without warning.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Don't hold me to it, but",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Don't hold me to it, but cerebellum.",
+      "moveRejected": "F302"
+    },
+    {
+      "speaker": "Danny",
+      "line": "Cerebellum. That's what Ola said.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Which is where I was going, thank you, Daniel. It sees your own hand coming and turns the feeling down, sort of.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F306",
+      "posthoc": true
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Can a dog tickle itself?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Is that leg-kick thing",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Is that leg-kick thing tickling, though?"
+    },
+    {
+      "speaker": "Femi",
+      "line": "So it predicts the touch, then dampens it?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F9"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "That's it, yes, it knows it's you so it doesn't bother. Same reason you don't feel your own tongue in your mouth till somebody mentions it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "No, but Hugh's dog, though. That back leg going when you scratch its belly, is that tickling or just a reflex?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Reflex. He looks surprised",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Reflex. He looks surprised himself."
+    },
+    {
+      "speaker": "Danny",
+      "line": "Surprised, see. No surprise, no tickle.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "No, hang on, that's not surprise though. My nephew starts screaming before I've even touched him, I just do the fingers at him from across the room. He knows exactly what's coming, and still.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Fine, I'll give you the nephew. But he doesn't know which second you'll land",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F16",
+      "full": "Fine, I'll give you the nephew. But he doesn't know which second you'll land, so it's still surprise, just postponed."
+    },
+    {
+      "speaker": "Femi",
+      "line": "So if I rig something with a half-second delay, a stick on a spring, does my brain count that as somebody else?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Somebody's done that, I'm fairly sure. Robot arm with a lag, and the longer the lag, the more it tickled.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Same in a loft, though. Your own sleeve brushes your neck in the dark and you nearly go through the ceiling. That's still me, isn't it?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Sure it was",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Sure it was your sleeve?"
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Mostly. Once it was a bat.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Bats, now. I read somewhere they tickled rats in a lab and the rats squeaked, too high for us, so they listened with a bat detector. Chasing the hand for more, apparently.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Where did you read that, Hugh?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Library book, last winter",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Library book, last winter. Yours, Sunny?",
+      "moveRejected": "F11"
+    },
+    {
+      "speaker": "Jess",
+      "line": "So they like it, then. That's the bit I can't square. Why would anything go back for more of something that makes it scream?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "But they're chasing the hand, Jess, they know full well it's coming. So much for no surprise, no tickle.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F303"
+    },
+    {
+      "speaker": "Danny",
+      "line": "All right, all right, not surprise. It's, what, not being the one in charge? The rat knows it's coming, but it doesn't pick the moment. Nor does your nephew, Jess.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F305",
+      "posthoc": true
+    },
+    {
+      "speaker": "Femi",
+      "line": "Except the robot arm wrecks that. You're pressing the button, you pick the exact moment",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Except the robot arm wrecks that. You're pressing the button, you pick the exact moment, and with a lag it still tickles. So it's not who's in charge, it's whether the timing lines up."
+    },
+    {
+      "speaker": "Danny",
+      "line": "No, the robot's somebody else, Femi.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Says who, though? Your brain?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Well, yes. Who else gets a vote?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "The rat's",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "The rat's, by the sound of it."
+    },
+    {
+      "speaker": "Rhi",
+      "line": "No, but then why doesn't it tickle when the doctor's prodding your belly? Someone else's hand, and I'm not picking the moment.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Some do. I put their hand under mine.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "So it'll adopt a stranger's hand if you're steering. Does it do that with memories? Kasia tells a story about me often enough, and I start telling it as if I'd—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "I do that. My sister tells the one about me lost at Scarborough, and now I can see it, the donkeys and everything, and I was two. So is that the same trick",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "I do that. My sister tells the one about me lost at Scarborough, and now I can see it, the donkeys and everything, and I was two. So is that the same trick, or—"
+    },
+    {
+      "speaker": "Femi",
+      "line": "Other way round, surely. Tickling turns your own hand down. Scarborough, your sister's version got turned up till it feels like yours. So it's not who did it, it's more, I don't know, how often—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Or nobody left to say otherwise. I tell my father's flood of forty-seven like I was on the bridge, and I wasn't even—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, it's true, look, I'm going for my ribs and nothing. Nothing.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Your own ribs, though. You know exactly where your hand's going. Get Danny to do it without warning.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Don't hold me to it, but cerebellum.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F302",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F302"
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Cerebellum. That's what Ola said.",
+        "cut_in": "Don't hold me to it, but",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Which is where I was going, thank you, Daniel. It sees your own hand coming and turns the feeling down, sort of.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Can a dog tickle itself?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Is that leg-kick thing tickling, though?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Femi",
+        "line": "So it predicts the touch, then dampens it?",
+        "cut_in": "Is that leg-kick thing",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F9",
+        "move_target": "Sunny"
+      },
+      "cutApplied": true,
+      "planned": "F9"
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "That's it, yes, it knows it's you so it doesn't bother. Same reason you don't feel your own tongue in your mouth till somebody mentions it.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No, but Hugh's dog, though. That back leg going when you scratch its belly, is that tickling or just a reflex?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F303-coin"
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Reflex. He looks surprised himself.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F303-coin"
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Surprised, see. No surprise, no tickle.",
+        "cut_in": "Reflex. He looks surprised",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F303-coin",
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": "F303-coin"
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, hang on, that's not surprise though. My nephew starts screaming before I've even touched him, I just do the fingers at him from across the room. He knows exactly what's coming, and still.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Fine, I'll give you the nephew. But he doesn't know which second you'll land, so it's still surprise, just postponed.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F16",
+        "move_target": "Jess"
+      },
+      "cutApplied": false,
+      "planned": "F16"
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Femi",
+        "line": "So if I rig something with a half-second delay, a stick on a spring, does my brain count that as somebody else?",
+        "cut_in": "But he doesn't know which second you'll land",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Somebody's done that, I'm fairly sure. Robot arm with a lag, and the longer the lag, the more it tickled.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Same in a loft, though. Your own sleeve brushes your neck in the dark and you nearly go through the ceiling. That's still me, isn't it?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Sure it was your sleeve?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Mostly. Once it was a bat.",
+        "cut_in": "Sure it was",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": "F11"
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Bats, now. I read somewhere they tickled rats in a lab and the rats squeaked, too high for us, so they listened with a bat detector. Chasing the hand for more, apparently.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Where did you read that, Hugh?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Library book, last winter. Yours, Sunny?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F11",
+        "move_target": "Sunny"
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Jess",
+        "line": "So they like it, then. That's the bit I can't square. Why would anything go back for more of something that makes it scream?",
+        "cut_in": "Library book, last winter.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "But they're chasing the hand, Jess, they know full well it's coming. So much for no surprise, no tickle.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F303",
+        "move_target": "Danny"
+      },
+      "cutApplied": false,
+      "planned": "F303-reuse"
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Danny",
+        "line": "All right, all right, not surprise. It's, what, not being the one in charge? The rat knows it's coming, but it doesn't pick the moment. Nor does your nephew, Jess.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Except the robot arm wrecks that. You're pressing the button, you pick the exact moment, and with a lag it still tickles. So it's not who's in charge, it's whether the timing lines up.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Sunny",
+            "text": "mm",
+            "after": "pick the exact moment"
+          }
+        ],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Danny",
+        "line": "No, the robot's somebody else, Femi.",
+        "cut_in": "You're pressing the button, you pick the exact moment,",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Says who, though? Your brain?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Well, yes. Who else gets a vote?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "The rat's, by the sound of it.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No, but then why doesn't it tickle when the doctor's prodding your belly? Someone else's hand, and I'm not picking the moment.",
+        "cut_in": "The rat's,",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Some do. I put their hand under mine.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Danny",
+        "line": "So it'll adopt a stranger's hand if you're steering. Does it do that with memories? Kasia tells a story about me often enough, and I start telling it as if I'd—",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Jess",
+        "line": "I do that. My sister tells the one about me lost at Scarborough, and now I can see it, the donkeys and everything, and I was two. So is that the same trick, or—",
+        "cut_in": "I start telling it as if I'd",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Other way round, surely. Tickling turns your own hand down. Scarborough, your sister's version got turned up till it feels like yours. So it's not who did it, it's more, I don't know, how often—",
+        "cut_in": "So is that the same trick",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Or nobody left to say otherwise. I tell my father's flood of forty-seven like I was on the bridge, and I wasn't even—",
+        "cut_in": "it's more, I don't know, how often",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 3,
+      "speaker": "Sunny",
+      "move": "F302",
+      "pass": false,
+      "reason": "Turn 3 gives only the flag ('Don't hold me to it, but—') before Danny cuts in, so no full-strength claim follows, and when Sunny resumes in turn 5 she hedges again with 'sort of' instead of committing to the view the flag was meant to license."
+    },
+    {
+      "turn": 8,
+      "speaker": "Femi",
+      "move": "F9",
+      "pass": true,
+      "reason": "In a multi-party stretch, Femi restates Sunny's explanation as a candidate version (\"So it predicts the touch, then dampens it?\") and Sunny explicitly confirms it in turn 9 (\"That's it, yes\"), though Femi never goes on to disagree, so this is ordinary checking rather than the restate-before-disagreeing form the group reading describes."
+    },
+    {
+      "turn": 14,
+      "speaker": "Danny",
+      "move": "F16",
+      "pass": true,
+      "reason": "Danny grants Jess's nephew counterexample ('Fine, I'll give you the nephew') and then keeps his surprise claim with 'But he doesn't know which second you'll land', in a stretch where Hugh, Rhi, Femi, Sunny, Danny and Jess are all taking part."
+    },
+    {
+      "turn": 22,
+      "speaker": "Hugh",
+      "move": "F11",
+      "pass": false,
+      "reason": "Hugh answers Femi's question ('Library book, last winter') but does not hand the same question back to Femi or to anyone else at the table, so the return half of the move is missing."
+    },
+    {
+      "turn": 24,
+      "speaker": "Sunny",
+      "move": "F303",
+      "pass": true,
+      "reason": "Sunny turns Danny's turn-12 coinage \"No surprise, no tickle\" back on him as a teasing counter-argument, in a stretch where Jess, Hugh, Sunny and Danny are all taking part, and Danny takes it up in turn 25 (\"All right, all right, not surprise\"), so the line is being used as shared table property rather than only by its coiner."
+    },
+    {
+      "turn": 5,
+      "speaker": "Sunny",
+      "move": "F306",
+      "pass": true,
+      "reason": "In a stretch with at least four active speakers, Sunny's own half-started claim ('Don't hold me to it, but—') is completed by Danny's 'Cerebellum', and she ratifies it as where she was already going ('Which is where I was going') before carrying on with the explanation, so the floor merges between two lay speakers with comparable access to the topic.",
+      "posthoc": true
+    },
+    {
+      "turn": 23,
+      "speaker": "Jess",
+      "move": "F305",
+      "pass": false,
+      "reason": "Jess raises a fresh puzzle about why rats would seek out tickling rather than taking a pushback and folding it into a stronger version of a claim; the absorb-and-build happens later at turn 25, when Danny concedes 'not surprise' and reframes it as 'not being the one in charge.'",
+      "posthoc": true
+    },
+    {
+      "turn": 25,
+      "speaker": "Danny",
+      "move": "F305",
+      "pass": true,
+      "reason": "Danny concedes Sunny's rat counterexample ('not surprise') and turns it into evidence for an upgraded claim (not being the one who picks the moment) rather than defending the old one, with Jess, Sunny and Femi all taking part around the turn.",
+      "posthoc": true
+    }
+  ],
+  "hit": [
+    {
+      "id": "F306",
+      "turn": 5,
+      "posthoc": true
+    },
+    {
+      "id": "F9",
+      "turn": 8
+    },
+    {
+      "id": "F16",
+      "turn": 14
+    },
+    {
+      "id": "F303",
+      "turn": 24
+    },
+    {
+      "id": "F305",
+      "turn": 25,
+      "posthoc": true
+    }
+  ],
+  "unplaced": [
+    "F302",
+    "F11"
+  ]
+}

@@ -11,6 +11,8 @@ const T = run.T;
 const wc = s => s.split(/\s+/).filter(Boolean).length;
 const w = T.map(e => wc(e.full || e.line)).sort((a, b) => a - b);
 const med = w[Math.floor(w.length / 2)];
+const h = T.map(e => wc(e.line)).sort((a, b) => a - b); // as heard, after cut-offs
+const medHeard = h[Math.floor(h.length / 2)];
 const shown = e => e.line.length; // cut lines are already truncated in .line
 const first = shown(T[0]);
 const nx = T[1];
@@ -28,4 +30,4 @@ if (ref) {
   for (let i = 0; i + 4 <= r.length; i++) grams.add(r.slice(i, i + 4).join(' '));
   T.forEach((e, k) => { const t = norm(e.full || e.line); for (let i = 0; i + 4 <= t.length; i++) if (grams.has(t.slice(i, i + 4).join(' '))) borrowed.push(`${k + 1}: ${t.slice(i, i + 4).join(' ')}`); });
 }
-console.log(JSON.stringify({ key, lines: T.length, median: med, max: w[w.length - 1], cutIns: T.filter(e => e.cutIn).length, overlaps: T.filter(e => e.overlap).length, secondStart: (second / 1000).toFixed(1) + ' s', laughs, speakers: Object.fromEntries([...new Set(T.map(e => e.speaker))].map(s => [s, T.filter(e => e.speaker === s).length])), hit: run.hit, unplaced: run.unplaced, rejected: (run.judgements || []).filter(j => !j.pass).map(j => j.move + '@' + j.turn), borrowed }, null, 1));
+console.log(JSON.stringify({ key, lines: T.length, median: med, medianHeard: medHeard, max: w[w.length - 1], cutIns: T.filter(e => e.cutIn).length, overlaps: T.filter(e => e.overlap).length, secondStart: (second / 1000).toFixed(1) + ' s', laughs, speakers: Object.fromEntries([...new Set(T.map(e => e.speaker))].map(s => [s, T.filter(e => e.speaker === s).length])), hit: run.hit, unplaced: run.unplaced, rejected: (run.judgements || []).filter(j => !j.pass).map(j => j.move + '@' + j.turn), borrowed }, null, 1));
