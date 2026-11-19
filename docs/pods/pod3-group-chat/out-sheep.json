@@ -1,0 +1,954 @@
+{
+  "topic": "Hugh has just said his ewes know him by his face from across a field and ignore Will, and Jess has said that's sentimental nonsense. Femi says he half-remembers reading that sheep can recognise faces, maybe even from photos, but can't remember how many or where he read it.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F302",
+      "from": 3,
+      "to": 8,
+      "hint": "Hugh, or whoever is defending the claim, first says plainly that they've no study or proof, it's only what they've seen, and then delivers the claim at full strength"
+    },
+    {
+      "id": "F2",
+      "from": 5,
+      "to": 11,
+      "hint": "someone asks a plain question (how many faces, how long, how would you even test it); the person asked answers and then volunteers something unexpected nobody asked for"
+    },
+    {
+      "id": "F305",
+      "from": 10,
+      "to": 17,
+      "hint": "someone throws a counterexample at the claim; the claimant welcomes it and folds it in as making the claim stronger"
+    },
+    {
+      "id": "F306",
+      "from": 15,
+      "to": 23,
+      "hint": "someone adds a thought and the next speaker takes it up as exactly where they were about to go, then carries it on along the merged line"
+    },
+    {
+      "id": "F9",
+      "from": 20,
+      "to": 28,
+      "hint": "before disagreeing, someone offers back an accurate version, in their own words, of what another person just argued, as a check; that person confirms it next turn",
+      "followup": "confirm-or-correct"
+    },
+    {
+      "id": "F304",
+      "from": 25,
+      "to": 33,
+      "hint": "someone comments on the conversation itself as play (how long they've been on sheep, everyone talking at once, how the argument has flipped) and uses it as a move"
+    }
+  ],
+  "T": [
+    {
+      "speaker": "Jess",
+      "line": "Photos? Of sheep? Who's holding the camera, Femi?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Researchers. Cambridge, I think? Maybe.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "I've no study, Femi, just forty-odd years at the gate. But they know my face. Will walks up, nothing",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F302",
+      "full": "I've no study, Femi, just forty-odd years at the gate. But they know my face. Will walks up, nothing. I walk up, they lift their heads."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Is it your face though, or your walk? I'd know my son's slouch across a car park before I saw his face.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Could be. Will walks like his mother.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F2"
+    },
+    {
+      "speaker": "Femi",
+      "line": "So swap coats with Will.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Wasn't it famous faces? I've a nagging feeling one of them was Obama",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Wasn't it famous faces? I've a nagging feeling one of them was Obama, and the sheep did better than I would."
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Welsh Mountain ewes, they were, Danny. And Fiona Bruce. Course they beat you, they're from Merthyr way.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "And Obama. I did say Obama.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Fine, say it's the walk, Sunny. They've still learnt mine and not Will's, and that's cleverer, not less.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F305"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Hang on, hang on. Who feeds them, Hugh?",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Hang on, hang on. Who feeds them, Hugh? Because if it's you, they've not learnt your face, they've learnt the bloke who means dinner. Will's just... some lad in a coat."
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Will feeds them, Jess. Has done since my hip went, three winters now. And they still come to me.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "For what, though? You carry Polos?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Or Will's the one with the needle and the foot shears. My two used to vanish whenever I picked up the thermometer.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Yes, that's where I was going with who feeds them. They know Will fine, Hugh",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F306",
+      "full": "Yes, that's where I was going with who feeds them. They know Will fine, Hugh, they just know what he's carrying."
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Will carries the bucket, Jess.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "So they snub the waiter.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Wait, when you say come to you, Hugh, do they walk over, or just lift their heads? Different claims.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Walk over",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Walk over. Will gets a look."
+    },
+    {
+      "speaker": "Jess",
+      "line": "Right, so, so you're saying the bucket's Will's, so it can't be food, and they still walk over for you?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F9"
+    },
+    {
+      "speaker": "Hugh",
+      "line": "That's it, Jess. Bucket's his, and they still come to me. I've watched Will rattling it at the top gate while half of them stood by me at the bottom.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Which half, though? The old girls you lambed yourself before the hip, or the young ones Will brought on?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Old girls, mostly, Rhi. Though there's one of Will's tegs follows me about like a collie",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Old girls, mostly, Rhi. Though there's one of Will's tegs follows me about like a collie, so that spoils your theory."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Was she bottle-fed, that one?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Long pause from Hugh. That's a yes.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F304"
+    },
+    {
+      "speaker": "Hugh",
+      "line": "She was. Old girls weren't, though.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "So it's history, then",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "So it's history, then. Not faces."
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Isn't that how anyone knows a face?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Okay, fine, I'll take back sentimental. But then it's not your face doing it, Hugh, it's the lambing nights.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Who held the bottle, though, Hugh?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Will did. Kitchen floor, every four hours, this April",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Will did. Kitchen floor, every four hours, this April. Hadn't thought of that till you asked, Danny."
+    },
+    {
+      "speaker": "Femi",
+      "line": "Then she should follow Will.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Does she not, though? You'd notice every one that trots over to you, Hugh, and never count the ones trailing after Will.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "That's every teacher with favourites, that.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Go on, then. Name yours.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Kids who remember my birthday, obviously.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Photos? Of sheep? Who's holding the camera, Femi?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Researchers. Cambridge, I think? Maybe.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "I've no study, Femi, just forty-odd years at the gate. But they know my face. Will walks up, nothing. I walk up, they lift their heads.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F302",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F302"
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Is it your face though, or your walk? I'd know my son's slouch across a car park before I saw his face.",
+        "cut_in": "Will walks up, nothing.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Could be. Will walks like his mother.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F2",
+        "move_target": "Sunny"
+      },
+      "cutApplied": false,
+      "planned": "F2"
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Femi",
+        "line": "So swap coats with Will.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Wasn't it famous faces? I've a nagging feeling one of them was Obama, and the sheep did better than I would.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Welsh Mountain ewes, they were, Danny. And Fiona Bruce. Course they beat you, they're from Merthyr way.",
+        "cut_in": "one of them was Obama,",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Danny",
+        "line": "And Obama. I did say Obama.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Fine, say it's the walk, Sunny. They've still learnt mine and not Will's, and that's cleverer, not less.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F305",
+        "move_target": "Sunny"
+      },
+      "cutApplied": false,
+      "planned": "F305"
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Hang on, hang on. Who feeds them, Hugh? Because if it's you, they've not learnt your face, they've learnt the bloke who means dinner. Will's just... some lad in a coat.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Will feeds them, Jess. Has done since my hip went, three winters now. And they still come to me.",
+        "cut_in": "Who feeds them, Hugh?",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "For what, though? You carry Polos?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Or Will's the one with the needle and the foot shears. My two used to vanish whenever I picked up the thermometer.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Yes, that's where I was going with who feeds them. They know Will fine, Hugh, they just know what he's carrying.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": "F306",
+        "move_target": "Sunny"
+      },
+      "cutApplied": false,
+      "planned": "F306"
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Will carries the bucket, Jess.",
+        "cut_in": "They know Will fine, Hugh,",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Danny",
+        "line": "So they snub the waiter.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Wait, when you say come to you, Hugh, do they walk over, or just lift their heads? Different claims.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Walk over. Will gets a look.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Right, so, so you're saying the bucket's Will's, so it can't be food, and they still walk over for you?",
+        "cut_in": "Walk over.",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F9",
+        "move_target": "Hugh"
+      },
+      "cutApplied": true,
+      "planned": "F9"
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "That's it, Jess. Bucket's his, and they still come to me. I've watched Will rattling it at the top gate while half of them stood by me at the bottom.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Which half, though? The old girls you lambed yourself before the hip, or the young ones Will brought on?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Old girls, mostly, Rhi. Though there's one of Will's tegs follows me about like a collie, so that spoils your theory.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Was she bottle-fed, that one?",
+        "cut_in": "follows me about like a collie",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Long pause from Hugh. That's a yes.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F304",
+        "move_target": "Hugh"
+      },
+      "cutApplied": false,
+      "planned": "F304"
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "She was. Old girls weren't, though.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Femi",
+        "line": "So it's history, then. Not faces.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Isn't that how anyone knows a face?",
+        "cut_in": "So it's history, then.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Okay, fine, I'll take back sentimental. But then it's not your face doing it, Hugh, it's the lambing nights.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Who held the bottle, though, Hugh?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Will did. Kitchen floor, every four hours, this April. Hadn't thought of that till you asked, Danny.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Then she should follow Will.",
+        "cut_in": "Kitchen floor, every four hours, this April.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Does she not, though? You'd notice every one that trots over to you, Hugh, and never count the ones trailing after Will.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Jess",
+        "line": "That's every teacher with favourites, that.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Go on, then. Name yours.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Kids who remember my birthday, obviously.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 3,
+      "speaker": "Hugh",
+      "move": "F302",
+      "pass": true,
+      "reason": "With four people taking part, Hugh first discounts his own authority (\"I've no study\") and then states his claim at full strength (\"But they know my face\"), so the flag licenses the confident delivery rather than softening it."
+    },
+    {
+      "turn": 5,
+      "speaker": "Hugh",
+      "move": "F2",
+      "pass": true,
+      "reason": "In a multi-party stretch (Jess, Femi, Hugh, Sunny, Danny), Hugh answers Sunny's face-or-walk question with \"Could be\" and then adds the unrequested detail that Will walks like his mother, which Femi takes up in turn 6."
+    },
+    {
+      "turn": 10,
+      "speaker": "Hugh",
+      "move": "F305",
+      "pass": true,
+      "reason": "Hugh concedes Sunny's counter that the sheep might know his walk rather than his face, then turns it into a stronger claim (\"that's cleverer, not less\") instead of defending the face version, in a stretch of talk involving Sunny, Femi, Danny, Rhi and Jess."
+    },
+    {
+      "turn": 15,
+      "speaker": "Jess",
+      "move": "F306",
+      "pass": true,
+      "reason": "In turn 15 Jess claims Sunny's point from turn 14 (Will is the one with the needle and foot shears) as where her turn-11 question 'who feeds them' was heading, and continues it to Hugh, so the floor merges in a four-way stretch (Hugh, Rhi, Sunny, Jess) between parties who share the sheep-keeping terrain."
+    },
+    {
+      "turn": 20,
+      "speaker": "Jess",
+      "move": "F9",
+      "pass": true,
+      "reason": "In a talk involving five or more people, Jess, who had begun to disagree in turn 15, restates Hugh's position as a candidate version ('so you're saying the bucket's Will's, so it can't be food, and they still walk over for you?') and Hugh explicitly confirms it in turn 21 ('That's it, Jess')."
+    },
+    {
+      "turn": 25,
+      "speaker": "Danny",
+      "move": "F304",
+      "pass": true,
+      "reason": "Danny playfully calls out Hugh's pause, a beat of the talk's own timing, and reads it as an answer; Hugh ratifies it ('She was') and Femi builds on it, all within a six-person exchange."
+    }
+  ],
+  "hit": [
+    {
+      "id": "F302",
+      "turn": 3
+    },
+    {
+      "id": "F2",
+      "turn": 5
+    },
+    {
+      "id": "F305",
+      "turn": 10
+    },
+    {
+      "id": "F306",
+      "turn": 15
+    },
+    {
+      "id": "F9",
+      "turn": 20
+    },
+    {
+      "id": "F304",
+      "turn": 25
+    }
+  ],
+  "unplaced": []
+}
