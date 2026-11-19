@@ -1,0 +1,1435 @@
+{
+ "course": "zho_for_hin",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0005L03U06": {
+   "seed": {
+    "seed_number": 5,
+    "known_text": "मैं किसी और के साथ बोलने का अभ्यास करने वाला हूँ।",
+    "target_text": "我要和别人练习说。",
+    "known_audio_id": "22363e43-08cb-4a65-b3ad-46b0bd5e19e2",
+    "target1_audio_id": "e9789f1f-e291-4ed9-be84-89c49d06fbe7",
+    "target2_audio_id": "ab06237e-3da9-4e34-8038-688dd60b0e2f"
+   },
+   "lego": {
+    "lego_id": "S0005L03",
+    "known_text": "किसी और के साथ",
+    "target_text": "和别人",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0008L03U06": {
+   "seed": {
+    "seed_number": 8,
+    "known_text": "मैं अपना मतलब समझाने की कोशिश करने वाला हूँ।",
+    "target_text": "我要试试解释我的意思。",
+    "known_audio_id": "0be6fdf3-3fc2-4658-8e4b-36d97a6c97c5",
+    "target1_audio_id": "f333d05d-1c72-4c65-b86f-d444ec6581bb",
+    "target2_audio_id": "ab74eda4-31d2-4e70-a23a-b3273051d711"
+   },
+   "lego": {
+    "lego_id": "S0008L03",
+    "known_text": "मतलब",
+    "target_text": "意思",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0012L03U06": {
+   "seed": {
+    "seed_number": 12,
+    "known_text": "मैं अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होने वाला है।",
+    "target_text": "我不想猜明天会发生什么。",
+    "known_audio_id": "a0a3d670-467b-4f64-93d6-2401b1f97224",
+    "target1_audio_id": "73bdbf6a-d49d-4a3d-b989-35a75ff9b6db",
+    "target2_audio_id": "1c19a654-bfd6-4209-a4de-124e1c327fde"
+   },
+   "lego": {
+    "lego_id": "S0012L03",
+    "known_text": "क्या",
+    "target_text": "什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0015L02U06": {
+   "seed": {
+    "seed_number": 15,
+    "known_text": "और मैं चाहता हूँ कि आप कल मेरे साथ चीनी बोलें।",
+    "target_text": "我想让你明天跟我说中文。",
+    "known_audio_id": "d1d38951-e6bd-4796-86f3-d6b3931905d8",
+    "target1_audio_id": "92d4a335-6ed4-4c15-85f8-1e176cc2a542",
+    "target2_audio_id": "37183368-ae06-463a-a0f0-c0fb7745d5b6"
+   },
+   "lego": {
+    "lego_id": "S0015L02",
+    "known_text": "मेरे साथ",
+    "target_text": "跟我",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0016L04U06": {
+   "seed": {
+    "seed_number": 16,
+    "known_text": "वह बाद में सबके साथ वापस आना चाहता है।",
+    "target_text": "他想过一会儿跟大家一起回来。",
+    "known_audio_id": "5a9c7d9f-939a-46cc-9c7a-25b0e332037c",
+    "target1_audio_id": "86553bbb-32c4-44e2-aab9-e2d62302467c",
+    "target2_audio_id": "9c1501b0-f133-458a-8bb2-d126f30b5d66"
+   },
+   "lego": {
+    "lego_id": "S0016L04",
+    "known_text": "वापस आना",
+    "target_text": "回来",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0063L02U06": {
+   "seed": {
+    "seed_number": 63,
+    "known_text": "क्या आपको सच में मेरी मदद करने में कोई दिक्कत नहीं है?",
+    "target_text": "你真的不介意帮我吗？",
+    "known_audio_id": "29dc6905-41f9-4c31-a741-16e44f54fa4e",
+    "target1_audio_id": "1c681578-c66c-4126-b08f-b878bb1d752e",
+    "target2_audio_id": "040f8957-80f8-4238-9a48-8083f78dda7c"
+   },
+   "lego": {
+    "lego_id": "S0063L02",
+    "known_text": "दिक्कत नहीं है",
+    "target_text": "不介意",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0097L01U08": {
+   "seed": {
+    "seed_number": 97,
+    "known_text": "हाँ, आप जब चाहें मैं जाने के लिए तैयार हूँ।",
+    "target_text": "好的，你什么时候想走我就准备好了。",
+    "known_audio_id": "4a4797a5-b8bd-449e-9a3a-63a46043cad4",
+    "target1_audio_id": "fe881a6a-dce8-4905-940e-4c50b8ec75bc",
+    "target2_audio_id": "8ebc9bb9-94b3-4213-a2bb-5e6c6fb0e7fe"
+   },
+   "lego": {
+    "lego_id": "S0097L01",
+    "known_text": "हाँ",
+    "target_text": "好的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0101L03U08": {
+   "seed": {
+    "seed_number": 101,
+    "known_text": "मुझे इस भाषा के बारे में और जानना अच्छा लग रहा है।",
+    "target_text": "我喜欢进一步了解这门语言。",
+    "known_audio_id": "75bec34d-8099-49de-9bb1-f3031b773266",
+    "target1_audio_id": "1aac2558-079b-4561-adf2-76ed99ed24a9",
+    "target2_audio_id": "f990aabe-be7a-49de-b1f9-44b3e9f0f094"
+   },
+   "lego": {
+    "lego_id": "S0101L03",
+    "known_text": "इस भाषा",
+    "target_text": "这门语言",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0119L02U08": {
+   "seed": {
+    "seed_number": 119,
+    "known_text": "आपके जाने से पहले क्या मैं आपसे कुछ पूछ सकता हूँ?",
+    "target_text": "在你离开之前我可以问你一件事吗？",
+    "known_audio_id": "9999e998-3de0-4096-a0bf-ae079e94c35b",
+    "target1_audio_id": "557f71ff-883a-4d00-ac36-6b5a8e1f6189",
+    "target2_audio_id": "3e844f06-34e5-4394-81e9-6f547fe1bf00"
+   },
+   "lego": {
+    "lego_id": "S0119L02",
+    "known_text": "मैं पूछ सकता हूँ",
+    "target_text": "我可以问",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0146L04U06": {
+   "seed": {
+    "seed_number": 146,
+    "known_text": "जब से हमने इसे ठीक करने की कोशिश की, तब से कुछ भी काम नहीं कर रहा लगता।",
+    "target_text": "自从我们试图修好以后，什么都好像不管用。",
+    "known_audio_id": "c9d7c8dd-6933-4e8e-8c73-506ceaf91b94",
+    "target1_audio_id": "4b3c5cd4-fa4d-400a-83e0-28d506cc67c1",
+    "target2_audio_id": "f3303bdc-935f-43cf-a8cc-6dd421a7e608"
+   },
+   "lego": {
+    "lego_id": "S0146L04",
+    "known_text": "तब से",
+    "target_text": "以后",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0147L03U06": {
+   "seed": {
+    "seed_number": 147,
+    "known_text": "जब उसने मुझे घबराया हुआ देखा तो वह बहुत मेहरबान थी।",
+    "target_text": "她看到我紧张的时候，对我很好。",
+    "known_audio_id": "f87016b9-420b-4dde-a623-deed06803d10",
+    "target1_audio_id": "a5b139d5-1f5a-4e66-9581-b8cfc5d06fa6",
+    "target2_audio_id": "a3a7b23c-597d-4c2b-b7a2-486959dc3ab8"
+   },
+   "lego": {
+    "lego_id": "S0147L03",
+    "known_text": "जब घबराया हुआ",
+    "target_text": "紧张的时候",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0148L01U06": {
+   "seed": {
+    "seed_number": 148,
+    "known_text": "जब मैं जवाब नहीं दे पाया तो उसमें ज़्यादा सब्र नहीं था।",
+    "target_text": "我回答不上来的时候，他不太有耐心。",
+    "known_audio_id": "f606c375-dd10-4fbc-a5dd-d98794586a3d",
+    "target1_audio_id": "219e4fc3-2271-4d0a-ab7c-989ac30df69d",
+    "target2_audio_id": "cd1158cf-8e52-419d-bd80-9e9d8d5c79cc"
+   },
+   "lego": {
+    "lego_id": "S0148L01",
+    "known_text": "मैं जवाब नहीं दे पाया",
+    "target_text": "回答不上来",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0149L03U06": {
+   "seed": {
+    "seed_number": 149,
+    "known_text": "यह ज़्यादा मुश्किल नहीं है, इसलिए मुझे उम्मीद है कि आप जल्दी ख़त्म कर लेंगे।",
+    "target_text": "这不太难，所以我希望你快点做完。",
+    "known_audio_id": "77e7cb20-ee4f-4dcf-8319-6ab8186cf62f",
+    "target1_audio_id": "470119c4-34e4-465f-8d2f-1a5ce0969dbd",
+    "target2_audio_id": "ac04e18a-8c7d-4460-8161-59c4bc05fa43"
+   },
+   "lego": {
+    "lego_id": "S0149L03",
+    "known_text": "जल्दी",
+    "target_text": "快点",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0184L03U06": {
+   "seed": {
+    "seed_number": 184,
+    "known_text": "हाँ, मैंने उन्हें कुछ देर पहले दफ़्तर में देखा था।",
+    "target_text": "有，我刚才在办公室看到它们了。",
+    "known_audio_id": "56ebe536-7f77-4dc2-96ae-c4f7b3851f4f",
+    "target1_audio_id": "0a84fba0-b9a4-4d08-ab9d-ba423e1e54aa",
+    "target2_audio_id": "3b465c76-03f5-4be0-8de3-6ddcc3774120"
+   },
+   "lego": {
+    "lego_id": "S0184L03",
+    "known_text": "कुछ देर पहले",
+    "target_text": "刚才",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0187L02U06": {
+   "seed": {
+    "seed_number": 187,
+    "known_text": "मैं अब तक ख़ुश हूँ।",
+    "target_text": "我到目前为止很开心。",
+    "known_audio_id": "3cd85d90-a0cf-4547-a63f-26473cd87300",
+    "target1_audio_id": "3e20b4da-8e80-45e5-8fe6-016a08d70194",
+    "target2_audio_id": "ce7df2cf-6d23-4cc8-b7aa-3652b7e25d1c"
+   },
+   "lego": {
+    "lego_id": "S0187L02",
+    "known_text": "अब तक",
+    "target_text": "到目前为止",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0190L02U06": {
+   "seed": {
+    "seed_number": 190,
+    "known_text": "क्या आपको बुरा लगेगा अगर मैं आपसे कुछ सवाल पूछूँ?",
+    "target_text": "你介意我问你几个问题吗？",
+    "known_audio_id": "fbd3154f-ec81-41a3-84c4-c20718480b79",
+    "target1_audio_id": "b5ef6f7a-09a3-4982-9df2-976bcd6b782c",
+    "target2_audio_id": "6c88a844-7e33-47e2-b5e7-73eb7bccc6ae"
+   },
+   "lego": {
+    "lego_id": "S0190L02",
+    "known_text": "कुछ सवाल",
+    "target_text": "几个问题",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0195L02U06": {
+   "seed": {
+    "seed_number": 195,
+    "known_text": "मैं वह पैसा ढूँढ रहा हूँ जो मैंने मेज़ पर छोड़ा था।",
+    "target_text": "我在找我放在桌上的钱。",
+    "known_audio_id": "56c83c63-5012-4a52-95a5-10a0f2588829",
+    "target1_audio_id": "6c16cb5d-2984-4041-a595-524bf2e96663",
+    "target2_audio_id": "1505ba46-e80e-4708-b504-0d538314cbee"
+   },
+   "lego": {
+    "lego_id": "S0195L02",
+    "known_text": "मेज़ पर",
+    "target_text": "桌上",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0196L03U06": {
+   "seed": {
+    "seed_number": 196,
+    "known_text": "क्या आपने सबसे नया विचार सुना है?",
+    "target_text": "你听说最新的想法了吗？",
+    "known_audio_id": "f1ec0f9e-0b27-4537-aa50-fc7c012e6b1a",
+    "target1_audio_id": "0292b79c-e26a-4022-ab2a-dabfa7a3f350",
+    "target2_audio_id": "2299d31e-1054-4a0b-b247-130546cb5f9c"
+   },
+   "lego": {
+    "lego_id": "S0196L03",
+    "known_text": "सबसे नया",
+    "target_text": "最新的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0198L01U06": {
+   "seed": {
+    "seed_number": 198,
+    "known_text": "मेरी बेटी काउंसिल के लिए काम करती है।",
+    "target_text": "我女儿在政府部门工作。",
+    "known_audio_id": "1b84acd6-277b-4611-ab90-bcdf55cd3ad9",
+    "target1_audio_id": "63675079-0b90-4d11-b236-dd0eed1ab939",
+    "target2_audio_id": "23bced16-f84f-49fc-a406-bda0232a2ac8"
+   },
+   "lego": {
+    "lego_id": "S0198L01",
+    "known_text": "बेटी",
+    "target_text": "女儿",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0200L03U06": {
+   "seed": {
+    "seed_number": 200,
+    "known_text": "वे कहते हैं कि वे यह सुनिश्चित करना चाहते हैं कि हम सब कुछ समय पर ख़त्म कर लें।",
+    "target_text": "他们说想确保我们按时完成所有事情。",
+    "known_audio_id": "b1a99fa8-209e-4b36-8685-cc3038f6e90f",
+    "target1_audio_id": "3a63a72b-ccd9-4339-af2f-5981c4c55a21",
+    "target2_audio_id": "184169a6-8485-4041-afd2-c57f3bd1bbad"
+   },
+   "lego": {
+    "lego_id": "S0200L03",
+    "known_text": "समय पर",
+    "target_text": "按时",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0228L01U06": {
+   "seed": {
+    "seed_number": 228,
+    "known_text": "उस आदमी ने अभी-अभी बोलने का अभ्यास करना शुरू किया है।",
+    "target_text": "那个男人刚开始练习说话。",
+    "known_audio_id": "197ea5a9-799e-434a-8646-999388afa06f",
+    "target1_audio_id": "8bab7999-25fd-4662-be30-d781b68f5fa5",
+    "target2_audio_id": "3b7bcf8a-6249-4bdc-aea8-cc349d6a3b83"
+   },
+   "lego": {
+    "lego_id": "S0228L01",
+    "known_text": "बोलने का अभ्यास करना",
+    "target_text": "练习说话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0230L02U06": {
+   "seed": {
+    "seed_number": 230,
+    "known_text": "मैं एक नौजवान को जानता हूँ जो आपके साथ काम करना चाहता है।",
+    "target_text": "我认识一个年轻男人，他想跟你一起工作。",
+    "known_audio_id": "2dcf0352-bc3f-4bcd-b0a7-2297ed43e609",
+    "target1_audio_id": "cf67a38f-1acc-4b83-b5e8-69a1ebfb34ec",
+    "target2_audio_id": "b0ba447e-31cf-4d47-a99a-8f3474096b8a"
+   },
+   "lego": {
+    "lego_id": "S0230L02",
+    "known_text": "आपके साथ काम करना",
+    "target_text": "跟你一起工作",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0246L01U06": {
+   "seed": {
+    "seed_number": 246,
+    "known_text": "मैं चाहता था कि वह आपकी मदद करे लेकिन वह बहुत व्यस्त थी।",
+    "target_text": "我想让她帮你，但她太忙了。",
+    "known_audio_id": "1553c8c7-e46f-42ac-8e84-40f7811184d8",
+    "target1_audio_id": "8e27b4f9-8269-4a94-b946-9f9a6052b3e5",
+    "target2_audio_id": "b481df2a-72b5-4314-bedb-af1476955372"
+   },
+   "lego": {
+    "lego_id": "S0246L01",
+    "known_text": "मैं चाहता था कि वह",
+    "target_text": "我想让她",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0248L02U06": {
+   "seed": {
+    "seed_number": 248,
+    "known_text": "मुझे लगा कि वह फ़िल्म पूरी तरह बकवास थी और मुझे अपने पैसे वापस चाहिए।",
+    "target_text": "我觉得那部电影完全是垃圾，我想要退款。",
+    "known_audio_id": "b951f602-daa6-4d5e-a3dc-391861a3842f",
+    "target1_audio_id": "490182a6-41f8-4d7d-9107-000d0ffe3e89",
+    "target2_audio_id": "3766bd99-51a7-4f70-afcd-3bbdc3f21ad8"
+   },
+   "lego": {
+    "lego_id": "S0248L02",
+    "known_text": "वह फ़िल्म",
+    "target_text": "那部电影",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0250L02U06": {
+   "seed": {
+    "seed_number": 250,
+    "known_text": "जवाब देने से पहले क्या आप मुझे कुछ और बता सकते हैं?",
+    "target_text": "在我回答之前，你能告诉我另一件事吗？",
+    "known_audio_id": "b2f5319f-fede-43a2-abaa-4520fbb5fda0",
+    "target1_audio_id": "6e5bdd38-6b15-423a-b048-e4cf8f8c33a4",
+    "target2_audio_id": "162cb083-6e74-4a44-a483-867b86324449"
+   },
+   "lego": {
+    "lego_id": "S0250L02",
+    "known_text": "क्या आप मुझे बता सकते हैं",
+    "target_text": "你能告诉我",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0251L02U06": {
+   "seed": {
+    "seed_number": 251,
+    "known_text": "मैं हमारे ख़त्म करने के बाद तक पता नहीं लगाना चाहता।",
+    "target_text": "我不想在我们做完之后才知道。",
+    "known_audio_id": "5770e7e1-5b63-440f-99f0-4416327f21b4",
+    "target1_audio_id": "0eba2bba-fb7c-480d-bc7f-e671c0919b26",
+    "target2_audio_id": "dca5c163-c0d5-44ba-82f8-5035ac4ef168"
+   },
+   "lego": {
+    "lego_id": "S0251L02",
+    "known_text": "हमारे ख़त्म करने के बाद",
+    "target_text": "在我们做完之后",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0260L01U06": {
+   "seed": {
+    "seed_number": 260,
+    "known_text": "मुझे ज़रा भी अंदाज़ा नहीं है।",
+    "target_text": "我完全不知道。",
+    "known_audio_id": "f0a95f2f-614a-4d8b-adf4-044f1cdd6b3a",
+    "target1_audio_id": "7c487ec1-1194-4ff8-946e-4ff3c826214b",
+    "target2_audio_id": "172878ae-7d1d-4ea9-afcc-2938a131eb20"
+   },
+   "lego": {
+    "lego_id": "S0260L01",
+    "known_text": "ज़रा भी अंदाज़ा नहीं",
+    "target_text": "完全不知道",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0261L02U06": {
+   "seed": {
+    "seed_number": 261,
+    "known_text": "मुझे लगता है कि यह कुछ ज़रूरी हो सकता है।",
+    "target_text": "我觉得那可能是重要的事。",
+    "known_audio_id": "be5ee4fe-50cf-4cb2-848f-c9d0e2bbec36",
+    "target1_audio_id": "20aa4b14-a3be-4da6-9ebd-93b05e3b92d2",
+    "target2_audio_id": "3a6feafc-ad6e-47be-ae15-2a80efb856f5"
+   },
+   "lego": {
+    "lego_id": "S0261L02",
+    "known_text": "कुछ ज़रूरी",
+    "target_text": "重要的事",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0267L03U06": {
+   "seed": {
+    "seed_number": 267,
+    "known_text": "क्या आपको अपने दोस्त की कोई ख़बर मिली?",
+    "target_text": "你收到你朋友的消息了吗？",
+    "known_audio_id": "a1408cef-aa53-471b-88aa-02799811ef87",
+    "target1_audio_id": "dc71b429-0a29-469f-a872-5b1ecca06628",
+    "target2_audio_id": "ed51ed46-59dc-41f5-8980-d4eb75bbff0c"
+   },
+   "lego": {
+    "lego_id": "S0267L03",
+    "known_text": "अपने दोस्त की",
+    "target_text": "你朋友的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L03U06": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "हाँ, उसने मुझे पिछले हफ़्ते दो ईमेल भेजे।",
+    "target_text": "是的，她上星期发给我两封电子邮件。",
+    "known_audio_id": "974e00c9-361d-404f-8837-147f1a856011",
+    "target1_audio_id": "efc0ef44-c285-4e43-aba3-42c0ec3c3343",
+    "target2_audio_id": "64ceede0-0c19-4502-818f-fd2dcbbb5ad5"
+   },
+   "lego": {
+    "lego_id": "S0268L03",
+    "known_text": "दो ईमेल",
+    "target_text": "两封电子邮件",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0281L01U06": {
+   "seed": {
+    "seed_number": 281,
+    "known_text": "क्या आपको बुरा लगेगा अगर आपके शुरू करने से पहले मैं अपनी कॉफ़ी ख़त्म कर लूँ?",
+    "target_text": "你介意我喝完咖啡再开始吗？",
+    "known_audio_id": "c6fde850-41b8-495e-85e2-78f7418cec56",
+    "target1_audio_id": "fc679086-389f-4f28-a3f8-77f1fd0742f3",
+    "target2_audio_id": "67b536bd-c83d-4abb-a6b7-727a6e72c97d"
+   },
+   "lego": {
+    "lego_id": "S0281L01",
+    "known_text": "कॉफ़ी",
+    "target_text": "咖啡",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0302L01U06": {
+   "seed": {
+    "seed_number": 302,
+    "known_text": "उसने कहा कि वह शहर में नहीं रहना चाहती।",
+    "target_text": "她说她不想住在城市里。",
+    "known_audio_id": "3d548ac6-ebfd-4ca6-972b-5d0e6a8dbe52",
+    "target1_audio_id": "d21ddaf3-bcf5-4909-9766-3eb1f36a3603",
+    "target2_audio_id": "ed0d5434-d347-490b-9228-bd67f1443d25"
+   },
+   "lego": {
+    "lego_id": "S0302L01",
+    "known_text": "शहर में रहना",
+    "target_text": "住在城市里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0311L02U06": {
+   "seed": {
+    "seed_number": 311,
+    "known_text": "वह उन तीन सबसे ज़रूरी तथ्यों पर यकीन नहीं कर पा रहा था।",
+    "target_text": "他不相信那三个最重要的事实。",
+    "known_audio_id": "831f1467-9193-4914-9b96-977d4025dc8a",
+    "target1_audio_id": "d494e656-4ced-4a73-acb7-5b91f8fd3a71",
+    "target2_audio_id": "01f94145-711c-46db-80ba-d187bae60761"
+   },
+   "lego": {
+    "lego_id": "S0311L02",
+    "known_text": "उन तीन",
+    "target_text": "那三个",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0312L01U06": {
+   "seed": {
+    "seed_number": 312,
+    "known_text": "उसने कहा कि वह कल रात दूसरा कमरा इस्तेमाल कर सकती है।",
+    "target_text": "她说她明天晚上可以用另一个房间。",
+    "known_audio_id": "de12c996-ca56-40ac-a510-6110043e31e5",
+    "target1_audio_id": "939d9db0-a087-49e8-9a94-4ed704bf524a",
+    "target2_audio_id": "ef6257ed-60f6-4a98-9f80-fb3ed651eb20"
+   },
+   "lego": {
+    "lego_id": "S0312L01",
+    "known_text": "उसने कहा कि वह कल रात",
+    "target_text": "她说她明天晚上",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0317L03U06": {
+   "seed": {
+    "seed_number": 317,
+    "known_text": "हाँ, मुझे लगता है कि अगर वह चाहे तो ला सकती है।",
+    "target_text": "是的，我觉得她愿意的话可以。",
+    "known_audio_id": "fb5d536e-d511-4367-b4d2-9c36d268c992",
+    "target1_audio_id": "ddc309d9-977a-45f4-a4f2-4f00716cdffa",
+    "target2_audio_id": "06b3ffd9-2260-41e9-ac21-5d9a1fe18a05"
+   },
+   "lego": {
+    "lego_id": "S0317L03",
+    "known_text": "अगर वह चाहे तो",
+    "target_text": "她愿意的话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0355L03U06": {
+   "seed": {
+    "seed_number": 355,
+    "known_text": "क्या उसे उस औरत से बात करनी थी जिसे आप जानते हैं?",
+    "target_text": "她需要跟你认识的那个女人谈吗？",
+    "known_audio_id": "adee8461-52af-4f47-8645-357b3e084bb7",
+    "target1_audio_id": "77bf2c60-5ae4-40cb-991c-a2f49ab5254d",
+    "target2_audio_id": "64e7969e-288c-475a-be42-21c1eab2f3c6"
+   },
+   "lego": {
+    "lego_id": "S0355L03",
+    "known_text": "उसे थी",
+    "target_text": "她需要",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0384L02U06": {
+   "seed": {
+    "seed_number": 384,
+    "known_text": "उसने अभी जो कहा उससे मैं सहमत नहीं हो सका।",
+    "target_text": "我不同意他刚才说的话。",
+    "known_audio_id": "ca7ed6d8-ca63-49e7-b32d-7bdf1780ea02",
+    "target1_audio_id": "4b10f521-821a-4d88-b156-41926748b3dc",
+    "target2_audio_id": "e9114144-ecaa-4dfe-8719-4e3b178ef134"
+   },
+   "lego": {
+    "lego_id": "S0384L02",
+    "known_text": "उसने अभी जो कहा",
+    "target_text": "他刚才说的话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0387L01U06": {
+   "seed": {
+    "seed_number": 387,
+    "known_text": "नहीं, मुझे नहीं लगा कि वह सही थी।",
+    "target_text": "不，我不觉得她说得对。",
+    "known_audio_id": "5e9d4e55-01f3-41aa-95ac-eade9144fc66",
+    "target1_audio_id": "d93c1a29-31f3-4bf0-9a16-3e8c30b24d00",
+    "target2_audio_id": "742bd231-7eb7-4bd3-a105-9f975e3f9f29"
+   },
+   "lego": {
+    "lego_id": "S0387L01",
+    "known_text": "नहीं, मुझे नहीं लगा",
+    "target_text": "不，我不觉得",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0388L02U06": {
+   "seed": {
+    "seed_number": 388,
+    "known_text": "वह इंसान जिसके साथ आप काम करते हैं।",
+    "target_text": "那个跟你一起工作的人。",
+    "known_audio_id": "c4724c84-f5c4-41ef-a6ba-aed872a608f7",
+    "target1_audio_id": "59138b95-aff1-4571-bf88-7fbea8dc942f",
+    "target2_audio_id": "0c59f037-48d3-4688-ad6a-a5ea654a2800"
+   },
+   "lego": {
+    "lego_id": "S0388L02",
+    "known_text": "इंसान",
+    "target_text": "的人",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0390L02U06": {
+   "seed": {
+    "seed_number": 390,
+    "known_text": "वह जो प्रवेश द्वार के पास खड़ा है।",
+    "target_text": "站在入口附近的那个人。",
+    "known_audio_id": "7e6eab2e-6bef-4b61-8aca-ee3ca0cb8538",
+    "target1_audio_id": "d2fa2048-a5e0-43b8-9906-587749508682",
+    "target2_audio_id": "fe263be8-a397-441e-9e10-0155e48ede7e"
+   },
+   "lego": {
+    "lego_id": "S0390L02",
+    "known_text": "वह जो",
+    "target_text": "的那个人",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0392L01U06": {
+   "seed": {
+    "seed_number": 392,
+    "known_text": "डाकघर के सामने काले बालों वाला वह बच्चा।",
+    "target_text": "邮局对面那个黑头发的孩子。",
+    "known_audio_id": "35e31125-2030-4e99-8089-dff93e297654",
+    "target1_audio_id": "553a3f62-a3eb-4b92-beed-834b439e6774",
+    "target2_audio_id": "f26d76c7-0fb3-4e99-a273-589daca12074"
+   },
+   "lego": {
+    "lego_id": "S0392L01",
+    "known_text": "डाकघर के सामने",
+    "target_text": "邮局对面",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0396L04U06": {
+   "seed": {
+    "seed_number": 396,
+    "known_text": "हमें तब तक खड़े रहने की ज़रूरत नहीं है जब तक बाक़ी सब तैयार न हो जाएँ।",
+    "target_text": "我们不需要站着等到其他人都准备好。",
+    "known_audio_id": "2c0d9703-74cc-481c-bb5f-9a04e6974a5f",
+    "target1_audio_id": "da2e3722-e8b5-4e78-b14c-ae2de334f53b",
+    "target2_audio_id": "0b181f19-221c-4f59-b881-bfd5c47818e6"
+   },
+   "lego": {
+    "lego_id": "S0396L04",
+    "known_text": "बाक़ी सब तैयार",
+    "target_text": "其他人都准备好",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0401L02U06": {
+   "seed": {
+    "seed_number": 401,
+    "known_text": "नहीं, सीधे घर जाना बेहतर होगा।",
+    "target_text": "不，最好直接回家。",
+    "known_audio_id": "e47b3697-587b-489d-bad2-6de749ed5b58",
+    "target1_audio_id": "5ff71568-5cda-41db-aebb-9ce7918929a4",
+    "target2_audio_id": "ee1d8b19-91ad-4096-905e-7a375a6752a3"
+   },
+   "lego": {
+    "lego_id": "S0401L02",
+    "known_text": "सीधे",
+    "target_text": "直接",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0402L03U06": {
+   "seed": {
+    "seed_number": 402,
+    "known_text": "हाँ, खाने के लिए कहीं रुकना अच्छा होगा।",
+    "target_text": "是的，在某个地方停下来吃东西会很好。",
+    "known_audio_id": "465e5420-201e-4092-84da-ba974e411d22",
+    "target1_audio_id": "35b9eb06-bd3f-4ed7-917a-4547e457f0cc",
+    "target2_audio_id": "23084acb-6c96-4489-8299-e07d2addb27d"
+   },
+   "lego": {
+    "lego_id": "S0402L03",
+    "known_text": "खाने के लिए",
+    "target_text": "吃东西",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0404L03U06": {
+   "seed": {
+    "seed_number": 404,
+    "known_text": "हमें गुरुवार से पहले ख़त्म करने की उम्मीद नहीं करनी चाहिए।",
+    "target_text": "我们不应该指望在星期四之前做完。",
+    "known_audio_id": "f2385108-70c2-4740-98cf-2bd185cd7e3f",
+    "target1_audio_id": "e79df4eb-b920-4706-b081-b329d8b6c413",
+    "target2_audio_id": "871f681e-cc8e-4766-83ff-9535fdd3899e"
+   },
+   "lego": {
+    "lego_id": "S0404L03",
+    "known_text": "गुरुवार से पहले",
+    "target_text": "在星期四之前",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0405L02U06": {
+   "seed": {
+    "seed_number": 405,
+    "known_text": "क्या हमें पूछना चाहिए कि हमें बुकिंग करनी है या नहीं?",
+    "target_text": "我们应该问一下是否需要预订吗？",
+    "known_audio_id": "7514682e-afee-4605-a5cf-5261767024fb",
+    "target1_audio_id": "bb7c2585-72d0-4a19-9b0c-e98ca23d0d80",
+    "target2_audio_id": "6eda6ce0-1ba4-4fca-b7f6-34d6fa725b2e"
+   },
+   "lego": {
+    "lego_id": "S0405L02",
+    "known_text": "बुकिंग करनी है या नहीं",
+    "target_text": "是否需要预订吗",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0406L01U06": {
+   "seed": {
+    "seed_number": 406,
+    "known_text": "नहीं, मुझे यकीन है कि सब ठीक रहेगा।",
+    "target_text": "不，我确定没问题的。",
+    "known_audio_id": "158691fa-8922-4d0e-86a5-2c4b4efbab03",
+    "target1_audio_id": "bd06cc76-2e71-43ec-aa28-e2f0c1b1c92b",
+    "target2_audio_id": "2227a797-3df9-4e17-93c6-f2c85e0b4158"
+   },
+   "lego": {
+    "lego_id": "S0406L01",
+    "known_text": "नहीं, मुझे यकीन है",
+    "target_text": "不，我确定",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0408L03U06": {
+   "seed": {
+    "seed_number": 408,
+    "known_text": "हाँ, एक ख़ुशहाल परिवार बनाने का यही सबसे अच्छा तरीका है।",
+    "target_text": "是的，那是建立幸福家庭的最好方法。",
+    "known_audio_id": "2d3c051b-c0d8-4ea0-9637-cbf69e041700",
+    "target1_audio_id": "c2d1dc93-c070-40e7-b4d3-def0338265ff",
+    "target2_audio_id": "1ec9f35e-7e01-4032-b891-047f7811d718"
+   },
+   "lego": {
+    "lego_id": "S0408L03",
+    "known_text": "सबसे अच्छा तरीका",
+    "target_text": "最好方法",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0409L02U06": {
+   "seed": {
+    "seed_number": 409,
+    "known_text": "नहीं, हम जो भी करें उससे कोई फ़र्क़ नहीं पड़ता।",
+    "target_text": "不，我们做什么都没关系。",
+    "known_audio_id": "db4cb766-2ee6-4509-8e63-f9019f83b3eb",
+    "target1_audio_id": "001fb117-efc5-43c7-9cdc-ab2dcb48f8bd",
+    "target2_audio_id": "4cd1d8d8-9709-40fb-b3ee-596538a30d14"
+   },
+   "lego": {
+    "lego_id": "S0409L02",
+    "known_text": "जो भी करें",
+    "target_text": "做什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0411L03U06": {
+   "seed": {
+    "seed_number": 411,
+    "known_text": "हम आज रात चार लोगों के लिए एक मेज़ बुक करना चाहेंगे।",
+    "target_text": "我们想预订一张今晚四人的桌子。",
+    "known_audio_id": "49869887-45f9-4241-be8d-63ce705b9af0",
+    "target1_audio_id": "55af49dd-f3bf-428f-ae14-14509a16812b",
+    "target2_audio_id": "55022c58-6199-47d9-82c7-56e9e94f4fb4"
+   },
+   "lego": {
+    "lego_id": "S0411L03",
+    "known_text": "आज रात चार लोगों के लिए एक",
+    "target_text": "一张今晚四人的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0412L02U06": {
+   "seed": {
+    "seed_number": 412,
+    "known_text": "हम उन्हें सब कुछ जीतने नहीं दे सकते थे।",
+    "target_text": "我们不能让他们赢得一切。",
+    "known_audio_id": "108df8cf-2b43-4392-bef1-378dfec3cf4a",
+    "target1_audio_id": "974fda03-71a7-4b78-b5c1-91bd8e785c87",
+    "target2_audio_id": "61acc816-7e3e-4dee-8779-819e8d54f584"
+   },
+   "lego": {
+    "lego_id": "S0412L02",
+    "known_text": "उन्हें दे",
+    "target_text": "让他们",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0421L03U06": {
+   "seed": {
+    "seed_number": 421,
+    "known_text": "क्योंकि वे पहले से ही जानते हैं कि वह कमज़ोर होता जा रहा है।",
+    "target_text": "因为他们已经知道他越来越虚弱了。",
+    "known_audio_id": "246ab92a-d711-470b-b38d-075a2944ee2a",
+    "target1_audio_id": "6981f4b0-4df4-4e6c-a098-33b9a2d5b8bd",
+    "target2_audio_id": "f00f6b6c-9ed7-431c-abde-ee4ccca40a1f"
+   },
+   "lego": {
+    "lego_id": "S0421L03",
+    "known_text": "जानते हैं",
+    "target_text": "知道",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0423L04U06": {
+   "seed": {
+    "seed_number": 423,
+    "known_text": "क्या उन्हें इतना ज़ाहिर सवाल पूछने की ज़रूरत है?",
+    "target_text": "他们需要问这么明显的问题吗？",
+    "known_audio_id": "d0dabf55-578b-4dcc-9649-b4d5f16a12bb",
+    "target1_audio_id": "e275fce9-18f7-4017-a158-febe4cf296cc",
+    "target2_audio_id": "f964352e-9cd1-488d-8186-f66794046d41"
+   },
+   "lego": {
+    "lego_id": "S0423L04",
+    "known_text": "क्या इतना ज़ाहिर सवाल",
+    "target_text": "这么明显的问题吗",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0424L02U06": {
+   "seed": {
+    "seed_number": 424,
+    "known_text": "नहीं, वे सबका समय बर्बाद कर रहे हैं।",
+    "target_text": "不，他们在浪费大家的时间。",
+    "known_audio_id": "f2b6d9a9-6a8a-4f75-9937-5fbd38d90b2f",
+    "target1_audio_id": "7c214b81-6706-4554-b043-dc93b890ba40",
+    "target2_audio_id": "c87cd418-8604-4439-a45e-1457e240d60b"
+   },
+   "lego": {
+    "lego_id": "S0424L02",
+    "known_text": "सबका समय",
+    "target_text": "大家的时间",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0425L01U06": {
+   "seed": {
+    "seed_number": 425,
+    "known_text": "हाँ, उन्हें यह सुनिश्चित करना है कि वे समझ गए हैं।",
+    "target_text": "是的，他们需要确保自己理解了。",
+    "known_audio_id": "69f7f8c1-d521-4e08-a04a-0a01a5d68d93",
+    "target1_audio_id": "e43ba73c-623e-4038-9449-9aa18a484c02",
+    "target2_audio_id": "9b804e7b-67c1-4f1f-bc37-d9e7d4257ee5"
+   },
+   "lego": {
+    "lego_id": "S0425L01",
+    "known_text": "हाँ, उन्हें",
+    "target_text": "是的，他们",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0426L03U06": {
+   "seed": {
+    "seed_number": 426,
+    "known_text": "वे एक-दूसरे से प्यार करना चाहते हैं लेकिन वे ख़ुश नहीं हैं।",
+    "target_text": "他们想相爱，但他们不快乐。",
+    "known_audio_id": "1ca27e73-b87b-4495-a329-949bc3276c48",
+    "target1_audio_id": "599dfb8c-5043-49b7-bf91-6de83453a47c",
+    "target2_audio_id": "04a1bfc8-1a37-4832-9a08-517840531cca"
+   },
+   "lego": {
+    "lego_id": "S0426L03",
+    "known_text": "लेकिन वे ख़ुश नहीं हैं",
+    "target_text": "但他们不快乐",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0429L02U06": {
+   "seed": {
+    "seed_number": 429,
+    "known_text": "हाँ, वह उनके लिए बिल्कुल सही होगा।",
+    "target_text": "是的，那对他们来说非常合适。",
+    "known_audio_id": "4e2b06f7-b791-4d4a-81d2-6ef24fccd284",
+    "target1_audio_id": "fd6ed032-9460-423f-a5f8-980e358af14b",
+    "target2_audio_id": "9a622ead-d84a-4ecf-aa31-421c73ca24a4"
+   },
+   "lego": {
+    "lego_id": "S0429L02",
+    "known_text": "उनके लिए",
+    "target_text": "对他们来说",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0435L01U06": {
+   "seed": {
+    "seed_number": 435,
+    "known_text": "हाँ, वे चाहें तो कर सकते हैं।",
+    "target_text": "是的，他们愿意的话可以。",
+    "known_audio_id": "0f3f4797-8d95-4e90-b3d3-4af814befc71",
+    "target1_audio_id": "ca69e28b-d0b3-4f5a-bf21-97d68a626d2c",
+    "target2_audio_id": "04662ca7-4c37-41bf-906e-8b64e8456bcb"
+   },
+   "lego": {
+    "lego_id": "S0435L01",
+    "known_text": "हाँ, वे चाहें तो",
+    "target_text": "是的，他们愿意的话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0452L01U07": {
+   "seed": {
+    "seed_number": 452,
+    "known_text": "उन्होंने नहीं कहा कि वे क्या करना चाहते हैं।",
+    "target_text": "他们没说他们想做什么。",
+    "known_audio_id": "c0edab75-4809-4cd8-9881-4d0759a4f327",
+    "target1_audio_id": "350514a0-0e2f-4520-be1a-141d2e58b567",
+    "target2_audio_id": "7c4fb147-870c-4242-a865-bccdfffe4fdf"
+   },
+   "lego": {
+    "lego_id": "S0452L01",
+    "known_text": "उन्होंने नहीं कहा",
+    "target_text": "他们没说",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0461L01U06": {
+   "seed": {
+    "seed_number": 461,
+    "known_text": "एक दुकान जहाँ मैं कुछ पोस्टकार्ड ख़रीद सकूँ।",
+    "target_text": "一家可以买明信片的商店。",
+    "known_audio_id": "fa3e2132-c9d6-4aa6-a59f-65d78cbc7beb",
+    "target1_audio_id": "0f83a59f-9be1-41d5-b199-7f40898a2063",
+    "target2_audio_id": "acbd8323-9c7f-4ea1-a75b-c9be9cb18e4a"
+   },
+   "lego": {
+    "lego_id": "S0461L01",
+    "known_text": "पोस्टकार्ड",
+    "target_text": "明信片",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0462L03U06": {
+   "seed": {
+    "seed_number": 462,
+    "known_text": "मेरे दादा युद्ध के दौरान इटली में लड़े थे।",
+    "target_text": "我爷爷战争期间在意大利打过仗。",
+    "known_audio_id": "09475c3d-88c8-44ac-8b4c-f4a1607ca7fc",
+    "target1_audio_id": "f733ae0c-9151-4be2-b470-113f3b549745",
+    "target2_audio_id": "2d7e4ce2-eb46-45a5-a2ed-075b50693349"
+   },
+   "lego": {
+    "lego_id": "S0462L03",
+    "known_text": "इटली में",
+    "target_text": "在意大利",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0464L01U06": {
+   "seed": {
+    "seed_number": 464,
+    "known_text": "मैंने उसे अपना कमरा नंबर एक बार बताया था लेकिन वह भूल गई।",
+    "target_text": "我告诉过她我的房间号码一次，但她忘了。",
+    "known_audio_id": "ef4d75cb-f4f9-45f9-b994-31916a107b54",
+    "target1_audio_id": "6f61a30b-48ab-4aae-8c4f-22f2081f2675",
+    "target2_audio_id": "cdb442ba-6df8-4619-a709-d9f245a76cfc"
+   },
+   "lego": {
+    "lego_id": "S0464L01",
+    "known_text": "मैंने उसे बताया था",
+    "target_text": "我告诉过她",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0470L03U06": {
+   "seed": {
+    "seed_number": 470,
+    "known_text": "रुकने से पहले आप कितनी ऊँचाई तक चढ़ना चाहते हैं?",
+    "target_text": "你想爬多高才停下来？",
+    "known_audio_id": "e4a399a3-b9c1-4a87-84ff-d105cb398896",
+    "target1_audio_id": "8b1df553-e265-403d-96e5-1663380ca5e4",
+    "target2_audio_id": "7c37f646-ab99-4609-8787-15a1db6195b7"
+   },
+   "lego": {
+    "lego_id": "S0470L03",
+    "known_text": "रुकने से पहले",
+    "target_text": "才停下来",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0479L02U06": {
+   "seed": {
+    "seed_number": 479,
+    "known_text": "यह कम से कम जो मैं कर सकता था।",
+    "target_text": "这是我能做的最少的事。",
+    "known_audio_id": "6e21681d-fa56-43aa-91f9-4559c2d13a03",
+    "target1_audio_id": "7892d05b-4437-45cc-b270-6ef024ff4c2f",
+    "target2_audio_id": "58570a69-2bc3-4e93-b054-20d836f152fa"
+   },
+   "lego": {
+    "lego_id": "S0479L02",
+    "known_text": "कम से कम",
+    "target_text": "最少",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0492L01U06": {
+   "seed": {
+    "seed_number": 492,
+    "known_text": "आपको लगता है कि उन जगहों में से कौन-सी सबसे दिलचस्प है?",
+    "target_text": "你觉得那些地方哪个最有意思？",
+    "known_audio_id": "279cada5-e7bd-4212-84fa-bec9eebcf8cc",
+    "target1_audio_id": "224cb8da-3504-4b75-bb5d-2182f43134b6",
+    "target2_audio_id": "03a35403-69e2-4dca-8056-8aa74ba6ef97"
+   },
+   "lego": {
+    "lego_id": "S0492L01",
+    "known_text": "कौन-सी",
+    "target_text": "哪个",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0516L03U06": {
+   "seed": {
+    "seed_number": 516,
+    "known_text": "वे दोनों अपने आप आए।",
+    "target_text": "他们两个都自己来了。",
+    "known_audio_id": "871b11ff-c3b5-4bed-9401-97a57932433a",
+    "target1_audio_id": "e319914b-7ad7-42d4-bda1-6be0e87fd099",
+    "target2_audio_id": "5c05217d-4f5e-4d3f-8527-bd719e0b8003"
+   },
+   "lego": {
+    "lego_id": "S0516L03",
+    "known_text": "वे दोनों",
+    "target_text": "他们两个",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0517L01U06": {
+   "seed": {
+    "seed_number": 517,
+    "known_text": "लेकिन वे एक-दूसरे के साथ चले गए।",
+    "target_text": "但他们一起离开了。",
+    "known_audio_id": "06497f3b-ef55-499a-96ac-1de46d75a840",
+    "target1_audio_id": "45ed491c-0a18-402a-bd89-6442346ffd94",
+    "target2_audio_id": "edb27cdd-1e5b-436c-91d0-980e000920d1"
+   },
+   "lego": {
+    "lego_id": "S0517L01",
+    "known_text": "एक-दूसरे के साथ",
+    "target_text": "一起",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0519L01U06": {
+   "seed": {
+    "seed_number": 519,
+    "known_text": "मैंने अभी तक उनका नया बच्चा नहीं देखा।",
+    "target_text": "我还没见过他们的新生宝宝。",
+    "known_audio_id": "2aef8af6-d385-47bb-9725-32a4e9ce75de",
+    "target1_audio_id": "388da043-1075-4e52-9fa5-582f367f05b6",
+    "target2_audio_id": "26a3ed04-1635-4143-9c1a-17e8cc4cb988"
+   },
+   "lego": {
+    "lego_id": "S0519L01",
+    "known_text": "बच्चा",
+    "target_text": "宝宝",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0522L02U06": {
+   "seed": {
+    "seed_number": 522,
+    "known_text": "चलिए मान लेते हैं कि सच बताना बेवक़ूफ़ी थी।",
+    "target_text": "我们同意说出真相是愚蠢的。",
+    "known_audio_id": "19dd5595-676c-4e77-93e9-4dd89ffd2b48",
+    "target1_audio_id": "93771ba7-8400-4fe8-9be9-823d4559f9eb",
+    "target2_audio_id": "b66139de-da0e-42ef-b4b8-1d0a4d113017"
+   },
+   "lego": {
+    "lego_id": "S0522L02",
+    "known_text": "बेवक़ूफ़ी",
+    "target_text": "愚蠢",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0524L03U07": {
+   "seed": {
+    "seed_number": 524,
+    "known_text": "मैं आपको तीन-चार मिनट में वापस फ़ोन करूँगा।",
+    "target_text": "我三四分钟后给你回电话。",
+    "known_audio_id": "40895e6f-fae7-4ef1-9003-ca95776414e2",
+    "target1_audio_id": "316e7014-359a-45d2-8296-53045fbf6b09",
+    "target2_audio_id": "4c6937c6-7da7-4c2e-97c8-cc192210a59d"
+   },
+   "lego": {
+    "lego_id": "S0524L03",
+    "known_text": "फ़ोन",
+    "target_text": "电话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0528L01U06": {
+   "seed": {
+    "seed_number": 528,
+    "known_text": "मुझे शायद उन चीज़ों को किसी दूसरे कमरे में रखना चाहिए।",
+    "target_text": "我可能应该把那些东西放在另一个房间里。",
+    "known_audio_id": "7283a056-30cc-4570-b3b4-94ac61cb84b9",
+    "target1_audio_id": "b92c27a6-8363-4b40-9324-3b1c14905df6",
+    "target2_audio_id": "09516913-8bd3-4ee8-99ea-0bb0195ad648"
+   },
+   "lego": {
+    "lego_id": "S0528L01",
+    "known_text": "किसी दूसरे कमरे में",
+    "target_text": "另一个房间里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0534L01U06": {
+   "seed": {
+    "seed_number": 534,
+    "known_text": "चलिए इस भयानक मौसम में बाहर न जाएँ।",
+    "target_text": "我们不要在这么糟糕的天气出去。",
+    "known_audio_id": "8e6e7109-94e2-4a03-a521-fdfb8e17b7c2",
+    "target1_audio_id": "2cd2ca9f-9d1d-4189-878f-0860ba792c2e",
+    "target2_audio_id": "9b29fcae-723f-4ee4-bae9-4eb31656a9fe"
+   },
+   "lego": {
+    "lego_id": "S0534L01",
+    "known_text": "मौसम",
+    "target_text": "天气",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0540L01U06": {
+   "seed": {
+    "seed_number": 540,
+    "known_text": "अगर आप बिना कार के जाना चाहते हैं तो मुझे कोई दिक्कत नहीं है।",
+    "target_text": "如果你想不开车走，我不介意。",
+    "known_audio_id": "9d25bf2f-2546-435a-be6f-bffd72b9c9d4",
+    "target1_audio_id": "924da761-43cc-4d07-aa63-472cba18b2e7",
+    "target2_audio_id": "16ef3ff1-b353-4428-b5ae-aba6106c6bd2"
+   },
+   "lego": {
+    "lego_id": "S0540L01",
+    "known_text": "बिना कार के जाना",
+    "target_text": "不开车走",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0557L03U06": {
+   "seed": {
+    "seed_number": 557,
+    "known_text": "काश वे इतना तेज़ संगीत न बजाते।",
+    "target_text": "我希望他们不要放这么大声的音乐。",
+    "known_audio_id": "ee54ba7e-fc8c-41b4-96d0-74585424074d",
+    "target1_audio_id": "1991fdfe-16cf-4b44-9432-6b342f7b9b7e",
+    "target2_audio_id": "331e7291-4099-4c94-b581-71471a953469"
+   },
+   "lego": {
+    "lego_id": "S0557L03",
+    "known_text": "इतना तेज़ संगीत",
+    "target_text": "这么大声的音乐",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0567L03U06": {
+   "seed": {
+    "seed_number": 567,
+    "known_text": "बाहर बच्चों को खेलते हुए देखते हुए समय बिताना बहुत अच्छा रहा।",
+    "target_text": "在户外看孩子们玩耍，花时间真的很美好。",
+    "known_audio_id": "d170c5bd-3135-4163-858a-773e74d395e7",
+    "target1_audio_id": "071caa8e-0324-487f-9c0c-4eccaade1662",
+    "target2_audio_id": "d2031f14-8abf-4a6a-a0a0-9e55c640b618"
+   },
+   "lego": {
+    "lego_id": "S0567L03",
+    "known_text": "समय बिताना",
+    "target_text": "花时间",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0568L03U06": {
+   "seed": {
+    "seed_number": 568,
+    "known_text": "मुझे उम्मीद है कि अगली बार जब हम मिलेंगे तो मुझे प्रगति दिखेगी।",
+    "target_text": "我期待下次见面时看到进步。",
+    "known_audio_id": "522000f9-f96e-4f6f-a638-bb1567e527d2",
+    "target1_audio_id": "b8cdf0e1-96aa-45a6-a40d-1c7b765e1227",
+    "target2_audio_id": "1c636d36-12ca-4906-919a-56e9f60c6f92"
+   },
+   "lego": {
+    "lego_id": "S0568L03",
+    "known_text": "जब हम मिलेंगे",
+    "target_text": "见面时",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0569L03U06": {
+   "seed": {
+    "seed_number": 569,
+    "known_text": "क्या आपने तय किया है कि आप कितना भुगतान करने को तैयार हैं?",
+    "target_text": "你决定好愿意付多少了吗？",
+    "known_audio_id": "28cf35d8-d412-490c-bbaa-7f6c8b4800da",
+    "target1_audio_id": "e68dec13-4dec-4ad3-998f-129d8de5a955",
+    "target2_audio_id": "8220cf9b-abcd-4e58-8715-33a7c79f611c"
+   },
+   "lego": {
+    "lego_id": "S0569L03",
+    "known_text": "कितना",
+    "target_text": "多少",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0570L02U06": {
+   "seed": {
+    "seed_number": 570,
+    "known_text": "आप अपनी टिकट के लिए कितना भुगतान करने को तैयार हैं?",
+    "target_text": "你愿意为你的票付多少钱？",
+    "known_audio_id": "bdfe7628-0021-412c-af0e-4a30efafd0b9",
+    "target1_audio_id": "8046c656-1ad5-4df7-8164-dc83ba91509d",
+    "target2_audio_id": "b5b62303-689d-445c-bde4-d6cefadeb79f"
+   },
+   "lego": {
+    "lego_id": "S0570L02",
+    "known_text": "अपनी ... के लिए",
+    "target_text": "为你的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0572L03U06": {
+   "seed": {
+    "seed_number": 572,
+    "known_text": "क्या आप भूल गए कि पिछली बार जब वे हमसे मिलने आए थे तब क्या हुआ था?",
+    "target_text": "你忘了上次他们来拜访我们时发生的事吗？",
+    "known_audio_id": "d945342e-0076-47eb-8a7f-fe6367b68ed7",
+    "target1_audio_id": "86a392dd-c9a0-404d-a966-91507a1d2e5a",
+    "target2_audio_id": "48c050b0-bdba-4980-8e68-df60ec2391d5"
+   },
+   "lego": {
+    "lego_id": "S0572L03",
+    "known_text": "तब क्या हुआ था",
+    "target_text": "时发生的事",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0578L02U06": {
+   "seed": {
+    "seed_number": 578,
+    "known_text": "कोई ज़्यादा गर्म जगह।",
+    "target_text": "某个更暖和的地方。",
+    "known_audio_id": "124f75b6-69e5-4a72-9c95-9cf25e867f1a",
+    "target1_audio_id": "5d47e096-b74c-4c8f-8cf3-011ac6b9ab42",
+    "target2_audio_id": "452ec9c2-20e2-4869-a806-c829c176a2a0"
+   },
+   "lego": {
+    "lego_id": "S0578L02",
+    "known_text": "ज़्यादा गर्म",
+    "target_text": "更暖和的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0581L01U06": {
+   "seed": {
+    "seed_number": 581,
+    "known_text": "वह उसके बारे में थोड़ा और जानना चाहेगा कि वह कैसा है।",
+    "target_text": "他想多了解一些那是什么样子。",
+    "known_audio_id": "5ba56ee0-d677-4b98-8c73-517f6b03b072",
+    "target1_audio_id": "f8bdfb71-dd19-41e8-9616-0e881cdac0b5",
+    "target2_audio_id": "e45a4686-06a2-44a7-93f2-ef97f1288655"
+   },
+   "lego": {
+    "lego_id": "S0581L01",
+    "known_text": "थोड़ा और जानना",
+    "target_text": "多了解一些",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0590L01U07": {
+   "seed": {
+    "seed_number": 590,
+    "known_text": "मैंने आख़िरी बस को स्टेशन से जाते हुए देखा।",
+    "target_text": "我看到最后一班车离开了站。",
+    "known_audio_id": "5c6491aa-7aab-4390-b157-04f243d2e92a",
+    "target1_audio_id": "1705cb0f-7dff-4738-9ca4-3d9218066586",
+    "target2_audio_id": "24fcea33-0801-4084-93a9-b254cbdb591f"
+   },
+   "lego": {
+    "lego_id": "S0590L01",
+    "known_text": "स्टेशन",
+    "target_text": "站",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0598L01U06": {
+   "seed": {
+    "seed_number": 598,
+    "known_text": "उसने उनके बारे में हज़ार कहानियाँ सुनी हैं कि वे क्या कर रहे थे।",
+    "target_text": "他听说了一千个关于他们在做什么的故事。",
+    "known_audio_id": "8c349a93-93f1-4844-b8b0-2f6567e50481",
+    "target1_audio_id": "88dcb303-862b-4d3c-80ea-e0be06263983",
+    "target2_audio_id": "934d7222-4ab4-44e1-b4be-dfc6b790c370"
+   },
+   "lego": {
+    "lego_id": "S0598L01",
+    "known_text": "हज़ार",
+    "target_text": "一千",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0621L02U06": {
+   "seed": {
+    "seed_number": 621,
+    "known_text": "मुझे उसे यह बताने की हिम्मत नहीं हुई कि वह टूट गया है।",
+    "target_text": "我不敢告诉她那个坏了。",
+    "known_audio_id": "660afae0-2ffb-4c3b-ae0e-8b7835b0fc15",
+    "target1_audio_id": "92ea571b-e96d-4588-8fa4-b92279c270a4",
+    "target2_audio_id": "ad8a1d6b-7232-4996-aa95-af731e301fa5"
+   },
+   "lego": {
+    "lego_id": "S0621L02",
+    "known_text": "टूट गया",
+    "target_text": "坏了",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

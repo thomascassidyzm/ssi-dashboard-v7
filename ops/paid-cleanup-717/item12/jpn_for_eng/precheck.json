@@ -1,0 +1,2438 @@
+{
+ "course": "jpn_for_eng",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0010L02U06": {
+   "seed": {
+    "seed_number": 10,
+    "known_text": "I'm not sure if I can remember the whole sentence",
+    "target_text": "文を全部覚えられるか、分からない",
+    "known_audio_id": "a7bc4974-9987-4a81-9d5e-9eda7555fbb4",
+    "target1_audio_id": "d040c40a-94a2-4b70-b3f8-1098f22112ae",
+    "target2_audio_id": "110cd47b-cab0-4c99-88c6-f4dcd9c0c1ad"
+   },
+   "lego": {
+    "lego_id": "S0010L02",
+    "known_text": "the whole",
+    "target_text": "全部",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0019L03U06": {
+   "seed": {
+    "seed_number": 19,
+    "known_text": "but I don't want to stop talking",
+    "target_text": "でも、話すのはやめたくない",
+    "known_audio_id": "e17e524a-ea59-4cfa-ad2c-d85a108bc356",
+    "target1_audio_id": "123d1d2a-4bb8-44ef-9230-1907783b5dbf",
+    "target2_audio_id": "87bd9a20-4c16-4bd2-9098-0d33304e00b7"
+   },
+   "lego": {
+    "lego_id": "S0019L03",
+    "known_text": "but",
+    "target_text": "でも",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0021L03U06": {
+   "seed": {
+    "seed_number": 21,
+    "known_text": "why are you learning her name?",
+    "target_text": "なんで彼女の名前を覚えてるの？",
+    "known_audio_id": "aca8b5e4-39b7-4179-add8-c21066475d45",
+    "target1_audio_id": "5986e2d7-2632-44f6-8d7f-4d9106931383",
+    "target2_audio_id": "c61f6fd6-4481-48d2-a0d4-941dce99764c"
+   },
+   "lego": {
+    "lego_id": "S0021L03",
+    "known_text": "her",
+    "target_text": "彼女の",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0023L03U06": {
+   "seed": {
+    "seed_number": 23,
+    "known_text": "I'm going to start talking more soon",
+    "target_text": "もうすぐ、もっと話し始める",
+    "known_audio_id": "bd3e3450-99bc-4eab-ab5a-f64c152de968",
+    "target1_audio_id": "5a15b48b-83e4-46b6-9aff-25b3a71643af",
+    "target2_audio_id": "27846545-6c83-4410-ba8f-0987e313f1ec"
+   },
+   "lego": {
+    "lego_id": "S0023L03",
+    "known_text": "soon",
+    "target_text": "もうすぐ",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0025L02U06": {
+   "seed": {
+    "seed_number": 25,
+    "known_text": "are you going to help me before I have to go?",
+    "target_text": "行く前に、手伝ってくれる？",
+    "known_audio_id": "f18ba186-e111-4443-aa83-a65467f9b576",
+    "target1_audio_id": "12fe10de-1eb8-4d99-b9f2-4dc3a8c33203",
+    "target2_audio_id": "a6339529-5c53-4781-bb27-2970584894d5"
+   },
+   "lego": {
+    "lego_id": "S0025L02",
+    "known_text": "before I go",
+    "target_text": "行く前に",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0027L03U06": {
+   "seed": {
+    "seed_number": 27,
+    "known_text": "I don't like taking too much time to answer",
+    "target_text": "答えるのに時間がかかるのは好きじゃない",
+    "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+    "target1_audio_id": "a6e8dc02-aadd-4346-9332-53338387503b",
+    "target2_audio_id": "cca6e500-d549-428c-af80-054f5bcdc3b0"
+   },
+   "lego": {
+    "lego_id": "S0027L03",
+    "known_text": "to answer",
+    "target_text": "答えるのに",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0029L03U05": {
+   "seed": {
+    "seed_number": 29,
+    "known_text": "I'm looking forward to speaking better as soon as I can",
+    "target_text": "早くうまく話せるようになるのが楽しみ",
+    "known_audio_id": "518afece-3fa8-4b3b-a0e5-8a131c7af765",
+    "target1_audio_id": "87b5041f-d179-4f61-b14f-7997281ccfaa",
+    "target2_audio_id": "66632277-3a16-4f65-9ebe-d9e0a0304ef2"
+   },
+   "lego": {
+    "lego_id": "S0029L03",
+    "known_text": "looking forward to",
+    "target_text": "のが楽しみ",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0033L02U06": {
+   "seed": {
+    "seed_number": 33,
+    "known_text": "how long have you been learning Japanese?",
+    "target_text": "どのくらい日本語をやってる？",
+    "known_audio_id": "eedb48cd-edef-4d14-8e27-0cb646392370",
+    "target1_audio_id": "1e81e78b-785b-4e64-a831-5c9937ac64ad",
+    "target2_audio_id": "de951311-0084-466a-b28c-03140474a2c8"
+   },
+   "lego": {
+    "lego_id": "S0033L02",
+    "known_text": "how long",
+    "target_text": "どのくらい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0038L01U06": {
+   "seed": {
+    "seed_number": 38,
+    "known_text": "I've been learning for about a week",
+    "target_text": "一週間くらい、日本語をやってる",
+    "known_audio_id": "3452250f-eb2d-4722-8cfa-ef44e9b9c301",
+    "target1_audio_id": "b1cf5021-22c2-4640-a74c-4e8c496c26f5",
+    "target2_audio_id": "5e3f063b-6499-4f82-b9d6-da536428b392"
+   },
+   "lego": {
+    "lego_id": "S0038L01",
+    "known_text": "about a week",
+    "target_text": "一週間くらい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0041L01U06": {
+   "seed": {
+    "seed_number": 41,
+    "known_text": "I feel okay, but I'm starting to feel tired",
+    "target_text": "大丈夫、でも、疲れてきてる",
+    "known_audio_id": "fe1c9235-fd27-44ba-b38c-83cad7908ce5",
+    "target1_audio_id": "05183446-a831-4923-a5af-1c692c826220",
+    "target2_audio_id": "2fbed221-e6aa-45ef-9ce5-77eb7caf2d4a"
+   },
+   "lego": {
+    "lego_id": "S0041L01",
+    "known_text": "okay",
+    "target_text": "大丈夫",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0046L02U13": {
+   "seed": {
+    "seed_number": 46,
+    "known_text": "but I don't worry about making mistakes",
+    "target_text": "間違えることは気にしてない",
+    "known_audio_id": "9c94de05-f694-4d45-bd43-6d54b87d42f6",
+    "target1_audio_id": "dd64c830-4169-4d4f-8403-b57e5b4d65a5",
+    "target2_audio_id": "5070a4cc-998c-4ada-aeb6-c7afdd9b3123"
+   },
+   "lego": {
+    "lego_id": "S0046L02",
+    "known_text": "making mistakes",
+    "target_text": "間違えることは",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0047L01U05": {
+   "seed": {
+    "seed_number": 47,
+    "known_text": "because I think that it's a good thing to make mistakes",
+    "target_text": "間違えるのはいいことだと思う",
+    "known_audio_id": "e55f1bb6-99a4-4cc9-9e1c-f22e2b0ab1e1",
+    "target1_audio_id": "499eab7e-be17-43fd-92eb-b620e01d8126",
+    "target2_audio_id": "9550bc8f-c6fa-4ca7-8ba8-55d004a92ccf"
+   },
+   "lego": {
+    "lego_id": "S0047L01",
+    "known_text": "I think it's a good thing",
+    "target_text": "のはいいことだと思う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0054L01U10": {
+   "seed": {
+    "seed_number": 54,
+    "known_text": "we wanted to give you a little more time",
+    "target_text": "もう少し時間をあげたかった",
+    "known_audio_id": "6a3068c7-3fc1-4f61-a975-d2d55a366aa2",
+    "target1_audio_id": "e8ebb07f-9464-4bb0-971e-2e034c56ab6b",
+    "target2_audio_id": "8c9044fd-af02-4e22-aea5-323cd1dd251f"
+   },
+   "lego": {
+    "lego_id": "S0054L01",
+    "known_text": "a little more",
+    "target_text": "もう少し",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0059L03U09": {
+   "seed": {
+    "seed_number": 59,
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "来週、何をするか分かってる",
+    "known_audio_id": "2eddb138-bd03-44ec-807b-e6cfc49edc0e",
+    "target1_audio_id": "3b68e9e4-a497-4b83-bf4c-9c3b148f2522",
+    "target2_audio_id": "e34d34c6-af73-492d-8071-d6c3731fbc4e"
+   },
+   "lego": {
+    "lego_id": "S0059L03",
+    "known_text": "what to do",
+    "target_text": "何をするか",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0072L03U08": {
+   "seed": {
+    "seed_number": 72,
+    "known_text": "I think that you're doing very well",
+    "target_text": "すごくよくやってると思う",
+    "known_audio_id": "d41d9269-9204-4cb4-966f-26398f387f03",
+    "target1_audio_id": "c7483164-1f34-4964-88ae-ed7d26fb06ea",
+    "target2_audio_id": "403f9cde-0850-4b2b-a50c-9cc41c32d88e"
+   },
+   "lego": {
+    "lego_id": "S0072L03",
+    "known_text": "very well",
+    "target_text": "すごくよく",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0073L03U09": {
+   "seed": {
+    "seed_number": 73,
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "ありがとう。でも、まだ学ぶことがある",
+    "known_audio_id": "07ac717c-f8c8-4cea-b3f4-1ed7dfaa350e",
+    "target1_audio_id": "85e3924d-93e5-44cb-a0a8-7d73fec191b8",
+    "target2_audio_id": "1a1daa91-1774-4f93-a372-4185b8fc8692"
+   },
+   "lego": {
+    "lego_id": "S0073L03",
+    "known_text": "I've got more to learn",
+    "target_text": "まだ学ぶことがある",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0076L02U07": {
+   "seed": {
+    "seed_number": 76,
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "もう学んだことには満足してる",
+    "known_audio_id": "ca9d13e4-9b48-473d-a5e5-80537192c505",
+    "target1_audio_id": "be9b3f18-38e8-4338-9ae3-a302d54e9154",
+    "target2_audio_id": "10693bce-53ae-4368-a61d-45b8974e6209"
+   },
+   "lego": {
+    "lego_id": "S0076L02",
+    "known_text": "how much I've learnt",
+    "target_text": "もう学んだこと",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L02U09": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "I'm not going to wait for you. Why not?",
+    "target_text": "待たない。なんで？",
+    "known_audio_id": "199fc8fc-87b1-43f3-8002-8c8948711cfc",
+    "target1_audio_id": "b3cfbd5d-32c2-4d40-ac11-5ecc6fab42a7",
+    "target2_audio_id": "0c7bf067-6dfd-46f4-abd6-27b5482d00bc"
+   },
+   "lego": {
+    "lego_id": "S0082L02",
+    "known_text": "why not",
+    "target_text": "なんで",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0086L02U09": {
+   "seed": {
+    "seed_number": 86,
+    "known_text": "it wasn't possible, unfortunately",
+    "target_text": "残念だけど、無理だった",
+    "known_audio_id": "7d77cbf8-cc32-4455-9cd9-fc10fa91811d",
+    "target1_audio_id": "b65981d6-266a-4851-b86f-a72f2d0d0bdc",
+    "target2_audio_id": "d30c7aa5-6eb7-435b-a1ca-d3d4df0f4f26"
+   },
+   "lego": {
+    "lego_id": "S0086L02",
+    "known_text": "unfortunately",
+    "target_text": "残念だけど",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0089L02U09": {
+   "seed": {
+    "seed_number": 89,
+    "known_text": "I think that I've done a lot in a short time",
+    "target_text": "短い時間で、たくさんやったと思う",
+    "known_audio_id": "594ddd3f-0f7c-44e4-a472-5a0ccb2dddb4",
+    "target1_audio_id": "a5dbff4a-3e9d-4972-b2bb-eecb0fa0fe13",
+    "target2_audio_id": "cde7c859-bf2d-4e0f-97d8-6f44644b8b31"
+   },
+   "lego": {
+    "lego_id": "S0089L02",
+    "known_text": "in a short time",
+    "target_text": "短い時間で",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0094L01U09": {
+   "seed": {
+    "seed_number": 94,
+    "known_text": "this is the only way it will work",
+    "target_text": "これしか方法がない",
+    "known_audio_id": "975cb13f-a7e3-454a-a4ba-eb77139ba6a3",
+    "target1_audio_id": "e398245b-fb48-4a8d-94fa-19a922258361",
+    "target2_audio_id": "3190cf0c-f5a2-446d-bc81-3831f4e53076"
+   },
+   "lego": {
+    "lego_id": "S0094L01",
+    "known_text": "the only way",
+    "target_text": "しか方法がない",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0096L02U09": {
+   "seed": {
+    "seed_number": 96,
+    "known_text": "no I'm not ready yet, I need a little more time",
+    "target_text": "まだ準備できてない。もう少し時間がいる",
+    "known_audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3",
+    "target1_audio_id": "05a4255a-befa-49f9-a470-f255c9139052",
+    "target2_audio_id": "3b065743-f946-4c52-9b61-f9f298f5bc23"
+   },
+   "lego": {
+    "lego_id": "S0096L02",
+    "known_text": "not ready",
+    "target_text": "準備できてない",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0097L01U09": {
+   "seed": {
+    "seed_number": 97,
+    "known_text": "yes I'm ready to go as soon as you want",
+    "target_text": "いつでも行ける",
+    "known_audio_id": "81a9d484-17e3-457d-bcec-29f42849cfba",
+    "target1_audio_id": "f6c671e5-635b-4c4b-b1f0-27b842bf3a2e",
+    "target2_audio_id": "156edec9-c757-4836-8293-ad32d01b02c5"
+   },
+   "lego": {
+    "lego_id": "S0097L01",
+    "known_text": "as soon as you want",
+    "target_text": "いつでも",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0100L02U09": {
+   "seed": {
+    "seed_number": 100,
+    "known_text": "you shouldn't worry about doing something similar",
+    "target_text": "似たことを心配しなくていい",
+    "known_audio_id": "493d14df-a195-47a6-b03f-0cdef6f717a8",
+    "target1_audio_id": "b9dc84f9-5255-4e1c-bedd-83e00a7907b1",
+    "target2_audio_id": "b5987ef1-0f25-4983-b258-88e8e5665752"
+   },
+   "lego": {
+    "lego_id": "S0100L02",
+    "known_text": "shouldn't worry about",
+    "target_text": "を心配しなくていい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0117L01U09": {
+   "seed": {
+    "seed_number": 117,
+    "known_text": "I'm definitely doing better than I was last time we talked to each other",
+    "target_text": "前より、確実によくなってる",
+    "known_audio_id": "1e91876c-cd0e-4db8-99a6-a7b037c0997e",
+    "target1_audio_id": "b5f98def-cf1a-448f-9e10-1916fa3e3eb6",
+    "target2_audio_id": "7cc3815e-61b0-4a76-9cad-c84091effc32"
+   },
+   "lego": {
+    "lego_id": "S0117L01",
+    "known_text": "definitely",
+    "target_text": "確実",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0133L02U10": {
+   "seed": {
+    "seed_number": 133,
+    "known_text": "you get to know someone very well when you work together",
+    "target_text": "一緒に働くと、よく分かる",
+    "known_audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd",
+    "target1_audio_id": "ea08f463-c83e-4ea6-ac63-0f52d10995d5",
+    "target2_audio_id": "aaf116ca-1c53-4927-98d9-8113744e6094"
+   },
+   "lego": {
+    "lego_id": "S0133L02",
+    "known_text": "get to know",
+    "target_text": "分かる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0163L01U09": {
+   "seed": {
+    "seed_number": 163,
+    "known_text": "I think that it's interesting",
+    "target_text": "面白いと思う。",
+    "known_audio_id": "9f524b51-3ead-4ff8-b648-7b279d7b2dc1",
+    "target1_audio_id": "8a1359cb-5de7-4c92-80b2-b94dd116e83e",
+    "target2_audio_id": "e463c6e3-c00e-4340-bdad-7d90209c48e2"
+   },
+   "lego": {
+    "lego_id": "S0163L01",
+    "known_text": "I think it's interesting",
+    "target_text": "面白いと思う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0172L02U05": {
+   "seed": {
+    "seed_number": 172,
+    "known_text": "yes that would be very helpful",
+    "target_text": "うん、それ助かる",
+    "known_audio_id": "32eacaa5-d4c2-42b2-9d7d-e8456e763bd6",
+    "target1_audio_id": "941673ea-948e-4c1e-b1c1-30fe4759cb8e",
+    "target2_audio_id": "d4f55f45-2d39-49ce-8625-e2c4a515bf31"
+   },
+   "lego": {
+    "lego_id": "S0172L02",
+    "known_text": "that would be helpful",
+    "target_text": "それ助かる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0173L02U11": {
+   "seed": {
+    "seed_number": 173,
+    "known_text": "no thank you I can manage on my own",
+    "target_text": "大丈夫。自分でできる",
+    "known_audio_id": "de13fc62-a42e-4617-9b07-c5d646d44c73",
+    "target1_audio_id": "545c0428-6630-4c64-b7f7-fb76a29019bf",
+    "target2_audio_id": "e3f7db37-8fd4-4e51-8f1e-d201a9b0c432"
+   },
+   "lego": {
+    "lego_id": "S0173L02",
+    "known_text": "manage",
+    "target_text": "できる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0190L03U09": {
+   "seed": {
+    "seed_number": 190,
+    "known_text": "do you mind if I ask you some questions?",
+    "target_text": "いくつか質問していい？",
+    "known_audio_id": "f21f7605-4c01-414f-b008-99876c6dfb9f",
+    "target1_audio_id": "a673e1f1-e53c-4afd-9eab-b8ff5b8ec091",
+    "target2_audio_id": "87cb8c8c-ce81-456d-becd-61e17995a5d6"
+   },
+   "lego": {
+    "lego_id": "S0190L03",
+    "known_text": "do you mind if",
+    "target_text": "いい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0193L01U11": {
+   "seed": {
+    "seed_number": 193,
+    "known_text": "I'm sorry but I'm too busy today",
+    "target_text": "今日は忙しすぎる。ごめん",
+    "known_audio_id": "edb55484-1290-4bfa-aa00-8e82a34f1390",
+    "target1_audio_id": "83a1e8a4-e2c7-443d-8c37-5392e621ed27",
+    "target2_audio_id": "c43a5549-ef84-45cf-b6da-508aa92e77d2"
+   },
+   "lego": {
+    "lego_id": "S0193L01",
+    "known_text": "too busy",
+    "target_text": "忙しすぎる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0229L01U06": {
+   "seed": {
+    "seed_number": 229,
+    "known_text": "that woman would help you if she could",
+    "target_text": "できたら、彼女は手伝う。",
+    "known_audio_id": "c3341a8f-95c1-4548-adf6-5b5a4e03d170",
+    "target1_audio_id": "53064fb0-da90-4e78-9f29-6db8f768f2fe",
+    "target2_audio_id": "596b3140-a3a1-4c8b-8a95-b44a3128919a"
+   },
+   "lego": {
+    "lego_id": "S0229L01",
+    "known_text": "if she could",
+    "target_text": "できたら",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0230L01U06": {
+   "seed": {
+    "seed_number": 230,
+    "known_text": "I know a young man who wants to work with you",
+    "target_text": "一緒に働きたい若い人を知ってる。",
+    "known_audio_id": "195b76ac-ca91-439c-a228-19a57426c75d",
+    "target1_audio_id": "f872414a-0072-4102-9009-db18f590cb32",
+    "target2_audio_id": "0a1f4497-5579-42f9-a8d6-f1011f0c0f9a"
+   },
+   "lego": {
+    "lego_id": "S0230L01",
+    "known_text": "young",
+    "target_text": "若い",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0235L01U06": {
+   "seed": {
+    "seed_number": 235,
+    "known_text": "I met someone who said that he wanted to tell you something",
+    "target_text": "何か言いたいって人に会った。",
+    "known_audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e",
+    "target1_audio_id": "2019eecc-5b81-49ec-9500-6170d68733c6",
+    "target2_audio_id": "b46a0d3a-aefe-48cb-b635-64818ade827c"
+   },
+   "lego": {
+    "lego_id": "S0235L01",
+    "known_text": "met someone",
+    "target_text": "人に会った",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0243L01U06": {
+   "seed": {
+    "seed_number": 243,
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "同じものを頼む。",
+    "known_audio_id": "7a8858e7-013c-4c84-8cec-f72fda6300ee",
+    "target1_audio_id": "607696aa-4b40-4956-8a0d-93714e2e3f95",
+    "target2_audio_id": "ea46ec8a-67f6-4244-9c93-4d4764302c7e"
+   },
+   "lego": {
+    "lego_id": "S0243L01",
+    "known_text": "thing",
+    "target_text": "もの",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0247L01U06": {
+   "seed": {
+    "seed_number": 247,
+    "known_text": "I thought that book was fairly good",
+    "target_text": "あの本、まあまあだった。",
+    "known_audio_id": "61df9ede-ee39-4ce0-96f1-785bc07c31b6",
+    "target1_audio_id": "18905a35-89cb-45f5-9cad-139c20cc8949",
+    "target2_audio_id": "68ca3c93-c7ef-40d5-bfd1-ee37b53d52eb"
+   },
+   "lego": {
+    "lego_id": "S0247L01",
+    "known_text": "fairly good",
+    "target_text": "まあまあ",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0248L02U08": {
+   "seed": {
+    "seed_number": 248,
+    "known_text": "I thought the film was complete rubbish and I want my money back",
+    "target_text": "あの映画、ひどかった。お金返してほしい",
+    "known_audio_id": "870c3434-3583-4d9d-8d9a-93d16d8c7d1e",
+    "target1_audio_id": "854ae158-119f-488e-bc61-07877a5fb801",
+    "target2_audio_id": "67ff8493-7226-495a-a83e-4d4129ef7f56"
+   },
+   "lego": {
+    "lego_id": "S0248L02",
+    "known_text": "want back",
+    "target_text": "返してほしい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L02U10": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "yes she sent me two emails last week",
+    "target_text": "うん、先週メールが二通来た",
+    "known_audio_id": "5c17f963-3cf3-4a9b-863c-4bcfa7f3a008",
+    "target1_audio_id": "9caceb1a-8053-4b57-a5d6-d73cf302ad5b",
+    "target2_audio_id": "c2980a7f-e0a2-4c57-8b45-de58a3c1af65"
+   },
+   "lego": {
+    "lego_id": "S0268L02",
+    "known_text": "two",
+    "target_text": "二",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0289L02U10": {
+   "seed": {
+    "seed_number": 289,
+    "known_text": "I wonder if she's going to be there this afternoon",
+    "target_text": "今日の午後、来るか気になる",
+    "known_audio_id": "075bbef5-3f34-4b73-bc3d-fa3e931707d3",
+    "target1_audio_id": "baccd679-f941-487f-a56b-1b80da9f7b76",
+    "target2_audio_id": "7a13aa63-2f86-4c05-ae8d-4ad3404be7f2"
+   },
+   "lego": {
+    "lego_id": "S0289L02",
+    "known_text": "I wonder if",
+    "target_text": "か気になる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0294L01U09": {
+   "seed": {
+    "seed_number": 294,
+    "known_text": "I don't have enough time to call you tonight",
+    "target_text": "今夜は電話する時間がない",
+    "known_audio_id": "b3c34567-eb67-42e8-9a1e-d4f52f01b166",
+    "target1_audio_id": "d795489b-bf37-4e3b-bbbc-4af9286cf92c",
+    "target2_audio_id": "e356fbea-4399-4a8a-b306-9a461b7b6d02"
+   },
+   "lego": {
+    "lego_id": "S0294L01",
+    "known_text": "don't have time to call",
+    "target_text": "電話する時間がない",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0295L02U08": {
+   "seed": {
+    "seed_number": 295,
+    "known_text": "I didn't say that I would finish in a day",
+    "target_text": "一日で終わるって言ってない",
+    "known_audio_id": "41a4e2b6-340d-4adf-8e12-56fae4134370",
+    "target1_audio_id": "ea56b6d2-2b0b-4b55-97b6-cc979ff7f008",
+    "target2_audio_id": "fd36a27b-65df-4216-8e27-653650d4866e"
+   },
+   "lego": {
+    "lego_id": "S0295L02",
+    "known_text": "in a day",
+    "target_text": "一日で",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0296L02U09": {
+   "seed": {
+    "seed_number": 296,
+    "known_text": "I said that I needed a little more time",
+    "target_text": "もう少し時間が必要って言った",
+    "known_audio_id": "4bfe6b50-a115-4016-a9e4-74a1d9c668af",
+    "target1_audio_id": "6f592a46-9d83-4411-9d48-6389a9a7384f",
+    "target2_audio_id": "a3b39748-8262-43d7-8ebd-238792272f63"
+   },
+   "lego": {
+    "lego_id": "S0296L02",
+    "known_text": "I said",
+    "target_text": "言った",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0301L03U13": {
+   "seed": {
+    "seed_number": 301,
+    "known_text": "he said that he wants to show you something",
+    "target_text": "彼は何か見せたいって言ってた",
+    "known_audio_id": "41e27acd-034f-448f-9c35-7d3790442f7d",
+    "target1_audio_id": "7546c503-d827-452b-9476-60875832c6a8",
+    "target2_audio_id": "80eda900-5231-4cc0-8a32-08705dc8fc6c"
+   },
+   "lego": {
+    "lego_id": "S0301L03",
+    "known_text": "said that",
+    "target_text": "って言ってた",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0303L02U12": {
+   "seed": {
+    "seed_number": 303,
+    "known_text": "I think that he wants to sit down",
+    "target_text": "彼は座りたいんだと思う",
+    "known_audio_id": "0d0e425e-2dad-4bda-bebd-bc88fe5e69be",
+    "target1_audio_id": "411fd73e-ceaf-47fe-8eb0-2080d6cc20d3",
+    "target2_audio_id": "3e1630c3-3544-4e43-a773-9e266c855c2f"
+   },
+   "lego": {
+    "lego_id": "S0303L02",
+    "known_text": "I think that he wants to sit down",
+    "target_text": "座りたいんだと思う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0304L03U13": {
+   "seed": {
+    "seed_number": 304,
+    "known_text": "I think that she doesn't want to work from home",
+    "target_text": "彼女は家で働きたくないと思う",
+    "known_audio_id": "d53577a5-5ad1-411c-b07c-01fe3019fb33",
+    "target1_audio_id": "3811329a-ab3a-4b80-b9cc-87670b656136",
+    "target2_audio_id": "7d42a05f-e82c-4f9c-8bd4-a6c49e81587e"
+   },
+   "lego": {
+    "lego_id": "S0304L03",
+    "known_text": "I think that she doesn't want to work",
+    "target_text": "働きたくないと思う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0306L03U12": {
+   "seed": {
+    "seed_number": 306,
+    "known_text": "I know that young woman who's talking to your friend",
+    "target_text": "友だちと話してる若い女性を知ってる",
+    "known_audio_id": "f7bf4841-3143-4fdd-98e4-622f33e06971",
+    "target1_audio_id": "47bfd1d9-5ab2-45ed-af6a-e33a20c8de18",
+    "target2_audio_id": "c18dcaf4-d549-447b-8da7-695b551f782d"
+   },
+   "lego": {
+    "lego_id": "S0306L03",
+    "known_text": "I know that young woman",
+    "target_text": "若い女性を知ってる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0307L03U11": {
+   "seed": {
+    "seed_number": 307,
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "あそこに座ってる若い男性を知ってる",
+    "known_audio_id": "f203f0f9-aba8-4517-8ec3-e653cf17a42e",
+    "target1_audio_id": "2d43ab4c-6b41-46c1-b2f0-c1e0a8a16a2c",
+    "target2_audio_id": "f539329f-be4d-4215-98f3-10aa01eefe6c"
+   },
+   "lego": {
+    "lego_id": "S0307L03",
+    "known_text": "I know that young man",
+    "target_text": "若い男性を知ってる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0308L01U12": {
+   "seed": {
+    "seed_number": 308,
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "うん、母の友だち",
+    "known_audio_id": "4d51f093-a501-44fb-98cb-12c6944b8846",
+    "target1_audio_id": "1ef8c31e-a454-46ef-a064-779ed6c19dbc",
+    "target2_audio_id": "0539c39c-91f7-4631-b7da-e1c556781d37"
+   },
+   "lego": {
+    "lego_id": "S0308L01",
+    "known_text": "friend of my mother",
+    "target_text": "母の友だち",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0309L02U14": {
+   "seed": {
+    "seed_number": 309,
+    "known_text": "no I've never seen her before",
+    "target_text": "いや、前に見たことない",
+    "known_audio_id": "54c05b0b-1c7b-4f0a-b699-29fd56b7beb9",
+    "target1_audio_id": "cc9d6f4f-23fe-478a-a4af-a35f7a3baabe",
+    "target2_audio_id": "00b62250-3bb6-4976-95ef-c7f63c278c64"
+   },
+   "lego": {
+    "lego_id": "S0309L02",
+    "known_text": "before",
+    "target_text": "前に",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0311L03U12": {
+   "seed": {
+    "seed_number": 311,
+    "known_text": "he couldn't believe the three most important facts",
+    "target_text": "彼は大事な三つの事実を信じられなかった",
+    "known_audio_id": "49346152-6635-4daf-90c2-bb7e84a7aaac",
+    "target1_audio_id": "23a27b9a-2037-4d83-a306-447b3faeec5b",
+    "target2_audio_id": "f4e21ece-dc7d-4777-a0d7-af1a60d67b66"
+   },
+   "lego": {
+    "lego_id": "S0311L03",
+    "known_text": "couldn't believe",
+    "target_text": "信じられなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0312L04U13": {
+   "seed": {
+    "seed_number": 312,
+    "known_text": "she said that she could use the other room tomorrow night",
+    "target_text": "明日の夜、別の部屋を使えるって言ってた",
+    "known_audio_id": "ed23a0b2-2d9b-45a3-bd82-c9b1273467b0",
+    "target1_audio_id": "137de597-09a8-456c-b86e-8b1dba3d5dbe",
+    "target2_audio_id": "6b0de4a2-4e6b-4a3f-b897-7e433eb38303"
+   },
+   "lego": {
+    "lego_id": "S0312L04",
+    "known_text": "room",
+    "target_text": "部屋",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0313L03U13": {
+   "seed": {
+    "seed_number": 313,
+    "known_text": "he said that he couldn't watch all five games",
+    "target_text": "五試合全部は見られないって言ってた",
+    "known_audio_id": "f03e7e8d-7088-4ec4-bccd-edcec3dc20a1",
+    "target1_audio_id": "1693e1ed-62a6-47a3-9b58-3fd7ba01e365",
+    "target2_audio_id": "6633dd0b-5fd9-42ed-ae0b-7fbb054cd67b"
+   },
+   "lego": {
+    "lego_id": "S0313L03",
+    "known_text": "all",
+    "target_text": "全部",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0315L01U11": {
+   "seed": {
+    "seed_number": 315,
+    "known_text": "I think that he couldn't afford the car that he wanted",
+    "target_text": "欲しかった車は買えなかったと思う",
+    "known_audio_id": "05fb9723-9a20-4fbb-a601-b5a51e26ee3f",
+    "target1_audio_id": "1d38146e-350b-44b3-a02e-25a4f2de2309",
+    "target2_audio_id": "d4e717db-9ec9-4780-a730-b5c0dce0ea78"
+   },
+   "lego": {
+    "lego_id": "S0315L01",
+    "known_text": "the car that he wanted",
+    "target_text": "欲しかった車",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0316L01U13": {
+   "seed": {
+    "seed_number": 316,
+    "known_text": "do you think that she could bring her brother on Monday?",
+    "target_text": "月曜に兄を連れて来られると思う？",
+    "known_audio_id": "146ad304-d908-400a-8a8d-4e402352461d",
+    "target1_audio_id": "908dfc15-6b0f-4df0-8222-a6fcea3c3ccc",
+    "target2_audio_id": "000acffc-2f8e-440d-ac8e-994c1c609496"
+   },
+   "lego": {
+    "lego_id": "S0316L01",
+    "known_text": "Monday",
+    "target_text": "月曜",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0317L01U11": {
+   "seed": {
+    "seed_number": 317,
+    "known_text": "yes I think she could if she wanted to",
+    "target_text": "うん、やりたければできると思う",
+    "known_audio_id": "bcf900d5-602f-40a6-924f-f3c5482f1885",
+    "target1_audio_id": "850903f9-d97b-4fbf-8b36-218fb6ca1169",
+    "target2_audio_id": "8ddc099e-4f57-4aa4-a9cc-574bcf611563"
+   },
+   "lego": {
+    "lego_id": "S0317L01",
+    "known_text": "if she wanted to",
+    "target_text": "やりたければ",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0318L03U10": {
+   "seed": {
+    "seed_number": 318,
+    "known_text": "no I don't think she could this time",
+    "target_text": "今回は無理だと思う",
+    "known_audio_id": "6f1a4fa6-db2c-4b43-93c8-ff1f9b6d23b9",
+    "target1_audio_id": "021aa818-1338-4b7f-a6a2-4728ae3b1569",
+    "target2_audio_id": "fb0ab510-b359-4b6c-ac78-b9d0ab83c5e2"
+   },
+   "lego": {
+    "lego_id": "S0318L03",
+    "known_text": "no I don't think she could",
+    "target_text": "無理だと思う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0319L03U11": {
+   "seed": {
+    "seed_number": 319,
+    "known_text": "she needs to move to a different country",
+    "target_text": "別の国に引っ越す必要がある",
+    "known_audio_id": "cecde518-dad1-4112-9257-f626d652ae41",
+    "target1_audio_id": "df2db0c4-a362-481a-9322-f723b667de9c",
+    "target2_audio_id": "f141aceb-46fb-4d37-b2ea-3fcd5c09e487"
+   },
+   "lego": {
+    "lego_id": "S0319L03",
+    "known_text": "needs to move",
+    "target_text": "引っ越す必要がある",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0320L03U12": {
+   "seed": {
+    "seed_number": 320,
+    "known_text": "he doesn't need to buy another television this year",
+    "target_text": "今年はテレビを買う必要ない",
+    "known_audio_id": "6a7a7e27-839d-4156-82df-cd1eb32fd4be",
+    "target1_audio_id": "824a5f25-295f-47c1-8d78-9a01713ebecc",
+    "target2_audio_id": "4a84fd14-62c9-4384-ad0e-d44907a259a2"
+   },
+   "lego": {
+    "lego_id": "S0320L03",
+    "known_text": "buy",
+    "target_text": "買う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0321L01U14": {
+   "seed": {
+    "seed_number": 321,
+    "known_text": "a book",
+    "target_text": "本",
+    "known_audio_id": "d0cf281d-ab65-4e6a-bf16-01b183992b73",
+    "target1_audio_id": "5a8d6ec4-f967-4953-bb29-51963a778a12",
+    "target2_audio_id": "12515b44-2a7c-4fbf-9010-786846fdc719"
+   },
+   "lego": {
+    "lego_id": "S0321L01",
+    "known_text": "book",
+    "target_text": "本",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0322L02U11": {
+   "seed": {
+    "seed_number": 322,
+    "known_text": "she said that she needs to read the same book",
+    "target_text": "同じ本を読む必要があるって言ってた",
+    "known_audio_id": "af714295-4f0b-4606-89af-a9cb8383a49f",
+    "target1_audio_id": "edb5bb2a-d264-4c81-aa62-8936cea45dda",
+    "target2_audio_id": "477a5ab6-c104-4eb6-99e8-1f7c741897f6"
+   },
+   "lego": {
+    "lego_id": "S0322L02",
+    "known_text": "read",
+    "target_text": "読む",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0323L01U12": {
+   "seed": {
+    "seed_number": 323,
+    "known_text": "he said that he doesn't need to walk to school",
+    "target_text": "学校まで歩かなくていいって言ってた",
+    "known_audio_id": "90e734d7-cae8-4eeb-bc95-711618812ecf",
+    "target1_audio_id": "9cfb86f4-b9aa-4fa4-a905-968f37ab4197",
+    "target2_audio_id": "f6a45460-7be3-42ab-9fc4-75ab0d627edd"
+   },
+   "lego": {
+    "lego_id": "S0323L01",
+    "known_text": "school",
+    "target_text": "学校",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0325L03U11": {
+   "seed": {
+    "seed_number": 325,
+    "known_text": "I think that he needs to consider ten possible problems",
+    "target_text": "考えるべき問題が十個あると思う",
+    "known_audio_id": "5ed0f3e8-cdbc-4c6f-846f-3ba788cb8cde",
+    "target1_audio_id": "2f2c4289-ca70-4a07-8cdf-d21890d46366",
+    "target2_audio_id": "2a84dd2f-c071-4cc7-b1a1-887f963c7779"
+   },
+   "lego": {
+    "lego_id": "S0325L03",
+    "known_text": "needs to consider",
+    "target_text": "考えるべき",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0326L02U14": {
+   "seed": {
+    "seed_number": 326,
+    "known_text": "I don't think that she needs to sell the company",
+    "target_text": "会社を売る必要はないと思う",
+    "known_audio_id": "43c2ff61-5889-466b-802d-bdd90a1e1635",
+    "target1_audio_id": "c1ebe6a0-5846-4fe4-8095-b815ae0524fe",
+    "target2_audio_id": "a9f43779-85d2-4218-bf61-bc70fb3b0db5"
+   },
+   "lego": {
+    "lego_id": "S0326L02",
+    "known_text": "sell",
+    "target_text": "売る",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0327L02U13": {
+   "seed": {
+    "seed_number": 327,
+    "known_text": "do you think that she needs to offer another way?",
+    "target_text": "別の方法を出す必要あると思う？",
+    "known_audio_id": "ce8f112f-fe5b-4bf8-a72a-993ea28d9963",
+    "target1_audio_id": "1c5dae3e-7a64-4d8f-9926-9ec646114a77",
+    "target2_audio_id": "684e8848-729a-4673-a504-0458a398dd2c"
+   },
+   "lego": {
+    "lego_id": "S0327L02",
+    "known_text": "offer",
+    "target_text": "出す",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0331L02U12": {
+   "seed": {
+    "seed_number": 331,
+    "known_text": "she can't provide all the answers",
+    "target_text": "全部の答えは出せない",
+    "known_audio_id": "f46b6ed1-e291-48d8-a4b2-dfe6f861b63b",
+    "target1_audio_id": "4e40f484-9156-4297-a2da-d66d59523a16",
+    "target2_audio_id": "d4f71a05-701b-4305-9e68-36b67069c123"
+   },
+   "lego": {
+    "lego_id": "S0331L02",
+    "known_text": "can't provide",
+    "target_text": "出せない",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0332L04U12": {
+   "seed": {
+    "seed_number": 332,
+    "known_text": "he can build a new life for his sister",
+    "target_text": "妹のために新しい人生を作れる",
+    "known_audio_id": "89c9ddae-6b18-4e41-bc1f-36e201ac4f27",
+    "target1_audio_id": "13bc73d8-153b-4658-b307-2520f249f63e",
+    "target2_audio_id": "c0db24ad-cdae-4d6b-a101-d41a66878a46"
+   },
+   "lego": {
+    "lego_id": "S0332L04",
+    "known_text": "can build a new life",
+    "target_text": "新しい人生を作れる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0335L02U12": {
+   "seed": {
+    "seed_number": 335,
+    "known_text": "I think that he can add some valuable ideas",
+    "target_text": "いいアイデアを足せると思う",
+    "known_audio_id": "62efdde7-e915-4b53-9784-754a614b1c07",
+    "target1_audio_id": "f6483947-3fbc-43fa-ad6a-6c7948fbb5c2",
+    "target2_audio_id": "f7721ab1-bad1-4091-b77d-925514f06cdf"
+   },
+   "lego": {
+    "lego_id": "S0335L02",
+    "known_text": "can add",
+    "target_text": "足せる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0336L02U12": {
+   "seed": {
+    "seed_number": 336,
+    "known_text": "I don't think that she can open the door",
+    "target_text": "そのドアは開けられないと思う",
+    "known_audio_id": "c0f259c7-83e9-4bb3-88d7-bacd4caefec7",
+    "target1_audio_id": "a0432181-b92f-4960-a726-f7f599d5743c",
+    "target2_audio_id": "34e5c756-4ac3-4f04-add0-64f6d3436580"
+   },
+   "lego": {
+    "lego_id": "S0336L02",
+    "known_text": "door",
+    "target_text": "ドア",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0337L02U12": {
+   "seed": {
+    "seed_number": 337,
+    "known_text": "do you think that he can continue to play?",
+    "target_text": "まだ続けられると思う？",
+    "known_audio_id": "0be569c2-fcd1-4525-bc64-60d9e007b26e",
+    "target1_audio_id": "0c2a8bea-91dc-42e1-808d-ececa5e24d7e",
+    "target2_audio_id": "b367f097-fbde-409e-a571-6c13eb8d1fc2"
+   },
+   "lego": {
+    "lego_id": "S0337L02",
+    "known_text": "can continue",
+    "target_text": "続けられる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0339L01U10": {
+   "seed": {
+    "seed_number": 339,
+    "known_text": "no I think he's hurt himself quite badly",
+    "target_text": "結構ひどくケガしてると思う",
+    "known_audio_id": "3d4b05f8-aa4b-4d7a-8d37-23b1e57b0909",
+    "target1_audio_id": "f4f05386-5556-47db-88d4-65d121a50526",
+    "target2_audio_id": "47db46c9-d2e7-4b97-92e2-765e560bf7a7"
+   },
+   "lego": {
+    "lego_id": "S0339L01",
+    "known_text": "quite",
+    "target_text": "結構",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0341L01U14": {
+   "seed": {
+    "seed_number": 341,
+    "known_text": "I met someone a few days ago",
+    "target_text": "数日前、人に会った",
+    "known_audio_id": "927aad94-8b3b-406e-bf58-210f2890d517",
+    "target1_audio_id": "3c62e701-70c1-4dee-98d1-fad94adc0569",
+    "target2_audio_id": "05fd6195-17e4-4069-ae90-1b921833ea5d"
+   },
+   "lego": {
+    "lego_id": "S0341L01",
+    "known_text": "a few days ago",
+    "target_text": "数日前",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0344L02U13": {
+   "seed": {
+    "seed_number": 344,
+    "known_text": "who said that he's happy to help you",
+    "target_text": "喜んで手伝うって言ってた",
+    "known_audio_id": "e3e4d606-940a-476c-832d-33f45a0d1116",
+    "target1_audio_id": "f84de040-b950-49e0-96ac-42ed4815a935",
+    "target2_audio_id": "32b9e8ea-1134-4be3-b5e0-362da596955b"
+   },
+   "lego": {
+    "lego_id": "S0344L02",
+    "known_text": "help",
+    "target_text": "手伝う",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0345L03U12": {
+   "seed": {
+    "seed_number": 345,
+    "known_text": "who said that he's not ready to leave yet",
+    "target_text": "まだ出る準備ができてないって言ってた",
+    "known_audio_id": "61c35a58-09fa-425b-8ea1-520330643d9a",
+    "target1_audio_id": "a64436ff-2caf-4a56-b024-930e9138a38b",
+    "target2_audio_id": "25a7045e-17fb-4fc1-a95c-e05a62c1527a"
+   },
+   "lego": {
+    "lego_id": "S0345L03",
+    "known_text": "not ready to leave",
+    "target_text": "出る準備ができてない",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0347L03U12": {
+   "seed": {
+    "seed_number": 347,
+    "known_text": "he wanted to know what was happening a week ago",
+    "target_text": "一週間前に何が起きてたか知りたがってた",
+    "known_audio_id": "e124b4d5-91d7-46d2-a185-f027fda2efa3",
+    "target1_audio_id": "c8beab12-aee2-4b6d-be02-f2c7088c1aa4",
+    "target2_audio_id": "e060cdbe-5487-4f5b-8897-11a9f227799e"
+   },
+   "lego": {
+    "lego_id": "S0347L03",
+    "known_text": "what was happening",
+    "target_text": "何が起きてたか",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0348L03U13": {
+   "seed": {
+    "seed_number": 348,
+    "known_text": "she didn't want to know what was going to happen",
+    "target_text": "これから何が起きるか知りたくなかった",
+    "known_audio_id": "3bb67301-b4c3-4e4c-af69-9e137e020154",
+    "target1_audio_id": "ef2197f4-b879-48da-9aa6-57763e816896",
+    "target2_audio_id": "15f13edb-e9cd-4707-95de-c07fdfdaf657"
+   },
+   "lego": {
+    "lego_id": "S0348L03",
+    "known_text": "didn't want to know",
+    "target_text": "知りたくなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0349L01U06": {
+   "seed": {
+    "seed_number": 349,
+    "known_text": "did he want to go out on Friday night?",
+    "target_text": "金曜の夜、出かけたかった？",
+    "known_audio_id": "189db3d9-0e28-4293-abdd-fb589eea6225",
+    "target1_audio_id": "3dbc8ae2-b95a-43eb-8987-8d2e7b6f91ca",
+    "target2_audio_id": "35a96cdc-2bf1-4936-b934-bb4b3da711c8"
+   },
+   "lego": {
+    "lego_id": "S0349L01",
+    "known_text": "Friday",
+    "target_text": "金曜",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0350L02U11": {
+   "seed": {
+    "seed_number": 350,
+    "known_text": "yes he wanted to see some old friends",
+    "target_text": "うん、昔の友だちに会いたかった",
+    "known_audio_id": "5a69d18c-79e7-402b-b4ef-7b520429396e",
+    "target1_audio_id": "ce8d9d84-3df9-44b3-a175-8a7126043a6e",
+    "target2_audio_id": "3dce2aaf-b952-4b31-b0fb-7062b1bf7a33"
+   },
+   "lego": {
+    "lego_id": "S0350L02",
+    "known_text": "wanted to see friends",
+    "target_text": "友だちに会いたかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0353L03U14": {
+   "seed": {
+    "seed_number": 353,
+    "known_text": "she needed to run around the field",
+    "target_text": "フィールドを走り回る必要があった",
+    "known_audio_id": "82a93390-530c-446f-96fd-ba783d650b95",
+    "target1_audio_id": "7762c450-7100-4674-97bb-824d51f8a02a",
+    "target2_audio_id": "ea0c9d96-dc01-48ff-a3f1-cf7d058afb14"
+   },
+   "lego": {
+    "lego_id": "S0353L03",
+    "known_text": "needed to",
+    "target_text": "必要があった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0354L03U11": {
+   "seed": {
+    "seed_number": 354,
+    "known_text": "he didn't need to appear angry",
+    "target_text": "怒ってるように見せる必要なかった",
+    "known_audio_id": "6baa2433-6229-4952-8b0f-a3b40d02b185",
+    "target1_audio_id": "e3f9923c-377d-406d-9dba-3e649eef0d44",
+    "target2_audio_id": "044933f9-1ff1-4445-9948-f170aa467d92"
+   },
+   "lego": {
+    "lego_id": "S0354L03",
+    "known_text": "didn't need to",
+    "target_text": "必要なかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0357L03U14": {
+   "seed": {
+    "seed_number": 357,
+    "known_text": "no she just wanted to send her a message",
+    "target_text": "ただメッセージを送りたかっただけ",
+    "known_audio_id": "b953ab8d-409f-49ed-bb04-ea7e93ce06d1",
+    "target1_audio_id": "57f57ef5-c543-4389-bc06-199ec2b4f700",
+    "target2_audio_id": "d2e6229a-4fbf-4ca4-9ed4-cacf57e61b9c"
+   },
+   "lego": {
+    "lego_id": "S0357L03",
+    "known_text": "wanted to send",
+    "target_text": "送りたかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0358L02U12": {
+   "seed": {
+    "seed_number": 358,
+    "known_text": "your friend said that she couldn't reach the top",
+    "target_text": "頂上に行けなかったって言ってた",
+    "known_audio_id": "28337762-3244-4c39-8841-f8a1901d705f",
+    "target1_audio_id": "f3e922da-e232-4d46-82d6-498f2006858b",
+    "target2_audio_id": "ce065b59-6e7b-46b2-a176-02801081adf4"
+   },
+   "lego": {
+    "lego_id": "S0358L02",
+    "known_text": "couldn't reach the top",
+    "target_text": "頂上に行けなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0359L01U12": {
+   "seed": {
+    "seed_number": 359,
+    "known_text": "your friend said that he could turn left",
+    "target_text": "左に曲がれるって言ってた",
+    "known_audio_id": "8990ba55-f1cf-4514-8886-af2b9a3b4503",
+    "target1_audio_id": "0e933145-7c60-44af-94d4-b45357a5b15d",
+    "target2_audio_id": "f0f5ad45-2321-4952-bdac-693102a68b6e"
+   },
+   "lego": {
+    "lego_id": "S0359L01",
+    "known_text": "left",
+    "target_text": "左",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0360L01U15": {
+   "seed": {
+    "seed_number": 360,
+    "known_text": "did your friend say anything else?",
+    "target_text": "他にも何か言ってた？",
+    "known_audio_id": "0e927c87-dd11-4ab4-a4f4-213b90c8ac8e",
+    "target1_audio_id": "f6843e8d-33b1-4354-bce9-1bf0a91aa28a",
+    "target2_audio_id": "6e639390-a2f7-4b8a-9edc-0950155db8f5"
+   },
+   "lego": {
+    "lego_id": "S0360L01",
+    "known_text": "else",
+    "target_text": "他にも",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0361L01U13": {
+   "seed": {
+    "seed_number": 361,
+    "known_text": "he was quiet",
+    "target_text": "静かだった",
+    "known_audio_id": "0e06acf6-8bda-4628-82b5-ab8fbee531c8",
+    "target1_audio_id": "9800a25c-521b-4ba2-affd-94e95d2f0dff",
+    "target2_audio_id": "720efaef-5246-4566-918c-362231140dc8"
+   },
+   "lego": {
+    "lego_id": "S0361L01",
+    "known_text": "quiet",
+    "target_text": "静か",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0362L01U12": {
+   "seed": {
+    "seed_number": 362,
+    "known_text": "no he was rather quiet after you left",
+    "target_text": "出たあと、ずっと静かだった",
+    "known_audio_id": "729b13dc-fd80-45f9-b948-5006a5bdbc93",
+    "target1_audio_id": "621823e8-0741-4196-b15a-3374703013d6",
+    "target2_audio_id": "9f8f5f81-0efc-4833-b144-a710eba5d2ba"
+   },
+   "lego": {
+    "lego_id": "S0362L01",
+    "known_text": "after",
+    "target_text": "あと",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0364L03U12": {
+   "seed": {
+    "seed_number": 364,
+    "known_text": "I heard that he didn't like that place",
+    "target_text": "あの場所が好きじゃないって聞いた",
+    "known_audio_id": "937a6fee-46c8-4b83-af15-4db99fc468a3",
+    "target1_audio_id": "64e882e2-4445-4f7e-8cf2-d08ba5e24c4f",
+    "target2_audio_id": "efa7a51b-3749-40b3-9494-dcac4a505c6f"
+   },
+   "lego": {
+    "lego_id": "S0364L03",
+    "known_text": "I heard that",
+    "target_text": "って聞いた",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0365L01U12": {
+   "seed": {
+    "seed_number": 365,
+    "known_text": "I didn't hear what she said to him",
+    "target_text": "彼女が何て言ったか聞こえなかった",
+    "known_audio_id": "e87bac4c-f992-4756-865f-2c5c39077954",
+    "target1_audio_id": "95f2d0cd-ffe7-4c1d-ac69-a815b6d520dd",
+    "target2_audio_id": "17b019f4-4894-46fa-864c-3aaf179cc250"
+   },
+   "lego": {
+    "lego_id": "S0365L01",
+    "known_text": "what she said",
+    "target_text": "彼女が何て言ったか",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0366L02U10": {
+   "seed": {
+    "seed_number": 366,
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "何を育てたいか聞いた？",
+    "known_audio_id": "7191f89e-fa53-44e2-ab38-9f957459c8dc",
+    "target1_audio_id": "2ba83497-c82a-46ea-9f8f-0c5e8d94efc0",
+    "target2_audio_id": "5e01c8e4-9c74-4f74-ba2b-55a851be6268"
+   },
+   "lego": {
+    "lego_id": "S0366L02",
+    "known_text": "what he wanted to grow",
+    "target_text": "何を育てたいか",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0369L03U12": {
+   "seed": {
+    "seed_number": 369,
+    "known_text": "I saw several horses on the road",
+    "target_text": "道で馬を何頭か見た",
+    "known_audio_id": "3eb81e08-6993-4356-a498-53b4583066a5",
+    "target1_audio_id": "36b3e837-853a-4bf8-9ddd-fb8b875be176",
+    "target2_audio_id": "5ce7a172-4de3-4adc-b246-07f26e839fd9"
+   },
+   "lego": {
+    "lego_id": "S0369L03",
+    "known_text": "saw several",
+    "target_text": "何頭か見た",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0370L01U12": {
+   "seed": {
+    "seed_number": 370,
+    "known_text": "I didn't see anyone that I knew",
+    "target_text": "知ってる人は誰も見なかった",
+    "known_audio_id": "b3bd446d-8b76-4287-8f07-22f8ec6d0389",
+    "target1_audio_id": "736878cc-432f-40c9-83d7-7c8be81ea98f",
+    "target2_audio_id": "c4e178c3-ae8f-4c25-bb82-f1c4d900675b"
+   },
+   "lego": {
+    "lego_id": "S0370L01",
+    "known_text": "didn't see",
+    "target_text": "見なかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0371L03U12": {
+   "seed": {
+    "seed_number": 371,
+    "known_text": "I went to see a film on Wednesday",
+    "target_text": "水曜に映画を見に行った",
+    "known_audio_id": "d0744d9a-a3de-466e-ae70-24b1dbe620b7",
+    "target1_audio_id": "f3676f1b-d191-4fb4-86fa-94cadeec6055",
+    "target2_audio_id": "122c747e-d03a-4dc9-8d74-523a0a19d434"
+   },
+   "lego": {
+    "lego_id": "S0371L03",
+    "known_text": "went to see",
+    "target_text": "見に行った",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0372L02U14": {
+   "seed": {
+    "seed_number": 372,
+    "known_text": "did you see what she was trying to create?",
+    "target_text": "彼女が作ろうとしてたものを見た？",
+    "known_audio_id": "33367bab-769f-40f3-b9a2-1ebf32d1149b",
+    "target1_audio_id": "31cdf15b-e6ac-4e1a-a00c-675e95dc10ee",
+    "target2_audio_id": "ca0b964d-ed84-4a14-ab63-66ed0394a17a"
+   },
+   "lego": {
+    "lego_id": "S0372L02",
+    "known_text": "was trying to create",
+    "target_text": "作ろうとしてた",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0373L01U12": {
+   "seed": {
+    "seed_number": 373,
+    "known_text": "it was beautiful",
+    "target_text": "きれいだった",
+    "known_audio_id": "c0460cd3-03d7-4cfa-9fb7-2ac3fcec1d3c",
+    "target1_audio_id": "e8a50ffb-8a05-44bf-9616-d3f93c9762b9",
+    "target2_audio_id": "e46f3baa-059d-478d-a2cd-0f69c96b167d"
+   },
+   "lego": {
+    "lego_id": "S0373L01",
+    "known_text": "beautiful",
+    "target_text": "きれい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0374L02U13": {
+   "seed": {
+    "seed_number": 374,
+    "known_text": "yes I thought it was very beautiful",
+    "target_text": "うん、とてもきれいだった",
+    "known_audio_id": "c9ed4255-a9fd-4126-b302-12f138307d5b",
+    "target1_audio_id": "16e61f7c-509a-4312-a483-7f52f91a4472",
+    "target2_audio_id": "a5b8d410-346b-422c-afa0-c156d717ef7e"
+   },
+   "lego": {
+    "lego_id": "S0374L02",
+    "known_text": "very",
+    "target_text": "とても",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0375L02U10": {
+   "seed": {
+    "seed_number": 375,
+    "known_text": "no I didn't know what she was doing",
+    "target_text": "何をしてたか分からなかった",
+    "known_audio_id": "e66a8e30-56a1-4caf-8daa-cefff5da65a4",
+    "target1_audio_id": "8664eaa5-ee56-45da-b0c4-0bbb7d16fb48",
+    "target2_audio_id": "58280fae-33c0-4615-8d61-3378c008b373"
+   },
+   "lego": {
+    "lego_id": "S0375L02",
+    "known_text": "didn't know",
+    "target_text": "分からなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0376L02U12": {
+   "seed": {
+    "seed_number": 376,
+    "known_text": "I didn't go anywhere last month",
+    "target_text": "先月はどこにも行かなかった",
+    "known_audio_id": "01ad1d22-f7b1-4b22-aa28-59c44a6dfa5e",
+    "target1_audio_id": "47e94a2b-fa2e-43ea-b337-340bd6a85021",
+    "target2_audio_id": "d31c30c6-8330-4b13-b40d-996c4d33c94c"
+   },
+   "lego": {
+    "lego_id": "S0376L02",
+    "known_text": "didn't go anywhere",
+    "target_text": "どこにも行かなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0377L01U15": {
+   "seed": {
+    "seed_number": 377,
+    "known_text": "did you go anywhere in the world last year?",
+    "target_text": "去年、どこか行った？",
+    "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+    "target1_audio_id": "b85ef4b6-a75a-47af-9e33-a8c2435e698f",
+    "target2_audio_id": "08a82999-de7f-4dfd-bd5b-644183aa7728"
+   },
+   "lego": {
+    "lego_id": "S0377L01",
+    "known_text": "last year",
+    "target_text": "去年",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0379L02U12": {
+   "seed": {
+    "seed_number": 379,
+    "known_text": "yes I was lucky enough to travel to Africa",
+    "target_text": "運よくアフリカに行けた",
+    "known_audio_id": "17058213-4f61-43ab-8838-e6ad0d3b8055",
+    "target1_audio_id": "f6486b9b-1fe0-45fc-853c-6badee15409f",
+    "target2_audio_id": "2d57f6e2-b3fe-4451-bdfd-df40cf8a19ad"
+   },
+   "lego": {
+    "lego_id": "S0379L02",
+    "known_text": "africa",
+    "target_text": "アフリカ",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0380L02U09": {
+   "seed": {
+    "seed_number": 380,
+    "known_text": "I asked what she wanted to include",
+    "target_text": "何を入れたいか聞いた",
+    "known_audio_id": "628610c9-77c7-4ce7-a53f-0568e32a2ada",
+    "target1_audio_id": "44542ad1-a54c-4a4d-85ec-259f24cb3f81",
+    "target2_audio_id": "c07173b9-10ac-4e33-82fa-a023d7a7a6c1"
+   },
+   "lego": {
+    "lego_id": "S0380L02",
+    "known_text": "what she wanted to include",
+    "target_text": "何を入れたいか",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0381L02U12": {
+   "seed": {
+    "seed_number": 381,
+    "known_text": "I didn't ask if he wanted to follow us",
+    "target_text": "ついて来たいかは聞かなかった",
+    "known_audio_id": "7a2991b8-5cb2-4bf5-b659-316c2c3ce61b",
+    "target1_audio_id": "8c3a166d-fdb8-4ecc-b4a7-d88b5852a379",
+    "target2_audio_id": "65e2d63e-a71a-4c42-8d79-5934a0ece0e2"
+   },
+   "lego": {
+    "lego_id": "S0381L02",
+    "known_text": "didn't ask",
+    "target_text": "聞かなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0382L02U11": {
+   "seed": {
+    "seed_number": 382,
+    "known_text": "did you ask where he wanted to put it?",
+    "target_text": "どこに置きたいか聞いた？",
+    "known_audio_id": "f284cbf4-d10b-4908-889a-4ba92763dae0",
+    "target1_audio_id": "c114bc76-2930-4c6f-8fe9-b6690079ad3b",
+    "target2_audio_id": "11309298-9a6f-4807-bba6-b6bbe73987b3"
+   },
+   "lego": {
+    "lego_id": "S0382L02",
+    "known_text": "where he wanted to put it",
+    "target_text": "どこに置きたいか",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0383L02U11": {
+   "seed": {
+    "seed_number": 383,
+    "known_text": "yes he said he wanted to put it in the garden",
+    "target_text": "庭に置きたいって言ってた",
+    "known_audio_id": "5d601db8-60a8-4939-b574-6487b992a205",
+    "target1_audio_id": "727611d2-a488-41f4-a1bc-f593dceb9da2",
+    "target2_audio_id": "6fe885e3-9305-4f07-9f67-7e0078cb9dc5"
+   },
+   "lego": {
+    "lego_id": "S0383L02",
+    "known_text": "he wanted to put it in the garden",
+    "target_text": "庭に置きたい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0384L03U13": {
+   "seed": {
+    "seed_number": 384,
+    "known_text": "I couldn't agree with what he said a moment ago",
+    "target_text": "さっきの意見には同意できなかった",
+    "known_audio_id": "a1fbf03f-7752-4d1b-8f5a-0b2ffd084691",
+    "target1_audio_id": "5b767eb5-2014-47f9-8bf2-5d21fa712bdd",
+    "target2_audio_id": "f7da3f8d-d9bd-4b22-a60b-74c806ede105"
+   },
+   "lego": {
+    "lego_id": "S0384L03",
+    "known_text": "couldn't agree",
+    "target_text": "同意できなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0387L02U12": {
+   "seed": {
+    "seed_number": 387,
+    "known_text": "no I didn't think she was right",
+    "target_text": "いや、正しいとは思わなかった",
+    "known_audio_id": "b299350e-b3a8-4941-8bab-96251585f497",
+    "target1_audio_id": "6fd5a5f9-26da-4db7-b511-5bd67b8550f8",
+    "target2_audio_id": "493f3c79-9e96-4800-9510-4c069dcd6c28"
+   },
+   "lego": {
+    "lego_id": "S0387L02",
+    "known_text": "didn't think she was right",
+    "target_text": "正しいとは思わなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0390L02U11": {
+   "seed": {
+    "seed_number": 390,
+    "known_text": "the one who is standing near the entrance",
+    "target_text": "入り口の近くに立ってる人",
+    "known_audio_id": "35ba1be7-0e14-4c22-9bc9-c763844f4bbe",
+    "target1_audio_id": "c29d5f4f-97ee-422e-8d3b-563bcb330f8d",
+    "target2_audio_id": "d1ad21a8-3544-44cc-b78d-65e1d9c9ea31"
+   },
+   "lego": {
+    "lego_id": "S0390L02",
+    "known_text": "standing near the entrance",
+    "target_text": "入り口の近くに立ってる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0392L05U13": {
+   "seed": {
+    "seed_number": 392,
+    "known_text": "that child with the black hair opposite the post office",
+    "target_text": "郵便局の向かいの黒い髪の子",
+    "known_audio_id": "28a04339-6100-4325-8019-106c761f11e1",
+    "target1_audio_id": "b516e761-797a-48b6-9a5b-72efc89e6f40",
+    "target2_audio_id": "875e34d1-ca11-411a-b550-08c2b04bb425"
+   },
+   "lego": {
+    "lego_id": "S0392L05",
+    "known_text": "hair",
+    "target_text": "髪",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0393L03U12": {
+   "seed": {
+    "seed_number": 393,
+    "known_text": "that boy with the green shirt",
+    "target_text": "緑のシャツの男の子",
+    "known_audio_id": "438ab837-69ac-4ceb-a887-0d87f7847ddc",
+    "target1_audio_id": "ac5a68a5-95b9-47ea-ac37-66203c520f68",
+    "target2_audio_id": "84eb857a-ca69-4533-8637-9858b15b57e2"
+   },
+   "lego": {
+    "lego_id": "S0393L03",
+    "known_text": "boy",
+    "target_text": "男の子",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0394L03U12": {
+   "seed": {
+    "seed_number": 394,
+    "known_text": "that girl with the yellow dress",
+    "target_text": "黄色い服の女の子",
+    "known_audio_id": "3f7f139b-461a-4404-9de5-07dc09ac22fc",
+    "target1_audio_id": "1e4a5936-9881-4645-a306-f5b114b60a97",
+    "target2_audio_id": "412c443a-c635-4810-a1f1-a02275137288"
+   },
+   "lego": {
+    "lego_id": "S0394L03",
+    "known_text": "girl",
+    "target_text": "女の子",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0395L03U12": {
+   "seed": {
+    "seed_number": 395,
+    "known_text": "we need to turn left at the next corner",
+    "target_text": "次の角で左に曲がる",
+    "known_audio_id": "07e1822b-9ecb-4763-8a30-6b23c4cb488f",
+    "target1_audio_id": "b17587f1-61e9-4fdc-92f5-1ce071c78e51",
+    "target2_audio_id": "27037f7e-842e-4347-b19e-92dca025ffee"
+   },
+   "lego": {
+    "lego_id": "S0395L03",
+    "known_text": "turn left at the next corner",
+    "target_text": "次の角で左に曲がる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0396L04U10": {
+   "seed": {
+    "seed_number": 396,
+    "known_text": "we don't need to stand until everybody else is ready",
+    "target_text": "みんなが準備できるまで立たなくていい",
+    "known_audio_id": "29ef530b-edfe-4ebc-aa1b-a8c16decb93f",
+    "target1_audio_id": "dc2d972c-8c40-4e39-a484-332356dd874f",
+    "target2_audio_id": "841b29d1-90c5-4455-b066-989819156ac3"
+   },
+   "lego": {
+    "lego_id": "S0396L04",
+    "known_text": "don't need to stand",
+    "target_text": "立たなくていい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0397L01U14": {
+   "seed": {
+    "seed_number": 397,
+    "known_text": "do we need to get ready soon?",
+    "target_text": "もうすぐ準備する必要ある？",
+    "known_audio_id": "7dcd075a-b2f8-4b21-9e26-b1b9f4642781",
+    "target1_audio_id": "8d49ac5e-fa9c-49e7-833b-3dc1e458da5f",
+    "target2_audio_id": "9d0c8fcc-aa82-4d21-86c7-449c40a6112b"
+   },
+   "lego": {
+    "lego_id": "S0397L01",
+    "known_text": "get ready",
+    "target_text": "準備する",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0398L04U08": {
+   "seed": {
+    "seed_number": 398,
+    "known_text": "we want to become more patient with our children",
+    "target_text": "子どもにもっと我慢強くなりたい",
+    "known_audio_id": "0c076ca2-46b4-42e2-a559-3a7e7254f197",
+    "target1_audio_id": "2a33df37-b774-4b52-8074-7b07fec5c2b1",
+    "target2_audio_id": "225cdb52-28b4-4e22-a4c1-01a1413fb3f7"
+   },
+   "lego": {
+    "lego_id": "S0398L04",
+    "known_text": "want to become",
+    "target_text": "なりたい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0400L01U11": {
+   "seed": {
+    "seed_number": 400,
+    "known_text": "do we want to eat something later on?",
+    "target_text": "あとで何か食べたい？",
+    "known_audio_id": "3cacd090-107f-4fc7-b46e-d430b210741e",
+    "target1_audio_id": "f9e94187-dddf-4fa5-a9a5-d6bc5b6c4e74",
+    "target2_audio_id": "e11f696e-3475-4489-bd89-db65a1292713"
+   },
+   "lego": {
+    "lego_id": "S0400L01",
+    "known_text": "want to eat something later",
+    "target_text": "あとで何か食べたい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0401L01U12": {
+   "seed": {
+    "seed_number": 401,
+    "known_text": "no it would be better to go straight home",
+    "target_text": "いや、まっすぐ帰ったほうがいい",
+    "known_audio_id": "decaaa65-b5ac-4075-a777-3acc0915d6c1",
+    "target1_audio_id": "4539b293-29d5-4012-b0a0-be52e567bb52",
+    "target2_audio_id": "6ddbeef9-2706-4038-beb0-2dd7f2957c0b"
+   },
+   "lego": {
+    "lego_id": "S0401L01",
+    "known_text": "better to go straight home",
+    "target_text": "まっすぐ帰ったほうがいい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0404L01U13": {
+   "seed": {
+    "seed_number": 404,
+    "known_text": "we shouldn't expect to finish before Thursday",
+    "target_text": "木曜前に終わるとは思わない",
+    "known_audio_id": "3c9a6d06-bfdf-46e5-a4a9-43f92916866d",
+    "target1_audio_id": "7b1848e2-630e-4dec-9b65-ce93d4b58786",
+    "target2_audio_id": "83e598c6-0a56-4e22-a355-3a15febab520"
+   },
+   "lego": {
+    "lego_id": "S0404L01",
+    "known_text": "Thursday",
+    "target_text": "木曜",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0407L02U12": {
+   "seed": {
+    "seed_number": 407,
+    "known_text": "shouldn't we try to set a good example?",
+    "target_text": "良い例を見せたほうがいいんじゃない？",
+    "known_audio_id": "902dde8e-52bf-4791-8407-98ba4f5c636e",
+    "target1_audio_id": "47883ac8-5ddb-4cfd-8200-d163df9fa092",
+    "target2_audio_id": "e56a3ff3-596e-4500-8f4c-b6fb5f17741f"
+   },
+   "lego": {
+    "lego_id": "S0407L02",
+    "known_text": "example",
+    "target_text": "例",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0408L06U10": {
+   "seed": {
+    "seed_number": 408,
+    "known_text": "yes that's the best way to make a happy family",
+    "target_text": "うん、それが幸せな家族への一番の方法",
+    "known_audio_id": "b6dcb668-de49-49f9-ad0a-8b96d1c2cc19",
+    "target1_audio_id": "e6828757-b794-4200-a37f-9242331eced9",
+    "target2_audio_id": "13233b3c-f094-4c7c-a11b-7c10fa5187ab"
+   },
+   "lego": {
+    "lego_id": "S0408L06",
+    "known_text": "a happy family",
+    "target_text": "幸せな家族",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0409L02U12": {
+   "seed": {
+    "seed_number": 409,
+    "known_text": "no it doesn't matter what we do",
+    "target_text": "いや、何をしても関係ない",
+    "known_audio_id": "5d000345-820d-4cd1-8c5a-3fb37a842cb7",
+    "target1_audio_id": "5818c756-01cc-48f6-9e45-9489981e8899",
+    "target2_audio_id": "827dcf42-cb92-47b2-bc28-c67ad8df5bbe"
+   },
+   "lego": {
+    "lego_id": "S0409L02",
+    "known_text": "doesn't matter",
+    "target_text": "関係ない",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0411L01U14": {
+   "seed": {
+    "seed_number": 411,
+    "known_text": "we would like to reserve a table for four tonight",
+    "target_text": "今夜、四人でテーブルを予約したい",
+    "known_audio_id": "784e3502-6c50-4cdb-a2ba-48bdbfd92855",
+    "target1_audio_id": "d84c6e3b-5e31-40f0-9bf5-05a15bd39b5c",
+    "target2_audio_id": "fe75755b-5abe-4eaf-8d5d-f14d2c8ce5de"
+   },
+   "lego": {
+    "lego_id": "S0411L01",
+    "known_text": "tonight",
+    "target_text": "今夜",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0413L03U11": {
+   "seed": {
+    "seed_number": 413,
+    "known_text": "we could fall if we go too close to the edge",
+    "target_text": "端に近づきすぎると落ちるかも",
+    "known_audio_id": "85148a5a-70f8-4cbf-9925-a79f528062a1",
+    "target1_audio_id": "b6f24d0e-e494-487e-963b-a079b098dd44",
+    "target2_audio_id": "d19cc7bc-f522-43b7-8cd7-84e84e0e9f76"
+   },
+   "lego": {
+    "lego_id": "S0413L03",
+    "known_text": "too close",
+    "target_text": "近づきすぎると",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0414L02U12": {
+   "seed": {
+    "seed_number": 414,
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "赤ワインを一本ください",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "92d49bdd-4fb6-4621-8115-3aa4be9e0c9a",
+    "target2_audio_id": "3ba1e354-0a9a-4e45-9957-21bd55b5aee9"
+   },
+   "lego": {
+    "lego_id": "S0414L02",
+    "known_text": "wine",
+    "target_text": "ワイン",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0417L02U12": {
+   "seed": {
+    "seed_number": 417,
+    "known_text": "do they want to kill those ants?",
+    "target_text": "アリを殺したいの？",
+    "known_audio_id": "f291eb24-4233-4583-80b8-711d323c4501",
+    "target1_audio_id": "7639f90c-bc25-4d8d-b9e4-e5dc5f82d7f2",
+    "target2_audio_id": "ac6db6c8-533a-4625-a2ce-37d01128500a"
+   },
+   "lego": {
+    "lego_id": "S0417L02",
+    "known_text": "want to kill",
+    "target_text": "殺したい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0418L01U12": {
+   "seed": {
+    "seed_number": 418,
+    "known_text": "they need to serve the community",
+    "target_text": "地域に貢献する必要がある",
+    "known_audio_id": "c4094acf-ac42-45a2-b802-627a426ebfa1",
+    "target1_audio_id": "9a1e8a94-9625-4d79-b902-fc19fbc85892",
+    "target2_audio_id": "d1011f7a-292b-4b8a-ade0-8a7319a279dc"
+   },
+   "lego": {
+    "lego_id": "S0418L01",
+    "known_text": "community",
+    "target_text": "地域",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0419L01U12": {
+   "seed": {
+    "seed_number": 419,
+    "known_text": "if they want people to like them",
+    "target_text": "人に好かれたいなら",
+    "known_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3",
+    "target1_audio_id": "8257b17b-1dc3-485f-af4e-9256585bb818",
+    "target2_audio_id": "18e8eab8-2f81-4d94-a4a4-4057e0efd782"
+   },
+   "lego": {
+    "lego_id": "S0419L01",
+    "known_text": "if",
+    "target_text": "なら",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0421L01U13": {
+   "seed": {
+    "seed_number": 421,
+    "known_text": "because they already know he's getting weak",
+    "target_text": "もう弱ってきてるのを知ってるから",
+    "known_audio_id": "636cc811-879f-4d8d-ba4d-a4144ac75fdb",
+    "target1_audio_id": "dc2db10c-37c4-4dbd-b8ab-4c22584bcf7d",
+    "target2_audio_id": "ceb27cc7-59b8-47ca-ba86-2f924da4ac7b"
+   },
+   "lego": {
+    "lego_id": "S0421L01",
+    "known_text": "getting weak",
+    "target_text": "弱ってきてる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0422L01U12": {
+   "seed": {
+    "seed_number": 422,
+    "known_text": "a question",
+    "target_text": "質問",
+    "known_audio_id": "16307316-061e-4823-ae2c-26112413b19f",
+    "target1_audio_id": "cc807c0b-8f6e-4506-8bd1-5fc5a7465359",
+    "target2_audio_id": "63077e9d-2ab8-4a58-a518-d7e703a726ec"
+   },
+   "lego": {
+    "lego_id": "S0422L01",
+    "known_text": "question",
+    "target_text": "質問",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0423L02U12": {
+   "seed": {
+    "seed_number": 423,
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "そんな分かりきった質問をする必要ある？",
+    "known_audio_id": "818ae955-ac76-4a3c-80a9-47611c782e2f",
+    "target1_audio_id": "dbc3b08c-b807-411a-b86c-e6a277903859",
+    "target2_audio_id": "33a3e40f-ad86-4a66-b845-f6d9eb347243"
+   },
+   "lego": {
+    "lego_id": "S0423L02",
+    "known_text": "obvious",
+    "target_text": "分かりきった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0424L03U13": {
+   "seed": {
+    "seed_number": 424,
+    "known_text": "no they're wasting everybody's time",
+    "target_text": "みんなの時間を無駄にしてる",
+    "known_audio_id": "290dc5e0-ce95-4da8-944d-12fca8d4a189",
+    "target1_audio_id": "c486154e-b409-443e-99bf-bf8d63130ae1",
+    "target2_audio_id": "ebb2dc17-2c3a-47c5-aa1b-e44ad57b8b27"
+   },
+   "lego": {
+    "lego_id": "S0424L03",
+    "known_text": "wasting",
+    "target_text": "無駄にしてる",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0428L01U12": {
+   "seed": {
+    "seed_number": 428,
+    "known_text": "would they want to come on Tuesday?",
+    "target_text": "火曜に来たい？",
+    "known_audio_id": "fbe105e8-5ecd-4c64-8785-a0dd48bb0322",
+    "target1_audio_id": "ab664c99-03e9-4d91-ab1e-9ab149e9fbe8",
+    "target2_audio_id": "7f8ad780-ea85-4341-9a9f-db2e16b55f8e"
+   },
+   "lego": {
+    "lego_id": "S0428L01",
+    "known_text": "Tuesday",
+    "target_text": "火曜",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0432L02U12": {
+   "seed": {
+    "seed_number": 432,
+    "known_text": "they could mean that they want you to ask",
+    "target_text": "聞いてほしいって意味かもしれない",
+    "known_audio_id": "f138dde0-1cf1-43d2-85fa-ea4d6ccd9ccc",
+    "target1_audio_id": "719c7c2c-9fbe-43cb-81e0-43a922c0b880",
+    "target2_audio_id": "9f7f64e6-2c37-444d-9185-05fb6a7277f1"
+   },
+   "lego": {
+    "lego_id": "S0432L02",
+    "known_text": "want you to ask",
+    "target_text": "聞いてほしい",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0433L04U12": {
+   "seed": {
+    "seed_number": 433,
+    "known_text": "they couldn't find out when the film started",
+    "target_text": "映画の開始時間が分からなかった",
+    "known_audio_id": "29fac157-11f8-47d0-9c89-e193b6482d1b",
+    "target1_audio_id": "0cdd24ef-c77e-43f7-9215-a3bd5920b5af",
+    "target2_audio_id": "71282ccd-45f2-4be3-970c-531612f8f581"
+   },
+   "lego": {
+    "lego_id": "S0433L04",
+    "known_text": "couldn't find out",
+    "target_text": "分からなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0436L01U06": {
+   "seed": {
+    "seed_number": 436,
+    "known_text": "no there's a minimum number they need",
+    "target_text": "いや、最低人数がある",
+    "known_audio_id": "8f5a0d9b-7f41-445e-bb82-cb65090acd76",
+    "target1_audio_id": "ffc5c3d9-8801-4810-be41-6e364d05dff0",
+    "target2_audio_id": "94175fcf-37e8-4f3e-adf2-9361210aa556"
+   },
+   "lego": {
+    "lego_id": "S0436L01",
+    "known_text": "minimum",
+    "target_text": "最低",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0437L02U11": {
+   "seed": {
+    "seed_number": 437,
+    "known_text": "they wanted to raise as much as possible for charity",
+    "target_text": "できるだけ多く寄付を集めたかった",
+    "known_audio_id": "360521e5-bb26-42c4-b73c-6e6fcf96c45f",
+    "target1_audio_id": "c479c0d2-ceff-4eee-b508-9a06a41ee41f",
+    "target2_audio_id": "ec35bfd1-8d89-4a6d-85b9-66fd3ffcc830"
+   },
+   "lego": {
+    "lego_id": "S0437L02",
+    "known_text": "much",
+    "target_text": "多く",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0438L02U13": {
+   "seed": {
+    "seed_number": 438,
+    "known_text": "they didn't want to decide what he should do",
+    "target_text": "何をすべきか決めたくなかった",
+    "known_audio_id": "0d48aae3-42fb-4d81-af12-b2b63bce9cb0",
+    "target1_audio_id": "4f56c5fb-d810-4169-be23-434c0405f292",
+    "target2_audio_id": "508478ee-d448-49f3-987a-40c4f31c5be2"
+   },
+   "lego": {
+    "lego_id": "S0438L02",
+    "known_text": "didn't want to decide",
+    "target_text": "決めたくなかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0440L03U12": {
+   "seed": {
+    "seed_number": 440,
+    "known_text": "they want to travel while they're still young",
+    "target_text": "若いうちに旅したい",
+    "known_audio_id": "8cabfe39-af17-4338-ae6e-91f46cd035dd",
+    "target1_audio_id": "77d2f396-a6f9-4dd7-a147-0328e134a5cc",
+    "target2_audio_id": "ab9849ff-e4d2-4b94-a3b8-52795b164d77"
+   },
+   "lego": {
+    "lego_id": "S0440L03",
+    "known_text": "travel",
+    "target_text": "旅",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0444L02U06": {
+   "seed": {
+    "seed_number": 444,
+    "known_text": "yes they thought it could be done more efficiently",
+    "target_text": "もっと効率よくできると思った",
+    "known_audio_id": "6ed11d46-5ce5-468e-aedc-75c6fb29390e",
+    "target1_audio_id": "1b9193c8-9c67-4a95-9365-63189ca2a1ff",
+    "target2_audio_id": "1b087ded-4e71-4daf-8cf7-4d61bb0125b7"
+   },
+   "lego": {
+    "lego_id": "S0444L02",
+    "known_text": "thought",
+    "target_text": "思った",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0445L01U14": {
+   "seed": {
+    "seed_number": 445,
+    "known_text": "they will be able to carry that suitcase",
+    "target_text": "そのスーツケースは運べる",
+    "known_audio_id": "c52bd008-5426-4137-97aa-9f1530708600",
+    "target1_audio_id": "b18e22f5-0af5-4b00-b457-cc9050948cfd",
+    "target2_audio_id": "6c4062a9-ffae-42b1-935e-7824260aa582"
+   },
+   "lego": {
+    "lego_id": "S0445L01",
+    "known_text": "suitcase",
+    "target_text": "スーツケース",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0446L01U12": {
+   "seed": {
+    "seed_number": 446,
+    "known_text": "they won't be able to break that window",
+    "target_text": "その窓は壊せない",
+    "known_audio_id": "35c0f7c4-2f6f-4bd1-9b92-82c494d1640e",
+    "target1_audio_id": "7144ff4b-b8b9-44b2-adbe-93b4f102c571",
+    "target2_audio_id": "187d26ac-197f-4513-a04e-e35d11d15417"
+   },
+   "lego": {
+    "lego_id": "S0446L01",
+    "known_text": "window",
+    "target_text": "窓",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0447L01U11": {
+   "seed": {
+    "seed_number": 447,
+    "known_text": "will they be able to drive us home after the meal?",
+    "target_text": "食事のあと、家まで運転できる？",
+    "known_audio_id": "85b11578-eed4-46f8-a9f7-365991498f71",
+    "target1_audio_id": "9f2b2713-b274-45b7-b562-5dd4c1232e5d",
+    "target2_audio_id": "08efca11-2f8c-41ab-a39d-2f5dde0487a4"
+   },
+   "lego": {
+    "lego_id": "S0447L01",
+    "known_text": "meal",
+    "target_text": "食事",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0448L01U12": {
+   "seed": {
+    "seed_number": 448,
+    "known_text": "yes, with pleasure",
+    "target_text": "うん、喜んで",
+    "known_audio_id": "309058b4-95a2-4986-9fcc-c223460dba89",
+    "target1_audio_id": "728a3fef-ae42-48a5-b65e-6d3546cca65f",
+    "target2_audio_id": "6fa9a486-2d81-4b6a-a7b2-431a2e0c9e1b"
+   },
+   "lego": {
+    "lego_id": "S0448L01",
+    "known_text": "with pleasure",
+    "target_text": "喜んで",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0450L02U12": {
+   "seed": {
+    "seed_number": 450,
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "自分たちで電車に乗らないといけない",
+    "known_audio_id": "2b5937d3-4ceb-4232-b6bf-5e7c74e86b83",
+    "target1_audio_id": "9439ce29-1f04-4833-a507-52c80477d246",
+    "target2_audio_id": "6b479ade-0b96-44a3-8869-50879471b23b"
+   },
+   "lego": {
+    "lego_id": "S0450L02",
+    "known_text": "themselves",
+    "target_text": "自分たち",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0493L01U06": {
+   "seed": {
+    "seed_number": 493,
+    "known_text": "what's going to come next?",
+    "target_text": "次に何が来る？",
+    "known_audio_id": "942ec3d1-c0ed-4b03-a9f2-0564e1dc0e6d",
+    "target1_audio_id": "ac310cc2-fd26-46f6-8ed0-3d227e5f9b0a",
+    "target2_audio_id": "dfe57d1a-fef1-4e89-9e05-5c5d4fd6e2b3"
+   },
+   "lego": {
+    "lego_id": "S0493L01",
+    "known_text": "come",
+    "target_text": "来る",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0588L02U06": {
+   "seed": {
+    "seed_number": 588,
+    "known_text": "so I wanted to grow up and leave home",
+    "target_text": "大人になって家を出たかった。",
+    "known_audio_id": "df0294fb-bc12-4cde-81dc-721c6d2eb4ca",
+    "target1_audio_id": "26c7ee90-6fc6-44d8-ab35-4532a48ab62b",
+    "target2_audio_id": "53e635e5-bb98-44e9-bcad-4b481933dd6a"
+   },
+   "lego": {
+    "lego_id": "S0588L02",
+    "known_text": "wanted to leave home",
+    "target_text": "家を出たかった",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

@@ -1,0 +1,4716 @@
+{
+ "course": "ara_eg_for_eng",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:00.888Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 11,
+   "id": "S0011L02U07",
+   "lego": "S0011L02",
+   "known": "I'd like to be able to speak after you finish.",
+   "target": "أنا حابب أقدر أتكلم بعد ما تخلص.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0011L02U07",
+      "seed_number": 11,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I'd like to be able to speak after you finish.",
+      "target_text": "أنا حابب أقدر أتكلم بعد ما تخلص.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 11,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "ana haabib a'dar atkallim ba'd ma takhlas."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0011L02U07",
+     "slot": "known",
+     "audio_id": "ed2c543f-b333-4df2-86b2-60aed7f112fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0011L02U07",
+     "slot": "target1",
+     "audio_id": "9db0747c-2304-4faa-95b4-ed2d716897ae"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0011L02U07",
+     "slot": "target2",
+     "audio_id": "0697be4a-e2a8-47b1-b990-9f5fd23d318d"
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "id": "S0015L03U07",
+   "lego": "S0015L03",
+   "known": "And I want you to speak Arabic with me tomorrow.",
+   "target": "و أنا عايزك تتكلم عربي معايا بكرة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0015L03U07",
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "And I want you to speak Arabic with me tomorrow.",
+      "target_text": "و أنا عايزك تتكلم عربي معايا بكرة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 15,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "wi ana 'aayizak titkallim 'arabi ma'aaya bukra."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0015L03U07",
+     "slot": "known",
+     "audio_id": "baeb2028-9ea3-4df7-a997-6f6a0091632a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0015L03U07",
+     "slot": "target1",
+     "audio_id": "834d3be5-f270-4d29-8c59-1c51285afc5c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0015L03U07",
+     "slot": "target2",
+     "audio_id": "edd100f0-548b-4455-9edd-e9e9c4218298"
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "id": "S0029L02U06",
+   "lego": "S0029L02",
+   "known": "I'm looking forward to speaking better as soon as I can.",
+   "target": "أنا مستني أتكلم أحسن أول ما أقدر.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0029L02U06",
+      "seed_number": 29,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I'm looking forward to speaking better as soon as I can.",
+      "target_text": "أنا مستني أتكلم أحسن أول ما أقدر.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 29,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 11,
+      "lego_position": "middle",
+      "target_text_roman": "ana mistanni atkallim ahsan awwil ma a'dar."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0029L02U06",
+     "slot": "known",
+     "audio_id": "518afece-3fa8-4b3b-a0e5-8a131c7af765"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0029L02U06",
+     "slot": "target1",
+     "audio_id": "6a2ecde8-9bc0-490d-909e-8f7ad660c0fa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0029L02U06",
+     "slot": "target2",
+     "audio_id": "717d9d0e-ab77-48c6-aa8a-956bc57b3d5b"
+    }
+   ]
+  },
+  {
+   "seed": 49,
+   "id": "S0049L01U07",
+   "lego": "S0049L01",
+   "known": "It's like this, if you know what I mean.",
+   "target": "كده، لو فاهم قصدي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0049L01U07",
+      "seed_number": 49,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "It's like this, if you know what I mean.",
+      "target_text": "كده، لو فاهم قصدي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 49,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 9,
+      "lego_position": "start",
+      "target_text_roman": "keda, law faahim 'asdi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0049L01U07",
+     "slot": "known",
+     "audio_id": "4ebeb13f-c057-4d01-a675-5f857b7c5056"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0049L01U07",
+     "slot": "target1",
+     "audio_id": "0d52313e-a2fb-4c30-922d-d582fb5274dc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0049L01U07",
+     "slot": "target2",
+     "audio_id": "6f40e3ee-8dc9-4e02-8f1a-ddab8f401c1b"
+    }
+   ]
+  },
+  {
+   "seed": 50,
+   "id": "S0050L01U06",
+   "lego": "S0050L01",
+   "known": "I'm not trying to finish as quickly as possible.",
+   "target": "أنا مش بحاول أخلص بسرعة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0050L01U06",
+      "seed_number": 50,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "I'm not trying to finish as quickly as possible.",
+      "target_text": "أنا مش بحاول أخلص بسرعة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 50,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "ana mish bahawil akhlus bisur'a."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0050L01U06",
+     "slot": "known",
+     "audio_id": "28543c83-ab38-4d48-9761-dc79822e1486"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0050L01U06",
+     "slot": "target1",
+     "audio_id": "834a043f-ed95-4873-b252-98de59a04d09"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0050L01U06",
+     "slot": "target2",
+     "audio_id": "8474e406-35e5-4cf2-a4be-071aaf9420de"
+    }
+   ]
+  },
+  {
+   "seed": 51,
+   "id": "S0051L06U07",
+   "lego": "S0051L06",
+   "known": "I enjoy doing interesting things with my friends.",
+   "target": "أنا بستمتع بإني أعمل حاجات ممتعة مع أصحابي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0051L06U07",
+      "seed_number": 51,
+      "lego_index": 6,
+      "position": 10,
+      "known_text": "I enjoy doing interesting things with my friends.",
+      "target_text": "أنا بستمتع بإني أعمل حاجات ممتعة مع أصحابي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 51,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 8,
+      "lego_position": "end",
+      "target_text_roman": "ana bastamti' b-inni a'mil hagaat mumti'a ma' ashaabi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0051L06U07",
+     "slot": "known",
+     "audio_id": "e11cda3b-8c56-47b3-8b77-5265f2d0f475"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0051L06U07",
+     "slot": "target1",
+     "audio_id": "8d564970-b93f-450f-8e92-28a6fb60ebee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0051L06U07",
+     "slot": "target2",
+     "audio_id": "864ef53e-0450-4192-acd5-7a9280fb435c"
+    }
+   ]
+  },
+  {
+   "seed": 54,
+   "id": "S0054L02U07",
+   "lego": "S0054L02",
+   "known": "We wanted to give you a little more time.",
+   "target": "إحنا كنا عايزين نديك شوية وقت زيادة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0054L02U07",
+      "seed_number": 54,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "We wanted to give you a little more time.",
+      "target_text": "إحنا كنا عايزين نديك شوية وقت زيادة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 54,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "ihna kunna 'ayziin nidiik shuwayya wa't ziyaada."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0054L02U07",
+     "slot": "known",
+     "audio_id": "6a3068c7-3fc1-4f61-a975-d2d55a366aa2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0054L02U07",
+     "slot": "target1",
+     "audio_id": "a4f80858-8f87-4e54-b3a5-b910cc6c7f7b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0054L02U07",
+     "slot": "target2",
+     "audio_id": "48d529af-cb4d-49ec-bd6a-d7430fcdb9f1"
+    }
+   ]
+  },
+  {
+   "seed": 55,
+   "id": "S0055L02U06",
+   "lego": "S0055L02",
+   "known": "I don't enjoy waking up when I didn't sleep very well.",
+   "target": "أنا مش بستمتع لما أصحى لو ما نمتش كويس.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0055L02U06",
+      "seed_number": 55,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I don't enjoy waking up when I didn't sleep very well.",
+      "target_text": "أنا مش بستمتع لما أصحى لو ما نمتش كويس.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 55,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "ana mish bastamti' lamma assha' law ma nimtish kwayis."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0055L02U06",
+     "slot": "known",
+     "audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0055L02U06",
+     "slot": "target1",
+     "audio_id": "78b43d1b-1709-4acb-a47c-2f9f045ec944"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0055L02U06",
+     "slot": "target2",
+     "audio_id": "fb07a6b4-3f10-4bbb-a8d6-77ca3555129f"
+    }
+   ]
+  },
+  {
+   "seed": 56,
+   "id": "S0056L01U07",
+   "lego": "S0056L01",
+   "known": "So I can remember how to say a few words.",
+   "target": "علشان أقدر أفتكر إزاي أقول كم كلمة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0056L01U07",
+      "seed_number": 56,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "So I can remember how to say a few words.",
+      "target_text": "علشان أقدر أفتكر إزاي أقول كم كلمة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 56,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "'alshaan a'dar aftikir izzaay a'ul kam kilma."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0056L01U07",
+     "slot": "known",
+     "audio_id": "b97f2b73-243c-4da5-a005-4c04689373c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0056L01U07",
+     "slot": "target1",
+     "audio_id": "6548ce75-0384-4315-b479-e309fe002605"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0056L01U07",
+     "slot": "target2",
+     "audio_id": "63b4087a-fb52-41bb-a126-1b85f40ac431"
+    }
+   ]
+  },
+  {
+   "seed": 57,
+   "id": "S0057L02U06",
+   "lego": "S0057L02",
+   "known": "I can't remember how to say what I wanted to say.",
+   "target": "أنا ما أقدرش أفتكر إزاي أقول اللي كنت عايز أقوله.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0057L02U06",
+      "seed_number": 57,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I can't remember how to say what I wanted to say.",
+      "target_text": "أنا ما أقدرش أفتكر إزاي أقول اللي كنت عايز أقوله.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 57,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "ana ma a'darsh aftikir izzay a'uul illi kunt 'aayiz a'uulu."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0057L02U06",
+     "slot": "known",
+     "audio_id": "d26cd9f6-1cac-4749-be57-9933aef8b404"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0057L02U06",
+     "slot": "target1",
+     "audio_id": "3433a98c-918c-464c-b2d6-c370ffbb5a22"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0057L02U06",
+     "slot": "target2",
+     "audio_id": "ae11ffb7-2e9e-4d79-a3dc-082a4637178e"
+    }
+   ]
+  },
+  {
+   "seed": 58,
+   "id": "S0058L04U07",
+   "lego": "S0058L04",
+   "known": "It's interesting when you understand enough words.",
+   "target": "ممتع لما تفهم كلمات كفاية.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0058L04U07",
+      "seed_number": 58,
+      "lego_index": 4,
+      "position": 10,
+      "known_text": "It's interesting when you understand enough words.",
+      "target_text": "ممتع لما تفهم كلمات كفاية.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 58,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 7,
+      "lego_position": "end",
+      "target_text_roman": "mumti' lamma tifham kilmaat kifaaya."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0058L04U07",
+     "slot": "known",
+     "audio_id": "0b38663f-1675-42ce-ae9f-a67cf28645c9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0058L04U07",
+     "slot": "target1",
+     "audio_id": "158292b7-c17f-439c-9298-e8d0eca23d31"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0058L04U07",
+     "slot": "target2",
+     "audio_id": "8fa393f0-914f-4a2c-81fc-060273d59a1a"
+    }
+   ]
+  },
+  {
+   "seed": 59,
+   "id": "S0059L03U07",
+   "lego": "S0059L03",
+   "known": "I know how to do what I need to do next week.",
+   "target": "أنا عارف إزاي أعمل اللي محتاج أعمله الأسبوع الجاي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0059L03U07",
+      "seed_number": 59,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "I know how to do what I need to do next week.",
+      "target_text": "أنا عارف إزاي أعمل اللي محتاج أعمله الأسبوع الجاي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 59,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 12,
+      "lego_position": "end",
+      "target_text_roman": "ana 'aarif izzay a'mil illi muHtaag a'milu il-usbuu' il-gaay."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0059L03U07",
+     "slot": "known",
+     "audio_id": "2eddb138-bd03-44ec-807b-e6cfc49edc0e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0059L03U07",
+     "slot": "target1",
+     "audio_id": "df0f9d2f-ee4a-41b6-a67f-c0ac149bad91"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0059L03U07",
+     "slot": "target2",
+     "audio_id": "27ae751d-7435-4b3a-bec4-8434cd52dfd9"
+    }
+   ]
+  },
+  {
+   "seed": 73,
+   "id": "S0073L02U06",
+   "lego": "S0073L02",
+   "known": "Thank you very much, but I've got more to learn.",
+   "target": "شكرًا جدًا، بس عندي أكتر أتعلمه.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0073L02U06",
+      "seed_number": 73,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "Thank you very much, but I've got more to learn.",
+      "target_text": "شكرًا جدًا، بس عندي أكتر أتعلمه.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 73,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 10,
+      "lego_position": "middle",
+      "target_text_roman": "shukran giddan, bass 'indi aktar at'allamu."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0073L02U06",
+     "slot": "known",
+     "audio_id": "07ac717c-f8c8-4cea-b3f4-1ed7dfaa350e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0073L02U06",
+     "slot": "target1",
+     "audio_id": "4bc05a3c-d875-4d65-ad4f-14f20cad0bf6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0073L02U06",
+     "slot": "target2",
+     "audio_id": "2fcfbc42-0009-41cd-971f-a5cc2bee497f"
+    }
+   ]
+  },
+  {
+   "seed": 76,
+   "id": "S0076L03U06",
+   "lego": "S0076L03",
+   "known": "I'm very happy with how much I've learnt already.",
+   "target": "أنا مبسوط جدًا من قد إيه اللي اتعلمته خلاص.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0076L03U06",
+      "seed_number": 76,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "I'm very happy with how much I've learnt already.",
+      "target_text": "أنا مبسوط جدًا من قد إيه اللي اتعلمته خلاص.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 76,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "ana mabsuut giddan min 'add eeh illi ita'allimtu khalaas."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0076L03U06",
+     "slot": "known",
+     "audio_id": "ca9d13e4-9b48-473d-a5e5-80537192c505"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0076L03U06",
+     "slot": "target1",
+     "audio_id": "45668ce9-7d19-4db2-89bc-95a90a671ef7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0076L03U06",
+     "slot": "target2",
+     "audio_id": "4566ae1e-d82b-4676-8441-dcdef5659f6a"
+    }
+   ]
+  },
+  {
+   "seed": 77,
+   "id": "S0077L02U06",
+   "lego": "S0077L02",
+   "known": "I'm surprised at how quickly I'm starting to understand.",
+   "target": "أنا متفاجئ إزاي بسرعة بدأت أفهم.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0077L02U06",
+      "seed_number": 77,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I'm surprised at how quickly I'm starting to understand.",
+      "target_text": "أنا متفاجئ إزاي بسرعة بدأت أفهم.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 77,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "ana mutfaagi' izzaay bi-sur'a bada't afham."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0077L02U06",
+     "slot": "known",
+     "audio_id": "99ef8cb2-ac65-4076-93ad-eabd34f8bbfc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0077L02U06",
+     "slot": "target1",
+     "audio_id": "e1cf4c64-bd65-4d53-ba6e-867a485b974f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0077L02U06",
+     "slot": "target2",
+     "audio_id": "dbcb2072-f37b-479a-b0a7-e13af6cd7278"
+    }
+   ]
+  },
+  {
+   "seed": 80,
+   "id": "S0080L02U06",
+   "lego": "S0080L02",
+   "known": "I'm not sure when I'll be ready.",
+   "target": "أنا مش متأكد إمتى حاكون جاهز.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0080L02U06",
+      "seed_number": 80,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I'm not sure when I'll be ready.",
+      "target_text": "أنا مش متأكد إمتى حاكون جاهز.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 80,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 7,
+      "lego_position": "end",
+      "target_text_roman": "ana mish muta'akkid imta haakuun gaahiz."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0080L02U06",
+     "slot": "known",
+     "audio_id": "48250ea7-f4f2-4537-ab52-7e2103cd9c63"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0080L02U06",
+     "slot": "target1",
+     "audio_id": "17d64db1-63d2-4a72-86c1-cd3eceab78d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0080L02U06",
+     "slot": "target2",
+     "audio_id": "a810638c-5987-4f91-9c10-c8daf96c0beb"
+    }
+   ]
+  },
+  {
+   "seed": 96,
+   "id": "S0096L01U05",
+   "lego": "S0096L01",
+   "known": "No I'm not ready yet, I need a little more time.",
+   "target": "لأ أنا مش جاهز لسه، محتاج شوية وقت زيادة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0096L01U05",
+      "seed_number": 96,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "No I'm not ready yet, I need a little more time.",
+      "target_text": "لأ أنا مش جاهز لسه، محتاج شوية وقت زيادة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 96,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 11,
+      "lego_position": "middle",
+      "target_text_roman": "la' ana mish gaahiz lissa, muhtaag shwayya wa't ziyaada."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0096L01U05",
+     "slot": "known",
+     "audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0096L01U05",
+     "slot": "target1",
+     "audio_id": "b6c799eb-a591-4519-8b4f-f33a480e99da"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0096L01U05",
+     "slot": "target2",
+     "audio_id": "7edec504-8104-4fc5-b63b-2c56112da81d"
+    }
+   ]
+  },
+  {
+   "seed": 109,
+   "id": "S0109L02U06",
+   "lego": "S0109L02",
+   "known": "We must work hard to learn a lot of new words.",
+   "target": "إحنا لازم نشتغل بجد علشان نتعلم كتير كلمات جديدة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0109L02U06",
+      "seed_number": 109,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "We must work hard to learn a lot of new words.",
+      "target_text": "إحنا لازم نشتغل بجد علشان نتعلم كتير كلمات جديدة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 109,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 11,
+      "lego_position": "middle",
+      "target_text_roman": "ihna laazim nishtighil bi-gadd 'alashaan nit'allim kitiir kilmaat gidiida."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0109L02U06",
+     "slot": "known",
+     "audio_id": "d65894ef-7f7c-4e9e-afd2-7a723cfed66c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0109L02U06",
+     "slot": "target1",
+     "audio_id": "6ce070e4-5a3c-4618-8139-217d96e117a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0109L02U06",
+     "slot": "target2",
+     "audio_id": "f52edeea-8b6f-45b5-9376-de58d8f120b1"
+    }
+   ]
+  },
+  {
+   "seed": 110,
+   "id": "S0110L03U06",
+   "lego": "S0110L03",
+   "known": "We're friends, and after we finish I'd like to relax.",
+   "target": "إحنا أصحاب، و بعد ما نخلص أنا حابب نرتاح.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0110L03U06",
+      "seed_number": 110,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "We're friends, and after we finish I'd like to relax.",
+      "target_text": "إحنا أصحاب، و بعد ما نخلص أنا حابب نرتاح.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 110,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "iHna usHaab, wi ba'd ma nikhlas ana Haabib nirtaaH."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0110L03U06",
+     "slot": "known",
+     "audio_id": "1e46f2a9-8bdf-4677-a016-d9376716be4c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0110L03U06",
+     "slot": "target1",
+     "audio_id": "ee5f9e20-bc6d-4a76-a91c-4e3e1be3e14f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0110L03U06",
+     "slot": "target2",
+     "audio_id": "06e2b672-fb73-4ef2-915d-4c91b465f963"
+    }
+   ]
+  },
+  {
+   "seed": 120,
+   "id": "S0120L05U06",
+   "lego": "S0120L05",
+   "known": "It's interesting that you like to go by bus.",
+   "target": "ممتع إنك بتحب تروح بالأوتوبيس.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0120L05U06",
+      "seed_number": 120,
+      "lego_index": 5,
+      "position": 9,
+      "known_text": "It's interesting that you like to go by bus.",
+      "target_text": "ممتع إنك بتحب تروح بالأوتوبيس.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 120,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "mumti' innak bithibb tiruuh bil-otobiis."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0120L05U06",
+     "slot": "known",
+     "audio_id": "51b8cb53-be15-4097-ad81-b2031c412f04"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0120L05U06",
+     "slot": "target1",
+     "audio_id": "4af52495-f0d8-4cef-bc38-5794b564747f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0120L05U06",
+     "slot": "target2",
+     "audio_id": "e054a051-f039-45ca-afce-990ae863ff59"
+    }
+   ]
+  },
+  {
+   "seed": 121,
+   "id": "S0121L04U06",
+   "lego": "S0121L04",
+   "known": "It's unusual that you don't like to use your car.",
+   "target": "غريب إنك مش بتحب تستخدم عربيتك.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0121L04U06",
+      "seed_number": 121,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "It's unusual that you don't like to use your car.",
+      "target_text": "غريب إنك مش بتحب تستخدم عربيتك.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 121,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "ghariib innak mish btihibb tistakhdam 'arabiytak."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0121L04U06",
+     "slot": "known",
+     "audio_id": "058f72c0-0c10-4714-be63-b9db5d0732ac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0121L04U06",
+     "slot": "target1",
+     "audio_id": "71d8bfe8-4458-419d-831c-0699990958fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0121L04U06",
+     "slot": "target2",
+     "audio_id": "5cc7824b-6559-4c54-8c08-4145b4c73f1d"
+    }
+   ]
+  },
+  {
+   "seed": 122,
+   "id": "S0122L06U05",
+   "lego": "S0122L06",
+   "known": "It's starting to feel easier and I'm excited about how it's going.",
+   "target": "بدأ يبان أسهل و أنا متحمس على إزاي ماشي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0122L06U05",
+      "seed_number": 122,
+      "lego_index": 6,
+      "position": 8,
+      "known_text": "It's starting to feel easier and I'm excited about how it's going.",
+      "target_text": "بدأ يبان أسهل و أنا متحمس على إزاي ماشي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 122,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 12,
+      "lego_position": "end",
+      "target_text_roman": "bada' yibaan as-hal wi ana mithammis 'ala izzay maashi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0122L06U05",
+     "slot": "known",
+     "audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0122L06U05",
+     "slot": "target1",
+     "audio_id": "be76eaba-a5a2-4fb9-8f47-4710da3615b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0122L06U05",
+     "slot": "target2",
+     "audio_id": "6b146990-c33f-4e72-9014-8115614194c6"
+    }
+   ]
+  },
+  {
+   "seed": 125,
+   "id": "S0125L02U06",
+   "lego": "S0125L02",
+   "known": "I believe that your idea was very good.",
+   "target": "أنا أصدق إن فكرتك كانت كويسة جدًا.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0125L02U06",
+      "seed_number": 125,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "I believe that your idea was very good.",
+      "target_text": "أنا أصدق إن فكرتك كانت كويسة جدًا.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 125,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 8,
+      "lego_position": "middle",
+      "target_text_roman": "ana asadda' in fikrtak kaanet kwayyisa giddan."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0125L02U06",
+     "slot": "known",
+     "audio_id": "bd08f489-0ecc-4549-a6db-c96785655675"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0125L02U06",
+     "slot": "target1",
+     "audio_id": "1c25e77c-c1a4-4484-9dbd-3e9eaa656af4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0125L02U06",
+     "slot": "target2",
+     "audio_id": "8a859198-dfa4-4c7b-b082-38fc8ea8f976"
+    }
+   ]
+  },
+  {
+   "seed": 126,
+   "id": "S0126L04U06",
+   "lego": "S0126L04",
+   "known": "This work is changing the shape of my brain.",
+   "target": "الشغل ده بيغير شكل مخي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0126L04U06",
+      "seed_number": 126,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "This work is changing the shape of my brain.",
+      "target_text": "الشغل ده بيغير شكل مخي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 126,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "il-shughl da biyghayar shakl mukhkhi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0126L04U06",
+     "slot": "known",
+     "audio_id": "323e58e0-f2bf-4bd6-b802-3430a3e88303"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0126L04U06",
+     "slot": "target1",
+     "audio_id": "258b0250-9fbe-4af7-95cf-025aa9e160f5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0126L04U06",
+     "slot": "target2",
+     "audio_id": "fff2dcee-345b-4d8a-837a-a87f0a3ef4c0"
+    }
+   ]
+  },
+  {
+   "seed": 130,
+   "id": "S0130L02U06",
+   "lego": "S0130L02",
+   "known": "That was a surprise, because he's my friend.",
+   "target": "دي كانت مفاجأة، علشان هو صاحبي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0130L02U06",
+      "seed_number": 130,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "That was a surprise, because he's my friend.",
+      "target_text": "دي كانت مفاجأة، علشان هو صاحبي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 130,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 8,
+      "lego_position": "middle",
+      "target_text_roman": "di kaanet mufaag'a, 'alashaan huwa saahbi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0130L02U06",
+     "slot": "known",
+     "audio_id": "e672ea88-6a8e-4498-b7a9-8d757848ca31"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0130L02U06",
+     "slot": "target1",
+     "audio_id": "d2a46d70-7ded-46cb-a404-d650fe4b118c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0130L02U06",
+     "slot": "target2",
+     "audio_id": "48fc515b-e082-41f4-904d-dfb9f379f5cc"
+    }
+   ]
+  },
+  {
+   "seed": 131,
+   "id": "S0131L03U06",
+   "lego": "S0131L03",
+   "known": "There are too many ideas going around in my head.",
+   "target": "في أفكار كتير قوي بتلف في دماغي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0131L03U06",
+      "seed_number": 131,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "There are too many ideas going around in my head.",
+      "target_text": "في أفكار كتير قوي بتلف في دماغي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 131,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "fi afkaar kitiir 'awi bitliff fi dimaaghi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0131L03U06",
+     "slot": "known",
+     "audio_id": "398c4544-56a5-4217-8a2b-6ddfa307ae8c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0131L03U06",
+     "slot": "target1",
+     "audio_id": "a1ee2d75-9545-49ce-b70c-6cbace8e195d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0131L03U06",
+     "slot": "target2",
+     "audio_id": "2bfcf983-6b9d-4633-bcd3-f348e48d82b2"
+    }
+   ]
+  },
+  {
+   "seed": 132,
+   "id": "S0132L03U06",
+   "lego": "S0132L03",
+   "known": "That's less exciting than what she was saying.",
+   "target": "ده أقل حماس من اللي هي كانت بتقوله.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0132L03U06",
+      "seed_number": 132,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "That's less exciting than what she was saying.",
+      "target_text": "ده أقل حماس من اللي هي كانت بتقوله.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 132,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 8,
+      "lego_position": "middle",
+      "target_text_roman": "da a'all hamaas min illi hiya kaanat bit'uulu."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0132L03U06",
+     "slot": "known",
+     "audio_id": "96ebd897-6d29-43e9-b846-b00b56e4cf42"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0132L03U06",
+     "slot": "target1",
+     "audio_id": "71ed88f4-60af-435d-ac44-ffa211d0d0c2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0132L03U06",
+     "slot": "target2",
+     "audio_id": "4cb51d48-92a9-4379-9bca-198c25ef0470"
+    }
+   ]
+  },
+  {
+   "seed": 133,
+   "id": "S0133L03U06",
+   "lego": "S0133L03",
+   "known": "You get to know someone very well when you work together.",
+   "target": "بتتعرف على حد كويس قوي لما تشتغل معاه سوا.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0133L03U06",
+      "seed_number": 133,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "You get to know someone very well when you work together.",
+      "target_text": "بتتعرف على حد كويس قوي لما تشتغل معاه سوا.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 133,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "bitti'rif 'ala hadd kuwayyes 'awi lamma tishtaghal ma'aah sawa"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0133L03U06",
+     "slot": "known",
+     "audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0133L03U06",
+     "slot": "target1",
+     "audio_id": "3ac4c9ca-7e62-400c-9deb-9d1dd4f2fd87"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0133L03U06",
+     "slot": "target2",
+     "audio_id": "bef162b3-8bff-48fa-9cb5-db49263e2ff2"
+    }
+   ]
+  },
+  {
+   "seed": 137,
+   "id": "S0137L04U06",
+   "lego": "S0137L04",
+   "known": "It's more important to talk often than to be perfect.",
+   "target": "أهم إنك تتكلم كتير من إنك تكون كامل.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0137L04U06",
+      "seed_number": 137,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "It's more important to talk often than to be perfect.",
+      "target_text": "أهم إنك تتكلم كتير من إنك تكون كامل.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 137,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "ahamm innak titkallim ktiir min innak tikuun kaamil."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0137L04U06",
+     "slot": "known",
+     "audio_id": "5de99132-44e7-483d-9b15-29ce1dc00e28"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0137L04U06",
+     "slot": "target1",
+     "audio_id": "39d201ea-e714-4529-b2c9-48ffcdf98918"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0137L04U06",
+     "slot": "target2",
+     "audio_id": "bbdce691-277b-4a48-90f9-3b43b9161797"
+    }
+   ]
+  },
+  {
+   "seed": 138,
+   "id": "S0138L03U06",
+   "lego": "S0138L03",
+   "known": "This was where my friend wanted to meet us.",
+   "target": "هنا فين صاحبي كان عايزنا نتقابل.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0138L03U06",
+      "seed_number": 138,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "This was where my friend wanted to meet us.",
+      "target_text": "هنا فين صاحبي كان عايزنا نتقابل.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 138,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "hina feen saahbi kaan 'ayzna nit'aabilu."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0138L03U06",
+     "slot": "known",
+     "audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0138L03U06",
+     "slot": "target1",
+     "audio_id": "8d6a4ea7-296d-4abb-a73b-6128abb6b7c6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0138L03U06",
+     "slot": "target2",
+     "audio_id": "00b906c9-4037-4aa4-bf39-a0696eec5af2"
+    }
+   ]
+  },
+  {
+   "seed": 140,
+   "id": "S0140L02U06",
+   "lego": "S0140L02",
+   "known": "I'm sorry that I can't see what you're trying to show me.",
+   "target": "أنا آسف إني ما أقدرش أشوف اللي إنت بتحاول توريني.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0140L02U06",
+      "seed_number": 140,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I'm sorry that I can't see what you're trying to show me.",
+      "target_text": "أنا آسف إني ما أقدرش أشوف اللي إنت بتحاول توريني.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 140,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 12,
+      "lego_position": "middle",
+      "target_text_roman": "ana aasif inni ma-a'darsh ashuuf illi inta bithaawil tiwariini."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0140L02U06",
+     "slot": "known",
+     "audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0140L02U06",
+     "slot": "target1",
+     "audio_id": "fc42ed38-1c06-4594-9f60-cd2513b17bda"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0140L02U06",
+     "slot": "target2",
+     "audio_id": "95af2272-5a9d-42bd-94f2-52ed1e5216db"
+    }
+   ]
+  },
+  {
+   "seed": 142,
+   "id": "S0142L04U05",
+   "lego": "S0142L04",
+   "known": "That's very kind of you and I'm grateful to you for helping.",
+   "target": "ده طيب جدًا منك و أنا ممتن ليك إنك ساعدتني.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0142L04U05",
+      "seed_number": 142,
+      "lego_index": 4,
+      "position": 8,
+      "known_text": "That's very kind of you and I'm grateful to you for helping.",
+      "target_text": "ده طيب جدًا منك و أنا ممتن ليك إنك ساعدتني.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 142,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 12,
+      "lego_position": "middle",
+      "target_text_roman": "da tayyib giddan minnak wi ana mumtann liik innak saa'adtni."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0142L04U05",
+     "slot": "known",
+     "audio_id": "4248dfa4-9a66-4bba-a8cd-7978a7c691cf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0142L04U05",
+     "slot": "target1",
+     "audio_id": "d243c04f-8d7f-433a-abe5-25643188e06f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0142L04U05",
+     "slot": "target2",
+     "audio_id": "59801320-6db5-4ff1-8842-e5c938eb7034"
+    }
+   ]
+  },
+  {
+   "seed": 143,
+   "id": "S0143L04U06",
+   "lego": "S0143L04",
+   "known": "It's the same thing as we were talking about earlier.",
+   "target": "نفس الحاجة اللي كنا بنتكلم عنها قبل كده.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0143L04U06",
+      "seed_number": 143,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "It's the same thing as we were talking about earlier.",
+      "target_text": "نفس الحاجة اللي كنا بنتكلم عنها قبل كده.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 143,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 10,
+      "lego_position": "middle",
+      "target_text_roman": "nafs il-haaga illi kunna bnitkallim 'anha 'abl kida."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0143L04U06",
+     "slot": "known",
+     "audio_id": "6485338d-a807-4a60-bde0-5d3ab55cde70"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0143L04U06",
+     "slot": "target1",
+     "audio_id": "3e39778a-f370-4ad9-a88c-1ef175c5468e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0143L04U06",
+     "slot": "target2",
+     "audio_id": "6123a761-0405-433d-8a66-0ce57074dc5a"
+    }
+   ]
+  },
+  {
+   "seed": 148,
+   "id": "S0148L03U06",
+   "lego": "S0148L03",
+   "known": "He wasn't very patient when I couldn't answer.",
+   "target": "هو ماكانش صبور قوي لما ما قدرتش أرد.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0148L03U06",
+      "seed_number": 148,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "He wasn't very patient when I couldn't answer.",
+      "target_text": "هو ماكانش صبور قوي لما ما قدرتش أرد.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 148,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 8,
+      "lego_position": "end",
+      "target_text_roman": "huwwa makaansh sabuur 'awi lamma ma 'idirtish arudd."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0148L03U06",
+     "slot": "known",
+     "audio_id": "11df6998-50cb-49a7-b899-d71262a688f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0148L03U06",
+     "slot": "target1",
+     "audio_id": "46f0d93d-547c-4bdb-931b-3376fc7042d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0148L03U06",
+     "slot": "target2",
+     "audio_id": "5d29c2a2-94b6-47f0-96a3-f776f6cfe4f2"
+    }
+   ]
+  },
+  {
+   "seed": 149,
+   "id": "S0149L03U06",
+   "lego": "S0149L03",
+   "known": "This isn't very difficult, so I hope you'll finish soon.",
+   "target": "ده مش صعب قوي، أنا متمنى إنك حاتخلص قريب.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0149L03U06",
+      "seed_number": 149,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "This isn't very difficult, so I hope you'll finish soon.",
+      "target_text": "ده مش صعب قوي، أنا متمنى إنك حاتخلص قريب.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 149,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "da mish sa'b awi, ana bitmanna innak hatikhlas 'ariib."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0149L03U06",
+     "slot": "known",
+     "audio_id": "741b7be4-6122-4207-8e59-323ad862fcd8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0149L03U06",
+     "slot": "target1",
+     "audio_id": "3ba7a28b-a66c-495d-b36a-22668227fd80"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0149L03U06",
+     "slot": "target2",
+     "audio_id": "bd00c8fe-32fd-4f1e-9eeb-5376488b61f7"
+    }
+   ]
+  },
+  {
+   "seed": 154,
+   "id": "S0154L01U06",
+   "lego": "S0154L01",
+   "known": "Where do you want to meet on Saturday night?",
+   "target": "إنت عايز نتقابل فين السبت بالليل؟",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0154L01U06",
+      "seed_number": 154,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Where do you want to meet on Saturday night?",
+      "target_text": "إنت عايز نتقابل فين السبت بالليل؟",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 154,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "inta 'aayiz nit'abil feen is-sabt bil-leel?"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0154L01U06",
+     "slot": "known",
+     "audio_id": "ee81ba2c-d47b-4f4b-8dd7-45b24735b530"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0154L01U06",
+     "slot": "target1",
+     "audio_id": "f9971ccb-ea74-4bc7-96c3-0c2c83d2cd86"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0154L01U06",
+     "slot": "target2",
+     "audio_id": "412224d9-57e8-4ffc-a3c4-9c0a70a25cc7"
+    }
+   ]
+  },
+  {
+   "seed": 155,
+   "id": "S0155L03U06",
+   "lego": "S0155L03",
+   "known": "I don't mind waiting for a few minutes tomorrow morning.",
+   "target": "ما عنديش مانع أستنى كم دقيقة بكرة الصبح.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0155L03U06",
+      "seed_number": 155,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "I don't mind waiting for a few minutes tomorrow morning.",
+      "target_text": "ما عنديش مانع أستنى كم دقيقة بكرة الصبح.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 155,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 10,
+      "lego_position": "middle",
+      "target_text_roman": "ma 'andiish mani' astanna kam da'ii'a bukra al-subh."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0155L03U06",
+     "slot": "known",
+     "audio_id": "ed5e3d11-2a8a-4097-9884-8ae2303ac549"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0155L03U06",
+     "slot": "target1",
+     "audio_id": "16499f02-a449-47d6-b0f8-4025ae78ef52"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0155L03U06",
+     "slot": "target2",
+     "audio_id": "385a3a9e-53e5-4c4e-b31f-8686a7631f19"
+    }
+   ]
+  },
+  {
+   "seed": 161,
+   "id": "S0161L03U06",
+   "lego": "S0161L03",
+   "known": "Can you give me that book on Sunday morning?",
+   "target": "ممكن تديني الكتاب ده الأحد الصبح؟",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0161L03U06",
+      "seed_number": 161,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Can you give me that book on Sunday morning?",
+      "target_text": "ممكن تديني الكتاب ده الأحد الصبح؟",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 161,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "mumkin tidiini il-kitaab da il-ahad il-subh?"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0161L03U06",
+     "slot": "known",
+     "audio_id": "b89a5d50-772d-467c-8a69-fed6efa42c60"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0161L03U06",
+     "slot": "target1",
+     "audio_id": "cfc5190b-5e82-4956-a839-150e77619fce"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0161L03U06",
+     "slot": "target2",
+     "audio_id": "6c0fa3ca-b45c-426d-81d5-76dd0589ccf3"
+    }
+   ]
+  },
+  {
+   "seed": 168,
+   "id": "S0168L01U06",
+   "lego": "S0168L01",
+   "known": "And then I'll be able to come and help later on.",
+   "target": "و بعدين حاقدر آجي و أساعد بعدين.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0168L01U06",
+      "seed_number": 168,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "And then I'll be able to come and help later on.",
+      "target_text": "و بعدين حاقدر آجي و أساعد بعدين.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 168,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 11,
+      "lego_position": "start",
+      "target_text_roman": "wi ba'deen ha'dar aagi wi asaa'id ba'deen."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0168L01U06",
+     "slot": "known",
+     "audio_id": "c2a4abeb-d9d7-462e-aeab-b8c7d088a423"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0168L01U06",
+     "slot": "target1",
+     "audio_id": "b25efffd-e5e3-4004-9dde-fd864c8fd405"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0168L01U06",
+     "slot": "target2",
+     "audio_id": "3a094aab-3a6f-40f6-9e1e-bbd59484a913"
+    }
+   ]
+  },
+  {
+   "seed": 173,
+   "id": "S0173L01U06",
+   "lego": "S0173L01",
+   "known": "No thank you I can manage on my own.",
+   "target": "لأ شكرًا أنا أقدر أتصرف لوحدي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0173L01U06",
+      "seed_number": 173,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "No thank you I can manage on my own.",
+      "target_text": "لأ شكرًا أنا أقدر أتصرف لوحدي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 173,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "la' shukran ana a'dar atasar-raf liwaHdi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0173L01U06",
+     "slot": "known",
+     "audio_id": "de13fc62-a42e-4617-9b07-c5d646d44c73"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0173L01U06",
+     "slot": "target1",
+     "audio_id": "bdcc9ae0-0a40-4f19-b7b4-2a1e3d99c545"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0173L01U06",
+     "slot": "target2",
+     "audio_id": "d4bee9fd-10d9-412c-87e1-a30f25c5165c"
+    }
+   ]
+  },
+  {
+   "seed": 176,
+   "id": "S0176L04U06",
+   "lego": "S0176L04",
+   "known": "I'll ask him if he'll be able to help next year.",
+   "target": "أنا حاسأله لو حيقدر يساعد السنة الجاية.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0176L04U06",
+      "seed_number": 176,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "I'll ask him if he'll be able to help next year.",
+      "target_text": "أنا حاسأله لو حيقدر يساعد السنة الجاية.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 176,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "ana ha-sa'lu law hi-yi'dar yisaa'id il-sana il-gaaya."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0176L04U06",
+     "slot": "known",
+     "audio_id": "8d6a5e06-5625-42e3-9424-cda9e7d2e2b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0176L04U06",
+     "slot": "target1",
+     "audio_id": "96749ca0-7547-45ad-b81b-130f1826609e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0176L04U06",
+     "slot": "target2",
+     "audio_id": "234da0a7-6ed9-4551-b397-72d94d5e6f51"
+    }
+   ]
+  },
+  {
+   "seed": 200,
+   "id": "S0200L03U07",
+   "lego": "S0200L03",
+   "known": "They say they want to make sure that we finish everything in time.",
+   "target": "هم بيقولوا إنهم عايزين يتأكدوا إننا حانخلص كل حاجة في الوقت.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0200L03U07",
+      "seed_number": 200,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "They say they want to make sure that we finish everything in time.",
+      "target_text": "هم بيقولوا إنهم عايزين يتأكدوا إننا حانخلص كل حاجة في الوقت.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 200,
+       "canon": "P26"
+      },
+      "word_count": 60,
+      "lego_count": 13,
+      "lego_position": "middle",
+      "target_text_roman": "hum bi'uulu innuhum 'ayziin yit'akkidu innina hanikhlas kull haaga fil-wa't."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0200L03U07",
+     "slot": "known",
+     "audio_id": "4739b4a6-27ec-4aa7-927c-b7bdc429bba8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0200L03U07",
+     "slot": "target1",
+     "audio_id": "934ae877-49c2-4962-8771-2c4fb18bb4b2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0200L03U07",
+     "slot": "target2",
+     "audio_id": "afc75693-63dd-4de9-9d71-58ecc40f9ff5"
+    }
+   ]
+  },
+  {
+   "seed": 211,
+   "id": "S0211L03U06",
+   "lego": "S0211L03",
+   "known": "They told us that they didn't want to explain.",
+   "target": "هم قالوا لنا إنهم ماكنوش عايزين يشرحوا.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0211L03U06",
+      "seed_number": 211,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "They told us that they didn't want to explain.",
+      "target_text": "هم قالوا لنا إنهم ماكنوش عايزين يشرحوا.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 211,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "hum 'aalu lina innuhum makaanuush 'ayziin yishraħu."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0211L03U06",
+     "slot": "known",
+     "audio_id": "0244fbc6-0188-4dfd-8c5b-2b5758664311"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0211L03U06",
+     "slot": "target1",
+     "audio_id": "b971a42e-c69f-422c-929a-52067eece4e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0211L03U06",
+     "slot": "target2",
+     "audio_id": "8f066479-3ef7-43cf-8278-745738f67ace"
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "id": "S0212L03U07",
+   "lego": "S0212L03",
+   "known": "They wanted to ask for help.",
+   "target": "هم كانوا عايزين يطلبوا مساعدة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0212L03U07",
+      "seed_number": 212,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "They wanted to ask for help.",
+      "target_text": "هم كانوا عايزين يطلبوا مساعدة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 212,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 6,
+      "lego_position": "start",
+      "target_text_roman": "hum kaanu 'ayziin yutlubu musa'da."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0212L03U07",
+     "slot": "known",
+     "audio_id": "99c8cddb-54c6-4b87-9208-377d18006aa9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0212L03U07",
+     "slot": "target1",
+     "audio_id": "f267498c-aeee-4423-bf0e-1e98dfcaaa90"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0212L03U07",
+     "slot": "target2",
+     "audio_id": "30841d05-28f2-439a-ac5c-6ac3fbb5b6de"
+    }
+   ]
+  },
+  {
+   "seed": 228,
+   "id": "S0228L01U07",
+   "lego": "S0228L01",
+   "known": "That man has just started to practise speaking.",
+   "target": "الراجل ده لسه بدأ يتدرب على الكلام.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0228L01U07",
+      "seed_number": 228,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "That man has just started to practise speaking.",
+      "target_text": "الراجل ده لسه بدأ يتدرب على الكلام.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 228,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 8,
+      "lego_position": "middle",
+      "target_text_roman": "al-raagil da lissa bada' yitdarrab 'ala al-kalaam."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0228L01U07",
+     "slot": "known",
+     "audio_id": "fb678bf5-44b3-491f-aa5d-9e8731ee05d3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0228L01U07",
+     "slot": "target1",
+     "audio_id": "f826046f-96c0-40c0-8a1d-6774aa85bb4a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0228L01U07",
+     "slot": "target2",
+     "audio_id": "8340e32e-a433-49e2-a549-37108fe303dc"
+    }
+   ]
+  },
+  {
+   "seed": 235,
+   "id": "S0235L03U06",
+   "lego": "S0235L03",
+   "known": "I met someone who said that he wanted to tell you something.",
+   "target": "اتقابلت مع حد قال إنه كان عايز يقول لك حاجة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0235L03U06",
+      "seed_number": 235,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "I met someone who said that he wanted to tell you something.",
+      "target_text": "اتقابلت مع حد قال إنه كان عايز يقول لك حاجة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 235,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 12,
+      "lego_position": "end",
+      "target_text_roman": "it'aabilit ma' hadd 'aal innu kaan 'aayiz yi'uul lak haaga."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0235L03U06",
+     "slot": "known",
+     "audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0235L03U06",
+     "slot": "target1",
+     "audio_id": "4d878cab-e00e-423a-afe9-4545ce345653"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0235L03U06",
+     "slot": "target2",
+     "audio_id": "ab635f38-2c40-49d2-9974-f38afddf5774"
+    }
+   ]
+  },
+  {
+   "seed": 236,
+   "id": "S0236L02U06",
+   "lego": "S0236L02",
+   "known": "I know someone who said that she was going to try to help.",
+   "target": "أنا أعرف حد قالت إنها كانت حاتحاول تساعد.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0236L02U06",
+      "seed_number": 236,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "I know someone who said that she was going to try to help.",
+      "target_text": "أنا أعرف حد قالت إنها كانت حاتحاول تساعد.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 236,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 13,
+      "lego_position": "middle",
+      "target_text_roman": "ana a'raf hadd aalit innaha kaanet hattihaawal tisa'id."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0236L02U06",
+     "slot": "known",
+     "audio_id": "5f7a5f15-b1b6-43f6-abe3-0fa757fcd8d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0236L02U06",
+     "slot": "target1",
+     "audio_id": "9b123243-98b4-4626-a0d5-f34119870f92"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0236L02U06",
+     "slot": "target2",
+     "audio_id": "82ce5b8e-f861-4cd7-8578-2872b3b55ede"
+    }
+   ]
+  },
+  {
+   "seed": 246,
+   "id": "S0246L02U06",
+   "lego": "S0246L02",
+   "known": "I wanted her to help you but she was too busy.",
+   "target": "كنت عايزها تساعدك بس هي كانت مشغولة قوي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0246L02U06",
+      "seed_number": 246,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "I wanted her to help you but she was too busy.",
+      "target_text": "كنت عايزها تساعدك بس هي كانت مشغولة قوي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 246,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 11,
+      "lego_position": "middle",
+      "target_text_roman": "kunt 'aayizha tisaa'dak bass hiyya kaanit mashghuula 'awi."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0246L02U06",
+     "slot": "known",
+     "audio_id": "fd4b0fbb-63c8-4e4c-becf-8e73efa6b99d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0246L02U06",
+     "slot": "target1",
+     "audio_id": "8cd9d6e7-6479-441b-ad0d-244352bc5ca2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0246L02U06",
+     "slot": "target2",
+     "audio_id": "4be7ae34-9507-4378-9d1a-e08a843c8f0d"
+    }
+   ]
+  },
+  {
+   "seed": 247,
+   "id": "S0247L02U06",
+   "lego": "S0247L02",
+   "known": "I thought that book was fairly good.",
+   "target": "فكرت إن الكتاب ده كان كويس نوعًا ما.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0247L02U06",
+      "seed_number": 247,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I thought that book was fairly good.",
+      "target_text": "فكرت إن الكتاب ده كان كويس نوعًا ما.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 247,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 7,
+      "lego_position": "middle",
+      "target_text_roman": "fikirt inn il-kitaab da kaan kuwayyis naw'an ma."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0247L02U06",
+     "slot": "known",
+     "audio_id": "61df9ede-ee39-4ce0-96f1-785bc07c31b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0247L02U06",
+     "slot": "target1",
+     "audio_id": "c7aa7fa4-39d5-4e26-aee7-529f8d8f79c5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0247L02U06",
+     "slot": "target2",
+     "audio_id": "e89ad855-8488-4750-80fe-217dfbaa5952"
+    }
+   ]
+  },
+  {
+   "seed": 248,
+   "id": "S0248L03U06",
+   "lego": "S0248L03",
+   "known": "I thought the film was complete rubbish and I want my money back.",
+   "target": "فكرت إن الفيلم كان زبالة كاملة و أنا عايز فلوسي ترجع.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0248L03U06",
+      "seed_number": 248,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "I thought the film was complete rubbish and I want my money back.",
+      "target_text": "فكرت إن الفيلم كان زبالة كاملة و أنا عايز فلوسي ترجع.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 248,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 13,
+      "lego_position": "end",
+      "target_text_roman": "fikirt inn il-film kaan zibaala kamla wi ana 'aayiz fluusi tirga'."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0248L03U06",
+     "slot": "known",
+     "audio_id": "870c3434-3583-4d9d-8d9a-93d16d8c7d1e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0248L03U06",
+     "slot": "target1",
+     "audio_id": "3874ddcd-4a1c-44a0-8aaf-fb2cb5a28fcd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0248L03U06",
+     "slot": "target2",
+     "audio_id": "9c578cc9-b4b8-4f04-9938-dea4c3a701cd"
+    }
+   ]
+  },
+  {
+   "seed": 256,
+   "id": "S0256L02U05",
+   "lego": "S0256L02",
+   "known": "I think I'll be ready in less than an hour.",
+   "target": "أنا بفكر إني حاكون جاهز في أقل من ساعة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0256L02U05",
+      "seed_number": 256,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "I think I'll be ready in less than an hour.",
+      "target_text": "أنا بفكر إني حاكون جاهز في أقل من ساعة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 256,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "ana bafakkar inni hakuun gaahiz fi a'all min saa'a."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0256L02U05",
+     "slot": "known",
+     "audio_id": "9413a076-e080-438c-8934-87c08e9ea159"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0256L02U05",
+     "slot": "target1",
+     "audio_id": "59db1477-cc65-4804-aca1-6f859f0f1dd3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0256L02U05",
+     "slot": "target2",
+     "audio_id": "4fe3149c-f6f5-494c-aae2-a227eb8fb613"
+    }
+   ]
+  },
+  {
+   "seed": 261,
+   "id": "S0261L02U05",
+   "lego": "S0261L02",
+   "known": "I think it might be something important.",
+   "target": "أنا بفكر إنها ممكن تكون حاجة مهمة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0261L02U05",
+      "seed_number": 261,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "I think it might be something important.",
+      "target_text": "أنا بفكر إنها ممكن تكون حاجة مهمة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 261,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 7,
+      "lego_position": "middle",
+      "target_text_roman": "ana bafakkar innaha mumkin tkuun haaga muhimma."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0261L02U05",
+     "slot": "known",
+     "audio_id": "19e8107b-8e30-413e-8b27-50de4f51bea9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0261L02U05",
+     "slot": "target1",
+     "audio_id": "dc2a66f6-b977-4003-8563-a37bb7083b35"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0261L02U05",
+     "slot": "target2",
+     "audio_id": "c75fa364-6238-44b2-966c-4afe253eac1e"
+    }
+   ]
+  },
+  {
+   "seed": 266,
+   "id": "S0266L02U06",
+   "lego": "S0266L02",
+   "known": "He was an old friend of my father.",
+   "target": "هو كان صاحب قديم لأبويا.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0266L02U06",
+      "seed_number": 266,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "He was an old friend of my father.",
+      "target_text": "هو كان صاحب قديم لأبويا.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 266,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 8,
+      "lego_position": "end",
+      "target_text_roman": "huwwa kaan saahib 'adiim li-abuuya."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0266L02U06",
+     "slot": "known",
+     "audio_id": "cf1d037b-a341-4958-a77e-45c7b666aa4b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0266L02U06",
+     "slot": "target1",
+     "audio_id": "af5694b2-ceba-4c61-bd7d-94a178a9a1cf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0266L02U06",
+     "slot": "target2",
+     "audio_id": "e156e47e-9074-40b1-a0cc-2b2e170c39e0"
+    }
+   ]
+  },
+  {
+   "seed": 269,
+   "id": "S0269L02U06",
+   "lego": "S0269L02",
+   "known": "Why don't you want to wait for your father?",
+   "target": "ليه إنت مش عايز تستنى أبوك؟",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0269L02U06",
+      "seed_number": 269,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "Why don't you want to wait for your father?",
+      "target_text": "ليه إنت مش عايز تستنى أبوك؟",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 269,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 9,
+      "lego_position": "end",
+      "target_text_roman": "leeh inta mish 'aayiz tistanna abuuk?"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0269L02U06",
+     "slot": "known",
+     "audio_id": "7f334618-442a-421e-ab31-b9adb0742a57"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0269L02U06",
+     "slot": "target1",
+     "audio_id": "86e923b5-64a2-4ad4-8898-4e16adf672d9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0269L02U06",
+     "slot": "target2",
+     "audio_id": "d3b920b7-465b-40d3-9e24-e6dd01c6cea6"
+    }
+   ]
+  },
+  {
+   "seed": 270,
+   "id": "S0270L01U06",
+   "lego": "S0270L01",
+   "known": "Because I'm worried that I'm going to be late.",
+   "target": "علشان أنا قلقان إني حاتأخر.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0270L01U06",
+      "seed_number": 270,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Because I'm worried that I'm going to be late.",
+      "target_text": "علشان أنا قلقان إني حاتأخر.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 270,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "'alshaan ana 'al'aan inni haat'akhkhar."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0270L01U06",
+     "slot": "known",
+     "audio_id": "67ec4c22-5bbc-421e-b0a7-258c28b7c23d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0270L01U06",
+     "slot": "target1",
+     "audio_id": "2e4936cb-1605-4b95-8655-606842ca25a5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0270L01U06",
+     "slot": "target2",
+     "audio_id": "08681290-13ba-4ccc-8bb3-2255ade66cb4"
+    }
+   ]
+  },
+  {
+   "seed": 277,
+   "id": "S0277L01U05",
+   "lego": "S0277L01",
+   "known": "Yes I've got an important meeting early next week.",
+   "target": "آه عندي اجتماع مهم بدري الأسبوع الجاي.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0277L01U05",
+      "seed_number": 277,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "Yes I've got an important meeting early next week.",
+      "target_text": "آه عندي اجتماع مهم بدري الأسبوع الجاي.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 277,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 9,
+      "lego_position": "start",
+      "target_text_roman": "aah 'andi igtimaa' muhimm badri al-usbuu' al-gaay."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0277L01U05",
+     "slot": "known",
+     "audio_id": "0d5c4a7e-3e9d-4ae5-9fe2-7a91c68cf5e6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0277L01U05",
+     "slot": "target1",
+     "audio_id": "39bea334-683e-41b0-95d6-752644395e05"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0277L01U05",
+     "slot": "target2",
+     "audio_id": "67a44827-424d-4c4e-b057-e3227282b5b1"
+    }
+   ]
+  },
+  {
+   "seed": 282,
+   "id": "S0282L01U06",
+   "lego": "S0282L01",
+   "known": "No that's not a problem.",
+   "target": "لأ مفيش مشكلة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0282L01U06",
+      "seed_number": 282,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "No that's not a problem.",
+      "target_text": "لأ مفيش مشكلة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 282,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 5,
+      "lego_position": "end",
+      "target_text_roman": "la' mafiish mushkila."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0282L01U06",
+     "slot": "known",
+     "audio_id": "a065e577-7d7d-4c75-9db4-7fec8211b4c8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0282L01U06",
+     "slot": "target1",
+     "audio_id": "bc1f7ad2-bd5a-4271-9091-92f6de8ce862"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0282L01U06",
+     "slot": "target2",
+     "audio_id": "ad6ddfa1-1977-408f-8b87-7b4bacaf1e0f"
+    }
+   ]
+  },
+  {
+   "seed": 288,
+   "id": "S0288L02U05",
+   "lego": "S0288L02",
+   "known": "Most people I know like watching television.",
+   "target": "أكتر الناس اللي أعرفهم بتحب تتفرج على التلفزيون.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0288L02U05",
+      "seed_number": 288,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "Most people I know like watching television.",
+      "target_text": "أكتر الناس اللي أعرفهم بتحب تتفرج على التلفزيون.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 288,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 7,
+      "lego_position": "end",
+      "target_text_roman": "aktar il-naas illi a'arfuhum bithibb titfarrag 'ala il-tilfiziyuun."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0288L02U05",
+     "slot": "known",
+     "audio_id": "4a7db0db-fd4c-4e0b-b6fe-587afd084ed7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0288L02U05",
+     "slot": "target1",
+     "audio_id": "393e69a1-8428-495d-a1b3-aec2dc88abff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0288L02U05",
+     "slot": "target2",
+     "audio_id": "847f8c3c-309f-4ce5-9873-b0890945ae34"
+    }
+   ]
+  },
+  {
+   "seed": 299,
+   "id": "S0299L02U06",
+   "lego": "S0299L02",
+   "known": "He wants to pay half.",
+   "target": "هو عايز يدفع النص.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0299L02U06",
+      "seed_number": 299,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "He wants to pay half.",
+      "target_text": "هو عايز يدفع النص.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 299,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 5,
+      "lego_position": "middle",
+      "target_text_roman": "huwwa 'aayiz yidfa' il-nuss."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0299L02U06",
+     "slot": "known",
+     "audio_id": "e24aa52f-55b3-4526-9fbf-8d57aeed41b7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0299L02U06",
+     "slot": "target1",
+     "audio_id": "72778336-7b1d-4349-aa7a-0f7cae1db827"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0299L02U06",
+     "slot": "target2",
+     "audio_id": "ec81dbcb-9a1c-4e18-aa58-6c98bb02104d"
+    }
+   ]
+  },
+  {
+   "seed": 309,
+   "id": "S0309L01U07",
+   "lego": "S0309L01",
+   "known": "No I've never seen her before.",
+   "target": "لأ أنا عمري ما شفتها قبل كده.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0309L01U07",
+      "seed_number": 309,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "No I've never seen her before.",
+      "target_text": "لأ أنا عمري ما شفتها قبل كده.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 309,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 6,
+      "lego_position": "middle",
+      "target_text_roman": "la' ana 'umri ma shuftaha 'abl kida."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0309L01U07",
+     "slot": "known",
+     "audio_id": "54c05b0b-1c7b-4f0a-b699-29fd56b7beb9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0309L01U07",
+     "slot": "target1",
+     "audio_id": "99df0529-03cd-4ee8-bb7a-5c420112fe93"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0309L01U07",
+     "slot": "target2",
+     "audio_id": "0d8a87eb-a4c2-4a71-a7ed-78b062ee4133"
+    }
+   ]
+  },
+  {
+   "seed": 311,
+   "id": "S0311L04U06",
+   "lego": "S0311L04",
+   "known": "He couldn't believe the three most important facts.",
+   "target": "هو ما قدرش يصدق التلات حقايق الأهم.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0311L04U06",
+      "seed_number": 311,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "He couldn't believe the three most important facts.",
+      "target_text": "هو ما قدرش يصدق التلات حقايق الأهم.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 311,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 8,
+      "lego_position": "end",
+      "target_text_roman": "huwwa ma 'idirsh yisadda' al-talat hawaayi' al-ahamm."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0311L04U06",
+     "slot": "known",
+     "audio_id": "49346152-6635-4daf-90c2-bb7e84a7aaac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0311L04U06",
+     "slot": "target1",
+     "audio_id": "71266ecf-9dcb-4a8c-8c77-40e2e5da0485"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0311L04U06",
+     "slot": "target2",
+     "audio_id": "7021e394-4c36-466a-9df3-4018091550b1"
+    }
+   ]
+  },
+  {
+   "seed": 319,
+   "id": "S0319L01U06",
+   "lego": "S0319L01",
+   "known": "She needs to move to a different country.",
+   "target": "هي محتاجة تنتقل لبلد تانية.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0319L01U06",
+      "seed_number": 319,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "She needs to move to a different country.",
+      "target_text": "هي محتاجة تنتقل لبلد تانية.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 319,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 8,
+      "lego_position": "start",
+      "target_text_roman": "hiya muhtaaga tintiqil li-balad taanya."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0319L01U06",
+     "slot": "known",
+     "audio_id": "cecde518-dad1-4112-9257-f626d652ae41"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0319L01U06",
+     "slot": "target1",
+     "audio_id": "c3b30f23-afd3-4c35-8300-b529bd0c8a86"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0319L01U06",
+     "slot": "target2",
+     "audio_id": "aeae54c9-3a32-46c4-8e3b-bb5076cf875d"
+    }
+   ]
+  },
+  {
+   "seed": 332,
+   "id": "S0332L03U07",
+   "lego": "S0332L03",
+   "known": "He can build a new life for his sister.",
+   "target": "هو يقدر يبني حياة جديدة لأخته.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0332L03U07",
+      "seed_number": 332,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "He can build a new life for his sister.",
+      "target_text": "هو يقدر يبني حياة جديدة لأخته.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 332,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 9,
+      "lego_position": "middle",
+      "target_text_roman": "huwwa yi'dar yibni hayaa gidiida li-ukhtu."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0332L03U07",
+     "slot": "known",
+     "audio_id": "89c9ddae-6b18-4e41-bc1f-36e201ac4f27"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0332L03U07",
+     "slot": "target1",
+     "audio_id": "688c1780-17b6-4ee6-80f2-fb8f28ac1fd2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0332L03U07",
+     "slot": "target2",
+     "audio_id": "a2f0aad6-2996-425a-95ce-29316c97ffc7"
+    }
+   ]
+  },
+  {
+   "seed": 334,
+   "id": "S0334L02U06",
+   "lego": "S0334L02",
+   "known": "He said that he can let you hold the kitten",
+   "target": "هو قال إنه يقدر يخليك تمسك القطة الصغيرة",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0334L02U06",
+      "seed_number": 334,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "He said that he can let you hold the kitten",
+      "target_text": "هو قال إنه يقدر يخليك تمسك القطة الصغيرة",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 334,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 10,
+      "lego_position": "middle",
+      "target_text_roman": "huwwa 'aal innu yi'dar yikhalliik timsik al-'utta al-sughayyara"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0334L02U06",
+     "slot": "known",
+     "audio_id": "209e48ec-0b17-46bd-aa98-e3b7fe3fa07c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0334L02U06",
+     "slot": "target1",
+     "audio_id": "10efe0c9-b51b-4b06-b345-c508dadd129e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0334L02U06",
+     "slot": "target2",
+     "audio_id": "6cb15ea1-ad0c-498f-8259-aaf9a4c8645e"
+    }
+   ]
+  },
+  {
+   "seed": 387,
+   "id": "S0387L02U08",
+   "lego": "S0387L02",
+   "known": "No I didn't think she was right.",
+   "target": "لأ ما فكرتش إنها كانت صح.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0387L02U08",
+      "seed_number": 387,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "No I didn't think she was right.",
+      "target_text": "لأ ما فكرتش إنها كانت صح.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 387,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 7,
+      "lego_position": "end",
+      "target_text_roman": "la' ma fakkartish innaha kaanat sahh."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0387L02U08",
+     "slot": "known",
+     "audio_id": "b299350e-b3a8-4941-8bab-96251585f497"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0387L02U08",
+     "slot": "target1",
+     "audio_id": "b7631214-ef5f-4508-af46-ad6b08376688"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0387L02U08",
+     "slot": "target2",
+     "audio_id": "6c04197b-d626-4998-b2c7-bad370b05836"
+    }
+   ]
+  },
+  {
+   "seed": 392,
+   "id": "S0392L04U06",
+   "lego": "S0392L04",
+   "known": "That child with the black hair opposite the post office.",
+   "target": "الطفل ده أبو شعر أسود قصاد البوسطة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0392L04U06",
+      "seed_number": 392,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "That child with the black hair opposite the post office.",
+      "target_text": "الطفل ده أبو شعر أسود قصاد البوسطة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 392,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 10,
+      "lego_position": "end",
+      "target_text_roman": "al-tifl da abu sha'r iswid 'usaad al-busta."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0392L04U06",
+     "slot": "known",
+     "audio_id": "28a04339-6100-4325-8019-106c761f11e1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0392L04U06",
+     "slot": "target1",
+     "audio_id": "ddb757c9-bf8b-4e78-8bf5-e5e4367e8793"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0392L04U06",
+     "slot": "target2",
+     "audio_id": "527429e4-0ffa-44a1-8abf-137c25ab6a05"
+    }
+   ]
+  },
+  {
+   "seed": 462,
+   "id": "S0462L04U06",
+   "lego": "S0462L04",
+   "known": "My grandfather fought in Italy during the war.",
+   "target": "جدي حارب في إيطاليا في الحرب.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0462L04U06",
+      "seed_number": 462,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "My grandfather fought in Italy during the war.",
+      "target_text": "جدي حارب في إيطاليا في الحرب.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 462,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 8,
+      "lego_position": "end",
+      "target_text_roman": "giddi haarib fi iitalya fil-harb."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0462L04U06",
+     "slot": "known",
+     "audio_id": "66a02cf3-470c-4700-855a-40995a34fde1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0462L04U06",
+     "slot": "target1",
+     "audio_id": "9a3a5391-159a-4a66-ba38-3bcc110f7f96"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0462L04U06",
+     "slot": "target2",
+     "audio_id": "23b34018-5591-4c6d-9789-97af9eef2c2a"
+    }
+   ]
+  },
+  {
+   "seed": 492,
+   "id": "S0492L03U06",
+   "lego": "S0492L03",
+   "known": "Which of those places do you think is the most interesting?",
+   "target": "أنهي مكان من الأماكن دي إنت بتفكر إنه الأكتر إثارة؟",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0492L03U06",
+      "seed_number": 492,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "Which of those places do you think is the most interesting?",
+      "target_text": "أنهي مكان من الأماكن دي إنت بتفكر إنه الأكتر إثارة؟",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 492,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "anhi makaan min al-amaakin di inta bitfakkar innu al-aktar isaara?"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0492L03U06",
+     "slot": "known",
+     "audio_id": "5dd46435-11dc-45ff-b899-87421ece71e3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0492L03U06",
+     "slot": "target1",
+     "audio_id": "b63fd6cd-f3dd-4a60-801c-4c648a680374"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0492L03U06",
+     "slot": "target2",
+     "audio_id": "deba9ad2-97a9-4639-8f10-f72c5e0c498f"
+    }
+   ]
+  },
+  {
+   "seed": 502,
+   "id": "S0502L03U06",
+   "lego": "S0502L03",
+   "known": "She almost got lost because she turned left instead of right.",
+   "target": "هي تقريبًا تاهت علشان خشت شمال بدل يمين.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0502L03U06",
+      "seed_number": 502,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "She almost got lost because she turned left instead of right.",
+      "target_text": "هي تقريبًا تاهت علشان خشت شمال بدل يمين.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 502,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 11,
+      "lego_position": "end",
+      "target_text_roman": "hiya ta'riiban taahit 'alshaan khashshit shimaal badal yimiin."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0502L03U06",
+     "slot": "known",
+     "audio_id": "07c4b883-a61d-4fd4-b4f7-04e23121db26"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0502L03U06",
+     "slot": "target1",
+     "audio_id": "0323d228-33d0-49ef-9024-1dbe53310c5e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0502L03U06",
+     "slot": "target2",
+     "audio_id": "9e8fa3f6-5f3c-4ce4-9573-bc4e71888419"
+    }
+   ]
+  },
+  {
+   "seed": 517,
+   "id": "S0517L01U06",
+   "lego": "S0517L01",
+   "known": "But they left with each other.",
+   "target": "بس مشيوا مع بعض.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0517L01U06",
+      "seed_number": 517,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "But they left with each other.",
+      "target_text": "بس مشيوا مع بعض.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 517,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 6,
+      "lego_position": "middle",
+      "target_text_roman": "bas mishyu ma' ba'd."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0517L01U06",
+     "slot": "known",
+     "audio_id": "e2877f6a-7a09-4a0d-8dbd-32b19d27f08e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0517L01U06",
+     "slot": "target1",
+     "audio_id": "24018f12-f44a-4741-8cc3-03a40221da5b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0517L01U06",
+     "slot": "target2",
+     "audio_id": "49703471-df3a-4503-a0e6-7376c881a57c"
+    }
+   ]
+  },
+  {
+   "seed": 532,
+   "id": "S0532L01U06",
+   "lego": "S0532L01",
+   "known": "Unless they're lucky.",
+   "target": "إلا لو كان عندهم حظ.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0532L01U06",
+      "seed_number": 532,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Unless they're lucky.",
+      "target_text": "إلا لو كان عندهم حظ.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 532,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 3,
+      "lego_position": "start",
+      "target_text_roman": "illa law kaan 'anduhum hazz."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0532L01U06",
+     "slot": "known",
+     "audio_id": "452d3c3f-c423-4f8f-994e-3ae344842f31"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0532L01U06",
+     "slot": "target1",
+     "audio_id": "5e5a30eb-d314-4975-b91e-e7408012ed59"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0532L01U06",
+     "slot": "target2",
+     "audio_id": "d8d96953-2a2d-4509-a189-784abc043745"
+    }
+   ]
+  },
+  {
+   "seed": 549,
+   "id": "S0549L01U06",
+   "lego": "S0549L01",
+   "known": "Because I have got to be quiet.",
+   "target": "علشان لازم أسكت.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0549L01U06",
+      "seed_number": 549,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "Because I have got to be quiet.",
+      "target_text": "علشان لازم أسكت.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 549,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 7,
+      "lego_position": "end",
+      "target_text_roman": "'alshaan laazim askut."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0549L01U06",
+     "slot": "known",
+     "audio_id": "a95c87dc-7a11-48a6-a42e-974924079f60"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0549L01U06",
+     "slot": "target1",
+     "audio_id": "42978aff-79f2-4472-b42a-72b07b4c430d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0549L01U06",
+     "slot": "target2",
+     "audio_id": "7a8dbd92-7e4c-4ae3-a295-b3a9d9002432"
+    }
+   ]
+  },
+  {
+   "seed": 605,
+   "id": "S0605L01U08",
+   "lego": "S0605L01",
+   "known": "Because we needed help.",
+   "target": "علشان كنا محتاجين مساعدة.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0605L01U08",
+      "seed_number": 605,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "Because we needed help.",
+      "target_text": "علشان كنا محتاجين مساعدة.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 605,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 4,
+      "lego_position": "middle",
+      "target_text_roman": "'alshaan kunna muhtagiin musaa'da."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0605L01U08",
+     "slot": "known",
+     "audio_id": "6655050f-75e6-4a96-81ae-5966ab5c4d13"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0605L01U08",
+     "slot": "target1",
+     "audio_id": "a5b5fdf2-fbef-4b51-9593-b08704d0baee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0605L01U08",
+     "slot": "target2",
+     "audio_id": "6ba68ee8-d07f-42bf-9206-989b446d44d0"
+    }
+   ]
+  },
+  {
+   "seed": 634,
+   "id": "S0634L01U11",
+   "lego": "S0634L01",
+   "known": "I'd like one of those.",
+   "target": "أنا حابب واحدة من دول.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0634L01U11",
+      "seed_number": 634,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "I'd like one of those.",
+      "target_text": "أنا حابب واحدة من دول.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 634,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 5,
+      "lego_position": "end",
+      "target_text_roman": "ana haabib waahda min dool."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0634L01U11",
+     "slot": "known",
+     "audio_id": "8e74e56f-12a7-4f31-81bc-72b1068f6f6b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0634L01U11",
+     "slot": "target1",
+     "audio_id": "2e226537-cd89-4da1-8fdb-7e6466f134ab"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0634L01U11",
+     "slot": "target2",
+     "audio_id": "50e99d8e-8943-4d34-b585-612a0bbcc3f5"
+    }
+   ]
+  },
+  {
+   "seed": 638,
+   "id": "S0638L01U10",
+   "lego": "S0638L01",
+   "known": "I'm trying to think.",
+   "target": "أنا بحاول أفكر.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0638L01U10",
+      "seed_number": 638,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "I'm trying to think.",
+      "target_text": "أنا بحاول أفكر.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 638,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 4,
+      "lego_position": "middle",
+      "target_text_roman": "ana bahaawil afakkar."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0638L01U10",
+     "slot": "known",
+     "audio_id": "168996b4-6583-495e-84a6-35e26b55a4f4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0638L01U10",
+     "slot": "target1",
+     "audio_id": "a89e4626-7020-4cb6-b107-261deeb700f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0638L01U10",
+     "slot": "target2",
+     "audio_id": "ceacce75-acf4-47e6-a625-18b5937b2645"
+    }
+   ]
+  },
+  {
+   "seed": 640,
+   "id": "S0640L01U12",
+   "lego": "S0640L01",
+   "known": "It's the red one.",
+   "target": "ده الأحمر.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "ara_eg_for_eng:S0640L01U12",
+      "seed_number": 640,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "It's the red one.",
+      "target_text": "ده الأحمر.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 640,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 4,
+      "lego_position": "middle",
+      "target_text_roman": "da al-ahmar."
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0640L01U12",
+     "slot": "known",
+     "audio_id": "c1a9094d-84b2-42c2-9214-e2b3ea461d9d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0640L01U12",
+     "slot": "target1",
+     "audio_id": "3a354c49-27c3-47fa-a444-454685734e38"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "ara_eg_for_eng:S0640L01U12",
+     "slot": "target2",
+     "audio_id": "00b834e9-d843-48bd-8d6a-1e137e1472f3"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_zut": [
+   {
+    "seed": 27,
+    "known": "I don't like taking too much time to answer.",
+    "target": "أنا مش بحب آخد وقت كتير أرد.",
+    "row": "S0027L04U01",
+    "row_known": "I don't like taking too much time to answer",
+    "row_target": "أنا مش بحب آخد وقت كتير عشان أرد"
+   },
+   {
+    "seed": 53,
+    "known": "She wanted to put his letter in her bag.",
+    "target": "هي كانت عايزة تحط جوابه في شنطتها.",
+    "row": "S0053L04U01",
+    "row_known": "she wanted to put his letter in her bag",
+    "row_target": "كانت عايزة تحط جوابه في شنطتها"
+   },
+   {
+    "seed": 60,
+    "known": "I don't know how to say enough different words yet.",
+    "target": "أنا مش عارف إزاي أقول كلمات مختلفة كفاية لسه.",
+    "row": "S0060L02U01",
+    "row_known": "I don't know how to say enough different words yet",
+    "row_target": "أنا لسه مش عارف إزاي أقول كفاية كلمات مختلفة"
+   },
+   {
+    "seed": 81,
+    "known": "When do you want to start?",
+    "target": "إنت إمتى عايز تبدأ؟",
+    "row": "S0081L01U05",
+    "row_known": "when do you want to start?",
+    "row_target": "إمتى عايز تبدأ؟"
+   },
+   {
+    "seed": 89,
+    "known": "I think that I've done a lot in a short time.",
+    "target": "أنا بفكر إني عملت كتير في وقت قصير.",
+    "row": "S0089L02U01",
+    "row_known": "I think that I've done a lot in a short time",
+    "row_target": "أنا أفتكر إني عملت كتير في وقت قصير"
+   },
+   {
+    "seed": 93,
+    "known": "It's time to go now.",
+    "target": "الوقت إن نمشي دلوقتي.",
+    "row": "S0093L01U01",
+    "row_known": "it's time to go now",
+    "row_target": "بقى وقت نمشي دلوقتي"
+   },
+   {
+    "seed": 101,
+    "known": "I'm enjoying finding out more about this language.",
+    "target": "أنا بستمتع إني أعرف أكتر على اللغة دي.",
+    "row": "S0101L01U05",
+    "row_known": "I'm enjoying finding out more about this language",
+    "row_target": "أنا بستمتع إني بعرف أكتر عن اللغة دي"
+   },
+   {
+    "seed": 103,
+    "known": "We're not trying to hear many more words.",
+    "target": "إحنا مش بنحاول نسمع كلمات أكتر كتير.",
+    "row": "S0103L01U01",
+    "row_known": "we're not trying to hear many more words",
+    "row_target": "إحنا مش بنحاول نسمع كلمات تانية كتير"
+   },
+   {
+    "seed": 105,
+    "known": "That is why he didn't know the answer.",
+    "target": "ده السبب ليه ماكانش عارف الإجابة.",
+    "row": "S0105L01U05",
+    "row_known": "that is why he didn't know the answer",
+    "row_target": "علشان كده ماكانش عارف الإجابة"
+   },
+   {
+    "seed": 118,
+    "known": "I feel better than I felt when we were in the pub.",
+    "target": "أنا حاسس أحسن من اللي حسيت بيه لما كنا في البار.",
+    "row": "S0118L03U01",
+    "row_known": "I feel better than I felt when we were in the pub",
+    "row_target": "أنا حاسس أحسن من لما كنا في البار"
+   },
+   {
+    "seed": 124,
+    "known": "I thought that was a good idea.",
+    "target": "أنا فكرت إن دي فكرة كويسة.",
+    "row": "S0123L01U03",
+    "row_known": "I thought that was a good idea",
+    "row_target": "أنا كنت بفكر إن دي فكرة كويسة"
+   },
+   {
+    "seed": 156,
+    "known": "Do you want to go to a restaurant tonight?",
+    "target": "إنت عايز تروح مطعم الليلة؟",
+    "row": "S0156L02U03",
+    "row_known": "do you want to go to a restaurant tonight",
+    "row_target": "عايز تروح مطعم الليلة"
+   },
+   {
+    "seed": 167,
+    "known": "What do you need to do tomorrow afternoon?",
+    "target": "إنت محتاج تعمل إيه بكرة بعد الضهر؟",
+    "row": "S0167L03U03",
+    "row_known": "what do you need to do tomorrow afternoon",
+    "row_target": "محتاج تعمل إيه بكرة بعد الضهر"
+   },
+   {
+    "seed": 242,
+    "known": "I want to give her more time.",
+    "target": "أنا عايز أديها وقت أكتر.",
+    "row": "S0242L02U04",
+    "row_known": "I want to give her more time",
+    "row_target": "عايز أدي لها وقت أكتر"
+   },
+   {
+    "seed": 243,
+    "known": "I'm going to ask for the same thing to eat.",
+    "target": "أنا حاطلب نفس الحاجة آكلها.",
+    "row": "S0243L03U05",
+    "row_known": "I'm going to ask for the same thing to eat",
+    "row_target": "حاطلب نفس الحاجة آكلها"
+   },
+   {
+    "seed": 245,
+    "known": "I'm happy with how much I've done in a short time",
+    "target": "أنا مبسوط من قد إيه اللي عملته في وقت قصير",
+    "row": "S0245L04U05",
+    "row_known": "I'm happy with how much I've done in a short time",
+    "row_target": "أنا مبسوط بقد إيه اتعملت في وقت قصير"
+   },
+   {
+    "seed": 250,
+    "known": "Can you tell me something else before I answer?",
+    "target": "ممكن تقول لي حاجة تانية قبل ما أرد؟",
+    "row": "S0250L02U05",
+    "row_known": "can you tell me something else before I answer",
+    "row_target": "تقدر تقول لي حاجة تانية قبل ما أجاوب"
+   },
+   {
+    "seed": 255,
+    "known": "When do you think you'll be ready to leave?",
+    "target": "إنت بتفكر إمتى حاتكون جاهز تمشي؟",
+    "row": "S0255L02U02",
+    "row_known": "when do you think you'll be ready to leave?",
+    "row_target": "إمتى بتفتكر حاتكون جاهز تمشي؟"
+   },
+   {
+    "seed": 257,
+    "known": "I like that blue thing.",
+    "target": "أنا بحب الحاجة الزرقا دي.",
+    "row": "S0257L02U01",
+    "row_known": "I like that blue thing",
+    "row_target": "بحب الحاجة الزرقا دي"
+   },
+   {
+    "seed": 258,
+    "known": "What's that blue thing over there?",
+    "target": "إيه الحاجة الزرقا دي اللي هناك؟",
+    "row": "S0258L02U01",
+    "row_known": "what's that blue thing over there?",
+    "row_target": "إيه الحاجة الزرقا دي هناك؟"
+   },
+   {
+    "seed": 263,
+    "known": "I don't know who you mean.",
+    "target": "أنا مش عارف مين اللي قصدك.",
+    "row": "S0263L02U01",
+    "row_known": "I don't know who you mean",
+    "row_target": "مش عارف مين قصدك"
+   },
+   {
+    "seed": 274,
+    "known": "Do you have to leave in a few days?",
+    "target": "إنت لازم تمشي في كم يوم؟",
+    "row": "S0274L02U01",
+    "row_known": "do you have to leave in a few days?",
+    "row_target": "لازم تسيب في كام يوم؟"
+   },
+   {
+    "seed": 276,
+    "known": "No I can stay here for a little longer.",
+    "target": "لأ أقدر أفضل هنا أطول شوية.",
+    "row": "S0276L02U01",
+    "row_known": "no I can stay here for a little longer",
+    "row_target": "لأ أنا أقدر أفضل هنا شوية أطول"
+   },
+   {
+    "seed": 278,
+    "known": "Did you have to finish everything last night?",
+    "target": "كنت لازم تخلص كل حاجة إمبارح بالليل؟",
+    "row": "S0278L02U01",
+    "row_known": "did you have to finish everything last night?",
+    "row_target": "كان لازم تخلص كل حاجة إمبارح بالليل؟"
+   },
+   {
+    "seed": 286,
+    "known": "People who like speaking Arabic.",
+    "target": "ناس بتحب تتكلم عربي.",
+    "row": "S0286L02U01",
+    "row_known": "people who like speaking Arabic",
+    "row_target": "ناس بيحبوا يتكلموا عربي"
+   },
+   {
+    "seed": 294,
+    "known": "I don't have enough time to call you tonight.",
+    "target": "ما عنديش وقت كفاية أتصل بيك الليلة.",
+    "row": "S0294L04U03",
+    "row_known": "I don't have enough time to call you tonight",
+    "row_target": "معيش وقت كافي أتصل بيك الليلة دي"
+   },
+   {
+    "seed": 295,
+    "known": "I didn't say that I wanted to finish in a day.",
+    "target": "ما قلتش إني عايز أخلص في يوم.",
+    "row": "S0295L02U01",
+    "row_known": "I didn't say that I wanted to finish in a day",
+    "row_target": "أنا ما قلتش إني عايز أخلص في يوم"
+   },
+   {
+    "seed": 297,
+    "known": "I don't know many people who speak Arabic.",
+    "target": "أنا مش أعرف ناس كتير بيتكلموا عربي.",
+    "row": "S0297L01U01",
+    "row_known": "I don't know many people who speak Arabic",
+    "row_target": "أنا مش عارف ناس كتير بيتكلموا عربي"
+   },
+   {
+    "seed": 439,
+    "known": "They don't want to die.",
+    "target": "هم مش عايزين يموتوا.",
+    "row": "S0439L01B02",
+    "row_known": "they don't want to die",
+    "row_target": "مش عايزين يموتوا"
+   },
+   {
+    "seed": 507,
+    "known": "We moved to the city.",
+    "target": "إحنا انتقلنا للمدينة.",
+    "row": "S0507L02B02",
+    "row_known": "we moved to the city",
+    "row_target": "انتقلنا للمدينة"
+   },
+   {
+    "seed": 543,
+    "known": "She was right.",
+    "target": "هي كانت صح.",
+    "row": "S0387L02B02",
+    "row_known": "she was right",
+    "row_target": "كانت صح"
+   },
+   {
+    "seed": 631,
+    "known": "What would you like?",
+    "target": "إنت عايز إيه؟",
+    "row": "S0631L01B01",
+    "row_known": "what would you like",
+    "row_target": "عايز إيه"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 82,
+    "known": "I'm not going to wait for you. Why not?",
+    "target": "أنا مش حاستناك. ليه لأ؟",
+    "legos": [
+     "S0082L01 I'll wait for you | حاستناك",
+     "S0082L02 no | لأ"
+    ]
+   },
+   {
+    "seed": 86,
+    "known": "It wasn't possible, unfortunately.",
+    "target": "ماكانش ممكن، للأسف.",
+    "legos": [
+     "S0086L01 sadly | للأسف"
+    ]
+   },
+   {
+    "seed": 129,
+    "known": "I'm so happy that you're doing so well.",
+    "target": "أنا مبسوط جدًا إنك بتعمل كويس قوي.",
+    "legos": [
+     "S0129L01 you do | بتعمل",
+     "S0129L02(old) very | قوي"
+    ]
+   },
+   {
+    "seed": 135,
+    "known": "I don't know why you think that it's so good.",
+    "target": "أنا مش عارف ليه بتفكر إنه كويس قوي.",
+    "legos": [
+     "S0135L01(old) why | ليه",
+     "S0135L02 you reckon | بتفكر",
+     "S0135L03(old) that it | إنه"
+    ]
+   },
+   {
+    "seed": 144,
+    "known": "I woke earlier than I wanted to this morning.",
+    "target": "أنا صحيت بدري من اللي كنت عايز الصبح.",
+    "legos": [
+     "S0144L01 I woke up | صحيت",
+     "S0144L02(old) morning | الصبح"
+    ]
+   },
+   {
+    "seed": 145,
+    "known": "Why are you not happy any more?",
+    "target": "ليه إنت مش مبسوط خلاص؟",
+    "legos": [
+     "S0145L01 done | خلاص"
+    ]
+   },
+   {
+    "seed": 160,
+    "known": "How do you say this word in Arabic?",
+    "target": "إزاي بتقول الكلمة دي بالعربي؟",
+    "legos": [
+     "S0160L01 saying | بتقول",
+     "S0160L02 the word | الكلمة",
+     "S0160L03(old) in Arabic | بالعربي"
+    ]
+   },
+   {
+    "seed": 170,
+    "known": "I'd like you to tell me what you need.",
+    "target": "أنا حابب تقول لي اللي محتاجه.",
+    "legos": [
+     "S0170L01 need it | محتاجه"
+    ]
+   },
+   {
+    "seed": 207,
+    "known": "You've done what you needed to do.",
+    "target": "إنت عملت اللي كنت محتاج تعمله.",
+    "legos": [
+     "S0207L01(old) do it | تعمله"
+    ]
+   },
+   {
+    "seed": 237,
+    "known": "He wanted me to tell you before the weekend.",
+    "target": "هو كان عايزني أقول لك قبل الويك إند.",
+    "legos": [
+     "S0237L01(old) the weekend | الويك إند"
+    ]
+   },
+   {
+    "seed": 251,
+    "known": "I don't want to find out until after we finish.",
+    "target": "أنا مش عايز أعرف لحد ما نخلص.",
+    "legos": [
+     "S0251L01 until after | لحد بعد ما",
+     "S0251L02(old) we finish | نخلص"
+    ]
+   },
+   {
+    "seed": 253,
+    "known": "I should be ready in a few minutes.",
+    "target": "المفروض أكون جاهز في كم دقيقة.",
+    "legos": [
+     "S0253L01 minutes | دقايق",
+     "S0253L02 I should be | المفروض أبقى"
+    ]
+   },
+   {
+    "seed": 259,
+    "known": "An idea.",
+    "target": "فكرة.",
+    "legos": [
+     "S0259L01(old) idea | فكرة"
+    ]
+   },
+   {
+    "seed": 273,
+    "known": "No unfortunately I've got too much work.",
+    "target": "لأ للأسف عندي شغل كتير قوي.",
+    "legos": [
+     "S0273L01 a shame | لسف",
+     "S0273L02 too much work | شغل كتير أوي"
+    ]
+   },
+   {
+    "seed": 287,
+    "known": "How many people do you know who like watching television?",
+    "target": "كام واحد إنت تعرف بيحب يتفرج على التلفزيون؟",
+    "legos": [
+     "S0287L01 person | واحد",
+     "S0287L02 watches | يتفرج",
+     "S0287L03 the television | التلفزيون"
+    ]
+   },
+   {
+    "seed": 308,
+    "known": "Yes she's a friend of my mother.",
+    "target": "آه هي صاحبة لأمي.",
+    "legos": [
+     "S0308L01 my mom's | لأمي"
+    ]
+   },
+   {
+    "seed": 314,
+    "known": "I think that she could put it on the table.",
+    "target": "أنا بفكر إنها تقدر تحطها على الترابيزة.",
+    "legos": [
+     "S0314L01 she puts it | تحطها"
+    ]
+   },
+   {
+    "seed": 330,
+    "known": "No I don't think it's very important.",
+    "target": "لأ أنا مش بفكر إنه مهم قوي.",
+    "legos": [
+     "S0330L01 really important | مهم قوي"
+    ]
+   },
+   {
+    "seed": 340,
+    "known": "Yes I'm sure he's going to be okay.",
+    "target": "آه أنا متأكد إنه حيكون كويس.",
+    "legos": [
+     "S0340L01 he'll be | حيكون"
+    ]
+   },
+   {
+    "seed": 453,
+    "known": "Did they say who they saw last night?",
+    "target": "هم قالوا مين اللي شافوه إمبارح بالليل؟",
+    "legos": [
+     "S0453L01 they saw him | شافوه"
+    ]
+   },
+   {
+    "seed": 479,
+    "known": "It's the least I could do.",
+    "target": "ده أقل حاجة أقدر أعملها.",
+    "legos": [
+     "S0479L01 I do it | أعملها"
+    ]
+   },
+   {
+    "seed": 483,
+    "known": "Life isn't easy but it's not meant to be easy.",
+    "target": "الحياة مش سهلة بس مش المفروض تكون سهلة.",
+    "legos": [
+     "S0483L01 this life | الحياة",
+     "S0483L02 simple | سهلة"
+    ]
+   },
+   {
+    "seed": 490,
+    "known": "Then I will never trust anyone ever again.",
+    "target": "ساعتها أنا عمري ما حاثق في حد تاني.",
+    "legos": [
+     "S0490L01 at that point | ساعتها",
+     "S0490L02 i'll trust | حاثق"
+    ]
+   },
+   {
+    "seed": 491,
+    "known": "I love the way you try to help.",
+    "target": "أنا بحب الطريقة اللي بتحاول تساعد بيها.",
+    "legos": [
+     "S0491L01 that way | بيها"
+    ]
+   },
+   {
+    "seed": 496,
+    "known": "I'm not planning to lose when it really matters.",
+    "target": "أنا مش بخطط إني أخسر لما بيكون مهم فعلًا.",
+    "legos": [
+     "S0496L01 I plan | بخطط",
+     "S0496L02 I lose | أخسر",
+     "S0496L03 actually | فعلًا"
+    ]
+   },
+   {
+    "seed": 540,
+    "known": "I don't mind if you want to leave without the car.",
+    "target": "ما عنديش مانع لو إنت عايز تمشي من غير العربية.",
+    "legos": [
+     "S0540L01 minus | من غير"
+    ]
+   },
+   {
+    "seed": 542,
+    "known": "Whenever you feel angry.",
+    "target": "كل ما تحس إنك زعلان.",
+    "legos": [
+     "S0542L01 sense | تحس"
+    ]
+   }
+  ],
+  "covered": [
+   {
+    "seed": 218,
+    "known": "I didn't do much on Sunday.",
+    "target": "ما عملتش حاجة كتير الأحد."
+   },
+   {
+    "seed": 289,
+    "known": "I wonder if she's going to be there this afternoon.",
+    "target": "أنا متسائل لو هي حاتكون هناك بعد الضهر."
+   },
+   {
+    "seed": 293,
+    "known": "I have to find out where he's going to meet me.",
+    "target": "أنا لازم أعرف فين حيتقابل معايا."
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 321,
+    "known": "A book.",
+    "target": "كتاب.",
+    "row": "S0164L01B01",
+    "row_known": "book",
+    "row_target": "كتاب"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 76,
+  "variant_zut": 32,
+  "no_home": 27,
+  "covered": 3,
+  "variant_form": 1
+ }
+}

@@ -1,0 +1,4032 @@
+{
+ "course": "deu_at_for_eng",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:01.610Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 3,
+   "id": "S0003L02U03",
+   "lego": "S0003L02",
+   "known": "how to speak as often as possible",
+   "target": "wia ma so oft wia möglich redt",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0003L02U03",
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 7,
+      "known_text": "how to speak as often as possible",
+      "target_text": "wia ma so oft wia möglich redt",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 3,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0003L02U03",
+     "slot": "known",
+     "audio_id": "8852dd75-9fbb-4157-be18-8cc40f3b51c6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0003L02U03",
+     "slot": "target1",
+     "audio_id": "9e4670ab-d1bc-4820-a63e-7e14e496a683"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0003L02U03",
+     "slot": "target2",
+     "audio_id": "b0d69759-cae0-45a9-b115-f67ff0fe51cb"
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "id": "S0004L04U06",
+   "lego": "S0004L04",
+   "known": "how to say something in German",
+   "target": "wia ma wos auf Deitsch sogt",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0004L04U06",
+      "seed_number": 4,
+      "lego_index": 4,
+      "position": 13,
+      "known_text": "how to say something in German",
+      "target_text": "wia ma wos auf Deitsch sogt",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 4,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0004L04U06",
+     "slot": "known",
+     "audio_id": "96c4a3dc-f857-4da7-b9a2-50901e43c70a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0004L04U06",
+     "slot": "target1",
+     "audio_id": "c6cede7a-52dc-4a74-9f7b-74b0d50d6315"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0004L04U06",
+     "slot": "target2",
+     "audio_id": "76a4e705-a523-4d04-9370-506a8a61bbf5"
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "id": "S0007L05U06",
+   "lego": "S0007L05",
+   "known": "I want to try as hard as I can today",
+   "target": "i wü's heit so fest versuchen, wia i kann",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0007L05U06",
+      "seed_number": 7,
+      "lego_index": 5,
+      "position": 13,
+      "known_text": "I want to try as hard as I can today",
+      "target_text": "i wü's heit so fest versuchen, wia i kann",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 7,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0007L05U06",
+     "slot": "known",
+     "audio_id": "21a0add9-3cca-4f11-a778-c2760843dd77"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0007L05U06",
+     "slot": "target1",
+     "audio_id": "1d4658e2-779b-48b7-ad98-ea91cddc5ede"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0007L05U06",
+     "slot": "target2",
+     "audio_id": "be4d6955-fa26-428a-a6b7-1199041b44b0"
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "id": "S0008L02U06",
+   "lego": "S0008L02",
+   "known": "I'm going to try to explain what I mean",
+   "target": "i wer versuchen zum erklärn, wos i moan",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0008L02U06",
+      "seed_number": 8,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "I'm going to try to explain what I mean",
+      "target_text": "i wer versuchen zum erklärn, wos i moan",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 8,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0008L02U06",
+     "slot": "known",
+     "audio_id": "19810ad6-f071-4f64-b3a7-f0db59b793ef"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0008L02U06",
+     "slot": "target1",
+     "audio_id": "73aca286-7c4c-4b5b-a890-1dedd661f2a1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0008L02U06",
+     "slot": "target2",
+     "audio_id": "c00b3424-ab5d-47d9-b687-9283c490ab7a"
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "id": "S0009L02U06",
+   "lego": "S0009L02",
+   "known": "I speak a little German now",
+   "target": "i red iatz a bissl Deitsch",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0009L02U06",
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I speak a little German now",
+      "target_text": "i red iatz a bissl Deitsch",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 9,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0009L02U06",
+     "slot": "known",
+     "audio_id": "c087180f-877e-4019-9a07-5a47c1e73e60"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0009L02U06",
+     "slot": "target1",
+     "audio_id": "d8efef03-043d-4dcf-8d04-d4bdbbed765d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0009L02U06",
+     "slot": "target2",
+     "audio_id": "d95c60a1-ce74-4fc6-8d30-ae3ffc856daa"
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "id": "S0010L05U06",
+   "lego": "S0010L05",
+   "known": "I'm not sure if I can remember the whole sentence",
+   "target": "i bin ma ned sicher, ob i ma den gaunzn Sotz merken kann",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0010L05U06",
+      "seed_number": 10,
+      "lego_index": 5,
+      "position": 13,
+      "known_text": "I'm not sure if I can remember the whole sentence",
+      "target_text": "i bin ma ned sicher, ob i ma den gaunzn Sotz merken kann",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 10,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0010L05U06",
+     "slot": "known",
+     "audio_id": "a7bc4974-9987-4a81-9d5e-9eda7555fbb4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0010L05U06",
+     "slot": "target1",
+     "audio_id": "42253551-24dc-4658-8146-b7557c831fc1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0010L05U06",
+     "slot": "target2",
+     "audio_id": "73db73c4-f462-470f-8500-fff4074f3beb"
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "id": "S0011L03U06",
+   "lego": "S0011L03",
+   "known": "I'd like to be able to speak after you finish",
+   "target": "i mechat reden können, wennst fertig bist",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0011L03U06",
+      "seed_number": 11,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "I'd like to be able to speak after you finish",
+      "target_text": "i mechat reden können, wennst fertig bist",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 11,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0011L03U06",
+     "slot": "known",
+     "audio_id": "ed2c543f-b333-4df2-86b2-60aed7f112fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0011L03U06",
+     "slot": "target1",
+     "audio_id": "0ad52d75-d875-4d8d-933f-c5487440e8fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0011L03U06",
+     "slot": "target2",
+     "audio_id": "6d92528f-6076-46e7-a594-600fe57bfbbc"
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "id": "S0012L03U06",
+   "lego": "S0012L03",
+   "known": "I wouldn't like to guess what's going to happen tomorrow",
+   "target": "i mechat ned rotn, wos morgn passiert",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0012L03U06",
+      "seed_number": 12,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "I wouldn't like to guess what's going to happen tomorrow",
+      "target_text": "i mechat ned rotn, wos morgn passiert",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 12,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 10,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0012L03U06",
+     "slot": "known",
+     "audio_id": "63e51091-abed-4157-a453-98434685a236"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0012L03U06",
+     "slot": "target1",
+     "audio_id": "735c8cad-fad9-4ba5-9ee5-17990ae5c3a3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0012L03U06",
+     "slot": "target2",
+     "audio_id": "dec789dc-5508-49da-8e3d-9193681316d1"
+    }
+   ]
+  },
+  {
+   "seed": 14,
+   "id": "S0014L02U06",
+   "lego": "S0014L02",
+   "known": "do you speak German all day?",
+   "target": "redst du den gaunzn Tog Deitsch?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0014L02U06",
+      "seed_number": 14,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "do you speak German all day?",
+      "target_text": "redst du den gaunzn Tog Deitsch?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 14,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0014L02U06",
+     "slot": "known",
+     "audio_id": "c613c18f-ba15-4927-bd01-2a16fa86135c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0014L02U06",
+     "slot": "target1",
+     "audio_id": "146753ee-c362-4dc8-b015-768ab35cf62d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0014L02U06",
+     "slot": "target2",
+     "audio_id": "616ff3d9-6736-439a-a169-2a4126260545"
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "id": "S0015L03U06",
+   "lego": "S0015L03",
+   "known": "and I want you to speak German with me tomorrow",
+   "target": "und i wü, dass'd morgn mit mir Deitsch redst",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0015L03U06",
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "and I want you to speak German with me tomorrow",
+      "target_text": "und i wü, dass'd morgn mit mir Deitsch redst",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 15,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0015L03U06",
+     "slot": "known",
+     "audio_id": "cd69fe4f-55d5-451b-af87-09bb8e320f22"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0015L03U06",
+     "slot": "target1",
+     "audio_id": "f6f8d785-8343-41f7-8a28-f55b7437b781"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0015L03U06",
+     "slot": "target2",
+     "audio_id": "c1c1cf97-0b28-4ad8-8a40-189756d293e6"
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "id": "S0016L04U06",
+   "lego": "S0016L04",
+   "known": "he wants to come back with everyone else later on",
+   "target": "er wü später mit olle aundern zruckkumman",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0016L04U06",
+      "seed_number": 16,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "he wants to come back with everyone else later on",
+      "target_text": "er wü später mit olle aundern zruckkumman",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 16,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0016L04U06",
+     "slot": "known",
+     "audio_id": "a4bcbb13-d604-4bc3-a49d-e12a4f5876de"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0016L04U06",
+     "slot": "target1",
+     "audio_id": "b21bda00-41c1-499f-bee7-9b50ac982c6b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0016L04U06",
+     "slot": "target2",
+     "audio_id": "588a05b0-ddf9-41f1-85bb-3a42f0186b01"
+    }
+   ]
+  },
+  {
+   "seed": 17,
+   "id": "S0017L03U06",
+   "lego": "S0017L03",
+   "known": "she wants to find out what the answer is",
+   "target": "sie wü aussafindn, wos de Antwort is",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0017L03U06",
+      "seed_number": 17,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "she wants to find out what the answer is",
+      "target_text": "sie wü aussafindn, wos de Antwort is",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 17,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0017L03U06",
+     "slot": "known",
+     "audio_id": "de3f3976-e437-43ec-823b-8428cad99020"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0017L03U06",
+     "slot": "target1",
+     "audio_id": "f839b1b9-30c5-48ce-9bfd-4fcf543c0bbe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0017L03U06",
+     "slot": "target2",
+     "audio_id": "13a49a52-8273-4549-b078-eb7cce1d03fb"
+    }
+   ]
+  },
+  {
+   "seed": 18,
+   "id": "S0018L04U06",
+   "lego": "S0018L04",
+   "known": "we want to meet at six o'clock this evening",
+   "target": "mir wolln uns heit auf d'Nocht um sechse treffen",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0018L04U06",
+      "seed_number": 18,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "we want to meet at six o'clock this evening",
+      "target_text": "mir wolln uns heit auf d'Nocht um sechse treffen",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 18,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 9,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0018L04U06",
+     "slot": "known",
+     "audio_id": "44d702ae-f388-47db-80e6-50af4352d7c5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0018L04U06",
+     "slot": "target1",
+     "audio_id": "5fd5fab7-777d-4006-abf4-742bad27551b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0018L04U06",
+     "slot": "target2",
+     "audio_id": "8154c939-5f3c-4e9b-95bb-5279cc5b45c1"
+    }
+   ]
+  },
+  {
+   "seed": 19,
+   "id": "S0019L02U06",
+   "lego": "S0019L02",
+   "known": "but I don't want to stop talking",
+   "target": "oba i wü ned aufhörn zum reden",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0019L02U06",
+      "seed_number": 19,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "but I don't want to stop talking",
+      "target_text": "oba i wü ned aufhörn zum reden",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 19,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0019L02U06",
+     "slot": "known",
+     "audio_id": "e17e524a-ea59-4cfa-ad2c-d85a108bc356"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0019L02U06",
+     "slot": "target1",
+     "audio_id": "ed13d872-3ead-4ff3-bd35-5b9936265d45"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0019L02U06",
+     "slot": "target2",
+     "audio_id": "046fb5e9-3ef7-4774-b739-4f1b53069f43"
+    }
+   ]
+  },
+  {
+   "seed": 20,
+   "id": "S0020L03U06",
+   "lego": "S0020L03",
+   "known": "you want to learn his name quickly",
+   "target": "du wüst schnell sein Naumen lernen",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0020L03U06",
+      "seed_number": 20,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "you want to learn his name quickly",
+      "target_text": "du wüst schnell sein Naumen lernen",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 20,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0020L03U06",
+     "slot": "known",
+     "audio_id": "9c86ec02-02fd-4114-bbe4-769af1b4f834"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0020L03U06",
+     "slot": "target1",
+     "audio_id": "fbd2b2e3-46a7-41fc-ada0-aa75e0a0c5c4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0020L03U06",
+     "slot": "target2",
+     "audio_id": "907a2278-7245-4a6c-8781-d35d75f817c1"
+    }
+   ]
+  },
+  {
+   "seed": 21,
+   "id": "S0021L03U06",
+   "lego": "S0021L03",
+   "known": "Why are you learning her name?",
+   "target": "wieso lernst du ian Naumen?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0021L03U06",
+      "seed_number": 21,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "Why are you learning her name?",
+      "target_text": "wieso lernst du ian Naumen?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 21,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0021L03U06",
+     "slot": "known",
+     "audio_id": "37113e5e-7968-4c6b-8b4b-2b3e057441a6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0021L03U06",
+     "slot": "target1",
+     "audio_id": "2636dd1c-5a63-4f9d-a61b-3da7e682dd0b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0021L03U06",
+     "slot": "target2",
+     "audio_id": "5fcfe0cb-7d8f-49f1-adca-f289054b0714"
+    }
+   ]
+  },
+  {
+   "seed": 22,
+   "id": "S0022L03U06",
+   "lego": "S0022L03",
+   "known": "because I want to meet people who speak German",
+   "target": "weil i Leit treffen wü, de wos Deitsch reden",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0022L03U06",
+      "seed_number": 22,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "because I want to meet people who speak German",
+      "target_text": "weil i Leit treffen wü, de wos Deitsch reden",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 22,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0022L03U06",
+     "slot": "known",
+     "audio_id": "2553e1fe-dcbd-4742-bece-2e3a467535be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0022L03U06",
+     "slot": "target1",
+     "audio_id": "ac964b72-d047-4b39-bd4e-0f9a939fa322"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0022L03U06",
+     "slot": "target2",
+     "audio_id": "c4dabcd2-0705-4add-a345-912949be10a4"
+    }
+   ]
+  },
+  {
+   "seed": 23,
+   "id": "S0023L03U06",
+   "lego": "S0023L03",
+   "known": "I'm going to start talking more soon",
+   "target": "i fang boid au, mehr zum reden",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0023L03U06",
+      "seed_number": 23,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "I'm going to start talking more soon",
+      "target_text": "i fang boid au, mehr zum reden",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 23,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0023L03U06",
+     "slot": "known",
+     "audio_id": "bd3e3450-99bc-4eab-ab5a-f64c152de968"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0023L03U06",
+     "slot": "target1",
+     "audio_id": "5f4cde9c-55d1-4635-be5b-eaeedc4bf06a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0023L03U06",
+     "slot": "target2",
+     "audio_id": "d578b933-75b3-4527-94d5-9d51daf89429"
+    }
+   ]
+  },
+  {
+   "seed": 24,
+   "id": "S0024L02U06",
+   "lego": "S0024L02",
+   "known": "I'm not going to be able to remember easily",
+   "target": "i wer ma des ned leicht merken können",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0024L02U06",
+      "seed_number": 24,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I'm not going to be able to remember easily",
+      "target_text": "i wer ma des ned leicht merken können",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 24,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0024L02U06",
+     "slot": "known",
+     "audio_id": "ed28fc56-8156-44bd-8563-bfa890de3772"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0024L02U06",
+     "slot": "target1",
+     "audio_id": "35c16655-ec7b-432c-947c-25e398a824b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0024L02U06",
+     "slot": "target2",
+     "audio_id": "ba7fa755-d5c2-474a-94ba-5a161a4d2910"
+    }
+   ]
+  },
+  {
+   "seed": 25,
+   "id": "S0025L02U06",
+   "lego": "S0025L02",
+   "known": "are you going to help me before I have to go?",
+   "target": "helfst ma, bevor i gehn muass?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0025L02U06",
+      "seed_number": 25,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "are you going to help me before I have to go?",
+      "target_text": "helfst ma, bevor i gehn muass?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 25,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0025L02U06",
+     "slot": "known",
+     "audio_id": "f18ba186-e111-4443-aa83-a65467f9b576"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0025L02U06",
+     "slot": "target1",
+     "audio_id": "af507c53-9b89-48e2-a9db-c3fbe9eca439"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0025L02U06",
+     "slot": "target2",
+     "audio_id": "fd498078-6fb5-4522-81ae-c50b03d3ba7e"
+    }
+   ]
+  },
+  {
+   "seed": 26,
+   "id": "S0026L04U06",
+   "lego": "S0026L04",
+   "known": "I like feeling as if I'm nearly ready to go",
+   "target": "i mog des Gfühl, wia wenn i fost fertig zum gehn warat",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0026L04U06",
+      "seed_number": 26,
+      "lego_index": 4,
+      "position": 13,
+      "known_text": "I like feeling as if I'm nearly ready to go",
+      "target_text": "i mog des Gfühl, wia wenn i fost fertig zum gehn warat",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 26,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0026L04U06",
+     "slot": "known",
+     "audio_id": "269db71a-a82a-4b9b-bce5-7388e5d562c9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0026L04U06",
+     "slot": "target1",
+     "audio_id": "66e42e35-05ab-4911-87fe-679e84c1ad27"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0026L04U06",
+     "slot": "target2",
+     "audio_id": "f1cca90b-b3b8-4b4e-9d5c-c8d0c888962d"
+    }
+   ]
+  },
+  {
+   "seed": 27,
+   "id": "S0027L01U06",
+   "lego": "S0027L01",
+   "known": "I don't like taking too much time to answer",
+   "target": "i mog's ned, wenn i z'laung zum antworten brauch",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0027L01U06",
+      "seed_number": 27,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "i mog's ned, wenn i z'laung zum antworten brauch",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 27,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0027L01U06",
+     "slot": "known",
+     "audio_id": "d123260b-fa56-433c-902b-1c86d32d286d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0027L01U06",
+     "slot": "target1",
+     "audio_id": "6e8f88c9-331c-4fb8-92a7-56ae6e7f5a43"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0027L01U06",
+     "slot": "target2",
+     "audio_id": "668ead34-f764-4997-8886-203c2723480d"
+    }
+   ]
+  },
+  {
+   "seed": 28,
+   "id": "S0028L03U06",
+   "lego": "S0028L03",
+   "known": "it's useful to start talking as soon as you can",
+   "target": "es is praktisch, wennst so boid wia möglich zum reden aunfaungst",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0028L03U06",
+      "seed_number": 28,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "it's useful to start talking as soon as you can",
+      "target_text": "es is praktisch, wennst so boid wia möglich zum reden aunfaungst",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 28,
+       "canon": "P26"
+      },
+      "word_count": 64,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0028L03U06",
+     "slot": "known",
+     "audio_id": "515620b8-d881-46c5-861c-78768da8109a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0028L03U06",
+     "slot": "target1",
+     "audio_id": "044576f2-26cf-4b05-8d20-ab13fdaad472"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0028L03U06",
+     "slot": "target2",
+     "audio_id": "356abf98-e103-4468-9a0b-7153a8794cde"
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "id": "S0029L01U06",
+   "lego": "S0029L01",
+   "known": "I'm looking forward to speaking better as soon as I can",
+   "target": "i frei mi drauf, dass i so boid wia möglich besser red",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0029L01U06",
+      "seed_number": 29,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "I'm looking forward to speaking better as soon as I can",
+      "target_text": "i frei mi drauf, dass i so boid wia möglich besser red",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 29,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0029L01U06",
+     "slot": "known",
+     "audio_id": "518afece-3fa8-4b3b-a0e5-8a131c7af765"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0029L01U06",
+     "slot": "target1",
+     "audio_id": "eed31215-4520-4891-84c8-040cdb292d2b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0029L01U06",
+     "slot": "target2",
+     "audio_id": "942ab3b9-4dfb-4ff6-95be-fd190a72688d"
+    }
+   ]
+  },
+  {
+   "seed": 30,
+   "id": "S0030L05U06",
+   "lego": "S0030L05",
+   "known": "I wanted to ask you something yesterday",
+   "target": "i hob di gestern wos frogn wolln",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0030L05U06",
+      "seed_number": 30,
+      "lego_index": 5,
+      "position": 12,
+      "known_text": "I wanted to ask you something yesterday",
+      "target_text": "i hob di gestern wos frogn wolln",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 30,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0030L05U06",
+     "slot": "known",
+     "audio_id": "ce141f2d-22f7-4ac4-a395-8a04a52d334a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0030L05U06",
+     "slot": "target1",
+     "audio_id": "2d7f6e27-f7d3-478d-b07d-a598b6e9bf09"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0030L05U06",
+     "slot": "target2",
+     "audio_id": "6e392131-cac2-44b6-bca6-bfda07b1cf5d"
+    }
+   ]
+  },
+  {
+   "seed": 32,
+   "id": "S0032L01U07",
+   "lego": "S0032L01",
+   "known": "did you want to show me something?",
+   "target": "host ma wos zeign wolln?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0032L01U07",
+      "seed_number": 32,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "did you want to show me something?",
+      "target_text": "host ma wos zeign wolln?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 32,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0032L01U07",
+     "slot": "known",
+     "audio_id": "3ca36f79-03a8-4f69-922d-97e16bade55d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0032L01U07",
+     "slot": "target1",
+     "audio_id": "27798a6f-cd72-4d77-b827-2dcc4cb28408"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0032L01U07",
+     "slot": "target2",
+     "audio_id": "890dd254-9fd1-46fb-84c2-2f431d9b8c2f"
+    }
+   ]
+  },
+  {
+   "seed": 33,
+   "id": "S0033L01U06",
+   "lego": "S0033L01",
+   "known": "how long have you been learning German?",
+   "target": "wia laung lernst du schon Deitsch?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0033L01U06",
+      "seed_number": 33,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "how long have you been learning German?",
+      "target_text": "wia laung lernst du schon Deitsch?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 33,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0033L01U06",
+     "slot": "known",
+     "audio_id": "a3ba5fa3-e129-4f20-a202-0f129e3f3c05"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0033L01U06",
+     "slot": "target1",
+     "audio_id": "730cfc56-c47c-45c3-913f-82b3a2795c70"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0033L01U06",
+     "slot": "target2",
+     "audio_id": "59008d7e-8306-4655-bb6b-1b3f87fd79df"
+    }
+   ]
+  },
+  {
+   "seed": 34,
+   "id": "S0034L04U06",
+   "lego": "S0034L04",
+   "known": "he doesn't want to be quiet when other people are here",
+   "target": "er wü ned leise sein, wenn aundere Leit do san",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0034L04U06",
+      "seed_number": 34,
+      "lego_index": 4,
+      "position": 12,
+      "known_text": "he doesn't want to be quiet when other people are here",
+      "target_text": "er wü ned leise sein, wenn aundere Leit do san",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 34,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0034L04U06",
+     "slot": "known",
+     "audio_id": "85606933-ab0b-47ad-9d24-e30a0fcba186"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0034L04U06",
+     "slot": "target1",
+     "audio_id": "705c9b22-0d14-4705-b68f-a9debba65e32"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0034L04U06",
+     "slot": "target2",
+     "audio_id": "b8ccbd7d-6962-4488-838d-fbfa1e530b86"
+    }
+   ]
+  },
+  {
+   "seed": 35,
+   "id": "S0035L03U06",
+   "lego": "S0035L03",
+   "known": "she doesn't want to read anything this afternoon",
+   "target": "sie wü heit Nochmittog nix lesn",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0035L03U06",
+      "seed_number": 35,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "she doesn't want to read anything this afternoon",
+      "target_text": "sie wü heit Nochmittog nix lesn",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 35,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0035L03U06",
+     "slot": "known",
+     "audio_id": "f5fe6435-cd1d-4569-8e1e-d8380b0c0a87"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0035L03U06",
+     "slot": "target1",
+     "audio_id": "0c481b49-5c12-49d7-82ac-881ad72b235a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0035L03U06",
+     "slot": "target2",
+     "audio_id": "6b9748e2-0a05-4eff-8b74-886be889ae68"
+    }
+   ]
+  },
+  {
+   "seed": 36,
+   "id": "S0036L02U06",
+   "lego": "S0036L02",
+   "known": "we don't want to interrupt the story",
+   "target": "mir wolln de Gschicht ned unterbrechen",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0036L02U06",
+      "seed_number": 36,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "we don't want to interrupt the story",
+      "target_text": "mir wolln de Gschicht ned unterbrechen",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 36,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0036L02U06",
+     "slot": "known",
+     "audio_id": "4ddc0df8-0e59-4698-862e-f19ceebbbe80"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0036L02U06",
+     "slot": "target1",
+     "audio_id": "41f19fc1-ea74-4455-be48-f079bf9dc3ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0036L02U06",
+     "slot": "target2",
+     "audio_id": "4aa69ef3-52f5-4c31-80d6-81885cd15486"
+    }
+   ]
+  },
+  {
+   "seed": 37,
+   "id": "S0037L03U06",
+   "lego": "S0037L03",
+   "known": "I started to think about it carefully last month",
+   "target": "i hob letztn Monat aungfaungen, dass i genau drüber nochdenk",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0037L03U06",
+      "seed_number": 37,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "I started to think about it carefully last month",
+      "target_text": "i hob letztn Monat aungfaungen, dass i genau drüber nochdenk",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 37,
+       "canon": "P26"
+      },
+      "word_count": 60,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0037L03U06",
+     "slot": "known",
+     "audio_id": "02b3900b-143d-467d-8125-6d3a0b2f98b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0037L03U06",
+     "slot": "target1",
+     "audio_id": "bb76d29b-830a-40e8-b53b-939ca634df5e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0037L03U06",
+     "slot": "target2",
+     "audio_id": "537c1bd5-272d-4545-b438-55ff4a2a5ab3"
+    }
+   ]
+  },
+  {
+   "seed": 38,
+   "id": "S0038L02U06",
+   "lego": "S0038L02",
+   "known": "I've been learning for about a week",
+   "target": "i lern iatz seit zirka ana Wochn",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0038L02U06",
+      "seed_number": 38,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "I've been learning for about a week",
+      "target_text": "i lern iatz seit zirka ana Wochn",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 38,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0038L02U06",
+     "slot": "known",
+     "audio_id": "3452250f-eb2d-4722-8cfa-ef44e9b9c301"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0038L02U06",
+     "slot": "target1",
+     "audio_id": "e96290c7-f15d-4d36-aecc-98ca0bda8f28"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0038L02U06",
+     "slot": "target2",
+     "audio_id": "afcf41d6-85dd-488d-a654-6796ba8b52dc"
+    }
+   ]
+  },
+  {
+   "seed": 39,
+   "id": "S0039L02U06",
+   "lego": "S0039L02",
+   "known": "but I'm a little tired this morning",
+   "target": "oba i bin heit in da Fruah a bissl miad",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0039L02U06",
+      "seed_number": 39,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "but I'm a little tired this morning",
+      "target_text": "oba i bin heit in da Fruah a bissl miad",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 39,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0039L02U06",
+     "slot": "known",
+     "audio_id": "2833c233-9ef5-4f02-b4f3-65fdddffbf63"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0039L02U06",
+     "slot": "target1",
+     "audio_id": "a00adfe0-8016-4acf-bedc-bb24fd5d5297"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0039L02U06",
+     "slot": "target2",
+     "audio_id": "85c57c4c-26aa-4efd-bacb-8cda293110a8"
+    }
+   ]
+  },
+  {
+   "seed": 40,
+   "id": "S0040L02U06",
+   "lego": "S0040L02",
+   "known": "how do you feel at the moment?",
+   "target": "wia fühlst di denn grod?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0040L02U06",
+      "seed_number": 40,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "how do you feel at the moment?",
+      "target_text": "wia fühlst di denn grod?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 40,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0040L02U06",
+     "slot": "known",
+     "audio_id": "47407d84-38f9-48ac-9c85-9932a5ff1326"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0040L02U06",
+     "slot": "target1",
+     "audio_id": "8308f765-4d2b-439f-a8b0-0368b765ec6e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0040L02U06",
+     "slot": "target2",
+     "audio_id": "ca387425-6994-45da-8f07-9cd23726aaea"
+    }
+   ]
+  },
+  {
+   "seed": 41,
+   "id": "S0041L02U06",
+   "lego": "S0041L02",
+   "known": "I feel okay, but I'm starting to feel tired",
+   "target": "i fühl mi eh ok, oba i wer langsam miad",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0041L02U06",
+      "seed_number": 41,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I feel okay, but I'm starting to feel tired",
+      "target_text": "i fühl mi eh ok, oba i wer langsam miad",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 41,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0041L02U06",
+     "slot": "known",
+     "audio_id": "fe1c9235-fd27-44ba-b38c-83cad7908ce5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0041L02U06",
+     "slot": "target1",
+     "audio_id": "4cb21bed-a03e-48bf-8734-59bea384eaac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0041L02U06",
+     "slot": "target2",
+     "audio_id": "f70ce849-2b7b-41d5-84ca-bcbfc6ea2c92"
+    }
+   ]
+  },
+  {
+   "seed": 42,
+   "id": "S0042L02U06",
+   "lego": "S0042L02",
+   "known": "I was starting to feel better than last night",
+   "target": "i hob mi langsam besser gfühlt ois gestern auf d'Nocht",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0042L02U06",
+      "seed_number": 42,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I was starting to feel better than last night",
+      "target_text": "i hob mi langsam besser gfühlt ois gestern auf d'Nocht",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 42,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0042L02U06",
+     "slot": "known",
+     "audio_id": "1de685e7-70ba-4d38-b775-22871cbd91a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0042L02U06",
+     "slot": "target1",
+     "audio_id": "c3e93a9e-a24c-4f27-8d39-6acdba4b035b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0042L02U06",
+     "slot": "target2",
+     "audio_id": "d5d580f4-3c2a-474c-bf11-0a435e43aeb2"
+    }
+   ]
+  },
+  {
+   "seed": 44,
+   "id": "S0044L02U06",
+   "lego": "S0044L02",
+   "known": "or if I need to improve",
+   "target": "oda ob i besser werden muass",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0044L02U06",
+      "seed_number": 44,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "or if I need to improve",
+      "target_text": "oda ob i besser werden muass",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 44,
+       "canon": "P26"
+      },
+      "word_count": 28,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0044L02U06",
+     "slot": "known",
+     "audio_id": "876a7db0-8b12-4a7b-8b5e-0f26eb95d293"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0044L02U06",
+     "slot": "target1",
+     "audio_id": "c2b4a841-05ff-4073-a8f2-36caf1649612"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0044L02U06",
+     "slot": "target2",
+     "audio_id": "fea71a5e-e877-4a24-84a8-59d36891ad3e"
+    }
+   ]
+  },
+  {
+   "seed": 45,
+   "id": "S0045L02U06",
+   "lego": "S0045L02",
+   "known": "I don't need to know everything",
+   "target": "i muass ned olles wissen",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0045L02U06",
+      "seed_number": 45,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "I don't need to know everything",
+      "target_text": "i muass ned olles wissen",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 45,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0045L02U06",
+     "slot": "known",
+     "audio_id": "7ba1ad50-3b8d-4ad1-8e65-39554e21267f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0045L02U06",
+     "slot": "target1",
+     "audio_id": "61627ed3-e599-424a-b2f9-5623b2afeff3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0045L02U06",
+     "slot": "target2",
+     "audio_id": "e6ca0546-780a-4479-ad92-d43c0b022ec6"
+    }
+   ]
+  },
+  {
+   "seed": 46,
+   "id": "S0046L03U06",
+   "lego": "S0046L03",
+   "known": "but I don't worry about making mistakes",
+   "target": "oba i moch ma kane Sorgen, wenn i Fehler moch",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0046L03U06",
+      "seed_number": 46,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "but I don't worry about making mistakes",
+      "target_text": "oba i moch ma kane Sorgen, wenn i Fehler moch",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 46,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0046L03U06",
+     "slot": "known",
+     "audio_id": "9c94de05-f694-4d45-bd43-6d54b87d42f6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0046L03U06",
+     "slot": "target1",
+     "audio_id": "8c25f07a-6db0-41ba-a1f0-b83b2c25f9c6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0046L03U06",
+     "slot": "target2",
+     "audio_id": "257cefc7-9130-409f-95e4-0854b6b5ad52"
+    }
+   ]
+  },
+  {
+   "seed": 47,
+   "id": "S0047L01U06",
+   "lego": "S0047L01",
+   "known": "because I think that it's a good thing to make mistakes",
+   "target": "weil i glaub, dass es wos Guats is, wenn ma Fehler mocht",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0047L01U06",
+      "seed_number": 47,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "because I think that it's a good thing to make mistakes",
+      "target_text": "weil i glaub, dass es wos Guats is, wenn ma Fehler mocht",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 47,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 11,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0047L01U06",
+     "slot": "known",
+     "audio_id": "e55f1bb6-99a4-4cc9-9e1c-f22e2b0ab1e1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0047L01U06",
+     "slot": "target1",
+     "audio_id": "fba4a453-6045-4e27-a2a9-8edaf30a7567"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0047L01U06",
+     "slot": "target2",
+     "audio_id": "a3d58dbf-6fbc-4288-be71-57b787f173b6"
+    }
+   ]
+  },
+  {
+   "seed": 48,
+   "id": "S0048L01U06",
+   "lego": "S0048L01",
+   "known": "I don't care about making mistakes",
+   "target": "mir is wurscht, ob i Fehler moch",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0048L01U06",
+      "seed_number": 48,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "I don't care about making mistakes",
+      "target_text": "mir is wurscht, ob i Fehler moch",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 48,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0048L01U06",
+     "slot": "known",
+     "audio_id": "4c60c807-87a3-4c40-826f-4c0979d50587"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0048L01U06",
+     "slot": "target1",
+     "audio_id": "5c71654f-dd07-43c5-8af2-95b3215100c3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0048L01U06",
+     "slot": "target2",
+     "audio_id": "c66b168a-7124-4844-9fff-be7504522e57"
+    }
+   ]
+  },
+  {
+   "seed": 49,
+   "id": "S0049L02U06",
+   "lego": "S0049L02",
+   "known": "it's like this, if you know what I mean",
+   "target": "es is hoit so, wennst woaßt, wos i moan",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0049L02U06",
+      "seed_number": 49,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "it's like this, if you know what I mean",
+      "target_text": "es is hoit so, wennst woaßt, wos i moan",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 49,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0049L02U06",
+     "slot": "known",
+     "audio_id": "4ebeb13f-c057-4d01-a675-5f857b7c5056"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0049L02U06",
+     "slot": "target1",
+     "audio_id": "ad0f3d26-c6cb-4f36-8a78-277d2935b645"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0049L02U06",
+     "slot": "target2",
+     "audio_id": "d4ffc849-6b90-4f9b-92cb-403deb4a7d85"
+    }
+   ]
+  },
+  {
+   "seed": 50,
+   "id": "S0050L02U06",
+   "lego": "S0050L02",
+   "known": "I'm not trying to finish as quickly as possible",
+   "target": "i versuch ned, so schnell wia möglich fertig zum werden",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0050L02U06",
+      "seed_number": 50,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "I'm not trying to finish as quickly as possible",
+      "target_text": "i versuch ned, so schnell wia möglich fertig zum werden",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 50,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 9,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0050L02U06",
+     "slot": "known",
+     "audio_id": "28543c83-ab38-4d48-9761-dc79822e1486"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0050L02U06",
+     "slot": "target1",
+     "audio_id": "5f1a6535-40c2-466d-91dc-174aef9838eb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0050L02U06",
+     "slot": "target2",
+     "audio_id": "6ce9fabc-781d-4ea2-9404-57612957fbe1"
+    }
+   ]
+  },
+  {
+   "seed": 51,
+   "id": "S0051L03U06",
+   "lego": "S0051L03",
+   "known": "I enjoy doing interesting things with my friends",
+   "target": "i moch gern interessante Sochn mit meine Freind",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0051L03U06",
+      "seed_number": 51,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "I enjoy doing interesting things with my friends",
+      "target_text": "i moch gern interessante Sochn mit meine Freind",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 51,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0051L03U06",
+     "slot": "known",
+     "audio_id": "e11cda3b-8c56-47b3-8b77-5265f2d0f475"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0051L03U06",
+     "slot": "target1",
+     "audio_id": "a11960c4-b4b2-469f-87f5-cf907d0cc062"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0051L03U06",
+     "slot": "target2",
+     "audio_id": "9709f73e-a01b-4301-aa59-011d3b149021"
+    }
+   ]
+  },
+  {
+   "seed": 55,
+   "id": "S0055L01U06",
+   "lego": "S0055L01",
+   "known": "I don't enjoy waking up when I didn't sleep very well",
+   "target": "i mog des Aufwochn ned, wenn i ned guat gschlofn hob",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0055L01U06",
+      "seed_number": 55,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "I don't enjoy waking up when I didn't sleep very well",
+      "target_text": "i mog des Aufwochn ned, wenn i ned guat gschlofn hob",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 55,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 11,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0055L01U06",
+     "slot": "known",
+     "audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0055L01U06",
+     "slot": "target1",
+     "audio_id": "af63ab65-b104-4be1-b203-3049166a7db1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0055L01U06",
+     "slot": "target2",
+     "audio_id": "d563fe68-bb79-44ef-ad92-7c4ef27c58f4"
+    }
+   ]
+  },
+  {
+   "seed": 118,
+   "id": "S0118L03U07",
+   "lego": "S0118L03",
+   "known": "I feel better than I felt when we were in the pub",
+   "target": "i fühl mi besser als damals, wia ma im Gasthaus gwesn san",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0118L03U07",
+      "seed_number": 118,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "I feel better than I felt when we were in the pub",
+      "target_text": "i fühl mi besser als damals, wia ma im Gasthaus gwesn san",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 118,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0118L03U07",
+     "slot": "known",
+     "audio_id": "15430d76-5101-4ced-88ed-0224f171b544"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0118L03U07",
+     "slot": "target1",
+     "audio_id": "ff4ee44e-b711-49bf-af20-3192d8f80f41"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0118L03U07",
+     "slot": "target2",
+     "audio_id": "1fdaf2b6-c684-4e07-acf3-8c35a9d6ab1e"
+    }
+   ]
+  },
+  {
+   "seed": 122,
+   "id": "S0122L03U07",
+   "lego": "S0122L03",
+   "known": "it's starting to feel easier and I'm excited about how it's going",
+   "target": "es fühlt si langsam leichter an, und i frei mi voll, wia's lauft",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0122L03U07",
+      "seed_number": 122,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "it's starting to feel easier and I'm excited about how it's going",
+      "target_text": "es fühlt si langsam leichter an, und i frei mi voll, wia's lauft",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 122,
+       "canon": "P26"
+      },
+      "word_count": 64,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0122L03U07",
+     "slot": "known",
+     "audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0122L03U07",
+     "slot": "target1",
+     "audio_id": "f0b16411-2853-48e5-9cee-1391691c1f77"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0122L03U07",
+     "slot": "target2",
+     "audio_id": "057ae44c-a26d-4608-8116-cf41c8d9de7b"
+    }
+   ]
+  },
+  {
+   "seed": 127,
+   "id": "S0127L02U06",
+   "lego": "S0127L02",
+   "known": "that isn't why I wanted to see you",
+   "target": "des is ned der Grund, warum i di sehn wollt",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0127L02U06",
+      "seed_number": 127,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "that isn't why I wanted to see you",
+      "target_text": "des is ned der Grund, warum i di sehn wollt",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 127,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0127L02U06",
+     "slot": "known",
+     "audio_id": "7a597d9d-e92e-4722-85ad-45b733b5a5bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0127L02U06",
+     "slot": "target1",
+     "audio_id": "768d559b-43f7-438b-9553-57abc52aa40a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0127L02U06",
+     "slot": "target2",
+     "audio_id": "c65a213b-9b22-4d82-94f5-c8c7c40415c2"
+    }
+   ]
+  },
+  {
+   "seed": 129,
+   "id": "S0129L02U06",
+   "lego": "S0129L02",
+   "known": "I'm so happy that you're doing so well",
+   "target": "i frei mi so, dass's da so guat geht",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0129L02U06",
+      "seed_number": 129,
+      "lego_index": 2,
+      "position": 15,
+      "known_text": "I'm so happy that you're doing so well",
+      "target_text": "i frei mi so, dass's da so guat geht",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 129,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0129L02U06",
+     "slot": "known",
+     "audio_id": "02ed50f9-bf9a-4946-8e8f-905ce4f6b4a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0129L02U06",
+     "slot": "target1",
+     "audio_id": "3535250e-15db-476e-90ae-0f9ca41a1c70"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0129L02U06",
+     "slot": "target2",
+     "audio_id": "fb0f01c8-5456-4147-b8a7-cd6ddc8b81cd"
+    }
+   ]
+  },
+  {
+   "seed": 133,
+   "id": "S0133L05U06",
+   "lego": "S0133L05",
+   "known": "you get to know someone very well when you work together",
+   "target": "ma lernt wen richtig guat kennen, wenn ma zamm arbeitet",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0133L05U06",
+      "seed_number": 133,
+      "lego_index": 5,
+      "position": 11,
+      "known_text": "you get to know someone very well when you work together",
+      "target_text": "ma lernt wen richtig guat kennen, wenn ma zamm arbeitet",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 133,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0133L05U06",
+     "slot": "known",
+     "audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0133L05U06",
+     "slot": "target1",
+     "audio_id": "7154e2f7-5864-41ec-8f5d-546aba628ff0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0133L05U06",
+     "slot": "target2",
+     "audio_id": "174a0653-67a1-4ee9-bc9b-329df4e44cca"
+    }
+   ]
+  },
+  {
+   "seed": 134,
+   "id": "S0134L03U06",
+   "lego": "S0134L03",
+   "known": "it's not a problem when you work at something difficult with them",
+   "target": "des is koa Problem, wennst mit eahm an wos Schwierigem arbeitest",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0134L03U06",
+      "seed_number": 134,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "it's not a problem when you work at something difficult with them",
+      "target_text": "des is koa Problem, wennst mit eahm an wos Schwierigem arbeitest",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 134,
+       "canon": "P26"
+      },
+      "word_count": 64,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0134L03U06",
+     "slot": "known",
+     "audio_id": "7905f342-2385-45aa-b5fb-a1a28b12464f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0134L03U06",
+     "slot": "target1",
+     "audio_id": "036f5883-dc4e-483f-b1bc-7e1df4582ee0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0134L03U06",
+     "slot": "target2",
+     "audio_id": "99a44351-2ddb-424c-b8a0-abf51ee062e5"
+    }
+   ]
+  },
+  {
+   "seed": 281,
+   "id": "S0281L01U07",
+   "lego": "S0281L01",
+   "known": "do you mind if I finish my coffee before you start?",
+   "target": "mocht's da wos aus, wenn i no mein Kaffee austrink, bevor'st anfangst?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0281L01U07",
+      "seed_number": 281,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "do you mind if I finish my coffee before you start?",
+      "target_text": "mocht's da wos aus, wenn i no mein Kaffee austrink, bevor'st anfangst?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 70,
+      "lego_count": 11,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0281L01U07",
+     "slot": "known",
+     "audio_id": "93b60170-31ac-4146-b338-74e941d6599b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0281L01U07",
+     "slot": "target1",
+     "audio_id": "345f41ec-21b3-4b3c-a7d2-6411cd2bad81"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0281L01U07",
+     "slot": "target2",
+     "audio_id": "28081f05-ba25-4392-8897-405276562d1f"
+    }
+   ]
+  },
+  {
+   "seed": 341,
+   "id": "S0341L01U07",
+   "lego": "S0341L01",
+   "known": "I met someone a few days ago",
+   "target": "i hob vor a paar Tog wen troffen",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0341L01U07",
+      "seed_number": 341,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "I met someone a few days ago",
+      "target_text": "i hob vor a paar Tog wen troffen",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 341,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0341L01U07",
+     "slot": "known",
+     "audio_id": "927aad94-8b3b-406e-bf58-210f2890d517"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0341L01U07",
+     "slot": "target1",
+     "audio_id": "2539f21f-4169-4f86-8bd0-921df8bf2a80"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0341L01U07",
+     "slot": "target2",
+     "audio_id": "e97407c3-7544-4d16-a996-c5c36f62f5d5"
+    }
+   ]
+  },
+  {
+   "seed": 389,
+   "id": "S0389L01U14",
+   "lego": "S0389L01",
+   "known": "that person over there",
+   "target": "de Person do drübn",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0389L01U14",
+      "seed_number": 389,
+      "lego_index": 1,
+      "position": 23,
+      "known_text": "that person over there",
+      "target_text": "de Person do drübn",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 389,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0389L01U14",
+     "slot": "known",
+     "audio_id": "4470bdf6-91eb-43cc-ac86-ff31fe6e39d3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0389L01U14",
+     "slot": "target1",
+     "audio_id": "0724f007-3514-4820-846c-58b4a2de5488"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0389L01U14",
+     "slot": "target2",
+     "audio_id": "30207af5-29f5-490f-8f58-83dba0d65a2d"
+    }
+   ]
+  },
+  {
+   "seed": 395,
+   "id": "S0395L02U10",
+   "lego": "S0395L02",
+   "known": "we need to turn left at the next corner",
+   "target": "wir miassn bei der nächsten Eckn links obbiagn",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0395L02U10",
+      "seed_number": 395,
+      "lego_index": 2,
+      "position": 16,
+      "known_text": "we need to turn left at the next corner",
+      "target_text": "wir miassn bei der nächsten Eckn links obbiagn",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 395,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0395L02U10",
+     "slot": "known",
+     "audio_id": "07e1822b-9ecb-4763-8a30-6b23c4cb488f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0395L02U10",
+     "slot": "target1",
+     "audio_id": "b23bed51-9729-466c-b27f-b232d7a2f657"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0395L02U10",
+     "slot": "target2",
+     "audio_id": "cc45f622-80e4-4d87-b27f-d39546e39d91"
+    }
+   ]
+  },
+  {
+   "seed": 396,
+   "id": "S0396L02U10",
+   "lego": "S0396L02",
+   "known": "we don't need to stand until everybody else is ready",
+   "target": "wir miassn ned stehn, bis olle anderen fertig san",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0396L02U10",
+      "seed_number": 396,
+      "lego_index": 2,
+      "position": 16,
+      "known_text": "we don't need to stand until everybody else is ready",
+      "target_text": "wir miassn ned stehn, bis olle anderen fertig san",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 396,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0396L02U10",
+     "slot": "known",
+     "audio_id": "29ef530b-edfe-4ebc-aa1b-a8c16decb93f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0396L02U10",
+     "slot": "target1",
+     "audio_id": "a1159806-f255-46b6-a7cd-10b9f110904e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0396L02U10",
+     "slot": "target2",
+     "audio_id": "fb38ec14-b5a8-4f93-9896-8c5804d86fde"
+    }
+   ]
+  },
+  {
+   "seed": 397,
+   "id": "S0397L02U08",
+   "lego": "S0397L02",
+   "known": "do we need to get ready soon?",
+   "target": "miassn wir uns bald fertig mochn?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0397L02U08",
+      "seed_number": 397,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "do we need to get ready soon?",
+      "target_text": "miassn wir uns bald fertig mochn?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 397,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0397L02U08",
+     "slot": "known",
+     "audio_id": "7dcd075a-b2f8-4b21-9e26-b1b9f4642781"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0397L02U08",
+     "slot": "target1",
+     "audio_id": "7b326c8e-7fd3-4166-8ba5-dc98dba08ada"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0397L02U08",
+     "slot": "target2",
+     "audio_id": "165da08c-1ffb-4ae8-92f4-8afbc3282d4c"
+    }
+   ]
+  },
+  {
+   "seed": 401,
+   "id": "S0401L02U07",
+   "lego": "S0401L02",
+   "known": "no it would be better to go straight home",
+   "target": "na, es warat besser, wenn wir glei hamgehn",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0401L02U07",
+      "seed_number": 401,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "no it would be better to go straight home",
+      "target_text": "na, es warat besser, wenn wir glei hamgehn",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 401,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0401L02U07",
+     "slot": "known",
+     "audio_id": "decaaa65-b5ac-4075-a777-3acc0915d6c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0401L02U07",
+     "slot": "target1",
+     "audio_id": "19585c3e-ebdb-4046-b6ad-23b4fce1dec3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0401L02U07",
+     "slot": "target2",
+     "audio_id": "d3b7ad32-8b32-43bd-a4d3-6c03eec0e588"
+    }
+   ]
+  },
+  {
+   "seed": 402,
+   "id": "S0402L01U07",
+   "lego": "S0402L01",
+   "known": "yes it would be nice to stop somewhere for food",
+   "target": "jo, es warat fein, wenn wir irgendwo zum essen einkehren",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0402L01U07",
+      "seed_number": 402,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "jo, es warat fein, wenn wir irgendwo zum essen einkehren",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 402,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0402L01U07",
+     "slot": "known",
+     "audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0402L01U07",
+     "slot": "target1",
+     "audio_id": "1149d483-9891-472a-91e0-2842869e9458"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0402L01U07",
+     "slot": "target2",
+     "audio_id": "0914d2f3-e347-435d-89c9-9f7aeb245e70"
+    }
+   ]
+  },
+  {
+   "seed": 403,
+   "id": "S0403L02U07",
+   "lego": "S0403L02",
+   "known": "we should remain quiet for as long as possible",
+   "target": "wir sollten so lang wia möglich leise bleiben",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0403L02U07",
+      "seed_number": 403,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "we should remain quiet for as long as possible",
+      "target_text": "wir sollten so lang wia möglich leise bleiben",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 403,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0403L02U07",
+     "slot": "known",
+     "audio_id": "f073a1f5-3e1e-4c2f-be09-d7ffbb810ff7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0403L02U07",
+     "slot": "target1",
+     "audio_id": "895bb39d-602f-44b2-bb1c-8b7e37341a5c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0403L02U07",
+     "slot": "target2",
+     "audio_id": "5092df0d-546c-471c-8e48-4a62ba02d311"
+    }
+   ]
+  },
+  {
+   "seed": 423,
+   "id": "S0423L02U06",
+   "lego": "S0423L02",
+   "known": "do they need to ask such an obvious question?",
+   "target": "miassn s' wirklich so a offensichtliche Frog stelln?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0423L02U06",
+      "seed_number": 423,
+      "lego_index": 2,
+      "position": 13,
+      "known_text": "do they need to ask such an obvious question?",
+      "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 423,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0423L02U06",
+     "slot": "known",
+     "audio_id": "818ae955-ac76-4a3c-80a9-47611c782e2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0423L02U06",
+     "slot": "target1",
+     "audio_id": "e0936522-62f8-4dec-a52a-8e8c0f01bd61"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0423L02U06",
+     "slot": "target2",
+     "audio_id": "9cf16720-19a8-4a05-9148-ae1a0662107e"
+    }
+   ]
+  },
+  {
+   "seed": 441,
+   "id": "S0441L01U07",
+   "lego": "S0441L01",
+   "known": "an approach",
+   "target": "an Ansatz",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0441L01U07",
+      "seed_number": 441,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "an approach",
+      "target_text": "an Ansatz",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 441,
+       "canon": "P26"
+      },
+      "word_count": 9,
+      "lego_count": 2,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0441L01U07",
+     "slot": "known",
+     "audio_id": "48d2fcca-e1b4-4c92-ad40-ac6918985c09"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0441L01U07",
+     "slot": "target1",
+     "audio_id": "2e918b65-e85c-4eea-aa78-82ef882a91a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0441L01U07",
+     "slot": "target2",
+     "audio_id": "1f968ba5-c54a-4f54-bbcf-35003209fd2e"
+    }
+   ]
+  },
+  {
+   "seed": 474,
+   "id": "S0474L03U06",
+   "lego": "S0474L03",
+   "known": "I don't even want it as a free offer",
+   "target": "i wü's ned amoi gschenkt ois Gratisangebot",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0474L03U06",
+      "seed_number": 474,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "I don't even want it as a free offer",
+      "target_text": "i wü's ned amoi gschenkt ois Gratisangebot",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 474,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0474L03U06",
+     "slot": "known",
+     "audio_id": "3d32af1e-69e2-42cc-9691-a73844c8cd26"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0474L03U06",
+     "slot": "target1",
+     "audio_id": "01f8f9f4-3630-4949-b6a5-2ca83e49b1cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0474L03U06",
+     "slot": "target2",
+     "audio_id": "b4397d56-d3ad-47c9-b35f-97a2f6420e7a"
+    }
+   ]
+  },
+  {
+   "seed": 477,
+   "id": "S0477L03U06",
+   "lego": "S0477L03",
+   "known": "he's been sick since the second day of the holidays",
+   "target": "er is seit'm zweitn Tog vom Urlaub krank",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0477L03U06",
+      "seed_number": 477,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "he's been sick since the second day of the holidays",
+      "target_text": "er is seit'm zweitn Tog vom Urlaub krank",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 477,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 10,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0477L03U06",
+     "slot": "known",
+     "audio_id": "c69e41ab-e131-467e-b4f6-475e78b151c9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0477L03U06",
+     "slot": "target1",
+     "audio_id": "f3b80a0f-b390-45a6-875f-cc451487355f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0477L03U06",
+     "slot": "target2",
+     "audio_id": "daac3e6f-bd95-4fee-8850-3dbd3384d3dd"
+    }
+   ]
+  },
+  {
+   "seed": 510,
+   "id": "S0510L02U06",
+   "lego": "S0510L02",
+   "known": "she's gone to look for somewhere safe to park the car",
+   "target": "sie is suachn gongan, wo s' es Auto sicher parken kann",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0510L02U06",
+      "seed_number": 510,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "she's gone to look for somewhere safe to park the car",
+      "target_text": "sie is suachn gongan, wo s' es Auto sicher parken kann",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 510,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0510L02U06",
+     "slot": "known",
+     "audio_id": "9c84030c-924c-4b5c-85d6-4dcf9bf5dd5f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0510L02U06",
+     "slot": "target1",
+     "audio_id": "8856c840-090f-4b96-a4ab-57aec23366d2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0510L02U06",
+     "slot": "target2",
+     "audio_id": "a81991e7-a1b0-4857-b89d-f11db850e64c"
+    }
+   ]
+  },
+  {
+   "seed": 553,
+   "id": "S0553L01U07",
+   "lego": "S0553L01",
+   "known": "I think the small church is very ugly",
+   "target": "i find, de kloane Kirchn is voi schiach",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0553L01U07",
+      "seed_number": 553,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "I think the small church is very ugly",
+      "target_text": "i find, de kloane Kirchn is voi schiach",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 553,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0553L01U07",
+     "slot": "known",
+     "audio_id": "9094179c-5f57-4b0a-bc69-9e2215d00c07"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0553L01U07",
+     "slot": "target1",
+     "audio_id": "902558ba-f649-40c1-a31b-caa54fb6ca11"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0553L01U07",
+     "slot": "target2",
+     "audio_id": "a35246c4-d4f8-4744-907a-05059f8fa70c"
+    }
+   ]
+  },
+  {
+   "seed": 555,
+   "id": "S0555L02U05",
+   "lego": "S0555L02",
+   "known": "and I'm too tired to fetch a new one",
+   "target": "und i bin z'miad, dass i ma a neichs hol",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0555L02U05",
+      "seed_number": 555,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "and I'm too tired to fetch a new one",
+      "target_text": "und i bin z'miad, dass i ma a neichs hol",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 555,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0555L02U05",
+     "slot": "known",
+     "audio_id": "b9b099ce-d5e9-4bb1-9915-2ba772d06085"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0555L02U05",
+     "slot": "target1",
+     "audio_id": "4ce19996-bbf1-49a3-8287-17de56c2a706"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0555L02U05",
+     "slot": "target2",
+     "audio_id": "0812a085-28f0-418c-96e7-4b0ffb6f5905"
+    }
+   ]
+  },
+  {
+   "seed": 652,
+   "id": "S0652L01U06",
+   "lego": "S0652L01",
+   "known": "what do you need sir?",
+   "target": "Was brauchen Sie, der Herr?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_at_for_eng:S0652L01U06",
+      "seed_number": 652,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "what do you need sir?",
+      "target_text": "Was brauchen Sie, der Herr?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 652,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0652L01U06",
+     "slot": "known",
+     "audio_id": "90d75f5d-7bb2-488a-8749-ed45611e11bc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0652L01U06",
+     "slot": "target1",
+     "audio_id": "378b64a4-96cc-4121-92fc-2f1ff334168a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_at_for_eng:S0652L01U06",
+     "slot": "target2",
+     "audio_id": "ac4d4a27-b0fc-40aa-a296-c4c9d7129760"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 31,
+    "known": "you wanted to speak with me tonight",
+    "target": "du host heit auf d'Nocht mit mir reden wolln",
+    "legos": [
+     "S0031L01 you have | du host"
+    ]
+   },
+   {
+    "seed": 43,
+    "known": "I wasn't thinking about how to answer",
+    "target": "i hob ned drüber nochdocht, wia i antworten soi",
+    "legos": [
+     "S0043L01 thought about it | drüber nochdocht",
+     "S0043L02 how I should answer | wia i antworten soi"
+    ]
+   },
+   {
+    "seed": 82,
+    "known": "I'm not going to wait for you. Why not?",
+    "target": "i wort ned auf di. wieso ned?",
+    "legos": [
+     "S0082L01 I wait | wort"
+    ]
+   },
+   {
+    "seed": 151,
+    "known": "that wasn't what I was hoping would happen",
+    "target": "des wor ned des, wos i ghofft hob, dass passiert",
+    "legos": [
+     "S0151L01 what I hoped | wos i ghofft hob"
+    ]
+   },
+   {
+    "seed": 278,
+    "known": "did you have to finish everything last night?",
+    "target": "host gestern auf d'Nocht ollas fertig mochn miassn?",
+    "legos": [
+     "S0278L01 all of it | ollas"
+    ]
+   },
+   {
+    "seed": 400,
+    "known": "do we want to eat something later on?",
+    "target": "wolln wir später no wos essen?",
+    "legos": [
+     "S0400L01 to have a meal | essen"
+    ]
+   },
+   {
+    "seed": 471,
+    "known": "do you want to stop for a rest?",
+    "target": "wüst stehnbleibn und a Pause mochn?",
+    "legos": [
+     "S0471L01 to take a break | a Pause mochn"
+    ]
+   },
+   {
+    "seed": 653,
+    "known": "do you mind madam?",
+    "target": "Macht es Ihnen etwas aus, gnädige Frau?",
+    "legos": [
+     "S0653L01 would you mind | macht es Ihnen etwas aus"
+    ]
+   },
+   {
+    "seed": 655,
+    "known": "I think that you're doing very well, madam",
+    "target": "Ich glaube, dass Sie das sehr gut machen, gnädige Frau",
+    "legos": [
+     "S0655L01 you are doing it very well | sie das sehr gut machen",
+     "S0655L02 I believe that | ich glaube, dass"
+    ]
+   },
+   {
+    "seed": 668,
+    "known": "I hope you'll all be able to go",
+    "target": "i hoff, dass es olle gehn kennts",
+    "legos": [
+     "S0668L01 that you all | dass es"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 67,
+    "known": "Why do you want to stop?",
+    "target": "wieso wüst aufhörn?",
+    "row": "S0021L01U05",
+    "row_known": "why do you want to stop?",
+    "row_target": "wieso wüst du aufhörn?"
+   },
+   {
+    "seed": 244,
+    "known": "I've learnt a lot already",
+    "target": "i hob scho viel glernt",
+    "row": "S0076L04U02",
+    "row_known": "i've learnt a lot already",
+    "row_target": "i hob schon viel glernt"
+   },
+   {
+    "seed": 264,
+    "known": "an old man",
+    "target": "a oida Mann",
+    "row": "S0231L01B01",
+    "row_known": "an old man",
+    "row_target": "an oiden Monn"
+   },
+   {
+    "seed": 267,
+    "known": "have you heard from your friend?",
+    "target": "host wos von deiner Freindin ghört?",
+    "row": "S0196L01U04",
+    "row_known": "have you heard from your friend?",
+    "row_target": "host von dein freind ghört?"
+   },
+   {
+    "seed": 657,
+    "known": "how do you all feel?",
+    "target": "wia fühlts es eich olle?",
+    "row": "S0657L01B01",
+    "row_known": "how do you all feel",
+    "row_target": "wia fühlts es"
+   },
+   {
+    "seed": 658,
+    "known": "do you all want?",
+    "target": "wollts es olle?",
+    "row": "S0658L01B01",
+    "row_known": "do you all want",
+    "row_target": "wollts es"
+   },
+   {
+    "seed": 662,
+    "known": "you all speak it",
+    "target": "es redts as olle",
+    "row": "S0662L01B01",
+    "row_known": "you all speak it",
+    "row_target": "es redts as"
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 130,
+    "known": "that was a surrpise, because he's my friend",
+    "target": "des wor a Überraschung, weil er mein Freind is",
+    "row": "S0130L01U05",
+    "row_known": "that was a surprise, because he's my friend",
+    "row_target": "des wor a Überraschung, weil er mein Freind is"
+   },
+   {
+    "seed": 393,
+    "known": "that boy with the green shirt",
+    "target": "der Bua mit'm grean Leiberl",
+    "row": "S0393L04B02",
+    "row_known": "the boy with the green shirt",
+    "row_target": "der Bua mit'm grean Leiberl"
+   },
+   {
+    "seed": 394,
+    "known": "that girl with the yellow dress",
+    "target": "des Madl mit'm gelben Kleid",
+    "row": "S0394L03B02",
+    "row_known": "the girl with the yellow dress",
+    "row_target": "des Madl mit'm gelben Kleid"
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 275,
+    "known": "longer",
+    "target": "länger"
+   },
+   {
+    "seed": 305,
+    "known": "woman",
+    "target": "Frau"
+   },
+   {
+    "seed": 338,
+    "known": "badly",
+    "target": "schlimm"
+   }
+  ],
+  "covered": [
+   {
+    "seed": 399,
+    "known": "we don't want to lose hope",
+    "target": "wir wolln de Hoffnung ned verliern"
+   },
+   {
+    "seed": 404,
+    "known": "we shouldn't expect to finish before Thursday",
+    "target": "wir sollten ned damit rechnen, dass wir vor Donnerstog fertig san"
+   },
+   {
+    "seed": 415,
+    "known": "that wouldn't be a problem if you ask me",
+    "target": "des warat koa Problem, wennst mi frogst"
+   },
+   {
+    "seed": 420,
+    "known": "they don't need to ask how old he is",
+    "target": "sie miassn ned frogn, wia oid er is"
+   },
+   {
+    "seed": 421,
+    "known": "because they already know he's getting weak",
+    "target": "weil s' eh scho wissen, dass er schwoch wird"
+   },
+   {
+    "seed": 424,
+    "known": "no they're wasting everybody's time",
+    "target": "na, de vaschwendn nur de Zeit von olle Leit"
+   },
+   {
+    "seed": 426,
+    "known": "they would like to love each other but they're unhappy",
+    "target": "de mechatn einander liebn, oba de san unglücklich"
+   },
+   {
+    "seed": 427,
+    "known": "they wouldn't like you to think that they're bored",
+    "target": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   {
+    "seed": 430,
+    "known": "no that wouldn't be possible",
+    "target": "na, des warat ned möglich"
+   },
+   {
+    "seed": 431,
+    "known": "they're not ready yet but they'll be ready soon",
+    "target": "de san no ned fertig, oba boid san s' so weit"
+   },
+   {
+    "seed": 433,
+    "known": "they couldn't find out when the film started",
+    "target": "de hobn ned aussafindn kennan, wann da Film angfangt hot"
+   },
+   {
+    "seed": 436,
+    "known": "no there's a minimum number they need",
+    "target": "na, do gibt's a Mindestzohl, de s' brauchn"
+   },
+   {
+    "seed": 438,
+    "known": "they didn't want to decide what he should do",
+    "target": "de wolltn ned entscheidn, wos er mochn soit"
+   },
+   {
+    "seed": 439,
+    "known": "they don't want to die",
+    "target": "de wolln ned sterbn"
+   },
+   {
+    "seed": 440,
+    "known": "they want to travel while they're still young",
+    "target": "de wolln reisn, solang s' no jung san"
+   },
+   {
+    "seed": 467,
+    "known": "it's next to the car park",
+    "target": "es is nebn am Parkplotz"
+   },
+   {
+    "seed": 468,
+    "known": "it's a big world",
+    "target": "es is a große Welt"
+   },
+   {
+    "seed": 469,
+    "known": "but that doesn't mean we can't change it",
+    "target": "oba des hoaßt ned, dass mir s' ned ändern kennan"
+   },
+   {
+    "seed": 472,
+    "known": "part of the problem is that we don't know the facts",
+    "target": "a Teil vom Problem is, dass mir de Faktn ned wissen"
+   },
+   {
+    "seed": 476,
+    "known": "I'm waiting for the end of the second half",
+    "target": "i wart aufs Ende von da zweitn Hoibzeit"
+   },
+   {
+    "seed": 479,
+    "known": "it's the least I could do",
+    "target": "des is des Mindeste, wos i tuan kunnt"
+   },
+   {
+    "seed": 480,
+    "known": "whatever he says it's not far ahead now",
+    "target": "wurscht, wos er sogt, es is iatz nimma weit"
+   },
+   {
+    "seed": 503,
+    "known": "I hate making trouble but that one's mine",
+    "target": "i moch ungern an Wirbel, oba des is meins"
+   },
+   {
+    "seed": 504,
+    "known": "I'm going to run across the grass",
+    "target": "i wer übers Gros rennan"
+   },
+   {
+    "seed": 505,
+    "known": "so that I don't get left behind",
+    "target": "damit i ned zruckglossn werd"
+   },
+   {
+    "seed": 508,
+    "known": "there's no point worrying about how you're going to pay",
+    "target": "es bringt nix, dassd da Sorgen mochst, wiast des zohln wirst"
+   },
+   {
+    "seed": 509,
+    "known": "I heard that you're going to pay for a new bed",
+    "target": "i hob ghert, dassd für a neichs Bett zohln wirst"
+   },
+   {
+    "seed": 518,
+    "known": "I couldn't imagine myself having exactly the same problem",
+    "target": "i kunnt ma ned vurstelln, dass i genau es gleiche Problem hätt"
+   },
+   {
+    "seed": 519,
+    "known": "I haven't seen their new baby yet",
+    "target": "i hob eahna neichs Baby no ned gsehn"
+   },
+   {
+    "seed": 654,
+    "known": "I'm not sure if I can help you, sir",
+    "target": "Ich bin mir nicht sicher, ob ich Ihnen helfen kann, der Herr"
+   },
+   {
+    "seed": 661,
+    "known": "you're all doing something",
+    "target": "es mochts olle wos"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 68,
+  "no_home": 10,
+  "variant_zut": 7,
+  "variant_form": 3,
+  "lego_is_seed": 3,
+  "covered": 31
+ }
+}
