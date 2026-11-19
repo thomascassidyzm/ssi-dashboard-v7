@@ -1,0 +1,156 @@
+{
+ "census": "/home/tomcassidy/.cs-scratch/cs-58a734da-b8c9-457b-b355-c9d152df6181/census.json",
+ "censusGeneratedAt": "2026-11-19T15:21:18.416Z",
+ "db": "ssi_copy_20261119t033000z",
+ "dayCap": 600000,
+ "totalCap": 2000000,
+ "days": [
+  {
+   "day": "Day 1",
+   "window": "19 Nov UTC, from Kai's Y/N (spills into 20 Nov 00:00-06:00 UTC if late)",
+   "courses": [
+    {
+     "course": "ita_for_eng",
+     "roles": [
+      "known",
+      "target1"
+     ],
+     "asks": 28,
+     "freeInCourse": 0,
+     "slots": 39,
+     "chars": 743
+    },
+    {
+     "course": "eng_for_hin",
+     "roles": [
+      "target1",
+      "target2"
+     ],
+     "asks": 16,
+     "freeInCourse": 0,
+     "slots": 16,
+     "chars": 566
+    },
+    {
+     "course": "eng_for_urd",
+     "roles": [
+      "target1",
+      "target2"
+     ],
+     "asks": 23,
+     "freeInCourse": 0,
+     "slots": 23,
+     "chars": 522
+    },
+    {
+     "course": "eng_for_ben",
+     "roles": [
+      "known",
+      "presentation"
+     ],
+     "asks": 7,
+     "freeInCourse": 0,
+     "slots": 7,
+     "chars": 358
+    },
+    {
+     "course": "zho_for_eng",
+     "roles": [
+      "known"
+     ],
+     "asks": 3,
+     "freeInCourse": 0,
+     "slots": 3,
+     "chars": 76
+    },
+    {
+     "course": "por_for_eng",
+     "roles": [
+      "known",
+      "target1",
+      "target2"
+     ],
+     "asks": 19843,
+     "freeInCourse": 76,
+     "slots": 23830,
+     "chars": 582004
+    }
+   ],
+   "dayChars": 584269,
+   "runningChars": 584269
+  },
+  {
+   "day": "Day 2",
+   "window": "20 Nov UTC",
+   "courses": [
+    {
+     "course": "jpn_for_eng",
+     "roles": [
+      "known",
+      "target1",
+      "target2"
+     ],
+     "asks": 16527,
+     "freeInCourse": 22,
+     "slots": 20554,
+     "chars": 161994
+    },
+    {
+     "course": "kor_for_eng",
+     "roles": [
+      "target1",
+      "target2"
+     ],
+     "asks": 17674,
+     "freeInCourse": 133,
+     "slots": 22720,
+     "chars": 225426
+    }
+   ],
+   "dayChars": 387420,
+   "runningChars": 971689
+  },
+  {
+   "day": "Day 3",
+   "window": "21 Nov UTC",
+   "courses": [
+    {
+     "course": "eng_for_tel",
+     "roles": [
+      "known",
+      "presentation",
+      "target1",
+      "target2"
+     ],
+     "asks": 13216,
+     "freeInCourse": 0,
+     "slots": 14713,
+     "chars": 501496
+    }
+   ],
+   "dayChars": 501496,
+   "runningChars": 1473185
+  },
+  {
+   "day": "Day 4",
+   "window": "22 Nov UTC (Popty's Cartesia cycle restarts 23 Nov 00:00 UTC: tts-spend-guard cycleStartDay 23)",
+   "courses": [
+    {
+     "course": "eng_for_tam",
+     "roles": [
+      "known",
+      "presentation",
+      "target1",
+      "target2"
+     ],
+     "asks": 12902,
+     "freeInCourse": 0,
+     "slots": 14094,
+     "chars": 488964
+    }
+   ],
+   "dayChars": 488964,
+   "runningChars": 1962149
+  }
+ ]
+}
