@@ -5,10 +5,18 @@ Reads one course through Popty's own route GET /api/production/<course>/script-v
   {course, seeds:[{n, known, target, status, legos:[{id, idx, type, is_new, known, target,
      phrases:[{id, pos, type, known, target, ka, t1, t2}]}]}]}
 ka/t1/t2 = known / target1 / target2 audio uuid (None = empty slot). No database access of its own.
-Usage: python3 -I dump-course.py <course_code> <out.json> [max_seed=700]"""
-import json, sys, urllib.request, time
+cs #968·AI: by DEFAULT this now reads the NIGHTLY COPY (copy-read.cjs dump, same shape plus source "qa-copy"). The old
+live script-view read runs only with --live-ok '<why>' AND 22:00-07:00 UK (../paid_cleanup_livegate.py); else exit 77.
+Usage: python3 -I dump-course.py <course_code> <out.json> [max_seed=700] [--live-ok '<why>']"""
+import json, os, sys, urllib.request, time
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))  # copykit (which installs the live gate)
+import copykit, paid_cleanup_livegate as livegate
 course, out = sys.argv[1], sys.argv[2]
 max_seed = int(sys.argv[3]) if len(sys.argv) > 3 else 700
+if livegate.WHY is None:  # no flag: the nightly copy, never live
+    copykit.copy_read('dump', course, out, max_seed)
+    sys.exit(0)
+livegate.require_live(f'dump-course.py {course}: live script-view read')
 seeds = []
 for a in range(1, max_seed + 1, 50):
     url = f"http://localhost:3470/api/production/{course}/script-view?seedStart=S{a:04d}&seedEnd=S{a+49:04d}"

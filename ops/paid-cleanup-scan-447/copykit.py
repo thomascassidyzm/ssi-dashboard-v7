@@ -6,15 +6,25 @@ those (script-view, lego basket, seed baskets, course-builder /v2/validate) read
 cancelled on 19 Nov.
 
 DRY RUNS go to Popty's edit door, POST /api/production/<course>/edit-batch WITHOUT "apply" (the real transaction,
-rolled back), in chunks of at most 100 ops (the door refuses more: BULK_EDIT), paced, and only while GET /health shows
-dbLoadGate governed and green. That is the one call these kits make towards live, and it applies nothing.
+rolled back), in chunks of at most 10 ops, paced, and only while GET /health shows dbLoadGate governed and green.
+That is the one call these kits make towards live, and it applies nothing.
+
+LIVE GATE (cs #968·AI, after 19 Nov INCIDENT 3): that dry run, its /health wait and any other call to a Popty port are
+REFUSED unless the command carries --live-ok '<why>' AND it is 22:00-07:00 Europe/London (../paid_cleanup_livegate.py,
+imported below, which also takes the flag out of sys.argv). A stale worker running a kit in the daytime stops at the gate
+with exit 77 before anything is sent. Chunks above 10 are clamped to 10 and the tool says so.
 """
 import hashlib, json, os, subprocess, sys, time, urllib.request, urllib.error
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))  # ops/ (the shared live gate)
+import paid_cleanup_livegate as livegate
+livegate.install()
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CR = os.path.join(HERE, 'copy-read.cjs')
 POPTY = 'http://localhost:3470'
-MAX_CHUNK = 100
+MAX_CHUNK = livegate.MAX_CHUNK  # 10 (was 100 until cs #968·AI)
+DEFAULT_CHUNK = 10
 
 
 def copy_read(*args):
@@ -50,6 +60,7 @@ def components(course, seed, cache_dir):
 
 def gate(max_wait=1800):
     """wait until Popty's load gate is governed and green; back off 30 s, 60 s, ... (cap 300 s)."""
+    livegate.require_live('copykit.gate GET :3470/health')
     t0, back = time.time(), 30
     while True:
         try:
@@ -66,10 +77,10 @@ def gate(max_wait=1800):
         back = min(back * 2, 300)
 
 
-def dryrun(course, plan_file, agent, chunk=50, pause=2.0):
+def dryrun(course, plan_file, agent, chunk=DEFAULT_CHUNK, pause=2.0):
     """dry-run a plan's ops through the edit door; store every chunk's answer in the plan under "dryRun"."""
-    if not (1 <= chunk <= MAX_CHUNK):
-        sys.exit(f'--chunk must be 1..{MAX_CHUNK} (the edit door refuses more)')
+    livegate.require_live(f'edit-batch dry run of {os.path.basename(plan_file)} ({course})')  # before any file or HTTP work
+    chunk = livegate.clamp_chunk(chunk)
     plan = json.load(open(plan_file))
     ops = plan['ops']
     sig = hashlib.sha1(json.dumps(ops, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
