@@ -9,7 +9,7 @@ DRY RUNS go to Popty's edit door, POST /api/production/<course>/edit-batch WITHO
 rolled back), in chunks of at most 100 ops (the door refuses more: BULK_EDIT), paced, and only while GET /health shows
 dbLoadGate governed and green. That is the one call these kits make towards live, and it applies nothing.
 """
-import json, os, subprocess, sys, time, urllib.request, urllib.error
+import hashlib, json, os, subprocess, sys, time, urllib.request, urllib.error
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CR = os.path.join(HERE, 'copy-read.cjs')
@@ -61,7 +61,7 @@ def gate(max_wait=1800):
         if time.time() - t0 > max_wait:
             print(f'gate: load gate not green for {max_wait}s ({g}); stopping, re-run later', file=sys.stderr)
             sys.exit(75)
-        print(f'gate: dbLoadGate {g.get("level")} governed={g.get("governed")}; waiting {back}s', file=sys.stderr)
+        print(f'gate: dbLoadGate {g.get("level")} governed={g.get("governed")}; waiting {back}s', file=sys.stderr, flush=True)
         time.sleep(back)
         back = min(back * 2, 300)
 
@@ -72,9 +72,15 @@ def dryrun(course, plan_file, agent, chunk=50, pause=2.0):
         sys.exit(f'--chunk must be 1..{MAX_CHUNK} (the edit door refuses more)')
     plan = json.load(open(plan_file))
     ops = plan['ops']
+    sig = hashlib.sha1(json.dumps(ops, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
+    prev = plan.get('dryRun') or {}
+    # resumable: a chunk already answered 200 for these exact ops at this chunk size is not sent again
+    done = {c['from']: c for c in prev.get('chunks', []) if prev.get('ops_sig') == sig and prev.get('chunk') == chunk and c.get('status') == 200}
     results = []
     for i in range(0, max(1, len(ops)), chunk):
         part = ops[i:i + chunk]
+        if i in done:
+            results.append(done[i]); continue
         if any('apply' in o for o in part):
             sys.exit('an op carries "apply"; refused')
         body = {'ops': part}
@@ -90,10 +96,14 @@ def dryrun(course, plan_file, agent, chunk=50, pause=2.0):
             status, ans = e.code, json.loads(e.read() or b'{}')
         results.append({'from': i, 'n': len(part), 'status': status, 'secs': round(time.time() - t, 1),
                         'gate': g.get('level'), 'answer': ans})
-        print(course, f'ops {i}-{i + len(part) - 1}', status, json.dumps(ans, ensure_ascii=False)[:300])
+        print(course, f'ops {i}-{i + len(part) - 1}', status, f'{results[-1]["secs"]}s', json.dumps(ans, ensure_ascii=False)[:300], flush=True)
+        # saved after EVERY chunk, so a stopped run keeps its answers and a re-run resumes
+        plan['dryRun'] = {'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'route': 'POST /api/production/<course>/edit-batch (no apply)',
+                          'agent': agent, 'chunk': chunk, 'ops_sig': sig, 'complete': i + chunk >= len(ops), 'chunks': results}
+        json.dump(plan, open(plan_file, 'w'), ensure_ascii=False, indent=1)
         time.sleep(pause)
     plan['dryRun'] = {'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'route': 'POST /api/production/<course>/edit-batch (no apply)',
-                      'agent': agent, 'chunk': chunk, 'chunks': results}
+                      'agent': agent, 'chunk': chunk, 'ops_sig': sig, 'complete': True, 'chunks': results}
     json.dump(plan, open(plan_file, 'w'), ensure_ascii=False, indent=1)
     ok = bool(results) and all(c['status'] == 200 for c in results)
     print(course, 'dry run', 'OK' if ok else 'NOT OK', f'{len(results)} chunk(s) of <= {chunk}')
