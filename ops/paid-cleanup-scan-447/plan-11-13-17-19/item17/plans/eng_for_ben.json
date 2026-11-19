@@ -1761,10 +1761,23 @@
      "word_count": 5,
      "lego_position": "start",
      "lego_count": 1
+    },
+    {
+     "id": "eng_for_ben:S0615L02B05",
+     "course_code": "eng_for_ben",
+     "seed_number": 615,
+     "lego_index": 2,
+     "known_text": "আমি জানি তুমি খুব সাহসী ছিলে",
+     "target_text": "I know you were very brave",
+     "phrase_role": "build",
+     "position": 14,
+     "word_count": 6,
+     "lego_position": "middle",
+     "lego_count": 1
     }
    ],
    "basket_after": {
-    "build": 3,
+    "build": 4,
     "use": 5
    },
    "extra": [
@@ -1854,6 +1867,21 @@
     {
      "op": "phrase.insert",
      "row": {
+      "id": "eng_for_ben:S0615L03B04",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "তুমি এটা বলতে সাহসী ছিলে",
+      "target_text": "you were brave to say that",
+      "phrase_role": "build",
+      "position": 4,
+      "word_count": 6,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
       "id": "eng_for_ben:S0615L03U01",
       "course_code": "eng_for_ben",
       "seed_number": 615,
@@ -1861,7 +1889,7 @@
       "known_text": "তুমি এটা বলতে খুব সাহসী ছিলে।",
       "target_text": "you were very brave to say that",
       "phrase_role": "use",
-      "position": 4,
+      "position": 5,
       "word_count": 7,
       "lego_count": 1
      }
@@ -1876,7 +1904,7 @@
       "known_text": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
       "target_text": "I thought you were very brave to say that",
       "phrase_role": "use",
-      "position": 5,
+      "position": 6,
       "word_count": 9,
       "lego_count": 1
      }
@@ -1891,7 +1919,7 @@
       "known_text": "আমি এটা বলতে চাই।",
       "target_text": "I want to say that",
       "phrase_role": "use",
-      "position": 6,
+      "position": 7,
       "word_count": 5,
       "lego_count": 1
      }
@@ -1906,7 +1934,7 @@
       "known_text": "আমি এটা বলতে চাইনি।",
       "target_text": "I didn't want to say that",
       "phrase_role": "use",
-      "position": 7,
+      "position": 8,
       "word_count": 6,
       "lego_count": 1
      }
@@ -1921,7 +1949,7 @@
       "known_text": "আমি এটা বলতে চেষ্টা করছি।",
       "target_text": "I'm trying to say that",
       "phrase_role": "use",
-      "position": 8,
+      "position": 9,
       "word_count": 5,
       "lego_count": 1
      }
@@ -2755,6 +2783,22 @@
    }
   },
   {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L02B05",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 2,
+    "known_text": "আমি জানি তুমি খুব সাহসী ছিলে",
+    "target_text": "I know you were very brave",
+    "phrase_role": "build",
+    "position": 14,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
    "op": "lego.insert",
    "row": {
     "seed_number": 615,
@@ -2840,6 +2884,21 @@
   {
    "op": "phrase.insert",
    "row": {
+    "id": "eng_for_ben:S0615L03B04",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "তুমি এটা বলতে সাহসী ছিলে",
+    "target_text": "you were brave to say that",
+    "phrase_role": "build",
+    "position": 4,
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
     "id": "eng_for_ben:S0615L03U01",
     "course_code": "eng_for_ben",
     "seed_number": 615,
@@ -2847,7 +2906,7 @@
     "known_text": "তুমি এটা বলতে খুব সাহসী ছিলে।",
     "target_text": "you were very brave to say that",
     "phrase_role": "use",
-    "position": 4,
+    "position": 5,
     "word_count": 7,
     "lego_count": 1
    }
@@ -2862,7 +2921,7 @@
     "known_text": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
     "target_text": "I thought you were very brave to say that",
     "phrase_role": "use",
-    "position": 5,
+    "position": 6,
     "word_count": 9,
     "lego_count": 1
    }
@@ -2877,7 +2936,7 @@
     "known_text": "আমি এটা বলতে চাই।",
     "target_text": "I want to say that",
     "phrase_role": "use",
-    "position": 6,
+    "position": 7,
     "word_count": 5,
     "lego_count": 1
    }
@@ -2892,7 +2951,7 @@
     "known_text": "আমি এটা বলতে চাইনি।",
     "target_text": "I didn't want to say that",
     "phrase_role": "use",
-    "position": 7,
+    "position": 8,
     "word_count": 6,
     "lego_count": 1
    }
@@ -2907,7 +2966,7 @@
     "known_text": "আমি এটা বলতে চেষ্টা করছি।",
     "target_text": "I'm trying to say that",
     "phrase_role": "use",
-    "position": 8,
+    "position": 9,
     "word_count": 5,
     "lego_count": 1
    }
@@ -3105,5 +3164,6352 @@
     "target_text": "could I have something to drink please?"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:17:03Z",
+  "baseline_failing_seeds": 488,
+  "per_seed": {
+   "534": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: USE: need 5+, got 4"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: USE: need 5+, got 4"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "547": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "549": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "557": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "589": {
+    "seed_issues_planned": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "599": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "608": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "615": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: 1 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "616": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "626": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 1 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "630": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:23:53Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 50,
+    "status": 200,
+    "secs": 234.1,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0534L02"
+       },
+       "before": {
+        "id": "7ff62182-dbd9-4485-b654-21208bd54e97",
+        "seed_number": 534,
+        "lego_index": 2,
+        "lego_id": "S0534L02",
+        "known_text": "চলো ... বাইরে না যাই",
+        "target_text": "let's not go outside",
+        "known_audio_id": "c9632374-fc29-4181-86f5-6166bc331ea2",
+        "target1_audio_id": "d7454bd3-e8e6-47e4-806d-223850475032",
+        "target2_audio_id": "f20e2eac-07ff-4a3d-a5ad-f00c1f87e50f",
+        "presentation_audio_id": "01417ea1-878c-45e4-a17a-cb9eeb066916"
+       },
+       "after": {
+        "id": "7ff62182-dbd9-4485-b654-21208bd54e97",
+        "seed_number": 534,
+        "lego_index": 2,
+        "lego_id": "S0534L02",
+        "known_text": "চলো বাইরে না যাই",
+        "target_text": "let's not go outside",
+        "known_audio_id": null,
+        "target1_audio_id": "d7454bd3-e8e6-47e4-806d-223850475032",
+        "target2_audio_id": "f20e2eac-07ff-4a3d-a5ad-f00c1f87e50f",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0534L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0534L02B01",
+        "seed_number": 534,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "চলো ... বাইরে না যাই",
+        "target_text": "let's not go outside",
+        "known_audio_id": "c9632374-fc29-4181-86f5-6166bc331ea2",
+        "target1_audio_id": "d7454bd3-e8e6-47e4-806d-223850475032",
+        "target2_audio_id": "f20e2eac-07ff-4a3d-a5ad-f00c1f87e50f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0534L02B01",
+        "seed_number": 534,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "চলো বাইরে না যাই",
+        "target_text": "let's not go outside",
+        "known_audio_id": null,
+        "target1_audio_id": "d7454bd3-e8e6-47e4-806d-223850475032",
+        "target2_audio_id": "f20e2eac-07ff-4a3d-a5ad-f00c1f87e50f",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0547L02"
+       },
+       "before": {
+        "id": "9c784041-4cbd-4c5a-b5a3-5a86798528dd",
+        "seed_number": 547,
+        "lego_index": 2,
+        "lego_id": "S0547L02",
+        "known_text": "কারণ সে ... খেলছিল",
+        "target_text": "because he has been playing",
+        "known_audio_id": "921f64a5-ad27-425f-b564-34450f7134a5",
+        "target1_audio_id": "23799ad8-c716-4429-89f0-a27043193f46",
+        "target2_audio_id": "ba89052b-2d9a-4f14-815d-8bff516324bb",
+        "presentation_audio_id": "22806b21-390d-4da2-b551-1cade752de02"
+       },
+       "after": {
+        "id": "9c784041-4cbd-4c5a-b5a3-5a86798528dd",
+        "seed_number": 547,
+        "lego_index": 2,
+        "lego_id": "S0547L02",
+        "known_text": "কারণ সে খেলছিল",
+        "target_text": "because he has been playing",
+        "known_audio_id": null,
+        "target1_audio_id": "23799ad8-c716-4429-89f0-a27043193f46",
+        "target2_audio_id": "ba89052b-2d9a-4f14-815d-8bff516324bb",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0547L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0547L02B01",
+        "seed_number": 547,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "কারণ সে ... খেলছিল",
+        "target_text": "because he has been playing",
+        "known_audio_id": "921f64a5-ad27-425f-b564-34450f7134a5",
+        "target1_audio_id": "23799ad8-c716-4429-89f0-a27043193f46",
+        "target2_audio_id": "ba89052b-2d9a-4f14-815d-8bff516324bb",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0547L02B01",
+        "seed_number": 547,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "কারণ সে খেলছিল",
+        "target_text": "because he has been playing",
+        "known_audio_id": null,
+        "target1_audio_id": "23799ad8-c716-4429-89f0-a27043193f46",
+        "target2_audio_id": "ba89052b-2d9a-4f14-815d-8bff516324bb",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0549L02"
+       },
+       "before": {
+        "id": "f570d8a6-28b3-49d1-b89c-0d7bfc7d5382",
+        "seed_number": 549,
+        "lego_index": 2,
+        "lego_id": "S0549L02",
+        "known_text": "আমাকে ... থাকতে হবে",
+        "target_text": "I have got to be",
+        "known_audio_id": "bfd53516-57c1-4c9b-ae5d-8e911330aa18",
+        "target1_audio_id": "1995bc30-0133-4db1-aec5-b72d118781fe",
+        "target2_audio_id": "ea766150-9dcb-4767-b1c2-e99b85a4bb3c",
+        "presentation_audio_id": "253c7650-59ee-493d-83ed-256900c5998e"
+       },
+       "after": {
+        "id": "f570d8a6-28b3-49d1-b89c-0d7bfc7d5382",
+        "seed_number": 549,
+        "lego_index": 2,
+        "lego_id": "S0549L02",
+        "known_text": "আমাকে থাকতে হবে",
+        "target_text": "I have got to be",
+        "known_audio_id": null,
+        "target1_audio_id": "1995bc30-0133-4db1-aec5-b72d118781fe",
+        "target2_audio_id": "ea766150-9dcb-4767-b1c2-e99b85a4bb3c",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0549L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0549L02B01",
+        "seed_number": 549,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমাকে ... থাকতে হবে",
+        "target_text": "I have got to be",
+        "known_audio_id": "bfd53516-57c1-4c9b-ae5d-8e911330aa18",
+        "target1_audio_id": "1995bc30-0133-4db1-aec5-b72d118781fe",
+        "target2_audio_id": "ea766150-9dcb-4767-b1c2-e99b85a4bb3c",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0549L02B01",
+        "seed_number": 549,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমাকে থাকতে হবে",
+        "target_text": "I have got to be",
+        "known_audio_id": null,
+        "target1_audio_id": "1995bc30-0133-4db1-aec5-b72d118781fe",
+        "target2_audio_id": "ea766150-9dcb-4767-b1c2-e99b85a4bb3c",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0557L02"
+       },
+       "before": {
+        "id": "6519406d-c355-4729-a1d4-9c4355ed2eb9",
+        "seed_number": 557,
+        "lego_index": 2,
+        "lego_id": "S0557L02",
+        "known_text": "চাই তারা ... না বাজাক",
+        "target_text": "wish they wouldn't play",
+        "known_audio_id": "cea82c08-e36d-423f-8d97-8201622cd859",
+        "target1_audio_id": "5b7fa58e-5566-4c33-a9e8-0d124adfe8f3",
+        "target2_audio_id": "87c40fee-0cd6-46ee-b09a-778b438e76ac",
+        "presentation_audio_id": "b12014be-c4ac-4de9-8fdc-884f5f0a4e3b"
+       },
+       "after": {
+        "id": "6519406d-c355-4729-a1d4-9c4355ed2eb9",
+        "seed_number": 557,
+        "lego_index": 2,
+        "lego_id": "S0557L02",
+        "known_text": "চাই তারা না বাজাক",
+        "target_text": "wish they wouldn't play",
+        "known_audio_id": null,
+        "target1_audio_id": "5b7fa58e-5566-4c33-a9e8-0d124adfe8f3",
+        "target2_audio_id": "87c40fee-0cd6-46ee-b09a-778b438e76ac",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0557L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0557L02B01",
+        "seed_number": 557,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "চাই তারা ... না বাজাক",
+        "target_text": "wish they wouldn't play",
+        "known_audio_id": "cea82c08-e36d-423f-8d97-8201622cd859",
+        "target1_audio_id": "5b7fa58e-5566-4c33-a9e8-0d124adfe8f3",
+        "target2_audio_id": "87c40fee-0cd6-46ee-b09a-778b438e76ac",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0557L02B01",
+        "seed_number": 557,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "চাই তারা না বাজাক",
+        "target_text": "wish they wouldn't play",
+        "known_audio_id": null,
+        "target1_audio_id": "5b7fa58e-5566-4c33-a9e8-0d124adfe8f3",
+        "target2_audio_id": "87c40fee-0cd6-46ee-b09a-778b438e76ac",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0589L02"
+       },
+       "before": {
+        "id": "e2dd2823-8ac3-4649-bc9f-8305d6157de8",
+        "seed_number": 589,
+        "lego_index": 2,
+        "lego_id": "S0589L02",
+        "known_text": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+        "target_text": "told me she'd just seen",
+        "known_audio_id": "1c940ec7-0aa8-4f9d-bd88-33afb9615b0f",
+        "target1_audio_id": "ad8c219f-bbe0-4978-83e0-8c4d57d1df97",
+        "target2_audio_id": "eec3f6a2-40ce-4998-8dfd-8312846928ac",
+        "presentation_audio_id": "b31dc957-c930-4009-99de-dc90cfd9af93"
+       },
+       "after": {
+        "id": "e2dd2823-8ac3-4649-bc9f-8305d6157de8",
+        "seed_number": 589,
+        "lego_index": 2,
+        "lego_id": "S0589L02",
+        "known_text": "আমাকে বলল সে এইমাত্র দেখেছে",
+        "target_text": "told me she'd just seen",
+        "known_audio_id": null,
+        "target1_audio_id": "ad8c219f-bbe0-4978-83e0-8c4d57d1df97",
+        "target2_audio_id": "eec3f6a2-40ce-4998-8dfd-8312846928ac",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0589L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0589L02B01",
+        "seed_number": 589,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+        "target_text": "told me she'd just seen",
+        "known_audio_id": "1c940ec7-0aa8-4f9d-bd88-33afb9615b0f",
+        "target1_audio_id": "ad8c219f-bbe0-4978-83e0-8c4d57d1df97",
+        "target2_audio_id": "eec3f6a2-40ce-4998-8dfd-8312846928ac",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0589L02B01",
+        "seed_number": 589,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমাকে বলল সে এইমাত্র দেখেছে",
+        "target_text": "told me she'd just seen",
+        "known_audio_id": null,
+        "target1_audio_id": "ad8c219f-bbe0-4978-83e0-8c4d57d1df97",
+        "target2_audio_id": "eec3f6a2-40ce-4998-8dfd-8312846928ac",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0616L01"
+       },
+       "before": {
+        "id": "fd7e999a-54dd-404d-a616-565ab9c84834",
+        "seed_number": 616,
+        "lego_index": 1,
+        "lego_id": "S0616L01",
+        "known_text": "তুমি ... মনে করেছিলে",
+        "target_text": "you thought",
+        "known_audio_id": "5260e7a6-63aa-49a0-88dd-718e9d5b7e3d",
+        "target1_audio_id": "293e6f81-f228-4eba-8b20-ad17d4156276",
+        "target2_audio_id": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+        "presentation_audio_id": "b199e5c9-d4d2-4d1f-bd64-3bc9fc255148"
+       },
+       "after": {
+        "id": "fd7e999a-54dd-404d-a616-565ab9c84834",
+        "seed_number": 616,
+        "lego_index": 1,
+        "lego_id": "S0616L01",
+        "known_text": "তুমি মনে করেছিলে",
+        "target_text": "you thought",
+        "known_audio_id": null,
+        "target1_audio_id": "293e6f81-f228-4eba-8b20-ad17d4156276",
+        "target2_audio_id": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0616L01B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0616L01B01",
+        "seed_number": 616,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "তুমি ... মনে করেছিলে",
+        "target_text": "you thought",
+        "known_audio_id": "5260e7a6-63aa-49a0-88dd-718e9d5b7e3d",
+        "target1_audio_id": "293e6f81-f228-4eba-8b20-ad17d4156276",
+        "target2_audio_id": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0616L01B01",
+        "seed_number": 616,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "তুমি মনে করেছিলে",
+        "target_text": "you thought",
+        "known_audio_id": null,
+        "target1_audio_id": "293e6f81-f228-4eba-8b20-ad17d4156276",
+        "target2_audio_id": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0626L02"
+       },
+       "before": {
+        "id": "455d2cf3-4ba3-493c-804b-c418ce6a2bfe",
+        "seed_number": 626,
+        "lego_index": 2,
+        "lego_id": "S0626L02",
+        "known_text": "না, ... ধন্যবাদ",
+        "is_new": true,
+        "target_text": "no thank you",
+        "known_audio_id": "924fa644-b0a9-4150-b82c-4f94a2830407",
+        "target1_audio_id": "9bc2b00e-f007-4d9b-9713-af5377c71657",
+        "target2_audio_id": "b0425644-96b9-445c-91d8-3b549fe8236f",
+        "presentation_audio_id": "29967a4d-3ee5-46be-b9d4-b41b0158f80e"
+       },
+       "after": {
+        "id": "455d2cf3-4ba3-493c-804b-c418ce6a2bfe",
+        "seed_number": 626,
+        "lego_index": 2,
+        "lego_id": "S0626L02",
+        "known_text": "না ধন্যবাদ",
+        "is_new": false,
+        "target_text": "no thank you",
+        "known_audio_id": "ab74d07e-9c0b-4827-b43e-036f9715d88e",
+        "target1_audio_id": "9bc2b00e-f007-4d9b-9713-af5377c71657",
+        "target2_audio_id": "b0425644-96b9-445c-91d8-3b549fe8236f",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0626L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0626L02B01",
+        "seed_number": 626,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "না, ... ধন্যবাদ",
+        "target_text": "no thank you",
+        "known_audio_id": "924fa644-b0a9-4150-b82c-4f94a2830407",
+        "target1_audio_id": "9bc2b00e-f007-4d9b-9713-af5377c71657",
+        "target2_audio_id": "b0425644-96b9-445c-91d8-3b549fe8236f",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0626L02B01",
+        "seed_number": 626,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "না ধন্যবাদ",
+        "target_text": "no thank you",
+        "known_audio_id": "ab74d07e-9c0b-4827-b43e-036f9715d88e",
+        "target1_audio_id": "9bc2b00e-f007-4d9b-9713-af5377c71657",
+        "target2_audio_id": "b0425644-96b9-445c-91d8-3b549fe8236f",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.delete",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0626L02U01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0626L02U01",
+        "seed_number": 626,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+        "target_text": "no I'm not thirsty thank you",
+        "known_audio_id": "103f933a-0a04-4a37-b5a3-a268bffba0d2",
+        "target1_audio_id": "20771d47-c63d-47d6-a514-be92b7a9e1dc",
+        "target2_audio_id": "04836b8d-a5f4-44f3-a5ff-357feadc1d3b",
+        "presentation_audio_id": null
+       },
+       "after": null,
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0626L01U06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0626L01U06",
+        "seed_number": 626,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+        "target_text": "no I'm not thirsty thank you",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0599L02"
+       },
+       "before": {
+        "id": "e1dbb2b3-06f7-4fa9-8f61-bfdc9ebc91c8",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": "S0599L02",
+        "known_text": "খুশিমনে ... চালাতাম",
+        "target_text": "I'd have been happy to",
+        "components": [
+         {
+          "known": "খুশিমনে",
+          "target": "happy"
+         },
+         {
+          "known": "চালাতাম",
+          "target": "i'd have been"
+         }
+        ],
+        "known_audio_id": "4fe448e1-e324-46ff-8cde-f05544b86d77",
+        "target1_audio_id": "7db975cc-106f-4107-a731-9309304541af",
+        "target2_audio_id": "8e5ac0b0-a136-4bad-a65b-c942f08bc7f4",
+        "presentation_audio_id": "83ce08a9-5494-42c1-8a53-9e3d6985878c"
+       },
+       "after": {
+        "id": "e1dbb2b3-06f7-4fa9-8f61-bfdc9ebc91c8",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": "S0599L02",
+        "known_text": "খুশিমনে গাড়ি চালাতাম",
+        "target_text": "I'd have been happy to drive",
+        "components": [
+         {
+          "known": "খুশিমনে",
+          "target": "happy"
+         },
+         {
+          "known": "গাড়ি চালাতাম",
+          "target": "to drive"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": "6187a53e-cb9e-46a1-8abc-cf8f425bbad6",
+        "target2_audio_id": "cb0e4f20-e566-497e-838a-5376fa9c51af",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02B01",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "খুশিমনে ... চালাতাম",
+        "target_text": "I'd have been happy to",
+        "known_audio_id": "4fe448e1-e324-46ff-8cde-f05544b86d77",
+        "target1_audio_id": "7db975cc-106f-4107-a731-9309304541af",
+        "target2_audio_id": "8e5ac0b0-a136-4bad-a65b-c942f08bc7f4",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02B01",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "খুশিমনে গাড়ি চালাতাম",
+        "target_text": "I'd have been happy to drive",
+        "known_audio_id": null,
+        "target1_audio_id": "6187a53e-cb9e-46a1-8abc-cf8f425bbad6",
+        "target2_audio_id": "cb0e4f20-e566-497e-838a-5376fa9c51af",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02B02"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02B02",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "এখন খুশিমনে চালাতাম",
+        "target_text": "I'd have been happy to now",
+        "known_audio_id": "831f04c8-8af6-4eb7-ae52-c627c65c0e1d",
+        "target1_audio_id": "7d761847-f5b9-4d3b-b38a-581d98d06916",
+        "target2_audio_id": "b4fde626-0792-421a-8701-1537938eda71",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02B02",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আজ খুশিমনে গাড়ি চালাতাম",
+        "target_text": "I'd have been happy to drive today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02B03"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02B03",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আজ খুশিমনে চালাতাম",
+        "target_text": "I'd have been happy to today",
+        "known_audio_id": "ba95d15a-d07d-4214-82eb-ffe4fccbaebf",
+        "target1_audio_id": "eae60d75-340d-407d-b7f5-ee19febf1808",
+        "target2_audio_id": "0d2a4fd2-8ab5-49ed-8e1e-d92f09bee6d2",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02B03",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "গতকাল খুশিমনে গাড়ি চালাতাম",
+        "target_text": "I'd have been happy to drive yesterday",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02U02"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02U02",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমরা জানি খুশিমনে চালাতাম।",
+        "target_text": "we know I'd have been happy to",
+        "known_audio_id": "77feaca3-0cc7-4ae4-9129-b3e5e3ee39c9",
+        "target1_audio_id": "3ffd096c-a8a7-47bb-b471-2e9c7d440e76",
+        "target2_audio_id": "fbb6f5ff-06e7-410b-a817-db7a90145241",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02U02",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমরা জানি আমি খুশিমনে গাড়ি চালাতাম।",
+        "target_text": "we know I'd have been happy to drive",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02U03"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02U03",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "সে বলেছিল খুশিমনে চালাতাম।",
+        "target_text": "she said I'd have been happy to",
+        "known_audio_id": "a0f42a22-377b-4f12-87cd-1329384bc35d",
+        "target1_audio_id": "1677ac0d-5db1-41c2-bfd6-f41a64e0b1f8",
+        "target2_audio_id": "32baf940-716f-4a7a-b116-edb7fb7f1c19",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02U03",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "সে বলেছিল আমি খুশিমনে গাড়ি চালাতাম।",
+        "target_text": "she said I'd have been happy to drive",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02U04"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02U04",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমার বাবা জানেন খুশিমনে চালাতাম।",
+        "target_text": "my father knows I'd have been happy to",
+        "known_audio_id": "085060a0-cf95-4f05-b6c8-229cb0c96fde",
+        "target1_audio_id": "aeeef017-14d7-4302-a067-7010e9ab1e43",
+        "target2_audio_id": "0df88c9e-cae5-4fe5-9835-c46981099788",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02U04",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমার বাবা জানেন আমি খুশিমনে গাড়ি চালাতাম।",
+        "target_text": "my father knows I'd have been happy to drive",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 23,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0599L02U05"
+       },
+       "before": {
+        "id": "eng_for_ben:S0599L02U05",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমি জানি খুশিমনে চালাতাম।",
+        "target_text": "I know I'd have been happy to",
+        "known_audio_id": "de9e9a65-92e6-47ff-a718-5f20f7f93791",
+        "target1_audio_id": "80bd6939-6cf5-4bf0-b294-6667d586f63d",
+        "target2_audio_id": "bc01f309-706a-4891-ae90-5f70dac75b30",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0599L02U05",
+        "seed_number": 599,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমি জানি আমি খুশিমনে গাড়ি চালাতাম।",
+        "target_text": "I know I'd have been happy to drive",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 24,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0608L03"
+       },
+       "before": {
+        "id": "d74a2c16-a3bc-44aa-92b8-614dd2d9ee7e",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": "S0608L03",
+        "known_text": "এটাই ... কাজ হত",
+        "target_text": "would have been the thing",
+        "components": [
+         {
+          "known": "এটাই",
+          "target": "it"
+         },
+         {
+          "known": "হত",
+          "target": "would have been"
+         }
+        ],
+        "known_audio_id": "d7db763e-cd06-48d9-815e-78f3ec9e8827",
+        "target1_audio_id": "da71c222-e376-40c5-9370-0132f37f5641",
+        "target2_audio_id": "a960791b-de4f-49e4-a268-2ad7157c67e2",
+        "presentation_audio_id": "df5c25bc-4f22-4bd2-8479-1a8e72f8eae2"
+       },
+       "after": {
+        "id": "d74a2c16-a3bc-44aa-92b8-614dd2d9ee7e",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": "S0608L03",
+        "known_text": "এটাই হত",
+        "target_text": "it would have been",
+        "components": [
+         {
+          "known": "এটাই",
+          "target": "it"
+         },
+         {
+          "known": "হত",
+          "target": "would have been"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 25,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0608L03B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0608L03B01",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটাই ... কাজ হত",
+        "target_text": "would have been the thing",
+        "known_audio_id": "d7db763e-cd06-48d9-815e-78f3ec9e8827",
+        "target1_audio_id": "da71c222-e376-40c5-9370-0132f37f5641",
+        "target2_audio_id": "a960791b-de4f-49e4-a268-2ad7157c67e2",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0608L03B01",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটাই হত",
+        "target_text": "it would have been",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 26,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0608L03B02"
+       },
+       "before": {
+        "id": "eng_for_ben:S0608L03B02",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এখন এটাই কাজ হত",
+        "target_text": "would have been the thing now",
+        "known_audio_id": "99f45be1-6cd3-4e6f-9cdd-6d5a96ad50b1",
+        "target1_audio_id": "2c860ed6-4955-49a6-9a13-0c766d20dad6",
+        "target2_audio_id": "eba1a423-c901-463d-a673-93b458d7b220",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0608L03B02",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটাই বুদ্ধিমানের কাজ হত",
+        "target_text": "it would have been the sensible thing",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 27,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0608L03B03"
+       },
+       "before": {
+        "id": "eng_for_ben:S0608L03B03",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আজ এটাই কাজ হত",
+        "target_text": "would have been the thing today",
+        "known_audio_id": "8ad6605d-e0c7-4a2c-bb13-c7c2a55362b0",
+        "target1_audio_id": "dd80448a-ca3d-469f-970a-523e61e9abbb",
+        "target2_audio_id": "fa7c5e88-5a90-4f2d-9130-5418d9d226bf",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0608L03B03",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটাই করার বুদ্ধিমানের কাজ হত",
+        "target_text": "it would have been the sensible thing to do",
+        "known_audio_id": null,
+        "target1_audio_id": "26d1dbb7-ab5c-45b6-8e74-49d1e3449fca",
+        "target2_audio_id": "345afed2-de74-43a6-be29-56717922803a",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 28,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0608L03U04"
+       },
+       "before": {
+        "id": "eng_for_ben:S0608L03U04",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমার বাবা জানেন এটাই কাজ হত।",
+        "target_text": "my father knows would have been the thing",
+        "known_audio_id": "b132d6de-48b9-4cb5-b2d1-2eff869b67c5",
+        "target1_audio_id": "b663b829-8aba-43fd-98b3-5d4b8ce75f19",
+        "target2_audio_id": "686c5407-6350-40c6-a3ea-16980d0a08e6",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0608L03U04",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমার বাবা জানেন এটাই বুদ্ধিমানের কাজ হত।",
+        "target_text": "my father knows it would have been the sensible thing",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 29,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0608L03U05"
+       },
+       "before": {
+        "id": "eng_for_ben:S0608L03U05",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমি জানি এটাই কাজ হত।",
+        "target_text": "I know would have been the thing",
+        "known_audio_id": "4d128c3e-8264-4138-963c-1ea7eadffb14",
+        "target1_audio_id": "82ac4e81-f427-4372-9796-a372996d8ad3",
+        "target2_audio_id": "e2a4ed16-92bb-4ffa-aa8d-590991f2e98d",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0608L03U05",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমি জানি এটাই বুদ্ধিমানের কাজ হত।",
+        "target_text": "I know it would have been the sensible thing",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 30,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0608L03U06"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0608L03U06",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "সে বলেছিল এটাই বুদ্ধিমানের কাজ হত।",
+        "target_text": "she said it would have been the sensible thing",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 31,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0608L03U07"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0608L03U07",
+        "seed_number": 608,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমরা জানি এটাই করার বুদ্ধিমানের কাজ হত।",
+        "target_text": "we know it would have been the sensible thing to do",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 32,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "lego_id": "S0615L02"
+       },
+       "before": {
+        "id": "9e1e5c83-e29d-4968-943b-954816c7b7dd",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": "S0615L02",
+        "known_text": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+        "target_text": "I thought you were to say that",
+        "components": [
+         {
+          "known": "মনে করতাম",
+          "target": "i thought"
+         },
+         {
+          "known": "তুমি",
+          "target": "you were"
+         },
+         {
+          "known": "এটা বলতে",
+          "target": "to say that"
+         }
+        ],
+        "known_audio_id": "6801177c-b3c1-42b6-9ec3-2f1beeb8bf34",
+        "target1_audio_id": "b5f6d6b3-47bc-4923-ac95-e5389e3ea9a5",
+        "target2_audio_id": "c3c31628-662b-458d-ba25-2c25195d8cde",
+        "presentation_audio_id": "40069991-6f4e-4921-aca6-ceeefc2da9b4"
+       },
+       "after": {
+        "id": "9e1e5c83-e29d-4968-943b-954816c7b7dd",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": "S0615L02",
+        "known_text": "তুমি খুব সাহসী ছিলে",
+        "target_text": "you were very brave",
+        "components": [
+         {
+          "known": "তুমি",
+          "target": "you"
+         },
+         {
+          "known": "খুব সাহসী",
+          "target": "very brave"
+         },
+         {
+          "known": "ছিলে",
+          "target": "were"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": "28428e6e-a25f-43a9-a738-27522615e55b",
+        "target2_audio_id": "59136328-49e4-48d9-adce-d93fc490f616",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 33,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0615L02B01"
+       },
+       "before": {
+        "id": "eng_for_ben:S0615L02B01",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+        "target_text": "I thought you were to say that",
+        "known_audio_id": "6801177c-b3c1-42b6-9ec3-2f1beeb8bf34",
+        "target1_audio_id": "b5f6d6b3-47bc-4923-ac95-e5389e3ea9a5",
+        "target2_audio_id": "c3c31628-662b-458d-ba25-2c25195d8cde",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0615L02B01",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "তুমি খুব সাহসী ছিলে",
+        "target_text": "you were very brave",
+        "known_audio_id": null,
+        "target1_audio_id": "28428e6e-a25f-43a9-a738-27522615e55b",
+        "target2_audio_id": "59136328-49e4-48d9-adce-d93fc490f616",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 34,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0615L02B03"
+       },
+       "before": {
+        "id": "eng_for_ben:S0615L02B03",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আজ মনে করতাম তুমি এটা বলতে",
+        "target_text": "I thought you were to say that today",
+        "known_audio_id": "cda959c2-58f4-42e3-99bb-d6fa35fd1a4a",
+        "target1_audio_id": "51c32c87-b4eb-44ab-8daa-812a0766ddf0",
+        "target2_audio_id": "ccd34fbf-7823-4c84-ba62-e06449299b60",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0615L02B03",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আজ তুমি খুব সাহসী ছিলে",
+        "target_text": "you were very brave today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 35,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0615L02U02"
+       },
+       "before": {
+        "id": "eng_for_ben:S0615L02U02",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমরা জানি মনে করতাম তুমি এটা বলতে।",
+        "target_text": "we know I thought you were to say that",
+        "known_audio_id": "05509699-7399-49f1-917e-4e53cd242781",
+        "target1_audio_id": "b7ccc0b9-fb00-4dc4-a328-d8ca145b0fc0",
+        "target2_audio_id": "745ff018-bfdc-4a85-8140-c1213aba11c3",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0615L02U02",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমরা জানি তুমি খুব সাহসী ছিলে।",
+        "target_text": "we know you were very brave",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 36,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0615L02U03"
+       },
+       "before": {
+        "id": "eng_for_ben:S0615L02U03",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "সে বলেছিল মনে করতাম তুমি এটা বলতে।",
+        "target_text": "she said I thought you were to say that",
+        "known_audio_id": "6915c7be-d473-41cd-9052-87c34b5642e0",
+        "target1_audio_id": "b9a9042e-2ba5-4e7d-a54f-4d8c7a55f636",
+        "target2_audio_id": "506deea5-1bd2-4380-a726-e118c7c834fa",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0615L02U03",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "সে বলেছিল তুমি খুব সাহসী ছিলে।",
+        "target_text": "she said you were very brave",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 37,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0615L02U04"
+       },
+       "before": {
+        "id": "eng_for_ben:S0615L02U04",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমার বাবা জানেন মনে করতাম তুমি এটা বলতে।",
+        "target_text": "my father knows I thought you were to say that",
+        "known_audio_id": "a4066c0a-89c3-4c8b-95e6-36e4b3590f1d",
+        "target1_audio_id": "82017ebd-dd7b-4d2b-b596-5c218956188e",
+        "target2_audio_id": "0b894aad-1464-4700-a648-2baa074eff05",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0615L02U04",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমার বাবা জানেন তুমি খুব সাহসী ছিলে।",
+        "target_text": "my father knows you were very brave",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 38,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_ben",
+        "id": "eng_for_ben:S0615L02U05"
+       },
+       "before": {
+        "id": "eng_for_ben:S0615L02U05",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমি জানি মনে করতাম তুমি এটা বলতে।",
+        "target_text": "I know I thought you were to say that",
+        "known_audio_id": "ff73e0c7-0f24-4ed1-ac3a-965c4b9e53de",
+        "target1_audio_id": "94e35aeb-30f3-454e-9668-f48ccf8e43a6",
+        "target2_audio_id": "21b49d4f-3f73-4423-9ba0-fe410fd4392a",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_ben:S0615L02U05",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমি মনে করতাম তুমি খুব সাহসী ছিলে।",
+        "target_text": "I thought you were very brave",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 39,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L02B04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L02B04",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "গতকাল তুমি খুব সাহসী ছিলে",
+        "target_text": "you were very brave yesterday",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 40,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L02B05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L02B05",
+        "seed_number": 615,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "আমি জানি তুমি খুব সাহসী ছিলে",
+        "target_text": "I know you were very brave",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 41,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 615,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "d48396bf-7934-4597-9d27-d93a63e583a3",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": "S0615L03",
+        "known_text": "এটা বলতে",
+        "target_text": "to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 42,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 615,
+        "lego_index": 4
+       },
+       "before": null,
+       "after": {
+        "id": "4d400e50-5d6a-407d-9479-e346699be454",
+        "seed_number": 615,
+        "lego_index": 4,
+        "lego_id": "S0615L04",
+        "known_text": "মনে করতাম",
+        "target_text": "I thought",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 43,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03B01",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটা বলতে",
+        "target_text": "to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 44,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03B02",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটা বলতে সাহসী",
+        "target_text": "brave to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 45,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03B03",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "এটা বলতে খুব সাহসী",
+        "target_text": "very brave to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 46,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03B04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03B04",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "তুমি এটা বলতে সাহসী ছিলে",
+        "target_text": "you were brave to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 47,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03U01",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "তুমি এটা বলতে খুব সাহসী ছিলে।",
+        "target_text": "you were very brave to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 48,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03U02",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+        "target_text": "I thought you were very brave to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 49,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_ben:S0615L03U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_ben:S0615L03U03",
+        "seed_number": 615,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "আমি এটা বলতে চাই।",
+        "target_text": "I want to say that",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0534L02",
+         "S0547L02",
+         "S0549L02",
+         "S0557L02",
+         "S0589L02",
+         "S0616L01",
+         "S0626L02",
+         "S0599L02",
+         "S0608L03",
+         "S0615L02",
+         "S0615L03",
+         "S0615L04"
+        ]
+       },
+       "considered": 65,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_ben:S0549L02U01",
+         "before": [
+          {
+           "known": "কারণ",
+           "legoId": "S0022L01",
+           "target": "because",
+           "isGhost": false
+          },
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "isGhost": false
+          },
+          {
+           "known": "চুপ",
+           "legoId": "S0549L01",
+           "target": " quiet",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0022L01",
+           "target": "because",
+           "known": "কারণ",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0549L01",
+           "target": " quiet",
+           "known": "চুপ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L02U01",
+         "before": [
+          {
+           "known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+           "legoId": "S0616L02",
+           "target": "you were very brave to say",
+           "isGhost": false
+          },
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0616L02",
+           "target": "you were very brave to say",
+           "known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02B04",
+         "before": [
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "isGhost": false
+          },
+          {
+           "known": "এখানে",
+           "legoId": "S0138L01",
+           "target": " here",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0138L01",
+           "target": " here",
+           "known": "এখানে",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02U01",
+         "before": [
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "isGhost": false
+          },
+          {
+           "known": "কাদায়",
+           "legoId": "S0547L01",
+           "target": " in the mud",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0547L01",
+           "target": " in the mud",
+           "known": "কাদায়",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0589L02U01",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+           "legoId": "S0589L02",
+           "target": " told me she'd just seen",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " the",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " last",
+           "isGhost": true
+          },
+          {
+           "known": "বাস",
+           "legoId": "S0095L02",
+           "target": " bus",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0589L02",
+           "target": " told me she'd just seen",
+           "known": "আমাকে বলল সে এইমাত্র দেখেছে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " the",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " last",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0095L02",
+           "target": " bus",
+           "known": "বাস",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01U02",
+         "before": [
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02B01",
+         "before": [
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01B01",
+         "before": [
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02B02",
+         "before": [
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0608L03U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "এটাই ... কাজ হত",
+           "legoId": "S0608L03",
+           "target": " would have been the thing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0608L03",
+           "target": " it would have been",
+           "known": "এটাই হত",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0608L02",
+           "target": " the sensible thing",
+           "known": "বুদ্ধিমানের কাজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0615L02B01",
+         "before": [
+          {
+           "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+           "legoId": "S0615L02",
+           "target": "I thought you were to say that",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0615L02",
+           "target": "you were very brave",
+           "known": "তুমি খুব সাহসী ছিলে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0615L02U02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "we",
+           "isGhost": true
+          },
+          {
+           "known": "জানা",
+           "legoId": "S0045L01",
+           "target": " know",
+           "isGhost": false
+          },
+          {
+           "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+           "legoId": "S0615L02",
+           "target": " I thought you were to say that",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0045L01",
+           "target": " know",
+           "known": "জানা",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0615L02",
+           "target": " you were very brave",
+           "known": "তুমি খুব সাহসী ছিলে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0615L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+           "legoId": "S0615L02",
+           "target": " I thought you were to say that",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0615L02",
+           "target": " you were very brave",
+           "known": "তুমি খুব সাহসী ছিলে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0615L02U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+           "legoId": "S0615L02",
+           "target": " I thought you were to say that",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0124L01",
+           "target": "I thought",
+           "known": "মনে করেছিলাম",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0615L02",
+           "target": " you were very brave",
+           "known": "তুমি খুব সাহসী ছিলে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02B03",
+         "before": [
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02B01",
+         "before": [
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0306L01",
+           "target": "I know",
+           "known": "আমি চিনি",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0608L03B02",
+         "before": [
+          {
+           "known": "এটাই ... কাজ হত",
+           "legoId": "S0608L03",
+           "target": "would have been the thing",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0608L03",
+           "target": "it would have been",
+           "known": "এটাই হত",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0608L02",
+           "target": " the sensible thing",
+           "known": "বুদ্ধিমানের কাজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0589L02B03",
+         "before": [
+          {
+           "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+           "legoId": "S0589L02",
+           "target": "told me she'd just seen",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0589L02",
+           "target": "told me she'd just seen",
+           "known": "আমাকে বলল সে এইমাত্র দেখেছে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02U02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "we",
+           "isGhost": true
+          },
+          {
+           "known": "জানা",
+           "legoId": "S0045L01",
+           "target": " know",
+           "isGhost": false
+          },
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0045L01",
+           "target": " know",
+           "known": "জানা",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02U02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "we",
+           "isGhost": true
+          },
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02B03",
+         "before": [
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": "wish they wouldn't play",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0557L02",
+           "target": "wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0589L02B01",
+         "before": [
+          {
+           "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+           "legoId": "S0589L02",
+           "target": "told me she'd just seen",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0589L02",
+           "target": "told me she'd just seen",
+           "known": "আমাকে বলল সে এইমাত্র দেখেছে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02U02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": " let's not go outside",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0534L02",
+           "target": " let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0615L02B03",
+         "before": [
+          {
+           "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+           "legoId": "S0615L02",
+           "target": "I thought you were to say that",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0615L02",
+           "target": "you were very brave",
+           "known": "তুমি খুব সাহসী ছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0306L01",
+           "target": "I know",
+           "known": "আমি চিনি",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0608L03B03",
+         "before": [
+          {
+           "known": "এটাই ... কাজ হত",
+           "legoId": "S0608L03",
+           "target": "would have been the thing",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0608L03",
+           "target": "it would have been",
+           "known": "এটাই হত",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0608L02",
+           "target": " the sensible thing",
+           "known": "বুদ্ধিমানের কাজ",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0608L01",
+           "target": " to do",
+           "known": "করার",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02U02",
+         "before": [
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02B03",
+         "before": [
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " we",
+           "isGhost": true
+          },
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02U01",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I",
+           "isGhost": true
+          },
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "isGhost": false
+          },
+          {
+           "known": "তাই",
+           "legoId": "S0188L01",
+           "target": " so",
+           "isGhost": false
+          },
+          {
+           "known": "জোরে",
+           "legoId": "S0557L01",
+           "target": " loud",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0056L02",
+           "target": " so",
+           "known": "তাই",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0557L01",
+           "target": " loud",
+           "known": "জোরে",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02B03",
+         "before": [
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": " let's not go outside",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0534L02",
+           "target": " let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01B03",
+         "before": [
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0615L02U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+           "legoId": "S0615L02",
+           "target": " I thought you were to say that",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0615L02",
+           "target": " you were very brave",
+           "known": "তুমি খুব সাহসী ছিলে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02B04",
+         "before": [
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "আজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L03U01",
+         "before": [
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to",
+           "isGhost": false
+          },
+          {
+           "known": "পৌঁছে দিতে",
+           "legoId": "S0447L02",
+           "target": " drive",
+           "isGhost": false
+          },
+          {
+           "known": "তুমি আমাকে বললে",
+           "legoId": "S0599L03",
+           "target": " if you'd told me",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0599L03",
+           "target": " if you'd told me",
+           "known": "তুমি আমাকে বললে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0549L02",
+           "target": " I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0608L03U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "এটাই ... কাজ হত",
+           "legoId": "S0608L03",
+           "target": " would have been the thing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0306L01",
+           "target": "I know",
+           "known": "আমি চিনি",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0608L03",
+           "target": " it would have been",
+           "known": "এটাই হত",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0608L02",
+           "target": " the sensible thing",
+           "known": "বুদ্ধিমানের কাজ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "she",
+           "isGhost": true
+          },
+          {
+           "known": "বললে",
+           "legoId": "S0078L01",
+           "target": " said",
+           "isGhost": false
+          },
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "she",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0078L01",
+           "target": " said",
+           "known": "বললে",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0599L02",
+           "target": " I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " we",
+           "isGhost": true
+          },
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0306L01",
+           "target": "I know",
+           "known": "আমি চিনি",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0608L03B01",
+         "before": [
+          {
+           "known": "এটাই ... কাজ হত",
+           "legoId": "S0608L03",
+           "target": "would have been the thing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0608L03",
+           "target": "it would have been",
+           "known": "এটাই হত",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0306L01",
+           "target": "I know",
+           "known": "আমি চিনি",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02B01",
+         "before": [
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02B02",
+         "before": [
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " in",
+           "isGhost": true
+          },
+          {
+           "known": "ভয়ঙ্কর আবহাওয়ায়",
+           "legoId": "S0534L01",
+           "target": " dreadful weather",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " in",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0534L01",
+           "target": " dreadful weather",
+           "known": "ভয়ঙ্কর আবহাওয়ায়",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " we",
+           "isGhost": true
+          },
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0557L02",
+           "target": " wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01U01",
+         "before": [
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " before",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " before",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02B01",
+         "before": [
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": "wish they wouldn't play",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0557L02",
+           "target": "wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02B03",
+         "before": [
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to",
+           "isGhost": false
+          },
+          {
+           "known": "আজ",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0030L02",
+           "target": " yesterday",
+           "known": "গতকাল",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02U02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "we",
+           "isGhost": true
+          },
+          {
+           "known": "জানা",
+           "legoId": "S0045L01",
+           "target": " know",
+           "isGhost": false
+          },
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "we",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0045L01",
+           "target": " know",
+           "known": "জানা",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02B01",
+         "before": [
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0557L02B02",
+         "before": [
+          {
+           "known": "চাই তারা ... না বাজাক",
+           "legoId": "S0557L02",
+           "target": "wish they wouldn't play",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0557L02",
+           "target": "wish they wouldn't play",
+           "known": "চাই তারা না বাজাক",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0534L02U01",
+         "before": [
+          {
+           "known": "চলো ... বাইরে না যাই",
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " in",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " this",
+           "isGhost": true
+          },
+          {
+           "known": "ভয়ঙ্কর আবহাওয়ায়",
+           "legoId": "S0534L01",
+           "target": " dreadful weather",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0534L02",
+           "target": "let's not go outside",
+           "known": "চলো বাইরে না যাই",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " in",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " this",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0534L01",
+           "target": " dreadful weather",
+           "known": "ভয়ঙ্কর আবহাওয়ায়",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02B02",
+         "before": [
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0547L02",
+           "target": "because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0589L02B02",
+         "before": [
+          {
+           "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+           "legoId": "S0589L02",
+           "target": "told me she'd just seen",
+           "isGhost": false
+          },
+          {
+           "known": "এখন",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0589L02",
+           "target": "told me she'd just seen",
+           "known": "আমাকে বলল সে এইমাত্র দেখেছে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "এখন",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0547L02U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "my",
+           "isGhost": true
+          },
+          {
+           "known": "বাবা",
+           "legoId": "S0240L01",
+           "target": " father",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " knows",
+           "isGhost": true
+          },
+          {
+           "known": "কারণ সে ... খেলছিল",
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "my",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0240L01",
+           "target": " father",
+           "known": "বাবা",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " knows",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0547L02",
+           "target": " because he has been playing",
+           "known": "কারণ সে খেলছিল",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01U05",
+         "before": [
+          {
+           "known": "আমি চিনি",
+           "legoId": "S0306L01",
+           "target": "I know",
+           "isGhost": false
+          },
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0306L01",
+           "target": "I know",
+           "known": "আমি চিনি",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0616L01",
+           "target": " you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0549L02B02",
+         "before": [
+          {
+           "known": "আমাকে ... থাকতে হবে",
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "isGhost": false
+          },
+          {
+           "known": "চুপ",
+           "legoId": "S0549L01",
+           "target": " quiet",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0549L02",
+           "target": "I have got to be",
+           "known": "আমাকে থাকতে হবে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0549L01",
+           "target": " quiet",
+           "known": "চুপ",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0616L01B02",
+         "before": [
+          {
+           "known": "তুমি ... মনে করেছিলে",
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0616L01",
+           "target": "you thought",
+           "known": "তুমি মনে করেছিলে",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_ben:S0599L02U01",
+         "before": [
+          {
+           "known": "খুশিমনে ... চালাতাম",
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to",
+           "isGhost": false
+          },
+          {
+           "known": "পৌঁছে দিতে",
+           "legoId": "S0447L02",
+           "target": " drive",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0599L02",
+           "target": "I'd have been happy to drive",
+           "known": "খুশিমনে গাড়ি চালাতাম",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": "I'd have been happy to",
+          "isGhost": false
+         },
+         {
+          "known": "পৌঁছে দিতে",
+          "legoId": "S0447L02",
+          "target": " drive",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": "you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": "I have got to be",
+          "isGhost": false
+         },
+         {
+          "known": "চুপ",
+          "legoId": "S0549L01",
+          "target": " quiet",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": " you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": " because he has been playing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0589L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+          "legoId": "S0589L02",
+          "target": "told me she'd just seen",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": "because he has been playing",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": "let's not go outside",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " in",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " this",
+          "isGhost": true
+         },
+         {
+          "known": "ভয়ঙ্কর আবহাওয়ায়",
+          "legoId": "S0534L01",
+          "target": " dreadful weather",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": "wish they wouldn't play",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": "I'd have been happy to",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "we",
+          "isGhost": true
+         },
+         {
+          "known": "জানা",
+          "legoId": "S0045L01",
+          "target": " know",
+          "isGhost": false
+         },
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": " because he has been playing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": "I'd have been happy to",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": "wish they wouldn't play",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": "you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " before",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " we",
+          "isGhost": true
+         },
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": " wish they wouldn't play",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": "let's not go outside",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " in",
+          "isGhost": true
+         },
+         {
+          "known": "ভয়ঙ্কর আবহাওয়ায়",
+          "legoId": "S0534L01",
+          "target": " dreadful weather",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": "let's not go outside",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": " because he has been playing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "এটাই ... কাজ হত",
+          "legoId": "S0608L03",
+          "target": "would have been the thing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " we",
+          "isGhost": true
+         },
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": " wish they wouldn't play",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": " I'd have been happy to",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "এটাই ... কাজ হত",
+          "legoId": "S0608L03",
+          "target": " would have been the thing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": " I have got to be",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L03U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": "I'd have been happy to",
+          "isGhost": false
+         },
+         {
+          "known": "পৌঁছে দিতে",
+          "legoId": "S0447L02",
+          "target": " drive",
+          "isGhost": false
+         },
+         {
+          "known": "তুমি আমাকে বললে",
+          "legoId": "S0599L03",
+          "target": " if you'd told me",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": "let's not go outside",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+          "legoId": "S0615L02",
+          "target": " I thought you were to say that",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": " you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": "you thought",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": " let's not go outside",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": " you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": "I have got to be",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I",
+          "isGhost": true
+         },
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": " wish they wouldn't play",
+          "isGhost": false
+         },
+         {
+          "known": "তাই",
+          "legoId": "S0188L01",
+          "target": " so",
+          "isGhost": false
+         },
+         {
+          "known": "জোরে",
+          "legoId": "S0557L01",
+          "target": " loud",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " we",
+          "isGhost": true
+         },
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": " wish they wouldn't play",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": "because he has been playing",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": "I have got to be",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "এটাই ... কাজ হত",
+          "legoId": "S0608L03",
+          "target": "would have been the thing",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": " I'd have been happy to",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+          "legoId": "S0615L02",
+          "target": "I thought you were to say that",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": " let's not go outside",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0589L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+          "legoId": "S0589L02",
+          "target": "told me she'd just seen",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": "wish they wouldn't play",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": " I have got to be",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "we",
+          "isGhost": true
+         },
+         {
+          "known": "চাই তারা ... না বাজাক",
+          "legoId": "S0557L02",
+          "target": " wish they wouldn't play",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": " because he has been playing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "we",
+          "isGhost": true
+         },
+         {
+          "known": "জানা",
+          "legoId": "S0045L01",
+          "target": " know",
+          "isGhost": false
+         },
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": " I'd have been happy to",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0589L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+          "legoId": "S0589L02",
+          "target": "told me she'd just seen",
+          "isGhost": false
+         },
+         {
+          "known": "আজ",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "এটাই ... কাজ হত",
+          "legoId": "S0608L03",
+          "target": "would have been the thing",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": " I have got to be",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": "because he has been playing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "চলো ... বাইরে না যাই",
+          "legoId": "S0534L02",
+          "target": "let's not go outside",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমি চিনি",
+          "legoId": "S0306L01",
+          "target": "I know",
+          "isGhost": false
+         },
+         {
+          "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+          "legoId": "S0615L02",
+          "target": " I thought you were to say that",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "বললে",
+          "legoId": "S0078L01",
+          "target": " said",
+          "isGhost": false
+         },
+         {
+          "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+          "legoId": "S0615L02",
+          "target": " I thought you were to say that",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "we",
+          "isGhost": true
+         },
+         {
+          "known": "জানা",
+          "legoId": "S0045L01",
+          "target": " know",
+          "isGhost": false
+         },
+         {
+          "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+          "legoId": "S0615L02",
+          "target": " I thought you were to say that",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+          "legoId": "S0615L02",
+          "target": "I thought you were to say that",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "এটাই ... কাজ হত",
+          "legoId": "S0608L03",
+          "target": " would have been the thing",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "my",
+          "isGhost": true
+         },
+         {
+          "known": "বাবা",
+          "legoId": "S0240L01",
+          "target": " father",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " knows",
+          "isGhost": true
+         },
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": " I'd have been happy to",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "খুশিমনে ... চালাতাম",
+          "legoId": "S0599L02",
+          "target": "I'd have been happy to",
+          "isGhost": false
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": "you thought",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": "I have got to be",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": "you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         },
+         {
+          "known": "এখন",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0589L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "she",
+          "isGhost": true
+         },
+         {
+          "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+          "legoId": "S0589L02",
+          "target": " told me she'd just seen",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " the",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " last",
+          "isGhost": true
+         },
+         {
+          "known": "বাস",
+          "legoId": "S0095L02",
+          "target": " bus",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "কারণ সে ... খেলছিল",
+          "legoId": "S0547L02",
+          "target": "because he has been playing",
+          "isGhost": false
+         },
+         {
+          "known": "কাদায়",
+          "legoId": "S0547L01",
+          "target": " in the mud",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": "I have got to be",
+          "isGhost": false
+         },
+         {
+          "known": "এখানে",
+          "legoId": "S0138L01",
+          "target": " here",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+          "legoId": "S0616L02",
+          "target": "you were very brave to say",
+          "isGhost": false
+         },
+         {
+          "known": "তুমি ... মনে করেছিলে",
+          "legoId": "S0616L01",
+          "target": " you thought",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "কারণ",
+          "legoId": "S0022L01",
+          "target": "because",
+          "isGhost": false
+         },
+         {
+          "known": "আমাকে ... থাকতে হবে",
+          "legoId": "S0549L02",
+          "target": " I have got to be",
+          "isGhost": false
+         },
+         {
+          "known": "চুপ",
+          "legoId": "S0549L01",
+          "target": " quiet",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03B04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "4d400e50-5d6a-407d-9479-e346699be454"
+      },
+      {
+       "op": "lego.delete",
+       "id": "d48396bf-7934-4597-9d27-d93a63e583a3"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L02B05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0615L02B04"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U05",
+       "set": {
+        "known_text": "আমি জানি মনে করতাম তুমি এটা বলতে।",
+        "target_text": "I know I thought you were to say that",
+        "known_audio_id": "ff73e0c7-0f24-4ed1-ac3a-965c4b9e53de",
+        "target1_audio_id": "94e35aeb-30f3-454e-9668-f48ccf8e43a6",
+        "target2_audio_id": "21b49d4f-3f73-4423-9ba0-fe410fd4392a"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U04",
+       "set": {
+        "known_text": "আমার বাবা জানেন মনে করতাম তুমি এটা বলতে।",
+        "target_text": "my father knows I thought you were to say that",
+        "known_audio_id": "a4066c0a-89c3-4c8b-95e6-36e4b3590f1d",
+        "target1_audio_id": "82017ebd-dd7b-4d2b-b596-5c218956188e",
+        "target2_audio_id": "0b894aad-1464-4700-a648-2baa074eff05"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U03",
+       "set": {
+        "known_text": "সে বলেছিল মনে করতাম তুমি এটা বলতে।",
+        "target_text": "she said I thought you were to say that",
+        "known_audio_id": "6915c7be-d473-41cd-9052-87c34b5642e0",
+        "target1_audio_id": "b9a9042e-2ba5-4e7d-a54f-4d8c7a55f636",
+        "target2_audio_id": "506deea5-1bd2-4380-a726-e118c7c834fa"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02U02",
+       "set": {
+        "known_text": "আমরা জানি মনে করতাম তুমি এটা বলতে।",
+        "target_text": "we know I thought you were to say that",
+        "known_audio_id": "05509699-7399-49f1-917e-4e53cd242781",
+        "target1_audio_id": "b7ccc0b9-fb00-4dc4-a328-d8ca145b0fc0",
+        "target2_audio_id": "745ff018-bfdc-4a85-8140-c1213aba11c3"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02B03",
+       "set": {
+        "known_text": "আজ মনে করতাম তুমি এটা বলতে",
+        "target_text": "I thought you were to say that today",
+        "known_audio_id": "cda959c2-58f4-42e3-99bb-d6fa35fd1a4a",
+        "target1_audio_id": "51c32c87-b4eb-44ab-8daa-812a0766ddf0",
+        "target2_audio_id": "ccd34fbf-7823-4c84-ba62-e06449299b60"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0615L02B01",
+       "set": {
+        "known_text": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+        "target_text": "I thought you were to say that",
+        "known_audio_id": "6801177c-b3c1-42b6-9ec3-2f1beeb8bf34",
+        "target1_audio_id": "b5f6d6b3-47bc-4923-ac95-e5389e3ea9a5",
+        "target2_audio_id": "c3c31628-662b-458d-ba25-2c25195d8cde"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "9e1e5c83-e29d-4968-943b-954816c7b7dd",
+       "set": {
+        "known_text": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+        "target_text": "I thought you were to say that",
+        "components": [
+         {
+          "known": "মনে করতাম",
+          "target": "i thought"
+         },
+         {
+          "known": "তুমি",
+          "target": "you were"
+         },
+         {
+          "known": "এটা বলতে",
+          "target": "to say that"
+         }
+        ],
+        "known_audio_id": "6801177c-b3c1-42b6-9ec3-2f1beeb8bf34",
+        "target1_audio_id": "b5f6d6b3-47bc-4923-ac95-e5389e3ea9a5",
+        "target2_audio_id": "c3c31628-662b-458d-ba25-2c25195d8cde",
+        "presentation_audio_id": "40069991-6f4e-4921-aca6-ceeefc2da9b4"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0608L03U07"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0608L03U06"
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03U05",
+       "set": {
+        "known_text": "আমি জানি এটাই কাজ হত।",
+        "target_text": "I know would have been the thing",
+        "known_audio_id": "4d128c3e-8264-4138-963c-1ea7eadffb14",
+        "target1_audio_id": "82ac4e81-f427-4372-9796-a372996d8ad3",
+        "target2_audio_id": "e2a4ed16-92bb-4ffa-aa8d-590991f2e98d"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03U04",
+       "set": {
+        "known_text": "আমার বাবা জানেন এটাই কাজ হত।",
+        "target_text": "my father knows would have been the thing",
+        "known_audio_id": "b132d6de-48b9-4cb5-b2d1-2eff869b67c5",
+        "target1_audio_id": "b663b829-8aba-43fd-98b3-5d4b8ce75f19",
+        "target2_audio_id": "686c5407-6350-40c6-a3ea-16980d0a08e6"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03B03",
+       "set": {
+        "known_text": "আজ এটাই কাজ হত",
+        "target_text": "would have been the thing today",
+        "known_audio_id": "8ad6605d-e0c7-4a2c-bb13-c7c2a55362b0",
+        "target1_audio_id": "dd80448a-ca3d-469f-970a-523e61e9abbb",
+        "target2_audio_id": "fa7c5e88-5a90-4f2d-9130-5418d9d226bf"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03B02",
+       "set": {
+        "known_text": "এখন এটাই কাজ হত",
+        "target_text": "would have been the thing now",
+        "known_audio_id": "99f45be1-6cd3-4e6f-9cdd-6d5a96ad50b1",
+        "target1_audio_id": "2c860ed6-4955-49a6-9a13-0c766d20dad6",
+        "target2_audio_id": "eba1a423-c901-463d-a673-93b458d7b220"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0608L03B01",
+       "set": {
+        "known_text": "এটাই ... কাজ হত",
+        "target_text": "would have been the thing",
+        "known_audio_id": "d7db763e-cd06-48d9-815e-78f3ec9e8827",
+        "target1_audio_id": "da71c222-e376-40c5-9370-0132f37f5641",
+        "target2_audio_id": "a960791b-de4f-49e4-a268-2ad7157c67e2"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "d74a2c16-a3bc-44aa-92b8-614dd2d9ee7e",
+       "set": {
+        "known_text": "এটাই ... কাজ হত",
+        "target_text": "would have been the thing",
+        "known_audio_id": "d7db763e-cd06-48d9-815e-78f3ec9e8827",
+        "target1_audio_id": "da71c222-e376-40c5-9370-0132f37f5641",
+        "target2_audio_id": "a960791b-de4f-49e4-a268-2ad7157c67e2",
+        "presentation_audio_id": "df5c25bc-4f22-4bd2-8479-1a8e72f8eae2"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U05",
+       "set": {
+        "known_text": "আমি জানি খুশিমনে চালাতাম।",
+        "target_text": "I know I'd have been happy to",
+        "known_audio_id": "de9e9a65-92e6-47ff-a718-5f20f7f93791",
+        "target1_audio_id": "80bd6939-6cf5-4bf0-b294-6667d586f63d",
+        "target2_audio_id": "bc01f309-706a-4891-ae90-5f70dac75b30"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U04",
+       "set": {
+        "known_text": "আমার বাবা জানেন খুশিমনে চালাতাম।",
+        "target_text": "my father knows I'd have been happy to",
+        "known_audio_id": "085060a0-cf95-4f05-b6c8-229cb0c96fde",
+        "target1_audio_id": "aeeef017-14d7-4302-a067-7010e9ab1e43",
+        "target2_audio_id": "0df88c9e-cae5-4fe5-9835-c46981099788"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U03",
+       "set": {
+        "known_text": "সে বলেছিল খুশিমনে চালাতাম।",
+        "target_text": "she said I'd have been happy to",
+        "known_audio_id": "a0f42a22-377b-4f12-87cd-1329384bc35d",
+        "target1_audio_id": "1677ac0d-5db1-41c2-bfd6-f41a64e0b1f8",
+        "target2_audio_id": "32baf940-716f-4a7a-b116-edb7fb7f1c19"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02U02",
+       "set": {
+        "known_text": "আমরা জানি খুশিমনে চালাতাম।",
+        "target_text": "we know I'd have been happy to",
+        "known_audio_id": "77feaca3-0cc7-4ae4-9129-b3e5e3ee39c9",
+        "target1_audio_id": "3ffd096c-a8a7-47bb-b471-2e9c7d440e76",
+        "target2_audio_id": "fbb6f5ff-06e7-410b-a817-db7a90145241"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02B03",
+       "set": {
+        "known_text": "আজ খুশিমনে চালাতাম",
+        "target_text": "I'd have been happy to today",
+        "known_audio_id": "ba95d15a-d07d-4214-82eb-ffe4fccbaebf",
+        "target1_audio_id": "eae60d75-340d-407d-b7f5-ee19febf1808",
+        "target2_audio_id": "0d2a4fd2-8ab5-49ed-8e1e-d92f09bee6d2"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02B02",
+       "set": {
+        "known_text": "এখন খুশিমনে চালাতাম",
+        "target_text": "I'd have been happy to now",
+        "known_audio_id": "831f04c8-8af6-4eb7-ae52-c627c65c0e1d",
+        "target1_audio_id": "7d761847-f5b9-4d3b-b38a-581d98d06916",
+        "target2_audio_id": "b4fde626-0792-421a-8701-1537938eda71"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0599L02B01",
+       "set": {
+        "known_text": "খুশিমনে ... চালাতাম",
+        "target_text": "I'd have been happy to",
+        "known_audio_id": "4fe448e1-e324-46ff-8cde-f05544b86d77",
+        "target1_audio_id": "7db975cc-106f-4107-a731-9309304541af",
+        "target2_audio_id": "8e5ac0b0-a136-4bad-a65b-c942f08bc7f4"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "e1dbb2b3-06f7-4fa9-8f61-bfdc9ebc91c8",
+       "set": {
+        "known_text": "খুশিমনে ... চালাতাম",
+        "target_text": "I'd have been happy to",
+        "components": [
+         {
+          "known": "খুশিমনে",
+          "target": "happy"
+         },
+         {
+          "known": "চালাতাম",
+          "target": "i'd have been"
+         }
+        ],
+        "known_audio_id": "4fe448e1-e324-46ff-8cde-f05544b86d77",
+        "target1_audio_id": "7db975cc-106f-4107-a731-9309304541af",
+        "target2_audio_id": "8e5ac0b0-a136-4bad-a65b-c942f08bc7f4",
+        "presentation_audio_id": "83ce08a9-5494-42c1-8a53-9e3d6985878c"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_ben:S0626L01U06"
+      },
+      {
+       "op": "phrase.insert",
+       "row": {
+        "id": "eng_for_ben:S0626L02U01",
+        "seed_number": 626,
+        "lego_index": 2,
+        "position": 6,
+        "known_text": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+        "target_text": "no I'm not thirsty thank you",
+        "word_count": 28,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+         "score": 8,
+         "format": "build_use",
+         "scored_at": "2026-07-20T16:22:09.561Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-07-20T16:22:09.626Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": null,
+        "known_audio_id": "103f933a-0a04-4a37-b5a3-a268bffba0d2",
+        "target1_audio_id": "20771d47-c63d-47d6-a514-be92b7a9e1dc",
+        "target2_audio_id": "04836b8d-a5f4-44f3-a5ff-357feadc1d3b",
+        "qa_checked": null,
+        "target1_duration_ms": 1896,
+        "target2_duration_ms": 1848,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+         {
+          "known": "না",
+          "legoId": "S0096L01",
+          "target": "no",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I'm",
+          "isGhost": true
+         },
+         {
+          "known": "তৃষ্ণা নেই",
+          "legoId": "S0626L01",
+          "target": " not thirsty",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " thank",
+          "isGhost": true
+         },
+         {
+          "known": "তোমাকে",
+          "legoId": "S0334L01",
+          "target": " you",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1627,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0626L02B01",
+       "set": {
+        "known_text": "না, ... ধন্যবাদ",
+        "known_audio_id": "924fa644-b0a9-4150-b82c-4f94a2830407"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "455d2cf3-4ba3-493c-804b-c418ce6a2bfe",
+       "set": {
+        "is_new": true,
+        "known_text": "না, ... ধন্যবাদ",
+        "known_audio_id": "924fa644-b0a9-4150-b82c-4f94a2830407",
+        "presentation_audio_id": "29967a4d-3ee5-46be-b9d4-b41b0158f80e"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0616L01B01",
+       "set": {
+        "known_text": "তুমি ... মনে করেছিলে",
+        "known_audio_id": "5260e7a6-63aa-49a0-88dd-718e9d5b7e3d"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "fd7e999a-54dd-404d-a616-565ab9c84834",
+       "set": {
+        "known_text": "তুমি ... মনে করেছিলে",
+        "known_audio_id": "5260e7a6-63aa-49a0-88dd-718e9d5b7e3d",
+        "presentation_audio_id": "b199e5c9-d4d2-4d1f-bd64-3bc9fc255148"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0589L02B01",
+       "set": {
+        "known_text": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+        "known_audio_id": "1c940ec7-0aa8-4f9d-bd88-33afb9615b0f"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "e2dd2823-8ac3-4649-bc9f-8305d6157de8",
+       "set": {
+        "known_text": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+        "known_audio_id": "1c940ec7-0aa8-4f9d-bd88-33afb9615b0f",
+        "presentation_audio_id": "b31dc957-c930-4009-99de-dc90cfd9af93"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0557L02B01",
+       "set": {
+        "known_text": "চাই তারা ... না বাজাক",
+        "known_audio_id": "cea82c08-e36d-423f-8d97-8201622cd859"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "6519406d-c355-4729-a1d4-9c4355ed2eb9",
+       "set": {
+        "known_text": "চাই তারা ... না বাজাক",
+        "known_audio_id": "cea82c08-e36d-423f-8d97-8201622cd859",
+        "presentation_audio_id": "b12014be-c4ac-4de9-8fdc-884f5f0a4e3b"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0549L02B01",
+       "set": {
+        "known_text": "আমাকে ... থাকতে হবে",
+        "known_audio_id": "bfd53516-57c1-4c9b-ae5d-8e911330aa18"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "f570d8a6-28b3-49d1-b89c-0d7bfc7d5382",
+       "set": {
+        "known_text": "আমাকে ... থাকতে হবে",
+        "known_audio_id": "bfd53516-57c1-4c9b-ae5d-8e911330aa18",
+        "presentation_audio_id": "253c7650-59ee-493d-83ed-256900c5998e"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0547L02B01",
+       "set": {
+        "known_text": "কারণ সে ... খেলছিল",
+        "known_audio_id": "921f64a5-ad27-425f-b564-34450f7134a5"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "9c784041-4cbd-4c5a-b5a3-5a86798528dd",
+       "set": {
+        "known_text": "কারণ সে ... খেলছিল",
+        "known_audio_id": "921f64a5-ad27-425f-b564-34450f7134a5",
+        "presentation_audio_id": "22806b21-390d-4da2-b551-1cade752de02"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_ben:S0534L02B01",
+       "set": {
+        "known_text": "চলো ... বাইরে না যাই",
+        "known_audio_id": "c9632374-fc29-4181-86f5-6166bc331ea2"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "7ff62182-dbd9-4485-b654-21208bd54e97",
+       "set": {
+        "known_text": "চলো ... বাইরে না যাই",
+        "known_audio_id": "c9632374-fc29-4181-86f5-6166bc331ea2",
+        "presentation_audio_id": "01417ea1-878c-45e4-a17a-cb9eeb066916"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   },
+   {
+    "from": 50,
+    "n": 16,
+    "status": 409,
+    "secs": 0.9,
+    "answer": {
+     "error": "insert or update on table \"course_practice_phrases\" violates foreign key constraint \"fk_course_practice_phrases_lego\"",
+     "code": "23503",
+     "applied": false
+    }
+   }
+  ]
+ }
 }

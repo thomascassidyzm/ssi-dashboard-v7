@@ -4,9 +4,9 @@
  "dumped": "2026-11-19T11:06:30Z",
  "decisions": 10,
  "verdicts": {
-  "grow": 2,
-  "recut": 3,
+  "recut": 4,
   "keep": 2,
+  "grow": 1,
   "kai": 3
  },
  "touched_seeds": [
@@ -23,10 +23,10 @@
  "legos": [
   {
    "id": "S0111L02",
-   "verdict": "grow",
+   "verdict": "recut",
    "pov": "pass",
-   "pattern": "D",
-   "why": "PATTERN D, grown not split. '우리가 배울' cannot stand: 배울 is a form that needs the word after it, and the seed's 때 ('when') was in NO LEGO (S3 gap). Grown by 때: 'जब हम सीखते हैं | 우리가 배울 때' (6 syllables), a clause that stands on its own (L32), whose middle '새로운 것을' is S0111L01, taught first. Every use row already says it; 3 build rows that stopped at 배울 gain 때. POV pass: precedent S0034L02 'जब यहाँ हों | 여기 있을 때'.",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'हम सीखते हैं | 우리가 배울' joins the subject to 배울 across the object, and 배울 is a form that needs the word after it; the seed's 때 ('when') was in NO LEGO (a coverage gap, S3). Shortest contiguous cut: 'जब सीखते हैं | 배울 때' (3 syllables), which closes that gap. Precedent S0034L02 'जब यहाँ हों | 여기 있을 때'. 우리가 was taught at seed 104 and is carried by the rows. Every use row already says 배울 때; 2 build rows that stopped at 배울 gain 때.",
    "closes": [
     "17"
    ],
@@ -43,14 +43,10 @@
     "is_new": true
    },
    "after": {
-    "known": "जब हम सीखते हैं",
-    "target": "우리가 배울 때",
+    "known": "जब सीखते हैं",
+    "target": "배울 때",
     "type": "M",
     "components": [
-     [
-      "हम",
-      "우리가"
-     ],
      [
       "सीखते हैं",
       "배울"
@@ -62,19 +58,11 @@
     ],
     "is_new": true
    },
-   "acknowledged": [
-    "target split in the seed"
-   ],
    "checks": {
     "known_in_seed": true,
-    "target_in_seed": false,
-    "syllables": 6
+    "target_in_seed": true,
+    "syllables": 3
    },
-   "rows_checked_by_hand": [
-    "B02",
-    "B03",
-    "B04"
-   ],
    "basket": [
     {
      "id": "kor_for_hin:S0111L02C01",
@@ -102,8 +90,8 @@
       "우리가 배울"
      ],
      "action": [
-      "जब हम सीखते हैं",
-      "우리가 배울 때"
+      "जब सीखते हैं",
+      "배울 때"
      ]
     },
     {
@@ -113,10 +101,7 @@
       "जब हम सीखते हैं",
       "우리가 배울 때"
      ],
-     "action": [
-      "जब हम कुछ नया सीखते हैं",
-      "우리가 새로운 것을 배울 때"
-     ]
+     "action": "keep"
     },
     {
      "id": "kor_for_hin:S0111L02B03",
@@ -126,8 +111,8 @@
       "우리가 새로운 것을 배울"
      ],
      "action": [
-      "जब हम आज सीखते हैं",
-      "우리가 오늘 배울 때"
+      "जब हम कुछ नया सीखते हैं",
+      "우리가 새로운 것을 배울 때"
      ]
     },
     {
@@ -204,7 +189,7 @@
    "verdict": "recut",
    "pov": "pass",
    "pattern": "C",
-   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'वह उससे | 그것은 것보다' joins the first word of the seed to an ending from its middle; every row in the basket is broken Korean ('그것은 것보다 덜'). 것보다 ('than what…') cannot stand without its verb, so it grows to the verb in its own seed (L22): 'उससे जो कह रही थी | 말하던 것보다' (6 syllables). Growing S0132L04 instead would be 9 syllables. 그것은 keeps no LEGO of its own here because its only honest Hindi prompt, 'वह', already means 그는 ('he', S0016L01) — it is carried by the rows and by S0086L02. Whole basket rebuilt (10 rows → 8).",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'वह उससे | 그것은 것보다' joins the first word of the seed to an ending from its middle; every row in the basket is broken Korean ('그것은 것보다 덜'). 것보다 ('than what…') cannot stand without its verb, so it grows to the verb in its own seed (L22): 'उससे जो कह रही थी | 말하던 것보다' (6 syllables). Growing S0132L04 instead would be 9 syllables. 그것은 keeps no LEGO of its own here because its only honest Hindi prompt, 'वह', already means 그는 ('he', S0016L01) — it is carried by the rows and by S0086L02. Whole basket rebuilt (9 rows).",
    "closes": [
     "17"
    ],
@@ -244,6 +229,7 @@
    "rows_checked_by_hand": [
     "B02",
     "B03",
+    "B04",
     "U01",
     "U02",
     "U03",
@@ -311,7 +297,10 @@
       "अभी वह उससे",
       "지금 그것은 것보다"
      ],
-     "action": "del"
+     "action": [
+      "उससे बहुत कम जो मैं कह रहा था",
+      "제가 말하던 것보다 정말 덜"
+     ]
     },
     {
      "id": "kor_for_hin:S0132L03U01",
@@ -376,7 +365,7 @@
    ],
    "add": [],
    "basket_after": {
-    "build": 3,
+    "build": 4,
     "use": 5
    },
    "extra": [],
@@ -390,7 +379,7 @@
    "verdict": "keep",
    "pov": "pass",
    "pattern": "not-gapped",
-   "why": "NOT GAPPED (keep). '왜 생각하는지' ('why … think') is a well-formed clause on its own and its middles (그것이, 그렇게 좋다고) are S0135L01–L02, taught before it — exactly the frame L32 allows; rows fill the slot (K49). Splitting it would give 'लगता है | 생각하는지', a second answer for a prompt that already means 생각해요 (S0072L01). Two build rows had the Korean in an impossible order (좋다고 왜 생각하는지) and are corrected.",
+   "why": "NOT GAPPED (keep). '왜 생각하는지' ('why … think') is a well-formed clause on its own and its middles (그것이, 그렇게 좋다고) are S0135L01–L02, taught before it — exactly the frame L32 allows; rows fill the slot (K49). Splitting it would give 'लगता है | 생각하는지', a second answer for a prompt that already means 생각해요 (S0072L01). One build row, '그것이 왜 생각하는지' ('why it thinks'), had lost its 좋다고 and is corrected.",
    "closes": [
     "17"
    ],
@@ -409,21 +398,10 @@
    "extra": [
     {
      "op": "phrase.update",
-     "phrase_id": "kor_for_hin:S0135L04B02",
-     "set": {
-      "target_text": "왜 좋다고 생각하는지"
-     },
-     "expect": {
-      "known_text": "अच्छा क्यों लगता है",
-      "target_text": "좋다고 왜 생각하는지"
-     }
-    },
-    {
-     "op": "phrase.update",
      "phrase_id": "kor_for_hin:S0135L04B03",
      "set": {
       "known_text": "यह अच्छा क्यों लगता है",
-      "target_text": "왜 그것이 좋다고 생각하는지"
+      "target_text": "그것이 좋다고 왜 생각하는지"
      },
      "expect": {
       "known_text": "यह क्यों लगता है",
@@ -1022,13 +1000,9 @@
    "op": "lego.update",
    "lego_id": "S0111L02",
    "set": {
-    "known_text": "जब हम सीखते हैं",
-    "target_text": "우리가 배울 때",
+    "known_text": "जब सीखते हैं",
+    "target_text": "배울 때",
     "components": [
-     {
-      "known": "हम",
-      "target": "우리가"
-     },
      {
       "known": "सीखते हैं",
       "target": "배울"
@@ -1048,8 +1022,8 @@
    "op": "phrase.update",
    "phrase_id": "kor_for_hin:S0111L02B01",
    "set": {
-    "known_text": "जब हम सीखते हैं",
-    "target_text": "우리가 배울 때"
+    "known_text": "जब सीखते हैं",
+    "target_text": "배울 때"
    },
    "expect": {
     "known_text": "हम सीखते हैं",
@@ -1058,22 +1032,10 @@
   },
   {
    "op": "phrase.update",
-   "phrase_id": "kor_for_hin:S0111L02B02",
+   "phrase_id": "kor_for_hin:S0111L02B03",
    "set": {
     "known_text": "जब हम कुछ नया सीखते हैं",
     "target_text": "우리가 새로운 것을 배울 때"
-   },
-   "expect": {
-    "known_text": "जब हम सीखते हैं",
-    "target_text": "우리가 배울 때"
-   }
-  },
-  {
-   "op": "phrase.update",
-   "phrase_id": "kor_for_hin:S0111L02B03",
-   "set": {
-    "known_text": "जब हम आज सीखते हैं",
-    "target_text": "우리가 오늘 배울 때"
    },
    "expect": {
     "known_text": "हम कुछ नया सीखते हैं",
@@ -1151,8 +1113,12 @@
    }
   },
   {
-   "op": "phrase.delete",
+   "op": "phrase.update",
    "phrase_id": "kor_for_hin:S0132L03B04",
+   "set": {
+    "known_text": "उससे बहुत कम जो मैं कह रहा था",
+    "target_text": "제가 말하던 것보다 정말 덜"
+   },
    "expect": {
     "known_text": "अभी वह उससे",
     "target_text": "지금 그것은 것보다"
@@ -1220,21 +1186,10 @@
   },
   {
    "op": "phrase.update",
-   "phrase_id": "kor_for_hin:S0135L04B02",
-   "set": {
-    "target_text": "왜 좋다고 생각하는지"
-   },
-   "expect": {
-    "known_text": "अच्छा क्यों लगता है",
-    "target_text": "좋다고 왜 생각하는지"
-   }
-  },
-  {
-   "op": "phrase.update",
    "phrase_id": "kor_for_hin:S0135L04B03",
    "set": {
     "known_text": "यह अच्छा क्यों लगता है",
-    "target_text": "왜 그것이 좋다고 생각하는지"
+    "target_text": "그것이 좋다고 왜 생각하는지"
    },
    "expect": {
     "known_text": "यह क्यों लगता है",
@@ -1349,5 +1304,69 @@
     "is_new": false
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:19:04Z",
+  "baseline_failing_seeds": 204,
+  "per_seed": {
+   "111": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 4 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "132": {
+    "seed_issues_planned": [
+     "L4: 2 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L3: 1 phrase(s) fail containment",
+     "L4: 2 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "135": {
+    "seed_issues_planned": [
+     "L4: 4 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L4: 4 phrase(s) fail containment",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "137": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "151": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
 }

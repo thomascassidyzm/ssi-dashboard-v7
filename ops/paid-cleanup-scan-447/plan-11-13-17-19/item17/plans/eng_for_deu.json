@@ -462,5 +462,2136 @@
     "target_text": "than…"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:17:16Z",
+  "baseline_failing_seeds": 272,
+  "per_seed": {
+   "10": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "42": {
+    "seed_issues_planned": [
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "Tiling: Seed target contains vocabulary not covered by LEGOs: [than]",
+     "L1: 1 phrase(s) fail containment",
+     "L1: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 8 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (8 component phrases excluded)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:24:08Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 3,
+    "status": 200,
+    "secs": 12.3,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_deu",
+        "lego_id": "S0010L02"
+       },
+       "before": {
+        "id": "40c57482-cbe7-48be-87f8-1572eb06787c",
+        "seed_number": 10,
+        "lego_index": 2,
+        "lego_id": "S0010L02",
+        "known_text": "ob ich ... kann",
+        "target_text": "if I can",
+        "known_audio_id": "b53ef985-fb6a-4ebb-b5cd-bd6b152cc4cb",
+        "target1_audio_id": "b265c2d3-a3f7-4fda-b1e1-2317bc335894",
+        "target2_audio_id": "1dc2b73c-9bc0-48a6-a063-470ccb4ca3f9",
+        "presentation_audio_id": "a4570c25-e4a9-4fc3-8dbe-a36295da0649"
+       },
+       "after": {
+        "id": "40c57482-cbe7-48be-87f8-1572eb06787c",
+        "seed_number": 10,
+        "lego_index": 2,
+        "lego_id": "S0010L02",
+        "known_text": "ob ich kann",
+        "target_text": "if I can",
+        "known_audio_id": null,
+        "target1_audio_id": "b265c2d3-a3f7-4fda-b1e1-2317bc335894",
+        "target2_audio_id": "1dc2b73c-9bc0-48a6-a063-470ccb4ca3f9",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_deu",
+        "id": "eng_for_deu:S0010L02B01"
+       },
+       "before": {
+        "id": "eng_for_deu:S0010L02B01",
+        "seed_number": 10,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ob ich ... kann",
+        "target_text": "if I can",
+        "known_audio_id": "b53ef985-fb6a-4ebb-b5cd-bd6b152cc4cb",
+        "target1_audio_id": "b265c2d3-a3f7-4fda-b1e1-2317bc335894",
+        "target2_audio_id": "1dc2b73c-9bc0-48a6-a063-470ccb4ca3f9",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_deu:S0010L02B01",
+        "seed_number": 10,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ob ich kann",
+        "target_text": "if I can",
+        "known_audio_id": null,
+        "target1_audio_id": "b265c2d3-a3f7-4fda-b1e1-2317bc335894",
+        "target2_audio_id": "1dc2b73c-9bc0-48a6-a063-470ccb4ca3f9",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_deu",
+        "lego_id": "S0042L03"
+       },
+       "before": {
+        "id": "1ac7a6a5-dd1a-4d0f-a902-919452db4947",
+        "seed_number": 42,
+        "lego_index": 3,
+        "lego_id": "S0042L03",
+        "target_text": "than…",
+        "known_text": "als",
+        "known_audio_id": "862a3577-f9b3-4124-aa66-b20cdc91fb99",
+        "target1_audio_id": "4ef719b4-131e-4246-8d74-4ac90046adde",
+        "target2_audio_id": "a87a115d-5555-419f-ba96-1e99002819ad",
+        "presentation_audio_id": "ba5843fc-44fd-430d-834a-3b6253c44e80"
+       },
+       "after": {
+        "id": "1ac7a6a5-dd1a-4d0f-a902-919452db4947",
+        "seed_number": 42,
+        "lego_index": 3,
+        "lego_id": "S0042L03",
+        "target_text": "than",
+        "known_text": "als",
+        "known_audio_id": "862a3577-f9b3-4124-aa66-b20cdc91fb99",
+        "target1_audio_id": "70421eb1-9724-415e-8883-95992d590d6a",
+        "target2_audio_id": "739a5755-69b3-4cf8-a729-98edb9d5571a",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0010L02",
+         "S0042L03"
+        ]
+       },
+       "considered": 28,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_deu:S0294L01U04",
+         "before": [
+          {
+           "known": "ich frage mich",
+           "legoId": "S0289L01",
+           "target": "I wonder",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "anrufen",
+           "legoId": "S0294L01",
+           "target": " call",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " tonight",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0289L01",
+           "target": "I wonder",
+           "known": "ich frage mich",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0294L01",
+           "target": " call",
+           "known": "anrufen",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " tonight",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02U03",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " practise",
+           "isGhost": true
+          },
+          {
+           "known": "mit dir",
+           "legoId": "S0001L04",
+           "target": " with you",
+           "isGhost": false
+          },
+          {
+           "known": "jetzt",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " practise",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0001L04",
+           "target": " with you",
+           "known": "mit dir",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "jetzt",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0095L03U04",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " go",
+           "isGhost": true
+          },
+          {
+           "known": "mit dem nächsten Bus",
+           "legoId": "S0095L03",
+           "target": " on the next bus",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " go",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0095L03",
+           "target": " on the next bus",
+           "known": "mit dem nächsten Bus",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0158L02U03",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "über etwas reden",
+           "legoId": "S0158L02",
+           "target": " talk about something",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " else",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0158L02",
+           "target": " talk about something",
+           "known": "über etwas reden",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " else",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0204L01U05",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " help",
+           "isGhost": true
+          },
+          {
+           "known": "bei den Vorbereitungen",
+           "legoId": "S0204L01",
+           "target": " to deal with the arrangements",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " help",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0204L01",
+           "target": " to deal with the arrangements",
+           "known": "bei den Vorbereitungen",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02U02",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " practise",
+           "isGhost": true
+          },
+          {
+           "known": "ein bisschen",
+           "legoId": "S0009L01",
+           "target": " a little",
+           "isGhost": false
+          },
+          {
+           "known": "englisch",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "heute",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " practise",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " a little",
+           "known": "ein bisschen",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "englisch",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "heute",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0168L01U05",
+         "before": [
+          {
+           "known": "ich möchte",
+           "legoId": "S0001L01",
+           "target": "I want",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "kommen und helfen",
+           "legoId": "S0168L01",
+           "target": " come and help",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0001L01",
+           "target": "I want",
+           "known": "ich möchte",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0168L01",
+           "target": " come and help",
+           "known": "kommen und helfen",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02U04",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " speak",
+           "isGhost": true
+          },
+          {
+           "known": "ein bisschen",
+           "legoId": "S0009L01",
+           "target": " a little",
+           "isGhost": false
+          },
+          {
+           "known": "jetzt",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " speak",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " a little",
+           "known": "ein bisschen",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "jetzt",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02B03",
+         "before": [
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": "if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " speak",
+           "isGhost": true
+          },
+          {
+           "known": "ein bisschen",
+           "legoId": "S0009L01",
+           "target": " a little",
+           "isGhost": false
+          },
+          {
+           "known": "englisch",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L02",
+           "target": "if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " speak",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " a little",
+           "known": "ein bisschen",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "englisch",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0164L01U05",
+         "before": [
+          {
+           "known": "ich möchte",
+           "legoId": "S0001L01",
+           "target": "I want",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " find",
+           "isGhost": true
+          },
+          {
+           "known": "ein interessantes Buch",
+           "legoId": "S0164L01",
+           "target": " an interesting book",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0001L01",
+           "target": "I want",
+           "known": "ich möchte",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " find",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0164L01",
+           "target": " an interesting book",
+           "known": "ein interessantes Buch",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02U01",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " practise",
+           "isGhost": true
+          },
+          {
+           "known": "ein bisschen",
+           "legoId": "S0009L01",
+           "target": " a little",
+           "isGhost": false
+          },
+          {
+           "known": "heute",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " practise",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " a little",
+           "known": "ein bisschen",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "heute",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02B01",
+         "before": [
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": "if I can",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L02",
+           "target": "if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02U05",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " practise",
+           "isGhost": true
+          },
+          {
+           "known": "mit jemand anderem",
+           "legoId": "S0005L03",
+           "target": " with someone else",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " practise",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0005L03",
+           "target": " with someone else",
+           "known": "mit jemand anderem",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0168L01U03",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "kommen und helfen",
+           "legoId": "S0168L01",
+           "target": " come and help",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0168L01",
+           "target": " come and help",
+           "known": "kommen und helfen",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0162L01U03",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " talk",
+           "isGhost": true
+          },
+          {
+           "known": "darüber",
+           "legoId": "S0162L01",
+           "target": " about that",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " talk",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0162L01",
+           "target": " about that",
+           "known": "darüber",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0237L01U06",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " finish",
+           "isGhost": true
+          },
+          {
+           "known": "vor dem Wochenende",
+           "legoId": "S0237L01",
+           "target": " before the weekend",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " finish",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0237L01",
+           "target": " before the weekend",
+           "known": "vor dem Wochenende",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0010L02B02",
+         "before": [
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": "if I can",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " practise",
+           "isGhost": true
+          },
+          {
+           "known": "ein bisschen",
+           "legoId": "S0009L01",
+           "target": " a little",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L02",
+           "target": "if I can",
+           "known": "ob ich kann",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " practise",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " a little",
+           "known": "ein bisschen",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0156L02U04",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "ins Restaurant gehen",
+           "legoId": "S0156L02",
+           "target": " go to a restaurant",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " tonight",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0156L02",
+           "target": " go to a restaurant",
+           "known": "ins Restaurant gehen",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " tonight",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0184L01U05",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " speak",
+           "isGhost": true
+          },
+          {
+           "known": "im Büro",
+           "legoId": "S0184L01",
+           "target": " in the office",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " speak",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0184L01",
+           "target": " in the office",
+           "known": "im Büro",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0202L02U03",
+         "before": [
+          {
+           "known": "ich bin mir nicht sicher",
+           "legoId": "S0062L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "die Frage beantworten",
+           "legoId": "S0202L02",
+           "target": " answer the question",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "ich bin mir nicht sicher",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0202L02",
+           "target": " answer the question",
+           "known": "die Frage beantworten",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_deu:S0289L01U02",
+         "before": [
+          {
+           "known": "ich frage mich",
+           "legoId": "S0289L01",
+           "target": "I wonder",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "ob ich ... kann",
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "isGhost": false
+          },
+          {
+           "known": "fertig machen",
+           "legoId": "S0278L01",
+           "target": " finish",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " that",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0289L01",
+           "target": "I wonder",
+           "known": "ich frage mich",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0010L02",
+           "target": " if I can",
+           "known": "ob ich kann",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0278L01",
+           "target": " finish",
+           "known": "fertig machen",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " that",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0289L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich frage mich",
+          "legoId": "S0289L01",
+          "target": "I wonder",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "fertig machen",
+          "legoId": "S0278L01",
+          "target": " finish",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " that",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0202L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "die Frage beantworten",
+          "legoId": "S0202L02",
+          "target": " answer the question",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0184L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " speak",
+          "isGhost": true
+         },
+         {
+          "known": "im Büro",
+          "legoId": "S0184L01",
+          "target": " in the office",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0156L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "ins Restaurant gehen",
+          "legoId": "S0156L02",
+          "target": " go to a restaurant",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " tonight",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": "if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " practise",
+          "isGhost": true
+         },
+         {
+          "known": "ein bisschen",
+          "legoId": "S0009L01",
+          "target": " a little",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0237L01U06",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " finish",
+          "isGhost": true
+         },
+         {
+          "known": "vor dem Wochenende",
+          "legoId": "S0237L01",
+          "target": " before the weekend",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0162L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " talk",
+          "isGhost": true
+         },
+         {
+          "known": "darüber",
+          "legoId": "S0162L01",
+          "target": " about that",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0168L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "kommen und helfen",
+          "legoId": "S0168L01",
+          "target": " come and help",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " practise",
+          "isGhost": true
+         },
+         {
+          "known": "mit jemand anderem",
+          "legoId": "S0005L03",
+          "target": " with someone else",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": "if I can",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " practise",
+          "isGhost": true
+         },
+         {
+          "known": "ein bisschen",
+          "legoId": "S0009L01",
+          "target": " a little",
+          "isGhost": false
+         },
+         {
+          "known": "heute",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0164L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich möchte",
+          "legoId": "S0001L01",
+          "target": "I want",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " find",
+          "isGhost": true
+         },
+         {
+          "known": "ein interessantes Buch",
+          "legoId": "S0164L01",
+          "target": " an interesting book",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": "if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " speak",
+          "isGhost": true
+         },
+         {
+          "known": "ein bisschen",
+          "legoId": "S0009L01",
+          "target": " a little",
+          "isGhost": false
+         },
+         {
+          "known": "englisch",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " speak",
+          "isGhost": true
+         },
+         {
+          "known": "ein bisschen",
+          "legoId": "S0009L01",
+          "target": " a little",
+          "isGhost": false
+         },
+         {
+          "known": "jetzt",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0168L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich möchte",
+          "legoId": "S0001L01",
+          "target": "I want",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "kommen und helfen",
+          "legoId": "S0168L01",
+          "target": " come and help",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " practise",
+          "isGhost": true
+         },
+         {
+          "known": "ein bisschen",
+          "legoId": "S0009L01",
+          "target": " a little",
+          "isGhost": false
+         },
+         {
+          "known": "englisch",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "heute",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0204L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " help",
+          "isGhost": true
+         },
+         {
+          "known": "bei den Vorbereitungen",
+          "legoId": "S0204L01",
+          "target": " to deal with the arrangements",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0158L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "über etwas reden",
+          "legoId": "S0158L02",
+          "target": " talk about something",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " else",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0095L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0062L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " go",
+          "isGhost": true
+         },
+         {
+          "known": "mit dem nächsten Bus",
+          "legoId": "S0095L03",
+          "target": " on the next bus",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich bin mir nicht sicher",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " practise",
+          "isGhost": true
+         },
+         {
+          "known": "mit dir",
+          "legoId": "S0001L04",
+          "target": " with you",
+          "isGhost": false
+         },
+         {
+          "known": "jetzt",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0294L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "ich frage mich",
+          "legoId": "S0289L01",
+          "target": "I wonder",
+          "isGhost": false
+         },
+         {
+          "known": "ob ich ... kann",
+          "legoId": "S0010L02",
+          "target": " if I can",
+          "isGhost": false
+         },
+         {
+          "known": "anrufen",
+          "legoId": "S0294L01",
+          "target": " call",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " tonight",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "1ac7a6a5-dd1a-4d0f-a902-919452db4947",
+       "set": {
+        "target_text": "than…",
+        "target1_audio_id": "4ef719b4-131e-4246-8d74-4ac90046adde",
+        "target2_audio_id": "a87a115d-5555-419f-ba96-1e99002819ad",
+        "presentation_audio_id": "ba5843fc-44fd-430d-834a-3b6253c44e80"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_deu:S0010L02B01",
+       "set": {
+        "known_text": "ob ich ... kann",
+        "known_audio_id": "b53ef985-fb6a-4ebb-b5cd-bd6b152cc4cb"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "40c57482-cbe7-48be-87f8-1572eb06787c",
+       "set": {
+        "known_text": "ob ich ... kann",
+        "known_audio_id": "b53ef985-fb6a-4ebb-b5cd-bd6b152cc4cb",
+        "presentation_audio_id": "a4570c25-e4a9-4fc3-8dbe-a36295da0649"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
 }

@@ -558,5 +558,3435 @@
     "target_text": "Surprised at how quickly"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:18:17Z",
+  "baseline_failing_seeds": 72,
+  "per_seed": {
+   "32": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "42": {
+    "seed_issues_planned": [
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "seed_issues_live": [
+     "L1: vocab violations in 1 phrase(s)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "77": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:38:40Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 6,
+    "status": 200,
+    "secs": 185.2,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0032L02"
+       },
+       "before": {
+        "id": "bb9a387e-f9f9-45e4-a16a-5594e638a720",
+        "seed_number": 32,
+        "lego_index": 2,
+        "lego_id": "S0032L02",
+        "known_text": "你想...吗",
+        "target_text": "Did you want",
+        "known_audio_id": "e931547f-bcf2-4713-b4ed-f0ba3f5bb1b1",
+        "target1_audio_id": "59e5ed33-4c06-498e-abaf-b2ccfdf06a06",
+        "target2_audio_id": "0166cd5d-47e5-4a5e-a8b6-fc5226bb7354",
+        "presentation_audio_id": "f9afaced-6c51-40d5-b79b-47e8d82e9628"
+       },
+       "after": {
+        "id": "bb9a387e-f9f9-45e4-a16a-5594e638a720",
+        "seed_number": 32,
+        "lego_index": 2,
+        "lego_id": "S0032L02",
+        "known_text": "你想吗",
+        "target_text": "Did you want",
+        "known_audio_id": "8620ede6-66d2-4265-98a3-0fdd1316818f",
+        "target1_audio_id": "59e5ed33-4c06-498e-abaf-b2ccfdf06a06",
+        "target2_audio_id": "0166cd5d-47e5-4a5e-a8b6-fc5226bb7354",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0032L02B01"
+       },
+       "before": {
+        "id": "eng_for_zho:S0032L02B01",
+        "seed_number": 32,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "你想...吗",
+        "target_text": "Did you want?",
+        "known_audio_id": "e931547f-bcf2-4713-b4ed-f0ba3f5bb1b1",
+        "target1_audio_id": "59e5ed33-4c06-498e-abaf-b2ccfdf06a06",
+        "target2_audio_id": "0166cd5d-47e5-4a5e-a8b6-fc5226bb7354",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_zho:S0032L02B01",
+        "seed_number": 32,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "你想吗",
+        "target_text": "Did you want?",
+        "known_audio_id": "8620ede6-66d2-4265-98a3-0fdd1316818f",
+        "target1_audio_id": "59e5ed33-4c06-498e-abaf-b2ccfdf06a06",
+        "target2_audio_id": "0166cd5d-47e5-4a5e-a8b6-fc5226bb7354",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0042L03"
+       },
+       "before": {
+        "id": "9dbf46c4-5c03-4f2e-9395-75ba69d35f57",
+        "seed_number": 42,
+        "lego_index": 3,
+        "lego_id": "S0042L03",
+        "known_text": "我开始觉得...了",
+        "target_text": "I was starting to feel",
+        "known_audio_id": "c09be3d1-0729-48a8-a627-7d241f56198e",
+        "target1_audio_id": "883aec50-f63c-4268-a1c9-c423f9741f0e",
+        "target2_audio_id": "f2eb9852-3b12-4b18-b04c-c5df45219a35",
+        "presentation_audio_id": "02236bd4-737e-47e2-95cc-761105a9b6e0"
+       },
+       "after": {
+        "id": "9dbf46c4-5c03-4f2e-9395-75ba69d35f57",
+        "seed_number": 42,
+        "lego_index": 3,
+        "lego_id": "S0042L03",
+        "known_text": "我开始觉得",
+        "target_text": "I was starting to feel",
+        "known_audio_id": null,
+        "target1_audio_id": "883aec50-f63c-4268-a1c9-c423f9741f0e",
+        "target2_audio_id": "f2eb9852-3b12-4b18-b04c-c5df45219a35",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0042L03B01"
+       },
+       "before": {
+        "id": "eng_for_zho:S0042L03B01",
+        "seed_number": 42,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "我开始觉得...了",
+        "target_text": "I was starting to feel",
+        "known_audio_id": "c09be3d1-0729-48a8-a627-7d241f56198e",
+        "target1_audio_id": "883aec50-f63c-4268-a1c9-c423f9741f0e",
+        "target2_audio_id": "f2eb9852-3b12-4b18-b04c-c5df45219a35",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_zho:S0042L03B01",
+        "seed_number": 42,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "我开始觉得",
+        "target_text": "I was starting to feel",
+        "known_audio_id": null,
+        "target1_audio_id": "883aec50-f63c-4268-a1c9-c423f9741f0e",
+        "target2_audio_id": "f2eb9852-3b12-4b18-b04c-c5df45219a35",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "lego_id": "S0077L02"
+       },
+       "before": {
+        "id": "d509743f-03e2-44ea-a2ed-746f84390dd9",
+        "seed_number": 77,
+        "lego_index": 2,
+        "lego_id": "S0077L02",
+        "known_text": "对...速度感到惊讶",
+        "target_text": "Surprised at how quickly",
+        "known_audio_id": "40336559-fd47-4994-9f39-7830af5033b3",
+        "target1_audio_id": "7edf5de9-9b7f-4425-ac9d-9184e2efa14e",
+        "target2_audio_id": "5191f119-9f94-42f6-a57d-2d26393906e0",
+        "presentation_audio_id": "0a779cd2-f103-4844-8296-76918179def3"
+       },
+       "after": {
+        "id": "d509743f-03e2-44ea-a2ed-746f84390dd9",
+        "seed_number": 77,
+        "lego_index": 2,
+        "lego_id": "S0077L02",
+        "known_text": "对速度感到惊讶",
+        "target_text": "Surprised at how quickly",
+        "known_audio_id": null,
+        "target1_audio_id": "7edf5de9-9b7f-4425-ac9d-9184e2efa14e",
+        "target2_audio_id": "5191f119-9f94-42f6-a57d-2d26393906e0",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_zho",
+        "id": "eng_for_zho:S0077L02B01"
+       },
+       "before": {
+        "id": "eng_for_zho:S0077L02B01",
+        "seed_number": 77,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "对...速度感到惊讶",
+        "target_text": "Surprised at how quickly",
+        "known_audio_id": "40336559-fd47-4994-9f39-7830af5033b3",
+        "target1_audio_id": "7edf5de9-9b7f-4425-ac9d-9184e2efa14e",
+        "target2_audio_id": "5191f119-9f94-42f6-a57d-2d26393906e0",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_zho:S0077L02B01",
+        "seed_number": 77,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "对速度感到惊讶",
+        "target_text": "Surprised at how quickly",
+        "known_audio_id": null,
+        "target1_audio_id": "7edf5de9-9b7f-4425-ac9d-9184e2efa14e",
+        "target2_audio_id": "5191f119-9f94-42f6-a57d-2d26393906e0",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0032L02",
+         "S0042L03",
+         "S0077L02"
+        ]
+       },
+       "considered": 35,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_zho:S0042L03B02",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "更好",
+           "legoId": "S0029L02",
+           "target": " better",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0029L02",
+           "target": " better",
+           "known": "更好",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02U05",
+         "before": [
+          {
+           "known": "在",
+           "legoId": "S0021L02",
+           "target": "Are",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " can",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " say",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " something",
+           "isGhost": true
+          },
+          {
+           "known": "用英语",
+           "legoId": "S0004L02",
+           "target": " in English",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0021L02",
+           "target": "Are",
+           "known": "在",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " say",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " something",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0004L02",
+           "target": " in English",
+           "known": "用英语",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02U05",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "回来",
+           "legoId": "S0016L02",
+           "target": " to come back",
+           "isGhost": false
+          },
+          {
+           "known": "今晚",
+           "legoId": "S0031L01",
+           "target": " tonight",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0016L02",
+           "target": " to come back",
+           "known": "回来",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0031L01",
+           "target": " tonight",
+           "known": "今晚",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0037L02U04",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false
+          },
+          {
+           "known": "学习",
+           "legoId": "S0002L01",
+           "target": " to learn",
+           "isGhost": false
+          },
+          {
+           "known": "认真",
+           "legoId": "S0037L01",
+           "target": " carefully",
+           "isGhost": false
+          },
+          {
+           "known": "上个月",
+           "legoId": "S0037L02",
+           "target": " last month",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0002L01",
+           "target": " to learn",
+           "known": "学习",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0037L01",
+           "target": " carefully",
+           "known": "认真",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0037L02",
+           "target": " last month",
+           "known": "上个月",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02B03",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "学习",
+           "legoId": "S0002L01",
+           "target": " to learn",
+           "isGhost": false
+          },
+          {
+           "known": "英语",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0002L01",
+           "target": " to learn",
+           "known": "学习",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "英语",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0052L03U04",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false
+          },
+          {
+           "known": "见面",
+           "legoId": "S0018L02",
+           "target": " to meet",
+           "isGhost": false
+          },
+          {
+           "known": "和朋友",
+           "legoId": "S0051L02",
+           "target": " with my friends",
+           "isGhost": false
+          },
+          {
+           "known": "上个星期",
+           "legoId": "S0052L03",
+           "target": " last week",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0018L02",
+           "target": " to meet",
+           "known": "见面",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0051L02",
+           "target": " with my friends",
+           "known": "和朋友",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0052L03",
+           "target": " last week",
+           "known": "上个星期",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L02U02",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false
+          },
+          {
+           "known": "读",
+           "legoId": "S0035L01",
+           "target": " to read",
+           "isGhost": false
+          },
+          {
+           "known": "这个故事",
+           "legoId": "S0036L02",
+           "target": " the story",
+           "isGhost": false
+          },
+          {
+           "known": "昨晚",
+           "legoId": "S0042L02",
+           "target": " last night",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0035L01",
+           "target": " to read",
+           "known": "读",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0036L02",
+           "target": " the story",
+           "known": "这个故事",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0042L02",
+           "target": " last night",
+           "known": "昨晚",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02B04",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "给我看",
+           "legoId": "S0032L01",
+           "target": " to show me",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0032L01",
+           "target": " to show me",
+           "known": "给我看",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02U02",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "给我看",
+           "legoId": "S0032L01",
+           "target": " to show me",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " something?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0032L01",
+           "target": " to show me",
+           "known": "给我看",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " something?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02U03",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "说",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "英语",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "和我",
+           "legoId": "S0015L01",
+           "target": " with me",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "英语",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0015L01",
+           "target": " with me",
+           "known": "和我",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0037L02U02",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false
+          },
+          {
+           "known": "说",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "和我",
+           "legoId": "S0015L01",
+           "target": " with me",
+           "isGhost": false
+          },
+          {
+           "known": "上个月",
+           "legoId": "S0037L02",
+           "target": " last month",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0015L01",
+           "target": " with me",
+           "known": "和我",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0037L02",
+           "target": " last month",
+           "known": "上个月",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02U04",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "说",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "和我",
+           "legoId": "S0015L01",
+           "target": " with me",
+           "isGhost": false
+          },
+          {
+           "known": "昨天",
+           "legoId": "S0030L03",
+           "target": " yesterday",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0015L01",
+           "target": " with me",
+           "known": "和我",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0030L03",
+           "target": " yesterday",
+           "known": "昨天",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03U01",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "更好",
+           "legoId": "S0029L02",
+           "target": " better",
+           "isGhost": false
+          },
+          {
+           "known": "比",
+           "legoId": "S0042L01",
+           "target": " than",
+           "isGhost": false
+          },
+          {
+           "known": "昨晚",
+           "legoId": "S0042L02",
+           "target": " last night",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0029L02",
+           "target": " better",
+           "known": "更好",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0042L01",
+           "target": " than",
+           "known": "比",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0042L02",
+           "target": " last night",
+           "known": "昨晚",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03U02",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "累",
+           "legoId": "S0039L01",
+           "target": " tired",
+           "isGhost": false
+          },
+          {
+           "known": "但是",
+           "legoId": "S0019L01",
+           "target": " but",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I",
+           "isGhost": true
+          },
+          {
+           "known": "想说",
+           "legoId": "S0031L02",
+           "target": " wanted to speak",
+           "isGhost": false
+          },
+          {
+           "known": "英语",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0039L01",
+           "target": " tired",
+           "known": "累",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0019L01",
+           "target": " but",
+           "known": "但是",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0031L02",
+           "target": " wanted to speak",
+           "known": "想说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "英语",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0052L03U03",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false
+          },
+          {
+           "known": "累",
+           "legoId": "S0039L01",
+           "target": " tired",
+           "isGhost": false
+          },
+          {
+           "known": "上个星期",
+           "legoId": "S0052L03",
+           "target": " last week",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0039L01",
+           "target": " tired",
+           "known": "累",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0052L03",
+           "target": " last week",
+           "known": "上个星期",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02U02",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I'm",
+           "isGhost": true
+          },
+          {
+           "known": "学",
+           "legoId": "S0021L03",
+           "target": " learning",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0021L03",
+           "target": " learning",
+           "known": "学",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02U01",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I'm",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " starting",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "听懂",
+           "legoId": "S0058L01",
+           "target": " understand",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " starting",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0058L01",
+           "target": " understand",
+           "known": "听懂",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0089L01U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false
+          },
+          {
+           "known": "做了",
+           "legoId": "S0089L01",
+           "target": " I've done a lot",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0089L01",
+           "target": " I've done a lot",
+           "known": "做了",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02B02",
+         "before": [
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I'm",
+           "isGhost": true
+          },
+          {
+           "known": "学",
+           "legoId": "S0021L03",
+           "target": " learning",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0021L03",
+           "target": " learning",
+           "known": "学",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02B03",
+         "before": [
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "会说",
+           "legoId": "S0009L01",
+           "target": " speak",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " speak",
+           "known": "会说",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02U04",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " not",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "你做得很好",
+           "legoId": "S0072L01",
+           "target": " you're doing very well",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " not",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0072L01",
+           "target": " you're doing very well",
+           "known": "你做得很好",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02B02",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "回来",
+           "legoId": "S0016L02",
+           "target": " to come back",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0016L02",
+           "target": " to come back",
+           "known": "回来",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02U03",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "会说",
+           "legoId": "S0009L01",
+           "target": " speak",
+           "isGhost": false
+          },
+          {
+           "known": "英语",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " speak",
+           "known": "会说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "英语",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0039L02U02",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false
+          },
+          {
+           "known": "说",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "英语",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "今天早上",
+           "legoId": "S0039L02",
+           "target": " this morning",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "英语",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0039L02",
+           "target": " this morning",
+           "known": "今天早上",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03B03",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "累",
+           "legoId": "S0039L01",
+           "target": " tired",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0039L01",
+           "target": " tired",
+           "known": "累",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03U03",
+         "before": [
+          {
+           "known": "因为",
+           "legoId": "S0022L01",
+           "target": "Because",
+           "isGhost": false
+          },
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": " I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "更好",
+           "legoId": "S0029L02",
+           "target": " better",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0022L01",
+           "target": "Because",
+           "known": "因为",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0042L03",
+           "target": " I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0029L02",
+           "target": " better",
+           "known": "更好",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0079L01U04",
+         "before": [
+          {
+           "known": "什么时候开始学的",
+           "legoId": "S0079L01",
+           "target": "When did you start to learn",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "因为",
+           "legoId": "S0022L01",
+           "target": " because",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I'm",
+           "isGhost": true
+          },
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "会说",
+           "legoId": "S0009L01",
+           "target": " speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0079L01",
+           "target": "When did you start to learn",
+           "known": "什么时候开始学的",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0022L01",
+           "target": " because",
+           "known": "因为",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0077L02",
+           "target": " surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0009L01",
+           "target": " speak",
+           "known": "会说",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02B01",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02B01",
+         "before": [
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03U05",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "更好",
+           "legoId": "S0029L02",
+           "target": " better",
+           "isGhost": false
+          },
+          {
+           "known": "比",
+           "legoId": "S0042L01",
+           "target": " than",
+           "isGhost": false
+          },
+          {
+           "known": "今天早上",
+           "legoId": "S0039L02",
+           "target": " this morning",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0029L02",
+           "target": " better",
+           "known": "更好",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0042L01",
+           "target": " than",
+           "known": "比",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0039L02",
+           "target": " this morning",
+           "known": "今天早上",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0077L02B04",
+         "before": [
+          {
+           "known": "对...速度感到惊讶",
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I'm",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " doing",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0077L02",
+           "target": "Surprised at how quickly",
+           "known": "对速度感到惊讶",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " doing",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03B04",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "还好",
+           "legoId": "S0041L01",
+           "target": " okay",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0041L01",
+           "target": " okay",
+           "known": "还好",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0032L02U01",
+         "before": [
+          {
+           "known": "你想...吗",
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "说",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "英语",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L02",
+           "target": "Did you want",
+           "known": "你想吗",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "说",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "英语",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03U04",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "累",
+           "legoId": "S0039L01",
+           "target": " tired",
+           "isGhost": false
+          },
+          {
+           "known": "昨晚",
+           "legoId": "S0042L02",
+           "target": " last night",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0039L01",
+           "target": " tired",
+           "known": "累",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0042L02",
+           "target": " last night",
+           "known": "昨晚",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_zho:S0042L03B01",
+         "before": [
+          {
+           "known": "我开始觉得...了",
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0042L03",
+           "target": "I was starting to feel",
+           "known": "我开始觉得",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "累",
+          "legoId": "S0039L01",
+          "target": " tired",
+          "isGhost": false
+         },
+         {
+          "known": "昨晚",
+          "legoId": "S0042L02",
+          "target": " last night",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "说",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "还好",
+          "legoId": "S0041L01",
+          "target": " okay",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": "Surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " doing",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "更好",
+          "legoId": "S0029L02",
+          "target": " better",
+          "isGhost": false
+         },
+         {
+          "known": "比",
+          "legoId": "S0042L01",
+          "target": " than",
+          "isGhost": false
+         },
+         {
+          "known": "今天早上",
+          "legoId": "S0039L02",
+          "target": " this morning",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": "Surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0079L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "什么时候开始学的",
+          "legoId": "S0079L01",
+          "target": "When did you start to learn",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "因为",
+          "legoId": "S0022L01",
+          "target": " because",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I'm",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "会说",
+          "legoId": "S0009L01",
+          "target": " speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "因为",
+          "legoId": "S0022L01",
+          "target": "Because",
+          "isGhost": false
+         },
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": " I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "更好",
+          "legoId": "S0029L02",
+          "target": " better",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "累",
+          "legoId": "S0039L01",
+          "target": " tired",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0039L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false
+         },
+         {
+          "known": "说",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "今天早上",
+          "legoId": "S0039L02",
+          "target": " this morning",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "会说",
+          "legoId": "S0009L01",
+          "target": " speak",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "回来",
+          "legoId": "S0016L02",
+          "target": " to come back",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " not",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "你做得很好",
+          "legoId": "S0072L01",
+          "target": " you're doing very well",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": "Surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "会说",
+          "legoId": "S0009L01",
+          "target": " speak",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": "Surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I'm",
+          "isGhost": true
+         },
+         {
+          "known": "学",
+          "legoId": "S0021L03",
+          "target": " learning",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0089L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false
+         },
+         {
+          "known": "做了",
+          "legoId": "S0089L01",
+          "target": " I've done a lot",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " starting",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "听懂",
+          "legoId": "S0058L01",
+          "target": " understand",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I'm",
+          "isGhost": true
+         },
+         {
+          "known": "学",
+          "legoId": "S0021L03",
+          "target": " learning",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0052L03U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false
+         },
+         {
+          "known": "累",
+          "legoId": "S0039L01",
+          "target": " tired",
+          "isGhost": false
+         },
+         {
+          "known": "上个星期",
+          "legoId": "S0052L03",
+          "target": " last week",
+          "isGhost": false,
+          "isSalient": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "累",
+          "legoId": "S0039L01",
+          "target": " tired",
+          "isGhost": false
+         },
+         {
+          "known": "但是",
+          "legoId": "S0019L01",
+          "target": " but",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I",
+          "isGhost": true
+         },
+         {
+          "known": "想说",
+          "legoId": "S0031L02",
+          "target": " wanted to speak",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "更好",
+          "legoId": "S0029L02",
+          "target": " better",
+          "isGhost": false
+         },
+         {
+          "known": "比",
+          "legoId": "S0042L01",
+          "target": " than",
+          "isGhost": false
+         },
+         {
+          "known": "昨晚",
+          "legoId": "S0042L02",
+          "target": " last night",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "说",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "和我",
+          "legoId": "S0015L01",
+          "target": " with me",
+          "isGhost": false
+         },
+         {
+          "known": "昨天",
+          "legoId": "S0030L03",
+          "target": " yesterday",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0037L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false
+         },
+         {
+          "known": "说",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "和我",
+          "legoId": "S0015L01",
+          "target": " with me",
+          "isGhost": false
+         },
+         {
+          "known": "上个月",
+          "legoId": "S0037L02",
+          "target": " last month",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "说",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "和我",
+          "legoId": "S0015L01",
+          "target": " with me",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "给我看",
+          "legoId": "S0032L01",
+          "target": " to show me",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " something?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "给我看",
+          "legoId": "S0032L01",
+          "target": " to show me",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false
+         },
+         {
+          "known": "读",
+          "legoId": "S0035L01",
+          "target": " to read",
+          "isGhost": false
+         },
+         {
+          "known": "这个故事",
+          "legoId": "S0036L02",
+          "target": " the story",
+          "isGhost": false
+         },
+         {
+          "known": "昨晚",
+          "legoId": "S0042L02",
+          "target": " last night",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0052L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false
+         },
+         {
+          "known": "见面",
+          "legoId": "S0018L02",
+          "target": " to meet",
+          "isGhost": false
+         },
+         {
+          "known": "和朋友",
+          "legoId": "S0051L02",
+          "target": " with my friends",
+          "isGhost": false
+         },
+         {
+          "known": "上个星期",
+          "legoId": "S0052L03",
+          "target": " last week",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "学习",
+          "legoId": "S0002L01",
+          "target": " to learn",
+          "isGhost": false
+         },
+         {
+          "known": "英语",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0037L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false
+         },
+         {
+          "known": "学习",
+          "legoId": "S0002L01",
+          "target": " to learn",
+          "isGhost": false
+         },
+         {
+          "known": "认真",
+          "legoId": "S0037L01",
+          "target": " carefully",
+          "isGhost": false
+         },
+         {
+          "known": "上个月",
+          "legoId": "S0037L02",
+          "target": " last month",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "你想...吗",
+          "legoId": "S0032L02",
+          "target": "Did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "回来",
+          "legoId": "S0016L02",
+          "target": " to come back",
+          "isGhost": false
+         },
+         {
+          "known": "今晚",
+          "legoId": "S0031L01",
+          "target": " tonight",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "在",
+          "legoId": "S0021L02",
+          "target": "Are",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "对...速度感到惊讶",
+          "legoId": "S0077L02",
+          "target": " surprised at how quickly",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " can",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " say",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " something",
+          "isGhost": true
+         },
+         {
+          "known": "用英语",
+          "legoId": "S0004L02",
+          "target": " in English",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "我开始觉得...了",
+          "legoId": "S0042L03",
+          "target": "I was starting to feel",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "更好",
+          "legoId": "S0029L02",
+          "target": " better",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0077L02B01",
+       "set": {
+        "known_text": "对...速度感到惊讶",
+        "known_audio_id": "40336559-fd47-4994-9f39-7830af5033b3"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "d509743f-03e2-44ea-a2ed-746f84390dd9",
+       "set": {
+        "known_text": "对...速度感到惊讶",
+        "known_audio_id": "40336559-fd47-4994-9f39-7830af5033b3",
+        "presentation_audio_id": "0a779cd2-f103-4844-8296-76918179def3"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0042L03B01",
+       "set": {
+        "known_text": "我开始觉得...了",
+        "known_audio_id": "c09be3d1-0729-48a8-a627-7d241f56198e"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "9dbf46c4-5c03-4f2e-9395-75ba69d35f57",
+       "set": {
+        "known_text": "我开始觉得...了",
+        "known_audio_id": "c09be3d1-0729-48a8-a627-7d241f56198e",
+        "presentation_audio_id": "02236bd4-737e-47e2-95cc-761105a9b6e0"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_zho:S0032L02B01",
+       "set": {
+        "known_text": "你想...吗",
+        "known_audio_id": "e931547f-bcf2-4713-b4ed-f0ba3f5bb1b1"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "bb9a387e-f9f9-45e4-a16a-5594e638a720",
+       "set": {
+        "known_text": "你想...吗",
+        "known_audio_id": "e931547f-bcf2-4713-b4ed-f0ba3f5bb1b1",
+        "presentation_audio_id": "f9afaced-6c51-40d5-b79b-47e8d82e9628"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
 }

@@ -593,5 +593,6540 @@
     "target_text": "can I ask something?"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:17:59Z",
+  "baseline_failing_seeds": 334,
+  "per_seed": {
+   "80": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "119": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: 1 duplicate phrase(s) within this LEGO: \"can I ask something?\""
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:35:32Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 8,
+    "status": 200,
+    "secs": 489.7,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "lego_id": "S0080L01"
+       },
+       "before": {
+        "id": "372f9dce-650b-4d4e-9dc2-948694ee0b92",
+        "seed_number": 80,
+        "lego_index": 1,
+        "lego_id": "S0080L01",
+        "known_text": "میں ... ہوں گا",
+        "target_text": "I'll be",
+        "known_audio_id": "f4381aa7-a0a4-494b-a5f6-3d436a4d7bae",
+        "target1_audio_id": "6976905c-3f33-414c-8574-68dbdc04e6af",
+        "target2_audio_id": "7ab84a16-1f30-40ad-8dcb-1d63ac5b968d",
+        "presentation_audio_id": "a191444a-a5f4-4d25-ab73-342c90ea3d55"
+       },
+       "after": {
+        "id": "372f9dce-650b-4d4e-9dc2-948694ee0b92",
+        "seed_number": 80,
+        "lego_index": 1,
+        "lego_id": "S0080L01",
+        "known_text": "میں ہوں گا",
+        "target_text": "I'll be",
+        "known_audio_id": null,
+        "target1_audio_id": "6976905c-3f33-414c-8574-68dbdc04e6af",
+        "target2_audio_id": "7ab84a16-1f30-40ad-8dcb-1d63ac5b968d",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "id": "eng_for_urd:S0080L01B01"
+       },
+       "before": {
+        "id": "eng_for_urd:S0080L01B01",
+        "seed_number": 80,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "میں ... ہوں گا",
+        "target_text": "I'll be",
+        "known_audio_id": "f4381aa7-a0a4-494b-a5f6-3d436a4d7bae",
+        "target1_audio_id": "6976905c-3f33-414c-8574-68dbdc04e6af",
+        "target2_audio_id": "7ab84a16-1f30-40ad-8dcb-1d63ac5b968d",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_urd:S0080L01B01",
+        "seed_number": 80,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "میں ہوں گا",
+        "target_text": "I'll be",
+        "known_audio_id": null,
+        "target1_audio_id": "6976905c-3f33-414c-8574-68dbdc04e6af",
+        "target2_audio_id": "7ab84a16-1f30-40ad-8dcb-1d63ac5b968d",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "lego_id": "S0119L02"
+       },
+       "before": {
+        "id": "a598a490-f574-4862-9714-49059b112eb6",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": "S0119L02",
+        "known_text": "کیا میں ... سکتا ہوں",
+        "target_text": "can I",
+        "components": [
+         {
+          "known": "میں",
+          "target": "I"
+         },
+         {
+          "known": "سکتا ہوں",
+          "target": "can"
+         }
+        ],
+        "known_audio_id": "35fbd015-71e4-4e3e-b5a8-6da8ba7f68c6",
+        "target1_audio_id": "c65c2cd8-0fb2-4722-9850-fb66dbca11f2",
+        "target2_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+        "presentation_audio_id": "4a7e12ab-cac0-4c7e-aee6-d5afd3482e70"
+       },
+       "after": {
+        "id": "a598a490-f574-4862-9714-49059b112eb6",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": "S0119L02",
+        "known_text": "کیا میں پوچھ سکتا ہوں",
+        "target_text": "can I ask",
+        "components": [
+         {
+          "known": "میں",
+          "target": "I"
+         },
+         {
+          "known": "پوچھ",
+          "target": "ask"
+         },
+         {
+          "known": "سکتا ہوں",
+          "target": "can"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": "bbafddde-6412-4084-b25e-a9d3c02480ad",
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "id": "eng_for_urd:S0119L02B01"
+       },
+       "before": {
+        "id": "eng_for_urd:S0119L02B01",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں ... سکتا ہوں",
+        "target_text": "can I",
+        "known_audio_id": "35fbd015-71e4-4e3e-b5a8-6da8ba7f68c6",
+        "target1_audio_id": "c65c2cd8-0fb2-4722-9850-fb66dbca11f2",
+        "target2_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_urd:S0119L02B01",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں پوچھ سکتا ہوں",
+        "target_text": "can I ask",
+        "known_audio_id": null,
+        "target1_audio_id": "bbafddde-6412-4084-b25e-a9d3c02480ad",
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "id": "eng_for_urd:S0119L02B02"
+       },
+       "before": {
+        "id": "eng_for_urd:S0119L02B02",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں پوچھ سکتا ہوں؟",
+        "target_text": "can I ask?",
+        "known_audio_id": "28d75b4b-9ed1-4141-aafe-353b345a1da6",
+        "target1_audio_id": "bbafddde-6412-4084-b25e-a9d3c02480ad",
+        "target2_audio_id": "2c16ba39-1807-47a6-84ee-c148b3ad77c9",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_urd:S0119L02B02",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں ابھی پوچھ سکتا ہوں؟",
+        "target_text": "can I ask now?",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "id": "eng_for_urd:S0119L02B03"
+       },
+       "before": {
+        "id": "eng_for_urd:S0119L02B03",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں چھوڑ سکتا ہوں؟",
+        "target_text": "can I leave?",
+        "known_audio_id": "4ee73092-96b5-4e0b-a24d-a85e35de8c19",
+        "target1_audio_id": "3807cc8d-fc59-43d9-aa17-69d11581d12e",
+        "target2_audio_id": "a74815ae-32bf-44dd-b709-74b9283943fd",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_urd:S0119L02B03",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں آپ سے پوچھ سکتا ہوں؟",
+        "target_text": "can I ask you?",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "id": "eng_for_urd:S0119L02B04"
+       },
+       "before": {
+        "id": "eng_for_urd:S0119L02B04",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں ابھی چھوڑ سکتا ہوں؟",
+        "target_text": "can I leave now?",
+        "known_audio_id": "f59c4a8f-9705-479f-a480-a7a41fefe046",
+        "target1_audio_id": "ef40f5b9-ce5b-4d6a-910b-31a24abb4987",
+        "target2_audio_id": "f1ce1a53-0bec-4a8f-8d98-66bbc739b1f4",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_urd:S0119L02B04",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں آج پوچھ سکتا ہوں؟",
+        "target_text": "can I ask today?",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_urd",
+        "id": "eng_for_urd:S0119L02U02"
+       },
+       "before": {
+        "id": "eng_for_urd:S0119L02U02",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں کچھ پوچھ سکتا ہوں؟",
+        "target_text": "can I ask something?",
+        "known_audio_id": "9fae253e-c2e4-4017-a32d-b3c165bc1314",
+        "target1_audio_id": "dd1862d6-f6c2-485b-8b34-f432ce86bcff",
+        "target2_audio_id": "e8fa8dc1-972f-4604-857b-544e5337f3d6",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_urd:S0119L02U02",
+        "seed_number": 119,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "کیا میں آپ سے کچھ پوچھ سکتا ہوں؟",
+        "target_text": "can I ask you something?",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0080L01",
+         "S0119L02"
+        ]
+       },
+       "considered": 65,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_urd:S0256L01U02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " in",
+           "isGhost": true
+          },
+          {
+           "known": "ایک گھنٹے سے کم",
+           "legoId": "S0256L01",
+           "target": " less than an hour",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " in",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0256L01",
+           "target": " less than an hour",
+           "known": "ایک گھنٹے سے کم",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01B02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0500L03U05",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "بیٹھیں",
+           "legoId": "S0500L02",
+           "target": " sit",
+           "isGhost": false
+          },
+          {
+           "known": "کے درمیان",
+           "legoId": "S0500L03",
+           "target": " between",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " two?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0500L02",
+           "target": " sit",
+           "known": "بیٹھیں",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0500L03",
+           "target": " between",
+           "known": "کے درمیان",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " two?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0625L01U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ",
+           "legoId": "S0004L02",
+           "target": " something",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "پینا",
+           "legoId": "S0625L01",
+           "target": " drink",
+           "isGhost": false
+          },
+          {
+           "known": "برائے مہربانی",
+           "legoId": "S0414L03",
+           "target": " please",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0004L02",
+           "target": " something",
+           "known": "کچھ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0625L01",
+           "target": " drink",
+           "known": "پینا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0414L03",
+           "target": " please",
+           "known": "برائے مہربانی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0489L01U05",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " a",
+           "isGhost": true
+          },
+          {
+           "known": "کپ",
+           "legoId": "S0489L01",
+           "target": " cup",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " of",
+           "isGhost": true
+          },
+          {
+           "known": "کافی",
+           "legoId": "S0281L01",
+           "target": " coffee",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " a",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0489L01",
+           "target": " cup",
+           "known": "کپ",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " of",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0281L01",
+           "target": " coffee",
+           "known": "کافی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0291L02U05",
+         "before": [
+          {
+           "known": "مجھے امید ہے کہ",
+           "legoId": "S0291L01",
+           "target": "I hope",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " able",
+           "isGhost": true
+          },
+          {
+           "known": "بات کرنا",
+           "legoId": "S0031L03",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " better",
+           "isGhost": true
+          },
+          {
+           "known": "اگلے مہینے",
+           "legoId": "S0271L01",
+           "target": " next month",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0291L01",
+           "target": "I hope",
+           "known": "مجھے امید ہے کہ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " I'll",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0291L02",
+           "target": " be able to speak better",
+           "known": "بہتر بول پاؤں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0271L01",
+           "target": " next month",
+           "known": "اگلے مہینے",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0252L01U03",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "شروع کرنے کے لیے تیار",
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " in",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " a",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " while",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "known": "شروع کرنے کے لیے تیار",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " in",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " a",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " while",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0252L01U05",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "شروع کرنے کے لیے تیار",
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "isGhost": false
+          },
+          {
+           "known": "کل",
+           "legoId": "S0012L04",
+           "target": " tomorrow",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "known": "شروع کرنے کے لیے تیار",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0012L04",
+           "target": " tomorrow",
+           "known": "کل",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0253L01U04",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " here",
+           "isGhost": true
+          },
+          {
+           "known": "چند منٹ میں",
+           "legoId": "S0253L01",
+           "target": " in a few minutes",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " here",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0253L01",
+           "target": " in a few minutes",
+           "known": "چند منٹ میں",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0255L01U04",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "جانے کے لیے تیار",
+           "legoId": "S0255L01",
+           "target": " ready to leave",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " in",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " a",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " while",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0255L01",
+           "target": " ready to leave",
+           "known": "جانے کے لیے تیار",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " in",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " a",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " while",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0274L01U02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " there",
+           "isGhost": true
+          },
+          {
+           "known": "چند دنوں میں",
+           "legoId": "S0274L01",
+           "target": " in a few days",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " there",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0274L01",
+           "target": " in a few days",
+           "known": "چند دنوں میں",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01U02",
+         "before": [
+          {
+           "known": "مجھے یقین نہیں",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " when",
+           "isGhost": true
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "مجھے یقین نہیں",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " when",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0096L01U02",
+         "before": [
+          {
+           "known": "نہیں، میں ابھی تیار نہیں",
+           "legoId": "S0096L01",
+           "target": "no I'm not ready yet",
+           "isGhost": false
+          },
+          {
+           "known": "لیکن",
+           "legoId": "S0019L01",
+           "target": " but",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "جلد",
+           "legoId": "S0023L04",
+           "target": " soon",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0096L01",
+           "target": "no I'm not ready yet",
+           "known": "نہیں، میں ابھی تیار نہیں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0019L01",
+           "target": " but",
+           "known": "لیکن",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0023L04",
+           "target": " soon",
+           "known": "جلد",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0634L01U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "ایک",
+           "legoId": "S0634L01",
+           "target": " one",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " of",
+           "isGhost": true
+          },
+          {
+           "known": "ان",
+           "legoId": "S0085L01",
+           "target": " those",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0634L01",
+           "target": " one",
+           "known": "ایک",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " of",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0085L01",
+           "target": " those",
+           "known": "ان",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02B01",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02B03",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "چھوڑنا",
+           "legoId": "S0119L01",
+           "target": " leave",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0176L03U02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " here",
+           "isGhost": true
+          },
+          {
+           "known": "اگلے سال",
+           "legoId": "S0176L03",
+           "target": " next year",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " here",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0176L03",
+           "target": " next year",
+           "known": "اگلے سال",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0555L02U04",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " get",
+           "isGhost": true
+          },
+          {
+           "known": "نیا والا",
+           "legoId": "S0555L02",
+           "target": " a new one",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " get",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0555L02",
+           "target": " a new one",
+           "known": "نیا والا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02B04",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "چھوڑنا",
+           "legoId": "S0119L01",
+           "target": " leave",
+           "isGhost": false
+          },
+          {
+           "known": "ابھی",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "آج",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0291L02U02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " able",
+           "isGhost": true
+          },
+          {
+           "known": "بات کرنا",
+           "legoId": "S0031L03",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " better",
+           "isGhost": true
+          },
+          {
+           "known": "جلد",
+           "legoId": "S0023L04",
+           "target": " soon",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'll",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0291L02",
+           "target": " be able to speak better",
+           "known": "بہتر بول پاؤں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0023L04",
+           "target": " soon",
+           "known": "جلد",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01U03",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "خوش",
+           "legoId": "S0076L01",
+           "target": " happy",
+           "isGhost": false
+          },
+          {
+           "known": "جلد",
+           "legoId": "S0023L04",
+           "target": " soon",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0076L01",
+           "target": " happy",
+           "known": "خوش",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0023L04",
+           "target": " soon",
+           "known": "جلد",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0190L02U03",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ سوال",
+           "legoId": "S0190L02",
+           "target": " some questions",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0190L02",
+           "target": " some questions",
+           "known": "کچھ سوال",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0490L01U03",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "بھروسہ",
+           "legoId": "S0490L01",
+           "target": " trust",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0490L01",
+           "target": " trust",
+           "known": "بھروسہ",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0535L03U04",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "چننا",
+           "legoId": "S0535L03",
+           "target": " choose",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " this?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0535L03",
+           "target": " choose",
+           "known": "چننا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " this?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0498L03U04",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " come",
+           "isGhost": true
+          },
+          {
+           "known": "اندر",
+           "legoId": "S0498L03",
+           "target": " inside",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " come",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0498L03",
+           "target": " inside",
+           "known": "اندر",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0465L01U06",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "شروع کرنے کے لیے تیار",
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "isGhost": false
+          },
+          {
+           "known": "اگلی بار",
+           "legoId": "S0465L01",
+           "target": " next time",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "known": "شروع کرنے کے لیے تیار",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0465L01",
+           "target": " next time",
+           "known": "اگلی بار",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0447L01U03",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "چلانا",
+           "legoId": "S0447L01",
+           "target": " drive",
+           "isGhost": false
+          },
+          {
+           "known": "آپ کی گاڑی",
+           "legoId": "S0121L03",
+           "target": " your car",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0447L01",
+           "target": " drive",
+           "known": "چلانا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0121L03",
+           "target": " your car",
+           "known": "آپ کی گاڑی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0632L01U04",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "ایک گلاس پانی",
+           "legoId": "S0632L01",
+           "target": " a glass of water",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0632L01",
+           "target": " a glass of water",
+           "known": "ایک گلاس پانی",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0642L01U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " help",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "محترمہ",
+           "legoId": "S0642L01",
+           "target": " madam",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " help",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0642L01",
+           "target": " madam",
+           "known": "محترمہ",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0291L02U01",
+         "before": [
+          {
+           "known": "مجھے امید ہے کہ",
+           "legoId": "S0291L01",
+           "target": "I hope",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " able",
+           "isGhost": true
+          },
+          {
+           "known": "بات کرنا",
+           "legoId": "S0031L03",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " better",
+           "isGhost": true
+          },
+          {
+           "known": "جلد",
+           "legoId": "S0023L04",
+           "target": " soon",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0291L01",
+           "target": "I hope",
+           "known": "مجھے امید ہے کہ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " I'll",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0291L02",
+           "target": " be able to speak better",
+           "known": "بہتر بول پاؤں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0023L04",
+           "target": " soon",
+           "known": "جلد",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01B03",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "خوش",
+           "legoId": "S0076L01",
+           "target": " happy",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0076L01",
+           "target": " happy",
+           "known": "خوش",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01B04",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "ابھی",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "ابھی",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01B01",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01U05",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I'm",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " not",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "ابھی تک",
+           "legoId": "S0060L02",
+           "target": " yet",
+           "isGhost": false
+          },
+          {
+           "known": "لیکن",
+           "legoId": "S0019L01",
+           "target": " but",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "جلد",
+           "legoId": "S0023L04",
+           "target": " soon",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'm",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " not",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0060L02",
+           "target": " yet",
+           "known": "ابھی تک",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0019L01",
+           "target": " but",
+           "known": "لیکن",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0023L04",
+           "target": " soon",
+           "known": "جلد",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01U01",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "جلد",
+           "legoId": "S0023L04",
+           "target": " soon",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0023L04",
+           "target": " soon",
+           "known": "جلد",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0080L01U06",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "خوش",
+           "legoId": "S0076L01",
+           "target": " happy",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " if",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " can",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " help",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0076L01",
+           "target": " happy",
+           "known": "خوش",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " if",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " help",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0110L02U05",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "خوش",
+           "legoId": "S0076L01",
+           "target": " happy",
+           "isGhost": false
+          },
+          {
+           "known": "ہم ختم کریں گے بعد میں",
+           "legoId": "S0110L02",
+           "target": " after we finish",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0076L01",
+           "target": " happy",
+           "known": "خوش",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0110L02",
+           "target": " after we finish",
+           "known": "ہم ختم کریں گے بعد میں",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ",
+           "legoId": "S0004L02",
+           "target": " something",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0004L02",
+           "target": " something",
+           "known": "کچھ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02U01",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ",
+           "legoId": "S0004L02",
+           "target": " something",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0004L02",
+           "target": " something",
+           "known": "کچھ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02U03",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " before",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " I",
+           "isGhost": true
+          },
+          {
+           "known": "چھوڑنا",
+           "legoId": "S0119L01",
+           "target": " leave",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " before",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0119L01",
+           "target": " leave",
+           "known": "چھوڑنا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02U04",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ",
+           "legoId": "S0004L02",
+           "target": " something",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " else?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0004L02",
+           "target": " something",
+           "known": "کچھ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " else?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0168L01U05",
+         "before": [
+          {
+           "known": "اور",
+           "legoId": "S0015L01",
+           "target": "and",
+           "isGhost": false
+          },
+          {
+           "known": "پھر",
+           "legoId": "S0168L01",
+           "target": " then",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " able",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " come",
+           "isGhost": true
+          },
+          {
+           "known": "بعد میں",
+           "legoId": "S0016L04",
+           "target": " later on",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0015L01",
+           "target": "and",
+           "known": "اور",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0168L01",
+           "target": " then",
+           "known": "پھر",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " able",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " come",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0016L04",
+           "target": " later on",
+           "known": "بعد میں",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0176L03U04",
+         "before": [
+          {
+           "known": "مجھے یقین نہیں",
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "اگلے سال",
+           "legoId": "S0176L03",
+           "target": " next year",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0010L01",
+           "target": "I'm not sure",
+           "known": "مجھے یقین نہیں",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0176L03",
+           "target": " next year",
+           "known": "اگلے سال",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0248L02U05",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " take",
+           "isGhost": true
+          },
+          {
+           "known": "اپنے پیسے واپس",
+           "legoId": "S0248L02",
+           "target": " my money back",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " take",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0248L02",
+           "target": " my money back",
+           "known": "اپنے پیسے واپس",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0252L01U07",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "شروع کرنے کے لیے تیار",
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "isGhost": false
+          },
+          {
+           "known": "جب آپ چاہیں",
+           "legoId": "S0097L02",
+           "target": " as soon as you want",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "known": "شروع کرنے کے لیے تیار",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0097L02",
+           "target": " as soon as you want",
+           "known": "جب آپ چاہیں",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0237L02U03",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "ویک اینڈ سے پہلے",
+           "legoId": "S0237L02",
+           "target": " before the weekend",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0237L02",
+           "target": " before the weekend",
+           "known": "ویک اینڈ سے پہلے",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0252L01U06",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "شروع کرنے کے لیے تیار",
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "isGhost": false
+          },
+          {
+           "known": "تھوڑے وقت میں",
+           "legoId": "S0089L03",
+           "target": " in a short time",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0252L01",
+           "target": " ready to start",
+           "known": "شروع کرنے کے لیے تیار",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0089L03",
+           "target": " in a short time",
+           "known": "تھوڑے وقت میں",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0253L01U02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "چند منٹ میں",
+           "legoId": "S0253L01",
+           "target": " in a few minutes",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0253L01",
+           "target": " in a few minutes",
+           "known": "چند منٹ میں",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0277L02U02",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " there",
+           "isGhost": true
+          },
+          {
+           "known": "اگلے ہفتے کے شروع میں",
+           "legoId": "S0277L02",
+           "target": " early next week",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " there",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0277L02",
+           "target": " early next week",
+           "known": "اگلے ہفتے کے شروع میں",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0281L02U03",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "شروع کرنے سے پہلے",
+           "legoId": "S0281L02",
+           "target": " before you start",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0281L02",
+           "target": " before you start",
+           "known": "شروع کرنے سے پہلے",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0291L02U04",
+         "before": [
+          {
+           "known": "مجھے امید ہے کہ",
+           "legoId": "S0291L01",
+           "target": "I hope",
+           "isGhost": false
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " able",
+           "isGhost": true
+          },
+          {
+           "known": "بات کرنا",
+           "legoId": "S0031L03",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " better",
+           "isGhost": true
+          },
+          {
+           "known": "آج",
+           "legoId": "S0007L03",
+           "target": " today",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0291L01",
+           "target": "I hope",
+           "known": "مجھے امید ہے کہ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " I'll",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0291L02",
+           "target": " be able to speak better",
+           "known": "بہتر بول پاؤں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0007L03",
+           "target": " today",
+           "known": "آج",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0291L02U03",
+         "before": [
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": "I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " able",
+           "isGhost": true
+          },
+          {
+           "known": "بات کرنا",
+           "legoId": "S0031L03",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " better",
+           "isGhost": true
+          },
+          {
+           "known": "اگلے مہینے",
+           "legoId": "S0271L01",
+           "target": " next month",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I'll",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0291L02",
+           "target": " be able to speak better",
+           "known": "بہتر بول پاؤں گا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0271L01",
+           "target": " next month",
+           "known": "اگلے مہینے",
+           "isGhost": false
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0422L01U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "ایک سوال",
+           "legoId": "S0422L01",
+           "target": " a question",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0422L01",
+           "target": " a question",
+           "known": "ایک سوال",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0623L01U05",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " a",
+           "isGhost": true
+          },
+          {
+           "known": "کپ",
+           "legoId": "S0489L01",
+           "target": " cup",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " of",
+           "isGhost": true
+          },
+          {
+           "known": "چائے",
+           "legoId": "S0623L01",
+           "target": " tea",
+           "isGhost": false
+          },
+          {
+           "known": "برائے مہربانی",
+           "legoId": "S0414L03",
+           "target": " please",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " a",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0489L01",
+           "target": " cup",
+           "known": "کپ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " of",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0623L01",
+           "target": " tea",
+           "known": "چائے",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0414L03",
+           "target": " please",
+           "known": "برائے مہربانی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0630L01U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "برائے مہربانی",
+           "legoId": "S0414L03",
+           "target": " please",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ پینا",
+           "legoId": "S0630L01",
+           "target": " something to drink",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0414L03",
+           "target": " please",
+           "known": "برائے مہربانی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0630L01",
+           "target": " something to drink",
+           "known": "کچھ پینا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0630L01U05",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ پینا",
+           "legoId": "S0630L01",
+           "target": " something to drink",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0630L01",
+           "target": " something to drink",
+           "known": "کچھ پینا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0629L01U03",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " it",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " with",
+           "isGhost": true
+          },
+          {
+           "known": "دودھ",
+           "legoId": "S0629L01",
+           "target": " milk",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " it",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " with",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0629L01",
+           "target": " milk",
+           "known": "دودھ",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0633L01U01",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " a",
+           "isGhost": true
+          },
+          {
+           "known": "بڑا",
+           "legoId": "S0633L01",
+           "target": " large",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " glass",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " of",
+           "isGhost": true
+          },
+          {
+           "known": "پانی",
+           "legoId": "S0217L03",
+           "target": " water",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " a",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0633L01",
+           "target": " large",
+           "known": "بڑا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " glass",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " of",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0217L03",
+           "target": " water",
+           "known": "پانی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02B02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "ابھی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0121L02U06",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "استعمال کرنا",
+           "legoId": "S0121L02",
+           "target": " use",
+           "isGhost": false
+          },
+          {
+           "known": "آپ کی گاڑی",
+           "legoId": "S0121L03",
+           "target": " your car",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0121L02",
+           "target": " use",
+           "known": "استعمال کرنا",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0121L03",
+           "target": " your car",
+           "known": "آپ کی گاڑی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0119L02U05",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ask",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "کچھ",
+           "legoId": "S0004L02",
+           "target": " something",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " before",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "چھوڑنا",
+           "legoId": "S0119L01",
+           "target": " leave",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0119L02",
+           "target": "can I ask",
+           "known": "کیا میں پوچھ سکتا ہوں",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0004L02",
+           "target": " something",
+           "known": "کچھ",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " before",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0119L01",
+           "target": " leave",
+           "known": "چھوڑنا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0256L01U01",
+         "before": [
+          {
+           "known": "",
+           "legoId": null,
+           "target": "I",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " think",
+           "isGhost": true
+          },
+          {
+           "known": "میں ... ہوں گا",
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " ready",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " in",
+           "isGhost": true
+          },
+          {
+           "known": "ایک گھنٹے سے کم",
+           "legoId": "S0256L01",
+           "target": " less than an hour",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " think",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0080L01",
+           "target": " I'll be",
+           "known": "میں ہوں گا",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": " ready",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " in",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0256L01",
+           "target": " less than an hour",
+           "known": "ایک گھنٹے سے کم",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0639L01U02",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " help",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " you",
+           "isGhost": true
+          },
+          {
+           "known": "جناب",
+           "legoId": "S0639L01",
+           "target": " sir",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " help",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " you",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0639L01",
+           "target": " sir",
+           "known": "جناب",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_urd:S0632L01U01",
+         "before": [
+          {
+           "known": "کیا میں ... سکتا ہوں",
+           "legoId": "S0119L02",
+           "target": "can I",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " have",
+           "isGhost": true
+          },
+          {
+           "known": "ایک گلاس پانی",
+           "legoId": "S0632L01",
+           "target": " a glass of water",
+           "isGhost": false
+          },
+          {
+           "known": "برائے مہربانی",
+           "legoId": "S0414L03",
+           "target": " please",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": null,
+           "target": "can",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " I",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " have",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0632L01",
+           "target": " a glass of water",
+           "known": "ایک گلاس پانی",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0414L03",
+           "target": " please",
+           "known": "برائے مہربانی",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [
+        "eng_for_urd:S0168L02C01"
+       ],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0632L01U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "ایک گلاس پانی",
+          "legoId": "S0632L01",
+          "target": " a glass of water",
+          "isGhost": false
+         },
+         {
+          "known": "برائے مہربانی",
+          "legoId": "S0414L03",
+          "target": " please",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0639L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " help",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "جناب",
+          "legoId": "S0639L01",
+          "target": " sir",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0256L01U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " think",
+          "isGhost": true
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " in",
+          "isGhost": true
+         },
+         {
+          "known": "ایک گھنٹے سے کم",
+          "legoId": "S0256L01",
+          "target": " less than an hour",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ",
+          "legoId": "S0004L02",
+          "target": " something",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " before",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "چھوڑنا",
+          "legoId": "S0119L01",
+          "target": " leave",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0121L02U06",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "استعمال کرنا",
+          "legoId": "S0121L02",
+          "target": " use",
+          "isGhost": false
+         },
+         {
+          "known": "آپ کی گاڑی",
+          "legoId": "S0121L03",
+          "target": " your car",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0633L01U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " a",
+          "isGhost": true
+         },
+         {
+          "known": "بڑا",
+          "legoId": "S0633L01",
+          "target": " large",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " glass",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " of",
+          "isGhost": true
+         },
+         {
+          "known": "پانی",
+          "legoId": "S0217L03",
+          "target": " water",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0629L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " it",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " with",
+          "isGhost": true
+         },
+         {
+          "known": "دودھ",
+          "legoId": "S0629L01",
+          "target": " milk",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0630L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ پینا",
+          "legoId": "S0630L01",
+          "target": " something to drink",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0630L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "برائے مہربانی",
+          "legoId": "S0414L03",
+          "target": " please",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ پینا",
+          "legoId": "S0630L01",
+          "target": " something to drink",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0623L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " a",
+          "isGhost": true
+         },
+         {
+          "known": "کپ",
+          "legoId": "S0489L01",
+          "target": " cup",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " of",
+          "isGhost": true
+         },
+         {
+          "known": "چائے",
+          "legoId": "S0623L01",
+          "target": " tea",
+          "isGhost": false
+         },
+         {
+          "known": "برائے مہربانی",
+          "legoId": "S0414L03",
+          "target": " please",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0422L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "ایک سوال",
+          "legoId": "S0422L01",
+          "target": " a question",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0291L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " able",
+          "isGhost": true
+         },
+         {
+          "known": "بات کرنا",
+          "legoId": "S0031L03",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " better",
+          "isGhost": true
+         },
+         {
+          "known": "اگلے مہینے",
+          "legoId": "S0271L01",
+          "target": " next month",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0291L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "مجھے امید ہے کہ",
+          "legoId": "S0291L01",
+          "target": "I hope",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " able",
+          "isGhost": true
+         },
+         {
+          "known": "بات کرنا",
+          "legoId": "S0031L03",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " better",
+          "isGhost": true
+         },
+         {
+          "known": "آج",
+          "legoId": "S0007L03",
+          "target": " today",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0281L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "شروع کرنے سے پہلے",
+          "legoId": "S0281L02",
+          "target": " before you start",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0277L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " there",
+          "isGhost": true
+         },
+         {
+          "known": "اگلے ہفتے کے شروع میں",
+          "legoId": "S0277L02",
+          "target": " early next week",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0253L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "چند منٹ میں",
+          "legoId": "S0253L01",
+          "target": " in a few minutes",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0252L01U06",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "شروع کرنے کے لیے تیار",
+          "legoId": "S0252L01",
+          "target": " ready to start",
+          "isGhost": false
+         },
+         {
+          "known": "تھوڑے وقت میں",
+          "legoId": "S0089L03",
+          "target": " in a short time",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0237L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "ویک اینڈ سے پہلے",
+          "legoId": "S0237L02",
+          "target": " before the weekend",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0252L01U07",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "شروع کرنے کے لیے تیار",
+          "legoId": "S0252L01",
+          "target": " ready to start",
+          "isGhost": false
+         },
+         {
+          "known": "جب آپ چاہیں",
+          "legoId": "S0097L02",
+          "target": " as soon as you want",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0248L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " take",
+          "isGhost": true
+         },
+         {
+          "known": "اپنے پیسے واپس",
+          "legoId": "S0248L02",
+          "target": " my money back",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0176L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "مجھے یقین نہیں",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "اگلے سال",
+          "legoId": "S0176L03",
+          "target": " next year",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0168L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "اور",
+          "legoId": "S0015L01",
+          "target": "and",
+          "isGhost": false
+         },
+         {
+          "known": "پھر",
+          "legoId": "S0168L01",
+          "target": " then",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " able",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " come",
+          "isGhost": true
+         },
+         {
+          "known": "بعد میں",
+          "legoId": "S0016L04",
+          "target": " later on",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ",
+          "legoId": "S0004L02",
+          "target": " something",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " else?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " before",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " I",
+          "isGhost": true
+         },
+         {
+          "known": "چھوڑنا",
+          "legoId": "S0119L01",
+          "target": " leave",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ",
+          "legoId": "S0004L02",
+          "target": " something",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ",
+          "legoId": "S0004L02",
+          "target": " something",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0110L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "خوش",
+          "legoId": "S0076L01",
+          "target": " happy",
+          "isGhost": false
+         },
+         {
+          "known": "ہم ختم کریں گے بعد میں",
+          "legoId": "S0110L02",
+          "target": " after we finish",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01U06",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "خوش",
+          "legoId": "S0076L01",
+          "target": " happy",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " if",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " can",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " help",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "جلد",
+          "legoId": "S0023L04",
+          "target": " soon",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "",
+          "legoId": null,
+          "target": "I'm",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " not",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "ابھی تک",
+          "legoId": "S0060L02",
+          "target": " yet",
+          "isGhost": false
+         },
+         {
+          "known": "لیکن",
+          "legoId": "S0019L01",
+          "target": " but",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "جلد",
+          "legoId": "S0023L04",
+          "target": " soon",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "ابھی",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "خوش",
+          "legoId": "S0076L01",
+          "target": " happy",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0291L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "مجھے امید ہے کہ",
+          "legoId": "S0291L01",
+          "target": "I hope",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " able",
+          "isGhost": true
+         },
+         {
+          "known": "بات کرنا",
+          "legoId": "S0031L03",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " better",
+          "isGhost": true
+         },
+         {
+          "known": "جلد",
+          "legoId": "S0023L04",
+          "target": " soon",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0642L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " help",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "محترمہ",
+          "legoId": "S0642L01",
+          "target": " madam",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0632L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "ایک گلاس پانی",
+          "legoId": "S0632L01",
+          "target": " a glass of water",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0447L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "چلانا",
+          "legoId": "S0447L01",
+          "target": " drive",
+          "isGhost": false
+         },
+         {
+          "known": "آپ کی گاڑی",
+          "legoId": "S0121L03",
+          "target": " your car",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0465L01U06",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "شروع کرنے کے لیے تیار",
+          "legoId": "S0252L01",
+          "target": " ready to start",
+          "isGhost": false
+         },
+         {
+          "known": "اگلی بار",
+          "legoId": "S0465L01",
+          "target": " next time",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0498L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " come",
+          "isGhost": true
+         },
+         {
+          "known": "اندر",
+          "legoId": "S0498L03",
+          "target": " inside",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0535L03U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "چننا",
+          "legoId": "S0535L03",
+          "target": " choose",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " this?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0490L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "بھروسہ",
+          "legoId": "S0490L01",
+          "target": " trust",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0190L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ask",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ سوال",
+          "legoId": "S0190L02",
+          "target": " some questions",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "خوش",
+          "legoId": "S0076L01",
+          "target": " happy",
+          "isGhost": false
+         },
+         {
+          "known": "جلد",
+          "legoId": "S0023L04",
+          "target": " soon",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0291L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " able",
+          "isGhost": true
+         },
+         {
+          "known": "بات کرنا",
+          "legoId": "S0031L03",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " better",
+          "isGhost": true
+         },
+         {
+          "known": "جلد",
+          "legoId": "S0023L04",
+          "target": " soon",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "چھوڑنا",
+          "legoId": "S0119L01",
+          "target": " leave",
+          "isGhost": false
+         },
+         {
+          "known": "ابھی",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0555L02U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " get",
+          "isGhost": true
+         },
+         {
+          "known": "نیا والا",
+          "legoId": "S0555L02",
+          "target": " a new one",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0176L03U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " here",
+          "isGhost": true
+         },
+         {
+          "known": "اگلے سال",
+          "legoId": "S0176L03",
+          "target": " next year",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "چھوڑنا",
+          "legoId": "S0119L01",
+          "target": " leave",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0634L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "ایک",
+          "legoId": "S0634L01",
+          "target": " one",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " of",
+          "isGhost": true
+         },
+         {
+          "known": "ان",
+          "legoId": "S0085L01",
+          "target": " those",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0096L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "نہیں، میں ابھی تیار نہیں",
+          "legoId": "S0096L01",
+          "target": "no I'm not ready yet",
+          "isGhost": false
+         },
+         {
+          "known": "لیکن",
+          "legoId": "S0019L01",
+          "target": " but",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "جلد",
+          "legoId": "S0023L04",
+          "target": " soon",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "مجھے یقین نہیں",
+          "legoId": "S0010L01",
+          "target": "I'm not sure",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " when",
+          "isGhost": true
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0274L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " there",
+          "isGhost": true
+         },
+         {
+          "known": "چند دنوں میں",
+          "legoId": "S0274L01",
+          "target": " in a few days",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0255L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "جانے کے لیے تیار",
+          "legoId": "S0255L01",
+          "target": " ready to leave",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " in",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " a",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " while",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0253L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " here",
+          "isGhost": true
+         },
+         {
+          "known": "چند منٹ میں",
+          "legoId": "S0253L01",
+          "target": " in a few minutes",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0252L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "شروع کرنے کے لیے تیار",
+          "legoId": "S0252L01",
+          "target": " ready to start",
+          "isGhost": false
+         },
+         {
+          "known": "کل",
+          "legoId": "S0012L04",
+          "target": " tomorrow",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0252L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "شروع کرنے کے لیے تیار",
+          "legoId": "S0252L01",
+          "target": " ready to start",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " in",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " a",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " while",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0291L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "مجھے امید ہے کہ",
+          "legoId": "S0291L01",
+          "target": "I hope",
+          "isGhost": false
+         },
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": " I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " able",
+          "isGhost": true
+         },
+         {
+          "known": "بات کرنا",
+          "legoId": "S0031L03",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " better",
+          "isGhost": true
+         },
+         {
+          "known": "اگلے مہینے",
+          "legoId": "S0271L01",
+          "target": " next month",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0489L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " a",
+          "isGhost": true
+         },
+         {
+          "known": "کپ",
+          "legoId": "S0489L01",
+          "target": " cup",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " of",
+          "isGhost": true
+         },
+         {
+          "known": "کافی",
+          "legoId": "S0281L01",
+          "target": " coffee",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0625L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " have",
+          "isGhost": true
+         },
+         {
+          "known": "کچھ",
+          "legoId": "S0004L02",
+          "target": " something",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "پینا",
+          "legoId": "S0625L01",
+          "target": " drink",
+          "isGhost": false
+         },
+         {
+          "known": "برائے مہربانی",
+          "legoId": "S0414L03",
+          "target": " please",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0500L03U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "کیا میں ... سکتا ہوں",
+          "legoId": "S0119L02",
+          "target": "can I",
+          "isGhost": false
+         },
+         {
+          "known": "بیٹھیں",
+          "legoId": "S0500L02",
+          "target": " sit",
+          "isGhost": false
+         },
+         {
+          "known": "کے درمیان",
+          "legoId": "S0500L03",
+          "target": " between",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " you",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " two?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0256L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "میں ... ہوں گا",
+          "legoId": "S0080L01",
+          "target": "I'll be",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " ready",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " in",
+          "isGhost": true
+         },
+         {
+          "known": "ایک گھنٹے سے کم",
+          "legoId": "S0256L01",
+          "target": " less than an hour",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1291
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02U02",
+       "set": {
+        "known_text": "کیا میں کچھ پوچھ سکتا ہوں؟",
+        "target_text": "can I ask something?",
+        "known_audio_id": "9fae253e-c2e4-4017-a32d-b3c165bc1314",
+        "target1_audio_id": "dd1862d6-f6c2-485b-8b34-f432ce86bcff",
+        "target2_audio_id": "e8fa8dc1-972f-4604-857b-544e5337f3d6"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B04",
+       "set": {
+        "known_text": "کیا میں ابھی چھوڑ سکتا ہوں؟",
+        "target_text": "can I leave now?",
+        "known_audio_id": "f59c4a8f-9705-479f-a480-a7a41fefe046",
+        "target1_audio_id": "ef40f5b9-ce5b-4d6a-910b-31a24abb4987",
+        "target2_audio_id": "f1ce1a53-0bec-4a8f-8d98-66bbc739b1f4"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B03",
+       "set": {
+        "known_text": "کیا میں چھوڑ سکتا ہوں؟",
+        "target_text": "can I leave?",
+        "known_audio_id": "4ee73092-96b5-4e0b-a24d-a85e35de8c19",
+        "target1_audio_id": "3807cc8d-fc59-43d9-aa17-69d11581d12e",
+        "target2_audio_id": "a74815ae-32bf-44dd-b709-74b9283943fd"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B02",
+       "set": {
+        "known_text": "کیا میں پوچھ سکتا ہوں؟",
+        "target_text": "can I ask?",
+        "known_audio_id": "28d75b4b-9ed1-4141-aafe-353b345a1da6",
+        "target1_audio_id": "bbafddde-6412-4084-b25e-a9d3c02480ad",
+        "target2_audio_id": "2c16ba39-1807-47a6-84ee-c148b3ad77c9"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0119L02B01",
+       "set": {
+        "known_text": "کیا میں ... سکتا ہوں",
+        "target_text": "can I",
+        "known_audio_id": "35fbd015-71e4-4e3e-b5a8-6da8ba7f68c6",
+        "target1_audio_id": "c65c2cd8-0fb2-4722-9850-fb66dbca11f2",
+        "target2_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "a598a490-f574-4862-9714-49059b112eb6",
+       "set": {
+        "known_text": "کیا میں ... سکتا ہوں",
+        "target_text": "can I",
+        "components": [
+         {
+          "known": "میں",
+          "target": "I"
+         },
+         {
+          "known": "سکتا ہوں",
+          "target": "can"
+         }
+        ],
+        "known_audio_id": "35fbd015-71e4-4e3e-b5a8-6da8ba7f68c6",
+        "target1_audio_id": "c65c2cd8-0fb2-4722-9850-fb66dbca11f2",
+        "target2_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+        "presentation_audio_id": "4a7e12ab-cac0-4c7e-aee6-d5afd3482e70"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_urd:S0080L01B01",
+       "set": {
+        "known_text": "میں ... ہوں گا",
+        "known_audio_id": "f4381aa7-a0a4-494b-a5f6-3d436a4d7bae"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "372f9dce-650b-4d4e-9dc2-948694ee0b92",
+       "set": {
+        "known_text": "میں ... ہوں گا",
+        "known_audio_id": "f4381aa7-a0a4-494b-a5f6-3d436a4d7bae",
+        "presentation_audio_id": "a191444a-a5f4-4d25-ab73-342c90ea3d55"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
 }

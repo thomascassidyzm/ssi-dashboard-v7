@@ -227,5 +227,365 @@
     "target_text": "over there where ... live"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:17:51Z",
+  "baseline_failing_seeds": 603,
+  "per_seed": {
+   "614": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: 5 phrase(s) fail containment",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: 1 phrase(s) fail containment",
+     "L3: BUILD: need 3+, got 0 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:27:19Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 4,
+    "status": 200,
+    "secs": 15.6,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_tel",
+        "lego_id": "S0614L02"
+       },
+       "before": {
+        "id": "89ebfbf3-ae49-4e7d-9942-7e2abc6593b5",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": "S0614L02",
+        "known_text": "నివసించే చోటికి",
+        "target_text": "where ... live",
+        "components": [
+         {
+          "known": "నివసించే",
+          "target": "live"
+         },
+         {
+          "known": "చోటికి",
+          "target": "where"
+         }
+        ],
+        "known_audio_id": "b777e87b-7c0e-4d44-b901-c5a3a4998946",
+        "target1_audio_id": "ef4bc0da-371b-43f6-b6b6-f599d8a2bc9b",
+        "target2_audio_id": "e8ed0a6c-b5e1-4d6a-af09-71f82b68fa05",
+        "presentation_audio_id": "26f8acd3-06e3-4e59-b60c-061295abf634"
+       },
+       "after": {
+        "id": "89ebfbf3-ae49-4e7d-9942-7e2abc6593b5",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": "S0614L02",
+        "known_text": "నీ కుటుంబం నివసించే చోటికి",
+        "target_text": "where your family live",
+        "components": [
+         {
+          "known": "నీ కుటుంబం",
+          "target": "your family"
+         },
+         {
+          "known": "నివసించే",
+          "target": "live"
+         },
+         {
+          "known": "చోటికి",
+          "target": "where"
+         }
+        ],
+        "known_audio_id": "f75b3d4d-5328-4404-93eb-b6bf619c4cce",
+        "target1_audio_id": "1b68b862-00bd-4ed3-97be-0c5bfe163c22",
+        "target2_audio_id": "3149f3e8-3c7e-4e24-8283-20f83f2d2c26",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_tel",
+        "id": "eng_for_tel:S0614L02B01"
+       },
+       "before": {
+        "id": "eng_for_tel:S0614L02B01",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "నివసించే చోటికి",
+        "target_text": "where ... live",
+        "known_audio_id": "b777e87b-7c0e-4d44-b901-c5a3a4998946",
+        "target1_audio_id": "ef4bc0da-371b-43f6-b6b6-f599d8a2bc9b",
+        "target2_audio_id": "e8ed0a6c-b5e1-4d6a-af09-71f82b68fa05",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_tel:S0614L02B01",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "నీ కుటుంబం నివసించే చోటికి",
+        "target_text": "where your family live",
+        "known_audio_id": "f75b3d4d-5328-4404-93eb-b6bf619c4cce",
+        "target1_audio_id": "1b68b862-00bd-4ed3-97be-0c5bfe163c22",
+        "target2_audio_id": "3149f3e8-3c7e-4e24-8283-20f83f2d2c26",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_tel",
+        "id": "eng_for_tel:S0614L02B02"
+       },
+       "before": {
+        "id": "eng_for_tel:S0614L02B02",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "నీ కుటుంబం నివసించే చోటికి",
+        "target_text": "where your family live",
+        "known_audio_id": "f75b3d4d-5328-4404-93eb-b6bf619c4cce",
+        "target1_audio_id": "1b68b862-00bd-4ed3-97be-0c5bfe163c22",
+        "target2_audio_id": "717f3c40-4b2d-4c25-8756-628e5013f3f7",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_tel:S0614L02B02",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "ఇప్పుడు నీ కుటుంబం నివసించే చోటికి",
+        "target_text": "where your family live now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_tel",
+        "id": "eng_for_tel:S0614L02B03"
+       },
+       "before": {
+        "id": "eng_for_tel:S0614L02B03",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "నివసించే చోటికి అక్కడ",
+        "target_text": "over there where ... live",
+        "known_audio_id": "1af98707-6be3-49e3-9962-79b5972c64f8",
+        "target1_audio_id": "285810a4-2c7d-4f1c-8048-62f8380404f7",
+        "target2_audio_id": "b51b8acb-f805-45fc-8165-07ece6f68b2e",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_tel:S0614L02B03",
+        "seed_number": 614,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "అక్కడ నీ కుటుంబం నివసించే చోటికి",
+        "target_text": "over there where your family live",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0614L02"
+        ]
+       },
+       "considered": 2,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_tel:S0614L02B03",
+         "before": [
+          {
+           "known": "అక్కడ ఉన్న",
+           "legoId": "S0258L02",
+           "target": "over there",
+           "isGhost": false
+          },
+          {
+           "known": "నివసించే చోటికి",
+           "legoId": "S0614L02",
+           "target": " where ... live",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0258L02",
+           "target": "over there",
+           "known": "అక్కడ ఉన్న",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0614L02",
+           "target": " where your family live",
+           "known": "నీ కుటుంబం నివసించే చోటికి",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_tel:S0614L02B01",
+         "before": [
+          {
+           "known": "నివసించే చోటికి",
+           "legoId": "S0614L02",
+           "target": "where ... live",
+           "isGhost": false
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0614L02",
+           "target": "where your family live",
+           "known": "నీ కుటుంబం నివసించే చోటికి",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_tel:S0614L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "నివసించే చోటికి",
+          "legoId": "S0614L02",
+          "target": "where ... live",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1657
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_tel:S0614L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "అక్కడ ఉన్న",
+          "legoId": "S0258L02",
+          "target": "over there",
+          "isGhost": false
+         },
+         {
+          "known": "నివసించే చోటికి",
+          "legoId": "S0614L02",
+          "target": " where ... live",
+          "isGhost": false
+         }
+        ],
+        "decomposition_course_version": 1657
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_tel:S0614L02B03",
+       "set": {
+        "known_text": "నివసించే చోటికి అక్కడ",
+        "target_text": "over there where ... live",
+        "known_audio_id": "1af98707-6be3-49e3-9962-79b5972c64f8",
+        "target1_audio_id": "285810a4-2c7d-4f1c-8048-62f8380404f7",
+        "target2_audio_id": "b51b8acb-f805-45fc-8165-07ece6f68b2e"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_tel:S0614L02B02",
+       "set": {
+        "known_text": "నీ కుటుంబం నివసించే చోటికి",
+        "target_text": "where your family live",
+        "known_audio_id": "f75b3d4d-5328-4404-93eb-b6bf619c4cce",
+        "target1_audio_id": "1b68b862-00bd-4ed3-97be-0c5bfe163c22",
+        "target2_audio_id": "717f3c40-4b2d-4c25-8756-628e5013f3f7"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_tel:S0614L02B01",
+       "set": {
+        "known_text": "నివసించే చోటికి",
+        "target_text": "where ... live",
+        "known_audio_id": "b777e87b-7c0e-4d44-b901-c5a3a4998946",
+        "target1_audio_id": "ef4bc0da-371b-43f6-b6b6-f599d8a2bc9b",
+        "target2_audio_id": "e8ed0a6c-b5e1-4d6a-af09-71f82b68fa05"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "89ebfbf3-ae49-4e7d-9942-7e2abc6593b5",
+       "set": {
+        "known_text": "నివసించే చోటికి",
+        "target_text": "where ... live",
+        "components": [
+         {
+          "known": "నివసించే",
+          "target": "live"
+         },
+         {
+          "known": "చోటికి",
+          "target": "where"
+         }
+        ],
+        "known_audio_id": "b777e87b-7c0e-4d44-b901-c5a3a4998946",
+        "target1_audio_id": "ef4bc0da-371b-43f6-b6b6-f599d8a2bc9b",
+        "target2_audio_id": "e8ed0a6c-b5e1-4d6a-af09-71f82b68fa05",
+        "presentation_audio_id": "26f8acd3-06e3-4e59-b60c-061295abf634"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
 }

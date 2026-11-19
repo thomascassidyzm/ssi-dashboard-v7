@@ -340,5 +340,1475 @@
     "target_text": "did you want?"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:17:44Z",
+  "baseline_failing_seeds": 246,
+  "per_seed": {
+   "14": {
+    "seed_issues_planned": [
+     "L2: 1 duplicate phrase(s) within this LEGO: \"do you speak English with someone else?\""
+    ],
+    "seed_issues_live": [
+     "L2: 1 duplicate phrase(s) within this LEGO: \"do you speak English with someone else?\""
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "32": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:27:00Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 3,
+    "status": 200,
+    "secs": 10.3,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0014L02"
+       },
+       "before": {
+        "id": "063e10f3-3162-4cfd-bcf6-fa66f287cf26",
+        "seed_number": 14,
+        "lego_index": 2,
+        "lego_id": "S0014L02",
+        "known_text": "¿Hablas...?",
+        "target_text": "do you speak ...?",
+        "known_audio_id": "6ff5848f-3e90-4dc8-99ab-7343f503871a",
+        "target1_audio_id": "125aa8e8-1a87-4333-85dc-95016f3453f0",
+        "target2_audio_id": "c9c4d937-9824-440b-b0fd-a9ceb3f88466",
+        "presentation_audio_id": "3d882592-bd36-4e44-9c5c-188697d132cd"
+       },
+       "after": {
+        "id": "063e10f3-3162-4cfd-bcf6-fa66f287cf26",
+        "seed_number": 14,
+        "lego_index": 2,
+        "lego_id": "S0014L02",
+        "known_text": "¿hablas?",
+        "target_text": "do you speak?",
+        "known_audio_id": "6ff5848f-3e90-4dc8-99ab-7343f503871a",
+        "target1_audio_id": "125aa8e8-1a87-4333-85dc-95016f3453f0",
+        "target2_audio_id": "c9c4d937-9824-440b-b0fd-a9ceb3f88466",
+        "presentation_audio_id": "3d882592-bd36-4e44-9c5c-188697d132cd"
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0032L01"
+       },
+       "before": {
+        "id": "9d141cd1-7269-4de7-aa43-ee29bfa652cc",
+        "seed_number": 32,
+        "lego_index": 1,
+        "lego_id": "S0032L01",
+        "known_text": "¿querías...?",
+        "target_text": "did you want...?",
+        "known_audio_id": "92f237ee-cc68-45c0-93df-31ef4a80ff26",
+        "target1_audio_id": "963c6ce1-cf15-46e4-b6b0-221bd3c95c7e",
+        "target2_audio_id": "8c3568a2-2918-452a-8be1-249351342a38",
+        "presentation_audio_id": "8f22e8f6-7e82-474e-b68e-88d47be448c2"
+       },
+       "after": {
+        "id": "9d141cd1-7269-4de7-aa43-ee29bfa652cc",
+        "seed_number": 32,
+        "lego_index": 1,
+        "lego_id": "S0032L01",
+        "known_text": "¿querías?",
+        "target_text": "did you want?",
+        "known_audio_id": "92f237ee-cc68-45c0-93df-31ef4a80ff26",
+        "target1_audio_id": "963c6ce1-cf15-46e4-b6b0-221bd3c95c7e",
+        "target2_audio_id": "8c3568a2-2918-452a-8be1-249351342a38",
+        "presentation_audio_id": "8f22e8f6-7e82-474e-b68e-88d47be448c2"
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "id": "eng_for_spa:S0032L01B01"
+       },
+       "before": {
+        "id": "eng_for_spa:S0032L01B01",
+        "seed_number": 32,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "¿querías...?",
+        "target_text": "did you want?",
+        "known_audio_id": "92f237ee-cc68-45c0-93df-31ef4a80ff26",
+        "target1_audio_id": "963c6ce1-cf15-46e4-b6b0-221bd3c95c7e",
+        "target2_audio_id": "8c3568a2-2918-452a-8be1-249351342a38",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "eng_for_spa:S0032L01B01",
+        "seed_number": 32,
+        "lego_index": 1,
+        "lego_id": null,
+        "known_text": "¿querías?",
+        "target_text": "did you want?",
+        "known_audio_id": "92f237ee-cc68-45c0-93df-31ef4a80ff26",
+        "target1_audio_id": "963c6ce1-cf15-46e4-b6b0-221bd3c95c7e",
+        "target2_audio_id": "8c3568a2-2918-452a-8be1-249351342a38",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0014L02",
+         "S0032L01"
+        ]
+       },
+       "considered": 15,
+       "rewritten": [
+        {
+         "phrase_id": "eng_for_spa:S0032L01U05",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "aprender",
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "isGhost": false
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "con otra persona",
+           "legoId": "S0005L03",
+           "target": " with someone else",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "known": "aprender",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0005L03",
+           "target": " with someone else",
+           "known": "con otra persona",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0014L02U03",
+         "before": [
+          {
+           "known": "¿Hablas...?",
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "ahora",
+           "legoId": "S0001L05",
+           "target": " now",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "known": "¿hablas?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L05",
+           "target": " now",
+           "known": "ahora",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01B02",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "hablar",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "hablar",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01B01",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want?",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0014L02U05",
+         "before": [
+          {
+           "known": "¿Hablas...?",
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "con otra persona",
+           "legoId": "S0005L03",
+           "target": " with someone else",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "known": "¿hablas?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0005L03",
+           "target": " with someone else",
+           "known": "con otra persona",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0014L02B01",
+         "before": [
+          {
+           "known": "¿Hablas...?",
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "muy bien",
+           "legoId": "S0013L01",
+           "target": " very well",
+           "isGhost": false
+          },
+          {
+           "known": "todo el día",
+           "legoId": "S0014L01",
+           "target": " all day",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "known": "¿hablas?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0013L01",
+           "target": " very well",
+           "known": "muy bien",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0014L01",
+           "target": " all day",
+           "known": "todo el día",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01B03",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "aprender",
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "known": "aprender",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0014L02U01",
+         "before": [
+          {
+           "known": "¿Hablas...?",
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "todo el día",
+           "legoId": "S0014L01",
+           "target": " all day",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "known": "¿hablas?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0014L01",
+           "target": " all day",
+           "known": "todo el día",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01U02",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "aprender",
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "isGhost": false
+          },
+          {
+           "known": "más",
+           "legoId": "S0023L02",
+           "target": " more",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0002L02",
+           "target": " to learn",
+           "known": "aprender",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0023L02",
+           "target": " more",
+           "known": "más",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0014L02U02",
+         "before": [
+          {
+           "known": "¿Hablas...?",
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "muy bien",
+           "legoId": "S0013L01",
+           "target": " very well",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "known": "¿hablas?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0013L01",
+           "target": " very well",
+           "known": "muy bien",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01U03",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "practicar hablando",
+           "legoId": "S0005L02",
+           "target": " practise speaking",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": "S0005L02",
+           "target": " practise speaking",
+           "known": "practicar hablando",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01U01",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "hablar",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "inglés",
+           "legoId": "S0001L03",
+           "target": " English",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "hablar",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0001L03",
+           "target": " English",
+           "known": "inglés",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0014L02B03",
+         "before": [
+          {
+           "known": "¿Hablas...?",
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "muy bien",
+           "legoId": "S0013L01",
+           "target": " very well",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0014L02",
+           "target": "do you speak",
+           "known": "¿hablas?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0013L01",
+           "target": " very well",
+           "known": "muy bien",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01B04",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " to",
+           "isGhost": true
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": " practise?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": null,
+           "target": " to",
+           "known": "",
+           "isGhost": true
+          },
+          {
+           "legoId": null,
+           "target": " practise?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        },
+        {
+         "phrase_id": "eng_for_spa:S0032L01U04",
+         "before": [
+          {
+           "known": "¿querías...?",
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "known": "hablar",
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "isGhost": false
+          },
+          {
+           "known": "conmigo",
+           "legoId": "S0015L02",
+           "target": " with me",
+           "isGhost": false
+          },
+          {
+           "known": "",
+           "legoId": null,
+           "target": "?",
+           "isGhost": true
+          }
+         ],
+         "after": [
+          {
+           "legoId": "S0032L01",
+           "target": "did you want",
+           "known": "¿querías?",
+           "isGhost": false,
+           "isSalient": true
+          },
+          {
+           "legoId": "S0001L02",
+           "target": " to speak",
+           "known": "hablar",
+           "isGhost": false
+          },
+          {
+           "legoId": "S0015L02",
+           "target": " with me",
+           "known": "conmigo",
+           "isGhost": false
+          },
+          {
+           "legoId": null,
+           "target": "?",
+           "known": "",
+           "isGhost": true
+          }
+         ]
+        }
+       ],
+       "needs_a_person": [],
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01U04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "hablar",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "conmigo",
+          "legoId": "S0015L02",
+          "target": " with me",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01B04",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " practise?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0014L02B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿Hablas...?",
+          "legoId": "S0014L02",
+          "target": "do you speak",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "muy bien",
+          "legoId": "S0013L01",
+          "target": " very well",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "hablar",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": " to",
+          "isGhost": true
+         },
+         {
+          "known": "practicar hablando",
+          "legoId": "S0005L02",
+          "target": " practise speaking",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0014L02U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿Hablas...?",
+          "legoId": "S0014L02",
+          "target": "do you speak",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "muy bien",
+          "legoId": "S0013L01",
+          "target": " very well",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01U02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "aprender",
+          "legoId": "S0002L02",
+          "target": " to learn",
+          "isGhost": false
+         },
+         {
+          "known": "más",
+          "legoId": "S0023L02",
+          "target": " more",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0014L02U01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿Hablas...?",
+          "legoId": "S0014L02",
+          "target": "do you speak",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "todo el día",
+          "legoId": "S0014L01",
+          "target": " all day",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01B03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "aprender",
+          "legoId": "S0002L02",
+          "target": " to learn",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0014L02B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿Hablas...?",
+          "legoId": "S0014L02",
+          "target": "do you speak",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "muy bien",
+          "legoId": "S0013L01",
+          "target": " very well",
+          "isGhost": false
+         },
+         {
+          "known": "todo el día",
+          "legoId": "S0014L01",
+          "target": " all day",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0014L02U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿Hablas...?",
+          "legoId": "S0014L02",
+          "target": "do you speak",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "con otra persona",
+          "legoId": "S0005L03",
+          "target": " with someone else",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01B01",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01B02",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "hablar",
+          "legoId": "S0001L02",
+          "target": " to speak",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0014L02U03",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿Hablas...?",
+          "legoId": "S0014L02",
+          "target": "do you speak",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "ahora",
+          "legoId": "S0001L05",
+          "target": " now",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01U05",
+       "set": {
+        "decomposition": [
+         {
+          "known": "¿querías...?",
+          "legoId": "S0032L01",
+          "target": "did you want",
+          "isGhost": false,
+          "isSalient": true
+         },
+         {
+          "known": "aprender",
+          "legoId": "S0002L02",
+          "target": " to learn",
+          "isGhost": false
+         },
+         {
+          "known": "inglés",
+          "legoId": "S0001L03",
+          "target": " English",
+          "isGhost": false
+         },
+         {
+          "known": "con otra persona",
+          "legoId": "S0005L03",
+          "target": " with someone else",
+          "isGhost": false
+         },
+         {
+          "known": "",
+          "legoId": null,
+          "target": "?",
+          "isGhost": true
+         }
+        ],
+        "decomposition_course_version": null
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "eng_for_spa:S0032L01B01",
+       "set": {
+        "known_text": "¿querías...?"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "9d141cd1-7269-4de7-aa43-ee29bfa652cc",
+       "set": {
+        "known_text": "¿querías...?",
+        "target_text": "did you want...?"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "063e10f3-3162-4cfd-bcf6-fa66f287cf26",
+       "set": {
+        "known_text": "¿Hablas...?",
+        "target_text": "do you speak ...?"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
 }

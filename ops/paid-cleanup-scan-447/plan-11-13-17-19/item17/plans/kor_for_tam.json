@@ -507,5 +507,31 @@
     "target_text": "그녀가 그 책을 팔 수 있다고 생각해요"
    }
   }
- ]
+ ],
+ "validator": {
+  "at": "2026-11-19T11:19:12Z",
+  "baseline_failing_seeds": 236,
+  "per_seed": {
+   "325": {
+    "seed_issues_planned": [
+     "L3: USE: need 5+, got 4"
+    ],
+    "seed_issues_live": [
+     "L3: 6 phrase(s) fail containment",
+     "L3: USE: need 5+, got 4"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "326": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: 6 phrase(s) fail containment"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
 }

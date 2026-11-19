@@ -4,11 +4,9 @@
  "dumped": "2026-11-19T11:06:28Z",
  "decisions": 1,
  "verdicts": {
-  "regloss": 1
+  "kai": 1
  },
- "touched_seeds": [
-  644
- ],
+ "touched_seeds": [],
  "problems": [],
  "auto_substitutions": [],
  "zut_after_changed": {},
@@ -16,13 +14,15 @@
  "legos": [
   {
    "id": "S0644L02",
-   "verdict": "regloss",
-   "pov": "pass",
+   "verdict": "kai",
+   "pov": "hold",
    "pattern": "not-gapped",
-   "why": "NOT GAPPED, but wrongly dark. 'could you sir? | pourriez-vous monsieur ?' is complete French on its own (a frame, L32); the scan proposed retiring it. The real fault is its flag: it is marked not-new, yet no earlier LEGO teaches this pair, so its 8 good rows ('could you help me sir?') are never played (P25). L31: a not-new LEGO with no earlier exact pair 'becomes NEW, with an intro and a played basket'. Flip to NEW; it already holds the seed sentence. Cross-family: S0644L01 (the whole seed as one 10-syllable LEGO whose rows drill only 'cela') is items 11/19.",
+   "why": "HOLD — decide together with S0644L01. 'could you sir? | pourriez-vous monsieur ?' is NOT gapped in Kai's sense: it is complete French on its own (a frame, L32). Its real fault is that it is marked not-new although no earlier LEGO teaches the pair, so its 8 good rows ('could you help me sir?') are never played (P25), while S0644L01 — the whole seed as one 10-syllable LEGO — is the NEW one and its rows drill only 'cela'. The scan said 'retire it'; that throws away the good basket. Better: make THIS the taught LEGO (L31: a not-new LEGO with no earlier pair 'becomes NEW') and re-cut S0644L01 to the middle. Not planned here because (a) S0644L01 belongs to items 11 and 19, and (b) Popty's validator counts a split LEGO as 'not contained' (7 of these 8 rows put the verb inside pourriez-vous … monsieur), although K49 says 'a split LEGO still counts as contained'.",
    "closes": [
     "17",
-    "16"
+    "16",
+    "11",
+    "19"
    ],
    "knock": null,
    "seed": {
@@ -36,132 +36,30 @@
     "type": "M",
     "is_new": false
    },
-   "after": {
-    "known": "could you sir?",
-    "target": "pourriez-vous monsieur ?",
-    "type": "M",
-    "components": null,
-    "is_new": true
-   },
-   "acknowledged": [
-    "target split in the seed"
-   ],
-   "checks": {
-    "known_in_seed": true,
-    "target_in_seed": false,
-    "syllables": 5
-   },
-   "basket": [
-    {
-     "id": "fra_for_eng:S0644L02C01",
-     "role": "component",
-     "before": [
-      "could",
-      "pourriez"
-     ],
-     "action": "component"
-    },
-    {
-     "id": "fra_for_eng:S0644L02C02",
-     "role": "component",
-     "before": [
-      "you",
-      "vous"
-     ],
-     "action": "component"
-    },
-    {
-     "id": "fra_for_eng:S0644L02B01",
-     "role": "build",
-     "before": [
-      "could you sir?",
-      "pourriez-vous monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02B02",
-     "role": "build",
-     "before": [
-      "could you please do that sir?",
-      "pourriez-vous faire cela s'il vous plaît monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02B03",
-     "role": "build",
-     "before": [
-      "could you help right now sir?",
-      "pourriez-vous aider maintenant monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02U01",
-     "role": "use",
-     "before": [
-      "could you say that sir?",
-      "pourriez-vous dire cela monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02U02",
-     "role": "use",
-     "before": [
-      "could you do that sir?",
-      "pourriez-vous faire cela monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02U03",
-     "role": "use",
-     "before": [
-      "could you help me sir?",
-      "pourriez-vous m'aider monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02U04",
-     "role": "use",
-     "before": [
-      "could you wait sir?",
-      "pourriez-vous attendre monsieur ?"
-     ],
-     "action": "keep"
-    },
-    {
-     "id": "fra_for_eng:S0644L02U05",
-     "role": "use",
-     "before": [
-      "could you come sir?",
-      "pourriez-vous venir monsieur ?"
-     ],
-     "action": "keep"
-    }
-   ],
-   "add": [],
-   "basket_after": {
-    "build": 3,
-    "use": 5
-   },
    "extra": []
   }
  ],
- "ops": [
-  {
-   "op": "lego.update",
-   "lego_id": "S0644L02",
-   "set": {
-    "is_new": true
-   },
-   "expect": {
-    "known_text": "could you sir?",
-    "target_text": "pourriez-vous monsieur ?"
+ "ops": [],
+ "validator": {
+  "at": "2026-11-19T11:18:23Z",
+  "baseline_failing_seeds": 602,
+  "per_seed": {},
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:38:43Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 0,
+    "status": 400,
+    "secs": 0.0,
+    "answer": {
+     "error": "op -1: \"ops\" must be a non-empty array",
+     "code": "BAD_OP",
+     "index": -1
+    }
    }
-  }
- ]
+  ]
+ }
 }

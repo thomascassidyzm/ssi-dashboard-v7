@@ -34,5 +34,7 @@ for n in seeds:
                                 'target': p.get('target_text'), 'ka': p.get('known_audio_uuid'), 't1': p.get('target1_audio_uuid'),
                                 't2': p.get('target2_audio_uuid')} for p in l.get('phrases', [])]} for l in s.get('legos', [])]}
     got += 1; time.sleep(0.4)
+    if got % 5 == 0:  # cs #784: Popty can take 10 s+ per read under load — keep what we have if the run is cut off
+        json.dump(cache, open(f, 'w'), ensure_ascii=False, indent=0, sort_keys=True)
 json.dump(cache, open(f, 'w'), ensure_ascii=False, indent=0, sort_keys=True)
 print(course, 'fetched', got, 'cached', len(cache), 'gaps', fail)
