@@ -1,0 +1,52 @@
+{
+ "course": "eng_for_urd",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {
+  "1-backfill": 25,
+  "4-recut-S0108": 6,
+  "4-recut-S0423": 8,
+  "4-recut-S0458": 9,
+  "4-recut-S0488": 9,
+  "4-recut-S0533": 7,
+  "4-recut-S0536": 9
+ },
+ "backfill": {
+  "insert": 0,
+  "rewrite": 25
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 6,
+  "lego_update": 6,
+  "insert": 1,
+  "rewrite": 41,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [],
+  "drift": [
+   {
+    "row": "S0144L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0170L02B04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0355L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0463L01U05",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 18
+}

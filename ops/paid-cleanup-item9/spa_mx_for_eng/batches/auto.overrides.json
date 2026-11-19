@@ -1,0 +1,1534 @@
+[
+ {
+  "seed_number": 150,
+  "phrases": {
+   "150:1": [
+    {
+     "known_text": "you are called",
+     "target_text": "llamas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "your name is",
+     "target_text": "te llamas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "your name is like that",
+     "target_text": "te llamas así",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what is your name?",
+     "target_text": "¿cómo te llamas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know what your name is",
+     "target_text": "no sé cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know what your name is yet",
+     "target_text": "no sé cómo te llamas todavía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you tell me what your name is?",
+     "target_text": "¿puedes decirme cómo te llamas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to know what your name is",
+     "target_text": "él quería saber cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it seems that I don't know what your name is",
+     "target_text": "parece que no sé cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's why I want to know what your name is before you go",
+     "target_text": "por eso quiero saber cómo te llamas antes de que te vayas",
+     "phrase_role": "use"
+    }
+   ],
+   "150:2": [
+    {
+     "known_text": "you",
+     "target_text": "te",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you are called",
+     "target_text": "llamas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "your name is",
+     "target_text": "te llamas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what is your name?",
+     "target_text": "¿cómo te llamas?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know what your name is",
+     "target_text": "sé cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know what your name is",
+     "target_text": "no sé cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "so what's your name?",
+     "target_text": "¿así que cómo te llamas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to know what your name is",
+     "target_text": "quiero saber cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you tell me what your name is?",
+     "target_text": "¿puedes decirme cómo te llamas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's why you can tell me what your name is",
+     "target_text": "por eso puedes decirme cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you tell me what your name is before you leave?",
+     "target_text": "¿puedes decirme cómo te llamas antes de que te vayas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to know what your name is when you were talking",
+     "target_text": "él quería saber cómo te llamas cuando estabas hablando",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I definitely think you can tell me what your name is",
+     "target_text": "definitivamente creo que puedes decirme cómo te llamas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I want to know what your name is before you go",
+     "target_text": "creo que quiero saber cómo te llamas antes de que te vayas",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 177,
+  "phrases": {
+   "177:1": [
+    {
+     "known_text": "where are you going?",
+     "target_text": "¿adónde vas?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I will ask where",
+     "target_text": "preguntaré adónde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "where can I go?",
+     "target_text": "¿adónde puedo ir?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "where does she want to go?",
+     "target_text": "¿adónde quiere ir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where do you want to go?",
+     "target_text": "¿adónde quieres ir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where do you think you want to go this afternoon?",
+     "target_text": "¿adónde piensas ir esta tarde?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where are you going tomorrow morning?",
+     "target_text": "¿adónde vas mañana por la mañana?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where do you want to go on Sunday morning?",
+     "target_text": "¿adónde quieres ir el domingo por la mañana?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I will ask her where she wants to go next year",
+     "target_text": "le preguntaré adónde quiere ir el año que viene",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 178,
+  "phrases": {
+   "178:1": [
+    {
+     "known_text": "I had time",
+     "target_text": "tuve tiempo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I had to go",
+     "target_text": "tuve que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I did not have time",
+     "target_text": "no tuve tiempo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I had a problem",
+     "target_text": "tuve un problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I had to do something",
+     "target_text": "tuve que hacer algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I did not have time to do it on my own",
+     "target_text": "no tuve tiempo de hacerlo solo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I had to ask where she wanted to go",
+     "target_text": "tuve que preguntar adónde quería ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I did not have time to go to the restaurant",
+     "target_text": "no tuve tiempo de ir a un restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I had a problem on Saturday morning",
+     "target_text": "tuve un problema el sábado por la mañana",
+     "phrase_role": "use"
+    }
+   ],
+   "178:2": [
+    {
+     "known_text": "although I wanted",
+     "target_text": "aunque quería",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although I could not",
+     "target_text": "aunque no pude",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although it is useful",
+     "target_text": "aunque es útil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although I knew it",
+     "target_text": "aunque lo sabía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although it is true",
+     "target_text": "aunque es verdad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I knew it, I would not have said it",
+     "target_text": "aunque lo sabía, no lo habría dicho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although it is useful, I do not need it now",
+     "target_text": "aunque es útil, no lo necesito ahora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although you think not, I think yes",
+     "target_text": "aunque piensas que no, pienso que sí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although it is true, I did not want to say it",
+     "target_text": "aunque es verdad, no quería decir eso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I did not have time, I will be able to do it tomorrow",
+     "target_text": "aunque no tuve tiempo, podré hacerlo mañana",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 181,
+  "phrases": {
+   "181:1": [
+    {
+     "known_text": "my mother",
+     "target_text": "mi madre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my mother wants",
+     "target_text": "mi madre quiere",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my mother told me",
+     "target_text": "mi madre me dijo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to my mother she would like",
+     "target_text": "a mi madre le gustaría",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my mother told me that it is true",
+     "target_text": "mi madre me dijo que es verdad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my mother would like to read that book",
+     "target_text": "a mi madre le gustaría leer ese libro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my mother told me what she was saying",
+     "target_text": "mi madre me dijo lo que estaba diciendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my mother wants to go to a restaurant on Saturday",
+     "target_text": "mi madre quiere ir a un restaurante el sábado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my mother wants to come on Sunday morning",
+     "target_text": "mi madre quiere venir el domingo por la mañana",
+     "phrase_role": "use"
+    }
+   ],
+   "181:2": [
+    {
+     "known_text": "I am going to take",
+     "target_text": "voy a llevar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I will be able to take",
+     "target_text": "podré llevar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have to take",
+     "target_text": "tengo que llevar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "take that book",
+     "target_text": "llevar ese libro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "take my mother",
+     "target_text": "llevar a mi madre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I will be able to take something useful",
+     "target_text": "podré llevar algo útil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you take that book?",
+     "target_text": "¿puedes llevar ese libro?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to take my mother was not easy",
+     "target_text": "llevar a mi madre no fue fácil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am going to take that book on Sunday",
+     "target_text": "voy a llevar ese libro el domingo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to take my mother tomorrow morning",
+     "target_text": "tengo que llevar a mi madre mañana por la mañana",
+     "phrase_role": "use"
+    }
+   ],
+   "181:3": [
+    {
+     "known_text": "to the work",
+     "target_text": "al trabajo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "go to the work",
+     "target_text": "ir al trabajo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to the restaurant",
+     "target_text": "al restaurante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I go to the restaurant",
+     "target_text": "voy al restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "take to the restaurant",
+     "target_text": "llevar al restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to the work I need to take that book",
+     "target_text": "al trabajo necesito llevar ese libro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to go to the work although I do not want to",
+     "target_text": "tengo que ir al trabajo aunque no quiero",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I go to the restaurant on Saturday afternoon",
+     "target_text": "voy al restaurante el sábado por la tarde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to take my mother to the restaurant on Sunday",
+     "target_text": "quiero llevar a mi madre al restaurante el domingo",
+     "phrase_role": "use"
+    }
+   ],
+   "181:4": [
+    {
+     "known_text": "to the doctor",
+     "target_text": "al médico",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the doctor",
+     "target_text": "el médico",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my doctor",
+     "target_text": "mi médico",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "go to the doctor",
+     "target_text": "ir al médico",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "take to the doctor",
+     "target_text": "llevar al médico",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the doctor says it is true",
+     "target_text": "el médico dice que es verdad",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you have a good doctor here?",
+     "target_text": "¿tienes un médico bueno aquí?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my doctor told me it is not strange",
+     "target_text": "mi médico me dijo que no es raro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to go to the doctor tomorrow afternoon",
+     "target_text": "tengo que ir al médico mañana por la tarde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the doctor that comes on Saturday is very good",
+     "target_text": "el médico que viene el sábado es muy bueno",
+     "phrase_role": "use"
+    }
+   ],
+   "181:5": [
+    {
+     "known_text": "I have",
+     "target_text": "tengo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I have to",
+     "target_text": "tengo que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have to go",
+     "target_text": "tengo que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have to know",
+     "target_text": "tengo que saber",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have to take",
+     "target_text": "tengo que llevar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have to do something",
+     "target_text": "tengo que hacer algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "although I do not want to, I have to do it",
+     "target_text": "aunque no quiero, tengo que hacerlo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to be there next month",
+     "target_text": "tengo que estar ahí el mes que viene",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to go to the doctor tomorrow morning",
+     "target_text": "tengo que ir al médico mañana por la mañana",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to know what you need to help you",
+     "target_text": "tengo que saber lo que necesitas para ayudarte",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 201,
+  "phrases": {
+   "201:1": [
+    {
+     "known_text": "was going to go",
+     "target_text": "iba a ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "was going to do",
+     "target_text": "iba a hacer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "was going to say",
+     "target_text": "iba a decir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "was not going to be able to be there",
+     "target_text": "no iba a poder estar ahí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "was going to go to the doctor but could not",
+     "target_text": "iba a ir al médico pero no pude",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what was going to do with that book?",
+     "target_text": "¿qué iba a hacer con ese libro?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "was going to say something but did not",
+     "target_text": "iba a decir algo pero no lo dijo",
+     "phrase_role": "use"
+    }
+   ],
+   "201:2": [
+    {
+     "known_text": "it is going to happen",
+     "target_text": "va a pasar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to spend time",
+     "target_text": "pasar tiempo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what is going to happen?",
+     "target_text": "¿lo que va a pasar?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it is going to happen the same as always",
+     "target_text": "va a pasar lo mismo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I did not know what was going to happen",
+     "target_text": "no sabía lo que iba a pasar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what is going to happen with the money?",
+     "target_text": "¿qué va a pasar con el dinero?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "something important was going to happen on Sunday",
+     "target_text": "iba a pasar algo importante el domingo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to spend more time with my son is what I want",
+     "target_text": "pasar más tiempo con mi hijo es lo que quiero",
+     "phrase_role": "use"
+    }
+   ],
+   "201:3": [
+    {
+     "known_text": "was going",
+     "target_text": "iba",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to",
+     "target_text": "a",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to happen",
+     "target_text": "pasar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "was going to happen",
+     "target_text": "iba a pasar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was not going to happen",
+     "target_text": "no iba a pasar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "something was going to happen",
+     "target_text": "iba a pasar algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what was going to happen?",
+     "target_text": "¿lo que iba a pasar?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was going to happen like that I am afraid",
+     "target_text": "iba a pasar algo así, me temo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we wanted to know what was going to happen",
+     "target_text": "queríamos saber lo que iba a pasar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what was going to happen with the money nobody knew?",
+     "target_text": "¿lo que iba a pasar con el dinero no lo sabía?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what was going to happen was exactly what you said?",
+     "target_text": "¿lo que iba a pasar era exactamente lo que dijiste?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 204,
+  "phrases": {
+   "204:1": [
+    {
+     "known_text": "so that she would help",
+     "target_text": "para que ayudara",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I wanted her to help",
+     "target_text": "quería que ayudara",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I wanted her to help you",
+     "target_text": "quería que te ayudara",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if she would help it would be better",
+     "target_text": "si ayudara sería mejor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted her to help you with that book",
+     "target_text": "quería que te ayudara con ese libro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted her to help me with the question",
+     "target_text": "quería que me ayudara con la pregunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted her to help you to finish in time",
+     "target_text": "quería que te ayudara a terminar a tiempo",
+     "phrase_role": "use"
+    }
+   ],
+   "204:2": [
+    {
+     "known_text": "the friends",
+     "target_text": "los amigos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "with the friends",
+     "target_text": "con los amigos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the ones from the office",
+     "target_text": "los de la oficina",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "with the friends from the office",
+     "target_text": "con los amigos de la oficina",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the ones from the table are what I left",
+     "target_text": "los de la mesa son lo que dejé",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was looking for the ones from the office",
+     "target_text": "estaba buscando los de la oficina",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they say the friends want to come",
+     "target_text": "dicen que los amigos quieren venir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw the friends of my son at the restaurant",
+     "target_text": "vi a los amigos de mi hijo en el restaurante",
+     "phrase_role": "use"
+    }
+   ],
+   "204:3": [
+    {
+     "known_text": "the arrangements",
+     "target_text": "los preparativos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "with the arrangements",
+     "target_text": "con los preparativos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they want to make sure about the arrangements",
+     "target_text": "quieren asegurarse de los preparativos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was busy with the arrangements yesterday",
+     "target_text": "estaba ocupado con los preparativos ayer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the arrangements for the coming week",
+     "target_text": "los preparativos para la semana que viene",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted her to help you with the arrangements",
+     "target_text": "quería que te ayudara con los preparativos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the arrangements are what I have to do",
+     "target_text": "los preparativos son lo que tengo que hacer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the arrangements for the coming week are interesting",
+     "target_text": "los preparativos para la semana que viene son interesantes",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 343,
+  "phrases": {
+   "343:1": [
+    {
+     "known_text": "worried",
+     "target_text": "preocupada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she's worried",
+     "target_text": "está preocupada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "who said that she's worried",
+     "target_text": "que dijo que está preocupada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she's worried",
+     "target_text": "ella está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friend is worried about her brother",
+     "target_text": "mi amiga está preocupada por su hermano",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student is worried",
+     "target_text": "esa estudiante está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that she's worried",
+     "target_text": "ella dijo que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that she's worried",
+     "target_text": "pienso que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's going to be worried",
+     "target_text": "ella va a estar preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she was worried when I saw her",
+     "target_text": "ella estaba preocupada cuando la vi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've never seen her worried",
+     "target_text": "nunca la he visto preocupada",
+     "phrase_role": "use"
+    }
+   ],
+   "343:2": [
+    {
+     "known_text": "economy",
+     "target_text": "economía",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the economy",
+     "target_text": "la economía",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to talk about the economy",
+     "target_text": "quiero hablar sobre la economía",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "who said that she's worried about the economy",
+     "target_text": "que dijo que está preocupada por la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student is worried about the economy",
+     "target_text": "esa estudiante está preocupada por la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that the economy is important",
+     "target_text": "pienso que la economía es importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to talk about the economy",
+     "target_text": "ella no quiere hablar de la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friend needs to write about the economy",
+     "target_text": "mi amiga necesita escribir sobre la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there are new ideas about the economy",
+     "target_text": "hay nuevas ideas sobre la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the economy is more important than football",
+     "target_text": "la economía es más importante que el fútbol",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's talk about the economy",
+     "target_text": "hablemos de la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have learned a lot about the economy",
+     "target_text": "he aprendido mucho sobre la economía",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "worried about the economy",
+     "target_text": "preocupada por la economía",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 357,
+  "phrases": {
+   "357:2": [
+    {
+     "known_text": "to send",
+     "target_text": "mandar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "her",
+     "target_text": "le",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to send her",
+     "target_text": "mandarle",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she wanted to send her",
+     "target_text": "quería mandarle",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to send her something",
+     "target_text": "quiero mandarle algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to send her a book",
+     "target_text": "quiero mandarle un libro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to send her anything",
+     "target_text": "ella no quiere mandarle nada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friend could send her help",
+     "target_text": "mi amigo podría mandarle ayuda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to send her something important",
+     "target_text": "necesito mandarle algo importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to send her something",
+     "target_text": "necesitamos mandarle algo",
+     "phrase_role": "use"
+    }
+   ],
+   "357:3": [
+    {
+     "known_text": "message",
+     "target_text": "mensaje",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a message",
+     "target_text": "un mensaje",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no, she just wanted to send her a message",
+     "target_text": "no, solo quería mandarle un mensaje",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to send her a message",
+     "target_text": "quiero mandarle un mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friend could send her a message",
+     "target_text": "mi amigo podría mandarle un mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to send her a message",
+     "target_text": "ella no quiere mandarle un mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to write a message",
+     "target_text": "necesito escribir un mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said that he wanted to send her a message",
+     "target_text": "él dijo que quería mandarle un mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's trying to send her a message",
+     "target_text": "está intentando mandarle un mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to send her a message after we finish",
+     "target_text": "quiero mandarle un mensaje después de que terminemos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a message",
+     "target_text": "hay un mensaje",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when do you want to send her a message?",
+     "target_text": "¿cuándo quieres mandarle un mensaje?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to send her a message as soon as possible",
+     "target_text": "necesito mandarle un mensaje lo más pronto posible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's talk about the message",
+     "target_text": "hablemos sobre el mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've seen the message",
+     "target_text": "he visto el mensaje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a more important message",
+     "target_text": "un mensaje más importante",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 364,
+  "phrases": {
+   "364:1": [
+    {
+     "known_text": "I heard",
+     "target_text": "oí",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I heard that",
+     "target_text": "oí que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I heard that it's important",
+     "target_text": "oí que es importante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I heard that he was angry",
+     "target_text": "oí que él estaba enojado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I heard that you need help",
+     "target_text": "oí que necesitas ayuda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I heard that he was quiet",
+     "target_text": "oí que estaba callado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I heard that she was worried",
+     "target_text": "oí que ella estaba preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I heard that they had something important",
+     "target_text": "oí que tenían algo importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I heard that my friend could help",
+     "target_text": "oí que mi amigo podía ayudar",
+     "phrase_role": "use"
+    }
+   ],
+   "364:2": [
+    {
+     "known_text": "to him",
+     "target_text": "a él",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "no",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he liked",
+     "target_text": "le gustaba",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he didn't like",
+     "target_text": "a él no le gustaba",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he didn't like that book",
+     "target_text": "a él no le gustaba ese libro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I heard that he didn't like that",
+     "target_text": "oí que a él no le gustaba eso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he didn't like working here",
+     "target_text": "a él no le gustaba trabajar aquí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he didn't like that story",
+     "target_text": "a él no le gustaba esa historia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he didn't like that car",
+     "target_text": "a él no le gustaba ese carro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friend said that he didn't like the book",
+     "target_text": "mi amiga dijo que a él no le gustaba el libro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that he didn't like the idea",
+     "target_text": "pienso que a él no le gustaba la idea",
+     "phrase_role": "use"
+    }
+   ],
+   "364:3": [
+    {
+     "known_text": "place",
+     "target_text": "lugar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that place",
+     "target_text": "ese lugar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to see that place",
+     "target_text": "quiero ver ese lugar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I heard that he didn't like that place",
+     "target_text": "oí que a él no le gustaba ese lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my friend could show you that place",
+     "target_text": "mi amigo podría mostrarte ese lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know that place",
+     "target_text": "no conozco ese lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that place is important",
+     "target_text": "ese lugar es importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she needs to find that place",
+     "target_text": "ella necesita encontrar ese lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must find a place",
+     "target_text": "tenemos que encontrar un lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope to be able to find a place",
+     "target_text": "espero poder encontrar un lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find a place as quickly as possible",
+     "target_text": "quiero encontrar un lugar lo más rápido posible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's talk about that place",
+     "target_text": "hablemos de ese lugar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've never seen that place",
+     "target_text": "nunca he visto ese lugar",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 389,
+  "phrases": {
+   "389:1": [
+    {
+     "known_text": "that",
+     "target_text": "esa",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "person",
+     "target_text": "persona",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "over there",
+     "target_text": "allí",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that person over there",
+     "target_text": "esa persona de allí",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I need that person over there",
+     "target_text": "necesito a esa persona de allí",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want that person over there",
+     "target_text": "quiero a esa persona de allí",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know that person over there",
+     "target_text": "conozco a esa persona de allí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that person over there works here",
+     "target_text": "esa persona de allí trabaja aquí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to talk to that person over there",
+     "target_text": "quiero hablar con esa persona de allí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that person over there could help",
+     "target_text": "esa persona de allí podría ayudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that person over there is important",
+     "target_text": "pienso que esa persona de allí es importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that person over there is going to help me",
+     "target_text": "esa persona de allí va a ayudarme",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you should speak with that person over there",
+     "target_text": "deberías hablar con esa persona de allí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it might be that person over there",
+     "target_text": "podría ser esa persona de allí",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to speak with that person over there after we finish",
+     "target_text": "quiero hablar con esa persona de allí después de que terminemos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with that person over there as soon as possible",
+     "target_text": "quiero hablar con esa persona de allí lo más pronto posible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's talk with that person over there",
+     "target_text": "hablemos con esa persona de allí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have seen that person over there",
+     "target_text": "he visto a esa persona de allí",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 610,
+  "phrases": {
+   "610:1": [
+    {
+     "known_text": "needs",
+     "target_text": "necesita",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "buscar",
+     "target_text": "buscar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "trabajo",
+     "target_text": "trabajo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "needs to look for work",
+     "target_text": "necesita buscar trabajo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he needs to look for work",
+     "target_text": "él necesita buscar trabajo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he doesn't need to look for work",
+     "target_text": "él no necesita buscar trabajo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, he needs to look for work",
+     "target_text": "sí, él necesita buscar trabajo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I believe he needs to look for work",
+     "target_text": "creo que él necesita buscar trabajo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he needs to look for work here",
+     "target_text": "él necesita buscar trabajo aquí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't need to look for work now",
+     "target_text": "él no necesita buscar trabajo ahora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I believe he doesn't need to look for work",
+     "target_text": "creo que él no necesita buscar trabajo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "who needs to look for work?",
+     "target_text": "¿quién necesita buscar trabajo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he needs to look for work as soon as possible",
+     "target_text": "necesita buscar trabajo lo más pronto posible",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 662,
+  "phrases": {
+   "662:1": [
+    {
+     "known_text": "they speak",
+     "target_text": "hablan",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they don't speak",
+     "target_text": "no hablan",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, they speak",
+     "target_text": "sí, hablan",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I believe they speak well",
+     "target_text": "creo que hablan bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, they speak well",
+     "target_text": "sí, hablan bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't speak well",
+     "target_text": "no hablan bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I believe they don't speak",
+     "target_text": "creo que no hablan",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all speak it",
+     "target_text": "todos lo hablan",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to ask if they speak Spanish",
+     "target_text": "voy a preguntar si hablan español",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to know if they speak Spanish",
+     "target_text": "necesitamos saber si hablan español",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure that they speak Spanish",
+     "target_text": "estoy seguro de que hablan español",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when they speak Spanish, I understand",
+     "target_text": "cuando hablan español, entiendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I understand when they speak slowly",
+     "target_text": "entiendo cuando hablan despacio",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if they speak Spanish, I want to speak with them",
+     "target_text": "si hablan español, quiero hablar con ellos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to learn the language that they speak",
+     "target_text": "quiero aprender el idioma que hablan",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful to know if they speak Spanish",
+     "target_text": "es útil saber si hablan español",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they speak more slowly today",
+     "target_text": "hablan más despacio hoy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they speak Spanish better than my friends",
+     "target_text": "hablan español mejor que mis amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I love the way that they speak",
+     "target_text": "me encanta la manera en que hablan",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

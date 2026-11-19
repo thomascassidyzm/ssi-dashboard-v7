@@ -1,0 +1,2922 @@
+[
+ {
+  "seed_number": 16,
+  "phrases": {
+   "16:1": [
+    {
+     "known_text": "he",
+     "target_text": "هو",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and he",
+     "target_text": "و هو",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants",
+     "target_text": "هو عايز",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he's not sure",
+     "target_text": "هو مش متأكد",
+     "phrase_role": "use"
+    }
+   ],
+   "16:2": [
+    {
+     "known_text": "he wants to come back",
+     "target_text": "هو عايز يرجع",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back now",
+     "target_text": "هو عايز يرجع دلوقتي",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and he wants to come back",
+     "target_text": "و هو عايز يرجع",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back tomorrow",
+     "target_text": "هو عايز يرجع بكرة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with me today",
+     "target_text": "هو عايز يرجع معايا النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back after you finish",
+     "target_text": "هو عايز يرجع بعد ما تخلص",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with me",
+     "target_text": "هو عايز يرجع معايا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with me tomorrow",
+     "target_text": "هو عايز يرجع معايا بكرة",
+     "phrase_role": "use"
+    }
+   ],
+   "16:3": [
+    {
+     "known_text": "with",
+     "target_text": "مع",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "all",
+     "target_text": "كل",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the people",
+     "target_text": "الناس",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the other",
+     "target_text": "التانية",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "with everyone else",
+     "target_text": "مع كل الناس التانية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back with everyone else",
+     "target_text": "هو عايز يرجع مع كل الناس التانية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back with everyone else tomorrow",
+     "target_text": "هو عايز يرجع مع كل الناس التانية بكرة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back with everyone else today",
+     "target_text": "هو عايز يرجع مع كل الناس التانية النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with everyone else after you finish",
+     "target_text": "هو عايز يرجع مع كل الناس التانية بعد ما تخلص",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and he wants to come back with everyone else",
+     "target_text": "و هو عايز يرجع مع كل الناس التانية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with everyone else now",
+     "target_text": "هو عايز يرجع مع كل الناس التانية دلوقتي",
+     "phrase_role": "use"
+    }
+   ],
+   "16:4": [
+    {
+     "known_text": "later on",
+     "target_text": "بعدين",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back later on",
+     "target_text": "هو عايز يرجع بعدين",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and he wants to come back later on",
+     "target_text": "و هو عايز يرجع بعدين",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to come back with everyone else later on",
+     "target_text": "هو عايز يرجع مع كل الناس التانية بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with me later on",
+     "target_text": "هو عايز يرجع معايا بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with everyone else and with me later on",
+     "target_text": "هو عايز يرجع معايا و مع كل الناس التانية بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with everyone else after you finish, not later on",
+     "target_text": "هو عايز يرجع مع كل الناس التانية بعد ما تخلص مش بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to come back with everyone else tomorrow, not later on",
+     "target_text": "هو عايز يرجع مع كل الناس التانية بكرة مش بعدين",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 18,
+  "phrases": {
+   "18:1": [
+    {
+     "known_text": "we",
+     "target_text": "إحنا",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "want",
+     "target_text": "عايزين",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we want",
+     "target_text": "إحنا عايزين",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and we want",
+     "target_text": "و إحنا عايزين",
+     "phrase_role": "build"
+    }
+   ],
+   "18:2": [
+    {
+     "known_text": "we want to meet",
+     "target_text": "إحنا عايزين نتقابل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet now",
+     "target_text": "إحنا عايزين نتقابل دلوقتي",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet tomorrow",
+     "target_text": "إحنا عايزين نتقابل بكرة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet later on",
+     "target_text": "إحنا عايزين نتقابل بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet with everyone else",
+     "target_text": "إحنا عايزين نتقابل مع كل الناس التانية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet with you tomorrow",
+     "target_text": "إحنا عايزين نتقابل معاك بكرة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet after you finish",
+     "target_text": "إحنا عايزين نتقابل بعد ما تخلص",
+     "phrase_role": "use"
+    }
+   ],
+   "18:3": [
+    {
+     "known_text": "the clock",
+     "target_text": "الساعة",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "six",
+     "target_text": "ستة",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "at six o'clock",
+     "target_text": "الساعة ستة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet at six o'clock",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet at six o'clock today",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة النهارده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet at six o'clock later on",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet at six o'clock now",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة دلوقتي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet at six o'clock tomorrow",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة بكرة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet at six o'clock with everyone else",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة مع كل الناس التانية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and we want to meet at six o'clock",
+     "target_text": "و إحنا عايزين نتقابل الساعة ستة",
+     "phrase_role": "use"
+    }
+   ],
+   "18:4": [
+    {
+     "known_text": "this evening",
+     "target_text": "الليلة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet this evening",
+     "target_text": "إحنا عايزين نتقابل الليلة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet at six this evening",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة الليلة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we want to meet at six o'clock this evening",
+     "target_text": "إحنا عايزين نتقابل الساعة ستة الليلة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to find out the answer this evening",
+     "target_text": "هي عايزة تعرف الإجابة الليلة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet with everyone else this evening",
+     "target_text": "إحنا عايزين نتقابل مع كل الناس التانية الليلة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and we want to meet this evening",
+     "target_text": "و إحنا عايزين نتقابل الليلة",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 27,
+  "phrases": {
+   "27:1": [
+    {
+     "known_text": "I don't like to take",
+     "target_text": "أنا مش بحب آخد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like to take",
+     "target_text": "أنا بحب آخد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not going to be able to take",
+     "target_text": "أنا مش حاقدر آخد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like to take more",
+     "target_text": "أنا بحب آخد أكتر",
+     "phrase_role": "use"
+    }
+   ],
+   "27:2": [
+    {
+     "known_text": "time",
+     "target_text": "وقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't like to take time",
+     "target_text": "أنا مش بحب آخد وقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "take time",
+     "target_text": "آخد وقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like to take my time",
+     "target_text": "أنا بحب آخد وقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to take time to learn Arabic",
+     "target_text": "أنا عايز آخد وقت أتعلم عربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to take time before I have to go",
+     "target_text": "أنا بحب آخد وقت قبل ما أضطر أمشي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why take time?",
+     "target_text": "ليه آخد وقت؟",
+     "phrase_role": "use"
+    }
+   ],
+   "27:3": [
+    {
+     "known_text": "a lot",
+     "target_text": "كتير",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "too much time",
+     "target_text": "وقت كتير",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't like taking too much time now",
+     "target_text": "أنا مش بحب آخد وقت كتير دلوقتي",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't like taking too much time",
+     "target_text": "أنا مش بحب آخد وقت كتير",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to take too much time",
+     "target_text": "أنا مش عايز آخد وقت كتير",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak Arabic a lot",
+     "target_text": "أنا بتكلم عربي كتير",
+     "phrase_role": "use"
+    }
+   ],
+   "27:4": [
+    {
+     "known_text": "I like to answer",
+     "target_text": "أنا بحب أرد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't like to take time to answer",
+     "target_text": "أنا مش بحب آخد وقت أرد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't like taking too much time to answer",
+     "target_text": "أنا مش بحب آخد وقت كتير عشان أرد",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to answer now",
+     "target_text": "أنا عايز أرد دلوقتي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to answer quickly",
+     "target_text": "أنا بحب أرد بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm nearly ready to answer",
+     "target_text": "أنا تقريبًا جاهز أرد",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 28,
+  "phrases": {
+   "28:1": [
+    {
+     "known_text": "useful!",
+     "target_text": "مفيد!",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "really useful",
+     "target_text": "مفيد جدًا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "very useful to try",
+     "target_text": "مفيد جدًا أحاول",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful to speak Arabic",
+     "target_text": "مفيد أتكلم عربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful to meet people",
+     "target_text": "مفيد أتقابل مع ناس",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful to learn Arabic quickly",
+     "target_text": "مفيد أتعلم عربي بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful to answer quickly",
+     "target_text": "مفيد أرد بسرعة",
+     "phrase_role": "use"
+    }
+   ],
+   "28:2": [
+    {
+     "known_text": "useful that you",
+     "target_text": "مفيد إنك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful that you speak",
+     "target_text": "مفيد إنك بتتكلم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful that you learn",
+     "target_text": "مفيد إنك بتتعلم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful that you speak Arabic very well",
+     "target_text": "مفيد إنك بتتكلم عربي كويس جدًا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful that you want to learn",
+     "target_text": "مفيد إنك عايز تتعلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful that you're ready",
+     "target_text": "مفيد إنك جاهز",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful that you're learning more",
+     "target_text": "مفيد إنك بتتعلم أكتر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful that you speak Arabic a little",
+     "target_text": "مفيد إنك بتتكلم عربي شوية",
+     "phrase_role": "use"
+    }
+   ],
+   "28:3": [
+    {
+     "known_text": "you start",
+     "target_text": "تبدأ",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful that you start",
+     "target_text": "مفيد إنك تبدأ",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful that you start speaking",
+     "target_text": "مفيد إنك تبدأ تتكلم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful that you start speaking Arabic",
+     "target_text": "مفيد إنك تبدأ تتكلم عربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful that you start quickly",
+     "target_text": "مفيد إنك تبدأ بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful that you start talking today",
+     "target_text": "مفيد إنك تبدأ تتكلم النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want you to start speaking with me",
+     "target_text": "أنا عايزك تبدأ تتكلم معايا",
+     "phrase_role": "use"
+    }
+   ],
+   "28:4": [
+    {
+     "known_text": "first",
+     "target_text": "أول",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "as",
+     "target_text": "ما",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "as soon as",
+     "target_text": "أول ما",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "as soon as you start",
+     "target_text": "أول ما تبدأ",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful to start as soon as",
+     "target_text": "مفيد إنك تبدأ أول ما",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "learn Arabic as soon as you start",
+     "target_text": "تتعلم عربي أول ما تبدأ",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to start as soon as you start",
+     "target_text": "أنا حابدأ أول ما تبدأ",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to answer as soon as you start",
+     "target_text": "أنا عايز أرد أول ما تبدأ",
+     "phrase_role": "use"
+    }
+   ],
+   "28:5": [
+    {
+     "known_text": "as soon as you can",
+     "target_text": "أول ما تقدر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you can",
+     "target_text": "لو تقدر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "start if you can",
+     "target_text": "تبدأ لو تقدر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's useful to start talking as soon as you can",
+     "target_text": "مفيد إنك تبدأ تتكلم أول ما تقدر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "start as soon as you can",
+     "target_text": "تبدأ أول ما تقدر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "learn Arabic as soon as you can",
+     "target_text": "تتعلم عربي أول ما تقدر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's really useful if you can learn Arabic",
+     "target_text": "مفيد جدا لو تقدر تتعلم عربي",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 30,
+  "phrases": {
+   "30:1": [
+    {
+     "known_text": "I was trying",
+     "target_text": "أنا كنت بحاول",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was speaking arabic",
+     "target_text": "أنا كنت بتكلم عربي",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was trying to speak",
+     "target_text": "أنا كنت بحاول أتكلم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was trying to speak better",
+     "target_text": "أنا كنت بحاول أتكلم أحسن",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was looking forward to speaking with people",
+     "target_text": "أنا كنت مستني أتكلم مع ناس",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you were speaking arabic very well",
+     "target_text": "إنت كنت بتتكلم عربي كويس جدا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was wanting to learn more",
+     "target_text": "أنا كنت عايز أتعلم أكتر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was trying to learn as much as I can",
+     "target_text": "أنا كنت بحاول أتعلم على قد ما أقدر",
+     "phrase_role": "use"
+    }
+   ],
+   "30:2": [
+    {
+     "known_text": "I want to ask you",
+     "target_text": "عايز أسألك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was wanting to ask you",
+     "target_text": "أنا كنت عايز أسألك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to ask you something",
+     "target_text": "أنا عايز أسألك حاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was trying to ask you something",
+     "target_text": "أنا كنت بحاول أسألك حاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm looking forward to asking you something",
+     "target_text": "أنا مستني أسألك حاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to ask you tonight",
+     "target_text": "أنا بحاول أسألك الليلة",
+     "phrase_role": "use"
+    }
+   ],
+   "30:3": [
+    {
+     "known_text": "yesterday I was trying",
+     "target_text": "إمبارح كنت بحاول",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you were speaking arabic yesterday",
+     "target_text": "إنت كنت بتتكلم عربي إمبارح",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yesterday I was trying to speak",
+     "target_text": "إمبارح كنت بحاول أتكلم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was speaking arabic yesterday",
+     "target_text": "أنا كنت بتكلم عربي إمبارح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to ask you something yesterday",
+     "target_text": "أنا كنت عايز أسألك حاجة إمبارح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yesterday I was trying to speak better",
+     "target_text": "إمبارح كنت بحاول أتكلم أحسن",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you were speaking arabic very well yesterday",
+     "target_text": "إنت كنت بتتكلم عربي كويس جدا إمبارح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yesterday I was looking forward to learning more",
+     "target_text": "إمبارح كنت مستني أتعلم أكتر",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 32,
+  "phrases": {
+   "32:1": [
+    {
+     "known_text": "show me something",
+     "target_text": "توريني حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you wanted to show me",
+     "target_text": "إنت كنت عايز توريني",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did you want to show me something?",
+     "target_text": "إنت كنت عايز توريني حاجة؟",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to show me something tomorrow?",
+     "target_text": "إنت عايز توريني حاجة بكرة؟",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm looking forward to you showing me more",
+     "target_text": "أنا مستني توريني أكتر",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 34,
+  "phrases": {
+   "34:1": [
+    {
+     "known_text": "other people",
+     "target_text": "ناس تانية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "with other people",
+     "target_text": "مع ناس تانية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to speak with other people",
+     "target_text": "أنا عايز أتكلم مع ناس تانية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm looking forward to speaking with other people",
+     "target_text": "أنا مستني أتكلم مع ناس تانية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to learn arabic with other people",
+     "target_text": "هي عايزة تتعلم عربي مع ناس تانية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was trying to speak with other people",
+     "target_text": "أنا كنت بحاول أتكلم مع ناس تانية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to return with other people",
+     "target_text": "هو عايز يرجع مع ناس تانية",
+     "phrase_role": "use"
+    }
+   ],
+   "34:2": [
+    {
+     "known_text": "here",
+     "target_text": "هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "people here",
+     "target_text": "ناس هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was here",
+     "target_text": "أنا كنت هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to return here",
+     "target_text": "هو عايز يرجع هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I was trying to speak with people here",
+     "target_text": "أنا كنت بحاول أتكلم مع ناس هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm looking forward to speaking with people here",
+     "target_text": "أنا مستني أتكلم مع ناس هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "other people are here",
+     "target_text": "ناس تانية هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to learn arabic here",
+     "target_text": "هي عايزة تتعلم عربي هنا",
+     "phrase_role": "use"
+    }
+   ],
+   "34:3": [
+    {
+     "known_text": "when you can",
+     "target_text": "لما تقدر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when people are here",
+     "target_text": "لما ناس هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when other people are here",
+     "target_text": "لما ناس تانية هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I try to speak as much as I can when I can",
+     "target_text": "أنا بحاول أتكلم على قد ما أقدر لما أقدر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I try to speak when people are here",
+     "target_text": "أنا بحاول أتكلم لما ناس هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to start learning when she can",
+     "target_text": "هي عايزة تبدأ تتعلم لما تقدر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm looking forward to speaking when other people are here",
+     "target_text": "أنا مستني أتكلم لما ناس تانية هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to return when people are here",
+     "target_text": "هو عايز يرجع لما ناس هنا",
+     "phrase_role": "use"
+    }
+   ],
+   "34:4": [
+    {
+     "known_text": "he doesn't want to be quiet",
+     "target_text": "هو مش عايز يسكت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he doesn't want to be quiet when people are here",
+     "target_text": "هو مش عايز يسكت لما ناس هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to be quiet",
+     "target_text": "هو عايز يسكت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he doesn't want to be quiet when other people are here",
+     "target_text": "هو مش عايز يسكت لما ناس تانية هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to be quiet when I'm speaking",
+     "target_text": "هو عايز يسكت لما أنا بتكلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to be quiet when you're learning arabic",
+     "target_text": "هو مش عايز يسكت لما بتتعلم عربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to be quiet when people are here",
+     "target_text": "هو عايز يسكت لما ناس هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to be quiet when I'm here",
+     "target_text": "هو مش عايز يسكت لما أنا هنا",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 35,
+  "phrases": {
+   "35:1": [
+    {
+     "known_text": "read something",
+     "target_text": "تقرا حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she doesn't want to read",
+     "target_text": "هي مش عايزة تقرا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she wants to read here",
+     "target_text": "هي عايزة تقرا هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she doesn't want to read here",
+     "target_text": "هي مش عايزة تقرا هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to read quickly",
+     "target_text": "هي عايزة تقرا بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to read when she can",
+     "target_text": "هي عايزة تقرا لما تقدر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you wanted to read with other people",
+     "target_text": "إنت كنت عايز تقرا مع ناس تانية",
+     "phrase_role": "use"
+    }
+   ],
+   "35:2": [
+    {
+     "known_text": "anything",
+     "target_text": "أي حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she doesn't want to read anything",
+     "target_text": "هي مش عايزة تقرا أي حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "not anything",
+     "target_text": "مش أي حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she doesn't want to read anything here",
+     "target_text": "هي مش عايزة تقرا أي حاجة هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to learn anything here",
+     "target_text": "هي مش عايزة تتعلم أي حاجة هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to say anything now",
+     "target_text": "أنا مش عايز أقول أي حاجة دلوقتي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to ask anything",
+     "target_text": "أنا مش عايز أسأل أي حاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to read anything quickly",
+     "target_text": "هي مش عايزة تقرا أي حاجة بسرعة",
+     "phrase_role": "use"
+    }
+   ],
+   "35:3": [
+    {
+     "known_text": "this afternoon",
+     "target_text": "بعد الضهر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she doesn't want to read this afternoon",
+     "target_text": "هي مش عايزة تقرا بعد الضهر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to say anything this afternoon",
+     "target_text": "أنا مش عايز أقول أي حاجة بعد الضهر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she doesn't want to read anything this afternoon",
+     "target_text": "هي مش عايزة تقرا أي حاجة بعد الضهر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak arabic this afternoon",
+     "target_text": "أنا عايز أتكلم عربي بعد الضهر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to return here this afternoon",
+     "target_text": "هو عايز يرجع هنا بعد الضهر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm looking forward to learning this afternoon",
+     "target_text": "أنا مستني أتعلم بعد الضهر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to learn anything this afternoon",
+     "target_text": "هي مش عايزة تتعلم أي حاجة بعد الضهر",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 36,
+  "phrases": {
+   "36:1": [
+    {
+     "known_text": "we don't want to interrupt",
+     "target_text": "إحنا مش عايزين نقطع",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "don't want to interrupt",
+     "target_text": "مش عايزين نقطع",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we don't want to interrupt now",
+     "target_text": "إحنا مش عايزين نقطع دلوقتي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we don't want to interrupt when people are here",
+     "target_text": "إحنا مش عايزين نقطع لما ناس هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we don't want to interrupt here",
+     "target_text": "إحنا مش عايزين نقطع هنا",
+     "phrase_role": "use"
+    }
+   ],
+   "36:2": [
+    {
+     "known_text": "interrupt the story",
+     "target_text": "نقطع القصة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the story here",
+     "target_text": "القصة هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "read the story",
+     "target_text": "تقرا القصة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we don't want to interrupt the story",
+     "target_text": "إحنا مش عايزين نقطع القصة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to read the story here",
+     "target_text": "هي عايزة تقرا القصة هنا",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 47,
+  "phrases": {
+   "47:1": [
+    {
+     "known_text": "I think that it's useful",
+     "target_text": "بفكر إنه مفيد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's good",
+     "target_text": "بفكر إنه كويس",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I think that something",
+     "target_text": "علشان بفكر إن حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I think that it's good",
+     "target_text": "علشان بفكر إنه كويس",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I need to learn more",
+     "target_text": "أنا بفكر إن محتاج أتعلم أكتر",
+     "phrase_role": "use"
+    }
+   ],
+   "47:2": [
+    {
+     "known_text": "this is a thing",
+     "target_text": "دي حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that this is useful",
+     "target_text": "أنا بفكر إن دي مفيد",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wasn't thinking that this was useful",
+     "target_text": "أنا ماكنتش بفكر إن دي مفيد",
+     "phrase_role": "use"
+    }
+   ],
+   "47:3": [
+    {
+     "known_text": "very good",
+     "target_text": "كويسة جدا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a good thing",
+     "target_text": "حاجة كويسة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that this is good",
+     "target_text": "بفكر إن دي كويسة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this is a good thing",
+     "target_text": "دي حاجة كويسة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that this is a good thing",
+     "target_text": "أنا بفكر إن دي حاجة كويسة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "learning here is a good thing",
+     "target_text": "بتعلم هنا دي حاجة كويسة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wasn't thinking that this was a good thing",
+     "target_text": "أنا ماكنتش بفكر إن دي حاجة كويسة",
+     "phrase_role": "use"
+    }
+   ],
+   "47:4": [
+    {
+     "known_text": "you make mistakes",
+     "target_text": "إنك تعمل غلطات",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's good that you make mistakes",
+     "target_text": "دي حاجة كويسة إنك تعمل غلطات",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you do something good",
+     "target_text": "إنك تعمل حاجة كويسة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I think that it's a good thing to make mistakes",
+     "target_text": "علشان أنا بفكر إن دي حاجة كويسة إنك تعمل غلطات",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's good for you to make mistakes",
+     "target_text": "أنا بفكر إن دي حاجة كويسة إنك تعمل غلطات",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wasn't thinking that it's good for you to make mistakes",
+     "target_text": "أنا ماكنتش بفكر إن دي حاجة كويسة إنك تعمل غلطات",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 54,
+  "phrases": {
+   "54:1": [
+    {
+     "known_text": "we were here",
+     "target_text": "إحنا كنا هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were wanting",
+     "target_text": "إحنا كنا عايزين",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were not wanting",
+     "target_text": "إحنا كنا مش عايزين",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were here yesterday",
+     "target_text": "إحنا كنا هنا إمبارح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were not here last week",
+     "target_text": "إحنا كنا مش هنا الأسبوع اللي فات",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were wanting to meet",
+     "target_text": "إحنا كنا عايزين نتقابل",
+     "phrase_role": "use"
+    }
+   ],
+   "54:2": [
+    {
+     "known_text": "give you",
+     "target_text": "نديك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we wanted to give you",
+     "target_text": "إحنا كنا عايزين نديك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we wanted to give you more",
+     "target_text": "إحنا كنا عايزين نديك أكتر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were wanting to give you time",
+     "target_text": "إحنا كنا عايزين نديك وقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were wanting to give you something today",
+     "target_text": "إحنا كنا عايزين نديك حاجة النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were wanting to give you a letter",
+     "target_text": "إحنا كنا عايزين نديك جواب",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were wanting to give you a lot",
+     "target_text": "إحنا كنا عايزين نديك كتير جدا",
+     "phrase_role": "use"
+    }
+   ],
+   "54:3": [
+    {
+     "known_text": "more time",
+     "target_text": "وقت زيادة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "more time",
+     "target_text": "وقت زيادة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a little more",
+     "target_text": "شوية زيادة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to speak Arabic more",
+     "target_text": "أنا عايز أتكلم عربي زيادة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to learn a little more",
+     "target_text": "أنا عايز أتعلم شوية زيادة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to try a little more",
+     "target_text": "أنا عايز أحاول شوية زيادة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need a little more time",
+     "target_text": "محتاج شوية وقت زيادة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were wanting to give you a little more",
+     "target_text": "إحنا كنا عايزين نديك شوية زيادة",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 58,
+  "phrases": {
+   "58:1": [
+    {
+     "known_text": "fun",
+     "target_text": "ممتع",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "very fun",
+     "target_text": "ممتع جدا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "speaking Arabic is fun",
+     "target_text": "الكلام بالعربي ممتع",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "learning is really fun",
+     "target_text": "التعلم ممتع جدا",
+     "phrase_role": "use"
+    }
+   ],
+   "58:2": [
+    {
+     "known_text": "get it",
+     "target_text": "تفهم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when you get it",
+     "target_text": "لما تفهم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when you get something",
+     "target_text": "لما تفهم حاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when you understand Arabic it's fun",
+     "target_text": "ممتع لما تفهم عربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when you get it it's good",
+     "target_text": "كويس لما تفهم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when you get a word it's great",
+     "target_text": "ممتع لما تفهم كلمة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's more fun when you get it",
+     "target_text": "ممتع أكتر لما تفهم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's useful when you get something",
+     "target_text": "مفيد لما تفهم حاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when you get things it's very fun",
+     "target_text": "ممتع جدا لما تفهم حاجات",
+     "phrase_role": "use"
+    }
+   ],
+   "58:3": [
+    {
+     "known_text": "words",
+     "target_text": "كلمات",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "more words",
+     "target_text": "كلمات زيادة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "understand words",
+     "target_text": "تفهم كلمات",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's fun when you get words",
+     "target_text": "ممتع لما تفهم كلمات",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to learn more words",
+     "target_text": "أنا عايز أتعلم كلمات زيادة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's fun when you understand words",
+     "target_text": "ممتع لما تفهم كلمات",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to say words in Arabic",
+     "target_text": "أنا عايز أقول كلمات بالعربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can say more words",
+     "target_text": "أنا أقدر أقول كلمات زيادة",
+     "phrase_role": "use"
+    }
+   ],
+   "58:4": [
+    {
+     "known_text": "enough",
+     "target_text": "كفاية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "enough words",
+     "target_text": "كلمات كفاية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "understand enough words",
+     "target_text": "تفهم كلمات كفاية",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when you understand enough words it's fun",
+     "target_text": "ممتع لما تفهم كلمات كفاية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a few words is enough",
+     "target_text": "كم كلمة كفاية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a little is enough",
+     "target_text": "شوية كفاية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's enough for today",
+     "target_text": "كفاية النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think a little is enough",
+     "target_text": "بفكر إن شوية كفاية",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 62,
+  "phrases": {
+   "62:1": [
+    {
+     "known_text": "help you",
+     "target_text": "أساعدك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help you",
+     "target_text": "أقدر أساعدك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to help you",
+     "target_text": "أنا عايز أساعدك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "could I help you",
+     "target_text": "ممكن أساعدك؟",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to help you speak Arabic",
+     "target_text": "أنا عايز أساعدك تتكلم عربي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can help you learn",
+     "target_text": "أنا أقدر أساعدك تتعلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can help you",
+     "target_text": "أنا مش متأكد لو أقدر أساعدك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to help you quickly",
+     "target_text": "أنا عايز أساعدك بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to help you finish",
+     "target_text": "أنا عايز أساعدك تخلص",
+     "phrase_role": "use"
+    }
+   ],
+   "62:2": [
+    {
+     "known_text": "the time",
+     "target_text": "الوقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "at the time",
+     "target_text": "في الوقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "at the time I want to learn",
+     "target_text": "في الوقت ده عايز أتعلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can do it at the time",
+     "target_text": "أنا أقدر أعمله في الوقت ده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need some time",
+     "target_text": "أنا محتاج شوية وقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to do it at the time",
+     "target_text": "أنا عايز أعمله في الوقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the time is good",
+     "target_text": "الوقت كويس",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could I help you now at this time",
+     "target_text": "ممكن أساعدك في الوقت ده",
+     "phrase_role": "use"
+    }
+   ],
+   "62:3": [
+    {
+     "known_text": "same",
+     "target_text": "نفس",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the same time",
+     "target_text": "نفس الوقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "at the same time",
+     "target_text": "في نفس الوقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure if I can help you at the same time",
+     "target_text": "أنا مش متأكد لو أقدر أساعدك في نفس الوقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "at the same time I want to learn",
+     "target_text": "في نفس الوقت عايز أتعلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to do it at the same time",
+     "target_text": "أنا عايز أعمله في نفس الوقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "at the same time it's good",
+     "target_text": "في نفس الوقت كويس",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to help you at the same time",
+     "target_text": "أنا عايز أساعدك في نفس الوقت",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 65,
+  "phrases": {
+   "65:1": [
+    {
+     "known_text": "key",
+     "target_text": "مهم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "key very",
+     "target_text": "مهم جدا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "key today",
+     "target_text": "مهم النهارده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "learning Arabic is key",
+     "target_text": "تعلم العربي مهم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "speaking Arabic is key",
+     "target_text": "الكلام بالعربي مهم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "learning is really key",
+     "target_text": "تعلم مهم جدا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "doing it well is key",
+     "target_text": "مهم تعمل كويس",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "finishing is key",
+     "target_text": "تخلص مهم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "Arabic is key",
+     "target_text": "العربي مهم",
+     "phrase_role": "use"
+    }
+   ],
+   "65:2": [
+    {
+     "known_text": "you take",
+     "target_text": "تاخد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you take time",
+     "target_text": "تاخد وقت",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's key you take",
+     "target_text": "مهم إنك تاخد",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's important to take time",
+     "target_text": "مهم إنك تاخد وقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you take a little time",
+     "target_text": "تاخد وقت شوية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you take enough time",
+     "target_text": "تاخد وقت كفاية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you take a little time",
+     "target_text": "ممكن تاخد وقت شوية؟",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you take time to learn",
+     "target_text": "تاخد وقت تتعلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you take time to speak Arabic",
+     "target_text": "تاخد وقت تتكلم العربي",
+     "phrase_role": "use"
+    }
+   ],
+   "65:3": [
+    {
+     "known_text": "test",
+     "target_text": "تختبر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "take time to test",
+     "target_text": "تاخد وقت تختبر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's key to test",
+     "target_text": "مهم تختبر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's important to take time to test",
+     "target_text": "مهم إنك تاخد وقت تختبر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "take time to test more",
+     "target_text": "تاخد وقت تختبر أكتر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's important to test",
+     "target_text": "مهم إنك تختبر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you test",
+     "target_text": "ممكن تختبر؟",
+     "phrase_role": "use"
+    }
+   ],
+   "65:4": [
+    {
+     "known_text": "yourself",
+     "target_text": "نفسك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "test yourself",
+     "target_text": "تختبر نفسك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "time to test yourself",
+     "target_text": "وقت تختبر نفسك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's important to take time to test yourself",
+     "target_text": "مهم إنك تاخد وقت تختبر نفسك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "take time to test yourself",
+     "target_text": "تاخد وقت تختبر نفسك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "testing yourself is important",
+     "target_text": "تختبر نفسك مهم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "testing yourself is useful",
+     "target_text": "تختبر نفسك مفيد",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's important to test yourself",
+     "target_text": "مهم إنك تختبر نفسك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you test yourself",
+     "target_text": "ممكن تختبر نفسك؟",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 91,
+  "phrases": {
+   "91:1": [
+    {
+     "known_text": "you think before",
+     "target_text": "تفكر قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you think here",
+     "target_text": "تفكر هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you think quickly here",
+     "target_text": "تفكر بسرعة هنا كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you think quickly",
+     "target_text": "تفكر بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you think a lot",
+     "target_text": "تفكر كتير",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's difficult to think quickly",
+     "target_text": "صعب إنك تفكر بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's difficult to think enough",
+     "target_text": "صعب إنك تفكر كفاية",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you think in Arabic",
+     "target_text": "تفكر عربي",
+     "phrase_role": "use"
+    }
+   ],
+   "91:2": [
+    {
+     "known_text": "you answer before",
+     "target_text": "ترد قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you answer from before",
+     "target_text": "ترد من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you answer here today",
+     "target_text": "ترد هنا النهارده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's difficult to think quickly enough to answer in time",
+     "target_text": "صعب إنك تفكر بسرعة كفاية إنك ترد في الوقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you answer quickly",
+     "target_text": "ترد بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you answer in time",
+     "target_text": "ترد في الوقت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you answer today",
+     "target_text": "ترد النهارده",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 93,
+  "phrases": {
+   "93:1": [
+    {
+     "known_text": "we go before",
+     "target_text": "نمشي قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we go here",
+     "target_text": "نمشي هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we go quickly",
+     "target_text": "نمشي بسرعة كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we go now",
+     "target_text": "نمشي دلوقتي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we go quickly",
+     "target_text": "نمشي بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we go today",
+     "target_text": "نمشي النهارده",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 101,
+  "phrases": {
+   "101:1": [
+    {
+     "known_text": "the language before",
+     "target_text": "اللغة قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the language here",
+     "target_text": "اللغة هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the language today",
+     "target_text": "اللغة النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this language",
+     "target_text": "اللغة دي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the language here today",
+     "target_text": "اللغة هنا النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the language today",
+     "target_text": "اللغة النهارده",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 110,
+  "phrases": {
+   "110:1": [
+    {
+     "known_text": "friends before",
+     "target_text": "أصحاب قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "friends from before",
+     "target_text": "أصحاب من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "friends today",
+     "target_text": "أصحاب النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we're friends",
+     "target_text": "إحنا أصحاب",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "friends here",
+     "target_text": "أصحاب هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "friends today",
+     "target_text": "أصحاب النهارده",
+     "phrase_role": "use"
+    }
+   ],
+   "110:2": [
+    {
+     "known_text": "we finish before",
+     "target_text": "نخلص قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we finish from before",
+     "target_text": "نخلص من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we finish today",
+     "target_text": "نخلص النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "after we finish",
+     "target_text": "بعد ما نخلص",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we finish today",
+     "target_text": "نخلص النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we finish here",
+     "target_text": "نخلص هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we finish quickly",
+     "target_text": "نخلص بسرعة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we finish a lot",
+     "target_text": "نخلص كتير",
+     "phrase_role": "use"
+    }
+   ],
+   "110:3": [
+    {
+     "known_text": "we relax before",
+     "target_text": "نرتاح قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we relax from before",
+     "target_text": "نرتاح من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we relax today",
+     "target_text": "نرتاح النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we relax",
+     "target_text": "نرتاح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we relax today",
+     "target_text": "نرتاح النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we relax here",
+     "target_text": "نرتاح هنا",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 119,
+  "phrases": {
+   "119:1": [
+    {
+     "known_text": "I can",
+     "target_text": "أقدر",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can before",
+     "target_text": "أقدر من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can today",
+     "target_text": "أقدر النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can do it",
+     "target_text": "أقدر أعمله",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can go",
+     "target_text": "أقدر أمشي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can try",
+     "target_text": "أقدر أحاول",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can do that",
+     "target_text": "أقدر أعمل كده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can speak",
+     "target_text": "أقدر أتكلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can wake up",
+     "target_text": "أقدر أصحى",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can play",
+     "target_text": "أنا أقدر ألعب",
+     "phrase_role": "use"
+    }
+   ],
+   "119:4": [
+    {
+     "known_text": "before",
+     "target_text": "قبل",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you leave",
+     "target_text": "تمشي",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "before you leave",
+     "target_text": "قبل ما تمشي",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "before you leave from here",
+     "target_text": "قبل ما تمشي من هنا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "before you leave today",
+     "target_text": "قبل ما تمشي النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can I ask you something before you leave",
+     "target_text": "أقدر أسألك حاجة قبل ما تمشي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to talk before you leave",
+     "target_text": "عايز أتكلم قبل ما تمشي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have something before you leave",
+     "target_text": "عندي حاجة قبل ما تمشي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want something before you leave",
+     "target_text": "عايز حاجة قبل ما تمشي",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 121,
+  "phrases": {
+   "121:1": [
+    {
+     "known_text": "strange",
+     "target_text": "غريب",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "strange before",
+     "target_text": "غريب من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "strange today",
+     "target_text": "غريب النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that's strange",
+     "target_text": "ده غريب",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "very strange",
+     "target_text": "غريب جدًا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "strange today",
+     "target_text": "غريب النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "strange you",
+     "target_text": "غريب إنك",
+     "phrase_role": "use"
+    }
+   ],
+   "121:2": [
+    {
+     "known_text": "not",
+     "target_text": "مش",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "not before",
+     "target_text": "مش من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "not today",
+     "target_text": "مش النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not here",
+     "target_text": "أنا مش هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "not like that",
+     "target_text": "مش كده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "not now",
+     "target_text": "مش دلوقتي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not happy",
+     "target_text": "أنا مش مبسوط",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "not with me",
+     "target_text": "مش معايا",
+     "phrase_role": "use"
+    }
+   ],
+   "121:3": [
+    {
+     "known_text": "you use",
+     "target_text": "تستخدم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you use before",
+     "target_text": "تستخدم من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you use today",
+     "target_text": "تستخدم النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you use it",
+     "target_text": "تستخدم ده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you don't like to use",
+     "target_text": "مش بتحب تستخدم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "strange that you don't use",
+     "target_text": "غريب إنك مش بتستخدم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "want to use",
+     "target_text": "عايز تستخدم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you use it today",
+     "target_text": "تستخدم ده النهارده",
+     "phrase_role": "use"
+    }
+   ],
+   "121:4": [
+    {
+     "known_text": "your car",
+     "target_text": "عربيتك",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "your car before",
+     "target_text": "عربيتك من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "your car today",
+     "target_text": "عربيتك النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like your car",
+     "target_text": "بحب عربيتك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "your car is nice",
+     "target_text": "عربيتك كويسة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "strange you don't like to use your car",
+     "target_text": "غريب إنك مش بتحب تستخدم عربيتك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "with your car",
+     "target_text": "مع عربيتك",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 140,
+  "phrases": {
+   "140:1": [
+    {
+     "known_text": "not",
+     "target_text": "ما",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I can",
+     "target_text": "أقدر",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I can't",
+     "target_text": "ما أقدرش",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't before",
+     "target_text": "ما أقدرش من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't today",
+     "target_text": "ما أقدرش النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't do it",
+     "target_text": "ما أقدرش أعمله",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't today",
+     "target_text": "ما أقدرش النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sorry I can't",
+     "target_text": "آسف إني ما أقدرش",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't here",
+     "target_text": "ما أقدرش هنا",
+     "phrase_role": "use"
+    }
+   ],
+   "140:2": [
+    {
+     "known_text": "I see",
+     "target_text": "أشوف",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I see before",
+     "target_text": "أشوف من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I see today",
+     "target_text": "أشوف النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't see",
+     "target_text": "ما أقدرش أشوف",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I see it",
+     "target_text": "أشوفه",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I see today",
+     "target_text": "أشوف النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I see here",
+     "target_text": "أشوف هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to see",
+     "target_text": "عايز أشوف",
+     "phrase_role": "use"
+    }
+   ],
+   "140:3": [
+    {
+     "known_text": "you try",
+     "target_text": "بتحاول",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you try before",
+     "target_text": "بتحاول من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you try today",
+     "target_text": "بتحاول النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you try a lot",
+     "target_text": "بتحاول كتير",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you try today",
+     "target_text": "بتحاول النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you try with me",
+     "target_text": "بتحاول معايا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you try here",
+     "target_text": "بتحاول هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't see what you try",
+     "target_text": "ما أقدرش أشوف اللي بتحاول",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 143,
+  "phrases": {
+   "143:1": [
+    {
+     "known_text": "same",
+     "target_text": "نفس",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "same before",
+     "target_text": "نفس من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "same today",
+     "target_text": "نفس النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that's the same",
+     "target_text": "ده نفس الحاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "same today",
+     "target_text": "نفس النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "same here",
+     "target_text": "نفس هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "same as before",
+     "target_text": "زي قبل كده",
+     "phrase_role": "use"
+    }
+   ],
+   "143:2": [
+    {
+     "known_text": "the thing",
+     "target_text": "الحاجة",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the thing before",
+     "target_text": "الحاجة من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the thing today",
+     "target_text": "الحاجة النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "same thing",
+     "target_text": "نفس الحاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the thing is good",
+     "target_text": "الحاجة كويسة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the thing today",
+     "target_text": "الحاجة النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this is the thing",
+     "target_text": "دي الحاجة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the thing that",
+     "target_text": "الحاجة اللي",
+     "phrase_role": "use"
+    }
+   ],
+   "143:4": [
+    {
+     "known_text": "talking",
+     "target_text": "بنتكلم",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "talking before",
+     "target_text": "بنتكلم من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "talking today",
+     "target_text": "بنتكلم النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were talking",
+     "target_text": "كنا بنتكلم",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "were talking today",
+     "target_text": "بنتكلم النهارده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were talking here",
+     "target_text": "كنا بنتكلم هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "were talking a lot",
+     "target_text": "بنتكلم كتير",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were talking earlier",
+     "target_text": "كنا بنتكلم قبل كده",
+     "phrase_role": "use"
+    }
+   ],
+   "143:5": [
+    {
+     "known_text": "about her",
+     "target_text": "عنها",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "about her before",
+     "target_text": "عنها من قبل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "about her today",
+     "target_text": "عنها النهارده كده",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "talking about her",
+     "target_text": "بنتكلم عنها",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we were talking about her",
+     "target_text": "كنا بنتكلم عنها",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the same thing we were talking about",
+     "target_text": "نفس الحاجة اللي كنا بنتكلم عنها",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the same thing we talked about earlier",
+     "target_text": "نفس الحاجة اللي كنا بنتكلم عنها قبل كده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "about her today",
+     "target_text": "عنها النهارده",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 518,
+  "phrases": {
+   "518:1": [
+    {
+     "known_text": "I imagine",
+     "target_text": "أتخيل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I couldn't imagine",
+     "target_text": "ما قدرتش أتخيل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I imagine that",
+     "target_text": "أتخيل إن",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think I imagine this",
+     "target_text": "أنا بفكر إني أتخيل ده",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because I need to imagine",
+     "target_text": "علشان محتاج أتخيل",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I imagine correctly",
+     "target_text": "مش متأكد لو أتخيل صح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but I imagine a lot",
+     "target_text": "بس أتخيل كتير",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I really imagine a lot",
+     "target_text": "بجد أتخيل قوي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's patient",
+     "target_text": "أتخيل إنه صبور",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's young",
+     "target_text": "أتخيل إنه شاب",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine she's young",
+     "target_text": "أتخيل إنها شابة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's your brother",
+     "target_text": "أتخيل إنه أخوك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's great",
+     "target_text": "أتخيل إنها عظيمة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's sick",
+     "target_text": "أتخيل إنه عيان",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's open",
+     "target_text": "أتخيل إنه مفتوح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's your dad",
+     "target_text": "أتخيل إنه أبوك",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's a meeting",
+     "target_text": "أتخيل إنه اجتماع",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's likely",
+     "target_text": "أتخيل إنه مرجح",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's a challenge",
+     "target_text": "أتخيل إنه تحدي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's my grandpa",
+     "target_text": "أتخيل إنه جدي",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine they're bored",
+     "target_text": "أتخيل إنهم متضايقين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine they're serious",
+     "target_text": "أتخيل إنهم جديين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's a choice",
+     "target_text": "أتخيل إنه اختيار",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's an answer",
+     "target_text": "أتخيل إنها إجابة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's a city",
+     "target_text": "أتخيل إنها مدينة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it's a bottle",
+     "target_text": "أتخيل إنها إزازة",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine they understand",
+     "target_text": "أتخيل إنهم فاهمين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's more patient",
+     "target_text": "أتخيل إنه أصبر",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine she lives here",
+     "target_text": "أتخيل إنها بتعيش هنا",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he adds",
+     "target_text": "أتخيل إنه بيضيف",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine she sends",
+     "target_text": "أتخيل إنها بتبعت",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine it reaches",
+     "target_text": "أتخيل إنها بتوصل",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I imagine he's getting weak",
+     "target_text": "أتخيل إنه بيضعف",
+     "phrase_role": "use"
+    }
+   ],
+   "518:2": [
+    {
+     "known_text": "truly happens",
+     "target_text": "حاتحصل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the same problem truly happens",
+     "target_text": "نفس المشكلة حاتحصل",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I couldn't imagine myself having exactly the same problem",
+     "target_text": "ما قدرتش أتخيل إن نفس المشكلة بالظبط حاتحصل معايا",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think this will happen",
+     "target_text": "أنا بفكر إن ده حاتحصل",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because it'll happen soon",
+     "target_text": "علشان حاتحصل قريب",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if it'll happen",
+     "target_text": "مش متأكد لو حاتحصل",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but it'll happen later",
+     "target_text": "بس حاتحصل بعدين",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it'll really happen to me",
+     "target_text": "بجد حاتحصل معايا",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

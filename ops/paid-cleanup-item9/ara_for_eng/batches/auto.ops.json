@@ -1,0 +1,20 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0395L06B03",
+   "expect": {
+    "known_text": "we need to think about that",
+    "target_text": "نَحْنُ بِحاجَةٍ إِلى التَّفْكيرِ في ذَلِكَ"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0413L04U05",
+   "expect": {
+    "known_text": "I know going too close to the edge is not good",
+    "target_text": "أَعْرِفُ أَنَّ الاقْتِرابَ كَثيراً مِنَ الحافَّةِ لَيْسَ جَيِّداً"
+   }
+  }
+ ]
+}

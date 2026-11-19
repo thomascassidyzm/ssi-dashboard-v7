@@ -1,0 +1,73 @@
+{
+ "seed": 51,
+ "lego_ops": {
+  "L02": {
+   "set": {
+    "known_text": "আমার বন্ধুরা",
+    "target_text": "my friends",
+    "type": "M",
+    "components": [
+     {
+      "known": "আমার",
+      "target": "my"
+     },
+     {
+      "known": "বন্ধুরা",
+      "target": "friends"
+     }
+    ]
+   },
+   "why": "S3: 'my' is in the seed ('I enjoy doing interesting things with my friends') and no LEGO of the seed carried it, while 25 rows from S0051 to S0123 already say 'my'. 'friends' grows to 'my friends' (2 syllables, a piece of the seed). The Bengali is plural (বন্ধুরা; বন্ধুদের সাথে in a sentence, as the seed has it) so it cannot be confused with S0052's 'my friend'."
+  }
+ },
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "আমার বন্ধুরা",
+     "my friends"
+    ],
+    "B03": [
+     "আমার বন্ধুদের সাথে",
+     "with my friends"
+    ],
+    "U04": [
+     "তুমি কি আমার বন্ধুদের সাথে শিখতে চাও?",
+     "do you want to learn with my friends?"
+    ],
+    "U05": [
+     "এটা একটা ভালো জিনিস আমার বন্ধুদের সাথে শেখার",
+     "it's a good thing to learn with my friends"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমার বন্ধুদের সাথে কথা বলতে",
+     "to speak with my friends"
+    ],
+    [
+     "build",
+     "আমার বন্ধুদের সাথে শিখতে",
+     "to learn with my friends"
+    ],
+    [
+     "use",
+     "আমি আমার বন্ধুদের সাথে কথা বলতে চাই",
+     "I want to speak with my friends"
+    ],
+    [
+     "use",
+     "আমি আমার বন্ধুদের সাথে ভালো জিনিস করতে চাই",
+     "I want to do good things with my friends"
+    ]
+   ],
+   "keep": [
+    "B02",
+    "U02",
+    "U03"
+   ]
+  }
+ },
+ "notes": "cs #813 re-cut: 'friends' -> 'my friends'. Every L02 row now carries the whole LEGO; the basket goes from 1 counted BUILD + 3 USE to 3 + 5. U01 already contains it and is untouched. With 'my' taught here, the rows listed as 'earlier/seedcov' for 'my' in S0051-S0123 are legal and need no delete, and S0084's 'my' gap closes without a change to S0084. Known-side caution, not changed here: U01, L03 U03/U05 and L04 U05 write বন্ধুর (singular) for 'my friends'; S0052 uses the same Bengali for 'my friend'. The auto plan's deletes of L02 B02/U02/U03 are cancelled here only because those rows are already gone from the live basket (the build refuses a delete of a missing row)."
+}

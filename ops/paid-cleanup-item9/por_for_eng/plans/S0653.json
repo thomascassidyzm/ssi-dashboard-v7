@@ -1,0 +1,21 @@
+{
+ "seed": 653,
+ "legos": {
+  "L01": {
+   "delete": [
+    "U05"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (BUILD: need 3+, got 2 (3 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)); deletes do not lower its counted rows"
+  },
+  "L02": {
+   "delete": [
+    "U01",
+    "U02",
+    "U03",
+    "U04"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (USE: need 5+, got 0 (4 component phrases excluded)); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

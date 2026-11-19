@@ -1,0 +1,2913 @@
+[
+ {
+  "seed_number": 7,
+  "phrases": {
+   "7:1": [
+    {
+     "known_text": "أحاول",
+     "target_text": "to try",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أحاول",
+     "target_text": "I want to try",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أحاول أن أتكلم الإنجليزية",
+     "target_text": "I want to try to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أحاول أن أقول شيئاً بالإنجليزية",
+     "target_text": "I want to try to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أحاول أن أتذكر كلمة بالإنجليزية",
+     "target_text": "I want to try to remember a word in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أحاول أن أتعلم الإنجليزية",
+     "target_text": "I want to try to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أحاول أن أتكلم معك الآن",
+     "target_text": "I want to try to speak with you now",
+     "phrase_role": "use"
+    }
+   ],
+   "7:2": [
+    {
+     "known_text": "بكل ما",
+     "target_text": "as much as",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أستطيع",
+     "target_text": "I can",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بكل ما أستطيع",
+     "target_text": "as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أحاول بكل ما أستطيع",
+     "target_text": "to try as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أحاول بكل ما أستطيع",
+     "target_text": "I want to try as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتعلم الإنجليزية بكل ما أستطيع",
+     "target_text": "I want to learn English as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا أحاول أن أتكلم بكل ما أستطيع",
+     "target_text": "I'm trying to speak as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "سأتدرب على الكلام بكل ما أستطيع",
+     "target_text": "I'm going to practise speaking as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أحاول بكل ما أستطيع أن أتذكر",
+     "target_text": "I want to try as hard as I can to remember",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا أحاول أن أتذكر بكل ما أستطيع",
+     "target_text": "I'm trying to remember as hard as I can",
+     "phrase_role": "use"
+    }
+   ],
+   "7:3": [
+    {
+     "known_text": "اليوم",
+     "target_text": "today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أحاول اليوم",
+     "target_text": "to try today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أحاول اليوم",
+     "target_text": "I want to try today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "سأتدرب على الكلام اليوم",
+     "target_text": "I'm going to practise speaking today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتكلم الإنجليزية اليوم",
+     "target_text": "I want to speak English today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا أحاول أن أتعلم الإنجليزية اليوم",
+     "target_text": "I'm trying to learn English today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أحاول بكل ما أستطيع اليوم",
+     "target_text": "I want to try as hard as I can today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتدرب مع شخص آخر اليوم",
+     "target_text": "I want to practise with someone else today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 13,
+  "phrases": {
+   "13:1": [
+    {
+     "known_text": "أنت",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تتكلم",
+     "target_text": "speak",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أنت تتكلم",
+     "target_text": "you speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية",
+     "target_text": "you speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية الآن",
+     "target_text": "you speak English now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية مع شخص آخر",
+     "target_text": "you speak English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية في أكثر الأوقات الممكنة",
+     "target_text": "you speak English as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية اليوم",
+     "target_text": "you speak English today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنت تتكلم القليل من الإنجليزية الآن",
+     "target_text": "you speak a little English now",
+     "phrase_role": "use"
+    }
+   ],
+   "13:2": [
+    {
+     "known_text": "جداً",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "جيد",
+     "target_text": "well",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بشكل جيد جداً",
+     "target_text": "very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنت تتكلم بشكل جيد جداً",
+     "target_text": "you speak very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية بشكل جيد جداً",
+     "target_text": "you speak English very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية بشكل جيد جداً الآن",
+     "target_text": "you speak English very well now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتكلم الإنجليزية بشكل جيد جداً",
+     "target_text": "I want to speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا أحاول أن أتكلم الإنجليزية بشكل جيد جداً",
+     "target_text": "I'm trying to speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية بشكل جيد جداً مع شخص آخر",
+     "target_text": "you speak English very well with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أود أن أتكلم الإنجليزية بشكل جيد جداً",
+     "target_text": "I'd like to speak English very well",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 19,
+  "phrases": {
+   "19:1": [
+    {
+     "known_text": "لكن أريد",
+     "target_text": "but I want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكن أتكلم",
+     "target_text": "but I speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكن أتكلم الإنجليزية",
+     "target_text": "but I speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يريد أن يعود لكن في وقت لاحق",
+     "target_text": "he wants to come back but later on",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "نريد أن نلتقي اليوم لكن في وقت لاحق",
+     "target_text": "we want to meet today but later on",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنت تتكلم الإنجليزية بشكل جيد جداً لكن أتكلم القليل",
+     "target_text": "you speak English very well but I speak a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتكلم الإنجليزية لكن لست متأكداً إذا كنت أستطيع",
+     "target_text": "I want to speak English but I'm not sure if I can",
+     "phrase_role": "use"
+    }
+   ],
+   "19:2": [
+    {
+     "known_text": "لا",
+     "target_text": "don't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أريد",
+     "target_text": "I want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أن",
+     "target_text": "to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لا أريد أن",
+     "target_text": "I don't want to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أريد أن أتكلم",
+     "target_text": "I don't want to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أريد أن أتكلم الإنجليزية",
+     "target_text": "I don't want to speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أريد أن أتكلم الإنجليزية اليوم",
+     "target_text": "I don't want to speak English today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن أتكلم الإنجليزية مع شخص آخر",
+     "target_text": "I don't want to speak English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن نلتقي مساء اليوم",
+     "target_text": "I don't want to meet this evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن نلتقي الساعة السادسة",
+     "target_text": "I don't want to meet at six o'clock",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن أتكلم الإنجليزية في وقت لاحق",
+     "target_text": "I don't want to speak English later on",
+     "phrase_role": "use"
+    }
+   ],
+   "19:3": [
+    {
+     "known_text": "لا أريد أن أتوقف",
+     "target_text": "I don't want to stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتوقف",
+     "target_text": "I want to stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يريد أن يتوقف",
+     "target_text": "he wants to stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أريد أن أتوقف عن الكلام بالإنجليزية",
+     "target_text": "I don't want to stop talking in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن أتوقف عن الكلام معك",
+     "target_text": "I don't want to stop speaking with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتوقف في وقت لاحق",
+     "target_text": "I want to stop later on",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يريد أن يتوقف لكن لا أريد أن أتوقف",
+     "target_text": "he wants to stop but I don't want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتوقف الآن",
+     "target_text": "she wants to stop now",
+     "phrase_role": "use"
+    }
+   ],
+   "19:4": [
+    {
+     "known_text": "الكلام",
+     "target_text": "talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أتوقف عن الكلام",
+     "target_text": "stop talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أريد أن أتوقف عن الكلام",
+     "target_text": "I don't want to stop talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكنني لا أريد أن أتوقف عن الكلام",
+     "target_text": "but I don't want to stop talking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتوقف عن الكلام الآن",
+     "target_text": "I want to stop talking now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتوقف عن الكلام في وقت لاحق",
+     "target_text": "she wants to stop talking later on",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يريد أن يتوقف عن الكلام لكن لا أريد",
+     "target_text": "he wants to stop talking but I don't want to",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن أتوقف عن الكلام بالإنجليزية",
+     "target_text": "I don't want to stop talking in English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 20,
+  "phrases": {
+   "20:1": [
+    {
+     "known_text": "تريد",
+     "target_text": "you want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أن",
+     "target_text": "to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تتعلم",
+     "target_text": "learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تريد أن تتعلم",
+     "target_text": "you want to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية",
+     "target_text": "you want to learn English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية الآن",
+     "target_text": "you want to learn English now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية بشكل جيد جداً",
+     "target_text": "you want to learn English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية اليوم",
+     "target_text": "you want to learn English today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية بعد أن تنتهي",
+     "target_text": "you want to learn English after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية مع الجميع",
+     "target_text": "you want to learn English with everyone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية لكن أتكلم القليل",
+     "target_text": "you want to learn English but I speak a little",
+     "phrase_role": "use"
+    }
+   ],
+   "20:2": [
+    {
+     "known_text": "اسم",
+     "target_text": "name",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "هـ",
+     "target_text": "his",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "اسمه",
+     "target_text": "his name",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم اسمه",
+     "target_text": "you want to learn his name",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتذكر اسمه",
+     "target_text": "I want to remember his name",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم اسمه اليوم",
+     "target_text": "you want to learn his name today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تعرف اسمه",
+     "target_text": "she wants to find out his name",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أقول اسمه بالإنجليزية",
+     "target_text": "I want to say his name in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتعلم اسمه بعد أن تنتهي",
+     "target_text": "you want to learn his name after you finish",
+     "phrase_role": "use"
+    }
+   ],
+   "20:3": [
+    {
+     "known_text": "بسرعة",
+     "target_text": "quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم بسرعة",
+     "target_text": "you want to learn quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم اسمه بسرعة",
+     "target_text": "you want to learn his name quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تريد أن تتعلم الإنجليزية بسرعة",
+     "target_text": "you want to learn English quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتكلم الإنجليزية بسرعة",
+     "target_text": "I want to speak English quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يريد أن يعود بسرعة",
+     "target_text": "he wants to come back quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تريد أن تتوقف عن الكلام بسرعة",
+     "target_text": "she wants to stop talking quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أتكلم الإنجليزية بسرعة",
+     "target_text": "I speak English quickly",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 44,
+  "phrases": {
+   "44:1": [
+    {
+     "known_text": "أو",
+     "target_text": "or",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أو إذا",
+     "target_text": "or if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أو إذا كنت متعباً",
+     "target_text": "or if I was tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتكلم الإنجليزية أو أقرأ القصة",
+     "target_text": "I want to speak English or read the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل تريد أن تتكلم معي أو مع شخص آخر؟",
+     "target_text": "do you want to speak with me or with someone else?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا لست متأكداً إذا كنت متعباً أو بخير",
+     "target_text": "I'm not sure if I was tired or okay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أو إذا كنت أبدأ في الشعور بالتعب",
+     "target_text": "or if I was starting to feel tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتعلم أو أتكلم الإنجليزية اليوم",
+     "target_text": "I want to learn or speak English today",
+     "phrase_role": "use"
+    }
+   ],
+   "44:2": [
+    {
+     "known_text": "بحاجة",
+     "target_text": "need",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "إلى",
+     "target_text": "to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "كنت بحاجة إلى",
+     "target_text": "I need to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "إذا كنت بحاجة إلى",
+     "target_text": "if I need to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أو إذا كنت بحاجة إلى",
+     "target_text": "or if I need to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لست متأكداً إذا كنت بحاجة إلى الكلام بشكل أفضل",
+     "target_text": "I'm not sure if I need to speak better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أو إذا كنت بحاجة إلى الإجابة بسرعة",
+     "target_text": "or if I need to answer quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أشعر بأنني بحاجة إلى التفكير في الأمر بعناية",
+     "target_text": "I feel I need to think about it carefully",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أحب أن أشعر بأنني بحاجة إلى التوقف",
+     "target_text": "I don't like to feel I need to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أشعر بأنني بحاجة إلى الكلام بالإنجليزية أكثر",
+     "target_text": "I feel I need to speak English more",
+     "phrase_role": "use"
+    }
+   ],
+   "44:3": [
+    {
+     "known_text": "التحسن",
+     "target_text": "improve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بحاجة إلى التحسن",
+     "target_text": "I need to improve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أو إذا كنت بحاجة إلى التحسن",
+     "target_text": "or if I need to improve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتعلم كيف أتحسن",
+     "target_text": "I want to learn how to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المفيد أن تبدأ في التحسن في أقرب وقت ممكن",
+     "target_text": "it's useful to start to improve as soon as you can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أتطلع إلى التحسن في الكلام بالإنجليزية بشكل أفضل",
+     "target_text": "I'm looking forward to speaking better to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بدأت في التفكير في كيف أتحسن",
+     "target_text": "I started to think how to improve",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 46,
+  "phrases": {
+   "46:1": [
+    {
+     "known_text": "لا أقلق",
+     "target_text": "I don't worry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكنني لا أقلق",
+     "target_text": "but I don't worry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكنني لا أقلق بشأن الأمر",
+     "target_text": "but I don't worry about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكنني لا أقلق بشأن الكلام بالإنجليزية",
+     "target_text": "but I don't worry about speaking English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أقلق بشأن كيفية الإجابة",
+     "target_text": "I don't worry about how to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أقلق إذا كنت بحاجة إلى التحسن",
+     "target_text": "I don't worry if I need to improve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أقلق بشأن ذلك في الوقت الحالي",
+     "target_text": "I don't worry about it at the moment",
+     "phrase_role": "use"
+    }
+   ],
+   "46:2": [
+    {
+     "known_text": "ارتكاب",
+     "target_text": "making",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الأخطاء",
+     "target_text": "mistakes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ارتكاب الأخطاء",
+     "target_text": "making mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بشأن ارتكاب الأخطاء",
+     "target_text": "about making mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لكنني لا أقلق بشأن ارتكاب الأخطاء",
+     "target_text": "but I don't worry about making mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أقلق بشأن ارتكاب الأخطاء في الوقت الحالي",
+     "target_text": "I don't worry about making mistakes at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أقلق بشأن ارتكاب الأخطاء عندما أتكلم الإنجليزية",
+     "target_text": "I don't worry about making mistakes when I speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أحب ارتكاب الأخطاء لكنني لا أقلق",
+     "target_text": "I don't like making mistakes but I don't worry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أقلق بشأن ارتكاب الأخطاء لكنني أريد أن أتحسن",
+     "target_text": "I don't worry about making mistakes but I want to improve",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 54,
+  "phrases": {
+   "54:1": [
+    {
+     "known_text": "أردنا",
+     "target_text": "we wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أن",
+     "target_text": "to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أردنا أن",
+     "target_text": "we wanted to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أردنا أن نتكلم الإنجليزية",
+     "target_text": "we wanted to speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أردنا أن نتكلم الإنجليزية مع أشخاص آخرين",
+     "target_text": "we wanted to speak English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردنا أن نبدأ في الكلام في أقرب وقت ممكن",
+     "target_text": "we wanted to start talking as soon as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردنا أن نقرأ القصة الليلة",
+     "target_text": "we wanted to read the story tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردنا أن نعرف كيفية الإجابة",
+     "target_text": "we wanted to know how to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردنا أن ننتهي في أسرع وقت ممكن",
+     "target_text": "we wanted to finish as quickly as possible",
+     "phrase_role": "use"
+    }
+   ],
+   "54:2": [
+    {
+     "known_text": "نعطيك",
+     "target_text": "give you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أردنا أن نعطيك",
+     "target_text": "we wanted to give you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أعطيك",
+     "target_text": "I want to give you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أعطيك شيئاً",
+     "target_text": "I want to give you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردنا أن نعطيك شيئاً",
+     "target_text": "we wanted to give you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أراد أن يعطيك رسالة",
+     "target_text": "he wanted to give you a letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أرادت أن تعطيك رسالته",
+     "target_text": "she wanted to give you his letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أحتاج أن أعطيك كل شيء",
+     "target_text": "I don't need to give you everything",
+     "phrase_role": "use"
+    }
+   ],
+   "54:3": [
+    {
+     "known_text": "وقت",
+     "target_text": "time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أكثر قليلاً",
+     "target_text": "a little more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "وقتاً أكثر قليلاً",
+     "target_text": "a little more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "نعطيك وقتاً أكثر قليلاً",
+     "target_text": "give you a little more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أردنا أن نعطيك وقتاً أكثر قليلاً",
+     "target_text": "we wanted to give you a little more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أعطيك وقتاً أكثر قليلاً",
+     "target_text": "I want to give you a little more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أحتاج وقتاً أكثر قليلاً",
+     "target_text": "I don't need a little more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أنني أحتاج وقتاً أكثر قليلاً",
+     "target_text": "I think that I need a little more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أشعر بأنني أحتاج وقتاً أكثر قليلاً للإجابة",
+     "target_text": "I feel I need a little more time to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردنا وقتاً أكثر قليلاً للكلام بالإنجليزية",
+     "target_text": "we wanted a little more time to speak English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 58,
+  "phrases": {
+   "58:1": [
+    {
+     "known_text": "الأمر",
+     "target_text": "it's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ممتع",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الأمر ممتع",
+     "target_text": "it's interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تتكلم الإنجليزية",
+     "target_text": "it's interesting when you speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تتعلم شيئاً جديداً",
+     "target_text": "it's interesting when you learn something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تبدأ في الشعور بتحسن",
+     "target_text": "it's interesting when you start to feel better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تتذكر كيفية قول شيء بالإنجليزية",
+     "target_text": "it's interesting when you remember how to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أن الأمر ممتع عندما تتعلم التكلم بالإنجليزية",
+     "target_text": "I think that it's interesting when you learn to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تفهم ما أقصده",
+     "target_text": "it's interesting when you understand what I mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تقابل أشخاصاً يتكلمون الإنجليزية",
+     "target_text": "it's interesting when you meet people who speak English",
+     "phrase_role": "use"
+    }
+   ],
+   "58:2": [
+    {
+     "known_text": "كافية",
+     "target_text": "enough",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "كلمات",
+     "target_text": "words",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "كلمات كافية",
+     "target_text": "enough words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "تفهم كلمات كافية",
+     "target_text": "you understand enough words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الأمر ممتع عندما تفهم كلمات كافية",
+     "target_text": "it's interesting when you understand enough words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتعلم كلمات كافية في أقرب وقت ممكن",
+     "target_text": "I want to learn enough words as soon as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف كلمات كافية الآن",
+     "target_text": "I don't know enough words now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المفيد أن تتذكر كلمات كافية",
+     "target_text": "it's useful to remember enough words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أستطيع أن أتذكر كلمات كافية بالإنجليزية",
+     "target_text": "I can remember enough words in English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 101,
+  "phrases": {
+   "101:1": [
+    {
+     "known_text": "أستمتع",
+     "target_text": "I'm enjoying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "باكتشاف",
+     "target_text": "finding out",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أستمتع باكتشاف",
+     "target_text": "I'm enjoying finding out",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أستمتع باكتشاف المزيد",
+     "target_text": "I'm enjoying finding out more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أستمتع باكتشاف المزيد عن الإنجليزية",
+     "target_text": "I'm enjoying finding out more about English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أستمتع باكتشاف ما هي الإجابة",
+     "target_text": "I'm enjoying finding out what the answer is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أستمتع باكتشاف المزيد بالفعل",
+     "target_text": "I'm enjoying finding out more already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أستمتع باكتشاف كل شيء عن الإنجليزية",
+     "target_text": "I'm enjoying finding out everything about English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أنني أستمتع باكتشاف كيف أتحسن",
+     "target_text": "I think I'm enjoying finding out how to improve",
+     "phrase_role": "use"
+    }
+   ],
+   "101:2": [
+    {
+     "known_text": "المزيد عن",
+     "target_text": "more about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "هذه اللغة",
+     "target_text": "this language",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "المزيد عن هذه اللغة",
+     "target_text": "more about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أستمتع باكتشاف المزيد عن هذه اللغة",
+     "target_text": "I'm enjoying finding out more about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "اكتشف المزيد عن هذه اللغة",
+     "target_text": "find more about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتعلم المزيد عن هذه اللغة",
+     "target_text": "I want to learn more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أراد أن يكتشف المزيد عن هذه اللغة الأسبوع الماضي",
+     "target_text": "he wanted to find out more about this language last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من الممتع أن تعرف المزيد عن هذه اللغة",
+     "target_text": "it's interesting to know more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا يجب أن تقلق بشأن تعلم المزيد عن هذه اللغة",
+     "target_text": "you shouldn't worry about learning more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف المزيد عن هذه اللغة بعد",
+     "target_text": "I don't know more about this language yet",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 106,
+  "phrases": {
+   "106:1": [
+    {
+     "known_text": "لا نحتاج أن",
+     "target_text": "we don't need to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "نشعر بالسعادة",
+     "target_text": "feel happy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة",
+     "target_text": "we don't need to feel happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة بشأن ارتكاب الأخطاء",
+     "target_text": "we don't need to feel happy about making mistakes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة عندما يكون الأمر صعباً",
+     "target_text": "we don't need to feel happy when it's difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة بشأن ذلك",
+     "target_text": "we don't need to feel happy about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة الآن",
+     "target_text": "we don't need to feel happy now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أننا لا نحتاج أن نشعر بالسعادة لنتعلم",
+     "target_text": "I think we don't need to feel happy to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة بشأن ذلك بعد",
+     "target_text": "we don't need to feel happy about it yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا نحتاج أن نشعر بالسعادة ولكنه يساعد",
+     "target_text": "we don't need to feel happy but it's good",
+     "phrase_role": "use"
+    }
+   ],
+   "106:2": [
+    {
+     "known_text": "فقط",
+     "target_text": "just",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "نعمل بجد",
+     "target_text": "work hard",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "نحتاج فقط أن نعمل بجد",
+     "target_text": "we just need to work hard",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعتقد أننا نحتاج فقط أن نعمل بجد",
+     "target_text": "I think we just need to work hard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "نحتاج فقط أن نعمل بجد ونتكلم قدر الإمكان",
+     "target_text": "we just need to work hard and speak as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لهذا السبب نحتاج فقط أن نعمل بجد",
+     "target_text": "that is why we just need to work hard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "نحتاج فقط أن نعمل بجد في الوقت المناسب",
+     "target_text": "we just need to work hard in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "نحتاج فقط أن نعمل بجد ولا نقلق",
+     "target_text": "we just need to work hard and not worry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أننا نحتاج فقط أن نعمل بجد",
+     "target_text": "I think we just need to work hard",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 109,
+  "phrases": {
+   "109:1": [
+    {
+     "known_text": "يجب أن نعمل",
+     "target_text": "we must work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بجد",
+     "target_text": "hard",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "يجب أن نعمل بجد",
+     "target_text": "we must work hard",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يجب أن نعمل بجد أكثر",
+     "target_text": "we must work hard more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يجب أن نعمل بجد إذا أردنا التحدث بالإنجليزية جيداً",
+     "target_text": "we must work hard if we want to speak English well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أننا يجب أن نعمل بجد للتعلم",
+     "target_text": "I think that we must work hard to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يجب أن نعمل بجد ونتحدث قدر الإمكان",
+     "target_text": "we must work hard and speak as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يجب أن نعمل بجد ولا نتوقف الآن",
+     "target_text": "we must work hard and not stop now",
+     "phrase_role": "use"
+    }
+   ],
+   "109:2": [
+    {
+     "known_text": "لتعلم الكثير من",
+     "target_text": "to learn a lot of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الكلمات الجديدة",
+     "target_text": "new words",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لتعلم الكثير من الكلمات الجديدة",
+     "target_text": "to learn a lot of new words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لتعلم الكثير من الكلمات الجديدة بسرعة",
+     "target_text": "to learn a lot of new words quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لتعلم الكثير من الكلمات الجديدة الآن",
+     "target_text": "to learn a lot of new words now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يجب أن نعمل بجد لتعلم الكثير من الكلمات الجديدة",
+     "target_text": "we must work hard to learn a lot of new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أريد أن أتعلم الكثير من الكلمات الجديدة هذا الأسبوع",
+     "target_text": "I want to learn a lot of new words this week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "بدأت بتعلم الكثير من الكلمات الجديدة الشهر الماضي",
+     "target_text": "I started to learn a lot of new words last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أحتاج لتعلم الكثير من الكلمات الجديدة قريباً",
+     "target_text": "I need to learn a lot of new words soon",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 120,
+  "phrases": {
+   "120:1": [
+    {
+     "known_text": "من المثير للاهتمام أنك",
+     "target_text": "it's interesting that you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك تحب ذلك",
+     "target_text": "it's interesting that you like that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك تعرف",
+     "target_text": "it's interesting that you know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك تحب تعلم الإنجليزية",
+     "target_text": "it's interesting that you like learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك لا تستمتع بفعل ذلك",
+     "target_text": "it's interesting that you don't enjoy doing it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك تستطيع تذكر كل ذلك",
+     "target_text": "it's interesting that you can remember all that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك لا تعرف لماذا",
+     "target_text": "it's interesting that you don't know why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك تتحدث الإنجليزية جيداً جداً",
+     "target_text": "it's interesting that you speak English very well",
+     "phrase_role": "use"
+    }
+   ],
+   "120:2": [
+    {
+     "known_text": "تحب الذهاب",
+     "target_text": "like to go",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بالحافلة",
+     "target_text": "by bus",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تحب الذهاب بالحافلة",
+     "target_text": "like to go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أحب الذهاب بالحافلة غداً",
+     "target_text": "I like to go by bus tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "من المثير للاهتمام أنك تحب الذهاب بالحافلة",
+     "target_text": "it's interesting that you like to go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أحب الذهاب بالحافلة عندما أستطيع",
+     "target_text": "I like to go by bus when I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أحب الذهاب بالحافلة في منتصف الليل",
+     "target_text": "I don't like to go by bus in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أود الذهاب بالحافلة غداً",
+     "target_text": "I'd like to go by bus tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أود الذهاب بالحافلة هذا المساء",
+     "target_text": "I'd like to go by bus this evening",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 122,
+  "phrases": {
+   "122:1": [
+    {
+     "known_text": "يبدأ في الشعور",
+     "target_text": "starting to feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أسهل",
+     "target_text": "easier",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل",
+     "target_text": "it's starting to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل الآن",
+     "target_text": "it's starting to feel easier now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل من قبل",
+     "target_text": "it's starting to feel easier than before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل للتحدث بالإنجليزية",
+     "target_text": "it's starting to feel easier to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل مما كان عليه من قبل",
+     "target_text": "it's starting to feel easier than it was before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أن الأمر يبدأ في الشعور بأنه أسهل",
+     "target_text": "I think it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل لتذكر كلمات جديدة",
+     "target_text": "it's starting to feel easier to remember new words",
+     "phrase_role": "use"
+    }
+   ],
+   "122:2": [
+    {
+     "known_text": "أنا متحمس",
+     "target_text": "I'm excited",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لكيفية سيره",
+     "target_text": "about how it's going",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أنا متحمس لكيفية سيره",
+     "target_text": "I'm excited about how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنا متحمس لكيفية سيره الآن",
+     "target_text": "I'm excited about how it's going now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنا متحمس لكيفية سيره مع الإنجليزية",
+     "target_text": "I'm excited about how it's going with English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يبدأ الأمر في الشعور بأنه أسهل وأنا متحمس لكيفية سيره",
+     "target_text": "it's starting to feel easier and I'm excited about how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا متحمس لكيفية سيره مع تعلم الإنجليزية",
+     "target_text": "I'm excited about how it's going with learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا متحمس لكيفية سيره وأريد أن أتعلم المزيد",
+     "target_text": "I'm excited about how it's going and I want to learn more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا متحمس لكيفية سيره مع إنجليزيتي",
+     "target_text": "I'm excited about how it's going with my English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لست متأكداً لكنني متحمس لكيفية سيره",
+     "target_text": "I'm not sure but I'm excited about how it's going",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 145,
+  "phrases": {
+   "145:1": [
+    {
+     "known_text": "لماذا لم تعد؟",
+     "target_text": "why are you not?",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "سعيداً",
+     "target_text": "happy any more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً؟",
+     "target_text": "why are you not happy any more?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً الآن؟",
+     "target_text": "why are you not happy any more now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً اليوم؟",
+     "target_text": "why are you not happy any more today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً بعد؟",
+     "target_text": "why are you not happy any more yet?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً بما نفعله؟",
+     "target_text": "why are you not happy any more with what we're doing?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً في الوقت الحالي؟",
+     "target_text": "why are you not happy any more at the moment?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً بما نفعله الآن؟",
+     "target_text": "why are you not happy any more with what we're doing now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لماذا لم تعد سعيداً بعد أن بدأنا؟",
+     "target_text": "why are you not happy any more after we started?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 153,
+  "phrases": {
+   "153:1": [
+    {
+     "known_text": "لم أكن",
+     "target_text": "I wouldn't have",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "سأقوله",
+     "target_text": "said it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لم أكن سأقوله",
+     "target_text": "I wouldn't have said it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لم أكن سأقوله بالفعل",
+     "target_text": "I wouldn't have said it already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لم أكن سأقوله أمس",
+     "target_text": "I wouldn't have said it yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعتقد أنني لم أكن سأقوله",
+     "target_text": "I think I wouldn't have said it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لم أكن سأقوله بشكل مختلف",
+     "target_text": "I wouldn't have said it differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لم أكن سأقوله لأنه كان صعباً",
+     "target_text": "I wouldn't have said it because it was difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لم أكن سأقوله ولكنه كان مهماً",
+     "target_text": "I wouldn't have said it but it was important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لم أكن سأقوله ولا أعرف لماذا",
+     "target_text": "I wouldn't have said it and I don't know why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لم أكن سأقوله لو لم أكن أتوقع ذلك",
+     "target_text": "I wouldn't have said it if I wasn't expecting it",
+     "phrase_role": "use"
+    }
+   ],
+   "153:2": [
+    {
+     "known_text": "بنفس الطريقة",
+     "target_text": "in the same way",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تماماً",
+     "target_text": "exactly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بنفس الطريقة تماماً",
+     "target_text": "in exactly the same way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بنفس الطريقة تماماً بالفعل",
+     "target_text": "in exactly the same way already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بنفس الطريقة تماماً الآن",
+     "target_text": "in exactly the same way now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "بنفس الطريقة تماماً مرة أخرى",
+     "target_text": "in exactly the same way again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لم أكن سأقوله بنفس الطريقة تماماً",
+     "target_text": "I wouldn't have said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن أفعل ذلك بنفس الطريقة تماماً",
+     "target_text": "I don't want to do it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف لماذا يحدث ذلك بنفس الطريقة تماماً",
+     "target_text": "I don't know why it would happen in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "كنت سأفعله بشكل مختلف وليس بنفس الطريقة تماماً",
+     "target_text": "I would have done it differently and not in exactly the same way",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 220,
+  "phrases": {
+   "220:1": [
+    {
+     "known_text": "هل",
+     "target_text": "did you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "شاهدت",
+     "target_text": "watch",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "هل شاهدت؟",
+     "target_text": "did you watch?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت أمس؟",
+     "target_text": "did you watch yesterday?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت الليلة الماضية؟",
+     "target_text": "did you watch last night?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت هذا المساء؟",
+     "target_text": "did you watch this evening?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت ليلة السبت؟",
+     "target_text": "did you watch on saturday night?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل شاهدت صباح يوم الأحد؟",
+     "target_text": "did you watch on sunday morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل شاهدت شيئاً مختلفاً الأسبوع الماضي؟",
+     "target_text": "did you watch something different last week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل شاهدت شيئاً مثيراً أمس؟",
+     "target_text": "did you watch something interesting yesterday?",
+     "phrase_role": "use"
+    }
+   ],
+   "220:2": [
+    {
+     "known_text": "التلفاز",
+     "target_text": "television",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "قليلاً",
+     "target_text": "a bit of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "التلفاز قليلاً",
+     "target_text": "a bit of television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً؟",
+     "target_text": "did you watch a bit of television?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً أمس؟",
+     "target_text": "did you watch a bit of television yesterday?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً الليلة الماضية؟",
+     "target_text": "did you watch a bit of television last night?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً صباح يوم الأحد؟",
+     "target_text": "did you watch a bit of television on sunday morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً بعد ظهر يوم الأحد؟",
+     "target_text": "did you watch a bit of television on sunday afternoon?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً الأسبوع الماضي؟",
+     "target_text": "did you watch a bit of television last week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل شاهدت التلفاز قليلاً ليلة السبت؟",
+     "target_text": "did you watch a bit of television on saturday night?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 227,
+  "phrases": {
+   "227:1": [
+    {
+     "known_text": "ذلك",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الرجل",
+     "target_text": "man",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ذلك الرجل",
+     "target_text": "that man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل يحاول مساعدتي",
+     "target_text": "that man is trying to help me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل يحاول أن يخبرني",
+     "target_text": "that man he's trying to tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل أراد أن يساعدك",
+     "target_text": "that man he wanted to help you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل يحاول أن يخبرني بما يريد",
+     "target_text": "that man he's trying to tell me what he wants",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك الرجل يحاول مساعدتي في تذكر الكلمات",
+     "target_text": "that man is trying to help me remember the words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك الرجل كان سيعطيك إجابة لو استطاع",
+     "target_text": "that man he would give you an answer if he could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك الرجل قال أنه لقد بدأ للتو",
+     "target_text": "that man he said he's just started",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أن ذلك الرجل يريد أن يتكلم الإنجليزية",
+     "target_text": "I think that that man he wants to speak English",
+     "phrase_role": "use"
+    }
+   ],
+   "227:2": [
+    {
+     "known_text": "سي",
+     "target_text": "is going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "يخبرني",
+     "target_text": "tell me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "سيخبرني",
+     "target_text": "is going to tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني",
+     "target_text": "that man is going to tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بشيء",
+     "target_text": "that man is going to tell me something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هو سيخبرني بما أحتاج أن أعرف",
+     "target_text": "is going to tell me what I need to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بشيء مهم قبل أن أغادر",
+     "target_text": "that man is going to tell me something important before I leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بما أحتاج أن أعرف",
+     "target_text": "that man is going to tell me what I need to know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أن ذلك الرجل سيخبرني شيئاً مختلفاً اليوم",
+     "target_text": "I think that that man is going to tell me something different today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بالإجابة غداً",
+     "target_text": "that man is going to tell me the answer tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بما يريد أن يفعل",
+     "target_text": "that man is going to tell me what he wants to do",
+     "phrase_role": "use"
+    }
+   ],
+   "227:3": [
+    {
+     "known_text": "جديد",
+     "target_text": "new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "شيء جديد",
+     "target_text": "something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بشيء جديد",
+     "target_text": "that man is going to tell me something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الرجل سيخبرني بشيء جديد وأنا متحمس",
+     "target_text": "that man is going to tell me something new and I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ذلك كان شيئاً جديداً ولم أكن أتوقعه",
+     "target_text": "that was something new and I wasn't expecting it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أستمتع حين أتعلم شيئاً جديداً في هذه اللغة",
+     "target_text": "I enjoy it when I learn something new in this language",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 232,
+  "phrases": {
+   "232:1": [
+    {
+     "known_text": "أعرف",
+     "target_text": "I know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "امرأة كبيرة",
+     "target_text": "an old woman",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة",
+     "target_text": "I know an old woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة أرادت أن تساعد",
+     "target_text": "I know an old woman she wanted to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة تريد أن تتعلم",
+     "target_text": "I know an old woman she wants to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة أرادت أن تتكلم معك أمس",
+     "target_text": "I know an old woman she wanted to speak with you yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة كانت لطيفة جداً حين رأتني",
+     "target_text": "I know an old woman she was very kind when she saw me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة أرادت طلب المساعدة الأسبوع الماضي",
+     "target_text": "I know an old woman who wanted to ask for help last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة تريد أن تتعلم شيئاً جديداً",
+     "target_text": "I know an old woman she wants to learn something new",
+     "phrase_role": "use"
+    }
+   ],
+   "232:2": [
+    {
+     "known_text": "تستطيع",
+     "target_text": "who can",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تذكر",
+     "target_text": "remember",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الإجابة",
+     "target_text": "the answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تستطيع تذكر الإجابة",
+     "target_text": "who can remember the answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة تستطيع تذكر الإجابة",
+     "target_text": "I know an old woman who can remember the answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف شخصاً يستطيع تذكر الإجابة",
+     "target_text": "I know someone who can remember the answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل تعرف أحداً يستطيع تذكر الإجابة؟",
+     "target_text": "do you know anyone who can remember the answer?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة تستطيع تذكر الإجابة بسهولة أكثر",
+     "target_text": "I know an old woman who can remember the answer more easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل تعرف أحداً يستطيع تذكر الإجابة بسرعة؟",
+     "target_text": "do you know anyone who can remember the answer as quickly as possible?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف رجلاً كبيراً يستطيع تذكر الإجابة بسهولة",
+     "target_text": "I know an old man who can remember the answer easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف امرأة كبيرة تستطيع تذكر الإجابة دائماً",
+     "target_text": "I know an old woman who can remember the answer already",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 239,
+  "phrases": {
+   "239:1": [
+    {
+     "known_text": "تحب",
+     "target_text": "likes to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "القراءة",
+     "target_text": "read",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تحب القراءة",
+     "target_text": "likes to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "والدتي تحب القراءة",
+     "target_text": "my mother likes to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "والدتي تحب القراءة كثيراً",
+     "target_text": "my mother likes to read a lot",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "صديقتي تحب القراءة لكنني أفضل أن أتكلم",
+     "target_text": "my friend likes to read but I want to speak",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "والدتي تحب القراءة وأعتقد أن ذلك شيء جيد",
+     "target_text": "my mother likes to read and I think that that's a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "والدتي تحب القراءة شيئاً مثيراً قبل أن تغادر",
+     "target_text": "my mother likes to read something interesting before you leave",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 242,
+  "phrases": {
+   "242:1": [
+    {
+     "known_text": "أعطيها",
+     "target_text": "give her",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "وقتاً أكثر",
+     "target_text": "more time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أعطيها وقتاً أكثر",
+     "target_text": "give her more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أعطيها وقتاً أكثر",
+     "target_text": "I want to give her more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يجب أن أعطيها وقتاً أكثر",
+     "target_text": "I have to give her more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أريد أن أعطيها وقتاً أكثر",
+     "target_text": "I don't want to give her more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أعطيها وقتاً أكثر لأنها لم ترد أن تغادر بعد",
+     "target_text": "I want to give her more time because she didn't want to leave yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف إذا كان يجب أن أعطيها وقتاً أكثر أم لا",
+     "target_text": "I don't know if I have to give her more time or not",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعتقد أنه يجب أن أعطيها وقتاً أكثر قبل نهاية الأسبوع",
+     "target_text": "I think I have to give her more time before the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردت أن أعطيها وقتاً أكثر ولكنها لم ترد الانتظار",
+     "target_text": "I wanted to give her more time but she didn't want to wait",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 244,
+  "phrases": {
+   "244:1": [
+    {
+     "known_text": "تعلمت",
+     "target_text": "I've learnt",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الكثير",
+     "target_text": "a lot",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "تعلمت الكثير",
+     "target_text": "I've learnt a lot",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لقد تعلمت الكثير بالفعل",
+     "target_text": "I've learnt a lot already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعتقد أنني تعلمت الكثير",
+     "target_text": "I think that I've learnt a lot",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أعرف إذا كنت تعلمت الكثير",
+     "target_text": "I don't know if I've learnt a lot",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لقد تعلمت الكثير ولكنني لا أستطيع أن أتذكر كل شيء",
+     "target_text": "I've learnt a lot but I can't remember everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لقد تعلمت الكثير بالفعل وأنا سعيد جداً",
+     "target_text": "I've learnt a lot already and I'm very happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لقد تعلمت الكثير ولكنني أريد أن أتعلم أكثر",
+     "target_text": "I've learnt a lot but I want to learn more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف أنني تعلمت الكثير منذ أن حاولنا",
+     "target_text": "I know that I've learnt a lot since we tried to",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 255,
+  "phrases": {
+   "255:1": [
+    {
+     "known_text": "متى تعتقد؟",
+     "target_text": "when do you think?",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أنك ستكون مستعداً",
+     "target_text": "you'll be ready",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً؟",
+     "target_text": "when do you think you'll be ready?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً للمغادرة؟",
+     "target_text": "when do you think you'll be ready to leave?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً للبدء؟",
+     "target_text": "when do you think you'll be ready to start?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً للتحدث؟",
+     "target_text": "when do you think you'll be ready to speak?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنا مستعد منذ هذا الصباح فمتى تعتقد أنك ستكون مستعداً",
+     "target_text": "I've been ready since this morning so when do you think you'll be ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً للذهاب إلى المنزل؟",
+     "target_text": "when do you think you'll be ready to go home?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً لأن الوقت قصير؟",
+     "target_text": "when do you think you'll be ready because there isn't much time?",
+     "phrase_role": "use"
+    }
+   ],
+   "255:2": [
+    {
+     "known_text": "أنا مستعد للمغادرة الآن",
+     "target_text": "I'm ready to leave now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أحتاج للمغادرة قريباً",
+     "target_text": "I need to leave soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "متى تعتقد أنك ستكون مستعداً للمغادرة؟",
+     "target_text": "when do you think you'll be ready to leave?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "يجب أن أكون مستعداً للمغادرة في بضع دقائق",
+     "target_text": "I should be ready to leave in a few minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أريد أن أغادر حتى بعد أن ننتهي",
+     "target_text": "I don't want to leave until after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل تريد أن تغادر الآن أو لاحقاً؟",
+     "target_text": "do you want to leave now or later?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا مستعد منذ هذا الصباح ولكنني لا أريد أن أغادر بعد",
+     "target_text": "I've been ready since this morning but I don't want to leave yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أحتاج أن أغادر قبل أن تبدأ لأنني مشغول",
+     "target_text": "I need to leave before you start because I'm busy",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 258,
+  "phrases": {
+   "258:1": [
+    {
+     "known_text": "ما هو",
+     "target_text": "what's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ذلك الشيء الأزرق",
+     "target_text": "that blue thing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق؟",
+     "target_text": "what's that blue thing?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق هنا؟",
+     "target_text": "what's that blue thing here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق بالضبط؟",
+     "target_text": "what's that blue thing exactly?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق الذي رأيته هذا الصباح؟",
+     "target_text": "what's that blue thing I saw this morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق الذي تركته هنا أمس؟",
+     "target_text": "what's that blue thing I left here yesterday?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق الذي تركته على الطاولة؟",
+     "target_text": "what's that blue thing you left on the table?",
+     "phrase_role": "use"
+    }
+   ],
+   "258:2": [
+    {
+     "known_text": "هناك",
+     "target_text": "over there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ما هو ذلك الشيء الأزرق هناك؟",
+     "target_text": "what's that blue thing over there?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ذلك الشيء الأزرق هناك",
+     "target_text": "that blue thing over there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "شيء ما هناك",
+     "target_text": "something over there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعتقد أنني رأيت شيئاً أزرق هناك أمس",
+     "target_text": "I think I saw something blue over there yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "رأيت شيئاً مثيراً للاهتمام هناك أمس",
+     "target_text": "I saw something interesting over there yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "تركته هناك ولكنني لا أتذكر أين بالضبط",
+     "target_text": "I left it over there but I don't remember where exactly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "قال إن ذلك الشيء الأزرق هناك ولكنني لست متأكداً",
+     "target_text": "he said that blue thing is over there but I'm not sure",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 283,
+  "phrases": {
+   "283:1": [
+    {
+     "known_text": "أي من",
+     "target_text": "which of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أصدقائك",
+     "target_text": "your friends",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أي من أصدقائك",
+     "target_text": "which of your friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أي من أصدقائك يتكلم الإنجليزية؟",
+     "target_text": "which of your friends speak English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أي من أصدقائك أردت أن تتحدث معه؟",
+     "target_text": "which of your friends did you want to speak to?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أي من أصدقائك يتكلم الإنجليزية جيداً جداً؟",
+     "target_text": "which of your friends speak English very well?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أي من أصدقائك يتكلم الإنجليزية الأفضل؟",
+     "target_text": "which of your friends speak the best English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أي من أصدقائك أردت أن تتحدث معه الليلة الماضية؟",
+     "target_text": "which of your friends did you want to talk to last night?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل يمكنك إخباري أي من أصدقائك يعرف الإجابة؟",
+     "target_text": "can you tell me which of your friends know the answer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أي من أصدقائك سيأتي معنا الشهر القادم؟",
+     "target_text": "which of your friends is going to come with us next month?",
+     "phrase_role": "use"
+    }
+   ],
+   "283:2": [
+    {
+     "known_text": "يتكلم",
+     "target_text": "speak",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الإنجليزية",
+     "target_text": "English",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "يتكلم الإنجليزية",
+     "target_text": "speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أي من أصدقائك يتكلم الإنجليزية؟",
+     "target_text": "which of your friends speak English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أتكلم الإنجليزية جيداً",
+     "target_text": "I want to speak English well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل تتكلم الإنجليزية؟",
+     "target_text": "do you speak English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "هل تعرف أي شخص يتكلم الإنجليزية جيداً؟",
+     "target_text": "do you know anyone who can speak English well?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أي من أصدقائك يتكلم الإنجليزية الأفضل هنا؟",
+     "target_text": "which of your friends speak English the best here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أردت أن أتكلم الإنجليزية مع شخص ما أمس",
+     "target_text": "I wanted to speak English with someone yesterday",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 286,
+  "phrases": {
+   "286:1": [
+    {
+     "known_text": "الناس الذين",
+     "target_text": "people who",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "يحبون",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الناس الذين يحبون",
+     "target_text": "people who like",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الناس الذين يحبون التعلم",
+     "target_text": "people who like learning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الناس الذين يحبون التحدث بالإنجليزية",
+     "target_text": "people who like speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أعرف كثيراً من الناس الذين يحبون ذلك",
+     "target_text": "I know people who like that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الناس الذين يحبون التحدث بالإنجليزية يتعلمون بسرعة",
+     "target_text": "people who like speaking English learn quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف كثيراً من الناس الذين يحبون الممارسة كل يوم",
+     "target_text": "I know people who like to practise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "الناس الذين يحبون التعلم يجدونه أسهل",
+     "target_text": "people who like learning find it easier",
+     "phrase_role": "use"
+    }
+   ],
+   "286:2": [
+    {
+     "known_text": "الكلام",
+     "target_text": "speaking",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "بالإنجليزية",
+     "target_text": "English",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الكلام بالإنجليزية",
+     "target_text": "speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الناس الذين يحبون الكلام بالإنجليزية",
+     "target_text": "people who like speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أريد أن أمارس الكلام بالإنجليزية",
+     "target_text": "I want to practise speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الكلام بالإنجليزية مهم",
+     "target_text": "speaking English is important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الناس الذين يحبون الكلام بالإنجليزية يتعلمون بسرعة أكبر",
+     "target_text": "people who like speaking English learn more quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أعرف كثيراً من الناس الذين يحبون الكلام بالإنجليزية هنا",
+     "target_text": "I know people who like speaking English here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "من المهم أن تأخذ وقتاً عندما تتدرب على الكلام بالإنجليزية",
+     "target_text": "it's important to take time when you practise speaking English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 287,
+  "phrases": {
+   "287:1": [
+    {
+     "known_text": "كم",
+     "target_text": "how many",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "شخصاً تعرف",
+     "target_text": "people do you know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "كم شخصاً تعرف؟",
+     "target_text": "how many people do you know?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "كم شخصاً تعرف يحب التعلم؟",
+     "target_text": "how many people do you know who like learning?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "كم شخصاً تعرف يتكلم الإنجليزية؟",
+     "target_text": "how many people do you know who speak English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "كم شخصاً تعرف هنا؟",
+     "target_text": "how many people do you know here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "كم شخصاً تعرف يتكلم الإنجليزية جيداً جداً؟",
+     "target_text": "how many people do you know who speak English very well?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "كم شخصاً تعرف لديه اجتماع مهم في بداية الأسبوع القادم؟",
+     "target_text": "how many people do you know who have an important meeting early next week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "كم شخصاً تعرف يحب مشاهدة كرة القدم في نهاية الأسبوع؟",
+     "target_text": "how many people do you know who like watching the football at the weekend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "كم شخصاً تعرف يريد أن يعمل معك العام القادم؟",
+     "target_text": "how many people do you know who want to work with you next year?",
+     "phrase_role": "use"
+    }
+   ],
+   "287:2": [
+    {
+     "known_text": "مشاهدة",
+     "target_text": "watching",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "التلفاز",
+     "target_text": "television",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "مشاهدة التلفاز",
+     "target_text": "watching television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "كم شخصاً تعرف يحب مشاهدة التلفاز؟",
+     "target_text": "how many people do you know who like watching television?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنا أستمتع بمشاهدة التلفاز",
+     "target_text": "I enjoy watching television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "الناس الذين يحبون مشاهدة التلفاز",
+     "target_text": "people who like watching television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "أنا أستمتع بمشاهدة التلفاز في المساء ولكنني أريد أن أتعلم أكثر",
+     "target_text": "I enjoy watching television in the evening but I want to learn more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "الناس الذين يحبون مشاهدة التلفاز لا يمارسون التحدث بالإنجليزية كثيراً",
+     "target_text": "people who like watching television don't practise speaking English much",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "أنا أستمتع بمشاهدة التلفاز ولكنني أعتقد أن التحدث بالإنجليزية أهم",
+     "target_text": "I enjoy watching television but I think speaking English is more important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "هل تستمتع بمشاهدة التلفاز أم تفضل التعلم؟",
+     "target_text": "do you enjoy watching television or do you like learning?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 288,
+  "phrases": {
+   "288:1": [
+    {
+     "known_text": "معظم الناس",
+     "target_text": "most people",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "الذين أعرفهم",
+     "target_text": "I know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم",
+     "target_text": "most people I know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم يحبون مشاهدة التلفاز",
+     "target_text": "most people I know like watching television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم يتكلمون الإنجليزية",
+     "target_text": "most people I know speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم يحبون التعلم",
+     "target_text": "most people I know like learning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم يتكلمون الإنجليزية جيداً جداً",
+     "target_text": "most people I know speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم يحبون مشاهدة التلفاز في المساء",
+     "target_text": "most people I know like watching television in the evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "معظم الناس الذين أعرفهم يمارسون التحدث بالإنجليزية",
+     "target_text": "most people I know practise speaking English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 291,
+  "phrases": {
+   "291:1": [
+    {
+     "known_text": "آمل",
+     "target_text": "I hope",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "أن أستطيع الكلام",
+     "target_text": "I'll be able to speak",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام",
+     "target_text": "I hope I'll be able to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام بشكل أفضل",
+     "target_text": "I hope I'll be able to speak better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام بالإنجليزية قريباً",
+     "target_text": "I hope I'll be able to speak English soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام جيداً جداً",
+     "target_text": "I hope I'll be able to speak very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام بالإنجليزية جيداً في بداية الأسبوع القادم",
+     "target_text": "I hope I'll be able to speak English well early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام بشكل أفضل من الليلة الماضية",
+     "target_text": "I hope I'll be able to speak better than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام بالإنجليزية مع صديقة أختي قريباً",
+     "target_text": "I hope I'll be able to speak English with my sister's friend soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "آمل أن أستطيع الكلام بشكل أفضل في بضعة أيام",
+     "target_text": "I hope I'll be able to speak better in a few days",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 297,
+  "phrases": {
+   "297:1": [
+    {
+     "known_text": "لا أعرف كثيراً",
+     "target_text": "I don't know many",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "من الناس الذين",
+     "target_text": "people who",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين",
+     "target_text": "I don't know many people who",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين يتكلمون الإنجليزية",
+     "target_text": "I don't know many people who speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين يحبون مشاهدة التلفاز",
+     "target_text": "I don't know many people who like watching television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين يحبون التحدث بالإنجليزية",
+     "target_text": "I don't know many people who like speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين يتكلمون الإنجليزية هنا",
+     "target_text": "I don't know many people who speak English here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين أرادوا الحضور إلى الحفلة",
+     "target_text": "I don't know many people who wanted to come to the party",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين يتكلمون الإنجليزية جيداً جداً",
+     "target_text": "I don't know many people who speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "لا أعرف كثيراً من الناس الذين يفهمون ما أحاول أن أقول",
+     "target_text": "I don't know many people who understand what I want to say",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

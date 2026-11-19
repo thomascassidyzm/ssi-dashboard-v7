@@ -1,0 +1,588 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0308L02U06",
+   "expect": {
+    "known_text": "I know a female friend who is sitting right over there",
+    "target_text": "ich kenne eine Freundin, die dort drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0309L03U05",
+   "expect": {
+    "known_text": "I have seen that young man who sits right over there",
+    "target_text": "ich habe diesen jungen Mann gesehen, der dort drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0314L01U01",
+   "expect": {
+    "known_text": "he could lay something there",
+    "target_text": "er könnte etwas dort legen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0314L01U03",
+   "expect": {
+    "known_text": "do you want to lay this there?",
+    "target_text": "willst du das dort legen?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0314L01U05",
+   "expect": {
+    "known_text": "I think she wants to lay it there",
+    "target_text": "ich denke, dass sie es dort legen will"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0314L01U06",
+   "expect": {
+    "known_text": "yesterday she couldn't lay it there",
+    "target_text": "gestern konnte sie es dort nicht legen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0366L01U04",
+   "expect": {
+    "known_text": "I think she ought to grow something there",
+    "target_text": "ich denke, sie sollte dort etwas anbauen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0369L02U03",
+   "expect": {
+    "known_text": "do you think the horses were there?",
+    "target_text": "denkst du, dass die Pferde dort waren?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0371L01U02",
+   "expect": {
+    "known_text": "I have heard that she was there on Wednesday",
+    "target_text": "ich habe gehört, dass sie am Mittwoch dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0377L01U03",
+   "expect": {
+    "known_text": "nobody told me that she was there last year",
+    "target_text": "niemand hat mir gesagt, dass sie letztes Jahr dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0400L01U03",
+   "expect": {
+    "known_text": "I thought we had to be there later",
+    "target_text": "ich dachte, dass wir später dort sein müssen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0400L01U05",
+   "expect": {
+    "known_text": "I think it is important to be there later",
+    "target_text": "ich denke, dass es wichtig ist, später dort zu sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0428L01B03",
+   "expect": {
+    "known_text": "they are there on Tuesday",
+    "target_text": "sie sind am Dienstag dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0428L01U03",
+   "expect": {
+    "known_text": "she told me we had to be there on Tuesday",
+    "target_text": "sie hat mir gesagt, dass wir am Dienstag dort sein müssen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L04B03",
+   "expect": {
+    "known_text": "they were there at about six",
+    "target_text": "sie waren gegen sechs dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L04U01",
+   "expect": {
+    "known_text": "I think they were there at about six",
+    "target_text": "ich denke, dass sie gegen sechs dort waren"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L04U02",
+   "expect": {
+    "known_text": "I thought they were there at about six",
+    "target_text": "ich dachte, dass sie gegen sechs dort waren"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L04U05",
+   "expect": {
+    "known_text": "please could they be there at about six",
+    "target_text": "bitte könnten sie gegen sechs dort sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L05B03",
+   "expect": {
+    "known_text": "they were there at about six o clock",
+    "target_text": "sie waren gegen sechs Uhr dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L05U01",
+   "expect": {
+    "known_text": "I think they were there at about six o clock",
+    "target_text": "ich denke, dass sie gegen sechs Uhr dort waren"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L05U02",
+   "expect": {
+    "known_text": "I thought they were there at about six o clock",
+    "target_text": "ich dachte, dass sie gegen sechs Uhr dort waren"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0454L05U05",
+   "expect": {
+    "known_text": "please could they be there at about six o clock",
+    "target_text": "bitte könnten sie gegen sechs Uhr dort sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0461L02B03",
+   "expect": {
+    "known_text": "a few there",
+    "target_text": "ein paar dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0462L01U01",
+   "expect": {
+    "known_text": "I think my grandfather was there",
+    "target_text": "ich denke, dass mein Großvater dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0490L01U03",
+   "expect": {
+    "known_text": "then she will be there",
+    "target_text": "dann wird sie dort sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0493L01U01",
+   "expect": {
+    "known_text": "it comes from there",
+    "target_text": "es kommt von dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0499L04B03",
+   "expect": {
+    "known_text": "the window is there",
+    "target_text": "das Fenster ist dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0502L02U06",
+   "expect": {
+    "known_text": "she got lost there too",
+    "target_text": "sie hat sich dort auch verlaufen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0511L02U03",
+   "expect": {
+    "known_text": "she was there for several hours",
+    "target_text": "sie war dort mehrere Stunden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0511L02U05",
+   "expect": {
+    "known_text": "he was there for several hours",
+    "target_text": "er war dort mehrere Stunden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0513L01U06",
+   "expect": {
+    "known_text": "it hurts there too",
+    "target_text": "dort tut es auch weh"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0578L02U04",
+   "expect": {
+    "known_text": "it is warmer there",
+    "target_text": "es ist wärmer dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0582L01B02",
+   "expect": {
+    "known_text": "it is upsetting to grow up there",
+    "target_text": "es ist beunruhigend, dort aufzuwachsen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0582L01B03",
+   "expect": {
+    "known_text": "what is it like to grow up there?",
+    "target_text": "wie ist es, dort aufzuwachsen?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0582L01U03",
+   "expect": {
+    "known_text": "it was upsetting to grow up there",
+    "target_text": "es war beunruhigend, dort aufzuwachsen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0582L01U06",
+   "expect": {
+    "known_text": "it was lovely to grow up there",
+    "target_text": "es war schön, dort aufzuwachsen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0584L01B02",
+   "expect": {
+    "known_text": "she needs to be there every morning",
+    "target_text": "sie muss jeden Morgen dort sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0584L01B03",
+   "expect": {
+    "known_text": "he was there every morning",
+    "target_text": "er war jeden Morgen dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0584L01U02",
+   "expect": {
+    "known_text": "she is there every morning",
+    "target_text": "sie ist jeden Morgen dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0584L01U03",
+   "expect": {
+    "known_text": "she said she is there every morning",
+    "target_text": "sie hat gesagt, sie ist jeden Morgen dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0584L01U06",
+   "expect": {
+    "known_text": "she was there every morning",
+    "target_text": "sie war jeden Morgen dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0584L01U07",
+   "expect": {
+    "known_text": "she wants to be there every morning",
+    "target_text": "sie will jeden Morgen dort sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0587L02U06",
+   "expect": {
+    "known_text": "I used to insist that she was there",
+    "target_text": "ich habe früher darauf bestanden, dass sie dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0587L03U04",
+   "expect": {
+    "known_text": "she wants to be there for supper",
+    "target_text": "sie will zum Abendessen dort sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0587L04B02",
+   "expect": {
+    "known_text": "we had that there",
+    "target_text": "wir hatten das dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0587L04U06",
+   "expect": {
+    "known_text": "we had more there",
+    "target_text": "wir hatten mehr dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0588L03U04",
+   "expect": {
+    "known_text": "she wanted to grow up there",
+    "target_text": "sie wollte dort aufwachsen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0588L03U05",
+   "expect": {
+    "known_text": "she would like to grow up there",
+    "target_text": "sie möchte dort aufwachsen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0589L03U03",
+   "expect": {
+    "known_text": "she was just there",
+    "target_text": "sie war gerade dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0594L04U07",
+   "expect": {
+    "known_text": "my sister was there",
+    "target_text": "meine Schwester war dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0597L01U06",
+   "expect": {
+    "known_text": "I suspect she was there",
+    "target_text": "ich vermute, dass sie dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0597L02U05",
+   "expect": {
+    "known_text": "she has been there a hundred times",
+    "target_text": "sie ist hundert Mal dort gewesen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0598L01U05",
+   "expect": {
+    "known_text": "she has been there a thousand times",
+    "target_text": "sie ist tausend Mal dort gewesen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0603L02B03",
+   "expect": {
+    "known_text": "she was also there at the time",
+    "target_text": "sie war auch zu der Zeit dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0603L02U01",
+   "expect": {
+    "known_text": "she was there at the time",
+    "target_text": "sie war zu der Zeit dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0603L02U02",
+   "expect": {
+    "known_text": "she said she was there at the time",
+    "target_text": "sie hat gesagt, sie war zu der Zeit dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0603L02U07",
+   "expect": {
+    "known_text": "she was also there at the time",
+    "target_text": "sie war zu der Zeit auch dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0604L03U06",
+   "expect": {
+    "known_text": "she was also there with her",
+    "target_text": "sie war auch bei ihr dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0606L01B02",
+   "expect": {
+    "known_text": "she was there back then",
+    "target_text": "sie war damals dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0606L01U02",
+   "expect": {
+    "known_text": "she said she was there back then",
+    "target_text": "sie hat gesagt, sie war damals dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0606L01U05",
+   "expect": {
+    "known_text": "she was also there back then",
+    "target_text": "sie war damals auch dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0612L02U08",
+   "expect": {
+    "known_text": "we probably would have bought a house there",
+    "target_text": "wir hätten wahrscheinlich dort ein Haus gekauft"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0614L03U02",
+   "expect": {
+    "known_text": "your family was there",
+    "target_text": "deine Familie war dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0614L03U07",
+   "expect": {
+    "known_text": "your family was also there",
+    "target_text": "deine Familie war auch dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0614L04B03",
+   "expect": {
+    "known_text": "your family lives there",
+    "target_text": "deine Familie lebt dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0614L04U02",
+   "expect": {
+    "known_text": "she lives there",
+    "target_text": "sie lebt dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0614L04U03",
+   "expect": {
+    "known_text": "she said she lives there",
+    "target_text": "sie hat gesagt, sie lebt dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0614L04U04",
+   "expect": {
+    "known_text": "she also lives there",
+    "target_text": "sie lebt auch dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0619L01B02",
+   "expect": {
+    "known_text": "since she was there",
+    "target_text": "seit sie dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0619L01U03",
+   "expect": {
+    "known_text": "since we have been there",
+    "target_text": "seit wir dort sind"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0636L01B03",
+   "expect": {
+    "known_text": "I think that she was there too",
+    "target_text": "ich denke, dass sie auch dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0636L01U06",
+   "expect": {
+    "known_text": "I think that she was there",
+    "target_text": "ich denke, dass sie dort war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0638L01U07",
+   "expect": {
+    "known_text": "I try to be there",
+    "target_text": "ich versuche, dort zu sein"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1164 @@
+{
+ "course": "fra_for_eng",
+ "at": "2026-11-18T18:40:54.341Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0053L03": {
+   "lego": "in | dans",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 35,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0053L03U02",
+     "role": "use",
+     "known": "she wants to put things in this letter",
+     "target": "elle veut mettre des choses dans cette lettre",
+     "untaught": [
+      "cette"
+     ]
+    },
+    {
+     "row": "S0053L03U07",
+     "role": "use",
+     "known": "she wanted to put something in this letter",
+     "target": "elle voulait mettre quelque chose dans cette lettre",
+     "untaught": [
+      "cette"
+     ]
+    }
+   ]
+  },
+  "S0063L01": {
+   "lego": "are you | tu es",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 15,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0063L01U04",
+     "role": "use",
+     "known": "you are very good",
+     "target": "tu es très bon",
+     "untaught": [
+      "bon"
+     ]
+    }
+   ]
+  },
+  "S0063L02": {
+   "lego": "mind | dérange",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0063L02U06",
+     "role": "use",
+     "known": "I don't mind at all",
+     "target": "ça ne me dérange pas du tout",
+     "untaught": [
+      "du"
+     ]
+    }
+   ]
+  },
+  "S0069L03": {
+   "lego": "to look after | s'occuper",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0069L03U07",
+     "role": "use",
+     "known": "she can't look after the dog this evening",
+     "target": "elle ne peut pas s'occuper du chien ce soir",
+     "untaught": [
+      "peut"
+     ]
+    }
+   ]
+  },
+  "S0071L03": {
+   "lego": "anyone | personne",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0071L03U10",
+     "role": "use",
+     "known": "she can't see anyone here",
+     "target": "elle ne peut voir personne ici",
+     "untaught": [
+      "peut",
+      "voir"
+     ]
+    }
+   ]
+  },
+  "S0080L02": {
+   "lego": "when I'll be ready | de quand je serai prêt",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 27,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0080L02U03",
+     "role": "use",
+     "known": "are you asking me when I'll be ready?",
+     "target": "tu me demandes de quand je serai prêt ?",
+     "untaught": [
+      "demandes"
+     ]
+    },
+    {
+     "row": "S0080L02U04",
+     "role": "use",
+     "known": "I'll tell you when I'll be ready to learn",
+     "target": "je te dirai de quand je serai prêt à apprendre",
+     "untaught": [
+      "dirai"
+     ]
+    }
+   ]
+  },
+  "S0094L02": {
+   "lego": "way it will | façon que ça",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0094L02U04",
+     "role": "use",
+     "known": "she doesn't know the way it will work",
+     "target": "elle ne sait pas la façon que ça fonctionne",
+     "untaught": [
+      "sait",
+      "fonctionne"
+     ]
+    }
+   ]
+  },
+  "S0094L03": {
+   "lego": "will work | fonctionne",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0094L03U03",
+     "role": "use",
+     "known": "do you think it works?",
+     "target": "tu penses que ça fonctionne ?",
+     "untaught": [
+      "penses"
+     ]
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": "in the middle of the night | au milieu de la nuit",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0108L03U07",
+     "role": "use",
+     "known": "I can't sleep in the middle of the night",
+     "target": "je ne peux pas dormir au milieu de la nuit",
+     "untaught": [
+      "dormir"
+     ]
+    }
+   ]
+  },
+  "S0117L03": {
+   "lego": "we talked | nous avons parlé",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0117L03U09",
+     "role": "use",
+     "known": "I liked when we talked yesterday",
+     "target": "j'ai aimé quand nous avons parlé hier",
+     "untaught": [
+      "aimé"
+     ]
+    }
+   ]
+  },
+  "S0118L01": {
+   "lego": "when we were | quand nous étions",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0118L01U08",
+     "role": "use",
+     "known": "I felt better when we were with my friends",
+     "target": "je me sentais mieux quand nous étions avec mes amis",
+     "untaught": [
+      "sentais"
+     ]
+    }
+   ]
+  },
+  "S0120L01": {
+   "lego": "it's interesting that | c'est intéressant que",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 33,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0120L01U09",
+     "role": "use",
+     "known": "it's interesting that you can speak French now",
+     "target": "c'est intéressant que tu puisses parler français maintenant",
+     "untaught": [
+      "puisses"
+     ]
+    },
+    {
+     "row": "S0120L01U10",
+     "role": "use",
+     "known": "it's interesting that we learn together",
+     "target": "c'est intéressant que nous apprenions ensemble",
+     "untaught": [
+      "apprenions",
+      "ensemble"
+     ]
+    },
+    {
+     "row": "S0120L01U11",
+     "role": "use",
+     "known": "it's interesting that you remember all of that",
+     "target": "c'est intéressant que tu te souviennes de tout ça",
+     "untaught": [
+      "souviennes"
+     ]
+    }
+   ]
+  },
+  "S0121L01": {
+   "lego": "it's unusual | c'est inhabituel",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0121L01U04",
+     "role": "use",
+     "known": "do you think it's unusual?",
+     "target": "tu penses que c'est inhabituel ?",
+     "untaught": [
+      "penses"
+     ]
+    }
+   ]
+  },
+  "S0123L02": {
+   "lego": "a good idea | une bonne idée",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0123L02U04",
+     "role": "use",
+     "known": "do you think it's a good idea?",
+     "target": "tu penses que c'est une bonne idée ?",
+     "untaught": [
+      "penses"
+     ]
+    }
+   ]
+  },
+  "S0132L01": {
+   "lego": "less than | moins que",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0132L01U07",
+     "role": "use",
+     "known": "he worked less than I thought",
+     "target": "il a travaillé moins que je pensais",
+     "untaught": [
+      "travaillé"
+     ]
+    }
+   ]
+  },
+  "S0163L01": {
+   "lego": "I think that it's interesting | Je pense que c'est intéressant",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 43,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0163L01U04",
+     "role": "use",
+     "known": "I think that it's interesting, don't you think so?",
+     "target": "je pense que c'est intéressant, vous ne pensez pas?",
+     "untaught": [
+      "pensez"
+     ]
+    }
+   ]
+  },
+  "S0164L01": {
+   "lego": "an interesting book | un livre intéressant",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0164L01U05",
+     "role": "use",
+     "known": "Can you give me an interesting book?",
+     "target": "pouvez-vous me donner un livre intéressant?",
+     "untaught": [
+      "pouvez"
+     ]
+    }
+   ]
+  },
+  "S0168L02": {
+   "lego": "to come | venir",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 1,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0168L02U07",
+     "role": "use",
+     "known": "Can you come to the restaurant?",
+     "target": "pouvez-vous venir au restaurant?",
+     "untaught": [
+      "pouvez"
+     ]
+    },
+    {
+     "row": "S0168L02U08",
+     "role": "use",
+     "known": "Can you come and help me tomorrow?",
+     "target": "pouvez-vous venir m'aider demain?",
+     "untaught": [
+      "pouvez"
+     ]
+    }
+   ]
+  },
+  "S0169L02": {
+   "lego": "do | fasse",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0169L02U07",
+     "role": "use",
+     "known": "Can you tell me what you want me to do?",
+     "target": "pouvez-vous me dire ce que vous voulez que je fasse?",
+     "untaught": [
+      "pouvez"
+     ]
+    }
+   ]
+  },
+  "S0170L01": {
+   "lego": "I'd like you to tell me | je voudrais que vous me disiez",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 40,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0170L01U04",
+     "role": "use",
+     "known": "I'd like you to tell me what you think",
+     "target": "je voudrais que vous me disiez ce que vous pensez",
+     "untaught": [
+      "pensez"
+     ]
+    }
+   ]
+  },
+  "S0171L01": {
+   "lego": "do you want me to | voulez-vous que je",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0171L01U02",
+     "role": "use",
+     "known": "do you want me to show you something?",
+     "target": "voulez-vous que je vous montre quelque chose ?",
+     "untaught": [
+      "montre"
+     ]
+    }
+   ]
+  },
+  "S0171L02": {
+   "lego": "to look for | chercher",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0171L02U09",
+     "role": "use",
+     "known": "Can you help me look for my bag?",
+     "target": "pouvez-vous m'aider à chercher mon sac?",
+     "untaught": [
+      "pouvez"
+     ]
+    }
+   ]
+  },
+  "S0178L02": {
+   "lego": "although | bien que",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 33,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0178L02U05",
+     "role": "use",
+     "known": "although it's difficult, I want to learn",
+     "target": "bien que ce soit difficile, je veux apprendre",
+     "untaught": [
+      "soit"
+     ]
+    },
+    {
+     "row": "S0178L02U06",
+     "role": "use",
+     "known": "although I'm tired, I want to continue",
+     "target": "bien que je sois fatigué, je veux continuer",
+     "untaught": [
+      "sois"
+     ]
+    },
+    {
+     "row": "S0178L02U07",
+     "role": "use",
+     "known": "although you can't come, I understand",
+     "target": "bien que tu ne puisses pas venir, je comprends",
+     "untaught": [
+      "puisses"
+     ]
+    }
+   ]
+  },
+  "S0182L03": {
+   "lego": "anywhere | quelque part",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0182L03U03",
+     "role": "use",
+     "known": "are you going anywhere tomorrow?",
+     "target": "vous allez quelque part demain?",
+     "untaught": [
+      "allez"
+     ]
+    }
+   ]
+  },
+  "S0190L01": {
+   "lego": "ask | pose",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 30,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0190L01U01",
+     "role": "use",
+     "known": "I'm asking you a question now",
+     "target": "je te pose une question maintenant",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0190L01U02",
+     "role": "use",
+     "known": "if I ask a question, can you answer?",
+     "target": "si je pose une question, tu peux répondre ?",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0190L01U03",
+     "role": "use",
+     "known": "he asks me difficult questions",
+     "target": "il me pose des questions difficiles",
+     "untaught": [
+      "questions",
+      "difficiles"
+     ]
+    },
+    {
+     "row": "S0190L01U04",
+     "role": "use",
+     "known": "I ask this question because I want to learn",
+     "target": "je pose cette question parce que je veux apprendre",
+     "untaught": [
+      "question"
+     ]
+    }
+   ]
+  },
+  "S0219L02": {
+   "lego": "to relax for a while | se détendre pendant un moment",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0219L02U12",
+     "role": "use",
+     "known": "she needed to relax for a while",
+     "target": "elle avait besoin de se détendre pendant un moment",
+     "untaught": [
+      "avait"
+     ]
+    }
+   ]
+  },
+  "S0220L03": {
+   "lego": "television | télévision",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 30,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0220L03U09",
+     "role": "use",
+     "known": "I want to watch television now",
+     "target": "je veux regarder la télévision maintenant",
+     "untaught": [
+      "regarder"
+     ]
+    },
+    {
+     "row": "S0220L03U10",
+     "role": "use",
+     "known": "he doesn't want to watch television with us",
+     "target": "il ne veut pas regarder la télévision avec nous",
+     "untaught": [
+      "regarder"
+     ]
+    }
+   ]
+  },
+  "S0225L02": {
+   "lego": "could | pouvait",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 31,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0225L02U03",
+     "role": "use",
+     "known": "I remember that he could do that easily",
+     "target": "je me souviens qu'il pouvait faire ça facilement",
+     "untaught": [
+      "souviens"
+     ]
+    },
+    {
+     "row": "S0225L02U04",
+     "role": "use",
+     "known": "she didn't know he could do that",
+     "target": "elle ne savait pas qu'il pouvait faire ça",
+     "untaught": [
+      "savait"
+     ]
+    },
+    {
+     "row": "S0225L02U05",
+     "role": "use",
+     "known": "I didn't know she could come",
+     "target": "je ne savais pas qu'elle pouvait venir",
+     "untaught": [
+      "savais"
+     ]
+    }
+   ]
+  },
+  "S0324L06": {
+   "lego": "both of her hands up | ses deux mains levées",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 36,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0324L06U01",
+     "role": "use",
+     "known": "she needed to walk with both of her hands up",
+     "target": "elle devait marcher avec ses deux mains levées",
+     "untaught": [
+      "devait"
+     ]
+    },
+    {
+     "row": "S0324L06U02",
+     "role": "use",
+     "known": "that student said she had both of her hands up",
+     "target": "cette élève a dit qu'elle avait ses deux mains levées",
+     "untaught": [
+      "avait"
+     ]
+    },
+    {
+     "row": "S0324L06U04",
+     "role": "use",
+     "known": "she was trying to read the book with both of her hands up",
+     "target": "elle essayait de lire le livre avec ses deux mains levées",
+     "untaught": [
+      "essayait"
+     ]
+    }
+   ]
+  },
+  "S0365L01": {
+   "lego": "what she said to him | ce qu'elle lui a dit",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 28,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0365L01U01",
+     "role": "use",
+     "known": "he knew what she said to him",
+     "target": "il savait ce qu'elle lui a dit",
+     "untaught": [
+      "savait"
+     ]
+    },
+    {
+     "row": "S0365L01U02",
+     "role": "use",
+     "known": "he didn't know what she said to him",
+     "target": "il ne savait pas ce qu'elle lui a dit",
+     "untaught": [
+      "savait"
+     ]
+    }
+   ]
+  },
+  "S0366L02": {
+   "lego": "what he wanted to | ce qu'il voulait",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 28,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0366L02U01",
+     "role": "use",
+     "known": "she knew what he wanted to grow",
+     "target": "elle savait ce qu'il voulait faire pousser",
+     "untaught": [
+      "savait"
+     ]
+    },
+    {
+     "row": "S0366L02U03",
+     "role": "use",
+     "known": "she knew what he wanted to do",
+     "target": "elle savait ce qu'il voulait faire",
+     "untaught": [
+      "savait"
+     ]
+    },
+    {
+     "row": "S0366L02U04",
+     "role": "use",
+     "known": "she knew what he wanted to say",
+     "target": "elle savait ce qu'il voulait dire",
+     "untaught": [
+      "savait"
+     ]
+    }
+   ]
+  },
+  "S0372L01": {
+   "lego": "what she was trying to | ce qu'elle essayait de",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 31,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0372L01U01",
+     "role": "use",
+     "known": "she knew what she was trying to do",
+     "target": "elle savait ce qu'elle essayait de faire",
+     "untaught": [
+      "savait"
+     ]
+    },
+    {
+     "row": "S0372L01U03",
+     "role": "use",
+     "known": "he knew what she was trying to do",
+     "target": "il savait ce qu'elle essayait de faire",
+     "untaught": [
+      "savait"
+     ]
+    }
+   ]
+  },
+  "S0424L03": {
+   "lego": "time | temps",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0424L03U02",
+     "role": "use",
+     "known": "it takes time",
+     "target": "ça prend du temps",
+     "untaught": [
+      "prend"
+     ]
+    }
+   ]
+  },
+  "S0559L04": {
+   "lego": "have you found? | as-tu trouvé ?",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0559L04U06",
+     "role": "use",
+     "known": "have you found what you were looking for?",
+     "target": "as-tu trouvé ce que tu cherchais ?",
+     "untaught": [
+      "cherchais"
+     ]
+    }
+   ]
+  },
+  "S0648L01": {
+   "lego": "what you said madam | ce que vous avez dit madame",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0648L01U02",
+     "role": "use",
+     "known": "I understood what you said madam",
+     "target": "j'ai compris ce que vous avez dit madame",
+     "untaught": [
+      "compris"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

@@ -1,0 +1,62 @@
+{
+ "seed": 536,
+ "lego_ops": {
+  "L02": {
+   "set": {
+    "known_text": "پاگل ہونا برا تھا",
+    "target_text": "being crazy was bad",
+    "type": "M",
+    "components": [
+     {
+      "known": "پاگل ہونا",
+      "target": "being crazy"
+     },
+     {
+      "known": "برا تھا",
+      "target": "was bad"
+     }
+    ]
+   },
+   "why": "S3: 'bad' is in the seed ('I used to think that being crazy was bad') and no LEGO carries it, yet five rows of this basket already say 'bad'. L02 'being crazy' grows to 'being crazy was bad' (5 syllables, ungapped, a piece of the seed). Known side takes تھا so that it does not collide with the old row پاگل ہونا برا ہے = 'being crazy is bad'."
+  }
+ },
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "پاگل ہونا برا تھا",
+     "being crazy was bad"
+    ],
+    "B02": [
+     "کہ پاگل ہونا برا تھا",
+     "that being crazy was bad"
+    ],
+    "B03": [
+     "کہا کہ پاگل ہونا برا تھا",
+     "said that being crazy was bad"
+    ],
+    "B04": [
+     "سوچا کہ پاگل ہونا برا تھا",
+     "thought that being crazy was bad"
+    ],
+    "U02": [
+     "اس نے کہا کہ پاگل ہونا برا تھا",
+     "he said that being crazy was bad"
+    ],
+    "U03": [
+     "میں نے کہا کہ پاگل ہونا برا تھا",
+     "I said that being crazy was bad"
+    ],
+    "U04": [
+     "میں نے نہیں کہا کہ پاگل ہونا برا تھا",
+     "I didn't say that being crazy was bad"
+    ],
+    "U05": [
+     "کس نے کہا کہ پاگل ہونا برا تھا؟",
+     "who said that being crazy was bad?"
+    ]
+   }
+  }
+ },
+ "notes": "cs #813: re-cut: 'being crazy' -> 'being crazy was bad'. U01 (the seed sentence) already contains it. The old 'is bad / is good / is hard' rows cannot stay (whole-LEGO rule)."
+}

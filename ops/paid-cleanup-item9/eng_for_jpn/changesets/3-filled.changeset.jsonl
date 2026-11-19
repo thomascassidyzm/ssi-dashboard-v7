@@ -1,0 +1,12 @@
+{"format":"ssi-changeset/1","id":"item9-eng_for_jpn-3-filled","course":"eng_for_jpn","job":"#960·AI","why":"paid cleanup item 9 (untaught words): deletes of rows using an untaught target word whose LEGO floor depends on 1-backfill (runner gates it)","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:14:45.446Z","ops":11,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) in full except the 19 make-new LEGOs, 18 Nov 15:41Z"}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0041L01U04","expect":{"known_text":"大丈夫だと思いますが、よく眠れませんでした","target_text":"I think I feel okay but I didn't sleep very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0203L02U10","expect":{"known_text":"もし誰も来なかったら、何をしますか？","target_text":"what would you do if nobody came to help?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0210L04B03","expect":{"known_text":"彼らはまだ〜と思っています","target_text":"they still think that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0231L02B07","expect":{"known_text":"あなたのお兄さんと一緒に働く男性を","target_text":"a man who works with your brother"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0232L01B07","expect":{"known_text":"あなたのお姉さんと一緒に働く女性を","target_text":"a woman who works with your sister"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L04B06","expect":{"known_text":"あなたのお姉さんが来ました","target_text":"your sister came to see me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0257L02B04","expect":{"known_text":"あそこにある青いものは何ですか？","target_text":"what is that blue thing over there?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0257L02U09","expect":{"known_text":"彼は出発前にあそこにある青いものが何かを知りたかったのです","target_text":"he wanted to know what that blue thing over there was before he left"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0257L02U10","expect":{"known_text":"今夜出発前にあそこにある青いものが何か教えてくれますか？","target_text":"can you tell me what that blue thing over there is before you leave tonight?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0286L01B07","expect":{"known_text":"英語を話すのが好きな人たちのほとんどはテレビを見るのが好きです","target_text":"most people who like speaking English like watching television"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0286L01U09","expect":{"known_text":"英語を話すのが好きな人たちのうちテレビを見るのが好きな人を何人知っていますか？","target_text":"how many people who like speaking English do you know who like watching television?"}}

@@ -1,0 +1,48 @@
+{
+ "course": "kor_for_tam",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {},
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0040L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0041L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0042L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0074L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0076L01",
+    "deletes": 1
+   }
+  ],
+  "drift": [],
+  "error": []
+ },
+ "warnings": 0
+}

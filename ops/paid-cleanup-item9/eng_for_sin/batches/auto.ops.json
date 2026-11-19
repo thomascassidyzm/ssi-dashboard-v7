@@ -1,0 +1,116 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0094L01B02",
+   "expect": {
+    "known_text": "එකම එකා",
+    "target_text": "the only one"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0094L01U02",
+   "expect": {
+    "known_text": "ඔයා එකම කෙනා මම දන්නේ",
+    "target_text": "you are the only one I know"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0094L01U05",
+   "expect": {
+    "known_text": "මම එකම එකා ඉංග්‍රීසි කතා කරන",
+    "target_text": "I'm the only one who speak English"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0094L01U08",
+   "expect": {
+    "known_text": "ඔයා එකම කෙනා ඉගෙනගන්නේ",
+    "target_text": "you are the only one learning"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0117L02U01",
+   "expect": {
+    "known_text": "මම ඒ ගැන කතා කළාට කියලා මම හිතනවා",
+    "target_text": "I think I talked about that, even though"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0117L02U02",
+   "expect": {
+    "known_text": "මම ඒ ගැන කතා කළාට, මම ලිහිල් වෙනවා",
+    "target_text": "even though I talked about that, I relax"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0117L02U04",
+   "expect": {
+    "known_text": "මම ඒ ගැන නිසැකවම කතා කළාට",
+    "target_text": "even though I definitely talked about that"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0117L02U05",
+   "expect": {
+    "known_text": "මම ඒ ගැන කතා කළාට, මම ලෑස්ති",
+    "target_text": "even though I talked about that, I'm ready"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0117L02U08",
+   "expect": {
+    "known_text": "මම ඒ ගැන කතා කළාට, මම නිසැකවම ලෑස්ති",
+    "target_text": "even though I talked about that, I'm definitely ready"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0137L01U02",
+   "expect": {
+    "known_text": "කවුරුත් පරිපූර්ණ නෑ",
+    "target_text": "no one is perfect"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0168L01U05",
+   "expect": {
+    "known_text": "ඊට පස්සේ අපි හෙට දවල් හමු වෙමු",
+    "target_text": "and then we'll meet tomorrow afternoon"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0205L01B04",
+   "expect": {
+    "known_text": "මගේ යාළුවා ගේ නම ගැන අමතකවෙලා",
+    "target_text": "I've forgotten my friend's name"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0205L01U04",
+   "expect": {
+    "known_text": "මගේ යාළුවා ගේ නම ගැන අමතකවෙලා",
+    "target_text": "I've forgotten my friend's name"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0306L01U05",
+   "expect": {
+    "known_text": "මම ඔයාගේ යාළුවගේ තාත්තාව දන්නවා",
+    "target_text": "I know your friend's father"
+   }
+  }
+ ]
+}

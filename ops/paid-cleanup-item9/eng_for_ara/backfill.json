@@ -1,0 +1,963 @@
+{
+ "course": "eng_for_ara",
+ "at": "2026-11-18T18:40:46.496Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0007L01": {
+   "lego": "أحاول | to try",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0007L01B03",
+     "role": "build",
+     "known": "لا أريد أن أحاول",
+     "target": "I don't want to try",
+     "untaught": [
+      "don't"
+     ]
+    }
+   ]
+  },
+  "S0013L01": {
+   "lego": "أنت تتكلم | you speak",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0013L01U06",
+     "role": "use",
+     "known": "أنت تتكلم الإنجليزية مع الجميع",
+     "target": "you speak English with everyone else",
+     "untaught": [
+      "everyone"
+     ]
+    }
+   ]
+  },
+  "S0019L01": {
+   "lego": "لكن | but",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0019L01U07",
+     "role": "use",
+     "known": "أريد أن أتعلم بسرعة لكنني متعب اليوم",
+     "target": "I want to learn quickly but I'm tired today",
+     "untaught": [
+      "quickly",
+      "tired"
+     ]
+    }
+   ]
+  },
+  "S0020L02": {
+   "lego": "اسمه | his name",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0020L02U06",
+     "role": "use",
+     "known": "لا أستطيع أن أتذكر اسمه الآن",
+     "target": "I can't remember his name now",
+     "untaught": [
+      "can't"
+     ]
+    }
+   ]
+  },
+  "S0044L03": {
+   "lego": "التحسن | improve",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 32,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0044L03U06",
+     "role": "use",
+     "known": "من المهم أن تتحسن في أقرب وقت ممكن",
+     "target": "it's important to improve as soon as you can",
+     "untaught": [
+      "important"
+     ]
+    }
+   ]
+  },
+  "S0046L01": {
+   "lego": "لا أقلق | I don't worry",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0046L01U05",
+     "role": "use",
+     "known": "لا أقلق لأنني أعمل بجد كل يوم",
+     "target": "I don't worry because I work hard every day",
+     "untaught": [
+      "work",
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0046L02": {
+   "lego": "ارتكاب الأخطاء | making mistakes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0046L02U05",
+     "role": "use",
+     "known": "أعتقد أن ارتكاب الأخطاء شيء جيد",
+     "target": "I think that making mistakes is a good thing",
+     "untaught": [
+      "that",
+      "good",
+      "thing"
+     ]
+    }
+   ]
+  },
+  "S0054L01": {
+   "lego": "أردنا أن | we wanted to",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0054L01B03",
+     "role": "build",
+     "known": "لم نُرد أن",
+     "target": "we didn't want to",
+     "untaught": [
+      "didn't"
+     ]
+    }
+   ]
+  },
+  "S0058L02": {
+   "lego": "كلمات كافية | enough words",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0058L02U04",
+     "role": "use",
+     "known": "أنا أحاول أن أتعلم كلمات كافية كل يوم",
+     "target": "I'm trying to learn enough words every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0101L01": {
+   "lego": "أستمتع باكتشاف | I'm enjoying finding out",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0101L01U01",
+     "role": "use",
+     "known": "أستمتع باكتشاف شيء مختلف كل يوم",
+     "target": "I'm enjoying finding out something different every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0106L02": {
+   "lego": "نحتاج فقط أن نعمل بجد | we just need to work hard",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0106L02B02",
+     "role": "build",
+     "known": "نحتاج فقط أن نعمل بجد كل يوم",
+     "target": "we just need to work hard every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0109L01": {
+   "lego": "يجب أن نعمل بجد | we must work hard",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0109L01B02",
+     "role": "build",
+     "known": "يجب أن نعمل بجد كل يوم",
+     "target": "we must work hard every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0109L01U02",
+     "role": "use",
+     "known": "يجب أن نعمل بجد كل يوم هذا الأسبوع",
+     "target": "we must work hard every day this week",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0109L02": {
+   "lego": "لتعلم الكثير من الكلمات الجديدة | to learn a lot of new words",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0109L02U03",
+     "role": "use",
+     "known": "من المفيد تعلم الكثير من الكلمات الجديدة كل يوم",
+     "target": "it's useful to learn a lot of new words every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0120L02": {
+   "lego": "تحب الذهاب بالحافلة | like to go by bus",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0120L02B03",
+     "role": "build",
+     "known": "تحب الذهاب بالحافلة كل يوم",
+     "target": "like to go by bus every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0122L01": {
+   "lego": "يبدأ الأمر في الشعور بأنه أسهل | it's starting to feel easier",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 36,
+   "rows": [
+    {
+     "row": "S0122L01U02",
+     "role": "use",
+     "known": "يبدأ الأمر في الشعور بأنه أسهل عندما أتمرن كل يوم",
+     "target": "it's starting to feel easier when I practise every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0145L01": {
+   "lego": "لماذا لم تعد سعيداً | why are you not happy any more",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 39,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0145L01U07",
+     "role": "use",
+     "known": "لماذا لم تعد سعيداً اليوم لأن شيئاً تغير؟",
+     "target": "why are you not happy any more today because something changed?",
+     "untaught": [
+      "changed"
+     ]
+    }
+   ]
+  },
+  "S0153L02": {
+   "lego": "بنفس الطريقة تماماً | in exactly the same way",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 37,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0153L02U05",
+     "role": "use",
+     "known": "كل شيء يحدث بنفس الطريقة تماماً في كل مرة",
+     "target": "everything would happen in exactly the same way every time",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0220L02": {
+   "lego": "التلفاز قليلاً | a bit of television",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 37,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0220L02U05",
+     "role": "use",
+     "known": "شاهدت التلفاز قليلاً لكنني لم أفعل الكثير",
+     "target": "I watched a bit of television but I didn't do much",
+     "untaught": [
+      "watched"
+     ]
+    }
+   ]
+  },
+  "S0227L03": {
+   "lego": "جديد | new",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 37,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0227L03B04",
+     "role": "build",
+     "known": "أتعلم شيئاً جديداً كل يوم",
+     "target": "I learn something new every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0227L03U01",
+     "role": "use",
+     "known": "أتعلم شيئاً جديداً في كل مرة أتحدث فيها",
+     "target": "I'm learning something new every time I speak",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0227L03U05",
+     "role": "use",
+     "known": "أريد أن أتعلم شيئاً جديداً كل أسبوع",
+     "target": "I want to learn something new every week",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0232L02": {
+   "lego": "تستطيع تذكر الإجابة | who can remember the answer",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0232L02U02",
+     "role": "use",
+     "known": "أعرف شخصاً يستطيع تذكر الإجابة في كل مرة",
+     "target": "I know someone who can remember the answer every time",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0239L01": {
+   "lego": "تحب القراءة | likes to read",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 33,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0239L01B04",
+     "role": "build",
+     "known": "تحب القراءة كل يوم",
+     "target": "likes to read every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0239L01U01",
+     "role": "use",
+     "known": "والدتي تحب القراءة لبعض الوقت كل مساء",
+     "target": "my mother likes to read for a while every evening",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0239L01U02",
+     "role": "use",
+     "known": "والدتي تحب القراءة شيئاً جديداً كل أسبوع",
+     "target": "my mother likes to read something new every week",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0242L01": {
+   "lego": "أعطيها وقتاً أكثر | give her more time",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 37,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0242L01U06",
+     "role": "use",
+     "known": "أردت أن أعطيها وقتاً أكثر قليلاً قبل أن تذهب",
+     "target": "I wanted to give her a little more time before she goes",
+     "untaught": [
+      "goes"
+     ]
+    }
+   ]
+  },
+  "S0244L01": {
+   "lego": "تعلمت الكثير | I've learnt a lot",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0244L01U03",
+     "role": "use",
+     "known": "أعتقد أنني تعلمت الكثير لأنني أتدرب كل يوم",
+     "target": "I think that I've learnt a lot because I practise every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0255L01": {
+   "lego": "متى تعتقد أنك ستكون مستعداً | when do you think you'll be ready",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 43,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0255L01U07",
+     "role": "use",
+     "known": "متى تعتقد أنك ستكون مستعداً في أقل من ساعة؟",
+     "target": "when do you think you'll be ready in less than an hour?",
+     "untaught": [
+      "hour"
+     ]
+    }
+   ]
+  },
+  "S0258L01": {
+   "lego": "ما هو ذلك الشيء الأزرق | what's that blue thing",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0258L01U08",
+     "role": "use",
+     "known": "ما هو ذلك الشيء الأزرق الذي قد يكون مهماً؟",
+     "target": "what's that blue thing that might be important?",
+     "untaught": [
+      "might"
+     ]
+    }
+   ]
+  },
+  "S0283L02": {
+   "lego": "يتكلم الإنجليزية | speak English",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 32,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0283L02U01",
+     "role": "use",
+     "known": "أريد أن أتكلم الإنجليزية أفضل وأمارس كل يوم",
+     "target": "I want to speak English better and practise every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0283L02U03",
+     "role": "use",
+     "known": "أعتقد أنه مهم أن تتكلم الإنجليزية كل يوم",
+     "target": "I think it is important to speak English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0286L01": {
+   "lego": "الناس الذين يحبون | people who like",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0286L01U04",
+     "role": "use",
+     "known": "الناس الذين يحبون التحدث بالإنجليزية يمارسون كل يوم",
+     "target": "people who like speaking English practise every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0286L02": {
+   "lego": "الكلام بالإنجليزية | speaking English",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0286L02U01",
+     "role": "use",
+     "known": "أريد أن أمارس الكلام بالإنجليزية كل يوم",
+     "target": "I want to practise speaking English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0287L01": {
+   "lego": "كم شخصاً تعرف | how many people do you know",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 46,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0287L01U01",
+     "role": "use",
+     "known": "كم شخصاً تعرف يحب التحدث بالإنجليزية كل يوم؟",
+     "target": "how many people do you know who like speaking English every day?",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0288L01": {
+   "lego": "معظم الناس الذين أعرفهم | most people I know",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0288L01U01",
+     "role": "use",
+     "known": "معظم الناس الذين أعرفهم يحبون التحدث بالإنجليزية كل يوم",
+     "target": "most people I know like speaking English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0291L01": {
+   "lego": "آمل أن أستطيع الكلام | I hope I'll be able to speak",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 42,
+   "avg_known_chars": 36,
+   "rows": [
+    {
+     "row": "S0291L01U01",
+     "role": "use",
+     "known": "آمل أن أستطيع الكلام بشكل أفضل قريباً لأنني أمارس كل يوم",
+     "target": "I hope I'll be able to speak better soon because I practise every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0297L01": {
+   "lego": "لا أعرف كثيراً من الناس الذين | I don't know many people who",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 43,
+   "avg_known_chars": 45,
+   "rows": [
+    {
+     "row": "S0297L01U05",
+     "role": "use",
+     "known": "لا أعرف كثيراً من الناس الذين يمارسون التحدث بالإنجليزية كل يوم",
+     "target": "I don't know many people who practise speaking English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

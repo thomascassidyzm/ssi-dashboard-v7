@@ -1,0 +1,145 @@
+{
+ "course": "ara_eg_for_eng",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {},
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0016L01",
+    "deletes": 4
+   },
+   {
+    "lego": "S0018L01",
+    "deletes": 6
+   },
+   {
+    "lego": "S0018L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0027L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0027L04",
+    "deletes": 2
+   },
+   {
+    "lego": "S0028L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0030L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0032L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0034L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0035L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0036L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0047L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0047L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0054L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0058L01",
+    "deletes": 3
+   },
+   {
+    "lego": "S0062L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0091L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0093L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0101L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0110L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0119L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0121L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0140L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0143L01",
+    "deletes": 1
+   }
+  ],
+  "drift": [
+   {
+    "row": "S0062L03U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0065L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0065L03U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0110L03U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0518L01U26",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 0
+}

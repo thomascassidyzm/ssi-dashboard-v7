@@ -1,0 +1,36 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ita:S0007L01B03",
+   "expect": {
+    "known_text": "non voglio provare",
+    "target_text": "I don't want to try"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ita:S0024L01B02",
+   "expect": {
+    "known_text": "non riuscirò a parlare",
+    "target_text": "I won't be able to speak"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ita:S0264L01U01",
+   "expect": {
+    "known_text": "un vecchio è venuto a chiedere aiuto",
+    "target_text": "an old man came to ask for help"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ita:S0264L01U05",
+   "expect": {
+    "known_text": "ho incontrato un vecchio che parlava inglese bene",
+    "target_text": "I met an old man who spoke English well"
+   }
+  }
+ ]
+}

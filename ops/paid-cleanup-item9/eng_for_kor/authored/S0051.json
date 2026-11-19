@@ -1,0 +1,36 @@
+{
+ "seed": 51,
+ "legos": {
+  "L01": {
+   "insert": [],
+   "update": {
+    "U01": [
+     "저는 다른 사람과 무언가를 하는 것을 즐겨요",
+     "I enjoy doing something with someone else"
+    ]
+   },
+   "keep": []
+  },
+  "L02": {
+   "insert": [],
+   "update": {
+    "U03": [
+     "그녀는 흥미로운 일을 배우고 싶어해요",
+     "she wants to learn interesting things"
+    ]
+   },
+   "keep": []
+  },
+  "L03": {
+   "insert": [],
+   "update": {
+    "U02": [
+     "저는 오늘 저녁에 친구들을 만날 거예요",
+     "I'm going to meet my friends this evening"
+    ]
+   },
+   "keep": []
+  }
+ },
+ "notes": "The other rows of these three baskets have known/target mismatches (e.g. U02 known lacks \"with people\"); not item 9, left alone, flagged in the report."
+}

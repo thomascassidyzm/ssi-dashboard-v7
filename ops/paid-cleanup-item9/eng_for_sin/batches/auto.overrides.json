@@ -1,0 +1,758 @@
+[
+ {
+  "seed_number": 94,
+  "phrases": {
+   "94:1": [
+    {
+     "known_text": "එකම දේ",
+     "target_text": "the only thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "එකම පිළිතුර",
+     "target_text": "the only answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒක එකම දේ මට සිදු කරන්න ඕනේ",
+     "target_text": "it is the only thing I need to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම පිළිතුර",
+     "target_text": "it is the only answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම දේ මට කියන්න ඕනේ",
+     "target_text": "it is the only thing I want to say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම දේ මට තේරෙනවා",
+     "target_text": "it is the only thing I understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම දේ මම කළා",
+     "target_text": "it is the only thing I've done",
+     "phrase_role": "use"
+    }
+   ],
+   "94:2": [
+    {
+     "known_text": "එකම ක්‍රමය",
+     "target_text": "the only way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "හොඳ ක්‍රමය",
+     "target_text": "a good way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ක්‍රමය ඉගෙනගන්න",
+     "target_text": "the way to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒක එකම ක්‍රමය ඉගෙනගන්න",
+     "target_text": "it is the only way to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම ක්‍රමය ඒක සිදු කරන්න",
+     "target_text": "it is the only way to do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක හොඳ ක්‍රමය ඉගෙනගන්න ඉංග්‍රීසි",
+     "target_text": "it is a good way to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම ක්‍රමය තේරුම් ගන්න",
+     "target_text": "it is the only way to understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම දන්නවා හොඳ ක්‍රමය",
+     "target_text": "I know a good way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම ක්‍රමය කතාබහ කරන්න ඒ අය එක්ක",
+     "target_text": "it is the only way to talk to you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක හොඳ ක්‍රමය කතා කරන්න ඉංග්‍රීසි",
+     "target_text": "it is a good way to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක එකම ක්‍රමය ඉගෙනගන්න වචන",
+     "target_text": "it is the only way to learn words",
+     "phrase_role": "use"
+    }
+   ],
+   "94:3": [
+    {
+     "known_text": "වැඩ",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "කරනවා",
+     "target_text": "do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "වැඩ කරනවා",
+     "target_text": "will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒක වැඩ කරනවා",
+     "target_text": "it will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒක වැඩ කරනවා හොඳට",
+     "target_text": "it will work well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒක වැඩ කරනවාද?",
+     "target_text": "will it work?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒක එකම ක්‍රමය ඒක වැඩ කරනවා",
+     "target_text": "this is the only way it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම හිතනවා ඒක වැඩ කරනවා",
+     "target_text": "I think it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක වැඩ කරනවාද ඔයා හිතනවා?",
+     "target_text": "do you think it will work?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මට විශ්වාස නෑ ඒක වැඩ කරනවාද කියලා",
+     "target_text": "I'm not sure if it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක වැඩ කරනවා ඔයා දිගටම කරන්නවා නම්",
+     "target_text": "it will work if you keep on doing it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම හිතනවා ඒක වැඩ කරනවා හොඳට",
+     "target_text": "I think it will work well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක ඉතා හොඳට වැඩ කරනවා",
+     "target_text": "it will work very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක වැඩ කරනවා ඔයා කළොත් බොහෝ",
+     "target_text": "it will work if you do a lot",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 117,
+  "phrases": {
+   "117:1": [
+    {
+     "known_text": "නිසැකවම",
+     "target_text": "definitely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම නිසැකවම",
+     "target_text": "I'm definitely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති",
+     "target_text": "I'm definitely ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති, මම ආශා",
+     "target_text": "I'm definitely ready, I hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති කියලා මම හිතනවා",
+     "target_text": "I think I'm definitely ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති, මම ලිහිල් වෙනවා",
+     "target_text": "I'm definitely ready, I relax",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒ නිසා මම නිසැකවම ලෑස්ති",
+     "target_text": "that is why I'm definitely ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති කියලා ඔයා දන්නවාද?",
+     "target_text": "do you know I'm definitely ready?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති, මම ඒ ගැන ලිහිල් වෙනවා",
+     "target_text": "I'm definitely ready, I relax about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති, මම ඒ ගැන අහන්නේ ආශා කළා",
+     "target_text": "I'm definitely ready, I hoped to ask about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම නිසැකවම ලෑස්ති, මම හොඳ වෙනස කළ හැකි",
+     "target_text": "I'm definitely ready, I could make the best choice",
+     "phrase_role": "use"
+    }
+   ],
+   "117:2": [
+    {
+     "known_text": "කතා",
+     "target_text": "talked",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "කළාට",
+     "target_text": "although ... did",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "කතා කළාට",
+     "target_text": "although I talked",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "අවසාන වෙලාවේ කතා කළාට",
+     "target_text": "although I talked last time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම ඒ ගැන කතා කළාට",
+     "target_text": "although I talked about that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම අවසාන වෙලාවේ ඒ ගැන කතා කළාට",
+     "target_text": "although I talked about that last time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒ නිසා මම ඒ ගැන කතා කළාට",
+     "target_text": "that is why I talked about that, although",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම ඒ ගැන කතා කළාට කියලා ඔයා දන්නවාද?",
+     "target_text": "do you know I talked about that, although?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 137,
+  "phrases": {
+   "137:1": [
+    {
+     "known_text": "පරිපූර්ණ වෙන්න ඕනේ නෑ",
+     "target_text": "you don't want to be perfect",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "පරිපූර්ණ වෙන්නට වඩා කතා කරන්න වැදගත්",
+     "target_text": "it's more important to talk than to be perfect",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "පරිපූර්ණ වෙන්නට වඩා නිතර කතා කරන්න වැදගත්",
+     "target_text": "it's more important to talk often than to be perfect",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඔයා පරිපූර්ණ වෙන්න ඕනේ නෑ",
+     "target_text": "you don't need to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක පරිපූර්ණ නෑ ඒත් හොඳයි",
+     "target_text": "it's not perfect but it's good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම පරිපූර්ණ නෑ",
+     "target_text": "I'm not perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක පරිපූර්ණ වෙන්න ඕනේ නෑ",
+     "target_text": "it doesn't want to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "පරිපූර්ණ වෙන්න ඕනේ නෑ කියලා හිතුවා",
+     "target_text": "I thought you don't need to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම හිතනවා ඒක පරිපූර්ණ නෑ කියලා",
+     "target_text": "I think that's not perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "පරිපූර්ණ වෙන්න අමාරුයි",
+     "target_text": "it's difficult to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒක පරිපූර්ණ නෑ ඒත් ඒක ප්‍රශ්නයක් නෑ",
+     "target_text": "it's not perfect but that's not a problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඇත්තෙන්ම පරිපූර්ණ වෙන්න ඕනේ නෑ",
+     "target_text": "of course you don't need to be perfect",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 168,
+  "phrases": {
+   "168:1": [
+    {
+     "known_text": "ඊට",
+     "target_text": "then",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "පස්සේ",
+     "target_text": "and",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ඊට පස්සේ",
+     "target_text": "and then",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඊට පස්සේ මම",
+     "target_text": "and then I",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඊට පස්සේ ඔයාට",
+     "target_text": "and then you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඊට පස්සේ කරන්න",
+     "target_text": "and then to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඊට පස්සේ මට ඔයා එක්ක කතා කරන්න ඕනේ",
+     "target_text": "and then I want to talk with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ මම ඉංග්‍රීසි පුහුණු වෙන්න හදනවා",
+     "target_text": "and then I'm going to practise English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ ඔයාට මොකද කරන්න ඕනේ",
+     "target_text": "and then what do you need to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ මට වෙන දෙයක් කරන්න ඕනේ",
+     "target_text": "and then I want to do something else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ කතා කරමු ඒ ගැන",
+     "target_text": "and then let's talk about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ මම ඒ පොත කියවන්න හදනවා",
+     "target_text": "and then I'm going to read that book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ මට යන්න ඕනේ",
+     "target_text": "and then I need to go",
+     "phrase_role": "use"
+    }
+   ],
+   "168:2": [
+    {
+     "known_text": "ආවට",
+     "target_text": "come",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "උදව් කරන්න",
+     "target_text": "help",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ආවට පස්සේ උදව් කරන්න",
+     "target_text": "come and help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ආවට පස්සේ උදව් කරන්න ඕනේ",
+     "target_text": "need to come and help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ආවට පස්සේ උදව් කරන්න පුළුවන්",
+     "target_text": "can come and help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ආවට පස්සේ උදව් කරන්න හදනවා",
+     "target_text": "going to come and help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මට ආවට පස්සේ උදව් කරන්න පුළුවන්",
+     "target_text": "I can come and help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ මම ආවට පස්සේ උදව් කරන්න හදනවා",
+     "target_text": "and then I'm going to come and help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මට ආවට පස්සේ උදව් කරන්න ඕනේ හෙට උදේ",
+     "target_text": "I need to come and help tomorrow morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔයාට ආවට පස්සේ උදව් කරන්න පුළුවන්ද ඉරිදා?",
+     "target_text": "can you come and help on Sunday?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම ආවට පස්සේ උදව් කරන්න උත්සාහ කරනවා",
+     "target_text": "I'm trying to come and help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මට ආවට පස්සේ උදව් කරන්න ඕනේ සෙනසුරාදා",
+     "target_text": "I need to come and help on Saturday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඊට පස්සේ මට ආවට පස්සේ උදව් කරන්න පුළුවන්",
+     "target_text": "and then I'll be able to come and help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔයාට හෙට දවල් ආවට පස්සේ උදව් කරන්න පුළුවන්ද?",
+     "target_text": "can you come and help tomorrow afternoon?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 205,
+  "phrases": {
+   "205:1": [
+    {
+     "known_text": "අමතක",
+     "target_text": "forgotten",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "වෙලා",
+     "target_text": "I've",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "අමතකවෙලා",
+     "target_text": "I've forgotten",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මගේ ලිපිය ගැන අමතකවෙලා",
+     "target_text": "I've forgotten about the letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "කලබල නෑ, අමතකවෙලා",
+     "target_text": "not nervous, I've forgotten",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මගේ වචනේ අමතකවෙලා",
+     "target_text": "I've forgotten the word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම කලබල නෑ, මගේ ලිපිය ගැන අමතකවෙලා",
+     "target_text": "I'm not nervous, I've forgotten about the letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මගේ කටයුතු ගැන අමතකවෙලා",
+     "target_text": "I've forgotten about the arrangements",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 306,
+  "phrases": {
+   "306:1": [
+    {
+     "known_text": "මම",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "දන්නවා",
+     "target_text": "know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "මම දන්නවා",
+     "target_text": "I know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම ඒ ස්ත්‍රිය දන්නවා",
+     "target_text": "I know that woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම ඔයාගේ යාළුවව දන්නවා",
+     "target_text": "I know your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම මගේ තාත්තාව දන්නවා",
+     "target_text": "I know my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම ඒ තරුණ ස්ත්‍රිය දන්නවා",
+     "target_text": "I know that young woman",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔයාට උදව් කරන්නයි ඇයට ඕනේ කියලා මම දන්නවා",
+     "target_text": "I know she wants to help you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "යන්නයි ඔහුට ඕනෑකමින් නෑ කියලා මම දන්නවා",
+     "target_text": "I know he doesn't want to go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒ ස්ත්‍රිය ඔයාගේ යාළුවා කියලා මම දන්නවා",
+     "target_text": "I know that woman is your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "කාටවත් විශ්වාස තිබුණේ නෑ කියලා මම දන්නවා",
+     "target_text": "I know nobody was sure",
+     "phrase_role": "use"
+    }
+   ],
+   "306:2": [
+    {
+     "known_text": "ඒ",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "තරුණ",
+     "target_text": "young",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ස්ත්‍රිය",
+     "target_text": "woman",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ඒ තරුණ ස්ත්‍රිය",
+     "target_text": "that young woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මම ඒ තරුණ ස්ත්‍රිය දන්නවා",
+     "target_text": "I know that young woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒ තරුණ ස්ත්‍රිය මගේ යාළුවා",
+     "target_text": "that young woman is my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඔයා ඒ තරුණ ස්ත්‍රිය දන්නවද?",
+     "target_text": "do you know that young woman?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඒ තරුණ ස්ත්‍රිය ඔයාගේ යාළුවා",
+     "target_text": "that young woman is your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මට ඒ තරුණ ස්ත්‍රිය එක්ක කතා කරන්නයි ඕනේ",
+     "target_text": "I want to speak to that young woman",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒ තරුණ ස්ත්‍රිය මගේ හොඳ යාළුවා",
+     "target_text": "that young woman is my good friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මම අද ඒ තරුණ ස්ත්‍රිය හම්බ වුණා",
+     "target_text": "I met that young woman today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඒ තරුණ ස්ත්‍රිය ඉංග්‍රීසි කතා කරනවා",
+     "target_text": "that young woman speaks English",
+     "phrase_role": "use"
+    }
+   ],
+   "306:3": [
+    {
+     "known_text": "කතා කරන ඒ තරුණ ස්ත්‍රිය",
+     "target_text": "that young woman who's talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඔයාගේ යාළුවා එක්ක කතා කරන ස්ත්‍රිය",
+     "target_text": "the woman who's talking to your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "කතා කරන ස්ත්‍රිය මම දන්නවා",
+     "target_text": "I know the woman who's talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඔයාගේ යාළුවා එක්ක කතා කරන ඒ තරුණ ස්ත්‍රිය මම දන්නවා",
+     "target_text": "I know that young woman who's talking to your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "කතා කරන ස්ත්‍රිය ඔයා දන්නවද?",
+     "target_text": "do you know the woman who's talking?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "කතා කරන ඒ තරුණ ස්ත්‍රිය මගේ යාළුවා",
+     "target_text": "that young woman who's talking is my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "කතා කරන ස්ත්‍රිය ඔයාගේ යාළුවා",
+     "target_text": "the woman who's talking is your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔයා එක්ක කතා කරන ඒ තරුණ ස්ත්‍රිය මම දන්නවා",
+     "target_text": "I know the young woman who's talking to you",
+     "phrase_role": "use"
+    }
+   ],
+   "306:4": [
+    {
+     "known_text": "ඔයාගේ",
+     "target_text": "your",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "යාළුවට",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ඔයාගේ යාළුවට",
+     "target_text": "to your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඔයාගේ යාළුවා එක්ක කතා කරන",
+     "target_text": "talking to your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මට ඔයාගේ යාළුවා එක්ක කතා කරන්නයි ඕනේ",
+     "target_text": "I want to speak to your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ඇය ඔයාගේ යාළුවා එක්ක කතා කරනවා",
+     "target_text": "she's talking to your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "මට අද ඔයාගේ යාළුවා එක්ක කතා කරන්නයි ඕනේ",
+     "target_text": "I want to speak to your friend today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔයාගේ යාළුවා එක්ක කතා කරන්නයි ඇයට ඕනේ",
+     "target_text": "she wants to talk to your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔයාගේ යාළුවා එක්ක කතා කරන්නයි ඔයාට ඕනේද?",
+     "target_text": "do you want to talk to your friend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ඔහු දැන් ඔයාගේ යාළුවා එක්ක කතා කරනවා",
+     "target_text": "he's talking to your friend now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "මට ඔයාගේ යාළුවා එක්ක ඉංග්‍රීසි කතා කරන්නයි ඕනේ",
+     "target_text": "I want to speak English to your friend",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

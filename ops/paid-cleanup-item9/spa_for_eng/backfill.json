@@ -1,0 +1,1801 @@
+{
+ "course": "spa_for_eng",
+ "at": "2026-11-18T18:40:57.751Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0095L02": {
+   "lego": "the next bus | el próximo autobús",
+   "before": "already under floor",
+   "delete": 18,
+   "counted_before": {
+    "b": 4,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 1
+   },
+   "author_build": 3,
+   "author_use": 4,
+   "avg_target_chars": 38,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0095L02B02",
+     "role": "build",
+     "known": "To take the next bus",
+     "target": "Tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02B03",
+     "role": "build",
+     "known": "I want to take the next bus",
+     "target": "Quiero tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02B04",
+     "role": "build",
+     "known": "I can take the next bus",
+     "target": "Puedo tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02B05",
+     "role": "build",
+     "known": "I need to take the next bus",
+     "target": "Necesito tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U01",
+     "role": "use",
+     "known": "I want to take the next bus",
+     "target": "Quiero tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U02",
+     "role": "use",
+     "known": "I need to take the next bus",
+     "target": "Necesito tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U03",
+     "role": "use",
+     "known": "I need to take the next bus now",
+     "target": "Necesito tomar el próximo autobús ahora",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U04",
+     "role": "use",
+     "known": "I would like to take the next bus",
+     "target": "Me gustaría tomar el próximo autobús",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U05",
+     "role": "use",
+     "known": "I can take the next bus now",
+     "target": "Puedo tomar el próximo autobús ahora",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U06",
+     "role": "use",
+     "known": "I want to take the next bus home",
+     "target": "Quiero tomar el próximo autobús para ir a casa",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U07",
+     "role": "use",
+     "known": "I need to take the next bus home tonight",
+     "target": "Necesito tomar el próximo autobús para ir a casa esta noche",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U08",
+     "role": "use",
+     "known": "You can take the next bus",
+     "target": "Puedes tomar el próximo autobús",
+     "untaught": [
+      "puedes",
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U09",
+     "role": "use",
+     "known": "You can take the next bus this afternoon",
+     "target": "Puedes tomar el próximo autobús esta tarde",
+     "untaught": [
+      "puedes",
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U10",
+     "role": "use",
+     "known": "I think I can take the next bus home",
+     "target": "Creo que puedo tomar el próximo autobús para ir a casa",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U11",
+     "role": "use",
+     "known": "I'm going to take the next bus now",
+     "target": "Voy a tomar el próximo autobús ahora",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U12",
+     "role": "use",
+     "known": "I'm going to take the next bus home tonight",
+     "target": "Voy a tomar el próximo autobús para ir a casa esta noche",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U13",
+     "role": "use",
+     "known": "I would like to take the next bus home this evening",
+     "target": "Me gustaría tomar el próximo autobús para ir a casa esta tarde",
+     "untaught": [
+      "tomar"
+     ]
+    },
+    {
+     "row": "S0095L02U14",
+     "role": "use",
+     "known": "I need to take the next bus home as soon as possible",
+     "target": "Necesito tomar el próximo autobús para ir a casa lo antes posible",
+     "untaught": [
+      "tomar"
+     ]
+    }
+   ]
+  },
+  "S0109L01": {
+   "lego": "we must | tenemos que",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 54,
+   "avg_known_chars": 50,
+   "rows": [
+    {
+     "row": "S0109L01U09",
+     "role": "use",
+     "known": "She said we have to stop worrying and just try to enjoy speaking Spanish every day",
+     "target": "Ella dijo que tenemos que dejar de preocuparnos y solo intentar disfrutar hablando español todos los días",
+     "untaught": [
+      "preocuparnos",
+      "disfrutar",
+      "días"
+     ]
+    }
+   ]
+  },
+  "S0112L04": {
+   "lego": "that was very interesting | eso fue muy interesante",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 9
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 47,
+   "avg_known_chars": 50,
+   "rows": [
+    {
+     "row": "S0112L04B06",
+     "role": "build",
+     "known": "I thought that was very interesting",
+     "target": "Pensé que eso fue muy interesante",
+     "untaught": [
+      "pensé"
+     ]
+    }
+   ]
+  },
+  "S0120L04": {
+   "lego": "it's interesting that you like to go by bus | Es interesante que te guste ir en autobús",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 4,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 53,
+   "avg_known_chars": 54,
+   "rows": [
+    {
+     "row": "S0120L04B04",
+     "role": "build",
+     "known": "It is interesting that you like to go by bus with us",
+     "target": "Es interesante que te guste ir en autobús con nosotros",
+     "untaught": [
+      "nosotros"
+     ]
+    },
+    {
+     "row": "S0120L04U08",
+     "role": "use",
+     "known": "I think it is interesting that you like to go by bus with us",
+     "target": "Creo que es interesante que te guste ir en autobús con nosotros",
+     "untaught": [
+      "nosotros"
+     ]
+    }
+   ]
+  },
+  "S0121L01": {
+   "lego": "unusual | raro",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 5,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0121L01U01",
+     "role": "use",
+     "known": "It is very unusual that you do not want to speak with us now",
+     "target": "Es muy raro que no quieras hablar con nosotros ahora",
+     "untaught": [
+      "nosotros"
+     ]
+    },
+    {
+     "row": "S0121L01U02",
+     "role": "use",
+     "known": "It is unusual that you do not want to start to speak with us",
+     "target": "Es raro que no quieras empezar a hablar con nosotros",
+     "untaught": [
+      "nosotros"
+     ]
+    },
+    {
+     "row": "S0121L01U05",
+     "role": "use",
+     "known": "I think it is a bit unusual when you do not want to speak Spanish with us",
+     "target": "Creo que es un poco raro cuando no quieres hablar español con nosotros",
+     "untaught": [
+      "nosotros"
+     ]
+    }
+   ]
+  },
+  "S0123L02": {
+   "lego": "idea | idea",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 46,
+   "avg_known_chars": 45,
+   "rows": [
+    {
+     "row": "S0123L02U07",
+     "role": "use",
+     "known": "It's a good idea to practise as much as you can with your friend",
+     "target": "Es una buena idea practicar todo lo que puedas con tu amigo",
+     "untaught": [
+      "buena",
+      "puedas"
+     ]
+    }
+   ]
+  },
+  "S0126L03": {
+   "lego": "changing | cambiando",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0126L03U13",
+     "role": "use",
+     "known": "It's changing how I learn Spanish",
+     "target": "Está cambiando cómo aprendo español",
+     "untaught": [
+      "aprendo"
+     ]
+    }
+   ]
+  },
+  "S0128L02": {
+   "lego": "like | como",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 26,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0128L02B04",
+     "role": "build",
+     "known": "Like you",
+     "target": "Como tú",
+     "untaught": [
+      "tú"
+     ]
+    },
+    {
+     "row": "S0128L02U02",
+     "role": "use",
+     "known": "He wants to practise like you, because you are very good",
+     "target": "Él quiere practicar como tú, porque eres muy bueno",
+     "untaught": [
+      "tú"
+     ]
+    },
+    {
+     "row": "S0128L02U04",
+     "role": "use",
+     "known": "I know there is no one like you for explaining this",
+     "target": "Sé que no hay nadie como tú para explicar esto",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0128L03": {
+   "lego": "someone | alguien",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 41,
+   "avg_known_chars": 41,
+   "rows": [
+    {
+     "row": "S0128L03B03",
+     "role": "build",
+     "known": "Someone like you",
+     "target": "Alguien como tú",
+     "untaught": [
+      "tú"
+     ]
+    },
+    {
+     "row": "S0128L03U03",
+     "role": "use",
+     "known": "He wants to find someone like you to practise with",
+     "target": "Él quiere encontrar a alguien como tú para practicar",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0129L04": {
+   "lego": "that you're | que estés",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 38,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0129L04U02",
+     "role": "use",
+     "known": "I want you to be here with us tomorrow",
+     "target": "Quiero que estés aquí con nosotros mañana",
+     "untaught": [
+      "nosotros"
+     ]
+    },
+    {
+     "row": "S0129L04U05",
+     "role": "use",
+     "known": "How good that you are here with us",
+     "target": "Qué bueno que estés aquí con nosotros",
+     "untaught": [
+      "nosotros"
+     ]
+    }
+   ]
+  },
+  "S0132L04": {
+   "lego": "she was saying | ella estaba diciendo",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 6,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 6,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 59,
+   "avg_known_chars": 55,
+   "rows": [
+    {
+     "row": "S0132L04U01",
+     "role": "use",
+     "known": "I did not understand what she was saying so quickly when I started to listen",
+     "target": "No entendí lo que ella estaba diciendo tan rápido cuando empecé a escuchar ",
+     "untaught": [
+      "entendí"
+     ]
+    }
+   ]
+  },
+  "S0133L01": {
+   "lego": "you get to know someone | llegas a conocer a alguien",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 58,
+   "avg_known_chars": 52,
+   "rows": [
+    {
+     "row": "S0133L01B06",
+     "role": "build",
+     "known": "She said you get to know someone when you work hard with another person",
+     "target": "Ella dijo que llegas a conocer a alguien cuando trabajas mucho con otra persona",
+     "untaught": [
+      "trabajas",
+      "mucho"
+     ]
+    }
+   ]
+  },
+  "S0134L01": {
+   "lego": "it's not a problem | no es un problema",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 62,
+   "avg_known_chars": 63,
+   "rows": [
+    {
+     "row": "S0134L01U10",
+     "role": "use",
+     "known": "She said it is not a problem to take more time when you want to work on something new",
+     "target": "Ella dijo que no es un problema tomar más tiempo cuando quieres trabajar en algo nuevo",
+     "untaught": [
+      "tomar",
+      "nuevo"
+     ]
+    }
+   ]
+  },
+  "S0161L01": {
+   "lego": "can you | puedes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 51,
+   "avg_known_chars": 52,
+   "rows": [
+    {
+     "row": "S0161L01U05",
+     "role": "use",
+     "known": "Can you tell me what you think about that because I want to know what you think?",
+     "target": "¿Puedes decirme qué piensas de eso porque quiero saber lo que piensas?",
+     "untaught": [
+      "piensas"
+     ]
+    }
+   ]
+  },
+  "S0161L05": {
+   "lego": "on Sunday morning | el domingo por la mañana",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 53,
+   "avg_known_chars": 50,
+   "rows": [
+    {
+     "row": "S0161L05U13",
+     "role": "use",
+     "known": "On Sunday morning I want to know what you think about that",
+     "target": "El domingo por la mañana quiero saber qué piensas de eso",
+     "untaught": [
+      "piensas"
+     ]
+    }
+   ]
+  },
+  "S0170L02": {
+   "lego": "I'd like you to tell me what you need | Me gustaría que me dijeras lo que necesitas",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 53,
+   "avg_known_chars": 48,
+   "rows": [
+    {
+     "row": "S0170L02U14",
+     "role": "use",
+     "known": "I think about it a lot and I'd like you to tell me what you need",
+     "target": "Pienso mucho en eso y me gustaría que me dijeras lo que necesitas",
+     "untaught": [
+      "pienso",
+      "mucho"
+     ]
+    }
+   ]
+  },
+  "S0181L04": {
+   "lego": "I have to take my mother to the doctor | tengo que llevar a mi madre al médico",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 53,
+   "avg_known_chars": 55,
+   "rows": [
+    {
+     "row": "S0181L04B06",
+     "role": "build",
+     "known": "I always have to take my mother to the doctor",
+     "target": "Siempre tengo que llevar a mi madre al médico",
+     "untaught": [
+      "siempre"
+     ]
+    }
+   ]
+  },
+  "S0188L02": {
+   "lego": "therefore | así que",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 51,
+   "avg_known_chars": 48,
+   "rows": [
+    {
+     "row": "S0188L02U09",
+     "role": "use",
+     "known": "I know you are tired so I do not want to take too much of your time today",
+     "target": "Sé que estás cansado así que no quiero tomar demasiado de tu tiempo hoy",
+     "untaught": [
+      "tomar"
+     ]
+    }
+   ]
+  },
+  "S0190L01": {
+   "lego": "I make | hago",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 52,
+   "avg_known_chars": 46,
+   "rows": [
+    {
+     "row": "S0190L01U10",
+     "role": "use",
+     "known": "I do not always do it the best way but I know I am learning",
+     "target": "No siempre lo hago de la mejor manera pero sé que estoy aprendiendo",
+     "untaught": [
+      "siempre"
+     ]
+    }
+   ]
+  },
+  "S0200L03": {
+   "lego": "to make sure that | asegurarse de que",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 4,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 43,
+   "rows": [
+    {
+     "row": "S0200L03B03",
+     "role": "build",
+     "known": "To make sure that it is going to work",
+     "target": "Asegurarse de que vaya a funcionar",
+     "untaught": [
+      "vaya"
+     ]
+    },
+    {
+     "row": "S0200L03U06",
+     "role": "use",
+     "known": "They say we need to make sure that everything is ready before we start",
+     "target": "Dicen que necesitamos asegurarnos de que todo esté listo antes de empezar",
+     "untaught": [
+      "asegurarnos",
+      "esté"
+     ]
+    },
+    {
+     "row": "S0200L03U08",
+     "role": "use",
+     "known": "they want to make sure that everything is ready",
+     "target": "quieren asegurarse de que todo esté listo",
+     "untaught": [
+      "esté"
+     ]
+    }
+   ]
+  },
+  "S0203L01": {
+   "lego": "what would you do | qué harías",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 20,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0203L01B03",
+     "role": "build",
+     "known": "What would you do?",
+     "target": "¿Qué harías tú?",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0206L02": {
+   "lego": "opportunity | oportunidad",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 16
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 15
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 64,
+   "avg_known_chars": 60,
+   "rows": [
+    {
+     "row": "S0206L02U08",
+     "role": "use",
+     "known": "This is an important opportunity to show what you have learned so far",
+     "target": "Esta es una oportunidad importante de mostrar lo que has aprendido hasta ahora",
+     "untaught": [
+      "mostrar"
+     ]
+    }
+   ]
+  },
+  "S0211L02": {
+   "lego": "told us that | dijeron que",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 48,
+   "avg_known_chars": 54,
+   "rows": [
+    {
+     "row": "S0211L02U05",
+     "role": "use",
+     "known": "They told us that it was going to take a long time to explain everything well",
+     "target": "Nos dijeron que iba a tomar mucho tiempo explicar todo bien",
+     "untaught": [
+      "tomar",
+      "mucho"
+     ]
+    }
+   ]
+  },
+  "S0225L02": {
+   "lego": "answer | respuesta",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 57,
+   "avg_known_chars": 56,
+   "rows": [
+    {
+     "row": "S0225L02U13",
+     "role": "use",
+     "known": "I think your idea was very good but I need to know the answer first",
+     "target": "Creo que tu idea fue muy buena pero primero necesito saber la respuesta",
+     "untaught": [
+      "primero"
+     ]
+    }
+   ]
+  },
+  "S0225L03": {
+   "lego": "if he could | si pudiera",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 57,
+   "avg_known_chars": 60,
+   "rows": [
+    {
+     "row": "S0225L03U02",
+     "role": "use",
+     "known": "I am not sure if I can help you at the same time but I would if I could",
+     "target": "No estoy seguro de si puedo ayudarte al mismo tiempo pero te ayudaría si pudiera",
+     "untaught": [
+      "ayudaría"
+     ]
+    },
+    {
+     "row": "S0225L03U15",
+     "role": "use",
+     "known": "I would remember the way if I could but I have forgotten where it is",
+     "target": "Recordaría cómo ir si pudiera pero he olvidado dónde está",
+     "untaught": [
+      "recordaría"
+     ]
+    }
+   ]
+  },
+  "S0239L01": {
+   "lego": "my mother | mi madre",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 43,
+   "avg_known_chars": 48,
+   "rows": [
+    {
+     "row": "S0239L01U02",
+     "role": "use",
+     "known": "My mother wanted to see you this afternoon but she couldn't",
+     "target": "Mi madre quería verte esta tarde pero no pudo",
+     "untaught": [
+      "pudo"
+     ]
+    }
+   ]
+  },
+  "S0243L02": {
+   "lego": "the same thing | lo mismo",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 4,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0243L02U01",
+     "role": "use",
+     "known": "I want to do the same thing as you",
+     "target": "Quiero hacer lo mismo que tú",
+     "untaught": [
+      "tú"
+     ]
+    },
+    {
+     "row": "S0243L02U10",
+     "role": "use",
+     "known": "I want to learn the same thing as you",
+     "target": "Quiero aprender lo mismo que tú",
+     "untaught": [
+      "tú"
+     ]
+    },
+    {
+     "row": "S0243L02U15",
+     "role": "use",
+     "known": "I want to try the same thing and see if it works",
+     "target": "Quiero intentar lo mismo y ver si funciona",
+     "untaught": [
+      "funciona"
+     ]
+    }
+   ]
+  },
+  "S0243L03": {
+   "lego": "to eat | comer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 39,
+   "rows": [
+    {
+     "row": "S0243L03U06",
+     "role": "use",
+     "known": "I'm going to eat the same thing as you",
+     "target": "Voy a comer lo mismo que tú",
+     "untaught": [
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0251L01": {
+   "lego": "I don't want to find out until after we finish | no quiero descubrirlo hasta después de que terminemos",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 67,
+   "avg_known_chars": 62,
+   "rows": [
+    {
+     "row": "S0251L01U02",
+     "role": "use",
+     "known": "I told them I don't want to find out until after we finish all the work",
+     "target": "Les dije que no quiero descubrirlo hasta después de que terminemos todo el trabajo",
+     "untaught": [
+      "les",
+      "dije"
+     ]
+    }
+   ]
+  },
+  "S0252L02": {
+   "lego": "when will you be ready to start | Cuándo estarás listo para empezar",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 47,
+   "avg_known_chars": 45,
+   "rows": [
+    {
+     "row": "S0252L02B03",
+     "role": "build",
+     "known": "I need to know when you will be ready to start so I can organise things",
+     "target": "Necesito saber cuándo estarás listo para empezar para poder arreglar las cosas",
+     "untaught": [
+      "arreglar"
+     ]
+    }
+   ]
+  },
+  "S0253L01": {
+   "lego": "I should be ready in a few minutes | debería estar listo en unos minutos",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 12
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 57,
+   "avg_known_chars": 54,
+   "rows": [
+    {
+     "row": "S0253L01B06",
+     "role": "build",
+     "known": "Just give me a little time and I should be ready in a few minutes",
+     "target": "Dame un poco de tiempo y debería estar listo en unos minutos",
+     "untaught": [
+      "dame"
+     ]
+    },
+    {
+     "row": "S0253L01U05",
+     "role": "use",
+     "known": "Give me a moment and I should be ready in a few minutes to go",
+     "target": "Dame un momento y debería estar listo en unos minutos para irme",
+     "untaught": [
+      "dame"
+     ]
+    }
+   ]
+  },
+  "S0262L03": {
+   "lego": "who you were talking to | con el que estabas hablando",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 57,
+   "avg_known_chars": 52,
+   "rows": [
+    {
+     "row": "S0262L03U05",
+     "role": "use",
+     "known": "The man who you were talking to yesterday was also talking to me",
+     "target": "Ese hombre con el que estabas hablando ayer estaba hablando conmigo también",
+     "untaught": [
+      "también"
+     ]
+    }
+   ]
+  },
+  "S0273L01": {
+   "lego": "too much work | demasiado trabajo",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0273L01U04",
+     "role": "use",
+     "known": "I always have too much work",
+     "target": "Siempre tengo demasiado trabajo",
+     "untaught": [
+      "siempre"
+     ]
+    }
+   ]
+  },
+  "S0277L01": {
+   "lego": "a meeting | una reunión",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 57,
+   "avg_known_chars": 58,
+   "rows": [
+    {
+     "row": "S0277L01U03",
+     "role": "use",
+     "known": "He said the meeting was a very good idea and everyone was happy with it",
+     "target": "Él dijo que la reunión fue una muy buena idea y que todos estaban contentos con eso",
+     "untaught": [
+      "estaban"
+     ]
+    }
+   ]
+  },
+  "S0277L03": {
+   "lego": "at the beginning of | a principios de",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 70,
+   "avg_known_chars": 64,
+   "rows": [
+    {
+     "row": "S0277L03U11",
+     "role": "use",
+     "known": "I think we should try to get together at the beginning of next week if we can",
+     "target": "Creo que deberíamos intentar reunirnos a principios de la semana que viene, si podemos",
+     "untaught": [
+      "deberíamos",
+      "podemos"
+     ]
+    }
+   ]
+  },
+  "S0283L02": {
+   "lego": "your friends | tus amigos",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 33,
+   "avg_known_chars": 36,
+   "rows": [
+    {
+     "row": "S0283L02U01",
+     "role": "use",
+     "known": "I would like to talk about your friends and what they think about learning Spanish",
+     "target": "Me gustaría hablar sobre tus amigos y lo que piensan sobre aprender español",
+     "untaught": [
+      "piensan"
+     ]
+    },
+    {
+     "row": "S0283L02U08",
+     "role": "use",
+     "known": "I want to talk about your friends and what they think about this",
+     "target": "Quiero hablar sobre tus amigos y lo que piensan sobre esto",
+     "untaught": [
+      "piensan"
+     ]
+    }
+   ]
+  },
+  "S0283L03": {
+   "lego": "they speak | hablan",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 39,
+   "avg_known_chars": 39,
+   "rows": [
+    {
+     "row": "S0283L03U02",
+     "role": "use",
+     "known": "My friends speak Spanish a lot among themselves",
+     "target": "Mis amigos hablan español mucho entre ellos",
+     "untaught": [
+      "entre"
+     ]
+    }
+   ]
+  },
+  "S0291L01": {
+   "lego": "I hope | espero",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 4,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 40,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0291L01B03",
+     "role": "build",
+     "known": "I hope it is going to work",
+     "target": "Espero que vaya a funcionar",
+     "untaught": [
+      "vaya"
+     ]
+    },
+    {
+     "row": "S0291L01U06",
+     "role": "use",
+     "known": "I hope she is going to be there this afternoon",
+     "target": "Espero que ella vaya a estar allí esta tarde",
+     "untaught": [
+      "vaya"
+     ]
+    },
+    {
+     "row": "S0291L01U07",
+     "role": "use",
+     "known": "I hope everything is going to work out",
+     "target": "Espero que todo vaya a funcionar",
+     "untaught": [
+      "vaya"
+     ]
+    },
+    {
+     "row": "S0291L01U15",
+     "role": "use",
+     "known": "I hope most of my friends want to learn more",
+     "target": "Espero que la mayoría de mis amigos quieran aprender más",
+     "untaught": [
+      "quieran"
+     ]
+    }
+   ]
+  },
+  "S0291L02": {
+   "lego": "to be able to speak better soon | poder hablar mejor pronto",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 4,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 52,
+   "avg_known_chars": 57,
+   "rows": [
+    {
+     "row": "S0291L02U02",
+     "role": "use",
+     "known": "I want to be able to speak better soon to talk with anyone I meet",
+     "target": "Quiero poder hablar mejor pronto para hablar con personas que conozca",
+     "untaught": [
+      "conozca"
+     ]
+    },
+    {
+     "row": "S0291L02U05",
+     "role": "use",
+     "known": "My friend told me he hopes to be able to speak better soon",
+     "target": "Mi amigo me dijo que espera poder hablar mejor pronto",
+     "untaught": [
+      "espera"
+     ]
+    },
+    {
+     "row": "S0291L02U09",
+     "role": "use",
+     "known": "I hope to be able to speak better soon so I can talk with people I meet",
+     "target": "Espero poder hablar mejor pronto para hablar con personas que conozca",
+     "untaught": [
+      "conozca"
+     ]
+    },
+    {
+     "row": "S0291L02U11",
+     "role": "use",
+     "known": "I know that being able to speak better soon is something that can take time",
+     "target": "Sé que poder hablar mejor pronto es algo que puede tomar tiempo",
+     "untaught": [
+      "tomar"
+     ]
+    }
+   ]
+  },
+  "S0403L01": {
+   "lego": "we should | deberíamos",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0403L01U05",
+     "role": "use",
+     "known": "I always thought we should do it",
+     "target": "siempre pensé que deberíamos hacerlo",
+     "untaught": [
+      "siempre"
+     ]
+    }
+   ]
+  },
+  "S0406L02": {
+   "lego": "I'm sure that | estoy seguro de que",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0406L02U06",
+     "role": "use",
+     "known": "I'm always sure it will work out very soon",
+     "target": "siempre estoy seguro de que estará bien muy pronto",
+     "untaught": [
+      "siempre"
+     ]
+    }
+   ]
+  },
+  "S0428L01": {
+   "lego": "Tuesday | martes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0428L01U03",
+     "role": "use",
+     "known": "I was sure she'd be here on Tuesday",
+     "target": "estaba seguro de que estaría aquí el martes",
+     "untaught": [
+      "estaría"
+     ]
+    }
+   ]
+  },
+  "S0440L03": {
+   "lego": "they're still young | todavía son jóvenes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0440L03U07",
+     "role": "use",
+     "known": "they should do it while they're still young",
+     "target": "deberían hacerlo mientras todavía son jóvenes",
+     "untaught": [
+      "deberían"
+     ]
+    }
+   ]
+  },
+  "S0462L03": {
+   "lego": "during the war | durante la guerra",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0462L03U05",
+     "role": "use",
+     "known": "I want to know about what happened during the war",
+     "target": "quiero saber lo que pasó durante la guerra",
+     "untaught": [
+      "pasó"
+     ]
+    }
+   ]
+  },
+  "S0491L03": {
+   "lego": "try to help | intentas ayudar",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0491L03U06",
+     "role": "use",
+     "known": "you always try to help",
+     "target": "siempre intentas ayudar",
+     "untaught": [
+      "siempre"
+     ]
+    }
+   ]
+  },
+  "S0518L02": {
+   "lego": "having exactly | teniendo exactamente",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0518L02U03",
+     "role": "use",
+     "known": "having exactly this much",
+     "target": "teniendo exactamente esta cantidad",
+     "untaught": [
+      "cantidad"
+     ]
+    }
+   ]
+  },
+  "S0521L01": {
+   "lego": "I'm afraid that | me temo que",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 20,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0521L01U04",
+     "role": "use",
+     "known": "I'm afraid that it happened before",
+     "target": "me temo que pasó antes",
+     "untaught": [
+      "pasó"
+     ]
+    },
+    {
+     "row": "S0521L01U05",
+     "role": "use",
+     "known": "I'm afraid that it happened yesterday",
+     "target": "me temo que pasó ayer",
+     "untaught": [
+      "pasó"
+     ]
+    }
+   ]
+  },
+  "S0530L01": {
+   "lego": "so I can count them | para que pueda contarlas",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0530L01B02",
+     "role": "build",
+     "known": "we need to look so I can count them",
+     "target": "necesitamos mirar para que pueda contarlas",
+     "untaught": [
+      "mirar"
+     ]
+    }
+   ]
+  },
+  "S0532L01": {
+   "lego": "unless | a menos que",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 4
+   },
+   "author_build": 2,
+   "author_use": 0,
+   "avg_target_chars": 46,
+   "avg_known_chars": 42,
+   "rows": [
+    {
+     "row": "S0532L01B02",
+     "role": "build",
+     "known": "unless you say yes",
+     "target": "a menos que digas que sí",
+     "untaught": [
+      "digas"
+     ]
+    },
+    {
+     "row": "S0532L01B04",
+     "role": "build",
+     "known": "unless he speaks before you",
+     "target": "a menos que él hable antes que tú",
+     "untaught": [
+      "hable",
+      "tú"
+     ]
+    }
+   ]
+  },
+  "S0538L01": {
+   "lego": "I don't want to seem | no quiero parecer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0538L01U03",
+     "role": "use",
+     "known": "I don't want to seem older than I am",
+     "target": "no quiero parecer mayor de lo que soy",
+     "untaught": [
+      "soy"
+     ]
+    }
+   ]
+  },
+  "S0573L04": {
+   "lego": "very special | muy especiales",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0573L04U06",
+     "role": "use",
+     "known": "my friends are very special to me",
+     "target": "mis amigos son muy especiales para mí",
+     "untaught": [
+      "mí"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

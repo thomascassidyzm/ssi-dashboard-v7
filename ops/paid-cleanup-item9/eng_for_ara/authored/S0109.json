@@ -1,0 +1,30 @@
+{
+ "seed": 109,
+ "legos": {
+  "L01": {
+   "insert": [],
+   "update": {
+    "B02": [
+     "يجب أن نعمل بجد اليوم",
+     "we must work hard today"
+    ],
+    "U02": [
+     "أتفق مع صديقي أننا يجب أن نعمل بجد",
+     "I agree with my friend that we must work hard"
+    ]
+   },
+   "keep": []
+  },
+  "L02": {
+   "insert": [],
+   "update": {
+    "U03": [
+     "أحتاج وقتاً أكثر قليلاً لتعلم الكثير من الكلمات الجديدة",
+     "I need a little more time to learn a lot of new words"
+    ]
+   },
+   "keep": []
+  }
+ },
+ "notes": "item 9 back-fill: planned-delete rows rewritten in place from taught words"
+}

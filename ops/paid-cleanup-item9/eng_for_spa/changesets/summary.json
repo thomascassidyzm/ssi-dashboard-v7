@@ -1,0 +1,73 @@
+{
+ "course": "eng_for_spa",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {},
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0011L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0040L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0043L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0063L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0064L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0082L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0096L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0099L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0145L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0184L02",
+    "deletes": 1
+   }
+  ],
+  "drift": [
+   {
+    "row": "S0026L04B03",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 0
+}

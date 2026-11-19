@@ -1,0 +1,308 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0007L01B03",
+   "expect": {
+    "known_text": "لا أريد أن أحاول",
+    "target_text": "I don't want to try"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0013L01U06",
+   "expect": {
+    "known_text": "أنت تتكلم الإنجليزية مع الجميع",
+    "target_text": "you speak English with everyone else"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0019L01U07",
+   "expect": {
+    "known_text": "أريد أن أتعلم بسرعة لكنني متعب اليوم",
+    "target_text": "I want to learn quickly but I'm tired today"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0020L02U06",
+   "expect": {
+    "known_text": "لا أستطيع أن أتذكر اسمه الآن",
+    "target_text": "I can't remember his name now"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0044L03U06",
+   "expect": {
+    "known_text": "من المهم أن تتحسن في أقرب وقت ممكن",
+    "target_text": "it's important to improve as soon as you can"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0046L01U05",
+   "expect": {
+    "known_text": "لا أقلق لأنني أعمل بجد كل يوم",
+    "target_text": "I don't worry because I work hard every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0046L02U05",
+   "expect": {
+    "known_text": "أعتقد أن ارتكاب الأخطاء شيء جيد",
+    "target_text": "I think that making mistakes is a good thing"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0054L01B03",
+   "expect": {
+    "known_text": "لم نُرد أن",
+    "target_text": "we didn't want to"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0058L02U04",
+   "expect": {
+    "known_text": "أنا أحاول أن أتعلم كلمات كافية كل يوم",
+    "target_text": "I'm trying to learn enough words every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0101L01U01",
+   "expect": {
+    "known_text": "أستمتع باكتشاف شيء مختلف كل يوم",
+    "target_text": "I'm enjoying finding out something different every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0106L02B02",
+   "expect": {
+    "known_text": "نحتاج فقط أن نعمل بجد كل يوم",
+    "target_text": "we just need to work hard every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0109L01B02",
+   "expect": {
+    "known_text": "يجب أن نعمل بجد كل يوم",
+    "target_text": "we must work hard every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0109L01U02",
+   "expect": {
+    "known_text": "يجب أن نعمل بجد كل يوم هذا الأسبوع",
+    "target_text": "we must work hard every day this week"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0109L02U03",
+   "expect": {
+    "known_text": "من المفيد تعلم الكثير من الكلمات الجديدة كل يوم",
+    "target_text": "it's useful to learn a lot of new words every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0120L02B03",
+   "expect": {
+    "known_text": "تحب الذهاب بالحافلة كل يوم",
+    "target_text": "like to go by bus every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0122L01U02",
+   "expect": {
+    "known_text": "يبدأ الأمر في الشعور بأنه أسهل عندما أتمرن كل يوم",
+    "target_text": "it's starting to feel easier when I practise every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0145L01U07",
+   "expect": {
+    "known_text": "لماذا لم تعد سعيداً اليوم لأن شيئاً تغير؟",
+    "target_text": "why are you not happy any more today because something changed?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0153L02U05",
+   "expect": {
+    "known_text": "كل شيء يحدث بنفس الطريقة تماماً في كل مرة",
+    "target_text": "everything would happen in exactly the same way every time"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0220L02U05",
+   "expect": {
+    "known_text": "شاهدت التلفاز قليلاً لكنني لم أفعل الكثير",
+    "target_text": "I watched a bit of television but I didn't do much"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0227L03B04",
+   "expect": {
+    "known_text": "أتعلم شيئاً جديداً كل يوم",
+    "target_text": "I learn something new every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0227L03U01",
+   "expect": {
+    "known_text": "أتعلم شيئاً جديداً في كل مرة أتحدث فيها",
+    "target_text": "I'm learning something new every time I speak"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0227L03U05",
+   "expect": {
+    "known_text": "أريد أن أتعلم شيئاً جديداً كل أسبوع",
+    "target_text": "I want to learn something new every week"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0232L02U02",
+   "expect": {
+    "known_text": "أعرف شخصاً يستطيع تذكر الإجابة في كل مرة",
+    "target_text": "I know someone who can remember the answer every time"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0239L01B04",
+   "expect": {
+    "known_text": "تحب القراءة كل يوم",
+    "target_text": "likes to read every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0239L01U01",
+   "expect": {
+    "known_text": "والدتي تحب القراءة لبعض الوقت كل مساء",
+    "target_text": "my mother likes to read for a while every evening"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0239L01U02",
+   "expect": {
+    "known_text": "والدتي تحب القراءة شيئاً جديداً كل أسبوع",
+    "target_text": "my mother likes to read something new every week"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0242L01U06",
+   "expect": {
+    "known_text": "أردت أن أعطيها وقتاً أكثر قليلاً قبل أن تذهب",
+    "target_text": "I wanted to give her a little more time before she goes"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0244L01U03",
+   "expect": {
+    "known_text": "أعتقد أنني تعلمت الكثير لأنني أتدرب كل يوم",
+    "target_text": "I think that I've learnt a lot because I practise every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0255L01U07",
+   "expect": {
+    "known_text": "متى تعتقد أنك ستكون مستعداً في أقل من ساعة؟",
+    "target_text": "when do you think you'll be ready in less than an hour?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0258L01U08",
+   "expect": {
+    "known_text": "ما هو ذلك الشيء الأزرق الذي قد يكون مهماً؟",
+    "target_text": "what's that blue thing that might be important?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0283L02U01",
+   "expect": {
+    "known_text": "أريد أن أتكلم الإنجليزية أفضل وأمارس كل يوم",
+    "target_text": "I want to speak English better and practise every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0283L02U03",
+   "expect": {
+    "known_text": "أعتقد أنه مهم أن تتكلم الإنجليزية كل يوم",
+    "target_text": "I think it is important to speak English every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0286L01U04",
+   "expect": {
+    "known_text": "الناس الذين يحبون التحدث بالإنجليزية يمارسون كل يوم",
+    "target_text": "people who like speaking English practise every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0286L02U01",
+   "expect": {
+    "known_text": "أريد أن أمارس الكلام بالإنجليزية كل يوم",
+    "target_text": "I want to practise speaking English every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0287L01U01",
+   "expect": {
+    "known_text": "كم شخصاً تعرف يحب التحدث بالإنجليزية كل يوم؟",
+    "target_text": "how many people do you know who like speaking English every day?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0288L01U01",
+   "expect": {
+    "known_text": "معظم الناس الذين أعرفهم يحبون التحدث بالإنجليزية كل يوم",
+    "target_text": "most people I know like speaking English every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0291L01U01",
+   "expect": {
+    "known_text": "آمل أن أستطيع الكلام بشكل أفضل قريباً لأنني أمارس كل يوم",
+    "target_text": "I hope I'll be able to speak better soon because I practise every day"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ara:S0297L01U05",
+   "expect": {
+    "known_text": "لا أعرف كثيراً من الناس الذين يمارسون التحدث بالإنجليزية كل يوم",
+    "target_text": "I don't know many people who practise speaking English every day"
+   }
+  }
+ ]
+}
