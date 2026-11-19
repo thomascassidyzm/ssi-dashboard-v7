@@ -22,7 +22,8 @@
  *     TRIPPED, STOPPED_BY_TOM, NOT_IN_CHAIN, APPROVAL_UNVERIFIED, RATE_CAPPED, IDENTITY_REQUIRED; any error text naming a
  *     quota/credit/limit/402; any other 5xx except a 503 (phase8 restarting), which counts as a timeout.
  *   - a timeout is one failed ask (logged, moved past); 5 in a row stops the day.
- *   - NEVER retries an ask or a batch. A relaunch resumes after the last logged ask: a rendered ask is never re-sent,
+ *   - APPROVAL_UNVERIFIED while the Command Surface is DOWN: wait 2 min, send that one ask once more (Kai 19 Nov); surface UP: stop.
+ *   - NEVER otherwise retries an ask or a batch. A relaunch resumes after the last logged ask: a rendered ask is never re-sent,
  *     and an ask whose render landed but whose links did not get logged is resumed at the link step only.
  * Results: ~/ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/dayN-results.jsonl (append-only).
  */
@@ -41,6 +42,7 @@ const MAX_ASKS = Number(opt('--max-asks', Infinity))
 const EVID = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia')
 fs.mkdirSync(EVID, { recursive: true })
 const LOG = path.join(EVID, `day${DAY}-results.jsonl`)
+const SURFACE = (process.env.CS_SURFACE_URL || 'http://localhost:4317').replace(/\/$/, '')
 const BASE = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 
 const DAY_CAP = 600_000
@@ -102,6 +104,11 @@ function stopReason(http, json) {
   return null
 }
 
+async function surfaceDown(error) {
+  if (/could not be reached|ECONNREFUSED|ECONNRESET|socket hang up/i.test(String(error || ''))) return true
+  try { const res = await fetch(SURFACE + '/api/version', { signal: AbortSignal.timeout(5000) }); return !res.ok } catch { return true }
+}
+
 const linkOf = (s) => (s.legoId ? { legoId: s.legoId } : s.phraseId ? { phraseId: s.phraseId } : s.seedNumber != null ? { seedNumber: s.seedNumber } : null)
 
 async function linkSlots(idx, ask, audioId) {
@@ -152,7 +159,15 @@ async function main() {
     if (CYCLE_CREDIT - (t.total + t.reserve + want) < RESERVE) { stop = `credit reserve: 2.45M − ${t.total + t.reserve + want} < 450k` ; break }
 
     const body = { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE, approval: APPROVAL }
-    const r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
+    let r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
+    // SURFACE-DOWN ONE-RETRY (Kai, 19 Nov, after the 16:30:57Z surface restart refused ask 35): an APPROVAL_UNVERIFIED while the
+    // Command Surface is DOWN (Popty could not reach it, or it does not answer now) waits 2 min and sends THAT ask once more.
+    // Surface UP = a real seat refusal: stop as before. Never more than one extra send per ask.
+    if (r.json && r.json.code === 'APPROVAL_UNVERIFIED' && await surfaceDown(r.json.error)) {
+      append({ kind: 'surface-down', idx, at: new Date().toISOString(), error: String(r.json.error || '').slice(0, 300) })
+      await sleep(120_000)
+      r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
+    }
     sent++
     const j = r.json || {}
     const rec = { kind: 'render', idx, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, http: r.http,
