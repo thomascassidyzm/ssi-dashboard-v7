@@ -1368,5 +1368,1182 @@
    }
   },
   "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-19T11:53:21Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 23,
+    "status": 200,
+    "secs": 27.4,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "lego_id": "S0111L02"
+       },
+       "before": {
+        "id": "e1394fb7-29b9-490f-a1a2-7266a1bba7cb",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": "S0111L02",
+        "known_text": "हम सीखते हैं",
+        "target_text": "우리가 배울",
+        "components": [
+         {
+          "known": "हम",
+          "target": "우리가"
+         },
+         {
+          "known": "सीखते हैं",
+          "target": "배울"
+         }
+        ],
+        "known_audio_id": "3ab9696f-9409-4657-80d4-1abd47fc5bc7",
+        "target1_audio_id": "9a44b4d3-826e-48e1-84bb-dd3b0a3d43db",
+        "target2_audio_id": "290c6814-49ed-4580-8de3-da2c7d387a56",
+        "presentation_audio_id": "0c97559e-4e16-4f1d-a99e-b3ea59831843"
+       },
+       "after": {
+        "id": "e1394fb7-29b9-490f-a1a2-7266a1bba7cb",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": "S0111L02",
+        "known_text": "जब सीखते हैं",
+        "target_text": "배울 때",
+        "components": [
+         {
+          "known": "सीखते हैं",
+          "target": "배울"
+         },
+         {
+          "known": "जब",
+          "target": "때"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0111L02B01"
+       },
+       "before": {
+        "id": "kor_for_hin:S0111L02B01",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "हम सीखते हैं",
+        "target_text": "우리가 배울",
+        "known_audio_id": "3ab9696f-9409-4657-80d4-1abd47fc5bc7",
+        "target1_audio_id": "9a44b4d3-826e-48e1-84bb-dd3b0a3d43db",
+        "target2_audio_id": "290c6814-49ed-4580-8de3-da2c7d387a56",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0111L02B01",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "जब सीखते हैं",
+        "target_text": "배울 때",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0111L02B03"
+       },
+       "before": {
+        "id": "kor_for_hin:S0111L02B03",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "हम कुछ नया सीखते हैं",
+        "target_text": "우리가 새로운 것을 배울",
+        "known_audio_id": "5253bd77-f76d-4368-9c00-78dc46ab2645",
+        "target1_audio_id": "1ab67e47-6d58-4938-b9f8-99f70218d638",
+        "target2_audio_id": "7a751877-9d08-462e-bf46-e841c19130fd",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0111L02B03",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "जब हम कुछ नया सीखते हैं",
+        "target_text": "우리가 새로운 것을 배울 때",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0111L02B04"
+       },
+       "before": {
+        "id": "kor_for_hin:S0111L02B04",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "जब हम बहुत सारे शब्द सीखते हैं",
+        "target_text": "우리가 많은 새 단어를 배울",
+        "known_audio_id": "1999c7eb-5031-4bc3-ba44-65053b17891e",
+        "target1_audio_id": "243a3e9e-2a3a-4813-9500-d6f785453f14",
+        "target2_audio_id": "4f55249b-0179-422a-ac5f-f60c84a011b2",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0111L02B04",
+        "seed_number": 111,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "जब हम बहुत सारे नए शब्द सीखते हैं",
+        "target_text": "우리가 많은 새 단어를 배울 때",
+        "known_audio_id": "b0d07141-45c7-4f81-9948-d0594f126245",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "lego_id": "S0132L03"
+       },
+       "before": {
+        "id": "9af742b1-ce4e-4c0b-afdd-7ece9181ca50",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": "S0132L03",
+        "known_text": "वह उससे",
+        "target_text": "그것은 것보다",
+        "components": [
+         {
+          "known": "वह",
+          "target": "그것은"
+         },
+         {
+          "known": "उससे",
+          "target": "것보다"
+         }
+        ],
+        "known_audio_id": "39069339-1808-473d-b7c1-0826986dd968",
+        "target1_audio_id": "0aa52029-4f59-4e51-9cb1-88dfa5190ead",
+        "target2_audio_id": "3944bdd2-4f12-4c18-9138-6db5a4ab2f42",
+        "presentation_audio_id": "31d1b604-4d9e-4bd0-90e1-60a92aa191ca"
+       },
+       "after": {
+        "id": "9af742b1-ce4e-4c0b-afdd-7ece9181ca50",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": "S0132L03",
+        "known_text": "उससे जो कह रही थी",
+        "target_text": "말하던 것보다",
+        "components": [
+         {
+          "known": "कह रही थी",
+          "target": "말하던"
+         },
+         {
+          "known": "उससे",
+          "target": "것보다"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03B01"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03B01",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे",
+        "target_text": "그것은 것보다",
+        "known_audio_id": "39069339-1808-473d-b7c1-0826986dd968",
+        "target1_audio_id": "0aa52029-4f59-4e51-9cb1-88dfa5190ead",
+        "target2_audio_id": "3944bdd2-4f12-4c18-9138-6db5a4ab2f42",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03B01",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "उससे जो कह रही थी",
+        "target_text": "말하던 것보다",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03B02"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03B02",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे कम",
+        "target_text": "그것은 것보다 덜",
+        "known_audio_id": "aad029da-80ca-431b-853e-81994e10da7a",
+        "target1_audio_id": "dbfc7518-75d7-4a39-b2a2-1250e5eaf0a7",
+        "target2_audio_id": "7d238d0c-724e-4bba-86e7-cd9870fa70c0",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03B02",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "उससे जो मैं कह रहा था",
+        "target_text": "제가 말하던 것보다",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03B03"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03B03",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे रोमांचक",
+        "target_text": "그것은 것보다 흥미로워요",
+        "known_audio_id": "f57940fc-50b4-4044-9dc8-9c35071c0295",
+        "target1_audio_id": "c1786033-3b79-4dd6-8a70-b4f3802afd0d",
+        "target2_audio_id": "eef0b957-cf09-46a6-8d40-7030f443dc67",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03B03",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "उससे कम जो मैं कह रहा था",
+        "target_text": "제가 말하던 것보다 덜",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03B04"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03B04",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "अभी वह उससे",
+        "target_text": "지금 그것은 것보다",
+        "known_audio_id": "492976d0-2690-44cd-b14c-ab2a3d810e4b",
+        "target1_audio_id": "ae1569ec-0b6e-44b7-ba2f-6522b7508399",
+        "target2_audio_id": "08528804-aed5-4876-affd-b5c4ddee87eb",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03B04",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "उससे बहुत कम जो मैं कह रहा था",
+        "target_text": "제가 말하던 것보다 정말 덜",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03U01"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03U01",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे कम रोमांचक है",
+        "target_text": "그것은 것보다 덜 흥미로워요",
+        "known_audio_id": "fab0282a-76a5-4af2-bb3d-552aa8bddd01",
+        "target1_audio_id": "aed4cb9e-7668-4389-a535-32f8919643a2",
+        "target2_audio_id": "b21721c1-612f-44d1-a468-9dbcd2ad2ab7",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03U01",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे कम रोमांचक है जो मैं कह रहा था",
+        "target_text": "그것은 제가 말하던 것보다 덜 흥미로워요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03U02"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03U02",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे आज कम रोमांचक है",
+        "target_text": "그것은 오늘 것보다 덜 흥미로워요",
+        "known_audio_id": "68d4e4a1-8d37-439f-83db-f138ce63daaf",
+        "target1_audio_id": "97d12031-0414-4fd7-a23e-7d8d697bbbab",
+        "target2_audio_id": "bd4ec074-a840-4c0f-a1c0-7f961293eef6",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03U02",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "यह उससे कम रोमांचक है जो मैं कह रहा था",
+        "target_text": "제가 말하던 것보다 덜 흥미로워요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03U03"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03U03",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे इतना कम रोमांचक है",
+        "target_text": "그것은 것보다 이렇게 덜 흥미로워요",
+        "known_audio_id": "61fdb6b8-c6d7-443f-a9eb-f217c4ede864",
+        "target1_audio_id": "ad6d6abb-adeb-4e3d-96c9-c9c7b156cc95",
+        "target2_audio_id": "209e21d8-0735-42f3-88c6-bf9bfd17b7ab",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03U03",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे बहुत कम रोमांचक है जो मैं कह रहा था",
+        "target_text": "그것은 제가 말하던 것보다 정말 덜 흥미로워요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03U04"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03U04",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे बहुत कम रोमांचक है",
+        "target_text": "그것은 것보다 정말 덜 흥미로워요",
+        "known_audio_id": "bdd8a62c-7bb7-401b-b1b4-12ca21f09d58",
+        "target1_audio_id": "c1628566-7a28-4ee2-bca9-695fc22d531c",
+        "target2_audio_id": "e07bed49-cc92-48f9-8930-1ee3114baed1",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03U04",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे कम रोमांचक है जो कह रही थी",
+        "target_text": "그것은 말하던 것보다 덜 흥미로워요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0132L03U05"
+       },
+       "before": {
+        "id": "kor_for_hin:S0132L03U05",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "वह उससे कम दिलचस्प है",
+        "target_text": "그것은 것보다 덜 흥미로웠어요",
+        "known_audio_id": "1d3cbb6f-90c9-4338-909e-31d15f64e543",
+        "target1_audio_id": "6d6b070a-6a7e-432b-a005-52b44bb8eb77",
+        "target2_audio_id": "fa4913d7-3ce2-4aa1-9785-3cdfc40dd235",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0132L03U05",
+        "seed_number": 132,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "यह उससे बहुत कम रोमांचक है जो मैं कह रहा था",
+        "target_text": "제가 말하던 것보다 정말 덜 흥미로워요",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0135L04B03"
+       },
+       "before": {
+        "id": "kor_for_hin:S0135L04B03",
+        "seed_number": 135,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "यह क्यों लगता है",
+        "target_text": "그것이 왜 생각하는지",
+        "known_audio_id": "6be7d3de-be60-491b-9963-40479287bff0",
+        "target1_audio_id": "abc2d578-8e67-45ed-8876-19db51524610",
+        "target2_audio_id": "86b96aa7-254f-4626-b9ee-9ae67c2fe53a",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0135L04B03",
+        "seed_number": 135,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "यह अच्छा क्यों लगता है",
+        "target_text": "그것이 좋다고 왜 생각하는지",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "lego_id": "S0137L04"
+       },
+       "before": {
+        "id": "48962925-f8f1-49dd-bb43-9256d81b9f95",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": "S0137L04",
+        "known_text": "अक्सर बात",
+        "target_text": "자주 말하는",
+        "components": [
+         {
+          "known": "अक्सर",
+          "target": "자주"
+         },
+         {
+          "known": "बात",
+          "target": "말하는"
+         }
+        ],
+        "known_audio_id": "8d8f1479-a60a-471d-9ee0-7d081ee7eae8",
+        "target1_audio_id": "5fe8ce99-a344-48a8-ab6f-d0786fd9aae5",
+        "target2_audio_id": "0e5c49e2-6614-479e-b06e-bfcf6cc327f2",
+        "presentation_audio_id": "4374d825-161a-438b-82ef-e3e3d586c91d"
+       },
+       "after": {
+        "id": "48962925-f8f1-49dd-bb43-9256d81b9f95",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": "S0137L04",
+        "known_text": "अक्सर बात करना",
+        "target_text": "자주 말하는 것이",
+        "components": [
+         {
+          "known": "अक्सर",
+          "target": "자주"
+         },
+         {
+          "known": "बात करना",
+          "target": "말하는 것이"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0137L04B01"
+       },
+       "before": {
+        "id": "kor_for_hin:S0137L04B01",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "अक्सर बात",
+        "target_text": "자주 말하는",
+        "known_audio_id": "8d8f1479-a60a-471d-9ee0-7d081ee7eae8",
+        "target1_audio_id": "5fe8ce99-a344-48a8-ab6f-d0786fd9aae5",
+        "target2_audio_id": "0e5c49e2-6614-479e-b06e-bfcf6cc327f2",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0137L04B01",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "अक्सर बात करना",
+        "target_text": "자주 말하는 것이",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0137L04B02"
+       },
+       "before": {
+        "id": "kor_for_hin:S0137L04B02",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "target_text": "지금 자주 말하는",
+        "known_text": "अभी अक्सर बात करना",
+        "known_audio_id": "8b8bd644-28d9-41ab-8545-6e3780a6b857",
+        "target1_audio_id": "96075491-7896-4dfe-87cb-41271dea77b7",
+        "target2_audio_id": "74667474-2c00-45ba-b9d1-8751a9d7862a",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0137L04B02",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "target_text": "지금 자주 말하는 것이",
+        "known_text": "अभी अक्सर बात करना",
+        "known_audio_id": "8b8bd644-28d9-41ab-8545-6e3780a6b857",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0137L04B03"
+       },
+       "before": {
+        "id": "kor_for_hin:S0137L04B03",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "target_text": "더 자주 말하는",
+        "known_text": "ज़्यादा अक्सर बात करना",
+        "known_audio_id": "558c75fc-2f31-4b4f-90de-2959f138bea6",
+        "target1_audio_id": "8e3e82dd-28fc-4f95-ba93-25b6cb02970e",
+        "target2_audio_id": "71808e4c-edb3-4bf4-b97d-f0846d0a6173",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0137L04B03",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "target_text": "더 자주 말하는 것이",
+        "known_text": "ज़्यादा अक्सर बात करना",
+        "known_audio_id": "558c75fc-2f31-4b4f-90de-2959f138bea6",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "id": "kor_for_hin:S0137L04B04"
+       },
+       "before": {
+        "id": "kor_for_hin:S0137L04B04",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "target_text": "같이 자주 말하는",
+        "known_text": "साथ में अक्सर बात करना",
+        "known_audio_id": "f9c87113-725b-44bc-8983-af8c5e2efb97",
+        "target1_audio_id": "09d05cdb-3989-474d-b6f2-8635f3151275",
+        "target2_audio_id": "e979c4ad-f20d-4877-ba13-95c1011b527a",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "kor_for_hin:S0137L04B04",
+        "seed_number": 137,
+        "lego_index": 4,
+        "lego_id": null,
+        "target_text": "같이 자주 말하는 것이",
+        "known_text": "साथ में अक्सर बात करना",
+        "known_audio_id": "f9c87113-725b-44bc-8983-af8c5e2efb97",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "lego_id": "S0137L03"
+       },
+       "before": {
+        "id": "75cc3622-5fec-4fa9-a18f-d6305635ced4",
+        "seed_number": 137,
+        "lego_index": 3,
+        "lego_id": "S0137L03",
+        "known_text": "करना ज़रूरी है",
+        "target_text": "것이 중요해요",
+        "type": "M",
+        "components": [
+         {
+          "known": "ज़रूरी है",
+          "target": "중요해요"
+         },
+         {
+          "known": "करना",
+          "target": "것이"
+         }
+        ],
+        "is_new": true,
+        "known_audio_id": "4785a4f6-a200-4a2a-a14d-2ec4edbe2f1d",
+        "target1_audio_id": "58cbdd75-b88a-4e7d-a71b-f7ba7aa0fa67",
+        "target2_audio_id": "aa0696a2-cb61-4bdc-b049-8152372ad580",
+        "presentation_audio_id": "30e84148-9708-4918-84f5-e821e86f5883"
+       },
+       "after": {
+        "id": "75cc3622-5fec-4fa9-a18f-d6305635ced4",
+        "seed_number": 137,
+        "lego_index": 3,
+        "lego_id": "S0137L03",
+        "known_text": "ज़रूरी है",
+        "target_text": "중요해요",
+        "type": "A",
+        "components": [],
+        "is_new": false,
+        "known_audio_id": "ba4fa72f-c1e1-428a-8ff1-ebc69a904444",
+        "target1_audio_id": "0d5fb94c-ce09-4b57-a22f-e772f89e9846",
+        "target2_audio_id": "a004b611-e1c6-40a8-b701-bd5393cf3936",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "lego.update",
+       "key": {
+        "course_code": "kor_for_hin",
+        "lego_id": "S0151L02"
+       },
+       "before": {
+        "id": "351b3ef5-5948-4299-ad94-21c372b6a44b",
+        "seed_number": 151,
+        "lego_index": 2,
+        "lego_id": "S0151L02",
+        "known_text": "मैं वह",
+        "target_text": "제가 그것은",
+        "type": "M",
+        "components": [
+         {
+          "known": "मैं",
+          "target": "제가"
+         },
+         {
+          "known": "वह",
+          "target": "그것은"
+         }
+        ],
+        "is_new": true,
+        "known_audio_id": "7020b799-6456-42f8-9173-624d00171101",
+        "target1_audio_id": "7623ff54-1ced-41ec-8c29-2d0fb60e33b4",
+        "target2_audio_id": "430f071b-7205-4849-9816-6c1487651986",
+        "presentation_audio_id": "4aa19b3a-6799-4c5c-8f7a-d60652144744"
+       },
+       "after": {
+        "id": "351b3ef5-5948-4299-ad94-21c372b6a44b",
+        "seed_number": 151,
+        "lego_index": 2,
+        "lego_id": "S0151L02",
+        "known_text": "मैं",
+        "target_text": "제가",
+        "type": "A",
+        "components": [],
+        "is_new": false,
+        "known_audio_id": "612772ad-4fdd-44b8-b393-916f5bd1a75c",
+        "target1_audio_id": "73607f21-e83f-4426-906a-ee30899979e9",
+        "target2_audio_id": "46d2efe1-ce3e-4487-936a-0342535772aa",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 151,
+        "lego_index": 4
+       },
+       "before": null,
+       "after": {
+        "id": "aa6d288a-86b8-456f-9b6d-1fba402c053e",
+        "seed_number": 151,
+        "lego_index": 4,
+        "lego_id": "S0151L04",
+        "known_text": "यह",
+        "target_text": "그것은",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": null,
+       "op": "tiles.refresh",
+       "key": {
+        "lego_ids": [
+         "S0111L02",
+         "S0132L03",
+         "S0137L04",
+         "S0137L03",
+         "S0151L02",
+         "S0151L04"
+        ]
+       },
+       "skipped": true,
+       "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+       "changed": false
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "lego.delete",
+       "id": "aa6d288a-86b8-456f-9b6d-1fba402c053e"
+      },
+      {
+       "op": "lego.update",
+       "id": "351b3ef5-5948-4299-ad94-21c372b6a44b",
+       "set": {
+        "type": "M",
+        "is_new": true,
+        "known_text": "मैं वह",
+        "target_text": "제가 그것은",
+        "components": [
+         {
+          "known": "मैं",
+          "target": "제가"
+         },
+         {
+          "known": "वह",
+          "target": "그것은"
+         }
+        ],
+        "known_audio_id": "7020b799-6456-42f8-9173-624d00171101",
+        "target1_audio_id": "7623ff54-1ced-41ec-8c29-2d0fb60e33b4",
+        "target2_audio_id": "430f071b-7205-4849-9816-6c1487651986",
+        "presentation_audio_id": "4aa19b3a-6799-4c5c-8f7a-d60652144744"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "75cc3622-5fec-4fa9-a18f-d6305635ced4",
+       "set": {
+        "type": "M",
+        "is_new": true,
+        "known_text": "करना ज़रूरी है",
+        "target_text": "것이 중요해요",
+        "components": [
+         {
+          "known": "ज़रूरी है",
+          "target": "중요해요"
+         },
+         {
+          "known": "करना",
+          "target": "것이"
+         }
+        ],
+        "known_audio_id": "4785a4f6-a200-4a2a-a14d-2ec4edbe2f1d",
+        "target1_audio_id": "58cbdd75-b88a-4e7d-a71b-f7ba7aa0fa67",
+        "target2_audio_id": "aa0696a2-cb61-4bdc-b049-8152372ad580",
+        "presentation_audio_id": "30e84148-9708-4918-84f5-e821e86f5883"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0137L04B04",
+       "set": {
+        "target_text": "같이 자주 말하는",
+        "target1_audio_id": "09d05cdb-3989-474d-b6f2-8635f3151275",
+        "target2_audio_id": "e979c4ad-f20d-4877-ba13-95c1011b527a"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0137L04B03",
+       "set": {
+        "target_text": "더 자주 말하는",
+        "target1_audio_id": "8e3e82dd-28fc-4f95-ba93-25b6cb02970e",
+        "target2_audio_id": "71808e4c-edb3-4bf4-b97d-f0846d0a6173"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0137L04B02",
+       "set": {
+        "target_text": "지금 자주 말하는",
+        "target1_audio_id": "96075491-7896-4dfe-87cb-41271dea77b7",
+        "target2_audio_id": "74667474-2c00-45ba-b9d1-8751a9d7862a"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0137L04B01",
+       "set": {
+        "known_text": "अक्सर बात",
+        "target_text": "자주 말하는",
+        "known_audio_id": "8d8f1479-a60a-471d-9ee0-7d081ee7eae8",
+        "target1_audio_id": "5fe8ce99-a344-48a8-ab6f-d0786fd9aae5",
+        "target2_audio_id": "0e5c49e2-6614-479e-b06e-bfcf6cc327f2"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "48962925-f8f1-49dd-bb43-9256d81b9f95",
+       "set": {
+        "known_text": "अक्सर बात",
+        "target_text": "자주 말하는",
+        "components": [
+         {
+          "known": "अक्सर",
+          "target": "자주"
+         },
+         {
+          "known": "बात",
+          "target": "말하는"
+         }
+        ],
+        "known_audio_id": "8d8f1479-a60a-471d-9ee0-7d081ee7eae8",
+        "target1_audio_id": "5fe8ce99-a344-48a8-ab6f-d0786fd9aae5",
+        "target2_audio_id": "0e5c49e2-6614-479e-b06e-bfcf6cc327f2",
+        "presentation_audio_id": "4374d825-161a-438b-82ef-e3e3d586c91d"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0135L04B03",
+       "set": {
+        "known_text": "यह क्यों लगता है",
+        "target_text": "그것이 왜 생각하는지",
+        "known_audio_id": "6be7d3de-be60-491b-9963-40479287bff0",
+        "target1_audio_id": "abc2d578-8e67-45ed-8876-19db51524610",
+        "target2_audio_id": "86b96aa7-254f-4626-b9ee-9ae67c2fe53a"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03U05",
+       "set": {
+        "known_text": "वह उससे कम दिलचस्प है",
+        "target_text": "그것은 것보다 덜 흥미로웠어요",
+        "known_audio_id": "1d3cbb6f-90c9-4338-909e-31d15f64e543",
+        "target1_audio_id": "6d6b070a-6a7e-432b-a005-52b44bb8eb77",
+        "target2_audio_id": "fa4913d7-3ce2-4aa1-9785-3cdfc40dd235"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03U04",
+       "set": {
+        "known_text": "वह उससे बहुत कम रोमांचक है",
+        "target_text": "그것은 것보다 정말 덜 흥미로워요",
+        "known_audio_id": "bdd8a62c-7bb7-401b-b1b4-12ca21f09d58",
+        "target1_audio_id": "c1628566-7a28-4ee2-bca9-695fc22d531c",
+        "target2_audio_id": "e07bed49-cc92-48f9-8930-1ee3114baed1"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03U03",
+       "set": {
+        "known_text": "वह उससे इतना कम रोमांचक है",
+        "target_text": "그것은 것보다 이렇게 덜 흥미로워요",
+        "known_audio_id": "61fdb6b8-c6d7-443f-a9eb-f217c4ede864",
+        "target1_audio_id": "ad6d6abb-adeb-4e3d-96c9-c9c7b156cc95",
+        "target2_audio_id": "209e21d8-0735-42f3-88c6-bf9bfd17b7ab"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03U02",
+       "set": {
+        "known_text": "वह उससे आज कम रोमांचक है",
+        "target_text": "그것은 오늘 것보다 덜 흥미로워요",
+        "known_audio_id": "68d4e4a1-8d37-439f-83db-f138ce63daaf",
+        "target1_audio_id": "97d12031-0414-4fd7-a23e-7d8d697bbbab",
+        "target2_audio_id": "bd4ec074-a840-4c0f-a1c0-7f961293eef6"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03U01",
+       "set": {
+        "known_text": "वह उससे कम रोमांचक है",
+        "target_text": "그것은 것보다 덜 흥미로워요",
+        "known_audio_id": "fab0282a-76a5-4af2-bb3d-552aa8bddd01",
+        "target1_audio_id": "aed4cb9e-7668-4389-a535-32f8919643a2",
+        "target2_audio_id": "b21721c1-612f-44d1-a468-9dbcd2ad2ab7"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03B04",
+       "set": {
+        "known_text": "अभी वह उससे",
+        "target_text": "지금 그것은 것보다",
+        "known_audio_id": "492976d0-2690-44cd-b14c-ab2a3d810e4b",
+        "target1_audio_id": "ae1569ec-0b6e-44b7-ba2f-6522b7508399",
+        "target2_audio_id": "08528804-aed5-4876-affd-b5c4ddee87eb"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03B03",
+       "set": {
+        "known_text": "वह उससे रोमांचक",
+        "target_text": "그것은 것보다 흥미로워요",
+        "known_audio_id": "f57940fc-50b4-4044-9dc8-9c35071c0295",
+        "target1_audio_id": "c1786033-3b79-4dd6-8a70-b4f3802afd0d",
+        "target2_audio_id": "eef0b957-cf09-46a6-8d40-7030f443dc67"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03B02",
+       "set": {
+        "known_text": "वह उससे कम",
+        "target_text": "그것은 것보다 덜",
+        "known_audio_id": "aad029da-80ca-431b-853e-81994e10da7a",
+        "target1_audio_id": "dbfc7518-75d7-4a39-b2a2-1250e5eaf0a7",
+        "target2_audio_id": "7d238d0c-724e-4bba-86e7-cd9870fa70c0"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0132L03B01",
+       "set": {
+        "known_text": "वह उससे",
+        "target_text": "그것은 것보다",
+        "known_audio_id": "39069339-1808-473d-b7c1-0826986dd968",
+        "target1_audio_id": "0aa52029-4f59-4e51-9cb1-88dfa5190ead",
+        "target2_audio_id": "3944bdd2-4f12-4c18-9138-6db5a4ab2f42"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "9af742b1-ce4e-4c0b-afdd-7ece9181ca50",
+       "set": {
+        "known_text": "वह उससे",
+        "target_text": "그것은 것보다",
+        "components": [
+         {
+          "known": "वह",
+          "target": "그것은"
+         },
+         {
+          "known": "उससे",
+          "target": "것보다"
+         }
+        ],
+        "known_audio_id": "39069339-1808-473d-b7c1-0826986dd968",
+        "target1_audio_id": "0aa52029-4f59-4e51-9cb1-88dfa5190ead",
+        "target2_audio_id": "3944bdd2-4f12-4c18-9138-6db5a4ab2f42",
+        "presentation_audio_id": "31d1b604-4d9e-4bd0-90e1-60a92aa191ca"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0111L02B04",
+       "set": {
+        "known_text": "जब हम बहुत सारे शब्द सीखते हैं",
+        "target_text": "우리가 많은 새 단어를 배울",
+        "known_audio_id": "1999c7eb-5031-4bc3-ba44-65053b17891e",
+        "target1_audio_id": "243a3e9e-2a3a-4813-9500-d6f785453f14",
+        "target2_audio_id": "4f55249b-0179-422a-ac5f-f60c84a011b2"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0111L02B03",
+       "set": {
+        "known_text": "हम कुछ नया सीखते हैं",
+        "target_text": "우리가 새로운 것을 배울",
+        "known_audio_id": "5253bd77-f76d-4368-9c00-78dc46ab2645",
+        "target1_audio_id": "1ab67e47-6d58-4938-b9f8-99f70218d638",
+        "target2_audio_id": "7a751877-9d08-462e-bf46-e841c19130fd"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "kor_for_hin:S0111L02B01",
+       "set": {
+        "known_text": "हम सीखते हैं",
+        "target_text": "우리가 배울",
+        "known_audio_id": "3ab9696f-9409-4657-80d4-1abd47fc5bc7",
+        "target1_audio_id": "9a44b4d3-826e-48e1-84bb-dd3b0a3d43db",
+        "target2_audio_id": "290c6814-49ed-4580-8de3-da2c7d387a56"
+       }
+      },
+      {
+       "op": "lego.update",
+       "id": "e1394fb7-29b9-490f-a1a2-7266a1bba7cb",
+       "set": {
+        "known_text": "हम सीखते हैं",
+        "target_text": "우리가 배울",
+        "components": [
+         {
+          "known": "हम",
+          "target": "우리가"
+         },
+         {
+          "known": "सीखते हैं",
+          "target": "배울"
+         }
+        ],
+        "known_audio_id": "3ab9696f-9409-4657-80d4-1abd47fc5bc7",
+        "target1_audio_id": "9a44b4d3-826e-48e1-84bb-dd3b0a3d43db",
+        "target2_audio_id": "290c6814-49ed-4580-8de3-da2c7d387a56",
+        "presentation_audio_id": "0c97559e-4e16-4f1d-a99e-b3ea59831843"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
  }
 }

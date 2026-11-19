@@ -1,0 +1,436 @@
+{
+ "course": "ara_lb_for_eng",
+ "legos": [
+  {
+   "id": "S0294L01",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "enough time",
+   "target": "وقت كافي",
+   "type": "M",
+   "components": [
+    [
+     "time",
+     "وقت"
+    ],
+    [
+     "enough",
+     "كافي"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "enough time",
+     "وقت كافي"
+    ],
+    "B02": [
+     "I don't have enough time",
+     "ما عندي وقت كافي"
+    ],
+    "B03": [
+     "enough time tonight",
+     "وقت كافي الليلة"
+    ],
+    "U01": [
+     "I don't have enough time tonight",
+     "ما عندي وقت كافي الليلة"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "but enough time",
+     "بس وقت كافي"
+    ]
+   ],
+   "why": "'enough' is the prompt for كافية (S0060L02, taught first) and for كافي (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The later form grows to the word in its own seed that makes it differ. 'enough time | وقت كافي' (4 syllables). Three rows already say it; four rows ('كافي صح', 'كافي مهم' — not sentences) are rewritten."
+  },
+  {
+   "id": "S0136L03",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "because she's my friend",
+   "target": "لأنها صاحبتي",
+   "type": "M",
+   "components": [
+    [
+     "because she",
+     "لأنها"
+    ],
+    [
+     "my friend",
+     "صاحبتي"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "because she's my friend",
+     "لأنها صاحبتي"
+    ],
+    "B02": [
+     "ask her because she's my friend",
+     "تسأليها لأنها صاحبتي"
+    ],
+    "B03": [
+     "you can ask her because she's my friend",
+     "فيك تسأليها لأنها صاحبتي"
+    ],
+    "U01": "keep",
+    "U02": [
+     "of course, because she's my friend",
+     "أكيد لأنها صاحبتي"
+    ],
+    "U03": [
+     "she knows what to do because she's my friend",
+     "بتعرف شو تعمل لأنها صاحبتي"
+    ],
+    "U04": [
+     "because she's my friend, of course",
+     "لأنها صاحبتي أكيد"
+    ],
+    "U05": [
+     "she knows this well because she's my friend",
+     "بتعرف هيدا منيح لأنها صاحبتي"
+    ]
+   },
+   "why": "'my friend' is the prompt for صاحبي (a man, S0084L01) and for صاحبتي (a woman, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'because she's my friend | لأنها صاحبتي' (6 syllables): 'she' shows why; 'because she | لأنها' is S0136L02, taught just before. One row already says it; seven are rewritten (several were not sentences: 'صاحبتي فيها')."
+  },
+  {
+   "id": "S0124L01",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "that was",
+   "target": "إنها كانت",
+   "type": "M",
+   "components": [
+    [
+     "that",
+     "إنها"
+    ],
+    [
+     "was",
+     "كانت"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "that was",
+     "إنها كانت"
+    ],
+    "B02": [
+     "I know that was",
+     "بعرف إنها كانت"
+    ],
+    "B03": [
+     "I think that was",
+     "بفكر إنها كانت"
+    ],
+    "U01": [
+     "I know that was a good idea",
+     "بعرف إنها كانت فكرة منيحة"
+    ],
+    "U02": [
+     "I think that was good",
+     "بفكر إنها كانت منيحة"
+    ],
+    "U04": [
+     "I know that was good",
+     "بعرف إنها كانت منيحة"
+    ],
+    "U05": [
+     "I think that was a good idea",
+     "بفكر إنها كانت فكرة منيحة"
+    ]
+   },
+   "why": "'that it' is the prompt for إنو (S0102L01) and for إنها (feminine, here) — and seed 124 does not say 'that it', it says 'that was' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed piece 'that was | إنها كانت' (4 syllables). NOTE: this removes the clash but the LEGO alone still does not show why it is feminine (the noun, 'idea', comes after it and the whole is 9 syllables); the rows carry it. One row was wrong Arabic ('إنها مش سهل') and is rewritten."
+  },
+  {
+   "id": "S0154L01",
+   "verdict": "grow",
+   "pattern": "W",
+   "pov": "hold",
+   "known": "on Saturday night",
+   "target": "ليلة السبت",
+   "type": "M",
+   "components": [
+    [
+     "night",
+     "ليلة"
+    ],
+    [
+     "Saturday",
+     "السبت"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "on Saturday night",
+     "ليلة السبت"
+    ],
+    "B03": [
+     "meet on Saturday night",
+     "نلتقي ليلة السبت"
+    ],
+    "U01": [
+     "where do you want to meet on Saturday night?",
+     "وين بدك نلتقي ليلة السبت؟"
+    ],
+    "U02": [
+     "I want to meet on Saturday night",
+     "بدي نلتقي ليلة السبت"
+    ],
+    "U03": [
+     "meet here on Saturday night",
+     "نلتقي هون ليلة السبت"
+    ],
+    "U04": [
+     "I'll be here on Saturday night",
+     "رح أكون هون ليلة السبت"
+    ],
+    "U05": [
+     "what do you want to do on Saturday night?",
+     "شو بدك تعمل ليلة السبت؟"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "but on Saturday night",
+     "بس ليلة السبت"
+    ]
+   ],
+   "why": "HOLD (needs Kai's yes). Planned as below, but the course says 'Saturday night' a second way at seed 215 (S0215L01 'saturday night | يوم السبت بالليل'); the two prompts would differ only by 'on'. Unifying means changing one of the two seed sentences, which is Kai's call. 'night' is the prompt for الليل (S0108L01) and for ليلة (here). ليلة only means 'the night of …', so it grows to its seed piece 'Saturday night | ليلة السبت' (4 syllables) (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ). Every row said a bare 'ليلة' for 'at night', which is not Lebanese; all 7 are rewritten and the seed sentence becomes a row (P26)."
+  },
+  {
+   "id": "S0111L01",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "something new",
+   "target": "شي جديد",
+   "type": "M",
+   "components": [
+    [
+     "something",
+     "شي"
+    ],
+    [
+     "new",
+     "جديد"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "something new",
+     "شي جديد"
+    ],
+    "B02": [
+     "something new here",
+     "شي جديد هون"
+    ],
+    "B03": [
+     "not something new",
+     "مش شي جديد"
+    ],
+    "U05": [
+     "there's something new here",
+     "في شي جديد هون"
+    ]
+   },
+   "add": [
+    [
+     "b",
+     "but something new",
+     "بس شي جديد"
+    ]
+   ],
+   "why": "'new' is the prompt for جديدة (S0109L01, taught first) and for جديد (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The later form grows to the word in its own seed that makes it differ. 'something new | شي جديد' (3 syllables). Four rows already say it; four are rewritten."
+  },
+  {
+   "id": "S0196L03",
+   "verdict": "kai",
+   "pattern": "G",
+   "closes": [
+    "10"
+   ],
+   "why": "HOLD — belongs to item 10. 'new | الجديدة' clashes with جديدة/جديد, but the deeper fault is that seed 196 says آخر فكرة ('the latest idea') and neither الجديدة nor S0196L02's الفكرة is in it (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Every row says 'the latest idea | الفكرة الجديدة'. Proposed there: one LEGO 'the latest idea | آخر فكرة' and the six rows changed to match; the clash disappears with it. Not planned twice."
+  },
+  {
+   "id": "S0147L01",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "she was very kind",
+   "target": "كانت كتير طيبة",
+   "type": "M",
+   "components": [
+    [
+     "she was",
+     "كانت"
+    ],
+    [
+     "very",
+     "كتير"
+    ],
+    [
+     "kind",
+     "طيبة"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "she was very kind",
+     "كانت كتير طيبة"
+    ],
+    "B02": [
+     "but she was very kind",
+     "بس كانت كتير طيبة"
+    ],
+    "B03": [
+     "she was very kind here",
+     "كانت كتير طيبة هون"
+    ],
+    "U01": [
+     "she was very kind today",
+     "كانت كتير طيبة اليوم"
+    ],
+    "U02": [
+     "I know she was very kind",
+     "بعرف إنو كانت كتير طيبة"
+    ],
+    "U03": [
+     "I think she was very kind",
+     "بفكر إنو كانت كتير طيبة"
+    ],
+    "U04": [
+     "she was very kind here today",
+     "كانت كتير طيبة هون اليوم"
+    ],
+    "U05": [
+     "she was very kind before",
+     "كانت كتير طيبة قبل هيك"
+    ]
+   },
+   "why": "'kind' is the prompt for طيب (S0142L01) and for طيبة (feminine, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'she was very kind | كانت كتير طيبة' (6 syllables): 'she was' shows why. Kept at 6: 'very kind' alone would not show it. Rows rewritten round it (one was wrong Arabic: 'هيدي شخص طيبة')."
+  },
+  {
+   "id": "S0246L02",
+   "verdict": "grow",
+   "pattern": "G",
+   "known": "she was too busy",
+   "target": "كانت مشغولة كتير",
+   "type": "M",
+   "components": [
+    [
+     "she was",
+     "كانت"
+    ],
+    [
+     "busy",
+     "مشغولة"
+    ],
+    [
+     "too",
+     "كتير"
+    ]
+   ],
+   "basket": {
+    "B02": [
+     "she was too busy",
+     "كانت مشغولة كتير"
+    ],
+    "B03": [
+     "but she was too busy",
+     "بس كانت مشغولة كتير"
+    ],
+    "U01": [
+     "she was too busy today",
+     "كانت مشغولة كتير اليوم"
+    ],
+    "U02": "keep",
+    "U03": [
+     "I knew she was too busy",
+     "كنت بعرف إنو كانت مشغولة كتير"
+    ],
+    "U04": [
+     "she said she was too busy",
+     "قالت إنها كانت مشغولة كتير"
+    ],
+    "U05": [
+     "why was she too busy?",
+     "ليش كانت مشغولة كتير؟"
+    ]
+   },
+   "ack_rows": [
+    "U05"
+   ],
+   "add": [
+    [
+     "b",
+     "she was too busy here",
+     "كانت مشغولة كتير هون"
+    ]
+   ],
+   "why": "'busy' is the prompt for مشغول (S0192L01) and for مشغولة (feminine, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'she was too busy | كانت مشغولة كتير' (6 syllables). Two rows already say it; the others gain كتير."
+  },
+  {
+   "id": "S0540L02",
+   "verdict": "grow",
+   "pattern": "W",
+   "known": "without the car",
+   "target": "بدون السيارة",
+   "type": "M",
+   "components": [
+    [
+     "without",
+     "بدون"
+    ],
+    [
+     "the car",
+     "السيارة"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "without the car",
+     "بدون السيارة"
+    ],
+    "B02": [
+     "but without the car",
+     "بس بدون السيارة"
+    ]
+   },
+   "why": "'without' is the prompt for من دون ما (S0501L06: before a verb, 'without arguing') and for بدون (here: before a thing). L29: 'a word that governs a following element takes one form for each kind of thing that follows … the new function word is introduced inside the fuller chunk'. Grown to 'without the car | بدون السيارة' (5 syllables). Nine of ten rows already say it."
+  },
+  {
+   "id": "S0501L06",
+   "verdict": "keep",
+   "pattern": "W",
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0501L06U04",
+     "set": {
+      "known_text": "I went without asking anything",
+      "target_text": "رحت من دون ما أسأل شي"
+     },
+     "expect": {
+      "known_text": "I need it without a problem",
+      "target_text": "لازم إياه من دون ما مشكلة"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0501L06U05",
+     "set": {
+      "known_text": "I agreed without trying",
+      "target_text": "اتفقت من دون ما أحاول"
+     },
+     "expect": {
+      "known_text": "I want it without a challenge",
+      "target_text": "بدي إياه من دون ما تحدي"
+     }
+    }
+   ],
+   "why": "neighbour of S0540L02: 'without | من دون ما' keeps its prompt, but two of its rows put a THING after it ('من دون ما مشكلة'), which is the other word's job (L29). They are reworded with a verb."
+  }
+ ]
+}

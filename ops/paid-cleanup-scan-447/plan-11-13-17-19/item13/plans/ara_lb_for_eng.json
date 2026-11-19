@@ -1,0 +1,2551 @@
+{
+ "course": "ara_lb_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:54:36Z",
+ "decisions": 10,
+ "verdicts": {
+  "grow": 8,
+  "kai": 1,
+  "keep": 1
+ },
+ "touched_seeds": [
+  111,
+  124,
+  136,
+  147,
+  154,
+  246,
+  294,
+  501,
+  540
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {
+  "new": [
+   "الجديدة",
+   "جديدة"
+  ]
+ },
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0294L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'enough' is the prompt for كافية (S0060L02, taught first) and for كافي (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The later form grows to the word in its own seed that makes it differ. 'enough time | وقت كافي' (4 syllables). Three rows already say it; four rows ('كافي صح', 'كافي مهم' — not sentences) are rewritten.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 294,
+    "known": "I don't have enough time to call you tonight.",
+    "target": "ما عندي وقت كافي أتصل فيك الليلة."
+   },
+   "before": {
+    "known": "enough",
+    "target": "كافي",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "enough time",
+    "target": "وقت كافي",
+    "type": "M",
+    "components": [
+     [
+      "time",
+      "وقت"
+     ],
+     [
+      "enough",
+      "كافي"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0294L01B01",
+     "role": "build",
+     "before": [
+      "enough",
+      "كافي صح"
+     ],
+     "action": [
+      "enough time",
+      "وقت كافي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0294L01B02",
+     "role": "build",
+     "before": [
+      "enough time",
+      "كافي مهم"
+     ],
+     "action": [
+      "I don't have enough time",
+      "ما عندي وقت كافي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0294L01B03",
+     "role": "build",
+     "before": [
+      "enough for it",
+      "كافي هيك"
+     ],
+     "action": [
+      "enough time tonight",
+      "وقت كافي الليلة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0294L01U01",
+     "role": "use",
+     "before": [
+      "enough",
+      "كافي"
+     ],
+     "action": [
+      "I don't have enough time tonight",
+      "ما عندي وقت كافي الليلة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0294L01U02",
+     "role": "use",
+     "before": [
+      "I have enough time",
+      "عندي وقت كافي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0294L01U04",
+     "role": "use",
+     "before": [
+      "I think there's enough time tonight",
+      "بفكر إنو عندي وقت كافي الليلة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0294L01U05",
+     "role": "use",
+     "before": [
+      "I knew there was enough time",
+      "كنت بعرف إنو عندي وقت كافي"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0294L01B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 294,
+     "lego_index": 1,
+     "known_text": "but enough time",
+     "target_text": "بس وقت كافي",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 5,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0294L02B04",
+      "known": "I don't have enough time to call you",
+      "target": "ما عندي وقت كافي أتصل فيك صح",
+      "seed": 294
+     },
+     {
+      "id": "ara_lb_for_eng:S0294L02U01",
+      "known": "I don't have enough time to call you tonight",
+      "target": "ما عندي وقت كافي أتصل فيك الليلة",
+      "seed": 294
+     },
+     {
+      "id": "ara_lb_for_eng:S0294L02U02",
+      "known": "I don't have enough time to call you",
+      "target": "ما عندي وقت كافي أتصل فيك",
+      "seed": 294
+     },
+     {
+      "id": "ara_lb_for_eng:S0294L02U03",
+      "known": "I have enough time to call you",
+      "target": "عندي وقت كافي أتصل فيك",
+      "seed": 294
+     },
+     {
+      "id": "ara_lb_for_eng:S0294L02U05",
+      "known": "I knew I had enough time to call you",
+      "target": "كنت بعرف إنو عندي وقت كافي أتصل فيك",
+      "seed": 294
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0136L03",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'my friend' is the prompt for صاحبي (a man, S0084L01) and for صاحبتي (a woman, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'because she's my friend | لأنها صاحبتي' (6 syllables): 'she' shows why; 'because she | لأنها' is S0136L02, taught just before. One row already says it; seven are rewritten (several were not sentences: 'صاحبتي فيها').",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 136,
+    "known": "Of course you can ask her because she's my friend.",
+    "target": "أكيد فيك تسأليها لأنها صاحبتي."
+   },
+   "before": {
+    "known": "my friend",
+    "target": "صاحبتي",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "because she's my friend",
+    "target": "لأنها صاحبتي",
+    "type": "M",
+    "components": [
+     [
+      "because she",
+      "لأنها"
+     ],
+     [
+      "my friend",
+      "صاحبتي"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0136L03B01",
+     "role": "build",
+     "before": [
+      "my friend",
+      "صاحبتي"
+     ],
+     "action": [
+      "because she's my friend",
+      "لأنها صاحبتي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03B02",
+     "role": "build",
+     "before": [
+      "she's my friend",
+      "هيدي صاحبتي"
+     ],
+     "action": [
+      "ask her because she's my friend",
+      "تسأليها لأنها صاحبتي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03B03",
+     "role": "build",
+     "before": [
+      "my friend knows",
+      "صاحبتي بتعرف"
+     ],
+     "action": [
+      "you can ask her because she's my friend",
+      "فيك تسأليها لأنها صاحبتي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03U01",
+     "role": "use",
+     "before": [
+      "of course you can ask her because she's my friend",
+      "أكيد فيك تسأليها لأنها صاحبتي"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03U02",
+     "role": "use",
+     "before": [
+      "ask her, she's my friend",
+      "تسأليها، صاحبتي"
+     ],
+     "action": [
+      "of course, because she's my friend",
+      "أكيد لأنها صاحبتي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03U03",
+     "role": "use",
+     "before": [
+      "my friend knows what to do",
+      "صاحبتي بتعرف شو تعمل"
+     ],
+     "action": [
+      "she knows what to do because she's my friend",
+      "بتعرف شو تعمل لأنها صاحبتي"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03U04",
+     "role": "use",
+     "before": [
+      "my friend can help",
+      "صاحبتي فيها"
+     ],
+     "action": [
+      "because she's my friend, of course",
+      "لأنها صاحبتي أكيد"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0136L03U05",
+     "role": "use",
+     "before": [
+      "my friend knows this well",
+      "صاحبتي بتعرف هيدا منيح"
+     ],
+     "action": [
+      "she knows this well because she's my friend",
+      "بتعرف هيدا منيح لأنها صاحبتي"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0589L02U06",
+      "known": "she saw my friend",
+      "target": "شافت صاحبتي",
+      "seed": 589
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0124L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'that it' is the prompt for إنو (S0102L01) and for إنها (feminine, here) — and seed 124 does not say 'that it', it says 'that was' (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Grown to the seed piece 'that was | إنها كانت' (4 syllables). NOTE: this removes the clash but the LEGO alone still does not show why it is feminine (the noun, 'idea', comes after it and the whole is 9 syllables); the rows carry it. One row was wrong Arabic ('إنها مش سهل') and is rewritten.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 124,
+    "known": "I thought that was a good idea.",
+    "target": "فكرت إنها كانت فكرة منيحة."
+   },
+   "before": {
+    "known": "that it",
+    "target": "إنها",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "that was",
+    "target": "إنها كانت",
+    "type": "M",
+    "components": [
+     [
+      "that",
+      "إنها"
+     ],
+     [
+      "was",
+      "كانت"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0124L01B01",
+     "role": "build",
+     "before": [
+      "that it",
+      "إنها"
+     ],
+     "action": [
+      "that was",
+      "إنها كانت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0124L01B02",
+     "role": "build",
+     "before": [
+      "that it was",
+      "إنها كانت"
+     ],
+     "action": [
+      "I know that was",
+      "بعرف إنها كانت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0124L01B03",
+     "role": "build",
+     "before": [
+      "I know that it",
+      "بعرف إنها"
+     ],
+     "action": [
+      "I think that was",
+      "بفكر إنها كانت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0124L01U01",
+     "role": "use",
+     "before": [
+      "I know that it's a good idea",
+      "بعرف إنها فكرة منيحة"
+     ],
+     "action": [
+      "I know that was a good idea",
+      "بعرف إنها كانت فكرة منيحة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0124L01U02",
+     "role": "use",
+     "before": [
+      "he thinks that it was good",
+      "بيفكر إنها كانت منيحة"
+     ],
+     "action": [
+      "I think that was good",
+      "بفكر إنها كانت منيحة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0124L01U04",
+     "role": "use",
+     "before": [
+      "I know that it was good",
+      "بعرف إنها كانت منيحة"
+     ],
+     "action": [
+      "I know that was good",
+      "بعرف إنها كانت منيحة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0124L01U05",
+     "role": "use",
+     "before": [
+      "I think that it's not easy",
+      "بفكر إنها مش سهل"
+     ],
+     "action": [
+      "I think that was a good idea",
+      "بفكر إنها كانت فكرة منيحة"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 10,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0124L02B02",
+      "known": "I thought that it",
+      "target": "فكرت إنها",
+      "seed": 124
+     },
+     {
+      "id": "ara_lb_for_eng:S0236L01U04",
+      "known": "I know someone who said that she could do it",
+      "target": "بعرف حدا قالت إنها فيها تعمل",
+      "seed": 236
+     },
+     {
+      "id": "ara_lb_for_eng:S0314L01B03",
+      "known": "I think that she could put it",
+      "target": "بفكر إنها فيها تحطو",
+      "seed": 314
+     },
+     {
+      "id": "ara_lb_for_eng:S0314L01U04",
+      "known": "she said that she could put it",
+      "target": "قالت إنها فيها تحطو",
+      "seed": 314
+     },
+     {
+      "id": "ara_lb_for_eng:S0314L01U05",
+      "known": "I know that she could put it",
+      "target": "بعرف إنها فيها تحطو",
+      "seed": 314
+     },
+     {
+      "id": "ara_lb_for_eng:S0314L02U01",
+      "known": "I think that she could put it on the table",
+      "target": "بفكر إنها فيها تحطو عالطاولة",
+      "seed": 314
+     },
+     {
+      "id": "ara_lb_for_eng:S0314L02U04",
+      "known": "I know that she could put it on the table",
+      "target": "بعرف إنها فيها تحطو عالطاولة",
+      "seed": 314
+     },
+     {
+      "id": "ara_lb_for_eng:S0314L02U05",
+      "known": "she said that she could put it on the table",
+      "target": "قالت إنها فيها تحطو عالطاولة",
+      "seed": 314
+     },
+     {
+      "id": "ara_lb_for_eng:S0336L01U03",
+      "known": "I know that she can't open it",
+      "target": "بعرف إنها ما فيها تفتح",
+      "seed": 336
+     },
+     {
+      "id": "ara_lb_for_eng:S0336L01U04",
+      "known": "she said that she can open it",
+      "target": "قالت إنها فيها تفتح",
+      "seed": 336
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0154L01",
+   "verdict": "grow",
+   "pov": "hold",
+   "pattern": "W",
+   "why": "HOLD (needs Kai's yes). Planned as below, but the course says 'Saturday night' a second way at seed 215 (S0215L01 'saturday night | يوم السبت بالليل'); the two prompts would differ only by 'on'. Unifying means changing one of the two seed sentences, which is Kai's call. 'night' is the prompt for الليل (S0108L01) and for ليلة (here). ليلة only means 'the night of …', so it grows to its seed piece 'Saturday night | ليلة السبت' (4 syllables) (L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. ). Every row said a bare 'ليلة' for 'at night', which is not Lebanese; all 7 are rewritten and the seed sentence becomes a row (P26).",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 154,
+    "known": "Where do you want to meet on Saturday night?",
+    "target": "وين بدك نلتقي ليلة السبت؟"
+   },
+   "before": {
+    "known": "night",
+    "target": "ليلة",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "on Saturday night",
+    "target": "ليلة السبت",
+    "type": "M",
+    "components": [
+     [
+      "night",
+      "ليلة"
+     ],
+     [
+      "Saturday",
+      "السبت"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0154L01B01",
+     "role": "build",
+     "before": [
+      "night",
+      "ليلة"
+     ],
+     "action": [
+      "on Saturday night",
+      "ليلة السبت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0154L01B03",
+     "role": "build",
+     "before": [
+      "meet at night",
+      "نلتقي ليلة"
+     ],
+     "action": [
+      "meet on Saturday night",
+      "نلتقي ليلة السبت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0154L01U01",
+     "role": "use",
+     "before": [
+      "where do you want to meet at night?",
+      "وين بدك نلتقي ليلة؟"
+     ],
+     "action": [
+      "where do you want to meet on Saturday night?",
+      "وين بدك نلتقي ليلة السبت؟"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0154L01U02",
+     "role": "use",
+     "before": [
+      "I want to meet at night",
+      "بدي نلتقي ليلة"
+     ],
+     "action": [
+      "I want to meet on Saturday night",
+      "بدي نلتقي ليلة السبت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0154L01U03",
+     "role": "use",
+     "before": [
+      "meet me at night here",
+      "نلتقي ليلة هون"
+     ],
+     "action": [
+      "meet here on Saturday night",
+      "نلتقي هون ليلة السبت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0154L01U04",
+     "role": "use",
+     "before": [
+      "I'll be here at night",
+      "رح أكون هون ليلة"
+     ],
+     "action": [
+      "I'll be here on Saturday night",
+      "رح أكون هون ليلة السبت"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0154L01U05",
+     "role": "use",
+     "before": [
+      "what do you want to do at night?",
+      "شو بدك تعمل ليلة؟"
+     ],
+     "action": [
+      "what do you want to do on Saturday night?",
+      "شو بدك تعمل ليلة السبت؟"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0154L01B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 154,
+     "lego_index": 1,
+     "known_text": "but on Saturday night",
+     "target_text": "بس ليلة السبت",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 14,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0154L02B02",
+      "known": "saturday night",
+      "target": "ليلة السبت",
+      "seed": 154
+     },
+     {
+      "id": "ara_lb_for_eng:S0154L02U01",
+      "known": "where do you want to meet on Saturday night?",
+      "target": "وين بدك نلتقي ليلة السبت؟",
+      "seed": 154
+     },
+     {
+      "id": "ara_lb_for_eng:S0154L02U02",
+      "known": "saturday night is the best",
+      "target": "ليلة السبت أحسن",
+      "seed": 154
+     },
+     {
+      "id": "ara_lb_for_eng:S0154L02U03",
+      "known": "are you free Saturday night?",
+      "target": "فيك ليلة السبت؟",
+      "seed": 154
+     },
+     {
+      "id": "ara_lb_for_eng:S0154L02U05",
+      "known": "I'm free Saturday night",
+      "target": "فيني ليلة السبت",
+      "seed": 154
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02B01",
+      "known": "friday night",
+      "target": "ليلة الجمعة",
+      "seed": 349
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02B02",
+      "known": "go out Friday night",
+      "target": "يطلع ليلة الجمعة",
+      "seed": 349
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02B03",
+      "known": "certainly, Friday night",
+      "target": "أكيد ليلة الجمعة",
+      "seed": 349
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02U01",
+      "known": "did he want to go out on friday night",
+      "target": "كان بدو يطلع ليلة الجمعة؟",
+      "seed": 349
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02U02",
+      "known": "that young man wants to go out friday night",
+      "target": "هالشاب بدو يطلع ليلة الجمعة",
+      "seed": 349
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02U03",
+      "known": "certainly he goes out friday night",
+      "target": "أكيد يطلع ليلة الجمعة",
+      "seed": 349
+     },
+     {
+      "id": "ara_lb_for_eng:S0349L02U04",
+      "known": "I think that he wants to go out friday night",
+      "target": "بفكر إنو بدو يطلع ليلة الجمعة",
+      "seed": 349
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0111L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'new' is the prompt for جديدة (S0109L01, taught first) and for جديد (here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. The later form grows to the word in its own seed that makes it differ. 'something new | شي جديد' (3 syllables). Four rows already say it; four are rewritten.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 111,
+    "known": "When we learn something new it changes our brain.",
+    "target": "لما نتعلم شي جديد بيتغير دماغنا."
+   },
+   "before": {
+    "known": "new",
+    "target": "جديد",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "something new",
+    "target": "شي جديد",
+    "type": "M",
+    "components": [
+     [
+      "something",
+      "شي"
+     ],
+     [
+      "new",
+      "جديد"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0111L01B01",
+     "role": "build",
+     "before": [
+      "something new",
+      "شي جديد هلق"
+     ],
+     "action": [
+      "something new",
+      "شي جديد"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01B02",
+     "role": "build",
+     "before": [
+      "a lot new",
+      "كتير جديد هون"
+     ],
+     "action": [
+      "something new here",
+      "شي جديد هون"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01B03",
+     "role": "build",
+     "before": [
+      "not new",
+      "مش جديد"
+     ],
+     "action": [
+      "not something new",
+      "مش شي جديد"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01U01",
+     "role": "use",
+     "before": [
+      "this is something new",
+      "هيدا شي جديد"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01U02",
+     "role": "use",
+     "before": [
+      "she wants to do something new",
+      "بدها تعمل شي جديد"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01U03",
+     "role": "use",
+     "before": [
+      "he learned something new today",
+      "تعلم شي جديد اليوم"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01U04",
+     "role": "use",
+     "before": [
+      "he knows something new now",
+      "بيعرف شي جديد هلق"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0111L01U05",
+     "role": "use",
+     "before": [
+      "there's a lot of new stuff here",
+      "في كتير جديد هون"
+     ],
+     "action": [
+      "there's something new here",
+      "في شي جديد هون"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0111L01B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 111,
+     "lego_index": 1,
+     "known_text": "but something new",
+     "target_text": "بس شي جديد",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 3,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 29,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0111L02U04",
+      "known": "our brain is something new",
+      "target": "دماغنا شي جديد",
+      "seed": 111
+     },
+     {
+      "id": "ara_lb_for_eng:S0111L03U01",
+      "known": "when we learn something new it changes our brain",
+      "target": "لما نتعلم شي جديد بيتغير دماغنا",
+      "seed": 111
+     },
+     {
+      "id": "ara_lb_for_eng:S0126L02U02",
+      "known": "it's a new shape",
+      "target": "هيدا شكل جديد",
+      "seed": 126
+     },
+     {
+      "id": "ara_lb_for_eng:S0161L02U03",
+      "known": "this book is new",
+      "target": "هالكتاب جديد",
+      "seed": 161
+     },
+     {
+      "id": "ara_lb_for_eng:S0164L01U05",
+      "known": "I have a new book",
+      "target": "عندي كتاب جديد",
+      "seed": 164
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02B01",
+      "known": "new",
+      "target": "جديد",
+      "seed": 227
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02B02",
+      "known": "something new is really good",
+      "target": "شي جديد منيح هون",
+      "seed": 227
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02U01",
+      "known": "something new",
+      "target": "شي جديد",
+      "seed": 227
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02U02",
+      "known": "something new is good",
+      "target": "شي جديد منيح",
+      "seed": 227
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02U03",
+      "known": "I want something new",
+      "target": "بدي شي جديد",
+      "seed": 227
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02U04",
+      "known": "something new is important",
+      "target": "شي جديد مهم",
+      "seed": 227
+     },
+     {
+      "id": "ara_lb_for_eng:S0227L02U05",
+      "known": "I know it's new",
+      "target": "بعرف إنو جديد",
+      "seed": 227
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0196L03",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": "G",
+   "why": "HOLD — belongs to item 10. 'new | الجديدة' clashes with جديدة/جديد, but the deeper fault is that seed 196 says آخر فكرة ('the latest idea') and neither الجديدة nor S0196L02's الفكرة is in it (L26: 'a LEGO may contain only words its own seed says, on the known side and the target side alike'. ). Every row says 'the latest idea | الفكرة الجديدة'. Proposed there: one LEGO 'the latest idea | آخر فكرة' and the six rows changed to match; the clash disappears with it. Not planned twice.",
+   "closes": [
+    "13",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 196,
+    "known": "Have you heard the latest idea?",
+    "target": "سمعت آخر فكرة؟"
+   },
+   "before": {
+    "known": "new",
+    "target": "الجديدة",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0147L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'kind' is the prompt for طيب (S0142L01) and for طيبة (feminine, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'she was very kind | كانت كتير طيبة' (6 syllables): 'she was' shows why. Kept at 6: 'very kind' alone would not show it. Rows rewritten round it (one was wrong Arabic: 'هيدي شخص طيبة').",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 147,
+    "known": "She was very kind when she saw me feeling nervous.",
+    "target": "كانت كتير طيبة لما شافتني عم أتوتر."
+   },
+   "before": {
+    "known": "kind",
+    "target": "طيبة",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "she was very kind",
+    "target": "كانت كتير طيبة",
+    "type": "M",
+    "components": [
+     [
+      "she was",
+      "كانت"
+     ],
+     [
+      "very",
+      "كتير"
+     ],
+     [
+      "kind",
+      "طيبة"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0147L01B01",
+     "role": "build",
+     "before": [
+      "kind",
+      "طيبة"
+     ],
+     "action": [
+      "she was very kind",
+      "كانت كتير طيبة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01B02",
+     "role": "build",
+     "before": [
+      "very kind",
+      "كتير طيبة"
+     ],
+     "action": [
+      "but she was very kind",
+      "بس كانت كتير طيبة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01B03",
+     "role": "build",
+     "before": [
+      "she was kind",
+      "كانت طيبة"
+     ],
+     "action": [
+      "she was very kind here",
+      "كانت كتير طيبة هون"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01U01",
+     "role": "use",
+     "before": [
+      "she was very kind",
+      "كانت كتير طيبة"
+     ],
+     "action": [
+      "she was very kind today",
+      "كانت كتير طيبة اليوم"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01U02",
+     "role": "use",
+     "before": [
+      "she's a kind person",
+      "هيدي شخص طيبة"
+     ],
+     "action": [
+      "I know she was very kind",
+      "بعرف إنو كانت كتير طيبة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01U03",
+     "role": "use",
+     "before": [
+      "she's so kind",
+      "هيدي كتير طيبة"
+     ],
+     "action": [
+      "I think she was very kind",
+      "بفكر إنو كانت كتير طيبة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01U04",
+     "role": "use",
+     "before": [
+      "she's kind here too",
+      "هيدي طيبة هون"
+     ],
+     "action": [
+      "she was very kind here today",
+      "كانت كتير طيبة هون اليوم"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0147L01U05",
+     "role": "use",
+     "before": [
+      "she was kind before too",
+      "كانت طيبة قبل هيك"
+     ],
+     "action": [
+      "she was very kind before",
+      "كانت كتير طيبة قبل هيك"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 3,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0147L02U02",
+      "known": "she was kind when she saw me",
+      "target": "كانت طيبة لما شافتني",
+      "seed": 147
+     },
+     {
+      "id": "ara_lb_for_eng:S0147L03U01",
+      "known": "she was very kind when she saw me feeling nervous",
+      "target": "كانت كتير طيبة لما شافتني عم أتوتر",
+      "seed": 147
+     },
+     {
+      "id": "ara_lb_for_eng:S0147L03U05",
+      "known": "she was kind when I felt nervous",
+      "target": "كانت طيبة لما كنت عم أتوتر",
+      "seed": 147
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0246L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "G",
+   "why": "'busy' is the prompt for مشغول (S0192L01) and for مشغولة (feminine, here). L34: 'one English prompt with two target answers: FIRST try to unify to one target form; only if the target language genuinely needs both, put one inside a larger LEGO, and that LEGO must make clear WHY it differs'. Grown to its seed piece 'she was too busy | كانت مشغولة كتير' (6 syllables). Two rows already say it; the others gain كتير.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 246,
+    "known": "I wanted her to help you but she was too busy.",
+    "target": "كنت بدي منها تساعدك بس كانت مشغولة كتير."
+   },
+   "before": {
+    "known": "busy",
+    "target": "مشغولة",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "she was too busy",
+    "target": "كانت مشغولة كتير",
+    "type": "M",
+    "components": [
+     [
+      "she was",
+      "كانت"
+     ],
+     [
+      "busy",
+      "مشغولة"
+     ],
+     [
+      "too",
+      "كتير"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0246L02B02",
+     "role": "build",
+     "before": [
+      "very busy",
+      "مشغولة كتير"
+     ],
+     "action": [
+      "she was too busy",
+      "كانت مشغولة كتير"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0246L02B03",
+     "role": "build",
+     "before": [
+      "too busy",
+      "مشغولة مهم"
+     ],
+     "action": [
+      "but she was too busy",
+      "بس كانت مشغولة كتير"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0246L02U01",
+     "role": "use",
+     "before": [
+      "she was busy",
+      "كانت مشغولة"
+     ],
+     "action": [
+      "she was too busy today",
+      "كانت مشغولة كتير اليوم"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0246L02U02",
+     "role": "use",
+     "before": [
+      "I wanted her to help you but she was too busy",
+      "كنت بدي منها تساعدك بس كانت مشغولة كتير"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0246L02U03",
+     "role": "use",
+     "before": [
+      "I knew she was busy",
+      "كنت بعرف إنو كانت مشغولة"
+     ],
+     "action": [
+      "I knew she was too busy",
+      "كنت بعرف إنو كانت مشغولة كتير"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0246L02U04",
+     "role": "use",
+     "before": [
+      "she said she was busy",
+      "قالت إنها كانت مشغولة"
+     ],
+     "action": [
+      "she said she was too busy",
+      "قالت إنها كانت مشغولة كتير"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0246L02U05",
+     "role": "use",
+     "before": [
+      "why was she so busy?",
+      "ليش كانت مشغولة كتير؟"
+     ],
+     "action": [
+      "why was she too busy?",
+      "ليش كانت مشغولة كتير؟"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "ara_lb_for_eng:S0246L02B04",
+     "course_code": "ara_lb_for_eng",
+     "seed_number": 246,
+     "lego_index": 2,
+     "known_text": "she was too busy here",
+     "target_text": "كانت مشغولة كتير هون",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0635L03U07",
+      "known": "They say Jane is busy.",
+      "target": "بقولوا جاين مشغولة",
+      "seed": 635
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0540L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "'without' is the prompt for من دون ما (S0501L06: before a verb, 'without arguing') and for بدون (here: before a thing). L29: 'a word that governs a following element takes one form for each kind of thing that follows … the new function word is introduced inside the fuller chunk'. Grown to 'without the car | بدون السيارة' (5 syllables). Nine of ten rows already say it.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 540,
+    "known": "I don't mind if you want to leave without the car.",
+    "target": "ما بيضايقني إذا كنت بدك تمشي بدون السيارة."
+   },
+   "before": {
+    "known": "without",
+    "target": "بدون",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "without the car",
+    "target": "بدون السيارة",
+    "type": "M",
+    "components": [
+     [
+      "without",
+      "بدون"
+     ],
+     [
+      "the car",
+      "السيارة"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 0
+   },
+   "basket": [
+    {
+     "id": "ara_lb_for_eng:S0540L02B01",
+     "role": "build",
+     "before": [
+      "without",
+      "بدون"
+     ],
+     "action": [
+      "without the car",
+      "بدون السيارة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02B02",
+     "role": "build",
+     "before": [
+      "without the car",
+      "بدون السيارة"
+     ],
+     "action": [
+      "but without the car",
+      "بس بدون السيارة"
+     ]
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02B03",
+     "role": "build",
+     "before": [
+      "I saw it without the car",
+      "شفت إياه بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02B04",
+     "role": "build",
+     "before": [
+      "I need it without the car",
+      "لازم إياه بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02U01",
+     "role": "use",
+     "before": [
+      "I don't mind if you want to leave without the car",
+      "ما بيضايقني إذا كنت بدك تمشي بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02U02",
+     "role": "use",
+     "before": [
+      "I thought it was without the car",
+      "فكرت إنو بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02U03",
+     "role": "use",
+     "before": [
+      "I'm sure it's without the car",
+      "أنا متأكد إنو بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02U04",
+     "role": "use",
+     "before": [
+      "I want it without the car",
+      "بدي إياه بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02U05",
+     "role": "use",
+     "before": [
+      "I know it's without the car",
+      "بعرف إنو بدون السيارة"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_lb_for_eng:S0540L02U06",
+     "role": "use",
+     "before": [
+      "I must go without the car.",
+      "لازم أروح بدون السيارة."
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 7,
+    "sample": [
+     {
+      "id": "ara_lb_for_eng:S0564L01B02",
+      "known": "without your help",
+      "target": "بدون مساعدتك",
+      "seed": 564
+     },
+     {
+      "id": "ara_lb_for_eng:S0564L01U01",
+      "known": "I wouldn't have been able to without your help",
+      "target": "ما كنت رح أقدر بدون مساعدتك",
+      "seed": 564
+     },
+     {
+      "id": "ara_lb_for_eng:S0564L01U07",
+      "known": "I'm not sure if I can do it without your help.",
+      "target": "مش متأكد إذا فيني أعملها بدون مساعدتك.",
+      "seed": 564
+     },
+     {
+      "id": "ara_lb_for_eng:S0610L01U09",
+      "known": "how long have you been without work",
+      "target": "قديش صار إلك بدون شغل",
+      "seed": 610
+     },
+     {
+      "id": "ara_lb_for_eng:S0629L01B02",
+      "known": "without sugar",
+      "target": "بدون سكر",
+      "seed": 629
+     },
+     {
+      "id": "ara_lb_for_eng:S0629L01U05",
+      "known": "I want tea without sugar",
+      "target": "بدي شاي بدون سكر",
+      "seed": 629
+     },
+     {
+      "id": "ara_lb_for_eng:S0629L03U01",
+      "known": "I like it with milk but without sugar",
+      "target": "بحبو بالحليب بس بدون سكر",
+      "seed": 629
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0501L06",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "W",
+   "why": "neighbour of S0540L02: 'without | من دون ما' keeps its prompt, but two of its rows put a THING after it ('من دون ما مشكلة'), which is the other word's job (L29). They are reworded with a verb.",
+   "closes": [
+    "13"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 501,
+    "known": "If only I could trust you to play together without arguing.",
+    "target": "يا ريت كنت تقدر توثق فيي تلعبوا مع بعض من دون ما تتشاجروا."
+   },
+   "before": {
+    "known": "without",
+    "target": "من دون ما",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0501L06U04",
+     "set": {
+      "known_text": "I went without asking anything",
+      "target_text": "رحت من دون ما أسأل شي"
+     },
+     "expect": {
+      "known_text": "I need it without a problem",
+      "target_text": "لازم إياه من دون ما مشكلة"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0501L06U05",
+     "set": {
+      "known_text": "I agreed without trying",
+      "target_text": "اتفقت من دون ما أحاول"
+     },
+     "expect": {
+      "known_text": "I want it without a challenge",
+      "target_text": "بدي إياه من دون ما تحدي"
+     }
+    }
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0294L01",
+   "set": {
+    "known_text": "enough time",
+    "target_text": "وقت كافي",
+    "type": "M",
+    "components": [
+     {
+      "known": "time",
+      "target": "وقت"
+     },
+     {
+      "known": "enough",
+      "target": "كافي"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "enough",
+    "target_text": "كافي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0294L01B01",
+   "set": {
+    "known_text": "enough time",
+    "target_text": "وقت كافي"
+   },
+   "expect": {
+    "known_text": "enough",
+    "target_text": "كافي صح"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0294L01B02",
+   "set": {
+    "known_text": "I don't have enough time",
+    "target_text": "ما عندي وقت كافي"
+   },
+   "expect": {
+    "known_text": "enough time",
+    "target_text": "كافي مهم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0294L01B03",
+   "set": {
+    "known_text": "enough time tonight",
+    "target_text": "وقت كافي الليلة"
+   },
+   "expect": {
+    "known_text": "enough for it",
+    "target_text": "كافي هيك"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0294L01U01",
+   "set": {
+    "known_text": "I don't have enough time tonight",
+    "target_text": "ما عندي وقت كافي الليلة"
+   },
+   "expect": {
+    "known_text": "enough",
+    "target_text": "كافي"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0294L01B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 294,
+    "lego_index": 1,
+    "known_text": "but enough time",
+    "target_text": "بس وقت كافي",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0136L03",
+   "set": {
+    "known_text": "because she's my friend",
+    "target_text": "لأنها صاحبتي",
+    "type": "M",
+    "components": [
+     {
+      "known": "because she",
+      "target": "لأنها"
+     },
+     {
+      "known": "my friend",
+      "target": "صاحبتي"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "my friend",
+    "target_text": "صاحبتي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03B01",
+   "set": {
+    "known_text": "because she's my friend",
+    "target_text": "لأنها صاحبتي"
+   },
+   "expect": {
+    "known_text": "my friend",
+    "target_text": "صاحبتي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03B02",
+   "set": {
+    "known_text": "ask her because she's my friend",
+    "target_text": "تسأليها لأنها صاحبتي"
+   },
+   "expect": {
+    "known_text": "she's my friend",
+    "target_text": "هيدي صاحبتي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03B03",
+   "set": {
+    "known_text": "you can ask her because she's my friend",
+    "target_text": "فيك تسأليها لأنها صاحبتي"
+   },
+   "expect": {
+    "known_text": "my friend knows",
+    "target_text": "صاحبتي بتعرف"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03U02",
+   "set": {
+    "known_text": "of course, because she's my friend",
+    "target_text": "أكيد لأنها صاحبتي"
+   },
+   "expect": {
+    "known_text": "ask her, she's my friend",
+    "target_text": "تسأليها، صاحبتي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03U03",
+   "set": {
+    "known_text": "she knows what to do because she's my friend",
+    "target_text": "بتعرف شو تعمل لأنها صاحبتي"
+   },
+   "expect": {
+    "known_text": "my friend knows what to do",
+    "target_text": "صاحبتي بتعرف شو تعمل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03U04",
+   "set": {
+    "known_text": "because she's my friend, of course",
+    "target_text": "لأنها صاحبتي أكيد"
+   },
+   "expect": {
+    "known_text": "my friend can help",
+    "target_text": "صاحبتي فيها"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0136L03U05",
+   "set": {
+    "known_text": "she knows this well because she's my friend",
+    "target_text": "بتعرف هيدا منيح لأنها صاحبتي"
+   },
+   "expect": {
+    "known_text": "my friend knows this well",
+    "target_text": "صاحبتي بتعرف هيدا منيح"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0124L01",
+   "set": {
+    "known_text": "that was",
+    "target_text": "إنها كانت",
+    "type": "M",
+    "components": [
+     {
+      "known": "that",
+      "target": "إنها"
+     },
+     {
+      "known": "was",
+      "target": "كانت"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "that it",
+    "target_text": "إنها"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01B01",
+   "set": {
+    "known_text": "that was",
+    "target_text": "إنها كانت"
+   },
+   "expect": {
+    "known_text": "that it",
+    "target_text": "إنها"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01B02",
+   "set": {
+    "known_text": "I know that was",
+    "target_text": "بعرف إنها كانت"
+   },
+   "expect": {
+    "known_text": "that it was",
+    "target_text": "إنها كانت"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01B03",
+   "set": {
+    "known_text": "I think that was",
+    "target_text": "بفكر إنها كانت"
+   },
+   "expect": {
+    "known_text": "I know that it",
+    "target_text": "بعرف إنها"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01U01",
+   "set": {
+    "known_text": "I know that was a good idea",
+    "target_text": "بعرف إنها كانت فكرة منيحة"
+   },
+   "expect": {
+    "known_text": "I know that it's a good idea",
+    "target_text": "بعرف إنها فكرة منيحة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01U02",
+   "set": {
+    "known_text": "I think that was good",
+    "target_text": "بفكر إنها كانت منيحة"
+   },
+   "expect": {
+    "known_text": "he thinks that it was good",
+    "target_text": "بيفكر إنها كانت منيحة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01U04",
+   "set": {
+    "known_text": "I know that was good"
+   },
+   "expect": {
+    "known_text": "I know that it was good",
+    "target_text": "بعرف إنها كانت منيحة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0124L01U05",
+   "set": {
+    "known_text": "I think that was a good idea",
+    "target_text": "بفكر إنها كانت فكرة منيحة"
+   },
+   "expect": {
+    "known_text": "I think that it's not easy",
+    "target_text": "بفكر إنها مش سهل"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0154L01",
+   "set": {
+    "known_text": "on Saturday night",
+    "target_text": "ليلة السبت",
+    "type": "M",
+    "components": [
+     {
+      "known": "night",
+      "target": "ليلة"
+     },
+     {
+      "known": "Saturday",
+      "target": "السبت"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "night",
+    "target_text": "ليلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01B01",
+   "set": {
+    "known_text": "on Saturday night",
+    "target_text": "ليلة السبت"
+   },
+   "expect": {
+    "known_text": "night",
+    "target_text": "ليلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01B03",
+   "set": {
+    "known_text": "meet on Saturday night",
+    "target_text": "نلتقي ليلة السبت"
+   },
+   "expect": {
+    "known_text": "meet at night",
+    "target_text": "نلتقي ليلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01U01",
+   "set": {
+    "known_text": "where do you want to meet on Saturday night?",
+    "target_text": "وين بدك نلتقي ليلة السبت؟"
+   },
+   "expect": {
+    "known_text": "where do you want to meet at night?",
+    "target_text": "وين بدك نلتقي ليلة؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01U02",
+   "set": {
+    "known_text": "I want to meet on Saturday night",
+    "target_text": "بدي نلتقي ليلة السبت"
+   },
+   "expect": {
+    "known_text": "I want to meet at night",
+    "target_text": "بدي نلتقي ليلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01U03",
+   "set": {
+    "known_text": "meet here on Saturday night",
+    "target_text": "نلتقي هون ليلة السبت"
+   },
+   "expect": {
+    "known_text": "meet me at night here",
+    "target_text": "نلتقي ليلة هون"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01U04",
+   "set": {
+    "known_text": "I'll be here on Saturday night",
+    "target_text": "رح أكون هون ليلة السبت"
+   },
+   "expect": {
+    "known_text": "I'll be here at night",
+    "target_text": "رح أكون هون ليلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0154L01U05",
+   "set": {
+    "known_text": "what do you want to do on Saturday night?",
+    "target_text": "شو بدك تعمل ليلة السبت؟"
+   },
+   "expect": {
+    "known_text": "what do you want to do at night?",
+    "target_text": "شو بدك تعمل ليلة؟"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0154L01B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 154,
+    "lego_index": 1,
+    "known_text": "but on Saturday night",
+    "target_text": "بس ليلة السبت",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0111L01",
+   "set": {
+    "known_text": "something new",
+    "target_text": "شي جديد",
+    "type": "M",
+    "components": [
+     {
+      "known": "something",
+      "target": "شي"
+     },
+     {
+      "known": "new",
+      "target": "جديد"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "new",
+    "target_text": "جديد"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0111L01B01",
+   "set": {
+    "target_text": "شي جديد"
+   },
+   "expect": {
+    "known_text": "something new",
+    "target_text": "شي جديد هلق"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0111L01B02",
+   "set": {
+    "known_text": "something new here",
+    "target_text": "شي جديد هون"
+   },
+   "expect": {
+    "known_text": "a lot new",
+    "target_text": "كتير جديد هون"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0111L01B03",
+   "set": {
+    "known_text": "not something new",
+    "target_text": "مش شي جديد"
+   },
+   "expect": {
+    "known_text": "not new",
+    "target_text": "مش جديد"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0111L01U05",
+   "set": {
+    "known_text": "there's something new here",
+    "target_text": "في شي جديد هون"
+   },
+   "expect": {
+    "known_text": "there's a lot of new stuff here",
+    "target_text": "في كتير جديد هون"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0111L01B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 111,
+    "lego_index": 1,
+    "known_text": "but something new",
+    "target_text": "بس شي جديد",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0147L01",
+   "set": {
+    "known_text": "she was very kind",
+    "target_text": "كانت كتير طيبة",
+    "type": "M",
+    "components": [
+     {
+      "known": "she was",
+      "target": "كانت"
+     },
+     {
+      "known": "very",
+      "target": "كتير"
+     },
+     {
+      "known": "kind",
+      "target": "طيبة"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "kind",
+    "target_text": "طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01B01",
+   "set": {
+    "known_text": "she was very kind",
+    "target_text": "كانت كتير طيبة"
+   },
+   "expect": {
+    "known_text": "kind",
+    "target_text": "طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01B02",
+   "set": {
+    "known_text": "but she was very kind",
+    "target_text": "بس كانت كتير طيبة"
+   },
+   "expect": {
+    "known_text": "very kind",
+    "target_text": "كتير طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01B03",
+   "set": {
+    "known_text": "she was very kind here",
+    "target_text": "كانت كتير طيبة هون"
+   },
+   "expect": {
+    "known_text": "she was kind",
+    "target_text": "كانت طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01U01",
+   "set": {
+    "known_text": "she was very kind today",
+    "target_text": "كانت كتير طيبة اليوم"
+   },
+   "expect": {
+    "known_text": "she was very kind",
+    "target_text": "كانت كتير طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01U02",
+   "set": {
+    "known_text": "I know she was very kind",
+    "target_text": "بعرف إنو كانت كتير طيبة"
+   },
+   "expect": {
+    "known_text": "she's a kind person",
+    "target_text": "هيدي شخص طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01U03",
+   "set": {
+    "known_text": "I think she was very kind",
+    "target_text": "بفكر إنو كانت كتير طيبة"
+   },
+   "expect": {
+    "known_text": "she's so kind",
+    "target_text": "هيدي كتير طيبة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01U04",
+   "set": {
+    "known_text": "she was very kind here today",
+    "target_text": "كانت كتير طيبة هون اليوم"
+   },
+   "expect": {
+    "known_text": "she's kind here too",
+    "target_text": "هيدي طيبة هون"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0147L01U05",
+   "set": {
+    "known_text": "she was very kind before",
+    "target_text": "كانت كتير طيبة قبل هيك"
+   },
+   "expect": {
+    "known_text": "she was kind before too",
+    "target_text": "كانت طيبة قبل هيك"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0246L02",
+   "set": {
+    "known_text": "she was too busy",
+    "target_text": "كانت مشغولة كتير",
+    "type": "M",
+    "components": [
+     {
+      "known": "she was",
+      "target": "كانت"
+     },
+     {
+      "known": "busy",
+      "target": "مشغولة"
+     },
+     {
+      "known": "too",
+      "target": "كتير"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "busy",
+    "target_text": "مشغولة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0246L02B02",
+   "set": {
+    "known_text": "she was too busy",
+    "target_text": "كانت مشغولة كتير"
+   },
+   "expect": {
+    "known_text": "very busy",
+    "target_text": "مشغولة كتير"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0246L02B03",
+   "set": {
+    "known_text": "but she was too busy",
+    "target_text": "بس كانت مشغولة كتير"
+   },
+   "expect": {
+    "known_text": "too busy",
+    "target_text": "مشغولة مهم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0246L02U01",
+   "set": {
+    "known_text": "she was too busy today",
+    "target_text": "كانت مشغولة كتير اليوم"
+   },
+   "expect": {
+    "known_text": "she was busy",
+    "target_text": "كانت مشغولة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0246L02U03",
+   "set": {
+    "known_text": "I knew she was too busy",
+    "target_text": "كنت بعرف إنو كانت مشغولة كتير"
+   },
+   "expect": {
+    "known_text": "I knew she was busy",
+    "target_text": "كنت بعرف إنو كانت مشغولة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0246L02U04",
+   "set": {
+    "known_text": "she said she was too busy",
+    "target_text": "قالت إنها كانت مشغولة كتير"
+   },
+   "expect": {
+    "known_text": "she said she was busy",
+    "target_text": "قالت إنها كانت مشغولة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0246L02U05",
+   "set": {
+    "known_text": "why was she too busy?"
+   },
+   "expect": {
+    "known_text": "why was she so busy?",
+    "target_text": "ليش كانت مشغولة كتير؟"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0246L02B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 246,
+    "lego_index": 2,
+    "known_text": "she was too busy here",
+    "target_text": "كانت مشغولة كتير هون",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0540L02",
+   "set": {
+    "known_text": "without the car",
+    "target_text": "بدون السيارة",
+    "type": "M",
+    "components": [
+     {
+      "known": "without",
+      "target": "بدون"
+     },
+     {
+      "known": "the car",
+      "target": "السيارة"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "without",
+    "target_text": "بدون"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0540L02B01",
+   "set": {
+    "known_text": "without the car",
+    "target_text": "بدون السيارة"
+   },
+   "expect": {
+    "known_text": "without",
+    "target_text": "بدون"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0540L02B02",
+   "set": {
+    "known_text": "but without the car",
+    "target_text": "بس بدون السيارة"
+   },
+   "expect": {
+    "known_text": "without the car",
+    "target_text": "بدون السيارة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0501L06U04",
+   "set": {
+    "known_text": "I went without asking anything",
+    "target_text": "رحت من دون ما أسأل شي"
+   },
+   "expect": {
+    "known_text": "I need it without a problem",
+    "target_text": "لازم إياه من دون ما مشكلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0501L06U05",
+   "set": {
+    "known_text": "I agreed without trying",
+    "target_text": "اتفقت من دون ما أحاول"
+   },
+   "expect": {
+    "known_text": "I want it without a challenge",
+    "target_text": "بدي إياه من دون ما تحدي"
+   }
+  }
+ ],
+ "validator": {
+  "at": "2026-11-19T11:56:17Z",
+  "baseline_failing_seeds": 595,
+  "per_seed": {
+   "111": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "124": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L1: vocab violations in 1 phrase(s)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "136": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "147": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "154": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "246": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "294": {
+    "seed_issues_planned": [
+     "L1: USE: need 5+, got 4"
+    ],
+    "seed_issues_live": [
+     "L1: USE: need 5+, got 3 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "501": {
+    "seed_issues_planned": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L6: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L7: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L5: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L6: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L7: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "540": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ }
+}
