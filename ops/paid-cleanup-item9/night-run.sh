@@ -8,9 +8,11 @@
 #      is running, so two appliers never share the window; gives up for the night at 05:30 UK.
 #   c) pre-checks each op's seed + LEGO text against live (tools/precheck-guards.cjs; mismatch = held as drift), then
 #      applies, one file at a time, through Popty's governed applier (never --urgent), in this order:
-#        1-backfill (every course) -> 2-free -> 3-filled -> 4-recut-S#### (--batch 8)
-#      3-filled is REFUSED for a course until its 1-backfill ledger covers every op and every op is applied/already
-#      (a drifted or refused back-fill row keeps that course's dependent deletes off live, never forced).
+#        1-backfill (every course) -> 2-free -> 3-filled -> 4-recut-S#### (--batch 8), then, after ALL of those,
+#        5-thin (cs #972·AI: delete-only, back-fill never authored; P30 holds already taken out at build time)
+#      3-filled is NOT gated on back-fill any more (Kai 19 Nov 12:25Z: "I'd prefer to get the bad phrases out and have
+#      the baskets temporarily thin over having bad phrases in the course"): it still runs after its course's
+#      1-backfill in the same night, but an incomplete or drifted back-fill no longer keeps its deletes off live.
 #      Exit 75 = quiet-hours window closed: stop, resume tomorrow. Exit 1 = stopped on an error: stop and say so.
 #      Exit 2 = file done with drift/refused ops set aside: carry on.
 #   d) after each file, fills the audio of the rows it ACTUALLY changed (tools/night-audio.cjs: render route dry run
@@ -46,6 +48,9 @@ state() { node "$DIR/tools/ledger-state.cjs" "$@"; }       # prints: <ops left> 
 left() { state "$1" | cut -d' ' -f1; }
 FILES=$(ls $DIR/*/changesets/1-backfill.changeset.jsonl $DIR/*/changesets/2-free.changeset.jsonl \
            $DIR/*/changesets/3-filled.changeset.jsonl $DIR/*/changesets/4-recut-S*.changeset.jsonl 2>/dev/null)
+# cs #972·AI: the delete-only thin files go AFTER every one of #960's files (a separate ls, so ls's own sort cannot
+# interleave them with the 28 above; their order is unchanged).
+FILES="$FILES $(ls $DIR/*/changesets/5-thin.changeset.jsonl 2>/dev/null)"
 total_left() { local t=0 f; for f in $FILES; do t=$((t+$(left "$f"))); done; echo $t; }
 
 before=$(total_left); stop=""; gated=""
@@ -53,9 +58,10 @@ for f in $FILES; do
   [ "$(left "$f")" -eq 0 ] && continue
   if late; then stop="window closing (05:30 UK)"; break; fi
   cdir=$(dirname "$f"); name=$(basename "$f" .changeset.jsonl)
+  # cs #972·AI: no back-fill gate on 3-filled (Kai 19 Nov 12:25Z, thin over bad). Logged only, so the night says so.
   if [ "$name" = 3-filled ] && [ -f "$cdir/1-backfill.changeset.jsonl" ]; then
     read -r bl bb < <(state "$cdir/1-backfill.changeset.jsonl")
-    if [ "$bl" -ne 0 ] || [ "$bb" -ne 0 ]; then echo "GATED $f: 1-backfill left=$bl set-aside=$bb"; gated="$gated $(basename "$(dirname "$cdir")")"; continue; fi
+    [ "$bl" -ne 0 ] || [ "$bb" -ne 0 ] && echo "3-filled $f runs with 1-backfill left=$bl set-aside=$bb (thin, never gated)"
   fi
   # Kai's rule: live pre-check of the seed and LEGO text too (the applier's expect covers the row); a mismatch is
   # written to the ledger as drift (held, never forced). If live cannot be read, this file waits for tomorrow.
@@ -70,6 +76,7 @@ done
 # Audio for whatever is applied (also catches up slots a cap or a restart left unanswered on earlier nights).
 for f in $FILES; do
   late && break
+  case "$f" in */5-thin.changeset.jsonl) continue;; esac   # deletes only: no audio slot to fill
   grep -q '"status":"applied"' "$f.applied.jsonl" 2>/dev/null || continue
   AGENT_ID=kai-960-item9 node "$DIR/tools/night-audio.cjs" "$f" --dry
   AGENT_ID=kai-960-item9 node "$DIR/tools/night-audio.cjs" "$f"
