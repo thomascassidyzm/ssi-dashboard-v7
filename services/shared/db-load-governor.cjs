@@ -27,10 +27,11 @@
 // Measured: learner-facing backends (PostgREST + Auth + Storage logins) active / waiting on a lock or
 // IO, their longest running statement, all waiting backends; plus the writer's OWN statement latency
 // (fast EWMA) against its own rolling baseline (slow EWMA).
-//   red   — no readable signal, or ≥2 learner backends waiting, or a learner statement ≥3 s, or ≥5
-//           backends waiting (the freeze recorder's incident line): concurrency 1, rate halved down to
-//           the floor (one statement per 5 s).
-//   amber — learner active > max(4, 2×its calm baseline + 2), or 1 learner waiting, or ≥2 waiting, or own
+//   red   — no readable signal, or ≥2 learner backends waiting, or ≥3 learner statements past 3 s at once
+//           (v3, #971: ONE slow statement is not load), or ≥5 backends waiting (the freeze recorder's
+//           incident line): concurrency 1, rate halved down to the floor (one statement per 5 s).
+//   amber — learner active > max(4, 2×its calm baseline + 2), or 1 learner waiting, or 2 learner statements
+//           past 3 s, or ≥2 waiting, or own
 //           latency > 3× baseline and > 150 ms: concurrency 1, rate halved.
 //   green — otherwise: rate +1/s and concurrency +1 per tick; both lift to unlimited once 4× above use.
 // Learner traffic itself is never touched: it is not a writer, it is what this protects.
@@ -48,7 +49,14 @@
 // Dependency-free. The probe uses the pg Client class its host hands it (configure({ Client, probe })).
 "use strict";
 
-const GOVERNOR_VERSION = 2;   // 2: partial-visibility = blind; measuredAt/refresh (#838 findings)
+const GOVERNOR_VERSION = 3;   // 2: partial-visibility = blind; measuredAt/refresh (#838 findings). 3: load, not one slow statement (#971)
+// ONE SLOW STATEMENT IS NOT LOAD (cs #971, 2026-11-19). v2 went red on any single learner-side statement past 3 s, so
+// one teacher-dashboard view (4-8 s, CPU-bound, every 7-8 s) held every governed writer at the floor through school
+// hours while learner queries stayed fast. Load is contention: backends waiting, active count above baseline, the
+// writer's own latency climbing, or several slow statements at once (the CPU genuinely saturating).
+const SLOW_STMT_S = 3;        // a learner statement running this long counts as slow
+const SLOW_AMBER = 2;         // two at once: amber
+const SLOW_RED = 3;           // three at once: red
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
@@ -76,7 +84,9 @@ const PROBE_SQL = `select count(*) filter (where state is null)::int as hidden,
        count(*) filter (where state = 'active'
                           and wait_event_type is not null and wait_event_type not in ('Client', 'Activity'))::int as all_waiting,
        coalesce(max(extract(epoch from clock_timestamp() - query_start))
-                  filter (where state = 'active' and usename = any($1::text[])), 0)::float8 as learner_max_secs
+                  filter (where state = 'active' and usename = any($1::text[])), 0)::float8 as learner_max_secs,
+       count(*) filter (where state = 'active' and usename = any($1::text[])
+                          and query_start < clock_timestamp() - interval '3 seconds')::int as learner_slow
   from pg_stat_activity
  where datname = current_database() and backend_type = 'client backend' and pid <> pg_backend_pid()`;
 
@@ -119,6 +129,7 @@ function reduceActivity(rows, { at = Date.now(), source = "rows" } = {}) {
     learnerWaiting: la.filter(waits).length,
     allWaiting: client.filter(waits).length,
     learnerMaxSecs: la.reduce((m, a) => Math.max(m, Number(a.query_seconds) || 0), 0),
+    learnerSlow: la.filter((a) => (Number(a.query_seconds) || 0) >= SLOW_STMT_S).length,
   };
 }
 
@@ -163,7 +174,7 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
         if (!g.probeBlindSaid) { g.probeBlindSaid = true; log(`db-load-governor[${g.writer}]: probe login cannot see every backend (${row.hidden} hidden; no pg_read_all_stats) and no fresh freeze-recorder sample — running SLOW (red) until one appears`); }
         return { at: t, source: "probe", ok: false, why: "probe blind" };
       }
-      const sig = { at: t, source: "probe", ok: true, learnerActive: row.learner_active, learnerWaiting: row.learner_waiting, allWaiting: row.all_waiting, learnerMaxSecs: Number(row.learner_max_secs) || 0 };
+      const sig = { at: t, source: "probe", ok: true, learnerActive: row.learner_active, learnerWaiting: row.learner_waiting, allWaiting: row.all_waiting, learnerMaxSecs: Number(row.learner_max_secs) || 0, learnerSlow: row.learner_slow };
       toCache(sig);
       return sig;
     } catch (e) {
@@ -175,10 +186,11 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
 
   function classify(s) {
     if (!s || !s.ok) return "red";
-    if (s.learnerWaiting >= 2 || s.learnerMaxSecs >= 3 || s.allWaiting >= 5) return "red";
+    const slow = s.learnerSlow == null ? (s.learnerMaxSecs >= SLOW_STMT_S ? 1 : 0) : s.learnerSlow;
+    if (s.learnerWaiting >= 2 || slow >= SLOW_RED || s.allWaiting >= 5) return "red";
     const base = g.learnerBase == null ? s.learnerActive : g.learnerBase;
     const latHot = g.latFast != null && g.latSlow != null && g.latFast > 3 * g.latSlow && g.latFast > 150;
-    if (s.learnerActive > Math.max(4, 2 * base + 2) || s.learnerWaiting >= 1 || s.allWaiting >= 2 || latHot) return "amber";
+    if (s.learnerActive > Math.max(4, 2 * base + 2) || s.learnerWaiting >= 1 || slow >= SLOW_AMBER || s.allWaiting >= 2 || latHot) return "amber";
     return "green";
   }
 
@@ -293,7 +305,7 @@ const fmtRate = (r) => (Number.isFinite(r) ? `${Math.round(r * 10) / 10}/s` : "u
 function describe(s) {
   if (!s) return "no reading yet";
   if (!s.ok) return `no signal: ${s.why || s.source}`;
-  return `${s.source}: learner active ${s.learnerActive}, learner waiting ${s.learnerWaiting}, all waiting ${s.allWaiting}, longest learner stmt ${Math.round(s.learnerMaxSecs * 10) / 10} s`;
+  return `${s.source}: learner active ${s.learnerActive}, learner waiting ${s.learnerWaiting}, all waiting ${s.allWaiting}, longest learner stmt ${Math.round(s.learnerMaxSecs * 10) / 10} s, learner stmts past ${SLOW_STMT_S} s ${s.learnerSlow ?? "?"}`;
 }
 function defaultLog(line) { try { process.stderr.write(line + "\n"); } catch {} }
 function defaultEvent(kind, detail) {
