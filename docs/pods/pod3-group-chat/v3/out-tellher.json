@@ -1,0 +1,869 @@
+{
+  "topic": "Rhi has just told the table that on Saturday she saw Gwen Price's husband Gareth having a very cosy dinner in a hotel in Ludlow with a woman who is not Gwen. Gwen is a customer and a friend of hers. Rhi hasn't said anything to anyone yet, and she's asking the table what she should do.",
+  "model": "opus",
+  "T": [
+    {
+      "speaker": "Hugh",
+      "line": "Gareth Price? He can't find his own way to Ludlow.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "own way to Ludlow."
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Hang on, how cosy is cosy? Because my brother-in-law takes his accountant to dinner and they look like they're on a honeymoon.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Sunny",
+          "text": "ha",
+          "after": "look like they're on a honeymoon."
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Cosy. Shared pudding cosy.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Right, so you do nothing. Nothing at all",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Right, so you do nothing. Nothing at all. A man is allowed a sticky toffee pudding in Ludlow, it's practically a human right."
+    },
+    {
+      "speaker": "Jess",
+      "line": "Wait, so your actual advice is she just bleeds Gwen's radiators every winter and says nowt? Forever?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F9"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Hang on, did Gareth see you?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "No. Well. I don't think so.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "No, no, not forever. Just until he's stupid enough",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "No, no, not forever. Just until he's stupid enough to do it somewhere closer than Ludlow, which, knowing Gareth, is next week."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Oh he's not wrong about Gareth, bless him, but Gwen'll find out you knew, Rhi, and that's the bit she won't forgive.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F16"
+    },
+    {
+      "speaker": "Danny",
+      "line": "Thank you. Until he's stupid enough.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Shared pudding. That's stupid enough.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F303"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Hang on, Rhi's asked the whole table and said about six words since. You've already decided",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F304",
+      "full": "Hang on, Rhi's asked the whole table and said about six words since. You've already decided, haven't you?"
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Half. And I'm in her kitchen Thursday servicing the boiler, so I've got till then to sort my face out.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F2"
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Can't prove a thing, mind, but his father went to Ludlow every Saturday for twenty years and never once came home with shopping.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Rhi",
+          "text": "no",
+          "after": "every Saturday for twenty years"
+        }
+      ],
+      "move": "F302"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Oh my God, so it's hereditary. Ludlow's the family business, they just pass it down.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Rhi",
+          "text": "ha",
+          "after": "just pass it down"
+        }
+      ],
+      "move": "F301"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "That's where I was going, that. Hugh, did his mom know?",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F306",
+      "full": "That's where I was going, that. Hugh, did his mom know? Because if she did and kept her mouth shut, well..."
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Who d'you think did his shopping?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "did his shopping?"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "No. Who? Hugh. Who?",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Nancy Probert. Had the wool shop by the bridge. Whole town knew bar his wife. Femi, you'd tell Gwen, would you?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F11"
+    },
+    {
+      "speaker": "Femi",
+      "line": "See, Nancy Probert's my point. Half of Ludlow's seen that pudding, so Gwen's last to know unless someone tells her",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F305",
+      "full": "See, Nancy Probert's my point. Half of Ludlow's seen that pudding, so Gwen's last to know unless someone tells her. So yeah. I would."
+    },
+    {
+      "speaker": "Danny",
+      "line": "Lovely, so half of Ludlow's seen it, let one of them be the hero. Why's it got to be the woman with the spanner?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "the woman with the spanner"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Oi. The woman with the spanner has been under Gwen's sink since her twins were in nappies, I know where she hides the Baileys, Danny. That's not a customer, that's, that's a mate.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Fine, a mate, I withdraw the spanner. But then you know her. So never mind what you should do, would Gwen want telling, or would she rather find out without you standing there?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Gwen? Gwen'd want telling. Gwen'd want the hotel, the table, the woman's coat",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Gwen? Gwen'd want telling. Gwen'd want the hotel, the table, the woman's coat, and what the pudding was."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Go on then, what coat?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Camel. Long, belted, never been near a field. See, that's my problem, I'd do the coat before I'd do the kind bit.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "never been near a field"
+        }
+      ],
+      "move": "F2"
+    },
+    {
+      "speaker": "Femi",
+      "line": "Hang on, long, belted, camel. How long were you stood there looking at this coat",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Hang on, long, belted, camel. How long were you stood there looking at this coat if Gareth definitely didn't see you?"
+    },
+    {
+      "speaker": "Rhi",
+      "line": "I'd ordered, Femi! What was I—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "No, but that's it, Thursday, Gwen opens the door and you'll do the coat before the kind bit, I know you will.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F303"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Do it now, then. I'm Gwen.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Gwen, love. Sit down",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Gwen, love. Sit down. Camel."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Sit down? In my own kitchen? You've never told me to sit down in fifteen years, Rhi, I'd know straight off it was Gareth.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Then don't go Thursday. You've eight of them working for you, send the one who can't read a face and wouldn't know a camel coat from a horse blanket.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Rhi",
+          "text": "ha",
+          "after": "from a horse blanket"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Fifteen years it's Rhi, then this Thursday some lad she's never met turns up instead? Gwen'll know before he's got the cover off.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Has anyone thought Gwen might know already?",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Has anyone thought Gwen might know already? Thursday she opens the door, and it's you getting handled gently over the boiler."
+    },
+    {
+      "speaker": "Jess",
+      "line": "Oh God, and if she does know, would she even tell you, Rhi? Or are you suddenly just the woman who does the boiler?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Gareth Price? He can't find his own way to Ludlow.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Hang on, how cosy is cosy? Because my brother-in-law takes his accountant to dinner and they look like they're on a honeymoon.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "own way to Ludlow."
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Cosy. Shared pudding cosy.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Sunny",
+            "text": "ha",
+            "after": "look like they're on a honeymoon."
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Right, so you do nothing. Nothing at all. A man is allowed a sticky toffee pudding in Ludlow, it's practically a human right.",
+        "move": null,
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Wait, so your actual advice is she just bleeds Gwen's radiators every winter and says nowt? Forever?",
+        "move": "F9",
+        "cut_in": "Nothing at all.",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Hang on, did Gareth see you?",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No. Well. I don't think so.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Danny",
+        "line": "No, no, not forever. Just until he's stupid enough to do it somewhere closer than Ludlow, which, knowing Gareth, is next week.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Oh he's not wrong about Gareth, bless him, but Gwen'll find out you knew, Rhi, and that's the bit she won't forgive.",
+        "move": "F16",
+        "cut_in": "Just until he's stupid enough",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Thank you. Until he's stupid enough.",
+        "move": null,
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Shared pudding. That's stupid enough.",
+        "move": "F303",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Hang on, Rhi's asked the whole table and said about six words since. You've already decided, haven't you?",
+        "move": "F304",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Half. And I'm in her kitchen Thursday servicing the boiler, so I've got till then to sort my face out.",
+        "move": "F2",
+        "cut_in": "You've already decided,",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Can't prove a thing, mind, but his father went to Ludlow every Saturday for twenty years and never once came home with shopping.",
+        "move": "F302",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Oh my God, so it's hereditary. Ludlow's the family business, they just pass it down.",
+        "move": "F301",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Rhi",
+            "text": "no",
+            "after": "every Saturday for twenty years"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "That's where I was going, that. Hugh, did his mom know? Because if she did and kept her mouth shut, well...",
+        "move": "F306",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [
+          {
+            "who": "Rhi",
+            "text": "ha",
+            "after": "just pass it down"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Who d'you think did his shopping?",
+        "move": null,
+        "cut_in": "Hugh, did his mom know?",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No. Who? Hugh. Who?",
+        "move": null,
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "did his shopping?"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Nancy Probert. Had the wool shop by the bridge. Whole town knew bar his wife. Femi, you'd tell Gwen, would you?",
+        "move": "F11",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Femi",
+        "line": "See, Nancy Probert's my point. Half of Ludlow's seen that pudding, so Gwen's last to know unless someone tells her. So yeah. I would.",
+        "move": "F305",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Lovely, so half of Ludlow's seen it, let one of them be the hero. Why's it got to be the woman with the spanner?",
+        "move": null,
+        "cut_in": "Gwen's last to know unless someone tells her.",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Oi. The woman with the spanner has been under Gwen's sink since her twins were in nappies, I know where she hides the Baileys, Danny. That's not a customer, that's, that's a mate.",
+        "move": null,
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "the woman with the spanner"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Fine, a mate, I withdraw the spanner. But then you know her. So never mind what you should do, would Gwen want telling, or would she rather find out without you standing there?",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Gwen? Gwen'd want telling. Gwen'd want the hotel, the table, the woman's coat, and what the pudding was.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Go on then, what coat?",
+        "move": null,
+        "cut_in": "the hotel, the table, the woman's coat,",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Camel. Long, belted, never been near a field. See, that's my problem, I'd do the coat before I'd do the kind bit.",
+        "move": "F2",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Hang on, long, belted, camel. How long were you stood there looking at this coat if Gareth definitely didn't see you?",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "never been near a field"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "I'd ordered, Femi! What was I—",
+        "move": null,
+        "cut_in": "How long were you stood there looking at this coat",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, but that's it, Thursday, Gwen opens the door and you'll do the coat before the kind bit, I know you will.",
+        "move": "F303",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Do it now, then. I'm Gwen.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Gwen, love. Sit down. Camel.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Sit down? In my own kitchen? You've never told me to sit down in fifteen years, Rhi, I'd know straight off it was Gareth.",
+        "move": null,
+        "cut_in": "Gwen, love. Sit down.",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Then don't go Thursday. You've eight of them working for you, send the one who can't read a face and wouldn't know a camel coat from a horse blanket.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Fifteen years it's Rhi, then this Thursday some lad she's never met turns up instead? Gwen'll know before he's got the cover off.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Rhi",
+            "text": "ha",
+            "after": "from a horse blanket"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Has anyone thought Gwen might know already? Thursday she opens the door, and it's you getting handled gently over the boiler.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Oh God, and if she does know, would she even tell you, Rhi? Or are you suddenly just the woman who does the boiler?",
+        "move": null,
+        "cut_in": "Gwen might know already?",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    }
+  ]
+}

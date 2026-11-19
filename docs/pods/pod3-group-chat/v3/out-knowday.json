@@ -1,0 +1,917 @@
+{
+  "topic": "Femi's seven-year-old asked him at bedtime whether he'd want to know the exact day he was going to die, and Femi said yes without thinking. He's just told the table, and Sunny has said, flatly: 'No you wouldn't.'",
+  "model": "opus",
+  "T": [
+    {
+      "speaker": "Femi",
+      "line": "I would. Course I would. I'd plan around it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Rhi",
+          "text": "ha",
+          "after": "I'd plan around it."
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Plan what? You'd spend the last fortnight checking your pulse and ringing your mum.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Gwilym Price had his palm read in a tent at the show, oh, years back, and she told him seventy-two. So at seventy-one he sold the ewes, gave the dog to his nephew, and he's ninety now",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "gave the dog to his nephew,"
+        }
+      ],
+      "move": null,
+      "full": "Gwilym Price had his palm read in a tent at the show, oh, years back, and she told him seventy-two. So at seventy-one he sold the ewes, gave the dog to his nephew, and he's ninety now. Still livid about the dog."
+    },
+    {
+      "speaker": "Femi",
+      "line": "Yeah, but that's a woman in a tent getting it wrong. Mine would be the real date, that's the whole point.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Wait, wait, the real date? Then you're unkillable till Tuesday the whatever. I'd be crossing the bypass without looking, every single morning.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "every single morning"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Oh, that's me, that is. I'd let Cai drive me down the M4 to Cardiff and not grab the door handle once.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Danny",
+          "text": "ha",
+          "after": "grab the door handle once"
+        }
+      ],
+      "move": "F306"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Hang on, Femi's not in it for the stunts though, are you? You'd want the date so you could colour-code",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F9",
+      "full": "Hang on, Femi's not in it for the stunts though, are you? You'd want the date so you could colour-code the last month."
+    },
+    {
+      "speaker": "Femi",
+      "line": "Fine, there'd be a spreadsheet, I'm not ashamed of that. But I'd still want the date, and nobody's told me yet why not knowing's better.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F16"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Ask Gwilym how it went.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "He bought the ewes back.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "So hang on, Sunny's saying it's not the day you die, it's the day you start dying",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F301",
+      "full": "So hang on, Sunny's saying it's not the day you die, it's the day you start dying, and that's a year early, ask Gwilym."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Yes, that, the day you start dying. And with you, Femi, it'd start the minute you'd typed it in the spreadsheet.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "typed it in the spreadsheet"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Okay, okay, so I start dying at the spreadsheet. But you lot are dying anyway, you're just doing it without, without a plan.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F305"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Put that on your headstone, Femi.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Colour-coded",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F303",
+      "full": "Colour-coded, mind."
+    },
+    {
+      "speaker": "Danny",
+      "line": "I'd want it, purely so I could appeal it. Hugh, you've had a front row seat to Gwilym, would you want yours?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F11"
+    },
+    {
+      "speaker": "Hugh",
+      "line": "No. Wouldn't want mine. I'd pay good money for the date on Elwyn's peacock, mind, and I'd take a chair down the lane.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "take a chair down the lane"
+        }
+      ],
+      "move": "F2"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Leave the peacock alone. Femi, I can't tell you why not knowing's better, I've got nothing. But you'd hate it, I'd put the house on it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F302"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Whole table's",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Whole table's ganged up, Femi."
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Not me, I'm with Femi. I've been in lofts, love, full of stuff people were definitely getting round to one day.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "No, I was saying whole table's against him, but, God, I've still got Year Nine essays from June in a bag, so... maybe not.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "June. They'll have sat their GCSEs, some of them, by the time that bag gets opened.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Femi",
+          "text": "ha",
+          "after": "gets opened"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Kasia's babcia, right, she bought her coffin at sixty, sixty, so nobody would be out of pocket, and then she kept potatoes in it. Twenty-odd years",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "kept potatoes in it."
+        }
+      ],
+      "move": null,
+      "full": "Kasia's babcia, right, she bought her coffin at sixty, sixty, so nobody would be out of pocket, and then she kept potatoes in it. Twenty-odd years. Best potatoes in the family, everyone said so, and nobody would eat them."
+    },
+    {
+      "speaker": "Femi",
+      "line": "Hold on, hold on, so when she actually went, who emptied it? Somebody had to deal with the potatoes first.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Kasia's dad. In his funeral suit.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Sunny",
+          "text": "ha",
+          "after": "In his funeral suit."
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "I had the boards up in a bungalow out Presteigne way, and there's an envelope, 'To be opened after my death', in biro. And she's stood right behind me, eighty-odd, going, oh, I wondered where that went.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Hugh",
+          "text": "ha",
+          "after": "I wondered where that went"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Tell me you",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Tell me you opened it."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Course she opened it, look at her, she'd have had it steamed open over the kettle before the boards were back down.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Already open. It was a gas bill.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "It was a gas bill."
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Final demand, surely.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Nineteen eighty-six",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Nineteen eighty-six, it was dated."
+    },
+    {
+      "speaker": "Hugh",
+      "line": "There's your plan, Femi.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Wait, had she paid it?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "She asked me to post it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [
+        {
+          "who": "Jess",
+          "text": "ha",
+          "after": "post it."
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "My mum's got every bill since she landed in Peckham, in Quality Street tins",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "My mum's got every bill since she landed in Peckham, in Quality Street tins, and she still won't tell me why."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Roses, in Wolverhampton. Same mum.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Femi",
+        "line": "I would. Course I would. I'd plan around it.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Plan what? You'd spend the last fortnight checking your pulse and ringing your mum.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Rhi",
+            "text": "ha",
+            "after": "I'd plan around it."
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Gwilym Price had his palm read in a tent at the show, oh, years back, and she told him seventy-two. So at seventy-one he sold the ewes, gave the dog to his nephew, and he's ninety now. Still livid about the dog.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Yeah, but that's a woman in a tent getting it wrong. Mine would be the real date, that's the whole point.",
+        "move": null,
+        "cut_in": "and he's ninety now.",
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "gave the dog to his nephew,"
+          }
+        ]
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Wait, wait, the real date? Then you're unkillable till Tuesday the whatever. I'd be crossing the bypass without looking, every single morning.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Oh, that's me, that is. I'd let Cai drive me down the M4 to Cardiff and not grab the door handle once.",
+        "move": "F306",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "every single morning"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Hang on, Femi's not in it for the stunts though, are you? You'd want the date so you could colour-code the last month.",
+        "move": "F9",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Danny",
+            "text": "ha",
+            "after": "grab the door handle once"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Fine, there'd be a spreadsheet, I'm not ashamed of that. But I'd still want the date, and nobody's told me yet why not knowing's better.",
+        "move": "F16",
+        "cut_in": "You'd want the date so you could colour-code",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Ask Gwilym how it went.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "He bought the ewes back.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Danny",
+        "line": "So hang on, Sunny's saying it's not the day you die, it's the day you start dying, and that's a year early, ask Gwilym.",
+        "move": "F301",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Yes, that, the day you start dying. And with you, Femi, it'd start the minute you'd typed it in the spreadsheet.",
+        "move": null,
+        "cut_in": "it's the day you start dying,",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Okay, okay, so I start dying at the spreadsheet. But you lot are dying anyway, you're just doing it without, without a plan.",
+        "move": "F305",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "typed it in the spreadsheet"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Put that on your headstone, Femi.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Colour-coded, mind.",
+        "move": "F303",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Danny",
+        "line": "I'd want it, purely so I could appeal it. Hugh, you've had a front row seat to Gwilym, would you want yours?",
+        "move": "F11",
+        "cut_in": "Colour-coded,",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "No. Wouldn't want mine. I'd pay good money for the date on Elwyn's peacock, mind, and I'd take a chair down the lane.",
+        "move": "F2",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Leave the peacock alone. Femi, I can't tell you why not knowing's better, I've got nothing. But you'd hate it, I'd put the house on it.",
+        "move": "F302",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "take a chair down the lane"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Whole table's ganged up, Femi.",
+        "move": "F304",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Not me, I'm with Femi. I've been in lofts, love, full of stuff people were definitely getting round to one day.",
+        "move": null,
+        "cut_in": "Whole table's",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, I was saying whole table's against him, but, God, I've still got Year Nine essays from June in a bag, so... maybe not.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "June. They'll have sat their GCSEs, some of them, by the time that bag gets opened.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Kasia's babcia, right, she bought her coffin at sixty, sixty, so nobody would be out of pocket, and then she kept potatoes in it. Twenty-odd years. Best potatoes in the family, everyone said so, and nobody would eat them.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Femi",
+            "text": "ha",
+            "after": "gets opened"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Hold on, hold on, so when she actually went, who emptied it? Somebody had to deal with the potatoes first.",
+        "move": null,
+        "cut_in": "Twenty-odd years.",
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "kept potatoes in it."
+          }
+        ]
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Kasia's dad. In his funeral suit.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "I had the boards up in a bungalow out Presteigne way, and there's an envelope, 'To be opened after my death', in biro. And she's stood right behind me, eighty-odd, going, oh, I wondered where that went.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Sunny",
+            "text": "ha",
+            "after": "In his funeral suit."
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Tell me you opened it.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Hugh",
+            "text": "ha",
+            "after": "I wondered where that went"
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Course she opened it, look at her, she'd have had it steamed open over the kettle before the boards were back down.",
+        "move": null,
+        "cut_in": "Tell me you",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Already open. It was a gas bill.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Final demand, surely.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "It was a gas bill."
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Nineteen eighty-six, it was dated.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "There's your plan, Femi.",
+        "move": null,
+        "cut_in": "Nineteen eighty-six,",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Wait, had she paid it?",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "She asked me to post it.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Femi",
+        "line": "My mum's got every bill since she landed in Peckham, in Quality Street tins, and she still won't tell me why.",
+        "move": null,
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Jess",
+            "text": "ha",
+            "after": "post it."
+          }
+        ]
+      },
+      "cutApplied": false
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Roses, in Wolverhampton. Same mum.",
+        "move": null,
+        "cut_in": "every bill since she landed in Peckham, in Quality Street tins,",
+        "overlap": false,
+        "backchannels": []
+      },
+      "cutApplied": true
+    }
+  ]
+}
