@@ -200,9 +200,9 @@ Write the single next turn as JSON.`;
     try { r = call(prompt); if (!NAMES.includes(r.speaker) || (forced && r.speaker !== forced)) throw new Error('speaker ' + r.speaker); break; } catch (e) { if (++tries > 2) throw e; }
   }
   const wc = String(r.line).split(/\s+/).filter(Boolean).length;
-  const tooLong = wc > 35 || (i === 0 && wc > 15) || (band.startsWith('SHORT') && wc > 10);
+  const tooLong = wc > 35 || (i === 0 && wc > 15) || (band.startsWith('SHORT:') && wc > 10);
   if (tooLong) {
-    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. ' + (band.startsWith('SHORT') ? 'This turn is 1-6 words.' : 'Keep this turn well under 35 words.')); if (NAMES.includes(r2.speaker) && (!forced || r2.speaker === forced)) r = r2; } catch (e) {}
+    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. ' + (band.startsWith('SHORT:') ? 'This turn is 1-6 words.' : 'Keep this turn well under 35 words.')); if (NAMES.includes(r2.speaker) && (!forced || r2.speaker === forced)) r = r2; } catch (e) {}
   }
   const prev = T[T.length - 1];
   let cutApplied = false;

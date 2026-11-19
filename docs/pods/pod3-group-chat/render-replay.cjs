@@ -13,7 +13,7 @@ const [, , topic, title, htmlDir] = process.argv;
 const run = JSON.parse(fs.readFileSync(path.join(__dirname, `out-${topic}.json`), 'utf8'));
 const T = run.T;
 // v4 (#992): layer-3 move tags, judged in chain.cjs, shown as stage directions (never in the spoken text)
-const MOVES = Object.fromEntries(require('../../../services/shared/metagraph/moves.json').map(m => [m.id, m]));
+const MOVES = Object.fromEntries(require('../../../services/shared/metagraph/moves.json').moves.map(m => [m.id, m]));
 const moveLabel = id => id ? `${id} ${MOVES[id] ? MOVES[id].name : ''}`.trim() : null;
 
 // Where does the next speaker come in on line i? Character offset into T[i].line, or null.
