@@ -1,4 +1,1138 @@
 {
+"20": {
+"at": "2026-11-19T11:44:47Z",
+"known": "তুমি তার নাম দ্রুত শিখতে চাও।",
+"legos": [
+{
+"id": "S0020L01",
+"idx": 1,
+"is_new": true,
+"known": "তুমি চাও",
+"phrases": [
+{
+"id": "7d26499a-adff-4cd9-8065-75b22f461c4a",
+"ka": "b95f951d-ef45-449a-a826-6fc8f6ba3970",
+"known": "তুমি চাও",
+"pos": 0,
+"t1": "04c0cd42-5032-4c21-a925-212e3f8ce9cf",
+"t2": "42c0ea3a-0e68-4a33-8aa9-e146aaf2e508",
+"target": "you want",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0020L01C01",
+"ka": "5ef7ec07-d5e2-4353-ab4b-de7f9c9d5506",
+"known": "তুমি",
+"pos": 1,
+"t1": "786d497d-e3c8-4b84-b13e-e4021271eb5a",
+"t2": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0020L01C02",
+"ka": "0a714e12-ebcd-4329-a268-8ff6f17c259f",
+"known": "চাও",
+"pos": 2,
+"t1": "36ac9bae-5ccd-4900-8897-3a459b7c0729",
+"t2": "e201a0af-34b0-49cd-9b80-99c589d48037",
+"target": "want",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0020L01B01",
+"ka": "b95f951d-ef45-449a-a826-6fc8f6ba3970",
+"known": "তুমি চাও",
+"pos": 3,
+"t1": "04c0cd42-5032-4c21-a925-212e3f8ce9cf",
+"t2": "42c0ea3a-0e68-4a33-8aa9-e146aaf2e508",
+"target": "you want",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L01B02",
+"ka": "6948960f-91bb-4165-bb6e-eec0f68e486a",
+"known": "তুমি ইংরেজি শিখতে চাও",
+"pos": 4,
+"t1": "593f141a-011b-46b4-814f-aa60c946a55f",
+"t2": "d25505d0-a254-4ca1-8a2b-bc1e86204211",
+"target": "you want to learn English",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L01B03",
+"ka": "f5f7cc23-eeb0-4a71-bb80-71c6f5127c15",
+"known": "তুমি কাল ফিরে আসতে চাও",
+"pos": 5,
+"t1": "a90935f0-fdbb-49b6-baaa-5c2078044733",
+"t2": "de52232b-1a96-4811-a47d-367b8eba752a",
+"target": "you want to come back tomorrow",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L01U01",
+"ka": "776df856-626a-4c24-bf24-1bb8a6e05e35",
+"known": "তুমি ইংরেজি বলতে চাও।",
+"pos": 6,
+"t1": "bffda405-618c-4b83-94a4-501317e6a46e",
+"t2": "d5a05c4d-c0b9-495c-a0f0-d9742faf6e80",
+"target": "you want to speak English",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L01U02",
+"ka": "2e623c8d-6591-46c3-881a-5014de54d323",
+"known": "কিন্তু তুমি কি থামতে চাও না?",
+"pos": 7,
+"t1": "47382e17-a38b-42c0-8aa4-5c5eae5da71d",
+"t2": "9b1665be-f74a-42d4-adba-b260b91950ec",
+"target": "but you don't want to stop?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L01U03",
+"ka": "dd2e37ea-d17a-4815-aa08-a7e2cc6a51e6",
+"known": "তুমি সবার সাথে দেখা করতে চাও।",
+"pos": 8,
+"t1": "b3094f4e-bdd5-44a5-a851-a689037403d5",
+"t2": "5d56b0d4-5aaa-4170-a003-3f803f1aeb27",
+"target": "you want to meet with everyone else",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L01U04",
+"ka": "10bc9dbd-ca21-4759-80a1-484191325b8c",
+"known": "তুমি পরে ফিরে আসতে চাও।",
+"pos": 9,
+"t1": "34d1110d-1445-4b82-a707-a5113471fe9e",
+"t2": "db69c39e-c4ef-4c76-8fd6-91894d167646",
+"target": "you want to come back later on",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L01U05",
+"ka": "666a28ca-8bc3-4785-be30-aab670e919e3",
+"known": "তুমি সারাদিন ইংরেজি বলতে চাও।",
+"pos": 10,
+"t1": "c0456b96-1171-481c-a1cb-7ef01e94feae",
+"t2": "9d8caea8-ba27-49ff-949f-1dce923d3cbf",
+"target": "you want to speak English all day",
+"type": "use"
+}
+],
+"target": "you want",
+"type": "M"
+},
+{
+"id": "S0020L02",
+"idx": 2,
+"is_new": true,
+"known": "তার নাম",
+"phrases": [
+{
+"id": "126ce94e-aaf8-4db6-8391-7c4093f43236",
+"ka": "bd8a6d16-bb0b-415f-b40a-abd07af93bec",
+"known": "তার নাম",
+"pos": 0,
+"t1": "f93f42ba-9ffc-438a-b313-c329db2655d3",
+"t2": "8356d69b-f22b-4884-8a8c-da4c28893cf7",
+"target": "his name",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0020L02C01",
+"ka": "ac0fab85-721a-42c5-9eae-f561acba556a",
+"known": "তার",
+"pos": 1,
+"t1": "7919ce5e-8283-4707-941f-a4a51dd08f10",
+"t2": "65830c96-8457-4187-bf73-4b372581045a",
+"target": "his",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0020L02C02",
+"ka": "68f13e4d-b89d-46e3-b517-136cb8310981",
+"known": "নাম",
+"pos": 2,
+"t1": "aa4fe14c-d0ce-43fa-9910-303bb7a6c1a5",
+"t2": "d24e3097-4a96-42d0-8d21-35354b4e8b0d",
+"target": "name",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0020L02B01",
+"ka": "bd8a6d16-bb0b-415f-b40a-abd07af93bec",
+"known": "তার নাম",
+"pos": 3,
+"t1": "f93f42ba-9ffc-438a-b313-c329db2655d3",
+"t2": "8356d69b-f22b-4884-8a8c-da4c28893cf7",
+"target": "his name",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L02B02",
+"ka": "8a67215a-a3b3-40e4-ba9b-edbf23fe9fca",
+"known": "তার নাম মনে রাখতে",
+"pos": 4,
+"t1": "1cea9ddb-93ab-4bae-95df-0d7edb41318a",
+"t2": "4c3cc6ae-58a3-48b7-9257-2454d5a33999",
+"target": "to remember his name",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L02B03",
+"ka": "48119405-4d40-4fe1-a451-91fa63217dba",
+"known": "তার নাম জানতে চাও",
+"pos": 5,
+"t1": "487a9e82-e59e-4d74-bb1b-41e0ef342bf7",
+"t2": "d7c351e5-7a2f-49d6-aa61-57a86139837d",
+"target": "you want to find out his name",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L02U01",
+"ka": "65da1225-3cbb-4521-a7b5-c087fa3ab97d",
+"known": "তুমি তার নাম শিখতে চাও।",
+"pos": 6,
+"t1": "c04e7387-d275-4487-b326-43612224e60f",
+"t2": "f626ca79-ae91-4669-bf8b-b7fe963716b2",
+"target": "you want to learn his name",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L02U02",
+"ka": "b3a4733a-a7a7-41c0-b8af-8e4e0572d3ff",
+"known": "আমি তার নাম মনে রাখতে চাই।",
+"pos": 7,
+"t1": "5799cb71-2d79-4da1-8cb8-9274af5e88b1",
+"t2": "b06b840f-aab9-4eab-a0ca-c31d55711564",
+"target": "I want to remember his name",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L02U03",
+"ka": "1288849c-4217-4a06-8e29-3eeaab98422e",
+"known": "সে তার নাম মনে রাখতে চায়।",
+"pos": 8,
+"t1": "67a6f97a-6cac-4b8c-a29b-c6667544826a",
+"t2": "7ea86f50-3871-4d08-9de1-dc2809bb236a",
+"target": "he wants to remember his name",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L02U04",
+"ka": "45265aa1-60e1-4b85-8c39-03d8813f207b",
+"known": "তুমি কি তার নাম জানতে চাও?",
+"pos": 9,
+"t1": "54513de0-ab74-4164-83b6-f0b975475967",
+"t2": "ef6190d0-a34d-496b-a42d-67a2e421c593",
+"target": "do you want to find out his name?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L02U05",
+"ka": "9b70fc44-a10d-4dda-aaec-311b399f3615",
+"known": "কিন্তু আমি তার নাম বলতে চাই না।",
+"pos": 10,
+"t1": "9311a36b-d011-4a9d-b89c-bbd090a3b0c9",
+"t2": "6cd18df7-3991-43a8-b8c7-a780475ec8f3",
+"target": "but I don't want to say his name",
+"type": "use"
+}
+],
+"target": "his name",
+"type": "M"
+},
+{
+"id": "S0020L03",
+"idx": 3,
+"is_new": true,
+"known": "দ্রুত",
+"phrases": [
+{
+"id": "4aca2df7-1702-49f6-89b0-5f25cf7812a5",
+"ka": "2476ccd4-7688-42a1-9101-02b86c3f8ed9",
+"known": "দ্রুত",
+"pos": 0,
+"t1": "b2a7297a-99c0-4ad4-8deb-710485228221",
+"t2": "9b4e20ef-178e-476c-83f6-ee33c76f58cf",
+"target": "quickly",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0020L03B01",
+"ka": "a7a1d512-8635-44ce-80ea-762fd7e96749",
+"known": "দ্রুত তার নাম মনে রাখতে",
+"pos": 1,
+"t1": "8e43d48e-f743-4edd-9037-8d2468c8f57e",
+"t2": "7386dd52-9074-4437-a1c5-ab5c66085942",
+"target": "to remember his name quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L03B02",
+"ka": "f713c6fd-5370-443b-9932-0f70730e7ed1",
+"known": "দ্রুত তার নাম জানতে চাও",
+"pos": 2,
+"t1": "8924ea46-aae8-41c4-981c-233e915a60df",
+"t2": "26190cda-4671-4d0c-914b-20afd2b4b5dd",
+"target": "you want to find out his name quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L03B03",
+"ka": "99560bc4-221e-4188-9cad-2e296a8fef4d",
+"known": "দ্রুত ইংরেজি শেখার জন্য যাচ্ছি",
+"pos": 3,
+"t1": "f6dd576a-3e71-4eee-98bb-6de077cb24b4",
+"t2": "c3413ef4-b02a-4b4c-a68e-ab5b118b4010",
+"target": "I'm going to learn English quickly",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0020L03U01",
+"ka": "e9f68d02-67c8-400c-9a2a-75854195243b",
+"known": "তুমি দ্রুত ইংরেজি শিখতে চাও।",
+"pos": 4,
+"t1": "c75de679-6111-4f39-adc4-b364c4e80313",
+"t2": "ddc110e1-10e1-4948-830f-33868dee8815",
+"target": "you want to learn English quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L03U02",
+"ka": "3fadbf0e-7463-483c-8690-75eca5a59137",
+"known": "আমি দ্রুত শিখতে চাই।",
+"pos": 5,
+"t1": "98c0009b-4aac-4051-a542-ccf3f0ca2274",
+"t2": "19e86d5e-55aa-4b63-b6c5-0c7be46d7d78",
+"target": "I want to learn quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L03U03",
+"ka": "285aa50e-1559-4b6b-bfab-190d405031bb",
+"known": "সে দ্রুত ফিরে আসতে চায়।",
+"pos": 6,
+"t1": "578f0b91-1a14-4e03-960b-f906939e7f26",
+"t2": "96ec139f-8f0a-4c4e-84f1-a37267e84788",
+"target": "he wants to come back quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L03U04",
+"ka": "1c879fb4-199f-4c48-8aed-470b16c87e43",
+"known": "তুমি দ্রুত তার নাম শিখতে চাও।",
+"pos": 7,
+"t1": "4a8d6ddc-5df8-44c1-9880-d1635fcf62fc",
+"t2": "e8ced908-ba95-4338-9b17-d057741b47c6",
+"target": "you want to learn his name quickly",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0020L03U05",
+"ka": "dcb16b7f-2e38-4117-bf04-9d619a11e446",
+"known": "আমরা দ্রুত দেখা করতে চাই।",
+"pos": 8,
+"t1": "1c7b3362-83fc-47ce-b627-fe808c3013d5",
+"t2": "43449319-0e22-4a7d-bf0f-1a1242636d6e",
+"target": "we want to meet quickly",
+"type": "use"
+}
+],
+"target": "quickly",
+"type": "A"
+}
+],
+"status": "released",
+"target": "You want to learn his name quickly."
+},
+"41": {
+"at": "2026-11-19T11:44:48Z",
+"known": "আমি ঠিকঠাক অনুভব করছি, কিন্তু আমি ক্লান্ত অনুভব করতে শুরু করছি।",
+"legos": [
+{
+"id": "S0041L01",
+"idx": 1,
+"is_new": true,
+"known": "অনুভব করা",
+"phrases": [
+{
+"id": "c52bd75c-7282-4a34-b42e-7e7cafedc0ed",
+"ka": "5d20b49c-886b-49e0-9172-c730806c5916",
+"known": "অনুভব করা",
+"pos": 0,
+"t1": "1f220b55-456b-44be-9e3e-d1e13282eacf",
+"t2": "36cb8f7f-6580-4edf-a8c3-dee187e9105f",
+"target": "feel",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0041L01B01",
+"ka": "5d20b49c-886b-49e0-9172-c730806c5916",
+"known": "অনুভব করা",
+"pos": 1,
+"t1": "1f220b55-456b-44be-9e3e-d1e13282eacf",
+"t2": "36cb8f7f-6580-4edf-a8c3-dee187e9105f",
+"target": "feel",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L01B02",
+"ka": "cca02616-c97f-4316-9945-a8c1ad2b3224",
+"known": "ক্লান্ত অনুভব করা",
+"pos": 2,
+"t1": "84452c99-ffe7-4cc9-84c2-d92ec137a600",
+"t2": "55e081b4-6f7c-4256-9c86-12f3624ff244",
+"target": "feel tired",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L01B03",
+"ka": "1553f629-f138-43ea-af57-3c924cd00b2f",
+"known": "ভালো অনুভব করা",
+"pos": 3,
+"t1": "f9ca4340-df07-4e8d-bc05-802245cf5174",
+"t2": "c92a35c4-6987-4271-84d5-c359b647439a",
+"target": "feel better",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L01U01",
+"ka": "4f906cc6-ce2d-4f0e-b2e1-2d195b997723",
+"known": "আমি ক্লান্ত অনুভব করছি",
+"pos": 4,
+"t1": "f1a6aaa5-9367-4584-aaa5-b2a2d163982f",
+"t2": "a44553db-c6d1-4cd6-851e-c092b79b7dda",
+"target": "I feel tired",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L01U02",
+"ka": "c21da2f2-73f6-406b-9f8b-5c7877d59b4b",
+"known": "আমি এখন ভালো অনুভব করছি",
+"pos": 5,
+"t1": "fdb79a0b-7993-4425-9207-612526395e00",
+"t2": "14dde42d-3ac5-427b-9bc5-f0f76f3d9992",
+"target": "I feel better now",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L01U03",
+"ka": "e8c133a8-24ee-489a-874a-abadd9829446",
+"known": "তুমি কি ভালো অনুভব করছো?",
+"pos": 6,
+"t1": "eb3230f2-6d22-41e3-bd98-6a1d443b1098",
+"t2": "1036935d-7b08-472b-92fe-98cd666eddea",
+"target": "do you feel better?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L01U04",
+"ka": "beeae2f9-964e-44aa-807e-31c6dbf46d02",
+"known": "এখন তুমি কি ক্লান্ত অনুভব করছো?",
+"pos": 7,
+"t1": "fffc9a5a-dd72-4d7c-885c-fdcb101f6326",
+"t2": "fca29bc9-7a7c-462a-b325-d3de19fbf6c3",
+"target": "do you feel tired now?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L01U05",
+"ka": "a665dae1-2887-463e-baf5-d57e6b90f04c",
+"known": "আমি সকালে ভালো অনুভব করছি",
+"pos": 8,
+"t1": "12fb6c3a-a106-4fef-9d54-914641a6c83f",
+"t2": "1c0dcce5-e2cb-42d3-a220-0c0de667bb8d",
+"target": "I feel better this morning",
+"type": "use"
+}
+],
+"target": "feel",
+"type": "A"
+},
+{
+"id": "S0041L02",
+"idx": 2,
+"is_new": true,
+"known": "ঠিকঠাক",
+"phrases": [
+{
+"id": "e9d176f5-34f9-4c25-befa-cb00376d8216",
+"ka": "acd31135-e154-4e7f-a83e-d793db26902e",
+"known": "ঠিকঠাক",
+"pos": 0,
+"t1": "53e8191b-c806-4cff-96fa-b0acebdbb520",
+"t2": "893a47c0-23dc-4150-ac2d-51ed8946353c",
+"target": "okay",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0041L02B01",
+"ka": "1b198d71-dfac-4ed2-8c59-06ca1517e86a",
+"known": "ঠিকঠাক অনুভব করা",
+"pos": 1,
+"t1": "984a8def-837a-4687-ae15-066dc1bc3106",
+"t2": "c9666a14-7b56-41f0-97a3-ef84a2e7b73b",
+"target": "feel okay",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L02B02",
+"ka": "64c7e91e-a6eb-4e3b-9f2b-687fba00ed97",
+"known": "ঠিকঠাক কিন্তু ক্লান্ত",
+"pos": 2,
+"t1": "26681336-fb48-4901-9aa1-358e55370319",
+"t2": "bb7ebee6-4884-4fd2-b505-c02c3216a063",
+"target": "okay but tired",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L02B03",
+"ka": "1aca306c-2b65-4fb2-bd1e-87e52dae3644",
+"known": "আমি ঠিকঠাক",
+"pos": 3,
+"t1": "0799c232-5b7f-4165-8f5c-8578e17b162c",
+"t2": "8046864a-1195-4a04-b940-3287c2520b8e",
+"target": "I'm okay",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L02U01",
+"ka": "91afee81-b943-4c3f-a186-da982ce668c6",
+"known": "আমি ঠিকঠাক অনুভব করছি",
+"pos": 4,
+"t1": "8be49ea9-721a-4e2b-826f-40ef7b9ef51b",
+"t2": "a2140398-9a85-4b49-aed7-ea96fef02953",
+"target": "I feel okay",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L02U02",
+"ka": "86961c1f-51c8-4569-880e-1023348cf7df",
+"known": "আমি ঠিকঠাক কিন্তু একটু ক্লান্ত",
+"pos": 5,
+"t1": "62eddba4-c3b7-4510-be8e-1f7178e66329",
+"t2": "ef83348c-60f0-42b4-a06b-3956824584c2",
+"target": "I feel okay but a little tired",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L02U03",
+"ka": "2559bd1c-3d35-4f79-b675-5b5302b0ee9b",
+"known": "সব কিছু ঠিকঠাক",
+"pos": 6,
+"t1": "e3e1eaec-1543-4564-aac6-9bf2d6cb965b",
+"t2": "830d1354-b742-4a5b-b8bf-90b4ffc10907",
+"target": "it's okay",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L02U04",
+"ka": "362f2a21-5afd-43db-ac64-b62b4628973a",
+"known": "আমি মনে করি সব কিছু ঠিকঠাক",
+"pos": 7,
+"t1": "6514ea0d-ae46-4057-b98e-79d34052df64",
+"t2": "6afc0704-4ef4-43a2-9ef5-eee9f762b388",
+"target": "I think it's okay",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L02U05",
+"ka": "fa325403-0d27-4cd1-98ba-8b3a9ba79e5e",
+"known": "তুমি কি ঠিকঠাক অনুভব করছো?",
+"pos": 8,
+"t1": "f3ee36f3-ed88-48f5-b697-ff161ee7a382",
+"t2": "72bf586d-f052-4d71-9e6e-6d4c2d59d549",
+"target": "do you feel okay?",
+"type": "use"
+}
+],
+"target": "okay",
+"type": "A"
+},
+{
+"id": "S0041L03",
+"idx": 3,
+"is_new": true,
+"known": "শুরু করছি",
+"phrases": [
+{
+"id": "ec1c9084-a2b3-442b-b80b-356c97ed5635",
+"ka": "e802d75e-52b3-4014-8a59-ece536fad030",
+"known": "শুরু করছি",
+"pos": 0,
+"t1": "d750d28c-5689-446c-8626-6b37744067e3",
+"t2": "a0ed8d85-0f61-4636-98f6-ddebb89f2762",
+"target": "I'm starting to",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0041L03C01",
+"ka": "8e694411-586b-4d4f-90a5-05347e1ba7f5",
+"known": "শুরু",
+"pos": 1,
+"t1": "b9217c1f-f502-45c3-80e8-2b8ba758d492",
+"t2": "994a0400-a1a2-4b7d-83b9-dc364ddefe0d",
+"target": "starting",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0041L03C02",
+"ka": "e7ad46bd-569b-4eaa-9315-35fb76817d3f",
+"known": "করছি",
+"pos": 2,
+"t1": "cf67002e-0bc9-469d-b3f4-85803343cd22",
+"t2": "ebc84298-a90f-4b49-9b52-db32ca20bbec",
+"target": "I'm",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0041L03B01",
+"ka": "e802d75e-52b3-4014-8a59-ece536fad030",
+"known": "শুরু করছি",
+"pos": 3,
+"t1": "d750d28c-5689-446c-8626-6b37744067e3",
+"t2": "a0ed8d85-0f61-4636-98f6-ddebb89f2762",
+"target": "I'm starting to",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L03B02",
+"ka": "4be72d83-8510-4bf3-89f3-3e84f884a8ff",
+"known": "ক্লান্ত অনুভব করতে শুরু করছি",
+"pos": 4,
+"t1": "eea39e27-5d22-4830-bf51-bca43b701dc5",
+"t2": "5d1c755d-ea90-432f-9534-18f8f44d7a40",
+"target": "I'm starting to feel tired",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L03B03",
+"ka": "67e8f234-08f9-454e-aea9-8980afc3edeb",
+"known": "ভালো অনুভব করতে শুরু করছি",
+"pos": 5,
+"t1": "56890053-c78b-47f1-95ed-459bed4c5e45",
+"t2": "69efa6a7-17cb-4293-911c-2f4a4482124c",
+"target": "I'm starting to feel better",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0041L03U01",
+"ka": "f034cab0-09de-4125-80bc-55529381e056",
+"known": "আমি ইংরেজি বলা শুরু করছি",
+"pos": 6,
+"t1": "dcfdb1b2-ef10-4c15-ad2e-0ec5093352ba",
+"t2": "46140198-31cf-4ed9-967c-0a47b4a1d8a9",
+"target": "I'm starting to speak English",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L03U02",
+"ka": "402ddc1b-8c0b-42f6-a8d9-0ddf1c8811a8",
+"known": "আমি শেখা শুরু করছি",
+"pos": 7,
+"t1": "b4dada42-90a7-47b0-a52d-bc0eaf376093",
+"t2": "6bb8d4c9-9ed2-4863-b0f6-1fa3e7202744",
+"target": "I'm starting to learn",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L03U03",
+"ka": "cdb2a8cf-188a-4358-89e6-2908023ce750",
+"known": "আমি মনে রাখতে শুরু করছি",
+"pos": 8,
+"t1": "c97537cb-1319-40c3-a3e3-e4476e39160f",
+"t2": "4609e508-96d4-4ed9-a00e-70ec0997cbf0",
+"target": "I'm starting to remember",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L03U04",
+"ka": "48a19fd6-fbb4-4fe0-bbfc-df13647cce2c",
+"known": "আমি অভ্যাস করা শুরু করছি",
+"pos": 9,
+"t1": "d11f3b07-188e-4c32-af7b-bedc8fb9e467",
+"t2": "b6175635-f295-4df7-a9c4-1360304308a7",
+"target": "I'm starting to practise",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0041L03U05",
+"ka": "f4a1b307-c3a0-456e-8679-8eec9651b36b",
+"known": "আমি ঠিকঠাক অনুভব করতে শুরু করছি",
+"pos": 10,
+"t1": "440876c2-ea65-4a70-ab95-a00a3752853a",
+"t2": "bf04ede4-1311-42eb-8f56-601075f699b9",
+"target": "I'm starting to feel okay",
+"type": "use"
+}
+],
+"target": "I'm starting to",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I feel okay, but I'm starting to feel tired."
+},
+"47": {
+"at": "2026-11-19T11:44:50Z",
+"known": "কারণ আমি মনে করি ভুল করা একটা ভালো জিনিস।",
+"legos": [
+{
+"id": "S0047L02",
+"idx": 2,
+"is_new": true,
+"known": "ভালো",
+"phrases": [
+{
+"id": "11945d91-f066-4ebf-b1ac-ce6a5c8d8114",
+"ka": "50420d25-11fb-43e6-8c36-54a6642b2284",
+"known": "ভালো",
+"pos": 0,
+"t1": "bcf5cac6-13af-4ec4-a691-758c7784bd8a",
+"t2": "131fac0a-8908-4f00-90e3-ffcebe429af4",
+"target": "good",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0047L02B01",
+"ka": "50420d25-11fb-43e6-8c36-54a6642b2284",
+"known": "ভালো",
+"pos": 1,
+"t1": "bcf5cac6-13af-4ec4-a691-758c7784bd8a",
+"t2": "131fac0a-8908-4f00-90e3-ffcebe429af4",
+"target": "good",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L02B02",
+"ka": "1553f629-f138-43ea-af57-3c924cd00b2f",
+"known": "ভালো অনুভব করা",
+"pos": 2,
+"t1": "8e082ded-fe79-4aee-9ff7-ead0283bb9aa",
+"t2": "6e290bd2-a596-4b10-8392-6e1d190cb3de",
+"target": "feel good",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L02B03",
+"ka": "a4baec92-f608-4f6c-83d4-ba9f5d22af2e",
+"known": "খুব ভালো",
+"pos": 3,
+"t1": "3a359002-4a58-4f2a-b962-6c7b2ff61653",
+"t2": "b1cb8ad5-0fd8-4aa5-9811-b9b02694458a",
+"target": "very good",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L02U01",
+"ka": "fd6bc5a4-bd7c-4d88-989e-ee30aaee6b2a",
+"known": "এটা ভালো",
+"pos": 4,
+"t1": "5f7f9825-de53-4604-a9fc-327ce4de2f40",
+"t2": "c5e3db7e-fd28-4b50-af02-155c8b1a6e74",
+"target": "it's good",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L02U02",
+"ka": "c565ff60-e967-4ed5-a583-0048e85de11d",
+"known": "আমি ভালো অনুভব করছি",
+"pos": 5,
+"t1": "a720bde7-7a36-4ef0-b526-a28e113d4d2c",
+"t2": "00240a60-39ef-4dd7-bd19-552651734ec5",
+"target": "I feel good",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L02U03",
+"ka": "011850b2-23fa-479e-9620-70c3794301ae",
+"known": "আমি ভালো অনুভব করতে চাই",
+"pos": 6,
+"t1": "a24f8ef4-53cd-47aa-bdba-a923067d8840",
+"t2": "71f0ffa6-0e1e-45b1-87fe-15c311cfbc2c",
+"target": "I want to feel good",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L02U04",
+"ka": "095d9a5f-9980-4dfe-9aa3-78525e6dc7c2",
+"known": "কারণ এটা ভালো",
+"pos": 7,
+"t1": "61c33628-e036-41af-ab3c-665ff11d0e41",
+"t2": "d0526dfb-bdd9-46ad-94d0-93ab8f44f723",
+"target": "because it's good",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L02U05",
+"ka": "e8c133a8-24ee-489a-874a-abadd9829446",
+"known": "তুমি কি ভালো অনুভব করছো?",
+"pos": 8,
+"t1": "a3b665ad-94ad-4095-9280-ae74e646fc68",
+"t2": "8994ac3b-fe34-4b95-b2c7-5bd3bd0d0458",
+"target": "do you feel good?",
+"type": "use"
+}
+],
+"target": "good",
+"type": "A"
+},
+{
+"id": "S0047L03",
+"idx": 3,
+"is_new": true,
+"known": "করতে",
+"phrases": [
+{
+"id": "5c5abe35-d36e-4525-aefc-b49e103bcd29",
+"ka": "41ab6ff9-444d-44e5-9e9a-b97b8bf8d39b",
+"known": "করতে",
+"pos": 0,
+"t1": "6a33f254-cfef-475a-8964-b3fdf5e6fa33",
+"t2": "2f6cd179-edf5-436b-8300-8ce93b291e4b",
+"target": "make",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0047L03B01",
+"ka": "41ab6ff9-444d-44e5-9e9a-b97b8bf8d39b",
+"known": "করতে",
+"pos": 1,
+"t1": "6a33f254-cfef-475a-8964-b3fdf5e6fa33",
+"t2": "2f6cd179-edf5-436b-8300-8ce93b291e4b",
+"target": "make",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L03B02",
+"ka": "c84a0c62-b97a-45b0-acd4-e58f863e6604",
+"known": "ভুল করতে",
+"pos": 2,
+"t1": "0d2a8585-2247-4308-948f-f1d70bdb660e",
+"t2": "5fcdc99c-be7f-45a1-8810-9535cfb1575d",
+"target": "make mistakes",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L03B03",
+"ka": "e863e4b3-6667-4db9-857d-fda09d25fb9c",
+"known": "ভুল করতে চাই না",
+"pos": 3,
+"t1": "ca9ffaa9-cbc4-4b78-be08-e175340a8561",
+"t2": "0ff09a89-cfe0-41d0-88c9-dd8905bfa9d3",
+"target": "don't want to make",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L03U01",
+"ka": "eb3030b7-b3cb-4994-b769-622dceec3080",
+"known": "আমি ভুল করতে চাই না",
+"pos": 4,
+"t1": "875a2656-08a9-405f-9ee2-f2125492b16a",
+"t2": "bb966460-3d0c-4492-9d0e-d6872472c1bb",
+"target": "I don't want to make mistakes",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L03U02",
+"ka": "79cac1be-d0aa-4547-bf72-4cbad3c50c56",
+"known": "আমি ভুল করতে পছন্দ করি না",
+"pos": 5,
+"t1": "9c61e03d-d90f-4304-ba54-2ba403032fe9",
+"t2": "5b605bb3-29dd-447f-a81e-a0404772d3ac",
+"target": "I don't like to make mistakes",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L03U03",
+"ka": "f29f442b-3347-4e93-a30a-697ec97b3830",
+"known": "তুমি কি ভুল করতে চাও?",
+"pos": 6,
+"t1": "536c829e-df87-4c85-9061-2d2a27ab075b",
+"t2": "554ffc86-2d5e-44e0-a3dd-f07eb1533f03",
+"target": "do you want to make mistakes?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L03U04",
+"ka": "c475d383-2148-43fc-84e6-701ae10868da",
+"known": "আমি ভুল করতে যাচ্ছি না",
+"pos": 7,
+"t1": "b491ce8a-b9cc-454c-a642-ece54d0481b1",
+"t2": "8bfa37d0-2051-4fe9-be31-f0103cc53cba",
+"target": "I'm not going to make mistakes",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L03U05",
+"ka": "f15c5906-38a0-422e-be13-f7e87168c20c",
+"known": "আমি ভুল করতে চেষ্টা করছি না",
+"pos": 8,
+"t1": "57606b84-dd02-4c48-949e-9f641802822f",
+"t2": "08df0582-9e9d-434c-a274-d9d9a29bd4c6",
+"target": "I'm not trying to make mistakes",
+"type": "use"
+}
+],
+"target": "make",
+"type": "A"
+},
+{
+"id": "S0047L04",
+"idx": 4,
+"is_new": true,
+"known": "একটা ভালো জিনিস",
+"phrases": [
+{
+"id": "76891e1c-6050-4617-b345-534ae705fb31",
+"ka": "b4549dc2-3bc0-4b09-8d63-38251560170e",
+"known": "একটা ভালো জিনিস",
+"pos": 0,
+"t1": "cbcfdf9c-04b5-42ad-b279-3096bd97f1bc",
+"t2": "25a018ee-701d-4aca-b228-d4673df4bf66",
+"target": "a good thing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0047L04C01",
+"ka": "872201e1-6a05-4d7e-9849-8897f7b9d568",
+"known": "একটা",
+"pos": 1,
+"t1": "129153d6-a174-468f-8f73-e401e7b35cad",
+"t2": "e6b082da-9e72-45ec-8f7c-f2c361b705d3",
+"target": "a",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0047L04C02",
+"ka": "50420d25-11fb-43e6-8c36-54a6642b2284",
+"known": "ভালো",
+"pos": 2,
+"t1": "bcf5cac6-13af-4ec4-a691-758c7784bd8a",
+"t2": "131fac0a-8908-4f00-90e3-ffcebe429af4",
+"target": "good",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0047L04C03",
+"ka": "15566cb6-22a0-4914-8570-68ed9da059d5",
+"known": "জিনিস",
+"pos": 3,
+"t1": "e6200c63-45b4-4d02-b9ff-4fed2494af2d",
+"t2": "699e4780-a768-4477-a7a0-8ca273570c5a",
+"target": "thing",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0047L04B01",
+"ka": "b4549dc2-3bc0-4b09-8d63-38251560170e",
+"known": "একটা ভালো জিনিস",
+"pos": 4,
+"t1": "cbcfdf9c-04b5-42ad-b279-3096bd97f1bc",
+"t2": "25a018ee-701d-4aca-b228-d4673df4bf66",
+"target": "a good thing",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L04B02",
+"ka": "1612a628-c5df-4a09-96a5-4022b798a94e",
+"known": "এটা একটা ভালো জিনিস",
+"pos": 5,
+"t1": "721b59df-d7e4-4185-bed4-f9b923ad69b4",
+"t2": "eed08508-6da7-4895-b985-47b90d2caa1c",
+"target": "it's a good thing",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L04B03",
+"ka": "369e40f6-f20b-4233-828d-0f7549eaf87a",
+"known": "এটা একটা ভালো জিনিস করতে",
+"pos": 6,
+"t1": "a0d56c84-9cc8-4a13-ae25-411aafa5c338",
+"t2": "15acb5fa-7472-401b-a81f-4d100127c9d3",
+"target": "it's a good thing to make",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L04U01",
+"ka": "7f933be1-23e8-4f86-9f3d-6c5d11ef4f2d",
+"known": "এটা একটা ভালো জিনিস শেখার জন্য",
+"pos": 7,
+"t1": "96707c99-a1b6-4a40-b1fb-248b95bec7d0",
+"t2": "740d8668-ebac-4181-8217-72e86456bd9b",
+"target": "it's a good thing to learn",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L04U02",
+"ka": "1b0c8394-adc9-4fb0-8920-19fc2465bc52",
+"known": "এটা একটা ভালো জিনিস উন্নতি করতে",
+"pos": 8,
+"t1": "b347893c-521b-4db4-8ccf-e88b1f294570",
+"t2": "a243fbd8-0235-4bb2-b32f-44fc33ff28de",
+"target": "it's a good thing to improve",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L04U03",
+"ka": "80b657cc-605e-4dab-9d2f-97366133d907",
+"known": "কারণ এটা একটা ভালো জিনিস",
+"pos": 9,
+"t1": "44dd07fa-4ad6-44b8-81d2-9b5981a4f6ee",
+"t2": "ec4eab32-f4b9-43d2-a782-87709346f050",
+"target": "because it's a good thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L04U04",
+"ka": "3efffec8-5c48-4a5a-8bf4-78fe677a00e9",
+"known": "আমি মনে করি এটা একটা ভালো জিনিস",
+"pos": 10,
+"t1": "cedf6326-4218-4e12-939f-c94468723155",
+"t2": "2f14b376-0438-455b-8a1a-1f94f23fa2f9",
+"target": "I think it's a good thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L04U05",
+"ka": "b1fee584-04aa-4b1f-a761-bc89ede040bd",
+"known": "তুমি কি মনে করো এটা একটা ভালো জিনিস?",
+"pos": 11,
+"t1": "143ba10c-6c1f-4224-b865-0d2def8e2852",
+"t2": "5a2e5c15-a8ed-47ab-a593-9b37408eb9a1",
+"target": "do you think it's a good thing?",
+"type": "use"
+}
+],
+"target": "a good thing",
+"type": "M"
+},
+{
+"id": "S0047L05",
+"idx": 5,
+"is_new": true,
+"known": "মনে করি যে",
+"phrases": [
+{
+"id": "5d03209e-260c-4c24-a730-7f4230df6772",
+"ka": "0ab5cb24-cb7b-471d-90c2-9ecd40dc8536",
+"known": "মনে করি যে",
+"pos": 0,
+"t1": "900dbcdd-9c87-4b30-93a2-bd8bfda310b0",
+"t2": "66277477-4709-45ec-9e61-ffbedc17d1c8",
+"target": "think that",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0047L05C01",
+"ka": "eed0c486-8dec-45a1-a812-67d2867723f2",
+"known": "মনে করি",
+"pos": 1,
+"t1": "9b309955-6563-41cb-80a6-512ef3b2efbb",
+"t2": "2a6170c4-1935-49ce-ac56-76caad8f2625",
+"target": "think",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0047L05C02",
+"ka": "92a7cdce-7e7d-4017-b082-e25f973fe042",
+"known": "যে",
+"pos": 2,
+"t1": "735b04f2-b36e-4841-90bb-2bcb51887032",
+"t2": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"target": "that",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0047L05B01",
+"ka": "0ab5cb24-cb7b-471d-90c2-9ecd40dc8536",
+"known": "মনে করি যে",
+"pos": 3,
+"t1": "900dbcdd-9c87-4b30-93a2-bd8bfda310b0",
+"t2": "66277477-4709-45ec-9e61-ffbedc17d1c8",
+"target": "think that",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L05B02",
+"ka": "7f0d2597-2a7a-4679-a7a0-38c5b434fb13",
+"known": "মনে করি যে এটা ভালো",
+"pos": 4,
+"t1": "e40b1ea3-03bb-4d3f-9e53-162cb4c3b70c",
+"t2": "7c820d49-dd0b-45b4-86c7-2959b4c7b301",
+"target": "think that it's good",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L05B03",
+"ka": "831883d1-e45a-4704-b18f-c143d0def3c8",
+"known": "মনে করি যে এটা একটা ভালো জিনিস",
+"pos": 5,
+"t1": "dde1fef4-7ae9-4e1f-8ebc-2bd259d835e5",
+"t2": "38a687d2-9c6a-4c9d-b737-c5d5a85cb48f",
+"target": "think that it's a good thing",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0047L05U01",
+"ka": "457542c5-d4f0-4e75-8347-e66f66799115",
+"known": "আমি মনে করি যে এটা একটা ভালো জিনিস ভুল করতে",
+"pos": 6,
+"t1": "276faece-5112-489f-bdc8-a94f52539142",
+"t2": "88dfb492-4a19-4989-ac39-1c82ba7c7e62",
+"target": "I think that it's a good thing to make mistakes",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L05U02",
+"ka": "2da8c343-5871-40d3-b70d-7b38aae90bc2",
+"known": "তুমি কি মনে করো যে এটা ভালো?",
+"pos": 7,
+"t1": "4368e276-c11d-49fa-ba47-4be200fe7e61",
+"t2": "77c25994-574a-46d4-bf9c-715df97bc2a6",
+"target": "do you think that it's good?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L05U03",
+"ka": "c9644a85-4dc7-4c06-b932-b9aa87c9c81d",
+"known": "আমি মনে করি যে আমার উন্নতি করতে হবে",
+"pos": 8,
+"t1": "a7dbf029-de13-49e3-bc7d-63c9ffe3bb58",
+"t2": "b835fc4f-635a-44cb-ba40-d173d2c20c38",
+"target": "I think that I need to improve",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L05U04",
+"ka": "04911c20-469e-4de0-8965-8e740cfbcfba",
+"known": "কারণ আমি মনে করি যে এটা একটা ভালো জিনিস",
+"pos": 9,
+"t1": "0e825c22-a192-4d1f-acbc-5b85d7d1a575",
+"t2": "4195ec92-0467-4043-b1ce-44b59723ca2a",
+"target": "because I think that it's a good thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0047L05U05",
+"ka": "56f8a887-5ef3-4b6a-9760-05813cbc58ea",
+"known": "আমি মনে করি যে তোমার ভুল করা নিয়ে চিন্তা করার দরকার নেই",
+"pos": 10,
+"t1": "dff83881-47b4-41c8-9e01-b66782ec8497",
+"t2": "9bf23f67-a2da-42ea-b1f4-f1bad895843a",
+"target": "I think that you don't need to worry about making mistakes",
+"type": "use"
+}
+],
+"target": "think that",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Because I think that it's a good thing to make mistakes."
+},
 "534": {
 "at": "2026-11-18T18:33:55Z",
 "known": "চলো এই ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই।",
@@ -1071,6 +2205,214 @@
 "status": "released",
 "target": "I wish they wouldn't play such loud music."
 },
+"58": {
+"at": "2026-11-19T11:44:53Z",
+"known": "এটা মজার যখন তুমি যথেষ্ট শব্দ বুঝতে পারো।",
+"legos": [
+{
+"id": "S0058L01",
+"idx": 1,
+"is_new": true,
+"known": "বোঝা",
+"phrases": [
+{
+"id": "22cb008f-d48f-491c-a64b-d6cb91e90406",
+"ka": "258d2f6c-0a56-428c-a83b-dd22d07bbe92",
+"known": "বোঝা",
+"pos": 0,
+"t1": "4a3b9624-89cc-4436-a292-024a347e79c7",
+"t2": "ab76d453-982c-4949-a3b4-119f2d31e1e8",
+"target": "understand",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0058L01B01",
+"ka": "258d2f6c-0a56-428c-a83b-dd22d07bbe92",
+"known": "বোঝা",
+"pos": 1,
+"t1": "4a3b9624-89cc-4436-a292-024a347e79c7",
+"t2": "ab76d453-982c-4949-a3b4-119f2d31e1e8",
+"target": "understand",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0058L01B02",
+"ka": "887b29e5-6286-4a67-b536-718b431a312d",
+"known": "বুঝতে চাওয়া",
+"pos": 2,
+"t1": "3e726449-b711-4982-b8da-71afd81869e8",
+"t2": "6c1b5e87-bf52-4b42-883f-9fb9c4abafb2",
+"target": "want to understand",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0058L01B03",
+"ka": "74d34b9e-11ed-4ada-bb52-3b3bc05545c4",
+"known": "বোঝা শুরু করা",
+"pos": 3,
+"t1": "a3eb26c7-4acd-4992-8084-4a4d0a6a6fc5",
+"t2": "2d8c043f-429f-4099-bda8-606139f66b10",
+"target": "start to understand",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0058L01U01",
+"ka": "2ca67f28-cb32-4160-95c5-60e00b10b491",
+"known": "আমি বুঝতে চাই",
+"pos": 4,
+"t1": "dd91d864-a4c2-49e5-9a62-4e48966c947b",
+"t2": "f327448a-1144-45e3-a2c2-fa04168ac967",
+"target": "I want to understand",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L01U02",
+"ka": "ba6f2675-d0f2-479b-a80f-93d3b20ad6d2",
+"known": "আমি বুঝতে শুরু করছি",
+"pos": 5,
+"t1": "a72f35e2-4311-4f0a-ab7c-ea98892d76d5",
+"t2": "896ee369-70e7-4221-8c17-6b286ed20eaa",
+"target": "I'm starting to understand",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L01U03",
+"ka": "cad2c661-cd53-475f-8b4b-337aaf50c302",
+"known": "তুমি কি বুঝতে পারছো?",
+"pos": 6,
+"t1": "e84a4560-cb49-43a7-b7a9-60311924586d",
+"t2": "397ece46-a948-431f-8004-96af48c615a1",
+"target": "do you understand?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L01U04",
+"ka": "b4cc2858-c983-4f54-aafd-d237a063dfa0",
+"known": "আমি আরো বুঝতে চাই",
+"pos": 7,
+"t1": "0ba947dc-98a5-4ed9-93f0-a278380b131b",
+"t2": "8bbb51d8-b63f-4fc0-95ee-7f4601881f4b",
+"target": "I want to understand more",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L01U05",
+"ka": "74a23d3e-1b2b-4f95-a1a2-328c4fbf9c2e",
+"known": "আমি বুঝতে পারছি না",
+"pos": 8,
+"t1": "80dec398-0a4f-4fd8-a5af-5221965a856f",
+"t2": "d87e98b8-be3d-4e88-a769-26b461112eca",
+"target": "I can't understand",
+"type": "use"
+}
+],
+"target": "understand",
+"type": "A"
+},
+{
+"id": "S0058L02",
+"idx": 2,
+"is_new": true,
+"known": "যথেষ্ট",
+"phrases": [
+{
+"id": "728d7050-6eab-4c2f-85ed-e1b698b8e995",
+"ka": "f7f2af4d-b74e-4105-93ab-62b189ce5973",
+"known": "যথেষ্ট",
+"pos": 0,
+"t1": "16cdf4af-80b4-4eb2-a546-99ceb2087a27",
+"t2": "a0d66185-36d1-4370-8520-ae7ec10bef28",
+"target": "enough",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0058L02B01",
+"ka": "f7f2af4d-b74e-4105-93ab-62b189ce5973",
+"known": "যথেষ্ট",
+"pos": 1,
+"t1": "16cdf4af-80b4-4eb2-a546-99ceb2087a27",
+"t2": "a0d66185-36d1-4370-8520-ae7ec10bef28",
+"target": "enough",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0058L02B02",
+"ka": "57824cc1-b19b-4866-a42e-98cb1d08ba34",
+"known": "যথেষ্ট শব্দ",
+"pos": 2,
+"t1": "df566f63-bf5d-4291-a270-ee8609497e96",
+"t2": "3a2490a9-dac2-4843-bff1-b1cd2617ec6a",
+"target": "enough words",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0058L02B03",
+"ka": "5e97a14f-1cbb-42b2-b0b4-f7781fd3e17e",
+"known": "যথেষ্ট বোঝা",
+"pos": 3,
+"t1": "d73ab50a-ce91-456a-97ac-4d96f5fc23a3",
+"t2": "46bd9676-e649-480c-8a21-cab15fdd37e8",
+"target": "understand enough",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0058L02U01",
+"ka": "9e6c9b37-eb7c-4007-bbe8-43e06448e539",
+"known": "তুমি কি যথেষ্ট বুঝতে পারছো?",
+"pos": 4,
+"t1": "d44c3a76-42e1-4a8c-9475-2fc0f7936422",
+"t2": "16fd7d13-d890-4e99-bac6-3234393c3243",
+"target": "do you understand enough?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L02U02",
+"ka": "2554f150-fa26-4ae0-a062-ed8d195aeca6",
+"known": "আমি যথেষ্ট শব্দ বুঝতে পারি",
+"pos": 5,
+"t1": "3e8b2035-62fc-4ecd-ab31-2b3cccd6e654",
+"t2": "536ab63c-ae6c-4eac-9eb4-028159ee52a7",
+"target": "I understand enough words",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L02U03",
+"ka": "e53a4dda-76bd-4060-9929-d0f32e26224f",
+"known": "এটা মজার যখন তুমি যথেষ্ট শব্দ বুঝতে পারো",
+"pos": 6,
+"t1": "f6580399-319c-45d8-9a80-4ce39460a04c",
+"t2": "87cb6fdc-2718-4eca-9613-487519355f34",
+"target": "it's interesting when you understand enough words",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L02U04",
+"ka": "8983fed9-e210-4454-91ba-339bd38fb392",
+"known": "আমি যথেষ্ট জানি",
+"pos": 7,
+"t1": "a3987d9a-bf4a-4ca8-95b2-ed40e4cc5b5d",
+"t2": "2409bb29-5568-4595-bbb7-24c69d6ff7bd",
+"target": "I know enough",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0058L02U05",
+"ka": "52175ecd-2194-423e-8c71-35166f7f48b7",
+"known": "আমি এখনো যথেষ্ট বুঝতে পারছি না",
+"pos": 8,
+"t1": "251963a7-4a5a-47d4-b17b-5b30cfe0affd",
+"t2": "1fb00846-e2c5-40c0-8685-96b283e4abd4",
+"target": "I can't understand enough now",
+"type": "use"
+}
+],
+"target": "enough",
+"type": "A"
+}
+],
+"status": "released",
+"target": "It's interesting when you understand enough words."
+},
 "589": {
 "at": "2026-11-18T18:33:57Z",
 "known": "সে আমাকে বলল সে এইমাত্র শেষ বাসটা দেখেছে।",
@@ -1616,6 +2958,214 @@
 ],
 "status": "released",
 "target": "I'd have been happy to drive if you'd told me."
+},
+"60": {
+"at": "2026-11-19T11:44:55Z",
+"known": "আমি এখনো জানি না কীভাবে যথেষ্ট আলাদা শব্দ বলা যায়।",
+"legos": [
+{
+"id": "S0060L01",
+"idx": 1,
+"is_new": true,
+"known": "আলাদা",
+"phrases": [
+{
+"id": "d97deb05-83c3-440a-9a10-8b49168439e1",
+"ka": "d0c9dfc8-7cd9-4023-a2e9-f04bf8619a4a",
+"known": "আলাদা",
+"pos": 0,
+"t1": "3c225f7b-1aeb-448f-9862-0b99759f37f9",
+"t2": "ea9d4ee5-bddb-4143-96b3-0cbdf5d72a74",
+"target": "different",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0060L01B01",
+"ka": "d0c9dfc8-7cd9-4023-a2e9-f04bf8619a4a",
+"known": "আলাদা",
+"pos": 1,
+"t1": "3c225f7b-1aeb-448f-9862-0b99759f37f9",
+"t2": "ea9d4ee5-bddb-4143-96b3-0cbdf5d72a74",
+"target": "different",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0060L01B02",
+"ka": "93f8a56a-1d4d-4b5b-ab49-726b74369b09",
+"known": "আলাদা শব্দ",
+"pos": 2,
+"t1": "57c6b8e9-e5af-4be5-a4ce-be2bc50a195f",
+"t2": "e7859385-1b99-4ff8-b78b-6a1e9d4297f0",
+"target": "different words",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0060L01B03",
+"ka": "e7e206e9-6011-4c44-9fb3-bf7ea98cc3f0",
+"known": "আলাদা জিনিস",
+"pos": 3,
+"t1": "cbbdd5a0-f876-46ba-9033-26bd45a64688",
+"t2": "f52000e1-0ae1-4f55-8e43-f1dcabbc6f5a",
+"target": "different things",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0060L01U01",
+"ka": "899bf4f9-30bc-4498-9a24-0ac0b2563609",
+"known": "আমি আলাদা শব্দ শিখতে চাই",
+"pos": 4,
+"t1": "a099d730-50bd-4c24-85b8-04c735c2ca6a",
+"t2": "3c7cb9d1-c79a-46f3-bded-f89613fec495",
+"target": "I want to learn different words",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L01U02",
+"ka": "f598fcfe-7121-4035-a10d-338bb23352ad",
+"known": "আমি আলাদা জিনিস করতে চাই",
+"pos": 5,
+"t1": "381c4302-ecfc-4761-8c93-38275f6fd832",
+"t2": "8f745fc2-5097-46bf-bbb8-3f5c2e8c915c",
+"target": "I want to do different things",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L01U03",
+"ka": "9cdc13c7-0be2-412b-8c4f-1c62de69f61c",
+"known": "তুমি কি আলাদা কিছু জানো?",
+"pos": 6,
+"t1": "f4debe26-f8c8-43c1-a58f-5729ce7ee680",
+"t2": "09003c2a-a4bf-4c6b-8fa1-bc3d61abbb7b",
+"target": "do you know something different?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L01U04",
+"ka": "81bf1e56-9c0f-41fe-9f16-e09f6547c81e",
+"known": "আমি আলাদা শব্দ বলতে চাই",
+"pos": 7,
+"t1": "f7a6a55d-4e44-4718-8bba-70c84e8ffb87",
+"t2": "73bfe0ca-9c44-4fc8-a4a1-b8b4dad7534b",
+"target": "I want to say different words",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L01U05",
+"ka": "822a1fba-13ca-4798-a666-dab4eb82caff",
+"known": "আমি আলাদা কিছু শিখছি",
+"pos": 8,
+"t1": "31a6ef7c-5836-46a6-b137-677c9e7ab517",
+"t2": "b79caffd-060a-4542-beb4-46596e4f9a09",
+"target": "I'm learning something different",
+"type": "use"
+}
+],
+"target": "different",
+"type": "A"
+},
+{
+"id": "S0060L02",
+"idx": 2,
+"is_new": true,
+"known": "এখনো",
+"phrases": [
+{
+"id": "cfa8c371-2ff4-4df3-ae04-cd2812709fca",
+"ka": "3b147a16-bbaa-487f-adb5-d602a025ec9d",
+"known": "এখনো",
+"pos": 0,
+"t1": "98907024-042e-4f95-8a7e-53701cd63cb3",
+"t2": "a6aebedd-cfc1-4f0a-afc9-c6ed1044a8a4",
+"target": "yet",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0060L02B01",
+"ka": "3b147a16-bbaa-487f-adb5-d602a025ec9d",
+"known": "এখনো",
+"pos": 1,
+"t1": "98907024-042e-4f95-8a7e-53701cd63cb3",
+"t2": "a6aebedd-cfc1-4f0a-afc9-c6ed1044a8a4",
+"target": "yet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0060L02B02",
+"ka": "efb52b58-b8e9-44c3-9403-01c8bc04c0b9",
+"known": "এখনো জানি না",
+"pos": 2,
+"t1": "60fdf1bf-7401-4573-8309-b223b2d72616",
+"t2": "721ccd94-4c36-441c-9068-9a785540158b",
+"target": "don't know yet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0060L02B03",
+"ka": "1bb70c6a-6e04-4b5c-a816-a8abff2fc769",
+"known": "এখনো বুঝতে পারছি না",
+"pos": 3,
+"t1": "bfcdb71a-1b7c-4ac3-864c-13937fe657f2",
+"t2": "70a3c037-ecc6-4f84-8d34-aa381ad055f0",
+"target": "can't understand yet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0060L02U02",
+"ka": "52175ecd-2194-423e-8c71-35166f7f48b7",
+"known": "আমি এখনো যথেষ্ট বুঝতে পারছি না",
+"pos": 5,
+"t1": "82242da6-0d05-4835-9e6f-09b799a21772",
+"t2": "ef79579a-bcc9-409a-965f-0e04e9e35981",
+"target": "I can't understand enough yet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L02U03",
+"ka": "9f8910b2-1cdf-4a3a-b097-2288822a5b8d",
+"known": "তুমি কি এখনো শিখছো?",
+"pos": 6,
+"t1": "eaf50fdb-5a5d-4a6c-9201-d85c4000869e",
+"t2": "f4667f2e-8054-4ced-8051-7fa4e88d871b",
+"target": "are you learning yet?",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L02U04",
+"ka": "3e95f5c7-89c3-4e42-9bea-567834dc23dd",
+"known": "আমি এখনো যথেষ্ট আলাদা শব্দ মনে রাখতে পারছি না",
+"pos": 7,
+"t1": "7dcec144-ce97-4b50-a0dc-c4f70722957a",
+"t2": "92605752-f1c9-4816-bd2c-e8a068f9ec19",
+"target": "I can't remember enough different words yet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L02U05",
+"ka": "d0b08a05-f017-4a0a-8fdf-fe8726757bcb",
+"known": "আমি এখনো জানি না কীভাবে যথেষ্ট আলাদা শব্দ বলা যায়",
+"pos": 8,
+"t1": "bfd18e1e-b693-4147-b37c-44b46d89446e",
+"t2": "8a3bf395-b945-4e14-ba30-6d56c97074bb",
+"target": "I don't know how to say enough different words yet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0060L02U06",
+"ka": "bdb8eb8f-b352-436c-9a64-dae0835645c8",
+"known": "আমি এখনো পুরো বাক্যটা মনে রাখতে পারছি না।",
+"pos": 9,
+"t1": "5cdbd82e-cf0b-40e8-9601-2115cc46dd33",
+"t2": "dd0f9323-6b77-4737-8b19-bad6532160e3",
+"target": "I can't remember the whole sentence yet",
+"type": "use"
+}
+],
+"target": "yet",
+"type": "A"
+}
+],
+"status": "released",
+"target": "I don't know how to say enough different words yet."
 },
 "608": {
 "at": "2026-11-18T18:33:58Z",

@@ -1,0 +1,1842 @@
+{
+"1": {
+"at": "2026-11-19T11:44:40Z",
+"known": "I want to speak German with you now",
+"legos": [
+{
+"id": "S0001L01",
+"idx": 1,
+"is_new": true,
+"known": "I want",
+"phrases": [
+{
+"id": "83cc017d-3268-4523-869a-715e9f579ed0",
+"ka": "229e4531-ff8b-4882-b46c-08b6fb3b9a24",
+"known": "I want",
+"pos": 0,
+"t1": "772b2e54-0a35-4238-bbc2-fad64ceb4289",
+"t2": "5a941816-ef5c-4ab3-b1ee-b65771f2b40c",
+"target": "ich will",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0001L01C01",
+"ka": "33185df6-d563-41af-853f-a55201fea3ab",
+"known": "I",
+"pos": 1,
+"t1": "b0b6805f-4804-49de-9105-1d7b7403e23e",
+"t2": "0b4b3f6f-4d0d-48c1-a7c9-cec86583ad04",
+"target": "Ich",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0001L01C02",
+"ka": "e201a0af-34b0-49cd-9b80-99c589d48037",
+"known": "Want",
+"pos": 2,
+"t1": "3ca81688-b05f-4a1d-ba92-3a719ec0f3e1",
+"t2": "f14cf1e8-249c-498e-a2da-69b29685e7e2",
+"target": "Will",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0001L01B01",
+"ka": "229e4531-ff8b-4882-b46c-08b6fb3b9a24",
+"known": "I want",
+"pos": 3,
+"t1": "772b2e54-0a35-4238-bbc2-fad64ceb4289",
+"t2": "5a941816-ef5c-4ab3-b1ee-b65771f2b40c",
+"target": "Ich will",
+"type": "build"
+}
+],
+"target": "ich will",
+"type": "M"
+},
+{
+"id": "S0001L02",
+"idx": 2,
+"is_new": true,
+"known": "to speak",
+"phrases": [
+{
+"id": "72e7cf9b-7d38-4f3e-9130-22fe6c86acb8",
+"ka": "0ab4347c-b7e3-4f1f-868f-be92445b6744",
+"known": "to speak",
+"pos": 0,
+"t1": "e2fced1d-a205-470a-a4e9-2326e57f6203",
+"t2": "4a0dd8ce-2347-4c41-8c1b-a25891b9f333",
+"target": "sprechen",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0001L02B01",
+"ka": "4e1e7a00-8623-4f26-8253-ac719bb43383",
+"known": "I want to speak",
+"pos": 1,
+"t1": "45b1f09f-830c-4873-ab0d-80fddf385c19",
+"t2": "c62f2a83-299e-4b93-bc7e-81052bd77e5e",
+"target": "ich will sprechen",
+"type": "build"
+}
+],
+"target": "sprechen",
+"type": "A"
+},
+{
+"id": "S0001L03",
+"idx": 3,
+"is_new": true,
+"known": "German",
+"phrases": [
+{
+"id": "704f74cc-7b09-4f29-a230-b3e1e9ebf7fd",
+"ka": "fdb62f48-27a2-4451-8191-d4819025aace",
+"known": "German",
+"pos": 0,
+"t1": "0ea557af-9702-48a3-bd80-2f7ab6fb72fe",
+"t2": "855bfe62-0ed2-43d4-a2ab-e48fbf114a66",
+"target": "Deutsch",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0001L03B01",
+"ka": "430025fa-3b55-48fd-b42a-0a030ba59e41",
+"known": "to speak German",
+"pos": 1,
+"t1": "9fad4403-71ca-47a9-945b-987dda594613",
+"t2": "08521213-ae5a-4e9c-9560-f5dd7bb60549",
+"target": "Deutsch sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L03U01",
+"ka": "d2506eec-3c3e-4141-9f7a-ee30a9d38758",
+"known": "I want to speak German",
+"pos": 2,
+"t1": "fb562565-169f-4507-b434-e116615cfc7a",
+"t2": "aeabf9cf-7b1f-44e2-b782-fff1191e8ba7",
+"target": "ich will Deutsch sprechen",
+"type": "use"
+}
+],
+"target": "Deutsch",
+"type": "A"
+},
+{
+"id": "S0001L04",
+"idx": 4,
+"is_new": true,
+"known": "now",
+"phrases": [
+{
+"id": "06b34259-ef90-4fc0-86a3-3ddfc52b233b",
+"ka": "bff63c75-1db6-44e1-8401-2545eef4a6ae",
+"known": "now",
+"pos": 0,
+"t1": "fba50b3b-6da2-4ab1-a7ed-e7126b465792",
+"t2": "d1e83581-6550-45db-96f6-ccfc1fac5df7",
+"target": "jetzt",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0001L04B01",
+"ka": "cec807ad-0283-45f2-a4b8-7c721a484d52",
+"known": "to speak now",
+"pos": 1,
+"t1": "c410de3a-3b1d-4e20-a0ba-a93d3692e041",
+"t2": "59a13aff-9343-4210-85c6-9b185c6a4016",
+"target": "jetzt sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L04B02",
+"ka": "9fb84d2f-707b-42fd-8e3e-dba40845f4ee",
+"known": "to speak German now",
+"pos": 2,
+"t1": "02117cc3-efe1-4d3c-826e-4bacd52a35df",
+"t2": "b40b1d3b-877e-46d2-a1a6-c21df2283f60",
+"target": "jetzt Deutsch sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L04U01",
+"ka": "6095cffd-db2c-4970-85dd-09c5e25b9105",
+"known": "I want to speak now",
+"pos": 3,
+"t1": "8e79d365-836b-4fca-8fe4-891f3daf9822",
+"t2": "dd881b93-652b-4cb6-9ecb-8035ede5465f",
+"target": "ich will jetzt sprechen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0001L04U02",
+"ka": "fab5e61d-ca0e-4b82-a566-2263404b2fdf",
+"known": "I want to speak German now",
+"pos": 4,
+"t1": "37ed9164-79cc-48af-bb16-1999bc26e189",
+"t2": "8b61a8ff-c98f-42cc-99e7-7fbb20daffe8",
+"target": "ich will jetzt Deutsch sprechen",
+"type": "use"
+}
+],
+"target": "jetzt",
+"type": "A"
+},
+{
+"id": "S0001L05",
+"idx": 5,
+"is_new": true,
+"known": "with you",
+"phrases": [
+{
+"id": "9b866876-637e-4a7a-9cd7-ed09cf1c33e4",
+"ka": "5c572c05-25af-4269-8c62-0feaf80cb0d5",
+"known": "with you",
+"pos": 0,
+"t1": "aa97655a-e7a3-4001-be40-958181be8be4",
+"t2": "8e7e173c-5a29-4831-bd5e-2569cf9a2f27",
+"target": "mit dir",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0001L05C01",
+"ka": "1510ccc9-d82b-46d2-9801-108ce159179b",
+"known": "With",
+"pos": 1,
+"t1": "eb31225c-0dca-4ec1-abe6-c6ef08768e30",
+"t2": "1e2fd2b4-ec8e-48d1-8247-8a3d3a18b2a8",
+"target": "Mit",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0001L05C02",
+"ka": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"known": "You",
+"pos": 2,
+"t1": "d0a57342-07f1-45c0-8bed-e8438cc95c03",
+"t2": "48e51136-1d17-4572-b8a5-e6f1f4cb1d56",
+"target": "Dir",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0001L05B01",
+"ka": "5c572c05-25af-4269-8c62-0feaf80cb0d5",
+"known": "with you",
+"pos": 3,
+"t1": "aa97655a-e7a3-4001-be40-958181be8be4",
+"t2": "8e7e173c-5a29-4831-bd5e-2569cf9a2f27",
+"target": "Mit dir",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L05B02",
+"ka": "ce909a83-4c86-469f-ba8b-9dd529375364",
+"known": "to speak with you",
+"pos": 4,
+"t1": "d1d77655-7da2-4a34-a676-49869a25f68b",
+"t2": "0ee6b326-3401-40e0-847d-cbb81d9e2a25",
+"target": "mit dir sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L05B03",
+"ka": "d831e512-4078-473f-98b5-4ffed6d5f899",
+"known": "to speak German with you",
+"pos": 5,
+"t1": "32fc4fdd-7ecd-49be-aaa8-60b7835931ba",
+"t2": "de6b797a-e314-4f58-aae8-9de6c1924c56",
+"target": "mit dir Deutsch sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L05B04",
+"ka": "16bfb30c-cfaa-41e8-85a6-ce5f5a9237ff",
+"known": "to speak with you now",
+"pos": 6,
+"t1": "2b7c83d6-2bfe-4688-9738-e7b42c99060f",
+"t2": "4bb932e7-977f-44ef-a6b2-e348e0eb6887",
+"target": "jetzt mit dir sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L05U01",
+"ka": "311c2aa1-2693-4cbe-bc3f-95b56c1f91be",
+"known": "I want to speak with you",
+"pos": 7,
+"t1": "438fc36d-70e3-4e7e-a011-b13f2dce6004",
+"t2": "f38945c6-17f0-46b6-86b5-890a7fa29a6c",
+"target": "ich will mit dir sprechen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0001L05U02",
+"ka": "883e420d-5780-4cb7-8f86-e63b0cc384b8",
+"known": "I want to speak with you now",
+"pos": 8,
+"t1": "653dace0-0077-4005-89f1-7cfce1c375a6",
+"t2": "d860d16c-347c-41c8-9adf-cd51ab785ce8",
+"target": "ich will jetzt mit dir sprechen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0001L05U03",
+"ka": "20c334c7-43c4-4230-8e7f-e7b77e96ecd0",
+"known": "I want to speak German with you",
+"pos": 9,
+"t1": "8c832f54-9cad-4c18-a317-436d63608ba6",
+"t2": "22ae0c7c-e173-4d83-8d98-181b9da99d3e",
+"target": "Ich will mit dir Deutsch sprechen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0001L05U04",
+"ka": "07482c5e-28f8-41de-a1cd-67e3efe16a88",
+"known": "I want to speak German with you now",
+"pos": 10,
+"t1": "2b53f79c-3f15-4d28-8a5a-2061fafe72a5",
+"t2": "d8813bb9-52a0-437c-a349-e2ccb86215f3",
+"target": "Ich will jetzt mit dir Deutsch sprechen",
+"type": "use"
+}
+],
+"target": "mit dir",
+"type": "M"
+},
+{
+"id": "S0001L06",
+"idx": 6,
+"is_new": true,
+"known": "now I want",
+"phrases": [
+{
+"id": "ec14061d-9e1e-4329-8989-e87fdd0e5cc0",
+"ka": "0568b579-da9c-4df7-b7ee-61fed424a209",
+"known": "now I want",
+"pos": 0,
+"t1": "4e47989b-9bb6-4d37-b9c1-b9992bf557e6",
+"t2": "97e578af-3d5e-42c1-be9b-2fce62dd5dfd",
+"target": "jetzt will ich",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0001L06B01",
+"ka": "1ddef9aa-3243-409a-b9a7-9ae6241b3f54",
+"known": "Now I want to speak",
+"pos": 1,
+"t1": "d7e665ad-8eee-4c99-a780-16f7d59808ab",
+"t2": "33147937-eb1f-4af5-b17c-10296ca3d793",
+"target": "Jetzt will ich sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L06B02",
+"ka": "216d01a5-b96b-4502-a1f9-4ec1191098f2",
+"known": "Now I want to speak German",
+"pos": 2,
+"t1": "152a65a7-077a-4daa-9391-4f458d75a9ee",
+"t2": "97b9a548-4496-4dc8-a124-04e8ad135753",
+"target": "Jetzt will ich Deutsch sprechen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0001L06U01",
+"ka": "c18cd077-9457-458e-83bb-43ab7e0a38ea",
+"known": "Now I want to speak with you",
+"pos": 3,
+"t1": "b9409408-5b02-4942-bf2a-dfda2cd63c33",
+"t2": "3b6fef47-2d3d-4558-a055-6de13ef4143d",
+"target": "Jetzt will ich mit dir sprechen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0001L06U02",
+"ka": "212b64c8-88c8-4bd9-bd49-8b4d00724a59",
+"known": "Now I want to speak German with you",
+"pos": 4,
+"t1": "d3f5b7e3-80c4-4b66-beeb-f9a598706f2f",
+"t2": "bfad7c3c-9147-49ad-8abc-d9901d4d40e6",
+"target": "Jetzt will ich mit dir Deutsch sprechen",
+"type": "use"
+}
+],
+"target": "jetzt will ich",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Ich will jetzt mit dir Deutsch sprechen"
+},
+"408": {
+"at": "2026-11-19T11:44:42Z",
+"known": "yes that's the best way to have a happy family",
+"legos": [
+{
+"id": "S0408L01",
+"idx": 1,
+"is_new": true,
+"known": "the best way",
+"phrases": [
+{
+"id": "9f91c003-7dbf-476a-9db2-7a4c254d0b27",
+"ka": "da95eb70-532e-4981-9612-e4d84f3cfb35",
+"known": "the best way",
+"pos": 0,
+"t1": "9639bfcd-7a47-4843-afda-bc1a7bc71763",
+"t2": "068c48a0-92fd-4cc2-aa74-9cb671c20d8a",
+"target": "der beste Weg",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0408L01C01",
+"ka": "9e7551da-9e5b-4412-a11c-5e068f55063c",
+"known": "the",
+"pos": 1,
+"t1": "8070effe-d7db-4984-9f02-9adf940061f5",
+"t2": "c9d26365-3bd1-45ba-a8cc-4eb5d3029d79",
+"target": "der",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L01C02",
+"ka": "49ef5e53-ad92-4194-8830-f707bdb2554b",
+"known": "best",
+"pos": 2,
+"t1": "9b224ab6-8e13-4956-8302-eab3e38af92e",
+"t2": "f14d532f-bf0c-457a-af84-bc7d0a6bc348",
+"target": "beste",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L01C03",
+"ka": "720f5eab-d8e6-4209-92e4-5e7b7c65e1f0",
+"known": "way",
+"pos": 3,
+"t1": "319a24cf-799e-432e-9b26-2132bc3bf2db",
+"t2": "ae06856a-22c4-4403-be90-176856d3d29f",
+"target": "Weg",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L01B01",
+"ka": "da95eb70-532e-4981-9612-e4d84f3cfb35",
+"known": "the best way",
+"pos": 4,
+"t1": "9639bfcd-7a47-4843-afda-bc1a7bc71763",
+"t2": "068c48a0-92fd-4cc2-aa74-9cb671c20d8a",
+"target": "der beste Weg",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L01B02",
+"ka": "b16b039c-f9d1-43ca-a5fe-a74576e6938b",
+"known": "not the best way",
+"pos": 5,
+"t1": "b9a539b8-bc0e-4877-a37f-d29deeaa80eb",
+"t2": "42a0ebfd-5955-45ed-991d-948b712657ee",
+"target": "nicht der beste Weg",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L01B03",
+"ka": "7a33f176-afe4-4ec4-8e96-cb0c5fad7b85",
+"known": "the best way to learn",
+"pos": 6,
+"t1": "b9e393ce-8d44-408f-b86a-e4198684aa24",
+"t2": "2485a4d7-d47c-4767-866e-35fad56647f1",
+"target": "der beste Weg zu lernen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L01U01",
+"ka": "2f3a6819-b897-4842-affc-05ae2636baf1",
+"known": "that's the best way",
+"pos": 7,
+"t1": "247e33ef-6d96-4fec-ba4d-440eacaf5edc",
+"t2": "606b7fb7-b8c8-4919-8a47-5e9aaf016b31",
+"target": "das ist der beste Weg",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L01U02",
+"ka": "25024b38-2703-498d-bc16-b9e47fdc459f",
+"known": "I think that's the best way",
+"pos": 8,
+"t1": "dd92d9fc-652b-4b4f-8ed3-b371bef96635",
+"t2": "00e3f7e0-50c0-49bb-96d5-2ab925d31d07",
+"target": "ich denke, das ist der beste Weg",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L01U03",
+"ka": "462100c8-c6e7-47c0-8e62-b8d160cf9baf",
+"known": "that's not the best way",
+"pos": 9,
+"t1": "4e4e3c80-3bc0-4d63-ab80-26d3e794bc7e",
+"t2": "dc6a31a6-74f7-47cf-9e44-e81ed6221100",
+"target": "das ist nicht der beste Weg",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L01U04",
+"ka": "b4d26a89-6d0e-401a-ba20-070023f0735c",
+"known": "that's the best way to learn German",
+"pos": 10,
+"t1": "0fb93696-e47c-4b11-a399-c3239a4e4700",
+"t2": "dc755cd0-17b0-438f-9dce-f84db1a82bf0",
+"target": "das ist der beste Weg, Deutsch zu lernen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L01U05",
+"ka": "45a52106-45fb-4e48-8114-7e8ecccc2ab4",
+"known": "it's the best way to learn",
+"pos": 11,
+"t1": "6fcd4cbb-c65d-4667-a12f-a30e9e869791",
+"t2": "ec6c7ccb-9327-4a4e-b3eb-7b15be761a80",
+"target": "es ist der beste Weg zu lernen",
+"type": "use"
+}
+],
+"target": "der beste Weg",
+"type": "M"
+},
+{
+"id": "S0408L02",
+"idx": 2,
+"is_new": true,
+"known": "happy family",
+"phrases": [
+{
+"id": "4b966a11-75d1-4f2b-9bdf-424bd2d1c74c",
+"ka": "aeb128d3-ef40-4dda-b98d-b77cb85da576",
+"known": "happy family",
+"pos": 0,
+"t1": "7494852c-67a6-4c0a-97b3-b683fb101242",
+"t2": "83b4d5df-3c6c-4a8c-87c5-3d715136e295",
+"target": "glückliche Familie",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0408L02C01",
+"ka": "47f87401-67a4-4802-9217-0fae795eccef",
+"known": "happy",
+"pos": 1,
+"t1": "e9e074b4-e9bc-465c-8c98-935182c3d2a8",
+"t2": "72cc9518-e503-468e-b76a-a65e77a37513",
+"target": "glückliche",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L02C02",
+"ka": "11f46c9b-e13b-444b-8d58-0399a3b1f2c5",
+"known": "family",
+"pos": 2,
+"t1": "7beed60a-8919-4c1e-83f7-ddc06ee2bee3",
+"t2": "76ce109a-a698-4bd7-b4da-68767c8bb2ae",
+"target": "Familie",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L02B01",
+"ka": "aeb128d3-ef40-4dda-b98d-b77cb85da576",
+"known": "happy family",
+"pos": 3,
+"t1": "7494852c-67a6-4c0a-97b3-b683fb101242",
+"t2": "83b4d5df-3c6c-4a8c-87c5-3d715136e295",
+"target": "glückliche Familie",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L02B02",
+"ka": "3c7356f4-cd90-4f03-aada-bcdb457d5c27",
+"known": "a happy family",
+"pos": 4,
+"t1": "e5954bfe-5f87-4cab-863a-e9823575e582",
+"t2": "8292b8e5-b6af-4135-87af-59d4d8355c9d",
+"target": "eine glückliche Familie",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L02B03",
+"ka": "e3b696a0-db9d-458a-a91e-2a8f8a76bb6e",
+"known": "to have a happy family",
+"pos": 5,
+"t1": "206eef92-f7a3-4f9d-aee1-dfed739c1399",
+"t2": "81278b5f-23f8-479c-8440-821def4fc0ff",
+"target": "eine glückliche Familie haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L02B04",
+"ka": "f48668e8-6d5f-4c13-ae53-47a9658b071d",
+"known": "the happy family",
+"pos": 6,
+"t1": "b0994736-b6fb-4b74-ad4b-2c5fc29054fa",
+"t2": "de515c21-b03e-46f8-9aa7-2f83b18f7d81",
+"target": "die glückliche Familie",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L02U01",
+"ka": "68d842d6-19db-461b-90d6-74e6d70911d0",
+"known": "I want a happy family",
+"pos": 7,
+"t1": "40ae4107-426c-4749-a9fe-42747963084f",
+"t2": "85a216f2-b1c4-4a83-a075-09d74b6cd5c8",
+"target": "ich will eine glückliche Familie",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L02U02",
+"ka": "84d33def-b139-4d5f-adec-06617c3470f0",
+"known": "that's a happy family",
+"pos": 8,
+"t1": "d2d5f0fb-46c6-49a1-8413-739b7f9159f8",
+"t2": "cd1f932c-76c3-42f2-9397-376a105d2326",
+"target": "das ist eine glückliche Familie",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L02U03",
+"ka": "b18a1112-6ceb-4ec8-a2d8-289cdda90687",
+"known": "I would like to have a happy family",
+"pos": 9,
+"t1": "2ee513e1-7b40-4fc5-a827-a7045ee2e935",
+"t2": "ddea60e9-3e58-4d25-ac91-324e0c484ee6",
+"target": "ich möchte eine glückliche Familie haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L02U04",
+"ka": "f15b0d25-7a1c-4a87-bc34-dd8e36e87b98",
+"known": "that's a very happy family",
+"pos": 10,
+"t1": "cf00760f-01cd-4f62-90d8-2af2fc38be84",
+"t2": "322ea1b6-b6ac-42ad-952f-a96b09d974bb",
+"target": "das ist eine sehr glückliche Familie",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L02U05",
+"ka": "f8dc3763-9fdf-4051-9b4d-fbecbecf323e",
+"known": "I want to have a happy family",
+"pos": 11,
+"t1": "63e709ca-fa1f-48bb-8261-9a545ada0bcb",
+"t2": "ddc0214e-0293-46db-aeb2-b0ba1b4868a6",
+"target": "ich will eine glückliche Familie haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L02U06",
+"ka": "ebede474-43c6-415c-a4b3-df2a6c3ea194",
+"known": "yes that's the best way to have a happy family",
+"pos": 12,
+"t1": "9f7e5d45-ae26-41d6-b5d5-2b9654bf457c",
+"t2": "930a8f32-78d8-4455-b664-a1349d731aa7",
+"target": "ja, das ist der beste Weg, eine glückliche Familie zu haben",
+"type": "use"
+}
+],
+"target": "glückliche Familie",
+"type": "M"
+},
+{
+"id": "S0408L03",
+"idx": 3,
+"is_new": false,
+"known": "to have",
+"phrases": [
+{
+"id": "5a0a3528-f1bc-4316-b539-933dc4f84099",
+"ka": "10686b29-5167-4120-9720-9a1b37f54f78",
+"known": "to have",
+"pos": 0,
+"t1": "b78fb049-70b0-46dc-8a1a-3ee40837191b",
+"t2": "ec48e293-eb83-4c52-b75b-f14ad854ea59",
+"target": "zu haben",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0408L03C01",
+"ka": "dd376b86-6359-4c03-86ae-507b38f4c3c3",
+"known": "to",
+"pos": 1,
+"t1": "a356c42f-2dd9-4821-a5e5-5c0c6ce06c3b",
+"t2": "c153b5ee-f1ee-4c81-b3f2-7521f8c7e6b7",
+"target": "zu",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L03C02",
+"ka": "6d2b9926-c990-448c-a3f8-2e575428d0bf",
+"known": "have",
+"pos": 2,
+"t1": "db46cafe-a0ab-4a05-87af-4a7b2f74600f",
+"t2": "9bd9c2a3-8c4a-47cd-acab-92c8def5cfd4",
+"target": "haben",
+"type": "component"
+},
+{
+"id": "deu_for_eng:S0408L03B01",
+"ka": "10686b29-5167-4120-9720-9a1b37f54f78",
+"known": "to have",
+"pos": 3,
+"t1": "b78fb049-70b0-46dc-8a1a-3ee40837191b",
+"t2": "ec48e293-eb83-4c52-b75b-f14ad854ea59",
+"target": "zu haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L03B02",
+"ka": "e3b696a0-db9d-458a-a91e-2a8f8a76bb6e",
+"known": "to have a happy family",
+"pos": 4,
+"t1": "77b4e1f5-71a6-46e7-918c-f6adc0471378",
+"t2": "0ff3f448-2f74-4aee-84cb-01ea3ee24674",
+"target": "eine glückliche Familie zu haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L03B03",
+"ka": "c459e31b-9159-4eb5-9d6c-24a6543f96a4",
+"known": "to have a family",
+"pos": 5,
+"t1": "09a5ac17-368b-411e-98dc-060122caf40e",
+"t2": "7d3d0692-4bed-4eb1-a25f-be8c1c52471f",
+"target": "eine Familie zu haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L03B04",
+"ka": "143a933b-b429-4ea4-8d71-2df8e1a5d1e0",
+"known": "good to have",
+"pos": 6,
+"t1": "df9e75fa-dfa3-4d51-98dc-84220ebc3044",
+"t2": "e6c46ed8-5d66-416b-96aa-b98e3eb75259",
+"target": "gut zu haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0408L03U01",
+"ka": "ac0b7cd5-b196-4136-8657-d32676447b8c",
+"known": "that's the best way to have a happy family",
+"pos": 7,
+"t1": "1040b983-969f-47dd-a174-9dd7766a9704",
+"t2": "b36ea9e1-5d4a-4b7b-abb1-1c8d8933db2e",
+"target": "das ist der beste Weg, eine glückliche Familie zu haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L03U02",
+"ka": "d9745bd4-258f-42ff-9f80-b167bdee0b0a",
+"known": "it's good to have a happy family",
+"pos": 8,
+"t1": "1c5dffb3-73f1-4961-8c6a-49a7a2d2c8d4",
+"t2": "0dbdd908-4c93-417d-a4ae-3385dc3eb814",
+"target": "es ist gut, eine glückliche Familie zu haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L03U03",
+"ka": "bb53cead-e9f5-414b-9645-b92ad9fad720",
+"known": "it's nice to have a happy family",
+"pos": 9,
+"t1": "8e7aecfb-0a39-483f-a86a-bfae13128d5c",
+"t2": "9c1a76de-e977-4660-a852-e1597f53af6a",
+"target": "es ist schön, eine glückliche Familie zu haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L03U04",
+"ka": "79bf48a7-963c-4d1d-ad89-7bf1055828f4",
+"known": "that's good to have",
+"pos": 10,
+"t1": "76720fc9-c129-486e-8cfe-92d3ea363da5",
+"t2": "52e7e58f-7ead-4f21-be7b-276ec866f989",
+"target": "das ist gut zu haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0408L03U05",
+"ka": "6c106921-79ba-456e-9db0-09b6b3c07150",
+"known": "it's good to have a family",
+"pos": 11,
+"t1": "e665257e-695d-4983-9c90-219ecc28be47",
+"t2": "160754b3-2fb3-4107-8f3f-1968b79f0a3d",
+"target": "es ist gut, eine Familie zu haben",
+"type": "use"
+}
+],
+"target": "zu haben",
+"type": "M"
+}
+],
+"status": "released",
+"target": "ja, das ist der beste Weg, eine glückliche Familie zu haben"
+},
+"414": {
+"at": "2026-11-19T11:44:44Z",
+"known": "could we have a bottle of red wine please?",
+"legos": [
+{
+"id": "S0414L01",
+"idx": 1,
+"is_new": true,
+"known": "please",
+"phrases": [
+{
+"id": "1c1e8511-6778-4f85-9339-9a935919380b",
+"ka": "d1f6aff7-1665-46a5-af20-cf6071e88bdd",
+"known": "please",
+"pos": 0,
+"t1": "e6d768a7-cfd3-41a0-b47e-5b12e9dac493",
+"t2": "4463d229-d1ed-4b31-8dd6-8211cf7ab186",
+"target": "bitte",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0414L01B01",
+"ka": "d1f6aff7-1665-46a5-af20-cf6071e88bdd",
+"known": "please",
+"pos": 1,
+"t1": "e6d768a7-cfd3-41a0-b47e-5b12e9dac493",
+"t2": "4463d229-d1ed-4b31-8dd6-8211cf7ab186",
+"target": "bitte",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L01B02",
+"ka": "6d3fd40a-d76e-4dd0-aeb7-4b271cdc14fc",
+"known": "please go",
+"pos": 2,
+"t1": "592ff9c6-fe12-45af-a89e-756fec1c999a",
+"t2": "1c26476f-3573-485c-981a-36d818cd039c",
+"target": "bitte gehen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L01B03",
+"ka": "bac66e60-6308-43a1-a0bf-c51fc60882b4",
+"known": "please stay",
+"pos": 3,
+"t1": "14692e4b-c3fa-4306-b850-e724d4091ab1",
+"t2": "946b2e20-d3c5-4326-96c9-0843ce861962",
+"target": "bitte bleiben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L01U01",
+"ka": "c9d7210a-1390-4b08-8aee-23639ae83317",
+"known": "I think we should please go",
+"pos": 4,
+"t1": "0bbdd1ff-d362-41d3-bb00-90dd5bf88559",
+"t2": "ee044038-8a4e-45b3-850d-e439a496a88f",
+"target": "ich denke, dass wir bitte gehen sollten",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L01U02",
+"ka": "46ea890a-7e1e-462d-9884-383205c8381e",
+"known": "I thought she should please stay",
+"pos": 5,
+"t1": "d5ea8885-749d-48ab-8d6e-b129a9beea3f",
+"t2": "2ef5fb28-4d26-492d-b813-858868ac4ddc",
+"target": "ich dachte, dass sie bitte bleiben sollte",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L01U03",
+"ka": "24d7e046-f16f-46c7-8dc4-d78e6cdad146",
+"known": "she told me to please stay",
+"pos": 6,
+"t1": "8639f99e-e6bf-4fff-8203-e85264e89dc9",
+"t2": "29ffa125-a979-4a24-b3b4-42ffabd81f78",
+"target": "sie hat mir gesagt, bitte zu bleiben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L01U04",
+"ka": "f1efb328-cdc0-436c-8f7f-08d95d763706",
+"known": "please could we stay",
+"pos": 7,
+"t1": "2c047642-0f98-40c5-955d-ce16d35f18bd",
+"t2": "49af0814-5bca-4500-8880-e78825470c8d",
+"target": "bitte könnten wir bleiben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L01U05",
+"ka": "0993ff1d-082b-4a6b-a9a0-15bda8b5bd8b",
+"known": "I knew we had to go please",
+"pos": 8,
+"t1": "e3f85b8c-2ec9-448c-a918-3d3d321ee66d",
+"t2": "1fa566ef-a066-4644-8eeb-704e251bd8ae",
+"target": "ich wusste, dass wir bitte gehen müssen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L01U06",
+"ka": "6b15e7d7-3a8e-4731-b950-c14430b90ac9",
+"known": "I thought all wanted to go please",
+"pos": 9,
+"t1": "56b68295-4da8-4d23-a431-bfbeba962904",
+"t2": "42b8b75b-33d3-43d1-8ffc-7329386debe7",
+"target": "ich dachte, dass alle bitte gehen wollten",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L01U21",
+"ka": "7a17b6e2-663b-43cc-9f5f-9b6552373f9e",
+"known": "please could we go home",
+"pos": 10,
+"t1": "f4ffd99e-5148-4490-bd2d-ec93bc2f2aa0",
+"t2": "d94f7988-1c40-4f5e-9069-289529e9b7c6",
+"target": "bitte könnten wir nach Hause gehen",
+"type": "use"
+}
+],
+"target": "bitte",
+"type": "A"
+},
+{
+"id": "S0414L02",
+"idx": 2,
+"is_new": true,
+"known": "bottle",
+"phrases": [
+{
+"id": "8f40f752-399b-46fa-991f-79bfcfefa7aa",
+"ka": "b0bd27ec-fa5a-44ad-a5b1-b3bb892be2d8",
+"known": "bottle",
+"pos": 0,
+"t1": "090c3bdc-85b3-4a69-91a4-ac0991cdf37c",
+"t2": "23d808e3-e01c-4576-8e1c-6a042b6942d0",
+"target": "Flasche",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0414L02B01",
+"ka": "b0bd27ec-fa5a-44ad-a5b1-b3bb892be2d8",
+"known": "bottle",
+"pos": 1,
+"t1": "090c3bdc-85b3-4a69-91a4-ac0991cdf37c",
+"t2": "23d808e3-e01c-4576-8e1c-6a042b6942d0",
+"target": "flasche",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L02B02",
+"ka": "3002188c-1103-4137-81ed-0f9ea2b94e94",
+"known": "a bottle",
+"pos": 2,
+"t1": "10f1c1c8-b0b1-409a-bdb8-4dfcbaa9d11f",
+"t2": "1a88476f-db25-4f17-9b51-888b9fa0b2ec",
+"target": "eine Flasche",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L02B03",
+"ka": "ed7e1b71-ed62-4b15-93d0-5c06467ba817",
+"known": "could we have a bottle",
+"pos": 3,
+"t1": "60fad090-dff1-4fb4-af56-7d2a523cf727",
+"t2": "c71478dc-1766-48d3-8581-ec214b0640bb",
+"target": "könnten wir eine Flasche haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L02U01",
+"ka": "b5b43afe-9199-4697-ba75-70e209cbe5f7",
+"known": "I think we need a bottle",
+"pos": 4,
+"t1": "6e76bca2-4881-475c-ac22-e1bdaa62522c",
+"t2": "2c91e8ef-9c07-4380-b8fc-d2a6a3874823",
+"target": "ich denke, dass wir eine Flasche brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L02U02",
+"ka": "7b839a3d-4273-4cac-871c-12b267459e6a",
+"known": "I thought we needed a bottle",
+"pos": 5,
+"t1": "ecf4a8ec-688b-44d1-a857-f5d3b0c010fd",
+"t2": "e7724262-3781-4903-9cfb-aeb7c15baa71",
+"target": "ich dachte, dass wir eine Flasche brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L02U03",
+"ka": "2661caaf-3ed7-4d1f-853d-88f45525a0e5",
+"known": "she told me we needed a bottle",
+"pos": 6,
+"t1": "6f4a467b-3859-4b6f-9f8e-7015ae2ab952",
+"t2": "c883550c-a132-4cbc-a3c6-f0c5cf19726c",
+"target": "sie hat mir gesagt, dass wir eine Flasche brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L02U04",
+"ka": "1d9629f1-1b9b-427d-8367-098df4f87afa",
+"known": "please could we have a bottle",
+"pos": 7,
+"t1": "3db840fc-a626-455f-853b-41efe18cbfc8",
+"t2": "33eeba85-51be-4461-931c-127a29dc2f02",
+"target": "bitte könnten wir eine Flasche haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L02U05",
+"ka": "64f0a9b3-2a1d-4aee-b0ed-8585eef51016",
+"known": "I knew we needed a bottle",
+"pos": 8,
+"t1": "a0e279a6-cb04-4f9d-b56c-e5c7cf64ff69",
+"t2": "13248246-8781-4ed0-bfa8-b51a16e6b2fc",
+"target": "ich wusste, dass wir eine Flasche brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L02U06",
+"ka": "b5e12c32-0558-403e-8578-dcab74e31871",
+"known": "I asked if we could have a bottle please",
+"pos": 9,
+"t1": "9cc6b47b-edb1-488b-a6cc-961a2a5ba4cf",
+"t2": "b01a7b7e-b854-41e2-9e9c-47bbf2e18bc1",
+"target": "ich habe gefragt, ob wir bitte eine Flasche haben könnten",
+"type": "use"
+}
+],
+"target": "Flasche",
+"type": "A"
+},
+{
+"id": "S0414L03",
+"idx": 3,
+"is_new": true,
+"known": "red wine",
+"phrases": [
+{
+"id": "f03ba337-db6c-4b57-a244-640213c07d06",
+"ka": "e7adf103-88e6-4434-b029-e7cc6ccc034e",
+"known": "red wine",
+"pos": 0,
+"t1": "0b8fc5c4-0d55-42bb-892a-9cd94621f5da",
+"t2": "7b7d6c19-27d7-4939-aae6-7772b4b1308f",
+"target": "Rotwein",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0414L03B01",
+"ka": "e7adf103-88e6-4434-b029-e7cc6ccc034e",
+"known": "red wine",
+"pos": 1,
+"t1": "0b8fc5c4-0d55-42bb-892a-9cd94621f5da",
+"t2": "7b7d6c19-27d7-4939-aae6-7772b4b1308f",
+"target": "rotwein",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L03B02",
+"ka": "391cbdfc-5201-448c-95b0-a71136988444",
+"known": "a bottle of red wine",
+"pos": 2,
+"t1": "8a7dea96-9a6c-4326-b9ce-6fcd5d5b5e31",
+"t2": "68a7c173-9ff3-49cd-9217-df0afc4424bf",
+"target": "eine Flasche Rotwein",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L03B03",
+"ka": "706f9aea-01b3-4f99-bac7-4f084bf69817",
+"known": "a bottle of red wine please",
+"pos": 3,
+"t1": "ab3cca86-8b00-4155-bd3b-0604567c4983",
+"t2": "18895463-7c38-446a-a582-3e2ccb68e44e",
+"target": "bitte eine Flasche Rotwein",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L03U01",
+"ka": "5befa002-15f6-4e62-a39a-48b0aea6b819",
+"known": "I think we need some red wine",
+"pos": 4,
+"t1": "897c1db5-387f-4468-8567-278e5f2838dc",
+"t2": "2ed55fad-7211-4c25-9285-d028c2db1689",
+"target": "ich denke, dass wir Rotwein brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L03U02",
+"ka": "52857b8e-4566-40a7-b889-f237eca64e6d",
+"known": "I thought we needed some red wine",
+"pos": 5,
+"t1": "a83d9a38-e929-4eab-8674-6c6ff9cb06f3",
+"t2": "70b0bd21-5d92-47e1-a2e4-3c0e8bbf27df",
+"target": "ich dachte, dass wir Rotwein brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L03U03",
+"ka": "2277267b-aa69-4f14-8040-deb71c7ff09c",
+"known": "she told me we needed some red wine",
+"pos": 6,
+"t1": "78af33e8-e9bc-4014-b11f-bf11b0cebfee",
+"t2": "ba475a65-0a23-4c78-bd2a-4a876da76537",
+"target": "sie hat mir gesagt, dass wir Rotwein brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L03U04",
+"ka": "6d95ca05-c801-4133-a5ca-80d984791228",
+"known": "please could we have red wine",
+"pos": 7,
+"t1": "1c024d46-0c56-4d0b-be91-6f90ce221267",
+"t2": "201a0ff2-92b2-4640-91a2-160346aff9a3",
+"target": "bitte könnten wir Rotwein haben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L03U05",
+"ka": "d4bf8ac7-2265-419c-9d3f-c8fe63748483",
+"known": "I knew we needed red wine",
+"pos": 8,
+"t1": "e281f946-f39f-452b-8c11-709cb302b0c0",
+"t2": "62c7a7eb-e4ca-4fe4-80fd-9c0840440f32",
+"target": "ich wusste, dass wir Rotwein brauchen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L03U06",
+"ka": "9b1980f9-1b18-4576-b64e-7f3a38f5cc44",
+"known": "I asked if we could have red wine please",
+"pos": 9,
+"t1": "d98f5a5b-17c4-4e8f-842a-7e18647e81a3",
+"t2": "43cef471-c2be-46a4-9bef-ef8e39badb27",
+"target": "ich habe gefragt, ob wir bitte Rotwein haben könnten",
+"type": "use"
+}
+],
+"target": "Rotwein",
+"type": "A"
+},
+{
+"id": "S0414L04",
+"idx": 4,
+"is_new": true,
+"known": "to have",
+"phrases": [
+{
+"id": "55da8b38-6104-4f87-bf91-450da6273d86",
+"ka": "10686b29-5167-4120-9720-9a1b37f54f78",
+"known": "to have",
+"pos": 0,
+"t1": "db46cafe-a0ab-4a05-87af-4a7b2f74600f",
+"t2": "9bd9c2a3-8c4a-47cd-acab-92c8def5cfd4",
+"target": "haben",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0414L04B01",
+"ka": "10686b29-5167-4120-9720-9a1b37f54f78",
+"known": "to have",
+"pos": 1,
+"t1": "db46cafe-a0ab-4a05-87af-4a7b2f74600f",
+"t2": "9bd9c2a3-8c4a-47cd-acab-92c8def5cfd4",
+"target": "haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L04B02",
+"ka": "6fe915c9-088b-4376-899d-68afbac60c24",
+"known": "we could have",
+"pos": 2,
+"t1": "0526681e-f382-470c-b718-d2d9f788ed80",
+"t2": "66b996ee-ad26-4fb2-a5d4-5576f0658d98",
+"target": "wir könnten haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L04B03",
+"ka": "7f8b59f8-045d-46ce-9340-b5010422c031",
+"known": "could we have a bottle please",
+"pos": 3,
+"t1": "eeac2c9a-06d1-4281-913d-123aab7605c0",
+"t2": "cd52983b-181f-421d-b4de-b46da61275bc",
+"target": "könnten wir bitte eine Flasche haben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0414L04U01",
+"ka": "a75925d2-5d88-40c3-b410-45b9c736f863",
+"known": "could we have a bottle of red wine please?",
+"pos": 4,
+"t1": "07b53aa0-5495-481a-804d-50017e71114a",
+"t2": "70b8545e-b7a6-4d7c-a79c-e593b616021a",
+"target": "könnten wir bitte eine Flasche Rotwein haben?",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L04U02",
+"ka": "27f1d12f-4859-4bde-acf5-fa1802fe4969",
+"known": "I think we would like to have red wine",
+"pos": 5,
+"t1": "4ea086f9-346a-4b33-888b-7c24d28a28b3",
+"t2": "0482ad81-e991-447e-816c-e934ceb1a3fd",
+"target": "ich denke, dass wir Rotwein haben möchten",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L04U03",
+"ka": "0d8d3fc3-22ae-45c4-a398-bf5b87bb6b7d",
+"known": "I thought we needed to have a bottle",
+"pos": 6,
+"t1": "b0b07a3e-6f6b-4562-9cdd-d166348445ce",
+"t2": "e53613c0-fbbb-4678-9609-04691e45a9af",
+"target": "ich dachte, dass wir eine Flasche haben müssen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L04U04",
+"ka": "826cbc92-1b56-4019-94f3-d1703499400f",
+"known": "she told me we would like to have red wine",
+"pos": 7,
+"t1": "f4728bd7-90aa-4a93-96f6-0975fae35b41",
+"t2": "67c8fcf8-59a0-40f1-a08f-b04368b03e03",
+"target": "sie hat mir gesagt, dass wir Rotwein haben möchten",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L04U05",
+"ka": "55c11f89-854d-43c3-a405-2010a1c545d9",
+"known": "I asked if we could have red wine",
+"pos": 8,
+"t1": "e9a9f841-cf79-4295-9ee9-1811318316b0",
+"t2": "18c32a49-0960-4c0a-b327-0e3c2f040af1",
+"target": "ich habe gefragt, ob wir Rotwein haben könnten",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0414L04U06",
+"ka": "b338cfd8-634c-42d0-b468-7d26e42f4d9e",
+"known": "I knew we needed to have a bottle",
+"pos": 9,
+"t1": "13d12a80-05c8-46dd-9223-a8be07781202",
+"t2": "111924e6-a807-4990-8675-049c751f3e45",
+"target": "ich wusste, dass wir eine Flasche haben müssen",
+"type": "use"
+}
+],
+"target": "haben",
+"type": "A"
+}
+],
+"status": "released",
+"target": "könnten wir bitte eine Flasche Rotwein haben?"
+},
+"459": {
+"at": "2026-11-19T11:44:46Z",
+"known": "it wasn't in front of the blue sign",
+"legos": [
+{
+"id": "S0459L01",
+"idx": 1,
+"is_new": true,
+"known": "in front of",
+"phrases": [
+{
+"id": "6af739a1-506b-4ba4-b2c7-09682c90c593",
+"ka": "4b50fe8e-a9cf-4a87-bced-ba90b4a338dc",
+"known": "in front of",
+"pos": 0,
+"t1": "6a1e338c-7a3e-459a-90b9-3db80d93f295",
+"t2": "4a9e9362-a935-4c24-bb60-68251c1f3246",
+"target": "vor",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0459L01B01",
+"ka": "4b50fe8e-a9cf-4a87-bced-ba90b4a338dc",
+"known": "in front of",
+"pos": 1,
+"t1": "6a1e338c-7a3e-459a-90b9-3db80d93f295",
+"t2": "4a9e9362-a935-4c24-bb60-68251c1f3246",
+"target": "vor",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L01B02",
+"ka": "d5da7a4f-3d06-46f4-a4dc-e67e9f1cea62",
+"known": "not in front of",
+"pos": 2,
+"t1": "6934a621-7bdf-43da-a12e-88a00190dfec",
+"t2": "682ae4e6-d22e-4ca3-a04b-73b27b732874",
+"target": "nicht vor",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L01B03",
+"ka": "0fa98381-7d40-45eb-9524-06311b0a1251",
+"known": "it was not in front of",
+"pos": 3,
+"t1": "87cffe45-8dbd-4739-ac4a-5532e2fa1fcd",
+"t2": "f045f2ad-e943-45da-9c0a-46535a58e189",
+"target": "es war nicht vor",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L01U01",
+"ka": "11fb6893-1332-4d4d-b06a-a290a66a51eb",
+"known": "I think it was in front of us",
+"pos": 4,
+"t1": "1bee8525-bfc0-4a59-961b-8867468b3a2d",
+"t2": "edce0f48-aedc-44aa-aa91-e309fd6a516d",
+"target": "ich denke, dass es vor uns war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L01U02",
+"ka": "8d785b4c-eeb0-4a0b-95f5-69110e70cdcb",
+"known": "I thought it was in front of us",
+"pos": 5,
+"t1": "725dee83-4fec-448b-9dfe-50044518cf0f",
+"t2": "54710148-c64c-4ce6-81d3-8e6a3649aee5",
+"target": "ich dachte, dass es vor uns war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L01U03",
+"ka": "018afffb-dce0-4d33-b7ce-2a91d448732e",
+"known": "she told me it was not in front of us",
+"pos": 6,
+"t1": "a1c70b01-1fa1-4de8-80ba-1e7126d54086",
+"t2": "f67bec7c-86bb-4923-b226-6b947beab5ca",
+"target": "sie hat mir gesagt, dass es nicht vor uns war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L01U04",
+"ka": "e2c089db-4ce2-4d63-97c7-4a1661bf40cd",
+"known": "I believe it was in front of us",
+"pos": 7,
+"t1": "9a7cac96-553e-426c-90d4-a41f52efa95e",
+"t2": "4a614fd0-ad5c-47ba-8257-d2aed18c6083",
+"target": "ich glaube, dass es vor uns war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L01U05",
+"ka": "9502ccab-7893-4949-ac0b-8bf60b1d4e06",
+"known": "please could it be in front of us",
+"pos": 8,
+"t1": "3b9a3b8a-b58e-49b6-b7c9-aa1517980dda",
+"t2": "3e5d8685-a066-4dc0-8e13-44a61aea368f",
+"target": "bitte könnte es vor uns sein",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L01U06",
+"ka": "00a98e07-14be-4e2e-86d2-94115dc615ec",
+"known": "I knew it was in front of us",
+"pos": 9,
+"t1": "a0735ce1-805e-49ff-ac4c-4d52774dd8da",
+"t2": "96c65c8f-b1ec-476e-83b9-097d4c030939",
+"target": "ich wusste, dass es vor uns war",
+"type": "use"
+}
+],
+"target": "vor",
+"type": "A"
+},
+{
+"id": "S0459L02",
+"idx": 2,
+"is_new": true,
+"known": "blue",
+"phrases": [
+{
+"id": "93ef5067-a8cf-476a-82da-f82443644970",
+"ka": "6b6efac1-9375-4bcf-b339-11c9f93206b5",
+"known": "blue",
+"pos": 0,
+"t1": "1f026ee2-b3f9-416d-b22c-d1e9d953843f",
+"t2": "31276638-606a-4ede-b655-383849deb60a",
+"target": "blauen",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0459L02B01",
+"ka": "6b6efac1-9375-4bcf-b339-11c9f93206b5",
+"known": "blue",
+"pos": 1,
+"t1": "1f026ee2-b3f9-416d-b22c-d1e9d953843f",
+"t2": "31276638-606a-4ede-b655-383849deb60a",
+"target": "blauen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L02B02",
+"ka": "d3fa67d0-2253-40ba-b580-e8930f2f151e",
+"known": "the blue one",
+"pos": 2,
+"t1": "af10cb67-7048-4dd1-aaec-131e6e021964",
+"t2": "e0f3cd6d-a1d9-4cd5-8fec-b4c296d88af1",
+"target": "dem blauen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L02B03",
+"ka": "30330389-fd30-4259-9b3a-c594fefaceb3",
+"known": "not in front of the blue one",
+"pos": 3,
+"t1": "f3cedbdc-1346-4cad-8fa2-a9e761ab750e",
+"t2": "53c5368c-5d79-4f7d-a644-552179775196",
+"target": "nicht vor dem blauen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L02U01",
+"ka": "aa20c7a8-8850-483d-92b2-ff11c8a95348",
+"known": "I think it was in front of the blue one",
+"pos": 4,
+"t1": "718adde7-4baa-4302-8d7b-adea37228156",
+"t2": "aaf1c805-a3be-481a-bdce-a67e46ccae5f",
+"target": "ich denke, dass es vor dem blauen war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L02U02",
+"ka": "501276c7-d136-486a-92ec-39637b787f54",
+"known": "I thought it was not in front of the blue one",
+"pos": 5,
+"t1": "96ea1b09-5689-4d1b-81d6-7c9b874acc08",
+"t2": "8cf285b0-e5e3-4125-bcb9-a8cbfe1a8b66",
+"target": "ich dachte, dass es nicht vor dem blauen war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L02U03",
+"ka": "802e0183-7dd9-490a-b535-d7ab771913ee",
+"known": "she told me it was not in front of the blue one",
+"pos": 6,
+"t1": "41b560a7-1c5e-47df-9602-563f94c296dd",
+"t2": "ff2bb572-2689-4640-8f86-4a29ad9a4374",
+"target": "sie hat mir gesagt, dass es nicht vor dem blauen war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L02U04",
+"ka": "25fdb96e-c942-45c2-b991-4eb2aa581a60",
+"known": "I believe it was in front of the blue one",
+"pos": 7,
+"t1": "8bda82d3-d92f-4314-adcb-39299a2d9da5",
+"t2": "1163ad13-3400-433a-bd40-3cc642affb9d",
+"target": "ich glaube, dass es vor dem blauen war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L02U05",
+"ka": "01760543-3bbd-4350-a5a7-f1e381f0b7e7",
+"known": "please could it be in front of the blue one",
+"pos": 8,
+"t1": "908e6744-43ca-4bbd-9df3-d291c927d4fb",
+"t2": "dca12a9a-1ce6-493d-a14e-228bcb93d7f4",
+"target": "bitte könnte es vor dem blauen sein",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L02U06",
+"ka": "2fe01b9f-a615-4df9-ab3f-e2caa52ff966",
+"known": "I knew it was not in front of the blue one",
+"pos": 9,
+"t1": "eb12295b-ab9b-4815-890c-b68481ecf3e4",
+"t2": "e054724f-12b8-4d1b-b7ba-134abd5aeb4c",
+"target": "ich wusste, dass es nicht vor dem blauen war",
+"type": "use"
+}
+],
+"target": "blauen",
+"type": "A"
+},
+{
+"id": "S0459L03",
+"idx": 3,
+"is_new": true,
+"known": "sign",
+"phrases": [
+{
+"id": "8934d7f7-2e7c-4c71-b5ca-feb6e5f83fb8",
+"ka": "1f8f35b5-7341-405a-b808-3bc8e657f4fb",
+"known": "sign",
+"pos": 0,
+"t1": "c9755dd7-fa77-495d-a4cb-f71b70cca540",
+"t2": "d42a204d-dbfd-458e-94d2-1a87b2db8033",
+"target": "Schild",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0459L03B01",
+"ka": "1f8f35b5-7341-405a-b808-3bc8e657f4fb",
+"known": "sign",
+"pos": 1,
+"t1": "c9755dd7-fa77-495d-a4cb-f71b70cca540",
+"t2": "d42a204d-dbfd-458e-94d2-1a87b2db8033",
+"target": "Schild",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L03B02",
+"ka": "331ef01f-7ebb-47fb-b796-66005c42c4f5",
+"known": "blue sign",
+"pos": 2,
+"t1": "a4d5c046-4db7-4d56-a7d1-cce31ff14e0c",
+"t2": "cd7c74e3-afd2-4b01-99c4-8f5ffe8a627a",
+"target": "blauen Schild",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L03B03",
+"ka": "537ee190-b093-4ea5-ad34-31054e3a0001",
+"known": "not in front of the blue sign",
+"pos": 3,
+"t1": "11a3695e-d3c8-4208-94b2-bd7dcec9fdc0",
+"t2": "7e51a75f-d619-4480-9dc8-d58784192463",
+"target": "nicht vor dem blauen Schild",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0459L03U01",
+"ka": "8a8b2bf9-916a-477f-b20e-8ce31f7a6cb7",
+"known": "it was not in front of the blue sign",
+"pos": 4,
+"t1": "a11e4555-9253-441a-9756-a15e7432af36",
+"t2": "3bd692d2-d887-416f-9c81-cbbcae4625c4",
+"target": "es war nicht vor dem blauen Schild",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L03U02",
+"ka": "ae427124-f25e-47b8-af7f-1296bc203f88",
+"known": "I think it was in front of the blue sign",
+"pos": 5,
+"t1": "5b1fec69-91dd-40a6-b8d8-b1c350d7f547",
+"t2": "30062cbc-7f92-4640-8a39-f6b029084e59",
+"target": "ich denke, dass es vor dem blauen Schild war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L03U03",
+"ka": "af6c3831-f5fb-492a-b65d-f34558da0f03",
+"known": "I thought it was in front of the blue sign",
+"pos": 6,
+"t1": "0b6eddaf-2f5b-45f9-ba5d-cbb26307c0c5",
+"t2": "d98cb76c-aee0-4b31-b86b-5126cd829b03",
+"target": "ich dachte, dass es vor dem blauen Schild war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L03U04",
+"ka": "5fb65310-f345-4dc3-b620-fc6c7a487d6f",
+"known": "she told me it was in front of the blue sign",
+"pos": 7,
+"t1": "63518196-9c67-4096-9873-89927f006011",
+"t2": "b5efa24a-2730-496a-80ec-e65e6f999f7f",
+"target": "sie hat mir gesagt, dass es vor dem blauen Schild war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L03U05",
+"ka": "7c94665f-c25c-4f8b-9b3c-f7ab99d263f2",
+"known": "I think we want to be in front of the blue sign",
+"pos": 8,
+"t1": "020fcc5d-6fc6-44a3-a8d0-33f598a11d85",
+"t2": "56fe827c-1bfe-4504-9ef5-3ea08e5bc001",
+"target": "ich denke, dass wir vor dem blauen Schild sein wollen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L03U06",
+"ka": "4b41916f-f2ae-494b-99fe-5a2fc7452f73",
+"known": "I knew it was in front of the blue sign",
+"pos": 9,
+"t1": "b91200f0-0b5d-428b-a418-e7c686cb713f",
+"t2": "122cf0a3-53aa-4afe-88fb-4b6a05df95c2",
+"target": "ich wusste, dass es vor dem blauen Schild war",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0459L03U07",
+"ka": "611a3e68-d319-4cf7-875b-1f1bb0d6f580",
+"known": "it wasn't in front of the blue sign",
+"pos": 10,
+"t1": "a11e4555-9253-441a-9756-a15e7432af36",
+"t2": "3bd692d2-d887-416f-9c81-cbbcae4625c4",
+"target": "es war nicht vor dem blauen Schild",
+"type": "use"
+}
+],
+"target": "Schild",
+"type": "A"
+}
+],
+"status": "released",
+"target": "es war nicht vor dem blauen Schild"
+},
+"639": {
+"at": "2026-11-19T11:44:49Z",
+"known": "with you sir",
+"legos": [
+{
+"id": "S0639L01",
+"idx": 1,
+"is_new": true,
+"known": "with you sir",
+"phrases": [
+{
+"id": "d6884a16-e3c9-4a8c-8cde-0a9fc846e456",
+"ka": "6b74a039-cfac-4ffb-a2af-46eeab4cf262",
+"known": "with you sir",
+"pos": 0,
+"t1": "c3c302ee-71ee-43d8-b808-06556d6df2de",
+"t2": "bff6cad4-570d-435c-85bb-95bee4982649",
+"target": "mit Ihnen, mein Herr",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0639L01B01",
+"ka": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"known": "you",
+"pos": 1,
+"t1": "bfd3ef6c-c437-49e6-a4ca-2733fde58377",
+"t2": "0cfeca47-8cc7-4100-9f7b-6ba351472fd8",
+"target": "ihnen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0639L01B02",
+"ka": "79110bea-fa25-4d6e-a998-2fbd8eab9617",
+"known": "I also want to go with you",
+"pos": 2,
+"t1": "41a3ff55-03d7-4628-a83f-6f59782bd9c1",
+"t2": "e1e0c1a1-6189-4c83-84ef-189f6f932a4b",
+"target": "ich will auch mit Ihnen gehen",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0639L01B03",
+"ka": "bfbaa4a7-b9bd-4651-88c0-0e01900b45bd",
+"known": "he also wanted to stay with you",
+"pos": 3,
+"t1": "5a299d1a-f45c-4953-9675-742d8b052540",
+"t2": "d08f9165-bcbd-4bc8-8500-a90936735870",
+"target": "er wollte auch mit Ihnen bleiben",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0639L01U01",
+"ka": "5c572c05-25af-4269-8c62-0feaf80cb0d5",
+"known": "with you",
+"pos": 4,
+"t1": "c7e2e016-5664-4c6d-8510-dbac31cdc669",
+"t2": "93508bde-538a-4453-854e-d48706be1a46",
+"target": "mit Ihnen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U02",
+"ka": "61360fc9-f966-49af-931b-f0da0bb6d9a1",
+"known": "she wants to stay with you",
+"pos": 5,
+"t1": "0d061a68-6cc8-4966-a41a-987b47c421e6",
+"t2": "d68cc561-47bb-4381-9367-b45727f809a4",
+"target": "sie will mit Ihnen bleiben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U03",
+"ka": "4417d760-2fb3-41de-abdc-19b0c40600ac",
+"known": "she said she would like to be with you",
+"pos": 6,
+"t1": "291ee62b-4779-43ed-b65d-588e1e5f2f2b",
+"t2": "f4826306-b7a3-4cb5-a03c-f2d1eda69245",
+"target": "sie hat gesagt, sie möchte mit Ihnen sein",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U04",
+"ka": "41d3bd54-4c8d-4814-9194-b90012539f37",
+"known": "she also wants to go with you",
+"pos": 7,
+"t1": "c3103622-4cfb-43b7-aa1f-7d0f3983f7da",
+"t2": "960425a7-5934-4624-9e52-6147ad027cd2",
+"target": "sie will auch mit Ihnen gehen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U05",
+"ka": "66c9133e-4534-46cc-b744-da31673b7283",
+"known": "she was also with you",
+"pos": 8,
+"t1": "47b1e244-e0c5-4063-ba5b-14d2d96051c1",
+"t2": "7f389bcb-4e1d-4187-9152-a4248dd40644",
+"target": "sie war auch mit Ihnen",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U06",
+"ka": "8f6a47f2-8d06-46b5-a59b-c46c7fd27cf2",
+"known": "she tried to stay with you",
+"pos": 9,
+"t1": "5f06b851-a1e3-46aa-8a52-37965c02f2da",
+"t2": "0bdf24d2-e4e7-4a55-be7a-3686c209ef4b",
+"target": "sie hat versucht, mit Ihnen zu bleiben",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U07",
+"ka": "1a959d28-009b-4cd3-954e-12f41dde81c6",
+"known": "she also wants to be with you",
+"pos": 10,
+"t1": "95069b2d-19e8-4d00-87ea-3c824e03fc7f",
+"t2": "0b4e3450-e455-4fdb-b19a-4d9bac3d5249",
+"target": "sie will auch mit Ihnen sein",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L01U08",
+"ka": "6b74a039-cfac-4ffb-a2af-46eeab4cf262",
+"known": "with you sir",
+"pos": 11,
+"t1": "c3c302ee-71ee-43d8-b808-06556d6df2de",
+"t2": "bff6cad4-570d-435c-85bb-95bee4982649",
+"target": "mit Ihnen, mein Herr",
+"type": "use"
+}
+],
+"target": "mit Ihnen, mein Herr",
+"type": "M"
+},
+{
+"id": "S0639L02",
+"idx": 2,
+"is_new": false,
+"known": "sir",
+"phrases": [
+{
+"id": "8f2e0378-5e88-4da5-855f-4ab82070dfd6",
+"ka": "865976ab-5a6a-4bea-b4f3-837dd3403132",
+"known": "sir",
+"pos": 0,
+"t1": "49319843-cf80-4ba0-ad36-c5dac7d0d8d4",
+"t2": "6a437c1c-ac1a-4947-a9ba-84de73805e3c",
+"target": "Herr",
+"type": "lego_debut"
+},
+{
+"id": "deu_for_eng:S0639L02B01",
+"ka": "75bff7dd-8641-4ff6-bad9-1aaafb0d798c",
+"known": "sir",
+"pos": 1,
+"t1": "49319843-cf80-4ba0-ad36-c5dac7d0d8d4",
+"t2": "6a437c1c-ac1a-4947-a9ba-84de73805e3c",
+"target": "Herr",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0639L02B02",
+"ka": "5cdbd919-3c67-40e4-ba7f-563b90169152",
+"known": "I also said he was a gentleman",
+"pos": 2,
+"t1": "2e9d38b4-85f8-4479-bd07-eef080ec7fa2",
+"t2": "1045b44b-3114-4ab2-a018-4ad23c917354",
+"target": "ich habe auch gesagt, er war ein Herr",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0639L02B03",
+"ka": "0a0452d9-8496-48da-8a0f-c7c0c39679fa",
+"known": "he also said he is a gentleman",
+"pos": 3,
+"t1": "e57da367-937d-47e5-a3fe-f7728b7eda8c",
+"t2": "a62658ba-d858-4071-963b-14ea32219a06",
+"target": "er hat auch gesagt, er ist ein Herr",
+"type": "build"
+},
+{
+"id": "deu_for_eng:S0639L02U01",
+"ka": "6b74a039-cfac-4ffb-a2af-46eeab4cf262",
+"known": "with you sir",
+"pos": 4,
+"t1": "c3c302ee-71ee-43d8-b808-06556d6df2de",
+"t2": "bff6cad4-570d-435c-85bb-95bee4982649",
+"target": "mit Ihnen, mein Herr",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L02U02",
+"ka": "bdd17b10-9a9c-4bb2-ae5c-feb5b887ce16",
+"known": "he is a gentleman",
+"pos": 5,
+"t1": "23b61ee6-af1f-4d4a-a714-d932f6a59073",
+"t2": "d4801773-b657-4852-8d68-4339e64f37cb",
+"target": "er ist ein Herr",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L02U03",
+"ka": "8a9f6058-3d8e-4d9c-9ba1-303c5836b70a",
+"known": "he was a gentleman",
+"pos": 6,
+"t1": "d810d24a-dc02-46e8-80e0-bd7dbb2c4d88",
+"t2": "06700fd7-1ef9-4805-abe1-77ba07146be2",
+"target": "er war ein Herr",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L02U04",
+"ka": "2db265e4-4248-468d-99f7-779119fbcc98",
+"known": "she said he is a gentleman",
+"pos": 7,
+"t1": "89fbd745-0b23-448b-b26d-568df64bb064",
+"t2": "f2f0a194-fbb2-42ce-9df2-877fdd1ca0c0",
+"target": "sie hat gesagt, er ist ein Herr",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L02U05",
+"ka": "663e4539-8195-4a8c-a9ad-5f4d9a90c31a",
+"known": "she also said he is a gentleman",
+"pos": 8,
+"t1": "2a433beb-a5a1-4183-8c45-58653f75f0fd",
+"t2": "5bd6d693-0901-43a2-9e01-23603f84ae2d",
+"target": "sie hat auch gesagt, er ist ein Herr",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L02U06",
+"ka": "7afe154d-0ca8-4e06-a7d1-2a28d3620572",
+"known": "he was also a gentleman",
+"pos": 9,
+"t1": "562aabe5-f6f2-421a-b7a4-3086946a561d",
+"t2": "e1a9c49a-3325-483c-9c26-093e380f8b21",
+"target": "er war auch ein Herr",
+"type": "use"
+},
+{
+"id": "deu_for_eng:S0639L02U07",
+"ka": "923e4fe7-3bd9-47ee-aeac-0690537feade",
+"known": "she wanted to say he is a gentleman",
+"pos": 10,
+"t1": "e07a58f7-bc75-4622-b6be-ac5a69e70626",
+"t2": "260d449a-e392-4a6d-9f9c-20c2d306814d",
+"target": "sie wollte sagen, er ist ein Herr",
+"type": "use"
+}
+],
+"target": "Herr",
+"type": "A"
+}
+],
+"status": "released",
+"target": "mit Ihnen, mein Herr"
+}
+}

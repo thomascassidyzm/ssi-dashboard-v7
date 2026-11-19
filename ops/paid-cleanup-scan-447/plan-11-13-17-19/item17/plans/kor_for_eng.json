@@ -981,7 +981,8 @@
       "known": "work",
       "target": "일이"
      }
-    ]
+    ],
+    "target_text_roman": "i i-ri"
    },
    "expect": {
     "known_text": "this work is changing",
@@ -993,7 +994,8 @@
    "phrase_id": "kor_for_eng:S0126L01B01",
    "set": {
     "known_text": "this work",
-    "target_text": "이 일이"
+    "target_text": "이 일이",
+    "target_text_roman": "i i-ri"
    },
    "expect": {
     "known_text": "this work is changing",
@@ -1005,7 +1007,8 @@
    "phrase_id": "kor_for_eng:S0126L01B02",
    "set": {
     "known_text": "but this work",
-    "target_text": "하지만 이 일이"
+    "target_text": "하지만 이 일이",
+    "target_text_roman": "ha-ji-man i i-ri"
    },
    "expect": {
     "known_text": "this work is changing",
@@ -1025,7 +1028,8 @@
     "position": 15,
     "word_count": 6,
     "lego_position": "end",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "geu-rae-seo i i-ri"
    }
   },
   {
@@ -1041,7 +1045,8 @@
     "position": 16,
     "word_count": 6,
     "lego_position": "end",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "hwak-sil-hi i i-ri"
    }
   },
   {
@@ -1057,7 +1062,8 @@
     "position": 17,
     "word_count": 11,
     "lego_position": "start",
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "i i-ri ji-geum ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1078,7 +1084,8 @@
       "known": "is",
       "target": "있어요"
      }
-    ]
+    ],
+    "target_text_roman": "ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1093,7 +1100,8 @@
     "phrase_role": "build",
     "position": 1,
     "word_count": 2,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1108,7 +1116,8 @@
     "phrase_role": "build",
     "position": 2,
     "word_count": 4,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "i i-ri ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1123,7 +1132,8 @@
     "phrase_role": "build",
     "position": 3,
     "word_count": 4,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "noe-ui mo-yang-eul ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1138,7 +1148,8 @@
     "phrase_role": "build",
     "position": 4,
     "word_count": 5,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "ha-ji-man i i-ri ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1153,7 +1164,8 @@
     "phrase_role": "use",
     "position": 5,
     "word_count": 6,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "i i-ri noe-ui mo-yang-eul ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1168,7 +1180,8 @@
     "phrase_role": "use",
     "position": 6,
     "word_count": 7,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "ha-ji-man i i-ri noe-ui mo-yang-eul ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1183,7 +1196,8 @@
     "phrase_role": "use",
     "position": 7,
     "word_count": 7,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "geu-rae-seo i i-ri noe-ui mo-yang-eul ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1198,7 +1212,8 @@
     "phrase_role": "use",
     "position": 8,
     "word_count": 7,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "hwak-sil-hi i i-ri noe-ui mo-yang-eul ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1213,7 +1228,8 @@
     "phrase_role": "use",
     "position": 9,
     "word_count": 5,
-    "lego_count": 1
+    "lego_count": 1,
+    "target_text_roman": "geu-rae-seo i i-ri ba-kku-go i-sseo-yo"
    }
   },
   {
@@ -1231,7 +1247,8 @@
       "known": "exciting",
       "target": "신나요"
      }
-    ]
+    ],
+    "target_text_roman": "deol sin-na-yo"
    },
    "expect": {
     "known_text": "that's less exciting",
@@ -1243,7 +1260,8 @@
    "phrase_id": "kor_for_eng:S0132L01B01",
    "set": {
     "known_text": "less exciting",
-    "target_text": "덜 신나요"
+    "target_text": "덜 신나요",
+    "target_text_roman": "deol sin-na-yo"
    },
    "expect": {
     "known_text": "that's less exciting",
@@ -1255,7 +1273,8 @@
    "phrase_id": "kor_for_eng:S0132L01U01",
    "set": {
     "known_text": "that's less exciting now",
-    "target_text": "그건 지금 덜 신나요"
+    "target_text": "그건 지금 덜 신나요",
+    "target_text_roman": "geu-geon ji-geum deol sin-na-yo"
    },
    "expect": {
     "known_text": "that's less exciting",
@@ -1267,7 +1286,8 @@
    "phrase_id": "kor_for_eng:S0132L01U02",
    "set": {
     "known_text": "that's less exciting today",
-    "target_text": "그건 오늘 덜 신나요"
+    "target_text": "그건 오늘 덜 신나요",
+    "target_text_roman": "geu-geon o-neul deol sin-na-yo"
    },
    "expect": {
     "known_text": "but that's less exciting",
@@ -1290,7 +1310,8 @@
     "known_text": "that",
     "target_text": "그건",
     "type": "A",
-    "is_new": false
+    "is_new": false,
+    "target_text_roman": "geu-geon"
    }
   },
   {
@@ -1308,7 +1329,8 @@
       "known": "are you not",
       "target": "않아요"
      }
-    ]
+    ],
+    "target_text_roman": "haeng-bok-ha-ji a-na-yo"
    },
    "expect": {
     "known_text": "why are you not happy",
@@ -1320,7 +1342,8 @@
    "phrase_id": "kor_for_eng:S0145L01B01",
    "set": {
     "known_text": "are you not happy",
-    "target_text": "행복하지 않아요"
+    "target_text": "행복하지 않아요",
+    "target_text_roman": "haeng-bok-ha-ji a-na-yo"
    },
    "expect": {
     "known_text": "why are you not happy",
@@ -1332,7 +1355,8 @@
    "phrase_id": "kor_for_eng:S0145L01B04",
    "set": {
     "known_text": "are you not happy now",
-    "target_text": "지금 행복하지 않아요"
+    "target_text": "지금 행복하지 않아요",
+    "target_text_roman": "ji-geum haeng-bok-ha-ji a-na-yo"
    },
    "expect": {
     "known_text": "I don't know why you're not happy",
@@ -1344,7 +1368,8 @@
    "phrase_id": "kor_for_eng:S0145L01U01",
    "set": {
     "known_text": "why are you not happy now",
-    "target_text": "왜 지금 행복하지 않아요"
+    "target_text": "왜 지금 행복하지 않아요",
+    "target_text_roman": "wae ji-geum haeng-bok-ha-ji a-na-yo"
    },
    "expect": {
     "known_text": "why are you not happy",
@@ -1356,7 +1381,8 @@
    "phrase_id": "kor_for_eng:S0145L01U02",
    "set": {
     "known_text": "why are you not happy today",
-    "target_text": "왜 오늘 행복하지 않아요"
+    "target_text": "왜 오늘 행복하지 않아요",
+    "target_text_roman": "wae o-neul haeng-bok-ha-ji a-na-yo"
    },
    "expect": {
     "known_text": "but why are you not happy",
@@ -1371,7 +1397,8 @@
     "known_text": "why",
     "target_text": "왜",
     "type": "A",
-    "is_new": false
+    "is_new": false,
+    "target_text_roman": "wae"
    }
   },
   {
@@ -1389,7 +1416,8 @@
       "known": "was kind",
       "target": "친절했어요"
      }
-    ]
+    ],
+    "target_text_roman": "a-ju chin-jeol-hae-sseo-yo"
    },
    "expect": {
     "known_text": "she was very kind",
@@ -1401,7 +1429,8 @@
    "phrase_id": "kor_for_eng:S0147L01B01",
    "set": {
     "known_text": "was very kind",
-    "target_text": "아주 친절했어요"
+    "target_text": "아주 친절했어요",
+    "target_text_roman": "a-ju chin-jeol-hae-sseo-yo"
    },
    "expect": {
     "known_text": "she was very kind",
@@ -1413,7 +1442,8 @@
    "phrase_id": "kor_for_eng:S0147L01U01",
    "set": {
     "known_text": "she was very kind today",
-    "target_text": "그녀는 오늘 아주 친절했어요"
+    "target_text": "그녀는 오늘 아주 친절했어요",
+    "target_text_roman": "geu-nyeo-neun o-neul a-ju chin-jeol-hae-sseo-yo"
    },
    "expect": {
     "known_text": "she was very kind",
@@ -1425,7 +1455,8 @@
    "phrase_id": "kor_for_eng:S0147L01U02",
    "set": {
     "known_text": "she was very kind yesterday",
-    "target_text": "그녀는 어제 아주 친절했어요"
+    "target_text": "그녀는 어제 아주 친절했어요",
+    "target_text_roman": "geu-nyeo-neun eo-je a-ju chin-jeol-hae-sseo-yo"
    },
    "expect": {
     "known_text": "but she was very kind",
@@ -1448,7 +1479,8 @@
     "known_text": "she",
     "target_text": "그녀는",
     "type": "A",
-    "is_new": false
+    "is_new": false,
+    "target_text_roman": "geu-nyeo-neun"
    }
   }
  ],
@@ -1523,5 +1555,6 @@
     }
    }
   ]
- }
+ },
+ "roman_missing": []
 }
