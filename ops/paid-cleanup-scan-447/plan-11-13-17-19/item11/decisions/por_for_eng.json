@@ -1,0 +1,395 @@
+{
+ "course": "por_for_eng",
+ "legos": [
+  {
+   "why": "Two stray rows ('new | novas', 'coisas novas') drop 'palavras'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0109L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "to learn new words",
+     "aprender palavras novas"
+    ],
+    "U05": [
+     "I want to try new words",
+     "quero tentar palavras novas"
+    ]
+   }
+  },
+  {
+   "why": "Two build rows ('your | tua', 'a tua boa ideia') break the LEGO; rewritten. U02 'gosto da tua ideia' is NOT a defect: 'da' is 'de' + the LEGO's own 'a' written as one word. L28 (a bound spelling still contains the LEGO: record it, do not reword). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0125L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "with your idea",
+     "com a tua ideia"
+    ],
+    "B03": [
+     "your idea is very good",
+     "a tua ideia é muito boa"
+    ],
+    "U02": "keep"
+   }
+  },
+  {
+   "why": "Four rows use other prepositions (para eles, sobre eles). Two rewritten, two deleted (3 build + 7 use stay). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0134L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B02": [
+     "not with them",
+     "não com eles"
+    ],
+    "B03": [
+     "to work with them",
+     "trabalhar com eles"
+    ],
+    "U06": "del",
+    "U07": "del"
+   }
+  },
+  {
+   "known": "that I can't",
+   "target": "que não consiga",
+   "type": "M",
+   "why": "Nine rows drill '(que não) consiga' + other verbs; only two say 'ver'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'that I can't | que não consiga' is a seed span, no other LEGO has that English, and 'to see | ver' (seed 107) is added back as a not-new LEGO. Six rows stay; five that lack 'que não' are rewritten. Structural: one not-new LEGO appended.",
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 140,
+      "lego_index": 2,
+      "known_text": "to see",
+      "target_text": "ver",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "id": "S0140L01",
+   "verdict": "recut-small",
+   "basket": {
+    "B01": [
+     "that I can't do it",
+     "que não consiga fazer isso"
+    ],
+    "B02": [
+     "that I can't see",
+     "que não consiga ver"
+    ],
+    "B03": [
+     "that I can't leave early",
+     "que não consiga sair cedo"
+    ],
+    "U03": [
+     "I'm sorry that I can't help",
+     "lamento que não consiga ajudar"
+    ],
+    "U04": [
+     "I'm sorry that I can't work",
+     "lamento que não consiga trabalhar"
+    ]
+   },
+   "components": [
+    [
+     "that",
+     "que"
+    ],
+    [
+     "not",
+     "não"
+    ],
+    [
+     "I can",
+     "consiga"
+    ]
+   ]
+  },
+  {
+   "why": "Eight rows drill 'simpática' without the full LEGO. 'kind | simpática' would clash with 'kind | simpático' (seed 142): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept at 8 syllables (e-la-foi-mui-to-sim-pá-ti-ca is 9 written, 'muito' often 2: listed as a long LEGO); five rows rewritten, three deleted (3 build + 7 use stay). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0147L03",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "yes she was very kind",
+     "sim ela foi muito simpática"
+    ],
+    "B02": [
+     "but she was very kind",
+     "mas ela foi muito simpática"
+    ],
+    "B03": [
+     "she was very kind today",
+     "ela foi muito simpática hoje"
+    ],
+    "U02": [
+     "she was very kind when she saw me",
+     "ela foi muito simpática quando me viu"
+    ],
+    "U05": [
+     "I think she was very kind to everyone",
+     "acho que ela foi muito simpática para todos"
+    ],
+    "U03": "del",
+    "U04": "del",
+    "U07": "del"
+   }
+  },
+  {
+   "why": "All eleven rows drill 'as minhas' + 'coisas' (things); none says 'chaves'. 'my | as minhas' would clash with 'my | minha' (seed 131): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (6 syllables); nine rows move from 'things' to 'keys', two deleted. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0182L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "I have my keys",
+     "tenho as minhas chaves"
+    ],
+    "B02": [
+     "where are my keys",
+     "onde estão as minhas chaves"
+    ],
+    "B03": [
+     "I want my keys",
+     "quero as minhas chaves"
+    ],
+    "B04": "del",
+    "U01": [
+     "I have my keys here",
+     "tenho as minhas chaves aqui"
+    ],
+    "U02": [
+     "have you seen my keys?",
+     "viste as minhas chaves?"
+    ],
+    "U03": [
+     "I can't find my keys",
+     "não consigo encontrar as minhas chaves"
+    ],
+    "U04": [
+     "do you have my keys?",
+     "tens as minhas chaves?"
+    ],
+    "U05": "del",
+    "U06": [
+     "I think I have my keys",
+     "acho que tenho as minhas chaves"
+    ],
+    "U07": [
+     "my keys are here",
+     "as minhas chaves estão aqui"
+    ]
+   }
+  },
+  {
+   "why": "One stray row: B01 'possible | possíveis' drops 'problemas'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0325L04",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "the possible problems",
+     "os problemas possíveis"
+    ]
+   }
+  },
+  {
+   "why": "All nine rows drill 'uma nova' + other nouns (empresa, maneira), in the other word order too. The LEGO is the seed's 'a new life | uma vida nova' and 'life | vida' is the seed's other LEGO. Rows rebuilt with 'uma vida nova'. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0332L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "a new life here",
+     "uma vida nova aqui"
+    ],
+    "B02": [
+     "to build a new life",
+     "construir uma vida nova"
+    ],
+    "B03": [
+     "a new life for her",
+     "uma vida nova para ela"
+    ],
+    "U01": [
+     "she needs to build a new life",
+     "ela precisa de construir uma vida nova"
+    ],
+    "U02": [
+     "she couldn't offer a new life",
+     "ela não conseguia oferecer uma vida nova"
+    ],
+    "U03": [
+     "I think a new life is most important",
+     "acho que uma vida nova é mais importante"
+    ],
+    "U04": [
+     "do you want to build a new life?",
+     "queres construir uma vida nova?"
+    ],
+    "U05": [
+     "she needs to read about a new life",
+     "ela precisa de ler sobre uma vida nova"
+    ],
+    "U06": [
+     "I think she ought to consider a new life",
+     "acho que ela devia considerar uma vida nova"
+    ]
+   }
+  },
+  {
+   "why": "Four rows drop 'está' or put a word inside the LEGO (está muito preocupada); rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0343L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "I think she's worried",
+     "acho que está preocupada"
+    ],
+    "B03": [
+     "she's worried about the economy",
+     "está preocupada com a economia"
+    ],
+    "U05": [
+     "she's worried about this",
+     "ela está preocupada com isto"
+    ],
+    "U06": [
+     "I think she's worried about school",
+     "acho que ela está preocupada com a escola"
+    ]
+   }
+  },
+  {
+   "why": "Three rows say 'calados' with another verb (estávamos calados); rewritten. The four rows that say 'we should remain quiet' keep: after 'should' English drops 'to' (K54). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0403L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "to remain quiet tonight",
+     "ficar calados esta noite"
+    ],
+    "B03": [
+     "we want to remain quiet",
+     "queremos ficar calados"
+    ],
+    "U01": "keep",
+    "U04": "keep",
+    "U05": "keep",
+    "U06": "keep",
+    "U02": [
+     "we tried to remain quiet for a while",
+     "tentámos ficar calados algum tempo"
+    ]
+   }
+  },
+  {
+   "known": "that's",
+   "target": "essa é",
+   "type": "M",
+   "why": "All eight rows drill 'essa é' + other things; none says 'a melhor maneira', which is this seed's own next LEGO ('the best way | a melhor maneira'). Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'that's | essa é' is a seed span and no other LEGO has 'that's'. Six rows stay; two that lack 'é' are rewritten.",
+   "id": "S0408L02",
+   "verdict": "recut-small",
+   "basket": {
+    "B01": [
+     "that's the best way",
+     "essa é a melhor maneira"
+    ],
+    "B02": [
+     "that's a good way",
+     "essa é uma boa maneira"
+    ]
+   },
+   "components": [
+    [
+     "that",
+     "essa"
+    ],
+    [
+     "is",
+     "é"
+    ]
+   ]
+  },
+  {
+   "why": "Five rows drill 'perfeita' alone. 'perfect | perfeita' would clash with 'perfect | perfeito' (seed 137): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (6 syllables); rows rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0514L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "the perfect house for us",
+     "a casa perfeita para nós"
+    ],
+    "B03": [
+     "not the perfect house",
+     "não a casa perfeita"
+    ],
+    "U01": [
+     "she said it was the perfect house",
+     "ela disse que era a casa perfeita"
+    ],
+    "U02": [
+     "he said it was the perfect house",
+     "ele disse que era a casa perfeita"
+    ],
+    "U03": [
+     "they said it was the perfect house",
+     "disseram que era a casa perfeita"
+    ]
+   }
+  },
+  {
+   "ack": [
+    "target"
+   ],
+   "why": "Five rows say 'no outro extremo': NOT a defect, 'no' is 'em' + the LEGO's own 'o' written as one word, and it is how the seed itself says it. L28 (a bound spelling still contains the LEGO: record it, do not reword). One row (B01 'the far end | extremo') drops 'o outro'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0552L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "the other end of the village",
+     "o outro extremo da aldeia"
+    ],
+    "B03": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   }
+  },
+  {
+   "ack": [
+    "target"
+   ],
+   "why": "Six rows say bare 'teu' / 'teu bilhete' without the article, some of them not sentences ('she said your | ela disse teu'); rewritten. The two rows with 'pelo teu bilhete' are NOT a defect: 'pelo' is 'por' + the LEGO's own 'o', and it is how the seed says it. L28 (a bound spelling still contains the LEGO: record it, do not reword). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0570L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "your ticket is here",
+     "o teu bilhete está aqui"
+    ],
+    "B02": [
+     "this is your ticket",
+     "este é o teu bilhete"
+    ],
+    "B03": "keep",
+    "U04": "keep",
+    "U01": [
+     "she has your ticket",
+     "ela tem o teu bilhete"
+    ],
+    "U02": [
+     "he said your ticket is here",
+     "ele disse que o teu bilhete está aqui"
+    ],
+    "U03": [
+     "I want your ticket",
+     "quero o teu bilhete"
+    ],
+    "U05": [
+     "is it your ticket?",
+     "é o teu bilhete?"
+    ]
+   }
+  }
+ ]
+}

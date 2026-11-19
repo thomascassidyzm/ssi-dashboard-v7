@@ -1,1 +1,4 @@
 2026-11-19T11:48Z deu_for_eng and fra_for_eng: first dry-run attempt FAILED — Popty (:3470) restarted mid-run (remote end closed / connection refused). Re-attempted once below.
+2026-11-19T12:09:01Z deu_for_eng dry run FAILED (exit 1: http.client.RemoteDisconnected: Remote end closed connection without response): GAP
+2026-11-19T12:09:01Z fra_for_eng dry run FAILED (exit 1: urllib.error.URLError: <urlopen error [Errno 111] Connection refused>): GAP
+2026-11-19T12:09:01Z spa_mx_for_eng dry run FAILED (exit 1: urllib.error.URLError: <urlopen error [Errno 111] Connection refused>): GAP

@@ -1,0 +1,1820 @@
+{
+ "course": "por_br_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:04:39Z",
+ "decisions": 12,
+ "verdicts": {
+  "rebuild-rows": 9,
+  "keep": 3
+ },
+ "touched_seeds": [
+  122,
+  134,
+  146,
+  155,
+  162,
+  216,
+  229,
+  290,
+  438
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0122L04",
+   "verdict": "rebuild-rows",
+   "why": "One stray row: U03 says 'este trabalho', not 'progresso'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 122,
+    "known": "it's starting to feel easier and I'm excited about how it's going",
+    "target": "Está começando a parecer mais fácil e estou entusiasmado com o progresso"
+   },
+   "before": {
+    "known": "progress",
+    "target": "progresso",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "progress",
+    "target": "progresso",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['progress']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0122L04B01",
+     "role": "build",
+     "before": [
+      "progress",
+      "progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04B02",
+     "role": "build",
+     "before": [
+      "the progress",
+      "o progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04B03",
+     "role": "build",
+     "before": [
+      "about the progress",
+      "com o progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04B04",
+     "role": "build",
+     "before": [
+      "I'm happy about the progress",
+      "estou contente com o progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04U01",
+     "role": "use",
+     "before": [
+      "I like the progress",
+      "gosto do progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04U02",
+     "role": "use",
+     "before": [
+      "I think the progress is very good",
+      "acho que o progresso é muito bom"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04U03",
+     "role": "use",
+     "before": [
+      "I'm excited about this work",
+      "estou entusiasmado com este trabalho"
+     ],
+     "action": [
+      "I'm excited about the progress",
+      "estou entusiasmado com o progresso"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0122L04U04",
+     "role": "use",
+     "before": [
+      "it's starting to feel easier and I'm excited about the progress",
+      "está começando a parecer mais fácil e estou entusiasmado com o progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04U05",
+     "role": "use",
+     "before": [
+      "I want to talk about the progress",
+      "quero falar sobre o progresso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0122L04U06",
+     "role": "use",
+     "before": [
+      "I'm very happy about the progress",
+      "estou muito contente com o progresso"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0134L04",
+   "verdict": "rebuild-rows",
+   "why": "Four rows use bare 'eles' or other prepositions (para eles, sobre eles); rewritten with 'com eles'. Same fix as the sister course por_for_eng seed 134. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 134,
+    "known": "it's not a problem when you work at something difficult with them",
+    "target": "não é um problema quando trabalha em algo difícil com eles"
+   },
+   "before": {
+    "known": "with them",
+    "target": "com eles",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "with them",
+    "target": "com eles",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0134L04B01",
+     "role": "build",
+     "before": [
+      "them",
+      "eles"
+     ],
+     "action": [
+      "not with them",
+      "não com eles"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0134L04B02",
+     "role": "build",
+     "before": [
+      "with them",
+      "com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0134L04B03",
+     "role": "build",
+     "before": [
+      "for them",
+      "para eles"
+     ],
+     "action": [
+      "to work with them",
+      "trabalhar com eles"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0134L04B04",
+     "role": "build",
+     "before": [
+      "I was with them",
+      "estava com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0134L04U01",
+     "role": "use",
+     "before": [
+      "I want to work with them",
+      "quero trabalhar com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0134L04U02",
+     "role": "use",
+     "before": [
+      "I don't know about them",
+      "não sei sobre eles"
+     ],
+     "action": [
+      "I want to talk with them",
+      "quero falar com eles"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0134L04U03",
+     "role": "use",
+     "before": [
+      "this is for them",
+      "isso é para eles"
+     ],
+     "action": [
+      "this is a problem with them",
+      "isso é um problema com eles"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0134L04U04",
+     "role": "use",
+     "before": [
+      "do you want to work with them?",
+      "você quer trabalhar com eles?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0134L04U05",
+     "role": "use",
+     "before": [
+      "it's not a problem when you work with them",
+      "não é um problema quando trabalha com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0134L04U06",
+     "role": "use",
+     "before": [
+      "it's not a problem when you work at something difficult with them",
+      "não é um problema quando trabalha em algo difícil com eles"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0146L02",
+   "verdict": "rebuild-rows",
+   "why": "One stray row: U03 says 'parece ser', not the LEGO's 'parece estar'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 146,
+    "known": "nothing seems to be working since we tried to fix it",
+    "target": "nada parece estar funcionando desde que tentamos consertar"
+   },
+   "before": {
+    "known": "seems to be",
+    "target": "parece estar",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "seems to be",
+    "target": "parece estar",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0146L02C01",
+     "role": "component",
+     "before": [
+      "seems",
+      "parece"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02C02",
+     "role": "component",
+     "before": [
+      "to be",
+      "estar"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02B01",
+     "role": "build",
+     "before": [
+      "seems to be",
+      "parece estar"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02B02",
+     "role": "build",
+     "before": [
+      "seems to be",
+      "parece estar"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02B03",
+     "role": "build",
+     "before": [
+      "it seems to be working",
+      "parece estar funcionando"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02B04",
+     "role": "build",
+     "before": [
+      "nothing seems to be working",
+      "nada parece estar funcionando"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02B05",
+     "role": "build",
+     "before": [
+      "I think it seems to be better",
+      "acho que parece estar melhor"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02U01",
+     "role": "use",
+     "before": [
+      "it seems to be better than before",
+      "parece estar melhor do que antes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02U03",
+     "role": "use",
+     "before": [
+      "I think it seems to be the same thing",
+      "acho que parece ser a mesma coisa"
+     ],
+     "action": [
+      "I think it seems to be working",
+      "acho que parece estar funcionando"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0146L02U04",
+     "role": "use",
+     "before": [
+      "everything seems to be working without any problem",
+      "tudo parece estar funcionando sem problema"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0146L02U05",
+     "role": "use",
+     "before": [
+      "I woke earlier and nothing seems to be working",
+      "acordei mais cedo e nada parece estar funcionando"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 5,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0155L02",
+   "verdict": "rebuild-rows",
+   "why": "Six rows drill 'uns minutos' without 'esperar'. 'a few minutes | uns minutos' would clash with 'a few minutes | poucos minutos' (seed 253): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (7 syllables: es-pe-rar-uns-mi-nu-tos); rows rewritten with 'esperar', and two use rows added (the basket had three). 'wait' for 'waiting' is the same word inflected (K6). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 155,
+    "known": "I don't mind waiting for a few minutes tomorrow morning",
+    "target": "eu não me importo de esperar uns minutos amanhã de manhã"
+   },
+   "before": {
+    "known": "waiting a few minutes",
+    "target": "esperar uns minutos",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "waiting a few minutes",
+    "target": "esperar uns minutos",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0155L02B01",
+     "role": "build",
+     "before": [
+      "a few minutes",
+      "uns minutos"
+     ],
+     "action": [
+      "waiting a few minutes here",
+      "esperar uns minutos aqui"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0155L02B02",
+     "role": "build",
+     "before": [
+      "I want to talk for a few minutes",
+      "quero falar uns minutos"
+     ],
+     "action": [
+      "I want to wait a few minutes",
+      "quero esperar uns minutos"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0155L02B03",
+     "role": "build",
+     "before": [
+      "I need a few minutes to think",
+      "preciso uns minutos para pensar"
+     ],
+     "action": [
+      "I need to wait a few minutes to think",
+      "preciso esperar uns minutos para pensar"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0155L02B04",
+     "role": "build",
+     "before": [
+      "I need a few minutes before I go",
+      "preciso uns minutos antes de ir"
+     ],
+     "action": [
+      "I need to wait a few minutes before I go",
+      "preciso esperar uns minutos antes de ir"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0155L02B05",
+     "role": "build",
+     "before": [
+      "I don't mind waiting for a few minutes",
+      "eu não me importo de esperar uns minutos"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0155L02U01",
+     "role": "use",
+     "before": [
+      "can you wait a few minutes?",
+      "pode esperar uns minutos?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0155L02U04",
+     "role": "use",
+     "before": [
+      "she was here for a few minutes",
+      "ela estava aqui uns minutos"
+     ],
+     "action": [
+      "she can wait a few minutes",
+      "ela pode esperar uns minutos"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0155L02U05",
+     "role": "use",
+     "before": [
+      "I was here just a few minutes ago",
+      "estava aqui uns minutos antes"
+     ],
+     "action": [
+      "I don't mind waiting a few minutes tomorrow",
+      "não me importo de esperar uns minutos amanhã"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "por_br_for_eng:S0155L02U06",
+     "course_code": "por_br_for_eng",
+     "seed_number": 155,
+     "lego_index": 2,
+     "known_text": "can you wait a few minutes here?",
+     "target_text": "pode esperar uns minutos aqui?",
+     "phrase_role": "use",
+     "position": 11,
+     "word_count": 5,
+     "lego_position": "middle",
+     "lego_count": 1
+    },
+    {
+     "id": "por_br_for_eng:S0155L02U07",
+     "course_code": "por_br_for_eng",
+     "seed_number": 155,
+     "lego_index": 2,
+     "known_text": "I don't mind waiting a few minutes tomorrow morning",
+     "target_text": "eu não me importo de esperar uns minutos amanhã de manhã",
+     "phrase_role": "use",
+     "position": 12,
+     "word_count": 11,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 5,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0162L01",
+   "verdict": "rebuild-rows",
+   "why": "Every row holds the LEGO 'disso', so not a basket miss. The scan named U04 because its English ('I was hoping we could talk about that') says more than its Portuguese ('esperava falar disso com você'): the English is brought into line, Portuguese unchanged.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 162,
+    "known": "what do you think about that?",
+    "target": "o que é que você acha disso?"
+   },
+   "before": {
+    "known": "about that",
+    "target": "disso",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "about that",
+    "target": "disso",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0162L01C01",
+     "role": "component",
+     "before": [
+      "about",
+      "de"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01B01",
+     "role": "build",
+     "before": [
+      "about that",
+      "disso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01B02",
+     "role": "build",
+     "before": [
+      "about that",
+      "disso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01B04",
+     "role": "build",
+     "before": [
+      "you think about that",
+      "você acha disso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01B05",
+     "role": "build",
+     "before": [
+      "what do you think about that?",
+      "o que é que você acha disso?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01U02",
+     "role": "use",
+     "before": [
+      "lets talk about that",
+      "vamos falar disso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01U03",
+     "role": "use",
+     "before": [
+      "I do not mind talking about that",
+      "não me importo de falar disso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0162L01U04",
+     "role": "use",
+     "before": [
+      "I was hoping we could talk about that",
+      "esperava falar disso com você"
+     ],
+     "action": [
+      "I was hoping to talk about that with you",
+      "esperava falar disso com você"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0162L01U05",
+     "role": "use",
+     "before": [
+      "I think it's good to talk about that",
+      "acho que é bom falar disso"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0216L01",
+   "verdict": "rebuild-rows",
+   "why": "Two build rows ('a few | alguns', 'alguns mais') drop 'amigos'; rewritten. Four rows hold the Portuguese but say 'some friends' where the LEGO says 'a few friends' (a different word, K6): their English moves to the LEGO's. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 216,
+    "known": "I saw a few friends",
+    "target": "vi alguns amigos"
+   },
+   "before": {
+    "known": "a few friends",
+    "target": "alguns amigos",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "a few friends",
+    "target": "alguns amigos",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0216L01B01",
+     "role": "build",
+     "before": [
+      "a few",
+      "alguns"
+     ],
+     "action": [
+      "a few friends here",
+      "alguns amigos aqui"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0216L01B02",
+     "role": "build",
+     "before": [
+      "some friends",
+      "alguns amigos"
+     ],
+     "action": [
+      "a few friends",
+      "alguns amigos"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0216L01B03",
+     "role": "build",
+     "before": [
+      "a few more",
+      "alguns mais"
+     ],
+     "action": [
+      "with a few friends",
+      "com alguns amigos"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U01",
+     "role": "use",
+     "before": [
+      "I saw a few friends",
+      "vi alguns amigos"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U02",
+     "role": "use",
+     "before": [
+      "I have some friends here",
+      "tenho alguns amigos aqui"
+     ],
+     "action": [
+      "I have a few friends here",
+      "tenho alguns amigos aqui"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U03",
+     "role": "use",
+     "before": [
+      "I went out with a few friends",
+      "saí com alguns amigos"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U04",
+     "role": "use",
+     "before": [
+      "I was with some friends",
+      "estava com alguns amigos"
+     ],
+     "action": [
+      "I was with a few friends",
+      "estava com alguns amigos"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U05",
+     "role": "use",
+     "before": [
+      "I want to see some friends",
+      "quero ver alguns amigos"
+     ],
+     "action": [
+      "I want to see a few friends",
+      "quero ver alguns amigos"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U06",
+     "role": "use",
+     "before": [
+      "you are going to see a few friends",
+      "você vai ver alguns amigos"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U07",
+     "role": "use",
+     "before": [
+      "you should see a few friends",
+      "você devia ver alguns amigos"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U08",
+     "role": "use",
+     "before": [
+      "we hoped to see a few friends",
+      "nós esperávamos ver alguns amigos"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U09",
+     "role": "use",
+     "before": [
+      "if you can see a few friends, that would be great",
+      "se você puder ver alguns amigos, seria ótimo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0216L01U10",
+     "role": "use",
+     "before": [
+      "I saw a few friends who speak Portuguese",
+      "vi alguns amigos que falam português"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 10
+   },
+   "extra": []
+  },
+  {
+   "id": "S0229L02",
+   "verdict": "rebuild-rows",
+   "why": "Six of seven rows say 'ela ajudaria' without 'te', or 'me ajudaria', or change the person (he, I). The LEGO is the seed's 'te ajudaria'. All six rewritten to 'she would help you'; one build row added (the basket had two). P17 (every practice phrase under a LEGO contains the whole LEGO); K26 (the person matches on both sides).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 229,
+    "known": "that woman would help you if she could",
+    "target": "aquela mulher te ajudaria se pudesse"
+   },
+   "before": {
+    "known": "she would help you",
+    "target": "te ajudaria",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "she would help you",
+    "target": "te ajudaria",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0229L02B02",
+     "role": "build",
+     "before": [
+      "she would help",
+      "ela ajudaria"
+     ],
+     "action": [
+      "she would help you",
+      "ela te ajudaria"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0229L02B03",
+     "role": "build",
+     "before": [
+      "he would help",
+      "ele ajudaria"
+     ],
+     "action": [
+      "she would help you now",
+      "ela te ajudaria agora"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0229L02U01",
+     "role": "use",
+     "before": [
+      "that woman would help you if she could",
+      "aquela mulher te ajudaria se pudesse"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0229L02U02",
+     "role": "use",
+     "before": [
+      "she would help me if she could",
+      "ela me ajudaria se pudesse"
+     ],
+     "action": [
+      "she would help you if she could",
+      "ela te ajudaria se pudesse"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0229L02U03",
+     "role": "use",
+     "before": [
+      "he would help you",
+      "ele te ajudaria"
+     ],
+     "action": [
+      "she would help you tomorrow",
+      "ela te ajudaria amanhã"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0229L02U04",
+     "role": "use",
+     "before": [
+      "I would help you if I could",
+      "te ajudaria se pudesse"
+     ],
+     "action": [
+      "she would help you with that",
+      "ela te ajudaria com isso"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0229L02U05",
+     "role": "use",
+     "before": [
+      "she would help if she could",
+      "ela ajudaria se pudesse"
+     ],
+     "action": [
+      "I think she would help you",
+      "acho que ela te ajudaria"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "por_br_for_eng:S0229L02B04",
+     "course_code": "por_br_for_eng",
+     "seed_number": 229,
+     "lego_index": 2,
+     "known_text": "yes, she would help you",
+     "target_text": "sim, ela te ajudaria",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 4,
+     "lego_position": "end",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0290L01",
+   "verdict": "rebuild-rows",
+   "why": "One row (U05) uses 'conhece', a different verb; rewritten with 'sabe'. The rows that say 'he knows' keep: 'sabe' is both he and she, and the seed itself says 'he knows'. NOTE, not planned here: the LEGO's English is 'she knows' under a seed that says 'he knows' — that is the 'LEGO says what its seed does not' family. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 290,
+    "known": "I wonder if he knows the answer",
+    "target": "me pergunto se ele sabe a resposta"
+   },
+   "before": {
+    "known": "she knows",
+    "target": "sabe",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "she knows",
+    "target": "sabe",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['she']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0290L01B01",
+     "role": "build",
+     "before": [
+      "she knows",
+      "sabe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01B02",
+     "role": "build",
+     "before": [
+      "she knows more",
+      "sabe mais"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01B03",
+     "role": "build",
+     "before": [
+      "she already knows",
+      "já sabe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01U01",
+     "role": "use",
+     "before": [
+      "she knows the answer",
+      "ela sabe a resposta"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01U02",
+     "role": "use",
+     "before": [
+      "he knows what to do",
+      "ele sabe o que fazer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01U03",
+     "role": "use",
+     "before": [
+      "I wonder if she knows",
+      "me pergunto se ela sabe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01U04",
+     "role": "use",
+     "before": [
+      "I think he knows",
+      "acho que ele sabe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0290L01U05",
+     "role": "use",
+     "before": [
+      "she knows her father",
+      "ela conhece o pai dela"
+     ],
+     "action": [
+      "I think she knows the answer",
+      "acho que ela sabe a resposta"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0290L01U06",
+     "role": "use",
+     "before": [
+      "I wonder if he knows the answer",
+      "me pergunto se ele sabe a resposta"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0438L01",
+   "verdict": "rebuild-rows",
+   "why": "The scan named three rows; the whole basket is broken Portuguese: 'eles não servir / reservar / liderar' puts a bare infinitive after 'they didn't', which is not Portuguese. The LEGO 'they didn't | eles não' is the seed's opening. All seven rows are rebuilt with the seed's own verb form 'queriam' (they didn't want). P17 (every practice phrase under a LEGO contains the whole LEGO); R0.3 (rewording a phrase is legitimate).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 438,
+    "known": "they didn't want to decide what he should do",
+    "target": "eles não queriam decidir o que ele devia fazer"
+   },
+   "before": {
+    "known": "they didn't",
+    "target": "eles não",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "they didn't",
+    "target": "eles não",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "por_br_for_eng:S0438L01C01",
+     "role": "component",
+     "before": [
+      "they",
+      "eles"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_br_for_eng:S0438L01C02",
+     "role": "component",
+     "before": [
+      "not",
+      "não"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_br_for_eng:S0438L01B01",
+     "role": "build",
+     "before": [
+      "they didn't",
+      "eles não"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_br_for_eng:S0438L01B02",
+     "role": "build",
+     "before": [
+      "they didn't serve",
+      "eles não servir"
+     ],
+     "action": [
+      "they didn't want to",
+      "eles não queriam"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0438L01B03",
+     "role": "build",
+     "before": [
+      "yes, they didn't",
+      "sim, eles não"
+     ],
+     "action": [
+      "they didn't want to decide",
+      "eles não queriam decidir"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0438L01U01",
+     "role": "use",
+     "before": [
+      "no, they didn't",
+      "não, eles não"
+     ],
+     "action": [
+      "no, they didn't want to",
+      "não, eles não queriam"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0438L01U02",
+     "role": "use",
+     "before": [
+      "they didn't reserve",
+      "eles não reservar"
+     ],
+     "action": [
+      "they didn't want to do that",
+      "eles não queriam fazer isso"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0438L01U03",
+     "role": "use",
+     "before": [
+      "they didn't lead",
+      "eles não liderar"
+     ],
+     "action": [
+      "yes, they didn't want to decide",
+      "sim, eles não queriam decidir"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0438L01U04",
+     "role": "use",
+     "before": [
+      "yes, they didn't serve",
+      "sim, eles não servir"
+     ],
+     "action": [
+      "they didn't want to decide what he should do",
+      "eles não queriam decidir o que ele devia fazer"
+     ]
+    },
+    {
+     "id": "por_br_for_eng:S0438L01U05",
+     "role": "use",
+     "before": [
+      "they still didn't",
+      "eles ainda não"
+     ],
+     "action": [
+      "I think they didn't want to decide",
+      "acho que eles não queriam decidir"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0617L01",
+   "verdict": "keep",
+   "why": "Already fixed: the row the scan named ('we know, you thought that') is no longer in the live basket, and every row that is there holds the LEGO. Dropped, nothing to do.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 617,
+    "known": "you thought that it was a mistake",
+    "target": "você achava que era um erro"
+   },
+   "before": {
+    "known": "you thought that",
+    "target": "você achava que",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0618L01",
+   "verdict": "keep",
+   "why": "Already fixed: the row the scan named ('we know, it doesn't feel like') is no longer in the live basket, and every row that is there holds the LEGO. Dropped, nothing to do.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 618,
+    "known": "it doesn't feel like a long time",
+    "target": "não parece muito tempo"
+   },
+   "before": {
+    "known": "it doesn't feel like",
+    "target": "não parece",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0659L01",
+   "verdict": "keep",
+   "why": "Already fixed: the row the scan named ('we know, you all could say') is no longer in the live basket, and every row that is there holds the LEGO. Dropped, nothing to do.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 659,
+    "known": "could you all say that?",
+    "target": "vocês podiam dizer isso?"
+   },
+   "before": {
+    "known": "could you all say",
+    "target": "vocês podiam dizer",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0122L04U03",
+   "set": {
+    "known_text": "I'm excited about the progress",
+    "target_text": "estou entusiasmado com o progresso"
+   },
+   "expect": {
+    "known_text": "I'm excited about this work",
+    "target_text": "estou entusiasmado com este trabalho"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0134L04B01",
+   "set": {
+    "known_text": "not with them",
+    "target_text": "não com eles"
+   },
+   "expect": {
+    "known_text": "them",
+    "target_text": "eles"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0134L04B03",
+   "set": {
+    "known_text": "to work with them",
+    "target_text": "trabalhar com eles"
+   },
+   "expect": {
+    "known_text": "for them",
+    "target_text": "para eles"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0134L04U02",
+   "set": {
+    "known_text": "I want to talk with them",
+    "target_text": "quero falar com eles"
+   },
+   "expect": {
+    "known_text": "I don't know about them",
+    "target_text": "não sei sobre eles"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0134L04U03",
+   "set": {
+    "known_text": "this is a problem with them",
+    "target_text": "isso é um problema com eles"
+   },
+   "expect": {
+    "known_text": "this is for them",
+    "target_text": "isso é para eles"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0146L02U03",
+   "set": {
+    "known_text": "I think it seems to be working",
+    "target_text": "acho que parece estar funcionando"
+   },
+   "expect": {
+    "known_text": "I think it seems to be the same thing",
+    "target_text": "acho que parece ser a mesma coisa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0155L02B01",
+   "set": {
+    "known_text": "waiting a few minutes here",
+    "target_text": "esperar uns minutos aqui"
+   },
+   "expect": {
+    "known_text": "a few minutes",
+    "target_text": "uns minutos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0155L02B02",
+   "set": {
+    "known_text": "I want to wait a few minutes",
+    "target_text": "quero esperar uns minutos"
+   },
+   "expect": {
+    "known_text": "I want to talk for a few minutes",
+    "target_text": "quero falar uns minutos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0155L02B03",
+   "set": {
+    "known_text": "I need to wait a few minutes to think",
+    "target_text": "preciso esperar uns minutos para pensar"
+   },
+   "expect": {
+    "known_text": "I need a few minutes to think",
+    "target_text": "preciso uns minutos para pensar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0155L02B04",
+   "set": {
+    "known_text": "I need to wait a few minutes before I go",
+    "target_text": "preciso esperar uns minutos antes de ir"
+   },
+   "expect": {
+    "known_text": "I need a few minutes before I go",
+    "target_text": "preciso uns minutos antes de ir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0155L02U04",
+   "set": {
+    "known_text": "she can wait a few minutes",
+    "target_text": "ela pode esperar uns minutos"
+   },
+   "expect": {
+    "known_text": "she was here for a few minutes",
+    "target_text": "ela estava aqui uns minutos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0155L02U05",
+   "set": {
+    "known_text": "I don't mind waiting a few minutes tomorrow",
+    "target_text": "não me importo de esperar uns minutos amanhã"
+   },
+   "expect": {
+    "known_text": "I was here just a few minutes ago",
+    "target_text": "estava aqui uns minutos antes"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0155L02U06",
+    "course_code": "por_br_for_eng",
+    "seed_number": 155,
+    "lego_index": 2,
+    "known_text": "can you wait a few minutes here?",
+    "target_text": "pode esperar uns minutos aqui?",
+    "phrase_role": "use",
+    "position": 11,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0155L02U07",
+    "course_code": "por_br_for_eng",
+    "seed_number": 155,
+    "lego_index": 2,
+    "known_text": "I don't mind waiting a few minutes tomorrow morning",
+    "target_text": "eu não me importo de esperar uns minutos amanhã de manhã",
+    "phrase_role": "use",
+    "position": 12,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0162L01U04",
+   "set": {
+    "known_text": "I was hoping to talk about that with you"
+   },
+   "expect": {
+    "known_text": "I was hoping we could talk about that",
+    "target_text": "esperava falar disso com você"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0216L01B01",
+   "set": {
+    "known_text": "a few friends here",
+    "target_text": "alguns amigos aqui"
+   },
+   "expect": {
+    "known_text": "a few",
+    "target_text": "alguns"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0216L01B02",
+   "set": {
+    "known_text": "a few friends"
+   },
+   "expect": {
+    "known_text": "some friends",
+    "target_text": "alguns amigos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0216L01B03",
+   "set": {
+    "known_text": "with a few friends",
+    "target_text": "com alguns amigos"
+   },
+   "expect": {
+    "known_text": "a few more",
+    "target_text": "alguns mais"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0216L01U02",
+   "set": {
+    "known_text": "I have a few friends here"
+   },
+   "expect": {
+    "known_text": "I have some friends here",
+    "target_text": "tenho alguns amigos aqui"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0216L01U04",
+   "set": {
+    "known_text": "I was with a few friends"
+   },
+   "expect": {
+    "known_text": "I was with some friends",
+    "target_text": "estava com alguns amigos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0216L01U05",
+   "set": {
+    "known_text": "I want to see a few friends"
+   },
+   "expect": {
+    "known_text": "I want to see some friends",
+    "target_text": "quero ver alguns amigos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0229L02B02",
+   "set": {
+    "known_text": "she would help you",
+    "target_text": "ela te ajudaria"
+   },
+   "expect": {
+    "known_text": "she would help",
+    "target_text": "ela ajudaria"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0229L02B03",
+   "set": {
+    "known_text": "she would help you now",
+    "target_text": "ela te ajudaria agora"
+   },
+   "expect": {
+    "known_text": "he would help",
+    "target_text": "ele ajudaria"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0229L02U02",
+   "set": {
+    "known_text": "she would help you if she could",
+    "target_text": "ela te ajudaria se pudesse"
+   },
+   "expect": {
+    "known_text": "she would help me if she could",
+    "target_text": "ela me ajudaria se pudesse"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0229L02U03",
+   "set": {
+    "known_text": "she would help you tomorrow",
+    "target_text": "ela te ajudaria amanhã"
+   },
+   "expect": {
+    "known_text": "he would help you",
+    "target_text": "ele te ajudaria"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0229L02U04",
+   "set": {
+    "known_text": "she would help you with that",
+    "target_text": "ela te ajudaria com isso"
+   },
+   "expect": {
+    "known_text": "I would help you if I could",
+    "target_text": "te ajudaria se pudesse"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0229L02U05",
+   "set": {
+    "known_text": "I think she would help you",
+    "target_text": "acho que ela te ajudaria"
+   },
+   "expect": {
+    "known_text": "she would help if she could",
+    "target_text": "ela ajudaria se pudesse"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0229L02B04",
+    "course_code": "por_br_for_eng",
+    "seed_number": 229,
+    "lego_index": 2,
+    "known_text": "yes, she would help you",
+    "target_text": "sim, ela te ajudaria",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 4,
+    "lego_position": "end",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0290L01U05",
+   "set": {
+    "known_text": "I think she knows the answer",
+    "target_text": "acho que ela sabe a resposta"
+   },
+   "expect": {
+    "known_text": "she knows her father",
+    "target_text": "ela conhece o pai dela"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01B02",
+   "set": {
+    "known_text": "they didn't want to",
+    "target_text": "eles não queriam"
+   },
+   "expect": {
+    "known_text": "they didn't serve",
+    "target_text": "eles não servir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01B03",
+   "set": {
+    "known_text": "they didn't want to decide",
+    "target_text": "eles não queriam decidir"
+   },
+   "expect": {
+    "known_text": "yes, they didn't",
+    "target_text": "sim, eles não"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01U01",
+   "set": {
+    "known_text": "no, they didn't want to",
+    "target_text": "não, eles não queriam"
+   },
+   "expect": {
+    "known_text": "no, they didn't",
+    "target_text": "não, eles não"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01U02",
+   "set": {
+    "known_text": "they didn't want to do that",
+    "target_text": "eles não queriam fazer isso"
+   },
+   "expect": {
+    "known_text": "they didn't reserve",
+    "target_text": "eles não reservar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01U03",
+   "set": {
+    "known_text": "yes, they didn't want to decide",
+    "target_text": "sim, eles não queriam decidir"
+   },
+   "expect": {
+    "known_text": "they didn't lead",
+    "target_text": "eles não liderar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01U04",
+   "set": {
+    "known_text": "they didn't want to decide what he should do",
+    "target_text": "eles não queriam decidir o que ele devia fazer"
+   },
+   "expect": {
+    "known_text": "yes, they didn't serve",
+    "target_text": "sim, eles não servir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0438L01U05",
+   "set": {
+    "known_text": "I think they didn't want to decide",
+    "target_text": "acho que eles não queriam decidir"
+   },
+   "expect": {
+    "known_text": "they still didn't",
+    "target_text": "eles ainda não"
+   }
+  }
+ ]
+}

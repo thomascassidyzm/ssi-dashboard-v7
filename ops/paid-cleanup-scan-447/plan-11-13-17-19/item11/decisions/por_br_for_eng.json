@@ -1,0 +1,243 @@
+{
+ "course": "por_br_for_eng",
+ "legos": [
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "One stray row: U03 says 'este trabalho', not 'progresso'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0122L04",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U03": [
+     "I'm excited about the progress",
+     "estou entusiasmado com o progresso"
+    ]
+   }
+  },
+  {
+   "why": "Four rows use bare 'eles' or other prepositions (para eles, sobre eles); rewritten with 'com eles'. Same fix as the sister course por_for_eng seed 134. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0134L04",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "not with them",
+     "não com eles"
+    ],
+    "B03": [
+     "to work with them",
+     "trabalhar com eles"
+    ],
+    "U02": [
+     "I want to talk with them",
+     "quero falar com eles"
+    ],
+    "U03": [
+     "this is a problem with them",
+     "isso é um problema com eles"
+    ]
+   }
+  },
+  {
+   "why": "One stray row: U03 says 'parece ser', not the LEGO's 'parece estar'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0146L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U03": [
+     "I think it seems to be working",
+     "acho que parece estar funcionando"
+    ]
+   }
+  },
+  {
+   "why": "Six rows drill 'uns minutos' without 'esperar'. 'a few minutes | uns minutos' would clash with 'a few minutes | poucos minutos' (seed 253): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (7 syllables: es-pe-rar-uns-mi-nu-tos); rows rewritten with 'esperar', and two use rows added (the basket had three). 'wait' for 'waiting' is the same word inflected (K6). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "add": [
+    [
+     "u",
+     "can you wait a few minutes here?",
+     "pode esperar uns minutos aqui?"
+    ],
+    [
+     "u",
+     "I don't mind waiting a few minutes tomorrow morning",
+     "eu não me importo de esperar uns minutos amanhã de manhã"
+    ]
+   ],
+   "id": "S0155L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "waiting a few minutes here",
+     "esperar uns minutos aqui"
+    ],
+    "B02": [
+     "I want to wait a few minutes",
+     "quero esperar uns minutos"
+    ],
+    "B03": [
+     "I need to wait a few minutes to think",
+     "preciso esperar uns minutos para pensar"
+    ],
+    "B04": [
+     "I need to wait a few minutes before I go",
+     "preciso esperar uns minutos antes de ir"
+    ],
+    "U04": [
+     "she can wait a few minutes",
+     "ela pode esperar uns minutos"
+    ],
+    "U05": [
+     "I don't mind waiting a few minutes tomorrow",
+     "não me importo de esperar uns minutos amanhã"
+    ]
+   }
+  },
+  {
+   "why": "Every row holds the LEGO 'disso', so not a basket miss. The scan named U04 because its English ('I was hoping we could talk about that') says more than its Portuguese ('esperava falar disso com você'): the English is brought into line, Portuguese unchanged.",
+   "id": "S0162L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U04": [
+     "I was hoping to talk about that with you",
+     "esperava falar disso com você"
+    ]
+   }
+  },
+  {
+   "why": "Two build rows ('a few | alguns', 'alguns mais') drop 'amigos'; rewritten. Four rows hold the Portuguese but say 'some friends' where the LEGO says 'a few friends' (a different word, K6): their English moves to the LEGO's. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0216L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B01": [
+     "a few friends here",
+     "alguns amigos aqui"
+    ],
+    "B02": [
+     "a few friends",
+     "alguns amigos"
+    ],
+    "B03": [
+     "with a few friends",
+     "com alguns amigos"
+    ],
+    "U02": [
+     "I have a few friends here",
+     "tenho alguns amigos aqui"
+    ],
+    "U04": [
+     "I was with a few friends",
+     "estava com alguns amigos"
+    ],
+    "U05": [
+     "I want to see a few friends",
+     "quero ver alguns amigos"
+    ]
+   }
+  },
+  {
+   "why": "Six of seven rows say 'ela ajudaria' without 'te', or 'me ajudaria', or change the person (he, I). The LEGO is the seed's 'te ajudaria'. All six rewritten to 'she would help you'; one build row added (the basket had two). P17 (every practice phrase under a LEGO contains the whole LEGO); K26 (the person matches on both sides).",
+   "add": [
+    [
+     "b",
+     "yes, she would help you",
+     "sim, ela te ajudaria"
+    ]
+   ],
+   "id": "S0229L02",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B02": [
+     "she would help you",
+     "ela te ajudaria"
+    ],
+    "B03": [
+     "she would help you now",
+     "ela te ajudaria agora"
+    ],
+    "U02": [
+     "she would help you if she could",
+     "ela te ajudaria se pudesse"
+    ],
+    "U03": [
+     "she would help you tomorrow",
+     "ela te ajudaria amanhã"
+    ],
+    "U04": [
+     "she would help you with that",
+     "ela te ajudaria com isso"
+    ],
+    "U05": [
+     "I think she would help you",
+     "acho que ela te ajudaria"
+    ]
+   }
+  },
+  {
+   "ack": [
+    "known"
+   ],
+   "why": "One row (U05) uses 'conhece', a different verb; rewritten with 'sabe'. The rows that say 'he knows' keep: 'sabe' is both he and she, and the seed itself says 'he knows'. NOTE, not planned here: the LEGO's English is 'she knows' under a seed that says 'he knows' — that is the 'LEGO says what its seed does not' family. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "id": "S0290L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "U02": "keep",
+    "U04": "keep",
+    "U06": "keep",
+    "U05": [
+     "I think she knows the answer",
+     "acho que ela sabe a resposta"
+    ]
+   }
+  },
+  {
+   "why": "The scan named three rows; the whole basket is broken Portuguese: 'eles não servir / reservar / liderar' puts a bare infinitive after 'they didn't', which is not Portuguese. The LEGO 'they didn't | eles não' is the seed's opening. All seven rows are rebuilt with the seed's own verb form 'queriam' (they didn't want). P17 (every practice phrase under a LEGO contains the whole LEGO); R0.3 (rewording a phrase is legitimate).",
+   "id": "S0438L01",
+   "verdict": "rebuild-rows",
+   "basket": {
+    "B02": [
+     "they didn't want to",
+     "eles não queriam"
+    ],
+    "B03": [
+     "they didn't want to decide",
+     "eles não queriam decidir"
+    ],
+    "U01": [
+     "no, they didn't want to",
+     "não, eles não queriam"
+    ],
+    "U02": [
+     "they didn't want to do that",
+     "eles não queriam fazer isso"
+    ],
+    "U03": [
+     "yes, they didn't want to decide",
+     "sim, eles não queriam decidir"
+    ],
+    "U04": [
+     "they didn't want to decide what he should do",
+     "eles não queriam decidir o que ele devia fazer"
+    ],
+    "U05": [
+     "I think they didn't want to decide",
+     "acho que eles não queriam decidir"
+    ]
+   }
+  },
+  {
+   "why": "Already fixed: the row the scan named ('we know, you thought that') is no longer in the live basket, and every row that is there holds the LEGO. Dropped, nothing to do.",
+   "id": "S0617L01",
+   "verdict": "keep"
+  },
+  {
+   "why": "Already fixed: the row the scan named ('we know, it doesn't feel like') is no longer in the live basket, and every row that is there holds the LEGO. Dropped, nothing to do.",
+   "id": "S0618L01",
+   "verdict": "keep"
+  },
+  {
+   "why": "Already fixed: the row the scan named ('we know, you all could say') is no longer in the live basket, and every row that is there holds the LEGO. Dropped, nothing to do.",
+   "id": "S0659L01",
+   "verdict": "keep"
+  }
+ ]
+}

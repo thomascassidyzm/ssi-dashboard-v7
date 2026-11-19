@@ -1,0 +1,2887 @@
+{
+ "course": "por_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-19T12:03:47Z",
+ "decisions": 14,
+ "verdicts": {
+  "rebuild-rows": 12,
+  "recut-small": 2
+ },
+ "touched_seeds": [
+  109,
+  125,
+  134,
+  140,
+  147,
+  182,
+  325,
+  332,
+  343,
+  403,
+  408,
+  514,
+  552,
+  570
+ ],
+ "problems": [
+  "S0147L03: target ela foi muito simpática estimated 9 syllables (>8) — hand-check"
+ ],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0109L02",
+   "verdict": "rebuild-rows",
+   "why": "Two stray rows ('new | novas', 'coisas novas') drop 'palavras'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 109,
+    "known": "we must work hard to learn a lot of new words",
+    "target": "nós temos de trabalhar muito para aprender muitas palavras novas"
+   },
+   "before": {
+    "known": "new words",
+    "target": "palavras novas",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "new words",
+    "target": "palavras novas",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0109L02B01",
+     "role": "build",
+     "before": [
+      "new",
+      "novas"
+     ],
+     "action": [
+      "to learn new words",
+      "aprender palavras novas"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0109L02B02",
+     "role": "build",
+     "before": [
+      "new words",
+      "palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02B03",
+     "role": "build",
+     "before": [
+      "many new words",
+      "muitas palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U01",
+     "role": "use",
+     "before": [
+      "I want to learn new words",
+      "quero aprender palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U02",
+     "role": "use",
+     "before": [
+      "I need to learn many new words",
+      "preciso de aprender muitas palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U03",
+     "role": "use",
+     "before": [
+      "I'm learning new words",
+      "estou a aprender palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U04",
+     "role": "use",
+     "before": [
+      "I like learning new words",
+      "gosto de aprender palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U05",
+     "role": "use",
+     "before": [
+      "I want to try new things",
+      "quero tentar coisas novas"
+     ],
+     "action": [
+      "I want to try new words",
+      "quero tentar palavras novas"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0109L02U06",
+     "role": "use",
+     "before": [
+      "I'm trying to learn many new words",
+      "estou a tentar aprender muitas palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U07",
+     "role": "use",
+     "before": [
+      "I can learn new words",
+      "consigo aprender palavras novas"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0109L02U08",
+     "role": "use",
+     "before": [
+      "I need to know new words",
+      "preciso de saber palavras novas"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 8
+   },
+   "extra": []
+  },
+  {
+   "id": "S0125L02",
+   "verdict": "rebuild-rows",
+   "why": "Two build rows ('your | tua', 'a tua boa ideia') break the LEGO; rewritten. U02 'gosto da tua ideia' is NOT a defect: 'da' is 'de' + the LEGO's own 'a' written as one word. L28 (a bound spelling still contains the LEGO: record it, do not reword). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 125,
+    "known": "I believe that your idea was very good",
+    "target": "eu acredito que a tua ideia era muito boa"
+   },
+   "before": {
+    "known": "your idea",
+    "target": "a tua ideia",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "your idea",
+    "target": "a tua ideia",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0125L02B01",
+     "role": "build",
+     "before": [
+      "your",
+      "tua"
+     ],
+     "action": [
+      "with your idea",
+      "com a tua ideia"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0125L02B02",
+     "role": "build",
+     "before": [
+      "your idea",
+      "a tua ideia"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02B03",
+     "role": "build",
+     "before": [
+      "your good idea",
+      "a tua boa ideia"
+     ],
+     "action": [
+      "your idea is very good",
+      "a tua ideia é muito boa"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0125L02U01",
+     "role": "use",
+     "before": [
+      "your idea is good",
+      "a tua ideia é boa"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U02",
+     "role": "use",
+     "before": [
+      "I like your idea",
+      "eu gosto da tua ideia"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U03",
+     "role": "use",
+     "before": [
+      "your idea was unusual",
+      "a tua ideia era invulgar"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U04",
+     "role": "use",
+     "before": [
+      "I want to hear your idea",
+      "eu quero ouvir a tua ideia"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U05",
+     "role": "use",
+     "before": [
+      "I think your idea was very good",
+      "eu acho que a tua ideia era muito boa"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U06",
+     "role": "use",
+     "before": [
+      "I believe your idea is important",
+      "acredito que a tua ideia é importante"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U07",
+     "role": "use",
+     "before": [
+      "I believe that your idea was very good",
+      "acredito que a tua ideia era muito boa"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0125L02U08",
+     "role": "use",
+     "before": [
+      "I thought your idea was a good idea",
+      "achei que a tua ideia era uma boa ideia"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 8
+   },
+   "extra": []
+  },
+  {
+   "id": "S0134L03",
+   "verdict": "rebuild-rows",
+   "why": "Four rows use other prepositions (para eles, sobre eles). Two rewritten, two deleted (3 build + 7 use stay). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 134,
+    "known": "it's not a problem when you work at something difficult with them",
+    "target": "não é um problema quando trabalhas em algo difícil com eles"
+   },
+   "before": {
+    "known": "with them",
+    "target": "com eles",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "with them",
+    "target": "com eles",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0134L03B01",
+     "role": "build",
+     "before": [
+      "with them",
+      "com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03B02",
+     "role": "build",
+     "before": [
+      "for them",
+      "para eles"
+     ],
+     "action": [
+      "not with them",
+      "não com eles"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0134L03B03",
+     "role": "build",
+     "before": [
+      "about them",
+      "sobre eles"
+     ],
+     "action": [
+      "to work with them",
+      "trabalhar com eles"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0134L03U01",
+     "role": "use",
+     "before": [
+      "I was with them",
+      "estava com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03U02",
+     "role": "use",
+     "before": [
+      "I want to work with them",
+      "quero trabalhar com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03U03",
+     "role": "use",
+     "before": [
+      "I was talking with them",
+      "estava a falar com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03U04",
+     "role": "use",
+     "before": [
+      "I want to talk with them",
+      "quero falar com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03U05",
+     "role": "use",
+     "before": [
+      "I was working with them",
+      "estava a trabalhar com eles"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03U06",
+     "role": "use",
+     "before": [
+      "I don't know about them",
+      "não sei sobre eles"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0134L03U07",
+     "role": "use",
+     "before": [
+      "this is for them",
+      "isto é para eles"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0134L03U08",
+     "role": "use",
+     "before": [
+      "do you want to work with them?",
+      "queres trabalhar com eles?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0134L03U09",
+     "role": "use",
+     "before": [
+      "it's not a problem when you work at something difficult with them",
+      "não é um problema quando trabalhas em algo difícil com eles"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0140L01",
+   "verdict": "recut-small",
+   "why": "Nine rows drill '(que não) consiga' + other verbs; only two say 'ver'. Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'that I can't | que não consiga' is a seed span, no other LEGO has that English, and 'to see | ver' (seed 107) is added back as a not-new LEGO. Six rows stay; five that lack 'que não' are rewritten. Structural: one not-new LEGO appended.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 140,
+    "known": "I'm sorry that I can't see what you're trying to show me",
+    "target": "lamento que não consiga ver o que estás a tentar mostrar-me"
+   },
+   "before": {
+    "known": "that I can't see",
+    "target": "que não consiga ver",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "that I can't",
+    "target": "que não consiga",
+    "type": "M",
+    "components": [
+     [
+      "that",
+      "que"
+     ],
+     [
+      "not",
+      "não"
+     ],
+     [
+      "I can",
+      "consiga"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0140L01B01",
+     "role": "build",
+     "before": [
+      "I can",
+      "consiga"
+     ],
+     "action": [
+      "that I can't do it",
+      "que não consiga fazer isso"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0140L01B02",
+     "role": "build",
+     "before": [
+      "I can't",
+      "não consiga"
+     ],
+     "action": [
+      "that I can't see",
+      "que não consiga ver"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0140L01B03",
+     "role": "build",
+     "before": [
+      "if I can",
+      "se consiga"
+     ],
+     "action": [
+      "that I can't leave early",
+      "que não consiga sair cedo"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0140L01U01",
+     "role": "use",
+     "before": [
+      "I'm sorry that I can't",
+      "lamento que não consiga"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0140L01U02",
+     "role": "use",
+     "before": [
+      "I'm sorry that I can't do it",
+      "lamento que não consiga fazer isso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0140L01U03",
+     "role": "use",
+     "before": [
+      "I don't think I can",
+      "não acho que consiga"
+     ],
+     "action": [
+      "I'm sorry that I can't help",
+      "lamento que não consiga ajudar"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0140L01U04",
+     "role": "use",
+     "before": [
+      "I don't think I can do it",
+      "não acho que consiga fazer isso"
+     ],
+     "action": [
+      "I'm sorry that I can't work",
+      "lamento que não consiga trabalhar"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0140L01U05",
+     "role": "use",
+     "before": [
+      "I'm sorry that I can't see that",
+      "lamento que não consiga ver isso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0140L01U07",
+     "role": "use",
+     "before": [
+      "I'm sorry that I can't leave early",
+      "lamento que não consiga sair cedo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0140L01U08",
+     "role": "use",
+     "before": [
+      "of course I'm sorry that I can't do it",
+      "claro que lamento que não consiga fazer isso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0140L01U09",
+     "role": "use",
+     "before": [
+      "I'm sorry that I can't see what you're trying to show me",
+      "lamento que não consiga ver o que estás a tentar mostrar-me"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 8
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 140,
+      "lego_index": 2,
+      "known_text": "to see",
+      "target_text": "ver",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0147L03",
+   "verdict": "rebuild-rows",
+   "why": "Eight rows drill 'simpática' without the full LEGO. 'kind | simpática' would clash with 'kind | simpático' (seed 142): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept at 8 syllables (e-la-foi-mui-to-sim-pá-ti-ca is 9 written, 'muito' often 2: listed as a long LEGO); five rows rewritten, three deleted (3 build + 7 use stay). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 147,
+    "known": "she was very kind when she saw me feeling nervous",
+    "target": "ela foi muito simpática quando me viu nervoso"
+   },
+   "before": {
+    "known": "she was very kind",
+    "target": "ela foi muito simpática",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "she was very kind",
+    "target": "ela foi muito simpática",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 9
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0147L03B01",
+     "role": "build",
+     "before": [
+      "kind",
+      "simpática"
+     ],
+     "action": [
+      "yes she was very kind",
+      "sim ela foi muito simpática"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0147L03B02",
+     "role": "build",
+     "before": [
+      "very kind",
+      "muito simpática"
+     ],
+     "action": [
+      "but she was very kind",
+      "mas ela foi muito simpática"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0147L03B03",
+     "role": "build",
+     "before": [
+      "she was kind",
+      "ela foi simpática"
+     ],
+     "action": [
+      "she was very kind today",
+      "ela foi muito simpática hoje"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0147L03U01",
+     "role": "use",
+     "before": [
+      "she was very kind",
+      "ela foi muito simpática"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0147L03U02",
+     "role": "use",
+     "before": [
+      "she was kind when she saw me",
+      "ela foi simpática quando me viu"
+     ],
+     "action": [
+      "she was very kind when she saw me",
+      "ela foi muito simpática quando me viu"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0147L03U03",
+     "role": "use",
+     "before": [
+      "she seems to be very kind",
+      "ela parece estar muito simpática"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0147L03U04",
+     "role": "use",
+     "before": [
+      "she was kind and I was grateful",
+      "ela foi simpática e eu estava grato"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0147L03U05",
+     "role": "use",
+     "before": [
+      "I think she was kind to everyone",
+      "acho que ela foi simpática para todos"
+     ],
+     "action": [
+      "I think she was very kind to everyone",
+      "acho que ela foi muito simpática para todos"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0147L03U06",
+     "role": "use",
+     "before": [
+      "I thought she was very kind yesterday",
+      "achei que ela foi muito simpática ontem"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0147L03U07",
+     "role": "use",
+     "before": [
+      "she was kind when she saw me feeling nervous",
+      "ela foi simpática quando me viu nervoso"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0147L03U08",
+     "role": "use",
+     "before": [
+      "I think she was very kind to me",
+      "acho que ela foi muito simpática para mim"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0147L03U09",
+     "role": "use",
+     "before": [
+      "she was very kind when I was nervous",
+      "ela foi muito simpática quando estava nervoso"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0147L03U10",
+     "role": "use",
+     "before": [
+      "she was very kind when she saw me feeling nervous",
+      "ela foi muito simpática quando me viu nervoso"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": []
+  },
+  {
+   "id": "S0182L02",
+   "verdict": "rebuild-rows",
+   "why": "All eleven rows drill 'as minhas' + 'coisas' (things); none says 'chaves'. 'my | as minhas' would clash with 'my | minha' (seed 131): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (6 syllables); nine rows move from 'things' to 'keys', two deleted. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 182,
+    "known": "have you seen my keys anywhere?",
+    "target": "viste as minhas chaves em algum lado?"
+   },
+   "before": {
+    "known": "my keys",
+    "target": "as minhas chaves",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "my keys",
+    "target": "as minhas chaves",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0182L02C01",
+     "role": "component",
+     "before": [
+      "the",
+      "as"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_for_eng:S0182L02C02",
+     "role": "component",
+     "before": [
+      "my",
+      "minhas"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "por_for_eng:S0182L02B01",
+     "role": "build",
+     "before": [
+      "my",
+      "as minhas"
+     ],
+     "action": [
+      "I have my keys",
+      "tenho as minhas chaves"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02B02",
+     "role": "build",
+     "before": [
+      "my",
+      "as minhas"
+     ],
+     "action": [
+      "where are my keys",
+      "onde estão as minhas chaves"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02B03",
+     "role": "build",
+     "before": [
+      "I have my",
+      "tenho as minhas"
+     ],
+     "action": [
+      "I want my keys",
+      "quero as minhas chaves"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02B04",
+     "role": "build",
+     "before": [
+      "where are my",
+      "onde estão as minhas"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0182L02U01",
+     "role": "use",
+     "before": [
+      "I have my things here",
+      "tenho as minhas coisas aqui"
+     ],
+     "action": [
+      "I have my keys here",
+      "tenho as minhas chaves aqui"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02U02",
+     "role": "use",
+     "before": [
+      "where are my things?",
+      "onde estão as minhas coisas?"
+     ],
+     "action": [
+      "have you seen my keys?",
+      "viste as minhas chaves?"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02U03",
+     "role": "use",
+     "before": [
+      "I can't find my things",
+      "não consigo encontrar as minhas coisas"
+     ],
+     "action": [
+      "I can't find my keys",
+      "não consigo encontrar as minhas chaves"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02U04",
+     "role": "use",
+     "before": [
+      "do you have my things?",
+      "tens as minhas coisas?"
+     ],
+     "action": [
+      "do you have my keys?",
+      "tens as minhas chaves?"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02U05",
+     "role": "use",
+     "before": [
+      "I want my things",
+      "quero as minhas coisas"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "por_for_eng:S0182L02U06",
+     "role": "use",
+     "before": [
+      "I think I have my things",
+      "acho que tenho as minhas coisas"
+     ],
+     "action": [
+      "I think I have my keys",
+      "acho que tenho as minhas chaves"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0182L02U07",
+     "role": "use",
+     "before": [
+      "my things are here",
+      "as minhas coisas estão aqui"
+     ],
+     "action": [
+      "my keys are here",
+      "as minhas chaves estão aqui"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0325L04",
+   "verdict": "rebuild-rows",
+   "why": "One stray row: B01 'possible | possíveis' drops 'problemas'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 325,
+    "known": "I think that he needs to consider ten possible problems",
+    "target": "eu acho que ele precisa de considerar dez problemas possíveis"
+   },
+   "before": {
+    "known": "possible problems",
+    "target": "problemas possíveis",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "possible problems",
+    "target": "problemas possíveis",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0325L04B01",
+     "role": "build",
+     "before": [
+      "possible",
+      "possíveis"
+     ],
+     "action": [
+      "the possible problems",
+      "os problemas possíveis"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0325L04B02",
+     "role": "build",
+     "before": [
+      "possible problems",
+      "problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04B03",
+     "role": "build",
+     "before": [
+      "ten possible problems",
+      "dez problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04U01",
+     "role": "use",
+     "before": [
+      "I think that he needs to consider ten possible problems",
+      "acho que ele precisa de considerar dez problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04U02",
+     "role": "use",
+     "before": [
+      "she needs to consider all possible problems",
+      "ela precisa de considerar todos os problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04U03",
+     "role": "use",
+     "before": [
+      "there are five possible problems",
+      "há cinco problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04U04",
+     "role": "use",
+     "before": [
+      "he doesn't need to consider all possible problems",
+      "ele não precisa de considerar todos os problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04U05",
+     "role": "use",
+     "before": [
+      "I couldn't consider all possible problems",
+      "não conseguia considerar todos os problemas possíveis"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0325L04U06",
+     "role": "use",
+     "before": [
+      "I think there are ten possible problems",
+      "acho que há dez problemas possíveis"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0332L01",
+   "verdict": "rebuild-rows",
+   "why": "All nine rows drill 'uma nova' + other nouns (empresa, maneira), in the other word order too. The LEGO is the seed's 'a new life | uma vida nova' and 'life | vida' is the seed's other LEGO. Rows rebuilt with 'uma vida nova'. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 332,
+    "known": "he can build a new life for his sister",
+    "target": "ele consegue construir uma vida nova para a irmã dele"
+   },
+   "before": {
+    "known": "a new life",
+    "target": "uma vida nova",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "a new life",
+    "target": "uma vida nova",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0332L01B01",
+     "role": "build",
+     "before": [
+      "new",
+      "nova"
+     ],
+     "action": [
+      "a new life here",
+      "uma vida nova aqui"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01B02",
+     "role": "build",
+     "before": [
+      "a new company",
+      "uma nova empresa"
+     ],
+     "action": [
+      "to build a new life",
+      "construir uma vida nova"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01B03",
+     "role": "build",
+     "before": [
+      "a new way",
+      "uma nova maneira"
+     ],
+     "action": [
+      "a new life for her",
+      "uma vida nova para ela"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01U01",
+     "role": "use",
+     "before": [
+      "she needs to sell a new company",
+      "ela precisa de vender uma nova empresa"
+     ],
+     "action": [
+      "she needs to build a new life",
+      "ela precisa de construir uma vida nova"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01U02",
+     "role": "use",
+     "before": [
+      "she couldn't offer a new way",
+      "ela não conseguia oferecer uma nova maneira"
+     ],
+     "action": [
+      "she couldn't offer a new life",
+      "ela não conseguia oferecer uma vida nova"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01U03",
+     "role": "use",
+     "before": [
+      "I think a new way is most important",
+      "acho que uma nova maneira é mais importante"
+     ],
+     "action": [
+      "I think a new life is most important",
+      "acho que uma vida nova é mais importante"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01U04",
+     "role": "use",
+     "before": [
+      "do you want to offer a new way?",
+      "queres oferecer uma nova maneira?"
+     ],
+     "action": [
+      "do you want to build a new life?",
+      "queres construir uma vida nova?"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01U05",
+     "role": "use",
+     "before": [
+      "she needs to read about a new company",
+      "ela precisa de ler sobre uma nova empresa"
+     ],
+     "action": [
+      "she needs to read about a new life",
+      "ela precisa de ler sobre uma vida nova"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0332L01U06",
+     "role": "use",
+     "before": [
+      "I think she ought to consider a new way",
+      "acho que ela devia considerar uma nova maneira"
+     ],
+     "action": [
+      "I think she ought to consider a new life",
+      "acho que ela devia considerar uma vida nova"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0343L01",
+   "verdict": "rebuild-rows",
+   "why": "Four rows drop 'está' or put a word inside the LEGO (está muito preocupada); rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 343,
+    "known": "who said that she's worried about the economy",
+    "target": "que disse que está preocupada com a economia"
+   },
+   "before": {
+    "known": "she's worried",
+    "target": "está preocupada",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "she's worried",
+    "target": "está preocupada",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0343L01B01",
+     "role": "build",
+     "before": [
+      "worried",
+      "preocupada"
+     ],
+     "action": [
+      "I think she's worried",
+      "acho que está preocupada"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0343L01B02",
+     "role": "build",
+     "before": [
+      "she's worried",
+      "ela está preocupada"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0343L01B03",
+     "role": "build",
+     "before": [
+      "worried about something",
+      "preocupada com algo"
+     ],
+     "action": [
+      "she's worried about the economy",
+      "está preocupada com a economia"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0343L01U01",
+     "role": "use",
+     "before": [
+      "she's worried about something",
+      "ela está preocupada com algo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0343L01U02",
+     "role": "use",
+     "before": [
+      "I'm sure she's worried",
+      "tenho a certeza que ela está preocupada"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0343L01U03",
+     "role": "use",
+     "before": [
+      "she said she's worried",
+      "ela disse que está preocupada"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0343L01U04",
+     "role": "use",
+     "before": [
+      "do you think she's worried about school?",
+      "achas que ela está preocupada com a escola?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0343L01U05",
+     "role": "use",
+     "before": [
+      "she's very worried about this",
+      "ela está muito preocupada com isto"
+     ],
+     "action": [
+      "she's worried about this",
+      "ela está preocupada com isto"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0343L01U06",
+     "role": "use",
+     "before": [
+      "I think she's quite worried",
+      "acho que ela está bastante preocupada"
+     ],
+     "action": [
+      "I think she's worried about school",
+      "acho que ela está preocupada com a escola"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0403L02",
+   "verdict": "rebuild-rows",
+   "why": "Three rows say 'calados' with another verb (estávamos calados); rewritten. The four rows that say 'we should remain quiet' keep: after 'should' English drops 'to' (K54). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 403,
+    "known": "we should remain quiet for as long as possible",
+    "target": "devíamos ficar calados o máximo tempo possível"
+   },
+   "before": {
+    "known": "to remain quiet",
+    "target": "ficar calados",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "to remain quiet",
+    "target": "ficar calados",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0403L02B01",
+     "role": "build",
+     "before": [
+      "quiet",
+      "calados"
+     ],
+     "action": [
+      "to remain quiet tonight",
+      "ficar calados esta noite"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0403L02B02",
+     "role": "build",
+     "before": [
+      "to remain quiet",
+      "ficar calados"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0403L02B03",
+     "role": "build",
+     "before": [
+      "we were quiet tonight",
+      "estávamos calados esta noite"
+     ],
+     "action": [
+      "we want to remain quiet",
+      "queremos ficar calados"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0403L02U01",
+     "role": "use",
+     "before": [
+      "we should remain quiet",
+      "devíamos ficar calados"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0403L02U02",
+     "role": "use",
+     "before": [
+      "we were quiet for a while",
+      "estávamos calados algum tempo"
+     ],
+     "action": [
+      "we tried to remain quiet for a while",
+      "tentámos ficar calados algum tempo"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0403L02U03",
+     "role": "use",
+     "before": [
+      "we tried to remain quiet",
+      "tentámos ficar calados"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0403L02U04",
+     "role": "use",
+     "before": [
+      "we should remain quiet for a while",
+      "devíamos ficar calados algum tempo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0403L02U05",
+     "role": "use",
+     "before": [
+      "I think we should remain quiet",
+      "acho que devíamos ficar calados"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0403L02U06",
+     "role": "use",
+     "before": [
+      "she said we should remain quiet",
+      "ela disse que devíamos ficar calados"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0408L02",
+   "verdict": "recut-small",
+   "why": "All eight rows drill 'essa é' + other things; none says 'a melhor maneira', which is this seed's own next LEGO ('the best way | a melhor maneira'). Kai 17 Nov (shortest LEGO cut: re-cut to the piece the basket drills, rows stay): 'that's | essa é' is a seed span and no other LEGO has 'that's'. Six rows stay; two that lack 'é' are rewritten.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 408,
+    "known": "yes that's the best way to make a happy family",
+    "target": "sim, essa é a melhor maneira de fazer uma família feliz"
+   },
+   "before": {
+    "known": "that's the best way",
+    "target": "essa é a melhor maneira",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "that's",
+    "target": "essa é",
+    "type": "M",
+    "components": [
+     [
+      "that",
+      "essa"
+     ],
+     [
+      "is",
+      "é"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0408L02B01",
+     "role": "build",
+     "before": [
+      "that",
+      "essa"
+     ],
+     "action": [
+      "that's the best way",
+      "essa é a melhor maneira"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0408L02B02",
+     "role": "build",
+     "before": [
+      "that way",
+      "essa maneira"
+     ],
+     "action": [
+      "that's a good way",
+      "essa é uma boa maneira"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0408L02B03",
+     "role": "build",
+     "before": [
+      "that's the best",
+      "essa é a melhor"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0408L02U01",
+     "role": "use",
+     "before": [
+      "that's a good idea",
+      "essa é uma boa ideia"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0408L02U02",
+     "role": "use",
+     "before": [
+      "that's the best choice",
+      "essa é a melhor escolha"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0408L02U03",
+     "role": "use",
+     "before": [
+      "she said that's a good idea",
+      "ela disse que essa é uma boa ideia"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0408L02U04",
+     "role": "use",
+     "before": [
+      "she said that's the best choice",
+      "ela disse que essa é a melhor escolha"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0408L02U05",
+     "role": "use",
+     "before": [
+      "do you think that's good?",
+      "achas que essa é boa?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 6,
+    "sample": [
+     {
+      "id": "por_for_eng:S0408L03B02",
+      "known": "that's the best way",
+      "target": "essa é a melhor maneira",
+      "seed": 408
+     },
+     {
+      "id": "por_for_eng:S0408L03U01",
+      "known": "I think that's the best way",
+      "target": "acho que essa é a melhor maneira",
+      "seed": 408
+     },
+     {
+      "id": "por_for_eng:S0408L03U02",
+      "known": "that's the best way to do it",
+      "target": "essa é a melhor maneira de fazer",
+      "seed": 408
+     },
+     {
+      "id": "por_for_eng:S0408L03U05",
+      "known": "that's the best way to set a good example",
+      "target": "essa é a melhor maneira de dar um bom exemplo",
+      "seed": 408
+     },
+     {
+      "id": "por_for_eng:S0408L04U01",
+      "known": "yes that's the best way to make a happy family",
+      "target": "sim, essa é a melhor maneira de fazer uma família feliz",
+      "seed": 408
+     },
+     {
+      "id": "por_for_eng:S0415L01U02",
+      "known": "if you ask me, that's the best way",
+      "target": "se me perguntas, essa é a melhor maneira",
+      "seed": 415
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0514L02",
+   "verdict": "rebuild-rows",
+   "why": "Five rows drill 'perfeita' alone. 'perfect | perfeita' would clash with 'perfect | perfeito' (seed 137): Kai 12 Nov (no labels: a would-be clash stays inside the bigger LEGO). LEGO kept (6 syllables); rows rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 514,
+    "known": "I found the perfect house on the first day",
+    "target": "eu encontrei a casa perfeita no primeiro dia"
+   },
+   "before": {
+    "known": "the perfect house",
+    "target": "a casa perfeita",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "the perfect house",
+    "target": "a casa perfeita",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0514L02B01",
+     "role": "build",
+     "before": [
+      "perfect",
+      "perfeita"
+     ],
+     "action": [
+      "the perfect house for us",
+      "a casa perfeita para nós"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0514L02B02",
+     "role": "build",
+     "before": [
+      "the perfect house",
+      "a casa perfeita"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0514L02B03",
+     "role": "build",
+     "before": [
+      "very perfect",
+      "muito perfeita"
+     ],
+     "action": [
+      "not the perfect house",
+      "não a casa perfeita"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0514L02U01",
+     "role": "use",
+     "before": [
+      "she said it was perfect",
+      "ela disse que era perfeita"
+     ],
+     "action": [
+      "she said it was the perfect house",
+      "ela disse que era a casa perfeita"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0514L02U02",
+     "role": "use",
+     "before": [
+      "he said it was perfect",
+      "ele disse que era perfeita"
+     ],
+     "action": [
+      "he said it was the perfect house",
+      "ele disse que era a casa perfeita"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0514L02U03",
+     "role": "use",
+     "before": [
+      "they said it was perfect",
+      "disseram que era perfeita"
+     ],
+     "action": [
+      "they said it was the perfect house",
+      "disseram que era a casa perfeita"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0514L02U06",
+     "role": "use",
+     "before": [
+      "I want the perfect house",
+      "quero a casa perfeita"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0514L02U07",
+     "role": "use",
+     "before": [
+      "this is the perfect house",
+      "esta é a casa perfeita"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0552L02",
+   "verdict": "rebuild-rows",
+   "why": "Five rows say 'no outro extremo': NOT a defect, 'no' is 'em' + the LEGO's own 'o' written as one word, and it is how the seed itself says it. L28 (a bound spelling still contains the LEGO: record it, do not reword). One row (B01 'the far end | extremo') drops 'o outro'; rewritten. P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 552,
+    "known": "the church at the other end of the village is ugly",
+    "target": "a igreja no outro extremo da aldeia é feia"
+   },
+   "before": {
+    "known": "the other end",
+    "target": "o outro extremo",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "the other end",
+    "target": "o outro extremo",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "target split in the seed"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": false,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0552L02B01",
+     "role": "build",
+     "before": [
+      "the far end",
+      "extremo"
+     ],
+     "action": [
+      "the other end of the village",
+      "o outro extremo da aldeia"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0552L02B02",
+     "role": "build",
+     "before": [
+      "the other end",
+      "o outro extremo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0552L02B03",
+     "role": "build",
+     "before": [
+      "at the other end",
+      "no outro extremo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0552L02U01",
+     "role": "use",
+     "before": [
+      "she said at the other end",
+      "ela disse no outro extremo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0552L02U02",
+     "role": "use",
+     "before": [
+      "he said it was at the other end",
+      "ele disse que foi no outro extremo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0552L02U03",
+     "role": "use",
+     "before": [
+      "they said the other end",
+      "disseram o outro extremo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0552L02U04",
+     "role": "use",
+     "before": [
+      "she said the church is at the other end",
+      "ela disse que a igreja é no outro extremo"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0552L02U05",
+     "role": "use",
+     "before": [
+      "is it at the other end?",
+      "está no outro extremo?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0570L02",
+   "verdict": "rebuild-rows",
+   "why": "Six rows say bare 'teu' / 'teu bilhete' without the article, some of them not sentences ('she said your | ela disse teu'); rewritten. The two rows with 'pelo teu bilhete' are NOT a defect: 'pelo' is 'por' + the LEGO's own 'o', and it is how the seed says it. L28 (a bound spelling still contains the LEGO: record it, do not reword). P17 (every practice phrase under a LEGO contains the whole LEGO).",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 570,
+    "known": "how much are you willing to pay for your ticket?",
+    "target": "quanto estás disposto a pagar pelo teu bilhete?"
+   },
+   "before": {
+    "known": "your ticket",
+    "target": "o teu bilhete",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "your ticket",
+    "target": "o teu bilhete",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "target split in the seed"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": false,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "por_for_eng:S0570L02B01",
+     "role": "build",
+     "before": [
+      "your",
+      "teu"
+     ],
+     "action": [
+      "your ticket is here",
+      "o teu bilhete está aqui"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0570L02B02",
+     "role": "build",
+     "before": [
+      "your ticket",
+      "teu bilhete"
+     ],
+     "action": [
+      "this is your ticket",
+      "este é o teu bilhete"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0570L02B03",
+     "role": "build",
+     "before": [
+      "for your ticket",
+      "pelo teu bilhete"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0570L02U01",
+     "role": "use",
+     "before": [
+      "she said your",
+      "ela disse teu"
+     ],
+     "action": [
+      "she has your ticket",
+      "ela tem o teu bilhete"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0570L02U02",
+     "role": "use",
+     "before": [
+      "he said your ticket",
+      "ele disse teu bilhete"
+     ],
+     "action": [
+      "he said your ticket is here",
+      "ele disse que o teu bilhete está aqui"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0570L02U03",
+     "role": "use",
+     "before": [
+      "they said your",
+      "disseram teu"
+     ],
+     "action": [
+      "I want your ticket",
+      "quero o teu bilhete"
+     ]
+    },
+    {
+     "id": "por_for_eng:S0570L02U04",
+     "role": "use",
+     "before": [
+      "she said for your ticket",
+      "ela disse pelo teu bilhete"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "por_for_eng:S0570L02U05",
+     "role": "use",
+     "before": [
+      "is it yours?",
+      "é teu?"
+     ],
+     "action": [
+      "is it your ticket?",
+      "é o teu bilhete?"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0109L02B01",
+   "set": {
+    "known_text": "to learn new words",
+    "target_text": "aprender palavras novas"
+   },
+   "expect": {
+    "known_text": "new",
+    "target_text": "novas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0109L02U05",
+   "set": {
+    "known_text": "I want to try new words",
+    "target_text": "quero tentar palavras novas"
+   },
+   "expect": {
+    "known_text": "I want to try new things",
+    "target_text": "quero tentar coisas novas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0125L02B01",
+   "set": {
+    "known_text": "with your idea",
+    "target_text": "com a tua ideia"
+   },
+   "expect": {
+    "known_text": "your",
+    "target_text": "tua"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0125L02B03",
+   "set": {
+    "known_text": "your idea is very good",
+    "target_text": "a tua ideia é muito boa"
+   },
+   "expect": {
+    "known_text": "your good idea",
+    "target_text": "a tua boa ideia"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0134L03B02",
+   "set": {
+    "known_text": "not with them",
+    "target_text": "não com eles"
+   },
+   "expect": {
+    "known_text": "for them",
+    "target_text": "para eles"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0134L03B03",
+   "set": {
+    "known_text": "to work with them",
+    "target_text": "trabalhar com eles"
+   },
+   "expect": {
+    "known_text": "about them",
+    "target_text": "sobre eles"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0134L03U06",
+   "expect": {
+    "known_text": "I don't know about them",
+    "target_text": "não sei sobre eles"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0134L03U07",
+   "expect": {
+    "known_text": "this is for them",
+    "target_text": "isto é para eles"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0140L01",
+   "set": {
+    "known_text": "that I can't",
+    "target_text": "que não consiga",
+    "components": [
+     {
+      "known": "that",
+      "target": "que"
+     },
+     {
+      "known": "not",
+      "target": "não"
+     },
+     {
+      "known": "I can",
+      "target": "consiga"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "that I can't see",
+    "target_text": "que não consiga ver"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0140L01B01",
+   "set": {
+    "known_text": "that I can't do it",
+    "target_text": "que não consiga fazer isso"
+   },
+   "expect": {
+    "known_text": "I can",
+    "target_text": "consiga"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0140L01B02",
+   "set": {
+    "known_text": "that I can't see",
+    "target_text": "que não consiga ver"
+   },
+   "expect": {
+    "known_text": "I can't",
+    "target_text": "não consiga"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0140L01B03",
+   "set": {
+    "known_text": "that I can't leave early",
+    "target_text": "que não consiga sair cedo"
+   },
+   "expect": {
+    "known_text": "if I can",
+    "target_text": "se consiga"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0140L01U03",
+   "set": {
+    "known_text": "I'm sorry that I can't help",
+    "target_text": "lamento que não consiga ajudar"
+   },
+   "expect": {
+    "known_text": "I don't think I can",
+    "target_text": "não acho que consiga"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0140L01U04",
+   "set": {
+    "known_text": "I'm sorry that I can't work",
+    "target_text": "lamento que não consiga trabalhar"
+   },
+   "expect": {
+    "known_text": "I don't think I can do it",
+    "target_text": "não acho que consiga fazer isso"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 140,
+    "lego_index": 2,
+    "known_text": "to see",
+    "target_text": "ver",
+    "type": "A",
+    "is_new": false
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0147L03B01",
+   "set": {
+    "known_text": "yes she was very kind",
+    "target_text": "sim ela foi muito simpática"
+   },
+   "expect": {
+    "known_text": "kind",
+    "target_text": "simpática"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0147L03B02",
+   "set": {
+    "known_text": "but she was very kind",
+    "target_text": "mas ela foi muito simpática"
+   },
+   "expect": {
+    "known_text": "very kind",
+    "target_text": "muito simpática"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0147L03B03",
+   "set": {
+    "known_text": "she was very kind today",
+    "target_text": "ela foi muito simpática hoje"
+   },
+   "expect": {
+    "known_text": "she was kind",
+    "target_text": "ela foi simpática"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0147L03U02",
+   "set": {
+    "known_text": "she was very kind when she saw me",
+    "target_text": "ela foi muito simpática quando me viu"
+   },
+   "expect": {
+    "known_text": "she was kind when she saw me",
+    "target_text": "ela foi simpática quando me viu"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0147L03U03",
+   "expect": {
+    "known_text": "she seems to be very kind",
+    "target_text": "ela parece estar muito simpática"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0147L03U04",
+   "expect": {
+    "known_text": "she was kind and I was grateful",
+    "target_text": "ela foi simpática e eu estava grato"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0147L03U05",
+   "set": {
+    "known_text": "I think she was very kind to everyone",
+    "target_text": "acho que ela foi muito simpática para todos"
+   },
+   "expect": {
+    "known_text": "I think she was kind to everyone",
+    "target_text": "acho que ela foi simpática para todos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0147L03U07",
+   "expect": {
+    "known_text": "she was kind when she saw me feeling nervous",
+    "target_text": "ela foi simpática quando me viu nervoso"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02B01",
+   "set": {
+    "known_text": "I have my keys",
+    "target_text": "tenho as minhas chaves"
+   },
+   "expect": {
+    "known_text": "my",
+    "target_text": "as minhas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02B02",
+   "set": {
+    "known_text": "where are my keys",
+    "target_text": "onde estão as minhas chaves"
+   },
+   "expect": {
+    "known_text": "my",
+    "target_text": "as minhas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02B03",
+   "set": {
+    "known_text": "I want my keys",
+    "target_text": "quero as minhas chaves"
+   },
+   "expect": {
+    "known_text": "I have my",
+    "target_text": "tenho as minhas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0182L02B04",
+   "expect": {
+    "known_text": "where are my",
+    "target_text": "onde estão as minhas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02U01",
+   "set": {
+    "known_text": "I have my keys here",
+    "target_text": "tenho as minhas chaves aqui"
+   },
+   "expect": {
+    "known_text": "I have my things here",
+    "target_text": "tenho as minhas coisas aqui"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02U02",
+   "set": {
+    "known_text": "have you seen my keys?",
+    "target_text": "viste as minhas chaves?"
+   },
+   "expect": {
+    "known_text": "where are my things?",
+    "target_text": "onde estão as minhas coisas?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02U03",
+   "set": {
+    "known_text": "I can't find my keys",
+    "target_text": "não consigo encontrar as minhas chaves"
+   },
+   "expect": {
+    "known_text": "I can't find my things",
+    "target_text": "não consigo encontrar as minhas coisas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02U04",
+   "set": {
+    "known_text": "do you have my keys?",
+    "target_text": "tens as minhas chaves?"
+   },
+   "expect": {
+    "known_text": "do you have my things?",
+    "target_text": "tens as minhas coisas?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0182L02U05",
+   "expect": {
+    "known_text": "I want my things",
+    "target_text": "quero as minhas coisas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02U06",
+   "set": {
+    "known_text": "I think I have my keys",
+    "target_text": "acho que tenho as minhas chaves"
+   },
+   "expect": {
+    "known_text": "I think I have my things",
+    "target_text": "acho que tenho as minhas coisas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0182L02U07",
+   "set": {
+    "known_text": "my keys are here",
+    "target_text": "as minhas chaves estão aqui"
+   },
+   "expect": {
+    "known_text": "my things are here",
+    "target_text": "as minhas coisas estão aqui"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0325L04B01",
+   "set": {
+    "known_text": "the possible problems",
+    "target_text": "os problemas possíveis"
+   },
+   "expect": {
+    "known_text": "possible",
+    "target_text": "possíveis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01B01",
+   "set": {
+    "known_text": "a new life here",
+    "target_text": "uma vida nova aqui"
+   },
+   "expect": {
+    "known_text": "new",
+    "target_text": "nova"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01B02",
+   "set": {
+    "known_text": "to build a new life",
+    "target_text": "construir uma vida nova"
+   },
+   "expect": {
+    "known_text": "a new company",
+    "target_text": "uma nova empresa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01B03",
+   "set": {
+    "known_text": "a new life for her",
+    "target_text": "uma vida nova para ela"
+   },
+   "expect": {
+    "known_text": "a new way",
+    "target_text": "uma nova maneira"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01U01",
+   "set": {
+    "known_text": "she needs to build a new life",
+    "target_text": "ela precisa de construir uma vida nova"
+   },
+   "expect": {
+    "known_text": "she needs to sell a new company",
+    "target_text": "ela precisa de vender uma nova empresa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01U02",
+   "set": {
+    "known_text": "she couldn't offer a new life",
+    "target_text": "ela não conseguia oferecer uma vida nova"
+   },
+   "expect": {
+    "known_text": "she couldn't offer a new way",
+    "target_text": "ela não conseguia oferecer uma nova maneira"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01U03",
+   "set": {
+    "known_text": "I think a new life is most important",
+    "target_text": "acho que uma vida nova é mais importante"
+   },
+   "expect": {
+    "known_text": "I think a new way is most important",
+    "target_text": "acho que uma nova maneira é mais importante"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01U04",
+   "set": {
+    "known_text": "do you want to build a new life?",
+    "target_text": "queres construir uma vida nova?"
+   },
+   "expect": {
+    "known_text": "do you want to offer a new way?",
+    "target_text": "queres oferecer uma nova maneira?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01U05",
+   "set": {
+    "known_text": "she needs to read about a new life",
+    "target_text": "ela precisa de ler sobre uma vida nova"
+   },
+   "expect": {
+    "known_text": "she needs to read about a new company",
+    "target_text": "ela precisa de ler sobre uma nova empresa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0332L01U06",
+   "set": {
+    "known_text": "I think she ought to consider a new life",
+    "target_text": "acho que ela devia considerar uma vida nova"
+   },
+   "expect": {
+    "known_text": "I think she ought to consider a new way",
+    "target_text": "acho que ela devia considerar uma nova maneira"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0343L01B01",
+   "set": {
+    "known_text": "I think she's worried",
+    "target_text": "acho que está preocupada"
+   },
+   "expect": {
+    "known_text": "worried",
+    "target_text": "preocupada"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0343L01B03",
+   "set": {
+    "known_text": "she's worried about the economy",
+    "target_text": "está preocupada com a economia"
+   },
+   "expect": {
+    "known_text": "worried about something",
+    "target_text": "preocupada com algo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0343L01U05",
+   "set": {
+    "known_text": "she's worried about this",
+    "target_text": "ela está preocupada com isto"
+   },
+   "expect": {
+    "known_text": "she's very worried about this",
+    "target_text": "ela está muito preocupada com isto"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0343L01U06",
+   "set": {
+    "known_text": "I think she's worried about school",
+    "target_text": "acho que ela está preocupada com a escola"
+   },
+   "expect": {
+    "known_text": "I think she's quite worried",
+    "target_text": "acho que ela está bastante preocupada"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0403L02B01",
+   "set": {
+    "known_text": "to remain quiet tonight",
+    "target_text": "ficar calados esta noite"
+   },
+   "expect": {
+    "known_text": "quiet",
+    "target_text": "calados"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0403L02B03",
+   "set": {
+    "known_text": "we want to remain quiet",
+    "target_text": "queremos ficar calados"
+   },
+   "expect": {
+    "known_text": "we were quiet tonight",
+    "target_text": "estávamos calados esta noite"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0403L02U02",
+   "set": {
+    "known_text": "we tried to remain quiet for a while",
+    "target_text": "tentámos ficar calados algum tempo"
+   },
+   "expect": {
+    "known_text": "we were quiet for a while",
+    "target_text": "estávamos calados algum tempo"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0408L02",
+   "set": {
+    "known_text": "that's",
+    "target_text": "essa é",
+    "components": [
+     {
+      "known": "that",
+      "target": "essa"
+     },
+     {
+      "known": "is",
+      "target": "é"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "that's the best way",
+    "target_text": "essa é a melhor maneira"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0408L02B01",
+   "set": {
+    "known_text": "that's the best way",
+    "target_text": "essa é a melhor maneira"
+   },
+   "expect": {
+    "known_text": "that",
+    "target_text": "essa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0408L02B02",
+   "set": {
+    "known_text": "that's a good way",
+    "target_text": "essa é uma boa maneira"
+   },
+   "expect": {
+    "known_text": "that way",
+    "target_text": "essa maneira"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0514L02B01",
+   "set": {
+    "known_text": "the perfect house for us",
+    "target_text": "a casa perfeita para nós"
+   },
+   "expect": {
+    "known_text": "perfect",
+    "target_text": "perfeita"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0514L02B03",
+   "set": {
+    "known_text": "not the perfect house",
+    "target_text": "não a casa perfeita"
+   },
+   "expect": {
+    "known_text": "very perfect",
+    "target_text": "muito perfeita"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0514L02U01",
+   "set": {
+    "known_text": "she said it was the perfect house",
+    "target_text": "ela disse que era a casa perfeita"
+   },
+   "expect": {
+    "known_text": "she said it was perfect",
+    "target_text": "ela disse que era perfeita"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0514L02U02",
+   "set": {
+    "known_text": "he said it was the perfect house",
+    "target_text": "ele disse que era a casa perfeita"
+   },
+   "expect": {
+    "known_text": "he said it was perfect",
+    "target_text": "ele disse que era perfeita"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0514L02U03",
+   "set": {
+    "known_text": "they said it was the perfect house",
+    "target_text": "disseram que era a casa perfeita"
+   },
+   "expect": {
+    "known_text": "they said it was perfect",
+    "target_text": "disseram que era perfeita"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0552L02B01",
+   "set": {
+    "known_text": "the other end of the village",
+    "target_text": "o outro extremo da aldeia"
+   },
+   "expect": {
+    "known_text": "the far end",
+    "target_text": "extremo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L02B01",
+   "set": {
+    "known_text": "your ticket is here",
+    "target_text": "o teu bilhete está aqui"
+   },
+   "expect": {
+    "known_text": "your",
+    "target_text": "teu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L02B02",
+   "set": {
+    "known_text": "this is your ticket",
+    "target_text": "este é o teu bilhete"
+   },
+   "expect": {
+    "known_text": "your ticket",
+    "target_text": "teu bilhete"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L02U01",
+   "set": {
+    "known_text": "she has your ticket",
+    "target_text": "ela tem o teu bilhete"
+   },
+   "expect": {
+    "known_text": "she said your",
+    "target_text": "ela disse teu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L02U02",
+   "set": {
+    "known_text": "he said your ticket is here",
+    "target_text": "ele disse que o teu bilhete está aqui"
+   },
+   "expect": {
+    "known_text": "he said your ticket",
+    "target_text": "ele disse teu bilhete"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L02U03",
+   "set": {
+    "known_text": "I want your ticket",
+    "target_text": "quero o teu bilhete"
+   },
+   "expect": {
+    "known_text": "they said your",
+    "target_text": "disseram teu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L02U05",
+   "set": {
+    "known_text": "is it your ticket?",
+    "target_text": "é o teu bilhete?"
+   },
+   "expect": {
+    "known_text": "is it yours?",
+    "target_text": "é teu?"
+   }
+  }
+ ]
+}
