@@ -1,40 +1,58 @@
-# Pod 3 group chat, round 3: real pub talk, short turns
+# Pod 3 group chat, round 3: a pub table contributing to a real question
 
-**Verdict in one line:** this now sounds like a table of quick, funny friends in a pub. The same six bright people, but they tell stories, tease each other, gossip and take a daft question far too seriously, in turns of about ten words. The replays get going in 2 to 4 seconds.
+**Verdict in one line:** the table is now doing what layer 3 is meant to teach. Six bright people pick up each other's lines, sharpen them, concede and hold, hand the floor on, and coin phrases the rest reuse. The talk is pub talk in short turns about a question that came out of something that just happened. Each evening places nine or ten of the ten moves. The argument moves, and the replays get going in about 4 seconds.
 
 ## Read these, best first
 
-1. **Who goes first in a zombie apocalypse?** Femi's seven-year-old asked him at breakfast; Femi said Danny would go first. It goes from zombies to whether the dead float, to a ewe Hugh lost in the river in 2007, to chip-shop ratings, to gossip about Pauline's loft and who Derek ran off with. It ends mid-story. Best because it wanders the way pub talk does and every turn bounces off the one before. [Replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/zombie.html) · [script](https://watson-1.tail4968cb.ts.net/d/80b1a687)
-2. **Danny's Lisbon shirt.** The airline lost his case, and Kasia picked him an eleven-euro shirt off a market stall. It goes from the shirt, to Hugh's baler-twine belt, to Rhi in Danny's airing cupboard, to his foraged mushrooms, to the wood where the cricket second eleven wee. [Replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/lisbon.html) · [script](https://watson-1.tail4968cb.ts.net/d/f62e9681)
-3. **She reads the last page first.** Rhi confesses; Jess can't let it go. Spoilers turn into Jess's ex Craig, and then Hugh reveals that Craig married his niece. [Replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/lastpage.html) · [script](https://watson-1.tail4968cb.ts.net/d/695f09f2)
+1. **Hugh has to give the eulogy.** Clive farmed next door for forty years and was mean with it. Clive once sent Hugh a bill for the diesel after pulling him out of a ditch, and from there the question turns: Clive wasn't mean, he was "itemised". Hugh adopts the word, the table reuses it, and it turns out Clive chose Hugh himself and asked for the eulogy to be short. Best, because the question becomes a better question and every move does real work. [Replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/eulogy.html) · [script](https://watson-1.tail4968cb.ts.net/d/93edca4b)
+2. **Does Rhi tell Gwen?** Rhi saw Gwen's husband in a Ludlow hotel sharing a pudding with another woman, and Rhi is servicing Gwen's boiler on Thursday. It moves from "say nothing" to who Gwen would forgive, then to a rehearsal with Sunny playing Gwen, then to whether Gwen already knows. [Replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/tellher.html) · [script](https://watson-1.tail4968cb.ts.net/d/2d5ae571)
+3. **Would you want to know the day?** Femi says yes; Sunny says he wouldn't. "It's not the day you die, it's the day you start dying." It drifts into stories about people planning for death (a coffin full of potatoes, an envelope that turns out to hold a gas bill) and ends on the mums who keep every bill. [Replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/knowday.html) · [script](https://watson-1.tail4968cb.ts.net/d/e672c783)
 
-36 lines each, roughly 2 minutes of talk.
+36 lines each, six speakers each, roughly 2 to 3 minutes of talk. Every turn that carries a move shows its ID: as a code after the name in the script, and as a small badge in the replay.
 
-| Sample | Words per line (median / max) | Cut-ins | Over the end | Second speaker starts at |
-|---|---|---|---|---|
-| Zombie | 10 / 33 | 9 | 8 | 4.1 s |
-| Lisbon | 12 / 43 | 9 | 5 | 3.6 s |
-| Last page | 10 / 38 | 11 | 5 | 2.1 s |
+## Moves placed (turn numbers)
+
+| Move | Eulogy | Tell her | Know the day |
+|---|---|---|---|
+| F9 let me check I've got it | 5 | 5 | 7 |
+| F301 so what you're saying is | 17 | 15 | 11 |
+| F305 absorb and build | 21 | 20 | 13 |
+| F16 fair enough, but I still | 23, 36 | 9 | 8 |
+| F2 do it and throw something in | 6, 8, 31 | 13, 26 | 17 |
+| F303 the shared line | 20 | 11, 29 | 15 |
+| F304 comment on the medium | 25 | 12 | not placed |
+| F306 exactly where I'm about to go | 12 | 16 | 6 |
+| F11 and you? | 22 | 19 | 16 |
+| F302 it proves nothing, accept it anyway | 24 | 14 | 18 |
+
+The engine tags its own moves. I read every tagged turn against the move's test. One tag failed: "know the day" turn 19 ("Whole table's—") is about who holds which position, not about the conversation itself, so it was stripped and F304 is unplaced there. Two tags are on the generous side. In "tell her", turn 15 F301 ("so it's hereditary") is adopted only implicitly. In "know the day", turn 15 F303 ("Colour-coded—") reuses Jess's word but gets cut off after it.
+
+| Sample | Words per line (median / max) | Turns of 6 words or fewer | Cut-ins | Over the end | Second speaker starts at |
+|---|---|---|---|---|---|
+| Eulogy | 6 / 32 | 20 | 9 | 2 | 4.6 s |
+| Tell her | 15 / 33 | 11 | 9 | 6 | 4.6 s |
+| Know the day | 17 / 37 | 13 | 9 | 2 | 4.2 s |
 
 Round 2 ran from 2 to 115 words per line and took 20 to 40 seconds to get going.
 
-## What changed from round 2
+## How it was built
 
-- **Cards (`personas.md`):** the same six people and the same pub. Each card now says what the person teases others about, what winds them up, the stories they tell and what they're daft about (wild swimming, a feud with a peacock, foraging, Strictly, chippy ratings). The debate moves are gone. Danny and Sunny are told not to tell work cases. Round 2's cards are in `v2/`.
-- **Topics:** pub moments with energy already in them (a story, an everyday hot take, a daft hypothetical), never a seminar question. Each one is allowed to wander off its starting point.
-- **Engine (`chain.cjs`):** "argue about something that matters" is replaced with pub talk. Turns are mostly one sentence; anything over 50 words is regenerated once. The first line is under 15 words. Cut-ins come about 1 turn in 3. New bans: no politics, policy or current-affairs debate, no lecture or explanation turns. Each speaker is told never to repeat the kind of move they have already made that evening. There is a fixed-facts line for ages and dates.
-- **Grounding:** `style-real-talk.md` is about ten lightly trimmed lines from Tom and Aran's real recorded conversation (2026-09-25). The engine copies its texture and is told never to borrow its words. A `STYLE_FILE` hook can add more corpus excerpts.
-- **Shared avoid-list (`avoid-shared.txt`):** the avoid-list ran from the start. It carried round 2's habits and grew after each evening, so no bit recurs across the three.
-- **One hand edit:** a piece of town gossip in the zombie sample named a "Mandy". That is a colleague's name, so it was changed to Shelley. No other line was touched. There were no reruns.
+- **Structure** comes from #987's real recorded excerpts (Santa Barbara, KIParla, Val.Es.Co, CLAPI, /d/dbb63a59), used for shape only, never lines: tiny turns, constant overlap, stories that get interrupted, teasing over opinions. A few lines of Tom and Aran's own recorded talk (`style-real-talk.md`) are in the prompt as a texture reference.
+- **Content** is a question a pub table would genuinely chew on, set off by something that just happened: a eulogy for a mean neighbour, whether to tell a friend, whether you'd want to know your death date. It is not policy, not a seminar, and not a lads' holiday. The engine bans toilet, sex and drunk humour on these evenings.
+- **Moves** (#988, /d/108cdbeb): the engine gets the ten move tests and may tag a turn only when it passes. Each turn it is told which moves are still unplaced. In the middle of the evening it is sometimes nudged to place one, but only if it fits.
+- **Cards** (`personas.md`): the same six people in the same pub. They are rewritten around teasing, stories and what each person is daft about. Danny and Sunny don't tell work cases. Round 2 is in `v2/` and round 1 in `v1/`.
+- **Engine** (`chain.cjs`): mostly one-sentence turns; anything over 50 words is regenerated once. The first line is under 15 words, cut-ins come about 1 turn in 3, and nobody repeats the kind of move they have already made. Bans: no politics, no lecture turns, no sentimental or punchline endings. There is a shared avoid-list (`avoid-shared.txt`). No reruns; one 12-turn probe (`probe/`).
+
+## The first take this round: pure banter, no question
+
+Before #988's move set arrived, round 3 ran as pure pub banter: a zombie hypothetical, Danny's Lisbon shirt, and someone who reads the last page first. They are livelier but say less. Nobody has to contribute to anything. [Zombie](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/zombie.html) · [Lisbon](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/lisbon.html) · [Last page](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/lastpage.html)
 
 ## What still doesn't work
 
-- **The laughter is heavy.** "ha" backchannels land on most good lines, and Rhi laughs at nearly everything. It reads a bit like a laugh track.
-- **Lines are still a little too neat.** The jokes are tighter and land more often than at a real table. There are some fumbles ("the, the torch walk thing"), but fewer dead ends than in Tom and Aran's real recording.
-- **Endings:** the last-page sample ends on a punchline ("You'd have rung me sooner"), which the rules ban. The other two end as designed.
-- **The toilet humour clusters.** The Lisbon evening goes to wee jokes twice.
+- **Too many laughs.** "ha" backchannels land on most good lines, which reads like a laugh track.
+- **Still a little written.** The real excerpts are far messier: half the turns are "yeah" and "right", with abandoned sentences and side business (plates, candles). These samples have fewer dead ends than real talk, and almost nothing physical breaks in.
+- **Move density is higher than a real evening's.** All ten moves in 36 turns is a teaching sample, not a recording. For a learner pod that is probably right; as a picture of a real night it is a touch busy.
 - **Still no learner at the table,** as in rounds 1 and 2.
-- **Round 2's replays are gone.** degree.html, estate.html and inherit.html were deleted from the evidence folder by something outside this job (they were never committed), and #980's worktree, with its run JSON, has been wiped, so they cannot be rebuilt. Their scripts are still published. This round's replays are committed in command-surface, and its run JSON is force-added here so they can be rebuilt.
 
 ## Files
-`node chain.cjs <lisbon|lastpage|zombie> <turns> opus`, with optional `OUT_KEY=`, `AVOID_FILE=` and `STYLE_FILE=`. Under systemd, pass `CLAUDE_CONFIG_DIR` or the CLI is not logged in. Render a replay with `node render-replay.cjs <topic> "<title>" <html dir>`. The 10-turn probe is in `probe/`. Rounds 1 and 2 are in `v1/` and `v2/`.
+`node chain.cjs <eulogy|tellher|knowday|zombie|lisbon|lastpage> <turns> opus`, with optional `OUT_KEY=`, `AVOID_FILE=` and `STYLE_FILE=`. Moves are on for eulogy, tellher and knowday. Under systemd, pass `CLAUDE_CONFIG_DIR` or the CLI is not logged in. Render with `node render-replay.cjs <topic> "<title>" <html dir>`; it writes `script-<topic>.md` with move codes. The run JSON is committed, so replays can be rebuilt.

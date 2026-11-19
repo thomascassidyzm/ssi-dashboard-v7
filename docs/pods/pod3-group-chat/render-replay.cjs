@@ -48,6 +48,8 @@ const lines = T.map((e, i) => ({
   cutIn: !!e.cutIn,
   overlap: !!e.overlap,
   bcs: bcList(e),
+  move: e.move || null, // layer-3 move ID (#986 after #988), shown on the turn so QA can read the moves off the page
+  n: i + 1,
 }));
 
 // ---- 1. Churchill script ----
@@ -59,11 +61,14 @@ function scriptLine(l) {
   for (const x of ins) { s += l.text.slice(k, x.at) + x.s; k = x.at; }
   s += l.text.slice(k);
   if (l.cutOff) s = s.replace(/[\s,;:.]+$/, '') + '—';
-  return `**${l.speaker.toUpperCase()}** ${s}`;
+  return HAS_MOVES ? `${l.n}. **${l.speaker.toUpperCase()}**${l.move ? ' `' + l.move + '`' : ''} ${s}` : `**${l.speaker.toUpperCase()}** ${s}`;
 }
+const HAS_MOVES = lines.some(l => l.move);
+const MOVE_NAMES = { F9: "let me check I've got it", F301: "so what you're saying is", F305: 'absorb and build', F16: 'fair enough, but I still', F2: 'do it and throw something in', F303: 'the shared line', F304: 'comment on the medium', F306: "exactly where I'm about to go", F11: 'and you?', F302: 'it proves nothing, accept it anyway' };
+const moveKey = HAS_MOVES ? '\n\n*Moves:* a code after a name marks a layer-3 move on that turn: ' + Object.entries(MOVE_NAMES).map(([k, v]) => '`' + k + '` ' + v).join(' · ') + '.' : '';
 const scriptMd = `# ${title} (script)
 
-*How to read it:* a **/** marks where the next speaker starts talking over the line. A line ending in **—** is cut off there. Short back-channels like *(Dean: mm)* sit in brackets where they land. [Watch it as a timed replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/${topic}.html).
+*How to read it:* a **/** marks where the next speaker starts talking over the line. A line ending in **—** is cut off there. Short back-channels like *(Dean: mm)* sit in brackets where they land. [Watch it as a timed replay](https://watson-1.tail4968cb.ts.net/evidence/pod3-group-chat/${topic}.html).${moveKey}
 
 *${run.topic}*
 
@@ -96,6 +101,7 @@ button.on{border-color:var(--text)}
 .msg.over{margin-left:22px;margin-top:-4px}
 .msg.over::before{content:"talking over";display:block;font-size:11px;color:var(--muted);letter-spacing:.03em;text-transform:uppercase}
 .who{font-weight:700;color:var(--c);font-size:13px;margin-right:6px}
+.mv{font-size:10px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:0 4px;margin-right:6px;vertical-align:1px}
 .typing .t::after{content:"▌";opacity:.5;animation:blink 1s steps(1) infinite}
 .cut{color:var(--muted)}
 .bc{font-size:13px;color:var(--muted);font-style:italic;animation:in .25s ease}
@@ -136,7 +142,7 @@ LINES.forEach((l,i)=>{
 });
 const feed=document.getElementById('feed'); let els=[]; let speed=1, playing=true, clock=0, last=null;
 function esc(x){return x.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function build(){feed.innerHTML='';els=LINES.map((l,i)=>{const d=document.createElement('div');d.className='msg'+(l.cutIn||l.overlap?' over':'');d.style.setProperty('--c',COL[l.speaker]||'#999');d.innerHTML='<span class="who">'+l.speaker+'</span><span class="t"></span>';d.hidden=true;feed.appendChild(d);return {d,t:d.querySelector('.t'),n:-1}})}
+function build(){feed.innerHTML='';els=LINES.map((l,i)=>{const d=document.createElement('div');d.className='msg'+(l.cutIn||l.overlap?' over':'');d.style.setProperty('--c',COL[l.speaker]||'#999');d.innerHTML='<span class="who">'+l.speaker+'</span>'+(l.move?'<span class="mv">'+l.move+'</span>':'')+'<span class="t"></span>';d.hidden=true;feed.appendChild(d);return {d,t:d.querySelector('.t'),n:-1}})}
 function render(i,n){
   const l=LINES[i],p=plan[i],e=els[i]; if(e.n===n) return; e.n=n;
   let h='',k=0; const ins=[];
