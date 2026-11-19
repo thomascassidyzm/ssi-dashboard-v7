@@ -81,7 +81,19 @@ for n in plan['touched_seeds']:
     fails = {f['seed']: f['issues'] for f in ans.get('failures', [])}
     new = {}
     for sd, iss in fails.items():
-        extra = [i for i in iss if i not in basefail.get(sd, [])]
+        # cs #784: an issue is NEW only if its kind is new for that LEGO, or its count got WORSE (the live gate words the
+        # count into the message, so '4 phrase(s) fail containment' -> '3 …' is an improvement, not a new issue)
+        import re as _re
+        def _k(i):
+            lab, _, rest = i.partition(': ')
+            return lab + ': ' + _re.sub(r'\d+', '#', rest.split(' (')[0].split(': "')[0])
+        def _n(i):
+            m = _re.search(r'got (\d+)', i)
+            if m: return -int(m.group(1))
+            m = _re.search(r'(\d+) (?:phrase|duplicate)', i)
+            return int(m.group(1)) if m else 0
+        basek = {_k(b): _n(b) for b in basefail.get(sd, [])}
+        extra = [i for i in iss if _k(i) not in basek or _n(i) > basek[_k(i)]]
         if extra:
             new[sd] = extra
     results[n] = {'seed_issues_planned': fails.get(n, []), 'seed_issues_live': basefail.get(n, []), 'new_issues_anywhere': new, 'error': ans.get('error')}

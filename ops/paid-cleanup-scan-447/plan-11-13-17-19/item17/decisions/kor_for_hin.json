@@ -3,24 +3,12 @@
  "legos": [
   {
    "id": "S0111L02",
-   "verdict": "grow",
-   "pattern": "D",
-   "known": "जब हम सीखते हैं",
-   "target": "우리가 배울 때",
+   "verdict": "recut",
+   "pattern": "C",
+   "known": "जब सीखते हैं",
+   "target": "배울 때",
    "type": "M",
-   "ack": [
-    "target"
-   ],
-   "ack_rows": [
-    "B02",
-    "B03",
-    "B04"
-   ],
    "components": [
-    [
-     "हम",
-     "우리가"
-    ],
     [
      "सीखते हैं",
      "배울"
@@ -32,16 +20,13 @@
    ],
    "basket": {
     "B01": [
-     "जब हम सीखते हैं",
-     "우리가 배울 때"
+     "जब सीखते हैं",
+     "배울 때"
     ],
-    "B02": [
+    "B02": "keep",
+    "B03": [
      "जब हम कुछ नया सीखते हैं",
      "우리가 새로운 것을 배울 때"
-    ],
-    "B03": [
-     "जब हम आज सीखते हैं",
-     "우리가 오늘 배울 때"
     ],
     "B04": [
      "जब हम बहुत सारे नए शब्द सीखते हैं",
@@ -53,7 +38,7 @@
     "U04": "keep",
     "U05": "keep"
    },
-   "why": "PATTERN D, grown not split. '우리가 배울' cannot stand: 배울 is a form that needs the word after it, and the seed's 때 ('when') was in NO LEGO (S3 gap). Grown by 때: 'जब हम सीखते हैं | 우리가 배울 때' (6 syllables), a clause that stands on its own (L32), whose middle '새로운 것을' is S0111L01, taught first. Every use row already says it; 3 build rows that stopped at 배울 gain 때. POV pass: precedent S0034L02 'जब यहाँ हों | 여기 있을 때'."
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'हम सीखते हैं | 우리가 배울' joins the subject to 배울 across the object, and 배울 is a form that needs the word after it; the seed's 때 ('when') was in NO LEGO (a coverage gap, S3). Shortest contiguous cut: 'जब सीखते हैं | 배울 때' (3 syllables), which closes that gap. Precedent S0034L02 'जब यहाँ हों | 여기 있을 때'. 우리가 was taught at seed 104 and is carried by the rows. Every use row already says 배울 때; 2 build rows that stopped at 배울 gain 때."
   },
   {
    "id": "S0132L03",
@@ -62,6 +47,7 @@
    "ack_rows": [
     "B02",
     "B03",
+    "B04",
     "U01",
     "U02",
     "U03",
@@ -93,7 +79,10 @@
      "उससे कम जो मैं कह रहा था",
      "제가 말하던 것보다 덜"
     ],
-    "B04": "del",
+    "B04": [
+     "उससे बहुत कम जो मैं कह रहा था",
+     "제가 말하던 것보다 정말 덜"
+    ],
     "U01": [
      "वह उससे कम रोमांचक है जो मैं कह रहा था",
      "그것은 제가 말하던 것보다 덜 흥미로워요"
@@ -115,7 +104,7 @@
      "제가 말하던 것보다 정말 덜 흥미로워요"
     ]
    },
-   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'वह उससे | 그것은 것보다' joins the first word of the seed to an ending from its middle; every row in the basket is broken Korean ('그것은 것보다 덜'). 것보다 ('than what…') cannot stand without its verb, so it grows to the verb in its own seed (L22): 'उससे जो कह रही थी | 말하던 것보다' (6 syllables). Growing S0132L04 instead would be 9 syllables. 그것은 keeps no LEGO of its own here because its only honest Hindi prompt, 'वह', already means 그는 ('he', S0016L01) — it is carried by the rows and by S0086L02. Whole basket rebuilt (10 rows → 8)."
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'वह उससे | 그것은 것보다' joins the first word of the seed to an ending from its middle; every row in the basket is broken Korean ('그것은 것보다 덜'). 것보다 ('than what…') cannot stand without its verb, so it grows to the verb in its own seed (L22): 'उससे जो कह रही थी | 말하던 것보다' (6 syllables). Growing S0132L04 instead would be 9 syllables. 그것은 keeps no LEGO of its own here because its only honest Hindi prompt, 'वह', already means 그는 ('he', S0016L01) — it is carried by the rows and by S0086L02. Whole basket rebuilt (9 rows)."
   },
   {
    "id": "S0135L04",
@@ -125,21 +114,10 @@
    "extra": [
     {
      "op": "phrase.update",
-     "phrase_id": "kor_for_hin:S0135L04B02",
-     "set": {
-      "target_text": "왜 좋다고 생각하는지"
-     },
-     "expect": {
-      "known_text": "अच्छा क्यों लगता है",
-      "target_text": "좋다고 왜 생각하는지"
-     }
-    },
-    {
-     "op": "phrase.update",
      "phrase_id": "kor_for_hin:S0135L04B03",
      "set": {
       "known_text": "यह अच्छा क्यों लगता है",
-      "target_text": "왜 그것이 좋다고 생각하는지"
+      "target_text": "그것이 좋다고 왜 생각하는지"
      },
      "expect": {
       "known_text": "यह क्यों लगता है",
@@ -147,7 +125,7 @@
      }
     }
    ],
-   "why": "NOT GAPPED (keep). '왜 생각하는지' ('why … think') is a well-formed clause on its own and its middles (그것이, 그렇게 좋다고) are S0135L01–L02, taught before it — exactly the frame L32 allows; rows fill the slot (K49). Splitting it would give 'लगता है | 생각하는지', a second answer for a prompt that already means 생각해요 (S0072L01). Two build rows had the Korean in an impossible order (좋다고 왜 생각하는지) and are corrected."
+   "why": "NOT GAPPED (keep). '왜 생각하는지' ('why … think') is a well-formed clause on its own and its middles (그것이, 그렇게 좋다고) are S0135L01–L02, taught before it — exactly the frame L32 allows; rows fill the slot (K49). Splitting it would give 'लगता है | 생각하는지', a second answer for a prompt that already means 생각해요 (S0072L01). One build row, '그것이 왜 생각하는지' ('why it thinks'), had lost its 좋다고 and is corrected."
   },
   {
    "id": "S0137L04",

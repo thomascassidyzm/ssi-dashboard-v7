@@ -287,6 +287,11 @@
      "b",
      "গতকাল তুমি খুব সাহসী ছিলে",
      "you were very brave yesterday"
+    ],
+    [
+     "b",
+     "আমি জানি তুমি খুব সাহসী ছিলে",
+     "I know you were very brave"
     ]
    ],
    "extra": [
@@ -376,6 +381,21 @@
     {
      "op": "phrase.insert",
      "row": {
+      "id": "eng_for_ben:S0615L03B04",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "তুমি এটা বলতে সাহসী ছিলে",
+      "target_text": "you were brave to say that",
+      "phrase_role": "build",
+      "position": 4,
+      "word_count": 6,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
       "id": "eng_for_ben:S0615L03U01",
       "course_code": "eng_for_ben",
       "seed_number": 615,
@@ -383,7 +403,7 @@
       "known_text": "তুমি এটা বলতে খুব সাহসী ছিলে।",
       "target_text": "you were very brave to say that",
       "phrase_role": "use",
-      "position": 4,
+      "position": 5,
       "word_count": 7,
       "lego_count": 1
      }
@@ -398,7 +418,7 @@
       "known_text": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
       "target_text": "I thought you were very brave to say that",
       "phrase_role": "use",
-      "position": 5,
+      "position": 6,
       "word_count": 9,
       "lego_count": 1
      }
@@ -413,7 +433,7 @@
       "known_text": "আমি এটা বলতে চাই।",
       "target_text": "I want to say that",
       "phrase_role": "use",
-      "position": 6,
+      "position": 7,
       "word_count": 5,
       "lego_count": 1
      }
@@ -428,7 +448,7 @@
       "known_text": "আমি এটা বলতে চাইনি।",
       "target_text": "I didn't want to say that",
       "phrase_role": "use",
-      "position": 7,
+      "position": 8,
       "word_count": 6,
       "lego_count": 1
      }
@@ -443,7 +463,7 @@
       "known_text": "আমি এটা বলতে চেষ্টা করছি।",
       "target_text": "I'm trying to say that",
       "phrase_role": "use",
-      "position": 8,
+      "position": 9,
       "word_count": 5,
       "lego_count": 1
      }

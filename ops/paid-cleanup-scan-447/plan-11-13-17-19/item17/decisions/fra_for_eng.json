@@ -3,25 +3,13 @@
  "legos": [
   {
    "id": "S0644L02",
-   "verdict": "regloss",
+   "verdict": "kai",
    "pattern": "not-gapped",
-   "is_new": true,
-   "ack": [
-    "target"
-   ],
-   "basket": {
-    "B01": "keep",
-    "B02": "keep",
-    "B03": "keep",
-    "U01": "keep",
-    "U02": "keep",
-    "U03": "keep",
-    "U04": "keep",
-    "U05": "keep"
-   },
-   "why": "NOT GAPPED, but wrongly dark. 'could you sir? | pourriez-vous monsieur ?' is complete French on its own (a frame, L32); the scan proposed retiring it. The real fault is its flag: it is marked not-new, yet no earlier LEGO teaches this pair, so its 8 good rows ('could you help me sir?') are never played (P25). L31: a not-new LEGO with no earlier exact pair 'becomes NEW, with an intro and a played basket'. Flip to NEW; it already holds the seed sentence. Cross-family: S0644L01 (the whole seed as one 10-syllable LEGO whose rows drill only 'cela') is items 11/19.",
+   "why": "HOLD — decide together with S0644L01. 'could you sir? | pourriez-vous monsieur ?' is NOT gapped in Kai's sense: it is complete French on its own (a frame, L32). Its real fault is that it is marked not-new although no earlier LEGO teaches the pair, so its 8 good rows ('could you help me sir?') are never played (P25), while S0644L01 — the whole seed as one 10-syllable LEGO — is the NEW one and its rows drill only 'cela'. The scan said 'retire it'; that throws away the good basket. Better: make THIS the taught LEGO (L31: a not-new LEGO with no earlier pair 'becomes NEW') and re-cut S0644L01 to the middle. Not planned here because (a) S0644L01 belongs to items 11 and 19, and (b) Popty's validator counts a split LEGO as 'not contained' (7 of these 8 rows put the verb inside pourriez-vous … monsieur), although K49 says 'a split LEGO still counts as contained'.",
    "closes": [
-    "16"
+    "16",
+    "11",
+    "19"
    ]
   }
  ]

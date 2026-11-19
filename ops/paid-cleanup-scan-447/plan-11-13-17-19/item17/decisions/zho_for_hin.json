@@ -10,7 +10,8 @@
    ],
    "ack_rows": [
     "U02",
-    "U03"
+    "U03",
+    "U05"
    ],
    "known": "क्या आपने देखा है",
    "target": "你有没有看到",
@@ -35,8 +36,8 @@
      "你有没有看到"
     ],
     "B02": [
-     "क्या आपने उन्हें देखा है",
-     "你有没有看到他们"
+     "क्या आपने उसे देखा है",
+     "你有没有看到他"
     ],
     "B03": [
      "क्या आपने मुझे देखा है",
@@ -63,8 +64,8 @@
      "你有没有看到我的朋友？"
     ],
     "U05": [
-     "क्या आपने उसे देखा है?",
-     "你有没有看到他？"
+     "क्या आपने वह किताब देखी है?",
+     "你有没有看到那本书？"
     ],
     "U06": "del"
    },
@@ -128,7 +129,7 @@
      "我不觉得我们要向左转"
     ]
    },
-   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'हमें बाएँ मुड़ना है | 我们要向左转'. In the seed the place phrase 在下一个路口 sits inside it; the LEGO stands on its own as complete Chinese, which is what L32 asks of a frame ('a LEGO only if it stands on its own as complete target language'), and 向左转 was taught at seed 359. COST: the basket's 7 varied rows (我们要练习, 我们要学习中文…) are rebuilt around 向左转. ALTERNATIVE for Kai, not planned: keep 我们要 and its varied basket, and give the Hindi label a stand-in verb ('हमें करना है') — a stand-in other than 'it' has no ruling behind it."
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'हमें बाएँ मुड़ना है | 我们要向左转'. In the seed the place phrase 在下一个路口 sits inside it; the LEGO stands on its own as complete Chinese, which is what L32 asks of a frame ('a LEGO only if it stands on its own as complete target language'), and 向左转 was taught at seed 359. COST: the basket's 7 varied rows (我们要练习, 我们要学习中文…) are rebuilt around 向左转. ALTERNATIVE for Kai, not planned: keep 我们要 and its varied basket, and give the Hindi label a stand-in verb, 'हमें करना है', as this course already does at S0005L02 ('मैं करने वाला हूँ | 我要'). Cheaper (one prompt clip), but Kai's stand-in ruling covers 'it' only, and 'हमें करना है' invites the answer 我们要做."
   },
   {
    "id": "S0418L01",
