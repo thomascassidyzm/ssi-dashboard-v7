@@ -5612,8 +5612,8 @@ async function immersionTurnForRender({ language, text, voice }) {
   }
 }
 
-// The render route's deps. The text is rendered VERBATIM (no gender
-// expansion): the caller names the exact words to be spoken.
+// The render route's deps. A target seat speaks its seat's gender form since cs #989·AI (genderRow / ensureGender /
+// markerForm below, rule in shared/render-gender-prep.cjs); every other role speaks the caller's words as given.
 /**
  * The course_audio row (and clip_index entry) for a clip whose object is ALREADY in S3 and PAID FOR (job #140).
  * A lock wait behind another transaction on the same course is retried (services/shared/paid-write.cjs) rather
@@ -5739,11 +5739,20 @@ function buildRenderDeps({ verifiedApproval = null } = {}) {
         return !!(data && data.length)
       },
       immersionTurn: immersionTurnForRender,
-      // SPEAKER-GENDER PREP (cs #989·AI, shared/render-gender-prep.cjs): the course's gendered-ness, as ensureExpansionForText reads it.
-      genderCourse: async (courseCode) => {
-        const { data, error } = await supabase.from('courses').select('target_lang, needs_gender_prep').eq('course_code', courseCode).maybeSingle()
-        if (error) throw new Error(`courses unreadable (gender prep): ${error.message}`)
-        return data ? { ...data, gendered: genderHaikuService.GENDERED_LANGUAGES } : null
+      // SPEAKER-GENDER PREP (cs #989·AI, shared/render-gender-prep.cjs): the same row, the same writer and the same marker
+      // fallback phase8's own render paths use. ONE row by key (course, exact text, side 'target') — read fresh, never memoised,
+      // so a row ensureGender just wrote is seen at once. A failed read THROWS: not knowing the form must never mean "male".
+      genderRow: async ({ courseCode, text }) => {
+        const { data, error } = await supabase.from('course_gender_expansions').select('expanded_f, expanded_m')
+          .eq('course_code', courseCode).eq('original_text', text).eq('text_side', 'target').limit(1)
+        if (error) throw new RenderRequestError(`course_gender_expansions unreadable (${error.message}) — not rendered in the unprepared form`, 503, 'GENDER_PREP_MISSING')
+        return (data || [])[0] || null
+      },
+      ensureGender: ({ courseCode, text }) => genderHaikuService.ensureExpansionForText(courseCode, text, supabase),
+      markerForm: ({ text, language, role }) => {
+        if (!genderService.hasGenderMarker(text)) return null
+        const m = genderService.analyzeAndExpand(text, language, role)
+        return m.wasModified ? m.expandedText : null
       },
       // Per-language stop (job #352): every recording of these words in this language, any course / side / voice, and the
       // route's existing re-record authority that may let a second performance past it.
