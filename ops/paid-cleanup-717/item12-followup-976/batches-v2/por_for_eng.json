@@ -1,0 +1,22 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "known_text": "no they have to catch the train"
+   },
+   "expect": {
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "não, eles têm de apanhar o comboio"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 450,
+   "slot": "known",
+   "audio_id": "f8df1e9a-17d7-4420-bb0f-b9d6268ad6c2"
+  }
+ ]
+}
