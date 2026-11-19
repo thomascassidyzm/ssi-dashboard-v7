@@ -223,10 +223,10 @@ def main():
         elif SPACELESS.search(norm(nk)):  # Japanese known: the gloss must be the seed's own chunk (inflection tolerated)
             miss = [] if words_in(sk_after, nk) else [nk]
         else:
-            miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
+            miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to' and not (w == 'it' and d.get('stand_in_it'))]
         chk['known_in_seed'] = not miss or miss
         chk['target_in_seed'] = has(s['target'], nt)
-        chk['syllables'] = syl(nt, course)
+        chk['syllables'] = d.get('syl') or syl(nt, course)  # syl: a hand count where the estimator overcounts (jpn kanji)
         if chk['syllables'] > 8: problems.append(f'{lid}: target {nt} estimated {chk["syllables"]} syllables (>8) — hand-check')
         if miss and d['verdict'] != 'regloss-partial': problems.append(f'{lid}: known words not in seed: {miss}')
         if not chk['target_in_seed']: problems.append(f'{lid}: target {nt} not contiguous in seed {s["target"]}')
@@ -361,7 +361,10 @@ def main():
         nu = sum(1 for ro, k, t, w in rows if ro == 'use' and not bare(t))
         mb, mu = (1, 1) if n <= 3 else (3, 5)
         r['floor'] = {'build': nb, 'use': nu, 'need': [mb, mu]}
-        if nb < mb or nu < mu:
+        touched_rows = r['before']['target'] != r['after']['target'] or any(w for ro, k, t, w in rows)
+        if (nb < mb or nu < mu) and not touched_rows:  # known-only regloss (K54 etc.): the basket is as it was; baseline owns the floor
+            r['floor']['preexisting'] = True
+        elif nb < mb or nu < mu:
             problems.append(f"{r['id']}: below the validator floor after plan (build {nb}/{mb}, use {nu}/{mu})")
         viol, pre = [], []
         for ro, k, t, written in rows:
@@ -459,7 +462,7 @@ def main():
                 tt, tgt = o['row']['target_text'], o['row']
                 has_rom = lego_rom.get(f"S{o['row']['seed_number']:04d}L{o['row']['lego_index']:02d}", False)
             if tt and has_rom:
-                r, fl = roman(course, tt, ovr)
+                r, fl = roman(course, tt, ovr, dec.get('roman_words'))
                 tgt['target_text_roman'] = r
                 for f in fl:
                     roman_flags.append(f'{tt} -> {r}: {f}')

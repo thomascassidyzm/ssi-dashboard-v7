@@ -1,0 +1,2295 @@
+{
+ "course": "eng_for_zho",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:47:11Z",
+ "decisions": 11,
+ "verdicts": {
+  "regloss": 8,
+  "seed": 1,
+  "delete": 1,
+  "grow": 1
+ },
+ "touched_seeds": [
+  11,
+  12,
+  26,
+  33,
+  34,
+  55,
+  57,
+  59,
+  103,
+  218
+ ],
+ "problems": [
+  "ZUT introduced/changed: \"能\" -> ['make', 'to be able']"
+ ],
+ "auto_substitutions": [],
+ "zut_after_changed": {
+  "能": [
+   "make",
+   "to be able"
+  ]
+ },
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0011L01",
+   "verdict": "regloss",
+   "why": "The two sides are out of step: known 我想 (\"I want\") over target \"To be able\". Every row pairs 能 with \"to be able\" (能说 | To be able to speak), and the seed says 能说话. Known → 能.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 11,
+    "known": "我想在你说完以后能说话",
+    "target": "I'd like to be able to speak after you finish"
+   },
+   "before": {
+    "known": "我想",
+    "target": "To be able",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "能",
+    "target": "To be able",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0011L01B01",
+     "role": "build",
+     "before": [
+      "能说",
+      "To be able to speak"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01B02",
+     "role": "build",
+     "before": [
+      "能说英语",
+      "To be able to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01B03",
+     "role": "build",
+     "before": [
+      "能练习说",
+      "To be able to practise speaking"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U01",
+     "role": "use",
+     "before": [
+      "我想能说英语",
+      "I want to be able to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U02",
+     "role": "use",
+     "before": [
+      "我想能和你说英语",
+      "I want to be able to speak English with you"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U03",
+     "role": "use",
+     "before": [
+      "我想能和别人练习说",
+      "I want to be able to practise speaking with someone else"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U04",
+     "role": "use",
+     "before": [
+      "我想能记住整个句子",
+      "I want to be able to remember the whole sentence"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U05",
+     "role": "use",
+     "before": [
+      "我想能用英语解释我的意思",
+      "I want to be able to explain what I mean in English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U06",
+     "role": "use",
+     "before": [
+      "我想能说一点英语",
+      "I want to be able to speak a little English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U07",
+     "role": "use",
+     "before": [
+      "我在努力能记住一个词",
+      "I'm trying to be able to remember a word"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0011L01U08",
+     "role": "use",
+     "before": [
+      "我想能尽可能多地练习说",
+      "I want to be able to practise speaking as often as possible"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 8
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 28,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0011L02U01",
+      "known": "我想能和别人说英语",
+      "target": "I'd like to be able to speak English with someone else",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U02",
+      "known": "我想能说一点",
+      "target": "I'd like to be able to speak a little",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U03",
+      "known": "我想能现在练习说",
+      "target": "I'd like to be able to practise speaking now",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U04",
+      "known": "我想能今天和你练习说英语",
+      "target": "I'd like to be able to practise speaking English with you today",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U05",
+      "known": "我想能用英语说一些东西",
+      "target": "I'd like to be able to say something in English",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U06",
+      "known": "我想能记住整个句子",
+      "target": "I'd like to be able to remember the whole sentence",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U07",
+      "known": "我想能解释我的意思",
+      "target": "I'd like to be able to explain what I mean",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L02U08",
+      "known": "我想能尽全力试",
+      "target": "I'd like to be able to try as hard as I can",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L03U06",
+      "known": "我想能说完整个句子",
+      "target": "I'd like to be able to finish the whole sentence",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L05U01",
+      "known": "我想能在你说完以后说",
+      "target": "I'd like to be able to speak after you finish",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0011L05U08",
+      "known": "我想能在你说完以后说英语",
+      "target": "I'd like to be able to speak English after you finish",
+      "seed": 11
+     },
+     {
+      "id": "eng_for_zho:S0012L01U04",
+      "known": "我想能猜",
+      "target": "I'd like to be able to guess",
+      "seed": 12
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0012L02",
+   "verdict": "regloss",
+   "why": "\"Doesn't want\" is not in the English seed (\"I wouldn't like to guess…\"); every row already says \"wouldn't like\". Target → the seed's words (L26).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 12,
+    "known": "我不想猜明天会发生什么",
+    "target": "I wouldn't like to guess what's going to happen tomorrow"
+   },
+   "before": {
+    "known": "不想",
+    "target": "Doesn't want",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "不想",
+    "target": "wouldn't like",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0012L02B01",
+     "role": "build",
+     "before": [
+      "不想说英语",
+      "Wouldn't like to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02B02",
+     "role": "build",
+     "before": [
+      "不想学习",
+      "Wouldn't like to learn"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02B03",
+     "role": "build",
+     "before": [
+      "不想猜",
+      "Wouldn't like to guess"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U01",
+     "role": "use",
+     "before": [
+      "我不想说英语",
+      "I wouldn't like to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U02",
+     "role": "use",
+     "before": [
+      "我不想学习",
+      "I wouldn't like to learn"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U03",
+     "role": "use",
+     "before": [
+      "我不想猜",
+      "I wouldn't like to guess"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U04",
+     "role": "use",
+     "before": [
+      "我不想试",
+      "I wouldn't like to try"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U05",
+     "role": "use",
+     "before": [
+      "我不想现在练习说",
+      "I wouldn't like to practise speaking now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U06",
+     "role": "use",
+     "before": [
+      "我不想解释我的意思",
+      "I wouldn't like to explain what I mean"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U07",
+     "role": "use",
+     "before": [
+      "我不想和别人说英语",
+      "I wouldn't like to speak English with someone else"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0012L02U08",
+     "role": "use",
+     "before": [
+      "我不想说完",
+      "I wouldn't like to finish"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 8
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 8,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 50,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0034L05B01",
+      "known": "他不想",
+      "target": "He doesn't want",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05B02",
+      "known": "他不想安静",
+      "target": "He doesn't want to be quiet",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05B03",
+      "known": "他不想回来",
+      "target": "He doesn't want to come back",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05B04",
+      "known": "他不想在这里说英语",
+      "target": "He doesn't want to speak English here",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05U01",
+      "known": "他不想在这里学英语",
+      "target": "He doesn't want to learn English here",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05U02",
+      "known": "他不想安静的时候其他人在这里",
+      "target": "He doesn't want to be quiet when other people are here",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05U03",
+      "known": "他不想在这里安静",
+      "target": "He doesn't want to be quiet here",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05U04",
+      "known": "他不想回来的时候其他人在说英语",
+      "target": "He doesn't want to come back when other people are speaking English",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05U05",
+      "known": "因为他不想在这里说英语",
+      "target": "Because he doesn't want to speak English here",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0035L01B02",
+      "known": "不想读",
+      "target": "Doesn't want to read",
+      "seed": 35
+     },
+     {
+      "id": "eng_for_zho:S0035L02B01",
+      "known": "不想读任何东西",
+      "target": "Doesn't want to read anything",
+      "seed": 35
+     },
+     {
+      "id": "eng_for_zho:S0035L02U04",
+      "known": "他不想读任何东西",
+      "target": "He doesn't want to read anything",
+      "seed": 35
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0026L03",
+   "verdict": "seed",
+   "why": "The Chinese seed 我喜欢那种快要准备好出发的感觉 has no 好像, while the English says \"as if\": no Chinese word glosses the target's \"as if\" (S15). KAI: known seed edit to 我喜欢那种好像快要准备好出发的感觉 (好像 inside the same 那种…的感觉 frame).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 26,
+    "known": "我喜欢那种快要准备好出发的感觉",
+    "target": "I like feeling as if I'm nearly ready to go"
+   },
+   "before": {
+    "known": "好像",
+    "target": "Seems",
+    "type": "A",
+    "is_new": true
+   },
+   "seed_after": "我喜欢那种好像快要准备好出发的感觉",
+   "seed_copies_updated": [],
+   "extra": []
+  },
+  {
+   "id": "S0026L03",
+   "verdict": "regloss",
+   "why": "\"Seems\" is not in the English seed; it says \"as if\", which every row already says. With the seed edit the Chinese says 好像.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 26,
+    "known": "我喜欢那种快要准备好出发的感觉",
+    "target": "I like feeling as if I'm nearly ready to go"
+   },
+   "before": {
+    "known": "好像",
+    "target": "Seems",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "好像",
+    "target": "as if",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0026L03B01",
+     "role": "build",
+     "before": [
+      "好像我想走",
+      "As if I want to go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03B02",
+     "role": "build",
+     "before": [
+      "好像我说英语很好",
+      "As if I speak English very well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03B03",
+     "role": "build",
+     "before": [
+      "好像我想说英语",
+      "As if I want to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03U01",
+     "role": "use",
+     "before": [
+      "我喜欢感觉好像我说英语很好",
+      "I like feeling as if I speak English very well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03U02",
+     "role": "use",
+     "before": [
+      "感觉好像我想说英语",
+      "Feeling as if I want to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03U03",
+     "role": "use",
+     "before": [
+      "感觉好像我必须说英语",
+      "Feeling as if I have to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03U04",
+     "role": "use",
+     "before": [
+      "我喜欢感觉好像我在学英语",
+      "I like feeling as if I'm learning English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0026L03U05",
+     "role": "use",
+     "before": [
+      "感觉好像我想回来",
+      "Feeling as if I want to come back"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0146L01B01",
+      "known": "好像什么都不行了",
+      "target": "Nothing seems to be working",
+      "seed": 146
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0033L01",
+   "verdict": "delete",
+   "why": "\"长时间 | A long time\": neither side is in the seed (多长时间了 / \"how long have you been\"), and L02 \"多长时间了 | How long have you been\" already tiles it. The LEGO and its \"taking a long time\" rows go.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 33,
+    "known": "你学英语多长时间了？",
+    "target": "How long have you been learning English?"
+   },
+   "before": {
+    "known": "长时间",
+    "target": "A long time",
+    "type": "A",
+    "is_new": true
+   },
+   "deleted_rows": [
+    "eng_for_zho:S0033L01B01",
+    "eng_for_zho:S0033L01B02",
+    "eng_for_zho:S0033L01B03",
+    "eng_for_zho:S0033L01U01",
+    "eng_for_zho:S0033L01U02",
+    "eng_for_zho:S0033L01U03",
+    "eng_for_zho:S0033L01U04",
+    "eng_for_zho:S0033L01U05"
+   ]
+  },
+  {
+   "id": "S0034L02",
+   "verdict": "regloss",
+   "why": "Out of step: 的时候 over \"To be quiet\" (L01's target). 的时候 is the seed's \"when\"; every row says \"when\".",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 34,
+    "known": "他不想在别人在的时候保持安静",
+    "target": "He doesn't want to be quiet when other people are here"
+   },
+   "before": {
+    "known": "的时候",
+    "target": "To be quiet",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "的时候",
+    "target": "when",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0034L02B01",
+     "role": "build",
+     "before": [
+      "的时候你在说话",
+      "When you are talking"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02B02",
+     "role": "build",
+     "before": [
+      "的时候你在说英语",
+      "When you are speaking English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02B03",
+     "role": "build",
+     "before": [
+      "安静的时候",
+      "To be quiet when"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02U01",
+     "role": "use",
+     "before": [
+      "你想安静的时候我在说话吗",
+      "Do you want to be quiet when I'm talking?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02U02",
+     "role": "use",
+     "before": [
+      "我不想安静的时候你在说英语",
+      "I don't want to be quiet when you are speaking English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02U03",
+     "role": "use",
+     "before": [
+      "你在说英语的时候我在学",
+      "You are speaking English when I'm learning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02U04",
+     "role": "use",
+     "before": [
+      "是有用的说英语的时候你在学",
+      "It's useful to speak English when you are learning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0034L02U05",
+     "role": "use",
+     "before": [
+      "我想安静的时候你在说话",
+      "I want to be quiet when you are talking"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 3,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0034L03U05",
+      "known": "其他人在说话的时候我想安静",
+      "target": "I want to be quiet when other people are talking",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0034L05U02",
+      "known": "他不想安静的时候其他人在这里",
+      "target": "He doesn't want to be quiet when other people are here",
+      "seed": 34
+     },
+     {
+      "id": "eng_for_zho:S0035L04U03",
+      "known": "她不想安静的时候其他人在这里",
+      "target": "She doesn't want to be quiet when other people are here",
+      "seed": 35
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0055L03",
+   "verdict": "regloss",
+   "why": "\"Doesn't like\" is not in the English seed (\"I don't enjoy waking up…\"). Target → \"don't enjoy\"; the bare row goes, B02 follows the seed's word.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 55,
+    "known": "我不喜欢在没睡好的时候醒来",
+    "target": "I don't enjoy waking up when I didn't sleep very well"
+   },
+   "before": {
+    "known": "不喜欢",
+    "target": "Doesn't like",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "不喜欢",
+    "target": "don't enjoy",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0055L03C01",
+     "role": "component",
+     "before": [
+      "不",
+      "Don't"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0055L03C02",
+     "role": "component",
+     "before": [
+      "喜欢",
+      "Like"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0055L03B01",
+     "role": "build",
+     "before": [
+      "不喜欢",
+      "Doesn't like"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0055L03B02",
+     "role": "build",
+     "before": [
+      "不喜欢醒来",
+      "Don't like waking up"
+     ],
+     "action": [
+      "不喜欢醒来",
+      "Don't enjoy waking up"
+     ]
+    },
+    {
+     "id": "eng_for_zho:S0055L03B03",
+     "role": "build",
+     "before": [
+      "不喜欢犯错",
+      "Don't enjoy making mistakes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0055L03B04",
+     "role": "build",
+     "before": [
+      "不喜欢这样说",
+      "Don't enjoy speaking like this"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0055L03U01",
+     "role": "use",
+     "before": [
+      "我不喜欢在没睡好的时候醒来",
+      "I don't enjoy waking up when I didn't sleep very well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0055L03U02",
+     "role": "use",
+     "before": [
+      "我不喜欢犯错但是犯错是好事",
+      "I don't enjoy making mistakes but it's a good thing to make mistakes"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0055L03U03",
+     "role": "use",
+     "before": [
+      "我们不喜欢这个时候醒来",
+      "We don't enjoy waking up at the moment"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0055L03U04",
+     "role": "use",
+     "before": [
+      "我不喜欢说话因为我有点累",
+      "I don't enjoy talking because I'm a little tired"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0055L03U05",
+     "role": "use",
+     "before": [
+      "我不喜欢这样学习因为我需要提高",
+      "I don't enjoy learning like this because I need to improve"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 9,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0240L02B01",
+      "known": "不喜欢停止说话",
+      "target": "Doesn't like to stop talking",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02B02",
+      "known": "现在不喜欢停止说话",
+      "target": "Doesn't like to stop talking now",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02B03",
+      "known": "在这里不喜欢停止说话",
+      "target": "Doesn't like to stop talking here",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02B04",
+      "known": "今天不喜欢停止说话",
+      "target": "Doesn't like to stop talking today",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02U01",
+      "known": "我的爸爸不喜欢停止说话",
+      "target": "My father doesn't like to stop talking",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02U02",
+      "known": "我的兄弟不喜欢停止说话，虽然他应该",
+      "target": "My brother doesn't like to stop talking although he should",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02U03",
+      "known": "那个老男人不喜欢停止说话，我觉得很有趣",
+      "target": "That old man doesn't like to stop talking and I think it's interesting",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02U04",
+      "known": "你的姐妹不喜欢停止说话，但我想走",
+      "target": "Your sister doesn't like to stop talking but I want to leave",
+      "seed": 240
+     },
+     {
+      "id": "eng_for_zho:S0240L02U05",
+      "known": "我的爸爸不喜欢停止说话，很难告诉他",
+      "target": "My father doesn't like to stop talking and it's difficult to tell him",
+      "seed": 240
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0057L01",
+   "verdict": "regloss",
+   "why": "Out of step: 说 over \"Can't remember\". The seed's 记不住 is \"can't remember\"; every row says 记不住.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 57,
+    "known": "我记不住怎么说我想说的话了",
+    "target": "I can't remember how to say what I wanted to say"
+   },
+   "before": {
+    "known": "说",
+    "target": "Can't remember",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "记不住",
+    "target": "Can't remember",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0057L01B01",
+     "role": "build",
+     "before": [
+      "记不住怎么说",
+      "Can't remember how to say"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01B02",
+     "role": "build",
+     "before": [
+      "记不住几个词",
+      "Can't remember a few words"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01B03",
+     "role": "build",
+     "before": [
+      "记不住答案",
+      "Can't remember the answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01U01",
+     "role": "use",
+     "before": [
+      "我记不住怎么说我想说的话了",
+      "I can't remember how to say what I wanted to say"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01U02",
+     "role": "use",
+     "before": [
+      "我记不住答案是什么",
+      "I can't remember what the answer is"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01U03",
+     "role": "use",
+     "before": [
+      "我记不住几个词",
+      "I can't remember a few words"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01U04",
+     "role": "use",
+     "before": [
+      "我记不住怎么用英语说一些东西",
+      "I can't remember how to say something in English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0057L01U05",
+     "role": "use",
+     "before": [
+      "她记不住他的名字",
+      "She can't remember his name"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 5,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0061L02U05",
+      "known": "你能再说一遍吗我记不住",
+      "target": "Could you say that again because I can't remember?",
+      "seed": 61
+     },
+     {
+      "id": "eng_for_zho:S0078L01U03",
+      "known": "我不记得你说了什么",
+      "target": "I can't remember what you said",
+      "seed": 78
+     },
+     {
+      "id": "eng_for_zho:S0139L01U04",
+      "known": "我很抱歉我记不住你说的话",
+      "target": "I'm sorry that I can't remember what you said",
+      "seed": 139
+     },
+     {
+      "id": "eng_for_zho:S0205L02U02",
+      "known": "我想不起我想说的那个词",
+      "target": "I can't remember the word I was trying to say",
+      "seed": 205
+     },
+     {
+      "id": "eng_for_zho:S0235L01U01",
+      "known": "我遇到了一个说他想告诉你一些事情的人，但我不记得是什么",
+      "target": "I met someone who said that he wanted to tell you something but I can't remember what",
+      "seed": 235
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0059L02",
+   "verdict": "regloss",
+   "why": "Out of step: 做 (L01's known) over \"Next week\". The seed's 下个星期 is \"next week\"; every row says it.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 59,
+    "known": "我知道下个星期怎么做我需要做的事",
+    "target": "I know how to do what I need to do next week"
+   },
+   "before": {
+    "known": "做",
+    "target": "Next week",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "下个星期",
+    "target": "Next week",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0059L02B01",
+     "role": "build",
+     "before": [
+      "下个星期做",
+      "To do next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02B02",
+     "role": "build",
+     "before": [
+      "下个星期见面",
+      "To meet next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02B03",
+     "role": "build",
+     "before": [
+      "下个星期完成",
+      "To finish next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02U01",
+     "role": "use",
+     "before": [
+      "我知道下个星期怎么做我需要做的事",
+      "I know how to do what I need to do next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02U02",
+     "role": "use",
+     "before": [
+      "你下个星期想做什么",
+      "What do you want to do next week?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02U03",
+     "role": "use",
+     "before": [
+      "我想下个星期和朋友见面",
+      "I want to meet with my friends next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02U04",
+     "role": "use",
+     "before": [
+      "我需要下个星期完成",
+      "I need to finish next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0059L02U05",
+     "role": "use",
+     "before": [
+      "我不确定下个星期想做什么",
+      "I'm not sure what I want to do next week"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0103L02",
+   "verdict": "regloss",
+   "why": "The pair 更多 | More is right and in the seed (the scanner split 更多的词). But five rows drill 很多 \"many\", a different word this LEGO does not teach: they go, and the basket is back-filled with 更多.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 103,
+    "known": "我们没有在试着听更多的词",
+    "target": "We're not trying to hear many more words"
+   },
+   "before": {
+    "known": "更多",
+    "target": "More",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "更多",
+    "target": "More",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0103L02B01",
+     "role": "build",
+     "before": [
+      "很多词",
+      "Many words"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0103L02B02",
+     "role": "build",
+     "before": [
+      "更多",
+      "More"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0103L02B03",
+     "role": "build",
+     "before": [
+      "很多人",
+      "Many people"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0103L02U01",
+     "role": "use",
+     "before": [
+      "我们不是在试着听更多的词",
+      "We're not trying to hear many more words"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0103L02U02",
+     "role": "use",
+     "before": [
+      "我还不知道很多词",
+      "I don't know many words yet"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0103L02U03",
+     "role": "use",
+     "before": [
+      "我想知道更多的词",
+      "I want to know many more words"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0103L02U04",
+     "role": "use",
+     "before": [
+      "你认识很多人吗？",
+      "Do you know many people?"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0103L02U05",
+     "role": "use",
+     "before": [
+      "我做了很多，现在我知道很多词了",
+      "I've done a lot and I know many words now"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_zho:S0103L02B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 103,
+     "lego_index": 2,
+     "known_text": "更多的词",
+     "target_text": "more words",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 2,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    },
+    {
+     "id": "eng_for_zho:S0103L02B05",
+     "course_code": "eng_for_zho",
+     "seed_number": 103,
+     "lego_index": 2,
+     "known_text": "听更多的词",
+     "target_text": "hear more words",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 3,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    },
+    {
+     "id": "eng_for_zho:S0103L02B06",
+     "course_code": "eng_for_zho",
+     "seed_number": 103,
+     "lego_index": 2,
+     "known_text": "学更多的词",
+     "target_text": "learn more words",
+     "phrase_role": "build",
+     "position": 11,
+     "word_count": 3,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    },
+    {
+     "id": "eng_for_zho:S0103L02U06",
+     "course_code": "eng_for_zho",
+     "seed_number": 103,
+     "lego_index": 2,
+     "known_text": "我想听更多的词",
+     "target_text": "I want to hear more words",
+     "phrase_role": "use",
+     "position": 12,
+     "word_count": 6,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    },
+    {
+     "id": "eng_for_zho:S0103L02U07",
+     "course_code": "eng_for_zho",
+     "seed_number": 103,
+     "lego_index": 2,
+     "known_text": "我们需要学更多的词",
+     "target_text": "we need to learn more words",
+     "phrase_role": "use",
+     "position": 13,
+     "word_count": 6,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    },
+    {
+     "id": "eng_for_zho:S0103L02U08",
+     "course_code": "eng_for_zho",
+     "seed_number": 103,
+     "lego_index": 2,
+     "known_text": "我今天想学更多的词",
+     "target_text": "I want to learn more words today",
+     "phrase_role": "use",
+     "position": 14,
+     "word_count": 7,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": null
+    }
+   ],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": []
+  },
+  {
+   "id": "S0218L01",
+   "verdict": "grow",
+   "why": "\"多少 | How much\": neither side is in the seed (星期天我没做什么 / \"I didn't do much on Sunday\"). The seed's chunk is 没做什么 = \"didn't do much\" (L25: re-chunked to what the seed says).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 218,
+    "known": "星期天我没做什么",
+    "target": "I didn't do much on Sunday"
+   },
+   "before": {
+    "known": "多少",
+    "target": "How much",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "没做什么",
+    "target": "didn't do much",
+    "type": "M",
+    "components": [
+     [
+      "没",
+      "didn't"
+     ],
+     [
+      "做",
+      "do"
+     ],
+     [
+      "什么",
+      "much"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0218L01U01",
+     "role": "use",
+     "before": [
+      "我周末没做多少",
+      "I didn't do much at the weekend"
+     ],
+     "action": [
+      "我周末没做什么",
+      "I didn't do much at the weekend"
+     ]
+    },
+    {
+     "id": "eng_for_zho:S0218L01U02",
+     "role": "use",
+     "before": [
+      "她没说多少关于那件事",
+      "She didn't say much about it"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U03",
+     "role": "use",
+     "before": [
+      "我能做的帮助不多",
+      "There isn't much I can do to help"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U04",
+     "role": "use",
+     "before": [
+      "没有人说多少关于他们想实现什么",
+      "Nobody said much about what they're trying to achieve"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U05",
+     "role": "use",
+     "before": [
+      "到目前为止我没做多少，虽然我想做",
+      "I haven't done much so far although I want to"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_zho:S0218L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "我昨天没做什么",
+     "target_text": "I didn't do much yesterday",
+     "phrase_role": "build",
+     "position": 9,
+     "word_count": 5,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "middle"
+    },
+    {
+     "id": "eng_for_zho:S0218L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "他没做什么",
+     "target_text": "he didn't do much",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 4,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "middle"
+    },
+    {
+     "id": "eng_for_zho:S0218L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "我们没做什么",
+     "target_text": "we didn't do much",
+     "phrase_role": "build",
+     "position": 11,
+     "word_count": 4,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "middle"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U06",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "星期天我没做什么",
+     "target_text": "I didn't do much on Sunday",
+     "phrase_role": "use",
+     "position": 12,
+     "word_count": 6,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "middle"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U07",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "我今天没做什么",
+     "target_text": "I didn't do much today",
+     "phrase_role": "use",
+     "position": 13,
+     "word_count": 5,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "middle"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U08",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "她上个星期没做什么",
+     "target_text": "she didn't do much last week",
+     "phrase_role": "use",
+     "position": 14,
+     "word_count": 6,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "middle"
+    },
+    {
+     "id": "eng_for_zho:S0218L01U09",
+     "course_code": "eng_for_zho",
+     "seed_number": 218,
+     "lego_index": 1,
+     "known_text": "我今天早上没做什么",
+     "target_text": "I didn't do much this morning",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 6,
+     "lego_count": 1,
+     "connected_lego_ids": [],
+     "metadata": {
+      "source": "item10-backfill"
+     },
+     "introduce": true,
+     "lego_position": "start"
+    }
+   ],
+   "basket_after": {
+    "use": 5,
+    "build": 3
+   },
+   "extra": [],
+   "floor": {
+    "build": 3,
+    "use": 5,
+    "need": [
+     3,
+     5
+    ]
+   },
+   "vocab_violations": [],
+   "vocab_preexisting": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "eng_for_zho:S0207L01U03",
+      "known": "你有没有看到你做了多少？",
+      "target": "Have you seen how much you've done?",
+      "seed": 207
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0011L01",
+   "set": {
+    "known_text": "能"
+   },
+   "expect": {
+    "known_text": "我想",
+    "target_text": "To be able"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0012L02",
+   "set": {
+    "target_text": "wouldn't like"
+   },
+   "expect": {
+    "known_text": "不想",
+    "target_text": "Doesn't want"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 26,
+   "set": {
+    "known_text": "我喜欢那种好像快要准备好出发的感觉"
+   },
+   "expect": {
+    "known_text": "我喜欢那种快要准备好出发的感觉",
+    "target_text": "I like feeling as if I'm nearly ready to go"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0026L03",
+   "set": {
+    "target_text": "as if"
+   },
+   "expect": {
+    "known_text": "好像",
+    "target_text": "Seems"
+   }
+  },
+  {
+   "op": "lego.delete",
+   "lego_id": "S0033L01",
+   "cascade_phrases": true,
+   "expect": {
+    "known_text": "长时间",
+    "target_text": "A long time"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0034L02",
+   "set": {
+    "target_text": "when"
+   },
+   "expect": {
+    "known_text": "的时候",
+    "target_text": "To be quiet"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0055L03",
+   "set": {
+    "target_text": "don't enjoy"
+   },
+   "expect": {
+    "known_text": "不喜欢",
+    "target_text": "Doesn't like"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0055L03B01",
+   "expect": {
+    "known_text": "不喜欢",
+    "target_text": "Doesn't like"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0055L03B02",
+   "set": {
+    "target_text": "Don't enjoy waking up"
+   },
+   "expect": {
+    "known_text": "不喜欢醒来",
+    "target_text": "Don't like waking up"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0057L01",
+   "set": {
+    "known_text": "记不住"
+   },
+   "expect": {
+    "known_text": "说",
+    "target_text": "Can't remember"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0059L02",
+   "set": {
+    "known_text": "下个星期"
+   },
+   "expect": {
+    "known_text": "做",
+    "target_text": "Next week"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0103L02B01",
+   "expect": {
+    "known_text": "很多词",
+    "target_text": "Many words"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0103L02B03",
+   "expect": {
+    "known_text": "很多人",
+    "target_text": "Many people"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0103L02U02",
+   "expect": {
+    "known_text": "我还不知道很多词",
+    "target_text": "I don't know many words yet"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0103L02U04",
+   "expect": {
+    "known_text": "你认识很多人吗？",
+    "target_text": "Do you know many people?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0103L02U05",
+   "expect": {
+    "known_text": "我做了很多，现在我知道很多词了",
+    "target_text": "I've done a lot and I know many words now"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0103L02B04",
+    "course_code": "eng_for_zho",
+    "seed_number": 103,
+    "lego_index": 2,
+    "known_text": "更多的词",
+    "target_text": "more words",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 2,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0103L02B05",
+    "course_code": "eng_for_zho",
+    "seed_number": 103,
+    "lego_index": 2,
+    "known_text": "听更多的词",
+    "target_text": "hear more words",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 3,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0103L02B06",
+    "course_code": "eng_for_zho",
+    "seed_number": 103,
+    "lego_index": 2,
+    "known_text": "学更多的词",
+    "target_text": "learn more words",
+    "phrase_role": "build",
+    "position": 11,
+    "word_count": 3,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0103L02U06",
+    "course_code": "eng_for_zho",
+    "seed_number": 103,
+    "lego_index": 2,
+    "known_text": "我想听更多的词",
+    "target_text": "I want to hear more words",
+    "phrase_role": "use",
+    "position": 12,
+    "word_count": 6,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0103L02U07",
+    "course_code": "eng_for_zho",
+    "seed_number": 103,
+    "lego_index": 2,
+    "known_text": "我们需要学更多的词",
+    "target_text": "we need to learn more words",
+    "phrase_role": "use",
+    "position": 13,
+    "word_count": 6,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0103L02U08",
+    "course_code": "eng_for_zho",
+    "seed_number": 103,
+    "lego_index": 2,
+    "known_text": "我今天想学更多的词",
+    "target_text": "I want to learn more words today",
+    "phrase_role": "use",
+    "position": 14,
+    "word_count": 7,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0218L01",
+   "set": {
+    "known_text": "没做什么",
+    "target_text": "didn't do much",
+    "type": "M",
+    "components": [
+     {
+      "known": "没",
+      "target": "didn't"
+     },
+     {
+      "known": "做",
+      "target": "do"
+     },
+     {
+      "known": "什么",
+      "target": "much"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "多少",
+    "target_text": "How much"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0218L01U01",
+   "set": {
+    "known_text": "我周末没做什么"
+   },
+   "expect": {
+    "known_text": "我周末没做多少",
+    "target_text": "I didn't do much at the weekend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0218L01U02",
+   "expect": {
+    "known_text": "她没说多少关于那件事",
+    "target_text": "She didn't say much about it"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0218L01U03",
+   "expect": {
+    "known_text": "我能做的帮助不多",
+    "target_text": "There isn't much I can do to help"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0218L01U04",
+   "expect": {
+    "known_text": "没有人说多少关于他们想实现什么",
+    "target_text": "Nobody said much about what they're trying to achieve"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_zho:S0218L01U05",
+   "expect": {
+    "known_text": "到目前为止我没做多少，虽然我想做",
+    "target_text": "I haven't done much so far although I want to"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01B01",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "我昨天没做什么",
+    "target_text": "I didn't do much yesterday",
+    "phrase_role": "build",
+    "position": 9,
+    "word_count": 5,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01B02",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "他没做什么",
+    "target_text": "he didn't do much",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 4,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01B03",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "我们没做什么",
+    "target_text": "we didn't do much",
+    "phrase_role": "build",
+    "position": 11,
+    "word_count": 4,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01U06",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "星期天我没做什么",
+    "target_text": "I didn't do much on Sunday",
+    "phrase_role": "use",
+    "position": 12,
+    "word_count": 6,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01U07",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "我今天没做什么",
+    "target_text": "I didn't do much today",
+    "phrase_role": "use",
+    "position": 13,
+    "word_count": 5,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01U08",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "她上个星期没做什么",
+    "target_text": "she didn't do much last week",
+    "phrase_role": "use",
+    "position": 14,
+    "word_count": 6,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_zho:S0218L01U09",
+    "course_code": "eng_for_zho",
+    "seed_number": 218,
+    "lego_index": 1,
+    "known_text": "我今天早上没做什么",
+    "target_text": "I didn't do much this morning",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 6,
+    "lego_count": 1,
+    "connected_lego_ids": [],
+    "metadata": {
+     "source": "item10-backfill"
+    },
+    "introduce": true,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

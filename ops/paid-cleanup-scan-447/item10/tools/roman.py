@@ -16,14 +16,14 @@ def lex(course):
     return _lex[course]
 
 
-def roman(course, text, override=None):
+def roman(course, text, override=None, words=None):
     if override and text in override:
         return override[text], []
     L = lex(course)
     if not L:
         return None, ['no lexicon']
     if 'chunks' in L:  # jpn/kor (cs #808): tile with the course's own (target -> roman) chunks, longest first
-        return roman_chunks(L['chunks'], text)
+        return roman_chunks({**L['chunks'], **(words or {})}, text)  # words: hand readings from the decisions file (ROMAN_WORDS)
     W, C = L['words'], L['char']
     out, flags, i = [], [], 0
     t = text
