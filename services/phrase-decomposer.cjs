@@ -111,6 +111,27 @@ function findLongestMatch(residue, vocabulary, charLevel) {
   return null
 }
 
+// THE TIE-BREAK (cs #937, Kai's Watson finding #930): two LEGOs can share a
+// target text ("sono" = S0039L01 "I am" and S0254L01 "I've been"). Sorting on
+// length alone left the winner to the order the database happened to return
+// rows, so the nightly copy and live chose differently for the same phrase and
+// a recompute was not repeatable. Equal length → the EARLIEST TAUGHT wins
+// (lowest seed, then lowest LEGO index), then lego_id as a last resort, so the
+// result depends only on the vocabulary, never on row order.
+function slotOrder(id) {
+  const m = /^S(\d+)L(\d+)$/.exec(String(id || ''))
+  return m ? [Number(m[1]), Number(m[2])] : [Infinity, Infinity]
+}
+function byLengthThenEarliestTaught(a, b) {
+  const byLength = b.target_text.length - a.target_text.length
+  if (byLength) return byLength
+  const [sa, la] = slotOrder(a.lego_id), [sb, lb] = slotOrder(b.lego_id)
+  if (sa !== sb) return sa - sb
+  if (la !== lb) return la - lb
+  const ia = String(a.lego_id || ''), ib = String(b.lego_id || '')
+  return ia < ib ? -1 : ia > ib ? 1 : 0
+}
+
 // Whitespace-normalise for the integrity check. We collapse runs of whitespace
 // to a single space and trim, so "I want  to" matches "I want to". This is
 // per the spec: "handle whitespace differences gracefully".
@@ -154,7 +175,7 @@ function decomposeText(targetText, vocabulary) {
   const sorted = vocabulary
     .filter(l => l && typeof l.target_text === 'string' && l.target_text.length > 0)
     .slice()
-    .sort((a, b) => b.target_text.length - a.target_text.length)
+    .sort(byLengthThenEarliestTaught)
 
   const charLevel = isCharLevelScript(targetText)
   const blocks = []
@@ -540,6 +561,7 @@ module.exports = {
     isCharLevelScript,
     normaliseWhitespace,
     consumeOneToken,
-    findLongestMatch
+    findLongestMatch,
+    byLengthThenEarliestTaught
   }
 }
