@@ -10,6 +10,8 @@
 //   node audio.cjs link  <course> apply|dry  audio.link ops for every rendered slot -> edit-batch (clip must speak the words)
 //   node audio.cjs readback <course>         re-read live; the audio id each row now points at -> audio/<course>.readback.json
 // eng_for_pan is refused outright (D3: its known-side voice gender is undecided; text only).
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const L = require('./lib.cjs');
@@ -18,6 +20,7 @@ const L = require('./lib.cjs');
 { const { Agent, setGlobalDispatcher } = require(require('path').join(L.ROOT, 'node_modules/undici'));
   setGlobalDispatcher(new Agent({ headersTimeout: 0, bodyTimeout: 0 })); }
 const [mode, course, arg] = process.argv.slice(2);
+if (['real', 'link'].includes(mode)) LIVEGATE.requireLive(`item4 audio.cjs ${mode} ${course}`);
 const CAP = 100000;
 const ADIR = path.join(L.ITEM_DIR, 'audio'); fs.mkdirSync(ADIR, { recursive: true });
 const LEDGER = path.join(ADIR, 'ledger.json');
@@ -91,11 +94,12 @@ function ourRows() {
     const ops = [];
     for (const ln of plan.lines) { const r = out[`${ln.role}|${ln.text}`]; if (r && r.audioId) ops.push({ op: 'audio.link', target: 'phrase', phrase_id: ln.id, slot: ln.slot, audio_id: r.audioId }); }
     const res = [];
-    for (let i = 0; i < ops.length; i += 100) {
-      const r = await fetch(`http://localhost:3470/api/production/${course}/edit-batch`, { method: 'POST', headers: H, body: JSON.stringify({ ops: ops.slice(i, i + 100), apply: arg === 'apply' }) });
+    const step = arg === 'apply' ? 100 : LIVEGATE.MAX_CHUNK; // cs #968·AI: dry runs in chunks of <= 10
+    for (let i = 0; i < ops.length; i += step) {
+      const r = await fetch(`http://localhost:3470/api/production/${course}/edit-batch`, { method: 'POST', headers: H, body: JSON.stringify({ ops: ops.slice(i, i + step), apply: arg === 'apply' }) });
       const j = await r.json();
       res.push({ status: r.status, ok: j.ok, applied: j.applied, event_id: j.event_id || null, undo_file: j.undo_file || null, error: j.error || null, index: j.index });
-      console.log(`${course} link ${i}-${i + 100}: HTTP ${r.status} ${j.applied ? 'applied ' + j.event_id : (j.ok ? 'dry ok' : j.error)}`);
+      console.log(`${course} link ${i}-${i + step}: HTTP ${r.status} ${j.applied ? 'applied ' + j.event_id : (j.ok ? 'dry ok' : j.error)}`);
       if (!j.ok) break;
     }
     wr(path.join(ADIR, `${course}.link-${arg}.json`), { at: new Date().toISOString(), ops: ops.length, batches: res });

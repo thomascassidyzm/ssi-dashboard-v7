@@ -12,6 +12,10 @@
 // Spend: running Cartesia total across every item-9 results file; nothing is sent past CAP (70,000, the brief).
 // Gendered first person: a FEMALE slot whose words carry a first-person gendered form is never sent from plain text:
 // the plan lists it under "female_reading" (gender-prep's female text) and this tool sends that as --spoken.
+// cs #968·AI: every fetch() to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given AND it is
+// 22:00-07:00 Europe/London (ops/paid-cleanup-livegate.cjs; required first so the flag leaves process.argv).
+const LIVEGATE = require(require('path').join(__dirname, '../..', 'paid-cleanup-livegate.cjs')); LIVEGATE.install();
+LIVEGATE.requireLive('item9 audio.cjs ' + process.argv.slice(2).join(' '));  // every mode of this tool reaches live
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');

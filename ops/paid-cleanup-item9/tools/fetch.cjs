@@ -10,10 +10,14 @@
 // usage: node fetch.cjs <course> [deepSeeds: "71,72,100-110" | "all"]
 // writes ~/ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item9/live/<course>.json (+ "partial_rows": true
 // on LEGOs whose rows came from script-view only)
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+// The item-9 NIGHT runner (../night-run.sh) does not use this file; it applies through tools/changeset and night-audio.cjs.
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const [course, deepArg = ''] = process.argv.slice(2);
+LIVEGATE.requireLive(`item9 fetch.cjs ${course}: live read`);
 const BASE = 'http://localhost:3470';
 const H = { 'x-agent-id': 'cs-713-item9' };
 const LIVE = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item9/live');

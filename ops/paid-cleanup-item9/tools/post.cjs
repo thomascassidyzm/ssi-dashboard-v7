@@ -8,6 +8,10 @@
 //                                            undo file name and undo ops -> batches/<batch>.apply.json, events.json
 //   (set ITEM9_OWNER=<your job label digits> so each worker keeps its own events-<owner>.json)
 //   node post.cjs after    <course>          full /v2/validate after the edits -> validate-after.json + diff vs before
+// cs #968·AI: every fetch() to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given AND it is
+// 22:00-07:00 Europe/London (ops/paid-cleanup-livegate.cjs; required first so the flag leaves process.argv).
+const LIVEGATE = require(require('path').join(__dirname, '../..', 'paid-cleanup-livegate.cjs')); LIVEGATE.install();
+LIVEGATE.requireLive('item9 post.cjs ' + process.argv.slice(2).join(' '));  // every mode of this tool reaches live
 const fs = require('fs');
 const path = require('path');
 const L = require('./lib.cjs');
