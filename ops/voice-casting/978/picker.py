@@ -263,6 +263,112 @@ def podpool(a):
     print(json.dumps({c: len(v['pool']) for c, v in out.items()}))
 
 
+# ── THE SETTLED CAST (cs #998·AI) ─────────────────────────────────────────────────────────────
+# Kai, 19 Nov 14:13Z: "NO round-3 listening pages." Round 3 is settled BY RULE, and the cast is applied.
+#   targets  = his round-2 favourites + the single-option picks (round2-picked-for-kai.json);
+#   Azure    = languages Cartesia cannot speak: one Azure voice per gender = picked; several = best-effort
+#              (the voice already carrying that language's course clips first — it leaves nothing off-cast —
+#              then locale preference, then Neural), each with its reason written down;
+#   known    = for every in-scope language that is the KNOWN side of a course: alternate f, m, f, m … in
+#              language-code order (Kai: "about 50/50 male and female for the known slot"); a language whose
+#              course alternates two known voices (voice_config.voices.known.byGender, the eng_for_hin rule in
+#              services/shared/known-voice-gender.cjs) keeps BOTH its target voices as known voices;
+#   presentation = the language's other picked voice (alternating: the female anchor, as eng_for_hin).
+AZ_LOCALE_PREF = {'srp': 'sr-Latn-RS', 'swa': 'sw-KE', 'urd': 'ur-PK', 'yue': 'zh-HK'}
+SKIP_LANGS = {'zzz', 'zzz_e2e'} | EXCLUDED
+HOW_FAV, HOW_AZ1, HOW_AZN, HOW_RULE = 'Kai favourite (round 2)', 'Azure, single option per slot', 'Azure best-effort', 'known/presentation rule'
+
+
+def az_voice_id(v): return 'azure_' + v['id']
+
+
+def castplan(a):
+    man = load(a.manifest)['languages']
+    reg = load(a.reg)['languages']
+    em = load(a.estate)['courses']
+    marks = read_marks(a.marks2)
+    pre = {x['slot']: x for x in load(PICKED_FILE)['picked']}
+    vor = {}   # (lang, voice id without azure_) -> clips it carries in courses that teach OR are taught from that language
+    for c in em:
+        for v in c['voices_of_record']:
+            for side in {c['target_lang'], c['known_lang']}:
+                k = (side, v['voice_id'].replace('azure_', '')); vor[k] = vor.get(k, 0) + v['clips']
+    langs, gaps = {}, []
+    # 1) Cartesia languages from round 1: favourites + single-option picks
+    for code, L in man.items():
+        if code in SKIP_LANGS: continue
+        out = {}
+        for s in L['slots']:
+            g = s['gender']
+            favs = [v for v in L['voices'] if v['gender'] == g and picked(marks.get(f"r2.{code}.{g}.{vid(v)}"), FAV)]
+            if len(favs) == 1: v, how = favs[0], HOW_FAV
+            elif not favs and f"{code}.{g}" in pre: v, how = pre[f"{code}.{g}"], SINGLE_RULE
+            else: gaps.append({'lang': code, 'slot': g, 'why': f"{len(favs)} round-2 favourites and no single-option pick"}); continue
+            out[g] = {'voiceId': v['voiceId'], 'name': v['name'], 'provider': 'cartesia', 'how': how}
+        langs[code] = {'provider': 'cartesia', 'target': out}
+    # 2) Azure languages: nothing Cartesia speaks, not human-voiced, not a test row
+    for code, l in reg.items():
+        if code in SKIP_LANGS or code in langs or l['human'] or l['status'] not in ('nocover', 'knownonly'): continue
+        if any(s['filled'] for g in 'mf' for s in l['slots'][g] if s['rank'] == 0):
+            continue   # already cast at the language (e.g. nothing today, but never overwrite a cast the rule did not make)
+        fp = os.path.join(a.azure, code + '.json')
+        if not os.path.exists(fp): fp = os.path.join(a.azure, code.split('_')[0] + '.json')   # a dialect (gle_ulster) speaks its base's locale
+        inv = load(fp) if os.path.exists(fp) else {}
+        if not inv.get('success') or not inv.get('voices'):
+            gaps.append({'lang': code, 'slot': 'm+f', 'why': 'Azure has no voice for it: ' + (inv.get('error') or 'Azure lists none') + ' — stays on whatever its courses carry now'}); continue
+        out = {}
+        for g, G in (('m', 'Male'), ('f', 'Female')):
+            cand = [v for v in inv['voices'] if v['gender'] == G]
+            if not cand: gaps.append({'lang': code, 'slot': g, 'why': f'Azure has no {GENDER[g]} voice'}); continue
+            if len(cand) == 1:
+                v = cand[0]; how, why = HOW_AZ1, f"the only {GENDER[g]} Azure voice ({v['locale']})" + (' — the base language\'s locale; Azure has no dialect voice' if '_' in code else '')
+            else:
+                pref = AZ_LOCALE_PREF.get(code)
+                key = lambda v: (-vor.get((code.split('_')[0], v['id']), 0), 0 if v['locale'] == pref else 1,
+                                 0 if v['voiceType'] == 'Neural' else 1, v['id'])
+                cand = sorted(cand, key=key); v = cand[0]
+                n = vor.get((code.split('_')[0], v['id']), 0)
+                why = (f"carries {n} clips of this language's courses already" if n else 'no course clips yet')
+                why += f"; locale {v['locale']}" + (' (preferred locale)' if v['locale'] == pref else '') + f"; {v['voiceType']}; over " + ', '.join(f"{o['id']}" for o in cand[1:])
+                how = HOW_AZN
+            out[g] = {'voiceId': az_voice_id(v), 'name': v['displayName'], 'provider': 'azure', 'locale': v['locale'], 'how': how, 'reason': why}
+        langs[code] = {'provider': 'azure', 'target': out}
+    # 3) known + presentation: languages in scope that are the known side of a course
+    known_courses = {}
+    for c in em:
+        if c['known_lang'] in langs: known_courses.setdefault(c['known_lang'], []).append(c['course_code'])
+    vcs = {f[:-5]: load(os.path.join(a.vc, f)).get('config') for f in os.listdir(a.vc) if f.endswith('.json')}
+    def alternating(code): return any(((vcs.get(c) or {}).get('voices') or {}).get('known', {}).get('byGender') for c in known_courses.get(code, []))
+    single = sorted(c for c in known_courses if not alternating(c))
+    for i, code in enumerate(single):
+        L = langs[code]; g = 'f' if i % 2 == 0 else 'm'; o = 'm' if g == 'f' else 'f'
+        if g not in L['target'] or o not in L['target']:
+            gaps.append({'lang': code, 'slot': 'known', 'why': 'needs both target voices to settle known/presentation'}); continue
+        L['known'] = {'mode': 'single', 'gender': g, **{k: L['target'][g][k] for k in ('voiceId', 'name', 'provider')},
+                      'how': f"{HOW_RULE}: {i + 1}th in code order among single-known languages, alternating f/m"}
+        L['presentation'] = {**{k: L['target'][o][k] for k in ('voiceId', 'name', 'provider')}, 'how': f'{HOW_RULE}: the other picked voice'}
+    for code in sorted(c for c in known_courses if alternating(c)):
+        L = langs[code]
+        L['known'] = {'mode': 'alternating (byGender)', 'byGender': {g: {k: L['target'][g][k] for k in ('voiceId', 'name', 'provider')} for g in 'mf'},
+                      'how': f'{HOW_RULE}: course alternates two known voices, so both target voices'}
+        L['presentation'] = {**{k: L['target']['f'][k] for k in ('voiceId', 'name', 'provider')}, 'how': f'{HOW_RULE}: alternating course, female anchor (eng_for_hin precedent)'}
+    for code, cs in known_courses.items(): langs[code]['knownCourses'] = sorted(cs)
+    # old values, from the registry snapshot the plan was built on
+    for code, L in langs.items():
+        l = reg.get(code) or {}
+        for g, t in L['target'].items():
+            r0 = [s for s in l.get('slots', {}).get(g, []) if s['rank'] == 0 and s['filled']]
+            t['old'] = r0[0]['voiceId'] if r0 else None; t['oldName'] = r0[0]['voiceName'] if r0 else None
+        if 'known' in L:
+            L['knownOld'] = {g: (s['voiceId'] if s.get('filled') else None) for g, s in (l.get('known') or {}).items()}
+    n = {'f': 0, 'm': 0}
+    for L in langs.values():
+        if L.get('known', {}).get('mode') == 'single': n[L['known']['gender']] += 1
+    dump({'rule': 'cs #998·AI castplan — see picker.py header of the SETTLED CAST block', 'registryBuiltAt': load(a.reg)['builtAt'],
+          'knownGenderBalance': n, 'languages': langs, 'gaps': gaps}, a.out)
+    print(json.dumps({'languages': len(langs), 'known': sum('known' in L for L in langs.values()), 'balance': n, 'gaps': len(gaps)}))
+
+
 SURFACE = 'http://localhost:4317'
 
 
@@ -297,6 +403,7 @@ if __name__ == '__main__':
     pp = sub.add_parser('podpool'); pp.add_argument('--manifest', required=True); pp.add_argument('--marks1', nargs='+', required=True)
     pp.add_argument('--marks2', nargs='+', required=True); pp.add_argument('--out', required=True)
     f = sub.add_parser('fetch'); f.add_argument('--pages', required=True); f.add_argument('--out', required=True)
+    cp = sub.add_parser('castplan'); [cp.add_argument('--' + k, required=True) for k in ('manifest', 'reg', 'estate', 'azure', 'vc', 'out')]; cp.add_argument('--marks2', nargs='+', required=True)
     p = sub.add_parser('post'); p.add_argument('--dir', required=True); p.add_argument('--pages-out', required=True)
     a = ap.parse_args()
-    {'round1': round1, 'round2': round2, 'round3': round3, 'fetch': fetch, 'post': post, 'podpool': podpool}[a.cmd](a)
+    {'round1': round1, 'round2': round2, 'round3': round3, 'fetch': fetch, 'post': post, 'podpool': podpool, 'castplan': castplan}[a.cmd](a)

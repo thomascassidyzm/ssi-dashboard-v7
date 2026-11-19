@@ -1,0 +1,1318 @@
+{
+ "rule": "cs #998·AI castplan — see picker.py header of the SETTLED CAST block",
+ "registryBuiltAt": "2026-11-19T14:17:36.295Z",
+ "knownGenderBalance": {
+  "f": 6,
+  "m": 5
+ },
+ "languages": {
+  "ben": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+     "name": "Arindam",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_2ba861ea-7cdc-43d1-8608-4045b5a41de5",
+     "oldName": "Rubel"
+    },
+    "f": {
+     "voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+     "name": "Poulomi",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_59ba7dee-8f9a-432f-a6c0-ffb33666b654",
+     "oldName": "Pooja"
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "m",
+    "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+    "name": "Arindam",
+    "provider": "cartesia",
+    "how": "known/presentation rule: 2th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+    "name": "Poulomi",
+    "provider": "cartesia",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_ben"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "bul": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_cb5e08c5-299e-4908-8409-b6549292e29b",
+     "name": "Nikola",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_d132064c-b931-4a80-bf0d-02a331ec4572",
+     "oldName": "Georgi"
+    },
+    "f": {
+     "voiceId": "cartesia_3c90f2ab-ff91-434e-9e59-5ca2dcf6abc9",
+     "name": "Teodora",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_fcbecbcc-0cef-4615-8b5a-712fe1b39dd0",
+     "oldName": "Ivana"
+    }
+   }
+  },
+  "ces": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_82db1f84-5b96-4364-b04a-4c7ff80e2f8a",
+     "name": "Jan",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_82db1f84-5b96-4364-b04a-4c7ff80e2f8a",
+     "oldName": "Jan"
+    },
+    "f": {
+     "voiceId": "cartesia_b66b3a19-31b3-401f-8b08-40d46a61e4f1",
+     "name": "Milena - Composed Clarifier",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_b66b3a19-31b3-401f-8b08-40d46a61e4f1",
+     "oldName": "Milena\t- Composed Clarifier"
+    }
+   }
+  },
+  "dan": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_a466f9e2-28eb-4bb7-925c-8e8984950700",
+     "name": "Søren",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_a466f9e2-28eb-4bb7-925c-8e8984950700",
+     "oldName": "Søren"
+    },
+    "f": {
+     "voiceId": "cartesia_eb929394-68e7-4e08-bd2f-e7055728a5e1",
+     "name": "Mette",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_eb929394-68e7-4e08-bd2f-e7055728a5e1",
+     "oldName": "Mette"
+    }
+   }
+  },
+  "heb": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_95d91579-a3f1-4bb3-b5e1-9a97ef401628",
+     "name": "Yonatan",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_3e32f3c5-9ac0-4192-9994-87fdb277120f",
+     "oldName": "Noam"
+    },
+    "f": {
+     "voiceId": "cartesia_ebc02c0d-61fd-48f2-a6c9-0d6683b7d466",
+     "name": "Ayala",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_ebc02c0d-61fd-48f2-a6c9-0d6683b7d466",
+     "oldName": "Ayala"
+    }
+   }
+  },
+  "hun": {
+   "provider": "cartesia",
+   "target": {
+    "f": {
+     "voiceId": "cartesia_42e4da1d-34d8-4fe0-8fc6-086afd6df348",
+     "name": "Kinga",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_e97c3b37-1aa5-46af-afb7-9545086aaa92",
+     "oldName": "Eszter"
+    }
+   }
+  },
+  "ind": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_04b567df-2923-4b0c-896b-4b7df0a07e1a",
+     "name": "Galang",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_a053f6bc-7df4-40de-96d4-de026bc47ce8",
+     "oldName": "Andi"
+    },
+    "f": {
+     "voiceId": "cartesia_6a3fe952-63f8-4c99-865a-44887175ea26",
+     "name": "Risa",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_b441c4fd-4910-4c55-ae56-f0291057e2cc",
+     "oldName": "Siti"
+    }
+   }
+  },
+  "kan": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+     "name": "Chetan",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_6baae46d-1226-45b5-a976-c7f9b797aae2",
+     "oldName": "Prakash"
+    },
+    "f": {
+     "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+     "name": "Chaitra",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_7c6219d2-e8d2-462c-89d8-7ecba7c75d65",
+     "oldName": "Divya"
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "m",
+    "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+    "name": "Chetan",
+    "provider": "cartesia",
+    "how": "known/presentation rule: 4th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+    "name": "Chaitra",
+    "provider": "cartesia",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_kan"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "mar": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+     "name": "Chinmay",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_f227bc18-3704-47fe-b759-8c78a450fdfa",
+     "oldName": "Suresh"
+    },
+    "f": {
+     "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+     "name": "Asha",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_5c32dce6-936a-4892-b131-bafe474afe5f",
+     "oldName": "Anika"
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "m",
+    "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+    "name": "Chinmay",
+    "provider": "cartesia",
+    "how": "known/presentation rule: 6th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+    "name": "Asha",
+    "provider": "cartesia",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_mar"
+   ],
+   "knownOld": {
+    "m": "azure_mr-IN-ManoharNeural",
+    "f": null
+   }
+  },
+  "nld": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_da743a82-ddf2-4d9b-8eb8-ff67ca0b138e",
+     "name": "Stijn",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_da743a82-ddf2-4d9b-8eb8-ff67ca0b138e",
+     "oldName": "Stijn"
+    },
+    "f": {
+     "voiceId": "cartesia_96355f3d-0179-4c9a-a8d8-11ef0779a9b8",
+     "name": "Noa",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_96355f3d-0179-4c9a-a8d8-11ef0779a9b8",
+     "oldName": "Noa"
+    }
+   }
+  },
+  "nor": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_311174e8-4bf6-4467-9a84-352c5dae28a5",
+     "name": "Erlend",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_d6dca1b6-cdd8-4e9c-823c-e03979261740",
+     "oldName": "Lars"
+    },
+    "f": {
+     "voiceId": "cartesia_4f7b1820-6263-4615-87a7-b105768d8f64",
+     "name": "Kari",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_4f7b1820-6263-4615-87a7-b105768d8f64",
+     "oldName": "Kari"
+    }
+   }
+  },
+  "pol": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_d358377a-cd1d-45c5-abd0-701314e36cbe",
+     "name": "Marcin",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_d358377a-cd1d-45c5-abd0-701314e36cbe",
+     "oldName": "Marcin"
+    },
+    "f": {
+     "voiceId": "cartesia_f8aacd6e-1ac2-42d3-bcbf-125336ecd0f2",
+     "name": "Ewa",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_dcf62f33-7cff-4f20-85b2-2efaa68cbc32",
+     "oldName": "Zofia"
+    }
+   }
+  },
+  "ron": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_a98af725-3118-44e3-a7f6-6bd4fca20b32",
+     "name": "Bogdan",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_3f64ef99-d87b-4b51-b217-df7351f7886a",
+     "oldName": "Andrei"
+    },
+    "f": {
+     "voiceId": "cartesia_26aa0590-65e4-436e-8dd9-b02e6caa5a37",
+     "name": "Miruna",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_34acfaee-c556-41ee-a5f6-c687fb20357c",
+     "oldName": "Andrada"
+    }
+   }
+  },
+  "rus": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_1e4176b1-3db9-44d6-a601-4fe68b041942",
+     "name": "Sergei",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_1e4176b1-3db9-44d6-a601-4fe68b041942",
+     "oldName": "Sergei"
+    },
+    "f": {
+     "voiceId": "cartesia_064b17af-d36b-4bfb-b003-be07dba1b649",
+     "name": "Tatiana",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_064b17af-d36b-4bfb-b003-be07dba1b649",
+     "oldName": "Tatiana"
+    }
+   }
+  },
+  "swe": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+     "name": "Nils",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_ebe0038b-1790-40bd-98cd-924313e58d3b",
+     "oldName": "Vidar - Supportive Voice"
+    },
+    "f": {
+     "voiceId": "cartesia_bcdcad6d-4eb6-4a71-89fd-1ae2ce9f95d8",
+     "name": "Freja - Informative Host",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_bcdcad6d-4eb6-4a71-89fd-1ae2ce9f95d8",
+     "oldName": "Freja - Informative Host"
+    }
+   }
+  },
+  "tel": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+     "name": "Vikram",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b",
+     "oldName": "Charan"
+    },
+    "f": {
+     "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+     "name": "Ramya",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_4418bb06-8329-49a1-bb11-53bb64ca0547",
+     "oldName": "Shanti"
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "m",
+    "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+    "name": "Vikram",
+    "provider": "cartesia",
+    "how": "known/presentation rule: 10th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+    "name": "Ramya",
+    "provider": "cartesia",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_tel"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": "azure_te-IN-ShrutiNeural"
+   }
+  },
+  "tha": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+     "name": "Chakrit",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_5de076e9-7b28-4442-b279-e7d80d573505",
+     "oldName": "Somchai"
+    },
+    "f": {
+     "voiceId": "cartesia_273193f7-dbff-438e-b8af-fcc499200b1c",
+     "name": "Narin",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_4ff0f045-c140-4aa3-9210-529083f86fca",
+     "oldName": "Supannee - Support Concierge"
+    }
+   }
+  },
+  "tur": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+     "name": "Taylan",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_39f753ef-b0eb-41cd-aa53-2f3c284f948f",
+     "oldName": "Emre"
+    },
+    "f": {
+     "voiceId": "cartesia_fa7bfcdc-603c-4bf1-a600-a371400d2f8c",
+     "name": "Leyla",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_fa7bfcdc-603c-4bf1-a600-a371400d2f8c",
+     "oldName": "Leyla"
+    }
+   }
+  },
+  "guj": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+     "name": "Amit",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+     "oldName": "Amit"
+    },
+    "f": {
+     "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+     "name": "Isha",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+     "oldName": "Isha"
+    }
+   },
+   "known": {
+    "mode": "alternating (byGender)",
+    "byGender": {
+     "m": {
+      "voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+      "name": "Amit",
+      "provider": "cartesia"
+     },
+     "f": {
+      "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+      "name": "Isha",
+      "provider": "cartesia"
+     }
+    },
+    "how": "known/presentation rule: course alternates two known voices, so both target voices"
+   },
+   "presentation": {
+    "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+    "name": "Isha",
+    "provider": "cartesia",
+    "how": "known/presentation rule: alternating course, female anchor (eng_for_hin precedent)"
+   },
+   "knownCourses": [
+    "eng_for_guj"
+   ],
+   "knownOld": {
+    "m": "azure_gu-IN-NiranjanNeural",
+    "f": "azure_gu-IN-DhwaniNeural"
+   }
+  },
+  "pan": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+     "name": "Gurpreet",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+     "oldName": "Gurpreet"
+    },
+    "f": {
+     "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+     "name": "Navjot",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_991c62ce-631f-48b0-8060-2a0ebecbd15b",
+     "oldName": "Jaspreet"
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "f",
+    "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+    "name": "Navjot",
+    "provider": "cartesia",
+    "how": "known/presentation rule: 7th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+    "name": "Gurpreet",
+    "provider": "cartesia",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_pan"
+   ],
+   "knownOld": {
+    "m": "azure_pa-IN-OjasNeural",
+    "f": "azure_pa-IN-VaaniNeural"
+   }
+  },
+  "tam": {
+   "provider": "cartesia",
+   "target": {
+    "m": {
+     "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+     "name": "Karthik",
+     "provider": "cartesia",
+     "how": "single option (Kai, 19 Nov 14:01Z)",
+     "old": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+     "oldName": "Karthik"
+    },
+    "f": {
+     "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+     "name": "Nila",
+     "provider": "cartesia",
+     "how": "Kai favourite (round 2)",
+     "old": "cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2",
+     "oldName": "Janani"
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "f",
+    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+    "name": "Nila",
+    "provider": "cartesia",
+    "how": "known/presentation rule: 9th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+    "name": "Karthik",
+    "provider": "cartesia",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_tam",
+    "kor_for_tam",
+    "zho_for_tam"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "glg": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_gl-ES-RoiNeural",
+     "name": "Roi",
+     "provider": "azure",
+     "locale": "gl-ES",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (gl-ES)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_gl-ES-SabelaNeural",
+     "name": "Sabela",
+     "provider": "azure",
+     "locale": "gl-ES",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (gl-ES)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "eus": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_eu-ES-AnderNeural",
+     "name": "Ander",
+     "provider": "azure",
+     "locale": "eu-ES",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (eu-ES)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_eu-ES-AinhoaNeural",
+     "name": "Ainhoa",
+     "provider": "azure",
+     "locale": "eu-ES",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (eu-ES)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "gle": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_ga-IE-ColmNeural",
+     "name": "Colm",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (ga-IE)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_ga-IE-OrlaNeural",
+     "name": "Orla",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (ga-IE)",
+     "old": null,
+     "oldName": null
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "f",
+    "voiceId": "azure_ga-IE-OrlaNeural",
+    "name": "Orla",
+    "provider": "azure",
+    "how": "known/presentation rule: 3th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "azure_ga-IE-ColmNeural",
+    "name": "Colm",
+    "provider": "azure",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "cat_for_gle",
+    "zho_for_gle"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "est": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_et-EE-KertNeural",
+     "name": "Kert",
+     "provider": "azure",
+     "locale": "et-EE",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (et-EE)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_et-EE-AnuNeural",
+     "name": "Anu",
+     "provider": "azure",
+     "locale": "et-EE",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (et-EE)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "fas": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_fa-IR-FaridNeural",
+     "name": "Farid",
+     "provider": "azure",
+     "locale": "fa-IR",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (fa-IR)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_fa-IR-DilaraNeural",
+     "name": "Dilara",
+     "provider": "azure",
+     "locale": "fa-IR",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (fa-IR)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "gle_connemara": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_ga-IE-ColmNeural",
+     "name": "Colm",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (ga-IE) — the base language's locale; Azure has no dialect voice",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_ga-IE-OrlaNeural",
+     "name": "Orla",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (ga-IE) — the base language's locale; Azure has no dialect voice",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "gle_munster": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_ga-IE-ColmNeural",
+     "name": "Colm",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (ga-IE) — the base language's locale; Azure has no dialect voice",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_ga-IE-OrlaNeural",
+     "name": "Orla",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (ga-IE) — the base language's locale; Azure has no dialect voice",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "gle_ulster": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_ga-IE-ColmNeural",
+     "name": "Colm",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (ga-IE) — the base language's locale; Azure has no dialect voice",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_ga-IE-OrlaNeural",
+     "name": "Orla",
+     "provider": "azure",
+     "locale": "ga-IE",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (ga-IE) — the base language's locale; Azure has no dialect voice",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "hye": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_hy-AM-HaykNeural",
+     "name": "Hayk",
+     "provider": "azure",
+     "locale": "hy-AM",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (hy-AM)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_hy-AM-AnahitNeural",
+     "name": "Anahit",
+     "provider": "azure",
+     "locale": "hy-AM",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (hy-AM)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "isl": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_is-IS-GunnarNeural",
+     "name": "Gunnar",
+     "provider": "azure",
+     "locale": "is-IS",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (is-IS)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_is-IS-GudrunNeural",
+     "name": "Gudrun",
+     "provider": "azure",
+     "locale": "is-IS",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (is-IS)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "lav": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_lv-LV-NilsNeural",
+     "name": "Nils",
+     "provider": "azure",
+     "locale": "lv-LV",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (lv-LV)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_lv-LV-EveritaNeural",
+     "name": "Everita",
+     "provider": "azure",
+     "locale": "lv-LV",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (lv-LV)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "lit": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_lt-LT-LeonasNeural",
+     "name": "Leonas",
+     "provider": "azure",
+     "locale": "lt-LT",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (lt-LT)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_lt-LT-OnaNeural",
+     "name": "Ona",
+     "provider": "azure",
+     "locale": "lt-LT",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (lt-LT)",
+     "old": null,
+     "oldName": null
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "f",
+    "voiceId": "azure_lt-LT-OnaNeural",
+    "name": "Ona",
+    "provider": "azure",
+    "how": "known/presentation rule: 5th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "azure_lt-LT-LeonasNeural",
+    "name": "Leonas",
+    "provider": "azure",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "por_for_lit"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "mkd": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_mk-MK-AleksandarNeural",
+     "name": "Aleksandar",
+     "provider": "azure",
+     "locale": "mk-MK",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (mk-MK)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_mk-MK-MarijaNeural",
+     "name": "Marija",
+     "provider": "azure",
+     "locale": "mk-MK",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (mk-MK)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "mlt": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_mt-MT-JosephNeural",
+     "name": "Joseph",
+     "provider": "azure",
+     "locale": "mt-MT",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (mt-MT)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_mt-MT-GraceNeural",
+     "name": "Grace",
+     "provider": "azure",
+     "locale": "mt-MT",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (mt-MT)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "nep": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_ne-NP-SagarNeural",
+     "name": "Sagar",
+     "provider": "azure",
+     "locale": "ne-NP",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (ne-NP)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_ne-NP-HemkalaNeural",
+     "name": "Hemkala",
+     "provider": "azure",
+     "locale": "ne-NP",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (ne-NP)",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "srp": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_sr-Latn-RS-NicholasNeural",
+     "name": "Nicholas (Latin)",
+     "provider": "azure",
+     "locale": "sr-Latn-RS",
+     "how": "Azure best-effort",
+     "reason": "carries 5566 clips of this language's courses already; locale sr-Latn-RS (preferred locale); Neural; over sr-RS-NicholasNeural",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_sr-Latn-RS-SophieNeural",
+     "name": "Sophie (Latin)",
+     "provider": "azure",
+     "locale": "sr-Latn-RS",
+     "how": "Azure best-effort",
+     "reason": "carries 5572 clips of this language's courses already; locale sr-Latn-RS (preferred locale); Neural; over sr-RS-SophieNeural",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "swa": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_sw-KE-RafikiNeural",
+     "name": "Rafiki",
+     "provider": "azure",
+     "locale": "sw-KE",
+     "how": "Azure best-effort",
+     "reason": "carries 6528 clips of this language's courses already; locale sw-KE (preferred locale); Neural; over sw-TZ-DaudiNeural",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_sw-KE-ZuriNeural",
+     "name": "Zuri",
+     "provider": "azure",
+     "locale": "sw-KE",
+     "how": "Azure best-effort",
+     "reason": "carries 6599 clips of this language's courses already; locale sw-KE (preferred locale); Neural; over sw-TZ-RehemaNeural",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "yue": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_zh-HK-WanLungNeural",
+     "name": "WanLung",
+     "provider": "azure",
+     "locale": "zh-HK",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (zh-HK)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_zh-HK-HiuMaanNeural",
+     "name": "HiuMaan",
+     "provider": "azure",
+     "locale": "zh-HK",
+     "how": "Azure best-effort",
+     "reason": "carries 56 clips of this language's courses already; locale zh-HK (preferred locale); Neural; over zh-HK-HiuGaaiNeural",
+     "old": null,
+     "oldName": null
+    }
+   }
+  },
+  "aze": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_az-AZ-BabekNeural",
+     "name": "Babek",
+     "provider": "azure",
+     "locale": "az-AZ",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (az-AZ)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_az-AZ-BanuNeural",
+     "name": "Banu",
+     "provider": "azure",
+     "locale": "az-AZ",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (az-AZ)",
+     "old": null,
+     "oldName": null
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "f",
+    "voiceId": "azure_az-AZ-BanuNeural",
+    "name": "Banu",
+    "provider": "azure",
+    "how": "known/presentation rule: 1th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "azure_az-AZ-BabekNeural",
+    "name": "Babek",
+    "provider": "azure",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "por_for_aze"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "sin": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_si-LK-SameeraNeural",
+     "name": "Sameera",
+     "provider": "azure",
+     "locale": "si-LK",
+     "how": "Azure, single option per slot",
+     "reason": "the only male Azure voice (si-LK)",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_si-LK-ThiliniNeural",
+     "name": "Thilini",
+     "provider": "azure",
+     "locale": "si-LK",
+     "how": "Azure, single option per slot",
+     "reason": "the only female Azure voice (si-LK)",
+     "old": null,
+     "oldName": null
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "m",
+    "voiceId": "azure_si-LK-SameeraNeural",
+    "name": "Sameera",
+    "provider": "azure",
+    "how": "known/presentation rule: 8th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "azure_si-LK-ThiliniNeural",
+    "name": "Thilini",
+    "provider": "azure",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_sin"
+   ],
+   "knownOld": {
+    "m": null,
+    "f": null
+   }
+  },
+  "urd": {
+   "provider": "azure",
+   "target": {
+    "m": {
+     "voiceId": "azure_ur-PK-AsadNeural",
+     "name": "Asad",
+     "provider": "azure",
+     "locale": "ur-PK",
+     "how": "Azure best-effort",
+     "reason": "no course clips yet; locale ur-PK (preferred locale); Neural; over ur-IN-SalmanNeural",
+     "old": null,
+     "oldName": null
+    },
+    "f": {
+     "voiceId": "azure_ur-PK-UzmaNeural",
+     "name": "Uzma",
+     "provider": "azure",
+     "locale": "ur-PK",
+     "how": "Azure best-effort",
+     "reason": "carries 14584 clips of this language's courses already; locale ur-PK (preferred locale); Neural; over ur-IN-GulNeural",
+     "old": null,
+     "oldName": null
+    }
+   },
+   "known": {
+    "mode": "single",
+    "gender": "f",
+    "voiceId": "azure_ur-PK-UzmaNeural",
+    "name": "Uzma",
+    "provider": "azure",
+    "how": "known/presentation rule: 11th in code order among single-known languages, alternating f/m"
+   },
+   "presentation": {
+    "voiceId": "azure_ur-PK-AsadNeural",
+    "name": "Asad",
+    "provider": "azure",
+    "how": "known/presentation rule: the other picked voice"
+   },
+   "knownCourses": [
+    "eng_for_urd"
+   ],
+   "knownOld": {
+    "m": "azure_ur-PK-AsadNeural",
+    "f": "azure_ur-PK-UzmaNeural"
+   }
+  }
+ },
+ "gaps": [
+  {
+   "lang": "ceb",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Cebuano (ceb). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "cor",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Cornish (kw). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "fry",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Western Frisian (fy). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "fur",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Friulian (fur). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "gla",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure lists none — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "hak",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Hakka (hak). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "hyw",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for HYW (hyw). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "lmo",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Lombard (lmo). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "nan",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Taiwanese Hokkien (nan). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "nap",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Neapolitan (nap). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "rgn",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Romagnol (rgn). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "roh",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Romansh (rm). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "scn",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Sicilian (scn). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "sme",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Northern Sami (se). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "vec",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Venetian (vec). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "yid",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Yiddish (yi). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  },
+  {
+   "lang": "yor",
+   "slot": "m+f",
+   "why": "Azure has no voice for it: Azure TTS not configured for Yoruba (yo). Add azure_locale to language_codes.csv — stays on whatever its courses carry now"
+  }
+ ]
+}
