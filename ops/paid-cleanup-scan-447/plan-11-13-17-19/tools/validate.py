@@ -7,7 +7,7 @@ import json, os, sys
 FAM = sys.argv[1]; del sys.argv[1]
 KIT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.join(KIT, FAM)
-sys.path.insert(0, os.path.dirname(KIT))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit
 
 course, dumpf = sys.argv[1], sys.argv[2]

@@ -20,7 +20,7 @@ import json, os, re, sys, unicodedata, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))  # ops/paid-cleanup-scan-447 (copykit)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit  # cs #931·AI: reads only the nightly copy
 
 

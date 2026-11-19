@@ -7,7 +7,7 @@ in the plan under "dryRun". Never sends "apply". If every chunk answers 200, als
 usage: python3 -I dryrun.py <course> [--tag <tag>] [--chunk 50]"""
 import os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.dirname(ROOT))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit
 
 course = sys.argv[1]

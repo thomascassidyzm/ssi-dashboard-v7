@@ -7,7 +7,7 @@ Reads only the copy (../copy-read.cjs refuses anything else); never calls :3471 
 usage: python3 -I validate.py <course> <copy-dump.json> [--tag <tag>]"""
 import json, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.dirname(ROOT))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit
 
 course, dumpf = sys.argv[1], sys.argv[2]

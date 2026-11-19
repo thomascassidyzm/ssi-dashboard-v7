@@ -5,7 +5,7 @@ needs to send a fresh romanisation with every changed target (else ROMAN_STALE).
 usage: python3 -I fetch_baskets.py <course> [--tag b]"""
 import json, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.dirname(ROOT))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit
 course = sys.argv[1]
 tag = ('-' + sys.argv[sys.argv.index('--tag') + 1]) if '--tag' in sys.argv else ''

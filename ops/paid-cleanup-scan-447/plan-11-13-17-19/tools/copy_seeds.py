@@ -5,7 +5,7 @@ live_seeds.py and data/live/, which read Popty's script-view on live). Shape per
 Reads $CS_SCRATCH/dumps/<course>.json (make it with mkdump.py). usage: python3 -I copy_seeds.py <course> <seed>... | --same"""
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit
 course = sys.argv[1]
 f = os.path.join(HERE, '..', 'data', 'copy', f'{course}.json')

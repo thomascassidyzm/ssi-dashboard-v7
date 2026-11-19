@@ -26,7 +26,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FAM = sys.argv[1]; del sys.argv[1]
 ROOT = os.path.join(os.path.dirname(HERE), FAM)
 FAMNO = {'item17': '17', 'item13': '13', 'dups': 'dup', 'item11': '11', 'item19': '19'}.get(FAM, FAM)
-sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))  # ops/paid-cleanup-scan-447 (copykit)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))))  # ops/paid-cleanup-scan-447 (copykit), through symlinked shard dirs too
 import copykit  # cs #931·AI: reads only the nightly copy
 
 
