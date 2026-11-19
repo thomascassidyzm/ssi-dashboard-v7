@@ -1,0 +1,337 @@
+{
+ "spa_mx_for_eng": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 450,
+    "set": {
+     "known_text": "no they have to catch the train"
+    },
+    "expect": {
+     "known_text": "no they have to catch the train themselves",
+     "target_text": "no, ellos tienen que tomar el tren"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_mx_for_eng:S0450L02U01",
+    "set": {
+     "known_text": "no they have to catch the train"
+    },
+    "expect": {
+     "known_text": "no, they have to catch the train themselves",
+     "target_text": "no, ellos tienen que tomar el tren"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 450,
+    "role": "known",
+    "text": "no they have to catch the train"
+   },
+   {
+    "kind": "phrase",
+    "key": "spa_mx_for_eng:S0450L02U01",
+    "role": "known",
+    "text": "no they have to catch the train"
+   }
+  ],
+  "notes": []
+ },
+ "por_for_eng": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 450,
+    "set": {
+     "target_text": "não, têm de apanhar o comboio eles próprios"
+    },
+    "expect": {
+     "known_text": "no they have to catch the train themselves",
+     "target_text": "não, eles têm de apanhar o comboio"
+    }
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target1",
+    "audio_id": "0974334e-28f3-4344-84d3-72bd6a518f71",
+    "seed_number": 450
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target2",
+    "audio_id": "d5515898-e8fc-4b28-ab5c-7440fad0e26f",
+    "seed_number": 450
+   }
+  ],
+  "clips": [],
+  "notes": []
+ },
+ "spa_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 450,
+    "set": {
+     "target_text": "No, ellos mismos tienen que coger el tren."
+    },
+    "expect": {
+     "known_text": "自分たちで電車に乗らないといけない。",
+     "target_text": "No, ellos tienen que coger el tren."
+    }
+   }
+  ],
+  "clips": [],
+  "notes": []
+ },
+ "spa_for_zho": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 450,
+    "set": {
+     "target_text": "No, ellos mismos tienen que coger el tren."
+    },
+    "expect": {
+     "known_text": "不，他们得自己赶火车。",
+     "target_text": "No, ellos tienen que coger el tren."
+    }
+   }
+  ],
+  "clips": [],
+  "notes": []
+ },
+ "deu_for_jpn": {
+  "ops": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0013L01B02",
+     "seed_number": 13,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "とても一生懸命",
+     "target_text": "sehr hart",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "word_count": 9,
+     "lego_count": 2,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs976-held-seed-follow-up",
+      "seed_fix_of": 13
+     }
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "deu_for_jpn:S0013L01B03",
+    "set": {
+     "known_text": "とても一生懸命練習する",
+     "target_text": "sehr hart üben"
+    },
+    "expect": {
+     "known_text": "とても頑張る",
+     "target_text": "sehr hart"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "deu_for_jpn:S0013L01U01",
+    "set": {
+     "known_text": "とても一生懸命練習するつもりです",
+     "target_text": "ich werde sehr hart üben"
+    },
+    "expect": {
+     "known_text": "とても一生懸命話そうとしています",
+     "target_text": "ich versuche sehr hart zu sprechen"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "deu_for_jpn:S0013L01U04",
+    "set": {
+     "known_text": "今日とても一生懸命練習したいです",
+     "target_text": "ich möchte heute sehr hart üben"
+    },
+    "expect": {
+     "known_text": "今日とても頑張りたいです",
+     "target_text": "ich möchte heute sehr hart versuchen"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01B02",
+    "role": "known",
+    "text": "とても一生懸命"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01B02",
+    "role": "target1",
+    "text": "sehr hart"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01B02",
+    "role": "target2",
+    "text": "sehr hart"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01B03",
+    "role": "known",
+    "text": "とても一生懸命練習する"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01B03",
+    "role": "target1",
+    "text": "sehr hart üben"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01B03",
+    "role": "target2",
+    "text": "sehr hart üben"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01U01",
+    "role": "known",
+    "text": "とても一生懸命練習するつもりです"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01U01",
+    "role": "target1",
+    "text": "ich werde sehr hart üben"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01U01",
+    "role": "target2",
+    "text": "ich werde sehr hart üben"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01U04",
+    "role": "known",
+    "text": "今日とても一生懸命練習したいです"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01U04",
+    "role": "target1",
+    "text": "ich möchte heute sehr hart üben"
+   },
+   {
+    "kind": "phrase",
+    "key": "deu_for_jpn:S0013L01U04",
+    "role": "target2",
+    "text": "ich möchte heute sehr hart üben"
+   }
+  ],
+  "notes": []
+ },
+ "eng_for_tam": {
+  "ops": [
+   {
+    "op": "lego.update",
+    "lego_id": "S0103L04",
+    "set": {
+     "known_text": "பலவற்றை கேட்க முயற்சிக்கவில்லை"
+    },
+    "expect": {
+     "known_text": "முயற்சிக்கவில்லை கேட்க பல",
+     "target_text": "not trying to hear many"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_tam:S0103L04B01",
+    "set": {
+     "known_text": "நாங்கள் பலவற்றை கேட்க முயற்சிக்கவில்லை"
+    },
+    "expect": {
+     "known_text": "நாங்கள் முயற்சிக்கவில்லை கேட்க பல",
+     "target_text": "we're not trying to hear many"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_tam:S0103L04B02",
+    "set": {
+     "known_text": "பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை"
+    },
+    "expect": {
+     "known_text": "முயற்சிக்கவில்லை கேட்க பல வார்த்தைகள்",
+     "target_text": "not trying to hear many words"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_tam:S0103L04B03",
+    "set": {
+     "known_text": "நான் இப்போது பலவற்றை கேட்க முயற்சிக்கவில்லை"
+    },
+    "expect": {
+     "known_text": "நான் இப்போது முயற்சிக்கவில்லை கேட்க பல",
+     "target_text": "I'm not trying to hear many now"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "lego",
+    "key": "S0103L04",
+    "role": "known",
+    "text": "பலவற்றை கேட்க முயற்சிக்கவில்லை"
+   },
+   {
+    "kind": "phrase",
+    "key": "eng_for_tam:S0103L04B01",
+    "role": "known",
+    "text": "நாங்கள் பலவற்றை கேட்க முயற்சிக்கவில்லை"
+   },
+   {
+    "kind": "phrase",
+    "key": "eng_for_tam:S0103L04B02",
+    "role": "known",
+    "text": "பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை"
+   },
+   {
+    "kind": "phrase",
+    "key": "eng_for_tam:S0103L04B03",
+    "role": "known",
+    "text": "நான் இப்போது பலவற்றை கேட்க முயற்சிக்கவில்லை"
+   }
+  ],
+  "notes": []
+ },
+ "_intros": [
+  {
+   "course": "deu_for_jpn",
+   "lego": "S0007L04",
+   "text": "頑張る、「頑張るつもりです」のように、をドイツ語で言うと："
+  },
+  {
+   "course": "deu_for_jpn",
+   "lego": "S0007L02",
+   "text": "一生懸命、「今日一生懸命練習する」のように、をドイツ語で言うと："
+  },
+  {
+   "course": "eng_for_tam",
+   "lego": "S0103L04",
+   "text": "ஆங்கிலம்-ல். 'பலவற்றை கேட்க முயற்சிக்கவில்லை'. 'நான் இப்போது பலவற்றை கேட்க முயற்சிக்கவில்லை' போல். :"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "known_text": "no they have to catch the train"
+   },
+   "expect": {
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "no, ellos tienen que tomar el tren"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0450L02U01",
+   "set": {
+    "known_text": "no they have to catch the train"
+   },
+   "expect": {
+    "known_text": "no, they have to catch the train themselves",
+    "target_text": "no, ellos tienen que tomar el tren"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "known",
+   "audio_id": "98894b64-bb6d-4ae1-b131-6132f50789b6",
+   "seed_number": 450
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "98894b64-bb6d-4ae1-b131-6132f50789b6",
+   "phrase_id": "spa_mx_for_eng:S0450L02U01"
+  }
+ ]
+}

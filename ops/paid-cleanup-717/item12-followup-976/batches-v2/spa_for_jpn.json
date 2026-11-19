@@ -1,0 +1,15 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "known_text": "いや、電車に乗らないといけない。"
+   },
+   "expect": {
+    "known_text": "自分たちで電車に乗らないといけない。",
+    "target_text": "No, ellos tienen que coger el tren."
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0103L04",
+   "set": {
+    "known_text": "பலவற்றை கேட்க முயற்சிக்கவில்லை"
+   },
+   "expect": {
+    "known_text": "முயற்சிக்கவில்லை கேட்க பல",
+    "target_text": "not trying to hear many"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0103L04B01",
+   "set": {
+    "known_text": "நாங்கள் பலவற்றை கேட்க முயற்சிக்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நாங்கள் முயற்சிக்கவில்லை கேட்க பல",
+    "target_text": "we're not trying to hear many"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0103L04B02",
+   "set": {
+    "known_text": "பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை"
+   },
+   "expect": {
+    "known_text": "முயற்சிக்கவில்லை கேட்க பல வார்த்தைகள்",
+    "target_text": "not trying to hear many words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0103L04B03",
+   "set": {
+    "known_text": "நான் இப்போது பலவற்றை கேட்க முயற்சிக்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நான் இப்போது முயற்சிக்கவில்லை கேட்க பல",
+    "target_text": "I'm not trying to hear many now"
+   }
+  }
+ ]
+}
