@@ -1,0 +1,129 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 135,
+   "set": {
+    "target_text": "我不知道你为什么觉得它这么好",
+    "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde tā zhème hǎo."
+   },
+   "expect": {
+    "target_text": "我不知道你为什么觉得那这么好",
+    "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde nà zhème hǎo."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0135L01U01",
+   "set": {
+    "target_text": "我不知道你为什么觉得它这么好",
+    "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde tā zhème hǎo."
+   },
+   "expect": {
+    "target_text": "我不知道你为什么觉得那这么好",
+    "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde nà zhème hǎo."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0135L01B03",
+   "set": {
+    "target_text": "你为什么这么觉得",
+    "target_text_roman": "nǐ wèishénme zhème juéde"
+   },
+   "expect": {
+    "target_text": "你为什么觉得那",
+    "target_text_roman": "nǐ wèishénme juéde nà"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0135L01U07",
+    "seed_number": 135,
+    "lego_index": 1,
+    "position": 14,
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "我不知道你为什么觉得它这么好",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs717-item12-seed-sentence",
+     "seed_sentence_of": 135,
+     "canon": "P26",
+     "readded_by": "cs #964·AI"
+    },
+    "word_count": 14,
+    "lego_count": 10,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde tā zhème hǎo."
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target1",
+   "audio_id": "9b0e5690-a317-4cbe-a9ea-0590fbd1e235",
+   "seed_number": 135
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target2",
+   "audio_id": "1e8ede92-ddba-4b81-a3f3-c8a2926cec6d",
+   "seed_number": 135
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "9b0e5690-a317-4cbe-a9ea-0590fbd1e235",
+   "phrase_id": "zho_for_eng:S0135L01U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "1e8ede92-ddba-4b81-a3f3-c8a2926cec6d",
+   "phrase_id": "zho_for_eng:S0135L01U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "8b6e5e8a-0827-4df2-85f9-abbd88e707c2",
+   "phrase_id": "zho_for_eng:S0135L01B03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "f3a30686-c7f6-4e29-8960-989387fca017",
+   "phrase_id": "zho_for_eng:S0135L01B03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "66312221-3b15-42b8-97e2-cd3d016890ac",
+   "phrase_id": "zho_for_eng:S0135L01U07"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "9b0e5690-a317-4cbe-a9ea-0590fbd1e235",
+   "phrase_id": "zho_for_eng:S0135L01U07"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "1e8ede92-ddba-4b81-a3f3-c8a2926cec6d",
+   "phrase_id": "zho_for_eng:S0135L01U07"
+  }
+ ]
+}
