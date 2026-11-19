@@ -1,0 +1,1323 @@
+{
+ "spa_for_eng": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 450,
+    "set": {
+     "target_text": "no, ellos mismos tienen que coger el tren"
+    },
+    "expect": {
+     "target_text": "no, ellos tienen que coger el tren"
+    }
+   },
+   {
+    "op": "lego.insert",
+    "row": {
+     "seed_number": 450,
+     "lego_index": 4,
+     "known_text": "they themselves have to",
+     "target_text": "ellos mismos tienen que",
+     "type": "A",
+     "is_new": true
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0450L04B01",
+     "seed_number": 450,
+     "lego_index": 4,
+     "position": 1,
+     "known_text": "they themselves have to",
+     "target_text": "ellos mismos tienen que",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 23,
+     "lego_count": 4,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0450L04B02",
+     "seed_number": 450,
+     "lego_index": 4,
+     "position": 2,
+     "known_text": "they themselves have to come",
+     "target_text": "ellos mismos tienen que venir",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 29,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0450L04U01",
+     "seed_number": 450,
+     "lego_index": 4,
+     "position": 3,
+     "known_text": "no they have to catch the train themselves",
+     "target_text": "no, ellos mismos tienen que coger el tren",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 450,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 41,
+     "lego_count": 8,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0450L04U02",
+     "seed_number": 450,
+     "lego_index": 4,
+     "position": 4,
+     "known_text": "they have to do it themselves",
+     "target_text": "ellos mismos tienen que hacerlo",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 31,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0450L04U03",
+     "seed_number": 450,
+     "lego_index": 4,
+     "position": 5,
+     "known_text": "they have to go home themselves",
+     "target_text": "ellos mismos tienen que ir a casa",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 33,
+     "lego_count": 7,
+     "lego_position": null
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 450,
+    "known": null,
+    "target": "no, ellos mismos tienen que coger el tren",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L04B01",
+    "known": "they themselves have to",
+    "target": "ellos mismos tienen que",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L04B02",
+    "known": "they themselves have to come",
+    "target": "ellos mismos tienen que venir",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L04U01",
+    "known": null,
+    "target": "no, ellos mismos tienen que coger el tren",
+    "reuse": "seed"
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L04U02",
+    "known": "they have to do it themselves",
+    "target": "ellos mismos tienen que hacerlo",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L04U03",
+    "known": "they have to go home themselves",
+    "target": "ellos mismos tienen que ir a casa",
+    "reuse": null
+   },
+   {
+    "kind": "lego",
+    "key": "S0450L04",
+    "known": null,
+    "target": null,
+    "reuse": "phrase:S0450L04B01"
+   }
+  ],
+  "notes": []
+ },
+ "por_br_for_eng": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 450,
+    "set": {
+     "target_text": "não, eles mesmos têm que pegar o trem"
+    },
+    "expect": {
+     "target_text": "não, eles têm que pegar o trem"
+    }
+   },
+   {
+    "op": "lego.insert",
+    "row": {
+     "seed_number": 450,
+     "lego_index": 5,
+     "known_text": "they themselves have to",
+     "target_text": "eles mesmos têm que",
+     "type": "A",
+     "is_new": true
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_br_for_eng:S0450L05B01",
+     "seed_number": 450,
+     "lego_index": 5,
+     "position": 1,
+     "known_text": "they themselves have to",
+     "target_text": "eles mesmos têm que",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 19,
+     "lego_count": 4,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_br_for_eng:S0450L05B02",
+     "seed_number": 450,
+     "lego_index": 5,
+     "position": 2,
+     "known_text": "they themselves have to go",
+     "target_text": "eles mesmos têm que ir",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 22,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_br_for_eng:S0450L05U01",
+     "seed_number": 450,
+     "lego_index": 5,
+     "position": 3,
+     "known_text": "no they have to catch the train themselves",
+     "target_text": "não, eles mesmos têm que pegar o trem",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 450,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 37,
+     "lego_count": 8,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_br_for_eng:S0450L05U02",
+     "seed_number": 450,
+     "lego_index": 5,
+     "position": 4,
+     "known_text": "they have to pay themselves",
+     "target_text": "eles mesmos têm que pagar",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 25,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_br_for_eng:S0450L05U03",
+     "seed_number": 450,
+     "lego_index": 5,
+     "position": 5,
+     "known_text": "they have to find out themselves",
+     "target_text": "eles mesmos têm que descobrir",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 450
+     },
+     "word_count": 29,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 450,
+    "known": null,
+    "target": "não, eles mesmos têm que pegar o trem",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L05B01",
+    "known": "they themselves have to",
+    "target": "eles mesmos têm que",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L05B02",
+    "known": "they themselves have to go",
+    "target": "eles mesmos têm que ir",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L05U01",
+    "known": null,
+    "target": "não, eles mesmos têm que pegar o trem",
+    "reuse": "seed"
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L05U02",
+    "known": "they have to pay themselves",
+    "target": "eles mesmos têm que pagar",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0450L05U03",
+    "known": "they have to find out themselves",
+    "target": "eles mesmos têm que descobrir",
+    "reuse": null
+   },
+   {
+    "kind": "lego",
+    "key": "S0450L05",
+    "known": null,
+    "target": null,
+    "reuse": "phrase:S0450L05B01"
+   }
+  ],
+  "notes": []
+ },
+ "deu_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 7,
+    "set": {
+     "target_text": "Ich möchte heute mein Bestes geben."
+    },
+    "expect": {
+     "target_text": "Ich möchte heute so hart wie möglich versuchen."
+    }
+   },
+   {
+    "op": "lego.insert",
+    "row": {
+     "seed_number": 7,
+     "lego_index": 4,
+     "known_text": "頑張る",
+     "target_text": "mein Bestes geben",
+     "type": "A",
+     "is_new": true
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0007L04B01",
+     "seed_number": 7,
+     "lego_index": 4,
+     "position": 1,
+     "known_text": "頑張る",
+     "target_text": "mein Bestes geben",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 7
+     },
+     "word_count": 17,
+     "lego_count": 3,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0007L04B02",
+     "seed_number": 7,
+     "lego_index": 4,
+     "position": 2,
+     "known_text": "今日頑張る",
+     "target_text": "heute mein Bestes geben",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 7
+     },
+     "word_count": 23,
+     "lego_count": 4,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0007L04B03",
+     "seed_number": 7,
+     "lego_index": 4,
+     "position": 3,
+     "known_text": "頑張りたい",
+     "target_text": "ich möchte mein Bestes geben",
+     "phrase_role": "build",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 7
+     },
+     "word_count": 28,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0007L04U01",
+     "seed_number": 7,
+     "lego_index": 4,
+     "position": 4,
+     "known_text": "今日できるだけ頑張りたいです。",
+     "target_text": "Ich möchte heute mein Bestes geben.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 7,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 35,
+     "lego_count": 6,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0007L04U02",
+     "seed_number": 7,
+     "lego_index": 4,
+     "position": 5,
+     "known_text": "頑張るつもりです",
+     "target_text": "ich werde mein Bestes geben",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 7
+     },
+     "word_count": 27,
+     "lego_count": 5,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0007L04U03",
+     "seed_number": 7,
+     "lego_index": 4,
+     "position": 6,
+     "known_text": "今頑張りたいです",
+     "target_text": "ich möchte jetzt mein Bestes geben",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs964-held-seed-fix",
+      "seed_fix_of": 7
+     },
+     "word_count": 34,
+     "lego_count": 6,
+     "lego_position": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "deu_for_jpn:S0007L02U04",
+    "expect": {
+     "known_text": "一生懸命話そうとしている",
+     "target_text": "ich versuche hart zu sprechen"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "deu_for_jpn:S0007L02U05",
+    "expect": {
+     "known_text": "今日できるだけよく一生懸命話す",
+     "target_text": "heute hart so oft wie möglich sprechen"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "deu_for_jpn:S0007L03B02",
+    "expect": {
+     "known_text": "頑張って試みる",
+     "target_text": "hart versuchen"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "deu_for_jpn:S0007L03B03",
+    "expect": {
+     "known_text": "今日できるだけ試みる",
+     "target_text": "heute so hart wie möglich versuchen"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "deu_for_jpn:S0007L03U01",
+    "expect": {
+     "known_text": "今日できるだけ頑張って試みたい",
+     "target_text": "ich möchte heute so hart wie möglich versuchen"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "known_text": "あなたは彼の名前を早く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね。"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 299,
+    "set": {
+     "known_text": "彼は半分払いたいです。"
+    },
+    "expect": {
+     "known_text": "半分払いたい。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "deu_for_jpn:S0299L02U05",
+     "seed_number": 299,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "彼は半分払いたいです。",
+     "target_text": "Er möchte die Hälfte bezahlen.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 299,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 30,
+     "lego_count": 1,
+     "lego_position": null
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 7,
+    "known": null,
+    "target": "Ich möchte heute mein Bestes geben.",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0007L04B01",
+    "known": "頑張る",
+    "target": "mein Bestes geben",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0007L04B02",
+    "known": "今日頑張る",
+    "target": "heute mein Bestes geben",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0007L04B03",
+    "known": "頑張りたい",
+    "target": "ich möchte mein Bestes geben",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0007L04U01",
+    "known": null,
+    "target": "Ich möchte heute mein Bestes geben.",
+    "reuse": "seed"
+   },
+   {
+    "kind": "phrase",
+    "key": "S0007L04U02",
+    "known": "頑張るつもりです",
+    "target": "ich werde mein Bestes geben",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0007L04U03",
+    "known": "今頑張りたいです",
+    "target": "ich möchte jetzt mein Bestes geben",
+    "reuse": null
+   },
+   {
+    "kind": "lego",
+    "key": "S0007L04",
+    "known": null,
+    "target": null,
+    "reuse": "phrase:S0007L04B01"
+   },
+   {
+    "kind": "seed",
+    "key": 20,
+    "known": "あなたは彼の名前を早く覚えたいですね。",
+    "target": null,
+    "reuse": "phrase:S0020L03U01"
+   },
+   {
+    "kind": "seed",
+    "key": 299,
+    "known": "彼は半分払いたいです。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0299L02U05",
+    "known": null,
+    "target": null,
+    "reuse": "seed:299"
+   }
+  ],
+  "notes": [
+   "S0013 (とても頑張る|sehr hart, ich möchte heute sehr hart versuchen) has the same hart-versuchen defect: not touched, gap."
+  ]
+ },
+ "eng_for_tam": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 103,
+    "set": {
+     "known_text": "நாங்கள் இன்னும் பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை"
+    },
+    "expect": {
+     "known_text": "நாங்கள் இன்னும் பல வார்த்தைகளை கேட்கவில்லை என்று முயற்சிக்கிறோம்."
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 103,
+    "known": "நாங்கள் இன்னும் பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை",
+    "target": null,
+    "reuse": "phrase:S0103L04U01"
+   }
+  ],
+  "notes": [
+   "S0103L04 LEGO known \"முயற்சிக்கவில்லை கேட்க பல\" and B01-B03 keep a garbled order; a decomposition problem, not fixed here (gap)."
+  ]
+ },
+ "zho_for_eng": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 135,
+    "set": {
+     "target_text": "我不知道你为什么觉得它这么好",
+     "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde tā zhème hǎo."
+    },
+    "expect": {
+     "target_text": "我不知道你为什么觉得那这么好",
+     "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde nà zhème hǎo."
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_eng:S0135L01U01",
+    "set": {
+     "target_text": "我不知道你为什么觉得它这么好",
+     "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde tā zhème hǎo."
+    },
+    "expect": {
+     "target_text": "我不知道你为什么觉得那这么好",
+     "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde nà zhème hǎo."
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_eng:S0135L01B03",
+    "set": {
+     "target_text": "你为什么这么觉得",
+     "target_text_roman": "nǐ wèishénme zhème juéde"
+    },
+    "expect": {
+     "target_text": "你为什么觉得那",
+     "target_text_roman": "nǐ wèishénme juéde nà"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "zho_for_eng:S0135L01U07",
+     "seed_number": 135,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "I don't know why you think that it's so good",
+     "target_text": "我不知道你为什么觉得它这么好",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 135,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 14,
+     "lego_count": 10,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ bù zhīdào nǐ wèishénme juéde tā zhème hǎo."
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 135,
+    "known": null,
+    "target": "我不知道你为什么觉得它这么好",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0135L01U01",
+    "known": null,
+    "target": "我不知道你为什么觉得它这么好",
+    "reuse": "seed"
+   },
+   {
+    "kind": "phrase",
+    "key": "S0135L01B03",
+    "known": null,
+    "target": "你为什么这么觉得",
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0135L01U07",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   }
+  ],
+  "notes": []
+ },
+ "zho_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 233,
+    "set": {
+     "known_text": "あなたのお姉さんを知っている若い女性を知っています。"
+    },
+    "expect": {
+     "known_text": "あなたの妹を知っている若い女性を知っています。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "zho_for_jpn:S0233L01U07",
+     "seed_number": 233,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "あなたのお姉さんを知っている若い女性を知っています。",
+     "target_text": "我认识一个年轻女人认识你姐姐。",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 233,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 15,
+     "lego_count": 1,
+     "lego_position": "middle"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "known_text": "あなたは彼の名前を早く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね。"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_jpn:S0020L03U01",
+    "set": {
+     "known_text": "あなたは彼の名前を早く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 299,
+    "set": {
+     "known_text": "彼は半分払いたいです。"
+    },
+    "expect": {
+     "known_text": "半分払いたい。"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 233,
+    "known": "あなたのお姉さんを知っている若い女性を知っています。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0233L01U07",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   },
+   {
+    "kind": "seed",
+    "key": 20,
+    "known": "あなたは彼の名前を早く覚えたいですね。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0020L03U01",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   },
+   {
+    "kind": "seed",
+    "key": 299,
+    "known": "彼は半分払いたいです。",
+    "target": null,
+    "reuse": "phrase:S0299L01U03"
+   }
+  ],
+  "notes": []
+ },
+ "eng_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "known_text": "あなたは彼の名前を早く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0020L03U06",
+     "seed_number": 20,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "あなたは彼の名前を早く覚えたいですね。",
+     "target_text": "you want to learn his name quickly",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 20,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 34,
+     "lego_count": 1,
+     "lego_position": "end"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 20,
+    "known": "あなたは彼の名前を早く覚えたいですね。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0020L03U06",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   }
+  ],
+  "notes": []
+ },
+ "fra_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "known_text": "あなたは彼の名前を早く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "fra_for_jpn:S0020L03U06",
+     "seed_number": 20,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "あなたは彼の名前を早く覚えたいですね。",
+     "target_text": "Tu veux apprendre son nom vite.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 20,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 31,
+     "lego_count": 1,
+     "lego_position": "end"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 299,
+    "set": {
+     "known_text": "彼は半分払いたいです。"
+    },
+    "expect": {
+     "known_text": "半分払いたい。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "fra_for_jpn:S0299L02U06",
+     "seed_number": 299,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "彼は半分払いたいです。",
+     "target_text": "Il veut payer la moitié.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 299,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 24,
+     "lego_count": 1,
+     "lego_position": "end"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 20,
+    "known": "あなたは彼の名前を早く覚えたいですね。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0020L03U06",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   },
+   {
+    "kind": "seed",
+    "key": 299,
+    "known": "彼は半分払いたいです。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0299L02U06",
+    "known": null,
+    "target": null,
+    "reuse": "seed:299"
+   }
+  ],
+  "notes": []
+ },
+ "ita_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "known_text": "あなたは彼の名前を早く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "ita_for_jpn:S0020L03U06",
+     "seed_number": 20,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "あなたは彼の名前を早く覚えたいですね。",
+     "target_text": "Vuoi imparare il suo nome velocemente.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 20,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 38,
+     "lego_count": 1,
+     "lego_position": "end"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 299,
+    "set": {
+     "known_text": "彼は半分払いたいです。"
+    },
+    "expect": {
+     "known_text": "半分払いたい。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "ita_for_jpn:S0299L02U05",
+     "seed_number": 299,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "彼は半分払いたいです。",
+     "target_text": "Lui vuole pagare la metà.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 299,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 25,
+     "lego_count": 1,
+     "lego_position": "end"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 20,
+    "known": "あなたは彼の名前を早く覚えたいですね。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0020L03U06",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   },
+   {
+    "kind": "seed",
+    "key": 299,
+    "known": "彼は半分払いたいです。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0299L02U05",
+    "known": null,
+    "target": null,
+    "reuse": "seed:299"
+   }
+  ],
+  "notes": []
+ },
+ "spa_for_jpn": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "known_text": "あなたは彼の名前を速く覚えたいですね。"
+    },
+    "expect": {
+     "known_text": "彼の名前を速く覚えたいですね。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_jpn:S0020L03U07",
+     "seed_number": 20,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "あなたは彼の名前を速く覚えたいですね。",
+     "target_text": "Quieres aprender su nombre rápidamente.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 20,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 39,
+     "lego_count": 1,
+     "lego_position": "middle"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 299,
+    "set": {
+     "known_text": "彼は半分払いたいです。"
+    },
+    "expect": {
+     "known_text": "半分払いたい。"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_jpn:S0299L02U06",
+     "seed_number": 299,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "彼は半分払いたいです。",
+     "target_text": "Él quiere pagar la mitad.",
+     "phrase_role": "use",
+     "introduce": true,
+     "connected_lego_ids": [],
+     "status": "draft",
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "cs717-item12-seed-sentence",
+      "seed_sentence_of": 299,
+      "canon": "P26",
+      "readded_by": "cs #964·AI"
+     },
+     "word_count": 25,
+     "lego_count": 1,
+     "lego_position": "end"
+    }
+   }
+  ],
+  "clips": [
+   {
+    "kind": "seed",
+    "key": 20,
+    "known": "あなたは彼の名前を速く覚えたいですね。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0020L03U07",
+    "known": null,
+    "target": null,
+    "reuse": "seed"
+   },
+   {
+    "kind": "seed",
+    "key": 299,
+    "known": "彼は半分払いたいです。",
+    "target": null,
+    "reuse": null
+   },
+   {
+    "kind": "phrase",
+    "key": "S0299L02U06",
+    "known": null,
+    "target": null,
+    "reuse": "seed:299"
+   }
+  ],
+  "notes": []
+ }
+}

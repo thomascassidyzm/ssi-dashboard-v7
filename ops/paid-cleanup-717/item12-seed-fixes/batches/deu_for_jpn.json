@@ -1,0 +1,446 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 7,
+   "set": {
+    "target_text": "Ich möchte heute mein Bestes geben."
+   },
+   "expect": {
+    "target_text": "Ich möchte heute so hart wie möglich versuchen."
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 7,
+    "lego_index": 4,
+    "known_text": "頑張る",
+    "target_text": "mein Bestes geben",
+    "type": "A",
+    "is_new": true
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0007L04B01",
+    "seed_number": 7,
+    "lego_index": 4,
+    "position": 1,
+    "known_text": "頑張る",
+    "target_text": "mein Bestes geben",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 7
+    },
+    "word_count": 17,
+    "lego_count": 3,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0007L04B02",
+    "seed_number": 7,
+    "lego_index": 4,
+    "position": 2,
+    "known_text": "今日頑張る",
+    "target_text": "heute mein Bestes geben",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 7
+    },
+    "word_count": 23,
+    "lego_count": 4,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0007L04B03",
+    "seed_number": 7,
+    "lego_index": 4,
+    "position": 3,
+    "known_text": "頑張りたい",
+    "target_text": "ich möchte mein Bestes geben",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 7
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0007L04U01",
+    "seed_number": 7,
+    "lego_index": 4,
+    "position": 4,
+    "known_text": "今日できるだけ頑張りたいです。",
+    "target_text": "Ich möchte heute mein Bestes geben.",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs717-item12-seed-sentence",
+     "seed_sentence_of": 7,
+     "canon": "P26",
+     "readded_by": "cs #964·AI"
+    },
+    "word_count": 35,
+    "lego_count": 6,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0007L04U02",
+    "seed_number": 7,
+    "lego_index": 4,
+    "position": 5,
+    "known_text": "頑張るつもりです",
+    "target_text": "ich werde mein Bestes geben",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 7
+    },
+    "word_count": 27,
+    "lego_count": 5,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0007L04U03",
+    "seed_number": 7,
+    "lego_index": 4,
+    "position": 6,
+    "known_text": "今頑張りたいです",
+    "target_text": "ich möchte jetzt mein Bestes geben",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 7
+    },
+    "word_count": 34,
+    "lego_count": 6,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_jpn:S0007L02U04",
+   "expect": {
+    "known_text": "一生懸命話そうとしている",
+    "target_text": "ich versuche hart zu sprechen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_jpn:S0007L02U05",
+   "expect": {
+    "known_text": "今日できるだけよく一生懸命話す",
+    "target_text": "heute hart so oft wie möglich sprechen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_jpn:S0007L03B02",
+   "expect": {
+    "known_text": "頑張って試みる",
+    "target_text": "hart versuchen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_jpn:S0007L03B03",
+   "expect": {
+    "known_text": "今日できるだけ試みる",
+    "target_text": "heute so hart wie möglich versuchen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_jpn:S0007L03U01",
+   "expect": {
+    "known_text": "今日できるだけ頑張って試みたい",
+    "target_text": "ich möchte heute so hart wie möglich versuchen"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 20,
+   "set": {
+    "known_text": "あなたは彼の名前を早く覚えたいですね。"
+   },
+   "expect": {
+    "known_text": "彼の名前を早く覚えたいですね。"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 299,
+   "set": {
+    "known_text": "彼は半分払いたいです。"
+   },
+   "expect": {
+    "known_text": "半分払いたい。"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_jpn:S0299L02U05",
+    "seed_number": 299,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "彼は半分払いたいです。",
+    "target_text": "Er möchte die Hälfte bezahlen.",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs717-item12-seed-sentence",
+     "seed_sentence_of": 299,
+     "canon": "P26",
+     "readded_by": "cs #964·AI"
+    },
+    "word_count": 30,
+    "lego_count": 1,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target1",
+   "audio_id": "db6ea0a8-ea84-4082-98bd-c163f98f280e",
+   "seed_number": 7
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target2",
+   "audio_id": "df000cbc-3375-4375-8652-4e5b1c4f6203",
+   "seed_number": 7
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "e200ab33-c16b-4512-b942-65d7bc8b7c88",
+   "phrase_id": "deu_for_jpn:S0007L04B01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "037c9f06-035c-4f68-9f59-bcfd92cf3e2e",
+   "phrase_id": "deu_for_jpn:S0007L04B01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "b97cf85b-d9ae-4faf-9269-d9d068265de7",
+   "phrase_id": "deu_for_jpn:S0007L04B01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "65acfaf8-2eca-4beb-b3c5-4340466b89c3",
+   "phrase_id": "deu_for_jpn:S0007L04B02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "b8d94181-7589-4cc0-8076-d29e3a188f01",
+   "phrase_id": "deu_for_jpn:S0007L04B02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "e0174d59-4300-40e1-a249-28ccdb0fe1c1",
+   "phrase_id": "deu_for_jpn:S0007L04B02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "455a1615-1e43-4de1-8f89-cc5506e2d80c",
+   "phrase_id": "deu_for_jpn:S0007L04B03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "fbb6db05-88e2-4957-9578-ff9dfe11addc",
+   "phrase_id": "deu_for_jpn:S0007L04B03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "c976eb28-a098-4fcb-ae06-2a701393bcb6",
+   "phrase_id": "deu_for_jpn:S0007L04B03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "db6ea0a8-ea84-4082-98bd-c163f98f280e",
+   "phrase_id": "deu_for_jpn:S0007L04U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "df000cbc-3375-4375-8652-4e5b1c4f6203",
+   "phrase_id": "deu_for_jpn:S0007L04U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "f2eca77e-9f69-40c5-830c-4cf71655300c",
+   "phrase_id": "deu_for_jpn:S0007L04U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "d3cd8210-b5cb-4402-9ef0-78da6f29029e",
+   "phrase_id": "deu_for_jpn:S0007L04U02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "8f0a206b-7d6d-46e5-b13b-2d362936a394",
+   "phrase_id": "deu_for_jpn:S0007L04U02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "86a729d8-e305-47cb-9838-bc42f2e3c7b7",
+   "phrase_id": "deu_for_jpn:S0007L04U02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "34202190-01ef-454c-97ef-628be59ce160",
+   "phrase_id": "deu_for_jpn:S0007L04U03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "63b5dada-d393-4523-82db-ffc33790efed",
+   "phrase_id": "deu_for_jpn:S0007L04U03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "a7670ad9-6557-4316-a84d-aa69417e7747",
+   "phrase_id": "deu_for_jpn:S0007L04U03"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "slot": "known",
+   "audio_id": "e200ab33-c16b-4512-b942-65d7bc8b7c88",
+   "lego_id": "S0007L04"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "slot": "target1",
+   "audio_id": "037c9f06-035c-4f68-9f59-bcfd92cf3e2e",
+   "lego_id": "S0007L04"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "slot": "target2",
+   "audio_id": "b97cf85b-d9ae-4faf-9269-d9d068265de7",
+   "lego_id": "S0007L04"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "known",
+   "audio_id": "6f7c475e-07b6-4dda-b247-0cc8286c790f",
+   "seed_number": 20
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "known",
+   "audio_id": "335fb71d-95bd-4c54-8db8-404980e2b22e",
+   "seed_number": 299
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "335fb71d-95bd-4c54-8db8-404980e2b22e",
+   "phrase_id": "deu_for_jpn:S0299L02U05"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "5cb5f013-5c30-4d1a-8cec-cb89736dd592",
+   "phrase_id": "deu_for_jpn:S0299L02U05"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "48df5cdd-7144-4761-92e4-e401158f2739",
+   "phrase_id": "deu_for_jpn:S0299L02U05"
+  }
+ ]
+}

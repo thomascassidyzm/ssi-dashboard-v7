@@ -1,0 +1,282 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "target_text": "no, ellos mismos tienen que coger el tren"
+   },
+   "expect": {
+    "target_text": "no, ellos tienen que coger el tren"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 450,
+    "lego_index": 4,
+    "known_text": "they themselves have to",
+    "target_text": "ellos mismos tienen que",
+    "type": "A",
+    "is_new": true
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0450L04B01",
+    "seed_number": 450,
+    "lego_index": 4,
+    "position": 1,
+    "known_text": "they themselves have to",
+    "target_text": "ellos mismos tienen que",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 450
+    },
+    "word_count": 23,
+    "lego_count": 4,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0450L04B02",
+    "seed_number": 450,
+    "lego_index": 4,
+    "position": 2,
+    "known_text": "they themselves have to come",
+    "target_text": "ellos mismos tienen que venir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 450
+    },
+    "word_count": 29,
+    "lego_count": 5,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0450L04U01",
+    "seed_number": 450,
+    "lego_index": 4,
+    "position": 3,
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "no, ellos mismos tienen que coger el tren",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs717-item12-seed-sentence",
+     "seed_sentence_of": 450,
+     "canon": "P26",
+     "readded_by": "cs #964·AI"
+    },
+    "word_count": 41,
+    "lego_count": 8,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0450L04U02",
+    "seed_number": 450,
+    "lego_index": 4,
+    "position": 4,
+    "known_text": "they have to do it themselves",
+    "target_text": "ellos mismos tienen que hacerlo",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 450
+    },
+    "word_count": 31,
+    "lego_count": 5,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0450L04U03",
+    "seed_number": 450,
+    "lego_index": 4,
+    "position": 5,
+    "known_text": "they have to go home themselves",
+    "target_text": "ellos mismos tienen que ir a casa",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs964-held-seed-fix",
+     "seed_fix_of": 450
+    },
+    "word_count": 33,
+    "lego_count": 7,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target1",
+   "audio_id": "972a1630-03a8-4824-a95e-563cfcbdde18",
+   "seed_number": 450
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target2",
+   "audio_id": "636fcda6-ca1e-440b-99db-c315c195ffc6",
+   "seed_number": 450
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "7470cf4f-8fca-4cad-8d12-26bdf1b6809d",
+   "phrase_id": "spa_for_eng:S0450L04B01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "0a71812e-8c0f-4f1b-9da0-19851e28e262",
+   "phrase_id": "spa_for_eng:S0450L04B01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "acd8981a-5b5c-41d2-8ffb-070674621a5f",
+   "phrase_id": "spa_for_eng:S0450L04B01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "9f6974c8-bc0c-4a10-ac9f-b61c1b233b7c",
+   "phrase_id": "spa_for_eng:S0450L04B02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "6b5eafd5-ea79-4304-a57e-3dec9d9d6b09",
+   "phrase_id": "spa_for_eng:S0450L04B02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "89aae45e-d323-4f21-a8d2-9701ad2c9686",
+   "phrase_id": "spa_for_eng:S0450L04B02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "972a1630-03a8-4824-a95e-563cfcbdde18",
+   "phrase_id": "spa_for_eng:S0450L04U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "636fcda6-ca1e-440b-99db-c315c195ffc6",
+   "phrase_id": "spa_for_eng:S0450L04U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "2b5937d3-4ceb-4232-b6bf-5e7c74e86b83",
+   "phrase_id": "spa_for_eng:S0450L04U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "a6852919-4dc4-4d64-8cdf-c1b4e841b894",
+   "phrase_id": "spa_for_eng:S0450L04U02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "a2353622-3aef-4c50-a61f-273b70cc5bef",
+   "phrase_id": "spa_for_eng:S0450L04U02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "b5ca5df6-edfc-402a-943a-f97a3b136697",
+   "phrase_id": "spa_for_eng:S0450L04U02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "f4777204-6c99-4709-97dc-48f2e391bf41",
+   "phrase_id": "spa_for_eng:S0450L04U03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "1c93244b-fba9-423a-a87f-2a04ab9f12d8",
+   "phrase_id": "spa_for_eng:S0450L04U03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "3c30ddd9-cbcc-4ca8-a63c-e1351ae94fd4",
+   "phrase_id": "spa_for_eng:S0450L04U03"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "slot": "known",
+   "audio_id": "7470cf4f-8fca-4cad-8d12-26bdf1b6809d",
+   "lego_id": "S0450L04"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "slot": "target1",
+   "audio_id": "0a71812e-8c0f-4f1b-9da0-19851e28e262",
+   "lego_id": "S0450L04"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "slot": "target2",
+   "audio_id": "acd8981a-5b5c-41d2-8ffb-070674621a5f",
+   "lego_id": "S0450L04"
+  }
+ ]
+}
