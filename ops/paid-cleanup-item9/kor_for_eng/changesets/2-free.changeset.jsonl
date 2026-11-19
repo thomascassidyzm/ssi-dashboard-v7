@@ -1,0 +1,15 @@
+{"format":"ssi-changeset/1","id":"item9-kor_for_eng-2-free","course":"kor_for_eng","job":"#960·AI","why":"paid cleanup item 9 (untaught words): deletes of rows using an untaught target word, LEGO keeps its floor without back-fill","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:15:20.340Z","ops":14,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) in full except the 19 make-new LEGOs, 18 Nov 15:41Z"}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0013L02U04","expect":{"known_text":"I practice very hard","target_text":"아주 열심히 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0025L01U08","expect":{"known_text":"he practices before I have to go","target_text":"그는 제가 가야 하기 전에 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0034L01U04","expect":{"known_text":"other people are meeting tonight","target_text":"다른 사람들이 오늘 밤에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0039L01U01","expect":{"known_text":"we are meeting this morning","target_text":"우리는 오늘 아침에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0044L01U03","expect":{"known_text":"or we could meet tonight","target_text":"아니면 오늘 밤에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L01U05","expect":{"known_text":"learning Korean is interesting","target_text":"한국어를 배우는 게 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0061L01U02","expect":{"known_text":"learning slowly is okay","target_text":"천천히 배우는 게 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L03U05","expect":{"known_text":"taking time to write is enjoyable","target_text":"시간을 내서 쓰는 게 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L01U05","expect":{"known_text":"writing is not difficult","target_text":"쓰는 게 어렵지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0145L01B04","expect":{"known_text":"I don't know why you're not happy","target_text":"왜 행복하지 않은지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0275L01U08","expect":{"known_text":"I don't mind waiting longer","target_text":"더 오래 기다려도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0330L01U04","expect":{"known_text":"I know selling the company is not that important","target_text":"회사를 파는 게 별로 중요하지 않다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0330L01U05","expect":{"known_text":"I know walking to school is not that important","target_text":"학교까지 걸어가는 게 별로 중요하지 않다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0402L03U05","expect":{"known_text":"if we stop by and eat","target_text":"들러서 먹어요"}}

@@ -1,0 +1,543 @@
+[
+ {
+  "seed_number": 40,
+  "phrases": {
+   "40:1": [
+    {
+     "known_text": "இன்று மனநிலை",
+     "target_text": "오늘 기분이",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை மனநிலை",
+     "target_text": "내일 기분이",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது மனநிலை",
+     "target_text": "지금 기분이",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மனநிலை நல்லது",
+     "target_text": "기분이 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று மனநிலை நல்லது",
+     "target_text": "오늘 기분이 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மனநிலை எவ்வளவு நல்லது",
+     "target_text": "기분이 얼마나 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இப்போது மனநிலை நல்லது",
+     "target_text": "지금 기분이 좋아요",
+     "phrase_role": "use"
+    }
+   ],
+   "40:2": [
+    {
+     "known_text": "மனநிலை எப்படி உணர்கிறீர்கள்?",
+     "target_text": "기분이 어때요?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர் எப்படி உணர்கிறீர்கள்?",
+     "target_text": "그는 어때요?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை எப்படி உணர்கிறீர்கள்?",
+     "target_text": "내일 어때요?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இந்த நேரத்தில் நீங்கள் எப்படி உணர்கிறீர்கள்?",
+     "target_text": "지금 기분이 어때요?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எப்படி உணர்கிறீர்கள்?",
+     "target_text": "어때요?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று எப்படி உணர்கிறீர்கள்?",
+     "target_text": "오늘 어때요?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "காலை எப்படி உணர்கிறீர்கள்?",
+     "target_text": "아침에 어때요?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மதியம் எப்படி உணர்கிறீர்கள்?",
+     "target_text": "오후에 어때요?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 41,
+  "phrases": {
+   "41:1": [
+    {
+     "known_text": "சரியாக உணர்கிறேன், ஆனால் இன்று சோர்வாக இருக்கிறேன்",
+     "target_text": "괜찮은데, 오늘 피곤해요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சரியாக உணர்கிறேன், ஆனால் மிக சோர்வாக இருக்கிறேன்",
+     "target_text": "괜찮은데, 너무 피곤해요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சரியாக உணர்கிறேன், ஆனால் இப்போது சோர்வாக இருக்கிறேன்",
+     "target_text": "괜찮은데, 지금 피곤해요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சரியாக உணர்கிறேன், ஆனால் சோர்வாக இருக்கிறேன்",
+     "target_text": "괜찮은데, 피곤해요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "சரியாக உணர்கிறேன், ஆனால் கொஞ்சம் சோர்வாக இருக்கிறேன்",
+     "target_text": "괜찮은데, 조금 피곤해요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "சரியாக உணர்கிறேன், ஆனால் இன்னும் நினைவில் கொள்ள முயற்சிக்கிறேன்",
+     "target_text": "괜찮은데, 더 기억하려고 해요",
+     "phrase_role": "use"
+    }
+   ],
+   "41:2": [
+    {
+     "known_text": "காலை சோர்வாக உணர",
+     "target_text": "아침에 피곤해지기",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று சோர்வாக உணர",
+     "target_text": "오늘 피곤해지기",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கொஞ்சம் சோர்வாக உணர",
+     "target_text": "조금 피곤해지기",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "காலை சோர்வாக உணரத் தொடங்கினேன்",
+     "target_text": "아침에 피곤해지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று சோர்வாக உணரத் தொடங்கினேன்",
+     "target_text": "오늘 피곤해지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மிக சோர்வாக உணரத் தொடங்கினேன்",
+     "target_text": "너무 피곤해지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இப்போது சோர்வாக உணரத் தொடங்கினேன்",
+     "target_text": "지금 피곤해지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கடந்த மாதம் சோர்வாக உணரத் தொடங்கினேன்",
+     "target_text": "지난달에 피곤해지기 시작했어요",
+     "phrase_role": "use"
+    }
+   ],
+   "41:3": [
+    {
+     "known_text": "சோர்வாக உணரத் தொடங்குகிறேன்",
+     "target_text": "피곤해지기 시작하고",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று தொடங்குகிறேன்",
+     "target_text": "오늘 시작하고",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "காலை தொடங்குகிறேன்",
+     "target_text": "아침에 시작하고",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சரியாக உணர்கிறேன், ஆனால் சோர்வாக உணரத் தொடங்குகிறேன்",
+     "target_text": "괜찮은데, 피곤해지기 시작하고 있어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "சோர்வாக உணரத் தொடங்குகிறேன்",
+     "target_text": "피곤해지기 시작하고 있어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று தொடங்குகிறேன்",
+     "target_text": "오늘 시작하고 있어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "காலை தொடங்குகிறேன்",
+     "target_text": "아침에 시작하고 있어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கொஞ்சம் தொடங்குகிறேன்",
+     "target_text": "조금 시작하고 있어요",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 42,
+  "phrases": {
+   "42:1": [
+    {
+     "known_text": "இன்று இரவை விட",
+     "target_text": "오늘 저녁보다",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை இரவை விட",
+     "target_text": "내일 저녁보다",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இரவை விட நன்றாக",
+     "target_text": "저녁보다 잘",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இரவை விட எவ்வளவு நல்லது",
+     "target_text": "저녁보다 얼마나 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இரவை விட இன்னும் நல்லது",
+     "target_text": "저녁보다 더 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று இரவை விட நல்லது",
+     "target_text": "오늘 저녁보다 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இரவை விட அமைதியாக இருக்கிறேன்",
+     "target_text": "저녁보다 조용히 있어요",
+     "phrase_role": "use"
+    }
+   ],
+   "42:2": [
+    {
+     "known_text": "இரவை விட நன்றாக உணர",
+     "target_text": "저녁보다 나아지기",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று நன்றாக உணர",
+     "target_text": "오늘 나아지기",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்னும் நன்றாக உணர",
+     "target_text": "더 나아지기",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நன்றாக உணரத் தொடங்கினேன்",
+     "target_text": "나아지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இரவை விட நன்றாக உணரத் தொடங்கினேன்",
+     "target_text": "저녁보다 나아지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நன்றாக உணரத் தொடங்கினேன்",
+     "target_text": "오늘 나아지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்னும் நன்றாக உணரத் தொடங்கினேன்",
+     "target_text": "더 나아지기 시작했어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கடந்த மாதம் நன்றாக உணரத் தொடங்கினேன்",
+     "target_text": "지난달에 나아지기 시작했어요",
+     "phrase_role": "use"
+    }
+   ],
+   "42:3": [
+    {
+     "known_text": "இன்று இருந்தேன்",
+     "target_text": "오늘 있었어요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நேற்று இருந்தேன்",
+     "target_text": "어제 있었어요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "காலை இருந்தேன்",
+     "target_text": "아침에 있었어요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நேற்று இரவை விட நான் இன்னும் நன்றாக உணரத் தொடங்கியிருந்தேன்",
+     "target_text": "어제 저녁보다 더 나아지기 시작하고 있었어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "தொடங்கியிருந்தேன்",
+     "target_text": "시작하고 있었어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று தொடங்கியிருந்தேன்",
+     "target_text": "오늘 시작하고 있었어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நேற்று தொடங்கியிருந்தேன்",
+     "target_text": "어제 시작하고 있었어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கொஞ்சம் தொடங்கியிருந்தேன்",
+     "target_text": "조금 시작하고 있었어요",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 74,
+  "phrases": {
+   "74:1": [
+    {
+     "known_text": "இன்று புரிந்துகொள்ள",
+     "target_text": "오늘 이해하는 데",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று புரிந்துகொள்ள நல்லது",
+     "target_text": "오늘 이해하는 데 좋아요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உண்மையிலேயே இன்று புரிந்துகொள்ள நல்லது",
+     "target_text": "정말 오늘 이해하는 데 좋아요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரிந்துகொள்ள எவ்வளவு நல்லது",
+     "target_text": "이해하는 데 얼마나 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் புரிந்துகொள்ள நல்லது",
+     "target_text": "그래서 이해하는 데 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மேலும் புரிந்துகொள்ள நல்லது",
+     "target_text": "그리고 이해하는 데 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உண்மையிலேயே புரிந்துகொள்ள நல்லது",
+     "target_text": "정말 이해하는 데 좋아요",
+     "phrase_role": "use"
+    }
+   ],
+   "74:2": [
+    {
+     "known_text": "புரிந்துகொள்ள எனக்கு உதவியதற்கு",
+     "target_text": "이해하는 데 도움을 주셔서",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரிந்துகொள்ள எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "이해하는 데 도움을 주셔서 감사합니다",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று புரிந்துகொள்ள எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "오늘 이해하는 데 도움을 주셔서 감사합니다",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரிந்துகொள்ள எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "이해하는 데 도움을 주셔서 정말 감사합니다",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "도움을 주셔서 감사합니다",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "그래서 도움을 주셔서 감사합니다",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மேலும் எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "그리고 도움을 주셔서 감사합니다",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உண்மையிலேயே எனக்கு உதவியதற்கு மிக்க நன்றி",
+     "target_text": "정말 도움을 주셔서 감사합니다",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 76,
+  "phrases": {
+   "76:1": [
+    {
+     "known_text": "இன்று ஏற்கனவே",
+     "target_text": "오늘 이미",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று ஏற்கனவே நல்லது",
+     "target_text": "오늘 이미 좋아요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உண்மையிலேயே இன்று ஏற்கனவே நல்லது",
+     "target_text": "정말 오늘 이미 좋아요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏற்கனவே எவ்வளவு நல்லது",
+     "target_text": "이미 얼마나 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் ஏற்கனவே நல்லது",
+     "target_text": "그래서 이미 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மேலும் ஏற்கனவே நல்லது",
+     "target_text": "그리고 이미 좋아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏற்கனவே நினைவில் கொள்ள முயற்சிக்கிறேன்",
+     "target_text": "이미 기억하려고 해요",
+     "phrase_role": "use"
+    }
+   ],
+   "76:2": [
+    {
+     "known_text": "ஏற்கனவே எவ்வளவு கற்றுக்கொண்டேன்",
+     "target_text": "이미 얼마나 배웠는지",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏற்கனவே எவ்வளவு அதிகமாக கற்றுக்கொண்டேன்",
+     "target_text": "이미 얼마나 많이 배웠는지",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உண்மையிலேயே ஏற்கனவே எவ்வளவு அதிகமாக கற்றுக்கொண்டேன்",
+     "target_text": "정말 이미 얼마나 많이 배웠는지",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்றுக்கொண்டேன் என்று தெரியும்",
+     "target_text": "배웠는지 알아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எவ்வளவு அதிகமாக கற்றுக்கொண்டேன் என்று தெரியும்",
+     "target_text": "얼마나 많이 배웠는지 알아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் கற்றுக்கொண்டேன் என்று தெரியும்",
+     "target_text": "그래서 배웠는지 알아요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்றுக்கொண்டேன் என்று தெரியவில்லை",
+     "target_text": "배웠는지 모르겠어요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மேலும் கற்றுக்கொண்டேன் என்று தெரியும்",
+     "target_text": "그리고 배웠는지 알아요",
+     "phrase_role": "use"
+    }
+   ],
+   "76:3": [
+    {
+     "known_text": "எவ்வளவு கற்றுக்கொண்டேன் என்பதில் பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "얼마나 배웠는지 매우 기뻐요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "எவ்வளவு அதிகமாக கற்றுக்கொண்டேன் என்பதில் பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "얼마나 많이 배웠는지 매우 기뻐요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உண்மையிலேயே ஏற்கனவே எவ்வளவு அதிகமாக கற்றுக்கொண்டேன் என்பதில் பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "정말 이미 얼마나 많이 배웠는지 매우 기뻐요",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் ஏற்கனவே எவ்வளவு கற்றுக்கொண்டேன் என்பதில் நான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "이미 얼마나 많이 배웠는지 매우 기뻐요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "매우 기뻐요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "그래서 매우 기뻐요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மேலும் பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "그리고 매우 기뻐요",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இப்போது பெரிதும் மகிழ்ச்சியாக இருக்கிறேன்",
+     "target_text": "지금 매우 기뻐요",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

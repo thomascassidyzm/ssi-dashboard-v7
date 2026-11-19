@@ -1,0 +1,1968 @@
+[
+ {
+  "seed_number": 4,
+  "phrases": {
+   "4:1": [
+    {
+     "known_text": "说",
+     "target_text": "To say",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "一些东西",
+     "target_text": "Something",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "说一些东西",
+     "target_text": "To say something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "说一些东西",
+     "target_text": "To say something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在说一些东西",
+     "target_text": "To say something now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想说一些东西",
+     "target_text": "I want to say something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力说一些东西",
+     "target_text": "I'm trying to say something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力学习用英语说一些东西",
+     "target_text": "I'm trying to learn to say something in English",
+     "phrase_role": "use"
+    }
+   ],
+   "4:2": [
+    {
+     "known_text": "用",
+     "target_text": "In",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "英语",
+     "target_text": "English",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "用英语",
+     "target_text": "In English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "用英语说一些东西",
+     "target_text": "To say something in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "用英语说",
+     "target_text": "To say in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想用英语说一些东西",
+     "target_text": "I want to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力用英语说一些东西",
+     "target_text": "I'm trying to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想学习怎么用英语说一些东西",
+     "target_text": "I want to learn how to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想现在用英语说一些东西",
+     "target_text": "I want to say something in English now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 5,
+  "phrases": {
+   "5:1": [
+    {
+     "known_text": "练习",
+     "target_text": "To practise",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "说",
+     "target_text": "Speaking",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "练习说",
+     "target_text": "Practise speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "练习说英语",
+     "target_text": "Practise speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "练习说",
+     "target_text": "Practise speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想练习说英语",
+     "target_text": "I want to practise speaking English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力练习说",
+     "target_text": "I'm trying to practise speaking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我打算和你练习说英语",
+     "target_text": "I'm going to practise speaking English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想现在练习说",
+     "target_text": "I want to practise speaking now",
+     "phrase_role": "use"
+    }
+   ],
+   "5:2": [
+    {
+     "known_text": "我",
+     "target_text": "I'm",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "打算",
+     "target_text": "Going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我打算",
+     "target_text": "I'm going to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我打算练习说",
+     "target_text": "I'm going to practise speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我打算练习说英语",
+     "target_text": "I'm going to practise speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我打算和你练习说英语",
+     "target_text": "I'm going to practise speaking English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我打算现在练习说",
+     "target_text": "I'm going to practise speaking now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我打算尽可能多地练习说",
+     "target_text": "I'm going to practise speaking as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我打算练习说英语现在",
+     "target_text": "I'm going to practise speaking English now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我打算和你练习说",
+     "target_text": "I'm going to practise speaking with you",
+     "phrase_role": "use"
+    }
+   ],
+   "5:3": [
+    {
+     "known_text": "和别人",
+     "target_text": "With someone else",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "和别人练习说",
+     "target_text": "Practise speaking with someone else",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我打算和别人练习说",
+     "target_text": "I'm going to practise speaking with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想和别人说英语",
+     "target_text": "I want to speak English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力和别人说英语",
+     "target_text": "I'm trying to speak English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想和别人练习说英语",
+     "target_text": "I want to practise speaking English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想现在和别人练习说",
+     "target_text": "I want to practise speaking with someone else now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "和别人说英语",
+     "target_text": "To speak English with someone else",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 6,
+  "phrases": {
+   "6:1": [
+    {
+     "known_text": "记住一些东西",
+     "target_text": "To remember something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "记住英语",
+     "target_text": "To remember English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想记住用英语怎么说",
+     "target_text": "I want to remember how to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力记住",
+     "target_text": "I'm trying to remember",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想现在记住",
+     "target_text": "I want to remember now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "记住一个词",
+     "target_text": "To remember a word",
+     "phrase_role": "build"
+    }
+   ],
+   "6:2": [
+    {
+     "known_text": "一个",
+     "target_text": "A",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "词",
+     "target_text": "Word",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "一个词",
+     "target_text": "A word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "一个英语词",
+     "target_text": "A word in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "记住一个词",
+     "target_text": "To remember a word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我在努力记住一个词",
+     "target_text": "I'm trying to remember a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想用英语说一个词",
+     "target_text": "I want to say a word in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想记住一个英语词",
+     "target_text": "I want to remember a word in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想学习一个词",
+     "target_text": "I want to learn a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想现在记住一个词",
+     "target_text": "I want to remember a word now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 11,
+  "phrases": {
+   "11:1": [
+    {
+     "known_text": "能说",
+     "target_text": "To be able to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "能说英语",
+     "target_text": "To be able to speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "能练习说",
+     "target_text": "To be able to practise speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想能说英语",
+     "target_text": "I want to be able to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能和你说英语",
+     "target_text": "I want to be able to speak English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能和别人练习说",
+     "target_text": "I want to be able to practise speaking with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能记住整个句子",
+     "target_text": "I want to be able to remember the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能用英语解释我的意思",
+     "target_text": "I want to be able to explain what I mean in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能说一点英语",
+     "target_text": "I want to be able to speak a little English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力能记住一个词",
+     "target_text": "I'm trying to be able to remember a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能尽可能多地练习说",
+     "target_text": "I want to be able to practise speaking as often as possible",
+     "phrase_role": "use"
+    }
+   ],
+   "11:2": [
+    {
+     "known_text": "想",
+     "target_text": "I'd like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "能",
+     "target_text": "To be able",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "想能",
+     "target_text": "I'd like to be able",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "想能说",
+     "target_text": "I'd like to be able to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "想能练习说",
+     "target_text": "I'd like to be able to practise speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "想能说英语",
+     "target_text": "I'd like to be able to speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想能和别人说英语",
+     "target_text": "I'd like to be able to speak English with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能说一点",
+     "target_text": "I'd like to be able to speak a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能现在练习说",
+     "target_text": "I'd like to be able to practise speaking now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能今天和你练习说英语",
+     "target_text": "I'd like to be able to practise speaking English with you today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能用英语说一些东西",
+     "target_text": "I'd like to be able to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能记住整个句子",
+     "target_text": "I'd like to be able to remember the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能解释我的意思",
+     "target_text": "I'd like to be able to explain what I mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能尽全力试",
+     "target_text": "I'd like to be able to try as hard as I can",
+     "phrase_role": "use"
+    }
+   ],
+   "11:3": [
+    {
+     "known_text": "说完说英语",
+     "target_text": "To finish speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "说完现在",
+     "target_text": "To finish now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想说完",
+     "target_text": "I want to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在努力说完",
+     "target_text": "I'm trying to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想今天说完",
+     "target_text": "I want to finish today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想说完整个句子",
+     "target_text": "I want to finish the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能说完整个句子",
+     "target_text": "I'd like to be able to finish the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不确定能不能记住怎么说完",
+     "target_text": "I'm not sure if I can remember how to finish",
+     "phrase_role": "use"
+    }
+   ],
+   "11:4": [
+    {
+     "known_text": "以后说",
+     "target_text": "After speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "以后今天",
+     "target_text": "After today",
+     "phrase_role": "build"
+    }
+   ],
+   "11:5": [
+    {
+     "known_text": "你",
+     "target_text": "You",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "说完",
+     "target_text": "Finish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "以后",
+     "target_text": "After",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "你说完以后",
+     "target_text": "After you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你说完以后说",
+     "target_text": "Speak after you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你说完以后练习说",
+     "target_text": "Practise speaking after you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你说完以后学习",
+     "target_text": "To learn after you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想能在你说完以后说",
+     "target_text": "I'd like to be able to speak after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想在你说完以后练习说英语",
+     "target_text": "I want to practise speaking English after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想在你说完以后试说一些东西",
+     "target_text": "I want to try to say something after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想在你说完以后记住整个句子",
+     "target_text": "I want to remember the whole sentence after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我打算在你说完以后练习说",
+     "target_text": "I'm going to practise speaking after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想在你说完以后解释我的意思",
+     "target_text": "I want to explain what I mean after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想在你说完以后和别人说英语",
+     "target_text": "I want to speak English with someone else after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想能在你说完以后说英语",
+     "target_text": "I'd like to be able to speak English after you finish",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 15,
+  "phrases": {
+   "15:1": [
+    {
+     "known_text": "和我说英语",
+     "target_text": "To speak English with me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "和我练习说",
+     "target_text": "To practise speaking with me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "和我说",
+     "target_text": "To speak with me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你想和我说英语吗",
+     "target_text": "Do you want to speak English with me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想让你和我说英语",
+     "target_text": "I want you to speak English with me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你想明天和我说英语吗",
+     "target_text": "Do you want to speak English with me tomorrow?",
+     "phrase_role": "use"
+    }
+   ],
+   "15:2": [
+    {
+     "known_text": "而且说英语",
+     "target_text": "And speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "而且练习说",
+     "target_text": "And practise speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "而且记住",
+     "target_text": "And to remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "而且我想明天练习说",
+     "target_text": "And I want to practise speaking tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想学习而且说英语",
+     "target_text": "I want to learn and speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "而且我不想猜",
+     "target_text": "And I wouldn't like to guess",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "而且你说英语很好",
+     "target_text": "And you speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "而且我想和你说英语",
+     "target_text": "And I want to speak English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "而且我想明天试",
+     "target_text": "And I want to try tomorrow",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 19,
+  "phrases": {
+   "19:1": [
+    {
+     "known_text": "但是我想",
+     "target_text": "But I want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "但是我们想",
+     "target_text": "But we want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "但是他想",
+     "target_text": "But he wants",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "但是我想说英语",
+     "target_text": "But I want to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我想和你见面",
+     "target_text": "But I want to meet with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我们想今天晚上见面",
+     "target_text": "But we want to meet this evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是他想晚一点回来",
+     "target_text": "But he wants to come back later on",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我想知道答案是什么",
+     "target_text": "But I want to find out what the answer is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我想猜会发生什么",
+     "target_text": "But I want to guess what's going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我们想和大家说英语",
+     "target_text": "But we want to speak English with everyone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是她想回来",
+     "target_text": "But she wants to come back",
+     "phrase_role": "use"
+    }
+   ],
+   "19:2": [
+    {
+     "known_text": "不要说英语",
+     "target_text": "Don't speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "不要回来",
+     "target_text": "Don't come back",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "不要想猜",
+     "target_text": "Don't want to guess",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我不要说英语",
+     "target_text": "I don't want to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我不要猜会发生什么",
+     "target_text": "But I don't want to guess what's going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要和你见面",
+     "target_text": "I don't want to meet with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要练习说",
+     "target_text": "I don't want to practise speaking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要回来",
+     "target_text": "I don't want to come back",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要整天说英语",
+     "target_text": "I don't want to speak English all day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我们不要晚一点回来",
+     "target_text": "We don't want to come back later on",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我不要和大家见面",
+     "target_text": "But I don't want to meet with everyone else",
+     "phrase_role": "use"
+    }
+   ],
+   "19:3": [
+    {
+     "known_text": "停止说英语",
+     "target_text": "To stop speaking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "想停止",
+     "target_text": "Want to stop",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我不要停止说英语",
+     "target_text": "I don't want to stop speaking English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我不要停止",
+     "target_text": "But I don't want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想停止",
+     "target_text": "I want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要停止和你说英语",
+     "target_text": "I don't want to stop speaking English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我们不要停止",
+     "target_text": "But we don't want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要停止和大家说英语",
+     "target_text": "I don't want to stop speaking English with everyone else",
+     "phrase_role": "use"
+    }
+   ],
+   "19:4": [
+    {
+     "known_text": "想停止说话",
+     "target_text": "Want to stop talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "不要停止说话",
+     "target_text": "Don't want to stop talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "说话很好",
+     "target_text": "Talking very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我不要停止说话",
+     "target_text": "I don't want to stop talking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我不要停止说话",
+     "target_text": "But I don't want to stop talking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我们不要停止说话",
+     "target_text": "We don't want to stop talking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想停止说话",
+     "target_text": "I want to stop talking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我不要停止说话和你",
+     "target_text": "But I don't want to stop talking with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不要停止说话今天晚上",
+     "target_text": "I don't want to stop talking this evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我们想停止说话",
+     "target_text": "We want to stop talking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "但是我们不要停止说话",
+     "target_text": "But we don't want to stop talking",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 42,
+  "phrases": {
+   "42:1": [
+    {
+     "known_text": "比昨天好",
+     "target_text": "Better than yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "比说话好",
+     "target_text": "Better than talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "比这个时候好",
+     "target_text": "Better than at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我感觉比昨天好",
+     "target_text": "I feel better than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我比昨天更累",
+     "target_text": "I'm more tired than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我今天下午感觉比今天早上好",
+     "target_text": "I feel better this afternoon than this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我今晚感觉比昨晚好",
+     "target_text": "I feel better tonight than last night",
+     "phrase_role": "use"
+    }
+   ],
+   "42:2": [
+    {
+     "known_text": "昨晚说英语",
+     "target_text": "To speak English last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "昨晚想安静",
+     "target_text": "Wanted to be quiet last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "昨晚读这个故事",
+     "target_text": "To read the story last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我昨晚想说英语",
+     "target_text": "I wanted to speak English last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你昨晚想读这个故事吗",
+     "target_text": "Did you want to read the story last night?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我昨晚想安静",
+     "target_text": "I wanted to be quiet last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我感觉比昨晚好",
+     "target_text": "I feel better than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我昨晚开始想这件事",
+     "target_text": "I started to think about it last night",
+     "phrase_role": "use"
+    }
+   ],
+   "42:3": [
+    {
+     "known_text": "我",
+     "target_text": "I was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "开始觉得",
+     "target_text": "Starting to feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我开始觉得...了",
+     "target_text": "I was starting to feel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我开始觉得好了",
+     "target_text": "I was starting to feel better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我开始觉得累了",
+     "target_text": "I was starting to feel tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我开始觉得还好了",
+     "target_text": "I was starting to feel okay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我开始觉得比昨晚好了",
+     "target_text": "I was starting to feel better than last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我开始觉得累了但是我想说英语",
+     "target_text": "I was starting to feel tired but I wanted to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "因为我开始觉得好了",
+     "target_text": "Because I was starting to feel better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我昨晚开始觉得累了",
+     "target_text": "I was starting to feel tired last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我开始觉得好了比今天早上",
+     "target_text": "I was starting to feel better than this morning",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 67,
+  "phrases": {
+   "67:1": [
+    {
+     "known_text": "为什么",
+     "target_text": "Why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "想",
+     "target_text": "Want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "停下来",
+     "target_text": "To stop",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "为什么想停下来",
+     "target_text": "Why do you want to stop?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你为什么现在想停下来",
+     "target_text": "Why do you want to stop now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你为什么想停止学习",
+     "target_text": "Why do you want to stop learning?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你为什么想停止说话",
+     "target_text": "Why do you want to stop speaking?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你为什么想停止学英语？",
+     "target_text": "Why do you want to stop learning English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你为什么想停止和我说话？",
+     "target_text": "Why do you want to stop speaking with me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不明白你为什么想停下来",
+     "target_text": "I don't know why you want to stop",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 82,
+  "phrases": {
+   "82:1": [
+    {
+     "known_text": "在这里等",
+     "target_text": "Wait here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "别等",
+     "target_text": "Don't wait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "等一整天",
+     "target_text": "Wait all day",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我不想等",
+     "target_text": "I don't want to wait",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你想等还是想现在开始？",
+     "target_text": "Do you want to wait or do you want to start now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你为什么想等？",
+     "target_text": "Why do you want to wait?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "他不想等一整天",
+     "target_text": "He doesn't want to wait all day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不打算等了",
+     "target_text": "I'm not going to wait",
+     "phrase_role": "use"
+    }
+   ],
+   "82:2": [
+    {
+     "known_text": "等",
+     "target_text": "wait",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "你",
+     "target_text": "for you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "等你",
+     "target_text": "Wait for you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天等你",
+     "target_text": "Wait for you today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今晚等你",
+     "target_text": "Wait for you this evening",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "等你整个下午",
+     "target_text": "Wait for you all afternoon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我不打算等你了",
+     "target_text": "I'm not going to wait for you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不想等你整个下午",
+     "target_text": "I don't want to wait for you all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "他不想等你",
+     "target_text": "He doesn't want to wait for you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不打算等你了因为我需要走了",
+     "target_text": "I'm not going to wait for you because I need to go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "他会等你吗？",
+     "target_text": "Is he going to wait for you?",
+     "phrase_role": "use"
+    }
+   ],
+   "82:3": [
+    {
+     "known_text": "为什么",
+     "target_text": "Why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "不",
+     "target_text": "Not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "为什么不",
+     "target_text": "Why not",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "为什么不是现在？",
+     "target_text": "Why not now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "为什么不是明天？",
+     "target_text": "Why not tomorrow?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "为什么不是今天？",
+     "target_text": "Why not today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想现在开始，为什么不呢？",
+     "target_text": "I want to start now so why not?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "为什么不今天开始学呢？",
+     "target_text": "Why not start learning today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不明白为什么不",
+     "target_text": "I don't understand why not",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我差不多准备好了，为什么不呢？",
+     "target_text": "I'm nearly ready so why not?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 105,
+  "phrases": {
+   "105:1": [
+    {
+     "known_text": "那",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "就是",
+     "target_text": "is",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "为什么",
+     "target_text": "why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "那就是为什么",
+     "target_text": "That is why",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "这就是为什么我说",
+     "target_text": "That is why I said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "这就是为什么现在",
+     "target_text": "That is why now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "这就是为什么不",
+     "target_text": "That is why not",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "这就是为什么他不知道答案",
+     "target_text": "That is why he didn't know the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "这就是为什么我不同意你",
+     "target_text": "That is why I don't agree with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "这就是为什么我很享受发现更多关于这门语言的东西",
+     "target_text": "That is why I'm enjoying finding out more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "这就是为什么我们需要改变我们在做的事",
+     "target_text": "That is why we need to change what we're doing",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 111,
+  "phrases": {
+   "111:1": [
+    {
+     "known_text": "当",
+     "target_text": "When",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我们",
+     "target_text": "We",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "学到",
+     "target_text": "Learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "新",
+     "target_text": "New",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "东西",
+     "target_text": "Something",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "改变",
+     "target_text": "Changes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "大脑",
+     "target_text": "Our brain",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "当我们学到新东西的时候，它会改变我们的大脑",
+     "target_text": "When we learn something new it changes our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "当我们学到新东西时，它会迅速改变我们的大脑",
+     "target_text": "When we learn something new it changes our brain quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "当我们学到新东西时，它现在改变我们的大脑",
+     "target_text": "When we learn something new it changes our brain now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "当我们学到新东西时，它已经改变了我们的大脑",
+     "target_text": "When we learn something new it changes our brain already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我觉得当我们学到新东西时，它会改变我们的大脑",
+     "target_text": "I think that when we learn something new it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你同意当我们学到新东西时，它会改变我们的大脑吗？",
+     "target_text": "Do you agree that when we learn something new it changes our brain?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "这就是为什么当我们学到新东西时，它会改变我们的大脑",
+     "target_text": "That is why when we learn something new it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我很享受发现当我们学到新东西时，它会改变我们的大脑",
+     "target_text": "I'm enjoying finding out that when we learn something new it changes our brain",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 148,
+  "phrases": {
+   "148:1": [
+    {
+     "known_text": "他不太有耐心",
+     "target_text": "He wasn't very patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天他不太有耐心",
+     "target_text": "He wasn't very patient today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "他对别人不太有耐心",
+     "target_text": "He wasn't very patient with other people",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "他不太有耐心，但是他想帮忙",
+     "target_text": "He wasn't very patient but he wanted to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我觉得他不太有耐心",
+     "target_text": "I think that he wasn't very patient",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "他不太有耐心，因为他很累",
+     "target_text": "He wasn't very patient because he was tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "他昨天不太有耐心，但是今天他做得很好",
+     "target_text": "He wasn't very patient yesterday but today he's doing very well",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 241,
+  "phrases": {
+   "241:1": [
+    {
+     "known_text": "给他",
+     "target_text": "To give it to him",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我不想给他",
+     "target_text": "I don't want to give it to him",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我不想给他",
+     "target_text": "I don't want to give it to him now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天我不想给他",
+     "target_text": "I don't want to give it to him today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里我不想给他",
+     "target_text": "I don't want to give it to him here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我不想给他，因为他没有问我",
+     "target_text": "I don't want to give it to him because he didn't ask me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不想给他，虽然他想让我给",
+     "target_text": "I don't want to give it to him although he wanted me to",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我在周末之前不想给他",
+     "target_text": "I don't want to give it to him before the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我不想给他，但我觉得我应该",
+     "target_text": "I don't want to give it to him but I think I should",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 245,
+  "phrases": {
+   "245:1": [
+    {
+     "known_text": "满意",
+     "target_text": "Happy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我对自己在短时间内做了这么多很满意",
+     "target_text": "I'm happy with how much I've done in a short time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我对自己在这么短的时间内做了这么多感到高兴",
+     "target_text": "I'm happy with how much I've done in a short time now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里我对自己在这么短的时间内做了这么多感到高兴",
+     "target_text": "I'm happy with how much I've done in a short time here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我已经对自己在这么短的时间内做了这么多感到高兴了",
+     "target_text": "I'm happy with how much I've done in a short time already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我对自己在这么短的时间内做了这么多感到高兴，虽然我想做更多",
+     "target_text": "I'm happy with how much I've done in a short time although I want to do more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我对自己在这么短的时间内做了这么多感到高兴，我想继续做下去",
+     "target_text": "I'm happy with how much I've done in a short time and I want to keep on doing this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我对自己在这么短的时间内做了这么多感到高兴，但还有更多要学的",
+     "target_text": "I'm happy with how much I've done in a short time but there is more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我对自己在这么短的时间内做了这么多感到高兴，我对此感觉很好",
+     "target_text": "I'm happy with how much I've done in a short time and I feel good about it",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 246,
+  "phrases": {
+   "246:1": [
+    {
+     "known_text": "但是",
+     "target_text": "But",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我想让她帮你，但是她太忙了",
+     "target_text": "I wanted her to help you but she was too busy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天我想让她帮你，但她太忙了",
+     "target_text": "I wanted her to help you but she was too busy today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我想让她帮你，但她太忙了",
+     "target_text": "I wanted her to help you but she was too busy now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "昨天我想让她帮你，但她太忙了",
+     "target_text": "I wanted her to help you but she was too busy yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我想让她在周末之前帮你，但她太忙了",
+     "target_text": "I wanted her to help you but she was too busy before the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想让她帮你，但她太忙了，我很抱歉",
+     "target_text": "I wanted her to help you but she was too busy and I'm sorry about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想让她帮你，但她忙着做别的事情",
+     "target_text": "I wanted her to help you but she was too busy with something else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我想让她帮你，但她太忙了，虽然她想帮",
+     "target_text": "I wanted her to help you but she was too busy although she wanted to",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 254,
+  "phrases": {
+   "254:1": [
+    {
+     "known_text": "从",
+     "target_text": "Since",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我从今天早上就准备好了",
+     "target_text": "I've been ready since this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我从今天早上就准备好了",
+     "target_text": "I've been ready since this morning now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里我从今天早上就准备好了",
+     "target_text": "I've been ready since this morning here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我已经从今天早上就准备好了",
+     "target_text": "I've been ready since this morning already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我从今天早上就准备好了，但没有人告诉我开始",
+     "target_text": "I've been ready since this morning but nobody told me to start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我从今天早上就准备好了，我想知道我们什么时候可以开始",
+     "target_text": "I've been ready since this morning and I want to know when we can start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我从今天早上就准备好了，虽然我没睡好",
+     "target_text": "I've been ready since this morning although I didn't sleep well",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 255,
+  "phrases": {
+   "255:1": [
+    {
+     "known_text": "走",
+     "target_text": "To leave",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "你觉得你什么时候能准备好走",
+     "target_text": "When do you think you'll be ready to leave?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在你什么时候觉得你准备好离开了",
+     "target_text": "When do you think you'll be ready to leave now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天你什么时候觉得你准备好离开了",
+     "target_text": "When do you think you'll be ready to leave today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "很快你什么时候觉得你准备好离开了",
+     "target_text": "When do you think you'll be ready to leave soon?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你什么时候觉得你准备好离开了，因为我需要知道",
+     "target_text": "When do you think you'll be ready to leave because I need to know?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你什么时候觉得你准备好离开了，还是我们应该等",
+     "target_text": "When do you think you'll be ready to leave or should we wait?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你什么时候觉得你准备好离开了，你想让我帮忙吗",
+     "target_text": "When do you think you'll be ready to leave and do you want me to help?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你觉得你什么时候能准备好走，因为我想坐下一班车回家",
+     "target_text": "When do you think you'll be ready to leave because I want to go home on the next bus?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 269,
+  "phrases": {
+   "269:1": [
+    {
+     "known_text": "等",
+     "target_text": "To wait for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "你为什么不想等你爸爸",
+     "target_text": "Why don't you want to wait for your father?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在你为什么不想等你的爸爸",
+     "target_text": "Why don't you want to wait for your father now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天你为什么不想等你的爸爸",
+     "target_text": "Why don't you want to wait for your father today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里你为什么不想等你的爸爸",
+     "target_text": "Why don't you want to wait for your father here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你为什么不想等你的爸爸，因为他说他会来的",
+     "target_text": "Why don't you want to wait for your father because he said he would come?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你为什么不想等你的爸爸，虽然我觉得我几分钟后就准备好了",
+     "target_text": "Why don't you want to wait for your father although I think I should be ready in a few minutes?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你为什么不想等你的爸爸和他说说话",
+     "target_text": "Why don't you want to wait for your father and talk to him?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你为什么不想等你爸爸，因为他说他很快就回来",
+     "target_text": "Why don't you want to wait for your father because he said he'll come back soon?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 284,
+  "phrases": {
+   "284:1": [
+    {
+     "known_text": "姐姐的朋友",
+     "target_text": "Sister's friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "你认识我姐姐的朋友吗",
+     "target_text": "Do you know my sister's friend?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在你认识我姐妹的朋友吗",
+     "target_text": "Do you know my sister's friend now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里你认识我姐妹的朋友吗",
+     "target_text": "Do you know my sister's friend here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天你认识我姐妹的朋友吗",
+     "target_text": "Do you know my sister's friend today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "你认识我姐妹的朋友吗，因为她想见你",
+     "target_text": "Do you know my sister's friend because she wants to meet you?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我问他你认识我姐妹的朋友吗，他说不认识",
+     "target_text": "I asked him do you know my sister's friend and he said no",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你认识我姐妹的朋友吗，还是你有没有听到你朋友的消息",
+     "target_text": "Do you know my sister's friend or have you heard from your friend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "你认识我姐妹的朋友吗，虽然我不知道你指的是谁",
+     "target_text": "Do you know my sister's friend although I don't know who you mean?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 288,
+  "phrases": {
+   "288:1": [
+    {
+     "known_text": "大多数",
+     "target_text": "Most",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我认识的大多数人都喜欢看电视",
+     "target_text": "Most people I know like watching television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我认识的大多数人喜欢看电视",
+     "target_text": "Most people I know like watching television now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里我认识的大多数人喜欢看电视",
+     "target_text": "Most people I know like watching television here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天我认识的大多数人喜欢看电视",
+     "target_text": "Most people I know like watching television today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我认识的大多数人喜欢看电视，我觉得很有趣",
+     "target_text": "Most people I know like watching television and I think that's interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我认识的大多数人喜欢看电视，虽然我不明白为什么",
+     "target_text": "Most people I know like watching television although I don't understand why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我觉得我认识的大多数人喜欢看电视和足球",
+     "target_text": "I think most people I know like watching television and the football",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我认识的大多数人喜欢看电视，但我兄弟喜欢读书",
+     "target_text": "Most people I know like watching television but my brother likes to read",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 291,
+  "phrases": {
+   "291:1": [
+    {
+     "known_text": "更好",
+     "target_text": "Better",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我希望我很快能说得更好",
+     "target_text": "I hope I'll be able to speak better soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我希望我很快能说得更好",
+     "target_text": "I hope I'll be able to speak better soon now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天我希望我很快能说得更好",
+     "target_text": "I hope I'll be able to speak better soon today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "在这里我希望我很快能说得更好",
+     "target_text": "I hope I'll be able to speak better soon here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我希望我很快能说得更好，因为我已经学了很多了",
+     "target_text": "I hope I'll be able to speak better soon because I've learnt a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我希望我很快能说得更好，我觉得我能做到",
+     "target_text": "I hope I'll be able to speak better soon and I think I can do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我希望我很快能说得更好，虽然我知道不容易",
+     "target_text": "I hope I'll be able to speak better soon although I know it's not easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我希望我很快能说得更好，听起来是个好主意",
+     "target_text": "I hope I'll be able to speak better soon and that sounds like a great idea",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 293,
+  "phrases": {
+   "293:1": [
+    {
+     "known_text": "他",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "我得找到他打算在哪里和我见面",
+     "target_text": "I have to find out where he's going to meet me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "现在我需要弄清楚他在哪里和我见面",
+     "target_text": "I have to find out where he's going to meet me now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "今天我需要弄清楚他在哪里和我见面",
+     "target_text": "I have to find out where he's going to meet me today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "很快我需要弄清楚他在哪里和我见面",
+     "target_text": "I have to find out where he's going to meet me soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "我需要弄清楚他在哪里和我见面，因为没有人告诉我们",
+     "target_text": "I have to find out where he's going to meet me because nobody told us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我需要弄清楚他在哪里和我见面，我应该问我的兄弟",
+     "target_text": "I have to find out where he's going to meet me and I should ask my brother",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我需要弄清楚他在哪里和我见面，虽然我觉得可能是重要的事情",
+     "target_text": "I have to find out where he's going to meet me although I think it might be something important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "我需要在周末之前弄清楚他在哪里和我见面",
+     "target_text": "I have to find out where he's going to meet me before the weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "在哪里",
+     "target_text": "where",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "跟我",
+     "target_text": "with me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "见面",
+     "target_text": "going to meet",
+     "phrase_role": "component"
+    }
+   ]
+  }
+ }
+]

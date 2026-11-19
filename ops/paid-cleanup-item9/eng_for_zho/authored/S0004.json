@@ -1,0 +1,30 @@
+{
+ "seed": 4,
+ "legos": {
+  "L01": {
+   "insert": [],
+   "update": {
+    "U03": [
+     "我想现在说一些东西",
+     "I want to say something now"
+    ],
+    "U04": [
+     "我想学习怎么说一些东西",
+     "I want to learn how to say something"
+    ]
+   },
+   "keep": []
+  },
+  "L02": {
+   "insert": [],
+   "update": {
+    "U05": [
+     "我在努力学习怎么用英语说一些东西",
+     "I'm trying to learn how to say something in English"
+    ]
+   },
+   "keep": []
+  }
+ },
+ "notes": "item 9 back-fill: planned-delete rows rewritten in place from taught words"
+}

@@ -1,0 +1,14 @@
+{ "seed": 339,
+  "lego_ops": { "L01": { "set": { "known_text": "પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી", "target_text": "hurt himself quite badly", "type": "M",
+      "components": [ { "known": "પોતાને ઈજા પહોંચાડી", "target": "hurt himself" }, { "known": "ઘણી", "target": "quite" }, { "known": "ખરાબ રીતે", "target": "badly" } ] },
+    "why": "S3: 'quite' is in the seed ('No I think he's hurt himself quite badly') and no LEGO of the seed carries it (L01 is the seed's only LEGO; 'badly' is S0338L01). The only way to carry it without a new LEGO is to grow L01 across 'quite badly' (6 syllables, ungapped, a piece of the seed). Known side is the wording U01/U06 already use (ઘણી ખરાબ રીતે)." } },
+  "legos": { "L01": { "update": {
+    "B01": ["પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી", "hurt himself quite badly"],
+    "B02": ["એ પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી શકે", "he could hurt himself quite badly"],
+    "B03": ["એણે પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી", "he hurt himself quite badly"],
+    "B04": ["એણે ગઈ કાલે પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી", "he hurt himself quite badly yesterday"],
+    "U02": ["મને લાગે છે કે એણે પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી છે", "I think he's hurt himself quite badly"],
+    "U03": ["એણે ગયા અઠવાડિયે પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી", "he hurt himself quite badly last week"],
+    "U04": ["મેં કહ્યું કે એણે પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી છે", "I said that he's hurt himself quite badly"],
+    "U05": ["શું તમને લાગે છે કે એણે પોતાને ઘણી ખરાબ રીતે ઈજા પહોંચાડી છે?", "do you think that he's hurt himself quite badly?"] } } },
+  "notes": "cs #813 re-cut: L01 'hurt himself' grows to 'hurt himself quite badly'. Every row that lacked the whole new LEGO is re-said with it (P17); U01 and U06 already contain it and are untouched. Dropped as unnatural with 'quite badly': 'doesn't want to / can't hurt himself' and 'this year'. Cost, stated plainly: the basket is now all 'quite badly' sentences, and the plain 'hurt himself' is only a component. The LEGO's English clip and the rewritten rows need audio; component rows C01/C02 (hurt, himself) are left as they are." }

@@ -1,0 +1,116 @@
+{
+ "course": "eng_for_fra",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {},
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0004L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0007L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0012L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0014L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0019L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0025L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0026L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0026L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0027L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0037L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0038L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0043L01",
+    "deletes": 3
+   },
+   {
+    "lego": "S0046L01",
+    "deletes": 5
+   },
+   {
+    "lego": "S0055L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0089L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0090L01",
+    "deletes": 3
+   },
+   {
+    "lego": "S0091L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0196L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0201L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0225L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0226L01",
+    "deletes": 4
+   },
+   {
+    "lego": "S0227L01",
+    "deletes": 4
+   }
+  ],
+  "drift": [],
+  "error": []
+ },
+ "warnings": 0
+}

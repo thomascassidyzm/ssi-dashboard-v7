@@ -1,0 +1,25 @@
+{
+ "seed": 71,
+ "lego_ops": {
+  "L02": {
+   "set": { "target_text": "let anyone", "components": [ { "known": "કે", "target": "let" }, { "known": "કોઈ", "target": "anyone" } ] },
+   "why": "S3/L27: 'let' is in the seed ('We didn't want to let anyone hear the truth') and no LEGO carried it. The Gujarati has no word for it: 'let' renders the કે + subjunctive construction (અમે ન ઈચ્છતા હતા કે કોઈ … સાંભળે), whose LEGO is already L02 કે કોઈ. So L02 GROWS to the seed's own words 'let anyone' (4 syll, ungapped, a seed fragment) instead of a new LEGO; that also ends L02's L26 defect ('anyone to' is not a piece of the seed). A bare 'let' LEGO would have no Gujarati to prompt it; folding into L03 'hear' would need a gapped known (કે કોઈ … સાંભળે), which L32 forbids. Known side unchanged, so the intro (which quotes the Gujarati) still mirrors; only the LEGO's English clips change."
+  }
+ },
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": ["કે કોઈ", "let anyone"],
+    "B02": ["તે ન ઈચ્છતો હતો કે કોઈ આવે", "he didn't want to let anyone come"],
+    "B03": ["કે કોઈ આવે", "let anyone come"],
+    "U01": ["અમે ન ઈચ્છતા હતા કે કોઈ આવે", "we didn't want to let anyone come"],
+    "U02": ["તે ન ઈચ્છતો હતો કે કોઈ જાણે", "he didn't want to let anyone know"],
+    "U03": ["અમે ન ઈચ્છતા હતા કે કોઈ વાર્તા વાંચે", "we didn't want to let anyone read the story"],
+    "U04": ["તેણી ન ઈચ્છતી હતી કે કોઈ તેણીનું નામ જાણે", "she didn't want to let anyone know her name"],
+    "U05": ["તે ન ઈચ્છતો હતો કે કોઈ વાર્તા વાંચે", "he didn't want to let anyone read the story"]
+   },
+   "insert": [ ["build", "કે કોઈ જાણે", "let anyone know"] ]
+  }
+ },
+ "notes": "Every L02 row is re-said with the seed's own English shape ('didn't want to let anyone X'), the shape the seed and L03 U01/U05 + L04 U01 already use for this Gujarati construction, so one Gujarati prompt now has one English shape inside the seed (ZUT). B02 and U01 were the same row twice (dup); B02 now says 'he …' (pieces from U02/U05's known). New B04 'let anyone know' uses only Gujarati already in U02/U04 (કે કોઈ … જાણે). Not touched, out of item 9: L03 U02-U04 known side 'સાંભળે માગે છે' (should read સાંભળવા માગે છે) — item 3 (known prompt) territory, listed in the report."
+}

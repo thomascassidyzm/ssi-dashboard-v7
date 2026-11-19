@@ -1,0 +1,39 @@
+{
+ "course": "eng_for_ben",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {
+  "1-backfill": 20,
+  "4-recut-S0051": 9
+ },
+ "backfill": {
+  "insert": 6,
+  "rewrite": 14
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 1,
+  "lego_update": 1,
+  "insert": 4,
+  "rewrite": 4,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [],
+  "drift": [
+   {
+    "row": "S0512L03U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0512L03U04",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 8
+}

@@ -1,0 +1,636 @@
+{
+ "course": "eng_for_urd",
+ "at": "2026-11-18T18:40:53.404Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0012L03": {
+   "lego": "کیا ہونے والا ہے | what's going to happen",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0012L03U06",
+     "role": "use",
+     "known": "میں اندازہ نہیں لگانا چاہتا کہ کل کیا ہونے والا ہے",
+     "target": "I don't want to guess what's going to happen tomorrow",
+     "untaught": [
+      "don't",
+      "tomorrow"
+     ]
+    }
+   ]
+  },
+  "S0021L03": {
+   "lego": "اس لڑکی کا نام | her name",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0021L03U06",
+     "role": "use",
+     "known": "میں اس لڑکی کا نام یاد نہیں رکھ سکتا",
+     "target": "I can't remember her name",
+     "untaught": [
+      "can't"
+     ]
+    }
+   ]
+  },
+  "S0027L02": {
+   "lego": "بہت زیادہ وقت لینا | taking too much time",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 22,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0027L02U05",
+     "role": "use",
+     "known": "وہ بہت زیادہ وقت لینا پسند نہیں کرتا",
+     "target": "he doesn't like taking too much time",
+     "untaught": [
+      "doesn't"
+     ]
+    },
+    {
+     "row": "S0027L02U06",
+     "role": "use",
+     "known": "وہ بہت زیادہ وقت لینا پسند نہیں کرتی",
+     "target": "she doesn't like taking too much time",
+     "untaught": [
+      "doesn't"
+     ]
+    }
+   ]
+  },
+  "S0031L02": {
+   "lego": "آج رات | tonight",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0031L02U06",
+     "role": "use",
+     "known": "کیا آپ آج رات ملنا چاہتے تھے؟",
+     "target": "did you want to meet tonight?",
+     "untaught": [
+      "did"
+     ]
+    }
+   ]
+  },
+  "S0038L01": {
+   "lego": "میں سیکھتا رہا ہوں | I've been learning",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0038L01U06",
+     "role": "use",
+     "known": "میں پچھلے مہینے سے سیکھتا رہا ہوں",
+     "target": "I've been learning since last month",
+     "untaught": [
+      "since"
+     ]
+    }
+   ]
+  },
+  "S0044L02": {
+   "lego": "بہتر کرنا | to improve",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0044L02B02",
+     "role": "build",
+     "known": "میں بہتر بولنا چاہتا ہوں لیکن بولنا بہتر کرنے کی کوشش کر رہا ہوں",
+     "target": "I want to speak better but I'm trying to improve my speaking",
+     "untaught": [
+      "my"
+     ]
+    },
+    {
+     "row": "S0044L02U02",
+     "role": "use",
+     "known": "میں بولنا بہتر کرنا چاہتا ہوں",
+     "target": "I want to improve my speaking",
+     "untaught": [
+      "my"
+     ]
+    }
+   ]
+  },
+  "S0046L01": {
+   "lego": "غلطیاں | mistakes",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 22,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0046L01U03",
+     "role": "use",
+     "known": "میری غلطیاں کیا ہیں؟",
+     "target": "what are my mistakes?",
+     "untaught": [
+      "my"
+     ]
+    },
+    {
+     "row": "S0046L01U04",
+     "role": "use",
+     "known": "میں اپنی غلطیوں سے سیکھ سکتا ہوں",
+     "target": "I can learn from my mistakes",
+     "untaught": [
+      "from",
+      "my"
+     ]
+    },
+    {
+     "row": "S0046L01U06",
+     "role": "use",
+     "known": "میں اپنی غلطیوں کی فکر نہیں کرتا",
+     "target": "I don't worry about my mistakes",
+     "untaught": [
+      "worry",
+      "my"
+     ]
+    }
+   ]
+  },
+  "S0046L02": {
+   "lego": "فکر نہیں کرتا | I don't worry",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0046L02U05",
+     "role": "use",
+     "known": "میں غلطیوں کی فکر نہیں کرتا کیونکہ یہ اچھی بات ہے",
+     "target": "I don't worry about mistakes because it's a good thing",
+     "untaught": [
+      "good",
+      "thing"
+     ]
+    }
+   ]
+  },
+  "S0068L01": {
+   "lego": "ڈھونڈ رہے ہیں | looking for",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0068L01U06",
+     "role": "use",
+     "known": "آپ کیا ڈھونڈ رہے ہیں اپنے بیگ میں؟",
+     "target": "what are you looking for in your bag?",
+     "untaught": [
+      "your"
+     ]
+    }
+   ]
+  },
+  "S0085L01": {
+   "lego": "ان | those",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0085L01B03",
+     "role": "build",
+     "known": "ان میں سے",
+     "target": "those from",
+     "untaught": [
+      "from"
+     ]
+    }
+   ]
+  },
+  "S0101L02": {
+   "lego": "پتا چلانا | finding out",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0101L02U03",
+     "role": "use",
+     "known": "مزید پتا چلانا ہمیشہ ایک اچھی بات ہے",
+     "target": "finding out more is always a good thing",
+     "untaught": [
+      "always"
+     ]
+    }
+   ]
+  },
+  "S0140L01": {
+   "lego": "مجھے دکھانا | show me",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0140L01U06",
+     "role": "use",
+     "known": "کیا آپ مجھے دکھانا چاہتے ہیں کہ آپ نے کیا کیا ہے؟",
+     "target": "do you want to show me what you've done?",
+     "untaught": [
+      "you've"
+     ]
+    }
+   ]
+  },
+  "S0170L02": {
+   "lego": "آپ کو کیا چاہیے | what you need",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 19,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0170L02B04",
+     "role": "build",
+     "known": "آپ کو کیا چاہیے مجھ سے؟",
+     "target": "what do you need from me?",
+     "untaught": [
+      "from"
+     ]
+    }
+   ]
+  },
+  "S0181L01": {
+   "lego": "مجھے لے جانا ہے | I have to take",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0181L01U03",
+     "role": "use",
+     "known": "مجھے اسے یہاں سے لے جانا ہے",
+     "target": "I have to take him from here",
+     "untaught": [
+      "from"
+     ]
+    }
+   ]
+  },
+  "S0449L01": {
+   "lego": "تقریباً | almost",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0449L01B03",
+     "role": "build",
+     "known": "تقریباً ہر روز",
+     "target": "almost every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0449L01U03",
+     "role": "use",
+     "known": "میں اسے تقریباً ہر روز دیکھتا ہوں۔",
+     "target": "I see him almost every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0462L02": {
+   "lego": "جنگ | war",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0462L02U04",
+     "role": "use",
+     "known": "جنگ ایک بہت بری چیز ہے۔",
+     "target": "war is a very bad thing",
+     "untaught": [
+      "bad"
+     ]
+    }
+   ]
+  },
+  "S0463L01": {
+   "lego": "کمرے کا نمبر | room number",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0463L01U05",
+     "role": "use",
+     "known": "ہر کمرے کا نمبر مختلف ہے۔",
+     "target": "every room number is different",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0511L01": {
+   "lego": "خبر | news",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0511L01B01",
+     "role": "build",
+     "known": "بری خبر",
+     "target": "bad news",
+     "untaught": [
+      "bad"
+     ]
+    }
+   ]
+  },
+  "S0516L01": {
+   "lego": "ان کا | their",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0516L01B02",
+     "role": "build",
+     "known": "ان کا بچہ",
+     "target": "their baby",
+     "untaught": [
+      "baby"
+     ]
+    },
+    {
+     "row": "S0516L01U03",
+     "role": "use",
+     "known": "میں ان کا نیا بچہ دیکھنا چاہتا ہوں",
+     "target": "I want to see their new baby",
+     "untaught": [
+      "baby"
+     ]
+    }
+   ]
+  },
+  "S0534L01": {
+   "lego": "موسم | weather",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0534L01B03",
+     "role": "build",
+     "known": "خراب موسم",
+     "target": "bad weather",
+     "untaught": [
+      "bad"
+     ]
+    },
+    {
+     "row": "S0534L01U04",
+     "role": "use",
+     "known": "یہ موسم بہت خراب ہے",
+     "target": "this weather is very bad",
+     "untaught": [
+      "bad"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

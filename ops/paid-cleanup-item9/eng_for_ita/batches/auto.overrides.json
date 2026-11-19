@@ -1,0 +1,319 @@
+[
+ {
+  "seed_number": 7,
+  "phrases": {
+   "7:1": [
+    {
+     "known_text": "voglio provare",
+     "target_text": "I want to try",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ho intenzione di provare",
+     "target_text": "I'm going to try",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "voglio provare a parlare inglese",
+     "target_text": "I want to try to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ho intenzione di provare a dire qualcosa in inglese",
+     "target_text": "I'm going to try to say something in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio provare a imparare una parola",
+     "target_text": "I want to try to learn a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ho intenzione di provare il più spesso possibile",
+     "target_text": "I'm going to try as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio provare a parlare con qualcun altro",
+     "target_text": "I want to try to speak with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio provare a ricordare come dire qualcosa",
+     "target_text": "I want to try to remember how to say something",
+     "phrase_role": "use"
+    }
+   ],
+   "7:2": [
+    {
+     "known_text": "posso",
+     "target_text": "I can",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "più",
+     "target_text": "more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "il più che posso",
+     "target_text": "as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "provare il più che posso",
+     "target_text": "to try as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "voglio provare il più che posso",
+     "target_text": "I want to try as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ho intenzione di provare il più che posso",
+     "target_text": "I'm going to try as hard as I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sto cercando di parlare inglese il più che posso",
+     "target_text": "I'm trying to speak English as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio esercitarmi a parlare il più che posso",
+     "target_text": "I want to practise speaking as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ho intenzione di esercitarmi a parlare inglese il più che posso",
+     "target_text": "I'm going to practise speaking English as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "sto cercando di imparare il più che posso",
+     "target_text": "I'm trying to learn as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio provare a parlare inglese il più che posso",
+     "target_text": "I want to try to speak English as hard as I can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio provare a imparare il più che posso",
+     "target_text": "I want to try to learn as hard as I can",
+     "phrase_role": "use"
+    }
+   ],
+   "7:3": [
+    {
+     "known_text": "voglio provare oggi",
+     "target_text": "I want to try today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ho intenzione di parlare inglese oggi",
+     "target_text": "I'm going to speak English today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sto cercando di imparare oggi",
+     "target_text": "I'm trying to learn today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "voglio provare il più che posso oggi",
+     "target_text": "I want to try as hard as I can today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ho intenzione di parlare inglese il più che posso oggi",
+     "target_text": "I'm going to speak English as hard as I can today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio esercitarmi a parlare con qualcun altro oggi",
+     "target_text": "I want to practise speaking with someone else today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "sto cercando di ricordare una parola oggi",
+     "target_text": "I'm trying to remember a word today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ho intenzione di dire qualcosa in inglese oggi",
+     "target_text": "I'm going to say something in English today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "voglio imparare una parola in inglese oggi",
+     "target_text": "I want to learn a word in English today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 24,
+  "phrases": {
+   "24:1": [
+    {
+     "known_text": "non",
+     "target_text": "not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "riuscirò",
+     "target_text": "going to be able to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "non riuscirò a",
+     "target_text": "I'm not going to be able to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "non riuscirò a imparare",
+     "target_text": "I'm not going to be able to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "non riuscirò a tornare",
+     "target_text": "I'm not going to be able to come back",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "non riuscirò a parlare inglese molto bene",
+     "target_text": "I'm not going to be able to speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "non riuscirò a imparare in fretta",
+     "target_text": "I'm not going to be able to learn quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "non riuscirò a tornare di questa sera",
+     "target_text": "I'm not going to be able to come back this evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "non riuscirò a incontrare persone che parlano inglese",
+     "target_text": "I'm not going to be able to meet people who speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ma non riuscirò a ricordare tutta la frase",
+     "target_text": "but I'm not going to be able to remember the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "non riuscirò a iniziare a parlare presto",
+     "target_text": "I'm not going to be able to start talking soon",
+     "phrase_role": "use"
+    }
+   ],
+   "24:2": [
+    {
+     "known_text": "ricordare facilmente",
+     "target_text": "to remember easily",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "voglio imparare facilmente",
+     "target_text": "I want to learn easily",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "parlare inglese facilmente",
+     "target_text": "to speak English easily",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "non riuscirò a ricordare facilmente",
+     "target_text": "I'm not going to be able to remember easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "mi piacerebbe imparare inglese facilmente",
+     "target_text": "I'd like to learn English easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "lui vuole imparare il suo nome facilmente",
+     "target_text": "he wants to learn her name easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "perché voglio riuscire a parlare inglese facilmente",
+     "target_text": "because I want to be able to speak English easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "vuoi imparare di più facilmente",
+     "target_text": "you want to learn more easily",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "lei vuole riuscire a parlare facilmente",
+     "target_text": "she wants to be able to speak easily",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 264,
+  "phrases": {
+   "264:1": [
+    {
+     "known_text": "un",
+     "target_text": "an",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "vecchio",
+     "target_text": "old",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "uomo",
+     "target_text": "man",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "un vecchio",
+     "target_text": "an old man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "conosco un vecchio",
+     "target_text": "I know an old man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "un vecchio mi ha detto qualcosa di nuovo",
+     "target_text": "an old man told me something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "c'era un vecchio che aspettava là",
+     "target_text": "there was an old man waiting over there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "un vecchio mi ha detto qualcosa di importante",
+     "target_text": "an old man said something important to me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "stava parlando con un vecchio che non conosco",
+     "target_text": "he was talking to an old man I don't know",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,19 @@
+{
+ "seed": 283,
+ "legos": {
+  "L02": {
+   "delete": [
+    "U01",
+    "U08"
+   ],
+   "accept_gap": "back-fill 0 BUILD + 2 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  "L03": {
+   "delete": [
+    "U02"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"Mis amigos hablan español a menudo y muy bien\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

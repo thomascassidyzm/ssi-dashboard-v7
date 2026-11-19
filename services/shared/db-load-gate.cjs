@@ -31,6 +31,35 @@
 
 const path = require('path')
 const os = require('os')
+const { AsyncLocalStorage } = require('async_hooks')
+
+// A PERSON WAITING IS NEVER THROTTLED (cs #965, 2026-11-19; decision under r-2026-11-18-no-watson-or-worker):
+// the governor is for bulk/background writes. On 19 Nov it held Eleri's booth home summary for >200 s because a
+// slow teacher-dashboard view kept it red. So a statement made while serving an interactive human HTTP request
+// runs straight through. Positive marking only: a request is interactive only when its route is mounted behind
+// interactiveHumans() AND it carries no agent/service identity header. Everything unmarked (batch endpoints,
+// changeset apply, queue/worker loops, timers, any x-agent-id caller, /api/audio/render, edit-batch) stays governed.
+const humanCtx = new AsyncLocalStorage()
+const AGENT_HEADERS = ['x-agent-id', 'x-agent-role', 'x-service-name']
+const bypass = { count: 0, lastPath: null, windowCount: 0 }
+const inHumanRequest = () => humanCtx.getStore() === true
+function noteBypass() {
+  bypass.count++
+  if (bypass.windowCount++ === 0) {
+    const where = bypass.lastPath
+    setTimeout(() => {
+      try { process.stderr.write(`db-load-governor: ${state ? state.writer : 'popty'} let ${bypass.windowCount} statement(s) from interactive human requests bypass the gate in the last minute (e.g. ${where}); level stays ${state ? state.gov.status().level : '?'} for background work\n`) } catch {}
+      bypass.windowCount = 0
+    }, 60000).unref()
+  }
+}
+/** Express middleware: mount in front of human-facing routes (the booth). Agent-identified callers stay governed. */
+function interactiveHumans(req, res, next) {
+  const h = req.headers || {}
+  if (AGENT_HEADERS.some((k) => h[k])) return next()
+  bypass.lastPath = `${req.method} ${String(req.originalUrl || req.url || '').split('?')[0].slice(0, 80)}`
+  return humanCtx.run(true, next)
+}
 
 const MARK = Symbol.for('popty.dbLoadGate')
 // The INSTANCE mark: a live, governed connection. Never read MARK off a client: MARK sits on Client.prototype
@@ -89,6 +118,7 @@ function patchPg(gm, gov, writer) {
   const origQuery = proto.query
   proto.query = function (...args) {
     if (!Object.prototype.hasOwnProperty.call(this, GOVERNED) || this[gm.PROBE]) return origQuery.apply(this, args)
+    if (inHumanRequest()) { noteBypass(); return origQuery.apply(this, args) }
     const last = args[args.length - 1]
     if (args[0] && typeof args[0].submit === 'function') {
       const sub = args[0]
@@ -122,6 +152,7 @@ function patchFetch(gov) {
     let url
     try { url = typeof input === 'string' ? input : (input && input.url) || String(input) } catch { return orig.call(this, input, init) }
     if (!isLiveRestUrl(url)) return orig.call(this, input, init)
+    if (inHumanRequest()) { noteBypass(); return orig.call(this, input, init) }
     return gov.run(() => orig.call(this, input, init))
   }
   wrapped[MARK] = true
@@ -156,7 +187,7 @@ function status() {
   // governed = installed AND holding a real load reading < 30 s old. An installed gate with no reading is
   // running slow (red) and says so, rather than claiming to see the database (#838).
   const measured = typeof state.gov.measured === 'function' ? state.gov.measured() : false
-  return { installed: true, governed: measured, governor: `v${state.version}`, ...st, ...(measured ? {} : { why: 'no real load reading yet (or none in 30 s): running slow until one arrives' }) }
+  return { installed: true, governed: measured, governor: `v${state.version}`, ...st, humanBypassed: bypass.count, ...(measured ? {} : { why: 'no real load reading yet (or none in 30 s): running slow until one arrives' }) }
 }
 
 /** Throws when this process reaches for the live DB without the gate installed (call where a client is built). */
@@ -164,4 +195,4 @@ function assertGoverned(where = 'this process') {
   if (!globalThis[MARK]) throw new Error(`db-load-gate: ${where} is about to reach the live SSi DB without the load gate — install it first (require('./shared/db-load-gate.cjs').install(...)) — cs #835, Tom's ruling r-2026-11-18-no-watson-or-worker-any-owner`)
 }
 
-module.exports = { install, status, assertGoverned, isLiveRestUrl, isLiveHost, loadGovernorModule }
+module.exports = { install, status, interactiveHumans, inHumanRequest, assertGoverned, isLiveRestUrl, isLiveHost, loadGovernorModule }

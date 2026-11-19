@@ -1,0 +1,34 @@
+{
+ "seed": 232,
+ "legos": {
+  "L01": {
+   "update": {
+    "B04": [
+     "助けを求めた女性を",
+     "the woman who asked for help"
+    ],
+    "B06": [
+     "手伝いたい女性を",
+     "a woman who wants to help"
+    ],
+    "U02": [
+     "私の娘と一緒に働く女性を知っています",
+     "I know a woman who works with my daughter"
+    ],
+    "U04": [
+     "昨夜、市役所で働く女性を見ました",
+     "I saw the woman who works for the council last night"
+    ],
+    "U06": [
+     "あなたを手伝おうとしている女性と話しましたか",
+     "did you talk to the woman who is trying to help you"
+    ],
+    "U07": [
+     "助けを求めた女性に会いたいと思っています",
+     "I'd like to meet the woman who asked for help"
+    ]
+   }
+  }
+ },
+ "notes": "L01: every USE row used later words (knows, sister, met); the USE set is rebuilt (4 updates) and two BUILD rows rewritten; B07 stays a delete."
+}

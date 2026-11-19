@@ -1,0 +1,65 @@
+{
+ "seed": 458,
+ "lego_ops": {
+  "L01": {
+   "set": {
+    "known_text": "پہلے بہت آسان",
+    "target_text": "much easier in the past",
+    "type": "M",
+    "components": [
+     {
+      "known": "بہت آسان",
+      "target": "much easier"
+     },
+     {
+      "known": "پہلے",
+      "target": "in the past"
+     }
+    ]
+   },
+   "why": "S3: 'past' is in the seed ('It was all much easier in the past') and no LEGO carries it; L01 is the seed's only LEGO, so it grows across 'in the past' (7 syllables, ungapped, a piece of the seed). Urdu پہلے is the seed's own word for it."
+  }
+ },
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "پہلے بہت آسان",
+     "much easier in the past"
+    ],
+    "B02": [
+     "یہ پہلے بہت آسان تھا",
+     "it was much easier in the past"
+    ],
+    "B03": [
+     "سب پہلے بہت آسان",
+     "all much easier in the past"
+    ],
+    "U02": [
+     "یہ کام پہلے بہت آسان تھا",
+     "this work was much easier in the past"
+    ],
+    "U03": [
+     "زندگی پہلے بہت آسان تھی",
+     "life was much easier in the past"
+    ],
+    "U04": [
+     "میرے لیے یہ کام پہلے بہت آسان تھا",
+     "this work was much easier in the past for me"
+    ],
+    "U05": [
+     "میرے خیال میں یہ پہلے بہت آسان تھا",
+     "I think that it was much easier in the past"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "کام پہلے بہت آسان تھا",
+     "work was much easier in the past"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #813: re-cut: 'much easier' -> 'much easier in the past'. U01 (the seed sentence) already contains it. Cost, stated plainly: the good general rows ('much easier now / with you / tomorrow') cannot stay, because every row must hold the whole LEGO."
+}

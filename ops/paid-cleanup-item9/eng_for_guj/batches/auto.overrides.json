@@ -1,0 +1,205 @@
+[
+ {
+  "seed_number": 40,
+  "phrases": {
+   "40:1": [
+    {
+     "known_text": "કેવું",
+     "target_text": "how",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તમને લાગે છે",
+     "target_text": "do you feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તમને કેવું લાગે છે?",
+     "target_text": "how do you feel?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમને કેવું લાગે છે જ્યારે?",
+     "target_text": "how do you feel when?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "બધા સાથે કેવું લાગે છે?",
+     "target_text": "how do you feel with everyone else?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમને હવે કેવું લાગે છે?",
+     "target_text": "how do you feel now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આજે કેવું લાગે છે?",
+     "target_text": "how do you feel today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આ સવારે કેવું લાગે છે?",
+     "target_text": "how do you feel this morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આજ રાત્રે કેવું લાગે છે?",
+     "target_text": "how do you feel tonight?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આ બપોરે કેવું લાગે છે?",
+     "target_text": "how do you feel this afternoon?",
+     "phrase_role": "use"
+    }
+   ],
+   "40:2": [
+    {
+     "known_text": "અત્યારે",
+     "target_text": "at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અત્યારે બોલવા",
+     "target_text": "speak at the moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અત્યારે તમને કેવું લાગે છે?",
+     "target_text": "how do you feel at the moment?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અત્યારે થોડો થાકેલો છું",
+     "target_text": "I'm a little tired at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અત્યારે પાછા આવવા માગતો નથી",
+     "target_text": "he doesn't want to come back at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અત્યારે અંગ્રેજી શીખી રહ્યો છું",
+     "target_text": "I've been learning English at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેણી અત્યારે વાંચવા માગતી નથી",
+     "target_text": "she doesn't want to read at the moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અત્યારે",
+     "target_text": "at the moment",
+     "phrase_role": "component"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 138,
+  "phrases": {
+   "138:1": [
+    {
+     "known_text": "આ હતું",
+     "target_text": "this was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "જ્યાં",
+     "target_text": "where",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આ જ્યાં હતું",
+     "target_text": "this was where",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ જ્યાં હતું હું શીખ્યો",
+     "target_text": "this was where I learnt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ જ્યાં હતું મેં ઘણું શીખ્યું",
+     "target_text": "this was where I learnt a lot",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ જ્યાં હતું હું તમને મળવા માગતો હતો",
+     "target_text": "this was where I wanted to meet you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ જ્યાં હતું અમે અંગ્રેજી શીખ્યા",
+     "target_text": "this was where we learnt English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ જ્યાં હતું મને સારું લાગ્યું",
+     "target_text": "this was where I felt better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ જ્યાં હતું મેં ઘણા નવા શબ્દો શીખ્યા",
+     "target_text": "this was where I learnt a lot of new words",
+     "phrase_role": "use"
+    }
+   ],
+   "138:2": [
+    {
+     "known_text": "અમને",
+     "target_text": "us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મળવા",
+     "target_text": "to meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અમને મળવા",
+     "target_text": "to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમને મળવા માગતા",
+     "target_text": "wanted to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમને મળવા આવો",
+     "target_text": "come to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારા મિત્ર અમને મળવા માગતા હતા",
+     "target_text": "my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ જ્યાં હતું મારા મિત્ર અમને મળવા માગતા હતા",
+     "target_text": "this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "શું તમે અમને મળવા માગો છો?",
+     "target_text": "do you want to meet us?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓ આજે અમને મળવા આવ્યા",
+     "target_text": "they wanted to meet us today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અમને મળવા માગતી હતી",
+     "target_text": "she wanted to meet us",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

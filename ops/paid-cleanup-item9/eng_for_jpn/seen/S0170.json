@@ -1,0 +1,527 @@
+{
+ "seed": 170,
+ "at": "2026-11-18T18:40:49.109Z",
+ "from": "live snapshot",
+ "rows": {
+  "S0170L01B01": {
+   "known": "必要",
+   "target": "need",
+   "updated_at": "2026-10-12T16:46:52.688404+00:00"
+  },
+  "S0170L01B02": {
+   "known": "私には必要",
+   "target": "I need",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01B03": {
+   "known": "助けが必要",
+   "target": "I need help",
+   "updated_at": "2026-10-28T17:36:49.443532+00:00"
+  },
+  "S0170L01B04": {
+   "known": "時間が必要",
+   "target": "I need time",
+   "updated_at": "2026-10-13T09:55:27.702306+00:00"
+  },
+  "S0170L01B05": {
+   "known": "もっと時間が必要",
+   "target": "I need a little more time",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01B06": {
+   "known": "あなたの助けが必要",
+   "target": "I need your help",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U01": {
+   "known": "私はあなたの助けが必要です、今日一緒に働けますか",
+   "target": "I need your help today so can we work together this afternoon?",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U02": {
+   "known": "もっと時間が必要です、まだ準備できていません",
+   "target": "I need a little more time because I'm not ready yet",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U03": {
+   "known": "英語を上手に話すためにたくさん練習が必要です",
+   "target": "I need to practise speaking English as often as possible to speak better",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U05": {
+   "known": "今何が必要か教えてください",
+   "target": "tell me what you need now and I'm going to come and help",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U06": {
+   "known": "新しい言葉を覚えるためにもっと時間が必要です",
+   "target": "I need more time to learn all the new words in English",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U07": {
+   "known": "出発する前に少し時間が必要です",
+   "target": "I need a little more time before I need to leave this morning",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U08": {
+   "known": "今日の仕事のために何が必要かを教えてください",
+   "target": "tell me what you need for today and we can work together on it",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U10": {
+   "known": "あなたが何を必要としているか知りたいです",
+   "target": "I want to know what you need so I can help you today",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U11": {
+   "known": "もっと練習が必要だと思います",
+   "target": "I think I need to practise more but I'm definitely doing better than yesterday",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U13": {
+   "known": "多くのことを学ぶために頑張ることが必要です",
+   "target": "we must work hard to learn a lot of new words and I need to start",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U14": {
+   "known": "今日の午後に何が必要か教えてください",
+   "target": "tell me what you need this afternoon and I'm going to come and help",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L01U15": {
+   "known": "私はあなたの助けが必要です",
+   "target": "I need your help so I'm going to ask you to come today",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02C01": {
+   "known": "何",
+   "target": "what",
+   "updated_at": "2026-10-28T21:48:01.874216+00:00"
+  },
+  "S0170L02C02": {
+   "known": "必要",
+   "target": "need",
+   "updated_at": "2026-10-12T16:46:52.774711+00:00"
+  },
+  "S0170L02B01": {
+   "known": "何が必要か",
+   "target": "what you need",
+   "updated_at": "2026-10-28T21:49:01.500806+00:00"
+  },
+  "S0170L02B02": {
+   "known": "何が必要か",
+   "target": "what you need",
+   "updated_at": "2026-10-28T21:49:01.500806+00:00"
+  },
+  "S0170L02B04": {
+   "known": "今何が必要か",
+   "target": "what you need now",
+   "updated_at": "2026-10-27T13:27:04.5091+00:00"
+  },
+  "S0170L02B05": {
+   "known": "今日何が必要か",
+   "target": "what you need today",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02B06": {
+   "known": "正確に何が必要か",
+   "target": "exactly what you need",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02B07": {
+   "known": "それに何が必要か",
+   "target": "what you need for that",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U01": {
+   "known": "話し始められるように、今日何が必要か教えてくれますか？",
+   "target": "can you tell me what you need for today so we can start talking?",
+   "updated_at": "2026-11-18T14:33:48.925783+00:00"
+  },
+  "S0170L02U02": {
+   "known": "あなたが英語で上手くなるために何が必要か知っていますか",
+   "target": "do you know what you need to do to speak English as often as possible?",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U04": {
+   "known": "出発する前に何が必要か教えてください",
+   "target": "tell me what you need before you leave this morning",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U05": {
+   "known": "私はあなたが何を必要としているか正確にわかります",
+   "target": "I know exactly what you need to start talking in English",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U06": {
+   "known": "それを始めるために何が必要かを一緒に考えましょう",
+   "target": "let's think about what you need to start doing this together",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U07": {
+   "known": "今日の午後に何が必要か教えてください",
+   "target": "can you tell me what you need this afternoon if you have time?",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U08": {
+   "known": "次に何が必要かを教えてください",
+   "target": "tell me what you need next and I'm going to try as hard as I can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U10": {
+   "known": "今週何が必要かを一緒に考えましょう",
+   "target": "let's think about what you need to do this week to be ready",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U11": {
+   "known": "彼は何が必要か正確に言っていました",
+   "target": "he said exactly what you need to do to finish the work quickly",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U12": {
+   "known": "英語を話す練習に何が必要か教えてくれますか？",
+   "target": "can you tell me what you need to practise speaking English?",
+   "updated_at": "2026-11-18T14:33:48.925783+00:00"
+  },
+  "S0170L02U13": {
+   "known": "何を必要としているかを知ることが大切です",
+   "target": "it's important to know what you need before you start talking",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L02U15": {
+   "known": "今日の午後に何が必要か話しましょう",
+   "target": "let's talk about what you need to do this afternoon together",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03B01": {
+   "known": "教えて",
+   "target": "tell",
+   "updated_at": "2026-10-28T23:19:01.933559+00:00"
+  },
+  "S0170L03B02": {
+   "known": "私に教えて",
+   "target": "tell me",
+   "updated_at": "2026-10-28T23:19:01.908742+00:00"
+  },
+  "S0170L03B03": {
+   "known": "何を教えて",
+   "target": "tell me what",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03B04": {
+   "known": "どうやって教えて",
+   "target": "tell me how",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03B05": {
+   "known": "いつ教えて",
+   "target": "tell me when",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03B06": {
+   "known": "どこで教えて",
+   "target": "tell me where",
+   "updated_at": "2026-10-12T10:31:26.387146+00:00"
+  },
+  "S0170L03U01": {
+   "known": "何が必要か私に教えてください、私はすぐに行きます",
+   "target": "tell me what you need and I'm going to come and help as soon as I can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U02": {
+   "known": "英語でどう言うか教えてください",
+   "target": "tell me how to say that in English",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U03": {
+   "known": "どこで友達に会いたいか教えてください",
+   "target": "tell me where you want to meet on saturday night",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U05": {
+   "known": "あなたの名前を教えてください",
+   "target": "can you tell me what your name is?",
+   "updated_at": "2026-10-28T17:29:52.073789+00:00"
+  },
+  "S0170L03U06": {
+   "known": "いつ行けるか教えてください",
+   "target": "tell me when you want to start and I'm going to be ready",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U07": {
+   "known": "その言葉を英語でどう言うか教えてください",
+   "target": "tell me how to say this word in English so I can remember it",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U09": {
+   "known": "今日の午後に何をすべきか教えてください",
+   "target": "tell me what I need to do this afternoon so I can come and help",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U10": {
+   "known": "あなたが知っていることを教えてください",
+   "target": "tell me what you know and we can find the answer together",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U11": {
+   "known": "どこに行きたいか教えてください、一緒に行きましょう",
+   "target": "tell me where you want to go and we can go together tonight",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U12": {
+   "known": "次に何をすべきか教えてください",
+   "target": "tell me what I need to do next and I'm going to try as hard as I can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U13": {
+   "known": "英語でどのくらいうまく話せるか教えてください",
+   "target": "tell me how well you can speak English and we can start talking",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U14": {
+   "known": "仕事が終わったらどこに行くか教えてください",
+   "target": "tell me where you want to go after we finish the work today",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L03U15": {
+   "known": "あなたが何を考えているか教えてください",
+   "target": "tell me what you think and I'm going to tell you what I need to do",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04C01": {
+   "known": "教えて",
+   "target": "tell",
+   "updated_at": "2026-10-28T23:19:01.933559+00:00"
+  },
+  "S0170L04C02": {
+   "known": "ほしい",
+   "target": "I'd like you to",
+   "updated_at": "2026-10-12T10:56:07.300972+00:00"
+  },
+  "S0170L04B01": {
+   "known": "教えてほしいです",
+   "target": "I'd like you to tell",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04B02": {
+   "known": "教えてほしいです",
+   "target": "I'd like you to tell me",
+   "updated_at": "2026-10-28T17:30:12.763265+00:00"
+  },
+  "S0170L04B03": {
+   "known": "教えてほしいですか？",
+   "target": "do you want me to tell you?",
+   "updated_at": "2026-10-28T23:20:04.471828+00:00"
+  },
+  "S0170L04B04": {
+   "known": "今日の午後に教えてほしいです",
+   "target": "I'd like you to tell me this afternoon",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04B05": {
+   "known": "もっと教えてほしいです",
+   "target": "I'd like you to tell me more",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04B06": {
+   "known": "後で教えてほしいです",
+   "target": "I'd like you to tell me later on",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04B07": {
+   "known": "できるだけ早く教えてほしいです",
+   "target": "I'd like you to tell me as soon as you can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U01": {
+   "known": "後でそれについて教えてほしいです",
+   "target": "I'd like you to tell me about that later on",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U02": {
+   "known": "あなたが何を考えているか教えてほしいです",
+   "target": "I'd like you to tell me what you think",
+   "updated_at": "2026-10-28T17:30:13.063768+00:00"
+  },
+  "S0170L04U03": {
+   "known": "今日の午後に教えてほしいです",
+   "target": "I'd like you to tell me this afternoon",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U04": {
+   "known": "それが本当かどうか教えてほしいです",
+   "target": "I'd like you to tell me if it's true",
+   "updated_at": "2026-10-29T02:34:04.694442+00:00"
+  },
+  "S0170L04U05": {
+   "known": "あなたが何を言いたいか教えてほしいです",
+   "target": "I'd like you to tell me what you want to say",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U06": {
+   "known": "友達について教えてほしいです",
+   "target": "I'd like you to tell me about your friend",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U08": {
+   "known": "あなたが学んだことについて教えてほしいです",
+   "target": "I'd like you to tell me what you've learnt",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U09": {
+   "known": "去る前に教えてほしいです",
+   "target": "I'd like you to tell me before you leave",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U10": {
+   "known": "その言葉をどう言うか教えてほしいです",
+   "target": "I'd like you to tell me how to say that word",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U11": {
+   "known": "あなたの名前を教えてほしいです",
+   "target": "I'd like you to tell me what your name is",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U12": {
+   "known": "あなたが何を必要としているか教えてほしいです",
+   "target": "I'd like you to tell me what you need",
+   "updated_at": "2026-10-28T17:30:12.625393+00:00"
+  },
+  "S0170L04U13": {
+   "known": "それについてもっと教えてほしいです",
+   "target": "I'd like you to tell me a little more about that",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U14": {
+   "known": "あなたが言ったことを教えてほしいです",
+   "target": "I'd like you to tell me what you said",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L04U15": {
+   "known": "できるだけ早く教えてほしいです",
+   "target": "I'd like you to tell me as soon as you can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05C01": {
+   "known": "何が必要か",
+   "target": "what you need",
+   "updated_at": "2026-10-28T21:49:01.500806+00:00"
+  },
+  "S0170L05C02": {
+   "known": "教えてほしいです",
+   "target": "I'd like you to tell",
+   "updated_at": "2026-08-06T15:07:52.312304+00:00"
+  },
+  "S0170L05B01": {
+   "known": "何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need",
+   "updated_at": "2026-10-28T17:30:12.625393+00:00"
+  },
+  "S0170L05B02": {
+   "known": "何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need",
+   "updated_at": "2026-10-28T17:30:12.625393+00:00"
+  },
+  "S0170L05B03": {
+   "known": "今何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need now",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05B04": {
+   "known": "明日何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need tomorrow",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05B05": {
+   "known": "来週何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need next week",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05B06": {
+   "known": "この午後何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need this afternoon",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05B07": {
+   "known": "来月何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need next month",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U01": {
+   "known": "始める前に何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need before we start",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U02": {
+   "known": "手伝う前に何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need before I help",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U03": {
+   "known": "明日の朝何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need tomorrow morning",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U04": {
+   "known": "それを終える前に何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need before you finish",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U05": {
+   "known": "次に何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need next",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U06": {
+   "known": "今日の午後に何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need this afternoon",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U07": {
+   "known": "できるだけ早く何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need as soon as you can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U08": {
+   "known": "あなたが学ぶために何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need to learn",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U09": {
+   "known": "あなたの友達のために何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need for your friend",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U10": {
+   "known": "来月何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need next month",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U11": {
+   "known": "今日の朝何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need this morning",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U12": {
+   "known": "今夜何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need tonight",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U13": {
+   "known": "去る前に何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need before you leave",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U14": {
+   "known": "来週何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need next week",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  },
+  "S0170L05U15": {
+   "known": "今日何が必要か教えてほしいです",
+   "target": "I'd like you to tell me what you need today",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
+  }
+ }
+}

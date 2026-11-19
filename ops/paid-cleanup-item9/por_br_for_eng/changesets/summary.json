@@ -1,0 +1,105 @@
+{
+ "course": "por_br_for_eng",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {},
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0057L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0116L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0121L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0130L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0132L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0137L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0141L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0167L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0181L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0198L04",
+    "deletes": 3
+   },
+   {
+    "lego": "S0273L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0281L01",
+    "deletes": 1
+   }
+  ],
+  "drift": [
+   {
+    "row": "S0112L01U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0112L01U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0132L01U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0146L01B03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0151L01B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0155L02U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0409L02U02",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 0
+}

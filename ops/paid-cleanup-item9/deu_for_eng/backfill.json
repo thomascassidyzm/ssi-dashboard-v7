@@ -1,0 +1,1314 @@
+{
+ "course": "deu_for_eng",
+ "at": "2026-11-18T18:40:46.058Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0308L02": {
+   "lego": "a female friend | eine Freundin",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0308L02U06",
+     "role": "use",
+     "known": "I know a female friend who is sitting right over there",
+     "target": "ich kenne eine Freundin, die dort drüben sitzt",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0309L03": {
+   "lego": "seen | gesehen",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0309L03U05",
+     "role": "use",
+     "known": "I have seen that young man who sits right over there",
+     "target": "ich habe diesen jungen Mann gesehen, der dort drüben sitzt",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0314L01": {
+   "lego": "to lay | legen",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 25,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0314L01U01",
+     "role": "use",
+     "known": "he could lay something there",
+     "target": "er könnte etwas dort legen",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0314L01U03",
+     "role": "use",
+     "known": "do you want to lay this there?",
+     "target": "willst du das dort legen?",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0314L01U05",
+     "role": "use",
+     "known": "I think she wants to lay it there",
+     "target": "ich denke, dass sie es dort legen will",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0314L01U06",
+     "role": "use",
+     "known": "yesterday she couldn't lay it there",
+     "target": "gestern konnte sie es dort nicht legen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0366L01": {
+   "lego": "to grow | anbauen",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0366L01U04",
+     "role": "use",
+     "known": "I think she ought to grow something there",
+     "target": "ich denke, sie sollte dort etwas anbauen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0369L02": {
+   "lego": "horses | Pferde",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0369L02U03",
+     "role": "use",
+     "known": "do you think the horses were there?",
+     "target": "denkst du, dass die Pferde dort waren?",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0371L01": {
+   "lego": "wednesday | Mittwoch",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0371L01U02",
+     "role": "use",
+     "known": "I have heard that she was there on Wednesday",
+     "target": "ich habe gehört, dass sie am Mittwoch dort war",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0377L01": {
+   "lego": "last year | letztes Jahr",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0377L01U03",
+     "role": "use",
+     "known": "nobody told me that she was there last year",
+     "target": "niemand hat mir gesagt, dass sie letztes Jahr dort war",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0400L01": {
+   "lego": "later | später",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0400L01U03",
+     "role": "use",
+     "known": "I thought we had to be there later",
+     "target": "ich dachte, dass wir später dort sein müssen",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0400L01U05",
+     "role": "use",
+     "known": "I think it is important to be there later",
+     "target": "ich denke, dass es wichtig ist, später dort zu sein",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0428L01": {
+   "lego": "tuesday | Dienstag",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0428L01B03",
+     "role": "build",
+     "known": "they are there on Tuesday",
+     "target": "sie sind am Dienstag dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0428L01U03",
+     "role": "use",
+     "known": "she told me we had to be there on Tuesday",
+     "target": "sie hat mir gesagt, dass wir am Dienstag dort sein müssen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0454L04": {
+   "lego": "six | sechs",
+   "before": "ok",
+   "delete": 4,
+   "counted_before": {
+    "b": 4,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 27,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0454L04B03",
+     "role": "build",
+     "known": "they were there at about six",
+     "target": "sie waren gegen sechs dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0454L04U01",
+     "role": "use",
+     "known": "I think they were there at about six",
+     "target": "ich denke, dass sie gegen sechs dort waren",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0454L04U02",
+     "role": "use",
+     "known": "I thought they were there at about six",
+     "target": "ich dachte, dass sie gegen sechs dort waren",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0454L04U05",
+     "role": "use",
+     "known": "please could they be there at about six",
+     "target": "bitte könnten sie gegen sechs dort sein",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0454L05": {
+   "lego": "o clock | Uhr",
+   "before": "ok",
+   "delete": 4,
+   "counted_before": {
+    "b": 4,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 28,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0454L05B03",
+     "role": "build",
+     "known": "they were there at about six o clock",
+     "target": "sie waren gegen sechs Uhr dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0454L05U01",
+     "role": "use",
+     "known": "I think they were there at about six o clock",
+     "target": "ich denke, dass sie gegen sechs Uhr dort waren",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0454L05U02",
+     "role": "use",
+     "known": "I thought they were there at about six o clock",
+     "target": "ich dachte, dass sie gegen sechs Uhr dort waren",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0454L05U05",
+     "role": "use",
+     "known": "please could they be there at about six o clock",
+     "target": "bitte könnten sie gegen sechs Uhr dort sein",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0461L02": {
+   "lego": "a few | ein paar",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 6
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0461L02B03",
+     "role": "build",
+     "known": "a few there",
+     "target": "ein paar dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0490L01": {
+   "lego": "then | dann",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 20,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0490L01U03",
+     "role": "use",
+     "known": "then she will be there",
+     "target": "dann wird sie dort sein",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0493L01": {
+   "lego": "comes | kommt",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0493L01U01",
+     "role": "use",
+     "known": "it comes from there",
+     "target": "es kommt von dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0499L04": {
+   "lego": "the window | das Fenster",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 7
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0499L04B03",
+     "role": "build",
+     "known": "the window is there",
+     "target": "das Fenster ist dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0502L02": {
+   "lego": "to get lost | sich verlaufen",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0502L02U06",
+     "role": "use",
+     "known": "she got lost there too",
+     "target": "sie hat sich dort auch verlaufen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0511L02": {
+   "lego": "several hours | mehrere Stunden",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0511L02U03",
+     "role": "use",
+     "known": "she was there for several hours",
+     "target": "sie war dort mehrere Stunden",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0511L02U05",
+     "role": "use",
+     "known": "he was there for several hours",
+     "target": "er war dort mehrere Stunden",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0513L01": {
+   "lego": "it hurts | tut weh",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 14,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0513L01U06",
+     "role": "use",
+     "known": "it hurts there too",
+     "target": "dort tut es auch weh",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0582L01": {
+   "lego": "to grow up here | hier aufzuwachsen",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0582L01B02",
+     "role": "build",
+     "known": "it is upsetting to grow up there",
+     "target": "es ist beunruhigend, dort aufzuwachsen",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0582L01B03",
+     "role": "build",
+     "known": "what is it like to grow up there?",
+     "target": "wie ist es, dort aufzuwachsen?",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0582L01U03",
+     "role": "use",
+     "known": "it was upsetting to grow up there",
+     "target": "es war beunruhigend, dort aufzuwachsen",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0582L01U06",
+     "role": "use",
+     "known": "it was lovely to grow up there",
+     "target": "es war schön, dort aufzuwachsen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0584L01": {
+   "lego": "morning | morgen",
+   "before": "already under floor",
+   "delete": 6,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 2,
+   "author_use": 2,
+   "avg_target_chars": 25,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0584L01B02",
+     "role": "build",
+     "known": "she needs to be there every morning",
+     "target": "sie muss jeden Morgen dort sein",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0584L01B03",
+     "role": "build",
+     "known": "he was there every morning",
+     "target": "er war jeden Morgen dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0584L01U02",
+     "role": "use",
+     "known": "she is there every morning",
+     "target": "sie ist jeden Morgen dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0584L01U03",
+     "role": "use",
+     "known": "she said she is there every morning",
+     "target": "sie hat gesagt, sie ist jeden Morgen dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0584L01U06",
+     "role": "use",
+     "known": "she was there every morning",
+     "target": "sie war jeden Morgen dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0584L01U07",
+     "role": "use",
+     "known": "she wants to be there every morning",
+     "target": "sie will jeden Morgen dort sein",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0587L02": {
+   "lego": "used to insist | früher darauf bestanden",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0587L02U06",
+     "role": "use",
+     "known": "I used to insist that she was there",
+     "target": "ich habe früher darauf bestanden, dass sie dort war",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0587L03": {
+   "lego": "supper | Abendessen",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0587L03U04",
+     "role": "use",
+     "known": "she wants to be there for supper",
+     "target": "sie will zum Abendessen dort sein",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0587L04": {
+   "lego": "that we had eggs for supper | dass wir Eier zum Abendessen hatten",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 0,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0587L04B02",
+     "role": "build",
+     "known": "we had that there",
+     "target": "wir hatten das dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0587L04U06",
+     "role": "use",
+     "known": "we had more there",
+     "target": "wir hatten mehr dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0588L03": {
+   "lego": "to grow up | aufwachsen",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0588L03U04",
+     "role": "use",
+     "known": "she wanted to grow up there",
+     "target": "sie wollte dort aufwachsen",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0588L03U05",
+     "role": "use",
+     "known": "she would like to grow up there",
+     "target": "sie möchte dort aufwachsen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0589L03": {
+   "lego": "just now | gerade",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 22,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0589L03U03",
+     "role": "use",
+     "known": "she was just there",
+     "target": "sie war gerade dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0594L04": {
+   "lego": "sister | Schwester",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0594L04U07",
+     "role": "use",
+     "known": "my sister was there",
+     "target": "meine Schwester war dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0597L02": {
+   "lego": "hundred | hundert",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0597L02U05",
+     "role": "use",
+     "known": "she has been there a hundred times",
+     "target": "sie ist hundert Mal dort gewesen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0598L01": {
+   "lego": "thousand | tausend",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0598L01U05",
+     "role": "use",
+     "known": "she has been there a thousand times",
+     "target": "sie ist tausend Mal dort gewesen",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0603L02": {
+   "lego": "at the time | zu der Zeit",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0603L02B03",
+     "role": "build",
+     "known": "she was also there at the time",
+     "target": "sie war auch zu der Zeit dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0603L02U01",
+     "role": "use",
+     "known": "she was there at the time",
+     "target": "sie war zu der Zeit dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0603L02U02",
+     "role": "use",
+     "known": "she said she was there at the time",
+     "target": "sie hat gesagt, sie war zu der Zeit dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0603L02U07",
+     "role": "use",
+     "known": "she was also there at the time",
+     "target": "sie war zu der Zeit auch dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0604L03": {
+   "lego": "with her | bei ihr",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0604L03U06",
+     "role": "use",
+     "known": "she was also there with her",
+     "target": "sie war auch bei ihr dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0606L01": {
+   "lego": "back then | damals",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0606L01B02",
+     "role": "build",
+     "known": "she was there back then",
+     "target": "sie war damals dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0606L01U02",
+     "role": "use",
+     "known": "she said she was there back then",
+     "target": "sie hat gesagt, sie war damals dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0606L01U05",
+     "role": "use",
+     "known": "she was also there back then",
+     "target": "sie war damals auch dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0612L02": {
+   "lego": "bought | gekauft",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0612L02U08",
+     "role": "use",
+     "known": "we probably would have bought a house there",
+     "target": "wir hätten wahrscheinlich dort ein Haus gekauft",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0614L03": {
+   "lego": "your family | deine Familie",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 1,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0614L03U02",
+     "role": "use",
+     "known": "your family was there",
+     "target": "deine Familie war dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0614L03U07",
+     "role": "use",
+     "known": "your family was also there",
+     "target": "deine Familie war auch dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0614L04": {
+   "lego": "lives | lebt",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0614L04B03",
+     "role": "build",
+     "known": "your family lives there",
+     "target": "deine Familie lebt dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0614L04U02",
+     "role": "use",
+     "known": "she lives there",
+     "target": "sie lebt dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0614L04U03",
+     "role": "use",
+     "known": "she said she lives there",
+     "target": "sie hat gesagt, sie lebt dort",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0614L04U04",
+     "role": "use",
+     "known": "she also lives there",
+     "target": "sie lebt auch dort",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0619L01": {
+   "lego": "since | seit",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 7
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0619L01B02",
+     "role": "build",
+     "known": "since she was there",
+     "target": "seit sie dort war",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0619L01U03",
+     "role": "use",
+     "known": "since we have been there",
+     "target": "seit wir dort sind",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  },
+  "S0636L01": {
+   "lego": "think | denke",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0636L01B03",
+     "role": "build",
+     "known": "I think that she was there too",
+     "target": "ich denke, dass sie auch dort war",
+     "untaught": [
+      "dort"
+     ]
+    },
+    {
+     "row": "S0636L01U06",
+     "role": "use",
+     "known": "I think that she was there",
+     "target": "ich denke, dass sie dort war",
+     "untaught": [
+      "dort"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

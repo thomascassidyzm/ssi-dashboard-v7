@@ -1,0 +1,7065 @@
+[
+ {
+  "seed_number": 2,
+  "phrases": {
+   "2:1": [
+    {
+     "known_text": "நான் கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உங்களுடன் கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn with you",
+     "phrase_role": "use"
+    }
+   ],
+   "2:2": [
+    {
+     "known_text": "முயற்சி",
+     "target_text": "try",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கிறேன்",
+     "target_text": "I'm",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் கற்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பேச முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் ஆங்கிலம் கற்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலம் பேச முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உங்களுடன் பேச முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to speak with you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 6,
+  "phrases": {
+   "6:1": [
+    {
+     "known_text": "ஒரு",
+     "target_text": "a",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வார்த்தை",
+     "target_text": "word",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஒரு வார்த்தை",
+     "target_text": "a word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு வார்த்தை சொல்ல விரும்புகிறேன்",
+     "target_text": "I want to say a word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு வார்த்தை கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn a word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு வார்த்தை ஆங்கிலத்தில் பேச முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to speak a word in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் ஒரு வார்த்தை ஆங்கிலத்தில் சொல்ல விரும்புகிறேன்",
+     "target_text": "I want to say a word in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஒரு வார்த்தை கற்கப் போகிறேன்",
+     "target_text": "I'm going to learn a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் வேறு யாரோவடன் ஒரு வார்த்தை சொல்ல விரும்புகிறேன்",
+     "target_text": "I want to say a word with someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது ஒரு வார்த்தை பயிற்சி செய்யப் போகிறேன்",
+     "target_text": "I'm going to practise a word now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஒரு வார்த்தை கற்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to learn a word",
+     "phrase_role": "use"
+    }
+   ],
+   "6:2": [
+    {
+     "known_text": "நினைவு",
+     "target_text": "memory",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நினைவில் கொள்ள",
+     "target_text": "remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு வார்த்தை நினைவில் கொள்ள முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to remember a word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நினைவில் கொள்ள விரும்புகிறேன்",
+     "target_text": "I want to remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏதாவது நினைவில் கொள்ளப் போகிறேன்",
+     "target_text": "I'm going to remember something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் ஒரு வார்த்தை நினைவில் கொள்ள விரும்புகிறேன்",
+     "target_text": "I want to remember a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஒரு வார்த்தை நினைவில் கொள்ளப் போகிறேன்",
+     "target_text": "I'm going to remember a word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலத்தில் ஒரு வார்த்தை நினைவில் கொள்ள முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to remember a word in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் வேறு யாரோவடன் ஒரு வார்த்தை நினைவில் கொள்ள விரும்புகிறேன்",
+     "target_text": "I want to remember a word with someone else",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 11,
+  "phrases": {
+   "11:1": [
+    {
+     "known_text": "முடிக்கப் போகிறேன்",
+     "target_text": "I'm going to finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆங்கிலம் கற்பதை முடிக்க விரும்புகிறேன்",
+     "target_text": "I want to finish English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முழு வாக்கியம் முடிக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to finish the whole sentence",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்று முடிக்கப் போகிறேன்",
+     "target_text": "I'm going to finish today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முழு வாக்கியம் முடிக்க விரும்புகிறேன்",
+     "target_text": "I want to finish the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முடிக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலம் பயிற்சி முடிக்கப் போகிறேன்",
+     "target_text": "I'm going to finish English practise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது முடிக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to finish now",
+     "phrase_role": "use"
+    }
+   ],
+   "11:2": [
+    {
+     "known_text": "முடித்த பிறகு பேசுகிறேன்",
+     "target_text": "I speak after you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முடித்த பிறகு கற்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to learn after you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முடித்த பிறகு விளக்கப் போகிறேன்",
+     "target_text": "I'm going to explain after you finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் முடித்த பிறகு ஆங்கிலம் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak English after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முடித்த பிறகு ஏதாவது சொல்ல விரும்புகிறேன்",
+     "target_text": "I want to say something after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முடித்த பிறகு கொஞ்சம் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak a little after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முடித்த பிறகு ஒரு வார்த்தை நினைவில் கொள்ள விரும்புகிறேன்",
+     "target_text": "I want to remember a word after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முடித்த பிறகு இன்று விளக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to explain after you finish today",
+     "phrase_role": "use"
+    }
+   ],
+   "11:3": [
+    {
+     "known_text": "முடி",
+     "target_text": "able",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முடியும்",
+     "target_text": "be able to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்னால் ஆங்கிலம் பேச முடியும்",
+     "target_text": "I want to be able to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அடிக்கடி பயிற்சி செய்ய முடியும்",
+     "target_text": "I'm going to be able to practise as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முழு வாக்கியம் நினைவில் வைக்க முடியும் என்று தெரியவில்லை",
+     "target_text": "I'm not sure if I'm going to be able to remember the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னால் என்ன சொல்கிறேன் என்று விளக்க முடியும்",
+     "target_text": "I'm trying to be able to explain what I mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று பேச முடியும்",
+     "target_text": "be able to speak today",
+     "phrase_role": "build"
+    }
+   ],
+   "11:4": [
+    {
+     "known_text": "விரும்பு",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரும்புகிறேன்",
+     "target_text": "I'd like to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேச விரும்புகிறேன்",
+     "target_text": "I'd like to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்க விரும்புகிறேன்",
+     "target_text": "I'd like to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேச முடியும் என்று விரும்புகிறேன்",
+     "target_text": "I'd like to be able to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உங்களுடன் பேச விரும்புகிறேன்",
+     "target_text": "I'd like to speak with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலம் கற்க விரும்புகிறேன்",
+     "target_text": "I'd like to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முடித்த பிறகு பேச விரும்புகிறேன்",
+     "target_text": "I'd like to speak after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கொஞ்சம் விளக்க விரும்புகிறேன்",
+     "target_text": "I'd like to explain a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஏதாவது நினைவில் கொள்ள விரும்புகிறேன்",
+     "target_text": "I'd like to remember something",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 12,
+  "phrases": {
+   "12:1": [
+    {
+     "known_text": "நாளை பேச விரும்புகிறேன்",
+     "target_text": "I'd like to speak tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை கற்கப் போகிறேன்",
+     "target_text": "I'm going to learn tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை முடிக்க விரும்புகிறேன்",
+     "target_text": "I'd like to finish tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நாளை ஆங்கிலம் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak English tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நாளை கொஞ்சம் கற்க விரும்புகிறேன்",
+     "target_text": "I'd like to learn a little tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நாளை முழு வாக்கியம் முடிக்கப் போகிறேன்",
+     "target_text": "I'm going to finish the whole sentence tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நாளை ஆங்கிலத்தில் ஏதாவது சொல்லப் போகிறேன்",
+     "target_text": "I'm going to say something in English tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நாளை பயிற்சி செய்ய விரும்புகிறேன்",
+     "target_text": "I'd like to practise tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "12:2": [
+    {
+     "known_text": "யூகிக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to guess now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை யூகிக்க விரும்புகிறேன்",
+     "target_text": "I'd like to guess tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏதாவது யூகிக்கப் போகிறேன்",
+     "target_text": "I'm going to guess something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நாளை யூகிக்கப் போகிறேன்",
+     "target_text": "I'm going to guess tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் யூகிக்க முயற்சிக்கிறேன் இன்று",
+     "target_text": "I'm trying to guess today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஏதாவது யூகிக்க விரும்புகிறேன்",
+     "target_text": "I'd like to guess something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலத்தில் யூகிக்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to guess in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் பிறகு யூகிக்கப் போகிறேன்",
+     "target_text": "I'm going to guess after",
+     "phrase_role": "use"
+    }
+   ],
+   "12:3": [
+    {
+     "known_text": "என்ன",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நடக்கும்",
+     "target_text": "happen",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என்ன நடக்கும் என்று",
+     "target_text": "what's going to happen",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்ன நடக்கும் என்று விளக்கப் போகிறேன்",
+     "target_text": "I'm going to explain what's going to happen now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்ன நடக்கும் என்று சொல்ல முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to say what's going to happen now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை என்ன நடக்கும் என்று யூகிக்க விரும்புவதில்லை",
+     "target_text": "what's going to happen tomorrow?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் என்ன நடக்கும் என்று நினைவில் கொள்ள முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to remember what's going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நாளை என்ன நடக்கும் என்று விளக்கப் போகிறேன்",
+     "target_text": "I'm going to explain what's going to happen tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் என்ன நடக்கும் என்று யூகிக்க விரும்புகிறேன்",
+     "target_text": "I'd like to guess what's going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் என்ன நடக்கும் என்று விளக்க விரும்புகிறேன்",
+     "target_text": "I'd like to explain what's going to happen",
+     "phrase_role": "use"
+    }
+   ],
+   "12:4": [
+    {
+     "known_text": "விரும்பு",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இல்லை",
+     "target_text": "not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரும்புவதில்லை",
+     "target_text": "I wouldn't like to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "யூகிக்க விரும்புவதில்லை",
+     "target_text": "I wouldn't like to guess something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேச விரும்புவதில்லை",
+     "target_text": "I wouldn't like to speak now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாளை முடிக்க விரும்புவதில்லை",
+     "target_text": "I wouldn't like to finish tomorrow now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நாளை பேச விரும்புவதில்லை",
+     "target_text": "I wouldn't like to speak tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் என்ன நடக்கும் என்று யூகிக்க விரும்புவதில்லை",
+     "target_text": "I wouldn't like to guess what's going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஏதாவது விளக்க விரும்புவதில்லை",
+     "target_text": "I wouldn't like to explain something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று முடிக்க விரும்புவதில்லை",
+     "target_text": "I wouldn't like to finish today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலம் யூகிக்க விரும்புவதில்லை",
+     "target_text": "I wouldn't like to guess in English",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 22,
+  "phrases": {
+   "22:1": [
+    {
+     "known_text": "ஏனென்றால் கற்க",
+     "target_text": "because learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனென்றால் பேச",
+     "target_text": "because speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனென்றால் சந்திக்க",
+     "target_text": "because meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் கற்க விரும்புகிறேன்",
+     "target_text": "because I want to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் ஆங்கிலம் பேச விரும்புகிறேன்",
+     "target_text": "because I want to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் நினைவில் கொள்ள முயற்சிக்கிறேன்",
+     "target_text": "because I'm trying to remember",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் ஆங்கிலம் கற்க முயற்சிக்கிறேன்",
+     "target_text": "because I'm trying to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் சந்திக்க போகிறேன்",
+     "target_text": "because I'm going to meet",
+     "phrase_role": "use"
+    }
+   ],
+   "22:2": [
+    {
+     "known_text": "மக்கள் பேசுகிறார்கள்",
+     "target_text": "people speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மக்கள் கற்கிறார்கள்",
+     "target_text": "people learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மக்கள் ஆங்கிலம் பயிற்சி செய்கிறார்கள்",
+     "target_text": "people practise English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மக்கள் ஆங்கிலம் பேசுகிறார்கள்",
+     "target_text": "people speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் மக்கள் ஆங்கிலம் பேசுகிறார்கள்",
+     "target_text": "because people speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மக்களை சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று மக்களை சந்திக்க போகிறேன்",
+     "target_text": "I'm going to meet people today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது மக்களை சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet people now",
+     "phrase_role": "use"
+    }
+   ],
+   "22:3": [
+    {
+     "known_text": "மக்கள் யார் பேசுகிறார்கள்",
+     "target_text": "people who speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "யார் ஆங்கிலம் பேசுகிறார்கள்",
+     "target_text": "who speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மக்கள் யார் நினைவில் வைத்திருக்கிறார்கள்",
+     "target_text": "people who remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மக்கள் யார் ஆங்கிலம் பேசுகிறார்கள்",
+     "target_text": "people who speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மக்கள் யார் ஆங்கிலம் கற்கிறார்கள்",
+     "target_text": "people who learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் மக்கள் யார் ஆங்கிலம் பேசுகிறார்கள்",
+     "target_text": "because people who speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மக்களை யார் ஆங்கிலம் பேசுகிறார்கள் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet people who speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மக்கள் யார் ஆங்கிலம் பயிற்சி செய்கிறார்கள்",
+     "target_text": "people who practise English",
+     "phrase_role": "use"
+    }
+   ],
+   "22:4": [
+    {
+     "known_text": "சந்திக்க",
+     "target_text": "meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரும்புகிறேன்",
+     "target_text": "I want to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனென்றால் யாரோவடன் சந்திக்க விரும்புகிறேன்",
+     "target_text": "because I want to meet someone else",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மக்களை யாரோவடன் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet people now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஏனென்றால் மக்களை சந்திக்க விரும்புகிறேன்",
+     "target_text": "because I want to meet people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மக்களை யார் ஆங்கிலம் பேசுகிறார்கள் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet people who speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "யாரோவடன் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet someone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இப்போது யாரோவடன் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet someone else now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 25,
+  "phrases": {
+   "25:1": [
+    {
+     "known_text": "உதவ இப்போது",
+     "target_text": "help now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உதவ நல்லா",
+     "target_text": "help well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உதவ என்னை",
+     "target_text": "help me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உங்களுக்கு உதவ விரும்புகிறேன்",
+     "target_text": "I want to help you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் உதவ விரும்புகிறேன்",
+     "target_text": "because I want to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உங்களுக்கு உதவ முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to help you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உங்களுக்கு உதவ போகிறேன்",
+     "target_text": "I'm going to help you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மக்களுக்கு உதவ விரும்புகிறேன்",
+     "target_text": "I want to help people",
+     "phrase_role": "use"
+    }
+   ],
+   "25:2": [
+    {
+     "known_text": "முன் கற்க",
+     "target_text": "before learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முன் சந்திக்க",
+     "target_text": "before meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முன் பேச",
+     "target_text": "before speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பதற்கு முன்",
+     "target_text": "before I learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சந்திப்பதற்கு முன்",
+     "target_text": "before I meet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் பேசுவதற்கு முன்",
+     "target_text": "before I speak",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "முன் நான் ஏதாவது சொல்ல விரும்புகிறேன்",
+     "target_text": "before I want to say something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "முன் நான் உதவ விரும்புகிறேன்",
+     "target_text": "before I want to help",
+     "phrase_role": "use"
+    }
+   ],
+   "25:3": [
+    {
+     "known_text": "நீங்கள்",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "போகிறீர்களா",
+     "target_text": "going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்கள் போகிறீர்களா?",
+     "target_text": "are you going to?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் கற்கப் போகிறீர்களா",
+     "target_text": "are you going to learn?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் சந்திக்கப் போகிறீர்களா?",
+     "target_text": "are you going to meet?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் என்னை உதவப் போகிறீர்களா?",
+     "target_text": "are you going to help me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "முன் நீங்கள் உதவப் போகிறீர்களா",
+     "target_text": "are you going to help before?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் விரைவில் கற்கப் போகிறீர்களா?",
+     "target_text": "are you going to learn soon?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் ஆங்கிலம் பேசப் போகிறீர்களா",
+     "target_text": "are you going to speak English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் மக்களை சந்திக்கப் போகிறீர்களா",
+     "target_text": "are you going to meet people?",
+     "phrase_role": "use"
+    }
+   ],
+   "25:4": [
+    {
+     "known_text": "போக",
+     "target_text": "go",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வேண்டும்",
+     "target_text": "have to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "போக வேண்டும்",
+     "target_text": "have to go",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முன் போக வேண்டும்",
+     "target_text": "have to go before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இப்போது போக வேண்டும்",
+     "target_text": "I have to go now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "முன் நான் போக வேண்டும்",
+     "target_text": "before I have to go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் என்னை உதவப் போகிறீர்களா முன் நான் போக வேண்டும்?",
+     "target_text": "are you going to help me before I have to go?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஏனென்றால் நான் போக வேண்டும்",
+     "target_text": "because I have to go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் விரைவில் போக வேண்டும்",
+     "target_text": "I have to go soon",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 33,
+  "phrases": {
+   "33:1": [
+    {
+     "known_text": "எவ்வளவு",
+     "target_text": "how",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "காலம்",
+     "target_text": "long",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "எவ்வளவு காலம்?",
+     "target_text": "how long?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "எவ்வளவு காலம் கற்க",
+     "target_text": "how long learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "எவ்வளவு காலம் பேச",
+     "target_text": "how long speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் எவ்வளவு காலம் கற்கிறீர்கள்?",
+     "target_text": "how long you learn?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் எவ்வளவு காலம் ஆங்கிலம் கற்கிறீர்கள்?",
+     "target_text": "how long you learn English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் எவ்வளவு காலம் ஆங்கிலம் பேசுகிறீர்கள்?",
+     "target_text": "how long you speak English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் எவ்வளவு காலம் பயிற்சி செய்கிறீர்கள்?",
+     "target_text": "how long you practise?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எவ்வளவு காலம் முன்பு?",
+     "target_text": "how long before?",
+     "phrase_role": "use"
+    }
+   ],
+   "33:2": [
+    {
+     "known_text": "கற்று",
+     "target_text": "been learning",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வருகிறீர்கள்",
+     "target_text": "have you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கற்றுவருகிறீர்கள்?",
+     "target_text": "have you been learning?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "எவ்வளவு காலமாக கற்றுவருகிறீர்கள்?",
+     "target_text": "how long have you been learning?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் ஆங்கிலம் கற்றுவருகிறீர்கள்?",
+     "target_text": "have you been learning English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் எவ்வளவு காலமாக ஆங்கிலம் கற்றுவருகிறீர்கள்?",
+     "target_text": "how long have you been learning English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் இன்று ஆங்கிலம் கற்றுவருகிறீர்கள்?",
+     "target_text": "have you been learning English today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் இன்றிரவு ஆங்கிலம் கற்றுவருகிறீர்கள்?",
+     "target_text": "have you been learning English tonight?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் என்னுடன் ஆங்கிலம் கற்றுவருகிறீர்கள்?",
+     "target_text": "have you been learning English with me?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 39,
+  "phrases": {
+   "39:1": [
+    {
+     "known_text": "இந்த காலையில் கற்க",
+     "target_text": "learn this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இந்த காலையில் பேச",
+     "target_text": "speak this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இந்த காலையில் பயிற்சி",
+     "target_text": "practise this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இந்த காலையில் கவனமாக கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn carefully this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இந்த காலையில் ஆங்கிலம் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak English this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இந்த காலையில் பயிற்சி செய்யப் போகிறேன்",
+     "target_text": "I'm going to practise this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த காலையில் கற்றுவருகிறேன்",
+     "target_text": "I've been learning this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இந்த காலையில் உங்களுடன் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak with you this morning",
+     "phrase_role": "use"
+    }
+   ],
+   "39:2": [
+    {
+     "known_text": "சோர்வாக கொஞ்சம்",
+     "target_text": "a little tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சோர்வாக இந்த காலையில்",
+     "target_text": "tired this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கொஞ்சம் சோர்வாக கற்க",
+     "target_text": "learn a little tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் கொஞ்சம் சோர்வாக இருக்கிறேன்",
+     "target_text": "I'm a little tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இந்த காலையில் சோர்வாக இருக்கிறேன்",
+     "target_text": "I'm tired this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது சோர்வாக இருக்கிறேன்",
+     "target_text": "I'm tired now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சோர்வாக இருக்கும்போது கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn when I'm tired",
+     "phrase_role": "use"
+    }
+   ],
+   "39:3": [
+    {
+     "known_text": "ஆனால்",
+     "target_text": "but",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நான்",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கொஞ்சம்",
+     "target_text": "a little",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சோர்வாக",
+     "target_text": "tired",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன்",
+     "target_text": "but I'm a little tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் இன்றிரவு",
+     "target_text": "but I'm a little tired tonight",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் இன்று",
+     "target_text": "but I'm a little tired today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் இந்த காலையில்",
+     "target_text": "but I'm a little tired this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் கடந்த மாதம்",
+     "target_text": "but I'm a little tired last month",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கற்க விரும்புகிறேன் ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன்",
+     "target_text": "I want to learn but I'm a little tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் இந்த மாலை",
+     "target_text": "but I'm a little tired this evening",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் இப்போது",
+     "target_text": "but I'm a little tired now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 51,
+  "phrases": {
+   "51:1": [
+    {
+     "known_text": "நண்பர்கள் உடன்",
+     "target_text": "with friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நண்பர்கள் சந்திக்க",
+     "target_text": "meet friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நண்பர்கள் பேச",
+     "target_text": "speak friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நண்பர்களுடன் ஆங்கிலம் கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn English with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நண்பர்களுடன் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நண்பர்களுடன் பயிற்சி செய்யப் போகிறேன்",
+     "target_text": "I'm going to practise with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நண்பர்களுடன் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நண்பர்களுடன் பேசுவது நல்லது",
+     "target_text": "speaking with friends is good",
+     "phrase_role": "use"
+    }
+   ],
+   "51:2": [
+    {
+     "known_text": "என்னுடைய நண்பர்கள்",
+     "target_text": "my friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்னுடைய பெயர்",
+     "target_text": "my name",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்னுடைய விஷயம்",
+     "target_text": "my thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்னுடைய நண்பர்களுடன் பேசுவேன்",
+     "target_text": "I speak with my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னுடைய பெயர் தெரியுமா?",
+     "target_text": "do you know my name?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னுடைய நண்பர்களுடன் ஆங்கிலம் கற்கப் போகிறேன்",
+     "target_text": "I'm going to learn English with my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னுடைய விஷயம் பற்றி யோசிக்கிறேன்",
+     "target_text": "I think about my thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னுடைய நண்பர்களுடன் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet my friends",
+     "phrase_role": "use"
+    }
+   ],
+   "51:3": [
+    {
+     "known_text": "சுவாரஸ்யமான விஷயம்",
+     "target_text": "interesting thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சுவாரஸ்யமான கற்க",
+     "target_text": "learn interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சுவாரஸ்யமான பேச",
+     "target_text": "speak interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆங்கிலம் சுவாரஸ்யமான",
+     "target_text": "English is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்றால் அது சுவாரஸ்யமான",
+     "target_text": "if it's interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சுவாரஸ்யமான என்று நினைக்கிறேன்",
+     "target_text": "I think that it's interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆங்கிலம் கற்பது சுவாரஸ்யமான",
+     "target_text": "it's interesting to learn English",
+     "phrase_role": "use"
+    }
+   ],
+   "51:4": [
+    {
+     "known_text": "நான் கற்பதை ரசிக்கிறேன்",
+     "target_text": "I enjoy learning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பேசுவதை ரசிக்கிறேன்",
+     "target_text": "I enjoy speaking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பேசிக்கொண்டிருப்பதை ரசிக்கிறேன்",
+     "target_text": "I enjoy talking",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் என்னுடைய நண்பர்களுடன் பேசுவதை ரசிக்கிறேன்",
+     "target_text": "I enjoy speaking with my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சுவாரஸ்யமான மக்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்",
+     "target_text": "I enjoy speaking English with interesting people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலம் கற்பதை ரசிக்கிறேன்",
+     "target_text": "I enjoy learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உங்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்",
+     "target_text": "I enjoy speaking English with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் என்னுடைய நண்பர்களுடன் கற்பதை ரசிக்கிறேன்",
+     "target_text": "I enjoy learning with my friends",
+     "phrase_role": "use"
+    }
+   ],
+   "51:5": [
+    {
+     "known_text": "ரசிக்கிறேன்",
+     "target_text": "enjoy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சுவாரஸ்யமான",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விஷயம்",
+     "target_text": "thing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+     "target_text": "enjoy doing interesting things",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+     "target_text": "enjoy doing interesting things now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்றிரவு சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+     "target_text": "enjoy doing interesting things tonight",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் என்னுடைய நண்பர்களுடன் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+     "target_text": "I enjoy doing interesting things with my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஆங்கிலத்தில் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+     "target_text": "I enjoy doing interesting things in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இந்த காலையில் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+     "target_text": "I enjoy doing interesting things this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் என்னுடைய நண்பர்களுடன் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன் இன்றிரவு",
+     "target_text": "I enjoy doing interesting things with my friends tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன் கடந்த மாதம்",
+     "target_text": "I enjoy doing interesting things last month",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 60,
+  "phrases": {
+   "60:1": [
+    {
+     "known_text": "இன்னும் கற்க",
+     "target_text": "learn yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்னும் பேச",
+     "target_text": "speak yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்னும் தெரிய",
+     "target_text": "know yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்னும் மேம்படுத்த விரும்புகிறேன்",
+     "target_text": "I want to improve yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்னும் நன்றாக தூங்கவில்லை",
+     "target_text": "I didn't sleep very well yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்னும் போதும் வார்த்தைகள் தெரிய விரும்புகிறேன்",
+     "target_text": "I want to know enough words yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதை எப்படி சொல்வது என்று இன்னும் நினைவில் வைக்க முடியவில்லை",
+     "target_text": "I can't remember how to say it yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்னும் என்னுடைய நண்பரை சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet my friend yet",
+     "phrase_role": "use"
+    }
+   ],
+   "60:2": [
+    {
+     "known_text": "வேறு வார்த்தைகள்",
+     "target_text": "different words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "வேறு விஷயம்",
+     "target_text": "different thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "வேறு நண்பர்",
+     "target_text": "different friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் வேறு வார்த்தைகள் கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn different words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் வேறு விஷயம் செய்ய விரும்புகிறேன்",
+     "target_text": "I want to do a different thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது வேறு",
+     "target_text": "it's different",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் வேறு விஷயம் பற்றி யோசிக்கிறேன்",
+     "target_text": "I think about a different thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் வேறு நண்பரை சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet a different friend",
+     "phrase_role": "use"
+    }
+   ],
+   "60:3": [
+    {
+     "known_text": "என்னால்",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "தெரியாது",
+     "target_text": "don't know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என்னால் தெரியாது",
+     "target_text": "I don't know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "வார்த்தைகள் என்னால் தெரியாது",
+     "target_text": "I don't know words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்னும் என்னால் தெரியாது",
+     "target_text": "I don't know yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "எனக்கு போதுமான வேறு வார்த்தைகளை எப்படி சொல்வது என்று தெரியாது",
+     "target_text": "I don't know how to say enough different words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு இன்னும் போதுமான வேறு வார்த்தைகளை எப்படி சொல்வது என்று தெரியாது",
+     "target_text": "I don't know how to say enough different words yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு இந்த விஷயம் தெரியாது",
+     "target_text": "I don't know this thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு இன்னும் எப்படி செய்வது என்று தெரியாது",
+     "target_text": "I don't know how to do yet",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 64,
+  "phrases": {
+   "64:1": [
+    {
+     "known_text": "கற்பது நல்லது",
+     "target_text": "learning is good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது மகிழ்ச்சி",
+     "target_text": "learning is good again slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது மீண்டும் நல்லது",
+     "target_text": "learning is good again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது கொஞ்சம் மெதுவாக",
+     "target_text": "learning slowly is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது சுவாரஸ்யமான",
+     "target_text": "learning is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆங்கிலம் கற்பது நல்லது",
+     "target_text": "learning English is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னுடன் ஆங்கிலம் கற்பது சுவாரஸ்யமான",
+     "target_text": "learning English with me is interesting",
+     "phrase_role": "use"
+    }
+   ],
+   "64:2": [
+    {
+     "known_text": "அது எளிதானது",
+     "target_text": "it's easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது எளிதானது",
+     "target_text": "learning is easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேசுவது எளிதானது",
+     "target_text": "speaking is easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது எளிதானது மீண்டும்",
+     "target_text": "learning is easy again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "பேசுவது எளிதானது கொஞ்சம்",
+     "target_text": "speaking is easy a little more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது எளிதானது மெதுவாக",
+     "target_text": "learning is easy slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவுவது எளிதானது",
+     "target_text": "helping you is easy again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது எளிதானது மீண்டும் மெதுவாக",
+     "target_text": "learning is easy again slowly",
+     "phrase_role": "use"
+    }
+   ],
+   "64:3": [
+    {
+     "known_text": "அது வேடிக்கையானது",
+     "target_text": "it is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது வேடிக்கையானது",
+     "target_text": "learning is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேசுவது வேடிக்கையானது",
+     "target_text": "speaking is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது வேடிக்கையானது மீண்டும்",
+     "target_text": "learning is fun again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது வேடிக்கையானது எளிதானது",
+     "target_text": "learning is fun and easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது வேடிக்கையானது கொஞ்சம்",
+     "target_text": "it is fun a little more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவுவது வேடிக்கையானது",
+     "target_text": "helping is fun again slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது வேடிக்கையானது மெதுவாக",
+     "target_text": "learning is fun again slowly",
+     "phrase_role": "use"
+    }
+   ],
+   "64:4": [
+    {
+     "known_text": "எளிது",
+     "target_text": "easy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "எளிதல்ல",
+     "target_text": "isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது எளிதல்ல",
+     "target_text": "learning isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேசுவது எளிதல்ல",
+     "target_text": "speaking isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது எளிதல்ல",
+     "target_text": "it isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது எளிதல்ல மீண்டும்",
+     "target_text": "learning isn't easy again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்பது எளிதல்ல ஆனால் வேடிக்கையானது",
+     "target_text": "learning isn't easy but it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "பேசுவது எளிதல்ல கொஞ்சம்",
+     "target_text": "speaking isn't easy a little more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது எளிதல்ல ஆனால் வேடிக்கையானது",
+     "target_text": "it isn't easy but it's fun again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவுவது எளிதல்ல மெதுவாக",
+     "target_text": "helping isn't easy slowly again",
+     "phrase_role": "use"
+    }
+   ],
+   "64:5": [
+    {
+     "known_text": "வேடிக்கை",
+     "target_text": "fun",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஆனால் அது வேடிக்கை",
+     "target_text": "but it is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "learning isn't easy but it is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேசுவது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "speaking isn't easy but it is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "it isn't easy but it is fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்பது எளிதல்ல ஆனால் அது வேடிக்கை மீண்டும்",
+     "target_text": "learning isn't easy but it is fun again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவுவது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "helping isn't easy but it is fun again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் அது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "I think it isn't easy but it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மீண்டும் கற்பது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "learning again isn't easy but it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கொஞ்சம் மெதுவாக கற்பது எளிதல்ல ஆனால் அது வேடிக்கை",
+     "target_text": "learning a little more slowly isn't easy but it is fun",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 78,
+  "phrases": {
+   "78:1": [
+    {
+     "known_text": "நான் சொன்னது",
+     "target_text": "what I said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர் சொன்னது",
+     "target_text": "what he said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் சொன்னது",
+     "target_text": "what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சொன்னது மீண்டும்",
+     "target_text": "what I said again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் சொன்னது மெதுவாக",
+     "target_text": "what he said slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சொன்னது கொஞ்சம்",
+     "target_text": "what I said a little more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் சொன்னது ஆச்சரியம்",
+     "target_text": "what he said surprised me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் சொன்னது விரைவாக",
+     "target_text": "what you said quickly",
+     "phrase_role": "use"
+    }
+   ],
+   "78:2": [
+    {
+     "known_text": "புரிந்துகொள்ள",
+     "target_text": "understand",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்கள்",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சொன்னது",
+     "target_text": "said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது",
+     "target_text": "I don't understand what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது",
+     "target_text": "I don't understand what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது மீண்டும்",
+     "target_text": "I don't understand what you said again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது மெதுவாக",
+     "target_text": "I don't understand what you said slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது மீண்டும் கொஞ்சம்",
+     "target_text": "I don't understand what you said a little more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது விரைவாக",
+     "target_text": "I don't understand what you said quickly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது ஆச்சரியம்",
+     "target_text": "I'm surprised I don't understand what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது ஏற்கனவே",
+     "target_text": "I don't understand what you said already",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 86,
+  "phrases": {
+   "86:1": [
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக",
+     "target_text": "unfortunately",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக அது",
+     "target_text": "unfortunately that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக இது",
+     "target_text": "unfortunately this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக, நான் வர முடியாது",
+     "target_text": "unfortunately, I'm not going to come",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக, அது நல்லதல்ல",
+     "target_text": "unfortunately, that is not good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக, நான் உறுதியாக இல்லை",
+     "target_text": "unfortunately, I'm not sure",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக, அது கடினம்",
+     "target_text": "unfortunately, that is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக, நான் அதனோடு உடன்படவில்லை",
+     "target_text": "unfortunately, I don't agree with that",
+     "phrase_role": "use"
+    }
+   ],
+   "86:2": [
+    {
+     "known_text": "சாத்தியமில்லை",
+     "target_text": "possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது சாத்தியம்",
+     "target_text": "that is possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது சாத்தியம்",
+     "target_text": "this is possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது சாத்தியம் என்று நினைக்கிறேன்",
+     "target_text": "I think that is possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது சாத்தியம் என்று நினைக்கிறேன்",
+     "target_text": "I think this is possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சாத்தியம் என்று சொல்லுங்கள்",
+     "target_text": "tell me that it is possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது சாத்தியம் என்று உறுதியாக இல்லை",
+     "target_text": "I'm not sure this is possible",
+     "phrase_role": "use"
+    }
+   ],
+   "86:3": [
+    {
+     "known_text": "சாத்தியமில்லை",
+     "target_text": "possible",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "துரதிர்ஷ்டவசமாக",
+     "target_text": "unfortunately",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சாத்தியமில்லை துரதிர்ஷ்டவசமாக",
+     "target_text": "wasn't possible, unfortunately",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை துரதிர்ஷ்டவசமாக நன்றாக இல்லை",
+     "target_text": "wasn't possible, unfortunately not good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது சாத்தியமில்லை துரதிர்ஷ்டவசமாக அது கடினம்",
+     "target_text": "wasn't possible, unfortunately it is difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை, துரதிர்ஷ்டவசமாக, நான் நினைக்கிறேன்",
+     "target_text": "it wasn't possible, unfortunately, I think",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை, துரதிர்ஷ்டவசமாக, அது கடினம்",
+     "target_text": "it wasn't possible, unfortunately, it is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை, துரதிர்ஷ்டவசமாக, நான் உறுதியாக இல்லை",
+     "target_text": "it wasn't possible, unfortunately, I'm not sure",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை, துரதிர்ஷ்டவசமாக, ஆனால் நான் விரும்புகிறேன்",
+     "target_text": "it wasn't possible, unfortunately, but I want to",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சாத்தியமில்லை, துரதிர்ஷ்டவசமாக, அது நல்லதல்ல",
+     "target_text": "it wasn't possible, unfortunately, it is not good",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 94,
+  "phrases": {
+   "94:1": [
+    {
+     "known_text": "வழி",
+     "target_text": "way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இந்த வழி",
+     "target_text": "this way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அந்த வழி",
+     "target_text": "that way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இந்த வழி கடினம்",
+     "target_text": "this way is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த வழி சாத்தியம்",
+     "target_text": "this way is possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த வழி நல்லது",
+     "target_text": "this way is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அந்த வழி விரும்புகிறேன்",
+     "target_text": "I want that way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது வேலை செய்யும் ஒரே வழி என்று நினைக்கிறேன்",
+     "target_text": "I think this is the only way it will work",
+     "phrase_role": "use"
+    }
+   ],
+   "94:2": [
+    {
+     "known_text": "செய்யும்",
+     "target_text": "will",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வேலை",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வேலை செய்யும்",
+     "target_text": "will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது வேலை செய்யும்",
+     "target_text": "it will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது வேலை செய்யும்",
+     "target_text": "that will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது வேலை செய்யும் என்று நினைக்கிறேன்",
+     "target_text": "I think it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது வேலை செய்யும் என்று உடன்படுகிறேன்",
+     "target_text": "I agree it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது வேலை செய்யும், அது நல்லது",
+     "target_text": "it will work, that is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது வேலை செய்யும், கடினம் ஆனால் சாத்தியம்",
+     "target_text": "it will work, difficult but possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது வேலை செய்யும் என்று நான் உறுதியாக இல்லை",
+     "target_text": "I'm not sure it will work",
+     "phrase_role": "use"
+    }
+   ],
+   "94:3": [
+    {
+     "known_text": "ஒரே",
+     "target_text": "only",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரே வழி",
+     "target_text": "only way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது ஒரே",
+     "target_text": "this only",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரே வழி கடினம்",
+     "target_text": "only way is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஒரே வழி சாத்தியம்",
+     "target_text": "only way is possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஒரே வழி வேலை செய்யும்",
+     "target_text": "only way it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இதுவே ஒரே வழி",
+     "target_text": "only this will work",
+     "phrase_role": "use"
+    }
+   ],
+   "94:4": [
+    {
+     "known_text": "ஒரே",
+     "target_text": "only",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வழி",
+     "target_text": "way",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வேலை செய்யும்",
+     "target_text": "will work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஒரே வழி வேலை செய்யும்",
+     "target_text": "only way it will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது ஒரே வழி வேலை செய்யும்",
+     "target_text": "this is only way it will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அந்த ஒரே வழி வேலை செய்யும்",
+     "target_text": "that only way it will work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது ஒரே வழி வேலை செய்யும் என்று நினைக்கிறேன்",
+     "target_text": "I think this is only way it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது ஒரே வழி வேலை செய்யும்",
+     "target_text": "this is only way it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது ஒரே வழி வேலை செய்யும், அது கடினம்",
+     "target_text": "this is only way it will work, it is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது ஒரே வழி வேலை செய்யும், துரதிர்ஷ்டவசமாக",
+     "target_text": "this is only way it will work, unfortunately",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது ஒரே வழி வேலை செய்யும் என்று உடன்படுகிறேன்",
+     "target_text": "I agree this is only way it will work",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 102,
+  "phrases": {
+   "102:1": [
+    {
+     "known_text": "கூற",
+     "target_text": "say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கூற வேண்டும்",
+     "target_text": "should say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் கூற வேண்டும்",
+     "target_text": "I should say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இதை கூற வேண்டும்",
+     "target_text": "I should say this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அதை கூற வேண்டும்",
+     "target_text": "you should say that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கூற விரும்புகிறேன்",
+     "target_text": "I want to say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் அதை கூற வேண்டும்",
+     "target_text": "she should say that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதை இப்போது கூற வேண்டும்",
+     "target_text": "I should say that now",
+     "phrase_role": "use"
+    }
+   ],
+   "102:2": [
+    {
+     "known_text": "நாங்கள்",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முயற்சிக்கிறோம்",
+     "target_text": "trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நாங்கள் முயற்சிக்கிறோம்",
+     "target_text": "we're trying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் முயற்சிக்கிறோம் நன்றாக",
+     "target_text": "we're trying well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் ஆங்கிலம் கற்க முயற்சிக்கிறோம்",
+     "target_text": "we're trying to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் அது மாதிரி இல்லை என்று சொல்ல முயற்சிக்கிறோம்",
+     "target_text": "we're trying to say that it's not like that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் கடினமாக உழைக்க முயற்சிக்கிறோம்",
+     "target_text": "we're trying to work hard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் இப்போது முயற்சிக்கிறோம்",
+     "target_text": "we're trying now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் அடிக்கடி பேச முயற்சிக்கிறோம்",
+     "target_text": "we're trying to talk often",
+     "phrase_role": "use"
+    }
+   ],
+   "102:3": [
+    {
+     "known_text": "இல்லை",
+     "target_text": "not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அப்படி",
+     "target_text": "like that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அப்படி இல்லை",
+     "target_text": "not like that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது அப்படி இல்லை இன்று",
+     "target_text": "it's not like that today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கூற அது அப்படி இல்லை",
+     "target_text": "say it's not like that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது இப்போது அப்படி இல்லை",
+     "target_text": "it's not like that now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அது அப்படி இல்லை என்று கூற வேண்டும்",
+     "target_text": "I should say that it's not like that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அது அப்படி இல்லை என்று கருத்தில் கொள்ள வேண்டும்",
+     "target_text": "you should consider that it's not like that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் அது அப்படி இல்லை என்று கூற வேண்டும்",
+     "target_text": "we should say that it's not like that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் அது அப்படி இல்லை",
+     "target_text": "I think that it's not like that",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 103,
+  "phrases": {
+   "103:2": [
+    {
+     "known_text": "பல",
+     "target_text": "many",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்னும் பல",
+     "target_text": "many more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பல வார்த்தைகள்",
+     "target_text": "many words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்னும் பல வார்த்தைகள் கற்றுக்கொள்ள வேண்டும்",
+     "target_text": "I should learn many more words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் பல நல்ல வார்த்தைகள் கற்றுக்கொள்ள வேண்டும்",
+     "target_text": "you should learn many good words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் பல வார்த்தைகள் கற்றுக்கொள்கிறோம்",
+     "target_text": "we learn many words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்னும் பல வார்த்தைகள் கற்றுக்கொள்ள விரும்புகிறேன்",
+     "target_text": "I want to learn many more words",
+     "phrase_role": "use"
+    }
+   ],
+   "103:3": [
+    {
+     "known_text": "கேட்கிறேன்",
+     "target_text": "hear",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கேட்கிறேன் பல வார்த்தைகள்",
+     "target_text": "hear many words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கேட்கிறேன் இன்னும் பல வார்த்தைகள்",
+     "target_text": "hear many more words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் கேட்கிறேன் இந்த மொழியில்",
+     "target_text": "I hear this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கேட்கிறேன் பல வார்த்தைகள்",
+     "target_text": "I hear many words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கேட்கிறேன் இன்னும் பல வார்த்தைகள்",
+     "target_text": "I hear many more words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் கேட்கிறோம் பல வார்த்தைகள்",
+     "target_text": "we hear many words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் கேட்கிறீர்கள் பல நல்ல வார்த்தைகள்",
+     "target_text": "you hear many good words",
+     "phrase_role": "use"
+    }
+   ],
+   "103:4": [
+    {
+     "known_text": "நாங்கள் முயற்சிக்கிறோம்",
+     "target_text": "we're trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கேட்கிறேன்",
+     "target_text": "hear",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நாங்கள் இன்னும் பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை",
+     "target_text": "we're not trying to hear many more words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் வேறு பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை",
+     "target_text": "I'm not trying to hear many different words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் இன்று பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை",
+     "target_text": "we're not trying to hear many words today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை",
+     "target_text": "I'm not trying to hear many words now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் முயற்சிக்கவில்லை கேட்க பல",
+     "target_text": "we're not trying to hear many",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முயற்சிக்கவில்லை கேட்க பல வார்த்தைகள்",
+     "target_text": "not trying to hear many words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இப்போது முயற்சிக்கவில்லை கேட்க பல",
+     "target_text": "I'm not trying to hear many now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் ஒரு நாளில் பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை",
+     "target_text": "I'm not trying to hear many words in a day",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 104,
+  "phrases": {
+   "104:1": [
+    {
+     "known_text": "மாற்ற",
+     "target_text": "change",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மாற்ற வேண்டும்",
+     "target_text": "need to change",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் மாற்ற வேண்டும்",
+     "target_text": "we need to change",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் இதை மாற்ற வேண்டும்",
+     "target_text": "we need to change this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதை மாற்ற வேண்டும்",
+     "target_text": "I need to change that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் இதை மாற்ற வேண்டும்",
+     "target_text": "you need to change this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மாற்ற விரும்புகிறேன்",
+     "target_text": "I want to change",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் அதை மாற்ற வேண்டும்",
+     "target_text": "he should change that",
+     "phrase_role": "use"
+    }
+   ],
+   "104:2": [
+    {
+     "known_text": "செய்வதை",
+     "target_text": "doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இதை செய்வது நல்லது",
+     "target_text": "doing this is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இதை செய்வதை ரசிக்கிறேன்",
+     "target_text": "I enjoy doing this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சுவாரஸ்யமான விஷயங்களை செய்வதை விரும்புகிறேன்",
+     "target_text": "I like doing interesting things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "செய்வதை இப்போது",
+     "target_text": "doing now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அதை செய்வதை",
+     "target_text": "doing that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் என்ன செய்வதை ரசிக்கிறீர்கள்?",
+     "target_text": "what do you enjoy doing?",
+     "phrase_role": "use"
+    }
+   ],
+   "104:3": [
+    {
+     "known_text": "மாற்ற",
+     "target_text": "change",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "செய்வதை",
+     "target_text": "doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "தேவை மாற்ற செய்வதை",
+     "target_text": "need to change what doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "தேவை மாற்ற செய்வதை சரியாக",
+     "target_text": "need to change what doing well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது தேவை மாற்ற செய்வதை",
+     "target_text": "need to change what doing now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் செய்வதை மாற்ற வேண்டும்",
+     "target_text": "we need to change what doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் செய்வதை மாற்ற வேண்டும்",
+     "target_text": "I need to change what doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் செய்வதை மாற்ற வேண்டும்",
+     "target_text": "you need to change what doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் விரைவில் செய்வதை மாற்ற வேண்டும்",
+     "target_text": "we need to change what doing soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "வேலை செய்யவில்லை என்றால் நாங்கள் செய்வதை மாற்ற வேண்டும்",
+     "target_text": "we need to change what doing if it's not working",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 108,
+  "phrases": {
+   "108:1": [
+    {
+     "known_text": "நம்பவில்லை",
+     "target_text": "didn't hope",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் நம்பவில்லை",
+     "target_text": "we didn't hope",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நம்பவில்லை",
+     "target_text": "I didn't hope",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் நம்பவில்லை",
+     "target_text": "you didn't hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+     "target_text": "we didn't hope to wake in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது நடக்கும் என்று நம்பவில்லை",
+     "target_text": "I didn't hope this would happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் இவ்வளவு விரைவில் தொடங்குவார் என்று நம்பவில்லை",
+     "target_text": "he didn't hope to start so soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் இவ்வளவு விரைவில் முடிக்க நம்பவில்லை",
+     "target_text": "she didn't hope to finish so soon",
+     "phrase_role": "use"
+    }
+   ],
+   "108:2": [
+    {
+     "known_text": "விழிக்க",
+     "target_text": "wake",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இரவில் விழிப்பது நல்லதில்லை",
+     "target_text": "it's not good to wake in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த காலையில் விழிக்க விரும்பவில்லை",
+     "target_text": "I didn't want to wake so soon this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "விழிக்க இப்போது",
+     "target_text": "wake now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இரவில் விழிக்க",
+     "target_text": "wake at night",
+     "phrase_role": "build"
+    }
+   ],
+   "108:3": [
+    {
+     "known_text": "இரவு",
+     "target_text": "last night",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நடுவில்",
+     "target_text": "middle",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இரவின் நடுவில்",
+     "target_text": "middle of the night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இரவின் நடுவில் விழிக்க",
+     "target_text": "wake middle of the night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இரவின் நடுவில் விழிக்க நம்பவில்லை",
+     "target_text": "didn't hope wake middle of the night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+     "target_text": "we didn't hope to wake in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+     "target_text": "I didn't want to wake in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் இரவின் நடுவில் அதைப் பற்றி யோசிக்க ஆரம்பித்தாள்",
+     "target_text": "she was starting to think about it in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இரவின் நடுவில் ஆங்கிலம் கற்க முயற்சித்தேன்",
+     "target_text": "I was trying to learn in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+     "target_text": "he didn't want to wake in the middle of the night",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 111,
+  "phrases": {
+   "111:1": [
+    {
+     "known_text": "மூளை",
+     "target_text": "brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மூளை மாற்றம்",
+     "target_text": "brain change",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நமது மூளை",
+     "target_text": "our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மூளை பற்றி கற்றுக்கொள்கிறேன்",
+     "target_text": "I learn about brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மூளை மாற்றம் சுவாரஸ்யமானது",
+     "target_text": "brain change is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் மூளை பற்றி கண்டுபிடிக்கிறோம்",
+     "target_text": "we find out brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் மூளை பற்றி கேட்கிறான்",
+     "target_text": "he hear about brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புதிய ஏதாவது கற்கும்போது நமது மூளை மாற்றுகிறது",
+     "target_text": "our brain changes when we learn something new",
+     "phrase_role": "use"
+    }
+   ],
+   "111:2": [
+    {
+     "known_text": "நமது",
+     "target_text": "our",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நமது மூளை",
+     "target_text": "our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நமது நண்பர்கள்",
+     "target_text": "our friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நமது நண்பர்கள் நல்லவர்கள்",
+     "target_text": "our friends good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நமது மூளை பற்றி கண்டுபிடிக்கிறோம்",
+     "target_text": "we find out our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நமது மூளை சுவாரஸ்யமானது",
+     "target_text": "our brain is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நமது மூளை புதிய வார்த்தைகள் கற்றுக்கொள்கிறது",
+     "target_text": "our brain learn new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நமது நண்பர்கள் கஷ்டமாக வேலை செய்கிறார்கள்",
+     "target_text": "our friends work hard",
+     "phrase_role": "use"
+    }
+   ],
+   "111:3": [
+    {
+     "known_text": "மாற்றுகிறது",
+     "target_text": "changes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மாற்றுகிறது",
+     "target_text": "it changes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மாற்றுகிறது நமது மூளை",
+     "target_text": "changes our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது நமது மூளையை மாற்றுகிறது",
+     "target_text": "it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது மாற்றுகிறது நமது மூளை",
+     "target_text": "this changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புதிய ஒன்று மாற்றுகிறது",
+     "target_text": "something new changes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது நன்றாக மாற்றுகிறது",
+     "target_text": "it changes well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மாற்றுகிறது இப்போது",
+     "target_text": "it changes now",
+     "phrase_role": "use"
+    }
+   ],
+   "111:4": [
+    {
+     "known_text": "புதிய",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கற்றுக்கொள்ளும்போது",
+     "target_text": "when learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நாங்கள் கற்றுக்கொள்ளும்போது புதிய ஒன்று",
+     "target_text": "when we learn something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கற்றுக்கொள்ளும்போது புதிய ஒன்று நல்லது",
+     "target_text": "when learn something new well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் புதிய ஒன்றை கற்றுக்கொள்ளும்போது அது நமது மூளையை மாற்றுகிறது",
+     "target_text": "when we learn something new it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புதிது கற்றுக்கொள்ளும்போது சுவாரஸ்யமான",
+     "target_text": "when learn something new it is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "புதிது கற்றுக்கொள்ளும்போது மகிழ்ச்சியாக இருக்கிறோம்",
+     "target_text": "we are happy when learn something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கற்றுக்கொள்ளும்போது புதிய இப்போது",
+     "target_text": "when learn something new now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "புதிய ஏதாவது கற்றுக்கொள்ளும்போது நான் மகிழ்ச்சியாக உணர்கிறேன்",
+     "target_text": "I feel happy when learn something new",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 112,
+  "phrases": {
+   "112:1": [
+    {
+     "known_text": "சுவாரஸ்யமானது",
+     "target_text": "interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் சுவாரஸ்யமானது",
+     "target_text": "very interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது சுவாரஸ்யமானது",
+     "target_text": "that is interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மிகவும் சுவாரஸ்யமானது",
+     "target_text": "that is very interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த மொழி சுவாரஸ்யமானது",
+     "target_text": "this language is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது மிகவும் சுவாரஸ்யமானது",
+     "target_text": "this is very interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நமது மூளை சுவாரஸ்யமானது",
+     "target_text": "our brain is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சுவாரஸ்யமானது நான் விரும்புகிறேன்",
+     "target_text": "that is interesting I like",
+     "phrase_role": "use"
+    }
+   ],
+   "112:2": [
+    {
+     "known_text": "எதிர்பார்க்கிறேன்",
+     "target_text": "expecting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இல்லை",
+     "target_text": "not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "எதிர்பார்க்கவில்லை",
+     "target_text": "not expecting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் எதிர்பார்க்கவில்லை அதை நன்றாக",
+     "target_text": "I not expecting it well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இதை எதிர்பார்க்கவில்லை",
+     "target_text": "I was not expecting this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் இது நடக்கும் என்று எதிர்பார்க்கவில்லை",
+     "target_text": "he was not expecting that to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் இந்த மொழி சுவாரஸ்யமான என்று எதிர்பார்க்கவில்லை",
+     "target_text": "she was not expecting this language to be interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது நடந்தது என்று எதிர்பார்க்கவில்லை",
+     "target_text": "I was not expecting it to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இப்போது எதிர்பார்க்கவில்லை",
+     "target_text": "not expecting now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இந்த விடையை எதிர்பார்க்கவில்லை",
+     "target_text": "I'm not expecting this answer",
+     "phrase_role": "use"
+    }
+   ],
+   "112:3": [
+    {
+     "known_text": "சுவாரஸ்யமானது",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "எதிர்பார்க்கவில்லை",
+     "target_text": "not expecting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மிகவும் சுவாரஸ்யமானது எதிர்பார்க்கவில்லை",
+     "target_text": "wasn't expecting it to be very interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மிகவும் சுவாரஸ்யமானது என்று எதிர்பார்க்கவில்லை",
+     "target_text": "I wasn't expecting it to be very interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மிகவும் சுவாரஸ்யமானது என்று நான் எதிர்பார்க்கவில்லை",
+     "target_text": "I wasn't expecting that to be very interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது மிகவும் சுவாரஸ்யமானது நான் இதை எதிர்பார்க்கவில்லை",
+     "target_text": "this is very interesting, I wasn't expecting it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மிகவும் சுவாரஸ்யமானது நான் இதை எதிர்பார்க்கவில்லை",
+     "target_text": "that was very interesting, I wasn't expecting it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த மொழி மிகவும் சுவாரஸ்யமானது என்று எதிர்பார்க்கவில்லை",
+     "target_text": "wasn't expecting this language to be very interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த மொழி மிகவும் சுவாரஸ்யமானது என்று நான் எதிர்பார்க்கவில்லை",
+     "target_text": "I wasn't expecting this language to be very interesting",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 113,
+  "phrases": {
+   "113:2": [
+    {
+     "known_text": "நினைவில்",
+     "target_text": "remember",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முடியவில்லை",
+     "target_text": "can't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target_text": "I can't remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target_text": "I can't remember well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நினைவில் வைத்துக்கொள்ள முடியவில்லை இப்போது",
+     "target_text": "I can't remember now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நீங்கள் சொன்னதை நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target_text": "I can't remember what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இதை நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target_text": "I can't remember this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதை நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target_text": "I can't remember that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் சொன்னதை நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target_text": "I can't remember you said",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 114,
+  "phrases": {
+   "114:1": [
+    {
+     "known_text": "மோசமாக",
+     "target_text": "worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மோசமாக செய்கிறேன்",
+     "target_text": "doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று மோசமாக",
+     "target_text": "worse today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்று மோசமாக செய்கிறேன்",
+     "target_text": "doing worse today is not good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நேற்றை விட மோசமாக செய்கிறேன்",
+     "target_text": "I feel doing worse than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மோசமாக இருக்கிறது",
+     "target_text": "that is worse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மோசமாக உணர்கிறேன்",
+     "target_text": "I feel worse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று மோசமாக செய்வது சுவாரஸ்யமானது",
+     "target_text": "doing worse today is interesting",
+     "phrase_role": "use"
+    }
+   ],
+   "114:2": [
+    {
+     "known_text": "மோசமாக",
+     "target_text": "worse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உணர்கிறேன்",
+     "target_text": "feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உணர்கிறேன் மோசமாக செய்கிறேன்",
+     "target_text": "feel as if doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் மோசமாக செய்கிறேன்",
+     "target_text": "I feel as if doing worse now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் மோசமாக செய்கிறேன் இன்று",
+     "target_text": "feel as if doing worse today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் மோசமாக செய்கிறேன் நன்றாக",
+     "target_text": "I feel as if doing worse not good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்று மோசமாக செய்கிறேன் என்று உணர்கிறேன்",
+     "target_text": "I feel as if doing worse today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மோசமாக செய்கிறேன் என்று உணர்கிறேன்",
+     "target_text": "I feel as if doing worse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் இன்று மோசமாக செய்கிறீர்கள் என்று உணர்கிறீர்களா",
+     "target_text": "you feel as if doing worse today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நான் மற்றவர்களை விட மோசமாக செய்கிறேன் என்று உணர்கிறேன்",
+     "target_text": "today I feel as if doing worse than everyone else",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 116,
+  "phrases": {
+   "116:1": [
+    {
+     "known_text": "சிறந்த",
+     "target_text": "best",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது சிறந்த",
+     "target_text": "this is best",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் சிறந்த",
+     "target_text": "very best",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சிறந்த வேலை செய்கிறேன்",
+     "target_text": "I do best work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் சிறந்த",
+     "target_text": "he is best",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் சிறந்த வேலை செய்கிறோம்",
+     "target_text": "we do best work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இதுவே சிறந்தது",
+     "target_text": "that is the best",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது என்னுடைய சிறந்த வேலை",
+     "target_text": "this is my best work",
+     "phrase_role": "use"
+    }
+   ],
+   "116:2": [
+    {
+     "known_text": "தேர்வு",
+     "target_text": "choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நல்ல தேர்வு",
+     "target_text": "good choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சிறந்த தேர்வு",
+     "target_text": "best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது நல்ல தேர்வு",
+     "target_text": "this is a good choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சிறந்த தேர்வு",
+     "target_text": "that is best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது நல்ல தேர்வு இல்லை",
+     "target_text": "this is not good choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இதுவே என் தேர்வு",
+     "target_text": "this is my choice",
+     "phrase_role": "use"
+    }
+   ],
+   "116:3": [
+    {
+     "known_text": "செய்ய",
+     "target_text": "make",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "செய்யக்கூடிய",
+     "target_text": "could make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் செய்யக்கூடிய",
+     "target_text": "I could make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் செய்யக்கூடிய தேர்வு",
+     "target_text": "I could make choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் செய்யக்கூடிய சிறந்த தேர்வு",
+     "target_text": "I could make best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது செய்யக்கூடிய",
+     "target_text": "I could make now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் செய்யக்கூடிய தேர்வு",
+     "target_text": "he could make a choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் செய்யக்கூடிய தேர்வு",
+     "target_text": "you could make a choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று செய்யக்கூடிய தேர்வு",
+     "target_text": "I could make a choice today",
+     "phrase_role": "use"
+    }
+   ],
+   "116:4": [
+    {
+     "known_text": "சிறந்த",
+     "target_text": "best",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "தேர்வு",
+     "target_text": "choice",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சிறந்த தேர்வு இல்லை",
+     "target_text": "isn't the best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது சிறந்த தேர்வு இல்லை",
+     "target_text": "this isn't the best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் செய்யக்கூடிய சிறந்த தேர்வு இல்லை",
+     "target_text": "isn't the best choice I could make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது நான் செய்யக்கூடிய சிறந்த தேர்வு இல்லை",
+     "target_text": "this isn't the best choice I could make",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது சிறந்த தேர்வு இல்லை இன்று",
+     "target_text": "this isn't the best choice today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சிறந்த தேர்வு இல்லை",
+     "target_text": "that isn't the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் செய்யக்கூடிய சிறந்த தேர்வு இல்லை",
+     "target_text": "that isn't the best choice you could make",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் செய்யக்கூடிய சிறந்த தேர்வு இல்லை",
+     "target_text": "isn't the best choice we could make",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 117,
+  "phrases": {
+   "117:1": [
+    {
+     "known_text": "நிச்சயமாக",
+     "target_text": "definitely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நிச்சயமாக சிறப்பாக",
+     "target_text": "definitely better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நிச்சயமாக",
+     "target_text": "I'm definitely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நிச்சயமாக சிறப்பாக செய்கிறேன்",
+     "target_text": "I'm definitely doing better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது நிச்சயமாக கஷ்டமாக",
+     "target_text": "that is definitely difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நிச்சயமாக முயற்சிக்கிறேன்",
+     "target_text": "I'm definitely trying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் நிச்சயமாக தயாராக",
+     "target_text": "he is definitely ready",
+     "phrase_role": "use"
+    }
+   ],
+   "117:3": [
+    {
+     "known_text": "பேசினோம்",
+     "target_text": "talked",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஒருவருக்கொருவர்",
+     "target_text": "each other",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நாம் பேசினோம் ஒருவருக்கொருவர்",
+     "target_text": "talked to each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாம் நேற்று பேசினோம் ஒருவருக்கொருவர்",
+     "target_text": "we talked to each other last night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் பேசினோம் ஒருவருக்கொருவர் இன்று",
+     "target_text": "we talked to each other today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாம் பேசினோம் ஒருவருக்கொருவர் நன்றாக",
+     "target_text": "we talked to each other well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் பேசினோம் ஒருவருக்கொருவர் இன்று",
+     "target_text": "you talked to each other today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாம் பேசினோம் ஒருவருக்கொருவர் நேற்று",
+     "target_text": "we talked to each other yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் பேசினோம் ஒருவருக்கொருவர்",
+     "target_text": "he talked to each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாம் இப்போது பேசினோம் ஒருவருக்கொருவர்",
+     "target_text": "we talked to each other now",
+     "phrase_role": "use"
+    }
+   ],
+   "117:4": [
+    {
+     "known_text": "கடந்த முறை",
+     "target_text": "last time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பேசினோம்",
+     "target_text": "talked",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கடந்த முறை நாம் பேசினோம்",
+     "target_text": "last time we talked",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கடந்த முறை நாம் பேசினோம் ஒருவருக்கொருவர்",
+     "target_text": "last time we talked to each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் கடந்த முறை நாம் பேசினோம் சிறப்பாக",
+     "target_text": "I'm better last time we talked",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் கடந்த முறை நாம் பேசினோம் ஒருவருக்கொருவர் விட சிறப்பாக",
+     "target_text": "I'm better than last time we talked to each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நிச்சயமாக கடந்த முறை நாம் பேசினோம் விட சிறப்பாக",
+     "target_text": "I'm definitely better than last time we talked",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கடந்த முறை நாம் பேசினோம் ஒருவருக்கொருவர் சிறப்பாக",
+     "target_text": "last time we talked to each other I feel better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாம் கடந்த முறை நாம் பேசினோம் ஒருவருக்கொருவர் நினைவில்",
+     "target_text": "remember last time we talked to each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கடந்த முறை நாம் பேசினோம் இங்கே",
+     "target_text": "last time we talked here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 118,
+  "phrases": {
+   "118:1": [
+    {
+     "known_text": "பார்",
+     "target_text": "pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பாரில்",
+     "target_text": "in pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பாரில் இருக்கிறேன்",
+     "target_text": "I'm in pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பாரில் இன்று இருக்கிறேன்",
+     "target_text": "I'm in pub today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் பாரில் இருக்கிறான்",
+     "target_text": "he is in pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நேற்று இரவு பாரில் இருந்தேன்",
+     "target_text": "I was in the pub last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் என்னுடன் பாரில் இருக்கிறாள்",
+     "target_text": "she is in the pub with me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் என் நண்பனை பாரில் சந்திக்க விரும்புகிறேன்",
+     "target_text": "I want to meet my friend in the pub",
+     "phrase_role": "use"
+    }
+   ],
+   "118:2": [
+    {
+     "known_text": "சிறப்பாக",
+     "target_text": "better",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உணர்கிறேன்",
+     "target_text": "feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உணர்ந்ததை விட சிறப்பாக",
+     "target_text": "better than I felt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உணர்ந்ததை விட சிறப்பாக",
+     "target_text": "I feel better than I felt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நேற்று உணர்ந்ததை விட சிறப்பாக",
+     "target_text": "better than I felt yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நேற்று உணர்ந்ததை விட சிறப்பாக உணர்கிறேன்",
+     "target_text": "I feel better than I felt yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் பாரில் இருந்தபோது உணர்ந்ததை விட சிறப்பாக",
+     "target_text": "I feel better than I felt in pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முன்பு உணர்ந்ததை விட சிறப்பாக",
+     "target_text": "I feel better than I felt before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று காலை உணர்ந்ததை விட சிறப்பாக",
+     "target_text": "I feel better than I felt this morning",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 120,
+  "phrases": {
+   "120:1": [
+    {
+     "known_text": "நான் பேருந்தில்",
+     "target_text": "I'm on bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் பேருந்தில்",
+     "target_text": "you on bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பேருந்தில் இருக்கிறோம்",
+     "target_text": "we on bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பேருந்தில் இன்று இருக்கிறேன்",
+     "target_text": "I'm on bus today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் பேருந்தில் இருக்கிறான்",
+     "target_text": "he is on bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இப்போது பேருந்தில்",
+     "target_text": "I'm on bus very soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் என்னுடன் பேருந்தில் இருக்கிறாள்",
+     "target_text": "she is on the bus with me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் இப்போது பேருந்தில் இருக்கிறோம்",
+     "target_text": "we are on the bus now",
+     "phrase_role": "use"
+    }
+   ],
+   "120:2": [
+    {
+     "known_text": "பேருந்தில்",
+     "target_text": "bus",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரும்புகிறேன்",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "செல்ல",
+     "target_text": "go by",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+     "target_text": "like to go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பேருந்தில் செல்ல விரும்புகிறேன்",
+     "target_text": "I like to go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+     "target_text": "you like to go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்களா",
+     "target_text": "you like to go by bus today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் பேருந்தில் செல்ல விரும்புகிறேன்",
+     "target_text": "I like to go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் பேருந்தில் செல்ல விரும்புகிறோம்",
+     "target_text": "we like to go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று பேருந்தில் செல்ல விரும்புகிறேன்",
+     "target_text": "I like to go by bus today",
+     "phrase_role": "use"
+    }
+   ],
+   "120:3": [
+    {
+     "known_text": "சுவாரஸ்யமானது",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பேருந்தில் செல்ல விரும்புகிறேன்",
+     "target_text": "like to go by bus",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல",
+     "target_text": "interesting that you go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல",
+     "target_text": "it's interesting that you go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+     "target_text": "interesting that you like go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மிகவும் சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல",
+     "target_text": "it's very interesting that you go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது சுவாரஸ்யமானது நீங்கள் இன்று பேருந்தில் செல்ல",
+     "target_text": "it's interesting that you go by bus today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல இப்போது",
+     "target_text": "it's interesting that you go by bus now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல என்று நினைக்கிறேன்",
+     "target_text": "I think it's interesting that you go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "சுவாரஸ்யமானது நீங்கள் இப்போது பேருந்தில் செல்ல",
+     "target_text": "interesting that you go by bus now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 121,
+  "phrases": {
+   "121:1": [
+    {
+     "known_text": "நான் காரை",
+     "target_text": "I need car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் காரை",
+     "target_text": "you need car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் காரை இன்று",
+     "target_text": "I need car today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் ஒரு காரை வேண்டும்",
+     "target_text": "I need a car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் ஒரு காரை வேண்டும்",
+     "target_text": "you need a car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் காரை இன்று பார்க்கிறேன்",
+     "target_text": "I see a car today",
+     "phrase_role": "use"
+    }
+   ],
+   "121:2": [
+    {
+     "known_text": "இது அசாதாரணமானது",
+     "target_text": "it's unusual",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் அசாதாரணமானது",
+     "target_text": "very unusual",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மிகவும் அசாதாரணமானது",
+     "target_text": "that is very unusual",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது மிகவும் அசாதாரணமானது",
+     "target_text": "it's very unusual",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது அசாதாரணமானது என்று உணர்கிறேன்",
+     "target_text": "I feel that is unusual",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது அசாதாரணமானது இன்று",
+     "target_text": "it's unusual today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மிகவும் அசாதாரணமானது இன்று",
+     "target_text": "that is very unusual today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அசாதாரணமானது என்று நினைக்கிறேன்",
+     "target_text": "I think it's unusual",
+     "phrase_role": "use"
+    }
+   ],
+   "121:3": [
+    {
+     "known_text": "காரை",
+     "target_text": "car",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பயன்படுத்த",
+     "target_text": "use",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "don't use your car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "I don't use your car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "you don't use your car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "you don't use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "I don't use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது வித்தியாசமான",
+     "target_text": "it's unusual that you don't use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "I think it's unusual that you don't use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "he doesn't use your car",
+     "phrase_role": "use"
+    }
+   ],
+   "121:4": [
+    {
+     "known_text": "அசாதாரணமானது",
+     "target_text": "unusual",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "don't use your car",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "unusual that you don't use car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "it's unusual that you don't use car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது அசாதாரணமானது நீங்கள் காரை பயன்படுத்த விரும்பவில்லை என்று",
+     "target_text": "it's unusual that you don't use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "it's unusual that you don't use car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மிகவும் அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "it's very unusual that you don't use car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது அசாதாரணமானது நீங்கள் இன்று காரை பயன்படுத்த",
+     "target_text": "it's unusual that you don't use car today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "I think it's unusual that you don't use car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது இப்போது அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "it's unusual that you don't use car now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 123,
+  "phrases": {
+   "123:1": [
+    {
+     "known_text": "யோசனை",
+     "target_text": "idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நல்ல யோசனை",
+     "target_text": "good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் நல்ல யோசனை",
+     "target_text": "very good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது ஒரு நல்ல யோசனை",
+     "target_text": "that is a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நல்ல யோசனை",
+     "target_text": "you need a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மிகவும் நல்ல யோசனை",
+     "target_text": "that is a very good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது ஒரு நல்ல யோசனை",
+     "target_text": "this is a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னிடம் ஒரு நல்ல யோசனை இருக்கிறது.",
+     "target_text": "I've got a good idea.",
+     "phrase_role": "use"
+    }
+   ],
+   "123:2": [
+    {
+     "known_text": "யோசனை",
+     "target_text": "idea",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நினைக்கிறேன் நல்ல யோசனை",
+     "target_text": "think that's a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் நல்ல யோசனை",
+     "target_text": "I think that's a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நினைக்கிறேன் நல்ல யோசனை இன்று",
+     "target_text": "think that's a good idea today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் நல்ல யோசனை இன்று",
+     "target_text": "I think that's a good idea today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நினைக்கிறீர்களா நல்ல யோசனை",
+     "target_text": "you think that's a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் நல்ல யோசனை இப்போது",
+     "target_text": "I think that's a good idea now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் நினைக்கிறோம் நல்ல யோசனை",
+     "target_text": "we think that's a good idea",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 125,
+  "phrases": {
+   "125:1": [
+    {
+     "known_text": "உங்கள்",
+     "target_text": "your",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்கள் யோசனை",
+     "target_text": "your idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்கள் யோசனை நல்லது",
+     "target_text": "your idea good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்கள் யோசனை மிகவும் நல்லது",
+     "target_text": "your idea is very good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் யோசனை சுவாரஸ்யமானது",
+     "target_text": "your idea is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் யோசனை இன்று நல்லது",
+     "target_text": "your idea is good today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் தேர்வு நல்லது",
+     "target_text": "your choice is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் காரை நான் பார்க்கிறேன்",
+     "target_text": "I see your car",
+     "phrase_role": "use"
+    }
+   ],
+   "125:2": [
+    {
+     "known_text": "நம்புகிறேன்",
+     "target_text": "believe",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நம்புகிறேன்",
+     "target_text": "I believe",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நம்புகிறேன் இது",
+     "target_text": "I believe this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நம்புகிறேன் அது நல்லது",
+     "target_text": "I believe that is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நம்புகிறீர்களா?",
+     "target_text": "you believe today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று நம்புகிறேன்",
+     "target_text": "I believe today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் நம்புகிறோம்",
+     "target_text": "we believe",
+     "phrase_role": "use"
+    }
+   ],
+   "125:3": [
+    {
+     "known_text": "நம்புகிறேன்",
+     "target_text": "believe",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உங்கள்",
+     "target_text": "your",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "யோசனை",
+     "target_text": "idea",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன்",
+     "target_text": "I believe that your idea very good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன் இப்போது",
+     "target_text": "I believe that your idea very good today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறீர்களா?",
+     "target_text": "do you believe that your idea very good?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் உங்கள் யோசனை மிகவும் நல்லது",
+     "target_text": "I think I believe that your idea very good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன்",
+     "target_text": "believe that your idea very good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன்",
+     "target_text": "I believe that your idea very good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன் இன்று",
+     "target_text": "believe that your idea very good today",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 131,
+  "phrases": {
+   "131:1": [
+    {
+     "known_text": "யோசனைகள்",
+     "target_text": "ideas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பல யோசனைகள்",
+     "target_text": "many ideas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நல்ல யோசனைகள்",
+     "target_text": "good ideas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இங்கே பல யோசனைகள்",
+     "target_text": "many ideas here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நல்ல யோசனைகள் வேண்டும்",
+     "target_text": "I want good ideas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உன் யோசனைகள் நன்றாக இருக்கின்றன",
+     "target_text": "your ideas work well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் யோசனைகள் பற்றி நினைக்கிறேன்",
+     "target_text": "I think about ideas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நல்ல யோசனைகள் நுக்கிறது",
+     "target_text": "good ideas today",
+     "phrase_role": "use"
+    }
+   ],
+   "131:2": [
+    {
+     "known_text": "தலை",
+     "target_text": "head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் தலை",
+     "target_text": "my head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் தலையில்",
+     "target_text": "in my head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது என் தலையில்",
+     "target_text": "this in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அந்த யோசனை என் தலையில்",
+     "target_text": "that idea in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நல்ல யோசனைகள் என் தலையில்",
+     "target_text": "good ideas in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் தலையில் பல யோசனைகள்",
+     "target_text": "many ideas in my head",
+     "phrase_role": "use"
+    }
+   ],
+   "131:3": [
+    {
+     "known_text": "அங்கே",
+     "target_text": "there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அங்கே பல",
+     "target_text": "there many",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அங்கே யோசனைகள்",
+     "target_text": "there ideas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவள் இப்போது அங்கே இல்லை",
+     "target_text": "she is not there now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் இன்று அங்கே இருக்கிறார்",
+     "target_text": "he is there today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அங்கே போக விரும்புகிறேன்",
+     "target_text": "I want to go there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் விரைவில் அங்கே இருக்க வேண்டும்",
+     "target_text": "I need to be there soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் இன்று அங்கே பேருந்தில் செல்ல விரும்புகிறோம்",
+     "target_text": "we want to go there by bus today",
+     "phrase_role": "use"
+    }
+   ],
+   "131:4": [
+    {
+     "known_text": "சுற்று",
+     "target_text": "around",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "தலை",
+     "target_text": "head",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சுற்றும் என் தலையில்",
+     "target_text": "going around in my head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "யோசனைகள் சுற்றும் என் தலையில் இன்று",
+     "target_text": "ideas going around in my head today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நேற்று யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "ideas going around in my head yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "பல யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "many ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நல்ல யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "good ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "I feel ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று மட்டும் யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "only today ideas going around in my head",
+     "phrase_role": "use"
+    }
+   ],
+   "131:5": [
+    {
+     "known_text": "யோசனைகள்",
+     "target_text": "ideas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அங்கே",
+     "target_text": "there",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அதிகமான யோசனைகள் சுற்றும்",
+     "target_text": "there are too many ideas going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அங்கே அதிகமான யோசனைகள் சுற்றும்",
+     "target_text": "there are too many ideas going now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அங்கே அதிகமான யோசனைகள் சுற்றும் நன்றாக",
+     "target_text": "there are too many ideas going well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அங்கே அதிகமான யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "there are too many ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் அதிகமான யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "I feel there are too many ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று அதிகமான யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "there are too many ideas going around in my head today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நேற்று அதிகமான யோசனைகள் சுற்றும் என் தலையில்",
+     "target_text": "there are too many ideas going around in my head yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதிகமான யோசனைகள் சுற்றும் என் தலையில் இப்போது",
+     "target_text": "there are too many ideas going around in my head now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 132,
+  "phrases": {
+   "132:1": [
+    {
+     "known_text": "சுவாரஸ்யமாக",
+     "target_text": "exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் சுவாரஸ்யமாக",
+     "target_text": "very exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது சுவாரஸ்யமாக",
+     "target_text": "that exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சுவாரஸ்யமாக உணர்கிறேன்",
+     "target_text": "I feel exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அந்த யோசனை சுவாரஸ்யமாக இருக்கிறது",
+     "target_text": "that idea is exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த மொழி சுவாரஸ்யமாக உள்ளது",
+     "target_text": "this language is exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆங்கிலம் கற்பது சுவாரஸ்யமாக உள்ளது",
+     "target_text": "learning English is exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்களுடன் பேசுவது சுவாரஸ்யமாக உள்ளது",
+     "target_text": "speaking with you is exciting",
+     "phrase_role": "use"
+    }
+   ],
+   "132:2": [
+    {
+     "known_text": "சொல்கிறாள்",
+     "target_text": "saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவள் சொல்கிறாள்",
+     "target_text": "she saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை",
+     "target_text": "what she saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை நான் கேட்கிறேன்",
+     "target_text": "I hear what she saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை நினைக்கிறேன்",
+     "target_text": "I think about what she saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொல்கிறது நல்லது",
+     "target_text": "she saying good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை விரும்புகிறேன்",
+     "target_text": "I like what she saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை நான் புரிந்துகொள்ள விரும்புகிறேன்",
+     "target_text": "I want to understand what she saying",
+     "phrase_role": "use"
+    }
+   ],
+   "132:3": [
+    {
+     "known_text": "சுவாரஸ்யமாக",
+     "target_text": "exciting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "குறைவாக சுவாரஸ்யமாக",
+     "target_text": "less exciting than",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது குறைவாக சுவாரஸ்யமாக",
+     "target_text": "this less exciting than",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது குறைவாக சுவாரஸ்யமாக இன்று",
+     "target_text": "that less exciting than today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது அதை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+     "target_text": "this is less exciting than that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "பேசுவது கற்பதை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+     "target_text": "learning is less exciting than speaking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொன்னதை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+     "target_text": "that's less exciting than what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது முன்பை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+     "target_text": "I feel this is less exciting than before",
+     "phrase_role": "use"
+    }
+   ],
+   "132:4": [
+    {
+     "known_text": "சொல்கிறாள்",
+     "target_text": "saying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை விட",
+     "target_text": "what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "குறைவாக சுவாரஸ்யமாக அவள் சொல்கிறதை விட",
+     "target_text": "less exciting than what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது குறைவாக சுவாரஸ்யமாக அவள் சொல்கிறதை விட",
+     "target_text": "this is less exciting than what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவள் சொன்னதை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+     "target_text": "that's less exciting than what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொன்னதை புரிந்துகொள்ள விரும்புகிறேன்",
+     "target_text": "I want to understand what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொன்னது புரியவில்லை",
+     "target_text": "I didn't understand what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொன்னது மிகவும் சுவாரஸ்யமான",
+     "target_text": "that was interesting what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சொல்கிறதை விட இந்த கதை சுவாரஸ்யமாக",
+     "target_text": "this story is more exciting than what she was saying",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 133,
+  "phrases": {
+   "133:1": [
+    {
+     "known_text": "வேலை",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஒன்றாக வேலை செய்",
+     "target_text": "work together",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள் இன்று",
+     "target_text": "you work together today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் ஒன்றாக வேலை செய்கிறோம் நன்றாக",
+     "target_text": "we work together well now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் இன்று ஒன்றாக வேலை செய்கிறோம்",
+     "target_text": "we work together today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நன்றாக ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "you work together very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் ஒன்றாக வேலை செய்கிறார்கள்",
+     "target_text": "they work together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் நன்றாக ஒன்றாக வேலை செய்கிறோம்",
+     "target_text": "we work together well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நாங்கள் ஒன்றாக வேலை செய்கிறோம்",
+     "target_text": "today we work together",
+     "phrase_role": "use"
+    }
+   ],
+   "133:2": [
+    {
+     "known_text": "யாரோ",
+     "target_text": "someone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "யாரையாவது நன்றாக அறிவீர்கள்",
+     "target_text": "get to know someone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் யாரையாவது மிகவும் நன்றாக அறிவீர்கள்",
+     "target_text": "you get to know someone very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் யாரையாவது மிகவும் நன்றாக அறிவேன்",
+     "target_text": "I get to know someone very well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் யாரையாவது நன்றாக அறிவீர்கள்",
+     "target_text": "you get to know someone well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் யாரையாவது நன்றாக அறிவேன்",
+     "target_text": "I get to know someone well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் யாரையாவது நன்றாக அறிவீர்கள் இன்று",
+     "target_text": "you get to know someone well today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் யாரையாவது நன்றாக அறிவோம்",
+     "target_text": "we get to know someone well",
+     "phrase_role": "use"
+    }
+   ],
+   "133:3": [
+    {
+     "known_text": "ஒன்றாக வேலை செய்",
+     "target_text": "work together",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "when you work together",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "யாரையாவது அறிவீர்கள் போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "know someone when you work together",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நன்றாக யாரையாவது அறிவீர்கள் போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "know someone well when you work together",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் யாரையாவது நன்றாக அறிவீர்கள் போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "you get to know someone very well when you work together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் யாரையாவது நன்றாக அறிவேன் போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "I get to know someone well when you work together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது நல்லது போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "this is good when you work together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மகிழ்ச்சி உணர்கிறேன் போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "I feel happy when you work together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நன்றாக யாரையாவது அறிவீர்கள் போது நீங்கள் ஒன்றாக வேலை செய்கிறீர்கள்",
+     "target_text": "today you know someone well when you work together",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 134,
+  "phrases": {
+   "134:1": [
+    {
+     "known_text": "பிரச்னை",
+     "target_text": "problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு பிரச்னை",
+     "target_text": "a problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பிரச்னை இல்லை",
+     "target_text": "not a problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அந்த பிரச்னை இல்லை",
+     "target_text": "that problem not here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ஒரு பிரச்னை உணர்கிறேன்",
+     "target_text": "I feel a problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது ஒரு பிரச்னை இல்லை",
+     "target_text": "that is not a problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஒரு பிரச்னை இருக்கிறது",
+     "target_text": "there is a problem",
+     "phrase_role": "use"
+    }
+   ],
+   "134:2": [
+    {
+     "known_text": "கடினமான",
+     "target_text": "difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் கடினமான",
+     "target_text": "very difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு கடினமான விஷயம்",
+     "target_text": "a difficult something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது மிகவும் கடினமான",
+     "target_text": "this very difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அந்த வேலை கடினமான",
+     "target_text": "that work difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று மிகவும் கடினமான",
+     "target_text": "today very difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கடினமான வேலை செய்கிறேன்",
+     "target_text": "I do difficult work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது கடினமான இல்லை",
+     "target_text": "that not difficult",
+     "phrase_role": "use"
+    }
+   ],
+   "134:4": [
+    {
+     "known_text": "வேலை",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அவர்களுடன் வேலை",
+     "target_text": "work with them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் அவர்களுடன் வேலை செய்கிறீர்கள் இன்று",
+     "target_text": "you work with them today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அவர்களுடன் வேலை செய்கிறேன் நன்றாக",
+     "target_text": "I work with them well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் அவர்களுடன் வேலை செய்கிறீர்கள்",
+     "target_text": "you work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் அவர்களுடன் வேலை செய்கிறோம்",
+     "target_text": "we work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நீங்கள் அவர்களுடன் வேலை செய்கிறீர்கள்",
+     "target_text": "today you work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அவர்களுடன் கடினமான வேலை செய்கிறேன்",
+     "target_text": "I do difficult work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அவர்களுடன் வேலை செய்கிறேன்",
+     "target_text": "I work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கடினமான ஏதாவது நான் அவர்களுடன் வேலை செய்கிறேன்",
+     "target_text": "I work with them on something difficult",
+     "phrase_role": "use"
+    }
+   ],
+   "134:5": [
+    {
+     "known_text": "பிரச்னை",
+     "target_text": "problem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பிரச்னை இல்லை போது",
+     "target_text": "not a problem when",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கடினமான ஏதாவது பிரச்னை இல்லை போது நீங்கள் அவர்களுடன் வேலை",
+     "target_text": "something difficult not a problem when you work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் கடினமாக உழைக்கும்போது பிரச்னை இல்லை",
+     "target_text": "it's not a problem when you work hard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆங்கிலம் கற்கும்போது பிரச்னை இல்லை",
+     "target_text": "this is not a problem when you're learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் மெதுவாக பேசும்போது பிரச்னை இல்லை",
+     "target_text": "it's not a problem when you speak slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது பிரச்னை இல்லை போது",
+     "target_text": "it's not a problem when",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பிரச்னை இல்லை போது நீங்கள் அவர்களுடன் வேலை",
+     "target_text": "not a problem when you work with them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவளுக்கு பிரச்னை இல்லை போது நாங்கள் மெதுவாக பேசுகிறோம்",
+     "target_text": "it's not a problem for her when we speak slowly",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 135,
+  "phrases": {
+   "135:1": [
+    {
+     "known_text": "நினை",
+     "target_text": "think",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினை",
+     "target_text": "I think",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் நினை",
+     "target_text": "you think",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அது நல்லது என்று நினை",
+     "target_text": "I think that it's good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் ஏன் நினை?",
+     "target_text": "why do you think?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் இது நல்லது என்று நினை",
+     "target_text": "we think this is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று மிகவும் நல்லது என்று நினை",
+     "target_text": "I think today very good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அது மிகவும் நல்லது என்று நினை",
+     "target_text": "you think that so good",
+     "phrase_role": "use"
+    }
+   ],
+   "135:2": [
+    {
+     "known_text": "நினை",
+     "target_text": "think",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஏன் நீங்கள் நினை அது மிகவும் நல்லது",
+     "target_text": "why you think it's so good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் தெரியவில்லை ஏன் நீங்கள் நினை அது மிகவும் நல்லது",
+     "target_text": "I don't know why you think it's so good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று ஏன் நீங்கள் நினை அது மிகவும் நல்லது?",
+     "target_text": "today why you think it's so good?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் தெரியவில்லை ஏன் நீங்கள் நினை அது மிகவும் நல்லது இப்போதே",
+     "target_text": "I don't know why you think it's so good now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் தெரியவில்லை ஏன் நீங்கள் நினை அது மிகவும் நல்லது இன்று",
+     "target_text": "I don't know why you think it's so good today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்குப் புரியவில்லை ஏன் நீங்கள் நினை அது மிகவும் நல்லது",
+     "target_text": "I don't understand why you think it's so good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் கேட்கிறேன் ஏன் நீங்கள் நினை அது மிகவும் நல்லது",
+     "target_text": "I ask why you think it's so good",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 138,
+  "phrases": {
+   "138:2": [
+    {
+     "known_text": "நம்மை",
+     "target_text": "us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நம்மை சந்திக்க",
+     "target_text": "meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "wanted to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "he wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நம்மை சந்திக்க விரும்புகிறீர்களா?",
+     "target_text": "do you want to meet us?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர்கள் நம்மை சந்திக்க விரும்பினார்கள்",
+     "target_text": "they wanted to meet us",
+     "phrase_role": "use"
+    }
+   ],
+   "138:3": [
+    {
+     "known_text": "சந்திக்க",
+     "target_text": "meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நண்பன்",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நம்மை",
+     "target_text": "us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "my friend wanted to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினான் நேற்று",
+     "target_text": "my friend wanted to meet us yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினானா?",
+     "target_text": "did my friend want to meet us?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பவில்லை",
+     "target_text": "my friend didn't want to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினை என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "I think my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இந்த மாலை என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "this evening my friend wanted to meet us",
+     "phrase_role": "use"
+    }
+   ],
+   "138:4": [
+    {
+     "known_text": "சந்திக்க",
+     "target_text": "meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நண்பன்",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நம்மை",
+     "target_text": "us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "my friend wanted to meet us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இது",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இது தான் என் நண்பன் நம்மை சந்திக்க",
+     "target_text": "where my friend wanted to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று இது தான் என் நண்பன் நம்மை சந்திக்க",
+     "target_text": "today this was where my friend wanted to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "I think this was where my friend wanted to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "today this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நேற்று இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "yesterday this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "I feel this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினை இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+     "target_text": "I think this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 139,
+  "phrases": {
+   "139:1": [
+    {
+     "known_text": "சீக்கிரம்",
+     "target_text": "early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சீக்கிரம்",
+     "target_text": "I'm early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மிகவும் சீக்கிரம்",
+     "target_text": "I'm very early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவன் சீக்கிரம் இருக்கிறான்",
+     "target_text": "he is early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் சீக்கிரம் இருக்கிறீர்கள்",
+     "target_text": "you are early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சீக்கிரம் இருக்க வேண்டும்",
+     "target_text": "I want to be early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "சீக்கிரம் இருப்பது நல்லது",
+     "target_text": "it's good to be early",
+     "phrase_role": "use"
+    }
+   ],
+   "139:2": [
+    {
+     "known_text": "மன்னிக்கவும்",
+     "target_text": "sorry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும் இப்போது",
+     "target_text": "I'm sorry now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும்",
+     "target_text": "I'm sorry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும் இன்று",
+     "target_text": "I'm sorry today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும் மிகவும்",
+     "target_text": "I'm very sorry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ரொம்ப மன்னிக்கவும்",
+     "target_text": "I'm so sorry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மிகவும் மன்னிக்கவும்",
+     "target_text": "very sorry",
+     "phrase_role": "build"
+    }
+   ],
+   "139:3": [
+    {
+     "known_text": "சீக்கிரம்",
+     "target_text": "early",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மன்னிக்கவும்",
+     "target_text": "sorry",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மன்னிக்கவும் நான் சீக்கிரம்",
+     "target_text": "sorry I'm early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும் நான் சீக்கிரம் மிகவும்",
+     "target_text": "I'm sorry I'm very early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும் நான் சீக்கிரம்",
+     "target_text": "I'm sorry I'm early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மன்னிக்கவும் நான் சீக்கிரம் இன்று",
+     "target_text": "I'm sorry I'm early today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சீக்கிரம் வந்ததற்கு மன்னிக்கவும்",
+     "target_text": "I'm sorry that I'm early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் சீக்கிரம் வந்ததற்கு மன்னிக்கிறான்",
+     "target_text": "he's sorry he's early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நண்பர்களை சந்திக்க மன்னிக்கவும் நான் சீக்கிரம்",
+     "target_text": "sorry I'm early to meet my friends",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 140,
+  "phrases": {
+   "140:1": [
+    {
+     "known_text": "தாமதமாக",
+     "target_text": "late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் தாமதமாக",
+     "target_text": "very late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் தாமதமாக",
+     "target_text": "I'm late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் தாமதமாக வருவேன்",
+     "target_text": "I'm going to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் தாமதமாக வர விரும்பவில்லை",
+     "target_text": "I don't want to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் இன்று தாமதமாக வருகிறார்",
+     "target_text": "he is late today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் தாமதமாக வருவாள்",
+     "target_text": "she is going to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் நண்பன் இன்று காலை தாமதமாக வந்தான்",
+     "target_text": "my friend was late this morning",
+     "phrase_role": "use"
+    }
+   ],
+   "140:2": [
+    {
+     "known_text": "தாமதமாக",
+     "target_text": "late",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மிகவும் தாமதமாக வருவேன்",
+     "target_text": "going to be very late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மிகவும் தாமதமாக வருவேன்",
+     "target_text": "I'm going to be very late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்று மிகவும் தாமதமாக வருவேன்",
+     "target_text": "I'm going to be very late today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் மிகவும் தாமதமாக வருவார்",
+     "target_text": "he is going to be very late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் இன்று இரவு மிகவும் தாமதமாக வருவாள்",
+     "target_text": "she is going to be very late tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நாளை மிகவும் தாமதமாக வருவேன்",
+     "target_text": "I'm going to be very late tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் மிகவும் தாமதமாக வருவீர்கள்",
+     "target_text": "you're going to be very late",
+     "phrase_role": "build"
+    }
+   ],
+   "140:3": [
+    {
+     "known_text": "தாமதமாக",
+     "target_text": "late",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மிகவும் தாமதமாக வருவேன்",
+     "target_text": "going to be very late",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நினைத்தேன் தாமதமாக வருவேன்",
+     "target_text": "thought going to be very late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நினைத்தேன் மிகவும் தாமதமாக வருவேன்",
+     "target_text": "I thought I was going to be very late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மிகவும் தாமதமாக வருவேன் என்று நினைக்கவில்லை",
+     "target_text": "I didn't think I was going to be very late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் மிகவும் தாமதமாக வருவாள் என்று நினைத்தாள்",
+     "target_text": "she thought she was going to be very late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் மிகவும் தாமதமாக வருவார் என்று நினைத்தார்",
+     "target_text": "he thought he was going to be very late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று மிகவும் தாமதமாக வருவேன் என்று நினைத்தேன்",
+     "target_text": "I thought I was going to be very late today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் நண்பன் மிகவும் தாமதமாக வருவான் என்று நினைத்தேன்",
+     "target_text": "I thought my friend was going to be very late",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 142,
+  "phrases": {
+   "142:1": [
+    {
+     "known_text": "கருணையான",
+     "target_text": "kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் கருணையான",
+     "target_text": "very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் மிகவும் கருணையான",
+     "target_text": "you are very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவர் மிகவும் கருணையான",
+     "target_text": "he is very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் மிகவும் கருணையான",
+     "target_text": "she is very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது மிகவும் கருணையான",
+     "target_text": "that's very kind of you",
+     "phrase_role": "use"
+    }
+   ],
+   "142:2": [
+    {
+     "known_text": "நன்றியுள்ளவன்",
+     "target_text": "grateful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் நன்றியுள்ளவன்",
+     "target_text": "I'm grateful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் மிகவும் நன்றியுள்ளவன்",
+     "target_text": "I'm very grateful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்று நன்றியுள்ளவன்",
+     "target_text": "I'm grateful today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் மிகவும் நன்றியுள்ளவனாக இருந்தேன்",
+     "target_text": "I was very grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் ரொம்ப நன்றியுள்ளவன்",
+     "target_text": "I'm so grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் மிகவும் நன்றியுள்ளவள்",
+     "target_text": "she is very grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவிக்காக நான் மிகவும் நன்றியுள்ளவன்",
+     "target_text": "I'm very grateful for helping me",
+     "phrase_role": "use"
+    }
+   ],
+   "142:3": [
+    {
+     "known_text": "உதவி",
+     "target_text": "helping",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் உதவுகிறீர்கள்",
+     "target_text": "you are helping",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் எனக்கு உதவுகிறீர்கள்",
+     "target_text": "you are helping me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் உதவி செய்கிறான்",
+     "target_text": "he is helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவி செய்வது மிகவும் நல்லது",
+     "target_text": "helping is very good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு உதவி செய்வது பிடிக்கும்",
+     "target_text": "I like helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் நண்பருக்கு உதவி செய்வது நல்லது",
+     "target_text": "helping your friend is good",
+     "phrase_role": "use"
+    }
+   ],
+   "142:4": [
+    {
+     "known_text": "நன்றியுள்ளவன்",
+     "target_text": "grateful",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உதவி",
+     "target_text": "helping",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உதவிக்காக",
+     "target_text": "for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்களுக்கு",
+     "target_text": "to you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நன்றியுள்ளவன் நீங்களுக்கு உதவிக்காக",
+     "target_text": "grateful to you for helping",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உதவிக்காக உங்களுக்கு நான் நன்றியுள்ளவன்",
+     "target_text": "I'm grateful to you for helping",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உதவிக்காக உங்களுக்கு நான் மிகவும் நன்றியுள்ளவன்",
+     "target_text": "I'm so grateful to you for helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று உதவியதற்கு உங்களுக்கு நான் நன்றியுள்ளவன்",
+     "target_text": "I'm grateful to you for helping me today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உதவிக்காக உங்களுக்கு மிகவும் நன்றியுள்ளவன்",
+     "target_text": "I'm very grateful to you for helping me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் உதவிக்காக உங்களுக்கு நன்றியுள்ளவள்",
+     "target_text": "she is grateful to you for helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் கடிதம் எழுத உதவியதற்கு நான் நன்றியுள்ளவன்",
+     "target_text": "I'm grateful to you for helping me write your letter",
+     "phrase_role": "use"
+    }
+   ],
+   "142:5": [
+    {
+     "known_text": "கருணையான",
+     "target_text": "kind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இது",
+     "target_text": "thats",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மிகவும்",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இதன்",
+     "target_text": "of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்கள்",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மற்றும்",
+     "target_text": "and",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நான்",
+     "target_text": "im",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான்",
+     "target_text": "that's very kind of you and I'm",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது மிகவும் கருணையானது நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+     "target_text": "that's very kind of you and I'm grateful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+     "target_text": "that's very kind of you and I'm grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் இது மிகவும் கருணையானது நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+     "target_text": "I think that's very kind of you and I'm grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன்",
+     "target_text": "today that's very kind of you and I'm grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது மிகவும் கருணையானது நீங்கள் மற்றும் நான் மிகவும் நன்றியுள்ளவன்",
+     "target_text": "that's very kind of you and I'm so grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது மிகவும் கருணையான நீங்கள் மற்றும் நான் நன்றியுள்ளவன் நீங்களுக்கு உதவிக்காக",
+     "target_text": "that's very kind of you and I'm grateful to you for helping",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 146,
+  "phrases": {
+   "146:1": [
+    {
+     "known_text": "அதை சரிசெய்ய",
+     "target_text": "fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் அதை சரிசெய்யலாம்",
+     "target_text": "we can fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சரிசெய்ய வேண்டும்",
+     "target_text": "I need to fix",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இதை சரிசெய்யலாம்",
+     "target_text": "I can fix this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அதை சரிசெய்ய முடியுமா?",
+     "target_text": "can you fix it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அதை சரிசெய்யலாம்",
+     "target_text": "you can fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதை சரிசெய்யலாம்",
+     "target_text": "I can fix it",
+     "phrase_role": "build"
+    }
+   ],
+   "146:2": [
+    {
+     "known_text": "வேலை செய்கிறது நன்றாக",
+     "target_text": "working well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது வேலை செய்கிறது",
+     "target_text": "this is working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது வேலை செய்யவில்லை",
+     "target_text": "it's not working now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது நன்றாக வேலை செய்கிறது",
+     "target_text": "this is working well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று எதுவும் வேலை செய்யவில்லை",
+     "target_text": "nothing is working today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று காலை எல்லாம் வேலை செய்கிறது",
+     "target_text": "everything is working this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "வேலை செய்யவில்லை",
+     "target_text": "not working",
+     "phrase_role": "build"
+    }
+   ],
+   "146:3": [
+    {
+     "known_text": "சரிசெய்ய",
+     "target_text": "fix",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முயன்றோம்",
+     "target_text": "tried",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முயன்றோம் சரிசெய்ய அதை",
+     "target_text": "tried to fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் முயன்றோம் சரிசெய்ய அதை",
+     "target_text": "we tried to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முயன்றேன் சரிசெய்ய அதை",
+     "target_text": "I tried to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் முயன்றீர்கள் சரிசெய்ய அதை",
+     "target_text": "you tried to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் அதை சரிசெய்ய முயன்றீர்களா?",
+     "target_text": "did you try to fix it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் அதை சரிசெய்ய முயன்றான்",
+     "target_text": "he tried to fix it",
+     "phrase_role": "use"
+    }
+   ],
+   "146:4": [
+    {
+     "known_text": "வேலை செய்கிறது",
+     "target_text": "working",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முயன்றோம்",
+     "target_text": "tried",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சரிசெய்ய",
+     "target_text": "fix",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நாங்கள்",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இதிலிருந்து",
+     "target_text": "since",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "வேலை செய்கிறது நாங்கள் முயன்றதிலிருந்து சரிசெய்ய",
+     "target_text": "working since we tried to fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது",
+     "target_text": "nothing seems to be working since we tried to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து வேலை செய்கிறது",
+     "target_text": "it's been working since we tried to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து எல்லாம் வேலை செய்கிறது",
+     "target_text": "everything is working since we tried to fix it",
+     "phrase_role": "use"
+    }
+   ],
+   "146:5": [
+    {
+     "known_text": "வேலை செய்கிறது",
+     "target_text": "working",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "எதுவும்",
+     "target_text": "nothing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "தெரியவில்லை",
+     "target_text": "seems",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது",
+     "target_text": "nothing seems to be working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது",
+     "target_text": "nothing seems to be working now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது",
+     "target_text": "nothing seems to be working since we tried to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது என்று நினைக்கிறேன்",
+     "target_text": "I think nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது",
+     "target_text": "today nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது என்று உணர்கிறேன்",
+     "target_text": "I feel nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நேற்று நாங்கள் சரிசெய்ய முயன்றதிலிருந்து எதுவும் வேலை செய்வதில்லை போல் தெரிகிறது",
+     "target_text": "yesterday nothing seems to be working since we tried to fix it",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 148,
+  "phrases": {
+   "148:1": [
+    {
+     "known_text": "நான் பொறுமையாக இருக்கிறேன்",
+     "target_text": "I'm patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிகவும் பொறுமையான",
+     "target_text": "very patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவள் இன்று பொறுமையாக இருக்கிறாள்",
+     "target_text": "she is patient today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் மிகவும் பொறுமையான",
+     "target_text": "he was very patient",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் பொறுமையான இருக்க வேண்டும்",
+     "target_text": "I need to be patient",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் என்னிடம் பொறுமையான",
+     "target_text": "she was patient with me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆங்கிலம் கற்கும்போது பொறுமையான இருக்க வேண்டும்",
+     "target_text": "you need to be patient when learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "பொறுமையாக இல்லை",
+     "target_text": "not patient",
+     "phrase_role": "build"
+    }
+   ],
+   "148:2": [
+    {
+     "known_text": "பதில் சொல்",
+     "target_text": "answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "பதில் சொல்ல",
+     "target_text": "to answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் பதில் சொல்ல முடியும்",
+     "target_text": "I can answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் இதற்கு பதில் சொல்ல முடியுமா?",
+     "target_text": "can you answer this?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் பதில் சொல்லவில்லை",
+     "target_text": "he didn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று பதில் சொல்ல வேண்டும்",
+     "target_text": "I need to answer today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு பதில் சொல்லுங்கள்",
+     "target_text": "answer me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இதற்கு பதில் சொல்",
+     "target_text": "answer this",
+     "phrase_role": "build"
+    }
+   ],
+   "148:3": [
+    {
+     "known_text": "பதில் சொல்",
+     "target_text": "answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முடியாத",
+     "target_text": "couldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பதில் சொல்ல முடியவில்லை",
+     "target_text": "couldn't answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியவில்லை",
+     "target_text": "I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்களால் பதில் சொல்ல முடியவில்லை",
+     "target_text": "you couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவனால் பதில் சொல்ல முடியவில்லை",
+     "target_text": "he couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று என்னால் பதில் சொல்ல முடியவில்லை",
+     "target_text": "I couldn't answer today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் ஏன் பதில் சொல்ல முடியவில்லை?",
+     "target_text": "why couldn't you answer?",
+     "phrase_role": "use"
+    }
+   ],
+   "148:4": [
+    {
+     "known_text": "பதில் சொல்",
+     "target_text": "answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முடியாத",
+     "target_text": "couldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "போது",
+     "target_text": "when",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியாத போது",
+     "target_text": "when I couldn't answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியாத போது அவர் பொறுமையாக இருந்தார்",
+     "target_text": "he was patient when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியாத போது அவர் பொறுமையான இல்லை",
+     "target_text": "he wasn't very patient when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியாத போது பதட்டமாக இருந்தேன்",
+     "target_text": "I felt nervous when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியாத போது அவள் கருணையான",
+     "target_text": "she was kind when I couldn't answer",
+     "phrase_role": "use"
+    }
+   ],
+   "148:5": [
+    {
+     "known_text": "பொறுமையான",
+     "target_text": "patient",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இல்லை",
+     "target_text": "wasn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அவன்",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "போது",
+     "target_text": "when",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அவன் இல்லை மிகவும் பொறுமையான போது",
+     "target_text": "he wasn't very patient when",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+     "target_text": "he wasn't very patient when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினை அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+     "target_text": "I think he wasn't very patient when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+     "target_text": "I feel he wasn't very patient when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+     "target_text": "today he wasn't very patient when I couldn't answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னால் பதில் சொல்ல முடியாத போது அவர் பொறுமையாக இருந்தாரா?",
+     "target_text": "was he patient when I couldn't answer?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 149,
+  "phrases": {
+   "149:1": [
+    {
+     "known_text": "முடி",
+     "target_text": "finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் முடிப்பேன்",
+     "target_text": "I will finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இதை முடிக்க முடியும்",
+     "target_text": "I can finish this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் இதை முடிக்க முடியுமா?",
+     "target_text": "can you finish this?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் முடிப்பான்",
+     "target_text": "he will finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்று முடிக்க வேண்டும்",
+     "target_text": "I need to finish today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் முடித்தீர்களா?",
+     "target_text": "did you finish?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் முடிப்பீர்கள்",
+     "target_text": "you will finish",
+     "phrase_role": "build"
+    }
+   ],
+   "149:3": [
+    {
+     "known_text": "முடி",
+     "target_text": "finish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரைவில்",
+     "target_text": "soon",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முடி விரைவில்",
+     "target_text": "finish soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் விரைவில் முடிப்பேன்",
+     "target_text": "I will finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் விரைவில் முடிப்பீர்களா?",
+     "target_text": "will you finish soon?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் விரைவில் முடிப்பான்",
+     "target_text": "he will finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "விரைவில் முடிக்க நம்புகிறேன்",
+     "target_text": "I hope to finish soon",
+     "phrase_role": "use"
+    }
+   ],
+   "149:4": [
+    {
+     "known_text": "முடி",
+     "target_text": "finish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரைவில்",
+     "target_text": "soon",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நம்புகிறேன்",
+     "target_text": "hope",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்கள்",
+     "target_text": "you'll",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "hope you'll finish soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "I hope you'll finish soon today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் கதையை நீங்கள் முடி விரைவில் என்று நம்புகிறேன்",
+     "target_text": "I hope you'll finish your story soon",
+     "phrase_role": "use"
+    }
+   ],
+   "149:5": [
+    {
+     "known_text": "நம்புகிறேன்",
+     "target_text": "hope",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்கள்",
+     "target_text": "you'll",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "முடி",
+     "target_text": "finish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரைவில்",
+     "target_text": "soon",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அதனால்",
+     "target_text": "so",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "so I hope you'll finish soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "so I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இது மிகவும் கடினமாக இல்லை அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "this isn't very difficult so I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் நன்றாக செய்கிறீர்கள் அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "you're doing well so I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அதனால் நீங்கள் இன்று விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "so I hope you'll finish soon today",
+     "phrase_role": "use"
+    }
+   ],
+   "149:6": [
+    {
+     "known_text": "இல்லை",
+     "target_text": "isn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கஷ்டம்",
+     "target_text": "difficult",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அதனால்",
+     "target_text": "so",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இது மிகவும் கடினமாக இல்லை அதனால்",
+     "target_text": "this isn't very difficult so",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இது மிகவும் கடினமாக இல்லை அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "this isn't very difficult so I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினை இது இல்லை மிகவும் கஷ்டம் அதனால் நான் நம்புகிறேன் நீங்கள் முடி விரைவில்",
+     "target_text": "I think this isn't very difficult so I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் இது இல்லை மிகவும் கஷ்டம் அதனால் நான் நம்புகிறேன் நீங்கள் முடி விரைவில்",
+     "target_text": "I feel this isn't very difficult so I hope you'll finish soon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று இது மிகவும் கடினமாக இல்லை அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target_text": "today this isn't very difficult so I hope you'll finish soon",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 153,
+  "phrases": {
+   "153:2": [
+    {
+     "known_text": "வழி",
+     "target_text": "way",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சரியாக",
+     "target_text": "exactly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ஒரே மாதிரி",
+     "target_text": "same",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சரியாக அதே மாதிரி வழி",
+     "target_text": "exactly the same way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அதை சரியாக அதே மாதிரி வழியில் செய்வேன்",
+     "target_text": "I would do it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சரியாக அதே மாதிரி வழியில் செய்தாள்",
+     "target_text": "she did it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சரியாக அதே மாதிரி வழியில் செய்யவில்லை",
+     "target_text": "I didn't do it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் சரியாக அதே மாதிரி வழியில் சொல்லியிருப்பேன்",
+     "target_text": "I would have said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவன் அதை சரியாக அதே மாதிரி வழியில் சொன்னான்",
+     "target_text": "he said it in exactly the same way",
+     "phrase_role": "use"
+    }
+   ],
+   "153:3": [
+    {
+     "known_text": "சரியாக",
+     "target_text": "exactly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சொன்னேன்",
+     "target_text": "said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சரியாக அதே மாதிரி வழியில் சொன்னது",
+     "target_text": "said it in exactly the same way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சரியாக அதே மாதிரி வழியில் சொல்லியிருக்க மாட்டேன்",
+     "target_text": "I wouldn't have said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் விரும்பிய வழியில் சரியாக சொன்னேன் அதை",
+     "target_text": "I said it in exactly the way you wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் சரியாக அதே மாதிரி வழியில் சொன்னாள்",
+     "target_text": "she said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அதை சரியாக அதே மாதிரி வழியில் சொன்னேன்",
+     "target_text": "I said it in exactly the same way",
+     "phrase_role": "use"
+    }
+   ],
+   "153:4": [
+    {
+     "known_text": "சொன்னேன்",
+     "target_text": "said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மாட்டேன்",
+     "target_text": "wouldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இருக்கும்",
+     "target_text": "have",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அதை சொல்லியிருக்க மாட்டேன்",
+     "target_text": "wouldn't have said it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அதை சரியாக அதே மாதிரி வழியில் சொல்லியிருக்க மாட்டேன்",
+     "target_text": "I wouldn't have said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினை இல்லை முடியும் சொன்னேன் அதை சரியாக அதே மாதிரி வழி",
+     "target_text": "I think I wouldn't have said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் உணர்கிறேன் இல்லை முடியும் சொன்னேன் அதை சரியாக அதே மாதிரி வழி",
+     "target_text": "I feel I wouldn't have said it in exactly the same way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இன்று இல்லை முடியும் சொன்னேன் அதை சரியாக அதே மாதிரி வழி",
+     "target_text": "today I wouldn't have said it in exactly the same way",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 163,
+  "phrases": {
+   "163:1": [
+    {
+     "known_text": "நான் நினைக்கிறேன்",
+     "target_text": "I think that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சுவாரஸ்யமானது",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது",
+     "target_text": "I think that it's interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மிகவும் சுவாரஸ்யமானது என்று நினைக்கிறேன்",
+     "target_text": "I think that it's very interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சுவாரஸ்யமானது என்று நினைக்கிறீர்களா?",
+     "target_text": "do you think that it's interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது சுவாரஸ்யமானது என்று நான் நினைக்கவில்லை",
+     "target_text": "I don't think that it's interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது ஆனால் கஷ்டம்",
+     "target_text": "I think that it's interesting but difficult",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 178,
+  "phrases": {
+   "178:1": [
+    {
+     "known_text": "ஆனாலும்",
+     "target_text": "although",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "கஷ்டம் ஆனாலும்",
+     "target_text": "although it's difficult",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நல்லது ஆனாலும்",
+     "target_text": "although it's good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "தாமதமாக இருக்கிறது ஆனாலும் நான் வருவேன்",
+     "target_text": "although it's late I'll come",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கஷ்டமாக இருக்கிறது ஆனாலும் நான் உங்களுக்கு உதவுவேன்",
+     "target_text": "I'll help you although it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "கஷ்டமாக இருக்கிறது ஆனாலும் நான் கற்க விரும்புகிறேன்",
+     "target_text": "although it's difficult I want to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நல்லது ஆனாலும் கஷ்டமாக இருக்கிறது",
+     "target_text": "although it's good it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நிச்சயமில்லை ஆனாலும் நான் முயற்சிப்பேன்",
+     "target_text": "although I'm not sure I'll try",
+     "phrase_role": "use"
+    }
+   ],
+   "178:2": [
+    {
+     "known_text": "ஆனாலும்",
+     "target_text": "although",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பார்க்க",
+     "target_text": "see",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "விரும்பினேன்",
+     "target_text": "wanted to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "உங்களை பார்க்க விரும்பினேன் ஆனாலும் நேரம் இல்லாமல் போச்சு",
+     "target_text": "I didn't have time although wanted to see you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்களை பார்க்க விரும்பினேன் ஆனாலும் கிளம்ப வேண்டியிருந்தது",
+     "target_text": "although wanted to see you I had to leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்களை பார்க்க விரும்பினேன் ஆனாலும் நேரம் இல்லை",
+     "target_text": "although wanted to see you there wasn't time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்களை பார்க்க விரும்பினேன் ஆனாலும் போக வேண்டியிருந்தது",
+     "target_text": "I had to go although wanted to see you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 179,
+  "phrases": {
+   "179:1": [
+    {
+     "known_text": "என்ன",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீங்கள் போகிறீர்கள்",
+     "target_text": "are you going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "செய்ய",
+     "target_text": "do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என்ன நீங்கள் செய்யப் போகிறீர்கள்?",
+     "target_text": "what are you going to do?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இப்போது நீங்கள் என்ன செய்யப் போகிறீர்கள்?",
+     "target_text": "what are you going to do now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் என்ன செய்யப் போகிறீர்கள் என்று சொல்லுங்கள்",
+     "target_text": "tell me what you are going to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் என்ன செய்யப் போகிறீர்கள் என்று எனக்குத் தெரியவில்லை",
+     "target_text": "I don't know what you are going to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஞாயிற்றுக்கிழமை நீங்கள் என்ன செய்யப் போகிறீர்கள்?",
+     "target_text": "what are you going to do on Sunday?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 182,
+  "phrases": {
+   "182:1": [
+    {
+     "known_text": "சாவிகள்",
+     "target_text": "keys",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் சாவிகள்",
+     "target_text": "my keys",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்கள் சாவிகள்",
+     "target_text": "your keys",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் சாவிகள் இங்கே இருக்கின்றன",
+     "target_text": "my keys are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் சாவிகள் எங்கே?",
+     "target_text": "where are my keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னிடம் என் சாவிகள் இல்லை",
+     "target_text": "I don't have my keys",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்களிடம் என் சாவிகள் இருக்கிறதா?",
+     "target_text": "do you have my keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "உங்கள் சாவிகள் இங்கே இல்லை",
+     "target_text": "your keys are not here",
+     "phrase_role": "use"
+    }
+   ],
+   "182:2": [
+    {
+     "known_text": "பார்த்தீர்களா",
+     "target_text": "seen",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "என்",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "சாவிகள்",
+     "target_text": "keys",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "பார்த்தீர்களா என் சாவிகளை எங்காவது",
+     "target_text": "seen my keys anywhere",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் என் சாவிகளை எங்கே பார்த்தீர்கள்?",
+     "target_text": "where have you seen my keys?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+     "target_text": "have you seen my keys anywhere?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 268,
+  "phrases": {
+   "268:1": [
+    {
+     "known_text": "சில மின்னஞ்சல்கள்",
+     "target_text": "some emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "என் மின்னஞ்சல்கள்",
+     "target_text": "my emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்கள் மின்னஞ்சல்கள்",
+     "target_text": "your emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் சில மின்னஞ்சல்கள் அனுப்பினேன்",
+     "target_text": "I sent some emails",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் என் மின்னஞ்சல்களைப் படித்தீர்களா?",
+     "target_text": "did you read my emails?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என்னிடம் சில மின்னஞ்சல்கள் இருக்கின்றன",
+     "target_text": "I have some emails",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் எனக்குச் சில மின்னஞ்சல்கள் அனுப்பினாள்",
+     "target_text": "she sent me some emails",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "முடிந்தவரை விரைவாக மின்னஞ்சல்கள் எழுத போகிறேன்",
+     "target_text": "I'm going to write emails as quickly as possible.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மின்னஞ்சல்கள் எழுத வேண்டும்",
+     "target_text": "should write emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நீங்கள் மின்னஞ்சல்கள் பற்றி கவலைப்படக்கூடாது",
+     "target_text": "You shouldn't worry about the emails",
+     "phrase_role": "use"
+    }
+   ],
+   "268:2": [
+    {
+     "known_text": "அனுப்பினாள்",
+     "target_text": "sent me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "மின்னஞ்சல்கள்",
+     "target_text": "emails",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "கடந்த வாரம்",
+     "target_text": "last week",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "அனுப்பினாள் மின்னஞ்சல்கள் கடந்த வாரம்",
+     "target_text": "sent me emails last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவன் கடந்த வாரம் எனக்கு மின்னஞ்சல்கள் அனுப்பினான்",
+     "target_text": "he sent me emails last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் அம்மா கடந்த வாரம் மின்னஞ்சல்கள் அனுப்பினாள்",
+     "target_text": "my mother sent me emails last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "என் சகோதரி அனுப்பினாள் மின்னஞ்சல்கள் கடந்த வாரம்",
+     "target_text": "my sister sent me emails last week",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 276,
+  "phrases": {
+   "276:1": [
+    {
+     "known_text": "இங்கே நிற்க",
+     "target_text": "stay here",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நீண்டது",
+     "target_text": "for a little longer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "இங்கே நிற்க நீண்டது",
+     "target_text": "stay here for a little longer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் இன்னும் சிறிது நேரம் இங்கே இருக்கலாமா?",
+     "target_text": "can I stay here for a little longer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இன்னும் சிறிது நேரம் இங்கே இருக்க முடியும் என்று நினைக்கிறேன்",
+     "target_text": "I think I can stay here for a little longer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவர் இன்னும் சிறிது நேரம் இங்கே இருக்கலாம்",
+     "target_text": "he can stay here for a little longer",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 277,
+  "phrases": {
+   "277:1": [
+    {
+     "known_text": "மிகவும் முன்னதாக",
+     "target_text": "very early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மிக முன்னதாகவே",
+     "target_text": "too early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இன்று முன்னதாக",
+     "target_text": "early today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "முன்னதாக",
+     "target_text": "early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நீங்கள் முன்னதாக வந்துவிட்டீர்கள்",
+     "target_text": "you're early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் முன்னதாகக் கிளம்ப விரும்புகிறேன்",
+     "target_text": "I want to leave early",
+     "phrase_role": "use"
+    }
+   ],
+   "277:2": [
+    {
+     "known_text": "கூட்டம் முன்னதாக அடுத்த வாரம்",
+     "target_text": "meeting early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஒரு கூட்டம்",
+     "target_text": "a meeting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அடுத்த வாரம்",
+     "target_text": "next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அவருக்கு அடுத்த வாரம் முன்னதாக ஒரு கூட்டம் இருக்கிறது",
+     "target_text": "he has a meeting early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "எனக்கு அடுத்த வாரம் முன்னதாக ஒரு கூட்டம் இருக்கிறது",
+     "target_text": "I have a meeting early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அடுத்த வாரம் முன்னதாக ஒரு கூட்டம் நடைபெறுகிறது",
+     "target_text": "there is a meeting early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அடுத்த வாரம் முன்னதாக கூட்டம் பற்றி தெரியுமா?",
+     "target_text": "do you know about the meeting early next week?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 289,
+  "phrases": {
+   "289:1": [
+    {
+     "known_text": "எனக்கு ஆர்வம்",
+     "target_text": "I wonder",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "இதைப் பற்றி ஆர்வம்",
+     "target_text": "wonder about this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "உங்களுக்கு ஆர்வம்",
+     "target_text": "you wonder",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ஆர்வம்",
+     "target_text": "wonder",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இதைப் பற்றி எனக்கு ஆர்வம்",
+     "target_text": "I wonder about this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அது உண்மையா என்று எனக்கு ஆர்வம்",
+     "target_text": "I wonder if it's true",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "இதைப் பற்றி உங்களுக்கு ஆர்வமா?",
+     "target_text": "do you wonder about this?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவனுக்குத் தெரியுமா என்று எனக்கு ஆர்வம்",
+     "target_text": "I wonder if he knows",
+     "phrase_role": "use"
+    }
+   ],
+   "289:2": [
+    {
+     "known_text": "இந்த மதியம்",
+     "target_text": "this afternoon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மதியத்தில்",
+     "target_text": "in the afternoon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மதிய வணக்கம்",
+     "target_text": "good afternoon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "மதியம்",
+     "target_text": "afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் இந்த மதியம் அவனைப் பார்த்தேன்",
+     "target_text": "I saw him this afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "மதியம் சந்திக்கலாம்",
+     "target_text": "see you this afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "அவள் மதியத்தில் வேலை செய்கிறாள்",
+     "target_text": "she works in the afternoon",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 374,
+  "phrases": {
+   "374:1": [
+    {
+     "known_text": "நான்",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நினைத்தேன்",
+     "target_text": "thought",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "நான் நினைத்தேன்",
+     "target_text": "I thought",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது அழகாக இருந்தது என்று நினைத்தேன்",
+     "target_text": "I thought it was beautiful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "அது மிகவும் அழகாக இருந்தது என்று நினைத்தேன்",
+     "target_text": "I thought it was very beautiful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "நான் அது உண்மை என்று நினைத்தேன்",
+     "target_text": "I thought it was true",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அவள் வேலையாக இருந்தாள் என்று நினைத்தேன்",
+     "target_text": "I thought she was busy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அது ஒரு சுவாரஸ்யமான புத்தகம் என்று நினைத்தேன்",
+     "target_text": "I thought it was an interesting book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "நான் அது நன்றாக இருந்தது என்று நினைத்தேன்",
+     "target_text": "I thought it was good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ஆம், நான் அது மிகவும் அழகாக இருந்தது என்று நினைத்தேன்",
+     "target_text": "yes I thought it was very beautiful",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

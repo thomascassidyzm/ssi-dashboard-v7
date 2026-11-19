@@ -1,0 +1,54 @@
+{
+ "seed": 280,
+ "lego_ops": {
+  "L01": {
+   "set": {
+    "known_text": "ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਕੰਮ",
+    "target_text": "the most important job",
+    "type": "M",
+    "components": [
+     {
+      "known": "ਸਭ ਤੋਂ",
+      "target": "the most"
+     },
+     {
+      "known": "ਜ਼ਰੂਰੀ",
+      "target": "important"
+     },
+     {
+      "known": "ਕੰਮ",
+      "target": "job"
+     }
+    ]
+   },
+   "why": "S3: 'most' is in the seed ('No I only had to do the most important job') and no LEGO of the seed carries it; it is not taught until S0288. 'job' grows to 'the most important job' (6 syllables, ungapped, a piece of the seed), the wording B03/U02/U03/U05 and S0280L02U01 already use. 'job' stays available afterwards as a word met inside the chunk."
+  }
+ },
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਇੱਥੇ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਕੰਮ",
+     "the most important job here"
+    ],
+    "B02": [
+     "ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਕੰਮ ਕਰਨਾ",
+     "to do the most important job"
+    ],
+    "B03": [
+     "ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਕੰਮ ਨਹੀਂ",
+     "not the most important job"
+    ],
+    "U01": [
+     "ਇਹ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਕੰਮ ਨਹੀਂ ਹੈ",
+     "this isn't the most important job"
+    ],
+    "U04": [
+     "ਮੈਂ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "I want to do the most important job"
+    ]
+   }
+  }
+ },
+ "notes": "cs #813 re-cut: 'job' -> 'the most important job'. U02/U03/U05 already contain it and are untouched; the rows that said 'a job', 'an important job', 'this job' are re-said with the whole LEGO (this basket never had a bare row, so none is added). L02's rows all still contain 'only had to do' and are untouched."
+}

@@ -1,0 +1,47 @@
+{
+ "course": "eng_for_guj",
+ "batch": "auto",
+ "seeds": [
+  40,
+  138
+ ],
+ "counts": {
+  "lego_insert": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "update": 0,
+  "delete": 2
+ },
+ "structural": false,
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [
+  "S0040L02C01: duplicate of S0040L02B01 in the basket: \"at the moment\"",
+  "S0040L02: after the edit: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0138L01: after the edit: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json))"
+ ],
+ "checks": [
+  {
+   "lego": "S0040L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 1,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0138L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "real_builds_after": 1,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 1 BUILD + 0 USE authored from taught chunks before these deletes apply (backfill.json)"
+  }
+ ]
+}
