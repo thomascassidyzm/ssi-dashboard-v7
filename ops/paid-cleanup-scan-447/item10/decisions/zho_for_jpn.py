@@ -431,6 +431,133 @@ D('S0077L03', 'regloss', known='こんなに', why='"こんなに・これほど
   b={'B01': ('こんなに早い', '这么快'), 'B02': ('こんなに良い', '这么好'), 'B03': ('こんなにたくさん理解した', '懂得这么多'),
      'U04': ('こんなに早く学んでとても良い', '学得这么快很好'), 'U02': ('彼はもうこんなにたくさん学んだ', '他已经学了这么多')})
 
+# ---- seed 122 "簡単に感じ始めていて、どう進んでいるかにワクワクしています。| 开始觉得更容易，我对进展很兴奋。"
+D('S0122L01', 'grow', known='どう進んでいるかにワクワクしている', target='对进展很兴奋', type='M', kmatch='ワクワク',
+  comps=[['に対して', '对'], ['進展', '进展'], ['ワクワクする', '兴奋']],
+  why='对 is a preposition taught alone (L7) under "〜に対して", which the seed never says. Folded with the verb it governs: the seed\'s どう進んでいるかにワクワクしている = 对进展很兴奋 (6). Rows (all "this/選択/方法", untaught) go. L13 note: L02 进展 and L03 兴奋 follow.',
+  b=dels('B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', '私はどう進んでいるかにワクワクしている', '我对进展很兴奋'), ('b', '彼はどう進んでいるかにワクワクしている', '他对进展很兴奋'),
+       ('b', '私たちはどう進んでいるかにワクワクしている', '我们对进展很兴奋'),
+       ('u', '今日はどう進んでいるかにワクワクしています', '我今天对进展很兴奋'), ('u', 'あなたはどう進んでいるかにワクワクしていますか', '你对进展很兴奋吗'),
+       ('u', '私たちはもうどう進んでいるかにワクワクしています', '我们已经对进展很兴奋了'), ('u', 'でも私はどう進んでいるかにワクワクしています', '但是我对进展很兴奋'),
+       ('u', '私の友達はどう進んでいるかにワクワクしています', '我的朋友对进展很兴奋')])
+
+# ---- seed 124 "それはいい考えだと思いました。| 我以为那是个好主意。"
+D('S0124L01', 'regloss', known='思いました', kmatch='思',
+  why='"〜だと思い込む" is gapped and 思い込む is not in the seed; the seed says 思いました. (思う → 觉得 is S0047L01: the past form is the seed\'s own and matches 以为\'s "thought (wrongly)"; flagged as a near-twin prompt, not a clash.)', add=[('u', 'あなたは中国語を話せると思いました', '我以为你能说中文')])
+
+# ---- seed 133 "一緒に働くと誰かをとてもよく知るようになります。| 一起工作的时候你会很好地认识一个人。"
+D('S0133L01', 'regloss', known='とてもよく', why='"よく・うまく" is a two-form label; the seed says とてもよく (= 很好地, with 很). Rows in うまく rebuilt or go.',
+  b={'B02': ('とてもよく知る', '很好地认识'), 'B03': 'd', 'U01': ('これをとてもよくできる', '我能很好地做这个'), 'U02': ('彼女をとてもよく知りたい', '我想很好地认识她'),
+     'U03': ('とてもよく理解したと思う', '我觉得我很好地理解了'), 'U04': 'd'},
+  add=[('b', 'とてもよく話す', '很好地说'), ('b', 'とてもよく学ぶ', '很好地学'), ('u', '彼はとてもよく説明できます', '他能很好地解释')])
+
+# ---- seed 150 "お名前を教えていただけますか？| 你可以告诉我你叫什么名字吗？"
+D('S0150L01', 'grow', known='お名前', target='叫什么名字', type='M', comps=[['という名前だ', '叫'], ['何', '什么'], ['名前', '名字']],
+  why='"〜という名前だ" is gapped and not in the seed; 叫 is bound and grows to its object: the seed\'s お名前 = 叫什么名字 (4).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', '彼女のお名前', '她叫什么名字'), ('b', '彼のお名前', '他叫什么名字'), ('b', 'あなたのお名前', '你叫什么名字'),
+       ('u', '彼女のお名前を教えてくれますか', '你能告诉我她叫什么名字吗'), ('u', '彼女のお名前を知りたいです', '我想知道她叫什么名字'),
+       ('u', '彼のお名前を知っていますか', '你知道他叫什么名字吗'), ('u', 'あなたのお名前を覚えたいです', '我想记住你叫什么名字'),
+       ('u', 'お名前を教えてくれますか', '你能告诉我你叫什么名字吗')])
+
+# ---- seed 153 "全く同じ言い方はしなかったでしょう。| 我不会用完全一样的方式说。"
+D('S0153L01', 'regloss', known='全く', why='"完全に・全然" is a two-form label; the seed says 全く. Rows rebuilt to 全く; rows with untaught 紧张/完美/当然 go.',
+  b={'C01': ('終わる', '完'), 'C02': ('全部', '全'), 'B01': 'd', 'B02': ('全くわからない', '我完全不懂'), 'B03': ('彼女は全くわからない', '她完全不懂'), 'B04': 'd',
+     'U01': ('あれは全く同じです', '那是完全一样的'), 'U02': ('あれは全く違います', '那是完全不同的'), 'U04': 'd', 'U05': 'd'},
+  add=[('b', '全く同じ', '完全一样'), ('u', '私の答えは全く違います', '我的答案完全不同'), ('u', '彼は全く心配していません', '他完全不担心'),
+       ('u', '私たちの答えは全く同じです', '我们的答案完全一样')])
+
+# ---- seed 155 "明日の朝数分待っても構いません。| 我不介意明天早上等几分钟。"
+D('S0155L02', 'grow', known='数分', target='几分钟', type='M', comps=[['いくつか', '几'], ['分', '分钟']],
+  why='"〜分間" is gapped and not in the seed; 分钟 is a measure-bound noun and grows to its number: the seed\'s 数分 = 几分钟 (3). Every row already says 数分 / 几分钟.')
+
+# ---- seed 161 "日曜日の朝その本をくれますか？| 你星期天早上能给我那本书吗？"
+D('S0161L03', 'grow', known='その本', target='那本书', type='M', kmatch='本', comps=[['その', '那'], ['冊', '本'], ['本', '书']],
+  why='本 here is the measure word, taught alone (L7) under "〜冊", which the seed never says. Folded into its phrase: the seed\'s その本 = 那本书 (3). Rows on 这本书 go (这 untaught; not the seed\'s その).',
+  b={'B02': 'd', 'U02': 'd'},
+  add=[('b', 'その本を読む', '读那本书'), ('u', 'その本を読みたいです', '我想读那本书'), ('u', '彼女はその本が好きです', '她喜欢那本书'),
+       ('u', 'その本を見せてくれますか', '你能给我看那本书吗')])
+
+# ---- seed 172 "はい、それはとても助かります。| 是的，那会很有帮助。"
+D('S0172L01', 'grow', known='とても助かる', target='很有帮助', type='M', comps=[['とても', '很'], ['ある', '有'], ['助け', '帮助']],
+  why='"助ける・助け・役に立つ" is a three-form label; the seed says とても助かります = 很有帮助 (4); 帮助 alone here is a noun inside 有帮助, which no Japanese word of the seed glosses on its own.',
+  b={'B01': 'd', 'B02': ('これはとても助かります', '这会很有帮助'), 'B03': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', 'それはとても助かる', '那很有帮助'), ('b', '今日はとても助かる', '今天很有帮助'), ('b', 'あなたの手紙はとても助かる', '你的信很有帮助'),
+       ('u', 'はい、それはとても助かります', '是的，那会很有帮助'), ('u', 'あなたの答えはとても助かります', '你的答案很有帮助'),
+       ('u', '練習はとても助かります', '练习很有帮助'), ('u', 'あの本はとても助かります', '那本书很有帮助'), ('u', 'あなたの説明はとても助かりました', '你的解释很有帮助')])
+
+# ---- seed 178 "あなたに会いたかったけど、時間がありませんでした。| 我没有时间，虽然我想见你。"
+D('S0178L01', 'grow', known='あなたに会いたかったけど', target='虽然我想见你', type='M', comps=[['けど', '虽然'], ['したい', '我想'], ['会う', '见'], ['あなた', '你']],
+  why='"〜けれども・〜ではあるが" is a gapped two-form label; けど is bound and grows to its verb in the seed: あなたに会いたかったけど = 虽然我想见你 (6; 见 needs its object, so 你 stays in).',
+  b=dels('B03', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', 'あなたに会いたかったけど、時間がなかった', '虽然我想见你，我没有时间'), ('b', 'あなたに会いたかったけど、来られなかった', '虽然我想见你，我不能来'),
+       ('b', 'あなたに会いたかったけど、準備ができていなかった', '虽然我想见你，我没准备好'),
+       ('u', 'あなたに会いたかったけど、時間がありませんでした', '我没有时间，虽然我想见你'), ('u', 'あなたに会いたかったけど、とても疲れていました', '虽然我想见你，我很累'),
+       ('u', 'あなたに会いたかったけど、話を中断したくなかった', '虽然我想见你，但是我不想打断故事'),
+       ('u', 'あなたに会いたかったけど、先週は時間がありませんでした', '虽然我想见你，我上星期没有时间'),
+       ('u', 'あなたに会いたかったけど、彼女が来ました', '虽然我想见你，她来了')])
+
+# ---- seed 181 "でも母を医者に連れて行かなければなりません。| 但是我必须带我妈妈去看医生。"
+D('S0181L01', 'regloss', known='連れて行く', why='"連れて行く・連れてくる・持っていく・持ってくる" is a four-form label; the seed says 連れて行か. Rows in the other forms go.',
+  b={'B02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', '母を連れて行く', '带我妈妈去'), ('b', '彼女を連れて行く', '带她去'), ('u', '彼は友達を連れて行きたいです', '他想带朋友去'),
+       ('u', '明日母を連れて行くつもりです', '我明天要带我妈妈去'), ('u', '友達を連れて行かなければなりません', '我必须带朋友去')])
+D('S0181L02', 'regloss', known='母', why='"お母さん・母" is a two-form label; the seed says 母. Every row says 母; U05 used untaught 非常.', b={'U05': ('母はとても嬉しいです', '妈妈很高兴')})
+D('S0181L03', 'regloss', known='医者', why='"医者・お医者さん" is a two-form label; the seed says 医者. Every row says 医者.',
+  add=[('u', '明日母を医者に連れて行きます', '我明天带我妈妈去看医生'), ('u', '彼は医者に行きたくありません', '他不想去看医生')])
+
+# ---- seed 182 "どこかで私の鍵を見ましたか？| 你有没有看到我的钥匙？"
+D('S0182L01', 'grow', known='見ましたか', target='有没有看到', type='M', kmatch='見ました', comps=[['ある', '有'], ['ない', '没'], ['見かける', '看到']],
+  why='"見かける・目にする" is a two-form label and neither is in the seed; the bare 見る clashes with S0032L02 "見る | 看" (ZUT). The seed\'s 見ましたか = 有没有看到 (5), the question frame whole.',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', '私を見ましたか', '有没有看到我'), ('b', '彼を見ましたか', '有没有看到他'), ('b', '私の鍵を見ましたか', '有没有看到我的钥匙'),
+       ('u', 'どこかで私の鍵を見ましたか', '你有没有看到我的钥匙'), ('u', '今日彼を見ましたか', '你今天有没有看到他'),
+       ('u', '私のかばんを見ましたか', '你有没有看到我的包'), ('u', 'あの本を見ましたか', '你有没有看到那本书'),
+       ('u', '彼女は若い犬を見ましたか', '她有没有看到小狗')])
+
+# ---- seed 197 "息子は教師として働いています。| 我儿子当老师。"
+D('S0197L01', 'grow', known='教師として働く', target='当老师', type='M', comps=[['として働く', '当'], ['教師', '老师']],
+  why='"として働く／なる" is a gapped two-form label; 当 is bound and grows to its object in the seed: 教師として働く = 当老师 (3). L13 note: L03 "教師 | 老师" follows.',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U04', 'U05'),
+  add=[('b', '教師として働きたい', '想当老师'), ('b', '彼は教師として働く', '他当老师'), ('b', '今教師として働く', '现在当老师'),
+       ('u', '私は教師として働きたいです', '我想当老师'), ('u', '母は教師として働いています', '我妈妈当老师'),
+       ('u', '私の友達は教師として働いています', '我的朋友当老师'), ('u', 'なぜ教師として働きたいのですか', '你为什么想当老师'),
+       ('u', '彼の母は教師として働いています', '他妈妈当老师')])
+D('S0197L03', 'regloss', known='教師', why='"先生／教師" is a two-form label; the seed says 教師. Rows in 先生 rebuilt.',
+  b={'B01': 'd', 'B02': ('中国語の教師', '中文老师'), 'B03': ('息子は教師になりたいです', '儿子想当老师'), 'U02': 'd',
+     'U03': ('息子は教師になりたいです', '我儿子想当老师'), 'U04': ('あなたの教師は面白い人ですか', '你的老师是有趣的人吗'), 'U05': ('教師はとても良い人です', '老师是很好的人')},
+  add=[('b', '私の教師', '我的老师'), ('u', '私の教師は中国語を話します', '我的老师说中文')])
+
+# ---- seed 203 "手伝ってと頼んだら何をしますか？| 如果我请你帮我，你会怎么做？"
+D('S0203L01', 'regloss', known='頼む', why='"お願いする／頼む" is a two-form label; the seed says 頼んだら. Rows in お願い rebuilt to 頼む.',
+  b={'U02': ('ゆっくり話してと頼みたいです', '我想请你说慢一点'), 'U03': ('来てと頼みたいです', '我想请你来'),
+     'U04': ('もう一度説明してと頼みたいです', '我想请你再解释一次'), 'U05': ('彼女に明日会いに来てと頼みたいです', '我想请她明天来见面')})
+
+# ---- seed 204 "彼女にあなたが準備を手伝うのを手伝ってほしかったです。| 我想让她帮你处理安排。"
+D('S0204L01', 'seed', seed_known='彼女にあなたが準備を処理するのを手伝ってほしかったです。',
+  why='The Japanese seed says 手伝う twice ("help you help with the arrangements") and has no word for 处理; the Chinese says "I wanted her to help you handle the arrangements". No Japanese chunk glosses S0204L02 处理, so the known seed is the wrong side (S15: mistranslation). KAI: seed edit to 彼女にあなたが準備を処理するのを手伝ってほしかったです。')
+D('S0204L01', 'regloss', known='準備', why='"手配／準備" is a two-form label; the seed says 準備. Every row says 準備.')
+D('S0204L02', 'regloss', known='処理する', why='"処理する／対応する" is a two-form label; with the seed edit the seed says 処理する.',
+  b={'U01': ('彼女にあなたが準備を処理するのを手伝ってほしかったです。', '我想让她帮你处理安排。')})
+
+# ---- seed 206 "あなたと話す練習をする機会を楽しんでいます。| 我喜欢有机会和你练习说。"
+D('S0206L01', 'regloss', known='機会', why='"機会／チャンス" is a two-form label; the seed says 機会. Every row says 機会.')
+
+# ---- seed 209 "彼らはグループとして集まってもっと時間を過ごしたいです。| 他们想花更多时间一起开会。"
+D('S0209L01', 'regloss', known='集まる', comps=[['開く', '开'], ['集まり', '会']],
+  why='"会議を開く／ミーティングをする" is a two-form label and neither is in the seed; 开会 here is the seed\'s 集まって. Rows rebuilt to 集まる (targets unchanged); untaught 多少 goes.',
+  b={'C02': ('集まり', '会'), 'B01': 'd', 'B02': ('一緒に集まる', '一起开会'), 'B03': ('集まる時間', '开会的时间'), 'B04': ('もっと集まりたい', '多开会'),
+     'U02': ('明日集まります', '明天要开会'), 'U03': ('みんなで集まりたいです', '我想和大家一起开会'), 'U04': 'd',
+     'U05': ('彼らはもっと集まりたがっています', '他们想多开会'), 'U06': ('あなたも集まりたいですか', '你想开会吗')},
+  add=[('u', '私たちは明日集まりたいです', '我们明天想开会')])
+
+# ---- seed 210 "彼らは私たちが問題について話し合う必要があると思っています。| 他们觉得我们需要讨论这个问题。"
+D('S0210L01', 'regloss', known='話し合う', why='"議論する／話し合う" is a two-form label; the seed says 話し合う. Rows in 議論 rebuilt.',
+  b={'B01': ('問題について話し合う', '讨论这个问题'), 'B02': ('一緒に話し合いたい', '想讨论一下'), 'B03': ('話し合う必要がある', '需要讨论'),
+     'U02': ('一緒に話し合いましょう', '我们需要讨论一下'), 'U03': ('これについて話し合いたいです', '我想讨论这个'),
+     'U04': ('その問題を話し合うには時間が必要です', '讨论这个问题需要时间'), 'U05': ('彼女はそれについて話し合いたくありません', '她不想讨论那个')})
+
 # ---- seed 134 "彼らと難しいことに取り組んでも問題ありません。| 跟他们一起做难的事情的时候没有问题。"  (found by hand: ZUT partner of S0083L03)
 D('S0134L01', 'grow', known='難しいこと', target='难的事情', type='M', comps=[['難しい', '难'], ['の', '的'], ['こと', '事情']],
   why='"こと | 事情" clashes with S0083L03 "こと | 事" once 83 is mended (ZUT). The later LEGO grows by the seed\'s word before it: 難しいこと = 难的事情 (4). Rows in "this thing" (这个事情, untaught 这个/相信/奇怪) go.',
@@ -438,6 +565,490 @@ D('S0134L01', 'grow', known='難しいこと', target='难的事情', type='M', 
   add=[('b', '難しいことを学ぶ', '学难的事情'), ('u', '私は難しいことをするのが好きです', '我喜欢做难的事情'), ('u', '彼女は難しいことを学びたいです', '她想学难的事情'),
        ('u', '私たちは一緒に難しいことをしたいです', '我们想一起做难的事情'), ('u', '難しいことをするのは良いことだと思います', '我觉得做难的事情是好事'),
        ('u', '彼は難しいことを心配しています', '他担心难的事情')])
+
+# ======== seeds 214-300 re-teach many earlier words; where the seed's own gloss turns a LEGO into an exact repeat of an
+# earlier pair, it goes NOT-NEW (introduced once, L27 clause 2) and its basket is left as it is (unplayed, P25).
+
+# ---- seed 214 "週末は楽しかったですか？| 你周末过得开心吗？"
+D('S0214L01', 'regloss', known='楽しい', why='"楽しい／嬉しい" is a two-form label; the seed says 楽しかった. Rows with untaught 非常 rebuilt to 很.',
+  b={'B03': ('とても楽しいです', '很开心'), 'U02': ('私はとても楽しいです', '我很开心')})
+
+# ---- seed 225 "できれば答えをくれるでしょう。| 如果他能的话，他会给你一个答案。"
+D('S0225L01', 'grow', known='できれば', target='能的话', type='M', comps=[['できる', '能'], ['なら', '的话']],
+  why='的话 is a particle taught alone (L7) under "〜なら・〜の場合". Folded into its clause: the seed\'s できれば = 能的话 (3). Rows on other verbs go.',
+  b=dels('B01', 'B02', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', '彼ができれば', '如果他能的话'), ('b', 'あなたができれば', '如果你能的话'),
+       ('u', 'できれば、来てください', '能的话，请你来'), ('u', 'できれば明日来ます', '能的话，我明天来'),
+       ('u', '彼女ができれば手伝ってくれるでしょう', '如果她能的话，她会帮你'), ('u', 'できれば中国語で話してください', '能的话，请你用中文说')])
+
+# ---- seed 229 "あの女性はできれば手伝ってくれるでしょう。| 如果她能的话，那个女人会帮你。"
+D('S0229L01', 'regloss', known='女性', why='"女性・女の人" is a two-form label; the seed says 女性. Every row says 女性.')
+
+# ---- seed 234 "昨夜あなたの兄と一緒に働いている人に会いました。| 我昨天晚上见了一个和你哥哥工作的人。"
+D('S0234L01', 'regloss', known='昨夜', why='"昨日の夜・昨夜" is a two-form label; the seed says 昨夜. Every row says 昨夜.', add=[('b', '昨夜話した', '昨天晚上说话了')])
+D('S0234L02', 'regloss', known='兄', why='"お兄さん・兄" is a two-form label; the seed says 兄 (rows\' あなたのお兄さん is the polite form of the same word, K6).', add=[('b', '私の兄', '我哥哥')])
+D('S0234L03', 'grow', known='会った', target='见了', type='M', kmatch='会', comps=[['会う', '见'], ['た', '了']],
+  why='"会う・見る" is a two-form label; 会う alone clashes with S0018L04 "会う | 见面" (scan ZUT). The seed\'s 会いました with its object-taking 见了: 会った = 见了 (2).',
+  b={'B01': 'd', 'B02': ('あなたに会った', '见了你'), 'B04': 'd', 'U02': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', '彼女は昨日母に会いました', '她昨天见了我妈妈'), ('u', '私たちは先週あなたの兄に会いました', '我们上星期见了你哥哥'), ('u', '彼は医者に会いました', '他见了医生'), ('b', '兄に会った', '见了哥哥')])
+
+# ---- seed 235 "あなたに何か伝えたいと言った人に会いました。| 我见了一个人说他想告诉你一些。"
+D('S0235L01', 'regloss', known='伝える', why='"伝える・教える" is a two-form label; the seed says 伝えたい. Every row says 伝え.')
+D('S0235L02', 'grow', known='あなたに何か伝える', target='告诉你一些', type='M', comps=[['伝える', '告诉'], ['あなた', '你'], ['いくつか', '一些']],
+  why='"何か・いくつかの" is a two-form label; 何か alone clashes with S0004L02 "何か | 一些东西" (ZUT). Grows by the seed\'s verb: あなたに何か伝える = 告诉你一些 (5).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('あなたに何か伝えたいことがあります', '我想告诉你一些事'), 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'あなたに何か伝えたい', '想告诉你一些事'), ('b', '彼はあなたに何か伝える', '他告诉你一些事'), ('b', 'あなたに何か伝えるつもり', '要告诉你一些事'),
+       ('u', '明日あなたに何か伝えます', '我明天告诉你一些事'), ('u', '私の兄はあなたに何か伝えたいです', '我哥哥想告诉你一些事'),
+       ('u', '昨夜あなたに何か伝えたかった', '我昨天晚上想告诉你一些事'), ('u', '彼女はあなたに何か伝えたいと言いました', '她说她想告诉你一些事')])
+
+# ---- seed 236 "助けようとするつもりだと言った人を知っています。| 我认识一个人说她会试着帮忙。"
+D('S0236L01', 'regloss', known='助ける', why='"助ける・手伝う" is a two-form label (手伝う is S0025L03 | 帮); the seed says 助けよう. Rows rebuilt to 助ける.',
+  b={'B01': 'd', 'B02': ('助けようとする', '试着帮忙'), 'B03': ('助けるつもりだ', '会帮忙'), 'U01': ('彼女は助けようとするでしょう', '她会试着帮忙'),
+     'U02': ('私は助けたい', '我想帮忙'), 'U03': ('助けが必要ですか', '你需要帮忙吗'), 'U04': ('彼は助けたくない', '他不想帮忙'),
+     'U05': ('私は助けようとするつもりです', '我会试着帮忙')},
+  add=[('b', '助けたい', '想帮忙')])
+
+# ---- seed 237 "彼は週末の前にあなたに伝えてほしかったです。| 他想让我周末以前告诉你。"
+D('S0237L01', 'regloss', known='ほしかった', kmatch='ほし', comps=[['させる', '让']],
+  why='"〜させる・〜してもらう" is a gapped two-form label; neither is in the seed. The seed says 伝えてほしかった; 让我…告诉你 is not contiguous (10 syllables whole), so 让 takes the seed\'s ほしかった, the past of S0015L02 "してほしい | 让你" (rule 3).',
+  b={'B01': ('私にしてほしい', '让我'), 'B02': 'd', 'B03': ('私にしてほしかった', '想让我'), 'U01': ('彼は私に手伝ってほしかった', '他想让我帮忙'),
+     'U03': ('彼女は私に行ってほしくない', '她不想让我去'), 'U04': 'd', 'U05': 'd'},
+  add=[('b', '彼女にしてほしかった', '想让她'), ('u', '母は私に手伝ってほしかった', '我妈妈想让我帮忙')])
+D('S0237L02', 'grow', known='週末の前に', target='周末以前', type='M', comps=[['週末', '周末'], ['前に', '以前']],
+  why='"〜の前に・以前" is a gapped two-form label; 前に alone clashes with S0025L02 "前に | 之前" (ZUT). Grows by the seed\'s noun: 週末の前に = 周末以前 (4). Rows in 以前 "formerly" go.',
+  b={'B01': 'd', 'B02': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', '週末の前に練習する', '周末以前练习'), ('b', '週末の前に終わらせる', '周末以前完成'),
+       ('u', '週末の前に母に会いたいです', '我想在周末以前见我妈妈'), ('u', '彼は週末の前に戻ってきます', '他周末以前回来'),
+       ('u', '週末の前に準備ができます', '我周末以前准备好')])
+
+# ---- seed 239 "母は読書が好きです。| 我妈妈喜欢看书。"
+D('S0239L01', 'regloss', known='好き', is_new=False, why='"好き・好む" is a two-form label; the seed says 好き, which makes this an exact repeat of S0026L01 "好き | 喜欢": not-new.')
+D('S0239L02', 'regloss', known='読書', why='"読書する・本を読む" is a two-form label; the seed says 読書. Every row says 読書.', add=[('b', '読書したい', '想看书')])
+
+# ---- seed 240 "父は話すのをやめたがりません。| 我爸爸不喜欢停止说话。"
+D('S0240L01', 'regloss', known='父', why='"お父さん・父" is a two-form label; the seed says 父 (rows\' お父さん is its polite form, K6).', add=[('b', '父と', '和我爸爸')])
+D('S0240L02', 'regloss', known='やめる', is_new=False, why='"やめる・止まる" is a two-form label; the seed says やめた, an exact repeat of S0019L02 "やめる | 停止": not-new.')
+D('S0240L03', 'grow', known='話すのをやめる', target='停止说话', type='M', kmatch='話すのをやめ', comps=[['やめる', '停止'], ['話をする', '说话']],
+  why='"話す・しゃべる" is a two-form label; 話す alone clashes with S0001L02 "話す | 说" (ZUT). Grows by the seed\'s verb: 話すのをやめる = 停止说话 (4).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U02': 'd', 'U04': 'd', 'U06': 'd'},
+  add=[('b', '話すのをやめたい', '想停止说话'), ('b', '話すのをやめない', '不停止说话'), ('b', '彼は話すのをやめる', '他停止说话'),
+       ('u', 'なぜ話すのをやめたいのですか', '你为什么想停止说话'), ('u', '母は話すのをやめたくありません', '我妈妈不想停止说话')])
+
+# ---- seed 243 "同じ食べ物を頼むつもりです。| 我会要同样的东西吃。"
+D('S0243L01', 'grow', known='同じ食べ物', target='同样的东西吃', type='M', comps=[['同じ', '同样的'], ['物', '东西'], ['食べる', '吃']],
+  why='"同じ・同様の" is a two-form label; the seed\'s 同じ alone clashes with an earlier "同じ | 一样" (ZUT). Grows by the seed\'s noun: 同じ食べ物 = 同样的东西吃 (6; 吃 carries 食べ). L13 note: L02 物 and L03 食べる follow.',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U06'),
+  add=[('b', '同じ食べ物が欲しい', '想要同样的东西吃'), ('b', '同じ食べ物を頼む', '要同样的东西吃'), ('b', '彼女は同じ食べ物を頼む', '她要同样的东西吃'),
+       ('u', '父は同じ食べ物を頼みます', '我爸爸要同样的东西吃'), ('u', 'あなたは同じ食べ物が欲しいですか', '你想要同样的东西吃吗'),
+       ('u', '私たちは同じ食べ物を頼みたいです', '我们想要同样的东西吃'), ('u', '母は同じ食べ物が欲しくない', '我妈妈不想要同样的东西吃'),
+       ('u', '彼も同じ食べ物が欲しいです', '他想要同样的东西吃')])
+D('S0243L02', 'regloss', known='物', kmatch='物', why='"物・もの" is a two-form label; the seed says 食べ物 — its 物 is the word. Rows rebuilt to 物; rows that said "a thing to tell" / 有 go.',
+  b={'B01': 'd', 'B02': ('同じ物', '同样的东西'), 'B03': ('いくつかの物', '一些东西'), 'U01': ('私は同じ物が欲しい', '我想要同样的东西'), 'U02': 'd',
+     'U03': ('彼は私にいくつかの物をくれた', '他给了我一些东西'), 'U04': 'd', 'U06': ('彼女にはいくつかの物が必要です', '她需要一些东西')},
+  add=[('b', '私の物', '我的东西'), ('u', 'かばんに物を入れたいです', '我想把东西放在包里'), ('u', '母は同じ物が欲しいです', '我妈妈想要同样的东西')])
+
+# ---- seed 244 "もうたくさん学びました。| 我已经学了很多了。"
+D('S0244L01', 'regloss', known='もう', is_new=False, why='"もう・すでに" is a two-form label; the seed says もう, an exact repeat of S0076L02 "もう | 已经" (as mended): not-new.')
+D('S0244L02', 'regloss', known='たくさん', why='"たくさん・多く" is a two-form label; the seed says たくさん. Every row says たくさん.', add=[('b', 'たくさん話した', '说了很多')])
+
+# ---- seed 245 "短い時間でたくさんできたことが嬉しいです。| 我很高兴我在短时间内做了这么多。"
+D('S0245L01', 'seed', seed_known='短い時間でこんなにたくさんしたことが、とても嬉しいです。',
+  why='The Japanese seed says たくさんできた ("could do a lot"): no word for 这么多 (たくさん is S0244L02 | 很多) and できた is "could", not 做. KAI: seed edit to 短い時間でこんなにたくさんしたことが、とても嬉しいです。 so L03/L04 are the seed\'s own words.')
+D('S0245L01', 'regloss', known='嬉しい', why='"嬉しい・喜ぶ" is a two-form label; the seed says 嬉しい. Every row says 嬉し.', add=[('b', '父は嬉しい', '我爸爸很高兴')])
+D('S0245L03', 'regloss', known='する', kmatch='し', is_new=False, why='"する・やる" is a two-form label; with the seed edit the seed says した, an exact repeat of S0051L02 "する | 做": not-new.',
+  b={k: 'k' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U05', 'U06']})
+D('S0245L04', 'regloss', known='こんなにたくさん', kmatch='こんなに', is_new=False,
+  why='"こんなに・そんなに多く" is a two-form label; with the seed edit the seed says こんなにたくさん, an exact repeat of S0076L03 (as mended): not-new.')
+
+# ---- seed 246 "彼女にあなたを手伝ってほしかったけど、彼女は忙しすぎました。| 我想让她帮你，但是她太忙了。"
+D('S0246L01', 'seed', seed_known='彼女にあなたを手伝ってほしかったです。でも、彼女は忙しすぎました。',
+  why='但是 opens the second clause; the Japanese seed\'s けど closes the first, so no chunk aligns with 但是 (and けど is bound). 但是 is already S0019L01 "でも | 但是". KAI: seed edit to …ほしかったです。でも、彼女は忙しすぎました。, then L01 is the seed\'s でも.')
+D('S0246L01', 'regloss', known='でも', is_new=False, why='"でも・しかし・だが" is a three-form label; with the seed edit the seed says でも, an exact repeat of S0019L01: not-new.')
+D('S0246L02', 'grow', known='忙しすぎる', target='太忙了', type='M', kmatch='忙しすぎ', comps=[['すぎる', '太'], ['忙しい', '忙'], ['た', '了']],
+  why='"あまりにも・過度に" is a two-form label and neither is in the seed; 太 is bound and grows to its word: 忙しすぎる = 太忙了 (3). L13 note: L03 "忙しい | 忙" follows.',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', '彼女は忙しすぎる', '她太忙了'), ('b', '私は忙しすぎる', '我太忙了'), ('b', '今日は忙しすぎる', '今天太忙了'),
+       ('u', 'でも彼女は忙しすぎました', '但是她太忙了'), ('u', '父は忙しすぎます', '我爸爸太忙了'),
+       ('u', '手伝いたいけど、忙しすぎます', '我想帮忙，但是我太忙了'), ('u', '昨日は忙しすぎました', '我昨天太忙了'), ('u', 'あなたは忙しすぎますか', '你太忙了吗')])
+
+# ---- seed 247 "その本はまあまあ良かったと思いました。| 我觉得那本书挺好的。"
+D('S0247L02', 'regloss', known='まあまあ', why='"まあまあ・なかなか" is a two-form label; the seed says まあまあ. Rows in なかなか rebuilt.',
+  b={'B01': ('まあまあ良い', '挺好的'), 'B02': ('まあまあ忙しい', '挺忙的'), 'B03': ('まあまあ多い', '挺多的'), 'U01': ('私はあの本はまあまあ良いと思う', '我觉得那本书挺好的'),
+     'U02': ('彼はまあまあ嬉しそうだ', '他挺高兴的'), 'U03': ('まあまあ良いと思います', '我觉得挺好的'), 'U04': ('あなたのお父さんはまあまあ忙しいですか', '你爸爸挺忙的吗'),
+     'U05': ('母はまあまあ良いと思っています', '我妈妈觉得挺好的'), 'U06': ('あの本はまあまあ良い、でも短い', '那本书挺好的，但是太短了')})
+
+# ---- seed 248 "その映画は全くひどいと思ったので、お金を返してほしいです。| 我觉得那部电影很差，我想把钱要回来。"
+D('S0248L02', 'regloss', known='ひどい', why='"ひどい・悪い・下手" is a three-form label; the seed says ひどい. Every row says ひど.', add=[('b', 'あの本はひどい', '那本书很差')])
+D('S0248L03', 'grow', known='お金を', target='把钱', type='M', comps=[['を', '把'], ['お金', '钱']],
+  why='把 is a particle taught alone (L7) under "〜を". Folded into the object it marks: the seed\'s お金を = 把钱 (2). 把 stays a component (K29).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U02': 'd', 'U03': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'お金を返してほしい', '想把钱要回来'), ('b', 'お金をあなたにあげる', '把钱给你'), ('b', 'お金を見せる', '把钱给我看'),
+       ('u', '父はお金を返してほしいです', '我爸爸想把钱要回来'), ('u', '彼女はお金を母にあげました', '她把钱给了我妈妈'),
+       ('u', 'お金をかばんに入れたいです', '我想把钱放在包里'), ('u', '彼はお金を友達にあげたいです', '他想把钱给朋友')])
+
+# ---- seed 249 "行く前に私を手伝ってほしいです。| 我想让你走以前帮我。"
+D('S0249L01', 'regloss', known='行く', is_new=False, why='"行く・去る・歩く" is a three-form label; the seed says 行く, an exact repeat of S0025L01 "行く | 走": not-new. B01 carried the label itself.',
+  b={'B01': 'd'})
+
+# ---- seed 250 "答える前に何か他のことを教えてくれますか？| 我回答以前你能告诉我别的吗？"
+D('S0250L01', 'regloss', known='答える', is_new=False, why='"答える・返答する" is a two-form label; the seed says 答える, an exact repeat of S0027L04 "答える | 回答": not-new.')
+D('S0250L02', 'regloss', known='他のこと', kmatch='他の', why='"他の・別の" is a two-form label; the seed says 他のこと (他の alone clashes with an earlier "他の | 别", ZUT). Rows in 別の rebuilt.',
+  add=[('b', '他のことをする', '做别的')],
+  b={'B01': 'd', 'B02': ('他のもの', '别的东西'), 'B03': ('私に他のことを伝えて', '告诉我别的'), 'U01': ('答える前に何か他のことを教えてくれますか？', '我回答以前你能告诉我别的吗？'),
+     'U02': ('他の質問がありますか', '你有别的问题吗'), 'U03': ('私は他のことをしたい', '我想做别的'), 'U04': ('彼は私に他のものをくれた', '他给了我别的东西'),
+     'U05': ('あなたのお父さんは他のものを食べたいですか', '你爸爸想吃别的吗'), 'U06': ('同じのは要らない、他のが欲しい', '我不想要同样的，我想要别的')})
+
+# ---- seed 251 "終わるまで知りたくありません。| 我不想我们完成以前知道。"
+D('S0251L01', 'regloss', known='終わる', why='"終わる・完成する" is a two-form label; the seed says 終わる. Every row says 終わ.', add=[('b', 'もうすぐ終わる', '快要完成了')])
+
+# ---- seed 252 "いつ始める準備ができますか？| 你什么时候准备好开始？"
+D('S0252L01', 'grow', known='いつ', target='什么时候', is_new=False, comps=[],
+  why='"〜の時・時間" is a gapped two-form label; 时候 is bound and the seed\'s いつ = 什么时候 is S0079L01 "いつ | 什么时候": this LEGO takes that pair, not-new. Rows that do not say 什么时候 go.',
+  b={'B02': 'd', 'B03': 'd', 'U02': 'd', 'U03': 'd'})
+D('S0252L02', 'regloss', known='始める', is_new=False, why='"始める・スタートする" is a two-form label; the seed says 始める, an exact repeat of S0023L02: not-new.')
+
+# ---- seed 253 "数分で準備ができるはずです。| 我几分钟以后应该准备好。"
+D('S0253L01', 'grow', known='数分', target='几分钟', is_new=False, comps=[],
+  why='"いくつか・数" is a two-form label; 几 is a bound numeral and its seed chunk 数分 = 几分钟 is S0155L02 (as mended): this LEGO takes that pair, not-new. Rows that do not say 几分钟 go.',
+  b={'B01': 'd', 'B02': 'd', 'U01': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'})
+D('S0253L03', 'grow', known='数分で', target='几分钟以后', type='M', comps=[['数分', '几分钟'], ['後', '以后']],
+  why='"〜の後・後で" is a gapped two-form label; 以后 is bound and grows to its noun: the seed\'s 数分で = 几分钟以后 (5).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('私は数分で戻ります', '我几分钟以后回来'), 'U02': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', '数分で戻る', '几分钟以后回来'), ('b', '数分で始める', '几分钟以后开始'), ('b', '数分で終わる', '几分钟以后完成'),
+       ('u', '彼女は数分で戻ってきます', '她几分钟以后回来'), ('u', '数分で準備ができます', '我几分钟以后准备好'),
+       ('u', '私たちは数分で行きます', '我们几分钟以后走'), ('u', '父は数分で始めたいです', '我爸爸想几分钟以后开始')])
+D('S0253L04', 'grow', known='準備ができるはず', target='应该准备好', type='M', kmatch='はず', comps=[['はず', '应该'], ['準備ができる', '准备好']],
+  why='"〜はずだ・〜すべき" is a gapped two-form label; はず is bound and grows to its verb: 準備ができるはず = 应该准备好 (5).',
+  b=dels('B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'もう準備ができるはず', '应该准备好了'), ('b', '彼は準備ができるはず', '他应该准备好'), ('b', '明日準備ができるはず', '明天应该准备好'),
+       ('u', '父は六時に準備ができるはずです', '我爸爸六点应该准备好'), ('u', '私たちは週末の前に準備ができるはずです', '我们周末以前应该准备好'),
+       ('u', '彼女はもう準備ができているはずです', '她应该准备好了'), ('u', 'あなたは今日準備ができるはずです', '你今天应该准备好')])
+
+# ---- seed 254 "今朝からずっと準備ができています。| 我从今天早上就准备好了。"
+D('S0254L01', 'grow', known='今朝から', target='从今天早上', type='M', comps=[['から', '从'], ['今日', '今天'], ['朝', '早上']],
+  why='从 is a preposition taught alone (L7) under "〜から・〜より". Folded into its phrase: the seed\'s 今朝から = 从今天早上 (5).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', '今朝から練習する', '从今天早上练习'), ('b', '今朝から学ぶ', '从今天早上学'), ('b', '今朝から待つ', '从今天早上等'),
+       ('u', '彼は今朝から働いています', '他从今天早上就在工作'), ('u', '母は今朝から読書しています', '我妈妈从今天早上就在看书'),
+       ('u', '私たちは今朝から話しています', '我们从今天早上就在说话'), ('u', '彼女は今朝から待っています', '她从今天早上就在等'),
+       ('u', '私は今朝から中国語を練習しています', '我从今天早上就在练习中文')])
+D('S0254L02', 'regloss', known='朝', is_new=False, why='"朝・午前" is a two-form label; the seed says 今朝, whose 朝 is an exact repeat of S0039L01 "朝 | 早上": not-new.')
+D('S0254L03', 'grow', known='ずっと準備ができている', target='就准备好了', type='M', comps=[['ずっと', '就'], ['準備ができる', '准备好'], ['た', '了']],
+  why='"もう・ちょうど" is a two-form label and neither is in the seed; 就 is bound and grows to its verb: ずっと準備ができている = 就准备好了 (5).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('私は今朝からずっと準備ができています', '我从今天早上就准备好了'), 'U02': 'd', 'U03': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', '朝からずっと準備ができている', '从早上就准备好了'), ('b', '六時からずっと準備ができている', '从六点就准备好了'),
+       ('b', '昨日からずっと準備ができている', '从昨天就准备好了'),
+       ('u', '彼女は六時からずっと準備ができています', '她从六点就准备好了'), ('u', '私たちは昨日からずっと準備ができています', '我们从昨天就准备好了'),
+       ('u', '父は朝からずっと準備ができています', '我爸爸从早上就准备好了'), ('u', 'あなたは昨夜からずっと準備ができていますか', '你从昨天晚上就准备好了吗')])
+
+# ---- seed 256 "一時間以内に準備ができると思います。| 我觉得我不到一个小时就准备好。"
+D('S0256L01', 'grow', known='一時間以内に', target='不到一个小时', type='M', comps=[['以内に', '不到'], ['一時間', '一个小时']],
+  why='"〜以内に・〜に達しない" is a gapped two-form label; 不到 is bound and grows to its noun: the seed\'s 一時間以内に = 不到一个小时 (6).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', '一時間以内に戻る', '不到一个小时就回来'), ('b', '一時間以内に終わる', '不到一个小时就完成'), ('b', '一時間以内に準備ができる', '不到一个小时就准备好'),
+       ('u', '私は一時間以内に戻ります', '我不到一个小时就回来'), ('u', '彼女は一時間以内に終わりました', '她不到一个小时就完成了'),
+       ('u', '一時間以内に準備ができると思います', '我觉得我不到一个小时就准备好'), ('u', '父は一時間以内に戻ってきます', '我爸爸不到一个小时就回来'),
+       ('u', '私たちは一時間以内に始めます', '我们不到一个小时就开始')])
+
+# ---- seed 255 (knock-on, not a scan row)
+D('S0255L01', 'regloss', is_new=False, why='Knock-on of S0080L01: with 80 glossed as the seed says, this LEGO is an exact repeat of it on both sides (準備ができる | 准备好): not-new.')
+
+# ---- seed 258 "あそこの青いものは何ですか？| 那边那个蓝色的东西是什么？"
+D('S0258L01', 'regloss', known='あそこ', why='"あそこ・あちら" is a two-form label; the seed says あそこ. Every row says あそこ.',
+  add=[('b', 'あそこにいる', '在那边')])
+
+# ---- seed 259 "アイデア。| 一个主意。"
+D('S0259L01', 'regloss', known='アイデア', why='"アイデア・考え" is a two-form label (考え is the scan ZUT 主意/想法); the seed says アイデア. Every row says アイデア.',
+  add=[('b', '私のアイデア', '我的主意')])
+
+# ---- seed 260 "全然わかりません。| 我一点都不知道。"
+D('S0260L01', 'grow', known='全然わからない', target='一点都不知道', type='M', kmatch='全然',
+  comps=[['少し', '一点'], ['全部', '都'], ['ない', '不'], ['知る', '知道']],
+  why='L01 "少し・ちょっと" (少し is S0009L01) and L02 "全部・全然" are both labels, and neither 一点 nor 都 alone has a Japanese word in the seed: 一点都不… is one frame (L32), the seed\'s 全然わからない = 一点都不知道 (6). L02\'s seed part is inside it: L02 goes (都 stays a component).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U03', 'U04', 'U06'),
+  add=[('b', '彼は全然わからない', '他一点都不知道'), ('b', '彼女は全然わからない', '她一点都不知道'), ('b', '父は全然わからない', '我爸爸一点都不知道'),
+       ('u', '全然わかりません', '我一点都不知道'), ('u', '私たちは全然わかりません', '我们一点都不知道'),
+       ('u', '母は答えが全然わかりません', '我妈妈一点都不知道答案'), ('u', 'あなたは全然わからないのですか', '你一点都不知道吗'),
+       ('u', '彼はなぜか全然わかりません', '他一点都不知道为什么')])
+D('S0260L02', 'delete', why='"全部・全然 | 都": its seed part is inside S0260L01 as grown (一点都不知道); 都 stays a component (K29). Basket goes with it.')
+
+# ---- seed 261 "何か大事なことかもしれないと思います。| 我觉得它可能是件重要的事。"
+D('S0261L03', 'grow', known='大事なこと', target='件重要的事', type='M', comps=[['件', '件'], ['大事', '重要'], ['の', '的'], ['こと', '事']],
+  why='件 is a measure word taught alone (L7) under "〜件". Folded into its phrase: the seed\'s 大事なこと = 件重要的事 (5). L13 note: L04 "大事 | 重要" follows. Rows on 这件/几件 go.',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', '大事なことだ', '是件重要的事'), ('b', 'それは大事なことだ', '那是件重要的事'), ('b', '大事なことかもしれない', '可能是件重要的事'),
+       ('u', '学ぶことは大事なことです', '学是件重要的事'), ('u', '中国語を話すことは大事なことです', '说中文是件重要的事'),
+       ('u', '練習するのは大事なことだと思います', '我觉得练习是件重要的事'), ('u', 'あなたの手紙は大事なことかもしれません', '你的信可能是件重要的事'),
+       ('u', '本当のことを知るのは大事なことです', '知道真相是件重要的事')])
+D('S0261L04', 'regloss', known='大事', why='"大事・重要" is a two-form label (重要 is the Chinese); the seed says 大事. Every row says 大事.',
+  add=[('b', '大事だと思う', '觉得重要')])
+
+# ---- seed 262 "昨日話していたあの男の人は誰ですか？| 你昨天在跟哪个男人说话？"
+D('S0262L01', 'seed', seed_known='昨日どの男の人と話していましたか？',
+  why='The Japanese seed asks "who is that man you were talking to" (あの…誰); the Chinese asks "which man were you talking with" (跟哪个男人). Neither 跟 nor 哪个 has a Japanese word in the seed (S15: mistranslation). KAI: seed edit to 昨日どの男の人と話していましたか？')
+D('S0262L01', 'grow', known='どの男の人と', target='跟哪个男人', type='M', comps=[['と', '跟'], ['どの', '哪个'], ['男の人', '男人']],
+  why='跟 is a preposition taught alone (L7) under "〜と". Folded into its phrase: with the seed edit, どの男の人と = 跟哪个男人 (5). L13 note: L02 "どの | 哪个" follows.',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', 'どの男の人と話した', '跟哪个男人说话了'), ('b', 'どの男の人と働く', '跟哪个男人工作'), ('b', 'どの男の人と行く', '跟哪个男人走'),
+       ('u', '彼女はどの男の人と話したいですか', '她想跟哪个男人说话'), ('u', 'どの男の人と働いていますか', '你在跟哪个男人工作'),
+       ('u', 'あなたのお母さんはどの男の人と話していましたか', '你妈妈在跟哪个男人说话'), ('u', 'どの男の人と行きたいですか', '你想跟哪个男人走'),
+       ('u', 'あなたはどの男の人と会いましたか', '你跟哪个男人见面了')])
+D('S0262L02', 'regloss', known='どの', why='"どの・どれ" is a two-form label; with the seed edit the seed says どの. Rows in どれ go.',
+  b={'B01': 'd', 'U02': 'd', 'U06': 'd'}, add=[('b', 'どの友達', '哪个朋友'), ('u', 'どの医者に会いましたか', '你见了哪个医生')])
+
+# ---- seed 265 "友達。| 一个朋友。"
+D('S0265L01', 'regloss', known='友達', is_new=False, why='"友達・友人" is a two-form label; the seed says 友達, an exact repeat of S0051L01 "友達 | 朋友": not-new.')
+
+# ---- seed 266 "彼は私の父の古い友達でした。| 他是我父亲的老朋友。"
+D('S0266L01', 'regloss', known='古い', why='"古い・昔からの" is a two-form label; the seed says 古い. Every row says 古い.',
+  add=[('b', '父の古い友達', '我爸爸的老朋友')])
+
+# ---- seed 267 "友達から聞きましたか？| 你有你朋友的消息吗？"
+D('S0267L01', 'grow', known='友達から聞く', target='有你朋友的消息', type='M',
+  comps=[['ある', '有'], ['あなた', '你'], ['友達', '朋友'], ['の', '的'], ['知らせ', '消息']],
+  why='"ニュース・連絡・情報" is a three-form label and none is in the seed; 消息 is a noun the Japanese renders with a verb. The seed\'s 友達から聞く = 有你朋友的消息 (6), the 有…消息 frame whole.',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('友達から聞きましたか？', '你有你朋友的消息吗？'), 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'あなたの友達から聞いた', '我有你朋友的消息'), ('b', 'もうあなたの友達から聞いた', '我已经有你朋友的消息了'),
+       ('b', 'まだあなたの友達から聞いていない', '我还没有你朋友的消息'),
+       ('u', '昨日あなたの友達から聞きました', '我昨天有你朋友的消息了'), ('u', '彼はあなたの友達から聞きましたか', '他有你朋友的消息吗'),
+       ('u', '母はあなたの友達から聞きました', '我妈妈有你朋友的消息了'), ('u', '今日あなたの友達から聞きましたか', '你今天有你朋友的消息吗')])
+
+# ---- seed 269 "なぜお父さんを待ちたくないのですか？| 你为什么不想等你爸爸？"
+D('S0269L01', 'regloss', known='なぜ', is_new=False, why='"なぜ・どうして" is a two-form label; the seed says なぜ, an exact repeat of S0021L01: not-new.')
+
+# ---- seed 270 "遅れるのが心配だからです。| 因为我担心我会迟到。"
+D('S0270L01', 'regloss', known='からです', kmatch='から', is_new=False,
+  why='"〜から・〜ので" is a gapped two-form label; the seed says 心配だからです: からです, an exact repeat of S0022L01 (as mended): not-new.',
+  b={k: 'k' for k in ['B01', 'B02', 'B03', 'U03', 'U04', 'U05', 'U06']})
+D('S0270L03', 'regloss', known='遅れる', why='"遅刻する・遅れる" is a two-form label; the seed says 遅れる. Rows in 遅刻 rebuilt (targets unchanged).',
+  b={'B01': 'd', 'B02': ('遅れるだろう', '会迟到'), 'B03': ('遅れたくない', '不想迟到'), 'U01': ('遅れるのが心配だからです', '因为我担心我会迟到'),
+     'U02': ('なぜ遅れたのですか', '你为什么迟到了'), 'U03': ('あのことは大事だから遅れたくない', '我不想迟到，因为那件事很重要'),
+     'U04': ('彼は遅れるのが心配だ', '他担心会迟到'), 'U05': ('もう行くべきだ、遅れる', '你应该走了，会迟到'), 'U06': ('私は遅れたくない', '我不想迟到')},
+  add=[('b', '彼は遅れる', '他会迟到')])
+
+# ---- seed 271 "来月私たちと一緒に来ませんか？| 你愿意下个月和我们一起去吗？"
+D('S0271L01', 'seed', seed_known='来月私たちと一緒に行く気がありますか？',
+  why='The Japanese invitation 来ませんか ("won\'t you come") has no word for 愿意 ("be willing") and says 来 where the Chinese says 去. No chunk glosses L01 or L04 (S15: mistranslation). KAI: seed edit to 来月私たちと一緒に行く気がありますか？')
+D('S0271L01', 'regloss', known='気がある', kmatch='気が',
+  why='"〜したい・〜する気がある" is a gapped two-form label; with the seed edit the seed says 行く気があります. Rows without it rebuilt.',
+  b={'B01': 'd', 'B02': ('行く気がない', '不愿意去'), 'U05': ('彼女は時間があるから手伝う気があります', '她愿意帮忙，因为她有时间'),
+     'U06': ('私は忙しすぎるから行く気がありません', '我不愿意去，因为我太忙了')},
+  add=[('b', '行く気がある', '愿意去')])
+D('S0271L04', 'grow', known='一緒に行く', target='一起去', type='M', comps=[['一緒に', '一起'], ['行く', '去']],
+  why='"〜へ行く" is gapped; 行く alone clashes with S0025L01 "行く | 走" (去 vs 走, the K54 held pair). Grows by the seed\'s word before it: 一緒に行く = 一起去 (3).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('来月私たちと一緒に行く気がありますか？', '你愿意下个月和我们一起去吗？'), 'U02': 'd', 'U03': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', '一緒に行きたい', '想一起去'), ('b', '私たちと一緒に行く', '和我们一起去'), ('b', '友達と一緒に行く', '和朋友一起去'),
+       ('u', '母と一緒に行きたいです', '我想和我妈妈一起去'), ('u', '明日一緒に行きたいですか', '你明天想一起去吗'),
+       ('u', '彼女は私たちと一緒に行く気がありません', '她不愿意和我们一起去'), ('u', '父は来月一緒に行きます', '我爸爸下个月一起去')])
+
+# ---- seed 272 "はい、それはいい考えですね。| 好啊，听起来很棒。"
+D('S0272L01', 'seed', seed_known='いいね、すごく良さそうに聞こえます。',
+  why='The Japanese says "yes, that\'s a good idea"; the Chinese says "great, sounds wonderful" (好啊，听起来很棒). None of 好啊 / 听起来 / 棒 has a Japanese word in the seed (S15: mistranslation). KAI: seed edit to いいね、すごく良さそうに聞こえます。')
+D('S0272L01', 'grow', known='いいね', target='好啊', type='M', comps=[['いい', '好'], ['ね', '啊']],
+  why='啊 is a particle taught alone (L7) under "〜ね・そうですね". Folded into what it closes: with the seed edit, いいね = 好啊 (2).',
+  b={'B02': 'd', 'U02': 'd', 'U05': 'd'},
+  add=[('b', 'いいね、行こう', '好啊，我们走'), ('b', 'いいね、始めよう', '好啊，我们开始'),
+       ('u', 'いいね、明日会いましょう', '好啊，我们明天见面'), ('u', 'いいね、一緒に練習しましょう', '好啊，我们一起练习')])
+D('S0272L02', 'regloss', known='聞こえる', kmatch='聞こえ', comps=[['聞く', '听'], ['し始める', '起来']],
+  why='"〜に聞こえる・〜そうだ" is a gapped two-form label; with the seed edit the seed says 聞こえます. B01 carried the label itself.',
+  b={'C02': ('し始める', '起来'), 'B01': 'd'},
+  add=[('b', 'すごく良さそうに聞こえる', '听起来很棒'), ('u', 'あなたのアイデアは良さそうに聞こえます', '你的主意听起来很好')])
+
+# ---- seed 274 "数日後に出発しなければなりませんか？| 你几天后就得走吗？"
+D('S0274L01', 'grow', known='数日後', target='几天后', type='M', comps=[['いくつか', '几'], ['日', '天'], ['後', '后']],
+  why='"〜後" is gapped; 后 is bound and grows to its noun: the seed\'s 数日後 = 几天后 (3).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U04', 'U05'),
+  add=[('b', '数日後に戻る', '几天后回来'), ('b', '数日後に始める', '几天后开始'), ('b', '数日後に行く', '几天后走'),
+       ('u', '彼は数日後に戻ってきます', '他几天后回来'), ('u', '数日後に会いましょう', '我们几天后见面'), ('u', '母は数日後に来ます', '我妈妈几天后来'),
+       ('u', '数日後に終わらせなければなりません', '我几天后必须完成'), ('u', '数日後に準備ができます', '我几天后准备好')])
+D('S0274L03', 'grow', known='出発しなければならない', target='得走', type='M', comps=[['なければならない', '得'], ['行く', '走']],
+  why='"〜しなければならない" is gapped (and the scan ZUT 必须/得); 得 is bound and grows to its verb in the seed: 出発しなければならない = 得走 (2).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('あなたは数日後に出発しなければなりませんか', '你几天后就得走吗'), 'U02': 'd', 'U03': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'もう出発しなければならない', '得走了'), ('b', '彼は出発しなければならない', '他得走'), ('b', '明日出発しなければならない', '明天得走'),
+       ('u', '私は六時に出発しなければなりません', '我六点得走'), ('u', '母は明日出発しなければなりません', '我妈妈明天得走'),
+       ('u', '私たちは一時間以内に出発しなければなりません', '我们不到一个小时就得走'), ('u', 'あなたはもう出発しなければなりませんか', '你得走了吗')])
+
+# ---- seed 276 "いいえ、ここにもう少し長くいられます。| 不，我还能在这里待一会儿。"
+D('S0276L01', 'seed', seed_known='いいえ、まだここにしばらくいられます。',
+  why='The Japanese says もう少し長く ("a bit longer") where the Chinese says 还 … 一会儿 ("still … a while"): no Japanese word for 还 (S15). KAI: seed edit to いいえ、まだここにしばらくいられます。')
+D('S0276L01', 'regloss', known='まだ', is_new=False, why='"まだ・まだある" is a two-form label; with the seed edit the seed says まだ, an exact repeat of S0060L01 "まだ | 还": not-new.',
+  b={k: 'k' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06']})
+D('S0276L03', 'grow', known='しばらくいる', target='待一会儿', type='M', comps=[['いる', '待'], ['しばらく', '一会儿']],
+  why='"いる・とどまる" is a two-form label; いる alone clashes with S0034L02 "いる | 在场" (ZUT). Grows by the seed\'s next word: しばらくいる = 待一会儿 (3). L13 note: L04 "しばらく | 一会儿" follows.',
+  b=dels('B01', 'B02', 'U01', 'U02', 'U03', 'U04', 'U05'),
+  add=[('b', 'ここにしばらくいる', '在这里待一会儿'), ('b', 'しばらくいたい', '想待一会儿'), ('b', 'あそこにしばらくいる', '在那边待一会儿'),
+       ('u', '私はここにしばらくいたいです', '我想在这里待一会儿'), ('u', '母はしばらくいられます', '我妈妈能待一会儿'),
+       ('u', '彼女はあそこにしばらくいなければなりません', '她得在那边待一会儿'), ('u', 'あなたはここにしばらくいられますか', '你能在这里待一会儿吗'),
+       ('u', '私たちはしばらくいたいです', '我们想待一会儿')])
+D('S0276L04', 'regloss', known='しばらく', is_new=False, why='"しばらく・少しの間" is a two-form label; the seed says しばらく, an exact repeat of S0092L03 "しばらく | 一会儿": not-new. U01 takes the edited seed.',
+  b={'U01': ('いいえ、まだここにしばらくいられます。', '不，我还能在这里待一会儿。')})
+
+# ---- seed 277 "はい、来週の初めに大事な予定があります。| 是的，我下周初有个重要会议。"
+D('S0277L01', 'seed', seed_known='はい、来週の初めに大事な会議があります。',
+  why='The Japanese says 予定 ("plans"); the Chinese says 会议 ("meeting"). L04 "会議 | 会议" has no Japanese word in the seed (S15). KAI: seed edit to はい、来週の初めに大事な会議があります。')
+D('S0277L01', 'regloss', known='はい', why='"はい・そうです" is a two-form label; the seed says はい. B03 (いいえ) goes.', b={'B03': 'd'},
+  add=[('b', 'はい、わかります', '是的，我懂'), ('b', 'はい、できます', '是的，我能'), ('u', 'はい、明日来ます', '是的，我明天来')])
+D('S0277L03', 'grow', known='来週の初め', target='下周初', type='M', comps=[['来週', '下周'], ['初め', '初']],
+  why='"初め・最初" is a two-form label; 初 is bound and grows to its noun: the seed\'s 来週の初め = 下周初 (3). Rows said 次の週 (the seed says 来週) or 来月 (另一 LEGO).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('来週の初めに用事があります', '我下周初有事'), 'U02': 'd', 'U03': ('来週の初めに時間がありますか', '下周初你有时间吗'),
+     'U04': ('来週の初めにこの件を終わらせなければなりません', '我下周初得完成这件事'), 'U05': 'd', 'U06': ('来週の初めに一緒に行きましょう', '下周初我们一起去')},
+  add=[('b', '来週の初めに戻る', '下周初回来'), ('b', '来週の初めに始める', '下周初开始'), ('b', '来週の初めに行く', '下周初走'),
+       ('u', '母は来週の初めに来ます', '我妈妈下周初来')])
+D('S0277L04', 'regloss', known='会議', why='"会議・ミーティング" is a two-form label; with the seed edit the seed says 会議. U01 takes the edited seed.',
+  b={'U01': ('はい、来週の初めに大事な会議があります。', '是的，我下周初有个重要会议。')},
+  add=[('b', '明日の会議', '明天的会议')])
+
+# ---- seed 278 "昨夜全部終わらせなければなりませんでしたか？| 你昨晚必须把一切都完成吗？"
+D('S0278L02', 'grow', known='全部終わらせなければならない', target='必须把一切都完成', type='M',
+  comps=[['なければならない', '必须'], ['を', '把'], ['全部', '一切'], ['全部', '都'], ['終わらせる', '完成']],
+  why='"必ず〜しなければならない" is gapped and 必ず is not in the seed. 必须 is bound, and the 把…都 frame wraps its middle (L32): the seed\'s 全部終わらせなければならない = 必须把一切都完成. KEPT AT 7 SYLLABLES: no shorter contiguous cut has the seed\'s words on both sides (Japanese 全部 sits inside the Chinese frame).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', '今日全部終わらせなければならない', '今天必须把一切都完成'), ('b', '彼は全部終わらせなければならない', '他必须把一切都完成'),
+       ('b', '明日全部終わらせなければならない', '明天必须把一切都完成'),
+       ('u', '昨夜全部終わらせなければなりませんでしたか', '你昨晚必须把一切都完成吗'), ('u', '私は明日全部終わらせなければなりません', '我明天必须把一切都完成'),
+       ('u', '私たちは今晩全部終わらせなければなりません', '我们今天晚上必须把一切都完成'), ('u', 'なぜ全部終わらせなければならないのですか', '你为什么必须把一切都完成'),
+       ('u', '父は全部終わらせなければなりませんでした', '我爸爸必须把一切都完成')])
+D('S0278L03', 'delete', why='Knock-on, not a scan row: "すべて | 一切" says すべて, which the seed does not (it says 全部), and repeats S0045L02 as mended. Its seed part is inside S0278L02 as grown (必须把一切都完成, component 全部 | 一切), so it goes with its basket.')
+
+# ---- seed 279 "はい、時間があまり残っていなかったからです。| 是的，因为剩下的时间不多了。"
+D('S0279L01', 'regloss', known='残る', why='"残る・残っている" is a two-form label; the seed says 残って. Every row says 残.',
+  add=[('b', '少し残る', '剩一点')])
+
+# ---- seed 280 "いいえ、一番大事な仕事だけしなければなりませんでした。| 不，我只需要做最重要的工作。"
+D('S0280L01', 'regloss', known='だけ', why='"だけ・しか〜ない" is a gapped two-form label; the seed says だけ.', b={'U01': ('私は手伝いだけ必要です', '我只需要帮忙')},
+  add=[('b', 'あなただけ', '只有你')])
+D('S0280L02', 'regloss', known='一番', why='"一番・最も" is a two-form label; the seed says 一番. Rows in 最も rebuilt.',
+  b={'B01': ('一番大事な', '最重要'), 'B03': 'd', 'U01': ('それは一番大事なことです', '那是最重要的事'), 'U04': ('あの会議が一番大事です', '那个会议最重要'),
+     'U05': ('私は一番大事なことだけやります', '我只做最重要的事'), 'U06': 'd'},
+  add=[('b', '一番好き', '最喜欢')])
+
+# ---- seed 281 "コーヒー飲み終わるまで待っていい？| 你介意我喝完咖啡你再开始吗？"
+D('S0281L01', 'seed', seed_known='私がコーヒーを飲み終わって、あなたはそれから始めても構いませんか？',
+  why='The Japanese asks "may (you) wait until I finish my coffee?"; the Chinese asks "do you mind if I finish my coffee and you start after?" No Japanese word glosses 介意 or 再 (S15: mistranslation). KAI: seed edit to 私がコーヒーを飲み終わって、あなたはそれから始めても構いませんか？')
+D('S0281L01', 'regloss', known='構う', is_new=False, why='"気にする・嫌がる" is a two-form label; with the seed edit the seed says 構いません, an exact repeat of S0063L01 (as mended): not-new.',
+  b={k: 'k' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06']})
+D('S0281L02', 'grow', known='飲み終わる', target='喝完', type='M', comps=[['飲む', '喝'], ['し終わる', '完']],
+  why='"〜し終わる" is gapped; 完 is bound and grows to its verb: the seed\'s 飲み終わる = 喝完 (2).',
+  b={'B02': 'd', 'B03': 'd', 'U01': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', 'コーヒーを飲み終わる', '喝完咖啡'), ('b', 'もう飲み終わった', '已经喝完了'), ('b', '飲み終わってから行く', '喝完就走'),
+       ('u', '私はコーヒーを飲み終わりました', '我喝完咖啡了'), ('u', 'あなたはもう飲み終わりましたか', '你已经喝完了吗'),
+       ('u', '父はコーヒーを飲み終わってから行きます', '我爸爸喝完咖啡就走')])
+D('S0281L04', 'grow', known='それから始める', target='再开始', type='M', comps=[['それから', '再'], ['始める', '开始']],
+  why='"また・それから" is a two-form label (再 here is "only then", not "again"); with the seed edit the seed says それから, which alone clashes with an earlier "それから | 然后" (ZUT). Grows by its verb: それから始める = 再开始 (3).',
+  b=dels('B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', 'あなたはそれから始める', '你再开始'), ('b', '終わって、それから始める', '完成再开始'), ('b', '食べて、それから始める', '吃完再开始'),
+       ('u', 'コーヒーを飲み終わって、それから始めます', '我喝完咖啡再开始'), ('u', '父が来て、それから始めましょう', '我爸爸来了我们再开始'),
+       ('u', '準備ができて、それから始めます', '我准备好再开始'), ('u', '彼女が戻って、それから始めます', '她回来再开始'),
+       ('u', '数分待って、それから始めましょう', '我们等几分钟再开始')])
+
+# ---- seed 282 "うん、問題ない。| 不，那没问题。"
+D('S0282L01', 'regloss', known='問題', is_new=False, why='"問題・質問" is a two-form label; the seed says 問題, an exact repeat of S0134L02 "問題 | 问题": not-new. (うん vs 不 is a separate seed defect, not item 10.)',
+  b={k: 'k' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U04', 'U05', 'U06']})
+
+# ---- seed 283 "中国語を話す友だち、誰がいる？| 你哪些朋友会说中文？"
+D('S0283L01', 'seed', seed_known='あなたのどの友達が中国語を話せますか？',
+  why='The Japanese asks "who are your friends who speak Chinese?" (誰); the Chinese asks "which of your friends speak Chinese?" (哪些): no Japanese word glosses 哪些 (S15). KAI: seed edit to あなたのどの友達が中国語を話せますか？')
+D('S0283L01', 'grow', known='どの友達', target='哪些朋友', type='M', comps=[['どの', '哪些'], ['友達', '朋友']],
+  why='"どれ・どんな" is a two-form label; with the seed edit the seed says どの, which alone clashes with S0262L02 "どの | 哪个" (ZUT). Grows by its noun: どの友達 = 哪些朋友 (4).',
+  b={'B03': 'd', 'U02': 'd', 'U04': 'd', 'U06': 'd'},
+  add=[('b', '私のどの友達', '我哪些朋友'), ('u', 'どの友達が来週来ますか', '哪些朋友下周来'), ('b', 'どの友達が来る', '哪些朋友来'), ('u', 'あなたのどの友達が読書が好きですか', '你哪些朋友喜欢看书')])
+
+# ---- seed 284 "妹の友だち、知ってる？| 你认识我妹妹的朋友吗？"
+D('S0284L01', 'regloss', known='知っている', is_new=False, why='Exact repeat of S0085L01 "知っている | 认识" once glossed: not-new. "知っている・面識がある" is a two-form label; the seed says 知ってる (知っている). Near-twin note: 知る → 知道 (S0045L01); 认识 takes the stative form the seed uses.')
+
+# ---- seed 287 "テレビ見るのが好きな人、何人知ってる？| 你认识多少喜欢看电视的人？"
+D('S0287L01', 'regloss', known='何人', why='"どのくらい・どれだけ" is a two-form label and neither is in the seed; 多少 here is the seed\'s 何人. Rows in the "how much time" sense go.',
+  b={'B01': 'd', 'B03': 'd', 'U02': 'd', 'U04': 'd', 'U06': 'd'},
+  add=[('b', '何人知っている', '认识多少人'), ('b', '友達が何人いる', '有多少朋友'),
+       ('u', 'あなたは中国語を話す人を何人知っていますか', '你认识多少说中文的人'), ('u', 'お母さんは何人知っていますか', '你妈妈认识多少人')])
+
+# ---- seed 288 "知ってる人のほとんどがテレビ好き。| 我认识的大多数人都喜欢看电视。"
+D('S0288L01', 'regloss', known='ほとんど', why='"ほとんど・大部分" is a two-form label; the seed says ほとんど. Rows with untaught 时候 go.', b={'B03': 'd', 'U04': 'd'},
+  add=[('b', 'ほとんどの友達', '大多数朋友'), ('b', 'ほとんどの人が好き', '大多数人都喜欢'), ('u', 'ほとんどの友達が中国語を話します', '大多数朋友都说中文')])
+
+# ---- seed 289 "今日の午後、来るか気になる。| 我想知道她今天下午会不会在那里。"
+D('S0289L01', 'seed', seed_known='彼女が今日の午後そこにいるか知りたいです。',
+  why='The Japanese says "I wonder if (she) will come"; the Chinese says "I want to know whether she will be there": no Japanese word glosses 知道 or 那里 (S15). KAI: seed edit to 彼女が今日の午後そこにいるか知りたいです。')
+D('S0289L01', 'regloss', known='知る', is_new=False, why='"知る・分かる" is a two-form label; with the seed edit the seed says 知りたい: 知る, an exact repeat of S0045L01 "知る | 知道": not-new.',
+  b={k: 'k' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06']})
+D('S0289L03', 'regloss', known='そこ', is_new=False, why='Exact repeat of S0157L02 "そこ | 那里" once glossed: not-new. "そこ・あそこ" is a two-form label (あそこ is S0258L01 | 那边); with the seed edit the seed says そこ.')
+
+# ---- seed 290 "答えを知ってるか気になる。| 我想知道他知不知道答案。"
+D('S0290L01', 'seed', seed_known='彼が答えを知っているかどうか知りたいです。',
+  why='The Japanese says "I wonder if (he) knows the answer" without 他 or the 知不知道 question: no Japanese chunk glosses L01 (S15). KAI: seed edit to 彼が答えを知っているかどうか知りたいです。')
+D('S0290L01', 'grow', known='知っているかどうか', target='知不知道', type='M', comps=[['知る', '知'], ['ない', '不'], ['知る', '知道']],
+  why='"知る・知らない" is a two-form label; 知 alone is bound (half of 知不知道). With the seed edit, 知っているかどうか = 知不知道 (4).',
+  b={'B03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('u', 'あなたが知っているかどうか知りたいです', '我想知道你知不知道'), ('b', '母が知っているかどうか', '我妈妈知不知道'), ('b', 'あなたが知っているかどうか', '你知不知道'),
+       ('u', '父が答えを知っているかどうかわかりません', '我不知道我爸爸知不知道答案'), ('u', '友達が知っているかどうか聞きたいです', '我想问朋友知不知道')])
+D('S0290L02', 'regloss', known='答え', is_new=False, why='"答え・解答" is a two-form label; the seed says 答え, an exact repeat of S0017L03 "答え | 答案": not-new.')
+
+# ---- seed 291 "もっと上手に話せるようになりたい。| 我希望我很快就能说得更好。"
+D('S0291L01', 'seed', seed_known='すぐにもっと上手に話せるようになることを望んでいます。',
+  why='The Japanese says "I want to become able to speak better" with no 很快 and なりたい for 希望 (S15). KAI: seed edit to すぐにもっと上手に話せるようになることを望んでいます。')
+D('S0291L01', 'regloss', known='望む', why='"希望する・望む" is a two-form label; with the seed edit the seed says 望んで. Rows in 希望する rebuilt.',
+  b={'B01': 'd', 'B02': ('私は望みます', '我希望'), 'B03': ('望まない', '不希望')},
+  add=[('b', '来ることを望む', '希望来')])
+D('S0291L02', 'regloss', known='すぐに', why='"すぐに・早く" is a two-form label (早く is S0020L01 | 快点); with the seed edit the seed says すぐに. U01 takes the edited seed.',
+  b={'U01': ('私はすぐにもっと上手に話せるようになることを望んでいます', '我希望我很快就能说得更好')},
+  add=[('b', 'すぐに行く', '很快就走')])
+
+# ---- seed 292 "パーティーに来られるといいな。| 我希望你能来参加聚会。"
+D('S0292L03', 'regloss', known='パーティー', why='"パーティー・集まり" is a two-form label; the seed says パーティー. Every row says it.',
+  add=[('b', 'パーティーに行く', '去聚会')])
+
+# ---- seed 293 "どこで会うか調べないと。| 我得弄清楚他要在哪里见我。"
+D('S0293L02', 'seed', seed_known='彼がどこで私に会うか、はっきりさせないと。',
+  why='The Japanese says "I have to look up where (we) meet": no 他, 我 or 弄清楚 (調べる is "look up"). No chunk glosses L02/L03 (S15). KAI: seed edit to 彼がどこで私に会うか、はっきりさせないと。')
+D('S0293L02', 'grow', known='私に会う', target='见我', type='M', comps=[['会う', '见'], ['私', '我']],
+  why='"会う・面会する" is a two-form label; 会う alone clashes with S0018L04 "会う | 见面" (scan ZUT). With the seed edit it grows by its object: 私に会う = 见我 (2).',
+  b=dels('B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U06'),
+  add=[('b', '私に会いたい', '想见我'), ('b', '明日私に会う', '明天见我'), ('b', 'どこで私に会う', '在哪里见我'),
+       ('u', '彼はどこで私に会いますか', '他在哪里见我'), ('u', '母は来週私に会いたいです', '我妈妈下周想见我'),
+       ('u', 'なぜ私に会いたいのですか', '你为什么想见我'), ('u', '彼女は今晩私に会います', '她今天晚上见我')])
+D('S0293L03', 'regloss', known='はっきりさせる', why='"はっきりさせる・明確にする" is a two-form label; with the seed edit the seed says はっきりさせ. B01 carried the label itself.',
+  b={'B01': 'd'})
+D('S0293L04', 'grow', known='はっきりさせないと', target='得弄清楚', type='M', comps=[['ないと', '得'], ['はっきりさせる', '弄清楚']],
+  why='"〜しないと" is gapped; 得 is bound and grows to its verb: with the seed edit, はっきりさせないと = 得弄清楚 (3).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': 'd', 'U02': 'd', 'U03': ('私はこの件をはっきりさせないと', '我得弄清楚这件事'), 'U04': 'd', 'U05': 'd',
+     'U06': ('私はどこで彼に会うかはっきりさせないと', '我得弄清楚他要在哪里见我')},
+  add=[('b', '答えをはっきりさせないと', '得弄清楚答案'), ('b', '今晩はっきりさせないと', '今天晚上得弄清楚'), ('b', '時間をはっきりさせないと', '得弄清楚时间'),
+       ('u', '私たちは時間をはっきりさせないと', '我们得弄清楚时间'), ('u', '母はどこで会うかはっきりさせないと', '我妈妈得弄清楚在哪里见面'),
+       ('u', '彼女は答えをはっきりさせないと', '她得弄清楚答案')])
+
+# ---- seed 294 "今夜は電話する時間がない。| 我今晚没足够时间给你打电话。"
+D('S0294L01', 'regloss', known='今夜', why='"今夜・今晩" is a two-form label (今晩 is S0018L02 | 晚上); the seed says 今夜. Rows in 今晩 rebuilt.',
+  b={'B01': ('今夜来る', '今晚来'), 'B02': ('今夜会う', '今晚见'), 'B03': ('今夜ある', '今晚有'), 'U01': ('私は今夜時間がありません', '我今晚没时间'),
+     'U02': ('あなたは今夜来ますか', '你今晚来吗'), 'U03': ('彼は今夜来ません', '他今晚不来了'), 'U04': ('私は今夜あなたに会いたいです', '我今晚想见你'),
+     'U05': ('今夜時間がありますか', '今晚你有时间吗'), 'U06': ('私は今夜この件をはっきりさせなければなりません', '我今晚得弄清楚这件事')})
+D('S0294L02', 'seed', seed_known='今夜は電話する十分な時間がない。',
+  why='The Japanese says "no time to call" with no word for 足够 ("enough") (S15). KAI: seed edit to 今夜は電話する十分な時間がない。')
+D('S0294L02', 'grow', known='十分な時間', target='足够时间', type='M', comps=[['十分な', '足够'], ['時間', '时间']],
+  why='"十分・十分な" is a two-form label; 十分な alone clashes with S0058L02 "十分な | 够多" (ZUT). With the seed edit it grows by its noun: 十分な時間 = 足够时间 (4).',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U03': 'd', 'U04': 'd', 'U06': 'd'},
+  add=[('b', '十分な時間がある', '有足够时间'), ('b', '十分な時間がない', '没足够时间'), ('b', '今夜は十分な時間がない', '今晚没足够时间'),
+       ('u', '母は十分な時間がありません', '我妈妈没有足够时间'), ('u', 'あなたは練習する十分な時間がありますか', '你有足够时间练习吗')])
+
+# ---- seed 295 "一日で終わるって言ってない。| 我没说我想一天就完成。"
+D('S0295L01', 'grow', known='一日で終わる', target='一天就完成', type='M', comps=[['一日', '一天'], ['すぐに', '就'], ['終わる', '完成']],
+  why='"すぐに・〜だけで" is a gapped two-form label and neither is in the seed; 就 is bound and grows to its verb: 一日で終わる = 一天就完成 (5).',
+  b=dels('B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05', 'U06'),
+  add=[('b', '一日で終わりたい', '想一天就完成'), ('b', '彼は一日で終わる', '他一天就完成'), ('b', '仕事は一日で終わる', '工作一天就完成'),
+       ('u', '私たちは一日で終わります', '我们一天就完成'), ('u', '彼女は一日で終わりたいです', '她想一天就完成'),
+       ('u', '一日で終わらないと思います', '我觉得不能一天就完成'), ('u', '父は一日で終わると言いました', '我爸爸说他一天就完成')])
+
+# ---- seed 300 "冷たく見られたくない。| 她不想显得不友好。"
+D('S0300L01', 'seed', seed_known='彼女は友好的でないように見られたくない。',
+  why='The Japanese says 冷たく ("cold") with no 她 and no word for 友好 or 显得 (S15). KAI: seed edit to 彼女は友好的でないように見られたくない。')
+D('S0300L01', 'regloss', known='友好的', why='"友好・親切" is a two-form label; with the seed edit the seed says 友好的. Every row says 友好的.',
+  add=[('b', '友好的な人', '友好的人')])
+D('S0300L02', 'grow', known='友好的でないように見られる', target='显得不友好', type='M', kmatch='ように見',
+  comps=[['ように見える', '显得'], ['ない', '不'], ['友好的', '友好']],
+  why='"〜に見える・〜のように見える" is a gapped two-form label; 显得 is bound and grows to its complement: with the seed edit, 友好的でないように見られる = 显得不友好 (4).',
+  b=dels('B01', 'B02', 'B03', 'U03', 'U06'),
+  add=[('b', '友好的でないように見られたくない', '不想显得不友好'), ('b', '彼は友好的でないように見られる', '他显得不友好'), ('b', '私は友好的でないように見られる', '我显得不友好'),
+       ('u', '父は友好的でないように見られたくないです', '我爸爸不想显得不友好'), ('u', '私たちは友好的でないように見られたくないです', '我们不想显得不友好'),
+       ('u', 'なぜ彼は友好的でないように見られるのですか', '他为什么显得不友好')])
 
 json.dump({'course': 'zho_for_jpn', 'legos': OUT}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'zho_for_jpn.json'), 'w'), ensure_ascii=False, indent=1)
 print(len(OUT), 'decisions')
