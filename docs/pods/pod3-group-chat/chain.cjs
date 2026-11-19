@@ -98,13 +98,16 @@ for (let i = 0; i < turns; i++) {
   const counts = Object.fromEntries(NAMES.map(n => [n, T.filter(e => e.speaker === n).length]));
   const rr = Math.random();
   const band = rr < 0.3 ? 'SHORT: 1-8 words (a reaction, a jab, a question, a half-start)' : rr < 0.75 ? 'MEDIUM: 10-35 words' : 'LONG: 40-110 words (someone takes the floor: a case, a story, an argument built as they go)';
+  // Cut-in pressure (#980 probe: 10 turns came out with no cut-ins at all, too courteous for a hot argument).
+  const sinceCut = T.length - 1 - T.map(e => !!e.cutIn).lastIndexOf(true);
+  const cutNudge = T.length >= 3 && sinceCut >= 5 ? '\nNobody has interrupted anyone for a while and this argument is hot: unless it would be odd, this speaker cuts the previous one off (set cut_in).' : '';
   const prompt = `THE MOMENT: ${TOPIC}
 
 TRANSCRIPT SO FAR (as heard; "—" at the end of a line = that speaker was cut off there):
 ${T.length ? transcriptForModel() : '(the question has just been asked; nobody has answered yet)'}
 
 Turns so far per person: ${JSON.stringify(counts)}. This is turn ${i + 1} of roughly ${turns}; ${i >= turns - 4 ? 'ENDING SHAPE: ' + T0.ending + ' Do not wrap it up.' : 'keep it live.'}
-LENGTH FOR THIS TURN: ${band}. Pick a speaker for whom that length is natural right now.
+LENGTH FOR THIS TURN: ${band}. Pick a speaker for whom that length is natural right now.${cutNudge}
 Write the single next turn as JSON.`;
   let r, tries = 0;
   while (true) {
