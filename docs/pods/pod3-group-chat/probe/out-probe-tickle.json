@@ -1,0 +1,288 @@
+{
+  "topic": "Danny's daughter rang him this afternoon and told him you physically can't tickle yourself, and that it's something to do with the brain. He has spent ten minutes trying under the table and has just told the others. Jess is already trying it.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F302",
+      "from": 2,
+      "to": 4,
+      "hint": "someone who half-knows why (Femi or Sunny) first marks down their own authority, plainly, and then says what they think the reason is at full strength"
+    },
+    {
+      "id": "F9",
+      "from": 4,
+      "to": 7,
+      "hint": "someone else, before pushing back, offers back their own version of that explanation to check they've got it; the person who gave it confirms or corrects it next turn",
+      "followup": "confirm-or-correct"
+    },
+    {
+      "id": "F16",
+      "from": 7,
+      "to": 10,
+      "hint": "someone concedes the point another person just made, and then holds their own different view with a but"
+    }
+  ],
+  "T": [
+    {
+      "speaker": "Jess",
+      "line": "No, it's true, I'm doing my ribs and it's just... nothing. Rude.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Don't hold me to this, I read it years ago, but your brain cancels it because it knows exactly what's coming.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F302"
+    },
+    {
+      "speaker": "Femi",
+      "line": "Two people poking themselves under a pub table proves nothing. But I'll take it",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Two people poking themselves under a pub table proves nothing. But I'll take it, my kids have never once managed it either."
+    },
+    {
+      "speaker": "Danny",
+      "line": "So the tickle is the surprise?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null,
+      "moveRejected": "F9"
+    },
+    {
+      "speaker": "Femi",
+      "line": "Not surprise exactly, it's prediction. Your brain sends a copy of the movement and damps what comes back. Which is why my four-year-old can't tickle me either, apparently.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Wait, wait, so if it's my hand but Cai's moving it, does my brain still know, or does that count?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "All right, prediction, but surprise is in it somewhere. My old cow still jumps",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F16",
+      "full": "All right, prediction, but surprise is in it somewhere. My old cow still jumps at a gate she's walked past for years."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Startle's a different thing, Hugh.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Fair enough, startle. But I still say it's not the hand she minds, it's not knowing whose it is.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Is that why your own voice on a recording—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, it's true, I'm doing my ribs and it's just... nothing. Rude.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Don't hold me to this, I read it years ago, but your brain cancels it because it knows exactly what's coming.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F302"
+      },
+      "cutApplied": false,
+      "planned": "F302"
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Two people poking themselves under a pub table proves nothing. But I'll take it, my kids have never once managed it either.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": "F302"
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Danny",
+        "line": "So the tickle is the surprise?",
+        "cut_in": "proves nothing. But I'll take it",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F9"
+      },
+      "cutApplied": true,
+      "planned": "F9"
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Not surprise exactly, it's prediction. Your brain sends a copy of the movement and damps what comes back. Which is why my four-year-old can't tickle me either, apparently.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Wait, wait, so if it's my hand but Cai's moving it, does my brain still know, or does that count?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F9"
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "All right, prediction, but surprise is in it somewhere. My old cow still jumps at a gate she's walked past for years.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F16"
+      },
+      "cutApplied": false,
+      "planned": "F16"
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Startle's a different thing, Hugh.",
+        "cut_in": "My old cow still jumps",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Fair enough, startle. But I still say it's not the hand she minds, it's not knowing whose it is.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F16"
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Is that why your own voice on a recording—",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 2,
+      "speaker": "Sunny",
+      "move": "F302",
+      "pass": true,
+      "reason": "Sunny first discounts their own authority (\"Don't hold me to this, I read it years ago\") and then states the claim flatly with no hedge in the delivery; four people are taking part, and Femi (\"proves nothing. But I'll take it\") and Danny (\"So the tickle is the surprise?\") both take the claim up in the following turns."
+    },
+    {
+      "turn": 4,
+      "speaker": "Danny",
+      "move": "F9",
+      "pass": false,
+      "reason": "Danny does offer a candidate version of what he heard ('So the tickle is the surprise?') in a multi-party stretch, but Femi corrects it in turn 5 ('Not surprise exactly, it's prediction') rather than confirming it, so the required confirmation is absent."
+    },
+    {
+      "turn": 7,
+      "speaker": "Hugh",
+      "move": "F16",
+      "pass": true,
+      "reason": "Hugh concedes Femi's prediction account (\"All right, prediction\") and then keeps his own view with \"but surprise is in it somewhere,\" in a stretch of talk with at least five people taking part."
+    }
+  ],
+  "hit": [
+    {
+      "id": "F302",
+      "turn": 2
+    },
+    {
+      "id": "F16",
+      "turn": 7
+    }
+  ],
+  "unplaced": [
+    "F9"
+  ]
+}

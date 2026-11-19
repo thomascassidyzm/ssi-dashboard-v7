@@ -23,7 +23,7 @@ const TOPICS = {
     ending: "The talk has moved on to a question the tickling opened up (about what else the brain predicts or ignores, or what that means for people) and someone is mid-way through a half-formed idea about it, unresolved, when it stops.",
     plan: [
       { id: 'F302', from: 3, to: 8, hint: "someone who half-knows why (Femi or Sunny) first marks down their own authority, plainly, and then says what they think the reason is at full strength" },
-      { id: 'F9', from: 8, to: 13, hint: "someone else, before pushing back, offers back their own version of that explanation to check they've got it; the person who gave it confirms or corrects it next turn", followup: "confirm-or-correct" },
+      { id: 'F9', from: 8, to: 13, hint: "someone else, before pushing back, offers back an accurate version of that explanation in their own words, as a check before they push on it; the person who gave it confirms it next turn", followup: "confirm-or-correct" },
       { id: 'F303', role: 'coin', from: 9, to: 15, hint: "someone coins a short, vivid phrase for the idea under discussion that the others pick up" },
       { id: 'F16', from: 14, to: 22, hint: "someone concedes the point another person just made, and then holds their own different view with a but" },
       { id: 'F11', from: 18, to: 26, hint: "someone is asked a direct question, answers it briefly, and in the same turn hands the same question to someone at the table who has said little" },
@@ -50,7 +50,7 @@ const TOPICS = {
       { id: 'F2', from: 5, to: 11, hint: "someone asks a plain question (how many faces, how long, how would you even test it); the person asked answers and then volunteers something unexpected nobody asked for" },
       { id: 'F305', from: 10, to: 17, hint: "someone throws a counterexample at the claim; the claimant welcomes it and folds it in as making the claim stronger" },
       { id: 'F306', from: 15, to: 23, hint: "someone adds a thought and the next speaker takes it up as exactly where they were about to go, then carries it on along the merged line" },
-      { id: 'F9', from: 20, to: 28, hint: "before disagreeing, someone offers back their own version of what another person just argued; that person confirms or corrects it next turn", followup: "confirm-or-correct" },
+      { id: 'F9', from: 20, to: 28, hint: "before disagreeing, someone offers back an accurate version, in their own words, of what another person just argued, as a check; that person confirms it next turn", followup: "confirm-or-correct" },
       { id: 'F304', from: 25, to: 33, hint: "someone comments on the conversation itself as play (how long they've been on sheep, everyone talking at once, how the argument has flipped) and uses it as a move" },
     ],
   },
@@ -70,7 +70,7 @@ const cards = fs.readFileSync(path.join(__dirname, 'personas.md'), 'utf8');
 // v3 (#986): real recorded talk as a texture anchor (Tom+Aran, ~/podcast-tom-aran), plus optional
 // STYLE_FILE for further corpus excerpts. Texture only: the engine is told never to lift words from it.
 const STYLE = [path.join(__dirname, 'style-real-talk.md'), process.env.STYLE_FILE].filter(f => f && fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8').trim()).join('\n\n');
-const MOVES = Object.fromEntries(require('../../../services/shared/metagraph/moves.json').map(m => [m.id, m]));
+const MOVES = Object.fromEntries(require('../../../services/shared/metagraph/moves.json').moves.map(m => [m.id, m]));
 for (const p of T0.plan) if (!MOVES[p.id]) { console.error('move not in moves.json: ' + p.id); process.exit(2); }
 const AVOID = process.env.AVOID_FILE ? fs.readFileSync(process.env.AVOID_FILE, 'utf8').trim() : '';
 
@@ -145,8 +145,12 @@ function claude(system, prompt) {
 }
 const call = prompt => claude(SYSTEM, prompt);
 
-const moveText = id => `${id} "${MOVES[id].name}". Its test: ${MOVES[id].test}`;
-const planOverview = T0.plan.map(p => `- ${p.role === 'coin' ? 'set-up for ' : ''}${p.id} "${MOVES[p.id].name}" somewhere around turns ${p.from}-${p.to}`).join('\n');
+// Probe lesson (#992): showing the speakers the move NAMES made them say them ("proves nothing", "fair enough,
+// but I still"). Speakers see only the id and the test; the names are banned as wording. The judge sees both.
+const moveText = id => `${id}. Its test: ${MOVES[id].test}`;
+const moveTextJudge = id => `${id} "${MOVES[id].name}". Its test: ${MOVES[id].test}`;
+const NAME_BAN = 'Never use any of these stock phrasings in a line, they are labels not speech: ' + T0.plan.map(p => '"' + MOVES[p.id].name + '"').join(', ') + '.';
+const planOverview = T0.plan.map(p => `- ${p.role === 'coin' ? 'set-up for ' : ''}${p.id} somewhere around turns ${p.from}-${p.to}`).join('\n') + '\n' + NAME_BAN;
 const LAUGH = /\b(ha|haha|hah|heh|lol)\b|laugh|@/i;
 
 const turns = parseInt(turnsArg, 10);
@@ -165,7 +169,7 @@ for (let i = 0; i < turns; i++) {
   if (pending) {
     forced = pending.speaker;
     moveAsk = pending.kind === 'confirm-or-correct'
-      ? `\nTHIS TURN: ${pending.speaker} answers the read-back just offered of what they said: they confirm it, or correct it, and carry on. Speaker MUST be ${pending.speaker}. "move" is null.`
+      ? `\nTHIS TURN: ${pending.speaker} answers the read-back just offered of what they said: they confirm it is right, in their own words, and carry on (the read-back was accurate). Speaker MUST be ${pending.speaker}. "move" is null.`
       : `\nTHIS TURN: ${pending.speaker} takes up the sharper name just handed back for what they were building, ratifies it, and USES it in carrying their point on (adopts it as their own). Speaker MUST be ${pending.speaker}. "move" is null.`;
     band = 'SHORT or MEDIUM';
   } else {
@@ -245,7 +249,7 @@ for (let k = 0; k < T.length; k++) {
   const lo = Math.max(0, k - 8), hi = Math.min(T.length, k + 3);
   const ctx = transcriptForModel(true).split('\n').slice(lo, hi).join('\n');
   const extra = e.move === 'F303' ? `\nThe phrase was coined in an earlier turn: ${log.find(l => l.raw.move === 'F303-coin')?.turn}. Full transcript lines involved:\n${transcriptForModel(true)}` : '';
-  const q = `MOVE: ${moveText(e.move)}
+  const q = `MOVE: ${moveTextJudge(e.move)}
 GROUP RULE: the move must happen in a part of the talk where at least three people are taking part; a two-person exchange does not count. Where the test needs the other party's response (confirming, ratifying, adopting), that response must actually be there in the following turns.
 TRANSCRIPT EXCERPT (numbered turns):
 ${ctx}${extra}
