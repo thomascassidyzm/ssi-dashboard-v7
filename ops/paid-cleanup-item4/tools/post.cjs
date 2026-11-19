@@ -8,6 +8,8 @@
 //                                            undo file name and undo ops -> batches/<batch>.apply.json, events.json
 //   (set ITEM4_OWNER=<your job label digits> so each worker keeps its own events-<owner>.json)
 //   node post.cjs after    <course>          full /v2/validate after the edits -> validate-after.json + diff vs before
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const L = require('./lib.cjs');
@@ -16,6 +18,7 @@ const L = require('./lib.cjs');
 { const { Agent, setGlobalDispatcher } = require(require('path').join(L.ROOT, 'node_modules/undici'));
   setGlobalDispatcher(new Agent({ headersTimeout: 0, bodyTimeout: 0 })); }
 const [mode, course, batch] = process.argv.slice(2);
+if (['baseline', 'after', 'validate', 'dry', 'apply'].includes(mode)) LIVEGATE.requireLive(`item4 post.cjs ${mode} ${course}`);
 const cdir = path.join(L.ITEM_DIR, course);
 const bdir = path.join(cdir, 'batches');
 const H = { 'Content-Type': 'application/json', 'x-agent-id': 'cs-item4-filler', 'x-agent-role': 'paid-cleanup-item4' };
@@ -76,9 +79,23 @@ const issuesBySeed = (v) => new Map((v.failures || []).map(f => [f.seed, f.issue
       if (!v.pass || !d.ok) { console.error('validate or dry run did not pass; refusing to apply'); process.exit(1); }
     }
     const t0 = Date.now();
-    const r = await post(`http://localhost:3470/api/production/${course}/edit-batch`, { ...ops, apply: mode === 'apply' });
+    let r, b;
+    if (mode === 'dry' && (ops.ops || []).length > LIVEGATE.MAX_CHUNK) {
+      // cs #968·AI: a dry run goes in chunks of <= 10 ops; the first failing chunk stops it (its op index is re-based).
+      const results = [];
+      for (let i = 0; i < ops.ops.length; i += LIVEGATE.MAX_CHUNK) {
+        r = await post(`http://localhost:3470/api/production/${course}/edit-batch`, { ...ops, ops: ops.ops.slice(i, i + LIVEGATE.MAX_CHUNK), apply: false });
+        b = r.body;
+        if (b.index != null) b.index += i;
+        results.push(...(b.results || []));
+        if (r.status !== 200 || b.ok !== true) break;
+      }
+      b = { ...b, results };
+    } else {
+      r = await post(`http://localhost:3470/api/production/${course}/edit-batch`, { ...ops, apply: mode === 'apply' });
+      b = r.body;
+    }
     const ms = Date.now() - t0;
-    const b = r.body;
     const slim = { at: new Date().toISOString(), status: r.status, ms, ok: r.status === 200 && b.ok === true, applied: !!b.applied,
       event_id: b.event_id || null, undo_file: b.undo_file || null, error: b.error || null, code: b.code || null, index: b.index,
       seeds: chk.seeds, counts: chk.counts,
