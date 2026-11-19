@@ -51,6 +51,29 @@ order: use it for duplicate and one-prompt-two-answers checks before any re-cut)
   when it cannot tell — decide it explicitly in `b={…}`.
 - Write for Kai: each `why` says in plain English what the learner hears now, what changes, and the rule in words.
 
+## Learned on the three Arabic courses (19 Nov) — read before the next course
+- **The courses move under you.** Another cleanup job deleted 5 scan rows in ara_lb/ara_eg between the live read and
+  the dry run (the dry run answers 404 "no row"). Before a course's dry run, or on any 404, re-read its seeds with
+  `python3 -I tools/live_seeds.py <course> <seeds…> --force`, re-run mkdump.py, and re-judge: a LEGO whose bad rows are
+  gone is `keep` + `ALREADY-FIXED:` (count it; say if the basket is now thin).
+- **tools/validate.py over-reports NEW issues** (its baseline is worded differently). After it, run
+  `python3 -I item11/tools/vdiff.py <course>`: it validates the same seeds unchanged through the same door and prints
+  only what the plan really adds. Fix until it prints no ADDED line, or say in `why` why one stays.
+- **`python3 -I item11/tools/p1.py <course>`** after the decisions .py: every new target text, word by word, against
+  what is taught by that LEGO; "never in an earlier row" words must be replaced.
+- `python3 -I item11/tools/review.py <course> --compact` prints only starred rows and rows missing the LEGO.
+- Typical leftovers once broken rows are fixed: fewer than 3 builds with the LEGO inside a phrase, fewer than 5 uses
+  (the bare LEGO or the seed-as-LEGO row does not count), a bare-LEGO row repeated. Add one row from taught words.
+- A stale copy of the SEED sentence in a basket (seed text was changed, the copy was not) takes the seed's live words.
+- sir/madam LEGOs: the builder wants the honorific contiguous with the core at the END of the row (K32: add it back at
+  the end of every row, both sides).
+- LEGOs also on the item-19 list (`data/scan-LONG.json`, same lego id) are `kai` + "HOLD: also over 8 syllables, the
+  item-19 plan re-cuts it and re-homes the rows", with notes for that cut. A LEGO that exactly duplicates an earlier one
+  (plan.py says so) is a hold for the duplicate-LEGO plan.
+- Dry runs are slow when Popty is busy (ara_for_eng: 123 ops took 10 minutes). Run them with a long timeout, once;
+  one retry on a dropped connection.
+- Sub-dispatches from this job do not start (accepted, checkout made, no worker; twice). Do the courses yourself.
+
 ## Hand back
 `item11/SUMMARY-B-<your part>.md` in the shape BRIEF-CHILD asks for (table per course: scan rows, dropped as already
 fixed, not-a-defect, proposals, holds, est. chars; FIX PATTERNS with 2–3 real examples each; HOLDS; LEGOs kept at 7+
