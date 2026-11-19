@@ -1,0 +1,1748 @@
+{
+ "course": "jpn_for_eng",
+ "legos": [
+  {
+   "why": "\"do | やる\": やる is not in the seed (it says やってみてる), and L02 \"am trying | やってみてる\" already tiles that part with やる as its component. A dictionary-form LEGO beside an M-LEGO that covers it goes; its rows (I'll do Japanese…) go with it. Also closes K54 for this row.",
+   "id": "S0002L01",
+   "verdict": "delete"
+  },
+  {
+   "known": "because I want to meet",
+   "target": "会いたいから",
+   "type": "M",
+   "why": "から is a particle taught alone (L7). It grows to the verb it attaches to in its own seed (L22): 会いたいから \"because I want to meet\". から stays a component (K29).",
+   "add": [
+    [
+     "b",
+     "because I want to meet this evening",
+     "今夜会いたいから"
+    ],
+    [
+     "b",
+     "because I want to meet at six o'clock",
+     "6時に会いたいから"
+    ],
+    [
+     "b",
+     "because I want to meet tomorrow too",
+     "明日も会いたいから"
+    ],
+    [
+     "u",
+     "because I want to meet everyone today",
+     "今日はみんなと会いたいから"
+    ],
+    [
+     "u",
+     "because I want to meet with everyone this evening",
+     "今夜みんなと会いたいから"
+    ],
+    [
+     "u",
+     "because I want to meet people who speak Japanese tomorrow too",
+     "明日も日本語を話す人に会いたいから"
+    ],
+    [
+     "u",
+     "because I want to meet people now",
+     "今、人に会いたいから"
+    ]
+   ],
+   "id": "S0022L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del"
+   },
+   "components": [
+    [
+     "want to meet",
+     "会いたい"
+    ],
+    [
+     "because",
+     "から"
+    ]
+   ]
+  },
+  {
+   "known": "to start speaking",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to start speaking'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0023L01",
+   "verdict": "regloss"
+  },
+  {
+   "known": "to improve",
+   "why": "\"make better\" is not in the seed (\"or if I need to improve\"); 良くする is the seed's \"improve\", with K54's \"to\". Rows rebuilt to \"improve\" (targets unchanged).",
+   "id": "S0044L02",
+   "verdict": "regloss",
+   "basket": {
+    "U02": [
+     "I need to improve it",
+     "良くする必要がある"
+    ],
+    "B03": [
+     "quickly improve",
+     "早く良くする"
+    ],
+    "B04": [
+     "improve now",
+     "今良くする"
+    ],
+    "B05": [
+     "need to improve",
+     "良くする必要がある"
+    ],
+    "B06": [
+     "whether I need to improve",
+     "良くする必要があるかどうか"
+    ]
+   }
+  },
+  {
+   "known": "wanted to write",
+   "target": "書きたかった",
+   "type": "M",
+   "why": "たかった is a bound ending taught alone (L7/L22). It grows to its verb in its own seed: 書きたかった \"wanted to write\". L02 becomes the seed's other piece, \"a letter | 手紙を\" (the scan's merge).",
+   "add": [
+    [
+     "b",
+     "wanted to write today",
+     "今日は書きたかった"
+    ],
+    [
+     "b",
+     "wanted to write yesterday",
+     "昨日書きたかった"
+    ],
+    [
+     "b",
+     "he wanted to write",
+     "彼は書きたかった"
+    ],
+    [
+     "u",
+     "he wanted to write a letter",
+     "彼は手紙を書きたかった"
+    ],
+    [
+     "u",
+     "I wanted to write a letter to my friend",
+     "友だちに手紙を書きたかった"
+    ],
+    [
+     "u",
+     "she wanted to write in Japanese",
+     "彼女は日本語で書きたかった"
+    ],
+    [
+     "u",
+     "I wanted to write a letter yesterday",
+     "昨日、手紙を書きたかった"
+    ],
+    [
+     "u",
+     "I wanted to write something in Japanese",
+     "日本語で何か書きたかった"
+    ]
+   ],
+   "id": "S0052L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "write",
+     "書く"
+    ],
+    [
+     "wanted to",
+     "たかった"
+    ]
+   ]
+  },
+  {
+   "known": "a letter",
+   "target": "手紙を",
+   "type": "A",
+   "why": "With L01 grown to 書きたかった, the seed's remaining piece is 手紙を \"a letter\" (the old \"write a letter\" also wanted K54). Every row says 手紙を; B02 was an exact duplicate of B01.",
+   "id": "S0052L02",
+   "verdict": "grow",
+   "basket": {
+    "B02": "del"
+   },
+   "components": []
+  },
+  {
+   "known": "wanted to put in",
+   "target": "入れたかった",
+   "type": "M",
+   "why": "\"put in | 入れる\" is a dictionary form the seed never says (入れたかった). Seed 53 is the second verb for たかった (L22 step 4): grows to 入れたかった. Every row was bare 入れる: rebuilt.",
+   "add": [
+    [
+     "b",
+     "she wanted to put it in",
+     "彼女は入れたかった"
+    ],
+    [
+     "b",
+     "wanted to put it in her bag",
+     "バッグに入れたかった"
+    ],
+    [
+     "b",
+     "wanted to put that letter in",
+     "その手紙を入れたかった"
+    ],
+    [
+     "u",
+     "she wanted to put his letter in her bag",
+     "彼女はその手紙をバッグに入れたかった"
+    ],
+    [
+     "u",
+     "I wanted to put it in yesterday",
+     "昨日入れたかった"
+    ],
+    [
+     "u",
+     "he wanted to put the letter in his bag",
+     "彼は手紙をバッグに入れたかった"
+    ],
+    [
+     "u",
+     "I wanted to put something in",
+     "何か入れたかった"
+    ],
+    [
+     "u",
+     "I wanted to put it in today",
+     "今日は入れたかった"
+    ]
+   ],
+   "id": "S0053L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U04": "del",
+    "U06": "del",
+    "U07": "del"
+   },
+   "components": [
+    [
+     "put in",
+     "入れる"
+    ],
+    [
+     "wanted to",
+     "たかった"
+    ]
+   ]
+  },
+  {
+   "known": "wanted to give",
+   "target": "あげたかった",
+   "type": "M",
+   "why": "\"give | あげる\" is a dictionary form the seed never says; it grows to the seed's あげたかった (L22). Every row was bare あげる: rebuilt.",
+   "add": [
+    [
+     "b",
+     "wanted to give you time",
+     "時間をあげたかった"
+    ],
+    [
+     "b",
+     "wanted to give a letter",
+     "手紙をあげたかった"
+    ],
+    [
+     "b",
+     "wanted to give something",
+     "何かあげたかった"
+    ],
+    [
+     "u",
+     "we wanted to give you a little more time",
+     "もう少し時間をあげたかった"
+    ],
+    [
+     "u",
+     "I wanted to give a letter to my friend",
+     "友だちに手紙をあげたかった"
+    ],
+    [
+     "u",
+     "I wanted to give you time yesterday",
+     "昨日、時間をあげたかった"
+    ],
+    [
+     "u",
+     "he wanted to give you more time",
+     "彼はもっと時間をあげたかった"
+    ],
+    [
+     "u",
+     "I wanted to give you something today",
+     "今日は何かあげたかった"
+    ]
+   ],
+   "id": "S0054L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U04": "del",
+    "U08": "del",
+    "U09": "del"
+   },
+   "components": [
+    [
+     "give",
+     "あげる"
+    ],
+    [
+     "wanted to",
+     "たかった"
+    ]
+   ]
+  },
+  {
+   "known": "to give you time",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to give you time'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0054L03",
+   "verdict": "regloss"
+  },
+  {
+   "known": "couldn't sleep well",
+   "target": "よく眠れなかった",
+   "type": "M",
+   "why": "\"sleep well | よく眠れる\" is not the seed's form (よく眠れなかった) and よく眠れる means \"can sleep well\". The seed's chunk: couldn't sleep well. Every row drilled \"can sleep well\": rebuilt.",
+   "add": [
+    [
+     "b",
+     "he couldn't sleep well",
+     "彼はよく眠れなかった"
+    ],
+    [
+     "b",
+     "she couldn't sleep well",
+     "彼女はよく眠れなかった"
+    ],
+    [
+     "b",
+     "I couldn't sleep well yesterday",
+     "昨日よく眠れなかった"
+    ],
+    [
+     "u",
+     "because I couldn't sleep well",
+     "よく眠れなかったから"
+    ],
+    [
+     "u",
+     "I couldn't sleep well, so I'm tired",
+     "よく眠れなかったから、疲れてる"
+    ],
+    [
+     "u",
+     "he couldn't sleep well yesterday",
+     "彼は昨日よく眠れなかった"
+    ],
+    [
+     "u",
+     "I couldn't sleep well today either",
+     "今日もよく眠れなかった"
+    ],
+    [
+     "u",
+     "she couldn't sleep well this evening",
+     "彼女は今夜よく眠れなかった"
+    ]
+   ],
+   "id": "S0055L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U03": "del",
+    "U05": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "well",
+     "よく"
+    ],
+    [
+     "sleep",
+     "眠れる"
+    ],
+    [
+     "couldn't",
+     "なかった"
+    ]
+   ]
+  },
+  {
+   "known": "to understand",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to understand'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0058L01",
+   "verdict": "regloss"
+  },
+  {
+   "why": "\"could you say that again | もう一度言って\" is split by ゆっくり in the seed, i.e. gapped (L32). The whole seed (もう一度、ゆっくり言って, 11 morae) is too long to be the LEGO. Recommend the TARGET seed ゆっくり、もう一度言って (same words, LEGO contiguous; the scan's fix). Target-side seed change: not drafted until Kai rules (L25 rung 2).",
+   "id": "S0061L01",
+   "verdict": "kai"
+  },
+  {
+   "known": "I'm not sure if I can help",
+   "target": "手伝えるか分からない",
+   "type": "M",
+   "why": "\"I'm not sure if I can | できるか分からない\" uses できる as a stand-in verb the seed never says; the seed says 手伝えるか分からない. Re-cut with L02 → \"at the same time | 同時に\".",
+   "add": [
+    [
+     "b",
+     "I'm not sure if I can help today",
+     "今日は手伝えるか分からない"
+    ],
+    [
+     "b",
+     "not sure if I can help later",
+     "あとで手伝えるか分からない"
+    ],
+    [
+     "b",
+     "I'm not sure if I can help tomorrow too",
+     "明日も手伝えるか分からない"
+    ],
+    [
+     "u",
+     "I'm not sure if I can help you at the same time",
+     "同時に手伝えるか分からない"
+    ],
+    [
+     "u",
+     "I'm not sure if I can help this evening",
+     "今夜手伝えるか分からない"
+    ],
+    [
+     "u",
+     "I'm not sure if I can help at six o'clock",
+     "6時に手伝えるか分からない"
+    ],
+    [
+     "u",
+     "I'm not sure if I can help now",
+     "今、手伝えるか分からない"
+    ],
+    [
+     "u",
+     "I'm not sure if I can help this afternoon",
+     "今日の午後手伝えるか分からない"
+    ]
+   ],
+   "id": "S0062L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U05": "del",
+    "U06": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "can help",
+     "手伝える"
+    ],
+    [
+     "if",
+     "か"
+    ],
+    [
+     "don't know",
+     "分からない"
+    ]
+   ]
+  },
+  {
+   "known": "to find the answer",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to find the answer'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0066L02",
+   "verdict": "regloss"
+  },
+  {
+   "known": "didn't want to look after",
+   "target": "世話したくなかった",
+   "type": "M",
+   "why": "\"he didn't want to | 彼はしたくなかった\" uses した as a stand-in verb the seed never says; the bound たくなかった grows to its verb: 世話したくなかった (se-wa-shi-ta-ku-na-kat-ta, 8 — KEPT AT 8: the shortest cut on the verb; 子犬を would take it to 11). 彼は is taught at S0016 (L30: a taught span needs no LEGO).",
+   "add": [
+    [
+     "b",
+     "he didn't want to look after",
+     "彼は世話したくなかった"
+    ],
+    [
+     "b",
+     "didn't want to look after the young dog",
+     "子犬を世話したくなかった"
+    ],
+    [
+     "b",
+     "didn't want to look after it all afternoon",
+     "午後ずっと世話したくなかった"
+    ],
+    [
+     "u",
+     "he didn't want to look after the young dog all afternoon",
+     "彼は午後ずっと子犬を世話したくなかった"
+    ],
+    [
+     "u",
+     "she didn't want to look after the young dog",
+     "彼女は子犬を世話したくなかった"
+    ],
+    [
+     "u",
+     "I didn't want to look after it yesterday",
+     "昨日、世話したくなかった"
+    ],
+    [
+     "u",
+     "he didn't want to look after the young dog today",
+     "彼は今日は子犬を世話したくなかった"
+    ],
+    [
+     "u",
+     "I didn't want to look after it this afternoon",
+     "今日の午後、世話したくなかった"
+    ]
+   ],
+   "id": "S0069L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U06": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "look after",
+     "世話する"
+    ],
+    [
+     "didn't want to",
+     "たくなかった"
+    ]
+   ]
+  },
+  {
+   "why": "たくなかった is a bound ending taught alone (L7/L22). Its verb in the seed is 聞かせ, and L02 \"let anyone hear | 誰にも聞かせ\" is itself a bare stem. The grown chunk 誰にも聞かせたくなかった is 12 syllables (over 8); the ≤8 cut 聞かせたくなかった has no grammatical English in the seed's words (\"didn't want to let … hear\" is gapped). Options for Kai: (a) L01 \"didn't want to let anyone hear | 誰にも聞かせたくなかった\" kept at 12 as an exception; (b) L02 → \"anyone | 誰にも\", L01 → \"didn't want to let hear | 聞かせたくなかった\" (odd English); (c) English seed \"we didn't want anyone to hear the truth\" with the same cut. Not drafted until Kai rules.",
+   "id": "S0071L01",
+   "verdict": "kai"
+  },
+  {
+   "known": "to agree with",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to agree with'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0083L01",
+   "verdict": "regloss"
+  },
+  {
+   "known": "to quickly answer",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to quickly answer'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0091L01",
+   "verdict": "regloss"
+  },
+  {
+   "known": "to go home",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to go home'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0095L03",
+   "verdict": "regloss"
+  },
+  {
+   "known": "even if I'm not happy",
+   "target": "楽しくなくても",
+   "type": "M",
+   "why": "なくても is a bound ending taught alone (L7/L22); it grows to its adjective in the seed: 楽しくなくても (ta-no-shi-ku-na-ku-te-mo, 8 — KEPT AT 8: the shortest cut that is a word).",
+   "add": [
+    [
+     "b",
+     "even if I'm not happy today",
+     "今日は楽しくなくても"
+    ],
+    [
+     "b",
+     "even if I'm not happy now",
+     "今、楽しくなくても"
+    ],
+    [
+     "b",
+     "even if she's not happy",
+     "彼女は楽しくなくても"
+    ],
+    [
+     "u",
+     "even if I'm not happy, I must work hard",
+     "楽しくなくても、頑張る必要がある"
+    ],
+    [
+     "u",
+     "even if I'm not happy, I'll try speaking",
+     "楽しくなくても、話してみる"
+    ],
+    [
+     "u",
+     "even if I'm not happy, I want to remember",
+     "楽しくなくても、覚えたい"
+    ]
+   ],
+   "id": "S0106L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U04": "del",
+    "U06": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "happy",
+     "楽しい"
+    ],
+    [
+     "not",
+     "ない"
+    ],
+    [
+     "even if",
+     "ても"
+    ]
+   ]
+  },
+  {
+   "why": "\"I wonder | だろう\": だろう is bound (L7) and \"wonder\" is not in the English seed. Its home is the wrap frame なんで…覚えてないんだろう (L32), which with its middle is the whole seed (over 8). Recommend: English seed \"I wonder why I can't remember what you just said\" and L02 merged into L03 as \"I can't remember, I wonder | 覚えてないんだろう\" — or the shorter \"why can't I remember | なんで覚えてないんだろう\" if Kai accepts the middle 今のを outside. Not drafted until Kai rules.",
+   "id": "S0113L02",
+   "verdict": "kai"
+  },
+  {
+   "known": "it's interesting",
+   "target": "面白いね",
+   "type": "M",
+   "why": "ね is a particle taught alone (L7) and \"right\" is not in the English seed. It grows to its word: 面白いね \"it's interesting\" (ね has no English word; it is the tone the presentation carries, K23).",
+   "add": [
+    [
+     "b",
+     "it's really interesting",
+     "すごく面白いね"
+    ],
+    [
+     "b",
+     "Japanese is interesting",
+     "日本語は面白いね"
+    ],
+    [
+     "b",
+     "it's interesting today",
+     "今日は面白いね"
+    ],
+    [
+     "u",
+     "speaking Japanese is interesting",
+     "日本語を話すのは面白いね"
+    ],
+    [
+     "u",
+     "speaking with everyone is interesting",
+     "みんなと話すのは面白いね"
+    ],
+    [
+     "u",
+     "Japanese is really interesting",
+     "日本語はすごく面白いね"
+    ],
+    [
+     "u",
+     "speaking with other people too is interesting",
+     "他の人とも話すのは面白いね"
+    ]
+   ],
+   "id": "S0120L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "interesting",
+     "面白い"
+    ],
+    [
+     "right?",
+     "ね"
+    ]
+   ]
+  },
+  {
+   "known": "less exciting than",
+   "target": "ほど面白くない",
+   "type": "M",
+   "why": "ほど is a particle taught alone (L7) and \"as much as\" is not in the seed. Folded with the predicate it compares (the scan's merge): ほど面白くない = the seed's \"less exciting than\" (ho-do-o-mo-shi-ro-ku-nai, 8 — KEPT AT 8: ほど alone is bound; this is the shortest cut with a predicate). L02 \"isn't interesting\" overlaps (S4).",
+   "add": [
+    [
+     "b",
+     "less exciting than yesterday",
+     "昨日ほど面白くない"
+    ],
+    [
+     "b",
+     "today is less exciting than she was saying",
+     "今日は彼女が言ってたほど面白くない"
+    ],
+    [
+     "b",
+     "Japanese is less exciting than yesterday",
+     "日本語は昨日ほど面白くない"
+    ],
+    [
+     "u",
+     "today is less exciting than yesterday",
+     "今日は昨日ほど面白くない"
+    ],
+    [
+     "u",
+     "speaking is less exciting than she was saying",
+     "話すのは彼女が言ってたほど面白くない"
+    ]
+   ],
+   "id": "S0132L03",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U02": [
+     "that's less exciting than what was said",
+     "言ってたほど面白くない。"
+    ],
+    "U03": "del",
+    "U04": "del",
+    "U05": [
+     "that's less exciting than what she truly was saying",
+     "本当に言ってたほど面白くない。"
+    ]
+   },
+   "components": [
+    [
+     "as much as",
+     "ほど"
+    ],
+    [
+     "isn't interesting",
+     "面白くない"
+    ]
+   ]
+  },
+  {
+   "known": "to get to know",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to get to know'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0133L02",
+   "verdict": "regloss"
+  },
+  {
+   "why": "のか is a particle taught alone (L7) under \"whether\", a word the seed never says. It is the closing half of the wrap frame なんで…のか (\"why …\"), and the frame with its middle is the whole seed (over 8). Recommend: L02 → \"I don't know why | なんで…のか分からない\" cannot be cut without a gap; options are (a) a seed re-cut into \"why you think | なんで…と思うのか\" with そんなにいい as a separate middle, or (b) a shorter seed. Not drafted until Kai rules.",
+   "id": "S0135L02",
+   "verdict": "kai"
+  },
+  {
+   "known": "you can ask",
+   "target": "聞いていいよ",
+   "type": "M",
+   "why": "よ is a particle taught alone (L7) and \"you know\" is not in the seed. Folded into what it closes: 聞いていいよ \"you can ask\" (the scan's merge; L01 \"can ask\" overlaps, S4).",
+   "add": [
+    [
+     "b",
+     "you can ask now",
+     "今、聞いていいよ"
+    ],
+    [
+     "b",
+     "you can ask later",
+     "あとで聞いていいよ"
+    ],
+    [
+     "b",
+     "you can ask tomorrow too",
+     "明日も聞いていいよ"
+    ],
+    [
+     "u",
+     "you can ask in Japanese",
+     "日本語で聞いていいよ"
+    ],
+    [
+     "u",
+     "you can ask today",
+     "今日は聞いていいよ"
+    ],
+    [
+     "u",
+     "you can ask at six o'clock",
+     "6時に聞いていいよ"
+    ]
+   ],
+   "id": "S0136L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del"
+   },
+   "components": [
+    [
+     "can ask",
+     "聞いていい"
+    ],
+    [
+     "you know",
+     "よ"
+    ]
+   ]
+  },
+  {
+   "known": "it's more important to talk",
+   "target": "話すほうが大事",
+   "type": "M",
+   "why": "ほうが is bound (L7/L22) and \"better\" is not in the seed. It grows to its verb and predicate: 話すほうが大事 \"it's more important to talk\" (ha-na-su-hō-ga-dai-ji, 7 — KEPT AT 7: よく would take it to 9). Rows in ほうがいい (\"better\") go.",
+   "add": [
+    [
+     "b",
+     "it's more important to talk now",
+     "今話すほうが大事"
+    ],
+    [
+     "b",
+     "it's more important to talk in Japanese",
+     "日本語で話すほうが大事"
+    ],
+    [
+     "b",
+     "it's more important to talk with everyone",
+     "みんなと話すほうが大事"
+    ],
+    [
+     "u",
+     "it's more important to talk a lot",
+     "たくさん話すほうが大事"
+    ],
+    [
+     "u",
+     "it's more important to talk with other people too",
+     "他の人とも話すほうが大事"
+    ],
+    [
+     "u",
+     "it's more important to talk well",
+     "うまく話すほうが大事"
+    ],
+    [
+     "u",
+     "it's more important to talk together",
+     "一緒に話すほうが大事"
+    ]
+   ],
+   "id": "S0137L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "talk",
+     "話す"
+    ],
+    [
+     "more",
+     "ほうが"
+    ],
+    [
+     "important",
+     "大事"
+    ]
+   ]
+  },
+  {
+   "known": "what you're trying to show me",
+   "target": "見せたいことが",
+   "type": "M",
+   "why": "ことが is a bound noun + particle (L7) under \"the thing that\", which the seed never says. Grows to its verb (the scan's merge): 見せたいことが = the seed's \"what you're trying to show me\" (mi-se-ta-i-ko-to-ga, 7 — KEPT AT 7: が stays because 分からない follows it in every use).",
+   "add": [
+    [
+     "b",
+     "what you're trying to show me now",
+     "今見せたいことが"
+    ],
+    [
+     "b",
+     "what you're trying to show me later",
+     "あとで見せたいことが"
+    ],
+    [
+     "b",
+     "what you're trying to show me tomorrow too",
+     "明日も見せたいことが"
+    ],
+    [
+     "u",
+     "what you're trying to show me is really interesting",
+     "見せたいことがすごく面白い"
+    ],
+    [
+     "u",
+     "today I don't know what you're trying to show me",
+     "今日は見せたいことが分からない"
+    ],
+    [
+     "u",
+     "he doesn't know what you're trying to show me",
+     "彼は見せたいことが分からない"
+    ],
+    [
+     "u",
+     "I still don't know what you're trying to show me",
+     "まだ見せたいことが分からない"
+    ]
+   ],
+   "id": "S0140L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "what you're trying to show me",
+     "見せたいことが"
+    ],
+    "B02": "del",
+    "B03": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del"
+   },
+   "components": [
+    [
+     "want to show",
+     "見せたい"
+    ],
+    [
+     "thing",
+     "こと"
+    ],
+    [
+     "subject",
+     "が"
+    ]
+   ]
+  },
+  {
+   "seed_known": "it hasn't been working since we tried to fix it",
+   "why": "らしい (\"seems\") is not in the Japanese seed at all, and nothing in it says \"nothing\". The Japanese says \"since we tried to fix it, it isn't working\". KAI: English seed edit (the scan's) to \"it hasn't been working since we tried to fix it\".",
+   "id": "S0146L02",
+   "verdict": "seed"
+  },
+  {
+   "known": "isn't working",
+   "target": "うまくいかない",
+   "type": "M",
+   "why": "\"seems to be | らしい\": らしい is not in the seed. The seed's uncovered piece is うまくいかない \"isn't working\" (L27: a gap is closed by re-cutting the LEGO that was wrong). Every row drilled らしい: rebuilt.",
+   "add": [
+    [
+     "b",
+     "it isn't working now",
+     "今、うまくいかない"
+    ],
+    [
+     "b",
+     "it isn't working today",
+     "今日はうまくいかない"
+    ],
+    [
+     "b",
+     "it isn't working yet",
+     "まだうまくいかない"
+    ],
+    [
+     "u",
+     "because it isn't working",
+     "うまくいかないから"
+    ],
+    [
+     "u",
+     "it isn't working tomorrow either",
+     "明日もうまくいかない"
+    ],
+    [
+     "u",
+     "it isn't working this evening",
+     "今夜うまくいかない"
+    ],
+    [
+     "u",
+     "it isn't working with everyone",
+     "みんなとうまくいかない"
+    ],
+    [
+     "u",
+     "it isn't working later either",
+     "あとでうまくいかない"
+    ]
+   ],
+   "id": "S0146L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U05": "del"
+   },
+   "components": [
+    [
+     "well",
+     "うまく"
+    ],
+    [
+     "doesn't go",
+     "いかない"
+    ]
+   ]
+  },
+  {
+   "known": "I was hoping it would happen",
+   "target": "起きてほしかった",
+   "type": "M",
+   "why": "ほしかった is bound (L7/L22); it grows to its verb in the seed: 起きてほしかった (o-ki-te-ho-shi-kat-ta, 7 — KEPT AT 7). The English takes a stand-in \"it\" (Kai 17 Nov), because \"I was hoping would happen\" is not a sentence; phrases swap the it. Rows on other verbs go.",
+   "add": [
+    [
+     "b",
+     "I was hoping it would happen more",
+     "もっと起きてほしかった"
+    ],
+    [
+     "b",
+     "I was hoping it would happen yesterday",
+     "昨日起きてほしかった"
+    ],
+    [
+     "b",
+     "I was hoping it would happen now",
+     "今起きてほしかった"
+    ],
+    [
+     "u",
+     "I was really hoping it would happen",
+     "すごく起きてほしかった"
+    ],
+    [
+     "u",
+     "I was hoping it would happen soon",
+     "もうすぐ起きてほしかった"
+    ],
+    [
+     "u",
+     "I was hoping it would happen later",
+     "あとで起きてほしかった"
+    ],
+    [
+     "u",
+     "I was hoping it would happen today",
+     "今日は起きてほしかった"
+    ]
+   ],
+   "id": "S0151L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U08": "del",
+    "U09": "del",
+    "U10": "keep"
+   },
+   "components": [
+    [
+     "happen",
+     "起きる"
+    ],
+    [
+     "I was hoping",
+     "てほしかった"
+    ]
+   ]
+  },
+  {
+   "known": "I'd like you to tell me",
+   "target": "教えてほしい",
+   "type": "M",
+   "why": "てほしい is bound (L7/L22); it grows to its verb in the seed: 教えてほしい \"I'd like you to tell me\" (6). Rows on other verbs go.",
+   "add": [
+    [
+     "b",
+     "I'd like you to tell me now",
+     "今、教えてほしい"
+    ],
+    [
+     "b",
+     "I'd like you to tell me later",
+     "あとで教えてほしい"
+    ],
+    [
+     "b",
+     "I'd like you to tell me in Japanese",
+     "日本語で教えてほしい"
+    ],
+    [
+     "u",
+     "I'd like you to tell me this evening",
+     "今夜教えてほしい"
+    ]
+   ],
+   "id": "S0170L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U07": "del"
+   },
+   "components": [
+    [
+     "tell",
+     "教える"
+    ],
+    [
+     "I'd like you to",
+     "てほしい"
+    ]
+   ]
+  },
+  {
+   "known": "to talk about",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to talk about'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0186L03",
+   "verdict": "regloss"
+  },
+  {
+   "known": "do you mind if I ask questions",
+   "target": "質問していい",
+   "type": "M",
+   "why": "\"do you mind if | いい\": いい alone is \"good\"; it is bound to the verb before it (L22): the seed's 質問していい \"do you mind if I ask questions\" (shi-tsu-mon-shi-te-ii, 6).",
+   "add": [
+    [
+     "b",
+     "do you mind if I ask questions now",
+     "今、質問していい"
+    ],
+    [
+     "b",
+     "do you mind if I ask questions later",
+     "あとで質問していい"
+    ],
+    [
+     "b",
+     "do you mind if I ask questions in Japanese",
+     "日本語で質問していい"
+    ],
+    [
+     "u",
+     "do you mind if I ask questions today?",
+     "今日は質問していい？"
+    ],
+    [
+     "u",
+     "do you mind if I ask questions tomorrow too?",
+     "明日も質問していい？"
+    ],
+    [
+     "u",
+     "do you mind if I ask a lot of questions?",
+     "たくさん質問していい？"
+    ],
+    [
+     "u",
+     "do you mind if I ask questions together?",
+     "一緒に質問していい？"
+    ]
+   ],
+   "id": "S0190L03",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "B04": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "questions",
+     "質問"
+    ],
+    [
+     "do",
+     "して"
+    ],
+    [
+     "all right",
+     "いい"
+    ]
+   ]
+  },
+  {
+   "why": "\"the chance | のが\": のが is bound (L7) and \"the chance\" is a gloss the Japanese never says. This seed has ONE LEGO, so 一緒に話す and 練習する are uncovered too (S3). The shortest grow, \"I enjoy practising | 練習するのが楽しい\", is 9 syllables. Recommend a seed re-cut: \"speaking with you | 一緒に話す\" + \"I enjoy practising | 練習するのが楽しい\" (9, one over) — Kai to rule on the 9 or a shorter seed.",
+   "id": "S0206L02",
+   "verdict": "kai"
+  },
+  {
+   "known": "just started",
+   "target": "始めたばかり",
+   "type": "M",
+   "why": "ばかり is bound (L7/L22); it grows to its verb in the seed: 始めたばかり \"just started\" (ha-ji-me-ta-ba-ka-ri, 7 — KEPT AT 7).",
+   "add": [
+    [
+     "b",
+     "she just started",
+     "彼女は始めたばかり"
+    ],
+    [
+     "b",
+     "just started Japanese",
+     "日本語を始めたばかり"
+    ],
+    [
+     "u",
+     "I just started Japanese last month",
+     "先月日本語を始めたばかり"
+    ],
+    [
+     "u",
+     "we just started together",
+     "一緒に始めたばかり"
+    ]
+   ],
+   "id": "S0224L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del"
+   },
+   "components": [
+    [
+     "started",
+     "始めた"
+    ],
+    [
+     "only just",
+     "ばかり"
+    ]
+   ]
+  },
+  {
+   "extra": [
+    {
+     "op": "lego.update",
+     "lego_id": "S0240L02",
+     "set": {
+      "known_text": "to stop talking"
+     },
+     "expect": {
+      "known_text": "stop talking",
+      "target_text": "話すのを止める"
+     }
+    }
+   ],
+   "why": "K54 only: \"to stop talking\". The target's dictionary form vs the seed's 止めない is part of seed 240's KNOWN tiling hold (d/71221f73), not re-cut here.",
+   "id": "S0240L02",
+   "verdict": "keep"
+  },
+  {
+   "why": "\"hand over | 渡す\": the seed never says 渡す; L02 \"don't want to hand to him | 彼には渡したくない\" already tiles that part. A dictionary-form LEGO beside an M-LEGO that covers it goes with its rows (closes K54 here too).",
+   "id": "S0241L01",
+   "verdict": "delete"
+  },
+  {
+   "extra": [
+    {
+     "op": "lego.update",
+     "lego_id": "S0251L02",
+     "set": {
+      "known_text": "to find out"
+     },
+     "expect": {
+      "known_text": "find out",
+      "target_text": "知る"
+     }
+    }
+   ],
+   "why": "K54 only: \"to find out\". 知る vs the seed's 知りたくない is part of seed 251's KNOWN tiling hold (d/71221f73).",
+   "id": "S0251L02",
+   "verdict": "keep"
+  },
+  {
+   "extra": [
+    {
+     "op": "lego.update",
+     "lego_id": "S0255L01",
+     "set": {
+      "known_text": "to leave"
+     },
+     "expect": {
+      "known_text": "leave",
+      "target_text": "出る"
+     }
+    }
+   ],
+   "why": "K54 only: \"to leave\". 出る is not the seed's form (出られそう, which L02 tiles), BUT S0345L01 \"leave | 出る\" was made not-new against this LEGO (#515): retiring it would re-open 345 (L31). Kept, as the scan advised; Kai may prefer re-cutting 345 first.",
+   "id": "S0255L01",
+   "verdict": "keep"
+  },
+  {
+   "seed_known": "who were you talking to yesterday?",
+   "why": "The Japanese 昨日、誰と話してた？ never says \"man\" (or \"that\"). KAI: English seed edit (the scan's) to \"who were you talking to yesterday?\". 男性 is then taught at seed 264 (年配の男性).",
+   "id": "S0262L02",
+   "verdict": "seed"
+  },
+  {
+   "why": "\"man | 男性\": 男性 is not in the seed. With the seed edit nothing in seed 262 says it; it is taught inside S0264L01 \"elderly man | 年配の男性\" (K29). Its rows go.",
+   "id": "S0262L01",
+   "verdict": "delete"
+  },
+  {
+   "known": "don't want to wait",
+   "target": "待ちたくない",
+   "type": "M",
+   "why": "たくない is bound (L7/L22); it grows to its verb in the seed: 待ちたくない \"don't want to wait\" (5). Rows on other verbs go.",
+   "add": [
+    [
+     "b",
+     "don't want to wait now",
+     "今、待ちたくない"
+    ],
+    [
+     "b",
+     "don't want to wait today",
+     "今日は待ちたくない"
+    ],
+    [
+     "b",
+     "don't want to wait tomorrow too",
+     "明日も待ちたくない"
+    ],
+    [
+     "u",
+     "I don't want to wait all day",
+     "一日中待ちたくない"
+    ],
+    [
+     "u",
+     "I don't want to wait with everyone",
+     "みんなと待ちたくない"
+    ],
+    [
+     "u",
+     "he doesn't want to wait",
+     "彼は待ちたくない"
+    ],
+    [
+     "u",
+     "she doesn't want to wait this evening",
+     "彼女は今夜待ちたくない"
+    ],
+    [
+     "u",
+     "because I don't want to wait",
+     "待ちたくないから"
+    ]
+   ],
+   "id": "S0269L02",
+   "verdict": "grow",
+   "components": [
+    [
+     "wait",
+     "待つ"
+    ],
+    [
+     "don't want to",
+     "たくない"
+    ]
+   ]
+  },
+  {
+   "known": "there wasn't time",
+   "target": "時間がなかった",
+   "type": "M",
+   "why": "なかった is bound (L7/L22); it grows to its noun in the seed: 時間がなかった \"there wasn't time\" (ji-kan-ga-na-kat-ta, 6).",
+   "add": [
+    [
+     "b",
+     "there wasn't time yesterday",
+     "昨日時間がなかった"
+    ],
+    [
+     "b",
+     "there wasn't time today",
+     "今日は時間がなかった"
+    ],
+    [
+     "b",
+     "there wasn't time this evening",
+     "今夜時間がなかった"
+    ],
+    [
+     "u",
+     "because there wasn't time",
+     "時間がなかったから"
+    ],
+    [
+     "u",
+     "there wasn't time to answer",
+     "答える時間がなかった"
+    ],
+    [
+     "u",
+     "there wasn't much time",
+     "あまり時間がなかった"
+    ],
+    [
+     "u",
+     "there wasn't time to speak Japanese",
+     "日本語を話す時間がなかった"
+    ],
+    [
+     "u",
+     "there wasn't time last month",
+     "先月時間がなかった"
+    ]
+   ],
+   "id": "S0279L01",
+   "verdict": "grow",
+   "components": [
+    [
+     "time",
+     "時間"
+    ],
+    [
+     "subject",
+     "が"
+    ],
+    [
+     "there wasn't",
+     "なかった"
+    ]
+   ]
+  },
+  {
+   "known": "only the important job",
+   "target": "大事なことだけ",
+   "type": "M",
+   "why": "だけ is a particle taught alone (L7); it grows to the noun it limits: 大事なことだけ \"only the important job\" (dai-ji-na-ko-to-da-ke, 7 — KEPT AT 7; 一番 would take it to 9). Rows on other nouns go.",
+   "add": [
+    [
+     "b",
+     "only the important job today",
+     "今日は大事なことだけ"
+    ],
+    [
+     "b",
+     "only the most important job",
+     "一番大事なことだけ"
+    ],
+    [
+     "b",
+     "only the important job now",
+     "今、大事なことだけ"
+    ],
+    [
+     "u",
+     "I'll try doing only the important job",
+     "大事なことだけやってみる"
+    ],
+    [
+     "u",
+     "I only want to remember the important job",
+     "大事なことだけ覚えたい"
+    ],
+    [
+     "u",
+     "I'll try explaining only the important job",
+     "大事なことだけ説明してみる"
+    ],
+    [
+     "u",
+     "I want to try saying only the important job",
+     "大事なことだけ言ってみたい"
+    ],
+    [
+     "u",
+     "I'll try doing only the important job later",
+     "あとで大事なことだけやってみる"
+    ]
+   ],
+   "id": "S0280L03",
+   "verdict": "grow",
+   "components": [
+    [
+     "important thing",
+     "大事なこと"
+    ],
+    [
+     "only",
+     "だけ"
+    ]
+   ]
+  },
+  {
+   "known": "to finish",
+   "why": "K54: a verb LEGO's English takes \"to\" ('to finish'); rows need not say it. Intro re-voiced (O13).",
+   "id": "S0295L01",
+   "verdict": "regloss"
+  },
+  {
+   "known": "I don't know many",
+   "target": "あまり知らない",
+   "type": "M",
+   "why": "\"many | あまり\" teaches the wrong meaning: あまり is \"(not) many\" only with a negative. It grows to its verb in the seed: あまり知らない \"I don't know many\" (6). B03 (an unrelated あまり…ない) goes.",
+   "add": [
+    [
+     "b",
+     "I don't know many yet",
+     "まだあまり知らない"
+    ],
+    [
+     "b",
+     "he doesn't know many",
+     "彼はあまり知らない"
+    ]
+   ],
+   "id": "S0297L02",
+   "verdict": "grow",
+   "basket": {
+    "B03": "del"
+   },
+   "components": [
+    [
+     "not many",
+     "あまり"
+    ],
+    [
+     "don't know",
+     "知らない"
+    ]
+   ]
+  },
+  {
+   "known": "want to pay",
+   "target": "払いたい",
+   "type": "M",
+   "why": "\"pay | 払う\" is a dictionary form the seed never says (払いたい); it grows to the seed's form \"want to pay\" (K54 closed too). Rows were bare 払う: rebuilt (first person only: たい, F3).",
+   "add": [
+    [
+     "b",
+     "want to pay now",
+     "今、払いたい"
+    ],
+    [
+     "b",
+     "want to pay later",
+     "あとで払いたい"
+    ],
+    [
+     "b",
+     "want to pay today",
+     "今日は払いたい"
+    ],
+    [
+     "u",
+     "we want to pay half",
+     "半分払いたい"
+    ],
+    [
+     "u",
+     "I want to pay tomorrow too",
+     "明日も払いたい"
+    ],
+    [
+     "u",
+     "I want to pay this evening",
+     "今夜払いたい"
+    ],
+    [
+     "u",
+     "I want to pay together",
+     "一緒に払いたい"
+    ],
+    [
+     "u",
+     "I want to pay a little",
+     "少し払いたい"
+    ]
+   ],
+   "id": "S0299L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del"
+   },
+   "components": [
+    [
+     "pay",
+     "払う"
+    ],
+    [
+     "want to",
+     "たい"
+    ]
+   ]
+  },
+  {
+   "why": "\"seem | 見られる\": 見られる is not the seed's form and means \"be seen\"; L02 \"don't want to seem unfriendly | 冷たく見られたくない\" already tiles the seed. Goes with its rows (closes K54).",
+   "id": "S0300L01",
+   "verdict": "delete"
+  },
+  {
+   "why": "Seed 301+: \"want to live | 住みたい (L03 住みたくない tiles the seed)\" — a dictionary form the seed never says, beside an M-LEGO that already tiles that part. Goes with its rows (the 301+ baskets are KNOWN for rebuild).",
+   "id": "S0302L02",
+   "verdict": "delete"
+  },
+  {
+   "why": "Seed 301+: \"grow | 育てる (L02 何を育てたいか)\" — a dictionary form the seed never says, beside an M-LEGO that already tiles that part. Goes with its rows (the 301+ baskets are KNOWN for rebuild).",
+   "id": "S0366L01",
+   "verdict": "delete"
+  },
+  {
+   "why": "Seed 301+: \"include | 入れる (L02 何を入れたいか)\" — a dictionary form the seed never says, beside an M-LEGO that already tiles that part. Goes with its rows (the 301+ baskets are KNOWN for rebuild).",
+   "id": "S0380L01",
+   "verdict": "delete"
+  },
+  {
+   "why": "Seed 301+: \"put | 置く (L02 どこに置きたいか)\" — a dictionary form the seed never says, beside an M-LEGO that already tiles that part. Goes with its rows (the 301+ baskets are KNOWN for rebuild).",
+   "id": "S0382L01",
+   "verdict": "delete"
+  },
+  {
+   "why": "Seed 301+: \"take along | 連れて行く (L03 連れて行きたかった)\" — a dictionary form the seed never says, beside an M-LEGO that already tiles that part. Goes with its rows (the 301+ baskets are KNOWN for rebuild).",
+   "id": "S0580L02",
+   "verdict": "delete"
+  },
+  {
+   "why": "\"needs to offer | 出す必要がある\": the LEGO has the standard が; the seed drops it colloquially (出す必要ある). Seed 301+. Either the TARGET seed takes が or the LEGO drops it — a target-side choice for Kai; both are correct Japanese.",
+   "id": "S0327L03",
+   "verdict": "kai"
+  },
+  {
+   "why": "\"need to talk to | と話す必要があった\": same が-drop as 327 (seed 話す必要あった), and the LEGO opens with bound と. Seed 301+. Recommend LEGO → \"needed to talk to that woman you know\" is over 8, so: TARGET seed takes が and L02 → \"needed to talk | 話す必要があった\" with と folded into L01. Kai to rule.",
+   "id": "S0355L02",
+   "verdict": "kai"
+  },
+  {
+   "seed_known": "I know an elderly person who wanted to ask for help",
+   "why": "The Japanese says 年配の人 (\"an elderly person\"); the English says \"an old man\". The LEGO \"elderly | 年配の\" is right; the English seed is the loose side. KAI: seed edit.",
+   "id": "S0231L01",
+   "verdict": "seed"
+  },
+  {
+   "seed_known": "I know an elderly woman who can remember the answer",
+   "why": "年配の女性 is \"an elderly woman\" (L01/L02 already say so); the English seed says \"old woman\". KAI: seed edit.",
+   "id": "S0232L01",
+   "verdict": "seed"
+  },
+  {
+   "seed_known": "an elderly man",
+   "why": "年配の男性 is \"an elderly man\", as S0264L01 already says; the English seed says \"an old man\". KAI: seed edit.",
+   "id": "S0264L01",
+   "verdict": "seed"
+  }
+ ],
+ "roman": {}
+}

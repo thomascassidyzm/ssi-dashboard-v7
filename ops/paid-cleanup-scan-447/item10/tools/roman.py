@@ -22,6 +22,8 @@ def roman(course, text, override=None):
     L = lex(course)
     if not L:
         return None, ['no lexicon']
+    if 'chunks' in L:  # jpn/kor (cs #808): tile with the course's own (target -> roman) chunks, longest first
+        return roman_chunks(L['chunks'], text)
     W, C = L['words'], L['char']
     out, flags, i = [], [], 0
     t = text
@@ -58,3 +60,25 @@ def roman(course, text, override=None):
             out.append(best[0][0])
         i += 1
     return ' '.join(out), flags
+
+
+def roman_chunks(C, text):
+    """dp over the text (punctuation dropped) with whole chunks the course already romanises; joins with spaces and
+    restores a final ? . The fewest-chunk tiling wins (longer chunks carry the course's own spacing)."""
+    end = '?' if text.rstrip().endswith(('？', '?')) else ''
+    t = re.sub(r'[\s、。，,！!？?「」…\.]+', '', text)
+    n = len(t)
+    best = [None] * (n + 1)
+    best[0] = []
+    maxlen = max((len(k) for k in C), default=1)
+    for i in range(n):
+        if best[i] is None:
+            continue
+        for L in range(min(maxlen, n - i), 0, -1):
+            w = t[i:i + L]
+            if w in C and (best[i + L] is None or len(best[i + L]) > len(best[i]) + 1):
+                best[i + L] = best[i] + [C[w]]
+    if best[n] is None:
+        last = max(i for i in range(n + 1) if best[i] is not None)
+        return None, [f'cannot tile from {t[last:]!r}']
+    return ' '.join(best[n]) + end, []

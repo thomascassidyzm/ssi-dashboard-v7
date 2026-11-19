@@ -128,7 +128,15 @@ def fetch_components(course, seed, cache_dir, offline):
     if offline:
         return None
     url = f'{POPTY}/api/production/{course}/seed/S{seed:04d}/baskets'
-    d = json.load(urllib.request.urlopen(url, timeout=60))
+    for attempt in range(5):  # cs #808: the shared Popty drops / times out under load; retry with backoff
+        try:
+            d = json.load(urllib.request.urlopen(url, timeout=120))
+            break
+        except Exception:
+            if attempt == 4:
+                raise
+            import time as _t
+            _t.sleep(10 * (attempt + 1))
     out = {k: v.get('components') for k, v in (d.get('baskets') or {}).items()}
     os.makedirs(cache_dir, exist_ok=True)
     json.dump(out, open(f, 'w'), ensure_ascii=False)

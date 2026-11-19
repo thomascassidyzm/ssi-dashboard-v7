@@ -9,14 +9,22 @@ dump = json.load(open(dumpf))
 out_f = os.path.join(os.environ['CS_SCRATCH'], f'baskets-{course}.json')
 B = json.load(open(out_f)) if os.path.exists(out_f) else {}
 if '--all' in sys.argv:
-    seeds = {s['n'] for s in dump['seeds']}
+    upto = int(sys.argv[sys.argv.index('--upto') + 1]) if '--upto' in sys.argv else 10 ** 6  # cs #808: lexicon from served seeds only
+    seeds = {s['n'] for s in dump['seeds'] if s['n'] <= upto}
 else:
     dec = json.load(open(os.path.join(ROOT, 'decisions', f'{course}.json')))
     seeds = {int(d['id'][1:5]) for d in dec['legos']}
 ids = [l['id'] for s in dump['seeds'] if s['n'] in seeds for l in s['legos'] if l['id'] not in B]
 def get(i):
     u = f'http://localhost:3470/api/production/{course}/lego/{i}/basket'
-    return i, json.load(urllib.request.urlopen(u, timeout=60)).get('phrases')
+    for attempt in range(5):  # cs #808: retry under load
+        try:
+            return i, json.load(urllib.request.urlopen(u, timeout=120)).get('phrases')
+        except Exception:
+            if attempt == 4:
+                raise
+            import time as _t
+            _t.sleep(10 * (attempt + 1))
 with cf.ThreadPoolExecutor(4) as ex:
     for i, ph in ex.map(get, ids):
         B[i] = ph
