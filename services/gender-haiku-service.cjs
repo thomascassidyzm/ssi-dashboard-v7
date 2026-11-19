@@ -453,6 +453,8 @@ async function ensureExpansionForText(courseCode, text, supabase) {
       expanded_f: f?.wasModified ? f.expandedText : null,
       expanded_m: m?.wasModified ? m.expandedText : null,
     }
+    // A male answer identical to the female one is the model's error, never a reading (maleReading, cs #989·AI).
+    row.expanded_m = maleReading(row)
     if (!row.expanded_f && !row.expanded_m) return { status: 'no-variants' }
     const { error } = await supabase.from('course_gender_expansions')
       .upsert(row, { onConflict: 'course_code,original_text,text_side', ignoreDuplicates: true })
@@ -493,15 +495,28 @@ async function loadGenderMap(courseCode, supabase) {
         wasModified: true
       })
     }
-    if (row.expanded_m) {
+    if (maleReading(row)) {
       map.set(genderMapKey(row.original_text, row.language, 'target2'), {
-        expandedText: row.expanded_m,
+        expandedText: maleReading(row),
         wasModified: true
       })
     }
   }
 
   return map
+}
+
+/**
+ * The male seat's reading of one row, or null. ONE TEXT CANNOT NEED THE SAME CHANGE FOR BOTH SPEAKERS (cs #989·AI,
+ * 2026-11-19): an expanded_m identical to expanded_f is a model error, not a reading. Measured live that day — the
+ * "male speaker" call in ensureExpansionForText answered "no estoy lista" / "مبسوطة" (the female forms) for male-form
+ * rows, and target2 would have spoken them. A real expanded_m (a female-form row text, an English his/her referent)
+ * always differs from expanded_f, which is then null or another reading.
+ */
+function maleReading(row) {
+  if (!row || !row.expanded_m || !String(row.expanded_m).trim()) return null
+  if (row.expanded_f && String(row.expanded_f).trim() === String(row.expanded_m).trim()) return null
+  return row.expanded_m
 }
 
 // The ONE key shape shared by the loader above and every render route in phase8.
@@ -530,6 +545,7 @@ function storedGenderReading(genderMap, text, language, role) {
 
 module.exports = {
   genderMapKey,
+  maleReading,
   storedGenderReading,
   batchGenderExpand,
   analyzeAndExpand,

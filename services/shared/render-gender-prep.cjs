@@ -27,6 +27,8 @@
  * (services/shared/known-voice-gender.cjs). Pod lines take their pod cast; trials and adopts link nothing.
  */
 
+const { maleReading } = require('../gender-haiku-service.cjs')
+
 class GenderPrepError extends Error {
   constructor(message, status, code) { super(message); this.status = status; this.code = code }
 }
@@ -36,10 +38,14 @@ function prepsSlot(req) {
   return (req.role === 'target1' || req.role === 'target2') && !req.podSentenceId && !req.trial && !req.adoptS3Key
 }
 
-/** The seat's reading from one course_gender_expansions row: expanded_f for target1, expanded_m for target2. Pure. */
+/**
+ * The seat's reading from one course_gender_expansions row: expanded_f for target1, expanded_m for target2 — the male
+ * one through gender-haiku-service.maleReading, which drops an expanded_m identical to expanded_f (a model error, never
+ * a reading: cs #989·AI measured it live). Pure.
+ */
 function readingOf(row, role) {
   if (!row) return null
-  const r = role === 'target1' ? row.expanded_f : role === 'target2' ? row.expanded_m : null
+  const r = role === 'target1' ? row.expanded_f : role === 'target2' ? maleReading(row) : null
   return r && String(r).trim() ? String(r) : null
 }
 
