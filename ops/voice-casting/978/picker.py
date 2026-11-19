@@ -338,14 +338,34 @@ def castplan(a):
     for c in em:
         if c['known_lang'] in langs: known_courses.setdefault(c['known_lang'], []).append(c['course_code'])
     vcs = {f[:-5]: load(os.path.join(a.vc, f)).get('config') for f in os.listdir(a.vc) if f.endswith('.json')}
-    def alternating(code): return any(((vcs.get(c) or {}).get('voices') or {}).get('known', {}).get('byGender') for c in known_courses.get(code, []))
+    def alternating(code):
+        # two known voices: a course carries known.byGender (the eng_for_hin rule), or the language's live known
+        # slot already holds two different voices (Kai 18 Nov, #710·AI item 8B: "eng_for_guj/urd/pan known side two voices")
+        if any(((vcs.get(c) or {}).get('voices') or {}).get('known', {}).get('byGender') for c in known_courses.get(code, [])): return True
+        k = {g: s.get('voiceId') for g, s in ((reg.get(code) or {}).get('known') or {}).items() if s.get('filled')}
+        return bool(k.get('m') and k.get('f') and k['m'] != k['f'])
+    def current_gender(code):
+        # a language whose known clips are ALREADY in one of its picked voices keeps that gender: nothing to re-record
+        picks = {t['voiceId']: g for g, t in langs[code]['target'].items()}
+        for c in known_courses.get(code, []):
+            kv = (((vcs.get(c) or {}).get('voices') or {}).get('known') or {}).get('voiceId') or ''
+            for cand in (kv, 'azure_' + kv):
+                if cand in picks: return picks[cand]
+        return None
     single = sorted(c for c in known_courses if not alternating(c))
-    for i, code in enumerate(single):
-        L = langs[code]; g = 'f' if i % 2 == 0 else 'm'; o = 'm' if g == 'f' else 'f'
+    fixed = {c: current_gender(c) for c in single if current_gender(c)}
+    n0 = {'f': sum(g == 'f' for g in fixed.values()), 'm': sum(g == 'm' for g in fixed.values())}
+    nxt = 'f' if n0['f'] <= n0['m'] else 'm'
+    order = {}
+    for code in single:
+        if code in fixed: order[code] = (fixed[code], 'keeps the gender its known clips are already in')
+        else: order[code] = (nxt, 'alternating f/m in language-code order'); nxt = 'm' if nxt == 'f' else 'f'
+    for code in single:
+        L = langs[code]; g, why = order[code]; o = 'm' if g == 'f' else 'f'
         if g not in L['target'] or o not in L['target']:
             gaps.append({'lang': code, 'slot': 'known', 'why': 'needs both target voices to settle known/presentation'}); continue
         L['known'] = {'mode': 'single', 'gender': g, **{k: L['target'][g][k] for k in ('voiceId', 'name', 'provider')},
-                      'how': f"{HOW_RULE}: {i + 1}th in code order among single-known languages, alternating f/m"}
+                      'how': f"{HOW_RULE}: {why} (about 50/50 across languages)"}
         L['presentation'] = {**{k: L['target'][o][k] for k in ('voiceId', 'name', 'provider')}, 'how': f'{HOW_RULE}: the other picked voice'}
     for code in sorted(c for c in known_courses if alternating(c)):
         L = langs[code]
@@ -367,6 +387,106 @@ def castplan(a):
     dump({'rule': 'cs #998·AI castplan — see picker.py header of the SETTLED CAST block', 'registryBuiltAt': load(a.reg)['builtAt'],
           'knownGenderBalance': n, 'languages': langs, 'gaps': gaps}, a.out)
     print(json.dumps({'languages': len(langs), 'known': sum('known' in L for L in langs.values()), 'balance': n, 'gaps': len(gaps)}))
+
+
+CALL = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'tools', 'agent-admin', 'call.cjs')
+
+
+def popty(method, path, body=None):
+    """One Popty call as Kai's agent (signed, kai key). Sequential: this tool is ONE writer, never a fan-out."""
+    import subprocess
+    cmd = ['node', CALL, '--key', 'kai', '--agent', 'kai-998', method, path] + ([json.dumps(body, ensure_ascii=False)] if body is not None else [])
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    try: return json.loads(r.stdout)
+    except Exception: return {'error': (r.stdout + r.stderr)[-500:], 'exit': r.returncode}
+
+
+def live_slots(code):
+    """the live voice_language_roles state for one language, read fresh (?refresh=1) before writing it"""
+    reg = popty('GET', '/api/voicelab/languages?refresh=1')
+    l = next((x for x in reg.get('languages', []) if x['code'] == code), None)
+    if not l: return None
+    ph = {g: next((s['voiceId'] for s in l['slots'][g] if s['rank'] == 0 and s['filled']), None) for g in 'mf'}
+    kn = {g: (s['voiceId'] if s.get('filled') else None) for g, s in ((l.get('known') or {}).get('slots') or {}).items()}
+    return {'phrase': ph, 'known': {g: kn.get(g) for g in 'mf'}}
+
+
+def course_role_obj(v, provider):
+    vid_ = v['voiceId'] if provider == 'cartesia' else v['voiceId'].replace('azure_', '')   # course configs spell Azure ids bare
+    return {'voiceId': vid_, 'name': v['name'], 'provider': provider}
+
+
+def castapply(a):
+    """Apply cast-settled.json through Popty's own routes. Dry run unless --apply.
+      language cast  PUT /api/voicelab/languages/:lang/slot   phrase m/f rank 0 (target 1/2), known m/f rank 0
+      course config  PATCH /api/courses/:course/voice-config/:role   presentation; known.byGender for alternating courses
+    Every write is preceded by a LIVE read of the exact value it replaces; a value that differs from the plan's
+    snapshot is HELD (never forced). Old values go to the undo file before the write is made."""
+    plan = load(a.plan)
+    undo = load(a.undo) if os.path.exists(a.undo) else {'how_to_undo': 'castapply --undo-from: phrase/known rows PUT back (DELETE where old is null); course roles PATCHed back with the saved object', 'entries': []}
+    done_keys = {e['key'] for e in undo['entries'] if e.get('status') == 'applied'}
+    held, wrote = [], 0
+    def save():
+        if a.apply: dump(undo, a.undo)
+    for code, L in plan['languages'].items():
+        if a.only and code not in a.only: continue
+        tag = f"Kai 2026-11-19 (cs #998·AI)"
+        writes = []
+        for g, t in L['target'].items():
+            if t['voiceId'] != t.get('old'):
+                writes.append(('phrase', g, t['voiceId'], t.get('old'), f"{tag}: target {GENDER[g]} — {t['how']}" + (f"; {t['reason']}" if t.get('reason') else '')))
+        K = L.get('known')
+        if K:
+            want = K['byGender'] if 'byGender' in K else {'m': K, 'f': K}
+            for g in 'mf':
+                was = (L.get('knownOld') or {}).get(g)
+                if was and was in {t['voiceId'] for t in L['target'].values()} and was != want[g]['voiceId']:
+                    print('KEEP', f"lang:{code}:known:{g}", was, '(an earlier deliberate cast of one of this language\'s own pair; no course reads this gender)'); continue
+                if want[g]['voiceId'] != was:
+                    writes.append(('known', g, want[g]['voiceId'], (L.get('knownOld') or {}).get(g), f"{tag}: known voice — {K['how']}"))
+        if writes:
+            live = live_slots(code) if a.apply else None
+            for slot, g, new, old, notes in writes:
+                key = f"lang:{code}:{slot}:{g}"
+                if key in done_keys: continue
+                if a.apply:
+                    now = (live or {}).get(slot, {}).get(g, 'UNREADABLE')
+                    if now != old:
+                        held.append({'key': key, 'planned_old': old, 'live': now, 'new': new}); continue
+                    undo['entries'].append({'key': key, 'kind': 'language-slot', 'language': code, 'slot': slot, 'gender': g, 'rank': 0, 'old': old, 'new': new, 'status': 'pending'}); save()
+                    r = popty('PUT', f'/api/voicelab/languages/{code}/slot', {'slot': slot, 'gender': g, 'rank': 0, 'voiceId': new, 'notes': notes})
+                    e = undo['entries'][-1]; e['status'] = 'applied' if r.get('ok') else 'failed'; e['response'] = r; save()
+                    wrote += bool(r.get('ok'))
+                    print(key, old, '->', new, 'OK' if r.get('ok') else r)
+                else:
+                    print('DRY', key, old, '->', new)
+        P = L.get('presentation')
+        for course in L.get('knownCourses', []):
+            roles = [('presentation', {**course_role_obj(P, P['provider']), 'settings': {'speed': 1.0}})] if P else []
+            if K and 'byGender' in K and any((((load(os.path.join(a.vc, course + '.json')).get('config') or {}).get('voices') or {}).get('known') or {}).get('byGender') for _ in [0] if os.path.exists(os.path.join(a.vc, course + '.json'))):
+                bg = {g: {**course_role_obj(K['byGender'][g], K['byGender'][g]['provider']), 'gender': g} for g in 'mf'}
+                roles.append(('known', {**bg['f'], 'byGender': bg, 'settings': {'speed': 1.0}}))
+            for role, body in roles:
+                key = f"course:{course}:{role}"
+                if key in done_keys: continue
+                before_p = os.path.join(a.vc, course + '.json')
+                snap = ((load(before_p).get('config') or {}).get('voices') or {}).get(role) if os.path.exists(before_p) else None
+                if snap is None: print('SKIP', key, '(course has no such role)'); continue
+                if all(snap.get(k) == v for k, v in body.items() if k != 'settings') and 'byGender' not in body: print('SAME', key); continue
+                if a.apply:
+                    live = ((popty('GET', f'/api/courses/{course}/voice-config').get('config') or {}).get('voices') or {}).get(role)
+                    if live != snap:
+                        held.append({'key': key, 'planned_old': snap, 'live': live, 'new': body}); continue
+                    old = {k: snap.get(k) for k in set(body) | {'name', 'voiceId', 'provider', 'settings'}}
+                    undo['entries'].append({'key': key, 'kind': 'course-role', 'course': course, 'role': role, 'old': old, 'new': body, 'status': 'pending'}); save()
+                    r = popty('PATCH', f'/api/courses/{course}/voice-config/{role}', body)
+                    e = undo['entries'][-1]; e['status'] = 'applied' if r.get('success') else 'failed'; e['response'] = {'success': r.get('success'), 'error': r.get('error')}; save()
+                    wrote += bool(r.get('success'))
+                    print(key, snap.get('voiceId'), '->', body['voiceId'], 'OK' if r.get('success') else r)
+                else:
+                    print('DRY', key, snap.get('voiceId'), '->', body['voiceId'])
+    undo['held'] = undo.get('held', []) + held; save()
+    print(json.dumps({'wrote': wrote, 'held': len(held)}))
 
 
 SURFACE = 'http://localhost:4317'
@@ -404,6 +524,7 @@ if __name__ == '__main__':
     pp.add_argument('--marks2', nargs='+', required=True); pp.add_argument('--out', required=True)
     f = sub.add_parser('fetch'); f.add_argument('--pages', required=True); f.add_argument('--out', required=True)
     cp = sub.add_parser('castplan'); [cp.add_argument('--' + k, required=True) for k in ('manifest', 'reg', 'estate', 'azure', 'vc', 'out')]; cp.add_argument('--marks2', nargs='+', required=True)
+    ca = sub.add_parser('castapply'); ca.add_argument('--plan', required=True); ca.add_argument('--undo', required=True); ca.add_argument('--vc', required=True); ca.add_argument('--only', nargs='*'); ca.add_argument('--apply', action='store_true')
     p = sub.add_parser('post'); p.add_argument('--dir', required=True); p.add_argument('--pages-out', required=True)
     a = ap.parse_args()
-    {'round1': round1, 'round2': round2, 'round3': round3, 'fetch': fetch, 'post': post, 'podpool': podpool, 'castplan': castplan}[a.cmd](a)
+    {'round1': round1, 'round2': round2, 'round3': round3, 'fetch': fetch, 'post': post, 'podpool': podpool, 'castplan': castplan, 'castapply': castapply}[a.cmd](a)

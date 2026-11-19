@@ -2,8 +2,8 @@
  "rule": "cs #998·AI castplan — see picker.py header of the SETTLED CAST block",
  "registryBuiltAt": "2026-11-19T14:17:36.295Z",
  "knownGenderBalance": {
-  "f": 6,
-  "m": 5
+  "f": 5,
+  "m": 4
  },
  "languages": {
   "ben": {
@@ -32,7 +32,7 @@
     "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
     "name": "Arindam",
     "provider": "cartesia",
-    "how": "known/presentation rule: 2th in code order among single-known languages, alternating f/m"
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
    },
    "presentation": {
     "voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
@@ -188,15 +188,15 @@
    },
    "known": {
     "mode": "single",
-    "gender": "m",
-    "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
-    "name": "Chetan",
-    "provider": "cartesia",
-    "how": "known/presentation rule: 4th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
+    "gender": "f",
     "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
     "name": "Chaitra",
+    "provider": "cartesia",
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
+   },
+   "presentation": {
+    "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+    "name": "Chetan",
     "provider": "cartesia",
     "how": "known/presentation rule: the other picked voice"
    },
@@ -230,15 +230,15 @@
    },
    "known": {
     "mode": "single",
-    "gender": "m",
-    "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
-    "name": "Chinmay",
-    "provider": "cartesia",
-    "how": "known/presentation rule: 6th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
+    "gender": "f",
     "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
     "name": "Asha",
+    "provider": "cartesia",
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
+   },
+   "presentation": {
+    "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+    "name": "Chinmay",
     "provider": "cartesia",
     "how": "known/presentation rule: the other picked voice"
    },
@@ -398,15 +398,15 @@
    },
    "known": {
     "mode": "single",
-    "gender": "m",
-    "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
-    "name": "Vikram",
-    "provider": "cartesia",
-    "how": "known/presentation rule: 10th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
+    "gender": "f",
     "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
     "name": "Ramya",
+    "provider": "cartesia",
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
+   },
+   "presentation": {
+    "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+    "name": "Vikram",
     "provider": "cartesia",
     "how": "known/presentation rule: the other picked voice"
    },
@@ -531,18 +531,26 @@
     }
    },
    "known": {
-    "mode": "single",
-    "gender": "f",
+    "mode": "alternating (byGender)",
+    "byGender": {
+     "m": {
+      "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+      "name": "Gurpreet",
+      "provider": "cartesia"
+     },
+     "f": {
+      "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+      "name": "Navjot",
+      "provider": "cartesia"
+     }
+    },
+    "how": "known/presentation rule: course alternates two known voices, so both target voices"
+   },
+   "presentation": {
     "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
     "name": "Navjot",
     "provider": "cartesia",
-    "how": "known/presentation rule: 7th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
-    "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
-    "name": "Gurpreet",
-    "provider": "cartesia",
-    "how": "known/presentation rule: the other picked voice"
+    "how": "known/presentation rule: alternating course, female anchor (eng_for_hin precedent)"
    },
    "knownCourses": [
     "eng_for_pan"
@@ -574,15 +582,15 @@
    },
    "known": {
     "mode": "single",
-    "gender": "f",
-    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
-    "name": "Nila",
-    "provider": "cartesia",
-    "how": "known/presentation rule: 9th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
+    "gender": "m",
     "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
     "name": "Karthik",
+    "provider": "cartesia",
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
+   },
+   "presentation": {
+    "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+    "name": "Nila",
     "provider": "cartesia",
     "how": "known/presentation rule: the other picked voice"
    },
@@ -676,7 +684,7 @@
     "voiceId": "azure_ga-IE-OrlaNeural",
     "name": "Orla",
     "provider": "azure",
-    "how": "known/presentation rule: 3th in code order among single-known languages, alternating f/m"
+    "how": "known/presentation rule: keeps the gender its known clips are already in (about 50/50 across languages)"
    },
    "presentation": {
     "voiceId": "azure_ga-IE-ColmNeural",
@@ -919,15 +927,15 @@
    },
    "known": {
     "mode": "single",
-    "gender": "f",
-    "voiceId": "azure_lt-LT-OnaNeural",
-    "name": "Ona",
-    "provider": "azure",
-    "how": "known/presentation rule: 5th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
+    "gender": "m",
     "voiceId": "azure_lt-LT-LeonasNeural",
     "name": "Leonas",
+    "provider": "azure",
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
+   },
+   "presentation": {
+    "voiceId": "azure_lt-LT-OnaNeural",
+    "name": "Ona",
     "provider": "azure",
     "how": "known/presentation rule: the other picked voice"
    },
@@ -1119,7 +1127,7 @@
     "voiceId": "azure_az-AZ-BanuNeural",
     "name": "Banu",
     "provider": "azure",
-    "how": "known/presentation rule: 1th in code order among single-known languages, alternating f/m"
+    "how": "known/presentation rule: alternating f/m in language-code order (about 50/50 across languages)"
    },
    "presentation": {
     "voiceId": "azure_az-AZ-BabekNeural",
@@ -1165,7 +1173,7 @@
     "voiceId": "azure_si-LK-SameeraNeural",
     "name": "Sameera",
     "provider": "azure",
-    "how": "known/presentation rule: 8th in code order among single-known languages, alternating f/m"
+    "how": "known/presentation rule: keeps the gender its known clips are already in (about 50/50 across languages)"
    },
    "presentation": {
     "voiceId": "azure_si-LK-ThiliniNeural",
@@ -1206,18 +1214,26 @@
     }
    },
    "known": {
-    "mode": "single",
-    "gender": "f",
+    "mode": "alternating (byGender)",
+    "byGender": {
+     "m": {
+      "voiceId": "azure_ur-PK-AsadNeural",
+      "name": "Asad",
+      "provider": "azure"
+     },
+     "f": {
+      "voiceId": "azure_ur-PK-UzmaNeural",
+      "name": "Uzma",
+      "provider": "azure"
+     }
+    },
+    "how": "known/presentation rule: course alternates two known voices, so both target voices"
+   },
+   "presentation": {
     "voiceId": "azure_ur-PK-UzmaNeural",
     "name": "Uzma",
     "provider": "azure",
-    "how": "known/presentation rule: 11th in code order among single-known languages, alternating f/m"
-   },
-   "presentation": {
-    "voiceId": "azure_ur-PK-AsadNeural",
-    "name": "Asad",
-    "provider": "azure",
-    "how": "known/presentation rule: the other picked voice"
+    "how": "known/presentation rule: alternating course, female anchor (eng_for_hin precedent)"
    },
    "knownCourses": [
     "eng_for_urd"
