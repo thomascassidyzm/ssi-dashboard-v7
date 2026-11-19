@@ -39,8 +39,15 @@ const collide = new Set(fs.existsSync(path.join(cdir, 'collide.json')) ? JSON.pa
 const ourEvents = new Set(fs.readdirSync(cdir).filter(f => /^events.*\.json$/.test(f)).flatMap(f => JSON.parse(fs.readFileSync(path.join(cdir, f), 'utf8')).map(e => e.event_id)));
 
 const plans = [];
-for (const f of fs.readdirSync(path.join(cdir, 'plans')).filter(f => /^S\d{4}\.json$/.test(f)).sort()) {
-  const p = JSON.parse(fs.readFileSync(path.join(cdir, 'plans', f), 'utf8'));
+// cs #79·AJ: ITEM20_PLANS = plans dir name (to-changesets.cjs works on a copy); ITEM20_RESERVED = JSON of what OTHER
+// queued changesets (item 9, item 12) will do to these baskets before item 20 applies: owned LEGOs are held like the
+// collide list, and their inserts' ids, positions and texts count here (UNIQUE seed/lego/position; ids; ZUT; dupes).
+const PLANS = process.env.ITEM20_PLANS || 'plans';
+const RES = process.env.ITEM20_RESERVED ? JSON.parse(fs.readFileSync(process.env.ITEM20_RESERVED, 'utf8')) : { owned: {}, inserts: [] };
+const resBy = new Map();
+for (const r of RES.inserts) { const k = r.id.split(':').pop().slice(0, 8); if (!resBy.has(k)) resBy.set(k, []); resBy.get(k).push(r); }
+for (const f of fs.readdirSync(path.join(cdir, PLANS)).filter(f => /^S\d{4}\.json$/.test(f)).sort()) {
+  const p = JSON.parse(fs.readFileSync(path.join(cdir, PLANS, f), 'utf8'));
   if (p.seed >= lo && p.seed <= hi) plans.push(p);
 }
 const planBySeed = new Map(plans.map(p => [p.seed, p]));
@@ -68,11 +75,13 @@ for (const s of seeds) {
   }
 }
 
+for (const r of RES.inserts) addZ(r.known_text, r.target_text, `${r.id.split(':').pop()} (queued by ${r.by})`);
 // Kai's duplicate rule: never add a row whose known AND target already exist anywhere in the course.
 const pairs = new Map();
 const addP = (k, t, who) => { pairs.set(`${zk(k)}|${zk(t)}`, who); };
 for (const s of seeds) { addP(s.known_text, s.target_text, `seed ${s.seed_number}`); for (const l of s.legos) { addP(l.known_text, l.target_text, l.lego_id);
   for (const ph of l.basket_phrases) if (!leaving.has(L.short(ph.id))) addP(ph.known_text, ph.target_text, L.short(ph.id)); } }
+for (const r of RES.inserts) addP(r.known_text, r.target_text, `${r.id.split(':').pop()} (queued by ${r.by})`);
 // Known-side words the learner has met so far (LEGOs, components, every row of an earlier basket, earlier seed lines).
 const kv = new Set();
 const addK = (t) => L.knownTokens(t).forEach(w => kv.add(w));
@@ -100,6 +109,7 @@ for (const s of seeds) {
     const ins = e.insert || [];
     const touched = del.size || Object.keys(upd).length || ins.length;
     if (touched && (collide.has(l.lego_id) || collide.has('SEED' + seedTag.slice(1)))) E(l.lego_id, 'basket on the collide list (another job owns this LEGO or seed today)');
+    if (touched && RES.owned[l.lego_id]) E(l.lego_id, `basket owned by a queued changeset: ${RES.owned[l.lego_id]}`);
     for (const sfx of [...del, ...Object.keys(upd)]) {
       const p = byS.get(sfx);
       const w = `${l.lego_id}${sfx}`;
@@ -111,6 +121,7 @@ for (const s of seeds) {
         // The brief's one allowance: #694 fills EMPTY audio slots in these courses today. A scan row whose
         // words are still the scan's and that now has audio was only recorded, not re-worded: go ahead, count it.
         if (sc && (p.known_audio_id || p.target1_audio_id)) { W(w, `recorded today by another job (event ${p.last_edit_event_id}), words unchanged: proceeding`); recordedToday.push(w); }
+        else if (seen && seen[w] && seen[w].known === p.known_text && seen[w].target === p.target_text) W(w, `touched since ${L.TODAY} by event ${p.last_edit_event_id}, words unchanged (audio/metadata): proceeding, expect pins the words`);
         else E(w, `edited today by event ${p.last_edit_event_id} (not ours): collision, leave it alone`);
       }
       const sv = seen && seen[w];
@@ -130,6 +141,7 @@ for (const s of seeds) {
     const maxN = { build: 0, use: 0 };
     for (const p of l.basket_phrases) { const m = L.short(p.id).slice(8).match(/^([BU])(\d+)$/); if (m) { const r = m[1] === 'B' ? 'build' : 'use'; maxN[r] = Math.max(maxN[r], Number(m[2])); } }
     let pos = Math.max(0, ...l.basket_phrases.map(p => p.position));
+    for (const r of resBy.get(l.lego_id) || []) { pos = Math.max(pos, r.position); const m = r.id.split(':').pop().slice(8).match(/^([BU])(\d+)$/); if (m) { const k = m[1] === 'B' ? 'build' : 'use'; maxN[k] = Math.max(maxN[k], Number(m[2])); } }
     for (const [role, known, target, roman, gender, knownOk] of ins) {
       if (!['build', 'use'].includes(role)) { E(l.lego_id, `insert role must be build|use, not ${role}`); continue; }
       maxN[role]++; pos++;
