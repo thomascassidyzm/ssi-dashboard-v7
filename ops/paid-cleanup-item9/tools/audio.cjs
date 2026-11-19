@@ -12,11 +12,15 @@
 // Spend: running Cartesia total across every item-9 results file; nothing is sent past CAP (70,000, the brief).
 // Gendered first person: a FEMALE slot whose words carry a first-person gendered form is never sent from plain text:
 // the plan lists it under "female_reading" (gender-prep's female text) and this tool sends that as --spoken.
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+// The item-9 NIGHT runner (../night-run.sh) does not use this file; it applies through tools/changeset and night-audio.cjs.
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const L = require('./lib.cjs');
 const [course, batch, ...rest] = process.argv.slice(2);
+LIVEGATE.requireLive(`item9 audio.cjs ${course} ${batch}`);
 const DRY = rest.includes('--dry');
 const only = rest.includes('--only') ? new Set(rest[rest.indexOf('--only') + 1].split(',')) : null;
 const CAP = Number(process.env.ITEM9_CAP || 130000); // cs #778: Kai's brief, 18 Nov: hard cap 130,000 Cartesia chars for the apply job

@@ -4,10 +4,14 @@
 // db-watchdog sample; otherwise wait, bounded). A dry run is a real transaction rolled back: every
 // "expect" is checked against the live row, so a row another job changed since the snapshot fails here.
 // usage: node dry-all.cjs <course…>   -> <course>/batches/auto-NN.dry.json, prints one line per chunk
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+// The item-9 NIGHT runner (../night-run.sh) does not use this file; it applies through tools/changeset and night-audio.cjs.
+const LIVEGATE = require('../../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const L = require('./lib.cjs');
+LIVEGATE.requireLive(`item9 dry-all.cjs ${process.argv.slice(2).join(' ')}`);
 const H = { 'Content-Type': 'application/json', 'x-agent-id': 'cs-738-item9', 'x-agent-role': 'paid-cleanup-item9' };
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const active = () => {
@@ -26,7 +30,7 @@ const active = () => {
     if (!fs.existsSync(f)) continue;
     const ops = JSON.parse(fs.readFileSync(f, 'utf8')).ops;
     for (let i = 0, n = 1; i < ops.length; i += 50, n++) {
-      let chunk = ops.slice(i, i + 50);
+      let chunk = ops.slice(i, i + LIVEGATE.MAX_CHUNK); // cs #968·AI: <= 10 (was 50)
       const dropped = [];
       const out = path.join(bdir, `auto-${String(n).padStart(2, '0')}.dry.json`);
       if (fs.existsSync(out) && JSON.parse(fs.readFileSync(out, 'utf8')).ok) { console.log(`${course} #${n} already ok`); continue; }
