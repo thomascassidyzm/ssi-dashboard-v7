@@ -74,7 +74,10 @@ def words_in(phrase, lego):
         return a in b or jstem(a) in b
     st = [stem(w) for w in norm(phrase).split()]
     pool = collections.Counter(st)
-    for w in [stem(x) for x in norm(lego).split()]:
+    lw = norm(lego).split()
+    if len(lw) > 1 and lw[0] == 'to':  # K54: the verb LEGO carries "to"; its phrases need not
+        lw = lw[1:]
+    for w in [stem(x) for x in lw]:
         if pool[w] <= 0:
             return False
         pool[w] -= 1
@@ -286,9 +289,10 @@ def main():
                 problems.append(f'{lid} add {pid} does not contain the LEGO: {k} | {t}')
         rec['basket'] = bas
         rec['_rows_after'] = [(p['role'], p['action'][0] if isinstance(p['action'], list) else p['before'][0],
-                               p['action'][1] if isinstance(p['action'], list) else p['before'][1])
+                               p['action'][1] if isinstance(p['action'], list) else p['before'][1],
+                               isinstance(p['action'], list) and p['action'][1] != p['before'][1])
                               for p in bas if p['action'] not in ('del',) and p['role'] in ('build', 'use')] + \
-                             [(a['phrase_role'], a['known_text'], a['target_text']) for a in adds]
+                             [(a['phrase_role'], a['known_text'], a['target_text'], True) for a in adds]
         rec['add'] = adds
         rec['basket_after'] = dict(kept)
         if rec['after']['is_new'] and kept['build'] + kept['use'] < 6:
@@ -345,19 +349,22 @@ def main():
         lt = cnorm(r['after']['target']).replace(' ', '') if chinese else cnorm(r['after']['target'])
         def bare(t):
             return (cnorm(t).replace(' ', '') if chinese else cnorm(t)) == lt
-        nb = sum(1 for ro, k, t in rows if ro == 'build' and not bare(t))
-        nu = sum(1 for ro, k, t in rows if ro == 'use' and not bare(t))
+        nb = sum(1 for ro, k, t, w in rows if ro == 'build' and not bare(t))
+        nu = sum(1 for ro, k, t, w in rows if ro == 'use' and not bare(t))
         mb, mu = (1, 1) if n <= 3 else (3, 5)
         r['floor'] = {'build': nb, 'use': nu, 'need': [mb, mu]}
         if nb < mb or nu < mu:
             problems.append(f"{r['id']}: below the validator floor after plan (build {nb}/{mb}, use {nu}/{mu})")
-        viol = []
-        for ro, k, t in rows:
+        viol, pre = [], []
+        for ro, k, t, written in rows:
             u = uncovered(t, V, r['seed']['target'])
-            if u:
+            if u and (written or r['before']['target'] != r['after']['target']):
                 viol.append({'known': k, 'target': t, 'uncovered': u})
                 problems.append(f"{r['id']}: untaught target in row '{k} | {t}' (stuck at '{u}')")
+            elif u:  # an untouched row whose target text this plan does not change: pre-existing, the validator baseline owns it
+                pre.append({'known': k, 'target': t, 'uncovered': u})
         r['vocab_violations'] = viol
+        r['vocab_preexisting'] = pre
     # --- one op per row: two decisions may both name a row (a neighbour's "extra" repeating a basket rebuild).
     #     An exact repeat is dropped; two DIFFERENT edits of one row are a problem to settle by hand.
     seen_ops, uniq = {}, []
