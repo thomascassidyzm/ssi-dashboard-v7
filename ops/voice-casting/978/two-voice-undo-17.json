@@ -1,0 +1,125 @@
+{
+  "job": "cs #17 (Kai) two-voice known for pan/urd",
+  "ruling": "Kai 18 Nov (#710·AI item 8B) + 19 Nov: alternating known = the language's two target voices (cast-settled.json)",
+  "how_to_undo": "old.known had no byGender. To undo, PATCH /api/courses/:course/voice-config/known on Popty (:3470) with {\"byGender\": null}; knownVoiceForGender treats a null block as absent, so the course reverts to one known voice. All other known fields were left untouched (checked on read-back).",
+  "entries": [
+    {
+      "course": "eng_for_pan",
+      "role": "known",
+      "at": "2026-11-19T14:50:36.627477Z",
+      "old": {
+        "name": "Vaani",
+        "voiceId": "pa-IN-VaaniNeural",
+        "language": "pa-IN",
+        "provider": "azure",
+        "settings": {
+          "speed": 0.95
+        }
+      },
+      "patch": {
+        "byGender": {
+          "m": {
+            "name": "Gurpreet",
+            "gender": "m",
+            "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+            "language": "pa-IN",
+            "provider": "cartesia"
+          },
+          "f": {
+            "name": "Navjot",
+            "gender": "f",
+            "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+            "language": "pa-IN",
+            "provider": "cartesia"
+          }
+        }
+      },
+      "status": "applied",
+      "after": {
+        "name": "Vaani",
+        "voiceId": "pa-IN-VaaniNeural",
+        "byGender": {
+          "f": {
+            "name": "Navjot",
+            "gender": "f",
+            "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+            "language": "pa-IN",
+            "provider": "cartesia"
+          },
+          "m": {
+            "name": "Gurpreet",
+            "gender": "m",
+            "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+            "language": "pa-IN",
+            "provider": "cartesia"
+          }
+        },
+        "language": "pa-IN",
+        "provider": "azure",
+        "settings": {
+          "speed": 0.95
+        }
+      }
+    },
+    {
+      "course": "eng_for_urd",
+      "role": "known",
+      "at": "2026-11-19T14:50:59.513705Z",
+      "old": {
+        "name": "Uzma",
+        "voiceId": "ur-PK-UzmaNeural",
+        "language": "ur-PK",
+        "provider": "azure",
+        "settings": {
+          "speed": 0.95
+        }
+      },
+      "patch": {
+        "byGender": {
+          "m": {
+            "name": "Asad",
+            "gender": "m",
+            "voiceId": "ur-PK-AsadNeural",
+            "language": "ur-PK",
+            "provider": "azure"
+          },
+          "f": {
+            "name": "Uzma",
+            "gender": "f",
+            "voiceId": "ur-PK-UzmaNeural",
+            "language": "ur-PK",
+            "provider": "azure"
+          }
+        }
+      },
+      "status": "applied",
+      "after": {
+        "name": "Uzma",
+        "voiceId": "ur-PK-UzmaNeural",
+        "byGender": {
+          "f": {
+            "name": "Uzma",
+            "gender": "f",
+            "voiceId": "ur-PK-UzmaNeural",
+            "language": "ur-PK",
+            "provider": "azure"
+          },
+          "m": {
+            "name": "Asad",
+            "gender": "m",
+            "voiceId": "ur-PK-AsadNeural",
+            "language": "ur-PK",
+            "provider": "azure"
+          }
+        },
+        "language": "ur-PK",
+        "provider": "azure",
+        "settings": {
+          "speed": 0.95
+        }
+      }
+    }
+  ],
+  "guj": "eng_for_guj already carried known.byGender {f: Isha, m: Amit} (cast-settled match) before this job; not written.",
+  "default_config_check": "GET /api/courses/zzz_for_none/voice-config (unconfigured) identical before and after the writes, createdAt aside; prod API ran 68dd7b73b (has fix 5ef6a65d6), started 14:46:36Z."
+}
