@@ -139,29 +139,45 @@ async function refreshTilesForSlots(client, courseCode, slotIds, { skipPhraseIds
   const ids = [...new Set(slotIds)].filter(Boolean);
   const out = { rewritten: [], unlocatable: [], considered: 0 };
   if (!ids.length) return out;
+  // THREE STATEMENTS, WHATEVER THE SIZE (cs #945). Every statement this process sends to the live DB
+  // passes the load gate (shared/db-load-gate.cjs), which on a busy DB allows one in flight at one per
+  // 5 s. #937's first cut sent one UPDATE per rewritten phrase after an unnesting EXISTS scan, so one
+  // 10-op batch crawled for many minutes while holding the only slot. Now:
+  // (1) the phrases naming a slot, by jsonb CONTAINMENT (decomposition @> '[{"legoId":"S0100L01"}]'),
+  //     the exact form a GIN jsonb_path_ops index on decomposition serves, so adding that index (a
+  //     migration, Tom's go) makes this lookup indexed with no code change;
+  // (2) the course version plus only the LEGOs taught up to the latest candidate's seed (all that
+  //     planRecompute's seed_number <= phrase vocabulary filter can ever use), in one statement;
+  // (3) every rewrite in ONE UPDATE … FROM jsonb_to_recordset.
+  const probes = ids.map((id) => JSON.stringify([{ legoId: id }]));
   const { rows: phrases } = await client.query(
     `SELECT id, seed_number, lego_index, target_text, decomposition, decomposition_course_version FROM course_practice_phrases
-      WHERE course_code = $1 AND jsonb_typeof(decomposition) = 'array'
-        AND EXISTS (SELECT 1 FROM jsonb_array_elements(decomposition) e
-                     WHERE jsonb_typeof(e) = 'object' AND e ->> 'legoId' = ANY($2::text[]))`,
-    [courseCode, ids]);
+      WHERE course_code = $1 AND decomposition @> ANY($2::jsonb[])`,
+    [courseCode, probes]);
   const candidates = phrases.filter((p) => !skipPhraseIds.has(p.id));
   out.considered = candidates.length;
   if (!candidates.length) return out;
-  const { rows: legos } = await client.query(
-    `SELECT seed_number, lego_index, target_text, known_text FROM course_legos WHERE course_code = $1`, [courseCode]);
-  const { rows: ver } = await client.query(`SELECT version FROM courses WHERE course_code = $1`, [courseCode]);
-  const plan = planRecompute({ courseCode, legos, phrases: candidates, courseVersion: ver[0]?.version ?? null,
+  const maxSeed = Math.max(...candidates.map((p) => Number(p.seed_number) || 0));
+  const { rows: [ctx] } = await client.query(
+    `SELECT (SELECT version FROM courses WHERE course_code = $1) AS version,
+            COALESCE((SELECT json_agg(json_build_object('seed_number', seed_number, 'lego_index', lego_index,
+                                                        'target_text', target_text, 'known_text', known_text))
+                        FROM course_legos WHERE course_code = $1 AND seed_number <= $2), '[]'::json) AS legos`,
+    [courseCode, maxSeed]);
+  const plan = planRecompute({ courseCode, legos: ctx.legos, phrases: candidates, courseVersion: ctx.version ?? null,
     forceIds: new Set(candidates.map((p) => p.id)) });
   out.unlocatable = plan.rows
     .filter((r) => r.status === 'SKIP_PARENT_UNLOCATABLE' || r.status === 'SKIP_RECOMPUTE_THREW').map((r) => r.id);
+  if (!plan.ops.length) return out;
   const byId = new Map(candidates.map((p) => [p.id, p]));
+  const rows = plan.ops.map((op) => ({ id: op.phrase_id, decomposition: op.set.decomposition, version: op.set.decomposition_course_version }));
+  const params = [JSON.stringify(rows)];
+  if (eventId) params.push(eventId);
+  await client.query(
+    `UPDATE "course_practice_phrases" AS p SET "decomposition" = v.decomposition, "decomposition_course_version" = v.version${eventId ? ', "last_edit_event_id" = $2' : ''}
+       FROM jsonb_to_recordset($1::jsonb) AS v(id text, decomposition jsonb, version integer) WHERE p.id = v.id`,
+    params);
   for (const op of plan.ops) {
-    const params = [JSON.stringify(op.set.decomposition), op.set.decomposition_course_version, op.phrase_id];
-    if (eventId) params.push(eventId);
-    await client.query(
-      `UPDATE "course_practice_phrases" SET "decomposition" = $1, "decomposition_course_version" = $2${eventId ? ', "last_edit_event_id" = $4' : ''} WHERE "id" = $3`,
-      params);
     const was = byId.get(op.phrase_id);
     out.rewritten.push({ id: op.phrase_id, before: was.decomposition, beforeVersion: was.decomposition_course_version ?? null, after: op.set.decomposition });
   }

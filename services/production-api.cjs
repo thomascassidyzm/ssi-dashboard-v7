@@ -8360,6 +8360,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       plans,
       apply,
       approval: req.body?.approval || null,
+      previewTiles: req.body?.previewTiles === true,
       eventId: () => req.contentEdit.record({
         scope: {
           seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],
@@ -8432,7 +8433,7 @@ app.get('/api/production/:courseCode/edit-ops', (req, res) => {
 
 // ONE op, applied unless it says dryRun:true.
 app.post('/api/production/:courseCode/edit', async (req, res) => {
-  const { dryRun, ...op } = req.body || {}
+  const { dryRun, previewTiles, ...op } = req.body || {}
   return runCourseEdit(req, res, [op], { apply: dryRun !== true })
 })
 
@@ -8639,6 +8640,7 @@ app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
   const set = {}
   for (const [k, v] of Object.entries(req.body || {})) set[k.replace(/[A-Z]/g, c => '_' + c.toLowerCase())] = v
   delete set.dry_run
+  delete set.preview_tiles
   const key = /^[0-9a-f-]{36}$/i.test(req.params.legoId) ? { id: req.params.legoId } : { lego_id: req.params.legoId }
   return runCourseEdit(req, res, [{ op: 'lego.update', ...key, set }], { apply: req.body?.dryRun !== true })
 })
