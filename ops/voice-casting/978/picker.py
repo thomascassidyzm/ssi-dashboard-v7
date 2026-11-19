@@ -35,7 +35,11 @@ known/presentation voice too, which round 3 picks from the chosen two.
 """
 import argparse, json, os, re, sys
 
-KAI_ROOM = '13b3da1c-705d-4a05-ab24-161a20e2ef7e'   # Kai's room: marks route back here
+KAI_ROOM = 'df4f39f6-6e37-45be-8bce-6475e041b373'   # Kai's room: marks route back here (13b3da1c… rolled 19 Nov, cs #994)
+# Kai, 19 Nov 14:01Z: "Whenever there's only one option you can pick it for me" — a slot with exactly one
+# candidate is recorded as picked here and never shown on a page; rounds 3 and podpool read it as his favourite.
+SINGLE_RULE = 'single option (Kai, 19 Nov 14:01Z)'
+PICKED_FILE = 'round2-picked-for-kai.json'
 DRAFT = 'draft casting 2026-09-04'
 GENDER = {'m': 'male', 'f': 'female'}
 NAMES = {'ben': 'Bengali', 'bul': 'Bulgarian', 'ces': 'Czech', 'dan': 'Danish', 'deu_at': 'Austrian German', 'guj': 'Gujarati',
@@ -173,7 +177,7 @@ def picked(a, yes):
 def round2(a):
     man = load(a.manifest)['languages']
     marks = read_marks(a.marks)
-    unanswered, own, not_done, settled = [], [], [], []
+    unanswered, own, not_done, settled, none_liked = [], [], [], [], []
     for code, L in man.items():
         if code in EXCLUDED: continue   # deu_at: needs ElevenLabs (Kai, 19 Nov 13:38Z), not a Cartesia pick
         items = []
@@ -187,25 +191,33 @@ def round2(a):
             if pool and all(x is None for x in ans.values()):
                 not_done.append(f"{code}.{s['gender']}"); continue   # round-1 page not marked yet: no verdict to build on
             liked = [v for v in pool if picked(ans[v['voiceId']], LIKE)]
-            none = not liked
-            if len(liked) == 1:   # exactly one like = already decided
-                settled.append({'slot': f"{code}.{s['gender']}", 'voice': describe(liked[0]), 'voiceId': liked[0]['voiceId']}); continue
-            for v in (pool if none else liked):
+            if not liked:   # never padded with voices he did not like: surfaced in the notes instead
+                none_liked.append(f"{code}.{s['gender']}"); continue
+            if len(liked) == 1:   # single option = picked for Kai, not shown
+                v = liked[0]
+                settled.append({'slot': f"{code}.{s['gender']}", 'voiceId': v['voiceId'], 'name': v['name'],
+                                'gender': GENDER[s['gender']], 'picked_for_kai_by_rule': SINGLE_RULE}); continue
+            for v in liked:   # minimal item: slot + voice name only (Kai, 19 Nov: "take out the noise")
                 items.append({'id': f"r2.{code}.{s['gender']}.{vid(v)}",
-                              'source': f"{lang_label(L)} · {slot_label(L, s['gender'])}" + (
-                                  " · WE STILL NEED ONE: you liked none of these in round 1, so pick the best of what's available" if none else
-                                  f" · you liked {len(liked)} in round 1: pick your favourite"),
-                              'proposed': describe(v), 'options': [FAV, NOT], 'audio': v['audio']})
+                              'source': GENDER[s['gender']].capitalize() + (' known-side voice' if L['knownOnly'] else ' voice'),
+                              'proposed': v['name'], 'options': [FAV, NOT], 'audio': v['audio']})
         if items:
-            dump({'title': f"Voices round 2 · {lang_label(L)}: favourites", 'conv_id': KAI_ROOM, 'items': items},
+            dump({'title': f"Round 2 · {L['name']}", 'conv_id': KAI_ROOM, 'items': items},
                  os.path.join(a.out, 'round2', code + '.json'))
-    dump({'settled': settled, 'slots_not_marked_in_round1': not_done, 'unanswered_round1': unanswered, 'own_words_round1': own}, os.path.join(a.out, 'round2-notes.json'))
+    dump({'rule': SINGLE_RULE, 'picked': settled}, os.path.join(a.out, PICKED_FILE))
+    dump({'settled_see': PICKED_FILE, 'slots_with_no_like_in_round1': none_liked, 'slots_not_marked_in_round1': not_done, 'unanswered_round1': unanswered, 'own_words_round1': own}, os.path.join(a.out, 'round2-notes.json'))
     print(json.dumps({'slots_not_marked_in_round1': len(not_done), 'unanswered_round1': len(unanswered), 'own_words_round1': len(own)}))
+
+
+def picked_for_kai(a):
+    p = os.path.join(os.path.dirname(os.path.abspath(a.manifest)), PICKED_FILE)
+    return {x['slot']: x['voiceId'] for x in load(p)['picked']} if os.path.exists(p) else {}
 
 
 def round3(a):
     man = load(a.manifest)['languages']
     marks = read_marks(a.marks)
+    pre = picked_for_kai(a)
     problems = []
     for code, L in man.items():
         # known + presentation voices speak the language as the KNOWN side (eng_for_<lang>), so only a
@@ -214,7 +226,8 @@ def round3(a):
         items = []
         for s in L['slots']:
             pool = [v for v in L['voices'] if v['gender'] == s['gender']]
-            favs = [v for v in pool if picked(marks.get(f"r2.{code}.{s['gender']}.{vid(v)}"), FAV)]
+            favs = [v for v in pool if picked(marks.get(f"r2.{code}.{s['gender']}.{vid(v)}"), FAV)
+                    or pre.get(f"{code}.{s['gender']}") == v['voiceId']]
             if len(favs) != 1: problems.append({'lang': code, 'slot': s['gender'], 'favourites': [v['name'] for v in favs]})
             for v in favs:
                 items.append({'id': f"r3.{code}.{s['gender']}.{vid(v)}",
@@ -230,16 +243,17 @@ def round3(a):
 def podpool(a):
     man = load(a.manifest)['languages']
     m1, m2 = read_marks(a.marks1), read_marks(a.marks2)
+    pre = picked_for_kai(a)
     out = {}
     for code, L in man.items():
         pool, pending = [], []
         for s in L['slots']:
             g = s['gender']
             vs = [v for v in L['voices'] if v['gender'] == g]
-            if vs and all(m2.get(f"r2.{code}.{g}.{vid(v)}") is None for v in vs): pending.append(g)
+            if vs and f"{code}.{g}" not in pre and all(m2.get(f"r2.{code}.{g}.{vid(v)}") is None for v in vs): pending.append(g)
             for v in vs:
                 if not picked(m1.get(f"{code}.{g}.{vid(v)}"), LIKE): continue
-                if picked(m2.get(f"r2.{code}.{g}.{vid(v)}"), FAV): continue
+                if picked(m2.get(f"r2.{code}.{g}.{vid(v)}"), FAV) or pre.get(f"{code}.{g}") == v['voiceId']: continue
                 pool.append({'voiceId': v['voiceId'], 'name': v['name'], 'gender': g, 'accent': v.get('accent'),
                              'locale': v.get('locale'), 'tagline': v.get('tagline'), 'sample': v['audio']})
         out[code] = {'language': L['name'], 'pool': pool,
