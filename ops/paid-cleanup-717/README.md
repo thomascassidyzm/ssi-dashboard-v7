@@ -29,3 +29,9 @@ Snapshots, `recount/` and `item12/*/plan.json` regenerated from `ssi_copy_202611
 - Kai's live pre-check is enforced only as far as the applier's door enforces it (phrase.insert refuses an existing id).
   Seed/LEGO drift since the copy is NOT re-checked against precheck.json; see the #957 report.
 - NEVER edit a changeset after its first night: the ledger records ops by line index.
+
+## #964·AI, 19 Nov — the seeds #957 held, fixed live
+- `item12-seed-fixes/`: `plan.py` (from the copy) → `plan.json`; `render.py` → `renders.json` (clip per text, or the existing
+  clip named by EXISTS_IN_LANGUAGE); `batch.py` → `batches/<course>.json`; `send.sh` (MODE=dry|apply, Kai key) → `applied/<course>.json`
+  (event id + undo file: POST …/edit-batch {"undo_file": …, "apply": true}). eng_for_tam was sent by hand (its applied file).
+- Item 12 seed rows for these seeds were re-added there (or already said by an existing phrase); the item 12 changesets are untouched.

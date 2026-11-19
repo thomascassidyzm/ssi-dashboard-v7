@@ -1,0 +1,132 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 233,
+   "set": {
+    "known_text": "あなたのお姉さんを知っている若い女性を知っています。"
+   },
+   "expect": {
+    "known_text": "あなたの妹を知っている若い女性を知っています。"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_jpn:S0233L01U07",
+    "seed_number": 233,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "あなたのお姉さんを知っている若い女性を知っています。",
+    "target_text": "我认识一个年轻女人认识你姐姐。",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs717-item12-seed-sentence",
+     "seed_sentence_of": 233,
+     "canon": "P26",
+     "readded_by": "cs #964·AI"
+    },
+    "word_count": 15,
+    "lego_count": 1,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 20,
+   "set": {
+    "known_text": "あなたは彼の名前を早く覚えたいですね。"
+   },
+   "expect": {
+    "known_text": "彼の名前を早く覚えたいですね。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0020L03U01",
+   "set": {
+    "known_text": "あなたは彼の名前を早く覚えたいですね。"
+   },
+   "expect": {
+    "known_text": "彼の名前を早く覚えたいですね"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 299,
+   "set": {
+    "known_text": "彼は半分払いたいです。"
+   },
+   "expect": {
+    "known_text": "半分払いたい。"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "known",
+   "audio_id": "c0ecf88d-9fb9-4806-9bfd-cb5de10c7c5d",
+   "seed_number": 233
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "c0ecf88d-9fb9-4806-9bfd-cb5de10c7c5d",
+   "phrase_id": "zho_for_jpn:S0233L01U07"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "65db9648-6889-455d-a82d-d87c52e83bc5",
+   "phrase_id": "zho_for_jpn:S0233L01U07"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "dab87f22-31f2-4637-b4c6-66507679b60d",
+   "phrase_id": "zho_for_jpn:S0233L01U07"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "known",
+   "audio_id": "6f7c475e-07b6-4dda-b247-0cc8286c790f",
+   "seed_number": 20
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "known",
+   "audio_id": "6f7c475e-07b6-4dda-b247-0cc8286c790f",
+   "phrase_id": "zho_for_jpn:S0020L03U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target1",
+   "audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+   "phrase_id": "zho_for_jpn:S0020L03U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "slot": "target2",
+   "audio_id": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+   "phrase_id": "zho_for_jpn:S0020L03U01"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "known",
+   "audio_id": "335fb71d-95bd-4c54-8db8-404980e2b22e",
+   "seed_number": 299
+  }
+ ]
+}
