@@ -1,0 +1,24 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "known_text": "no they have to catch the train"
+   },
+   "expect": {
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "no, ellos tienen que coger el tren",
+    "target1_audio_id": "0d84c770-8d66-4f47-8289-58a098be1bd8",
+    "target2_audio_id": "2cb96265-0ba6-4c1d-99a3-78ae45a0a70f"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 450,
+   "slot": "known",
+   "audio_id": "5e421eef-d169-4201-9c15-695886d972f2"
+  }
+ ]
+}
