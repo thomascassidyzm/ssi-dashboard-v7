@@ -72,7 +72,7 @@ ${lines.map(scriptLine).join('\n\n')}
 fs.writeFileSync(path.join(__dirname, `script-${topic}.md`), scriptMd);
 
 // ---- 2. replay page ----
-const COLOURS = { Maggie: '#b07cd8', Dean: '#e0a040', Priya: '#e0607a', Gaz: '#5fa8e0', Ana: '#4fbf8a', Toby: '#d8c050' };
+const COLOURS = { Maggie: '#b07cd8', Dean: '#e0a040', Priya: '#e0607a', Gaz: '#5fa8e0', Ana: '#4fbf8a', Toby: '#d8c050', Rhi: '#e0a040', Hugh: '#4fbf8a', Jess: '#e0607a', Femi: '#5fa8e0', Danny: '#b07cd8', Sunny: '#d8c050' };
 const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">

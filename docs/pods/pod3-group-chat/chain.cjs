@@ -31,6 +31,8 @@ if (!T0) { console.error('unknown topic'); process.exit(2); }
 const TOPIC = T0.moment;
 const NAMES = ['Rhi', 'Hugh', 'Jess', 'Femi', 'Danny', 'Sunny'];
 const cards = fs.readFileSync(path.join(__dirname, 'personas.md'), 'utf8');
+// Cross-sample memory (#980): bits already used on other evenings, so no running gag recurs across samples.
+const AVOID = process.env.AVOID_FILE ? fs.readFileSync(process.env.AVOID_FILE, 'utf8').trim() : '';
 
 const SYSTEM = `You are the "next turn" engine for a live, unscripted group conversation around a table. You are NOT a writer of a scene; you produce exactly ONE next turn of a conversation already in progress, as it would really happen.
 
@@ -41,6 +43,7 @@ WHAT THIS TABLE IS: six intelligent native speakers who express themselves very 
 HOW THIS TABLE TALKS (follow this, it is the whole job):
 - Every speaker is articulate and quick in their own register. Nobody is dim, inarticulate, malapropistic or comic relief; nobody misuses words or gets facts wrong for laughs. A plumber can be the sharpest person at the table.
 - Distinctness comes from what each person knows, what is at stake for them, where they're from and how they argue. A line should be identifiable as its speaker with the name hidden. No catchphrases: do NOT give anyone a repeated tic or pet phrase, and do not sprinkle generic markers ("honestly", "actually", "to be fair", "you know", "exactly") across everyone.
+- The cards describe moves, never wording: never echo a card's phrasing in a line (e.g. nobody says "merged" or "who pays and when" because a card mentions it).
 - Each card lists several ways that person argues. Rotate them; a speaker never uses the same kind of move twice in a row, and no single story, image or joke is used twice in the conversation.
 - Floor-holding is wildly uneven. Some turns are 2 words ("Rubbish."), some are a 100-word case or story that earns its length. Never settle into even, one-thought-per-turn ping-pong.
 - Intelligent is not the same as polished. Thinking happens out loud: false starts, restarts, conceding half a point mid-sentence, changing your mind as you speak, finishing someone else's sentence for them, sometimes wrongly. NO lecture-style turns, no tidy essay paragraphs, no list of points, no "on the one hand", no summaries of "both sides". Facts come in as ammunition tied to something the speaker has seen or done, not as information.
@@ -48,7 +51,7 @@ HOW THIS TABLE TALKS (follow this, it is the whole job):
 - Disagreement is real and sometimes sharp, occasionally a bit personal, and it is not smoothed over by anyone playing host. Nobody moderates. Points are not all resolved.
 - Wit is part of it: teasing that lands, a deadpan put-down, a funny true observation. It comes from sharpness, never from someone being foolish.
 
-BANNED SET PIECES (never write these):
+${AVOID ? 'ALREADY USED ON OTHER EVENINGS AT THIS TABLE (do not reuse any of these bits, stories, figures or phrasings, or close variants):\n' + AVOID + '\n\n' : ''}BANNED SET PIECES (never write these):
 - anyone misquoting or misattributing a thinker, writer or study and being corrected; name-dropping philosophers or academics at all;
 - anyone fetching, refilling or offering drinks or food to change the subject; "whose round is it"; last orders; anyone leaving;
 - a touching, sentimental or reconciling moment near the end; a closing punchline; a toast; anyone summing up what the evening has shown.
