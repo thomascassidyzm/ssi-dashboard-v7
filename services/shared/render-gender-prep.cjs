@@ -69,6 +69,9 @@ async function speakerForm(req, { language }, deps) {
   let ensured
   try {
     ensured = deps.ensureGender ? await deps.ensureGender({ courseCode: req.courseCode, text }) : { status: 'skipped' }
+    // ONE more ask when the model's answer did not parse (1 of 8 on the first live proof, 2026-11-19): a refusal here is
+    // never re-sent by the night runners, so a slot would stay empty for a parse hiccup. A text model call, not a render.
+    if (ensured.status === 'llm-failed' && deps.ensureGender) ensured = await deps.ensureGender({ courseCode: req.courseCode, text })
   } catch (e) {
     throw new GenderPrepError(`gender prep for "${text.slice(0, 60)}" failed (${e.message}) — not rendered in the unprepared form; try again later`, 503, 'GENDER_PREP_MISSING')
   }
