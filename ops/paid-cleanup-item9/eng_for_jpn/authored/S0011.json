@@ -1,0 +1,30 @@
+{
+ "seed": 11,
+ "legos": {
+  "L03": {
+   "update": {
+    "B01": [
+     "英語を学びたいと思っています",
+     "I'd like to learn English"
+    ],
+    "B02": [
+     "話す練習をしたいと思っています",
+     "I'd like to practise speaking"
+    ],
+    "B04": [
+     "言葉を思い出したいと思っています",
+     "I'd like to remember a word"
+    ],
+    "B05": [
+     "今日終わりたいと思っています",
+     "I'd like to finish today"
+    ],
+    "U07": [
+     "言いたいことを説明したいと思っています",
+     "I'd like to explain what I mean"
+    ]
+   }
+  }
+ },
+ "notes": "L03: four of five BUILD rows used later words, so the BUILD set is rebuilt (4 updates) and U07 rewritten rather than deleted. Known side uses 〜たいと思っています for \"I'd like to\" so it never collides with 〜たいです = \"I want to\"."
+}
