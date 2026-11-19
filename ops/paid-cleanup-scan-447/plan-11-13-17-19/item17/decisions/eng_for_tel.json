@@ -1,0 +1,46 @@
+{
+ "course": "eng_for_tel",
+ "legos": [
+  {
+   "id": "S0614L02",
+   "verdict": "grow",
+   "pattern": "C",
+   "known": "నీ కుటుంబం నివసించే చోటికి",
+   "target": "where your family live",
+   "type": "M",
+   "components": [
+    [
+     "నీ కుటుంబం",
+     "your family"
+    ],
+    [
+     "నివసించే",
+     "live"
+    ],
+    [
+     "చోటికి",
+     "where"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "నీ కుటుంబం నివసించే చోటికి",
+     "where your family live"
+    ],
+    "B02": [
+     "ఇప్పుడు నీ కుటుంబం నివసించే చోటికి",
+     "where your family live now"
+    ],
+    "B03": [
+     "అక్కడ నీ కుటుంబం నివసించే చోటికి",
+     "over there where your family live"
+    ],
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U05": "keep"
+   },
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: here the ENGLISH has the hole ('where … live'). L32: 'teach the middle pieces first, then … the whole thing (frame + middle) as one LEGO'. The middle 'your family' is S0614L01, taught just before, so this becomes 'where your family live' (5 syllables). All four use rows already say exactly that."
+  }
+ ]
+}

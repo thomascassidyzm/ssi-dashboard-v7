@@ -1,0 +1,320 @@
+{
+ "course": "zho_for_hin",
+ "legos": [
+  {
+   "id": "S0182L01",
+   "verdict": "grow",
+   "pattern": "B",
+   "ack": [
+    "known"
+   ],
+   "ack_rows": [
+    "U02",
+    "U03"
+   ],
+   "known": "क्या आपने देखा है",
+   "target": "你有没有看到",
+   "type": "M",
+   "components": [
+    [
+     "आपने",
+     "你"
+    ],
+    [
+     "है या नहीं",
+     "有没有"
+    ],
+    [
+     "देखा",
+     "看到"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "क्या आपने देखा है",
+     "你有没有看到"
+    ],
+    "B02": [
+     "क्या आपने उन्हें देखा है",
+     "你有没有看到他们"
+    ],
+    "B03": [
+     "क्या आपने मुझे देखा है",
+     "你有没有看到我"
+    ],
+    "B04": [
+     "क्या आपने यह देखा है",
+     "你有没有看到这个"
+    ],
+    "U01": [
+     "क्या आपने आज उसे देखा है?",
+     "今天你有没有看到他？"
+    ],
+    "U02": [
+     "क्या आपने मेरी चीनी किताब देखी है?",
+     "你有没有看到我的中文书？"
+    ],
+    "U03": [
+     "क्या आपने मेरी किताब देखी है?",
+     "你有没有看到我的书？"
+    ],
+    "U04": [
+     "क्या आपने मेरे दोस्त को देखा है?",
+     "你有没有看到我的朋友？"
+    ],
+    "U05": [
+     "क्या आपने उसे देखा है?",
+     "你有没有看到他？"
+    ],
+    "U06": "del"
+   },
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'क्या आपने देखा है | 你有没有看到' (contiguous in the seed, 5 syllables). The scan proposed the same. 看到 has been in use since seed 107. 6 rows about 有没有时间/书 are rewritten to 有没有看到; 3 already had it. NOTE for Kai: S0372L01 teaches 'क्या आपने देखा | 你看到' later — the two Hindi prompts differ only by 'है' (have you seen / did you see)."
+  },
+  {
+   "id": "S0395L01",
+   "verdict": "grow",
+   "pattern": "B",
+   "known": "हमें बाएँ मुड़ना है",
+   "target": "我们要向左转",
+   "type": "M",
+   "ack": [
+    "target"
+   ],
+   "components": [
+    [
+     "हमें",
+     "我们"
+    ],
+    [
+     "ना है",
+     "要"
+    ],
+    [
+     "बाएँ मुड़ना",
+     "向左转"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "हमें बाएँ मुड़ना है",
+     "我们要向左转"
+    ],
+    "B02": [
+     "आज हमें बाएँ मुड़ना है",
+     "今天我们要向左转"
+    ],
+    "B03": [
+     "अब हमें बाएँ मुड़ना है",
+     "现在我们要向左转"
+    ],
+    "U01": [
+     "मुझे लगता है कि हमें बाएँ मुड़ना है",
+     "我觉得我们要向左转"
+    ],
+    "U02": [
+     "उसने कहा कि हमें बाएँ मुड़ना है",
+     "他说我们要向左转"
+    ],
+    "U03": [
+     "वह जानता है कि हमें बाएँ मुड़ना है",
+     "他知道我们要向左转"
+    ],
+    "U04": [
+     "क्या हमें बाएँ मुड़ना है?",
+     "我们要向左转吗？"
+    ],
+    "U05": [
+     "मुझे नहीं लगता कि हमें बाएँ मुड़ना है",
+     "我不觉得我们要向左转"
+    ]
+   },
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'हमें बाएँ मुड़ना है | 我们要向左转'. In the seed the place phrase 在下一个路口 sits inside it; the LEGO stands on its own as complete Chinese, which is what L32 asks of a frame ('a LEGO only if it stands on its own as complete target language'), and 向左转 was taught at seed 359. COST: the basket's 7 varied rows (我们要练习, 我们要学习中文…) are rebuilt around 向左转. ALTERNATIVE for Kai, not planned: keep 我们要 and its varied basket, and give the Hindi label a stand-in verb ('हमें करना है') — a stand-in other than 'it' has no ruling behind it."
+  },
+  {
+   "id": "S0418L01",
+   "verdict": "grow",
+   "pattern": "B",
+   "known": "उन्हें समुदाय की सेवा करनी है",
+   "target": "他们需要服务社区",
+   "type": "M",
+   "components": [
+    [
+     "उन्हें",
+     "他们"
+    ],
+    [
+     "ना है",
+     "需要"
+    ],
+    [
+     "समुदाय की सेवा कर",
+     "服务社区"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "उन्हें समुदाय की सेवा करनी है",
+     "他们需要服务社区"
+    ],
+    "B02": [
+     "आज उन्हें समुदाय की सेवा करनी है",
+     "今天他们需要服务社区"
+    ],
+    "B03": [
+     "अब उन्हें समुदाय की सेवा करनी है",
+     "现在他们需要服务社区"
+    ],
+    "U01": [
+     "मुझे लगता है कि उन्हें समुदाय की सेवा करनी है",
+     "我觉得他们需要服务社区"
+    ],
+    "U02": [
+     "उसने कहा कि उन्हें समुदाय की सेवा करनी है",
+     "他说他们需要服务社区"
+    ],
+    "U03": [
+     "वह जानता है कि उन्हें समुदाय की सेवा करनी है",
+     "他知道他们需要服务社区"
+    ],
+    "U04": [
+     "क्या उन्हें समुदाय की सेवा करनी है?",
+     "他们需要服务社区吗？"
+    ],
+    "U05": [
+     "मुझे नहीं लगता कि उन्हें समुदाय की सेवा करनी है",
+     "我不觉得他们需要服务社区"
+    ]
+   },
+   "extra": [
+    {
+     "op": "lego.reorder",
+     "seed_number": 418,
+     "order": [
+      "S0418L02",
+      "S0418L01"
+     ],
+     "phrases_default": "keep"
+    }
+   ],
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the whole seed 'उन्हें समुदाय की सेवा करनी है | 他们需要服务社区' (7 syllables) — NOT to 他们需要服务, which on its own reads 'they need service'. L32: 'the whole thing (frame + middle) is taught as one LEGO after the middle pieces', so the order is swapped to teach 服务社区 first. STRUCTURAL (reorder): needs Kai's go, and Popty refuses a reorder while any learner's progress names these LEGOs; if refused, the fix still stands without the swap. 7 syllables kept: any shorter Chinese piece changes meaning. Basket rebuilt (same alternative as S0395L01)."
+  },
+  {
+   "id": "S0530L02",
+   "verdict": "grow",
+   "pattern": "B",
+   "known": "ताकि मैं गिन सकूँ",
+   "target": "这样我就能数",
+   "type": "M",
+   "components": [
+    [
+     "ताकि",
+     "这样"
+    ],
+    [
+     "मैं",
+     "我"
+    ],
+    [
+     "सकूँ",
+     "就能"
+    ],
+    [
+     "गिन",
+     "数"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "ताकि मैं गिन सकूँ",
+     "这样我就能数"
+    ],
+    "B02": [
+     "मुझे बताइए ताकि मैं गिन सकूँ",
+     "告诉我，这样我就能数"
+    ],
+    "B03": [
+     "इसे यहाँ रखिए ताकि मैं गिन सकूँ",
+     "放在这里，这样我就能数"
+    ],
+    "B04": [
+     "मुझे थोड़ा समय दीजिए ताकि मैं गिन सकूँ",
+     "给我一点时间，这样我就能数"
+    ],
+    "U01": "keep",
+    "U02": [
+     "मुझे बताइए ताकि मैं उन्हें गिन सकूँ",
+     "告诉我，这样我就能数了"
+    ],
+    "U03": [
+     "इसे यहाँ रखिए ताकि मैं उन्हें गिन सकूँ",
+     "放在这里，这样我就能数了"
+    ],
+    "U04": [
+     "मुझे थोड़ा समय दीजिए ताकि मैं उन्हें गिन सकूँ",
+     "给我一点时间，这样我就能数了"
+    ],
+    "U05": [
+     "मेरी मदद कीजिए ताकि मैं गिन सकूँ",
+     "帮我，这样我就能数"
+    ]
+   },
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'ताकि मैं गिन सकूँ | 这样我就能数' (contiguous, 6 syllables; 数 is S0530L01, taught first). The scan proposed the same. Rows with other verbs (去, 看, 理解, 做完, 帮你) are rebuilt around 数, keeping their lead-in clauses."
+  },
+  {
+   "id": "S0570L02",
+   "verdict": "grow",
+   "pattern": "B",
+   "ack_rows": [
+    "U02",
+    "U04"
+   ],
+   "known": "अपनी टिकट के लिए",
+   "target": "为你的票",
+   "type": "M",
+   "components": [
+    [
+     "के लिए",
+     "为"
+    ],
+    [
+     "अपनी",
+     "你的"
+    ],
+    [
+     "टिकट",
+     "票"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "अपनी टिकट के लिए",
+     "为你的票"
+    ],
+    "B02": [
+     "अपनी टिकट के लिए भुगतान",
+     "为你的票付钱"
+    ],
+    "B03": [
+     "अपनी टिकट के लिए कितना",
+     "为你的票付多少钱"
+    ],
+    "B04": [
+     "अपनी टिकट के लिए काम",
+     "为你的票工作"
+    ],
+    "U01": "keep",
+    "U02": [
+     "मैं आपकी टिकट के लिए भुगतान करूँगा",
+     "我为你的票付钱"
+    ],
+    "U03": "keep",
+    "U04": [
+     "मैं आपकी टिकट के लिए काम करता हूँ",
+     "我为你的票工作"
+    ],
+    "U05": "keep"
+   },
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's noun: 'अपनी टिकट के लिए | 为你的票' (contiguous, 4 syllables; 票 is S0570L01, taught first). The scan proposed the same. 5 rows already say 为你的票; 4 about 工作/家 are rewritten."
+  }
+ ]
+}

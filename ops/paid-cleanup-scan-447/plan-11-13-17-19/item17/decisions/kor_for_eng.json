@@ -1,0 +1,298 @@
+{
+ "course": "kor_for_eng",
+ "legos": [
+  {
+   "id": "S0126L01",
+   "verdict": "recut",
+   "pattern": "D",
+   "known": "this work",
+   "target": "이 일이",
+   "type": "M",
+   "components": [
+    [
+     "this",
+     "이"
+    ],
+    [
+     "work",
+     "일이"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "this work",
+     "이 일이"
+    ],
+    "B02": [
+     "but this work",
+     "하지만 이 일이"
+    ],
+    "U01": "keep",
+    "U04": "keep",
+    "U07": "keep",
+    "U08": "keep"
+   },
+   "add": [
+    [
+     "b",
+     "so this work",
+     "그래서 이 일이"
+    ]
+   ],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "is changing",
+      "target_text": "바꾸고 있어요",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "changing",
+        "target": "바꾸고"
+       },
+       {
+        "known": "is",
+        "target": "있어요"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03B01",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "is changing",
+      "target_text": "바꾸고 있어요",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 2,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03B02",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "this work is changing",
+      "target_text": "이 일이 바꾸고 있어요",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 4,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03B03",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "is changing the shape of my brain",
+      "target_text": "뇌의 모양을 바꾸고 있어요",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 4,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03U01",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "this work is changing the shape of my brain",
+      "target_text": "이 일이 뇌의 모양을 바꾸고 있어요",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 6,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03U02",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "but this work is changing the shape of my brain",
+      "target_text": "하지만 이 일이 뇌의 모양을 바꾸고 있어요",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 7,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03U03",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "so this work is changing the shape of my brain",
+      "target_text": "그래서 이 일이 뇌의 모양을 바꾸고 있어요",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 7,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03U04",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "definitely this work is changing the shape of my brain",
+      "target_text": "확실히 이 일이 뇌의 모양을 바꾸고 있어요",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 7,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "kor_for_eng:S0126L03U05",
+      "course_code": "kor_for_eng",
+      "seed_number": 126,
+      "lego_index": 3,
+      "known_text": "so this work is changing",
+      "target_text": "그래서 이 일이 바꾸고 있어요",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 5,
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "PATTERN D. The LEGO is two pieces of the seed with other seed words between them. Split into contiguous pieces (Kai 17 Nov shortest cut; Kai 12 Nov 'every seed part is a LEGO … parts taught earlier still appear, marked not-new'). POV pass: seed 이 일이 [뇌의 모양을] 바꾸고 있어요. This LEGO becomes 'this work | 이 일이'; a NEW LEGO 'is changing | 바꾸고 있어요' is added AFTER 'the shape of my brain', so the seed is taught in its own order. All 6 rows stay (each contains 이 일이). STRUCTURAL: one LEGO insert with an 8-row basket, needs Kai's go. Note: the present LEGO is 8 syllables, at the cap."
+  },
+  {
+   "id": "S0132L01",
+   "verdict": "recut",
+   "pattern": "D",
+   "known": "less exciting",
+   "target": "덜 신나요",
+   "type": "M",
+   "components": [
+    [
+     "less",
+     "덜"
+    ],
+    [
+     "exciting",
+     "신나요"
+    ]
+   ],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 132,
+      "lego_index": 3,
+      "known_text": "that",
+      "target_text": "그건",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "why": "PATTERN D. The LEGO is two pieces of the seed with other seed words between them. Split into contiguous pieces (Kai 17 Nov shortest cut; Kai 12 Nov 'every seed part is a LEGO … parts taught earlier still appear, marked not-new'). POV pass: seed 그건 [그녀가 말했던 것보다] 덜 신나요. This LEGO becomes 'less exciting | 덜 신나요'; 'that | 그건' is added NOT-NEW (taught at S0127L01). All 11 rows stay. STRUCTURAL (one not-new insert, no basket)."
+  },
+  {
+   "id": "S0145L01",
+   "verdict": "recut",
+   "pattern": "D",
+   "known": "are you not happy",
+   "target": "행복하지 않아요",
+   "type": "M",
+   "components": [
+    [
+     "happy",
+     "행복하지"
+    ],
+    [
+     "are you not",
+     "않아요"
+    ]
+   ],
+   "basket": {
+    "B04": "del"
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 145,
+      "lego_index": 3,
+      "known_text": "why",
+      "target_text": "왜",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "why": "PATTERN D. The LEGO is two pieces of the seed with other seed words between them. Split into contiguous pieces (Kai 17 Nov shortest cut; Kai 12 Nov 'every seed part is a LEGO … parts taught earlier still appear, marked not-new'). POV pass: seed 왜 [더 이상] 행복하지 않아요? This LEGO becomes 'are you not happy | 행복하지 않아요' (K26: the English keeps 'you'); 'why | 왜' is added NOT-NEW (S0021L01). 8 rows stay; B04 '…왜 행복하지 않은지 모르겠어요' never contained the LEGO's form (않은지, not 않아요) and is deleted (3 builds remain). STRUCTURAL (one not-new insert)."
+  },
+  {
+   "id": "S0147L01",
+   "verdict": "recut",
+   "pattern": "D",
+   "known": "was very kind",
+   "target": "아주 친절했어요",
+   "type": "M",
+   "components": [
+    [
+     "very",
+     "아주"
+    ],
+    [
+     "was kind",
+     "친절했어요"
+    ]
+   ],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 147,
+      "lego_index": 3,
+      "known_text": "she",
+      "target_text": "그녀는",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "why": "PATTERN D. The LEGO is two pieces of the seed with other seed words between them. Split into contiguous pieces (Kai 17 Nov shortest cut; Kai 12 Nov 'every seed part is a LEGO … parts taught earlier still appear, marked not-new'). POV pass: seed 그녀는 [제가 긴장하는 걸 봤을 때] 아주 친절했어요. The present LEGO is 10 syllables, over the 8 cap (L3), so it must be cut anyway. It becomes 'was very kind | 아주 친절했어요' (7 syllables, kept at 7: 'was kind' alone is not a contiguous piece of the English seed); 'she | 그녀는' is added NOT-NEW (S0017L01). All 12 rows stay. STRUCTURAL (one not-new insert).",
+   "closes": [
+    "19"
+   ]
+  },
+  {
+   "id": "S0148L01",
+   "verdict": "kai",
+   "why": "HOLD. 'he wasn't very patient | 그는 참을성이 별로 없었어요' is 12 syllables. Split off 'he | 그는' (not-new, S0016L01) and it is still 10 ('참을성이 별로 없었어요'), over the cap of 8. Cutting further gives 'wasn't very | 별로 없었어요', which would be one English prompt with two Korean answers against every '-지 않았어요' LEGO — Kai's rule is that a would-be clash stays inside the bigger LEGO. So this needs a ruling: accept a 10-syllable LEGO, or reword the seed. It is on the Korean over-8 list too: decide it there once.",
+   "closes": [
+    "19"
+   ]
+  }
+ ]
+}

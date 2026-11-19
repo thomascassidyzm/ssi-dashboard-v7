@@ -1,0 +1,344 @@
+{
+ "course": "eng_for_spa",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:27Z",
+ "decisions": 2,
+ "verdicts": {
+  "regloss": 2
+ },
+ "touched_seeds": [
+  14,
+  32
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0014L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: dots on both sides. Precedent eng_for_deu S0014L01 'sprichst du | do you speak', eng_for_ita S0014L02 'parli? | do you speak?'. Rows unchanged.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 14,
+    "known": "¿Hablas inglés todo el día?",
+    "target": "do you speak English all day?"
+   },
+   "before": {
+    "known": "¿Hablas...?",
+    "target": "do you speak ...?",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "¿hablas?",
+    "target": "do you speak?",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0014L02B01",
+     "role": "build",
+     "before": [
+      "¿hablas inglés muy bien todo el día?",
+      "do you speak English very well all day?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02B03",
+     "role": "build",
+     "before": [
+      "¿hablas muy bien?",
+      "do you speak very well?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02U01",
+     "role": "use",
+     "before": [
+      "¿hablas inglés todo el día?",
+      "do you speak English all day?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02U02",
+     "role": "use",
+     "before": [
+      "¿hablas inglés muy bien?",
+      "do you speak English very well?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02U03",
+     "role": "use",
+     "before": [
+      "¿hablas inglés ahora?",
+      "do you speak English now?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02U05",
+     "role": "use",
+     "before": [
+      "¿hablas inglés con otra persona?",
+      "do you speak English with someone else?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02B04",
+     "role": "build",
+     "before": [
+      "¿hablas inglés con otra persona?",
+      "do you speak English with someone else?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0014L02U06",
+     "role": "use",
+     "before": [
+      "¿hablas inglés muy bien después de que termines?",
+      "do you speak English very well after you finish?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0032L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: dots on both sides. Precedent eng_for_deu S0032L01 'wolltest du | did you want'. Rows unchanged.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 32,
+    "known": "¿Querías mostrarme algo?",
+    "target": "did you want to show me something?"
+   },
+   "before": {
+    "known": "¿querías...?",
+    "target": "did you want...?",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "¿querías?",
+    "target": "did you want?",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0032L01B01",
+     "role": "build",
+     "before": [
+      "¿querías...?",
+      "did you want?"
+     ],
+     "action": [
+      "¿querías?",
+      "did you want?"
+     ]
+    },
+    {
+     "id": "eng_for_spa:S0032L01B02",
+     "role": "build",
+     "before": [
+      "¿querías hablar?",
+      "did you want to speak?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01B03",
+     "role": "build",
+     "before": [
+      "¿querías aprender?",
+      "did you want to learn?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01B04",
+     "role": "build",
+     "before": [
+      "¿querías practicar?",
+      "did you want to practise?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01U01",
+     "role": "use",
+     "before": [
+      "¿querías hablar inglés?",
+      "did you want to speak English?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01U02",
+     "role": "use",
+     "before": [
+      "¿querías aprender más?",
+      "did you want to learn more?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01U03",
+     "role": "use",
+     "before": [
+      "¿querías practicar hablar?",
+      "did you want to practise speaking?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01U04",
+     "role": "use",
+     "before": [
+      "¿querías hablar conmigo?",
+      "did you want to speak with me?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01U05",
+     "role": "use",
+     "before": [
+      "¿querías aprender inglés con alguien más?",
+      "did you want to learn English with someone else?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0032L01C01",
+     "role": "component",
+     "before": [
+      "querías",
+      "you wanted"
+     ],
+     "action": "component"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 5,
+    "sample": [
+     {
+      "id": "eng_for_spa:S0032L02B03",
+      "known": "¿querías mostrarme?",
+      "target": "did you want to show me?",
+      "seed": 32
+     },
+     {
+      "id": "eng_for_spa:S0032L02B04",
+      "known": "¿querías mostrarme una palabra?",
+      "target": "did you want to show me a word?",
+      "seed": 32
+     },
+     {
+      "id": "eng_for_spa:S0032L02U01",
+      "known": "¿querías mostrarme algo esta noche?",
+      "target": "did you want to show me something tonight?",
+      "seed": 32
+     },
+     {
+      "id": "eng_for_spa:S0032L02U03",
+      "known": "¿querías mostrarme cómo se dice algo?",
+      "target": "did you want to show me how to say something?",
+      "seed": 32
+     },
+     {
+      "id": "eng_for_spa:S0032L02U05",
+      "known": "¿querías mostrarme algo antes de terminar?",
+      "target": "did you want to show me something before you finish?",
+      "seed": 32
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0014L02",
+   "set": {
+    "known_text": "¿hablas?",
+    "target_text": "do you speak?"
+   },
+   "expect": {
+    "known_text": "¿Hablas...?",
+    "target_text": "do you speak ...?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0032L01",
+   "set": {
+    "known_text": "¿querías?",
+    "target_text": "did you want?"
+   },
+   "expect": {
+    "known_text": "¿querías...?",
+    "target_text": "did you want...?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0032L01B01",
+   "set": {
+    "known_text": "¿querías?"
+   },
+   "expect": {
+    "known_text": "¿querías...?",
+    "target_text": "did you want?"
+   }
+  }
+ ]
+}

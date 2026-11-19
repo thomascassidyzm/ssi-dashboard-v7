@@ -1,0 +1,265 @@
+{
+ "course": "kor_for_hin",
+ "legos": [
+  {
+   "id": "S0111L02",
+   "verdict": "grow",
+   "pattern": "D",
+   "known": "जब हम सीखते हैं",
+   "target": "우리가 배울 때",
+   "type": "M",
+   "ack": [
+    "target"
+   ],
+   "ack_rows": [
+    "B02",
+    "B03",
+    "B04"
+   ],
+   "components": [
+    [
+     "हम",
+     "우리가"
+    ],
+    [
+     "सीखते हैं",
+     "배울"
+    ],
+    [
+     "जब",
+     "때"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "जब हम सीखते हैं",
+     "우리가 배울 때"
+    ],
+    "B02": [
+     "जब हम कुछ नया सीखते हैं",
+     "우리가 새로운 것을 배울 때"
+    ],
+    "B03": [
+     "जब हम आज सीखते हैं",
+     "우리가 오늘 배울 때"
+    ],
+    "B04": [
+     "जब हम बहुत सारे नए शब्द सीखते हैं",
+     "우리가 많은 새 단어를 배울 때"
+    ],
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "why": "PATTERN D, grown not split. '우리가 배울' cannot stand: 배울 is a form that needs the word after it, and the seed's 때 ('when') was in NO LEGO (S3 gap). Grown by 때: 'जब हम सीखते हैं | 우리가 배울 때' (6 syllables), a clause that stands on its own (L32), whose middle '새로운 것을' is S0111L01, taught first. Every use row already says it; 3 build rows that stopped at 배울 gain 때. POV pass: precedent S0034L02 'जब यहाँ हों | 여기 있을 때'."
+  },
+  {
+   "id": "S0132L03",
+   "verdict": "recut",
+   "pattern": "C",
+   "ack_rows": [
+    "B02",
+    "B03",
+    "U01",
+    "U02",
+    "U03",
+    "U05"
+   ],
+   "known": "उससे जो कह रही थी",
+   "target": "말하던 것보다",
+   "type": "M",
+   "components": [
+    [
+     "कह रही थी",
+     "말하던"
+    ],
+    [
+     "उससे",
+     "것보다"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "उससे जो कह रही थी",
+     "말하던 것보다"
+    ],
+    "B02": [
+     "उससे जो मैं कह रहा था",
+     "제가 말하던 것보다"
+    ],
+    "B03": [
+     "उससे कम जो मैं कह रहा था",
+     "제가 말하던 것보다 덜"
+    ],
+    "B04": "del",
+    "U01": [
+     "वह उससे कम रोमांचक है जो मैं कह रहा था",
+     "그것은 제가 말하던 것보다 덜 흥미로워요"
+    ],
+    "U02": [
+     "यह उससे कम रोमांचक है जो मैं कह रहा था",
+     "제가 말하던 것보다 덜 흥미로워요"
+    ],
+    "U03": [
+     "वह उससे बहुत कम रोमांचक है जो मैं कह रहा था",
+     "그것은 제가 말하던 것보다 정말 덜 흥미로워요"
+    ],
+    "U04": [
+     "वह उससे कम रोमांचक है जो कह रही थी",
+     "그것은 말하던 것보다 덜 흥미로워요"
+    ],
+    "U05": [
+     "यह उससे बहुत कम रोमांचक है जो मैं कह रहा था",
+     "제가 말하던 것보다 정말 덜 흥미로워요"
+    ]
+   },
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'वह उससे | 그것은 것보다' joins the first word of the seed to an ending from its middle; every row in the basket is broken Korean ('그것은 것보다 덜'). 것보다 ('than what…') cannot stand without its verb, so it grows to the verb in its own seed (L22): 'उससे जो कह रही थी | 말하던 것보다' (6 syllables). Growing S0132L04 instead would be 9 syllables. 그것은 keeps no LEGO of its own here because its only honest Hindi prompt, 'वह', already means 그는 ('he', S0016L01) — it is carried by the rows and by S0086L02. Whole basket rebuilt (10 rows → 8)."
+  },
+  {
+   "id": "S0135L04",
+   "verdict": "keep",
+   "pattern": "not-gapped",
+   "basket": {},
+   "extra": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "kor_for_hin:S0135L04B02",
+     "set": {
+      "target_text": "왜 좋다고 생각하는지"
+     },
+     "expect": {
+      "known_text": "अच्छा क्यों लगता है",
+      "target_text": "좋다고 왜 생각하는지"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "kor_for_hin:S0135L04B03",
+     "set": {
+      "known_text": "यह अच्छा क्यों लगता है",
+      "target_text": "왜 그것이 좋다고 생각하는지"
+     },
+     "expect": {
+      "known_text": "यह क्यों लगता है",
+      "target_text": "그것이 왜 생각하는지"
+     }
+    }
+   ],
+   "why": "NOT GAPPED (keep). '왜 생각하는지' ('why … think') is a well-formed clause on its own and its middles (그것이, 그렇게 좋다고) are S0135L01–L02, taught before it — exactly the frame L32 allows; rows fill the slot (K49). Splitting it would give 'लगता है | 생각하는지', a second answer for a prompt that already means 생각해요 (S0072L01). Two build rows had the Korean in an impossible order (좋다고 왜 생각하는지) and are corrected."
+  },
+  {
+   "id": "S0137L04",
+   "verdict": "grow",
+   "pattern": "C",
+   "known": "अक्सर बात करना",
+   "target": "자주 말하는 것이",
+   "type": "M",
+   "components": [
+    [
+     "अक्सर",
+     "자주"
+    ],
+    [
+     "बात करना",
+     "말하는 것이"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "अक्सर बात करना",
+     "자주 말하는 것이"
+    ],
+    "B02": [
+     "अभी अक्सर बात करना",
+     "지금 자주 말하는 것이"
+    ],
+    "B03": [
+     "ज़्यादा अक्सर बात करना",
+     "더 자주 말하는 것이"
+    ],
+    "B04": [
+     "साथ में अक्सर बात करना",
+     "같이 자주 말하는 것이"
+    ]
+   },
+   "why": "neighbour of S0137L03. The stray ending 것이 belongs to the verb before it (L22). This LEGO grows by it: 'अक्सर बात करना | 자주 말하는 것이' (6 syllables). Precedent S0028L03 'शुरू करना | 시작하는 것이'. All 6 use rows already say it; the 4 build rows gain 것이."
+  },
+  {
+   "id": "S0137L03",
+   "verdict": "recut",
+   "pattern": "C",
+   "known": "ज़रूरी है",
+   "target": "중요해요",
+   "type": "A",
+   "components": [],
+   "is_new": false,
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'करना ज़रूरी है | 것이 중요해요' starts with an ending torn off the word before it. 것이 moves to S0137L04 (above), leaving 'ज़रूरी है | 중요해요', which is exactly S0065L04 → NOT-NEW (L27: a duplicate is introduced once). Its 9 rows go dark (P25); the ones worth hearing ('자주 말하는 것이 중요해요') are already in S0137L04's basket.",
+   "closes": [
+    "dup"
+   ]
+  },
+  {
+   "id": "S0138L01",
+   "verdict": "kai",
+   "why": "HOLD. 'यहीं | 여기가 곳이에요': the Korean wraps the whole clause (여기가 … 곳이에요) and the Hindi seed has no word at all for 곳이에요 ('is the place'). The whole clause is 16 syllables. Nothing in the seed can prompt 곳이에요, so no re-cut is honest; L25: 'if the chunk needs to get too big to work … consider changing the seed … bring to me'. Proposed for Kai: reword the Hindi seed to 'यही वह जगह है जहाँ मेरा दोस्त हमसे मिलना चाहता था', then cut 'यही | 여기가' and 'वह जगह है | 곳이에요'. The basket (8 rows of broken Korean such as '조금 여기가 곳이에요') is rebuilt either way."
+  },
+  {
+   "id": "S0148L04",
+   "verdict": "kai",
+   "why": "HOLD (same seed as kor_for_eng S0148). 'बहुत नहीं था | 그리 없었어요' wraps 참을성이. Whole, '그리 참을성이 없었어요' is 10 syllables, over the cap. Cut to '참을성이 없었어요' (8) leaves 그리 needing a LEGO whose Hindi prompt 'बहुत' already means 정말/아주 — one prompt, two answers. Needs a ruling: a 10-syllable LEGO, or a seed change.",
+   "closes": [
+    "19"
+   ]
+  },
+  {
+   "id": "S0151L02",
+   "verdict": "recut",
+   "pattern": "D",
+   "known": "मैं",
+   "target": "제가",
+   "type": "A",
+   "components": [],
+   "is_new": false,
+   "basket": {
+    "U01": "keep",
+    "U03": "keep"
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 151,
+      "lego_index": 4,
+      "known_text": "यह",
+      "target_text": "그것은",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "why": "PATTERN D. The LEGO is two pieces of the seed with other seed words between them. Split into contiguous pieces (Kai 17 Nov shortest cut; Kai 12 Nov 'every seed part is a LEGO … parts taught earlier still appear, marked not-new'). POV pass: 'मैं वह | 제가 그것은' is two unconnected words of the seed (그것은 제가 …). Both are already taught: this LEGO becomes 'मैं | 제가' NOT-NEW (S0011L03) and 'यह | 그것은' is added NOT-NEW (S0086L02). No clash: both are exact earlier pairs. The basket (8 rows of broken Korean, '제가 그것은 좋다고 생각해요') goes dark, as it should. STRUCTURAL (one not-new insert). 0 characters.",
+   "closes": [
+    "dup"
+   ]
+  },
+  {
+   "id": "S0242L01",
+   "verdict": "kai",
+   "why": "HOLD. 'उसको देना | 그녀에게 주고' wraps '시간을 더', and 주고 cannot end a phrase. Whole, '그녀에게 주고 싶어요' is 9 syllables. The natural split is 'उसको | 그녀에게' + 'देना | 주고' (not-new, S0054L01) — but 'उसको' already means 그에게 ('to him', S0176L02): Hindi does not mark him/her, so that is one prompt, two answers. Proposed for Kai: 'उसको समय | 그녀에게 시간을' + NEW 'ज़्यादा देना चाहता हूँ | 더 주고 싶어요' — both contiguous — and the him/her sense goes in the presentation (K23: 'keep the clash, explain the sense in the presentation'). Belongs with item 13.",
+   "closes": [
+    "13"
+   ]
+  },
+  {
+   "id": "S0624L01",
+   "verdict": "keep",
+   "pattern": "not-gapped",
+   "why": "NOT GAPPED (keep). 'तो बढ़िया होगा | 그러면 좋겠어요' is complete Korean on its own; the seed only puts 정말 inside it, which was taught at seed 63. L32 allows exactly this; K49: 'words of any size may sit inside a LEGO in a phrase'. (Its Hindi says बढ़िया where the seed says अच्छा — item 10's family, not this one.)",
+   "closes": [
+    "10"
+   ]
+  }
+ ]
+}

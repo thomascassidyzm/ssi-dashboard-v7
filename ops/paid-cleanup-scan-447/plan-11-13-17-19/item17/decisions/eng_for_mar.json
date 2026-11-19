@@ -1,0 +1,61 @@
+{
+ "course": "eng_for_mar",
+ "legos": [
+  {
+   "id": "S0014L02",
+   "verdict": "grow",
+   "pattern": "B",
+   "known": "तुम्ही बोलता का",
+   "target": "do you speak",
+   "type": "M",
+   "components": [
+    [
+     "तुम्ही",
+     "you"
+    ],
+    [
+     "बोलता",
+     "speak"
+    ],
+    [
+     "का",
+     "do"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "तुम्ही बोलता का",
+     "do you speak"
+    ]
+   },
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: Marathi 'तुम्ही … का' without a verb reads 'why you?'. Precedent: eng_for_hin S0014L02 'क्या आप बोलते हैं | do you speak', eng_for_deu S0014L01 'sprichst du | do you speak'. Every other row of the basket already says 'do you speak …', so all rows stay."
+  },
+  {
+   "id": "S0485L03",
+   "verdict": "recut",
+   "pattern": "C",
+   "ack": [
+    "known"
+   ],
+   "known": "जास्त आनंदी",
+   "target": "happier",
+   "type": "A",
+   "components": [],
+   "basket": {
+    "B01": [
+     "जास्त आनंदी",
+     "happier"
+    ],
+    "B02": "keep",
+    "B03": "keep",
+    "B04": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: Marathi 'than' is an ending on the word before it (-पेक्षा), so 'happier than' can only be written with a hole. Shortest cut: 'happier | जास्त आनंदी'. 'than' was taught at seed 117 (S0117L02) and 'to get away' is S0485L01, so 'happier than to get away' is built from taught pieces and needs no LEGO of its own (L30) — the basket already drills it. All 10 other rows stay."
+  }
+ ]
+}

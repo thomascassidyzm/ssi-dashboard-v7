@@ -1,0 +1,3109 @@
+{
+ "course": "eng_for_ben",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:25Z",
+ "decisions": 13,
+ "verdicts": {
+  "regloss": 9,
+  "grow": 1,
+  "recut": 3
+ },
+ "touched_seeds": [
+  534,
+  547,
+  549,
+  557,
+  589,
+  599,
+  608,
+  615,
+  616,
+  626,
+  630
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0534L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: precedent eng_for_hin, same seed, gap-free (e.g. S0534L01 'चलो बाहर न जाएँ | let's not go outside'). The basket's filler rows ('… now', '… today') are the thin-basket family (item 20), not touched here.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 534,
+    "known": "চলো এই ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই।",
+    "target": "Let's not go outside in this dreadful weather."
+   },
+   "before": {
+    "known": "চলো ... বাইরে না যাই",
+    "target": "let's not go outside",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "চলো বাইরে না যাই",
+    "target": "let's not go outside",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0534L02C01",
+     "role": "component",
+     "before": [
+      "চলো",
+      "let's"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0534L02C02",
+     "role": "component",
+     "before": [
+      "বাইরে",
+      "outside"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0534L02C03",
+     "role": "component",
+     "before": [
+      "না যাই",
+      "not go"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0534L02B01",
+     "role": "build",
+     "before": [
+      "চলো ... বাইরে না যাই",
+      "let's not go outside"
+     ],
+     "action": [
+      "চলো বাইরে না যাই",
+      "let's not go outside"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0534L02B02",
+     "role": "build",
+     "before": [
+      "চলো ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই",
+      "let's not go outside in dreadful weather"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0534L02B03",
+     "role": "build",
+     "before": [
+      "চলো এখন বাইরে না যাই",
+      "let's not go outside now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0534L02B04",
+     "role": "build",
+     "before": [
+      "চলো আজ বাইরে না যাই",
+      "let's not go outside today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0534L02U01",
+     "role": "use",
+     "before": [
+      "চলো এই ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই।",
+      "let's not go outside in this dreadful weather"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0534L02U02",
+     "role": "use",
+     "before": [
+      "সে বলেছিল চলো বাইরে না যাই।",
+      "she said let's not go outside"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0534L02U03",
+     "role": "use",
+     "before": [
+      "আমার বাবা বলেছিলেন চলো বাইরে না যাই।",
+      "my father said let's not go outside"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0534L02U05",
+     "role": "use",
+     "before": [
+      "চলো বাইরে না যাই কারণ আমি ক্লান্ত।",
+      "Let's not go outside because I'm tired."
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0547L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: precedent eng_for_hin, same seed, gap-free (e.g. S0534L01 'चलो बाहर न जाएँ | let's not go outside'). The basket's filler rows ('… now', '… today') are the thin-basket family (item 20), not touched here.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 547,
+    "known": "কারণ সে কাদায় খেলছিল।",
+    "target": "Because he has been playing in the mud."
+   },
+   "before": {
+    "known": "কারণ সে ... খেলছিল",
+    "target": "because he has been playing",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "কারণ সে খেলছিল",
+    "target": "because he has been playing",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0547L02C01",
+     "role": "component",
+     "before": [
+      "কারণ",
+      "because"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0547L02C02",
+     "role": "component",
+     "before": [
+      "সে",
+      "he"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0547L02C04",
+     "role": "component",
+     "before": [
+      "খেলছিল",
+      "has been playing"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0547L02B01",
+     "role": "build",
+     "before": [
+      "কারণ সে ... খেলছিল",
+      "because he has been playing"
+     ],
+     "action": [
+      "কারণ সে খেলছিল",
+      "because he has been playing"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0547L02B02",
+     "role": "build",
+     "before": [
+      "এখন কারণ সে খেলছিল",
+      "because he has been playing now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0547L02B03",
+     "role": "build",
+     "before": [
+      "আজ কারণ সে খেলছিল",
+      "because he has been playing today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0547L02U01",
+     "role": "use",
+     "before": [
+      "কারণ সে কাদায় খেলছিল।",
+      "because he has been playing in the mud"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0547L02U02",
+     "role": "use",
+     "before": [
+      "আমরা জানি কারণ সে খেলছিল।",
+      "we know because he has been playing"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0547L02U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল কারণ সে খেলছিল।",
+      "she said because he has been playing"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0547L02U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন কারণ সে খেলছিল।",
+      "my father knows because he has been playing"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0547L02U05",
+     "role": "use",
+     "before": [
+      "আমি জানি কারণ সে খেলছিল।",
+      "I know because he has been playing"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0549L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: precedent eng_for_hin, same seed, gap-free (e.g. S0534L01 'चलो बाहर न जाएँ | let's not go outside'). The basket's filler rows ('… now', '… today') are the thin-basket family (item 20), not touched here.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 549,
+    "known": "কারণ আমাকে চুপ থাকতে হবে।",
+    "target": "Because I have got to be quiet."
+   },
+   "before": {
+    "known": "আমাকে ... থাকতে হবে",
+    "target": "I have got to be",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "আমাকে থাকতে হবে",
+    "target": "I have got to be",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0549L02C01",
+     "role": "component",
+     "before": [
+      "আমাকে",
+      "I"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0549L02C03",
+     "role": "component",
+     "before": [
+      "হবে",
+      "have got to"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0549L02B01",
+     "role": "build",
+     "before": [
+      "আমাকে ... থাকতে হবে",
+      "I have got to be"
+     ],
+     "action": [
+      "আমাকে থাকতে হবে",
+      "I have got to be"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0549L02B02",
+     "role": "build",
+     "before": [
+      "আমাকে চুপ থাকতে হবে",
+      "I have got to be quiet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02B03",
+     "role": "build",
+     "before": [
+      "এখন আমাকে থাকতে হবে",
+      "I have got to be now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02B04",
+     "role": "build",
+     "before": [
+      "এখানে আমাকে থাকতে হবে",
+      "I have got to be here"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02U01",
+     "role": "use",
+     "before": [
+      "কারণ আমাকে চুপ থাকতে হবে।",
+      "because I have got to be quiet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02U02",
+     "role": "use",
+     "before": [
+      "আমাকে আজ থাকতে হবে।",
+      "I have got to be today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল আমাকে থাকতে হবে।",
+      "she said I have got to be"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন আমাকে থাকতে হবে।",
+      "my father knows I have got to be"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0549L02U05",
+     "role": "use",
+     "before": [
+      "আমি জানি আমাকে থাকতে হবে।",
+      "I know I have got to be"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0557L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: precedent eng_for_hin, same seed, gap-free (e.g. S0534L01 'चलो बाहर न जाएँ | let's not go outside'). The basket's filler rows ('… now', '… today') are the thin-basket family (item 20), not touched here.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 557,
+    "known": "আমি চাই তারা এত জোরে সংগীত না বাজাক।",
+    "target": "I wish they wouldn't play such loud music."
+   },
+   "before": {
+    "known": "চাই তারা ... না বাজাক",
+    "target": "wish they wouldn't play",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "চাই তারা না বাজাক",
+    "target": "wish they wouldn't play",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0557L02C01",
+     "role": "component",
+     "before": [
+      "চাই",
+      "wish"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0557L02C02",
+     "role": "component",
+     "before": [
+      "তারা",
+      "they"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0557L02C04",
+     "role": "component",
+     "before": [
+      "না বাজাক",
+      "wouldn't play"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0557L02B01",
+     "role": "build",
+     "before": [
+      "চাই তারা ... না বাজাক",
+      "wish they wouldn't play"
+     ],
+     "action": [
+      "চাই তারা না বাজাক",
+      "wish they wouldn't play"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0557L02B02",
+     "role": "build",
+     "before": [
+      "এখন চাই তারা না বাজাক",
+      "wish they wouldn't play now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0557L02B03",
+     "role": "build",
+     "before": [
+      "আজ চাই তারা না বাজাক",
+      "wish they wouldn't play today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0557L02U01",
+     "role": "use",
+     "before": [
+      "আমি চাই তারা এত জোরে না বাজাক।",
+      "I wish they wouldn't play so loud"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0557L02U02",
+     "role": "use",
+     "before": [
+      "আমরা চাই তারা না বাজাক।",
+      "we wish they wouldn't play"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0557L02U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল আমরা চাই তারা না বাজাক।",
+      "she said we wish they wouldn't play"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0557L02U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন আমরা চাই তারা না বাজাক।",
+      "my father knows we wish they wouldn't play"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0557L02U05",
+     "role": "use",
+     "before": [
+      "আমি জানি আমরা চাই তারা না বাজাক।",
+      "I know we wish they wouldn't play"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0589L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: precedent eng_for_hin, same seed, gap-free (e.g. S0534L01 'चलो बाहर न जाएँ | let's not go outside'). The basket's filler rows ('… now', '… today') are the thin-basket family (item 20), not touched here.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 589,
+    "known": "সে আমাকে বলল সে এইমাত্র শেষ বাসটা দেখেছে।",
+    "target": "She told me she'd just seen the last bus."
+   },
+   "before": {
+    "known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+    "target": "told me she'd just seen",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "আমাকে বলল সে এইমাত্র দেখেছে",
+    "target": "told me she'd just seen",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0589L02C01",
+     "role": "component",
+     "before": [
+      "আমাকে বলল",
+      "told me"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0589L02C02",
+     "role": "component",
+     "before": [
+      "সে",
+      "she'd"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0589L02C04",
+     "role": "component",
+     "before": [
+      "এইমাত্র দেখেছে",
+      "just seen"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0589L02B01",
+     "role": "build",
+     "before": [
+      "আমাকে বলল সে এইমাত্র ... দেখেছে",
+      "told me she'd just seen"
+     ],
+     "action": [
+      "আমাকে বলল সে এইমাত্র দেখেছে",
+      "told me she'd just seen"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0589L02B02",
+     "role": "build",
+     "before": [
+      "এখন আমাকে বলল সে এইমাত্র দেখেছে",
+      "told me she'd just seen now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0589L02B03",
+     "role": "build",
+     "before": [
+      "আজ আমাকে বলল সে এইমাত্র দেখেছে",
+      "told me she'd just seen today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0589L02U01",
+     "role": "use",
+     "before": [
+      "সে আমাকে বলল সে এইমাত্র শেষ বাসটা দেখেছে।",
+      "she told me she'd just seen the last bus"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 1
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0616L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: precedent eng_for_hin, same seed, gap-free (e.g. S0534L01 'चलो बाहर न जाएँ | let's not go outside'). The basket's filler rows ('… now', '… today') are the thin-basket family (item 20), not touched here.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 616,
+    "known": "তুমি এটা বলতে খুব সাহসী ছিলে যে তুমি তা মনে করেছিলে।",
+    "target": "You were very brave to say you thought that."
+   },
+   "before": {
+    "known": "তুমি ... মনে করেছিলে",
+    "target": "you thought",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "তুমি মনে করেছিলে",
+    "target": "you thought",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0616L01C01",
+     "role": "component",
+     "before": [
+      "তুমি",
+      "you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0616L01C03",
+     "role": "component",
+     "before": [
+      "মনে করেছিলে",
+      "thought"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0616L01B01",
+     "role": "build",
+     "before": [
+      "তুমি ... মনে করেছিলে",
+      "you thought"
+     ],
+     "action": [
+      "তুমি মনে করেছিলে",
+      "you thought"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0616L01B02",
+     "role": "build",
+     "before": [
+      "তুমি তা মনে করেছিলে",
+      "you thought that"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0616L01B03",
+     "role": "build",
+     "before": [
+      "এখন তুমি মনে করেছিলে",
+      "you thought now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0616L01U01",
+     "role": "use",
+     "before": [
+      "তুমি এটা আগে মনে করেছিলে।",
+      "you thought that before"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0616L01U02",
+     "role": "use",
+     "before": [
+      "তুমি এটা এখন মনে করেছিলে।",
+      "you thought that now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0616L01U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল তুমি এটা মনে করেছিলে।",
+      "she said you thought that"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0616L01U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন তুমি এটা মনে করেছিলে।",
+      "my father knows you thought that"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0616L01U05",
+     "role": "use",
+     "before": [
+      "আমি জানি তুমি এটা মনে করেছিলে।",
+      "I know you thought that"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 9,
+    "sample": [
+     {
+      "id": "eng_for_ben:S0616L02U01",
+      "known": "তুমি এটা বলতে খুব সাহসী ছিলে যে তুমি তা মনে করেছিলে।",
+      "target": "you were very brave to say you thought that",
+      "seed": 616
+     },
+     {
+      "id": "eng_for_ben:S0617L02B01",
+      "known": "তুমি মনে করেছিলে যে",
+      "target": "you thought that",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02B02",
+      "known": "এখন তুমি মনে করেছিলে যে",
+      "target": "you thought that now",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02B03",
+      "known": "আজ তুমি মনে করেছিলে যে",
+      "target": "you thought that today",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02U01",
+      "known": "তুমি মনে করেছিলে যে এটা একটা ভুল ছিল।",
+      "target": "you thought that it was a mistake",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02U02",
+      "known": "আমরা জানি তুমি মনে করেছিলে যে।",
+      "target": "we know you thought that",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02U03",
+      "known": "সে বলেছিল তুমি মনে করেছিলে যে।",
+      "target": "she said you thought that",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02U04",
+      "known": "আমার বাবা জানেন তুমি মনে করেছিলে যে।",
+      "target": "my father knows you thought that",
+      "seed": 617
+     },
+     {
+      "id": "eng_for_ben:S0617L02U05",
+      "known": "আমি জানি তুমি মনে করেছিলে যে।",
+      "target": "I know you thought that",
+      "seed": 617
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0626L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: BUT without the dots this is exactly S0173L01 'না ধন্যবাদ | no thank you' (taught NEW at seed 173). L27: 'a LEGO that grows into one that already exists is a duplicate and is introduced once' → not-new. P25: a not-new LEGO's basket is never played, so the seed sentence row moves under S0626L01 'not thirsty' (P26: every seed sentence sits in a played basket). Its other 4 rows go dark (2 are filler). Belongs with the duplicate-LEGO family too.",
+   "closes": [
+    "17",
+    "dup"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 626,
+    "known": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+    "target": "No, I'm not thirsty, thank you."
+   },
+   "before": {
+    "known": "না, ... ধন্যবাদ",
+    "target": "no thank you",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "না ধন্যবাদ",
+    "target": "no thank you",
+    "type": "M",
+    "components": null,
+    "is_new": false
+   },
+   "acknowledged": [
+    "target split in the seed"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": false,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0626L02C01",
+     "role": "component",
+     "before": [
+      "না",
+      "no"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0626L02C02",
+     "role": "component",
+     "before": [
+      "ধন্যবাদ",
+      "thank you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0626L02B01",
+     "role": "build",
+     "before": [
+      "না, ... ধন্যবাদ",
+      "no thank you"
+     ],
+     "action": [
+      "না ধন্যবাদ",
+      "no thank you"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0626L02B02",
+     "role": "build",
+     "before": [
+      "এখন না, ধন্যবাদ",
+      "no thank you now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L02B03",
+     "role": "build",
+     "before": [
+      "আজ না, ধন্যবাদ",
+      "no thank you today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L02U01",
+     "role": "use",
+     "before": [
+      "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+      "no I'm not thirsty thank you"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "eng_for_ben:S0626L02U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল না, ধন্যবাদ।",
+      "she said no thank you"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L02U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা বলেছিলেন না, ধন্যবাদ।",
+      "my father said no thank you"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 2
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 12,
+    "sample": [
+     {
+      "id": "eng_for_ben:S0173L01B01",
+      "known": "না ধন্যবাদ",
+      "target": "no thank you",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01B02",
+      "known": "না ধন্যবাদ আমি নিজে করতে পারি",
+      "target": "no thank you I can do it",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01B03",
+      "known": "না ধন্যবাদ আমি এখন পারব",
+      "target": "no thank you I can do it now",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01B04",
+      "known": "না ধন্যবাদ আমাকে সাহায্য লাগবে না",
+      "target": "no thank you I don't need help",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01U01",
+      "known": "না ধন্যবাদ আমি জানি কীভাবে করতে হয়",
+      "target": "no thank you I know how to do it",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01U02",
+      "known": "না ধন্যবাদ আমি এটা বুঝতে পারছি",
+      "target": "no thank you I can understand it",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01U03",
+      "known": "না ধন্যবাদ আমার সাহায্য দরকার নেই",
+      "target": "no thank you I don't need any help",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01U04",
+      "known": "না ধন্যবাদ আমি এটা করতে পারব",
+      "target": "no thank you I'll be able to do it",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L01U05",
+      "known": "না ধন্যবাদ আমি তোমার কথা বুঝতে পারছি",
+      "target": "no thank you I can understand what you're saying",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L02B04",
+      "known": "না ধন্যবাদ আমি নিজে সামলাতে পারি",
+      "target": "no thank you I can manage on my own",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L02U02",
+      "known": "আমি নিজে সামলাতে পারি না ধন্যবাদ",
+      "target": "I can manage on my own no thank you",
+      "seed": 173
+     },
+     {
+      "id": "eng_for_ben:S0173L02U05",
+      "known": "না ধন্যবাদ আমি নিজে সামলাতে পারব",
+      "target": "no thank you I'll be able to manage on my own",
+      "seed": 173
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0626L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": null,
+   "why": "neighbour of S0626L02: receives the seed sentence row (P26), reusing the seed's clips.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 626,
+    "known": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+    "target": "No, I'm not thirsty, thank you."
+   },
+   "before": {
+    "known": "তৃষ্ণা নেই",
+    "target": "not thirsty",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "তৃষ্ণা নেই",
+    "target": "not thirsty",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0626L01B01",
+     "role": "build",
+     "before": [
+      "তৃষ্ণা নেই",
+      "not thirsty"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01B02",
+     "role": "build",
+     "before": [
+      "আমার তৃষ্ণা নেই",
+      "I'm not thirsty"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01B03",
+     "role": "build",
+     "before": [
+      "এখন তৃষ্ণা নেই",
+      "not thirsty now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01U01",
+     "role": "use",
+     "before": [
+      "আমার এখন তৃষ্ণা নেই।",
+      "I'm not thirsty now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01U02",
+     "role": "use",
+     "before": [
+      "আমাদের আজ তৃষ্ণা নেই।",
+      "we're not thirsty today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল আমার তৃষ্ণা নেই।",
+      "she said I'm not thirsty"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01U04",
+     "role": "use",
+     "before": [
+      "আমরা জানি আমার তৃষ্ণা নেই।",
+      "we know I'm not thirsty"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0626L01U05",
+     "role": "use",
+     "before": [
+      "আমি জানি আমার তৃষ্ণা নেই।",
+      "I know I'm not thirsty"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_ben:S0626L01U06",
+     "course_code": "eng_for_ben",
+     "seed_number": 626,
+     "lego_index": 1,
+     "known_text": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+     "target_text": "no I'm not thirsty thank you",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 6,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": []
+  },
+  {
+   "id": "S0599L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Bengali says 'happily … would-drive' with the verb inside, so 'I'd have been happy to' has no Bengali of its own. Precedent: the canon's own worked case for this seed in Italian (L27: 'I think we can just grow it to happy to drive, right?' — Kai) . 7 syllables, kept at 7 because the Bengali cannot be split between 'happy' and 'drive'. S0599L01 'to drive' is taught first (L13). 7 of 8 rows said '…happy to' with no verb and are rebuilt to carry 'drive'.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 599,
+    "known": "তুমি আমাকে বললে আমি খুশিমনে গাড়ি চালাতাম।",
+    "target": "I'd have been happy to drive if you'd told me."
+   },
+   "before": {
+    "known": "খুশিমনে ... চালাতাম",
+    "target": "I'd have been happy to",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "খুশিমনে গাড়ি চালাতাম",
+    "target": "I'd have been happy to drive",
+    "type": "M",
+    "components": [
+     [
+      "খুশিমনে",
+      "happy"
+     ],
+     [
+      "গাড়ি চালাতাম",
+      "to drive"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0599L02C01",
+     "role": "component",
+     "before": [
+      "খুশিমনে",
+      "happy"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0599L02C02",
+     "role": "component",
+     "before": [
+      "চালাতাম",
+      "I'd have been"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0599L02B01",
+     "role": "build",
+     "before": [
+      "খুশিমনে ... চালাতাম",
+      "I'd have been happy to"
+     ],
+     "action": [
+      "খুশিমনে গাড়ি চালাতাম",
+      "I'd have been happy to drive"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0599L02B02",
+     "role": "build",
+     "before": [
+      "এখন খুশিমনে চালাতাম",
+      "I'd have been happy to now"
+     ],
+     "action": [
+      "আজ খুশিমনে গাড়ি চালাতাম",
+      "I'd have been happy to drive today"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0599L02B03",
+     "role": "build",
+     "before": [
+      "আজ খুশিমনে চালাতাম",
+      "I'd have been happy to today"
+     ],
+     "action": [
+      "গতকাল খুশিমনে গাড়ি চালাতাম",
+      "I'd have been happy to drive yesterday"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0599L02U01",
+     "role": "use",
+     "before": [
+      "আমি খুশিমনে গাড়ি চালাতাম।",
+      "I'd have been happy to drive"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0599L02U02",
+     "role": "use",
+     "before": [
+      "আমরা জানি খুশিমনে চালাতাম।",
+      "we know I'd have been happy to"
+     ],
+     "action": [
+      "আমরা জানি আমি খুশিমনে গাড়ি চালাতাম।",
+      "we know I'd have been happy to drive"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0599L02U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল খুশিমনে চালাতাম।",
+      "she said I'd have been happy to"
+     ],
+     "action": [
+      "সে বলেছিল আমি খুশিমনে গাড়ি চালাতাম।",
+      "she said I'd have been happy to drive"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0599L02U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন খুশিমনে চালাতাম।",
+      "my father knows I'd have been happy to"
+     ],
+     "action": [
+      "আমার বাবা জানেন আমি খুশিমনে গাড়ি চালাতাম।",
+      "my father knows I'd have been happy to drive"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0599L02U05",
+     "role": "use",
+     "before": [
+      "আমি জানি খুশিমনে চালাতাম।",
+      "I know I'd have been happy to"
+     ],
+     "action": [
+      "আমি জানি আমি খুশিমনে গাড়ি চালাতাম।",
+      "I know I'd have been happy to drive"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "eng_for_ben:S0599L03U01",
+      "known": "তুমি আমাকে বললে আমি খুশিমনে গাড়ি চালাতাম।",
+      "target": "I'd have been happy to drive if you'd told me",
+      "seed": 599
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0608L03",
+   "verdict": "recut",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'would have been the thing' skips 'sensible' and leaves 'It' untaught. New cut 'it would have been | এটাই হত' (5 syllables) is a contiguous piece of the seed and covers 'It'; 'the sensible thing' stays with S0608L02, taught before it. Precedent eng_for_hin S0608 (one gap-free LEGO). Rows like 'my father knows would have been the thing' are rebuilt.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 608,
+    "known": "এটাই করার বুদ্ধিমানের কাজ হত।",
+    "target": "It would have been the sensible thing to do."
+   },
+   "before": {
+    "known": "এটাই ... কাজ হত",
+    "target": "would have been the thing",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "এটাই হত",
+    "target": "it would have been",
+    "type": "M",
+    "components": [
+     [
+      "এটাই",
+      "it"
+     ],
+     [
+      "হত",
+      "would have been"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0608L03C01",
+     "role": "component",
+     "before": [
+      "এটাই",
+      "it"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0608L03C03",
+     "role": "component",
+     "before": [
+      "হত",
+      "would have been"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0608L03B01",
+     "role": "build",
+     "before": [
+      "এটাই ... কাজ হত",
+      "would have been the thing"
+     ],
+     "action": [
+      "এটাই হত",
+      "it would have been"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0608L03B02",
+     "role": "build",
+     "before": [
+      "এখন এটাই কাজ হত",
+      "would have been the thing now"
+     ],
+     "action": [
+      "এটাই বুদ্ধিমানের কাজ হত",
+      "it would have been the sensible thing"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0608L03B03",
+     "role": "build",
+     "before": [
+      "আজ এটাই কাজ হত",
+      "would have been the thing today"
+     ],
+     "action": [
+      "এটাই করার বুদ্ধিমানের কাজ হত",
+      "it would have been the sensible thing to do"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0608L03U01",
+     "role": "use",
+     "before": [
+      "এটাই করার বুদ্ধিমানের কাজ হত।",
+      "it would have been the sensible thing to do"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0608L03U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন এটাই কাজ হত।",
+      "my father knows would have been the thing"
+     ],
+     "action": [
+      "আমার বাবা জানেন এটাই বুদ্ধিমানের কাজ হত।",
+      "my father knows it would have been the sensible thing"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0608L03U05",
+     "role": "use",
+     "before": [
+      "আমি জানি এটাই কাজ হত।",
+      "I know would have been the thing"
+     ],
+     "action": [
+      "আমি জানি এটাই বুদ্ধিমানের কাজ হত।",
+      "I know it would have been the sensible thing"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_ben:S0608L03U06",
+     "course_code": "eng_for_ben",
+     "seed_number": 608,
+     "lego_index": 3,
+     "known_text": "সে বলেছিল এটাই বুদ্ধিমানের কাজ হত।",
+     "target_text": "she said it would have been the sensible thing",
+     "phrase_role": "use",
+     "position": 12,
+     "word_count": 9,
+     "lego_position": "middle",
+     "lego_count": 1
+    },
+    {
+     "id": "eng_for_ben:S0608L03U07",
+     "course_code": "eng_for_ben",
+     "seed_number": 608,
+     "lego_index": 3,
+     "known_text": "আমরা জানি এটাই করার বুদ্ধিমানের কাজ হত।",
+     "target_text": "we know it would have been the sensible thing to do",
+     "phrase_role": "use",
+     "position": 13,
+     "word_count": 11,
+     "lego_position": "middle",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0615L02",
+   "verdict": "recut",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'I thought you were to say that' skips 'very brave' on the English side and is not something anyone says. Re-cut exactly as eng_for_hin cut the same seed (S0615L01 'you were very brave', S0615L02 'to say that'): this LEGO becomes 'you were very brave | তুমি খুব সাহসী ছিলে'; a NEW LEGO 'to say that | এটা বলতে' is added with its own basket; 'I thought | মনে করতাম' is added NOT-NEW (it is S0247L01). STRUCTURAL: two LEGO inserts, so the apply needs Kai's go. Rows such as 'we know I thought you were to say that' are rebuilt.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 615,
+    "known": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+    "target": "I thought you were very brave to say that."
+   },
+   "before": {
+    "known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+    "target": "I thought you were to say that",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "তুমি খুব সাহসী ছিলে",
+    "target": "you were very brave",
+    "type": "M",
+    "components": [
+     [
+      "তুমি",
+      "you"
+     ],
+     [
+      "খুব সাহসী",
+      "very brave"
+     ],
+     [
+      "ছিলে",
+      "were"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0615L02C01",
+     "role": "component",
+     "before": [
+      "মনে করতাম",
+      "I thought"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0615L02C02",
+     "role": "component",
+     "before": [
+      "তুমি",
+      "you were"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0615L02C04",
+     "role": "component",
+     "before": [
+      "এটা বলতে",
+      "to say that"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0615L02B01",
+     "role": "build",
+     "before": [
+      "মনে করতাম তুমি এটা বলতে ... ছিলে",
+      "I thought you were to say that"
+     ],
+     "action": [
+      "তুমি খুব সাহসী ছিলে",
+      "you were very brave"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0615L02B03",
+     "role": "build",
+     "before": [
+      "আজ মনে করতাম তুমি এটা বলতে",
+      "I thought you were to say that today"
+     ],
+     "action": [
+      "আজ তুমি খুব সাহসী ছিলে",
+      "you were very brave today"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0615L02U01",
+     "role": "use",
+     "before": [
+      "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+      "I thought you were very brave to say that"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_ben:S0615L02U02",
+     "role": "use",
+     "before": [
+      "আমরা জানি মনে করতাম তুমি এটা বলতে।",
+      "we know I thought you were to say that"
+     ],
+     "action": [
+      "আমরা জানি তুমি খুব সাহসী ছিলে।",
+      "we know you were very brave"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0615L02U03",
+     "role": "use",
+     "before": [
+      "সে বলেছিল মনে করতাম তুমি এটা বলতে।",
+      "she said I thought you were to say that"
+     ],
+     "action": [
+      "সে বলেছিল তুমি খুব সাহসী ছিলে।",
+      "she said you were very brave"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0615L02U04",
+     "role": "use",
+     "before": [
+      "আমার বাবা জানেন মনে করতাম তুমি এটা বলতে।",
+      "my father knows I thought you were to say that"
+     ],
+     "action": [
+      "আমার বাবা জানেন তুমি খুব সাহসী ছিলে।",
+      "my father knows you were very brave"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0615L02U05",
+     "role": "use",
+     "before": [
+      "আমি জানি মনে করতাম তুমি এটা বলতে।",
+      "I know I thought you were to say that"
+     ],
+     "action": [
+      "আমি মনে করতাম তুমি খুব সাহসী ছিলে।",
+      "I thought you were very brave"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_ben:S0615L02B04",
+     "course_code": "eng_for_ben",
+     "seed_number": 615,
+     "lego_index": 2,
+     "known_text": "গতকাল তুমি খুব সাহসী ছিলে",
+     "target_text": "you were very brave yesterday",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 5,
+     "lego_position": "start",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "এটা বলতে",
+      "target_text": "to say that",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "এটা",
+        "target": "that"
+       },
+       {
+        "known": "বলতে",
+        "target": "to say"
+       }
+      ]
+     }
+    },
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 615,
+      "lego_index": 4,
+      "known_text": "মনে করতাম",
+      "target_text": "I thought",
+      "type": "M",
+      "is_new": false,
+      "components": [
+       {
+        "known": "মনে করতাম",
+        "target": "I thought"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03B01",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "এটা বলতে",
+      "target_text": "to say that",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 3,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03B02",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "এটা বলতে সাহসী",
+      "target_text": "brave to say that",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 4,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03B03",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "এটা বলতে খুব সাহসী",
+      "target_text": "very brave to say that",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03U01",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "তুমি এটা বলতে খুব সাহসী ছিলে।",
+      "target_text": "you were very brave to say that",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 7,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03U02",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+      "target_text": "I thought you were very brave to say that",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 9,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03U03",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "আমি এটা বলতে চাই।",
+      "target_text": "I want to say that",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 5,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03U04",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "আমি এটা বলতে চাইনি।",
+      "target_text": "I didn't want to say that",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 6,
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_ben:S0615L03U05",
+      "course_code": "eng_for_ben",
+      "seed_number": 615,
+      "lego_index": 3,
+      "known_text": "আমি এটা বলতে চেষ্টা করছি।",
+      "target_text": "I'm trying to say that",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 5,
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0630L01",
+   "verdict": "recut",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: two faults in one LEGO: the prompt has dots, and the English says 'could I have' where the seed says 'Can I have' (L26). The Bengali seed has no word for 'have' (it says 'can I please drink something'), so 'have' cannot sit with 'can I'. Shortest cut: 'can I | আমি কি পারি' (complete Bengali, both sides the seed's words), and S0630L02 takes 'have'. Precedent: eng_for_ben S0119L02 'can I ask'. The 3 rows ('could I have now?') are rebuilt and 5 use rows back-filled.",
+   "closes": [
+    "17",
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 630,
+    "known": "আমি কি দয়া করে কিছু পান করতে পারি?",
+    "target": "Can I have something to drink please?"
+   },
+   "before": {
+    "known": "আমি কি ... পারি",
+    "target": "could I have",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "আমি কি পারি",
+    "target": "can I",
+    "type": "M",
+    "components": [
+     [
+      "আমি",
+      "I"
+     ],
+     [
+      "কি পারি",
+      "can"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0630L01C01",
+     "role": "component",
+     "before": [
+      "আমি",
+      "I"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0630L01C03",
+     "role": "component",
+     "before": [
+      "কি ... পারি",
+      "could have"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0630L01B01",
+     "role": "build",
+     "before": [
+      "আমি কি ... পারি?",
+      "could I have?"
+     ],
+     "action": [
+      "আমি কি পারি?",
+      "can I?"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0630L01B02",
+     "role": "build",
+     "before": [
+      "এখন আমি কি পারি?",
+      "could I have now?"
+     ],
+     "action": [
+      "আমি কি জিজ্ঞেস করতে পারি?",
+      "can I ask?"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0630L01B03",
+     "role": "build",
+     "before": [
+      "আজ আমি কি পারি?",
+      "could I have today?"
+     ],
+     "action": [
+      "আমি কি এখন জিজ্ঞেস করতে পারি?",
+      "can I ask now?"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "eng_for_ben:S0630L01U01",
+     "course_code": "eng_for_ben",
+     "seed_number": 630,
+     "lego_index": 1,
+     "known_text": "আমি কি তোমাকে কিছু জিজ্ঞেস করতে পারি?",
+     "target_text": "can I ask you something?",
+     "phrase_role": "use",
+     "position": 7,
+     "word_count": 5,
+     "lego_position": "start",
+     "lego_count": 1
+    },
+    {
+     "id": "eng_for_ben:S0630L01U02",
+     "course_code": "eng_for_ben",
+     "seed_number": 630,
+     "lego_index": 1,
+     "known_text": "আমি কি এখন যেতে পারি?",
+     "target_text": "can I go now?",
+     "phrase_role": "use",
+     "position": 8,
+     "word_count": 4,
+     "lego_position": "start",
+     "lego_count": 1
+    },
+    {
+     "id": "eng_for_ben:S0630L01U03",
+     "course_code": "eng_for_ben",
+     "seed_number": 630,
+     "lego_index": 1,
+     "known_text": "আমি কি তোমার সাথে কথা বলতে পারি?",
+     "target_text": "can I speak with you?",
+     "phrase_role": "use",
+     "position": 9,
+     "word_count": 5,
+     "lego_position": "start",
+     "lego_count": 1
+    },
+    {
+     "id": "eng_for_ben:S0630L01U04",
+     "course_code": "eng_for_ben",
+     "seed_number": 630,
+     "lego_index": 1,
+     "known_text": "আমি কি তোমাকে সাহায্য করতে পারি?",
+     "target_text": "can I help you?",
+     "phrase_role": "use",
+     "position": 10,
+     "word_count": 4,
+     "lego_position": "start",
+     "lego_count": 1
+    },
+    {
+     "id": "eng_for_ben:S0630L01U05",
+     "course_code": "eng_for_ben",
+     "seed_number": 630,
+     "lego_index": 1,
+     "known_text": "আমি কি আজ চেষ্টা করতে পারি?",
+     "target_text": "can I try today?",
+     "phrase_role": "use",
+     "position": 11,
+     "word_count": 4,
+     "lego_position": "start",
+     "lego_count": 1
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 3,
+    "sample": [
+     {
+      "id": "eng_for_ben:S0630L02U01",
+      "known": "আমি কি দয়া করে কিছু পান করতে পারি?",
+      "target": "could I have something to drink please?",
+      "seed": 630
+     },
+     {
+      "id": "eng_for_ben:S0634L01U06",
+      "known": "আমি কি ওগুলোর একটা পেতে পারি",
+      "target": "could I have one of those",
+      "seed": 634
+     },
+     {
+      "id": "eng_for_ben:S0640L01U06",
+      "known": "আমি কি লাল রঙেরটা পেতে পারি",
+      "target": "could I have the red one",
+      "seed": 640
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0630L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "neighbour of S0630L01: takes the seed's 'have' so every English word of the seed is covered (S3 'every part of the seed is covered by a LEGO'); its seed-sentence row is corrected from 'could I have…' to the seed's 'can I have…'. 7 syllables, kept at 7: 'have' has no Bengali of its own to stand on.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 630,
+    "known": "আমি কি দয়া করে কিছু পান করতে পারি?",
+    "target": "Can I have something to drink please?"
+   },
+   "before": {
+    "known": "দয়া করে কিছু পান করতে",
+    "target": "something to drink please",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "দয়া করে কিছু পান করতে",
+    "target": "have something to drink please",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_ben:S0630L02C01",
+     "role": "component",
+     "before": [
+      "দয়া করে",
+      "please"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0630L02C03",
+     "role": "component",
+     "before": [
+      "কিছু পান করতে",
+      "something to drink"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_ben:S0630L02B01",
+     "role": "build",
+     "before": [
+      "দয়া করে কিছু পান করতে",
+      "something to drink please"
+     ],
+     "action": [
+      "দয়া করে কিছু পান করতে",
+      "have something to drink please"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0630L02B02",
+     "role": "build",
+     "before": [
+      "এখন দয়া করে কিছু পান করতে",
+      "something to drink please now"
+     ],
+     "action": [
+      "এখন দয়া করে কিছু পান করতে",
+      "have something to drink please now"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0630L02B03",
+     "role": "build",
+     "before": [
+      "আজ দয়া করে কিছু পান করতে",
+      "something to drink please today"
+     ],
+     "action": [
+      "আজ দয়া করে কিছু পান করতে",
+      "have something to drink please today"
+     ]
+    },
+    {
+     "id": "eng_for_ben:S0630L02U01",
+     "role": "use",
+     "before": [
+      "আমি কি দয়া করে কিছু পান করতে পারি?",
+      "could I have something to drink please?"
+     ],
+     "action": [
+      "আমি কি দয়া করে কিছু পান করতে পারি?",
+      "can I have something to drink please?"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 1
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0534L02",
+   "set": {
+    "known_text": "চলো বাইরে না যাই"
+   },
+   "expect": {
+    "known_text": "চলো ... বাইরে না যাই",
+    "target_text": "let's not go outside"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0534L02B01",
+   "set": {
+    "known_text": "চলো বাইরে না যাই"
+   },
+   "expect": {
+    "known_text": "চলো ... বাইরে না যাই",
+    "target_text": "let's not go outside"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0547L02",
+   "set": {
+    "known_text": "কারণ সে খেলছিল"
+   },
+   "expect": {
+    "known_text": "কারণ সে ... খেলছিল",
+    "target_text": "because he has been playing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0547L02B01",
+   "set": {
+    "known_text": "কারণ সে খেলছিল"
+   },
+   "expect": {
+    "known_text": "কারণ সে ... খেলছিল",
+    "target_text": "because he has been playing"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0549L02",
+   "set": {
+    "known_text": "আমাকে থাকতে হবে"
+   },
+   "expect": {
+    "known_text": "আমাকে ... থাকতে হবে",
+    "target_text": "I have got to be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0549L02B01",
+   "set": {
+    "known_text": "আমাকে থাকতে হবে"
+   },
+   "expect": {
+    "known_text": "আমাকে ... থাকতে হবে",
+    "target_text": "I have got to be"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0557L02",
+   "set": {
+    "known_text": "চাই তারা না বাজাক"
+   },
+   "expect": {
+    "known_text": "চাই তারা ... না বাজাক",
+    "target_text": "wish they wouldn't play"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0557L02B01",
+   "set": {
+    "known_text": "চাই তারা না বাজাক"
+   },
+   "expect": {
+    "known_text": "চাই তারা ... না বাজাক",
+    "target_text": "wish they wouldn't play"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0589L02",
+   "set": {
+    "known_text": "আমাকে বলল সে এইমাত্র দেখেছে"
+   },
+   "expect": {
+    "known_text": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+    "target_text": "told me she'd just seen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0589L02B01",
+   "set": {
+    "known_text": "আমাকে বলল সে এইমাত্র দেখেছে"
+   },
+   "expect": {
+    "known_text": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+    "target_text": "told me she'd just seen"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0616L01",
+   "set": {
+    "known_text": "তুমি মনে করেছিলে"
+   },
+   "expect": {
+    "known_text": "তুমি ... মনে করেছিলে",
+    "target_text": "you thought"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0616L01B01",
+   "set": {
+    "known_text": "তুমি মনে করেছিলে"
+   },
+   "expect": {
+    "known_text": "তুমি ... মনে করেছিলে",
+    "target_text": "you thought"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0626L02",
+   "set": {
+    "known_text": "না ধন্যবাদ",
+    "is_new": false
+   },
+   "expect": {
+    "known_text": "না, ... ধন্যবাদ",
+    "target_text": "no thank you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0626L02B01",
+   "set": {
+    "known_text": "না ধন্যবাদ"
+   },
+   "expect": {
+    "known_text": "না, ... ধন্যবাদ",
+    "target_text": "no thank you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ben:S0626L02U01",
+   "expect": {
+    "known_text": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+    "target_text": "no I'm not thirsty thank you"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0626L01U06",
+    "course_code": "eng_for_ben",
+    "seed_number": 626,
+    "lego_index": 1,
+    "known_text": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+    "target_text": "no I'm not thirsty thank you",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0599L02",
+   "set": {
+    "known_text": "খুশিমনে গাড়ি চালাতাম",
+    "target_text": "I'd have been happy to drive",
+    "components": [
+     {
+      "known": "খুশিমনে",
+      "target": "happy"
+     },
+     {
+      "known": "গাড়ি চালাতাম",
+      "target": "to drive"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "খুশিমনে ... চালাতাম",
+    "target_text": "I'd have been happy to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02B01",
+   "set": {
+    "known_text": "খুশিমনে গাড়ি চালাতাম",
+    "target_text": "I'd have been happy to drive"
+   },
+   "expect": {
+    "known_text": "খুশিমনে ... চালাতাম",
+    "target_text": "I'd have been happy to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02B02",
+   "set": {
+    "known_text": "আজ খুশিমনে গাড়ি চালাতাম",
+    "target_text": "I'd have been happy to drive today"
+   },
+   "expect": {
+    "known_text": "এখন খুশিমনে চালাতাম",
+    "target_text": "I'd have been happy to now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02B03",
+   "set": {
+    "known_text": "গতকাল খুশিমনে গাড়ি চালাতাম",
+    "target_text": "I'd have been happy to drive yesterday"
+   },
+   "expect": {
+    "known_text": "আজ খুশিমনে চালাতাম",
+    "target_text": "I'd have been happy to today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02U02",
+   "set": {
+    "known_text": "আমরা জানি আমি খুশিমনে গাড়ি চালাতাম।",
+    "target_text": "we know I'd have been happy to drive"
+   },
+   "expect": {
+    "known_text": "আমরা জানি খুশিমনে চালাতাম।",
+    "target_text": "we know I'd have been happy to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02U03",
+   "set": {
+    "known_text": "সে বলেছিল আমি খুশিমনে গাড়ি চালাতাম।",
+    "target_text": "she said I'd have been happy to drive"
+   },
+   "expect": {
+    "known_text": "সে বলেছিল খুশিমনে চালাতাম।",
+    "target_text": "she said I'd have been happy to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02U04",
+   "set": {
+    "known_text": "আমার বাবা জানেন আমি খুশিমনে গাড়ি চালাতাম।",
+    "target_text": "my father knows I'd have been happy to drive"
+   },
+   "expect": {
+    "known_text": "আমার বাবা জানেন খুশিমনে চালাতাম।",
+    "target_text": "my father knows I'd have been happy to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0599L02U05",
+   "set": {
+    "known_text": "আমি জানি আমি খুশিমনে গাড়ি চালাতাম।",
+    "target_text": "I know I'd have been happy to drive"
+   },
+   "expect": {
+    "known_text": "আমি জানি খুশিমনে চালাতাম।",
+    "target_text": "I know I'd have been happy to"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0608L03",
+   "set": {
+    "known_text": "এটাই হত",
+    "target_text": "it would have been",
+    "components": [
+     {
+      "known": "এটাই",
+      "target": "it"
+     },
+     {
+      "known": "হত",
+      "target": "would have been"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "এটাই ... কাজ হত",
+    "target_text": "would have been the thing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0608L03B01",
+   "set": {
+    "known_text": "এটাই হত",
+    "target_text": "it would have been"
+   },
+   "expect": {
+    "known_text": "এটাই ... কাজ হত",
+    "target_text": "would have been the thing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0608L03B02",
+   "set": {
+    "known_text": "এটাই বুদ্ধিমানের কাজ হত",
+    "target_text": "it would have been the sensible thing"
+   },
+   "expect": {
+    "known_text": "এখন এটাই কাজ হত",
+    "target_text": "would have been the thing now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0608L03B03",
+   "set": {
+    "known_text": "এটাই করার বুদ্ধিমানের কাজ হত",
+    "target_text": "it would have been the sensible thing to do"
+   },
+   "expect": {
+    "known_text": "আজ এটাই কাজ হত",
+    "target_text": "would have been the thing today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0608L03U04",
+   "set": {
+    "known_text": "আমার বাবা জানেন এটাই বুদ্ধিমানের কাজ হত।",
+    "target_text": "my father knows it would have been the sensible thing"
+   },
+   "expect": {
+    "known_text": "আমার বাবা জানেন এটাই কাজ হত।",
+    "target_text": "my father knows would have been the thing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0608L03U05",
+   "set": {
+    "known_text": "আমি জানি এটাই বুদ্ধিমানের কাজ হত।",
+    "target_text": "I know it would have been the sensible thing"
+   },
+   "expect": {
+    "known_text": "আমি জানি এটাই কাজ হত।",
+    "target_text": "I know would have been the thing"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0608L03U06",
+    "course_code": "eng_for_ben",
+    "seed_number": 608,
+    "lego_index": 3,
+    "known_text": "সে বলেছিল এটাই বুদ্ধিমানের কাজ হত।",
+    "target_text": "she said it would have been the sensible thing",
+    "phrase_role": "use",
+    "position": 12,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0608L03U07",
+    "course_code": "eng_for_ben",
+    "seed_number": 608,
+    "lego_index": 3,
+    "known_text": "আমরা জানি এটাই করার বুদ্ধিমানের কাজ হত।",
+    "target_text": "we know it would have been the sensible thing to do",
+    "phrase_role": "use",
+    "position": 13,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0615L02",
+   "set": {
+    "known_text": "তুমি খুব সাহসী ছিলে",
+    "target_text": "you were very brave",
+    "components": [
+     {
+      "known": "তুমি",
+      "target": "you"
+     },
+     {
+      "known": "খুব সাহসী",
+      "target": "very brave"
+     },
+     {
+      "known": "ছিলে",
+      "target": "were"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+    "target_text": "I thought you were to say that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0615L02B01",
+   "set": {
+    "known_text": "তুমি খুব সাহসী ছিলে",
+    "target_text": "you were very brave"
+   },
+   "expect": {
+    "known_text": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+    "target_text": "I thought you were to say that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0615L02B03",
+   "set": {
+    "known_text": "আজ তুমি খুব সাহসী ছিলে",
+    "target_text": "you were very brave today"
+   },
+   "expect": {
+    "known_text": "আজ মনে করতাম তুমি এটা বলতে",
+    "target_text": "I thought you were to say that today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0615L02U02",
+   "set": {
+    "known_text": "আমরা জানি তুমি খুব সাহসী ছিলে।",
+    "target_text": "we know you were very brave"
+   },
+   "expect": {
+    "known_text": "আমরা জানি মনে করতাম তুমি এটা বলতে।",
+    "target_text": "we know I thought you were to say that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0615L02U03",
+   "set": {
+    "known_text": "সে বলেছিল তুমি খুব সাহসী ছিলে।",
+    "target_text": "she said you were very brave"
+   },
+   "expect": {
+    "known_text": "সে বলেছিল মনে করতাম তুমি এটা বলতে।",
+    "target_text": "she said I thought you were to say that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0615L02U04",
+   "set": {
+    "known_text": "আমার বাবা জানেন তুমি খুব সাহসী ছিলে।",
+    "target_text": "my father knows you were very brave"
+   },
+   "expect": {
+    "known_text": "আমার বাবা জানেন মনে করতাম তুমি এটা বলতে।",
+    "target_text": "my father knows I thought you were to say that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0615L02U05",
+   "set": {
+    "known_text": "আমি মনে করতাম তুমি খুব সাহসী ছিলে।",
+    "target_text": "I thought you were very brave"
+   },
+   "expect": {
+    "known_text": "আমি জানি মনে করতাম তুমি এটা বলতে।",
+    "target_text": "I know I thought you were to say that"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L02B04",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 2,
+    "known_text": "গতকাল তুমি খুব সাহসী ছিলে",
+    "target_text": "you were very brave yesterday",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 5,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "এটা বলতে",
+    "target_text": "to say that",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "এটা",
+      "target": "that"
+     },
+     {
+      "known": "বলতে",
+      "target": "to say"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 615,
+    "lego_index": 4,
+    "known_text": "মনে করতাম",
+    "target_text": "I thought",
+    "type": "M",
+    "is_new": false,
+    "components": [
+     {
+      "known": "মনে করতাম",
+      "target": "I thought"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03B01",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "এটা বলতে",
+    "target_text": "to say that",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03B02",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "এটা বলতে সাহসী",
+    "target_text": "brave to say that",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03B03",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "এটা বলতে খুব সাহসী",
+    "target_text": "very brave to say that",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03U01",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "তুমি এটা বলতে খুব সাহসী ছিলে।",
+    "target_text": "you were very brave to say that",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03U02",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+    "target_text": "I thought you were very brave to say that",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03U03",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "আমি এটা বলতে চাই।",
+    "target_text": "I want to say that",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03U04",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "আমি এটা বলতে চাইনি।",
+    "target_text": "I didn't want to say that",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0615L03U05",
+    "course_code": "eng_for_ben",
+    "seed_number": 615,
+    "lego_index": 3,
+    "known_text": "আমি এটা বলতে চেষ্টা করছি।",
+    "target_text": "I'm trying to say that",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0630L01",
+   "set": {
+    "known_text": "আমি কি পারি",
+    "target_text": "can I",
+    "components": [
+     {
+      "known": "আমি",
+      "target": "I"
+     },
+     {
+      "known": "কি পারি",
+      "target": "can"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "আমি কি ... পারি",
+    "target_text": "could I have"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L01B01",
+   "set": {
+    "known_text": "আমি কি পারি?",
+    "target_text": "can I?"
+   },
+   "expect": {
+    "known_text": "আমি কি ... পারি?",
+    "target_text": "could I have?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L01B02",
+   "set": {
+    "known_text": "আমি কি জিজ্ঞেস করতে পারি?",
+    "target_text": "can I ask?"
+   },
+   "expect": {
+    "known_text": "এখন আমি কি পারি?",
+    "target_text": "could I have now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L01B03",
+   "set": {
+    "known_text": "আমি কি এখন জিজ্ঞেস করতে পারি?",
+    "target_text": "can I ask now?"
+   },
+   "expect": {
+    "known_text": "আজ আমি কি পারি?",
+    "target_text": "could I have today?"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0630L01U01",
+    "course_code": "eng_for_ben",
+    "seed_number": 630,
+    "lego_index": 1,
+    "known_text": "আমি কি তোমাকে কিছু জিজ্ঞেস করতে পারি?",
+    "target_text": "can I ask you something?",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 5,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0630L01U02",
+    "course_code": "eng_for_ben",
+    "seed_number": 630,
+    "lego_index": 1,
+    "known_text": "আমি কি এখন যেতে পারি?",
+    "target_text": "can I go now?",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 4,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0630L01U03",
+    "course_code": "eng_for_ben",
+    "seed_number": 630,
+    "lego_index": 1,
+    "known_text": "আমি কি তোমার সাথে কথা বলতে পারি?",
+    "target_text": "can I speak with you?",
+    "phrase_role": "use",
+    "position": 9,
+    "word_count": 5,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0630L01U04",
+    "course_code": "eng_for_ben",
+    "seed_number": 630,
+    "lego_index": 1,
+    "known_text": "আমি কি তোমাকে সাহায্য করতে পারি?",
+    "target_text": "can I help you?",
+    "phrase_role": "use",
+    "position": 10,
+    "word_count": 4,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_ben:S0630L01U05",
+    "course_code": "eng_for_ben",
+    "seed_number": 630,
+    "lego_index": 1,
+    "known_text": "আমি কি আজ চেষ্টা করতে পারি?",
+    "target_text": "can I try today?",
+    "phrase_role": "use",
+    "position": 11,
+    "word_count": 4,
+    "lego_position": "start",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0630L02",
+   "set": {
+    "target_text": "have something to drink please"
+   },
+   "expect": {
+    "known_text": "দয়া করে কিছু পান করতে",
+    "target_text": "something to drink please"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L02B01",
+   "set": {
+    "target_text": "have something to drink please"
+   },
+   "expect": {
+    "known_text": "দয়া করে কিছু পান করতে",
+    "target_text": "something to drink please"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L02B02",
+   "set": {
+    "target_text": "have something to drink please now"
+   },
+   "expect": {
+    "known_text": "এখন দয়া করে কিছু পান করতে",
+    "target_text": "something to drink please now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L02B03",
+   "set": {
+    "target_text": "have something to drink please today"
+   },
+   "expect": {
+    "known_text": "আজ দয়া করে কিছু পান করতে",
+    "target_text": "something to drink please today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0630L02U01",
+   "set": {
+    "target_text": "can I have something to drink please?"
+   },
+   "expect": {
+    "known_text": "আমি কি দয়া করে কিছু পান করতে পারি?",
+    "target_text": "could I have something to drink please?"
+   }
+  }
+ ]
+}

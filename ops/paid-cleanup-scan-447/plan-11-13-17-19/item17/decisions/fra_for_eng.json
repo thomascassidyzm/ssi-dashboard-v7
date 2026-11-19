@@ -1,0 +1,28 @@
+{
+ "course": "fra_for_eng",
+ "legos": [
+  {
+   "id": "S0644L02",
+   "verdict": "regloss",
+   "pattern": "not-gapped",
+   "is_new": true,
+   "ack": [
+    "target"
+   ],
+   "basket": {
+    "B01": "keep",
+    "B02": "keep",
+    "B03": "keep",
+    "U01": "keep",
+    "U02": "keep",
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "why": "NOT GAPPED, but wrongly dark. 'could you sir? | pourriez-vous monsieur ?' is complete French on its own (a frame, L32); the scan proposed retiring it. The real fault is its flag: it is marked not-new, yet no earlier LEGO teaches this pair, so its 8 good rows ('could you help me sir?') are never played (P25). L31: a not-new LEGO with no earlier exact pair 'becomes NEW, with an intro and a played basket'. Flip to NEW; it already holds the seed sentence. Cross-family: S0644L01 (the whole seed as one 10-syllable LEGO whose rows drill only 'cela') is items 11/19.",
+   "closes": [
+    "16"
+   ]
+  }
+ ]
+}

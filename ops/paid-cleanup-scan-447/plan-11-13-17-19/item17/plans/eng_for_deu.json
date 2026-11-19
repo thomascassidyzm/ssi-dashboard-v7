@@ -1,0 +1,466 @@
+{
+ "course": "eng_for_deu",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:26Z",
+ "decisions": 2,
+ "verdicts": {
+  "regloss": 2
+ },
+ "touched_seeds": [
+  10,
+  42
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0010L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: 'ob ich kann' is complete German. Precedent eng_for_spa S0010L02 'si puedo | if I can'. The scan suggested growing to 'if I can remember' — not needed, and the shortest cut is preferred.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 10,
+    "known": "Ich bin nicht sicher, ob ich mich an den ganzen Satz erinnern kann.",
+    "target": "I'm not sure if I can remember the whole sentence."
+   },
+   "before": {
+    "known": "ob ich ... kann",
+    "target": "if I can",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "ob ich kann",
+    "target": "if I can",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_deu:S0010L02C01",
+     "role": "component",
+     "before": [
+      "ob",
+      "if"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_deu:S0010L02C02",
+     "role": "component",
+     "before": [
+      "ich",
+      "I"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_deu:S0010L02C03",
+     "role": "component",
+     "before": [
+      "kann",
+      "can"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_deu:S0010L02B01",
+     "role": "build",
+     "before": [
+      "ob ich ... kann",
+      "if I can"
+     ],
+     "action": [
+      "ob ich kann",
+      "if I can"
+     ]
+    },
+    {
+     "id": "eng_for_deu:S0010L02B02",
+     "role": "build",
+     "before": [
+      "ob ich ein bisschen üben kann",
+      "if I can practise a little"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0010L02B03",
+     "role": "build",
+     "before": [
+      "ob ich ein bisschen Englisch sprechen kann",
+      "if I can speak a little English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0010L02U01",
+     "role": "use",
+     "before": [
+      "ich bin mir nicht sicher, ob ich heute ein bisschen üben kann",
+      "I'm not sure if I can practise a little today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0010L02U02",
+     "role": "use",
+     "before": [
+      "ich bin mir nicht sicher, ob ich heute ein bisschen Englisch üben kann",
+      "I'm not sure if I can practise a little English today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0010L02U03",
+     "role": "use",
+     "before": [
+      "ich bin mir nicht sicher, ob ich jetzt mit dir üben kann",
+      "I'm not sure if I can practise with you now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0010L02U04",
+     "role": "use",
+     "before": [
+      "ich bin mir nicht sicher, ob ich jetzt ein bisschen sprechen kann",
+      "I'm not sure if I can speak a little now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0010L02U05",
+     "role": "use",
+     "before": [
+      "ich bin mir nicht sicher, ob ich mit jemand anderem üben kann",
+      "I'm not sure if I can practise with someone else"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 21,
+    "sample": [
+     {
+      "id": "eng_for_deu:S0012L03U06",
+      "known": "ich bin mir nicht sicher, ob ich raten kann",
+      "target": "I'm not sure if I can guess",
+      "seed": 12
+     },
+     {
+      "id": "eng_for_deu:S0062L02B01",
+      "known": "ob ich dir helfen kann",
+      "target": "if I can help you",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02B02",
+      "known": "ich bin mir nicht sicher, ob ich dir helfen kann",
+      "target": "I'm not sure if I can help you",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02B03",
+      "known": "ob ich dir morgen helfen kann",
+      "target": "if I can help you tomorrow",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02U01",
+      "known": "ich bin mir nicht sicher, ob ich dir heute Abend helfen kann",
+      "target": "I'm not sure if I can help you this evening",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02U02",
+      "known": "könntest du mir sagen, ob ich dir helfen kann?",
+      "target": "could you say if I can help you?",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02U03",
+      "known": "ich möchte wissen, ob ich dir helfen kann",
+      "target": "I want to know if I can help you",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02U04",
+      "known": "ich bin mir nicht sicher, ob ich dir helfen kann, weil ich müde bin",
+      "target": "I'm not sure if I can help you because I'm tired",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L02U05",
+      "known": "ich weiß nicht, ob ich dir nächste Woche helfen kann",
+      "target": "I don't know if I can help you next week",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0062L03B02",
+      "known": "ich bin mir nicht sicher, ob ich dir gleichzeitig helfen kann",
+      "target": "I'm not sure if I can help you at the same time",
+      "seed": 62
+     },
+     {
+      "id": "eng_for_deu:S0095L03U04",
+      "known": "ich bin mir nicht sicher, ob ich mit dem nächsten Bus fahren kann",
+      "target": "I'm not sure if I can go on the next bus",
+      "seed": 95
+     },
+     {
+      "id": "eng_for_deu:S0156L02U04",
+      "known": "ich bin mir nicht sicher, ob ich heute Abend ins Restaurant gehen kann",
+      "target": "I'm not sure if I can go to a restaurant tonight",
+      "seed": 156
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0042L03",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: the dots are on the English ('than…'). Rows unchanged.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 42,
+    "known": "Ich fing an, mich besser zu fühlen als gestern Abend.",
+    "target": "I was starting to feel better than last night."
+   },
+   "before": {
+    "known": "als",
+    "target": "than…",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "als",
+    "target": "than",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_deu:S0042L03B01",
+     "role": "build",
+     "before": [
+      "besser als",
+      "better than"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03B02",
+     "role": "build",
+     "before": [
+      "besser als gestern",
+      "better than yesterday"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03B03",
+     "role": "build",
+     "before": [
+      "ich fühle mich besser als gestern",
+      "I feel better than yesterday"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03U01",
+     "role": "use",
+     "before": [
+      "ich fühle mich besser als gestern, wenn ich Englisch spreche",
+      "I feel better than yesterday when I speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03U02",
+     "role": "use",
+     "before": [
+      "ich fühle mich besser als heute Morgen",
+      "I feel better than this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03U03",
+     "role": "use",
+     "before": [
+      "ich fing an, mich besser zu fühlen als gestern",
+      "I was starting to feel better than yesterday"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03U04",
+     "role": "use",
+     "before": [
+      "ich spreche besser Englisch als letzten Monat",
+      "I speak English better than last month"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_deu:S0042L03U05",
+     "role": "use",
+     "before": [
+      "ich fühle mich besser als heute Nachmittag",
+      "I feel better than this afternoon"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 57,
+    "sample": [
+     {
+      "id": "eng_for_deu:S0042L04U01",
+      "known": "ich fühle mich besser als gestern Abend",
+      "target": "I feel better than last night",
+      "seed": 42
+     },
+     {
+      "id": "eng_for_deu:S0114L02B01",
+      "known": "heute schlechter als gestern",
+      "target": "doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02B02",
+      "known": "ich mache es heute schlechter als gestern",
+      "target": "I'm doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02B03",
+      "known": "ich fühle mich, als ob ich heute schlechter bin als gestern",
+      "target": "I feel as if I'm doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02B04",
+      "known": "ich denke, ich mache es heute schlechter als gestern",
+      "target": "I think I'm doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02U01",
+      "known": "ich habe nicht erwartet, heute schlechter zu sein als gestern",
+      "target": "I wasn't expecting to be doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02U02",
+      "known": "du solltest dir keine Sorgen darum machen, heute schlechter zu sein als gestern",
+      "target": "you shouldn't worry about doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02U03",
+      "known": "deshalb fühle ich mich, als ob ich heute schlechter bin als gestern",
+      "target": "that's why I feel as if I'm doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02U04",
+      "known": "ich verstehe nicht, warum ich heute schlechter bin als gestern",
+      "target": "I don't understand why I'm doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0114L02U05",
+      "known": "du solltest dich fragen, ob du heute schlechter bist als gestern",
+      "target": "you should ask yourself if you are doing worse today than yesterday",
+      "seed": 114
+     },
+     {
+      "id": "eng_for_deu:S0117L01U03",
+      "known": "du machst es definitiv besser als gestern",
+      "target": "you are definitely doing better than yesterday",
+      "seed": 117
+     },
+     {
+      "id": "eng_for_deu:S0117L02B02",
+      "known": "besser als beim letzten Mal",
+      "target": "better than last time",
+      "seed": 117
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0010L02",
+   "set": {
+    "known_text": "ob ich kann"
+   },
+   "expect": {
+    "known_text": "ob ich ... kann",
+    "target_text": "if I can"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0010L02B01",
+   "set": {
+    "known_text": "ob ich kann"
+   },
+   "expect": {
+    "known_text": "ob ich ... kann",
+    "target_text": "if I can"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0042L03",
+   "set": {
+    "target_text": "than"
+   },
+   "expect": {
+    "known_text": "als",
+    "target_text": "than…"
+   }
+  }
+ ]
+}

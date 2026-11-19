@@ -1,0 +1,231 @@
+{
+ "course": "eng_for_tel",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:27Z",
+ "decisions": 1,
+ "verdicts": {
+  "grow": 1
+ },
+ "touched_seeds": [
+  614
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0614L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: here the ENGLISH has the hole ('where … live'). L32: 'teach the middle pieces first, then … the whole thing (frame + middle) as one LEGO'. The middle 'your family' is S0614L01, taught just before, so this becomes 'where your family live' (5 syllables). All four use rows already say exactly that.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 614,
+    "known": "అది నీ కుటుంబం నివసించే చోటికి దగ్గర్లో ఉంది.",
+    "target": "It's near where your family live."
+   },
+   "before": {
+    "known": "నివసించే చోటికి",
+    "target": "where ... live",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "నీ కుటుంబం నివసించే చోటికి",
+    "target": "where your family live",
+    "type": "M",
+    "components": [
+     [
+      "నీ కుటుంబం",
+      "your family"
+     ],
+     [
+      "నివసించే",
+      "live"
+     ],
+     [
+      "చోటికి",
+      "where"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tel:S0614L02C01",
+     "role": "component",
+     "before": [
+      "నివసించే",
+      "live"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tel:S0614L02C02",
+     "role": "component",
+     "before": [
+      "చోటికి",
+      "where"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tel:S0614L02B01",
+     "role": "build",
+     "before": [
+      "నివసించే చోటికి",
+      "where ... live"
+     ],
+     "action": [
+      "నీ కుటుంబం నివసించే చోటికి",
+      "where your family live"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0614L02B02",
+     "role": "build",
+     "before": [
+      "నీ కుటుంబం నివసించే చోటికి",
+      "where your family live"
+     ],
+     "action": [
+      "ఇప్పుడు నీ కుటుంబం నివసించే చోటికి",
+      "where your family live now"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0614L02B03",
+     "role": "build",
+     "before": [
+      "నివసించే చోటికి అక్కడ",
+      "over there where ... live"
+     ],
+     "action": [
+      "అక్కడ నీ కుటుంబం నివసించే చోటికి",
+      "over there where your family live"
+     ]
+    },
+    {
+     "id": "eng_for_tel:S0614L02U01",
+     "role": "use",
+     "before": [
+      "నీ కుటుంబం నివసించే చోటు నాకు తెలుసు",
+      "I know where your family live"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tel:S0614L02U02",
+     "role": "use",
+     "before": [
+      "ఇది నీ కుటుంబం నివసించే చోటు",
+      "this is where your family live"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tel:S0614L02U03",
+     "role": "use",
+     "before": [
+      "నీ కుటుంబం నివసించే చోటు నేను చూశాను",
+      "I saw where your family live"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tel:S0614L02U05",
+     "role": "use",
+     "before": [
+      "నీ కుటుంబం నివసించే చోటికి ఒక ఇల్లు",
+      "a house where your family live"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0614L02",
+   "set": {
+    "known_text": "నీ కుటుంబం నివసించే చోటికి",
+    "target_text": "where your family live",
+    "components": [
+     {
+      "known": "నీ కుటుంబం",
+      "target": "your family"
+     },
+     {
+      "known": "నివసించే",
+      "target": "live"
+     },
+     {
+      "known": "చోటికి",
+      "target": "where"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "నివసించే చోటికి",
+    "target_text": "where ... live"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0614L02B01",
+   "set": {
+    "known_text": "నీ కుటుంబం నివసించే చోటికి",
+    "target_text": "where your family live"
+   },
+   "expect": {
+    "known_text": "నివసించే చోటికి",
+    "target_text": "where ... live"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0614L02B02",
+   "set": {
+    "known_text": "ఇప్పుడు నీ కుటుంబం నివసించే చోటికి",
+    "target_text": "where your family live now"
+   },
+   "expect": {
+    "known_text": "నీ కుటుంబం నివసించే చోటికి",
+    "target_text": "where your family live"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0614L02B03",
+   "set": {
+    "known_text": "అక్కడ నీ కుటుంబం నివసించే చోటికి",
+    "target_text": "over there where your family live"
+   },
+   "expect": {
+    "known_text": "నివసించే చోటికి అక్కడ",
+    "target_text": "over there where ... live"
+   }
+  }
+ ]
+}

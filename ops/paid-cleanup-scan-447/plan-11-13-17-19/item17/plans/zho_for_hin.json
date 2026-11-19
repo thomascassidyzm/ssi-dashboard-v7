@@ -1,0 +1,1589 @@
+{
+ "course": "zho_for_hin",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:31Z",
+ "decisions": 5,
+ "verdicts": {
+  "grow": 5
+ },
+ "touched_seeds": [
+  182,
+  395,
+  418,
+  530,
+  570
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0182L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'क्या आपने देखा है | 你有没有看到' (contiguous in the seed, 5 syllables). The scan proposed the same. 看到 has been in use since seed 107. 6 rows about 有没有时间/书 are rewritten to 有没有看到; 3 already had it. NOTE for Kai: S0372L01 teaches 'क्या आपने देखा | 你看到' later — the two Hindi prompts differ only by 'है' (have you seen / did you see).",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 182,
+    "known": "क्या आपने मेरी चाबियाँ कहीं देखी हैं?",
+    "target": "你有没有看到我的钥匙？"
+   },
+   "before": {
+    "known": "क्या ... है",
+    "target": "有没有",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "क्या आपने देखा है",
+    "target": "你有没有看到",
+    "type": "M",
+    "components": [
+     [
+      "आपने",
+      "你"
+     ],
+     [
+      "है या नहीं",
+      "有没有"
+     ],
+     [
+      "देखा",
+      "看到"
+     ]
+    ],
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['देखा', 'है']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "rows_checked_by_hand": [
+    "U02",
+    "U03"
+   ],
+   "basket": [
+    {
+     "id": "zho_for_hin:S0182L01C01",
+     "role": "component",
+     "before": [
+      "है",
+      "有"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0182L01C02",
+     "role": "component",
+     "before": [
+      "नहीं है",
+      "没有"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0182L01B01",
+     "role": "build",
+     "before": [
+      "क्या ... है",
+      "有没有"
+     ],
+     "action": [
+      "क्या आपने देखा है",
+      "你有没有看到"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01B02",
+     "role": "build",
+     "before": [
+      "समय है या नहीं",
+      "有没有时间"
+     ],
+     "action": [
+      "क्या आपने उन्हें देखा है",
+      "你有没有看到他们"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01B03",
+     "role": "build",
+     "before": [
+      "देखा या नहीं",
+      "有没有看到"
+     ],
+     "action": [
+      "क्या आपने मुझे देखा है",
+      "你有没有看到我"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01B04",
+     "role": "build",
+     "before": [
+      "किताब है या नहीं",
+      "有没有书"
+     ],
+     "action": [
+      "क्या आपने यह देखा है",
+      "你有没有看到这个"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01U01",
+     "role": "use",
+     "before": [
+      "क्या आपके पास समय है?",
+      "你有没有时间？"
+     ],
+     "action": [
+      "क्या आपने आज उसे देखा है?",
+      "今天你有没有看到他？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01U02",
+     "role": "use",
+     "before": [
+      "क्या आपके पास चीनी किताब है?",
+      "你有没有中文书？"
+     ],
+     "action": [
+      "क्या आपने मेरी चीनी किताब देखी है?",
+      "你有没有看到我的中文书？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01U03",
+     "role": "use",
+     "before": [
+      "क्या आपने मेरी किताब देखी?",
+      "你有没有看到我的书？"
+     ],
+     "action": [
+      "क्या आपने मेरी किताब देखी है?",
+      "你有没有看到我的书？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01U04",
+     "role": "use",
+     "before": [
+      "क्या आपके पास अभ्यास करने का समय है?",
+      "你有没有时间练习？"
+     ],
+     "action": [
+      "क्या आपने मेरे दोस्त को देखा है?",
+      "你有没有看到我的朋友？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01U05",
+     "role": "use",
+     "before": [
+      "क्या आपने उसे देखा?",
+      "你有没有看到他？"
+     ],
+     "action": [
+      "क्या आपने उसे देखा है?",
+      "你有没有看到他？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0182L01U06",
+     "role": "use",
+     "before": [
+      "क्या आप चीनी सीखते हैं?",
+      "你有没有学中文？"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 2,
+    "sample": [
+     {
+      "id": "zho_for_hin:S0182L02U05",
+      "known": "क्या मेरी चाबी आपके पास है?",
+      "target": "你有没有我的钥匙？",
+      "seed": 182
+     },
+     {
+      "id": "zho_for_hin:S0382L03B03",
+      "known": "क्या आपने पूछा कि वह इसे कहाँ रखना चाहता है",
+      "target": "你有没有问他想把它放在哪里",
+      "seed": 382
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0395L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'हमें बाएँ मुड़ना है | 我们要向左转'. In the seed the place phrase 在下一个路口 sits inside it; the LEGO stands on its own as complete Chinese, which is what L32 asks of a frame ('a LEGO only if it stands on its own as complete target language'), and 向左转 was taught at seed 359. COST: the basket's 7 varied rows (我们要练习, 我们要学习中文…) are rebuilt around 向左转. ALTERNATIVE for Kai, not planned: keep 我们要 and its varied basket, and give the Hindi label a stand-in verb ('हमें करना है') — a stand-in other than 'it' has no ruling behind it.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 395,
+    "known": "हमें अगले मोड़ पर बाएँ मुड़ना है।",
+    "target": "我们要在下一个路口向左转。"
+   },
+   "before": {
+    "known": "हमें ...ना है",
+    "target": "我们要",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "हमें बाएँ मुड़ना है",
+    "target": "我们要向左转",
+    "type": "M",
+    "components": [
+     [
+      "हमें",
+      "我们"
+     ],
+     [
+      "ना है",
+      "要"
+     ],
+     [
+      "बाएँ मुड़ना",
+      "向左转"
+     ]
+    ],
+    "is_new": true
+   },
+   "acknowledged": [
+    "target split in the seed"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": false,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "zho_for_hin:S0395L01C01",
+     "role": "component",
+     "before": [
+      "हमें",
+      "我们"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0395L01C02",
+     "role": "component",
+     "before": [
+      "ना है",
+      "要"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0395L01B01",
+     "role": "build",
+     "before": [
+      "हमें ...ना है",
+      "我们要"
+     ],
+     "action": [
+      "हमें बाएँ मुड़ना है",
+      "我们要向左转"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01B02",
+     "role": "build",
+     "before": [
+      "हमें अभ्यास करना है",
+      "我们要练习"
+     ],
+     "action": [
+      "आज हमें बाएँ मुड़ना है",
+      "今天我们要向左转"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01B03",
+     "role": "build",
+     "before": [
+      "हमें सीखना है",
+      "我们要学习"
+     ],
+     "action": [
+      "अब हमें बाएँ मुड़ना है",
+      "现在我们要向左转"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01U01",
+     "role": "use",
+     "before": [
+      "हमें चीनी सीखनी है",
+      "我们要学习中文"
+     ],
+     "action": [
+      "मुझे लगता है कि हमें बाएँ मुड़ना है",
+      "我觉得我们要向左转"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01U02",
+     "role": "use",
+     "before": [
+      "हमें कुछ कहना है",
+      "我们要说点什么"
+     ],
+     "action": [
+      "उसने कहा कि हमें बाएँ मुड़ना है",
+      "他说我们要向左转"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01U03",
+     "role": "use",
+     "before": [
+      "आज हमें अभ्यास करना है",
+      "今天我们要练习"
+     ],
+     "action": [
+      "वह जानता है कि हमें बाएँ मुड़ना है",
+      "他知道我们要向左转"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01U04",
+     "role": "use",
+     "before": [
+      "हमें उससे पूछना है",
+      "我们要问他"
+     ],
+     "action": [
+      "क्या हमें बाएँ मुड़ना है?",
+      "我们要向左转吗？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0395L01U05",
+     "role": "use",
+     "before": [
+      "हमें तैयार होना है",
+      "我们要准备好"
+     ],
+     "action": [
+      "मुझे नहीं लगता कि हमें बाएँ मुड़ना है",
+      "我不觉得我们要向左转"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0418L01",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the whole seed 'उन्हें समुदाय की सेवा करनी है | 他们需要服务社区' (7 syllables) — NOT to 他们需要服务, which on its own reads 'they need service'. L32: 'the whole thing (frame + middle) is taught as one LEGO after the middle pieces', so the order is swapped to teach 服务社区 first. STRUCTURAL (reorder): needs Kai's go, and Popty refuses a reorder while any learner's progress names these LEGOs; if refused, the fix still stands without the swap. 7 syllables kept: any shorter Chinese piece changes meaning. Basket rebuilt (same alternative as S0395L01).",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 418,
+    "known": "उन्हें समुदाय की सेवा करनी है।",
+    "target": "他们需要服务社区。"
+   },
+   "before": {
+    "known": "उन्हें ...ना है",
+    "target": "他们需要",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "उन्हें समुदाय की सेवा करनी है",
+    "target": "他们需要服务社区",
+    "type": "M",
+    "components": [
+     [
+      "उन्हें",
+      "他们"
+     ],
+     [
+      "ना है",
+      "需要"
+     ],
+     [
+      "समुदाय की सेवा कर",
+      "服务社区"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "zho_for_hin:S0418L01C01",
+     "role": "component",
+     "before": [
+      "उन्हें",
+      "他们"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0418L01C02",
+     "role": "component",
+     "before": [
+      "ना है",
+      "需要"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0418L01B01",
+     "role": "build",
+     "before": [
+      "उन्हें ...ना है",
+      "他们需要"
+     ],
+     "action": [
+      "उन्हें समुदाय की सेवा करनी है",
+      "他们需要服务社区"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01B02",
+     "role": "build",
+     "before": [
+      "उन्हें सीखना है",
+      "他们需要学习"
+     ],
+     "action": [
+      "आज उन्हें समुदाय की सेवा करनी है",
+      "今天他们需要服务社区"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01B03",
+     "role": "build",
+     "before": [
+      "उन्हें अभ्यास करना है",
+      "他们需要练习"
+     ],
+     "action": [
+      "अब उन्हें समुदाय की सेवा करनी है",
+      "现在他们需要服务社区"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01U01",
+     "role": "use",
+     "before": [
+      "उन्हें चीनी सीखनी है",
+      "他们需要学习中文"
+     ],
+     "action": [
+      "मुझे लगता है कि उन्हें समुदाय की सेवा करनी है",
+      "我觉得他们需要服务社区"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01U02",
+     "role": "use",
+     "before": [
+      "उन्हें तैयार होना है",
+      "他们需要准备好"
+     ],
+     "action": [
+      "उसने कहा कि उन्हें समुदाय की सेवा करनी है",
+      "他说他们需要服务社区"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01U03",
+     "role": "use",
+     "before": [
+      "उन्हें उससे पूछना है",
+      "他们需要问他"
+     ],
+     "action": [
+      "वह जानता है कि उन्हें समुदाय की सेवा करनी है",
+      "他知道他们需要服务社区"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01U04",
+     "role": "use",
+     "before": [
+      "आज उन्हें अभ्यास करना है",
+      "今天他们需要练习"
+     ],
+     "action": [
+      "क्या उन्हें समुदाय की सेवा करनी है?",
+      "他们需要服务社区吗？"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0418L01U05",
+     "role": "use",
+     "before": [
+      "उन्हें कुछ कहना है",
+      "他们需要说点什么"
+     ],
+     "action": [
+      "मुझे नहीं लगता कि उन्हें समुदाय की सेवा करनी है",
+      "我不觉得他们需要服务社区"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.reorder",
+     "seed_number": 418,
+     "order": [
+      "S0418L02",
+      "S0418L01"
+     ],
+     "phrases_default": "keep"
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0530L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's verb: 'ताकि मैं गिन सकूँ | 这样我就能数' (contiguous, 6 syllables; 数 is S0530L01, taught first). The scan proposed the same. Rows with other verbs (去, 看, 理解, 做完, 帮你) are rebuilt around 数, keeping their lead-in clauses.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 530,
+    "known": "ताकि मैं उन्हें गिन सकूँ",
+    "target": "这样我就能数了"
+   },
+   "before": {
+    "known": "ताकि मैं ... सकूँ",
+    "target": "这样我就能",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "ताकि मैं गिन सकूँ",
+    "target": "这样我就能数",
+    "type": "M",
+    "components": [
+     [
+      "ताकि",
+      "这样"
+     ],
+     [
+      "मैं",
+      "我"
+     ],
+     [
+      "सकूँ",
+      "就能"
+     ],
+     [
+      "गिन",
+      "数"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "zho_for_hin:S0530L02C01",
+     "role": "component",
+     "before": [
+      "ताकि",
+      "这样"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0530L02C02",
+     "role": "component",
+     "before": [
+      "मैं",
+      "我"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0530L02C03",
+     "role": "component",
+     "before": [
+      "सकूँ",
+      "就能"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0530L02B01",
+     "role": "build",
+     "before": [
+      "ताकि मैं ... सकूँ",
+      "这样我就能"
+     ],
+     "action": [
+      "ताकि मैं गिन सकूँ",
+      "这样我就能数"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02B02",
+     "role": "build",
+     "before": [
+      "ताकि मैं गिन सकूँ",
+      "这样我就能数"
+     ],
+     "action": [
+      "मुझे बताइए ताकि मैं गिन सकूँ",
+      "告诉我，这样我就能数"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02B03",
+     "role": "build",
+     "before": [
+      "ताकि मैं जा सकूँ",
+      "这样我就能去"
+     ],
+     "action": [
+      "इसे यहाँ रखिए ताकि मैं गिन सकूँ",
+      "放在这里，这样我就能数"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02B04",
+     "role": "build",
+     "before": [
+      "ताकि मैं देख सकूँ",
+      "这样我就能看"
+     ],
+     "action": [
+      "मुझे थोड़ा समय दीजिए ताकि मैं गिन सकूँ",
+      "给我一点时间，这样我就能数"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02U01",
+     "role": "use",
+     "before": [
+      "ताकि मैं उन्हें गिन सकूँ",
+      "这样我就能数了"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_hin:S0530L02U02",
+     "role": "use",
+     "before": [
+      "मुझे बताइए ताकि मैं समझ सकूँ",
+      "告诉我，这样我就能理解"
+     ],
+     "action": [
+      "मुझे बताइए ताकि मैं उन्हें गिन सकूँ",
+      "告诉我，这样我就能数了"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02U03",
+     "role": "use",
+     "before": [
+      "इसे यहाँ रखिए ताकि मैं देख सकूँ",
+      "放在这里，这样我就能看"
+     ],
+     "action": [
+      "इसे यहाँ रखिए ताकि मैं उन्हें गिन सकूँ",
+      "放在这里，这样我就能数了"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02U04",
+     "role": "use",
+     "before": [
+      "मुझे थोड़ा समय दीजिए ताकि मैं ख़त्म कर सकूँ",
+      "给我一点时间，这样我就能做完"
+     ],
+     "action": [
+      "मुझे थोड़ा समय दीजिए ताकि मैं उन्हें गिन सकूँ",
+      "给我一点时间，这样我就能数了"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0530L02U05",
+     "role": "use",
+     "before": [
+      "मुझे बताइए ताकि मैं आपकी मदद कर सकूँ",
+      "告诉我，这样我就能帮你"
+     ],
+     "action": [
+      "मेरी मदद कीजिए ताकि मैं गिन सकूँ",
+      "帮我，这样我就能数"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0570L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: the Chinese piece is fine on its own; the HINDI prompt cannot be said without the word in the hole. Grown to the seed's noun: 'अपनी टिकट के लिए | 为你的票' (contiguous, 4 syllables; 票 is S0570L01, taught first). The scan proposed the same. 5 rows already say 为你的票; 4 about 工作/家 are rewritten.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 570,
+    "known": "आप अपनी टिकट के लिए कितना भुगतान करने को तैयार हैं?",
+    "target": "你愿意为你的票付多少钱？"
+   },
+   "before": {
+    "known": "अपनी ... के लिए",
+    "target": "为你的",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "अपनी टिकट के लिए",
+    "target": "为你的票",
+    "type": "M",
+    "components": [
+     [
+      "के लिए",
+      "为"
+     ],
+     [
+      "अपनी",
+      "你的"
+     ],
+     [
+      "टिकट",
+      "票"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "rows_checked_by_hand": [
+    "U02",
+    "U04"
+   ],
+   "basket": [
+    {
+     "id": "zho_for_hin:S0570L02C01",
+     "role": "component",
+     "before": [
+      "के लिए",
+      "为"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0570L02C02",
+     "role": "component",
+     "before": [
+      "अपनी",
+      "你的"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_hin:S0570L02B01",
+     "role": "build",
+     "before": [
+      "अपनी ... के लिए",
+      "为你的"
+     ],
+     "action": [
+      "अपनी टिकट के लिए",
+      "为你的票"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0570L02B02",
+     "role": "build",
+     "before": [
+      "अपनी टिकट के लिए",
+      "为你的票"
+     ],
+     "action": [
+      "अपनी टिकट के लिए भुगतान",
+      "为你的票付钱"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0570L02B03",
+     "role": "build",
+     "before": [
+      "अपने काम के लिए",
+      "为你的工作"
+     ],
+     "action": [
+      "अपनी टिकट के लिए कितना",
+      "为你的票付多少钱"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0570L02B04",
+     "role": "build",
+     "before": [
+      "अपने घर के लिए",
+      "为你的家"
+     ],
+     "action": [
+      "अपनी टिकट के लिए काम",
+      "为你的票工作"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0570L02U01",
+     "role": "use",
+     "before": [
+      "आप अपनी टिकट के लिए कितना भुगतान करेंगे?",
+      "你愿意为你的票付多少钱？"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_hin:S0570L02U02",
+     "role": "use",
+     "before": [
+      "मैं आपके काम के लिए भुगतान करूँगा",
+      "我为你的工作付钱"
+     ],
+     "action": [
+      "मैं आपकी टिकट के लिए भुगतान करूँगा",
+      "我为你的票付钱"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0570L02U03",
+     "role": "use",
+     "before": [
+      "क्या आप अपनी टिकट के लिए भुगतान करेंगे?",
+      "你为你的票付钱吗？"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_hin:S0570L02U04",
+     "role": "use",
+     "before": [
+      "मैं आपके घर के लिए काम करता हूँ",
+      "我为你的家工作"
+     ],
+     "action": [
+      "मैं आपकी टिकट के लिए काम करता हूँ",
+      "我为你的票工作"
+     ]
+    },
+    {
+     "id": "zho_for_hin:S0570L02U05",
+     "role": "use",
+     "before": [
+      "वे आपकी टिकट के लिए भुगतान करेंगे",
+      "他们为你的票付钱"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0182L01",
+   "set": {
+    "known_text": "क्या आपने देखा है",
+    "target_text": "你有没有看到",
+    "components": [
+     {
+      "known": "आपने",
+      "target": "你"
+     },
+     {
+      "known": "है या नहीं",
+      "target": "有没有"
+     },
+     {
+      "known": "देखा",
+      "target": "看到"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "क्या ... है",
+    "target_text": "有没有"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01B01",
+   "set": {
+    "known_text": "क्या आपने देखा है",
+    "target_text": "你有没有看到"
+   },
+   "expect": {
+    "known_text": "क्या ... है",
+    "target_text": "有没有"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01B02",
+   "set": {
+    "known_text": "क्या आपने उन्हें देखा है",
+    "target_text": "你有没有看到他们"
+   },
+   "expect": {
+    "known_text": "समय है या नहीं",
+    "target_text": "有没有时间"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01B03",
+   "set": {
+    "known_text": "क्या आपने मुझे देखा है",
+    "target_text": "你有没有看到我"
+   },
+   "expect": {
+    "known_text": "देखा या नहीं",
+    "target_text": "有没有看到"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01B04",
+   "set": {
+    "known_text": "क्या आपने यह देखा है",
+    "target_text": "你有没有看到这个"
+   },
+   "expect": {
+    "known_text": "किताब है या नहीं",
+    "target_text": "有没有书"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01U01",
+   "set": {
+    "known_text": "क्या आपने आज उसे देखा है?",
+    "target_text": "今天你有没有看到他？"
+   },
+   "expect": {
+    "known_text": "क्या आपके पास समय है?",
+    "target_text": "你有没有时间？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01U02",
+   "set": {
+    "known_text": "क्या आपने मेरी चीनी किताब देखी है?",
+    "target_text": "你有没有看到我的中文书？"
+   },
+   "expect": {
+    "known_text": "क्या आपके पास चीनी किताब है?",
+    "target_text": "你有没有中文书？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01U03",
+   "set": {
+    "known_text": "क्या आपने मेरी किताब देखी है?"
+   },
+   "expect": {
+    "known_text": "क्या आपने मेरी किताब देखी?",
+    "target_text": "你有没有看到我的书？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01U04",
+   "set": {
+    "known_text": "क्या आपने मेरे दोस्त को देखा है?",
+    "target_text": "你有没有看到我的朋友？"
+   },
+   "expect": {
+    "known_text": "क्या आपके पास अभ्यास करने का समय है?",
+    "target_text": "你有没有时间练习？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0182L01U05",
+   "set": {
+    "known_text": "क्या आपने उसे देखा है?"
+   },
+   "expect": {
+    "known_text": "क्या आपने उसे देखा?",
+    "target_text": "你有没有看到他？"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_hin:S0182L01U06",
+   "expect": {
+    "known_text": "क्या आप चीनी सीखते हैं?",
+    "target_text": "你有没有学中文？"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0395L01",
+   "set": {
+    "known_text": "हमें बाएँ मुड़ना है",
+    "target_text": "我们要向左转",
+    "components": [
+     {
+      "known": "हमें",
+      "target": "我们"
+     },
+     {
+      "known": "ना है",
+      "target": "要"
+     },
+     {
+      "known": "बाएँ मुड़ना",
+      "target": "向左转"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "हमें ...ना है",
+    "target_text": "我们要"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01B01",
+   "set": {
+    "known_text": "हमें बाएँ मुड़ना है",
+    "target_text": "我们要向左转"
+   },
+   "expect": {
+    "known_text": "हमें ...ना है",
+    "target_text": "我们要"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01B02",
+   "set": {
+    "known_text": "आज हमें बाएँ मुड़ना है",
+    "target_text": "今天我们要向左转"
+   },
+   "expect": {
+    "known_text": "हमें अभ्यास करना है",
+    "target_text": "我们要练习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01B03",
+   "set": {
+    "known_text": "अब हमें बाएँ मुड़ना है",
+    "target_text": "现在我们要向左转"
+   },
+   "expect": {
+    "known_text": "हमें सीखना है",
+    "target_text": "我们要学习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01U01",
+   "set": {
+    "known_text": "मुझे लगता है कि हमें बाएँ मुड़ना है",
+    "target_text": "我觉得我们要向左转"
+   },
+   "expect": {
+    "known_text": "हमें चीनी सीखनी है",
+    "target_text": "我们要学习中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01U02",
+   "set": {
+    "known_text": "उसने कहा कि हमें बाएँ मुड़ना है",
+    "target_text": "他说我们要向左转"
+   },
+   "expect": {
+    "known_text": "हमें कुछ कहना है",
+    "target_text": "我们要说点什么"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01U03",
+   "set": {
+    "known_text": "वह जानता है कि हमें बाएँ मुड़ना है",
+    "target_text": "他知道我们要向左转"
+   },
+   "expect": {
+    "known_text": "आज हमें अभ्यास करना है",
+    "target_text": "今天我们要练习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01U04",
+   "set": {
+    "known_text": "क्या हमें बाएँ मुड़ना है?",
+    "target_text": "我们要向左转吗？"
+   },
+   "expect": {
+    "known_text": "हमें उससे पूछना है",
+    "target_text": "我们要问他"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0395L01U05",
+   "set": {
+    "known_text": "मुझे नहीं लगता कि हमें बाएँ मुड़ना है",
+    "target_text": "我不觉得我们要向左转"
+   },
+   "expect": {
+    "known_text": "हमें तैयार होना है",
+    "target_text": "我们要准备好"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0418L01",
+   "set": {
+    "known_text": "उन्हें समुदाय की सेवा करनी है",
+    "target_text": "他们需要服务社区",
+    "components": [
+     {
+      "known": "उन्हें",
+      "target": "他们"
+     },
+     {
+      "known": "ना है",
+      "target": "需要"
+     },
+     {
+      "known": "समुदाय की सेवा कर",
+      "target": "服务社区"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "उन्हें ...ना है",
+    "target_text": "他们需要"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01B01",
+   "set": {
+    "known_text": "उन्हें समुदाय की सेवा करनी है",
+    "target_text": "他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें ...ना है",
+    "target_text": "他们需要"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01B02",
+   "set": {
+    "known_text": "आज उन्हें समुदाय की सेवा करनी है",
+    "target_text": "今天他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें सीखना है",
+    "target_text": "他们需要学习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01B03",
+   "set": {
+    "known_text": "अब उन्हें समुदाय की सेवा करनी है",
+    "target_text": "现在他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें अभ्यास करना है",
+    "target_text": "他们需要练习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01U01",
+   "set": {
+    "known_text": "मुझे लगता है कि उन्हें समुदाय की सेवा करनी है",
+    "target_text": "我觉得他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें चीनी सीखनी है",
+    "target_text": "他们需要学习中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01U02",
+   "set": {
+    "known_text": "उसने कहा कि उन्हें समुदाय की सेवा करनी है",
+    "target_text": "他说他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें तैयार होना है",
+    "target_text": "他们需要准备好"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01U03",
+   "set": {
+    "known_text": "वह जानता है कि उन्हें समुदाय की सेवा करनी है",
+    "target_text": "他知道他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें उससे पूछना है",
+    "target_text": "他们需要问他"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01U04",
+   "set": {
+    "known_text": "क्या उन्हें समुदाय की सेवा करनी है?",
+    "target_text": "他们需要服务社区吗？"
+   },
+   "expect": {
+    "known_text": "आज उन्हें अभ्यास करना है",
+    "target_text": "今天他们需要练习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0418L01U05",
+   "set": {
+    "known_text": "मुझे नहीं लगता कि उन्हें समुदाय की सेवा करनी है",
+    "target_text": "我不觉得他们需要服务社区"
+   },
+   "expect": {
+    "known_text": "उन्हें कुछ कहना है",
+    "target_text": "他们需要说点什么"
+   }
+  },
+  {
+   "op": "lego.reorder",
+   "seed_number": 418,
+   "order": [
+    "S0418L02",
+    "S0418L01"
+   ],
+   "phrases_default": "keep"
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0530L02",
+   "set": {
+    "known_text": "ताकि मैं गिन सकूँ",
+    "target_text": "这样我就能数",
+    "components": [
+     {
+      "known": "ताकि",
+      "target": "这样"
+     },
+     {
+      "known": "मैं",
+      "target": "我"
+     },
+     {
+      "known": "सकूँ",
+      "target": "就能"
+     },
+     {
+      "known": "गिन",
+      "target": "数"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "ताकि मैं ... सकूँ",
+    "target_text": "这样我就能"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02B01",
+   "set": {
+    "known_text": "ताकि मैं गिन सकूँ",
+    "target_text": "这样我就能数"
+   },
+   "expect": {
+    "known_text": "ताकि मैं ... सकूँ",
+    "target_text": "这样我就能"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02B02",
+   "set": {
+    "known_text": "मुझे बताइए ताकि मैं गिन सकूँ",
+    "target_text": "告诉我，这样我就能数"
+   },
+   "expect": {
+    "known_text": "ताकि मैं गिन सकूँ",
+    "target_text": "这样我就能数"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02B03",
+   "set": {
+    "known_text": "इसे यहाँ रखिए ताकि मैं गिन सकूँ",
+    "target_text": "放在这里，这样我就能数"
+   },
+   "expect": {
+    "known_text": "ताकि मैं जा सकूँ",
+    "target_text": "这样我就能去"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02B04",
+   "set": {
+    "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं गिन सकूँ",
+    "target_text": "给我一点时间，这样我就能数"
+   },
+   "expect": {
+    "known_text": "ताकि मैं देख सकूँ",
+    "target_text": "这样我就能看"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02U02",
+   "set": {
+    "known_text": "मुझे बताइए ताकि मैं उन्हें गिन सकूँ",
+    "target_text": "告诉我，这样我就能数了"
+   },
+   "expect": {
+    "known_text": "मुझे बताइए ताकि मैं समझ सकूँ",
+    "target_text": "告诉我，这样我就能理解"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02U03",
+   "set": {
+    "known_text": "इसे यहाँ रखिए ताकि मैं उन्हें गिन सकूँ",
+    "target_text": "放在这里，这样我就能数了"
+   },
+   "expect": {
+    "known_text": "इसे यहाँ रखिए ताकि मैं देख सकूँ",
+    "target_text": "放在这里，这样我就能看"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02U04",
+   "set": {
+    "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं उन्हें गिन सकूँ",
+    "target_text": "给我一点时间，这样我就能数了"
+   },
+   "expect": {
+    "known_text": "मुझे थोड़ा समय दीजिए ताकि मैं ख़त्म कर सकूँ",
+    "target_text": "给我一点时间，这样我就能做完"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0530L02U05",
+   "set": {
+    "known_text": "मेरी मदद कीजिए ताकि मैं गिन सकूँ",
+    "target_text": "帮我，这样我就能数"
+   },
+   "expect": {
+    "known_text": "मुझे बताइए ताकि मैं आपकी मदद कर सकूँ",
+    "target_text": "告诉我，这样我就能帮你"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0570L02",
+   "set": {
+    "known_text": "अपनी टिकट के लिए",
+    "target_text": "为你的票",
+    "components": [
+     {
+      "known": "के लिए",
+      "target": "为"
+     },
+     {
+      "known": "अपनी",
+      "target": "你的"
+     },
+     {
+      "known": "टिकट",
+      "target": "票"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "अपनी ... के लिए",
+    "target_text": "为你的"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0570L02B01",
+   "set": {
+    "known_text": "अपनी टिकट के लिए",
+    "target_text": "为你的票"
+   },
+   "expect": {
+    "known_text": "अपनी ... के लिए",
+    "target_text": "为你的"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0570L02B02",
+   "set": {
+    "known_text": "अपनी टिकट के लिए भुगतान",
+    "target_text": "为你的票付钱"
+   },
+   "expect": {
+    "known_text": "अपनी टिकट के लिए",
+    "target_text": "为你的票"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0570L02B03",
+   "set": {
+    "known_text": "अपनी टिकट के लिए कितना",
+    "target_text": "为你的票付多少钱"
+   },
+   "expect": {
+    "known_text": "अपने काम के लिए",
+    "target_text": "为你的工作"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0570L02B04",
+   "set": {
+    "known_text": "अपनी टिकट के लिए काम",
+    "target_text": "为你的票工作"
+   },
+   "expect": {
+    "known_text": "अपने घर के लिए",
+    "target_text": "为你的家"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0570L02U02",
+   "set": {
+    "known_text": "मैं आपकी टिकट के लिए भुगतान करूँगा",
+    "target_text": "我为你的票付钱"
+   },
+   "expect": {
+    "known_text": "मैं आपके काम के लिए भुगतान करूँगा",
+    "target_text": "我为你的工作付钱"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_hin:S0570L02U04",
+   "set": {
+    "known_text": "मैं आपकी टिकट के लिए काम करता हूँ",
+    "target_text": "我为你的票工作"
+   },
+   "expect": {
+    "known_text": "मैं आपके घर के लिए काम करता हूँ",
+    "target_text": "我为你的家工作"
+   }
+  }
+ ]
+}

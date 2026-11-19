@@ -1,0 +1,33 @@
+{
+ "course": "eng_for_spa",
+ "legos": [
+  {
+   "id": "S0014L02",
+   "verdict": "regloss",
+   "pattern": "A",
+   "known": "¿hablas?",
+   "target": "do you speak?",
+   "ack": [
+    "known"
+   ],
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: dots on both sides. Precedent eng_for_deu S0014L01 'sprichst du | do you speak', eng_for_ita S0014L02 'parli? | do you speak?'. Rows unchanged."
+  },
+  {
+   "id": "S0032L01",
+   "verdict": "regloss",
+   "pattern": "A",
+   "known": "¿querías?",
+   "target": "did you want?",
+   "ack": [
+    "known"
+   ],
+   "basket": {
+    "B01": [
+     "¿querías?",
+     "did you want?"
+    ]
+   },
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: dots on both sides. Precedent eng_for_deu S0032L01 'wolltest du | did you want'. Rows unchanged."
+  }
+ ]
+}

@@ -1,0 +1,562 @@
+{
+ "course": "eng_for_zho",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:28Z",
+ "decisions": 4,
+ "verdicts": {
+  "regloss": 3,
+  "kai": 1
+ },
+ "touched_seeds": [
+  32,
+  42,
+  77
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0032L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: '你想吗' is complete Chinese; every row already has it split round its verb (K49: words may sit inside a LEGO).",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 32,
+    "known": "你想给我看什么东西吗？",
+    "target": "Did you want to show me something?"
+   },
+   "before": {
+    "known": "你想...吗",
+    "target": "Did you want",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "你想吗",
+    "target": "Did you want",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['你想吗']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0032L02C01",
+     "role": "component",
+     "before": [
+      "你",
+      "Did you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0032L02C02",
+     "role": "component",
+     "before": [
+      "想",
+      "Want"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0032L02B01",
+     "role": "build",
+     "before": [
+      "你想...吗",
+      "Did you want?"
+     ],
+     "action": [
+      "你想吗",
+      "Did you want?"
+     ]
+    },
+    {
+     "id": "eng_for_zho:S0032L02B02",
+     "role": "build",
+     "before": [
+      "你想回来吗",
+      "Did you want to come back?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02B03",
+     "role": "build",
+     "before": [
+      "你想学英语吗",
+      "Did you want to learn English?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02B04",
+     "role": "build",
+     "before": [
+      "你想给我看吗",
+      "Did you want to show me?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02U01",
+     "role": "use",
+     "before": [
+      "你想说英语吗",
+      "Did you want to speak English?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02U02",
+     "role": "use",
+     "before": [
+      "你想给我看什么东西吗",
+      "Did you want to show me something?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02U03",
+     "role": "use",
+     "before": [
+      "你想和我说英语吗",
+      "Did you want to speak English with me?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02U04",
+     "role": "use",
+     "before": [
+      "你昨天想和我说话吗",
+      "Did you want to speak with me yesterday?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0032L02U05",
+     "role": "use",
+     "before": [
+      "你想今晚回来吗",
+      "Did you want to come back tonight?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0042L03",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: the seed's final 了 belongs to 好了, not to this piece; '我开始觉得' is contiguous and complete.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 42,
+    "known": "我开始觉得比昨晚好了",
+    "target": "I was starting to feel better than last night"
+   },
+   "before": {
+    "known": "我开始觉得...了",
+    "target": "I was starting to feel",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "我开始觉得",
+    "target": "I was starting to feel",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0042L03C01",
+     "role": "component",
+     "before": [
+      "我",
+      "I was"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0042L03C02",
+     "role": "component",
+     "before": [
+      "开始觉得",
+      "Starting to feel"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0042L03B01",
+     "role": "build",
+     "before": [
+      "我开始觉得...了",
+      "I was starting to feel"
+     ],
+     "action": [
+      "我开始觉得",
+      "I was starting to feel"
+     ]
+    },
+    {
+     "id": "eng_for_zho:S0042L03B02",
+     "role": "build",
+     "before": [
+      "我开始觉得好了",
+      "I was starting to feel better"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03B03",
+     "role": "build",
+     "before": [
+      "我开始觉得累了",
+      "I was starting to feel tired"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03B04",
+     "role": "build",
+     "before": [
+      "我开始觉得还好了",
+      "I was starting to feel okay"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03U01",
+     "role": "use",
+     "before": [
+      "我开始觉得比昨晚好了",
+      "I was starting to feel better than last night"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03U02",
+     "role": "use",
+     "before": [
+      "我开始觉得累了但是我想说英语",
+      "I was starting to feel tired but I wanted to speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03U03",
+     "role": "use",
+     "before": [
+      "因为我开始觉得好了",
+      "Because I was starting to feel better"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03U04",
+     "role": "use",
+     "before": [
+      "我昨晚开始觉得累了",
+      "I was starting to feel tired last night"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0042L03U05",
+     "role": "use",
+     "before": [
+      "我开始觉得好了比今天早上",
+      "I was starting to feel better than this morning"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0077L02",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: '对速度感到惊讶' ('surprised at the speed') is complete Chinese. NOTE, not fixed here: the rows' Chinese prompts use a different wording (惊讶于…这么快) from the LEGO's own; that is the eng_for_zho known-side read (decision D2 on the combined list).",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 77,
+    "known": "我对自己开始理解的速度感到惊讶",
+    "target": "I'm surprised at how quickly I'm starting to understand"
+   },
+   "before": {
+    "known": "对...速度感到惊讶",
+    "target": "Surprised at how quickly",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "对速度感到惊讶",
+    "target": "Surprised at how quickly",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['对速度感到惊讶']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_zho:S0077L02C01",
+     "role": "component",
+     "before": [
+      "惊讶",
+      "Surprised"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0077L02C02",
+     "role": "component",
+     "before": [
+      "速度",
+      "How quickly"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_zho:S0077L02B01",
+     "role": "build",
+     "before": [
+      "对...速度感到惊讶",
+      "Surprised at how quickly"
+     ],
+     "action": [
+      "对速度感到惊讶",
+      "Surprised at how quickly"
+     ]
+    },
+    {
+     "id": "eng_for_zho:S0077L02B02",
+     "role": "build",
+     "before": [
+      "惊讶于我学得这么快",
+      "Surprised at how quickly I'm learning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02B03",
+     "role": "build",
+     "before": [
+      "惊讶于你说得这么快",
+      "Surprised at how quickly you speak"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02B04",
+     "role": "build",
+     "before": [
+      "惊讶于我进步得这么快",
+      "Surprised at how quickly I'm doing"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02U01",
+     "role": "use",
+     "before": [
+      "我很惊讶自己开始理解得这么快",
+      "I'm surprised at how quickly I'm starting to understand"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02U02",
+     "role": "use",
+     "before": [
+      "我很惊讶我学得这么快",
+      "I'm surprised at how quickly I'm learning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02U03",
+     "role": "use",
+     "before": [
+      "我很惊讶你英语说得这么快",
+      "I'm surprised at how quickly you speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02U04",
+     "role": "use",
+     "before": [
+      "我不惊讶你进步得这么快",
+      "I'm not surprised at how quickly you're doing very well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_zho:S0077L02U05",
+     "role": "use",
+     "before": [
+      "你惊讶我能用英语说些东西吗？",
+      "Are you surprised at how quickly I can say something in English?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0138L01",
+   "verdict": "kai",
+   "pov": "hold",
+   "pattern": null,
+   "why": "HOLD. '这就是...的地方 | This was where' — Chinese puts the whole clause in the hole, and neither '这就是的地方' nor '这就是地方' is Chinese. The whole clause is 10 English syllables, over the cap. Options: (1) prompt '这就是' alone for 'This was where' (complete Chinese, but it reads as 'this is', and the rows still carry …的地方); (2) leave until the eng_for_zho known-side read (D2). Recommended (1). Kai's call because either way the prompt and the answer do not say quite the same thing.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 138,
+    "known": "这就是我朋友想和我们见面的地方",
+    "target": "This was where my friend wanted to meet us"
+   },
+   "before": {
+    "known": "这就是...的地方",
+    "target": "This was where",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0032L02",
+   "set": {
+    "known_text": "你想吗"
+   },
+   "expect": {
+    "known_text": "你想...吗",
+    "target_text": "Did you want"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0032L02B01",
+   "set": {
+    "known_text": "你想吗"
+   },
+   "expect": {
+    "known_text": "你想...吗",
+    "target_text": "Did you want?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0042L03",
+   "set": {
+    "known_text": "我开始觉得"
+   },
+   "expect": {
+    "known_text": "我开始觉得...了",
+    "target_text": "I was starting to feel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0042L03B01",
+   "set": {
+    "known_text": "我开始觉得"
+   },
+   "expect": {
+    "known_text": "我开始觉得...了",
+    "target_text": "I was starting to feel"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0077L02",
+   "set": {
+    "known_text": "对速度感到惊讶"
+   },
+   "expect": {
+    "known_text": "对...速度感到惊讶",
+    "target_text": "Surprised at how quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0077L02B01",
+   "set": {
+    "known_text": "对速度感到惊讶"
+   },
+   "expect": {
+    "known_text": "对...速度感到惊讶",
+    "target_text": "Surprised at how quickly"
+   }
+  }
+ ]
+}

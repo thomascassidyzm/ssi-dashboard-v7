@@ -1,0 +1,453 @@
+{
+ "course": "eng_for_mar",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:26Z",
+ "decisions": 2,
+ "verdicts": {
+  "grow": 1,
+  "recut": 1
+ },
+ "touched_seeds": [
+  14,
+  485
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0014L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: Marathi 'तुम्ही … का' without a verb reads 'why you?'. Precedent: eng_for_hin S0014L02 'क्या आप बोलते हैं | do you speak', eng_for_deu S0014L01 'sprichst du | do you speak'. Every other row of the basket already says 'do you speak …', so all rows stay.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 14,
+    "known": "तुम्ही दिवसभर इंग्रजी बोलता का?",
+    "target": "Do you speak English all day?"
+   },
+   "before": {
+    "known": "तुम्ही ... का",
+    "target": "do you",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "तुम्ही बोलता का",
+    "target": "do you speak",
+    "type": "M",
+    "components": [
+     [
+      "तुम्ही",
+      "you"
+     ],
+     [
+      "बोलता",
+      "speak"
+     ],
+     [
+      "का",
+      "do"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_mar:S0014L02C01",
+     "role": "component",
+     "before": [
+      "तुम्ही",
+      "you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_mar:S0014L02C02",
+     "role": "component",
+     "before": [
+      "का",
+      "do"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_mar:S0014L02B01",
+     "role": "build",
+     "before": [
+      "तुम्ही ... का",
+      "do you"
+     ],
+     "action": [
+      "तुम्ही बोलता का",
+      "do you speak"
+     ]
+    },
+    {
+     "id": "eng_for_mar:S0014L02B02",
+     "role": "build",
+     "before": [
+      "तुम्ही दिवसभर बोलता का?",
+      "do you speak all day?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0014L02B03",
+     "role": "build",
+     "before": [
+      "तुम्ही इंग्रजी बोलता का?",
+      "do you speak English?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0014L02U01",
+     "role": "use",
+     "before": [
+      "तुम्ही दिवसभर इंग्रजी बोलता का",
+      "do you speak English all day?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0014L02U02",
+     "role": "use",
+     "before": [
+      "तुम्ही शक्य तितक्या वेळा इंग्रजी बोलता का",
+      "do you speak English as often as possible?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0014L02U03",
+     "role": "use",
+     "before": [
+      "तुम्ही आज इंग्रजी बोलता का",
+      "do you speak English today?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0014L02U05",
+     "role": "use",
+     "before": [
+      "तुम्ही थोडं इंग्रजी बोलता का",
+      "do you speak a little English?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 30,
+    "sample": [
+     {
+      "id": "eng_for_mar:S0015L02U03",
+      "known": "तुम्ही माझ्याशी इंग्रजी बोलता का",
+      "target": "do you speak English with me?",
+      "seed": 15
+     },
+     {
+      "id": "eng_for_mar:S0281L03U01",
+      "known": "तुम्ही सुरुवात करण्यापूर्वी मी माझी कॉफी संपवली तर तुमची हरकत आहे का?",
+      "target": "do you mind if I finish my coffee before you start?",
+      "seed": 281
+     },
+     {
+      "id": "eng_for_mar:S0284L02B02",
+      "known": "तुम्ही कामावर माझ्या बहिणीच्या मैत्रिणीला ओळखता का?",
+      "target": "do you know my sister's friend at work?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0284L02B03",
+      "known": "तुम्ही माझ्या बहिणीच्या मैत्रिणीला खूप नीट ओळखता का?",
+      "target": "do you know my sister's friend very well?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0284L02U01",
+      "known": "तुम्ही माझ्या बहिणीच्या मैत्रिणीला ओळखता का?",
+      "target": "do you know my sister's friend?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0284L02U02",
+      "known": "तुम्ही इंग्रजीत माझ्या बहिणीच्या मैत्रिणीला ओळखता का?",
+      "target": "do you know my sister's friend in English?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0284L02U03",
+      "known": "तुम्ही पुन्हा माझ्या बहिणीच्या मैत्रिणीला ओळखता का?",
+      "target": "do you know my sister's friend again?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0284L02U04",
+      "known": "तुम्ही आधीच माझ्या बहिणीच्या मैत्रिणीला ओळखता का?",
+      "target": "do you know my sister's friend already?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0284L02U05",
+      "known": "तुम्ही अजून माझ्या बहिणीच्या मैत्रिणीला ओळखता का?",
+      "target": "do you know my sister's friend yet?",
+      "seed": 284
+     },
+     {
+      "id": "eng_for_mar:S0307L02U06",
+      "known": "तिकडे बसलेल्या त्या तरुण बाईला तुम्ही ओळखता का",
+      "target": "do you know that young woman who's sitting over there",
+      "seed": 307
+     },
+     {
+      "id": "eng_for_mar:S0388L01B02",
+      "known": "तुम्ही ती व्यक्ती ओळखता का?",
+      "target": "do you know that person?",
+      "seed": 388
+     },
+     {
+      "id": "eng_for_mar:S0388L02U01",
+      "known": "तुम्ही ज्या लोकांबरोबर काम करता ते तुम्हाला आवडतात का?",
+      "target": "do you like the people you work with?",
+      "seed": 388
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0485L03",
+   "verdict": "recut",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: Marathi 'than' is an ending on the word before it (-पेक्षा), so 'happier than' can only be written with a hole. Shortest cut: 'happier | जास्त आनंदी'. 'than' was taught at seed 117 (S0117L02) and 'to get away' is S0485L01, so 'happier than to get away' is built from taught pieces and needs no LEGO of its own (L30) — the basket already drills it. All 10 other rows stay.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 485,
+    "known": "दूर निघून जाण्यापेक्षा मला जास्त आनंद दुसऱ्या कशानेच होणार नाही.",
+    "target": "Nothing would make me happier than to get away."
+   },
+   "before": {
+    "known": "जास्त आनंदी ... पेक्षा",
+    "target": "happier than",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "जास्त आनंदी",
+    "target": "happier",
+    "type": "A",
+    "components": [],
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['आनंदी']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_mar:S0485L03C01",
+     "role": "component",
+     "before": [
+      "जास्त आनंदी",
+      "happier"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_mar:S0485L03C02",
+     "role": "component",
+     "before": [
+      "पेक्षा",
+      "than"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_mar:S0485L03B01",
+     "role": "build",
+     "before": [
+      "जास्त आनंदी ... पेक्षा",
+      "happier than"
+     ],
+     "action": [
+      "जास्त आनंदी",
+      "happier"
+     ]
+    },
+    {
+     "id": "eng_for_mar:S0485L03B02",
+     "role": "build",
+     "before": [
+      "यापेक्षा जास्त आनंदी",
+      "happier than this"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03B03",
+     "role": "build",
+     "before": [
+      "त्यापेक्षा जास्त आनंदी",
+      "happier than it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03B04",
+     "role": "build",
+     "before": [
+      "दूर निघून जाण्यापेक्षा जास्त आनंदी",
+      "happier than to get away"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03U01",
+     "role": "use",
+     "before": [
+      "हे मला यापेक्षा जास्त आनंदी करेल",
+      "this would make me happier than this"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03U02",
+     "role": "use",
+     "before": [
+      "हे मला त्यापेक्षा जास्त आनंदी करेल",
+      "this would make me happier than it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03U03",
+     "role": "use",
+     "before": [
+      "हे मला दूर निघून जाण्यापेक्षा जास्त आनंदी करेल",
+      "this would make me happier than to get away"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03U04",
+     "role": "use",
+     "before": [
+      "इंग्रजी बोलणं मला त्यापेक्षा जास्त आनंदी करेल",
+      "speaking English would make me happier than it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_mar:S0485L03U05",
+     "role": "use",
+     "before": [
+      "तुमच्याशी बोलणं मला यापेक्षा जास्त आनंदी करेल",
+      "speaking with you would make me happier than this"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0014L02",
+   "set": {
+    "known_text": "तुम्ही बोलता का",
+    "target_text": "do you speak",
+    "components": [
+     {
+      "known": "तुम्ही",
+      "target": "you"
+     },
+     {
+      "known": "बोलता",
+      "target": "speak"
+     },
+     {
+      "known": "का",
+      "target": "do"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "तुम्ही ... का",
+    "target_text": "do you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0014L02B01",
+   "set": {
+    "known_text": "तुम्ही बोलता का",
+    "target_text": "do you speak"
+   },
+   "expect": {
+    "known_text": "तुम्ही ... का",
+    "target_text": "do you"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0485L03",
+   "set": {
+    "known_text": "जास्त आनंदी",
+    "target_text": "happier",
+    "type": "A",
+    "components": []
+   },
+   "expect": {
+    "known_text": "जास्त आनंदी ... पेक्षा",
+    "target_text": "happier than"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0485L03B01",
+   "set": {
+    "known_text": "जास्त आनंदी",
+    "target_text": "happier"
+   },
+   "expect": {
+    "known_text": "जास्त आनंदी ... पेक्षा",
+    "target_text": "happier than"
+   }
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "course": "eng_for_urd",
+ "legos": [
+  {
+   "id": "S0080L01",
+   "verdict": "regloss",
+   "pattern": "A",
+   "known": "میں ہوں گا",
+   "basket": {
+    "B01": [
+     "میں ہوں گا",
+     "I'll be"
+    ]
+   },
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: 'میں ہوں گا' is complete Urdu. Precedent: the rows of this basket."
+  },
+  {
+   "id": "S0119L02",
+   "verdict": "grow",
+   "pattern": "B",
+   "known": "کیا میں پوچھ سکتا ہوں",
+   "target": "can I ask",
+   "type": "M",
+   "components": [
+    [
+     "میں",
+     "I"
+    ],
+    [
+     "پوچھ",
+     "ask"
+    ],
+    [
+     "سکتا ہوں",
+     "can"
+    ]
+   ],
+   "basket": {
+    "B01": [
+     "کیا میں پوچھ سکتا ہوں",
+     "can I ask"
+    ],
+    "B02": [
+     "کیا میں ابھی پوچھ سکتا ہوں؟",
+     "can I ask now?"
+    ],
+    "B03": [
+     "کیا میں آپ سے پوچھ سکتا ہوں؟",
+     "can I ask you?"
+    ],
+    "B04": [
+     "کیا میں آج پوچھ سکتا ہوں؟",
+     "can I ask today?"
+    ],
+    "U01": "keep",
+    "U02": [
+     "کیا میں آپ سے کچھ پوچھ سکتا ہوں؟",
+     "can I ask you something?"
+    ],
+    "U03": "keep",
+    "U04": "keep",
+    "U05": "keep"
+   },
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: Urdu 'کیا میں … سکتا ہوں' cannot be said without its verb. Precedent: eng_for_hin S0119L01 'can I ask' and eng_for_ben S0119L02 'can I ask', same seed. 'to ask' was taught at seed 30. Two rows said 'can I leave' and one row was a twin of another; those three are rewritten around 'can I ask'."
+  }
+ ]
+}

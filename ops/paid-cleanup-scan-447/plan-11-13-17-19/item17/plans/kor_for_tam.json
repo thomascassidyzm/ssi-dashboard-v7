@@ -1,0 +1,511 @@
+{
+ "course": "kor_for_tam",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:30Z",
+ "decisions": 3,
+ "verdicts": {
+  "recut": 2,
+  "keep": 1
+ },
+ "touched_seeds": [
+  325,
+  326
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0325L03",
+   "verdict": "recut",
+   "pov": "pass",
+   "pattern": "C",
+   "why": "PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'அவர் கருத்தில் கொள்ள வேண்டும் | 그가 고려해야' joins the subject to a verb form that cannot end a phrase, across the object. Re-cut to the contiguous '고려해야 한다고' (6 syllables), which also covers the seed's 한다고, in no LEGO until now. Precedent: S0322L01 'படிக்க வேண்டும் என்று | 읽어야 한다고', S0327L02. 그가 was taught at seed 225 and is carried by the rows. All 4 use rows already say it; 2 build rows gain 한다고.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 325,
+    "known": "அவர் பத்து சாத்தியமான பிரச்சினைகளைக் கருத்தில் கொள்ள வேண்டும் என்று நான் நினைக்கிறேன்.",
+    "target": "그가 가능한 열 가지 문제를 고려해야 한다고 생각해요."
+   },
+   "before": {
+    "known": "அவர் கருத்தில் கொள்ள வேண்டும்",
+    "target": "그가 고려해야",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "கருத்தில் கொள்ள வேண்டும் என்று",
+    "target": "고려해야 한다고",
+    "type": "M",
+    "components": [
+     [
+      "கருத்தில் கொள்ள வேண்டும்",
+      "고려해야"
+     ],
+     [
+      "என்று",
+      "한다고"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "kor_for_tam:S0325L03C01",
+     "role": "component",
+     "before": [
+      "அவர்",
+      "그가"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_tam:S0325L03C02",
+     "role": "component",
+     "before": [
+      "கருத்தில் கொள்ள வேண்டும்",
+      "고려해야"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_tam:S0325L03B01",
+     "role": "build",
+     "before": [
+      "அவர் கருத்தில் கொள்ள வேண்டும்",
+      "그가 고려해야"
+     ],
+     "action": [
+      "கருத்தில் கொள்ள வேண்டும் என்று",
+      "고려해야 한다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0325L03B02",
+     "role": "build",
+     "before": [
+      "அவர் பிரச்சினையைக் கருத்தில் கொள்ள வேண்டும்",
+      "그가 그 문제를 고려해야"
+     ],
+     "action": [
+      "அவர் பிரச்சினையைக் கருத்தில் கொள்ள வேண்டும் என்று",
+      "그가 그 문제를 고려해야 한다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0325L03B03",
+     "role": "build",
+     "before": [
+      "அவர் வேறு விஷயத்தைக் கருத்தில் கொள்ள வேண்டும்",
+      "그가 다른 것을 고려해야"
+     ],
+     "action": [
+      "அவர் வேறு விஷயத்தைக் கருத்தில் கொள்ள வேண்டும் என்று",
+      "그가 다른 것을 고려해야 한다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0325L03B04",
+     "role": "build",
+     "before": [
+      "அவர் கருத்தில் கொள்ள வேண்டும் என்று",
+      "그가 고려해야 한다고"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0325L03U01",
+     "role": "use",
+     "before": [
+      "அவர் பத்து சாத்தியமான பிரச்சினைகளைக் கருத்தில் கொள்ள வேண்டும் என்று நான் நினைக்கிறேன்",
+      "그가 가능한 열 가지 문제를 고려해야 한다고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0325L03U02",
+     "role": "use",
+     "before": [
+      "அவர் அந்தப் பிரச்சினையைக் கருத்தில் கொள்ள வேண்டும் என்று நான் நினைக்கிறேன்",
+      "그가 그 문제를 고려해야 한다고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0325L03U03",
+     "role": "use",
+     "before": [
+      "அவர் வேறு விஷயத்தைக் கருத்தில் கொள்ள வேண்டும் என்று சொன்னார்",
+      "그가 다른 것을 고려해야 한다고 말했어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0325L03U05",
+     "role": "use",
+     "before": [
+      "அவர் இப்போது அந்தப் பிரச்சினையைக் கருத்தில் கொள்ள வேண்டும் என்று சொன்னார்",
+      "그가 지금 그 문제를 고려해야 한다고 말했어요"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0326L01",
+   "verdict": "recut",
+   "pov": "hold",
+   "pattern": "C",
+   "why": "HOLD (needs Kai's yes). The Tamil prompt of this cut is not the seed's own wording: seed 326's Tamil says 'I don't think she should sell', its Korean says 'I think she has no need to sell', so no Tamil piece of the seed matches 팔 필요가 없다고 (L26). The cut below uses the wording the course already taught at S0323L03 and that all 9 rows of this basket already use. PATTERN C. The taught side itself skips words of the seed, so the LEGO is not a piece of its seed (L32; L26 'a LEGO may contain only words its own seed says'). Re-cut to contiguous pieces of the seed. POV pass: 'அவள் விற்க | 그녀가 팔' joins the subject to 팔, a form that needs the word after it, across the object. Re-cut to the contiguous '팔 필요가 없다고' (7 syllables), which also covers the seed's 필요가 없다고, in no LEGO of this seed. Kept at 7: 팔 cannot stand alone, and '필요가 없다고' alone is S0323L03. 그녀가 was taught at seed 132. 4 use rows already say it; 5 rows are completed.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 326,
+    "known": "அவள் நிறுவனத்தை விற்க வேண்டும் என்று நான் நினைக்கவில்லை.",
+    "target": "그녀가 회사를 팔 필요가 없다고 생각해요."
+   },
+   "before": {
+    "known": "அவள் விற்க",
+    "target": "그녀가 팔",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "விற்க வேண்டிய அவசியமில்லை என்று",
+    "target": "팔 필요가 없다고",
+    "type": "M",
+    "components": [
+     [
+      "விற்க",
+      "팔"
+     ],
+     [
+      "வேண்டிய அவசியமில்லை என்று",
+      "필요가 없다고"
+     ]
+    ],
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['வேண்டிய', 'அவசியமில்லை']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "kor_for_tam:S0326L01C01",
+     "role": "component",
+     "before": [
+      "அவள்",
+      "그녀가"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_tam:S0326L01C02",
+     "role": "component",
+     "before": [
+      "விற்க",
+      "팔"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "kor_for_tam:S0326L01B01",
+     "role": "build",
+     "before": [
+      "அவள் விற்க",
+      "그녀가 팔"
+     ],
+     "action": [
+      "விற்க வேண்டிய அவசியமில்லை என்று",
+      "팔 필요가 없다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0326L01B02",
+     "role": "build",
+     "before": [
+      "அவள் அந்தப் புத்தகத்தை விற்க",
+      "그녀가 그 책을 팔"
+     ],
+     "action": [
+      "அவள் அந்தப் புத்தகத்தை விற்க வேண்டிய அவசியமில்லை என்று",
+      "그녀가 그 책을 팔 필요가 없다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0326L01B03",
+     "role": "build",
+     "before": [
+      "அவள் விற்க வேண்டிய அவசியமில்லை",
+      "그녀가 팔 필요가"
+     ],
+     "action": [
+      "அவள் விற்க வேண்டிய அவசியமில்லை என்று",
+      "그녀가 팔 필요가 없다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0326L01B04",
+     "role": "build",
+     "before": [
+      "அவள் விற்க முடியும் என்று",
+      "그녀가 팔 수 있다고"
+     ],
+     "action": [
+      "அவள் இப்போது விற்க வேண்டிய அவசியமில்லை என்று",
+      "그녀가 지금 팔 필요가 없다고"
+     ]
+    },
+    {
+     "id": "kor_for_tam:S0326L01U01",
+     "role": "use",
+     "before": [
+      "அவள் அந்தப் புத்தகத்தை விற்க வேண்டிய அவசியமில்லை என்று நினைக்கிறேன்",
+      "그녀가 그 책을 팔 필요가 없다고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0326L01U02",
+     "role": "use",
+     "before": [
+      "அவள் அந்தப் புத்தகத்தை விற்க வேண்டிய அவசியமில்லை என்று சொன்னாள்",
+      "그녀가 그 책을 팔 필요가 없다고 말했어요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0326L01U03",
+     "role": "use",
+     "before": [
+      "அவள் இப்போது அந்தப் புத்தகத்தை விற்க வேண்டிய அவசியமில்லை என்று நினைக்கிறேன்",
+      "그녀가 지금 그 책을 팔 필요가 없다고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0326L01U04",
+     "role": "use",
+     "before": [
+      "அவள் அந்தப் புத்தகத்தை விற்க வேண்டிய அவசியமில்லை என்று நான் நினைக்கிறேன்",
+      "저는 그녀가 그 책을 팔 필요가 없다고 생각해요"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "kor_for_tam:S0326L01U05",
+     "role": "use",
+     "before": [
+      "அவள் அந்தப் புத்தகத்தை விற்க முடியும் என்று நினைக்கிறேன்",
+      "그녀가 그 책을 팔 수 있다고 생각해요"
+     ],
+     "action": [
+      "அவள் விற்க வேண்டிய அவசியமில்லை என்று நினைக்கிறேன்",
+      "그녀가 팔 필요가 없다고 생각해요"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0558L01",
+   "verdict": "keep",
+   "pov": "pass",
+   "pattern": "not-gapped",
+   "why": "NOT GAPPED (keep). 'இரவில் தாமதமாகிவிட்டது | 밤이 늦었어요' is complete Korean on its own (5 syllables); the seed only puts 너무 inside it, taught at seed 27. L32 allows this; K49.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 558,
+    "known": "இரவில் மிகவும் தாமதமாகிவிட்டது.",
+    "target": "밤이 너무 늦었어요."
+   },
+   "before": {
+    "known": "இரவில் தாமதமாகிவிட்டது",
+    "target": "밤이 늦었어요",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0325L03",
+   "set": {
+    "known_text": "கருத்தில் கொள்ள வேண்டும் என்று",
+    "target_text": "고려해야 한다고",
+    "components": [
+     {
+      "known": "கருத்தில் கொள்ள வேண்டும்",
+      "target": "고려해야"
+     },
+     {
+      "known": "என்று",
+      "target": "한다고"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "அவர் கருத்தில் கொள்ள வேண்டும்",
+    "target_text": "그가 고려해야"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0325L03B01",
+   "set": {
+    "known_text": "கருத்தில் கொள்ள வேண்டும் என்று",
+    "target_text": "고려해야 한다고"
+   },
+   "expect": {
+    "known_text": "அவர் கருத்தில் கொள்ள வேண்டும்",
+    "target_text": "그가 고려해야"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0325L03B02",
+   "set": {
+    "known_text": "அவர் பிரச்சினையைக் கருத்தில் கொள்ள வேண்டும் என்று",
+    "target_text": "그가 그 문제를 고려해야 한다고"
+   },
+   "expect": {
+    "known_text": "அவர் பிரச்சினையைக் கருத்தில் கொள்ள வேண்டும்",
+    "target_text": "그가 그 문제를 고려해야"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0325L03B03",
+   "set": {
+    "known_text": "அவர் வேறு விஷயத்தைக் கருத்தில் கொள்ள வேண்டும் என்று",
+    "target_text": "그가 다른 것을 고려해야 한다고"
+   },
+   "expect": {
+    "known_text": "அவர் வேறு விஷயத்தைக் கருத்தில் கொள்ள வேண்டும்",
+    "target_text": "그가 다른 것을 고려해야"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0326L01",
+   "set": {
+    "known_text": "விற்க வேண்டிய அவசியமில்லை என்று",
+    "target_text": "팔 필요가 없다고",
+    "components": [
+     {
+      "known": "விற்க",
+      "target": "팔"
+     },
+     {
+      "known": "வேண்டிய அவசியமில்லை என்று",
+      "target": "필요가 없다고"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "அவள் விற்க",
+    "target_text": "그녀가 팔"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0326L01B01",
+   "set": {
+    "known_text": "விற்க வேண்டிய அவசியமில்லை என்று",
+    "target_text": "팔 필요가 없다고"
+   },
+   "expect": {
+    "known_text": "அவள் விற்க",
+    "target_text": "그녀가 팔"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0326L01B02",
+   "set": {
+    "known_text": "அவள் அந்தப் புத்தகத்தை விற்க வேண்டிய அவசியமில்லை என்று",
+    "target_text": "그녀가 그 책을 팔 필요가 없다고"
+   },
+   "expect": {
+    "known_text": "அவள் அந்தப் புத்தகத்தை விற்க",
+    "target_text": "그녀가 그 책을 팔"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0326L01B03",
+   "set": {
+    "known_text": "அவள் விற்க வேண்டிய அவசியமில்லை என்று",
+    "target_text": "그녀가 팔 필요가 없다고"
+   },
+   "expect": {
+    "known_text": "அவள் விற்க வேண்டிய அவசியமில்லை",
+    "target_text": "그녀가 팔 필요가"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0326L01B04",
+   "set": {
+    "known_text": "அவள் இப்போது விற்க வேண்டிய அவசியமில்லை என்று",
+    "target_text": "그녀가 지금 팔 필요가 없다고"
+   },
+   "expect": {
+    "known_text": "அவள் விற்க முடியும் என்று",
+    "target_text": "그녀가 팔 수 있다고"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0326L01U05",
+   "set": {
+    "known_text": "அவள் விற்க வேண்டிய அவசியமில்லை என்று நினைக்கிறேன்",
+    "target_text": "그녀가 팔 필요가 없다고 생각해요"
+   },
+   "expect": {
+    "known_text": "அவள் அந்தப் புத்தகத்தை விற்க முடியும் என்று நினைக்கிறேன்",
+    "target_text": "그녀가 그 책을 팔 수 있다고 생각해요"
+   }
+  }
+ ]
+}

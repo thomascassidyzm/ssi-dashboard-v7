@@ -1,0 +1,597 @@
+{
+ "course": "eng_for_urd",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:06:28Z",
+ "decisions": 2,
+ "verdicts": {
+  "regloss": 1,
+  "grow": 1
+ },
+ "touched_seeds": [
+  80,
+  119
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0080L01",
+   "verdict": "regloss",
+   "pov": "pass",
+   "pattern": "A",
+   "why": "PATTERN A. The prompt was written with dots in it; a prompt with a hole cannot be read out (L32 'absolutely no gapped LEGOs'; L22 'a label containing a gap … is a no-go'). Without the dots it is a complete phrase, and the rows already say it that way. Text only: the LEGO and its bare build row. POV pass: 'میں ہوں گا' is complete Urdu. Precedent: the rows of this basket.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 80,
+    "known": "مجھے یقین نہیں کب میں تیار ہوں گا۔",
+    "target": "I'm not sure when I'll be ready."
+   },
+   "before": {
+    "known": "میں ... ہوں گا",
+    "target": "I'll be",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "میں ہوں گا",
+    "target": "I'll be",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_urd:S0080L01C01",
+     "role": "component",
+     "before": [
+      "میں",
+      "I'll"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_urd:S0080L01C02",
+     "role": "component",
+     "before": [
+      "ہوں گا",
+      "be"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_urd:S0080L01B01",
+     "role": "build",
+     "before": [
+      "میں ... ہوں گا",
+      "I'll be"
+     ],
+     "action": [
+      "میں ہوں گا",
+      "I'll be"
+     ]
+    },
+    {
+     "id": "eng_for_urd:S0080L01B02",
+     "role": "build",
+     "before": [
+      "میں تیار ہوں گا",
+      "I'll be ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01B03",
+     "role": "build",
+     "before": [
+      "میں خوش ہوں گا",
+      "I'll be happy"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01B04",
+     "role": "build",
+     "before": [
+      "میں ابھی تیار ہوں گا",
+      "I'll be ready now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01U01",
+     "role": "use",
+     "before": [
+      "میں جلد تیار ہوں گا",
+      "I'll be ready soon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01U02",
+     "role": "use",
+     "before": [
+      "مجھے یقین نہیں کب میں تیار ہوں گا",
+      "I'm not sure when I'll be ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01U03",
+     "role": "use",
+     "before": [
+      "میں جلد خوش ہوں گا",
+      "I'll be happy soon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01U05",
+     "role": "use",
+     "before": [
+      "میں ابھی تک تیار نہیں لیکن جلد ہوں گا",
+      "I'm not ready yet but I'll be ready soon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0080L01U06",
+     "role": "use",
+     "before": [
+      "میں خوش ہوں گا اگر آپ مدد کر سکیں",
+      "I'll be happy if you can help"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 13,
+    "sample": [
+     {
+      "id": "eng_for_urd:S0096L01U02",
+      "known": "نہیں، میں ابھی تیار نہیں لیکن جلد ہوں گا",
+      "target": "no I'm not ready yet but I'll be ready soon",
+      "seed": 96
+     },
+     {
+      "id": "eng_for_urd:S0110L02U05",
+      "known": "ہم ختم کریں گے بعد میں میں بہت خوش ہوں گا",
+      "target": "I'll be happy after we finish",
+      "seed": 110
+     },
+     {
+      "id": "eng_for_urd:S0176L03U02",
+      "known": "میں اگلے سال یہاں ہوں گا",
+      "target": "I'll be here next year",
+      "seed": 176
+     },
+     {
+      "id": "eng_for_urd:S0176L03U04",
+      "known": "مجھے یقین نہیں کہ میں اگلے سال تیار ہوں گا",
+      "target": "I'm not sure I'll be ready next year",
+      "seed": 176
+     },
+     {
+      "id": "eng_for_urd:S0252L01U05",
+      "known": "میں کل شروع کرنے کے لیے تیار ہوں گا",
+      "target": "I'll be ready to start tomorrow",
+      "seed": 252
+     },
+     {
+      "id": "eng_for_urd:S0252L01U06",
+      "known": "میں تھوڑے وقت میں شروع کرنے کے لیے تیار ہوں گا",
+      "target": "I'll be ready to start in a short time",
+      "seed": 252
+     },
+     {
+      "id": "eng_for_urd:S0252L01U07",
+      "known": "میں جب آپ چاہیں شروع کرنے کے لیے تیار ہوں گا",
+      "target": "I'll be ready to start as soon as you want",
+      "seed": 252
+     },
+     {
+      "id": "eng_for_urd:S0253L01U02",
+      "known": "میں چند منٹ میں تیار ہوں گا",
+      "target": "I'll be ready in a few minutes",
+      "seed": 253
+     },
+     {
+      "id": "eng_for_urd:S0253L01U04",
+      "known": "میں چند منٹ میں یہاں ہوں گا",
+      "target": "I'll be here in a few minutes",
+      "seed": 253
+     },
+     {
+      "id": "eng_for_urd:S0255L01U04",
+      "known": "میں کچھ دیر میں جانے کے لیے تیار ہوں گا",
+      "target": "I'll be ready to leave in a while",
+      "seed": 255
+     },
+     {
+      "id": "eng_for_urd:S0274L01U02",
+      "known": "میں چند دنوں میں وہاں ہوں گا",
+      "target": "I'll be there in a few days",
+      "seed": 274
+     },
+     {
+      "id": "eng_for_urd:S0277L02U02",
+      "known": "میں اگلے ہفتے کے شروع میں وہاں ہوں گا",
+      "target": "I'll be there early next week",
+      "seed": 277
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0119L02",
+   "verdict": "grow",
+   "pov": "pass",
+   "pattern": "B",
+   "why": "PATTERN B. The gap cannot simply close: this prompt is not sayable without a verb. L22: 'a bound element that cannot stand alone grows to the verb IN ITS OWN SEED'; L2: 'when one side can't be broken down, the other side follows and grows as well'. Both sides grow to the seed's own word. POV pass: Urdu 'کیا میں … سکتا ہوں' cannot be said without its verb. Precedent: eng_for_hin S0119L01 'can I ask' and eng_for_ben S0119L02 'can I ask', same seed. 'to ask' was taught at seed 30. Two rows said 'can I leave' and one row was a twin of another; those three are rewritten around 'can I ask'.",
+   "closes": [
+    "17"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 119,
+    "known": "کیا میں جانے سے پہلے آپ سے کچھ پوچھ سکتا ہوں؟",
+    "target": "Can I ask you something before you leave?"
+   },
+   "before": {
+    "known": "کیا میں ... سکتا ہوں",
+    "target": "can I",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "کیا میں پوچھ سکتا ہوں",
+    "target": "can I ask",
+    "type": "M",
+    "components": [
+     [
+      "میں",
+      "I"
+     ],
+     [
+      "پوچھ",
+      "ask"
+     ],
+     [
+      "سکتا ہوں",
+      "can"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_urd:S0119L02C01",
+     "role": "component",
+     "before": [
+      "میں",
+      "I"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_urd:S0119L02C02",
+     "role": "component",
+     "before": [
+      "سکتا ہوں",
+      "can"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_urd:S0119L02B01",
+     "role": "build",
+     "before": [
+      "کیا میں ... سکتا ہوں",
+      "can I"
+     ],
+     "action": [
+      "کیا میں پوچھ سکتا ہوں",
+      "can I ask"
+     ]
+    },
+    {
+     "id": "eng_for_urd:S0119L02B02",
+     "role": "build",
+     "before": [
+      "کیا میں پوچھ سکتا ہوں؟",
+      "can I ask?"
+     ],
+     "action": [
+      "کیا میں ابھی پوچھ سکتا ہوں؟",
+      "can I ask now?"
+     ]
+    },
+    {
+     "id": "eng_for_urd:S0119L02B03",
+     "role": "build",
+     "before": [
+      "کیا میں چھوڑ سکتا ہوں؟",
+      "can I leave?"
+     ],
+     "action": [
+      "کیا میں آپ سے پوچھ سکتا ہوں؟",
+      "can I ask you?"
+     ]
+    },
+    {
+     "id": "eng_for_urd:S0119L02B04",
+     "role": "build",
+     "before": [
+      "کیا میں ابھی چھوڑ سکتا ہوں؟",
+      "can I leave now?"
+     ],
+     "action": [
+      "کیا میں آج پوچھ سکتا ہوں؟",
+      "can I ask today?"
+     ]
+    },
+    {
+     "id": "eng_for_urd:S0119L02U01",
+     "role": "use",
+     "before": [
+      "کیا میں کچھ پوچھ سکتا ہوں؟",
+      "can I ask something?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0119L02U02",
+     "role": "use",
+     "before": [
+      "کیا میں کچھ پوچھ سکتا ہوں؟",
+      "can I ask something?"
+     ],
+     "action": [
+      "کیا میں آپ سے کچھ پوچھ سکتا ہوں؟",
+      "can I ask you something?"
+     ]
+    },
+    {
+     "id": "eng_for_urd:S0119L02U03",
+     "role": "use",
+     "before": [
+      "کیا میں چھوڑنے سے پہلے پوچھ سکتا ہوں؟",
+      "can I ask before I leave?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0119L02U04",
+     "role": "use",
+     "before": [
+      "کیا میں کچھ اور پوچھ سکتا ہوں؟",
+      "can I ask something else?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_urd:S0119L02U05",
+     "role": "use",
+     "before": [
+      "کیا میں آپ سے کچھ پوچھ سکتا ہوں چھوڑنے سے پہلے؟",
+      "can I ask you something before you leave?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 24,
+    "sample": [
+     {
+      "id": "eng_for_urd:S0121L02U06",
+      "known": "کیا میں آپ کی گاڑی استعمال کر سکتا ہوں؟",
+      "target": "can I use your car?",
+      "seed": 121
+     },
+     {
+      "id": "eng_for_urd:S0190L02U03",
+      "known": "کیا میں کچھ سوال پوچھ سکتا ہوں؟",
+      "target": "can I ask some questions?",
+      "seed": 190
+     },
+     {
+      "id": "eng_for_urd:S0248L02U05",
+      "known": "کیا میں اپنے پیسے واپس لے سکتا ہوں؟",
+      "target": "can I take my money back?",
+      "seed": 248
+     },
+     {
+      "id": "eng_for_urd:S0422L01U02",
+      "known": "کیا میں ایک سوال پوچھ سکتا ہوں؟",
+      "target": "can I ask a question?",
+      "seed": 422
+     },
+     {
+      "id": "eng_for_urd:S0447L01U03",
+      "known": "کیا میں آپ کی گاڑی چلا سکتا ہوں؟",
+      "target": "can I drive your car?",
+      "seed": 447
+     },
+     {
+      "id": "eng_for_urd:S0489L01U05",
+      "known": "کیا میں ایک کپ کافی لے سکتا ہوں؟",
+      "target": "can I have a cup of coffee?",
+      "seed": 489
+     },
+     {
+      "id": "eng_for_urd:S0490L01U03",
+      "known": "کیا میں آپ پر بھروسہ کر سکتا ہوں؟",
+      "target": "can I trust you?",
+      "seed": 490
+     },
+     {
+      "id": "eng_for_urd:S0498L03U04",
+      "known": "کیا میں اندر آ سکتا ہوں؟",
+      "target": "can I come inside?",
+      "seed": 498
+     },
+     {
+      "id": "eng_for_urd:S0500L03U05",
+      "known": "کیا میں آپ دونوں کے درمیان بیٹھ سکتا ہوں؟",
+      "target": "can I sit between you two?",
+      "seed": 500
+     },
+     {
+      "id": "eng_for_urd:S0535L03U04",
+      "known": "کیا میں یہ چن سکتا ہوں؟",
+      "target": "can I choose this?",
+      "seed": 535
+     },
+     {
+      "id": "eng_for_urd:S0555L02U04",
+      "known": "کیا میں نیا والا لے سکتا ہوں؟",
+      "target": "can I get a new one?",
+      "seed": 555
+     },
+     {
+      "id": "eng_for_urd:S0577L02U06",
+      "known": "کیا میں آپ کے ساتھ ہسپتال جا سکتا ہوں؟",
+      "target": "Can I go to the hospital with you?",
+      "seed": 577
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0080L01",
+   "set": {
+    "known_text": "میں ہوں گا"
+   },
+   "expect": {
+    "known_text": "میں ... ہوں گا",
+    "target_text": "I'll be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0080L01B01",
+   "set": {
+    "known_text": "میں ہوں گا"
+   },
+   "expect": {
+    "known_text": "میں ... ہوں گا",
+    "target_text": "I'll be"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0119L02",
+   "set": {
+    "known_text": "کیا میں پوچھ سکتا ہوں",
+    "target_text": "can I ask",
+    "components": [
+     {
+      "known": "میں",
+      "target": "I"
+     },
+     {
+      "known": "پوچھ",
+      "target": "ask"
+     },
+     {
+      "known": "سکتا ہوں",
+      "target": "can"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "کیا میں ... سکتا ہوں",
+    "target_text": "can I"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0119L02B01",
+   "set": {
+    "known_text": "کیا میں پوچھ سکتا ہوں",
+    "target_text": "can I ask"
+   },
+   "expect": {
+    "known_text": "کیا میں ... سکتا ہوں",
+    "target_text": "can I"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0119L02B02",
+   "set": {
+    "known_text": "کیا میں ابھی پوچھ سکتا ہوں؟",
+    "target_text": "can I ask now?"
+   },
+   "expect": {
+    "known_text": "کیا میں پوچھ سکتا ہوں؟",
+    "target_text": "can I ask?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0119L02B03",
+   "set": {
+    "known_text": "کیا میں آپ سے پوچھ سکتا ہوں؟",
+    "target_text": "can I ask you?"
+   },
+   "expect": {
+    "known_text": "کیا میں چھوڑ سکتا ہوں؟",
+    "target_text": "can I leave?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0119L02B04",
+   "set": {
+    "known_text": "کیا میں آج پوچھ سکتا ہوں؟",
+    "target_text": "can I ask today?"
+   },
+   "expect": {
+    "known_text": "کیا میں ابھی چھوڑ سکتا ہوں؟",
+    "target_text": "can I leave now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0119L02U02",
+   "set": {
+    "known_text": "کیا میں آپ سے کچھ پوچھ سکتا ہوں؟",
+    "target_text": "can I ask you something?"
+   },
+   "expect": {
+    "known_text": "کیا میں کچھ پوچھ سکتا ہوں؟",
+    "target_text": "can I ask something?"
+   }
+  }
+ ]
+}

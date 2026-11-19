@@ -15,7 +15,9 @@ decisions/<course>.json = {"course":..,"legos":[{
    "why":..,"closes":["11","19"],"knock":..,
    "basket":{"B01":"keep"|"del"|[known,target]},   # by id suffix; unlisted rows: auto (see below)
    "add":[["b"|"u",known,target],..],               # back-fill, in teaching order
-   "extra":[{op..}]                                  # neighbour edits (raw edit-batch ops, carried verbatim)
+   "extra":[{op..}],                                 # neighbour edits (raw edit-batch ops, carried verbatim)
+   "pov":"pass|hold", "pattern":"A",                 # cs #784: learner-POV gate and fix-pattern label
+   "ack":["known","target","thin"], "ack_rows":["B02"]  # cs #784: checks answered by hand (say why in `why`)
 }]}
 Unlisted basket rows: kept if they still contain the new LEGO on both sides; if only the known side lacks the new gloss
 and the OLD gloss appears in it as whole words, the old gloss is substituted (listed as "auto" for hand read-back, R0.13);
@@ -145,7 +147,7 @@ def main():
     for d in dec['legos']:
         lid = d['id']
         l = L.get(lid)
-        rec = {'id': lid, 'verdict': d['verdict'], 'why': d.get('why'), 'closes': [FAMNO] + d.get('closes', []), 'knock': d.get('knock')}
+        rec = {'id': lid, 'verdict': d['verdict'], 'pov': d.get('pov', 'hold' if d['verdict'] == 'kai' else 'pass'), 'pattern': d.get('pattern'), 'why': d.get('why'), 'closes': [FAMNO] + d.get('closes', []), 'knock': d.get('knock')}
         if not l:
             problems.append(f'{lid}: not in the live dump'); continue
         s = SD[l['seed']]
@@ -265,7 +267,10 @@ def main():
                 if has(act[1], nt) and not words_in(act[0], nk) and SPACELESS.search(norm(nk)):
                     rec.setdefault('known_inflected_rows', []).append(sid)
                 elif not (has(act[1], nt) and words_in(act[0], nk)):
-                    problems.append(f'{lid} {sid} rebuilt row does not contain the LEGO: {act}')
+                    if sid in d.get('ack_rows', []):  # cs #784: read by hand — LEGO split/reordered in the row (K49) or known side inflected (K6)
+                        rec.setdefault('rows_checked_by_hand', []).append(sid)
+                    else:
+                        problems.append(f'{lid} {sid} rebuilt row does not contain the LEGO: {act}')
                 kept[p['type']] += 1
             elif act == 'del':
                 ops.append({'op': 'phrase.delete', 'phrase_id': p['id'], 'expect': {'known_text': p['known'], 'target_text': p['target']}})
@@ -297,7 +302,7 @@ def main():
         rec['basket'] = bas
         rec['add'] = adds
         rec['basket_after'] = dict(kept)
-        if rec['after']['is_new'] and kept['build'] + kept['use'] < 6:
+        if rec['after']['is_new'] and kept['build'] + kept['use'] < 6 and 'thin' not in ack:  # cs #784: ack 'thin' = already thin before the plan (item 20's family)
             problems.append(f'{lid}: thin basket after plan ({dict(kept)})')
         for e in d.get('extra', []):
             ops.append(e)
