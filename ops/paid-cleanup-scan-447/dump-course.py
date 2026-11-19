@@ -6,6 +6,15 @@ Reads one course through Popty's own route GET /api/production/<course>/script-v
      phrases:[{id, pos, type, known, target, ka, t1, t2}]}]}]}
 ka/t1/t2 = known / target1 / target2 audio uuid (None = empty slot). No database access of its own.
 Usage: python3 -I dump-course.py <course_code> <out.json> [max_seed=700]"""
+# cs #968·AI: live gate. Every urlopen to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given
+# (put it last) AND it is 22:00-07:00 Europe/London. ops/paid_cleanup_livegate.py.
+import os as _lg_os, sys as _lg_sys
+_lg_d = _lg_os.path.dirname(_lg_os.path.realpath(__file__))
+while not _lg_os.path.exists(_lg_os.path.join(_lg_d, 'paid_cleanup_livegate.py')) and _lg_d != '/':
+    _lg_d = _lg_os.path.dirname(_lg_d)
+_lg_sys.path.insert(0, _lg_d)
+import paid_cleanup_livegate as livegate
+livegate.install()
 import json, sys, urllib.request, time
 course, out = sys.argv[1], sys.argv[2]
 max_seed = int(sys.argv[3]) if len(sys.argv) > 3 else 700

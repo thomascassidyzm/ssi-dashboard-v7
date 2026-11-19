@@ -4,6 +4,15 @@ GET /api/production/<course>/script-view?seedStart=Sxxxx&seedEnd=Sxxxx (one smal
 and caches them in data/live/<course>.json as {seed_number: {known,target,status,at,legos:[{id,idx,type,is_new,known,target,
 phrases:[{id,pos,type,known,target,ka,t1,t2}]}]}}. No database access of its own. Already-cached seeds are skipped
 unless --force.   usage: python3 -I live_seeds.py <course> <seed> [<seed>...] [--force]"""
+# cs #968·AI: live gate. Every urlopen to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given
+# (put it last) AND it is 22:00-07:00 Europe/London. ops/paid_cleanup_livegate.py.
+import os as _lg_os, sys as _lg_sys
+_lg_d = _lg_os.path.dirname(_lg_os.path.realpath(__file__))
+while not _lg_os.path.exists(_lg_os.path.join(_lg_d, 'paid_cleanup_livegate.py')) and _lg_d != '/':
+    _lg_d = _lg_os.path.dirname(_lg_d)
+_lg_sys.path.insert(0, _lg_d)
+import paid_cleanup_livegate as livegate
+livegate.install()
 import json, os, sys, time, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 course = sys.argv[1]
