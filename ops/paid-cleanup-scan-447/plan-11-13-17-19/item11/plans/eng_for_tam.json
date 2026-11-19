@@ -1,0 +1,6254 @@
+{
+ "course": "eng_for_tam",
+ "roman_flags": [],
+ "dumped": "2026-11-18T18:43:13Z",
+ "decisions": 49,
+ "verdicts": {
+  "rebuild-rows": 42,
+  "kai": 7
+ },
+ "touched_seeds": [
+  25,
+  98,
+  115,
+  120,
+  121,
+  123,
+  125,
+  129,
+  133,
+  138,
+  144,
+  146,
+  147,
+  148,
+  160,
+  162,
+  163,
+  167,
+  169,
+  170,
+  175,
+  182,
+  185,
+  187,
+  188,
+  189,
+  191,
+  192,
+  194,
+  197,
+  201,
+  203,
+  262,
+  266,
+  276,
+  277,
+  281,
+  290,
+  293,
+  294,
+  299
+ ],
+ "problems": [
+  "S0115L03: target don't feel as if ready not contiguous in seed I don't feel as if I'm ready to have a conversation.",
+  "S0120L02 U06 rebuilt row does not contain the LEGO: ['அவர்கள் பேருந்தில் செல்ல விரும்புகிறார்கள்', 'they like to go by bus']",
+  "S0121L03: target don't use your car not contiguous in seed It's unusual that you don't like to use your car.",
+  "S0123L02 U06 rebuilt row does not contain the LEGO: ['அது நல்ல யோசனை என்று அவர்கள் நினைக்கிறார்கள்', \"they think that's a good idea\"]",
+  "S0125L02 U06 rebuilt row does not contain the LEGO: ['அவர்கள் இன்று நம்புகிறார்கள்', 'they believe today']",
+  "S0133L02 U05 rebuilt row does not contain the LEGO: ['அவர்கள் யாரையாவது நன்றாக அறிவார்கள்', 'they get to know someone well']",
+  "S0144L04 U04 rebuilt row does not contain the LEGO: ['ஆம், நான் இன்று காலை விரும்பியதை விட முன்பே எழுந்திரித்தேன்', 'yes, I woke earlier than I wanted to this morning']",
+  "S0146L03 U04 rebuilt row does not contain the LEGO: ['நீங்கள் அதை சரிசெய்ய முயன்றீர்கள்', 'you tried to fix it']",
+  "S0147L04 U05 rebuilt row does not contain the LEGO: ['அவள் நான் பதட்டமாக உணர்வதைக் கண்டாள் என்று நினைக்கிறேன்', 'I think she saw me feeling nervous']",
+  "S0148L05 U05 rebuilt row does not contain the LEGO: ['நேற்று என்னால் பதில் சொல்ல முடியாத போது அவன் மிகவும் பொறுமையாக இல்லை', \"he wasn't very patient when I couldn't answer yesterday\"]",
+  "S0160L01 U01 rebuilt row does not contain the LEGO: ['இந்த வார்த்தையை இப்போது எப்படி சொல்வீர்கள்?', 'how do you say this word now?']",
+  "S0160L01 U02 rebuilt row does not contain the LEGO: ['இந்த வார்த்தையை நன்றாக எப்படி சொல்வீர்கள்?', 'how do you say this word well?']",
+  "S0160L01 U03 rebuilt row does not contain the LEGO: ['இந்த வார்த்தையை இங்கே எப்படி சொல்வீர்கள்?', 'how do you say this word here?']",
+  "S0160L01 U04 rebuilt row does not contain the LEGO: ['இந்த வார்த்தையை இன்று எப்படி சொல்வீர்கள்?', 'how do you say this word today?']",
+  "S0162L01: thin basket after plan ({'build': 1, 'use': 3})",
+  "S0170L01 U02 rebuilt row does not contain the LEGO: ['உங்களுக்கு என்ன வேண்டும் என்று இன்று சொல்லுங்கள்', 'tell me what you need today']",
+  "S0182L02: thin basket after plan ({'build': 1, 'use': 3})",
+  "S0185L01 U04 rebuilt row does not contain the LEGO: ['நீங்கள் அவற்றை இங்கே விட்டீர்கள்', 'you left them here']",
+  "S0185L02 U03 rebuilt row does not contain the LEGO: ['நான் அவற்றை வேலையில் விட்டேன்', 'I left them at work']",
+  "S0187L01: thin basket after plan ({'build': 1, 'use': 3})",
+  "S0188L01: thin basket after plan ({'build': 1, 'use': 3})",
+  "S0189L01: thin basket after plan ({'build': 1, 'use': 3})",
+  "S0191L01 U04 rebuilt row does not contain the LEGO: ['இன்று எனக்கு எந்தப் பிரச்சனையும் இல்லை', \"I don't mind at all today\"]",
+  "S0191L01: thin basket after plan ({'build': 1, 'use': 3})",
+  "S0192L02 U03 rebuilt row does not contain the LEGO: ['ஆம், நான் நாளை இரவு பிஸியாக இருக்கிறேன்', \"yes, I'm busy tomorrow night\"]",
+  "S0192L02 U04 rebuilt row does not contain the LEGO: ['நான் நாளை இரவு பிஸியாக இருக்கிறேன் என்று நினைக்கிறேன்', \"I think I'm busy tomorrow night\"]",
+  "S0192L02: thin basket after plan ({'build': 1, 'use': 4})",
+  "S0194L01 U02 rebuilt row does not contain the LEGO: ['நீங்கள் இன்று எதைத் தேடுகிறீர்கள்?', 'what are you looking for today?']",
+  "S0194L01 U04 rebuilt row does not contain the LEGO: ['நீங்கள் இப்போது எதைத் தேடுகிறீர்கள்?', 'what are you looking for now?']",
+  "S0194L01 U05 rebuilt row does not contain the LEGO: ['நீங்கள் இங்கே எதைத் தேடுகிறீர்கள்?', 'what are you looking for here?']",
+  "S0194L01: thin basket after plan ({'build': 1, 'use': 4})",
+  "S0197L03 U01 rebuilt row does not contain the LEGO: ['என் மகன் இங்கே ஆசிரியராக வேலை செய்கிறான்', 'my son works as a teacher here']",
+  "S0197L03: thin basket after plan ({'build': 1, 'use': 4})",
+  "S0262L01 B02 rebuilt row does not contain the LEGO: ['நீங்கள் பேசிக்கொண்டிருந்த அந்த ஆண் யார்?', 'who was that man you were talking to?']",
+  "S0262L01 B03 rebuilt row does not contain the LEGO: ['நீங்கள் இன்று பேசிக்கொண்டிருந்த அந்த ஆண்', 'that man you were talking to today']",
+  "S0266L01 B02 rebuilt row does not contain the LEGO: ['என் அப்பாவின் ஒரு பழைய நண்பர்', 'an old friend of my father']",
+  "S0266L01 B03 rebuilt row does not contain the LEGO: ['அவர் என் அப்பாவின் பழைய நண்பர்', 'he is an old friend of my father']",
+  "S0276L01 U05 rebuilt row does not contain the LEGO: ['உங்களுடன் இன்னும் சிறிது நேரம் இங்கே இருக்க விரும்புகிறேன்', 'I want to stay here for a little longer with you']",
+  "S0276L01: thin basket after plan ({'build': 1, 'use': 4})",
+  "S0277L02 B02 rebuilt row does not contain the LEGO: ['அடுத்த வாரம் தொடக்கத்தில் ஒரு கூட்டம்', 'a meeting early next week']",
+  "S0277L02 B03 rebuilt row does not contain the LEGO: ['அடுத்த வாரம் தொடக்கத்தில் ஒரு முக்கியமான கூட்டம்', 'an important meeting early next week']",
+  "S0281L03 B02 rebuilt row does not contain the LEGO: ['நான் என் காபியை முடித்தால் பரவாயில்லையா?', 'do you mind if I finish my coffee?']",
+  "S0281L03 B03 rebuilt row does not contain the LEGO: ['நான் இப்போது என் காபியை முடித்தால் பரவாயில்லையா?', 'do you mind if I finish my coffee now?']",
+  "S0290L01 B02 rebuilt row does not contain the LEGO: ['அவனுக்கு இப்போது பதில் தெரியுமா என்று ஆர்வம்', 'wonder if he knows the answer now']",
+  "S0290L01 B03 rebuilt row does not contain the LEGO: ['அவனுக்கு இன்று பதில் தெரியுமா என்று ஆர்வம்', 'wonder if he knows the answer today']",
+  "S0290L01 U03 rebuilt row does not contain the LEGO: ['அவனுக்கு இன்று பதில் தெரியுமா என்று எனக்கு ஆர்வம்', 'I wonder if he knows the answer today']",
+  "S0293L01 B02 rebuilt row does not contain the LEGO: ['அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க வேண்டும்', \"have to find out where he's going to meet\"]",
+  "S0293L01 B03 rebuilt row does not contain the LEGO: ['அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க விரும்புகிறேன்', \"I want to find out where he's going to meet\"]",
+  "S0294L01 B02 rebuilt row does not contain the LEGO: ['அழைக்க போதுமான நேரம் இல்லை', 'not enough time to call']",
+  "S0294L01 B03 rebuilt row does not contain the LEGO: ['இன்று அழைக்க போதுமான நேரம்', 'enough time to call today']",
+  "S0299L02 B02 rebuilt row does not contain the LEGO: ['அவன் இன்று பாதி செலுத்த விரும்புகிறான்', 'he wants to pay half today']",
+  "S0299L02 B03 rebuilt row does not contain the LEGO: ['அவன் பாதி செலுத்த விரும்புகிறான் என்று நினைக்கிறேன்', 'I think he wants to pay half']",
+  "S0299L02 U05 rebuilt row does not contain the LEGO: ['அவன் இப்போது பாதி செலுத்த விரும்புகிறான்', 'he wants to pay half now']"
+ ],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0025L04",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (B02 said \"I need to go now\" under \"have to go\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 25,
+    "known": "நீங்கள் போவதற்கு முன் என்னை உதவப் போகிறீர்களா?",
+    "target": "Are you going to help me before I have to go?"
+   },
+   "before": {
+    "known": "போக வேண்டும்",
+    "target": "have to go",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "போக வேண்டும்",
+    "target": "have to go",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['போக', 'வேண்டும்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0025L04C01",
+     "role": "component",
+     "before": [
+      "போக",
+      "go"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0025L04C02",
+     "role": "component",
+     "before": [
+      "வேண்டும்",
+      "have to"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0025L04B01",
+     "role": "build",
+     "before": [
+      "போக வேண்டும்",
+      "have to go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0025L04B02",
+     "role": "build",
+     "before": [
+      "இப்போது போக வேண்டும்",
+      "I need to go now"
+     ],
+     "action": [
+      "இப்போது போக வேண்டும்",
+      "have to go now"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0025L04B03",
+     "role": "build",
+     "before": [
+      "முன் போக வேண்டும்",
+      "have to go before"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0025L04U01",
+     "role": "use",
+     "before": [
+      "நான் இப்போது போக வேண்டும்",
+      "I have to go now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0025L04U02",
+     "role": "use",
+     "before": [
+      "முன் நான் போக வேண்டும்",
+      "before I have to go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0025L04U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்னை உதவப் போகிறீர்களா முன் நான் போக வேண்டும்?",
+      "are you going to help me before I have to go?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0025L04U04",
+     "role": "use",
+     "before": [
+      "ஏனென்றால் நான் போக வேண்டும்",
+      "because I have to go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0025L04U05",
+     "role": "use",
+     "before": [
+      "நான் விரைவில் போக வேண்டும்",
+      "I have to go soon"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0098L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U01 said \"I have to go now\" under \"should\". Note for the walk: வேண்டும் is \"have to\" at seed 25 and \"should\" here; the new prompt is kept different from seed 25's rows so no single prompt has two answers.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 98,
+    "known": "நான் வேறு ஏதாவது விளையாடுவதை கருத்தில் கொள்ள வேண்டும்.",
+    "target": "I should consider playing something else."
+   },
+   "before": {
+    "known": "வேண்டும்",
+    "target": "should",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "வேண்டும்",
+    "target": "should",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0098L01B01",
+     "role": "build",
+     "before": [
+      "வேண்டும்",
+      "should"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0098L01B02",
+     "role": "build",
+     "before": [
+      "நான் வேண்டும்",
+      "I should"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0098L01B03",
+     "role": "build",
+     "before": [
+      "நான் போக வேண்டும்",
+      "I should go"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0098L01U01",
+     "role": "use",
+     "before": [
+      "நான் இப்போது போக வேண்டும்",
+      "I have to go now"
+     ],
+     "action": [
+      "நான் இன்று போக வேண்டும்",
+      "I should go today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0098L01U02",
+     "role": "use",
+     "before": [
+      "நான் வீட்டிற்கு போக வேண்டும்",
+      "I should go home"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0098L01U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் கொஞ்சம் நேரம் காத்திருக்க வேண்டும்",
+      "you should wait for a while"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0098L01U04",
+     "role": "use",
+     "before": [
+      "நான் விரைவாக போக வேண்டும்",
+      "I should go quickly"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0098L01U05",
+     "role": "use",
+     "before": [
+      "நான் விரைவாக வீட்டிற்கு போக வேண்டும்",
+      "I should go home quickly"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0112L03",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row. Planning the rows here as well would plan the same basket twice. For that cut: the LEGO \"wasn't expecting it to be very interesting\" is not what the seed says (\"That was very interesting, and I wasn't expecting it\"), and five rows say other things.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 112,
+    "known": "அது மிகவும் சுவாரஸ்யமாக இருந்தது, நான் அதை எதிர்பார்க்கவில்லை.",
+    "target": "That was very interesting, and I wasn't expecting it."
+   },
+   "before": {
+    "known": "மிகவும் சுவாரஸ்யமானது எதிர்பார்க்கவில்லை",
+    "target": "wasn't expecting it to be very interesting",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0115L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 \"he doesn't feel…\".) Not fixed here: the LEGO's own English, \"don't feel as if ready\", is not sound English; the seed says \"don't feel as if I'm ready\". (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 115,
+    "known": "நான் உரையாடல் செய்ய தயாராக இருக்கிறேன் என்று உணரவில்லை.",
+    "target": "I don't feel as if I'm ready to have a conversation."
+   },
+   "before": {
+    "known": "உணரவில்லை தயாராக",
+    "target": "don't feel as if ready",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "உணரவில்லை தயாராக",
+    "target": "don't feel as if ready",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": false,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0115L03C01",
+     "role": "component",
+     "before": [
+      "தயாராக",
+      "ready"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0115L03C02",
+     "role": "component",
+     "before": [
+      "உணர்கிறேன்",
+      "feel"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0115L03B01",
+     "role": "build",
+     "before": [
+      "உணரவில்லை தயாராக",
+      "don't feel as if ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03B02",
+     "role": "build",
+     "before": [
+      "நான் உணரவில்லை தயாராக",
+      "I don't feel as if ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03B03",
+     "role": "build",
+     "before": [
+      "நான் உணரவில்லை தயாராக இன்று",
+      "I don't feel as if ready today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03U01",
+     "role": "use",
+     "before": [
+      "நான் உரையாடல் செய்ய தயாராக இருக்கிறேன் என்று உணரவில்லை",
+      "I don't feel as if ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03U02",
+     "role": "use",
+     "before": [
+      "நான் இப்போது தயாராக என்று உணரவில்லை",
+      "I don't feel as if ready now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் தயாராக என்று உணரவில்லை",
+      "you don't feel as if ready"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03U04",
+     "role": "use",
+     "before": [
+      "நான் நேற்று தயாராக என்று உணரவில்லை",
+      "I don't feel as if ready yesterday"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0115L03U05",
+     "role": "use",
+     "before": [
+      "அவன் இன்று தயாராக என்று உணரவில்லை",
+      "he doesn't feel as if ready today"
+     ],
+     "action": [
+      "அவர்கள் இன்று தயாராக என்று உணரவில்லை",
+      "they don't feel as if ready today"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0120L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U06 \"he likes…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 120,
+    "known": "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்கள் என்பது சுவாரஸ்யமானது.",
+    "target": "It's interesting that you like to go by bus."
+   },
+   "before": {
+    "known": "பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+    "target": "like to go by bus",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+    "target": "like to go by bus",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0120L02C01",
+     "role": "component",
+     "before": [
+      "பேருந்தில்",
+      "bus"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0120L02C02",
+     "role": "component",
+     "before": [
+      "விரும்புகிறேன்",
+      "like"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0120L02C03",
+     "role": "component",
+     "before": [
+      "செல்ல",
+      "go by"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0120L02B01",
+     "role": "build",
+     "before": [
+      "பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+      "like to go by bus"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02B02",
+     "role": "build",
+     "before": [
+      "நான் பேருந்தில் செல்ல விரும்புகிறேன்",
+      "I like to go by bus"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02B03",
+     "role": "build",
+     "before": [
+      "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+      "you like to go by bus"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்களா",
+      "you like to go by bus today?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02U02",
+     "role": "use",
+     "before": [
+      "நான் பேருந்தில் செல்ல விரும்புகிறேன்",
+      "I like to go by bus"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02U03",
+     "role": "use",
+     "before": [
+      "நாங்கள் பேருந்தில் செல்ல விரும்புகிறோம்",
+      "we like to go by bus"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02U05",
+     "role": "use",
+     "before": [
+      "நான் இன்று பேருந்தில் செல்ல விரும்புகிறேன்",
+      "I like to go by bus today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0120L02U06",
+     "role": "use",
+     "before": [
+      "அவன் பேருந்தில் செல்ல விரும்புகிறான்",
+      "he likes to go by bus"
+     ],
+     "action": [
+      "அவர்கள் பேருந்தில் செல்ல விரும்புகிறார்கள்",
+      "they like to go by bus"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0121L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 \"he doesn't…\".) Not fixed here: the LEGO's English \"don't use your car\" has lost the seed's \"like to\". (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 121,
+    "known": "நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது அசாதாரணமானது.",
+    "target": "It's unusual that you don't like to use your car."
+   },
+   "before": {
+    "known": "காரை பயன்படுத்த விரும்பவில்லை",
+    "target": "don't use your car",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "காரை பயன்படுத்த விரும்பவில்லை",
+    "target": "don't use your car",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": false,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0121L03C01",
+     "role": "component",
+     "before": [
+      "காரை",
+      "car"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0121L03C02",
+     "role": "component",
+     "before": [
+      "பயன்படுத்த",
+      "use"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0121L03B01",
+     "role": "build",
+     "before": [
+      "காரை பயன்படுத்த விரும்பவில்லை",
+      "don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03B02",
+     "role": "build",
+     "before": [
+      "நான் காரை பயன்படுத்த விரும்பவில்லை",
+      "I don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03B03",
+     "role": "build",
+     "before": [
+      "நீங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+      "you don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+      "you don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03U02",
+     "role": "use",
+     "before": [
+      "நான் காரை பயன்படுத்த விரும்பவில்லை",
+      "I don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03U03",
+     "role": "use",
+     "before": [
+      "உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது வித்தியாசமான",
+      "it's unusual that you don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03U04",
+     "role": "use",
+     "before": [
+      "நான் நினைக்கிறேன் நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை",
+      "I think it's unusual that you don't use your car"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0121L03U05",
+     "role": "use",
+     "before": [
+      "அவன் காரை பயன்படுத்த விரும்பவில்லை",
+      "he doesn't use your car"
+     ],
+     "action": [
+      "அவர்கள் காரை பயன்படுத்த விரும்பவில்லை",
+      "they don't use your car"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0123L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U06 \"he thinks…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 123,
+    "known": "அது ஒரு நல்ல யோசனை என்று நினைக்கிறேன்.",
+    "target": "I think that's a good idea."
+   },
+   "before": {
+    "known": "நினைக்கிறேன் நல்ல யோசனை",
+    "target": "think that's a good idea",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "நினைக்கிறேன் நல்ல யோசனை",
+    "target": "think that's a good idea",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0123L02C01",
+     "role": "component",
+     "before": [
+      "யோசனை",
+      "idea"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0123L02B01",
+     "role": "build",
+     "before": [
+      "நினைக்கிறேன் நல்ல யோசனை",
+      "think that's a good idea"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02B02",
+     "role": "build",
+     "before": [
+      "நான் நினைக்கிறேன் நல்ல யோசனை",
+      "I think that's a good idea"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02B03",
+     "role": "build",
+     "before": [
+      "நினைக்கிறேன் நல்ல யோசனை இன்று",
+      "think that's a good idea today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02U01",
+     "role": "use",
+     "before": [
+      "நான் நினைக்கிறேன் நல்ல யோசனை இன்று",
+      "I think that's a good idea today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02U02",
+     "role": "use",
+     "before": [
+      "நீங்கள் நினைக்கிறீர்களா நல்ல யோசனை",
+      "you think that's a good idea"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02U03",
+     "role": "use",
+     "before": [
+      "நான் நினைக்கிறேன் நல்ல யோசனை இப்போது",
+      "I think that's a good idea now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02U05",
+     "role": "use",
+     "before": [
+      "நாங்கள் நினைக்கிறோம் நல்ல யோசனை",
+      "we think that's a good idea"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0123L02U06",
+     "role": "use",
+     "before": [
+      "அவன் நினைக்கிறான் நல்ல யோசனை",
+      "he thinks that's a good idea"
+     ],
+     "action": [
+      "அது நல்ல யோசனை என்று அவர்கள் நினைக்கிறார்கள்",
+      "they think that's a good idea"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0125L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U06 \"he believes…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 125,
+    "known": "உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன்.",
+    "target": "I believe that your idea was very good."
+   },
+   "before": {
+    "known": "நம்புகிறேன்",
+    "target": "believe",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "நம்புகிறேன்",
+    "target": "believe",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0125L02B01",
+     "role": "build",
+     "before": [
+      "நம்புகிறேன்",
+      "believe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02B02",
+     "role": "build",
+     "before": [
+      "நான் நம்புகிறேன்",
+      "I believe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02B03",
+     "role": "build",
+     "before": [
+      "நான் நம்புகிறேன் இது",
+      "I believe this"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02U01",
+     "role": "use",
+     "before": [
+      "நான் நம்புகிறேன் அது நல்லது",
+      "I believe that is good"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02U02",
+     "role": "use",
+     "before": [
+      "நீங்கள் நம்புகிறீர்களா?",
+      "you believe today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02U04",
+     "role": "use",
+     "before": [
+      "நான் இன்று நம்புகிறேன்",
+      "I believe today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02U05",
+     "role": "use",
+     "before": [
+      "நாங்கள் நம்புகிறோம்",
+      "we believe"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0125L02U06",
+     "role": "use",
+     "before": [
+      "அவன் நம்புகிறான் அது உண்மையானது என்று",
+      "he believes that it's true"
+     ],
+     "action": [
+      "அவர்கள் இன்று நம்புகிறார்கள்",
+      "they believe today"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0125L03",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row. Planning the rows here as well would plan the same basket twice. For that cut: the LEGO's English \"believe that your idea very good\" has lost the seed's \"was\"; U05 says \"he believes\".",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 125,
+    "known": "உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறேன்.",
+    "target": "I believe that your idea was very good."
+   },
+   "before": {
+    "known": "நம்புகிறேன் உங்கள் யோசனை மிகவும் நல்லது",
+    "target": "believe that your idea very good",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0126L03",
+   "verdict": "kai",
+   "why": "HOLD: the LEGO \"changes shape\" is not the seed's words. The seed says \"is changing the shape of my brain\"; six of nine rows say \"changes the shape of my brain\" (neither the LEGO nor the seed). This needs the LEGO itself re-cut to the seed's words first (\"is changing the shape of | வடிவத்தை மாற்றுகிறது\" is the likely piece), which is the \"LEGO says what its seed does not\" family; the rows then take \"is changing the shape of\". Not planned twice here.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 126,
+    "known": "இந்த வேலை என் மூளையின் வடிவத்தை மாற்றுகிறது.",
+    "target": "This work is changing the shape of my brain."
+   },
+   "before": {
+    "known": "மாற்றுகிறது வடிவம்",
+    "target": "changes shape",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0129L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (B03 and U01 both said \"you're doing very well\" under \"doing so well\"; they were also the same row twice.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 129,
+    "known": "நீங்கள் இவ்வளவு நன்றாக செய்கிறீர்கள் என்று நான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target": "I'm so happy that you're doing so well."
+   },
+   "before": {
+    "known": "நன்றாக செய்கிறீர்கள்",
+    "target": "doing so well",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "நன்றாக செய்கிறீர்கள்",
+    "target": "doing so well",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0129L02C01",
+     "role": "component",
+     "before": [
+      "செய்கிறீர்கள்",
+      "doing"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0129L02C02",
+     "role": "component",
+     "before": [
+      "நன்றாக",
+      "so well"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0129L02B01",
+     "role": "build",
+     "before": [
+      "நன்றாக செய்கிறீர்கள்",
+      "doing so well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0129L02B02",
+     "role": "build",
+     "before": [
+      "நீங்கள் நன்றாக செய்கிறீர்கள்",
+      "you doing so well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0129L02B03",
+     "role": "build",
+     "before": [
+      "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+      "you're doing very well"
+     ],
+     "action": [
+      "நீங்கள் இவ்வளவு நன்றாக செய்கிறீர்கள்",
+      "you're doing so well"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0129L02U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+      "you're doing very well"
+     ],
+     "action": [
+      "நீங்கள் இன்று இவ்வளவு நன்றாக செய்கிறீர்கள்",
+      "you're doing so well today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0129L02U05",
+     "role": "use",
+     "before": [
+      "நீங்கள் இன்று நன்றாக செய்கிறீர்கள்",
+      "you doing so well this afternoon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0129L02U06",
+     "role": "use",
+     "before": [
+      "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள் என்று மகிழ்ச்சியாக இருக்கிறேன்",
+      "I'm happy that you're doing so well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0129L02U07",
+     "role": "use",
+     "before": [
+      "அவள் மிகவும் நன்றாக செய்கிறாள்",
+      "she is doing so well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0129L02U08",
+     "role": "use",
+     "before": [
+      "அவன் இப்போது நன்றாக செய்கிறான்",
+      "he is doing so well now"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0133L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 \"he gets to know…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 133,
+    "known": "நீங்கள் ஒன்றாக வேலை செய்யும்போது யாரையாவது மிகவும் நன்றாக அறிவீர்கள்.",
+    "target": "You get to know someone very well when you work together."
+   },
+   "before": {
+    "known": "யாரையாவது நன்றாக அறிவீர்கள்",
+    "target": "get to know someone",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "யாரையாவது நன்றாக அறிவீர்கள்",
+    "target": "get to know someone",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0133L02C01",
+     "role": "component",
+     "before": [
+      "யாரோ",
+      "someone"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0133L02B01",
+     "role": "build",
+     "before": [
+      "யாரையாவது நன்றாக அறிவீர்கள்",
+      "get to know someone"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02B02",
+     "role": "build",
+     "before": [
+      "நீங்கள் யாரையாவது மிகவும் நன்றாக அறிவீர்கள்",
+      "you get to know someone very well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02B03",
+     "role": "build",
+     "before": [
+      "நான் யாரையாவது மிகவும் நன்றாக அறிவேன்",
+      "I get to know someone very well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் யாரையாவது நன்றாக அறிவீர்கள்",
+      "you get to know someone well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02U02",
+     "role": "use",
+     "before": [
+      "நான் யாரையாவது நன்றாக அறிவேன்",
+      "I get to know someone well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் யாரையாவது நன்றாக அறிவீர்கள் இன்று",
+      "you get to know someone well today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02U04",
+     "role": "use",
+     "before": [
+      "நாங்கள் யாரையாவது நன்றாக அறிவோம்",
+      "we get to know someone well"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0133L02U05",
+     "role": "use",
+     "before": [
+      "அவன் யாரையாவது நன்றாக அறிவான்",
+      "he gets to know someone well"
+     ],
+     "action": [
+      "அவர்கள் யாரையாவது நன்றாக அறிவார்கள்",
+      "they get to know someone well"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0138L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U01 was a question \"did my friend want…\", U02 a negative \"didn't want…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 138,
+    "known": "என் நண்பன் நம்மை சந்திக்க விரும்பிய இடம் இது தான்.",
+    "target": "This was where my friend wanted to meet us."
+   },
+   "before": {
+    "known": "என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+    "target": "my friend wanted to meet us",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+    "target": "my friend wanted to meet us",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['விரும்பினான்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0138L03C01",
+     "role": "component",
+     "before": [
+      "சந்திக்க",
+      "meet"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0138L03C02",
+     "role": "component",
+     "before": [
+      "நண்பன்",
+      "friend"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0138L03C03",
+     "role": "component",
+     "before": [
+      "நம்மை",
+      "us"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0138L03B01",
+     "role": "build",
+     "before": [
+      "என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+      "my friend wanted to meet us"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0138L03B04",
+     "role": "build",
+     "before": [
+      "என் நண்பன் நம்மை சந்திக்க விரும்பினான் நேற்று",
+      "my friend wanted to meet us yesterday"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0138L03U01",
+     "role": "use",
+     "before": [
+      "என் நண்பன் நம்மை சந்திக்க விரும்பினானா?",
+      "did my friend want to meet us?"
+     ],
+     "action": [
+      "என் நண்பன் நம்மை சந்திக்க விரும்பினான் என்று நினைக்கிறேன்",
+      "I think my friend wanted to meet us"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0138L03U02",
+     "role": "use",
+     "before": [
+      "என் நண்பன் நம்மை சந்திக்க விரும்பவில்லை",
+      "my friend didn't want to meet us"
+     ],
+     "action": [
+      "என் நண்பன் நேற்று நம்மை சந்திக்க விரும்பினான்",
+      "my friend wanted to meet us yesterday"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0138L03U03",
+     "role": "use",
+     "before": [
+      "நான் நினை என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+      "I think my friend wanted to meet us"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0138L03U05",
+     "role": "use",
+     "before": [
+      "இந்த மாலை என் நண்பன் நம்மை சந்திக்க விரும்பினான்",
+      "this evening my friend wanted to meet us"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0139L03",
+   "verdict": "kai",
+   "why": "HOLD: KAI: the two sides of this SEED do not say the same thing, so no row under it can be judged. Seed 139 English: \"I'm sorry that I need to leave so early\". Tamil: \"நான் சீக்கிரம் வந்துவிட்டேன், மன்னிக்கவும்\" = \"I came early, sorry\". The LEGO \"sorry I'm early\" follows the Tamil. A seed edit is your call.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 139,
+    "known": "நான் சீக்கிரம் வந்துவிட்டேன், மன்னிக்கவும்.",
+    "target": "I'm sorry that I need to leave so early."
+   },
+   "before": {
+    "known": "மன்னிக்கவும் நான் சீக்கிரம்",
+    "target": "sorry I'm early",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0140L03",
+   "verdict": "kai",
+   "why": "HOLD: KAI: the two sides of this SEED do not say the same thing, so no row under it can be judged. Seed 140 English: \"I'm sorry that I can't see what you're trying to show me\". Tamil: \"நான் மிகவும் தாமதமாக வருவேன் என்று நினைத்தேன்\" = \"I thought I would be very late\". The LEGO \"thought going to be very late\" follows the Tamil. A seed edit is your call.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 140,
+    "known": "நான் மிகவும் தாமதமாக வருவேன் என்று நினைத்தேன்.",
+    "target": "I'm sorry that I can't see what you're trying to show me."
+   },
+   "before": {
+    "known": "நினைத்தேன் தாமதமாக வருவேன்",
+    "target": "thought going to be very late",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0143L05",
+   "verdict": "kai",
+   "why": "HOLD (small): the LEGO's English is spelt \"its the same thing as\" (no apostrophe; the seed says \"It's\"). Two rows change its form (U03 a question, U04 \"it's not\"). The spelling should be put right on the LEGO and on every row in one pass, then U03 and U04 reworded to \"it's the same thing as…\"; fixing two rows to a mis-spelt LEGO would spread the typo.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 143,
+    "known": "அதே விஷயம் தான் நாங்கள் முன்பு பேசியது.",
+    "target": "It's the same thing as we were talking about earlier."
+   },
+   "before": {
+    "known": "இது ஒரே மாதிரி விஷயம்",
+    "target": "its the same thing as",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0144L04",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U04 \"she woke earlier than she wanted to…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 144,
+    "known": "நான் இன்று காலை எழுந்திரிக்க விரும்பியதை விட முன்பே எழுந்திரித்தேன்.",
+    "target": "I woke earlier than I wanted to this morning."
+   },
+   "before": {
+    "known": "விரும்பினேன் இன்று காலை",
+    "target": "than I wanted to this morning",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "விரும்பினேன் இன்று காலை",
+    "target": "than I wanted to this morning",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['விரும்பினேன்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0144L04C01",
+     "role": "component",
+     "before": [
+      "காலை",
+      "morning"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0144L04C02",
+     "role": "component",
+     "before": [
+      "விரும்பினேன்",
+      "wanted"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0144L04C03",
+     "role": "component",
+     "before": [
+      "விட",
+      "than"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0144L04B01",
+     "role": "build",
+     "before": [
+      "விரும்பினேன் இன்று காலை",
+      "than I wanted to this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0144L04B03",
+     "role": "build",
+     "before": [
+      "நான் இன்று காலை விரும்பியதை விட முன்பே எழுந்திரித்தேன் என்று நினைக்கிறேன்",
+      "I think I woke earlier than I wanted to this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0144L04U01",
+     "role": "use",
+     "before": [
+      "நான் எழுந்திரித்தேன் முன்பே விட விரும்பினேன் இன்று காலை",
+      "I woke earlier than I wanted to this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0144L04U02",
+     "role": "use",
+     "before": [
+      "நான் நினை எழுந்திரித்தேன் முன்பே விட விரும்பினேன் இன்று காலை",
+      "I think I woke earlier than I wanted to this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0144L04U03",
+     "role": "use",
+     "before": [
+      "நான் உணர்கிறேன் எழுந்திரித்தேன் முன்பே விட விரும்பினேன் இன்று காலை",
+      "I feel I woke earlier than I wanted to this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0144L04U04",
+     "role": "use",
+     "before": [
+      "அவள் இன்று காலை விரும்பியதை விட முன்பே எழுந்திரித்தாள்",
+      "she woke earlier than she wanted to this morning"
+     ],
+     "action": [
+      "ஆம், நான் இன்று காலை விரும்பியதை விட முன்பே எழுந்திரித்தேன்",
+      "yes, I woke earlier than I wanted to this morning"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0146L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U04 \"did you try to fix it?\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 146,
+    "known": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து எதுவும் வேலை செய்வதாகத் தெரியவில்லை.",
+    "target": "Nothing seems to be working since we tried to fix it."
+   },
+   "before": {
+    "known": "முயன்றோம் சரிசெய்ய அதை",
+    "target": "tried to fix it",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "முயன்றோம் சரிசெய்ய அதை",
+    "target": "tried to fix it",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['முயன்றோம்', 'அதை']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0146L03C01",
+     "role": "component",
+     "before": [
+      "சரிசெய்ய",
+      "fix"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0146L03C02",
+     "role": "component",
+     "before": [
+      "முயன்றோம்",
+      "tried"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0146L03B01",
+     "role": "build",
+     "before": [
+      "முயன்றோம் சரிசெய்ய அதை",
+      "tried to fix it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0146L03U01",
+     "role": "use",
+     "before": [
+      "நாங்கள் முயன்றோம் சரிசெய்ய அதை",
+      "we tried to fix it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0146L03U02",
+     "role": "use",
+     "before": [
+      "நான் முயன்றேன் சரிசெய்ய அதை",
+      "I tried to fix it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0146L03U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் முயன்றீர்கள் சரிசெய்ய அதை",
+      "you tried to fix it"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0146L03U04",
+     "role": "use",
+     "before": [
+      "நீங்கள் அதை சரிசெய்ய முயன்றீர்களா?",
+      "did you try to fix it?"
+     ],
+     "action": [
+      "நீங்கள் அதை சரிசெய்ய முயன்றீர்கள்",
+      "you tried to fix it"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0146L03U05",
+     "role": "use",
+     "before": [
+      "அவன் அதை சரிசெய்ய முயன்றான்",
+      "he tried to fix it"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0147L04",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 \"did she see me…?\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 147,
+    "known": "அவள் என்னை பதட்டமாக உணரும்போது மிகவும் இரக்கமாக இருந்தாள்.",
+    "target": "She was very kind when she saw me feeling nervous."
+   },
+   "before": {
+    "known": "பார்த்தாள் என்னை உணரல் பதட்டமாக",
+    "target": "saw me feeling nervous",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "பார்த்தாள் என்னை உணரல் பதட்டமாக",
+    "target": "saw me feeling nervous",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['பார்த்தாள்', 'உணரல்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0147L04C01",
+     "role": "component",
+     "before": [
+      "உணரல்",
+      "feeling"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0147L04C02",
+     "role": "component",
+     "before": [
+      "பதட்டமாக",
+      "nervous"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0147L04C03",
+     "role": "component",
+     "before": [
+      "பார்த்தாள்",
+      "saw"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0147L04C04",
+     "role": "component",
+     "before": [
+      "என்னை",
+      "me"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0147L04B01",
+     "role": "build",
+     "before": [
+      "பார்த்தாள் என்னை உணரல் பதட்டமாக",
+      "saw me feeling nervous"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0147L04U01",
+     "role": "use",
+     "before": [
+      "அவள் பார்த்தாள் என்னை உணரல் பதட்டமாக",
+      "she saw me feeling nervous"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0147L04U02",
+     "role": "use",
+     "before": [
+      "அவன் பார்த்தான் என்னை உணரல் பதட்டமாக",
+      "he saw me feeling nervous"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0147L04U03",
+     "role": "use",
+     "before": [
+      "நான் நினை அவள் பார்த்தாள் என்னை உணரல் பதட்டமாக",
+      "I think she saw me feeling nervous"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0147L04U04",
+     "role": "use",
+     "before": [
+      "அவள் பார்த்தாள் என்னை உணரல் பதட்டமாக இன்று",
+      "she saw me feeling nervous today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0147L04U05",
+     "role": "use",
+     "before": [
+      "அவள் நான் பதட்டமாக உணர்வதைக் கண்டாளா?",
+      "did she see me feeling nervous?"
+     ],
+     "action": [
+      "அவள் நான் பதட்டமாக உணர்வதைக் கண்டாள் என்று நினைக்கிறேன்",
+      "I think she saw me feeling nervous"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0148L05",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 \"was he patient when…?\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 148,
+    "known": "நான் பதில் சொல்ல முடியாதபோது அவன் மிகவும் பொறுமையற்றவனாக இருந்தான்.",
+    "target": "He wasn't very patient when I couldn't answer."
+   },
+   "before": {
+    "known": "அவன் இல்லை மிகவும் பொறுமையான போது",
+    "target": "he wasn't very patient when",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "அவன் இல்லை மிகவும் பொறுமையான போது",
+    "target": "he wasn't very patient when",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['இல்லை', 'பொறுமையான', 'போது']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0148L05C01",
+     "role": "component",
+     "before": [
+      "பொறுமையான",
+      "patient"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0148L05C02",
+     "role": "component",
+     "before": [
+      "இல்லை",
+      "wasn't"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0148L05C03",
+     "role": "component",
+     "before": [
+      "அவன்",
+      "he"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0148L05C04",
+     "role": "component",
+     "before": [
+      "போது",
+      "when"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0148L05B01",
+     "role": "build",
+     "before": [
+      "அவன் இல்லை மிகவும் பொறுமையான போது",
+      "he wasn't very patient when"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0148L05U01",
+     "role": "use",
+     "before": [
+      "அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+      "he wasn't very patient when I couldn't answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0148L05U02",
+     "role": "use",
+     "before": [
+      "நான் நினை அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+      "I think he wasn't very patient when I couldn't answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0148L05U03",
+     "role": "use",
+     "before": [
+      "நான் உணர்கிறேன் அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+      "I feel he wasn't very patient when I couldn't answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0148L05U04",
+     "role": "use",
+     "before": [
+      "இன்று அவன் இல்லை மிகவும் பொறுமையான போது நான் முடியாத பதில் சொல்",
+      "today he wasn't very patient when I couldn't answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0148L05U05",
+     "role": "use",
+     "before": [
+      "என்னால் பதில் சொல்ல முடியாத போது அவர் பொறுமையாக இருந்தாரா?",
+      "was he patient when I couldn't answer?"
+     ],
+     "action": [
+      "நேற்று என்னால் பதில் சொல்ல முடியாத போது அவன் மிகவும் பொறுமையாக இல்லை",
+      "he wasn't very patient when I couldn't answer yesterday"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0160L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is a direct question; these rows embed it (\"tell me what you…\", \"I don't know how to…\"), which changes the English word order and drops \"do\", so they no longer hold the LEGO. Each becomes the direct question with one extra taught word (today, now, tomorrow), Tamil to match. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 160,
+    "known": "இந்த வார்த்தையை ஆங்கிலத்தில் எப்படி சொல்வீர்கள்?",
+    "target": "How do you say this word in English?"
+   },
+   "before": {
+    "known": "எப்படி நீங்கள் சொல்ல இந்த வார்த்தை",
+    "target": "how do you say this word",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "எப்படி நீங்கள் சொல்ல இந்த வார்த்தை",
+    "target": "how do you say this word",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['நீங்கள்', 'சொல்ல', 'வார்த்தை']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0160L01C01",
+     "role": "component",
+     "before": [
+      "எப்படி",
+      "how"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0160L01C02",
+     "role": "component",
+     "before": [
+      "நீங்கள்",
+      "do you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0160L01C03",
+     "role": "component",
+     "before": [
+      "சொல்ல",
+      "say"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0160L01C04",
+     "role": "component",
+     "before": [
+      "வார்த்தை",
+      "word"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0160L01B01",
+     "role": "build",
+     "before": [
+      "எப்படி நீங்கள் சொல்ல இந்த வார்த்தை?",
+      "how do you say this word?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0160L01U01",
+     "role": "use",
+     "before": [
+      "இந்த வார்த்தையை எப்படி சொல்வது என்று உங்களுக்குத் தெரியுமா?",
+      "do you know how to say this word?"
+     ],
+     "action": [
+      "இந்த வார்த்தையை இப்போது எப்படி சொல்வீர்கள்?",
+      "how do you say this word now?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0160L01U02",
+     "role": "use",
+     "before": [
+      "இந்த வார்த்தையை எப்படி சொல்வது என்று எனக்குத் தெரியவில்லை",
+      "I don't know how to say this word"
+     ],
+     "action": [
+      "இந்த வார்த்தையை நன்றாக எப்படி சொல்வீர்கள்?",
+      "how do you say this word well?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0160L01U03",
+     "role": "use",
+     "before": [
+      "இந்த வார்த்தையை எப்படி சொல்வது என்று சொல்ல முடியுமா?",
+      "can you tell me how to say this word?"
+     ],
+     "action": [
+      "இந்த வார்த்தையை இங்கே எப்படி சொல்வீர்கள்?",
+      "how do you say this word here?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0160L01U04",
+     "role": "use",
+     "before": [
+      "இந்த வார்த்தையை எப்படி சொல்வது என்று தெரிந்துகொள்ள விரும்புகிறேன்",
+      "I want to know how to say this word"
+     ],
+     "action": [
+      "இந்த வார்த்தையை இன்று எப்படி சொல்வீர்கள்?",
+      "how do you say this word today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0160L01U05",
+     "role": "use",
+     "before": [
+      "எப்படி நீங்கள் சொல்ல இந்த வார்த்தை ஆங்கிலத்தில்?",
+      "how do you say this word in English?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0162L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is a direct question; these rows embed it (\"tell me what you…\", \"I don't know how to…\"), which changes the English word order and drops \"do\", so they no longer hold the LEGO. Each becomes the direct question with one extra taught word (today, now, tomorrow), Tamil to match. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 162,
+    "known": "நீங்கள் அதை பற்றி என்ன நினைக்கிறீர்கள்?",
+    "target": "What do you think about that?"
+   },
+   "before": {
+    "known": "என்ன நீங்கள் நினைக்கிறீர்கள் பற்றி அது",
+    "target": "what do you think about that",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என்ன நீங்கள் நினைக்கிறீர்கள் பற்றி அது",
+    "target": "what do you think about that",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['அது']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0162L01C01",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0162L01C02",
+     "role": "component",
+     "before": [
+      "நீங்கள்",
+      "do you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0162L01C03",
+     "role": "component",
+     "before": [
+      "நினைக்கிறீர்கள்",
+      "think"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0162L01C04",
+     "role": "component",
+     "before": [
+      "பற்றி",
+      "about"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0162L01C05",
+     "role": "component",
+     "before": [
+      "அது",
+      "that"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0162L01B01",
+     "role": "build",
+     "before": [
+      "என்ன நீங்கள் நினைக்கிறீர்கள் பற்றி அது?",
+      "what do you think about that?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0162L01U01",
+     "role": "use",
+     "before": [
+      "சரி, அது பற்றி நீங்கள் என்ன நினைக்கிறீர்கள்?",
+      "so, what do you think about that?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0162L01U02",
+     "role": "use",
+     "before": [
+      "அது பற்றி நீங்கள் என்ன நினைக்கிறீர்கள் என்று சொல்லுங்கள்",
+      "tell me what you think about that"
+     ],
+     "action": [
+      "அது பற்றி நீங்கள் இப்போது என்ன நினைக்கிறீர்கள்?",
+      "what do you think about that now?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0162L01U03",
+     "role": "use",
+     "before": [
+      "அது பற்றி நீங்கள் என்ன நினைக்கிறீர்கள் என்று தெரிந்துகொள்ள விரும்புகிறேன்",
+      "I want to know what you think about that"
+     ],
+     "action": [
+      "அது பற்றி நீங்கள் இன்று என்ன நினைக்கிறீர்கள்?",
+      "what do you think about that today?"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0163L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U02 \"do you think…?\", U04 \"she thinks…\". U01 \"…it's very interesting\" and U03 \"I don't think…\" keep every word of the LEGO in order with one word inside it, which is allowed, and stay.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 163,
+    "known": "நான் அது சுவாரஸ்யமானது என்று நினைக்கிறேன்.",
+    "target": "I think that it's interesting."
+   },
+   "before": {
+    "known": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது",
+    "target": "I think that it's interesting",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது",
+    "target": "I think that it's interesting",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0163L01C01",
+     "role": "component",
+     "before": [
+      "நான் நினைக்கிறேன்",
+      "I think that"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0163L01C02",
+     "role": "component",
+     "before": [
+      "சுவாரஸ்யமானது",
+      "interesting"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0163L01B01",
+     "role": "build",
+     "before": [
+      "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது",
+      "I think that it's interesting"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0163L01U01",
+     "role": "use",
+     "before": [
+      "அது மிகவும் சுவாரஸ்யமானது என்று நினைக்கிறேன்",
+      "I think that it's very interesting"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0163L01U02",
+     "role": "use",
+     "before": [
+      "அது சுவாரஸ்யமானது என்று நினைக்கிறீர்களா?",
+      "do you think that it's interesting?"
+     ],
+     "action": [
+      "அது சுவாரஸ்யமானது என்று நான் இப்போது நினைக்கிறேன்",
+      "I think that it's interesting now"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0163L01U03",
+     "role": "use",
+     "before": [
+      "அது சுவாரஸ்யமானது என்று நான் நினைக்கவில்லை",
+      "I don't think that it's interesting"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0163L01U04",
+     "role": "use",
+     "before": [
+      "அது சுவாரஸ்யமானது என்று அவள் நினைக்கிறாள்",
+      "she thinks that it's interesting"
+     ],
+     "action": [
+      "ஆம், அது சுவாரஸ்யமானது என்று நான் நினைக்கிறேன்",
+      "yes, I think that it's interesting"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0163L01U05",
+     "role": "use",
+     "before": [
+      "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது ஆனால் கஷ்டம்",
+      "I think that it's interesting but difficult"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0166L01",
+   "verdict": "kai",
+   "why": "HOLD: this LEGO is also on the over-8-syllables list (item 19), whose plan re-cuts it and re-homes every row. Planning the rows here as well would plan the same basket twice. For that cut: three rows say his / her / your name under \"my name is not very unusual\".",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 166,
+    "known": "என் பெயர் மிகவும் அசாதாரணமில்லை.",
+    "target": "My name is not very unusual."
+   },
+   "before": {
+    "known": "என் பெயர் மிகவும் அசாதாரணமானது இல்லை",
+    "target": "my name is not very unusual",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0167L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is a direct question; these rows embed it (\"tell me what you…\", \"I don't know how to…\"), which changes the English word order and drops \"do\", so they no longer hold the LEGO. Each becomes the direct question with one extra taught word (today, now, tomorrow), Tamil to match. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 167,
+    "known": "நாளை மாலை நீங்கள் என்ன செய்ய வேண்டும்?",
+    "target": "What do you need to do tomorrow afternoon?"
+   },
+   "before": {
+    "known": "என்ன நீங்கள் வேண்டும் செய்ய",
+    "target": "what do you need to do",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என்ன நீங்கள் வேண்டும் செய்ய",
+    "target": "what do you need to do",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0167L01C01",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0167L01C02",
+     "role": "component",
+     "before": [
+      "நீங்கள்",
+      "do you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0167L01C03",
+     "role": "component",
+     "before": [
+      "வேண்டும்",
+      "need"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0167L01C04",
+     "role": "component",
+     "before": [
+      "செய்ய",
+      "do"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0167L01B01",
+     "role": "build",
+     "before": [
+      "நீங்கள் என்ன செய்ய வேண்டும்?",
+      "what do you need to do?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0167L01U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன செய்ய வேண்டும் என்று சொல்லுங்கள்",
+      "tell me what you need to do"
+     ],
+     "action": [
+      "நீங்கள் இன்று என்ன செய்ய வேண்டும்?",
+      "what do you need to do today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0167L01U02",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன செய்ய வேண்டும் என்று உங்களுக்குத் தெரியுமா?",
+      "do you know what you need to do?"
+     ],
+     "action": [
+      "நீங்கள் இப்போது என்ன செய்ய வேண்டும்?",
+      "what do you need to do now?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0167L01U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன செய்ய வேண்டும் என்று எனக்குத் தெரியவில்லை",
+      "I don't know what you need to do"
+     ],
+     "action": [
+      "நீங்கள் நாளை என்ன செய்ய வேண்டும்?",
+      "what do you need to do tomorrow?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0167L01U04",
+     "role": "use",
+     "before": [
+      "இப்போது நீங்கள் என்ன செய்ய வேண்டும்?",
+      "what do you need to do now?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0167L01U05",
+     "role": "use",
+     "before": [
+      "எனக்கு உதவ நீங்கள் என்ன செய்ய வேண்டும்?",
+      "what do you need to do to help me?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0169L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is a direct question; these rows embed it (\"tell me what you…\", \"I don't know how to…\"), which changes the English word order and drops \"do\", so they no longer hold the LEGO. Each becomes the direct question with one extra taught word (today, now, tomorrow), Tamil to match. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 169,
+    "known": "நீங்கள் என்னை என்ன செய்ய வேண்டும்?",
+    "target": "What do you want me to do?"
+   },
+   "before": {
+    "known": "என்ன நீங்கள் விரும்புகிறீர்கள் என்னை செய்ய",
+    "target": "what do you want me to do",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என்ன நீங்கள் விரும்புகிறீர்கள் என்னை செய்ய",
+    "target": "what do you want me to do",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['விரும்புகிறீர்கள்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0169L01C01",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0169L01C02",
+     "role": "component",
+     "before": [
+      "நீங்கள்",
+      "do you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0169L01C03",
+     "role": "component",
+     "before": [
+      "விரும்புகிறீர்கள்",
+      "want"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0169L01C04",
+     "role": "component",
+     "before": [
+      "என்னை",
+      "me"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0169L01C05",
+     "role": "component",
+     "before": [
+      "செய்ய",
+      "do"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0169L01B01",
+     "role": "build",
+     "before": [
+      "நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want me to do?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0169L01U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள் என்று சொல்லுங்கள்",
+      "tell me what you want me to do"
+     ],
+     "action": [
+      "நீங்கள் என்னை இன்று என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want me to do today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0169L01U02",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள் என்று எனக்குத் தெரியவில்லை",
+      "I don't know what you want me to do"
+     ],
+     "action": [
+      "நீங்கள் என்னை இப்போது என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want me to do now?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0169L01U03",
+     "role": "use",
+     "before": [
+      "இப்போது நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want me to do now?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0169L01U04",
+     "role": "use",
+     "before": [
+      "உதவ நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want me to do to help?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0169L01U05",
+     "role": "use",
+     "before": [
+      "இன்றிரவு நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want me to do tonight?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0170L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U02 \"I want to know what you need\" has no \"tell me\". U04 \"tell me now what you need\" keeps the LEGO with one word inside it and stays.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 170,
+    "known": "நான் உங்களுக்கு என்ன வேண்டும் என்று சொல்ல விரும்புகிறேன்.",
+    "target": "I'd like you to tell me what you need."
+   },
+   "before": {
+    "known": "சொல்ல என்னை என்ன வேண்டும்",
+    "target": "tell me what you need",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "சொல்ல என்னை என்ன வேண்டும்",
+    "target": "tell me what you need",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['என்னை']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0170L01C01",
+     "role": "component",
+     "before": [
+      "சொல்ல",
+      "tell"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0170L01C02",
+     "role": "component",
+     "before": [
+      "என்னை",
+      "me"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0170L01C03",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0170L01C04",
+     "role": "component",
+     "before": [
+      "வேண்டும்",
+      "need"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0170L01B01",
+     "role": "build",
+     "before": [
+      "உங்களுக்கு என்ன வேண்டும் என்று சொல்லுங்கள்",
+      "tell me what you need"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0170L01U01",
+     "role": "use",
+     "before": [
+      "உங்களுக்கு என்ன வேண்டும் என்று சொல்லுங்கள், நான் உதவுகிறேன்",
+      "tell me what you need and I'll help"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0170L01U02",
+     "role": "use",
+     "before": [
+      "உங்களுக்கு என்ன வேண்டும் என்று தெரிந்துகொள்ள விரும்புகிறேன்",
+      "I want to know what you need"
+     ],
+     "action": [
+      "உங்களுக்கு என்ன வேண்டும் என்று இன்று சொல்லுங்கள்",
+      "tell me what you need today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0170L01U03",
+     "role": "use",
+     "before": [
+      "உங்களுக்கு என்ன வேண்டும் என்று சொல்ல முடியுமா?",
+      "can you tell me what you need?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0170L01U04",
+     "role": "use",
+     "before": [
+      "உங்களுக்கு என்ன வேண்டும் என்று இப்போது சொல்லுங்கள்",
+      "tell me now what you need"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0170L01U05",
+     "role": "use",
+     "before": [
+      "நீங்கள் போவதற்கு முன் உங்களுக்கு என்ன வேண்டும் என்று சொல்லுங்கள்",
+      "tell me what you need before you go"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0175L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is a direct question; these rows embed it (\"tell me what you…\", \"I don't know how to…\"), which changes the English word order and drops \"do\", so they no longer hold the LEGO. Each becomes the direct question with one extra taught word (today, now, tomorrow), Tamil to match. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 175,
+    "known": "ஞாயிற்றுக்கிழமை காலை நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target": "What do you want to do on Sunday morning?"
+   },
+   "before": {
+    "known": "என்ன நீங்கள் விரும்புகிறீர்கள் செய்ய",
+    "target": "what do you want to do",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என்ன நீங்கள் விரும்புகிறீர்கள் செய்ய",
+    "target": "what do you want to do",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0175L01C01",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0175L01C02",
+     "role": "component",
+     "before": [
+      "நீங்கள்",
+      "do you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0175L01C03",
+     "role": "component",
+     "before": [
+      "விரும்புகிறீர்கள்",
+      "want to"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0175L01C04",
+     "role": "component",
+     "before": [
+      "செய்ய",
+      "do"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0175L01B01",
+     "role": "build",
+     "before": [
+      "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want to do?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0175L01U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்று சொல்லுங்கள்",
+      "tell me what you want to do"
+     ],
+     "action": [
+      "நீங்கள் இன்று என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want to do today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0175L01U02",
+     "role": "use",
+     "before": [
+      "இப்போது நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want to do now?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0175L01U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்று எனக்குத் தெரியவில்லை",
+      "I don't know what you want to do"
+     ],
+     "action": [
+      "நீங்கள் நாளை என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want to do tomorrow?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0175L01U04",
+     "role": "use",
+     "before": [
+      "ஞாயிற்றுக்கிழமை நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want to do on Sunday?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0175L01U05",
+     "role": "use",
+     "before": [
+      "இந்த மாலை நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+      "what do you want to do this evening?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0182L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U01 \"where have you seen my keys?\" drops \"anywhere\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 182,
+    "known": "நீங்கள் என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+    "target": "Have you seen my keys anywhere?"
+   },
+   "before": {
+    "known": "பார்த்தீர்களா என் சாவிகளை எங்காவது",
+    "target": "seen my keys anywhere",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "பார்த்தீர்களா என் சாவிகளை எங்காவது",
+    "target": "seen my keys anywhere",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0182L02C01",
+     "role": "component",
+     "before": [
+      "பார்த்தீர்களா",
+      "seen"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0182L02C02",
+     "role": "component",
+     "before": [
+      "என்",
+      "my"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0182L02C03",
+     "role": "component",
+     "before": [
+      "சாவிகள்",
+      "keys"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0182L02B01",
+     "role": "build",
+     "before": [
+      "பார்த்தீர்களா என் சாவிகளை எங்காவது",
+      "seen my keys anywhere"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0182L02U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் என் சாவிகளை எங்கே பார்த்தீர்கள்?",
+      "where have you seen my keys?"
+     ],
+     "action": [
+      "நீங்கள் இன்று என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+      "have you seen my keys anywhere today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0182L02U04",
+     "role": "use",
+     "before": [
+      "என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+      "have you seen my keys anywhere?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0182L02U05",
+     "role": "use",
+     "before": [
+      "இல்லை, நான் என் சாவிகளை எங்காவது பார்க்கவில்லை",
+      "no I haven't seen my keys anywhere"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0185L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U04 \"where did you leave them?\" under \"left\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 185,
+    "known": "நான் நினைக்கிறேன் நீங்கள் அவற்றை வேலையில் விட்டு.",
+    "target": "I think you left them at work."
+   },
+   "before": {
+    "known": "விட்டு",
+    "target": "left",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "விட்டு",
+    "target": "left",
+    "type": "A",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 1
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0185L01B01",
+     "role": "build",
+     "before": [
+      "விட்டு",
+      "left"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L01B02",
+     "role": "build",
+     "before": [
+      "நான் விட்டேன்",
+      "I left"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L01B03",
+     "role": "build",
+     "before": [
+      "அவற்றை விட்டேன்",
+      "left them"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L01U01",
+     "role": "use",
+     "before": [
+      "நான் அவற்றை இங்கே விட்டேன்",
+      "I left them here"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L01U02",
+     "role": "use",
+     "before": [
+      "அவன் அவற்றை வீட்டில் விட்டான்",
+      "he left them at home"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L01U03",
+     "role": "use",
+     "before": [
+      "நான் அவற்றை அலுவலகத்தில் விட்டேன் என்று நினைக்கிறேன்",
+      "I think I left them in the office"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L01U04",
+     "role": "use",
+     "before": [
+      "நீங்கள் அவற்றை எங்கே விட்டீர்கள்?",
+      "where did you leave them?"
+     ],
+     "action": [
+      "நீங்கள் அவற்றை இங்கே விட்டீர்கள்",
+      "you left them here"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0185L01U05",
+     "role": "use",
+     "before": [
+      "அவள் அவற்றை வேலையில் விட்டாள்",
+      "she left them at work"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0185L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U03 \"did I leave them at work?\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 185,
+    "known": "நான் நினைக்கிறேன் நீங்கள் அவற்றை வேலையில் விட்டு.",
+    "target": "I think you left them at work."
+   },
+   "before": {
+    "known": "விட்டு அவற்றை வேலையில்",
+    "target": "left them at work",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "விட்டு அவற்றை வேலையில்",
+    "target": "left them at work",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0185L02C01",
+     "role": "component",
+     "before": [
+      "விட்டு",
+      "left"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0185L02C02",
+     "role": "component",
+     "before": [
+      "வேலை",
+      "work"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0185L02B01",
+     "role": "build",
+     "before": [
+      "விட்டு அவற்றை வேலையில்",
+      "left them at work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L02U01",
+     "role": "use",
+     "before": [
+      "நான் அவற்றை வேலையில் விட்டேன்",
+      "I left them at work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L02U02",
+     "role": "use",
+     "before": [
+      "நான் இன்று காலை அவற்றை வேலையில் விட்டேன்",
+      "I left them at work this morning"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L02U03",
+     "role": "use",
+     "before": [
+      "நான் அவற்றை வேலையில் விட்டேனா?",
+      "did I leave them at work?"
+     ],
+     "action": [
+      "நான் அவற்றை வேலையில் விட்டேன்",
+      "I left them at work"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0185L02U04",
+     "role": "use",
+     "before": [
+      "அவன் அவற்றை வேலையில் விட்டான்",
+      "he left them at work"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0185L02U05",
+     "role": "use",
+     "before": [
+      "நான் அவற்றை வேலையில் விட்டேன் என்று நினைக்கிறேன்",
+      "I think that I left them at work"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0187L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U01 \"are you happy so far?\". U03 \"I'm very happy so far\" keeps the LEGO with one word inside it and stays.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 187,
+    "known": "நான் இதுவரை மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target": "I'm happy so far."
+   },
+   "before": {
+    "known": "நான் மகிழ்ச்சியாக இதுவரை",
+    "target": "I'm happy so far",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "நான் மகிழ்ச்சியாக இதுவரை",
+    "target": "I'm happy so far",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0187L01C01",
+     "role": "component",
+     "before": [
+      "மகிழ்ச்சியாக",
+      "happy"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0187L01C02",
+     "role": "component",
+     "before": [
+      "இதுவரை",
+      "so"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0187L01B01",
+     "role": "build",
+     "before": [
+      "நான் மகிழ்ச்சியாக இதுவரை",
+      "I'm happy so far"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0187L01U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் இதுவரை மகிழ்ச்சியாக இருக்கிறீர்களா?",
+      "are you happy so far?"
+     ],
+     "action": [
+      "ஆம், நான் இதுவரை மகிழ்ச்சியாக இருக்கிறேன்",
+      "yes, I'm happy so far"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0187L01U02",
+     "role": "use",
+     "before": [
+      "நான் இதுவரை மகிழ்ச்சியாக இருக்கிறேன் என்று நினைக்கிறேன்",
+      "I think I'm happy so far"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0187L01U03",
+     "role": "use",
+     "before": [
+      "நான் இதுவரை மிகவும் மகிழ்ச்சியாக இருக்கிறேன்",
+      "I'm very happy so far"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0188L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is the whole seed sentence and three rows drop its first word. The short cut (shrink the LEGO to the piece the rows drill) would need two more LEGOs in a one-LEGO seed, each with its own new basket, to cover the words left over; rewording three rows is the smaller sound fix, so the LEGO stays. (Rows dropped \"so\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 188,
+    "known": "அதனால் நான் மாற வேண்டியதில்லை.",
+    "target": "So I don't need to change."
+   },
+   "before": {
+    "known": "அதனால் நான் மாற வேண்டியதில்லை",
+    "target": "so I don't need to change",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "அதனால் நான் மாற வேண்டியதில்லை",
+    "target": "so I don't need to change",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0188L01C01",
+     "role": "component",
+     "before": [
+      "அதனால்",
+      "so"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0188L01C02",
+     "role": "component",
+     "before": [
+      "மாற",
+      "change"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0188L01C03",
+     "role": "component",
+     "before": [
+      "வேண்டியதில்லை",
+      "need"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0188L01B01",
+     "role": "build",
+     "before": [
+      "அதனால் நான் மாற வேண்டியதில்லை",
+      "so I don't need to change"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0188L01U01",
+     "role": "use",
+     "before": [
+      "நான் மாற வேண்டியதில்லை",
+      "I don't need to change"
+     ],
+     "action": [
+      "அதனால் நான் இன்று மாற வேண்டியதில்லை",
+      "so I don't need to change today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0188L01U02",
+     "role": "use",
+     "before": [
+      "நான் மாற வேண்டியதில்லை என்று நினைக்கிறேன்",
+      "I think I don't need to change"
+     ],
+     "action": [
+      "அதனால் நான் இப்போது மாற வேண்டியதில்லை",
+      "so I don't need to change now"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0188L01U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் மாற வேண்டியதில்லை",
+      "you don't need to change"
+     ],
+     "action": [
+      "ஆம், அதனால் நான் மாற வேண்டியதில்லை",
+      "yes, so I don't need to change"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0189L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is the whole seed sentence and three rows drop its first word. The short cut (shrink the LEGO to the piece the rows drill) would need two more LEGOs in a one-LEGO seed, each with its own new basket, to cover the words left over; rewording three rows is the smaller sound fix, so the LEGO stays. (Rows dropped \"yes\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 189,
+    "known": "ஆம் அது ஒரு நல்ல யோசனை.",
+    "target": "Yes that's a good idea."
+   },
+   "before": {
+    "known": "ஆம் அது ஒரு நல்ல யோசனை",
+    "target": "yes that's a good idea",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "ஆம் அது ஒரு நல்ல யோசனை",
+    "target": "yes that's a good idea",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0189L01C01",
+     "role": "component",
+     "before": [
+      "ஆம்",
+      "yes"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0189L01C02",
+     "role": "component",
+     "before": [
+      "அது",
+      "that"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0189L01C03",
+     "role": "component",
+     "before": [
+      "நல்ல",
+      "good"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0189L01C04",
+     "role": "component",
+     "before": [
+      "யோசனை",
+      "idea"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0189L01B01",
+     "role": "build",
+     "before": [
+      "ஆம் அது ஒரு நல்ல யோசனை",
+      "yes that's a good idea"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0189L01U01",
+     "role": "use",
+     "before": [
+      "அது ஒரு மிகவும் நல்ல யோசனை",
+      "that's a very good idea"
+     ],
+     "action": [
+      "ஆம் அது இன்று ஒரு நல்ல யோசனை",
+      "yes that's a good idea today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0189L01U02",
+     "role": "use",
+     "before": [
+      "அது ஒரு நல்ல யோசனை என்று நினைக்கிறேன்",
+      "I think that's a good idea"
+     ],
+     "action": [
+      "ஆம் அது ஒரு நல்ல யோசனை என்று நினைக்கிறேன்",
+      "yes that's a good idea, I think"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0189L01U03",
+     "role": "use",
+     "before": [
+      "அது ஒரு நல்ல யோசனையா?",
+      "is that a good idea?"
+     ],
+     "action": [
+      "ஆம் அது இப்போது ஒரு நல்ல யோசனை",
+      "yes that's a good idea now"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0191L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U04 \"we don't mind at all\". U01 \"I don't mind it at all\" keeps the LEGO with one word inside it and stays.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 191,
+    "known": "இல்லை நான் சிறிதும் கஷ்டப்படவில்லை.",
+    "target": "No I don't mind at all."
+   },
+   "before": {
+    "known": "நான் மனம் இல்லை எல்லாம்",
+    "target": "I don't mind at all",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "நான் மனம் இல்லை எல்லாம்",
+    "target": "I don't mind at all",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['மனம்', 'எல்லாம்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0191L01C01",
+     "role": "component",
+     "before": [
+      "மனம்",
+      "mind"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0191L01C02",
+     "role": "component",
+     "before": [
+      "இல்லை",
+      "no"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0191L01C03",
+     "role": "component",
+     "before": [
+      "எல்லாம்",
+      "all"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0191L01B01",
+     "role": "build",
+     "before": [
+      "எனக்கு எந்தப் பிரச்சனையும் இல்லை",
+      "I don't mind at all"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0191L01U01",
+     "role": "use",
+     "before": [
+      "எனக்கு அதில் எந்தப் பிரச்சனையும் இல்லை",
+      "I don't mind it at all"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0191L01U04",
+     "role": "use",
+     "before": [
+      "எங்களுக்கு எந்தப் பிரச்சனையும் இல்லை",
+      "we don't mind at all"
+     ],
+     "action": [
+      "இன்று எனக்கு எந்தப் பிரச்சனையும் இல்லை",
+      "I don't mind at all today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0191L01U05",
+     "role": "use",
+     "before": [
+      "இல்லை, எனக்கு எந்தப் பிரச்சனையும் இல்லை",
+      "no, I don't mind at all"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0192L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U03 \"are you busy…?\", U04 \"he is busy…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 192,
+    "known": "நாளை இரவு நான் பிஸியாக இருக்கிறேன்.",
+    "target": "I'm busy tomorrow night."
+   },
+   "before": {
+    "known": "நான் பிஸி நாளை இரவு",
+    "target": "I'm busy tomorrow night",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "நான் பிஸி நாளை இரவு",
+    "target": "I'm busy tomorrow night",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['பிஸி']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0192L02C01",
+     "role": "component",
+     "before": [
+      "பிஸி",
+      "busy"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0192L02C02",
+     "role": "component",
+     "before": [
+      "நாளை",
+      "tomorrow"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0192L02C03",
+     "role": "component",
+     "before": [
+      "இரவு",
+      "night"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0192L02B01",
+     "role": "build",
+     "before": [
+      "நான் பிஸி நாளை இரவு",
+      "I'm busy tomorrow night"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0192L02U02",
+     "role": "use",
+     "before": [
+      "நான் நாளை இரவு பிஸியாக இருக்கிறேன் என்று நினைக்கிறேன்",
+      "I think I'm busy tomorrow night"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0192L02U03",
+     "role": "use",
+     "before": [
+      "நீங்கள் நாளை இரவு பிஸியாக இருக்கிறீர்களா?",
+      "are you busy tomorrow night?"
+     ],
+     "action": [
+      "ஆம், நான் நாளை இரவு பிஸியாக இருக்கிறேன்",
+      "yes, I'm busy tomorrow night"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0192L02U04",
+     "role": "use",
+     "before": [
+      "அவர் நாளை இரவு பிஸியாக இருக்கிறார்",
+      "he is busy tomorrow night"
+     ],
+     "action": [
+      "நான் நாளை இரவு பிஸியாக இருக்கிறேன் என்று நினைக்கிறேன்",
+      "I think I'm busy tomorrow night"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0192L02U05",
+     "role": "use",
+     "before": [
+      "மன்னிக்கவும் நான் நாளை இரவு பிஸி",
+      "I'm sorry but I'm busy tomorrow night"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0194L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. The LEGO is a direct question; these rows embed it (\"tell me what you…\", \"I don't know how to…\"), which changes the English word order and drops \"do\", so they no longer hold the LEGO. Each becomes the direct question with one extra taught word (today, now, tomorrow), Tamil to match. (U01 \"what exactly are you looking for?\" keeps the LEGO with one word inside it and stays.) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 194,
+    "known": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+    "target": "What are you looking for?"
+   },
+   "before": {
+    "known": "என்ன நீங்கள் தேடுகிறீர்கள்",
+    "target": "what are you looking for",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என்ன நீங்கள் தேடுகிறீர்கள்",
+    "target": "what are you looking for",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0194L01C01",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0194L01C02",
+     "role": "component",
+     "before": [
+      "நீங்கள்",
+      "are you"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0194L01C03",
+     "role": "component",
+     "before": [
+      "தேடுகிறீர்கள்",
+      "looking for"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0194L01B01",
+     "role": "build",
+     "before": [
+      "என்ன நீங்கள் தேடுகிறீர்கள்?",
+      "what are you looking for?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0194L01U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் சரியாக எதைத் தேடுகிறீர்கள்?",
+      "what exactly are you looking for?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0194L01U02",
+     "role": "use",
+     "before": [
+      "நீங்கள் எதைத் தேடுகிறீர்கள் என்று உங்களுக்குத் தெரியுமா?",
+      "do you know what you're looking for?"
+     ],
+     "action": [
+      "நீங்கள் இன்று எதைத் தேடுகிறீர்கள்?",
+      "what are you looking for today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0194L01U04",
+     "role": "use",
+     "before": [
+      "நீங்கள் ஏதாவது தேடுகிறீர்களா?",
+      "are you looking for something?"
+     ],
+     "action": [
+      "நீங்கள் இப்போது எதைத் தேடுகிறீர்கள்?",
+      "what are you looking for now?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0194L01U05",
+     "role": "use",
+     "before": [
+      "நீங்கள் எதைத் தேடுகிறீர்கள் என்று சொல்லுங்கள்",
+      "tell me what you're looking for"
+     ],
+     "action": [
+      "நீங்கள் இங்கே எதைத் தேடுகிறீர்கள்?",
+      "what are you looking for here?"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0197L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U01 \"your son works…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 197,
+    "known": "என் மகன் ஆசிரியராக வேலை செய்கிறான்.",
+    "target": "My son works as a teacher."
+   },
+   "before": {
+    "known": "என் மகன் வேலை ஆசிரியர்",
+    "target": "my son works as a teacher",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என் மகன் வேலை ஆசிரியர்",
+    "target": "my son works as a teacher",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['ஆசிரியர்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0197L03C01",
+     "role": "component",
+     "before": [
+      "மகன்",
+      "son"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0197L03C02",
+     "role": "component",
+     "before": [
+      "ஆசிரியர்",
+      "teacher"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0197L03C03",
+     "role": "component",
+     "before": [
+      "என்",
+      "my"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0197L03B01",
+     "role": "build",
+     "before": [
+      "என் மகன் ஆசிரியராக வேலை செய்கிறான்",
+      "my son works as a teacher"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0197L03U01",
+     "role": "use",
+     "before": [
+      "உங்கள் மகன் ஆசிரியராக வேலை செய்கிறான்",
+      "your son works as a teacher"
+     ],
+     "action": [
+      "என் மகன் இங்கே ஆசிரியராக வேலை செய்கிறான்",
+      "my son works as a teacher here"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0197L03U02",
+     "role": "use",
+     "before": [
+      "என் மகன் ஆசிரியராகவும் வேலை செய்கிறான்",
+      "my son works as a teacher too"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0197L03U04",
+     "role": "use",
+     "before": [
+      "என் மகன் ஆசிரியராக வேலை செய்கிறான் என்று எனக்குத் தெரியும்",
+      "I know that my son works as a teacher"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0197L03U05",
+     "role": "use",
+     "before": [
+      "என் மகன் ஆசிரியராக வேலை செய்கிறான் என்று நினைக்கிறேன்",
+      "I think that my son works as a teacher"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0201L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 said \"what's\", a different written word from the LEGO's \"what\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 201,
+    "known": "நாம் என்ன நடக்கப் போகிறது என்று தெரிந்துகொள்ள விரும்பினோம்.",
+    "target": "We wanted to know what was going to happen."
+   },
+   "before": {
+    "known": "விரும்பினோம் தெரிந்துகொள்ள என்ன",
+    "target": "wanted to know what",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "விரும்பினோம் தெரிந்துகொள்ள என்ன",
+    "target": "wanted to know what",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0201L01C01",
+     "role": "component",
+     "before": [
+      "விரும்பினோம்",
+      "wanted to"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0201L01C02",
+     "role": "component",
+     "before": [
+      "தெரிந்துகொள்ள",
+      "know"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0201L01C03",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0201L01B01",
+     "role": "build",
+     "before": [
+      "விரும்பினோம் தெரிந்துகொள்ள என்ன",
+      "wanted to know what"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0201L01U01",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன நினைக்கிறீர்கள் என்று நான் தெரிந்துகொள்ள விரும்பினேன்",
+      "I wanted to know what you think"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0201L01U02",
+     "role": "use",
+     "before": [
+      "என்ன செய்வது என்று அவள் தெரிந்துகொள்ள விரும்பினாள்",
+      "she wanted to know what to do"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0201L01U03",
+     "role": "use",
+     "before": [
+      "நான் என்ன சொன்னேன் என்று அவர்கள் தெரிந்துகொள்ள விரும்பினார்கள்",
+      "they wanted to know what I said"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0201L01U04",
+     "role": "use",
+     "before": [
+      "நீங்கள் என்ன விரும்புகிறீர்கள் என்று அவன் தெரிந்துகொள்ள விரும்பினான்",
+      "he wanted to know what you want"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0201L01U05",
+     "role": "use",
+     "before": [
+      "என்ன நடக்கும் என்று நாங்கள் தெரிந்துகொள்ள விரும்பினோம்",
+      "we wanted to know what's going to happen"
+     ],
+     "action": [
+      "என்ன நடக்கும் என்று நாங்கள் தெரிந்துகொள்ள விரும்பினோம்",
+      "we wanted to know what is going to happen"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0203L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One build row stops at \"what would you do?\" and drops \"if I asked\"; it is reworded to hold the whole LEGO. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 203,
+    "known": "நான் உங்களை உதவ சொன்னால் நீங்கள் என்ன செய்வீர்கள்?",
+    "target": "What would you do if I asked you to help me?"
+   },
+   "before": {
+    "known": "என்ன செய்வீர்கள் கேட்டால்",
+    "target": "what would you do if I asked",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "என்ன செய்வீர்கள் கேட்டால்",
+    "target": "what would you do if I asked",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['கேட்டால்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0203L01C01",
+     "role": "component",
+     "before": [
+      "என்ன",
+      "what"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0203L01C02",
+     "role": "component",
+     "before": [
+      "செய்வீர்கள்",
+      "do"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0203L01C03",
+     "role": "component",
+     "before": [
+      "கேட்டால்",
+      "if"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0203L01B01",
+     "role": "build",
+     "before": [
+      "என்ன செய்வீர்கள் கேட்டால்?",
+      "what would you do if I asked?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0203L01B02",
+     "role": "build",
+     "before": [
+      "என்ன செய்வீர்கள்?",
+      "what would you do?"
+     ],
+     "action": [
+      "நான் இன்று கேட்டால் என்ன செய்வீர்கள்?",
+      "what would you do if I asked today?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0203L01U01",
+     "role": "use",
+     "before": [
+      "நான் உங்களை கேட்டால் என்ன செய்வீர்கள்?",
+      "what would you do if I asked you?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0203L01U02",
+     "role": "use",
+     "before": [
+      "நான் உதவி கேட்டால் என்ன செய்வீர்கள்?",
+      "what would you do if I asked for help?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0203L01U03",
+     "role": "use",
+     "before": [
+      "நான் வர கேட்டால் என்ன செய்வீர்கள்?",
+      "what would you do if I asked you to come?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0203L01U04",
+     "role": "use",
+     "before": [
+      "நான் காத்திருக்க கேட்டால் என்ன செய்வீர்கள்?",
+      "what would you do if I asked you to wait?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0203L01U05",
+     "role": "use",
+     "before": [
+      "நான் இப்போது உங்களை கேட்டால் என்ன செய்வீர்கள்?",
+      "what would you do if I asked you now?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "extra": []
+  },
+  {
+   "id": "S0262L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 262,
+    "known": "நேற்று நீங்கள் யாரிடம் பேசிக் கொண்டிருந்தீர்கள்?",
+    "target": "Who was that man you were talking to yesterday?"
+   },
+   "before": {
+    "known": "அந்த ஆண் நீங்கள் பேசி",
+    "target": "that man you were talking to",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "அந்த ஆண் நீங்கள் பேசி",
+    "target": "that man you were talking to",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['அந்த', 'ஆண்', 'பேசி']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0262L01B01",
+     "role": "build",
+     "before": [
+      "அந்த ஆண் நீங்கள் பேசி",
+      "that man you were talking to"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0262L01B02",
+     "role": "build",
+     "before": [
+      "அந்த ஆண்",
+      "that man"
+     ],
+     "action": [
+      "நீங்கள் பேசிக்கொண்டிருந்த அந்த ஆண் யார்?",
+      "who was that man you were talking to?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0262L01B03",
+     "role": "build",
+     "before": [
+      "நீங்கள் அவரிடம் பேசிக்கொண்டிருந்தீர்கள்",
+      "you were talking to him"
+     ],
+     "action": [
+      "நீங்கள் இன்று பேசிக்கொண்டிருந்த அந்த ஆண்",
+      "that man you were talking to today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0262L01U04",
+     "role": "use",
+     "before": [
+      "நீங்கள் பேசிய அந்த ஆண் யார்?",
+      "who was that man you were talking to?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0262L01U05",
+     "role": "use",
+     "before": [
+      "நீங்கள் பேசிய அந்த ஆண் எனக்குத் தெரியும்",
+      "I know that man you were talking to"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0262L01U06",
+     "role": "use",
+     "before": [
+      "நேற்று நீங்கள் பேசிய அந்த ஆண் தெரியுமா?",
+      "do you know that man you were talking to yesterday?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0262L01U07",
+     "role": "use",
+     "before": [
+      "நீங்கள் பேசிய அந்த ஆண் என் நண்பர்",
+      "that man you were talking to is my friend"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0266L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 266,
+    "known": "அவன் என் அப்பாவின் பழைய நண்பர்.",
+    "target": "He was an old friend of my father."
+   },
+   "before": {
+    "known": "வயதான நண்பர் அப்பா",
+    "target": "old friend of my father",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "வயதான நண்பர் அப்பா",
+    "target": "old friend of my father",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['வயதான', 'அப்பா']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0266L01B01",
+     "role": "build",
+     "before": [
+      "வயதான நண்பர் அப்பா",
+      "old friend of my father"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0266L01B02",
+     "role": "build",
+     "before": [
+      "பழைய நண்பர்",
+      "old friend"
+     ],
+     "action": [
+      "என் அப்பாவின் ஒரு பழைய நண்பர்",
+      "an old friend of my father"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0266L01B03",
+     "role": "build",
+     "before": [
+      "என் அப்பாவின்",
+      "of my father"
+     ],
+     "action": [
+      "அவர் என் அப்பாவின் பழைய நண்பர்",
+      "he is an old friend of my father"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0266L01U04",
+     "role": "use",
+     "before": [
+      "அவர் என் அப்பாவின் பழைய நண்பர்",
+      "he was an old friend of my father"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0266L01U05",
+     "role": "use",
+     "before": [
+      "அவள் என் அப்பாவின் பழைய நண்பர்",
+      "she is an old friend of my father"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0266L01U06",
+     "role": "use",
+     "before": [
+      "என் அப்பாவின் பழைய நண்பர் ஒருவரை தெரியும்",
+      "I know an old friend of my father"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 3
+   },
+   "extra": []
+  },
+  {
+   "id": "S0276L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. One row changes the English form of the LEGO (another person, a question, a negative or another tense), so the learner is asked for words this LEGO did not teach. The row is reworded so its English says the LEGO exactly, and the Tamil prompt is changed to match. Nothing else in the basket moves. (U05 \"staying here…\" under \"stay here…\".) (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 276,
+    "known": "இல்லை, நான் இங்கே கொஞ்சம் நேரம் நிற்கலாம்.",
+    "target": "No I can stay here for a little longer."
+   },
+   "before": {
+    "known": "இங்கே நிற்க நீண்டது",
+    "target": "stay here for a little longer",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "இங்கே நிற்க நீண்டது",
+    "target": "stay here for a little longer",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['நிற்க', 'நீண்டது']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0276L01C01",
+     "role": "component",
+     "before": [
+      "இங்கே நிற்க",
+      "stay here"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0276L01C02",
+     "role": "component",
+     "before": [
+      "நீண்டது",
+      "for a little longer"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_tam:S0276L01B01",
+     "role": "build",
+     "before": [
+      "இங்கே நிற்க நீண்டது",
+      "stay here for a little longer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0276L01U01",
+     "role": "use",
+     "before": [
+      "நான் இன்னும் சிறிது நேரம் இங்கே இருக்கலாமா?",
+      "can I stay here for a little longer?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0276L01U02",
+     "role": "use",
+     "before": [
+      "நான் இன்னும் சிறிது நேரம் இங்கே இருக்க முடியும் என்று நினைக்கிறேன்",
+      "I think I can stay here for a little longer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0276L01U04",
+     "role": "use",
+     "before": [
+      "அவர் இன்னும் சிறிது நேரம் இங்கே இருக்கலாம்",
+      "he can stay here for a little longer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0276L01U05",
+     "role": "use",
+     "before": [
+      "உங்களுடன் இன்னும் சிறிது நேரம் இங்கே இருப்பதை ஆவலுடன் எதிர்நோக்குகிறேன்",
+      "I'm looking forward to staying here for a little longer with you"
+     ],
+     "action": [
+      "உங்களுடன் இன்னும் சிறிது நேரம் இங்கே இருக்க விரும்புகிறேன்",
+      "I want to stay here for a little longer with you"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 1,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0277L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 277,
+    "known": "ஆம், அடுத்த வாரம் தொடக்கத்தில் என்னிடம் ஒரு முக்கியமான கூட்டம் உள்ளது.",
+    "target": "Yes I've got an important meeting early next week."
+   },
+   "before": {
+    "known": "கூட்டம் முன்னதாக அடுத்த வாரம்",
+    "target": "meeting early next week",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "கூட்டம் முன்னதாக அடுத்த வாரம்",
+    "target": "meeting early next week",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['முன்னதாக']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0277L02B01",
+     "role": "build",
+     "before": [
+      "கூட்டம் முன்னதாக அடுத்த வாரம்",
+      "meeting early next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0277L02B02",
+     "role": "build",
+     "before": [
+      "ஒரு கூட்டம்",
+      "a meeting"
+     ],
+     "action": [
+      "அடுத்த வாரம் தொடக்கத்தில் ஒரு கூட்டம்",
+      "a meeting early next week"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0277L02B03",
+     "role": "build",
+     "before": [
+      "அடுத்த வாரம்",
+      "next week"
+     ],
+     "action": [
+      "அடுத்த வாரம் தொடக்கத்தில் ஒரு முக்கியமான கூட்டம்",
+      "an important meeting early next week"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0277L02U04",
+     "role": "use",
+     "before": [
+      "அவருக்கு அடுத்த வாரம் முன்னதாக ஒரு கூட்டம் இருக்கிறது",
+      "he has a meeting early next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0277L02U06",
+     "role": "use",
+     "before": [
+      "எனக்கு அடுத்த வாரம் முன்னதாக ஒரு கூட்டம் இருக்கிறது",
+      "I have a meeting early next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0277L02U07",
+     "role": "use",
+     "before": [
+      "அடுத்த வாரம் முன்னதாக ஒரு கூட்டம் நடைபெறுகிறது",
+      "there is a meeting early next week"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0277L02U08",
+     "role": "use",
+     "before": [
+      "அடுத்த வாரம் முன்னதாக கூட்டம் பற்றி தெரியுமா?",
+      "do you know about the meeting early next week?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0281L03",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 281,
+    "known": "நான் காபி குடிக்கும் முன்பு தொடங்கலாமா?",
+    "target": "Do you mind if I finish my coffee before you start?"
+   },
+   "before": {
+    "known": "மனசில்லை முடிக்க காபி",
+    "target": "mind if I finish my coffee",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "மனசில்லை முடிக்க காபி",
+    "target": "mind if I finish my coffee",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['மனசில்லை', 'முடிக்க']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0281L03B01",
+     "role": "build",
+     "before": [
+      "மனசில்லை முடிக்க காபி?",
+      "mind if I finish my coffee?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0281L03B02",
+     "role": "build",
+     "before": [
+      "என் காபி முடிக்க",
+      "finish my coffee"
+     ],
+     "action": [
+      "நான் என் காபியை முடித்தால் பரவாயில்லையா?",
+      "do you mind if I finish my coffee?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0281L03B03",
+     "role": "build",
+     "before": [
+      "நான் முடித்தால் மனதில்லையா",
+      "mind if I finish"
+     ],
+     "action": [
+      "நான் இப்போது என் காபியை முடித்தால் பரவாயில்லையா?",
+      "do you mind if I finish my coffee now?"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0281L03U02",
+     "role": "use",
+     "before": [
+      "நான் என் காபி முடிக்கலாம் என்று அவன் சொன்னான்",
+      "he doesn't mind if I finish my coffee"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0281L03U05",
+     "role": "use",
+     "before": [
+      "தொடங்குவதற்கு முன்பு என் காபி முடிக்கலாமா?",
+      "do you mind if I finish my coffee before you start?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0281L03U06",
+     "role": "use",
+     "before": [
+      "என் காபி முடிக்கலாமா?",
+      "do you mind if I finish my coffee?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0281L03U07",
+     "role": "use",
+     "before": [
+      "அவள் என் காபி முடிக்கலாம் என்று சொன்னாள்",
+      "she doesn't mind if I finish my coffee"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0290L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. A third row (U03) said \"she knows\" and is reworded too. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 290,
+    "known": "அவன் பதில் தெரியுமா என்று ஆச்சரியமாக இருக்கிறேன்.",
+    "target": "I wonder if he knows the answer."
+   },
+   "before": {
+    "known": "ஆர்வம் அவன் பதில்",
+    "target": "wonder if he knows the answer",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "ஆர்வம் அவன் பதில்",
+    "target": "wonder if he knows the answer",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['ஆர்வம்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 8
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0290L01B01",
+     "role": "build",
+     "before": [
+      "ஆர்வம் அவன் பதில்",
+      "wonder if he knows the answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0290L01B02",
+     "role": "build",
+     "before": [
+      "அவனுக்குத் தெரியுமா என்று ஆர்வம்",
+      "wonder if he knows"
+     ],
+     "action": [
+      "அவனுக்கு இப்போது பதில் தெரியுமா என்று ஆர்வம்",
+      "wonder if he knows the answer now"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0290L01B03",
+     "role": "build",
+     "before": [
+      "அவனுக்குப் பதில் தெரிந்தால்",
+      "if he knows the answer"
+     ],
+     "action": [
+      "அவனுக்கு இன்று பதில் தெரியுமா என்று ஆர்வம்",
+      "wonder if he knows the answer today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0290L01U01",
+     "role": "use",
+     "before": [
+      "அவனுக்குப் பதில் தெரியுமா என்று எனக்கு ஆர்வம்",
+      "I wonder if he knows the answer"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0290L01U02",
+     "role": "use",
+     "before": [
+      "அவனுக்குப் பதில் தெரியுமா என்று உங்களுக்கு ஆர்வமா?",
+      "do you wonder if he knows the answer?"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0290L01U03",
+     "role": "use",
+     "before": [
+      "அவளுக்குப் பதில் தெரியுமா என்று எனக்கு ஆர்வம்",
+      "I wonder if she knows the answer"
+     ],
+     "action": [
+      "அவனுக்கு இன்று பதில் தெரியுமா என்று எனக்கு ஆர்வம்",
+      "I wonder if he knows the answer today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0290L01U05",
+     "role": "use",
+     "before": [
+      "அவனுக்குப் பதில் தெரியுமா என்று எங்களுக்கு ஆர்வம்",
+      "we wonder if he knows the answer"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0293L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 293,
+    "known": "அவன் என்னை எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க வேண்டும்.",
+    "target": "I have to find out where he's going to meet me."
+   },
+   "before": {
+    "known": "கண்டுபிடிக்க எங்கே சந்திக்க",
+    "target": "find out where he's going to meet",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "கண்டுபிடிக்க எங்கே சந்திக்க",
+    "target": "find out where he's going to meet",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['சந்திக்க']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0293L01B01",
+     "role": "build",
+     "before": [
+      "கண்டுபிடிக்க எங்கே சந்திக்க",
+      "find out where he's going to meet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0293L01B02",
+     "role": "build",
+     "before": [
+      "எங்கே என்று கண்டுபிடிக்க",
+      "find out where"
+     ],
+     "action": [
+      "அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க வேண்டும்",
+      "have to find out where he's going to meet"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0293L01B03",
+     "role": "build",
+     "before": [
+      "அவன் எங்கே சந்திக்கப் போகிறான்",
+      "where he's going to meet"
+     ],
+     "action": [
+      "அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க விரும்புகிறேன்",
+      "I want to find out where he's going to meet"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0293L01U01",
+     "role": "use",
+     "before": [
+      "அவன் எங்கே சந்திக்கப் போகிறான் என்று நான் கண்டுபிடிக்க வேண்டும்",
+      "I need to find out where he's going to meet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0293L01U02",
+     "role": "use",
+     "before": [
+      "அவன் எங்கே சந்திக்கப் போகிறான் என்று நான் கண்டுபிடிக்க விரும்புகிறேன்",
+      "I want to find out where he's going to meet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0293L01U03",
+     "role": "use",
+     "before": [
+      "அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க வேண்டும் என்று நினைக்கிறேன்",
+      "I think I need to find out where he's going to meet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0293L01U05",
+     "role": "use",
+     "before": [
+      "அவன் எங்கே சந்திக்கப் போகிறான் என்று நீங்கள் கண்டுபிடிக்க முடியுமா?",
+      "can you find out where he's going to meet?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0294L01",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 294,
+    "known": "இன்று இரவு உங்களுக்கு அழைக்க என்னிடம் போதுமான நேரம் இல்லை.",
+    "target": "I don't have enough time to call you tonight."
+   },
+   "before": {
+    "known": "போதும் நேரம் அழைக்க",
+    "target": "enough time to call",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "போதும் நேரம் அழைக்க",
+    "target": "enough time to call",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['போதும்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0294L01B01",
+     "role": "build",
+     "before": [
+      "போதும் நேரம் அழைக்க",
+      "enough time to call"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0294L01B02",
+     "role": "build",
+     "before": [
+      "போதுமான நேரம்",
+      "enough time"
+     ],
+     "action": [
+      "அழைக்க போதுமான நேரம் இல்லை",
+      "not enough time to call"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0294L01B03",
+     "role": "build",
+     "before": [
+      "அழைக்க நேரம்",
+      "time to call"
+     ],
+     "action": [
+      "இன்று அழைக்க போதுமான நேரம்",
+      "enough time to call today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0294L01U01",
+     "role": "use",
+     "before": [
+      "எனக்கு அழைக்க போதுமான நேரம் இல்லை",
+      "I don't have enough time to call"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0294L01U02",
+     "role": "use",
+     "before": [
+      "அவளுக்கு அழைக்க போதுமான நேரம் இல்லை",
+      "she doesn't have enough time to call"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0294L01U03",
+     "role": "use",
+     "before": [
+      "எனக்கு அழைக்க போதுமான நேரம் இருக்கிறது என்று நினைக்கிறேன்",
+      "I think I have enough time to call"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0294L01U05",
+     "role": "use",
+     "before": [
+      "உங்களுக்கு அழைக்க போதுமான நேரம் இருக்கிறதா?",
+      "do you have enough time to call?"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  },
+  {
+   "id": "S0299L02",
+   "verdict": "rebuild-rows",
+   "why": "Rule: every practice phrase under a LEGO contains the whole LEGO, in exactly the taught form. Two build rows are fragments of the LEGO (each holds only half of it). A phrase may be a fragment of a sentence but never of its LEGO; both are reworded to hold all of it. A third row (U05) was the question \"can he pay half?\" and is reworded too. (The plan tool lists reworded rows as \"not containing the LEGO\" on the Tamil side: the LEGO's Tamil is stored word-for-word in English order, and a natural Tamil prompt inflects and re-orders those words. Known-side inflection is allowed; read by hand.)",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 299,
+    "known": "அவன் பாதி செலுத்த விரும்புகிறான்.",
+    "target": "He wants to pay half."
+   },
+   "before": {
+    "known": "வேண்டும் செலுத்த பாதி",
+    "target": "wants to pay half",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "வேண்டும் செலுத்த பாதி",
+    "target": "wants to pay half",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "acknowledged": [
+    "known not a literal span of the seed: ['வேண்டும்']"
+   ],
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_tam:S0299L02B01",
+     "role": "build",
+     "before": [
+      "வேண்டும் செலுத்த பாதி",
+      "wants to pay half"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0299L02B02",
+     "role": "build",
+     "before": [
+      "செலுத்த விரும்புகிறான்",
+      "wants to pay"
+     ],
+     "action": [
+      "அவன் இன்று பாதி செலுத்த விரும்புகிறான்",
+      "he wants to pay half today"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0299L02B03",
+     "role": "build",
+     "before": [
+      "பாதி செலுத்த",
+      "pay half"
+     ],
+     "action": [
+      "அவன் பாதி செலுத்த விரும்புகிறான் என்று நினைக்கிறேன்",
+      "I think he wants to pay half"
+     ]
+    },
+    {
+     "id": "eng_for_tam:S0299L02U01",
+     "role": "use",
+     "before": [
+      "அவன் பாதி செலுத்த விரும்புகிறான்",
+      "he wants to pay half"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0299L02U02",
+     "role": "use",
+     "before": [
+      "அவள் பாதி செலுத்த விரும்புகிறாள்",
+      "she wants to pay half"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0299L02U03",
+     "role": "use",
+     "before": [
+      "அவன் பாதி செலுத்த விரும்புகிறான் என்று நினைக்கிறேன்",
+      "I think he wants to pay half"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_tam:S0299L02U05",
+     "role": "use",
+     "before": [
+      "அவன் பாதி செலுத்த முடியுமா?",
+      "can he pay half?"
+     ],
+     "action": [
+      "அவன் இப்போது பாதி செலுத்த விரும்புகிறான்",
+      "he wants to pay half now"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0025L04B02",
+   "set": {
+    "target_text": "have to go now"
+   },
+   "expect": {
+    "known_text": "இப்போது போக வேண்டும்",
+    "target_text": "I need to go now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0098L01U01",
+   "set": {
+    "known_text": "நான் இன்று போக வேண்டும்",
+    "target_text": "I should go today"
+   },
+   "expect": {
+    "known_text": "நான் இப்போது போக வேண்டும்",
+    "target_text": "I have to go now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0115L03U05",
+   "set": {
+    "known_text": "அவர்கள் இன்று தயாராக என்று உணரவில்லை",
+    "target_text": "they don't feel as if ready today"
+   },
+   "expect": {
+    "known_text": "அவன் இன்று தயாராக என்று உணரவில்லை",
+    "target_text": "he doesn't feel as if ready today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0120L02U06",
+   "set": {
+    "known_text": "அவர்கள் பேருந்தில் செல்ல விரும்புகிறார்கள்",
+    "target_text": "they like to go by bus"
+   },
+   "expect": {
+    "known_text": "அவன் பேருந்தில் செல்ல விரும்புகிறான்",
+    "target_text": "he likes to go by bus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0121L03U05",
+   "set": {
+    "known_text": "அவர்கள் காரை பயன்படுத்த விரும்பவில்லை",
+    "target_text": "they don't use your car"
+   },
+   "expect": {
+    "known_text": "அவன் காரை பயன்படுத்த விரும்பவில்லை",
+    "target_text": "he doesn't use your car"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0123L02U06",
+   "set": {
+    "known_text": "அது நல்ல யோசனை என்று அவர்கள் நினைக்கிறார்கள்",
+    "target_text": "they think that's a good idea"
+   },
+   "expect": {
+    "known_text": "அவன் நினைக்கிறான் நல்ல யோசனை",
+    "target_text": "he thinks that's a good idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0125L02U06",
+   "set": {
+    "known_text": "அவர்கள் இன்று நம்புகிறார்கள்",
+    "target_text": "they believe today"
+   },
+   "expect": {
+    "known_text": "அவன் நம்புகிறான் அது உண்மையானது என்று",
+    "target_text": "he believes that it's true"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0129L02B03",
+   "set": {
+    "known_text": "நீங்கள் இவ்வளவு நன்றாக செய்கிறீர்கள்",
+    "target_text": "you're doing so well"
+   },
+   "expect": {
+    "known_text": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+    "target_text": "you're doing very well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0129L02U01",
+   "set": {
+    "known_text": "நீங்கள் இன்று இவ்வளவு நன்றாக செய்கிறீர்கள்",
+    "target_text": "you're doing so well today"
+   },
+   "expect": {
+    "known_text": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+    "target_text": "you're doing very well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0133L02U05",
+   "set": {
+    "known_text": "அவர்கள் யாரையாவது நன்றாக அறிவார்கள்",
+    "target_text": "they get to know someone well"
+   },
+   "expect": {
+    "known_text": "அவன் யாரையாவது நன்றாக அறிவான்",
+    "target_text": "he gets to know someone well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0138L03U01",
+   "set": {
+    "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினான் என்று நினைக்கிறேன்",
+    "target_text": "I think my friend wanted to meet us"
+   },
+   "expect": {
+    "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பினானா?",
+    "target_text": "did my friend want to meet us?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0138L03U02",
+   "set": {
+    "known_text": "என் நண்பன் நேற்று நம்மை சந்திக்க விரும்பினான்",
+    "target_text": "my friend wanted to meet us yesterday"
+   },
+   "expect": {
+    "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பவில்லை",
+    "target_text": "my friend didn't want to meet us"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0144L04U04",
+   "set": {
+    "known_text": "ஆம், நான் இன்று காலை விரும்பியதை விட முன்பே எழுந்திரித்தேன்",
+    "target_text": "yes, I woke earlier than I wanted to this morning"
+   },
+   "expect": {
+    "known_text": "அவள் இன்று காலை விரும்பியதை விட முன்பே எழுந்திரித்தாள்",
+    "target_text": "she woke earlier than she wanted to this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0146L03U04",
+   "set": {
+    "known_text": "நீங்கள் அதை சரிசெய்ய முயன்றீர்கள்",
+    "target_text": "you tried to fix it"
+   },
+   "expect": {
+    "known_text": "நீங்கள் அதை சரிசெய்ய முயன்றீர்களா?",
+    "target_text": "did you try to fix it?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0147L04U05",
+   "set": {
+    "known_text": "அவள் நான் பதட்டமாக உணர்வதைக் கண்டாள் என்று நினைக்கிறேன்",
+    "target_text": "I think she saw me feeling nervous"
+   },
+   "expect": {
+    "known_text": "அவள் நான் பதட்டமாக உணர்வதைக் கண்டாளா?",
+    "target_text": "did she see me feeling nervous?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0148L05U05",
+   "set": {
+    "known_text": "நேற்று என்னால் பதில் சொல்ல முடியாத போது அவன் மிகவும் பொறுமையாக இல்லை",
+    "target_text": "he wasn't very patient when I couldn't answer yesterday"
+   },
+   "expect": {
+    "known_text": "என்னால் பதில் சொல்ல முடியாத போது அவர் பொறுமையாக இருந்தாரா?",
+    "target_text": "was he patient when I couldn't answer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0160L01U01",
+   "set": {
+    "known_text": "இந்த வார்த்தையை இப்போது எப்படி சொல்வீர்கள்?",
+    "target_text": "how do you say this word now?"
+   },
+   "expect": {
+    "known_text": "இந்த வார்த்தையை எப்படி சொல்வது என்று உங்களுக்குத் தெரியுமா?",
+    "target_text": "do you know how to say this word?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0160L01U02",
+   "set": {
+    "known_text": "இந்த வார்த்தையை நன்றாக எப்படி சொல்வீர்கள்?",
+    "target_text": "how do you say this word well?"
+   },
+   "expect": {
+    "known_text": "இந்த வார்த்தையை எப்படி சொல்வது என்று எனக்குத் தெரியவில்லை",
+    "target_text": "I don't know how to say this word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0160L01U03",
+   "set": {
+    "known_text": "இந்த வார்த்தையை இங்கே எப்படி சொல்வீர்கள்?",
+    "target_text": "how do you say this word here?"
+   },
+   "expect": {
+    "known_text": "இந்த வார்த்தையை எப்படி சொல்வது என்று சொல்ல முடியுமா?",
+    "target_text": "can you tell me how to say this word?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0160L01U04",
+   "set": {
+    "known_text": "இந்த வார்த்தையை இன்று எப்படி சொல்வீர்கள்?",
+    "target_text": "how do you say this word today?"
+   },
+   "expect": {
+    "known_text": "இந்த வார்த்தையை எப்படி சொல்வது என்று தெரிந்துகொள்ள விரும்புகிறேன்",
+    "target_text": "I want to know how to say this word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0162L01U02",
+   "set": {
+    "known_text": "அது பற்றி நீங்கள் இப்போது என்ன நினைக்கிறீர்கள்?",
+    "target_text": "what do you think about that now?"
+   },
+   "expect": {
+    "known_text": "அது பற்றி நீங்கள் என்ன நினைக்கிறீர்கள் என்று சொல்லுங்கள்",
+    "target_text": "tell me what you think about that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0162L01U03",
+   "set": {
+    "known_text": "அது பற்றி நீங்கள் இன்று என்ன நினைக்கிறீர்கள்?",
+    "target_text": "what do you think about that today?"
+   },
+   "expect": {
+    "known_text": "அது பற்றி நீங்கள் என்ன நினைக்கிறீர்கள் என்று தெரிந்துகொள்ள விரும்புகிறேன்",
+    "target_text": "I want to know what you think about that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0163L01U02",
+   "set": {
+    "known_text": "அது சுவாரஸ்யமானது என்று நான் இப்போது நினைக்கிறேன்",
+    "target_text": "I think that it's interesting now"
+   },
+   "expect": {
+    "known_text": "அது சுவாரஸ்யமானது என்று நினைக்கிறீர்களா?",
+    "target_text": "do you think that it's interesting?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0163L01U04",
+   "set": {
+    "known_text": "ஆம், அது சுவாரஸ்யமானது என்று நான் நினைக்கிறேன்",
+    "target_text": "yes, I think that it's interesting"
+   },
+   "expect": {
+    "known_text": "அது சுவாரஸ்யமானது என்று அவள் நினைக்கிறாள்",
+    "target_text": "she thinks that it's interesting"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0167L01U01",
+   "set": {
+    "known_text": "நீங்கள் இன்று என்ன செய்ய வேண்டும்?",
+    "target_text": "what do you need to do today?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன செய்ய வேண்டும் என்று சொல்லுங்கள்",
+    "target_text": "tell me what you need to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0167L01U02",
+   "set": {
+    "known_text": "நீங்கள் இப்போது என்ன செய்ய வேண்டும்?",
+    "target_text": "what do you need to do now?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன செய்ய வேண்டும் என்று உங்களுக்குத் தெரியுமா?",
+    "target_text": "do you know what you need to do?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0167L01U03",
+   "set": {
+    "known_text": "நீங்கள் நாளை என்ன செய்ய வேண்டும்?",
+    "target_text": "what do you need to do tomorrow?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன செய்ய வேண்டும் என்று எனக்குத் தெரியவில்லை",
+    "target_text": "I don't know what you need to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0169L01U01",
+   "set": {
+    "known_text": "நீங்கள் என்னை இன்று என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target_text": "what do you want me to do today?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள் என்று சொல்லுங்கள்",
+    "target_text": "tell me what you want me to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0169L01U02",
+   "set": {
+    "known_text": "நீங்கள் என்னை இப்போது என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target_text": "what do you want me to do now?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்னை என்ன செய்ய விரும்புகிறீர்கள் என்று எனக்குத் தெரியவில்லை",
+    "target_text": "I don't know what you want me to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0170L01U02",
+   "set": {
+    "known_text": "உங்களுக்கு என்ன வேண்டும் என்று இன்று சொல்லுங்கள்",
+    "target_text": "tell me what you need today"
+   },
+   "expect": {
+    "known_text": "உங்களுக்கு என்ன வேண்டும் என்று தெரிந்துகொள்ள விரும்புகிறேன்",
+    "target_text": "I want to know what you need"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0175L01U01",
+   "set": {
+    "known_text": "நீங்கள் இன்று என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target_text": "what do you want to do today?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்று சொல்லுங்கள்",
+    "target_text": "tell me what you want to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0175L01U03",
+   "set": {
+    "known_text": "நீங்கள் நாளை என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target_text": "what do you want to do tomorrow?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்று எனக்குத் தெரியவில்லை",
+    "target_text": "I don't know what you want to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0182L02U01",
+   "set": {
+    "known_text": "நீங்கள் இன்று என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+    "target_text": "have you seen my keys anywhere today?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என் சாவிகளை எங்கே பார்த்தீர்கள்?",
+    "target_text": "where have you seen my keys?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0185L01U04",
+   "set": {
+    "known_text": "நீங்கள் அவற்றை இங்கே விட்டீர்கள்",
+    "target_text": "you left them here"
+   },
+   "expect": {
+    "known_text": "நீங்கள் அவற்றை எங்கே விட்டீர்கள்?",
+    "target_text": "where did you leave them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0185L02U03",
+   "set": {
+    "known_text": "நான் அவற்றை வேலையில் விட்டேன்",
+    "target_text": "I left them at work"
+   },
+   "expect": {
+    "known_text": "நான் அவற்றை வேலையில் விட்டேனா?",
+    "target_text": "did I leave them at work?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0187L01U01",
+   "set": {
+    "known_text": "ஆம், நான் இதுவரை மகிழ்ச்சியாக இருக்கிறேன்",
+    "target_text": "yes, I'm happy so far"
+   },
+   "expect": {
+    "known_text": "நீங்கள் இதுவரை மகிழ்ச்சியாக இருக்கிறீர்களா?",
+    "target_text": "are you happy so far?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0188L01U01",
+   "set": {
+    "known_text": "அதனால் நான் இன்று மாற வேண்டியதில்லை",
+    "target_text": "so I don't need to change today"
+   },
+   "expect": {
+    "known_text": "நான் மாற வேண்டியதில்லை",
+    "target_text": "I don't need to change"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0188L01U02",
+   "set": {
+    "known_text": "அதனால் நான் இப்போது மாற வேண்டியதில்லை",
+    "target_text": "so I don't need to change now"
+   },
+   "expect": {
+    "known_text": "நான் மாற வேண்டியதில்லை என்று நினைக்கிறேன்",
+    "target_text": "I think I don't need to change"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0188L01U03",
+   "set": {
+    "known_text": "ஆம், அதனால் நான் மாற வேண்டியதில்லை",
+    "target_text": "yes, so I don't need to change"
+   },
+   "expect": {
+    "known_text": "நீங்கள் மாற வேண்டியதில்லை",
+    "target_text": "you don't need to change"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0189L01U01",
+   "set": {
+    "known_text": "ஆம் அது இன்று ஒரு நல்ல யோசனை",
+    "target_text": "yes that's a good idea today"
+   },
+   "expect": {
+    "known_text": "அது ஒரு மிகவும் நல்ல யோசனை",
+    "target_text": "that's a very good idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0189L01U02",
+   "set": {
+    "known_text": "ஆம் அது ஒரு நல்ல யோசனை என்று நினைக்கிறேன்",
+    "target_text": "yes that's a good idea, I think"
+   },
+   "expect": {
+    "known_text": "அது ஒரு நல்ல யோசனை என்று நினைக்கிறேன்",
+    "target_text": "I think that's a good idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0189L01U03",
+   "set": {
+    "known_text": "ஆம் அது இப்போது ஒரு நல்ல யோசனை",
+    "target_text": "yes that's a good idea now"
+   },
+   "expect": {
+    "known_text": "அது ஒரு நல்ல யோசனையா?",
+    "target_text": "is that a good idea?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0191L01U04",
+   "set": {
+    "known_text": "இன்று எனக்கு எந்தப் பிரச்சனையும் இல்லை",
+    "target_text": "I don't mind at all today"
+   },
+   "expect": {
+    "known_text": "எங்களுக்கு எந்தப் பிரச்சனையும் இல்லை",
+    "target_text": "we don't mind at all"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0192L02U03",
+   "set": {
+    "known_text": "ஆம், நான் நாளை இரவு பிஸியாக இருக்கிறேன்",
+    "target_text": "yes, I'm busy tomorrow night"
+   },
+   "expect": {
+    "known_text": "நீங்கள் நாளை இரவு பிஸியாக இருக்கிறீர்களா?",
+    "target_text": "are you busy tomorrow night?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0192L02U04",
+   "set": {
+    "known_text": "நான் நாளை இரவு பிஸியாக இருக்கிறேன் என்று நினைக்கிறேன்",
+    "target_text": "I think I'm busy tomorrow night"
+   },
+   "expect": {
+    "known_text": "அவர் நாளை இரவு பிஸியாக இருக்கிறார்",
+    "target_text": "he is busy tomorrow night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0194L01U02",
+   "set": {
+    "known_text": "நீங்கள் இன்று எதைத் தேடுகிறீர்கள்?",
+    "target_text": "what are you looking for today?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் எதைத் தேடுகிறீர்கள் என்று உங்களுக்குத் தெரியுமா?",
+    "target_text": "do you know what you're looking for?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0194L01U04",
+   "set": {
+    "known_text": "நீங்கள் இப்போது எதைத் தேடுகிறீர்கள்?",
+    "target_text": "what are you looking for now?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் ஏதாவது தேடுகிறீர்களா?",
+    "target_text": "are you looking for something?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0194L01U05",
+   "set": {
+    "known_text": "நீங்கள் இங்கே எதைத் தேடுகிறீர்கள்?",
+    "target_text": "what are you looking for here?"
+   },
+   "expect": {
+    "known_text": "நீங்கள் எதைத் தேடுகிறீர்கள் என்று சொல்லுங்கள்",
+    "target_text": "tell me what you're looking for"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0197L03U01",
+   "set": {
+    "known_text": "என் மகன் இங்கே ஆசிரியராக வேலை செய்கிறான்",
+    "target_text": "my son works as a teacher here"
+   },
+   "expect": {
+    "known_text": "உங்கள் மகன் ஆசிரியராக வேலை செய்கிறான்",
+    "target_text": "your son works as a teacher"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0201L01U05",
+   "set": {
+    "target_text": "we wanted to know what is going to happen"
+   },
+   "expect": {
+    "known_text": "என்ன நடக்கும் என்று நாங்கள் தெரிந்துகொள்ள விரும்பினோம்",
+    "target_text": "we wanted to know what's going to happen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0203L01B02",
+   "set": {
+    "known_text": "நான் இன்று கேட்டால் என்ன செய்வீர்கள்?",
+    "target_text": "what would you do if I asked today?"
+   },
+   "expect": {
+    "known_text": "என்ன செய்வீர்கள்?",
+    "target_text": "what would you do?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0262L01B02",
+   "set": {
+    "known_text": "நீங்கள் பேசிக்கொண்டிருந்த அந்த ஆண் யார்?",
+    "target_text": "who was that man you were talking to?"
+   },
+   "expect": {
+    "known_text": "அந்த ஆண்",
+    "target_text": "that man"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0262L01B03",
+   "set": {
+    "known_text": "நீங்கள் இன்று பேசிக்கொண்டிருந்த அந்த ஆண்",
+    "target_text": "that man you were talking to today"
+   },
+   "expect": {
+    "known_text": "நீங்கள் அவரிடம் பேசிக்கொண்டிருந்தீர்கள்",
+    "target_text": "you were talking to him"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0266L01B02",
+   "set": {
+    "known_text": "என் அப்பாவின் ஒரு பழைய நண்பர்",
+    "target_text": "an old friend of my father"
+   },
+   "expect": {
+    "known_text": "பழைய நண்பர்",
+    "target_text": "old friend"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0266L01B03",
+   "set": {
+    "known_text": "அவர் என் அப்பாவின் பழைய நண்பர்",
+    "target_text": "he is an old friend of my father"
+   },
+   "expect": {
+    "known_text": "என் அப்பாவின்",
+    "target_text": "of my father"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0276L01U05",
+   "set": {
+    "known_text": "உங்களுடன் இன்னும் சிறிது நேரம் இங்கே இருக்க விரும்புகிறேன்",
+    "target_text": "I want to stay here for a little longer with you"
+   },
+   "expect": {
+    "known_text": "உங்களுடன் இன்னும் சிறிது நேரம் இங்கே இருப்பதை ஆவலுடன் எதிர்நோக்குகிறேன்",
+    "target_text": "I'm looking forward to staying here for a little longer with you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0277L02B02",
+   "set": {
+    "known_text": "அடுத்த வாரம் தொடக்கத்தில் ஒரு கூட்டம்",
+    "target_text": "a meeting early next week"
+   },
+   "expect": {
+    "known_text": "ஒரு கூட்டம்",
+    "target_text": "a meeting"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0277L02B03",
+   "set": {
+    "known_text": "அடுத்த வாரம் தொடக்கத்தில் ஒரு முக்கியமான கூட்டம்",
+    "target_text": "an important meeting early next week"
+   },
+   "expect": {
+    "known_text": "அடுத்த வாரம்",
+    "target_text": "next week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0281L03B02",
+   "set": {
+    "known_text": "நான் என் காபியை முடித்தால் பரவாயில்லையா?",
+    "target_text": "do you mind if I finish my coffee?"
+   },
+   "expect": {
+    "known_text": "என் காபி முடிக்க",
+    "target_text": "finish my coffee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0281L03B03",
+   "set": {
+    "known_text": "நான் இப்போது என் காபியை முடித்தால் பரவாயில்லையா?",
+    "target_text": "do you mind if I finish my coffee now?"
+   },
+   "expect": {
+    "known_text": "நான் முடித்தால் மனதில்லையா",
+    "target_text": "mind if I finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0290L01B02",
+   "set": {
+    "known_text": "அவனுக்கு இப்போது பதில் தெரியுமா என்று ஆர்வம்",
+    "target_text": "wonder if he knows the answer now"
+   },
+   "expect": {
+    "known_text": "அவனுக்குத் தெரியுமா என்று ஆர்வம்",
+    "target_text": "wonder if he knows"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0290L01B03",
+   "set": {
+    "known_text": "அவனுக்கு இன்று பதில் தெரியுமா என்று ஆர்வம்",
+    "target_text": "wonder if he knows the answer today"
+   },
+   "expect": {
+    "known_text": "அவனுக்குப் பதில் தெரிந்தால்",
+    "target_text": "if he knows the answer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0290L01U03",
+   "set": {
+    "known_text": "அவனுக்கு இன்று பதில் தெரியுமா என்று எனக்கு ஆர்வம்",
+    "target_text": "I wonder if he knows the answer today"
+   },
+   "expect": {
+    "known_text": "அவளுக்குப் பதில் தெரியுமா என்று எனக்கு ஆர்வம்",
+    "target_text": "I wonder if she knows the answer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0293L01B02",
+   "set": {
+    "known_text": "அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க வேண்டும்",
+    "target_text": "have to find out where he's going to meet"
+   },
+   "expect": {
+    "known_text": "எங்கே என்று கண்டுபிடிக்க",
+    "target_text": "find out where"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0293L01B03",
+   "set": {
+    "known_text": "அவன் எங்கே சந்திக்கப் போகிறான் என்று கண்டுபிடிக்க விரும்புகிறேன்",
+    "target_text": "I want to find out where he's going to meet"
+   },
+   "expect": {
+    "known_text": "அவன் எங்கே சந்திக்கப் போகிறான்",
+    "target_text": "where he's going to meet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0294L01B02",
+   "set": {
+    "known_text": "அழைக்க போதுமான நேரம் இல்லை",
+    "target_text": "not enough time to call"
+   },
+   "expect": {
+    "known_text": "போதுமான நேரம்",
+    "target_text": "enough time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0294L01B03",
+   "set": {
+    "known_text": "இன்று அழைக்க போதுமான நேரம்",
+    "target_text": "enough time to call today"
+   },
+   "expect": {
+    "known_text": "அழைக்க நேரம்",
+    "target_text": "time to call"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0299L02B02",
+   "set": {
+    "known_text": "அவன் இன்று பாதி செலுத்த விரும்புகிறான்",
+    "target_text": "he wants to pay half today"
+   },
+   "expect": {
+    "known_text": "செலுத்த விரும்புகிறான்",
+    "target_text": "wants to pay"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0299L02B03",
+   "set": {
+    "known_text": "அவன் பாதி செலுத்த விரும்புகிறான் என்று நினைக்கிறேன்",
+    "target_text": "I think he wants to pay half"
+   },
+   "expect": {
+    "known_text": "பாதி செலுத்த",
+    "target_text": "pay half"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0299L02U05",
+   "set": {
+    "known_text": "அவன் இப்போது பாதி செலுத்த விரும்புகிறான்",
+    "target_text": "he wants to pay half now"
+   },
+   "expect": {
+    "known_text": "அவன் பாதி செலுத்த முடியுமா?",
+    "target_text": "can he pay half?"
+   }
+  }
+ ]
+}
