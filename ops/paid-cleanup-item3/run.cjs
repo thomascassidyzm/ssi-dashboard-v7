@@ -15,6 +15,8 @@
 //   node run.cjs batch <course> <plan.tsv> [--apply]   edit-batch (dry run unless --apply) of the rows that PASSED the gate
 //                                              → out/<course>/<plan>.{dry,apply}.json (the apply answer carries the undo)
 //   node run.cjs readback <course> <plan.tsv>  live known_text of every planned row (via GET .../lego/:id/basket) → <plan>.readback.json
+// cs #968·AI: every Popty call here needs --live-ok '<why>' AND 22:00-07:00 UK (ops/paid-cleanup-livegate.cjs, exit 77).
+const LIVEGATE = require('../paid-cleanup-livegate.cjs'); LIVEGATE.install();
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -38,6 +40,7 @@ function signed(method, url, body) {
   }
 }
 function signedOnce(method, url, body) {
+  LIVEGATE.requireLive(`item3 run.cjs signed ${method} ${url.split('?')[0]}`);
   const args = [path.join(ROOT, 'tools/agent-admin/call.cjs'), '--key', 'kai', '--agent', KAI_AGENT, method, url];
   let tmp;
   if (body !== undefined) { tmp = path.join(SCR, `body-${process.pid}-${Date.now()}.json`); fs.writeFileSync(tmp, JSON.stringify(body)); args.push('--body-file', tmp); }
@@ -145,9 +148,10 @@ async function batch(c, file, apply) {
   if (!ops.length) return console.log('nothing to send');
   // ≤50 ops per request with a 2 s pause (#726·AI, after the 18 Nov DB hold): one event per chunk, every answer kept.
   const all = [];
-  for (let i = 0; i < ops.length; i += 50) {
+  const step = apply ? 50 : LIVEGATE.MAX_CHUNK; // cs #968·AI: dry runs in chunks of <= 10
+  for (let i = 0; i < ops.length; i += step) {
     if (i) execFileSync('sleep', ['2']);
-    const part = ops.slice(i, i + 50);
+    const part = ops.slice(i, i + step);
     const body = { ops: part, apply: !!apply, note: `paid cleanup item 3 (${g.plan}): known prompt rewritten to say what the English says — Kai approved 18 Nov (cs #699·AI, resumed #726·AI)` };
     const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ...body, kai_go: 'Kai 18 Nov 2026: "Yes, though I\'d do it carefully - make sure everything passes the builder validator"' });
     all.push(r);
@@ -207,9 +211,10 @@ async function link(c, file, apply) {
   }
   if (!ops.length) return console.log(`${c} ${path.basename(file)} link: nothing to link`);
   const all = [];
-  for (let i = 0; i < ops.length; i += 50) { // ≤50 per request, 2 s apart (#726·AI)
+  const step = apply ? 50 : LIVEGATE.MAX_CHUNK; // cs #968·AI: dry runs in chunks of <= 10
+  for (let i = 0; i < ops.length; i += step) { // ≤50 per request, 2 s apart (#726·AI)
     if (i) execFileSync('sleep', ['2']);
-    const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ops: ops.slice(i, i + 50), apply: !!apply, note: `paid cleanup item 3: new known clips linked (cs #699·AI, resumed #726·AI)` });
+    const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ops: ops.slice(i, i + step), apply: !!apply, note: `paid cleanup item 3: new known clips linked (cs #699·AI, resumed #726·AI)` });
     all.push(r);
     console.log(`${c} ${path.basename(file)} link ${apply ? 'APPLY' : 'dry'} [${i}..): ok=${r.ok} event=${r.event_id || '-'} changed=${(r.results || []).filter((x) => x.changed).length} ${r.error || ''} ${r.code || ''}`);
     if (!r.ok) break;
@@ -219,6 +224,7 @@ async function link(c, file, apply) {
 
 (async () => {
   const [cmd, c, file, flag] = process.argv.slice(2);
+  if (['audio', 'link', 'read', 'gate', 'batch', 'readback'].includes(cmd)) LIVEGATE.requireLive(`item3 run.cjs ${cmd} ${c || ''}`);
   if (cmd === 'audio') return audio(c, file, flag === '--render');
   if (cmd === 'link') return link(c, file, flag === '--apply');
   if (cmd === 'read') return read(c);

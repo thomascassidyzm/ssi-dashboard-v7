@@ -16,6 +16,15 @@ decisions/<course>.json = {"course":..,"legos":[{
 Unlisted basket rows: kept if they still contain the new LEGO on both sides; if only the known side lacks the new gloss
 and the OLD gloss appears in it as whole words, the old gloss is substituted (listed as "auto" for hand read-back, R0.13);
 otherwise the row is UNDECIDED and the plan fails until decided."""
+# cs #968·AI: live gate. Every urlopen to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given
+# (put it last) AND it is 22:00-07:00 Europe/London. ops/paid_cleanup_livegate.py.
+import os as _lg_os, sys as _lg_sys
+_lg_d = _lg_os.path.dirname(_lg_os.path.realpath(__file__))
+while not _lg_os.path.exists(_lg_os.path.join(_lg_d, 'paid_cleanup_livegate.py')) and _lg_d != '/':
+    _lg_d = _lg_os.path.dirname(_lg_d)
+_lg_sys.path.insert(0, _lg_d)
+import paid_cleanup_livegate as livegate
+livegate.install()
 import json, os, re, sys, unicodedata, urllib.request, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))

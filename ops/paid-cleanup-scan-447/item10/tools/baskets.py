@@ -2,6 +2,15 @@
 """READ-ONLY (cs #714·AI): full phrase rows (incl. target_text_roman) for the LEGOs a plan touches, via Popty's
 GET /api/production/<course>/lego/<id>/basket. Writes $CS_SCRATCH/baskets-<course>.json {lego_id: [rows]} for plan.py
 (romanisation of changed rows) and lexicon_zho.py. usage: python3 -I baskets.py <course> <dump.json> [--all]"""
+# cs #968·AI: live gate. Every urlopen to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given
+# (put it last) AND it is 22:00-07:00 Europe/London. ops/paid_cleanup_livegate.py.
+import os as _lg_os, sys as _lg_sys
+_lg_d = _lg_os.path.dirname(_lg_os.path.realpath(__file__))
+while not _lg_os.path.exists(_lg_os.path.join(_lg_d, 'paid_cleanup_livegate.py')) and _lg_d != '/':
+    _lg_d = _lg_os.path.dirname(_lg_d)
+_lg_sys.path.insert(0, _lg_d)
+import paid_cleanup_livegate as livegate
+livegate.install()
 import json, os, sys, urllib.request, concurrent.futures as cf
 course, dumpf = sys.argv[1], sys.argv[2]
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
