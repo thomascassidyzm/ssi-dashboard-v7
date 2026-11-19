@@ -139,7 +139,26 @@ async function main() {
         console.log(`  batch ${batchNo}: ${pending.length} op(s) ${args.dryRun ? 'pass dry run' : `applied (event ${r.json.event_id || '?'}, undo ${r.json.undo_file || '-'})`} — governor ${gov.status().level} ${gov.status().rate}`)
         break
       }
-      const idx = Number.isInteger(r.json.index) && r.json.index >= 0 && r.json.index < pending.length ? r.json.index : null
+      let idx = Number.isInteger(r.json.index) && r.json.index >= 0 && r.json.index < pending.length ? r.json.index : null
+      // A DB constraint error (e.g. 409 duplicate key on (course, seed, lego_index, position)) comes back with no op
+      // index, which used to stop the whole course (item 12, 19 Nov: one clash at eng_for_ben batch 15 left 36
+      // courses unrun). Find the op instead: the shortest failing prefix, by rolled-back dry runs (≤ 7 for a batch of
+      // 100). Its last op is the culprit; it is set aside as refused below, never forced, and the batch carries on.
+      if (idx === null && (r.status === 409 || r.status === 400) && pending.length > 1 && !args.dryRun) {
+        const fails = async (k) => {
+          const p = await gov.run(() => post(args, course, { ops: pending.slice(0, k).map((i) => ops[i]), apply: false, changeset: { id: header.id, batch: batchNo, probe: 'locate' }, ...extras })).catch(() => ({ status: 0, json: {} }))
+          if (p.status === 0 || p.status >= 500) throw new Error(`probe HTTP ${p.status}`)
+          return !(p.status === 200 && p.json.ok)
+        }
+        try {
+          if (await fails(pending.length)) {
+            let lo = 1, hi = pending.length
+            while (lo < hi) { const mid = (lo + hi) >> 1; if (await fails(mid)) hi = mid; else lo = mid + 1 }
+            idx = lo - 1
+            console.log(`  batch ${batchNo}: unindexed HTTP ${r.status} located at op ${pending[idx]} by dry-run prefixes`)
+          }
+        } catch (e) { console.log(`  batch ${batchNo}: could not locate the failing op (${e.message})`) }
+      }
       if ((r.status === 409 || r.status === 400) && idx !== null) {
         const opi = pending[idx], o = ops[opi]
         let status = r.json.code === 'DRIFT' ? 'drift' : 'refused'
