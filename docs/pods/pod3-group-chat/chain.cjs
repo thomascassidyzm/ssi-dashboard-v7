@@ -26,7 +26,7 @@ const TOPICS = {
       { id: 'F9', from: 8, to: 13, hint: "someone else, before pushing back, offers back an accurate version of that explanation in their own words, as a check before they push on it; the person who gave it confirms it next turn", followup: "confirm-or-correct" },
       { id: 'F303', role: 'coin', from: 9, to: 15, hint: "someone coins a short, vivid phrase for the idea under discussion that the others pick up" },
       { id: 'F16', from: 14, to: 22, hint: "someone concedes the point another person just made, and then holds their own different view with a but" },
-      { id: 'F11', from: 18, to: 26, hint: "someone is asked a direct question, answers it briefly, and in the same turn hands the same question to someone at the table who has said little" },
+      { id: 'F11', from: 18, to: 26, hint: "someone is asked a direct question, answers it briefly, and in the same turn hands the identical question on, minimally, by name, to someone at the table who has said little" },
       { id: 'F303', role: 'reuse', from: 24, to: 33, hint: "a different person redeploys the phrase coined earlier as a tease, shorthand or argument; its ownership can be contested" },
     ],
   },
@@ -119,7 +119,7 @@ RULES OF WHO SPEAKS NEXT (you choose, unless the turn instructions name the spea
 GROUP-CONTRIBUTION MOVES: the turn instructions sometimes ask for one of these moves from the metagraph. When asked, perform it for real, in natural words that never name the move, between at least three people who are in on this part of the talk. Set "move" to the move id only when this very turn performs it; otherwise "move" is null.
 
 OUTPUT: only a JSON object, nothing else:
-{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}], "move": "F…" or null}
+{"speaker": one of ${JSON.stringify(NAMES)}, "line": "the words they say", "cut_in": "exact words from previous line" or null, "overlap": true/false, "backchannels": [{"who": name, "text": "mm", "after": "exact words from previous line"}], "move": "F…" or null, "move_target": for a move that reads back, names or builds on ANOTHER person's view, that person's name, else null}
 Plain English speech only: no stage directions, no asterisks, no parentheses, no speaker name inside "line".`;
 
 // transcript as HEARD: each entry {speaker, line, cutOff:boolean, overlap, backchannels:[{who,text,after}], move}
@@ -163,7 +163,7 @@ for (let i = 0; i < turns; i++) {
   const n = i + 1;
   const counts = Object.fromEntries(NAMES.map(x => [x, T.filter(e => e.speaker === x).length]));
   const rr = Math.random();
-  let band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.4 ? 'SHORT: 1-6 words (a "No, hang on", a question, a jab, a half-start, one fact)' : rr < 0.9 ? 'MEDIUM: 7-22 words, one sentence or two' : 'LONGER: 22-35 words, only if someone is genuinely telling or building something; otherwise MEDIUM';
+  let band = i === 0 ? 'FIRST LINE: under 15 words, straight into the moment' : rr < 0.5 ? 'SHORT: 1-6 words (a "No, hang on", a question, a jab, a half-start, one fact)' : rr < 0.9 ? 'MEDIUM: 7-22 words, one sentence or two' : 'LONGER: 22-35 words, only if someone is genuinely telling or building something; otherwise MEDIUM';
   // which planned move (if any) is live this turn: earliest open window; forced on its last turn
   let moveAsk = '', forced = null, livePlan = -1;
   if (pending) {
@@ -200,8 +200,9 @@ Write the single next turn as JSON.`;
     try { r = call(prompt); if (!NAMES.includes(r.speaker) || (forced && r.speaker !== forced)) throw new Error('speaker ' + r.speaker); break; } catch (e) { if (++tries > 2) throw e; }
   }
   const wc = String(r.line).split(/\s+/).filter(Boolean).length;
-  if (wc > 35 || (i === 0 && wc > 15)) {
-    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. Keep this turn well under 35 words.'); if (NAMES.includes(r2.speaker) && (!forced || r2.speaker === forced)) r = r2; } catch (e) {}
+  const tooLong = wc > 35 || (i === 0 && wc > 15) || (band.startsWith('SHORT') && wc > 10);
+  if (tooLong) {
+    try { const r2 = call(prompt + '\nYOUR LAST ATTEMPT WAS ' + wc + ' WORDS, FAR TOO LONG. ' + (band.startsWith('SHORT') ? 'This turn is 1-6 words.' : 'Keep this turn well under 35 words.')); if (NAMES.includes(r2.speaker) && (!forced || r2.speaker === forced)) r = r2; } catch (e) {}
   }
   const prev = T[T.length - 1];
   let cutApplied = false;
@@ -231,8 +232,10 @@ Write the single next turn as JSON.`;
   const entry = { speaker: r.speaker, line: String(r.line).replace(/\s*\[[^\]]*\]/g, '').trim(), cutOff: false, overlap: !!r.overlap && !cutApplied, cutIn: cutApplied, backchannels: [], move };
   T.push(entry);
   // the follow-up goes to the person whose view was read back / named: the most recent other speaker who isn't the mover
+  // tickle take 1 lesson (#992): the follow-up went to the last other speaker, not the person whose view was
+  // read back, so F9 failed its own test. The speaker model now names the move's target.
   if (pending && pending.after === n) {
-    const target = [...T].reverse().slice(1).find(e => e.speaker !== r.speaker);
+    const target = NAMES.includes(r.move_target) && r.move_target !== r.speaker ? { speaker: r.move_target } : [...T].reverse().slice(1).find(e => e.speaker !== r.speaker);
     pending.speaker = target ? target.speaker : null;
     if (!pending.speaker) pending = null;
   } else if (pending) pending = null;
@@ -241,6 +244,19 @@ Write the single next turn as JSON.`;
 }
 
 // ---- move judge: every tag must pass its move's own test, between 3+ people, or it is removed ----
+// Group readings from #988's layer-3 doc (/d/108cdbeb): how each two-party test reads at a table of six.
+const GROUP = {
+  F9: 'before disagreeing, state another person\'s position back to them and let them confirm it',
+  F301: 'a listener sharpens the table\'s argument into a name, and the person who built it uses that name',
+  F305: 'someone pushed back on makes the argument stronger rather than defending the old one',
+  F16: 'give the other side the point they earned, then stay where you were',
+  F2: 'answer the question put to you, then add the thing nobody asked for',
+  F303: 'a phrase coined early is reused later by the table, so it belongs to all of them',
+  F304: 'someone notices how the table is talking and says so, and the table uses it',
+  F306: 'the contribution makes the next speaker feel they were already going there; the floor merges',
+  F11: 'answer, then hand the same question on, minimally, to the asker or to someone at the table by name',
+  F302: 'say what you do not know, then say what you still think, at full strength',
+};
 const JUDGE = `You check whether one turn of a recorded group conversation genuinely performs a named conversational move. Be strict: a tag on a turn that does not pass the move's test is a failure. Output only JSON: {"pass": true/false, "reason": "one sentence"}.`;
 const judgements = [];
 for (let k = 0; k < T.length; k++) {
@@ -250,6 +266,7 @@ for (let k = 0; k < T.length; k++) {
   const ctx = transcriptForModel(true).split('\n').slice(lo, hi).join('\n');
   const extra = e.move === 'F303' ? `\nThe phrase was coined in an earlier turn: ${log.find(l => l.raw.move === 'F303-coin')?.turn}. Full transcript lines involved:\n${transcriptForModel(true)}` : '';
   const q = `MOVE: ${moveTextJudge(e.move)}
+GROUP READING (the agreed form of this move at a table of several people): ${GROUP[e.move]}.
 GROUP RULE: the move must happen in a part of the talk where at least three people are taking part; a two-person exchange does not count. Where the test needs the other party's response (confirming, ratifying, adopting), that response must actually be there in the following turns.
 TRANSCRIPT EXCERPT (numbered turns):
 ${ctx}${extra}
