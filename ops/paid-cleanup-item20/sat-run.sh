@@ -47,7 +47,7 @@ echo "$(ts) load gate governed:true"
 # name says it writes (apply/fill/relink/recut/backfill/tiles/render/item). This unit and serve-only units are excluded.
 writers() {
   systemctl --user list-units 'cs-long-*' --state=active --no-legend --plain 2>/dev/null | awk '{print $1}' | grep '\.service$' \
-    | grep -v -e item20-sat -e item20-probe -e flag326 -e px734 -e photoreal -e mtt- \
+    | grep -v -e item20- -e flag326 -e px734 -e photoreal -e mtt- \
     | grep -E 'a2c|item|apply|fill|relink|recut|backfill|tiles|render|night' | wc -l
 }
 wait_writers() { # $1 = how many others may run alongside
