@@ -6,7 +6,8 @@
 #      (<file>.applied.jsonl) and audio log (<file>.audio.jsonl), untracked, sit beside it and make the nights resumable.
 #   b) waits while the Italian tile repair (cs-long-937-ita-tiles) or item 12's applier (cs-long-keep-item12-night)
 #      is running, so two appliers never share the window; gives up for the night at 05:30 UK.
-#   c) applies, one file at a time, through Popty's governed applier (never --urgent), in this order:
+#   c) pre-checks each op's seed + LEGO text against live (tools/precheck-guards.cjs; mismatch = held as drift), then
+#      applies, one file at a time, through Popty's governed applier (never --urgent), in this order:
 #        1-backfill (every course) -> 2-free -> 3-filled -> 4-recut-S#### (--batch 8)
 #      3-filled is REFUSED for a course until its 1-backfill ledger covers every op and every op is applied/already
 #      (a drifted or refused back-fill row keeps that course's dependent deletes off live, never forced).
@@ -56,6 +57,9 @@ for f in $FILES; do
     read -r bl bb < <(state "$cdir/1-backfill.changeset.jsonl")
     if [ "$bl" -ne 0 ] || [ "$bb" -ne 0 ]; then echo "GATED $f: 1-backfill left=$bl set-aside=$bb"; gated="$gated $(basename "$(dirname "$cdir")")"; continue; fi
   fi
+  # Kai's rule: live pre-check of the seed and LEGO text too (the applier's expect covers the row); a mismatch is
+  # written to the ledger as drift (held, never forced). If live cannot be read, this file waits for tomorrow.
+  node "$DIR/tools/precheck-guards.cjs" "$f" || { echo "PRECHECK could not read live for $f; skipped tonight"; continue; }
   batch=25; [[ "$name" == 4-recut-* ]] && batch=8
   node tools/changeset/apply-changeset.cjs "$f" --key kai --agent kai-960-item9 --batch $batch; rc=$?
   echo "$f exit=$rc left=$(left "$f")"
