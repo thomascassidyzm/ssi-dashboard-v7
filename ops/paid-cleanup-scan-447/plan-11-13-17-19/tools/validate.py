@@ -4,6 +4,15 @@
 in-memory "override" (that seed's proposed LEGOs + phrases) with fromSeed = that seed, and compares the failures against
 a baseline of the live course. A failure that is NEW under the plan is reported; pre-existing ones are counted, not blamed.
 usage (cs #784 copy): python3 -I validate.py <fam-dir> <course> <dump.json>"""
+# cs #968·AI: live gate. Every urlopen to a Popty port (:347x) is refused (exit 77) unless --live-ok '<why>' is given
+# (put it last) AND it is 22:00-07:00 Europe/London. ops/paid_cleanup_livegate.py.
+import os as _lg_os, sys as _lg_sys
+_lg_d = _lg_os.path.dirname(_lg_os.path.realpath(__file__))
+while not _lg_os.path.exists(_lg_os.path.join(_lg_d, 'paid_cleanup_livegate.py')) and _lg_d != '/':
+    _lg_d = _lg_os.path.dirname(_lg_d)
+_lg_sys.path.insert(0, _lg_d)
+import paid_cleanup_livegate as livegate
+livegate.install()
 import json, os, sys, urllib.request, collections, time
 
 FAM = sys.argv[1]; del sys.argv[1]
