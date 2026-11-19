@@ -66,18 +66,32 @@ def jstem(w):
     return w
 
 
+_CONTR = [(r"\bcan't\b", 'can not'), (r"\bwon't\b", 'will not'), (r"n't\b", ' not'), (r"'ve\b", ' have'), (r"'re\b", ' are'),
+          (r"'ll\b", ' will'), (r"\bi'm\b", 'i am'), (r"\ban\b", 'a')]
+
+
+def ewords(text):
+    """English words of a known text with contractions expanded and a/an as one word (#809·AI): "you've been learning"
+    is the seed's own "have you been learning"; "an obvious question" says the same article as "a question"."""
+    t = norm(text)
+    for a, b in _CONTR:
+        t = re.sub(a, b, t)
+    return t.split()
+
+
 def words_in(phrase, lego):
     """known-side containment: every word of the LEGO's known text appears in the phrase (K49: split/reordered is fine;
-    K6: an inflection of the word counts — learn/learning, want/wants)"""
+    K6: an inflection of the word counts — learn/learning, want/wants). K54 (#809·AI): a verb LEGO's leading "to" is
+    owed by the LEGO only — "so I can count them" contains "to count"."""
     if SPACELESS.search(norm(lego)):
         a, b = norm(lego).replace(' ', ''), norm(phrase).replace(' ', '')
         return a in b or jstem(a) in b
-    st = [stem(w) for w in norm(phrase).split()]
+    st = [stem(w) for w in ewords(phrase)]
     pool = collections.Counter(st)
-    lw = norm(lego).split()
-    if len(lw) > 1 and lw[0] == 'to':  # K54: a verb LEGO's infinitive "to" is not required in the phrase (I feel / he feels)
+    lw = [stem(x) for x in ewords(lego)]
+    if len(lw) > 1 and lw[0] == 'to' and pool['to'] <= 0:
         lw = lw[1:]
-    for w in [stem(x) for x in lw]:
+    for w in lw:
         if pool[w] <= 0:
             return False
         pool[w] -= 1
@@ -229,7 +243,7 @@ def main():
         if SPACELESS.search(norm(nk)):
             miss = [] if norm(nk).replace(' ', '') in norm(sk_after).replace(' ', '') else [nk]
         else:
-            miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
+            miss = [w for w in ewords(nk) if stem(w) not in [stem(x) for x in ewords(sk_after)] and w != 'to']
         if miss and 'known' in ack:
             rec['acknowledged'] = rec.get('acknowledged', []) + [f'known not a literal span of the seed: {miss}']; miss = []
         chk['known_in_seed'] = not miss or miss
