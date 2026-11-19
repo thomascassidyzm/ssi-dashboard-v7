@@ -1,0 +1,2663 @@
+{
+"ben_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+"name": "Poulomi",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ben",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+"name": "Arindam",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ben",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"bul_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_3c90f2ab-ff91-434e-9e59-5ca2dcf6abc9",
+"name": "Teodora",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "bul",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_cb5e08c5-299e-4908-8409-b6549292e29b",
+"name": "Nikola",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "bul",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"cat_for_gle": {
+"target1": {
+"voiceId": "human_thomas_cassidy_poptyrecorder_cat",
+"name": "Rhian Recorder",
+"provider": "human",
+"castFrom": null
+},
+"target2": {
+"voiceId": "human_thomas_cassidy_poptybuilder_cat",
+"name": "Tom Builder",
+"provider": "human",
+"castFrom": null
+},
+"known": {
+"voiceId": "azure_ga-IE-OrlaNeural",
+"name": "azure_ga-IE-OrlaNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "known",
+"language": "gle",
+"gender": "f",
+"rank": 0
+}
+}
+},
+"ces_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_b66b3a19-31b3-401f-8b08-40d46a61e4f1",
+"name": "Milena\t- Composed Clarifier",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ces",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_82db1f84-5b96-4364-b04a-4c7ff80e2f8a",
+"name": "Jan",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ces",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"dan_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_eb929394-68e7-4e08-bd2f-e7055728a5e1",
+"name": "Mette",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "dan",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_a466f9e2-28eb-4bb7-925c-8e8984950700",
+"name": "Søren",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "dan",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"eng_for_ben": {
+"known": {
+"voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+"name": "Arindam",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "ben",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+"name": "Poulomi",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_guj": {
+"known": {
+"voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+"name": "Isha",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+"name": "Isha",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_kan": {
+"known": {
+"voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+"name": "Chaitra",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "kan",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+"name": "Chetan",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_mar": {
+"known": {
+"voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+"name": "Asha",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "mar",
+"gender": "m",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+"name": "Chinmay",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_pan": {
+"known": {
+"voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+"name": "Navjot",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "pan",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+"name": "Navjot",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_sin": {
+"known": {
+"voiceId": "si-LK-SameeraNeural",
+"name": "Sameera",
+"provider": "azure",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "si-LK-ThiliniNeural",
+"name": "Thilini",
+"provider": "azure",
+"castFrom": null
+}
+},
+"eng_for_tam": {
+"known": {
+"voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+"name": "Karthik",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "tam",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+"name": "Nila",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_tel": {
+"known": {
+"voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+"name": "Ramya",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "tel",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+"name": "Vikram",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"eng_for_urd": {
+"known": {
+"voiceId": "ur-PK-UzmaNeural",
+"name": "Uzma",
+"provider": "azure",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"name": "Charlotte",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "eng",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "ur-PK-UzmaNeural",
+"name": "Uzma",
+"provider": "azure",
+"castFrom": null
+}
+},
+"est_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "et-EE-AnuNeural",
+"name": "Anu",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "et-EE-KertNeural",
+"name": "Kert",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"eus_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "eu-ES-AinhoaNeural",
+"name": "Ainhoa",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "eu-ES-AnderNeural",
+"name": "Ander",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"eus_for_spa": {
+"known": {
+"voiceId": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
+"name": "Maite",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "spa",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "eu-ES-AinhoaNeural",
+"name": "Ainhoa",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "eu-ES-AnderNeural",
+"name": "Ander",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "es-ES-AlvaroNeural",
+"name": "Alvaro",
+"provider": "azure",
+"castFrom": null
+}
+},
+"fas_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "fa-IR-DilaraNeural",
+"name": "Dilara",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "fa-IR-FaridNeural",
+"name": "Farid",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"gle_cn_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "azure_ga-IE-OrlaNeural",
+"name": "azure_ga-IE-OrlaNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle_connemara",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "azure_ga-IE-ColmNeural",
+"name": "azure_ga-IE-ColmNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle_connemara",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"gle_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "ga-IE-OrlaNeural",
+"name": "Orla",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "ga-IE-ColmNeural",
+"name": "Colm",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"gle_mu_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "azure_ga-IE-OrlaNeural",
+"name": "azure_ga-IE-OrlaNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle_munster",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "azure_ga-IE-ColmNeural",
+"name": "azure_ga-IE-ColmNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle_munster",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"gle_ul_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "azure_ga-IE-OrlaNeural",
+"name": "azure_ga-IE-OrlaNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle_ulster",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "azure_ga-IE-ColmNeural",
+"name": "azure_ga-IE-ColmNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle_ulster",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"gle_v2_for_eng": {
+"target1": {
+"voiceId": "azure_ga-IE-OrlaNeural",
+"name": "azure_ga-IE-OrlaNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "azure_ga-IE-ColmNeural",
+"name": "azure_ga-IE-ColmNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "gle",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"glg_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "gl-ES-SabelaNeural",
+"name": "Sabela",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "gl-ES-RoiNeural",
+"name": "Roi",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"heb_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_ebc02c0d-61fd-48f2-a6c9-0d6683b7d466",
+"name": "Ayala",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "heb",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_95d91579-a3f1-4bb3-b5e1-9a97ef401628",
+"name": "Yonatan",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "heb",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"hun_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_42e4da1d-34d8-4fe0-8fc6-086afd6df348",
+"name": "Kinga",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "hun",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_4c5c7be8-6b3b-4c62-b915-c54d049c198f",
+"name": "Bence",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "hun",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"hye_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "hy-AM-AnahitNeural",
+"name": "Anahit",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "hy-AM-HaykNeural",
+"name": "Hayk",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"ind_for_eng": {
+"target1": {
+"voiceId": "cartesia_6a3fe952-63f8-4c99-865a-44887175ea26",
+"name": "Risa",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ind",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_04b567df-2923-4b0c-896b-4b7df0a07e1a",
+"name": "Galang",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ind",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"isl_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "is-IS-GudrunNeural",
+"name": "Gudrun",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "is-IS-GunnarNeural",
+"name": "Gunnar",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"kan_for_eng": {
+"target1": {
+"voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+"name": "Chaitra",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "kan",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+"name": "Chetan",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "kan",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"kor_for_tam": {
+"known": {
+"voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+"name": "Karthik",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "tam",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9",
+"name": "Jihyun",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "kor",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
+"name": "Junho",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "kor",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+"name": "Nila",
+"provider": "cartesia",
+"castFrom": null
+}
+},
+"lav_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "lv-LV-EveritaNeural",
+"name": "Everita",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "lv-LV-NilsNeural",
+"name": "Nils",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"lit_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "lt-LT-OnaNeural",
+"name": "Ona",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "lt-LT-LeonasNeural",
+"name": "Leonas",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"mar_for_eng": {
+"target1": {
+"voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+"name": "Asha",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "mar",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+"name": "Chinmay",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "mar",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"mkd_for_eng": {
+"target1": {
+"voiceId": "azure_mk-MK-MarijaNeural",
+"name": "azure_mk-MK-MarijaNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "mkd",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "azure_mk-MK-AleksandarNeural",
+"name": "azure_mk-MK-AleksandarNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "mkd",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"mlt_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "mt-MT-GraceNeural",
+"name": "Grace",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "mt-MT-JosephNeural",
+"name": "Joseph",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"nep_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "ne-NP-HemkalaNeural",
+"name": "Hemkala",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "ne-NP-SagarNeural",
+"name": "Sagar",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"nld_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_96355f3d-0179-4c9a-a8d8-11ef0779a9b8",
+"name": "Noa",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "nld",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_da743a82-ddf2-4d9b-8eb8-ff67ca0b138e",
+"name": "Stijn",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "nld",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-AdaMultilingualNeural",
+"name": "Ada Multilingual",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"nor_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_4f7b1820-6263-4615-87a7-b105768d8f64",
+"name": "Kari",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "nor",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_311174e8-4bf6-4467-9a84-352c5dae28a5",
+"name": "Erlend",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "nor",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"pol_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_f8aacd6e-1ac2-42d3-bcbf-125336ecd0f2",
+"name": "Ewa",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "pol",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_d358377a-cd1d-45c5-abd0-701314e36cbe",
+"name": "Marcin",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "pol",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"por_for_aze": {
+"known": {
+"voiceId": "azure_az-AZ-BanuNeural",
+"name": "azure_az-AZ-BanuNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "known",
+"language": "aze",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_d9300964-8269-4ca8-9e8e-4ae714fcdc09",
+"name": "Mariana",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "por",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_b1d18488-4aaa-47e7-9e4b-483c90a67968",
+"name": "Matias",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "por",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+}
+},
+"por_for_lit": {
+"known": {
+"voiceId": "azure_lt-LT-LeonasNeural",
+"name": "azure_lt-LT-LeonasNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "known",
+"language": "lit",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_d9300964-8269-4ca8-9e8e-4ae714fcdc09",
+"name": "Mariana",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "por",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_b1d18488-4aaa-47e7-9e4b-483c90a67968",
+"name": "Matias",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "por",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+}
+},
+"ron_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_26aa0590-65e4-436e-8dd9-b02e6caa5a37",
+"name": "Miruna",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ron",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_a98af725-3118-44e3-a7f6-6bd4fca20b32",
+"name": "Bogdan",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "ron",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-MiaNeural",
+"name": "Mia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"rus_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_064b17af-d36b-4bfb-b003-be07dba1b649",
+"name": "Tatiana",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "rus",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_1e4176b1-3db9-44d6-a601-4fe68b041942",
+"name": "Sergei",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "rus",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"srp_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "sr-Latn-RS-SophieNeural",
+"name": "Sophie",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "sr-Latn-RS-NicholasNeural",
+"name": "Nicholas",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"swa_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "sw-KE-ZuriNeural",
+"name": "Zuri",
+"provider": "azure",
+"castFrom": null
+},
+"target2": {
+"voiceId": "sw-KE-RafikiNeural",
+"name": "Rafiki",
+"provider": "azure",
+"castFrom": null
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"swe_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_bcdcad6d-4eb6-4a71-89fd-1ae2ce9f95d8",
+"name": "Freja - Informative Host",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "swe",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+"name": "Nils",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "swe",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"tel_for_eng": {
+"target1": {
+"voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+"name": "Ramya",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "tel",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+"name": "Vikram",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "tel",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"tha_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_273193f7-dbff-438e-b8af-fcc499200b1c",
+"name": "Narin",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "tha",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+"name": "Chakrit",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "tha",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"tur_for_eng": {
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_fa7bfcdc-603c-4bf1-a600-a371400d2f8c",
+"name": "Leyla",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "tur",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+"name": "Taylan",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "tur",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "en-GB-SoniaNeural",
+"name": "Sonia",
+"provider": "azure",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"yue_for_eng": {
+"target1": {
+"voiceId": "azure_zh-HK-HiuMaanNeural",
+"name": "azure_zh-HK-HiuMaanNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "yue",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "azure_zh-HK-WanLungNeural",
+"name": "azure_zh-HK-WanLungNeural",
+"provider": "azure",
+"castFrom": {
+"slot": "phrase",
+"language": "yue",
+"gender": "m",
+"rank": 0
+}
+},
+"known": {
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"name": "Tom-006",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "eng",
+"gender": "f",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "",
+"name": "",
+"provider": "elevenlabs",
+"castFrom": null
+},
+"instruction": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+},
+"encouragement": {
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"name": "aran_english_003",
+"provider": "cartesia",
+"castFrom": {
+"slot": "guide",
+"language": "eng",
+"gender": null,
+"rank": 0
+}
+}
+},
+"zho_for_gle": {
+"known": {
+"voiceId": "ga-IE-OrlaNeural",
+"name": "Orla",
+"provider": "azure",
+"castFrom": null
+},
+"target1": {
+"voiceId": "cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
+"name": "Shuwen",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "zho",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+"name": "Hao",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "zho",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "ga-IE-ColmNeural",
+"name": "Colm",
+"provider": "azure",
+"castFrom": null
+}
+},
+"zho_for_tam": {
+"known": {
+"voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+"name": "Karthik",
+"provider": "cartesia",
+"castFrom": {
+"slot": "known",
+"language": "tam",
+"gender": "f",
+"rank": 0
+}
+},
+"target1": {
+"voiceId": "cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
+"name": "Shuwen",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "zho",
+"gender": "f",
+"rank": 0
+}
+},
+"target2": {
+"voiceId": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+"name": "Hao",
+"provider": "cartesia",
+"castFrom": {
+"slot": "phrase",
+"language": "zho",
+"gender": "m",
+"rank": 0
+}
+},
+"presentation": {
+"voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+"name": "Nila",
+"provider": "cartesia",
+"castFrom": null
+}
+}
+}
