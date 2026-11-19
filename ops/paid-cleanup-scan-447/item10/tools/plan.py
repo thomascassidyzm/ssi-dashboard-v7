@@ -58,7 +58,10 @@ def words_in(phrase, lego):
         return norm(lego).replace(' ', '') in norm(phrase).replace(' ', '')
     st = [stem(w) for w in norm(phrase).split()]
     pool = collections.Counter(st)
-    for w in [stem(x) for x in norm(lego).split()]:
+    lw = norm(lego).split()
+    if len(lw) > 1 and lw[0] == 'to':  # K54: a verb LEGO's infinitive "to" is not required in the phrase (I feel / he feels)
+        lw = lw[1:]
+    for w in [stem(x) for x in lw]:
         if pool[w] <= 0:
             return False
         pool[w] -= 1
@@ -251,6 +254,8 @@ def main():
                         act = 'UNDECIDED'
                 else:
                     act = 'UNDECIDED'
+            if act == 'UNDECIDED' and '*' in bd:  # decisions may name a default for rows that no longer carry the LEGO
+                act = bd['*']
             if act == 'UNDECIDED':
                 problems.append(f'{lid} {sid} UNDECIDED: {p["known"]} | {p["target"]}')
             bas.append({'id': p['id'], 'role': p['type'], 'before': [p['known'], p['target']], 'action': act})
@@ -293,6 +298,10 @@ def main():
             elif not (has(t, nt) and words_in(k, nk)):
                 problems.append(f'{lid} add {pid} does not contain the LEGO: {k} | {t}')
         rec['basket'] = bas
+        rec['_rows_after'] = [(p['role'], p['action'][0] if isinstance(p['action'], list) else p['before'][0],
+                               p['action'][1] if isinstance(p['action'], list) else p['before'][1])
+                              for p in bas if p['action'] not in ('del',) and p['role'] in ('build', 'use')] + \
+                             [(a['phrase_role'], a['known_text'], a['target_text']) for a in adds]
         rec['add'] = adds
         rec['basket_after'] = dict(kept)
         if rec['after']['is_new'] and kept['build'] + kept['use'] < 6:
@@ -301,6 +310,80 @@ def main():
             ops.append(e)
         rec['extra'] = d.get('extra', [])
         plans.append(rec)
+    # --- mirror of the course-builder validator (services/course-builder/routes/v2.cjs runSeedChecks), per changed LEGO,
+    #     so a failing ROW is named here (the route only says "vocab violations in N phrase(s)"):
+    #     floor (phrase-structure.cjs phraseFloor: build 3+/use 5+ after seed 3; a bare-LEGO row never counts) and
+    #     target vocab (validation.cjs checkVocabViolations: CJK = cover the phrase with whole LEGO/component targets
+    #     taught up to this seed; others = every word appears in a taught chunk or the seed — looser than the route).
+    chinese = course.split('_for_')[0] in ('zho', 'cmn', 'yue', 'hak', 'nan', 'jpn', 'tha', 'mya', 'lao', 'khm')
+    cnorm = lambda t: re.sub(r'[¿¡.,;:!?؟،؛«»"“”。，！？、：；\u0589\u064B-\u0652]', '', (t or '').lower()).strip() if chinese else norm(t)
+    upd_comps = {r['id']: r['after'].get('components') for r in plans if r.get('after')}
+    max_seed = max([r['seed']['n'] for r in plans if r.get('seed')] + [0])
+    vocab_upto = {}
+    cum = set()
+    for sn in sorted(SD):
+        if sn > max_seed:
+            break
+        C = fetch_components(course, sn, cache, offline) or {}
+        for l in SD[sn]['legos']:
+            cum.add(cnorm(after[l['id']]['target']))
+            cs = upd_comps.get(l['id'])
+            cs = [{'target': t} for _, t in cs] if cs is not None else (C.get(l['id']) or [])
+            for c in cs:
+                if c and c.get('target'):
+                    cum.add(cnorm(c['target']))
+        vocab_upto[sn] = set(cum)
+
+    def uncovered(t, V, seed_t):
+        t = cnorm(t)
+        if chinese:
+            t = t.replace(' ', '')
+            n = len(t); dp = [True] + [False] * n
+            for i in range(1, n + 1):
+                dp[i] = any(len(e) <= i and dp[i - len(e)] and t[i - len(e):i] == e for e in V if e)
+            if dp[n]:
+                return None
+            last = max(i for i in range(n + 1) if dp[i])
+            return t[last:]
+        W = {w for e in V for w in e.split()} | set(norm(seed_t).split())
+        miss = [w for w in t.split() if w not in W]
+        return ' '.join(miss) or None
+
+    for r in plans:
+        if not r.get('after') or not r['after']['is_new']:
+            r.pop('_rows_after', None); continue
+        n = r['seed']['n']
+        V = {e.replace(' ', '') if chinese else e for e in vocab_upto.get(n, set())}
+        rows = r.pop('_rows_after', [])
+        lt = cnorm(r['after']['target']).replace(' ', '') if chinese else cnorm(r['after']['target'])
+        def bare(t):
+            return (cnorm(t).replace(' ', '') if chinese else cnorm(t)) == lt
+        nb = sum(1 for ro, k, t in rows if ro == 'build' and not bare(t))
+        nu = sum(1 for ro, k, t in rows if ro == 'use' and not bare(t))
+        mb, mu = (1, 1) if n <= 3 else (3, 5)
+        r['floor'] = {'build': nb, 'use': nu, 'need': [mb, mu]}
+        if nb < mb or nu < mu:
+            problems.append(f"{r['id']}: below the validator floor after plan (build {nb}/{mb}, use {nu}/{mu})")
+        viol = []
+        for ro, k, t in rows:
+            u = uncovered(t, V, r['seed']['target'])
+            if u:
+                viol.append({'known': k, 'target': t, 'uncovered': u})
+                problems.append(f"{r['id']}: untaught target in row '{k} | {t}' (stuck at '{u}')")
+        r['vocab_violations'] = viol
+    # --- one op per row: two decisions may both name a row (a neighbour's "extra" repeating a basket rebuild).
+    #     An exact repeat is dropped; two DIFFERENT edits of one row are a problem to settle by hand.
+    seen_ops, uniq = {}, []
+    for o in ops:
+        key = (o['op'], o.get('phrase_id') or o.get('lego_id') or o.get('seed_number') or (o.get('row') or {}).get('id'))
+        js = json.dumps(o, sort_keys=True, ensure_ascii=False)
+        if key in seen_ops:
+            if seen_ops[key] != js:
+                problems.append(f'two different {key[0]} ops on {key[1]}: settle in decisions')
+            continue
+        seen_ops[key] = js
+        uniq.append(o)
+    ops[:] = uniq
     # --- course-wide ZUT at LEGO level (new LEGOs), before vs after
     def zut(view):
         m = collections.defaultdict(set)
