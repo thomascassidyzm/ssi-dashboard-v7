@@ -1020,6 +1020,54 @@ function checkMetadataGloss(legos) {
   return warnings;
 }
 
+// ─── Aspect-cue determinism (WARN-ONLY, contract-driven) ───────────────
+// WORKLIST "Extend the phrase-level gates": the 了/aspect-cue determinism gate
+// is DEFERRED by BSC — the rule stays prompt-only as a blocking gate. This is the
+// measuring half only: it never rejects, it reports. A pair-contract may carry
+// `aspectCues`: [{ id, known: RegExp, targetHas?: string[], targetLacks?: string[],
+// rule }]. When a phrase's KNOWN matches `known`, its TARGET must contain every
+// `targetHas` and none of `targetLacks`; otherwise a warning names the cue.
+// Instances live in the contract (zho_for_eng: didn't → 没, never 了; have…ever
+// → 过), never here — the cue-table is per pair (ralph "Per-pair rules are
+// instances"). A course whose contract has no cues returns nothing.
+// Multi-clause targets (，,；;) are SKIPPED and counted, never judged: 了 can
+// legitimately close another clause ("他没来，所以我走了"). The skip count is
+// returned beside the verdict so a quiet result is never mistaken for a clean
+// one (canon A3).
+const ASPECT_CUE_CLAUSE_BREAK = /[，,；;]/;
+
+function checkAspectCues(phrases, contract) {
+  const cues = (contract && Array.isArray(contract.aspectCues)) ? contract.aspectCues : [];
+  const warnings = [];
+  let checked = 0;
+  let skipped = 0;
+  if (!cues.length) return { warnings, checked, skipped };
+  for (const p of phrases || []) {
+    const known = (p && (p.known ?? p.known_text)) || '';
+    const target = (p && (p.target ?? p.target_text)) || '';
+    const matching = cues.filter(c => c.known && c.known.test(known));
+    if (!matching.length) continue;
+    if (ASPECT_CUE_CLAUSE_BREAK.test(target)) { skipped++; continue; }
+    checked++;
+    for (const c of matching) {
+      const missing = (c.targetHas || []).filter(t => !target.includes(t));
+      const present = (c.targetLacks || []).filter(t => target.includes(t));
+      if (missing.length || present.length) {
+        warnings.push({
+          code: 'aspect_cue',
+          cue: c.id,
+          known,
+          target,
+          missing,
+          present,
+          detail: `Aspect cue "${c.id}": ${c.rule || ''}${missing.length ? ` — target lacks ${missing.join(' ')}` : ''}${present.length ? ` — target has ${present.join(' ')}` : ''}`,
+        });
+      }
+    }
+  }
+  return { warnings, checked, skipped };
+}
+
 // ─── Non-example text (TTS only ever speaks examples) ──────────────────
 // Tom, r-2026-10-11-text-sent-to-tts-is-only: "We should never have explanations
 // in the text sent to the TTS. We only EVER have examples." Every known/target
@@ -1326,6 +1374,7 @@ module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
   checkMetadataGloss,
+  checkAspectCues,
   checkNonExampleText,
   hasNonExampleText,
   stemKnownGloss,

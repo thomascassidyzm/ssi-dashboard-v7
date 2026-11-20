@@ -77,6 +77,18 @@ module.exports = {
     le: 'past bounded event -> always 了; past state -> bare; didn\'t -> 没 (never 了); have-V-ed-before -> 过',
   },
 
+  // Aspect-cue table, machine-readable half of glossRules.le. Read by
+  // checkAspectCues (validation.cjs) at /seed/complete as WARNINGS ONLY — the
+  // blocking 了 gate is deferred by BSC (WORKLIST "Extend the phrase-level gates").
+  // Only the two cues an English surface form decides are encoded; "past bounded
+  // event vs past state" needs a reading, not a regex, and stays prompt-only.
+  aspectCues: [
+    { id: 'didnt-mei-not-le', known: /\b(didn't|didnt|did not)\b/i, targetHas: ['没'], targetLacks: ['了'],
+      rule: "didn't -> 没, never 了" },
+    { id: 'have-ever-guo', known: /\b(have|has|haven't|hasn't)\b(?:\s+\w+)?\s+ever\b/i, targetHas: ['过'],
+      rule: 'have-V-ed-before / ever -> 过' },
+  ],
+
   // Default cluster rounds (overridable via opts). Placed once the bare-wh statement is solid.
   clusterRounds: { do_support: 17 },
 };

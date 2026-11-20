@@ -23,7 +23,7 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss, checkNonExampleText,
+  checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss, checkAspectCues, checkNonExampleText,
   loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
@@ -1592,6 +1592,23 @@ module.exports = function seedCompleteRoutes(ctx) {
           warnings.push({ type: 'metadata_gloss', ...w });
           console.log(`⚠ ${seedId}L${String(w.lego_index).padStart(2, '0')}: metadata gloss "${w.known}"`);
         }
+      }
+
+      // 3a-ASPECT. ASPECT-CUE determinism (warn, contract-driven). The blocking 了
+      // gate is deferred by BSC; this only reports cue misses so the deferral can be
+      // decided on a measured rate. No contract cues → nothing runs.
+      {
+        const aspectPhrases = [];
+        for (const lego of legos) {
+          if (usesBuildUseFormat(lego)) aspectPhrases.push(...(lego.build || []), ...(lego.use || []));
+          else if (lego.phrases) aspectPhrases.push(...lego.phrases);
+        }
+        const { warnings: aw, skipped } = checkAspectCues(aspectPhrases, pairContract);
+        for (const w of aw) {
+          warnings.push({ type: 'aspect_cue', ...w });
+          console.log(`⚠ ${seedId}: aspect cue [${w.cue}] "${w.known}" → "${w.target}"`);
+        }
+        if (skipped) warnings.push({ type: 'aspect_cue_unchecked', skipped, detail: `${skipped} multi-clause phrase(s) matched an aspect cue and were not judged` });
       }
 
       // 3a-FRAME. FRAME-COVERAGE (warn): each USE basket should vary along the axis
