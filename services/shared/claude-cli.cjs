@@ -44,6 +44,8 @@ function latestModelId(family) {
  * @param {string} [options.model=HAIKU_MODEL] - Model: HAIKU_MODEL, 'sonnet', 'opus', or an explicit model id
  * @param {string} [options.system] - System prompt
  * @param {number} [options.timeout=120000] - Timeout in ms
+ * @param {boolean} [options.overspill] - ONE-OFF calls only: may bill an overspill account once every SSi
+ *   account is spent (claude-config.cjs OVERSPILL_DIR). Never set it on a bulk path.
  * @param {number} [options.thinkingTokens] - Override MAX_THINKING_TOKENS. Leave
  *   unset for the default 0 (no extended thinking), which is right for the
  *   deterministic tasks this wrapper was built for. Set it for genuinely
@@ -52,15 +54,16 @@ function latestModelId(family) {
  * @returns {Promise<string>} The response text
  */
 function claudeChat(prompt, options = {}) {
-  return claudeChatOnce(prompt, options, []).catch((err) => {
-    // ONE RETRY ON THE OTHER SSi ACCOUNT (#412·AD): an account that answers "weekly limit" is spent; on 4 Nov
-    // 1,887 calls kept retrying claude@ after it hit 100% while kai-gmail had a third of its week left.
-    if (!err || !err.spentAccount || options._noFailover) throw err
-    return claudeChatOnce(prompt, options, [err.spentAccount]).catch((err2) => {
-      if (err2 && err2.spentAccount && err2.spentAccount === err.spentAccount) throw err   // nothing else to try
-      throw err2
-    })
+  // FAILOVER ON A SPENT ACCOUNT (#412·AD): an account that answers "weekly limit" is excluded and the next one
+  // tried — on 4 Nov 1,887 calls kept retrying claude@ after it hit 100% while kai-gmail had a third of its week
+  // left. Up to three accounts: the SSi pair, then (options.overspill only) one overspill account.
+  const tried = []
+  const attempt = () => claudeChatOnce(prompt, options, tried).catch((err) => {
+    if (!err || !err.spentAccount || options._noFailover || tried.includes(err.spentAccount) || tried.length >= (options.overspill ? 2 : 1)) throw err
+    tried.push(err.spentAccount)
+    return attempt()
   })
+  return attempt()
 }
 
 function claudeChatOnce(prompt, options, exclude) {
@@ -80,7 +83,7 @@ function claudeChatOnce(prompt, options, exclude) {
     // OAuth token where one exists, and strips ANTHROPIC_API_KEY/CLAUDECODE
     // so the CLI bills the Max Plan login and nested calls work
     // (see claude-config.cjs).
-    const { env, email } = claudeSpawnEnv(process.env, { exclude })
+    const { env, email } = claudeSpawnEnv(process.env, { exclude, overspill: !!options.overspill })
     // MAX_THINKING_TOKENS=0 disables extended thinking. Without it, the
     // global effortLevel:high setting flows into every headless `claude
     // --print` call, so a simple translation-flex spends ~11K hidden

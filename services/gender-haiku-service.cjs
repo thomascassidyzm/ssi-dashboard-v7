@@ -141,11 +141,11 @@ function parseResponse(content) {
  * @param {string} role - 'target1' (female) or 'target2' (male)
  * @returns {Array<{text: string, expandedText: string, wasModified: boolean}>}
  */
-async function callHaikuBatch(items, language, role) {
+async function callHaikuBatch(items, language, role, opts = {}) {
   try {
     const prompt = buildPrompt(items, language, role)
 
-    const content = await claudeChat(prompt, { model: 'sonnet' })
+    const content = await claudeChat(prompt, { model: 'sonnet', overspill: !!opts.overspill })
     const parsed = parseResponse(content)
 
     if (!parsed?.results || !Array.isArray(parsed.results)) {
@@ -189,7 +189,7 @@ async function callHaikuBatch(items, language, role) {
  * @returns {Promise<Map<string, {expandedText: string, wasModified: boolean}>>}
  *   Map keyed by `${text}|${language}|${role}`
  */
-async function batchGenderExpand(items) {
+async function batchGenderExpand(items, opts = {}) {
   const resultMap = new Map()
 
   if (!items || items.length === 0) return resultMap
@@ -240,7 +240,7 @@ async function batchGenderExpand(items) {
     const concurrent = batchCalls.slice(i, i + MAX_CONCURRENCY)
     const batchResults = await Promise.all(
       concurrent.map(({ batch, language, role }) =>
-        callHaikuBatch(batch, language, role).then(res =>
+        callHaikuBatch(batch, language, role, opts).then(res =>
           res.map((r, idx) => ({ ...r, language, role, key: `${batch[idx].text}|${language}|${role}` }))
         )
       )
@@ -445,7 +445,9 @@ async function ensureExpansionForText(courseCode, text, supabase) {
     if (readErr) throw new Error(`gender expansions unreadable: ${readErr.message}`)
     if (existing && existing.length) return { status: 'exists' }
 
-    const map = await batchGenderExpand([{ text, language, role: 'target1' }, { text, language, role: 'target2' }])
+    // ONE text, one-off (an edit, a route render): it may overspill past the spent SSi pair (claude-config overspill,
+    // cs 2026-11-20) — a whole-course rebuild never passes this, so a bulk run can never drain an overspill account.
+    const map = await batchGenderExpand([{ text, language, role: 'target1' }, { text, language, role: 'target2' }], { overspill: true })
     const f = map.get(`${text}|${language}|target1`), m = map.get(`${text}|${language}|target2`)
     if (f?.failed || m?.failed) return { status: 'llm-failed' }
     const row = {

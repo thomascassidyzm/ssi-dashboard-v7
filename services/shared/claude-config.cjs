@@ -71,6 +71,15 @@ const OAUTH_TOKEN_FILE = path.join(CLAUDE_CONFIG_DIR, '.cs-oauth-token')
  * question asked at a bulk door (pacedNow below), so a person's one-off call is never held.
  */
 const TOKENS_DIR = path.join(CLAUDE_CONFIG_DIR, 'tokens')
+/*
+ * OVERSPILL (cs 2026-11-20; r-2026-11-10-accounts-by-person-updates-the-old: "Aran and Kai use kai-gmail and claude@
+ * FIRST, then may overspill into any other account"). On 20 Nov 21:20Z both SSi accounts read "weekly limit" and every
+ * route render in a gendered course was refused 503 GENDER_PREP_MISSING. `<config dir>/tokens-overspill/<email>` holds
+ * accounts used ONLY when the caller opts in (claudeChat { overspill: true } — one-off text calls, never a bulk door)
+ * AND every SSi account is full by the weekly gauge or has just answered "weekly limit". The SSi pair always goes
+ * first; bulkPace and alternativeAccount never see overspill accounts. Empty or absent dir = exactly the old pick.
+ */
+const OVERSPILL_DIR = path.join(CLAUDE_CONFIG_DIR, 'tokens-overspill')
 const DEFAULT_EMAIL = 'claude@saysomethingin.com'
 const WEEK_H = 168
 // Points a bulk run may run AHEAD of an account's pro-rata share of the week before it is held. Small enough
@@ -203,11 +212,19 @@ function liveCandidates() { return candidates().filter((c) => readToken(c.file))
  * limit" (#412·AD). If excluding leaves nothing, the unfiltered pick stands: a build is never
  * refused here. email is null when the default token is used.
  */
-function pickSpawnAccount({ exclude = [] } = {}) {
+function pickSpawnAccount({ exclude = [], overspill = false } = {}) {
   const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
   const all = liveCandidates()
   const kept = all.filter((c) => !ex.has(c.email))
   const opts = { usage: readUsage(), steer: steers() }
+  if (overspill) {
+    const usable = kept.filter((c) => { const p = weeklyPct(opts.usage[c.email]); return p === null || p < WEEKLY_FULL_PCT })
+    const spill = usable.length ? [] : candidates(OVERSPILL_DIR).filter((c) => readToken(c.file) && !ex.has(c.email))
+    if (spill.length) {
+      const c = pickAccount(spill, opts)
+      if (c) return { email: c.email, file: c.file, overspill: true }
+    }
+  }
   const c = pickAccount(kept.length ? kept : all, opts)
   return c ? { email: c.email, file: c.file } : { email: null, file: OAUTH_TOKEN_FILE }
 }
@@ -249,11 +266,11 @@ function claudeEnv(base = process.env) {
  * The same env plus the account it bills: { env, email }. `exclude` as for pickSpawnAccount —
  * claude-cli.cjs uses it to retry ONCE on the other SSi account when the first answers "weekly limit".
  */
-function claudeSpawnEnv(base = process.env, { exclude = [] } = {}) {
+function claudeSpawnEnv(base = process.env, { exclude = [], overspill = false } = {}) {
   const env = { ...base, CLAUDE_CONFIG_DIR }
   delete env.ANTHROPIC_API_KEY
   delete env.CLAUDECODE
-  const { email, file } = pickSpawnAccount({ exclude })
+  const { email, file } = pickSpawnAccount({ exclude, overspill })
   const token = readToken(file)
   // No token file on this machine — keychain/stored credentials apply.
   if (token) env.CLAUDE_CODE_OAUTH_TOKEN = token
