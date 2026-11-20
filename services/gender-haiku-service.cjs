@@ -445,8 +445,10 @@ async function ensureExpansionForText(courseCode, text, supabase) {
     if (readErr) throw new Error(`gender expansions unreadable: ${readErr.message}`)
     if (existing && existing.length) return { status: 'exists' }
 
-    // ONE text, one-off (an edit, a route render): it may overspill past the spent SSi pair (claude-config overspill,
-    // cs 2026-11-20) — a whole-course rebuild never passes this, so a bulk run can never drain an overspill account.
+    // ONE text per call, and it ALWAYS opts into overspill past the spent SSi pair (claude-config overspill, cs 2026-11-20).
+    // That includes the background sync (gender-expansion-sync.cjs, up to 150 texts a pass), which calls this per text,
+    // so the sync CAN spill onto the overspill account once both SSi accounts are spent. Tom accepted this (cs #788·AJ:
+    // "It's ok to be sharing the account loading a bit more"). Only whole-course batch rebuilds never pass overspill.
     const map = await batchGenderExpand([{ text, language, role: 'target1' }, { text, language, role: 'target2' }], { overspill: true })
     const f = map.get(`${text}|${language}|target1`), m = map.get(`${text}|${language}|target2`)
     if (f?.failed || m?.failed) return { status: 'llm-failed' }
