@@ -61,6 +61,8 @@ const MAX_ASKS = Number(opt('--max-asks', Infinity))
 const ORDER = opt('--order', 'file')
 const UNTIL = opt('--until', null) ? Date.parse(opt('--until')) : Infinity
 const WAIT_DAY_CAP = argv.includes('--wait-day-cap')
+// --requeue-timeouts (Kai 20 Nov): send ONLY the asks of this list whose latest row is a 120 s TIMEOUT, once each, nothing else.
+const REQUEUE_TIMEOUTS = argv.includes('--requeue-timeouts')
 if (!['file', 'chars-desc'].includes(ORDER) || Number.isNaN(UNTIL)) { console.error('bad --order or --until'); process.exit(1) }
 const askKey = (a) => [a.course, a.role, a.voiceId, a.text].join('|')
 const EVID = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia')
@@ -100,12 +102,16 @@ function allLogged() {
 function item9Armed() {
   try { return execFileSync('systemctl', ['--user', 'is-active', 'cs-long-keep-item9-night.timer'], { encoding: 'utf8' }).trim() === 'active' } catch { return false }
 }
+function item9Done() {
+  try { return JSON.parse(fs.readFileSync(path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/item9-spend.json'), 'utf8')).done === true } catch { return false }
+}
 function fixReserve(today) {
   let day = 0, total = 0
   let fixes = []
   try { fixes = JSON.parse(fs.readFileSync(path.join(HERE, 'fixes.json'), 'utf8')).fixes || [] } catch { return { day: 0, total: 0 } }
   for (const f of fixes) {
-    if (f.status !== 'approved' || !f.utc_day || f.id === 'item9-night') continue
+    // item 9 counts here too once its spend file says done (Kai 20 Nov: its night run finished 01:20Z; actual spend replaces the 52k hold-back).
+    if (f.status !== 'approved' || !f.utc_day || (f.id === 'item9-night' && !item9Done())) continue
     let sp = { done: false, total: 0, byDay: {} }
     if (f.spend_file) try { sp = { ...sp, ...JSON.parse(fs.readFileSync(path.join(os.homedir(), f.spend_file), 'utf8')) } } catch {}
     const real = Number(sp.total) || 0
@@ -118,7 +124,7 @@ function tally() {
   const rows = allLogged().filter((r) => r.kind === 'render')
   const today = utcDay(Date.now())
   const spent = (rs) => rs.reduce((s, r) => s + (Number(r.charsSpent) || 0), 0)
-  const item9 = item9Armed() ? ITEM9_RESERVE : 0
+  const item9 = item9Armed() && !item9Done() ? ITEM9_RESERVE : 0
   const fx = fixReserve(today)
   // reserve = what OTHER approved work holds back: on the total cap item 9 + fix totals; on the day cap item 9 + fix day.
   return { total: spent(rows) + fx.total, today: spent(rows.filter((r) => utcDay(r.at) === today)) + fx.day, reserve: item9, fixTotal: fx.total, fixDay: fx.day }
@@ -198,7 +204,11 @@ async function main() {
 
   // RE-QUEUE (Kai 19 Nov): asks whose latest row is a pre-rule connection failure get ONE more attempt after the list.
   const requeue = asks.filter((a) => { const p = rendered.get(askKey(a)); return p && p.http === 0 && !p.connRule && !p.requeue && p.error !== 'TIMEOUT' })
-  const items = [...asks.map((a) => ({ ask: a, requeue: false })), ...requeue.map((a) => ({ ask: a, requeue: true }))]
+  const timedOut = asks.filter((a) => { const p = rendered.get(askKey(a)); return p && p.http === 0 && p.error === 'TIMEOUT' && !p.requeue })
+  const items = REQUEUE_TIMEOUTS
+    ? timedOut.map((a) => ({ ask: a, requeue: true }))
+    : [...asks.map((a) => ({ ask: a, requeue: false })), ...requeue.map((a) => ({ ask: a, requeue: true }))]
+  if (REQUEUE_TIMEOUTS) console.log(`--requeue-timeouts: ${timedOut.length} timed-out ask(s), one attempt each`)
   if (requeue.length) console.log(`${requeue.length} pre-rule connection failure(s) re-queued at the end of the list`)
   let timeouts = 0, sent = 0, nextCheckpoint = null, stop = null
   for (let idx = 0; idx < items.length; idx++) {

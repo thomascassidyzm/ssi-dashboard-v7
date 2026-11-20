@@ -11,7 +11,8 @@ CONV="$1"; ORDER="${2:-2 4 1}"
 cd "$(git rev-parse --show-toplevel)"
 HERE=ops/voice-casting/azure-to-cartesia
 EVID="$HOME/ssi-evidence/ssi-dashboard-v7/$HERE"
-export A2C_RUN_ARGS="--order chars-desc --until ${A2C_UNTIL:-2026-11-23T00:00:00Z} --wait-day-cap"
+# The lists stop 15 min before the reset so the timed-out tam asks get their one try before it (Kai 20 Nov).
+export A2C_RUN_ARGS="--order chars-desc --until ${A2C_UNTIL:-2026-11-22T23:45:00Z} --wait-day-cap"
 for D in $ORDER; do
   echo "$(date -u +%FT%TZ) chain: day $D ($A2C_RUN_ARGS)"
   ENDS() { grep -c '"kind":"end"' "$EVID/day$D-results.jsonl" 2>/dev/null || echo 0; }
@@ -23,6 +24,12 @@ for D in $ORDER; do
   fi
   STOP=$(python3 -I -c "import json,sys;r=[json.loads(l) for l in open(sys.argv[1]) if l.strip()];print([x for x in r if x.get('kind')=='end'][-1]['stop'])" "$EVID/day$D-results.jsonl")
   echo "$(date -u +%FT%TZ) chain: day $D ended: $STOP"
-  [ "$STOP" = "list complete" ] || { echo "chain halted"; exit 0; }
+  case "$STOP" in "list complete") ;; until*) echo "$(date -u +%FT%TZ) chain: lists stopped at their until"; break;; *) echo "chain halted"; exit 0;; esac
 done
-echo "$(date -u +%FT%TZ) chain: all lists complete"
+echo "$(date -u +%FT%TZ) chain: lists done"
+# ONE more try for eng_for_tam's 120 s timeouts (Kai 20 Nov), before the reset. Only after a clean finish or the until,
+# never after a quota/402/limit stop (that exited above).
+node $HERE/run-day.cjs --day 2 --requeue-timeouts --until 2026-11-23T00:00:00Z >> "$EVID/day2-unit.log" 2>&1
+R=$(tail -1 "$EVID/day2-results.jsonl")
+echo "$(date -u +%FT%TZ) chain: tam timeout re-try: $R" | cut -c1-400
+node "$HOME/command-surface/tools/cs-wake-send.cjs" "$CONV" "$CS_CONV_TOKEN" "WAKE: azure-to-cartesia chain finished; tam timeout re-try: $R"
