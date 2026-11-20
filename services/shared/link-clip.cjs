@@ -19,7 +19,7 @@
  */
 const { normalizeForDb, sameRecordedWords } = require('./text-normalize.cjs')
 const { bumpCourseVersion } = require('./course-version.cjs')
-const { podSentencesOf } = require('./pod-sentence-split.cjs')
+const { podSentencesOf, wordsOnly } = require('./pod-sentence-split.cjs')
 const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
 const resolveVoiceLib = require('./resolve-voice.cjs')
 const { isPodOnlyClip } = require('./pod-audio.cjs')
@@ -188,7 +188,21 @@ async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : link.role === 'segment' ? podSentencesOf(row.target_text) : []
   const ownSentence = sentences.length === arr.length ? sentences[arr.indexOf(old)] : null
   const saysOwnSentence = ownSentence != null && sameRecordedWords(ownSentence, clip.text || '')
-  if (!saysOwnSentence && (!was || !sameRecordedWords(was.text || '', clip.text || ''))) {
+  // A line the sentence boundary cannot split (Armenian '։', Chinese/Japanese '。': one "sentence", five clips) has no
+  // sentence-by-position, and when the clip being replaced is deleted there are no old words either (cs #542·AJ:
+  // hye_for_eng and zho_for_jpn Pod 1 SC06-S013). The player's own proof then decides (podSentenceSplit.ts
+  // clipsCoverTurn): the array with the new clip in that position must spell the whole line, word for word.
+  let coversLine = false
+  if (!saysOwnSentence && !was && ownSentence == null) {
+    const next = arr.map((id) => (id === old ? String(link.audioId) : id))
+    const others = [...new Set(next.filter((id) => id !== String(link.audioId)))]
+    const { data: rest, error: restErr } = others.length ? await db.from('course_audio').select('id, text').in('id', others) : { data: [] }
+    if (restErr) return { ...out, ok: false, code: 'READ_FAILED', error: restErr.message }
+    const textOf = new Map([[String(link.audioId), clip.text || ''], ...(rest || []).map((r) => [String(r.id), r.text || ''])])
+    const lineWords = wordsOnly(link.role === 'knownsegment' ? row.known_text : row.target_text)
+    coversLine = lineWords !== '' && next.every((id) => textOf.has(id)) && next.map((id) => wordsOnly(textOf.get(id))).join('') === lineWords
+  }
+  if (!saysOwnSentence && !coversLine && (!was || !sameRecordedWords(was.text || '', clip.text || ''))) {
     return { ...out, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", the clip it replaces says "${was ? was.text : '(missing)'}"` }
   }
   if (dryRun) return { ...out, ok: true, changed: true, dryRun: true }
