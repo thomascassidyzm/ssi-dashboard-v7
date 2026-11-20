@@ -146,7 +146,10 @@ function stopReason(http, json) {
   if (http === 402) return `HTTP 402: ${json.error || json.code}`
   if (json && STOP_CODES.has(json.code)) return `${json.code}: ${json.error || ''}`
   if (json && json.ok === false && LIMIT_TEXT.test(String(json.error || ''))) return `limit-shaped error (${json.code || http}): ${json.error}`
-  if (http >= 500 && http !== 503) return `HTTP ${http}: ${json.error || json.code || ''}`
+  // A 5xx that carries a named refusal code (e.g. VOICE_POLICY 'cannot read the cast' when Popty's own DB read blips, 20 Nov 12:33Z)
+  // is an ANSWER the brief says to log and move past; it is counted with the timeouts below, so a lasting outage still stops
+  // the day after 5 in a row. An un-coded 5xx (an unknown provider failure) still stops at once.
+  if (http >= 500 && http !== 503 && !(json && json.code)) return `HTTP ${http}: ${json.error || ''}`
   return null
 }
 
@@ -270,7 +273,7 @@ async function main() {
     append(rec)
     const why = stopReason(r.http, j)
     if (why) { stop = `ask ${idx}: ${why}`; break }
-    const timedOut = r.http === 0 || r.http === 503 || r.http === 504
+    const timedOut = r.http === 0 || r.http >= 500
     timeouts = timedOut ? timeouts + 1 : 0
     if (timeouts >= 5) { stop = `5 timeouts in a row (last at ask ${idx})`; break }
     if (j.ok && j.audioId) {
