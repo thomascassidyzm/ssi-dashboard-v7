@@ -146,10 +146,11 @@ function stopReason(http, json) {
   if (http === 402) return `HTTP 402: ${json.error || json.code}`
   if (json && STOP_CODES.has(json.code)) return `${json.code}: ${json.error || ''}`
   if (json && json.ok === false && LIMIT_TEXT.test(String(json.error || ''))) return `limit-shaped error (${json.code || http}): ${json.error}`
-  // A 5xx that carries a named refusal code (e.g. VOICE_POLICY 'cannot read the cast' when Popty's own DB read blips, 20 Nov 12:33Z)
-  // is an ANSWER the brief says to log and move past; it is counted with the timeouts below, so a lasting outage still stops
-  // the day after 5 in a row. An un-coded 5xx (an unknown provider failure) still stops at once.
-  if (http >= 500 && http !== 503 && !(json && json.code)) return `HTTP ${http}: ${json.error || ''}`
+  // ONE 5xx is an answer, not a stop: VOICE_POLICY 'cannot read the cast' (Popty's own DB read blipped, 20 Nov 12:33Z, nothing
+  // spent). It is logged and counted with the timeouts below, so a lasting outage still stops the day after 5 in a row.
+  // Every other 5xx — RENDER_FAILED (a provider error) included — still stops at once (Kai 19 Nov).
+  const castBlip = json && json.code === 'VOICE_POLICY' && /cannot read the cast/i.test(String(json.error || ''))
+  if (http >= 500 && http !== 503 && !castBlip) return `HTTP ${http}: ${json.code || ''} ${json.error || ''}`
   return null
 }
 
